@@ -1,0 +1,145 @@
+
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '@/context/AuthContext';
+import { Button } from '@/components/ui/button';
+import { LogOut, Menu, X } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+const Navigation = () => {
+  const { currentUser, logout } = useAuth();
+  const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/login');
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
+  };
+
+  return (
+    <header className="bg-white shadow-sm border-b border-gray-100">
+      <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
+        <Link to="/" className="flex items-center">
+          <span className="text-xl font-bold text-primary">Prepa Rationnelle</span>
+        </Link>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-6">
+          <Link to="/" className="text-gray-700 hover:text-primary transition">Accueil</Link>
+          {currentUser ? (
+            <>
+              <Link to="/dashboard" className="text-gray-700 hover:text-primary transition">
+                Tableau de bord
+              </Link>
+              <Link to="/generator" className="text-gray-700 hover:text-primary transition">
+                Générateur
+              </Link>
+              <Link to="/coaching" className="text-gray-700 hover:text-primary transition">
+                Coaching
+              </Link>
+              <Button variant="outline" size="sm" onClick={handleLogout} className="flex items-center">
+                <LogOut className="mr-2 h-4 w-4" /> Déconnexion
+              </Button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="text-gray-700 hover:text-primary transition">
+                Connexion
+              </Link>
+              <Link to="/register">
+                <Button>S'inscrire</Button>
+              </Link>
+            </>
+          )}
+        </div>
+
+        {/* Mobile Navigation Toggle */}
+        <div className="md:hidden">
+          <Button variant="ghost" size="icon" onClick={toggleMenu} aria-label="Toggle Menu">
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </Button>
+        </div>
+      </nav>
+
+      {/* Mobile Navigation Menu */}
+      <div
+        className={cn(
+          "fixed inset-0 z-50 bg-white transform transition-transform duration-300 ease-in-out pt-20",
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
+        )}
+      >
+        <div className="container mx-auto px-4 flex flex-col space-y-4">
+          <Link 
+            to="/" 
+            className="text-lg py-2 border-b border-gray-100"
+            onClick={toggleMenu}
+          >
+            Accueil
+          </Link>
+          {currentUser ? (
+            <>
+              <Link 
+                to="/dashboard" 
+                className="text-lg py-2 border-b border-gray-100"
+                onClick={toggleMenu}
+              >
+                Tableau de bord
+              </Link>
+              <Link 
+                to="/generator" 
+                className="text-lg py-2 border-b border-gray-100"
+                onClick={toggleMenu}
+              >
+                Générateur
+              </Link>
+              <Link 
+                to="/coaching" 
+                className="text-lg py-2 border-b border-gray-100"
+                onClick={toggleMenu}
+              >
+                Coaching
+              </Link>
+              <Button 
+                variant="outline" 
+                onClick={() => {
+                  handleLogout();
+                  toggleMenu();
+                }} 
+                className="mt-4 w-full flex items-center justify-center"
+              >
+                <LogOut className="mr-2 h-4 w-4" /> Déconnexion
+              </Button>
+            </>
+          ) : (
+            <>
+              <Link 
+                to="/login" 
+                className="text-lg py-2 border-b border-gray-100"
+                onClick={toggleMenu}
+              >
+                Connexion
+              </Link>
+              <Link 
+                to="/register" 
+                onClick={toggleMenu}
+                className="mt-4"
+              >
+                <Button className="w-full">S'inscrire</Button>
+              </Link>
+            </>
+          )}
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Navigation;
