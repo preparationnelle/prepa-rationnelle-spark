@@ -27,7 +27,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Schools Section - NEW */}
+      {/* Schools Section - UPDATED */}
       <section className="py-16 px-4 bg-white">
         <div className="container mx-auto">
           <h2 className="section-heading text-center mb-4">
@@ -37,7 +37,8 @@ const HomePage = () => {
             Découvrez nos analyses des entretiens de personnalité des grandes écoles et préparez-vous efficacement.
           </p>
           
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {/* ESCP */}
             <Link to="/ecoles/escp" className="group">
               <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all hover:shadow-lg hover:border-primary/20">
                 <div className="flex items-center gap-3 mb-4">
@@ -48,6 +49,106 @@ const HomePage = () => {
                 </div>
                 <p className="text-gray-600 mb-4">
                   Format court (30 min), coefficient 12. Entretien structuré autour d'un questionnaire préalable.
+                </p>
+                <div className="flex justify-end">
+                  <Button variant="ghost" size="sm" className="text-primary group-hover:underline">
+                    En savoir plus
+                  </Button>
+                </div>
+              </div>
+            </Link>
+
+            {/* ESSEC */}
+            <Link to="/ecoles/essec" className="group">
+              <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all hover:shadow-lg hover:border-primary/20">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <GraduationCap className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">ESSEC Business School</h3>
+                </div>
+                <p className="text-gray-600 mb-4">
+                  Entretien long (30-45 min), coefficient 10. Format approfondi avec mise en situation.
+                </p>
+                <div className="flex justify-end">
+                  <Button variant="ghost" size="sm" className="text-primary group-hover:underline">
+                    En savoir plus
+                  </Button>
+                </div>
+              </div>
+            </Link>
+
+            {/* EDHEC */}
+            <Link to="/ecoles/edhec" className="group">
+              <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all hover:shadow-lg hover:border-primary/20">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <GraduationCap className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">EDHEC Business School</h3>
+                </div>
+                <p className="text-gray-600 mb-4">
+                  Format tripartite (1h30), coefficient 15. Présentation, travail de groupe et entretien.
+                </p>
+                <div className="flex justify-end">
+                  <Button variant="ghost" size="sm" className="text-primary group-hover:underline">
+                    En savoir plus
+                  </Button>
+                </div>
+              </div>
+            </Link>
+
+            {/* EM Lyon */}
+            <Link to="/ecoles/emlyon" className="group">
+              <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all hover:shadow-lg hover:border-primary/20">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <GraduationCap className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">EM Lyon Business School</h3>
+                </div>
+                <p className="text-gray-600 mb-4">
+                  Entretien "Flash" (25 min), coefficient 9. Format ludique avec cartes thématiques.
+                </p>
+                <div className="flex justify-end">
+                  <Button variant="ghost" size="sm" className="text-primary group-hover:underline">
+                    En savoir plus
+                  </Button>
+                </div>
+              </div>
+            </Link>
+
+            {/* SKEMA */}
+            <Link to="/ecoles/skema" className="group">
+              <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all hover:shadow-lg hover:border-primary/20">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <GraduationCap className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">SKEMA Business School</h3>
+                </div>
+                <p className="text-gray-600 mb-4">
+                  Entretien projectif (25 min), coefficient 20. CV fictif à 10 ans.
+                </p>
+                <div className="flex justify-end">
+                  <Button variant="ghost" size="sm" className="text-primary group-hover:underline">
+                    En savoir plus
+                  </Button>
+                </div>
+              </div>
+            </Link>
+
+            {/* Audencia */}
+            <Link to="/ecoles/audencia" className="group">
+              <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all hover:shadow-lg hover:border-primary/20">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <GraduationCap className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">Audencia Business School</h3>
+                </div>
+                <p className="text-gray-600 mb-4">
+                  Entretien à orientation RSE (30 min), coefficient 10. Forte dimension responsabilité sociétale.
                 </p>
                 <div className="flex justify-end">
                   <Button variant="ghost" size="sm" className="text-primary group-hover:underline">
