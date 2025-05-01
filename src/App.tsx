@@ -16,6 +16,11 @@ import GeneratorPage from './pages/GeneratorPage';
 import SubmissionPage from './pages/SubmissionPage';
 import CoachingPage from './pages/CoachingPage';
 import ESCPPage from './pages/ESCPPage';
+import ESSECPage from './pages/ESSECPage';
+import EDHECPage from './pages/EDHECPage';
+import EMLyonPage from './pages/EMLyonPage';
+import SKEMAPage from './pages/SKEMAPage';
+import AudenciaPage from './pages/AudenciaPage';
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -55,6 +60,11 @@ const App = () => (
                   </ProtectedRoute>
                 } />
                 <Route path="/ecoles/escp" element={<ESCPPage />} />
+                <Route path="/ecoles/essec" element={<ESSECPage />} />
+                <Route path="/ecoles/edhec" element={<EDHECPage />} />
+                <Route path="/ecoles/emlyon" element={<EMLyonPage />} />
+                <Route path="/ecoles/skema" element={<SKEMAPage />} />
+                <Route path="/ecoles/audencia" element={<AudenciaPage />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
