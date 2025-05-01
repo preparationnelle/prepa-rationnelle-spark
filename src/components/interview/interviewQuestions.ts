@@ -46,7 +46,7 @@ export const INTERVIEW_QUESTIONS: InterviewBlock[] = [
       },
       {
         id: 'expectations',
-        text: 'Qu'attends-tu de cette formation/entreprise sur le plan personnel ?'
+        text: "Qu'attends-tu de cette formation/entreprise sur le plan personnel ?"
       },
       {
         id: 'value',
@@ -55,7 +55,7 @@ export const INTERVIEW_QUESTIONS: InterviewBlock[] = [
       },
       {
         id: 'feedback-change',
-        text: 'Raconte un moment où tu as changé d'avis après avoir reçu un feedback constructif.',
+        text: "Raconte un moment où tu as changé d'avis après avoir reçu un feedback constructif.",
         optional: true
       }
     ]
@@ -70,7 +70,7 @@ export const INTERVIEW_QUESTIONS: InterviewBlock[] = [
       },
       {
         id: 'conflict',
-        text: 'Comment réagis-tu aux conflits au sein d'un groupe ?'
+        text: "Comment réagis-tu aux conflits au sein d'un groupe ?"
       },
       {
         id: 'motivation',
@@ -123,7 +123,7 @@ export const INTERVIEW_QUESTIONS: InterviewBlock[] = [
       },
       {
         id: 'quote',
-        text: 'Quelle citation t'inspire le plus et comment se reflète-t-elle dans tes actions ?',
+        text: "Quelle citation t'inspire le plus et comment se reflète-t-elle dans tes actions ?",
         optional: true
       }
     ]
@@ -148,7 +148,7 @@ export const ADDITIONAL_QUESTIONS = {
     'Quelles sont vos aspirations professionnelles à court, moyen et long terme ?',
     'Où vous voyez-vous dans 5 ou 10 ans ?',
     'Quelles sont les personnes qui vous inspirent, et pourquoi ?',
-    'Qu'est-ce qui vous motive à vous lever chaque matin ?',
+    "Qu'est-ce qui vous motive à vous lever chaque matin ?",
     'Quel impact souhaitez-vous avoir dans votre domaine ou votre environnement ?'
   ],
   interpersonal: [
@@ -156,7 +156,7 @@ export const ADDITIONAL_QUESTIONS = {
     'Comment réagissez-vous face à une critique constructive ?',
     'Comment vous assurez-vous de la réussite de vos collègues ?',
     'Comment décririez-vous votre capacité à communiquer avec les autres ?',
-    'Qu'apportez-vous à une équipe ?',
+    "Qu'apportez-vous à une équipe ?",
     'Comment gérez-vous les conflits ou les tensions ?'
   ],
   creative: [
@@ -169,14 +169,14 @@ export const ADDITIONAL_QUESTIONS = {
   values: [
     'Quelles sont les valeurs qui vous tiennent le plus à cœur ?',
     'Comment prenez-vous des décisions importantes ?',
-    'Quel dilemme moral avez-vous déjà rencontré, et comment l'avez-vous résolu ?',
-    'Comment réagissez-vous face à l'injustice ou à l'échec ?',
-    'Qu'est-ce qui vous rend heureux dans la vie ?'
+    "Quel dilemme moral avez-vous déjà rencontré, et comment l'avez-vous résolu ?",
+    "Comment réagissez-vous face à l'injustice ou à l'échec ?",
+    "Qu'est-ce qui vous rend heureux dans la vie ?"
   ],
   projection: [
-    'Parlez-moi d'une expérience où vous avez dû relever un défi.',
+    "Parlez-moi d'une expérience où vous avez dû relever un défi.",
     'Comment réagiriez-vous si vous deviez travailler sur un projet qui ne vous passionne pas ?',
-    'Comment vous adaptez-vous à un environnement ou à une culture d'entreprise différente ?',
+    "Comment vous adaptez-vous à un environnement ou à une culture d'entreprise différente ?",
     'Décrivez une situation où vous avez dû prendre une décision difficile.',
     'Comment gérez-vous les imprévus ou les changements de dernière minute ?'
   ]
