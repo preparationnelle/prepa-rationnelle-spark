@@ -1,4 +1,3 @@
-
 export interface InterviewQuestion {
   id: string;
   text: string;
@@ -99,6 +98,49 @@ export const INTERVIEW_QUESTIONS: InterviewBlock[] = [
         text: "Quelles sont les personnes qui vous inspirent, et pourquoi ?",
         exampleAnswer: "Je suis particulièrement inspiré par Elon Musk, non pas seulement pour ses réussites entrepreneuriales, mais surtout pour sa capacité à remettre en question les paradigmes établis et à poursuivre des visions qui semblaient impossibles. Sa persévérance face aux échecs et sa volonté de résoudre des problèmes à impact global résonnent avec ma propre approche des défis.",
         tips: "Choisissez une personne dont les valeurs et le parcours reflètent vos propres aspirations. L'important est d'expliquer précisément ce qui vous inspire chez cette personne."
+      }
+    ]
+  },
+  {
+    id: 'projet-professionnel',
+    title: 'Projet professionnel',
+    questions: [
+      {
+        id: 'projet-long-terme',
+        text: "Quel est votre projet professionnel à long terme et comment l'école va-t-elle vous y aider ?",
+        exampleAnswer: "Mon projet professionnel à long terme est de travailler dans la finance verte, idéalement en tant que consultant aidant les entreprises à intégrer des critères de durabilité dans leurs investissements. Cette vocation m'est venue progressivement. Au lycée, j'étais fasciné par les chiffres et l'économie, ce qui m'a conduit en prépa ECG. En même temps, je suis très sensible aux enjeux environnementaux. J'ai notamment animé un club lycéen sur le développement durable et suivi de près les accords internationaux comme la COP26 et la COP28. En prépa, un de mes sujets d'oral portait sur la responsabilité sociale des entreprises, et ça a fait tilt : j'ai découvert qu'il existait un domaine combinant finance et impact environnemental, la 'finance verte'. L'école que je vise me semble être le tremplin idéal pour ce projet avec sa spécialisation en Finance durable et son Institut du Développement Durable. À court terme, après l'école, je me verrais bien analyste ESG dans un fonds d'investissement. À moyen terme, j'aimerais évoluer vers le conseil en stratégie spécialisé dans la transition écologique. Bien sûr, je reste ouvert à affiner ce projet au fil de mes découvertes pendant ma scolarité.",
+        tips: "Structurez votre réponse en 4 parties : annonce claire du projet, explications de vos motivations personnelles, lien avec l'école visée, et planification progressive (court/moyen/long terme). Montrez que vous connaissez le secteur tout en restant humble et flexible."
+      },
+      {
+        id: 'secteur-interet',
+        text: "Pourquoi ce secteur d'activité vous intéresse-t-il particulièrement ?",
+        exampleAnswer: "Le secteur du conseil en stratégie m'intéresse particulièrement car il combine plusieurs aspects qui me correspondent : la résolution de problèmes complexes, la diversité des missions, et l'apprentissage constant. Ce qui m'attire spécifiquement, c'est l'opportunité d'avoir un impact tangible sur les entreprises tout en développant une vision transversale des enjeux économiques. Mon stage dans une PME m'a fait prendre conscience de l'importance d'un regard extérieur pour optimiser les processus et identifier les opportunités de croissance. J'ai également eu l'occasion d'échanger avec un ancien de votre école qui travaille chez BCG, et son témoignage sur la stimulation intellectuelle et la variété des projets a confirmé mon intérêt. Je suis conscient des exigences du métier en termes de rigueur analytique et de disponibilité, mais ces contraintes sont pour moi le prix à payer pour une carrière aussi enrichissante.",
+        tips: "Démontrez une connaissance réelle du secteur au-delà des clichés. Établissez un lien entre vos expériences passées et votre intérêt pour ce domaine. Soyez honnête sur ce qui vous attire tout en montrant que vous êtes conscient des défis."
+      },
+      {
+        id: 'competences-developpement',
+        text: "Quelles compétences souhaitez-vous développer pour réaliser votre projet professionnel ?",
+        exampleAnswer: "Pour réussir dans le marketing digital appliqué au luxe, je dois développer trois types de compétences. D'abord, des compétences techniques comme la maîtrise des outils d'analytics et du growth hacking, que je compte acquérir via la spécialisation Digital Marketing de votre école et des certifications complémentaires comme Google Analytics. Ensuite, des compétences stratégiques : comprendre les spécificités du marketing de luxe, notamment l'équilibre délicat entre exclusivité et présence digitale. J'ai commencé à me former en suivant des webinaires du Comité Colbert et en lisant des analyses sectorielles. Enfin, des soft skills essentielles comme la créativité et la sensibilité culturelle, que je développe à travers mon engagement dans l'association Arts et Culture de ma prépa et mes voyages. Je suis particulièrement attentif au développement de mon réseau dans ce secteur, raison pour laquelle l'association Luxury Business de votre école m'intéresse tant.",
+        tips: "Identifiez 2-3 catégories de compétences précises plutôt qu'une liste vague. Pour chacune, mentionnez comment vous comptez la développer concrètement pendant votre scolarité (cours spécifiques, associations, projets). Montrez que vous avez déjà commencé ce processus de développement."
+      },
+      {
+        id: 'evolution-carriere',
+        text: "Comment envisagez-vous l'évolution de votre carrière sur les 10 prochaines années ?",
+        exampleAnswer: "J'envisage mon évolution de carrière en trois phases. À court terme (2-3 ans après l'école), je souhaite intégrer une entreprise du CAC40 dans un programme graduate en finance d'entreprise pour acquérir des bases solides et comprendre les enjeux d'un grand groupe. À moyen terme (3-5 ans), mon objectif est d'évoluer vers un poste de responsabilité dans une scale-up ou une entreprise innovante du secteur des énergies renouvelables, idéalement en tant que responsable financier, pour contribuer à la croissance d'une structure plus agile tout en ayant un impact environnemental positif. À long terme (7-10 ans), j'ambitionne soit de créer ma propre entreprise dans le domaine de la transition énergétique, soit d'occuper un poste de direction financière dans une entreprise internationale alignée avec mes valeurs. Cette progression me permettrait de développer à la fois une expertise technique forte et une vision stratégique globale, tout en restant fidèle à mon engagement pour la transition écologique.",
+        tips: "Présentez une trajectoire progressive et cohérente, mais pas trop linéaire. Montrez une ambition mesurée et réaliste. Expliquez pourquoi chaque étape est nécessaire pour la suivante et comment elle contribue à votre projet global."
+      },
+      {
+        id: 'apport-ecole',
+        text: "En quoi notre école peut-elle vous aider à réaliser votre projet professionnel ?",
+        exampleAnswer: "Votre école peut m'aider à réaliser mon projet de carrière dans le conseil en transformation digitale de plusieurs façons complémentaires. Académiquement, la double spécialisation en systèmes d'information et stratégie que vous proposez correspond exactement à mon besoin de développer à la fois une expertise technique et une vision business. J'ai particulièrement repéré le cours 'Digital Disruption' du Professeur Martin qui traite des cas réels de transformation. Sur le plan pratique, votre partenariat avec 15 cabinets de conseil qui recrutent directement sur le campus représente une opportunité exceptionnelle, et le forum Conseil que vous organisez chaque novembre me permettra d'affiner mon projet. Quant à l'aspect réseau, votre communauté de 3000 alumni dans le conseil, dont 450 dans les cabinets que je vise spécifiquement, constitue une ressource inestimable pour obtenir des conseils et saisir des opportunités. Enfin, j'ai remarqué que votre incubateur a déjà lancé 5 startups dans le domaine de la transformation digitale, ce qui pourrait être une voie alternative si je décide de me tourner vers l'entrepreneuriat.",
+        tips: "Personnalisez votre réponse avec des détails spécifiques sur l'école visée (cours particuliers, associations, partenariats). Montrez que vous avez fait des recherches approfondies et que votre choix est réfléchi. Liez chaque élément mentionné à une compétence ou opportunité nécessaire pour votre projet."
+      },
+      {
+        id: 'metier-ideal',
+        text: "Décrivez le métier idéal tel que vous l'imaginez.",
+        optional: true,
+        exampleAnswer: "Mon métier idéal combinerait trois dimensions essentielles pour moi. D'abord, un équilibre entre réflexion stratégique et mise en œuvre concrète : j'aime conceptualiser des solutions, mais j'ai besoin de voir leur application réelle. Ensuite, une dimension internationale, avec la possibilité de travailler dans différents contextes culturels, ce qui correspond à mon parcours multiculturel et mon goût pour les langues. Enfin, un impact positif mesurable, idéalement lié à l'innovation sociale ou environnementale. En termes d'environnement de travail, je m'épanouis dans les structures qui valorisent l'autonomie et l'initiative tout en offrant un cadre collaboratif stimulant. Concrètement, je vois le métier de consultant en innovation responsable comme correspondant à ces critères, avec la possibilité d'accompagner diverses organisations dans leur transformation durable tout en conservant une grande diversité de missions.",
+        tips: "Décrivez les caractéristiques du métier plutôt que simplement son titre. Concentrez-vous sur l'environnement de travail, les valeurs, les missions et les compétences mobilisées. Évitez les clichés comme 'un métier passionnant et bien rémunéré' et préférez des aspects précis qui vous correspondent vraiment."
       }
     ]
   },

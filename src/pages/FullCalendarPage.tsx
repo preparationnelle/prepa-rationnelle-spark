@@ -1,6 +1,25 @@
 
 import React, { useEffect, useRef } from 'react';
 
+// Define the Calendly interface for type safety
+interface Calendly {
+  initInlineWidget: (config: {
+    url: string;
+    parentElement: HTMLElement;
+    prefill?: Record<string, unknown>;
+    utm?: Record<string, unknown>;
+    hideEventTypeDetails?: boolean;
+    hideLandingPageDetails?: boolean;
+    primaryColor?: string;
+  }) => void;
+}
+
+declare global {
+  interface Window {
+    Calendly?: Calendly;
+  }
+}
+
 const FullCalendarPage = () => {
   const calendlyInlineRef = useRef<HTMLDivElement>(null);
 
