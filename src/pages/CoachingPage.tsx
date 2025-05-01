@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Calendar, Clock, MessageSquare, Users } from 'lucide-react';
@@ -11,6 +11,8 @@ declare global {
 }
 
 const CoachingPage = () => {
+  const calendlyInlineRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     // Load the Calendly script dynamically
     const script = document.createElement('script');
@@ -18,8 +20,21 @@ const CoachingPage = () => {
     script.async = true;
     document.body.appendChild(script);
 
+    script.onload = () => {
+      if (window.Calendly && calendlyInlineRef.current) {
+        window.Calendly.initInlineWidget({
+          url: 'https://calendly.com/preparationnelle/30min',
+          parentElement: calendlyInlineRef.current,
+          prefill: {},
+          utm: {}
+        });
+      }
+    };
+
     return () => {
-      document.body.removeChild(script);
+      if (script.parentNode) {
+        document.body.removeChild(script);
+      }
     };
   }, []);
 
@@ -115,8 +130,12 @@ const CoachingPage = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            {/* Calendly inline widget will be loaded here */}
-            <div id="calendly-inline-widget" className="min-h-[630px]" data-url="https://calendly.com/preparationnelle/30min"></div>
+            {/* Calendly inline widget container */}
+            <div 
+              ref={calendlyInlineRef} 
+              className="min-h-[630px] w-full" 
+              style={{ minWidth: '320px' }}
+            ></div>
 
             {/* Fallback button if the inline widget doesn't load */}
             <div className="text-center mt-4">
