@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, GraduationCap } from 'lucide-react';
+import { PricingSection } from '@/components/PricingSection';
 
 const HomePage = () => {
   return <div className="min-h-screen bg-accent">
@@ -237,80 +238,8 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-16 px-4 bg-white">
-        <div className="container mx-auto">
-          <h2 className="section-heading text-center mb-12">
-            Nos formules
-          </h2>
-          
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-              <h3 className="card-heading mb-2 text-center">Gratuit</h3>
-              <p className="text-3xl font-bold text-center mb-6">0€</p>
-              
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5" />
-                  <span>Accès à 3 plans par mois</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5" />
-                  <span>Tableau de bord basique</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5" />
-                  <span>Ressources pédagogiques</span>
-                </li>
-              </ul>
-              
-              <Link to="/register">
-                <Button variant="outline" className="w-full">
-                  Commencer gratuitement
-                </Button>
-              </Link>
-            </div>
-            
-            <div className="bg-primary/5 p-6 rounded-lg shadow-md border border-primary">
-              <div className="bg-primary text-white text-xs font-bold uppercase tracking-wider py-1 px-2 rounded inline-block mb-2">
-                Recommandé
-              </div>
-              <h3 className="card-heading mb-2 text-center">Premium</h3>
-              <p className="text-3xl font-bold text-center mb-6">29€<span className="text-base font-normal text-gray-600">/mois</span></p>
-              
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5" />
-                  <span>Plans illimités</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5" />
-                  <span>Tableau de bord avancé</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5" />
-                  <span>2 sessions de coaching par mois</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5" />
-                  <span>Feedback personnalisé sur vos essais</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5" />
-                  <span>Accès à tous les contenus exclusifs</span>
-                </li>
-              </ul>
-              
-              <Link to="/register">
-                <Button className="w-full">
-                  Commencer l'essai gratuit
-                </Button>
-              </Link>
-              <p className="text-center text-sm text-gray-500 mt-2">14 jours d'essai gratuit, sans engagement</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Pricing Section - Using our new component */}
+      <PricingSection />
 
       {/* CTA Section */}
       <section className="py-16 px-4 bg-gradient-to-r from-primary to-orange-500 text-white">
