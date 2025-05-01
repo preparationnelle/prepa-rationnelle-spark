@@ -1,23 +1,15 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { CheckCircle } from 'lucide-react';
-
 const HomePage = () => {
-  return (
-    <div className="min-h-screen bg-accent">
+  return <div className="min-h-screen bg-accent">
       {/* Hero Section */}
       <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-accent to-white">
         <div className="container mx-auto">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="hero-heading gradient-text mb-6">
-              Préparez-vous aux entretiens de concours avec excellence
-            </h1>
-            <p className="text-lg md:text-xl text-gray-700 mb-8">
-              Développez votre culture générale et votre capacité à structurer des arguments
-              pour réussir vos oraux de personnalité.
-            </p>
+            <h1 className="hero-heading gradient-text mb-6">Préparez-vous aux oraux </h1>
+            <p className="text-lg md:text-xl text-gray-700 mb-8">Développez votre capacité à structurer des arguments pour réussir vos oraux de langue et entretien de personnalité.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/register">
                 <Button size="lg" className="w-full sm:w-auto">
@@ -44,7 +36,7 @@ const HomePage = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M5 7 3 5l2-2"/><path d="M9 5h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9"/><path d="M5 19 3 17l2-2"/><path d="M5 5v14"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M5 7 3 5l2-2" /><path d="M9 5h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9" /><path d="M5 19 3 17l2-2" /><path d="M5 5v14" /></svg>
               </div>
               <h3 className="card-heading mb-2">Plans structurés</h3>
               <p className="text-gray-600">
@@ -54,7 +46,7 @@ const HomePage = () => {
             
             <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="m12 14 4-4" /><path d="M3.34 19a10 10 0 1 1 17.32 0" /></svg>
               </div>
               <h3 className="card-heading mb-2">Suivi de progression</h3>
               <p className="text-gray-600">
@@ -64,7 +56,7 @@ const HomePage = () => {
             
             <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M5.5 20H8"/><path d="M17 9h.01"/><path d="M11 13h.01"/><path d="M13 15h.01"/><path d="M15 11h.01"/><path d="M17 13h.01"/><path d="M9 15h.01"/><path d="M3 3v18h18"/><path d="m3 6 3-3 3 3 3-3 3 3 3-3 3 3"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M5.5 20H8" /><path d="M17 9h.01" /><path d="M11 13h.01" /><path d="M13 15h.01" /><path d="M15 11h.01" /><path d="M17 13h.01" /><path d="M9 15h.01" /><path d="M3 3v18h18" /><path d="m3 6 3-3 3 3 3-3 3 3 3-3 3 3" /></svg>
               </div>
               <h3 className="card-heading mb-2">Coaching personnalisé</h3>
               <p className="text-gray-600">
@@ -201,11 +193,7 @@ const HomePage = () => {
             Rejoignez des centaines d'étudiants qui ont amélioré leur performance aux oraux de personnalité grâce à Prepa Rationnelle.
           </p>
           <Link to="/register">
-            <Button 
-              variant="secondary" 
-              size="lg" 
-              className="bg-white text-primary hover:bg-gray-100 hover:text-primary"
-            >
+            <Button variant="secondary" size="lg" className="bg-white text-primary hover:bg-gray-100 hover:text-primary">
               Commencer maintenant
             </Button>
           </Link>
@@ -243,8 +231,6 @@ const HomePage = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default HomePage;
