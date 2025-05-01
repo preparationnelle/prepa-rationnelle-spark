@@ -24,6 +24,7 @@ import EMLyonPage from './pages/EMLyonPage';
 import SKEMAPage from './pages/SKEMAPage';
 import AudenciaPage from './pages/AudenciaPage';
 import FullCalendarPage from './pages/FullCalendarPage';
+import InterviewSimulatorPage from './pages/InterviewSimulatorPage';
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -69,6 +70,7 @@ const App = () => (
                 } />
                 <Route path="/questions" element={<QuestionsPage />} />
                 <Route path="/questions/:categoryId" element={<QuestionCategoryPage />} />
+                <Route path="/interview-simulator" element={<InterviewSimulatorPage />} />
                 <Route path="/ecoles/escp" element={<ESCPPage />} />
                 <Route path="/ecoles/essec" element={<ESSECPage />} />
                 <Route path="/ecoles/edhec" element={<EDHECPage />} />
