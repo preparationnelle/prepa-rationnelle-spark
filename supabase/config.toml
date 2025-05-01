@@ -1,1 +1,9 @@
+
 project_id = "xamkaphelshsavcacbdy"
+
+[auth]
+enabled = true
+
+[functions]
+[functions.generate-plan]
+verify_jwt = true

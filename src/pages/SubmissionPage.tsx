@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
 import { ArrowLeft, Send } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 // Sample feedback for demonstration
 const sampleFeedback = {
@@ -27,10 +26,62 @@ const sampleFeedback = {
 
 const SubmissionPage = () => {
   const [essayText, setEssayText] = useState('');
+  const [essayTitle, setEssayTitle] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [feedback, setFeedback] = useState<typeof sampleFeedback | null>(null);
+  const [wordCount, setWordCount] = useState(0);
   const { currentUser } = useAuth();
   const { toast } = useToast();
+  const location = useLocation();
+
+  // Calculate word count when essay text changes
+  useEffect(() => {
+    const words = essayText.trim() ? essayText.trim().split(/\s+/).length : 0;
+    setWordCount(words);
+  }, [essayText]);
+
+  // Check if we came from the generator with a plan
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const planId = params.get('planId');
+    
+    if (planId && currentUser) {
+      const fetchPlan = async () => {
+        const { data, error } = await supabase
+          .from('submissions')
+          .select('*')
+          .eq('id', planId)
+          .eq('user_id', currentUser.id)
+          .single();
+          
+        if (data && !error) {
+          try {
+            const planData = JSON.parse(data.texte);
+            setEssayTitle(planData.title || '');
+            
+            // Pre-populate with some structure from the plan
+            let structuredTemplate = `# ${planData.title}\n\n`;
+            structuredTemplate += `## Introduction\n${planData.introduction}\n\n`;
+            
+            planData.parts.forEach((part, index) => {
+              structuredTemplate += `## ${part.title}\n`;
+              part.subparts.forEach(subpart => {
+                structuredTemplate += `### ${subpart}\n[Développez votre argumentation ici...]\n\n`;
+              });
+            });
+            
+            structuredTemplate += `## Conclusion\n${planData.conclusion}`;
+            
+            setEssayText(structuredTemplate);
+          } catch (e) {
+            console.error("Error parsing plan data:", e);
+          }
+        }
+      };
+      
+      fetchPlan();
+    }
+  }, [location, currentUser]);
 
   const handleSubmit = async () => {
     if (essayText.trim().length < 100) {
@@ -54,6 +105,7 @@ const SubmissionPage = () => {
         if (currentUser) {
           const { error } = await supabase.from('submissions').insert({
             user_id: currentUser.id,
+            title: essayTitle || "Essai sans titre",
             texte: essayText,
             commentaires: JSON.stringify(sampleFeedback),
             date: new Date().toISOString(),
@@ -81,8 +133,11 @@ const SubmissionPage = () => {
 
   const handleNewSubmission = () => {
     setEssayText('');
+    setEssayTitle('');
     setFeedback(null);
   };
+
+  const isWithinWordLimit = wordCount >= 450 && wordCount <= 550;
 
   return (
     <div className="container mx-auto py-8 px-4">
@@ -106,16 +161,32 @@ const SubmissionPage = () => {
           <CardContent>
             <Textarea 
               placeholder="Rédigez votre essai ici... Commencez par une introduction claire, développez votre argumentation en parties structurées, et concluez en synthétisant vos idées principales."
-              className="min-h-[400px]"
+              className="min-h-[400px] font-mono"
               value={essayText}
               onChange={(e) => setEssayText(e.target.value)}
             />
           </CardContent>
           <CardFooter className="flex justify-between">
-            <p className="text-sm text-muted-foreground">
-              {essayText.length} caractères
-              {essayText.length < 100 && essayText.length > 0 && " (minimum 100)"}
-            </p>
+            <div className="flex items-center gap-4">
+              <p className="text-sm text-muted-foreground">
+                {wordCount} mots
+                {wordCount > 0 && !isWithinWordLimit && (
+                  <span className="text-amber-600 ml-1">(cible: 500 ±10%)</span>
+                )}
+                {wordCount > 0 && isWithinWordLimit && (
+                  <span className="text-green-600 ml-1">(longueur idéale)</span>
+                )}
+              </p>
+              
+              {wordCount > 0 && (
+                <div className="h-2 w-24 bg-gray-200 rounded-full overflow-hidden">
+                  <div 
+                    className={`h-full ${isWithinWordLimit ? 'bg-green-500' : wordCount < 450 ? 'bg-amber-500' : 'bg-red-500'}`}
+                    style={{ width: `${Math.min(wordCount / 550 * 100, 100)}%` }}
+                  />
+                </div>
+              )}
+            </div>
             <Button 
               onClick={handleSubmit} 
               disabled={submitting || essayText.trim().length < 100}
