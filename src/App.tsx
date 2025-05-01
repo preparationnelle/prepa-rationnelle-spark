@@ -23,6 +23,7 @@ import EDHECPage from './pages/EDHECPage';
 import EMLyonPage from './pages/EMLyonPage';
 import SKEMAPage from './pages/SKEMAPage';
 import AudenciaPage from './pages/AudenciaPage';
+import FullCalendarPage from './pages/FullCalendarPage';
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -59,6 +60,11 @@ const App = () => (
                 <Route path="/coaching" element={
                   <ProtectedRoute>
                     <CoachingPage />
+                  </ProtectedRoute>
+                } />
+                <Route path="/calendar" element={
+                  <ProtectedRoute>
+                    <FullCalendarPage />
                   </ProtectedRoute>
                 } />
                 <Route path="/questions" element={<QuestionsPage />} />

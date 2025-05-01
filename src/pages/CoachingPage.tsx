@@ -1,8 +1,9 @@
 
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Calendar, Clock, MessageSquare, Users } from 'lucide-react';
+import { Calendar, Clock, MessageSquare, Users, Maximize2 } from 'lucide-react';
 
 declare global {
   interface Window {
@@ -48,7 +49,16 @@ const CoachingPage = () => {
 
   return (
     <div className="container mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold mb-8">Coaching personnalisé</h1>
+      <h1 className="text-3xl font-bold mb-4">Coaching personnalisé</h1>
+      
+      <div className="mb-6 flex justify-center">
+        <Link to="/calendar">
+          <Button size="lg" className="flex items-center gap-2">
+            <Maximize2 className="h-5 w-5" />
+            Afficher le calendrier en plein écran
+          </Button>
+        </Link>
+      </div>
 
       <div className="grid md:grid-cols-3 gap-8 mb-12">
         <Card>
