@@ -6,8 +6,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
-import { ArrowRight, Copy, Loader2 } from 'lucide-react';
+import { ArrowRight, Copy, Loader2, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 
 // Define the plan type structure
 type Plan = {
@@ -50,14 +51,17 @@ const GeneratorPage = () => {
   const [generating, setGenerating] = useState(false);
   const [currentPlan, setCurrentPlan] = useState<Plan | null>(null);
   const [wordCount, setWordCount] = useState(0);
+  const [language, setLanguage] = useState<'fr' | 'en'>('fr');
   const { currentUser } = useAuth();
   const { toast } = useToast();
 
   const handleGenerate = async () => {
     if (!topic.trim()) {
       toast({
-        title: "Sujet requis",
-        description: "Veuillez entrer un sujet pour générer un plan.",
+        title: language === 'fr' ? "Sujet requis" : "Topic required",
+        description: language === 'fr' 
+          ? "Veuillez entrer un sujet pour générer un plan." 
+          : "Please enter a topic to generate a plan.",
         variant: "destructive"
       });
       return;
@@ -70,7 +74,8 @@ const GeneratorPage = () => {
       const { data, error } = await supabase.functions.invoke('generate-plan', {
         body: {
           topic: topic,
-          wordLimit: 500 // Target word count for the plan
+          wordLimit: 500, // Target word count for the plan
+          language: language
         }
       });
 
@@ -97,14 +102,23 @@ const GeneratorPage = () => {
 
         if (saveError) {
           console.error("Error saving plan:", saveError);
+          toast({
+            title: language === 'fr' ? "Erreur" : "Error",
+            description: language === 'fr' 
+              ? "Une erreur est survenue lors de la sauvegarde du plan: " + saveError.message 
+              : "An error occurred while saving the plan: " + saveError.message,
+            variant: "destructive"
+          });
         }
       }
       
     } catch (error) {
       console.error("Error generating plan:", error);
       toast({
-        title: "Erreur",
-        description: "Une erreur est survenue lors de la génération du plan: " + (error as Error).message,
+        title: language === 'fr' ? "Erreur" : "Error",
+        description: language === 'fr' 
+          ? "Une erreur est survenue lors de la génération du plan: " + (error as Error).message 
+          : "An error occurred while generating the plan: " + (error as Error).message,
         variant: "destructive"
       });
     } finally {
@@ -115,7 +129,7 @@ const GeneratorPage = () => {
   const copyToClipboard = () => {
     if (!currentPlan) return;
     
-    let text = `${currentPlan.title}\n\nINTRODUCTION:\n${currentPlan.introduction}\n\n`;
+    let text = `${currentPlan.title}\n\n${language === 'fr' ? 'INTRODUCTION' : 'INTRODUCTION'}:\n${currentPlan.introduction}\n\n`;
     
     currentPlan.parts.forEach((part, index) => {
       text += `${part.title}\n`;
@@ -125,31 +139,57 @@ const GeneratorPage = () => {
       text += '\n';
     });
     
-    text += `CONCLUSION:\n${currentPlan.conclusion}`;
+    text += `${language === 'fr' ? 'CONCLUSION' : 'CONCLUSION'}:\n${currentPlan.conclusion}`;
     
     navigator.clipboard.writeText(text);
     
     toast({
-      title: "Copié !",
-      description: "Le plan a été copié dans le presse-papiers."
+      title: language === 'fr' ? "Copié !" : "Copied!",
+      description: language === 'fr' 
+        ? "Le plan a été copié dans le presse-papiers." 
+        : "The plan has been copied to clipboard."
     });
+  };
+
+  const getPlaceholder = () => {
+    return language === 'fr'
+      ? "Ex: L'intelligence artificielle représente-t-elle une menace pour l'humanité ?"
+      : "Ex: Does artificial intelligence represent a threat to humanity?";
   };
 
   return (
     <div className="container mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold mb-8">Générateur de plan</h1>
+      <h1 className="text-3xl font-bold mb-8">
+        {language === 'fr' ? 'Générateur de plan' : 'Plan Generator'}
+      </h1>
       
       <Card className="mb-8">
         <CardHeader>
-          <CardTitle>Générer un nouveau plan</CardTitle>
-          <CardDescription>
-            Entrez un sujet de géopolitique ou d'actualité pour obtenir un plan structuré
-          </CardDescription>
+          <div className="flex justify-between items-start">
+            <div>
+              <CardTitle>
+                {language === 'fr' ? 'Générer un nouveau plan' : 'Generate a new plan'}
+              </CardTitle>
+              <CardDescription>
+                {language === 'fr'
+                  ? "Entrez un sujet de géopolitique ou d'actualité pour obtenir un plan structuré"
+                  : "Enter a geopolitics or current affairs topic to get a structured outline"}
+              </CardDescription>
+            </div>
+            <ToggleGroup type="single" value={language} onValueChange={(value) => value && setLanguage(value as 'fr' | 'en')}>
+              <ToggleGroupItem value="fr" aria-label="Français">
+                🇫🇷
+              </ToggleGroupItem>
+              <ToggleGroupItem value="en" aria-label="English">
+                🇬🇧
+              </ToggleGroupItem>
+            </ToggleGroup>
+          </div>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col sm:flex-row gap-4">
             <Input
-              placeholder="Ex: L'intelligence artificielle représente-t-elle une menace pour l'humanité ?"
+              placeholder={getPlaceholder()}
               value={topic}
               onChange={(e) => setTopic(e.target.value)}
               className="flex-1"
@@ -158,9 +198,9 @@ const GeneratorPage = () => {
               {generating ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Génération en cours...
+                  {language === 'fr' ? 'Génération en cours...' : 'Generating...'}
                 </>
-              ) : "Générer un plan"}
+              ) : language === 'fr' ? "Générer un plan" : "Generate a plan"}
             </Button>
           </div>
         </CardContent>
@@ -173,7 +213,11 @@ const GeneratorPage = () => {
               <div className="flex-1">
                 <CardTitle className="text-xl font-bold">{currentPlan.title}</CardTitle>
                 <CardDescription className="flex justify-between mt-1">
-                  <span>Plan structuré généré par IA</span>
+                  <span>
+                    {language === 'fr'
+                      ? 'Plan structuré généré par IA'
+                      : 'AI-generated structured outline'}
+                  </span>
                   <WordCountIndicator count={wordCount} target={500} tolerance={0.1} />
                 </CardDescription>
               </div>
@@ -185,7 +229,7 @@ const GeneratorPage = () => {
           <CardContent className="pt-6">
             <div className="space-y-6">
               <div>
-                <h3 className="font-semibold mb-2">INTRODUCTION</h3>
+                <h3 className="font-semibold mb-2">{language === 'fr' ? 'INTRODUCTION' : 'INTRODUCTION'}</h3>
                 <p className="text-gray-700">{currentPlan.introduction}</p>
               </div>
               
@@ -201,18 +245,19 @@ const GeneratorPage = () => {
               ))}
               
               <div>
-                <h3 className="font-semibold mb-2">CONCLUSION</h3>
+                <h3 className="font-semibold mb-2">{language === 'fr' ? 'CONCLUSION' : 'CONCLUSION'}</h3>
                 <p className="text-gray-700">{currentPlan.conclusion}</p>
               </div>
             </div>
           </CardContent>
           <CardFooter className="border-t pt-4 flex justify-between">
             <Button variant="outline" onClick={() => setCurrentPlan(null)}>
-              Générer un autre plan
+              {language === 'fr' ? 'Générer un autre plan' : 'Generate another plan'}
             </Button>
             <Button asChild>
               <Link to="/submission">
-                Soumettre un essai <ArrowRight className="ml-2 h-4 w-4" />
+                {language === 'fr' ? 'Soumettre un essai' : 'Submit an essay'}{' '}
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </CardFooter>
@@ -222,24 +267,39 @@ const GeneratorPage = () => {
       {!currentPlan && !generating && (
         <div className="text-center py-12">
           <div className="bg-accent rounded-lg p-8 max-w-2xl mx-auto">
-            <h2 className="text-xl font-semibold mb-4">Comment ça marche ?</h2>
+            <h2 className="text-xl font-semibold mb-4">
+              {language === 'fr' ? 'Comment ça marche ?' : 'How does it work?'}
+            </h2>
             <ol className="text-left space-y-4 mb-6">
               <li className="flex">
                 <span className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">1</span>
-                <span>Entrez un sujet de géopolitique, d'économie ou d'actualité sous forme de question ou d'affirmation</span>
+                <span>
+                  {language === 'fr'
+                    ? "Entrez un sujet de géopolitique, d'économie ou d'actualité sous forme de question ou d'affirmation"
+                    : "Enter a topic on geopolitics, economics, or current affairs as a question or statement"}
+                </span>
               </li>
               <li className="flex">
                 <span className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">2</span>
-                <span>Notre système génère un plan détaillé avec introduction, parties structurées et conclusion</span>
+                <span>
+                  {language === 'fr'
+                    ? "Notre système génère un plan détaillé avec introduction, parties structurées et conclusion"
+                    : "Our system generates a detailed plan with introduction, structured parts, and conclusion"}
+                </span>
               </li>
               <li className="flex">
                 <span className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">3</span>
-                <span>Utilisez ce plan comme base pour développer votre propre réflexion et argumentation</span>
+                <span>
+                  {language === 'fr'
+                    ? "Utilisez ce plan comme base pour développer votre propre réflexion et argumentation"
+                    : "Use this plan as a foundation to develop your own thinking and argumentation"}
+                </span>
               </li>
             </ol>
             <p className="text-sm text-gray-600 italic">
-              Note: Le plan généré est un point de départ. Pour exceller aux entretiens, 
-              personnalisez-le avec vos connaissances et votre analyse.
+              {language === 'fr'
+                ? "Note: Le plan généré est un point de départ. Pour exceller aux entretiens, personnalisez-le avec vos connaissances et votre analyse."
+                : "Note: The generated plan is a starting point. To excel in interviews, personalize it with your knowledge and analysis."}
             </p>
           </div>
         </div>

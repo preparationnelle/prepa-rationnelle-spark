@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Eye } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const DashboardPage = () => {
   const [submissions, setSubmissions] = useState([]);
@@ -20,6 +23,7 @@ const DashboardPage = () => {
         if (error) {
           console.error("Error fetching submissions:", error);
         } else {
+          console.log("Fetched submissions:", data);
           setSubmissions(data);
         }
       }
@@ -31,32 +35,62 @@ const DashboardPage = () => {
   const renderSubmissionItem = (submission) => {
     let title = "Essai";
     try {
-      const parsedTexte = JSON.parse(submission.texte);
-      if (parsedTexte && typeof parsedTexte === 'object' && parsedTexte.title) {
-        title = parsedTexte.title;
+      if (submission.title) {
+        title = submission.title;
+      } else if (submission.texte) {
+        const parsedTexte = JSON.parse(submission.texte);
+        if (parsedTexte && typeof parsedTexte === 'object' && parsedTexte.title) {
+          title = parsedTexte.title;
+        } else {
+          title = submission.texte.split(' ').slice(0, 5).join(' ') + '...';
+        }
       }
     } catch (e) {
-      title = submission.texte.split(' ').slice(0, 5).join(' ') + '...';
+      console.error("Error parsing submission text:", e);
+      title = submission.texte?.split(' ').slice(0, 5).join(' ') + '...' || "Essai sans titre";
     }
+
+    const isGeneratedPlan = submission.status === 'generated';
 
     return (
       <li key={submission.id} className="mb-4">
         <Card>
-          <CardContent className="pt-6">
+          <CardContent className="pt-6 pb-4">
             <div className="flex justify-between items-start">
               <div>
-                <h3 className="font-semibold mb-1">{title}</h3>
+                <div className="flex items-start space-x-2">
+                  <h3 className="font-semibold mb-1">{title}</h3>
+                  {isGeneratedPlan && (
+                    <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Plan</span>
+                  )}
+                </div>
                 <p className="text-sm text-muted-foreground">
                   {new Date(submission.date).toLocaleDateString('fr-FR', { 
                     day: 'numeric', month: 'long', year: 'numeric' 
                   })}
                 </p>
               </div>
-              {submission.note && (
-                <span className="bg-primary/10 text-primary text-sm font-medium px-2 py-1 rounded-full">
-                  Note: {submission.note}/10
-                </span>
-              )}
+              <div className="flex items-center space-x-2">
+                {submission.note && (
+                  <span className="bg-primary/10 text-primary text-sm font-medium px-2 py-1 rounded-full">
+                    Note: {submission.note}/10
+                  </span>
+                )}
+                
+                {isGeneratedPlan && (
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    asChild 
+                    className="flex items-center space-x-1"
+                  >
+                    <Link to={`/submission?planId=${submission.id}`}>
+                      <Eye className="h-4 w-4 mr-1" />
+                      Utiliser
+                    </Link>
+                  </Button>
+                )}
+              </div>
             </div>
           </CardContent>
         </Card>

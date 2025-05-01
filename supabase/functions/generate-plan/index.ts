@@ -23,7 +23,7 @@ serve(async (req) => {
       );
     }
 
-    const { topic, wordLimit } = await req.json();
+    const { topic, wordLimit, language = 'fr' } = await req.json();
     
     if (!topic) {
       return new Response(
@@ -32,7 +32,9 @@ serve(async (req) => {
       );
     }
 
-    const promptTemplate = `
+    // Adjust the prompt based on language
+    const promptTemplate = language === 'fr' ? 
+    `
 Tu es un assistant spécialisé dans la création de plans pour des essais de géopolitique et d'actualité.
 Génère un plan détaillé sur le sujet suivant: "${topic}"
 
@@ -61,7 +63,40 @@ Fournis:
 ${wordLimit ? `Le plan complet devrait être d'environ ${wordLimit} mots (±10%).` : 'Le plan devrait être suffisamment développé, mais concis.'}
 
 Réponds uniquement avec un objet JSON contenant les clés: 'title', 'introduction', 'parts' (array avec title et subparts), et 'conclusion'.
+` :
+    `
+You are an assistant specialized in creating outlines for geopolitical and current affairs essays.
+Generate a detailed outline on the following topic: "${topic}"
+
+The outline should follow this structure:
+I. Evidently... (Current state, assessment, context setting)
+I.1 Historical background: origin of the phenomenon, key dates.
+I.2 Dominant logics: what shapes the subject today.
+I.3 Paradoxes / Limitations: contradictions of the initial observation.
+
+II. Explanatory factors... (Understanding why this situation exists)
+II.1 Geopolitical factors (powers, conflicts, rivalries, power diffusion, power transition).
+II.2 Economic factors (trade, resources, dependencies, economic warfare).
+II.3 Social, environmental and demographic factors (populations, migrations, inequalities).
+
+III. Where are we heading? (Future prospects, evolutions)
+III.1 Change of scale: local, regional and global analysis.
+III.2 Strategies (of actors, new actors, geopolitical repositioning, global governance)
+III.3 Future scenarios: emerging tensions, innovations, upcoming challenges.
+
+Provide:
+- A title in the form of a question or statement
+- A detailed introduction that sets the context (about 100 words)
+- For each part and subpart, an explicit title and 2-3 lines detailing the arguments to be developed
+- A synthetic conclusion (about 100 words)
+
+${wordLimit ? `The complete outline should be about ${wordLimit} words (±10%).` : 'The outline should be sufficiently developed, but concise.'}
+
+Respond only with a JSON object containing the keys: 'title', 'introduction', 'parts' (array with title and subparts), and 'conclusion'.
 `;
+
+    console.log("Sending request to OpenAI API with topic:", topic);
+    console.log("Using language:", language);
 
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
@@ -91,6 +126,8 @@ Réponds uniquement avec un objet JSON contenant les clés: 'title', 'introducti
       );
     }
 
+    console.log("Received response from OpenAI API");
+
     // Extract the content from the OpenAI response
     const content = data.choices[0].message.content;
     
@@ -101,6 +138,7 @@ Réponds uniquement avec un objet JSON contenant les clés: 'title', 'introducti
       const jsonMatch = content.match(/```json\s*([\s\S]*?)\s*```/) || content.match(/{[\s\S]*}/);
       const jsonString = jsonMatch ? jsonMatch[0].replace(/```json|```/g, '') : content;
       planData = JSON.parse(jsonString);
+      console.log("Successfully parsed JSON response");
     } catch (e) {
       console.error("Error parsing JSON from OpenAI response:", e, content);
       // If parsing fails, return the raw text as a fallback
@@ -114,11 +152,13 @@ Réponds uniquement avec un objet JSON contenant les clés: 'title', 'introducti
 
     // Count words in the generated plan
     const wordCount = countWords(JSON.stringify(planData));
+    console.log("Word count:", wordCount);
 
     return new Response(
       JSON.stringify({ 
         plan: planData,
         wordCount,
+        language,
         rawResponse: content // For debugging
       }),
       { headers: { ...corsHeaders, "Content-Type": "application/json" } }
