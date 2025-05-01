@@ -1,12 +1,10 @@
-
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { collection, query, where, orderBy, limit, getDocs } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
+import { supabase } from '@/integrations/supabase/client';
 import { ArrowRight, Book, Calendar } from 'lucide-react';
 
 interface Submission {
@@ -28,32 +26,27 @@ const DashboardPage = () => {
 
       try {
         // Fetch recent submissions
-        const submissionsRef = collection(db, 'submissions');
-        const q = query(
-          submissionsRef,
-          where('user_id', '==', currentUser.uid),
-          orderBy('date', 'desc'),
-          limit(3)
-        );
+        const { data: submissionsData, error } = await supabase
+          .from('submissions')
+          .select('*')
+          .eq('user_id', currentUser.id)
+          .order('date', { ascending: false })
+          .limit(3);
         
-        const querySnapshot = await getDocs(q);
-        const submissionsData: Submission[] = [];
+        if (error) throw error;
         
-        querySnapshot.forEach((doc) => {
-          const data = doc.data();
-          submissionsData.push({
-            id: doc.id,
-            title: data.title || 'Sans titre',
-            date: data.date?.toDate() || new Date(),
-            score: data.score || 0
-          });
-        });
+        const formattedSubmissions: Submission[] = submissionsData?.map(data => ({
+          id: data.id,
+          title: data.title || 'Sans titre',
+          date: new Date(data.date),
+          score: data.note || 0
+        })) || [];
         
-        setSubmissions(submissionsData);
+        setSubmissions(formattedSubmissions);
         
         // Calculate progress (simple example)
-        const progressValue = submissionsData.length > 0 
-          ? Math.min(Math.floor((submissionsData.length / 10) * 100), 100)
+        const progressValue = formattedSubmissions.length > 0 
+          ? Math.min(Math.floor((formattedSubmissions.length / 10) * 100), 100)
           : 0;
         
         setProgress(progressValue);

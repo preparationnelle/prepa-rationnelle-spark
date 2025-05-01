@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
@@ -96,21 +97,24 @@ const GeneratorPage = () => {
     try {
       // In a real application, this would be an API call to an AI service
       // Here we simulate it by selecting a random sample plan
-      setTimeout(() => {
+      setTimeout(async () => {
         const randomPlan = {...samplePlans[Math.floor(Math.random() * samplePlans.length)]};
         randomPlan.title = topic; // Use the user's topic
         setCurrentPlan(randomPlan);
         
-        // Save the generated plan to Firestore
+        // Save the generated plan to Supabase
         if (currentUser) {
-          addDoc(collection(db, "submissions"), {
-            user_id: currentUser.uid,
+          const { error } = await supabase.from('submissions').insert({
+            user_id: currentUser.id,
             title: topic,
-            plan: randomPlan,
-            date: serverTimestamp(),
-            score: 0, // No score yet
+            texte: JSON.stringify(randomPlan),
+            date: new Date().toISOString(),
             status: "generated"
           });
+
+          if (error) {
+            console.error("Error saving plan:", error);
+          }
         }
         
         setGenerating(false);

@@ -1,8 +1,7 @@
 
 import React, { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
+import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -48,19 +47,23 @@ const SubmissionPage = () => {
     try {
       // In a real app, this would send the essay to an API for analysis
       // Here we simulate a delay and return the sample feedback
-      setTimeout(() => {
+      setTimeout(async () => {
         setFeedback(sampleFeedback);
         
-        // Save the submission to Firestore
+        // Save the submission to Supabase
         if (currentUser) {
-          addDoc(collection(db, "submissions"), {
-            user_id: currentUser.uid,
-            text: essayText,
-            feedback: sampleFeedback,
-            date: serverTimestamp(),
-            score: sampleFeedback.score,
+          const { error } = await supabase.from('submissions').insert({
+            user_id: currentUser.id,
+            texte: essayText,
+            commentaires: JSON.stringify(sampleFeedback),
+            date: new Date().toISOString(),
+            note: sampleFeedback.score,
             status: "feedback_provided"
           });
+
+          if (error) {
+            console.error("Error saving submission:", error);
+          }
         }
         
         setSubmitting(false);
