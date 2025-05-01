@@ -1,21 +1,13 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { 
-  createUserWithEmailAndPassword, 
-  signInWithEmailAndPassword, 
-  signOut, 
-  onAuthStateChanged, 
-  User,
-  UserCredential 
-} from 'firebase/auth';
-import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
-import { auth, db } from '@/lib/firebase';
+import { User, Session } from '@supabase/supabase-js';
+import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
 
 interface AuthContextProps {
   currentUser: User | null;
   loading: boolean;
-  login: (email: string, password: string) => Promise<UserCredential>;
+  login: (email: string, password: string) => Promise<any>;
   register: (email: string, password: string, name: string) => Promise<void>;
   logout: () => Promise<void>;
 }
@@ -32,37 +24,49 @@ export const useAuth = () => {
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
+    // Set up auth state listener
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setSession(session);
+        setCurrentUser(session?.user ?? null);
+      }
+    );
+
+    // Check for existing session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setCurrentUser(session?.user ?? null);
       setLoading(false);
     });
 
-    return unsubscribe;
+    return () => subscription.unsubscribe();
   }, []);
 
-  const register = async (email: string, password: string, name: string) => {
+  const register = async (email: string, password: string, name: string): Promise<void> => {
     try {
-      const { user } = await createUserWithEmailAndPassword(auth, email, password);
-      
-      // Create a user document in Firestore
-      await setDoc(doc(db, 'users', user.uid), {
-        name,
-        email,
-        role: 'user',
-        plan: 'free',
-        createdAt: serverTimestamp(),
+      const { data, error } = await supabase.auth.signUp({
+        email, 
+        password,
+        options: {
+          data: {
+            first_name: name,
+          }
+        }
       });
+
+      if (error) {
+        throw error;
+      }
       
       toast({
         title: "Compte créé avec succès",
         description: "Bienvenue sur Prepa Rationnelle !",
       });
-      
-      return user;
     } catch (error: any) {
       console.error('Registration error:', error);
       toast({
@@ -76,12 +80,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = async (email: string, password: string) => {
     try {
-      const result = await signInWithEmailAndPassword(auth, email, password);
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      
+      if (error) {
+        throw error;
+      }
+      
       toast({
         title: "Connexion réussie",
         description: "Bon retour parmi nous !",
       });
-      return result;
+      
+      return data;
     } catch (error: any) {
       console.error('Login error:', error);
       toast({
@@ -95,7 +105,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const logout = async () => {
     try {
-      await signOut(auth);
+      const { error } = await supabase.auth.signOut();
+      
+      if (error) {
+        throw error;
+      }
+      
       toast({
         title: "Déconnexion réussie",
         description: "À bientôt !",

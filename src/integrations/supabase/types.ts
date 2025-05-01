@@ -9,7 +9,183 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      appointments: {
+        Row: {
+          coach: string | null
+          created_at: string
+          date_rdv: string
+          id: string
+          statut: string
+          user_id: string
+        }
+        Insert: {
+          coach?: string | null
+          created_at?: string
+          date_rdv: string
+          id?: string
+          statut?: string
+          user_id: string
+        }
+        Update: {
+          coach?: string | null
+          created_at?: string
+          date_rdv?: string
+          id?: string
+          statut?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      content: {
+        Row: {
+          corps: string
+          date_mise_a_jour: string
+          id: string
+          titre: string
+          type: string
+        }
+        Insert: {
+          corps: string
+          date_mise_a_jour?: string
+          id?: string
+          titre: string
+          type: string
+        }
+        Update: {
+          corps?: string
+          date_mise_a_jour?: string
+          id?: string
+          titre?: string
+          type?: string
+        }
+        Relationships: []
+      }
+      feedback: {
+        Row: {
+          date: string
+          id: string
+          input: string
+          retour: string | null
+          user_id: string
+        }
+        Insert: {
+          date?: string
+          id?: string
+          input: string
+          retour?: string | null
+          user_id: string
+        }
+        Update: {
+          date?: string
+          id?: string
+          input?: string
+          retour?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      pricing: {
+        Row: {
+          description: string
+          id: string
+          offre: string
+          prix: number
+          quota_essais: number
+        }
+        Insert: {
+          description: string
+          id?: string
+          offre: string
+          prix: number
+          quota_essais: number
+        }
+        Update: {
+          description?: string
+          id?: string
+          offre?: string
+          prix?: number
+          quota_essais?: number
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          first_name: string | null
+          id: string
+          last_name: string | null
+          role: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          first_name?: string | null
+          id: string
+          last_name?: string | null
+          role?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          role?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      progress: {
+        Row: {
+          id: string
+          module: string
+          progression: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          module: string
+          progression?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          id?: string
+          module?: string
+          progression?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      submissions: {
+        Row: {
+          commentaires: string | null
+          date: string
+          id: string
+          note: number | null
+          texte: string
+          user_id: string
+        }
+        Insert: {
+          commentaires?: string | null
+          date?: string
+          id?: string
+          note?: number | null
+          texte: string
+          user_id: string
+        }
+        Update: {
+          commentaires?: string | null
+          date?: string
+          id?: string
+          note?: number | null
+          texte?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
