@@ -1,52 +1,11 @@
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Calendar, Clock, MessageSquare, Users, Maximize2 } from 'lucide-react';
 
-declare global {
-  interface Window {
-    Calendly: any;
-  }
-}
-
 const CoachingPage = () => {
-  const calendlyInlineRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Load the Calendly script dynamically
-    const script = document.createElement('script');
-    script.src = 'https://assets.calendly.com/assets/external/widget.js';
-    script.async = true;
-    document.body.appendChild(script);
-
-    script.onload = () => {
-      if (window.Calendly && calendlyInlineRef.current) {
-        window.Calendly.initInlineWidget({
-          url: 'https://calendly.com/preparationnelle/30min',
-          parentElement: calendlyInlineRef.current,
-          prefill: {},
-          utm: {}
-        });
-      }
-    };
-
-    return () => {
-      if (script.parentNode) {
-        document.body.removeChild(script);
-      }
-    };
-  }, []);
-
-  const openCalendly = () => {
-    if (window.Calendly) {
-      window.Calendly.initPopupWidget({
-        url: 'https://calendly.com/preparationnelle/30min'
-      });
-    }
-  };
-
   return (
     <div className="container mx-auto py-8 px-4">
       <h1 className="text-3xl font-bold mb-4">Coaching personnalisé</h1>
@@ -139,23 +98,16 @@ const CoachingPage = () => {
               Choisissez un créneau qui vous convient pour une session de 30 minutes
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            {/* Calendly inline widget container */}
-            <div 
-              ref={calendlyInlineRef} 
-              className="min-h-[630px] w-full" 
-              style={{ minWidth: '320px' }}
-            ></div>
-
-            {/* Fallback button if the inline widget doesn't load */}
-            <div className="text-center mt-4">
-              <p className="text-sm text-gray-500 mb-4">
-                Si le calendrier ne s'affiche pas correctement, vous pouvez cliquer sur le bouton ci-dessous.
-              </p>
-              <Button onClick={openCalendly}>
-                Ouvrir le calendrier de réservation
+          <CardContent className="flex flex-col items-center">
+            <Link to="/calendar" className="w-full">
+              <Button size="lg" className="w-full mb-4">
+                Prendre rendez-vous
               </Button>
-            </div>
+            </Link>
+            
+            <p className="text-sm text-gray-500 mb-4 text-center">
+              Le calendrier s'ouvrira en plein écran pour une meilleure expérience.
+            </p>
           </CardContent>
         </Card>
 

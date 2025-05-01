@@ -18,7 +18,6 @@ const FullCalendarPage = () => {
           parentElement: calendlyInlineRef.current,
           prefill: {},
           utm: {},
-          // Disable the cookie banner
           hideEventTypeDetails: false,
           hideLandingPageDetails: false,
           primaryColor: '#FF6A00',

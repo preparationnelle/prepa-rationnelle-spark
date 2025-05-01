@@ -39,11 +39,11 @@ export const PricingSection = () => {
             period="/mois"
             features={premiumFeatures}
             ctaText="Prendre RDV"
-            ctaLink="https://calendly.com/prepa-rationnelle/appel-decouverte"
+            ctaLink="/calendar"
             recommended={true}
-            subText="Réservez un appel gratuit pour discuter de votre accompagnement"
+            subText="Réservez un rendez-vous pour discuter de votre accompagnement"
             variant="premium"
-            external={true}
+            isCalendly={true}
           />
         </div>
       </div>

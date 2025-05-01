@@ -20,6 +20,7 @@ interface PricingCardProps {
   subText?: string;
   variant?: "default" | "premium";
   external?: boolean;
+  isCalendly?: boolean;
 }
 
 export const PricingCard = ({
@@ -32,12 +33,24 @@ export const PricingCard = ({
   recommended = false,
   subText,
   variant = "default",
-  external = false
+  external = false,
+  isCalendly = false
 }: PricingCardProps) => {
   const isPremium = variant === "premium";
   
   const CardAction = () => {
-    if (external) {
+    if (isCalendly) {
+      return (
+        <Link to="/calendar" className="block w-full">
+          <Button 
+            variant={isPremium ? "default" : "outline"} 
+            className="w-full"
+          >
+            {ctaText}
+          </Button>
+        </Link>
+      );
+    } else if (external) {
       return (
         <a href={ctaLink} target="_blank" rel="noopener noreferrer" className="block w-full">
           <Button 
