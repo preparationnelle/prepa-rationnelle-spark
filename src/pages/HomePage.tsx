@@ -1,14 +1,15 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, GraduationCap } from 'lucide-react';
 const HomePage = () => {
   return <div className="min-h-screen bg-accent">
       {/* Hero Section */}
       <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-accent to-white">
         <div className="container mx-auto">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="hero-heading gradient-text mb-6">Préparez-vous aux oraux </h1>
+            <h1 className="hero-heading gradient-text mb-6">Préparez-vous aux oraux </h1>
             <p className="text-lg md:text-xl text-gray-700 mb-8">Développez votre capacité à structurer des arguments pour réussir vos oraux de langue et entretien de personnalité.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/register">
@@ -22,6 +23,39 @@ const HomePage = () => {
                 </Button>
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Schools Section - NEW */}
+      <section className="py-16 px-4 bg-white">
+        <div className="container mx-auto">
+          <h2 className="section-heading text-center mb-4">
+            Fiches écoles
+          </h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Découvrez nos analyses des entretiens de personnalité des grandes écoles et préparez-vous efficacement.
+          </p>
+          
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <Link to="/ecoles/escp" className="group">
+              <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all hover:shadow-lg hover:border-primary/20">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <GraduationCap className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">ESCP Business School</h3>
+                </div>
+                <p className="text-gray-600 mb-4">
+                  Format court (30 min), coefficient 12. Entretien structuré autour d'un questionnaire préalable.
+                </p>
+                <div className="flex justify-end">
+                  <Button variant="ghost" size="sm" className="text-primary group-hover:underline">
+                    En savoir plus
+                  </Button>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>

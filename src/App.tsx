@@ -15,6 +15,7 @@ import DashboardPage from './pages/DashboardPage';
 import GeneratorPage from './pages/GeneratorPage';
 import SubmissionPage from './pages/SubmissionPage';
 import CoachingPage from './pages/CoachingPage';
+import ESCPPage from './pages/ESCPPage';
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -53,6 +54,7 @@ const App = () => (
                     <CoachingPage />
                   </ProtectedRoute>
                 } />
+                <Route path="/ecoles/escp" element={<ESCPPage />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
