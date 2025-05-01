@@ -15,6 +15,8 @@ import DashboardPage from './pages/DashboardPage';
 import GeneratorPage from './pages/GeneratorPage';
 import SubmissionPage from './pages/SubmissionPage';
 import CoachingPage from './pages/CoachingPage';
+import QuestionsPage from './pages/QuestionsPage';
+import QuestionCategoryPage from './pages/QuestionCategoryPage';
 import ESCPPage from './pages/ESCPPage';
 import ESSECPage from './pages/ESSECPage';
 import EDHECPage from './pages/EDHECPage';
@@ -59,6 +61,8 @@ const App = () => (
                     <CoachingPage />
                   </ProtectedRoute>
                 } />
+                <Route path="/questions" element={<QuestionsPage />} />
+                <Route path="/questions/:categoryId" element={<QuestionCategoryPage />} />
                 <Route path="/ecoles/escp" element={<ESCPPage />} />
                 <Route path="/ecoles/essec" element={<ESSECPage />} />
                 <Route path="/ecoles/edhec" element={<EDHECPage />} />
