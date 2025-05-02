@@ -33,21 +33,6 @@ export const SchoolsSection = () => {
       name: "Audencia Business School",
       description: "Entretien à orientation RSE (30 min), coefficient 10. Forte dimension responsabilité sociétale.",
       link: "/ecoles/audencia"
-    },
-    {
-      name: "Grenoble École de Management",
-      description: "Entretien multi-parties (30 min), coefficient 10. Format avec exposé d'actualité et entretien inversé.",
-      link: "/ecoles/gem"
-    },
-    {
-      name: "KEDGE Business School",
-      description: "Entretien classique (30 min), coefficient 14. Basé sur un questionnaire avec focus sur le \"Grow by Doing\".",
-      link: "/ecoles/kedge"
-    },
-    {
-      name: "NEOMA Business School",
-      description: "Entretien classique (30 min), coefficient 12. Format avec questionnaire similaire à ESCP.",
-      link: "/ecoles/neoma"
     }
   ];
 
