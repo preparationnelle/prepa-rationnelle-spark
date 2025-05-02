@@ -206,24 +206,24 @@ const DashboardPage = () => {
             </CardContent>
           </Card>
 
-          {/* Consulter les ressources */}
+          {/* Consulter les ressources - Updated to link to homepage */}
           <Card>
             <CardContent className="p-6">
               <h3 className="text-lg font-semibold mb-2">Consulter les ressources</h3>
               <p className="text-sm mb-6">Accédez à notre bibliothèque</p>
-              <Button variant="outline" className="w-full">
-                Explorer
+              <Button variant="outline" className="w-full" asChild>
+                <Link to="/">Explorer</Link>
               </Button>
             </CardContent>
           </Card>
 
-          {/* Passer au Premium */}
+          {/* Passer au Premium - Updated to link to calendar */}
           <Card>
             <CardContent className="p-6">
               <h3 className="text-lg font-semibold mb-2">Passer au Premium</h3>
               <p className="text-sm mb-6">Débloquez toutes les fonctionnalités</p>
-              <Button variant="outline" className="w-full">
-                Upgrade
+              <Button variant="outline" className="w-full" asChild>
+                <Link to="/calendar">Upgrade</Link>
               </Button>
             </CardContent>
           </Card>
