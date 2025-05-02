@@ -1,7 +1,8 @@
 
 import React, { useEffect } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
+import AuthOverlay from './AuthOverlay';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -22,9 +23,16 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
     );
   }
 
-  // If user is not authenticated, redirect to login
+  // If user is not authenticated, render children with the auth overlay
   if (!currentUser) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
+    return (
+      <div className="relative">
+        <div className="filter blur-sm pointer-events-none">
+          {children}
+        </div>
+        <AuthOverlay />
+      </div>
+    );
   }
 
   // If user is authenticated, render children

@@ -34,21 +34,19 @@ const Navigation = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6">
           <Link to="/" className="text-gray-700 hover:text-primary transition">Accueil</Link>
+          
+          {/* These links will always show, but will show the auth overlay if the user is not logged in */}
+          <Link to="/dashboard" className="text-gray-700 hover:text-primary transition">
+            Tableau de bord
+          </Link>
+          <Link to="/generator" className="text-gray-700 hover:text-primary transition">
+            Générateur
+          </Link>
+
           {currentUser ? (
-            <>
-              <Link to="/dashboard" className="text-gray-700 hover:text-primary transition">
-                Tableau de bord
-              </Link>
-              <Link to="/generator" className="text-gray-700 hover:text-primary transition">
-                Générateur
-              </Link>
-              <Link to="/coaching" className="text-gray-700 hover:text-primary transition">
-                Coaching
-              </Link>
-              <Button variant="outline" size="sm" onClick={handleLogout} className="flex items-center">
-                <LogOut className="mr-2 h-4 w-4" /> Déconnexion
-              </Button>
-            </>
+            <Button variant="outline" size="sm" onClick={handleLogout} className="flex items-center">
+              <LogOut className="mr-2 h-4 w-4" /> Déconnexion
+            </Button>
           ) : (
             <>
               <Link to="/login" className="text-gray-700 hover:text-primary transition">
@@ -84,40 +82,34 @@ const Navigation = () => {
           >
             Accueil
           </Link>
+          
+          {/* These links will always show, but will show the auth overlay if the user is not logged in */}
+          <Link 
+            to="/dashboard" 
+            className="text-lg py-2 border-b border-gray-100"
+            onClick={toggleMenu}
+          >
+            Tableau de bord
+          </Link>
+          <Link 
+            to="/generator" 
+            className="text-lg py-2 border-b border-gray-100"
+            onClick={toggleMenu}
+          >
+            Générateur
+          </Link>
+          
           {currentUser ? (
-            <>
-              <Link 
-                to="/dashboard" 
-                className="text-lg py-2 border-b border-gray-100"
-                onClick={toggleMenu}
-              >
-                Tableau de bord
-              </Link>
-              <Link 
-                to="/generator" 
-                className="text-lg py-2 border-b border-gray-100"
-                onClick={toggleMenu}
-              >
-                Générateur
-              </Link>
-              <Link 
-                to="/coaching" 
-                className="text-lg py-2 border-b border-gray-100"
-                onClick={toggleMenu}
-              >
-                Coaching
-              </Link>
-              <Button 
-                variant="outline" 
-                onClick={() => {
-                  handleLogout();
-                  toggleMenu();
-                }} 
-                className="mt-4 w-full flex items-center justify-center"
-              >
-                <LogOut className="mr-2 h-4 w-4" /> Déconnexion
-              </Button>
-            </>
+            <Button 
+              variant="outline" 
+              onClick={() => {
+                handleLogout();
+                toggleMenu();
+              }} 
+              className="mt-4 w-full flex items-center justify-center"
+            >
+              <LogOut className="mr-2 h-4 w-4" /> Déconnexion
+            </Button>
           ) : (
             <>
               <Link 
