@@ -27,68 +27,71 @@ import GEMPage from '@/pages/GEMPage';
 import KEDGEPage from '@/pages/KEDGEPage';
 import NEOMAPage from '@/pages/NEOMAPage';
 import AuthOverlay from './components/AuthOverlay';
+import { AuthProvider } from '@/context/AuthContext';
 import './App.css';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/questions" element={<QuestionsPage />} />
-        <Route path="/questions/:categoryId" element={<QuestionCategoryPage />} />
-        <Route path="/ecoles/escp" element={<ESCPPage />} />
-        <Route path="/ecoles/essec" element={<ESSECPage />} />
-        <Route path="/ecoles/edhec" element={<EDHECPage />} />
-        <Route path="/ecoles/emlyon" element={<EMLyonPage />} />
-        <Route path="/ecoles/skema" element={<SKEMAPage />} />
-        <Route path="/ecoles/audencia" element={<AudenciaPage />} />
-        <Route path="/ecoles/gem" element={<GEMPage />} />
-        <Route path="/ecoles/kedge" element={<KEDGEPage />} />
-        <Route path="/ecoles/neoma" element={<NEOMAPage />} />
-        <Route path="/methodes/personnalite" element={<PersonnaliteMethodePage />} />
-        <Route path="/methodes/projet-professionnel" element={<ProjetProfessionnelMethodePage />} />
-        <Route path="/methodes/motivation-ecole" element={<MotivationEcoleMethodePage />} />
-        <Route path="/generator" element={<AuthOverlay />}>
-          <Route index element={
-            <ProtectedRoute>
-              <GeneratorPage />
-            </ProtectedRoute>
-          } />
-        </Route>
-        <Route path="/interview" element={<AuthOverlay />}>
-          <Route index element={
-            <ProtectedRoute>
-              <InterviewSimulatorPage />
-            </ProtectedRoute>
-          } />
-        </Route>
-        <Route path="/submissions/:id" element={<AuthOverlay />}>
-          <Route index element={
-            <ProtectedRoute>
-              <SubmissionPage />
-            </ProtectedRoute>
-          } />
-        </Route>
-        <Route path="/dashboard" element={<AuthOverlay />}>
-          <Route index element={
-            <ProtectedRoute>
-              <DashboardPage />
-            </ProtectedRoute>
-          } />
-        </Route>
-        <Route path="/calendar" element={<AuthOverlay />}>
-          <Route index element={
-            <ProtectedRoute>
-              <FullCalendarPage />
-            </ProtectedRoute>
-          } />
-        </Route>
-        <Route path="/coaching" element={<CoachingPage />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/questions" element={<QuestionsPage />} />
+          <Route path="/questions/:categoryId" element={<QuestionCategoryPage />} />
+          <Route path="/ecoles/escp" element={<ESCPPage />} />
+          <Route path="/ecoles/essec" element={<ESSECPage />} />
+          <Route path="/ecoles/edhec" element={<EDHECPage />} />
+          <Route path="/ecoles/emlyon" element={<EMLyonPage />} />
+          <Route path="/ecoles/skema" element={<SKEMAPage />} />
+          <Route path="/ecoles/audencia" element={<AudenciaPage />} />
+          <Route path="/ecoles/gem" element={<GEMPage />} />
+          <Route path="/ecoles/kedge" element={<KEDGEPage />} />
+          <Route path="/ecoles/neoma" element={<NEOMAPage />} />
+          <Route path="/methodes/personnalite" element={<PersonnaliteMethodePage />} />
+          <Route path="/methodes/projet-professionnel" element={<ProjetProfessionnelMethodePage />} />
+          <Route path="/methodes/motivation-ecole" element={<MotivationEcoleMethodePage />} />
+          <Route path="/generator" element={<AuthOverlay />}>
+            <Route index element={
+              <ProtectedRoute>
+                <GeneratorPage />
+              </ProtectedRoute>
+            } />
+          </Route>
+          <Route path="/interview" element={<AuthOverlay />}>
+            <Route index element={
+              <ProtectedRoute>
+                <InterviewSimulatorPage />
+              </ProtectedRoute>
+            } />
+          </Route>
+          <Route path="/submissions/:id" element={<AuthOverlay />}>
+            <Route index element={
+              <ProtectedRoute>
+                <SubmissionPage />
+              </ProtectedRoute>
+            } />
+          </Route>
+          <Route path="/dashboard" element={<AuthOverlay />}>
+            <Route index element={
+              <ProtectedRoute>
+                <DashboardPage />
+              </ProtectedRoute>
+            } />
+          </Route>
+          <Route path="/calendar" element={<AuthOverlay />}>
+            <Route index element={
+              <ProtectedRoute>
+                <FullCalendarPage />
+              </ProtectedRoute>
+            } />
+          </Route>
+          <Route path="/coaching" element={<CoachingPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 
