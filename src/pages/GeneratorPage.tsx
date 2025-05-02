@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,6 +8,7 @@ import { useToast } from '@/components/ui/use-toast';
 import { ArrowRight, Copy, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import { useProgress } from '@/context/ProgressContext';
 
 // Define the answer type structure
 type Answer = {
@@ -49,6 +49,13 @@ const WordCountIndicator = ({ count, target = 250, tolerance = 0.1 }) => {
 };
 
 const GeneratorPage = () => {
+  const { trackPageVisit } = useProgress();
+  
+  // Suivre la visite de la page et marquer comme activité de type generator
+  useEffect(() => {
+    trackPageVisit('generator');
+  }, [trackPageVisit]);
+
   const [question, setQuestion] = useState('');
   const [generating, setGenerating] = useState(false);
   const [currentAnswer, setCurrentAnswer] = useState<Answer | null>(null);

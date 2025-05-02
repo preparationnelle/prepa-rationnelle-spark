@@ -1,11 +1,18 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Calendar, Clock, MessageSquare, Users, Maximize2 } from 'lucide-react';
+import { useProgress } from '@/context/ProgressContext';
 
 const CoachingPage = () => {
+  const { trackPageVisit } = useProgress();
+  
+  // Suivre la visite de la page coaching
+  useEffect(() => {
+    trackPageVisit('coaching');
+  }, [trackPageVisit]);
+
   return (
     <div className="container mx-auto py-8 px-4">
       <h1 className="text-3xl font-bold mb-4">Coaching personnalisé</h1>

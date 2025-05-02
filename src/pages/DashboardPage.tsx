@@ -51,6 +51,15 @@ const DashboardPage = () => {
 
     fetchSubmissions();
     fetchProgress();
+    
+    // Set up a refresh interval to check for progress updates
+    const progressInterval = setInterval(() => {
+      fetchProgress();
+    }, 60000); // Check every minute
+    
+    return () => {
+      clearInterval(progressInterval);
+    };
   }, [currentUser]);
 
   const renderSubmissionsList = () => {
@@ -141,7 +150,15 @@ const DashboardPage = () => {
               </div>
               <Progress value={progress} className="h-2" />
               <p className="text-sm text-muted-foreground mt-4">
-                Débutez votre parcours en générant votre premier plan.
+                {progress === 0 
+                  ? "Débutez votre parcours en générant votre premier plan."
+                  : progress < 30 
+                    ? "Bon début ! Explorez les méthodes et fiches d'écoles pour progresser."
+                    : progress < 60 
+                      ? "Vous avancez bien ! Continuez à utiliser nos outils."
+                      : progress < 100 
+                        ? "Excellent progrès ! Plus que quelques étapes."
+                        : "Félicitations ! Vous avez complété toutes les activités."}
               </p>
             </div>
           </CardContent>

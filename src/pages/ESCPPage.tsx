@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Separator } from '@/components/ui/separator';
 import { GraduationCap, Clock, Star, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useProgress } from '@/context/ProgressContext';
+
 const ESCPPage = () => {
+  const { trackPageVisit } = useProgress();
+  
+  // Suivre la visite de la page
+  useEffect(() => {
+    trackPageVisit('school');
+  }, [trackPageVisit]);
+  
   return <div className="container mx-auto py-8 px-4">
       <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-8">
         <div>
@@ -165,7 +174,7 @@ const ESCPPage = () => {
                 <AccordionTrigger>Soyez cohérent</AccordionTrigger>
                 <AccordionContent>
                   L'ESCP attache beaucoup d'importance à la cohérence de votre discours – ne vous contredisez pas. 
-                  Si vous dites aimer le travail en équipe dans une réponse, ne dites pas plus tard préférer travailler seul.
+                  Si vous dites aimer le travail en équipe dans une réponse, ne dites plus tard préférer travailler seul.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">
@@ -203,4 +212,5 @@ const ESCPPage = () => {
       </div>
     </div>;
 };
+
 export default ESCPPage;

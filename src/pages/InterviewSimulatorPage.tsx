@@ -1,14 +1,21 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import InterviewSimulator from '../components/interview/InterviewSimulator';
 import { Footer } from '../components/Footer';
+import { useProgress } from '@/context/ProgressContext';
 
 const InterviewSimulatorPage = () => {
   const [isStarted, setIsStarted] = useState(false);
   const navigate = useNavigate();
+  const { trackPageVisit } = useProgress();
+  
+  // Suivre la visite de la page simulateur d'entretien
+  useEffect(() => {
+    trackPageVisit('interview');
+  }, [trackPageVisit]);
 
   return (
     <div className="min-h-screen bg-accent">

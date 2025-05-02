@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
 import { ArrowLeft, Send } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { useProgress } from '@/context/ProgressContext';
 
 // Sample feedback for demonstration
 const sampleFeedback = {
@@ -26,6 +26,13 @@ const sampleFeedback = {
 };
 
 const SubmissionPage = () => {
+  const { trackPageVisit } = useProgress();
+  
+  // Suivre la visite de la page de soumission
+  useEffect(() => {
+    trackPageVisit('submission');
+  }, [trackPageVisit]);
+
   const [essayText, setEssayText] = useState('');
   const [essayTitle, setEssayTitle] = useState('');
   const [submitting, setSubmitting] = useState(false);

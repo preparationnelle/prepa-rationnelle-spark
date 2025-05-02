@@ -1,9 +1,16 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { useProgress } from '@/context/ProgressContext';
 
 const PersonnaliteMethodePage = () => {
+  const { trackPageVisit } = useProgress();
+  
+  // Suivre la visite de la page
+  useEffect(() => {
+    trackPageVisit('method');
+  }, [trackPageVisit]);
+
   return (
     <div className="min-h-screen bg-accent py-16">
       <div className="container mx-auto px-4">
