@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/button';
@@ -14,16 +14,8 @@ const LoginPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const { login, currentUser } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
-
-  // Redirect to dashboard if already logged in
-  useEffect(() => {
-    if (currentUser) {
-      console.log("User already logged in, redirecting to dashboard");
-      navigate('/dashboard');
-    }
-  }, [currentUser, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,21 +28,10 @@ const LoginPage = () => {
 
     try {
       setLoading(true);
-      console.log("Attempting to log in with:", email);
-      const result = await login(email, password);
-      console.log("Login successful:", result);
-      
-      // Redirection with slight delay to ensure context updates
-      setTimeout(() => {
-        navigate('/dashboard');
-      }, 100);
+      await login(email, password);
+      navigate('/dashboard');
     } catch (err: any) {
-      console.error('Login error in component:', err);
-      if (err.message === 'Invalid login credentials') {
-        setError('Email ou mot de passe incorrect.');
-      } else {
-        setError(err.message || 'Une erreur est survenue lors de la connexion.');
-      }
+      setError(err.message || 'Une erreur est survenue lors de la connexion.');
     } finally {
       setLoading(false);
     }
@@ -117,11 +98,7 @@ const LoginPage = () => {
               </div>
             </div>
             
-            <Button 
-              type="submit" 
-              className="w-full bg-primary hover:bg-primary/90" 
-              disabled={loading}
-            >
+            <Button type="submit" className="w-full" disabled={loading}>
               {loading ? "Connexion en cours..." : "Se connecter"}
             </Button>
           </form>
