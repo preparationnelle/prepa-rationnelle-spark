@@ -1,12 +1,12 @@
+
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { Eye, Calendar, FileText, BookOpen, Crown } from 'lucide-react';
+import { Calendar, FileText, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Separator } from '@/components/ui/separator';
 import { useProgress } from '@/context/ProgressContext';
 
 const DashboardPage = () => {
@@ -52,31 +52,32 @@ const DashboardPage = () => {
           <FileText className="w-12 h-12 text-gray-300 mb-4" />
           <p className="text-gray-500 mb-2">Pas encore de soumissions</p>
           <Button variant="outline" asChild className="mt-4">
-            <Link to="/generator">Générer un plan</Link>
+            <Link to="/submission">Créer un essai</Link>
           </Button>
         </div>
       );
     }
 
     return submissions.slice(0, 3).map((submission) => {
-      let title = "Essai";
+      let title = "Essai sans titre";
       try {
         if (submission.title) {
           title = submission.title;
-        } else if (submission.texte) {
-          const parsedTexte = JSON.parse(submission.texte);
-          if (parsedTexte && typeof parsedTexte === 'object' && parsedTexte.title) {
-            title = parsedTexte.title;
-          } else {
-            title = submission.texte.split(' ').slice(0, 5).join(' ') + '...';
+        } else if (submission.texte && typeof submission.texte === 'string' && submission.texte.startsWith('{')) {
+          try {
+            const parsedTexte = JSON.parse(submission.texte);
+            if (parsedTexte && typeof parsedTexte === 'object' && parsedTexte.title) {
+              title = parsedTexte.title;
+            }
+          } catch(e) {
+            console.error("Error parsing JSON text:", e);
           }
+        } else if (submission.texte) {
+          title = submission.texte.split(' ').slice(0, 5).join(' ') + '...';
         }
       } catch (e) {
-        console.error("Error parsing submission text:", e);
-        title = submission.texte?.split(' ').slice(0, 5).join(' ') + '...' || "Essai sans titre";
+        console.error("Error processing submission title:", e);
       }
-
-      const isGeneratedPlan = submission.status === 'generated';
 
       return (
         <Card key={submission.id} className="mb-3">
@@ -85,9 +86,6 @@ const DashboardPage = () => {
               <div>
                 <div className="flex items-center space-x-2">
                   <h3 className="font-semibold">{title}</h3>
-                  {isGeneratedPlan && (
-                    <span className="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded">Plan</span>
-                  )}
                 </div>
                 <p className="text-sm text-muted-foreground">
                   {new Date(submission.date).toLocaleDateString('fr-FR', { 
@@ -95,19 +93,6 @@ const DashboardPage = () => {
                   })}
                 </p>
               </div>
-              {isGeneratedPlan && (
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  asChild 
-                  className="flex items-center"
-                >
-                  <Link to={`/submission?planId=${submission.id}`}>
-                    <Eye className="h-4 w-4 mr-1" />
-                    Utiliser
-                  </Link>
-                </Button>
-              )}
             </div>
           </CardContent>
         </Card>
@@ -134,7 +119,7 @@ const DashboardPage = () => {
               <Progress value={progress} className="h-2" />
               <p className="text-sm text-muted-foreground mt-4">
                 {progress === 0 
-                  ? "Débutez votre parcours en générant votre premier plan."
+                  ? "Débutez votre parcours en rédigeant votre premier essai."
                   : progress < 30 
                     ? "Bon début ! Explorez les méthodes et fiches d'écoles pour progresser."
                     : progress < 60 
@@ -180,28 +165,28 @@ const DashboardPage = () => {
       <div className="mb-8">
         <h2 className="text-2xl font-bold mb-6">Actions rapides</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Générer un plan */}
+          {/* Soumettre un essai */}
           <Card className="bg-primary text-primary-foreground">
             <CardContent className="p-6">
-              <h3 className="text-lg font-semibold mb-2">Générer un plan</h3>
-              <p className="text-sm mb-6">Créez un plan structuré sur un sujet d'actualité</p>
+              <h3 className="text-lg font-semibold mb-2">Rédiger un essai</h3>
+              <p className="text-sm mb-6">Obtenez un feedback détaillé sur votre essai</p>
               <Button 
                 variant="secondary" 
                 className="w-full bg-black text-white hover:bg-gray-800"
                 asChild
               >
-                <Link to="/generator">Commencer</Link>
+                <Link to="/submission">Commencer</Link>
               </Button>
             </CardContent>
           </Card>
 
-          {/* Soumettre un essai */}
+          {/* S'entraîner aux entretiens */}
           <Card>
             <CardContent className="p-6">
-              <h3 className="text-lg font-semibold mb-2">Soumettre un essai</h3>
-              <p className="text-sm mb-6">Recevez un feedback détaillé</p>
+              <h3 className="text-lg font-semibold mb-2">S'entraîner aux entretiens</h3>
+              <p className="text-sm mb-6">Préparez-vous à exceller</p>
               <Button variant="outline" className="w-full" asChild>
-                <Link to="/submission">Soumettre</Link>
+                <Link to="/interview-simulator">Simuler</Link>
               </Button>
             </CardContent>
           </Card>
@@ -211,8 +196,8 @@ const DashboardPage = () => {
             <CardContent className="p-6">
               <h3 className="text-lg font-semibold mb-2">Consulter les ressources</h3>
               <p className="text-sm mb-6">Accédez à notre bibliothèque</p>
-              <Button variant="outline" className="w-full">
-                Explorer
+              <Button variant="outline" className="w-full" asChild>
+                <Link to="/questions">Explorer</Link>
               </Button>
             </CardContent>
           </Card>

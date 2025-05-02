@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
 import { ArrowLeft, Send } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useProgress } from '@/context/ProgressContext';
 
 // Sample feedback for demonstration
@@ -41,56 +41,12 @@ const SubmissionPage = () => {
   const [wordCount, setWordCount] = useState(0);
   const { currentUser } = useAuth();
   const { toast } = useToast();
-  const location = useLocation();
 
   // Calculate word count when essay text changes
   useEffect(() => {
     const words = essayText.trim() ? essayText.trim().split(/\s+/).length : 0;
     setWordCount(words);
   }, [essayText]);
-
-  // Check if we came from the generator with a plan
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const planId = params.get('planId');
-    
-    if (planId && currentUser) {
-      const fetchPlan = async () => {
-        const { data, error } = await supabase
-          .from('submissions')
-          .select('*')
-          .eq('id', planId)
-          .eq('user_id', currentUser.id)
-          .single();
-          
-        if (data && !error) {
-          try {
-            const planData = JSON.parse(data.texte);
-            setEssayTitle(planData.title || '');
-            
-            // Pre-populate with some structure from the plan
-            let structuredTemplate = `# ${planData.title}\n\n`;
-            structuredTemplate += `## Introduction\n${planData.introduction}\n\n`;
-            
-            planData.parts.forEach((part, index) => {
-              structuredTemplate += `## ${part.title}\n`;
-              part.subparts.forEach(subpart => {
-                structuredTemplate += `### ${subpart}\n[Développez votre argumentation ici...]\n\n`;
-              });
-            });
-            
-            structuredTemplate += `## Conclusion\n${planData.conclusion}`;
-            
-            setEssayText(structuredTemplate);
-          } catch (e) {
-            console.error("Error parsing plan data:", e);
-          }
-        }
-      };
-      
-      fetchPlan();
-    }
-  }, [location, currentUser]);
 
   const handleSubmit = async () => {
     if (essayText.trim().length < 100) {
@@ -164,10 +120,22 @@ const SubmissionPage = () => {
           <CardHeader>
             <CardTitle>Rédigez votre essai</CardTitle>
             <CardDescription>
-              Développez votre argumentaire à partir d'un plan généré ou d'un sujet de votre choix
+              Développez votre argumentaire sur un sujet de géopolitique ou d'actualité
             </CardDescription>
           </CardHeader>
           <CardContent>
+            <div className="mb-4">
+              <label htmlFor="essayTitle" className="block text-sm font-medium mb-2">Titre de votre essai</label>
+              <input
+                id="essayTitle"
+                type="text"
+                value={essayTitle}
+                onChange={(e) => setEssayTitle(e.target.value)}
+                placeholder="Entrez le titre de votre essai"
+                className="w-full p-2 border rounded-md"
+              />
+            </div>
+            
             <Textarea 
               placeholder="Rédigez votre essai ici... Commencez par une introduction claire, développez votre argumentation en parties structurées, et concluez en synthétisant vos idées principales."
               className="min-h-[400px] font-mono"
