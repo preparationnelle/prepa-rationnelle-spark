@@ -8,6 +8,7 @@ import { toast } from 'sonner';
 const PROGRESS_VALUES = {
   method: 5, // Visiter une page méthode
   school: 3, // Visiter une fiche école
+  generator: 10, // Utiliser le générateur
   submission: 8, // Soumettre un essai
   coaching: 7, // Réserver une session de coaching
   interview: 7 // Utiliser le simulateur d'entretien

@@ -13,6 +13,7 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
+import GeneratorPage from './pages/GeneratorPage';
 import SubmissionPage from './pages/SubmissionPage';
 import CoachingPage from './pages/CoachingPage';
 import QuestionsPage from './pages/QuestionsPage';
@@ -53,6 +54,11 @@ const App = () => (
                   <Route path="/dashboard" element={
                     <ProtectedRoute>
                       <DashboardPage />
+                    </ProtectedRoute>
+                  } />
+                  <Route path="/generator" element={
+                    <ProtectedRoute>
+                      <GeneratorPage />
                     </ProtectedRoute>
                   } />
                   <Route path="/submission" element={
