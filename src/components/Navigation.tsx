@@ -43,6 +43,11 @@ const Navigation = () => {
     <header className="bg-white shadow-sm border-b border-gray-100">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center">
+          <img 
+            src="/public/lovable-uploads/73c4719b-7030-411f-8d46-20d32035daba.png" 
+            alt="Prepa Rationnelle Logo" 
+            className="h-10 mr-2"
+          />
           <span className="text-xl font-bold text-primary">Prepa Rationnelle</span>
         </Link>
 

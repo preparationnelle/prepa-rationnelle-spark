@@ -81,7 +81,7 @@ const HomePage = () => {
         </div>
       </section>
       
-      {/* Méthodologie Section - NEW */}
+      {/* Méthodologie Section */}
       <section className="py-16 px-4 bg-accent">
         <div className="container mx-auto">
           <h2 className="section-heading text-center mb-4">
