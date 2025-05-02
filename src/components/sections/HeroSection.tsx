@@ -29,7 +29,7 @@ export const HeroSection = () => {
           
           <div className="relative">
             <img 
-              src="/public/lovable-uploads/2cd03ebd-aac2-46f9-bbee-8b8db30644a6.png" 
+              src="/lovable-uploads/2cd03ebd-aac2-46f9-bbee-8b8db30644a6.png" 
               alt="Fondateur de Prepa Rationnelle interview Europe 1" 
               className="w-auto h-auto max-w-full shadow-lg"
             />
