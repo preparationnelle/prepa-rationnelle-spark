@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { SchoolCard } from '../SchoolCard';
+import { skemaData, gemData } from '@/data/schools';
 
 export const SchoolsSection = () => {
   const schools = [
@@ -25,8 +26,8 @@ export const SchoolsSection = () => {
       link: "/ecoles/emlyon"
     },
     {
-      name: "SKEMA Business School",
-      description: "Entretien projectif (25 min), coefficient 20. CV fictif à 10 ans.",
+      name: skemaData.name,
+      description: skemaData.shortDescription,
       link: "/ecoles/skema"
     },
     {
@@ -35,8 +36,8 @@ export const SchoolsSection = () => {
       link: "/ecoles/audencia"
     },
     {
-      name: "Grenoble École de Management",
-      description: "Entretien multi-parties (30 min), coefficient 10. Format original avec entretien inversé.",
+      name: gemData.name,
+      description: gemData.shortDescription,
       link: "/ecoles/gem"
     }
   ];
