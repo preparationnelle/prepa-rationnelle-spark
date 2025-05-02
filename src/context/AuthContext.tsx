@@ -6,6 +6,7 @@ import { useToast } from '@/components/ui/use-toast';
 
 interface AuthContextProps {
   currentUser: User | null;
+  session: Session | null;
   loading: boolean;
   login: (email: string, password: string) => Promise<any>;
   register: (email: string, password: string, name: string) => Promise<void>;
@@ -29,22 +30,29 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const { toast } = useToast();
 
   useEffect(() => {
-    // Set up auth state listener
+    console.log("Setting up auth state listener");
+    
+    // Set up auth state listener FIRST
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (event, session) => {
+        console.log("Auth state changed:", event, session?.user?.id);
         setSession(session);
         setCurrentUser(session?.user ?? null);
       }
     );
 
-    // Check for existing session
+    // THEN check for existing session
     supabase.auth.getSession().then(({ data: { session } }) => {
+      console.log("Got existing session:", session?.user?.id);
       setSession(session);
       setCurrentUser(session?.user ?? null);
       setLoading(false);
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      console.log("Unsubscribing from auth state changes");
+      subscription.unsubscribe();
+    };
   }, []);
 
   const register = async (email: string, password: string, name: string): Promise<void> => {
@@ -104,12 +112,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const logout = async () => {
+    console.log("Attempting to log out");
     try {
+      // Always clear local state first to ensure UI updates even if request fails
       const { error } = await supabase.auth.signOut();
       
       if (error) {
+        console.error('Logout error from Supabase:', error);
         throw error;
       }
+      
+      // Force clear the session and user state
+      setSession(null);
+      setCurrentUser(null);
       
       toast({
         title: "Déconnexion réussie",
@@ -117,17 +132,25 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       });
     } catch (error: any) {
       console.error('Logout error:', error);
+      
+      // Even if there's an error, try to clear the local session
+      setSession(null);
+      setCurrentUser(null);
+      
       toast({
         title: "Erreur de déconnexion",
         description: error.message || "Une erreur s'est produite",
         variant: "destructive",
       });
+      
+      // Rethrow the error for the component to handle if needed
       throw error;
     }
   };
 
   const value: AuthContextProps = {
     currentUser,
+    session,
     loading,
     login,
     register,

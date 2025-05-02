@@ -5,22 +5,37 @@ import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/button';
 import { LogOut, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useToast } from '@/components/ui/use-toast';
 
 const Navigation = () => {
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+  const { toast } = useToast();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   const handleLogout = async () => {
+    if (isLoggingOut) return; // Prevent multiple clicks
+    
+    setIsLoggingOut(true);
     try {
+      console.log("Logging out user:", currentUser?.id);
       await logout();
+      console.log("Logout successful, navigating to login page");
       navigate('/login');
     } catch (error) {
-      console.error('Logout error:', error);
+      console.error('Logout error in Navigation:', error);
+      toast({
+        title: "Problème de déconnexion",
+        description: "Veuillez réessayer. Si le problème persiste, rafraîchissez la page.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoggingOut(false);
     }
   };
 
@@ -44,8 +59,15 @@ const Navigation = () => {
           </Link>
 
           {currentUser ? (
-            <Button variant="outline" size="sm" onClick={handleLogout} className="flex items-center">
-              <LogOut className="mr-2 h-4 w-4" /> Déconnexion
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={handleLogout} 
+              className="flex items-center"
+              disabled={isLoggingOut}
+            >
+              <LogOut className="mr-2 h-4 w-4" /> 
+              {isLoggingOut ? 'Déconnexion...' : 'Déconnexion'}
             </Button>
           ) : (
             <>
@@ -107,8 +129,10 @@ const Navigation = () => {
                 toggleMenu();
               }} 
               className="mt-4 w-full flex items-center justify-center"
+              disabled={isLoggingOut}
             >
-              <LogOut className="mr-2 h-4 w-4" /> Déconnexion
+              <LogOut className="mr-2 h-4 w-4" /> 
+              {isLoggingOut ? 'Déconnexion...' : 'Déconnexion'}
             </Button>
           ) : (
             <>
