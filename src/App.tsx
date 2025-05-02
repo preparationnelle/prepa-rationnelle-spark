@@ -17,6 +17,9 @@ import SubmissionPage from './pages/SubmissionPage';
 import CoachingPage from './pages/CoachingPage';
 import QuestionsPage from './pages/QuestionsPage';
 import QuestionCategoryPage from './pages/QuestionCategoryPage';
+import PersonnaliteMethodePage from './pages/PersonnaliteMethodePage';
+import ProjetProfessionnelMethodePage from './pages/ProjetProfessionnelMethodePage';
+import MotivationEcoleMethodePage from './pages/MotivationEcoleMethodePage';
 import ESCPPage from './pages/ESCPPage';
 import ESSECPage from './pages/ESSECPage';
 import EDHECPage from './pages/EDHECPage';
@@ -43,6 +46,9 @@ const App = () => (
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
+                <Route path="/methodes/personnalite" element={<PersonnaliteMethodePage />} />
+                <Route path="/methodes/projet-professionnel" element={<ProjetProfessionnelMethodePage />} />
+                <Route path="/methodes/motivation-ecole" element={<MotivationEcoleMethodePage />} />
                 <Route path="/dashboard" element={
                   <ProtectedRoute>
                     <DashboardPage />
