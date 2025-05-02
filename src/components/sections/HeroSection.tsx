@@ -31,7 +31,7 @@ export const HeroSection = () => {
             <img 
               src="/lovable-uploads/5fbbc4c3-b984-49bc-ac5a-a95ef4760639.png" 
               alt="Étudiant ESCP" 
-              className="w-auto h-auto max-w-full shadow-lg rounded-md"
+              className="w-auto h-auto max-w-full shadow-lg rounded-3xl border-4 border-accent"
             />
           </div>
         </div>
