@@ -5,7 +5,9 @@ import {
   Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle 
 } from "@/components/ui/card";
 import { Button } from '@/components/ui/button';
-import { Brain, Target, Users, Puzzle, Search } from 'lucide-react';
+import { 
+  User, Target, UsersRound, Sparkles, Map, Heart
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface QuestionCategoryCardProps {
@@ -13,12 +15,12 @@ interface QuestionCategoryCardProps {
 }
 
 const iconMap: Record<string, React.ReactNode> = {
-  'brain': <Brain className="h-6 w-6 text-primary" />,
+  'user': <User className="h-6 w-6 text-primary" />,
   'target': <Target className="h-6 w-6 text-primary" />,
-  'users': <Users className="h-6 w-6 text-primary" />,
-  'puzzle': <Puzzle className="h-6 w-6 text-primary" />,
-  'values': <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M8 13.5c0 2-2 3-4 3s-4-1-4-3 2-3 4-3 4 1 4 3z"/><path d="M12 4c0 2.5-2 3-4 3s-4-.5-4-3 2-3 4-3 4 .5 4 3z"/><path d="M16 5.5c0 1.5-1.5 2-3 2s-3-.5-3-2 1.5-2 3-2 3 .5 3 2z"/><path d="M16 10c0 2-1.5 3-3 3s-3-1-3-3 1.5-3 3-3 3 1 3 3z"/><path d="M15 17.5c0 1.5-1.5 2.5-3 2.5s-3-1-3-2.5 1.5-2.5 3-2.5 3 1 3 2.5z"/><path d="M19 18.5c0 1-1 1.5-2 1.5s-2-.5-2-1.5 1-1.5 2-1.5 2 .5 2 1.5z"/><path d="M20 13.5c0 1-1 1.5-2 1.5s-2-.5-2-1.5 1-1.5 2-1.5 2 .5 2 1.5z"/><path d="M20 8c0 1-1 2-2 2s-2-1-2-2 1-2 2-2 2 1 2 2z"/></svg>,
-  'search': <Search className="h-6 w-6 text-primary" />,
+  'users-round': <UsersRound className="h-6 w-6 text-primary" />,
+  'sparkles': <Sparkles className="h-6 w-6 text-primary" />,
+  'map': <Map className="h-6 w-6 text-primary" />,
+  'heart': <Heart className="h-6 w-6 text-primary" />,
 };
 
 export const QuestionCategoryCard: React.FC<QuestionCategoryCardProps> = ({ category }) => {

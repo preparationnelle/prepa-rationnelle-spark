@@ -10,7 +10,7 @@ export * from './questions/additionalQuestions';
 import { questionCategories } from './questions/categories';
 export { questionCategories };
 
-// Export new question categories
+// Export question categories - now merged into main categories
 export * from './questions/motivation_objectives';
 export * from './questions/interpersonal_teamwork';
 export * from './questions/creative_unexpected';
