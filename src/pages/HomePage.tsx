@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { HeroSection } from '@/components/sections/HeroSection';
+import { PodcastSection } from '@/components/sections/PodcastSection';
 import { SchoolsSection } from '@/components/sections/SchoolsSection';
 import { FeaturesSection } from '@/components/sections/FeaturesSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
@@ -16,6 +17,7 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-accent">
       <HeroSection />
+      <PodcastSection />
       <SchoolsSection />
       <FeaturesSection />
       

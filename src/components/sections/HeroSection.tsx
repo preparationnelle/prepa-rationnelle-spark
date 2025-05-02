@@ -28,14 +28,11 @@ export const HeroSection = () => {
           </div>
           
           <div className="relative">
-            <div className="absolute -inset-1.5 bg-primary/10 rounded-full blur-md"></div>
-            <div className="relative overflow-hidden rounded-full border-4 border-white shadow-lg w-64 h-64 md:w-80 md:h-80">
-              <img 
-                src="/public/lovable-uploads/23001b24-efff-4e05-ae2f-21d3c3a84f30.png" 
-                alt="Fondateur de Prepa Rationnelle" 
-                className="w-full h-full object-cover"
-              />
-            </div>
+            <img 
+              src="/public/lovable-uploads/23001b24-efff-4e05-ae2f-21d3c3a84f30.png" 
+              alt="Fondateur de Prepa Rationnelle" 
+              className="w-auto h-auto max-w-full shadow-lg"
+            />
           </div>
         </div>
       </div>
