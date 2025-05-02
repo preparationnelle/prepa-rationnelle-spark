@@ -1,20 +1,15 @@
 
 import React from 'react';
 import { PricingCard } from './PricingCard';
+import { CheckCircle, Calendar } from 'lucide-react';
 
 export const PricingSection = () => {
   const freeFeatures = [
-    { text: "Accès à 3 plans par mois" },
-    { text: "Tableau de bord basique" },
-    { text: "Ressources pédagogiques" }
-  ];
-
-  const premiumFeatures = [
-    { text: "Plans illimités" },
-    { text: "Tableau de bord avancé" },
-    { text: "2 sessions de coaching par mois" },
-    { text: "Feedback personnalisé sur vos essais" },
-    { text: "Accès à tous les contenus exclusifs" }
+    { text: "Générer des plans structurés pour vos réponses" },
+    { text: "Accéder à la banque de questions d'entretien" },
+    { text: "Consulter les méthodologies de présentation" },
+    { text: "Suivre votre progression via le tableau de bord" },
+    { text: "Explorer les fiches écoles détaillées" }
   ];
 
   return (
@@ -26,25 +21,36 @@ export const PricingSection = () => {
         
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <PricingCard
-            title="Gratuit"
+            title="Tout simplement gratuit"
             price="0€"
             features={freeFeatures}
             ctaText="Commencer gratuitement"
             ctaLink="/register"
+            recommended={true}
+            subText="Accédez à toutes les fonctionnalités sans frais"
+            variant="premium"
           />
           
-          <PricingCard
-            title="Premium"
-            price="29€"
-            period="/mois"
-            features={premiumFeatures}
-            ctaText="Prendre RDV"
-            ctaLink="/calendar"
-            recommended={true}
-            subText="Réservez un rendez-vous pour discuter de votre accompagnement"
-            variant="premium"
-            isCalendly={true}
-          />
+          <div className="bg-white border border-gray-200 rounded-lg p-6 flex flex-col">
+            <div className="mb-6">
+              <h3 className="card-heading mb-2 text-center">Besoin d'un accompagnement personnalisé?</h3>
+              <p className="text-gray-600 text-center mb-4">
+                Discutez gratuitement avec un coach spécialisé pour identifier vos besoins réels en préparation d'entretien
+              </p>
+            </div>
+            
+            <div className="mt-auto">
+              <a href="/calendar" className="block w-full">
+                <button className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-white border border-primary text-primary rounded hover:bg-primary/5 transition-colors">
+                  <Calendar className="h-5 w-5" />
+                  Prendre rendez-vous
+                </button>
+              </a>
+              <p className="text-center text-sm text-gray-500 mt-2">
+                Sans engagement - 30 minutes d'échange
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
