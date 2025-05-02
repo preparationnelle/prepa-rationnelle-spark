@@ -1,14 +1,11 @@
-
 import React, { ReactNode } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
 interface PricingFeature {
   text: string;
 }
-
 interface PricingCardProps {
   title: string;
   price: string;
@@ -22,7 +19,6 @@ interface PricingCardProps {
   external?: boolean;
   isCalendly?: boolean;
 }
-
 export const PricingCard = ({
   title,
   price,
@@ -37,73 +33,47 @@ export const PricingCard = ({
   isCalendly = false
 }: PricingCardProps) => {
   const isPremium = variant === "premium";
-  
   const CardAction = () => {
     if (isCalendly) {
-      return (
-        <Link to="/calendar" className="block w-full">
-          <Button 
-            variant={isPremium ? "default" : "outline"} 
-            className="w-full"
-          >
+      return <Link to="/calendar" className="block w-full">
+          <Button variant={isPremium ? "default" : "outline"} className="w-full">
             {ctaText}
           </Button>
-        </Link>
-      );
+        </Link>;
     } else if (external) {
-      return (
-        <a href={ctaLink} target="_blank" rel="noopener noreferrer" className="block w-full">
-          <Button 
-            variant={isPremium ? "default" : "outline"} 
-            className="w-full"
-          >
+      return <a href={ctaLink} target="_blank" rel="noopener noreferrer" className="block w-full">
+          <Button variant={isPremium ? "default" : "outline"} className="w-full">
             {ctaText}
           </Button>
-        </a>
-      );
+        </a>;
     }
-    
-    return (
-      <Link to={ctaLink}>
-        <Button 
-          variant={isPremium ? "default" : "outline"} 
-          className="w-full"
-        >
+    return <Link to={ctaLink}>
+        <Button variant={isPremium ? "default" : "outline"} className="w-full">
           {ctaText}
         </Button>
-      </Link>
-    );
+      </Link>;
   };
-  
-  return (
-    <Card className={`${isPremium ? 'bg-primary/5 border-primary' : 'bg-white border-gray-200'}`}>
+  return <Card className={`${isPremium ? 'bg-primary/5 border-primary' : 'bg-white border-gray-200'}`}>
       <CardContent className="p-6">
-        {recommended && (
-          <div className="bg-primary text-white text-xs font-bold uppercase tracking-wider py-1 px-2 rounded inline-block mb-2">
+        {recommended && <div className="bg-primary text-white text-xs font-bold uppercase tracking-wider py-1 px-2 rounded inline-block mb-2">
             Recommandé
-          </div>
-        )}
+          </div>}
         <h3 className="card-heading mb-2 text-center">{title}</h3>
-        <p className="text-3xl font-bold text-center mb-6">
+        <p className="">
           {price}
           {period && <span className="text-base font-normal text-gray-600">{period}</span>}
         </p>
         
         <ul className="space-y-3 mb-6">
-          {features.map((feature, index) => (
-            <li key={index} className="flex items-start">
+          {features.map((feature, index) => <li key={index} className="flex items-start">
               <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5" />
               <span>{feature.text}</span>
-            </li>
-          ))}
+            </li>)}
         </ul>
         
         <CardAction />
         
-        {subText && (
-          <p className="text-center text-sm text-gray-500 mt-2">{subText}</p>
-        )}
+        {subText && <p className="text-center text-sm text-gray-500 mt-2">{subText}</p>}
       </CardContent>
-    </Card>
-  );
+    </Card>;
 };
