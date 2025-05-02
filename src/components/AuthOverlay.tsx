@@ -1,9 +1,19 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 const AuthOverlay: React.FC = () => {
+  const navigate = useNavigate();
+  
+  const handleLogin = () => {
+    navigate('/login');
+  };
+  
+  const handleRegister = () => {
+    navigate('/register');
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-md bg-black/30">
       <div className="bg-white p-8 rounded-lg shadow-xl max-w-md w-full text-center">
@@ -13,11 +23,18 @@ const AuthOverlay: React.FC = () => {
           Connectez-vous ou inscrivez-vous pour accéder à tout le contenu.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Button asChild variant="default">
-            <Link to="/login">Connexion</Link>
+          <Button 
+            variant="default" 
+            onClick={handleLogin}
+            className="bg-[#f47443] hover:bg-[#e05c29]"
+          >
+            Connexion
           </Button>
-          <Button asChild variant="outline">
-            <Link to="/register">Inscription</Link>
+          <Button 
+            variant="outline" 
+            onClick={handleRegister}
+          >
+            Inscription
           </Button>
         </div>
       </div>

@@ -34,7 +34,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     
     // Set up auth state listener FIRST
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
+      async (event, session) => {
         console.log("Auth state changed:", event, session?.user?.id);
         setSession(session);
         setCurrentUser(session?.user ?? null);
@@ -42,12 +42,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     );
 
     // THEN check for existing session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      console.log("Got existing session:", session?.user?.id);
-      setSession(session);
-      setCurrentUser(session?.user ?? null);
-      setLoading(false);
-    });
+    const initializeAuth = async () => {
+      try {
+        const { data } = await supabase.auth.getSession();
+        console.log("Got existing session:", data.session?.user?.id);
+        setSession(data.session);
+        setCurrentUser(data.session?.user ?? null);
+      } catch (error) {
+        console.error("Error getting session:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    initializeAuth();
 
     return () => {
       console.log("Unsubscribing from auth state changes");
@@ -101,17 +109,23 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
       
       console.log("AuthContext: Login successful, user:", data.user?.id);
-      toast({
-        title: "Connexion réussie",
-        description: "Bon retour parmi nous !",
-      });
+      
+      // Let the UI update before showing toast
+      setTimeout(() => {
+        toast({
+          title: "Connexion réussie",
+          description: "Bon retour parmi nous !",
+        });
+      }, 100);
       
       return data;
     } catch (error: any) {
       console.error('Login error in AuthContext:', error);
       toast({
         title: "Erreur de connexion",
-        description: error.message || "Identifiants incorrects",
+        description: error.message === 'Invalid login credentials' 
+          ? "Email ou mot de passe incorrect"
+          : error.message || "Identifiants incorrects",
         variant: "destructive",
       });
       throw error;
@@ -121,7 +135,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const logout = async () => {
     console.log("Attempting to log out");
     try {
-      // Always clear local state first to ensure UI updates even if request fails
       const { error } = await supabase.auth.signOut();
       
       if (error) {
@@ -150,7 +163,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         variant: "destructive",
       });
       
-      // Rethrow the error for the component to handle if needed
       throw error;
     }
   };

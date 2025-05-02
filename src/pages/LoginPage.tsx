@@ -39,7 +39,11 @@ const LoginPage = () => {
       console.log("Attempting to log in with:", email);
       const result = await login(email, password);
       console.log("Login successful:", result);
-      navigate('/dashboard');
+      
+      // Redirection with slight delay to ensure context updates
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 100);
     } catch (err: any) {
       console.error('Login error in component:', err);
       if (err.message === 'Invalid login credentials') {
@@ -113,7 +117,11 @@ const LoginPage = () => {
               </div>
             </div>
             
-            <Button type="submit" className="w-full" disabled={loading}>
+            <Button 
+              type="submit" 
+              className="w-full bg-primary hover:bg-primary/90" 
+              disabled={loading}
+            >
               {loading ? "Connexion en cours..." : "Se connecter"}
             </Button>
           </form>
