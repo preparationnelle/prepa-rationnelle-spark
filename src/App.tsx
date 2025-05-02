@@ -27,6 +27,7 @@ import EDHECPage from './pages/EDHECPage';
 import EMLyonPage from './pages/EMLyonPage';
 import SKEMAPage from './pages/SKEMAPage';
 import AudenciaPage from './pages/AudenciaPage';
+import GEMPage from './pages/GEMPage';
 import FullCalendarPage from './pages/FullCalendarPage';
 import InterviewSimulatorPage from './pages/InterviewSimulatorPage';
 import NotFound from "./pages/NotFound";
@@ -85,6 +86,7 @@ const App = () => (
                   <Route path="/ecoles/emlyon" element={<EMLyonPage />} />
                   <Route path="/ecoles/skema" element={<SKEMAPage />} />
                   <Route path="/ecoles/audencia" element={<AudenciaPage />} />
+                  <Route path="/ecoles/gem" element={<GEMPage />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
