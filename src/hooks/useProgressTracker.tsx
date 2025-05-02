@@ -41,8 +41,8 @@ export function useProgressTracker() {
   };
   
   // Fonction pour mettre à jour la progression
-  const updateProgress = async (activityType) => {
-    if (!currentUser || !PROGRESS_VALUES[activityType] || isUpdating) return;
+  const updateProgress = async (activityType: string) => {
+    if (!currentUser || !PROGRESS_VALUES[activityType as keyof typeof PROGRESS_VALUES] || isUpdating) return;
     
     try {
       setIsUpdating(true);
@@ -50,9 +50,11 @@ export function useProgressTracker() {
       // Récupérer la progression actuelle
       const currentData = await fetchCurrentProgress();
       
-      // Vérifier si l'utilisateur a déjà accompli cette activité
+      // Initialiser les activités complétées
       const completedActivities = currentData?.completed_activities 
-        ? JSON.parse(currentData.completed_activities) 
+        ? (typeof currentData.completed_activities === 'string' 
+            ? JSON.parse(currentData.completed_activities) 
+            : currentData.completed_activities)
         : {};
         
       // Si l'activité a déjà été accomplie, ne rien faire
@@ -63,7 +65,7 @@ export function useProgressTracker() {
       
       // Calculer la nouvelle progression
       const currentProgress = currentData?.progression || 0;
-      const progressIncrement = PROGRESS_VALUES[activityType];
+      const progressIncrement = PROGRESS_VALUES[activityType as keyof typeof PROGRESS_VALUES];
       let newProgress = currentProgress + progressIncrement;
       
       // Plafonner à MAX_PROGRESS
@@ -78,8 +80,8 @@ export function useProgressTracker() {
           .from('progress')
           .update({ 
             progression: newProgress,
-            completed_activities: JSON.stringify(completedActivities),
-            updated_at: new Date()
+            completed_activities: completedActivities,
+            updated_at: new Date().toISOString()
           })
           .eq('id', currentData.id);
           
@@ -97,7 +99,7 @@ export function useProgressTracker() {
             user_id: currentUser.id,
             module: 'main',
             progression: newProgress,
-            completed_activities: JSON.stringify(completedActivities)
+            completed_activities: completedActivities
           });
           
         if (error) {
@@ -113,8 +115,8 @@ export function useProgressTracker() {
   };
 
   // Fonction pour suivre une visite de page
-  const trackPageVisit = (pageType) => {
-    if (currentUser && PROGRESS_VALUES[pageType]) {
+  const trackPageVisit = (pageType: string) => {
+    if (currentUser && PROGRESS_VALUES[pageType as keyof typeof PROGRESS_VALUES]) {
       updateProgress(pageType);
     }
   };

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
@@ -8,11 +7,12 @@ import { Progress } from '@/components/ui/progress';
 import { Eye, Calendar, FileText, BookOpen, Crown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Separator } from '@/components/ui/separator';
+import { useProgress } from '@/context/ProgressContext';
 
 const DashboardPage = () => {
   const [submissions, setSubmissions] = useState([]);
-  const [progress, setProgress] = useState(0);
   const { currentUser } = useAuth();
+  const { progress, refreshProgress } = useProgress();
 
   useEffect(() => {
     const fetchSubmissions = async () => {
@@ -32,35 +32,18 @@ const DashboardPage = () => {
       }
     };
 
-    const fetchProgress = async () => {
-      if (currentUser) {
-        const { data, error } = await supabase
-          .from('progress')
-          .select('*')
-          .eq('user_id', currentUser.id)
-          .eq('module', 'main')
-          .single();
-
-        if (error && error.code !== 'PGSQL_NO_ROWS_RETURNED') {
-          console.error("Error fetching progress:", error);
-        } else if (data) {
-          setProgress(data.progression || 0);
-        }
-      }
-    };
-
     fetchSubmissions();
-    fetchProgress();
+    refreshProgress(); // Refresh the progress when the dashboard loads
     
     // Set up a refresh interval to check for progress updates
     const progressInterval = setInterval(() => {
-      fetchProgress();
+      refreshProgress();
     }, 60000); // Check every minute
     
     return () => {
       clearInterval(progressInterval);
     };
-  }, [currentUser]);
+  }, [currentUser, refreshProgress]);
 
   const renderSubmissionsList = () => {
     if (submissions.length === 0) {

@@ -137,6 +137,7 @@ export type Database = {
       }
       progress: {
         Row: {
+          completed_activities: Json | null
           id: string
           module: string
           progression: number | null
@@ -144,6 +145,7 @@ export type Database = {
           user_id: string
         }
         Insert: {
+          completed_activities?: Json | null
           id?: string
           module: string
           progression?: number | null
@@ -151,6 +153,7 @@ export type Database = {
           user_id: string
         }
         Update: {
+          completed_activities?: Json | null
           id?: string
           module?: string
           progression?: number | null
