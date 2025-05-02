@@ -1,21 +1,12 @@
-
 import React from 'react';
-import { 
-  Card, 
-  CardContent, 
-  CardHeader, 
-  CardTitle, 
-  CardDescription 
-} from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Separator } from '@/components/ui/separator';
 import { GraduationCap, Clock, Star, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
 const ESCPPage = () => {
-  return (
-    <div className="container mx-auto py-8 px-4">
+  return <div className="container mx-auto py-8 px-4">
       <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold">ESCP Business School</h1>
@@ -46,8 +37,7 @@ const ESCPPage = () => {
               s'articule autour du questionnaire : il sert de trame principale.
             </p>
             <p className="mb-4">
-              On dit souvent "1 minute = 1 point" car 20 minutes pour 20 points, chaque minute compte !
-            </p>
+          </p>
             <p>
               Le jury est souvent composé de 2 à 3 personnes (prof + alumni).
             </p>
@@ -119,7 +109,7 @@ const ESCPPage = () => {
                 </div>
                 <div>
                   <p className="font-medium">Rythme rapide</p>
-                  <p className="text-sm text-muted-foreground">"1 minute = 1 point"</p>
+                  <p className="text-sm text-muted-foreground">30 minutes d'entretien </p>
                 </div>
               </li>
             </ul>
@@ -146,11 +136,7 @@ const ESCPPage = () => {
               on vous demandera sans doute d'en parler plus en détail ; si vous indiquez vouloir tel secteur, pourquoi 
               ce choix, etc.
             </p>
-            <p className="mb-4">
-              Le rythme est assez rapide (20 minutes passent vite), donc les jurés peuvent vous interrompre pour passer 
-              à une autre question, ne le prenez pas mal. Ils veulent simplement couvrir tout le nécessaire dans le temps 
-              imparti.
-            </p>
+            <p className="mb-4">Le rythme est assez rapide (30 minutes passent vite), donc les jurés peuvent vous interrompre pour passer à une autre question, ne le prenez pas mal. Ils veulent simplement couvrir tout le nécessaire dans le temps imparti.</p>
             <p>
               Le format est globalement classique : motivations, parcours, projet, quelques questions "perso" et peut-être 
               une petite question d'actualité ou de culture générale pour voir votre curiosité. Pas de pièges exotiques 
@@ -215,8 +201,6 @@ const ESCPPage = () => {
           <Link to="/generator">Générer un plan d'entraînement</Link>
         </Button>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default ESCPPage;
