@@ -32,7 +32,7 @@ export const PodcastSection = () => {
             className="transition-transform hover:scale-105"
           >
             <img 
-              src="/lovable-uploads/2cd03ebd-aac2-46f9-bbee-8b8db30644a6.png" 
+              src="/public/lovable-uploads/23001b24-efff-4e05-ae2f-21d3c3a84f30.png" 
               alt="Podcast Europe 1" 
               className="shadow-lg max-w-full"
             />
