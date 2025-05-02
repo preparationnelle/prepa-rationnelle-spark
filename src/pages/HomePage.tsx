@@ -17,7 +17,6 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-accent">
       <HeroSection />
-      <PodcastSection />
       <SchoolsSection />
       <FeaturesSection />
       
@@ -156,6 +155,7 @@ const HomePage = () => {
       
       <TestimonialsSection />
       <PricingSection />
+      <PodcastSection /> {/* Déplacé la section podcast ici avant le Call To Action */}
       <CallToActionSection />
       <Footer />
     </div>

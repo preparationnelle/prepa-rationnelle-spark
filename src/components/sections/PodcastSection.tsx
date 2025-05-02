@@ -29,12 +29,12 @@ export const PodcastSection = () => {
             href={podcastUrl} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="transition-transform hover:scale-105"
+            className="transition-transform hover:scale-105 max-w-[250px] md:max-w-[300px]"
           >
             <img 
               src="/lovable-uploads/23001b24-efff-4e05-ae2f-21d3c3a84f30.png" 
               alt="Podcast Europe 1" 
-              className="shadow-lg max-w-full"
+              className="shadow-lg w-full"
             />
           </a>
         </div>
