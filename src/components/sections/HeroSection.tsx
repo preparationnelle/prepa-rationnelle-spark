@@ -29,9 +29,9 @@ export const HeroSection = () => {
           
           <div className="relative">
             <img 
-              src="/lovable-uploads/04f9596e-86a7-456f-8115-11b4ab2c2717.png" 
+              src="/lovable-uploads/5fbbc4c3-b984-49bc-ac5a-a95ef4760639.png" 
               alt="Étudiant ESCP" 
-              className="w-auto h-auto max-w-full shadow-lg"
+              className="w-auto h-auto max-w-full shadow-lg rounded-md"
             />
           </div>
         </div>
