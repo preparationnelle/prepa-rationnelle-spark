@@ -9,3 +9,9 @@ export * from './questions/additionalQuestions';
 // Re-export the question categories as questionCategories for backward compatibility
 import { questionCategories } from './questions/categories';
 export { questionCategories };
+
+// Export new question categories
+export * from './questions/motivation_objectives';
+export * from './questions/interpersonal_teamwork';
+export * from './questions/creative_unexpected';
+export * from './questions/projection_scenarios';

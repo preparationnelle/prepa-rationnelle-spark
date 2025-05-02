@@ -1,4 +1,9 @@
 
+import { motivationObjectivesQuestions } from './motivation_objectives';
+import { interpersonalTeamworkQuestions } from './interpersonal_teamwork';
+import { creativeUnexpectedQuestions } from './creative_unexpected';
+import { projectionScenariosQuestions } from './projection_scenarios';
+
 export const ADDITIONAL_QUESTIONS = {
   introspection: [
     'Comment décririez-vous votre personnalité en trois mots ?',
@@ -47,5 +52,10 @@ export const ADDITIONAL_QUESTIONS = {
     "Comment vous adaptez-vous à un environnement ou à une culture d'entreprise différente ?",
     'Décrivez une situation où vous avez dû prendre une décision difficile.',
     'Comment gérez-vous les imprévus ou les changements de dernière minute ?'
-  ]
+  ],
+  // Nouvelles catégories
+  'motivation-objectives': motivationObjectivesQuestions.map(q => q.text),
+  'interpersonal-teamwork': interpersonalTeamworkQuestions.map(q => q.text),
+  'creative-unexpected': creativeUnexpectedQuestions.map(q => q.text),
+  'projection-scenarios': projectionScenariosQuestions.map(q => q.text)
 };
