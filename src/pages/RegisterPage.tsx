@@ -41,7 +41,8 @@ const RegisterPage = () => {
     try {
       setLoading(true);
       await register(email, password, name);
-      navigate('/dashboard');
+      // Rediriger vers la page du générateur après inscription
+      navigate('/generator');
     } catch (err: any) {
       setError(err.message || 'Une erreur est survenue lors de l\'inscription.');
     } finally {

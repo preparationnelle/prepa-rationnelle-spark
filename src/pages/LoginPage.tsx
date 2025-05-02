@@ -29,7 +29,8 @@ const LoginPage = () => {
     try {
       setLoading(true);
       await login(email, password);
-      navigate('/dashboard');
+      // Rediriger vers la page du générateur après connexion
+      navigate('/generator');
     } catch (err: any) {
       setError(err.message || 'Une erreur est survenue lors de la connexion.');
     } finally {
