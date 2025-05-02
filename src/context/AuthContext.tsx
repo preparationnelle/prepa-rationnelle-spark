@@ -68,6 +68,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       });
 
       if (error) {
+        console.error("Registration error:", error.message);
         throw error;
       }
       
@@ -88,12 +89,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = async (email: string, password: string) => {
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      console.log("AuthContext: Attempting login with email:", email);
+      const { data, error } = await supabase.auth.signInWithPassword({ 
+        email, 
+        password 
+      });
       
       if (error) {
+        console.error("Login error from Supabase:", error);
         throw error;
       }
       
+      console.log("AuthContext: Login successful, user:", data.user?.id);
       toast({
         title: "Connexion réussie",
         description: "Bon retour parmi nous !",
@@ -101,7 +108,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       
       return data;
     } catch (error: any) {
-      console.error('Login error:', error);
+      console.error('Login error in AuthContext:', error);
       toast({
         title: "Erreur de connexion",
         description: error.message || "Identifiants incorrects",
