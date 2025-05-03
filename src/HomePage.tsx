@@ -33,8 +33,8 @@ const HomePage = () => {
       {/* Partners Section */}
       <PartnersSection />
 
-      {/* Schools Section - Updated with more schools */}
-      <section className="py-16 px-4 bg-white">
+      {/* Schools Section - Updated with more schools and added ID for direct navigation */}
+      <section id="schools-section" className="py-16 px-4 bg-white">
         <div className="container mx-auto">
           <h2 className="section-heading text-center mb-4">
             Fiches écoles

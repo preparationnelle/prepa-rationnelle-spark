@@ -135,13 +135,16 @@ const Navigation = () => {
 
               <DropdownMenuSeparator className="my-2" />
               
-              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                <Link to="/questions/category-ecoles" onClick={closeMenu} className="flex items-center gap-3 w-full">
+              <DropdownMenuItem 
+                onClick={() => navigateToSection('/', 'schools-section')} 
+                className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors cursor-pointer"
+              >
+                <div className="flex items-center gap-3 w-full">
                   <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                     <GraduationCap className="h-4 w-4 text-primary" />
                   </span>
                   <span>Fiches écoles</span>
-                </Link>
+                </div>
               </DropdownMenuItem>
 
               <DropdownMenuItem 
@@ -279,12 +282,15 @@ const Navigation = () => {
                 <span>Coaching individuel</span>
               </Link>
               
-              <Link to="/questions/category-ecoles" onClick={closeMenu} className="flex items-center gap-3">
+              <div 
+                onClick={() => navigateToSection('/', 'schools-section')}
+                className="flex items-center gap-3 cursor-pointer"
+              >
                 <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                   <GraduationCap className="h-4 w-4 text-primary" />
                 </span>
                 <span>Fiches écoles</span>
-              </Link>
+              </div>
               
               <div 
                 onClick={() => navigateToSection('/', 'pricing-section')}
