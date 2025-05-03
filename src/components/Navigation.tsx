@@ -18,6 +18,13 @@ const Navigation = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Nouvelle fonction pour fermer le menu mobile lors du clic sur un lien
+  const closeMenu = () => {
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+    }
+  };
+
   const handleLogout = async () => {
     if (isLoggingOut) return; // Prevent multiple clicks
     
@@ -42,7 +49,7 @@ const Navigation = () => {
   return (
     <header className="bg-white shadow-sm border-b border-gray-100">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center">
+        <Link to="/" className="flex items-center" onClick={closeMenu}>
           <img 
             src="/lovable-uploads/73c4719b-7030-411f-8d46-20d32035daba.png" 
             alt="Prepa Rationnelle Logo" 
@@ -53,13 +60,15 @@ const Navigation = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6">
-          <Link to="/" className="text-gray-700 hover:text-primary transition">Accueil</Link>
+          <Link to="/" className="text-gray-700 hover:text-primary transition" onClick={closeMenu}>
+            Accueil
+          </Link>
           
           {/* These links will always show, but will show the auth overlay if the user is not logged in */}
-          <Link to="/dashboard" className="text-gray-700 hover:text-primary transition">
+          <Link to="/dashboard" className="text-gray-700 hover:text-primary transition" onClick={closeMenu}>
             Tableau de bord
           </Link>
-          <Link to="/generator" className="text-gray-700 hover:text-primary transition">
+          <Link to="/generator" className="text-gray-700 hover:text-primary transition" onClick={closeMenu}>
             Générateur
           </Link>
 
@@ -67,7 +76,10 @@ const Navigation = () => {
             <Button 
               variant="outline" 
               size="sm" 
-              onClick={handleLogout} 
+              onClick={() => {
+                handleLogout();
+                closeMenu();
+              }} 
               className="flex items-center"
               disabled={isLoggingOut}
             >
@@ -76,10 +88,10 @@ const Navigation = () => {
             </Button>
           ) : (
             <>
-              <Link to="/login" className="text-gray-700 hover:text-primary transition">
+              <Link to="/login" className="text-gray-700 hover:text-primary transition" onClick={closeMenu}>
                 Connexion
               </Link>
-              <Link to="/register">
+              <Link to="/register" onClick={closeMenu}>
                 <Button>S'inscrire</Button>
               </Link>
             </>
@@ -105,7 +117,7 @@ const Navigation = () => {
           <Link 
             to="/" 
             className="text-lg py-2 border-b border-gray-100"
-            onClick={toggleMenu}
+            onClick={closeMenu}
           >
             Accueil
           </Link>
@@ -114,14 +126,14 @@ const Navigation = () => {
           <Link 
             to="/dashboard" 
             className="text-lg py-2 border-b border-gray-100"
-            onClick={toggleMenu}
+            onClick={closeMenu}
           >
             Tableau de bord
           </Link>
           <Link 
             to="/generator" 
             className="text-lg py-2 border-b border-gray-100"
-            onClick={toggleMenu}
+            onClick={closeMenu}
           >
             Générateur
           </Link>
@@ -131,7 +143,7 @@ const Navigation = () => {
               variant="outline" 
               onClick={() => {
                 handleLogout();
-                toggleMenu();
+                closeMenu();
               }} 
               className="mt-4 w-full flex items-center justify-center"
               disabled={isLoggingOut}
@@ -144,13 +156,13 @@ const Navigation = () => {
               <Link 
                 to="/login" 
                 className="text-lg py-2 border-b border-gray-100"
-                onClick={toggleMenu}
+                onClick={closeMenu}
               >
                 Connexion
               </Link>
               <Link 
                 to="/register" 
-                onClick={toggleMenu}
+                onClick={closeMenu}
                 className="mt-4"
               >
                 <Button className="w-full">S'inscrire</Button>

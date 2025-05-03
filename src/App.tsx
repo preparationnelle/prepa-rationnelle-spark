@@ -8,6 +8,7 @@ import { AuthProvider } from './context/AuthContext';
 import { ProgressProvider } from './context/ProgressContext';
 import Navigation from './components/Navigation';
 import ProtectedRoute from './components/ProtectedRoute';
+import ScrollToTop from './components/ScrollToTop'; // Import le nouveau composant
 
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
@@ -47,6 +48,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <ScrollToTop /> {/* Ajout du composant ScrollToTop ici */}
             <div className="min-h-screen flex flex-col bg-background">
               <Navigation />
               <main className="flex-1">
