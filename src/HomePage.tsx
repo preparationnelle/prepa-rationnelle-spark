@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, GraduationCap } from 'lucide-react';
 import { PricingSection } from '@/components/PricingSection';
+import { PartnersSection } from '@/components/sections/PartnersSection';
 
 const HomePage = () => {
   return <div className="min-h-screen bg-accent">
@@ -28,6 +29,9 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+
+      {/* Partners Section */}
+      <PartnersSection />
 
       {/* Schools Section - Updated with more schools */}
       <section className="py-16 px-4 bg-white">
