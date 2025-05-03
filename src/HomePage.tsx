@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -144,6 +145,63 @@ const HomePage = () => {
                 </div>
                 <p className="text-gray-600 mb-4">
                   Format classique (30 min), coefficient 10. Entretien orienté RSE avec partie en anglais.
+                </p>
+                <div className="flex justify-end">
+                  <Button variant="ghost" size="sm" className="text-primary group-hover:underline">
+                    En savoir plus
+                  </Button>
+                </div>
+              </div>
+            </Link>
+
+            <Link to="/ecoles/gem" className="group">
+              <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all hover:shadow-lg hover:border-primary/20">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <GraduationCap className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">Grenoble École de Management</h3>
+                </div>
+                <p className="text-gray-600 mb-4">
+                  Entretien multi-parties (30 min), coefficient 10. Format original avec entretien inversé.
+                </p>
+                <div className="flex justify-end">
+                  <Button variant="ghost" size="sm" className="text-primary group-hover:underline">
+                    En savoir plus
+                  </Button>
+                </div>
+              </div>
+            </Link>
+
+            <Link to="/ecoles/kedge" className="group">
+              <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all hover:shadow-lg hover:border-primary/20">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <GraduationCap className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">KEDGE Business School</h3>
+                </div>
+                <p className="text-gray-600 mb-4">
+                  Entretien classique avec questionnaire 'maison' (30 min), coefficient 14. Approche 'Grow by Doing'.
+                </p>
+                <div className="flex justify-end">
+                  <Button variant="ghost" size="sm" className="text-primary group-hover:underline">
+                    En savoir plus
+                  </Button>
+                </div>
+              </div>
+            </Link>
+
+            <Link to="/ecoles/neoma" className="group">
+              <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all hover:shadow-lg hover:border-primary/20">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <GraduationCap className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">NEOMA Business School</h3>
+                </div>
+                <p className="text-gray-600 mb-4">
+                  Entretien classique avec questionnaire préalable (30 min), coefficient 12. Format bienveillant et structuré.
                 </p>
                 <div className="flex justify-end">
                   <Button variant="ghost" size="sm" className="text-primary group-hover:underline">

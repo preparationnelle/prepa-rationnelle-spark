@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { SchoolCard } from '../SchoolCard';
-import { skemaData, gemData } from '@/data/schools';
+import { skemaData, gemData, kedgeData, neomaData } from '@/data/schools';
 
 export const SchoolsSection = () => {
   const schools = [
@@ -39,6 +39,16 @@ export const SchoolsSection = () => {
       name: gemData.name,
       description: gemData.shortDescription,
       link: "/ecoles/gem"
+    },
+    {
+      name: kedgeData.name,
+      description: kedgeData.shortDescription,
+      link: "/ecoles/kedge"
+    },
+    {
+      name: neomaData.name,
+      description: neomaData.shortDescription,
+      link: "/ecoles/neoma"
     }
   ];
 
