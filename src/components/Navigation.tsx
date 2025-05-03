@@ -3,9 +3,30 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/button';
-import { LogOut, Menu, X } from 'lucide-react';
+import { 
+  LogOut, 
+  Menu, 
+  X, 
+  ChevronDown, 
+  FileText, 
+  Users, 
+  User, 
+  BookOpen, 
+  Package, 
+  Radio, 
+  Instagram, 
+  Linkedin 
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+} from '@/components/ui/dropdown-menu';
 
 const Navigation = () => {
   const { currentUser, logout } = useAuth();
@@ -64,6 +85,92 @@ const Navigation = () => {
             Accueil
           </Link>
           
+          {/* Nouvelle liste déroulante "Ressources" */}
+          <DropdownMenu>
+            <DropdownMenuTrigger className="text-gray-700 hover:text-primary transition flex items-center gap-1">
+              Ressources
+              <ChevronDown className="h-4 w-4" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="center" className="w-60">
+              <DropdownMenuItem asChild>
+                <Link to="/questions" onClick={closeMenu} className="flex items-center gap-2 w-full">
+                  <FileText className="h-4 w-4" />
+                  <span>Banque de questions d'entretien</span>
+                </Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem asChild>
+                <Link to="/methodes/personnalite" onClick={closeMenu} className="flex items-center gap-2 w-full">
+                  <User className="h-4 w-4" />
+                  <span>Préparer son entretien de personnalité</span>
+                </Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem asChild>
+                <Link to="/coaching" onClick={closeMenu} className="flex items-center gap-2 w-full">
+                  <Users className="h-4 w-4" />
+                  <span>Coaching individuel</span>
+                </Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuSeparator />
+              
+              <DropdownMenuItem asChild>
+                <Link to="/questions/category-ecoles" onClick={closeMenu} className="flex items-center gap-2 w-full">
+                  <BookOpen className="h-4 w-4" />
+                  <span>Fiches écoles</span>
+                </Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem asChild>
+                <Link to="/" onClick={closeMenu} className="flex items-center gap-2 w-full">
+                  <Package className="h-4 w-4" />
+                  <span>Nos formules</span>
+                </Link>
+              </DropdownMenuItem>
+              
+              <DropdownMenuSeparator />
+              
+              <DropdownMenuItem asChild>
+                <a 
+                  href="https://www.europe1.fr/emissions/la-france-bouge-academie/prepa-rationnelle-concue-pour-revolutionner-le-monde-la-preparation-pour-integrer-les-ecoles-de-commerce-667526" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-2 w-full"
+                >
+                  <Radio className="h-4 w-4" />
+                  <span>Découvrez notre interview sur Europe 1</span>
+                </a>
+              </DropdownMenuItem>
+              
+              <DropdownMenuSeparator />
+              
+              <div className="flex justify-center gap-4 py-2">
+                <DropdownMenuItem asChild>
+                  <a 
+                    href="https://instagram.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="flex items-center gap-2"
+                  >
+                    <Instagram className="h-5 w-5" />
+                  </a>
+                </DropdownMenuItem>
+                
+                <DropdownMenuItem asChild>
+                  <a 
+                    href="https://linkedin.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="flex items-center gap-2"
+                  >
+                    <Linkedin className="h-5 w-5" />
+                  </a>
+                </DropdownMenuItem>
+              </div>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           {/* These links will always show, but will show the auth overlay if the user is not logged in */}
           <Link to="/dashboard" className="text-gray-700 hover:text-primary transition" onClick={closeMenu}>
             Tableau de bord
@@ -121,6 +228,57 @@ const Navigation = () => {
           >
             Accueil
           </Link>
+          
+          {/* Ajout des liens déroulants dans le menu mobile */}
+          <div className="space-y-2 py-2 border-b border-gray-100">
+            <h3 className="text-lg font-medium">Ressources</h3>
+            <div className="pl-4 flex flex-col space-y-3">
+              <Link to="/questions" onClick={closeMenu} className="flex items-center gap-2">
+                <FileText className="h-4 w-4" />
+                <span>Banque de questions d'entretien</span>
+              </Link>
+              
+              <Link to="/methodes/personnalite" onClick={closeMenu} className="flex items-center gap-2">
+                <User className="h-4 w-4" />
+                <span>Entretien de personnalité</span>
+              </Link>
+              
+              <Link to="/coaching" onClick={closeMenu} className="flex items-center gap-2">
+                <Users className="h-4 w-4" />
+                <span>Coaching individuel</span>
+              </Link>
+              
+              <Link to="/questions/category-ecoles" onClick={closeMenu} className="flex items-center gap-2">
+                <BookOpen className="h-4 w-4" />
+                <span>Fiches écoles</span>
+              </Link>
+              
+              <Link to="/" onClick={closeMenu} className="flex items-center gap-2">
+                <Package className="h-4 w-4" />
+                <span>Nos formules</span>
+              </Link>
+              
+              <a 
+                href="https://www.europe1.fr/emissions/la-france-bouge-academie/prepa-rationnelle-concue-pour-revolutionner-le-monde-la-preparation-pour-integrer-les-ecoles-de-commerce-667526" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-2"
+                onClick={closeMenu}
+              >
+                <Radio className="h-4 w-4" />
+                <span>Interview Europe 1</span>
+              </a>
+              
+              <div className="flex gap-4 py-2">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                  <Instagram className="h-5 w-5" />
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                  <Linkedin className="h-5 w-5" />
+                </a>
+              </div>
+            </div>
+          </div>
           
           {/* These links will always show, but will show the auth overlay if the user is not logged in */}
           <Link 
