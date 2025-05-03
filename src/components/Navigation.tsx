@@ -15,7 +15,8 @@ import {
   Package, 
   Radio, 
   Instagram, 
-  Linkedin 
+  Linkedin,
+  GraduationCap
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
@@ -39,7 +40,7 @@ const Navigation = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Nouvelle fonction pour fermer le menu mobile lors du clic sur un lien
+  // Fermer le menu mobile lors du clic sur un lien
   const closeMenu = () => {
     if (isMenuOpen) {
       setIsMenuOpen(false);
@@ -67,6 +68,19 @@ const Navigation = () => {
     }
   };
 
+  // Fonction pour naviguer vers une section spécifique
+  const navigateToSection = (path, sectionId) => {
+    closeMenu();
+    navigate(path);
+    // Donner le temps à la page de se charger avant de défiler vers la section
+    setTimeout(() => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
   return (
     <header className="bg-white shadow-sm border-b border-gray-100">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -85,88 +99,99 @@ const Navigation = () => {
             Accueil
           </Link>
           
-          {/* Nouvelle liste déroulante "Ressources" */}
+          {/* Menu déroulant "Ressources" modernisé */}
           <DropdownMenu>
-            <DropdownMenuTrigger className="text-gray-700 hover:text-primary transition flex items-center gap-1">
+            <DropdownMenuTrigger className="text-gray-700 hover:text-primary transition flex items-center gap-1 focus:outline-none">
               Ressources
               <ChevronDown className="h-4 w-4" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="center" className="w-60">
-              <DropdownMenuItem asChild>
-                <Link to="/questions" onClick={closeMenu} className="flex items-center gap-2 w-full">
-                  <FileText className="h-4 w-4" />
+            <DropdownMenuContent align="center" className="w-64 bg-white rounded-lg shadow-lg border-0 p-2">
+              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                <Link to="/questions" onClick={closeMenu} className="flex items-center gap-3 w-full">
+                  <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <FileText className="h-4 w-4 text-primary" />
+                  </span>
                   <span>Banque de questions d'entretien</span>
                 </Link>
               </DropdownMenuItem>
 
-              <DropdownMenuItem asChild>
-                <Link to="/methodes/personnalite" onClick={closeMenu} className="flex items-center gap-2 w-full">
-                  <User className="h-4 w-4" />
+              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 mt-1 transition-colors">
+                <Link to="/methodes/personnalite" onClick={closeMenu} className="flex items-center gap-3 w-full">
+                  <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <User className="h-4 w-4 text-primary" />
+                  </span>
                   <span>Préparer son entretien de personnalité</span>
                 </Link>
               </DropdownMenuItem>
 
-              <DropdownMenuItem asChild>
-                <Link to="/coaching" onClick={closeMenu} className="flex items-center gap-2 w-full">
-                  <Users className="h-4 w-4" />
+              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 mt-1 transition-colors">
+                <Link to="/coaching" onClick={closeMenu} className="flex items-center gap-3 w-full">
+                  <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <Users className="h-4 w-4 text-primary" />
+                  </span>
                   <span>Coaching individuel</span>
                 </Link>
               </DropdownMenuItem>
 
-              <DropdownMenuSeparator />
+              <DropdownMenuSeparator className="my-2" />
               
-              <DropdownMenuItem asChild>
-                <Link to="/questions/category-ecoles" onClick={closeMenu} className="flex items-center gap-2 w-full">
-                  <BookOpen className="h-4 w-4" />
+              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                <Link to="/questions/category-ecoles" onClick={closeMenu} className="flex items-center gap-3 w-full">
+                  <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <GraduationCap className="h-4 w-4 text-primary" />
+                  </span>
                   <span>Fiches écoles</span>
                 </Link>
               </DropdownMenuItem>
 
-              <DropdownMenuItem asChild>
-                <Link to="/" onClick={closeMenu} className="flex items-center gap-2 w-full">
-                  <Package className="h-4 w-4" />
+              <DropdownMenuItem 
+                onClick={() => navigateToSection('/', 'pricing-section')} 
+                className="hover:bg-primary/10 rounded-md px-3 py-2 mt-1 transition-colors cursor-pointer"
+              >
+                <div className="flex items-center gap-3 w-full">
+                  <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <Package className="h-4 w-4 text-primary" />
+                  </span>
                   <span>Nos formules</span>
-                </Link>
+                </div>
               </DropdownMenuItem>
               
-              <DropdownMenuSeparator />
+              <DropdownMenuSeparator className="my-2" />
               
-              <DropdownMenuItem asChild>
+              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
                 <a 
                   href="https://www.europe1.fr/emissions/la-france-bouge-academie/prepa-rationnelle-concue-pour-revolutionner-le-monde-la-preparation-pour-integrer-les-ecoles-de-commerce-667526" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center gap-2 w-full"
+                  className="flex items-center gap-3 w-full"
                 >
-                  <Radio className="h-4 w-4" />
-                  <span>Découvrez notre interview sur Europe 1</span>
+                  <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <Radio className="h-4 w-4 text-primary" />
+                  </span>
+                  <span>Notre interview sur Europe 1</span>
                 </a>
               </DropdownMenuItem>
               
-              <DropdownMenuSeparator />
+              <DropdownMenuSeparator className="my-2" />
               
               <div className="flex justify-center gap-4 py-2">
-                <DropdownMenuItem asChild>
-                  <a 
-                    href="https://instagram.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="flex items-center gap-2"
-                  >
-                    <Instagram className="h-5 w-5" />
-                  </a>
-                </DropdownMenuItem>
+                <a 
+                  href="https://instagram.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-10 h-10 bg-gray-100 hover:bg-primary/10 rounded-full flex items-center justify-center transition-colors"
+                >
+                  <Instagram className="h-5 w-5 text-primary" />
+                </a>
                 
-                <DropdownMenuItem asChild>
-                  <a 
-                    href="https://linkedin.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="flex items-center gap-2"
-                  >
-                    <Linkedin className="h-5 w-5" />
-                  </a>
-                </DropdownMenuItem>
+                <a 
+                  href="https://linkedin.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-10 h-10 bg-gray-100 hover:bg-primary/10 rounded-full flex items-center justify-center transition-colors"
+                >
+                  <Linkedin className="h-5 w-5 text-primary" />
+                </a>
               </div>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -229,52 +254,77 @@ const Navigation = () => {
             Accueil
           </Link>
           
-          {/* Ajout des liens déroulants dans le menu mobile */}
+          {/* Menu mobile modernisé */}
           <div className="space-y-2 py-2 border-b border-gray-100">
-            <h3 className="text-lg font-medium">Ressources</h3>
-            <div className="pl-4 flex flex-col space-y-3">
-              <Link to="/questions" onClick={closeMenu} className="flex items-center gap-2">
-                <FileText className="h-4 w-4" />
+            <h3 className="text-lg font-medium text-primary">Ressources</h3>
+            <div className="pl-4 flex flex-col space-y-4">
+              <Link to="/questions" onClick={closeMenu} className="flex items-center gap-3">
+                <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <FileText className="h-4 w-4 text-primary" />
+                </span>
                 <span>Banque de questions d'entretien</span>
               </Link>
               
-              <Link to="/methodes/personnalite" onClick={closeMenu} className="flex items-center gap-2">
-                <User className="h-4 w-4" />
+              <Link to="/methodes/personnalite" onClick={closeMenu} className="flex items-center gap-3">
+                <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <User className="h-4 w-4 text-primary" />
+                </span>
                 <span>Entretien de personnalité</span>
               </Link>
               
-              <Link to="/coaching" onClick={closeMenu} className="flex items-center gap-2">
-                <Users className="h-4 w-4" />
+              <Link to="/coaching" onClick={closeMenu} className="flex items-center gap-3">
+                <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Users className="h-4 w-4 text-primary" />
+                </span>
                 <span>Coaching individuel</span>
               </Link>
               
-              <Link to="/questions/category-ecoles" onClick={closeMenu} className="flex items-center gap-2">
-                <BookOpen className="h-4 w-4" />
+              <Link to="/questions/category-ecoles" onClick={closeMenu} className="flex items-center gap-3">
+                <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <GraduationCap className="h-4 w-4 text-primary" />
+                </span>
                 <span>Fiches écoles</span>
               </Link>
               
-              <Link to="/" onClick={closeMenu} className="flex items-center gap-2">
-                <Package className="h-4 w-4" />
+              <div 
+                onClick={() => navigateToSection('/', 'pricing-section')}
+                className="flex items-center gap-3 cursor-pointer"
+              >
+                <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Package className="h-4 w-4 text-primary" />
+                </span>
                 <span>Nos formules</span>
-              </Link>
+              </div>
               
               <a 
                 href="https://www.europe1.fr/emissions/la-france-bouge-academie/prepa-rationnelle-concue-pour-revolutionner-le-monde-la-preparation-pour-integrer-les-ecoles-de-commerce-667526" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="flex items-center gap-2"
+                className="flex items-center gap-3"
                 onClick={closeMenu}
               >
-                <Radio className="h-4 w-4" />
+                <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Radio className="h-4 w-4 text-primary" />
+                </span>
                 <span>Interview Europe 1</span>
               </a>
               
               <div className="flex gap-4 py-2">
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center">
-                  <Instagram className="h-5 w-5" />
+                <a 
+                  href="https://instagram.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-10 h-10 bg-gray-100 hover:bg-primary/10 rounded-full flex items-center justify-center transition-colors"
+                >
+                  <Instagram className="h-5 w-5 text-primary" />
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center">
-                  <Linkedin className="h-5 w-5" />
+                <a 
+                  href="https://linkedin.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-10 h-10 bg-gray-100 hover:bg-primary/10 rounded-full flex items-center justify-center transition-colors"
+                >
+                  <Linkedin className="h-5 w-5 text-primary" />
                 </a>
               </div>
             </div>

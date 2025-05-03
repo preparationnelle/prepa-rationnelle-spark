@@ -13,7 +13,7 @@ export const PricingSection = () => {
   ];
 
   return (
-    <section className="py-16 px-4 bg-white">
+    <section id="pricing-section" className="py-16 px-4 bg-white">
       <div className="container mx-auto">
         <h2 className="section-heading text-center mb-12">
           Nos formules
