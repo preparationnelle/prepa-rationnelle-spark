@@ -22,6 +22,8 @@ import PersonnaliteMethodePage from './pages/PersonnaliteMethodePage';
 import ProjetProfessionnelMethodePage from './pages/ProjetProfessionnelMethodePage';
 import MotivationEcoleMethodePage from './pages/MotivationEcoleMethodePage';
 import StorytellingMethodePage from './pages/StorytellingMethodePage';
+import TendrePerchesMethodePage from './pages/TendrePerchesMethodePage';
+import FinirEntretienMethodePage from './pages/FinirEntretienMethodePage';
 import ESCPPage from './pages/ESCPPage';
 import ESSECPage from './pages/ESSECPage';
 import EDHECPage from './pages/EDHECPage';
@@ -54,6 +56,8 @@ const App = () => (
                   <Route path="/methodes/projet-professionnel" element={<ProjetProfessionnelMethodePage />} />
                   <Route path="/methodes/motivation-ecole" element={<MotivationEcoleMethodePage />} />
                   <Route path="/methodes/storytelling" element={<StorytellingMethodePage />} />
+                  <Route path="/methodes/tendre-perches" element={<TendrePerchesMethodePage />} />
+                  <Route path="/methodes/finir-entretien" element={<FinirEntretienMethodePage />} />
                   <Route path="/dashboard" element={
                     <ProtectedRoute>
                       <DashboardPage />
