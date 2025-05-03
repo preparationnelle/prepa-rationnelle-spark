@@ -8,7 +8,7 @@ import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { PricingSection } from '@/components/PricingSection';
 import { CallToActionSection } from '@/components/sections/CallToActionSection';
 import { Footer } from '@/components/Footer';
-import { Brain, Target, Users, Puzzle, User, Briefcase, GraduationCap } from 'lucide-react';
+import { Brain, Target, Users, Puzzle, User, Briefcase, GraduationCap, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
@@ -92,7 +92,7 @@ const HomePage = () => {
             Découvrez les méthodologies éprouvées pour structurer vos réponses et impressionner le jury lors de votre entretien.
           </p>
           
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto mb-8">
             <Card className="h-full flex flex-col hover:shadow-lg transition-all">
               <CardContent className="p-6 flex flex-col items-center text-center flex-grow">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
@@ -143,6 +143,25 @@ const HomePage = () => {
               </CardContent>
               <CardFooter className="p-6 pt-0">
                 <Link to="/methodes/motivation-ecole" className="w-full">
+                  <Button variant="outline" className="w-full">
+                    Consulter la méthode
+                  </Button>
+                </Link>
+              </CardFooter>
+            </Card>
+            
+            <Card className="h-full flex flex-col hover:shadow-lg transition-all">
+              <CardContent className="p-6 flex flex-col items-center text-center flex-grow">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                  <BookOpen className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Storytelling</h3>
+                <p className="text-muted-foreground mb-6">
+                  Transformez vos expériences passées en récits captivants qui créeront une impression durable sur votre jury.
+                </p>
+              </CardContent>
+              <CardFooter className="p-6 pt-0">
+                <Link to="/methodes/storytelling" className="w-full">
                   <Button variant="outline" className="w-full">
                     Consulter la méthode
                   </Button>
