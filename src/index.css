@@ -98,7 +98,7 @@
 
 @layer components {
   .hero-heading {
-    @apply text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight;
+    @apply text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight;
   }
   
   .section-heading {
