@@ -9,7 +9,7 @@ export const kedgeData: SchoolData = {
     content: [
       "KEDGE, école multi-campus (Marseille, Bordeaux), utilise un format très proche de NEOMA/ESCP. Entretien individuel d'environ 30 minutes (coefficient 14).",
       "L'entretien s'appuie sur un questionnaire de personnalité rempli par le candidat en amont et utilisé pendant l'oral. La structure est classique : présentation du candidat, motivations, projet professionnel, etc., guidée par les questions du questionnaire.",
-      "L'originalité de KEDGE est dans certaines questions spécifiques de son questionnaire. Par exemple, le questionnaire 2023 comprenait : « Le PGE KEDGE repose sur le Grow by Doing. Expliquez ce qui vous attire dans cette approche. », « Quelle information nationale ou internationale a suscité le plus d'intérêt chez vous ces 3 derniers mois ? Pourquoi ? », « Le PGE KEDGE recherche des "faiseurs" : parlez-nous de votre plus grand accomplissement concret »."
+      "L'originalité de KEDGE est dans certaines questions spécifiques de son questionnaire. Par exemple, le questionnaire 2023 comprenait : « Le PGE KEDGE repose sur le Grow by Doing. Expliquez ce qui vous attire dans cette approche. », « Quelle information nationale ou internationale a suscité le plus d'intérêt chez vous ces 3 derniers mois ? Pourquoi ? », « Le PGE KEDGE recherche des 'faiseurs' : parlez-nous de votre plus grand accomplissement concret »."
     ],
     values: {
       title: "Valeurs et attentes de l'école",
