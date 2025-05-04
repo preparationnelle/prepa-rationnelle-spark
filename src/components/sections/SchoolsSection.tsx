@@ -2,6 +2,12 @@
 import React from 'react';
 import { SchoolCard } from '../SchoolCard';
 import { skemaData, gemData, kedgeData, neomaData } from '@/data/schools';
+import { Link } from 'react-router-dom';
+import { 
+  Brain, Target, UsersRound, Puzzle
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 
 export const SchoolsSection = () => {
   const schools = [
@@ -61,6 +67,33 @@ export const SchoolsSection = () => {
     }
   ];
 
+  const questionCategories = [
+    {
+      title: "Introspection",
+      description: "Questions sur la personnalité et la connaissance de soi",
+      icon: <Brain className="h-6 w-6 text-primary" />,
+      link: "/questions/introspection"
+    },
+    {
+      title: "Motivation",
+      description: "Questions sur les objectifs et les aspirations",
+      icon: <Target className="h-6 w-6 text-primary" />,
+      link: "/questions/motivation"
+    },
+    {
+      title: "Interpersonnel",
+      description: "Questions sur le travail d'équipe et la communication",
+      icon: <UsersRound className="h-6 w-6 text-primary" />,
+      link: "/questions/interpersonal"
+    },
+    {
+      title: "Créativité",
+      description: "Questions inattendues et situations originales",
+      icon: <Puzzle className="h-6 w-6 text-primary" />,
+      link: "/questions/creative"
+    }
+  ];
+
   return (
     <section className="py-16 px-4 bg-white" id="schools-section">
       <div className="container mx-auto">
@@ -81,6 +114,38 @@ export const SchoolsSection = () => {
               link={school.link}
             />
           ))}
+        </div>
+        
+        {/* Question Categories Section */}
+        <h2 className="section-heading text-center mt-20 mb-4">
+          Banque de <span className="gradient-text">questions</span> d'entretien
+        </h2>
+        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Préparez-vous efficacement avec notre bibliothèque de questions classées par catégorie.
+        </p>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-8">
+          {questionCategories.map((category, index) => (
+            <Link key={index} to={category.link} className="group">
+              <Card className="bg-accent/50 border-0 hover:shadow-md transition-all h-full">
+                <CardContent className="p-6 flex flex-col items-center text-center">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                    {category.icon}
+                  </div>
+                  <h3 className="font-medium mb-2 text-lg group-hover:text-primary transition-colors">{category.title}</h3>
+                  <p className="text-sm text-muted-foreground">{category.description}</p>
+                </CardContent>
+              </Card>
+            </Link>
+          ))}
+        </div>
+        
+        <div className="text-center">
+          <Link to="/questions">
+            <Button size="lg">
+              Explorer toutes les questions
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

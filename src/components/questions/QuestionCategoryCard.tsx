@@ -25,13 +25,13 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export const QuestionCategoryCard: React.FC<QuestionCategoryCardProps> = ({ category }) => {
   return (
-    <Card className="hover:shadow-md transition-shadow h-full flex flex-col">
+    <Card className="hover:shadow-lg transition-all h-full flex flex-col border-0 bg-accent/50 group">
       <CardHeader>
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+          <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
             {iconMap[category.icon]}
           </div>
-          <CardTitle>{category.title}</CardTitle>
+          <CardTitle className="group-hover:text-primary transition-colors">{category.title}</CardTitle>
         </div>
         <CardDescription>{category.description}</CardDescription>
       </CardHeader>
