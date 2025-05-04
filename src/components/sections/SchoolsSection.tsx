@@ -1,13 +1,13 @@
-
 import React from 'react';
 import { SchoolCard } from '../SchoolCard';
 import { skemaData, gemData, kedgeData, neomaData } from '@/data/schools';
 import { Link } from 'react-router-dom';
 import { 
-  Brain, Target, UsersRound, Puzzle
+  User, Target, UsersRound, Sparkles, Map, Heart
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { questionCategories } from '@/data/questionCards';
 
 export const SchoolsSection = () => {
   const schools = [
@@ -67,30 +67,43 @@ export const SchoolsSection = () => {
     }
   ];
 
-  const questionCategories = [
+  // Utiliser directement les IDs des catégories de questions depuis les données réelles
+  const displayedCategories = [
     {
+      id: 'introspection',
       title: "Introspection",
       description: "Questions sur la personnalité et la connaissance de soi",
-      icon: <Brain className="h-6 w-6 text-primary" />,
-      link: "/questions/introspection"
+      icon: <User className="h-6 w-6 text-primary" />
     },
     {
-      title: "Motivation",
+      id: 'motivation-objectives',
+      title: "Motivations & objectifs",
       description: "Questions sur les objectifs et les aspirations",
-      icon: <Target className="h-6 w-6 text-primary" />,
-      link: "/questions/motivation"
+      icon: <Target className="h-6 w-6 text-primary" />
     },
     {
-      title: "Interpersonnel",
-      description: "Questions sur le travail d'équipe et la communication",
-      icon: <UsersRound className="h-6 w-6 text-primary" />,
-      link: "/questions/interpersonal"
+      id: 'interpersonal-teamwork',
+      title: "Relations & travail d'équipe",
+      description: "Questions sur le travail collaboratif et la communication",
+      icon: <UsersRound className="h-6 w-6 text-primary" />
     },
     {
-      title: "Créativité",
-      description: "Questions inattendues et situations originales",
-      icon: <Puzzle className="h-6 w-6 text-primary" />,
-      link: "/questions/creative"
+      id: 'creative-unexpected',
+      title: "Questions créatives & inattendues",
+      description: "Questions originales pour tester votre créativité",
+      icon: <Sparkles className="h-6 w-6 text-primary" />
+    },
+    {
+      id: 'projection-scenarios',
+      title: "Projection & mises en situation",
+      description: "Scénarios et questions sur votre vision du futur",
+      icon: <Map className="h-6 w-6 text-primary" />
+    },
+    {
+      id: 'values',
+      title: "Valeurs",
+      description: "Questions sur ce qui est important pour vous",
+      icon: <Heart className="h-6 w-6 text-primary" />
     }
   ];
 
@@ -124,9 +137,9 @@ export const SchoolsSection = () => {
           Préparez-vous efficacement avec notre bibliothèque de questions classées par catégorie.
         </p>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-8">
-          {questionCategories.map((category, index) => (
-            <Link key={index} to={category.link} className="group">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-8">
+          {displayedCategories.map((category) => (
+            <Link key={category.id} to={`/questions/${category.id}`} className="group">
               <Card className="bg-accent/50 border-0 hover:shadow-md transition-all h-full">
                 <CardContent className="p-6 flex flex-col items-center text-center">
                   <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
