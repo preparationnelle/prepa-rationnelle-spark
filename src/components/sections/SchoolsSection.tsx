@@ -7,53 +7,62 @@ export const SchoolsSection = () => {
   const schools = [
     {
       name: "ESCP Business School",
-      description: "Format court (30 min), coefficient 12. Entretien structuré autour d'un questionnaire préalable.",
+      duration: "Entretien de 30 minutes, coefficient 12.",
+      feature: "Entretien structuré autour d'un questionnaire préalable.",
       link: "/ecoles/escp"
     },
     {
       name: "ESSEC Business School",
-      description: "Entretien long (30-45 min), coefficient 10. Format approfondi avec mise en situation.",
+      duration: "Entretien de 30-45 minutes, coefficient 10.",
+      feature: "Format approfondi avec mise en situation initiale.",
       link: "/ecoles/essec"
     },
     {
       name: "EDHEC Business School",
-      description: "Format tripartite (1h30), coefficient 15. Présentation, travail de groupe et entretien.",
+      duration: "Entretien de 1h30, coefficient 15.",
+      feature: "Format tripartite avec présentation, travail de groupe et entretien.",
       link: "/ecoles/edhec"
     },
     {
       name: "EM Lyon Business School",
-      description: "Entretien \"Flash\" (25 min), coefficient 9. Format ludique avec cartes thématiques.",
+      duration: "Entretien de 25 minutes, coefficient 9.",
+      feature: "Format ludique avec cartes thématiques et présentation en 1 minute.",
       link: "/ecoles/emlyon"
     },
     {
       name: skemaData.name,
-      description: skemaData.shortDescription,
+      duration: "Entretien de 25 minutes, coefficient 20.",
+      feature: "CV fictif à 10 ans.",
       link: "/ecoles/skema"
     },
     {
       name: "Audencia Business School",
-      description: "Entretien à orientation RSE (30 min), coefficient 10. Forte dimension responsabilité sociétale.",
+      duration: "Entretien de 30 minutes, coefficient 10.",
+      feature: "Forte dimension responsabilité sociétale avec partie en anglais.",
       link: "/ecoles/audencia"
     },
     {
       name: gemData.name,
-      description: gemData.shortDescription,
+      duration: "Entretien de 30 minutes, coefficient 10.",
+      feature: "Format original avec entretien inversé.",
       link: "/ecoles/gem"
     },
     {
       name: kedgeData.name,
-      description: kedgeData.shortDescription,
+      duration: "Entretien de 30 minutes, coefficient 14.",
+      feature: "Approche 'Grow by Doing' et questionnaire 'maison'.",
       link: "/ecoles/kedge"
     },
     {
       name: neomaData.name,
-      description: neomaData.shortDescription,
+      duration: "Entretien de 30 minutes, coefficient 12.",
+      feature: "Format structuré autour de la 'réussite responsable'.",
       link: "/ecoles/neoma"
     }
   ];
 
   return (
-    <section className="py-16 px-4 bg-white">
+    <section className="py-16 px-4 bg-white" id="schools-section">
       <div className="container mx-auto">
         <h2 className="section-heading text-center mb-4">
           Fiches écoles
@@ -67,7 +76,8 @@ export const SchoolsSection = () => {
             <SchoolCard 
               key={index}
               name={school.name}
-              description={school.description}
+              duration={school.duration}
+              feature={school.feature}
               link={school.link}
             />
           ))}
