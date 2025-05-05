@@ -6,47 +6,72 @@ import { useLocation } from 'react-router-dom';
 export function useAnalytics() {
   const location = useLocation();
   
-  // Suivre les vues de page lorsque la route change
+  // Track page views when the route changes
   useEffect(() => {
     try {
+      const url = window.location.href;
+      console.log('Tracking page view:', location.pathname, url);
+      
       posthog.capture('$pageview', {
         path: location.pathname,
-        url: window.location.href,
-        referrer: document.referrer
+        url: url,
+        referrer: document.referrer,
+        $current_url: url
       });
-      console.log('Analytics: pageview tracked', location.pathname);
     } catch (error) {
-      console.error('Analytics pageview error:', error);
+      console.error('Error tracking page view:', error);
     }
   }, [location.pathname]);
   
   return {
     trackEvent: (eventName: string, properties?: Record<string, any>) => {
       try {
+        console.log('Tracking event:', eventName, properties);
         posthog.capture(eventName, properties);
-        console.log(`Analytics: event tracked - ${eventName}`, properties);
       } catch (error) {
-        console.error(`Analytics event error (${eventName}):`, error);
+        console.error('Error tracking event:', error);
       }
     },
     
-    // Identifier l'utilisateur avec son ID et des propriétés optionnelles
+    // Identify user with their ID and optional properties
     identify: (userId: string, properties?: Record<string, any>) => {
       try {
+        console.log('Identifying user:', userId, properties);
         posthog.identify(userId, properties);
-        console.log('Analytics: user identified', userId);
       } catch (error) {
-        console.error('Analytics identify error:', error);
+        console.error('Error identifying user:', error);
       }
     },
     
-    // Réinitialiser l'identification de l'utilisateur (par exemple, lors de la déconnexion)
+    // Reset user identification (e.g., on logout)
     reset: () => {
       try {
+        console.log('Resetting user identification');
         posthog.reset();
-        console.log('Analytics: user reset');
       } catch (error) {
-        console.error('Analytics reset error:', error);
+        console.error('Error resetting user:', error);
+      }
+    },
+    
+    // Group users (for B2B applications)
+    group: (groupType: string, groupKey: string, groupProperties?: Record<string, any>) => {
+      try {
+        console.log('Grouping user:', groupType, groupKey, groupProperties);
+        posthog.group(groupType, groupKey, groupProperties);
+      } catch (error) {
+        console.error('Error grouping user:', error);
+      }
+    },
+    
+    // Get distinct ID for the current user
+    getDistinctId: () => {
+      try {
+        const id = posthog.get_distinct_id();
+        console.log('Getting distinct ID:', id);
+        return id;
+      } catch (error) {
+        console.error('Error getting distinct ID:', error);
+        return '';
       }
     }
   };

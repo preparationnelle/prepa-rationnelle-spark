@@ -1,51 +1,67 @@
 
 import React, { useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
-import { posthog } from '@/integrations/posthog/client';
+import { posthog, initPostHog } from '@/integrations/posthog/client';
 import { useLocation } from 'react-router-dom';
 
 /**
- * PostHogProvider intègre l'analytique PostHog avec l'état d'authentification et les changements de route
+ * PostHogProvider integrates PostHog analytics with auth state and route changes
  */
 const PostHogProvider: React.FC = () => {
   const { currentUser } = useAuth();
   const location = useLocation();
 
-  // Identifier l'utilisateur lorsque l'état d'authentification change
+  // Initialize PostHog if needed
+  useEffect(() => {
+    console.log('Initializing PostHog from provider');
+    initPostHog();
+  }, []);
+
+  // Identify user when auth state changes
   useEffect(() => {
     try {
       if (currentUser) {
-        // Identifier l'utilisateur connecté
+        console.log('Identifying user in PostHogProvider:', currentUser.id);
+        // Identify logged-in user
         posthog.identify(currentUser.id, {
           email: currentUser.email,
-          name: currentUser.user_metadata?.first_name || 'Unknown User'
+          name: currentUser.user_metadata?.first_name || 'Unknown User',
+          $set_once: {
+            first_seen_at: new Date().toISOString(),
+          }
         });
-        console.log('PostHog: User identified', currentUser.id);
       } else {
-        // Réinitialiser pour les utilisateurs anonymes
+        console.log('Resetting user in PostHogProvider');
+        // Reset for anonymous users
         posthog.reset();
-        console.log('PostHog: User reset (anonymous)');
       }
     } catch (error) {
-      console.error('PostHog identification error:', error);
+      console.error('Error in PostHogProvider user identification:', error);
     }
   }, [currentUser]);
 
-  // Suivre les vues de page lorsque la route change
+  // Track page views when route changes
   useEffect(() => {
     try {
+      let url = window.origin + location.pathname;
+      if (location.search) {
+        url = url + location.search;
+      }
+      
+      console.log('Tracking page view in PostHogProvider:', url);
+      
       posthog.capture('$pageview', {
+        $current_url: url,
         path: location.pathname,
-        url: window.location.href,
+        url: url,
         referrer: document.referrer
       });
-      console.log('PostHog: Page view captured', location.pathname);
     } catch (error) {
-      console.error('PostHog pageview error:', error);
+      console.error('Error tracking page view in PostHogProvider:', error);
     }
-  }, [location.pathname]);
+  }, [location.pathname, location.search]);
 
-  return null; // Ce composant ne rend rien
+  return null; // This component doesn't render anything
 };
 
 export default PostHogProvider;
