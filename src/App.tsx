@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -8,7 +7,11 @@ import { AuthProvider } from './context/AuthContext';
 import { ProgressProvider } from './context/ProgressContext';
 import Navigation from './components/Navigation';
 import ProtectedRoute from './components/ProtectedRoute';
-import ScrollToTop from './components/ScrollToTop'; // Import le nouveau composant
+import ScrollToTop from './components/ScrollToTop';
+
+// Import PostHog initializer
+import { initPostHog } from './integrations/posthog/client';
+import PostHogProvider from './providers/PostHogProvider';
 
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
@@ -38,6 +41,9 @@ import FullCalendarPage from './pages/FullCalendarPage';
 import InterviewSimulatorPage from './pages/InterviewSimulatorPage';
 import NotFound from "./pages/NotFound";
 
+// Initialize PostHog
+initPostHog();
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -48,7 +54,8 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            <ScrollToTop /> {/* Ajout du composant ScrollToTop ici */}
+            <PostHogProvider />
+            <ScrollToTop />
             <div className="min-h-screen flex flex-col bg-background">
               <Navigation />
               <main className="flex-1">

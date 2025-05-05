@@ -3,6 +3,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
+import { posthog } from '@/integrations/posthog/client';
 
 interface AuthContextProps {
   currentUser: User | null;
@@ -71,12 +72,23 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         throw error;
       }
       
+      // Track registration event
+      posthog.capture('user_registered', {
+        source: window.location.pathname
+      });
+      
       toast({
         title: "Compte créé avec succès",
         description: "Bienvenue sur Prepa Rationnelle !",
       });
     } catch (error: any) {
       console.error('Registration error:', error);
+      
+      // Track registration error
+      posthog.capture('registration_error', {
+        error: error.message
+      });
+      
       toast({
         title: "Erreur d'inscription",
         description: error.message || "Une erreur s'est produite lors de l'inscription",
@@ -94,6 +106,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         throw error;
       }
       
+      // Track login event
+      posthog.capture('user_logged_in');
+      
       toast({
         title: "Connexion réussie",
         description: "Bon retour parmi nous !",
@@ -102,6 +117,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       return data;
     } catch (error: any) {
       console.error('Login error:', error);
+      
+      // Track login error
+      posthog.capture('login_error', {
+        error: error.message
+      });
+      
       toast({
         title: "Erreur de connexion",
         description: error.message || "Identifiants incorrects",
@@ -114,6 +135,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const logout = async () => {
     console.log("Attempting to log out");
     try {
+      // Track logout event before the user is logged out
+      posthog.capture('user_logged_out');
+      
       // Always clear local state first to ensure UI updates even if request fails
       const { error } = await supabase.auth.signOut();
       
