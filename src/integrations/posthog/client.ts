@@ -7,10 +7,10 @@ export const initPostHog = () => {
   if (!posthog.__loaded) {
     try {
       posthog.init(
-        // Utiliser une clé API valide ou une clé placeholder pour le développement
-        'phc_YOUR_ACTUAL_API_KEY', // Remplacer par votre vraie clé API PostHog
+        // Utiliser la clé API fournie
+        'phc_9BK4MNQcKCUUEOooDiLwBv0Og29ddhYx5Jjx3XJe0hZ', // Clé API PostHog
         {
-          api_host: 'https://eu.posthog.com', // Ou votre URL auto-hébergée
+          api_host: 'https://eu.posthog.com', 
           capture_pageview: false, // Nous gérons cela manuellement avec React Router
           persistence: 'localStorage',
           autocapture: true, // Capture automatiquement les clics, soumissions de formulaires, etc.
