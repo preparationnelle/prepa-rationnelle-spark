@@ -5,9 +5,9 @@ import posthog from 'posthog-js';
 export const initPostHog = () => {
   posthog.init(
     // Replace this with your actual PostHog API key from your PostHog instance
-    'phc_placeholder_api_key',
+    'phc_pGAwikZ7KdqjbuCuY4f9FijQ959CiQGjc9PgH88b4vR',
     {
-      api_host: 'https://eu.posthog.com', // Or your self-hosted URL
+      api_host: 'https://eu.i.posthog.com', // Or your self-hosted URL
       capture_pageview: false, // We'll handle this manually with React Router
       persistence: 'localStorage',
       autocapture: true, // Automatically capture clicks, form submissions etc.
