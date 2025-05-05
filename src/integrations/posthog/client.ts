@@ -17,9 +17,7 @@ export const initPostHog = () => {
           loaded: (posthog) => {
             if (process.env.NODE_ENV === 'development') posthog.debug();
           },
-          // Désactiver la capture d'erreurs pour éviter les problèmes
-          capture_errors: false,
-          // Désactiver le suivi des performances pour éviter les problèmes
+          // Les propriétés problématiques ont été supprimées
           enable_recording_console_log: false
         }
       );
