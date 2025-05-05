@@ -19,9 +19,11 @@ const PostHogProvider: React.FC = () => {
         email: currentUser.email,
         name: currentUser.user_metadata?.first_name || 'Unknown User'
       });
+      console.log('PostHog: User identified', currentUser.id);
     } else {
       // Reset for anonymous users
       posthog.reset();
+      console.log('PostHog: Anonymous user');
     }
   }, [currentUser]);
 
@@ -32,6 +34,7 @@ const PostHogProvider: React.FC = () => {
       url: window.location.href,
       referrer: document.referrer
     });
+    console.log('PostHog: Page view tracked', location.pathname);
   }, [location.pathname]);
 
   return null; // This component doesn't render anything
