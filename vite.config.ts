@@ -22,5 +22,10 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     sourcemap: true,
+  },
+  // Explicitly define dependencies to ensure they're properly installed
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom', '@tanstack/react-query', 'posthog-js']
   }
 }));
+
