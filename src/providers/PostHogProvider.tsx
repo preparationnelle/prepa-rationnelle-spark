@@ -1,40 +1,51 @@
 
 import React, { useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
-import { posthog } from '@/integrations/posthog/client';
+import { posthog, captureEvent } from '@/integrations/posthog/client';
 import { useLocation } from 'react-router-dom';
 
 /**
- * PostHogProvider integrates PostHog analytics with auth state and route changes
+ * PostHogProvider intègre l'analytique PostHog avec l'état d'authentification et les changements de route
  */
 const PostHogProvider: React.FC = () => {
   const { currentUser } = useAuth();
   const location = useLocation();
 
-  // Identify user when auth state changes
+  // Identifier l'utilisateur lorsque l'état d'authentification change
   useEffect(() => {
-    if (currentUser) {
-      // Identify logged-in user
-      posthog.identify(currentUser.id, {
-        email: currentUser.email,
-        name: currentUser.user_metadata?.first_name || 'Unknown User'
-      });
-    } else {
-      // Reset for anonymous users
-      posthog.reset();
+    try {
+      if (currentUser) {
+        // Identifier l'utilisateur connecté
+        posthog.identify(currentUser.id, {
+          email: currentUser.email,
+          name: currentUser.user_metadata?.first_name || 'Unknown User'
+        });
+        console.log('PostHog: User identified', currentUser.id);
+      } else {
+        // Réinitialiser pour les utilisateurs anonymes
+        posthog.reset();
+        console.log('PostHog: User reset (anonymous)');
+      }
+    } catch (error) {
+      console.error('PostHog identification error:', error);
     }
   }, [currentUser]);
 
-  // Track page views when route changes
+  // Suivre les vues de page lorsque la route change
   useEffect(() => {
-    posthog.capture('$pageview', {
-      path: location.pathname,
-      url: window.location.href,
-      referrer: document.referrer
-    });
+    try {
+      captureEvent('$pageview', {
+        path: location.pathname,
+        url: window.location.href,
+        referrer: document.referrer
+      });
+      console.log('PostHog: Page view captured', location.pathname);
+    } catch (error) {
+      console.error('PostHog pageview error:', error);
+    }
   }, [location.pathname]);
 
-  return null; // This component doesn't render anything
+  return null; // Ce composant ne rend rien
 };
 
 export default PostHogProvider;

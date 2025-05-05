@@ -3,21 +3,42 @@ import posthog from 'posthog-js';
 
 // Initialize PostHog with project API key
 export const initPostHog = () => {
-  posthog.init(
-    // Replace this with your actual PostHog API key from your PostHog instance
-    'phc_placeholder_api_key',
-    {
-      api_host: 'https://eu.posthog.com', // Or your self-hosted URL
-      capture_pageview: false, // We'll handle this manually with React Router
-      persistence: 'localStorage',
-      autocapture: true, // Automatically capture clicks, form submissions etc.
-      loaded: (posthog) => {
-        if (process.env.NODE_ENV === 'development') posthog.debug();
-      }
+  // Vérifier si PostHog est déjà initialisé pour éviter une double initialisation
+  if (!posthog.__loaded) {
+    try {
+      posthog.init(
+        // Utiliser une clé API valide ou une clé placeholder pour le développement
+        'phc_placeholder_api_key', // Remplacer par votre vraie clé API PostHog
+        {
+          api_host: 'https://eu.posthog.com', // Ou votre URL auto-hébergée
+          capture_pageview: false, // Nous gérons cela manuellement avec React Router
+          persistence: 'localStorage',
+          autocapture: true, // Capture automatiquement les clics, soumissions de formulaires, etc.
+          loaded: (posthog) => {
+            if (process.env.NODE_ENV === 'development') posthog.debug();
+          },
+          // Désactiver la capture d'erreurs pour éviter les problèmes
+          capture_errors: false,
+          // Désactiver le suivi des performances pour éviter les problèmes
+          enable_recording_console_log: false
+        }
+      );
+      console.log('PostHog initialized successfully');
+    } catch (error) {
+      console.error('Failed to initialize PostHog:', error);
     }
-  );
+  }
   
   return posthog;
+};
+
+// Fonction utilitaire pour capturer des événements de manière sécurisée
+export const captureEvent = (eventName, properties = {}) => {
+  try {
+    posthog.capture(eventName, properties);
+  } catch (error) {
+    console.error(`Failed to capture event ${eventName}:`, error);
+  }
 };
 
 // Export the PostHog instance
