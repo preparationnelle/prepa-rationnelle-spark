@@ -41,10 +41,8 @@ import FullCalendarPage from './pages/FullCalendarPage';
 import InterviewSimulatorPage from './pages/InterviewSimulatorPage';
 import NotFound from "./pages/NotFound";
 
-// Initialize PostHog on app load
-console.log('Initializing PostHog from App');
-const posthogClient = initPostHog();
-console.log('PostHog client initialized:', posthogClient.__loaded ? 'Successfully' : 'Failed');
+// Initialize PostHog
+initPostHog();
 
 const queryClient = new QueryClient();
 
