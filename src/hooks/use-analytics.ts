@@ -14,6 +14,7 @@ export function useAnalytics() {
         url: window.location.href,
         referrer: document.referrer
       });
+      console.log('Analytics: pageview tracked', location.pathname);
     } catch (error) {
       console.error('Analytics pageview error:', error);
     }
@@ -23,6 +24,7 @@ export function useAnalytics() {
     trackEvent: (eventName: string, properties?: Record<string, any>) => {
       try {
         posthog.capture(eventName, properties);
+        console.log(`Analytics: event tracked - ${eventName}`, properties);
       } catch (error) {
         console.error(`Analytics event error (${eventName}):`, error);
       }
@@ -32,6 +34,7 @@ export function useAnalytics() {
     identify: (userId: string, properties?: Record<string, any>) => {
       try {
         posthog.identify(userId, properties);
+        console.log('Analytics: user identified', userId);
       } catch (error) {
         console.error('Analytics identify error:', error);
       }
@@ -41,6 +44,7 @@ export function useAnalytics() {
     reset: () => {
       try {
         posthog.reset();
+        console.log('Analytics: user reset');
       } catch (error) {
         console.error('Analytics reset error:', error);
       }

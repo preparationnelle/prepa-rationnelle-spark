@@ -1,7 +1,7 @@
 
 import React, { useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
-import { posthog, captureEvent } from '@/integrations/posthog/client';
+import { posthog } from '@/integrations/posthog/client';
 import { useLocation } from 'react-router-dom';
 
 /**
@@ -34,7 +34,7 @@ const PostHogProvider: React.FC = () => {
   // Suivre les vues de page lorsque la route change
   useEffect(() => {
     try {
-      captureEvent('$pageview', {
+      posthog.capture('$pageview', {
         path: location.pathname,
         url: window.location.href,
         referrer: document.referrer

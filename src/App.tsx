@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,10 +10,10 @@ import Navigation from './components/Navigation';
 import ProtectedRoute from './components/ProtectedRoute';
 import ScrollToTop from './components/ScrollToTop';
 
-// Import PostHog initializer
-import { initPostHog } from './integrations/posthog/client';
+// Import PostHog Provider
 import PostHogProvider from './providers/PostHogProvider';
 
+// Import pages
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -40,9 +41,6 @@ import NEOMAPage from './pages/NEOMAPage';
 import FullCalendarPage from './pages/FullCalendarPage';
 import InterviewSimulatorPage from './pages/InterviewSimulatorPage';
 import NotFound from "./pages/NotFound";
-
-// Initialize PostHog
-initPostHog();
 
 const queryClient = new QueryClient();
 
