@@ -17,7 +17,10 @@ const PostHogProvider: React.FC = () => {
       // Identify logged-in user
       posthog.identify(currentUser.id, {
         email: currentUser.email,
-        name: currentUser.user_metadata?.first_name || 'Unknown User'
+        name: currentUser.user_metadata?.first_name || 'Unknown User',
+        $set_once: {
+          first_seen_at: new Date().toISOString(),
+        }
       });
     } else {
       // Reset for anonymous users
@@ -27,12 +30,18 @@ const PostHogProvider: React.FC = () => {
 
   // Track page views when route changes
   useEffect(() => {
+    let url = window.origin + location.pathname;
+    if (location.search) {
+      url = url + location.search;
+    }
+    
     posthog.capture('$pageview', {
+      $current_url: url,
       path: location.pathname,
-      url: window.location.href,
+      url: url,
       referrer: document.referrer
     });
-  }, [location.pathname]);
+  }, [location.pathname, location.search]);
 
   return null; // This component doesn't render anything
 };

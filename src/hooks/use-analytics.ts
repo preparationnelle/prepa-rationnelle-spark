@@ -8,10 +8,13 @@ export function useAnalytics() {
   
   // Track page views when the route changes
   useEffect(() => {
+    const url = window.location.href;
+    
     posthog.capture('$pageview', {
       path: location.pathname,
-      url: window.location.href,
-      referrer: document.referrer
+      url: url,
+      referrer: document.referrer,
+      $current_url: url
     });
   }, [location.pathname]);
   
@@ -28,6 +31,16 @@ export function useAnalytics() {
     // Reset user identification (e.g., on logout)
     reset: () => {
       posthog.reset();
+    },
+    
+    // Group users (for B2B applications)
+    group: (groupType: string, groupKey: string, groupProperties?: Record<string, any>) => {
+      posthog.group(groupType, groupKey, groupProperties);
+    },
+    
+    // Get distinct ID for the current user
+    getDistinctId: () => {
+      return posthog.get_distinct_id();
     }
   };
 }
