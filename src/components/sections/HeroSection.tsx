@@ -28,7 +28,7 @@ export const HeroSection = () => {
             </h1>
             
             <p className="text-base md:text-lg text-gray-700 mb-8 font-light leading-relaxed">
-              Tout le contenu dont vous avez <span className="font-medium">rêvé</span> pour préparer vos oraux : une plateforme qui combine coaching sur‑mesure et ressources stratégiques pour transformer votre entretien en véritable <span className="font-medium">atout</span>.
+              Tout le contenu dont vous avez <span className="font-medium">rêvé</span> pour préparer vos oraux : une plateforme qui combine <Link to="/calendar" className="text-primary font-medium underline hover:text-primary/80 transition-colors">coaching sur‑mesure</Link> et ressources stratégiques pour transformer votre entretien en véritable <span className="font-medium">atout</span>.
             </p>
             
             <div className="flex flex-col sm:flex-row justify-start gap-4">
@@ -42,22 +42,6 @@ export const HeroSection = () => {
                   Se connecter
                 </Button>
               </Link>
-            </div>
-            
-            {/* Social proof stats */}
-            <div className="mt-8 pt-6 border-t border-gray-200 grid grid-cols-3 gap-4">
-              <div>
-                <p className="text-2xl font-bold text-gray-800">95%</p>
-                <p className="text-sm text-gray-600">Taux d'admission</p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-gray-800">1200+</p>
-                <p className="text-sm text-gray-600">Étudiants formés</p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-gray-800">9/10</p>
-                <p className="text-sm text-gray-600">Satisfaction</p>
-              </div>
             </div>
           </div>
           
