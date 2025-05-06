@@ -12,6 +12,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Separator } from '@/components/ui/separator';
 import { GraduationCap, Clock, Star, Award, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { RandomWordGenerator } from '@/components/RandomWordGenerator';
 
 const EDHECPage = () => {
   return (
@@ -223,6 +224,11 @@ const EDHECPage = () => {
             </Accordion>
           </CardContent>
         </Card>
+      </div>
+
+      {/* Ajout du générateur de mots aléatoires */}
+      <div className="mb-10">
+        <RandomWordGenerator />
       </div>
 
       <div className="flex justify-center mt-10">
