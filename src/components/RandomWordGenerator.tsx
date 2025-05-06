@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Puzzle, MessageSquare, Tabs } from 'lucide-react';
-import { Tabs as UITabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Puzzle, MessageSquare } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const words = [
   "Silence", "Couleur", "Horizon", "Lien", "Parfum", "Puzzle", "Sable", "Souvenir", "Geste", "Paradoxe", 
@@ -86,13 +86,17 @@ const emlyonQuestions = {
   ]
 };
 
-export const RandomWordGenerator: React.FC = () => {
+interface RandomWordGeneratorProps {
+  type?: 'word' | 'emlyon' | 'both';
+}
+
+export const RandomWordGenerator: React.FC<RandomWordGeneratorProps> = ({ type = 'both' }) => {
   const [currentWord, setCurrentWord] = useState<string>("");
   const [currentQuestion, setCurrentQuestion] = useState<string>("");
   const [currentCategory, setCurrentCategory] = useState<string>("");
   const [isGenerating, setIsGenerating] = useState<boolean>(false);
   const [intervalId, setIntervalId] = useState<number | null>(null);
-  const [activeTab, setActiveTab] = useState<string>("word");
+  const [activeTab, setActiveTab] = useState<string>(type === 'emlyon' ? "questions" : "word");
   
   const generateRandomWord = () => {
     const randomIndex = Math.floor(Math.random() * words.length);
@@ -174,23 +178,109 @@ export const RandomWordGenerator: React.FC = () => {
     projet: "La cohérence et l'ambition de ton avenir pro"
   };
 
+  // Show only word generator for EDHEC, only questions for EM Lyon, or both depending on the type prop
+  const showWordGenerator = type === 'word' || type === 'both';
+  const showQuestions = type === 'emlyon' || type === 'both';
+
   return (
     <Card className="w-full">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          {activeTab === "word" ? <Puzzle className="h-5 w-5" /> : <MessageSquare className="h-5 w-5" />}
-          {activeTab === "word" ? "Générateur de mot pour votre présentation" : "Questions d'entretien EM Lyon"}
+          {type === 'word' ? (
+            <Puzzle className="h-5 w-5" />
+          ) : type === 'emlyon' ? (
+            <MessageSquare className="h-5 w-5" />
+          ) : (
+            activeTab === "word" ? <Puzzle className="h-5 w-5" /> : <MessageSquare className="h-5 w-5" />
+          )}
+          
+          {type === 'word' ? (
+            "Générateur de mot pour votre présentation"
+          ) : type === 'emlyon' ? (
+            "Questions d'entretien EM Lyon"
+          ) : (
+            activeTab === "word" ? "Générateur de mot pour votre présentation" : "Questions d'entretien EM Lyon"
+          )}
         </CardTitle>
       </CardHeader>
       
       <CardContent>
-        <UITabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 mb-6">
-            <TabsTrigger value="word">Mots aléatoires</TabsTrigger>
-            <TabsTrigger value="questions">Questions EM Lyon</TabsTrigger>
-          </TabsList>
-          
-          <TabsContent value="word" className="space-y-4">
+        {type === 'both' ? (
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+            <TabsList className="grid w-full grid-cols-2 mb-6">
+              <TabsTrigger value="word">Mots aléatoires</TabsTrigger>
+              <TabsTrigger value="questions">Questions EM Lyon</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="word" className="space-y-4">
+              {showWordGenerator && (
+                <>
+                  <div className="bg-primary/10 px-6 py-8 rounded-lg mb-6 w-full text-center">
+                    <p className={`text-2xl font-bold ${isGenerating ? 'animate-pulse' : ''}`}>
+                      {currentWord || "Cliquez sur le bouton pour générer un mot"}
+                    </p>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-4 text-center">
+                    Utilisez ce mot aléatoire lors de votre présentation pour démontrer votre capacité d'adaptation et votre créativité.
+                  </p>
+                  
+                  <div className="flex justify-center">
+                    <Button 
+                      onClick={startWordGeneration} 
+                      disabled={isGenerating}
+                      className="w-full md:w-auto"
+                    >
+                      {isGenerating ? "Génération en cours..." : "Générer un mot aléatoire"}
+                    </Button>
+                  </div>
+                </>
+              )}
+            </TabsContent>
+            
+            <TabsContent value="questions" className="space-y-4">
+              {showQuestions && (
+                <>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {Object.keys(emlyonQuestions).map((category) => (
+                      <Card key={category} className="bg-accent/50 hover:bg-accent/70 transition-colors cursor-pointer">
+                        <CardHeader className="p-4">
+                          <CardTitle className="text-base">
+                            {categoryTitles[category as keyof typeof categoryTitles]}
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent className="p-4 pt-0">
+                          <p className="text-sm text-muted-foreground mb-4">
+                            {categoryDescriptions[category as keyof typeof categoryDescriptions]}
+                          </p>
+                          <Button 
+                            variant="outline" 
+                            onClick={() => startQuestionGeneration(category)}
+                            className="w-full"
+                            disabled={isGenerating}
+                          >
+                            Générer une question
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                  
+                  {currentQuestion && (
+                    <div className="bg-primary/10 px-6 py-8 rounded-lg mt-6 w-full">
+                      <p className="text-sm text-primary font-semibold mb-1">
+                        CATÉGORIE : {currentCategory && categoryTitles[currentCategory as keyof typeof categoryTitles]}
+                      </p>
+                      <p className={`text-xl font-semibold ${isGenerating ? 'animate-pulse' : ''}`}>
+                        {currentQuestion}
+                      </p>
+                    </div>
+                  )}
+                </>
+              )}
+            </TabsContent>
+          </Tabs>
+        ) : showWordGenerator ? (
+          <>
             <div className="bg-primary/10 px-6 py-8 rounded-lg mb-6 w-full text-center">
               <p className={`text-2xl font-bold ${isGenerating ? 'animate-pulse' : ''}`}>
                 {currentWord || "Cliquez sur le bouton pour générer un mot"}
@@ -209,9 +299,9 @@ export const RandomWordGenerator: React.FC = () => {
                 {isGenerating ? "Génération en cours..." : "Générer un mot aléatoire"}
               </Button>
             </div>
-          </TabsContent>
-          
-          <TabsContent value="questions" className="space-y-4">
+          </>
+        ) : showQuestions ? (
+          <>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {Object.keys(emlyonQuestions).map((category) => (
                 <Card key={category} className="bg-accent/50 hover:bg-accent/70 transition-colors cursor-pointer">
@@ -247,8 +337,8 @@ export const RandomWordGenerator: React.FC = () => {
                 </p>
               </div>
             )}
-          </TabsContent>
-        </UITabs>
+          </>
+        ) : null}
       </CardContent>
     </Card>
   );

@@ -215,9 +215,9 @@ const EMLyonPage = () => {
         </Card>
       </div>
 
-      {/* Générateur de mots et questions */}
+      {/* Générateur de questions EM Lyon */}
       <div className="mb-10">
-        <RandomWordGenerator />
+        <RandomWordGenerator type="emlyon" />
       </div>
 
       <div className="flex justify-center mt-10">
