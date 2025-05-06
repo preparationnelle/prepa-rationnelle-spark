@@ -1,33 +1,79 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { Award, TrendingUp, Star } from 'lucide-react';
+
 export const HeroSection = () => {
-  return <section className="py-10 md:py-16 px-4 bg-gradient-to-b from-accent to-white">
-      <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+  return (
+    <section className="py-12 md:py-20 px-4 bg-gradient-to-br from-accent via-accent/90 to-white overflow-hidden">
+      <div className="container mx-auto relative">
+        {/* Background decorative elements */}
+        <div className="absolute top-0 right-0 -mr-16 -mt-16 opacity-10">
+          <Star className="w-64 h-64 text-primary" />
+        </div>
+        <div className="absolute bottom-0 left-0 -ml-16 -mb-16 opacity-10">
+          <Award className="w-48 h-48 text-primary" />
+        </div>
+        
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 relative z-10">
           <div className="max-w-lg">
-            <h1 className="hero-heading gradient-text mb-4 text-4xl md:text-5xl lg:text-6xl">
-              Préparez-vous aux entretiens de personnalité
+            <div className="mb-4 flex items-center">
+              <TrendingUp className="h-6 w-6 text-primary mr-2" />
+              <span className="text-sm font-semibold text-primary uppercase tracking-wider">Préparez votre futur</span>
+            </div>
+            
+            <h1 className="hero-heading gradient-text mb-6 text-4xl md:text-5xl lg:text-6xl animate-fade-in">
+              L'art de réussir vos entretiens de personnalité
             </h1>
-            <p className="text-base md:text-lg text-gray-700 mb-6 font-light leading-relaxed">Tout le contenu dont j’aurais rêvé pour préparer les entretiens de personnalité est réuni : une plateforme qui combine un coaching individuel sur‑mesure et des ressources pour faire de votre oral le sésame qui ouvrira les portes de l’école de vos rêves.</p>
+            
+            <p className="text-base md:text-lg text-gray-700 mb-8 font-light leading-relaxed">
+              Tout le contenu dont vous avez <span className="font-medium">rêvé</span> pour préparer vos oraux : une plateforme qui combine coaching sur‑mesure et ressources stratégiques pour transformer votre entretien en véritable <span className="font-medium">atout</span>.
+            </p>
+            
             <div className="flex flex-col sm:flex-row justify-start gap-4">
               <Link to="/register">
-                <Button size="lg" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto shadow-lg hover:shadow-xl transition-all">
                   Commencer gratuitement
                 </Button>
               </Link>
               <Link to="/login">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                <Button variant="outline" size="lg" className="w-full sm:w-auto border-2 hover:bg-accent/50 transition-all">
                   Se connecter
                 </Button>
               </Link>
             </div>
+            
+            {/* Social proof stats */}
+            <div className="mt-8 pt-6 border-t border-gray-200 grid grid-cols-3 gap-4">
+              <div>
+                <p className="text-2xl font-bold text-gray-800">95%</p>
+                <p className="text-sm text-gray-600">Taux d'admission</p>
+              </div>
+              <div>
+                <p className="text-2xl font-bold text-gray-800">1200+</p>
+                <p className="text-sm text-gray-600">Étudiants formés</p>
+              </div>
+              <div>
+                <p className="text-2xl font-bold text-gray-800">9/10</p>
+                <p className="text-sm text-gray-600">Satisfaction</p>
+              </div>
+            </div>
           </div>
           
           <div className="relative shrink-0">
-            <img src="/lovable-uploads/f208343e-6d37-4580-bf38-cf10f5571a1e.png" alt="Étudiant ESCP" className="w-auto h-auto max-w-[280px] md:max-w-xs rounded-2xl" />
+            <div className="absolute -inset-1 bg-primary/10 rounded-2xl blur-md"></div>
+            <img 
+              src="/lovable-uploads/f208343e-6d37-4580-bf38-cf10f5571a1e.png" 
+              alt="Étudiant préparant un entretien" 
+              className="w-auto h-auto max-w-[280px] md:max-w-xs rounded-2xl relative shadow-lg hover:shadow-xl transition-all duration-300" 
+            />
+            <div className="absolute -bottom-4 -right-4 bg-white p-3 rounded-full shadow-lg">
+              <Award className="w-8 h-8 text-primary" />
+            </div>
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
