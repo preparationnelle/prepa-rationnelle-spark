@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { 
   Card, 
@@ -12,6 +11,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Separator } from '@/components/ui/separator';
 import { GraduationCap, Clock, Star, Award, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { RandomWordGenerator } from '@/components/RandomWordGenerator';
 
 const EMLyonPage = () => {
   return (
@@ -213,6 +213,11 @@ const EMLyonPage = () => {
             </Accordion>
           </CardContent>
         </Card>
+      </div>
+
+      {/* Générateur de mots et questions */}
+      <div className="mb-10">
+        <RandomWordGenerator />
       </div>
 
       <div className="flex justify-center mt-10">
