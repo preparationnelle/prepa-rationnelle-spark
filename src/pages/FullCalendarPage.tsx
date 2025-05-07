@@ -1,6 +1,5 @@
 
 import React, { useEffect, useRef } from 'react';
-import { Button } from '@/components/ui/button';
 import { GraduationCap } from 'lucide-react';
 
 // Define the Calendly interface for type safety
@@ -50,11 +49,10 @@ const FullCalendarPage = () => {
 
     script.onload = () => {
       if (window.Calendly && calendlyInlineRef.current) {
-        // Use direct initialization with hideGdprBanner option to hide the cookie consent banner
-        window.Calendly.initPopupWidget({
+        // Use initInlineWidget instead of initPopupWidget with hideGdprBanner
+        window.Calendly.initInlineWidget({
           url: 'https://calendly.com/preparationnelle/30min',
           parentElement: calendlyInlineRef.current,
-          hideGdprBanner: true,
           prefill: {},
           utm: {},
           hideEventTypeDetails: false,
