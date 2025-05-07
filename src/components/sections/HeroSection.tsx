@@ -20,7 +20,9 @@ export const HeroSection = () => {
           <div className="max-w-lg">
             <div className="mb-4 flex items-center">
               <TrendingUp className="h-6 w-6 text-primary mr-2" />
-              <span className="text-sm font-semibold text-primary uppercase tracking-wider">PRÉPAREZ VOTRE FUTUR</span>
+              <Link to="/calendar" className="text-sm font-semibold text-primary uppercase tracking-wider hover:underline">
+                PRÉPAREZ VOTRE ENTRETIEN
+              </Link>
             </div>
             
             <h1 className="hero-heading gradient-text mb-6 text-4xl md:text-5xl lg:text-6xl animate-fade-in">
