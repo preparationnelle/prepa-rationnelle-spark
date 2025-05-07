@@ -14,11 +14,27 @@ interface Calendly {
     hideLandingPageDetails?: boolean;
     primaryColor?: string;
   }) => void;
+  showPopupWidget: (url: string) => void;
+}
+
+interface CalendlyPopupOptions {
+  url: string;
+  prefill?: Record<string, unknown>;
+  customData?: Record<string, unknown>;
+  utm?: Record<string, unknown>;
+  hideEventTypeDetails?: boolean;
+  hideGdprBanner?: boolean;
+  hideLandingPageDetails?: boolean;
+  hideGuestFields?: boolean;
+  parentElement?: HTMLElement;
+  primaryColor?: string;
 }
 
 declare global {
   interface Window {
-    Calendly?: Calendly;
+    Calendly?: Calendly & {
+      initPopupWidget: (options: CalendlyPopupOptions) => void;
+    };
   }
 }
 
@@ -34,9 +50,11 @@ const FullCalendarPage = () => {
 
     script.onload = () => {
       if (window.Calendly && calendlyInlineRef.current) {
-        window.Calendly.initInlineWidget({
+        // Use direct initialization with hideGdprBanner option to hide the cookie consent banner
+        window.Calendly.initPopupWidget({
           url: 'https://calendly.com/preparationnelle/30min',
           parentElement: calendlyInlineRef.current,
+          hideGdprBanner: true,
           prefill: {},
           utm: {},
           hideEventTypeDetails: false,
