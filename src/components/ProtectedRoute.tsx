@@ -11,7 +11,10 @@ interface ProtectedRouteProps {
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const { currentUser, loading } = useAuth();
   const location = useLocation();
-
+  
+  // Check if the current path is /calendar - this path will be publicly accessible
+  const isCalendarPage = location.pathname === '/calendar';
+  
   // While authentication state is being checked, we can show nothing or a loading state
   if (loading) {
     return (
@@ -21,6 +24,11 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
         </div>
       </div>
     );
+  }
+
+  // If this is the calendar page, always render it without protection
+  if (isCalendarPage) {
+    return <>{children}</>;
   }
 
   // If user is not authenticated, render children with the auth overlay

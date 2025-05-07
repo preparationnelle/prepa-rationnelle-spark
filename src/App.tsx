@@ -89,11 +89,8 @@ const App = () => (
                       <CoachingPage />
                     </ProtectedRoute>
                   } />
-                  <Route path="/calendar" element={
-                    <ProtectedRoute>
-                      <FullCalendarPage />
-                    </ProtectedRoute>
-                  } />
+                  {/* Calendar page is now publicly accessible */}
+                  <Route path="/calendar" element={<FullCalendarPage />} />
                   <Route path="/questions" element={<QuestionsPage />} />
                   <Route path="/questions/:categoryId" element={<QuestionCategoryPage />} />
                   <Route path="/interview-simulator" element={<InterviewSimulatorPage />} />
