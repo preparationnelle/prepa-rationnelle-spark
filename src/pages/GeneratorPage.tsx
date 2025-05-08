@@ -6,11 +6,21 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
-import { ArrowRight, Copy, Loader2 } from 'lucide-react';
+import { ArrowRight, Copy, Loader2, Info, ChevronDown, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { useProgress } from '@/context/ProgressContext';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { 
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormDescription
+} from '@/components/ui/form';
+import { Textarea } from '@/components/ui/textarea';
+import { useForm } from 'react-hook-form';
 
 // Define the answer type structure
 type Answer = {
@@ -30,6 +40,18 @@ type Answer = {
   };
   exercise: string;
   similarQuestions: string[];
+};
+
+// Type pour les infos supplémentaires du candidat
+type AdditionalInfo = {
+  filiere?: string;
+  specialite?: string;
+  ecole?: string;
+  associatif?: string;
+  interets?: string;
+  voyages?: string;
+  sport?: string;
+  trait?: string;
 };
 
 // Word count indicator component
@@ -71,8 +93,33 @@ const GeneratorPage = () => {
   const [wordCount, setWordCount] = useState(0);
   const [language, setLanguage] = useState<'fr' | 'en'>('fr');
   const [activeTab, setActiveTab] = useState('response');
+  const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
   const { currentUser } = useAuth();
   const { toast } = useToast();
+  
+  // Form pour les informations supplémentaires
+  const additionalInfoForm = useForm<AdditionalInfo>({
+    defaultValues: {
+      filiere: '',
+      specialite: '',
+      ecole: '',
+      associatif: '',
+      interets: '',
+      voyages: '',
+      sport: '',
+      trait: '',
+    }
+  });
+
+  // Exemple préconfiguré
+  const loadExample = () => {
+    setQuestion("Quels sont vos défauts ?");
+    additionalInfoForm.setValue('trait', 'Je veux tout gérer moi-même');
+    additionalInfoForm.setValue('filiere', 'ECE');
+    additionalInfoForm.setValue('ecole', 'HEC');
+    additionalInfoForm.setValue('associatif', 'Responsable du pôle finance de l\'association Junior Conseil');
+    setShowAdditionalInfo(true);
+  };
 
   const handleGenerate = async () => {
     if (!question.trim()) {
@@ -89,11 +136,15 @@ const GeneratorPage = () => {
     setGenerating(true);
     
     try {
+      // Récupérer les données du formulaire d'infos supplémentaires
+      const additionalInfo = additionalInfoForm.getValues();
+      
       // Call the Supabase Edge Function to generate the answer
       const { data, error } = await supabase.functions.invoke('generate-interview-answer', {
         body: {
           question: question,
-          language: language
+          language: language,
+          additionalInfo: additionalInfo
         }
       });
 
@@ -206,8 +257,8 @@ const GeneratorPage = () => {
               </CardTitle>
               <CardDescription>
                 {language === 'fr'
-                  ? "Entrez une question d'entretien pour obtenir une réponse structurée selon la méthode STAR"
-                  : "Enter an interview question to get a structured answer using the STAR method"}
+                  ? "Entrez une question d'entretien pour obtenir une réponse structurée avec du storytelling"
+                  : "Enter an interview question to get a structured answer with storytelling"}
               </CardDescription>
             </div>
             <ToggleGroup type="single" value={language} onValueChange={(value) => value && setLanguage(value as 'fr' | 'en')}>
@@ -221,21 +272,206 @@ const GeneratorPage = () => {
           </div>
         </CardHeader>
         <CardContent>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Input
-              placeholder={getPlaceholder()}
-              value={question}
-              onChange={(e) => setQuestion(e.target.value)}
-              className="flex-1"
-            />
-            <Button onClick={handleGenerate} disabled={generating || !question.trim()}>
-              {generating ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  {language === 'fr' ? 'Génération en cours...' : 'Generating...'}
-                </>
-              ) : language === 'fr' ? "Générer une réponse" : "Generate an answer"}
-            </Button>
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Input
+                placeholder={getPlaceholder()}
+                value={question}
+                onChange={(e) => setQuestion(e.target.value)}
+                className="flex-1"
+              />
+              <Button variant="outline" onClick={loadExample} className="whitespace-nowrap">
+                Voir un exemple
+              </Button>
+            </div>
+            
+            <div className="flex justify-between items-center">
+              <Button 
+                variant="ghost" 
+                onClick={() => setShowAdditionalInfo(!showAdditionalInfo)}
+                className="flex items-center gap-2"
+              >
+                <Info className="h-4 w-4" />
+                {language === 'fr' ? 'Informations supplémentaires' : 'Additional information'}
+                {showAdditionalInfo ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+              </Button>
+              
+              <Button onClick={handleGenerate} disabled={generating || !question.trim()}>
+                {generating ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    {language === 'fr' ? 'Génération en cours...' : 'Generating...'}
+                  </>
+                ) : language === 'fr' ? "Générer une réponse" : "Generate an answer"}
+              </Button>
+            </div>
+            
+            {showAdditionalInfo && (
+              <Card className="mt-4 p-4 bg-accent/30">
+                <CardHeader className="p-0 pb-4">
+                  <CardTitle className="text-lg">
+                    {language === 'fr' 
+                      ? 'Personnalisez votre réponse' 
+                      : 'Personalize your answer'}
+                  </CardTitle>
+                  <CardDescription>
+                    {language === 'fr'
+                      ? 'Ces informations seront utilisées pour personnaliser votre réponse'
+                      : 'This information will be used to personalize your answer'}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <Form {...additionalInfoForm}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <FormField
+                        control={additionalInfoForm.control}
+                        name="filiere"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>
+                              {language === 'fr' ? 'Filière' : 'Track'}
+                            </FormLabel>
+                            <FormControl>
+                              <Input placeholder="ECE, ECT, ECG..." {...field} />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={additionalInfoForm.control}
+                        name="specialite"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>
+                              {language === 'fr' ? 'Spécialité' : 'Specialization'}
+                            </FormLabel>
+                            <FormControl>
+                              <Input placeholder="Maths, ESH, Géopolitique..." {...field} />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={additionalInfoForm.control}
+                        name="ecole"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>
+                              {language === 'fr' ? 'École visée' : 'Target school'}
+                            </FormLabel>
+                            <FormControl>
+                              <Input placeholder="HEC, ESSEC, ESCP..." {...field} />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={additionalInfoForm.control}
+                        name="trait"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>
+                              {language === 'fr' ? 'Trait de personnalité principal' : 'Main personality trait'}
+                            </FormLabel>
+                            <FormControl>
+                              <Input 
+                                placeholder={language === 'fr' 
+                                  ? "Ex: Je veux tout gérer moi-même" 
+                                  : "Ex: I want to manage everything myself"} 
+                                {...field} 
+                              />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={additionalInfoForm.control}
+                        name="associatif"
+                        render={({ field }) => (
+                          <FormItem className="col-span-1 md:col-span-2">
+                            <FormLabel>
+                              {language === 'fr' ? 'Activités associatives' : 'Extracurricular activities'}
+                            </FormLabel>
+                            <FormControl>
+                              <Textarea 
+                                placeholder={language === 'fr' 
+                                  ? "Association, responsabilités, projets..." 
+                                  : "Associations, responsibilities, projects..."} 
+                                {...field} 
+                              />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={additionalInfoForm.control}
+                        name="interets"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>
+                              {language === 'fr' ? 'Centres d\'intérêt' : 'Interests'}
+                            </FormLabel>
+                            <FormControl>
+                              <Input 
+                                placeholder={language === 'fr' 
+                                  ? "Lecture, musique, théâtre..." 
+                                  : "Reading, music, theater..."} 
+                                {...field} 
+                              />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={additionalInfoForm.control}
+                        name="voyages"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>
+                              {language === 'fr' ? 'Voyages / Expériences interculturelles' : 'Travel / Intercultural experiences'}
+                            </FormLabel>
+                            <FormControl>
+                              <Input 
+                                placeholder={language === 'fr' 
+                                  ? "Pays visités, échanges..." 
+                                  : "Countries visited, exchanges..."} 
+                                {...field} 
+                              />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={additionalInfoForm.control}
+                        name="sport"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>
+                              {language === 'fr' ? 'Sports pratiqués' : 'Sports'}
+                            </FormLabel>
+                            <FormControl>
+                              <Input 
+                                placeholder={language === 'fr' 
+                                  ? "Niveau, compétition, équipe..." 
+                                  : "Level, competition, team..."} 
+                                {...field} 
+                              />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                  </Form>
+                </CardContent>
+              </Card>
+            )}
           </div>
         </CardContent>
       </Card>
@@ -282,35 +518,50 @@ const GeneratorPage = () => {
                   <h3 className="font-semibold mb-2 text-primary">
                     {language === 'fr' ? 'INTRODUCTION' : 'INTRODUCTION'}
                   </h3>
-                  <p className="text-gray-700">{currentAnswer.response.introduction}</p>
+                  <div 
+                    className="text-gray-700"
+                    dangerouslySetInnerHTML={{ __html: currentAnswer.response.introduction.replace(/\*(.*?)\*/g, '<em>$1</em>') }}
+                  />
                 </div>
                 
                 <div>
                   <h3 className="font-semibold mb-2 text-primary">
                     {language === 'fr' ? 'IDÉE PRINCIPALE' : 'MAIN IDEA'}
                   </h3>
-                  <p className="text-gray-700">{currentAnswer.response.mainIdea}</p>
+                  <div 
+                    className="text-gray-700"
+                    dangerouslySetInnerHTML={{ __html: currentAnswer.response.mainIdea.replace(/\*(.*?)\*/g, '<em>$1</em>') }}
+                  />
                 </div>
                 
                 <div>
                   <h3 className="font-semibold mb-2 text-primary">
                     {language === 'fr' ? 'EXEMPLE' : 'EXAMPLE'}
                   </h3>
-                  <p className="text-gray-700">{currentAnswer.response.example}</p>
+                  <div 
+                    className="text-gray-700"
+                    dangerouslySetInnerHTML={{ __html: currentAnswer.response.example.replace(/\*(.*?)\*/g, '<em>$1</em>') }}
+                  />
                 </div>
                 
                 <div>
                   <h3 className="font-semibold mb-2 text-primary">
                     {language === 'fr' ? 'BÉNÉFICE' : 'BENEFIT'}
                   </h3>
-                  <p className="text-gray-700">{currentAnswer.response.benefit}</p>
+                  <div 
+                    className="text-gray-700"
+                    dangerouslySetInnerHTML={{ __html: currentAnswer.response.benefit.replace(/\*(.*?)\*/g, '<em>$1</em>') }}
+                  />
                 </div>
                 
                 <div>
                   <h3 className="font-semibold mb-2 text-primary">
                     {language === 'fr' ? 'CONCLUSION' : 'CONCLUSION'}
                   </h3>
-                  <p className="text-gray-700">{currentAnswer.response.conclusion}</p>
+                  <div 
+                    className="text-gray-700"
+                    dangerouslySetInnerHTML={{ __html: currentAnswer.response.conclusion.replace(/\*(.*?)\*/g, '<em>$1</em>') }}
+                  />
                 </div>
               </TabsContent>
               
@@ -403,12 +654,20 @@ const GeneratorPage = () => {
                 <span className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">2</span>
                 <span>
                   {language === 'fr'
-                    ? "Notre système génère une réponse structurée avec analyse critique et conseils d'entraînement"
-                    : "Our system generates a structured answer with critical analysis and training advice"}
+                    ? "Ajoutez des informations sur votre profil pour personnaliser davantage votre réponse"
+                    : "Add information about your profile to personalize your answer further"}
                 </span>
               </li>
               <li className="flex">
                 <span className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">3</span>
+                <span>
+                  {language === 'fr'
+                    ? "Notre système génère une réponse structurée avec storytelling, analyse critique et conseils d'entraînement"
+                    : "Our system generates a structured answer with storytelling, critical analysis and training advice"}
+                </span>
+              </li>
+              <li className="flex">
+                <span className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">4</span>
                 <span>
                   {language === 'fr'
                     ? "Utilisez cette réponse comme base pour développer votre propre réponse personnalisée"
@@ -418,8 +677,8 @@ const GeneratorPage = () => {
             </ol>
             <p className="text-sm text-gray-600 italic">
               {language === 'fr'
-                ? "Note: La réponse générée est un point de départ. Pour exceller aux entretiens, personnalisez-la avec vos propres expériences et votre personnalité."
-                : "Note: The generated answer is a starting point. To excel in interviews, personalize it with your own experiences and personality."}
+                ? "Note: Toutes les anecdotes de storytelling seront mises en italique pour faciliter leur identification."
+                : "Note: All storytelling anecdotes will be in italics for easy identification."}
             </p>
           </div>
         </div>

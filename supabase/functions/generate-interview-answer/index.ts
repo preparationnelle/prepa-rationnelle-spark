@@ -23,7 +23,7 @@ serve(async (req) => {
       );
     }
 
-    const { question, language = 'fr' } = await req.json();
+    const { question, language = 'fr', additionalInfo = {} } = await req.json();
     
     if (!question) {
       return new Response(
@@ -32,7 +32,10 @@ serve(async (req) => {
       );
     }
 
-    // Ajuster le prompt selon la langue - MISE À JOUR pour se concentrer sur les étudiants en prépa
+    // Créer un contexte avec les informations supplémentaires de l'utilisateur
+    const contextInfo = createContextFromAdditionalInfo(additionalInfo, language);
+
+    // Ajuster le prompt selon la langue - MISE À JOUR pour mettre l'accent sur le storytelling
     const promptTemplate = language === 'fr' ? 
     `
 Tu es Lovable, coach d'entraînement aux entretiens pour les étudiants de classe préparatoire qui préparent leurs oraux d'admission aux grandes écoles de commerce (HEC, ESSEC, ESCP, emlyon, EDHEC, etc.).
@@ -45,6 +48,9 @@ OBJECTIF : Je te donne une question d'entretien, tu génères une réponse court
    - *Illustration par un exemple concret* : preuve issue du parcours prépa, associatif, centres d'intérêt
    - *Bénéfice pour l'école/entreprise* : valeur ajoutée que l'étudiant apportera
    - *Ouverture* : perspective future ou approfondissement
+
+INFORMATIONS SUR LE CANDIDAT :
+${contextInfo}
 
 2. **Analyse critique en 5 points**
    - Force principale de la réponse
@@ -66,6 +72,7 @@ CONSIGNES SPÉCIFIQUES :
 • JAMAIS d'expériences professionnelles significatives (stages courts ou jobs d'été peuvent être mentionnés mais pas comme expérience principale).
 • Évoque des compétences pertinentes : gestion du temps, résilience face aux difficultés, méthode de travail, collaboration.
 • Reste authentique et humble, montre ta motivation pour les écoles de commerce.
+• IMPORTANT : Pour chaque exemple concret ou anecdote, mets le texte en italique. Assure-toi d'inclure au moins une anecdote ou exemple de storytelling.
 • Ton style doit être structuré, positif mais pas trop formel.
 • Longueur totale < 400 mots.
 
@@ -84,6 +91,9 @@ OBJECTIVE: When I give you an interview question, you generate a short (≤ 1min
    - *Illustration with a concrete example*: evidence from prep school path, extracurricular activities, interests
    - *Benefit for the school/company*: value that the student will bring
    - *Opening*: future perspective or further development
+
+CANDIDATE INFORMATION:
+${contextInfo}
 
 2. **Critical analysis in 5 points**
    - Main strength of the response
@@ -105,6 +115,7 @@ SPECIFIC GUIDELINES:
 • NEVER mention significant professional experiences (short internships or summer jobs can be mentioned but not as main experiences).
 • Emphasize relevant skills: time management, resilience when facing difficulties, work methods, collaboration.
 • Remain authentic and humble, show your motivation for business schools.
+• IMPORTANT: For each concrete example or anecdote, put the text in italics. Make sure to include at least one anecdote or storytelling example.
 • Your style should be structured, positive but not too formal.
 • Total length < 400 words.
 
@@ -194,3 +205,43 @@ Respond only with a JSON object containing the keys: 'response' (with sub-keys i
 function countWords(text) {
   return text.split(/\s+/).filter(Boolean).length;
 }
+
+// Fonction pour créer un contexte à partir des informations supplémentaires de l'utilisateur
+function createContextFromAdditionalInfo(info, language) {
+  if (!info || Object.keys(info).length === 0) {
+    return language === 'fr' 
+      ? "Aucune information supplémentaire fournie."
+      : "No additional information provided.";
+  }
+  
+  const contextLines = [];
+  
+  if (language === 'fr') {
+    if (info.filiere) contextLines.push(`• Filière: ${info.filiere}`);
+    if (info.specialite) contextLines.push(`• Spécialité: ${info.specialite}`);
+    if (info.ecole) contextLines.push(`• École visée: ${info.ecole}`);
+    if (info.associatif) contextLines.push(`• Activités associatives: ${info.associatif}`);
+    if (info.interets) contextLines.push(`• Centres d'intérêt: ${info.interets}`);
+    if (info.voyages) contextLines.push(`• Voyages: ${info.voyages}`);
+    if (info.sport) contextLines.push(`• Activités sportives: ${info.sport}`);
+    if (info.trait) contextLines.push(`• Trait de personnalité à souligner: ${info.trait}`);
+  } else {
+    if (info.filiere) contextLines.push(`• Track: ${info.filiere}`);
+    if (info.specialite) contextLines.push(`• Specialization: ${info.specialite}`);
+    if (info.ecole) contextLines.push(`• Target school: ${info.ecole}`);
+    if (info.associatif) contextLines.push(`• Extracurricular activities: ${info.associatif}`);
+    if (info.interets) contextLines.push(`• Interests: ${info.interets}`);
+    if (info.voyages) contextLines.push(`• Travel experiences: ${info.voyages}`);
+    if (info.sport) contextLines.push(`• Sports: ${info.sport}`);
+    if (info.trait) contextLines.push(`• Personality trait to highlight: ${info.trait}`);
+  }
+  
+  if (contextLines.length === 0) {
+    return language === 'fr' 
+      ? "Aucune information supplémentaire utilisable fournie."
+      : "No usable additional information provided.";
+  }
+  
+  return contextLines.join('\n');
+}
+

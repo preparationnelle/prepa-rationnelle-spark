@@ -5,6 +5,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { Puzzle, MessageSquare } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+// Listes de mots pour le générateur aléatoire
 const words = [
   "Silence", "Couleur", "Horizon", "Lien", "Parfum", "Puzzle", "Sable", "Souvenir", "Geste", "Paradoxe", 
   "Nuage", "Boussole", "Écho", "Rythme", "Porte", "Aventure", "Secret", "Regard", "Chemin", "Énergie", 
