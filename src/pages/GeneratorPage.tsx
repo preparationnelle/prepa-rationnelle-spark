@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
@@ -9,18 +10,26 @@ import { ArrowRight, Copy, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { useProgress } from '@/context/ProgressContext';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 // Define the answer type structure
 type Answer = {
-  angleKey: string;
-  star: {
-    situation: string;
-    task: string;
-    action: string;
-    result: string;
+  response: {
+    introduction: string;
+    mainIdea: string;
+    example: string;
+    benefit: string;
+    conclusion: string;
   };
-  valueLink: string;
-  deliveryTip: string;
+  analysis: {
+    strength: string;
+    improvement: string;
+    alignment: string;
+    relevance: string;
+    clarity: string;
+  };
+  exercise: string;
+  similarQuestions: string[];
 };
 
 // Word count indicator component
@@ -61,6 +70,7 @@ const GeneratorPage = () => {
   const [currentAnswer, setCurrentAnswer] = useState<Answer | null>(null);
   const [wordCount, setWordCount] = useState(0);
   const [language, setLanguage] = useState<'fr' | 'en'>('fr');
+  const [activeTab, setActiveTab] = useState('response');
   const { currentUser } = useAuth();
   const { toast } = useToast();
 
@@ -137,22 +147,37 @@ const GeneratorPage = () => {
   const copyToClipboard = () => {
     if (!currentAnswer) return;
     
-    let text = `${language === 'fr' ? 'ANGLE CLÉ' : 'KEY ANGLE'}:\n${currentAnswer.angleKey}\n\n`;
-    text += `${language === 'fr' ? 'STAR' : 'STAR'}:\n`;
-    text += `${language === 'fr' ? '• Situation: ' : '• Situation: '}${currentAnswer.star.situation}\n`;
-    text += `${language === 'fr' ? '• Tâche: ' : '• Task: '}${currentAnswer.star.task}\n`;
-    text += `${language === 'fr' ? '• Action: ' : '• Action: '}${currentAnswer.star.action}\n`;
-    text += `${language === 'fr' ? '• Résultat: ' : '• Result: '}${currentAnswer.star.result}\n\n`;
-    text += `${language === 'fr' ? 'LIEN VALEUR AJOUTÉE' : 'VALUE-ADDED LINK'}:\n${currentAnswer.valueLink}\n\n`;
-    text += `${language === 'fr' ? 'CONSEIL DE PRÉSENTATION' : 'DELIVERY TIP'}:\n${currentAnswer.deliveryTip}`;
+    let text = "";
+    
+    if (activeTab === 'response') {
+      text = `${language === 'fr' ? 'INTRODUCTION' : 'INTRODUCTION'}:\n${currentAnswer.response.introduction}\n\n`;
+      text += `${language === 'fr' ? 'IDÉE PRINCIPALE' : 'MAIN IDEA'}:\n${currentAnswer.response.mainIdea}\n\n`;
+      text += `${language === 'fr' ? 'EXEMPLE' : 'EXAMPLE'}:\n${currentAnswer.response.example}\n\n`;
+      text += `${language === 'fr' ? 'BÉNÉFICE' : 'BENEFIT'}:\n${currentAnswer.response.benefit}\n\n`;
+      text += `${language === 'fr' ? 'CONCLUSION' : 'CONCLUSION'}:\n${currentAnswer.response.conclusion}`;
+    } else if (activeTab === 'analysis') {
+      text = `${language === 'fr' ? 'ANALYSE CRITIQUE' : 'CRITICAL ANALYSIS'}:\n\n`;
+      text += `${language === 'fr' ? '• Force principale: ' : '• Main strength: '}${currentAnswer.analysis.strength}\n\n`;
+      text += `${language === 'fr' ? '• Point à améliorer: ' : '• Point to improve: '}${currentAnswer.analysis.improvement}\n\n`;
+      text += `${language === 'fr' ? '• Alignement avec les valeurs de l\'école: ' : '• Alignment with school values: '}${currentAnswer.analysis.alignment}\n\n`;
+      text += `${language === 'fr' ? '• Pertinence de l\'exemple: ' : '• Relevance of the example: '}${currentAnswer.analysis.relevance}\n\n`;
+      text += `${language === 'fr' ? '• Clarté et impact à l\'oral: ' : '• Clarity and oral impact: '}${currentAnswer.analysis.clarity}`;
+    } else if (activeTab === 'exercise') {
+      text = `${language === 'fr' ? 'EXERCICE D\'ENTRAÎNEMENT' : 'TRAINING EXERCISE'}:\n\n${currentAnswer.exercise}`;
+    } else if (activeTab === 'similarQuestions') {
+      text = `${language === 'fr' ? 'QUESTIONS SIMILAIRES' : 'SIMILAR QUESTIONS'}:\n\n`;
+      currentAnswer.similarQuestions.forEach((q, i) => {
+        text += `${i + 1}. ${q}\n`;
+      });
+    }
     
     navigator.clipboard.writeText(text);
     
     toast({
       title: language === 'fr' ? "Copié !" : "Copied!",
       description: language === 'fr' 
-        ? "La réponse a été copiée dans le presse-papiers." 
-        : "The answer has been copied to clipboard."
+        ? "La section a été copiée dans le presse-papiers." 
+        : "The section has been copied to clipboard."
     });
   };
 
@@ -160,6 +185,10 @@ const GeneratorPage = () => {
     return language === 'fr'
       ? "Ex: Quels sont vos trois défauts ?"
       : "Ex: What are your three weaknesses?";
+  };
+
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
   };
 
   return (
@@ -220,8 +249,8 @@ const GeneratorPage = () => {
                 <CardDescription className="flex justify-between mt-1">
                   <span>
                     {language === 'fr'
-                      ? 'Réponse structurée selon la méthode STAR'
-                      : 'Structured answer using the STAR method'}
+                      ? 'Réponse complète avec analyse et conseils'
+                      : 'Complete answer with analysis and advice'}
                   </span>
                   <WordCountIndicator count={wordCount} target={250} tolerance={0.2} />
                 </CardDescription>
@@ -232,60 +261,114 @@ const GeneratorPage = () => {
             </div>
           </CardHeader>
           <CardContent className="pt-6">
-            <div className="space-y-6">
-              <div>
-                <h3 className="font-semibold mb-2 text-primary">
-                  {language === 'fr' ? 'ANGLE CLÉ' : 'KEY ANGLE'}
-                </h3>
-                <p className="text-gray-700 font-medium">{currentAnswer.angleKey}</p>
-              </div>
+            <Tabs value={activeTab} onValueChange={handleTabChange}>
+              <TabsList className="grid grid-cols-4 mb-6">
+                <TabsTrigger value="response">
+                  {language === 'fr' ? 'Réponse' : 'Response'}
+                </TabsTrigger>
+                <TabsTrigger value="analysis">
+                  {language === 'fr' ? 'Analyse' : 'Analysis'}
+                </TabsTrigger>
+                <TabsTrigger value="exercise">
+                  {language === 'fr' ? 'Exercice' : 'Exercise'}
+                </TabsTrigger>
+                <TabsTrigger value="similarQuestions">
+                  {language === 'fr' ? 'Questions similaires' : 'Similar Questions'}
+                </TabsTrigger>
+              </TabsList>
               
-              <div>
-                <h3 className="font-semibold mb-2 text-primary">
-                  {language === 'fr' ? 'STAR (Situation, Tâche, Action, Résultat)' : 'STAR (Situation, Task, Action, Result)'}
-                </h3>
-                <div className="space-y-3 pl-4 border-l-2 border-primary/30">
+              <TabsContent value="response" className="space-y-6">
+                <div>
+                  <h3 className="font-semibold mb-2 text-primary">
+                    {language === 'fr' ? 'INTRODUCTION' : 'INTRODUCTION'}
+                  </h3>
+                  <p className="text-gray-700">{currentAnswer.response.introduction}</p>
+                </div>
+                
+                <div>
+                  <h3 className="font-semibold mb-2 text-primary">
+                    {language === 'fr' ? 'IDÉE PRINCIPALE' : 'MAIN IDEA'}
+                  </h3>
+                  <p className="text-gray-700">{currentAnswer.response.mainIdea}</p>
+                </div>
+                
+                <div>
+                  <h3 className="font-semibold mb-2 text-primary">
+                    {language === 'fr' ? 'EXEMPLE' : 'EXAMPLE'}
+                  </h3>
+                  <p className="text-gray-700">{currentAnswer.response.example}</p>
+                </div>
+                
+                <div>
+                  <h3 className="font-semibold mb-2 text-primary">
+                    {language === 'fr' ? 'BÉNÉFICE' : 'BENEFIT'}
+                  </h3>
+                  <p className="text-gray-700">{currentAnswer.response.benefit}</p>
+                </div>
+                
+                <div>
+                  <h3 className="font-semibold mb-2 text-primary">
+                    {language === 'fr' ? 'CONCLUSION' : 'CONCLUSION'}
+                  </h3>
+                  <p className="text-gray-700">{currentAnswer.response.conclusion}</p>
+                </div>
+              </TabsContent>
+              
+              <TabsContent value="analysis" className="space-y-6">
+                <div className="space-y-4 pl-4 border-l-2 border-primary/30">
                   <div>
                     <h4 className="font-medium text-gray-800">
-                      {language === 'fr' ? 'Situation' : 'Situation'}
+                      {language === 'fr' ? 'Force principale' : 'Main strength'}
                     </h4>
-                    <p className="text-gray-700">{currentAnswer.star.situation}</p>
+                    <p className="text-gray-700">{currentAnswer.analysis.strength}</p>
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-800">
-                      {language === 'fr' ? 'Tâche' : 'Task'}
+                      {language === 'fr' ? 'Point à améliorer' : 'Point to improve'}
                     </h4>
-                    <p className="text-gray-700">{currentAnswer.star.task}</p>
+                    <p className="text-gray-700">{currentAnswer.analysis.improvement}</p>
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-800">
-                      {language === 'fr' ? 'Action' : 'Action'}
+                      {language === 'fr' ? 'Alignement avec les valeurs de l\'école' : 'Alignment with school values'}
                     </h4>
-                    <p className="text-gray-700">{currentAnswer.star.action}</p>
+                    <p className="text-gray-700">{currentAnswer.analysis.alignment}</p>
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-800">
-                      {language === 'fr' ? 'Résultat' : 'Result'}
+                      {language === 'fr' ? 'Pertinence de l\'exemple' : 'Relevance of the example'}
                     </h4>
-                    <p className="text-gray-700">{currentAnswer.star.result}</p>
+                    <p className="text-gray-700">{currentAnswer.analysis.relevance}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-gray-800">
+                      {language === 'fr' ? 'Clarté et impact à l\'oral' : 'Clarity and oral impact'}
+                    </h4>
+                    <p className="text-gray-700">{currentAnswer.analysis.clarity}</p>
                   </div>
                 </div>
-              </div>
+              </TabsContent>
               
-              <div>
-                <h3 className="font-semibold mb-2 text-primary">
-                  {language === 'fr' ? 'LIEN VALEUR AJOUTÉE' : 'VALUE-ADDED LINK'}
+              <TabsContent value="exercise" className="bg-amber-50 p-6 rounded-lg border border-amber-200">
+                <h3 className="font-semibold mb-4 text-amber-700">
+                  {language === 'fr' ? 'EXERCICE D\'ENTRAÎNEMENT' : 'TRAINING EXERCISE'}
                 </h3>
-                <p className="text-gray-700">{currentAnswer.valueLink}</p>
-              </div>
-
-              <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
-                <h3 className="font-semibold mb-2 text-amber-700">
-                  {language === 'fr' ? 'CONSEIL DE PRÉSENTATION' : 'DELIVERY TIP'}
+                <p className="text-amber-700">{currentAnswer.exercise}</p>
+              </TabsContent>
+              
+              <TabsContent value="similarQuestions" className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                <h3 className="font-semibold mb-4 text-blue-700">
+                  {language === 'fr' ? 'QUESTIONS SIMILAIRES À PRÉPARER' : 'SIMILAR QUESTIONS TO PREPARE'}
                 </h3>
-                <p className="text-amber-700 italic">{currentAnswer.deliveryTip}</p>
-              </div>
-            </div>
+                <ul className="list-disc pl-5 space-y-2">
+                  {currentAnswer.similarQuestions.map((question, index) => (
+                    <li key={index} className="text-blue-700">
+                      {question}
+                    </li>
+                  ))}
+                </ul>
+              </TabsContent>
+            </Tabs>
           </CardContent>
           <CardFooter className="border-t pt-4 flex justify-between">
             <Button variant="outline" onClick={() => setCurrentAnswer(null)}>
@@ -320,8 +403,8 @@ const GeneratorPage = () => {
                 <span className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">2</span>
                 <span>
                   {language === 'fr'
-                    ? "Notre système génère une réponse structurée selon la méthode STAR (Situation, Tâche, Action, Résultat)"
-                    : "Our system generates a structured answer using the STAR method (Situation, Task, Action, Result)"}
+                    ? "Notre système génère une réponse structurée avec analyse critique et conseils d'entraînement"
+                    : "Our system generates a structured answer with critical analysis and training advice"}
                 </span>
               </li>
               <li className="flex">
