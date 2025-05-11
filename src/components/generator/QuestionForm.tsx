@@ -2,7 +2,8 @@
 import React from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Info, ChevronUp, ChevronDown, Loader2 } from 'lucide-react';
+import { Info, ChevronUp, ChevronDown, Loader2, MessageSquare, Puzzle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 type QuestionFormProps = {
   question: string;
@@ -41,7 +42,22 @@ export const QuestionForm = ({
           className="flex-1"
         />
         <Button variant="outline" onClick={loadExample} className="whitespace-nowrap">
-          Voir un exemple
+          {language === 'fr' ? 'Voir un exemple' : 'See an example'}
+        </Button>
+      </div>
+      
+      <div className="flex flex-wrap gap-2 mb-2">
+        <Button variant="outline" size="sm" asChild className="flex items-center gap-1">
+          <Link to="/ecoles/emlyon">
+            <MessageSquare className="h-4 w-4" />
+            {language === 'fr' ? 'Questions EM Lyon' : 'EM Lyon Questions'}
+          </Link>
+        </Button>
+        <Button variant="outline" size="sm" asChild className="flex items-center gap-1">
+          <Link to="/ecoles/edhec">
+            <Puzzle className="h-4 w-4" />
+            {language === 'fr' ? 'Mots EDHEC' : 'EDHEC Words'}
+          </Link>
         </Button>
       </div>
       

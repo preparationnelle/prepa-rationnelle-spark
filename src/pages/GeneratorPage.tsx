@@ -5,12 +5,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useForm } from 'react-hook-form';
 import { useProgress } from '@/context/ProgressContext';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 // Import components
 import { QuestionForm } from '@/components/generator/QuestionForm';
 import { AdditionalInfoForm, AdditionalInfo } from '@/components/generator/AdditionalInfoForm';
 import { InfoPanel } from '@/components/generator/InfoPanel';
 import { ResponseCard } from '@/components/generator/ResponseCard';
+import { RandomWordGenerator } from '@/components/RandomWordGenerator';
 
 // Import hooks
 import { useGenerateAnswer } from '@/hooks/useGenerateAnswer';
@@ -28,6 +30,7 @@ const GeneratorPage = () => {
   const [language, setLanguage] = useState<'fr' | 'en'>('fr');
   const [activeTab, setActiveTab] = useState('response');
   const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
+  const [activeGeneratorTab, setActiveGeneratorTab] = useState('answer');
   
   // Form for additional information
   const additionalInfoForm = useForm<AdditionalInfo>({
@@ -77,68 +80,112 @@ const GeneratorPage = () => {
         {language === 'fr' ? 'Générateur de réponses d\'entretien' : 'Interview Answer Generator'}
       </h1>
       
-      <Card className="mb-8">
-        <CardHeader>
-          <div className="flex justify-between items-start">
-            <div>
-              <CardTitle>
-                {language === 'fr' ? 'Générer une nouvelle réponse' : 'Generate a new answer'}
-              </CardTitle>
-              <CardDescription>
-                {language === 'fr'
-                  ? "Entrez une question d'entretien pour obtenir une réponse structurée avec du storytelling"
-                  : "Enter an interview question to get a structured answer with storytelling"}
-              </CardDescription>
-            </div>
-            <ToggleGroup 
-              type="single" 
-              value={language} 
-              onValueChange={(value) => value && setLanguage(value as 'fr' | 'en')}
-            >
-              <ToggleGroupItem value="fr" aria-label="Français">
-                🇫🇷
-              </ToggleGroupItem>
-              <ToggleGroupItem value="en" aria-label="English">
-                🇬🇧
-              </ToggleGroupItem>
-            </ToggleGroup>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <QuestionForm
-            question={question}
-            setQuestion={setQuestion}
-            language={language}
-            showAdditionalInfo={showAdditionalInfo}
-            setShowAdditionalInfo={setShowAdditionalInfo}
-            loadExample={loadExample}
-            handleGenerate={handleGenerate}
-            generating={generating}
-          />
+      <Tabs value={activeGeneratorTab} onValueChange={setActiveGeneratorTab} className="w-full mb-8">
+        <TabsList className="grid w-full grid-cols-3 mb-6">
+          <TabsTrigger value="answer">
+            {language === 'fr' ? 'Réponse d\'entretien' : 'Interview Answer'}
+          </TabsTrigger>
+          <TabsTrigger value="emlyon">
+            {language === 'fr' ? 'Questions EM Lyon' : 'EM Lyon Questions'}
+          </TabsTrigger>
+          <TabsTrigger value="edhec">
+            {language === 'fr' ? 'Mots EDHEC' : 'EDHEC Words'}
+          </TabsTrigger>
+        </TabsList>
+        
+        <TabsContent value="answer">
+          <Card className="mb-8">
+            <CardHeader>
+              <div className="flex justify-between items-start">
+                <div>
+                  <CardTitle>
+                    {language === 'fr' ? 'Générer une nouvelle réponse' : 'Generate a new answer'}
+                  </CardTitle>
+                  <CardDescription>
+                    {language === 'fr'
+                      ? "Entrez une question d'entretien pour obtenir une réponse structurée avec du storytelling"
+                      : "Enter an interview question to get a structured answer with storytelling"}
+                  </CardDescription>
+                </div>
+                <ToggleGroup 
+                  type="single" 
+                  value={language} 
+                  onValueChange={(value) => value && setLanguage(value as 'fr' | 'en')}
+                >
+                  <ToggleGroupItem value="fr" aria-label="Français">
+                    🇫🇷
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="en" aria-label="English">
+                    🇬🇧
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <QuestionForm
+                question={question}
+                setQuestion={setQuestion}
+                language={language}
+                showAdditionalInfo={showAdditionalInfo}
+                setShowAdditionalInfo={setShowAdditionalInfo}
+                loadExample={loadExample}
+                handleGenerate={handleGenerate}
+                generating={generating}
+              />
+              
+              <AdditionalInfoForm 
+                language={language}
+                showAdditionalInfo={showAdditionalInfo}
+                form={additionalInfoForm}
+              />
+            </CardContent>
+          </Card>
           
-          <AdditionalInfoForm 
-            language={language}
-            showAdditionalInfo={showAdditionalInfo}
-            form={additionalInfoForm}
-          />
-        </CardContent>
-      </Card>
-      
-      {currentAnswer && (
-        <ResponseCard
-          question={question}
-          answer={currentAnswer}
-          wordCount={wordCount}
-          language={language}
-          activeTab={activeTab}
-          onTabChange={setActiveTab}
-          onClearAnswer={() => setCurrentAnswer(null)}
-        />
-      )}
-      
-      {!currentAnswer && !generating && (
-        <InfoPanel language={language} />
-      )}
+          {currentAnswer && (
+            <ResponseCard
+              question={question}
+              answer={currentAnswer}
+              wordCount={wordCount}
+              language={language}
+              activeTab={activeTab}
+              onTabChange={setActiveTab}
+              onClearAnswer={() => setCurrentAnswer(null)}
+            />
+          )}
+          
+          {!currentAnswer && !generating && (
+            <InfoPanel language={language} />
+          )}
+        </TabsContent>
+        
+        <TabsContent value="emlyon">
+          <Card>
+            <CardHeader>
+              <CardTitle>Questions d'entretien EM Lyon</CardTitle>
+              <CardDescription>
+                Questions aléatoires pour l'entretien "Flash" avec cartes thématiques
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <RandomWordGenerator type="emlyon" />
+            </CardContent>
+          </Card>
+        </TabsContent>
+        
+        <TabsContent value="edhec">
+          <Card>
+            <CardHeader>
+              <CardTitle>Générateur de mots EDHEC</CardTitle>
+              <CardDescription>
+                Générateur de mots aléatoires pour votre présentation EDHEC
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <RandomWordGenerator type="word" />
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };

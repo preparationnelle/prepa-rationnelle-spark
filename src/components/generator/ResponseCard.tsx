@@ -38,7 +38,7 @@ export const ResponseCard = ({
                   ? 'Réponse complète avec analyse et conseils'
                   : 'Complete answer with analysis and advice'}
               </span>
-              <WordCountIndicator count={wordCount} target={250} tolerance={0.2} />
+              <WordCountIndicator count={wordCount} target={250} tolerance={0.2} language={language} />
             </CardDescription>
           </div>
         </div>
