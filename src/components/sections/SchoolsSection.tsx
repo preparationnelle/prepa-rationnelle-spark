@@ -119,10 +119,11 @@ export const SchoolsSection = () => {
     <section className="py-16 px-4 bg-white" id="schools-section">
       <div className="container mx-auto">
         <h2 className="section-heading text-center mb-4">
-          Fiches écoles
+          Comprenez ce que chaque école <span className="gradient-text">attend vraiment</span> de vous
         </h2>
-        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-          Découvrez nos analyses des entretiens de personnalité des grandes écoles et préparez-vous efficacement.
+        <p className="text-center text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+          Découvrez des fiches claires et concrètes sur chaque école : leurs valeurs, leurs programmes, leurs particularités, 
+          les associations emblématiques, et ce qui les distingue vraiment dans le paysage des business schools.
         </p>
         
         <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
