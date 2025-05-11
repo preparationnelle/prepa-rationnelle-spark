@@ -1,27 +1,30 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { SchoolCard } from '../SchoolCard';
-import { skemaData, gemData, kedgeData, neomaData } from '@/data/schools';
 import { Link } from 'react-router-dom';
 import { 
-  User, Target, UsersRound, Sparkles, Map, Heart
+  User, Target, UsersRound, Sparkles, Map, Heart, ChevronDown
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { questionCategories } from '@/data/questionCards';
 
 export const SchoolsSection = () => {
+  const [showAllSchools, setShowAllSchools] = useState(false);
+  const [showAllCategories, setShowAllCategories] = useState(false);
+
   const schools = [
-    {
-      name: "ESCP Business School",
-      duration: "Entretien de 30 minutes, coefficient 12.",
-      feature: "Entretien structuré autour d'un questionnaire préalable.",
-      link: "/ecoles/escp"
-    },
     {
       name: "ESSEC Business School",
       duration: "Entretien de 30-45 minutes, coefficient 10.",
       feature: "Format approfondi avec mise en situation initiale.",
       link: "/ecoles/essec"
+    },
+    {
+      name: "ESCP Business School",
+      duration: "Entretien de 30 minutes, coefficient 12.",
+      feature: "Entretien structuré autour d'un questionnaire préalable.",
+      link: "/ecoles/escp"
     },
     {
       name: "EDHEC Business School",
@@ -36,7 +39,7 @@ export const SchoolsSection = () => {
       link: "/ecoles/emlyon"
     },
     {
-      name: skemaData.name,
+      name: "SKEMA Business School",
       duration: "Entretien de 25 minutes, coefficient 20.",
       feature: "CV fictif à 10 ans.",
       link: "/ecoles/skema"
@@ -48,19 +51,19 @@ export const SchoolsSection = () => {
       link: "/ecoles/audencia"
     },
     {
-      name: gemData.name,
+      name: "Grenoble École de Management",
       duration: "Entretien de 30 minutes, coefficient 10.",
       feature: "Format original avec entretien inversé.",
       link: "/ecoles/gem"
     },
     {
-      name: kedgeData.name,
+      name: "KEDGE Business School",
       duration: "Entretien de 30 minutes, coefficient 14.",
       feature: "Approche 'Grow by Doing' et questionnaire 'maison'.",
       link: "/ecoles/kedge"
     },
     {
-      name: neomaData.name,
+      name: "NEOMA Business School",
       duration: "Entretien de 30 minutes, coefficient 12.",
       feature: "Format structuré autour de la 'réussite responsable'.",
       link: "/ecoles/neoma"
@@ -107,6 +110,11 @@ export const SchoolsSection = () => {
     }
   ];
 
+  // Display only the first 3 schools or all schools based on state
+  const visibleSchools = showAllSchools ? schools : schools.slice(0, 3);
+  // Display only the first 2 categories or all categories based on state
+  const visibleCategories = showAllCategories ? displayedCategories : displayedCategories.slice(0, 2);
+
   return (
     <section className="py-16 px-4 bg-white" id="schools-section">
       <div className="container mx-auto">
@@ -118,7 +126,7 @@ export const SchoolsSection = () => {
         </p>
         
         <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {schools.map((school, index) => (
+          {visibleSchools.map((school, index) => (
             <SchoolCard 
               key={index}
               name={school.name}
@@ -129,6 +137,18 @@ export const SchoolsSection = () => {
           ))}
         </div>
         
+        {!showAllSchools && (
+          <div className="text-center mt-6">
+            <Button 
+              onClick={() => setShowAllSchools(true)} 
+              variant="outline"
+              className="flex items-center gap-2"
+            >
+              Voir toutes les écoles <ChevronDown className="h-4 w-4" />
+            </Button>
+          </div>
+        )}
+        
         {/* Question Categories Section */}
         <h2 className="section-heading text-center mt-20 mb-4">
           Banque de <span className="gradient-text">questions</span> d'entretien
@@ -138,7 +158,7 @@ export const SchoolsSection = () => {
         </p>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-8">
-          {displayedCategories.map((category) => (
+          {visibleCategories.map((category) => (
             <Link key={category.id} to={`/questions/${category.id}`} className="group">
               <Card className="bg-accent/50 border-0 hover:shadow-md transition-all h-full">
                 <CardContent className="p-6 flex flex-col items-center text-center">
@@ -153,6 +173,18 @@ export const SchoolsSection = () => {
           ))}
         </div>
         
+        {!showAllCategories && (
+          <div className="text-center mb-8">
+            <Button 
+              onClick={() => setShowAllCategories(true)} 
+              variant="outline"
+              className="flex items-center gap-2"
+            >
+              Voir toutes les catégories <ChevronDown className="h-4 w-4" />
+            </Button>
+          </div>
+        )}
+
         <div className="text-center">
           <Link to="/questions">
             <Button size="lg">
