@@ -124,6 +124,7 @@ Answer this interview question: "${question}"
 Respond only with a JSON object containing the keys: 'response' (with sub-keys introduction, mainIdea, example, benefit, conclusion), 'analysis' (with sub-keys strength, improvement, alignment, relevance, clarity), 'exercise', and 'similarQuestions'.
 `;
 
+    console.log("Sending request to OpenAI API...");
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -143,6 +144,7 @@ Respond only with a JSON object containing the keys: 'response' (with sub-keys i
     });
 
     const data = await response.json();
+    console.log("Received response from OpenAI API");
 
     if (data.error) {
       console.error("OpenAI API error:", data.error);
@@ -154,6 +156,7 @@ Respond only with a JSON object containing the keys: 'response' (with sub-keys i
 
     // Extract the content from the OpenAI response
     const content = data.choices[0].message.content;
+    console.log("Raw response content:", content);
     
     // Parse the JSON response from the content
     let answerData;
@@ -161,12 +164,43 @@ Respond only with a JSON object containing the keys: 'response' (with sub-keys i
       // The response might be wrapped in ```json and ``` markers, so we need to extract the JSON
       const jsonMatch = content.match(/```json\s*([\s\S]*?)\s*```/) || content.match(/{[\s\S]*}/);
       const jsonString = jsonMatch ? jsonMatch[0].replace(/```json|```/g, '') : content;
+      
+      console.log("Attempting to parse JSON:", jsonString);
       answerData = JSON.parse(jsonString);
+      console.log("Successfully parsed JSON");
     } catch (e) {
-      console.error("Error parsing JSON from OpenAI response:", e, content);
-      // If parsing fails, return the raw text as a fallback
+      console.error("Error parsing JSON from OpenAI response:", e);
+      console.log("Content that failed to parse:", content);
+      
+      // Try a more aggressive approach to extract JSON
+      try {
+        console.log("Trying alternative JSON extraction method");
+        // Find everything between first { and last }
+        const jsonPart = content.substring(content.indexOf('{'), content.lastIndexOf('}') + 1);
+        answerData = JSON.parse(jsonPart);
+        console.log("Alternative parsing succeeded");
+      } catch (e2) {
+        console.error("Alternative parsing also failed:", e2);
+        // If parsing fails, return the raw text as a fallback
+        return new Response(
+          JSON.stringify({ 
+            error: "Failed to parse response", 
+            raw: content 
+          }),
+          { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+    }
+
+    // Validate the structure of the parsed data
+    if (!answerData.response || !answerData.analysis || !answerData.exercise || !answerData.similarQuestions) {
+      console.error("Invalid response structure:", answerData);
       return new Response(
-        JSON.stringify({ error: "Failed to parse response", raw: content }),
+        JSON.stringify({ 
+          error: "Invalid response structure", 
+          raw: content,
+          parsed: answerData
+        }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
@@ -181,6 +215,7 @@ Respond only with a JSON object containing the keys: 'response' (with sub-keys i
     ].join(' ');
     
     const wordCount = countWords(fullAnswer);
+    console.log(`Generated answer with ${wordCount} words`);
 
     return new Response(
       JSON.stringify({ 
@@ -244,4 +279,3 @@ function createContextFromAdditionalInfo(info, language) {
   
   return contextLines.join('\n');
 }
-
