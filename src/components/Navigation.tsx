@@ -199,10 +199,7 @@ const Navigation = () => {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          {/* These links will always show, but will show the auth overlay if the user is not logged in */}
-          <Link to="/dashboard" className="text-gray-700 hover:text-primary transition" onClick={closeMenu}>
-            Tableau de bord
-          </Link>
+          {/* Removed the Dashboard link */}
           <Link to="/generator" className="text-gray-700 hover:text-primary transition" onClick={closeMenu}>
             Générateur
           </Link>
@@ -336,14 +333,7 @@ const Navigation = () => {
             </div>
           </div>
           
-          {/* These links will always show, but will show the auth overlay if the user is not logged in */}
-          <Link 
-            to="/dashboard" 
-            className="text-lg py-2 border-b border-gray-100"
-            onClick={closeMenu}
-          >
-            Tableau de bord
-          </Link>
+          {/* Removed the Dashboard link from mobile menu */}
           <Link 
             to="/generator" 
             className="text-lg py-2 border-b border-gray-100"
