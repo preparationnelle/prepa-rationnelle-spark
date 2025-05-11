@@ -5,65 +5,65 @@ export const edhecData: SchoolData = {
   name: "EDHEC Business School",
   shortDescription: "Excellence, Innovation, Engagement",
   presentation: {
-    title: "L'entretien EDHEC",
+    title: "Le triptyque EDHEC",
     content: [
-      "L'entretien EDHEC est une étape majeure du processus d'admission au Programme Grande École. D'une durée de 30 minutes, il vise à évaluer non seulement vos connaissances et votre parcours, mais surtout votre aptitude à penser sur vos pieds, votre créativité et votre capacité à vous adapter.",
-      "La particularité de cet entretien réside dans le format « mot-clé », où le candidat doit construire une présentation autour d'un mot tiré au hasard. Cette méthode permet aux évaluateurs de découvrir votre personnalité et votre façon de réagir face à l'inattendu."
+      "À l'EDHEC, l'épreuve orale d'admission ne se limite pas à un entretien classique. Elle se déroule sous forme d'une session globale d'environ 1h30 (coefficient 15) comprenant trois volets successifs : une présentation personnelle chronométrée avec un mot imposé, un travail de groupe sur un cas d'entreprise, et un entretien individuel classique de motivation.",
+      "Les candidats passent cette épreuve en groupe de 6 personnes, face à un jury de 3 évaluateurs. Ce format unique s'apparente à un assessment center et permet d'évaluer à la fois vos compétences individuelles et votre capacité à travailler en équipe."
     ],
     values: {
       title: "Les valeurs recherchées",
       content: [
-        "L'EDHEC valorise particulièrement l'ouverture d'esprit, l'innovation et l'esprit entrepreneurial. Le jury cherche à identifier des candidats qui incarnent la devise de l'école « Make an impact » - des personnes capables de sortir des sentiers battus et d'apporter de nouvelles perspectives.",
-        "Au-delà des compétences académiques, l'école recherche des profils équilibrés, démontrant un engagement dans des activités extrascolaires significatives et une réflexion mature sur leur projet professionnel."
+        "L'EDHEC met clairement l'accent sur l'esprit d'équipe, l'adaptabilité et la créativité. Le mot imposé dans la présentation sert à évaluer votre réactivité et votre aisance face à l'imprévu - ils cherchent des étudiants qui ne perdent pas leurs moyens et savent improviser avec assurance.",
+        "Le travail de groupe permet d'identifier les 'team players' : l'EDHEC valorise les profils capables de travailler collectivement, de communiquer efficacement, et de démontrer un leadership collaboratif, sans passivité ni domination agressive. L'école étant très orientée business concret, ils attendent que vous montriez un sens pratique et une compréhension des réalités de l'entreprise. Enfin, l'EDHEC valorise particulièrement les personnalités dynamiques et engagées dans la vie associative."
       ]
     }
   },
   keyPoints: [
     {
-      title: "Format spécifique",
-      description: "Présentation autour d'un mot tiré au hasard qui teste votre créativité et votre spontanéité"
+      title: "Format tripartite",
+      description: "Présentation avec mot imposé + travail de groupe + entretien individuel, en 1h30 au total"
     },
     {
-      title: "Durée de 30 minutes",
-      description: "Environ 10 minutes de présentation personnelle et 20 minutes de questions-réponses"
+      title: "Épreuve collective",
+      description: "Session en groupe de 6 candidats face à un jury de 3 personnes"
     },
     {
-      title: "Jury mixte",
-      description: "Un professeur de l'école et un représentant du monde professionnel"
+      title: "Coefficient important",
+      description: "Coefficient 15, parmi les plus élevés des oraux de grandes écoles"
     },
     {
-      title: "Évaluation globale",
-      description: "Jugement sur votre personnalité, motivation, cohérence de parcours et potentiel"
+      title: "Évaluation complète",
+      description: "Jugement sur la personnalité, la réactivité, l'adaptabilité et l'esprit d'équipe"
     }
   ],
   interviewStyle: {
-    title: "Style d'entretien",
+    title: "Structure de l'épreuve",
     content: [
-      "L'EDHEC a adopté un style d'entretien semi-structuré, mêlant questions classiques et exercice de créativité autour d'un mot tiré au sort. Cette approche permet d'évaluer votre capacité à improviser et à structurer rapidement votre pensée.",
-      "Le jury commence généralement par vous demander de vous présenter, puis vous invite à développer votre réflexion autour du mot qui vous a été attribué. S'ensuivent des questions sur votre parcours, vos choix d'orientation et votre projet professionnel.",
-      "L'ambiance est généralement bienveillante mais exigeante. Les jurys EDHEC n'hésitent pas à vous pousser dans vos retranchements pour tester votre résistance au stress et votre capacité à défendre vos idées."
+      "1. Présentation personnelle avec mot imposé (4 minutes) : Chaque candidat doit se présenter pendant 4 minutes devant tout le groupe. La particularité : juste avant de commencer, le jury vous donne un mot aléatoire que vous devez intégrer spontanément dans votre présentation. Vous avez 60 secondes pour réfléchir, puis c'est parti pour votre monologue.",
+      "2. Travail de groupe (45 minutes) : Les 6 candidats s'installent autour d'une table avec des ordinateurs partagés. Vous visionnez une vidéo présentant un cas d'entreprise avec trois solutions possibles. En groupe, vous devez débattre pour choisir l'une des solutions et produire une synthèse écrite. L'objectif réel est d'évaluer votre comportement en équipe.",
+      "3. Entretien individuel (20 minutes) : Chaque candidat passe un entretien de motivation avec un membre du jury. Deux entretiens se déroulent en parallèle dans la même salle. C'est un format questions-réponses classique centré sur votre parcours et vos motivations pour l'EDHEC."
     ]
   },
   tips: [
     {
-      title: "Préparez-vous à l'exercice du mot aléatoire",
-      content: "Entraînez-vous à construire un discours cohérent autour de mots variés. L'objectif n'est pas de réciter un texte appris, mais de démontrer votre capacité à établir des liens pertinents entre ce mot et votre parcours ou votre personnalité."
+      title: "Pour la présentation avec mot imposé",
+      content: "Entraînez-vous à intégrer des mots aléatoires dans votre présentation. Gardez votre sang-froid et construisez un discours cohérent malgré la contrainte. Le jury apprécie l'humour et la créativité - n'hésitez pas à faire un clin d'œil autour du mot imposé, tout en restant pertinent. Exemples de mots récents : 'manège', 'indécis', 'violon', 'rose'."
     },
     {
-      title: "Soyez authentique",
-      content: "Ne cherchez pas à correspondre à un profil type. L'EDHEC valorise la diversité des parcours et des personnalités. Restez fidèle à vous-même tout en montrant comment vos qualités s'alignent avec les valeurs de l'école."
+      title: "Pour le travail de groupe",
+      content: "Évitez les deux extrêmes : l'effacement total ou la domination excessive. Trouvez un équilibre en participant activement tout en valorisant les contributions des autres. Proposez une méthode de travail dès le début (répartition des documents, tour de table). Utilisez les prénoms de vos coéquipiers et invitez les plus discrets à s'exprimer. Portez attention à la qualité de la synthèse finale."
     },
     {
-      title: "Structurez votre présentation",
-      content: "Même dans un exercice d'improvisation, une présentation structurée (introduction, développement, conclusion) fait toute la différence. Pensez à illustrer vos propos par des exemples concrets tirés de votre expérience."
+      title: "Pour l'entretien individuel",
+      content: "Même si vous êtes fatigué après le travail de groupe, restez dynamique et engagé. Préparez soigneusement vos motivations spécifiques pour l'EDHEC : ses spécificités, ses programmes, ses associations. Montrez que vous avez fait des recherches approfondies et que votre choix est réfléchi."
     },
     {
-      title: "Montrez votre impact",
-      content: "En accord avec la devise de l'école, démontrez comment vous avez pu faire une différence dans vos engagements passés et comment vous comptez avoir un impact positif à l'avenir."
+      title: "Sur l'attitude générale",
+      content: "L'ambiance EDHEC est généralement dynamique et bienveillante. Montrez votre enthousiasme et votre esprit d'équipe tout au long de l'épreuve. Les jurés observent constamment votre comportement, même pendant que vous interagissez avec les autres candidats. Restez authentique, souriant et ouvert aux idées des autres."
     },
     {
-      title: "Préparez des questions pertinentes",
-      content: "À la fin de l'entretien, vous aurez l'occasion de poser des questions. Préparez des interrogations réfléchies qui montrent votre intérêt sincère pour l'école et ses programmes spécifiques."
+      title: "Sur la préparation",
+      content: "Familiarisez-vous avec l'actualité économique et les cas d'entreprise. L'EDHEC étant orientée business, une bonne compréhension des enjeux du monde de l'entreprise est valorisée. Préparez-vous également à parler de vos engagements associatifs ou extra-scolaires, très importants dans la culture EDHEC."
     }
   ]
 };

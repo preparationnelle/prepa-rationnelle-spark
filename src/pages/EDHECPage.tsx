@@ -14,7 +14,11 @@ const EDHECPage = () => {
       
       {/* Générateur de mots aléatoires */}
       <div className="mb-10 mt-12">
-        <h2 className="text-2xl font-bold mb-6">Préparez votre entretien</h2>
+        <h2 className="text-2xl font-bold mb-6">Préparez votre entretien EDHEC</h2>
+        <p className="text-muted-foreground mb-6">
+          L'entretien EDHEC comporte une présentation avec un mot imposé. Entraînez-vous à intégrer 
+          des mots aléatoires dans votre discours grâce à notre générateur ci-dessous.
+        </p>
         <RandomWordGenerator type="word" />
       </div>
 
