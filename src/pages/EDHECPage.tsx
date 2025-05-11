@@ -1,35 +1,20 @@
+
 import React from 'react';
-import { 
-  Card, 
-  CardContent, 
-  CardHeader, 
-  CardTitle, 
-  CardDescription 
-} from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Separator } from '@/components/ui/separator';
-import { GraduationCap, Clock, Star, Award, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SchoolTemplate from '@/components/SchoolTemplate';
+import { edhecData } from '@/data/schools/edhec';
 import { RandomWordGenerator } from '@/components/RandomWordGenerator';
 
 const EDHECPage = () => {
   return (
     <div className="container mx-auto py-8 px-4">
-      <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-8">
-        <div>
-          <h1 className="text-3xl font-bold">EDHEC Business School</h1>
-          <p className="text-muted-foreground">Fiche école - Entretien de personnalité</p>
-        </div>
-        <Button variant="outline" asChild>
-          <Link to="/">Retour à l'accueil</Link>
-        </Button>
-      </div>
-
-      {/* Contenu existant de la page EDHEC */}
-
-      {/* Générateur de mots aléatoires uniquement */}
-      <div className="mb-10">
+      {/* Utilisation du template d'école avec les données EDHEC */}
+      <SchoolTemplate data={edhecData} />
+      
+      {/* Générateur de mots aléatoires */}
+      <div className="mb-10 mt-12">
+        <h2 className="text-2xl font-bold mb-6">Préparez votre entretien</h2>
         <RandomWordGenerator type="word" />
       </div>
 
