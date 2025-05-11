@@ -62,7 +62,20 @@ const HomePage = () => {
     <div className="min-h-screen bg-accent">
       <HeroSection />
       
-      {/* 1. Fiches écoles */}
+      {/* 1. Fiches écoles avec nouvelle introduction */}
+      <section className="py-16 px-4 bg-accent">
+        <div className="container mx-auto">
+          <h2 className="section-heading text-center mb-4">
+            Comprenez ce que chaque école <span className="gradient-text">attend vraiment</span> de vous
+          </h2>
+          <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+            Découvrez des fiches claires et concrètes sur chaque école : leurs valeurs, leurs programmes, leurs particularités, 
+            les associations emblématiques, et ce qui les distingue vraiment dans le paysage des business schools.
+          </p>
+        </div>
+      </section>
+      
+      {/* Intégration de la section des écoles existante */}
       <SchoolsSection />
       
       {/* 2. Comment Prepa Rationnelle vous aide */}

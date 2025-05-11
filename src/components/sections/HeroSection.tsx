@@ -26,11 +26,11 @@ export const HeroSection = () => {
             </div>
             
             <h1 className="hero-heading gradient-text mb-6 text-4xl md:text-5xl lg:text-6xl animate-fade-in">
-              Le guide ultime pour les entretiens de personnalité
+              Je vous aide à intégrer l'école de vos rêves
             </h1>
             
             <p className="text-base md:text-lg text-gray-700 mb-8 font-light leading-relaxed">
-              Tout le contenu dont vous avez <span className="font-medium">rêvé</span> pour préparer vos oraux : une plateforme qui combine <Link to="/calendar" className="text-primary font-medium underline hover:text-primary/80 transition-colors">coaching sur‑mesure</Link> et ressources stratégiques pour transformer votre entretien en véritable <span className="font-medium">atout</span>.
+              Vous avez bossé 2 ans. Maintenant, il faut <span className="font-medium">convaincre</span>. Une plateforme qui combine <Link to="/calendar" className="text-primary font-medium underline hover:text-primary/80 transition-colors">coaching sur‑mesure</Link> et ressources stratégiques pour transformer votre entretien en véritable <span className="font-medium">atout</span>.
             </p>
             
             <div className="flex flex-col sm:flex-row justify-start gap-4">
