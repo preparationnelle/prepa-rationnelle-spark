@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -16,9 +17,7 @@ import PostHogProvider from './providers/PostHogProvider';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import DashboardPage from './pages/DashboardPage';
 import GeneratorPage from './pages/GeneratorPage';
-import SubmissionPage from './pages/SubmissionPage';
 import CoachingPage from './pages/CoachingPage';
 import QuestionsPage from './pages/QuestionsPage';
 import QuestionCategoryPage from './pages/QuestionCategoryPage';
@@ -69,19 +68,9 @@ const App = () => (
                   <Route path="/methodes/storytelling" element={<StorytellingMethodePage />} />
                   <Route path="/methodes/tendre-perches" element={<TendrePerchesMethodePage />} />
                   <Route path="/methodes/finir-entretien" element={<FinirEntretienMethodePage />} />
-                  <Route path="/dashboard" element={
-                    <ProtectedRoute>
-                      <DashboardPage />
-                    </ProtectedRoute>
-                  } />
                   <Route path="/generator" element={
                     <ProtectedRoute>
                       <GeneratorPage />
-                    </ProtectedRoute>
-                  } />
-                  <Route path="/submission" element={
-                    <ProtectedRoute>
-                      <SubmissionPage />
                     </ProtectedRoute>
                   } />
                   <Route path="/coaching" element={
@@ -89,7 +78,7 @@ const App = () => (
                       <CoachingPage />
                     </ProtectedRoute>
                   } />
-                  {/* Calendar page is now publicly accessible */}
+                  {/* Calendar page is still publicly accessible */}
                   <Route path="/calendar" element={<FullCalendarPage />} />
                   <Route path="/questions" element={<QuestionsPage />} />
                   <Route path="/questions/:categoryId" element={<QuestionCategoryPage />} />
