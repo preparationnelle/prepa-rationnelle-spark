@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -54,8 +55,8 @@ const HomePage = () => {
     }
   ];
 
-  // Display only the first 2 methods or all methods based on state
-  const visibleMethods = showAllMethods ? methodsCards : methodsCards.slice(0, 2);
+  // Display only the first 3 methods or all methods based on state
+  const visibleMethods = showAllMethods ? methodsCards : methodsCards.slice(0, 3);
 
   return (
     <div className="min-h-screen bg-accent">
@@ -77,7 +78,7 @@ const HomePage = () => {
             Découvrez les méthodologies éprouvées pour structurer vos réponses et impressionner le jury lors de votre entretien.
           </p>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-8">
             {visibleMethods.map((method, index) => (
               <Card key={index} className="h-full flex flex-col hover:shadow-lg transition-all">
                 <CardContent className="p-6 flex flex-col items-center text-center flex-grow">

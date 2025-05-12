@@ -112,8 +112,8 @@ export const SchoolsSection = () => {
 
   // Display only the first 3 schools or all schools based on state
   const visibleSchools = showAllSchools ? schools : schools.slice(0, 3);
-  // Display only the first 2 categories or all categories based on state
-  const visibleCategories = showAllCategories ? displayedCategories : displayedCategories.slice(0, 2);
+  // Display only the first 3 categories or all categories based on state
+  const visibleCategories = showAllCategories ? displayedCategories : displayedCategories.slice(0, 3);
 
   return (
     <section className="py-16 px-4 bg-white" id="schools-section">
@@ -158,7 +158,7 @@ export const SchoolsSection = () => {
           Préparez-vous efficacement avec notre bibliothèque de questions classées par catégorie.
         </p>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-8">
           {visibleCategories.map((category) => (
             <Link key={category.id} to={`/questions/${category.id}`} className="group">
               <Card className="bg-accent/50 border-0 hover:shadow-md transition-all h-full">
