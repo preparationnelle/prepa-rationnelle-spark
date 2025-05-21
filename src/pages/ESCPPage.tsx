@@ -108,7 +108,7 @@ const ESCPPage = () => {
                   <span className="text-sm font-semibold text-primary">3</span>
                 </div>
                 <div>
-                  <p className="font-medium">Jury chaleureux</p>
+                  <p className="font-medium">Jury </p>
                   <p className="text-sm text-muted-foreground">2-3 personnes (prof + alumni)</p>
                 </div>
               </li>
