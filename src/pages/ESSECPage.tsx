@@ -48,8 +48,7 @@ const ESSECPage = () => {
               moindres détails.
             </p>
             <p className="mb-4">
-              L'un des jurés vient vous chercher et vous emmène dans la salle où les tables sont disposées… en carré, 
-              de sorte que vous êtes "encerclé" (pas de panique, c'est leur configuration habituelle).
+              
             </p>
             <p>
               Au début de l'entretien, il y a souvent une mise en situation de 5 minutes : le jury vous expose un cas 
@@ -63,7 +62,8 @@ const ESSECPage = () => {
               Ce que l'ESSEC valorise
             </h3>
             <p className="mb-4">
-              Son credo étant "Ensemble, faire bouger les lignes", l'ESSEC cherche des étudiants à fort potentiel de croissance, 
+              Son credo étant "Enlighten.
+Lead. Change", l'ESSEC cherche des étudiants à fort potentiel de croissance, 
               capables d'analyse poussée et dotés d'ouverture d'esprit.
             </p>
             <p className="mb-4">
