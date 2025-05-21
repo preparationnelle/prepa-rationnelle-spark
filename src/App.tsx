@@ -9,6 +9,7 @@ import { ProgressProvider } from './context/ProgressContext';
 import Navigation from './components/Navigation';
 import ProtectedRoute from './components/ProtectedRoute';
 import ScrollToTop from './components/ScrollToTop';
+import ChatWidget from './components/chat/ChatWidget';
 
 // Import PostHog initializer
 import { initPostHog } from './integrations/posthog/client';
@@ -95,6 +96,7 @@ const App = () => (
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
+              <ChatWidget />
             </div>
           </BrowserRouter>
         </TooltipProvider>

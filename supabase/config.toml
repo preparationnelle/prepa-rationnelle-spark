@@ -1,12 +1,7 @@
 
 project_id = "xamkaphelshsavcacbdy"
+[functions.chat-ai-assistant]
+verify_jwt = false
 
-[auth]
-enabled = true
-
-[functions]
-[functions.generate-plan]
-verify_jwt = true
-
-[functions.generate-interview-answer]
-verify_jwt = true
+[functions.send-contact-email]
+verify_jwt = false
