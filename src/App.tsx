@@ -1,106 +1,124 @@
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "@/components/ui/toaster"
 
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AuthProvider } from './context/AuthContext';
-import { ProgressProvider } from './context/ProgressContext';
-import Navigation from './components/Navigation';
-import ProtectedRoute from './components/ProtectedRoute';
-import ScrollToTop from './components/ScrollToTop';
+// Import pages
+import HomePage from '@/pages/HomePage';
+import LoginPage from '@/pages/LoginPage';
+import RegisterPage from '@/pages/RegisterPage';
+import QuestionsPage from '@/pages/QuestionsPage';
+import QuestionCategoryPage from '@/pages/QuestionCategoryPage';
+import GeneratorPage from '@/pages/GeneratorPage';
+import InterviewSimulatorPage from '@/pages/InterviewSimulatorPage';
+import SchoolTemplate from '@/pages/SchoolTemplate';
+import ESSECPage from '@/pages/ESSECPage';
+import ESCPPage from '@/pages/ESCPPage';
+import EMLyonPage from '@/pages/EMLyonPage';
+import EDHECPage from '@/pages/EDHECPage';
+import NEOMAPage from '@/pages/NEOMAPage';
+import SKEMAPage from '@/pages/SKEMAPage';
+import KEDGEPage from '@/pages/KEDGEPage';
+import AudenciaPage from '@/pages/AudenciaPage';
+import GEMPage from '@/pages/GEMPage';
+import FullCalendarPage from '@/pages/FullCalendarPage';
+import CoachingPage from '@/pages/CoachingPage';
+import DashboardPage from '@/pages/DashboardPage';
+import SubmissionPage from '@/pages/SubmissionPage';
+import PersonnaliteMethodePage from '@/pages/PersonnaliteMethodePage';
+import ProjetProfessionnelMethodePage from '@/pages/ProjetProfessionnelMethodePage';
+import MotivationEcoleMethodePage from '@/pages/MotivationEcoleMethodePage';
+import StorytellingMethodePage from '@/pages/StorytellingMethodePage';
+import TendrePerchesMethodePage from '@/pages/TendrePerchesMethodePage';
+import FinirEntretienMethodePage from '@/pages/FinirEntretienMethodePage';
+import ApiKeysPage from '@/pages/ApiKeysPage';
+import NotFound from '@/pages/NotFoundPage';
 
-// Import PostHog initializer
-import { initPostHog } from './integrations/posthog/client';
-import PostHogProvider from './providers/PostHogProvider';
+// Import components
+import Navigation from '@/components/Navigation';
+import AuthOverlay from '@/components/AuthOverlay';
+import Footer from '@/components/Footer';
 
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import GeneratorPage from './pages/GeneratorPage';
-import CoachingPage from './pages/CoachingPage';
-import QuestionsPage from './pages/QuestionsPage';
-import QuestionCategoryPage from './pages/QuestionCategoryPage';
-import PersonnaliteMethodePage from './pages/PersonnaliteMethodePage';
-import ProjetProfessionnelMethodePage from './pages/ProjetProfessionnelMethodePage';
-import MotivationEcoleMethodePage from './pages/MotivationEcoleMethodePage';
-import StorytellingMethodePage from './pages/StorytellingMethodePage';
-import TendrePerchesMethodePage from './pages/TendrePerchesMethodePage';
-import FinirEntretienMethodePage from './pages/FinirEntretienMethodePage';
-import ESCPPage from './pages/ESCPPage';
-import ESSECPage from './pages/ESSECPage';
-import EDHECPage from './pages/EDHECPage';
-import EMLyonPage from './pages/EMLyonPage';
-import SKEMAPage from './pages/SKEMAPage';
-import AudenciaPage from './pages/AudenciaPage';
-import GEMPage from './pages/GEMPage';
-import KEDGEPage from './pages/KEDGEPage';
-import NEOMAPage from './pages/NEOMAPage';
-import FullCalendarPage from './pages/FullCalendarPage';
-import InterviewSimulatorPage from './pages/InterviewSimulatorPage';
-import NotFound from "./pages/NotFound";
+// Import contexts
+import { AuthProvider } from '@/context/AuthContext';
+import { ProgressProvider } from '@/context/ProgressContext';
 
-// Initialize PostHog
-initPostHog();
+// Integrations
+import PostHogProvider from '@/providers/PostHogProvider';
 
-const queryClient = new QueryClient();
+// Utils
+function ScrollToTop() {
+  const { pathname } = useLocation();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <ProgressProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
+function App() {
+  const [isAuthOverlayOpen, setIsAuthOverlayOpen] = useState(false);
+
+  const openAuthOverlay = () => {
+    setIsAuthOverlayOpen(true);
+  };
+
+  const closeAuthOverlay = () => {
+    setIsAuthOverlayOpen(false);
+  };
+
+  return (
+    <BrowserRouter>
+      <AuthProvider>
+        <ProgressProvider>
+          <ThemeProvider defaultTheme="light">
+            <Toaster />
             <PostHogProvider />
             <ScrollToTop />
-            <div className="min-h-screen flex flex-col bg-background">
+            <div className="min-h-screen flex flex-col">
               <Navigation />
-              <main className="flex-1">
+              <AuthOverlay />
+              <main className="flex-grow">
                 <Routes>
                   <Route path="/" element={<HomePage />} />
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/register" element={<RegisterPage />} />
+                  <Route path="/questions" element={<QuestionsPage />} />
+                  <Route path="/questions/:categorySlug" element={<QuestionCategoryPage />} />
+                  <Route path="/generator" element={<GeneratorPage />} />
+                  <Route path="/interview-simulator" element={<InterviewSimulatorPage />} />
+                  <Route path="/hec" element={<SchoolTemplate school="HEC" />} />
+                  <Route path="/essec" element={<ESSECPage />} />
+                  <Route path="/escp" element={<ESCPPage />} />
+                  <Route path="/emlyon" element={<EMLyonPage />} />
+                  <Route path="/edhec" element={<EDHECPage />} />
+                  <Route path="/neoma" element={<NEOMAPage />} />
+                  <Route path="/skema" element={<SKEMAPage />} />
+                  <Route path="/kedge" element={<KEDGEPage />} />
+                  <Route path="/audencia" element={<AudenciaPage />} />
+                  <Route path="/gem" element={<GEMPage />} />
+                  <Route path="/calendar" element={<FullCalendarPage />} />
+                  <Route path="/coaching" element={<CoachingPage />} />
+                  <Route path="/dashboard" element={<DashboardPage />} />
+                  <Route path="/submissions/:id" element={<SubmissionPage />} />
+                  <Route path="/api-keys" element={<ApiKeysPage />} />
                   <Route path="/methodes/personnalite" element={<PersonnaliteMethodePage />} />
                   <Route path="/methodes/projet-professionnel" element={<ProjetProfessionnelMethodePage />} />
                   <Route path="/methodes/motivation-ecole" element={<MotivationEcoleMethodePage />} />
                   <Route path="/methodes/storytelling" element={<StorytellingMethodePage />} />
                   <Route path="/methodes/tendre-perches" element={<TendrePerchesMethodePage />} />
                   <Route path="/methodes/finir-entretien" element={<FinirEntretienMethodePage />} />
-                  <Route path="/generator" element={
-                    <ProtectedRoute>
-                      <GeneratorPage />
-                    </ProtectedRoute>
-                  } />
-                  <Route path="/coaching" element={
-                    <ProtectedRoute>
-                      <CoachingPage />
-                    </ProtectedRoute>
-                  } />
-                  {/* Calendar page is still publicly accessible */}
-                  <Route path="/calendar" element={<FullCalendarPage />} />
-                  <Route path="/questions" element={<QuestionsPage />} />
-                  <Route path="/questions/:categoryId" element={<QuestionCategoryPage />} />
-                  <Route path="/interview-simulator" element={<InterviewSimulatorPage />} />
-                  <Route path="/ecoles/escp" element={<ESCPPage />} />
-                  <Route path="/ecoles/essec" element={<ESSECPage />} />
-                  <Route path="/ecoles/edhec" element={<EDHECPage />} />
-                  <Route path="/ecoles/emlyon" element={<EMLyonPage />} />
-                  <Route path="/ecoles/skema" element={<SKEMAPage />} />
-                  <Route path="/ecoles/audencia" element={<AudenciaPage />} />
-                  <Route path="/ecoles/gem" element={<GEMPage />} />
-                  <Route path="/ecoles/kedge" element={<KEDGEPage />} />
-                  <Route path="/ecoles/neoma" element={<NEOMAPage />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
+              <Footer />
             </div>
-          </BrowserRouter>
-        </TooltipProvider>
-      </ProgressProvider>
-    </AuthProvider>
-  </QueryClientProvider>
-);
+          </ThemeProvider>
+        </ProgressProvider>
+      </AuthProvider>
+    </BrowserRouter>
+  );
+}
 
 export default App;
