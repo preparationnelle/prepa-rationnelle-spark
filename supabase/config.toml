@@ -10,9 +10,3 @@ verify_jwt = true
 
 [functions.generate-interview-answer]
 verify_jwt = true
-
-[functions.api-keys]
-verify_jwt = true
-
-[functions.validate-api-key]
-verify_jwt = false

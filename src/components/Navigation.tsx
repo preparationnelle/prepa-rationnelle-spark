@@ -1,165 +1,379 @@
 
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "@/context/AuthContext";
-import { useProgress } from "@/context/ProgressContext";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '@/context/AuthContext';
+import { Button } from '@/components/ui/button';
+import { 
+  LogOut, 
+  Menu, 
+  X, 
+  ChevronDown, 
+  FileText, 
+  Users, 
+  User, 
+  BookOpen, 
+  Package, 
+  Radio, 
+  Instagram, 
+  Linkedin,
+  GraduationCap
+} from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { useToast } from '@/components/ui/use-toast';
+
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Menu } from "lucide-react";
-import { useTheme } from "@/components/ui/use-theme";
-import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
+  DropdownMenuSeparator,
+} from '@/components/ui/dropdown-menu';
 
-export const Navigation = () => {
+const Navigation = () => {
   const { currentUser, logout } = useAuth();
-  const { trackPageVisit } = useProgress(); // Remove resetProgress as it doesn't exist
   const navigate = useNavigate();
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const { setTheme } = useTheme();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+  const { toast } = useToast();
 
-  const handleLogout = async () => {
-    await logout();
-    // Remove the resetProgress call
-    navigate("/login");
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
-  const mainNavItems = [
-    { title: "Préparer mon entretien", href: "/generator" },
-    { title: "Simulateur d'entretien", href: "/interview-simulator" },
-    { title: "Les écoles", href: "/questions" },
-    { title: "Coaching", href: "/coaching" },
-  ];
+  // Fermer le menu mobile lors du clic sur un lien
+  const closeMenu = () => {
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+    }
+  };
 
-  const userNavItems = currentUser ? [
-    { title: "Mon tableau de bord", href: "/dashboard" },
-    { title: "Mes réponses", href: "/dashboard?tab=submissions" },
-    { title: "Mes clés API", href: "/api-keys" },
-    {
-      title: "Se déconnecter",
-      href: "#",
-      onClick: handleLogout,
-    },
-  ] : [
-    { title: "Se connecter", href: "/login" },
-    { title: "S'inscrire", href: "/register" },
-  ];
+  const handleLogout = async () => {
+    if (isLoggingOut) return; // Prevent multiple clicks
+    
+    setIsLoggingOut(true);
+    try {
+      console.log("Logging out user:", currentUser?.id);
+      await logout();
+      console.log("Logout successful, navigating to login page");
+      navigate('/login');
+    } catch (error) {
+      console.error('Logout error in Navigation:', error);
+      toast({
+        title: "Problème de déconnexion",
+        description: "Veuillez réessayer. Si le problème persiste, rafraîchissez la page.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoggingOut(false);
+    }
+  };
+
+  // Fonction pour naviguer vers une section spécifique
+  const navigateToSection = (path, sectionId) => {
+    closeMenu();
+    navigate(path);
+    // Donner le temps à la page de se charger avant de défiler vers la section
+    setTimeout(() => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
 
   return (
-    <header className="bg-background sticky top-0 z-50 border-b">
-      <div className="container flex h-16 items-center justify-between py-4">
-        <Link to="/" className="font-bold text-2xl">
-          Prepa Rationnelle
+    <header className="bg-white shadow-sm border-b border-gray-100">
+      <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
+        <Link to="/" className="flex items-center" onClick={closeMenu}>
+          <img 
+            src="/lovable-uploads/73c4719b-7030-411f-8d46-20d32035daba.png" 
+            alt="Prepa Rationnelle Logo" 
+            className="h-10 mr-2"
+          />
+          <span className="text-xl font-bold text-primary">Prepa Rationnelle</span>
         </Link>
+
+        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6">
-          <nav className="flex items-center space-x-6">
-            {mainNavItems.map((item) => (
-              <Link key={item.href} to={item.href} className="text-sm font-medium hover:underline">
-                {item.title}
-              </Link>
-            ))}
-          </nav>
-          {currentUser ? (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                  <Avatar className="h-8 w-8">
-                    <AvatarImage src={currentUser?.user_metadata?.avatar_url || ""} alt={currentUser?.user_metadata?.full_name || "Profile"} />
-                    <AvatarFallback>{currentUser?.user_metadata?.full_name?.charAt(0).toUpperCase() || "U"}</AvatarFallback>
-                  </Avatar>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56" align="end" forceMount>
-                <DropdownMenuLabel>Mon compte</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                {userNavItems.slice(0, userNavItems.length - 1).map((item) => (
-                  <DropdownMenuItem key={item.title} asChild>
-                    <Link to={item.href}>{item.title}</Link>
-                  </DropdownMenuItem>
-                ))}
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={handleLogout}>Se déconnecter</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          ) : (
-            <div className="flex items-center space-x-4">
-              <Link to="/login" className="text-sm font-medium hover:underline">
-                Se connecter
-              </Link>
-              <Link to="/register">
-                <Button size="sm">S'inscrire</Button>
-              </Link>
-            </div>
-          )}
-           <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme => theme === "light" ? "dark" : "light")}
-            >
-              <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
-            </Button>
-        </div>
-        <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-          <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="md:hidden">
-              <Menu className="h-5 w-5" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="left" className="sm:max-w-sm">
-            <SheetHeader>
-              <SheetTitle>Menu</SheetTitle>
-              <SheetDescription>
-                Explorez les différentes sections de Prepa Rationnelle.
-              </SheetDescription>
-            </SheetHeader>
-            <div className="grid gap-4 py-4">
-              {mainNavItems.map((item) => (
-                <Link key={item.href} to={item.href} className="block text-sm font-medium py-2 hover:underline">
-                  {item.title}
+          <Link to="/" className="text-gray-700 hover:text-primary transition" onClick={closeMenu}>
+            Accueil
+          </Link>
+          
+          {/* Menu déroulant "Ressources" modernisé */}
+          <DropdownMenu>
+            <DropdownMenuTrigger className="text-gray-700 hover:text-primary transition flex items-center gap-1 focus:outline-none">
+              Ressources
+              <ChevronDown className="h-4 w-4" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="center" className="w-64 bg-white rounded-lg shadow-lg border-0 p-2">
+              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                <Link to="/questions" onClick={closeMenu} className="flex items-center gap-3 w-full">
+                  <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <FileText className="h-4 w-4 text-primary" />
+                  </span>
+                  <span>Banque de questions d'entretien</span>
                 </Link>
-              ))}
-              <div className="border-t py-4">
-                {currentUser ? (
-                  <>
-                    {userNavItems.slice(0, userNavItems.length - 1).map((item) => (
-                      <Link key={item.title} to={item.href} className="block text-sm font-medium py-2 hover:underline">
-                        {item.title}
-                      </Link>
-                    ))}
-                    <Button variant="destructive" size="sm" className="w-full" onClick={handleLogout}>
-                      Se déconnecter
-                    </Button>
-                  </>
-                ) : (
-                  <>
-                    <Link to="/login" className="block text-sm font-medium py-2 hover:underline">
-                      Se connecter
-                    </Link>
-                    <Link to="/register">
-                      <Button size="sm" className="w-full">S'inscrire</Button>
-                    </Link>
-                  </>
-                )}
+              </DropdownMenuItem>
+
+              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 mt-1 transition-colors">
+                <Link to="/methodes/personnalite" onClick={closeMenu} className="flex items-center gap-3 w-full">
+                  <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <User className="h-4 w-4 text-primary" />
+                  </span>
+                  <span>Préparer son entretien de personnalité</span>
+                </Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 mt-1 transition-colors">
+                <Link to="/coaching" onClick={closeMenu} className="flex items-center gap-3 w-full">
+                  <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <Users className="h-4 w-4 text-primary" />
+                  </span>
+                  <span>Coaching individuel</span>
+                </Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuSeparator className="my-2" />
+              
+              <DropdownMenuItem 
+                onClick={() => navigateToSection('/', 'schools-section')} 
+                className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors cursor-pointer"
+              >
+                <div className="flex items-center gap-3 w-full">
+                  <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <GraduationCap className="h-4 w-4 text-primary" />
+                  </span>
+                  <span>Fiches écoles</span>
+                </div>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem 
+                onClick={() => navigateToSection('/', 'pricing-section')} 
+                className="hover:bg-primary/10 rounded-md px-3 py-2 mt-1 transition-colors cursor-pointer"
+              >
+                <div className="flex items-center gap-3 w-full">
+                  <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <Package className="h-4 w-4 text-primary" />
+                  </span>
+                  <span>Nos formules</span>
+                </div>
+              </DropdownMenuItem>
+              
+              <DropdownMenuSeparator className="my-2" />
+              
+              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                <a 
+                  href="https://www.europe1.fr/emissions/la-france-bouge-academie/prepa-rationnelle-concue-pour-revolutionner-le-monde-la-preparation-pour-integrer-les-ecoles-de-commerce-667526" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-3 w-full"
+                >
+                  <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <Radio className="h-4 w-4 text-primary" />
+                  </span>
+                  <span>Notre interview sur Europe 1</span>
+                </a>
+              </DropdownMenuItem>
+              
+              <DropdownMenuSeparator className="my-2" />
+              
+              <div className="flex justify-center gap-4 py-2">
+                <a 
+                  href="https://instagram.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-10 h-10 bg-gray-100 hover:bg-primary/10 rounded-full flex items-center justify-center transition-colors"
+                >
+                  <Instagram className="h-5 w-5 text-primary" />
+                </a>
+                
+                <a 
+                  href="https://linkedin.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-10 h-10 bg-gray-100 hover:bg-primary/10 rounded-full flex items-center justify-center transition-colors"
+                >
+                  <Linkedin className="h-5 w-5 text-primary" />
+                </a>
+              </div>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* Removed the Dashboard link */}
+          <Link to="/generator" className="text-gray-700 hover:text-primary transition" onClick={closeMenu}>
+            Générateur
+          </Link>
+
+          {currentUser ? (
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={() => {
+                handleLogout();
+                closeMenu();
+              }} 
+              className="flex items-center"
+              disabled={isLoggingOut}
+            >
+              <LogOut className="mr-2 h-4 w-4" /> 
+              {isLoggingOut ? 'Déconnexion...' : 'Déconnexion'}
+            </Button>
+          ) : (
+            <>
+              <Link to="/login" className="text-gray-700 hover:text-primary transition" onClick={closeMenu}>
+                Connexion
+              </Link>
+              <Link to="/register" onClick={closeMenu}>
+                <Button>S'inscrire</Button>
+              </Link>
+            </>
+          )}
+        </div>
+
+        {/* Mobile Navigation Toggle */}
+        <div className="md:hidden">
+          <Button variant="ghost" size="icon" onClick={toggleMenu} aria-label="Toggle Menu">
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </Button>
+        </div>
+      </nav>
+
+      {/* Mobile Navigation Menu */}
+      <div
+        className={cn(
+          "fixed inset-0 z-50 bg-white transform transition-transform duration-300 ease-in-out pt-20",
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
+        )}
+      >
+        <div className="container mx-auto px-4 flex flex-col space-y-4">
+          <Link 
+            to="/" 
+            className="text-lg py-2 border-b border-gray-100"
+            onClick={closeMenu}
+          >
+            Accueil
+          </Link>
+          
+          {/* Menu mobile modernisé */}
+          <div className="space-y-2 py-2 border-b border-gray-100">
+            <h3 className="text-lg font-medium text-primary">Ressources</h3>
+            <div className="pl-4 flex flex-col space-y-4">
+              <Link to="/questions" onClick={closeMenu} className="flex items-center gap-3">
+                <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <FileText className="h-4 w-4 text-primary" />
+                </span>
+                <span>Banque de questions d'entretien</span>
+              </Link>
+              
+              <Link to="/methodes/personnalite" onClick={closeMenu} className="flex items-center gap-3">
+                <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <User className="h-4 w-4 text-primary" />
+                </span>
+                <span>Entretien de personnalité</span>
+              </Link>
+              
+              <Link to="/coaching" onClick={closeMenu} className="flex items-center gap-3">
+                <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Users className="h-4 w-4 text-primary" />
+                </span>
+                <span>Coaching individuel</span>
+              </Link>
+              
+              <div 
+                onClick={() => navigateToSection('/', 'schools-section')}
+                className="flex items-center gap-3 cursor-pointer"
+              >
+                <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <GraduationCap className="h-4 w-4 text-primary" />
+                </span>
+                <span>Fiches écoles</span>
+              </div>
+              
+              <div 
+                onClick={() => navigateToSection('/', 'pricing-section')}
+                className="flex items-center gap-3 cursor-pointer"
+              >
+                <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Package className="h-4 w-4 text-primary" />
+                </span>
+                <span>Nos formules</span>
+              </div>
+              
+              <a 
+                href="https://www.europe1.fr/emissions/la-france-bouge-academie/prepa-rationnelle-concue-pour-revolutionner-le-monde-la-preparation-pour-integrer-les-ecoles-de-commerce-667526" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-3"
+                onClick={closeMenu}
+              >
+                <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Radio className="h-4 w-4 text-primary" />
+                </span>
+                <span>Interview Europe 1</span>
+              </a>
+              
+              <div className="flex gap-4 py-2">
+                <a 
+                  href="https://instagram.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-10 h-10 bg-gray-100 hover:bg-primary/10 rounded-full flex items-center justify-center transition-colors"
+                >
+                  <Instagram className="h-5 w-5 text-primary" />
+                </a>
+                <a 
+                  href="https://linkedin.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-10 h-10 bg-gray-100 hover:bg-primary/10 rounded-full flex items-center justify-center transition-colors"
+                >
+                  <Linkedin className="h-5 w-5 text-primary" />
+                </a>
               </div>
             </div>
-          </SheetContent>
-        </Sheet>
+          </div>
+          
+          {/* Removed the Dashboard link from mobile menu */}
+          <Link 
+            to="/generator" 
+            className="text-lg py-2 border-b border-gray-100"
+            onClick={closeMenu}
+          >
+            Générateur
+          </Link>
+          
+          {currentUser ? (
+            <Button 
+              variant="outline" 
+              onClick={() => {
+                handleLogout();
+                closeMenu();
+              }} 
+              className="mt-4 w-full flex items-center justify-center"
+              disabled={isLoggingOut}
+            >
+              <LogOut className="mr-2 h-4 w-4" /> 
+              {isLoggingOut ? 'Déconnexion...' : 'Déconnexion'}
+            </Button>
+          ) : (
+            <>
+              <Link 
+                to="/login" 
+                className="text-lg py-2 border-b border-gray-100"
+                onClick={closeMenu}
+              >
+                Connexion
+              </Link>
+              <Link 
+                to="/register" 
+                onClick={closeMenu}
+                className="mt-4"
+              >
+                <Button className="w-full">S'inscrire</Button>
+              </Link>
+            </>
+          )}
+        </div>
       </div>
     </header>
   );
