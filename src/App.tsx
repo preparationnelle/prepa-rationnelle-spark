@@ -37,7 +37,6 @@ import NotFound from '@/pages/NotFound';
 
 // Import components
 import { Navigation } from '@/components/Navigation';
-import AuthOverlay from '@/components/AuthOverlay';
 import { Footer } from '@/components/Footer';
 
 // Import contexts
@@ -59,16 +58,6 @@ function ScrollToTop() {
 }
 
 function App() {
-  const [isAuthOverlayOpen, setIsAuthOverlayOpen] = useState(false);
-
-  const openAuthOverlay = () => {
-    setIsAuthOverlayOpen(true);
-  };
-
-  const closeAuthOverlay = () => {
-    setIsAuthOverlayOpen(false);
-  };
-
   return (
     <BrowserRouter>
       <AuthProvider>
@@ -79,7 +68,6 @@ function App() {
             <ScrollToTop />
             <div className="min-h-screen flex flex-col">
               <Navigation />
-              <AuthOverlay />
               <main className="flex-grow">
                 <Routes>
                   <Route path="/" element={<HomePage />} />
@@ -89,7 +77,7 @@ function App() {
                   <Route path="/questions/:categorySlug" element={<QuestionCategoryPage />} />
                   <Route path="/generator" element={<GeneratorPage />} />
                   <Route path="/interview-simulator" element={<InterviewSimulatorPage />} />
-                  <Route path="/hec" element={<SchoolTemplate school="HEC" />} />
+                  <Route path="/hec" element={<SchoolTemplate schoolName="HEC" />} />
                   <Route path="/essec" element={<ESSECPage />} />
                   <Route path="/escp" element={<ESCPPage />} />
                   <Route path="/emlyon" element={<EMLyonPage />} />

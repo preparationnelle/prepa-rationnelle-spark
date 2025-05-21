@@ -2,8 +2,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/context/AuthContext';
 
-const AuthOverlay: React.FC = () => {
+const AuthOverlay: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
+  if (!isVisible) return null;
+  
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-md bg-black/30">
       <div className="bg-white p-8 rounded-lg shadow-xl max-w-md w-full text-center">
