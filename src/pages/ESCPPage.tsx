@@ -58,7 +58,7 @@ const ESCPPage = () => {
               Ce que l'ESCP valorise
             </h3>
             <p className="mb-4">
-              L'ESCP, en tant qu'école multicampus européenne (Paris, Londres, Berlin, Turin, Madrid et Warsovie), valorise les profils ouverts sur le monde, 
+              L'ESCP, en tant qu'école multicampus européenne (Paris, Londres, Berlin, Turin, Madrid et Varsovie), valorise les profils ouverts sur le monde, 
               capables de s'adapter à des environnements variés. Ses valeurs mises en avant incluent l'excellence 
               académique, la créativité, la pluralité culturelle et l'humilité.
             </p>
