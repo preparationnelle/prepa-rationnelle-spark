@@ -37,7 +37,7 @@ const ESCPPage = () => {
           <CardContent>
             <p className="mb-4">
               <span className="font-semibold">Un entretien classique, format court :</span> À l'ESCP, 
-              l'entretien de personnalité dure 30 minutes environ, coefficient 12 – c'est l'un des plus courts. 
+              l'entretien de personnalité dure 30 minutes environ, coefficient 12 . 
               Il est très structuré et classique dans la forme.
             </p>
             <p className="mb-4">
@@ -58,7 +58,7 @@ const ESCPPage = () => {
               Ce que l'ESCP valorise
             </h3>
             <p className="mb-4">
-              L'ESCP, en tant qu'école multicampus européenne, valorise les profils ouverts sur le monde, 
+              L'ESCP, en tant qu'école multicampus européenne (Paris, Londres, Berlin, Turin, Madrid et Warsovie), valorise les profils ouverts sur le monde, 
               capables de s'adapter à des environnements variés. Ses valeurs mises en avant incluent l'excellence 
               académique, la créativité, la pluralité culturelle et l'humilité.
             </p>
@@ -69,8 +69,8 @@ const ESCPPage = () => {
               ou leurs passions (sans être farfelus).
             </p>
             <p>
-              Mais attention, l'ESCP reste une "parisienne" sélective : elle attend aussi une certaine sophistication 
-              dans les réponses, de l'élégance d'esprit et beaucoup de motivation pour l'école (montrez-leur que 
+              Mais attention, l'ESCP reste une "parisienne" sélective : elle attend aussi    
+           beaucoup de motivation pour l'école (montrez-leur que 
               l'ESCP n'est pas un choix par défaut mais votre choix).
             </p>
           </CardContent>
