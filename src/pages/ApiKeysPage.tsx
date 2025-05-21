@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { ApiKeyManager } from '@/components/ApiKeyManager';
-import { ProtectedRoute } from '@/components/ProtectedRoute';
+import ProtectedRoute from '@/components/ProtectedRoute';
 
 const ApiKeysPage = () => {
   return (

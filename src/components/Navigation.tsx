@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
@@ -20,20 +21,20 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, User } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useTheme } from "@/components/ui/use-theme";
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
 
 export const Navigation = () => {
   const { currentUser, logout } = useAuth();
-  const { resetProgress } = useProgress();
+  const { trackPageVisit } = useProgress(); // Remove resetProgress as it doesn't exist
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const { setTheme } = useTheme();
 
   const handleLogout = async () => {
     await logout();
-    resetProgress();
+    // Remove the resetProgress call
     navigate("/login");
   };
 
@@ -163,3 +164,5 @@ export const Navigation = () => {
     </header>
   );
 };
+
+export default Navigation;

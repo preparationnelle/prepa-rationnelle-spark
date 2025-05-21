@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { ThemeProvider } from "@/components/theme-provider"
@@ -11,7 +12,7 @@ import QuestionsPage from '@/pages/QuestionsPage';
 import QuestionCategoryPage from '@/pages/QuestionCategoryPage';
 import GeneratorPage from '@/pages/GeneratorPage';
 import InterviewSimulatorPage from '@/pages/InterviewSimulatorPage';
-import SchoolTemplate from '@/pages/SchoolTemplate';
+import SchoolTemplate from '@/components/SchoolTemplate';
 import ESSECPage from '@/pages/ESSECPage';
 import ESCPPage from '@/pages/ESCPPage';
 import EMLyonPage from '@/pages/EMLyonPage';
@@ -32,12 +33,12 @@ import StorytellingMethodePage from '@/pages/StorytellingMethodePage';
 import TendrePerchesMethodePage from '@/pages/TendrePerchesMethodePage';
 import FinirEntretienMethodePage from '@/pages/FinirEntretienMethodePage';
 import ApiKeysPage from '@/pages/ApiKeysPage';
-import NotFound from '@/pages/NotFoundPage';
+import NotFound from '@/pages/NotFound';
 
 // Import components
-import Navigation from '@/components/Navigation';
+import { Navigation } from '@/components/Navigation';
 import AuthOverlay from '@/components/AuthOverlay';
-import Footer from '@/components/Footer';
+import { Footer } from '@/components/Footer';
 
 // Import contexts
 import { AuthProvider } from '@/context/AuthContext';
