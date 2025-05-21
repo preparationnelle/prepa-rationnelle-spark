@@ -136,11 +136,10 @@ const ESCPPage = () => {
           </CardHeader>
           <CardContent>
             <p className="mb-4">
-              L'entretien ESCP est généralement bienveillant et cadré. Les jurys sont connus pour être chaleureux 
-              et souriants avec les candidats, mettant à l'aise pour faire ressortir leur personnalité.
+             Le jury est généralement composé de deux à trois personnes, incluant un professeur de l’école, un Alumni (ancien élève) et parfois un membre extérieur au corps professoral.
             </p>
             <p className="mb-4">
-              Cela ne veut pas dire qu'ils ne creuseront pas – ils le feront, mais avec diplomatie. Attendez-vous 
+              Attendez-vous 
               à beaucoup de questions directes tirées du questionnaire : si vous avez écrit que vous pratiquez la voile, 
               on vous demandera sans doute d'en parler plus en détail ; si vous indiquez vouloir tel secteur, pourquoi 
               ce choix, etc.
