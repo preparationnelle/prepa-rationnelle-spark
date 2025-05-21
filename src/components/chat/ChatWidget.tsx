@@ -4,7 +4,6 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Button } from '@/components/ui/button';
 import { Puzzle } from 'lucide-react';
 import AIChatOption from './AIChatOption';
-import TeamContactOption from './TeamContactOption';
 import WhatsAppOption from './WhatsAppOption';
 
 const ChatWidget = () => {
@@ -23,8 +22,6 @@ const ChatWidget = () => {
     switch (selectedOption) {
       case 'ai':
         return <AIChatOption onBack={handleReset} />;
-      case 'team':
-        return <TeamContactOption onBack={handleReset} />;
       case 'whatsapp':
         return <WhatsAppOption />;
       default:
@@ -37,15 +34,7 @@ const ChatWidget = () => {
               className="justify-start"
               onClick={() => handleOptionSelect('ai')}
             >
-              🤖 Réponse instantanée avec notre assistant IA
-            </Button>
-            
-            <Button 
-              variant="outline" 
-              className="justify-start"
-              onClick={() => handleOptionSelect('team')}
-            >
-              👤 Réponse personnalisée par un membre de l'équipe (sous 24h)
+              🤖 Poser une question à l'assistant IA
             </Button>
             
             <Button 
@@ -53,7 +42,7 @@ const ChatWidget = () => {
               className="justify-start"
               onClick={() => handleOptionSelect('whatsapp')}
             >
-              📲 Discuter directement sur WhatsApp
+              📲 Poser ta question directement sur WhatsApp
             </Button>
           </div>
         );
