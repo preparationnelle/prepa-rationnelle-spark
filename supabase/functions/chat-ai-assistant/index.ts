@@ -1,9 +1,11 @@
+
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
 };
 
 serve(async (req) => {
@@ -56,22 +58,21 @@ Tu es là pour aider les étudiants à comprendre comment réussir leur oral et 
     const data = await response.json();
     const text = data.choices[0].message.content;
 
-    // Add background completion to avoid keeping the connection open
-    const backgroundTracking = async () => {
-      try {
-        // Track usage stats here if needed
-        console.log(`AI assistant response sent: ${new Date().toISOString()}`);
-      } catch (e) {
-        console.error("Error in background task:", e);
-      }
-    };
-    
-    // Use waitUntil to avoid blocking the response
-    EdgeRuntime.waitUntil(backgroundTracking());
+    // Don't use waitUntil which can cause issues in some browsers
+    // Just log directly
+    console.log(`AI assistant response sent: ${new Date().toISOString()}`);
 
     return new Response(
       JSON.stringify({ text }),
-      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      { 
+        headers: { 
+          ...corsHeaders, 
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0',
+        } 
+      }
     );
   } catch (error) {
     console.error('Error in AI assistant function:', error);
@@ -80,7 +81,13 @@ Tu es là pour aider les étudiants à comprendre comment réussir leur oral et 
       JSON.stringify({ error: error.message }),
       { 
         status: 500, 
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+        headers: { 
+          ...corsHeaders, 
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0',
+        } 
       }
     );
   }

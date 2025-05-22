@@ -25,19 +25,25 @@ export function useProgressTracker() {
   const fetchCurrentProgress = async () => {
     if (!currentUser) return null;
     
-    const { data, error } = await supabase
-      .from('progress')
-      .select('*')
-      .eq('user_id', currentUser.id)
-      .eq('module', 'main')
-      .single();
+    try {
+      const { data, error } = await supabase
+        .from('progress')
+        .select('*')
+        .eq('user_id', currentUser.id)
+        .eq('module', 'main')
+        .limit(1)
+        .maybeSingle(); // Use maybeSingle instead of single to avoid errors
+        
+      if (error) {
+        console.error('Error retrieving progress:', error);
+        return null;
+      }
       
-    if (error && error.code !== 'PGSQL_NO_ROWS_RETURNED') {
-      console.error('Error retrieving progress:', error);
+      return data;
+    } catch (error) {
+      console.error('Failed to fetch progress:', error);
       return null;
     }
-    
-    return data;
   };
   
   // Function to update progress
@@ -87,7 +93,6 @@ export function useProgressTracker() {
           
         if (error) {
           console.error('Error updating progress:', error);
-          toast.error('Unable to update your progress');
         } else {
           console.log(`Progress updated: ${newProgress}%`);
         }
@@ -100,17 +105,16 @@ export function useProgressTracker() {
             module: 'main',
             progression: newProgress,
             completed_activities: completedActivities
-          })
-          .select('id')
-          .single();
+          });
           
         if (error) {
           console.error('Error creating progress record:', error);
-          toast.error('Unable to record your progress');
         } else {
           console.log(`First activity recorded: ${newProgress}%`);
         }
       }
+    } catch (error) {
+      console.error('Error in updateProgress:', error);
     } finally {
       setIsUpdating(false);
     }
@@ -119,7 +123,8 @@ export function useProgressTracker() {
   // Function to track page visit
   const trackPageVisit = (pageType: string) => {
     if (currentUser && PROGRESS_VALUES[pageType as keyof typeof PROGRESS_VALUES]) {
-      updateProgress(pageType);
+      // Use setTimeout to defer database operation and prevent blocking rendering
+      setTimeout(() => updateProgress(pageType), 0);
     }
   };
 

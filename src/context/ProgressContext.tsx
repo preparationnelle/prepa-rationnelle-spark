@@ -3,6 +3,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { useProgressTracker } from '@/hooks/useProgressTracker';
+import { toast } from 'sonner';
 
 const ProgressContext = createContext<{
   progress: number;
@@ -27,18 +28,32 @@ export const ProgressProvider = ({ children }: { children: React.ReactNode }) =>
       return;
     }
     
-    const { data, error } = await supabase
-      .from('progress')
-      .select('progression')
-      .eq('user_id', currentUser.id)
-      .eq('module', 'main')
-      .single();
+    try {
+      const { data, error } = await supabase
+        .from('progress')
+        .select('progression')
+        .eq('user_id', currentUser.id)
+        .eq('module', 'main')
+        .limit(1)
+        .single();
 
-    if (error && error.code !== 'PGSQL_NO_ROWS_RETURNED') {
-      console.error('Error retrieving progress:', error);
-    } else if (data) {
-      setProgress(data.progression || 0);
-    } else {
+      if (error) {
+        // Check specifically for the no rows error code
+        if (error.code === 'PGSQL_NO_ROWS_RETURNED') {
+          // No progress record found - this is normal for new users
+          setProgress(0);
+        } else {
+          console.error('Error retrieving progress:', error);
+          toast.error('Impossible de charger votre progression');
+        }
+      } else if (data) {
+        setProgress(data.progression || 0);
+      } else {
+        setProgress(0);
+      }
+    } catch (error) {
+      console.error('Failed to refresh progress:', error);
+      // Don't allow errors to prevent rendering
       setProgress(0);
     }
   };
