@@ -4,24 +4,24 @@ import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 
-// Définit les valeurs de progression pour chaque type de page
+// Defines progress values for each page type
 const PROGRESS_VALUES = {
-  method: 5, // Visiter une page méthode
-  school: 3, // Visiter une fiche école
-  generator: 10, // Utiliser le générateur
-  submission: 8, // Soumettre un essai
-  coaching: 7, // Réserver une session de coaching
-  interview: 7 // Utiliser le simulateur d'entretien
+  method: 5, // Visiting a method page
+  school: 3, // Visiting a school page
+  generator: 10, // Using the generator
+  submission: 8, // Submitting an essay
+  coaching: 7, // Booking a coaching session
+  interview: 7 // Using the interview simulator
 };
 
-// Plafond maximum de progression
+// Maximum progress cap
 const MAX_PROGRESS = 100;
 
 export function useProgressTracker() {
   const { currentUser } = useAuth();
   const [isUpdating, setIsUpdating] = useState(false);
   
-  // Fonction pour récupérer la progression actuelle
+  // Function to fetch current progress
   const fetchCurrentProgress = async () => {
     if (!currentUser) return null;
     
@@ -33,49 +33,49 @@ export function useProgressTracker() {
       .single();
       
     if (error && error.code !== 'PGSQL_NO_ROWS_RETURNED') {
-      console.error('Erreur lors de la récupération de la progression:', error);
+      console.error('Error retrieving progress:', error);
       return null;
     }
     
     return data;
   };
   
-  // Fonction pour mettre à jour la progression
+  // Function to update progress
   const updateProgress = async (activityType: string) => {
     if (!currentUser || !PROGRESS_VALUES[activityType as keyof typeof PROGRESS_VALUES] || isUpdating) return;
     
     try {
       setIsUpdating(true);
       
-      // Récupérer la progression actuelle
+      // Get current progress
       const currentData = await fetchCurrentProgress();
       
-      // Initialiser les activités complétées
+      // Parse completed activities
       const completedActivities = currentData?.completed_activities 
         ? (typeof currentData.completed_activities === 'string' 
             ? JSON.parse(currentData.completed_activities) 
             : currentData.completed_activities)
         : {};
         
-      // Si l'activité a déjà été accomplie, ne rien faire
+      // If activity already completed, do nothing
       if (completedActivities[activityType]) {
         setIsUpdating(false);
         return;
       }
       
-      // Calculer la nouvelle progression
+      // Calculate new progress
       const currentProgress = currentData?.progression || 0;
       const progressIncrement = PROGRESS_VALUES[activityType as keyof typeof PROGRESS_VALUES];
       let newProgress = currentProgress + progressIncrement;
       
-      // Plafonner à MAX_PROGRESS
+      // Cap at MAX_PROGRESS
       if (newProgress > MAX_PROGRESS) newProgress = MAX_PROGRESS;
       
-      // Marquer l'activité comme accomplie
+      // Mark activity as completed
       completedActivities[activityType] = true;
       
-      // Mettre à jour ou insérer dans la base de données
       if (currentData) {
+        // Update existing record
         const { error } = await supabase
           .from('progress')
           .update({ 
@@ -86,13 +86,13 @@ export function useProgressTracker() {
           .eq('id', currentData.id);
           
         if (error) {
-          console.error('Erreur lors de la mise à jour de la progression:', error);
-          toast.error('Impossible de mettre à jour votre progression');
+          console.error('Error updating progress:', error);
+          toast.error('Unable to update your progress');
         } else {
-          console.log(`Progression mise à jour: ${newProgress}%`);
+          console.log(`Progress updated: ${newProgress}%`);
         }
       } else {
-        // Première activité pour l'utilisateur, créer un nouvel enregistrement
+        // First activity for user, create new record
         const { error } = await supabase
           .from('progress')
           .insert({ 
@@ -100,13 +100,15 @@ export function useProgressTracker() {
             module: 'main',
             progression: newProgress,
             completed_activities: completedActivities
-          });
+          })
+          .select('id')
+          .single();
           
         if (error) {
-          console.error('Erreur lors de la création de la progression:', error);
-          toast.error('Impossible d\'enregistrer votre progression');
+          console.error('Error creating progress record:', error);
+          toast.error('Unable to record your progress');
         } else {
-          console.log(`Première activité enregistrée: ${newProgress}%`);
+          console.log(`First activity recorded: ${newProgress}%`);
         }
       }
     } finally {
@@ -114,7 +116,7 @@ export function useProgressTracker() {
     }
   };
 
-  // Fonction pour suivre une visite de page
+  // Function to track page visit
   const trackPageVisit = (pageType: string) => {
     if (currentUser && PROGRESS_VALUES[pageType as keyof typeof PROGRESS_VALUES]) {
       updateProgress(pageType);

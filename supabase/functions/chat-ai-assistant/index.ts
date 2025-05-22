@@ -1,4 +1,3 @@
-
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
@@ -34,7 +33,7 @@ Tu es là pour aider les étudiants à comprendre comment réussir leur oral et 
       ...messages
     ];
 
-    // Call OpenAI API
+    // Call OpenAI API with the newer gpt-4o model
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -42,7 +41,7 @@ Tu es là pour aider les étudiants à comprendre comment réussir leur oral et 
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'gpt-4o',
         messages: apiMessages,
         temperature: 0.7,
         max_tokens: 500,
@@ -56,6 +55,19 @@ Tu es là pour aider les étudiants à comprendre comment réussir leur oral et 
 
     const data = await response.json();
     const text = data.choices[0].message.content;
+
+    // Add background completion to avoid keeping the connection open
+    const backgroundTracking = async () => {
+      try {
+        // Track usage stats here if needed
+        console.log(`AI assistant response sent: ${new Date().toISOString()}`);
+      } catch (e) {
+        console.error("Error in background task:", e);
+      }
+    };
+    
+    // Use waitUntil to avoid blocking the response
+    EdgeRuntime.waitUntil(backgroundTracking());
 
     return new Response(
       JSON.stringify({ text }),

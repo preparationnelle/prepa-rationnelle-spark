@@ -35,7 +35,7 @@ export const ProgressProvider = ({ children }: { children: React.ReactNode }) =>
       .single();
 
     if (error && error.code !== 'PGSQL_NO_ROWS_RETURNED') {
-      console.error('Erreur lors de la récupération de la progression:', error);
+      console.error('Error retrieving progress:', error);
     } else if (data) {
       setProgress(data.progression || 0);
     } else {
