@@ -5,82 +5,82 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%; /* #0A0A0A - Noir pur */
+    --background: 0 0% 6%; /* #0F0F0F - Slightly lighter than pure black */
     --foreground: 0 0% 96%; /* #F5F5F5 - Blanc presque pur */
 
-    --card: 0 0% 8%; /* #141414 - Gris anthracite doux */
+    --card: 0 0% 10%; /* #1A1A1A - Lighter than before for better contrast */
     --card-foreground: 0 0% 96%; /* #F5F5F5 - Blanc presque pur */
 
-    --popover: 0 0% 8%; /* #141414 - Gris anthracite doux */
+    --popover: 0 0% 10%; /* #1A1A1A - Lighter than before */
     --popover-foreground: 0 0% 96%; /* #F5F5F5 - Blanc presque pur */
 
     --primary: 22 100% 52%; /* #FF6B00 - Orange d'action */
     --primary-foreground: 0 0% 100%; /* #FFFFFF - Blanc pur */
 
-    --secondary: 0 0% 12%; /* #1E1E1E - Gris très foncé */
+    --secondary: 0 0% 15%; /* #262626 - Lighter gray for better contrast */
     --secondary-foreground: 0 0% 96%; /* #F5F5F5 - Blanc presque pur */
 
-    --muted: 0 0% 12%; /* #1E1E1E - Gris très foncé */
-    --muted-foreground: 0 0% 70%; /* #B3B3B3 - Gris clair */
+    --muted: 0 0% 15%; /* #262626 - Lighter gray */
+    --muted-foreground: 0 0% 75%; /* #C0C0C0 - Lighter gray for better readability */
 
-    --accent: 0 0% 8%; /* #141414 - Gris anthracite doux */
+    --accent: 0 0% 12%; /* #1F1F1F - Slightly lighter */
     --accent-foreground: 0 0% 96%; /* #F5F5F5 - Blanc presque pur */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 12%; /* #1E1E1E - Gris très foncé */
-    --input: 0 0% 12%; /* #1E1E1E - Gris très foncé */
+    --border: 0 0% 15%; /* #262626 - More visible borders */
+    --input: 0 0% 15%; /* #262626 - Lighter input backgrounds */
     --ring: 22 100% 52%; /* #FF6B00 - Orange d'action */
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 8%; /* #141414 - Gris anthracite doux */
+    --sidebar-background: 0 0% 10%; /* #1A1A1A - Lighter sidebar */
     --sidebar-foreground: 0 0% 96%; /* #F5F5F5 - Blanc presque pur */
     --sidebar-primary: 22 100% 52%; /* #FF6B00 - Orange d'action */
     --sidebar-primary-foreground: 0 0% 100%; /* #FFFFFF - Blanc pur */
-    --sidebar-accent: 0 0% 12%; /* #1E1E1E - Gris très foncé */
+    --sidebar-accent: 0 0% 15%; /* #262626 - Lighter accent */
     --sidebar-accent-foreground: 0 0% 96%; /* #F5F5F5 - Blanc presque pur */
-    --sidebar-border: 0 0% 12%; /* #1E1E1E - Gris très foncé */
+    --sidebar-border: 0 0% 15%; /* #262626 - More visible borders */
     --sidebar-ring: 22 100% 52%; /* #FF6B00 - Orange d'action */
   }
 
   .dark {
-    --background: 0 0% 4%; /* #0A0A0A - Noir pur */
+    --background: 0 0% 6%; /* #0F0F0F - Slightly lighter than pure black */
     --foreground: 0 0% 96%; /* #F5F5F5 - Blanc presque pur */
 
-    --card: 0 0% 8%; /* #141414 - Gris anthracite doux */
+    --card: 0 0% 10%; /* #1A1A1A - Lighter for better contrast */
     --card-foreground: 0 0% 96%; /* #F5F5F5 - Blanc presque pur */
 
-    --popover: 0 0% 8%; /* #141414 - Gris anthracite doux */
+    --popover: 0 0% 10%; /* #1A1A1A - Lighter than before */
     --popover-foreground: 0 0% 96%; /* #F5F5F5 - Blanc presque pur */
 
     --primary: 22 100% 52%; /* #FF6B00 - Orange d'action */
     --primary-foreground: 0 0% 100%; /* #FFFFFF - Blanc pur */
 
-    --secondary: 0 0% 12%; /* #1E1E1E - Gris très foncé */
+    --secondary: 0 0% 15%; /* #262626 - Lighter for better contrast */
     --secondary-foreground: 0 0% 96%; /* #F5F5F5 - Blanc presque pur */
 
-    --muted: 0 0% 12%; /* #1E1E1E - Gris très foncé */
-    --muted-foreground: 0 0% 70%; /* #B3B3B3 - Gris clair */
+    --muted: 0 0% 15%; /* #262626 - Lighter gray */
+    --muted-foreground: 0 0% 75%; /* #C0C0C0 - Much lighter for readability */
 
-    --accent: 0 0% 8%; /* #141414 - Gris anthracite doux */
+    --accent: 0 0% 12%; /* #1F1F1F - Slightly lighter */
     --accent-foreground: 0 0% 96%; /* #F5F5F5 - Blanc presque pur */
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 96%; /* #F5F5F5 - Blanc presque pur */
 
-    --border: 0 0% 12%; /* #1E1E1E - Gris très foncé */
-    --input: 0 0% 12%; /* #1E1E1E - Gris très foncé */
+    --border: 0 0% 15%; /* #262626 - More visible borders */
+    --input: 0 0% 15%; /* #262626 - Lighter input backgrounds */
     --ring: 22 100% 52%; /* #FF6B00 - Orange d'action */
 
-    --sidebar-background: 0 0% 8%; /* #141414 - Gris anthracite doux */
+    --sidebar-background: 0 0% 10%; /* #1A1A1A - Lighter sidebar */
     --sidebar-foreground: 0 0% 96%; /* #F5F5F5 - Blanc presque pur */
     --sidebar-primary: 22 100% 52%; /* #FF6B00 - Orange d'action */
     --sidebar-primary-foreground: 0 0% 100%; /* #FFFFFF - Blanc pur */
-    --sidebar-accent: 0 0% 12%; /* #1E1E1E - Gris très foncé */
+    --sidebar-accent: 0 0% 15%; /* #262626 - Lighter accent */
     --sidebar-accent-foreground: 0 0% 96%; /* #F5F5F5 - Blanc presque pur */
-    --sidebar-border: 0 0% 12%; /* #1E1E1E - Gris très foncé */
+    --sidebar-border: 0 0% 15%; /* #262626 - More visible borders */
     --sidebar-ring: 22 100% 52%; /* #FF6B00 - Orange d'action */
   }
 }
@@ -138,5 +138,13 @@
 
   .section-separator {
     border-bottom: 1px solid hsl(var(--border));
+  }
+
+  .text-visible {
+    @apply text-foreground;
+  }
+
+  .text-visible-secondary {
+    @apply text-muted-foreground;
   }
 }

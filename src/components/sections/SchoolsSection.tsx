@@ -116,12 +116,12 @@ export const SchoolsSection = () => {
   const visibleCategories = showAllCategories ? displayedCategories : displayedCategories.slice(0, 3);
 
   return (
-    <section className="py-16 px-4 bg-white" id="schools-section">
+    <section className="py-16 px-4 bg-secondary/30" id="schools-section">
       <div className="container mx-auto">
-        <h2 className="section-heading text-center mb-4">
+        <h2 className="section-heading text-center mb-4 text-foreground">
           Comprenez ce que chaque école <span className="gradient-text">attend vraiment</span> de vous
         </h2>
-        <p className="text-center text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
           Découvrez des fiches claires et concrètes sur chaque école : leurs valeurs, leurs programmes, leurs particularités, 
           les associations emblématiques, et ce qui les distingue vraiment dans le paysage des business schools.
         </p>
@@ -143,7 +143,7 @@ export const SchoolsSection = () => {
             <Button 
               onClick={() => setShowAllSchools(true)} 
               variant="outline"
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 border-border hover:bg-secondary/50"
             >
               Voir toutes les écoles <ChevronDown className="h-4 w-4" />
             </Button>
@@ -151,22 +151,22 @@ export const SchoolsSection = () => {
         )}
         
         {/* Question Categories Section */}
-        <h2 className="section-heading text-center mt-20 mb-4">
+        <h2 className="section-heading text-center mt-20 mb-4 text-foreground">
           Banque de <span className="gradient-text">questions</span> d'entretien
         </h2>
-        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
           Préparez-vous efficacement avec notre bibliothèque de questions classées par catégorie.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-8">
           {visibleCategories.map((category) => (
             <Link key={category.id} to={`/questions/${category.id}`} className="group">
-              <Card className="bg-accent/50 border-0 hover:shadow-md transition-all h-full">
+              <Card className="bg-card border-border hover:shadow-md transition-all h-full hover:shadow-primary/20">
                 <CardContent className="p-6 flex flex-col items-center text-center">
                   <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                     {category.icon}
                   </div>
-                  <h3 className="font-medium mb-2 text-lg group-hover:text-primary transition-colors">{category.title}</h3>
+                  <h3 className="font-medium mb-2 text-lg group-hover:text-primary transition-colors text-card-foreground">{category.title}</h3>
                   <p className="text-sm text-muted-foreground">{category.description}</p>
                 </CardContent>
               </Card>
@@ -179,7 +179,7 @@ export const SchoolsSection = () => {
             <Button 
               onClick={() => setShowAllCategories(true)} 
               variant="outline"
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 border-border hover:bg-secondary/50"
             >
               Voir toutes les catégories <ChevronDown className="h-4 w-4" />
             </Button>
@@ -188,7 +188,7 @@ export const SchoolsSection = () => {
 
         <div className="text-center">
           <Link to="/questions">
-            <Button size="lg">
+            <Button size="lg" className="premium-button">
               Explorer toutes les questions
             </Button>
           </Link>
