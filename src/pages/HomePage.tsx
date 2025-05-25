@@ -59,7 +59,7 @@ const HomePage = () => {
   const visibleMethods = showAllMethods ? methodsCards : methodsCards.slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-accent">
+    <div className="min-h-screen bg-background">
       <HeroSection />
       
       {/* Intégration de la section des écoles */}
@@ -69,30 +69,30 @@ const HomePage = () => {
       <FeaturesSection />
       
       {/* 3. Méthodologie Section - Préparer son entretien de personnalité */}
-      <section className="py-16 px-4 bg-accent">
+      <section className="py-16 px-4 bg-card section-separator">
         <div className="container mx-auto">
-          <h2 className="section-heading text-center mb-4">
+          <h2 className="section-heading text-center mb-4 text-foreground">
             Préparer son <span className="gradient-text">entretien</span> de personnalité
           </h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
             Découvrez les méthodologies éprouvées pour structurer vos réponses et impressionner le jury lors de votre entretien.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-8">
             {visibleMethods.map((method, index) => (
-              <Card key={index} className="h-full flex flex-col hover:shadow-lg transition-all">
+              <Card key={index} className="premium-card h-full flex flex-col hover:shadow-primary/20 transition-all duration-300 hover:scale-105">
                 <CardContent className="p-6 flex flex-col items-center text-center flex-grow">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 border border-primary/20">
                     {method.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">{method.title}</h3>
+                  <h3 className="text-xl font-semibold mb-3 text-foreground">{method.title}</h3>
                   <p className="text-muted-foreground mb-6">
                     {method.description}
                   </p>
                 </CardContent>
                 <CardFooter className="p-6 pt-0">
                   <Link to={method.link} className="w-full">
-                    <Button variant="outline" className="w-full">
+                    <Button variant="outline" className="w-full border-border hover:bg-secondary/50 hover:border-primary/50 transition-all">
                       Consulter la méthode
                     </Button>
                   </Link>
@@ -106,7 +106,7 @@ const HomePage = () => {
               <Button 
                 onClick={() => setShowAllMethods(true)} 
                 variant="outline"
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 border-border hover:bg-secondary/50 hover:border-primary/50"
               >
                 Voir toutes les méthodes <ChevronDown className="h-4 w-4" />
               </Button>
