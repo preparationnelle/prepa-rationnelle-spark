@@ -10,7 +10,7 @@ const ChatWidget = () => {
 
   return (
     <Button 
-      className="fixed bottom-4 right-4 z-50 premium-button flex items-center gap-2 pr-4 animate-glow"
+      className="fixed bottom-4 right-4 z-50 shadow-lg flex items-center gap-2 pr-4"
       onClick={handleWhatsAppRedirect}
     >
       <Puzzle className="h-5 w-5" />
