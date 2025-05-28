@@ -1,8 +1,8 @@
-
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { 
   LogOut, 
   Menu, 
@@ -82,7 +82,7 @@ const Navigation = () => {
   };
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-100">
+    <header className="bg-background shadow-sm border-b border-border">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center" onClick={closeMenu}>
           <img 
@@ -95,17 +95,17 @@ const Navigation = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6">
-          <Link to="/" className="text-gray-700 hover:text-primary transition" onClick={closeMenu}>
+          <Link to="/" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
             Accueil
           </Link>
           
           {/* Menu déroulant "Ressources" modernisé */}
           <DropdownMenu>
-            <DropdownMenuTrigger className="text-gray-700 hover:text-primary transition flex items-center gap-1 focus:outline-none">
+            <DropdownMenuTrigger className="text-foreground hover:text-primary transition flex items-center gap-1 focus:outline-none">
               Ressources
               <ChevronDown className="h-4 w-4" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="center" className="w-64 bg-white rounded-lg shadow-lg border-0 p-2">
+            <DropdownMenuContent align="center" className="w-64 bg-popover rounded-lg shadow-lg border p-2">
               <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
                 <Link to="/questions" onClick={closeMenu} className="flex items-center gap-3 w-full">
                   <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
@@ -199,10 +199,11 @@ const Navigation = () => {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          {/* Removed the Dashboard link */}
-          <Link to="/generator" className="text-gray-700 hover:text-primary transition" onClick={closeMenu}>
+          <Link to="/generator" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
             Générateur
           </Link>
+
+          <ThemeToggle variant="icon" />
 
           {currentUser ? (
             <Button 
@@ -220,7 +221,7 @@ const Navigation = () => {
             </Button>
           ) : (
             <>
-              <Link to="/login" className="text-gray-700 hover:text-primary transition" onClick={closeMenu}>
+              <Link to="/login" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
                 Connexion
               </Link>
               <Link to="/register" onClick={closeMenu}>
@@ -231,7 +232,8 @@ const Navigation = () => {
         </div>
 
         {/* Mobile Navigation Toggle */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle variant="icon" />
           <Button variant="ghost" size="icon" onClick={toggleMenu} aria-label="Toggle Menu">
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
@@ -241,21 +243,21 @@ const Navigation = () => {
       {/* Mobile Navigation Menu */}
       <div
         className={cn(
-          "fixed inset-0 z-50 bg-white transform transition-transform duration-300 ease-in-out pt-20",
+          "fixed inset-0 z-50 bg-background transform transition-transform duration-300 ease-in-out pt-20",
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
       >
         <div className="container mx-auto px-4 flex flex-col space-y-4">
           <Link 
             to="/" 
-            className="text-lg py-2 border-b border-gray-100"
+            className="text-lg py-2 border-b border-border"
             onClick={closeMenu}
           >
             Accueil
           </Link>
           
           {/* Menu mobile modernisé */}
-          <div className="space-y-2 py-2 border-b border-gray-100">
+          <div className="space-y-2 py-2 border-b border-border">
             <h3 className="text-lg font-medium text-primary">Ressources</h3>
             <div className="pl-4 flex flex-col space-y-4">
               <Link to="/questions" onClick={closeMenu} className="flex items-center gap-3">
@@ -333,10 +335,9 @@ const Navigation = () => {
             </div>
           </div>
           
-          {/* Removed the Dashboard link from mobile menu */}
           <Link 
             to="/generator" 
-            className="text-lg py-2 border-b border-gray-100"
+            className="text-lg py-2 border-b border-border"
             onClick={closeMenu}
           >
             Générateur
@@ -359,7 +360,7 @@ const Navigation = () => {
             <>
               <Link 
                 to="/login" 
-                className="text-lg py-2 border-b border-gray-100"
+                className="text-lg py-2 border-b border-border"
                 onClick={closeMenu}
               >
                 Connexion

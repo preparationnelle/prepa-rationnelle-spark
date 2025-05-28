@@ -116,12 +116,12 @@ export const SchoolsSection = () => {
   const visibleCategories = showAllCategories ? displayedCategories : displayedCategories.slice(0, 3);
 
   return (
-    <section className="py-16 px-4 bg-white" id="schools-section">
+    <section className="py-16 px-4 bg-muted/30" id="schools-section">
       <div className="container mx-auto">
         <h2 className="section-heading text-center mb-4">
           Comprenez ce que chaque école <span className="gradient-text">attend vraiment</span> de vous
         </h2>
-        <p className="text-center text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
           Découvrez des fiches claires et concrètes sur chaque école : leurs valeurs, leurs programmes, leurs particularités, 
           les associations emblématiques, et ce qui les distingue vraiment dans le paysage des business schools.
         </p>
@@ -154,7 +154,7 @@ export const SchoolsSection = () => {
         <h2 className="section-heading text-center mt-20 mb-4">
           Banque de <span className="gradient-text">questions</span> d'entretien
         </h2>
-        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
           Préparez-vous efficacement avec notre bibliothèque de questions classées par catégorie.
         </p>
         
