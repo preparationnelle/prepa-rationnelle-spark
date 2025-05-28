@@ -2,16 +2,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Award, TrendingUp, Star } from 'lucide-react';
+import { Award, TrendingUp } from 'lucide-react';
 
 export const HeroSection = () => {
   return (
     <section className="py-12 md:py-20 px-4 bg-gradient-to-br from-accent via-accent/90 to-background overflow-hidden">
       <div className="container mx-auto relative">
         {/* Background decorative elements */}
-        <div className="absolute top-0 right-0 -mr-16 -mt-16 opacity-10">
-          <Star className="w-64 h-64 text-primary" />
-        </div>
         <div className="absolute bottom-0 left-0 -ml-16 -mb-16 opacity-10">
           <Award className="w-48 h-48 text-primary" />
         </div>
