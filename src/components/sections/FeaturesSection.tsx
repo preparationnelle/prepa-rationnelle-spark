@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 
 export const FeaturesSection = () => {
   return (
-    <section className="py-16 px-4 bg-white">
+    <section className="py-16 px-4 bg-background">
       <div className="container mx-auto">
-        <h2 className="section-heading text-center mb-12">
+        <h2 className="section-heading text-center mb-12 text-foreground">
           Comment <span className="gradient-text">Prepa Rationnelle</span> vous aide
         </h2>
         

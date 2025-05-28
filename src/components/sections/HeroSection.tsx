@@ -6,7 +6,7 @@ import { Award, TrendingUp, Star } from 'lucide-react';
 
 export const HeroSection = () => {
   return (
-    <section className="py-12 md:py-20 px-4 bg-gradient-to-br from-accent via-accent/90 to-white overflow-hidden">
+    <section className="py-12 md:py-20 px-4 bg-gradient-to-br from-accent via-accent/90 to-background overflow-hidden">
       <div className="container mx-auto relative">
         {/* Background decorative elements */}
         <div className="absolute top-0 right-0 -mr-16 -mt-16 opacity-10">
@@ -29,7 +29,7 @@ export const HeroSection = () => {
               Je vous aide à intégrer l'école de vos rêves
             </h1>
             
-            <p className="text-base md:text-lg text-gray-700 mb-8 font-light leading-relaxed">
+            <p className="text-base md:text-lg text-muted-foreground mb-8 font-light leading-relaxed">
               Vous avez bossé 2 ans. Maintenant, il faut <span className="font-medium">convaincre</span>. Une plateforme qui combine <Link to="/calendar" className="text-primary font-medium underline hover:text-primary/80 transition-colors">coaching sur‑mesure</Link> et ressources pour réussir son entretien.
             </p>
             
@@ -54,7 +54,7 @@ export const HeroSection = () => {
               alt="Étudiant préparant un entretien" 
               className="w-auto h-auto max-w-[280px] md:max-w-xs rounded-2xl relative shadow-lg hover:shadow-xl transition-all duration-300" 
             />
-            <div className="absolute -bottom-4 -right-4 bg-white p-3 rounded-full shadow-lg">
+            <div className="absolute -bottom-4 -right-4 bg-card p-3 rounded-full shadow-lg">
               <Award className="w-8 h-8 text-primary" />
             </div>
           </div>

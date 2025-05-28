@@ -13,9 +13,9 @@ export const PricingSection = () => {
   ];
 
   return (
-    <section id="pricing-section" className="py-16 px-4 bg-white">
+    <section id="pricing-section" className="py-16 px-4 bg-background">
       <div className="container mx-auto">
-        <h2 className="section-heading text-center mb-12">
+        <h2 className="section-heading text-center mb-12 text-foreground">
           Nos formules
         </h2>
         
@@ -31,22 +31,22 @@ export const PricingSection = () => {
             variant="premium"
           />
           
-          <div className="bg-white border border-gray-200 rounded-lg p-6 flex flex-col">
+          <div className="bg-card border border-border rounded-lg p-6 flex flex-col">
             <div className="mb-6">
-              <h3 className="card-heading mb-2 text-center">Besoin d'un accompagnement personnalisé?</h3>
-              <p className="text-gray-600 text-center mb-4">
+              <h3 className="card-heading mb-2 text-center text-card-foreground">Besoin d'un accompagnement personnalisé?</h3>
+              <p className="text-muted-foreground text-center mb-4">
                 Discutez gratuitement avec un coach spécialisé pour identifier vos besoins réels en préparation d'entretien
               </p>
             </div>
             
             <div className="mt-auto">
               <a href="/calendar" className="block w-full">
-                <button className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-white border border-primary text-primary rounded hover:bg-primary/5 transition-colors">
+                <button className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-card border border-primary text-primary rounded hover:bg-primary/5 transition-colors">
                   <Calendar className="h-5 w-5" />
                   Prendre rendez-vous
                 </button>
               </a>
-              <p className="text-center text-sm text-gray-500 mt-2">
+              <p className="text-center text-sm text-muted-foreground mt-2">
                 Sans engagement - 30 minutes d'échange
               </p>
             </div>
