@@ -3,7 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useProgress } from '@/context/ProgressContext';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FlashcardGenerator } from '@/components/generator/FlashcardGenerator';
+import { FlashcardReviewer } from '@/components/flashcards/FlashcardReviewer';
 
 const FlashcardsPage = () => {
   const { trackPageVisit } = useProgress();
@@ -19,12 +21,12 @@ const FlashcardsPage = () => {
       <div className="flex justify-between items-start mb-8">
         <div>
           <h1 className="text-3xl font-bold mb-2">
-            {language === 'fr' ? 'Générateur de Flashcards' : 'Flashcard Generator'}
+            {language === 'fr' ? 'Flashcards' : 'Flashcards'}
           </h1>
           <p className="text-muted-foreground">
             {language === 'fr' 
-              ? 'Créez des flashcards bilingues pour améliorer votre vocabulaire'
-              : 'Create bilingual flashcards to improve your vocabulary'
+              ? 'Créez et révisez vos flashcards bilingues'
+              : 'Create and review your bilingual flashcards'
             }
           </p>
         </div>
@@ -43,7 +45,24 @@ const FlashcardsPage = () => {
         </ToggleGroup>
       </div>
       
-      <FlashcardGenerator language={language} />
+      <Tabs defaultValue="generator" className="w-full">
+        <TabsList className="grid w-full grid-cols-2 mb-6">
+          <TabsTrigger value="generator">
+            {language === 'fr' ? 'Créer' : 'Create'}
+          </TabsTrigger>
+          <TabsTrigger value="review">
+            {language === 'fr' ? 'Réviser' : 'Review'}
+          </TabsTrigger>
+        </TabsList>
+        
+        <TabsContent value="generator">
+          <FlashcardGenerator language={language} />
+        </TabsContent>
+        
+        <TabsContent value="review">
+          <FlashcardReviewer language={language} />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };

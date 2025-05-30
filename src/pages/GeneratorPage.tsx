@@ -14,6 +14,7 @@ import { InfoPanel } from '@/components/generator/InfoPanel';
 import { ResponseCard } from '@/components/generator/ResponseCard';
 import { RandomWordGenerator } from '@/components/RandomWordGenerator';
 import { FlashcardGenerator } from '@/components/generator/FlashcardGenerator';
+import { FlashcardReviewer } from '@/components/flashcards/FlashcardReviewer';
 
 // Import hooks
 import { useGenerateAnswer } from '@/hooks/useGenerateAnswer';
@@ -163,7 +164,24 @@ const GeneratorPage = () => {
         </TabsContent>
 
         <TabsContent value="flashcards">
-          <FlashcardGenerator language={language} />
+          <Tabs defaultValue="generator" className="w-full">
+            <TabsList className="grid w-full grid-cols-2 mb-6">
+              <TabsTrigger value="generator">
+                {language === 'fr' ? 'Créer' : 'Create'}
+              </TabsTrigger>
+              <TabsTrigger value="review">
+                {language === 'fr' ? 'Réviser' : 'Review'}
+              </TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="generator">
+              <FlashcardGenerator language={language} />
+            </TabsContent>
+            
+            <TabsContent value="review">
+              <FlashcardReviewer language={language} />
+            </TabsContent>
+          </Tabs>
         </TabsContent>
         
         <TabsContent value="emlyon">
