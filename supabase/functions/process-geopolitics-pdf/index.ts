@@ -32,35 +32,73 @@ Deno.serve(async (req) => {
 
     console.log('Processing PDF:', pdfUrl);
 
-    // Step 1: Extract text from PDF using PDF.co
-    const pdfTextResponse = await fetch('https://api.pdf.co/v1/pdf/convert/to/text', {
-      method: 'POST',
-      headers: {
-        'x-api-key': 'stanislaschmd@gmail.com_IFDkA5WTVdXYogpDx57Mej3iYc4h6hAx5rrY99r7cgMGSTuMIaiXA1rBpKXYb2BL',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        url: pdfUrl
-      }),
-    });
+    // Convert Google Drive URL to direct download link if needed
+    let processedUrl = pdfUrl;
+    if (pdfUrl.includes('drive.google.com')) {
+      const fileIdMatch = pdfUrl.match(/\/d\/([a-zA-Z0-9-_]+)/);
+      if (fileIdMatch) {
+        processedUrl = `https://drive.google.com/uc?export=download&id=${fileIdMatch[1]}`;
+      } else if (pdfUrl.includes('/view')) {
+        processedUrl = pdfUrl.replace('/view?usp=sharing', '').replace('/view', '') + '/export?format=pdf';
+      }
+    }
 
-    if (!pdfTextResponse.ok) {
-      console.error('PDF.co API error:', await pdfTextResponse.text());
+    console.log('Processed URL:', processedUrl);
+
+    // Try to extract text directly from the PDF using a simpler approach
+    let extractedText = '';
+    
+    try {
+      // Step 1: Try PDF.co first
+      const pdfTextResponse = await fetch('https://api.pdf.co/v1/pdf/convert/to/text', {
+        method: 'POST',
+        headers: {
+          'x-api-key': 'stanislaschmd@gmail.com_IFDkA5WTVdXYogpDx57Mej3iYc4h6hAx5rrY99r7cgMGSTuMIaiXA1rBpKXYb2BL',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          url: processedUrl
+        }),
+      });
+
+      if (pdfTextResponse.ok) {
+        const pdfData = await pdfTextResponse.json();
+        if (pdfData.url) {
+          const textResponse = await fetch(pdfData.url);
+          extractedText = await textResponse.text();
+        }
+      } else {
+        console.log('PDF.co failed, trying alternative approach');
+        throw new Error('PDF.co extraction failed');
+      }
+    } catch (error) {
+      console.log('PDF extraction failed:', error);
+      
+      // Fallback: Use the URL as raw text input (user can paste text directly)
+      if (pdfUrl.length > 100) {
+        extractedText = pdfUrl; // Assume user pasted text directly
+      } else {
+        return new Response(
+          JSON.stringify({ 
+            error: 'Failed to extract text from PDF. Please ensure the URL is publicly accessible or paste the text directly in the URL field.' 
+          }),
+          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+    }
+
+    if (!extractedText || extractedText.length < 50) {
       return new Response(
-        JSON.stringify({ error: 'Failed to extract text from PDF' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        JSON.stringify({ 
+          error: 'No text could be extracted from the PDF. Please check the URL or try pasting the text directly.' 
+        }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    const pdfData = await pdfTextResponse.json();
-    
-    // Step 2: Get the extracted text
-    const textResponse = await fetch(pdfData.url);
-    const extractedText = await textResponse.text();
+    console.log('Text extracted successfully, length:', extractedText.length);
 
-    console.log('Text extracted successfully');
-
-    // Step 3: Structure the course with OpenAI
+    // Step 2: Structure the course with OpenAI
     const structurePrompt = language === 'fr' 
       ? `Tu es un assistant pédagogique pour des élèves de classe préparatoire ECG.
 Ta mission est de transformer un cours brut de géopolitique en clarté.
@@ -109,10 +147,14 @@ Like a mind that thinks well.`;
       }),
     });
 
+    if (!structuredResponse.ok) {
+      throw new Error('Failed to structure course with OpenAI');
+    }
+
     const structuredData = await structuredResponse.json();
     const structuredCourse = structuredData.choices[0].message.content;
 
-    // Step 4: Generate flashcards
+    // Step 3: Generate flashcards
     const flashcardsPrompt = `Tu es un assistant pédagogique.
 Tu lis un cours structuré de géopolitique (plan, points clés, exemples), et tu génères des flashcards au format Anki.
 
@@ -154,7 +196,7 @@ Pas de code block.`;
     const flashcardsData = await flashcardsResponse.json();
     const flashcards = flashcardsData.choices[0].message.content;
 
-    // Step 5: Generate dissertation topics
+    // Step 4: Generate dissertation topics
     const topicsPrompt = `Tu es un professeur de géopolitique pour les classes préparatoires ECG.
 Ta mission est de créer des sujets d'entraînement à partir d'un cours structuré.
 Tes sujets doivent correspondre aux exigences des concours.
@@ -180,7 +222,7 @@ Ta réponse doit être claire, concise et directement exploitable pour un étudi
     const topicsData = await topicsResponse.json();
     const dissertationTopics = topicsData.choices[0].message.content;
 
-    // Step 6: Get current events using a simulated API call (since we can't use Perplexity directly)
+    // Step 5: Generate current events (simplified since we can't use Perplexity directly)
     const currentEventsPrompt = `Tu es un assistant de veille informationnelle. 
 Analyse ce cours de géopolitique et cite 3 faits d'actualité récents (moins de 6 mois) en lien avec ce cours.
 Pour chaque fait, donne : le fait, sa source (nom du média) et une date approximative.
@@ -220,7 +262,7 @@ Sois précis et factuel.`;
   } catch (error) {
     console.error('Function error:', error);
     return new Response(
-      JSON.stringify({ error: 'Internal server error' }),
+      JSON.stringify({ error: 'Internal server error: ' + error.message }),
       { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   }

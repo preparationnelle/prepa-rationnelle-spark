@@ -5,10 +5,11 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Upload, FileText, BookOpen, Calendar, Loader2 } from 'lucide-react';
+import { Upload, FileText, BookOpen, Calendar, Loader2, AlertCircle } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 interface GeopoliticsGeneratorProps {
   language: 'fr' | 'en';
@@ -32,7 +33,7 @@ export const GeopoliticsGenerator = ({ language }: GeopoliticsGeneratorProps) =>
     if (!pdfUrl.trim()) {
       toast({
         title: language === 'fr' ? "Erreur" : "Error",
-        description: language === 'fr' ? "Veuillez entrer une URL de PDF" : "Please enter a PDF URL",
+        description: language === 'fr' ? "Veuillez entrer une URL de PDF ou du texte" : "Please enter a PDF URL or text",
         variant: "destructive",
       });
       return;
@@ -62,7 +63,7 @@ export const GeopoliticsGenerator = ({ language }: GeopoliticsGeneratorProps) =>
         console.error('Error processing PDF:', error);
         toast({
           title: language === 'fr' ? "Erreur" : "Error",
-          description: language === 'fr' ? "Erreur lors du traitement du PDF" : "Error processing PDF",
+          description: error.message || (language === 'fr' ? "Erreur lors du traitement" : "Processing error"),
           variant: "destructive",
         });
         return;
@@ -112,11 +113,11 @@ export const GeopoliticsGenerator = ({ language }: GeopoliticsGeneratorProps) =>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex gap-4">
-            <Input
-              placeholder={language === 'fr' ? 'URL du PDF (Google Drive, etc.)' : 'PDF URL (Google Drive, etc.)'}
+            <Textarea
+              placeholder={language === 'fr' ? 'URL du PDF (Google Drive, etc.) ou collez directement le texte du cours...' : 'PDF URL (Google Drive, etc.) or paste course text directly...'}
               value={pdfUrl}
               onChange={(e) => setPdfUrl(e.target.value)}
-              className="flex-1"
+              className="flex-1 min-h-[100px]"
             />
             <Button onClick={handleGenerate} disabled={isGenerating || !pdfUrl.trim()}>
               {isGenerating ? (
@@ -127,18 +128,21 @@ export const GeopoliticsGenerator = ({ language }: GeopoliticsGeneratorProps) =>
               ) : (
                 <>
                   <Upload className="mr-2 h-4 w-4" />
-                  {language === 'fr' ? 'Analyser le PDF' : 'Analyze PDF'}
+                  {language === 'fr' ? 'Analyser' : 'Analyze'}
                 </>
               )}
             </Button>
           </div>
 
-          <div className="text-sm text-muted-foreground">
-            {language === 'fr' 
-              ? "Entrez l'URL d'un PDF de cours de géopolitique. Le système génèrera automatiquement : un cours structuré, des flashcards, des sujets de dissertation et des actualités liées."
-              : "Enter the URL of a geopolitics course PDF. The system will automatically generate: a structured course, flashcards, dissertation topics and related current events."
-            }
-          </div>
+          <Alert>
+            <AlertCircle className="h-4 w-4" />
+            <AlertDescription>
+              {language === 'fr' 
+                ? "Entrez l'URL d'un PDF accessible publiquement ou collez directement le texte de votre cours. Le système génèrera automatiquement : un cours structuré, des flashcards, des sujets de dissertation et des actualités liées."
+                : "Enter the URL of a publicly accessible PDF or paste your course text directly. The system will automatically generate: a structured course, flashcards, dissertation topics and related current events."
+              }
+            </AlertDescription>
+          </Alert>
         </CardContent>
       </Card>
 
