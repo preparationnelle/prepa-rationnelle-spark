@@ -13,6 +13,7 @@ import { AdditionalInfoForm, AdditionalInfo } from '@/components/generator/Addit
 import { InfoPanel } from '@/components/generator/InfoPanel';
 import { ResponseCard } from '@/components/generator/ResponseCard';
 import { RandomWordGenerator } from '@/components/RandomWordGenerator';
+import { FlashcardGenerator } from '@/components/generator/FlashcardGenerator';
 
 // Import hooks
 import { useGenerateAnswer } from '@/hooks/useGenerateAnswer';
@@ -77,13 +78,16 @@ const GeneratorPage = () => {
   return (
     <div className="container mx-auto py-8 px-4">
       <h1 className="text-3xl font-bold mb-8">
-        {language === 'fr' ? 'Générateur de réponses d\'entretien' : 'Interview Answer Generator'}
+        {language === 'fr' ? 'Générateurs d\'entretien' : 'Interview Generators'}
       </h1>
       
       <Tabs value={activeGeneratorTab} onValueChange={setActiveGeneratorTab} className="w-full mb-8">
-        <TabsList className="grid w-full grid-cols-3 mb-6">
+        <TabsList className="grid w-full grid-cols-4 mb-6">
           <TabsTrigger value="answer">
             {language === 'fr' ? 'Réponse d\'entretien' : 'Interview Answer'}
+          </TabsTrigger>
+          <TabsTrigger value="flashcards">
+            {language === 'fr' ? 'Flashcards' : 'Flashcards'}
           </TabsTrigger>
           <TabsTrigger value="emlyon">
             {language === 'fr' ? 'Questions EM Lyon' : 'EM Lyon Questions'}
@@ -156,6 +160,10 @@ const GeneratorPage = () => {
           {!currentAnswer && !generating && (
             <InfoPanel language={language} />
           )}
+        </TabsContent>
+
+        <TabsContent value="flashcards">
+          <FlashcardGenerator language={language} />
         </TabsContent>
         
         <TabsContent value="emlyon">

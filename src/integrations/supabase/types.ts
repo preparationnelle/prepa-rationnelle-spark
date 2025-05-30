@@ -84,6 +84,36 @@ export type Database = {
         }
         Relationships: []
       }
+      flashcards: {
+        Row: {
+          created_at: string
+          id: string
+          sentence_en: string
+          sentence_fr: string
+          user_id: string
+          word_en: string
+          word_fr: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          sentence_en: string
+          sentence_fr: string
+          user_id: string
+          word_en: string
+          word_fr: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          sentence_en?: string
+          sentence_fr?: string
+          user_id?: string
+          word_en?: string
+          word_fr?: string
+        }
+        Relationships: []
+      }
       pricing: {
         Row: {
           description: string

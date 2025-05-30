@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -39,6 +40,7 @@ import KEDGEPage from './pages/KEDGEPage';
 import NEOMAPage from './pages/NEOMAPage';
 import FullCalendarPage from './pages/FullCalendarPage';
 import InterviewSimulatorPage from './pages/InterviewSimulatorPage';
+import FlashcardsPage from './pages/FlashcardsPage';
 import NotFound from "./pages/NotFound";
 
 // Initialize PostHog
@@ -78,6 +80,11 @@ const App = () => (
                     <Route path="/coaching" element={
                       <ProtectedRoute>
                         <CoachingPage />
+                      </ProtectedRoute>
+                    } />
+                    <Route path="/flashcards" element={
+                      <ProtectedRoute>
+                        <FlashcardsPage />
                       </ProtectedRoute>
                     } />
                     {/* Calendar page is still publicly accessible */}
