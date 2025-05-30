@@ -33,6 +33,7 @@ const GeneratorPage = () => {
   const [activeTab, setActiveTab] = useState('response');
   const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
   const [activeGeneratorTab, setActiveGeneratorTab] = useState('answer');
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
   
   // Form for additional information
   const additionalInfoForm = useForm<AdditionalInfo>({
@@ -74,6 +75,10 @@ const GeneratorPage = () => {
   const handleGenerate = async () => {
     const additionalInfo = additionalInfoForm.getValues();
     await generateAnswer(question, language, additionalInfo);
+  };
+
+  const handleFlashcardCreated = () => {
+    setRefreshTrigger(prev => prev + 1);
   };
 
   return (
@@ -175,11 +180,11 @@ const GeneratorPage = () => {
             </TabsList>
             
             <TabsContent value="generator">
-              <FlashcardGenerator language={language} />
+              <FlashcardGenerator language={language} onFlashcardCreated={handleFlashcardCreated} />
             </TabsContent>
             
             <TabsContent value="review">
-              <FlashcardReviewer language={language} />
+              <FlashcardReviewer language={language} refreshTrigger={refreshTrigger} />
             </TabsContent>
           </Tabs>
         </TabsContent>

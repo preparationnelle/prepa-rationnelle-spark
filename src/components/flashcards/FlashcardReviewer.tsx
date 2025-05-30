@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ChevronLeft, ChevronRight, RotateCcw, BookOpen, Eye, EyeOff } from 'lucide-react';
+import { ChevronLeft, ChevronRight, RotateCcw, BookOpen, Eye, EyeOff, RefreshCw } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';
@@ -18,9 +18,10 @@ interface FlashcardData {
 
 interface FlashcardReviewerProps {
   language: 'fr' | 'en';
+  refreshTrigger?: number;
 }
 
-export const FlashcardReviewer = ({ language }: FlashcardReviewerProps) => {
+export const FlashcardReviewer = ({ language, refreshTrigger }: FlashcardReviewerProps) => {
   const [flashcards, setFlashcards] = useState<FlashcardData[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
@@ -33,6 +34,8 @@ export const FlashcardReviewer = ({ language }: FlashcardReviewerProps) => {
 
     try {
       setIsLoading(true);
+      console.log('Loading flashcards for user:', currentUser.id);
+      
       const { data, error } = await supabase
         .from('flashcards')
         .select('*')
@@ -49,6 +52,7 @@ export const FlashcardReviewer = ({ language }: FlashcardReviewerProps) => {
         return;
       }
 
+      console.log('Loaded flashcards:', data);
       setFlashcards(data || []);
       setCurrentIndex(0);
       setIsFlipped(false);
@@ -82,11 +86,22 @@ export const FlashcardReviewer = ({ language }: FlashcardReviewerProps) => {
     setIsFlipped(false);
   };
 
+  const refreshFlashcards = () => {
+    loadFlashcards();
+  };
+
   useEffect(() => {
     if (currentUser) {
       loadFlashcards();
     }
   }, [currentUser]);
+
+  // Refresh when trigger changes (when new flashcard is created)
+  useEffect(() => {
+    if (refreshTrigger && currentUser) {
+      loadFlashcards();
+    }
+  }, [refreshTrigger, currentUser]);
 
   if (isLoading) {
     return (
@@ -109,12 +124,20 @@ export const FlashcardReviewer = ({ language }: FlashcardReviewerProps) => {
           <h3 className="text-lg font-semibold mb-2">
             {language === 'fr' ? 'Aucune flashcard trouvée' : 'No flashcards found'}
           </h3>
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground mb-4">
             {language === 'fr' 
               ? 'Créez des flashcards d\'abord pour commencer à réviser'
               : 'Create flashcards first to start reviewing'
             }
           </p>
+          <Button
+            variant="outline"
+            onClick={refreshFlashcards}
+            className="flex items-center gap-2"
+          >
+            <RefreshCw className="h-4 w-4" />
+            {language === 'fr' ? 'Actualiser' : 'Refresh'}
+          </Button>
         </CardContent>
       </Card>
     );
@@ -140,14 +163,24 @@ export const FlashcardReviewer = ({ language }: FlashcardReviewerProps) => {
                 }
               </CardDescription>
             </div>
-            <Button
-              variant="outline"
-              onClick={resetReview}
-              className="flex items-center gap-2"
-            >
-              <RotateCcw className="h-4 w-4" />
-              {language === 'fr' ? 'Recommencer' : 'Reset'}
-            </Button>
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                onClick={refreshFlashcards}
+                className="flex items-center gap-2"
+              >
+                <RefreshCw className="h-4 w-4" />
+                {language === 'fr' ? 'Actualiser' : 'Refresh'}
+              </Button>
+              <Button
+                variant="outline"
+                onClick={resetReview}
+                className="flex items-center gap-2"
+              >
+                <RotateCcw className="h-4 w-4" />
+                {language === 'fr' ? 'Recommencer' : 'Reset'}
+              </Button>
+            </div>
           </div>
         </CardHeader>
       </Card>

@@ -10,11 +10,16 @@ import { FlashcardReviewer } from '@/components/flashcards/FlashcardReviewer';
 const FlashcardsPage = () => {
   const { trackPageVisit } = useProgress();
   const [language, setLanguage] = useState<'fr' | 'en'>('fr');
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
   
   // Track page visit
   useEffect(() => {
     trackPageVisit('flashcards');
   }, [trackPageVisit]);
+
+  const handleFlashcardCreated = () => {
+    setRefreshTrigger(prev => prev + 1);
+  };
 
   return (
     <div className="container mx-auto py-8 px-4">
@@ -56,11 +61,11 @@ const FlashcardsPage = () => {
         </TabsList>
         
         <TabsContent value="generator">
-          <FlashcardGenerator language={language} />
+          <FlashcardGenerator language={language} onFlashcardCreated={handleFlashcardCreated} />
         </TabsContent>
         
         <TabsContent value="review">
-          <FlashcardReviewer language={language} />
+          <FlashcardReviewer language={language} refreshTrigger={refreshTrigger} />
         </TabsContent>
       </Tabs>
     </div>

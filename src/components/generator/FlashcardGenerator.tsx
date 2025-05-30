@@ -20,9 +20,10 @@ interface FlashcardData {
 
 interface FlashcardGeneratorProps {
   language: 'fr' | 'en';
+  onFlashcardCreated?: () => void;
 }
 
-export const FlashcardGenerator = ({ language }: FlashcardGeneratorProps) => {
+export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGeneratorProps) => {
   const [inputWord, setInputWord] = useState('');
   const [inputLanguage, setInputLanguage] = useState<'fr' | 'en'>('fr');
   const [isGenerating, setIsGenerating] = useState(false);
@@ -72,13 +73,17 @@ export const FlashcardGenerator = ({ language }: FlashcardGeneratorProps) => {
       }
 
       setCurrentFlashcard(data.flashcard);
+      setInputWord(''); // Clear input after successful generation
       toast({
         title: language === 'fr' ? "Succès" : "Success",
         description: language === 'fr' ? "Flashcard générée avec succès !" : "Flashcard generated successfully!",
       });
 
-      // Refresh saved flashcards
-      loadSavedFlashcards();
+      // Refresh saved flashcards and notify parent
+      await loadSavedFlashcards();
+      if (onFlashcardCreated) {
+        onFlashcardCreated();
+      }
 
     } catch (error) {
       console.error('Error:', error);
@@ -136,6 +141,11 @@ export const FlashcardGenerator = ({ language }: FlashcardGeneratorProps) => {
         title: language === 'fr' ? "Succès" : "Success",
         description: language === 'fr' ? "Flashcard supprimée" : "Flashcard deleted",
       });
+
+      // Notify parent of change
+      if (onFlashcardCreated) {
+        onFlashcardCreated();
+      }
     } catch (error) {
       console.error('Error:', error);
     }
