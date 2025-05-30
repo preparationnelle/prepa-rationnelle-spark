@@ -15,6 +15,7 @@ import { ResponseCard } from '@/components/generator/ResponseCard';
 import { RandomWordGenerator } from '@/components/RandomWordGenerator';
 import { FlashcardGenerator } from '@/components/generator/FlashcardGenerator';
 import { FlashcardReviewer } from '@/components/flashcards/FlashcardReviewer';
+import { GeopoliticsGenerator } from '@/components/generator/GeopoliticsGenerator';
 
 // Import hooks
 import { useGenerateAnswer } from '@/hooks/useGenerateAnswer';
@@ -88,12 +89,15 @@ const GeneratorPage = () => {
       </h1>
       
       <Tabs value={activeGeneratorTab} onValueChange={setActiveGeneratorTab} className="w-full mb-8">
-        <TabsList className="grid w-full grid-cols-4 mb-6">
+        <TabsList className="grid w-full grid-cols-5 mb-6">
           <TabsTrigger value="answer">
             {language === 'fr' ? 'Réponse d\'entretien' : 'Interview Answer'}
           </TabsTrigger>
           <TabsTrigger value="flashcards">
             {language === 'fr' ? 'Flashcards' : 'Flashcards'}
+          </TabsTrigger>
+          <TabsTrigger value="geopolitics">
+            {language === 'fr' ? 'Géopolitique' : 'Geopolitics'}
           </TabsTrigger>
           <TabsTrigger value="emlyon">
             {language === 'fr' ? 'Questions EM Lyon' : 'EM Lyon Questions'}
@@ -187,6 +191,10 @@ const GeneratorPage = () => {
               <FlashcardReviewer language={language} refreshTrigger={refreshTrigger} />
             </TabsContent>
           </Tabs>
+        </TabsContent>
+
+        <TabsContent value="geopolitics">
+          <GeopoliticsGenerator language={language} />
         </TabsContent>
         
         <TabsContent value="emlyon">
