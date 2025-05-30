@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -27,10 +26,23 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
   const [inputWord, setInputWord] = useState('');
   const [inputLanguage, setInputLanguage] = useState<'fr' | 'en'>('fr');
   const [isGenerating, setIsGenerating] = useState(false);
-  const [generatedFlashcards, setGeneratedFlashcards] = useState<FlashcardData[]>([]);
+  
+  // Load generated flashcards from localStorage on component mount
+  const loadGeneratedFlashcards = () => {
+    const stored = localStorage.getItem('generatedFlashcards');
+    return stored ? JSON.parse(stored) : [];
+  };
+  
+  const [generatedFlashcards, setGeneratedFlashcards] = useState<FlashcardData[]>(loadGeneratedFlashcards);
   const [savedFlashcards, setSavedFlashcards] = useState<FlashcardData[]>([]);
   const { toast } = useToast();
   const { currentUser } = useAuth();
+
+  // Save generated flashcards to localStorage whenever they change
+  const updateGeneratedFlashcards = (newFlashcards: FlashcardData[]) => {
+    setGeneratedFlashcards(newFlashcards);
+    localStorage.setItem('generatedFlashcards', JSON.stringify(newFlashcards));
+  };
 
   const generateFlashcard = async () => {
     if (!inputWord.trim()) {
@@ -72,8 +84,9 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
         return;
       }
 
-      // Add the new flashcard to the beginning of the generated list
-      setGeneratedFlashcards(prev => [data.flashcard, ...prev]);
+      // Add the new flashcard to the beginning of the generated list and save to localStorage
+      const newGeneratedList = [data.flashcard, ...generatedFlashcards];
+      updateGeneratedFlashcards(newGeneratedList);
       setInputWord(''); // Clear input after successful generation
       toast({
         title: language === 'fr' ? "Succès" : "Success",
@@ -153,7 +166,7 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
   };
 
   const clearGeneratedHistory = () => {
-    setGeneratedFlashcards([]);
+    updateGeneratedFlashcards([]);
   };
 
   React.useEffect(() => {
