@@ -2,14 +2,19 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Upload, FileText, BookOpen, Calendar, Loader2, AlertCircle } from 'lucide-react';
+import { Upload, BookOpen, Loader2, AlertCircle, Download } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { downloadAll } from '@/utils/downloadUtils';
+
+// Import nouveaux composants d'affichage
+import { FlashcardDisplay } from './FlashcardDisplay';
+import { CourseDisplay } from './CourseDisplay';
+import { DissertationTopicsDisplay } from './DissertationTopicsDisplay';
+import { CurrentEventsDisplay } from './CurrentEventsDisplay';
 
 interface GeopoliticsGeneratorProps {
   language: 'fr' | 'en';
@@ -88,28 +93,46 @@ export const GeopoliticsGenerator = ({ language }: GeopoliticsGeneratorProps) =>
     }
   };
 
-  const downloadFlashcards = () => {
-    if (!generatedContent?.flashcards) return;
+  const handleDownloadAll = async () => {
+    if (!generatedContent) return;
     
-    const blob = new Blob([generatedContent.flashcards], { type: 'text/csv' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'flashcards-geopolitique.csv';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    try {
+      await downloadAll(
+        generatedContent.structuredCourse,
+        generatedContent.flashcards,
+        generatedContent.dissertationTopics,
+        generatedContent.currentEvents,
+        language
+      );
+      
+      toast({
+        title: language === 'fr' ? "Téléchargement" : "Download",
+        description: language === 'fr' ? "Tous les fichiers ont été téléchargés" : "All files have been downloaded",
+      });
+    } catch (error) {
+      toast({
+        title: language === 'fr' ? "Erreur" : "Error",
+        description: language === 'fr' ? "Erreur lors du téléchargement" : "Download error",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
     <div className="space-y-6">
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <BookOpen className="h-5 w-5" />
-            {language === 'fr' ? 'Générateur de géopolitique' : 'Geopolitics Generator'}
+      {/* Section de génération */}
+      <Card className="border-l-4 border-l-blue-500">
+        <CardHeader className="pb-4">
+          <CardTitle className="flex items-center gap-2 text-xl">
+            <BookOpen className="h-6 w-6 text-blue-600" />
+            {language === 'fr' ? 'Générateur de Géopolitique' : 'Geopolitics Generator'}
           </CardTitle>
+          <p className="text-muted-foreground">
+            {language === 'fr' 
+              ? "Transformez vos cours en contenu pédagogique structuré : fiches, flashcards, sujets et actualités"
+              : "Transform your courses into structured educational content: sheets, flashcards, topics and current events"
+            }
+          </p>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex gap-4">
@@ -117,123 +140,79 @@ export const GeopoliticsGenerator = ({ language }: GeopoliticsGeneratorProps) =>
               placeholder={language === 'fr' ? 'URL du PDF (Google Drive, etc.) ou collez directement le texte du cours...' : 'PDF URL (Google Drive, etc.) or paste course text directly...'}
               value={pdfUrl}
               onChange={(e) => setPdfUrl(e.target.value)}
-              className="flex-1 min-h-[100px]"
+              className="flex-1 min-h-[120px] resize-none"
             />
-            <Button onClick={handleGenerate} disabled={isGenerating || !pdfUrl.trim()}>
-              {isGenerating ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  {language === 'fr' ? 'Traitement...' : 'Processing...'}
-                </>
-              ) : (
-                <>
-                  <Upload className="mr-2 h-4 w-4" />
-                  {language === 'fr' ? 'Analyser' : 'Analyze'}
-                </>
+            <div className="flex flex-col gap-2">
+              <Button 
+                onClick={handleGenerate} 
+                disabled={isGenerating || !pdfUrl.trim()}
+                className="h-auto py-3 px-6"
+              >
+                {isGenerating ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    {language === 'fr' ? 'Traitement...' : 'Processing...'}
+                  </>
+                ) : (
+                  <>
+                    <Upload className="mr-2 h-4 w-4" />
+                    {language === 'fr' ? 'Analyser' : 'Analyze'}
+                  </>
+                )}
+              </Button>
+              
+              {generatedContent && (
+                <Button 
+                  onClick={handleDownloadAll} 
+                  variant="outline"
+                  className="h-auto py-3 px-6"
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  {language === 'fr' ? 'Tout télécharger' : 'Download All'}
+                </Button>
               )}
-            </Button>
+            </div>
           </div>
 
           <Alert>
             <AlertCircle className="h-4 w-4" />
             <AlertDescription>
               {language === 'fr' 
-                ? "Entrez l'URL d'un PDF accessible publiquement ou collez directement le texte de votre cours. Le système génèrera automatiquement : un cours structuré, des flashcards, des sujets de dissertation et des actualités liées."
-                : "Enter the URL of a publicly accessible PDF or paste your course text directly. The system will automatically generate: a structured course, flashcards, dissertation topics and related current events."
+                ? "Entrez l'URL d'un PDF accessible publiquement ou collez directement le texte de votre cours. Le système génèrera automatiquement un contenu pédagogique complet."
+                : "Enter the URL of a publicly accessible PDF or paste your course text directly. The system will automatically generate complete educational content."
               }
             </AlertDescription>
           </Alert>
         </CardContent>
       </Card>
 
+      {/* Affichage du contenu généré */}
       {generatedContent && (
-        <Card>
-          <CardHeader>
-            <CardTitle>
-              {language === 'fr' ? 'Contenu généré' : 'Generated Content'}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Tabs defaultValue="course" className="w-full">
-              <TabsList className="grid w-full grid-cols-4">
-                <TabsTrigger value="course">
-                  <FileText className="h-4 w-4 mr-1" />
-                  {language === 'fr' ? 'Cours' : 'Course'}
-                </TabsTrigger>
-                <TabsTrigger value="flashcards">
-                  <BookOpen className="h-4 w-4 mr-1" />
-                  {language === 'fr' ? 'Flashcards' : 'Flashcards'}
-                </TabsTrigger>
-                <TabsTrigger value="topics">
-                  <FileText className="h-4 w-4 mr-1" />
-                  {language === 'fr' ? 'Sujets' : 'Topics'}
-                </TabsTrigger>
-                <TabsTrigger value="news">
-                  <Calendar className="h-4 w-4 mr-1" />
-                  {language === 'fr' ? 'Actualités' : 'News'}
-                </TabsTrigger>
-              </TabsList>
-
-              <TabsContent value="course" className="mt-4">
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold">
-                    {language === 'fr' ? 'Cours structuré' : 'Structured Course'}
-                  </h3>
-                  <Textarea
-                    value={generatedContent.structuredCourse}
-                    readOnly
-                    className="min-h-[400px] font-mono text-sm"
-                  />
-                </div>
-              </TabsContent>
-
-              <TabsContent value="flashcards" className="mt-4">
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <h3 className="text-lg font-semibold">
-                      {language === 'fr' ? 'Flashcards (format Anki)' : 'Flashcards (Anki format)'}
-                    </h3>
-                    <Button onClick={downloadFlashcards} size="sm">
-                      <Upload className="h-4 w-4 mr-1" />
-                      {language === 'fr' ? 'Télécharger CSV' : 'Download CSV'}
-                    </Button>
-                  </div>
-                  <Textarea
-                    value={generatedContent.flashcards}
-                    readOnly
-                    className="min-h-[400px] font-mono text-sm"
-                  />
-                </div>
-              </TabsContent>
-
-              <TabsContent value="topics" className="mt-4">
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold">
-                    {language === 'fr' ? 'Sujets de dissertation' : 'Dissertation Topics'}
-                  </h3>
-                  <Textarea
-                    value={generatedContent.dissertationTopics}
-                    readOnly
-                    className="min-h-[400px]"
-                  />
-                </div>
-              </TabsContent>
-
-              <TabsContent value="news" className="mt-4">
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold">
-                    {language === 'fr' ? 'Actualités récentes' : 'Recent News'}
-                  </h3>
-                  <Textarea
-                    value={generatedContent.currentEvents}
-                    readOnly
-                    className="min-h-[400px]"
-                  />
-                </div>
-              </TabsContent>
-            </Tabs>
-          </CardContent>
-        </Card>
+        <div className="space-y-6">
+          {/* Cours structuré */}
+          <CourseDisplay 
+            structuredCourse={generatedContent.structuredCourse}
+            language={language}
+          />
+          
+          {/* Flashcards */}
+          <FlashcardDisplay 
+            flashcards={generatedContent.flashcards}
+            language={language}
+          />
+          
+          {/* Sujets de dissertation */}
+          <DissertationTopicsDisplay 
+            dissertationTopics={generatedContent.dissertationTopics}
+            language={language}
+          />
+          
+          {/* Actualités */}
+          <CurrentEventsDisplay 
+            currentEvents={generatedContent.currentEvents}
+            language={language}
+          />
+        </div>
       )}
     </div>
   );
