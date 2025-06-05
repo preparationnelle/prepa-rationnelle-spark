@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { Upload, BookOpen, Loader2, AlertCircle, Download } from 'lucide-react';
-import { useToast } from '@/components/ui/use-toast';
+import { Upload, Globe, Loader2, AlertCircle, Download, Sparkles } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -119,44 +119,47 @@ export const GeopoliticsGenerator = ({ language }: GeopoliticsGeneratorProps) =>
   };
 
   return (
-    <div className="space-y-6">
-      {/* Section de génération */}
-      <Card className="border-l-4 border-l-blue-500">
-        <CardHeader className="pb-4">
-          <CardTitle className="flex items-center gap-2 text-xl">
-            <BookOpen className="h-6 w-6 text-blue-600" />
-            {language === 'fr' ? 'Générateur de Géopolitique' : 'Geopolitics Generator'}
+    <div className="space-y-8">
+      <Card className="overflow-hidden border-0 shadow-xl bg-gradient-to-br from-white via-emerald-50/30 to-teal-50/30">
+        <CardHeader className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
+          <CardTitle className="flex items-center gap-3 text-2xl">
+            <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
+              <Globe className="h-6 w-6" />
+            </div>
+            <div>
+              <div className="text-2xl font-bold">
+                {language === 'fr' ? 'Générateur de Géopolitique' : 'Geopolitics Generator'}
+              </div>
+              <div className="text-emerald-100 text-sm font-normal mt-1">
+                {language === 'fr' ? "Transformez vos cours en contenu pédagogique structuré" : "Transform your courses into structured educational content"}
+              </div>
+            </div>
           </CardTitle>
-          <p className="text-muted-foreground">
-            {language === 'fr' 
-              ? "Transformez vos cours en contenu pédagogique structuré : fiches, flashcards, sujets et actualités"
-              : "Transform your courses into structured educational content: sheets, flashcards, topics and current events"
-            }
-          </p>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="flex gap-4">
+        <CardContent className="p-8 space-y-6">
+          <div className="space-y-4">
             <Textarea
               placeholder={language === 'fr' ? 'URL du PDF (Google Drive, etc.) ou collez directement le texte du cours...' : 'PDF URL (Google Drive, etc.) or paste course text directly...'}
               value={pdfUrl}
               onChange={(e) => setPdfUrl(e.target.value)}
-              className="flex-1 min-h-[120px] resize-none"
+              className="min-h-[120px] resize-none border-2 hover:border-primary/50 focus:border-primary transition-colors text-lg"
             />
-            <div className="flex flex-col gap-2">
+
+            <div className="flex gap-4 pt-4">
               <Button 
                 onClick={handleGenerate} 
                 disabled={isGenerating || !pdfUrl.trim()}
-                className="h-auto py-3 px-6"
+                className="flex-1 h-14 text-lg bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 {isGenerating ? (
                   <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    {language === 'fr' ? 'Traitement...' : 'Processing...'}
+                    <Loader2 className="h-5 w-5 mr-3 animate-spin" />
+                    {language === 'fr' ? 'Traitement en cours...' : 'Processing...'}
                   </>
                 ) : (
                   <>
-                    <Upload className="mr-2 h-4 w-4" />
-                    {language === 'fr' ? 'Analyser' : 'Analyze'}
+                    <Sparkles className="h-5 w-5 mr-3" />
+                    {language === 'fr' ? 'Analyser et générer' : 'Analyze and Generate'}
                   </>
                 )}
               </Button>
@@ -165,21 +168,21 @@ export const GeopoliticsGenerator = ({ language }: GeopoliticsGeneratorProps) =>
                 <Button 
                   onClick={handleDownloadAll} 
                   variant="outline"
-                  className="h-auto py-3 px-6"
+                  className="h-14 px-8 border-2 hover:bg-primary hover:text-white transition-all duration-300"
                 >
-                  <Download className="mr-2 h-4 w-4" />
+                  <Download className="h-5 w-5 mr-2" />
                   {language === 'fr' ? 'Tout télécharger' : 'Download All'}
                 </Button>
               )}
             </div>
           </div>
 
-          <Alert>
-            <AlertCircle className="h-4 w-4" />
-            <AlertDescription>
+          <Alert className="border-2 border-emerald-200 bg-emerald-50">
+            <AlertCircle className="h-4 w-4 text-emerald-600" />
+            <AlertDescription className="text-emerald-800">
               {language === 'fr' 
-                ? "Entrez l'URL d'un PDF accessible publiquement ou collez directement le texte de votre cours. Le système génèrera automatiquement un contenu pédagogique complet."
-                : "Enter the URL of a publicly accessible PDF or paste your course text directly. The system will automatically generate complete educational content."
+                ? "Entrez l'URL d'un PDF accessible publiquement ou collez directement le texte de votre cours. Le système génèrera automatiquement : fiches structurées, flashcards, sujets de dissertation et actualités."
+                : "Enter the URL of a publicly accessible PDF or paste your course text directly. The system will automatically generate: structured sheets, flashcards, dissertation topics and current events."
               }
             </AlertDescription>
           </Alert>

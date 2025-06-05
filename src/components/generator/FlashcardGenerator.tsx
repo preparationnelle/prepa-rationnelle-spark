@@ -1,5 +1,8 @@
 
 import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Zap, BookOpen, Brain } from 'lucide-react';
 import { FlashcardInput } from './FlashcardInput';
 import { GeneratedFlashcardsList } from './GeneratedFlashcardsList';
 import { SavedFlashcardsList } from './SavedFlashcardsList';
@@ -25,28 +28,64 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
   } = useFlashcardGenerator(language, onFlashcardCreated);
 
   return (
-    <div className="space-y-6">
-      <FlashcardInput
-        language={language}
-        inputWord={inputWord}
-        setInputWord={setInputWord}
-        inputLanguage={inputLanguage}
-        setInputLanguage={setInputLanguage}
-        isGenerating={isGenerating}
-        onGenerate={generateFlashcard}
-      />
+    <div className="space-y-8">
+      <Card className="overflow-hidden border-0 shadow-xl bg-gradient-to-br from-white via-purple-50/30 to-indigo-50/30">
+        <CardHeader className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
+          <CardTitle className="flex items-center gap-3 text-2xl">
+            <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
+              <Zap className="h-6 w-6" />
+            </div>
+            <div>
+              <div className="text-2xl font-bold">
+                {language === 'fr' ? 'Générateur de Flashcards Intelligentes' : 'Smart Flashcard Generator'}
+              </div>
+              <div className="text-purple-100 text-sm font-normal mt-1">
+                {language === 'fr' ? 'Créez des flashcards optimisées pour vos révisions' : 'Create optimized flashcards for your reviews'}
+              </div>
+            </div>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="p-8">
+          <FlashcardInput
+            language={language}
+            inputWord={inputWord}
+            setInputWord={setInputWord}
+            inputLanguage={inputLanguage}
+            setInputLanguage={setInputLanguage}
+            isGenerating={isGenerating}
+            onGenerate={generateFlashcard}
+          />
+        </CardContent>
+      </Card>
 
-      <GeneratedFlashcardsList
-        language={language}
-        generatedFlashcards={generatedFlashcards}
-        onClearHistory={clearGeneratedHistory}
-      />
-
-      <SavedFlashcardsList
-        language={language}
-        savedFlashcards={savedFlashcards}
-        onDelete={deleteFlashcard}
-      />
+      <Tabs defaultValue="generated" className="w-full">
+        <TabsList className="grid w-full grid-cols-2 mb-6 h-12">
+          <TabsTrigger value="generated" className="text-base py-3">
+            <Brain className="h-4 w-4 mr-2" />
+            {language === 'fr' ? 'Flashcards Générées' : 'Generated Flashcards'}
+          </TabsTrigger>
+          <TabsTrigger value="saved" className="text-base py-3">
+            <BookOpen className="h-4 w-4 mr-2" />
+            {language === 'fr' ? 'Flashcards Sauvées' : 'Saved Flashcards'}
+          </TabsTrigger>
+        </TabsList>
+        
+        <TabsContent value="generated">
+          <GeneratedFlashcardsList
+            language={language}
+            generatedFlashcards={generatedFlashcards}
+            onClearHistory={clearGeneratedHistory}
+          />
+        </TabsContent>
+        
+        <TabsContent value="saved">
+          <SavedFlashcardsList
+            language={language}
+            savedFlashcards={savedFlashcards}
+            onDelete={deleteFlashcard}
+          />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };
