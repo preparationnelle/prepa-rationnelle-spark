@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -12,6 +11,7 @@ import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { PricingSection } from '@/components/PricingSection';
 import { CallToActionSection } from '@/components/sections/CallToActionSection';
 import { Footer } from '@/components/Footer';
+import { AutomationsSection } from '@/components/sections/AutomationsSection';
 
 const HomePage = () => {
   const [showAllMethods, setShowAllMethods] = useState(false);
@@ -64,6 +64,9 @@ const HomePage = () => {
       
       {/* Intégration de la section des écoles */}
       <SchoolsSection />
+      
+      {/* NOUVELLE SECTION - Automatisations IA */}
+      <AutomationsSection />
       
       {/* 2. Comment Prepa Rationnelle vous aide */}
       <FeaturesSection />

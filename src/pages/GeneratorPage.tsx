@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -16,6 +15,7 @@ import { RandomWordGenerator } from '@/components/RandomWordGenerator';
 import { FlashcardGenerator } from '@/components/generator/FlashcardGenerator';
 import { FlashcardReviewer } from '@/components/flashcards/FlashcardReviewer';
 import { GeopoliticsGenerator } from '@/components/generator/GeopoliticsGenerator';
+import { LanguageParagraphGenerator } from '@/components/generator/LanguageParagraphGenerator';
 
 // Import hooks
 import { useGenerateAnswer } from '@/hooks/useGenerateAnswer';
@@ -89,12 +89,15 @@ const GeneratorPage = () => {
       </h1>
       
       <Tabs value={activeGeneratorTab} onValueChange={setActiveGeneratorTab} className="w-full mb-8">
-        <TabsList className="grid w-full grid-cols-5 mb-6">
+        <TabsList className="grid w-full grid-cols-6 mb-6">
           <TabsTrigger value="answer">
             {language === 'fr' ? 'Réponse d\'entretien' : 'Interview Answer'}
           </TabsTrigger>
           <TabsTrigger value="flashcards">
             {language === 'fr' ? 'Flashcards' : 'Flashcards'}
+          </TabsTrigger>
+          <TabsTrigger value="languages">
+            {language === 'fr' ? 'Langues' : 'Languages'}
           </TabsTrigger>
           <TabsTrigger value="geopolitics">
             {language === 'fr' ? 'Géopolitique' : 'Geopolitics'}
@@ -191,6 +194,10 @@ const GeneratorPage = () => {
               <FlashcardReviewer language={language} refreshTrigger={refreshTrigger} />
             </TabsContent>
           </Tabs>
+        </TabsContent>
+
+        <TabsContent value="languages">
+          <LanguageParagraphGenerator language={language} />
         </TabsContent>
 
         <TabsContent value="geopolitics">
