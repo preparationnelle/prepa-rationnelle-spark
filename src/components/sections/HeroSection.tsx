@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Award, TrendingUp } from 'lucide-react';
+import { Award, TrendingUp, Zap } from 'lucide-react';
 
 export const HeroSection = () => {
   return (
@@ -15,11 +15,19 @@ export const HeroSection = () => {
         
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 relative z-10">
           <div className="max-w-lg">
-            <div className="mb-4 flex items-center">
-              <TrendingUp className="h-6 w-6 text-primary mr-2" />
-              <Link to="/calendar" className="text-sm font-semibold text-primary uppercase tracking-wider hover:underline">
-                PRÉPAREZ VOTRE ENTRETIEN
-              </Link>
+            <div className="mb-4 flex flex-col gap-2">
+              <div className="flex items-center">
+                <TrendingUp className="h-6 w-6 text-primary mr-2" />
+                <Link to="/calendar" className="text-sm font-semibold text-primary uppercase tracking-wider hover:underline">
+                  PRÉPAREZ VOTRE ENTRETIEN
+                </Link>
+              </div>
+              <div className="flex items-center">
+                <Zap className="h-6 w-6 text-orange-600 mr-2" />
+                <Link to="/generator" className="text-sm font-semibold text-orange-600 uppercase tracking-wider hover:underline">
+                  PRÉPAREZ VOS ÉCRITS AVEC IA
+                </Link>
+              </div>
             </div>
             
             <h1 className="hero-heading gradient-text mb-6 text-4xl md:text-5xl lg:text-6xl animate-fade-in">
@@ -27,7 +35,7 @@ export const HeroSection = () => {
             </h1>
             
             <p className="text-base md:text-lg text-muted-foreground mb-8 font-light leading-relaxed">
-              Vous avez bossé 2 ans. Maintenant, il faut <span className="font-medium">convaincre</span>. Une plateforme qui combine <Link to="/calendar" className="text-primary font-medium underline hover:text-primary/80 transition-colors">coaching sur‑mesure</Link> et ressources pour réussir son entretien.
+              Vous avez bossé 2 ans. Maintenant, il faut <span className="font-medium">convaincre</span>. Une plateforme qui combine <Link to="/calendar" className="text-primary font-medium underline hover:text-primary/80 transition-colors">coaching sur‑mesure</Link> et <Link to="/generator" className="text-orange-600 font-medium underline hover:text-orange-600/80 transition-colors">automatisations IA</Link> pour réussir son entretien.
             </p>
             
             <div className="flex flex-col sm:flex-row justify-start gap-4">
