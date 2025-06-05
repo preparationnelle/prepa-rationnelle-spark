@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -62,16 +63,16 @@ const HomePage = () => {
     <div className="min-h-screen bg-background">
       <HeroSection />
       
-      {/* Intégration de la section des écoles */}
-      <SchoolsSection />
-      
-      {/* NOUVELLE SECTION - Automatisations IA */}
+      {/* 1. PREMIÈRE SECTION - Automatisations IA */}
       <AutomationsSection />
       
-      {/* 2. Comment Prepa Rationnelle vous aide */}
+      {/* 2. Section des écoles */}
+      <SchoolsSection />
+      
+      {/* 3. Comment Prepa Rationnelle vous aide */}
       <FeaturesSection />
       
-      {/* 3. Méthodologie Section - Préparer son entretien de personnalité */}
+      {/* 4. Méthodologie Section - Préparer son entretien de personnalité */}
       <section className="py-16 px-4 bg-accent">
         <div className="container mx-auto">
           <h2 className="section-heading text-center mb-4 text-foreground">
