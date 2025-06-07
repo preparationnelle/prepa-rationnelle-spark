@@ -8,8 +8,19 @@ interface ThemeToggleProps {
   variant?: 'default' | 'icon';
 }
 
+// Fonction pour détecter si l'utilisateur est sur mobile
+const isMobileDevice = () => {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+         window.innerWidth <= 768;
+};
+
 export const ThemeToggle = ({ variant = 'default' }: ThemeToggleProps) => {
   const { theme, toggleTheme } = useTheme();
+
+  // Ne pas afficher le toggle sur mobile
+  if (isMobileDevice()) {
+    return null;
+  }
 
   if (variant === 'icon') {
     return (
