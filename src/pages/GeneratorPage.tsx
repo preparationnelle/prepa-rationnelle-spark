@@ -18,6 +18,7 @@ import { FlashcardReviewer } from '@/components/flashcards/FlashcardReviewer';
 import { GeopoliticsGenerator } from '@/components/generator/GeopoliticsGenerator';
 import { LanguageParagraphGenerator } from '@/components/generator/LanguageParagraphGenerator';
 import { CaseStudyGenerator } from '@/components/generator/CaseStudyGenerator';
+import { ThemeGrammaticalGenerator } from "@/components/grammar/ThemeGrammaticalGenerator";
 
 // Import hooks
 import { useGenerateAnswer } from '@/hooks/useGenerateAnswer';
@@ -99,7 +100,7 @@ const GeneratorPage = () => {
       </div>
       
       <Tabs value={activeGeneratorTab} onValueChange={setActiveGeneratorTab} className="w-full mb-8">
-        <TabsList className="grid w-full grid-cols-7 mb-8 h-14">
+        <TabsList className="grid w-full grid-cols-8 mb-8 h-14">
           <TabsTrigger value="answer" className="text-sm py-3">
             <MessageSquare className="h-4 w-4 mr-2" />
             {language === 'fr' ? 'Réponse d\'entretien' : 'Interview Answer'}
@@ -127,6 +128,10 @@ const GeneratorPage = () => {
           <TabsTrigger value="edhec" className="text-sm py-3">
             <Dices className="h-4 w-4 mr-2" />
             {language === 'fr' ? 'Mots EDHEC' : 'EDHEC Words'}
+          </TabsTrigger>
+          <TabsTrigger value="theme-grammar" className="text-sm py-3">
+            <Languages className="h-4 w-4 mr-2" />
+            Thème Grammatical
           </TabsTrigger>
         </TabsList>
         
@@ -274,6 +279,10 @@ const GeneratorPage = () => {
               <RandomWordGenerator type="word" />
             </CardContent>
           </Card>
+        </TabsContent>
+        
+        <TabsContent value="theme-grammar">
+          <ThemeGrammaticalGenerator />
         </TabsContent>
       </Tabs>
     </div>
