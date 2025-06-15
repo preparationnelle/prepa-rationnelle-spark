@@ -58,7 +58,7 @@ export default function ContactPage() {
                 name="name"
                 placeholder="Votre nom"
                 required
-                className="bg-[#FFFAEC]"
+                className="bg-[#FFFAEC] placeholder:text-gray-400"
               />
             </div>
             <div>
@@ -71,22 +71,29 @@ export default function ContactPage() {
                 type="email"
                 placeholder="mon@email.com"
                 required
-                className="bg-[#FFFAEC]"
+                className="bg-[#FFFAEC] placeholder:text-gray-400"
               />
             </div>
-            {/* Champ téléphone ajouté */}
+            {/* Champ téléphone : bordure orange au focus */}
             <div>
               <label className="font-medium mb-1 block" htmlFor="phone">
                 Téléphone
               </label>
-              <Input
-                id="phone"
-                name="phone"
-                type="tel"
-                pattern="^[0-9+\s().-]{6,}$"
-                placeholder="06 12 34 56 78"
-                className="bg-[#FFFAEC]"
-              />
+              <div className="relative">
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  pattern="^[0-9+\s().-]{6,}$"
+                  placeholder="06 12 34 56 78"
+                  className="bg-[#FFFAEC] placeholder:text-gray-400 pr-10 focus:outline-none focus:ring-2 focus:ring-[#FF7900] focus:border-[#FF7900] border-2 border-transparent"
+                  style={{ boxShadow: "none" }}
+                />
+                {/* Icone utilisateur / chevron, en option — à droite du champ */}
+                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">
+                  <Phone className="w-5 h-5" />
+                </span>
+              </div>
             </div>
             <div>
               <label className="font-medium mb-1 block" htmlFor="message">
@@ -97,7 +104,7 @@ export default function ContactPage() {
                 name="message"
                 required
                 placeholder="Votre message"
-                className="resize-none bg-[#FFFAEC]"
+                className="resize-none bg-[#FFFAEC] placeholder:text-gray-400"
               />
             </div>
             <Button
