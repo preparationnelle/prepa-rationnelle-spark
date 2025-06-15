@@ -6,6 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Loader2, Languages } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import ThemeGrammarTips from "./ThemeGrammarTips";
 
 type Language = "en" | "de" | "es";
 
@@ -259,27 +260,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
             {result.tips && result.tips.length > 0 && (
               <div className="mt-2 text-sm text-gray-600">
                 <b>Conseils :</b>
-                <TooltipProvider>
-                  <ul className="list-disc ml-8">
-                    {result.tips.map((t, i) => (
-                      <li key={i} className="inline-block mr-2 mb-2">
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <button
-                              className="underline text-blue-700 hover:text-blue-900 transition-colors rounded-md px-2 py-0.5"
-                              type="button"
-                            >
-                              {t}
-                            </button>
-                          </TooltipTrigger>
-                          <TooltipContent className="max-w-xs">
-                            <span dangerouslySetInnerHTML={{ __html: getGrammarExplanation(t) }} />
-                          </TooltipContent>
-                        </Tooltip>
-                      </li>
-                    ))}
-                  </ul>
-                </TooltipProvider>
+                <ThemeGrammarTips tips={result.tips || []} />
               </div>
             )}
           </div>
