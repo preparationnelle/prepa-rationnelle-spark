@@ -43,7 +43,8 @@ type AutomationKey =
   | 'theme-grammar'
   | 'school-profile'
   | 'math-tutor'
-  | 'python-tutor';
+  | 'python-tutor'
+  | 'python-exercises';
 
 const AUTOMATIONS = [
   {
@@ -132,6 +133,13 @@ const AUTOMATIONS = [
     description:
       "Analyse ton code Python, détecte les erreurs et génère une version optimisée avec conseils adaptés à ton niveau.",
     badge: "Nouveau",
+  },
+  {
+    key: 'python-exercises' as AutomationKey,
+    icon: <span className="inline-block p-1 rounded bg-gradient-to-br from-[#136ae5] to-[#2ddcb3]"><BookOpen className="h-7 w-7 text-white" /></span>,
+    title: "Exercices Python",
+    description: "Génère des exercices pratiques Python (matrice, algèbre…) et complète tes fonctions !",
+    badge: "Exos IA",
   },
 ];
 
@@ -322,6 +330,11 @@ const GeneratorPage = () => {
         return <MathTutorGenerator />;
       case "python-tutor":
         return <PythonTutorGenerator />;
+      case "python-exercises":
+        // --- Ajout du rendu pour la nouvelle extension ---
+        // Lazy import optim possible (pas nécessaire pour MVP)
+        const PythonExerciseGenerator = require('@/components/generator/PythonExerciseGenerator').PythonExerciseGenerator;
+        return <PythonExerciseGenerator />;
       default:
         return null;
     }
