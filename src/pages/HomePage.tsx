@@ -13,6 +13,7 @@ import { CallToActionSection } from '@/components/sections/CallToActionSection';
 import { Footer } from '@/components/Footer';
 import { AutomationsSection } from '@/components/sections/AutomationsSection';
 import { Megaphone } from 'lucide-react';
+import OffersSection from "@/components/OffersSection";
 
 const HomePage = () => {
   const [showAllMethods, setShowAllMethods] = useState(false);
@@ -68,8 +69,12 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Hero Section */}
       <HeroSection />
-      
+
+      {/* NOUVEAU : Section Nos offres juste après Hero */}
+      <OffersSection />
+
       {/* 1. PREMIÈRE SECTION - Automatisations IA */}
       <AutomationsSection />
       

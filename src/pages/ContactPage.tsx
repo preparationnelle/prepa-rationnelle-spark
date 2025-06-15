@@ -1,10 +1,10 @@
-
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Instagram, Linkedin, Globe } from "lucide-react";
+import OffersSection from "@/components/OffersSection";
 
 export default function ContactPage() {
   return (
@@ -26,6 +26,9 @@ export default function ContactPage() {
           Partenaire : Stephane Preteseille
         </a>
       </div>
+
+      {/* NOUVEAU : Section Nos offres bien mise en évidence */}
+      <OffersSection />
 
       <Card>
         <CardHeader>
