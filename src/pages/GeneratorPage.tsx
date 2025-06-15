@@ -20,6 +20,7 @@ import { LanguageParagraphGenerator } from '@/components/generator/LanguageParag
 import { CaseStudyGenerator } from '@/components/generator/CaseStudyGenerator';
 import { ThemeGrammaticalGenerator } from "@/components/grammar/ThemeGrammaticalGenerator";
 import { SchoolProfileGenerator } from "@/components/generator/SchoolProfileGenerator";
+import { MathTutorGenerator } from '@/components/generator/MathTutorGenerator';
 
 // hooks
 import { useGenerateAnswer } from '@/hooks/useGenerateAnswer';
@@ -39,7 +40,8 @@ type AutomationKey =
   | 'emlyon'
   | 'edhec'
   | 'theme-grammar'
-  | 'school-profile';
+  | 'school-profile'
+  | 'math-tutor';
 
 const AUTOMATIONS = [
   {
@@ -113,6 +115,13 @@ const AUTOMATIONS = [
     description:
       "Automatise la recherche des infos-clés pour ton entretien : valeurs, assos, doubles diplômes, actu, etc.",
     badge: "Nouveau",
+  },
+  {
+    key: 'math-tutor' as AutomationKey,
+    icon: <Calculator className="h-8 w-8 text-primary" />,
+    title: "Prof de maths virtuel",
+    description: "Demande un indice, une explication ou la solution sur un exercice mathématiques.",
+    badge: "IA",
   },
 ];
 
@@ -299,6 +308,8 @@ const GeneratorPage = () => {
         return <ThemeGrammaticalGenerator />;
       case "school-profile":
         return <SchoolProfileGenerator />;
+      case "math-tutor":
+        return <MathTutorGenerator />;
       default:
         return null;
     }
