@@ -9,7 +9,8 @@ import {
   Languages, 
   Globe, 
   User, 
-  Zap 
+  Zap,
+  TrendingUp 
 } from 'lucide-react';
 
 export const AutomationsSection = () => {
@@ -41,6 +42,13 @@ export const AutomationsSection = () => {
       description: "Cours structurés, sujets de dissertation, actualités récentes et flashcards thématiques automatiquement générés.",
       link: "/generator",
       badge: "Complet"
+    },
+    {
+      icon: <TrendingUp className="h-8 w-8 text-primary" />,
+      title: "Études de cas d'actualité",
+      description: "Transformez vos articles d'actualité en études de cas géopolitiques avec chiffres clés et sujets de dissertation.",
+      link: "/generator",
+      badge: "Nouveau"
     },
     {
       icon: <User className="h-8 w-8 text-primary" />,

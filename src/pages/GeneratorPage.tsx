@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -6,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useProgress } from '@/context/ProgressContext';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { MessageSquare, Zap, Languages, Globe, HelpCircle, Dices } from 'lucide-react';
+import { MessageSquare, Zap, Languages, Globe, HelpCircle, Dices, TrendingUp } from 'lucide-react';
 
 // Import components
 import { QuestionForm } from '@/components/generator/QuestionForm';
@@ -18,6 +17,7 @@ import { FlashcardGenerator } from '@/components/generator/FlashcardGenerator';
 import { FlashcardReviewer } from '@/components/flashcards/FlashcardReviewer';
 import { GeopoliticsGenerator } from '@/components/generator/GeopoliticsGenerator';
 import { LanguageParagraphGenerator } from '@/components/generator/LanguageParagraphGenerator';
+import { CaseStudyGenerator } from '@/components/generator/CaseStudyGenerator';
 
 // Import hooks
 import { useGenerateAnswer } from '@/hooks/useGenerateAnswer';
@@ -99,7 +99,7 @@ const GeneratorPage = () => {
       </div>
       
       <Tabs value={activeGeneratorTab} onValueChange={setActiveGeneratorTab} className="w-full mb-8">
-        <TabsList className="grid w-full grid-cols-6 mb-8 h-14">
+        <TabsList className="grid w-full grid-cols-7 mb-8 h-14">
           <TabsTrigger value="answer" className="text-sm py-3">
             <MessageSquare className="h-4 w-4 mr-2" />
             {language === 'fr' ? 'Réponse d\'entretien' : 'Interview Answer'}
@@ -115,6 +115,10 @@ const GeneratorPage = () => {
           <TabsTrigger value="geopolitics" className="text-sm py-3">
             <Globe className="h-4 w-4 mr-2" />
             {language === 'fr' ? 'Géopolitique' : 'Geopolitics'}
+          </TabsTrigger>
+          <TabsTrigger value="case-study" className="text-sm py-3">
+            <TrendingUp className="h-4 w-4 mr-2" />
+            {language === 'fr' ? 'Études de cas' : 'Case Studies'}
           </TabsTrigger>
           <TabsTrigger value="emlyon" className="text-sm py-3">
             <HelpCircle className="h-4 w-4 mr-2" />
@@ -224,6 +228,10 @@ const GeneratorPage = () => {
 
         <TabsContent value="geopolitics">
           <GeopoliticsGenerator language={language} />
+        </TabsContent>
+        
+        <TabsContent value="case-study">
+          <CaseStudyGenerator language={language} />
         </TabsContent>
         
         <TabsContent value="emlyon">
