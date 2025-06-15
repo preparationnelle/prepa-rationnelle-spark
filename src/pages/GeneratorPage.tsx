@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import {
   MessageSquare, Zap, Languages, Globe, TrendingUp,
-  HelpCircle, Dices, BookOpen, Calculator, Code
+  HelpCircle, Dices, BookOpen, Calculator, Code, Heart
 } from 'lucide-react';
 
 // Import components des automatisations :

@@ -21,7 +21,7 @@ interface AnswerAutomationProps {
   loadExample: () => void;
   handleGenerate: () => void;
   generating: boolean;
-  currentAnswer: string | null;
+  currentAnswer: string | null; // <-- Typing fixed to string | null
   setCurrentAnswer: (s: string | null) => void;
   wordCount: number;
   additionalInfoForm: UseFormReturn<AdditionalInfo>;
