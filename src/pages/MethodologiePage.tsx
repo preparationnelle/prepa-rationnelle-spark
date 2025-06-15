@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -172,7 +171,7 @@ export default function MethodologiePage() {
               <ul className="list-disc ml-4">
                 <li>Réduire l’aléa : tu es prêt à tous les sujets</li>
                 <li>Gain de temps le jour J</li>
-                <li>Une méthode efficace, obtenue >16 aux concours</li>
+                <li>Une méthode efficace, obtenue {'>'}16 aux concours</li>
               </ul>
             </li>
             <li><span className="font-semibold">Apprendre à utiliser les exemples</span> : Limite à 30 exemples clés, maîtrise-les parfaitement, adapte-les à tous les sujets !</li>
