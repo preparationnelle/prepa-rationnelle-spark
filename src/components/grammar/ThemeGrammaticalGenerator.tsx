@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Languages } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 type Language = "en" | "de" | "es";
 
@@ -45,15 +46,14 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
     setStudent("");
     setLoading(true);
     try {
-      const res = await fetch("/functions/v1/generate-theme-sentence", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ language })
+      const { data, error } = await supabase.functions.invoke('generate-theme-sentence', {
+        body: { language }
       });
-      if (!res.ok) throw new Error("Erreur génération phrase");
-      const data = await res.json();
+      
+      if (error) throw error;
       setSentence(data);
     } catch (e: any) {
+      console.error('Error generating sentence:', e);
       toast({ title: "Erreur", description: e.message, variant: "destructive" });
       setSentence(null);
     } finally {
@@ -67,20 +67,19 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
     setLoading(true);
     setResult(null);
     try {
-      const res = await fetch("/functions/v1/evaluate-theme-translation", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      const { data, error } = await supabase.functions.invoke('evaluate-theme-translation', {
+        body: {
           language,
           student,
           french: sentence.french,
           reference: sentence.reference
-        })
+        }
       });
-      if (!res.ok) throw new Error("Erreur correction");
-      const data = await res.json();
+      
+      if (error) throw error;
       setResult(data);
     } catch (e: any) {
+      console.error('Error evaluating translation:', e);
       toast({ title: "Erreur", description: e.message, variant: "destructive" });
     } finally {
       setLoading(false);
@@ -166,7 +165,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                 {Object.entries(result.severity).map(([type, list]) =>
                   list.length > 0 ? (
                     <li key={type}>
-                      <span className="font-medium capitalize">{type}</span> : {list.join("; ")}
+                      <span className="font-medium capitalize">{type}</span> : {list.join("; ")}
                     </li>
                   ) : null
                 )}
@@ -174,7 +173,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
             </div>
             {result.grammar_rules.length > 0 && (
               <div>
-                <b>Règles à réviser :</b>
+                <b>Règles à réviser :</b>
                 <ul className="list-disc ml-8">
                   {result.grammar_rules.map((r, i) => <li key={i}>{r}</li>)}
                 </ul>
@@ -182,7 +181,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
             )}
             {result.tips.length > 0 && (
               <div className="mt-2 text-sm text-gray-600">
-                <b>Conseils :</b>
+                <b>Conseils :</b>
                 <ul className="list-disc ml-8">{result.tips.map((t, i) => <li key={i}>{t}</li>)}</ul>
               </div>
             )}
