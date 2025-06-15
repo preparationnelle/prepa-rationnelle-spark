@@ -44,6 +44,11 @@ import NotFound from "./pages/NotFound";
 import PitchIntroMethodePage from './pages/PitchIntroMethodePage';
 import ContactPage from './pages/ContactPage';
 import MethodologiePage from './pages/MethodologiePage';
+import MethodMathsPage from "./pages/methodologie/MethodMathsPage";
+import MethodGeopolitiquePage from "./pages/methodologie/MethodGeopolitiquePage";
+import MethodCulturePage from "./pages/methodologie/MethodCulturePage";
+import MethodPythonPage from "./pages/methodologie/MethodPythonPage";
+import MethodAnglaisPage from "./pages/methodologie/MethodAnglaisPage";
 
 // Initialize PostHog
 initPostHog();
@@ -102,6 +107,12 @@ const App = () => (
                     <Route path="/ecoles/kedge" element={<KEDGEPage />} />
                     <Route path="/ecoles/neoma" element={<NEOMAPage />} />
                     <Route path="/methodologie" element={<MethodologiePage />} />
+                    {/* Ajout des routes pour chaque matière */}
+                    <Route path="/methodologie/maths" element={<MethodMathsPage />} />
+                    <Route path="/methodologie/geopolitique" element={<MethodGeopolitiquePage />} />
+                    <Route path="/methodologie/anglais" element={<MethodAnglaisPage />} />
+                    <Route path="/methodologie/culture-generale" element={<MethodCulturePage />} />
+                    <Route path="/methodologie/python" element={<MethodPythonPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
