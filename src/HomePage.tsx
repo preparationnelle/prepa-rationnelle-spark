@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -333,7 +332,11 @@ const HomePage = () => {
             <div>
               <h3 className="font-bold text-lg mb-4">Liens utiles</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-300 hover:text-white">À propos</a></li>
+                <li>
+                  <a href="/apropos" className="text-gray-300 hover:text-white">
+                    À propos
+                  </a>
+                </li>
                 <li><a href="#" className="text-gray-300 hover:text-white">FAQ</a></li>
                 <li><a href="#" className="text-gray-300 hover:text-white">Contact</a></li>
               </ul>

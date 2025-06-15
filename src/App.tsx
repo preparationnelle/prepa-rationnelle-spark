@@ -53,6 +53,7 @@ import MethodAnglaisPage from "./pages/methodologie/MethodAnglaisPage";
 import MethodAllemandPage from './pages/methodologie/MethodAllemandPage';
 import MethodAllemandEssaiPage from './pages/methodologie/MethodAllemandEssaiPage';
 import MethodAllemandSynthesePage from './pages/methodologie/MethodAllemandSynthesePage';
+import AproposPage from './pages/AproposPage';
 
 // Initialize PostHog
 initPostHog();
@@ -111,6 +112,8 @@ const App = () => (
                     <Route path="/ecoles/kedge" element={<KEDGEPage />} />
                     <Route path="/ecoles/neoma" element={<NEOMAPage />} />
                     <Route path="/methodologie" element={<MethodologiePage />} />
+                    {/* Ajout de la page À propos */}
+                    <Route path="/apropos" element={<AproposPage />} />
                     {/* Ajout des routes pour chaque matière */}
                     <Route path="/methodologie/maths" element={<MethodMathsPage />} />
                     <Route path="/methodologie/geopolitique" element={<MethodGeopolitiquePage />} />
