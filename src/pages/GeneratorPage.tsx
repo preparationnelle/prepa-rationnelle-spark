@@ -26,6 +26,7 @@ import { cn } from "@/lib/utils";
 
 // react-hook-form
 import { useForm } from "react-hook-form";
+import { useProgress } from "@/context/ProgressContext";
 
 // MiniCard type
 type AutomationKey =
