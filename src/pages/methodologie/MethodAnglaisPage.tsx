@@ -3,6 +3,7 @@ import ArticleAnglaisGrammaire from "./ArticleAnglaisGrammaire";
 import ArticleAnglaisProgress from "./ArticleAnglaisProgress";
 import ArticleAnglaisThemes from "./ArticleAnglaisThemes";
 import ArticleAnglaisColles from "./ArticleAnglaisColles";
+import ArticleAnglaisEssaisSyntheses from "./ArticleAnglaisEssaisSyntheses";
 
 export default function MethodAnglaisPage() {
   return (
@@ -44,6 +45,16 @@ export default function MethodAnglaisPage() {
         </CardHeader>
         <CardContent>
           <ArticleAnglaisColles />
+        </CardContent>
+      </Card>
+
+      {/* Article 5 */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Réussir Essais et Synthèses</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ArticleAnglaisEssaisSyntheses />
         </CardContent>
       </Card>
     </div>
