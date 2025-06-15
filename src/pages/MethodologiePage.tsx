@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
@@ -7,8 +6,8 @@ import { Button } from "@/components/ui/button";
 const sections = [
   { id: "maths", label: "Maths", link: "/methodologie/maths" },
   { id: "geopolitique", label: "Géopolitique", link: "/methodologie/geopolitique" },
-  { id: "langues", label: "Langues (Anglais ECG)", link: "/methodologie/anglais" },
   { id: "culturegenerale", label: "Culture Générale", link: "/methodologie/culture-generale" },
+  { id: "allemand", label: "Allemand", link: "/methodologie/allemand" },
   { id: "python", label: "Module Python (bonus)", link: "/methodologie/python" }
 ];
 
@@ -57,18 +56,6 @@ export default function MethodologiePage() {
           </CardContent>
         </Card>
         {/* Langues */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Langues – Aperçu Méthode Anglais ECG</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="mb-2 font-semibold">Prépa Rationnelle : Méthode complète d’anglais en prépa ECG</p>
-            <p className="mb-2">Attention, ceci n’est pas une méthode pour apprendre l’anglais, c’est une méthode pour réussir les épreuves d’anglais en prépa HEC.</p>
-            <Link to="/methodologie/anglais">
-              <Button variant="outline">Découvrir la méthode anglaise</Button>
-            </Link>
-          </CardContent>
-        </Card>
         {/* Culture générale */}
         <Card>
           <CardHeader>
