@@ -48,6 +48,15 @@ export const SchoolProfileGenerator: React.FC = () => {
   const [infosComplementaires, setInfosComplementaires] = useState("");
 
   const handleGenerate = async () => {
+    // Empêche la génération si l'id utilisateur est absent ou mal formé
+    if (!currentUser?.id || !/^[0-9a-fA-F-]{36}$/.test(currentUser.id)) {
+      toast({
+        variant: "destructive",
+        title: "Erreur",
+        description: "Utilisateur non connecté ou identifiant invalide.",
+      });
+      return;
+    }
     setLoading(true);
     setProfile(null);
     setFromCache(false);
@@ -70,6 +79,18 @@ export const SchoolProfileGenerator: React.FC = () => {
           }),
         }
       );
+      // Affichage console log utile en dev (à retirer si besoin)
+      // console.log("Body envoyé:", {
+      //   school_slug: selected,
+      //   user_id: currentUser?.id,
+      //   school_name: SCHOOL_OPTIONS.find((o) => o.slug === selected)?.name,
+      //   user_infos: {
+      //     projetPro,
+      //     interets,
+      //     international,
+      //     infosComplementaires,
+      //   }
+      // });
       const data = await res.json();
       if (data.error) throw new Error(data.error);
       setProfile(data.data);
