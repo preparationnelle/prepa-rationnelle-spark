@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Megaphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -107,16 +106,6 @@ const PitchIntroMethodePage = () => (
               <li>Sincère, sobrement enthousiaste.</li>
               <li>Ouvert, tu invites au dialogue.</li>
             </ul>
-          </section>
-
-          {/* Exemples d'accroches */}
-          <section className="mb-7">
-            <h3 className="text-lg font-semibold mb-2">Exemples d’accroches inspirantes</h3>
-            <div className="space-y-1">
-              <div>“Depuis toujours, j’ai du mal à me contenter d’une seule discipline.”</div>
-              <div>“Ma passion, c’est le fait d’apprendre en dehors du cadre.”</div>
-              <div>“Je suis quelqu’un de multiculturel, pas juste par mon passeport…”</div>
-            </div>
           </section>
 
           {/* Bonus astuces */}
