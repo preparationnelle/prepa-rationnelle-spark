@@ -30,6 +30,10 @@ interface EvaluationResult {
   reference: string;
   grammar_rules: string[];
   tips: string[];
+  german_analysis?: {
+    declension_errors: string[];
+    word_order_errors: string[];
+  };
 }
 
 export const ThemeGrammaticalGenerator: React.FC = () => {
@@ -171,6 +175,30 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                 )}
               </ul>
             </div>
+            
+            {/* Analyse spécialisée allemand */}
+            {language === "de" && result.german_analysis && (
+              <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                <b className="text-yellow-800">🇩🇪 Analyse spécialisée allemand :</b>
+                {result.german_analysis.declension_errors.length > 0 && (
+                  <div className="mt-2">
+                    <span className="font-medium text-yellow-700">Déclinaisons incorrectes :</span>
+                    <ul className="list-disc ml-6 text-yellow-700">
+                      {result.german_analysis.declension_errors.map((err, i) => <li key={i}>{err}</li>)}
+                    </ul>
+                  </div>
+                )}
+                {result.german_analysis.word_order_errors.length > 0 && (
+                  <div className="mt-2">
+                    <span className="font-medium text-yellow-700">Erreurs d'ordre des mots :</span>
+                    <ul className="list-disc ml-6 text-yellow-700">
+                      {result.german_analysis.word_order_errors.map((err, i) => <li key={i}>{err}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
+            
             {result.grammar_rules.length > 0 && (
               <div>
                 <b>Règles à réviser :</b>
