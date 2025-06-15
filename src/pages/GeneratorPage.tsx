@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import {
   MessageSquare, Zap, Languages, Globe, TrendingUp,
-  HelpCircle, Dices
+  HelpCircle, Dices, BookOpen
 } from 'lucide-react';
 
 // Import components des automatisations :
@@ -19,6 +19,7 @@ import { GeopoliticsGenerator } from '@/components/generator/GeopoliticsGenerato
 import { LanguageParagraphGenerator } from '@/components/generator/LanguageParagraphGenerator';
 import { CaseStudyGenerator } from '@/components/generator/CaseStudyGenerator';
 import { ThemeGrammaticalGenerator } from "@/components/grammar/ThemeGrammaticalGenerator";
+import { SchoolProfileGenerator } from "@/components/generator/SchoolProfileGenerator";
 
 // hooks
 import { useGenerateAnswer } from '@/hooks/useGenerateAnswer';
@@ -37,7 +38,8 @@ type AutomationKey =
   | 'case-study'
   | 'emlyon'
   | 'edhec'
-  | 'theme-grammar';
+  | 'theme-grammar'
+  | 'school-profile';
 
 const AUTOMATIONS = [
   {
@@ -102,6 +104,14 @@ const AUTOMATIONS = [
     title: "Thème Grammatical",
     description:
       "Générateur et correcteur de thèmes de traduction : notation détaillée instantanée.",
+    badge: "Nouveau",
+  },
+  {
+    key: 'school-profile' as AutomationKey,
+    icon: <BookOpen className="h-8 w-8 text-primary" />,
+    title: "Fiche école personnalisée",
+    description:
+      "Automatise la recherche des infos-clés pour ton entretien : valeurs, assos, doubles diplômes, actu, etc.",
     badge: "Nouveau",
   },
 ];
@@ -287,6 +297,8 @@ const GeneratorPage = () => {
         );
       case "theme-grammar":
         return <ThemeGrammaticalGenerator />;
+      case "school-profile":
+        return <SchoolProfileGenerator />;
       default:
         return null;
     }

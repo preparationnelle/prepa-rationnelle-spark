@@ -192,6 +192,33 @@ export type Database = {
         }
         Relationships: []
       }
+      school_profiles: {
+        Row: {
+          created_at: string
+          generated_data: Json
+          id: string
+          requested_by: string
+          school_slug: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          generated_data: Json
+          id?: string
+          requested_by: string
+          school_slug: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          generated_data?: Json
+          id?: string
+          requested_by?: string
+          school_slug?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       submissions: {
         Row: {
           commentaires: string | null
