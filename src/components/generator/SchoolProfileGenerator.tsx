@@ -5,6 +5,8 @@ import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { useAuth } from "@/context/AuthContext";
 import { Download } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const SCHOOL_OPTIONS = [
   { slug: "escp", name: "ESCP Business School" },
@@ -22,14 +24,11 @@ const SCHOOL_OPTIONS = [
 type SchoolProfileData = { text?: string };
 
 function downloadTextAsPDF(text: string, schoolName: string) {
-  // Simple fallback: create a text file download; can be replaced by jsPDF if needed
   const blob = new Blob([text], { type: "text/plain" });
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.download = `${schoolName
-    .replace(/ /g, "_")
-    .toLowerCase()}_fiche.txt`;
+  link.download = `${schoolName.replace(/ /g, "_").toLowerCase()}_fiche.txt`;
   link.click();
   setTimeout(() => URL.revokeObjectURL(url), 1500);
 }
@@ -41,6 +40,13 @@ export const SchoolProfileGenerator: React.FC = () => {
   const [fromCache, setFromCache] = useState(false);
   const { toast } = useToast();
   const { currentUser } = useAuth();
+
+  // Questionnaire utilisateur :
+  const [field, setField] = useState(""); // Filière
+  const [speciality, setSpeciality] = useState("");
+  const [projetPro, setProjetPro] = useState("");
+  const [interets, setInterets] = useState("");
+  const [pitch, setPitch] = useState("");
 
   const handleGenerate = async () => {
     setLoading(true);
@@ -56,6 +62,13 @@ export const SchoolProfileGenerator: React.FC = () => {
             school_slug: selected,
             user_id: currentUser?.id,
             school_name: SCHOOL_OPTIONS.find((o) => o.slug === selected)?.name,
+            user_infos: {
+              field,
+              speciality,
+              projetPro,
+              interets,
+              pitch,
+            }
           }),
         }
       );
@@ -77,12 +90,12 @@ export const SchoolProfileGenerator: React.FC = () => {
         <CardTitle className="flex flex-col items-start gap-2">
           Générateur de fiche personnalisée d'école
           <span className="font-normal text-base text-muted-foreground">
-            Sélectionne une école puis génère ta fiche dynamique, prête à exploiter pour l'entretien.
+            Sélectionne une école puis remplis quelques infos pour personnaliser ta fiche dynamique, prête à exploiter pour l'entretien.
           </span>
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="mb-4 flex flex-col gap-2">
+        <div className="mb-4 flex flex-col gap-4">
           <label className="font-medium">École :</label>
           <select
             className="p-2 border border-border rounded bg-background"
@@ -96,6 +109,57 @@ export const SchoolProfileGenerator: React.FC = () => {
               </option>
             ))}
           </select>
+
+          <div className="flex flex-col gap-2 bg-white/40 border border-border rounded p-4">
+            <label className="font-medium" htmlFor="filiere">Filière / Parcours :</label>
+            <Input
+              id="filiere"
+              autoComplete="off"
+              placeholder="Ex: ECE, ECS, Littéraire, ingénieur, autre…"
+              value={field}
+              onChange={(e) => setField(e.target.value)}
+              disabled={loading}
+            />
+            <label className="font-medium" htmlFor="specialite">Spécialité :</label>
+            <Input
+              id="specialite"
+              autoComplete="off"
+              placeholder="Ex : Maths, économie, langues, sciences..."
+              value={speciality}
+              onChange={(e) => setSpeciality(e.target.value)}
+              disabled={loading}
+            />
+            <label className="font-medium" htmlFor="pitch">Pitch (présentation personnelle en 2 lignes) :</label>
+            <Textarea
+              id="pitch"
+              autoComplete="off"
+              placeholder="Qui es-tu ? 2-3 lignes de présentation personnelle"
+              value={pitch}
+              onChange={(e) => setPitch(e.target.value)}
+              rows={2}
+              disabled={loading}
+            />
+            <label className="font-medium" htmlFor="projetpro">Projet professionnel :</label>
+            <Input
+              id="projetpro"
+              autoComplete="off"
+              placeholder="Quel métier, secteur, rêve pro…"
+              value={projetPro}
+              onChange={(e) => setProjetPro(e.target.value)}
+              disabled={loading}
+            />
+            <label className="font-medium" htmlFor="interets">Centres d’intérêt :</label>
+            <Textarea
+              id="interets"
+              autoComplete="off"
+              placeholder="Sports, assos, passions, international, engagement…"
+              value={interets}
+              onChange={(e) => setInterets(e.target.value)}
+              rows={2}
+              disabled={loading}
+            />
+          </div>
+
           <Button
             onClick={handleGenerate}
             className="mt-3"
@@ -114,7 +178,12 @@ export const SchoolProfileGenerator: React.FC = () => {
                 variant="outline"
                 size="icon"
                 className="ml-auto"
-                onClick={() => downloadTextAsPDF(profile.text!, SCHOOL_OPTIONS.find((o) => o.slug === selected)?.name || selected)}
+                onClick={() =>
+                  downloadTextAsPDF(
+                    profile.text!,
+                    SCHOOL_OPTIONS.find((o) => o.slug === selected)?.name || selected
+                  )
+                }
                 aria-label="Exporter"
               >
                 <Download className="w-4 h-4" />
