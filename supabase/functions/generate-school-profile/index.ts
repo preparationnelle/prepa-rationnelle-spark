@@ -1,3 +1,4 @@
+
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.42.5";
@@ -6,11 +7,12 @@ const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
-const openaiApiKey = Deno.env.get("PERPLEXITY_API_KEY");
+
+const perplexityApiKey = Deno.env.get("PERPLEXITY_API_KEY");
 const supabaseUrl = Deno.env.get("SUPABASE_URL") ?? "";
 const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
 
-const SYSTEM_PROMPT = `Pour chaque école, génère une fiche synthétique incluant : 
+const SYSTEM_PROMPT = `Pour chaque école, génère une fiche synthétique incluant : 
 - 1. valeurs clés
 - 2. associations étudiantes majeures/originales 
 - 3. doubles diplômes et parcours uniques 
@@ -20,26 +22,37 @@ const SYSTEM_PROMPT = `Pour chaque école, génère une fiche synthétique inclu
 - 7. actualités récentes (moins de 2 ans) citées et référencées. 
 Renvoie tout de façon très structurée (titre + bullet points détaillés par section). Chaque fois que possible, donne les liens des sources.`;
 
-const REQ_TIMEOUT_MS = 38000;
-
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
+    console.log("Début de la génération de fiche école");
+    
     const supabase = createClient(supabaseUrl, supabaseKey);
     const { school_slug, user_id, school_name } = await req.json();
 
-    // Sécurité : check du pattern UUID server-side, sinon renvoyer une erreur ultra explicite
-    if (!user_id || typeof user_id !== "string" || !/^[0-9a-fA-F-]{36}$/.test(user_id)) {
+    console.log("Données reçues:", { school_slug, user_id, school_name });
+
+    // Vérification de la clé API
+    if (!perplexityApiKey) {
+      console.error("Clé Perplexity manquante");
       return new Response(
-        JSON.stringify({ error: "L'identifiant utilisateur envoyé n'est pas un UUID valide côté API." }),
+        JSON.stringify({ error: "Clé API Perplexity non configurée" }),
+        { status: 500, headers: corsHeaders }
+      );
+    }
+
+    // Vérification des données requises
+    if (!school_slug || !user_id || !school_name) {
+      return new Response(
+        JSON.stringify({ error: "Paramètres manquants" }),
         { status: 400, headers: corsHeaders }
       );
     }
 
-    // 1. Check if a cached profile exists
+    // 1. Vérifier si une fiche en cache existe
     const { data: existing } = await supabase
       .from("school_profiles")
       .select("*")
@@ -50,21 +63,21 @@ serve(async (req) => {
       .maybeSingle();
 
     if (existing) {
+      console.log("Fiche trouvée en cache");
       return new Response(JSON.stringify({ cached: true, data: existing.generated_data }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    // 2. Prepare Perplexity API request
+    // 2. Générer une nouvelle fiche avec Perplexity
     const prompt = `Dresse une fiche synthèse structurée selon ces sections pour l'école de commerce ${school_name} (${school_slug}). ${SYSTEM_PROMPT} Génère en français.`;
 
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), REQ_TIMEOUT_MS);
+    console.log("Appel à l'API Perplexity...");
 
     const perplexityResponse = await fetch("https://api.perplexity.ai/chat/completions", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${openaiApiKey}`,
+        Authorization: `Bearer ${perplexityApiKey}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -83,22 +96,31 @@ serve(async (req) => {
         frequency_penalty: 1,
         presence_penalty: 0,
       }),
-      signal: controller.signal,
     });
-    clearTimeout(timeout);
 
     if (!perplexityResponse.ok) {
       const errText = await perplexityResponse.text();
+      console.error("Erreur Perplexity:", errText);
       return new Response(
-        JSON.stringify({ error: "Perplexity API Error", details: errText }),
+        JSON.stringify({ error: "Erreur API Perplexity", details: errText }),
         { status: 500, headers: corsHeaders }
       );
     }
+
     const apiRes = await perplexityResponse.json();
     const message = apiRes.choices?.[0]?.message?.content?.trim();
 
-    // 3. Store result in school_profiles
-    const insertRes = await supabase
+    if (!message) {
+      return new Response(
+        JSON.stringify({ error: "Aucune réponse générée" }),
+        { status: 500, headers: corsHeaders }
+      );
+    }
+
+    console.log("Réponse générée, sauvegarde en base...");
+
+    // 3. Sauvegarder le résultat
+    const { data: insertData, error: insertError } = await supabase
       .from("school_profiles")
       .insert({
         school_slug,
@@ -108,11 +130,22 @@ serve(async (req) => {
       .select()
       .maybeSingle();
 
+    if (insertError) {
+      console.error("Erreur lors de la sauvegarde:", insertError);
+    }
+
+    console.log("Génération terminée avec succès");
+
     return new Response(
-      JSON.stringify({ cached: false, data: insertRes?.generated_data || { text: message } }),
+      JSON.stringify({ 
+        cached: false, 
+        data: { text: message } 
+      }),
       { headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
+
   } catch (e) {
+    console.error("Erreur générale:", e);
     return new Response(JSON.stringify({ error: e.message }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },

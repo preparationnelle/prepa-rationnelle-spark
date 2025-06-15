@@ -41,67 +41,82 @@ export const SchoolProfileGenerator: React.FC = () => {
   const { toast } = useToast();
   const { currentUser } = useAuth();
 
-  // Champs requis dans le questionnaire
+  // Champs du questionnaire
   const [projetPro, setProjetPro] = useState("");
   const [interets, setInterets] = useState("");
   const [international, setInternational] = useState("");
   const [infosComplementaires, setInfosComplementaires] = useState("");
 
   const handleGenerate = async () => {
-    // Empêche la génération si l'id utilisateur est absent ou mal formé
-    if (!currentUser?.id || !/^[0-9a-fA-F-]{36}$/.test(currentUser.id)) {
+    if (!currentUser?.id) {
       toast({
         variant: "destructive",
         title: "Erreur",
-        description: "Utilisateur non connecté ou identifiant invalide.",
+        description: "Vous devez être connecté pour générer une fiche.",
       });
       return;
     }
 
-    // LOG EN DEV, pour diagnostic !
-    console.log("[GENERATE SCHOOL PROFILE] user_id utilisé :", currentUser.id);
+    console.log("Début génération pour user:", currentUser.id);
 
     setLoading(true);
     setProfile(null);
     setFromCache(false);
+
     try {
-      const res = await fetch(
-        "/functions/v1/generate-school-profile",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            school_slug: selected,
-            user_id: currentUser?.id,
-            school_name: SCHOOL_OPTIONS.find((o) => o.slug === selected)?.name,
-            user_infos: {
-              projetPro,
-              interets,
-              international,
-              infosComplementaires,
-            }
-          }),
+      const requestBody = {
+        school_slug: selected,
+        user_id: currentUser.id,
+        school_name: SCHOOL_OPTIONS.find((o) => o.slug === selected)?.name,
+        user_infos: {
+          projetPro,
+          interets,
+          international,
+          infosComplementaires,
         }
-      );
-      // Affichage console log utile en dev (à retirer si besoin)
-      // console.log("Body envoyé:", {
-      //   school_slug: selected,
-      //   user_id: currentUser?.id,
-      //   school_name: SCHOOL_OPTIONS.find((o) => o.slug === selected)?.name,
-      //   user_infos: {
-      //     projetPro,
-      //     interets,
-      //     international,
-      //     infosComplementaires,
-      //   }
-      // });
-      const data = await res.json();
-      if (data.error) throw new Error(data.error);
+      };
+
+      console.log("Envoi de la requête:", requestBody);
+
+      const response = await fetch("/functions/v1/generate-school-profile", {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhhbWthcGhlbHNoc2F2Y2FjYmR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYwODc0MDQsImV4cCI6MjA2MTY2MzQwNH0.7G6hKGrmG_JmV_DZKyYCTmsS-soI0tofSKHA4fB8jAY'}`
+        },
+        body: JSON.stringify(requestBody),
+      });
+
+      console.log("Statut de réponse:", response.status);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Erreur HTTP:", errorText);
+        throw new Error(`Erreur ${response.status}: ${errorText}`);
+      }
+
+      const data = await response.json();
+      console.log("Données reçues:", data);
+
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
       setProfile(data.data);
       setFromCache(Boolean(data.cached));
-      toast({ title: "Fiche générée !", description: data.cached ? "Fiche issue du cache." : "Nouvelle fiche générée." });
-    } catch (e: any) {
-      toast({ variant: "destructive", title: "Erreur", description: e?.message || "Erreur inconnue." });
+      
+      toast({ 
+        title: "Fiche générée !", 
+        description: data.cached ? "Fiche issue du cache." : "Nouvelle fiche générée." 
+      });
+
+    } catch (error: any) {
+      console.error("Erreur lors de la génération:", error);
+      toast({ 
+        variant: "destructive", 
+        title: "Erreur", 
+        description: error?.message || "Erreur inconnue lors de la génération." 
+      });
     } finally {
       setLoading(false);
     }
@@ -119,7 +134,7 @@ export const SchoolProfileGenerator: React.FC = () => {
       </CardHeader>
       <CardContent>
         <div className="mb-4 flex flex-col gap-4">
-          <label className="font-medium">École :</label>
+          <label className="font-medium">École :</label>
           <select
             className="p-2 border border-border rounded bg-background"
             value={selected}
@@ -134,7 +149,7 @@ export const SchoolProfileGenerator: React.FC = () => {
           </select>
 
           <div className="flex flex-col gap-2 bg-white/40 border border-border rounded p-4">
-            <label className="font-medium" htmlFor="projetpro">Projet professionnel :</label>
+            <label className="font-medium" htmlFor="projetpro">Projet professionnel :</label>
             <Input
               id="projetpro"
               autoComplete="off"
@@ -143,7 +158,7 @@ export const SchoolProfileGenerator: React.FC = () => {
               onChange={(e) => setProjetPro(e.target.value)}
               disabled={loading}
             />
-            <label className="font-medium" htmlFor="interets">Centres d’intérêt :</label>
+            <label className="font-medium" htmlFor="interets">Centres d'intérêt :</label>
             <Textarea
               id="interets"
               autoComplete="off"
@@ -157,7 +172,7 @@ export const SchoolProfileGenerator: React.FC = () => {
             <Input
               id="international"
               autoComplete="off"
-              placeholder="Séjours, échanges, langues étudiées, expériences à l’étranger…"
+              placeholder="Séjours, échanges, langues étudiées, expériences à l'étranger…"
               value={international}
               onChange={(e) => setInternational(e.target.value)}
               disabled={loading}
@@ -166,7 +181,7 @@ export const SchoolProfileGenerator: React.FC = () => {
             <Textarea
               id="infoscomplementaires"
               autoComplete="off"
-              placeholder="Tout autre élément pertinent pour affiner la recherche : association, passion, expérience, double-cursus…"
+              placeholder="Tout autre élément pertinent pour affiner la recherche : association, passion, expérience, double-cursus…"
               value={infosComplementaires}
               onChange={(e) => setInfosComplementaires(e.target.value)}
               rows={2}
@@ -182,6 +197,7 @@ export const SchoolProfileGenerator: React.FC = () => {
             {loading ? "Génération…" : "Générer la fiche"}
           </Button>
         </div>
+
         {profile?.text && (
           <div className="rounded-lg border border-muted bg-card/30 p-4 whitespace-pre-line mt-4 max-h-96 overflow-y-auto">
             <div className="mb-2 flex items-center gap-2">
@@ -203,7 +219,7 @@ export const SchoolProfileGenerator: React.FC = () => {
                 <Download className="w-4 h-4" />
               </Button>
             </div>
-            <strong>Fiche générée :</strong>
+            <strong>Fiche générée :</strong>
             <div>{profile.text}</div>
           </div>
         )}
