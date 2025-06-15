@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -24,6 +23,9 @@ import { ThemeGrammaticalGenerator } from "@/components/grammar/ThemeGrammatical
 // hooks
 import { useGenerateAnswer } from '@/hooks/useGenerateAnswer';
 import { cn } from "@/lib/utils";
+
+// react-hook-form
+import { useForm } from "react-hook-form";
 
 // MiniCard type
 type AutomationKey =
