@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
@@ -24,6 +23,7 @@ export const useStreamingAnswer = (currentUserId?: string) => {
   const [wordCount, setWordCount] = useState(0);
   const [streamingContent, setStreamingContent] = useState('');
   const [currentAnswer, setCurrentAnswer] = useState<Answer | null>(null);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const { toast } = useToast();
 
   const generateAnswer = async (
@@ -47,19 +47,22 @@ export const useStreamingAnswer = (currentUserId?: string) => {
     setStreamingContent('');
     setCurrentAnswer(null);
     setWordCount(0);
+    setErrorMsg(null);
 
     try {
-      console.log('Starting real streaming with fetch...');
+      console.log('[useStreamingAnswer] Starting fetch streaming process...');
+      const url = `https://xamkaphelshsavcacbdy.functions.supabase.eu-central-1.supabase.co/generate-interview-answer`;
+      console.log('[useStreamingAnswer] Using URL:', url);
 
-      // URL EDGE FUNCTION SUPABASE -- adapte ton projectId si besoin !
-      const url = `https://${supaProjectId}.functions.supabase.${region}.supabase.co/generate-interview-answer`;
+      const headers = {
+        ...getSupabaseAuthHeaders(),
+        'Content-Type': 'application/json',
+      };
+      console.log('[useStreamingAnswer] Using headers:', headers);
 
       const resp = await fetch(url, {
         method: 'POST',
-        headers: {
-          ...getSupabaseAuthHeaders(),
-          'Content-Type': 'application/json',
-        },
+        headers,
         body: JSON.stringify({
           question,
           language,
@@ -69,10 +72,11 @@ export const useStreamingAnswer = (currentUserId?: string) => {
 
       if (!resp.ok) {
         const errorText = await resp.text();
-        throw new Error("Function error: " + errorText);
+        setErrorMsg("Erreur HTTP: " + errorText);
+        throw new Error("HTTP error: " + errorText);
       }
-
       if (!resp.body) {
+        setErrorMsg(language === 'fr' ? "Streaming non supporté par la réponse serveur." : "Streaming is not supported by the server response.");
         throw new Error('Stream not supported in response.');
       }
       const reader = resp.body.getReader();
@@ -80,11 +84,15 @@ export const useStreamingAnswer = (currentUserId?: string) => {
 
       let full = '';
       let done = false;
+      let gotAnyChunk = false;
 
       while (!done) {
         const { value, done: doneReading } = await reader.read();
         done = doneReading;
         const chunk = decoder.decode(value || new Uint8Array(), { stream: !done });
+        if (chunk.trim().length > 0) {
+          gotAnyChunk = true;
+        }
 
         // Split chunk by SSE lines
         const lines = chunk.split('\n');
@@ -92,6 +100,7 @@ export const useStreamingAnswer = (currentUserId?: string) => {
           if (line.startsWith('data: ')) {
             try {
               const jsonData = JSON.parse(line.slice(6));
+              console.log('[useStreamingAnswer] Received chunk:', jsonData);
               if (jsonData.type === 'chunk') {
                 full = jsonData.fullContent;
                 setStreamingContent(full);
@@ -112,14 +121,24 @@ export const useStreamingAnswer = (currentUserId?: string) => {
                 }
               }
             } catch (err) {
-              // On ignore parsing error
+              console.warn('[useStreamingAnswer] Échec parsing JSON du chunk:', line, err);
             }
+          } else if (line.trim().length > 0) {
+            console.log('[useStreamingAnswer] Received line not starting with "data:":', line);
           }
         }
       }
+      if (!gotAnyChunk) {
+        setErrorMsg(language === 'fr' ? 
+          "Aucun flux n'a été reçu : la fonction n'a pas répondu (voir console)." :
+          "No streaming chunks received: the edge function did not respond (see console)."
+        );
+        console.error('[useStreamingAnswer] Streaming problem: no data received.');
+      }
       return currentAnswer;
     } catch (error) {
-      console.error("Error generating answer:", error);
+      console.error("[useStreamingAnswer] Error:", error);
+      setErrorMsg((error as Error)?.message || "Erreur inconnue");
       toast({
         title: language === 'fr' ? "Erreur" : "Error",
         description:
@@ -143,5 +162,6 @@ export const useStreamingAnswer = (currentUserId?: string) => {
     currentAnswer,
     setCurrentAnswer,
     generateAnswer,
+    errorMsg,
   };
 };
