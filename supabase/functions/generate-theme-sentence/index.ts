@@ -38,9 +38,18 @@ const POOL: Record<string, { french: string; reference: string; notes: string[] 
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
   try {
-    const { language } = await req.json();
+    const { language, history } = await req.json();
     const pool = POOL[language] || POOL["en"];
-    const phrase = pool[Math.floor(Math.random() * pool.length)];
+    // Si historique fourni, filtrer le pool pour ne pas répéter
+    let available = pool;
+    if (Array.isArray(history) && history.length > 0) {
+      available = pool.filter(p =>
+        !history.includes(p.reference)
+      );
+    }
+    // Si toutes les phrases ont été utilisées, on repart de zéro
+    if (available.length === 0) available = pool;
+    const phrase = available[Math.floor(Math.random() * available.length)];
     return new Response(JSON.stringify(phrase), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
   } catch (e) {
     return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } });

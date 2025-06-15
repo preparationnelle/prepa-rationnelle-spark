@@ -1,5 +1,4 @@
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -42,20 +41,27 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
   const [student, setStudent] = useState("");
   const [result, setResult] = useState<EvaluationResult | null>(null);
   const [loading, setLoading] = useState(false);
+  const [history, setHistory] = useState<string[]>([]); // références déjà vues
   const { toast } = useToast();
 
   // Générer une nouvelle phrase
-  const handleGenerate = async () => {
+  const handleGenerate = async (chosenLanguage: Language = language, withHistory: string[] = history) => {
     setResult(null);
     setStudent("");
     setLoading(true);
     try {
       const { data, error } = await supabase.functions.invoke('generate-theme-sentence', {
-        body: { language }
+        body: {
+          language: chosenLanguage,
+          history: withHistory
+        }
       });
-      
+
       if (error) throw error;
       setSentence(data);
+      if (data?.reference && !withHistory.includes(data.reference)) {
+        setHistory([...withHistory, data.reference]);
+      }
     } catch (e: any) {
       console.error('Error generating sentence:', e);
       toast({ title: "Erreur", description: e.message, variant: "destructive" });
@@ -64,6 +70,13 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
       setLoading(false);
     }
   };
+
+  // Charge auto dès le montage ou si la langue change
+  React.useEffect(() => {
+    setHistory([]); // reset the history when language changes
+    handleGenerate(language, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [language]);
 
   // Évaluer la traduction
   const handleEvaluate = async () => {
@@ -138,14 +151,14 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
               <TabsTrigger value="es">🇪🇸 Espagnol</TabsTrigger>
             </TabsList>
           </Tabs>
-          <Button onClick={handleGenerate} disabled={loading}>
-            {loading ? <Loader2 className="animate-spin h-5 w-5" /> : "Nouvelle phrase"}
+          <Button onClick={() => handleGenerate(language, history)} disabled={loading}>
+            {loading ? <Loader2 className="animate-spin h-5 w-5" /> : "Changer de phrase"}
           </Button>
         </div>
         {sentence && (
           <div className="space-y-2">
             <div>
-              <span className="font-semibold text-blue-700">À traduire :</span> 
+              <span className="font-semibold text-blue-700">À traduire :</span>
               <span className="ml-2">{sentence.french}</span>
             </div>
             <div className="text-sm text-muted-foreground">
@@ -158,8 +171,8 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
               rows={3}
               className="w-full border rounded p-3 mt-2"
             />
-            <Button 
-              onClick={handleEvaluate} 
+            <Button
+              onClick={handleEvaluate}
               className="mt-3"
               disabled={loading || !student.trim()}
             >
