@@ -216,71 +216,23 @@ const GeneratorPage = () => {
     switch (selectedKey) {
       case "answer":
         return (
-          <>
-            <Card className="overflow-hidden border-0 shadow-xl bg-gradient-to-br from-white via-orange-50/30 to-red-50/30 mb-12">
-              <CardHeader className="bg-gradient-to-r from-orange-600 to-red-600 text-white">
-                <div className="flex justify-between items-start">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
-                      <MessageSquare className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <CardTitle className="text-2xl font-bold">
-                        Générer une nouvelle réponse
-                      </CardTitle>
-                      <CardDescription className="text-orange-100 mt-1">
-                        Entrez une question d'entretien pour obtenir une réponse structurée avec du storytelling
-                      </CardDescription>
-                    </div>
-                  </div>
-                  <ToggleGroup
-                    type="single"
-                    value={language}
-                    onValueChange={(value) => value && setLanguage(value as 'fr' | 'en')}
-                    className="bg-white/20 backdrop-blur-sm"
-                  >
-                    <ToggleGroupItem value="fr" aria-label="Français" className="text-white hover:bg-white/30">
-                      🇫🇷
-                    </ToggleGroupItem>
-                    <ToggleGroupItem value="en" aria-label="English" className="text-white hover:bg-white/30">
-                      🇬🇧
-                    </ToggleGroupItem>
-                  </ToggleGroup>
-                </div>
-              </CardHeader>
-              <CardContent className="p-8">
-                <QuestionForm
-                  question={question}
-                  setQuestion={setQuestion}
-                  language={language}
-                  showAdditionalInfo={showAdditionalInfo}
-                  setShowAdditionalInfo={setShowAdditionalInfo}
-                  loadExample={loadExample}
-                  handleGenerate={handleGenerate}
-                  generating={generating}
-                />
-                <AdditionalInfoForm
-                  language={language}
-                  showAdditionalInfo={showAdditionalInfo}
-                  form={additionalInfoForm}
-                />
-              </CardContent>
-            </Card>
-            {currentAnswer && (
-              <ResponseCard
-                question={question}
-                answer={currentAnswer}
-                wordCount={wordCount}
-                language={language}
-                activeTab={activeTab}
-                onTabChange={setActiveTab}
-                onClearAnswer={() => setCurrentAnswer(null)}
-              />
-            )}
-            {!currentAnswer && !generating && (
-              <InfoPanel language={language} />
-            )}
-          </>
+          <AnswerAutomation
+            question={question}
+            setQuestion={setQuestion}
+            language={language}
+            setLanguage={setLanguage}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            showAdditionalInfo={showAdditionalInfo}
+            setShowAdditionalInfo={setShowAdditionalInfo}
+            loadExample={loadExample}
+            handleGenerate={handleGenerate}
+            generating={generating}
+            currentAnswer={currentAnswer}
+            setCurrentAnswer={setCurrentAnswer}
+            wordCount={wordCount}
+            additionalInfoForm={additionalInfoForm}
+          />
         );
       case "flashcards":
         return <FlashcardGenerator language={language} onFlashcardCreated={handleFlashcardCreated} />;
@@ -291,47 +243,9 @@ const GeneratorPage = () => {
       case "case-study":
         return <CaseStudyGenerator language={language} />;
       case "emlyon":
-        return (
-          <Card className="overflow-hidden border-0 shadow-xl bg-gradient-to-br from-white via-yellow-50/30 to-amber-50/30">
-            <CardHeader className="bg-gradient-to-r from-yellow-600 to-amber-600 text-white">
-              <CardTitle className="flex items-center gap-3 text-2xl">
-                <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
-                  <HelpCircle className="h-6 w-6" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold">Questions d'entretien EM Lyon</div>
-                  <div className="text-yellow-100 text-sm font-normal mt-1">
-                    Questions aléatoires pour l'entretien "Flash" avec cartes thématiques
-                  </div>
-                </div>
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-8">
-              <RandomWordGenerator type="emlyon" />
-            </CardContent>
-          </Card>
-        );
+        return <EMLyonAutomation />;
       case "edhec":
-        return (
-          <Card className="overflow-hidden border-0 shadow-xl bg-gradient-to-br from-white via-rose-50/30 to-pink-50/30">
-            <CardHeader className="bg-gradient-to-r from-rose-600 to-pink-600 text-white">
-              <CardTitle className="flex items-center gap-3 text-2xl">
-                <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
-                  <Dices className="h-6 w-6" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold">Générateur de mots EDHEC</div>
-                  <div className="text-rose-100 text-sm font-normal mt-1">
-                    Générateur de mots aléatoires pour votre présentation EDHEC
-                  </div>
-                </div>
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-8">
-              <RandomWordGenerator type="word" />
-            </CardContent>
-          </Card>
-        );
+        return <EDHECAutomation />;
       case "theme-grammar":
         return <ThemeGrammaticalGenerator />;
       case "school-profile":
@@ -341,11 +255,10 @@ const GeneratorPage = () => {
       case "python-tutor":
         return <PythonTutorGenerator />;
       case "python-exercises":
-        // --- Ajout du rendu pour la nouvelle extension ---
-        // Lazy import optim possible (pas nécessaire pour MVP)
         const PythonExerciseGenerator = require('@/components/generator/PythonExerciseGenerator').PythonExerciseGenerator;
         return <PythonExerciseGenerator />;
       case "prepa-chatbot":
+        const PrepaChatbotGenerator = require('@/components/generator/PrepaChatbotGenerator').PrepaChatbotGenerator;
         return <PrepaChatbotGenerator />;
       default:
         return null;
@@ -370,29 +283,10 @@ const GeneratorPage = () => {
       </div>
       {!selectedKey && (
         <>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
-            {AUTOMATIONS.map(auto => (
-              <button
-                key={auto.key}
-                onClick={() => setSelectedKey(auto.key as AutomationKey)}
-                className={cn(
-                  "group flex flex-col items-start p-6 rounded-lg bg-white/90 hover:shadow-xl hover:bg-primary/5 transition-all border border-border/40 relative ring-0 focus-visible:ring-2 focus-visible:ring-primary outline-none",
-                )}
-                style={{ minHeight: 170 }}
-                tabIndex={0}
-                aria-label={auto.title}
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  {auto.icon}
-                  <span className="bg-primary text-primary-foreground text-xs px-2 py-1 rounded-full font-medium ml-2">
-                    {auto.badge}
-                  </span>
-                </div>
-                <div className="font-bold text-lg mb-2 group-hover:text-primary transition-colors">{auto.title}</div>
-                <div className="text-sm text-muted-foreground mb-2">{auto.description}</div>
-              </button>
-            ))}
-          </div>
+          <GeneratorAutomationList
+            automations={AUTOMATIONS}
+            onSelect={setSelectedKey}
+          />
           <div className="text-center mt-4 text-muted-foreground text-sm">
             Cliquez sur une automatisation pour commencer&nbsp;!
           </div>
