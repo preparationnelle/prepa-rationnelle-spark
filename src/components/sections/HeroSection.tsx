@@ -7,8 +7,8 @@ import { Award, TrendingUp, Zap } from 'lucide-react';
 export const HeroSection = () => {
   return (
     <section className="py-16 md:py-24 px-4 bg-[#FFF9ED]">
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-10 md:gap-8">
-        {/* Left content */}
+      <div className="container mx-auto flex flex-col items-center justify-center gap-10 md:gap-8">
+        {/* Content only - plus de photo */}
         <div className="w-full max-w-xl mb-8 md:mb-0">
           <div className="mb-5 flex flex-col gap-2">
             <div className="flex items-center">
@@ -52,27 +52,6 @@ export const HeroSection = () => {
                 Se connecter
               </Button>
             </Link>
-          </div>
-        </div>
-        {/* Right: PHOTO HERO + shape */}
-        <div className="relative flex items-center justify-center w-full md:w-[340px] lg:w-[380px]">
-          {/* Tâche orange douce */}
-          <div
-            className="absolute rounded-[38%_62%_58%_42%/62%_23%_77%_38%] w-[240px] h-[250px] md:w-[340px] md:h-[350px] lg:w-[370px] lg:h-[390px] bg-orange-400 opacity-90 -z-10 shadow-lg"
-            style={{
-              filter: 'blur(0.5px)'
-            }}
-          />
-          {/* Photo */}
-          <img
-            src="/lovable-uploads/20508795-4685-4447-a4f3-ef4bf2f4fafd.png"
-            alt="Étudiant préparant un entretien"
-            className="w-[210px] md:w-[260px] lg:w-[300px] h-auto rounded-xl object-cover shadow-xl"
-            style={{ background: "#FFF9ED" }}
-          />
-          {/* Award badge */}
-          <div className="absolute -bottom-4 -right-4 bg-white p-2 md:p-3 rounded-full shadow-lg">
-            <Award className="w-7 h-7 text-primary" />
           </div>
         </div>
       </div>
