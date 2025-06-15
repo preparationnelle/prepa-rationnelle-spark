@@ -121,6 +121,7 @@ serve(async (req) => {
             }
           }
         } catch (error) {
+          console.error('Streaming error:', error);
           controller.error(error);
         }
       }
