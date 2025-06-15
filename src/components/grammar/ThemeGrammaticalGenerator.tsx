@@ -81,7 +81,24 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
       });
       
       if (error) throw error;
-      setResult(data);
+      
+      // Add fallback values to ensure the object structure is complete
+      const processedData = {
+        ...data,
+        severity: data.severity || {
+          barbarism: [],
+          omission: [],
+          grammar: [],
+          lexicon: [],
+          spelling: [],
+          other: []
+        },
+        grammar_rules: data.grammar_rules || [],
+        tips: data.tips || [],
+        german_analysis: data.german_analysis || null
+      };
+      
+      setResult(processedData);
     } catch (e: any) {
       console.error('Error evaluating translation:', e);
       toast({ title: "Erreur", description: e.message, variant: "destructive" });
@@ -166,8 +183,8 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
             <div>
               <b>Bilan des erreurs :</b>
               <ul className="list-disc ml-8">
-                {Object.entries(result.severity).map(([type, list]) =>
-                  list.length > 0 ? (
+                {result.severity && Object.entries(result.severity).map(([type, list]) =>
+                  Array.isArray(list) && list.length > 0 ? (
                     <li key={type}>
                       <span className="font-medium capitalize">{type}</span> : {list.join("; ")}
                     </li>
@@ -180,7 +197,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
             {language === "de" && result.german_analysis && (
               <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
                 <b className="text-yellow-800">🇩🇪 Analyse spécialisée allemand :</b>
-                {result.german_analysis.declension_errors.length > 0 && (
+                {result.german_analysis.declension_errors && result.german_analysis.declension_errors.length > 0 && (
                   <div className="mt-2">
                     <span className="font-medium text-yellow-700">Déclinaisons incorrectes :</span>
                     <ul className="list-disc ml-6 text-yellow-700">
@@ -188,7 +205,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                     </ul>
                   </div>
                 )}
-                {result.german_analysis.word_order_errors.length > 0 && (
+                {result.german_analysis.word_order_errors && result.german_analysis.word_order_errors.length > 0 && (
                   <div className="mt-2">
                     <span className="font-medium text-yellow-700">Erreurs d'ordre des mots :</span>
                     <ul className="list-disc ml-6 text-yellow-700">
@@ -199,7 +216,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
               </div>
             )}
             
-            {result.grammar_rules.length > 0 && (
+            {result.grammar_rules && result.grammar_rules.length > 0 && (
               <div>
                 <b>Règles à réviser :</b>
                 <ul className="list-disc ml-8">
@@ -207,7 +224,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                 </ul>
               </div>
             )}
-            {result.tips.length > 0 && (
+            {result.tips && result.tips.length > 0 && (
               <div className="mt-2 text-sm text-gray-600">
                 <b>Conseils :</b>
                 <ul className="list-disc ml-8">{result.tips.map((t, i) => <li key={i}>{t}</li>)}</ul>
