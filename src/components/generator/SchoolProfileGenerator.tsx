@@ -112,10 +112,20 @@ export const SchoolProfileGenerator: React.FC = () => {
 
     } catch (error: any) {
       console.error("Erreur lors de la génération:", error);
-      toast({ 
-        variant: "destructive", 
-        title: "Erreur", 
-        description: error?.message || "Erreur inconnue lors de la génération." 
+
+      // Correction: français pour les messages format pattern
+      let description = error?.message || "Erreur inconnue lors de la génération.";
+      if (
+        typeof description === "string" &&
+        description.includes("did not match the expected pattern")
+      ) {
+        description = "La saisie ne respecte pas le format attendu. Veuillez vérifier le champ.";
+      }
+
+      toast({
+        variant: "destructive",
+        title: "Erreur",
+        description,
       });
     } finally {
       setLoading(false);
