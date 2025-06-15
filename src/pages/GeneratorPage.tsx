@@ -349,7 +349,7 @@ const GeneratorPage = () => {
             {AUTOMATIONS.map(auto => (
               <button
                 key={auto.key}
-                onClick={() => setSelectedKey(auto.key)}
+                onClick={() => setSelectedKey(auto.key as AutomationKey)}
                 className={cn(
                   "group flex flex-col items-start p-6 rounded-lg bg-white/90 hover:shadow-xl hover:bg-primary/5 transition-all border border-border/40 relative ring-0 focus-visible:ring-2 focus-visible:ring-primary outline-none",
                 )}
