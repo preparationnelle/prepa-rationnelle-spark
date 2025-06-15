@@ -1,14 +1,15 @@
+
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import {
   MessageSquare, Zap, Languages, Globe, TrendingUp,
-  HelpCircle, Dices, BookOpen, Calculator, Code, Heart
+  HelpCircle, Dices, BookOpen, Calculator, Code, Heart, User
 } from 'lucide-react';
 
 // IMPORT refactored components for each automation section:
-import { GeneratorAutomationList } from '@/components/generator/GeneratorAutomationList';
+import { GeneratorCategorySection } from '@/components/generator/GeneratorCategorySection';
 import { AnswerAutomation } from '@/components/generator/AnswerAutomation';
 import { EMLyonAutomation } from '@/components/generator/EMLyonAutomation';
 import { EDHECAutomation } from '@/components/generator/EDHECAutomation';
@@ -28,7 +29,6 @@ import { PrepaChatbotGenerator } from '@/components/generator/PrepaChatbotGenera
 import { useForm } from "react-hook-form";
 import { useGenerateAnswer } from '@/hooks/useGenerateAnswer';
 import { useProgress } from "@/context/ProgressContext";
-import { cn } from "@/lib/utils";
 
 // Import type
 import { AdditionalInfo } from '@/components/generator/AdditionalInfoForm';
@@ -58,97 +58,137 @@ interface Automation {
   badge: string;
 }
 
-const AUTOMATIONS: Automation[] = [
+interface Category {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  automations: Automation[];
+  gradient: string;
+}
+
+const CATEGORIES: Category[] = [
   {
-    key: 'answer',
-    icon: <MessageSquare className="h-8 w-8 text-primary" />,
-    title: "Réponse d'entretien",
-    description: "Générez des réponses structurées et personnalisées pour vos entretiens de personnalité avec du storytelling adapté.",
-    badge: "IA",
+    title: "Outils pour les entretiens de personnalité",
+    description: "Générateurs spécialisés pour réussir vos entretiens avec storytelling et préparation ciblée",
+    icon: <User className="h-8 w-8 text-white" />,
+    gradient: "bg-gradient-to-r from-orange-600 to-red-600",
+    automations: [
+      {
+        key: 'answer',
+        icon: <MessageSquare className="h-8 w-8 text-primary" />,
+        title: "Réponse d'entretien",
+        description: "Générez des réponses structurées et personnalisées pour vos entretiens de personnalité avec du storytelling adapté.",
+        badge: "IA",
+      },
+      {
+        key: 'emlyon',
+        icon: <HelpCircle className="h-8 w-8 text-primary" />,
+        title: "Questions EM Lyon",
+        description: "Questions aléatoires pour l'entretien 'Flash' avec cartes thématiques.",
+        badge: "Interactif",
+      },
+      {
+        key: 'edhec',
+        icon: <Dices className="h-8 w-8 text-primary" />,
+        title: "Générateur de mots EDHEC",
+        description: "Générateur de mots aléatoires pour votre présentation EDHEC.",
+        badge: "Rapide",
+      },
+      {
+        key: 'school-profile',
+        icon: <BookOpen className="h-8 w-8 text-primary" />,
+        title: "Fiche école personnalisée",
+        description: "Automatise la recherche des infos-clés pour ton entretien : valeurs, assos, doubles diplômes, actu, etc.",
+        badge: "Nouveau",
+      },
+      {
+        key: 'flashcards',
+        icon: <Zap className="h-8 w-8 text-primary" />,
+        title: "Flashcards intelligentes",
+        description: "Créez automatiquement des flashcards optimisées pour la mémorisation avec révision espacée intégrée.",
+        badge: "Auto",
+      },
+      {
+        key: 'prepa-chatbot',
+        icon: <span className="inline-block p-1 rounded bg-gradient-to-br from-[#67e8f9] to-[#f472b6]"><Heart className="h-6 w-6 text-pink-600" /></span>,
+        title: "Chatbot prépa",
+        description: "Conseils motivation, méthode & bien-être. Ton assistant IA inspiré par Major-Prépa & Mister Prépa.",
+        badge: "IA Coach",
+      },
+    ]
   },
   {
-    key: 'flashcards',
-    icon: <Zap className="h-8 w-8 text-primary" />,
-    title: "Flashcards intelligentes",
-    description: "Créez automatiquement des flashcards optimisées pour la mémorisation avec révision espacée intégrée.",
-    badge: "Auto",
+    title: "Langues",
+    description: "Outils pour améliorer vos compétences linguistiques et réussir les épreuves de langues",
+    icon: <Languages className="h-8 w-8 text-white" />,
+    gradient: "bg-gradient-to-r from-purple-600 to-indigo-600",
+    automations: [
+      {
+        key: 'languages',
+        icon: <Languages className="h-8 w-8 text-primary" />,
+        title: "Paragraphes de langues",
+        description: "Générez des paragraphes argumentatifs de 150 mots en anglais, allemand ou espagnol avec vocabulaire clé.",
+        badge: "Nouveau",
+      },
+      {
+        key: 'theme-grammar',
+        icon: <Languages className="h-8 w-8 text-primary" />,
+        title: "Thème Grammatical",
+        description: "Générateur et correcteur de thèmes de traduction : notation détaillée instantanée.",
+        badge: "Nouveau",
+      },
+    ]
   },
   {
-    key: 'languages',
-    icon: <Languages className="h-8 w-8 text-primary" />,
-    title: "Paragraphes de langues",
-    description: "Générez des paragraphes argumentatifs de 150 mots en anglais, allemand ou espagnol avec vocabulaire clé.",
-    badge: "Nouveau",
+    title: "Géopolitique",
+    description: "Ressources complètes pour maîtriser la géopolitique et l'actualité internationale",
+    icon: <Globe className="h-8 w-8 text-white" />,
+    gradient: "bg-gradient-to-r from-blue-600 to-cyan-600",
+    automations: [
+      {
+        key: 'geopolitics',
+        icon: <Globe className="h-8 w-8 text-primary" />,
+        title: "Contenu géopolitique complet",
+        description: "Cours structurés, sujets de dissertation, actualités récentes et flashcards thématiques automatiquement générés.",
+        badge: "Complet",
+      },
+      {
+        key: 'case-study',
+        icon: <TrendingUp className="h-8 w-8 text-primary" />,
+        title: "Études de cas d'actualité",
+        description: "Transformez vos articles d'actualité en études de cas géopolitiques avec chiffres clés et sujets de dissertation.",
+        badge: "Nouveau",
+      },
+    ]
   },
   {
-    key: 'geopolitics',
-    icon: <Globe className="h-8 w-8 text-primary" />,
-    title: "Contenu géopolitique complet",
-    description: "Cours structurés, sujets de dissertation, actualités récentes et flashcards thématiques automatiquement générés.",
-    badge: "Complet",
-  },
-  {
-    key: 'case-study',
-    icon: <TrendingUp className="h-8 w-8 text-primary" />,
-    title: "Études de cas d'actualité",
-    description: "Transformez vos articles d’actualité en études de cas géopolitiques avec chiffres clés et sujets de dissertation.",
-    badge: "Nouveau",
-  },
-  {
-    key: 'emlyon',
-    icon: <HelpCircle className="h-8 w-8 text-primary" />,
-    title: "Questions EM Lyon",
-    description: "Questions aléatoires pour l'entretien 'Flash' avec cartes thématiques.",
-    badge: "Interactif",
-  },
-  {
-    key: 'edhec',
-    icon: <Dices className="h-8 w-8 text-primary" />,
-    title: "Générateur de mots EDHEC",
-    description: "Générateur de mots aléatoires pour votre présentation EDHEC.",
-    badge: "Rapide",
-  },
-  {
-    key: 'theme-grammar',
-    icon: <Languages className="h-8 w-8 text-primary" />,
-    title: "Thème Grammatical",
-    description: "Générateur et correcteur de thèmes de traduction : notation détaillée instantanée.",
-    badge: "Nouveau",
-  },
-  {
-    key: 'school-profile',
-    icon: <BookOpen className="h-8 w-8 text-primary" />,
-    title: "Fiche école personnalisée",
-    description: "Automatise la recherche des infos-clés pour ton entretien : valeurs, assos, doubles diplômes, actu, etc.",
-    badge: "Nouveau",
-  },
-  {
-    key: 'math-tutor',
-    icon: <Calculator className="h-8 w-8 text-primary" />,
-    title: "Prof de maths virtuel",
-    description: "Demande un indice, une explication ou la solution sur un exercice mathématiques.",
-    badge: "IA",
-  },
-  {
-    key: 'python-tutor',
-    icon: <Code className="h-8 w-8 text-primary" />,
-    title: "Assistant Python IA",
-    description: "Analyse ton code Python, détecte les erreurs et génère une version optimisée avec conseils adaptés à ton niveau.",
-    badge: "Nouveau",
-  },
-  {
-    key: 'python-exercises',
-    icon: <span className="inline-block p-1 rounded bg-gradient-to-br from-[#136ae5] to-[#2ddcb3]"><BookOpen className="h-7 w-7 text-white" /></span>,
-    title: "Exercices Python",
-    description: "Génère des exercices pratiques Python (matrice, algèbre…) et complète tes fonctions !",
-    badge: "Exos IA",
-  },
-  {
-    key: 'prepa-chatbot',
-    icon: <span className="inline-block p-1 rounded bg-gradient-to-br from-[#67e8f9] to-[#f472b6]"><Heart className="h-6 w-6 text-pink-600" /></span>,
-    title: "Chatbot prépa",
-    description: "Conseils motivation, méthode & bien-être. Ton assistant IA inspiré par Major-Prépa & Mister Prépa.",
-    badge: "IA Coach",
+    title: "Mathématiques & Informatique",
+    description: "Assistants IA pour résoudre vos problèmes mathématiques et maîtriser la programmation",
+    icon: <Calculator className="h-8 w-8 text-white" />,
+    gradient: "bg-gradient-to-r from-green-600 to-teal-600",
+    automations: [
+      {
+        key: 'math-tutor',
+        icon: <Calculator className="h-8 w-8 text-primary" />,
+        title: "Prof de maths virtuel",
+        description: "Demande un indice, une explication ou la solution sur un exercice mathématiques.",
+        badge: "IA",
+      },
+      {
+        key: 'python-tutor',
+        icon: <Code className="h-8 w-8 text-primary" />,
+        title: "Assistant Python IA",
+        description: "Analyse ton code Python, détecte les erreurs et génère une version optimisée avec conseils adaptés à ton niveau.",
+        badge: "Nouveau",
+      },
+      {
+        key: 'python-exercises',
+        icon: <span className="inline-block p-1 rounded bg-gradient-to-br from-[#136ae5] to-[#2ddcb3]"><BookOpen className="h-7 w-7 text-white" /></span>,
+        title: "Exercices Python",
+        description: "Génère des exercices pratiques Python (matrice, algèbre…) et complète tes fonctions !",
+        badge: "Exos IA",
+      },
+    ]
   },
 ];
 
@@ -161,7 +201,6 @@ const GeneratorPage = () => {
   const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
 
-  // Form pour les infos additionnelles
   const additionalInfoForm = useForm<AdditionalInfo>({
     defaultValues: {
       filiere: '',
@@ -175,10 +214,8 @@ const GeneratorPage = () => {
     }
   });
 
-  // Auth context
   const { currentUser } = useAuth();
 
-  // Answer generation
   const {
     generating,
     wordCount,
@@ -187,7 +224,6 @@ const GeneratorPage = () => {
     generateAnswer
   } = useGenerateAnswer(currentUser?.id);
 
-  // Example
   const loadExample = () => {
     setQuestion("Quels sont vos défauts ?");
     additionalInfoForm.setValue('trait', 'Je veux tout gérer moi-même');
@@ -197,7 +233,6 @@ const GeneratorPage = () => {
     setShowAdditionalInfo(true);
   };
 
-  // Handle answer generation
   const handleGenerate = async () => {
     const additionalInfo = additionalInfoForm.getValues();
     await generateAnswer(question, language, additionalInfo);
@@ -207,7 +242,6 @@ const GeneratorPage = () => {
     setRefreshTrigger(prev => prev + 1);
   };
 
-  // Automatisation sélectionnée
   const [selectedKey, setSelectedKey] = useState<AutomationKey | null>(null);
 
   // Pour garder le titre principal même quand on effectue un zoom sur une automation
@@ -262,7 +296,6 @@ const GeneratorPage = () => {
     }
   };
 
-  // Tracking
   const { trackPageVisit } = useProgress();
   useEffect(() => {
     trackPageVisit('generator');
@@ -280,11 +313,11 @@ const GeneratorPage = () => {
       </div>
       {!selectedKey && (
         <>
-          <GeneratorAutomationList
-            automations={AUTOMATIONS}
+          <GeneratorCategorySection
+            categories={CATEGORIES}
             onSelect={setSelectedKey}
           />
-          <div className="text-center mt-4 text-muted-foreground text-sm">
+          <div className="text-center mt-8 text-muted-foreground text-sm">
             Cliquez sur une automatisation pour commencer&nbsp;!
           </div>
         </>
