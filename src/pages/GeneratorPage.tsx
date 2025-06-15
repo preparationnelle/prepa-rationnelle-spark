@@ -22,6 +22,7 @@ import { ThemeGrammaticalGenerator } from "@/components/grammar/ThemeGrammatical
 import { SchoolProfileGenerator } from "@/components/generator/SchoolProfileGenerator";
 import { MathTutorGenerator } from '@/components/generator/MathTutorGenerator';
 import { PythonTutorGenerator } from '@/components/generator/PythonTutorGenerator';
+import { PrepaChatbotGenerator } from "@/components/generator/PrepaChatbotGenerator";
 
 // hooks
 import { useGenerateAnswer } from '@/hooks/useGenerateAnswer';
@@ -44,7 +45,8 @@ type AutomationKey =
   | 'school-profile'
   | 'math-tutor'
   | 'python-tutor'
-  | 'python-exercises';
+  | 'python-exercises'
+  | 'prepa-chatbot';
 
 const AUTOMATIONS = [
   {
@@ -140,6 +142,14 @@ const AUTOMATIONS = [
     title: "Exercices Python",
     description: "Génère des exercices pratiques Python (matrice, algèbre…) et complète tes fonctions !",
     badge: "Exos IA",
+  },
+  {
+    key: 'prepa-chatbot' as AutomationKey,
+    icon: <span className="inline-block p-1 rounded bg-gradient-to-br from-[#67e8f9] to-[#f472b6]"><Heart className="h-6 w-6 text-pink-600" /></span>,
+    title: "Chatbot prépa",
+    description:
+      "Conseils motivation, méthode & bien-être. Ton assistant IA inspiré par Major-Prépa & Mister Prépa.",
+    badge: "IA Coach",
   },
 ];
 
@@ -335,6 +345,8 @@ const GeneratorPage = () => {
         // Lazy import optim possible (pas nécessaire pour MVP)
         const PythonExerciseGenerator = require('@/components/generator/PythonExerciseGenerator').PythonExerciseGenerator;
         return <PythonExerciseGenerator />;
+      case "prepa-chatbot":
+        return <PrepaChatbotGenerator />;
       default:
         return null;
     }
