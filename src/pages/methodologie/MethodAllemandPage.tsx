@@ -1,117 +1,146 @@
+
 import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import ArticleAllemandEssaiIntroduction from "./ArticleAllemandEssaiIntroduction";
-import ArticleAllemandEssaiTeil1 from "./ArticleAllemandEssaiTeil1";
-import ArticleAllemandEssaiTeil2 from "./ArticleAllemandEssaiTeil2";
-import ArticleAllemandEssaiExemples from "./ArticleAllemandEssaiExemples";
-import ArticleAllemandEssaiKritik from "./ArticleAllemandEssaiKritik";
-import ArticleAllemandEssaiConclusion from "./ArticleAllemandEssaiConclusion";
-import ArticleAllemandAnalyseLexique from "./ArticleAllemandAnalyseLexique";
 
-const articles = [
-  { id: "article-1", title: "EINLEITUNG / INTRODUCTION" },
-  { id: "article-2", title: "TEIL I: Kritik an der Gegenthese" },
-  { id: "article-3", title: "TEIL II: Eigene Meinung entwickeln" },
-  { id: "article-4", title: "BEISPIELE UND ZAHLEN" },
-  { id: "article-5", title: "KRITIK UND KOMMENTAR" },
-  { id: "article-6", title: "SCHLUSS / CONCLUSION" },
-  { id: "article-7", title: "ANALYSE D’ARTICLE — LEXIQUE" }
+// Lexique d’analyse d’article fourni par l’utilisateur
+const lexique = [
+  {
+    section: "EINLEITUNG / INTRODUCTION",
+    elements: [
+      { label: "Présenter les documents", exemples: [
+        "Diese Dokumente geben einen Überblick über...",
+        "Diese beiden Texte beschäftigen sich mit...",
+        "Beide Texte thematisieren...",
+        "In den vorliegenden Artikeln geht es um..."
+      ]},
+      { label: "Situer le débat / la question", exemples: [
+        "Die Frage, ob... wird hier unterschiedlich beantwortet.",
+        "In diesem Kontext stellt sich die Frage, ob / inwiefern / warum… ?",
+        "Die Texte werfen die Frage auf, ob… ?"
+      ]}
+    ]
+  },
+  {
+    section: "VERGLEICH DER POSITIONEN / COMPARAISON DES POINTS DE VUE",
+    elements: [
+      { label: "Accord entre les auteurs", exemples: [
+        "Die Autoren sind sich darüber einig, dass...",
+        "Beide Autoren vertreten die Meinung, dass...",
+        "Ihre Meinungen sind sehr ähnlich.",
+        "Beide Artikel betrachten ... als...",
+        "Beide Texte unterstreichen / betonen / heben hervor, dass...",
+        "Sowohl X als auch Y meinen, dass...",
+        "... wird auf die gleiche Weise dargestellt wie in Dokument 2."
+      ]},
+      { label: "Désaccord entre les auteurs", exemples: [
+        "Die Autoren der beiden Texte sind über die Frage (+G) [...] nicht völlig einverstanden.",
+        "Die Meinungen gehen über die Frage (+G)... auseinander.",
+        "Die Meinungen gehen auseinander, was (+Akk)... betrifft.",
+        "Während X großen Wert auf ... legt, vertritt Y eine ganz andere Meinung über...",
+        "Der Autor legt Wert auf ..., aber er äußert eine ganz entgegengesetzte Meinung über...",
+        "X widerspricht Y, indem er sagt, dass...",
+        "Für X hingegen ist es keine gute Idee, ... zu +Inf.",
+        "Auch wenn X meint, dass..., glaubt Y, dass..."
+      ]}
+    ]
+  },
+  {
+    section: "AUFBAU / STRUCTURE (par paragraphes)",
+    elements: [
+      { label: "Paragraphe 1 : introduction de la première thèse", exemples: [
+        "Zuerst wird die Frage (+G)... berücksichtigt.",
+        "Zunächst wird auf die Frage (+G)... eingegangen.",
+        "Der Autor betrachtet... / zieht eine Parallele mit...",
+        "Als Hauptargumente führt (Name) an, dass...",
+        "Dokument 1 warnt also vor...",
+        "(Name) zufolge sollte man...",
+        "X erwähnt, dass... / Laut X...",
+        "Er selbst behauptet, dass...",
+        "In dieser Hinsicht hat er Recht / Unrecht."
+      ]},
+      { label: "Transition vers le deuxième texte (opposition ou nuance)", exemples: [
+        "Auch wenn X meint, dass...",
+        "Jedoch ist es eine Bedingung für... laut der...",
+        "Im Gegensatz dazu erklärt Y, dass...",
+        "Y widerspricht X, indem er behauptet, dass...",
+        "Y vertritt eine entgegengesetzte Meinung: ...",
+        "Es besteht ein starker Unterschied zwischen... und...",
+        "Hingegen hebt Y hervor, dass..."
+      ]},
+      { label: "Ajouter un second argument", exemples: [
+        "Darüber hinaus wird... betrachtet.",
+        "Wegen... wird... betont.",
+        "Außerdem bedeutet auch [etwas], dass...",
+        "Ebenso ist zu erwähnen, dass..."
+      ]}
+    ]
+  },
+  {
+    section: "VERBINDUNGEN / LIAISONS UTILES",
+    elements: [
+      { label: null, exemples: [
+        "aufgrund von (+D) = en raison de",
+        "es liegt daran, dass... = cela est dû au fait que",
+        "deshalb / folglich = par conséquent",
+        "hingegen / im Gegensatz dazu = en revanche",
+        "ebenso = de même",
+        "zwar..., aber... = certes..., mais...",
+        "nämlich / in der Tat = en effet",
+        "trotzdem / dennoch = néanmoins",
+        "darüber hinaus = en outre",
+        "nicht nur..., sondern auch... = non seulement..., mais aussi..."
+      ]}
+    ]
+  },
+  {
+    section: "SCHLUSS / CONCLUSION",
+    elements: [
+      { label: null, exemples: [
+        "Durch den Vergleich dieser Dokumente kann gezeigt werden, dass...",
+        "Zusammenfassend lässt sich sagen, dass...",
+        "Zusammenfassend kann festgestellt werden, dass...",
+        "Alles in allem lässt sich sagen, dass...",
+        "Letztendlich zeigt sich, dass..."
+      ]}
+    ]
+  },
 ];
 
-export default function MethodAllemandPage() {
-  // Scroll vers la bonne section
-  const handleScrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
+function LexiqueBlock() {
+  return (
+    <div className="space-y-8">
+      {lexique.map((item, idx) => (
+        <section key={item.section || idx}>
+          <h3 className="text-xl font-bold text-primary mb-2">{item.section}</h3>
+          {item.elements.map((el, i) => (
+            <div key={i} className="mb-3">
+              {el.label && <b className="block mb-1">{el.label}</b>}
+              <ul className="ml-5 list-disc text-base space-y-1">
+                {el.exemples.map((ex, j) => (
+                  <li key={j}>{ex}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </section>
+      ))}
+    </div>
+  );
+}
 
+export default function MethodAllemandPage() {
   return (
     <div className="container max-w-3xl py-10 animate-fade-in space-y-8">
-      {/* Table des matières */}
-      <nav className="bg-accent/40 border border-accent rounded-lg p-4 mb-8 shadow-sm">
-        <h2 className="text-lg font-bold mb-2 text-primary">Sommaire – Essai Parfait (Allemand)</h2>
-        <ol className="list-decimal ml-6 space-y-1">
-          {articles.map((article, idx) => (
-            <li key={article.id}>
-              <button
-                className="text-left hover:underline text-primary/90 font-medium focus:outline-none transition"
-                onClick={() => handleScrollTo(article.id)}
-                type="button"
-              >
-                {idx + 1}. {article.title}
-              </button>
-            </li>
-          ))}
-        </ol>
-      </nav>
-
-      <Card id="article-1">
+      <Card>
         <CardHeader>
-          <CardTitle>EINLEITUNG / INTRODUCTION</CardTitle>
+          <CardTitle>Allemand – Essai / Synthèse&nbsp;: Lexique d’Analyse d’Article</CardTitle>
         </CardHeader>
         <CardContent>
-          <ArticleAllemandEssaiIntroduction />
-        </CardContent>
-      </Card>
-
-      <Card id="article-2">
-        <CardHeader>
-          <CardTitle>TEIL I: Kritik an der Gegenthese</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ArticleAllemandEssaiTeil1 />
-        </CardContent>
-      </Card>
-
-      <Card id="article-3">
-        <CardHeader>
-          <CardTitle>TEIL II: Eigene Meinung entwickeln</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ArticleAllemandEssaiTeil2 />
-        </CardContent>
-      </Card>
-
-      <Card id="article-4">
-        <CardHeader>
-          <CardTitle>BEISPIELE UND ZAHLEN</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ArticleAllemandEssaiExemples />
-        </CardContent>
-      </Card>
-
-      <Card id="article-5">
-        <CardHeader>
-          <CardTitle>KRITIK UND KOMMENTAR</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ArticleAllemandEssaiKritik />
-        </CardContent>
-      </Card>
-
-      <Card id="article-6">
-        <CardHeader>
-          <CardTitle>SCHLUSS / CONCLUSION</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ArticleAllemandEssaiConclusion />
-        </CardContent>
-      </Card>
-
-      <Card id="article-7">
-        <CardHeader>
-          <CardTitle>ANALYSE D’ARTICLE — LEXIQUE</CardTitle>
-        </CardHeader>
-        <CardContent>
-          {/* Nouvelle section lexique */}
-          {/** @ts-ignore  */}
-          {/** Voir src/pages/methodologie/ArticleAllemandAnalyseLexique.tsx */}
-          <React.Suspense fallback={<span>Chargement…</span>}>
-            <ArticleAllemandAnalyseLexique />
-          </React.Suspense>
+          <p className="mb-6 text-muted-foreground">
+            Retrouve ci-dessous toutes les expressions utiles pour réussir ton essai ou ta synthèse d’article en allemand.&nbsp;
+            <span className="italic">Analyse, structure et connecteurs, tout y est !</span>
+          </p>
+          <LexiqueBlock />
         </CardContent>
       </Card>
     </div>

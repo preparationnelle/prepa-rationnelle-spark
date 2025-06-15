@@ -49,6 +49,7 @@ import MethodGeopolitiquePage from "./pages/methodologie/MethodGeopolitiquePage"
 import MethodCulturePage from "./pages/methodologie/MethodCulturePage";
 import MethodPythonPage from "./pages/methodologie/MethodPythonPage";
 import MethodAnglaisPage from "./pages/methodologie/MethodAnglaisPage";
+import MethodAllemandPage from "./pages/methodologie/MethodAllemandPage";
 
 // Initialize PostHog
 initPostHog();
@@ -113,6 +114,7 @@ const App = () => (
                     <Route path="/methodologie/anglais" element={<MethodAnglaisPage />} />
                     <Route path="/methodologie/culture-generale" element={<MethodCulturePage />} />
                     <Route path="/methodologie/python" element={<MethodPythonPage />} />
+                    <Route path="/methodologie/allemand" element={<MethodAllemandPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>

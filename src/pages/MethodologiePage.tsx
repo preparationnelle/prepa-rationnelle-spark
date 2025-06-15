@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
@@ -9,7 +8,7 @@ const sections = [
   { id: "geopolitique", label: "Géopolitique", link: "/methodologie/geopolitique" },
   { id: "anglais", label: "Anglais", link: "/methodologie/anglais" },
   { id: "culturegenerale", label: "Culture Générale", link: "/methodologie/culture-generale" },
-  { id: "allemand", label: "Allemand", link: "/methodologie/allemand" },
+  { id: "allemand", label: "Allemand", link: "/methodologie/allemand" }, // bien la route vers allemand
   { id: "python", label: "Module Python (bonus)", link: "/methodologie/python" }
 ];
 
