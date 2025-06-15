@@ -8,7 +8,7 @@ const sections = [
   { id: "geopolitique", label: "Géopolitique", link: "/methodologie/geopolitique" },
   { id: "anglais", label: "Anglais", link: "/methodologie/anglais" },
   { id: "culturegenerale", label: "Culture Générale", link: "/methodologie/culture-generale" },
-  { id: "allemand", label: "Allemand", link: "/methodologie/allemand" }, // bien la route vers allemand
+  { id: "allemand", label: "Allemand", link: "/methodologie/allemand" },
   { id: "python", label: "Module Python (bonus)", link: "/methodologie/python" }
 ];
 
@@ -75,7 +75,7 @@ export default function MethodologiePage() {
             <CardTitle>Allemand – Essai parfait</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="mb-2">Retrouve la structure complète de l’essai « parfait » pour l’allemand ECG : accroche, plan, exemples et toutes les formulations prêtes à l’emploi !</p>
+            <p className="mb-2">Retrouve la structure complète de l’essai et de la synthèse « parfait » pour l’allemand ECG : accroche, plan, exemples et toutes les formulations prêtes à l’emploi !</p>
             <Link to="/methodologie/allemand">
               <Button variant="outline">Découvrir la méthode Allemand</Button>
             </Link>

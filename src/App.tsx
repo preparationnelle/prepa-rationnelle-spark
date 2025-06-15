@@ -49,7 +49,9 @@ import MethodGeopolitiquePage from "./pages/methodologie/MethodGeopolitiquePage"
 import MethodCulturePage from "./pages/methodologie/MethodCulturePage";
 import MethodPythonPage from "./pages/methodologie/MethodPythonPage";
 import MethodAnglaisPage from "./pages/methodologie/MethodAnglaisPage";
-import MethodAllemandPage from "./pages/methodologie/MethodAllemandPage";
+import MethodAllemandPage from './pages/methodologie/MethodAllemandPage';
+import MethodAllemandEssaiPage from './pages/methodologie/MethodAllemandEssaiPage';
+import MethodAllemandSynthesePage from './pages/methodologie/MethodAllemandSynthesePage';
 
 // Initialize PostHog
 initPostHog();
@@ -115,6 +117,8 @@ const App = () => (
                     <Route path="/methodologie/culture-generale" element={<MethodCulturePage />} />
                     <Route path="/methodologie/python" element={<MethodPythonPage />} />
                     <Route path="/methodologie/allemand" element={<MethodAllemandPage />} />
+                    <Route path="/methodologie/allemand/essai" element={<MethodAllemandEssaiPage />} />
+                    <Route path="/methodologie/allemand/synthese" element={<MethodAllemandSynthesePage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
