@@ -292,7 +292,7 @@ const GeneratorPage = () => {
   };
 
   // Tracking
-  const { trackPageVisit } = require("@/context/ProgressContext").useProgress();
+  const { trackPageVisit } = useProgress();
   useEffect(() => {
     trackPageVisit('generator');
   }, [trackPageVisit]);
