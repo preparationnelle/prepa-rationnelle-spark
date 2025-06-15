@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
@@ -10,7 +9,7 @@ interface AuthContextProps {
   session: Session | null;
   loading: boolean;
   login: (email: string, password: string) => Promise<any>;
-  register: (email: string, password: string, name: string) => Promise<void>;
+  register: (email: string, password: string, name: string, phone: string) => Promise<void>;
   logout: () => Promise<void>;
 }
 
@@ -56,7 +55,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
   }, []);
 
-  const register = async (email: string, password: string, name: string): Promise<void> => {
+  const register = async (email: string, password: string, name: string, phone: string): Promise<void> => {
     try {
       const { data, error } = await supabase.auth.signUp({
         email, 
@@ -64,6 +63,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         options: {
           data: {
             first_name: name,
+            phone_number: phone,
           }
         }
       });

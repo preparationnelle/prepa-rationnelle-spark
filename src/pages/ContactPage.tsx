@@ -8,7 +8,7 @@ import OffersSection from "@/components/OffersSection";
 
 export default function ContactPage() {
   return (
-    <div className="container max-w-3xl py-10 animate-fade-in">
+    <div className="container max-w-3xl py-10 animate-fade-in" id="contact">
       {/* MISE EN ÉVIDENCE - Bannière visible */}
       <div className="mb-8 p-6 bg-gradient-to-r from-primary/90 to-secondary rounded-2xl shadow-lg flex flex-col sm:flex-row items-center sm:justify-between gap-4 border-2 border-primary/60">
         <div>

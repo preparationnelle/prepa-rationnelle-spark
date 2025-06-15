@@ -10,6 +10,7 @@ import { Eye, EyeOff } from 'lucide-react';
 
 const RegisterPage = () => {
   const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -23,7 +24,7 @@ const RegisterPage = () => {
     e.preventDefault();
     setError('');
     
-    if (!name || !email || !password || !confirmPassword) {
+    if (!name || !email || !password || !confirmPassword || !phone) {
       setError('Veuillez remplir tous les champs.');
       return;
     }
@@ -40,11 +41,11 @@ const RegisterPage = () => {
 
     try {
       setLoading(true);
-      await register(email, password, name);
+      await register(email, password, name, phone);
       // Rediriger vers la page du générateur après inscription
       navigate('/generator');
     } catch (err: any) {
-      setError(err.message || 'Une erreur est survenue lors de l\'inscription.');
+      setError(err.message || "Une erreur est survenue lors de l'inscription.");
     } finally {
       setLoading(false);
     }
@@ -78,7 +79,19 @@ const RegisterPage = () => {
                 required
               />
             </div>
-            
+            {/* Champ téléphone requis */}
+            <div className="space-y-2">
+              <Label htmlFor="phone">Numéro de téléphone</Label>
+              <Input
+                id="phone"
+                type="tel"
+                pattern="^[0-9+\s().-]{6,}$"
+                placeholder="06 12 34 56 78"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                required
+              />
+            </div>
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -90,7 +103,6 @@ const RegisterPage = () => {
                 required
               />
             </div>
-            
             <div className="space-y-2">
               <Label htmlFor="password">Mot de passe</Label>
               <div className="relative">
@@ -117,7 +129,6 @@ const RegisterPage = () => {
                 </Button>
               </div>
             </div>
-            
             <div className="space-y-2">
               <Label htmlFor="confirm-password">Confirmer le mot de passe</Label>
               <Input
@@ -129,7 +140,6 @@ const RegisterPage = () => {
                 required
               />
             </div>
-            
             <Button type="submit" className="w-full" disabled={loading}>
               {loading ? "Inscription en cours..." : "S'inscrire"}
             </Button>

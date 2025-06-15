@@ -1,7 +1,5 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
 
 export const CallToActionSection = () => {
   return (
@@ -13,11 +11,15 @@ export const CallToActionSection = () => {
         <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
           Rejoignez des centaines d'étudiants qui ont amélioré leur performance aux oraux de personnalité grâce à Prepa Rationnelle.
         </p>
-        <Link to="/register">
-          <Button variant="secondary" size="lg" className="bg-white text-primary hover:bg-gray-100 hover:text-primary">
+        {/* Lien ancre vers la section contact */}
+        <a href="/contact" /* ou simplement "#contact" si c'est sur la même page */>
+          <button
+            className="bg-white text-primary hover:bg-gray-100 hover:text-primary px-8 py-4 text-lg font-bold rounded-lg shadow transition"
+            style={{ minWidth: 260 }}
+          >
             Commencer maintenant
-          </Button>
-        </Link>
+          </button>
+        </a>
       </div>
     </section>
   );
