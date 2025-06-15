@@ -2,6 +2,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import ArticleAnglaisGrammaire from "./ArticleAnglaisGrammaire";
 import ArticleAnglaisProgress from "./ArticleAnglaisProgress";
 import ArticleAnglaisThemes from "./ArticleAnglaisThemes";
+import ArticleAnglaisColles from "./ArticleAnglaisColles";
 
 export default function MethodAnglaisPage() {
   return (
@@ -33,6 +34,16 @@ export default function MethodAnglaisPage() {
         </CardHeader>
         <CardContent>
           <ArticleAnglaisThemes />
+        </CardContent>
+      </Card>
+
+      {/* Article 4 */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Préparation Structurée des Colles</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ArticleAnglaisColles />
         </CardContent>
       </Card>
     </div>
