@@ -10,6 +10,7 @@ import Navigation from './components/Navigation';
 import ProtectedRoute from './components/ProtectedRoute';
 import ScrollToTop from './components/ScrollToTop';
 import ChatWidget from './components/chat/ChatWidget';
+import PartnersPage from './pages/PartnersPage';
 
 // Import PostHog initializer
 import { initPostHog } from './integrations/posthog/client';
@@ -120,6 +121,7 @@ const App = () => (
                     <Route path="/methodologie/allemand/essai" element={<MethodAllemandEssaiPage />} />
                     <Route path="/methodologie/allemand/synthese" element={<MethodAllemandSynthesePage />} />
                     <Route path="/contact" element={<ContactPage />} />
+                    <Route path="/partners" element={<PartnersPage />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>

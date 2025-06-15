@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -10,24 +9,6 @@ import OffersSection from "@/components/OffersSection";
 export default function ContactPage() {
   return (
     <div className="container max-w-3xl py-10 animate-fade-in" id="contact">
-      {/* MISE EN ÉVIDENCE - Bannière visible */}
-      <div className="mb-8 p-6 bg-gradient-to-r from-primary/90 to-secondary rounded-2xl shadow-lg flex flex-col sm:flex-row items-center sm:justify-between gap-4 border-2 border-primary/60">
-        <div>
-          <span className="text-xl sm:text-2xl font-bold text-primary-foreground">
-            Contactez-nous ou découvrez nos partenaires !
-          </span>
-        </div>
-        <a
-          href="https://stephanepreteseille.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-white shadow px-5 py-2 rounded-lg font-semibold text-primary border-2 border-primary transition hover:bg-primary hover:text-white hover:border-white"
-          style={{ textDecoration: "none" }}
-        >
-          Partenaire : Stephane Preteseille
-        </a>
-      </div>
-
       {/* NOUVEAU : Section Nos offres bien mise en évidence */}
       <OffersSection />
 
