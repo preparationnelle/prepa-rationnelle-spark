@@ -7,22 +7,11 @@ import {
   HelpCircle, Dices, BookOpen, Calculator, Code, Heart
 } from 'lucide-react';
 
-// Import components des automatisations :
-import { QuestionForm } from '@/components/generator/QuestionForm';
-import { AdditionalInfoForm, AdditionalInfo } from '@/components/generator/AdditionalInfoForm';
-import { InfoPanel } from '@/components/generator/InfoPanel';
-import { ResponseCard } from '@/components/generator/ResponseCard';
-import { RandomWordGenerator } from '@/components/RandomWordGenerator';
-import { FlashcardGenerator } from '@/components/generator/FlashcardGenerator';
-import { FlashcardReviewer } from '@/components/flashcards/FlashcardReviewer';
-import { GeopoliticsGenerator } from '@/components/generator/GeopoliticsGenerator';
-import { LanguageParagraphGenerator } from '@/components/generator/LanguageParagraphGenerator';
-import { CaseStudyGenerator } from '@/components/generator/CaseStudyGenerator';
-import { ThemeGrammaticalGenerator } from "@/components/grammar/ThemeGrammaticalGenerator";
-import { SchoolProfileGenerator } from "@/components/generator/SchoolProfileGenerator";
-import { MathTutorGenerator } from '@/components/generator/MathTutorGenerator';
-import { PythonTutorGenerator } from '@/components/generator/PythonTutorGenerator';
-import { PrepaChatbotGenerator } from "@/components/generator/PrepaChatbotGenerator";
+// IMPORT refactored components for each automation section:
+import { GeneratorAutomationList } from '@/components/generator/GeneratorAutomationList';
+import { AnswerAutomation } from '@/components/generator/AnswerAutomation';
+import { EMLyonAutomation } from '@/components/generator/EMLyonAutomation';
+import { EDHECAutomation } from '@/components/generator/EDHECAutomation';
 
 // hooks
 import { useGenerateAnswer } from '@/hooks/useGenerateAnswer';
