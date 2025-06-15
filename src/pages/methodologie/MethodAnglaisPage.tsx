@@ -5,6 +5,7 @@ import ArticleAnglaisThemes from "./ArticleAnglaisThemes";
 import ArticleAnglaisColles from "./ArticleAnglaisColles";
 import ArticleAnglaisEssaisSyntheses from "./ArticleAnglaisEssaisSyntheses";
 import ArticleAnglaisConcours from "./ArticleAnglaisConcours";
+import ArticleAnglaisOrganisation from "./ArticleAnglaisOrganisation";
 
 export default function MethodAnglaisPage() {
   return (
@@ -66,6 +67,16 @@ export default function MethodAnglaisPage() {
         </CardHeader>
         <CardContent>
           <ArticleAnglaisConcours />
+        </CardContent>
+      </Card>
+
+      {/* Article 7 */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Organisation du temps</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ArticleAnglaisOrganisation />
         </CardContent>
       </Card>
     </div>
