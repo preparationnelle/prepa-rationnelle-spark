@@ -41,12 +41,11 @@ export const SchoolProfileGenerator: React.FC = () => {
   const { toast } = useToast();
   const { currentUser } = useAuth();
 
-  // Questionnaire utilisateur :
-  const [field, setField] = useState(""); // Filière
-  const [speciality, setSpeciality] = useState("");
+  // Champs requis dans le questionnaire
   const [projetPro, setProjetPro] = useState("");
   const [interets, setInterets] = useState("");
-  const [pitch, setPitch] = useState("");
+  const [international, setInternational] = useState("");
+  const [infosComplementaires, setInfosComplementaires] = useState("");
 
   const handleGenerate = async () => {
     setLoading(true);
@@ -63,11 +62,10 @@ export const SchoolProfileGenerator: React.FC = () => {
             user_id: currentUser?.id,
             school_name: SCHOOL_OPTIONS.find((o) => o.slug === selected)?.name,
             user_infos: {
-              field,
-              speciality,
               projetPro,
               interets,
-              pitch,
+              international,
+              infosComplementaires,
             }
           }),
         }
@@ -90,7 +88,7 @@ export const SchoolProfileGenerator: React.FC = () => {
         <CardTitle className="flex flex-col items-start gap-2">
           Générateur de fiche personnalisée d'école
           <span className="font-normal text-base text-muted-foreground">
-            Sélectionne une école puis remplis quelques infos pour personnaliser ta fiche dynamique, prête à exploiter pour l'entretien.
+            Sélectionne une école puis remplis ces quelques infos pour personnaliser ta fiche dynamique, prête à exploiter pour l'entretien.
           </span>
         </CardTitle>
       </CardHeader>
@@ -111,35 +109,7 @@ export const SchoolProfileGenerator: React.FC = () => {
           </select>
 
           <div className="flex flex-col gap-2 bg-white/40 border border-border rounded p-4">
-            <label className="font-medium" htmlFor="filiere">Filière / Parcours :</label>
-            <Input
-              id="filiere"
-              autoComplete="off"
-              placeholder="Ex: ECE, ECS, Littéraire, ingénieur, autre…"
-              value={field}
-              onChange={(e) => setField(e.target.value)}
-              disabled={loading}
-            />
-            <label className="font-medium" htmlFor="specialite">Spécialité :</label>
-            <Input
-              id="specialite"
-              autoComplete="off"
-              placeholder="Ex : Maths, économie, langues, sciences..."
-              value={speciality}
-              onChange={(e) => setSpeciality(e.target.value)}
-              disabled={loading}
-            />
-            <label className="font-medium" htmlFor="pitch">Pitch (présentation personnelle en 2 lignes) :</label>
-            <Textarea
-              id="pitch"
-              autoComplete="off"
-              placeholder="Qui es-tu ? 2-3 lignes de présentation personnelle"
-              value={pitch}
-              onChange={(e) => setPitch(e.target.value)}
-              rows={2}
-              disabled={loading}
-            />
-            <label className="font-medium" htmlFor="projetpro">Projet professionnel :</label>
+            <label className="font-medium" htmlFor="projetpro">Projet professionnel :</label>
             <Input
               id="projetpro"
               autoComplete="off"
@@ -152,9 +122,28 @@ export const SchoolProfileGenerator: React.FC = () => {
             <Textarea
               id="interets"
               autoComplete="off"
-              placeholder="Sports, assos, passions, international, engagement…"
+              placeholder="Sports, assos, passions, engagement…"
               value={interets}
               onChange={(e) => setInterets(e.target.value)}
+              rows={2}
+              disabled={loading}
+            />
+            <label className="font-medium" htmlFor="international">International :</label>
+            <Input
+              id="international"
+              autoComplete="off"
+              placeholder="Séjours, échanges, langues étudiées, expériences à l’étranger…"
+              value={international}
+              onChange={(e) => setInternational(e.target.value)}
+              disabled={loading}
+            />
+            <label className="font-medium" htmlFor="infoscomplementaires">Informations complémentaires :</label>
+            <Textarea
+              id="infoscomplementaires"
+              autoComplete="off"
+              placeholder="Tout autre élément pertinent pour affiner la recherche : association, passion, expérience, double-cursus…"
+              value={infosComplementaires}
+              onChange={(e) => setInfosComplementaires(e.target.value)}
               rows={2}
               disabled={loading}
             />
