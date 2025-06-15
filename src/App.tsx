@@ -43,6 +43,7 @@ import FlashcardsPage from './pages/FlashcardsPage';
 import NotFound from "./pages/NotFound";
 import PitchIntroMethodePage from './pages/PitchIntroMethodePage';
 import ContactPage from './pages/ContactPage';
+import MethodologiePage from './pages/MethodologiePage';
 
 // Initialize PostHog
 initPostHog();
@@ -100,7 +101,8 @@ const App = () => (
                     <Route path="/ecoles/gem" element={<GEMPage />} />
                     <Route path="/ecoles/kedge" element={<KEDGEPage />} />
                     <Route path="/ecoles/neoma" element={<NEOMAPage />} />
-+                 <Route path="/contact" element={<ContactPage />} />
+                    <Route path="/methodologie" element={<MethodologiePage />} />
+                    <Route path="/contact" element={<ContactPage />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>
