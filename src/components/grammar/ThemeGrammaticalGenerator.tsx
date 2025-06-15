@@ -5,6 +5,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Languages } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 type Language = "en" | "de" | "es";
 
@@ -33,6 +34,24 @@ interface EvaluationResult {
     declension_errors: string[];
     word_order_errors: string[];
   };
+}
+
+// Fonction pour retourner l'explication détaillée d'un conseil
+function getGrammarExplanation(tip: string): string {
+  // Map sur quelques exemples
+  const MAP: Record<string, string> = {
+    "Faites attention à l'accord des pronoms relatifs avec le nom qu'ils remplacent.": 
+      "En français ou en allemand, le pronom relatif doit s'accorder en genre (masculin/féminin/neutre) et nombre (singulier/pluriel) avec le nom qu'il remplace. Par exemple : die Stadt, die... (féminin singulier).",
+    "Rappelez-vous que dans une phrase principale, le verbe doit toujours être en deuxième position.":
+      "En allemand, la règle de base impose que le verbe conjugué se place en deuxième position dans une proposition principale. Ex : Heute <b>gehe</b> ich ins Kino.",
+    "Faites attention à la place du verbe dans les subordonnées.":
+      "Dans les subordonnées allemandes, le verbe conjugué se place à la fin : ..., weil ich <b>ins Kino gehe</b>.",
+    // Ajoutez ici d'autres conseils spécifiques et explications si besoin
+  };
+  // Si conseil exactement dans MAP, donner explication
+  if (MAP[tip]) return MAP[tip];
+  // Sinon, explication générique
+  return "Explication non disponible pour ce conseil.";
 }
 
 export const ThemeGrammaticalGenerator: React.FC = () => {
@@ -240,7 +259,27 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
             {result.tips && result.tips.length > 0 && (
               <div className="mt-2 text-sm text-gray-600">
                 <b>Conseils :</b>
-                <ul className="list-disc ml-8">{result.tips.map((t, i) => <li key={i}>{t}</li>)}</ul>
+                <TooltipProvider>
+                  <ul className="list-disc ml-8">
+                    {result.tips.map((t, i) => (
+                      <li key={i} className="inline-block mr-2 mb-2">
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <button
+                              className="underline text-blue-700 hover:text-blue-900 transition-colors rounded-md px-2 py-0.5"
+                              type="button"
+                            >
+                              {t}
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipContent className="max-w-xs">
+                            <span dangerouslySetInnerHTML={{ __html: getGrammarExplanation(t) }} />
+                          </TooltipContent>
+                        </Tooltip>
+                      </li>
+                    ))}
+                  </ul>
+                </TooltipProvider>
               </div>
             )}
           </div>
