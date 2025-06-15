@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Copy, Download, FileText, Loader2 } from 'lucide-react';
+import { Copy, Download, FileText } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { downloadAsText, downloadAsPDF } from '@/utils/downloadUtils';
 
@@ -10,10 +10,9 @@ interface CaseStudyDisplayProps {
   caseStudy: string;
   wordCount: number;
   language: 'fr' | 'en';
-  isStreaming?: boolean;
 }
 
-export const CaseStudyDisplay = ({ caseStudy, wordCount, language, isStreaming = false }: CaseStudyDisplayProps) => {
+export const CaseStudyDisplay = ({ caseStudy, wordCount, language }: CaseStudyDisplayProps) => {
   const { toast } = useToast();
 
   const copyToClipboard = async () => {
@@ -54,17 +53,11 @@ export const CaseStudyDisplay = ({ caseStudy, wordCount, language, isStreaming =
               <FileText className="h-6 w-6" />
             </div>
             <div>
-              <CardTitle className="text-2xl font-bold flex items-center gap-2">
+              <CardTitle className="text-2xl font-bold">
                 {language === 'fr' ? 'Étude de cas générée' : 'Generated case study'}
-                {isStreaming && <Loader2 className="h-5 w-5 animate-spin" />}
               </CardTitle>
               <div className="text-blue-100 text-sm font-normal mt-1">
                 {wordCount} {language === 'fr' ? 'mots' : 'words'}
-                {isStreaming && (
-                  <span className="ml-2 text-blue-200">
-                    {language === 'fr' ? '• En cours de génération...' : '• Generating...'}
-                  </span>
-                )}
               </div>
             </div>
           </div>
@@ -74,7 +67,6 @@ export const CaseStudyDisplay = ({ caseStudy, wordCount, language, isStreaming =
               variant="secondary"
               size="sm"
               className="bg-white/20 text-white hover:bg-white/30 border-white/20"
-              disabled={isStreaming || !caseStudy}
             >
               <Copy className="h-4 w-4 mr-2" />
               {language === 'fr' ? 'Copier' : 'Copy'}
@@ -84,7 +76,6 @@ export const CaseStudyDisplay = ({ caseStudy, wordCount, language, isStreaming =
               variant="secondary"
               size="sm"
               className="bg-white/20 text-white hover:bg-white/30 border-white/20"
-              disabled={isStreaming || !caseStudy}
             >
               <Download className="h-4 w-4 mr-2" />
               TXT
@@ -94,7 +85,6 @@ export const CaseStudyDisplay = ({ caseStudy, wordCount, language, isStreaming =
               variant="secondary"
               size="sm"
               className="bg-white/20 text-white hover:bg-white/30 border-white/20"
-              disabled={isStreaming || !caseStudy}
             >
               <Download className="h-4 w-4 mr-2" />
               PDF
@@ -104,11 +94,8 @@ export const CaseStudyDisplay = ({ caseStudy, wordCount, language, isStreaming =
       </CardHeader>
       <CardContent className="p-8">
         <div className="prose max-w-none">
-          <div className="whitespace-pre-wrap text-gray-800 leading-relaxed relative">
+          <div className="whitespace-pre-wrap text-gray-800 leading-relaxed">
             {caseStudy}
-            {isStreaming && (
-              <span className="inline-block w-2 h-5 bg-blue-600 animate-pulse ml-1" />
-            )}
           </div>
         </div>
       </CardContent>

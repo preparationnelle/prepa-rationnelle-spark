@@ -102,13 +102,12 @@ Use exactly this structure with bold titles.`;
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'gpt-4.1-2025-04-14',
         messages: [
           { role: 'user', content: prompt }
         ],
         temperature: 0.7,
         max_tokens: 1000,
-        stream: true,
       }),
     });
 
@@ -118,72 +117,16 @@ Use exactly this structure with bold titles.`;
       throw new Error(`OpenAI API error: ${response.status}`);
     }
 
-    // Create a readable stream for streaming response
-    const encoder = new TextEncoder();
-    const stream = new ReadableStream({
-      async start(controller) {
-        const reader = response.body?.getReader();
-        if (!reader) {
-          controller.close();
-          return;
-        }
+    const data = await response.json();
+    const caseStudy = data.choices[0].message.content;
 
-        let fullContent = '';
+    console.log('Case study generated successfully');
 
-        try {
-          while (true) {
-            const { done, value } = await reader.read();
-            if (done) break;
-
-            const chunk = new TextDecoder().decode(value);
-            const lines = chunk.split('\n');
-
-            for (const line of lines) {
-              if (line.startsWith('data: ')) {
-                const data = line.slice(6);
-                if (data === '[DONE]') {
-                  // Send final response with word count
-                  const finalData = {
-                    type: 'complete',
-                    caseStudy: fullContent,
-                    wordCount: fullContent.split(' ').length
-                  };
-                  controller.enqueue(encoder.encode(`data: ${JSON.stringify(finalData)}\n\n`));
-                  controller.close();
-                  return;
-                }
-
-                try {
-                  const parsed = JSON.parse(data);
-                  const content = parsed.choices[0]?.delta?.content || '';
-                  if (content) {
-                    fullContent += content;
-                    const streamData = {
-                      type: 'chunk',
-                      content: content,
-                      fullContent: fullContent
-                    };
-                    controller.enqueue(encoder.encode(`data: ${JSON.stringify(streamData)}\n\n`));
-                  }
-                } catch (e) {
-                  // Skip invalid JSON
-                }
-              }
-            }
-          }
-        } catch (error) {
-          controller.error(error);
-        }
-      }
-    });
-
-    return new Response(stream, {
-      headers: {
-        ...corsHeaders,
-        'Content-Type': 'text/event-stream',
-        'Cache-Control': 'no-cache',
-        'Connection': 'keep-alive',
-      },
+    return new Response(JSON.stringify({ 
+      caseStudy,
+      wordCount: caseStudy.split(' ').length 
+    }), {
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
 
   } catch (error) {

@@ -55,11 +55,10 @@ const GeneratorPage = () => {
   // Auth context
   const { currentUser } = useAuth();
   
-  // Answer generation with streaming
+  // Answer generation
   const { 
     generating, 
     wordCount, 
-    streamingContent,
     currentAnswer, 
     setCurrentAnswer,
     generateAnswer 
@@ -185,23 +184,19 @@ const GeneratorPage = () => {
             </CardContent>
           </Card>
           
-          {(currentAnswer || streamingContent || generating) && (
+          {currentAnswer && (
             <ResponseCard
               question={question}
               answer={currentAnswer}
-              streamingContent={streamingContent}
               wordCount={wordCount}
               language={language}
               activeTab={activeTab}
               onTabChange={setActiveTab}
-              onClearAnswer={() => {
-                setCurrentAnswer(null);
-              }}
-              isStreaming={generating}
+              onClearAnswer={() => setCurrentAnswer(null)}
             />
           )}
           
-          {!currentAnswer && !streamingContent && !generating && (
+          {!currentAnswer && !generating && (
             <InfoPanel language={language} />
           )}
         </TabsContent>
