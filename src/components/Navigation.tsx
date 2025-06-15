@@ -203,6 +203,10 @@ const Navigation = () => {
             Générateur
           </Link>
 
+          <Link to="/contact" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
+            Contact
+          </Link>
+
           <ThemeToggle variant="icon" />
 
           {currentUser ? (
