@@ -7,51 +7,49 @@ import { TrendingUp, Zap } from 'lucide-react';
 export const HeroSection = () => {
   return (
     <section
-      className="w-full min-h-[72vh] flex flex-col items-center justify-center"
-      style={{ background: "#FCF6E7" }}
+      className="min-h-[78vh] w-full flex flex-col justify-center items-center bg-[#fef7e1] py-14 px-2"
     >
-      <div className="w-full flex flex-col items-center justify-center py-10 px-4">
-        {/* Lignes infos : alignées au centre et larges */}
-        <div className="mb-7 flex flex-col gap-2 items-center">
+      <div className="w-full max-w-[1600px] flex flex-col items-center">
+        {/* Top links, spread and larger */}
+        <div className="mb-12 flex flex-col gap-4 items-center">
           <div className="flex items-center">
-            <TrendingUp className="h-5 w-5 text-[#F36C00] mr-2" />
+            <TrendingUp className="h-7 w-7 text-[#F36C00] mr-3" />
             <Link
               to="/calendar"
-              className="text-base font-semibold text-[#F36C00] uppercase tracking-wider hover:underline"
+              className="text-2xl md:text-2xl font-bold text-[#F36C00] uppercase tracking-widest hover:underline"
+              style={{ letterSpacing: 2 }}
             >
               PRÉPAREZ VOTRE ENTRETIEN
             </Link>
           </div>
           <div className="flex items-center">
-            <Zap className="h-5 w-5 text-[#F36C00] mr-2" />
+            <Zap className="h-7 w-7 text-[#F36C00] mr-3" />
             <Link
               to="/generator"
-              className="text-base font-semibold text-[#F36C00] uppercase tracking-wider hover:underline"
+              className="text-2xl md:text-2xl font-bold text-[#F36C00] uppercase tracking-widest hover:underline"
+              style={{ letterSpacing: 2 }}
             >
               PRÉPAREZ VOS ÉCRITS AVEC IA
             </Link>
           </div>
         </div>
-
+        {/* Massive Heading */}
         <h1
-          className="text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-extrabold leading-tight text-[#F36C00] text-center mb-6"
-          style={{ lineHeight: 1.07 }}
+          className="text-[2.8rem] sm:text-[4.2rem] md:text-[5rem] lg:text-[6vw] xl:text-[106px] font-extrabold text-[#F36C00] text-center mb-12 leading-[1.06] w-full"
+          style={{ wordBreak: 'keep-all', maxWidth: '100%' }}
         >
           Je vous aide à intégrer <br className="hidden md:block" />
           l&apos;école de vos rêves
         </h1>
-
-        <p className="text-lg md:text-xl max-w-2xl text-[#252523] text-center mb-12 font-normal">
-          Vous avez bossé 2&nbsp;ans. Maintenant, il faut{" "}
-          <span className="font-bold text-[#252523]">convaincre</span>.{" "}
-          Une plateforme qui combine{" "}
-          <Link
+        {/* Large subtitle */}
+        <p className="text-xl sm:text-2xl md:text-3xl max-w-[1000px] text-[#252523] text-center mb-14 font-normal leading-[1.35] w-full">
+          Vous avez bossé 2&nbsp;ans. Maintenant, il faut <span className="font-bold">convaincre</span>.
+          Une plateforme qui combine <Link
             to="/calendar"
             className="font-bold underline text-[#F36C00] hover:text-[#c95400] transition"
           >
             coaching sur‑mesure
-          </Link>{" "}
-          et{" "}
+          </Link> et{" "}
           <Link
             to="/generator"
             className="font-bold underline text-[#F36C00] hover:text-[#c95400] transition"
@@ -60,14 +58,14 @@ export const HeroSection = () => {
           </Link>{" "}
           pour réussir son entretien.
         </p>
-
-        <div className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-2xl">
+        {/* Buttons spaced out on all sizes */}
+        <div className="flex flex-col md:flex-row justify-center gap-6 w-full max-w-[1000px] mt-2">
           <Link to="/register" className="flex-1 md:flex-none">
             <Button
               size="lg"
-              className="w-full md:w-auto px-7 py-5 bg-[#F36C00] text-white font-semibold text-lg rounded-lg shadow-none hover:bg-[#e66200] transition border-0"
+              className="w-full md:w-auto px-8 py-6 bg-[#F36C00] text-white font-bold text-xl rounded-lg shadow-none hover:bg-[#e66200] transition border-0"
               style={{
-                boxShadow: "0 2px 8px rgba(243,108,0,0.06)",
+                boxShadow: "0 2px 14px rgba(243,108,0,0.09)",
               }}
             >
               Commencer gratuitement
@@ -77,9 +75,9 @@ export const HeroSection = () => {
             <Button
               variant="outline"
               size="lg"
-              className="w-full md:w-auto px-7 py-5 text-[#F36C00] border border-[#F8B96A] bg-white hover:bg-[#FFF4E7] hover:border-[#F36C00] hover:text-[#db5e00] font-semibold text-lg rounded-lg shadow-none transition"
+              className="w-full md:w-auto px-8 py-6 text-[#F36C00] border border-[#F8B96A] bg-white hover:bg-[#FFF4E7] hover:border-[#F36C00] hover:text-[#db5e00] font-bold text-xl rounded-lg shadow-none transition"
               style={{
-                boxShadow: "0 2px 8px rgba(243,108,0,0.04)",
+                boxShadow: "0 2px 12px rgba(243,108,0,0.06)",
               }}
             >
               Se connecter
