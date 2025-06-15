@@ -16,7 +16,8 @@ import {
   Radio, 
   Instagram, 
   Linkedin,
-  GraduationCap
+  GraduationCap,
+  Handshake
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
@@ -136,6 +137,17 @@ const Navigation = () => {
                   <span>Coaching individuel</span>
                 </Link>
               </DropdownMenuItem>
+
+              {/* ----------- Ajout partenaire ici ------------ */}
+              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 mt-1 transition-colors">
+                <Link to="/partners" onClick={closeMenu} className="flex items-center gap-3 w-full">
+                  <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <Handshake className="h-4 w-4 text-primary" />
+                  </span>
+                  <span>Partenaires</span>
+                </Link>
+              </DropdownMenuItem>
+              {/* ----------- fin ajout ------------- */}
 
               <DropdownMenuSeparator className="my-2" />
               
@@ -295,7 +307,16 @@ const Navigation = () => {
                 </span>
                 <span>Coaching individuel</span>
               </Link>
-              
+
+              {/* ----------- Ajout Partenaires MOBILE ici ------------ */}
+              <Link to="/partners" onClick={closeMenu} className="flex items-center gap-3">
+                <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Handshake className="h-4 w-4 text-primary" />
+                </span>
+                <span>Partenaires</span>
+              </Link>
+              {/* ----------- fin ajout ----------- */}
+
               <div 
                 onClick={() => navigateToSection('/', 'schools-section')}
                 className="flex items-center gap-3 cursor-pointer"
