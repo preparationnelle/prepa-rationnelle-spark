@@ -84,66 +84,77 @@ export const MathTutorGenerator: React.FC = () => {
       </CardHeader>
       <CardContent className="p-8 space-y-6">
         <form className="space-y-4" onSubmit={e => e.preventDefault()}>
-          <Textarea
-            name="subject"
-            label="Sujet de l'exercice"
-            className="w-full"
-            placeholder="Énonce l’exercice (ex : Résoudre x² - 5x + 6 = 0)"
-            value={form.subject}
-            onChange={handleChange}
-            required
-            rows={2}
-          />
-          <Textarea
-            name="correction"
-            label="Corrigé complet (si dispo)"
-            className="w-full"
-            placeholder="Coller ici le corrigé (optionnel mais recommandé pour une explication mieux adaptée)"
-            value={form.correction}
-            onChange={handleChange}
-            required
-            rows={2}
-          />
-          <Input
-            name="question"
-            className="w-full"
-            placeholder="Quelle étape/quelle question te pose problème ?"
-            value={form.question}
-            onChange={handleChange}
-            required
-          />
-          <Input
-            name="studentLevel"
-            className="w-full"
-            placeholder="Ton niveau (ex : Terminale, 2e année prépa, Licence…) "
-            value={form.studentLevel}
-            onChange={handleChange}
-            required
-          />
+          <div>
+            <label htmlFor="subject" className="block font-medium mb-1">Sujet de l'exercice</label>
+            <Textarea
+              name="subject"
+              id="subject"
+              className="w-full"
+              placeholder="Énonce l’exercice (ex : Résoudre x² - 5x + 6 = 0)"
+              value={form.subject}
+              onChange={handleChange}
+              required
+              rows={2}
+            />
+          </div>
+          <div>
+            <label htmlFor="correction" className="block font-medium mb-1">Corrigé complet (si dispo)</label>
+            <Textarea
+              name="correction"
+              id="correction"
+              className="w-full"
+              placeholder="Coller ici le corrigé (optionnel mais recommandé pour une explication mieux adaptée)"
+              value={form.correction}
+              onChange={handleChange}
+              required
+              rows={2}
+            />
+          </div>
+          <div>
+            <label htmlFor="question" className="block font-medium mb-1">Quelle étape/quelle question te pose problème ?</label>
+            <Input
+              name="question"
+              id="question"
+              className="w-full"
+              placeholder="Quelle étape/quelle question te pose problème ?"
+              value={form.question}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="studentLevel" className="block font-medium mb-1">Ton niveau</label>
+            <Input
+              name="studentLevel"
+              id="studentLevel"
+              className="w-full"
+              placeholder="Ton niveau (ex : Terminale, 2e année prépa, Licence…) "
+              value={form.studentLevel}
+              onChange={handleChange}
+              required
+            />
+          </div>
         </form>
         <div className="flex flex-col sm:flex-row gap-3">
           <Button 
             variant="secondary" 
             onClick={() => fetchMathHelp("hint")} 
-            loading={loading === "hint"}
             disabled={loading !== null || !isFormFilled}
           >
-            Obtenir un indice
+            {loading === "hint" ? "Chargement..." : "Obtenir un indice"}
           </Button>
           <Button 
             variant="outline"
             onClick={() => fetchMathHelp("explanation")}
-            loading={loading === "explanation"}
             disabled={loading !== null || !isFormFilled}
           >
-            Explication simplifiée
+            {loading === "explanation" ? "Chargement..." : "Explication simplifiée"}
           </Button>
           <Button 
             onClick={() => fetchMathHelp("answer")}
-            loading={loading === "answer"}
             disabled={loading !== null || !isFormFilled}
           >
-            Voir la réponse complète
+            {loading === "answer" ? "Chargement..." : "Voir la réponse complète"}
           </Button>
           <Button 
             variant="ghost"
