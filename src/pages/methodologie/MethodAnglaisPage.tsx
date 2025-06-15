@@ -4,6 +4,7 @@ import ArticleAnglaisProgress from "./ArticleAnglaisProgress";
 import ArticleAnglaisThemes from "./ArticleAnglaisThemes";
 import ArticleAnglaisColles from "./ArticleAnglaisColles";
 import ArticleAnglaisEssaisSyntheses from "./ArticleAnglaisEssaisSyntheses";
+import ArticleAnglaisConcours from "./ArticleAnglaisConcours";
 
 export default function MethodAnglaisPage() {
   return (
@@ -55,6 +56,16 @@ export default function MethodAnglaisPage() {
         </CardHeader>
         <CardContent>
           <ArticleAnglaisEssaisSyntheses />
+        </CardContent>
+      </Card>
+
+      {/* Article 6 */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Maximisez Votre Travail à l’Approche des Concours</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ArticleAnglaisConcours />
         </CardContent>
       </Card>
     </div>
