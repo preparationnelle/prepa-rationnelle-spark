@@ -1,22 +1,15 @@
+
 import { useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
 import { AdditionalInfo } from '@/components/generator/AdditionalInfoForm';
 import { Answer } from '@/components/generator/ResponseTabs';
 
-const supaProjectId = 'xamkaphelshsavcacbdy'; // <- extrait de l'URL Supabase
-const region = 'eu-central-1';                // <- par défaut pour ce projet Lovable
+const supaProjectId = 'xamkaphelshsavcacbdy';
+const region = 'eu-central-1';
 
-// Utilitaire pour récupérer le header d'auth supabase
-function getSupabaseAuthHeaders() {
-  const apiKey = (supabase as any).rest._headers.Authorization?.replace('Bearer ', '') ||
-    (supabase as any).rest._headers['apikey'] ||
-    (supabase as any).rest._headers['Authorization'];
-  return {
-    'apikey': apiKey || '',
-    'Authorization': `Bearer ${apiKey || ''}`,
-  };
-}
+// OPTIONNEL : utiliser la clé anonyme Supabase, mais pour les edge functions publiques elle est rarement utile !
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhhbWthcGhlbHNoc2F2Y2FjYmR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYwODc0MDQsImV4cCI6MjA2MTY2MzQwNH0.7G6hKGrmG_JmV_DZKyYCTmsS-soI0tofSKHA4fB8jAY";
 
 export const useStreamingAnswer = (currentUserId?: string) => {
   const [generating, setGenerating] = useState(false);
@@ -54,9 +47,10 @@ export const useStreamingAnswer = (currentUserId?: string) => {
       const url = `https://xamkaphelshsavcacbdy.functions.supabase.eu-central-1.supabase.co/generate-interview-answer`;
       console.log('[useStreamingAnswer] Using URL:', url);
 
-      const headers = {
-        ...getSupabaseAuthHeaders(),
+      // Ne PAS inclure Authorization, juste Content-Type (et éventuellement apikey publique)
+      const headers: Record<string, string> = {
         'Content-Type': 'application/json',
+        //'apikey': SUPABASE_ANON_KEY, // strictement optionnel !
       };
       console.log('[useStreamingAnswer] Using headers:', headers);
 
