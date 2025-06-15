@@ -3,9 +3,9 @@ import React from "react";
 
 export default function ArticleAnglaisProgress() {
   return (
-    <section className="mt-12">
+    <section>
       <h2 className="text-xl font-bold text-primary mb-5">
-        Garder une trace de vos progrès : un point essentiel
+        2. Garder une trace de vos progrès : un point essentiel
       </h2>
       <div className="mb-4">
         <strong className="block mb-2">Pourquoi&nbsp;?</strong>
