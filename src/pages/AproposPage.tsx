@@ -1,7 +1,45 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+
+const partners = [
+  {
+    name: "Mister Prépa",
+    logo: "/lovable-uploads/77c5d94a-6b9a-43b4-95df-b1e0923dd0d2.png",
+    alt: "Logo Mister Prépa",
+    url: "https://misterprepa.net"
+  },
+  {
+    name: "Blue Factory x ESCP",
+    logo: "/lovable-uploads/77c5d94a-6b9a-43b4-95df-b1e0923dd0d2.png",
+    alt: "Logo Blue Factory x ESCP",
+    url: "https://www.blue-factory.eu"
+  },
+  {
+    name: "ESCP Business School",
+    logo: "/lovable-uploads/77c5d94a-6b9a-43b4-95df-b1e0923dd0d2.png",
+    alt: "Logo ESCP Business School",
+    url: "https://escp.eu"
+  },
+  {
+    name: "myPREPA",
+    logo: "/lovable-uploads/77c5d94a-6b9a-43b4-95df-b1e0923dd0d2.png",
+    alt: "Logo myPREPA",
+    url: "https://myprepa.fr"
+  },
+  {
+    name: "Maisons des Jeunes Talents",
+    logo: "/lovable-uploads/77c5d94a-6b9a-43b4-95df-b1e0923dd0d2.png",
+    alt: "Logo Maisons des Jeunes Talents",
+    url: "https://fondation.groupelbpam.com/en/maisons-des-jeunes-talents-about-us/"
+  },
+  {
+    name: "Stéphane Preteseille",
+    logo: "/lovable-uploads/77c5d94a-6b9a-43b4-95df-b1e0923dd0d2.png",
+    alt: "Logo Stéphane Preteseille",
+    url: "https://stephanepreteseille.com"
+  }
+];
 
 const AproposPage = () => (
   <div className="min-h-screen bg-background py-12 px-4">
@@ -15,6 +53,28 @@ const AproposPage = () => (
             <strong>Prépa Rationnelle</strong>, c’est bien plus qu’un nom accrocheur : c’est une réponse concrète à un problème que vivent des milliers d’étudiants chaque année. Celui de l’inefficacité, du surmenage et du manque de méthode dans les classes préparatoires.
             À l’origine du projet, un constat personnel : réussir un concours ne dépend pas uniquement de son intelligence ou de ses connaissances, mais de la capacité à travailler intelligemment. Et ça, peu de gens l’enseignent.
           </p>
+        </section>
+        <section>
+          <h2 className="font-semibold text-xl mb-4 text-primary">Nos partenaires</h2>
+          <div className="flex flex-wrap justify-center gap-8 md:gap-12 mb-6">
+            {partners.map((partner, i) => (
+              <a
+                key={i}
+                href={partner.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center w-40 hover:shadow-lg transition-shadow"
+                aria-label={partner.name}
+              >
+                <img
+                  src={partner.logo}
+                  alt={partner.alt}
+                  className="h-16 w-auto object-contain mb-2"
+                />
+                <span className="text-base text-primary text-center">{partner.name}</span>
+              </a>
+            ))}
+          </div>
         </section>
         <section>
           <h2 className="font-semibold text-xl mb-2">Un parcours personnel au service des autres</h2>
