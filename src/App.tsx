@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -73,11 +74,8 @@ const App = () => (
                     <Route path="/methodes/tendre-perches" element={<TendrePerchesMethodePage />} />
                     <Route path="/methodes/finir-entretien" element={<FinirEntretienMethodePage />} />
                     <Route path="/methodes/pitch-intro" element={<PitchIntroMethodePage />} />
-                    <Route path="/generator" element={
-                      <ProtectedRoute>
-                        <GeneratorPage />
-                      </ProtectedRoute>
-                    } />
+                    {/* REND LA PAGE GENERATOR ACCESSIBLE MEME NON CONNECTÉ */}
+                    <Route path="/generator" element={<GeneratorPage />} />
                     <Route path="/coaching" element={
                       <ProtectedRoute>
                         <CoachingPage />
@@ -116,3 +114,4 @@ const App = () => (
 );
 
 export default App;
+
