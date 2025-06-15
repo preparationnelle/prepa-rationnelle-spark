@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -40,7 +41,7 @@ export default function ContactPage() {
           </p>
         </CardHeader>
         <CardContent className="grid md:grid-cols-2 gap-10">
-          {/* Formulaire de contact */}
+          {/* Formulaire de contact avec champ téléphone */}
           <form
             className="space-y-4"
             onSubmit={e => {
@@ -52,21 +53,58 @@ export default function ContactPage() {
               <label className="font-medium mb-1 block" htmlFor="name">
                 Nom
               </label>
-              <Input id="name" name="name" placeholder="Votre nom" required />
+              <Input
+                id="name"
+                name="name"
+                placeholder="Votre nom"
+                required
+                className="bg-[#FFFAEC]"
+              />
             </div>
             <div>
               <label className="font-medium mb-1 block" htmlFor="email">
                 E-mail
               </label>
-              <Input id="email" name="email" type="email" placeholder="mon@email.com" required />
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="mon@email.com"
+                required
+                className="bg-[#FFFAEC]"
+              />
+            </div>
+            {/* Champ téléphone ajouté */}
+            <div>
+              <label className="font-medium mb-1 block" htmlFor="phone">
+                Téléphone
+              </label>
+              <Input
+                id="phone"
+                name="phone"
+                type="tel"
+                pattern="^[0-9+\s().-]{6,}$"
+                placeholder="06 12 34 56 78"
+                className="bg-[#FFFAEC]"
+              />
             </div>
             <div>
               <label className="font-medium mb-1 block" htmlFor="message">
                 Message
               </label>
-              <Textarea id="message" name="message" required placeholder="Votre message" className="resize-none" />
+              <Textarea
+                id="message"
+                name="message"
+                required
+                placeholder="Votre message"
+                className="resize-none bg-[#FFFAEC]"
+              />
             </div>
-            <Button type="submit" className="w-full mt-2">
+            <Button
+              type="submit"
+              className="w-full mt-2 bg-[#FF7900] hover:bg-[#ff8e2b] text-white text-lg font-bold py-2"
+              style={{ background: "#FF7900" }}
+            >
               Envoyer
             </Button>
           </form>
@@ -74,35 +112,35 @@ export default function ContactPage() {
           {/* Informations de contact mises à jour */}
           <div className="flex flex-col gap-6 justify-center">
             <div className="flex items-center gap-3">
-              <Mail className="text-primary" />
+              <Mail className="text-[#FF7900]" />
               <span>
-                <a href="mailto:preparationnelle@gmail.com" className="underline text-primary">
+                <a href="mailto:preparationnelle@gmail.com" className="underline text-[#FF7900]">
                   preparationnelle@gmail.com
                 </a>
               </span>
             </div>
             <div className="flex items-center gap-3">
-              <Phone className="text-primary" />
+              <Phone className="text-[#FF7900]" />
               <span>
-                <a href="tel:+33609164668" className="underline text-primary">
+                <a href="tel:+33609164668" className="underline text-[#FF7900]">
                   06 09 16 46 68
                 </a>
               </span>
             </div>
             <div className="flex items-center gap-3">
-              <Globe className="text-primary" />
+              <Globe className="text-[#FF7900]" />
               <a
                 href="https://preparationnelle.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline text-primary"
+                className="underline text-[#FF7900]"
               >
                 preparationnelle.com
               </a>
             </div>
             <div className="flex items-center gap-3">
-              <MapPin className="text-primary" />
-              <span>
+              <MapPin className="text-[#FF7900]" />
+              <span className="text-black">
                 50 rue des 3 frères, 75018 Paris
               </span>
             </div>
@@ -114,7 +152,7 @@ export default function ContactPage() {
                 className="hover:scale-110 transition"
                 aria-label="Instagram"
               >
-                <Instagram size={28} className="text-primary" />
+                <Instagram size={28} className="text-[#FF7900]" />
               </a>
               <a
                 href="https://www.linkedin.com/in/dimitar-dimitrov-372348200/"
@@ -123,7 +161,7 @@ export default function ContactPage() {
                 className="hover:scale-110 transition"
                 aria-label="LinkedIn"
               >
-                <Linkedin size={28} className="text-primary" />
+                <Linkedin size={28} className="text-[#FF7900]" />
               </a>
             </div>
           </div>
