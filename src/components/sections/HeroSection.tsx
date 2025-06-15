@@ -51,13 +51,15 @@ export const HeroSection = () => {
               </Link>
             </div>
           </div>
-          
+          {/* ---- PHOTO HERO: fond harmonisé avec l'accueil ---- */}
           <div className="relative shrink-0">
-            <div className="absolute -inset-1 bg-primary/10 rounded-2xl blur-md"></div>
+            <div className="absolute -inset-1 bg-[#FFF9ED] rounded-2xl shadow-none"></div>
             <img 
-              src="/lovable-uploads/f208343e-6d37-4580-bf38-cf10f5571a1e.png" 
-              alt="Étudiant préparant un entretien" 
-              className="w-auto h-auto max-w-[280px] md:max-w-xs rounded-2xl relative shadow-lg hover:shadow-xl transition-all duration-300" 
+              // Utilise l'image précédente ou la tienne, à remplacer si nécessaire :
+              src="/lovable-uploads/20508795-4685-4447-a4f3-ef4bf2f4fafd.png"
+              alt="Étudiant préparant un entretien"
+              className="w-auto h-auto max-w-[280px] md:max-w-xs rounded-2xl relative shadow-lg" 
+              style={{ background: "#FFF9ED" }} // fallback bg pour PNG si besoin
             />
             <div className="absolute -bottom-4 -right-4 bg-card p-3 rounded-full shadow-lg">
               <Award className="w-8 h-8 text-primary" />
