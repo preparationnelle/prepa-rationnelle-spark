@@ -57,6 +57,10 @@ export const SchoolProfileGenerator: React.FC = () => {
       });
       return;
     }
+
+    // LOG EN DEV, pour diagnostic !
+    console.log("[GENERATE SCHOOL PROFILE] user_id utilisé :", currentUser.id);
+
     setLoading(true);
     setProfile(null);
     setFromCache(false);

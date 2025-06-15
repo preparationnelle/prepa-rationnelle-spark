@@ -1,4 +1,3 @@
-
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.42.5";
@@ -31,6 +30,14 @@ serve(async (req) => {
   try {
     const supabase = createClient(supabaseUrl, supabaseKey);
     const { school_slug, user_id, school_name } = await req.json();
+
+    // Sécurité : check du pattern UUID server-side, sinon renvoyer une erreur ultra explicite
+    if (!user_id || typeof user_id !== "string" || !/^[0-9a-fA-F-]{36}$/.test(user_id)) {
+      return new Response(
+        JSON.stringify({ error: "L'identifiant utilisateur envoyé n'est pas un UUID valide côté API." }),
+        { status: 400, headers: corsHeaders }
+      );
+    }
 
     // 1. Check if a cached profile exists
     const { data: existing } = await supabase
