@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardHeader, CardContent, CardTitle, CardDescription } from '@/components/ui/card';
 import { MessageSquare } from 'lucide-react';
@@ -8,6 +7,7 @@ import { AdditionalInfoForm, AdditionalInfo } from '@/components/generator/Addit
 import { InfoPanel } from '@/components/generator/InfoPanel';
 import { ResponseCard } from '@/components/generator/ResponseCard';
 import { UseFormReturn } from "react-hook-form";
+import { Answer } from '@/components/generator/ResponseTabs';
 
 interface AnswerAutomationProps {
   question: string;
@@ -21,8 +21,8 @@ interface AnswerAutomationProps {
   loadExample: () => void;
   handleGenerate: () => void;
   generating: boolean;
-  currentAnswer: string | null; // <-- Typing fixed to string | null
-  setCurrentAnswer: (s: string | null) => void;
+  currentAnswer: Answer | null; // <-- Typing fixed to Answer | null
+  setCurrentAnswer: (s: Answer | null) => void;
   wordCount: number;
   additionalInfoForm: UseFormReturn<AdditionalInfo>;
 }

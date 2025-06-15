@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -33,6 +32,7 @@ import { cn } from "@/lib/utils";
 
 // Import type
 import { AdditionalInfo } from '@/components/generator/AdditionalInfoForm';
+import { Answer } from '@/components/generator/ResponseTabs';
 
 // MiniCard type
 type AutomationKey =
