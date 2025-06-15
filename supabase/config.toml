@@ -1,3 +1,4 @@
+
 project_id = "xamkaphelshsavcacbdy"
 
 [functions.chat-ai-assistant]
@@ -9,6 +10,9 @@ verify_jwt = false
 [functions.profile]
 timeout_ms = 30000
 
-# Add public (default) access for math-tutor-assistant
 [functions.math-tutor-assistant]
 verify_jwt = false
+
+[functions.python-assistant]
+verify_jwt = false
+

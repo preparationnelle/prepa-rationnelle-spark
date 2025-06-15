@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import {
   MessageSquare, Zap, Languages, Globe, TrendingUp,
-  HelpCircle, Dices, BookOpen, Calculator
+  HelpCircle, Dices, BookOpen, Calculator, Code
 } from 'lucide-react';
 
 // Import components des automatisations :
@@ -21,6 +21,7 @@ import { CaseStudyGenerator } from '@/components/generator/CaseStudyGenerator';
 import { ThemeGrammaticalGenerator } from "@/components/grammar/ThemeGrammaticalGenerator";
 import { SchoolProfileGenerator } from "@/components/generator/SchoolProfileGenerator";
 import { MathTutorGenerator } from '@/components/generator/MathTutorGenerator';
+import { PythonTutorGenerator } from '@/components/generator/PythonTutorGenerator';
 
 // hooks
 import { useGenerateAnswer } from '@/hooks/useGenerateAnswer';
@@ -41,7 +42,8 @@ type AutomationKey =
   | 'edhec'
   | 'theme-grammar'
   | 'school-profile'
-  | 'math-tutor';
+  | 'math-tutor'
+  | 'python-tutor';
 
 const AUTOMATIONS = [
   {
@@ -122,6 +124,14 @@ const AUTOMATIONS = [
     title: "Prof de maths virtuel",
     description: "Demande un indice, une explication ou la solution sur un exercice mathématiques.",
     badge: "IA",
+  },
+  {
+    key: 'python-tutor',
+    icon: <Code className="h-8 w-8 text-primary" />,
+    title: "Assistant Python IA",
+    description:
+      "Analyse ton code Python, détecte les erreurs et génère une version optimisée avec conseils adaptés à ton niveau.",
+    badge: "Nouveau",
   },
 ];
 
@@ -310,6 +320,8 @@ const GeneratorPage = () => {
         return <SchoolProfileGenerator />;
       case "math-tutor":
         return <MathTutorGenerator />;
+      case "python-tutor":
+        return <PythonTutorGenerator />;
       default:
         return null;
     }
