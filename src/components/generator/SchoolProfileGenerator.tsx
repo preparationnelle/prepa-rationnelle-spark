@@ -90,9 +90,16 @@ export const SchoolProfileGenerator: React.FC = () => {
       console.log("Statut de réponse:", response.status);
 
       if (!response.ok) {
-        const errorText = await response.text();
-        console.error("Erreur HTTP:", errorText);
-        throw new Error(`Erreur ${response.status}: ${errorText}`);
+        // Gère explicitement les statuts 404
+        let description;
+        if (response.status === 404) {
+          description = "Fiche non trouvée. L’école sélectionnée n’est peut-être pas disponible ou un problème temporaire est survenu.";
+        } else {
+          const errorText = await response.text();
+          console.error("Erreur HTTP:", errorText);
+          description = `Erreur ${response.status}: ${errorText}`;
+        }
+        throw new Error(description);
       }
 
       const data = await response.json();
@@ -113,13 +120,18 @@ export const SchoolProfileGenerator: React.FC = () => {
     } catch (error: any) {
       console.error("Erreur lors de la génération:", error);
 
-      // Correction: français pour les messages format pattern
+      // Correction : messages clairs en français selon l’erreur
       let description = error?.message || "Erreur inconnue lors de la génération.";
       if (
         typeof description === "string" &&
         description.includes("did not match the expected pattern")
       ) {
         description = "La saisie ne respecte pas le format attendu. Veuillez vérifier le champ.";
+      } else if (
+        typeof description === "string" &&
+        (description.includes("404") || description.includes("non trouvée"))
+      ) {
+        description = "Fiche introuvable ou indisponible pour cette école. Merci de vérifier la sélection ou de réessayer plus tard.";
       }
 
       toast({
