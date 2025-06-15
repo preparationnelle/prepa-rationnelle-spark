@@ -6,110 +6,166 @@ import { Link } from "react-router-dom";
 
 const PitchIntroMethodePage = () => (
   <div className="min-h-screen bg-background py-12 px-4">
-    <div className="max-w-3xl mx-auto">
-      <Card className="mb-8 shadow-lg">
+    <div className="max-w-2xl mx-auto">
+      {/* Header section, orange background */}
+      <div className="flex items-center gap-4 rounded-t-lg px-6 py-5" style={{ background: "#FFFAF3" }}>
+        <div className="bg-orange-100 rounded-full p-2 flex items-center justify-center">
+          <Megaphone className="h-7 w-7 text-orange-600" />
+        </div>
+        <h1 className="text-3xl font-bold text-orange-700">
+          Réussir son Pitch d’introduction
+        </h1>
+      </div>
+      <Card className="-mt-2 shadow-lg">
         <CardContent className="p-8">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="bg-orange-100 p-3 rounded-full">
-              <Megaphone className="h-8 w-8 text-orange-600" />
-            </div>
-            <h1 className="text-3xl font-bold text-orange-700">Réussir son Pitch d’introduction</h1>
-          </div>
-          <div className="prose prose-neutral max-w-none">
-            <h2>🧠 Pourquoi le pitch est crucial</h2>
+          {/* Pourquoi le pitch est crucial */}
+          <section className="mb-7">
+            <h2 className="text-xl font-semibold mb-2">Pourquoi le pitch est crucial</h2>
             <p>
-              Le pitch d’introduction est le moment charnière de l’entretien de personnalité. Il donne la première impression et définit aussi le terrain de jeu : les éléments que tu choisis de mettre en avant seront ceux que le jury explorera ensuite.<br />
-              <strong>Le pitch n’est pas un résumé de CV, ni un simple “je me présente” scolaire.</strong>
+              Le pitch d’introduction est le moment charnière de l’entretien de personnalité. Il donne la première impression et définit aussi le terrain de jeu : 
+              <span className="font-semibold"> les éléments que tu choisis de mettre en avant seront ceux que le jury explorera ensuite.</span>
             </p>
-            <ul>
-              <li><strong>🎯 Le but :</strong> donner envie au jury de te découvrir. Pas tout dire. Juste susciter des questions.</li>
+            <p className="mt-2 font-bold">
+              Le pitch n’est pas un résumé de CV, ni un simple “je me présente” scolaire.
+            </p>
+          </section>
+
+          {/* Le but */}
+          <section className="mb-7">
+            <h3 className="text-lg font-semibold mb-1">Le but</h3>
+            <p>
+              Donner envie au jury de te découvrir. 
+              <span className="block">Pas tout dire. Juste susciter des questions.</span>
+            </p>
+          </section>
+
+          {/* Les erreurs à éviter */}
+          <section className="mb-7">
+            <h3 className="text-lg font-semibold mb-3">Les erreurs à éviter</h3>
+            <ul className="space-y-1">
+              <li className="flex items-center gap-2 text-red-600 font-medium">❌ Faire une chronologie scolaire (« J’ai fait une prépa ECG… »)</li>
+              <li className="flex items-center gap-2 text-red-600 font-medium">❌ Réciter une lettre de motivation orale</li>
+              <li className="flex items-center gap-2 text-red-600 font-medium">❌ Parler comme si tu écrivais un devoir</li>
+              <li className="flex items-center gap-2 text-red-600 font-medium">❌ Tout dévoiler dès le départ</li>
+              <li className="flex items-center gap-2 text-red-600 font-medium">❌ Être lisse et impersonnel</li>
             </ul>
-            <h2>🚫 Les erreurs à éviter</h2>
-            <ul>
-              <li>❌ Faire une chronologie scolaire (« J’ai fait une prépa ECG… »)</li>
-              <li>❌ Réciter une lettre de motivation orale</li>
-              <li>❌ Parler comme si tu écrivais un devoir</li>
-              <li>❌ Tout dévoiler dès le départ</li>
-              <li>❌ Être lisse et impersonnel</li>
-            </ul>
-            <h2>🎯 Les 4 objectifs d’un bon pitch</h2>
-            <ul>
+          </section>
+
+          {/* Les objectifs d’un bon pitch */}
+          <section className="mb-7">
+            <h3 className="text-lg font-semibold mb-2">Les 4 objectifs d’un bon pitch</h3>
+            <ul className="list-disc pl-5 space-y-1">
               <li>Captiver dès les premières secondes.</li>
               <li>Montrer qui tu es, pas ce que tu as fait.</li>
               <li>Faire sentir un moteur intérieur (passion, ambition, curiosité).</li>
               <li>Créer du mystère pour donner envie d’en savoir plus.</li>
             </ul>
-            <h2>🧱 Structure simple et efficace</h2>
-            <ol>
+          </section>
+
+          {/* Structure du pitch */}
+          <section className="mb-7">
+            <h3 className="text-lg font-semibold mb-2">Structure simple et efficace</h3>
+            <ol className="space-y-3 list-decimal pl-6">
               <li>
-                <strong>🪞 Une accroche personnelle</strong><br />
-                <em>Commence par une phrase qui te situe humainement : anecdote, dualité, trait…</em><br />
-                Exemple : “Ce qui me définit, c’est ma curiosité constante pour les autres cultures…”
+                <span className="font-bold">Une accroche personnelle</span><br />
+                <span className="italic">
+                  Commence par une phrase qui te situe humainement : anecdote, dualité, trait…
+                </span>
+                <div className="mt-1 text-muted-foreground">
+                  Exemple : “Ce qui me définit, c’est ma curiosité constante pour les autres cultures…”
+                </div>
               </li>
               <li>
-                <strong>⚙️ Une expérience ou engagement fondateur</strong><br />
-                <em>Suggère une histoire que le jury pourra creuser.</em><br />
-                Exemple : “Pendant 6 ans, j’ai été bénévole dans un club de débat…”
+                <span className="font-bold">Une expérience ou engagement fondateur</span><br /> 
+                <span className="italic">Suggère une histoire que le jury pourra creuser.</span>
+                <div className="mt-1 text-muted-foreground">
+                  Exemple : “Pendant 6 ans, j’ai été bénévole dans un club de débat…”
+                </div>
               </li>
               <li>
-                <strong>🌱 Une direction professionnelle</strong><br />
-                <em>Projette une intention, sans prétendre tout maîtriser.</em><br />
-                Exemple : “Je m’intéresse aujourd’hui à l’entrepreneuriat social…”
+                <span className="font-bold">Une direction professionnelle</span><br /> 
+                <span className="italic">Projette une intention, sans prétendre tout maîtriser.</span>
+                <div className="mt-1 text-muted-foreground">
+                  Exemple : “Je m’intéresse aujourd’hui à l’entrepreneuriat social…”
+                </div>
               </li>
               <li>
-                <strong>🧭 Une connexion avec l’école</strong><br />
-                <em>Montre que ton profil résonne avec les valeurs de l’école.</em><br />
-                Exemple : “C’est pour cette raison que je me tourne vers l’ESCP…”
+                <span className="font-bold">Une connexion avec l’école</span><br />
+                <span className="italic">Montre que ton profil résonne avec les valeurs de l’école.</span>
+                <div className="mt-1 text-muted-foreground">
+                  Exemple : “C’est pour cette raison que je me tourne vers l’ESCP…”
+                </div>
               </li>
             </ol>
-            <h2>🎙️ Le bon ton à adopter</h2>
-            <ul>
-              <li>Naturel : tu parles, tu ne récites pas.</li>
+          </section>
+
+          {/* Le ton à adopter */}
+          <section className="mb-7">
+            <h3 className="text-lg font-semibold mb-2">Le bon ton à adopter</h3>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Naturel : tu parles, tu ne récites pas.</li>
               <li>Sincère, sobrement enthousiaste.</li>
               <li>Ouvert, tu invites au dialogue.</li>
             </ul>
-            <h2>🧩 Exemples d’accroches inspirantes</h2>
-            <ul>
-              <li>“Depuis toujours, j’ai du mal à me contenter d’une seule discipline.”</li>
-              <li>“Ma passion, c’est le fait d’apprendre en dehors du cadre.”</li>
-              <li>“Je suis quelqu’un de multiculturel, pas juste par mon passeport…”</li>
-            </ul>
-            <h2>🪄 Bonus : astuces pour un pitch qui marque</h2>
-            <ul>
-              <li>🎯 Laisse des silences pour créer du rythme</li>
+          </section>
+
+          {/* Exemples d'accroches */}
+          <section className="mb-7">
+            <h3 className="text-lg font-semibold mb-2">Exemples d’accroches inspirantes</h3>
+            <div className="space-y-1">
+              <div>“Depuis toujours, j’ai du mal à me contenter d’une seule discipline.”</div>
+              <div>“Ma passion, c’est le fait d’apprendre en dehors du cadre.”</div>
+              <div>“Je suis quelqu’un de multiculturel, pas juste par mon passeport…”</div>
+            </div>
+          </section>
+
+          {/* Bonus astuces */}
+          <section className="mb-7">
+            <h3 className="text-lg font-semibold mb-2">Bonus : astuces pour un pitch qui marque</h3>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Laisse des silences pour créer du rythme</li>
               <li>Prépare une version courte (1 min) et une longue (2 min)</li>
               <li>Teste-le auprès de plusieurs personnes</li>
               <li>Enregistre-toi pour t’écouter</li>
-              <li>🧠 Mémorise les idées, pas les phrases</li>
+              <li>Mémorise les idées, pas les phrases</li>
             </ul>
-            <h2>✨ En résumé</h2>
-            <table>
-              <thead>
-                <tr><th>Ce que ce n’est pas</th><th>Ce que c’est</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Un CV récité</td>
-                  <td>Une histoire personnelle vivante</td>
-                </tr>
-                <tr>
-                  <td>Une lettre de motivation</td>
-                  <td>Une invitation à discuter</td>
-                </tr>
-                <tr>
-                  <td>Une chronologie scolaire</td>
-                  <td>Un miroir de tes valeurs</td>
-                </tr>
-                <tr>
-                  <td>Un discours fermé</td>
-                  <td>Un tremplin pour le dialogue</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          </section>
+
+          {/* En résumé */}
+          <section>
+            <h3 className="text-lg font-semibold mb-2">En résumé</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full border text-sm text-left">
+                <thead>
+                  <tr className="bg-muted">
+                    <th className="p-2 border">Ce que ce n’est pas</th>
+                    <th className="p-2 border">Ce que c’est</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="p-2 border">Un CV récité</td>
+                    <td className="p-2 border">Une histoire personnelle vivante</td>
+                  </tr>
+                  <tr>
+                    <td className="p-2 border">Une lettre de motivation</td>
+                    <td className="p-2 border">Une invitation à discuter</td>
+                  </tr>
+                  <tr>
+                    <td className="p-2 border">Une chronologie scolaire</td>
+                    <td className="p-2 border">Un miroir de tes valeurs</td>
+                  </tr>
+                  <tr>
+                    <td className="p-2 border">Un discours fermé</td>
+                    <td className="p-2 border">Un tremplin pour le dialogue</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
         </CardContent>
       </Card>
-      <div className="text-center">
+      <div className="text-center mt-6">
         <Button asChild>
           <Link to="/">Retour à l'accueil</Link>
         </Button>
