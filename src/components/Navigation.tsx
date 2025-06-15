@@ -111,7 +111,21 @@ const Navigation = () => {
               <ChevronDown className="h-4 w-4" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="center" className="w-64 bg-popover rounded-lg shadow-lg border p-2">
+
+              {/* Ajout du lien À propos */}
               <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                <Link to="/apropos" onClick={closeMenu} className="flex items-center gap-3 w-full">
+                  <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <User className="h-4 w-4 text-primary" />
+                  </span>
+                  <span>À propos</span>
+                </Link>
+              </DropdownMenuItem>
+
+              {/* Séparateur après À propos */}
+              <DropdownMenuSeparator className="my-2" />
+
+              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 mt-1 transition-colors">
                 <Link to="/questions" onClick={closeMenu} className="flex items-center gap-3 w-full">
                   <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                     <FileText className="h-4 w-4 text-primary" />
@@ -287,6 +301,15 @@ const Navigation = () => {
           <div className="space-y-2 py-2 border-b border-border">
             <h3 className="text-lg font-medium text-primary">Ressources</h3>
             <div className="pl-4 flex flex-col space-y-4">
+              
+              {/* Ajout du lien À propos en mobile */}
+              <Link to="/apropos" onClick={closeMenu} className="flex items-center gap-3">
+                <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <User className="h-4 w-4 text-primary" />
+                </span>
+                <span>À propos</span>
+              </Link>
+
               <Link to="/questions" onClick={closeMenu} className="flex items-center gap-3">
                 <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                   <FileText className="h-4 w-4 text-primary" />
