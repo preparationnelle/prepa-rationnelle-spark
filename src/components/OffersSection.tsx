@@ -8,11 +8,12 @@ export const OffersSection = () => (
       <h2 className="text-2xl md:text-3xl font-extrabold mb-6 text-primary flex items-center gap-2">
         <span>Nos offres</span>
       </h2>
-      <div className="space-y-10 text-base md:text-lg">
-        <div>
+      <div className="flex flex-col gap-10 text-base md:text-lg">
+        {/* Offre 1 */}
+        <div className="bg-white/90 rounded-xl border border-primary/20 shadow-md px-6 py-8">
           <div className="flex items-start gap-2 mb-1 font-bold text-lg md:text-xl">
-            <span className="text-xl md:text-2xl">🎯</span>
-            <span>1. Préparation aux entretiens de personnalité</span>
+            <span className="text-primary font-black text-2xl mr-1">1.</span>
+            <span>Préparation aux entretiens de personnalité</span>
           </div>
           <div className="ml-7 mb-2 text-muted-foreground">
             Accompagnement sur mesure pour réussir les entretiens oraux des concours (écoles de commerce, Sciences Po, etc.).
@@ -36,10 +37,11 @@ export const OffersSection = () => (
             </a>
           </div>
         </div>
-        <div>
+        {/* Offre 2 */}
+        <div className="bg-white/90 rounded-xl border border-primary/20 shadow-md px-6 py-8">
           <div className="flex items-start gap-2 mb-1 font-bold text-lg md:text-xl">
-            <span className="text-xl md:text-2xl">🚀</span>
-            <span>2. Prépa à la prépa</span>
+            <span className="text-primary font-black text-2xl mr-1">2.</span>
+            <span>Prépa à la prépa</span>
           </div>
           <div className="ml-7 mb-2 text-muted-foreground">
             Un programme d’accompagnement dédié aux élèves de Terminale qui s’apprêtent à intégrer une classe préparatoire (CPGE).
@@ -62,10 +64,11 @@ export const OffersSection = () => (
             </a>
           </div>
         </div>
-        <div>
+        {/* Offre 3 */}
+        <div className="bg-white/90 rounded-xl border border-primary/20 shadow-md px-6 py-8">
           <div className="flex items-start gap-2 mb-1 font-bold text-lg md:text-xl">
-            <span className="text-xl md:text-2xl">🔄</span>
-            <span>3. Réussir la transition entre la 1re et la 2e année de prépa</span>
+            <span className="text-primary font-black text-2xl mr-1">3.</span>
+            <span>Réussir la transition entre la 1re et la 2e année de prépa</span>
           </div>
           <div className="ml-7 mb-2 text-muted-foreground">
             Un accompagnement pour aborder sereinement la deuxième année, la  plus exigeante !
@@ -94,3 +97,4 @@ export const OffersSection = () => (
 );
 
 export default OffersSection;
+
