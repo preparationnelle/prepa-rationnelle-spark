@@ -5,12 +5,11 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { TrendingUp, Loader2, Sparkles, AlertCircle } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/integrations/supabase/client';
+import { TrendingUp, Loader2, Sparkles, AlertCircle, Square } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CaseStudyDisplay } from './CaseStudyDisplay';
+import { useStreamingCaseStudy } from '@/hooks/useStreamingCaseStudy';
 
 interface CaseStudyGeneratorProps {
   language: 'fr' | 'en';
@@ -19,11 +18,15 @@ interface CaseStudyGeneratorProps {
 export const CaseStudyGenerator = ({ language }: CaseStudyGeneratorProps) => {
   const [article, setArticle] = useState('');
   const [notion, setNotion] = useState('');
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [generatedCaseStudy, setGeneratedCaseStudy] = useState<string | null>(null);
-  const [wordCount, setWordCount] = useState(0);
-  const { toast } = useToast();
   const { currentUser } = useAuth();
+  
+  const {
+    isGenerating,
+    streamingContent,
+    finalCaseStudy,
+    wordCount,
+    generateCaseStudy,
+  } = useStreamingCaseStudy();
 
   const loadExample = () => {
     setArticle("https://www.lemonde.fr/international/article/2024/01/15/tensions-en-mer-de-chine-meridionale_6210234_3210.html");
@@ -31,64 +34,13 @@ export const CaseStudyGenerator = ({ language }: CaseStudyGeneratorProps) => {
   };
 
   const handleGenerate = async () => {
-    if (!article.trim() || !notion.trim()) {
-      toast({
-        title: language === 'fr' ? "Erreur" : "Error",
-        description: language === 'fr' ? "Veuillez remplir tous les champs" : "Please fill in all fields",
-        variant: "destructive",
-      });
-      return;
-    }
-
     if (!currentUser) {
-      toast({
-        title: language === 'fr' ? "Erreur" : "Error",
-        description: language === 'fr' ? "Vous devez être connecté" : "You must be logged in",
-        variant: "destructive",
-      });
       return;
     }
-
-    setIsGenerating(true);
-
-    try {
-      const { data, error } = await supabase.functions.invoke('generate-case-study', {
-        body: {
-          article: article.trim(),
-          notion: notion.trim(),
-          userId: currentUser.id,
-          language: language,
-        },
-      });
-
-      if (error) {
-        console.error('Error generating case study:', error);
-        toast({
-          title: language === 'fr' ? "Erreur" : "Error",
-          description: error.message || (language === 'fr' ? "Erreur lors de la génération" : "Generation error"),
-          variant: "destructive",
-        });
-        return;
-      }
-
-      setGeneratedCaseStudy(data.caseStudy);
-      setWordCount(data.wordCount);
-      toast({
-        title: language === 'fr' ? "Succès" : "Success",
-        description: language === 'fr' ? "Étude de cas générée avec succès !" : "Case study generated successfully!",
-      });
-
-    } catch (error) {
-      console.error('Error:', error);
-      toast({
-        title: language === 'fr' ? "Erreur" : "Error",
-        description: language === 'fr' ? "Une erreur s'est produite" : "An error occurred",
-        variant: "destructive",
-      });
-    } finally {
-      setIsGenerating(false);
-    }
+    await generateCaseStudy(article, notion, currentUser.id, language);
   };
+
+  const displayContent = finalCaseStudy || streamingContent;
 
   return (
     <div className="space-y-8">
@@ -120,6 +72,7 @@ export const CaseStudyGenerator = ({ language }: CaseStudyGeneratorProps) => {
                 value={article}
                 onChange={(e) => setArticle(e.target.value)}
                 className="min-h-[120px] resize-none border-2 hover:border-primary/50 focus:border-primary transition-colors"
+                disabled={isGenerating}
               />
             </div>
 
@@ -133,13 +86,14 @@ export const CaseStudyGenerator = ({ language }: CaseStudyGeneratorProps) => {
                 value={notion}
                 onChange={(e) => setNotion(e.target.value)}
                 className="border-2 hover:border-primary/50 focus:border-primary transition-colors"
+                disabled={isGenerating}
               />
             </div>
 
             <div className="flex gap-4 pt-4">
               <Button 
                 onClick={handleGenerate} 
-                disabled={isGenerating || !article.trim() || !notion.trim()}
+                disabled={isGenerating || !article.trim() || !notion.trim() || !currentUser}
                 className="flex-1 h-14 text-lg bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 {isGenerating ? (
@@ -159,6 +113,7 @@ export const CaseStudyGenerator = ({ language }: CaseStudyGeneratorProps) => {
                 onClick={loadExample} 
                 variant="outline"
                 className="h-14 px-8 border-2 hover:bg-primary hover:text-white transition-all duration-300"
+                disabled={isGenerating}
               >
                 {language === 'fr' ? 'Exemple' : 'Example'}
               </Button>
@@ -177,11 +132,12 @@ export const CaseStudyGenerator = ({ language }: CaseStudyGeneratorProps) => {
         </CardContent>
       </Card>
 
-      {generatedCaseStudy && (
+      {(displayContent || isGenerating) && (
         <CaseStudyDisplay
-          caseStudy={generatedCaseStudy}
-          wordCount={wordCount}
+          caseStudy={displayContent}
+          wordCount={streamingContent ? streamingContent.split(' ').length : wordCount}
           language={language}
+          isStreaming={isGenerating}
         />
       )}
     </div>

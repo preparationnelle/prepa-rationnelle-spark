@@ -1,6 +1,8 @@
 
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+
+const openAIApiKey = Deno.env.get('OPENAI_API_KEY');
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -8,274 +10,176 @@ const corsHeaders = {
 };
 
 serve(async (req) => {
-  // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const OPENAI_API_KEY = Deno.env.get('OPENAI_API_KEY');
+    const { question, language, additionalInfo } = await req.json();
+
+    console.log('Generating interview answer for question:', question);
     
-    if (!OPENAI_API_KEY) {
-      return new Response(
-        JSON.stringify({ error: "API key not found" }),
-        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
+    if (!openAIApiKey) {
+      throw new Error('OpenAI API key not configured');
     }
 
-    const { question, language = 'fr', additionalInfo = {} } = await req.json();
-    
-    if (!question) {
-      return new Response(
-        JSON.stringify({ error: "No question provided" }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
+    // Build context from additional info
+    let context = '';
+    if (additionalInfo.filiere) context += `Filière : ${additionalInfo.filiere}\n`;
+    if (additionalInfo.specialite) context += `Spécialité : ${additionalInfo.specialite}\n`;
+    if (additionalInfo.ecole) context += `École visée : ${additionalInfo.ecole}\n`;
+    if (additionalInfo.associatif) context += `Expérience associative : ${additionalInfo.associatif}\n`;
+    if (additionalInfo.interets) context += `Centres d'intérêt : ${additionalInfo.interets}\n`;
+    if (additionalInfo.voyages) context += `Voyages/Expériences : ${additionalInfo.voyages}\n`;
+    if (additionalInfo.sport) context += `Sport : ${additionalInfo.sport}\n`;
+    if (additionalInfo.trait) context += `Trait de personnalité : ${additionalInfo.trait}\n`;
 
-    // Créer un contexte avec les informations supplémentaires de l'utilisateur
-    const contextInfo = createContextFromAdditionalInfo(additionalInfo, language);
+    const systemPrompt = language === 'fr' ? 
+      `Tu es un expert en préparation d'entretiens pour les écoles de commerce françaises. Tu aides les candidats à structurer leurs réponses avec du storytelling efficace.` :
+      `You are an expert in preparing interviews for French business schools. You help candidates structure their answers with effective storytelling.`;
 
-    // Ajuster le prompt selon la langue - MISE À JOUR pour mettre l'accent sur le storytelling
-    const promptTemplate = language === 'fr' ? 
-    `
-Tu es Lovable, coach d'entraînement aux entretiens pour les étudiants de classe préparatoire qui préparent leurs oraux d'admission aux grandes écoles de commerce (HEC, ESSEC, ESCP, emlyon, EDHEC, etc.).
+    const userPrompt = language === 'fr' ? 
+      `Contexte du candidat :\n${context}\n\nQuestion d'entretien : "${question}"\n\nStructure ta réponse selon cette méthode :\n\n**RÉPONSE DIRECTE** (30 secondes)\nRéponds directement à la question en 2-3 phrases claires\n\n**STORYTELLING** (60-90 secondes)\nRaconte une anecdote concrète qui illustre ta réponse avec :\n- Situation précise\n- Actions que tu as menées\n- Résultats obtenus\n- Apprentissages\n\n**LIEN AVEC L'ÉCOLE** (30 secondes)\nExplique pourquoi cette expérience te prépare pour cette école et tes projets futurs.\n\nTon storytelling doit être :\n- Concret et spécifique\n- Montrer tes qualités en action\n- Authentique et personnel\n- Structuré chronologiquement\n\nÉvite :\n- Les généralités\n- Les listes de qualités\n- Les réponses trop théoriques` :
+      `Candidate context:\n${context}\n\nInterview question: "${question}"\n\nStructure your answer using this method:\n\n**DIRECT ANSWER** (30 seconds)\nAnswer the question directly in 2-3 clear sentences\n\n**STORYTELLING** (60-90 seconds)\nTell a concrete anecdote that illustrates your answer with:\n- Specific situation\n- Actions you took\n- Results obtained\n- Learnings\n\n**LINK TO SCHOOL** (30 seconds)\nExplain why this experience prepares you for this school and your future projects.\n\nYour storytelling must be:\n- Concrete and specific\n- Show your qualities in action\n- Authentic and personal\n- Chronologically structured\n\nAvoid:\n- Generalities\n- Lists of qualities\n- Overly theoretical answers`;
 
-OBJECTIF : Je te donne une question d'entretien, tu génères une réponse courte (≤ 1min30 à l'oral) et percutante qui correspond au profil d'un étudiant en classe préparatoire, en suivant impérativement ce canevas :
-
-1. **Proposition de réponse orale structurée (≤ 1min30)**
-   - *Accroche personnelle* : phrase d'introduction captivante
-   - *Idée directrice claire* : annonce de l'angle principal de la réponse
-   - *Illustration par un exemple concret* : preuve issue du parcours prépa, associatif, centres d'intérêt
-   - *Bénéfice pour l'école/entreprise* : valeur ajoutée que l'étudiant apportera
-   - *Ouverture* : perspective future ou approfondissement
-
-INFORMATIONS SUR LE CANDIDAT :
-${contextInfo}
-
-2. **Analyse critique en 5 points**
-   - Force principale de la réponse
-   - Point à renforcer
-   - Alignement avec les valeurs de l'école cible
-   - Pertinence de l'exemple
-   - Clarté et impact à l'oral
-
-3. **Exercice d'entraînement**
-   - Un exercice pratique pour améliorer le point faible identifié
-
-4. **Questions similaires**
-   - Trois autres questions proches que le jury pourrait poser
-
-CONSIGNES SPÉCIFIQUES :
-• Ton contexte : Tu réponds comme un étudiant en classe préparatoire (prépa ECE, ECS, ou ECT), qui a entre 19 et 22 ans.
-• Expériences à privilégier : cours, khôlles, travaux de groupe, associations, sports, voyages, projets culturels, lecture.
-• Vocabulaire adapté : utilise le lexique des classes prépa et grandes écoles (khôlles, DS, colles, admissibilité, etc.).
-• JAMAIS d'expériences professionnelles significatives (stages courts ou jobs d'été peuvent être mentionnés mais pas comme expérience principale).
-• Évoque des compétences pertinentes : gestion du temps, résilience face aux difficultés, méthode de travail, collaboration.
-• Reste authentique et humble, montre ta motivation pour les écoles de commerce.
-• IMPORTANT : Pour chaque exemple concret ou anecdote, mets le texte en italique. Assure-toi d'inclure au moins une anecdote ou exemple de storytelling.
-• Ton style doit être structuré, positif mais pas trop formel.
-• Longueur totale < 400 mots.
-
-Réponds à cette question d'entretien : "${question}"
-
-Réponds uniquement avec un objet JSON contenant les clés: 'response' (avec les sous-clés introduction, mainIdea, example, benefit, conclusion), 'analysis' (avec les sous-clés strength, improvement, alignment, relevance, clarity), 'exercise', et 'similarQuestions'.
-` :
-    `
-You are Lovable, an interview coach for preparatory class students who are preparing for their admission interviews to French business schools (HEC, ESSEC, ESCP, emlyon, EDHEC, etc.).
-
-OBJECTIVE: When I give you an interview question, you generate a short (≤ 1min30 spoken) and impactful response that matches the profile of a preparatory class student, following this framework:
-
-1. **Structured oral response (≤ 1min30)**
-   - *Personal hook*: engaging introduction
-   - *Clear main idea*: announcement of the main angle of the response
-   - *Illustration with a concrete example*: evidence from prep school path, extracurricular activities, interests
-   - *Benefit for the school/company*: value that the student will bring
-   - *Opening*: future perspective or further development
-
-CANDIDATE INFORMATION:
-${contextInfo}
-
-2. **Critical analysis in 5 points**
-   - Main strength of the response
-   - Point to reinforce
-   - Alignment with the target school's values
-   - Relevance of the example
-   - Clarity and oral impact
-
-3. **Training exercise**
-   - A practical exercise to improve the identified weakness
-
-4. **Similar questions**
-   - Three other related questions that the jury might ask
-
-SPECIFIC GUIDELINES:
-• Your context: You respond as a student in a preparatory class ("prépa" ECE, ECS, or ECT), aged between 19 and 22.
-• Experiences to prioritize: courses, oral exams ("khôlles"), group work, associations, sports, travel, cultural projects, reading.
-• Adapted vocabulary: use the lexicon of French preparatory classes and "grandes écoles" (khôlles, written exams, admissibility, etc.).
-• NEVER mention significant professional experiences (short internships or summer jobs can be mentioned but not as main experiences).
-• Emphasize relevant skills: time management, resilience when facing difficulties, work methods, collaboration.
-• Remain authentic and humble, show your motivation for business schools.
-• IMPORTANT: For each concrete example or anecdote, put the text in italics. Make sure to include at least one anecdote or storytelling example.
-• Your style should be structured, positive but not too formal.
-• Total length < 400 words.
-
-Answer this interview question: "${question}"
-
-Respond only with a JSON object containing the keys: 'response' (with sub-keys introduction, mainIdea, example, benefit, conclusion), 'analysis' (with sub-keys strength, improvement, alignment, relevance, clarity), 'exercise', and 'similarQuestions'.
-`;
-
-    console.log("Sending request to OpenAI API...");
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
       headers: {
-        Authorization: `Bearer ${OPENAI_API_KEY}`,
-        "Content-Type": "application/json",
+        'Authorization': `Bearer ${openAIApiKey}`,
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: "gpt-4o",
+        model: 'gpt-4o-mini',
         messages: [
-          {
-            role: "user",
-            content: promptTemplate,
-          },
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: userPrompt }
         ],
         temperature: 0.7,
+        max_tokens: 1000,
+        stream: true,
       }),
     });
 
-    const data = await response.json();
-    console.log("Received response from OpenAI API");
-
-    if (data.error) {
-      console.error("OpenAI API error:", data.error);
-      return new Response(
-        JSON.stringify({ error: data.error.message }),
-        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('OpenAI API error:', errorText);
+      throw new Error(`OpenAI API error: ${response.status}`);
     }
 
-    // Extract the content from the OpenAI response
-    const content = data.choices[0].message.content;
-    console.log("Raw response content:", content);
-    
-    // Parse the JSON response from the content
-    let answerData;
-    try {
-      // The response might be wrapped in ```json and ``` markers, so we need to extract the JSON
-      const jsonMatch = content.match(/```json\s*([\s\S]*?)\s*```/) || content.match(/{[\s\S]*}/);
-      const jsonString = jsonMatch ? jsonMatch[0].replace(/```json|```/g, '') : content;
-      
-      console.log("Attempting to parse JSON:", jsonString);
-      answerData = JSON.parse(jsonString);
-      console.log("Successfully parsed JSON");
-    } catch (e) {
-      console.error("Error parsing JSON from OpenAI response:", e);
-      console.log("Content that failed to parse:", content);
-      
-      // Try a more aggressive approach to extract JSON
-      try {
-        console.log("Trying alternative JSON extraction method");
-        // Find everything between first { and last }
-        const jsonPart = content.substring(content.indexOf('{'), content.lastIndexOf('}') + 1);
-        answerData = JSON.parse(jsonPart);
-        console.log("Alternative parsing succeeded");
-      } catch (e2) {
-        console.error("Alternative parsing also failed:", e2);
-        // If parsing fails, return the raw text as a fallback
-        return new Response(
-          JSON.stringify({ 
-            error: "Failed to parse response", 
-            raw: content 
-          }),
-          { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-        );
+    // Create a readable stream for streaming response
+    const encoder = new TextEncoder();
+    const stream = new ReadableStream({
+      async start(controller) {
+        const reader = response.body?.getReader();
+        if (!reader) {
+          controller.close();
+          return;
+        }
+
+        let fullContent = '';
+
+        try {
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+
+            const chunk = new TextDecoder().decode(value);
+            const lines = chunk.split('\n');
+
+            for (const line of lines) {
+              if (line.startsWith('data: ')) {
+                const data = line.slice(6);
+                if (data === '[DONE]') {
+                  // Parse sections for structured response
+                  const sections = parseAnswerSections(fullContent, language);
+                  const finalData = {
+                    type: 'complete',
+                    answer: sections,
+                    wordCount: fullContent.split(' ').length
+                  };
+                  controller.enqueue(encoder.encode(`data: ${JSON.stringify(finalData)}\n\n`));
+                  controller.close();
+                  return;
+                }
+
+                try {
+                  const parsed = JSON.parse(data);
+                  const content = parsed.choices[0]?.delta?.content || '';
+                  if (content) {
+                    fullContent += content;
+                    const streamData = {
+                      type: 'chunk',
+                      content: content,
+                      fullContent: fullContent
+                    };
+                    controller.enqueue(encoder.encode(`data: ${JSON.stringify(streamData)}\n\n`));
+                  }
+                } catch (e) {
+                  // Skip invalid JSON
+                }
+              }
+            }
+          }
+        } catch (error) {
+          controller.error(error);
+        }
       }
-    }
+    });
 
-    // Validate the structure of the parsed data
-    if (!answerData.response || !answerData.analysis || !answerData.exercise || !answerData.similarQuestions) {
-      console.error("Invalid response structure:", answerData);
-      return new Response(
-        JSON.stringify({ 
-          error: "Invalid response structure", 
-          raw: content,
-          parsed: answerData
-        }),
-        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
-
-    // Count words in the generated answer (useful for time estimate)
-    const fullAnswer = [
-      answerData.response?.introduction,
-      answerData.response?.mainIdea,
-      answerData.response?.example,
-      answerData.response?.benefit,
-      answerData.response?.conclusion
-    ].join(' ');
-    
-    const wordCount = countWords(fullAnswer);
-    console.log(`Generated answer with ${wordCount} words`);
-
-    return new Response(
-      JSON.stringify({ 
-        answer: answerData,
-        wordCount,
-        language,
-        rawResponse: content // For debugging
-      }),
-      { headers: { ...corsHeaders, "Content-Type": "application/json" } }
-    );
+    return new Response(stream, {
+      headers: {
+        ...corsHeaders,
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive',
+      },
+    });
 
   } catch (error) {
-    console.error("Error in generate-interview-answer function:", error);
-    return new Response(
-      JSON.stringify({ error: error.message }),
-      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-    );
+    console.error('Error in generate-interview-answer function:', error);
+    return new Response(JSON.stringify({ 
+      error: error.message || 'Failed to generate interview answer' 
+    }), {
+      status: 500,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
   }
 });
 
-// Helper function to count words
-function countWords(text) {
-  return text.split(/\s+/).filter(Boolean).length;
-}
+function parseAnswerSections(content: string, language: 'fr' | 'en') {
+  const directMarker = language === 'fr' ? '**RÉPONSE DIRECTE**' : '**DIRECT ANSWER**';
+  const storytellingMarker = language === 'fr' ? '**STORYTELLING**' : '**STORYTELLING**';
+  const linkMarker = language === 'fr' ? '**LIEN AVEC L\'ÉCOLE**' : '**LINK TO SCHOOL**';
 
-// Fonction pour créer un contexte à partir des informations supplémentaires de l'utilisateur
-function createContextFromAdditionalInfo(info, language) {
-  if (!info || Object.keys(info).length === 0) {
-    return language === 'fr' 
-      ? "Aucune information supplémentaire fournie."
-      : "No additional information provided.";
+  let directAnswer = '';
+  let storytelling = '';
+  let schoolLink = '';
+
+  const directIndex = content.indexOf(directMarker);
+  const storytellingIndex = content.indexOf(storytellingMarker);
+  const linkIndex = content.indexOf(linkMarker);
+
+  if (directIndex !== -1) {
+    const start = directIndex + directMarker.length;
+    const end = storytellingIndex !== -1 ? storytellingIndex : content.length;
+    directAnswer = content.slice(start, end).trim();
   }
-  
-  const contextLines = [];
-  
-  if (language === 'fr') {
-    if (info.filiere) contextLines.push(`• Filière: ${info.filiere}`);
-    if (info.specialite) contextLines.push(`• Spécialité: ${info.specialite}`);
-    if (info.ecole) contextLines.push(`• École visée: ${info.ecole}`);
-    if (info.associatif) contextLines.push(`• Activités associatives: ${info.associatif}`);
-    if (info.interets) contextLines.push(`• Centres d'intérêt: ${info.interets}`);
-    if (info.voyages) contextLines.push(`• Voyages: ${info.voyages}`);
-    if (info.sport) contextLines.push(`• Activités sportives: ${info.sport}`);
-    if (info.trait) contextLines.push(`• Trait de personnalité à souligner: ${info.trait}`);
-  } else {
-    if (info.filiere) contextLines.push(`• Track: ${info.filiere}`);
-    if (info.specialite) contextLines.push(`• Specialization: ${info.specialite}`);
-    if (info.ecole) contextLines.push(`• Target school: ${info.ecole}`);
-    if (info.associatif) contextLines.push(`• Extracurricular activities: ${info.associatif}`);
-    if (info.interets) contextLines.push(`• Interests: ${info.interets}`);
-    if (info.voyages) contextLines.push(`• Travel experiences: ${info.voyages}`);
-    if (info.sport) contextLines.push(`• Sports: ${info.sport}`);
-    if (info.trait) contextLines.push(`• Personality trait to highlight: ${info.trait}`);
+
+  if (storytellingIndex !== -1) {
+    const start = storytellingIndex + storytellingMarker.length;
+    const end = linkIndex !== -1 ? linkIndex : content.length;
+    storytelling = content.slice(start, end).trim();
   }
-  
-  if (contextLines.length === 0) {
-    return language === 'fr' 
-      ? "Aucune information supplémentaire utilisable fournie."
-      : "No usable additional information provided.";
+
+  if (linkIndex !== -1) {
+    const start = linkIndex + linkMarker.length;
+    schoolLink = content.slice(start).trim();
   }
-  
-  return contextLines.join('\n');
+
+  return {
+    directAnswer: directAnswer || content,
+    storytelling: storytelling || '',
+    schoolLink: schoolLink || '',
+    fullText: content
+  };
 }
