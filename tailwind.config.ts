@@ -34,7 +34,7 @@ export default {
 					foreground: '#FFFFFF'
 				},
 				accent: {
-					DEFAULT: '#FFFDE3',
+					DEFAULT: '#F7F7F9', // <-- Gris très pâle (ancien: #FFFDE3)
 					foreground: '#000000'
 				},
 				destructive: {
