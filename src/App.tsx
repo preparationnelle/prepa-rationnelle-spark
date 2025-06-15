@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -42,6 +41,7 @@ import FullCalendarPage from './pages/FullCalendarPage';
 import InterviewSimulatorPage from './pages/InterviewSimulatorPage';
 import FlashcardsPage from './pages/FlashcardsPage';
 import NotFound from "./pages/NotFound";
+import PitchIntroMethodePage from './pages/PitchIntroMethodePage';
 
 // Initialize PostHog
 initPostHog();
@@ -72,6 +72,7 @@ const App = () => (
                     <Route path="/methodes/storytelling" element={<StorytellingMethodePage />} />
                     <Route path="/methodes/tendre-perches" element={<TendrePerchesMethodePage />} />
                     <Route path="/methodes/finir-entretien" element={<FinirEntretienMethodePage />} />
+                    <Route path="/methodes/pitch-intro" element={<PitchIntroMethodePage />} />
                     <Route path="/generator" element={
                       <ProtectedRoute>
                         <GeneratorPage />
