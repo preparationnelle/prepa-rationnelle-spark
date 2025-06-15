@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -13,6 +12,7 @@ import { PricingSection } from '@/components/PricingSection';
 import { CallToActionSection } from '@/components/sections/CallToActionSection';
 import { Footer } from '@/components/Footer';
 import { AutomationsSection } from '@/components/sections/AutomationsSection';
+import { Megaphone } from 'lucide-react';
 
 const HomePage = () => {
   const [showAllMethods, setShowAllMethods] = useState(false);
@@ -35,6 +35,13 @@ const HomePage = () => {
       title: "Motivation pour l'école",
       description: "Apprenez à démontrer votre motivation spécifique pour chaque école et à vous démarquer des autres candidats.",
       link: "/methodes/motivation-ecole"
+    },
+    {
+      icon: <Megaphone className="h-8 w-8 text-primary" />,
+      title: "Pitch d’introduction",
+      description:
+        "Réussissez votre introduction en entretien : captez l’attention, donnez envie, évitez les pièges et démarquez-vous avec une histoire personnelle vivante.",
+      link: "/methodes/pitch-intro"
     },
     {
       icon: <BookOpen className="h-8 w-8 text-primary" />,
