@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import ArticleAllemandEssaiIntroduction from "./ArticleAllemandEssaiIntroduction";
@@ -7,6 +6,7 @@ import ArticleAllemandEssaiTeil2 from "./ArticleAllemandEssaiTeil2";
 import ArticleAllemandEssaiExemples from "./ArticleAllemandEssaiExemples";
 import ArticleAllemandEssaiKritik from "./ArticleAllemandEssaiKritik";
 import ArticleAllemandEssaiConclusion from "./ArticleAllemandEssaiConclusion";
+import ArticleAllemandAnalyseLexique from "./ArticleAllemandAnalyseLexique";
 
 const articles = [
   { id: "article-1", title: "EINLEITUNG / INTRODUCTION" },
@@ -14,7 +14,8 @@ const articles = [
   { id: "article-3", title: "TEIL II: Eigene Meinung entwickeln" },
   { id: "article-4", title: "BEISPIELE UND ZAHLEN" },
   { id: "article-5", title: "KRITIK UND KOMMENTAR" },
-  { id: "article-6", title: "SCHLUSS / CONCLUSION" }
+  { id: "article-6", title: "SCHLUSS / CONCLUSION" },
+  { id: "article-7", title: "ANALYSE D’ARTICLE — LEXIQUE" }
 ];
 
 export default function MethodAllemandPage() {
@@ -97,6 +98,20 @@ export default function MethodAllemandPage() {
         </CardHeader>
         <CardContent>
           <ArticleAllemandEssaiConclusion />
+        </CardContent>
+      </Card>
+
+      <Card id="article-7">
+        <CardHeader>
+          <CardTitle>ANALYSE D’ARTICLE — LEXIQUE</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {/* Nouvelle section lexique */}
+          {/** @ts-ignore  */}
+          {/** Voir src/pages/methodologie/ArticleAllemandAnalyseLexique.tsx */}
+          <React.Suspense fallback={<span>Chargement…</span>}>
+            <ArticleAllemandAnalyseLexique />
+          </React.Suspense>
         </CardContent>
       </Card>
     </div>
