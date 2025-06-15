@@ -6,48 +6,54 @@ export default function MethodAnglaisPage() {
     <div className="container max-w-3xl py-10 animate-fade-in">
       <Card>
         <CardHeader>
-          <CardTitle>Prépa Rationnelle : Méthode complète d’anglais en prépa ECG</CardTitle>
+          <CardTitle>Prépa Rationnelle : Méthode complète d’anglais en prépa ECG</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="mb-2 font-semibold">Attention, ceci n’est pas une méthode pour apprendre l’anglais, c’est une méthode pour réussir les épreuves d’anglais en prépa HEC.</p>
+          <p className="mb-3 font-semibold">
+            Attention, ceci n’est pas une méthode pour apprendre l’anglais, c’est une méthode pour réussir les épreuves d’anglais en prépa HEC.
+          </p>
           <h3 className="mt-4 font-bold text-primary">Traduction et Grammaire</h3>
-          <p>Pourquoi est-ce crucial ?<br/>
-            La traduction est non seulement une épreuve des concours, c’est aussi un moyen efficace de maîtriser la grammaire anglaise !
+          <p>
+            <span className="font-semibold">Pourquoi est-ce crucial ?</span><br />
+            La traduction est non seulement une épreuve des concours, c’est aussi un moyen efficace de maîtriser la grammaire anglaise !
           </p>
           <p className="mt-2 font-semibold">Comment s’y prendre efficacement ?</p>
-          <p>Pratiquez régulièrement des phrases de thème, en utilisant les sujets vus en cours ou disponibles dans les annales des concours comme Ecricome LV2. Les corrigés sont détaillés et présentent souvent plein d’options de traduction.</p>
-          
+          <p>
+            Pratiquez régulièrement des phrases de thème, en utilisant les sujets vus en cours ou disponibles dans les annales des concours comme Ecricome LV2. Les corrigés sont détaillés et présentent souvent plein d’options de traduction.
+          </p>
           <div className="border-l-4 border-primary pl-4 my-4 bg-accent/50">
             <p className="font-semibold mb-1">Exemple de thème grammatical ECRICOME 2008 LV2 :</p>
-            <ul className="mb-2 space-y-1">
-              <li>1. Depuis le début des années 90, le Japon se bat contre la déflation et une croissance faible.</li>
-              <li>2. Si la reprise économique n’avait pas été si timide, il n’y aurait pas eu tant de fermetures d’usines.</li>
-              <li>3. Moins vous passerez de temps sur les réseaux sociaux, plus vous vous rapprocherez de vos vrais amis.</li>
-              <li>4. Quand le Royaume-Uni ne fera plus partie de l’Union européenne, l’anglais ne sera peut-être pas aussi répandu qu’aujourd’hui.</li>
-              <li>5. Vous n’auriez pas dû quitter le Pays de Galles avant d’avoir visité Cardiff et ses environs.</li>
-              <li>6. À peine le patron avait-il annoncé des licenciements que certains salariés savaient qu’ils ne seraient pas épargnés.</li>
-              <li>7. Les informations que j’ai reçues hier ne sont pas fiables : vérifions-les avant de les publier sur notre site.</li>
-              <li>8. Non seulement elle lui suggéra de travailler plus, mais elle lui reprocha aussi d’arriver en retard tous les matins.</li>
-              <li>9. Il sera d’autant plus heureux d’apprendre une aussi bonne nouvelle qu’il ne s’y attend pas du tout.</li>
+            <ul className="mb-2 space-y-1 list-decimal pl-5">
+              <li>Depuis le début des années 90, le Japon se bat contre la déflation et une croissance faible.</li>
+              <li>Si la reprise économique n’avait pas été si timide, il n’y aurait pas eu tant de fermetures d’usines.</li>
+              <li>Moins vous passerez de temps sur les réseaux sociaux, plus vous vous rapprocherez de vos vrais amis.</li>
+              <li>Quand le Royaume-Uni ne fera plus partie de l’Union européenne, l’anglais ne sera peut-être pas aussi répandu qu’aujourd’hui.</li>
+              <li>Vous n’auriez pas dû quitter le Pays de Galles avant d’avoir visité Cardiff et ses environs.</li>
+              <li>À peine le patron avait-il annoncé des licenciements que certains salariés savaient qu’ils ne seraient pas épargnés.</li>
+              <li>Les informations que j’ai reçues hier ne sont pas fiables : vérifions-les avant de les publier sur notre site.</li>
+              <li>Non seulement elle lui suggéra de travailler plus, mais elle lui reprocha aussi d’arriver en retard tous les matins.</li>
+              <li>Il sera d’autant plus heureux d’apprendre une aussi bonne nouvelle qu’il ne s’y attend pas du tout.</li>
             </ul>
-            <ul className="mb-2 space-y-1 text-primary font-mono">
-              <li>1. Since the early 90s, Japan has been combatting deflation and sluggish growth.</li>
-              <li>2. Had the economic recovery not been so modest, there would not have been so many factory closures.</li>
-              <li>3. The less time you spend on social networks, the closer you will get to your true friends.</li>
-              <li>4. When the United Kingdom is no longer a member of the European Union, English may not be as widespread as it is today.</li>
-              <li>5. You shouldn’t have left Wales before visiting Cardiff and its surroundings.</li>
-              <li>6. Hardly had the boss announced redundancies when some employees knew they wouldn’t be spared.</li>
-              <li>7. The information I received yesterday is not reliable. Let us check it before posting it on our website.</li>
-              <li>8. Not only did she suggest he/she should work harder, she also reproached him/her for arriving late every morning.</li>
-              <li>9. He will be all the happier to hear such good news as he is not expecting it at all.</li>
+            <ul className="mb-2 space-y-1 text-primary font-mono list-decimal pl-5">
+              <li>Since the early 90s, Japan has been combatting deflation and sluggish growth.</li>
+              <li>Had the economic recovery not been so modest, there would not have been so many factory closures.</li>
+              <li>The less time you spend on social networks, the closer you will get to your true friends.</li>
+              <li>When the United Kingdom is no longer a member of the European Union, English may not be as widespread as it is today.</li>
+              <li>You shouldn’t have left Wales before visiting Cardiff and its surroundings.</li>
+              <li>Hardly had the boss announced redundancies when some employees knew they wouldn’t be spared.</li>
+              <li>The information I received yesterday is not reliable. Let us check it before posting it on our website.</li>
+              <li>Not only did she suggest he/she should work harder, she also reproached him/her for arriving late every morning.</li>
+              <li>He will be all the happier to hear such good news as he is not expecting it at all.</li>
             </ul>
-            <a href="https://www.ecricome.org/wp-content/uploads/2021/01/ANNALE-LV2-ANGLAISALLEMAND-ESPAGNOL-PRE%CC%81PA-2018.pdf" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Lien vers le corrigé complet</a>
+            <a
+              href="https://www.ecricome.org/wp-content/uploads/2021/01/ANNALE-LV2-ANGLAISALLEMAND-ESPAGNOL-PRE%CC%81PA-2018.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline"
+            >
+              Lien vers le corrigé complet
+            </a>
           </div>
-          <p>
-            <span className="font-semibold">Ce que je propose pour vous faire gagner du temps : </span>
-            Vous pouvez accéder à mon fichier Quizlet avec des centaines phrases de thème corrigées.
-          </p>
-          {/* Le reste du contenu fourni peut être ajouté ici par la suite... On laisse un aperçu pour la page principale */}
         </CardContent>
       </Card>
     </div>
