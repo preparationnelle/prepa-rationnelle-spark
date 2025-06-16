@@ -29,6 +29,7 @@ import MotivationEcoleMethodePage from './pages/MotivationEcoleMethodePage';
 import StorytellingMethodePage from './pages/StorytellingMethodePage';
 import TendrePerchesMethodePage from './pages/TendrePerchesMethodePage';
 import FinirEntretienMethodePage from './pages/FinirEntretienMethodePage';
+import ErreurEntretienMethodePage from './pages/ErreurEntretienMethodePage';
 import ESCPPage from './pages/ESCPPage';
 import ESSECPage from './pages/ESSECPage';
 import EDHECPage from './pages/EDHECPage';
@@ -85,6 +86,7 @@ const App = () => (
                     <Route path="/methodes/tendre-perches" element={<TendrePerchesMethodePage />} />
                     <Route path="/methodes/finir-entretien" element={<FinirEntretienMethodePage />} />
                     <Route path="/methodes/pitch-intro" element={<PitchIntroMethodePage />} />
+                    <Route path="/methodes/erreurs-entretien" element={<ErreurEntretienMethodePage />} />
                     {/* REND LA PAGE GENERATOR ACCESSIBLE MEME NON CONNECTÉ */}
                     <Route path="/generator" element={<GeneratorPage />} />
                     <Route path="/coaching" element={

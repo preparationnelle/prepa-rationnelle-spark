@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ChevronDown, User, Briefcase, GraduationCap, BookOpen, MessageSquare, Book } from 'lucide-react';
+import { ChevronDown, User, Briefcase, GraduationCap, BookOpen, MessageSquare, Book, AlertTriangle } from 'lucide-react';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { PodcastSection } from '@/components/sections/PodcastSection';
