@@ -114,6 +114,51 @@ export type Database = {
         }
         Relationships: []
       }
+      grammar_errors: {
+        Row: {
+          correct_answer: string
+          created_at: string | null
+          error_type: string
+          french_sentence: string
+          grammar_point: string
+          id: string
+          language: string
+          reviewed: boolean | null
+          rule: string
+          student_answer: string
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          correct_answer: string
+          created_at?: string | null
+          error_type: string
+          french_sentence: string
+          grammar_point: string
+          id?: string
+          language: string
+          reviewed?: boolean | null
+          rule: string
+          student_answer: string
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          correct_answer?: string
+          created_at?: string | null
+          error_type?: string
+          french_sentence?: string
+          grammar_point?: string
+          id?: string
+          language?: string
+          reviewed?: boolean | null
+          rule?: string
+          student_answer?: string
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       pricing: {
         Row: {
           description: string

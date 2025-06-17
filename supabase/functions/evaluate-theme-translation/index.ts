@@ -56,28 +56,29 @@ const SIMILAR_SENTENCES: Record<string, Record<string, string[]>> = {
 };
 
 const PROMPTS = {
-  en: `Tu es un correcteur ECRICOME spécialisé en thèmes grammaticaux anglais. Analyse cette traduction et :
+  en: `Tu es un correcteur ECRICOME spécialisé en thèmes grammaticaux anglais. Analyse cette traduction avec un système de scoring amélioré :
 
-1. Identifie PRÉCISÉMENT les erreurs grammaticales selon cette grille :
-- 4/4.5 points : barbarisme, non-sens, charabia, omission majeure
-- 3 points : gros contresens, faute majeure de grammaire, omission de mot-clé
-- 2 points : faute de grammaire, faux-sens partiel, confusion
-- 1 point : erreur lexicale, orthographe, mal dit
+SYSTÈME DE SCORING AMÉLIORÉ :
+- Note de base : 10/10
+- Déductions : 
+  * -2 points : barbarisme, non-sens, charabia, omission majeure, gros contresens
+  * -1 point : faute de grammaire mineure, erreur lexicale, orthographe, approximation
+  * 0 point : synonymes acceptables, variations stylistiques valides
 
-2. Détermine quels points grammaticaux posent problème parmi : will have to, could have + pp, should have been, present perfect, if + past simple, passive voice, modals, etc.
+ACCEPTER LES SYNONYMES ET VARIATIONS :
+- Les synonymes corrects ne doivent pas être pénalisés
+- Les structures grammaticales équivalentes sont acceptables
+- Seules les vraies erreurs doivent être sanctionnées
 
-3. Suggère des phrases similaires pour travailler les points défaillants.
+Identifie PRÉCISÉMENT les erreurs selon cette grille et suggère des phrases similaires pour travailler les points défaillants.
 
 Réponds en JSON STRICT :
 {
   "score": 8,
   "severity": {
-    "barbarism": ["erreur"],
-    "omission": [],
-    "grammar": ["erreur de grammaire"],
-    "lexicon": [],
-    "spelling": [],
-    "other": []
+    "major_errors": ["erreurs graves -2pts"],
+    "minor_errors": ["erreurs mineures -1pt"],
+    "accepted_variations": ["variantes acceptées"]
   },
   "corrected": "Version corrigée",
   "reference": "Version parfaite",
@@ -88,18 +89,29 @@ Réponds en JSON STRICT :
   "flashcard_rule": "Règle principale à retenir pour la flashcard"
 }`,
 
-  de: `Tu es un correcteur ECRICOME spécialisé en thèmes grammaticaux allemands. Analyse cette traduction selon la grille de notation et identifie les points grammaticaux défaillants (déclinaisons, ordre des mots, Konjunktiv II, etc.).
+  de: `Tu es un correcteur ECRICOME spécialisé en thèmes grammaticaux allemands. Utilise le même système de scoring amélioré :
 
-Réponds en JSON STRICT avec la même structure que l'anglais, plus :
-{
-  // ... structure de base ...
-  "german_analysis": {
-    "declension_errors": ["Erreur de déclinaison"],
-    "word_order_errors": ["Erreur d'ordre"]
-  }
-}`,
+SYSTÈME DE SCORING AMÉLIORÉ :
+- Note de base : 10/10
+- Déductions : 
+  * -2 points : barbarisme, erreurs graves de déclinaison, ordre des mots incorrect
+  * -1 point : erreurs mineures de grammaire, lexique, orthographe
+  * 0 point : synonymes acceptables, variations stylistiques valides
 
-  es: `Tu es un correcteur ECRICOME spécialisé en thèmes grammaticaux espagnols. Analyse cette traduction selon la grille de notation et identifie les points grammaticaux défaillants (subjonctif, ser/estar, por/para, etc.).
+Accepte les synonymes et variations correctes. Identifie les points grammaticaux défaillants (déclinaisons, ordre des mots, Konjunktiv II, etc.).
+
+Réponds en JSON STRICT avec la même structure que l'anglais.`,
+
+  es: `Tu es un correcteur ECRICOME spécialisé en thèmes grammaticaux espagnols. Utilise le même système de scoring amélioré :
+
+SYSTÈME DE SCORING AMÉLIORÉ :
+- Note de base : 10/10
+- Déductions : 
+  * -2 points : barbarisme, erreurs graves de grammaire (subjonctif, ser/estar)
+  * -1 point : erreurs mineures, lexique, orthographe
+  * 0 point : synonymes acceptables, variations stylistiques valides
+
+Accepte les synonymes et variations correctes. Identifie les points grammaticaux défaillants (subjonctif, ser/estar, por/para, etc.).
 
 Réponds en JSON STRICT avec la structure de base.`
 };
@@ -123,7 +135,7 @@ serve(async (req) => {
           { role: "system", content: systemPrompt },
           { 
             role: "user", 
-            content: `FR: ${french}\nLANGUE CIBLE: ${language}\nATTENDU: ${reference}\nPROPOSITION: ${student}\nPOINTS GRAMMATICAUX TRAVAILLÉS: ${grammar_points?.join(', ') || 'Non spécifiés'}` 
+            content: `PHRASE FRANÇAISE: ${french}\nLANGUE CIBLE: ${language}\nTRADUCTION ATTENDUE: ${reference}\nRÉPONSE ÉTUDIANT: ${student}\nPOINTS GRAMMATICAUX TRAVAILLÉS: ${grammar_points?.join(', ') || 'Non spécifiés'}` 
           }
         ],
         max_tokens: 1500,
@@ -162,15 +174,16 @@ serve(async (req) => {
       }
     }
     
+    // Adapter le format de severity pour la compatibilité
     const validatedOutput = {
-      score: output.score || 0,
+      score: Math.max(0, Math.min(10, output.score || 0)),
       severity: {
-        barbarism: Array.isArray(output.severity?.barbarism) ? output.severity.barbarism : [],
-        omission: Array.isArray(output.severity?.omission) ? output.severity.omission : [],
-        grammar: Array.isArray(output.severity?.grammar) ? output.severity.grammar : [],
-        lexicon: Array.isArray(output.severity?.lexicon) ? output.severity.lexicon : [],
-        spelling: Array.isArray(output.severity?.spelling) ? output.severity.spelling : [],
-        other: Array.isArray(output.severity?.other) ? output.severity.other : []
+        barbarism: output.severity?.major_errors || [],
+        omission: output.severity?.major_errors?.filter((e: string) => e.toLowerCase().includes('omission')) || [],
+        grammar: [...(output.severity?.major_errors || []), ...(output.severity?.minor_errors || [])],
+        lexicon: output.severity?.minor_errors?.filter((e: string) => e.toLowerCase().includes('lexical') || e.toLowerCase().includes('vocabulaire')) || [],
+        spelling: output.severity?.minor_errors?.filter((e: string) => e.toLowerCase().includes('orthographe')) || [],
+        other: output.severity?.accepted_variations || []
       },
       corrected: output.corrected || "Correction non disponible",
       reference: output.reference || reference,
@@ -180,8 +193,8 @@ serve(async (req) => {
       similar_sentences: similarSentences.slice(0, 3), // Max 3 phrases similaires
       flashcard_rule: output.flashcard_rule || "Règle à réviser",
       german_analysis: language === 'de' ? {
-        declension_errors: Array.isArray(output.german_analysis?.declension_errors) ? output.german_analysis.declension_errors : [],
-        word_order_errors: Array.isArray(output.german_analysis?.word_order_errors) ? output.german_analysis.word_order_errors : []
+        declension_errors: output.severity?.major_errors?.filter((e: string) => e.toLowerCase().includes('déclinaison')) || [],
+        word_order_errors: output.severity?.major_errors?.filter((e: string) => e.toLowerCase().includes('ordre')) || []
       } : null
     };
     
