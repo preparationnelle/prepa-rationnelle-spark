@@ -7,237 +7,150 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type"
 };
 
-// Pool enrichi avec 15 phrases par langue, variées en structure grammaticale
-const POOL: Record<string, { french: string; reference: string; notes: string[] }[]> = {
+// Nouvelle base de phrases de presse avec points grammaticaux détaillés
+const PRESS_POOL: Record<string, { french: string; reference: string; grammar_points: string[]; notes: string[] }[]> = {
   en: [
     {
-      french: "Comme je n’ai pas vu mes parents depuis longtemps, j’irai passer le week-end prochain chez eux.",
-      reference: "Since I haven't seen my parents for a long time, I'll spend next weekend at their place.",
-      notes: ["proposition temporelle", "futur", "since", "double pronom"]
+      french: "Le gouvernement devra prendre une décision avant la fin du mois.",
+      reference: "The government will have to make a decision by the end of the month.",
+      grammar_points: ["will have to + infinitive", "future obligation", "by + time expression"],
+      notes: ["will have to = obligation future", "make a decision = collocation", "by the end = date butoir"]
     },
     {
-      french: "Si j'avais su que le bus serait en retard, je serais parti plus tard.",
-      reference: "If I had known the bus would be late, I would have left later.",
-      notes: ["conditionnel passé", "hypothétique", "si"]
+      french: "Le taux de chômage aurait pu diminuer si des réformes avaient été mises en place plus tôt.",
+      reference: "The unemployment rate could have decreased if reforms had been implemented earlier.",
+      grammar_points: ["could have + past participle", "conditional past", "if + past perfect", "passive voice"],
+      notes: ["could have = possibilité non réalisée", "if + past perfect → conditionnel passé", "reforms had been implemented = passive + past perfect"]
     },
     {
-      french: "Il faut que tu finisses ton travail avant de sortir ce soir.",
-      reference: "You have to finish your work before going out tonight.",
-      notes: ["subjonctif", "obligation", "avant de"]
+      french: "Les résultats du vote auraient dû être annoncés hier soir.",
+      reference: "The election results should have been announced last night.",
+      grammar_points: ["should have been + past participle", "passive voice", "obligation not fulfilled"],
+      notes: ["should have been = reproche/obligation non réalisée", "election results = formule presse", "last night = hier soir"]
     },
     {
-      french: "Malgré la pluie, ils décidèrent de continuer leur promenade.",
-      reference: "Despite the rain, they decided to continue their walk.",
-      notes: ["malgré", "prétérit", "structure contrastive"]
+      french: "Les experts pensent que l'inflation a atteint son niveau le plus élevé depuis 20 ans.",
+      reference: "Experts believe that inflation has reached its highest level in 20 years.",
+      grammar_points: ["present perfect", "superlative", "believe that", "duration with present perfect"],
+      notes: ["has reached = résultat encore valable", "highest level = superlatif", "in 20 years = durée avec present perfect"]
     },
     {
-      french: "Je préfère que tu viennes avec nous demain.",
-      reference: "I prefer that you come with us tomorrow.",
-      notes: ["préférence", "subjonctif", "demande"]
+      french: "Avec la sécheresse, de nombreuses régions ont peut-être dû rationner l'eau.",
+      reference: "Due to the drought, many regions may have had to ration water.",
+      grammar_points: ["may have had to", "due to", "modal + past obligation"],
+      notes: ["may have had to = obligation possible au passé", "due to = registre formel", "ration water = verbe transitif"]
     },
     {
-      french: "À peine étaient-ils arrivés que la réunion commença.",
-      reference: "Hardly had they arrived when the meeting started.",
-      notes: ["inversion", "hardly", "past perfect", "when"]
+      french: "Si les réseaux sociaux étaient mieux régulés, il y aurait moins de désinformation.",
+      reference: "If social media were better regulated, there would be less misinformation.",
+      grammar_points: ["if + past simple", "would + base verb", "passive voice", "less vs fewer"],
+      notes: ["hypothèse irréelle au présent", "were better regulated = voix passive", "less misinformation = indénombrable"]
     },
     {
-      french: "Bien qu'il soit tard, elle a continué à travailler.",
-      reference: "Although it was late, she kept working.",
-      notes: ["although", "malgré", "structure concessive"]
+      french: "Selon plusieurs sources, le PDG pourrait démissionner dans les prochains jours.",
+      reference: "According to several sources, the CEO might resign in the coming days.",
+      grammar_points: ["according to", "might + base verb", "future possibility"],
+      notes: ["According to = selon", "might = possibilité future", "in the coming days = style presse"]
     },
     {
-      french: "C’est la plus belle ville que j’aie jamais vue.",
-      reference: "It's the most beautiful city I have ever seen.",
-      notes: ["superlatif", "present perfect", "ever"]
+      french: "Le projet de loi sera débattu au Parlement lundi prochain.",
+      reference: "The bill will be debated in Parliament next Monday.",
+      grammar_points: ["future passive", "bill vs law", "prepositions with institutions"],
+      notes: ["will be debated = voix passive future", "bill = projet de loi", "in Parliament pas at"]
     },
     {
-      french: "Il est probable qu’il viendra à la fête ce soir.",
-      reference: "He is likely to come to the party tonight.",
-      notes: ["likely to", "probabilité", "structure modale"]
+      french: "Le sommet sur le climat aurait dû se tenir plus tôt dans l'année.",
+      reference: "The climate summit should have taken place earlier this year.",
+      grammar_points: ["should have + past participle", "take place", "time expressions"],
+      notes: ["should have = événement attendu non réalisé", "take place = se tenir", "earlier this year = plus tôt dans l'année"]
     },
     {
-      french: "En me promenant, j’ai rencontré un vieil ami.",
-      reference: "While walking, I met an old friend.",
-      notes: ["gérondif", "while", "passé composé"]
+      french: "Le ministre a probablement été averti avant la fuite des documents.",
+      reference: "The minister must have been warned before the documents leaked.",
+      grammar_points: ["must have been + past participle", "passive voice", "probability in past"],
+      notes: ["must have been = forte probabilité passée", "voix passive", "before + past simple"]
     },
     {
-      french: "Plus tu étudies, meilleurs seront tes résultats.",
-      reference: "The more you study, the better your results will be.",
-      notes: ["comparatif", "the more... the better", "futur"]
+      french: "Plusieurs pays pourraient imposer des restrictions supplémentaires.",
+      reference: "Several countries could impose further restrictions.",
+      grammar_points: ["could + base verb", "future possibility", "further vs additional"],
+      notes: ["could = possibilité future", "further restrictions = lexique presse", "impose = verbe transitif"]
     },
     {
-      french: "Il s’est fait voler son portefeuille dans le métro.",
-      reference: "He had his wallet stolen on the subway.",
-      notes: ["have something done", "voix causative"]
+      french: "Il est peu probable que la réforme soit adoptée dans sa forme actuelle.",
+      reference: "It is unlikely that the reform will be passed in its current form.",
+      grammar_points: ["it is unlikely that", "future passive", "probability expressions"],
+      notes: ["It is unlikely = tournure impersonnelle", "will be passed = voix passive", "in its current form = idiome"]
     },
     {
-      french: "Ce livre dont je t’ai parlé est passionnant.",
-      reference: "This book I told you about is fascinating.",
-      notes: ["proposition relative", "whose/that", "structure"]
+      french: "Les artistes locaux ont été mis à l'honneur lors de la cérémonie.",
+      reference: "Local artists were honoured during the ceremony.",
+      grammar_points: ["passive voice", "past simple", "during vs in"],
+      notes: ["were honoured = voix passive", "during the ceremony = durant", "to honour = mettre à l'honneur"]
     },
     {
-      french: "Il n’a pas pu venir à cause des grèves.",
-      reference: "He couldn’t come because of the strikes.",
-      notes: ["because of", "inability", "cause"]
+      french: "Le système de cybersécurité aurait été piraté par un groupe étranger.",
+      reference: "The cybersecurity system is believed to have been hacked by a foreign group.",
+      grammar_points: ["is believed to have been", "passive reporting", "agent with by"],
+      notes: ["tournure de discours rapporté passif", "cybersecurity system = nom composé", "by a foreign group = agent"]
     },
     {
-      french: "Peu importe ce qu’il dira, je resterai ici.",
-      reference: "No matter what he says, I will stay here.",
-      notes: ["no matter what", "futur", "subordination"]
+      french: "Si l'accord avait été signé, les tensions auraient pu diminuer.",
+      reference: "If the agreement had been signed, tensions might have decreased.",
+      grammar_points: ["if + past perfect", "might have + past participle", "conditional past"],
+      notes: ["irréel passé", "tensions = pluriel", "might have = possibilité non réalisée"]
+    },
+    {
+      french: "La police a dû intervenir pour disperser les manifestants.",
+      reference: "The police had to intervene to disperse the protesters.",
+      grammar_points: ["had to + base verb", "past obligation", "police = plural"],
+      notes: ["had to = obligation passée", "disperse = verbe transitif", "the police = pluriel en anglais"]
     }
   ],
   de: [
     {
-      french: "Comme je n’ai pas vu mes parents depuis longtemps, j’irai passer le week-end prochain chez eux.",
-      reference: "Da ich meine Eltern schon lange nicht mehr gesehen habe, werde ich das nächste Wochenende bei ihnen verbringen.",
-      notes: ["Nebensatz", "Futur", "Zeitangabe"]
+      french: "Le gouvernement devra prendre une décision avant la fin du mois.",
+      reference: "Die Regierung wird bis zum Monatsende eine Entscheidung treffen müssen.",
+      grammar_points: ["werden + müssen", "future obligation", "temporal expressions"],
+      notes: ["werden + müssen = obligation future", "bis zum = jusqu'à", "eine Entscheidung treffen = prendre une décision"]
     },
     {
-      french: "Si j'avais su que le bus serait en retard, je serais parti plus tard.",
-      reference: "Wenn ich gewusst hätte, dass der Bus verspätet sein würde, wäre ich später losgegangen.",
-      notes: ["Konditionalsatz", "Konjunktiv II", "Vergangenheit"]
+      french: "Le taux de chômage aurait pu diminuer si des réformes avaient été mises en place plus tôt.",
+      reference: "Die Arbeitslosenquote hätte sinken können, wenn Reformen früher umgesetzt worden wären.",
+      grammar_points: ["Konjunktiv II", "hätte + können", "wenn + Plusquamperfekt", "Passiv"],
+      notes: ["hätte sinken können = possibilité non réalisée", "wenn + Plusquamperfekt", "umgesetzt worden wären = passif plus-que-parfait"]
     },
     {
-      french: "Il faut que tu finisses ton travail avant de sortir ce soir.",
-      reference: "Du musst deine Arbeit beenden, bevor du heute Abend ausgehst.",
-      notes: ["Modalität", "Bevor", "Abfolge"]
+      french: "Les résultats du vote auraient dû être annoncés hier soir.",
+      reference: "Die Wahlergebnisse hätten gestern Abend bekannt gegeben werden sollen.",
+      grammar_points: ["hätten + sollen", "Passiv Ersatzform", "Konjunktiv II"],
+      notes: ["hätten sollen = reproche", "bekannt gegeben werden = être annoncé", "gestern Abend = hier soir"]
     },
     {
-      french: "Malgré la pluie, ils décidèrent de continuer leur promenade.",
-      reference: "Trotz des Regens beschlossen sie, ihren Spaziergang fortzusetzen.",
-      notes: ["Trotz", "Hauptsatz", "Entscheidung"]
+      french: "Les experts pensent que l'inflation a atteint son niveau le plus élevé depuis 20 ans.",
+      reference: "Experten glauben, dass die Inflation ihr höchstes Niveau seit 20 Jahren erreicht hat.",
+      grammar_points: ["Perfekt", "Superlativ", "dass-Satz", "seit + Dativ"],
+      notes: ["hat erreicht = présent parfait", "höchstes Niveau = superlatif", "seit 20 Jahren = depuis 20 ans"]
     },
     {
-      french: "Je préfère que tu viennes avec nous demain.",
-      reference: "Ich ziehe es vor, dass du morgen mit uns kommst.",
-      notes: ["Präferenz", "Subjektivsatz"]
-    },
-    {
-      french: "À peine étaient-ils arrivés que la réunion commença.",
-      reference: "Kaum waren sie angekommen, begann die Besprechung.",
-      notes: ["Kaum...als", "Vergangenheit", "Inversion"]
-    },
-    {
-      french: "Bien qu'il soit tard, elle a continué à travailler.",
-      reference: "Obwohl es spät ist, hat sie weitergearbeitet.",
-      notes: ["Obwohl", "Konjunktion", "Gegenwart/Vergangenheit"]
-    },
-    {
-      french: "C’est la plus belle ville que j’aie jamais vue.",
-      reference: "Es ist die schönste Stadt, die ich je gesehen habe.",
-      notes: ["Superlativ", "Relativsatz", "je...gesehen"]
-    },
-    {
-      french: "Il est probable qu’il viendra à la fête ce soir.",
-      reference: "Es ist wahrscheinlich, dass er heute Abend zur Party kommt.",
-      notes: ["Wahrscheinlichkeit", "dass-Satz"]
-    },
-    {
-      french: "En me promenant, j’ai rencontré un vieil ami.",
-      reference: "Während ich spazieren ging, habe ich einen alten Freund getroffen.",
-      notes: ["Während", "Präteritum", "Begegnung"]
-    },
-    {
-      french: "Plus tu étudies, meilleurs seront tes résultats.",
-      reference: "Je mehr du lernst, desto besser werden deine Ergebnisse sein.",
-      notes: ["Je...desto", "Vergleich", "Futur"]
-    },
-    {
-      french: "Il s’est fait voler son portefeuille dans le métro.",
-      reference: "Ihm wurde seine Brieftasche in der U-Bahn gestohlen.",
-      notes: ["Passiv", "Dativ", "Raub"]
-    },
-    {
-      french: "Ce livre dont je t’ai parlé est passionnant.",
-      reference: "Das Buch, von dem ich dir erzählt habe, ist spannend.",
-      notes: ["Relativsatz", "von dem", "Beschreibung"]
-    },
-    {
-      french: "Il n’a pas pu venir à cause des grèves.",
-      reference: "Er konnte wegen der Streiks nicht kommen.",
-      notes: ["Kausal", "wegen", "Modalität"]
-    },
-    {
-      french: "Peu importe ce qu’il dira, je resterai ici.",
-      reference: "Egal was er sagt, ich werde hier bleiben.",
-      notes: ["Egal was", "Futur", "Subordination"]
+      french: "Avec la sécheresse, de nombreuses régions ont peut-être dû rationner l'eau.",
+      reference: "Wegen der Dürre mussten viele Regionen möglicherweise Wasser rationieren.",
+      grammar_points: ["wegen + Genitiv", "mussten", "möglicherweise"],
+      notes: ["wegen der Dürre = à cause de la sécheresse", "mussten = obligation passée", "möglicherweise = peut-être"]
     }
   ],
   es: [
     {
-      french: "Comme je n’ai pas vu mes parents depuis longtemps, j’irai passer le week-end prochain chez eux.",
-      reference: "Como hace mucho que no veo a mis padres, iré a pasar el próximo fin de semana con ellos.",
-      notes: ["subordinada temporal", "futuro", "como"]
+      french: "Le gouvernement devra prendre une décision avant la fin du mois.",
+      reference: "El gobierno tendrá que tomar una decisión antes de fin de mes.",
+      grammar_points: ["tendrá que + infinitive", "future obligation", "antes de"],
+      notes: ["tendrá que = obligation future", "tomar una decisión = prendre une décision", "antes de fin de mes = avant la fin du mois"]
     },
     {
-      french: "Si j'avais su que le bus serait en retard, je serais parti plus tard.",
-      reference: "Si hubiera sabido que el autobús se retrasaría, habría salido más tarde.",
-      notes: ["condicional pasado", "si", "pluscuamperfecto"]
-    },
-    {
-      french: "Il faut que tu finisses ton travail avant de sortir ce soir.",
-      reference: "Tienes que terminar tu trabajo antes de salir esta noche.",
-      notes: ["obligación", "antes de", "estructura infinitiva"]
-    },
-    {
-      french: "Malgré la pluie, ils décidèrent de continuer leur promenade.",
-      reference: "A pesar de la lluvia, decidieron seguir con su paseo.",
-      notes: ["a pesar de", "pretérito", "estructura concesiva"]
-    },
-    {
-      french: "Je préfère que tu viennes avec nous demain.",
-      reference: "Prefiero que vengas con nosotros mañana.",
-      notes: ["subjuntivo", "preferencia", "futuro"]
-    },
-    {
-      french: "À peine étaient-ils arrivés que la réunion commença.",
-      reference: "Apenas llegaron cuando empezó la reunión.",
-      notes: ["apenas...cuando", "pasado", "temporal"]
-    },
-    {
-      french: "Bien qu'il soit tard, elle a continué à travailler.",
-      reference: "Aunque era tarde, siguió trabajando.",
-      notes: ["aunque", "concesiva", "pasado"]
-    },
-    {
-      french: "C’est la plus belle ville que j’aie jamais vue.",
-      reference: "Es la ciudad más bonita que he visto jamás.",
-      notes: ["superlativo", "jamás", "haber visto"]
-    },
-    {
-      french: "Il est probable qu’il viendra à la fête ce soir.",
-      reference: "Es probable que venga a la fiesta esta noche.",
-      notes: ["probabilidad", "subjuntivo", "futuro"]
-    },
-    {
-      french: "En me promenant, j’ai rencontré un vieil ami.",
-      reference: "Paseando, me encontré con un viejo amigo.",
-      notes: ["gerundio", "encuentro", "pasado"]
-    },
-    {
-      french: "Plus tu étudies, meilleurs seront tes résultats.",
-      reference: "Cuanto más estudies, mejores serán tus resultados.",
-      notes: ["cuanto más...mejor", "comparativo", "futuro"]
-    },
-    {
-      french: "Il s’est fait voler son portefeuille dans le métro.",
-      reference: "Le robaron la cartera en el metro.",
-      notes: ["pasiva refleja", "robar", "lugar"]
-    },
-    {
-      french: "Ce livre dont je t’ai parlé est passionnant.",
-      reference: "El libro del que te hablé es apasionante.",
-      notes: ["relativa", "del que", "descripción"]
-    },
-    {
-      french: "Il n’a pas pu venir à cause des grèves.",
-      reference: "No pudo venir por las huelgas.",
-      notes: ["causa", "por", "imposibilidad"]
-    },
-    {
-      french: "Peu importe ce qu’il dira, je resterai ici.",
-      reference: "No importa lo que diga, me quedaré aquí.",
-      notes: ["no importa", "futuro", "subordinada"]
+      french: "Le taux de chômage aurait pu diminuer si des réformes avaient été mises en place plus tôt.",
+      reference: "La tasa de desempleo podría haber disminuido si se hubieran implementado reformas antes.",
+      grammar_points: ["podría haber + participio", "condicional compuesto", "si + pluscuamperfecto", "voz pasiva"],
+      notes: ["podría haber = possibilité non réalisée", "si + pluscuamperfecto", "se hubieran implementado = passif plus-que-parfait"]
     }
   ]
 };
@@ -246,19 +159,27 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
   try {
     const { language, history } = await req.json();
-    const pool = POOL[language] || POOL["en"];
-    // Si historique fourni, filtrer le pool pour ne pas répéter
+    const pool = PRESS_POOL[language] || PRESS_POOL["en"];
+    
+    // Filtrer selon l'historique pour éviter les répétitions
     let available = pool;
     if (Array.isArray(history) && history.length > 0) {
-      available = pool.filter(p =>
-        !history.includes(p.reference)
-      );
+      available = pool.filter(p => !history.includes(p.reference));
     }
-    // Si toutes les phrases ont été utilisées, on repart de zéro
+    
+    // Si toutes vues, recommencer
     if (available.length === 0) available = pool;
+    
+    // Sélection aléatoire
     const phrase = available[Math.floor(Math.random() * available.length)];
-    return new Response(JSON.stringify(phrase), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    
+    return new Response(JSON.stringify(phrase), { 
+      headers: { ...corsHeaders, "Content-Type": "application/json" } 
+    });
   } catch (e) {
-    return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    return new Response(JSON.stringify({ error: e.message }), { 
+      status: 500, 
+      headers: { ...corsHeaders, "Content-Type": "application/json" } 
+    });
   }
 });

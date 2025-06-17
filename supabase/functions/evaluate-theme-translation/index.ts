@@ -9,107 +9,105 @@ const corsHeaders = {
 
 const openAIApiKey = Deno.env.get("OPENAI_API_KEY");
 
-const PROMPTS = {
-  en: `Tu es un correcteur ECRICOME spécialisé de thèmes grammaticaux anglais dans les concours d'entrée aux Grandes Écoles. 
-Tu évalues la qualité d'une traduction française vers l'anglais. Reprends la grille suivante : 
-- 4/4.5 = barbarisme, non-sens, charabia, franglais, omission de segment (traduction complètement fausse, non-naturelle ou calque total ou très grave omission)
-- 3 = gros contresens ou faute majeure de grammaire ou omission de mot clé 
-- 2 = faute de grammaire, faux-sens partiel, confusion
-- 1 = erreur lexicale, mal dit, orthographe
-Classe chaque erreur détectée dans une de ces catégories. 
-Rends une note sur 10 : 10 correspond à une phrase parfaite, retire des points selon la gravité et le nombre (plusieurs erreurs possibles : priorité à la plus grave par groupe d'erreurs). 
-Ensuite, fournis la version parfaite (référence), puis une version corrigée de la tentative élève, corrigée mais gardant autant que possible son vocabulaire/mots. 
-Détaille pour chaque catégorie d'erreur trouvée ce qui n'allait pas. Liste enfin les règles grammaticales anglaises qui semblent fragiles. Ajoute 1-2 conseils personnalisés si possible.
-Focus sur : temps verbaux, modaux, gérondif/infinitif, prépositions, articles.
-RÉPONDRE OBLIGATOIREMENT EN JSON STRICT avec cette structure exacte :
-{
-  "score": 8,
-  "severity": {
-    "barbarism": ["exemple d'erreur"],
-    "omission": [],
-    "grammar": ["exemple de faute de grammaire"],
-    "lexicon": [],
-    "spelling": [],
-    "other": []
+// Base de phrases similaires par point grammatical
+const SIMILAR_SENTENCES: Record<string, Record<string, string[]>> = {
+  en: {
+    "will have to + infinitive": [
+      "Les entreprises devront s'adapter aux nouvelles réglementations d'ici 2025.",
+      "Le parlement devra voter cette loi avant les vacances."
+    ],
+    "could have + past participle": [
+      "Les prix de l'énergie auraient pu baisser avec de meilleures négociations.",
+      "Cette crise aurait pu être évitée avec plus de prévoyance."
+    ],
+    "should have been + past participle": [
+      "Les mesures de sécurité auraient dû être renforcées plus tôt.",
+      "Ces informations auraient dû être communiquées au public."
+    ],
+    "present perfect": [
+      "La croissance économique a ralenti ces derniers mois.",
+      "Les investissements ont augmenté de 15% cette année."
+    ],
+    "if + past simple": [
+      "Si les taux d'intérêt étaient plus bas, plus de gens achèteraient des maisons.",
+      "Si le gouvernement investissait davantage, l'économie se porterait mieux."
+    ]
   },
-  "corrected": "Version corrigée de la traduction",
-  "reference": "Version parfaite de référence",
-  "grammar_rules": ["Règle 1", "Règle 2"],
-  "tips": ["Conseil 1", "Conseil 2"]
-}`,
+  de: {
+    "Konjunktiv II": [
+      "Wenn die Wirtschaft stärker wäre, gäbe es weniger Arbeitslose.",
+      "Falls mehr investiert worden wäre, hätte sich die Lage verbessert."
+    ],
+    "werden + müssen": [
+      "Die Unternehmen werden ihre Strategien ändern müssen.",
+      "Wir werden bis morgen eine Lösung finden müssen."
+    ]
+  },
+  es: {
+    "condicional compuesto": [
+      "La economía habría crecido más con mejores políticas.",
+      "Los precios habrían bajado con más competencia."
+    ],
+    "tendrá que + infinitive": [
+      "El país tendrá que implementar reformas estructurales.",
+      "La empresa tendrá que reducir sus costos operativos."
+    ]
+  }
+};
 
-  de: `Tu es un correcteur ECRICOME spécialisé de thèmes grammaticaux allemands dans les concours d'entrée aux Grandes Écoles. 
-Tu évalues la qualité d'une traduction française vers l'allemand. Reprends la grille suivante : 
-- 4/4.5 = barbarisme, non-sens, charabia, germanisme, omission de segment (traduction complètement fausse, non-naturelle ou calque total ou très grave omission)
-- 3 = gros contresens ou faute majeure de grammaire ou omission de mot clé 
-- 2 = faute de grammaire, faux-sens partiel, confusion
-- 1 = erreur lexicale, mal dit, orthographe
-Classe chaque erreur détectée dans une de ces catégories. 
-Rends une note sur 10 : 10 correspond à une phrase parfaite, retire des points selon la gravité et le nombre (plusieurs erreurs possibles : priorité à la plus grave par groupe d'erreurs). 
-Ensuite, fournis la version parfaite (référence), puis une version corrigée de la tentative élève, corrigée mais gardant autant que possible son vocabulaire/mots. 
-Détaille pour chaque catégorie d'erreur trouvée ce qui n'allait pas. Liste enfin les règles grammaticales allemandes qui semblent fragiles. Ajoute 1-2 conseils personnalisés si possible.
-ATTENTION SPÉCIALE ALLEMAND : 
-- Déclinaisons (Nominatif, Accusatif, Datif, Génitif) : vérifie articles, adjectifs, pronoms
-- Ordre des mots : verbe en 2e position, verbe à la fin dans subordonnées, particule séparable
-- Temps : Perfekt vs Präteritum, subjonctif II
-- Cas régi par prépositions et verbes
-Ajoute une section "german_analysis" avec déclinaisons incorrectes et erreurs d'ordre des mots.
-RÉPONDRE OBLIGATOIREMENT EN JSON STRICT avec cette structure exacte :
+const PROMPTS = {
+  en: `Tu es un correcteur ECRICOME spécialisé en thèmes grammaticaux anglais. Analyse cette traduction et :
+
+1. Identifie PRÉCISÉMENT les erreurs grammaticales selon cette grille :
+- 4/4.5 points : barbarisme, non-sens, charabia, omission majeure
+- 3 points : gros contresens, faute majeure de grammaire, omission de mot-clé
+- 2 points : faute de grammaire, faux-sens partiel, confusion
+- 1 point : erreur lexicale, orthographe, mal dit
+
+2. Détermine quels points grammaticaux posent problème parmi : will have to, could have + pp, should have been, present perfect, if + past simple, passive voice, modals, etc.
+
+3. Suggère des phrases similaires pour travailler les points défaillants.
+
+Réponds en JSON STRICT :
 {
   "score": 8,
   "severity": {
-    "barbarism": ["exemple d'erreur"],
+    "barbarism": ["erreur"],
     "omission": [],
-    "grammar": ["exemple de faute de grammaire"],
+    "grammar": ["erreur de grammaire"],
     "lexicon": [],
     "spelling": [],
     "other": []
   },
-  "corrected": "Version corrigée de la traduction",
-  "reference": "Version parfaite de référence",
+  "corrected": "Version corrigée",
+  "reference": "Version parfaite",
   "grammar_rules": ["Règle 1", "Règle 2"],
   "tips": ["Conseil 1", "Conseil 2"],
+  "weak_grammar_points": ["will have to", "passive voice"],
+  "similar_sentences": ["Phrase 1 à travailler", "Phrase 2 à travailler"],
+  "flashcard_rule": "Règle principale à retenir pour la flashcard"
+}`,
+
+  de: `Tu es un correcteur ECRICOME spécialisé en thèmes grammaticaux allemands. Analyse cette traduction selon la grille de notation et identifie les points grammaticaux défaillants (déclinaisons, ordre des mots, Konjunktiv II, etc.).
+
+Réponds en JSON STRICT avec la même structure que l'anglais, plus :
+{
+  // ... structure de base ...
   "german_analysis": {
-    "declension_errors": ["Erreur de déclinaison 1"],
-    "word_order_errors": ["Erreur d'ordre 1"]
+    "declension_errors": ["Erreur de déclinaison"],
+    "word_order_errors": ["Erreur d'ordre"]
   }
 }`,
 
-  es: `Tu es un correcteur ECRICOME spécialisé de thèmes grammaticaux espagnols dans les concours d'entrée aux Grandes Écoles. 
-Tu évalues la qualité d'une traduction française vers l'espagnol. Reprends la grille suivante : 
-- 4/4.5 = barbarisme, non-sens, charabia, hispanisme, omission de segment (traduction complètement fausse, non-naturelle ou calque total ou très grave omission)
-- 3 = gros contresens ou faute majeure de grammaire ou omission de mot clé 
-- 2 = faute de grammaire, faux-sens partiel, confusion
-- 1 = erreur lexicale, mal dit, orthographe
-Classe chaque erreur détectée dans une de ces catégories. 
-Rends une note sur 10 : 10 correspond à une phrase parfaite, retire des points selon la gravité et le nombre (plusieurs erreurs possibles : priorité à la plus grave par groupe d'erreurs). 
-Ensuite, fournis la version parfaite (référence), puis une version corrigée de la tentative élève, corrigée mais gardant autant que possible son vocabulaire/mots. 
-Détaille pour chaque catégorie d'erreur trouvée ce qui n'allait pas. Liste enfin les règles grammaticales espagnoles qui semblent fragiles. Ajoute 1-2 conseils personnalisés si possible.
-Focus sur : subjonctif, ser/estar, por/para, concordance des temps, pronoms compléments.
-RÉPONDRE OBLIGATOIREMENT EN JSON STRICT avec cette structure exacte :
-{
-  "score": 8,
-  "severity": {
-    "barbarism": ["exemple d'erreur"],
-    "omission": [],
-    "grammar": ["exemple de faute de grammaire"],
-    "lexicon": [],
-    "spelling": [],
-    "other": []
-  },
-  "corrected": "Version corrigée de la traduction",
-  "reference": "Version parfaite de référence",
-  "grammar_rules": ["Règle 1", "Règle 2"],
-  "tips": ["Conseil 1", "Conseil 2"]
-}`
+  es: `Tu es un correcteur ECRICOME spécialisé en thèmes grammaticaux espagnols. Analyse cette traduction selon la grille de notation et identifie les points grammaticaux défaillants (subjonctif, ser/estar, por/para, etc.).
+
+Réponds en JSON STRICT avec la structure de base.`
 };
 
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
   try {
-    const { language, student, french, reference } = await req.json();
-    
-    console.log('Request received:', { language, student: student.substring(0, 50), french: french.substring(0, 50) });
+    const { language, student, french, reference, grammar_points } = await req.json();
     
     const systemPrompt = PROMPTS[language as keyof typeof PROMPTS] || PROMPTS.en;
     
@@ -123,48 +121,47 @@ serve(async (req) => {
         model: "gpt-4o-mini",
         messages: [
           { role: "system", content: systemPrompt },
-          { role: "user", content: `FR: ${french}\nLANGUE CIBLE: ${language}\nATTENDU: ${reference}\nPROPOSITION: ${student}` }
+          { 
+            role: "user", 
+            content: `FR: ${french}\nLANGUE CIBLE: ${language}\nATTENDU: ${reference}\nPROPOSITION: ${student}\nPOINTS GRAMMATICAUX TRAVAILLÉS: ${grammar_points?.join(', ') || 'Non spécifiés'}` 
+          }
         ],
-        max_tokens: 1200,
+        max_tokens: 1500,
         temperature: 0.1
       })
     });
     
     const completion = await completionRes.json();
-    console.log('OpenAI response status:', completionRes.status);
     
-    if (!completion.choices || !completion.choices[0] || !completion.choices[0].message) {
+    if (!completion.choices?.[0]?.message?.content) {
       throw new Error('Réponse OpenAI invalide');
     }
     
     const rawContent = completion.choices[0].message.content;
-    console.log('Raw OpenAI content:', rawContent.substring(0, 200));
-    
     let output;
     
     try {
-      // Essayer de parser le JSON directement
       output = JSON.parse(rawContent);
-      console.log('JSON parsed successfully');
     } catch (parseError) {
-      console.log('JSON parse failed, trying to extract JSON from text:', parseError);
-      
-      // Essayer d'extraire le JSON du texte (au cas où il y aurait du texte avant/après)
       const jsonMatch = rawContent.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
-        try {
-          output = JSON.parse(jsonMatch[0]);
-          console.log('JSON extracted and parsed successfully');
-        } catch (extractError) {
-          console.log('JSON extraction failed:', extractError);
-          throw new Error('Impossible de parser la réponse JSON');
-        }
+        output = JSON.parse(jsonMatch[0]);
       } else {
-        throw new Error('Aucun JSON trouvé dans la réponse');
+        throw new Error('Impossible de parser la réponse JSON');
       }
     }
     
-    // Validation et création d'un fallback structuré
+    // Enrichir avec des phrases similaires selon les points faibles détectés
+    const weakPoints = output.weak_grammar_points || [];
+    const similarSentences = [];
+    const languagePool = SIMILAR_SENTENCES[language] || {};
+    
+    for (const point of weakPoints) {
+      if (languagePool[point]) {
+        similarSentences.push(...languagePool[point].slice(0, 2)); // Max 2 phrases par point
+      }
+    }
+    
     const validatedOutput = {
       score: output.score || 0,
       severity: {
@@ -179,13 +176,14 @@ serve(async (req) => {
       reference: output.reference || reference,
       grammar_rules: Array.isArray(output.grammar_rules) ? output.grammar_rules : [],
       tips: Array.isArray(output.tips) ? output.tips : [],
+      weak_grammar_points: Array.isArray(output.weak_grammar_points) ? output.weak_grammar_points : [],
+      similar_sentences: similarSentences.slice(0, 3), // Max 3 phrases similaires
+      flashcard_rule: output.flashcard_rule || "Règle à réviser",
       german_analysis: language === 'de' ? {
         declension_errors: Array.isArray(output.german_analysis?.declension_errors) ? output.german_analysis.declension_errors : [],
         word_order_errors: Array.isArray(output.german_analysis?.word_order_errors) ? output.german_analysis.word_order_errors : []
       } : null
     };
-    
-    console.log('Final validated output:', JSON.stringify(validatedOutput, null, 2));
     
     return new Response(JSON.stringify(validatedOutput), { 
       headers: { ...corsHeaders, "Content-Type": "application/json" } 
