@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
@@ -89,9 +88,9 @@ export const ProgressionTracker: React.FC<ProgressionTrackerProps> = ({
   };
 
   return (
-    <Card className="border-indigo-200 bg-gradient-to-br from-indigo-50 to-purple-50">
+    <Card className="border-orange-200 bg-gradient-to-br from-orange-50 to-amber-50">
       <CardHeader className="pb-3">
-        <CardTitle className="flex items-center gap-2 text-indigo-800">
+        <CardTitle className="flex items-center gap-2 text-orange-800">
           <TrendingUp className="h-5 w-5" />
           Progression - {language.toUpperCase()}
         </CardTitle>
@@ -100,7 +99,7 @@ export const ProgressionTracker: React.FC<ProgressionTrackerProps> = ({
         {/* Main statistics */}
         <div className="grid grid-cols-3 gap-4">
           <div className="text-center">
-            <div className="text-2xl font-bold text-indigo-600">
+            <div className="text-2xl font-bold text-primary">
               {progression.completedSentences}
             </div>
             <div className="text-xs text-muted-foreground">Phrases</div>
@@ -112,7 +111,7 @@ export const ProgressionTracker: React.FC<ProgressionTrackerProps> = ({
             <div className="text-xs text-muted-foreground">Moyenne</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-orange-600">
+            <div className="text-2xl font-bold text-amber-600">
               {progression.streak}
             </div>
             <div className="text-xs text-muted-foreground">Série</div>
@@ -122,8 +121,8 @@ export const ProgressionTracker: React.FC<ProgressionTrackerProps> = ({
         {/* Progress bar */}
         <div className="space-y-2">
           <div className="flex justify-between text-sm">
-            <span className="text-indigo-600">Objectif session</span>
-            <span className="text-indigo-600">{Math.min(progressPercentage, 100).toFixed(0)}%</span>
+            <span className="text-orange-700">Objectif session</span>
+            <span className="text-orange-700">{Math.min(progressPercentage, 100).toFixed(0)}%</span>
           </div>
           <Progress value={progressPercentage} className="h-2" />
         </div>
@@ -131,10 +130,10 @@ export const ProgressionTracker: React.FC<ProgressionTrackerProps> = ({
         {/* Weak points */}
         {progression.weakPoints.length > 0 && (
           <div>
-            <div className="text-sm font-medium text-indigo-700 mb-2">Points à travailler :</div>
+            <div className="text-sm font-medium text-orange-700 mb-2">Points à travailler :</div>
             <div className="flex flex-wrap gap-1">
               {progression.weakPoints.slice(0, 3).map((point, index) => (
-                <Badge key={index} variant="outline" className="text-xs border-indigo-300">
+                <Badge key={index} variant="outline" className="text-xs border-orange-300 text-orange-700">
                   {point}
                 </Badge>
               ))}
