@@ -174,16 +174,13 @@ serve(async (req) => {
       }
     }
     
-    // Adapter le format de severity pour la compatibilité
+    // Retourner exactement la structure attendue par le frontend
     const validatedOutput = {
       score: Math.max(0, Math.min(10, output.score || 0)),
       severity: {
-        barbarism: output.severity?.major_errors || [],
-        omission: output.severity?.major_errors?.filter((e: string) => e.toLowerCase().includes('omission')) || [],
-        grammar: [...(output.severity?.major_errors || []), ...(output.severity?.minor_errors || [])],
-        lexicon: output.severity?.minor_errors?.filter((e: string) => e.toLowerCase().includes('lexical') || e.toLowerCase().includes('vocabulaire')) || [],
-        spelling: output.severity?.minor_errors?.filter((e: string) => e.toLowerCase().includes('orthographe')) || [],
-        other: output.severity?.accepted_variations || []
+        major_errors: output.severity?.major_errors || [],
+        minor_errors: output.severity?.minor_errors || [],
+        accepted_variations: output.severity?.accepted_variations || []
       },
       corrected: output.corrected || "Correction non disponible",
       reference: output.reference || reference,
@@ -191,11 +188,7 @@ serve(async (req) => {
       tips: Array.isArray(output.tips) ? output.tips : [],
       weak_grammar_points: Array.isArray(output.weak_grammar_points) ? output.weak_grammar_points : [],
       similar_sentences: similarSentences.slice(0, 3), // Max 3 phrases similaires
-      flashcard_rule: output.flashcard_rule || "Règle à réviser",
-      german_analysis: language === 'de' ? {
-        declension_errors: output.severity?.major_errors?.filter((e: string) => e.toLowerCase().includes('déclinaison')) || [],
-        word_order_errors: output.severity?.major_errors?.filter((e: string) => e.toLowerCase().includes('ordre')) || []
-      } : null
+      flashcard_rule: output.flashcard_rule || "Règle à réviser"
     };
     
     return new Response(JSON.stringify(validatedOutput), { 

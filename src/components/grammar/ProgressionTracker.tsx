@@ -59,22 +59,24 @@ export const ProgressionTracker: React.FC<ProgressionTrackerProps> = ({
   // Save progression when a sentence is completed
   useEffect(() => {
     if (completedSentence && currentScore !== undefined) {
-      const updated = {
-        ...progression,
-        totalSentences: progression.totalSentences + 1,
-        completedSentences: progression.completedSentences + 1,
-        averageScore: Math.round(
-          (progression.averageScore * progression.totalSentences + currentScore) / 
-          (progression.totalSentences + 1)
-        ),
-        lastSession: new Date(),
-        streak: currentScore >= 7 ? progression.streak + 1 : 0
-      };
-      
-      setProgression(updated);
-      saveProgression(updated);
+      setProgression(prevProgression => {
+        const updated = {
+          ...prevProgression,
+          totalSentences: prevProgression.totalSentences + 1,
+          completedSentences: prevProgression.completedSentences + 1,
+          averageScore: Math.round(
+            (prevProgression.averageScore * prevProgression.totalSentences + currentScore) / 
+            (prevProgression.totalSentences + 1)
+          ),
+          lastSession: new Date(),
+          streak: currentScore >= 7 ? prevProgression.streak + 1 : 0
+        };
+        
+        saveProgression(updated);
+        return updated;
+      });
     }
-  }, [completedSentence, currentScore, progression.totalSentences, progression.completedSentences, progression.averageScore, progression.streak, saveProgression]);
+  }, [completedSentence, currentScore, saveProgression]);
 
   const progressPercentage = progression.totalSentences > 0 
     ? (progression.completedSentences / Math.max(progression.totalSentences, 10)) * 100 
