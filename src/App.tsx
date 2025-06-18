@@ -8,7 +8,7 @@ import { AuthProvider } from "@/context/AuthContext";
 import { ProgressProvider } from "@/context/ProgressContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import Navigation from "@/components/Navigation";
-import { default as Footer } from "@/components/Footer";
+import { Footer } from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 
 // All page imports
