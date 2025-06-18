@@ -12,15 +12,15 @@ interface ErrorHighlighterProps {
 }
 
 export const ErrorHighlighter: React.FC<ErrorHighlighterProps> = ({ text, errors }) => {
-  // Trier les erreurs par position de début
+  // Sort errors by start position
   const sortedErrors = [...errors].sort((a, b) => a.start - b.start);
   
-  // Créer les segments de texte avec leur statut
+  // Create text segments with their status
   const segments = [];
   let currentPos = 0;
   
   for (const error of sortedErrors) {
-    // Ajouter le texte avant l'erreur (si il y en a)
+    // Add text before error (if any)
     if (error.start > currentPos) {
       segments.push({
         text: text.slice(currentPos, error.start),
@@ -28,7 +28,7 @@ export const ErrorHighlighter: React.FC<ErrorHighlighterProps> = ({ text, errors
       });
     }
     
-    // Ajouter le segment d'erreur
+    // Add error segment
     segments.push({
       text: text.slice(error.start, error.end),
       type: error.type,
@@ -38,7 +38,7 @@ export const ErrorHighlighter: React.FC<ErrorHighlighterProps> = ({ text, errors
     currentPos = error.end;
   }
   
-  // Ajouter le texte restant
+  // Add remaining text
   if (currentPos < text.length) {
     segments.push({
       text: text.slice(currentPos),

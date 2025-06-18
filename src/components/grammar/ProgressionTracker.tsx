@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
-import { TrendingUp, Clock, Target } from 'lucide-react';
+import { TrendingUp, Clock } from 'lucide-react';
 
 interface ProgressionData {
   totalSentences: number;
@@ -34,16 +34,25 @@ export const ProgressionTracker: React.FC<ProgressionTrackerProps> = ({
     streak: 0
   });
 
+  // Load progression data from localStorage
   useEffect(() => {
-    // Charger les données de progression depuis localStorage
     const saved = localStorage.getItem(`theme-progression-${language}`);
     if (saved) {
-      setProgression(JSON.parse(saved));
+      try {
+        const parsedData = JSON.parse(saved);
+        // Ensure lastSession is a Date object
+        if (parsedData.lastSession) {
+          parsedData.lastSession = new Date(parsedData.lastSession);
+        }
+        setProgression(parsedData);
+      } catch (error) {
+        console.error('Error parsing progression data:', error);
+      }
     }
   }, [language]);
 
+  // Save progression when a sentence is completed
   useEffect(() => {
-    // Sauvegarder la progression quand une phrase est complétée
     if (completedSentence && currentScore !== undefined) {
       const updated = {
         ...progression,
@@ -81,7 +90,7 @@ export const ProgressionTracker: React.FC<ProgressionTrackerProps> = ({
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        {/* Statistiques principales */}
+        {/* Main statistics */}
         <div className="grid grid-cols-3 gap-4">
           <div className="text-center">
             <div className="text-2xl font-bold text-indigo-600">
@@ -103,7 +112,7 @@ export const ProgressionTracker: React.FC<ProgressionTrackerProps> = ({
           </div>
         </div>
 
-        {/* Barre de progression */}
+        {/* Progress bar */}
         <div className="space-y-2">
           <div className="flex justify-between text-sm">
             <span className="text-indigo-600">Objectif session</span>
@@ -112,7 +121,7 @@ export const ProgressionTracker: React.FC<ProgressionTrackerProps> = ({
           <Progress value={progressPercentage} className="h-2" />
         </div>
 
-        {/* Points faibles */}
+        {/* Weak points */}
         {progression.weakPoints.length > 0 && (
           <div>
             <div className="text-sm font-medium text-indigo-700 mb-2">Points à travailler :</div>
@@ -126,7 +135,7 @@ export const ProgressionTracker: React.FC<ProgressionTrackerProps> = ({
           </div>
         )}
 
-        {/* Dernière session */}
+        {/* Last session */}
         <div className="flex items-center gap-2 text-xs text-muted-foreground">
           <Clock className="h-3 w-3" />
           Dernière session : {progression.lastSession.toLocaleDateString()}
