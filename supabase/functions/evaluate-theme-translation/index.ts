@@ -118,10 +118,39 @@ Réponds en JSON STRICT avec la structure de base.`
 
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
+  
   try {
-    const { language, student, french, reference, grammar_points } = await req.json();
+    console.log('Received request for evaluation');
+    
+    const requestBody = await req.json();
+    console.log('Request body:', requestBody);
+    
+    const { language, student, french, reference, grammar_points } = requestBody;
+    
+    // Validation des paramètres requis
+    if (!language || !student || !french || !reference) {
+      console.error('Missing required parameters');
+      return new Response(JSON.stringify({ 
+        error: 'Paramètres manquants: language, student, french, reference sont requis' 
+      }), { 
+        status: 400, 
+        headers: { ...corsHeaders, "Content-Type": "application/json" } 
+      });
+    }
+
+    if (!openAIApiKey) {
+      console.error('OpenAI API key not configured');
+      return new Response(JSON.stringify({ 
+        error: 'Clé API OpenAI non configurée' 
+      }), { 
+        status: 500, 
+        headers: { ...corsHeaders, "Content-Type": "application/json" } 
+      });
+    }
     
     const systemPrompt = PROMPTS[language as keyof typeof PROMPTS] || PROMPTS.en;
+    
+    console.log('Making OpenAI API call');
     
     const completionRes = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
@@ -143,23 +172,41 @@ serve(async (req) => {
       })
     });
     
+    if (!completionRes.ok) {
+      console.error('OpenAI API error:', completionRes.status, completionRes.statusText);
+      const errorText = await completionRes.text();
+      console.error('OpenAI error response:', errorText);
+      throw new Error(`Erreur API OpenAI: ${completionRes.status}`);
+    }
+    
     const completion = await completionRes.json();
+    console.log('OpenAI response received');
     
     if (!completion.choices?.[0]?.message?.content) {
+      console.error('Invalid OpenAI response structure:', completion);
       throw new Error('Réponse OpenAI invalide');
     }
     
     const rawContent = completion.choices[0].message.content;
+    console.log('Raw OpenAI content:', rawContent);
+    
     let output;
     
     try {
       output = JSON.parse(rawContent);
     } catch (parseError) {
+      console.log('Initial JSON parse failed, trying to extract JSON from response');
       const jsonMatch = rawContent.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
-        output = JSON.parse(jsonMatch[0]);
+        try {
+          output = JSON.parse(jsonMatch[0]);
+        } catch (extractError) {
+          console.error('Failed to parse extracted JSON:', extractError);
+          throw new Error('Impossible de parser la réponse JSON');
+        }
       } else {
-        throw new Error('Impossible de parser la réponse JSON');
+        console.error('No JSON found in response:', rawContent);
+        throw new Error('Aucun JSON trouvé dans la réponse');
       }
     }
     
@@ -176,27 +223,32 @@ serve(async (req) => {
     
     // Retourner exactement la structure attendue par le frontend
     const validatedOutput = {
-      score: Math.max(0, Math.min(10, output.score || 0)),
+      score: Math.max(0, Math.min(10, Number(output.score) || 0)),
       severity: {
-        major_errors: output.severity?.major_errors || [],
-        minor_errors: output.severity?.minor_errors || [],
-        accepted_variations: output.severity?.accepted_variations || []
+        major_errors: Array.isArray(output.severity?.major_errors) ? output.severity.major_errors : [],
+        minor_errors: Array.isArray(output.severity?.minor_errors) ? output.severity.minor_errors : [],
+        accepted_variations: Array.isArray(output.severity?.accepted_variations) ? output.severity.accepted_variations : []
       },
-      corrected: output.corrected || "Correction non disponible",
-      reference: output.reference || reference,
+      corrected: String(output.corrected || "Correction non disponible"),
+      reference: String(output.reference || reference),
       grammar_rules: Array.isArray(output.grammar_rules) ? output.grammar_rules : [],
       tips: Array.isArray(output.tips) ? output.tips : [],
       weak_grammar_points: Array.isArray(output.weak_grammar_points) ? output.weak_grammar_points : [],
       similar_sentences: similarSentences.slice(0, 3), // Max 3 phrases similaires
-      flashcard_rule: output.flashcard_rule || "Règle à réviser"
+      flashcard_rule: String(output.flashcard_rule || "Règle à réviser")
     };
+    
+    console.log('Validated output:', validatedOutput);
     
     return new Response(JSON.stringify(validatedOutput), { 
       headers: { ...corsHeaders, "Content-Type": "application/json" } 
     });
   } catch (e) {
     console.error('Error in evaluate function:', e);
-    return new Response(JSON.stringify({ error: e.message }), { 
+    return new Response(JSON.stringify({ 
+      error: 'Une erreur est survenue lors de l\'évaluation',
+      details: e.message 
+    }), { 
       status: 500, 
       headers: { ...corsHeaders, "Content-Type": "application/json" } 
     });
