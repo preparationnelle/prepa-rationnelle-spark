@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
@@ -51,6 +51,11 @@ export const ProgressionTracker: React.FC<ProgressionTrackerProps> = ({
     }
   }, [language]);
 
+  // Stable function to save progression
+  const saveProgression = useCallback((updatedProgression: ProgressionData) => {
+    localStorage.setItem(`theme-progression-${language}`, JSON.stringify(updatedProgression));
+  }, [language]);
+
   // Save progression when a sentence is completed
   useEffect(() => {
     if (completedSentence && currentScore !== undefined) {
@@ -67,9 +72,9 @@ export const ProgressionTracker: React.FC<ProgressionTrackerProps> = ({
       };
       
       setProgression(updated);
-      localStorage.setItem(`theme-progression-${language}`, JSON.stringify(updated));
+      saveProgression(updated);
     }
-  }, [completedSentence, currentScore, language, progression]);
+  }, [completedSentence, currentScore, progression.totalSentences, progression.completedSentences, progression.averageScore, progression.streak, saveProgression]);
 
   const progressPercentage = progression.totalSentences > 0 
     ? (progression.completedSentences / Math.max(progression.totalSentences, 10)) * 100 

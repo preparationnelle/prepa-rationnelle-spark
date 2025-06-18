@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -53,7 +52,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
   const { currentUser } = useAuth();
   const { toast } = useToast();
 
-  const generateNewSentence = async () => {
+  const generateNewSentence = useCallback(async () => {
     setIsGenerating(true);
     try {
       const { data, error } = await supabase.functions.invoke('generate-theme-sentence', {
@@ -84,9 +83,9 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
     } finally {
       setIsGenerating(false);
     }
-  };
+  }, [language, history, toast]);
 
-  const evaluateAnswer = async () => {
+  const evaluateAnswer = useCallback(async () => {
     if (!currentSentence || !studentAnswer.trim()) {
       toast({
         title: "Réponse requise",
@@ -138,9 +137,9 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
     } finally {
       setIsEvaluating(false);
     }
-  };
+  }, [currentSentence, studentAnswer, language, currentUser, toast]);
 
-  const resetExercise = () => {
+  const resetExercise = useCallback(() => {
     setCurrentSentence(null);
     setStudentAnswer('');
     setEvaluation(null);
@@ -150,9 +149,9 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
     setSimilarSentences([]);
     setHistory([]);
     setCompletedSentence(false);
-  };
+  }, []);
 
-  const handlePracticeSentence = (sentence: string) => {
+  const handlePracticeSentence = useCallback((sentence: string) => {
     setStudentAnswer('');
     setEvaluation(null);
     setShowHints(false);
@@ -161,7 +160,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
       title: "Nouvelle phrase à pratiquer",
       description: "Traduisez cette phrase similaire pour renforcer vos acquis !",
     });
-  };
+  }, [toast]);
 
   const getScoreColor = (score: number) => {
     if (score >= 8) return "text-green-600 bg-green-50 border-green-200";
