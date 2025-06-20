@@ -72,10 +72,17 @@ export const FlashcardReviewSystem = ({ language, refreshTrigger }: FlashcardRev
 
       setFlashcards(flashcardsData || []);
       
-      // Create review data map
+      // Create review data map with proper type casting
       const reviewMap = new Map<string, ReviewData>();
       reviewsData?.forEach(review => {
-        reviewMap.set(review.flashcard_id, review);
+        reviewMap.set(review.flashcard_id, {
+          id: review.id,
+          status: review.status as 'new' | 'learning' | 'review' | 'mastered',
+          difficulty: review.difficulty,
+          review_count: review.review_count,
+          correct_count: review.correct_count,
+          next_review_date: review.next_review_date,
+        });
       });
       setReviewData(reviewMap);
 
