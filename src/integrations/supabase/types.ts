@@ -84,6 +84,53 @@ export type Database = {
         }
         Relationships: []
       }
+      flashcard_reviews: {
+        Row: {
+          correct_count: number
+          created_at: string
+          difficulty: number
+          flashcard_id: string
+          id: string
+          next_review_date: string
+          review_count: number
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          correct_count?: number
+          created_at?: string
+          difficulty?: number
+          flashcard_id: string
+          id?: string
+          next_review_date?: string
+          review_count?: number
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          correct_count?: number
+          created_at?: string
+          difficulty?: number
+          flashcard_id?: string
+          id?: string
+          next_review_date?: string
+          review_count?: number
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "flashcard_reviews_flashcard_id_fkey"
+            columns: ["flashcard_id"]
+            isOneToOne: false
+            referencedRelation: "flashcards"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       flashcards: {
         Row: {
           created_at: string
