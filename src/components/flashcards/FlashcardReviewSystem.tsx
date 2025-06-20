@@ -38,8 +38,39 @@ export const FlashcardReviewSystem = ({ language, refreshTrigger }: FlashcardRev
   const [isFlipped, setIsFlipped] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [showingDifficult, setShowingDifficult] = useState(false);
+  const [showingDueForReview, setShowingDueForReview] = useState(false);
   const { toast } = useToast();
   const { currentUser } = useAuth();
+
+  // Algorithme de répétition espacée amélioré
+  const calculateNextReviewDate = (difficulty: number, correct: boolean, reviewCount: number): Date => {
+    let intervalHours: number;
+    
+    if (correct) {
+      // Si correct, augmenter l'intervalle basé sur la facilité (inverse de la difficulté)
+      const easeFactor = Math.max(1.3, 2.5 - (difficulty * 0.3));
+      const baseInterval = Math.pow(easeFactor, reviewCount);
+      intervalHours = baseInterval * 24; // En heures
+    } else {
+      // Si incorrect, revoir rapidement (1-4 heures selon la difficulté)
+      intervalHours = Math.max(1, 4 - difficulty);
+    }
+
+    // Limiter les intervalles extrêmes
+    intervalHours = Math.min(intervalHours, 365 * 24); // Max 1 an
+    intervalHours = Math.max(intervalHours, 0.5); // Min 30 minutes
+
+    return new Date(Date.now() + intervalHours * 60 * 60 * 1000);
+  };
+
+  const getDueForReviewCards = () => {
+    const now = new Date();
+    return flashcards.filter(card => {
+      const review = reviewData.get(card.id);
+      if (!review) return true; // Nouvelles cartes sont dues
+      return new Date(review.next_review_date) <= now;
+    });
+  };
 
   const loadFlashcardsWithReviews = async () => {
     if (!currentUser) return;
@@ -72,10 +103,8 @@ export const FlashcardReviewSystem = ({ language, refreshTrigger }: FlashcardRev
 
       setFlashcards(flashcardsData || []);
       
-      // Create review data map with proper type validation
       const reviewMap = new Map<string, ReviewData>();
       reviewsData?.forEach(review => {
-        // Validate status is one of the allowed values
         const validStatuses = ['new', 'learning', 'review', 'mastered'] as const;
         const status = validStatuses.includes(review.status as any) 
           ? (review.status as 'new' | 'learning' | 'review' | 'mastered')
@@ -104,25 +133,36 @@ export const FlashcardReviewSystem = ({ language, refreshTrigger }: FlashcardRev
   const handleReviewAnswer = async (correct: boolean) => {
     if (!currentUser || flashcards.length === 0) return;
 
-    const currentCard = flashcards[currentIndex];
+    const currentCard = getCurrentDisplayCards()[currentIndex];
     const existingReview = reviewData.get(currentCard.id);
 
-    const newDifficulty = correct 
-      ? Math.max(0, (existingReview?.difficulty || 0) - 1)
-      : Math.min(5, (existingReview?.difficulty || 0) + 1);
+    // Algorithme de difficulté amélioré
+    let newDifficulty: number;
+    if (correct) {
+      // Réduire la difficulté graduellement quand c'est correct
+      newDifficulty = Math.max(0, (existingReview?.difficulty || 2) - 0.5);
+    } else {
+      // Augmenter la difficulté plus agressivement quand c'est incorrect
+      newDifficulty = Math.min(5, (existingReview?.difficulty || 2) + 1);
+    }
 
     const reviewCount = (existingReview?.review_count || 0) + 1;
     const correctCount = (existingReview?.correct_count || 0) + (correct ? 1 : 0);
 
-    // Calculate next review date based on difficulty
-    const nextReviewHours = Math.pow(2, Math.max(0, 3 - newDifficulty)) * 24;
-    const nextReviewDate = new Date(Date.now() + nextReviewHours * 60 * 60 * 1000);
+    // Calculer la prochaine date de révision avec l'algorithme amélioré
+    const nextReviewDate = calculateNextReviewDate(newDifficulty, correct, reviewCount);
 
-    // Determine status
+    // Déterminer le statut
     let status: 'new' | 'learning' | 'review' | 'mastered' = 'learning';
-    if (newDifficulty === 0 && correctCount >= 3) {
+    
+    // Une carte est maîtrisée si elle a été vue plusieurs fois avec succès et a une faible difficulté
+    if (newDifficulty === 0 && correctCount >= 3 && reviewCount >= 3) {
       status = 'mastered';
-    } else if (reviewCount > 0) {
+    } else if (correctCount >= 2 && newDifficulty <= 1) {
+      status = 'review';
+    } else if (reviewCount === 1) {
+      status = 'learning';
+    } else {
       status = 'review';
     }
 
@@ -164,11 +204,16 @@ export const FlashcardReviewSystem = ({ language, refreshTrigger }: FlashcardRev
       // Move to next card
       nextCard();
 
+      // Messages d'encouragement plus détaillés
+      const nextReviewText = nextReviewDate.getTime() - Date.now() < 24 * 60 * 60 * 1000 
+        ? language === 'fr' ? 'bientôt' : 'soon'
+        : language === 'fr' ? `dans ${Math.ceil((nextReviewDate.getTime() - Date.now()) / (24 * 60 * 60 * 1000))} jour(s)` : `in ${Math.ceil((nextReviewDate.getTime() - Date.now()) / (24 * 60 * 60 * 1000))} day(s)`;
+
       toast({
-        title: correct ? "✅ Correct !" : "❌ À revoir",
+        title: correct ? "✅ Acquis !" : "❌ À revoir",
         description: correct 
-          ? (language === 'fr' ? "Bonne réponse !" : "Correct answer!")
-          : (language === 'fr' ? "Cette carte reviendra bientôt" : "This card will come back soon"),
+          ? (language === 'fr' ? `Parfait ! Prochaine révision ${nextReviewText}` : `Perfect! Next review ${nextReviewText}`)
+          : (language === 'fr' ? `Cette carte reviendra ${nextReviewText}` : `This card will return ${nextReviewText}`),
       });
 
     } catch (error) {
@@ -176,8 +221,18 @@ export const FlashcardReviewSystem = ({ language, refreshTrigger }: FlashcardRev
     }
   };
 
+  const getCurrentDisplayCards = () => {
+    if (showingDueForReview) {
+      return getDueForReviewCards();
+    } else if (showingDifficult) {
+      return getDifficultCards();
+    }
+    return flashcards;
+  };
+
   const nextCard = () => {
-    if (currentIndex < flashcards.length - 1) {
+    const displayCards = getCurrentDisplayCards();
+    if (currentIndex < displayCards.length - 1) {
       setCurrentIndex(currentIndex + 1);
       setIsFlipped(false);
     }
@@ -208,6 +263,14 @@ export const FlashcardReviewSystem = ({ language, refreshTrigger }: FlashcardRev
 
   const toggleDifficultMode = () => {
     setShowingDifficult(!showingDifficult);
+    setShowingDueForReview(false);
+    setCurrentIndex(0);
+    setIsFlipped(false);
+  };
+
+  const toggleDueForReviewMode = () => {
+    setShowingDueForReview(!showingDueForReview);
+    setShowingDifficult(false);
     setCurrentIndex(0);
     setIsFlipped(false);
   };
@@ -231,8 +294,9 @@ export const FlashcardReviewSystem = ({ language, refreshTrigger }: FlashcardRev
     );
   }
 
-  const displayCards = showingDifficult ? getDifficultCards() : flashcards;
+  const displayCards = getCurrentDisplayCards();
   const difficultCount = getDifficultCards().length;
+  const dueForReviewCount = getDueForReviewCards().length;
 
   if (displayCards.length === 0) {
     return (
@@ -240,20 +304,27 @@ export const FlashcardReviewSystem = ({ language, refreshTrigger }: FlashcardRev
         <CardContent className="p-8 text-center">
           <BookOpen className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
           <h3 className="text-lg font-semibold mb-2">
-            {showingDifficult 
-              ? (language === 'fr' ? 'Aucune carte difficile' : 'No difficult cards')
-              : (language === 'fr' ? 'Aucune flashcard trouvée' : 'No flashcards found')
+            {showingDueForReview 
+              ? (language === 'fr' ? 'Aucune carte à réviser maintenant' : 'No cards due for review now')
+              : showingDifficult 
+                ? (language === 'fr' ? 'Aucune carte difficile' : 'No difficult cards')
+                : (language === 'fr' ? 'Aucune flashcard trouvée' : 'No flashcards found')
             }
           </h3>
           <p className="text-muted-foreground mb-4">
-            {showingDifficult
-              ? (language === 'fr' ? 'Toutes vos cartes sont maîtrisées !' : 'All your cards are mastered!')
-              : (language === 'fr' ? 'Créez des flashcards d\'abord' : 'Create flashcards first')
+            {showingDueForReview
+              ? (language === 'fr' ? 'Revenez plus tard pour de nouvelles révisions !' : 'Come back later for new reviews!')
+              : showingDifficult
+                ? (language === 'fr' ? 'Toutes vos cartes sont maîtrisées !' : 'All your cards are mastered!')
+                : (language === 'fr' ? 'Créez des flashcards d\'abord' : 'Create flashcards first')
             }
           </p>
           <div className="flex gap-2 justify-center">
-            {showingDifficult && (
-              <Button onClick={toggleDifficultMode} variant="outline">
+            {(showingDifficult || showingDueForReview) && (
+              <Button onClick={() => {
+                setShowingDifficult(false);
+                setShowingDueForReview(false);
+              }} variant="outline">
                 {language === 'fr' ? 'Voir toutes les cartes' : 'Show all cards'}
               </Button>
             )}
@@ -279,7 +350,12 @@ export const FlashcardReviewSystem = ({ language, refreshTrigger }: FlashcardRev
             <div>
               <CardTitle className="flex items-center gap-2">
                 <BookOpen className="h-5 w-5" />
-                {language === 'fr' ? 'Révision des Flashcards' : 'Flashcard Review'}
+                {language === 'fr' ? 'Système de Révision Intelligent' : 'Intelligent Review System'}
+                {showingDueForReview && (
+                  <Badge variant="default">
+                    {language === 'fr' ? 'À Réviser' : 'Due for Review'}
+                  </Badge>
+                )}
                 {showingDifficult && (
                   <Badge variant="destructive">
                     {language === 'fr' ? 'Mode Difficile' : 'Difficult Mode'}
@@ -291,6 +367,11 @@ export const FlashcardReviewSystem = ({ language, refreshTrigger }: FlashcardRev
                   ? `Carte ${currentIndex + 1} sur ${displayCards.length}`
                   : `Card ${currentIndex + 1} of ${displayCards.length}`
                 }
+                {dueForReviewCount > 0 && !showingDueForReview && (
+                  <span className="ml-2 text-blue-600">
+                    ({dueForReviewCount} {language === 'fr' ? 'à réviser' : 'due for review'})
+                  </span>
+                )}
                 {difficultCount > 0 && !showingDifficult && (
                   <span className="ml-2 text-orange-600">
                     ({difficultCount} {language === 'fr' ? 'difficiles' : 'difficult'})
@@ -299,13 +380,22 @@ export const FlashcardReviewSystem = ({ language, refreshTrigger }: FlashcardRev
               </CardDescription>
             </div>
             <div className="flex gap-2">
+              {dueForReviewCount > 0 && (
+                <Button
+                  variant={showingDueForReview ? "default" : "outline"}
+                  onClick={toggleDueForReviewMode}
+                  size="sm"
+                >
+                  {language === 'fr' ? 'À réviser' : 'Due for review'} ({dueForReviewCount})
+                </Button>
+              )}
               {difficultCount > 0 && (
                 <Button
                   variant={showingDifficult ? "default" : "outline"}
                   onClick={toggleDifficultMode}
                   size="sm"
                 >
-                  {language === 'fr' ? 'Cartes difficiles' : 'Difficult cards'} ({difficultCount})
+                  {language === 'fr' ? 'Difficiles' : 'Difficult'} ({difficultCount})
                 </Button>
               )}
               <Button variant="outline" onClick={resetReview} size="sm">
@@ -329,12 +419,17 @@ export const FlashcardReviewSystem = ({ language, refreshTrigger }: FlashcardRev
             {currentReview && (
               <div className="flex justify-center gap-2 mb-4">
                 <Badge variant={currentReview.status === 'mastered' ? 'default' : 'secondary'}>
-                  {currentReview.status === 'mastered' ? '✅ Maîtrisé' : `📚 ${currentReview.status}`}
+                  {currentReview.status === 'mastered' ? '🏆 Maîtrisé' : 
+                   currentReview.status === 'learning' ? '📚 Apprentissage' :
+                   currentReview.status === 'review' ? '🔄 Révision' : '🆕 Nouveau'}
+                </Badge>
+                <Badge variant="outline">
+                  Difficulté: {currentReview.difficulty}/5
                 </Badge>
                 <Badge variant="outline">
                   {language === 'fr' ? 'Révisions' : 'Reviews'}: {currentReview.review_count}
                 </Badge>
-                <Badge variant="outline">
+                <Badge variant={currentReview.correct_count / Math.max(1, currentReview.review_count) >= 0.8 ? 'default' : 'secondary'}>
                   {language === 'fr' ? 'Réussite' : 'Success'}: {Math.round((currentReview.correct_count / Math.max(1, currentReview.review_count)) * 100)}%
                 </Badge>
               </div>
@@ -386,18 +481,18 @@ export const FlashcardReviewSystem = ({ language, refreshTrigger }: FlashcardRev
 
       {/* Review buttons (only show when card is flipped) */}
       {isFlipped && (
-        <Card className="bg-gradient-to-r from-red-50 to-green-50">
+        <Card className="bg-gradient-to-r from-red-50 to-green-50 border-2">
           <CardContent className="p-6">
             <div className="text-center space-y-4">
               <p className="text-lg font-medium">
-                {language === 'fr' ? 'Comment avez-vous trouvé cette carte ?' : 'How did you find this card?'}
+                {language === 'fr' ? 'Avez-vous mémorisé cette carte ?' : 'Have you memorized this card?'}
               </p>
               <div className="flex gap-4 justify-center">
                 <Button
                   onClick={() => handleReviewAnswer(false)}
                   variant="outline"
                   size="lg"
-                  className="bg-red-50 border-red-200 text-red-700 hover:bg-red-100 flex items-center gap-2"
+                  className="bg-red-50 border-red-200 text-red-700 hover:bg-red-100 flex items-center gap-2 px-8 py-3"
                 >
                   <X className="h-5 w-5" />
                   {language === 'fr' ? 'À revoir' : 'Review again'}
@@ -406,12 +501,18 @@ export const FlashcardReviewSystem = ({ language, refreshTrigger }: FlashcardRev
                   onClick={() => handleReviewAnswer(true)}
                   variant="outline"
                   size="lg"
-                  className="bg-green-50 border-green-200 text-green-700 hover:bg-green-100 flex items-center gap-2"
+                  className="bg-green-50 border-green-200 text-green-700 hover:bg-green-100 flex items-center gap-2 px-8 py-3"
                 >
                   <Check className="h-5 w-5" />
                   {language === 'fr' ? 'Acquis' : 'Mastered'}
                 </Button>
               </div>
+              <p className="text-sm text-muted-foreground">
+                {language === 'fr' 
+                  ? 'Soyez honnête pour optimiser votre apprentissage !'
+                  : 'Be honest to optimize your learning!'
+                }
+              </p>
             </div>
           </CardContent>
         </Card>
