@@ -2,10 +2,11 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Zap, BookOpen, Brain } from 'lucide-react';
+import { Zap, BookOpen, Brain, Play } from 'lucide-react';
 import { FlashcardInput } from './FlashcardInput';
 import { GeneratedFlashcardsList } from './GeneratedFlashcardsList';
 import { SavedFlashcardsList } from './SavedFlashcardsList';
+import { FlashcardReviewSystem } from '@/components/flashcards/FlashcardReviewSystem';
 import { useFlashcardGenerator } from '@/hooks/useFlashcardGenerator';
 
 interface FlashcardGeneratorProps {
@@ -59,7 +60,7 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
       </Card>
 
       <Tabs defaultValue="generated" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 mb-6 h-12">
+        <TabsList className="grid w-full grid-cols-3 mb-6 h-12">
           <TabsTrigger value="generated" className="text-base py-3">
             <Brain className="h-4 w-4 mr-2" />
             {language === 'fr' ? 'Flashcards Générées' : 'Generated Flashcards'}
@@ -67,6 +68,10 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
           <TabsTrigger value="saved" className="text-base py-3">
             <BookOpen className="h-4 w-4 mr-2" />
             {language === 'fr' ? 'Flashcards Sauvées' : 'Saved Flashcards'}
+          </TabsTrigger>
+          <TabsTrigger value="review" className="text-base py-3">
+            <Play className="h-4 w-4 mr-2" />
+            {language === 'fr' ? 'Révision' : 'Review'}
           </TabsTrigger>
         </TabsList>
         
@@ -83,6 +88,13 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
             language={language}
             savedFlashcards={savedFlashcards}
             onDelete={deleteFlashcard}
+          />
+        </TabsContent>
+        
+        <TabsContent value="review">
+          <FlashcardReviewSystem
+            language={language}
+            refreshTrigger={savedFlashcards.length}
           />
         </TabsContent>
       </Tabs>
