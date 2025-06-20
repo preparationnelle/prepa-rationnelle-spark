@@ -72,12 +72,18 @@ export const FlashcardReviewSystem = ({ language, refreshTrigger }: FlashcardRev
 
       setFlashcards(flashcardsData || []);
       
-      // Create review data map with proper type casting
+      // Create review data map with proper type validation
       const reviewMap = new Map<string, ReviewData>();
       reviewsData?.forEach(review => {
+        // Validate status is one of the allowed values
+        const validStatuses = ['new', 'learning', 'review', 'mastered'] as const;
+        const status = validStatuses.includes(review.status as any) 
+          ? (review.status as 'new' | 'learning' | 'review' | 'mastered')
+          : 'new';
+          
         reviewMap.set(review.flashcard_id, {
           id: review.id,
-          status: review.status as 'new' | 'learning' | 'review' | 'mastered',
+          status,
           difficulty: review.difficulty,
           review_count: review.review_count,
           correct_count: review.correct_count,
