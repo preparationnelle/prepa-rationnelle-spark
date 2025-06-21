@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { SchoolCard } from '../SchoolCard';
 import { Link } from 'react-router-dom';
 import { 
-  User, Target, UsersRound, Sparkles, Map, Heart, ChevronDown
+  User, Target, UsersRound, Sparkles, Map, Heart, ChevronDown, MessageCircle
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -172,6 +172,30 @@ export const SchoolsSection = () => {
               </Card>
             </Link>
           ))}
+        </div>
+        
+        {/* Article spécialisé entretien inversé GEM */}
+        <div className="mb-8">
+          <Card className="bg-gradient-to-r from-primary/5 to-secondary/5 border-primary/20">
+            <CardContent className="p-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <MessageCircle className="h-6 w-6 text-primary" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg mb-1">Entretien inversé à GEM</h3>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    Guide complet avec toutes les questions à poser lors de l'ent retien inversé de 10 minutes à Grenoble EM
+                  </p>
+                  <Link to="/questions/entretien-inverse-gem">
+                    <Button size="sm" variant="outline">
+                      Découvrir l'article complet
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
         
         {!showAllCategories && (

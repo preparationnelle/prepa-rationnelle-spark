@@ -58,7 +58,7 @@ export const gemData: SchoolData = {
     },
     {
       title: "Pour l'entretien inversé",
-      content: "Renseignez-vous au maximum sur les profils de jurés typiques à GEM. Souvent, il y a un professeur et un cadre d'entreprise/alumni. Si vous repérez leurs noms au début, et que l'un est dans un domaine qui vous parle, choisissez-le.\n\nPréparez une trame de questions à l'avance qui puisse s'adapter à n'importe qui : demandez au juré de parler de son parcours, ce qui l'a marqué dans sa carrière, un conseil qu'il donnerait à l'étudiant que vous êtes, ce qu'il pense de GEM ou de l'évolution de son secteur.\n\nDes questions ouvertes peuvent lancer la personne sur une vraie conversation. Exemple : « Qu'avez-vous appris de plus important au cours de votre carrière ? »"
+      content: "Renseignez-vous au maximum sur les profils de jurés typiques à GEM. Souvent, il y a un professeur et un cadre d'entreprise/alumni. Si vous repérez leurs noms au début, et que l'un est dans un domaine qui vous parle, choisissez-le.\n\nPréparez une trame de questions à l'avance qui puisse s'adapter à n'importe qui : demandez au juré de parler de son parcours, ce qui l'a marqué dans sa carrière, un conseil qu'il donnerait à l'étudiant que vous êtes, ce qu'il pense de GEM ou de l'évolution de son secteur.\n\nDes questions ouvertes peuvent lancer la personne sur une vraie conversation. Exemple : « Qu'avez-vous appris de plus important au cours de votre carrière ? »\n\n[Découvrez tous nos conseils pour l'entretien inversé](/questions/entretien-inverse-gem)"
     },
     {
       title: "Écoute active et rebond",

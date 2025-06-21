@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -15,6 +14,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import HomePage from "@/pages/HomePage";
 import QuestionsPage from "@/pages/QuestionsPage";
 import QuestionCategoryPage from "@/pages/QuestionCategoryPage";
+import EntretienInverseGEMPage from "@/pages/EntretienInverseGEMPage";
 import LoginPage from "@/pages/LoginPage";
 import RegisterPage from "@/pages/RegisterPage";
 import DashboardPage from "@/pages/DashboardPage";
@@ -167,6 +167,7 @@ const App = () => {
                       <Route path="/methodologie/allemand/essai/kritik" element={<ArticleAllemandEssaiKritik />} />
                       <Route path="/methodologie/allemand/essai/conclusion" element={<ArticleAllemandEssaiConclusion />} />
                       <Route path="/methodologie/allemand/essai/exemples" element={<ArticleAllemandEssaiExemples />} />
+                      <Route path="/questions/entretien-inverse-gem" element={<EntretienInverseGEMPage />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </main>
