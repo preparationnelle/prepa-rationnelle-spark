@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -39,9 +40,9 @@ const HomePage = () => {
     },
     {
       icon: <Megaphone className="h-8 w-8 text-primary" />,
-      title: "Pitch d’introduction",
+      title: "Pitch d'introduction",
       description:
-        "Réussissez votre introduction en entretien : captez l’attention, donnez envie, évitez les pièges et démarquez-vous avec une histoire personnelle vivante.",
+        "Réussissez votre introduction en entretien : captez l'attention, donnez envie, évitez les pièges et démarquez-vous avec une histoire personnelle vivante.",
       link: "/methodes/pitch-intro"
     },
     {

@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -110,6 +111,14 @@ const App = () => {
                       <Route path="/coaching" element={<CoachingPage />} />
                       <Route path="/calendar" element={<FullCalendarPage />} />
                       <Route path="/methodologie" element={<MethodologiePage />} />
+                      <Route path="/methodes/personnalite" element={<PersonnaliteMethodePage />} />
+                      <Route path="/methodes/motivation-ecole" element={<MotivationEcoleMethodePage />} />
+                      <Route path="/methodes/projet-professionnel" element={<ProjetProfessionnelMethodePage />} />
+                      <Route path="/methodes/pitch-intro" element={<PitchIntroMethodePage />} />
+                      <Route path="/methodes/storytelling" element={<StorytellingMethodePage />} />
+                      <Route path="/methodes/tendre-perches" element={<TendrePerchesMethodePage />} />
+                      <Route path="/methodes/finir-entretien" element={<FinirEntretienMethodePage />} />
+                      <Route path="/methodes/erreur-entretien" element={<ErreurEntretienMethodePage />} />
                       <Route path="/methodologie/personnalite" element={<PersonnaliteMethodePage />} />
                       <Route path="/methodologie/motivation-ecole" element={<MotivationEcoleMethodePage />} />
                       <Route path="/methodologie/projet-professionnel" element={<ProjetProfessionnelMethodePage />} />
@@ -127,6 +136,15 @@ const App = () => {
                       <Route path="/neoma" element={<NEOMAPage />} />
                       <Route path="/gem" element={<GEMPage />} />
                       <Route path="/audencia" element={<AudenciaPage />} />
+                      <Route path="/ecoles/edhec" element={<EDHECPage />} />
+                      <Route path="/ecoles/emlyon" element={<EMLyonPage />} />
+                      <Route path="/ecoles/escp" element={<ESCPPage />} />
+                      <Route path="/ecoles/essec" element={<ESSECPage />} />
+                      <Route path="/ecoles/skema" element={<SKEMAPage />} />
+                      <Route path="/ecoles/kedge" element={<KEDGEPage />} />
+                      <Route path="/ecoles/neoma" element={<NEOMAPage />} />
+                      <Route path="/ecoles/gem" element={<GEMPage />} />
+                      <Route path="/ecoles/audencia" element={<AudenciaPage />} />
                       <Route path="/methodologie/anglais" element={<MethodAnglaisPage />} />
                       <Route path="/methodologie/allemand" element={<MethodAllemandPage />} />
                       <Route path="/methodologie/allemand/essai" element={<MethodAllemandEssaiPage />} />

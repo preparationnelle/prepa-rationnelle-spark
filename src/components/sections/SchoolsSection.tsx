@@ -18,55 +18,55 @@ export const SchoolsSection = () => {
       name: "ESSEC Business School",
       duration: "Entretien de 30-45 minutes, coefficient 10.",
       feature: "Format approfondi avec mise en situation initiale.",
-      link: "/ecoles/essec"
+      link: "/essec"
     },
     {
       name: "ESCP Business School",
       duration: "Entretien de 30 minutes, coefficient 12.",
       feature: "Entretien structuré autour d'un questionnaire préalable.",
-      link: "/ecoles/escp"
+      link: "/escp"
     },
     {
       name: "EDHEC Business School",
       duration: "Entretien de 1h30, coefficient 15.",
       feature: "Format tripartite avec présentation, travail de groupe et entretien.",
-      link: "/ecoles/edhec"
+      link: "/edhec"
     },
     {
       name: "EM Lyon Business School",
       duration: "Entretien de 25 minutes, coefficient 9.",
       feature: "Format ludique avec cartes thématiques et présentation en 1 minute.",
-      link: "/ecoles/emlyon"
+      link: "/em-lyon"
     },
     {
       name: "SKEMA Business School",
       duration: "Entretien de 25 minutes, coefficient 20.",
       feature: "CV fictif à 10 ans.",
-      link: "/ecoles/skema"
+      link: "/skema"
     },
     {
       name: "Audencia Business School",
       duration: "Entretien de 30 minutes, coefficient 10.",
       feature: "Forte dimension responsabilité sociétale avec partie en anglais.",
-      link: "/ecoles/audencia"
+      link: "/audencia"
     },
     {
       name: "Grenoble École de Management",
       duration: "Entretien de 30 minutes, coefficient 10.",
       feature: "Format original avec entretien inversé.",
-      link: "/ecoles/gem"
+      link: "/gem"
     },
     {
       name: "KEDGE Business School",
       duration: "Entretien de 30 minutes, coefficient 14.",
       feature: "Approche 'Grow by Doing' et questionnaire 'maison'.",
-      link: "/ecoles/kedge"
+      link: "/kedge"
     },
     {
       name: "NEOMA Business School",
       duration: "Entretien de 30 minutes, coefficient 12.",
       feature: "Format structuré autour de la 'réussite responsable'.",
-      link: "/ecoles/neoma"
+      link: "/neoma"
     }
   ];
 
