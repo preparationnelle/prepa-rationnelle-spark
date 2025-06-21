@@ -3,70 +3,74 @@ import { SchoolData } from "@/types/school";
 
 export const kedgeData: SchoolData = {
   name: "KEDGE Business School",
-  shortDescription: "Entretien classique avec questionnaire 'maison' (30 min), coefficient 14. Approche 'Grow by Doing'.",
+  shortDescription: "Entretien innovant 'Le Révélateur' avec jeu de cartes scénarisé (30 min), coefficient 14. Format unique centré sur les ODD.",
   presentation: {
     title: "Présentation de l'entretien",
     content: [
-      "KEDGE, école multi-campus (Marseille, Bordeaux), utilise un format très proche de NEOMA/ESCP. Entretien individuel d'environ 30 minutes (coefficient 14).",
-      "L'entretien s'appuie sur un questionnaire de personnalité rempli par le candidat en amont et utilisé pendant l'oral. La structure est classique : présentation du candidat, motivations, projet professionnel, etc., guidée par les questions du questionnaire.",
-      "L'originalité de KEDGE est dans certaines questions spécifiques de son questionnaire. Par exemple, le questionnaire 2023 comprenait : « Le PGE KEDGE repose sur le Grow by Doing. Expliquez ce qui vous attire dans cette approche. », « Quelle information nationale ou internationale a suscité le plus d'intérêt chez vous ces 3 derniers mois ? Pourquoi ? », « Le PGE KEDGE recherche des 'faiseurs' : parlez-nous de votre plus grand accomplissement concret »."
+      "KEDGE Business School a révolutionné son processus d'admission avec 'Le Révélateur', un format d'entretien innovant basé sur un jeu de cartes scénarisé. Ce nouveau dispositif remplace l'ancien questionnaire préalable et vise à permettre aux candidats de révéler leur personnalité de manière authentique et spontanée.",
+      "L'entretien dure 30 minutes (coefficient 14) devant un jury de deux personnes : généralement un membre de l'équipe pédagogique/administrative de KEDGE et un professionnel diplômé de l'école.",
+      "Le format se structure en 6 séquences : installation (1 min), présentation du jury (2 min), tirage de 5 cartes (1 min), présentation avec carte Autoportrait (3 min), traitement des autres cartes (20 min), et conclusion (3 min)."
     ],
     values: {
       title: "Valeurs et attentes de l'école",
       content: [
-        "KEDGE prône l'apprentissage par l'expérience et l'initiative, résumé par sa pédagogie 'Grow by Doing'. L'école veut des étudiants concrets et entreprenants, des 'faiseurs' qui n'hésitent pas à réaliser des projets et à apprendre sur le terrain.",
-        "Elle valorise les accomplissements tangibles (organisation d'événement, création d'un projet, engagement associatif), mais aussi l'ouverture sur le monde (KEDGE a de nombreux partenaires internationaux).",
-        "La question sur l'actualité récente vise à mesurer votre curiosité intellectuelle et votre capacité à analyser le monde qui vous entoure. Globalement, KEDGE recherche des profils dynamiques, pragmatiques et ouverts, capables de tirer parti de son approche pédagogique active."
+        "KEDGE valorise l'authenticité, la spontanéité et la capacité à établir des liens pertinents avec les enjeux sociétaux contemporains. L'école recherche des candidats capables de réflexion critique et d'engagement autour des Objectifs de Développement Durable (ODD) de l'ONU.",
+        "Le format 'Le Révélateur' évalue votre capacité à vous projeter, réfléchir et vous exprimer sur des thématiques concrètes. KEDGE privilégie la créativité, l'adaptabilité et la vivacité d'esprit plutôt que les réponses formatées.",
+        "L'école attend des candidats qu'ils démontrent leur capacité d'argumentation, leur originalité de pensée et leur aptitude à connecter leurs expériences personnelles aux grands défis mondiaux."
       ]
     }
   },
   keyPoints: [
     {
       title: "Format d'entretien",
-      description: "Entretien individuel de 30 minutes, coefficient 14"
-    },
-    {
-      title: "Questionnaire préalable",
-      description: "Ciblé sur l'esprit 'faiseur' et l'approche 'Grow by Doing'"
+      description: "'Le Révélateur' : jeu de 5 cartes scénarisé, 30 minutes, coefficient 14"
     },
     {
       title: "Jury",
-      description: "2 à 3 personnes, ambiance professionnelle mais assez détendue"
+      description: "2 personnes : membre KEDGE + professionnel diplômé"
+    },
+    {
+      title: "Cartes utilisées",
+      description: "5 types : Trait d'Union (ODD), Autoportrait, Trait d'Action, Trait de Pensée, Trait d'Esprit"
     },
     {
       title: "Spécificité",
-      description: "Focus sur vos réalisations concrètes et votre capacité d'initiative"
+      description: "Focus sur les ODD de l'ONU et capacité à faire des liens pertinents"
     }
   ],
   interviewStyle: {
-    title: "Style de l'entretien",
+    title: "Déroulement de l'entretien 'Le Révélateur'",
     content: [
-      "Le format est classique et bienveillant, très proche de NEOMA/ESCP. Le jury (2 ou 3 personnes) se base sur vos réponses au questionnaire pour orienter l'échange. L'ambiance est professionnelle mais assez détendue – notamment sur le campus de Bordeaux ou Marseille, connus pour leur convivialité.",
-      "Le jury sera attentif à la cohérence de votre projet (surtout si vous mentionnez vouloir profiter du Grow by Doing : il s'attendra à ce que vous citiez des expériences pratiques que vous voulez vivre en école).",
-      "Attendez-vous à des questions précises sur ce que vous avez écrit : « Vous parlez de l'approche Grow by Doing, concrètement qu'aimeriez-vous faire à KEDGE ? », « Racontez-nous la réalisation dont vous êtes le plus fier » ou « Quel est le fait d'actualité qui vous a marqué récemment et pourquoi ? ».",
-      "Le ton est généralement encourageant : les jurés cherchent à comprendre votre potentiel de 'faiseur' et à évaluer si vous saurez vous épanouir dans leur programme. Ils apprécieront que vous soyez enthousiaste et que vous ayez un esprit d'initiative."
+      "L'entretien commence par le tirage au sort de 5 cartes disposées en T, avec la carte Trait d'Union (ODD) au centre comme fil conducteur. Vous devez d'abord vous présenter en 3 minutes à l'aide de la carte Autoportrait bleue, puis traiter les 3 autres cartes dans l'ordre de votre choix.",
+      "La carte Trait d'Union (verte) présente l'un des 17 ODD de l'ONU et sert de référence pour tout l'entretien. Plus vous établissez de connexions pertinentes avec cet ODD, plus votre performance est valorisée.",
+      "Les autres cartes testent différentes compétences : la carte Trait d'Action (rouge) vous invite à parler d'actions concrètes à impact, la carte Trait de Pensée (jaune) évalue votre capacité d'argumentation face à une affirmation, et la carte Trait d'Esprit (rouge) teste votre adaptabilité face à un paradoxe.",
+      "L'ambiance est bienveillante mais professionnelle. Le jury évalue votre authenticité, votre spontanéité et votre capacité à réfléchir rapidement tout en gardant une cohérence avec les valeurs sociétales de KEDGE."
     ]
   },
   tips: [
     {
-      title: "Montrez que vous adhérez au 'Grow by Doing'",
-      content: "Expliquez que vous aimez apprendre en pratiquant et illustrez-le avec une expérience passée. Si on vous demande ce que cette approche vous inspire, mentionnez que vous avez hâte de participer à des projets concrets, des stages, des études de cas pour appliquer la théorie."
+      title: "Maîtrisez les 17 Objectifs de Développement Durable",
+      content: "Familiarisez-vous avec tous les ODD de l'ONU et réfléchissez à vos expériences personnelles en lien avec chacun d'eux. Préparez des exemples concrets d'actions ou d'engagements pour chaque ODD."
     },
     {
-      title: "Préparez un exemple solide de réalisation concrète",
-      content: "KEDGE adore les étudiants qui passent à l'action, donc mettez en avant un projet monté, un engagement bénévole avec résultats mesurables, etc."
+      title: "Privilégiez l'authenticité à la performance",
+      content: "KEDGE valorise la spontanéité et l'authenticité. Ne cherchez pas à impressionner à tout prix, mais montrez qui vous êtes vraiment et comment vous réfléchissez face aux enjeux sociétaux."
     },
     {
-      title: "Ayez un sujet d'actualité bien préparé",
-      content: "Choisissez un sujet précis (économie, société, environnement…) et expliquez clairement pourquoi il vous a intéressé – cela montrera votre esprit d'analyse et vos valeurs."
+      title: "Entraînez-vous avec le simulateur en ligne",
+      content: "KEDGE propose une version digitale du Révélateur pour vous exercer. Utilisez cet outil pour vous familiariser avec le format et tester différentes approches."
     },
     {
-      title: "Démontrez votre motivation spécifique pour KEDGE",
-      content: "Parlez de ce qui vous attire (par exemple, « la possibilité de faire un semestre sur le campus de Shanghai », ou « le parcours Start-up avec son incubateur »). Si vous visez un campus en particulier (Bordeaux ou Marseille), vous pouvez justifier ce choix."
+      title: "Développez votre capacité d'argumentation",
+      content: "Préparez-vous à défendre des positions face à des affirmations variées. Travaillez votre capacité à structurer rapidement une argumentation claire et nuancée."
     },
     {
-      title: "Soyez proactif pendant l'entretien",
-      content: "N'hésitez pas à poser une question au jury en fin d'échange si on vous y invite, par exemple sur une particularité du programme KEDGE qui vous intéresse. Faites transparaître votre énergie de 'faiseur'."
+      title: "Cultivez vos liens avec l'ODD central",
+      content: "Pendant l'entretien, cherchez constamment à établir des connexions logiques et pertinentes entre vos réponses et l'ODD tiré au sort. Cette cohérence est un critère d'évaluation majeur."
+    },
+    {
+      title: "Montrez votre créativité et votre adaptabilité",
+      content: "Face aux paradoxes de la carte Trait d'Esprit, laissez libre cours à votre créativité d'interprétation. KEDGE apprécie les candidats qui savent s'adapter et faire preuve de vivacité d'esprit."
     }
   ]
 };
