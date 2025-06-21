@@ -1,9 +1,8 @@
-
 import React, { useState } from 'react';
 import { SchoolCard } from '../SchoolCard';
 import { Link } from 'react-router-dom';
 import { 
-  User, Target, UsersRound, Sparkles, Map, Heart, ChevronDown, MessageCircle
+  User, Target, UsersRound, Sparkles, Map, Heart, ChevronDown, MessageCircle, FileText
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -70,7 +69,6 @@ export const SchoolsSection = () => {
     }
   ];
 
-  // Utiliser directement les IDs des catégories de questions depuis les données réelles
   const displayedCategories = [
     {
       id: 'introspection',
@@ -110,9 +108,7 @@ export const SchoolsSection = () => {
     }
   ];
 
-  // Display only the first 3 schools or all schools based on state
   const visibleSchools = showAllSchools ? schools : schools.slice(0, 3);
-  // Display only the first 3 categories or all categories based on state
   const visibleCategories = showAllCategories ? displayedCategories : displayedCategories.slice(0, 3);
 
   return (
@@ -174,8 +170,29 @@ export const SchoolsSection = () => {
           ))}
         </div>
         
-        {/* Article spécialisé entretien inversé GEM */}
-        <div className="mb-8">
+        {/* Articles spécialisés */}
+        <div className="mb-8 space-y-4">
+          <Card className="bg-gradient-to-r from-primary/5 to-secondary/5 border-primary/20">
+            <CardContent className="p-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <FileText className="h-6 w-6 text-primary" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg mb-1">Guide complet pour réaliser son CV projectif</h3>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    Tout ce qu'il faut savoir pour créer un CV projectif convaincant pour SKEMA et autres écoles
+                  </p>
+                  <Link to="/questions/cv-projectif">
+                    <Button size="sm" variant="outline">
+                      Découvrir l'article complet
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          
           <Card className="bg-gradient-to-r from-primary/5 to-secondary/5 border-primary/20">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
@@ -185,7 +202,7 @@ export const SchoolsSection = () => {
                 <div className="flex-1">
                   <h3 className="font-semibold text-lg mb-1">Entretien inversé à GEM</h3>
                   <p className="text-sm text-muted-foreground mb-3">
-                    Guide complet avec toutes les questions à poser lors de l'ent retien inversé de 10 minutes à Grenoble EM
+                    Guide complet avec toutes les questions à poser lors de l'entretien inversé de 10 minutes à Grenoble EM
                   </p>
                   <Link to="/questions/entretien-inverse-gem">
                     <Button size="sm" variant="outline">
