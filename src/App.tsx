@@ -27,14 +27,23 @@ import NEOMAPage from './pages/NEOMAPage';
 import InterviewSimulatorPage from './pages/InterviewSimulatorPage';
 import CVProjectifPage from './pages/CVProjectifPage';
 import EntretienInverseGEMPage from './pages/EntretienInverseGEMPage';
+import MethodologiePage from './pages/MethodologiePage';
+import MethodAnglaisPage from './pages/methodologie/MethodAnglaisPage';
+import MethodMathsPage from './pages/methodologie/MethodMathsPage';
+import MethodGeopolitiquePage from './pages/methodologie/MethodGeopolitiquePage';
+import MethodCulturePage from './pages/methodologie/MethodCulturePage';
+import MethodAllemandPage from './pages/methodologie/MethodAllemandPage';
+import MethodAllemandEssaiPage from './pages/methodologie/MethodAllemandEssaiPage';
+import MethodAllemandSynthesePage from './pages/methodologie/MethodAllemandSynthesePage';
+import MethodPythonPage from './pages/methodologie/MethodPythonPage';
 
 function App() {
   return (
     <Router>
       <ThemeProvider>
         <AuthProvider>
-          <PostHogProvider />
           <ProgressProvider>
+            <PostHogProvider />
             <div className="min-h-screen bg-background">
               <ScrollToTop />
               <Navigation />
@@ -56,6 +65,18 @@ function App() {
                 <Route path="/interview-simulator" element={<InterviewSimulatorPage />} />
                 <Route path="/questions/cv-projectif" element={<CVProjectifPage />} />
                 <Route path="/questions/entretien-inverse-gem" element={<EntretienInverseGEMPage />} />
+                
+                {/* Routes de méthodologie */}
+                <Route path="/methodologie" element={<MethodologiePage />} />
+                <Route path="/methodologie/anglais" element={<MethodAnglaisPage />} />
+                <Route path="/methodologie/maths" element={<MethodMathsPage />} />
+                <Route path="/methodologie/geopolitique" element={<MethodGeopolitiquePage />} />
+                <Route path="/methodologie/culture-generale" element={<MethodCulturePage />} />
+                <Route path="/methodologie/allemand" element={<MethodAllemandPage />} />
+                <Route path="/methodologie/allemand/essai" element={<MethodAllemandEssaiPage />} />
+                <Route path="/methodologie/allemand/synthese" element={<MethodAllemandSynthesePage />} />
+                <Route path="/methodologie/python" element={<MethodPythonPage />} />
+                
                 <Route path="*" element={<NotFound />} />
               </Routes>
               <ChatWidget />
