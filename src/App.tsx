@@ -1,36 +1,32 @@
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Navigation } from './components/Navigation';
+import Navigation from './components/Navigation';
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContext';
 import { ProgressProvider } from './context/ProgressContext';
-import { PostHogProvider } from './providers/PostHogProvider';
-import { ScrollToTop } from './components/ScrollToTop';
-import { ChatWidget } from './components/chat/ChatWidget';
+import PostHogProvider from './providers/PostHogProvider';
+import ScrollToTop from './components/ScrollToTop';
+import ChatWidget from './components/chat/ChatWidget';
 import HomePage from './pages/HomePage';
 import QuestionsPage from './pages/QuestionsPage';
 import QuestionCategoryPage from './pages/QuestionCategoryPage';
 import GeneratorPage from './pages/GeneratorPage';
-import PricingPage from './pages/PricingPage';
-import AccountPage from './pages/AccountPage';
-import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage';
 import ContactPage from './pages/ContactPage';
-import PrivacyPage from './pages/PrivacyPage';
-import TermsPage from './pages/TermsPage';
-import NotFoundPage from './pages/NotFoundPage';
-import EssecPage from './pages/EssecPage';
-import EscpPage from './pages/EscpPage';
-import EdhecPage from './pages/EdhecPage';
-import EmLyonPage from './pages/EmLyonPage';
-import SkemaPage from './pages/SKEMAPage';
+import NotFound from './pages/NotFound';
+import ESSECPage from './pages/ESSECPage';
+import ESCPPage from './pages/ESCPPage';
+import EDHECPage from './pages/EDHECPage';
+import EMLyonPage from './pages/EMLyonPage';
+import SKEMAPage from './pages/SKEMAPage';
 import AudenciaPage from './pages/AudenciaPage';
 import GEMPage from './pages/GEMPage';
-import KedgePage from './pages/KedgePage';
-import NeomaPage from './pages/NeomaPage';
-import InterviewSimulator from './pages/InterviewSimulator';
+import KEDGEPage from './pages/KEDGEPage';
+import NEOMAPage from './pages/NEOMAPage';
+import InterviewSimulatorPage from './pages/InterviewSimulatorPage';
 import CVProjectifPage from './pages/CVProjectifPage';
+import EntretienInverseGEMPage from './pages/EntretienInverseGEMPage';
 
 function App() {
   return (
@@ -47,25 +43,20 @@ function App() {
                   <Route path="/questions" element={<QuestionsPage />} />
                   <Route path="/questions/:categoryId" element={<QuestionCategoryPage />} />
                   <Route path="/generator" element={<GeneratorPage />} />
-                  <Route path="/pricing" element={<PricingPage />} />
-                  <Route path="/account" element={<AccountPage />} />
-                  <Route path="/login" element={<LoginPage />} />
-                  <Route path="/signup" element={<SignupPage />} />
                   <Route path="/contact" element={<ContactPage />} />
-                  <Route path="/privacy" element={<PrivacyPage />} />
-                  <Route path="/terms" element={<TermsPage />} />
-                  <Route path="/essec" element={<EssecPage />} />
-                  <Route path="/escp" element={<EscpPage />} />
-                  <Route path="/edhec" element={<EdhecPage />} />
-                  <Route path="/em-lyon" element={<EmLyonPage />} />
-                  <Route path="/skema" element={<SkemaPage />} />
+                  <Route path="/essec" element={<ESSECPage />} />
+                  <Route path="/escp" element={<ESCPPage />} />
+                  <Route path="/edhec" element={<EDHECPage />} />
+                  <Route path="/em-lyon" element={<EMLyonPage />} />
+                  <Route path="/skema" element={<SKEMAPage />} />
                   <Route path="/audencia" element={<AudenciaPage />} />
                   <Route path="/gem" element={<GEMPage />} />
-                  <Route path="/kedge" element={<KedgePage />} />
-                  <Route path="/neoma" element={<NeomaPage />} />
-                  <Route path="/interview-simulator" element={<InterviewSimulator />} />
+                  <Route path="/kedge" element={<KEDGEPage />} />
+                  <Route path="/neoma" element={<NEOMAPage />} />
+                  <Route path="/interview-simulator" element={<InterviewSimulatorPage />} />
                   <Route path="/questions/cv-projectif" element={<CVProjectifPage />} />
-                  <Route path="*" element={<NotFoundPage />} />
+                  <Route path="/questions/entretien-inverse-gem" element={<EntretienInverseGEMPage />} />
+                  <Route path="*" element={<NotFound />} />
                 </Routes>
                 <ChatWidget />
                 <Toaster />
