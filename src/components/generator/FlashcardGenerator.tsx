@@ -7,6 +7,7 @@ import { FlashcardInput } from './FlashcardInput';
 import { GeneratedFlashcardsList } from './GeneratedFlashcardsList';
 import { SavedFlashcardsList } from './SavedFlashcardsList';
 import { FlashcardReviewSystem } from '@/components/flashcards/FlashcardReviewSystem';
+import { AutoPhraseGenerator } from './AutoPhraseGenerator';
 import { useFlashcardGenerator } from '@/hooks/useFlashcardGenerator';
 
 interface FlashcardGeneratorProps {
@@ -28,8 +29,19 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
     clearGeneratedHistory,
   } = useFlashcardGenerator(language, onFlashcardCreated);
 
+  const handlePhraseGenerated = (phrase: string, reference: string) => {
+    // Optionellement, on peut pré-remplir le champ de saisie avec la phrase générée
+    // setInputWord(phrase.split(' ')[0]); // Premier mot de la phrase par exemple
+  };
+
   return (
     <div className="space-y-8">
+      {/* Zone de génération automatique de phrases */}
+      <AutoPhraseGenerator 
+        language={language} 
+        onPhraseGenerated={handlePhraseGenerated}
+      />
+
       <Card className="overflow-hidden border-0 shadow-xl bg-gradient-to-br from-white via-purple-50/30 to-indigo-50/30">
         <CardHeader className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
           <CardTitle className="flex items-center gap-3 text-2xl">
