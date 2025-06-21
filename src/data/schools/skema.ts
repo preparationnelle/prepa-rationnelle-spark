@@ -1,4 +1,3 @@
-
 import { SchoolData } from "@/types/school";
 
 export const skemaData: SchoolData = {
@@ -10,7 +9,8 @@ export const skemaData: SchoolData = {
       "SKEMA se démarque par un format d'entretien très orienté projection dans l'avenir. Ici, on vous demande en amont de construire un CV fictif vous représentant dans 10 ans (soit 10 ans après votre entrée à SKEMA).",
       "Ce \"CV projectif\" détaille les études et postes que vous envisagez d'occuper pendant et après l'école, jusqu'à ce 10ème anniversaire. Le jour de l'oral, un membre du jury récupère votre CV avant de vous faire entrer.",
       "Puis l'entretien (25 min, coef. 20) s'engage quasi exclusivement sur la base de ce CV du futur : « Pourquoi avoir choisi de travailler chez X en sortie d'école ? Pourquoi tel master spécialisé ? Pourquoi passer de telle entreprise à telle autre ? » etc.",
-      "Bien sûr, on aborde aussi vos motivations plus globales pour SKEMA, mais le fil rouge reste votre plan de carrière simulé. C'est donc un entretien très orienté projet professionnel et cohérence du parcours."
+      "Bien sûr, on aborde aussi vos motivations plus globales pour SKEMA, mais le fil rouge reste votre plan de carrière simulé. C'est donc un entretien très orienté projet professionnel et cohérence du parcours.",
+      "[Découvrez notre guide complet pour préparer votre CV projectif](/questions/cv-projectif)"
     ],
     values: {
       title: "Ce que SKEMA valorise",

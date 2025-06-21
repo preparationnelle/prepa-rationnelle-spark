@@ -1,4 +1,3 @@
-
 import { SchoolData } from "@/types/school";
 
 export const gemData: SchoolData = {
@@ -10,7 +9,8 @@ export const gemData: SchoolData = {
       "GEM propose un entretien d'admission en plusieurs séquences, assez particulier dans son déroulement. Durée ~30 minutes (coef. 10).",
       "1. Exposé d'actualité (5 min) : En amont (avant le jour J), chaque candidat prépare une présentation de 5 minutes sur un fait d'actualité récent de son choix, lié à une thématique au programme (géopolitique, économie ou management de la tech, selon votre spécialité prépa). Vous présentez ce sujet pendant 5 min devant le jury.",
       "2. Entretien inversé (10 min) : Vous endossez le rôle de l'interviewer. Vous choisissez l'un des jurés et vous lui posez des questions pendant 9 minutes, comme si vous meniez l'entretien. Puis vous faites une courte synthèse de 1 minute de ce qu'il vous a répondu.",
-      "3. Échange libre (15 min) : Retour au format classique, le jury reprend la main et vous pose des questions de motivation, parcours, etc. C'est l'entretien de personnalité final où vous \"bouclez\" l'oral."
+      "3. Échange libre (15 min) : Retour au format classique, le jury reprend la main et vous pose des questions de motivation, parcours, etc. C'est l'entretien de personnalité final où vous \"bouclez\" l'oral.",
+      "**[Guide complet : Toutes les questions pour réussir votre entretien inversé à GEM](/questions/entretien-inverse-gem)**"
     ],
     values: {
       title: "Ce que GEM valorise",
@@ -58,7 +58,7 @@ export const gemData: SchoolData = {
     },
     {
       title: "Pour l'entretien inversé",
-      content: "Renseignez-vous au maximum sur les profils de jurés typiques à GEM. Souvent, il y a un professeur et un cadre d'entreprise/alumni. Si vous repérez leurs noms au début, et que l'un est dans un domaine qui vous parle, choisissez-le.\n\nPréparez une trame de questions à l'avance qui puisse s'adapter à n'importe qui : demandez au juré de parler de son parcours, ce qui l'a marqué dans sa carrière, un conseil qu'il donnerait à l'étudiant que vous êtes, ce qu'il pense de GEM ou de l'évolution de son secteur.\n\nDes questions ouvertes peuvent lancer la personne sur une vraie conversation. Exemple : « Qu'avez-vous appris de plus important au cours de votre carrière ? »\n\n[Découvrez tous nos conseils pour l'entretien inversé](/questions/entretien-inverse-gem)"
+      content: "Renseignez-vous au maximum sur les profils de jurés typiques à GEM. Souvent, il y a un professeur et un cadre d'entreprise/alumni. Si vous repérez leurs noms au début, et que l'un est dans un domaine qui vous parle, choisissez-le.\n\nPréparez une trame de questions à l'avance qui puisse s'adapter à n'importe qui : demandez au juré de parler de son parcours, ce qui l'a marqué dans sa carrière, un conseil qu'il donnerait à l'étudiant que vous êtes, ce qu'il pense de GEM ou de l'évolution de son secteur.\n\nDes questions ouvertes peuvent lancer la personne sur une vraie conversation. Exemple : « Qu'avez-vous appris de plus important au cours de votre carrière ? »\n\n**[Découvrez toutes nos questions pour l'entretien inversé](/questions/entretien-inverse-gem)**"
     },
     {
       title: "Écoute active et rebond",
