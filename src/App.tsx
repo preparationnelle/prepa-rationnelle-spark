@@ -32,38 +32,37 @@ function App() {
   return (
     <Router>
       <ThemeProvider>
-        <PostHogProvider>
-          <AuthProvider>
-            <ProgressProvider>
-              <div className="min-h-screen bg-background">
-                <ScrollToTop />
-                <Navigation />
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/questions" element={<QuestionsPage />} />
-                  <Route path="/questions/:categoryId" element={<QuestionCategoryPage />} />
-                  <Route path="/generator" element={<GeneratorPage />} />
-                  <Route path="/contact" element={<ContactPage />} />
-                  <Route path="/essec" element={<ESSECPage />} />
-                  <Route path="/escp" element={<ESCPPage />} />
-                  <Route path="/edhec" element={<EDHECPage />} />
-                  <Route path="/em-lyon" element={<EMLyonPage />} />
-                  <Route path="/skema" element={<SKEMAPage />} />
-                  <Route path="/audencia" element={<AudenciaPage />} />
-                  <Route path="/gem" element={<GEMPage />} />
-                  <Route path="/kedge" element={<KEDGEPage />} />
-                  <Route path="/neoma" element={<NEOMAPage />} />
-                  <Route path="/interview-simulator" element={<InterviewSimulatorPage />} />
-                  <Route path="/questions/cv-projectif" element={<CVProjectifPage />} />
-                  <Route path="/questions/entretien-inverse-gem" element={<EntretienInverseGEMPage />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-                <ChatWidget />
-                <Toaster />
-              </div>
-            </ProgressProvider>
-          </AuthProvider>
-        </PostHogProvider>
+        <AuthProvider>
+          <PostHogProvider />
+          <ProgressProvider>
+            <div className="min-h-screen bg-background">
+              <ScrollToTop />
+              <Navigation />
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/questions" element={<QuestionsPage />} />
+                <Route path="/questions/:categoryId" element={<QuestionCategoryPage />} />
+                <Route path="/generator" element={<GeneratorPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/essec" element={<ESSECPage />} />
+                <Route path="/escp" element={<ESCPPage />} />
+                <Route path="/edhec" element={<EDHECPage />} />
+                <Route path="/em-lyon" element={<EMLyonPage />} />
+                <Route path="/skema" element={<SKEMAPage />} />
+                <Route path="/audencia" element={<AudenciaPage />} />
+                <Route path="/gem" element={<GEMPage />} />
+                <Route path="/kedge" element={<KEDGEPage />} />
+                <Route path="/neoma" element={<NEOMAPage />} />
+                <Route path="/interview-simulator" element={<InterviewSimulatorPage />} />
+                <Route path="/questions/cv-projectif" element={<CVProjectifPage />} />
+                <Route path="/questions/entretien-inverse-gem" element={<EntretienInverseGEMPage />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+              <ChatWidget />
+              <Toaster />
+            </div>
+          </ProgressProvider>
+        </AuthProvider>
       </ThemeProvider>
     </Router>
   );
