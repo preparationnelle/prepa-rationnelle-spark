@@ -36,6 +36,7 @@ import MethodAllemandPage from './pages/methodologie/MethodAllemandPage';
 import MethodAllemandEssaiPage from './pages/methodologie/MethodAllemandEssaiPage';
 import MethodAllemandSynthesePage from './pages/methodologie/MethodAllemandSynthesePage';
 import MethodPythonPage from './pages/methodologie/MethodPythonPage';
+import MathsEteECG1ECG2Page from './pages/methodologie/MathsEteECG1ECG2Page';
 
 function App() {
   return (
@@ -76,6 +77,7 @@ function App() {
                 <Route path="/methodologie/allemand/essai" element={<MethodAllemandEssaiPage />} />
                 <Route path="/methodologie/allemand/synthese" element={<MethodAllemandSynthesePage />} />
                 <Route path="/methodologie/python" element={<MethodPythonPage />} />
+                <Route path="/methodologie/ete/maths-ecg1-ecg2" element={<MathsEteECG1ECG2Page />} />
                 
                 <Route path="*" element={<NotFound />} />
               </Routes>

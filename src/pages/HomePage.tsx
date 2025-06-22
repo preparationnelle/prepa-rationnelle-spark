@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ChevronDown, User, Briefcase, GraduationCap, BookOpen, MessageSquare, Book, AlertTriangle } from 'lucide-react';
+import { ChevronDown, User, Briefcase, GraduationCap, BookOpen, MessageSquare, Book, AlertTriangle, Sun, Calendar } from 'lucide-react';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { PodcastSection } from '@/components/sections/PodcastSection';
@@ -18,6 +18,7 @@ import OffersSection from "@/components/OffersSection";
 
 const HomePage = () => {
   const [showAllMethods, setShowAllMethods] = useState(false);
+  const [showAllSummerMethods, setShowAllSummerMethods] = useState(false);
 
   const methodsCards = [
     {
@@ -65,8 +66,19 @@ const HomePage = () => {
     }
   ];
 
+  const summerMethodsCards = [
+    {
+      icon: <Sun className="h-8 w-8 text-primary" />,
+      title: "Mathématiques (entre ECG1 et ECG2)",
+      description: "Un été pour (re)prendre le contrôle en maths. Conseils pratiques pour être solide à la rentrée.",
+      link: "/methodologie/ete/maths-ecg1-ecg2",
+      category: "Première année (rentrée en ECG2)"
+    }
+  ];
+
   // Display only the first 3 methods or all methods based on state
   const visibleMethods = showAllMethods ? methodsCards : methodsCards.slice(0, 3);
+  const visibleSummerMethods = showAllSummerMethods ? summerMethodsCards : summerMethodsCards.slice(0, 3);
 
   return (
     <div className="min-h-screen bg-background">
@@ -131,11 +143,63 @@ const HomePage = () => {
           )}
         </div>
       </section>
+
+      {/* 5. NOUVELLE SECTION - Organiser son été */}
+      <section className="py-16 px-4 bg-muted/30">
+        <div className="container mx-auto">
+          <h2 className="section-heading text-center mb-4 text-foreground">
+            Organiser son <span className="gradient-text">été</span>
+          </h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Profitez des vacances d'été pour consolider vos acquis et préparer efficacement la rentrée suivante.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-8">
+            {visibleSummerMethods.map((method, index) => (
+              <Card key={index} className="h-full flex flex-col hover:shadow-lg transition-all bg-card border-border">
+                <CardContent className="p-6 flex flex-col items-center text-center flex-grow">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                    {method.icon}
+                  </div>
+                  <div className="mb-2">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
+                      {method.category}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3 text-card-foreground">{method.title}</h3>
+                  <p className="text-muted-foreground mb-6">
+                    {method.description}
+                  </p>
+                </CardContent>
+                <CardFooter className="p-6 pt-0">
+                  <Link to={method.link} className="w-full">
+                    <Button variant="outline" className="w-full">
+                      Consulter l'article
+                    </Button>
+                  </Link>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+          
+          {!showAllSummerMethods && summerMethodsCards.length > 3 && (
+            <div className="text-center mb-8">
+              <Button 
+                onClick={() => setShowAllSummerMethods(true)} 
+                variant="outline"
+                className="flex items-center gap-2"
+              >
+                Voir tous les conseils été <ChevronDown className="h-4 w-4" />
+              </Button>
+            </div>
+          )}
+        </div>
+      </section>
       
-      {/* 5. Nos formules - Pricing Section */}
+      {/* 6. Nos formules - Pricing Section */}
       <PricingSection />
       
-      {/* 6. Ce que nos étudiants disent - Testimonials Section */}
+      {/* 7. Ce que nos étudiants disent - Testimonials Section */}
       <TestimonialsSection />
       
       <PodcastSection />
