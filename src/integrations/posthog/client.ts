@@ -3,7 +3,7 @@ import posthog from 'posthog-js';
 
 // Initialize PostHog with project API key
 export const initPostHog = () => {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== 'undefined' && !posthog.__loaded) {
     posthog.init(
       'phc_pGAwikZ7KdqjbuCuY4f9FijQ959CiQGjc9PgH88b4vR',
       {
@@ -13,7 +13,10 @@ export const initPostHog = () => {
         person_profiles: 'identified_only',
         autocapture: true,
         loaded: (posthog) => {
-          if (process.env.NODE_ENV === 'development') posthog.debug();
+          if (process.env.NODE_ENV === 'development') {
+            console.log('PostHog loaded successfully');
+            posthog.debug();
+          }
         }
       }
     );
@@ -21,11 +24,6 @@ export const initPostHog = () => {
   
   return posthog;
 };
-
-// Initialize PostHog on module load
-if (typeof window !== 'undefined') {
-  initPostHog();
-}
 
 // Export the PostHog instance
 export { posthog };
