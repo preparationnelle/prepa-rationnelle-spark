@@ -1,25 +1,12 @@
 
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { cn } from "@/lib/utils";
-
-type AutomationKey =
-  | 'answer'
-  | 'flashcards'
-  | 'languages'
-  | 'geopolitics'
-  | 'case-study'
-  | 'emlyon'
-  | 'edhec'
-  | 'theme-grammar'
-  | 'school-profile'
-  | 'math-tutor'
-  | 'python-tutor'
-  | 'python-exercises'
-  | 'prepa-chatbot';
+import { Link } from 'react-router-dom';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { ExternalLink } from 'lucide-react';
 
 interface Automation {
-  key: AutomationKey;
+  key: string;
   icon: React.ReactNode;
   title: string;
   description: string;
@@ -30,62 +17,80 @@ interface Category {
   title: string;
   description: string;
   icon: React.ReactNode;
-  automations: Automation[];
   gradient: string;
+  automations: Automation[];
 }
 
 interface GeneratorCategorySectionProps {
   categories: Category[];
-  onSelect: (key: AutomationKey) => void;
+  onSelect: (key: string) => void;
 }
 
-export const GeneratorCategorySection: React.FC<GeneratorCategorySectionProps> = ({
-  categories,
-  onSelect,
-}) => (
-  <div className="space-y-12">
-    {categories.map((category, index) => (
-      <div key={index} className="space-y-6">
-        <Card className={cn("overflow-hidden border-0 shadow-lg", category.gradient)}>
-          <CardHeader className="text-center py-6">
-            <div className="flex justify-center mb-3">
+export const GeneratorCategorySection: React.FC<GeneratorCategorySectionProps> = ({ 
+  categories, 
+  onSelect 
+}) => {
+  const getAutomationUrl = (key: string) => {
+    return `/generator/${key}`;
+  };
+
+  return (
+    <div className="space-y-12">
+      {categories.map((category, categoryIndex) => (
+        <div key={categoryIndex} className="space-y-6">
+          {/* Category Header */}
+          <div className={`${category.gradient} rounded-2xl p-8 text-white`}>
+            <div className="flex items-center gap-4 mb-4">
               <div className="p-3 bg-white/20 rounded-lg backdrop-blur-sm">
                 {category.icon}
               </div>
-            </div>
-            <CardTitle className="text-2xl font-bold text-white">
-              {category.title}
-            </CardTitle>
-            <p className="text-white/90 text-base">
-              {category.description}
-            </p>
-          </CardHeader>
-        </Card>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {category.automations.map(auto => (
-            <button
-              key={auto.key}
-              onClick={() => onSelect(auto.key)}
-              className={cn(
-                "group flex flex-col items-start p-6 rounded-lg bg-white hover:shadow-xl hover:bg-primary/5 transition-all border border-border/40 relative ring-0 focus-visible:ring-2 focus-visible:ring-primary outline-none text-left",
-              )}
-              style={{ minHeight: 170 }}
-              tabIndex={0}
-              aria-label={auto.title}
-            >
-              <div className="flex items-center gap-3 mb-3">
-                {auto.icon}
-                <span className="bg-primary text-primary-foreground text-xs px-2 py-1 rounded-full font-medium">
-                  {auto.badge}
-                </span>
+              <div>
+                <h2 className="text-3xl font-bold">{category.title}</h2>
+                <p className="text-lg opacity-90 mt-2">{category.description}</p>
               </div>
-              <div className="font-bold text-lg mb-2 group-hover:text-primary transition-colors">{auto.title}</div>
-              <div className="text-sm text-muted-foreground">{auto.description}</div>
-            </button>
-          ))}
+            </div>
+          </div>
+
+          {/* Automations Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {category.automations.map((automation, automationIndex) => (
+              <Card key={automationIndex} className="h-full hover:shadow-lg transition-all duration-300 border-border/50 hover:border-primary/20 bg-white/80 backdrop-blur-sm group">
+                <CardHeader className="pb-4">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      {automation.icon}
+                    </div>
+                    <span className="bg-primary text-primary-foreground text-xs px-2 py-1 rounded-full font-medium">
+                      {automation.badge}
+                    </span>
+                  </div>
+                  <CardTitle className="text-lg">{automation.title}</CardTitle>
+                  <CardDescription className="text-sm leading-relaxed">
+                    {automation.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="pt-0 space-y-2">
+                  <Button 
+                    onClick={() => onSelect(automation.key)}
+                    className="w-full group-hover:shadow-md transition-all"
+                  >
+                    Essayer ici
+                  </Button>
+                  <Link to={getAutomationUrl(automation.key)}>
+                    <Button 
+                      variant="outline" 
+                      className="w-full border-2 hover:bg-primary hover:text-white transition-all duration-300"
+                    >
+                      <ExternalLink className="h-4 w-4 mr-2" />
+                      Page dédiée
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
-      </div>
-    ))}
-  </div>
-);
+      ))}
+    </div>
+  );
+};

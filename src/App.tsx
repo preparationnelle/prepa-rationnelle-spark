@@ -38,6 +38,21 @@ import MethodAllemandSynthesePage from './pages/methodologie/MethodAllemandSynth
 import MethodPythonPage from './pages/methodologie/MethodPythonPage';
 import MathsEteECG1ECG2Page from './pages/methodologie/MathsEteECG1ECG2Page';
 
+// Import des pages des générateurs individuels
+import AnswerGeneratorPage from './pages/generator/AnswerGeneratorPage';
+import FlashcardsGeneratorPage from './pages/generator/FlashcardsGeneratorPage';
+import LanguagesGeneratorPage from './pages/generator/LanguagesGeneratorPage';
+import GeopoliticsGeneratorPage from './pages/generator/GeopoliticsGeneratorPage';
+import CaseStudyGeneratorPage from './pages/generator/CaseStudyGeneratorPage';
+import EMLyonGeneratorPage from './pages/generator/EMLyonGeneratorPage';
+import EDHECGeneratorPage from './pages/generator/EDHECGeneratorPage';
+import ThemeGrammarGeneratorPage from './pages/generator/ThemeGrammarGeneratorPage';
+import SchoolProfileGeneratorPage from './pages/generator/SchoolProfileGeneratorPage';
+import MathTutorGeneratorPage from './pages/generator/MathTutorGeneratorPage';
+import PythonTutorGeneratorPage from './pages/generator/PythonTutorGeneratorPage';
+import PythonExercisesGeneratorPage from './pages/generator/PythonExercisesGeneratorPage';
+import PrepaChatbotGeneratorPage from './pages/generator/PrepaChatbotGeneratorPage';
+
 function App() {
   return (
     <Router>
@@ -78,6 +93,21 @@ function App() {
                 <Route path="/methodologie/allemand/synthese" element={<MethodAllemandSynthesePage />} />
                 <Route path="/methodologie/python" element={<MethodPythonPage />} />
                 <Route path="/methodologie/ete/maths-ecg1-ecg2" element={<MathsEteECG1ECG2Page />} />
+
+                {/* Routes des générateurs individuels */}
+                <Route path="/generator/answer" element={<AnswerGeneratorPage />} />
+                <Route path="/generator/flashcards" element={<FlashcardsGeneratorPage />} />
+                <Route path="/generator/languages" element={<LanguagesGeneratorPage />} />
+                <Route path="/generator/geopolitics" element={<GeopoliticsGeneratorPage />} />
+                <Route path="/generator/case-study" element={<CaseStudyGeneratorPage />} />
+                <Route path="/generator/emlyon" element={<EMLyonGeneratorPage />} />
+                <Route path="/generator/edhec" element={<EDHECGeneratorPage />} />
+                <Route path="/generator/theme-grammar" element={<ThemeGrammarGeneratorPage />} />
+                <Route path="/generator/school-profile" element={<SchoolProfileGeneratorPage />} />
+                <Route path="/generator/math-tutor" element={<MathTutorGeneratorPage />} />
+                <Route path="/generator/python-tutor" element={<PythonTutorGeneratorPage />} />
+                <Route path="/generator/python-exercises" element={<PythonExercisesGeneratorPage />} />
+                <Route path="/generator/prepa-chatbot" element={<PrepaChatbotGeneratorPage />} />
                 
                 <Route path="*" element={<NotFound />} />
               </Routes>
