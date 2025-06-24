@@ -10,37 +10,37 @@ const grammarSections = [
     id: "regles-recurrentes", 
     label: "Règles récurrentes", 
     link: "/methodologie/grammaire/regles-recurrentes",
-    description: "Points grammaticaux essentiels qui reviennent souvent aux concours"
+    description: "Maîtrisez les points cruciaux qui font la différence aux concours"
   },
   { 
     id: "conjugaison-allemande", 
     label: "Conjugaison Allemande", 
     link: "/methodologie/grammaire/conjugaison-allemande",
-    description: "Fiche complète de conjugaison allemande avec tableaux de référence"
+    description: "Tous les temps et modes essentiels avec tableaux de référence pratiques"
   },
   { 
     id: "structure-phrase-allemande", 
     label: "Structure de la Phrase Allemande", 
     link: "/methodologie/grammaire/structure-phrase-allemande",
-    description: "Guide complet sur l'ordre des mots et la syntaxe allemande"
+    description: "Décryptez l'ordre des mots et dominez la syntaxe allemande"
   },
   { 
     id: "declinaisons-adjectif", 
     label: "Déclinaisons de l'Adjectif", 
     link: "/methodologie/grammaire/declinaisons-adjectif",
-    description: "Les trois types de déclinaison de l'adjectif allemand avec tableaux et exemples"
+    description: "Les trois types de déclinaison expliqués simplement avec exemples concrets"
   },
   { 
     id: "passif-allemand", 
     label: "Le Passif en Allemand", 
     link: "/methodologie/grammaire/passif-allemand",
-    description: "Passif d'action, d'état et modal avec exercices corrigés"
+    description: "Action, état et modal : maîtrisez toutes les formes passives"
   },
   { 
     id: "relatives-allemand", 
     label: "La Proposition Relative en Allemand", 
     link: "/methodologie/grammaire/relatives-allemand",
-    description: "Maîtrisez les pronoms relatifs, la traduction de 'dont' et les relatives participiales"
+    description: "Pronoms relatifs, traduction de 'dont' et relatives participiales"
   }
 ];
 
@@ -60,18 +60,6 @@ export default function MethodGrammairePage() {
           Maîtrisez les points grammaticaux essentiels pour réussir vos épreuves de langues
         </p>
       </div>
-
-      <nav className="mb-10 flex flex-wrap justify-center gap-4">
-        {grammarSections.map(section => (
-          <Link
-            key={section.id}
-            to={section.link}
-            className="border-2 border-[#ff9100] text-[#ff9100] bg-white font-semibold px-5 py-2 rounded-lg transition hover:bg-[#ff9100] hover:text-white hover:shadow-md"
-          >
-            {section.label}
-          </Link>
-        ))}
-      </nav>
 
       <div className="space-y-6">
         {grammarSections.map((section, index) => (
