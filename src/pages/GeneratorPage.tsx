@@ -55,7 +55,6 @@ interface Automation {
   title: string;
   description: string;
   badge: string;
-  usage: string;
 }
 
 interface Category {
@@ -78,40 +77,35 @@ const CATEGORIES: Category[] = [
         icon: <MessageSquare className="h-8 w-8 text-primary" />,
         title: "Réponse d'entretien",
         description: "Générez des réponses structurées et personnalisées pour vos entretiens de personnalité avec du storytelling adapté.",
-        badge: "IA",
-        usage: "Saisissez votre question d'entretien, remplissez vos informations personnelles (filière, école visée, expériences), et l'IA génère une réponse structurée avec des exemples concrets tirés de votre profil."
+        badge: "IA"
       },
       {
         key: 'emlyon',
         icon: <HelpCircle className="h-8 w-8 text-primary" />,
         title: "Questions EM Lyon",
         description: "Questions aléatoires pour l'entretien 'Flash' avec cartes thématiques.",
-        badge: "Interactif",
-        usage: "Cliquez sur 'Nouvelle question' pour obtenir une question aléatoire inspirée du format EM Lyon. Préparez votre réponse en 1 minute puis présentez-la comme à l'oral."
+        badge: "Interactif"
       },
       {
         key: 'edhec',
         icon: <Dices className="h-8 w-8 text-primary" />,
         title: "Générateur de mots EDHEC",
         description: "Générateur de mots aléatoires pour votre présentation EDHEC.",
-        badge: "Rapide",
-        usage: "Générez un mot aléatoire et préparez une présentation de 3 minutes en suivant le format EDHEC : définition, exemples personnels, et ouverture sur votre projet."
+        badge: "Rapide"
       },
       {
         key: 'school-profile',
         icon: <BookOpen className="h-8 w-8 text-primary" />,
         title: "Fiche école personnalisée",
         description: "Automatise la recherche des infos-clés pour ton entretien : valeurs, assos, doubles diplômes, actu, etc.",
-        badge: "Nouveau",
-        usage: "Entrez le nom d'une école de commerce et obtenez automatiquement les informations essentielles : valeurs, associations phares, partenariats, actualités récentes pour briller en entretien."
+        badge: "Nouveau"
       },
       {
         key: 'prepa-chatbot',
         icon: <span className="inline-block p-1 rounded bg-gradient-to-br from-[#67e8f9] to-[#f472b6]"><Heart className="h-6 w-6 text-pink-600" /></span>,
         title: "Chatbot prépa",
         description: "Conseils motivation, méthode & bien-être. Ton assistant IA inspiré par Major-Prépa & Mister Prépa.",
-        badge: "IA Coach",
-        usage: "Posez vos questions sur la motivation, la méthode de travail, la gestion du stress, l'organisation... Obtenez des conseils personnalisés inspirés des meilleures ressources prépa."
+        badge: "IA Coach"
       },
     ]
   },
@@ -126,24 +120,21 @@ const CATEGORIES: Category[] = [
         icon: <Zap className="h-8 w-8 text-primary" />,
         title: "Flashcards intelligentes",
         description: "Créez automatiquement des flashcards optimisées pour la mémorisation avec révision espacée intégrée.",
-        badge: "Auto",
-        usage: "Collez votre cours ou saisissez un thème, l'IA génère des flashcards avec questions-réponses optimisées. Système de révision espacée intégré pour mémoriser efficacement."
+        badge: "Auto"
       },
       {
         key: 'languages',
         icon: <Languages className="h-8 w-8 text-primary" />,
         title: "Paragraphes de langues",
         description: "Générez des paragraphes argumentatifs de 150 mots en anglais, allemand ou espagnol avec vocabulaire clé.",
-        badge: "Nouveau",
-        usage: "Choisissez votre langue, saisissez un sujet ou thème, et obtenez un paragraphe structuré avec vocabulaire avancé, expressions idiomatiques et connecteurs logiques adaptés au niveau prépa."
+        badge: "Nouveau"
       },
       {
         key: 'theme-grammar',
         icon: <Languages className="h-8 w-8 text-primary" />,
         title: "Thème Grammatical",
         description: "Générateur et correcteur de thèmes de traduction : notation détaillée instantanée.",
-        badge: "Nouveau",
-        usage: "Traduisez les phrases françaises vers l'allemand, puis comparez avec la correction détaillée. Analyse automatique des erreurs grammaticales avec explications pour progresser rapidement."
+        badge: "Nouveau"
       },
     ]
   },
@@ -158,16 +149,14 @@ const CATEGORIES: Category[] = [
         icon: <Globe className="h-8 w-8 text-primary" />,
         title: "Contenu géopolitique complet",
         description: "Cours structurés, sujets de dissertation, actualités récentes et flashcards thématiques automatiquement générés.",
-        badge: "Complet",
-        usage: "Entrez un thème géopolitique (ex: 'Tensions en mer de Chine') et obtenez un cours structuré, des sujets de dissertation, les dernières actualités et des flashcards pour réviser."
+        badge: "Complet"
       },
       {
         key: 'case-study',
         icon: <TrendingUp className="h-8 w-8 text-primary" />,
         title: "Études de cas d'actualité",
         description: "Transformez vos articles d'actualité en études de cas géopolitiques avec chiffres clés et sujets de dissertation.",
-        badge: "Nouveau",
-        usage: "Collez un article d'actualité ou une URL, l'IA extrait les informations clés, propose une analyse géopolitique structurée et génère des sujets de dissertation associés."
+        badge: "Nouveau"
       },
     ]
   },
@@ -182,24 +171,21 @@ const CATEGORIES: Category[] = [
         icon: <Calculator className="h-8 w-8 text-primary" />,
         title: "Prof de maths virtuel",
         description: "Demande un indice, une explication ou la solution sur un exercice mathématiques.",
-        badge: "IA",
-        usage: "Photographiez ou saisissez votre exercice de maths, choisissez le niveau d'aide souhaité (indice, méthode, solution complète). L'IA s'adapte à votre niveau et explique étape par étape."
+        badge: "IA"
       },
       {
         key: 'python-tutor',
         icon: <Code className="h-8 w-8 text-primary" />,
         title: "Assistant Python IA",
         description: "Analyse ton code Python, détecte les erreurs et génère une version optimisée avec conseils adaptés à ton niveau.",
-        badge: "Nouveau",
-        usage: "Collez votre code Python, décrivez le problème rencontré. L'IA détecte les erreurs, propose des corrections et explique les bonnes pratiques pour améliorer votre code."
+        badge: "Nouveau"
       },
       {
         key: 'python-exercises',
         icon: <span className="inline-block p-1 rounded bg-gradient-to-br from-[#136ae5] to-[#2ddcb3]"><BookOpen className="h-7 w-7 text-white" /></span>,
         title: "Exercices Python",
         description: "Génère des exercices pratiques Python (matrice, algèbre…) et complète tes fonctions !",
-        badge: "Exos IA",
-        usage: "Choisissez un thème (matrices, algorithmes, statistiques), spécifiez votre niveau. L'IA génère des exercices progressifs avec tests automatiques et corrections détaillées."
+        badge: "Exos IA"
       },
     ]
   },

@@ -11,7 +11,6 @@ interface Automation {
   title: string;
   description: string;
   badge: string;
-  usage?: string; // Nouvelle propriété pour les instructions d'utilisation
 }
 
 interface Category {
@@ -66,15 +65,9 @@ export const GeneratorCategorySection: React.FC<GeneratorCategorySectionProps> =
                     </span>
                   </div>
                   <CardTitle className="text-lg">{automation.title}</CardTitle>
-                  <CardDescription className="text-sm leading-relaxed mb-3">
+                  <CardDescription className="text-sm leading-relaxed">
                     {automation.description}
                   </CardDescription>
-                  {automation.usage && (
-                    <div className="bg-blue-50 border-l-4 border-blue-400 p-3 rounded-r">
-                      <p className="text-xs text-blue-800 font-medium mb-1">💡 Comment l'utiliser :</p>
-                      <p className="text-xs text-blue-700">{automation.usage}</p>
-                    </div>
-                  )}
                 </CardHeader>
                 <CardContent className="pt-0">
                   <Link to={getAutomationUrl(automation.key)}>
