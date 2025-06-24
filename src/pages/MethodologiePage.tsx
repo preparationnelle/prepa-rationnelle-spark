@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
@@ -9,6 +10,7 @@ const sections = [
   { id: "anglais", label: "Anglais", link: "/methodologie/anglais" },
   { id: "culturegenerale", label: "Culture Générale", link: "/methodologie/culture-generale" },
   { id: "allemand", label: "Allemand", link: "/methodologie/allemand" },
+  { id: "grammaire", label: "Fiches de Grammaire", link: "/methodologie/grammaire" },
   { id: "python", label: "Module Python (bonus)", link: "/methodologie/python" }
 ];
 
@@ -62,8 +64,8 @@ export default function MethodologiePage() {
             <CardTitle>Langues – Aperçu Méthode Anglais ECG</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="mb-2 font-semibold">Prépa Rationnelle : Méthode complète d’anglais en prépa ECG</p>
-            <p className="mb-2">Attention, ceci n’est pas une méthode pour apprendre l’anglais, c’est une méthode pour réussir les épreuves d’anglais en prépa HEC.</p>
+            <p className="mb-2 font-semibold">Prépa Rationnelle : Méthode complète d'anglais en prépa ECG</p>
+            <p className="mb-2">Attention, ceci n'est pas une méthode pour apprendre l'anglais, c'est une méthode pour réussir les épreuves d'anglais en prépa HEC.</p>
             <Link to="/methodologie/anglais">
               <Button variant="outline">Découvrir la méthode anglaise</Button>
             </Link>
@@ -75,9 +77,21 @@ export default function MethodologiePage() {
             <CardTitle>Allemand – Essai parfait</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="mb-2">Retrouve la structure complète de l’essai et de la synthèse « parfait » pour l’allemand ECG : accroche, plan, exemples et toutes les formulations prêtes à l’emploi !</p>
+            <p className="mb-2">Retrouve la structure complète de l'essai et de la synthèse « parfait » pour l'allemand ECG : accroche, plan, exemples et toutes les formulations prêtes à l'emploi !</p>
             <Link to="/methodologie/allemand">
               <Button variant="outline">Découvrir la méthode Allemand</Button>
+            </Link>
+          </CardContent>
+        </Card>
+        {/* Fiches de Grammaire */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Fiches de Grammaire</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="mb-2">Fiches de grammaire complètes pour maîtriser les points essentiels en langues : conjugaisons, règles récurrentes et tableaux de référence.</p>
+            <Link to="/methodologie/grammaire">
+              <Button variant="outline">Accéder aux fiches de grammaire</Button>
             </Link>
           </CardContent>
         </Card>
@@ -88,8 +102,8 @@ export default function MethodologiePage() {
           </CardHeader>
           <CardContent>
             <p className="mb-2">
-              Pourquoi les conseils classiques en Culture Générale sont inadaptés ?<br />
-              La plupart des cours de CG noient sous la masse d’informations… Cette méthode vise à te donner les clés pour trier et réussir !
+              Pourquoi les conseils classiques en Culture Générale sont inadaptés ?<br />
+              La plupart des cours de CG noient sous la masse d'informations… Cette méthode vise à te donner les clés pour trier et réussir !
             </p>
             <Link to="/methodologie/culture-generale">
               <Button variant="outline">Découvrir la méthode CG</Button>

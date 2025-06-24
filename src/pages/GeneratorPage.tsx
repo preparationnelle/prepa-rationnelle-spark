@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -296,6 +295,10 @@ const GeneratorPage = () => {
     }
   };
 
+  const handleKeySelect = (key: string) => {
+    setSelectedKey(key as AutomationKey);
+  };
+
   const { trackPageVisit } = useProgress();
   useEffect(() => {
     trackPageVisit('generator');
@@ -315,7 +318,7 @@ const GeneratorPage = () => {
         <>
           <GeneratorCategorySection
             categories={CATEGORIES}
-            onSelect={setSelectedKey}
+            onSelect={handleKeySelect}
           />
           <div className="text-center mt-8 text-muted-foreground text-sm">
             Cliquez sur une automatisation pour commencer&nbsp;!

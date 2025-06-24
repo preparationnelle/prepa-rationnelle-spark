@@ -37,6 +37,9 @@ import MethodAllemandEssaiPage from './pages/methodologie/MethodAllemandEssaiPag
 import MethodAllemandSynthesePage from './pages/methodologie/MethodAllemandSynthesePage';
 import MethodPythonPage from './pages/methodologie/MethodPythonPage';
 import MathsEteECG1ECG2Page from './pages/methodologie/MathsEteECG1ECG2Page';
+import MethodGrammairePage from './pages/methodologie/MethodGrammairePage';
+import MethodGrammaireReglesPage from './pages/methodologie/MethodGrammaireReglesPage';
+import MethodGrammaireAllemandePage from './pages/methodologie/MethodGrammaireAllemandePage';
 
 // Import des pages des générateurs individuels
 import AnswerGeneratorPage from './pages/generator/AnswerGeneratorPage';
@@ -93,6 +96,9 @@ function App() {
                 <Route path="/methodologie/allemand/synthese" element={<MethodAllemandSynthesePage />} />
                 <Route path="/methodologie/python" element={<MethodPythonPage />} />
                 <Route path="/methodologie/ete/maths-ecg1-ecg2" element={<MathsEteECG1ECG2Page />} />
+                <Route path="/methodologie/grammaire" element={<MethodGrammairePage />} />
+                <Route path="/methodologie/grammaire/regles-recurrentes" element={<MethodGrammaireReglesPage />} />
+                <Route path="/methodologie/grammaire/conjugaison-allemande" element={<MethodGrammaireAllemandePage />} />
 
                 {/* Routes des générateurs individuels */}
                 <Route path="/generator/answer" element={<AnswerGeneratorPage />} />
