@@ -55,6 +55,7 @@ interface Automation {
   title: string;
   description: string;
   badge: string;
+  usage: string;
 }
 
 interface Category {
@@ -78,6 +79,7 @@ const CATEGORIES: Category[] = [
         title: "Réponse d'entretien",
         description: "Générez des réponses structurées et personnalisées pour vos entretiens de personnalité avec du storytelling adapté.",
         badge: "IA",
+        usage: "Saisissez votre question d'entretien, remplissez vos informations personnelles (filière, école visée, expériences), et l'IA génère une réponse structurée avec des exemples concrets tirés de votre profil."
       },
       {
         key: 'emlyon',
@@ -85,6 +87,7 @@ const CATEGORIES: Category[] = [
         title: "Questions EM Lyon",
         description: "Questions aléatoires pour l'entretien 'Flash' avec cartes thématiques.",
         badge: "Interactif",
+        usage: "Cliquez sur 'Nouvelle question' pour obtenir une question aléatoire inspirée du format EM Lyon. Préparez votre réponse en 1 minute puis présentez-la comme à l'oral."
       },
       {
         key: 'edhec',
@@ -92,6 +95,7 @@ const CATEGORIES: Category[] = [
         title: "Générateur de mots EDHEC",
         description: "Générateur de mots aléatoires pour votre présentation EDHEC.",
         badge: "Rapide",
+        usage: "Générez un mot aléatoire et préparez une présentation de 3 minutes en suivant le format EDHEC : définition, exemples personnels, et ouverture sur votre projet."
       },
       {
         key: 'school-profile',
@@ -99,6 +103,7 @@ const CATEGORIES: Category[] = [
         title: "Fiche école personnalisée",
         description: "Automatise la recherche des infos-clés pour ton entretien : valeurs, assos, doubles diplômes, actu, etc.",
         badge: "Nouveau",
+        usage: "Entrez le nom d'une école de commerce et obtenez automatiquement les informations essentielles : valeurs, associations phares, partenariats, actualités récentes pour briller en entretien."
       },
       {
         key: 'flashcards',
@@ -106,6 +111,7 @@ const CATEGORIES: Category[] = [
         title: "Flashcards intelligentes",
         description: "Créez automatiquement des flashcards optimisées pour la mémorisation avec révision espacée intégrée.",
         badge: "Auto",
+        usage: "Collez votre cours ou saisissez un thème, l'IA génère des flashcards avec questions-réponses optimisées. Système de révision espacée intégré pour mémoriser efficacement."
       },
       {
         key: 'prepa-chatbot',
@@ -113,6 +119,7 @@ const CATEGORIES: Category[] = [
         title: "Chatbot prépa",
         description: "Conseils motivation, méthode & bien-être. Ton assistant IA inspiré par Major-Prépa & Mister Prépa.",
         badge: "IA Coach",
+        usage: "Posez vos questions sur la motivation, la méthode de travail, la gestion du stress, l'organisation... Obtenez des conseils personnalisés inspirés des meilleures ressources prépa."
       },
     ]
   },
@@ -128,6 +135,7 @@ const CATEGORIES: Category[] = [
         title: "Paragraphes de langues",
         description: "Générez des paragraphes argumentatifs de 150 mots en anglais, allemand ou espagnol avec vocabulaire clé.",
         badge: "Nouveau",
+        usage: "Choisissez votre langue, saisissez un sujet ou thème, et obtenez un paragraphe structuré avec vocabulaire avancé, expressions idiomatiques et connecteurs logiques adaptés au niveau prépa."
       },
       {
         key: 'theme-grammar',
@@ -135,6 +143,7 @@ const CATEGORIES: Category[] = [
         title: "Thème Grammatical",
         description: "Générateur et correcteur de thèmes de traduction : notation détaillée instantanée.",
         badge: "Nouveau",
+        usage: "Traduisez les phrases françaises vers l'allemand, puis comparez avec la correction détaillée. Analyse automatique des erreurs grammaticales avec explications pour progresser rapidement."
       },
     ]
   },
@@ -150,6 +159,7 @@ const CATEGORIES: Category[] = [
         title: "Contenu géopolitique complet",
         description: "Cours structurés, sujets de dissertation, actualités récentes et flashcards thématiques automatiquement générés.",
         badge: "Complet",
+        usage: "Entrez un thème géopolitique (ex: 'Tensions en mer de Chine') et obtenez un cours structuré, des sujets de dissertation, les dernières actualités et des flashcards pour réviser."
       },
       {
         key: 'case-study',
@@ -157,6 +167,7 @@ const CATEGORIES: Category[] = [
         title: "Études de cas d'actualité",
         description: "Transformez vos articles d'actualité en études de cas géopolitiques avec chiffres clés et sujets de dissertation.",
         badge: "Nouveau",
+        usage: "Collez un article d'actualité ou une URL, l'IA extrait les informations clés, propose une analyse géopolitique structurée et génère des sujets de dissertation associés."
       },
     ]
   },
@@ -172,6 +183,7 @@ const CATEGORIES: Category[] = [
         title: "Prof de maths virtuel",
         description: "Demande un indice, une explication ou la solution sur un exercice mathématiques.",
         badge: "IA",
+        usage: "Photographiez ou saisissez votre exercice de maths, choisissez le niveau d'aide souhaité (indice, méthode, solution complète). L'IA s'adapte à votre niveau et explique étape par étape."
       },
       {
         key: 'python-tutor',
@@ -179,6 +191,7 @@ const CATEGORIES: Category[] = [
         title: "Assistant Python IA",
         description: "Analyse ton code Python, détecte les erreurs et génère une version optimisée avec conseils adaptés à ton niveau.",
         badge: "Nouveau",
+        usage: "Collez votre code Python, décrivez le problème rencontré. L'IA détecte les erreurs, propose des corrections et explique les bonnes pratiques pour améliorer votre code."
       },
       {
         key: 'python-exercises',
@@ -186,6 +199,7 @@ const CATEGORIES: Category[] = [
         title: "Exercices Python",
         description: "Génère des exercices pratiques Python (matrice, algèbre…) et complète tes fonctions !",
         badge: "Exos IA",
+        usage: "Choisissez un thème (matrices, algorithmes, statistiques), spécifiez votre niveau. L'IA génère des exercices progressifs avec tests automatiques et corrections détaillées."
       },
     ]
   },
