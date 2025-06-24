@@ -4,21 +4,33 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Languages } from "lucide-react";
 
 export default function MethodAllemandPage() {
   return (
     <div className="container max-w-4xl py-10 animate-fade-in space-y-8">
+      <div className="text-center mb-10">
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <div className="p-3 bg-gradient-to-br from-[#ff9100] to-orange-600 rounded-xl text-white shadow-lg">
+            <Languages className="h-8 w-8" />
+          </div>
+          <h1 className="text-4xl font-extrabold text-[#ff9100]">
+            Allemand – Choisissez votre méthodologie
+          </h1>
+        </div>
+      </div>
+
       <Card>
-        <CardHeader>
-          <CardTitle>Allemand – Choisissez votre méthodologie</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="flex flex-col md:flex-row gap-6 justify-center items-center mt-4">
+        <CardContent className="pt-6">
+          <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
             <Link to="/methodologie/allemand/essai" className="w-full md:w-auto">
-              <Button className="w-full md:w-48">Essai</Button>
+              <Button className="w-full md:w-48 bg-[#ff9100] hover:bg-orange-600">Essai</Button>
             </Link>
             <Link to="/methodologie/allemand/synthese" className="w-full md:w-auto">
-              <Button variant="outline" className="w-full md:w-48">Synthèse</Button>
+              <Button variant="outline" className="w-full md:w-48 border-[#ff9100] text-[#ff9100] hover:bg-[#ff9100] hover:text-white">Synthèse</Button>
+            </Link>
+            <Link to="/methodologie/grammaire" className="w-full md:w-auto">
+              <Button className="w-full md:w-48 bg-[#ff9100] hover:bg-orange-600">Fiches de Grammaire</Button>
             </Link>
           </div>
         </CardContent>
