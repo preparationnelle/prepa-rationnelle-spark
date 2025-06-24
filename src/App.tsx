@@ -40,6 +40,8 @@ import MethodGrammairePage from './pages/methodologie/MethodGrammairePage';
 import MethodGrammaireReglesPage from './pages/methodologie/MethodGrammaireReglesPage';
 import MethodGrammaireAllemandePage from './pages/methodologie/MethodGrammaireAllemandePage';
 import MethodGrammaireStructurePage from './pages/methodologie/MethodGrammaireStructurePage';
+import MethodGrammaireDeclinaisonsPage from './pages/methodologie/MethodGrammaireDeclinaisonsPage';
+import MethodGrammairePassifPage from './pages/methodologie/MethodGrammairePassifPage';
 
 // Import des pages des générateurs individuels
 import AnswerGeneratorPage from './pages/generator/AnswerGeneratorPage';
@@ -100,6 +102,8 @@ function App() {
                 <Route path="/methodologie/grammaire/regles-recurrentes" element={<MethodGrammaireReglesPage />} />
                 <Route path="/methodologie/grammaire/conjugaison-allemande" element={<MethodGrammaireAllemandePage />} />
                 <Route path="/methodologie/grammaire/structure-phrase-allemande" element={<MethodGrammaireStructurePage />} />
+                <Route path="/methodologie/grammaire/declinaisons-adjectif" element={<MethodGrammaireDeclinaisonsPage />} />
+                <Route path="/methodologie/grammaire/passif-allemand" element={<MethodGrammairePassifPage />} />
 
                 {/* Routes des générateurs individuels */}
                 <Route path="/generator/answer" element={<AnswerGeneratorPage />} />

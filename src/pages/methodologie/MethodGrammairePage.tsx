@@ -3,7 +3,7 @@ import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Languages, BookOpen, FileText, Layout } from "lucide-react";
+import { Languages, BookOpen, FileText, Layout, Settings } from "lucide-react";
 
 const grammarSections = [
   { 
@@ -23,6 +23,18 @@ const grammarSections = [
     label: "Structure de la Phrase Allemande", 
     link: "/methodologie/grammaire/structure-phrase-allemande",
     description: "Guide complet sur l'ordre des mots et la syntaxe allemande"
+  },
+  { 
+    id: "declinaisons-adjectif", 
+    label: "Déclinaisons de l'Adjectif", 
+    link: "/methodologie/grammaire/declinaisons-adjectif",
+    description: "Les trois types de déclinaison de l'adjectif allemand avec tableaux et exemples"
+  },
+  { 
+    id: "passif-allemand", 
+    label: "Le Passif en Allemand", 
+    link: "/methodologie/grammaire/passif-allemand",
+    description: "Passif d'action, d'état et modal avec exercices corrigés"
   }
 ];
 
@@ -63,7 +75,9 @@ export default function MethodGrammairePage() {
                 <div className="p-2 bg-orange-100 rounded-lg">
                   {index === 0 ? <FileText className="h-6 w-6 text-orange-600" /> : 
                    index === 1 ? <BookOpen className="h-6 w-6 text-orange-600" /> : 
-                   <Layout className="h-6 w-6 text-orange-600" />}
+                   index === 2 ? <Layout className="h-6 w-6 text-orange-600" /> :
+                   index === 3 ? <Settings className="h-6 w-6 text-orange-600" /> :
+                   <FileText className="h-6 w-6 text-orange-600" />}
                 </div>
                 <CardTitle className="text-orange-800">{section.label}</CardTitle>
               </div>
