@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
@@ -40,6 +39,7 @@ import MathsEteECG1ECG2Page from './pages/methodologie/MathsEteECG1ECG2Page';
 import MethodGrammairePage from './pages/methodologie/MethodGrammairePage';
 import MethodGrammaireReglesPage from './pages/methodologie/MethodGrammaireReglesPage';
 import MethodGrammaireAllemandePage from './pages/methodologie/MethodGrammaireAllemandePage';
+import MethodGrammaireStructurePage from './pages/methodologie/MethodGrammaireStructurePage';
 
 // Import des pages des générateurs individuels
 import AnswerGeneratorPage from './pages/generator/AnswerGeneratorPage';
@@ -99,6 +99,7 @@ function App() {
                 <Route path="/methodologie/grammaire" element={<MethodGrammairePage />} />
                 <Route path="/methodologie/grammaire/regles-recurrentes" element={<MethodGrammaireReglesPage />} />
                 <Route path="/methodologie/grammaire/conjugaison-allemande" element={<MethodGrammaireAllemandePage />} />
+                <Route path="/methodologie/grammaire/structure-phrase-allemande" element={<MethodGrammaireStructurePage />} />
 
                 {/* Routes des générateurs individuels */}
                 <Route path="/generator/answer" element={<AnswerGeneratorPage />} />
