@@ -106,14 +106,6 @@ const CATEGORIES: Category[] = [
         usage: "Entrez le nom d'une école de commerce et obtenez automatiquement les informations essentielles : valeurs, associations phares, partenariats, actualités récentes pour briller en entretien."
       },
       {
-        key: 'flashcards',
-        icon: <Zap className="h-8 w-8 text-primary" />,
-        title: "Flashcards intelligentes",
-        description: "Créez automatiquement des flashcards optimisées pour la mémorisation avec révision espacée intégrée.",
-        badge: "Auto",
-        usage: "Collez votre cours ou saisissez un thème, l'IA génère des flashcards avec questions-réponses optimisées. Système de révision espacée intégré pour mémoriser efficacement."
-      },
-      {
         key: 'prepa-chatbot',
         icon: <span className="inline-block p-1 rounded bg-gradient-to-br from-[#67e8f9] to-[#f472b6]"><Heart className="h-6 w-6 text-pink-600" /></span>,
         title: "Chatbot prépa",
@@ -129,6 +121,14 @@ const CATEGORIES: Category[] = [
     icon: <Languages className="h-8 w-8 text-white" />,
     gradient: "bg-gradient-to-r from-purple-600 to-indigo-600",
     automations: [
+      {
+        key: 'flashcards',
+        icon: <Zap className="h-8 w-8 text-primary" />,
+        title: "Flashcards intelligentes",
+        description: "Créez automatiquement des flashcards optimisées pour la mémorisation avec révision espacée intégrée.",
+        badge: "Auto",
+        usage: "Collez votre cours ou saisissez un thème, l'IA génère des flashcards avec questions-réponses optimisées. Système de révision espacée intégré pour mémoriser efficacement."
+      },
       {
         key: 'languages',
         icon: <Languages className="h-8 w-8 text-primary" />,
