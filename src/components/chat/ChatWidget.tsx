@@ -14,7 +14,7 @@ const ChatWidget = () => {
       onClick={handleWhatsAppRedirect}
     >
       <Puzzle className="h-5 w-5" />
-      <span className="hidden sm:inline">Une question sur les oraux ? Pose-la ici 👇</span>
+      <span className="hidden sm:inline">Une question ou un feedback sur le site ? 👇</span>
       <span className="inline sm:hidden">Une question ? 👇</span>
     </Button>
   );
