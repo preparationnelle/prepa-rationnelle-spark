@@ -3,7 +3,7 @@ import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Languages, BookOpen, FileText, Layout, Settings } from "lucide-react";
+import { Languages, BookOpen, FileText, Layout, Settings, Link as LinkIcon } from "lucide-react";
 
 const grammarSections = [
   { 
@@ -35,6 +35,12 @@ const grammarSections = [
     label: "Le Passif en Allemand", 
     link: "/methodologie/grammaire/passif-allemand",
     description: "Passif d'action, d'état et modal avec exercices corrigés"
+  },
+  { 
+    id: "relatives-allemand", 
+    label: "La Proposition Relative en Allemand", 
+    link: "/methodologie/grammaire/relatives-allemand",
+    description: "Maîtrisez les pronoms relatifs, la traduction de 'dont' et les relatives participiales"
   }
 ];
 
@@ -77,7 +83,8 @@ export default function MethodGrammairePage() {
                    index === 1 ? <BookOpen className="h-6 w-6 text-orange-600" /> : 
                    index === 2 ? <Layout className="h-6 w-6 text-orange-600" /> :
                    index === 3 ? <Settings className="h-6 w-6 text-orange-600" /> :
-                   <FileText className="h-6 w-6 text-orange-600" />}
+                   index === 4 ? <FileText className="h-6 w-6 text-orange-600" /> :
+                   <LinkIcon className="h-6 w-6 text-orange-600" />}
                 </div>
                 <CardTitle className="text-orange-800">{section.label}</CardTitle>
               </div>

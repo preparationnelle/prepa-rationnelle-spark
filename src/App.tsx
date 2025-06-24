@@ -42,6 +42,7 @@ import MethodGrammaireAllemandePage from './pages/methodologie/MethodGrammaireAl
 import MethodGrammaireStructurePage from './pages/methodologie/MethodGrammaireStructurePage';
 import MethodGrammaireDeclinaisonsPage from './pages/methodologie/MethodGrammaireDeclinaisonsPage';
 import MethodGrammairePassifPage from './pages/methodologie/MethodGrammairePassifPage';
+import MethodGrammaireRelativesPage from './pages/methodologie/MethodGrammaireRelativesPage';
 
 // Import des pages des générateurs individuels
 import AnswerGeneratorPage from './pages/generator/AnswerGeneratorPage';
@@ -104,6 +105,7 @@ function App() {
                 <Route path="/methodologie/grammaire/structure-phrase-allemande" element={<MethodGrammaireStructurePage />} />
                 <Route path="/methodologie/grammaire/declinaisons-adjectif" element={<MethodGrammaireDeclinaisonsPage />} />
                 <Route path="/methodologie/grammaire/passif-allemand" element={<MethodGrammairePassifPage />} />
+                <Route path="/methodologie/grammaire/relatives-allemand" element={<MethodGrammaireRelativesPage />} />
 
                 {/* Routes des générateurs individuels */}
                 <Route path="/generator/answer" element={<AnswerGeneratorPage />} />
