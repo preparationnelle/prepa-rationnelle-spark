@@ -59,6 +59,8 @@ import PythonTutorGeneratorPage from './pages/generator/PythonTutorGeneratorPage
 import PythonExercisesGeneratorPage from './pages/generator/PythonExercisesGeneratorPage';
 import PrepaChatbotGeneratorPage from './pages/generator/PrepaChatbotGeneratorPage';
 
+import NosOffresPage from '@/pages/NosOffresPage';
+
 function App() {
   return (
     <Router>
@@ -121,6 +123,8 @@ function App() {
                 <Route path="/generator/python-tutor" element={<PythonTutorGeneratorPage />} />
                 <Route path="/generator/python-exercises" element={<PythonExercisesGeneratorPage />} />
                 <Route path="/generator/prepa-chatbot" element={<PrepaChatbotGeneratorPage />} />
+                
+                <Route path="/nos-offres" element={<NosOffresPage />} />
                 
                 <Route path="*" element={<NotFound />} />
               </Routes>
