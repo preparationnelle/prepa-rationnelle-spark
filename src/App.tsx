@@ -60,6 +60,10 @@ import PythonExercisesGeneratorPage from './pages/generator/PythonExercisesGener
 import PrepaChatbotGeneratorPage from './pages/generator/PrepaChatbotGeneratorPage';
 
 import NosOffresPage from '@/pages/NosOffresPage';
+import OrganisationEtePage from '@/pages/offres/OrganisationEtePage';
+import CoachingMathsPage from '@/pages/offres/CoachingMathsPage';
+import CoachingPythonPage from '@/pages/offres/CoachingPythonPage';
+import PreparationCubePage from '@/pages/offres/PreparationCubePage';
 
 function App() {
   return (
@@ -125,6 +129,10 @@ function App() {
                 <Route path="/generator/prepa-chatbot" element={<PrepaChatbotGeneratorPage />} />
                 
                 <Route path="/nos-offres" element={<NosOffresPage />} />
+                <Route path="/offre/organisation-ete" element={<OrganisationEtePage />} />
+                <Route path="/offre/coaching-maths" element={<CoachingMathsPage />} />
+                <Route path="/offre/coaching-python" element={<CoachingPythonPage />} />
+                <Route path="/offre/preparation-cube" element={<PreparationCubePage />} />
                 
                 <Route path="*" element={<NotFound />} />
               </Routes>
