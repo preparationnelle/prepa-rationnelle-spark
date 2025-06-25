@@ -7,7 +7,7 @@ const CoachingPythonPage = () => {
         
         <div className="bg-gradient-to-r from-primary/10 to-secondary/10 border-2 border-primary rounded-2xl shadow-lg px-6 py-8 md:p-10 text-foreground">
           <div className="flex items-start gap-2 mb-4">
-            <span className="text-4xl">💻</span>
+            <span className="text-4xl">Approfondis Python avec un accompagnement personnalisé, avec les  concepts qui tombent et retombent aux concours chaque année  !</span>
             <div>
               <h2 className="text-2xl font-bold text-primary mb-4">+4 en Maths : tu souhaites bénéficier d'un coaching en Python ? </h2>
               <p className="text-lg mb-6 text-muted-foreground">Approfondie Python avec un accompagnement personnalisé, avec les  concepts qui tombent et retombent aux concours chaque année  !</p>
