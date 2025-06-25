@@ -15,7 +15,7 @@ export const HeroSection = () => {
           <div className="flex items-center">
             <TrendingUp className="h-7 w-7 text-[#F36C00] mr-3" />
             <Link
-              to="/calendar"
+              to="/questions"
               className="text-2xl md:text-2xl font-bold text-[#F36C00] uppercase tracking-widest hover:underline"
               style={{ letterSpacing: 2 }}
             >
@@ -45,7 +45,7 @@ export const HeroSection = () => {
         <p className="text-xl sm:text-2xl md:text-3xl max-w-[1000px] text-[#252523] text-center mb-14 font-normal leading-[1.35] w-full">
           Vous avez bossé 2&nbsp;ans. Maintenant, il faut <span className="font-bold">convaincre</span>.
           Une plateforme qui combine <Link
-            to="/calendar"
+            to="/questions"
             className="font-bold underline text-[#F36C00] hover:text-[#c95400] transition"
           >
             coaching sur‑mesure
