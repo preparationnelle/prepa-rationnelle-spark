@@ -1,21 +1,16 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
-
 const CoachingPythonPage = () => {
-  return (
-    <div className="container mx-auto py-8 px-4">
+  return <div className="container mx-auto py-8 px-4">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold text-primary mb-8 text-center">Coaching en Python</h1>
         
         <div className="bg-gradient-to-r from-primary/10 to-secondary/10 border-2 border-primary rounded-2xl shadow-lg px-6 py-8 md:p-10 text-foreground">
           <div className="flex items-start gap-2 mb-4">
-            <span className="text-4xl">💻</span>
+            <span className="text-4xl">Approfondis Python avec un accompagnement personnalisé, avec les  concepts qui tombent et retombent aux concours chaque année  !</span>
             <div>
-              <h2 className="text-2xl font-bold text-primary mb-4">Tu souhaites bénéficier d'un coaching en Python ?</h2>
-              <p className="text-lg mb-6 text-muted-foreground">
-                Apprends la programmation Python avec un accompagnement personnalisé, de la découverte aux concepts avancés.
-              </p>
+              <h2 className="text-2xl font-bold text-primary mb-4">+4 en Maths : tu souhaites bénéficier d'un coaching en Python ? </h2>
+              <p className="text-lg mb-6 text-muted-foreground">Approfondie Python avec un accompagnement personnalisé, avec les  concepts qui tombent et retombent aux concours chaque année  !</p>
               
               <div className="space-y-6 mb-8">
                 <h3 className="text-xl font-semibold text-primary">Ce que tu vas maîtriser :</h3>
@@ -28,18 +23,18 @@ const CoachingPythonPage = () => {
               </div>
 
               <div className="bg-white/80 rounded-xl border border-primary/30 p-6 mb-8">
-                <h3 className="text-xl font-bold text-primary mb-4">🎯 Découvre notre offre :</h3>
+                <h3 className="text-xl font-bold text-primary mb-4"> Découvre notre offre :</h3>
                 
                 <div className="space-y-4">
                   <div className="bg-primary/5 rounded-lg p-4 border border-primary/20">
                     <h4 className="font-semibold text-primary mb-2">Produit cœur</h4>
-                    <p className="text-sm">6 h de coaching individuel Python (algorithmes, data-science, automatisation, concours/olympiades)</p>
+                    <p className="text-sm">6 h de coaching individuel Python (extrais de sujets, algorithmes à connaitre par coeur) </p>
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="bg-secondary/5 rounded-lg p-4 border border-secondary/20">
                       <h4 className="font-semibold text-secondary mb-2">Bonus 1</h4>
-                      <p className="text-sm">Pack de 50 exercices à mépriser pour les concours</p>
+                      <p className="text-sm">Pack de 50 exercices à maitriser  pour les concours</p>
                     </div>
                     
                     <div className="bg-secondary/5 rounded-lg p-4 border border-secondary/20">
@@ -66,12 +61,7 @@ const CoachingPythonPage = () => {
               </div>
               
               <div className="text-center">
-                <a
-                  href="https://calendly.com/preparationnelle/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block"
-                >
+                <a href="https://calendly.com/preparationnelle/30min" target="_blank" rel="noopener noreferrer" className="inline-block">
                   <Button variant="default" size="lg" className="px-8 py-3">
                     Réserver mon premier cours
                   </Button>
@@ -81,8 +71,6 @@ const CoachingPythonPage = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default CoachingPythonPage;
