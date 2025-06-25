@@ -17,7 +17,7 @@ const CoachingPythonPage = () => {
                 Apprends la programmation Python avec un accompagnement personnalisé, de la découverte aux concepts avancés.
               </p>
               
-              <div className="space-y-4 mb-6">
+              <div className="space-y-6 mb-8">
                 <h3 className="text-xl font-semibold text-primary">Ce que tu vas maîtriser :</h3>
                 <ul className="list-disc list-inside space-y-2 text-base">
                   <li>Syntaxe et concepts fondamentaux de Python</li>
@@ -25,6 +25,44 @@ const CoachingPythonPage = () => {
                   <li>Programmation orientée objet</li>
                   <li>Projets pratiques et applications concrètes</li>
                 </ul>
+              </div>
+
+              <div className="bg-white/80 rounded-xl border border-primary/30 p-6 mb-8">
+                <h3 className="text-xl font-bold text-primary mb-4">🎯 Découvre notre offre :</h3>
+                
+                <div className="space-y-4">
+                  <div className="bg-primary/5 rounded-lg p-4 border border-primary/20">
+                    <h4 className="font-semibold text-primary mb-2">Produit cœur</h4>
+                    <p className="text-sm">6 h de coaching individuel Python (algorithmes, data-science, automatisation, concours/olympiades)</p>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-secondary/5 rounded-lg p-4 border border-secondary/20">
+                      <h4 className="font-semibold text-secondary mb-2">Bonus 1</h4>
+                      <p className="text-sm">Pack de 50 exercices à mépriser pour les concours</p>
+                    </div>
+                    
+                    <div className="bg-secondary/5 rounded-lg p-4 border border-secondary/20">
+                      <h4 className="font-semibold text-secondary mb-2">Bonus 2</h4>
+                      <p className="text-sm">Guide PDF « Python Cheatsheet avec les commandes à apprendre par cœur</p>
+                    </div>
+                    
+                    <div className="bg-secondary/5 rounded-lg p-4 border border-secondary/20">
+                      <h4 className="font-semibold text-secondary mb-2">Bonus 3</h4>
+                      <p className="text-sm">Accès privé à mon WhatsApp pendant 30 jours → questions illimitées</p>
+                    </div>
+                    
+                    <div className="bg-secondary/5 rounded-lg p-4 border border-secondary/20">
+                      <h4 className="font-semibold text-secondary mb-2">Bonus 4</h4>
+                      <p className="text-sm">Contenu vidéo (1h de programme)</p>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-green-50 rounded-lg p-4 border border-green-200">
+                    <h4 className="font-semibold text-green-700 mb-2">✅ Garantie</h4>
+                    <p className="text-sm text-green-600">100 % remboursé après la 1ʳᵉ heure si tu n'es pas convaincu·e</p>
+                  </div>
+                </div>
               </div>
               
               <div className="text-center">
