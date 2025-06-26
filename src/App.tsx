@@ -73,6 +73,7 @@ function App() {
         <AuthProvider>
           <ProgressProvider>
             <Router>
+              <PostHogProvider />
               <ScrollToTop />
               <Navigation />
               <main className="flex-1">
