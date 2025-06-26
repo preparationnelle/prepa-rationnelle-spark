@@ -166,7 +166,6 @@ serve(async (req) => {
       JSON.stringify({
         success: false, // We'll let OpenAI determine if it's successful
         feedback,
-        testResults: [], // No more test results
         exercise: {
           title: exercise.title,
           description: exercise.description
