@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from '@/components/ui/toaster';
@@ -38,6 +37,10 @@ import AudenciaPage from '@/pages/AudenciaPage';
 import GEMPage from '@/pages/GEMPage';
 import KEDGEPage from '@/pages/KEDGEPage';
 import NEOMAPage from '@/pages/NEOMAPage';
+
+// Import des pages d'articles spécialisés
+import CVProjectifPage from '@/pages/CVProjectifPage';
+import EntretienInverseGEMPage from '@/pages/EntretienInverseGEMPage';
 
 // Import des pages des générateurs individuels
 import AnswerGeneratorPage from './pages/generator/AnswerGeneratorPage';
@@ -124,6 +127,10 @@ function App() {
                   <Route path="/ecoles/gem" element={<GEMPage />} />
                   <Route path="/ecoles/kedge" element={<KEDGEPage />} />
                   <Route path="/ecoles/neoma" element={<NEOMAPage />} />
+                  
+                  {/* Routes des articles spécialisés */}
+                  <Route path="/questions/cv-projectif" element={<CVProjectifPage />} />
+                  <Route path="/questions/entretien-inverse-gem" element={<EntretienInverseGEMPage />} />
                   
                   {/* Protected routes */}
                   <Route path="/generator" element={
