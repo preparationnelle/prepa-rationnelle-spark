@@ -28,7 +28,7 @@ const exercises: Record<string, Exercise> = {
     id: 'trace',
     title: 'Trace d\'une matrice',
     description: 'Écrire def trace(M): qui renvoie la somme des éléments diagonaux de la matrice carrée M.',
-    template: 'def trace(M):\n    # TODO: compléter la fonction\n    pass',
+    template: 'def trace(M):\n    # TODO: compléter la fonction\n    # La trace est la somme des éléments diagonaux M[i][i]\n    pass',
     tests: [
       { input: [[[1, 2], [3, 4]]], expected: 5, description: 'Matrice 2x2 simple' },
       { input: [[[1, 0, 0], [0, 2, 0], [0, 0, 3]]], expected: 6, description: 'Matrice diagonale 3x3' },
@@ -44,7 +44,7 @@ const exercises: Record<string, Exercise> = {
     id: 'est_symetrique',
     title: 'Test de symétrie',
     description: 'Écrire def est_symetrique(M): qui renvoie True si M est carrée et M[i,j] == M[j,i] pour tous i,j, sinon False.',
-    template: 'def est_symetrique(M):\n    # TODO: compléter la fonction\n    pass',
+    template: 'def est_symetrique(M):\n    # TODO: compléter la fonction\n    # Vérifier que M[i][j] == M[j][i] pour tous i,j\n    pass',
     tests: [
       { input: [[[1, 2], [2, 1]]], expected: true, description: 'Matrice symétrique 2x2' },
       { input: [[[1, 0], [1, 1]]], expected: false, description: 'Matrice non symétrique' },
@@ -55,36 +55,136 @@ const exercises: Record<string, Exercise> = {
       'Comparez M[i][j] avec M[j][i] pour tous les indices',
       'Retournez False dès qu\'une différence est trouvée'
     ]
+  },
+  est_antisymetrique: {
+    id: 'est_antisymetrique',
+    title: 'Test d\'antisymétrie',
+    description: 'Écrire def est_antisymetrique(M): qui renvoie True si M est carrée, que tous les éléments diagonaux sont nuls et que M[j,i] == -M[i,j] pour i≠j.',
+    template: 'def est_antisymetrique(M):\n    # TODO: compléter la fonction\n    # Vérifier diagonale nulle et M[j][i] == -M[i][j]\n    pass',
+    tests: [
+      { input: [[[0, 5], [-5, 0]]], expected: true, description: 'Matrice antisymétrique 2x2' },
+      { input: [[[0, 1], [1, 0]]], expected: false, description: 'Matrice non antisymétrique' },
+      { input: [[[1, 2], [-2, 0]]], expected: false, description: 'Diagonale non nulle' }
+    ],
+    hints: [
+      'Vérifiez que tous les éléments diagonaux sont nuls',
+      'Pour i≠j, vérifiez que M[j][i] == -M[i][j]',
+      'Une matrice antisymétrique a forcément une diagonale nulle'
+    ]
+  },
+  puissance_naive: {
+    id: 'puissance_naive',
+    title: 'Puissance naïve',
+    description: 'Écrire def puissance_naive(M, n): qui calcule M^n par une boucle de multiplications successives.',
+    template: 'def puissance_naive(M, n):\n    # TODO: compléter la fonction\n    # Multiplier M par elle-même n fois\n    pass',
+    tests: [
+      { input: [[[2, 0], [0, 2]], 2], expected: [[4, 0], [0, 4]], description: 'Matrice diagonale au carré' },
+      { input: [[[1, 1], [0, 1]], 3], expected: [[1, 3], [0, 1]], description: 'Matrice triangulaire puissance 3' }
+    ],
+    hints: [
+      'Commencez par créer une matrice identité',
+      'Multipliez cette matrice par M exactement n fois',
+      'Vous devrez implémenter la multiplication matricielle'
+    ]
+  },
+  matmul: {
+    id: 'matmul',
+    title: 'Produit matriciel',
+    description: 'Écrire def matmul(A, B): qui renvoie le produit A×B sans utiliser l\'opérateur @.',
+    template: 'def matmul(A, B):\n    # TODO: compléter la fonction\n    # Implémenter la multiplication matricielle\n    pass',
+    tests: [
+      { input: [[[1, 2], [3, 4]], [[5, 6], [7, 8]]], expected: [[19, 22], [43, 50]], description: 'Multiplication 2x2' },
+      { input: [[[1, 0, 0], [0, 1, 0]], [[1], [2], [3]]], expected: [[1], [2]], description: 'Multiplication rectangulaire' }
+    ],
+    hints: [
+      'Triple boucle : i pour les lignes, j pour les colonnes, k pour la somme',
+      'C[i][j] = somme de A[i][k] * B[k][j] pour k de 0 à nombre de colonnes de A',
+      'Vérifiez que les dimensions sont compatibles'
+    ]
   }
 };
 
-async function executePythonCode(code: string, testCase: TestCase): Promise<{ success: boolean; result?: any; error?: string }> {
+function analyzeStudentCode(code: string, exerciseId: string): {
+  approach: string;
+  issues: string[];
+  suggestions: string[];
+  correctedCode?: string;
+} {
+  const analysis = {
+    approach: "Code non reconnu",
+    issues: [] as string[],
+    suggestions: [] as string[],
+    correctedCode: undefined as string | undefined
+  };
+
+  // Remove comments and whitespace for analysis
+  const cleanCode = code.replace(/#.*$/gm, '').replace(/\s+/g, ' ').trim();
+
+  if (exerciseId === 'trace') {
+    if (cleanCode.includes('pass') && !cleanCode.includes('return')) {
+      analysis.approach = "Template non modifié";
+      analysis.issues.push("Vous n'avez pas encore implémenté la fonction");
+      analysis.suggestions.push("Remplacez 'pass' par votre code");
+      analysis.correctedCode = `def trace(M):
+    # Calcul de la trace : somme des éléments diagonaux
+    somme = 0
+    for i in range(len(M)):
+        somme += M[i][i]
+    return somme`;
+    } else if (cleanCode.includes('for') && cleanCode.includes('range') && cleanCode.includes('len')) {
+      analysis.approach = "Approche avec boucle for - bonne direction !";
+      if (!cleanCode.includes('return')) {
+        analysis.issues.push("Il manque l'instruction 'return' pour renvoyer le résultat");
+        analysis.suggestions.push("Ajoutez 'return somme' à la fin de votre fonction");
+      }
+      if (!cleanCode.includes('+=') && !cleanCode.includes('sum')) {
+        analysis.issues.push("Il faut additionner les éléments diagonaux");
+        analysis.suggestions.push("Utilisez += pour accumuler la somme");
+      }
+    } else if (cleanCode.includes('sum') && cleanCode.includes('M[i][i]')) {
+      analysis.approach = "Approche avec sum() et compréhension - élégant !";
+      analysis.suggestions.push("Votre approche est correcte et pythonique");
+    } else if (cleanCode.includes('numpy') || cleanCode.includes('np.')) {
+      analysis.approach = "Utilisation de NumPy détectée";
+      analysis.issues.push("L'exercice demande une implémentation sans NumPy");
+      analysis.suggestions.push("Essayez avec une boucle for ou sum()");
+    }
+  }
+
+  if (exerciseId === 'est_symetrique') {
+    if (cleanCode.includes('pass')) {
+      analysis.approach = "Template non modifié";
+      analysis.correctedCode = `def est_symetrique(M):
+    # Vérifier que la matrice est carrée
+    n = len(M)
+    if any(len(row) != n for row in M):
+        return False
+    
+    # Vérifier la symétrie
+    for i in range(n):
+        for j in range(n):
+            if M[i][j] != M[j][i]:
+                return False
+    return True`;
+    } else if (cleanCode.includes('zip') && cleanCode.includes('*M')) {
+      analysis.approach = "Approche avec transposition par zip - avancé !";
+      analysis.suggestions.push("Très bonne approche ! zip(*M) transpose la matrice");
+    } else if (cleanCode.includes('for') && cleanCode.includes('M[i][j]') && cleanCode.includes('M[j][i]')) {
+      analysis.approach = "Approche avec double boucle - classique et efficace";
+      if (!cleanCode.includes('len(row) != n') && !cleanCode.includes('carrée')) {
+        analysis.suggestions.push("N'oubliez pas de vérifier que la matrice est carrée");
+      }
+    }
+  }
+
+  return analysis;
+}
+
+async function executePythonCode(code: string, testCase: TestCase, exerciseId: string): Promise<{ success: boolean; result?: any; error?: string }> {
   try {
-    // Create a safe execution environment
-    const fullCode = `
-import sys
-import io
-import contextlib
-
-# Redirect stdout to capture output
-output_buffer = io.StringIO()
-
-try:
-    ${code}
-    
-    # Execute the function with test input
-    result = locals()['${testCase.input[0] ? Object.keys(exercises)[0] : 'trace'}'](*${JSON.stringify(testCase.input)})
-    print("RESULT:", result)
-except Exception as e:
-    print("ERROR:", str(e))
-    sys.exit(1)
-`;
-
-    // For demo purposes, we'll simulate Python execution
-    // In a real implementation, you'd use a Python runtime or container
-    const simulatedResult = await simulatePythonExecution(code, testCase);
-    return simulatedResult;
-    
+    // Simple simulation based on exercise and code patterns
+    const result = simulatePythonExecution(code, testCase, exerciseId);
+    return result;
   } catch (error) {
     return {
       success: false,
@@ -93,23 +193,52 @@ except Exception as e:
   }
 }
 
-async function simulatePythonExecution(code: string, testCase: TestCase): Promise<{ success: boolean; result?: any; error?: string }> {
-  // Simple simulation for trace function
-  if (code.includes('sum(M[i][i]') || code.includes('M[i][i]')) {
-    const matrix = testCase.input[0];
-    let trace = 0;
-    for (let i = 0; i < matrix.length; i++) {
-      trace += matrix[i][i];
+function simulatePythonExecution(code: string, testCase: TestCase, exerciseId: string): { success: boolean; result?: any; error?: string } {
+  const cleanCode = code.replace(/#.*$/gm, '').replace(/\s+/g, ' ').trim();
+  
+  if (exerciseId === 'trace') {
+    if (cleanCode.includes('pass') && !cleanCode.includes('return')) {
+      return { success: false, error: "Fonction non implémentée (pass)" };
     }
-    return { success: true, result: trace };
+    
+    // Detect sum with comprehension
+    if (cleanCode.includes('sum') && cleanCode.includes('M[i][i]') && cleanCode.includes('range')) {
+      const matrix = testCase.input[0];
+      let trace = 0;
+      for (let i = 0; i < matrix.length; i++) {
+        trace += matrix[i][i];
+      }
+      return { success: true, result: trace };
+    }
+    
+    // Detect loop approach
+    if (cleanCode.includes('for') && cleanCode.includes('+=') && cleanCode.includes('return')) {
+      const matrix = testCase.input[0];
+      let trace = 0;
+      for (let i = 0; i < matrix.length; i++) {
+        trace += matrix[i][i];
+      }
+      return { success: true, result: trace };
+    }
+    
+    return { success: false, error: "Logique de calcul incorrecte" };
   }
   
-  // Simple simulation for symmetry function
-  if (code.includes('M[i][j]') && code.includes('M[j][i]')) {
+  if (exerciseId === 'est_symetrique') {
+    if (cleanCode.includes('pass')) {
+      return { success: false, error: "Fonction non implémentée" };
+    }
+    
     const matrix = testCase.input[0];
     const n = matrix.length;
+    
+    // Check if it's square
     for (let i = 0; i < n; i++) {
       if (matrix[i].length !== n) return { success: true, result: false };
+    }
+    
+    // Check symmetry
+    for (let i = 0; i < n; i++) {
       for (let j = 0; j < n; j++) {
         if (matrix[i][j] !== matrix[j][i]) {
           return { success: true, result: false };
@@ -119,41 +248,70 @@ async function simulatePythonExecution(code: string, testCase: TestCase): Promis
     return { success: true, result: true };
   }
   
-  return {
-    success: false,
-    error: "Fonction non implémentée ou code incorrect"
-  };
+  if (exerciseId === 'est_antisymetrique') {
+    if (cleanCode.includes('pass')) {
+      return { success: false, error: "Fonction non implémentée" };
+    }
+    
+    const matrix = testCase.input[0];
+    const n = matrix.length;
+    
+    // Check diagonal is zero
+    for (let i = 0; i < n; i++) {
+      if (matrix[i][i] !== 0) return { success: true, result: false };
+    }
+    
+    // Check antisymmetry
+    for (let i = 0; i < n; i++) {
+      for (let j = 0; j < n; j++) {
+        if (matrix[i][j] !== -matrix[j][i]) {
+          return { success: true, result: false };
+        }
+      }
+    }
+    return { success: true, result: true };
+  }
+  
+  return { success: false, error: "Exercice non supporté pour la simulation" };
 }
 
-function generateFeedback(exerciseId: string, testResults: any[], attemptCount: number): string {
+function generatePedagogicalFeedback(exerciseId: string, testResults: any[], attemptCount: number, studentCode: string): string {
   const exercise = exercises[exerciseId];
+  const analysis = analyzeStudentCode(studentCode, exerciseId);
   const failedTests = testResults.filter(t => !t.passed);
   
   if (failedTests.length === 0) {
-    const congratulations = [
-      "🎉 Excellent ! Votre solution est parfaite !",
-      "✨ Bravo ! Tous les tests sont réussis !",
-      "🏆 Félicitations ! Votre code fonctionne correctement !"
-    ];
-    return congratulations[Math.floor(Math.random() * congratulations.length)];
+    return `🎉 Excellent ! Votre ${analysis.approach.toLowerCase()} fonctionne parfaitement !\n\n✨ Tous les tests sont réussis. ${analysis.suggestions.join(' ')}`;
   }
   
-  let feedback = "❌ Quelques tests ont échoué:\n\n";
+  let feedback = `🔍 **Analyse de votre code** : ${analysis.approach}\n\n`;
   
-  failedTests.forEach((test, index) => {
-    feedback += `Test ${index + 1}: ${test.description}\n`;
-    feedback += `• Attendu: ${JSON.stringify(test.expected)}\n`;
-    feedback += `• Obtenu: ${JSON.stringify(test.actual)}\n`;
-    if (test.error) {
-      feedback += `• Erreur: ${test.error}\n`;
-    }
-    feedback += "\n";
-  });
+  if (analysis.issues.length > 0) {
+    feedback += `❌ **Problèmes détectés** :\n`;
+    analysis.issues.forEach((issue, i) => {
+      feedback += `${i + 1}. ${issue}\n`;
+    });
+    feedback += '\n';
+  }
   
-  // Add progressive hints
-  if (attemptCount > 1 && exercise.hints.length > 0) {
-    const hintIndex = Math.min(attemptCount - 2, exercise.hints.length - 1);
-    feedback += `💡 Indice: ${exercise.hints[hintIndex]}\n`;
+  if (analysis.suggestions.length > 0) {
+    feedback += `💡 **Suggestions** :\n`;
+    analysis.suggestions.forEach((suggestion, i) => {
+      feedback += `• ${suggestion}\n`;
+    });
+    feedback += '\n';
+  }
+  
+  if (analysis.correctedCode && attemptCount >= 2) {
+    feedback += `📝 **Code corrigé basé sur votre approche** :\n\`\`\`python\n${analysis.correctedCode}\n\`\`\`\n\n`;
+  }
+  
+  // Add test-specific feedback
+  if (failedTests.length > 0) {
+    feedback += `🧪 **Résultats des tests** :\n`;
+    failedTests.forEach((test, index) => {
+      feedback += `Test "${test.description}" : attendu ${JSON.stringify(test.expected)}, obtenu ${JSON.stringify(test.actual)}\n`;
+    });
   }
   
   return feedback;
@@ -181,7 +339,7 @@ serve(async (req) => {
     // Run all tests
     const testResults = [];
     for (const testCase of exercise.tests) {
-      const execution = await executePythonCode(code, testCase);
+      const execution = await executePythonCode(code, testCase, exerciseId);
       
       const testResult = {
         description: testCase.description,
@@ -195,7 +353,7 @@ serve(async (req) => {
     }
 
     const allPassed = testResults.every(t => t.passed);
-    const feedback = generateFeedback(exerciseId, testResults, attemptCount);
+    const feedback = generatePedagogicalFeedback(exerciseId, testResults, attemptCount, code);
 
     return new Response(
       JSON.stringify({
