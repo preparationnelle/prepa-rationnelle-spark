@@ -1,21 +1,11 @@
 
-import React from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import React from 'react';
 
-export default function MethodAllemandEssaiPage() {
+export const MethodAllemandEssaiPage = () => {
   return (
-    <div className="container max-w-3xl py-10 animate-fade-in space-y-8">
-      <Card>
-        <CardHeader>
-          <CardTitle>Allemand – Méthode Essai</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="mb-6 text-muted-foreground">
-            Retrouvez prochainement ici la méthodologie complète pour réussir l’<b>essai</b> d’allemand en prépa ECG ! (Contenu à compléter)
-          </p>
-          {/* Ajoutez ici votre méthodologie d’essai, ou dites-moi ce que vous souhaitez afficher ! */}
-        </CardContent>
-      </Card>
+    <div className="container mx-auto py-8 px-4">
+      <h1 className="text-3xl font-bold mb-4">Méthodologie Allemand - Essai</h1>
+      <p className="text-muted-foreground">Contenu à venir...</p>
     </div>
   );
-}
+};

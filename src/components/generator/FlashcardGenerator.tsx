@@ -34,6 +34,10 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
     // setInputWord(phrase.split(' ')[0]); // Premier mot de la phrase par exemple
   };
 
+  const handleGenerate = async () => {
+    await generateFlashcard(inputWord, inputLanguage);
+  };
+
   return (
     <div className="space-y-8">
       {/* Zone de génération automatique de phrases */}
@@ -66,7 +70,7 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
             inputLanguage={inputLanguage}
             setInputLanguage={setInputLanguage}
             isGenerating={isGenerating}
-            onGenerate={generateFlashcard}
+            onGenerate={handleGenerate}
           />
         </CardContent>
       </Card>

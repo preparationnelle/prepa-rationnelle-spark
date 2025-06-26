@@ -1,19 +1,11 @@
 
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import React from 'react';
 
-export default function MethodGeopolitiquePage() {
+export const MethodGeopolitiquePage = () => {
   return (
-    <div className="container max-w-2xl py-10 animate-fade-in">
-      <Card>
-        <CardHeader>
-          <CardTitle>Géopolitique – Méthodologie ECG</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground">
-            Module à venir – conseils méthodologiques, plans et astuces pour la géopolitique arriveront très bientôt !
-          </p>
-        </CardContent>
-      </Card>
+    <div className="container mx-auto py-8 px-4">
+      <h1 className="text-3xl font-bold mb-4">Méthodologie Géopolitique</h1>
+      <p className="text-muted-foreground">Contenu à venir...</p>
     </div>
   );
-}
+};

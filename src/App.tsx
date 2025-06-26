@@ -1,13 +1,14 @@
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from '@/components/ui/toaster';
-import { PostHogProvider } from '@/providers/PostHogProvider';
+import PostHogProvider from '@/providers/PostHogProvider';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { ProgressProvider } from '@/context/ProgressContext';
 import { AuthProvider } from '@/context/AuthContext';
 import ScrollToTop from '@/components/ScrollToTop';
 import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
+import { Footer } from '@/components/Footer';
 import ProtectedRoute from '@/components/ProtectedRoute';
 
 // Import all pages
@@ -41,6 +42,24 @@ import PythonTutorGeneratorPage from './pages/generator/PythonTutorGeneratorPage
 import PythonExercisesGeneratorPage from './pages/generator/PythonExercisesGeneratorPage';
 import PrepaChatbotGeneratorPage from './pages/generator/PrepaChatbotGeneratorPage';
 
+// Import methodology pages
+import { MethodAnglaisPage } from '@/pages/methodologie/MethodAnglaisPage';
+import { MethodMathsPage } from '@/pages/methodologie/MethodMathsPage';
+import { MethodGeopolitiquePage } from '@/pages/methodologie/MethodGeopolitiquePage';
+import { MethodCulturePage } from '@/pages/methodologie/MethodCulturePage';
+import { MethodAllemandPage } from '@/pages/methodologie/MethodAllemandPage';
+import { MethodAllemandEssaiPage } from '@/pages/methodologie/MethodAllemandEssaiPage';
+import { MethodAllemandSynthesePage } from '@/pages/methodologie/MethodAllemandSynthesePage';
+import { MethodPythonPage } from '@/pages/methodologie/MethodPythonPage';
+import { MathsEteECG1ECG2Page } from '@/pages/methodologie/MathsEteECG1ECG2Page';
+import { MethodGrammairePage } from '@/pages/methodologie/MethodGrammairePage';
+import { MethodGrammaireReglesPage } from '@/pages/methodologie/MethodGrammaireReglesPage';
+import { MethodGrammaireAllemandePage } from '@/pages/methodologie/MethodGrammaireAllemandePage';
+import { MethodGrammaireStructurePage } from '@/pages/methodologie/MethodGrammaireStructurePage';
+import { MethodGrammaireDeclinaisonsPage } from '@/pages/methodologie/MethodGrammaireDeclinaisonsPage';
+import { MethodGrammairePassifPage } from '@/pages/methodologie/MethodGrammairePassifPage';
+import { MethodGrammaireRelativesPage } from '@/pages/methodologie/MethodGrammaireRelativesPage';
+
 import NosOffresPage from '@/pages/NosOffresPage';
 import OrganisationEtePage from '@/pages/offres/OrganisationEtePage';
 import CoachingMathsPage from '@/pages/offres/CoachingMathsPage';
@@ -50,7 +69,7 @@ import PreparationCubePage from '@/pages/offres/PreparationCubePage';
 function App() {
   return (
     <PostHogProvider>
-      <ThemeProvider defaultTheme="light" storageKey="prepa-rationnelle-theme">
+      <ThemeProvider storageKey="prepa-rationnelle-theme">
         <AuthProvider>
           <ProgressProvider>
             <Router>
@@ -88,7 +107,6 @@ function App() {
                     } />
                     
                     {/* Routes de méthodologie */}
-                    <Route path="/methodologie" element={<MethodologiePage />} />
                     <Route path="/methodologie/anglais" element={<MethodAnglaisPage />} />
                     <Route path="/methodologie/maths" element={<MethodMathsPage />} />
                     <Route path="/methodologie/geopolitique" element={<MethodGeopolitiquePage />} />

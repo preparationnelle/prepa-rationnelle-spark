@@ -12,13 +12,18 @@ export interface GeneratedFlashcard {
   sentence_fr: string;
 }
 
-export const useFlashcardGenerator = () => {
+export const useFlashcardGenerator = (language: 'fr' | 'en' = 'fr', onFlashcardCreated?: () => void) => {
   const [generating, setGenerating] = useState(false);
+  const [inputWord, setInputWord] = useState('');
+  const [inputLanguage, setInputLanguage] = useState<'fr' | 'en'>('fr');
+  const [generatedFlashcards, setGeneratedFlashcards] = useState<GeneratedFlashcard[]>([]);
+  const [savedFlashcards, setSavedFlashcards] = useState<GeneratedFlashcard[]>([]);
+  
   const { currentUser } = useAuth();
   const { toast } = useToast();
   const { saveActivity } = useActivityHistory();
 
-  const generateFlashcard = async (word: string, language: 'fr' | 'en'): Promise<GeneratedFlashcard | null> => {
+  const generateFlashcard = async (word: string, lang: 'fr' | 'en'): Promise<GeneratedFlashcard | null> => {
     if (!word.trim()) {
       toast({
         title: language === 'fr' ? "Mot requis" : "Word required",
@@ -47,7 +52,7 @@ export const useFlashcardGenerator = () => {
       const { data, error } = await supabase.functions.invoke('generate-flashcard', {
         body: {
           word: word,
-          language: language,
+          language: lang,
           userId: currentUser.id
         }
       });
@@ -60,14 +65,22 @@ export const useFlashcardGenerator = () => {
         throw new Error(data.error);
       }
 
+      const newFlashcard = data.generated;
+      setGeneratedFlashcards(prev => [newFlashcard, ...prev]);
+
       // Save to activity history
       await saveActivity(
         'generator',
         'flashcards',
-        { word, language },
-        data.generated,
+        { word, language: lang },
+        newFlashcard,
         { success: data.success }
       );
+
+      // Call callback if provided
+      if (onFlashcardCreated) {
+        onFlashcardCreated();
+      }
 
       toast({
         title: language === 'fr' ? "Flashcard créée" : "Flashcard created",
@@ -76,7 +89,7 @@ export const useFlashcardGenerator = () => {
           : "Your flashcard has been generated and saved successfully.",
       });
 
-      return data.generated;
+      return newFlashcard;
     } catch (error) {
       console.error("Error generating flashcard:", error);
       toast({
@@ -92,8 +105,26 @@ export const useFlashcardGenerator = () => {
     }
   };
 
+  const deleteFlashcard = async (flashcard: GeneratedFlashcard) => {
+    setGeneratedFlashcards(prev => prev.filter(f => f !== flashcard));
+    setSavedFlashcards(prev => prev.filter(f => f !== flashcard));
+  };
+
+  const clearGeneratedHistory = () => {
+    setGeneratedFlashcards([]);
+  };
+
   return {
     generating,
-    generateFlashcard
+    inputWord,
+    setInputWord,
+    inputLanguage,
+    setInputLanguage,
+    isGenerating: generating,
+    generatedFlashcards,
+    savedFlashcards,
+    generateFlashcard,
+    deleteFlashcard,
+    clearGeneratedHistory
   };
 };
