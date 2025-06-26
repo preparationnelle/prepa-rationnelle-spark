@@ -9,7 +9,7 @@ const corsHeaders = {
 
 const openAIApiKey = Deno.env.get("OPENAI_API_KEY");
 
-// Base de phrases similaires par point grammatical
+// Base de phrases similaires par point grammatical enrichie
 const SIMILAR_SENTENCES: Record<string, Record<string, string[]>> = {
   en: {
     "will have to + infinitive": [
@@ -34,13 +34,45 @@ const SIMILAR_SENTENCES: Record<string, Record<string, string[]>> = {
     ]
   },
   de: {
-    "Konjunktiv II": [
-      "Wenn die Wirtschaft stärker wäre, gäbe es weniger Arbeitslose.",
-      "Falls mehr investiert worden wäre, hätte sich die Lage verbessert."
+    "führen zu + datif": [
+      "Die Wirtschaftskrise führte zu höherer Arbeitslosigkeit.",
+      "Klimawandel führt zu extremen Wetterereignissen."
     ],
-    "werden + müssen": [
-      "Die Unternehmen werden ihre Strategien ändern müssen.",
-      "Wir werden bis morgen eine Lösung finden müssen."
+    "planen + zu + infinitif": [
+      "Die EU plant, neue Handelsabkommen zu schließen.",
+      "Viele Städte planen, klimaneutral zu werden."
+    ],
+    "kritisieren + accusatif": [
+      "Opposition kritisiert die Regierungspolitik scharf.",
+      "Bürger kritisieren den Mangel an Transparenz."
+    ],
+    "génitif neutre": [
+      "Die Diskussion eines neuen Gesetzes dauert lange.",
+      "Die Umsetzung des Plans war erfolgreich."
+    ],
+    "verbe séparable": [
+      "Die Regierung setzte das Programm sofort um.",
+      "Experten stellten neue Theorien vor."
+    ],
+    "comparatif décliné": [
+      "Wir brauchen strengere Maßnahmen gegen Korruption.",
+      "Die Situation erfordert schnellere Entscheidungen."
+    ],
+    "subordonnée dass": [
+      "Minister betonen, dass Reformen notwendig sind.",
+      "Studien zeigen, dass die Lage sich verschlechtert."
+    ],
+    "begegnen + datif": [
+      "Politiker müssen wachsender Kritik begegnen.",
+      "Europa muss neuen Herausforderungen begegnen."
+    ],
+    "gegenüber + datif": [
+      "Skepsis gegenüber neuen Technologien wächst.",
+      "Vertrauen gegenüber den Institutionen sinkt."
+    ],
+    "verbe séparable aussetzen": [
+      "Das Gericht setzte die Strafe zur Bewährung aus.",
+      "Die Behörde setzte die Verhandlungen aus."
     ]
   },
   es: {
@@ -89,16 +121,24 @@ Réponds en JSON STRICT :
   "flashcard_rule": "Règle principale à retenir pour la flashcard"
 }`,
 
-  de: `Tu es un correcteur ECRICOME spécialisé en thèmes grammaticaux allemands. Utilise le même système de scoring amélioré :
+  de: `Tu es un correcteur ECRICOME spécialisé en thèmes grammaticaux allemands. Tu analyses des phrases de presse géopolitique complexes. Utilise ce système de scoring amélioré :
 
 SYSTÈME DE SCORING AMÉLIORÉ :
 - Note de base : 10/10
 - Déductions : 
-  * -2 points : barbarisme, erreurs graves de déclinaison, ordre des mots incorrect
-  * -1 point : erreurs mineures de grammaire, lexique, orthographe
+  * -2 points : barbarisme, erreurs graves de déclinaison, ordre des mots incorrect, régime verbal faux
+  * -1 point : erreurs mineures de grammaire, lexique, orthographe, accords
   * 0 point : synonymes acceptables, variations stylistiques valides
 
-Accepte les synonymes et variations correctes. Identifie les points grammaticaux défaillants (déclinaisons, ordre des mots, Konjunktiv II, etc.).
+POINTS SPÉCIFIQUES À ANALYSER :
+- führen zu + datif / constructions avec prépositions
+- Déclinaisons (accusatif, datif, génitif) après articles et adjectifs
+- Ordre des mots (verbes séparables, subordonnées)
+- Régimes verbaux spécifiques (kritisieren + acc., begegnen + dat.)
+- Comparatifs déclinés
+- Constructions infinitives (planen zu, um... zu)
+
+Accepte les synonymes et variations correctes. Identifie les points grammaticaux défaillants précisément.
 
 Réponds en JSON STRICT avec la même structure que l'anglais.`,
 
@@ -164,7 +204,7 @@ serve(async (req) => {
           { role: "system", content: systemPrompt },
           { 
             role: "user", 
-            content: `PHRASE FRANÇAISE: ${french}\nLANGUE CIBLE: ${language}\nTRADUCTION ATTENDUE: ${reference}\nRÉPONSE ÉTUDIANT: ${student}\nPOINTS GRAMMATICAUX TRAVAILLÉS: ${grammar_points?.join(', ') || 'Non spécifiés'}` 
+            content: `PHRASE FRANÇAISE: ${french}\nLANGUE CIBLE: ${language}\nTRADUCTION ATTENDUE: ${reference}\nRÉPONSE ÉTUDIANT: ${student}\nPOINTS GRAMMATICAUX TRAVAILLÉS: ${grammar_points?.join(', ') || 'Non spécifiés'}\n\nAnalyse précisément selon les critères ECRICOME et identifie les erreurs spécifiques aux constructions de presse géopolitique.` 
           }
         ],
         max_tokens: 1500,

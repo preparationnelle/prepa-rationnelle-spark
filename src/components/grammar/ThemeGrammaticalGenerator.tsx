@@ -1,10 +1,11 @@
+
 import React, { useState, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import { Loader2, Languages, Target, RefreshCw, Eye, EyeOff, Plus, CheckCircle, AlertCircle } from 'lucide-react';
+import { Loader2, Languages, Target, RefreshCw, Eye, EyeOff, Plus, CheckCircle, AlertCircle, BookOpen, Lightbulb } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';
@@ -17,6 +18,14 @@ interface ThemeSentence {
   reference: string;
   grammar_points: string[];
   notes?: string[];
+  glossary?: Record<string, string>;
+  mini_exercise?: {
+    question: string;
+    answer: string;
+    explanation: string;
+  };
+  difficulty_level?: string;
+  specialized?: boolean;
 }
 
 interface ThemeEvaluation {
@@ -36,13 +45,14 @@ interface ThemeEvaluation {
 }
 
 export const ThemeGrammaticalGenerator: React.FC = () => {
-  const [language, setLanguage] = useState<'en' | 'de' | 'es'>('en');
+  const [language, setLanguage] = useState<'en' | 'de' | 'es'>('de'); // Défaut allemand pour vos phrases
   const [currentSentence, setCurrentSentence] = useState<ThemeSentence | null>(null);
   const [studentAnswer, setStudentAnswer] = useState('');
   const [evaluation, setEvaluation] = useState<ThemeEvaluation | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [isEvaluating, setIsEvaluating] = useState(false);
   const [showHints, setShowHints] = useState(false);
+  const [showMiniExercise, setShowMiniExercise] = useState(false);
   const [newError, setNewError] = useState<any>(null);
   const [weakGrammarPoints, setWeakGrammarPoints] = useState<string[]>([]);
   const [similarSentences, setSimilarSentences] = useState<string[]>([]);
@@ -65,6 +75,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
       setStudentAnswer('');
       setEvaluation(null);
       setShowHints(false);
+      setShowMiniExercise(false);
       setNewError(null);
       setWeakGrammarPoints([]);
       setSimilarSentences([]);
@@ -144,6 +155,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
     setStudentAnswer('');
     setEvaluation(null);
     setShowHints(false);
+    setShowMiniExercise(false);
     setNewError(null);
     setWeakGrammarPoints([]);
     setSimilarSentences([]);
@@ -181,7 +193,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
               Thème Grammatical
             </h1>
             <p className="text-muted-foreground">
-              Entraînement intensif avec correction IA et progression personnalisée
+              Entraînement intensif avec phrases spécialisées et correction IA détaillée
             </p>
           </div>
         </div>
@@ -218,6 +230,11 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
           <CardTitle className="flex items-center gap-2 text-orange-800">
             <Target className="h-5 w-5" />
             Zone de génération
+            {language === 'de' && (
+              <Badge className="bg-purple-100 text-purple-800 border-purple-200">
+                Phrases spécialisées
+              </Badge>
+            )}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -241,7 +258,10 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
               )}
             </Button>
             <p className="text-sm text-orange-700 mt-2">
-              Cliquez pour générer une phrase de presse à traduire
+              {language === 'de' 
+                ? "Phrases de presse spécialisées avec géopolitique et actualité"
+                : "Cliquez pour générer une phrase de presse à traduire"
+              }
             </p>
           </div>
         </CardContent>
@@ -256,6 +276,11 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
               <CardTitle className="flex items-center gap-2 text-orange-800">
                 <Languages className="h-5 w-5" />
                 Phrase à traduire
+                {currentSentence.difficulty_level && (
+                  <Badge variant={currentSentence.difficulty_level === 'advanced' ? 'destructive' : 'secondary'}>
+                    {currentSentence.difficulty_level === 'advanced' ? 'Avancé' : 'Intermédiaire'}
+                  </Badge>
+                )}
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -265,25 +290,39 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                 </p>
               </div>
 
-              {/* Bouton indices */}
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setShowHints(!showHints)}
-                className="w-full border-orange-300 text-orange-700 hover:bg-orange-100"
-              >
-                {showHints ? (
-                  <>
-                    <EyeOff className="mr-2 h-4 w-4" />
-                    Masquer les indices
-                  </>
-                ) : (
-                  <>
-                    <Eye className="mr-2 h-4 w-4" />
-                    Voir les indices
-                  </>
+              {/* Boutons d'aide */}
+              <div className="flex gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setShowHints(!showHints)}
+                  className="flex-1 border-orange-300 text-orange-700 hover:bg-orange-100"
+                >
+                  {showHints ? (
+                    <>
+                      <EyeOff className="mr-2 h-4 w-4" />
+                      Masquer indices
+                    </>
+                  ) : (
+                    <>
+                      <Eye className="mr-2 h-4 w-4" />
+                      Voir indices
+                    </>
+                  )}
+                </Button>
+
+                {currentSentence.glossary && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setShowMiniExercise(!showMiniExercise)}
+                    className="flex-1 border-purple-300 text-purple-700 hover:bg-purple-100"
+                  >
+                    <BookOpen className="mr-2 h-4 w-4" />
+                    Glossaire
+                  </Button>
                 )}
-              </Button>
+              </div>
 
               {/* Indices conditionnels */}
               {showHints && (
@@ -311,6 +350,21 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                       </ul>
                     </div>
                   )}
+                </div>
+              )}
+
+              {/* Glossaire et vocabulaire */}
+              {showMiniExercise && currentSentence.glossary && (
+                <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                  <p className="text-sm font-medium text-purple-800 mb-2">Glossaire :</p>
+                  <div className="grid grid-cols-1 gap-2">
+                    {Object.entries(currentSentence.glossary).map(([german, french], index) => (
+                      <div key={index} className="flex justify-between items-center bg-white p-2 rounded border">
+                        <span className="font-medium text-purple-900">{german}</span>
+                        <span className="text-purple-700">{french}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
             </CardContent>
@@ -467,6 +521,27 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                   </ul>
                 </div>
               )}
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Mini-exercice après correction */}
+      {evaluation && currentSentence?.mini_exercise && (
+        <Card className="border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-indigo-50">
+          <CardHeader className="pb-4">
+            <CardTitle className="flex items-center gap-2 text-purple-800">
+              <Lightbulb className="h-5 w-5" />
+              Mini-exercice de renforcement
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="bg-white p-4 rounded-lg border border-purple-200">
+              <p className="text-purple-900 font-medium mb-3">{currentSentence.mini_exercise.question}</p>
+              <div className="bg-purple-50 p-3 rounded border border-purple-200">
+                <p className="text-sm text-purple-700 mb-1"><strong>Réponse :</strong> {currentSentence.mini_exercise.answer}</p>
+                <p className="text-sm text-purple-600"><strong>Explication :</strong> {currentSentence.mini_exercise.explanation}</p>
+              </div>
             </div>
           </CardContent>
         </Card>
