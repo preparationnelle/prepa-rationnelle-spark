@@ -17,7 +17,8 @@ import {
   Instagram, 
   Linkedin,
   GraduationCap,
-  Handshake
+  Handshake,
+  BarChart3
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
@@ -240,19 +241,25 @@ const Navigation = () => {
           <ThemeToggle variant="icon" />
 
           {currentUser ? (
-            <Button 
-              variant="outline" 
-              size="sm" 
-              onClick={() => {
-                handleLogout();
-                closeMenu();
-              }} 
-              className="flex items-center"
-              disabled={isLoggingOut}
-            >
-              <LogOut className="mr-2 h-4 w-4" /> 
-              {isLoggingOut ? 'Déconnexion...' : 'Déconnexion'}
-            </Button>
+            <div className="flex items-center space-x-4">
+              <Link to="/dashboard" className="text-foreground hover:text-primary transition flex items-center gap-2" onClick={closeMenu}>
+                <BarChart3 className="h-4 w-4" />
+                Dashboard
+              </Link>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={() => {
+                  handleLogout();
+                  closeMenu();
+                }} 
+                className="flex items-center"
+                disabled={isLoggingOut}
+              >
+                <LogOut className="mr-2 h-4 w-4" /> 
+                {isLoggingOut ? 'Déconnexion...' : 'Déconnexion'}
+              </Button>
+            </div>
           ) : (
             <>
               <Link to="/login" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
@@ -403,18 +410,28 @@ const Navigation = () => {
           </Link>
           
           {currentUser ? (
-            <Button 
-              variant="outline" 
-              onClick={() => {
-                handleLogout();
-                closeMenu();
-              }} 
-              className="mt-4 w-full flex items-center justify-center"
-              disabled={isLoggingOut}
-            >
-              <LogOut className="mr-2 h-4 w-4" /> 
-              {isLoggingOut ? 'Déconnexion...' : 'Déconnexion'}
-            </Button>
+            <>
+              <Link 
+                to="/dashboard" 
+                className="text-lg py-2 border-b border-border flex items-center gap-2"
+                onClick={closeMenu}
+              >
+                <BarChart3 className="h-4 w-4" />
+                Dashboard
+              </Link>
+              <Button 
+                variant="outline" 
+                onClick={() => {
+                  handleLogout();
+                  closeMenu();
+                }} 
+                className="mt-4 w-full flex items-center justify-center"
+                disabled={isLoggingOut}
+              >
+                <LogOut className="mr-2 h-4 w-4" /> 
+                {isLoggingOut ? 'Déconnexion...' : 'Déconnexion'}
+              </Button>
+            </>
           ) : (
             <>
               <Link 

@@ -344,6 +344,42 @@ export type Database = {
         }
         Relationships: []
       }
+      user_activity_history: {
+        Row: {
+          activity_type: string
+          created_at: string
+          generator_type: string | null
+          id: string
+          input_data: Json | null
+          metadata: Json | null
+          output_data: Json | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          activity_type: string
+          created_at?: string
+          generator_type?: string | null
+          id?: string
+          input_data?: Json | null
+          metadata?: Json | null
+          output_data?: Json | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          activity_type?: string
+          created_at?: string
+          generator_type?: string | null
+          id?: string
+          input_data?: Json | null
+          metadata?: Json | null
+          output_data?: Json | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

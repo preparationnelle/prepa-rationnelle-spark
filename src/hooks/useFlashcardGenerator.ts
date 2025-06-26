@@ -1,181 +1,99 @@
 
-import { useState, useEffect } from 'react';
-import { useToast } from '@/components/ui/use-toast';
+import { useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';
+import { useToast } from '@/components/ui/use-toast';
+import { useActivityHistory } from './useActivityHistory';
 
-interface FlashcardData {
-  id?: string;
+export interface GeneratedFlashcard {
   word_en: string;
   word_fr: string;
   sentence_en: string;
   sentence_fr: string;
-  created_at?: string;
 }
 
-export const useFlashcardGenerator = (language: 'fr' | 'en', onFlashcardCreated?: () => void) => {
-  const [inputWord, setInputWord] = useState('');
-  const [inputLanguage, setInputLanguage] = useState<'fr' | 'en'>('fr');
-  const [isGenerating, setIsGenerating] = useState(false);
-  
-  // Load generated flashcards from localStorage on component mount
-  const loadGeneratedFlashcards = () => {
-    const stored = localStorage.getItem('generatedFlashcards');
-    return stored ? JSON.parse(stored) : [];
-  };
-  
-  const [generatedFlashcards, setGeneratedFlashcards] = useState<FlashcardData[]>(loadGeneratedFlashcards);
-  const [savedFlashcards, setSavedFlashcards] = useState<FlashcardData[]>([]);
-  const { toast } = useToast();
+export const useFlashcardGenerator = () => {
+  const [generating, setGenerating] = useState(false);
   const { currentUser } = useAuth();
+  const { toast } = useToast();
+  const { saveActivity } = useActivityHistory();
 
-  // Save generated flashcards to localStorage whenever they change
-  const updateGeneratedFlashcards = (newFlashcards: FlashcardData[]) => {
-    setGeneratedFlashcards(newFlashcards);
-    localStorage.setItem('generatedFlashcards', JSON.stringify(newFlashcards));
-  };
-
-  const generateFlashcard = async () => {
-    if (!inputWord.trim()) {
+  const generateFlashcard = async (word: string, language: 'fr' | 'en'): Promise<GeneratedFlashcard | null> => {
+    if (!word.trim()) {
       toast({
-        title: language === 'fr' ? "Erreur" : "Error",
-        description: language === 'fr' ? "Veuillez entrer un mot" : "Please enter a word",
-        variant: "destructive",
+        title: language === 'fr' ? "Mot requis" : "Word required",
+        description: language === 'fr' 
+          ? "Veuillez entrer un mot pour générer une flashcard." 
+          : "Please enter a word to generate a flashcard.",
+        variant: "destructive"
       });
-      return;
+      return null;
     }
 
     if (!currentUser) {
       toast({
-        title: language === 'fr' ? "Erreur" : "Error",
-        description: language === 'fr' ? "Vous devez être connecté" : "You must be logged in",
-        variant: "destructive",
+        title: language === 'fr' ? "Connexion requise" : "Login required",
+        description: language === 'fr' 
+          ? "Vous devez être connecté pour générer des flashcards." 
+          : "You must be logged in to generate flashcards.",
+        variant: "destructive"
       });
-      return;
+      return null;
     }
 
-    setIsGenerating(true);
-
+    setGenerating(true);
+    
     try {
       const { data, error } = await supabase.functions.invoke('generate-flashcard', {
         body: {
-          word: inputWord.trim(),
-          language: inputLanguage,
-          userId: currentUser.id,
-        },
+          word: word,
+          language: language,
+          userId: currentUser.id
+        }
       });
 
       if (error) {
-        console.error('Error generating flashcard:', error);
-        toast({
-          title: language === 'fr' ? "Erreur" : "Error",
-          description: language === 'fr' ? "Erreur lors de la génération" : "Error generating flashcard",
-          variant: "destructive",
-        });
-        return;
+        throw new Error(error.message);
       }
 
-      // Add the new flashcard to the beginning of the generated list and save to localStorage
-      const newGeneratedList = [data.flashcard, ...generatedFlashcards];
-      updateGeneratedFlashcards(newGeneratedList);
-      setInputWord(''); // Clear input after successful generation
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      // Save to activity history
+      await saveActivity(
+        'generator',
+        'flashcards',
+        { word, language },
+        data.generated,
+        { success: data.success }
+      );
+
       toast({
-        title: language === 'fr' ? "Succès" : "Success",
-        description: language === 'fr' ? "Flashcard générée avec succès !" : "Flashcard generated successfully!",
+        title: language === 'fr' ? "Flashcard créée" : "Flashcard created",
+        description: language === 'fr' 
+          ? "Votre flashcard a été générée et sauvegardée avec succès." 
+          : "Your flashcard has been generated and saved successfully.",
       });
 
-      // Refresh saved flashcards and notify parent
-      await loadSavedFlashcards();
-      if (onFlashcardCreated) {
-        onFlashcardCreated();
-      }
-
+      return data.generated;
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error generating flashcard:", error);
       toast({
         title: language === 'fr' ? "Erreur" : "Error",
-        description: language === 'fr' ? "Une erreur s'est produite" : "An error occurred",
-        variant: "destructive",
+        description: language === 'fr' 
+          ? "Une erreur est survenue lors de la génération de la flashcard: " + (error as Error).message 
+          : "An error occurred while generating the flashcard: " + (error as Error).message,
+        variant: "destructive"
       });
+      return null;
     } finally {
-      setIsGenerating(false);
+      setGenerating(false);
     }
   };
-
-  const loadSavedFlashcards = async () => {
-    if (!currentUser) return;
-
-    try {
-      const { data, error } = await supabase
-        .from('flashcards')
-        .select('*')
-        .eq('user_id', currentUser.id)
-        .order('created_at', { ascending: false })
-        .limit(10);
-
-      if (error) {
-        console.error('Error loading flashcards:', error);
-        return;
-      }
-
-      setSavedFlashcards(data || []);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
-
-  const deleteFlashcard = async (id: string) => {
-    try {
-      const { error } = await supabase
-        .from('flashcards')
-        .delete()
-        .eq('id', id);
-
-      if (error) {
-        console.error('Error deleting flashcard:', error);
-        toast({
-          title: language === 'fr' ? "Erreur" : "Error",
-          description: language === 'fr' ? "Erreur lors de la suppression" : "Error deleting flashcard",
-          variant: "destructive",
-        });
-        return;
-      }
-
-      setSavedFlashcards(prev => prev.filter(card => card.id !== id));
-      toast({
-        title: language === 'fr' ? "Succès" : "Success",
-        description: language === 'fr' ? "Flashcard supprimée" : "Flashcard deleted",
-      });
-
-      // Notify parent of change
-      if (onFlashcardCreated) {
-        onFlashcardCreated();
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
-
-  const clearGeneratedHistory = () => {
-    updateGeneratedFlashcards([]);
-  };
-
-  useEffect(() => {
-    if (currentUser) {
-      loadSavedFlashcards();
-    }
-  }, [currentUser]);
 
   return {
-    inputWord,
-    setInputWord,
-    inputLanguage,
-    setInputLanguage,
-    isGenerating,
-    generatedFlashcards,
-    savedFlashcards,
-    generateFlashcard,
-    deleteFlashcard,
-    clearGeneratedHistory,
+    generating,
+    generateFlashcard
   };
 };

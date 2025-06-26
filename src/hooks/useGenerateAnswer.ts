@@ -4,12 +4,14 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
 import { AdditionalInfo } from '@/components/generator/AdditionalInfoForm';
 import { Answer } from '@/components/generator/ResponseTabs';
+import { useActivityHistory } from './useActivityHistory';
 
 export const useGenerateAnswer = (currentUserId?: string) => {
   const [generating, setGenerating] = useState(false);
   const [wordCount, setWordCount] = useState(0);
   const [currentAnswer, setCurrentAnswer] = useState<Answer | null>(null);
   const { toast } = useToast();
+  const { saveActivity } = useActivityHistory();
 
   const generateAnswer = async (question: string, language: 'fr' | 'en', additionalInfo: AdditionalInfo) => {
     if (!question.trim()) {
@@ -58,14 +60,16 @@ export const useGenerateAnswer = (currentUserId?: string) => {
 
         if (saveError) {
           console.error("Error saving answer:", saveError);
-          toast({
-            title: language === 'fr' ? "Erreur" : "Error",
-            description: language === 'fr' 
-              ? "Une erreur est survenue lors de la sauvegarde de la réponse: " + saveError.message 
-              : "An error occurred while saving the answer: " + saveError.message,
-            variant: "destructive"
-          });
         }
+
+        // Save to activity history
+        await saveActivity(
+          'generator',
+          'answer',
+          { question, language, additionalInfo },
+          data.answer,
+          { wordCount: data.wordCount }
+        );
       }
       
       return data.answer;
