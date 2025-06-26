@@ -31,9 +31,9 @@ const HomePage = () => {
       <div className="container mx-auto px-4">
         <OptionalLoginBanner />
       </div>
+      <OffersSection />
       <InterviewPreparationSection />
       <AutomationsSection />
-      <OffersSection />
       <TestimonialsSection />
       <PricingSection />
       <PodcastSection />
