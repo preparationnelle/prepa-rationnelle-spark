@@ -11,6 +11,7 @@ import { CallToActionSection } from '@/components/sections/CallToActionSection';
 import { PodcastSection } from '@/components/sections/PodcastSection';
 import { PartnersSection } from '@/components/sections/PartnersSection';
 import OptionalLoginBanner from '@/components/OptionalLoginBanner';
+import OffersSection from '@/components/OffersSection';
 
 const HomePage = () => {
   const { currentUser } = useAuth();
@@ -32,6 +33,7 @@ const HomePage = () => {
       </div>
       <InterviewPreparationSection />
       <AutomationsSection />
+      <OffersSection />
       <TestimonialsSection />
       <PricingSection />
       <PodcastSection />
