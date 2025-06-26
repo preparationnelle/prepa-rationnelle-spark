@@ -12,6 +12,7 @@ import { GeneratorCategorySection } from '@/components/generator/GeneratorCatego
 import { AnswerAutomation } from '@/components/generator/AnswerAutomation';
 import { EMLyonAutomation } from '@/components/generator/EMLyonAutomation';
 import { EDHECAutomation } from '@/components/generator/EDHECAutomation';
+import OptionalLoginBanner from '@/components/OptionalLoginBanner';
 
 // Import ALL generator components needed
 import { FlashcardGenerator } from '@/components/generator/FlashcardGenerator';
@@ -314,6 +315,9 @@ const GeneratorPage = () => {
           Préparez vos entretiens avec nos générateurs intelligents : réponses personnalisées, flashcards, langues et géopolitique
         </p>
       </div>
+      
+      <OptionalLoginBanner />
+      
       {!selectedKey && (
         <>
           <GeneratorCategorySection

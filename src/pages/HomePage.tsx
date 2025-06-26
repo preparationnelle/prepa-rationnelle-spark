@@ -11,6 +11,7 @@ import { PricingSection } from '@/components/PricingSection';
 import { CallToActionSection } from '@/components/sections/CallToActionSection';
 import { PodcastSection } from '@/components/sections/PodcastSection';
 import { PartnersSection } from '@/components/sections/PartnersSection';
+import OptionalLoginBanner from '@/components/OptionalLoginBanner';
 
 const HomePage = () => {
   const { currentUser } = useAuth();
@@ -27,6 +28,9 @@ const HomePage = () => {
   return (
     <div className="min-h-screen">
       <HeroSection />
+      <div className="container mx-auto px-4">
+        <OptionalLoginBanner />
+      </div>
       <FeaturesSection />
       <AutomationsSection />
       <SchoolsSection />
