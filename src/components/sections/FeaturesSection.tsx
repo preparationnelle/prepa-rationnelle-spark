@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { User, Target, Users } from 'lucide-react';
+import { Map, Target, Users } from 'lucide-react';
 
 export const FeaturesSection = () => {
   const features = [
