@@ -6,22 +6,22 @@ import { User, Target, Users } from 'lucide-react';
 export const FeaturesSection = () => {
   const features = [
     {
-      icon: <User className="h-8 w-8 text-primary" />,
-      title: "Introspection",
-      description: "Questions sur la personnalité et la connaissance de soi",
-      link: "/questions/introspection"
+      icon: <Map className="h-8 w-8 text-primary" />,
+      title: "Projection & scénarios",
+      description: "Questions sur la projection dans l'avenir et les scénarios hypothétiques",
+      link: "/questions/projection-scenarios"
     },
     {
       icon: <Target className="h-8 w-8 text-primary" />,
       title: "Motivations & objectifs", 
-      description: "Questions sur les objectifs et les aspirations",
-      link: "/questions/motivation"
+      description: "Questions sur les motivations profondes et les objectifs de carrière",
+      link: "/questions/motivation-objectives"
     },
     {
       icon: <Users className="h-8 w-8 text-primary" />,
       title: "Relations & travail d'équipe",
-      description: "Questions sur le travail collaboratif et la communication", 
-      link: "/questions/interpersonal"
+      description: "Questions sur les compétences interpersonnelles et le travail collaboratif", 
+      link: "/questions/interpersonal-teamwork"
     }
   ];
 

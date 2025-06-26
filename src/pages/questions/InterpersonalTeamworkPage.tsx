@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, Users } from 'lucide-react';
 
-const InterpersonalPage = () => {
+const InterpersonalTeamworkPage = () => {
   return (
     <div className="min-h-screen bg-accent py-16">
       <div className="container mx-auto px-4">
@@ -23,16 +23,16 @@ const InterpersonalPage = () => {
           </div>
           <div>
             <h1 className="text-3xl font-bold">Relations & travail d'équipe</h1>
-            <p className="text-muted-foreground">Questions sur le travail collaboratif et la communication</p>
+            <p className="text-muted-foreground">Questions sur les compétences interpersonnelles et le travail collaboratif</p>
           </div>
         </div>
         
         <div className="bg-white p-8 rounded-lg shadow-md">
           <p className="text-gray-600 mb-4">
-            Cette section aborde les compétences relationnelles et le travail en équipe.
+            Cette section évalue vos compétences relationnelles et votre capacité à travailler en équipe.
           </p>
           <p className="text-gray-600">
-            Les questions sur les relations interpersonnelles permettent d'évaluer votre capacité à collaborer, communiquer et gérer les conflits dans un environnement professionnel.
+            Les questions interpersonnelles permettent de mesurer votre aptitude à collaborer, communiquer et résoudre les conflits en milieu professionnel.
           </p>
         </div>
       </div>
@@ -40,4 +40,4 @@ const InterpersonalPage = () => {
   );
 };
 
-export default InterpersonalPage;
+export default InterpersonalTeamworkPage;

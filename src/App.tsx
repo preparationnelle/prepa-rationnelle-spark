@@ -82,9 +82,9 @@ import CoachingPythonPage from '@/pages/offres/CoachingPythonPage';
 import PreparationCubePage from '@/pages/offres/PreparationCubePage';
 
 // Import des pages de questions
-import IntrospectionPage from '@/pages/questions/IntrospectionPage';
-import MotivationPage from '@/pages/questions/MotivationPage';
-import InterpersonalPage from '@/pages/questions/InterpersonalPage';
+import ProjectionScenariosPage from '@/pages/questions/ProjectionScenariosPage';
+import MotivationObjectivesPage from '@/pages/questions/MotivationObjectivesPage';
+import InterpersonalTeamworkPage from '@/pages/questions/InterpersonalTeamworkPage';
 
 function App() {
   return (
@@ -103,9 +103,9 @@ function App() {
                   <Route path="/register" element={<RegisterPage />} />
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/questions" element={<QuestionsPage />} />
-                  <Route path="/questions/introspection" element={<IntrospectionPage />} />
-                  <Route path="/questions/motivation" element={<MotivationPage />} />
-                  <Route path="/questions/interpersonal" element={<InterpersonalPage />} />
+                  <Route path="/questions/projection-scenarios" element={<ProjectionScenariosPage />} />
+                  <Route path="/questions/motivation-objectives" element={<MotivationObjectivesPage />} />
+                  <Route path="/questions/interpersonal-teamwork" element={<InterpersonalTeamworkPage />} />
                   <Route path="/coaching" element={<CoachingPage />} />
                   <Route path="/apropos" element={<AproposPage />} />
                   <Route path="/partners" element={<PartnersPage />} />

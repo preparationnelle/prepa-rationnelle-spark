@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, Target } from 'lucide-react';
 
-const MotivationPage = () => {
+const MotivationObjectivesPage = () => {
   return (
     <div className="min-h-screen bg-accent py-16">
       <div className="container mx-auto px-4">
@@ -23,16 +23,16 @@ const MotivationPage = () => {
           </div>
           <div>
             <h1 className="text-3xl font-bold">Motivations & objectifs</h1>
-            <p className="text-muted-foreground">Questions sur les objectifs et les aspirations</p>
+            <p className="text-muted-foreground">Questions sur les motivations profondes et les objectifs de carrière</p>
           </div>
         </div>
         
         <div className="bg-white p-8 rounded-lg shadow-md">
           <p className="text-gray-600 mb-4">
-            Cette section explore vos motivations profondes et vos objectifs à court et long terme.
+            Cette section aborde vos motivations profondes et vos objectifs professionnels à court et long terme.
           </p>
           <p className="text-gray-600">
-            Comprendre et articuler clairement ses motivations est crucial pour réussir les entretiens de personnalité et démontrer sa cohérence de parcours.
+            Comprendre et articuler ses motivations est essentiel pour réussir les entretiens et démontrer la cohérence de son projet professionnel.
           </p>
         </div>
       </div>
@@ -40,4 +40,4 @@ const MotivationPage = () => {
   );
 };
 
-export default MotivationPage;
+export default MotivationObjectivesPage;
