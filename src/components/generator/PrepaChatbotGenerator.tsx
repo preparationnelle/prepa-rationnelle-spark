@@ -3,8 +3,9 @@ import React, { useState, useRef, useEffect } from "react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { MessageSquare, Heart } from "lucide-react";
+import { MessageSquare, Heart, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { supabase } from "@/integrations/supabase/client";
 
 type ChatMessage = {
   role: "user" | "assistant";
@@ -28,6 +29,7 @@ export const PrepaChatbotGenerator: React.FC = () => {
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -37,43 +39,60 @@ export const PrepaChatbotGenerator: React.FC = () => {
   }, [messages]);
 
   async function sendMessage(message: string) {
+    if (!message.trim()) return;
+    
     setLoading(true);
-    setMessages(msgs => [...msgs, { role: "user", content: message }]);
+    setError(null);
+    
+    // Add user message immediately
+    const userMessage: ChatMessage = { role: "user", content: message };
+    setMessages(prev => [...prev, userMessage]);
     setInput("");
+
     try {
-      const response = await fetch(
-        `${window.location.origin.replace("://", "s://functions.")}/chat-ai-assistant`, 
-        {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            messages: [
-              // Specialist prepa context for major/misterprepa articles + benevolence
-              {
-                role: "system",
-                content: `Tu es Majora, un assistant IA bienveillant dédié à la préparation des concours et au bien-être en prépa. Tes réponses sont brèves, empathiques et pratiques, inspirées des articles de Major-Prépa et Mister Prépa (sur la gestion du stress, méthodes de révision, motivation et pauses). Ajoute si possible :
-- Un conseil méthodologique ou pratique issu de la littérature prépa.
-- Si pertinent, une citation inspirante pour motiver l’étudiant ("Ils ne savaient pas que c’était impossible, alors ils l’ont fait.", etc).
-- Ne jamais juger, privilégier le soutien et la bienveillance.
-N'invente pas de données, mais structure toujours ta réponse.`
-              },
-              ...messages.map(({ role, content }) => ({ role, content })),
-              { role: "user", content: message }
-            ]
-          })
-        }
-      );
-      const data = await response.json();
-      setMessages(msgs =>
-        [...msgs, { role: "assistant", content: data.text || "Désolé, je n'ai pas pu répondre pour le moment." }]
-      );
-    } catch (e) {
-      setMessages(msgs => [
-        ...msgs,
-        { role: "assistant", content: "Je suis désolé, une erreur s'est produite." }
-      ]);
+      // Prepare messages for API (exclude the initial greeting)
+      const apiMessages = messages
+        .slice(1) // Remove the initial greeting
+        .concat(userMessage)
+        .map(({ role, content }) => ({ role, content }));
+
+      console.log("Sending messages to Edge Function:", apiMessages);
+
+      const { data, error: supabaseError } = await supabase.functions.invoke('chat-ai-assistant', {
+        body: { messages: apiMessages }
+      });
+
+      if (supabaseError) {
+        console.error("Supabase function error:", supabaseError);
+        throw new Error(`Erreur de connexion: ${supabaseError.message}`);
+      }
+
+      if (!data) {
+        throw new Error("Aucune réponse reçue du serveur");
+      }
+
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      const assistantMessage: ChatMessage = {
+        role: "assistant",
+        content: data.text || "Désolé, je n'ai pas pu générer une réponse."
+      };
+
+      setMessages(prev => [...prev, assistantMessage]);
+
+    } catch (err) {
+      console.error("Error sending message:", err);
+      const errorMessage = err instanceof Error ? err.message : "Une erreur inattendue s'est produite";
+      setError(errorMessage);
+      
+      // Add error message to chat
+      const errorChatMessage: ChatMessage = {
+        role: "assistant",
+        content: `Désolé, une erreur s'est produite : ${errorMessage}. Essayez à nouveau dans quelques instants.`
+      };
+      setMessages(prev => [...prev, errorChatMessage]);
     } finally {
       setLoading(false);
     }
@@ -87,7 +106,20 @@ N'invente pas de données, mais structure toujours ta réponse.`
   };
 
   const handleSuggestion = (suggestion: string) => {
-    setInput(suggestion);
+    if (!loading) {
+      setInput(suggestion);
+    }
+  };
+
+  const retryLastMessage = () => {
+    const lastUserMessage = messages
+      .slice()
+      .reverse()
+      .find(msg => msg.role === "user");
+    
+    if (lastUserMessage) {
+      sendMessage(lastUserMessage.content);
+    }
   };
 
   return (
@@ -131,21 +163,55 @@ N'invente pas de données, mais structure toujours ta réponse.`
                 </div>
               </div>
             ))}
+            
+            {loading && (
+              <div className="flex justify-start mb-1">
+                <div className="bg-white text-gray-800 border border-gray-200 rounded-lg px-4 py-2 max-w-xs md:max-w-md">
+                  <div className="flex items-center gap-2">
+                    <div className="flex space-x-1">
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+                    </div>
+                    <span className="text-sm text-gray-500">Majora réfléchit...</span>
+                  </div>
+                </div>
+              </div>
+            )}
             <div ref={messagesEndRef} />
           </div>
+
+          {error && (
+            <div className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+              <AlertCircle className="h-4 w-4" />
+              <span>{error}</span>
+              <Button
+                onClick={retryLastMessage}
+                size="sm"
+                variant="outline"
+                className="ml-auto"
+                disabled={loading}
+              >
+                Réessayer
+              </Button>
+            </div>
+          )}
+          
           <div className="flex flex-wrap gap-2 mt-2">
             {SUGGESTIONS.map((suggestion, i) => (
               <button
                 key={i}
                 type="button"
-                className="bg-teal-100 text-teal-800 rounded-full text-xs px-3 py-1 hover:bg-teal-200 border border-teal-200 transition"
+                className="bg-teal-100 text-teal-800 rounded-full text-xs px-3 py-1 hover:bg-teal-200 border border-teal-200 transition disabled:opacity-50"
                 onClick={() => handleSuggestion(suggestion)}
+                disabled={loading}
                 tabIndex={-1}
               >
                 {suggestion}
               </button>
             ))}
           </div>
+          
           <form onSubmit={handleSend} className="flex gap-2 mt-auto w-full">
             <Input
               value={input}
@@ -155,7 +221,11 @@ N'invente pas de données, mais structure toujours ta réponse.`
               disabled={loading}
               autoFocus
             />
-            <Button className="px-4" type="submit" disabled={loading || !input.trim()}>
+            <Button 
+              className="px-4" 
+              type="submit" 
+              disabled={loading || !input.trim()}
+            >
               {loading ? "Envoi..." : <MessageSquare className="h-5 w-5" />}
             </Button>
           </form>
