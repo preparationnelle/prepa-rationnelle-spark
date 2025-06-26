@@ -51,7 +51,7 @@ import { MethodAllemandPage } from '@/pages/methodologie/MethodAllemandPage';
 import { MethodAllemandEssaiPage } from '@/pages/methodologie/MethodAllemandEssaiPage';
 import { MethodAllemandSynthesePage } from '@/pages/methodologie/MethodAllemandSynthesePage';
 import { MethodPythonPage } from '@/pages/methodologie/MethodPythonPage';
-import { MathsEteECG1ECG2Page } from '@/pages/methodologie/MathsEteECG1ECG2Page';
+import MathsEteECG1ECG2Page from '@/pages/methodologie/MathsEteECG1ECG2Page';
 import { MethodGrammairePage } from '@/pages/methodologie/MethodGrammairePage';
 import { MethodGrammaireReglesPage } from '@/pages/methodologie/MethodGrammaireReglesPage';
 import { MethodGrammaireAllemandePage } from '@/pages/methodologie/MethodGrammaireAllemandePage';
@@ -69,7 +69,7 @@ import PreparationCubePage from '@/pages/offres/PreparationCubePage';
 function App() {
   return (
     <PostHogProvider>
-      <ThemeProvider storageKey="prepa-rationnelle-theme">
+      <ThemeProvider>
         <AuthProvider>
           <ProgressProvider>
             <Router>
