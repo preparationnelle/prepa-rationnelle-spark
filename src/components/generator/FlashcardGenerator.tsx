@@ -38,6 +38,10 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
     await generateFlashcard(inputWord, inputLanguage);
   };
 
+  const handleDeleteFlashcard = (flashcard: any) => {
+    deleteFlashcard(flashcard);
+  };
+
   return (
     <div className="space-y-8">
       {/* Zone de génération automatique de phrases */}
@@ -103,7 +107,7 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
           <SavedFlashcardsList
             language={language}
             savedFlashcards={savedFlashcards}
-            onDelete={deleteFlashcard}
+            onDelete={handleDeleteFlashcard}
           />
         </TabsContent>
         
