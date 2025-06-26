@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { MessageSquare, Heart, AlertCircle } from "lucide-react";
+import { MessageSquare, Heart, AlertCircle, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -37,6 +37,12 @@ export const PrepaChatbotGenerator: React.FC = () => {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  const handleWhatsAppContact = () => {
+    const message = "Bonjour, j'ai une question sur la prépa et j'aimerais échanger avec l'équipe Prépa Rationnelle !";
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/33609164668?text=${encodedMessage}`, '_blank');
+  };
 
   async function sendMessage(message: string) {
     if (!message.trim()) return;
@@ -90,7 +96,7 @@ export const PrepaChatbotGenerator: React.FC = () => {
       // Add error message to chat
       const errorChatMessage: ChatMessage = {
         role: "assistant",
-        content: `Désolé, une erreur s'est produite : ${errorMessage}. Essayez à nouveau dans quelques instants.`
+        content: `Désolé, une erreur s'est produite : ${errorMessage}. Essayez à nouveau dans quelques instants ou contactez-nous directement sur WhatsApp !`
       };
       setMessages(prev => [...prev, errorChatMessage]);
     } finally {
@@ -130,15 +136,35 @@ export const PrepaChatbotGenerator: React.FC = () => {
             <span className="p-2 bg-white/30 rounded-lg">
               <Heart className="h-7 w-7 text-pink-600" />
             </span>
-            <div>
+            <div className="flex-1">
               <CardTitle className="text-xl font-bold text-teal-900">Chatbot prépa – Conseils & Méthode</CardTitle>
               <CardDescription className="text-sky-900 mt-1 font-medium">
                 Pose-moi tes questions : motivation, stress, bien-être, méthode&nbsp;!
               </CardDescription>
             </div>
+            <Button
+              onClick={handleWhatsAppContact}
+              variant="outline"
+              size="sm"
+              className="bg-green-500 hover:bg-green-600 text-white border-green-500 hover:border-green-600 flex items-center gap-2"
+            >
+              <MessageCircle className="h-4 w-4" />
+              WhatsApp
+            </Button>
           </div>
         </CardHeader>
         <CardContent className="flex flex-col px-5 py-5 gap-4 min-h-[480px]">
+          {/* WhatsApp info banner */}
+          <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-sm text-green-800">
+            <div className="flex items-center gap-2">
+              <MessageCircle className="h-4 w-4" />
+              <span className="font-medium">Besoin d'aide personnalisée ?</span>
+            </div>
+            <p className="mt-1 text-green-700">
+              L'IA répond instantanément, mais pour des conseils personnalisés tu peux aussi nous contacter directement sur WhatsApp !
+            </p>
+          </div>
+          
           <div
             className="grow flex flex-col gap-2 h-[320px] overflow-y-auto scrollbar-thin pr-2 mb-2"
             style={{ maxHeight: 320 }}
@@ -185,15 +211,24 @@ export const PrepaChatbotGenerator: React.FC = () => {
             <div className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
               <AlertCircle className="h-4 w-4" />
               <span>{error}</span>
-              <Button
-                onClick={retryLastMessage}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                disabled={loading}
-              >
-                Réessayer
-              </Button>
+              <div className="ml-auto flex gap-2">
+                <Button
+                  onClick={handleWhatsAppContact}
+                  size="sm"
+                  variant="outline"
+                  className="bg-green-500 hover:bg-green-600 text-white border-green-500"
+                >
+                  WhatsApp
+                </Button>
+                <Button
+                  onClick={retryLastMessage}
+                  size="sm"
+                  variant="outline"
+                  disabled={loading}
+                >
+                  Réessayer
+                </Button>
+              </div>
             </div>
           )}
           
