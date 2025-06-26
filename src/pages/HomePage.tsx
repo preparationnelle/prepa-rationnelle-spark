@@ -3,9 +3,8 @@ import React, { useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { HeroSection } from '@/components/sections/HeroSection';
-import { FeaturesSection } from '@/components/sections/FeaturesSection';
+import { InterviewPreparationSection } from '@/components/sections/InterviewPreparationSection';
 import { AutomationsSection } from '@/components/sections/AutomationsSection';
-import { SchoolsSection } from '@/components/sections/SchoolsSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { PricingSection } from '@/components/PricingSection';
 import { CallToActionSection } from '@/components/sections/CallToActionSection';
@@ -31,9 +30,8 @@ const HomePage = () => {
       <div className="container mx-auto px-4">
         <OptionalLoginBanner />
       </div>
-      <FeaturesSection />
+      <InterviewPreparationSection />
       <AutomationsSection />
-      <SchoolsSection />
       <TestimonialsSection />
       <PricingSection />
       <PodcastSection />

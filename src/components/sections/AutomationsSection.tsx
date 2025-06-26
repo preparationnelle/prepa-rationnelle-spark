@@ -4,58 +4,26 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { 
-  MessageSquare, 
-  BookOpen, 
   Languages, 
-  Globe, 
-  User, 
-  Zap,
-  TrendingUp 
+  Code, 
+  Zap
 } from 'lucide-react';
 
 export const AutomationsSection = () => {
   const automations = [
     {
-      icon: <MessageSquare className="h-8 w-8 text-primary" />,
-      title: "Réponses d'entretien personnalisées",
-      description: "Générez des réponses structurées et personnalisées pour vos entretiens de personnalité avec du storytelling adapté.",
-      link: "/generator",
+      icon: <Languages className="h-8 w-8 text-primary" />,
+      title: "Thème grammatical",
+      description: "Générateur et correcteur de thèmes de traduction avec notation détaillée instantanée pour perfectionner votre maîtrise linguistique.",
+      link: "/generator/theme-grammar",
       badge: "IA"
     },
     {
-      icon: <BookOpen className="h-8 w-8 text-primary" />,
-      title: "Flashcards intelligentes",
-      description: "Créez automatiquement des flashcards optimisées pour la mémorisation avec révision espacée intégrée.",
-      link: "/generator",
-      badge: "Auto"
-    },
-    {
-      icon: <Languages className="h-8 w-8 text-primary" />,
-      title: "Paragraphes de langues",
-      description: "Générez des paragraphes argumentatifs de 150 mots en anglais, allemand ou espagnol avec vocabulaire clé.",
-      link: "/generator",
+      icon: <Code className="h-8 w-8 text-primary" />,
+      title: "Exercices Python",
+      description: "Générez des exercices pratiques Python (matrice, algèbre…) et complétez vos fonctions avec un assistant intelligent.",
+      link: "/generator/python-exercises",
       badge: "Nouveau"
-    },
-    {
-      icon: <Globe className="h-8 w-8 text-primary" />,
-      title: "Contenu géopolitique complet",
-      description: "Cours structurés, sujets de dissertation, actualités récentes et flashcards thématiques automatiquement générés.",
-      link: "/generator",
-      badge: "Complet"
-    },
-    {
-      icon: <TrendingUp className="h-8 w-8 text-primary" />,
-      title: "Études de cas d'actualité",
-      description: "Transformez vos articles d'actualité en études de cas géopolitiques avec chiffres clés et sujets de dissertation.",
-      link: "/generator",
-      badge: "Nouveau"
-    },
-    {
-      icon: <User className="h-8 w-8 text-primary" />,
-      title: "Simulateur d'entretien IA",
-      description: "Entraînez-vous avec un simulateur intelligent qui adapte ses questions et fournit un feedback personnalisé.",
-      link: "/interview-simulator",
-      badge: "Interactif"
     }
   ];
 
@@ -70,12 +38,12 @@ export const AutomationsSection = () => {
             </h2>
           </div>
           <p className="text-center text-muted-foreground mb-8 max-w-3xl mx-auto text-lg">
-            Découvrez nos outils d'intelligence artificielle qui automatisent votre préparation 
-            et vous font gagner des heures de travail tout en améliorant vos performances.
+            Découvrez nos outils d'intelligence artificielle spécialisés qui automatisent votre préparation 
+            et vous font gagner des heures de travail.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-8">
           {automations.map((automation, index) => (
             <Card key={index} className="h-full hover:shadow-lg transition-all duration-300 border-border/50 hover:border-primary/20 bg-white/80 backdrop-blur-sm">
               <CardHeader className="pb-4">
@@ -87,7 +55,7 @@ export const AutomationsSection = () => {
                     {automation.badge}
                   </span>
                 </div>
-                <CardTitle className="text-lg">{automation.title}</CardTitle>
+                <CardTitle className="text-xl">{automation.title}</CardTitle>
                 <CardDescription className="text-sm leading-relaxed">
                   {automation.description}
                 </CardDescription>
@@ -106,9 +74,9 @@ export const AutomationsSection = () => {
 
         <div className="text-center">
           <Link to="/generator">
-            <Button size="lg" className="bg-gradient-to-r from-primary to-orange-500 hover:from-primary/90 hover:to-orange-500/90">
+            <Button size="lg" variant="outline" className="bg-gradient-to-r from-primary/10 to-orange-500/10 hover:from-primary/20 hover:to-orange-500/20">
               <Zap className="h-5 w-5 mr-2" />
-              Accéder à tous les générateurs
+              Découvrir tous les générateurs
             </Button>
           </Link>
         </div>
