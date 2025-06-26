@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from '@/components/ui/toaster';
@@ -10,6 +9,7 @@ import ScrollToTop from '@/components/ScrollToTop';
 import Navigation from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import ProtectedRoute from '@/components/ProtectedRoute';
+import ChatWidget from '@/components/chat/ChatWidget';
 
 // Import all pages
 import HomePage from '@/pages/HomePage';
@@ -68,7 +68,7 @@ import PreparationCubePage from '@/pages/offres/PreparationCubePage';
 
 function App() {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen flex flex-col">
       <ThemeProvider>
         <AuthProvider>
           <ProgressProvider>
@@ -154,6 +154,7 @@ function App() {
           </ProgressProvider>
         </AuthProvider>
       </ThemeProvider>
+      <ChatWidget />
     </div>
   );
 }
