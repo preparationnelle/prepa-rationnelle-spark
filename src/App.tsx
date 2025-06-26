@@ -51,7 +51,7 @@ import { MethodAllemandPage } from '@/pages/methodologie/MethodAllemandPage';
 import { MethodAllemandEssaiPage } from '@/pages/methodologie/MethodAllemandEssaiPage';
 import { MethodAllemandSynthesePage } from '@/pages/methodologie/MethodAllemandSynthesePage';
 import { MethodPythonPage } from '@/pages/methodologie/MethodPythonPage';
-import MathsEteECG1ECG2Page from '@/pages/methodologie/MathsEteECG1ECG2Page';
+import { MathsEteECG1ECG2Page } from '@/pages/methodologie/MathsEteECG1ECG2Page';
 import { MethodGrammairePage } from '@/pages/methodologie/MethodGrammairePage';
 import { MethodGrammaireReglesPage } from '@/pages/methodologie/MethodGrammaireReglesPage';
 import { MethodGrammaireAllemandePage } from '@/pages/methodologie/MethodGrammaireAllemandePage';
@@ -68,13 +68,13 @@ import PreparationCubePage from '@/pages/offres/PreparationCubePage';
 
 function App() {
   return (
-    <PostHogProvider>
-      <ThemeProvider>
-        <AuthProvider>
-          <ProgressProvider>
-            <Router>
-              <ScrollToTop />
-              <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col">
+      <PostHogProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            <ProgressProvider>
+              <Router>
+                <ScrollToTop />
                 <Navigation />
                 <main className="flex-1">
                   <Routes>
@@ -149,13 +149,13 @@ function App() {
                   </Routes>
                 </main>
                 <Footer />
-              </div>
+              </Router>
               <Toaster />
-            </Router>
-          </ProgressProvider>
-        </AuthProvider>
-      </ThemeProvider>
-    </PostHogProvider>
+            </ProgressProvider>
+          </AuthProvider>
+        </ThemeProvider>
+      </PostHogProvider>
+    </div>
   );
 }
 
