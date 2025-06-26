@@ -81,6 +81,11 @@ import CoachingMathsPage from '@/pages/offres/CoachingMathsPage';
 import CoachingPythonPage from '@/pages/offres/CoachingPythonPage';
 import PreparationCubePage from '@/pages/offres/PreparationCubePage';
 
+// Import des pages de questions
+import IntrospectionPage from '@/pages/questions/IntrospectionPage';
+import MotivationPage from '@/pages/questions/MotivationPage';
+import InterpersonalPage from '@/pages/questions/InterpersonalPage';
+
 function App() {
   return (
     <div className="min-h-screen flex flex-col">
@@ -98,6 +103,9 @@ function App() {
                   <Route path="/register" element={<RegisterPage />} />
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/questions" element={<QuestionsPage />} />
+                  <Route path="/questions/introspection" element={<IntrospectionPage />} />
+                  <Route path="/questions/motivation" element={<MotivationPage />} />
+                  <Route path="/questions/interpersonal" element={<InterpersonalPage />} />
                   <Route path="/coaching" element={<CoachingPage />} />
                   <Route path="/apropos" element={<AproposPage />} />
                   <Route path="/partners" element={<PartnersPage />} />
