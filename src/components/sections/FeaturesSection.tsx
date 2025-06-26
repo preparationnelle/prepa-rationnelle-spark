@@ -1,46 +1,62 @@
 
 import React from 'react';
-import { FeatureCard } from '../FeatureCard';
 import { Link } from 'react-router-dom';
+import { User, Target, Users } from 'lucide-react';
 
 export const FeaturesSection = () => {
+  const features = [
+    {
+      icon: <User className="h-8 w-8 text-primary" />,
+      title: "Introspection",
+      description: "Questions sur la personnalité et la connaissance de soi",
+      link: "/questions/introspection"
+    },
+    {
+      icon: <Target className="h-8 w-8 text-primary" />,
+      title: "Motivations & objectifs", 
+      description: "Questions sur les objectifs et les aspirations",
+      link: "/questions/motivation"
+    },
+    {
+      icon: <Users className="h-8 w-8 text-primary" />,
+      title: "Relations & travail d'équipe",
+      description: "Questions sur le travail collaboratif et la communication", 
+      link: "/questions/interpersonal"
+    }
+  ];
+
   return (
-    <section className="py-16 px-4 bg-background">
+    <section className="py-16 px-4 bg-gradient-to-b from-white to-gray-50">
       <div className="container mx-auto">
-        <h2 className="section-heading text-center mb-12 text-foreground">
-          Comment <span className="gradient-text">Prepa Rationnelle</span> vous aide
-        </h2>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Catégories de questions d'entretien
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Explorez nos différentes catégories de questions pour vous préparer efficacement à vos entretiens de personnalité
+          </p>
+        </div>
         
-        <div className="grid md:grid-cols-3 gap-8">
-          <Link to="/#schools-section" onClick={(e) => {
-            e.preventDefault();
-            const section = document.getElementById('schools-section');
-            if (section) {
-              section.scrollIntoView({ behavior: 'smooth' });
-            }
-          }}>
-            <FeatureCard
-              title="Panorama des écoles"
-              description="Accédez à des fiches-synthèses pour chacune des écoles du Top 10 : formats d'oraux, coefficients, attentes précises du jury. Identifiez en un clin d'œil les points différenciants pour orienter votre préparation."
-              icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M5 7 3 5l2-2" /><path d="M9 5h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9" /><path d="M5 19 3 17l2-2" /><path d="M5 5v14" /></svg>}
-            />
-          </Link>
-          
-          <Link to="/questions">
-            <FeatureCard
-              title="Questions incontournables"
-              description="Préparez les 50 questions les plus fréquentes grâce à nos canevas de réponse et nos exemples commentés. Apprenez à transformer chaque question classique en opportunité pour mettre en avant votre singularité."
-              icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="m12 14 4-4" /><path d="M3.34 19a10 10 0 1 1 17.32 0" /></svg>}
-            />
-          </Link>
-          
-          <Link to="/generator">
-            <FeatureCard
-              title="Entraînement IA & entretien"
-              description="Entraînez-vous à l'oral avec notre générateur IA qui simule un jury et vous fournit un débrief instantané. Finalisez ensuite votre préparation lors d'un entretien blanc individuel avec un coach expérimenté."
-              icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M5.5 20H8" /><path d="M17 9h.01" /><path d="M11 13h.01" /><path d="M13 15h.01" /><path d="M15 11h.01" /><path d="M17 13h.01" /><path d="M9 15h.01" /><path d="M3 3v18h18" /><path d="m3 6 3-3 3 3 3-3 3 3 3-3 3 3" /></svg>}
-            />
-          </Link>
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {features.map((feature, index) => (
+            <Link 
+              key={index}
+              to={feature.link}
+              className="group bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-primary/20 block"
+            >
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </section>
