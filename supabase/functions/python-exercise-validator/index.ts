@@ -76,7 +76,65 @@ const exercises: Record<string, Exercise> = {
   }
 };
 
-async function generateFeedbackWithOpenAI(exerciseId: string, studentCode: string, attemptCount: number): Promise<string> {
+// Fonction de détection et correction d'indentation
+function analyzeIndentation(code: string): {
+  hasIndentationIssues: boolean;
+  correctedCode: string;
+  issues: string[];
+} {
+  const lines = code.split('\n');
+  const issues: string[] = [];
+  let hasIndentationIssues = false;
+  const correctedLines: string[] = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const lineNumber = i + 1;
+    
+    // Détecter mélange espaces/tabulations
+    if (line.includes('\t') && line.match(/^ +/)) {
+      issues.push(`Ligne ${lineNumber}: Mélange espaces et tabulations détecté`);
+      hasIndentationIssues = true;
+    }
+    
+    // Convertir les tabulations en espaces (4 espaces par tabulation)
+    let correctedLine = line.replace(/\t/g, '    ');
+    
+    // Vérifier l'indentation par rapport aux mots-clés Python
+    const trimmed = line.trim();
+    if (trimmed && !trimmed.startsWith('#')) {
+      const leadingSpaces = (line.match(/^ */)?.[0].length || 0);
+      
+      // Si la ligne précédente se termine par ':', cette ligne devrait être indentée
+      if (i > 0) {
+        const prevTrimmed = lines[i-1].trim();
+        if (prevTrimmed.endsWith(':') && leadingSpaces === 0 && !trimmed.match(/^(def|class|if|for|while|try|except|finally|with|elif|else)/)) {
+          issues.push(`Ligne ${lineNumber}: Indentation manquante après ':'`);
+          hasIndentationIssues = true;
+          correctedLine = '    ' + correctedLine.trim();
+        }
+      }
+      
+      // Vérifier que l'indentation est un multiple de 4
+      if (leadingSpaces % 4 !== 0) {
+        issues.push(`Ligne ${lineNumber}: Indentation non conforme (utilisez 4 espaces par niveau)`);
+        hasIndentationIssues = true;
+        const expectedIndent = Math.round(leadingSpaces / 4) * 4;
+        correctedLine = ' '.repeat(expectedIndent) + line.trim();
+      }
+    }
+    
+    correctedLines.push(correctedLine);
+  }
+
+  return {
+    hasIndentationIssues,
+    correctedCode: correctedLines.join('\n'),
+    issues
+  };
+}
+
+async function generateFeedbackWithOpenAI(exerciseId: string, studentCode: string, attemptCount: number, indentationAnalysis?: any): Promise<string> {
   if (!OPENAI_API_KEY) {
     throw new Error('OpenAI API key not configured');
   }
@@ -85,6 +143,20 @@ async function generateFeedbackWithOpenAI(exerciseId: string, studentCode: strin
   if (!exercise) {
     throw new Error(`Exercise not found: ${exerciseId}`);
   }
+
+  const indentationContext = indentationAnalysis?.hasIndentationIssues 
+    ? `
+
+PROBLEMES D'INDENTATION DETECTES:
+${indentationAnalysis.issues.join('\n')}
+
+CODE CORRIGE SUGGERE:
+\`\`\`python
+${indentationAnalysis.correctedCode}
+\`\`\`
+
+IMPORTANT: Explique l'importance de l'indentation en Python et guide l'étudiant.`
+    : '';
 
   const systemPrompt = `Tu es un professeur de Python qui aide les étudiants avec leurs exercices de programmation.
 
@@ -97,10 +169,17 @@ RÈGLES IMPORTANTES:
 - Si le code a des erreurs, explique-les clairement
 - Propose du code corrigé quand c'est nécessaire
 
+FOCUS SPECIAL SUR L'INDENTATION:
+- L'indentation en Python n'est pas du style mais de la SYNTAXE
+- 4 espaces par niveau (PEP 8), jamais de tabulations
+- Chaque bloc après ':' doit être indenté
+- L'IA utilise des jetons <indent>/<dedent> pour comprendre la structure
+- Une erreur d'indentation = IndentationError
+
 Exercice: ${exercise.title}
 Description: ${exercise.description}
 
-Tentative numéro: ${attemptCount}`;
+Tentative numéro: ${attemptCount}${indentationContext}`;
 
   const userPrompt = `Voici le code de l'étudiant:
 
@@ -108,7 +187,13 @@ Tentative numéro: ${attemptCount}`;
 ${studentCode}
 \`\`\`
 
-Analyse ce code et donne un feedback constructif. Si nécessaire, propose une correction.`;
+Analyse ce code en te concentrant particulièrement sur:
+1. L'indentation (très important en Python)
+2. La logique algorithmique
+3. Les erreurs potentielles
+4. Les améliorations possibles
+
+Donne un feedback constructif et propose une correction si nécessaire.`;
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -123,7 +208,7 @@ Analyse ce code et donne un feedback constructif. Si nécessaire, propose une co
           { role: 'system', content: systemPrompt },
           { role: 'user', content: userPrompt }
         ],
-        max_tokens: 800,
+        max_tokens: 1000,
         temperature: 0.3
       }),
     });
@@ -159,13 +244,17 @@ serve(async (req) => {
 
     console.log(`Analyzing exercise ${exerciseId}, attempt ${attemptCount}`);
 
-    // Generate feedback using OpenAI
-    const feedback = await generateFeedbackWithOpenAI(exerciseId, code, attemptCount);
+    // Analyser l'indentation avant l'envoi à OpenAI
+    const indentationAnalysis = analyzeIndentation(code);
+
+    // Generate feedback using OpenAI with indentation context
+    const feedback = await generateFeedbackWithOpenAI(exerciseId, code, attemptCount, indentationAnalysis);
 
     return new Response(
       JSON.stringify({
         success: false, // We'll let OpenAI determine if it's successful
         feedback,
+        indentationAnalysis,
         exercise: {
           title: exercise.title,
           description: exercise.description
