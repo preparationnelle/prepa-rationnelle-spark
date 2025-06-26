@@ -35,7 +35,7 @@ export const SchoolsSection = () => {
       name: "EM Lyon Business School",
       duration: "Entretien de 25 minutes, coefficient 9.",
       feature: "Format ludique avec cartes thématiques et présentation en 1 minute.",
-      link: "/em-lyon"
+      link: "/emlyon"
     },
     {
       name: "SKEMA Business School",

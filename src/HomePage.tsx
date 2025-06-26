@@ -32,7 +32,7 @@ const HomePage = () => {
       {/* Partners Section */}
       <PartnersSection />
 
-      {/* Schools Section - Updated with more schools and added ID for direct navigation */}
+      {/* Schools Section - Updated with correct links */}
       <section id="schools-section" className="py-16 px-4 bg-white">
         <div className="container mx-auto">
           <h2 className="section-heading text-center mb-4">
@@ -43,7 +43,7 @@ const HomePage = () => {
           </p>
           
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            <Link to="/ecoles/escp" className="group">
+            <Link to="/escp" className="group">
               <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all hover:shadow-lg hover:border-primary/20">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -62,7 +62,7 @@ const HomePage = () => {
               </div>
             </Link>
 
-            <Link to="/ecoles/essec" className="group">
+            <Link to="/essec" className="group">
               <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all hover:shadow-lg hover:border-primary/20">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -81,7 +81,7 @@ const HomePage = () => {
               </div>
             </Link>
 
-            <Link to="/ecoles/edhec" className="group">
+            <Link to="/edhec" className="group">
               <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all hover:shadow-lg hover:border-primary/20">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -100,7 +100,7 @@ const HomePage = () => {
               </div>
             </Link>
 
-            <Link to="/ecoles/emlyon" className="group">
+            <Link to="/emlyon" className="group">
               <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all hover:shadow-lg hover:border-primary/20">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -119,7 +119,7 @@ const HomePage = () => {
               </div>
             </Link>
 
-            <Link to="/ecoles/skema" className="group">
+            <Link to="/skema" className="group">
               <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all hover:shadow-lg hover:border-primary/20">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -138,7 +138,7 @@ const HomePage = () => {
               </div>
             </Link>
 
-            <Link to="/ecoles/audencia" className="group">
+            <Link to="/audencia" className="group">
               <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all hover:shadow-lg hover:border-primary/20">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -157,7 +157,7 @@ const HomePage = () => {
               </div>
             </Link>
 
-            <Link to="/ecoles/gem" className="group">
+            <Link to="/gem" className="group">
               <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all hover:shadow-lg hover:border-primary/20">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -176,7 +176,7 @@ const HomePage = () => {
               </div>
             </Link>
 
-            <Link to="/ecoles/kedge" className="group">
+            <Link to="/kedge" className="group">
               <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all hover:shadow-lg hover:border-primary/20">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -195,7 +195,7 @@ const HomePage = () => {
               </div>
             </Link>
 
-            <Link to="/ecoles/neoma" className="group">
+            <Link to="/neoma" className="group">
               <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all hover:shadow-lg hover:border-primary/20">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">

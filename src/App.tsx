@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from '@/components/ui/toaster';
@@ -26,6 +27,17 @@ import PartnersPage from '@/pages/PartnersPage';
 import MethodologiePage from '@/pages/MethodologiePage';
 import PersonnaliteMethodePage from '@/pages/PersonnaliteMethodePage';
 import NotFound from '@/pages/NotFound';
+
+// Import des pages des écoles
+import ESSECPage from '@/pages/ESSECPage';
+import ESCPPage from '@/pages/ESCPPage';
+import EDHECPage from '@/pages/EDHECPage';
+import EMLyonPage from '@/pages/EMLyonPage';
+import SKEMAPage from '@/pages/SKEMAPage';
+import AudenciaPage from '@/pages/AudenciaPage';
+import GEMPage from '@/pages/GEMPage';
+import KEDGEPage from '@/pages/KEDGEPage';
+import NEOMAPage from '@/pages/NEOMAPage';
 
 // Import des pages des générateurs individuels
 import AnswerGeneratorPage from './pages/generator/AnswerGeneratorPage';
@@ -88,6 +100,30 @@ function App() {
                   <Route path="/partners" element={<PartnersPage />} />
                   <Route path="/methodologie" element={<MethodologiePage />} />
                   <Route path="/methodes/personnalite" element={<PersonnaliteMethodePage />} />
+                  
+                  {/* Routes des écoles */}
+                  <Route path="/essec" element={<ESSECPage />} />
+                  <Route path="/escp" element={<ESCPPage />} />
+                  <Route path="/edhec" element={<EDHECPage />} />
+                  <Route path="/emlyon" element={<EMLyonPage />} />
+                  <Route path="/em-lyon" element={<EMLyonPage />} />
+                  <Route path="/skema" element={<SKEMAPage />} />
+                  <Route path="/audencia" element={<AudenciaPage />} />
+                  <Route path="/gem" element={<GEMPage />} />
+                  <Route path="/kedge" element={<KEDGEPage />} />
+                  <Route path="/neoma" element={<NEOMAPage />} />
+                  
+                  {/* Routes alternatives pour les écoles */}
+                  <Route path="/ecoles/essec" element={<ESSECPage />} />
+                  <Route path="/ecoles/escp" element={<ESCPPage />} />
+                  <Route path="/ecoles/edhec" element={<EDHECPage />} />
+                  <Route path="/ecoles/emlyon" element={<EMLyonPage />} />
+                  <Route path="/ecoles/em-lyon" element={<EMLyonPage />} />
+                  <Route path="/ecoles/skema" element={<SKEMAPage />} />
+                  <Route path="/ecoles/audencia" element={<AudenciaPage />} />
+                  <Route path="/ecoles/gem" element={<GEMPage />} />
+                  <Route path="/ecoles/kedge" element={<KEDGEPage />} />
+                  <Route path="/ecoles/neoma" element={<NEOMAPage />} />
                   
                   {/* Protected routes */}
                   <Route path="/generator" element={
