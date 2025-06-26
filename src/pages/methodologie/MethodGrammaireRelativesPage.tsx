@@ -1,12 +1,9 @@
-
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { BookOpen } from "lucide-react";
-
 export const MethodGrammaireRelativesPage = () => {
-  return (
-    <div className="container max-w-5xl py-10 animate-fade-in bg-[#FFF9ED] min-h-screen">
+  return <div className="container max-w-5xl py-10 animate-fade-in bg-[#FFF9ED] min-h-screen">
       <div className="text-center mb-10">
         <div className="flex items-center justify-center gap-3 mb-4">
           <div className="p-3 bg-gradient-to-br from-[#ff9100] to-orange-600 rounded-xl text-white shadow-lg">
@@ -17,8 +14,7 @@ export const MethodGrammaireRelativesPage = () => {
           </h1>
         </div>
         <p className="text-xl text-gray-600">
-          Niveau CPGE, version enrichie & corrigée, sans plagiat
-        </p>
+      </p>
       </div>
 
       <div className="space-y-8">
@@ -237,7 +233,7 @@ export const MethodGrammaireRelativesPage = () => {
                     <tr>
                       <td className="border border-orange-200 p-2">5</td>
                       <td className="border border-orange-200 p-2"><em>Das Praktikum, ... sie sich interessiert, ...</em></td>
-                      <td className="border border-orange-200 p-2"><em>für das</em><br/><span className="text-sm text-gray-600">(<em>wofür</em> possible)</span></td>
+                      <td className="border border-orange-200 p-2"><em>für das</em><br /><span className="text-sm text-gray-600">(<em>wofür</em> possible)</span></td>
                     </tr>
                     <tr className="bg-orange-25">
                       <td className="border border-orange-200 p-2">6</td>
@@ -388,6 +384,5 @@ export const MethodGrammaireRelativesPage = () => {
           </Button>
         </Link>
       </div>
-    </div>
-  );
+    </div>;
 };
