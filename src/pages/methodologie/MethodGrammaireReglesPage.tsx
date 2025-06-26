@@ -32,289 +32,370 @@ export const MethodGrammaireReglesPage = () => {
       </Card>
 
       <div className="space-y-6">
-        {/* Position du verbe */}
+        {/* 1. Construction des subordonnées */}
         <Card className="border-2 border-orange-200">
           <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
-            <CardTitle className="flex items-center gap-2 text-2xl text-orange-800">
-              1. Position du verbe conjugué
-            </CardTitle>
+            <CardTitle className="text-2xl text-orange-800">1. Construction des Subordonnées</CardTitle>
           </CardHeader>
           <CardContent className="pt-6">
-            <div className="space-y-4">
-              <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-400">
-                <h4 className="font-semibold text-red-800 mb-2">⚠️ Règle fondamentale</h4>
-                <p className="text-red-700">
-                  En allemand, le verbe conjugué occupe TOUJOURS la 2ème position dans une phrase principale.
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-green-50 p-4 rounded-lg">
-                  <h5 className="font-medium text-green-800 mb-2">✅ Correct</h5>
-                  <ul className="space-y-1 text-sm text-green-700">
-                    <li><strong>Ich gehe</strong> morgen ins Kino.</li>
-                    <li><strong>Morgen gehe ich</strong> ins Kino.</li>
-                    <li><strong>Ins Kino gehe ich</strong> morgen.</li>
-                  </ul>
-                </div>
-
-                <div className="bg-red-50 p-4 rounded-lg">
-                  <h5 className="font-medium text-red-800 mb-2">❌ Incorrect</h5>
-                  <ul className="space-y-1 text-sm text-red-700">
-                    <li>Ich morgen gehe ins Kino.</li>
-                    <li>Morgen ich gehe ins Kino.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Négation */}
-        <Card className="border-2 border-orange-200">
-          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
-            <CardTitle className="flex items-center gap-2 text-2xl text-orange-800">
-              2. La négation avec "nicht" et "kein"
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="pt-6">
-            <div className="space-y-4">
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-blue-800 mb-2">Règle "kein"</h4>
-                <p className="text-blue-700 mb-2">
-                  Utiliser <strong>"kein"</strong> pour nier un nom précédé d'un article indéfini ou sans article.
-                </p>
-                <ul className="text-sm text-blue-600 space-y-1">
-                  <li>• Ich habe <strong>einen Hund</strong> → Ich habe <strong>keinen Hund</strong></li>
-                  <li>• Er trinkt <strong>Bier</strong> → Er trinkt <strong>kein Bier</strong></li>
-                </ul>
-              </div>
-
-              <div className="bg-yellow-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-yellow-800 mb-2">Règle "nicht"</h4>
-                <p className="text-yellow-700 mb-2">
-                  Utiliser <strong>"nicht"</strong> dans tous les autres cas.
-                </p>
-                <ul className="text-sm text-yellow-600 space-y-1">
-                  <li>• Ich kenne <strong>den Mann</strong> → Ich kenne <strong>den Mann nicht</strong></li>
-                  <li>• Das ist <strong>gut</strong> → Das ist <strong>nicht gut</strong></li>
-                </ul>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Trennbare Verben */}
-        <Card className="border-2 border-orange-200">
-          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
-            <CardTitle className="flex items-center gap-2 text-2xl text-orange-800">
-              3. Les verbes à particule séparable
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="pt-6">
-            <div className="space-y-4">
-              <p className="text-muted-foreground">
-                Les particules séparables se détachent du verbe et se placent en fin de phrase.
+            <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-400 mb-4">
+              <h4 className="font-semibold text-red-800 mb-2">⚠️ Règle principale</h4>
+              <p className="text-red-700">
+                Le verbe conjugué se place en dernière position dans les propositions subordonnées.
               </p>
-              
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h5 className="font-medium mb-2">Exemples courants :</h5>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <p className="font-medium text-sm mb-1">ankommen (arriver)</p>
-                    <p className="text-sm text-muted-foreground">Der Zug <strong>kommt</strong> um 8 Uhr <strong>an</strong>.</p>
-                  </div>
-                  <div>
-                    <p className="font-medium text-sm mb-1">aufstehen (se lever)</p>
-                    <p className="text-sm text-muted-foreground">Ich <strong>stehe</strong> früh <strong>auf</strong>.</p>
-                  </div>
-                  <div>
-                    <p className="font-medium text-sm mb-1">einladen (inviter)</p>
-                    <p className="text-sm text-muted-foreground">Er <strong>lädt</strong> uns <strong>ein</strong>.</p>
-                  </div>
-                  <div>
-                    <p className="font-medium text-sm mb-1">fernsehen (regarder la TV)</p>
-                    <p className="text-sm text-muted-foreground">Wir <strong>sehen</strong> abends <strong>fern</strong>.</p>
-                  </div>
-                </div>
+            </div>
+
+            <h4 className="font-semibold text-orange-700 mb-3">Conjonctions de subordination courantes :</h4>
+            <div className="grid md:grid-cols-2 gap-4 mb-4">
+              <div className="space-y-2">
+                <p><strong>dass</strong> (que) : <em>Ich weiß, dass er kommt.</em></p>
+                <p><strong>weil/da</strong> (parce que) : <em>Da ich Zeit habe, komme ich.</em></p>
+                <p><strong>wenn</strong> (si/quand) : <em>Wenn du kommst, freue ich mich.</em></p>
               </div>
+              <div className="space-y-2">
+                <p><strong>als</strong> (quand - passé) : <em>Als er jung war, spielte er Fußball.</em></p>
+                <p><strong>obwohl</strong> (bien que) : <em>Obwohl es regnet, gehen wir spazieren.</em></p>
+              </div>
+            </div>
+
+            <div className="bg-red-50 p-4 rounded-lg">
+              <h5 className="font-medium text-red-800 mb-2">❌ Erreurs fréquentes :</h5>
+              <ul className="space-y-1 text-sm text-red-700">
+                <li>❌ Weil er kommt morgen → ✅ Weil er morgen kommt</li>
+                <li>❌ Als wir ihn angerufen haben → ✅ Als wir ihn anriefen</li>
+              </ul>
             </div>
           </CardContent>
         </Card>
 
-        {/* Subordonnées */}
+        {/* 2. Place du verbe (inversion) */}
         <Card className="border-2 border-orange-200">
           <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
-            <CardTitle className="flex items-center gap-2 text-2xl text-orange-800">
-              4. Les propositions subordonnées
-            </CardTitle>
+            <CardTitle className="text-2xl text-orange-800">2. Place du Verbe (Inversion)</CardTitle>
           </CardHeader>
           <CardContent className="pt-6">
-            <div className="space-y-4">
-              <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-400">
-                <h4 className="font-semibold text-red-800 mb-2">⚠️ Règle cruciale</h4>
-                <p className="text-red-700">
-                  Dans une subordonnée, le verbe conjugué va TOUJOURS à la fin !
-                </p>
+            <div className="bg-blue-50 p-4 rounded-lg mb-4">
+              <h4 className="font-semibold text-blue-800 mb-2">Règle</h4>
+              <p className="text-blue-700">
+                Quand un complément ouvre la phrase, le sujet passe après le verbe conjugué.
+              </p>
+            </div>
+
+            <h4 className="font-semibold text-orange-700 mb-3">Exemples :</h4>
+            <ul className="space-y-1 mb-4">
+              <li><em>Heute gehe ich ins Kino.</em></li>
+              <li><em>In Deutschland wohnen viele Ausländer.</em></li>
+              <li><em>Seit langem habe ich ihn nicht gesehen.</em></li>
+            </ul>
+
+            <div className="bg-red-50 p-4 rounded-lg">
+              <h5 className="font-medium text-red-800 mb-2">❌ Erreurs fréquentes :</h5>
+              <p className="text-sm text-red-700">❌ Heute ich gehe → ✅ Heute gehe ich</p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* 3. Déclinaisons (cas) */}
+        <Card className="border-2 border-orange-200">
+          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
+            <CardTitle className="text-2xl text-orange-800">3. Déclinaisons (Cas)</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-6">
+            <h4 className="font-semibold text-orange-700 mb-3">Déclinaisons des articles</h4>
+            <div className="overflow-x-auto mb-6">
+              <table className="w-full border-collapse border border-orange-200">
+                <thead>
+                  <tr className="bg-orange-50">
+                    <th className="border border-orange-200 p-3 text-left font-semibold">Cas</th>
+                    <th className="border border-orange-200 p-3 text-left font-semibold">Masculin</th>
+                    <th className="border border-orange-200 p-3 text-left font-semibold">Neutre</th>
+                    <th className="border border-orange-200 p-3 text-left font-semibold">Féminin</th>
+                    <th className="border border-orange-200 p-3 text-left font-semibold">Pluriel</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-orange-200 p-3 font-semibold">Nominatif</td>
+                    <td className="border border-orange-200 p-3">der/ein</td>
+                    <td className="border border-orange-200 p-3">das/ein</td>
+                    <td className="border border-orange-200 p-3">die/eine</td>
+                    <td className="border border-orange-200 p-3">die/-</td>
+                  </tr>
+                  <tr className="bg-orange-25">
+                    <td className="border border-orange-200 p-3 font-semibold">Accusatif</td>
+                    <td className="border border-orange-200 p-3">den/einen</td>
+                    <td className="border border-orange-200 p-3">das/ein</td>
+                    <td className="border border-orange-200 p-3">die/eine</td>
+                    <td className="border border-orange-200 p-3">die/-</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-orange-200 p-3 font-semibold">Datif</td>
+                    <td className="border border-orange-200 p-3">dem/einem</td>
+                    <td className="border border-orange-200 p-3">dem/einem</td>
+                    <td className="border border-orange-200 p-3">der/einer</td>
+                    <td className="border border-orange-200 p-3">den/-n</td>
+                  </tr>
+                  <tr className="bg-orange-25">
+                    <td className="border border-orange-200 p-3 font-semibold">Génitif</td>
+                    <td className="border border-orange-200 p-3">des/eines</td>
+                    <td className="border border-orange-200 p-3">des/eines</td>
+                    <td className="border border-orange-200 p-3">der/einer</td>
+                    <td className="border border-orange-200 p-3">der/-</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4 className="font-semibold text-orange-700 mb-3">Verbes + Datif (fréquents) :</h4>
+            <ul className="space-y-1 mb-4">
+              <li><strong>helfen</strong> : <em>Ich helfe dem Mann</em></li>
+              <li><strong>danken</strong> : <em>Ich danke dir</em></li>
+              <li><strong>folgen</strong> : <em>Er folgt seinen Eltern</em></li>
+              <li><strong>vertrauen</strong> : <em>Wir vertrauen den Politikern</em></li>
+              <li><strong>gefallen</strong> : <em>Das gefällt mir</em></li>
+            </ul>
+
+            <div className="bg-red-50 p-4 rounded-lg">
+              <h5 className="font-medium text-red-800 mb-2">❌ Erreurs fréquentes :</h5>
+              <ul className="space-y-1 text-sm text-red-700">
+                <li>❌ Ich helfe den Mann → ✅ Ich helfe dem Mann</li>
+                <li>❌ Das gefällt mich → ✅ Das gefällt mir</li>
+              </ul>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* 4. Prépositions et cas */}
+        <Card className="border-2 border-orange-200">
+          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
+            <CardTitle className="text-2xl text-orange-800">4. Prépositions et Cas</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-6">
+            <div className="grid md:grid-cols-3 gap-6">
+              <div>
+                <h4 className="font-semibold text-orange-700 mb-3">Prépositions + Accusatif</h4>
+                <p className="mb-2"><strong>für, gegen, ohne, um, durch</strong></p>
+                <ul className="text-sm space-y-1">
+                  <li><em>für den Vater</em></li>
+                  <li><em>ohne mich</em></li>
+                </ul>
               </div>
 
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h5 className="font-medium mb-2">Conjonctions courantes :</h5>
-                <div className="grid md:grid-cols-3 gap-2 text-sm">
-                  <div>• dass (que)</div>
-                  <div>• weil (parce que)</div>
-                  <div>• wenn (si/quand)</div>
-                  <div>• als (quand - passé)</div>
-                  <div>• obwohl (bien que)</div>
-                  <div>• damit (pour que)</div>
-                </div>
+              <div>
+                <h4 className="font-semibold text-orange-700 mb-3">Prépositions + Datif</h4>
+                <p className="mb-2"><strong>aus, bei, mit, nach, seit, von, zu</strong></p>
+                <ul className="text-sm space-y-1">
+                  <li><em>mit dem Auto</em></li>
+                  <li><em>bei den Eltern</em></li>
+                  <li><em>von einem Nachbarn</em></li>
+                </ul>
               </div>
 
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h5 className="font-medium mb-2">Exemples :</h5>
-                <ul className="space-y-2 text-sm">
-                  <li>
-                    <strong>Ich weiß, dass er morgen kommt.</strong><br />
-                    <span className="text-muted-foreground">(Je sais qu'il vient demain.)</span>
-                  </li>
-                  <li>
-                    <strong>Wir bleiben zu Hause, weil es regnet.</strong><br />
-                    <span className="text-muted-foreground">(Nous restons à la maison parce qu'il pleut.)</span>
-                  </li>
+              <div>
+                <h4 className="font-semibold text-orange-700 mb-3">Prépositions mixtes</h4>
+                <p className="mb-2"><strong>an, auf, hinter, in, neben, über, unter, vor, zwischen</strong></p>
+                <ul className="text-sm space-y-1">
+                  <li><strong>Mouvement</strong> → <em>Ich gehe in die Stadt</em></li>
+                  <li><strong>Position</strong> → <em>Ich wohne in der Stadt</em></li>
                 </ul>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Cas et déclinaisons */}
+        {/* 5. Temps verbaux */}
         <Card className="border-2 border-orange-200">
           <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
-            <CardTitle className="flex items-center gap-2 text-2xl text-orange-800">
-              5. Les cas (Nominatif, Accusatif, Datif, Génitif)
-            </CardTitle>
+            <CardTitle className="text-2xl text-orange-800">5. Temps Verbaux</CardTitle>
           </CardHeader>
           <CardContent className="pt-6">
-            <div className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-green-50 p-4 rounded-lg">
-                  <h5 className="font-medium text-green-800 mb-2">Nominatif - Le sujet</h5>
-                  <p className="text-sm text-green-700">
-                    <strong>Der Mann</strong> kommt.<br />
-                    <em>(L'homme vient.)</em>
-                  </p>
-                </div>
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <h4 className="font-semibold text-orange-700 mb-3">Parfait (langue parlée)</h4>
+                <p className="mb-2"><strong>haben/sein + participe passé</strong></p>
+                <ul className="text-sm space-y-1">
+                  <li><em>Ich habe gearbeitet</em></li>
+                  <li><em>Er ist gekommen</em></li>
+                </ul>
+              </div>
 
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <h5 className="font-medium text-blue-800 mb-2">Accusatif - Le COD</h5>
-                  <p className="text-sm text-blue-700">
-                    Ich sehe <strong>den Mann</strong>.<br />
-                    <em>(Je vois l'homme.)</em>
-                  </p>
-                </div>
+              <div>
+                <h4 className="font-semibold text-orange-700 mb-3">Prétérit (langue écrite)</h4>
+                <ul className="text-sm space-y-1">
+                  <li><em>Er war jung</em></li>
+                  <li><em>Sie ging zur Schule</em></li>
+                </ul>
+              </div>
+            </div>
 
-                <div className="bg-yellow-50 p-4 rounded-lg">
-                  <h5 className="font-medium text-yellow-800 mb-2">Datif - Le COI</h5>
-                  <p className="text-sm text-yellow-700">
-                    Ich helfe <strong>dem Mann</strong>.<br />
-                    <em>(J'aide l'homme.)</em>
-                  </p>
-                </div>
+            <div className="bg-yellow-50 p-4 rounded-lg">
+              <h4 className="font-semibold text-yellow-800 mb-2">Concordance des temps</h4>
+              <p className="text-yellow-700">Dans les subordonnées au passé :</p>
+              <p className="text-sm"><em>Als wir ihn anriefen, wartete er noch auf die Ergebnisse</em></p>
+            </div>
+          </CardContent>
+        </Card>
 
-                <div className="bg-purple-50 p-4 rounded-lg">
-                  <h5 className="font-medium text-purple-800 mb-2">Génitif - Le complément du nom</h5>
-                  <p className="text-sm text-purple-700">
-                    Das Auto <strong>des Mannes</strong>.<br />
-                    <em>(La voiture de l'homme.)</em>
-                  </p>
-                </div>
+        {/* 6. Infinitives avec "zu" */}
+        <Card className="border-2 border-orange-200">
+          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
+            <CardTitle className="text-2xl text-orange-800">6. Infinitives avec "ZU"</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-6">
+            <h4 className="font-semibold text-orange-700 mb-3">Constructions courantes</h4>
+            <ul className="space-y-2 mb-4">
+              <li><strong>versuchen zu</strong> : <em>Ich versuche zu schlafen</em></li>
+              <li><strong>beschließen zu</strong> : <em>Er beschloss zu bleiben</em></li>
+              <li><strong>um... zu</strong> (pour) : <em>Ich komme, um zu helfen</em></li>
+              <li><strong>ohne... zu</strong> (sans) : <em>Er ging weg, ohne zu grüßen</em></li>
+            </ul>
+
+            <div className="bg-red-50 p-4 rounded-lg">
+              <h5 className="font-medium text-red-800 mb-2">⚠️ Attention</h5>
+              <p className="text-red-700">Pas de zu avec les modaux !</p>
+              <p className="text-sm">✅ Ich kann schwimmen (pas zu schwimmen)</p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* 7. Subjonctif II */}
+        <Card className="border-2 border-orange-200">
+          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
+            <CardTitle className="text-2xl text-orange-800">7. Subjonctif II (Hypothèse, Politesse)</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-semibold text-orange-700 mb-3">Formation</h4>
+                <p className="mb-2"><strong>Würde + infinitif</strong> (forme courante) :</p>
+                <ul className="text-sm space-y-1">
+                  <li><em>Ich würde gern kommen</em></li>
+                  <li><em>Wir würden das machen</em></li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-orange-700 mb-3">Formes courtes</h4>
+                <ul className="text-sm space-y-1">
+                  <li><strong>sein → wäre</strong> : <em>Wenn ich reich wäre...</em></li>
+                  <li><strong>haben → hätte</strong> : <em>Wenn ich Zeit hätte...</em></li>
+                  <li><strong>können → könnte</strong> : <em>Du könntest kommen</em></li>
+                </ul>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Verbes de modalité */}
+        {/* 8. Verbes à particules */}
         <Card className="border-2 border-orange-200">
           <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
-            <CardTitle className="flex items-center gap-2 text-2xl text-orange-800">
-              6. Les verbes de modalité
-            </CardTitle>
+            <CardTitle className="text-2xl text-orange-800">8. Verbes à Particules</CardTitle>
           </CardHeader>
           <CardContent className="pt-6">
+            <h4 className="font-semibold text-orange-700 mb-3">Particules séparables</h4>
             <div className="space-y-4">
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse border border-gray-300">
-                  <thead>
-                    <tr className="bg-gray-100">
-                      <th className="border border-gray-300 p-2 text-left">Verbe</th>
-                      <th className="border border-gray-300 p-2 text-left">Sens</th>
-                      <th className="border border-gray-300 p-2 text-left">Exemple</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className="border border-gray-300 p-2">können</td>
-                      <td className="border border-gray-300 p-2">pouvoir (capacité)</td>
-                      <td className="border border-gray-300 p-2">Ich kann schwimmen.</td>
-                    </tr>
-                    <tr>
-                      <td className="border border-gray-300 p-2">müssen</td>
-                      <td className="border border-gray-300 p-2">devoir (obligation)</td>
-                      <td className="border border-gray-300 p-2">Ich muss arbeiten.</td>
-                    </tr>
-                    <tr>
-                      <td className="border border-gray-300 p-2">dürfen</td>
-                      <td className="border border-gray-300 p-2">avoir le droit</td>
-                      <td className="border border-gray-300 p-2">Darf ich rauchen?</td>
-                    </tr>
-                    <tr>
-                      <td className="border border-gray-300 p-2">sollen</td>
-                      <td className="border border-gray-300 p-2">devoir (conseil)</td>
-                      <td className="border border-gray-300 p-2">Du sollst kommen.</td>
-                    </tr>
-                    <tr>
-                      <td className="border border-gray-300 p-2">wollen</td>
-                      <td className="border border-gray-300 p-2">vouloir</td>
-                      <td className="border border-gray-300 p-2">Ich will schlafen.</td>
-                    </tr>
-                    <tr>
-                      <td className="border border-gray-300 p-2">mögen</td>
-                      <td className="border border-gray-300 p-2">aimer bien</td>
-                      <td className="border border-gray-300 p-2">Ich mag Kaffee.</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div>
+                <p><strong>Position</strong> : En fin de phrase principale</p>
+                <ul className="text-sm space-y-1 ml-4">
+                  <li><em>Er steht um 7 Uhr auf</em></li>
+                  <li><em>Sie gibt das Buch zurück</em></li>
+                </ul>
+              </div>
+
+              <div>
+                <p><strong>Au parfait</strong> : Particule + ge + verbe</p>
+                <ul className="text-sm space-y-1 ml-4">
+                  <li><em>aufstehen → aufgestanden</em></li>
+                  <li><em>zurückgeben → zurückgegeben</em></li>
+                </ul>
+              </div>
+
+              <div>
+                <p><strong>En subordonnée</strong> : Particule attachée</p>
+                <p className="text-sm ml-4"><em>Ich weiß, dass er früh aufsteht</em></p>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Conseils pratiques */}
+        {/* 9. Pronoms relatifs */}
         <Card className="border-2 border-orange-200">
           <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
-            <CardTitle className="text-2xl text-orange-800">💡 Conseils de révision</CardTitle>
+            <CardTitle className="text-2xl text-orange-800">9. Pronoms Relatifs</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-6">
+            <h4 className="font-semibold text-orange-700 mb-3">Déclinaison selon la fonction</h4>
+            <ul className="space-y-2">
+              <li><strong>Sujet</strong> : <em>der Mann, der dort steht</em></li>
+              <li><strong>COD</strong> : <em>das Buch, das ich lese</em></li>
+              <li><strong>COI</strong> : <em>die Frau, der ich helfe</em></li>
+              <li><strong>Génitif</strong> : <em>der Mann, dessen Auto kaputt ist</em></li>
+            </ul>
+          </CardContent>
+        </Card>
+
+        {/* 10. Comparatifs et superlatifs */}
+        <Card className="border-2 border-orange-200">
+          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
+            <CardTitle className="text-2xl text-orange-800">10. Comparatifs et Superlatifs</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-6">
+            <h4 className="font-semibold text-orange-700 mb-3">Structures avec "je... desto"</h4>
+            <p className="mb-2"><strong>Je + comparatif + verbe, desto + comparatif + verbe</strong></p>
+            <ul className="space-y-2">
+              <li><em>Je älter er wird, desto weiser wird er</em></li>
+              <li><em>Je mehr ich lerne, desto besser werden meine Noten</em></li>
+            </ul>
+          </CardContent>
+        </Card>
+
+        {/* 11. Négation */}
+        <Card className="border-2 border-orange-200">
+          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
+            <CardTitle className="text-2xl text-orange-800">11. Négation</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-semibold text-orange-700 mb-3">"nicht" (négation générale)</h4>
+                <p className="mb-2">Après COD défini</p>
+                <p className="text-sm"><em>Ich kenne ihn nicht</em></p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-orange-700 mb-3">"kein" (négation nominale)</h4>
+                <p className="mb-2">Devant noms indéfinis</p>
+                <ul className="text-sm space-y-1">
+                  <li><em>Ich habe keine Zeit</em></li>
+                </ul>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Erreurs fréquentes à éviter */}
+        <Card className="border-2 border-red-300 bg-red-50">
+          <CardHeader className="bg-gradient-to-r from-red-100 to-red-200">
+            <CardTitle className="text-2xl text-red-800">❌ Erreurs Fréquentes à Éviter</CardTitle>
           </CardHeader>
           <CardContent className="pt-6">
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-green-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-green-800 mb-2">✅ Méthode efficace</h4>
-                <ul className="text-sm text-green-700 space-y-1">
-                  <li>• Réviser 15 min par jour minimum</li>
-                  <li>• Faire des phrases d'exemple</li>
-                  <li>• S'entraîner à l'oral</li>
-                  <li>• Corriger systématiquement ses erreurs</li>
-                </ul>
-              </div>
-
-              <div className="bg-red-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-red-800 mb-2">❌ Erreurs courantes</h4>
-                <ul className="text-sm text-red-700 space-y-1">
-                  <li>• Négliger la position du verbe</li>
-                  <li>• Confondre nicht et kein</li>
-                  <li>• Oublier les particules séparables</li>
-                  <li>• Mélanger les cas</li>
-                </ul>
-              </div>
+              <ul className="space-y-2 text-red-700">
+                <li>• Oubli de l'inversion après complément initial</li>
+                <li>• Mauvais cas après prépositions ou verbes</li>
+                <li>• Verbe mal placé en subordonnée</li>
+                <li>• Confusion temps (parfait/prétérit)</li>
+                <li>• Oubli du "zu" dans les infinitives</li>
+                <li>• Mauvaise concordance des temps</li>
+              </ul>
+              <ul className="space-y-2 text-red-700">
+                <li>• Particules séparables mal placées</li>
+                <li>• Négation (nicht vs kein)</li>
+                <li>• Pronoms relatifs mal déclinés</li>
+                <li>• Ordre des mots dans les constructions complexes</li>
+                <li>• Déclinaison des adjectifs épithètes</li>
+                <li>• Régimes verbaux (prépositions fixes)</li>
+              </ul>
             </div>
           </CardContent>
         </Card>
