@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import { Code, Play, BookOpen, MessageSquare, Wand2, AlertTriangle, CheckCircle, XCircle, Lightbulb, Wrench, ChevronDown, ChevronUp } from 'lucide-react';
+import { Code, Play, BookOpen, MessageSquare, Wand2, AlertTriangle, CheckCircle, XCircle, Lightbulb, Wrench, ChevronDown, ChevronUp, Eye } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 
 interface Exercise {
@@ -48,10 +47,13 @@ export const PythonExerciseValidator: React.FC<PythonExerciseValidatorProps> = (
   const [code, setCode] = useState(exercise.template);
   const [isValidating, setIsValidating] = useState(false);
   const [isFormatting, setIsFormatting] = useState(false);
+  const [isLoadingSolution, setIsLoadingSolution] = useState(false);
   const [validationResult, setValidationResult] = useState<ValidationResult | null>(null);
   const [attemptCount, setAttemptCount] = useState(0);
   const [showDetailedFeedback, setShowDetailedFeedback] = useState(false);
   const [showCorrectedCode, setShowCorrectedCode] = useState(false);
+  const [showOfficialSolution, setShowOfficialSolution] = useState(false);
+  const [officialSolution, setOfficialSolution] = useState<string>('');
 
   const handleValidate = async () => {
     setIsValidating(true);
@@ -104,12 +106,38 @@ export const PythonExerciseValidator: React.FC<PythonExerciseValidatorProps> = (
     }
   };
 
+  const handleGetSolution = async () => {
+    setIsLoadingSolution(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('python-exercise-validator', {
+        body: {
+          exerciseId: exercise.id,
+          code: 'dummy', // Not used for getSolution action
+          action: 'getSolution'
+        }
+      });
+
+      if (error) throw error;
+      if (data.solution) {
+        setOfficialSolution(data.solution);
+        setShowOfficialSolution(true);
+      }
+    } catch (error) {
+      console.error('Error getting solution:', error);
+    } finally {
+      setIsLoadingSolution(false);
+    }
+  };
+
   const resetExercise = () => {
     setCode(exercise.template);
     setValidationResult(null);
     setAttemptCount(0);
     setShowDetailedFeedback(false);
     setShowCorrectedCode(false);
+    setShowOfficialSolution(false);
+    setOfficialSolution('');
   };
 
   const applyIndentationFix = () => {
@@ -184,6 +212,16 @@ export const PythonExerciseValidator: React.FC<PythonExerciseValidatorProps> = (
               <Wand2 className="h-4 w-4 mr-2" />
               {isFormatting ? 'Formatage...' : 'Auto-formater'}
             </Button>
+
+            <Button 
+              onClick={handleGetSolution}
+              disabled={isLoadingSolution}
+              variant="outline"
+              className="border-green-300 text-green-700 hover:bg-green-50"
+            >
+              <Eye className="h-4 w-4 mr-2" />
+              {isLoadingSolution ? 'Chargement...' : 'Voir la solution'}
+            </Button>
             
             <Button 
               onClick={handleValidate}
@@ -205,6 +243,34 @@ export const PythonExerciseValidator: React.FC<PythonExerciseValidatorProps> = (
           </div>
         </CardContent>
       </Card>
+
+      {/* Official Solution Section */}
+      {showOfficialSolution && officialSolution && (
+        <Card className="border-l-4 border-l-blue-500">
+          <CardHeader className="pb-3">
+            <CardTitle className="flex items-center justify-between">
+              <span className="flex items-center gap-2 text-blue-800">
+                <CheckCircle className="h-5 w-5" />
+                Solution officielle
+              </span>
+              <Button 
+                variant="outline" 
+                size="sm"
+                onClick={() => setShowOfficialSolution(false)}
+                className="border-blue-300 text-blue-700 hover:bg-blue-50"
+              >
+                <ChevronUp className="h-4 w-4" />
+                Masquer
+              </Button>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <pre className="bg-blue-50 p-4 rounded border text-sm overflow-auto font-mono border-blue-200">
+              <code className="text-blue-900">{officialSolution}</code>
+            </pre>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Results Section */}
       {validationResult && (

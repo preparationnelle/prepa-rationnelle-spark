@@ -1,4 +1,3 @@
-
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
@@ -15,9 +14,10 @@ interface Exercise {
   description: string;
   template: string;
   hints: string[];
+  solution: string;
 }
 
-// Exercise definitions for matrix operations
+// Exercise definitions for matrix operations with complete solutions
 const exercises: Record<string, Exercise> = {
   trace: {
     id: 'trace',
@@ -28,7 +28,12 @@ const exercises: Record<string, Exercise> = {
       'La trace est la somme des éléments M[i][i] pour i de 0 à n-1',
       'Utilisez une boucle for pour parcourir les indices diagonaux',
       'Pensez à initialiser une variable somme à 0'
-    ]
+    ],
+    solution: `def trace(M):
+    T = 0
+    for i in range(len(M)):
+        T = T + M[i][i]
+    return T`
   },
   est_symetrique: {
     id: 'est_symetrique',
@@ -39,7 +44,20 @@ const exercises: Record<string, Exercise> = {
       'Vérifiez d\'abord que la matrice est carrée',
       'Comparez M[i][j] avec M[j][i] pour tous les indices',
       'Retournez False dès qu\'une différence est trouvée'
-    ]
+    ],
+    solution: `def est_symetrique(M):
+    n = len(M)
+    # Vérifier que la matrice est carrée
+    for ligne in M:
+        if len(ligne) != n:
+            return False
+    
+    # Vérifier la symétrie
+    for i in range(n):
+        for j in range(n):
+            if M[i][j] != M[j][i]:
+                return False
+    return True`
   },
   est_antisymetrique: {
     id: 'est_antisymetrique',
@@ -50,7 +68,25 @@ const exercises: Record<string, Exercise> = {
       'Vérifiez que tous les éléments diagonaux sont nuls',
       'Pour i≠j, vérifiez que M[j][i] == -M[i][j]',
       'Une matrice antisymétrique a forcément une diagonale nulle'
-    ]
+    ],
+    solution: `def est_antisymetrique(M):
+    n = len(M)
+    # Vérifier que la matrice est carrée
+    for ligne in M:
+        if len(ligne) != n:
+            return False
+    
+    # Vérifier que la diagonale est nulle
+    for i in range(n):
+        if M[i][i] != 0:
+            return False
+    
+    # Vérifier l'antisymétrie pour i≠j
+    for i in range(n):
+        for j in range(n):
+            if i != j and M[j][i] != -M[i][j]:
+                return False
+    return True`
   },
   puissance_naive: {
     id: 'puissance_naive',
@@ -61,7 +97,32 @@ const exercises: Record<string, Exercise> = {
       'Commencez par créer une matrice identité',
       'Multipliez cette matrice par M exactement n fois',
       'Vous devrez implémenter la multiplication matricielle'
-    ]
+    ],
+    solution: `def puissance_naive(M, n):
+    # Fonction helper pour multiplier deux matrices
+    def matmul(A, B):
+        rows_A, cols_A = len(A), len(A[0])
+        rows_B, cols_B = len(B), len(B[0])
+        
+        if cols_A != rows_B:
+            raise ValueError("Dimensions incompatibles")
+        
+        result = [[0 for _ in range(cols_B)] for _ in range(rows_A)]
+        for i in range(rows_A):
+            for j in range(cols_B):
+                for k in range(cols_A):
+                    result[i][j] += A[i][k] * B[k][j]
+        return result
+    
+    # Créer la matrice identité
+    size = len(M)
+    result = [[1 if i == j else 0 for j in range(size)] for i in range(size)]
+    
+    # Multiplier n fois par M
+    for _ in range(n):
+        result = matmul(result, M)
+    
+    return result`
   },
   matmul: {
     id: 'matmul',
@@ -72,7 +133,25 @@ const exercises: Record<string, Exercise> = {
       'Triple boucle : i pour les lignes, j pour les colonnes, k pour la somme',
       'C[i][j] = somme de A[i][k] * B[k][j] pour k de 0 à nombre de colonnes de A',
       'Vérifiez que les dimensions sont compatibles'
-    ]
+    ],
+    solution: `def matmul(A, B):
+    rows_A, cols_A = len(A), len(A[0])
+    rows_B, cols_B = len(B), len(B[0])
+    
+    # Vérifier que les dimensions sont compatibles
+    if cols_A != rows_B:
+        raise ValueError("Dimensions incompatibles pour la multiplication")
+    
+    # Créer la matrice résultat
+    result = [[0 for _ in range(cols_B)] for _ in range(rows_A)]
+    
+    # Triple boucle pour la multiplication
+    for i in range(rows_A):
+        for j in range(cols_B):
+            for k in range(cols_A):
+                result[i][j] += A[i][k] * B[k][j]
+    
+    return result`
   }
 };
 
@@ -180,6 +259,9 @@ async function generateStructuredFeedback(exerciseId: string, studentCode: strin
 
 EXERCICE: ${exercise.title}
 DESCRIPTION: ${exercise.description}
+SOLUTION OFFICIELLE:
+${exercise.solution}
+
 TENTATIVE: ${attemptCount}
 
 RÉPONSE REQUISE (JSON uniquement):
@@ -195,7 +277,7 @@ RÉPONSE REQUISE (JSON uniquement):
 RÈGLES:
 - Score de 0 à 10 (10 = parfait, 0 = très incorrect)
 - Errors: liste concise des problèmes
-- CorrectedCode: version fonctionnelle du code
+- CorrectedCode: version fonctionnelle du code (utilise la solution officielle comme référence)
 - KeyCommands: 3-5 commandes Python clés
 - Concepts: 3-5 notions importantes
 - DetailedFeedback: explication pédagogique complète
@@ -245,7 +327,7 @@ ${studentCode}
       return {
         score: 3,
         errors: ["Erreur lors de l'analyse automatique"],
-        correctedCode: studentCode,
+        correctedCode: exercise.solution,
         keyCommands: ["for loop", "if statement", "return"],
         concepts: ["Algorithmique de base"],
         detailedFeedback: content
@@ -292,6 +374,21 @@ serve(async (req) => {
       );
     }
 
+    // Si l'action est "getSolution", retourner la solution
+    if (action === 'getSolution') {
+      return new Response(
+        JSON.stringify({
+          success: true,
+          solution: exercise.solution,
+          action: 'getSolution'
+        }),
+        { 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          status: 200
+        }
+      );
+    }
+
     // Analyser l'indentation
     const indentationAnalysis = analyzeAndFixIndentation(code);
 
@@ -305,7 +402,8 @@ serve(async (req) => {
         indentationAnalysis,
         exercise: {
           title: exercise.title,
-          description: exercise.description
+          description: exercise.description,
+          solution: exercise.solution
         }
       }),
       { 
