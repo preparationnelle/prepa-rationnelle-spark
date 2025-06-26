@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import { Code, Play, BookOpen, MessageSquare, Wand2, AlertTriangle } from 'lucide-react';
+import { Code, Play, BookOpen, MessageSquare, Wand2, AlertTriangle, CheckCircle, XCircle, Lightbulb, Wrench, ChevronDown, ChevronUp } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 
 interface Exercise {
@@ -20,9 +20,19 @@ interface IndentationAnalysis {
   issues: string[];
 }
 
+interface StructuredFeedback {
+  score: number;
+  errors: string[];
+  correctedCode: string;
+  keyCommands: string[];
+  concepts: string[];
+  detailedFeedback: string;
+}
+
 interface ValidationResult {
   success: boolean;
-  feedback: string;
+  feedback?: string;
+  structuredFeedback?: StructuredFeedback;
   indentationAnalysis?: IndentationAnalysis;
   exercise: {
     title: string;
@@ -37,8 +47,10 @@ interface PythonExerciseValidatorProps {
 export const PythonExerciseValidator: React.FC<PythonExerciseValidatorProps> = ({ exercise }) => {
   const [code, setCode] = useState(exercise.template);
   const [isValidating, setIsValidating] = useState(false);
+  const [isFormatting, setIsFormatting] = useState(false);
   const [validationResult, setValidationResult] = useState<ValidationResult | null>(null);
   const [attemptCount, setAttemptCount] = useState(0);
+  const [showDetailedFeedback, setShowDetailedFeedback] = useState(false);
   const [showCorrectedCode, setShowCorrectedCode] = useState(false);
 
   const handleValidate = async () => {
@@ -50,12 +62,12 @@ export const PythonExerciseValidator: React.FC<PythonExerciseValidatorProps> = (
         body: {
           exerciseId: exercise.id,
           code,
-          attemptCount: attemptCount + 1
+          attemptCount: attemptCount + 1,
+          action: 'validate'
         }
       });
 
       if (error) throw error;
-
       setValidationResult(data);
     } catch (error) {
       console.error('Validation error:', error);
@@ -69,18 +81,60 @@ export const PythonExerciseValidator: React.FC<PythonExerciseValidatorProps> = (
     }
   };
 
+  const handleAutoFormat = async () => {
+    setIsFormatting(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('python-exercise-validator', {
+        body: {
+          exerciseId: exercise.id,
+          code,
+          action: 'format'
+        }
+      });
+
+      if (error) throw error;
+      if (data.formattedCode) {
+        setCode(data.formattedCode);
+      }
+    } catch (error) {
+      console.error('Formatting error:', error);
+    } finally {
+      setIsFormatting(false);
+    }
+  };
+
   const resetExercise = () => {
     setCode(exercise.template);
     setValidationResult(null);
     setAttemptCount(0);
+    setShowDetailedFeedback(false);
     setShowCorrectedCode(false);
   };
 
   const applyIndentationFix = () => {
     if (validationResult?.indentationAnalysis?.correctedCode) {
       setCode(validationResult.indentationAnalysis.correctedCode);
-      setShowCorrectedCode(false);
     }
+  };
+
+  const applyCorrectedCode = () => {
+    if (validationResult?.structuredFeedback?.correctedCode) {
+      setCode(validationResult.structuredFeedback.correctedCode);
+    }
+  };
+
+  const getScoreColor = (score: number) => {
+    if (score >= 8) return 'bg-green-100 text-green-800 border-green-300';
+    if (score >= 6) return 'bg-yellow-100 text-yellow-800 border-yellow-300';
+    if (score >= 4) return 'bg-orange-100 text-orange-800 border-orange-300';
+    return 'bg-red-100 text-red-800 border-red-300';
+  };
+
+  const getScoreIcon = (score: number) => {
+    if (score >= 8) return <CheckCircle className="h-4 w-4" />;
+    if (score >= 4) return <AlertTriangle className="h-4 w-4" />;
+    return <XCircle className="h-4 w-4" />;
   };
 
   return (
@@ -95,25 +149,6 @@ export const PythonExerciseValidator: React.FC<PythonExerciseValidatorProps> = (
         </CardHeader>
         <CardContent>
           <p className="text-gray-700 leading-relaxed whitespace-pre-line">{exercise.description}</p>
-        </CardContent>
-      </Card>
-
-      {/* Indentation Tips */}
-      <Card className="border-l-4 border-l-amber-500 bg-amber-50">
-        <CardHeader className="pb-3">
-          <CardTitle className="text-lg flex items-center gap-2 text-amber-800">
-            <Code className="h-5 w-5" />
-            Rappel : Indentation Python
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="text-sm text-amber-700 space-y-2">
-          <p><strong>L'indentation définit la structure de votre code :</strong></p>
-          <ul className="list-disc list-inside space-y-1 ml-4">
-            <li>Utilisez <strong>4 espaces</strong> par niveau (jamais de tabulations)</li>
-            <li>Chaque bloc après <code>:</code> doit être indenté</li>
-            <li>L'IA utilise des jetons &lt;indent&gt;/&lt;dedent&gt; pour comprendre votre code</li>
-            <li>Une erreur d'indentation = IndentationError</li>
-          </ul>
         </CardContent>
       </Card>
 
@@ -141,6 +176,16 @@ export const PythonExerciseValidator: React.FC<PythonExerciseValidatorProps> = (
           
           <div className="flex gap-3 flex-wrap">
             <Button 
+              onClick={handleAutoFormat}
+              disabled={isFormatting || !code.trim()}
+              variant="outline"
+              className="border-indigo-300 text-indigo-700 hover:bg-indigo-50"
+            >
+              <Wand2 className="h-4 w-4 mr-2" />
+              {isFormatting ? 'Formatage...' : 'Auto-formater'}
+            </Button>
+            
+            <Button 
               onClick={handleValidate}
               disabled={isValidating || !code.trim()}
               className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700"
@@ -152,85 +197,193 @@ export const PythonExerciseValidator: React.FC<PythonExerciseValidatorProps> = (
             <Button 
               variant="outline" 
               onClick={resetExercise}
-              disabled={isValidating}
+              disabled={isValidating || isFormatting}
               className="border-gray-300"
             >
               Recommencer
             </Button>
-
-            {validationResult?.indentationAnalysis?.hasIndentationIssues && (
-              <Button 
-                variant="outline" 
-                onClick={applyIndentationFix}
-                className="border-amber-300 text-amber-700 hover:bg-amber-50"
-              >
-                <Wand2 className="h-4 w-4 mr-2" />
-                Corriger l'indentation
-              </Button>
-            )}
-
-            {validationResult?.indentationAnalysis?.hasIndentationIssues && (
-              <Button 
-                variant="ghost" 
-                onClick={() => setShowCorrectedCode(!showCorrectedCode)}
-                className="text-amber-600 hover:bg-amber-50"
-              >
-                {showCorrectedCode ? 'Masquer' : 'Voir'} la correction
-              </Button>
-            )}
           </div>
         </CardContent>
       </Card>
 
-      {/* Indentation Issues Alert */}
-      {validationResult?.indentationAnalysis?.hasIndentationIssues && (
-        <Card className="border-l-4 border-l-amber-500 bg-amber-50">
-          <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-2 text-amber-800">
-              <AlertTriangle className="h-5 w-5" />
-              Problèmes d'indentation détectés
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-3">
-              <ul className="list-disc list-inside space-y-1 text-amber-700">
-                {validationResult.indentationAnalysis.issues.map((issue, index) => (
-                  <li key={index} className="text-sm">{issue}</li>
-                ))}
-              </ul>
-              
-              {showCorrectedCode && (
-                <div className="mt-4">
-                  <h4 className="font-medium text-amber-800 mb-2">Code avec indentation corrigée :</h4>
-                  <pre className="bg-white p-3 rounded border text-sm overflow-auto">
-                    <code>{validationResult.indentationAnalysis.correctedCode}</code>
-                  </pre>
-                </div>
-              )}
-            </div>
-          </CardContent>
-        </Card>
-      )}
-
-      {/* AI Feedback */}
+      {/* Results Section */}
       {validationResult && (
-        <Card className="border-l-4 border-l-blue-500">
-          <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-2">
-              <MessageSquare className="h-5 w-5 text-blue-600" />
-              <span className="text-blue-700">Feedback de l'assistant</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="p-4 rounded-lg bg-blue-50 border border-blue-200">
-              <div className="prose prose-sm max-w-none">
-                <pre className="whitespace-pre-wrap text-sm leading-relaxed text-gray-800 font-sans">
-                  {validationResult.feedback}
-                </pre>
-              </div>
+        <div className="space-y-4">
+          {/* Score Section */}
+          {validationResult.structuredFeedback && (
+            <Card className="border-l-4 border-l-blue-500">
+              <CardHeader className="pb-3">
+                <CardTitle className="flex items-center justify-between">
+                  <span className="flex items-center gap-2">
+                    <MessageSquare className="h-5 w-5 text-blue-600" />
+                    Évaluation
+                  </span>
+                  <Badge className={`${getScoreColor(validationResult.structuredFeedback.score)} flex items-center gap-1`}>
+                    {getScoreIcon(validationResult.structuredFeedback.score)}
+                    {validationResult.structuredFeedback.score}/10
+                  </Badge>
+                </CardTitle>
+              </CardHeader>
+            </Card>
+          )}
+
+          {/* Errors Section */}
+          {validationResult.structuredFeedback?.errors.length > 0 && (
+            <Card className="border-l-4 border-l-red-500 bg-red-50">
+              <CardHeader className="pb-3">
+                <CardTitle className="flex items-center gap-2 text-red-800">
+                  <XCircle className="h-5 w-5" />
+                  Erreurs détectées
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="list-disc list-inside space-y-1 text-red-700">
+                  {validationResult.structuredFeedback.errors.map((error, index) => (
+                    <li key={index} className="text-sm">{error}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Indentation Issues */}
+          {validationResult.indentationAnalysis?.hasIndentationIssues && (
+            <Card className="border-l-4 border-l-amber-500 bg-amber-50">
+              <CardHeader className="pb-3">
+                <CardTitle className="flex items-center justify-between text-amber-800">
+                  <span className="flex items-center gap-2">
+                    <AlertTriangle className="h-5 w-5" />
+                    Problèmes d'indentation
+                  </span>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={applyIndentationFix}
+                    className="border-amber-300 text-amber-700 hover:bg-amber-100"
+                  >
+                    <Wand2 className="h-4 w-4 mr-2" />
+                    Corriger
+                  </Button>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="list-disc list-inside space-y-1 text-amber-700">
+                  {validationResult.indentationAnalysis.issues.map((issue, index) => (
+                    <li key={index} className="text-sm">{issue}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Corrected Code Section */}
+          {validationResult.structuredFeedback?.correctedCode && (
+            <Card className="border-l-4 border-l-green-500">
+              <CardHeader className="pb-3">
+                <CardTitle className="flex items-center justify-between">
+                  <span className="flex items-center gap-2 text-green-800">
+                    <CheckCircle className="h-5 w-5" />
+                    Code corrigé
+                  </span>
+                  <div className="flex gap-2">
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => setShowCorrectedCode(!showCorrectedCode)}
+                      className="border-green-300 text-green-700 hover:bg-green-50"
+                    >
+                      {showCorrectedCode ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                      {showCorrectedCode ? 'Masquer' : 'Voir'}
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={applyCorrectedCode}
+                      className="border-green-300 text-green-700 hover:bg-green-50"
+                    >
+                      Appliquer
+                    </Button>
+                  </div>
+                </CardTitle>
+              </CardHeader>
+              {showCorrectedCode && (
+                <CardContent>
+                  <pre className="bg-white p-3 rounded border text-sm overflow-auto font-mono">
+                    <code>{validationResult.structuredFeedback.correctedCode}</code>
+                  </pre>
+                </CardContent>
+              )}
+            </Card>
+          )}
+
+          {/* Toolbox Section */}
+          {validationResult.structuredFeedback && (
+            <div className="grid md:grid-cols-2 gap-4">
+              {/* Key Commands */}
+              <Card className="border-l-4 border-l-purple-500">
+                <CardHeader className="pb-3">
+                  <CardTitle className="flex items-center gap-2 text-purple-800">
+                    <Wrench className="h-5 w-5" />
+                    Commandes clés
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {validationResult.structuredFeedback.keyCommands.map((command, index) => (
+                      <Badge key={index} variant="outline" className="font-mono">
+                        {command}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Key Concepts */}
+              <Card className="border-l-4 border-l-teal-500">
+                <CardHeader className="pb-3">
+                  <CardTitle className="flex items-center gap-2 text-teal-800">
+                    <Lightbulb className="h-5 w-5" />
+                    Concepts importants
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="list-disc list-inside space-y-1 text-teal-700">
+                    {validationResult.structuredFeedback.concepts.map((concept, index) => (
+                      <li key={index} className="text-sm">{concept}</li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
             </div>
-          </CardContent>
-        </Card>
+          )}
+
+          {/* Detailed Feedback Section */}
+          {validationResult.structuredFeedback?.detailedFeedback && (
+            <Card className="border-l-4 border-l-gray-500">
+              <CardHeader className="pb-3">
+                <CardTitle 
+                  className="flex items-center justify-between cursor-pointer"
+                  onClick={() => setShowDetailedFeedback(!showDetailedFeedback)}
+                >
+                  <span className="flex items-center gap-2 text-gray-800">
+                    <MessageSquare className="h-5 w-5" />
+                    Feedback détaillé de l'assistant
+                  </span>
+                  {showDetailedFeedback ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                </CardTitle>
+              </CardHeader>
+              {showDetailedFeedback && (
+                <CardContent>
+                  <div className="p-4 rounded-lg bg-gray-50 border border-gray-200">
+                    <pre className="whitespace-pre-wrap text-sm leading-relaxed text-gray-800 font-sans">
+                      {validationResult.structuredFeedback.detailedFeedback}
+                    </pre>
+                  </div>
+                </CardContent>
+              )}
+            </Card>
+          )}
+        </div>
       )}
     </div>
   );

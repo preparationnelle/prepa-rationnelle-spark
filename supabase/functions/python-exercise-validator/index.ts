@@ -76,8 +76,8 @@ const exercises: Record<string, Exercise> = {
   }
 };
 
-// Fonction de détection et correction d'indentation
-function analyzeIndentation(code: string): {
+// Fonction de détection et correction d'indentation améliorée
+function analyzeAndFixIndentation(code: string): {
   hasIndentationIssues: boolean;
   correctedCode: string;
   issues: string[];
@@ -134,7 +134,39 @@ function analyzeIndentation(code: string): {
   };
 }
 
-async function generateFeedbackWithOpenAI(exerciseId: string, studentCode: string, attemptCount: number, indentationAnalysis?: any): Promise<string> {
+// Auto-formatage simple du code
+function autoFormatCode(code: string): string {
+  const lines = code.split('\n');
+  const formattedLines: string[] = [];
+  let indentLevel = 0;
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    
+    if (!trimmed || trimmed.startsWith('#')) {
+      formattedLines.push(line);
+      continue;
+    }
+
+    // Diminuer l'indentation pour certains mots-clés
+    if (trimmed.match(/^(elif|else|except|finally)/)) {
+      indentLevel = Math.max(0, indentLevel - 1);
+    }
+
+    // Appliquer l'indentation
+    const formattedLine = ' '.repeat(indentLevel * 4) + trimmed;
+    formattedLines.push(formattedLine);
+
+    // Augmenter l'indentation après ':'
+    if (trimmed.endsWith(':')) {
+      indentLevel++;
+    }
+  }
+
+  return formattedLines.join('\n');
+}
+
+async function generateStructuredFeedback(exerciseId: string, studentCode: string, attemptCount: number, indentationAnalysis?: any): Promise<any> {
   if (!OPENAI_API_KEY) {
     throw new Error('OpenAI API key not configured');
   }
@@ -144,56 +176,41 @@ async function generateFeedbackWithOpenAI(exerciseId: string, studentCode: strin
     throw new Error(`Exercise not found: ${exerciseId}`);
   }
 
-  const indentationContext = indentationAnalysis?.hasIndentationIssues 
-    ? `
+  const systemPrompt = `Tu es un professeur de Python qui évalue les exercices d'étudiants. Tu dois retourner une réponse JSON strictement structurée.
 
-PROBLEMES D'INDENTATION DETECTES:
-${indentationAnalysis.issues.join('\n')}
+EXERCICE: ${exercise.title}
+DESCRIPTION: ${exercise.description}
+TENTATIVE: ${attemptCount}
 
-CODE CORRIGE SUGGERE:
-\`\`\`python
-${indentationAnalysis.correctedCode}
-\`\`\`
+RÉPONSE REQUISE (JSON uniquement):
+{
+  "score": [note sur 10 basée sur la correction et la logique],
+  "errors": ["liste des erreurs trouvées"],
+  "correctedCode": "version corrigée du code étudiant",
+  "keyCommands": ["commandes Python essentielles pour cet exercice"],
+  "concepts": ["notions importantes à retenir"],
+  "detailedFeedback": "feedback détaillé et conseils"
+}
 
-IMPORTANT: Explique l'importance de l'indentation en Python et guide l'étudiant.`
-    : '';
+RÈGLES:
+- Score de 0 à 10 (10 = parfait, 0 = très incorrect)
+- Errors: liste concise des problèmes
+- CorrectedCode: version fonctionnelle du code
+- KeyCommands: 3-5 commandes Python clés
+- Concepts: 3-5 notions importantes
+- DetailedFeedback: explication pédagogique complète
 
-  const systemPrompt = `Tu es un professeur de Python qui aide les étudiants avec leurs exercices de programmation.
+${indentationAnalysis?.hasIndentationIssues ? `
+PROBLÈMES D'INDENTATION DÉTECTÉS:
+- ${indentationAnalysis.issues.join('\n- ')}
+Intègre ces problèmes dans ton évaluation.` : ''}`;
 
-RÈGLES IMPORTANTES:
-- Pas d'emojis dans tes réponses
-- Pas de texte en gras
-- Sois constructif et pédagogique
-- Analyse le code de l'étudiant et propose des améliorations
-- Si le code est incomplet, guide l'étudiant vers la solution
-- Si le code a des erreurs, explique-les clairement
-- Propose du code corrigé quand c'est nécessaire
-
-FOCUS SPECIAL SUR L'INDENTATION:
-- L'indentation en Python n'est pas du style mais de la SYNTAXE
-- 4 espaces par niveau (PEP 8), jamais de tabulations
-- Chaque bloc après ':' doit être indenté
-- L'IA utilise des jetons <indent>/<dedent> pour comprendre la structure
-- Une erreur d'indentation = IndentationError
-
-Exercice: ${exercise.title}
-Description: ${exercise.description}
-
-Tentative numéro: ${attemptCount}${indentationContext}`;
-
-  const userPrompt = `Voici le code de l'étudiant:
-
+  const userPrompt = `Code de l'étudiant:
 \`\`\`python
 ${studentCode}
 \`\`\`
 
-Analyse ce code en te concentrant particulièrement sur:
-1. L'indentation (très important en Python)
-2. La logique algorithmique
-3. Les erreurs potentielles
-4. Les améliorations possibles
-
-Donne un feedback constructif et propose une correction si nécessaire.`;
+Évalue ce code et retourne UNIQUEMENT le JSON demandé.`;
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -203,12 +220,12 @@ Donne un feedback constructif et propose une correction si nécessaire.`;
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'gpt-4o',
         messages: [
           { role: 'system', content: systemPrompt },
           { role: 'user', content: userPrompt }
         ],
-        max_tokens: 1000,
+        max_tokens: 1500,
         temperature: 0.3
       }),
     });
@@ -218,10 +235,25 @@ Donne un feedback constructif et propose une correction si nécessaire.`;
     }
 
     const data = await response.json();
-    return data.choices[0].message.content;
+    const content = data.choices[0].message.content;
+    
+    // Tenter de parser le JSON
+    try {
+      return JSON.parse(content);
+    } catch (parseError) {
+      // Si le parsing échoue, retourner une structure de base
+      return {
+        score: 3,
+        errors: ["Erreur lors de l'analyse automatique"],
+        correctedCode: studentCode,
+        keyCommands: ["for loop", "if statement", "return"],
+        concepts: ["Algorithmique de base"],
+        detailedFeedback: content
+      };
+    }
   } catch (error) {
     console.error('OpenAI API error:', error);
-    return `Erreur lors de l'analyse du code: ${error.message}`;
+    throw error;
   }
 }
 
@@ -231,7 +263,7 @@ serve(async (req) => {
   }
 
   try {
-    const { exerciseId, code, attemptCount = 1 } = await req.json();
+    const { exerciseId, code, attemptCount = 1, action } = await req.json();
     
     if (!exerciseId || !code) {
       throw new Error('Paramètres manquants: exerciseId et code requis');
@@ -242,18 +274,34 @@ serve(async (req) => {
       throw new Error(`Exercice non trouvé: ${exerciseId}`);
     }
 
-    console.log(`Analyzing exercise ${exerciseId}, attempt ${attemptCount}`);
+    console.log(`Processing exercise ${exerciseId}, attempt ${attemptCount}, action: ${action || 'validate'}`);
 
-    // Analyser l'indentation avant l'envoi à OpenAI
-    const indentationAnalysis = analyzeIndentation(code);
+    // Si l'action est "format", retourner le code formaté
+    if (action === 'format') {
+      const formattedCode = autoFormatCode(code);
+      return new Response(
+        JSON.stringify({
+          success: true,
+          formattedCode,
+          action: 'format'
+        }),
+        { 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          status: 200
+        }
+      );
+    }
 
-    // Generate feedback using OpenAI with indentation context
-    const feedback = await generateFeedbackWithOpenAI(exerciseId, code, attemptCount, indentationAnalysis);
+    // Analyser l'indentation
+    const indentationAnalysis = analyzeAndFixIndentation(code);
+
+    // Générer le feedback structuré avec OpenAI
+    const structuredFeedback = await generateStructuredFeedback(exerciseId, code, attemptCount, indentationAnalysis);
 
     return new Response(
       JSON.stringify({
-        success: false, // We'll let OpenAI determine if it's successful
-        feedback,
+        success: structuredFeedback.score >= 7,
+        structuredFeedback,
         indentationAnalysis,
         exercise: {
           title: exercise.title,
