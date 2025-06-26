@@ -3,23 +3,24 @@ import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowLeft, BookOpen, Target, AlertCircle } from "lucide-react";
+import { BookOpen } from "lucide-react";
 
 export const MethodGrammaireReglesPage = () => {
   return (
-    <div className="container max-w-4xl py-10 animate-fade-in bg-[#FFF9ED] min-h-screen">
-      <div className="mb-6">
-        <Link to="/methodologie/allemand">
-          <Button variant="outline" className="mb-4 flex items-center gap-2">
-            <ArrowLeft className="h-4 w-4" />
-            Retour à la méthodologie allemand
-          </Button>
-        </Link>
+    <div className="container max-w-5xl py-10 animate-fade-in bg-[#FFF9ED] min-h-screen">
+      <div className="text-center mb-10">
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <div className="p-3 bg-gradient-to-br from-[#ff9100] to-orange-600 rounded-xl text-white shadow-lg">
+            <BookOpen className="h-8 w-8" />
+          </div>
+          <h1 className="text-4xl font-extrabold text-[#ff9100]">
+            Règles de Grammaire Récurrentes en Allemand
+          </h1>
+        </div>
+        <p className="text-xl text-gray-600">
+          Les règles essentielles à maîtriser absolument
+        </p>
       </div>
-      
-      <h1 className="text-4xl font-extrabold mb-8 text-[#ff9100] text-center">
-        Règles de Grammaire Récurrentes en Allemand
-      </h1>
       
       <Card className="mb-8 bg-gradient-to-r from-primary/5 to-secondary/5 border-primary/20">
         <CardContent className="p-6">
@@ -32,14 +33,13 @@ export const MethodGrammaireReglesPage = () => {
 
       <div className="space-y-6">
         {/* Position du verbe */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-2xl text-primary">
-              <Target className="h-6 w-6" />
+        <Card className="border-2 border-orange-200">
+          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
+            <CardTitle className="flex items-center gap-2 text-2xl text-orange-800">
               1. Position du verbe conjugué
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6">
             <div className="space-y-4">
               <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-400">
                 <h4 className="font-semibold text-red-800 mb-2">⚠️ Règle fondamentale</h4>
@@ -71,14 +71,13 @@ export const MethodGrammaireReglesPage = () => {
         </Card>
 
         {/* Négation */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-2xl text-primary">
-              <AlertCircle className="h-6 w-6" />
+        <Card className="border-2 border-orange-200">
+          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
+            <CardTitle className="flex items-center gap-2 text-2xl text-orange-800">
               2. La négation avec "nicht" et "kein"
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6">
             <div className="space-y-4">
               <div className="bg-blue-50 p-4 rounded-lg">
                 <h4 className="font-semibold text-blue-800 mb-2">Règle "kein"</h4>
@@ -106,14 +105,13 @@ export const MethodGrammaireReglesPage = () => {
         </Card>
 
         {/* Trennbare Verben */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-2xl text-primary">
-              <BookOpen className="h-6 w-6" />
+        <Card className="border-2 border-orange-200">
+          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
+            <CardTitle className="flex items-center gap-2 text-2xl text-orange-800">
               3. Les verbes à particule séparable
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6">
             <div className="space-y-4">
               <p className="text-muted-foreground">
                 Les particules séparables se détachent du verbe et se placent en fin de phrase.
@@ -145,14 +143,13 @@ export const MethodGrammaireReglesPage = () => {
         </Card>
 
         {/* Subordonnées */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-2xl text-primary">
-              <Target className="h-6 w-6" />
+        <Card className="border-2 border-orange-200">
+          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
+            <CardTitle className="flex items-center gap-2 text-2xl text-orange-800">
               4. Les propositions subordonnées
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6">
             <div className="space-y-4">
               <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-400">
                 <h4 className="font-semibold text-red-800 mb-2">⚠️ Règle cruciale</h4>
@@ -191,14 +188,13 @@ export const MethodGrammaireReglesPage = () => {
         </Card>
 
         {/* Cas et déclinaisons */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-2xl text-primary">
-              <AlertCircle className="h-6 w-6" />
+        <Card className="border-2 border-orange-200">
+          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
+            <CardTitle className="flex items-center gap-2 text-2xl text-orange-800">
               5. Les cas (Nominatif, Accusatif, Datif, Génitif)
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6">
             <div className="space-y-4">
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="bg-green-50 p-4 rounded-lg">
@@ -238,14 +234,13 @@ export const MethodGrammaireReglesPage = () => {
         </Card>
 
         {/* Verbes de modalité */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-2xl text-primary">
-              <BookOpen className="h-6 w-6" />
+        <Card className="border-2 border-orange-200">
+          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
+            <CardTitle className="flex items-center gap-2 text-2xl text-orange-800">
               6. Les verbes de modalité
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6">
             <div className="space-y-4">
               <div className="overflow-x-auto">
                 <table className="w-full border-collapse border border-gray-300">
@@ -295,11 +290,11 @@ export const MethodGrammaireReglesPage = () => {
         </Card>
 
         {/* Conseils pratiques */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-2xl text-primary">💡 Conseils de révision</CardTitle>
+        <Card className="border-2 border-orange-200">
+          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
+            <CardTitle className="text-2xl text-orange-800">💡 Conseils de révision</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6">
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-green-50 p-4 rounded-lg">
                 <h4 className="font-semibold text-green-800 mb-2">✅ Méthode efficace</h4>
@@ -326,9 +321,9 @@ export const MethodGrammaireReglesPage = () => {
       </div>
 
       <div className="mt-8 text-center">
-        <Link to="/methodologie/allemand">
-          <Button className="bg-[#ff9100] hover:bg-[#e8820e]">
-            Retour à la méthodologie allemand
+        <Link to="/methodologie/grammaire">
+          <Button variant="outline" className="border-[#ff9100] text-[#ff9100] hover:bg-[#ff9100] hover:text-white">
+            ← Retour aux fiches de grammaire
           </Button>
         </Link>
       </div>

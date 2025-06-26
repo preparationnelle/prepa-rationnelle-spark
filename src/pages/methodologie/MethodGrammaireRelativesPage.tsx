@@ -1,89 +1,353 @@
 
-import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowLeft, BookOpen, Target, AlertCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { BookOpen } from "lucide-react";
 
 export const MethodGrammaireRelativesPage = () => {
   return (
-    <div className="container max-w-4xl py-10 animate-fade-in bg-[#FFF9ED] min-h-screen">
-      <div className="mb-6">
-        <Link to="/methodologie/allemand">
-          <Button variant="outline" className="mb-4 flex items-center gap-2">
-            <ArrowLeft className="h-4 w-4" />
-            Retour à la méthodologie allemand
-          </Button>
-        </Link>
+    <div className="container max-w-5xl py-10 animate-fade-in bg-[#FFF9ED] min-h-screen">
+      <div className="text-center mb-10">
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <div className="p-3 bg-gradient-to-br from-[#ff9100] to-orange-600 rounded-xl text-white shadow-lg">
+            <BookOpen className="h-8 w-8" />
+          </div>
+          <h1 className="text-4xl font-extrabold text-[#ff9100]">
+            La Proposition Relative en Allemand
+          </h1>
+        </div>
+        <p className="text-xl text-gray-600">
+          Niveau CPGE, version enrichie & corrigée, sans plagiat
+        </p>
       </div>
-      
-      <h1 className="text-4xl font-extrabold mb-8 text-[#ff9100] text-center">
-        Les Propositions Relatives en Allemand
-      </h1>
-      
-      <Card className="mb-8 bg-gradient-to-r from-primary/5 to-secondary/5 border-primary/20">
-        <CardContent className="p-6">
-          <p className="text-lg font-semibold mb-2">Maîtriser les propositions relatives</p>
-          <p className="text-muted-foreground">
-            Guide complet pour comprendre et utiliser correctement les propositions relatives en allemand.
-          </p>
-        </CardContent>
-      </Card>
 
-      <div className="space-y-6">
-        {/* Les pronoms relatifs */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-2xl text-primary">
-              <BookOpen className="h-6 w-6" />
-              1. Les pronoms relatifs
-            </CardTitle>
+      <div className="space-y-8">
+        {/* Repères essentiels */}
+        <Card className="border-2 border-orange-200">
+          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
+            <CardTitle className="text-orange-800">1. Repères essentiels</CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <p className="text-muted-foreground mb-4">
-                Les pronoms relatifs se déclinent selon le genre, le nombre et le cas du nom qu'ils remplacent.
+          <CardContent className="pt-6">
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse border border-orange-200">
+                <thead>
+                  <tr className="bg-orange-50">
+                    <th className="border border-orange-200 p-3 text-left font-semibold">Rappel</th>
+                    <th className="border border-orange-200 p-3 text-left font-semibold">Exemple</th>
+                    <th className="border border-orange-200 p-3 text-left font-semibold">Commentaire</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-orange-200 p-3">Relatives = subordonnées</td>
+                    <td className="border border-orange-200 p-3"><em>..., die Stadt, die ich besuche, ...</em></td>
+                    <td className="border border-orange-200 p-3">Le verbe se place à la fin.</td>
+                  </tr>
+                  <tr className="bg-orange-25">
+                    <td className="border border-orange-200 p-3">Ponctuation</td>
+                    <td className="border border-orange-200 p-3"><em>Der Roman, den ich liebe, ist alt.</em></td>
+                    <td className="border border-orange-200 p-3">Virgule avant et après la relative quand elle s'insère.</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-orange-200 p-3">Antécédent à distance</td>
+                    <td className="border border-orange-200 p-3"><em>Ich suche das Buch nicht, das du empfohlen hast.</em></td>
+                    <td className="border border-orange-200 p-3">On termine la principale quand le GV serait coupé par une longue relative.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Tableau des pronoms relatifs */}
+        <Card className="border-2 border-orange-200">
+          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
+            <CardTitle className="text-orange-800">2. Tableau des pronoms relatifs</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-6">
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse border border-orange-200">
+                <thead>
+                  <tr className="bg-orange-50">
+                    <th className="border border-orange-200 p-3 text-left font-semibold">Cas \ Genre</th>
+                    <th className="border border-orange-200 p-3 text-left font-semibold">Masculin</th>
+                    <th className="border border-orange-200 p-3 text-left font-semibold">Féminin</th>
+                    <th className="border border-orange-200 p-3 text-left font-semibold">Neutre</th>
+                    <th className="border border-orange-200 p-3 text-left font-semibold">Pluriel</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-orange-200 p-3 font-semibold">N.</td>
+                    <td className="border border-orange-200 p-3"><em>der</em></td>
+                    <td className="border border-orange-200 p-3"><em>die</em></td>
+                    <td className="border border-orange-200 p-3"><em>das</em></td>
+                    <td className="border border-orange-200 p-3"><em>die</em></td>
+                  </tr>
+                  <tr className="bg-orange-25">
+                    <td className="border border-orange-200 p-3 font-semibold">A.</td>
+                    <td className="border border-orange-200 p-3"><em>den</em></td>
+                    <td className="border border-orange-200 p-3"><em>die</em></td>
+                    <td className="border border-orange-200 p-3"><em>das</em></td>
+                    <td className="border border-orange-200 p-3"><em>die</em></td>
+                  </tr>
+                  <tr>
+                    <td className="border border-orange-200 p-3 font-semibold">D.</td>
+                    <td className="border border-orange-200 p-3"><em>dem</em></td>
+                    <td className="border border-orange-200 p-3"><em>der</em></td>
+                    <td className="border border-orange-200 p-3"><em>dem</em></td>
+                    <td className="border border-orange-200 p-3"><em>denen</em></td>
+                  </tr>
+                  <tr className="bg-orange-25">
+                    <td className="border border-orange-200 p-3 font-semibold">G.</td>
+                    <td className="border border-orange-200 p-3"><em>dessen</em></td>
+                    <td className="border border-orange-200 p-3"><em>deren</em></td>
+                    <td className="border border-orange-200 p-3"><em>dessen</em></td>
+                    <td className="border border-orange-200 p-3"><em>deren</em></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="bg-orange-50 p-3 rounded-lg mt-3">
+              <p className="text-gray-700">Identiques à l'article défini <em>der/die/das</em> – sauf datif pluriel (<em>denen</em>) et génitif (<em>dessen/deren</em>).</p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Choisir le bon pronom */}
+        <Card className="border-2 border-orange-200">
+          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
+            <CardTitle className="text-orange-800">3. Choisir le bon pronom</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-6 space-y-4">
+            <div className="bg-orange-50 p-4 rounded-lg">
+              <p className="font-medium mb-2">Genre = celui de l'antécédent</p>
+              <p className="text-gray-700"><em>das Haus, das ich kaufe</em> (neutre → das).</p>
+            </div>
+            
+            <div className="bg-orange-50 p-4 rounded-lg">
+              <p className="font-medium mb-2">Cas = fonction dans la relative</p>
+              <p className="text-gray-700">Sujet → nominatif ; COD → accusatif ; COI ou après prép. datif → datif ; complément du nom → génitif.</p>
+            </div>
+
+            <div className="bg-orange-50 p-4 rounded-lg">
+              <p className="font-medium mb-2">Génitif : le substantif qui suit n'a pas d'article.</p>
+              <p className="text-gray-700"><em>Die Firma, deren Chef krank ist ...</em></p>
+            </div>
+
+            <div className="bg-orange-50 p-4 rounded-lg">
+              <p className="font-medium mb-2">Préposition + relatif : la préposition précède le pronom.</p>
+              <p className="text-gray-700"><em>die Couch, auf der er liegt</em></p>
+              <p className="text-sm text-gray-600 mt-1">Pour les choses → on peut employer <em>wo- + prép.</em> (<em>worauf</em>).</p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Remplacer "dont" */}
+        <Card className="border-2 border-orange-200">
+          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
+            <CardTitle className="text-orange-800">4. Remplacer « dont »</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-6">
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse border border-orange-200">
+                <thead>
+                  <tr className="bg-orange-50">
+                    <th className="border border-orange-200 p-3 text-left font-semibold">Valeur de « dont »</th>
+                    <th className="border border-orange-200 p-3 text-left font-semibold">Construction allemande</th>
+                    <th className="border border-orange-200 p-3 text-left font-semibold">Exemple</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-orange-200 p-3">Complément du nom</td>
+                    <td className="border border-orange-200 p-3"><em>dessen / deren</em></td>
+                    <td className="border border-orange-200 p-3"><em>Der Film, dessen Regisseur berühmt ist...</em></td>
+                  </tr>
+                  <tr className="bg-orange-25">
+                    <td className="border border-orange-200 p-3">COI avec <em>von</em></td>
+                    <td className="border border-orange-200 p-3"><em>von dem / denen → wovon</em></td>
+                    <td className="border border-orange-200 p-3"><em>Die Idee, von der ich spreche / wovon ich spreche...</em></td>
+                  </tr>
+                  <tr>
+                    <td className="border border-orange-200 p-3">Complément avec prép. autre que <em>von</em></td>
+                    <td className="border border-orange-200 p-3">prép. + relatif</td>
+                    <td className="border border-orange-200 p-3"><em>Die Stadt, in der er wohnt...</em></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Relatives participiales */}
+        <Card className="border-2 border-orange-200">
+          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
+            <CardTitle className="text-orange-800">5. Relatives participiales</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-6">
+            <p className="mb-4">On remplace <em>der/die/das ... wurde_hat_ist + Part. II</em> par un groupe adjectival devant le nom.</p>
+            <p className="mb-4">Le participe ou l'adjectif se décline selon le groupe nominal.</p>
+            <div className="bg-orange-50 p-4 rounded-lg">
+              <p className="text-gray-700">
+                <em>Der Artikel, der im Mai veröffentlicht wurde</em> → <em>Der im Mai veröffentlichte Artikel</em>
               </p>
-              
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Exercices */}
+        <Card className="border-2 border-orange-200">
+          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
+            <CardTitle className="text-orange-800">6. Exercices & corrigés</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-6 space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold text-orange-700 mb-3">A. Complétez avec le pronom relatif approprié</h3>
               <div className="overflow-x-auto">
-                <table className="w-full border-collapse border border-gray-300">
+                <table className="w-full border-collapse border border-orange-200 text-sm">
                   <thead>
-                    <tr className="bg-gray-100">
-                      <th className="border border-gray-300 p-2 text-left">Cas</th>
-                      <th className="border border-gray-300 p-2 text-left">Masculin</th>
-                      <th className="border border-gray-300 p-2 text-left">Féminin</th>
-                      <th className="border border-gray-300 p-2 text-left">Neutre</th>
-                      <th className="border border-gray-300 p-2 text-left">Pluriel</th>
+                    <tr className="bg-orange-50">
+                      <th className="border border-orange-200 p-2 text-left">#</th>
+                      <th className="border border-orange-200 p-2 text-left">Phrase</th>
+                      <th className="border border-orange-200 p-2 text-left">Réponse</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td className="border border-gray-300 p-2 font-semibold">Nominatif</td>
-                      <td className="border border-gray-300 p-2">der</td>
-                      <td className="border border-gray-300 p-2">die</td>
-                      <td className="border border-gray-300 p-2">das</td>
-                      <td className="border border-gray-300 p-2">die</td>
+                      <td className="border border-orange-200 p-2">1</td>
+                      <td className="border border-orange-200 p-2"><em>Das Gesetz, ... der Bundestag im November verabschiedet hat, ...</em></td>
+                      <td className="border border-orange-200 p-2"><em>das</em></td>
+                    </tr>
+                    <tr className="bg-orange-25">
+                      <td className="border border-orange-200 p-2">2</td>
+                      <td className="border border-orange-200 p-2"><em>Die Freundin, ... ich ein Buch geschenkt habe, ...</em></td>
+                      <td className="border border-orange-200 p-2"><em>der</em></td>
                     </tr>
                     <tr>
-                      <td className="border border-gray-300 p-2 font-semibold">Accusatif</td>
-                      <td className="border border-gray-300 p-2">den</td>
-                      <td className="border border-gray-300 p-2">die</td>
-                      <td className="border border-gray-300 p-2">das</td>
-                      <td className="border border-gray-300 p-2">die</td>
+                      <td className="border border-orange-200 p-2">3</td>
+                      <td className="border border-orange-200 p-2"><em>Die Kinder, ... ich bei den Hausaufgaben half, ...</em></td>
+                      <td className="border border-orange-200 p-2"><em>denen</em></td>
+                    </tr>
+                    <tr className="bg-orange-25">
+                      <td className="border border-orange-200 p-2">4</td>
+                      <td className="border border-orange-200 p-2"><em>Der Lehrer, ... ich nach dem Problem fragte, ...</em></td>
+                      <td className="border border-orange-200 p-2"><em>den</em></td>
                     </tr>
                     <tr>
-                      <td className="border border-gray-300 p-2 font-semibold">Datif</td>
-                      <td className="border border-gray-300 p-2">dem</td>
-                      <td className="border border-gray-300 p-2">der</td>
-                      <td className="border border-gray-300 p-2">dem</td>
-                      <td className="border border-gray-300 p-2">denen</td>
+                      <td className="border border-orange-200 p-2">5</td>
+                      <td className="border border-orange-200 p-2"><em>Das Praktikum, ... sie sich interessiert, ...</em></td>
+                      <td className="border border-orange-200 p-2"><em>für das</em><br/><span className="text-sm text-gray-600">(<em>wofür</em> possible)</span></td>
+                    </tr>
+                    <tr className="bg-orange-25">
+                      <td className="border border-orange-200 p-2">6</td>
+                      <td className="border border-orange-200 p-2"><em>Wer ist die Person, mit ... du gesprochen hast?</em></td>
+                      <td className="border border-orange-200 p-2"><em>der</em></td>
                     </tr>
                     <tr>
-                      <td className="border border-gray-300 p-2 font-semibold">Génitif</td>
-                      <td className="border border-gray-300 p-2">dessen</td>
-                      <td className="border border-gray-300 p-2">deren</td>
-                      <td className="border border-gray-300 p-2">dessen</td>
-                      <td className="border border-gray-300 p-2">deren</td>
+                      <td className="border border-orange-200 p-2">7</td>
+                      <td className="border border-orange-200 p-2"><em>... Freund Max, ... in der Heinrich-Heine-Straße wohnt.</em></td>
+                      <td className="border border-orange-200 p-2"><em>der</em></td>
+                    </tr>
+                    <tr className="bg-orange-25">
+                      <td className="border border-orange-200 p-2">8</td>
+                      <td className="border border-orange-200 p-2"><em>... Freund Max, ... ich die CD zurückbringen muss.</em></td>
+                      <td className="border border-orange-200 p-2"><em>dem</em></td>
+                    </tr>
+                    <tr>
+                      <td className="border border-orange-200 p-2">9</td>
+                      <td className="border border-orange-200 p-2"><em>... Freund Max, ... du doch auch kennst.</em></td>
+                      <td className="border border-orange-200 p-2"><em>den</em></td>
+                    </tr>
+                    <tr className="bg-orange-25">
+                      <td className="border border-orange-200 p-2">10</td>
+                      <td className="border border-orange-200 p-2"><em>Gillian und David, ... Mutter krank ist, ...</em></td>
+                      <td className="border border-orange-200 p-2"><em>deren</em></td>
+                    </tr>
+                    <tr>
+                      <td className="border border-orange-200 p-2">11</td>
+                      <td className="border border-orange-200 p-2"><em>Die Stadt, ... ich hinfahren möchte, ...</em></td>
+                      <td className="border border-orange-200 p-2"><em>in die</em></td>
+                    </tr>
+                    <tr className="bg-orange-25">
+                      <td className="border border-orange-200 p-2">12</td>
+                      <td className="border border-orange-200 p-2"><em>Ich habe einen Hund, ... Augen blau sind.</em></td>
+                      <td className="border border-orange-200 p-2"><em>dessen</em></td>
+                    </tr>
+                    <tr>
+                      <td className="border border-orange-200 p-2">13</td>
+                      <td className="border border-orange-200 p-2"><em>Neufundländer sind Hunde, ... Leute im Wasser retten.</em></td>
+                      <td className="border border-orange-200 p-2"><em>die</em></td>
+                    </tr>
+                    <tr className="bg-orange-25">
+                      <td className="border border-orange-200 p-2">14</td>
+                      <td className="border border-orange-200 p-2"><em>Matthias, mit ... Bruder ich befreundet bin, ...</em></td>
+                      <td className="border border-orange-200 p-2"><em>dessen</em></td>
+                    </tr>
+                    <tr>
+                      <td className="border border-orange-200 p-2">15</td>
+                      <td className="border border-orange-200 p-2"><em>Der Erste Weltkrieg, ... wir 2014 gedenken, ...</em></td>
+                      <td className="border border-orange-200 p-2"><em>dessen</em></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-orange-700 mb-3">B. Traduisez les phrases avec « dont »</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse border border-orange-200">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-orange-200 p-3 text-left font-semibold">Français</th>
+                      <th className="border border-orange-200 p-3 text-left font-semibold">Allemand</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-orange-200 p-3">Ce livre, dont le titre est Au Bonheur des Dames, ...</td>
+                      <td className="border border-orange-200 p-3"><em>Dieses Buch, dessen Titel „Au Bonheur des Dames" ist, ...</em></td>
+                    </tr>
+                    <tr className="bg-orange-25">
+                      <td className="border border-orange-200 p-3">Les enfants dont je m'occupe, ...</td>
+                      <td className="border border-orange-200 p-3"><em>Die Kinder, um die ich mich kümmere, ...</em></td>
+                    </tr>
+                    <tr>
+                      <td className="border border-orange-200 p-3">L'amie dont je te parle, ...</td>
+                      <td className="border border-orange-200 p-3"><em>Die Freundin, von der ich dir erzähle, ...</em></td>
+                    </tr>
+                    <tr className="bg-orange-25">
+                      <td className="border border-orange-200 p-3">L'amie dont j'ai pris le livre, ...</td>
+                      <td className="border border-orange-200 p-3"><em>Die Freundin, deren Buch ich genommen habe, ...</em></td>
+                    </tr>
+                    <tr>
+                      <td className="border border-orange-200 p-3">L'événement dont je me souviens, ...</td>
+                      <td className="border border-orange-200 p-3"><em>Das Ereignis, an das ich mich erinnere, ...</em></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-orange-700 mb-3">C. Transformez en relative participiale</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse border border-orange-200">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-orange-200 p-3 text-left font-semibold">Phrase originale</th>
+                      <th className="border border-orange-200 p-3 text-left font-semibold">Version participiale</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-orange-200 p-3"><em>Der Roman, der von diesem Autor geschrieben wurde, ...</em></td>
+                      <td className="border border-orange-200 p-3"><em>Der von diesem Autor geschriebene Roman ...</em></td>
+                    </tr>
+                    <tr className="bg-orange-25">
+                      <td className="border border-orange-200 p-3"><em>Die Vögel, die den ganzen Tag singen, ...</em></td>
+                      <td className="border border-orange-200 p-3"><em>Die den ganzen Tag singenden Vögel ...</em></td>
                     </tr>
                   </tbody>
                 </table>
@@ -92,246 +356,35 @@ export const MethodGrammaireRelativesPage = () => {
           </CardContent>
         </Card>
 
-        {/* Formation des relatives */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-2xl text-primary">
-              <Target className="h-6 w-6" />
-              2. Formation des propositions relatives
-            </CardTitle>
+        {/* Verdict */}
+        <Card className="border-2 border-orange-200">
+          <CardHeader className="bg-gradient-to-r from-orange-100 to-amber-100">
+            <CardTitle className="text-orange-800">7. Verdict</CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <h4 className="font-semibold text-lg mb-2">Règle générale</h4>
-              <p className="text-muted-foreground mb-4">
-                Le pronom relatif s'accorde avec l'antécédent en genre et en nombre, mais son cas dépend de sa fonction dans la proposition relative.
-              </p>
-              
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h5 className="font-medium mb-2">Exemples :</h5>
-                <ul className="space-y-2">
-                  <li>
-                    <strong>Der Mann, der kommt, ist mein Vater.</strong><br />
-                    <span className="text-sm text-muted-foreground">
-                      (L'homme qui vient est mon père.) - "der" = nominatif car sujet de "kommt"
-                    </span>
-                  </li>
-                  <li>
-                    <strong>Der Mann, den ich sehe, ist mein Vater.</strong><br />
-                    <span className="text-sm text-muted-foreground">
-                      (L'homme que je vois est mon père.) - "den" = accusatif car COD de "sehe"
-                    </span>
-                  </li>
-                  <li>
-                    <strong>Der Mann, dem ich helfe, ist mein Vater.</strong><br />
-                    <span className="text-sm text-muted-foreground">
-                      (L'homme à qui j'aide est mon père.) - "dem" = datif car "helfen" + datif
-                    </span>
-                  </li>
-                </ul>
+          <CardContent className="pt-6">
+            <div className="space-y-3">
+              <div className="bg-green-50 border border-green-200 p-3 rounded-lg">
+                <p className="text-green-700">• Genre = antécédent, cas = fonction ; retenez surtout <em>dessen/deren</em> et <em>denen</em>.</p>
+              </div>
+              <div className="bg-green-50 border border-green-200 p-3 rounded-lg">
+                <p className="text-green-700">• « Dont » → génitif ou construction avec préposition.</p>
+              </div>
+              <div className="bg-green-50 border border-green-200 p-3 rounded-lg">
+                <p className="text-green-700">• Allégez vos phrases avec la relative participiale : participe + déclinaison devant le nom.</p>
               </div>
             </div>
-          </CardContent>
-        </Card>
-
-        {/* Cas particuliers */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-2xl text-primary">
-              <AlertCircle className="h-6 w-6" />
-              3. Cas particuliers
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-6">
-              <div>
-                <h4 className="font-semibold text-lg mb-2">Relatives avec prépositions</h4>
-                <p className="text-muted-foreground mb-3">
-                  Quand le pronom relatif suit une préposition, il prend le cas demandé par cette préposition.
-                </p>
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <ul className="space-y-2">
-                    <li>
-                      <strong>Das Haus, in dem ich wohne...</strong><br />
-                      <span className="text-sm text-muted-foreground">
-                        (La maison dans laquelle j'habite...) - "in" + datif
-                      </span>
-                    </li>
-                    <li>
-                      <strong>Der Stuhl, auf den ich sitze...</strong><br />
-                      <span className="text-sm text-muted-foreground">
-                        (La chaise sur laquelle je m'assieds...) - "auf" + accusatif (mouvement)
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div>
-                <h4 className="font-semibold text-lg mb-2">Le génitif (dessen/deren)</h4>
-                <p className="text-muted-foreground mb-3">
-                  Exprime la possession ou l'appartenance.
-                </p>
-                <div className="bg-green-50 p-4 rounded-lg">
-                  <ul className="space-y-2">
-                    <li>
-                      <strong>Der Mann, dessen Auto rot ist...</strong><br />
-                      <span className="text-sm text-muted-foreground">
-                        (L'homme dont la voiture est rouge...)
-                      </span>
-                    </li>
-                    <li>
-                      <strong>Die Frau, deren Kinder spielen...</strong><br />
-                      <span className="text-sm text-muted-foreground">
-                        (La femme dont les enfants jouent...)
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div>
-                <h4 className="font-semibold text-lg mb-2">Pronom relatif "was"</h4>
-                <p className="text-muted-foreground mb-3">
-                  Utilisé après les pronoms neutres (das, etwas, nichts, alles) et les superlatifs substantivés.
-                </p>
-                <div className="bg-yellow-50 p-4 rounded-lg">
-                  <ul className="space-y-2">
-                    <li>
-                      <strong>Alles, was er sagt, ist wahr.</strong><br />
-                      <span className="text-sm text-muted-foreground">
-                        (Tout ce qu'il dit est vrai.)
-                      </span>
-                    </li>
-                    <li>
-                      <strong>Das Beste, was passieren konnte...</strong><br />
-                      <span className="text-sm text-muted-foreground">
-                        (Le mieux qui pouvait arriver...)
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Position du verbe */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-2xl text-primary">
-              <Target className="h-6 w-6" />
-              4. Position du verbe conjugué
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-400">
-                <h4 className="font-semibold text-red-800 mb-2">⚠️ Règle importante</h4>
-                <p className="text-red-700">
-                  Dans une proposition relative, le verbe conjugué se place toujours à la fin !
-                </p>
-              </div>
-
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h5 className="font-medium mb-2">Exemples :</h5>
-                <ul className="space-y-2">
-                  <li>
-                    <strong>✅ Der Mann, der gestern gekommen ist...</strong><br />
-                    <span className="text-sm text-muted-foreground">
-                      (L'homme qui est venu hier...)
-                    </span>
-                  </li>
-                  <li>
-                    <strong>✅ Das Buch, das ich gelesen habe...</strong><br />
-                    <span className="text-sm text-muted-foreground">
-                      (Le livre que j'ai lu...)
-                    </span>
-                  </li>
-                  <li>
-                    <strong>✅ Die Frau, mit der ich sprechen will...</strong><br />
-                    <span className="text-sm text-muted-foreground">
-                      (La femme avec qui je veux parler...)
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Exercices pratiques */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-2xl text-primary">
-              <BookOpen className="h-6 w-6" />
-              5. Méthode pour bien choisir le pronom relatif
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-blue-800 mb-3">🎯 Méthode en 3 étapes :</h4>
-                <ol className="list-decimal list-inside space-y-2 text-blue-700">
-                  <li><strong>Identifier l'antécédent</strong> (genre et nombre)</li>
-                  <li><strong>Déterminer la fonction</strong> du pronom dans la relative</li>
-                  <li><strong>Choisir le cas</strong> correspondant à cette fonction</li>
-                </ol>
-              </div>
-
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h5 className="font-medium mb-2">Exemple pratique :</h5>
-                <p className="mb-2">
-                  <em>"L'homme à qui je donne le livre est mon professeur."</em>
-                </p>
-                <ol className="list-decimal list-inside space-y-1 text-sm">
-                  <li>Antécédent : "der Mann" (masculin singulier)</li>
-                  <li>Fonction : complément d'objet indirect de "geben" (donner à quelqu'un)</li>
-                  <li>Cas : datif → <strong>"dem"</strong></li>
-                  <li>Résultat : <strong>"Der Mann, dem ich das Buch gebe, ist mein Lehrer."</strong></li>
-                </ol>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Conseils pratiques */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-2xl text-primary">💡 Conseils pratiques</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-green-50 p-4 rounded-lg">
-                  <h4 className="font-semibold text-green-800 mb-2">✅ À faire</h4>
-                  <ul className="text-sm text-green-700 space-y-1">
-                    <li>• Mémoriser le tableau des déclinaisons</li>
-                    <li>• S'entraîner à identifier les fonctions</li>
-                    <li>• Placer le verbe en fin de proposition</li>
-                    <li>• Vérifier l'accord avec l'antécédent</li>
-                  </ul>
-                </div>
-
-                <div className="bg-red-50 p-4 rounded-lg">
-                  <h4 className="font-semibold text-red-800 mb-2">❌ À éviter</h4>
-                  <ul className="text-sm text-red-700 space-y-1">
-                    <li>• Confondre avec l'article défini</li>
-                    <li>• Oublier la position du verbe</li>
-                    <li>• Négliger le cas requis par les prépositions</li>
-                    <li>• Utiliser "was" avec des antécédents définis</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            <p className="mt-4 font-medium text-orange-800">
+              Entraînement express : prenez trois phrases françaises avec « dont », deux avec « sur lequel / à laquelle », 
+              une avec « où », et traduisez-les à l'oral ; vérifiez ensuite avec la grille ci-dessus. Bonne pratique !
+            </p>
           </CardContent>
         </Card>
       </div>
 
-      <div className="mt-8 text-center">
-        <Link to="/methodologie/allemand">
-          <Button className="bg-[#ff9100] hover:bg-[#e8820e]">
-            Retour à la méthodologie allemand
+      <div className="mt-10 flex justify-center gap-4">
+        <Link to="/methodologie/grammaire">
+          <Button variant="outline" className="border-[#ff9100] text-[#ff9100] hover:bg-[#ff9100] hover:text-white">
+            ← Retour aux fiches de grammaire
           </Button>
         </Link>
       </div>
