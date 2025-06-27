@@ -105,6 +105,10 @@ const Navigation = () => {
             Méthodologie
           </Link>
           
+          <Link to="/formation" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
+            Formation
+          </Link>
+          
           {/* Menu déroulant "Ressources" modernisé */}
           <DropdownMenu>
             <DropdownMenuTrigger className="text-foreground hover:text-primary transition flex items-center gap-1 focus:outline-none">
@@ -304,6 +308,15 @@ const Navigation = () => {
           >
             Méthodologie
           </Link>
+
+          <Link 
+             to="/formation" 
+             className="text-lg py-2 border-b border-border"
+             onClick={closeMenu}
+          >
+            Formation
+          </Link>
+
           {/* Menu mobile modernisé */}
           <div className="space-y-2 py-2 border-b border-border">
             <h3 className="text-lg font-medium text-primary">Ressources</h3>

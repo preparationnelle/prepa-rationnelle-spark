@@ -25,6 +25,7 @@ import AproposPage from '@/pages/AproposPage';
 import PartnersPage from '@/pages/PartnersPage';
 import MethodologiePage from '@/pages/MethodologiePage';
 import PersonnaliteMethodePage from '@/pages/PersonnaliteMethodePage';
+import FormationPage from '@/pages/FormationPage';
 import NotFound from '@/pages/NotFound';
 
 // Import des pages des écoles
@@ -102,6 +103,7 @@ function App() {
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/register" element={<RegisterPage />} />
                   <Route path="/contact" element={<ContactPage />} />
+                  <Route path="/formation" element={<FormationPage />} />
                   <Route path="/questions" element={<QuestionsPage />} />
                   <Route path="/questions/projection-scenarios" element={<ProjectionScenariosPage />} />
                   <Route path="/questions/motivation-objectives" element={<MotivationObjectivesPage />} />
