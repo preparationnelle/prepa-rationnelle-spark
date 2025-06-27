@@ -63,13 +63,37 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
   const { toast } = useToast();
 
   const generateNewSentence = useCallback(async () => {
+    console.log(`🚀 Génération d'une nouvelle phrase en ${language}`);
     setIsGenerating(true);
+    
     try {
+      console.log('📝 Historique actuel:', history);
+      
       const { data, error } = await supabase.functions.invoke('generate-theme-sentence', {
-        body: { language, history }
+        body: { 
+          language, 
+          history: history.length > 0 ? history : [] 
+        }
       });
 
-      if (error) throw error;
+      console.log('📊 Réponse reçue:', { data, error });
+
+      if (error) {
+        console.error('❌ Erreur Supabase:', error);
+        throw error;
+      }
+
+      if (!data) {
+        console.error('❌ Pas de données reçues');
+        throw new Error('Aucune donnée reçue du serveur');
+      }
+
+      console.log('✅ Phrase générée avec succès:', {
+        french: data.french,
+        reference: data.reference,
+        specialized: data.specialized,
+        difficulty: data.difficulty_level
+      });
 
       setCurrentSentence(data);
       setStudentAnswer('');
@@ -82,13 +106,22 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
       setCompletedSentence(false);
       
       // Ajouter à l'historique
-      setHistory(prev => [...prev, data.reference]);
+      if (data.reference) {
+        setHistory(prev => [...prev, data.reference].slice(-5)); // Garder les 5 dernières
+      }
+      
+      toast({
+        title: "Phrase générée !",
+        description: data.specialized ? 
+          "Nouvelle phrase spécialisée allemande prête pour la traduction" : 
+          "Nouvelle phrase prête pour la traduction",
+      });
       
     } catch (error) {
-      console.error('Erreur lors de la génération:', error);
+      console.error('💥 Erreur complète lors de la génération:', error);
       toast({
         title: "Erreur de génération",
-        description: "Une erreur est survenue lors de la génération de la phrase.",
+        description: `Une erreur est survenue: ${error instanceof Error ? error.message : 'Erreur inconnue'}`,
         variant: "destructive"
       });
     } finally {
@@ -106,6 +139,12 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
       return;
     }
 
+    console.log(`🔍 Évaluation de la réponse en ${language}:`, {
+      student: studentAnswer.trim(),
+      french: currentSentence.french,
+      reference: currentSentence.reference
+    });
+
     setIsEvaluating(true);
     try {
       const { data, error } = await supabase.functions.invoke('evaluate-theme-translation', {
@@ -118,7 +157,22 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
         }
       });
 
-      if (error) throw error;
+      console.log('📊 Évaluation reçue:', { data, error });
+
+      if (error) {
+        console.error('❌ Erreur d\'évaluation:', error);
+        throw error;
+      }
+
+      if (!data) {
+        throw new Error('Pas de données d\'évaluation reçues');
+      }
+
+      console.log('✅ Évaluation terminée avec succès:', {
+        score: data.score,
+        major_errors: data.severity?.major_errors?.length || 0,
+        minor_errors: data.severity?.minor_errors?.length || 0
+      });
 
       setEvaluation(data);
       setWeakGrammarPoints(data.weak_grammar_points || []);
@@ -126,7 +180,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
       setCompletedSentence(true);
 
       // Sauvegarder l'erreur pour la mémoire si il y a des erreurs grammaticales
-      if (data.severity.major_errors?.length > 0 && currentUser?.id) {
+      if (data.severity?.major_errors?.length > 0 && currentUser?.id) {
         const grammarError = {
           grammar_point: data.weak_grammar_points?.[0] || currentSentence.grammar_points[0],
           rule: data.flashcard_rule || "Règle à réviser",
@@ -138,11 +192,19 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
         setNewError(grammarError);
       }
 
+      toast({
+        title: `Score: ${data.score}/10`,
+        description: data.score >= 8 ? "Excellente traduction !" : 
+                    data.score >= 6 ? "Bonne traduction, quelques erreurs à corriger" :
+                    "Traduction à retravailler, consultez les corrections",
+        variant: data.score >= 6 ? "default" : "destructive"
+      });
+
     } catch (error) {
-      console.error('Erreur lors de l\'évaluation:', error);
+      console.error('💥 Erreur complète lors de l\'évaluation:', error);
       toast({
         title: "Erreur d'évaluation",
-        description: "Une erreur est survenue lors de l'évaluation de votre réponse.",
+        description: `Une erreur est survenue: ${error instanceof Error ? error.message : 'Erreur inconnue'}`,
         variant: "destructive"
       });
     } finally {
@@ -151,6 +213,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
   }, [currentSentence, studentAnswer, language, currentUser, toast]);
 
   const resetExercise = useCallback(() => {
+    console.log('🔄 Reset de l\'exercice');
     setCurrentSentence(null);
     setStudentAnswer('');
     setEvaluation(null);
@@ -161,7 +224,12 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
     setSimilarSentences([]);
     setHistory([]);
     setCompletedSentence(false);
-  }, []);
+    
+    toast({
+      title: "Exercice réinitialisé",
+      description: "Vous pouvez commencer un nouvel exercice",
+    });
+  }, [toast]);
 
   const handlePracticeSentence = useCallback((sentence: string) => {
     setStudentAnswer('');
@@ -179,6 +247,12 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
     if (score >= 6) return "text-amber-700 bg-amber-50 border-amber-200";
     return "text-red-700 bg-red-50 border-red-200";
   };
+
+  // Génération automatique au chargement
+  React.useEffect(() => {
+    console.log('🎯 Composant monté, génération automatique d\'une phrase');
+    generateNewSentence();
+  }, []);
 
   return (
     <div className="max-w-6xl mx-auto space-y-8">
@@ -202,7 +276,17 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
         <ToggleGroup
           type="single"
           value={language}
-          onValueChange={(value) => value && setLanguage(value as 'en' | 'de' | 'es')}
+          onValueChange={(value) => {
+            if (value) {
+              console.log(`🌍 Changement de langue vers: ${value}`);
+              setLanguage(value as 'en' | 'de' | 'es');
+              // Reset l'exercice lors du changement de langue
+              setCurrentSentence(null);
+              setStudentAnswer('');
+              setEvaluation(null);
+              setHistory([]);
+            }
+          }}
           className="bg-orange-50 p-1 rounded-lg border border-orange-100"
         >
           <ToggleGroupItem value="en" className="data-[state=on]:bg-white data-[state=on]:shadow-sm data-[state=on]:text-primary">
@@ -216,6 +300,14 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
           </ToggleGroupItem>
         </ToggleGroup>
       </div>
+
+      {/* Debug info en développement */}
+      {process.env.NODE_ENV === 'development' && (
+        <div className="bg-gray-100 p-2 rounded text-xs">
+          <strong>Debug:</strong> Langue={language}, Phrase chargée={!!currentSentence}, 
+          Historique={history.length}, Spécialisée={currentSentence?.specialized ? 'Oui' : 'Non'}
+        </div>
+      )}
 
       {/* Progression tracker harmonisé */}
       <ProgressionTracker 
@@ -279,6 +371,11 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                 {currentSentence.difficulty_level && (
                   <Badge variant={currentSentence.difficulty_level === 'advanced' ? 'destructive' : 'secondary'}>
                     {currentSentence.difficulty_level === 'advanced' ? 'Avancé' : 'Intermédiaire'}
+                  </Badge>
+                )}
+                {currentSentence.specialized && (
+                  <Badge className="bg-purple-100 text-purple-800">
+                    Spécialisé
                   </Badge>
                 )}
               </CardTitle>
@@ -410,6 +507,19 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
             </CardContent>
           </Card>
         </div>
+      )}
+
+      {/* Message d'attente si pas de phrase */}
+      {!currentSentence && !isGenerating && (
+        <Card className="border-2 border-gray-200 bg-gray-50">
+          <CardContent className="p-8 text-center">
+            <p className="text-gray-600 mb-4">Aucune phrase chargée. Cliquez sur "Nouvelle phrase" pour commencer.</p>
+            <Button onClick={generateNewSentence} className="bg-primary hover:bg-orange-600">
+              <Plus className="mr-2 h-4 w-4" />
+              Générer une phrase
+            </Button>
+          </CardContent>
+        </Card>
       )}
 
       {/* Zone 3: Correction et notation - Palette harmonisée */}
