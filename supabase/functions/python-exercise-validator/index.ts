@@ -19,6 +19,60 @@ interface Exercise {
 
 // Exercise definitions for matrix operations with complete solutions
 const exercises: Record<string, Exercise> = {
+  matrice_z: {
+    id: 'matrice_z',
+    title: 'Création de matrice Z',
+    description: 'D\'après ECE EDHEC 2015. Créer une matrice 5×5 spécifique avec différentes méthodes numpy.',
+    template: `import numpy as np
+
+# Question a) Créer Z avec numpy.ones et boucles for
+def creer_Z_ones():
+    # TODO: Créer la matrice Z avec np.ones et modifier avec des boucles
+    pass
+
+# Question b) Créer Z avec numpy.zeros et boucles for  
+def creer_Z_zeros():
+    # TODO: Créer la matrice Z avec np.zeros et remplir avec des boucles
+    pass
+
+# Question c) Créer Z avec numpy.ones puis modifier avec numpy.zeros
+def creer_Z_slicing():
+    # TODO: Créer Z avec np.ones puis utiliser le slicing pour modifier
+    pass`,
+    hints: [
+      'La matrice Z a des 1 sur les bords et des 0 au centre',
+      'Pour la méthode ones: commencez par une matrice de 1, puis soustrayez 1 dans la zone centrale',
+      'Pour la méthode zeros: créez une matrice de 0, puis ajoutez 1 sur les bords',
+      'Pour le slicing: utilisez Z[1:4, 1:5] pour sélectionner la zone centrale'
+    ],
+    solution: `import numpy as np
+
+def creer_Z_ones():
+    Z = np.ones((5, 5))
+    for i in range(1, 4):
+        for j in range(1, 5):
+            Z[i, j] -= 1
+    return Z
+
+def creer_Z_zeros():
+    Z = np.zeros((5, 5))
+    
+    # Remplissage des première et dernière lignes
+    for j in range(5):
+        Z[0, j] = 1
+        Z[4, j] = 1
+    
+    # Remplissage de la première colonne (hors extrémités déjà traitées)
+    for i in range(1, 4):
+        Z[i, 0] = 1
+    
+    return Z
+
+def creer_Z_slicing():
+    Z = np.ones((5, 5))
+    Z[1:4, 1:5] = np.zeros((3, 4))   # Remplace le sous-bloc central par des zéros
+    return Z`
+  },
   trace: {
     id: 'trace',
     title: 'Trace d\'une matrice',
