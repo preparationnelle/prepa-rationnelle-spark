@@ -4,53 +4,99 @@ import { VideoAndIntro } from '@/components/VideoAndIntro';
 import { ProgrammeModule } from '@/components/ProgrammeModule';
 
 const FormationPage = () => {
-  // Données d'exemple pour le module de programme
-  const exampleModule = {
-    programmeName: "Introduction à Python pour Prépa HEC",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    corrige: `# Exercice : Calculatrice simple
-def calculatrice(a, b, operation):
-    if operation == '+':
-        return a + b
-    elif operation == '-':
-        return a - b
-    elif operation == '*':
-        return a * b
-    elif operation == '/':
-        return a / b if b != 0 else "Erreur: division par zéro"
-    else:
-        return "Opération non reconnue"
+  // Module complet des commandes Python ECG
+  const pythonECGModule = {
+    programmeName: "Commandes Python ECG - Référence Complète",
+    videoUrl: "https://www.youtube.com/embed/cBG8EJsHkwA",
+    corrige: `# Bibliothèques au programme ECG
+import numpy as np
+import numpy.linalg as al
+import numpy.random as rd
+import matplotlib.pyplot as plt
 
-# Test
-print(calculatrice(10, 5, '+'))  # Résultat: 15
-print(calculatrice(10, 5, '*'))  # Résultat: 50`,
-    explication: `# Explication du code
+# Fonctions mathématiques de base
+np.abs()      # valeur absolue
+np.cos()      # cosinus
+np.sin()      # sinus
+np.log()      # logarithme népérien
+np.exp()      # exponentielle
+np.sqrt()     # racine carrée
+np.floor()    # partie entière
 
-Cette fonction calculatrice prend trois paramètres :
-- a : premier nombre
-- b : deuxième nombre  
-- operation : type d'opération à effectuer
+# Constantes
+np.pi         # π
+np.e          # nombre d'Euler
 
-# Points clés :
-- Utilisation de conditions if/elif pour gérer les différentes opérations
-- Gestion de l'erreur de division par zéro
-- Retour d'un message d'erreur pour les opérations non reconnues
+# Création de vecteurs
+np.array([u1,...,un])        # créer un vecteur-ligne
+np.arange(a,b,r)             # progression arithmétique de raison r
+np.linspace(a,b,n)           # n éléments équirépartis de a à b
+np.ones(n)                   # vecteur de n éléments égaux à 1
+np.zeros(n)                  # vecteur de n éléments égaux à 0
 
-# Bonnes pratiques appliquées :
-- Noms de variables explicites
-- Gestion des cas d'erreur
-- Commentaires descriptifs`,
+# Création de matrices
+np.array([[a1,1,...,a1,p],...,[an,1,...,an,p]])  # matrice
+np.ones((n,p))               # matrice n×p de 1
+np.zeros((n,p))              # matrice n×p de 0
+np.eye(n,p)                  # matrice avec 1 sur la diagonale`,
+    explication: `# Guide des Commandes Python ECG
+
+## Bibliothèques Principales
+# numpy (np) : calcul mathématique, vecteurs et matrices
+# numpy.linalg (al) : calculs d'algèbre linéaire
+# numpy.random (rd) : génération de nombres aléatoires
+# matplotlib.pyplot (plt) : tracé de courbes
+
+## Opérations sur Matrices/Vecteurs
+# +, -, *, /, ** : opérations coefficient par coefficient
+# ==, >, <, >=, <=, != : comparaisons
+# np.shape(A) : dimensions de la matrice A
+# np.dot(A,B) : produit matriciel
+# np.transpose(A) : transposée de A
+# np.sum(A) : somme de tous les éléments
+# np.mean(A) : moyenne
+# np.min(A), np.max(A) : minimum/maximum
+# np.cumsum(A) : sommes cumulées
+
+## Algèbre Linéaire
+# al.inv(A) : inverse de la matrice A
+# al.matrix_rank(A) : rang de la matrice A
+# al.matrix_power(A,n) : puissance n-ième de A
+# al.solve(A,b) : résolution du système Ax = b
+# al.eig(A) : valeurs propres et vecteurs propres
+
+## Variables Aléatoires
+# rd.uniform(a,b) : loi uniforme sur [a,b]
+# rd.randint(a,b) : entier uniforme sur [a,b-1]
+# rd.binomial(n,p) : loi binomiale B(n,p)
+# rd.geometric(p) : loi géométrique
+# rd.exponential(1/lambda) : loi exponentielle
+# rd.normal(m,sigma) : loi normale N(m,σ²)
+# rd.poisson(lambda) : loi de Poisson P(λ)
+# rd.gamma(nu) : loi gamma
+
+## Graphiques
+# plt.plot(x,y) : tracer une courbe
+# plt.plot(x,y,'x') : nuage de points
+# plt.show() : afficher le graphique
+# plt.figure(n) : nouvelle figure
+# plt.clf() : effacer le contenu
+# plt.axis("scaled") : repère orthonormé
+# plt.grid() : grille
+# plt.xlabel(), plt.ylabel(), plt.title() : légendes`,
     autresVersions: [
-      "Version avec gestion d'exceptions try/except",
-      "Version orientée objet avec classe Calculatrice",
-      "Version avec interface graphique tkinter",
-      "Version avec validation des types d'entrée"
+      "Aide-mémoire format PDF imprimable",
+      "Version avec exemples d'application aux concours",
+      "Fiche résumée pour révisions rapides",
+      "Version approfondie avec cas d'usage avancés"
     ],
     outils: [
-      "python3 script.py - Exécuter le script",
-      "python3 -i script.py - Mode interactif",
-      "pip install pytest - Installer framework de tests",
-      "python3 -m pytest - Lancer les tests unitaires"
+      "python3 script.py - Exécuter un script Python",
+      "python3 -i script.py - Mode interactif après exécution",
+      "import numpy as np - Importer numpy avec alias",
+      "help(np.fonction) - Aide sur une fonction",
+      "np.info(fonction) - Documentation détaillée",
+      "plt.savefig('nom.png') - Sauvegarder un graphique"
     ]
   };
 
@@ -60,11 +106,11 @@ Cette fonction calculatrice prend trois paramètres :
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent mb-4">
-            Formation Prépa HEC
+            Formation Python - Prépa ECG
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Découvrez nos formations complètes pour réussir vos concours de prépa HEC. 
-            Cours vidéo, exercices corrigés et outils pratiques.
+            Maîtrisez Python pour les mathématiques en prépa ECG. 
+            Toutes les commandes, fonctions et bibliothèques au programme officiel.
           </p>
         </div>
 
@@ -74,16 +120,16 @@ Cette fonction calculatrice prend trois paramètres :
         {/* Programme Modules */}
         <div className="mt-16">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Modules de Formation
+            Référence Complète des Commandes
           </h2>
           
           <div className="space-y-8">
-            <ProgrammeModule {...exampleModule} />
+            <ProgrammeModule {...pythonECGModule} />
             
             {/* Placeholder pour futurs modules */}
             <div className="border-2 border-dashed border-muted-foreground/20 rounded-lg p-8 text-center">
               <p className="text-muted-foreground">
-                D'autres modules de formation seront ajoutés ici...
+                D'autres modules Python seront ajoutés ici (exercices pratiques, cas d'usage spécifiques aux concours...)
               </p>
             </div>
           </div>

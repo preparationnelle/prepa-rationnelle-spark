@@ -11,11 +11,11 @@ export const VideoAndIntro = () => {
           <CardContent className="p-0">
             <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
               <iframe
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                src="https://www.youtube.com/embed/cBG8EJsHkwA"
                 frameBorder="0"
                 allowFullScreen
                 className="absolute top-0 left-0 w-full h-full"
-                title="Formation Prépa HEC - Introduction"
+                title="Formation Python - Prépa ECG"
               />
             </div>
           </CardContent>
@@ -26,43 +26,43 @@ export const VideoAndIntro = () => {
       <div className="space-y-6">
         <div>
           <h2 className="text-2xl font-bold text-foreground mb-4">
-            Pourquoi choisir notre formation ?
+            Formation Python - Prépa ECG
           </h2>
           <div className="space-y-4 text-muted-foreground">
             <p>
-              Notre programme de formation est spécialement conçu pour les étudiants de prépa HEC 
-              qui souhaitent exceller dans leurs études et réussir leurs concours.
+              Cette formation Python est spécialement conçue pour les étudiants de prépa ECG 
+              qui souhaitent maîtriser la programmation Python dans le cadre de leurs études de mathématiques.
             </p>
             <p>
-              Avec une approche pédagogique innovante, nous combinons théorie et pratique 
-              pour vous offrir une préparation complète et efficace.
+              Vous découvrirez toutes les commandes et fonctions essentielles au programme ECG, 
+              avec des exemples pratiques et des exercices corrigés pour une progression optimale.
             </p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="bg-primary/5 rounded-lg p-4">
-            <h3 className="font-semibold text-primary mb-2">📚 Contenu Expert</h3>
+            <h3 className="font-semibold text-primary mb-2">🐍 Python ECG</h3>
             <p className="text-sm text-muted-foreground">
-              Cours créés par des professeurs expérimentés
+              Toutes les commandes au programme officiel
             </p>
           </div>
           <div className="bg-primary/5 rounded-lg p-4">
-            <h3 className="font-semibold text-primary mb-2">🎯 Suivi Personnalisé</h3>
+            <h3 className="font-semibold text-primary mb-2">📊 Numpy & Matplotlib</h3>
             <p className="text-sm text-muted-foreground">
-              Accompagnement individualisé pour chaque étudiant
+              Manipulation de données et visualisation
             </p>
           </div>
           <div className="bg-primary/5 rounded-lg p-4">
-            <h3 className="font-semibold text-primary mb-2">💡 Méthodes Innovantes</h3>
+            <h3 className="font-semibold text-primary mb-2">🔢 Algèbre Linéaire</h3>
             <p className="text-sm text-muted-foreground">
-              Techniques d'apprentissage modernes et efficaces
+              Calculs matriciels et résolution de systèmes
             </p>
           </div>
           <div className="bg-primary/5 rounded-lg p-4">
-            <h3 className="font-semibold text-primary mb-2">📈 Résultats Prouvés</h3>
+            <h3 className="font-semibold text-primary mb-2">🎲 Variables Aléatoires</h3>
             <p className="text-sm text-muted-foreground">
-              Taux de réussite élevé aux concours
+              Simulation et lois de probabilité
             </p>
           </div>
         </div>
