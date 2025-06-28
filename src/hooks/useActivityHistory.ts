@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';
-import { useToast } from '@/components/ui/use-toast';
+import { useToast } from '@/hooks/use-toast';
 
 export interface ActivityHistoryEntry {
   id: string;
@@ -43,11 +43,14 @@ export const useActivityHistory = () => {
 
       if (error) {
         console.error('Error saving activity:', error);
-        toast({
-          title: "Erreur",
-          description: "Impossible de sauvegarder l'activité",
-          variant: "destructive"
-        });
+        // Only show toast if we have a toast context available
+        if (toast) {
+          toast({
+            title: "Erreur",
+            description: "Impossible de sauvegarder l'activité",
+            variant: "destructive"
+          });
+        }
       }
     } catch (error) {
       console.error('Error saving activity:', error);
@@ -68,11 +71,13 @@ export const useActivityHistory = () => {
 
       if (error) {
         console.error('Error fetching activity history:', error);
-        toast({
-          title: "Erreur",
-          description: "Impossible de récupérer l'historique",
-          variant: "destructive"
-        });
+        if (toast) {
+          toast({
+            title: "Erreur",
+            description: "Impossible de récupérer l'historique",
+            variant: "destructive"
+          });
+        }
         return [];
       }
 

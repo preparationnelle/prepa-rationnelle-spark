@@ -2,10 +2,12 @@
 import { useState, useMemo } from 'react';
 import { searchData, SearchItem } from '@/data/searchData';
 import { useActivityHistory } from '@/hooks/useActivityHistory';
+import { useAuth } from '@/context/AuthContext';
 
 export const useSearch = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const { currentUser } = useAuth();
   const { saveActivity } = useActivityHistory();
 
   const searchResults = useMemo(() => {
@@ -43,28 +45,32 @@ export const useSearch = () => {
       .filter(Boolean)
       .sort((a, b) => (b?.score || 0) - (a?.score || 0)) as (SearchItem & { score: number })[];
 
-    // Save search activity when we have results
-    if (results.length > 0) {
-      saveActivity(
-        'search',
-        undefined,
-        { 
-          searchTerm: term,
-          selectedCategory: selectedCategory || null
-        },
-        {
-          resultCount: results.length,
-          topResults: results.slice(0, 3).map(r => ({ title: r.title, category: r.category }))
-        },
-        { 
-          resultCount: results.length,
-          categories: [...new Set(results.map(r => r.category))]
-        }
-      );
+    // Save search activity only if user is connected and we have results
+    if (currentUser && results.length > 0) {
+      try {
+        saveActivity(
+          'search',
+          undefined,
+          { 
+            searchTerm: term,
+            selectedCategory: selectedCategory || null
+          },
+          {
+            resultCount: results.length,
+            topResults: results.slice(0, 3).map(r => ({ title: r.title, category: r.category }))
+          },
+          { 
+            resultCount: results.length,
+            categories: [...new Set(results.map(r => r.category))]
+          }
+        );
+      } catch (error) {
+        console.error('Error saving search activity:', error);
+      }
     }
 
     return results;
-  }, [searchTerm, selectedCategory, saveActivity]);
+  }, [searchTerm, selectedCategory, saveActivity, currentUser]);
 
   const resultsByCategory = useMemo(() => {
     const grouped: Record<string, (SearchItem & { score: number })[]> = {};
