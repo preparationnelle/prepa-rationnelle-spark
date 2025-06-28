@@ -1,8 +1,11 @@
+
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { GlobalSearch } from '@/components/search/GlobalSearch';
+import { MobileSearch } from '@/components/search/MobileSearch';
 import { 
   LogOut, 
   Menu, 
@@ -242,6 +245,9 @@ const Navigation = () => {
             Contact
           </Link>
 
+          {/* Search Component - Desktop */}
+          <GlobalSearch />
+
           <ThemeToggle variant="icon" />
 
           {currentUser ? (
@@ -278,6 +284,7 @@ const Navigation = () => {
 
         {/* Mobile Navigation Toggle */}
         <div className="md:hidden flex items-center gap-2">
+          <MobileSearch />
           <ThemeToggle variant="icon" />
           <Button variant="ghost" size="icon" onClick={toggleMenu} aria-label="Toggle Menu">
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
