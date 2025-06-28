@@ -1,10 +1,12 @@
 
 import { useState, useMemo } from 'react';
 import { searchData, SearchItem } from '@/data/searchData';
+import { useActivityHistory } from '@/hooks/useActivityHistory';
 
 export const useSearch = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const { saveActivity } = useActivityHistory();
 
   const searchResults = useMemo(() => {
     if (!searchTerm.trim()) return [];
@@ -41,8 +43,28 @@ export const useSearch = () => {
       .filter(Boolean)
       .sort((a, b) => (b?.score || 0) - (a?.score || 0)) as (SearchItem & { score: number })[];
 
+    // Save search activity when we have results
+    if (results.length > 0) {
+      saveActivity(
+        'search',
+        undefined,
+        { 
+          searchTerm: term,
+          selectedCategory: selectedCategory || null
+        },
+        {
+          resultCount: results.length,
+          topResults: results.slice(0, 3).map(r => ({ title: r.title, category: r.category }))
+        },
+        { 
+          resultCount: results.length,
+          categories: [...new Set(results.map(r => r.category))]
+        }
+      );
+    }
+
     return results;
-  }, [searchTerm, selectedCategory]);
+  }, [searchTerm, selectedCategory, saveActivity]);
 
   const resultsByCategory = useMemo(() => {
     const grouped: Record<string, (SearchItem & { score: number })[]> = {};

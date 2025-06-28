@@ -5,7 +5,8 @@ import { useActivityHistory, ActivityHistoryEntry } from '@/hooks/useActivityHis
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { MessageSquare, Zap, Languages, Globe, Calculator, Code } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { MessageSquare, Zap, Languages, Globe, Calculator, Code, Search, Clock, TrendingUp } from 'lucide-react';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 
@@ -44,6 +45,13 @@ const DashboardPage = () => {
     }
   };
 
+  const getActivityIcon = (activityType: string, generatorType?: string) => {
+    if (activityType === 'search') {
+      return <Search className="h-4 w-4" />;
+    }
+    return getGeneratorIcon(generatorType);
+  };
+
   const getGeneratorLabel = (generatorType?: string) => {
     switch (generatorType) {
       case 'answer':
@@ -61,6 +69,24 @@ const DashboardPage = () => {
       default:
         return 'Générateur';
     }
+  };
+
+  const getActivityLabel = (activityType: string, generatorType?: string) => {
+    if (activityType === 'search') {
+      return 'Recherche';
+    }
+    return getGeneratorLabel(generatorType);
+  };
+
+  // Séparer les recherches des autres activités
+  const searchActivities = activities.filter(a => a.activity_type === 'search');
+  const generatorActivities = activities.filter(a => a.activity_type === 'generator');
+
+  // Statistiques des recherches
+  const searchStats = {
+    totalSearches: searchActivities.length,
+    uniqueTerms: new Set(searchActivities.map(a => a.input_data?.searchTerm)).size,
+    totalResults: searchActivities.reduce((sum, a) => sum + (a.metadata?.resultCount || 0), 0)
   };
 
   if (loading) {
@@ -85,14 +111,14 @@ const DashboardPage = () => {
       </div>
 
       <div className="grid gap-6">
-        {/* Statistiques */}
+        {/* Statistiques globales */}
         <Card>
           <CardHeader>
-            <CardTitle>Statistiques</CardTitle>
+            <CardTitle>Statistiques globales</CardTitle>
             <CardDescription>Résumé de votre activité</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="text-center">
                 <div className="text-2xl font-bold text-primary">
                   {activities.length}
@@ -103,7 +129,15 @@ const DashboardPage = () => {
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-primary">
-                  {activities.filter(a => a.activity_type === 'generator').length}
+                  {searchStats.totalSearches}
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  Recherches
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary">
+                  {generatorActivities.length}
                 </div>
                 <div className="text-sm text-muted-foreground">
                   Générations
@@ -121,22 +155,69 @@ const DashboardPage = () => {
           </CardContent>
         </Card>
 
-        {/* Historique d'activités */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Historique d'activités</CardTitle>
-            <CardDescription>Vos dernières utilisations des générateurs</CardDescription>
-          </CardHeader>
-          <CardContent>
-            {activities.length === 0 ? (
-              <div className="text-center py-8">
-                <p className="text-muted-foreground">
-                  Aucune activité pour le moment. Commencez par utiliser nos générateurs !
-                </p>
-              </div>
-            ) : (
+        {/* Historique des recherches */}
+        {searchActivities.length > 0 && (
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Search className="h-5 w-5" />
+                Historique des recherches
+              </CardTitle>
+              <CardDescription>
+                Vos {searchStats.totalSearches} dernières recherches avec {searchStats.totalResults} résultats au total
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
               <div className="space-y-4">
-                {activities.map((activity, index) => (
+                {searchActivities.slice(0, 10).map((activity, index) => (
+                  <div key={activity.id}>
+                    <div className="flex items-start justify-between">
+                      <div className="flex items-start gap-3">
+                        <div className="mt-1">
+                          <Search className="h-4 w-4 text-blue-500" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <Badge variant="outline" className="text-xs">
+                              Recherche
+                            </Badge>
+                            <span className="text-xs text-muted-foreground">
+                              {format(new Date(activity.created_at), 'dd MMM yyyy à HH:mm', { locale: fr })}
+                            </span>
+                          </div>
+                          <p className="font-medium text-sm mb-1">
+                            "{activity.input_data?.searchTerm}"
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            {activity.metadata?.resultCount} résultat{activity.metadata?.resultCount > 1 ? 's' : ''} trouvé{activity.metadata?.resultCount > 1 ? 's' : ''}
+                            {activity.metadata?.categories && activity.metadata.categories.length > 0 && (
+                              <span> dans {activity.metadata.categories.join(', ')}</span>
+                            )}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    {index < searchActivities.length - 1 && index < 9 && <Separator className="mt-4" />}
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Historique des générateurs */}
+        {generatorActivities.length > 0 && (
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <TrendingUp className="h-5 w-5" />
+                Historique des générateurs
+              </CardTitle>
+              <CardDescription>Vos dernières utilisations des générateurs</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {generatorActivities.slice(0, 10).map((activity, index) => (
                   <div key={activity.id}>
                     <div className="flex items-start justify-between">
                       <div className="flex items-start gap-3">
@@ -170,13 +251,34 @@ const DashboardPage = () => {
                         </div>
                       </div>
                     </div>
-                    {index < activities.length - 1 && <Separator className="mt-4" />}
+                    {index < generatorActivities.length - 1 && index < 9 && <Separator className="mt-4" />}
                   </div>
                 ))}
               </div>
-            )}
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* État vide si aucune activité */}
+        {activities.length === 0 && (
+          <div className="text-center py-12">
+            <Clock className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+            <p className="text-muted-foreground mb-4">
+              Aucune activité pour le moment.
+            </p>
+            <p className="text-sm text-muted-foreground mb-6">
+              Commencez par utiliser nos générateurs ou effectuer des recherches pour voir votre historique ici !
+            </p>
+            <div className="flex gap-4 justify-center">
+              <Button variant="outline" asChild>
+                <a href="/generator">Découvrir les générateurs</a>
+              </Button>
+              <Button variant="outline" asChild>
+                <a href="/questions">Explorer les questions</a>
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
