@@ -2,8 +2,9 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Save, Trash2, Download, FileText } from 'lucide-react';
+import { Save, Trash2, Download, FileText, FileSpreadsheet } from 'lucide-react';
 import { downloadFlashcardsAsCSV, downloadFlashcardsAsPDF } from '@/utils/flashcardDownloadUtils';
+import { downloadFlashcardsAsExcel } from '@/utils/flashcardExcelUtils';
 
 interface FlashcardData {
   id?: string;
@@ -39,6 +40,11 @@ export const SavedFlashcardsList = ({
     downloadFlashcardsAsPDF(savedFlashcards, `flashcards-${timestamp}`);
   };
 
+  const handleDownloadExcel = () => {
+    const timestamp = new Date().toISOString().split('T')[0];
+    downloadFlashcardsAsExcel(savedFlashcards, `flashcards-${timestamp}`);
+  };
+
   return (
     <Card>
       <CardHeader>
@@ -59,6 +65,15 @@ export const SavedFlashcardsList = ({
             >
               <Download className="h-4 w-4" />
               CSV
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleDownloadExcel}
+              className="flex items-center gap-1 bg-green-50 border-green-200 text-green-700 hover:bg-green-100"
+            >
+              <FileSpreadsheet className="h-4 w-4" />
+              Excel
             </Button>
             <Button
               variant="outline"
