@@ -87,6 +87,9 @@ import ProjectionScenariosPage from '@/pages/questions/ProjectionScenariosPage';
 import MotivationObjectivesPage from '@/pages/questions/MotivationObjectivesPage';
 import InterpersonalTeamworkPage from '@/pages/questions/InterpersonalTeamworkPage';
 
+// Import de la nouvelle page de référence Python
+import PythonReferencePage from '@/pages/PythonReferencePage';
+
 function App() {
   return (
     <div className="min-h-screen flex flex-col">
@@ -104,6 +107,7 @@ function App() {
                   <Route path="/register" element={<RegisterPage />} />
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/formation" element={<FormationPage />} />
+                  <Route path="/python-reference" element={<PythonReferencePage />} />
                   <Route path="/questions" element={<QuestionsPage />} />
                   <Route path="/questions/projection-scenarios" element={<ProjectionScenariosPage />} />
                   <Route path="/questions/motivation-objectives" element={<MotivationObjectivesPage />} />
