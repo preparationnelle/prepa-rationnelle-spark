@@ -6,8 +6,10 @@ import { ArrowLeft, BookOpen, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+
 const PythonAnalysePage = () => {
-  return <div className="min-h-screen bg-background py-8">
+  return (
+    <div className="min-h-screen bg-background py-8">
       <div className="max-w-4xl mx-auto px-6">
         {/* Header */}
         <div className="mb-8">
@@ -568,6 +570,268 @@ const PythonAnalysePage = () => {
           </CardContent>
         </Card>
 
+        {/* Fonctions et Constantes Usuelles */}
+        <Card className="mb-8 border-gray-200">
+          <CardHeader>
+            <CardTitle className="text-xl text-gray-700">4. FONCTIONS ET CONSTANTES USUELLES (NUMPY)</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="mb-4">
+              <h3 className="font-semibold text-blue-600 mb-2">Objectif</h3>
+              <p className="text-gray-700 mb-4">
+                Maîtriser les fonctions mathématiques essentielles et les constantes prédéfinies de NumPy 
+                pour les calculs d'analyse numérique.
+              </p>
+            </div>
+
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="fonctions-mathematiques">
+                <AccordionTrigger className="text-gray-600">Fonctions mathématiques de base</AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-4">
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Fonction</TableHead>
+                          <TableHead>Description</TableHead>
+                          <TableHead>Exemple</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        <TableRow>
+                          <TableCell className="font-mono bg-gray-50">np.abs()</TableCell>
+                          <TableCell>Valeur absolue</TableCell>
+                          <TableCell className="font-mono">np.abs(-5) → 5</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-mono bg-gray-50">np.cos()</TableCell>
+                          <TableCell>Cosinus</TableCell>
+                          <TableCell className="font-mono">np.cos(np.pi) → -1</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-mono bg-gray-50">np.sin()</TableCell>
+                          <TableCell>Sinus</TableCell>
+                          <TableCell className="font-mono">np.sin(np.pi/2) → 1</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-mono bg-gray-50">np.log()</TableCell>
+                          <TableCell>Logarithme népérien</TableCell>
+                          <TableCell className="font-mono">np.log(np.e) → 1</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-mono bg-gray-50">np.exp()</TableCell>
+                          <TableCell>Exponentielle</TableCell>
+                          <TableCell className="font-mono">np.exp(1) → e</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-mono bg-gray-50">np.sqrt()</TableCell>
+                          <TableCell>Racine carrée</TableCell>
+                          <TableCell className="font-mono">np.sqrt(16) → 4</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-mono bg-gray-50">np.floor()</TableCell>
+                          <TableCell>Partie entière</TableCell>
+                          <TableCell className="font-mono">np.floor(3.7) → 3</TableCell>
+                        </TableRow>
+                      </TableBody>
+                    </Table>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="constantes">
+                <AccordionTrigger className="text-gray-600">Constantes</AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-4">
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Constante</TableHead>
+                          <TableHead>Description</TableHead>
+                          <TableHead>Valeur approximative</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        <TableRow>
+                          <TableCell className="font-mono bg-gray-50">np.pi</TableCell>
+                          <TableCell>π (pi)</TableCell>
+                          <TableCell className="font-mono">3.141592653...</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-mono bg-gray-50">np.e</TableCell>
+                          <TableCell>e (nombre d'Euler)</TableCell>
+                          <TableCell className="font-mono">2.718281828...</TableCell>
+                        </TableRow>
+                      </TableBody>
+                    </Table>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="exemples-usage">
+                <AccordionTrigger className="text-gray-600">Exemples d'utilisation</AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold mb-2">Calculs trigonométriques</h4>
+                      <div className="bg-gray-50 p-4 rounded font-mono text-sm">
+                        <div>import numpy as np</div>
+                        <div></div>
+                        <div>angle = np.pi / 4  # 45 degrés</div>
+                        <div>print(np.cos(angle))  # ≈ 0.707</div>
+                        <div>print(np.sin(angle))  # ≈ 0.707</div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-semibold mb-2">Fonctions exponentielles et logarithmes</h4>
+                      <div className="bg-gray-50 p-4 rounded font-mono text-sm">
+                        <div>x = 2</div>
+                        <div>print(np.exp(x))     # e²</div>
+                        <div>print(np.log(np.e)) # 1</div>
+                        <div>print(np.sqrt(25))  # 5</div>
+                      </div>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </CardContent>
+        </Card>
+
+        {/* Définir ses propres fonctions */}
+        <Card className="mb-8 border-gray-200">
+          <CardHeader>
+            <CardTitle className="text-xl text-gray-700">5. DÉFINIR SOI-MÊME UNE FONCTION (DEF)</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="mb-4">
+              <h3 className="font-semibold text-blue-600 mb-2">Objectif</h3>
+              <p className="text-gray-700 mb-4">
+                Savoir créer ses propres fonctions Python pour structurer et réutiliser le code dans les calculs d'analyse.
+              </p>
+            </div>
+
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="syntaxe-fonction">
+                <AccordionTrigger className="text-gray-600">Syntaxe générale</AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-4">
+                    <div className="bg-gray-50 p-4 rounded font-mono text-sm">
+                      <div>def nom_fonction(parametre1, parametre2):</div>
+                      <div className="ml-4">"""Description de la fonction."""</div>
+                      <div className="ml-4"># Corps de la fonction (indenté)</div>
+                      <div className="ml-4">resultat = calcul</div>
+                      <div className="ml-4">return resultat</div>
+                    </div>
+                    <div className="space-y-2">
+                      <p className="font-semibold text-blue-600">Points importants :</p>
+                      <ul className="space-y-1 ml-4 text-sm">
+                        <li>• Le corps est indenté (4 espaces recommandés)</li>
+                        <li>• Toujours fournir une docstring courte</li>
+                        <li>• Toujours terminer par un return</li>
+                      </ul>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="exemples-fonctions">
+                <AccordionTrigger className="text-gray-600">Exemples de fonctions</AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold mb-2">Fonction à un paramètre</h4>
+                      <div className="bg-gray-50 p-4 rounded font-mono text-sm">
+                        <div>def f(x):</div>
+                        <div className="ml-4">"""Calcule 7x³ + 1."""</div>
+                        <div className="ml-4">return 7*x**3 + 1</div>
+                        <div></div>
+                        <div># Utilisation</div>
+                        <div>print(f(2))  # 7×8 + 1 = 57</div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-semibold mb-2">Fonction à plusieurs paramètres</h4>
+                      <div className="bg-gray-50 p-4 rounded font-mono text-sm">
+                        <div>def fpv(x, y, z):</div>
+                        <div className="ml-4">"""Exemple à 3 paramètres : 3x + 100y + 10_000z."""</div>
+                        <div className="ml-4">return 3*x + 100*y + 10000*z</div>
+                        <div></div>
+                        <div># Utilisation</div>
+                        <div>print(fpv(1, 2, 3))  # 3 + 200 + 30000 = 30203</div>
+                      </div>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="fonctions-mathematiques">
+                <AccordionTrigger className="text-gray-600">Fonctions mathématiques utiles</AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold mb-2">Fonction polynomiale</h4>
+                      <div className="bg-gray-50 p-4 rounded font-mono text-sm">
+                        <div>def polynome(x, a, b, c):</div>
+                        <div className="ml-4">"""Calcule ax² + bx + c."""</div>
+                        <div className="ml-4">return a*x**2 + b*x + c</div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-semibold mb-2">Fonction avec NumPy</h4>
+                      <div className="bg-gray-50 p-4 rounded font-mono text-sm">
+                        <div>import numpy as np</div>
+                        <div></div>
+                        <div>def fonction_complexe(x):</div>
+                        <div className="ml-4">"""Calcule e^x × cos(x)."""</div>
+                        <div className="ml-4">return np.exp(x) * np.cos(x)</div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-semibold mb-2">Fonction pour suite récurrente</h4>
+                      <div className="bg-gray-50 p-4 rounded font-mono text-sm">
+                        <div>def relation_recurrence(u):</div>
+                        <div className="ml-4">"""Relation u_{'{n+1}'} = 2u_n + 3."""</div>
+                        <div className="ml-4">return 2*u + 3</div>
+                      </div>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="bonnes-pratiques">
+                <AccordionTrigger className="text-gray-600">Bonnes pratiques</AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-3">
+                    <div className="p-3 bg-green-50 border border-green-200 rounded">
+                      <p className="text-green-700 font-semibold">✔️ À faire :</p>
+                      <ul className="text-green-700 text-sm mt-2 space-y-1">
+                        <li>• Noms de fonctions explicites</li>
+                        <li>• Docstring claire et concise</li>
+                        <li>• Indentation cohérente (4 espaces)</li>
+                        <li>• Toujours un return</li>
+                      </ul>
+                    </div>
+                    <div className="p-3 bg-red-50 border border-red-200 rounded">
+                      <p className="text-red-700 font-semibold">❌ À éviter :</p>
+                      <ul className="text-red-700 text-sm mt-2 space-y-1">
+                        <li>• Fonctions sans docstring</li>
+                        <li>• Oublier le return</li>
+                        <li>• Indentation incorrecte</li>
+                        <li>• Noms de variables non explicites</li>
+                      </ul>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </CardContent>
+        </Card>
+
         {/* Méthode de dichotomie */}
         <Card className="mb-8 border-blue-200 bg-gradient-to-br from-blue-50 to-violet-50">
           <CardHeader>
@@ -691,6 +955,8 @@ const PythonAnalysePage = () => {
           <Badge variant="secondary" className="bg-blue-100 text-blue-700">Module 3 terminé</Badge>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default PythonAnalysePage;
