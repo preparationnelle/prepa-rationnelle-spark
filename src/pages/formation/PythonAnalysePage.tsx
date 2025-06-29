@@ -6,10 +6,8 @@ import { ArrowLeft, BookOpen, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-
 const PythonAnalysePage = () => {
-  return (
-    <div className="min-h-screen bg-background py-8">
+  return <div className="min-h-screen bg-background py-8">
       <div className="max-w-4xl mx-auto px-6">
         {/* Header */}
         <div className="mb-8">
@@ -835,7 +833,7 @@ const PythonAnalysePage = () => {
         {/* Méthode de dichotomie */}
         <Card className="mb-8 border-blue-200 bg-gradient-to-br from-blue-50 to-violet-50">
           <CardHeader>
-            <CardTitle className="text-xl text-blue-700">4. MÉTHODE DE DICHOTOMIE</CardTitle>
+            <CardTitle className="text-xl text-blue-700">6. MÉTHODE DE DICHOTOMIE</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="mb-4">
@@ -955,8 +953,6 @@ const PythonAnalysePage = () => {
           <Badge variant="secondary" className="bg-blue-100 text-blue-700">Module 3 terminé</Badge>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default PythonAnalysePage;
