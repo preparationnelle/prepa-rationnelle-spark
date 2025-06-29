@@ -89,6 +89,7 @@ import InterpersonalTeamworkPage from '@/pages/questions/InterpersonalTeamworkPa
 
 // Import de la nouvelle page de référence Python
 import PythonReferencePage from '@/pages/PythonReferencePage';
+import PythonFundamentalsPage from '@/pages/formation/PythonFundamentalsPage';
 
 function App() {
   return (
@@ -107,6 +108,7 @@ function App() {
                   <Route path="/register" element={<RegisterPage />} />
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/formation" element={<FormationPage />} />
+                  <Route path="/formation/python-fondamentaux" element={<PythonFundamentalsPage />} />
                   <Route path="/python-reference" element={<PythonReferencePage />} />
                   <Route path="/questions" element={<QuestionsPage />} />
                   <Route path="/questions/projection-scenarios" element={<ProjectionScenariosPage />} />
