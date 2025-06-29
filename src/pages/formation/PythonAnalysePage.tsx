@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,10 +6,8 @@ import { ArrowLeft, BookOpen, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-
 const PythonAnalysePage = () => {
-  return (
-    <div className="min-h-screen bg-background py-8">
+  return <div className="min-h-screen bg-background py-8">
       <div className="max-w-4xl mx-auto px-6">
         {/* Header */}
         <div className="mb-8">
@@ -589,7 +586,7 @@ const PythonAnalysePage = () => {
 
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="principe-mathematique">
-                <AccordionTrigger className="text-blue-600">⚙️ Principe mathématique</AccordionTrigger>
+                <AccordionTrigger className="text-blue-600">Principe mathématique</AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-3">
                     <p>La méthode de dichotomie repose sur :</p>
@@ -607,12 +604,15 @@ const PythonAnalysePage = () => {
               </AccordionItem>
 
               <AccordionItem value="algorithme-python">
-                <AccordionTrigger className="text-blue-600">🔁 Algorithme Python – version commentée</AccordionTrigger>
+                <AccordionTrigger className="text-blue-600">Algorithme Python – version commentée</AccordionTrigger>
                 <AccordionContent>
                   <div className="bg-gray-50 p-4 rounded font-mono text-sm">
-                    <div>def dichotomie(f, a, b, precision=1e-6):</div>
-                    <div className="ml-4">"""Approximation d'une racine de f sur [a, b] par dichotomie."""</div>
-                    <div className="ml-4">assert f(a) * f(b) {'<'} 0, "f(a) et f(b) doivent être de signes opposés"</div>
+                    <div>Approximation d'une racine de f sur [a, b] par dichotomie.
+
+def dichotomie(f, a, b, precision=1e-6):</div>
+                    <div className="ml-4">Approximation d'une racine de f sur [a, b] par dichotomie.
+                  </div>
+                    
                     <div className="ml-4"></div>
                     <div className="ml-4">while b - a {'>'} precision:</div>
                     <div className="ml-8">c = (a + b) / 2         # milieu de l'intervalle</div>
@@ -627,7 +627,7 @@ const PythonAnalysePage = () => {
               </AccordionItem>
 
               <AccordionItem value="explication-ligne">
-                <AccordionTrigger className="text-blue-600">🧠 Explication ligne par ligne</AccordionTrigger>
+                <AccordionTrigger className="text-blue-600"> Explication ligne par ligne</AccordionTrigger>
                 <AccordionContent>
                   <Table>
                     <TableHeader>
@@ -667,7 +667,7 @@ const PythonAnalysePage = () => {
               </AccordionItem>
 
               <AccordionItem value="exemple-utilisation">
-                <AccordionTrigger className="text-blue-600">📌 Exemple d'utilisation</AccordionTrigger>
+                <AccordionTrigger className="text-blue-600"> Exemple d'utilisation</AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-3">
                     <div>
@@ -730,8 +730,6 @@ const PythonAnalysePage = () => {
           <Badge variant="secondary" className="bg-blue-100 text-blue-700">Module 3 terminé</Badge>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default PythonAnalysePage;
