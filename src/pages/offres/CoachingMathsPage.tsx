@@ -1,10 +1,7 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
-
 const CoachingMathsPage = () => {
-  return (
-    <div className="container mx-auto py-8 px-4">
+  return <div className="container mx-auto py-8 px-4">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold text-primary mb-8 text-center">
           Coaching en Mathématiques
@@ -58,9 +55,7 @@ const CoachingMathsPage = () => {
                 <h4 className="font-semibold text-primary mb-2 text-lg">
                   Produit cœur
                 </h4>
-                <p className="text-base">
-                  6 h de coaching individuel Maths (chapitres incontournables, méthodes qui rapportent des points)
-                </p>
+                <p className="text-base">Heures de coaching individuel Maths (chapitres incontournables, méthodes qui rapportent des points)</p>
               </div>
             </div>
             
@@ -125,12 +120,7 @@ const CoachingMathsPage = () => {
           
           {/* CTA Button */}
           <div className="text-center">
-            <a 
-              href="https://calendly.com/preparationnelle/30min" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-block"
-            >
+            <a href="https://calendly.com/preparationnelle/30min" target="_blank" rel="noopener noreferrer" className="inline-block">
               <Button variant="default" size="lg" className="px-8 py-3 text-lg">
                 Réserver mon premier cours
               </Button>
@@ -138,8 +128,6 @@ const CoachingMathsPage = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default CoachingMathsPage;
