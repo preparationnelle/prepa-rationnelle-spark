@@ -6,8 +6,10 @@ import { ArrowLeft, BookOpen, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+
 const PythonAnalysePage = () => {
-  return <div className="min-h-screen bg-background py-8">
+  return (
+    <div className="min-h-screen bg-background py-8">
       <div className="max-w-4xl mx-auto px-6">
         {/* Header */}
         <div className="mb-8">
@@ -608,16 +610,13 @@ const PythonAnalysePage = () => {
                 <AccordionContent>
                   <div className="bg-gray-50 p-4 rounded font-mono text-sm">
                     <div>def dichotomie(f, a, b, precision=1e-6):</div>
-                    
-                    
-                    <div className="ml-4"></div>
+                    <div className="ml-4">assert f(a)*f(b) {'<'} 0, "f(a) et f(b) doivent avoir des signes opposés"</div>
                     <div className="ml-4">while b - a {'>'} precision:</div>
                     <div className="ml-8">c = (a + b) / 2         # milieu de l'intervalle</div>
                     <div className="ml-8">if f(a) * f(c) {'<'}= 0:     # racine dans [a, c]</div>
                     <div className="ml-12">b = c</div>
                     <div className="ml-8">else:                   # racine dans [c, b]</div>
                     <div className="ml-12">a = c</div>
-                    <div className="ml-4"></div>
                     <div className="ml-4">return (a + b) / 2          # approximation finale</div>
                   </div>
                 </AccordionContent>
@@ -685,37 +684,6 @@ const PythonAnalysePage = () => {
           </CardContent>
         </Card>
 
-        {/* Exercices d'entraînement */}
-        <Card className="mb-8 border-gray-200">
-          <CardHeader>
-            <CardTitle className="text-xl text-gray-700">EXERCICES D'ENTRAÎNEMENT</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div className="p-4 bg-blue-50 border border-blue-200 rounded">
-                <h4 className="font-semibold text-blue-800 mb-2">Exercices recommandés</h4>
-                <ul className="space-y-2 text-blue-700">
-                  <li>1. Calculer ∑(k=0 à 14) (2k+1)</li>
-                  <li>2. Calculer ∑(k=1 à n) 1/(k(k+1))</li>
-                  <li>3. Calculer P = ∏(k=1 à n) (k+1)/k (doit valoir n+1)</li>
-                  <li>4. Calculer ∏(k=1 à n) (1 + 1/k²)</li>
-                  <li>5. Étudier la suite u₀ = 2, u_{'{n+1}'} = (u_n + 2/u_n)/2</li>
-                  <li>6. Approximer √2 par dichotomie sur [1,2]</li>
-                </ul>
-              </div>
-
-              <div className="p-4 bg-violet-50 border border-violet-200 rounded">
-                <h4 className="font-semibold text-violet-800 mb-2">Fonctions génériques à implémenter</h4>
-                <ul className="space-y-1 text-violet-700">
-                  <li>• <code className="bg-violet-100 px-1 rounded">somme_finie(i0, i1, f)</code></li>
-                  <li>• <code className="bg-violet-100 px-1 rounded">produit_general(i0, i1, expression)</code></li>
-                  <li>• <code className="bg-violet-100 px-1 rounded">suite_convergente(u0, f, precision)</code></li>
-                </ul>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
         {/* Navigation footer */}
         <div className="mt-12 flex justify-between items-center">
           <Link to="/formation">
@@ -727,6 +695,8 @@ const PythonAnalysePage = () => {
           <Badge variant="secondary" className="bg-blue-100 text-blue-700">Module 3 terminé</Badge>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default PythonAnalysePage;
