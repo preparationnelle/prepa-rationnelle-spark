@@ -1,12 +1,13 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, BookOpen, CheckCircle, XCircle } from 'lucide-react';
+import { ArrowLeft, BookOpen, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { PythonModuleQuiz } from '@/components/python/PythonModuleQuiz';
+import { matricesQuizQuestions } from '@/data/pythonQuizQuestions';
 
 const PythonMatricesPage = () => {
   return (
@@ -581,6 +582,13 @@ const PythonMatricesPage = () => {
             </Accordion>
           </CardContent>
         </Card>
+
+        {/* Quiz Section */}
+        <PythonModuleQuiz 
+          title="🧠 Quiz Pratique - Module 2"
+          questions={matricesQuizQuestions}
+          moduleColor="green"
+        />
 
         {/* Exercices */}
         <Card className="mb-8 border-gray-200 bg-gradient-to-br from-gray-50 to-slate-50">

@@ -1,12 +1,13 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, BookOpen } from 'lucide-react';
+import { ArrowLeft, BookOpen, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { PythonModuleQuiz } from '@/components/python/PythonModuleQuiz';
+import { fundamentalsQuizQuestions } from '@/data/pythonQuizQuestions';
 
 const PythonFundamentalsPage = () => {
   return (
@@ -26,10 +27,10 @@ const PythonFundamentalsPage = () => {
           <div className="flex items-center gap-3 mb-4">
             <BookOpen className="h-8 w-8 text-blue-600" />
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">
-                Cours 1 Python – Les Fondamentaux
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-violet-500 bg-clip-text text-transparent">
+                Module 1 - Les Fondamentaux
               </h1>
-              <Badge variant="secondary" className="mt-2">Module 1</Badge>
+              <Badge variant="secondary" className="mt-2 bg-blue-100 text-blue-700">Module 1</Badge>
             </div>
           </div>
         </div>
@@ -580,6 +581,13 @@ const PythonFundamentalsPage = () => {
 
         </div>
 
+        {/* Quiz Section */}
+        <PythonModuleQuiz 
+          title="🧠 Quiz Pratique - Module 1"
+          questions={fundamentalsQuizQuestions}
+          moduleColor="blue"
+        />
+
         {/* Navigation footer */}
         <div className="mt-12 flex justify-between items-center">
           <Link to="/formation">
@@ -588,7 +596,7 @@ const PythonFundamentalsPage = () => {
               Retour à la formation
             </Button>
           </Link>
-          <Badge variant="secondary">Module 1 terminé</Badge>
+          <Badge variant="secondary" className="bg-blue-100 text-blue-700">Module 1 terminé</Badge>
         </div>
       </div>
     </div>

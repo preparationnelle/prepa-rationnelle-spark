@@ -6,8 +6,12 @@ import { ArrowLeft, BookOpen, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { PythonModuleQuiz } from '@/components/python/PythonModuleQuiz';
+import { analyseQuizQuestions } from '@/data/pythonQuizQuestions';
+
 const PythonAnalysePage = () => {
-  return <div className="min-h-screen bg-background py-8">
+  return (
+    <div className="min-h-screen bg-background py-8">
       <div className="max-w-4xl mx-auto px-6">
         {/* Header */}
         <div className="mb-8">
@@ -942,6 +946,13 @@ const PythonAnalysePage = () => {
           </CardContent>
         </Card>
 
+        {/* Quiz Section */}
+        <PythonModuleQuiz 
+          title="🧠 Quiz Pratique - Module 3"
+          questions={analyseQuizQuestions}
+          moduleColor="blue"
+        />
+
         {/* Navigation footer */}
         <div className="mt-12 flex justify-between items-center">
           <Link to="/formation">
@@ -953,6 +964,8 @@ const PythonAnalysePage = () => {
           <Badge variant="secondary" className="bg-blue-100 text-blue-700">Module 3 terminé</Badge>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default PythonAnalysePage;
