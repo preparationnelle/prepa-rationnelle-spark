@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -173,14 +172,16 @@ const PythonReferencePage = () => {
             Toutes les commandes Python au programme de prépa ECG
           </p>
           
-          {/* Barre de recherche */}
+          {/* Barre de recherche améliorée */}
           <div className="relative max-w-md">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+            <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
+              <Search className="text-muted-foreground h-4 w-4" />
+            </div>
             <Input
               placeholder="Rechercher une commande..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10"
+              className="pl-10 h-10 border-input bg-background"
             />
           </div>
         </div>
