@@ -413,7 +413,7 @@ const PythonAnalysePage = () => {
                     <div>
                       <h4 className="font-semibold mb-2">Exemple avec conditions</h4>
                       <p className="text-sm text-gray-600 mb-2">
-                        Suite définie par : u₀ = 4, u_{n+1} = 3u_n + 1 si u_n est pair, (u_n + 1)/2 si u_n est impair
+                        Suite définie par : u₀ = 4, u_{'{'}{n+1}{'}'} = 3u_n + 1 si u_n est pair, (u_n + 1)/2 si u_n est impair
                       </p>
                       <div className="bg-gray-50 p-4 rounded font-mono text-sm">
                         <div>n = int(input('Entrer la valeur de n : '))</div>
@@ -454,7 +454,7 @@ const PythonAnalysePage = () => {
                         <TableCell>Boucle while avec incrément</TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell>➤ Trouver le plus grand n tel que u_n < S</TableCell>
+                        <TableCell>➤ Trouver le plus grand n tel que u_n {'<'} S</TableCell>
                         <TableCell>Idem puis n - 1</TableCell>
                       </TableRow>
                       <TableRow>
@@ -480,7 +480,7 @@ const PythonAnalysePage = () => {
                         <div>u = 2.4</div>
                         <div>f = lambda u: 5*u + 3</div>
                         <div>for i in range(5):</div>
-                        <div className="ml-4">print(f"u{i} = {u}")</div>
+                        <div className="ml-4">print(f"u{'{i}'} = {'{u}'}'")</div>
                         <div className="ml-4">u = f(u)</div>
                       </div>
                     </div>
@@ -490,7 +490,7 @@ const PythonAnalysePage = () => {
                       <div className="bg-gray-50 p-4 rounded font-mono text-sm">
                         <div>u = 2.4</div>
                         <div>n = 0</div>
-                        <div>while u < 10_000:</div>
+                        <div>while u {'<'} 10_000:</div>
                         <div className="ml-4">u = 5*u + 3</div>
                         <div className="ml-4">n += 1</div>
                         <div>print("n =", n)</div>
@@ -520,7 +520,7 @@ const PythonAnalysePage = () => {
                       <div>def plus_petit_n(u0, f, seuil):</div>
                       <div className="ml-4">u = u0</div>
                       <div className="ml-4">n = 0</div>
-                      <div className="ml-4">while u < seuil:</div>
+                      <div className="ml-4">while u {'<'} seuil:</div>
                       <div className="ml-8">u = f(u)</div>
                       <div className="ml-8">n += 1</div>
                       <div className="ml-4">return n</div>
@@ -528,7 +528,7 @@ const PythonAnalysePage = () => {
                       <div>def plus_grand_n(u0, f, seuil):</div>
                       <div className="ml-4">u = u0</div>
                       <div className="ml-4">n = 0</div>
-                      <div className="ml-4">while u < seuil:</div>
+                      <div className="ml-4">while u {'<'} seuil:</div>
                       <div className="ml-8">u = f(u)</div>
                       <div className="ml-8">n += 1</div>
                       <div className="ml-4">return n - 1</div>
@@ -594,12 +594,12 @@ const PythonAnalysePage = () => {
                   <div className="space-y-3">
                     <p>La méthode de dichotomie repose sur :</p>
                     <ul className="space-y-2 ml-4">
-                      <li>• <strong>le théorème des valeurs intermédiaires :</strong> si f(a)·f(b) < 0, alors f s'annule entre a et b.</li>
+                      <li>• <strong>le théorème des valeurs intermédiaires :</strong> si f(a)·f(b) {'<'} 0, alors f s'annule entre a et b.</li>
                       <li>• <strong>une recherche par découpage successif :</strong> on remplace [a,b] par la moitié où le signe change.</li>
                     </ul>
                     <div className="p-3 bg-red-50 border border-red-200 rounded">
                       <p className="text-red-700 font-semibold">
-                        Condition obligatoire : f(a)·f(b) < 0 (changement de signe)
+                        Condition obligatoire : f(a)·f(b) {'<'} 0 (changement de signe)
                       </p>
                     </div>
                   </div>
@@ -612,11 +612,11 @@ const PythonAnalysePage = () => {
                   <div className="bg-gray-50 p-4 rounded font-mono text-sm">
                     <div>def dichotomie(f, a, b, precision=1e-6):</div>
                     <div className="ml-4">"""Approximation d'une racine de f sur [a, b] par dichotomie."""</div>
-                    <div className="ml-4">assert f(a) * f(b) < 0, "f(a) et f(b) doivent être de signes opposés"</div>
+                    <div className="ml-4">assert f(a) * f(b) {'<'} 0, "f(a) et f(b) doivent être de signes opposés"</div>
                     <div className="ml-4"></div>
-                    <div className="ml-4">while b - a > precision:</div>
+                    <div className="ml-4">while b - a {'>'} precision:</div>
                     <div className="ml-8">c = (a + b) / 2         # milieu de l'intervalle</div>
-                    <div className="ml-8">if f(a) * f(c) <= 0:     # racine dans [a, c]</div>
+                    <div className="ml-8">if f(a) * f(c) {'<'}= 0:     # racine dans [a, c]</div>
                     <div className="ml-12">b = c</div>
                     <div className="ml-8">else:                   # racine dans [c, b]</div>
                     <div className="ml-12">a = c</div>
@@ -638,11 +638,11 @@ const PythonAnalysePage = () => {
                     </TableHeader>
                     <TableBody>
                       <TableRow>
-                        <TableCell className="font-mono bg-gray-50">assert f(a)*f(b)<0</TableCell>
+                        <TableCell className="font-mono bg-gray-50">assert f(a)*f(b){'<'}0</TableCell>
                         <TableCell>Vérifie le prérequis mathématique</TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell className="font-mono bg-gray-50">while b - a > precision</TableCell>
+                        <TableCell className="font-mono bg-gray-50">while b - a {'>'} precision</TableCell>
                         <TableCell>Tant que l'intervalle est trop large</TableCell>
                       </TableRow>
                       <TableRow>
@@ -650,7 +650,7 @@ const PythonAnalysePage = () => {
                         <TableCell>On coupe l'intervalle en deux</TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell className="font-mono bg-gray-50">if f(a)*f(c) <= 0</TableCell>
+                        <TableCell className="font-mono bg-gray-50">if f(a)*f(c) {'<'}= 0</TableCell>
                         <TableCell>Si changement de signe entre a et c</TableCell>
                       </TableRow>
                       <TableRow>
@@ -702,7 +702,7 @@ const PythonAnalysePage = () => {
                   <li>2. Calculer ∑(k=1 à n) 1/(k(k+1))</li>
                   <li>3. Calculer P = ∏(k=1 à n) (k+1)/k (doit valoir n+1)</li>
                   <li>4. Calculer ∏(k=1 à n) (1 + 1/k²)</li>
-                  <li>5. Étudier la suite u₀ = 2, u_{n+1} = (u_n + 2/u_n)/2</li>
+                  <li>5. Étudier la suite u₀ = 2, u_{'{n+1}'} = (u_n + 2/u_n)/2</li>
                   <li>6. Approximer √2 par dichotomie sur [1,2]</li>
                 </ul>
               </div>
