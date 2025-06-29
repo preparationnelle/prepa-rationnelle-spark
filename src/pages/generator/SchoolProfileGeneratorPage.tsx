@@ -10,7 +10,7 @@ const SchoolProfileGeneratorPage = () => {
           Fiche École Personnalisée
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Automatise la recherche des infos-clés pour ton entretien : valeurs, assos, doubles diplômes, actu, etc.
+          Obtenez une analyse complète et personnalisée d'une école de commerce selon votre profil, vos objectifs et vos ambitions
         </p>
       </div>
 
