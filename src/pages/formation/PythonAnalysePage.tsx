@@ -413,7 +413,7 @@ const PythonAnalysePage = () => {
                     <div>
                       <h4 className="font-semibold mb-2">Exemple avec conditions</h4>
                       <p className="text-sm text-gray-600 mb-2">
-                        Suite définie par : u₀ = 4, u_{'{'}{n+1}{'}'} = 3u_n + 1 si u_n est pair, (u_n + 1)/2 si u_n est impair
+                        Suite définie par : u₀ = 4, u_{'{'}{'{n+1}'}{'}'}= 3u_n + 1 si u_n est pair, (u_n + 1)/2 si u_n est impair
                       </p>
                       <div className="bg-gray-50 p-4 rounded font-mono text-sm">
                         <div>n = int(input('Entrer la valeur de n : '))</div>
