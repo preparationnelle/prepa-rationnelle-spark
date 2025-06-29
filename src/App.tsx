@@ -92,6 +92,7 @@ import InterpersonalTeamworkPage from '@/pages/questions/InterpersonalTeamworkPa
 import PythonReferencePage from '@/pages/PythonReferencePage';
 import PythonFundamentalsPage from '@/pages/formation/PythonFundamentalsPage';
 import PythonMatricesPage from '@/pages/formation/PythonMatricesPage';
+import PythonAnalysePage from '@/pages/formation/PythonAnalysePage';
 
 function App() {
   return (
@@ -112,6 +113,7 @@ function App() {
                   <Route path="/formation" element={<FormationPage />} />
                   <Route path="/formation/python-fondamentaux" element={<PythonFundamentalsPage />} />
                   <Route path="/formation/python-matrices" element={<PythonMatricesPage />} />
+                  <Route path="/formation/python-analyse" element={<PythonAnalysePage />} />
                   <Route path="/python-reference" element={<PythonReferencePage />} />
                   <Route path="/questions" element={<QuestionsPage />} />
                   <Route path="/questions/projection-scenarios" element={<ProjectionScenariosPage />} />
