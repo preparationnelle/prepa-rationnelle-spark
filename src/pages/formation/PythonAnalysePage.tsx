@@ -89,7 +89,7 @@ const PythonAnalysePage = () => {
               </AccordionItem>
 
               <AccordionItem value="methode-liste">
-                <AccordionTrigger className="text-gray-600">Méthode 2 – Liste + sum()</AccordionTrigger>
+                <AccordionTrigger className="text-gray-600">Méthode 2 – Liste &amp; np.sum()</AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-3">
                     <div className="bg-gray-50 p-4 rounded font-mono text-sm">
