@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from '@/components/ui/toaster';
@@ -90,6 +91,7 @@ import InterpersonalTeamworkPage from '@/pages/questions/InterpersonalTeamworkPa
 // Import de la nouvelle page de référence Python
 import PythonReferencePage from '@/pages/PythonReferencePage';
 import PythonFundamentalsPage from '@/pages/formation/PythonFundamentalsPage';
+import PythonMatricesPage from '@/pages/formation/PythonMatricesPage';
 
 function App() {
   return (
@@ -109,6 +111,7 @@ function App() {
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/formation" element={<FormationPage />} />
                   <Route path="/formation/python-fondamentaux" element={<PythonFundamentalsPage />} />
+                  <Route path="/formation/python-matrices" element={<PythonMatricesPage />} />
                   <Route path="/python-reference" element={<PythonReferencePage />} />
                   <Route path="/questions" element={<QuestionsPage />} />
                   <Route path="/questions/projection-scenarios" element={<ProjectionScenariosPage />} />

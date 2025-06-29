@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { VideoAndIntro } from '@/components/VideoAndIntro';
 import { PythonQuizGenerator } from '@/components/python/PythonQuizGenerator';
@@ -60,25 +59,35 @@ const FormationPage = () => {
               </CardContent>
             </Card>
 
-            {/* Module 2 - À venir */}
-            <Card className="opacity-60">
+            {/* Module 2 - Les Matrices NumPy - MAINTENANT DISPONIBLE */}
+            <Card className="hover:shadow-lg transition-shadow border border-green-200">
               <CardHeader>
                 <div className="flex items-center gap-3">
-                  <BookOpen className="h-6 w-6 text-gray-400" />
+                  <BookOpen className="h-6 w-6 text-green-600" />
                   <div>
-                    <CardTitle className="text-lg text-gray-600">Module 2</CardTitle>
-                    <Badge variant="outline" className="mt-1">Bientôt disponible</Badge>
+                    <CardTitle className="text-lg">Module 2</CardTitle>
+                    <Badge variant="secondary" className="mt-1 bg-green-100 text-green-700">Disponible</Badge>
                   </div>
                 </div>
               </CardHeader>
               <CardContent>
-                <h3 className="font-semibold text-gray-600 mb-2">NumPy et Calcul Mathématique</h3>
+                <h3 className="font-semibold text-green-700 mb-2">Les Matrices NumPy</h3>
                 <p className="text-sm text-muted-foreground mb-4">
                   Introduction à NumPy pour le calcul scientifique et les opérations matricielles.
+                  Création, manipulation et analyse de matrices.
                 </p>
-                <Button disabled className="w-full">
-                  Prochainement
-                </Button>
+                <ul className="text-sm space-y-1 mb-4">
+                  <li>• Création de matrices et vecteurs</li>
+                  <li>• Opérations matricielles</li>
+                  <li>• Fonctions d'analyse statistique</li>
+                  <li>• Applications pratiques</li>
+                </ul>
+                <Link to="/formation/python-matrices">
+                  <Button className="w-full bg-green-600 hover:bg-green-700">
+                    <Play className="h-4 w-4 mr-2" />
+                    Commencer le module
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
 
