@@ -95,7 +95,7 @@ const PythonAnalysePage = () => {
                     <div className="bg-gray-50 p-4 rounded font-mono text-sm">
                       <div>n = 5</div>
                       <div>L = [k**2 for k in range(1, n+1)]</div>
-                      <div>S = sum(L)</div>
+                      <div>S = np.sum(L)</div>
                       <div>print(S)</div>
                     </div>
                     <div className="p-3 bg-green-50 border border-green-200 rounded">
