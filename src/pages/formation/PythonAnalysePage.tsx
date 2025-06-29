@@ -6,10 +6,8 @@ import { ArrowLeft, BookOpen, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-
 const PythonAnalysePage = () => {
-  return (
-    <div className="min-h-screen bg-background py-8">
+  return <div className="min-h-screen bg-background py-8">
       <div className="max-w-4xl mx-auto px-6">
         {/* Header */}
         <div className="mb-8">
@@ -66,9 +64,7 @@ const PythonAnalysePage = () => {
           <CardContent>
             <div className="mb-4">
               <h3 className="font-semibold text-blue-600 mb-2">Objectif</h3>
-              <p className="text-gray-700 mb-4">
-                Savoir calculer une somme de la forme S = ∑(k=1 à n) expression(k) en utilisant trois méthodes : boucle, liste, NumPy.
-              </p>
+              <p className="text-gray-700 mb-4">Savoir calculer une somme de la forme S = ∑expression(k) en utilisant trois méthodes : boucle, liste, NumPy.</p>
             </div>
 
             <Accordion type="single" collapsible className="w-full">
@@ -80,7 +76,7 @@ const PythonAnalysePage = () => {
                       <div>n = 5</div>
                       <div>S = 0</div>
                       <div>for k in range(1, n+1):</div>
-                      <div className="ml-4">S += k**2</div>
+                      <div className="ml-4">S += k**2 # pour ∑k^2</div>
                       <div>print(S)</div>
                     </div>
                     <div className="p-3 bg-green-50 border border-green-200 rounded">
@@ -695,8 +691,6 @@ const PythonAnalysePage = () => {
           <Badge variant="secondary" className="bg-blue-100 text-blue-700">Module 3 terminé</Badge>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default PythonAnalysePage;
