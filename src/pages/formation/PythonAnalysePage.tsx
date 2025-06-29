@@ -607,11 +607,8 @@ const PythonAnalysePage = () => {
                 <AccordionTrigger className="text-blue-600">Algorithme Python – version commentée</AccordionTrigger>
                 <AccordionContent>
                   <div className="bg-gray-50 p-4 rounded font-mono text-sm">
-                    <div>Approximation d'une racine de f sur [a, b] par dichotomie.
-
-def dichotomie(f, a, b, precision=1e-6):</div>
-                    <div className="ml-4">Approximation d'une racine de f sur [a, b] par dichotomie.
-                  </div>
+                    <div>def dichotomie(f, a, b, precision=1e-6):</div>
+                    
                     
                     <div className="ml-4"></div>
                     <div className="ml-4">while b - a {'>'} precision:</div>
