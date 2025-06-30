@@ -10,6 +10,7 @@ export const usePythonAccess = () => {
   const { currentUser } = useAuth();
 
   const checkAccess = async () => {
+    // Si l'utilisateur n'est pas connecté, pas d'accès par défaut
     if (!currentUser) {
       setHasAccess(false);
       setLoading(false);
@@ -40,11 +41,7 @@ export const usePythonAccess = () => {
     }
   };
 
-  const validateAccessCode = async (code: string) => {
-    if (!currentUser) {
-      throw new Error('Vous devez être connecté pour utiliser un code d\'accès');
-    }
-
+  const validateAccessCode = async (code: string, guestEmail?: string) => {
     try {
       // Vérifier si le code existe et n'est pas déjà utilisé
       const { data: existingCode, error: fetchError } = await supabase
@@ -62,12 +59,12 @@ export const usePythonAccess = () => {
         throw new Error('Code d\'accès invalide ou expiré');
       }
 
-      if (existingCode.user_id && existingCode.user_id !== currentUser.id) {
+      if (existingCode.user_id && currentUser && existingCode.user_id !== currentUser.id) {
         throw new Error('Ce code d\'accès a déjà été utilisé');
       }
 
-      // Attribuer le code à l'utilisateur s'il n'est pas encore attribué
-      if (!existingCode.user_id) {
+      // Si l'utilisateur est connecté, attribuer le code à l'utilisateur
+      if (currentUser && !existingCode.user_id) {
         const { error: updateError } = await supabase
           .from('access_codes')
           .update({
@@ -81,25 +78,31 @@ export const usePythonAccess = () => {
         }
       }
 
-      await checkAccess();
+      // Pour les utilisateurs non connectés ou connectés, donner l'accès
+      setHasAccess(true);
+      setAccessCode(code.toUpperCase());
+      
+      // Stocker le code d'accès dans le localStorage pour les utilisateurs non connectés
+      if (!currentUser) {
+        localStorage.setItem('python_access_code', code.toUpperCase());
+      }
+
       return true;
     } catch (error) {
       throw error;
     }
   };
 
-  const createCheckoutSession = async () => {
-    if (!currentUser) {
-      throw new Error('Vous devez être connecté pour effectuer un achat');
-    }
-
+  const createCheckoutSession = async (guestEmail?: string) => {
+    // Permettre les achats sans connexion
     try {
       const { data, error } = await supabase.functions.invoke(
         'create-python-course-checkout',
         {
-          headers: {
+          headers: currentUser ? {
             Authorization: `Bearer ${(await supabase.auth.getSession()).data.session?.access_token}`,
-          },
+          } : {},
+          body: guestEmail ? { guest_email: guestEmail } : {}
         }
       );
 
@@ -115,6 +118,15 @@ export const usePythonAccess = () => {
   };
 
   useEffect(() => {
+    // Vérifier d'abord le localStorage pour les codes d'accès des invités
+    const storedCode = localStorage.getItem('python_access_code');
+    if (storedCode && !currentUser) {
+      setHasAccess(true);
+      setAccessCode(storedCode);
+      setLoading(false);
+      return;
+    }
+    
     checkAccess();
   }, [currentUser]);
 

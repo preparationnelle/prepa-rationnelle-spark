@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Loader2, Lock, Check, CreditCard, Key } from 'lucide-react';
+import { Loader2, Lock, Check, CreditCard, Key, Mail } from 'lucide-react';
 import { usePythonAccess } from '@/hooks/usePythonAccess';
 import { useAuth } from '@/context/AuthContext';
 
@@ -17,9 +17,11 @@ export const PythonAccessGate: React.FC<PythonAccessGateProps> = ({ children }) 
   const { hasAccess, loading, validateAccessCode, createCheckoutSession } = usePythonAccess();
   const { currentUser } = useAuth();
   const [code, setCode] = useState('');
+  const [guestEmail, setGuestEmail] = useState('');
   const [error, setError] = useState('');
   const [validating, setValidating] = useState(false);
   const [purchasing, setPurchasing] = useState(false);
+  const [showGuestEmailForm, setShowGuestEmailForm] = useState(false);
 
   const handleCodeSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,7 +31,7 @@ export const PythonAccessGate: React.FC<PythonAccessGateProps> = ({ children }) 
     setError('');
 
     try {
-      await validateAccessCode(code);
+      await validateAccessCode(code, guestEmail);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Erreur inconnue');
     } finally {
@@ -38,11 +40,17 @@ export const PythonAccessGate: React.FC<PythonAccessGateProps> = ({ children }) 
   };
 
   const handlePurchase = async () => {
+    // Si pas connecté, demander l'email pour l'achat invité
+    if (!currentUser && !showGuestEmailForm) {
+      setShowGuestEmailForm(true);
+      return;
+    }
+
     setPurchasing(true);
     setError('');
 
     try {
-      await createCheckoutSession();
+      await createCheckoutSession(guestEmail);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Erreur lors de la création de la session de paiement');
     } finally {
@@ -60,25 +68,6 @@ export const PythonAccessGate: React.FC<PythonAccessGateProps> = ({ children }) 
 
   if (hasAccess) {
     return <>{children}</>;
-  }
-
-  if (!currentUser) {
-    return (
-      <Card className="max-w-2xl mx-auto">
-        <CardHeader className="text-center">
-          <Lock className="h-12 w-12 mx-auto mb-4 text-orange-500" />
-          <CardTitle>Connexion requise</CardTitle>
-        </CardHeader>
-        <CardContent className="text-center">
-          <p className="text-muted-foreground mb-4">
-            Vous devez être connecté pour accéder aux modules de formation Python.
-          </p>
-          <Button onClick={() => window.location.href = '/login'}>
-            Se connecter
-          </Button>
-        </CardContent>
-      </Card>
-    );
   }
 
   return (
@@ -134,9 +123,29 @@ export const PythonAccessGate: React.FC<PythonAccessGateProps> = ({ children }) 
             </ul>
           </div>
 
+          {/* Formulaire email invité si nécessaire */}
+          {!currentUser && showGuestEmailForm && (
+            <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+              <div className="flex items-center gap-2 mb-3">
+                <Mail className="h-5 w-5 text-blue-600" />
+                <h4 className="font-semibold text-blue-800">Votre email pour la facture</h4>
+              </div>
+              <Input
+                type="email"
+                placeholder="votre@email.com"
+                value={guestEmail}
+                onChange={(e) => setGuestEmail(e.target.value)}
+                className="mb-3"
+              />
+              <p className="text-sm text-blue-600">
+                Cet email sera utilisé pour votre facture et pour recevoir votre code d'accès
+              </p>
+            </div>
+          )}
+
           <Button 
             onClick={handlePurchase} 
-            disabled={purchasing}
+            disabled={purchasing || (!currentUser && showGuestEmailForm && !guestEmail.trim())}
             className="w-full bg-orange-600 hover:bg-orange-700 text-white text-lg py-6"
           >
             {purchasing ? (
@@ -151,6 +160,12 @@ export const PythonAccessGate: React.FC<PythonAccessGateProps> = ({ children }) 
               </>
             )}
           </Button>
+
+          {!currentUser && (
+            <p className="text-center text-sm text-gray-600">
+              Aucune inscription requise - Paiement sécurisé par Stripe
+            </p>
+          )}
         </CardContent>
       </Card>
 
