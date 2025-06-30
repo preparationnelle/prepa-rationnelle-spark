@@ -9,6 +9,36 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      access_codes: {
+        Row: {
+          active: boolean
+          code: string
+          created_at: string
+          id: string
+          stripe_session_id: string | null
+          used_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          active?: boolean
+          code: string
+          created_at?: string
+          id?: string
+          stripe_session_id?: string | null
+          used_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          active?: boolean
+          code?: string
+          created_at?: string
+          id?: string
+          stripe_session_id?: string | null
+          used_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       appointments: {
         Row: {
           coach: string | null
@@ -59,6 +89,53 @@ export type Database = {
           type?: string
         }
         Relationships: []
+      }
+      course_purchases: {
+        Row: {
+          access_code_id: string | null
+          amount: number
+          course_type: string
+          created_at: string
+          currency: string
+          id: string
+          status: string
+          stripe_session_id: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          access_code_id?: string | null
+          amount: number
+          course_type?: string
+          created_at?: string
+          currency?: string
+          id?: string
+          status?: string
+          stripe_session_id?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          access_code_id?: string | null
+          amount?: number
+          course_type?: string
+          created_at?: string
+          currency?: string
+          id?: string
+          status?: string
+          stripe_session_id?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "course_purchases_access_code_id_fkey"
+            columns: ["access_code_id"]
+            isOneToOne: false
+            referencedRelation: "access_codes"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       feedback: {
         Row: {
