@@ -330,7 +330,7 @@ const PythonArticlePage = () => {
               </div>
               <div className="border-l-4 border-green-500 pl-4">
                 <p className="font-semibold text-green-800">Q : Je vise HEC, pas EM Lyon ; c'est assez pointu ?</p>
-                <p className="text-green-700">👉 Oui : on décortique les sujets HEC 2022-2024 et on pousse jusqu'aux pièges d'oraux.</p>
+                <p className="text-green-700"> Oui : on décortique les sujets HEC 2022-2024 et on pousse jusqu'aux pièges d'oraux.</p>
               </div>
               <div className="border-l-4 border-orange-500 pl-4">
                 <p className="font-semibold text-orange-800">Q : 297 € pour 6 h, c'est vraiment « premium mais pas trop cher » ?</p>
