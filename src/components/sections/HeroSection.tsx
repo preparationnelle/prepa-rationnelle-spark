@@ -38,8 +38,7 @@ export const HeroSection = () => {
           className="text-[2.8rem] sm:text-[4.2rem] md:text-[5rem] lg:text-[6vw] xl:text-[106px] font-extrabold text-[#F36C00] text-center mb-12 leading-[1.06] w-full"
           style={{ wordBreak: 'keep-all', maxWidth: '100%' }}
         >
-          Je vous aide à intégrer <br className="hidden md:block" />
-          l&apos;école de vos rêves
+          Prepa Rationnelle
         </h1>
         {/* Large subtitle */}
         <p className="text-xl sm:text-2xl md:text-3xl max-w-[1000px] text-[#252523] text-center mb-14 font-normal leading-[1.35] w-full">
