@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from '@/components/ui/toaster';
@@ -28,6 +27,7 @@ import MethodologiePage from '@/pages/MethodologiePage';
 import PersonnaliteMethodePage from '@/pages/PersonnaliteMethodePage';
 import FormationPage from '@/pages/FormationPage';
 import NotFound from '@/pages/NotFound';
+import PythonArticlePage from '@/pages/PythonArticlePage';
 
 // Import des pages des écoles
 import ESSECPage from '@/pages/ESSECPage';
@@ -44,7 +44,7 @@ import NEOMAPage from '@/pages/NEOMAPage';
 import CVProjectifPage from '@/pages/CVProjectifPage';
 import EntretienInverseGEMPage from '@/pages/EntretienInverseGEMPage';
 
-// Import des pages des générateurs individuels
+// Import des générateurs individuels
 import AnswerGeneratorPage from './pages/generator/AnswerGeneratorPage';
 import FlashcardsGeneratorPage from './pages/generator/FlashcardsGeneratorPage';
 import LanguagesGeneratorPage from './pages/generator/LanguagesGeneratorPage';
@@ -115,6 +115,7 @@ function App() {
                   <Route path="/formation/python-matrices" element={<PythonMatricesPage />} />
                   <Route path="/formation/python-analyse" element={<PythonAnalysePage />} />
                   <Route path="/python-reference" element={<PythonReferencePage />} />
+                  <Route path="/pourquoi-python-prepa-ecg" element={<PythonArticlePage />} />
                   <Route path="/questions" element={<QuestionsPage />} />
                   <Route path="/questions/projection-scenarios" element={<ProjectionScenariosPage />} />
                   <Route path="/questions/motivation-objectives" element={<MotivationObjectivesPage />} />
