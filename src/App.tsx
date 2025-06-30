@@ -28,6 +28,7 @@ import PersonnaliteMethodePage from '@/pages/PersonnaliteMethodePage';
 import FormationPage from '@/pages/FormationPage';
 import NotFound from '@/pages/NotFound';
 import PythonArticlePage from '@/pages/PythonArticlePage';
+import PourquoiPythonPrepaECGPage from '@/pages/PourquoiPythonPrepaECGPage';
 
 // Import des pages des écoles
 import ESSECPage from '@/pages/ESSECPage';
@@ -118,7 +119,7 @@ function App() {
                   <Route path="/formation/python-matrices" element={<PythonMatricesPage />} />
                   <Route path="/formation/python-analyse" element={<PythonAnalysePage />} />
                   <Route path="/python-reference" element={<PythonReferencePage />} />
-                  <Route path="/pourquoi-python-prepa-ecg" element={<PythonArticlePage />} />
+                  <Route path="/pourquoi-python-prepa-ecg" element={<PourquoiPythonPrepaECGPage />} />
                   <Route path="/questions" element={<QuestionsPage />} />
                   <Route path="/questions/projection-scenarios" element={<ProjectionScenariosPage />} />
                   <Route path="/questions/motivation-objectives" element={<MotivationObjectivesPage />} />
