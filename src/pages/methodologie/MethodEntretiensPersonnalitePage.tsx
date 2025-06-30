@@ -8,7 +8,6 @@ import { SchoolCard } from '@/components/SchoolCard';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { PodcastSection } from '@/components/sections/PodcastSection';
 import { 
-  MessageSquare, 
   Bot, 
   Users, 
   GraduationCap, 
@@ -16,8 +15,7 @@ import {
   HelpCircle,
   BookOpen,
   Target,
-  Brain,
-  Calendar
+  Brain
 } from 'lucide-react';
 
 const MethodEntretiensPersonnalitePage = () => {
@@ -94,7 +92,7 @@ const MethodEntretiensPersonnalitePage = () => {
           
           <p className="text-gray-600 mb-12 text-center max-w-3xl mx-auto text-lg">
             Toutes les ressources pour réussir vos entretiens de personnalité : méthodologie, outils de préparation, 
-            banque de questions et fiches écoles détaillées.
+            et fiches écoles détaillées.
           </p>
 
           {/* Méthodologie Section */}
@@ -184,43 +182,6 @@ const MethodEntretiensPersonnalitePage = () => {
             </div>
           </div>
 
-          {/* Banque de Questions */}
-          <div className="mb-12">
-            <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3">
-              <MessageSquare className="h-7 w-7 text-primary" />
-              Banque de Questions
-            </h2>
-            
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Users className="h-5 w-5" />
-                  Questions par Catégories
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">
-                  Accédez à notre base complète de questions d'entretien organisées par thématiques : 
-                  personnalité, motivation, projets, situations interpersonnelles et bien plus.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link to="/questions">
-                    <Button>Explorer les questions</Button>
-                  </Link>
-                  <Link to="/nos-offres">
-                    <Button variant="outline">Découvrir nos offres détaillées</Button>
-                  </Link>
-                  <a href="https://calendly.com/prepa-rationnelle" target="_blank" rel="noopener noreferrer">
-                    <Button variant="outline" className="flex items-center gap-2">
-                      <Calendar className="h-4 w-4" />
-                      Faire le point sur ta situation
-                    </Button>
-                  </a>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
           {/* Fiches Écoles */}
           <div className="mb-12">
             <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3">
@@ -256,8 +217,8 @@ const MethodEntretiensPersonnalitePage = () => {
             <Link to="/methodologie">
               <Button variant="outline">Retour à la méthodologie</Button>
             </Link>
-            <Link to="/questions">
-              <Button>Commencer l'entraînement</Button>
+            <Link to="/nos-offres">
+              <Button>Découvrir nos offres</Button>
             </Link>
           </div>
         </div>

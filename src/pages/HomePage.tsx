@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { AutomationsSection } from '@/components/sections/AutomationsSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
-import { PricingSection } from '@/components/PricingSection';
 import { CallToActionSection } from '@/components/sections/CallToActionSection';
 import { PodcastSection } from '@/components/sections/PodcastSection';
 import { PartnersSection } from '@/components/sections/PartnersSection';
@@ -33,7 +32,6 @@ const HomePage = () => {
       <OffersSection />
       <AutomationsSection />
       <TestimonialsSection />
-      <PricingSection />
       <PodcastSection />
       <PartnersSection />
       <CallToActionSection />

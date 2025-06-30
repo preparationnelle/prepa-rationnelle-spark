@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
@@ -134,15 +133,6 @@ const Navigation = () => {
               <DropdownMenuSeparator className="my-2" />
 
               <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 mt-1 transition-colors">
-                <Link to="/questions" onClick={closeMenu} className="flex items-center gap-3 w-full">
-                  <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                    <FileText className="h-4 w-4 text-primary" />
-                  </span>
-                  <span>Banque de questions d'entretien</span>
-                </Link>
-              </DropdownMenuItem>
-
-              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 mt-1 transition-colors">
                 <Link to="/methodes/personnalite" onClick={closeMenu} className="flex items-center gap-3 w-full">
                   <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                     <User className="h-4 w-4 text-primary" />
@@ -173,16 +163,13 @@ const Navigation = () => {
 
               <DropdownMenuSeparator className="my-2" />
               
-              <DropdownMenuItem 
-                onClick={() => navigateToSection('/', 'schools-section')} 
-                className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors cursor-pointer"
-              >
-                <div className="flex items-center gap-3 w-full">
+              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                <Link to="/methodologie/entretiens-personnalite" onClick={closeMenu} className="flex items-center gap-3 w-full">
                   <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                     <GraduationCap className="h-4 w-4 text-primary" />
                   </span>
                   <span>Fiches écoles</span>
-                </div>
+                </Link>
               </DropdownMenuItem>
 
               <DropdownMenuItem 
@@ -336,13 +323,6 @@ const Navigation = () => {
                 </span>
                 <span>À propos</span>
               </Link>
-
-              <Link to="/questions" onClick={closeMenu} className="flex items-center gap-3">
-                <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                  <FileText className="h-4 w-4 text-primary" />
-                </span>
-                <span>Banque de questions d'entretien</span>
-              </Link>
               
               <Link to="/methodes/personnalite" onClick={closeMenu} className="flex items-center gap-3">
                 <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
@@ -367,15 +347,12 @@ const Navigation = () => {
               </Link>
               {/* ----------- fin ajout ----------- */}
 
-              <div 
-                onClick={() => navigateToSection('/', 'schools-section')}
-                className="flex items-center gap-3 cursor-pointer"
-              >
+              <Link to="/methodologie/entretiens-personnalite" onClick={closeMenu} className="flex items-center gap-3">
                 <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                   <GraduationCap className="h-4 w-4 text-primary" />
                 </span>
                 <span>Fiches écoles</span>
-              </div>
+              </Link>
               
               <div 
                 onClick={() => navigateToSection('/', 'pricing-section')}

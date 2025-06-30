@@ -1,8 +1,8 @@
+
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Calendar, Clock, MessageSquare, Users, Maximize2 } from 'lucide-react';
+import { Calendar, Clock, MessageSquare, Users } from 'lucide-react';
 import { useProgress } from '@/context/ProgressContext';
 
 const CoachingPage = () => {
@@ -18,12 +18,12 @@ const CoachingPage = () => {
       <h1 className="text-3xl font-bold mb-4">Coaching personnalisé</h1>
       
       <div className="mb-6 flex justify-center">
-        <Link to="/calendar">
+        <a href="https://calendly.com/prepa-rationnelle" target="_blank" rel="noopener noreferrer">
           <Button size="lg" className="flex items-center gap-2">
-            <Maximize2 className="h-5 w-5" />
+            <Calendar className="h-5 w-5" />
             Afficher le calendrier en plein écran
           </Button>
-        </Link>
+        </a>
       </div>
 
       <div className="grid md:grid-cols-3 gap-8 mb-12">
@@ -106,14 +106,14 @@ const CoachingPage = () => {
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col items-center">
-            <Link to="/calendar" className="w-full">
+            <a href="https://calendly.com/prepa-rationnelle" target="_blank" rel="noopener noreferrer" className="w-full">
               <Button size="lg" className="w-full mb-4">
                 Prendre rendez-vous
               </Button>
-            </Link>
+            </a>
             
             <p className="text-sm text-gray-500 mb-4 text-center">
-              Le calendrier s'ouvrira en plein écran pour une meilleure expérience.
+              Le calendrier s'ouvrira dans un nouvel onglet pour une meilleure expérience.
             </p>
           </CardContent>
         </Card>
