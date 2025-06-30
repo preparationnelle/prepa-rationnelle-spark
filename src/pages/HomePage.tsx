@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { HeroSection } from '@/components/sections/HeroSection';
-import { InterviewPreparationSection } from '@/components/sections/InterviewPreparationSection';
 import { AutomationsSection } from '@/components/sections/AutomationsSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { PricingSection } from '@/components/PricingSection';
@@ -32,7 +31,6 @@ const HomePage = () => {
         <OptionalLoginBanner />
       </div>
       <OffersSection />
-      <InterviewPreparationSection />
       <AutomationsSection />
       <TestimonialsSection />
       <PricingSection />

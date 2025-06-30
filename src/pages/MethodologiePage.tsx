@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const sections = [
+  { id: "entretiens", label: "Entretiens de Personnalité", link: "/methodologie/entretiens-personnalite" },
   { id: "maths", label: "Maths", link: "/methodologie/maths" },
   { id: "geopolitique", label: "Géopolitique", link: "/methodologie/geopolitique" },
   { id: "anglais", label: "Anglais", link: "/methodologie/anglais" },
@@ -34,6 +35,18 @@ export default function MethodologiePage() {
       </nav>
       {/* Aperçus */}
       <div className="space-y-7">
+        {/* Entretiens de Personnalité */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Entretiens de Personnalité</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="mb-2">Toutes les ressources pour réussir vos entretiens : méthodologie complète, outils IA, banque de questions et fiches écoles détaillées.</p>
+            <Link to="/methodologie/entretiens-personnalite">
+              <Button variant="outline">Découvrir les ressources</Button>
+            </Link>
+          </CardContent>
+        </Card>
         {/* Maths */}
         <Card>
           <CardHeader>
@@ -64,7 +77,7 @@ export default function MethodologiePage() {
             <CardTitle>Langues – Aperçu Méthode Anglais ECG</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="mb-2 font-semibold">Prépa Rationnelle : Méthode complète d'anglais en prépa ECG</p>
+            <p className="mb-2 font-semibold">Prepa Rationnelle : Méthode complète d'anglais en prépa ECG</p>
             <p className="mb-2">Attention, ceci n'est pas une méthode pour apprendre l'anglais, c'est une méthode pour réussir les épreuves d'anglais en prépa HEC.</p>
             <Link to="/methodologie/anglais">
               <Button variant="outline">Découvrir la méthode anglaise</Button>

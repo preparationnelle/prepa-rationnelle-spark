@@ -77,6 +77,9 @@ import { MethodGrammaireDeclinaisonsPage } from '@/pages/methodologie/MethodGram
 import { MethodGrammairePassifPage } from '@/pages/methodologie/MethodGrammairePassifPage';
 import { MethodGrammaireRelativesPage } from '@/pages/methodologie/MethodGrammaireRelativesPage';
 
+// Import de la nouvelle page entretiens de personnalité
+import MethodEntretiensPersonnalitePage from '@/pages/methodologie/MethodEntretiensPersonnalitePage';
+
 import NosOffresPage from '@/pages/NosOffresPage';
 import OrganisationEtePage from '@/pages/offres/OrganisationEtePage';
 import CoachingMathsPage from '@/pages/offres/CoachingMathsPage';
@@ -172,6 +175,7 @@ function App() {
                   } />
                   
                   {/* Routes de méthodologie */}
+                  <Route path="/methodologie/entretiens-personnalite" element={<MethodEntretiensPersonnalitePage />} />
                   <Route path="/methodologie/anglais" element={<MethodAnglaisPage />} />
                   <Route path="/methodologie/maths" element={<MethodMathsPage />} />
                   <Route path="/methodologie/geopolitique" element={<MethodGeopolitiquePage />} />
