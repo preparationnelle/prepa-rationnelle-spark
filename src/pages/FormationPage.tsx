@@ -6,7 +6,7 @@ import { PythonAccessGate } from '@/components/python/PythonAccessGate';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { BookOpen, Play, ArrowRight } from 'lucide-react';
+import { BookOpen, Play, ArrowRight, Target } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const FormationPage = () => {
@@ -167,6 +167,36 @@ const FormationPage = () => {
                 <Link to="/python-reference">
                   <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-100">
                     Voir la référence
+                    <ArrowRight className="h-4 w-4 ml-2" />
+                  </Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Lien vers l'article Python */}
+        <div className="mb-16">
+          <Card className="bg-gradient-to-r from-orange-50 to-red-50 border-orange-200">
+            <CardContent className="p-8">
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Target className="h-6 w-6 text-orange-600" />
+                    <Badge variant="destructive" className="bg-orange-600 text-white">
+                      +3 à 5 points sûrs
+                    </Badge>
+                  </div>
+                  <h3 className="text-xl font-bold text-orange-800 mb-2">
+                    Pourquoi travailler Python en prépa ECG ?
+                  </h3>
+                  <p className="text-orange-700">
+                    Découvrez l'importance stratégique de Python aux concours et comment maximiser vos points
+                  </p>
+                </div>
+                <Link to="/pourquoi-python-prepa-ecg">
+                  <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-100">
+                    Lire l'article
                     <ArrowRight className="h-4 w-4 ml-2" />
                   </Button>
                 </Link>
