@@ -334,7 +334,7 @@ const PythonArticlePage = () => {
               </div>
               <div className="border-l-4 border-orange-500 pl-4">
                 <p className="font-semibold text-orange-800">Q : 297 € pour 6 h, c'est vraiment « premium mais pas trop cher » ?</p>
-                <p className="text-orange-700">👉 Regarde les prépas privées : 90 € l'heure, sans quiz, sans PDF, sans suivi WhatsApp. À toi de voir.</p>
+                <p className="text-orange-700"> Regarde les prépas privées : 90 € l'heure, sans quiz, sans PDF, sans suivi WhatsApp. À toi de voir.</p>
               </div>
             </div>
           </CardContent>
