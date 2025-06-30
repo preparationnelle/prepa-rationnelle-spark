@@ -1,14 +1,11 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { CheckCircle, TrendingUp, Target, Code, Brain, Star, Users, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
 const PythonArticlePage = () => {
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <div className="max-w-4xl mx-auto px-6 lg:px-8 py-12">
         {/* Hero Section */}
         <div className="text-center mb-12">
@@ -273,11 +270,7 @@ const PythonArticlePage = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <blockquote className="text-lg italic text-blue-800 mb-4">
-              « Dimitar a démystifié Python ; je partais de zéro. Résultat : sur mon dernier devoir maison, 
-              j'ai rendu toutes les questions Python en 20 minutes, contre une heure avant. 
-              Je me sens enfin sereine pour le concours. »
-            </blockquote>
+            <blockquote className="text-lg italic text-blue-800 mb-4">« Dimitar a démystifié Python ; je partais de zéro. Résultat : sur mon dernier DS, j'ai réussi toutes les questions Python. Je me sens enfin sereine pour le concours. »</blockquote>
             <p className="text-blue-700 font-semibold">Si Léa peut le faire en quelques semaines, tu le peux aussi.</p>
           </CardContent>
         </Card>
@@ -378,8 +371,6 @@ const PythonArticlePage = () => {
           </CardContent>
         </Card>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default PythonArticlePage;
