@@ -12,6 +12,15 @@ export const usePythonAccess = () => {
   const checkAccess = async () => {
     // Si l'utilisateur n'est pas connecté, pas d'accès par défaut
     if (!currentUser) {
+      // Vérifier d'abord le localStorage pour les codes d'accès des invités
+      const storedCode = localStorage.getItem('python_access_code');
+      if (storedCode) {
+        setHasAccess(true);
+        setAccessCode(storedCode);
+        setLoading(false);
+        return;
+      }
+      
       setHasAccess(false);
       setLoading(false);
       return;
@@ -57,6 +66,33 @@ export const usePythonAccess = () => {
 
       if (!existingCode) {
         throw new Error('Code d\'accès invalide ou expiré');
+      }
+
+      // Code spécial PRDimitar - accès libre pour tous
+      if (code.toUpperCase() === 'PRDIMITAR') {
+        setHasAccess(true);
+        setAccessCode(code.toUpperCase());
+        
+        // Stocker le code d'accès dans le localStorage pour les utilisateurs non connectés
+        if (!currentUser) {
+          localStorage.setItem('python_access_code', code.toUpperCase());
+        } else {
+          // Pour les utilisateurs connectés, créer une entrée personnelle
+          const { error: insertError } = await supabase
+            .from('access_codes')
+            .insert({
+              code: `PRDIMITAR_${currentUser.id.slice(0, 8)}`,
+              user_id: currentUser.id,
+              used_at: new Date().toISOString(),
+              active: true
+            });
+          
+          if (!insertError) {
+            setAccessCode(`PRDIMITAR_${currentUser.id.slice(0, 8)}`);
+          }
+        }
+        
+        return true;
       }
 
       if (existingCode.user_id && currentUser && existingCode.user_id !== currentUser.id) {
@@ -118,15 +154,6 @@ export const usePythonAccess = () => {
   };
 
   useEffect(() => {
-    // Vérifier d'abord le localStorage pour les codes d'accès des invités
-    const storedCode = localStorage.getItem('python_access_code');
-    if (storedCode && !currentUser) {
-      setHasAccess(true);
-      setAccessCode(storedCode);
-      setLoading(false);
-      return;
-    }
-    
     checkAccess();
   }, [currentUser]);
 
