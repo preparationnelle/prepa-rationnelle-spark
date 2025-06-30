@@ -326,7 +326,7 @@ const PythonArticlePage = () => {
             <div className="space-y-4">
               <div className="border-l-4 border-blue-500 pl-4">
                 <p className="font-semibold text-blue-800">Q : Et si je n'ai jamais installé Python ?</p>
-                <p className="text-blue-700">👉 On travaillera directement sur Google Colab : aucune installation, juste un navigateur.</p>
+                <p className="text-blue-700"> On travaillera directement sur Google Colab : aucune installation, juste un navigateur.</p>
               </div>
               <div className="border-l-4 border-green-500 pl-4">
                 <p className="font-semibold text-green-800">Q : Je vise HEC, pas EM Lyon ; c'est assez pointu ?</p>
