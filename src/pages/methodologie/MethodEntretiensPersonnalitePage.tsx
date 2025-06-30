@@ -5,6 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import { useProgress } from '@/context/ProgressContext';
 import { SchoolCard } from '@/components/SchoolCard';
+import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
+import { PodcastSection } from '@/components/sections/PodcastSection';
 import { 
   MessageSquare, 
   Bot, 
@@ -14,7 +16,8 @@ import {
   HelpCircle,
   BookOpen,
   Target,
-  Brain
+  Brain,
+  Calendar
 } from 'lucide-react';
 
 const MethodEntretiensPersonnalitePage = () => {
@@ -200,9 +203,20 @@ const MethodEntretiensPersonnalitePage = () => {
                   Accédez à notre base complète de questions d'entretien organisées par thématiques : 
                   personnalité, motivation, projets, situations interpersonnelles et bien plus.
                 </p>
-                <Link to="/questions">
-                  <Button>Explorer les questions</Button>
-                </Link>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link to="/questions">
+                    <Button>Explorer les questions</Button>
+                  </Link>
+                  <Link to="/nos-offres">
+                    <Button variant="outline">Découvrir nos offres détaillées</Button>
+                  </Link>
+                  <a href="https://calendly.com/prepa-rationnelle" target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" className="flex items-center gap-2">
+                      <Calendar className="h-4 w-4" />
+                      Faire le point sur ta situation
+                    </Button>
+                  </a>
+                </div>
               </CardContent>
             </Card>
           </div>
@@ -230,6 +244,12 @@ const MethodEntretiensPersonnalitePage = () => {
               ))}
             </div>
           </div>
+
+          {/* Podcast Section */}
+          <PodcastSection />
+
+          {/* Testimonials Section - Moved after podcast */}
+          <TestimonialsSection />
 
           {/* Navigation */}
           <div className="mt-16 flex justify-center gap-4">
