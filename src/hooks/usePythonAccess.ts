@@ -52,23 +52,7 @@ export const usePythonAccess = () => {
 
   const validateAccessCode = async (code: string, guestEmail?: string) => {
     try {
-      // Vérifier si le code existe et n'est pas déjà utilisé
-      const { data: existingCode, error: fetchError } = await supabase
-        .from('access_codes')
-        .select('*')
-        .eq('code', code.toUpperCase())
-        .eq('active', true)
-        .maybeSingle();
-
-      if (fetchError) {
-        throw new Error('Erreur lors de la vérification du code');
-      }
-
-      if (!existingCode) {
-        throw new Error('Code d\'accès invalide ou expiré');
-      }
-
-      // Code spécial PRDimitar - accès libre pour tous
+      // Code spécial PRDIMITAR - accès libre pour tous (vérifier en premier)
       if (code.toUpperCase() === 'PRDIMITAR') {
         setHasAccess(true);
         setAccessCode(code.toUpperCase());
@@ -93,6 +77,22 @@ export const usePythonAccess = () => {
         }
         
         return true;
+      }
+
+      // Vérifier si le code existe et n'est pas déjà utilisé (pour les autres codes)
+      const { data: existingCode, error: fetchError } = await supabase
+        .from('access_codes')
+        .select('*')
+        .eq('code', code.toUpperCase())
+        .eq('active', true)
+        .maybeSingle();
+
+      if (fetchError) {
+        throw new Error('Erreur lors de la vérification du code');
+      }
+
+      if (!existingCode) {
+        throw new Error('Code d\'accès invalide ou expiré');
       }
 
       if (existingCode.user_id && currentUser && existingCode.user_id !== currentUser.id) {
