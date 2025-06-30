@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -42,12 +43,14 @@ export const HeroSection = () => {
         {/* Large subtitle */}
         <p className="text-xl sm:text-2xl md:text-3xl max-w-[1000px] text-[#252523] text-center mb-14 font-normal leading-[1.35] w-full">
           Étudiants en classe prépa ECG ? Maximisez vos chances d'intégrer <span className="font-bold">top 5</span> grâce à l'IA et aux{" "}
-          <Link
-            to="/questions"
+          <a
+            href="https://calendly.com/preparationnelle/30min?month=2025-07"
+            target="_blank"
+            rel="noopener noreferrer"
             className="font-bold underline text-[#F36C00] hover:text-[#c95400] transition"
           >
             cours particuliers sur‑mesure
-          </Link>.
+          </a>.
         </p>
         {/* Buttons spaced out on all sizes */}
         <div className="flex flex-col md:flex-row justify-center gap-6 w-full max-w-[1000px] mt-2">
