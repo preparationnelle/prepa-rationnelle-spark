@@ -15,7 +15,7 @@ interface PythonAccessGateProps {
 
 export const PythonAccessGate: React.FC<PythonAccessGateProps> = ({ children }) => {
   const { hasAccess, loading, validateAccessCode, createCheckoutSession } = usePythonAccess();
-  const { user } = useAuth();
+  const { currentUser } = useAuth();
   const [code, setCode] = useState('');
   const [error, setError] = useState('');
   const [validating, setValidating] = useState(false);
@@ -62,7 +62,7 @@ export const PythonAccessGate: React.FC<PythonAccessGateProps> = ({ children }) 
     return <>{children}</>;
   }
 
-  if (!user) {
+  if (!currentUser) {
     return (
       <Card className="max-w-2xl mx-auto">
         <CardHeader className="text-center">

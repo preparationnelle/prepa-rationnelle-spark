@@ -7,10 +7,10 @@ export const usePythonAccess = () => {
   const [hasAccess, setHasAccess] = useState(false);
   const [loading, setLoading] = useState(true);
   const [accessCode, setAccessCode] = useState<string | null>(null);
-  const { user } = useAuth();
+  const { currentUser } = useAuth();
 
   const checkAccess = async () => {
-    if (!user) {
+    if (!currentUser) {
       setHasAccess(false);
       setLoading(false);
       return;
@@ -21,7 +21,7 @@ export const usePythonAccess = () => {
       const { data: codes, error } = await supabase
         .from('access_codes')
         .select('*')
-        .eq('user_id', user.id)
+        .eq('user_id', currentUser.id)
         .eq('active', true)
         .maybeSingle();
 
@@ -41,7 +41,7 @@ export const usePythonAccess = () => {
   };
 
   const validateAccessCode = async (code: string) => {
-    if (!user) {
+    if (!currentUser) {
       throw new Error('Vous devez être connecté pour utiliser un code d\'accès');
     }
 
@@ -62,7 +62,7 @@ export const usePythonAccess = () => {
         throw new Error('Code d\'accès invalide ou expiré');
       }
 
-      if (existingCode.user_id && existingCode.user_id !== user.id) {
+      if (existingCode.user_id && existingCode.user_id !== currentUser.id) {
         throw new Error('Ce code d\'accès a déjà été utilisé');
       }
 
@@ -71,7 +71,7 @@ export const usePythonAccess = () => {
         const { error: updateError } = await supabase
           .from('access_codes')
           .update({
-            user_id: user.id,
+            user_id: currentUser.id,
             used_at: new Date().toISOString()
           })
           .eq('id', existingCode.id);
@@ -89,7 +89,7 @@ export const usePythonAccess = () => {
   };
 
   const createCheckoutSession = async () => {
-    if (!user) {
+    if (!currentUser) {
       throw new Error('Vous devez être connecté pour effectuer un achat');
     }
 
@@ -116,7 +116,7 @@ export const usePythonAccess = () => {
 
   useEffect(() => {
     checkAccess();
-  }, [user]);
+  }, [currentUser]);
 
   return {
     hasAccess,
