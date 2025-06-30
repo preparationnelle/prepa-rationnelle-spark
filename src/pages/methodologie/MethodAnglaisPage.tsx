@@ -3,6 +3,7 @@ import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { Youtube } from 'lucide-react';
 import ArticleAnglaisOrganisation from './ArticleAnglaisOrganisation';
 import ArticleAnglaisThemes from './ArticleAnglaisThemes';
 import ArticleAnglaisGrammaire from './ArticleAnglaisGrammaire';
@@ -32,6 +33,28 @@ export const MethodAnglaisPage = () => {
           </p>
         </CardContent>
       </Card>
+
+      {/* Video Section */}
+      <div className="mb-8">
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Youtube className="h-5 w-5 text-red-600" />
+              Vidéo explicative - Méthode complète d'anglais ECG
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="aspect-video w-full">
+              <iframe
+                src="https://www.loom.com/embed/68e695fb6c1748c39eb045af67f2bae4"
+                frameBorder="0"
+                allowFullScreen
+                className="w-full h-full rounded-lg"
+              ></iframe>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
 
       <div className="space-y-8">
         <Card>

@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Zap } from 'lucide-react';
+import { Zap, Youtube } from 'lucide-react';
 import { FlashcardGenerator } from '@/components/generator/FlashcardGenerator';
 import { useProgress } from "@/context/ProgressContext";
 
@@ -36,6 +36,28 @@ const FlashcardsGeneratorPage = () => {
             Collez votre cours ou saisissez un thème, l'IA génère des flashcards avec questions-réponses optimisées. Système de révision espacée intégré pour mémoriser efficacement.
           </p>
         </div>
+      </div>
+
+      {/* Video Section */}
+      <div className="mb-10">
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Youtube className="h-5 w-5 text-red-600" />
+              Tutoriel vidéo - Comment créer des flashcards intelligentes
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="aspect-video w-full">
+              <iframe
+                src="https://www.loom.com/embed/136b7d11d85948679b56ee740374c683"
+                frameBorder="0"
+                allowFullScreen
+                className="w-full h-full rounded-lg"
+              ></iframe>
+            </div>
+          </CardContent>
+        </Card>
       </div>
 
       <FlashcardGenerator language={language} onFlashcardCreated={handleFlashcardCreated} />
