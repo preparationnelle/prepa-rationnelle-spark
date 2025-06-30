@@ -5,9 +5,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Loader2, Lock, Check, CreditCard, Key, Mail } from 'lucide-react';
+import { Loader2, Lock, Check, CreditCard, Key, Mail, Eye } from 'lucide-react';
 import { usePythonAccess } from '@/hooks/usePythonAccess';
 import { useAuth } from '@/context/AuthContext';
+import { Link } from 'react-router-dom';
 
 interface PythonAccessGateProps {
   children: React.ReactNode;
@@ -143,23 +144,32 @@ export const PythonAccessGate: React.FC<PythonAccessGateProps> = ({ children }) 
             </div>
           )}
 
-          <Button 
-            onClick={handlePurchase} 
-            disabled={purchasing || (!currentUser && showGuestEmailForm && !guestEmail.trim())}
-            className="w-full bg-orange-600 hover:bg-orange-700 text-white text-lg py-6"
-          >
-            {purchasing ? (
-              <>
-                <Loader2 className="h-5 w-5 animate-spin mr-2" />
-                Redirection en cours...
-              </>
-            ) : (
-              <>
-                <CreditCard className="h-5 w-5 mr-2" />
-                Obtenir l'accès maintenant - 99€
-              </>
-            )}
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Button 
+              onClick={handlePurchase} 
+              disabled={purchasing || (!currentUser && showGuestEmailForm && !guestEmail.trim())}
+              className="flex-1 bg-orange-600 hover:bg-orange-700 text-white text-lg py-6"
+            >
+              {purchasing ? (
+                <>
+                  <Loader2 className="h-5 w-5 animate-spin mr-2" />
+                  Redirection en cours...
+                </>
+              ) : (
+                <>
+                  <CreditCard className="h-5 w-5 mr-2" />
+                  Obtenir l'accès maintenant - 99€
+                </>
+              )}
+            </Button>
+
+            <Link to="/pourquoi-python-prepa-ecg" className="flex-1">
+              <Button variant="outline" className="w-full text-lg py-6 border-orange-300 text-orange-700 hover:bg-orange-50">
+                <Eye className="h-5 w-5 mr-2" />
+                Aperçu gratuit
+              </Button>
+            </Link>
+          </div>
 
           {!currentUser && (
             <p className="text-center text-sm text-gray-600">
