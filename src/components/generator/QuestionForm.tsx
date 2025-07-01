@@ -1,11 +1,10 @@
 
 import React from 'react';
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Info, ChevronUp, ChevronDown, Loader2, MessageSquare, Puzzle } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Textarea } from '@/components/ui/textarea';
+import { Lightbulb, Wand2 } from 'lucide-react';
 
-type QuestionFormProps = {
+interface QuestionFormProps {
   question: string;
   setQuestion: (question: string) => void;
   language: 'fr' | 'en';
@@ -14,71 +13,52 @@ type QuestionFormProps = {
   loadExample: () => void;
   handleGenerate: () => void;
   generating: boolean;
-};
+}
 
-export const QuestionForm = ({
+export const QuestionForm: React.FC<QuestionFormProps> = ({
   question,
   setQuestion,
   language,
-  showAdditionalInfo,
-  setShowAdditionalInfo,
   loadExample,
   handleGenerate,
   generating
-}: QuestionFormProps) => {
-  const getPlaceholder = () => {
-    return language === 'fr'
-      ? "Ex: Quels sont vos trois défauts ?"
-      : "Ex: What are your three weaknesses?";
-  };
-
+}) => {
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex flex-col sm:flex-row gap-4">
-        <Input
-          placeholder={getPlaceholder()}
+    <div className="space-y-4">
+      <div>
+        <label className="block text-sm font-medium mb-2">
+          {language === 'fr' ? 'Question d\'entretien' : 'Interview question'}
+        </label>
+        <Textarea
+          placeholder={language === 'fr' 
+            ? "Ex: Quels sont vos défauts ? Pourquoi cette école ? Parlez-moi de vous..." 
+            : "Ex: What are your weaknesses? Why this school? Tell me about yourself..."}
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
-          className="flex-1"
+          className="min-h-[100px]"
         />
-        <Button variant="outline" onClick={loadExample} className="whitespace-nowrap">
-          {language === 'fr' ? 'Voir un exemple' : 'See an example'}
-        </Button>
       </div>
-      
-      <div className="flex flex-wrap gap-2 mb-2">
-        <Button variant="outline" size="sm" asChild className="flex items-center gap-1">
-          <Link to="/ecoles/emlyon">
-            <MessageSquare className="h-4 w-4" />
-            {language === 'fr' ? 'Questions EM Lyon' : 'EM Lyon Questions'}
-          </Link>
-        </Button>
-        <Button variant="outline" size="sm" asChild className="flex items-center gap-1">
-          <Link to="/ecoles/edhec">
-            <Puzzle className="h-4 w-4" />
-            {language === 'fr' ? 'Mots EDHEC' : 'EDHEC Words'}
-          </Link>
-        </Button>
-      </div>
-      
-      <div className="flex justify-between items-center">
+
+      <div className="flex flex-col sm:flex-row gap-3">
         <Button 
-          variant="ghost" 
-          onClick={() => setShowAdditionalInfo(!showAdditionalInfo)}
+          onClick={loadExample}
+          variant="outline"
           className="flex items-center gap-2"
+          disabled={generating}
         >
-          <Info className="h-4 w-4" />
-          {language === 'fr' ? 'Informations supplémentaires' : 'Additional information'}
-          {showAdditionalInfo ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+          <Lightbulb className="h-4 w-4" />
+          {language === 'fr' ? 'Exemple' : 'Example'}
         </Button>
         
-        <Button onClick={handleGenerate} disabled={generating || !question.trim()}>
-          {generating ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              {language === 'fr' ? 'Génération en cours...' : 'Generating...'}
-            </>
-          ) : language === 'fr' ? "Générer une réponse" : "Generate an answer"}
+        <Button
+          onClick={handleGenerate}
+          disabled={!question.trim() || generating}
+          className="flex items-center gap-2 flex-1"
+        >
+          <Wand2 className="h-4 w-4" />
+          {generating 
+            ? (language === 'fr' ? 'Génération des questions...' : 'Generating questions...') 
+            : (language === 'fr' ? 'Commencer' : 'Start')}
         </Button>
       </div>
     </div>

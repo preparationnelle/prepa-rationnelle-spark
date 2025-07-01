@@ -1,12 +1,12 @@
+
 import React from "react";
 import { Card, CardHeader, CardContent, CardTitle, CardDescription } from '@/components/ui/card';
 import { MessageSquare } from 'lucide-react';
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { QuestionForm } from '@/components/generator/QuestionForm';
-import { AdditionalInfoForm, AdditionalInfo } from '@/components/generator/AdditionalInfoForm';
+import { ContextualQuestionsForm } from '@/components/generator/ContextualQuestionsForm';
 import { InfoPanel } from '@/components/generator/InfoPanel';
 import { ResponseCard } from '@/components/generator/ResponseCard';
-import { UseFormReturn } from "react-hook-form";
 import { Answer } from '@/components/generator/ResponseTabs';
 
 interface AnswerAutomationProps {
@@ -16,15 +16,16 @@ interface AnswerAutomationProps {
   setLanguage: (lang: 'fr' | 'en') => void;
   activeTab: string;
   setActiveTab: (tab: string) => void;
-  showAdditionalInfo: boolean;
-  setShowAdditionalInfo: (b: boolean) => void;
-  loadExample: () => void;
-  handleGenerate: () => void;
   generating: boolean;
-  currentAnswer: Answer | null; // <-- Typing fixed to Answer | null
+  generatingQuestions: boolean;
+  currentAnswer: Answer | null;
   setCurrentAnswer: (s: Answer | null) => void;
   wordCount: number;
-  additionalInfoForm: UseFormReturn<AdditionalInfo>;
+  contextualQuestions: string[];
+  showContextualQuestions: boolean;
+  onGenerateQuestions: () => void;
+  onGenerateAnswer: (answers: string[]) => void;
+  onResetFlow: () => void;
 }
 
 export const AnswerAutomation: React.FC<AnswerAutomationProps> = ({
@@ -34,15 +35,16 @@ export const AnswerAutomation: React.FC<AnswerAutomationProps> = ({
   setLanguage,
   activeTab,
   setActiveTab,
-  showAdditionalInfo,
-  setShowAdditionalInfo,
-  loadExample,
-  handleGenerate,
   generating,
+  generatingQuestions,
   currentAnswer,
   setCurrentAnswer,
   wordCount,
-  additionalInfoForm,
+  contextualQuestions,
+  showContextualQuestions,
+  onGenerateQuestions,
+  onGenerateAnswer,
+  onResetFlow,
 }) => (
   <>
     <Card className="overflow-hidden border-0 shadow-xl bg-gradient-to-br from-white via-orange-50/30 to-red-50/30 mb-12">
@@ -57,7 +59,9 @@ export const AnswerAutomation: React.FC<AnswerAutomationProps> = ({
                 Générer une nouvelle réponse
               </CardTitle>
               <CardDescription className="text-orange-100 mt-1">
-                Entrez une question d'entretien pour obtenir une réponse structurée avec du storytelling
+                {!showContextualQuestions 
+                  ? "Entrez une question d'entretien pour commencer" 
+                  : "Répondez aux questions pour personnaliser votre réponse"}
               </CardDescription>
             </div>
           </div>
@@ -77,23 +81,31 @@ export const AnswerAutomation: React.FC<AnswerAutomationProps> = ({
         </div>
       </CardHeader>
       <CardContent className="p-8">
-        <QuestionForm
-          question={question}
-          setQuestion={setQuestion}
-          language={language}
-          showAdditionalInfo={showAdditionalInfo}
-          setShowAdditionalInfo={setShowAdditionalInfo}
-          loadExample={loadExample}
-          handleGenerate={handleGenerate}
-          generating={generating}
-        />
-        <AdditionalInfoForm
-          language={language}
-          showAdditionalInfo={showAdditionalInfo}
-          form={additionalInfoForm}
-        />
+        {!showContextualQuestions ? (
+          <QuestionForm
+            question={question}
+            setQuestion={setQuestion}
+            language={language}
+            showAdditionalInfo={false}
+            setShowAdditionalInfo={() => {}}
+            loadExample={() => {
+              setQuestion("Quels sont vos défauts ?");
+            }}
+            handleGenerate={onGenerateQuestions}
+            generating={generatingQuestions}
+          />
+        ) : (
+          <ContextualQuestionsForm
+            questions={contextualQuestions}
+            onAnswersSubmit={onGenerateAnswer}
+            onBack={onResetFlow}
+            language={language}
+            loading={generating}
+          />
+        )}
       </CardContent>
     </Card>
+    
     {currentAnswer && (
       <ResponseCard
         question={question}
@@ -102,10 +114,14 @@ export const AnswerAutomation: React.FC<AnswerAutomationProps> = ({
         language={language}
         activeTab={activeTab}
         onTabChange={setActiveTab}
-        onClearAnswer={() => setCurrentAnswer(null)}
+        onClearAnswer={() => {
+          setCurrentAnswer(null);
+          onResetFlow();
+        }}
       />
     )}
-    {!currentAnswer && !generating && (
+    
+    {!currentAnswer && !generating && !showContextualQuestions && !generatingQuestions && (
       <InfoPanel language={language} />
     )}
   </>

@@ -2,29 +2,68 @@
 import { useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
-import { AdditionalInfo } from '@/components/generator/AdditionalInfoForm';
 import { Answer } from '@/components/generator/ResponseTabs';
 import { useActivityHistory } from './useActivityHistory';
 
 export const useGenerateAnswer = (currentUserId?: string) => {
   const [generating, setGenerating] = useState(false);
+  const [generatingQuestions, setGeneratingQuestions] = useState(false);
   const [wordCount, setWordCount] = useState(0);
   const [currentAnswer, setCurrentAnswer] = useState<Answer | null>(null);
+  const [contextualQuestions, setContextualQuestions] = useState<string[]>([]);
+  const [showContextualQuestions, setShowContextualQuestions] = useState(false);
   const { toast } = useToast();
   const { saveActivity } = useActivityHistory();
 
-  const generateAnswer = async (question: string, language: 'fr' | 'en', additionalInfo: AdditionalInfo) => {
+  const generateContextualQuestions = async (question: string, language: 'fr' | 'en') => {
     if (!question.trim()) {
       toast({
         title: language === 'fr' ? "Question requise" : "Question required",
         description: language === 'fr' 
-          ? "Veuillez entrer une question d'entretien pour générer une réponse." 
-          : "Please enter an interview question to generate an answer.",
+          ? "Veuillez entrer une question d'entretien." 
+          : "Please enter an interview question.",
         variant: "destructive"
       });
-      return null;
+      return false;
     }
 
+    setGeneratingQuestions(true);
+    
+    try {
+      const { data, error } = await supabase.functions.invoke('generate-contextual-questions', {
+        body: {
+          question: question,
+          language: language
+        }
+      });
+
+      if (error) {
+        throw new Error(error.message);
+      }
+
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      setContextualQuestions(data.questions);
+      setShowContextualQuestions(true);
+      return true;
+    } catch (error) {
+      console.error("Error generating contextual questions:", error);
+      toast({
+        title: language === 'fr' ? "Erreur" : "Error",
+        description: language === 'fr' 
+          ? "Une erreur est survenue lors de la génération des questions: " + (error as Error).message 
+          : "An error occurred while generating questions: " + (error as Error).message,
+        variant: "destructive"
+      });
+      return false;
+    } finally {
+      setGeneratingQuestions(false);
+    }
+  };
+
+  const generateAnswer = async (question: string, language: 'fr' | 'en', contextualAnswers: string[]) => {
     setGenerating(true);
     
     try {
@@ -33,7 +72,8 @@ export const useGenerateAnswer = (currentUserId?: string) => {
         body: {
           question: question,
           language: language,
-          additionalInfo: additionalInfo
+          contextualQuestions: contextualQuestions,
+          contextualAnswers: contextualAnswers
         }
       });
 
@@ -47,6 +87,7 @@ export const useGenerateAnswer = (currentUserId?: string) => {
 
       setCurrentAnswer(data.answer);
       setWordCount(data.wordCount || 0);
+      setShowContextualQuestions(false);
       
       // Save the generated answer to Supabase if user is logged in
       if (currentUserId) {
@@ -66,7 +107,7 @@ export const useGenerateAnswer = (currentUserId?: string) => {
         await saveActivity(
           'generator',
           'answer',
-          { question, language, additionalInfo },
+          { question, language, contextualQuestions, contextualAnswers },
           data.answer,
           { wordCount: data.wordCount }
         );
@@ -88,11 +129,22 @@ export const useGenerateAnswer = (currentUserId?: string) => {
     }
   };
 
+  const resetFlow = () => {
+    setShowContextualQuestions(false);
+    setContextualQuestions([]);
+    setCurrentAnswer(null);
+  };
+
   return {
     generating,
+    generatingQuestions,
     wordCount,
     currentAnswer,
+    contextualQuestions,
+    showContextualQuestions,
     setCurrentAnswer,
-    generateAnswer
+    generateContextualQuestions,
+    generateAnswer,
+    resetFlow
   };
 };
