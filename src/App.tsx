@@ -1,14 +1,15 @@
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Navigation } from './components/Navigation';
+import Navigation from './components/Navigation';
 import { Footer } from './components/Footer';
-import { ScrollToTop } from './components/ScrollToTop';
+import ScrollToTop from './components/ScrollToTop';
 import { AuthProvider } from './context/AuthContext';
 import { ProgressProvider } from './context/ProgressContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { Toaster } from '@/components/ui/sonner';
-import { PostHogProvider } from './providers/PostHogProvider';
+import PostHogProvider from './providers/PostHogProvider';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -57,22 +58,22 @@ import NEOMAPage from './pages/NEOMAPage';
 import KEDGEPage from './pages/KEDGEPage';
 import SKEMAPage from './pages/SKEMAPage';
 import MethodologiePage from './pages/MethodologiePage';
-import MethodMathsPage from './pages/methodologie/MethodMathsPage';
-import MethodPythonPage from './pages/methodologie/MethodPythonPage';
-import MethodAnglaisPage from './pages/methodologie/MethodAnglaisPage';
-import MethodCulturePage from './pages/methodologie/MethodCulturePage';
-import MethodGeopolitiquePage from './pages/methodologie/MethodGeopolitiquePage';
+import { MethodMathsPage } from './pages/methodologie/MethodMathsPage';
+import { MethodPythonPage } from './pages/methodologie/MethodPythonPage';
+import { MethodAnglaisPage } from './pages/methodologie/MethodAnglaisPage';
+import { MethodCulturePage } from './pages/methodologie/MethodCulturePage';
+import { MethodGeopolitiquePage } from './pages/methodologie/MethodGeopolitiquePage';
 import MethodEntretiensPersonnalitePage from './pages/methodologie/MethodEntretiensPersonnalitePage';
-import MethodGrammairePage from './pages/methodologie/MethodGrammairePage';
-import MethodGrammaireAllemandePage from './pages/methodologie/MethodGrammaireAllemandePage';
-import MethodGrammaireStructurePage from './pages/methodologie/MethodGrammaireStructurePage';
-import MethodGrammaireReglesPage from './pages/methodologie/MethodGrammaireReglesPage';
-import MethodGrammaireRelativesPage from './pages/methodologie/MethodGrammaireRelativesPage';
-import MethodGrammairePassifPage from './pages/methodologie/MethodGrammairePassifPage';
-import MethodGrammaireDeclinaisonsPage from './pages/methodologie/MethodGrammaireDeclinaisonsPage';
-import MethodAllemandPage from './pages/methodologie/MethodAllemandPage';
-import MethodAllemandEssaiPage from './pages/methodologie/MethodAllemandEssaiPage';
-import MethodAllemandSynthesePage from './pages/methodologie/MethodAllemandSynthesePage';
+import { MethodGrammairePage } from './pages/methodologie/MethodGrammairePage';
+import { MethodGrammaireAllemandePage } from './pages/methodologie/MethodGrammaireAllemandePage';
+import { MethodGrammaireStructurePage } from './pages/methodologie/MethodGrammaireStructurePage';
+import { MethodGrammaireReglesPage } from './pages/methodologie/MethodGrammaireReglesPage';
+import { MethodGrammaireRelativesPage } from './pages/methodologie/MethodGrammaireRelativesPage';
+import { MethodGrammairePassifPage } from './pages/methodologie/MethodGrammairePassifPage';
+import { MethodGrammaireDeclinaisonsPage } from './pages/methodologie/MethodGrammaireDeclinaisonsPage';
+import { MethodAllemandPage } from './pages/methodologie/MethodAllemandPage';
+import { MethodAllemandEssaiPage } from './pages/methodologie/MethodAllemandEssaiPage';
+import { MethodAllemandSynthesePage } from './pages/methodologie/MethodAllemandSynthesePage';
 import ArticleAllemandEssaiIntroduction from './pages/methodologie/ArticleAllemandEssaiIntroduction';
 import ArticleAllemandEssaiTeil1 from './pages/methodologie/ArticleAllemandEssaiTeil1';
 import ArticleAllemandEssaiTeil2 from './pages/methodologie/ArticleAllemandEssaiTeil2';
@@ -87,7 +88,7 @@ import ArticleAnglaisGrammaire from './pages/methodologie/ArticleAnglaisGrammair
 import ArticleAnglaisOrganisation from './pages/methodologie/ArticleAnglaisOrganisation';
 import ArticleAnglaisProgress from './pages/methodologie/ArticleAnglaisProgress';
 import ArticleAnglaisThemes from './pages/methodologie/ArticleAnglaisThemes';
-import MathsEteECG1ECG2Page from './pages/methodologie/MathsEteECG1ECG2Page';
+import { MathsEteECG1ECG2Page } from './pages/methodologie/MathsEteECG1ECG2Page';
 import PitchIntroMethodePage from './pages/PitchIntroMethodePage';
 import MotivationEcoleMethodePage from './pages/MotivationEcoleMethodePage';
 import ProjetProfessionnelMethodePage from './pages/ProjetProfessionnelMethodePage';
