@@ -23,7 +23,7 @@ export const PythonExerciseValidator: React.FC<PythonExerciseValidatorProps> = (
   const [showPaymentModal, setShowPaymentModal] = useState(false);
 
   useEffect(() => {
-    setCode('');
+    setCode(exercise.template || '');
     setResult(null);
   }, [exercise.id]);
 
@@ -42,8 +42,7 @@ export const PythonExerciseValidator: React.FC<PythonExerciseValidatorProps> = (
       const { data, error } = await supabase.functions.invoke('python-exercise-validator', {
         body: {
           exerciseId: exercise.id,
-          code: code,
-          expected: exercise.expected_output
+          code: code
         }
       });
 
@@ -61,6 +60,19 @@ export const PythonExerciseValidator: React.FC<PythonExerciseValidatorProps> = (
     }
   };
 
+  const getDifficultyColor = (difficulty: string) => {
+    switch (difficulty) {
+      case 'Débutant':
+        return 'default';
+      case 'Intermédiaire':
+        return 'secondary';
+      case 'Avancé':
+        return 'destructive';
+      default:
+        return 'default';
+    }
+  };
+
   return (
     <div className="space-y-6 text-gray-900">
       <Card>
@@ -73,7 +85,7 @@ export const PythonExerciseValidator: React.FC<PythonExerciseValidatorProps> = (
                 <Lock className="h-4 w-4 text-orange-500" />
               )}
             </CardTitle>
-            <Badge variant={exercise.difficulty === 'facile' ? 'default' : exercise.difficulty === 'moyen' ? 'secondary' : 'destructive'}>
+            <Badge variant={getDifficultyColor(exercise.difficulty)}>
               {exercise.difficulty}
             </Badge>
           </div>
@@ -84,26 +96,17 @@ export const PythonExerciseValidator: React.FC<PythonExerciseValidatorProps> = (
             <p className="text-gray-700">{exercise.description}</p>
           </div>
 
-          {exercise.example_input && (
-            <div>
-              <h4 className="font-semibold mb-2">Exemple d'entrée :</h4>
-              <pre className="bg-gray-100 p-2 rounded text-sm font-mono">{exercise.example_input}</pre>
-            </div>
-          )}
-
-          {exercise.expected_output && (
-            <div>
-              <h4 className="font-semibold mb-2">Sortie attendue :</h4>
-              <pre className="bg-gray-100 p-2 rounded text-sm font-mono">{exercise.expected_output}</pre>
-            </div>
-          )}
+          <div>
+            <h4 className="font-semibold mb-2">Code de départ :</h4>
+            <pre className="bg-gray-100 p-2 rounded text-sm font-mono whitespace-pre-wrap">{exercise.template}</pre>
+          </div>
 
           <div>
             <h4 className="font-semibold mb-2">Votre code Python :</h4>
             <Textarea
               value={code}
               onChange={(e) => setCode(e.target.value)}
-              placeholder={hasAccess ? "Écrivez votre code Python ici..." : "Débloquez l'accès premium pour coder..."}
+              placeholder={hasAccess ? "Modifiez le code ci-dessus..." : "Débloquez l'accès premium pour coder..."}
               className="font-mono text-sm min-h-[200px]"
               disabled={!hasAccess}
             />
