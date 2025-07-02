@@ -185,7 +185,7 @@ const FormationPage = () => {
           </PythonAccessGate>
         </div>
 
-        {/* Modules d'exercices */}
+        {/* Modules d'exercices - MAINTENANT ACCESSIBLES SANS PAIEMENT */}
         <div className="mb-16">
           <h2 className="text-2xl font-bold mb-8 text-center">MODULES D'EXERCICES</h2>
           
@@ -217,7 +217,7 @@ const FormationPage = () => {
                 <Link to="/formation/python-fondamentaux-exercices">
                   <Button className="w-full bg-blue-600 hover:bg-blue-700">
                     <Calculator className="h-4 w-4 mr-2" />
-                    Faire les exercices
+                    Voir les exercices
                   </Button>
                 </Link>
               </CardContent>
@@ -249,7 +249,7 @@ const FormationPage = () => {
                 <Link to="/formation/python-matrices-exercices">
                   <Button className="w-full bg-green-600 hover:bg-green-700">
                     <Calculator className="h-4 w-4 mr-2" />
-                    Faire les exercices
+                    Voir les exercices
                   </Button>
                 </Link>
               </CardContent>
@@ -281,7 +281,7 @@ const FormationPage = () => {
                 <Link to="/formation/python-analyse-exercices">
                   <Button className="w-full bg-amber-600 hover:bg-amber-700">
                     <Calculator className="h-4 w-4 mr-2" />
-                    Faire les exercices
+                    Voir les exercices
                   </Button>
                 </Link>
               </CardContent>
@@ -313,7 +313,7 @@ const FormationPage = () => {
                 <Link to="/formation/python-probabilites-exercices">
                   <Button className="w-full bg-purple-600 hover:bg-purple-700">
                     <Calculator className="h-4 w-4 mr-2" />
-                    Faire les exercices
+                    Voir les exercices
                   </Button>
                 </Link>
               </CardContent>
