@@ -140,7 +140,8 @@ def simulation_geom(p, q):
       description: currentExercise.description,
       difficulty: currentExercise.difficulty,
       template: currentExercise.template,
-      hints: currentExercise.hints
+      hints: currentExercise.hints,
+      category: 'probabilites'
     };
 
     return (
