@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { VideoAndIntro } from '@/components/VideoAndIntro';
 import { PythonQuizGenerator } from '@/components/python/PythonQuizGenerator';
@@ -127,13 +126,45 @@ const FormationPage = () => {
                 </CardContent>
               </Card>
 
-              {/* Module 4 - À venir */}
+              {/* Module 4 - Probabilités */}
+              <Card className="hover:shadow-lg transition-shadow border border-purple-200">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <BookOpen className="h-6 w-6 text-purple-600" />
+                    <div>
+                      <CardTitle className="text-lg">Module 4</CardTitle>
+                      <Badge variant="secondary" className="mt-1 bg-purple-100 text-purple-700">Disponible</Badge>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <h3 className="font-semibold text-purple-700 mb-2">Probabilités</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Simulation et statistiques avec NumPy & Matplotlib. 
+                    Lois de probabilité, méthode de Monte-Carlo et visualisations.
+                  </p>
+                  <ul className="text-sm space-y-1 mb-4">
+                    <li>• Génération aléatoire et lois discrètes</li>
+                    <li>• Statistiques descriptives</li>
+                    <li>• Méthode de Monte-Carlo</li>
+                    <li>• Graphiques statistiques</li>
+                  </ul>
+                  <Link to="/formation/python-probabilites">
+                    <Button className="w-full bg-purple-600 hover:bg-purple-700">
+                      <Play className="h-4 w-4 mr-2" />
+                      Commencer le module
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+
+              {/* Module 5 - À venir */}
               <Card className="opacity-60">
                 <CardHeader>
                   <div className="flex items-center gap-3">
                     <BookOpen className="h-6 w-6 text-gray-400" />
                     <div>
-                      <CardTitle className="text-lg text-gray-600">Module 4</CardTitle>
+                      <CardTitle className="text-lg text-gray-600">Module 5</CardTitle>
                       <Badge variant="outline" className="mt-1">Bientôt disponible</Badge>
                     </div>
                   </div>
