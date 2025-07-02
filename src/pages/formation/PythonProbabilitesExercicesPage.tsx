@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -138,7 +137,7 @@ def simulation_geom(p, q):
       id: currentExercise.exerciseId,
       title: currentExercise.title,
       description: currentExercise.description,
-      difficulty: currentExercise.difficulty,
+      difficulty: currentExercise.difficulty as "Débutant" | "Intermédiaire" | "Avancé",
       template: currentExercise.template,
       hints: currentExercise.hints,
       category: 'probabilites'
