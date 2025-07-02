@@ -7,10 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { BookOpen, Play, ArrowRight, Target } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
 const FormationPage = () => {
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="text-center mb-12">
@@ -25,7 +23,8 @@ const FormationPage = () => {
 
         {/* Modules de cours avec contrôle d'accès */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold mb-8 text-center">Modules de Formation</h2>
+          <h2 className="text-2xl font-bold mb-8 text-center">MODULES DE COURS 
+        </h2>
           
           <PythonAccessGate>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -244,8 +243,6 @@ const FormationPage = () => {
           <PythonQuizGenerator />
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default FormationPage;
