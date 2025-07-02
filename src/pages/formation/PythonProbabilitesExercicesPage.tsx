@@ -180,7 +180,7 @@ print(f"Nombre de lancers : {simulX()}")`)}
                           <ul className="list-disc list-inside space-y-1 text-sm">
                             <li>La probabilité théorique E[X] = 6 lancers en moyenne</li>
                             <li>Important de remettre le compteur à 0 après un Face</li>
-                            <li>Utilisation de <code>rd.random() < 0.5</code> pour simuler pile ou face</li>
+                            <li>Utilisation de <code>rd.random() &lt; 0.5</code> pour simuler pile ou face</li>
                           </ul>
                         </div>
                       </div>
@@ -555,7 +555,7 @@ test_frequence(0.3)`)}
                           <p><strong>Principe fondamental :</strong></p>
                           <ul className="list-disc list-inside space-y-1 text-sm">
                             <li><code>rd.random()</code> génère un nombre aléatoire uniforme dans [0,1)</li>
-                            <li>P(rd.random() < p) = p par définition de la loi uniforme</li>
+                            <li>P(rd.random() &lt; p) = p par définition de la loi uniforme</li>
                             <li>C'est la méthode standard pour simuler un événement de Bernoulli</li>
                           </ul>
                           <p><strong>Applications :</strong></p>
