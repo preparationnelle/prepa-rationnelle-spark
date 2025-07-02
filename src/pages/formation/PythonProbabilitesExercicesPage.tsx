@@ -15,7 +15,7 @@ const PythonProbabilitesExercicesPage = () => {
       id: 1,
       exerciseId: 'loi_arret_aleatoire',
       title: "Loi d'arrêt aléatoire",
-      difficulty: "Moyen",
+      difficulty: "Intermédiaire",
       description: "Simuler X = rang d'obtention de deux Pile consécutifs au pile ou face.",
       color: "orange",
       template: `import random as rd
@@ -35,7 +35,7 @@ def simulX():
       id: 2,
       exerciseId: 'processus_renforcement',
       title: "Processus de renforcement",
-      difficulty: "Moyen",
+      difficulty: "Intermédiaire",
       description: "Simuler le processus de renforcement dans une urne avec règles spécifiques.",
       color: "orange",
       template: `import random as rd
@@ -55,7 +55,7 @@ def simulY(n):
       id: 3,
       exerciseId: 'tirages_urne',
       title: "Tirages dans une urne",
-      difficulty: "Moyen",
+      difficulty: "Intermédiaire",
       description: "Simuler Z = rang d'apparition de la première boule rouge et Y_n = nombre de boules vertes.",
       color: "orange",
       template: `import random as rd
@@ -77,7 +77,7 @@ def simulY(n, a, b):
       id: 4,
       exerciseId: 'simulation_evenement',
       title: "Simulation d'un événement",
-      difficulty: "Moyen",
+      difficulty: "Intermédiaire",
       description: "Simuler la réalisation d'un événement A de probabilité p avec Python.",
       color: "orange",
       template: `import random as rd
@@ -95,7 +95,7 @@ def simuler_evenement(p):
       id: 5,
       exerciseId: 'sauts_escalier',
       title: "Sauts aléatoires dans un escalier",
-      difficulty: "Moyen",
+      difficulty: "Intermédiaire",
       description: "Un animal gravit un escalier en montant 1 ou 2 marches à chaque bond. Simuler le nombre de bonds.",
       color: "orange",
       template: `import numpy.random as rd
@@ -114,7 +114,7 @@ def saut_escalier(n):
       id: 6,
       exerciseId: 'simulation_geometrique',
       title: "Simulation de lois géométriques",
-      difficulty: "Moyen",
+      difficulty: "Intermédiaire",
       description: "Estimer P(X = 2Y) où X et Y suivent des lois géométriques par méthode de Monte-Carlo.",
       color: "orange",
       template: `import numpy.random as rd
