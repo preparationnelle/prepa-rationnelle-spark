@@ -9,12 +9,64 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Target, Book, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Target, Book, CheckCircle, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const PythonProbabilitesExercicesPage = () => {
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
+  };
+
+  const exercices = [
+    {
+      id: 1,
+      title: "Loi d'arrêt aléatoire",
+      description: "Simuler X = rang d'obtention de deux Pile consécutifs au pile ou face.",
+      difficulty: "Intermédiaire",
+      badge: "Simulation"
+    },
+    {
+      id: 2,
+      title: "Processus de renforcement",
+      description: "Simuler le processus de renforcement dans une urne avec règles spécifiques.",
+      difficulty: "Intermédiaire", 
+      badge: "Algorithme"
+    },
+    {
+      id: 3,
+      title: "Tirages dans une urne",
+      description: "Simuler Z = rang d'apparition de la première boule rouge et Y_n = nombre de boules vertes.",
+      difficulty: "Intermédiaire",
+      badge: "Probabilités"
+    },
+    {
+      id: 4,
+      title: "Simulation d'un événement",
+      description: "Simuler la réalisation d'un événement A de probabilité p avec Python.",
+      difficulty: "Intermédiaire",
+      badge: "Fondamental"
+    },
+    {
+      id: 5,
+      title: "Sauts aléatoires dans un escalier",
+      description: "Un animal gravit un escalier de n marches en montant 1 ou 2 marches à chaque bond.",
+      difficulty: "Intermédiaire",
+      badge: "Simulation"
+    },
+    {
+      id: 6,
+      title: "Simulation de lois géométriques",
+      description: "Estimer P(X = 2Y) où X et Y suivent des lois géométriques par méthode de Monte-Carlo.",
+      difficulty: "Intermédiaire",
+      badge: "Monte-Carlo"
+    }
+  ];
+
+  const scrollToExercice = (exerciceId: number) => {
+    const element = document.getElementById(`exercice-${exerciceId}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -69,9 +121,51 @@ const PythonProbabilitesExercicesPage = () => {
           </CardContent>
         </Card>
 
+        {/* Grille des exercices */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          {exercices.map((exercice) => (
+            <Card key={exercice.id} className="border-2 hover:border-green-300 transition-colors group cursor-pointer">
+              <CardHeader>
+                <div className="flex items-start justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-green-500 rounded-lg">
+                      <Book className="h-5 w-5 text-white" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-lg text-green-700">
+                        Exercice {exercice.id}
+                      </CardTitle>
+                      <Badge variant="outline" className="mt-1 bg-green-100 text-green-800 border-green-300">
+                        {exercice.difficulty}
+                      </Badge>
+                    </div>
+                  </div>
+                  <Badge variant="secondary" className="bg-orange-100 text-orange-700">
+                    {exercice.badge}
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <h3 className="font-semibold text-gray-900">{exercice.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  {exercice.description}
+                </p>
+                <Button 
+                  className="w-full bg-green-500 hover:bg-green-600 text-white"
+                  onClick={() => scrollToExercice(exercice.id)}
+                >
+                  <Play className="h-4 w-4 mr-2" />
+                  Commencer l'exercice
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Détails des exercices */}
         <div className="space-y-8">
           {/* Exercice 1 */}
-          <Card className="border border-orange-200">
+          <Card id="exercice-1" className="border border-orange-200">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-3 text-orange-700">
@@ -192,7 +286,7 @@ print(f"Nombre de lancers : {simulX()}")`)}
           </Card>
 
           {/* Exercice 2 */}
-          <Card className="border border-orange-200">
+          <Card id="exercice-2" className="border border-orange-200">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-3 text-orange-700">
@@ -328,7 +422,7 @@ print(f"Rang d'obtention de 5 boules vertes : {simulY(5)}")`)}
           </Card>
 
           {/* Exercice 3 */}
-          <Card className="border border-orange-200">
+          <Card id="exercice-3" className="border border-orange-200">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-3 text-orange-700">
@@ -456,7 +550,7 @@ print(f"Nombre de boules vertes sur 10 tirages : {simulY(10, 3, 7)}")`)}
           </Card>
 
           {/* Exercice 4 */}
-          <Card className="border border-orange-200">
+          <Card id="exercice-4" className="border border-orange-200">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-3 text-orange-700">
@@ -574,7 +668,7 @@ test_frequence(0.3)`)}
           </Card>
 
           {/* Exercice 5 */}
-          <Card className="border border-orange-200">
+          <Card id="exercice-5" className="border border-orange-200">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-3 text-orange-700">
@@ -719,7 +813,7 @@ analyser_escalier(10)`)}
           </Card>
 
           {/* Exercice 6 */}
-          <Card className="border border-orange-200">
+          <Card id="exercice-6" className="border border-orange-200">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-3 text-orange-700">
