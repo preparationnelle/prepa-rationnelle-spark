@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { VideoAndIntro } from '@/components/VideoAndIntro';
 import { PythonQuizGenerator } from '@/components/python/PythonQuizGenerator';
@@ -191,6 +192,70 @@ const FormationPage = () => {
           <PythonAccessGate>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               
+              {/* Module 1 - Exercices Fondamentaux */}
+              <Card className="hover:shadow-lg transition-shadow border border-blue-200">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <Calculator className="h-6 w-6 text-blue-600" />
+                    <div>
+                      <CardTitle className="text-lg">Module 1</CardTitle>
+                      <Badge variant="secondary" className="mt-1 bg-blue-100 text-blue-700">Disponible</Badge>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <h3 className="font-semibold text-blue-700 mb-2">Exercices - Fondamentaux</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Exercices pratiques sur les bases de Python : variables, 
+                    types, opérateurs et structures de contrôle.
+                  </p>
+                  <ul className="text-sm space-y-1 mb-4">
+                    <li>• Variables et types de données</li>
+                    <li>• Opérateurs et expressions</li>
+                    <li>• Structures conditionnelles</li>
+                    <li>• Boucles et fonctions</li>
+                  </ul>
+                  <Link to="/formation/python-fondamentaux-exercices">
+                    <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                      <Calculator className="h-4 w-4 mr-2" />
+                      Faire les exercices
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+
+              {/* Module 2 - Exercices Matrices */}
+              <Card className="hover:shadow-lg transition-shadow border border-green-200">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <Calculator className="h-6 w-6 text-green-600" />
+                    <div>
+                      <CardTitle className="text-lg">Module 2</CardTitle>
+                      <Badge variant="secondary" className="mt-1 bg-green-100 text-green-700">Disponible</Badge>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <h3 className="font-semibold text-green-700 mb-2">Exercices - Matrices</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Exercices pratiques sur NumPy et les matrices : 
+                    création, manipulation et opérations matricielles.
+                  </p>
+                  <ul className="text-sm space-y-1 mb-4">
+                    <li>• Création de matrices NumPy</li>
+                    <li>• Opérations matricielles</li>
+                    <li>• Indexation et slicing</li>
+                    <li>• Fonctions statistiques</li>
+                  </ul>
+                  <Link to="/formation/python-matrices-exercices">
+                    <Button className="w-full bg-green-600 hover:bg-green-700">
+                      <Calculator className="h-4 w-4 mr-2" />
+                      Faire les exercices
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+
               {/* Module 3 - Exercices Analyse */}
               <Card className="hover:shadow-lg transition-shadow border border-amber-200">
                 <CardHeader>
@@ -211,7 +276,7 @@ const FormationPage = () => {
                   <ul className="text-sm space-y-1 mb-4">
                     <li>• Création de vecteurs avec NumPy</li>
                     <li>• Calcul de sommes finies</li>
-                    <li>• Interprétation de commandes</li>
+                    <li>• Suites récurrentes</li>
                     <li>• Corrigés détaillés</li>
                   </ul>
                   <Link to="/formation/python-analyse-exercices">
@@ -223,46 +288,35 @@ const FormationPage = () => {
                 </CardContent>
               </Card>
 
-              {/* Modules à venir */}
-              <Card className="opacity-60">
+              {/* Module 4 - Exercices Probabilités */}
+              <Card className="hover:shadow-lg transition-shadow border border-purple-200">
                 <CardHeader>
                   <div className="flex items-center gap-3">
-                    <Calculator className="h-6 w-6 text-gray-400" />
+                    <Calculator className="h-6 w-6 text-purple-600" />
                     <div>
-                      <CardTitle className="text-lg text-gray-600">Module 1</CardTitle>
-                      <Badge variant="outline" className="mt-1">Bientôt disponible</Badge>
+                      <CardTitle className="text-lg">Module 4</CardTitle>
+                      <Badge variant="secondary" className="mt-1 bg-purple-100 text-purple-700">Disponible</Badge>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <h3 className="font-semibold text-gray-600 mb-2">Exercices - Fondamentaux</h3>
+                  <h3 className="font-semibold text-purple-700 mb-2">Exercices - Probabilités</h3>
                   <p className="text-sm text-muted-foreground mb-4">
-                    Exercices sur les bases de Python.
+                    Exercices pratiques sur les probabilités et les statistiques 
+                    avec NumPy et les méthodes de Monte-Carlo.
                   </p>
-                  <Button disabled className="w-full">
-                    Prochainement
-                  </Button>
-                </CardContent>
-              </Card>
-
-              <Card className="opacity-60">
-                <CardHeader>
-                  <div className="flex items-center gap-3">
-                    <Calculator className="h-6 w-6 text-gray-400" />
-                    <div>
-                      <CardTitle className="text-lg text-gray-600">Module 2</CardTitle>
-                      <Badge variant="outline" className="mt-1">Bientôt disponible</Badge>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <h3 className="font-semibold text-gray-600 mb-2">Exercices - Matrices</h3>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Exercices sur NumPy et les matrices.
-                  </p>
-                  <Button disabled className="w-full">
-                    Prochainement
-                  </Button>
+                  <ul className="text-sm space-y-1 mb-4">
+                    <li>• Génération aléatoire</li>
+                    <li>• Lois de probabilité</li>
+                    <li>• Méthodes de Monte-Carlo</li>
+                    <li>• Visualisations statistiques</li>
+                  </ul>
+                  <Link to="/formation/python-probabilites-exercices">
+                    <Button className="w-full bg-purple-600 hover:bg-purple-700">
+                      <Calculator className="h-4 w-4 mr-2" />
+                      Faire les exercices
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
 

@@ -1,9 +1,8 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Calculator, Target, CheckCircle, Play } from 'lucide-react';
+import { ArrowLeft, Calculator, Target, CheckCircle, Play, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import {
   Accordion,
@@ -81,9 +80,44 @@ const PythonAnalyseExercicesPage = () => {
     },
     {
       id: 10,
-      title: "Exercice 10 - Suite de Fibonacci",
+      title: "Exercice 10 - Approximation de série",
       difficulty: "Moyen",
-      description: "Implémenter la suite de Fibonacci définie par u₀ = 0, u₁ = 1, et uₙ₊₂ = uₙ₊₁ + uₙ",
+      description: "Écrire un programme Python qui calcule une valeur approchée de la somme S = ∑(k=1 à ∞) 1/k² à ε près.",
+      color: "orange"
+    },
+    {
+      id: 11,
+      title: "Exercice 11 - Somme exponentielle",
+      difficulty: "Moyen",
+      description: "Écrire une fonction Python qui calcule la somme ∑(k=1 à n) 2ᵏ/k pour un entier n donné.",
+      color: "orange"
+    },
+    {
+      id: 12,
+      title: "Exercice 12 - Coefficient binomial",
+      difficulty: "Moyen",
+      description: "Définir une fonction binomiale(n, k) qui renvoie la valeur du coefficient binomial (n k).",
+      color: "orange"
+    },
+    {
+      id: 13,
+      title: "Exercice 13 - Factorielle seuil",
+      difficulty: "Moyen",
+      description: "Écrire un script Python qui calcule le plus petit entier naturel k tel que k! > 1 000 000.",
+      color: "orange"
+    },
+    {
+      id: 14,
+      title: "Exercice 14 - Fonction par cas",
+      difficulty: "Moyen",
+      description: "Écrire un script Python qui évalue une fonction g(x) définie par cas selon la valeur de x.",
+      color: "orange"
+    },
+    {
+      id: 15,
+      title: "Exercice 15 - Sommes doubles",
+      difficulty: "Moyen",
+      description: "Calculer des sommes doubles avec boucles imbriquées : ∑∑ 1/(k+i) et ∑∑ k×i.",
       color: "orange"
     }
   ];
@@ -383,7 +417,7 @@ const PythonAnalyseExercicesPage = () => {
             </>
           )}
 
-          {/* Exercice 4 - Somme harmonique */}
+          {/* Exercices 4-9 - Niveau Moyen */}
           {selectedExercise === 4 && (
             <Card className="mb-8">
               <CardHeader>
@@ -448,7 +482,6 @@ const PythonAnalyseExercicesPage = () => {
             </Card>
           )}
 
-          {/* Exercice 5 - Condition d'arrêt */}
           {selectedExercise === 5 && (
             <Card className="mb-8">
               <CardHeader>
@@ -510,7 +543,6 @@ print(n)`}</code>
             </Card>
           )}
 
-          {/* Exercice 6 - Convergence de suite */}
           {selectedExercise === 6 && (
             <Card className="mb-8">
               <CardHeader>
@@ -576,7 +608,6 @@ print(n)`}</code>
             </Card>
           )}
 
-          {/* Exercice 7 - Approximation par récurrence */}
           {selectedExercise === 7 && (
             <Card className="mb-8">
               <CardHeader>
@@ -641,7 +672,6 @@ print(n)`}</code>
             </Card>
           )}
 
-          {/* Exercice 8 - Suite définie par récurrence */}
           {selectedExercise === 8 && (
             <Card className="mb-8">
               <CardHeader>
@@ -711,7 +741,6 @@ def suite(n):
             </Card>
           )}
 
-          {/* Exercice 9 - Tableau de suite */}
           {selectedExercise === 9 && (
             <Card className="mb-8">
               <CardHeader>
@@ -753,7 +782,7 @@ def suite(n):
                                 <code>{`import numpy as np
 
 def premSuiteUTab(m):
-                                    T = np.zeros(m)
+    T = np.zeros(m)
     T[0] = 3/2
     for i in range(1, m):
         T[i] = np.log(1 + T[i - 1]) + T[i - 1] ** 2
@@ -781,7 +810,7 @@ def premSuiteUTab(m):
             </Card>
           )}
 
-          {/* Exercice 10 - Suite de Fibonacci */}
+          {/* Nouveaux exercices 10-15 */}
           {selectedExercise === 10 && (
             <Card className="mb-8">
               <CardHeader>
@@ -793,13 +822,14 @@ def premSuiteUTab(m):
               <CardContent>
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-semibold mb-3">Suite de Fibonacci</h3>
+                    <h3 className="text-lg font-semibold mb-3">Approximation de série</h3>
                     <div className="p-4 bg-slate-50 rounded-lg mb-4">
-                      <p className="text-sm mb-2">On considère la suite (uₙ) définie par :</p>
+                      <p className="text-sm mb-2">On admet que pour tout n ∈ ℕ*, on a :</p>
                       <div className="text-center text-lg font-mono bg-white p-3 rounded border mb-3">
-                        u₀ = 0, u₁ = 1, et pour tout n ≥ 0, uₙ₊₂ = uₙ₊₁ + uₙ
+                        0 ≤ ∑(k=1 à n) 1/k² + 1/n - S ≤ 1/n²
                       </div>
-                      <p className="text-sm">Implémenter un script qui affiche les n+1 premiers termes de la suite de Fibonacci.</p>
+                      <p className="text-sm mb-2">où S = ∑(k=1 à ∞) 1/k²</p>
+                      <p className="text-sm">Écrire un programme Python qui demande à l'utilisateur un réel positif ε (epsilon), puis calcule une valeur approchée de la somme S à ε près.</p>
                     </div>
 
                     <Accordion type="single" collapsible>
@@ -811,46 +841,56 @@ def premSuiteUTab(m):
                         <AccordionContent>
                           <div className="space-y-4">
                             <p className="text-sm">
-                              Voici le script complet :
+                              Voici deux versions du programme :
                             </p>
-                            <div className="bg-slate-900 rounded-lg p-4">
-                              <pre className="text-green-400 text-sm">
-                                <code>{`n = int(input("Entrer la valeur de n : "))
+                            
+                            <div>
+                              <h4 className="font-semibold text-sm mb-2">Version 1 - Avec NumPy</h4>
+                              <div className="bg-slate-900 rounded-lg p-4">
+                                <pre className="text-green-400 text-sm">
+                                  <code>{`import numpy as np
 
-# Cas particulier : n = 0
-if n == 0:
-    print([0])
-else:
-    L = [0, 1]
-    for i in range(n - 1):
-        suivant = L[-1] + L[-2]
-        L.append(suivant)
-    print("Les", n + 1, "premiers termes de la suite de Fibonacci sont :")
-    print(L)`}</code>
-                              </pre>
-                            </div>
-                            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-                              <p className="text-sm text-green-800 mb-2">
-                                <strong>Exemple d'exécution :</strong>
-                              </p>
-                              <div className="bg-slate-900 rounded p-2">
-                                <pre className="text-green-400 text-xs">
-                                  <code>Entrer la valeur de n : 10</code>
-                                  <br />
-                                  <code>Les 11 premiers termes de la suite de Fibonacci sont :</code>
-                                  <br />
-                                  <code>[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55]</code>
+eps = float(input("Entrer la précision eps : "))
+n = 1
+
+while 1 / n**2 > eps:
+    n += 1
+
+k = np.arange(1, n + 1)
+S_approx = np.sum(1 / k**2) + 1 / n
+
+print("Valeur approchée de S :", S_approx)`}</code>
                                 </pre>
                               </div>
                             </div>
+
+                            <div>
+                              <h4 className="font-semibold text-sm mb-2">Version 2 - Avec boucle</h4>
+                              <div className="bg-slate-900 rounded-lg p-4">
+                                <pre className="text-green-400 text-sm">
+                                  <code>{`eps = float(input("Entrer la précision eps : "))
+n = 1
+S = 1  # car 1/1^2 = 1
+
+while 1 / n**2 > eps:
+    n += 1
+    S += 1 / n**2
+
+S_approx = S + 1 / n
+print("Valeur approchée de S :", S_approx)`}</code>
+                                </pre>
+                              </div>
+                            </div>
+
                             <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
                               <p className="text-sm text-blue-800">
-                                <strong>Remarques pédagogiques :</strong>
+                                <strong>Explication :</strong>
                               </p>
                               <ul className="text-sm text-blue-700 mt-2 space-y-1">
-                                <li>• Ce script construit la suite de manière itérative</li>
-                                <li>• La structure <code>L[-1] + L[-2]</code> utilise l'indexation négative de Python</li>
-                                <li>• La suite de Fibonacci est un bon exercice pour les boucles et les listes</li>
+                                <li>• On trouve n tel que 1/n² ≤ eps (condition d'arrêt)</li>
+                                <li>• On calcule ∑(k=1 à n) 1/k²</li>
+                                <li>• On ajoute 1/n pour obtenir l'approximation</li>
+                                <li>• L'erreur est majorée par 1/n² ≤ eps</li>
                               </ul>
                             </div>
                           </div>
@@ -863,32 +903,405 @@ else:
             </Card>
           )}
 
-          {/* Navigation */}
+          {selectedExercise === 11 && (
+            <Card className="mb-8">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3 text-amber-700">
+                  <Calculator className="h-6 w-6" />
+                  Exercice 11
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">Somme exponentielle</h3>
+                    <div className="p-4 bg-slate-50 rounded-lg mb-4">
+                      <p className="text-sm mb-2">Écrire une fonction Python <code>somme_exponentielle(n)</code> qui prend en paramètre un entier naturel n et retourne la valeur de la somme suivante :</p>
+                      <div className="text-center text-lg font-mono bg-white p-3 rounded border mb-3">
+                        ∑(k=1 à n) 2ᵏ/k
+                      </div>
+                      <p className="text-sm">Puis écrire un script principal qui demande à l'utilisateur de saisir un entier n, et affiche la valeur de cette somme.</p>
+                    </div>
+
+                    <Accordion type="single" collapsible>
+                      <AccordionItem value="correction-11">
+                        <AccordionTrigger className="text-orange-700 font-semibold">
+                          <CheckCircle className="h-4 w-4 mr-2" />
+                          Voir la correction 11
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <div className="space-y-4">
+                            <p className="text-sm">
+                              Voici la fonction et le script principal :
+                            </p>
+                            <div className="bg-slate-900 rounded-lg p-4">
+                              <pre className="text-green-400 text-sm">
+                                <code>{`def somme_exponentielle(n):
+    S = 0
+    for k in range(1, n + 1):
+        S += (2 ** k) / k
+    return S
+
+# Script principal
+n = int(input("Entrer un entier n : "))
+resultat = somme_exponentielle(n)
+print("Somme =", resultat)`}</code>
+                              </pre>
+                            </div>
+                            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                              <p className="text-sm text-blue-800">
+                                <strong>Explication :</strong>
+                              </p>
+                              <ul className="text-sm text-blue-700 mt-2 space-y-1">
+                                <li>• La fonction parcourt k de 1 à n</li>
+                                <li>• À chaque étape, on calcule 2ᵏ/k et on l'ajoute à S</li>
+                                <li>• <code>2 ** k</code> calcule 2 puissance k</li>
+                                <li>• Le script principal appelle la fonction et affiche le résultat</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {selectedExercise === 12 && (
+            <Card className="mb-8">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3 text-amber-700">
+                  <Calculator className="h-6 w-6" />
+                  Exercice 12
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">Coefficient binomial</h3>
+                    <div className="p-4 bg-slate-50 rounded-lg mb-4">
+                      <p className="text-sm mb-2">Définir une fonction <code>binomiale(n, k)</code> qui renvoie la valeur du coefficient binomial (n k), défini par :</p>
+                      <div className="bg-white p-3 rounded border mb-3">
+                        <p className="text-sm font-mono">• 0 si k &gt; n</p>
+                        <p className="text-sm font-mono">• 1 si k = 0</p>
+                        <p className="text-sm font-mono">• n(n-1)...(n-k+1) / (1×2×...×k) si 1 ≤ k ≤ n</p>
+                      </div>
+                    </div>
+
+                    <Accordion type="single" collapsible>
+                      <AccordionItem value="correction-12">
+                        <AccordionTrigger className="text-orange-700 font-semibold">
+                          <CheckCircle className="h-4 w-4 mr-2" />
+                          Voir la correction 12
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <div className="space-y-4">
+                            <p className="text-sm">
+                              Voici la fonction complète :
+                            </p>
+                            <div className="bg-slate-900 rounded-lg p-4">
+                              <pre className="text-green-400 text-sm">
+                                <code>{`def binomiale(n, k):
+    if k > n:
+        return 0
+    result = 1
+    for i in range(1, k + 1):
+        result = result * (n - i + 1) / i
+    return int(result)`}</code>
+                              </pre>
+                            </div>
+                            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                              <p className="text-sm text-blue-800">
+                                <strong>Explication :</strong>
+                              </p>
+                              <ul className="text-sm text-blue-700 mt-2 space-y-1">
+                                <li>• Si k &gt; n, on retourne 0 directement</li>
+                                <li>• On initialise result à 1</li>
+                                <li>• On multiplie par (n-i+1) et divise par i pour chaque i de 1 à k</li>
+                                <li>• Cette méthode évite les calculs de factorielles qui peuvent être très grandes</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {selectedExercise === 13 && (
+            <Card className="mb-8">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3 text-amber-700">
+                  <Calculator className="h-6 w-6" />
+                  Exercice 13
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">Factorielle seuil</h3>
+                    <div className="p-4 bg-slate-50 rounded-lg mb-4">
+                      <p className="text-sm mb-2">Écrire un script Python qui calcule le plus petit entier naturel k tel que la factorielle de k soit strictement supérieure à un million.</p>
+                      <div className="text-center text-lg font-mono bg-white p-3 rounded border">
+                        Trouver le plus petit k tel que k! &gt; 1 000 000
+                      </div>
+                    </div>
+
+                    <Accordion type="single" collapsible>
+                      <AccordionItem value="correction-13">
+                        <AccordionTrigger className="text-orange-700 font-semibold">
+                          <CheckCircle className="h-4 w-4 mr-2" />
+                          Voir la correction 13
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <div className="space-y-4">
+                            <p className="text-sm">
+                              Voici le script complet :
+                            </p>
+                            <div className="bg-slate-900 rounded-lg p-4">
+                              <pre className="text-green-400 text-sm">
+                                <code>{`k = 1
+fact = 1
+
+while fact <= 10**6:
+    k = k + 1
+    fact = fact * k
+
+print(k)`}</code>
+                              </pre>
+                            </div>
+                            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                              <p className="text-sm text-blue-800">
+                                <strong>Explication :</strong>
+                              </p>
+                              <ul className="text-sm text-blue-700 mt-2 space-y-1">
+                                <li>• On initialise k à 1 et fact à 1</li>
+                                <li>• Tant que fact ≤ 1 000 000, on incrémente k et on calcule k!</li>
+                                <li>• On calcule la factorielle de manière itérative : fact = fact × k</li>
+                                <li>• Dès que k! &gt; 1 000 000, on affiche k</li>
+                              </ul>
+                            </div>
+                            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+                              <p className="text-sm text-green-800">
+                                <strong>Résultat :</strong> Le plus petit entier k tel que k! &gt; 1 000 000 est k = 10.
+                              </p>
+                            </div>
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {selectedExercise === 14 && (
+            <Card className="mb-8">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3 text-amber-700">
+                  <Calculator className="h-6 w-6" />
+                  Exercice 14
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">Fonction par cas</h3>
+                    <div className="p-4 bg-slate-50 rounded-lg mb-4">
+                      <p className="text-sm mb-2">On considère la fonction g définie sur ℝ par :</p>
+                      <div className="bg-white p-3 rounded border mb-3">
+                        <p className="text-sm font-mono">g(x) = 2 si x &lt; -1</p>
+                        <p className="text-sm font-mono">g(x) = 0 si -1 ≤ x ≤ 1</p>
+                        <p className="text-sm font-mono">g(x) = -2 si x &gt; 1</p>
+                      </div>
+                      <p className="text-sm">Écrire un script Python qui demande à l'utilisateur de saisir un réel x, puis qui affiche la valeur de g(x).</p>
+                    </div>
+
+                    <Accordion type="single" collapsible>
+                      <AccordionItem value="correction-14">
+                        <AccordionTrigger className="text-orange-700 font-semibold">
+                          <CheckCircle className="h-4 w-4 mr-2" />
+                          Voir la correction 14
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <div className="space-y-4">
+                            <p className="text-sm">
+                              Voici le script complet :
+                            </p>
+                            <div className="bg-slate-900 rounded-lg p-4">
+                              <pre className="text-green-400 text-sm">
+                                <code>{`x = float(input("Entrer un réel x : "))
+
+if x < -1:
+    print("g(x) =", 2)
+elif x <= 1:
+    print("g(x) =", 0)
+else:
+    print("g(x) =", -2)`}</code>
+                              </pre>
+                            </div>
+                            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                              <p className="text-sm text-blue-800">
+                                <strong>Explication :</strong>
+                              </p>
+                              <ul className="text-sm text-blue-700 mt-2 space-y-1">
+                                <li>• On lit la valeur de x avec <code>float(input())</code></li>
+                                <li>• On teste les conditions dans l'ordre logique</li>
+                                <li>• <code>elif x &lt;= 1</code> couvre le cas -1 ≤ x ≤ 1</li>
+                                <li>• <code>else</code> correspond au cas x &gt; 1</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {selectedExercise === 15 && (
+            <Card className="mb-8">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3 text-amber-700">
+                  <Calculator className="h-6 w-6" />
+                  Exercice 15
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">Sommes doubles</h3>
+                    <div className="p-4 bg-slate-50 rounded-lg mb-4">
+                      <p className="text-sm mb-2">Écrire des scripts Python pour calculer les sommes doubles suivantes :</p>
+                      <div className="space-y-3">
+                        <div className="bg-white p-3 rounded border">
+                          <p className="font-semibold text-sm mb-1">(a) Somme 1 :</p>
+                          <p className="text-sm font-mono">∑(k=1 à n) ∑(i=1 à k) 1/(k+i)</p>
+                        </div>
+                        <div className="bg-white p-3 rounded border">
+                          <p className="font-semibold text-sm mb-1">(b) Somme 2 :</p>
+                          <p className="text-sm font-mono">∑(k=1 à n) ∑(i=1 à p) k×i</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <Accordion type="single" collapsible>
+                      <AccordionItem value="correction-15">
+                        <AccordionTrigger className="text-orange-700 font-semibold">
+                          <CheckCircle className="h-4 w-4 mr-2" />
+                          Voir la correction 15
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <div className="space-y-4">
+                            <div>
+                              <h4 className="font-semibold text-sm mb-2">(a) Première somme double</h4>
+                              <div className="bg-slate-900 rounded-lg p-4">
+                                <pre className="text-green-400 text-sm">
+                                  <code>{`n = int(input("Entrer n : "))
+S = 0
+for k in range(1, n + 1):
+    for i in range(1, k + 1):
+        S += 1 / (k + i)
+print("Somme :", S)`}</code>
+                                </pre>
+                              </div>
+                            </div>
+
+                            <div>
+                              <h4 className="font-semibold text-sm mb-2">(b) Deuxième somme double</h4>
+                              <div className="bg-slate-900 rounded-lg p-4">
+                                <pre className="text-green-400 text-sm">
+                                  <code>{`n = int(input("Entrer n : "))
+p = int(input("Entrer p : "))
+S = 0
+for k in range(1, n + 1):
+    for i in range(1, p + 1):
+        S += k * i
+print("Somme :", S)`}</code>
+                                </pre>
+                              </div>
+                            </div>
+
+                            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                              <p className="text-sm text-blue-800">
+                                <strong>Explication :</strong>
+                              </p>
+                              <ul className="text-sm text-blue-700 mt-2 space-y-1">
+                                <li>• Les boucles imbriquées permettent de parcourir tous les couples (k,i)</li>
+                                <li>• Dans (a), i varie de 1 à k pour chaque k</li>
+                                <li>• Dans (b), i varie de 1 à p pour chaque k</li>
+                                <li>• On accumule chaque terme dans la variable S</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Navigation améliorée */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-3 text-amber-700">
                 <Target className="h-6 w-6" />
-                Conseils pour continuer
+                Navigation
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <p className="text-sm text-muted-foreground">
-                  Ces exercices vous ont permis de maîtriser les concepts fondamentaux de l'analyse numérique avec NumPy. 
-                  Continuez avec les autres modules pour approfondir vos compétences.
-                </p>
-                <div className="flex gap-4">
+                <div className="flex items-center justify-between">
+                  {selectedExercise > 1 ? (
+                    <Button 
+                      variant="outline" 
+                      onClick={() => setSelectedExercise(selectedExercise - 1)}
+                      className="flex items-center gap-2"
+                    >
+                      <ChevronLeft className="h-4 w-4" />
+                      Exercice précédent
+                    </Button>
+                  ) : (
+                    <div></div>
+                  )}
+                  
                   <Link to="/formation/python-analyse">
                     <Button variant="outline">
                       Revoir le cours
                     </Button>
                   </Link>
-                  <Link to="/formation/python-probabilites">
-                    <Button>
-                      Module suivant : Probabilités
+                  
+                  {selectedExercise < exercises.length ? (
+                    <Button 
+                      onClick={() => setSelectedExercise(selectedExercise + 1)}
+                      className="flex items-center gap-2"
+                    >
+                      Exercice suivant
+                      <ChevronRight className="h-4 w-4" />
                     </Button>
-                  </Link>
+                  ) : (
+                    <Link to="/formation/python-probabilites">
+                      <Button className="flex items-center gap-2">
+                        Module suivant : Probabilités
+                        <ChevronRight className="h-4 w-4" />
+                      </Button>
+                    </Link>
+                  )}
                 </div>
+                
+                <p className="text-sm text-muted-foreground text-center">
+                  Exercice {selectedExercise} sur {exercises.length}
+                </p>
               </div>
             </CardContent>
           </Card>
