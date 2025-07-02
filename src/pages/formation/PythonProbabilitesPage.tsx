@@ -1,205 +1,26 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { ArrowLeft, Target, Code, BarChart, Calculator, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { ProgrammeModule } from '@/components/ProgrammeModule';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 const PythonProbabilitesPage = () => {
-  const programmeName = "Module 4 : Probabilités";
-  const videoUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ"; // Placeholder URL
-  
-  const corrige = `# Fiche pratique : Simulation et statistiques avec NumPy & Matplotlib
-
-# Imports de base (et graine optionnelle pour la reproductibilité)
-import numpy as np
-import numpy.random as rd
-import matplotlib.pyplot as plt
-
-# 1. Principes généraux
-# Simulation : quand le nombre de tirages devient grand, la fréquence observée d'un événement se rapproche de sa probabilité théorique
-# Moyenne empirique d'un échantillon : np.mean(X) calcule la somme des valeurs divisée par la taille de l'échantillon
-# Fréquence empirique d'un événement (tableau booléen) : np.mean(A)
-# Méthode de Monte‑Carlo : pour estimer une espérance, on simule un grand nombre de valeurs et on prend la moyenne
-
-# 2. Génération aléatoire de base
-rd.random()                        # Réel uniforme sur [0, 1[
-rd.random(n)                       # Vecteur de taille n
-rd.random((n, m))                  # Matrice n×m
-lancer = np.floor(6 * rd.random()) + 1  # Dé (faces 1 à 6)
-U = (b - a) * rd.random() + a      # Uniforme sur [a, b]
-
-# 3. Lois discrètes courantes
-rd.binomial(1, p)                  # Bernoulli(p)
-rd.binomial(n, p)                  # Binomiale(n, p)
-rd.randint(a, b+1)                 # Uniforme discrète [a, b]
-rd.geometric(p)                    # Géométrique(p)
-rd.poisson(lam)                    # Poisson(lambda)
-
-# Fonction Bernoulli "maison"
-def bernoulli(p):
-    """Retourne 1 avec une probabilité p, 0 sinon."""
-    return 1 if rd.random() <= p else 0
-
-# Fonction Géométrique "maison"
-def geometrique(p):
-    """Retourne le rang de la première réussite (>= 1)."""
-    n = 1
-    while rd.random() > p:
-        n += 1
-    return n
-
-# Fonction Binomiale "maison"
-def binomiale(n, p):
-    """Retourne le nombre de succès (tirage > p) sur n essais."""
-    S = 0
-    for _ in range(n):
-        if rd.random() > p:
-            S += 1
-    return S
-
-# 5. Contexte : loi binomiale (n = 30, p = 0,25)
-from math import factorial
-
-def proba_binom(k):
-    """Probabilité d'obtenir k succès (0 ≤ k ≤ 30)."""
-    coeff = factorial(30) // (factorial(k) * factorial(30 - k))
-    return coeff * (0.25 ** k) * (0.75 ** (30 - k))
-
-# 6. Statistiques descriptives (NumPy)
-np.min(A)                          # Valeur minimale
-np.max(A)                          # Valeur maximale
-np.mean(A)                         # Moyenne
-np.median(A)                       # Médiane
-np.var(A)                          # Variance
-np.std(A)                          # Écart-type
-np.sum(A)                          # Somme totale
-np.cumsum(A)                       # Sommes cumulées
-
-# 7. Graphiques de base (Matplotlib)
-plt.plot(x, y)                     # Courbe
-plt.bar(x, y, width)               # Diagramme en barres
-plt.hist(x, bins, density=True)    # Histogramme
-plt.boxplot(x)                     # Boîte à moustaches
-plt.show()                         # Affichage
-
-# 9. Estimation et Monte‑Carlo
-# Estimer une espérance : np.mean(rd.<loi>(…, size=N)) avec un grand N
-# Estimer une probabilité : freq = np.mean(condition_bool)
-
-def approx_Jn(n, m=5000):
-    x = rd.exponential(1, m)
-    y = -x / (1 + np.exp(-n * x))
-    return y.mean()
-
-# 10. Exercices types
-# 1. Deux faces "Pile" consécutives au pile ou face
-def simul_X():
-    tirs, pile = 0, 0
-    while pile < 2:
-        pile = pile + 1 if rd.random() < 0.5 else 0
-        tirs += 1
-    return tirs
-
-# 2. Jeu de dés : le joueur A gagne s'il obtient 6 avant B
-def partie():
-    while True:
-        if rd.randint(1, 7) == 6:  # A
-            return 1
-        if rd.randint(1, 7) == 6:  # B
-            return 0
-
-proba_A = np.mean([partie() for _ in range(10000)])
-
-# 3. Géométrique(p=0.2) : comparaison simulation / théorie
-ech = rd.geometric(0.2, 10000)
-c = np.arange(0.5, 21)
-plt.hist(ech, c, density=True, label="Simulation")
-
-x = np.arange(1, 21)
-y = 0.2 * 0.8**(x - 1)
-plt.bar(x, y, label="Théorique")
-plt.legend(); plt.show()
-
-# Mémo‑commandes rapides
-rd.random()                        # uniforme 0–1
-rd.randint(a, b)                   # uniforme discrète a … b‑1
-rd.binomial(n, p)                  # binomiale
-rd.geometric(p)                    # géométrique
-rd.poisson(lam)                    # poisson
-rd.exponential(1/l)                # exponentielle
-rd.normal(mean, sigma)             # normale`;
-
-  const explication = `# Module 4 : Probabilités - Guide d'utilisation
-
-## Vue d'ensemble
-Ce module couvre la simulation et les statistiques avec NumPy et Matplotlib, des outils essentiels pour l'analyse probabiliste en prépa ECG.
-
-## Concepts clés
-
-### 1. Simulation statistique
-- La loi des grands nombres : plus on augmente le nombre de tirages, plus la fréquence observée se rapproche de la probabilité théorique
-- La simulation permet de vérifier expérimentalement les résultats théoriques
-
-### 2. Génération de nombres aléatoires
-- rd.random() génère des nombres uniformes entre 0 et 1
-- Les autres lois s'obtiennent par transformation ou fonctions dédiées
-- Importance de la reproductibilité avec les graines aléatoires
-
-### 3. Lois de probabilité discrètes
-- Bernoulli : succès/échec avec probabilité p
-- Binomiale : nombre de succès sur n essais indépendants
-- Géométrique : rang du premier succès
-- Poisson : événements rares sur un intervalle
-
-### 4. Statistiques descriptives
-- Mesures de tendance centrale : moyenne, médiane
-- Mesures de dispersion : variance, écart-type
-- Extrema : minimum, maximum
-
-### 5. Méthode de Monte-Carlo
-- Approximation d'intégrales complexes par simulation
-- Estimation d'espérances mathématiques
-- Calcul de probabilités d'événements complexes
-
-## Applications pratiques
-
-### Exercices types
-1. **Problèmes de première occurrence** : temps d'attente jusqu'à un événement
-2. **Jeux et compétitions** : probabilités de victoire dans des jeux simples
-3. **Comparaison théorie/simulation** : validation des formules probabilistes
-
-### Visualisations
-- Histogrammes pour les distributions empiriques
-- Comparaison simulation/théorie avec des graphiques superposés
-- Boîtes à moustaches pour analyser la dispersion
-
-## Conseils d'utilisation
-- Toujours utiliser density=True dans les histogrammes pour comparer aux densités théoriques
-- Préférer des échantillons de taille importante (≥ 10000) pour les estimations
-- Bien définir les classes pour les variables discrètes dans les histogrammes
-
-## Liens avec le programme ECG
-- Validation expérimentale des résultats théoriques de probabilités
-- Introduction aux méthodes numériques utilisées en statistiques
-- Préparation aux outils d'analyse de données en école de commerce`;
-
-  const autresVersions = [
-    "Fiche PDF téléchargeable avec tous les exemples",
-    "Notebook Jupyter interactif avec exercices corrigés",
-    "Quiz interactif sur les lois de probabilité",
-    "Exercices d'application avec données réelles",
-    "Mémento de toutes les commandes NumPy/Matplotlib"
-  ];
-
-  const outils = [
-    "python -m pip install numpy matplotlib",
-    "import numpy as np",
-    "import numpy.random as rd",
-    "import matplotlib.pyplot as plt",
-    "rd.seed(42)  # Pour la reproductibilité"
-  ];
-
   return (
     <div className="min-h-screen bg-background py-8">
       <div className="max-w-6xl mx-auto px-6">
@@ -221,14 +42,451 @@ Ce module couvre la simulation et les statistiques avec NumPy et Matplotlib, des
           </div>
         </div>
 
-        <ProgrammeModule
-          programmeName={programmeName}
-          videoUrl={videoUrl}
-          corrige={corrige}
-          explication={explication}
-          autresVersions={autresVersions}
-          outils={outils}
-        />
+        {/* Objectifs du module */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3 text-purple-700">
+              <Target className="h-6 w-6" />
+              Objectifs du module
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Badge variant="outline" className="mb-2">Simulation</Badge>
+                <p className="text-sm text-muted-foreground">
+                  Maîtriser la génération de nombres aléatoires et la simulation de lois de probabilité
+                </p>
+              </div>
+              <div className="space-y-2">
+                <Badge variant="outline" className="mb-2">Statistiques</Badge>
+                <p className="text-sm text-muted-foreground">
+                  Calculer des statistiques descriptives et analyser des échantillons
+                </p>
+              </div>
+              <div className="space-y-2">
+                <Badge variant="outline" className="mb-2">Monte-Carlo</Badge>
+                <p className="text-sm text-muted-foreground">
+                  Appliquer la méthode de Monte-Carlo pour estimer des probabilités et espérances
+                </p>
+              </div>
+              <div className="space-y-2">
+                <Badge variant="outline" className="mb-2">Visualisation</Badge>
+                <p className="text-sm text-muted-foreground">
+                  Créer des graphiques statistiques avec Matplotlib
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Imports et principes généraux */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3 text-purple-700">
+              <Code className="h-6 w-6" />
+              Imports et principes généraux
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="bg-slate-900 rounded-lg p-4 mb-4">
+              <pre className="text-green-400 text-sm">
+{`import numpy as np
+import numpy.random as rd
+import matplotlib.pyplot as plt`}
+              </pre>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-4 bg-purple-50 rounded-lg">
+                <h4 className="font-semibold text-purple-800 mb-2">Simulation</h4>
+                <p className="text-sm text-purple-700">
+                  Quand le nombre de tirages devient grand, la fréquence observée se rapproche de la probabilité théorique
+                </p>
+              </div>
+              <div className="p-4 bg-purple-50 rounded-lg">
+                <h4 className="font-semibold text-purple-800 mb-2">Monte-Carlo</h4>
+                <p className="text-sm text-purple-700">
+                  Pour estimer une espérance, on simule un grand nombre de valeurs et on prend la moyenne
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Génération aléatoire de base */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3 text-purple-700">
+              <Calculator className="h-6 w-6" />
+              Génération aléatoire de base
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Objectif</TableHead>
+                  <TableHead>Commande</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell>Réel uniforme sur [0, 1[</TableCell>
+                  <TableCell><code className="bg-slate-100 px-2 py-1 rounded">rd.random()</code></TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Vecteur de taille n</TableCell>
+                  <TableCell><code className="bg-slate-100 px-2 py-1 rounded">rd.random(n)</code></TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Matrice n×m</TableCell>
+                  <TableCell><code className="bg-slate-100 px-2 py-1 rounded">rd.random((n, m))</code></TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Dé (faces 1 à 6)</TableCell>
+                  <TableCell><code className="bg-slate-100 px-2 py-1 rounded">np.floor(6 * rd.random()) + 1</code></TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Uniforme sur [a, b]</TableCell>
+                  <TableCell><code className="bg-slate-100 px-2 py-1 rounded">(b - a) * rd.random() + a</code></TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+
+        {/* Lois discrètes courantes */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3 text-purple-700">
+              <BarChart className="h-6 w-6" />
+              Lois discrètes courantes
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Table className="mb-6">
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Loi</TableHead>
+                  <TableHead>Appel rd.</TableHead>
+                  <TableHead>Paramètres</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell>Bernoulli(p)</TableCell>
+                  <TableCell><code className="bg-slate-100 px-2 py-1 rounded">binomial(1, p)</code></TableCell>
+                  <TableCell>p entre 0 et 1</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Binomiale(n, p)</TableCell>
+                  <TableCell><code className="bg-slate-100 px-2 py-1 rounded">binomial(n, p)</code></TableCell>
+                  <TableCell>n, p</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Uniforme discrète [a, b]</TableCell>
+                  <TableCell><code className="bg-slate-100 px-2 py-1 rounded">randint(a, b+1)</code></TableCell>
+                  <TableCell>a, b entiers</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Géométrique(p)</TableCell>
+                  <TableCell><code className="bg-slate-100 px-2 py-1 rounded">geometric(p)</code></TableCell>
+                  <TableCell>p</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Poisson(λ)</TableCell>
+                  <TableCell><code className="bg-slate-100 px-2 py-1 rounded">poisson(lam)</code></TableCell>
+                  <TableCell>λ > 0</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+
+            <Accordion type="single" collapsible>
+              <AccordionItem value="fonctions-maison">
+                <AccordionTrigger>Fonctions "maison" alternatives</AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold mb-2">Fonction Bernoulli</h4>
+                      <div className="bg-slate-900 rounded-lg p-4">
+                        <pre className="text-green-400 text-sm">
+{`def bernoulli(p):
+    """Retourne 1 avec une probabilité p, 0 sinon."""
+    return 1 if rd.random() <= p else 0`}
+                        </pre>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2">Fonction Géométrique</h4>
+                      <div className="bg-slate-900 rounded-lg p-4">
+                        <pre className="text-green-400 text-sm">
+{`def geometrique(p):
+    """Retourne le rang de la première réussite (>= 1)."""
+    n = 1
+    while rd.random() > p:
+        n += 1
+    return n`}
+                        </pre>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2">Fonction Binomiale</h4>
+                      <div className="bg-slate-900 rounded-lg p-4">
+                        <pre className="text-green-400 text-sm">
+{`def binomiale(n, p):
+    """Retourne le nombre de succès sur n essais."""
+    S = 0
+    for _ in range(n):
+        if rd.random() <= p:
+            S += 1
+    return S`}
+                        </pre>
+                      </div>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </CardContent>
+        </Card>
+
+        {/* Statistiques descriptives */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3 text-purple-700">
+              <TrendingUp className="h-6 w-6" />
+              Statistiques descriptives (NumPy)
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Fonction</TableHead>
+                  <TableHead>Rôle</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell><code className="bg-slate-100 px-2 py-1 rounded">np.min(A)</code> / <code className="bg-slate-100 px-2 py-1 rounded">np.max(A)</code></TableCell>
+                  <TableCell>Valeurs extrêmes</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell><code className="bg-slate-100 px-2 py-1 rounded">np.mean(A)</code></TableCell>
+                  <TableCell>Moyenne</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell><code className="bg-slate-100 px-2 py-1 rounded">np.median(A)</code></TableCell>
+                  <TableCell>Médiane</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell><code className="bg-slate-100 px-2 py-1 rounded">np.var(A)</code> / <code className="bg-slate-100 px-2 py-1 rounded">np.std(A)</code></TableCell>
+                  <TableCell>Variance / écart-type</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell><code className="bg-slate-100 px-2 py-1 rounded">np.sum(A)</code></TableCell>
+                  <TableCell>Somme totale</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell><code className="bg-slate-100 px-2 py-1 rounded">np.cumsum(A)</code></TableCell>
+                  <TableCell>Sommes cumulées</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+
+        {/* Graphiques Matplotlib */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3 text-purple-700">
+              <BarChart className="h-6 w-6" />
+              Graphiques de base (Matplotlib)
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Graphe</TableHead>
+                  <TableHead>Syntaxe</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell>Courbe</TableCell>
+                  <TableCell><code className="bg-slate-100 px-2 py-1 rounded">plt.plot(x, y)</code></TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Diagramme en barres</TableCell>
+                  <TableCell><code className="bg-slate-100 px-2 py-1 rounded">plt.bar(x, y, width)</code></TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Histogramme</TableCell>
+                  <TableCell><code className="bg-slate-100 px-2 py-1 rounded">plt.hist(x, bins, density=True)</code></TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Boîte à moustaches</TableCell>
+                  <TableCell><code className="bg-slate-100 px-2 py-1 rounded">plt.boxplot(x)</code></TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell><strong>Affichage</strong></TableCell>
+                  <TableCell><code className="bg-slate-100 px-2 py-1 rounded">plt.show()</code></TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+            <div className="mt-4 p-4 bg-amber-50 rounded-lg border border-amber-200">
+              <p className="text-sm text-amber-800">
+                <strong>Conseil :</strong> Utiliser <code>density=True</code> dans <code>plt.hist</code> pour comparer directement à la densité théorique.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Méthode Monte-Carlo et Exercices */}
+        <Accordion type="single" collapsible className="mb-8">
+          <AccordionItem value="monte-carlo">
+            <AccordionTrigger className="text-lg font-semibold">
+              Méthode de Monte-Carlo et estimation
+            </AccordionTrigger>
+            <AccordionContent>
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 bg-blue-50 rounded-lg">
+                    <h4 className="font-semibold text-blue-800 mb-2">Estimer une espérance</h4>
+                    <code className="text-sm bg-slate-100 px-2 py-1 rounded">np.mean(rd.&lt;loi&gt;(..., size=N))</code>
+                    <p className="text-sm text-blue-700 mt-2">avec un grand N</p>
+                  </div>
+                  <div className="p-4 bg-blue-50 rounded-lg">
+                    <h4 className="font-semibold text-blue-800 mb-2">Estimer une probabilité</h4>
+                    <code className="text-sm bg-slate-100 px-2 py-1 rounded">freq = np.mean(condition_bool)</code>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2">Exemple d'intégrale</h4>
+                  <div className="bg-slate-900 rounded-lg p-4">
+                    <pre className="text-green-400 text-sm">
+{`def approx_Jn(n, m=5000):
+    x = rd.exponential(1, m)
+    y = -x / (1 + np.exp(-n * x))
+    return y.mean()`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="exercices">
+            <AccordionTrigger className="text-lg font-semibold">
+              Exercices types
+            </AccordionTrigger>
+            <AccordionContent>
+              <div className="space-y-6">
+                <div>
+                  <h4 className="font-semibold mb-2">1. Deux faces "Pile" consécutives au pile ou face</h4>
+                  <div className="bg-slate-900 rounded-lg p-4">
+                    <pre className="text-green-400 text-sm">
+{`def simul_X():
+    tirs, pile = 0, 0
+    while pile < 2:
+        pile = pile + 1 if rd.random() < 0.5 else 0
+        tirs += 1
+    return tirs`}
+                    </pre>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2">2. Jeu de dés : le joueur A gagne s'il obtient 6 avant B</h4>
+                  <div className="bg-slate-900 rounded-lg p-4">
+                    <pre className="text-green-400 text-sm">
+{`def partie():
+    while True:
+        if rd.randint(1, 7) == 6:  # A
+            return 1
+        if rd.randint(1, 7) == 6:  # B
+            return 0
+
+proba_A = np.mean([partie() for _ in range(10000)])`}
+                    </pre>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2">3. Géométrique(p=0.2) : comparaison simulation / théorie</h4>
+                  <div className="bg-slate-900 rounded-lg p-4">
+                    <pre className="text-green-400 text-sm">
+{`ech = rd.geometric(0.2, 10000)
+c = np.arange(0.5, 21)
+plt.hist(ech, c, density=True, label="Simulation")
+
+x = np.arange(1, 21)
+y = 0.2 * 0.8**(x - 1)
+plt.bar(x, y, label="Théorique")
+plt.legend(); plt.show()`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+
+        {/* Mémo-commandes rapides */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3 text-purple-700">
+              <Code className="h-6 w-6" />
+              Mémo-commandes rapides
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="bg-slate-900 rounded-lg p-4">
+              <pre className="text-green-400 text-sm">
+{`rd.random()              # uniforme 0–1
+rd.randint(a, b)         # uniforme discrète a … b-1
+rd.binomial(n, p)        # binomiale
+rd.geometric(p)          # géométrique
+rd.poisson(lam)          # poisson
+rd.exponential(1/l)      # exponentielle
+rd.normal(mean, sigma)   # normale`}
+              </pre>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Quiz express */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3 text-purple-700">
+              <Target className="h-6 w-6" />
+              Quiz express
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              <div className="p-3 bg-purple-50 rounded-lg">
+                <p className="text-sm font-medium">1. <code>rd.random((3,4))</code> produit-il bien 12 réels indépendants entre 0 et 1 ?</p>
+              </div>
+              <div className="p-3 bg-purple-50 rounded-lg">
+                <p className="text-sm font-medium">2. Quelle commande simule une valeur de loi de Poisson avec paramètre 2 ?</p>
+              </div>
+              <div className="p-3 bg-purple-50 rounded-lg">
+                <p className="text-sm font-medium">3. Pour estimer une espérance, quelle syntaxe est la plus simple ?</p>
+              </div>
+              <div className="p-3 bg-purple-50 rounded-lg">
+                <p className="text-sm font-medium">4. Pourquoi ajouter <code>density=True</code> dans un histogramme ?</p>
+              </div>
+              <div className="p-3 bg-purple-50 rounded-lg">
+                <p className="text-sm font-medium">5. Une ligne pour simuler dix mille valeurs de la loi géométrique avec paramètre 0.25 ?</p>
+              </div>
+            </div>
+            <div className="mt-4 p-4 bg-green-50 rounded-lg border border-green-200">
+              <p className="text-sm text-green-800">
+                <strong>Les réponses se déduisent des sections précédentes.</strong>
+              </p>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
