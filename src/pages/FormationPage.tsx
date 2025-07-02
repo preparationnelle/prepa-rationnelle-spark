@@ -5,10 +5,12 @@ import { PythonAccessGate } from '@/components/python/PythonAccessGate';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { BookOpen, Play, ArrowRight, Target } from 'lucide-react';
+import { BookOpen, Play, ArrowRight, Target, Calculator } from 'lucide-react';
 import { Link } from 'react-router-dom';
+
 const FormationPage = () => {
-  return <div className="min-h-screen bg-background">
+  return (
+    <div className="min-h-screen bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="text-center mb-12">
@@ -23,8 +25,7 @@ const FormationPage = () => {
 
         {/* Modules de cours avec contrôle d'accès */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold mb-8 text-center">MODULES DE COURS 
-        </h2>
+          <h2 className="text-2xl font-bold mb-8 text-center">MODULES DE COURS</h2>
           
           <PythonAccessGate>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -183,6 +184,92 @@ const FormationPage = () => {
           </PythonAccessGate>
         </div>
 
+        {/* Modules d'exercices */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-bold mb-8 text-center">MODULES D'EXERCICES</h2>
+          
+          <PythonAccessGate>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              
+              {/* Module 3 - Exercices Analyse */}
+              <Card className="hover:shadow-lg transition-shadow border border-amber-200">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <Calculator className="h-6 w-6 text-amber-600" />
+                    <div>
+                      <CardTitle className="text-lg">Module 3</CardTitle>
+                      <Badge variant="secondary" className="mt-1 bg-amber-100 text-amber-700">Disponible</Badge>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <h3 className="font-semibold text-amber-700 mb-2">Exercices - Analyse</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Exercices pratiques sur l'analyse numérique : sommes, produits, 
+                    vecteurs et calculs avec NumPy.
+                  </p>
+                  <ul className="text-sm space-y-1 mb-4">
+                    <li>• Création de vecteurs avec NumPy</li>
+                    <li>• Calcul de sommes finies</li>
+                    <li>• Interprétation de commandes</li>
+                    <li>• Corrigés détaillés</li>
+                  </ul>
+                  <Link to="/formation/python-analyse-exercices">
+                    <Button className="w-full bg-amber-600 hover:bg-amber-700">
+                      <Calculator className="h-4 w-4 mr-2" />
+                      Faire les exercices
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+
+              {/* Modules à venir */}
+              <Card className="opacity-60">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <Calculator className="h-6 w-6 text-gray-400" />
+                    <div>
+                      <CardTitle className="text-lg text-gray-600">Module 1</CardTitle>
+                      <Badge variant="outline" className="mt-1">Bientôt disponible</Badge>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <h3 className="font-semibold text-gray-600 mb-2">Exercices - Fondamentaux</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Exercices sur les bases de Python.
+                  </p>
+                  <Button disabled className="w-full">
+                    Prochainement
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card className="opacity-60">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <Calculator className="h-6 w-6 text-gray-400" />
+                    <div>
+                      <CardTitle className="text-lg text-gray-600">Module 2</CardTitle>
+                      <Badge variant="outline" className="mt-1">Bientôt disponible</Badge>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <h3 className="font-semibold text-gray-600 mb-2">Exercices - Matrices</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Exercices sur NumPy et les matrices.
+                  </p>
+                  <Button disabled className="w-full">
+                    Prochainement
+                  </Button>
+                </CardContent>
+              </Card>
+
+            </div>
+          </PythonAccessGate>
+        </div>
+
         {/* Accès rapide à la référence */}
         <div className="mb-16">
           <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
@@ -243,6 +330,8 @@ const FormationPage = () => {
           <PythonQuizGenerator />
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default FormationPage;
