@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -196,7 +195,7 @@ import matplotlib.pyplot as plt`}
                 <TableRow>
                   <TableCell>Poisson(λ)</TableCell>
                   <TableCell><code className="bg-slate-100 px-2 py-1 rounded">poisson(lam)</code></TableCell>
-                  <TableCell>λ > 0</TableCell>
+                  <TableCell>λ {'>'}  0</TableCell>
                 </TableRow>
               </TableBody>
             </Table>
@@ -285,7 +284,7 @@ import matplotlib.pyplot as plt`}
                 </TableRow>
                 <TableRow>
                   <TableCell><code className="bg-slate-100 px-2 py-1 rounded">np.sum(A)</code></TableCell>
-                  <TableCell>Somme totale</TableCell>
+                  <TableCell>Sommes totales</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell><code className="bg-slate-100 px-2 py-1 rounded">np.cumsum(A)</code></TableCell>
