@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -26,12 +27,9 @@ import { PythonTutorGenerator } from '@/components/generator/PythonTutorGenerato
 import { PythonExerciseGenerator } from '@/components/generator/PythonExerciseGenerator';
 import { PrepaChatbotGenerator } from '@/components/generator/PrepaChatbotGenerator';
 
-import { useForm } from "react-hook-form";
 import { useGenerateAnswer } from '@/hooks/useGenerateAnswer';
 import { useProgress } from "@/context/ProgressContext";
 
-// Import type
-import { AdditionalInfo } from '@/components/generator/AdditionalInfoForm';
 import { Answer } from '@/components/generator/ResponseTabs';
 
 // MiniCard type
@@ -198,44 +196,29 @@ const GeneratorPage = () => {
   const [question, setQuestion] = useState('');
   const [language, setLanguage] = useState<'fr' | 'en'>('fr');
   const [activeTab, setActiveTab] = useState('response');
-  const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
-
-  const additionalInfoForm = useForm<AdditionalInfo>({
-    defaultValues: {
-      filiere: '',
-      specialite: '',
-      ecole: '',
-      associatif: '',
-      interets: '',
-      voyages: '',
-      sport: '',
-      trait: '',
-    }
-  });
 
   const { currentUser } = useAuth();
 
   const {
     generating,
+    generatingQuestions,
     wordCount,
     currentAnswer,
+    contextualQuestions,
+    showContextualQuestions,
     setCurrentAnswer,
-    generateAnswer
+    generateContextualQuestions,
+    generateAnswer,
+    resetFlow
   } = useGenerateAnswer(currentUser?.id);
 
-  const loadExample = () => {
-    setQuestion("Quels sont vos défauts ?");
-    additionalInfoForm.setValue('trait', 'Je veux tout gérer moi-même');
-    additionalInfoForm.setValue('filiere', 'ECE');
-    additionalInfoForm.setValue('ecole', 'HEC');
-    additionalInfoForm.setValue('associatif', 'Responsable du pôle finance de l\'association Junior Conseil');
-    setShowAdditionalInfo(true);
+  const handleGenerateQuestions = async () => {
+    await generateContextualQuestions(question, language);
   };
 
-  const handleGenerate = async () => {
-    const additionalInfo = additionalInfoForm.getValues();
-    await generateAnswer(question, language, additionalInfo);
+  const handleGenerateAnswer = async (contextualAnswers: string[]) => {
+    await generateAnswer(question, language, contextualAnswers);
   };
 
   const handleFlashcardCreated = () => {
@@ -256,15 +239,16 @@ const GeneratorPage = () => {
             setLanguage={setLanguage}
             activeTab={activeTab}
             setActiveTab={setActiveTab}
-            showAdditionalInfo={showAdditionalInfo}
-            setShowAdditionalInfo={setShowAdditionalInfo}
-            loadExample={loadExample}
-            handleGenerate={handleGenerate}
             generating={generating}
+            generatingQuestions={generatingQuestions}
             currentAnswer={currentAnswer}
             setCurrentAnswer={setCurrentAnswer}
             wordCount={wordCount}
-            additionalInfoForm={additionalInfoForm}
+            contextualQuestions={contextualQuestions}
+            showContextualQuestions={showContextualQuestions}
+            onGenerateQuestions={handleGenerateQuestions}
+            onGenerateAnswer={handleGenerateAnswer}
+            onResetFlow={resetFlow}
           />
         );
       case "flashcards":
