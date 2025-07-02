@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom';
 /**
  * PostHogProvider integrates PostHog analytics with auth state and route changes
  */
-const PostHogProvider: React.FC = () => {
+const PostHogProvider: React.FC<{}> = () => {
   const { currentUser } = useAuth();
   const location = useLocation();
 
