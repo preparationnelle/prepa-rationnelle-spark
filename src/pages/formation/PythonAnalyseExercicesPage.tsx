@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -560,7 +561,7 @@ print(n)`}</code>
                               </p>
                               <ul className="text-sm text-blue-700 mt-2 space-y-1">
                                 <li>• On initialise n à 0</li>
-                                <li>• Tant que 1/2ⁿ > eps, on incrémente n</li>
+                                <li>• Tant que 1/2ⁿ &gt; eps, on incrémente n</li>
                                 <li>• On s'arrête dès que 1/2ⁿ ≤ eps</li>
                                 <li>• Comme |uₙ - α| ≤ 1/2ⁿ, on a alors |uₙ - α| ≤ eps</li>
                               </ul>
@@ -625,7 +626,7 @@ print(n)`}</code>
                               </p>
                               <ul className="text-sm text-blue-700 mt-2 space-y-1">
                                 <li>• On initialise n à 0 et u à 2 (valeur initiale supposée)</li>
-                                <li>• Tant que 1/2ⁿ > eps, on incrémente n et on calcule u = f(u)</li>
+                                <li>• Tant que 1/2ⁿ &gt; eps, on incrémente n et on calcule u = f(u)</li>
                                 <li>• On s'arrête dès que la précision eps est atteinte</li>
                                 <li>• On retourne la valeur u qui est une approximation de α</li>
                               </ul>
@@ -752,7 +753,7 @@ def suite(n):
                                 <code>{`import numpy as np
 
 def premSuiteUTab(m):
-    T = np.zeros(m)
+                                    T = np.zeros(m)
     T[0] = 3/2
     for i in range(1, m):
         T[i] = np.log(1 + T[i - 1]) + T[i - 1] ** 2
