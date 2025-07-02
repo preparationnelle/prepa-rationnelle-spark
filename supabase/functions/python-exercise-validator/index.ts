@@ -206,6 +206,190 @@ def creer_Z_slicing():
                 result[i][j] += A[i][k] * B[k][j]
     
     return result`
+  },
+  // Nouveaux exercices de probabilités
+  loi_arret_aleatoire: {
+    id: 'loi_arret_aleatoire',
+    title: 'Loi d\'arrêt aléatoire - Pile consécutifs',
+    description: 'Simuler X = rang d\'obtention de deux Pile consécutifs. Compléter la fonction simulX() qui simule les lancers jusqu\'à obtenir deux Pile consécutifs.',
+    template: `import random as rd
+
+def simulX():
+    # TODO: Compléter la fonction
+    # Simuler les lancers jusqu'à obtenir deux Pile consécutifs
+    # Retourner le nombre de lancers effectués
+    pass`,
+    hints: [
+      'Utilisez une variable pour compter les Pile consécutifs',
+      'Remettez le compteur à 0 si vous obtenez Face',
+      'Arrêtez quand vous avez 2 Pile consécutifs',
+      'N\'oubliez pas de compter le nombre total de lancers'
+    ],
+    solution: `import random as rd
+
+def simulX():
+    tirs = 0
+    pile = 0
+    while pile < 2:
+        if rd.random() < 1/2:
+            pile += 1
+        else:
+            pile = 0
+        tirs += 1
+    return tirs`
+  },
+  processus_renforcement: {
+    id: 'processus_renforcement',
+    title: 'Processus de renforcement dans une urne',
+    description: 'Simuler Y_n = rang d\'obtention de n boules vertes dans un processus de renforcement. Compléter la fonction simulY(n).',
+    template: `import random as rd
+
+def simulY(n):
+    # TODO: Compléter la fonction
+    # Simuler le processus de renforcement
+    # Retourner le rang d'obtention de n boules vertes
+    pass`,
+    hints: [
+      'Commencez avec 1 boule rouge et 1 boule verte',
+      'Si boule rouge tirée: ajouter 2 rouges',
+      'Si boule verte tirée: ajouter 1 rouge et 2 vertes',
+      'Arrêter quand on a n boules vertes'
+    ],
+    solution: `import random as rd
+
+def simulY(n):
+    r = 1  # nombre de boules rouges
+    v = 1  # nombre de boules vertes
+    Y = 0
+    while v < n:
+        numero_boule = rd.randint(1, r + v)
+        if numero_boule <= r:
+            r += 2
+        else:
+            r += 1
+            v += 2
+        Y += 1
+    return Y`
+  },
+  tirages_urne: {
+    id: 'tirages_urne',
+    title: 'Tirages dans une urne',
+    description: 'Simuler Z = rang d\'apparition de la première boule rouge et Y_n = nombre de boules vertes parmi les n premiers tirages.',
+    template: `import random as rd
+
+def simulZ(a, b):
+    # TODO: Compléter la fonction
+    # Simuler le rang d'apparition de la première boule rouge
+    pass
+
+def simulY(n, a, b):
+    # TODO: Compléter la fonction
+    # Simuler le nombre de boules vertes parmi les n premiers tirages
+    pass`,
+    hints: [
+      'Pour simulZ: continuer tant qu\'on tire des boules vertes',
+      'Probabilité de tirer une boule verte = b/(a+b)',
+      'Pour simulY: compter les boules vertes sur n tirages',
+      'Utiliser rd.random() < probabilité pour simuler un événement'
+    ],
+    solution: `import random as rd
+
+def simulZ(a, b):
+    Z = 1
+    while rd.random() < b / (a + b):
+        Z += 1
+    return Z
+
+def simulY(n, a, b):
+    Y = 0
+    for k in range(n):
+        if rd.random() < b / (a + b):
+            Y += 1
+    return Y`
+  },
+  simulation_evenement: {
+    id: 'simulation_evenement',
+    title: 'Simulation d\'un événement',
+    description: 'Simuler la réalisation d\'un événement A de probabilité p. Quelle commande Python utiliser ?',
+    template: `import random as rd
+
+def simuler_evenement(p):
+    # TODO: Compléter la fonction
+    # Retourner True si l'événement A se réalise, False sinon
+    pass`,
+    hints: [
+      'Utiliser rd.random() qui donne un nombre aléatoire entre 0 et 1',
+      'Comparer ce nombre avec la probabilité p',
+      'Si le nombre est inférieur à p, l\'événement se réalise'
+    ],
+    solution: `import random as rd
+
+def simuler_evenement(p):
+    return rd.random() < p`
+  },
+  sauts_escalier: {
+    id: 'sauts_escalier',
+    title: 'Sauts aléatoires dans un escalier',
+    description: 'Un animal gravit un escalier de n marches en montant 1 ou 2 marches à chaque bond avec probabilité égale. Simuler le nombre de bonds nécessaires.',
+    template: `import numpy.random as rd
+
+def saut_escalier(n):
+    # TODO: Compléter la fonction
+    # Simuler le comportement de l'animal
+    # Retourner le nombre de bonds pour atteindre la dernière marche
+    pass`,
+    hints: [
+      'Commencer à la marche 0',
+      'À chaque bond: monter 1 ou 2 marches avec probabilité 1/2 chacune',
+      'Continuer tant qu\'on n\'a pas atteint la marche n',
+      'Compter le nombre de bonds effectués'
+    ],
+    solution: `import numpy.random as rd
+
+def saut_escalier(n):
+    marches = 0     # nombre de marches montées
+    sauts = 0       # nombre de bonds effectués
+    
+    while marches < n:
+        r = rd.random()
+        if r < 0.5:
+            marches += 1
+        else:
+            marches += 2
+        sauts += 1
+    
+    return sauts`
+  },
+  simulation_geometrique: {
+    id: 'simulation_geometrique',
+    title: 'Simulation de lois géométriques',
+    description: 'Estimer P(X = 2Y) où X suit une loi géométrique de paramètre p et Y suit une loi géométrique de paramètre q, par méthode de Monte-Carlo.',
+    template: `import numpy.random as rd
+
+def simulation_geom(p, q):
+    # TODO: Compléter la fonction
+    # Estimer P(X = 2Y) par méthode de Monte-Carlo
+    # Retourner l'estimation de la probabilité
+    pass`,
+    hints: [
+      'Utiliser rd.geometric(p) pour simuler une loi géométrique',
+      'Effectuer un grand nombre de simulations (ex: 100000)',
+      'Compter combien de fois X = 2Y',
+      'Retourner la fréquence observée'
+    ],
+    solution: `import numpy.random as rd
+
+def simulation_geom(p, q):
+    compteur = 0
+    essais = 100000
+
+    for _ in range(essais):
+        X = rd.geometric(p)
+        Y = rd.geometric(q)
+        if X == 2 * Y:
+            compteur += 1
+
+    return compteur / essais`
   }
 };
 
