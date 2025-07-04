@@ -23,6 +23,8 @@ import { MethodAnglaisPage } from './pages/methodologie/MethodAnglaisPage';
 import LanguagesGeneratorPage from './pages/generator/LanguagesGeneratorPage';
 import FlashcardsGeneratorPage from './pages/generator/FlashcardsGeneratorPage';
 import ThemeGrammaticalPage from './pages/ThemeGrammaticalPage';
+import ThemeGrammarGeneratorPage from './pages/generator/ThemeGrammarGeneratorPage';
+import PythonExercisesGeneratorPage from './pages/generator/PythonExercisesGeneratorPage';
 import PythonFundamentalsPage from './pages/formation/PythonFundamentalsPage';
 import PythonMatricesPage from './pages/formation/PythonMatricesPage';
 import PythonMatricesExercicesPage from './pages/formation/PythonMatricesExercicesPage';
@@ -64,6 +66,8 @@ function App() {
                     {/* Generator routes */}
                     <Route path="/generator/languages" element={<LanguagesGeneratorPage />} />
                     <Route path="/generator/flashcards" element={<FlashcardsGeneratorPage />} />
+                    <Route path="/generator/theme-grammar" element={<ThemeGrammarGeneratorPage />} />
+                    <Route path="/generator/python-exercises" element={<PythonExercisesGeneratorPage />} />
                     <Route path="/theme-grammatical" element={<ThemeGrammaticalPage />} />
 
                     {/* Python routes */}
