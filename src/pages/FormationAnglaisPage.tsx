@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -20,7 +19,7 @@ const FormationAnglaisPage = () => {
       title: 'Générateur de Paragraphes',
       description: 'Créez des paragraphes argumentatifs en anglais basés sur des articles de presse',
       icon: MessageSquare,
-      component: <LanguageParagraphGenerator />
+      component: <LanguageParagraphGenerator language={language} />
     },
     {
       id: 'grammar',
