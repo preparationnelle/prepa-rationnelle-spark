@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
@@ -38,6 +39,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         console.log("Auth state changed:", event, session?.user?.id);
         setSession(session);
         setCurrentUser(session?.user ?? null);
+        
+        // Only set loading to false after we've processed the auth state
+        if (loading) {
+          setLoading(false);
+        }
       }
     );
 
@@ -181,5 +187,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     logout,
   };
 
-  return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
+  // Always render children, but PostHog will handle the loading state
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
