@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
@@ -32,6 +31,38 @@ export const useFlashcardReview = (language: 'fr' | 'en', refreshTrigger?: numbe
   const [showingDueForReview, setShowingDueForReview] = useState(false);
   const { toast } = useToast();
   const { currentUser } = useAuth();
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      switch (event.key) {
+        case 'Enter':
+        case ' ':
+          event.preventDefault();
+          flipCard();
+          break;
+        case 'ArrowLeft':
+          event.preventDefault();
+          previousCard();
+          break;
+        case 'ArrowRight':
+          event.preventDefault();
+          nextCard();
+          break;
+        case '1':
+          event.preventDefault();
+          if (isFlipped) handleReviewAnswer(true);
+          break;
+        case '2':
+          event.preventDefault();
+          if (isFlipped) handleReviewAnswer(false);
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [isFlipped]);
 
   // Algorithme de répétition espacée amélioré
   const calculateNextReviewDate = (difficulty: number, correct: boolean, reviewCount: number): Date => {
