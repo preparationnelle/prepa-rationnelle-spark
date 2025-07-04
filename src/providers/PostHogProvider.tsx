@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom';
 /**
  * PostHogProvider integrates PostHog analytics with auth state and route changes
  */
-const PostHogProvider: React.FC<{}> = () => {
+const PostHogProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { currentUser } = useAuth();
   const location = useLocation();
 
@@ -50,7 +50,7 @@ const PostHogProvider: React.FC<{}> = () => {
     }
   }, [location.pathname, location.search]);
 
-  return null; // This component doesn't render anything
+  return <>{children}</>;
 };
 
 export default PostHogProvider;
