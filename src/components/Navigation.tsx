@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
@@ -20,7 +21,10 @@ import {
   Linkedin,
   GraduationCap,
   Handshake,
-  BarChart3
+  BarChart3,
+  Code,
+  Languages,
+  Globe
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
@@ -107,9 +111,52 @@ const Navigation = () => {
             Méthodologie
           </Link>
           
-          <Link to="/formation" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
-            Formation
-          </Link>
+          {/* Menu déroulant "Formation" */}
+          <DropdownMenu>
+            <DropdownMenuTrigger className="text-foreground hover:text-primary transition flex items-center gap-1 focus:outline-none">
+              Formation
+              <ChevronDown className="h-4 w-4" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="center" className="w-64 bg-popover rounded-lg shadow-lg border p-2">
+              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                <Link to="/formation" onClick={closeMenu} className="flex items-center gap-3 w-full">
+                  <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <BookOpen className="h-4 w-4 text-primary" />
+                  </span>
+                  <span>Vue d'ensemble</span>
+                </Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuSeparator className="my-2" />
+
+              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                <Link to="/formation/python" onClick={closeMenu} className="flex items-center gap-3 w-full">
+                  <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                    <Code className="h-4 w-4 text-blue-600" />
+                  </span>
+                  <span>🐍 Python</span>
+                </Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                <Link to="/formation/anglais" onClick={closeMenu} className="flex items-center gap-3 w-full">
+                  <span className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                    <Languages className="h-4 w-4 text-green-600" />
+                  </span>
+                  <span>🇬🇧 Anglais</span>
+                </Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                <Link to="/formation/geopolitique" onClick={closeMenu} className="flex items-center gap-3 w-full">
+                  <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                    <Globe className="h-4 w-4 text-orange-600" />
+                  </span>
+                  <span>🌍 Géopolitique</span>
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           
           {/* Menu déroulant "Ressources" modernisé */}
           <DropdownMenu>
@@ -303,13 +350,39 @@ const Navigation = () => {
             Méthodologie
           </Link>
 
-          <Link 
-             to="/formation" 
-             className="text-lg py-2 border-b border-border"
-             onClick={closeMenu}
-          >
-            Formation
-          </Link>
+          {/* Menu mobile Formation */}
+          <div className="space-y-2 py-2 border-b border-border">
+            <h3 className="text-lg font-medium text-primary">Formation</h3>
+            <div className="pl-4 flex flex-col space-y-4">
+              <Link to="/formation" onClick={closeMenu} className="flex items-center gap-3">
+                <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <BookOpen className="h-4 w-4 text-primary" />
+                </span>
+                <span>Vue d'ensemble</span>
+              </Link>
+              
+              <Link to="/formation/python" onClick={closeMenu} className="flex items-center gap-3">
+                <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                  <Code className="h-4 w-4 text-blue-600" />
+                </span>
+                <span>🐍 Python</span>
+              </Link>
+              
+              <Link to="/formation/anglais" onClick={closeMenu} className="flex items-center gap-3">
+                <span className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                  <Languages className="h-4 w-4 text-green-600" />
+                </span>
+                <span>🇬🇧 Anglais</span>
+              </Link>
+
+              <Link to="/formation/geopolitique" onClick={closeMenu} className="flex items-center gap-3">
+                <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                  <Globe className="h-4 w-4 text-orange-600" />
+                </span>
+                <span>🌍 Géopolitique</span>
+              </Link>
+            </div>
+          </div>
 
           {/* Menu mobile modernisé */}
           <div className="space-y-2 py-2 border-b border-border">

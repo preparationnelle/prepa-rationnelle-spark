@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -24,6 +25,9 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
 import FormationPage from './pages/FormationPage';
+import FormationOverviewPage from './pages/FormationOverviewPage';
+import FormationAnglaisPage from './pages/FormationAnglaisPage';
+import FormationGeopolitiquePage from './pages/FormationGeopolitiquePage';
 import QuestionsPage from './pages/QuestionsPage';
 import QuestionCategoryPage from './pages/QuestionCategoryPage';
 import FlashcardsPage from './pages/FlashcardsPage';
@@ -145,7 +149,13 @@ function App() {
                       </ProtectedRoute>
                     } 
                   />
-                  <Route path="/formation" element={<FormationPage />} />
+                  {/* Formation Routes */}
+                  <Route path="/formation" element={<FormationOverviewPage />} />
+                  <Route path="/formation/python" element={<FormationPage />} />
+                  <Route path="/formation/anglais" element={<FormationAnglaisPage />} />
+                  <Route path="/formation/geopolitique" element={<FormationGeopolitiquePage />} />
+                  
+                  {/* Python Formation Sub-routes */}
                   <Route path="/formation/python-fondamentaux" element={<PythonFundamentalsPage />} />
                   <Route path="/formation/python-matrices" element={<PythonMatricesPage />} />
                   <Route path="/formation/python-analyse" element={<PythonAnalysePage />} />
@@ -154,6 +164,7 @@ function App() {
                   <Route path="/formation/python-matrices-exercices" element={<PythonMatricesExercicesPage />} />
                   <Route path="/formation/python-analyse-exercices" element={<PythonAnalyseExercicesPage />} />
                   <Route path="/formation/python-probabilites-exercices" element={<PythonProbabilitesExercicesPage />} />
+                  
                   <Route path="/questions" element={<QuestionsPage />} />
                   <Route path="/questions/:category" element={<QuestionCategoryPage />} />
                   <Route path="/questions/motivation-objectives" element={<MotivationObjectivesPage />} />
