@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -18,7 +17,7 @@ const FormationPage = () => {
         "Fonctions et structures de contrôle",
         "Listes et boucles"
       ],
-      link: "/formation/python-fundamentals",
+      link: "/formation/python-fondamentaux",
       icon: BookOpen,
       color: "bg-orange-500",
       available: true
