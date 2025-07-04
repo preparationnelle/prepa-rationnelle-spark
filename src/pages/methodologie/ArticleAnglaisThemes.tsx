@@ -1,7 +1,7 @@
 import React from "react";
 export default function ArticleAnglaisThemes() {
   return <section>
-      <h2 className="text-xl font-bold text-primary mb-5">2. Approfondir les Thèmes qui tombent aux concours et l’actualité</h2>
+      <h2 className="text-xl font-bold text-primary mb-5"> Approfondir les Thèmes qui tombent aux concours et l’actualité</h2>
       <div className="mb-4">
         <strong className="block mb-2">Pourquoi est-ce une priorité&nbsp;?</strong>
         <p>
