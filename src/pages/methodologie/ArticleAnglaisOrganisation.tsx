@@ -1,7 +1,7 @@
 import React from "react";
 export default function ArticleAnglaisOrganisation() {
   return <section>
-      <h2 className="text-xl font-bold text-primary mb-5">1. Organisation du temps</h2>
+      <h2 className="text-xl font-bold text-primary mb-5">Temps de travail </h2>
 
       <div className="mb-6">
         <strong className="block mb-2">
