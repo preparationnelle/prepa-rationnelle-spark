@@ -11,7 +11,7 @@ export const VideoAndIntro = () => {
           <CardContent className="p-0">
             <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
               <iframe
-                src="https://www.youtube.com/embed/cBG8EJsHkwA"
+                src="https://www.loom.com/embed/bb87a1911d4a494ba229aaca00ee88cb"
                 frameBorder="0"
                 allowFullScreen
                 className="absolute top-0 left-0 w-full h-full"

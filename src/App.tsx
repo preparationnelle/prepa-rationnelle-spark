@@ -28,6 +28,7 @@ import FormationPage from './pages/FormationPage';
 import FormationOverviewPage from './pages/FormationOverviewPage';
 import FormationAnglaisPage from './pages/FormationAnglaisPage';
 import FormationGeopolitiquePage from './pages/FormationGeopolitiquePage';
+import PythonIntroductionPage from './pages/PythonIntroductionPage';
 import QuestionsPage from './pages/QuestionsPage';
 import QuestionCategoryPage from './pages/QuestionCategoryPage';
 import FlashcardsPage from './pages/FlashcardsPage';
@@ -154,6 +155,7 @@ function App() {
                   <Route path="/formation/python" element={<FormationPage />} />
                   <Route path="/formation/anglais" element={<FormationAnglaisPage />} />
                   <Route path="/formation/geopolitique" element={<FormationGeopolitiquePage />} />
+                  <Route path="/python-introduction" element={<PythonIntroductionPage />} />
                   
                   {/* Python Formation Sub-routes */}
                   <Route path="/formation/python-fondamentaux" element={<PythonFundamentalsPage />} />
@@ -254,10 +256,10 @@ function App() {
                   <Route path="/erreur-entretien-methode" element={<ErreurEntretienMethodePage />} />
                   <Route path="/entretien-inverse-gem" element={<EntretienInverseGEMPage />} />
                   <Route path="/nos-offres" element={<NosOffresPage />} />
-                  <Route path="/offres/organisation-ete" element={<OrganisationEtePage />} />
-                  <Route path="/offres/preparation-cube" element={<PreparationCubePage />} />
-                  <Route path="/offres/coaching-python" element={<CoachingPythonPage />} />
-                  <Route path="/offres/coaching-maths" element={<CoachingMathsPage />} />
+                  <Route path="/offre/organisation-ete" element={<OrganisationEtePage />} />
+                  <Route path="/offre/preparation-cube" element={<PreparationCubePage />} />
+                  <Route path="/offre/coaching-python" element={<CoachingPythonPage />} />
+                  <Route path="/offre/coaching-maths" element={<CoachingMathsPage />} />
                   <Route path="/cv-projectif" element={<CVProjectifPage />} />
                   <Route path="/partners" element={<PartnersPage />} />
                   <Route path="/apropos" element={<AproposPage />} />

@@ -4,10 +4,21 @@ import { Link } from 'react-router-dom';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Code, Languages, Globe, ArrowRight } from 'lucide-react';
+import { Code, Languages, Globe, Users, ArrowRight } from 'lucide-react';
 
 const FormationOverviewPage = () => {
   const formations = [
+    {
+      id: 'entretiens-personnalite',
+      title: 'Entretiens de Personnalité',
+      icon: Users,
+      description: 'Maîtrisez tous les aspects des entretiens de personnalité avec notre méthodologie complète, nos outils IA et notre banque de questions.',
+      features: ['Méthodologie complète', 'Outils IA', 'Banque de questions', 'Fiches écoles détaillées'],
+      difficulty: 'Tous niveaux',
+      duration: '4-6 heures',
+      path: '/methodologie/entretiens-personnalite',
+      color: 'bg-orange-500'
+    },
     {
       id: 'python',
       title: 'Formation Python',
@@ -16,7 +27,7 @@ const FormationOverviewPage = () => {
       features: ['Fondamentaux Python', 'Matrices et calculs', 'Analyse de données', 'Probabilités et statistiques'],
       difficulty: 'Intermédiaire',
       duration: '8-10 heures',
-      path: '/formation/python',
+      path: '/python-introduction',
       color: 'bg-blue-500'
     },
     {
@@ -39,7 +50,7 @@ const FormationOverviewPage = () => {
       difficulty: 'Avancé',
       duration: '10-12 heures',
       path: '/formation/geopolitique',
-      color: 'bg-orange-500'
+      color: 'bg-purple-500'
     }
   ];
 
@@ -53,7 +64,7 @@ const FormationOverviewPage = () => {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+      <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
         {formations.map((formation) => (
           <Card key={formation.id} className="hover:shadow-lg transition-shadow duration-300 border-2 hover:border-primary/50">
             <CardHeader>
