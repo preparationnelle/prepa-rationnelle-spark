@@ -1,12 +1,7 @@
-
 import React from "react";
-
 export default function ArticleAnglaisConcours() {
-  return (
-    <section>
-      <h2 className="text-xl font-bold text-primary mb-5">
-        6. Maximisez Votre Travail à l’Approche des Concours
-      </h2>
+  return <section>
+      <h2 className="text-xl font-bold text-primary mb-5">Maximisez Votre Travail à l’Approche des Concours</h2>
       <div className="mb-4">
         <strong className="block mb-2">Objectifs prioritaires&nbsp;:</strong>
         <ul className="list-disc ml-6 space-y-3">
@@ -27,6 +22,5 @@ export default function ArticleAnglaisConcours() {
           Faites-vous relire et corriger par un tiers (professeur, camarade ou outil numérique) pour avoir un regard neuf sur vos productions.
         </span>
       </div>
-    </section>
-  );
+    </section>;
 }
