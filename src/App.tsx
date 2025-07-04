@@ -34,6 +34,20 @@ import PythonProbabilitesPage from './pages/formation/PythonProbabilitesPage';
 import PythonProbabilitesExercicesPage from './pages/formation/PythonProbabilitesExercicesPage';
 import NotFound from './pages/NotFound';
 
+// Pages manquantes pour les liens Ressources
+import AproposPage from './pages/AproposPage';
+import PersonnaliteMethodePage from './pages/PersonnaliteMethodePage';
+import CoachingPage from './pages/CoachingPage';
+import PartnersPage from './pages/PartnersPage';
+
+// Pages Python manquantes
+import PourquoiPythonPrepaECGPage from './pages/PourquoiPythonPrepaECGPage';
+import PythonReferencePage from './pages/PythonReferencePage';
+import PythonArticlePage from './pages/PythonArticlePage';
+
+// Pages générateur d'entretien
+import InterviewSimulatorPage from './pages/InterviewSimulatorPage';
+
 function App() {
   return (
     <ThemeProvider>
@@ -62,6 +76,11 @@ function App() {
                     {/* Methodologie routes */}
                     <Route path="/methodologie" element={<MethodologiePage />} />
                     <Route path="/methodologie/anglais" element={<MethodAnglaisPage />} />
+                    
+                    {/* Routes Python manquantes */}
+                    <Route path="/methodologie/python" element={<PourquoiPythonPrepaECGPage />} />
+                    <Route path="/python-reference" element={<PythonReferencePage />} />
+                    <Route path="/python-article" element={<PythonArticlePage />} />
 
                     {/* Generator routes */}
                     <Route path="/generator/languages" element={<LanguagesGeneratorPage />} />
@@ -69,6 +88,16 @@ function App() {
                     <Route path="/generator/theme-grammar" element={<ThemeGrammarGeneratorPage />} />
                     <Route path="/generator/python-exercises" element={<PythonExercisesGeneratorPage />} />
                     <Route path="/theme-grammatical" element={<ThemeGrammaticalPage />} />
+                    
+                    {/* Générateur d'entretien */}
+                    <Route path="/generator/interview" element={<InterviewSimulatorPage />} />
+
+                    {/* Routes Ressources manquantes */}
+                    <Route path="/apropos" element={<AproposPage />} />
+                    <Route path="/methodes/personnalite" element={<PersonnaliteMethodePage />} />
+                    <Route path="/coaching" element={<CoachingPage />} />
+                    <Route path="/partners" element={<PartnersPage />} />
+                    <Route path="/methodologie/entretiens-personnalite" element={<PersonnaliteMethodePage />} />
 
                     {/* Python routes */}
                     <Route path="/formation/python-fundamentals" element={<PythonFundamentalsPage />} />

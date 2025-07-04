@@ -46,8 +46,8 @@ export const AnswerAutomation: React.FC<AnswerAutomationProps> = ({
   onGenerateAnswer,
   onResetFlow,
 }) => (
-  <>
-    <Card className="overflow-hidden border-0 shadow-xl bg-gradient-to-br from-white via-orange-50/30 to-red-50/30 mb-12">
+  <div className="space-y-8">
+    <Card className="overflow-hidden border-0 shadow-xl bg-gradient-to-br from-white via-orange-50/30 to-red-50/30">
       <CardHeader className="bg-gradient-to-r from-orange-600 to-red-600 text-white">
         <div className="flex justify-between items-start">
           <div className="flex items-center gap-3">
@@ -124,5 +124,5 @@ export const AnswerAutomation: React.FC<AnswerAutomationProps> = ({
     {!currentAnswer && !generating && !showContextualQuestions && !generatingQuestions && (
       <InfoPanel language={language} />
     )}
-  </>
+  </div>
 );
