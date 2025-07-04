@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -192,7 +191,7 @@ const CATEGORIES: Category[] = [
 
 // Props et states propres à chaque automatisation
 const GeneratorPage = () => {
-  // Réponse entretien (etats internes)
+  // États locaux pour la réponse d'entretien
   const [question, setQuestion] = useState('');
   const [language, setLanguage] = useState<'fr' | 'en'>('fr');
   const [activeTab, setActiveTab] = useState('response');
@@ -200,6 +199,7 @@ const GeneratorPage = () => {
 
   const { currentUser } = useAuth();
 
+  // Destructuration correcte du hook useGenerateAnswer - seulement les propriétés qui existent
   const {
     generating,
     generatingQuestions,
