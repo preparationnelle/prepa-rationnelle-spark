@@ -1,12 +1,7 @@
-
 import React from "react";
-
 export default function ArticleAnglaisEssaisSyntheses() {
-  return (
-    <section>
-      <h2 className="text-xl font-bold text-primary mb-5">
-        5. Réussir Essais et Synthèses
-      </h2>
+  return <section>
+      <h2 className="text-xl font-bold text-primary mb-5">Réussir Essais et Synthèses</h2>
       <div className="mb-4">
         <strong className="block mb-2">
           Pourquoi ces exercices sont accessibles avec une bonne méthode&nbsp;?
@@ -60,6 +55,5 @@ export default function ArticleAnglaisEssaisSyntheses() {
           Des phrases sur Quizlet pour les mots indispensables pour l’essai et la synthèse.
         </span>
       </div>
-    </section>
-  );
+    </section>;
 }
