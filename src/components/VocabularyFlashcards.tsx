@@ -51,7 +51,7 @@ export const VocabularyFlashcards: React.FC<VocabularyFlashcardsProps> = ({ lang
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-bold flex items-center gap-2">
             <BookOpen className="h-6 w-6 text-primary" />
-            {language === 'fr' ? 'Vocabulaire utile pour les concours' : 'Useful vocabulary for exams'}
+            Vocabulaire utile pour les concours
           </h2>
           <Button onClick={resetProgress} variant="outline" size="sm">
             <RotateCcw className="h-4 w-4 mr-2" />
@@ -78,19 +78,19 @@ export const VocabularyFlashcards: React.FC<VocabularyFlashcardsProps> = ({ lang
       <Card className="min-h-[400px] relative">
         <CardHeader>
           <CardTitle className="text-center">
-            {language === 'fr' ? 'Expression anglaise' : 'English Expression'}
+            {language === 'fr' ? 'Traduction française' : 'French Translation'}
           </CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col items-center justify-center space-y-6 p-8">
           <div className="text-center">
             <div className="text-2xl font-bold text-primary mb-4">
-              {currentCard.english}
+              {currentCard.french}
             </div>
             
             {showAnswer && (
               <div className="space-y-4 animate-fade-in">
                 <div className="text-xl font-semibold text-secondary-foreground">
-                  {currentCard.french}
+                  {currentCard.english}
                 </div>
                 
                 <div className="text-sm text-muted-foreground italic border-l-4 border-primary pl-4 text-left max-w-2xl">
@@ -107,7 +107,7 @@ export const VocabularyFlashcards: React.FC<VocabularyFlashcardsProps> = ({ lang
           >
             {showAnswer 
               ? (language === 'fr' ? 'Cacher la réponse' : 'Hide answer')
-              : (language === 'fr' ? 'Voir la traduction' : 'Show translation')
+              : (language === 'fr' ? 'Voir l\'anglais' : 'Show English')
             }
           </Button>
         </CardContent>
