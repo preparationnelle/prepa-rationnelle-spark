@@ -1,12 +1,7 @@
-
 import React from "react";
-
 export default function ArticleAnglaisColles() {
-  return (
-    <section>
-      <h2 className="text-xl font-bold text-primary mb-5">
-        4. Préparation Structurée des Colles
-      </h2>
+  return <section>
+      <h2 className="text-xl font-bold text-primary mb-5">Préparation Structurée des Colles</h2>
       <div className="mb-4">
         <strong className="block mb-2">Pourquoi s’y préparer minutieusement&nbsp;?</strong>
         <p>
@@ -44,6 +39,5 @@ export default function ArticleAnglaisColles() {
           Travaillez sur des articles courts et ciblés, en lien avec les grandes thématiques. Analysez-les en profondeur pour pouvoir en extraire rapidement les idées principales.
         </span>
       </div>
-    </section>
-  );
+    </section>;
 }
