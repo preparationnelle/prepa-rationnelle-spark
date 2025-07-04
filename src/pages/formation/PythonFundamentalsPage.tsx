@@ -711,7 +711,7 @@ const PythonFundamentalsPage = () => {
                             <div>somme = 0</div>
                             <div>for k in range(1, n+1):</div>
                             <div className="ml-4">somme += k</div>
-                            <div>print(f"La somme de 1 à {n} vaut {somme}")</div>
+                            <div>print(f"La somme de 1 à {'{n}'} vaut {'{somme}'}")</div>
                           </div>
                         </div>
 
