@@ -12,12 +12,6 @@ export const useGenerateAnswer = (currentUserId?: string) => {
   const [currentAnswer, setCurrentAnswer] = useState<Answer | null>(null);
   const [contextualQuestions, setContextualQuestions] = useState<string[]>([]);
   const [showContextualQuestions, setShowContextualQuestions] = useState(false);
-  
-  // Add missing state variables
-  const [question, setQuestion] = useState('');
-  const [language, setLanguage] = useState<'fr' | 'en'>('fr');
-  const [activeTab, setActiveTab] = useState('response');
-  
   const { toast } = useToast();
   const { saveActivity } = useActivityHistory();
 
@@ -141,15 +135,6 @@ export const useGenerateAnswer = (currentUserId?: string) => {
     setCurrentAnswer(null);
   };
 
-  // Add wrapper functions that match the expected names
-  const handleGenerateQuestions = () => {
-    return generateContextualQuestions(question, language);
-  };
-
-  const handleGenerateAnswer = (contextualAnswers: string[]) => {
-    return generateAnswer(question, language, contextualAnswers);
-  };
-
   return {
     generating,
     generatingQuestions,
@@ -160,15 +145,6 @@ export const useGenerateAnswer = (currentUserId?: string) => {
     setCurrentAnswer,
     generateContextualQuestions,
     generateAnswer,
-    resetFlow,
-    // Add missing properties
-    question,
-    setQuestion,
-    language,
-    setLanguage,
-    activeTab,
-    setActiveTab,
-    handleGenerateQuestions,
-    handleGenerateAnswer
+    resetFlow
   };
 };

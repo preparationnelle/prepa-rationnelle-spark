@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
@@ -5,21 +6,44 @@ import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { GlobalSearch } from '@/components/search/GlobalSearch';
 import { MobileSearch } from '@/components/search/MobileSearch';
-import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, BarChart3, Code, Languages, Globe } from 'lucide-react';
+import { 
+  LogOut, 
+  Menu, 
+  X, 
+  ChevronDown, 
+  FileText, 
+  Users, 
+  User, 
+  BookOpen, 
+  Package, 
+  Radio, 
+  Instagram, 
+  Linkedin,
+  GraduationCap,
+  Handshake,
+  BarChart3,
+  Code,
+  Languages,
+  Globe
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from '@/components/ui/dropdown-menu';
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+} from '@/components/ui/dropdown-menu';
+
 const Navigation = () => {
-  const {
-    currentUser,
-    logout
-  } = useAuth();
+  const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
-  const {
-    toast
-  } = useToast();
+  const { toast } = useToast();
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -30,9 +54,10 @@ const Navigation = () => {
       setIsMenuOpen(false);
     }
   };
+
   const handleLogout = async () => {
     if (isLoggingOut) return; // Prevent multiple clicks
-
+    
     setIsLoggingOut(true);
     try {
       console.log("Logging out user:", currentUser?.id);
@@ -44,7 +69,7 @@ const Navigation = () => {
       toast({
         title: "Problème de déconnexion",
         description: "Veuillez réessayer. Si le problème persiste, rafraîchissez la page.",
-        variant: "destructive"
+        variant: "destructive",
       });
     } finally {
       setIsLoggingOut(false);
@@ -59,16 +84,20 @@ const Navigation = () => {
     setTimeout(() => {
       const section = document.getElementById(sectionId);
       if (section) {
-        section.scrollIntoView({
-          behavior: 'smooth'
-        });
+        section.scrollIntoView({ behavior: 'smooth' });
       }
     }, 100);
   };
-  return <header className="bg-background shadow-sm border-b border-border">
+
+  return (
+    <header className="bg-background shadow-sm border-b border-border">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center" onClick={closeMenu}>
-          <img src="/lovable-uploads/73c4719b-7030-411f-8d46-20d32035daba.png" alt="Prepa Rationnelle Logo" className="h-10 mr-2" />
+          <img 
+            src="/lovable-uploads/73c4719b-7030-411f-8d46-20d32035daba.png" 
+            alt="Prepa Rationnelle Logo" 
+            className="h-10 mr-2"
+          />
           <span className="text-xl font-bold text-primary">Prepa Rationnelle</span>
         </Link>
 
@@ -105,7 +134,7 @@ const Navigation = () => {
                   <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
                     <Code className="h-4 w-4 text-blue-600" />
                   </span>
-                  <span> Python</span>
+                  <span>🐍 Python</span>
                 </Link>
               </DropdownMenuItem>
 
@@ -114,7 +143,7 @@ const Navigation = () => {
                   <span className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
                     <Languages className="h-4 w-4 text-green-600" />
                   </span>
-                  <span> Anglais</span>
+                  <span>🇬🇧 Anglais</span>
                 </Link>
               </DropdownMenuItem>
 
@@ -123,7 +152,7 @@ const Navigation = () => {
                   <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
                     <Globe className="h-4 w-4 text-orange-600" />
                   </span>
-                  <span>Géopolitique</span>
+                  <span>🌍 Géopolitique</span>
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -190,7 +219,10 @@ const Navigation = () => {
                 </Link>
               </DropdownMenuItem>
 
-              <DropdownMenuItem onClick={() => navigateToSection('/', 'pricing-section')} className="hover:bg-primary/10 rounded-md px-3 py-2 mt-1 transition-colors cursor-pointer">
+              <DropdownMenuItem 
+                onClick={() => navigateToSection('/', 'pricing-section')} 
+                className="hover:bg-primary/10 rounded-md px-3 py-2 mt-1 transition-colors cursor-pointer"
+              >
                 <div className="flex items-center gap-3 w-full">
                   <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                     <Package className="h-4 w-4 text-primary" />
@@ -202,7 +234,12 @@ const Navigation = () => {
               <DropdownMenuSeparator className="my-2" />
               
               <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                <a href="https://www.europe1.fr/emissions/la-france-bouge-academie/prepa-rationnelle-concue-pour-revolutionner-le-monde-la-preparation-pour-integrer-les-ecoles-de-commerce-667526" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 w-full">
+                <a 
+                  href="https://www.europe1.fr/emissions/la-france-bouge-academie/prepa-rationnelle-concue-pour-revolutionner-le-monde-la-preparation-pour-integrer-les-ecoles-de-commerce-667526" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-3 w-full"
+                >
                   <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                     <Radio className="h-4 w-4 text-primary" />
                   </span>
@@ -213,11 +250,21 @@ const Navigation = () => {
               <DropdownMenuSeparator className="my-2" />
               
               <div className="flex justify-center gap-4 py-2">
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-100 hover:bg-primary/10 rounded-full flex items-center justify-center transition-colors">
+                <a 
+                  href="https://instagram.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-10 h-10 bg-gray-100 hover:bg-primary/10 rounded-full flex items-center justify-center transition-colors"
+                >
                   <Instagram className="h-5 w-5 text-primary" />
                 </a>
                 
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-100 hover:bg-primary/10 rounded-full flex items-center justify-center transition-colors">
+                <a 
+                  href="https://linkedin.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-10 h-10 bg-gray-100 hover:bg-primary/10 rounded-full flex items-center justify-center transition-colors"
+                >
                   <Linkedin className="h-5 w-5 text-primary" />
                 </a>
               </div>
@@ -237,26 +284,36 @@ const Navigation = () => {
 
           <ThemeToggle variant="icon" />
 
-          {currentUser ? <div className="flex items-center space-x-4">
+          {currentUser ? (
+            <div className="flex items-center space-x-4">
               <Link to="/dashboard" className="text-foreground hover:text-primary transition flex items-center gap-2" onClick={closeMenu}>
                 <BarChart3 className="h-4 w-4" />
                 Dashboard
               </Link>
-              <Button variant="outline" size="sm" onClick={() => {
-            handleLogout();
-            closeMenu();
-          }} className="flex items-center" disabled={isLoggingOut}>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={() => {
+                  handleLogout();
+                  closeMenu();
+                }} 
+                className="flex items-center"
+                disabled={isLoggingOut}
+              >
                 <LogOut className="mr-2 h-4 w-4" /> 
                 {isLoggingOut ? 'Déconnexion...' : 'Déconnexion'}
               </Button>
-            </div> : <>
+            </div>
+          ) : (
+            <>
               <Link to="/login" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
                 Connexion
               </Link>
               <Link to="/register" onClick={closeMenu}>
                 <Button>S'inscrire</Button>
               </Link>
-            </>}
+            </>
+          )}
         </div>
 
         {/* Mobile Navigation Toggle */}
@@ -270,13 +327,26 @@ const Navigation = () => {
       </nav>
 
       {/* Mobile Navigation Menu */}
-      <div className={cn("fixed inset-0 z-50 bg-background transform transition-transform duration-300 ease-in-out pt-20", isMenuOpen ? "translate-x-0" : "translate-x-full")}>
+      <div
+        className={cn(
+          "fixed inset-0 z-50 bg-background transform transition-transform duration-300 ease-in-out pt-20",
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
+        )}
+      >
         <div className="container mx-auto px-4 flex flex-col space-y-4">
-          <Link to="/" className="text-lg py-2 border-b border-border" onClick={closeMenu}>
+          <Link 
+            to="/" 
+            className="text-lg py-2 border-b border-border"
+            onClick={closeMenu}
+          >
             Accueil
           </Link>
           
-          <Link to="/methodologie" className="text-lg py-2 border-b border-border" onClick={closeMenu}>
+          <Link 
+             to="/methodologie" 
+             className="text-lg py-2 border-b border-border"
+             onClick={closeMenu}
+          >
             Méthodologie
           </Link>
 
@@ -357,14 +427,23 @@ const Navigation = () => {
                 <span>Fiches écoles</span>
               </Link>
               
-              <div onClick={() => navigateToSection('/', 'pricing-section')} className="flex items-center gap-3 cursor-pointer">
+              <div 
+                onClick={() => navigateToSection('/', 'pricing-section')}
+                className="flex items-center gap-3 cursor-pointer"
+              >
                 <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                   <Package className="h-4 w-4 text-primary" />
                 </span>
                 <span>Nos formules</span>
               </div>
               
-              <a href="https://www.europe1.fr/emissions/la-france-bouge-academie/prepa-rationnelle-concue-pour-revolutionner-le-monde-la-preparation-pour-integrer-les-ecoles-de-commerce-667526" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3" onClick={closeMenu}>
+              <a 
+                href="https://www.europe1.fr/emissions/la-france-bouge-academie/prepa-rationnelle-concue-pour-revolutionner-le-monde-la-preparation-pour-integrer-les-ecoles-de-commerce-667526" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-3"
+                onClick={closeMenu}
+              >
                 <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                   <Radio className="h-4 w-4 text-primary" />
                 </span>
@@ -372,42 +451,79 @@ const Navigation = () => {
               </a>
               
               <div className="flex gap-4 py-2">
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-100 hover:bg-primary/10 rounded-full flex items-center justify-center transition-colors">
+                <a 
+                  href="https://instagram.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-10 h-10 bg-gray-100 hover:bg-primary/10 rounded-full flex items-center justify-center transition-colors"
+                >
                   <Instagram className="h-5 w-5 text-primary" />
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-100 hover:bg-primary/10 rounded-full flex items-center justify-center transition-colors">
+                <a 
+                  href="https://linkedin.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-10 h-10 bg-gray-100 hover:bg-primary/10 rounded-full flex items-center justify-center transition-colors"
+                >
                   <Linkedin className="h-5 w-5 text-primary" />
                 </a>
               </div>
             </div>
           </div>
           
-          <Link to="/generator" className="text-lg py-2 border-b border-border" onClick={closeMenu}>
+          <Link 
+            to="/generator" 
+            className="text-lg py-2 border-b border-border"
+            onClick={closeMenu}
+          >
             Générateur
           </Link>
           
-          {currentUser ? <>
-              <Link to="/dashboard" className="text-lg py-2 border-b border-border flex items-center gap-2" onClick={closeMenu}>
+          {currentUser ? (
+            <>
+              <Link 
+                to="/dashboard" 
+                className="text-lg py-2 border-b border-border flex items-center gap-2"
+                onClick={closeMenu}
+              >
                 <BarChart3 className="h-4 w-4" />
                 Dashboard
               </Link>
-              <Button variant="outline" onClick={() => {
-            handleLogout();
-            closeMenu();
-          }} className="mt-4 w-full flex items-center justify-center" disabled={isLoggingOut}>
+              <Button 
+                variant="outline" 
+                onClick={() => {
+                  handleLogout();
+                  closeMenu();
+                }} 
+                className="mt-4 w-full flex items-center justify-center"
+                disabled={isLoggingOut}
+              >
                 <LogOut className="mr-2 h-4 w-4" /> 
                 {isLoggingOut ? 'Déconnexion...' : 'Déconnexion'}
               </Button>
-            </> : <>
-              <Link to="/login" className="text-lg py-2 border-b border-border" onClick={closeMenu}>
+            </>
+          ) : (
+            <>
+              <Link 
+                to="/login" 
+                className="text-lg py-2 border-b border-border"
+                onClick={closeMenu}
+              >
                 Connexion
               </Link>
-              <Link to="/register" onClick={closeMenu} className="mt-4">
+              <Link 
+                to="/register" 
+                onClick={closeMenu}
+                className="mt-4"
+              >
                 <Button className="w-full">S'inscrire</Button>
               </Link>
-            </>}
+            </>
+          )}
         </div>
       </div>
-    </header>;
+    </header>
+  );
 };
+
 export default Navigation;

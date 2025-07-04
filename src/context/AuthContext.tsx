@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
@@ -33,36 +32,27 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => {
     console.log("Setting up auth state listener");
     
-    try {
-      // Set up auth state listener FIRST
-      const { data: { subscription } } = supabase.auth.onAuthStateChange(
-        (event, session) => {
-          console.log("Auth state changed:", event, session?.user?.id);
-          setSession(session);
-          setCurrentUser(session?.user ?? null);
-          setLoading(false);
-        }
-      );
-
-      // THEN check for existing session
-      supabase.auth.getSession().then(({ data: { session } }) => {
-        console.log("Got existing session:", session?.user?.id);
+    // Set up auth state listener FIRST
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        console.log("Auth state changed:", event, session?.user?.id);
         setSession(session);
         setCurrentUser(session?.user ?? null);
-        setLoading(false);
-      }).catch((error) => {
-        console.error("Error getting session:", error);
-        setLoading(false);
-      });
+      }
+    );
 
-      return () => {
-        console.log("Unsubscribing from auth state changes");
-        subscription.unsubscribe();
-      };
-    } catch (error) {
-      console.error("Auth setup error:", error);
+    // THEN check for existing session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      console.log("Got existing session:", session?.user?.id);
+      setSession(session);
+      setCurrentUser(session?.user ?? null);
       setLoading(false);
-    }
+    });
+
+    return () => {
+      console.log("Unsubscribing from auth state changes");
+      subscription.unsubscribe();
+    };
   }, []);
 
   const register = async (email: string, password: string, name: string, phone: string): Promise<void> => {
@@ -83,13 +73,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
       
       // Track registration event
-      try {
-        posthog.capture('user_registered', {
-          source: window.location.pathname
-        });
-      } catch (posthogError) {
-        console.error('PostHog tracking error:', posthogError);
-      }
+      posthog.capture('user_registered', {
+        source: window.location.pathname
+      });
       
       toast({
         title: "Compte créé avec succès",
@@ -99,13 +85,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       console.error('Registration error:', error);
       
       // Track registration error
-      try {
-        posthog.capture('registration_error', {
-          error: error.message
-        });
-      } catch (posthogError) {
-        console.error('PostHog tracking error:', posthogError);
-      }
+      posthog.capture('registration_error', {
+        error: error.message
+      });
       
       toast({
         title: "Erreur d'inscription",
@@ -125,11 +107,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
       
       // Track login event
-      try {
-        posthog.capture('user_logged_in');
-      } catch (posthogError) {
-        console.error('PostHog tracking error:', posthogError);
-      }
+      posthog.capture('user_logged_in');
       
       toast({
         title: "Connexion réussie",
@@ -141,13 +119,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       console.error('Login error:', error);
       
       // Track login error
-      try {
-        posthog.capture('login_error', {
-          error: error.message
-        });
-      } catch (posthogError) {
-        console.error('PostHog tracking error:', posthogError);
-      }
+      posthog.capture('login_error', {
+        error: error.message
+      });
       
       toast({
         title: "Erreur de connexion",
@@ -162,11 +136,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     console.log("Attempting to log out");
     try {
       // Track logout event before the user is logged out
-      try {
-        posthog.capture('user_logged_out');
-      } catch (posthogError) {
-        console.error('PostHog tracking error:', posthogError);
-      }
+      posthog.capture('user_logged_out');
       
       // Always clear local state first to ensure UI updates even if request fails
       const { error } = await supabase.auth.signOut();
@@ -211,6 +181,5 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     logout,
   };
 
-  // Always render children
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
 };
