@@ -13,7 +13,9 @@ import HomePage from './pages/HomePage';
 import GeneratorPage from './pages/GeneratorPage';
 import FlashcardsPage from './pages/FlashcardsPage';
 import FormationPage from './pages/FormationPage';
+import FormationOverviewPage from './pages/FormationOverviewPage';
 import FormationAnglaisPage from './pages/FormationAnglaisPage';
+import FormationGeopolitiquePage from './pages/FormationGeopolitiquePage';
 import LoginPage from './pages/LoginPage';
 import ContactPage from './pages/ContactPage';
 import MethodologiePage from './pages/MethodologiePage';
@@ -45,8 +47,13 @@ function App() {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/generator" element={<GeneratorPage />} />
                     <Route path="/flashcards" element={<FlashcardsPage />} />
-                    <Route path="/formation" element={<FormationPage />} />
+                    
+                    {/* Formation routes - Vue d'ensemble mène vers FormationOverviewPage */}
+                    <Route path="/formation" element={<FormationOverviewPage />} />
+                    <Route path="/formation/python" element={<FormationPage />} />
                     <Route path="/formation/anglais" element={<FormationAnglaisPage />} />
+                    <Route path="/formation/geopolitique" element={<FormationGeopolitiquePage />} />
+                    
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     
