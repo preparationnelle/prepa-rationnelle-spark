@@ -1,12 +1,7 @@
-
 import React from "react";
-
 export default function ArticleAnglaisThemes() {
-  return (
-    <section>
-      <h2 className="text-xl font-bold text-primary mb-5">
-        3. Approfondir les Thèmes qui tombent aux concours et l’actualité
-      </h2>
+  return <section>
+      <h2 className="text-xl font-bold text-primary mb-5">2. Approfondir les Thèmes qui tombent aux concours et l’actualité</h2>
       <div className="mb-4">
         <strong className="block mb-2">Pourquoi est-ce une priorité&nbsp;?</strong>
         <p>
@@ -36,6 +31,5 @@ export default function ArticleAnglaisThemes() {
           Je fais le travail pour vous en sélectionnant les meilleurs articles de la presse anglaise, et vous fournis des résumés des enjeux clés.
         </span>
       </div>
-    </section>
-  );
+    </section>;
 }
