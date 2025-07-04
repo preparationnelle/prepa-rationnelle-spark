@@ -1,12 +1,7 @@
-
 import React from "react";
-
 export default function ArticleAnglaisGrammaire() {
-  return (
-    <section>
-      <h2 className="text-xl font-bold text-primary mb-5">
-        1. Traduction et Grammaire
-      </h2>
+  return <section>
+      <h2 className="text-xl font-bold text-primary mb-5"> Traduction et Grammaire</h2>
       <p className="mb-4 font-semibold">
         Attention, ceci n’est pas une méthode pour apprendre l’anglais, c’est une méthode pour réussir les épreuves d’anglais en prépa HEC.
       </p>
@@ -51,16 +46,10 @@ export default function ArticleAnglaisGrammaire() {
           </ol>
         </div>
         <div className="mb-2 mt-4">
-          <a
-            href="https://www.ecricome.org/wp-content/uploads/2021/01/ANNALE-LV2-ANGLAISALLEMAND-ESPAGNOL-PRE%CC%81PA-2018.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 underline font-medium"
-          >
+          <a href="https://www.ecricome.org/wp-content/uploads/2021/01/ANNALE-LV2-ANGLAISALLEMAND-ESPAGNOL-PRE%CC%81PA-2018.pdf" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline font-medium">
             Lien vers le corrigé complet
           </a>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 }
