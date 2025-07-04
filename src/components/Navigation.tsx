@@ -123,7 +123,7 @@ const Navigation = () => {
                   <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
                     <Globe className="h-4 w-4 text-orange-600" />
                   </span>
-                  <span>🌍 Géopolitique</span>
+                  <span>Géopolitique</span>
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
