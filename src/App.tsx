@@ -32,9 +32,9 @@ import NotFound from './pages/NotFound';
 
 function App() {
   return (
-    <PostHogProvider>
-      <ThemeProvider>
-        <AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <PostHogProvider>
           <ProgressProvider>
             <Router>
               <ScrollToTop />
@@ -76,9 +76,9 @@ function App() {
               <Toaster />
             </Router>
           </ProgressProvider>
-        </AuthProvider>
-      </ThemeProvider>
-    </PostHogProvider>
+        </PostHogProvider>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 
