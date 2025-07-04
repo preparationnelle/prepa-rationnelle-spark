@@ -1,12 +1,7 @@
-
 import React from "react";
-
 export default function ArticleAnglaisProgress() {
-  return (
-    <section>
-      <h2 className="text-xl font-bold text-primary mb-5">
-        2. Garder une trace de vos progrès : un point essentiel
-      </h2>
+  return <section>
+      <h2 className="text-xl font-bold text-primary mb-5"> Garder une trace de vos progrès : un point essentiel</h2>
       <div className="mb-4">
         <strong className="block mb-2">Pourquoi&nbsp;?</strong>
         <p>
@@ -83,6 +78,5 @@ export default function ArticleAnglaisProgress() {
           Des sets de vocabulaire pour apprendre les expressions indispensables en anglais pour la colle, l’essai et la synthèse.
         </span>
       </div>
-    </section>
-  );
+    </section>;
 }
