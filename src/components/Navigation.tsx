@@ -9,6 +9,7 @@ import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package,
 import { cn } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from '@/components/ui/dropdown-menu';
+
 const Navigation = () => {
   const {
     currentUser,
@@ -20,6 +21,7 @@ const Navigation = () => {
   const {
     toast
   } = useToast();
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -30,6 +32,7 @@ const Navigation = () => {
       setIsMenuOpen(false);
     }
   };
+
   const handleLogout = async () => {
     if (isLoggingOut) return; // Prevent multiple clicks
 
@@ -65,6 +68,7 @@ const Navigation = () => {
       }
     }, 100);
   };
+
   return <header className="bg-background shadow-sm border-b border-border">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center" onClick={closeMenu}>
@@ -105,7 +109,7 @@ const Navigation = () => {
                   <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
                     <Code className="h-4 w-4 text-blue-600" />
                   </span>
-                  <span> Python</span>
+                  <span>Python</span>
                 </Link>
               </DropdownMenuItem>
 
@@ -114,7 +118,7 @@ const Navigation = () => {
                   <span className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
                     <Languages className="h-4 w-4 text-green-600" />
                   </span>
-                  <span> Anglais</span>
+                  <span>Anglais</span>
                 </Link>
               </DropdownMenuItem>
 
@@ -124,6 +128,15 @@ const Navigation = () => {
                     <Globe className="h-4 w-4 text-orange-600" />
                   </span>
                   <span>Géopolitique</span>
+                </Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                <Link to="/methodologie/entretiens-personnalite" onClick={closeMenu} className="flex items-center gap-3 w-full">
+                  <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                    <Users className="h-4 w-4 text-orange-600" />
+                  </span>
+                  <span>Entretiens de Personnalité</span>
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -311,6 +324,13 @@ const Navigation = () => {
                 </span>
                 <span>🌍 Géopolitique</span>
               </Link>
+
+              <Link to="/methodologie/entretiens-personnalite" onClick={closeMenu} className="flex items-center gap-3">
+                <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                  <Users className="h-4 w-4 text-orange-600" />
+                </span>
+                <span>Entretiens de Personnalité</span>
+              </Link>
             </div>
           </div>
 
@@ -410,4 +430,5 @@ const Navigation = () => {
       </div>
     </header>;
 };
+
 export default Navigation;

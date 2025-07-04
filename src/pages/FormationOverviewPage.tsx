@@ -9,17 +9,6 @@ import { Code, Languages, Globe, Users, ArrowRight } from 'lucide-react';
 const FormationOverviewPage = () => {
   const formations = [
     {
-      id: 'entretiens-personnalite',
-      title: 'Entretiens de Personnalité',
-      icon: Users,
-      description: 'Maîtrisez tous les aspects des entretiens de personnalité avec notre méthodologie complète, nos outils IA et notre banque de questions.',
-      features: ['Méthodologie complète', 'Outils IA', 'Banque de questions', 'Fiches écoles détaillées'],
-      difficulty: 'Tous niveaux',
-      duration: '4-6 heures',
-      path: '/methodologie/entretiens-personnalite',
-      color: 'bg-orange-500'
-    },
-    {
       id: 'python',
       title: 'Formation Python',
       icon: Code,
@@ -51,6 +40,17 @@ const FormationOverviewPage = () => {
       duration: '10-12 heures',
       path: '/formation/geopolitique',
       color: 'bg-purple-500'
+    },
+    {
+      id: 'entretiens-personnalite',
+      title: 'Entretiens de Personnalité',
+      icon: Users,
+      description: 'Maîtrisez tous les aspects des entretiens de personnalité avec notre méthodologie complète, nos outils IA et notre banque de questions.',
+      features: ['Méthodologie complète', 'Outils IA', 'Banque de questions', 'Fiches écoles détaillées'],
+      difficulty: 'Tous niveaux',
+      duration: '4-6 heures',
+      path: '/methodologie/entretiens-personnalite',
+      color: 'bg-orange-500'
     }
   ];
 
