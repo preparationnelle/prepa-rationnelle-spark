@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -11,10 +10,8 @@ import ArticleAnglaisColles from './ArticleAnglaisColles';
 import ArticleAnglaisEssaisSyntheses from './ArticleAnglaisEssaisSyntheses';
 import ArticleAnglaisConcours from './ArticleAnglaisConcours';
 import ArticleAnglaisProgress from './ArticleAnglaisProgress';
-
 export const MethodAnglaisPage = () => {
-  return (
-    <div className="container max-w-4xl py-10 animate-fade-in bg-[#FFF9ED] min-h-screen">
+  return <div className="container max-w-4xl py-10 animate-fade-in bg-[#FFF9ED] min-h-screen">
       <div className="mb-6">
         <Link to="/methodologie">
           <Button variant="outline" className="mb-4">← Retour à la méthodologie</Button>
@@ -45,12 +42,7 @@ export const MethodAnglaisPage = () => {
           </CardHeader>
           <CardContent>
             <div className="aspect-video w-full">
-              <iframe
-                src="https://www.loom.com/embed/68e695fb6c1748c39eb045af67f2bae4"
-                frameBorder="0"
-                allowFullScreen
-                className="w-full h-full rounded-lg"
-              ></iframe>
+              <iframe src="https://www.loom.com/embed/68e695fb6c1748c39eb045af67f2bae4" frameBorder="0" allowFullScreen className="w-full h-full rounded-lg"></iframe>
             </div>
           </CardContent>
         </Card>
@@ -68,7 +60,7 @@ export const MethodAnglaisPage = () => {
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl text-primary">2. Maîtrise des Thèmes</CardTitle>
+            <CardTitle className="text-2xl text-primary">2. Maîtriser la civi</CardTitle>
           </CardHeader>
           <CardContent>
             <ArticleAnglaisThemes />
@@ -120,6 +112,5 @@ export const MethodAnglaisPage = () => {
           </CardContent>
         </Card>
       </div>
-    </div>
-  );
+    </div>;
 };
