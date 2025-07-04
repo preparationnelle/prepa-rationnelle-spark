@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ChevronLeft, ChevronRight, RotateCcw, BookOpen } from 'lucide-react';
+import { ChevronLeft, ChevronRight, RotateCcw, BookOpen, Eye, EyeOff } from 'lucide-react';
 import { vocabularyData, type VocabularyItem } from '@/data/vocabularyData';
 
 interface VocabularyFlashcardsProps {
@@ -60,41 +60,52 @@ export const VocabularyFlashcards: React.FC<VocabularyFlashcardsProps> = ({ lang
         </div>
         
         <div className="flex items-center gap-4 mb-4">
-          <Badge variant="secondary">
+          <Badge variant="secondary" className="px-3 py-1 text-sm font-medium">
             {currentIndex + 1} / {totalCards}
           </Badge>
-          <div className="flex-1 bg-gray-200 rounded-full h-2">
+          <div className="flex-1 bg-gray-200 rounded-full h-3 overflow-hidden">
             <div 
-              className="bg-primary h-2 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-blue-500 to-purple-600 h-3 rounded-full transition-all duration-500 ease-out"
               style={{ width: `${progressPercentage}%` }}
             />
           </div>
-          <span className="text-sm text-muted-foreground">
+          <span className="text-sm font-medium text-muted-foreground min-w-[3rem] text-right">
             {Math.round(progressPercentage)}%
           </span>
         </div>
       </div>
 
-      <Card className="min-h-[400px] relative">
-        <CardHeader>
-          <CardTitle className="text-center">
+      <Card className="min-h-[500px] relative shadow-lg border-2 border-gray-100">
+        <CardHeader className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-t-lg">
+          <CardTitle className="text-center text-lg text-muted-foreground">
             {language === 'fr' ? 'Traduction française' : 'French Translation'}
           </CardTitle>
         </CardHeader>
-        <CardContent className="flex flex-col items-center justify-center space-y-6 p-8">
-          <div className="text-center">
-            <div className="text-2xl font-bold text-primary mb-4">
-              {currentCard.french}
+        <CardContent className="flex flex-col items-center justify-center space-y-8 p-12">
+          <div className="text-center max-w-2xl">
+            {/* Recto - Mot français */}
+            <div className="mb-8">
+              <div className="text-3xl font-bold text-primary mb-2 leading-relaxed">
+                {currentCard.french}
+              </div>
             </div>
             
+            {/* Verso - Mot anglais + exemple */}
             {showAnswer && (
-              <div className="space-y-4 animate-fade-in">
-                <div className="text-xl font-semibold text-secondary-foreground">
-                  {currentCard.english}
+              <div className="space-y-6 animate-in fade-in duration-500">
+                <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6 border-l-4 border-green-500">
+                  <div className="text-2xl font-bold text-green-700 mb-2">
+                    {currentCard.english}
+                  </div>
                 </div>
                 
-                <div className="text-sm text-muted-foreground italic border-l-4 border-primary pl-4 text-left max-w-2xl">
-                  <strong>Exemple :</strong> {currentCard.example}
+                <div className="bg-gray-50 rounded-lg p-6 border-l-4 border-blue-500">
+                  <div className="text-sm font-semibold text-blue-700 mb-2 uppercase tracking-wide">
+                    Exemple :
+                  </div>
+                  <div className="text-base text-gray-700 italic leading-relaxed">
+                    {currentCard.example}
+                  </div>
                 </div>
               </div>
             )}
@@ -102,38 +113,49 @@ export const VocabularyFlashcards: React.FC<VocabularyFlashcardsProps> = ({ lang
 
           <Button 
             onClick={toggleAnswer}
-            className="mt-6"
+            className="mt-8 px-8 py-3 text-lg font-medium transition-all duration-200 hover:scale-105"
             size="lg"
           >
-            {showAnswer 
-              ? (language === 'fr' ? 'Cacher la réponse' : 'Hide answer')
-              : (language === 'fr' ? 'Voir l\'anglais' : 'Show English')
-            }
+            {showAnswer ? (
+              <>
+                <EyeOff className="mr-2 h-5 w-5" />
+                {language === 'fr' ? 'Cacher la réponse' : 'Hide answer'}
+              </>
+            ) : (
+              <>
+                <Eye className="mr-2 h-5 w-5" />
+                {language === 'fr' ? 'Voir l\'anglais' : 'Show English'}
+              </>
+            )}
           </Button>
         </CardContent>
       </Card>
 
-      <div className="flex justify-between items-center mt-6">
+      <div className="flex justify-between items-center mt-8">
         <Button
           onClick={prevCard}
           disabled={currentIndex === 0}
           variant="outline"
+          className="px-6 py-2 transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:hover:scale-100"
         >
           <ChevronLeft className="h-4 w-4 mr-2" />
           {language === 'fr' ? 'Précédent' : 'Previous'}
         </Button>
 
-        <div className="text-sm text-muted-foreground">
-          {language === 'fr' 
-            ? `${studiedCards.size} carte${studiedCards.size > 1 ? 's' : ''} étudiée${studiedCards.size > 1 ? 's' : ''}`
-            : `${studiedCards.size} card${studiedCards.size > 1 ? 's' : ''} studied`
-          }
+        <div className="text-center">
+          <div className="text-sm font-medium text-muted-foreground">
+            {language === 'fr' 
+              ? `${studiedCards.size} carte${studiedCards.size > 1 ? 's' : ''} étudiée${studiedCards.size > 1 ? 's' : ''}`
+              : `${studiedCards.size} card${studiedCards.size > 1 ? 's' : ''} studied`
+            }
+          </div>
         </div>
 
         <Button
           onClick={nextCard}
           disabled={currentIndex === totalCards - 1}
           variant="outline"
+          className="px-6 py-2 transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:hover:scale-100"
         >
           {language === 'fr' ? 'Suivant' : 'Next'}
           <ChevronRight className="h-4 w-4 ml-2" />
@@ -141,8 +163,8 @@ export const VocabularyFlashcards: React.FC<VocabularyFlashcardsProps> = ({ lang
       </div>
 
       {currentIndex === totalCards - 1 && showAnswer && (
-        <div className="text-center mt-6 p-4 bg-primary/10 rounded-lg">
-          <h3 className="text-lg font-semibold mb-2">
+        <div className="text-center mt-8 p-6 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg border-2 border-green-200">
+          <h3 className="text-xl font-bold mb-3 text-green-700">
             {language === 'fr' ? '🎉 Félicitations !' : '🎉 Congratulations!'}
           </h3>
           <p className="text-muted-foreground">
