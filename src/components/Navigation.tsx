@@ -114,7 +114,7 @@ const Navigation = () => {
                   <span className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
                     <Languages className="h-4 w-4 text-green-600" />
                   </span>
-                  <span>🇬🇧 Anglais</span>
+                  <span> Anglais</span>
                 </Link>
               </DropdownMenuItem>
 
