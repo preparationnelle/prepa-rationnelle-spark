@@ -123,6 +123,15 @@ const Navigation = () => {
               </DropdownMenuItem>
 
               <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                <Link to="/formation/allemand" onClick={closeMenu} className="flex items-center gap-3 w-full">
+                  <span className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                    <Languages className="h-4 w-4 text-red-600" />
+                  </span>
+                  <span>Allemand</span>
+                </Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
                 <Link to="/formation/geopolitique" onClick={closeMenu} className="flex items-center gap-3 w-full">
                   <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
                     <Globe className="h-4 w-4 text-orange-600" />
@@ -316,6 +325,13 @@ const Navigation = () => {
                   <Languages className="h-4 w-4 text-green-600" />
                 </span>
                 <span>🇬🇧 Anglais</span>
+              </Link>
+
+              <Link to="/formation/allemand" onClick={closeMenu} className="flex items-center gap-3">
+                <span className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                  <Languages className="h-4 w-4 text-red-600" />
+                </span>
+                <span>🇩🇪 Allemand</span>
               </Link>
 
               <Link to="/formation/geopolitique" onClick={closeMenu} className="flex items-center gap-3">
