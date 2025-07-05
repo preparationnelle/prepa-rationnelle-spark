@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -60,7 +61,6 @@ import AudenciaPage from './pages/AudenciaPage';
 import NEOMAPage from './pages/NEOMAPage';
 import KEDGEPage from './pages/KEDGEPage';
 import SKEMAPage from './pages/SKEMAPage';
-import MethodologiePage from './pages/MethodologiePage';
 import { MethodMathsPage } from './pages/methodologie/MethodMathsPage';
 import { MethodPythonPage } from './pages/methodologie/MethodPythonPage';
 import { MethodAnglaisPage } from './pages/methodologie/MethodAnglaisPage';
@@ -227,7 +227,6 @@ function App() {
                   <Route path="/neoma" element={<NEOMAPage />} />
                   <Route path="/kedge" element={<KEDGEPage />} />
                   <Route path="/skema" element={<SKEMAPage />} />
-                  <Route path="/methodologie" element={<MethodologiePage />} />
                   <Route path="/methodologie/maths" element={<MethodMathsPage />} />
                   <Route path="/methodologie/python" element={<MethodPythonPage />} />
                   <Route path="/methodologie/anglais" element={<MethodAnglaisPage />} />

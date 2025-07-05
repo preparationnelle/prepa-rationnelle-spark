@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
@@ -80,10 +81,6 @@ const Navigation = () => {
         <div className="hidden md:flex items-center space-x-6">
           <Link to="/" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
             Accueil
-          </Link>
-          
-          <Link to="/methodologie" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
-            Méthodologie
           </Link>
           
           {/* Menu déroulant "Formation" */}
@@ -296,10 +293,6 @@ const Navigation = () => {
         <div className="container mx-auto px-4 flex flex-col space-y-4">
           <Link to="/" className="text-lg py-2 border-b border-border" onClick={closeMenu}>
             Accueil
-          </Link>
-          
-          <Link to="/methodologie" className="text-lg py-2 border-b border-border" onClick={closeMenu}>
-            Méthodologie
           </Link>
 
           {/* Menu mobile Formation */}
