@@ -30,7 +30,6 @@ const AllemandRelativesPage = () => {
       </div>
 
       <div className="space-y-8">
-        {/* Section 1: Repères essentiels */}
         <Card>
           <CardHeader>
             <CardTitle className="text-2xl text-green-800">1. Repères essentiels</CardTitle>
@@ -67,7 +66,6 @@ const AllemandRelativesPage = () => {
           </CardContent>
         </Card>
 
-        {/* Section 2: Tableau des pronoms relatifs */}
         <Card>
           <CardHeader>
             <CardTitle className="text-2xl text-green-800">2. Tableau des pronoms relatifs</CardTitle>
@@ -123,7 +121,6 @@ const AllemandRelativesPage = () => {
           </CardContent>
         </Card>
 
-        {/* Section 3: Choisir le bon pronom */}
         <Card>
           <CardHeader>
             <CardTitle className="text-2xl text-green-800">3. Choisir le bon pronom</CardTitle>
@@ -156,7 +153,6 @@ const AllemandRelativesPage = () => {
           </CardContent>
         </Card>
 
-        {/* Section 4: Remplacer "dont" */}
         <Card>
           <CardHeader>
             <CardTitle className="text-2xl text-green-800">4. Remplacer « dont »</CardTitle>
@@ -193,7 +189,6 @@ const AllemandRelativesPage = () => {
           </CardContent>
         </Card>
 
-        {/* Section 5: Relatives participiales */}
         <Card>
           <CardHeader>
             <CardTitle className="text-2xl text-green-800">5. Relatives participiales</CardTitle>
@@ -215,7 +210,6 @@ const AllemandRelativesPage = () => {
           </CardContent>
         </Card>
 
-        {/* Section 6: Exercices */}
         <Card>
           <CardHeader>
             <CardTitle className="text-2xl text-green-800">6. Exercices & corrigés</CardTitle>
@@ -245,7 +239,7 @@ const AllemandRelativesPage = () => {
                 {[
                   { 
                     fr: "Ce livre, dont le titre est Au Bonheur des Dames, ...", 
-                    de: "Dieses Buch, dessen Titel „Au Bonheur des Dames" ist, ..." 
+                    de: "Dieses Buch, dessen Titel Au Bonheur des Dames ist, ..." 
                   },
                   { 
                     fr: "Les enfants dont je m'occupe, ...", 
@@ -287,7 +281,6 @@ const AllemandRelativesPage = () => {
           </CardContent>
         </Card>
 
-        {/* Section 7: Verdict */}
         <Card>
           <CardHeader>
             <CardTitle className="text-2xl text-green-800">7. Verdict</CardTitle>
