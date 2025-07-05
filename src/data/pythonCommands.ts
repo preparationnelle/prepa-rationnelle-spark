@@ -9,6 +9,50 @@ export const pythonCommands = {
       { command: "import matplotlib.pyplot as plt", description: "Tracé de courbes et graphiques" }
     ]
   },
+  basics: {
+    title: "Bases",
+    commands: [
+      { command: "print()", description: "Affiche du texte ou des variables" },
+      { command: "input()", description: "Saisie utilisateur" },
+      { command: "len()", description: "Longueur d'un objet" },
+      { command: "type()", description: "Type d'un objet" },
+      { command: "str()", description: "Conversion en chaîne de caractères" },
+      { command: "int()", description: "Conversion en entier" },
+      { command: "float()", description: "Conversion en nombre décimal" }
+    ]
+  },
+  lists: {
+    title: "Listes",
+    commands: [
+      { command: "list()", description: "Créer une liste" },
+      { command: "append()", description: "Ajouter un élément à la fin" },
+      { command: "insert()", description: "Insérer un élément à une position" },
+      { command: "remove()", description: "Supprimer un élément" },
+      { command: "pop()", description: "Supprimer et retourner un élément" },
+      { command: "index()", description: "Trouver l'index d'un élément" },
+      { command: "count()", description: "Compter les occurrences" }
+    ]
+  },
+  loops: {
+    title: "Boucles",
+    commands: [
+      { command: "for", description: "Boucle pour itérer" },
+      { command: "while", description: "Boucle conditionnelle" },
+      { command: "range()", description: "Génère une séquence de nombres" },
+      { command: "enumerate()", description: "Enumération avec index" }
+    ]
+  },
+  conditions: {
+    title: "Conditions",
+    commands: [
+      { command: "if", description: "Condition si" },
+      { command: "elif", description: "Sinon si" },
+      { command: "else", description: "Sinon" },
+      { command: "and", description: "Et logique" },
+      { command: "or", description: "Ou logique" },
+      { command: "not", description: "Non logique" }
+    ]
+  },
   functions: {
     title: "Fonctions mathématiques de base",
     commands: [

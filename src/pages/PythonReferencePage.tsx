@@ -53,16 +53,20 @@ const PythonReferencePage = () => {
 
         {/* Tabs pour les catégories */}
         <Tabs defaultValue="all" className="w-full">
-          <TabsList className="grid w-full grid-cols-5 lg:grid-cols-10 mb-6">
-            <TabsTrigger value="all">Toutes</TabsTrigger>
-            <TabsTrigger value="imports">Imports</TabsTrigger>
-            <TabsTrigger value="functions">Fonctions</TabsTrigger>
-            <TabsTrigger value="vectors">Vecteurs</TabsTrigger>
-            <TabsTrigger value="matrices">Matrices</TabsTrigger>
-            <TabsTrigger value="operations">Opérations</TabsTrigger>
-            <TabsTrigger value="linalg">Algèbre</TabsTrigger>
-            <TabsTrigger value="random">Aléatoire</TabsTrigger>
-            <TabsTrigger value="graphics">Graphiques</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-6 lg:grid-cols-12 mb-6 h-auto flex-wrap">
+            <TabsTrigger value="all" className="text-xs">Toutes</TabsTrigger>
+            <TabsTrigger value="imports" className="text-xs">Imports</TabsTrigger>
+            <TabsTrigger value="basics" className="text-xs">Bases</TabsTrigger>
+            <TabsTrigger value="lists" className="text-xs">Listes</TabsTrigger>
+            <TabsTrigger value="loops" className="text-xs">Boucles</TabsTrigger>
+            <TabsTrigger value="conditions" className="text-xs">Conditions</TabsTrigger>
+            <TabsTrigger value="functions" className="text-xs">Fonctions</TabsTrigger>
+            <TabsTrigger value="vectors" className="text-xs">Vecteurs</TabsTrigger>
+            <TabsTrigger value="matrices" className="text-xs">Matrices</TabsTrigger>
+            <TabsTrigger value="operations" className="text-xs">Opérations</TabsTrigger>
+            <TabsTrigger value="linalg" className="text-xs">Algèbre</TabsTrigger>
+            <TabsTrigger value="random" className="text-xs">Aléatoire</TabsTrigger>
+            <TabsTrigger value="graphics" className="text-xs">Graphiques</TabsTrigger>
           </TabsList>
 
           <TabsContent value="all">
