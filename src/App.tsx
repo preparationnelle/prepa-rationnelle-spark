@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -126,6 +125,12 @@ import PythonAnalyseExercicesPage from './pages/formation/PythonAnalyseExercices
 import PythonFondamentauxExercicesPage from './pages/formation/PythonFondamentauxExercicesPage';
 import PythonMatricesExercicesPage from './pages/formation/PythonMatricesExercicesPage';
 import PythonProbabilitesExercicesPage from './pages/formation/PythonProbabilitesExercicesPage';
+import FormationAllemandPage from './pages/formation/FormationAllemandPage';
+import AllemandDeclinaisonsPage from './pages/formation/AllemandDeclinaisonsPage';
+import AllemandRelativesPage from './pages/formation/AllemandRelativesPage';
+import AllemandPassifPage from './pages/formation/AllemandPassifPage';
+import AllemandStructurePage from './pages/formation/AllemandStructurePage';
+import AllemandRecurrentsPage from './pages/formation/AllemandRecurrentsPage';
 
 function App() {
   return (
@@ -154,6 +159,7 @@ function App() {
                   <Route path="/formation" element={<FormationOverviewPage />} />
                   <Route path="/formation/python" element={<FormationPage />} />
                   <Route path="/formation/anglais" element={<FormationAnglaisPage />} />
+                  <Route path="/formation/allemand" element={<FormationAllemandPage />} />
                   <Route path="/formation/geopolitique" element={<FormationGeopolitiquePage />} />
                   <Route path="/python-introduction" element={<PythonIntroductionPage />} />
                   
@@ -167,6 +173,13 @@ function App() {
                   <Route path="/formation/python-analyse-exercices" element={<PythonAnalyseExercicesPage />} />
                   <Route path="/formation/python-probabilites-exercices" element={<PythonProbabilitesExercicesPage />} />
                   
+                  {/* Allemand Formation Sub-routes */}
+                  <Route path="/formation/allemand-declinaisons" element={<AllemandDeclinaisonsPage />} />
+                  <Route path="/formation/allemand-relatives" element={<AllemandRelativesPage />} />
+                  <Route path="/formation/allemand-passif" element={<AllemandPassifPage />} />
+                  <Route path="/formation/allemand-structure" element={<AllemandStructurePage />} />
+                  <Route path="/formation/allemand-recurrents" element={<AllemandRecurrentsPage />} />
+
                   <Route path="/questions" element={<QuestionsPage />} />
                   <Route path="/questions/:category" element={<QuestionCategoryPage />} />
                   <Route path="/questions/motivation-objectives" element={<MotivationObjectivesPage />} />

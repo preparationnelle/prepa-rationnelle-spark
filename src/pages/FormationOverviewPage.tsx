@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -29,6 +28,17 @@ const FormationOverviewPage = () => {
       duration: '6-8 heures',
       path: '/formation/anglais',
       color: 'bg-green-500'
+    },
+    {
+      id: 'allemand',
+      title: 'Formation Allemand',
+      icon: Languages,
+      description: 'Formation complète en allemand avec générateurs IA et fiches de grammaire détaillées pour les concours ECG.',
+      features: ['Générateurs IA', 'Fiches de grammaire', 'Thèmes grammaticaux', 'Points récurrents'],
+      difficulty: 'Niveau prépa',
+      duration: '5-7 heures',
+      path: '/formation/allemand',
+      color: 'bg-red-500'
     },
     {
       id: 'geopolitique',

@@ -118,7 +118,7 @@ const AllemandRelativesPage = () => {
             </div>
             <div className="bg-green-50 p-4 rounded-lg mt-4 border border-green-200">
               <p className="text-green-800 font-medium">À retenir :</p>
-              <p className="text-green-700">Identiques à l'article défini der/die/das – sauf datif pluriel (<span className="font-mono bg-yellow-200 px-1">denen</span>) et génitif (<span className="font-mono bg-yellow-200 px-1">dessen/deren</span>).</p>
+              <p className="text-green-700">Identiques à l'article défini der/die/das – sauf datif pluriel (denen) et génitif (dessen/deren).</p>
             </div>
           </CardContent>
         </Card>
@@ -221,7 +221,6 @@ const AllemandRelativesPage = () => {
             <CardTitle className="text-2xl text-green-800">6. Exercices & corrigés</CardTitle>
           </CardHeader>
           <CardContent className="space-y-8">
-            {/* Exercice A */}
             <div>
               <h3 className="text-xl font-semibold mb-4 text-green-700">A. Complétez avec le pronom relatif approprié</h3>
               <div className="grid gap-3">
@@ -240,7 +239,6 @@ const AllemandRelativesPage = () => {
               </div>
             </div>
 
-            {/* Exercice B */}
             <div>
               <h3 className="text-xl font-semibold mb-4 text-green-700">B. Traduisez les phrases avec « dont »</h3>
               <div className="space-y-4">
@@ -266,7 +264,6 @@ const AllemandRelativesPage = () => {
               </div>
             </div>
 
-            {/* Exercice C */}
             <div>
               <h3 className="text-xl font-semibold mb-4 text-green-700">C. Transformez en relative participiale</h3>
               <div className="space-y-4">
