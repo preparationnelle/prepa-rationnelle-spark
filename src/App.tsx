@@ -125,7 +125,7 @@ import PythonAnalyseExercicesPage from './pages/formation/PythonAnalyseExercices
 import PythonFondamentauxExercicesPage from './pages/formation/PythonFondamentauxExercicesPage';
 import PythonMatricesExercicesPage from './pages/formation/PythonMatricesExercicesPage';
 import PythonProbabilitesExercicesPage from './pages/formation/PythonProbabilitesExercicesPage';
-import FormationAllemandPage from './pages/formation/FormationAllemandPage';
+import FormationAllemandPage from './pages/FormationAllemandPage';
 import AllemandDeclinaisonsPage from './pages/formation/AllemandDeclinaisonsPage';
 import AllemandRelativesPage from './pages/formation/AllemandRelativesPage';
 import AllemandPassifPage from './pages/formation/AllemandPassifPage';
