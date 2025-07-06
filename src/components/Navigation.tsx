@@ -102,7 +102,7 @@ const Navigation = () => {
               <DropdownMenuSeparator className="my-2" />
 
               <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                <Link to="/formation/python" onClick={closeMenu} className="flex items-center gap-3 w-full">
+                <Link to="/pourquoi-python-prepa-ecg" onClick={closeMenu} className="flex items-center gap-3 w-full">
                   <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
                     <Code className="h-4 w-4 text-blue-600" />
                   </span>
@@ -306,7 +306,7 @@ const Navigation = () => {
                 <span>Vue d'ensemble</span>
               </Link>
               
-              <Link to="/formation/python" onClick={closeMenu} className="flex items-center gap-3">
+              <Link to="/pourquoi-python-prepa-ecg" onClick={closeMenu} className="flex items-center gap-3">
                 <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
                   <Code className="h-4 w-4 text-blue-600" />
                 </span>
