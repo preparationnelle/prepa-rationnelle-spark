@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import Navigation from '@/components/Navigation';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { AutomationsSection } from '@/components/sections/AutomationsSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
@@ -26,6 +27,7 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen">
+      <Navigation />
       <HeroSection />
       <div className="container mx-auto px-4">
         <OptionalLoginBanner />
