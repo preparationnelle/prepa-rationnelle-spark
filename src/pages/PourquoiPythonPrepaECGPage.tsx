@@ -1,18 +1,21 @@
+
 import React, { useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Link } from 'react-router-dom';
-import { Youtube, Target, TrendingUp, Brain, Code, Star, Users, Calendar, CheckCircle, ArrowLeft } from 'lucide-react';
+import { Youtube, Target, TrendingUp, Brain, Code, Star, Users, Calendar, CheckCircle, ArrowLeft, BookOpen, Play } from 'lucide-react';
 import { useProgress } from '@/context/ProgressContext';
+
 const PourquoiPythonPrepaECGPage = () => {
-  const {
-    trackPageVisit
-  } = useProgress();
+  const { trackPageVisit } = useProgress();
+
   useEffect(() => {
     trackPageVisit('python-article');
   }, [trackPageVisit]);
-  return <div className="min-h-screen bg-background py-8">
+
+  return (
+    <div className="min-h-screen bg-background py-8">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="mb-8">
@@ -50,38 +53,71 @@ const PourquoiPythonPrepaECGPage = () => {
           </CardContent>
         </Card>
 
-        {/* Vidéos */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
-          {/* Vidéo YouTube */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Youtube className="h-5 w-5 text-red-600" />
-                Pourquoi Python est essentiel en ECG
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="aspect-video w-full">
-                <iframe src="https://www.youtube.com/embed/cBG8EJsHkwA" frameBorder="0" allowFullScreen className="w-full h-full rounded-lg"></iframe>
-              </div>
-            </CardContent>
-          </Card>
+        {/* Vidéo Loom - L'importance de Python aux concours */}
+        <Card className="mb-10">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Youtube className="h-5 w-5 text-blue-600" />
+              L'importance de Python aux concours
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="aspect-video w-full">
+              <iframe 
+                src="https://www.loom.com/embed/bb87a1911d4a494ba229aaca00ee88cb" 
+                frameBorder="0" 
+                allowFullScreen 
+                className="w-full h-full rounded-lg"
+              ></iframe>
+            </div>
+          </CardContent>
+        </Card>
 
-          {/* Vidéo Loom */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Youtube className="h-5 w-5 text-blue-600" />
-                L'importance de Python aux concours
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="aspect-video w-full">
-                <iframe src="https://www.loom.com/embed/bb87a1911d4a494ba229aaca00ee88cb" frameBorder="0" allowFullScreen className="w-full h-full rounded-lg"></iframe>
+        {/* Aperçu Formation Python */}
+        <Card className="mb-8 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3">
+              <BookOpen className="h-6 w-6 text-blue-600" />
+              Formation Python ECG - Aperçu des modules
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-blue-800 mb-4">
+              Découvrez notre formation complète Python structurée en 4 modules progressifs :
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-white p-4 rounded-lg border border-blue-200">
+                <h4 className="font-semibold text-blue-800 mb-2">🐍 Module 1: Fondamentaux</h4>
+                <p className="text-sm text-blue-700">Variables, boucles, conditions, fonctions</p>
               </div>
-            </CardContent>
-          </Card>
-        </div>
+              
+              <div className="bg-white p-4 rounded-lg border border-blue-200">
+                <h4 className="font-semibold text-blue-800 mb-2">🔢 Module 2: Matrices & Numpy</h4>
+                <p className="text-sm text-blue-700">Algèbre linéaire, résolution de systèmes</p>
+              </div>
+              
+              <div className="bg-white p-4 rounded-lg border border-blue-200">
+                <h4 className="font-semibold text-blue-800 mb-2">📊 Module 3: Analyse & Graphiques</h4>
+                <p className="text-sm text-blue-700">Matplotlib, tracer des fonctions, suites</p>
+              </div>
+              
+              <div className="bg-white p-4 rounded-lg border border-blue-200">
+                <h4 className="font-semibold text-blue-800 mb-2">🎲 Module 4: Probabilités</h4>
+                <p className="text-sm text-blue-700">Simulations, lois, statistiques</p>
+              </div>
+            </div>
+            
+            <div className="text-center mt-6">
+              <Link to="/formation/python">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2">
+                  <Play className="h-4 w-4" />
+                  Accéder à la formation complète
+                </Button>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Section 1 - Le vrai poids de Python */}
         <Card className="mb-8">
@@ -131,7 +167,7 @@ const PourquoiPythonPrepaECGPage = () => {
                 <span><strong>Effet de mode inversé :</strong> « tout le monde dit que Python, c'est facile » → donc personne ne l'approfondit vraiment</span>
               </li>
               <li className="flex items-start gap-3">
-                
+                <span className="text-red-500 font-bold">•</span>
                 <span><strong>Absence de méthodo :</strong> on survole les commandes en TP, sans vraie feuille de route</span>
               </li>
               <li className="flex items-start gap-3">
@@ -358,14 +394,18 @@ const PourquoiPythonPrepaECGPage = () => {
               </li>
             </ol>
             <div className="text-center mt-6 space-y-4">
-              <Link to="/python-flashcards">
-                <Button size="lg" className="text-lg px-8 py-4 mr-4">Tester mes connaissances avec les flashcards</Button>
-              </Link>
-              <Link to="/python-reference">
-                <Button variant="outline" size="lg" className="text-lg px-8 py-4">
-                  📚 Découvrir toutes les commandes
-                </Button>
-              </Link>
+              <div className="flex flex-wrap gap-3 justify-center">
+                <Link to="/python-flashcards">
+                  <Button variant="outline" size="lg" className="text-base px-6 py-3">
+                    Tester mes connaissances avec les flashcards
+                  </Button>
+                </Link>
+                <Link to="/python-reference">
+                  <Button variant="outline" size="lg" className="text-base px-6 py-3">
+                    📚 Découvrir toutes les commandes
+                  </Button>
+                </Link>
+              </div>
               <Link to="/offre/coaching-python">
                 <Button size="lg" className="text-lg px-8 py-4 bg-orange-600 hover:bg-orange-700">
                   🚀 Je réserve ma place coaching !
@@ -387,26 +427,62 @@ const PourquoiPythonPrepaECGPage = () => {
             <div className="space-y-4">
               <div className="border-l-4 border-blue-500 pl-4">
                 <p className="font-semibold text-blue-800">Q : Et si je n'ai jamais installé Python ?</p>
-                <p className="text-blue-700"> On travaillera directement sur Google Colab : aucune installation, juste un navigateur.</p>
+                <p className="text-blue-700">R : On travaillera directement sur Google Colab : aucune installation, juste un navigateur.</p>
               </div>
               <div className="border-l-4 border-green-500 pl-4">
                 <p className="font-semibold text-green-800">Q : Je vise HEC, pas EM Lyon ; c'est assez pointu ?</p>
-                <p className="text-green-700"> Oui : on décortique les sujets HEC 2022-2024 et on pousse jusqu'aux pièges d'oraux.</p>
+                <p className="text-green-700">R : Oui : on décortique les sujets HEC 2022-2024 et on pousse jusqu'aux pièges d'oraux.</p>
               </div>
               <div className="border-l-4 border-orange-500 pl-4">
                 <p className="font-semibold text-orange-800">Q : 297 € pour 6 h, c'est vraiment « premium mais pas trop cher » ?</p>
-                <p className="text-orange-700"> Regarde les prépas privées : 90 € l'heure, sans quiz, sans PDF, sans suivi WhatsApp. À toi de voir.</p>
+                <p className="text-orange-700">R : Regarde les prépas privées : 90 € l'heure, sans quiz, sans PDF, sans suivi WhatsApp. À toi de voir.</p>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Conclusion */}
-        <Card className="bg-gradient-to-br from-primary/10 to-orange-500/10 border-primary">
-          
-          
+        {/* Vidéo finale - 10 scripts à maîtriser */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Youtube className="h-5 w-5 text-blue-600" />
+              10 scripts Python à maîtriser absolument
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="aspect-video w-full">
+              <iframe 
+                src="https://www.loom.com/embed/cfa2eb8c2b554b6f9a9e8d60b4b34f66" 
+                frameBorder="0" 
+                allowFullScreen 
+                className="w-full h-full rounded-lg"
+              ></iframe>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Vidéo YouTube - Pourquoi Python est essentiel */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Youtube className="h-5 w-5 text-red-600" />
+              Pourquoi Python est essentiel en ECG
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="aspect-video w-full">
+              <iframe 
+                src="https://www.youtube.com/embed/cBG8EJsHkwA" 
+                frameBorder="0" 
+                allowFullScreen 
+                className="w-full h-full rounded-lg"
+              ></iframe>
+            </div>
+          </CardContent>
         </Card>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default PourquoiPythonPrepaECGPage;
