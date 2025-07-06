@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -86,7 +87,7 @@ const PourquoiPythonPrepaECGPage = () => {
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Link to="/formation/python/fondamentaux" className="group">
+              <Link to="/formation/python-fondamentaux" className="group">
                 <div className="bg-white p-6 rounded-lg border border-blue-200 hover:shadow-md transition-all group-hover:border-blue-400">
                   <h4 className="font-bold text-blue-800 mb-2 text-lg">🐍 Module 1: Fondamentaux</h4>
                   <p className="text-blue-700 mb-3">Variables, boucles, conditions, fonctions</p>
@@ -97,7 +98,7 @@ const PourquoiPythonPrepaECGPage = () => {
                 </div>
               </Link>
               
-              <Link to="/formation/python/matrices" className="group">
+              <Link to="/formation/python-matrices" className="group">
                 <div className="bg-white p-6 rounded-lg border border-blue-200 hover:shadow-md transition-all group-hover:border-blue-400">
                   <h4 className="font-bold text-blue-800 mb-2 text-lg">🔢 Module 2: Matrices & Numpy</h4>
                   <p className="text-blue-700 mb-3">Algèbre linéaire, résolution de systèmes</p>
@@ -108,7 +109,7 @@ const PourquoiPythonPrepaECGPage = () => {
                 </div>
               </Link>
               
-              <Link to="/formation/python/analyse" className="group">
+              <Link to="/formation/python-analyse" className="group">
                 <div className="bg-white p-6 rounded-lg border border-blue-200 hover:shadow-md transition-all group-hover:border-blue-400">
                   <h4 className="font-bold text-blue-800 mb-2 text-lg">📊 Module 3: Analyse & Graphiques</h4>
                   <p className="text-blue-700 mb-3">Matplotlib, tracer des fonctions, suites</p>
@@ -119,7 +120,7 @@ const PourquoiPythonPrepaECGPage = () => {
                 </div>
               </Link>
               
-              <Link to="/formation/python/probabilites" className="group">
+              <Link to="/formation/python-probabilites" className="group">
                 <div className="bg-white p-6 rounded-lg border border-blue-200 hover:shadow-md transition-all group-hover:border-blue-400">
                   <h4 className="font-bold text-blue-800 mb-2 text-lg">🎲 Module 4: Probabilités</h4>
                   <p className="text-blue-700 mb-3">Simulations, lois, statistiques</p>
@@ -132,7 +133,7 @@ const PourquoiPythonPrepaECGPage = () => {
             </div>
             
             <div className="text-center mt-8">
-              <Link to="/formation/python">
+              <Link to="/formation">
                 <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg">
                   <BookOpen className="h-5 w-5 mr-2" />
                   Voir toute la formation
