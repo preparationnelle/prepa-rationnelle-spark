@@ -20,10 +20,14 @@ import PythonProbabilitesExercicesPage from './pages/formation/PythonProbabilite
 import PythonReferencePage from './pages/PythonReferencePage';
 import PythonFlashcardsPage from './pages/PythonFlashcardsPage';
 import CoachingPythonPage from './pages/offres/CoachingPythonPage';
+import CoachingMathsPage from './pages/offres/CoachingMathsPage';
+import OrganisationEtePage from './pages/offres/OrganisationEtePage';
+import PreparationCubePage from './pages/offres/PreparationCubePage';
 import FormationAnglaisPage from './pages/FormationAnglaisPage';
 import FormationAllemandPage from './pages/FormationAllemandPage';
 import FormationGeopolitiquePage from './pages/FormationGeopolitiquePage';
 import MethodologieEntretiensPersonnalitePage from './pages/methodologie/MethodEntretiensPersonnalitePage';
+import NosOffresPage from './pages/NosOffresPage';
 import NotFound from './pages/NotFound';
 import { AuthProvider } from './context/AuthContext';
 import { ToastContainer } from 'react-toastify';
@@ -49,11 +53,17 @@ function App() {
               <Route path="/pourquoi-python-prepa-ecg" element={<PourquoiPythonPrepaECGPage />} />
               <Route path="/python-reference" element={<PythonReferencePage />} />
               <Route path="/python-flashcards" element={<PythonFlashcardsPage />} />
-              <Route path="/offre/coaching-python" element={<CoachingPythonPage />} />
               <Route path="/formation/anglais" element={<FormationAnglaisPage />} />
               <Route path="/formation/allemand" element={<FormationAllemandPage />} />
               <Route path="/formation/geopolitique" element={<FormationGeopolitiquePage />} />
               <Route path="/methodologie/entretiens-personnalite" element={<MethodologieEntretiensPersonnalitePage />} />
+              
+              {/* Offres routes */}
+              <Route path="/offre/coaching-python" element={<CoachingPythonPage />} />
+              <Route path="/offre/coaching-maths" element={<CoachingMathsPage />} />
+              <Route path="/offre/organisation-ete" element={<OrganisationEtePage />} />
+              <Route path="/offre/preparation-cube" element={<PreparationCubePage />} />
+              <Route path="/nos-offres" element={<NosOffresPage />} />
               
               <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
 
