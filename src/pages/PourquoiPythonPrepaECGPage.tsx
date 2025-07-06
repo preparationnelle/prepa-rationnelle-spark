@@ -1,21 +1,18 @@
-
 import React, { useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Link } from 'react-router-dom';
-import { Youtube, Target, TrendingUp, Brain, Code, Star, Users, Calendar, CheckCircle, ArrowLeft, BookOpen } from 'lucide-react';
+import { Youtube, Target, TrendingUp, Brain, Code, Star, Users, Calendar, CheckCircle, ArrowLeft } from 'lucide-react';
 import { useProgress } from '@/context/ProgressContext';
-
 const PourquoiPythonPrepaECGPage = () => {
-  const { trackPageVisit } = useProgress();
-  
+  const {
+    trackPageVisit
+  } = useProgress();
   useEffect(() => {
     trackPageVisit('python-article');
   }, [trackPageVisit]);
-
-  return (
-    <div className="min-h-screen bg-background py-8">
+  return <div className="min-h-screen bg-background py-8">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="mb-8">
@@ -53,69 +50,23 @@ const PourquoiPythonPrepaECGPage = () => {
           </CardContent>
         </Card>
 
-        {/* Première vidéo - Pourquoi Python est essentiel */}
-        <Card className="mb-8">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Youtube className="h-5 w-5 text-red-600" />
-              Pourquoi Python est essentiel en ECG
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="aspect-video w-full">
-              <iframe 
-                src="https://www.youtube.com/embed/cBG8EJsHkwA" 
-                frameBorder="0" 
-                allowFullScreen 
-                className="w-full h-full rounded-lg"
-              ></iframe>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Navigation vers la formation Python */}
-        <Card className="mb-8 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-3">
-              <BookOpen className="h-6 w-6 text-blue-600" />
-              Accédez aux modules de formation Python
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-gray-700 mb-4">
-              Découvrez nos modules complets avec exercices et cours structurés pour maîtriser Python en prépa ECG.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <Link to="/formation/python">
-                <Button variant="outline" className="w-full h-auto p-4 flex flex-col items-center gap-2">
-                  <span className="font-semibold">Fondamentaux</span>
-                  <span className="text-xs text-center">Variables, boucles, conditions</span>
-                </Button>
-              </Link>
-              <Link to="/formation/python">
-                <Button variant="outline" className="w-full h-auto p-4 flex flex-col items-center gap-2">
-                  <span className="font-semibold">Matrices</span>
-                  <span className="text-xs text-center">Numpy, algèbre linéaire</span>
-                </Button>
-              </Link>
-              <Link to="/formation/python">
-                <Button variant="outline" className="w-full h-auto p-4 flex flex-col items-center gap-2">
-                  <span className="font-semibold">Analyse</span>
-                  <span className="text-xs text-center">Graphiques, fonctions</span>
-                </Button>
-              </Link>
-              <Link to="/formation/python">
-                <Button variant="outline" className="w-full h-auto p-4 flex flex-col items-center gap-2">
-                  <span className="font-semibold">Probabilités</span>
-                  <span className="text-xs text-center">Statistiques, simulations</span>
-                </Button>
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
-
         {/* Vidéos */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
+          {/* Vidéo YouTube */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Youtube className="h-5 w-5 text-red-600" />
+                Pourquoi Python est essentiel en ECG
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="aspect-video w-full">
+                <iframe src="https://www.youtube.com/embed/cBG8EJsHkwA" frameBorder="0" allowFullScreen className="w-full h-full rounded-lg"></iframe>
+              </div>
+            </CardContent>
+          </Card>
+
           {/* Vidéo Loom */}
           <Card>
             <CardHeader>
@@ -126,32 +77,7 @@ const PourquoiPythonPrepaECGPage = () => {
             </CardHeader>
             <CardContent>
               <div className="aspect-video w-full">
-                <iframe 
-                  src="https://www.loom.com/embed/bb87a1911d4a494ba229aaca00ee88cb" 
-                  frameBorder="0" 
-                  allowFullScreen 
-                  className="w-full h-full rounded-lg"
-                ></iframe>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Nouvelle vidéo - 10 scripts à maîtriser */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Youtube className="h-5 w-5 text-red-600" />
-                10 scripts essentiels à maîtriser
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="aspect-video w-full">
-                <iframe 
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                  frameBorder="0" 
-                  allowFullScreen 
-                  className="w-full h-full rounded-lg"
-                ></iframe>
+                <iframe src="https://www.loom.com/embed/bb87a1911d4a494ba229aaca00ee88cb" frameBorder="0" allowFullScreen className="w-full h-full rounded-lg"></iframe>
               </div>
             </CardContent>
           </Card>
@@ -205,7 +131,7 @@ const PourquoiPythonPrepaECGPage = () => {
                 <span><strong>Effet de mode inversé :</strong> « tout le monde dit que Python, c'est facile » → donc personne ne l'approfondit vraiment</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-red-500 font-bold">•</span>
+                
                 <span><strong>Absence de méthodo :</strong> on survole les commandes en TP, sans vraie feuille de route</span>
               </li>
               <li className="flex items-start gap-3">
@@ -432,18 +358,14 @@ const PourquoiPythonPrepaECGPage = () => {
               </li>
             </ol>
             <div className="text-center mt-6 space-y-4">
-              <div className="flex flex-wrap gap-3 justify-center">
-                <Link to="/python-flashcards">
-                  <Button size="lg" variant="outline" className="bg-white hover:bg-gray-50 border-2">
-                    Tester mes connaissances avec les flashcards
-                  </Button>
-                </Link>
-                <Link to="/python-reference">
-                  <Button variant="outline" size="lg" className="bg-white hover:bg-gray-50 border-2">
-                    📚 Découvrir toutes les commandes
-                  </Button>
-                </Link>
-              </div>
+              <Link to="/python-flashcards">
+                <Button size="lg" className="text-lg px-8 py-4 mr-4">Tester mes connaissances avec les flashcards</Button>
+              </Link>
+              <Link to="/python-reference">
+                <Button variant="outline" size="lg" className="text-lg px-8 py-4">
+                  📚 Découvrir toutes les commandes
+                </Button>
+              </Link>
               <Link to="/offre/coaching-python">
                 <Button size="lg" className="text-lg px-8 py-4 bg-orange-600 hover:bg-orange-700">
                   🚀 Je réserve ma place coaching !
@@ -481,25 +403,10 @@ const PourquoiPythonPrepaECGPage = () => {
 
         {/* Conclusion */}
         <Card className="bg-gradient-to-br from-primary/10 to-orange-500/10 border-primary">
-          <CardContent className="p-8 text-center">
-            <h3 className="text-2xl font-bold mb-4">Conclusion</h3>
-            <p className="text-lg mb-4">
-              Python n'est pas la cerise sur le gâteau : c'est la part du barème la plus rentable du concours.
-            </p>
-            <p className="mb-4">
-              Avec une heure de pratique hebdo et un feedback instantané, tu verrouilles +3 à +5 points que les autres laissent filer.
-            </p>
-            <p className="mb-6">
-              Mon coaching te fournit : méthode, exercices, correction IA et accompagnement personnalisé. Le tout en mode premium accessible.
-            </p>
-            <p className="font-semibold">
-              Prochain pas : découvre ton niveau et transforme Python en arme secrète ↗
-            </p>
-          </CardContent>
+          
+          
         </Card>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default PourquoiPythonPrepaECGPage;
