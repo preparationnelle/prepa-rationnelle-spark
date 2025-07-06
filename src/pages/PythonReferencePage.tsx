@@ -53,14 +53,11 @@ const PythonReferencePage = () => {
 
         {/* Tabs pour les catégories */}
         <Tabs defaultValue="all" className="w-full">
-          <TabsList className="grid w-full grid-cols-6 lg:grid-cols-12 mb-6 h-auto flex-wrap">
+          <TabsList className="grid w-full grid-cols-5 lg:grid-cols-10 mb-6 h-auto flex-wrap">
             <TabsTrigger value="all" className="text-xs">Toutes</TabsTrigger>
             <TabsTrigger value="imports" className="text-xs">Imports</TabsTrigger>
-            <TabsTrigger value="basics" className="text-xs">Bases</TabsTrigger>
-            <TabsTrigger value="lists" className="text-xs">Listes</TabsTrigger>
-            <TabsTrigger value="loops" className="text-xs">Boucles</TabsTrigger>
-            <TabsTrigger value="conditions" className="text-xs">Conditions</TabsTrigger>
             <TabsTrigger value="functions" className="text-xs">Fonctions</TabsTrigger>
+            <TabsTrigger value="constants" className="text-xs">Constantes</TabsTrigger>
             <TabsTrigger value="vectors" className="text-xs">Vecteurs</TabsTrigger>
             <TabsTrigger value="matrices" className="text-xs">Matrices</TabsTrigger>
             <TabsTrigger value="operations" className="text-xs">Opérations</TabsTrigger>
