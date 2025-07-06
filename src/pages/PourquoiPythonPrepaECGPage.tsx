@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -73,46 +72,70 @@ const PourquoiPythonPrepaECGPage = () => {
           </CardContent>
         </Card>
 
-        {/* Aperçu Formation Python */}
-        <Card className="mb-8 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
+        {/* Accès direct à la formation - Plus visible */}
+        <Card className="mb-8 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200 shadow-lg">
           <CardHeader>
-            <CardTitle className="flex items-center gap-3">
-              <BookOpen className="h-6 w-6 text-blue-600" />
-              Formation Python ECG - Aperçu des modules
+            <CardTitle className="flex items-center gap-3 text-2xl">
+              <BookOpen className="h-8 w-8 text-blue-600" />
+              🚀 Accédez directement à la formation Python ECG
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <p className="text-blue-800 mb-4">
-              Découvrez notre formation complète Python structurée en 4 modules progressifs :
+          <CardContent className="space-y-6">
+            <p className="text-blue-800 text-lg mb-6">
+              Découvrez notre formation complète Python structurée en 4 modules progressifs avec exercices pratiques :
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-white p-4 rounded-lg border border-blue-200">
-                <h4 className="font-semibold text-blue-800 mb-2">🐍 Module 1: Fondamentaux</h4>
-                <p className="text-sm text-blue-700">Variables, boucles, conditions, fonctions</p>
-              </div>
+              <Link to="/formation/python/fondamentaux" className="group">
+                <div className="bg-white p-6 rounded-lg border border-blue-200 hover:shadow-md transition-all group-hover:border-blue-400">
+                  <h4 className="font-bold text-blue-800 mb-2 text-lg">🐍 Module 1: Fondamentaux</h4>
+                  <p className="text-blue-700 mb-3">Variables, boucles, conditions, fonctions</p>
+                  <div className="flex items-center text-blue-600 group-hover:text-blue-800">
+                    <Play className="h-4 w-4 mr-2" />
+                    <span className="font-medium">Commencer →</span>
+                  </div>
+                </div>
+              </Link>
               
-              <div className="bg-white p-4 rounded-lg border border-blue-200">
-                <h4 className="font-semibold text-blue-800 mb-2">🔢 Module 2: Matrices & Numpy</h4>
-                <p className="text-sm text-blue-700">Algèbre linéaire, résolution de systèmes</p>
-              </div>
+              <Link to="/formation/python/matrices" className="group">
+                <div className="bg-white p-6 rounded-lg border border-blue-200 hover:shadow-md transition-all group-hover:border-blue-400">
+                  <h4 className="font-bold text-blue-800 mb-2 text-lg">🔢 Module 2: Matrices & Numpy</h4>
+                  <p className="text-blue-700 mb-3">Algèbre linéaire, résolution de systèmes</p>
+                  <div className="flex items-center text-blue-600 group-hover:text-blue-800">
+                    <Play className="h-4 w-4 mr-2" />
+                    <span className="font-medium">Commencer →</span>
+                  </div>
+                </div>
+              </Link>
               
-              <div className="bg-white p-4 rounded-lg border border-blue-200">
-                <h4 className="font-semibold text-blue-800 mb-2">📊 Module 3: Analyse & Graphiques</h4>
-                <p className="text-sm text-blue-700">Matplotlib, tracer des fonctions, suites</p>
-              </div>
+              <Link to="/formation/python/analyse" className="group">
+                <div className="bg-white p-6 rounded-lg border border-blue-200 hover:shadow-md transition-all group-hover:border-blue-400">
+                  <h4 className="font-bold text-blue-800 mb-2 text-lg">📊 Module 3: Analyse & Graphiques</h4>
+                  <p className="text-blue-700 mb-3">Matplotlib, tracer des fonctions, suites</p>
+                  <div className="flex items-center text-blue-600 group-hover:text-blue-800">
+                    <Play className="h-4 w-4 mr-2" />
+                    <span className="font-medium">Commencer →</span>
+                  </div>
+                </div>
+              </Link>
               
-              <div className="bg-white p-4 rounded-lg border border-blue-200">
-                <h4 className="font-semibold text-blue-800 mb-2">🎲 Module 4: Probabilités</h4>
-                <p className="text-sm text-blue-700">Simulations, lois, statistiques</p>
-              </div>
+              <Link to="/formation/python/probabilites" className="group">
+                <div className="bg-white p-6 rounded-lg border border-blue-200 hover:shadow-md transition-all group-hover:border-blue-400">
+                  <h4 className="font-bold text-blue-800 mb-2 text-lg">🎲 Module 4: Probabilités</h4>
+                  <p className="text-blue-700 mb-3">Simulations, lois, statistiques</p>
+                  <div className="flex items-center text-blue-600 group-hover:text-blue-800">
+                    <Play className="h-4 w-4 mr-2" />
+                    <span className="font-medium">Commencer →</span>
+                  </div>
+                </div>
+              </Link>
             </div>
             
-            <div className="text-center mt-6">
+            <div className="text-center mt-8">
               <Link to="/formation/python">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2">
-                  <Play className="h-4 w-4" />
-                  Accéder à la formation complète
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg">
+                  <BookOpen className="h-5 w-5 mr-2" />
+                  Voir toute la formation
                 </Button>
               </Link>
             </div>
@@ -376,44 +399,35 @@ const PourquoiPythonPrepaECGPage = () => {
             <ol className="space-y-3">
               <li className="flex items-start gap-3">
                 <span className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">1</span>
-                <span><strong>Teste-toi gratuitement :</strong> clique sur le lien ci-dessous, passe le quiz « Commandes Python »</span>
+                <span><strong>Commence par la formation :</strong> accède directement aux modules de cours et d'exercices</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">2</span>
-                <span>Reçois ton score + plan d'attaque dans ta boîte mail</span>
+                <span>Pratique avec nos outils : flashcards et commandes de référence</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">3</span>
-                <div>
-                  <p className="mb-2"><strong>Décide :</strong></p>
-                  <ul className="ml-4 space-y-1">
-                    <li>• Tu veux juste la fiche et le quiz ? Garde-les, c'est cadeau.</li>
-                    <li>• Tu veux +3 à +5 pts sûrs et transformer Python en force ? Réserve ton créneau coaching avant que l'agenda ne se remplisse.</li>
-                  </ul>
-                </div>
+                <span><strong>Besoin d'un accompagnement personnalisé ?</strong> Réserve ton coaching individuel</span>
               </li>
             </ol>
             <div className="text-center mt-6 space-y-4">
               <div className="flex flex-wrap gap-3 justify-center">
                 <Link to="/python-flashcards">
                   <Button variant="outline" size="lg" className="text-base px-6 py-3">
-                    Tester mes connaissances avec les flashcards
+                    🧠 Flashcards Python
                   </Button>
                 </Link>
                 <Link to="/python-reference">
                   <Button variant="outline" size="lg" className="text-base px-6 py-3">
-                    📚 Découvrir toutes les commandes
+                    📚 Toutes les commandes
                   </Button>
                 </Link>
               </div>
               <Link to="/offre/coaching-python">
                 <Button size="lg" className="text-lg px-8 py-4 bg-orange-600 hover:bg-orange-700">
-                  🚀 Je réserve ma place coaching !
+                  🚀 Coaching personnalisé
                 </Button>
               </Link>
-              <p className="text-sm text-muted-foreground mt-2">
-                (Places limitées : je n'accompagne qu'un petit nombre d'étudiants pour garantir la personnalisation.)
-              </p>
             </div>
           </CardContent>
         </Card>
@@ -441,27 +455,7 @@ const PourquoiPythonPrepaECGPage = () => {
           </CardContent>
         </Card>
 
-        {/* Vidéo finale - 10 scripts à maîtriser */}
-        <Card className="mb-8">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Youtube className="h-5 w-5 text-blue-600" />
-              10 scripts Python à maîtriser absolument
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="aspect-video w-full">
-              <iframe 
-                src="https://www.loom.com/embed/cfa2eb8c2b554b6f9a9e8d60b4b34f66" 
-                frameBorder="0" 
-                allowFullScreen 
-                className="w-full h-full rounded-lg"
-              ></iframe>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Vidéo YouTube - Pourquoi Python est essentiel */}
+        {/* Vidéo YouTube - Pourquoi Python est essentiel - À la fin */}
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
