@@ -33,10 +33,10 @@ const PythonReferencePage = () => {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-4">
-            <Link to="/formation">
+            <Link to="/pourquoi-python-prepa-ecg">
               <Button variant="outline" size="sm" className="flex items-center gap-2">
                 <ArrowLeft className="h-4 w-4" />
-                Retour à la formation
+                Retour à l'article Python
               </Button>
             </Link>
           </div>
@@ -45,7 +45,7 @@ const PythonReferencePage = () => {
             Référence Python ECG
           </h1>
           <p className="text-xl text-muted-foreground mb-6">
-            Toutes les commandes Python au programme de prépa ECG
+            Toutes les 54 commandes Python au programme de prépa ECG
           </p>
           
           <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
@@ -91,6 +91,28 @@ const PythonReferencePage = () => {
             </TabsContent>
           ))}
         </Tabs>
+
+        {/* Call to action */}
+        <div className="mt-12 text-center">
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-8 rounded-lg border">
+            <h3 className="text-2xl font-bold mb-4">Prêt à maîtriser Python ?</h3>
+            <p className="text-muted-foreground mb-6">
+              Transformez ces commandes en +3 à +5 points sûrs aux concours
+            </p>
+            <div className="flex gap-4 justify-center flex-wrap">
+              <Link to="/python-flashcards">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+                  🧠 Tester avec les flashcards
+                </Button>
+              </Link>
+              <Link to="/offre/coaching-python">
+                <Button size="lg" variant="outline">
+                  Coaching Python individuel
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
