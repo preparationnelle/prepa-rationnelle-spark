@@ -18,7 +18,7 @@ export const FormationsSection = () => {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {/* Formation Python */}
-          <Link to="/pourquoi-python-prepa-ecg" className="group">
+          <Link to="/formation/python-fondamentaux" className="group">
             <Card className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-blue-200">
               <CardHeader>
                 <div className="flex items-center gap-3 mb-3">
@@ -40,7 +40,7 @@ export const FormationsSection = () => {
                   <div className="text-sm text-blue-600">✓ +3 à 5 points garantis</div>
                 </div>
                 <Button variant="ghost" className="text-blue-600 group-hover:bg-blue-50 w-full">
-                  Découvrir la formation →
+                  Commencer le module →
                 </Button>
               </CardContent>
             </Card>

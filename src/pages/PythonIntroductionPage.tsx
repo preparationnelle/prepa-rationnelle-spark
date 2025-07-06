@@ -46,6 +46,62 @@ const PythonIntroductionPage = () => {
           <VideoAndIntro />
         </div>
 
+        {/* Module Python cards with direct links to course pages */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl text-center">
+              🚀 Accès direct aux modules Python ECG
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <p className="text-center text-lg mb-6">
+              Découvrez notre formation complète Python structurée en 4 modules progressifs :
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Link to="/formation/python-fondamentaux" className="group">
+                <div className="bg-white p-6 rounded-lg border border-blue-200 hover:shadow-md transition-all group-hover:border-blue-400">
+                  <h4 className="font-bold text-blue-800 mb-2 text-lg">🐍 Module 0: Fondamentaux</h4>
+                  <p className="text-blue-700 mb-3">Variables, boucles, conditions, fonctions</p>
+                  <div className="flex items-center text-blue-600 group-hover:text-blue-800">
+                    <span className="font-medium">Commencer le module →</span>
+                  </div>
+                </div>
+              </Link>
+              
+              <Link to="/formation/python-matrices" className="group">
+                <div className="bg-white p-6 rounded-lg border border-blue-200 hover:shadow-md transition-all group-hover:border-blue-400">
+                  <h4 className="font-bold text-blue-800 mb-2 text-lg">🔢 Module 1: Matrices & Numpy</h4>
+                  <p className="text-blue-700 mb-3">Algèbre linéaire, résolution de systèmes</p>
+                  <div className="flex items-center text-blue-600 group-hover:text-blue-800">
+                    <span className="font-medium">Commencer le module →</span>
+                  </div>
+                </div>
+              </Link>
+              
+              <Link to="/formation/python-analyse" className="group">
+                <div className="bg-white p-6 rounded-lg border border-blue-200 hover:shadow-md transition-all group-hover:border-blue-400">
+                  <h4 className="font-bold text-blue-800 mb-2 text-lg">📊 Module 2: Analyse & Graphiques</h4>
+                  <p className="text-blue-700 mb-3">Matplotlib, tracer des fonctions, suites</p>
+                  <div className="flex items-center text-blue-600 group-hover:text-blue-800">
+                    <span className="font-medium">Commencer le module →</span>
+                  </div>
+                </div>
+              </Link>
+              
+              <Link to="/formation/python-probabilites" className="group">
+                <div className="bg-white p-6 rounded-lg border border-blue-200 hover:shadow-md transition-all group-hover:border-blue-400">
+                  <h4 className="font-bold text-blue-800 mb-2 text-lg">🎲 Module 3: Probabilités</h4>
+                  <p className="text-blue-700 mb-3">Simulations, lois, statistiques</p>
+                  <div className="flex items-center text-blue-600 group-hover:text-blue-800">
+                    <span className="font-medium">Commencer le module →</span>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Liste des commandes Python */}
         <Card className="mb-8">
           <CardHeader>
@@ -114,9 +170,9 @@ const PythonIntroductionPage = () => {
 
         {/* Accès aux formations */}
         <div className="text-center">
-          <Link to="/formation/python">
+          <Link to="/formation/python-fondamentaux">
             <Button size="lg" className="mr-4">
-              Accéder aux modules de formation
+              Commencer par les fondamentaux
             </Button>
           </Link>
           <Link to="/generator/python-tutor">
