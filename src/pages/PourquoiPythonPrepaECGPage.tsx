@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -6,16 +5,14 @@ import { Badge } from '@/components/ui/badge';
 import { Link } from 'react-router-dom';
 import { Youtube, Target, TrendingUp, Brain, Code, Star, Users, Calendar, CheckCircle, ArrowLeft } from 'lucide-react';
 import { useProgress } from '@/context/ProgressContext';
-
 const PourquoiPythonPrepaECGPage = () => {
-  const { trackPageVisit } = useProgress();
-  
+  const {
+    trackPageVisit
+  } = useProgress();
   useEffect(() => {
     trackPageVisit('python-article');
   }, [trackPageVisit]);
-
-  return (
-    <div className="min-h-screen bg-background py-8">
+  return <div className="min-h-screen bg-background py-8">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="mb-8">
@@ -65,12 +62,7 @@ const PourquoiPythonPrepaECGPage = () => {
             </CardHeader>
             <CardContent>
               <div className="aspect-video w-full">
-                <iframe
-                  src="https://www.youtube.com/embed/cBG8EJsHkwA"
-                  frameBorder="0"
-                  allowFullScreen
-                  className="w-full h-full rounded-lg"
-                ></iframe>
+                <iframe src="https://www.youtube.com/embed/cBG8EJsHkwA" frameBorder="0" allowFullScreen className="w-full h-full rounded-lg"></iframe>
               </div>
             </CardContent>
           </Card>
@@ -85,12 +77,7 @@ const PourquoiPythonPrepaECGPage = () => {
             </CardHeader>
             <CardContent>
               <div className="aspect-video w-full">
-                <iframe
-                  src="https://www.loom.com/embed/bb87a1911d4a494ba229aaca00ee88cb"
-                  frameBorder="0"
-                  allowFullScreen
-                  className="w-full h-full rounded-lg"
-                ></iframe>
+                <iframe src="https://www.loom.com/embed/bb87a1911d4a494ba229aaca00ee88cb" frameBorder="0" allowFullScreen className="w-full h-full rounded-lg"></iframe>
               </div>
             </CardContent>
           </Card>
@@ -372,9 +359,7 @@ const PourquoiPythonPrepaECGPage = () => {
             </ol>
             <div className="text-center mt-6 space-y-4">
               <Link to="/python-flashcards">
-                <Button size="lg" className="text-lg px-8 py-4 mr-4">
-                  🧠 Tester mes connaissances avec les flashcards
-                </Button>
+                <Button size="lg" className="text-lg px-8 py-4 mr-4">Tester mes connaissances avec les flashcards</Button>
               </Link>
               <Link to="/python-reference">
                 <Button variant="outline" size="lg" className="text-lg px-8 py-4">
@@ -418,37 +403,10 @@ const PourquoiPythonPrepaECGPage = () => {
 
         {/* Conclusion */}
         <Card className="bg-gradient-to-br from-primary/10 to-orange-500/10 border-primary">
-          <CardHeader>
-            <CardTitle className="text-center text-2xl">Conclusion</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4 text-center">
-            <p className="text-lg">
-              Python n'est pas la cerise sur le gâteau : <strong>c'est la part du barème la plus rentable du concours.</strong>
-            </p>
-            <p>
-              Avec une heure de pratique hebdo et un feedback instantané, tu verrouilles +3 à +5 points que les autres laissent filer.
-            </p>
-            <p>
-              Mon coaching te fournit : méthode, exercices, correction IA et accompagnement personnalisé. 
-              Le tout en mode premium accessible.
-            </p>
-            <div className="mt-6 space-y-4">
-              <Link to="/python-flashcards">
-                <Button size="lg" className="text-lg px-8 py-4 mr-4">
-                  Prochain pas : découvre ton niveau et transforme Python en arme secrète ↗
-                </Button>
-              </Link>
-              <Link to="/offre/coaching-python" className="inline-block">
-                <Button variant="outline" size="lg">
-                  En savoir plus sur le coaching Python
-                </Button>
-              </Link>
-            </div>
-          </CardContent>
+          
+          
         </Card>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default PourquoiPythonPrepaECGPage;
