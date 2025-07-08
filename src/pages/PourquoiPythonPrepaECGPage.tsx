@@ -20,7 +20,7 @@ const PourquoiPythonPrepaECGPage = () => {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-4">
-            <Link to="/formation/python">
+            <Link to="/formation">
               <Button variant="outline" size="sm" className="flex items-center gap-2">
                 <ArrowLeft className="h-4 w-4" />
                 Retour à la formation Python

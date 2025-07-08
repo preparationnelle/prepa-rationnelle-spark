@@ -17,6 +17,10 @@ const FormationAnglaisPage = lazy(() => import('../pages/FormationAnglaisPage'))
 const FormationAllemandPage = lazy(() => import('../pages/FormationAllemandPage'));
 const FormationGeopolitiquePage = lazy(() => import('../pages/FormationGeopolitiquePage'));
 const NosOffresPage = lazy(() => import('../pages/NosOffresPage'));
+const AproposPage = lazy(() => import('../pages/AproposPage'));
+const CoachingPage = lazy(() => import('../pages/CoachingPage'));
+const PartnersPage = lazy(() => import('../pages/PartnersPage'));
+const FormationOverviewPage = lazy(() => import('../pages/FormationOverviewPage'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 
 // Formation pages
@@ -87,6 +91,10 @@ export const routes: RouteConfig[] = [
   { path: '/python-reference', component: PythonReferencePage, title: 'Référence Python' },
   { path: '/python-flashcards', component: PythonFlashcardsPage, title: 'Flashcards Python' },
   { path: '/nos-offres', component: NosOffresPage, title: 'Nos Offres' },
+  { path: '/apropos', component: AproposPage, title: 'À propos' },
+  { path: '/coaching', component: CoachingPage, title: 'Coaching individuel' },
+  { path: '/partners', component: PartnersPage, title: 'Partenaires' },
+  { path: '/methodes/personnalite', component: MethodEntretiensPersonnalitePage, title: 'Méthodes Personnalité' },
   
   // Protected pages
   { path: '/dashboard', component: DashboardPage, title: 'Tableau de bord', protected: true },

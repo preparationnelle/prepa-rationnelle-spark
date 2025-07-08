@@ -179,12 +179,12 @@ const Navigation = () => {
               </DropdownMenuItem>
 
               <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 mt-1 transition-colors">
-                <Link to="/coaching" onClick={closeMenu} className="flex items-center gap-3 w-full">
+                <a href="https://calendly.com/prepa-rationnelle/coaching-individuel" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 w-full">
                   <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                     <Users className="h-4 w-4 text-primary" />
                   </span>
                   <span>Coaching individuel</span>
-                </Link>
+                </a>
               </DropdownMenuItem>
 
               {/* ----------- Ajout partenaire ici ------------ */}
@@ -200,13 +200,13 @@ const Navigation = () => {
 
               <DropdownMenuSeparator className="my-2" />
               
-              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                <Link to="/methodologie/entretiens-personnalite" onClick={closeMenu} className="flex items-center gap-3 w-full">
+              <DropdownMenuItem onClick={() => navigateToSection('/', 'schools-section')} className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors cursor-pointer">
+                <div className="flex items-center gap-3 w-full">
                   <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                     <GraduationCap className="h-4 w-4 text-primary" />
                   </span>
                   <span>Fiches écoles</span>
-                </Link>
+                </div>
               </DropdownMenuItem>
 
               <DropdownMenuItem onClick={() => navigateToSection('/', 'pricing-section')} className="hover:bg-primary/10 rounded-md px-3 py-2 mt-1 transition-colors cursor-pointer">
@@ -363,12 +363,12 @@ const Navigation = () => {
                 <span>Entretien de personnalité</span>
               </Link>
               
-              <Link to="/coaching" onClick={closeMenu} className="flex items-center gap-3">
+              <a href="https://calendly.com/prepa-rationnelle/coaching-individuel" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
                 <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                   <Users className="h-4 w-4 text-primary" />
                 </span>
                 <span>Coaching individuel</span>
-              </Link>
+              </a>
 
               {/* ----------- Ajout Partenaires MOBILE ici ------------ */}
               <Link to="/partners" onClick={closeMenu} className="flex items-center gap-3">
@@ -379,12 +379,12 @@ const Navigation = () => {
               </Link>
               {/* ----------- fin ajout ----------- */}
 
-              <Link to="/methodologie/entretiens-personnalite" onClick={closeMenu} className="flex items-center gap-3">
+              <div onClick={() => navigateToSection('/', 'schools-section')} className="flex items-center gap-3 cursor-pointer">
                 <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                   <GraduationCap className="h-4 w-4 text-primary" />
                 </span>
                 <span>Fiches écoles</span>
-              </Link>
+              </div>
               
               <div onClick={() => navigateToSection('/', 'pricing-section')} className="flex items-center gap-3 cursor-pointer">
                 <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
