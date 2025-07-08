@@ -6,6 +6,8 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
 import ContactPage from './pages/ContactPage';
+import QuestionsPage from './pages/QuestionsPage';
+import GeneratorPage from './pages/GeneratorPage';
 import PythonArticlePage from './pages/PythonArticlePage';
 import FormationPage from './pages/FormationPage';
 import PourquoiPythonPrepaECGPage from './pages/PourquoiPythonPrepaECGPage';
@@ -48,6 +50,8 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/questions" element={<QuestionsPage />} />
+              <Route path="/generator" element={<GeneratorPage />} />
               <Route path="/python-article" element={<PythonArticlePage />} />
               <Route path="/formation" element={<FormationPage />} />
               <Route path="/pourquoi-python-prepa-ecg" element={<PourquoiPythonPrepaECGPage />} />
