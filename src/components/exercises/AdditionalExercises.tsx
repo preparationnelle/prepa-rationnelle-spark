@@ -19,9 +19,9 @@ export const AdditionalExercises: React.FC = () => {
       </CardHeader>
       <CardContent>
         <Accordion type="single" collapsible>
-          <AccordionItem value="exercice-2">
+          <AccordionItem value="exercice-2d">
             <AccordionTrigger>
-              Exercice 2 : Marche aléatoire 2D
+              Exercice 4 : Marche aléatoire 2D
             </AccordionTrigger>
             <AccordionContent>
               <div className="space-y-4">
@@ -57,9 +57,9 @@ print(f"Distance à l'origine : {distance_origine(100):.2f}")`}
             </AccordionContent>
           </AccordionItem>
 
-          <AccordionItem value="exercice-3">
+          <AccordionItem value="exercice-ruine">
             <AccordionTrigger>
-              Exercice 3 : Ruine du joueur
+              Exercice 5 : Ruine du joueur
             </AccordionTrigger>
             <AccordionContent>
               <div className="space-y-4">
