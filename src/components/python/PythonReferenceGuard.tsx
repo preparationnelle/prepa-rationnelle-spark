@@ -23,7 +23,7 @@ export const PythonReferenceGuard: React.FC<PythonReferenceGuardProps> = ({ chil
 
   const handleWhatsAppRedirect = () => {
     const message = "Je veux gratuitement la liste de toutes les commandes.";
-    const phoneNumber = "33756938726"; // Remplacer par le bon numéro
+    const phoneNumber = "33609164668"; // Numéro de Dimitar
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     
     // Ouvrir WhatsApp dans un nouvel onglet
@@ -82,7 +82,7 @@ export const PythonReferenceGuard: React.FC<PythonReferenceGuardProps> = ({ chil
               size="lg"
             >
               <MessageCircle className="h-5 w-5 mr-2" />
-              Envoyer le message WhatsApp
+              Discuter avec Dimitar
             </Button>
 
             {/* Note informative */}
