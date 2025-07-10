@@ -96,6 +96,32 @@ const FormationPage = () => {
     }
   ];
 
+  const pythonCommands = [
+    // Imports
+    "import numpy as np", "import matplotlib.pyplot as plt", "from numpy import *", "from matplotlib.pyplot import *",
+    
+    // Fonctions de base
+    "len()", "range()", "print()", "input()", "type()", "abs()", "round()", "min()", "max()", "sum()",
+    
+    // Constantes et valeurs spéciales
+    "np.pi", "np.e", "np.inf", "np.nan",
+    
+    // Création de vecteurs et matrices
+    "np.array()", "np.zeros()", "np.ones()", "np.eye()", "np.diag()", "np.linspace()", "np.arange()",
+    
+    // Opérations matricielles
+    "np.dot()", "np.transpose()", "np.linalg.inv()", "np.linalg.det()", "np.shape()", "np.size()",
+    
+    // Fonctions mathématiques
+    "np.sqrt()", "np.exp()", "np.log()", "np.sin()", "np.cos()", "np.tan()",
+    
+    // Statistiques et aléatoire
+    "np.mean()", "np.std()", "np.var()", "np.random.rand()", "np.random.randint()", "np.random.choice()",
+    
+    // Graphiques
+    "plt.plot()", "plt.show()", "plt.xlabel()", "plt.ylabel()", "plt.title()", "plt.legend()", "plt.grid()"
+  ];
+
   return (
     <>
       <div className="container mx-auto py-8 px-4">
@@ -225,6 +251,105 @@ const FormationPage = () => {
             </Card>
           ))}
         </div>
+      </div>
+
+      {/* Section Flashcards */}
+      <div className="mb-12">
+        <Card className="bg-gradient-to-r from-purple-50 to-pink-50 border-purple-200">
+          <CardHeader>
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                <BookOpen className="h-6 w-6 text-purple-600" />
+              </div>
+              <div>
+                <CardTitle className="text-2xl text-purple-800">
+                  🧠 Flashcards Python ECG
+                </CardTitle>
+                <p className="text-purple-600 mt-1">
+                  Mémorisez facilement toutes les commandes essentielles
+                </p>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <h4 className="font-semibold text-purple-800 mb-3">✨ Système de mémorisation intelligent</h4>
+                <ul className="space-y-2 text-sm text-purple-700">
+                  <li>• Répétition espacée pour mémorisation durable</li>
+                  <li>• Suivi de progression personnalisé</li>
+                  <li>• Questions adaptées à votre niveau</li>
+                  <li>• Révisions optimisées selon vos lacunes</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold text-purple-800 mb-3">🎯 Contenu spécialisé ECG</h4>
+                <ul className="space-y-2 text-sm text-purple-700">
+                  <li>• 54 commandes du programme officiel</li>
+                  <li>• Exemples concrets d'application</li>
+                  <li>• Syntaxe et paramètres détaillés</li>
+                  <li>• Cas d'usage typiques en concours</li>
+                </ul>
+              </div>
+            </div>
+            <div className="flex gap-4 justify-center">
+              <Link to="/python-flashcards">
+                <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white">
+                  <BookOpen className="mr-2 h-5 w-5" />
+                  Commencer les flashcards
+                </Button>
+              </Link>
+              <Link to="/python-reference">
+                <Button size="lg" variant="outline" className="border-purple-600 text-purple-600 hover:bg-purple-50">
+                  <Code className="mr-2 h-5 w-5" />
+                  Voir toutes les commandes
+                </Button>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Section Liste des commandes */}
+      <div className="mb-12">
+        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+          <Code className="h-6 w-6 text-primary" />
+          Les 54 commandes Python ECG à connaître
+        </h2>
+        <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200">
+          <CardHeader>
+            <CardTitle className="text-xl text-blue-800 flex items-center gap-2">
+              📋 Référence complète du programme officiel
+            </CardTitle>
+            <p className="text-blue-600">
+              Toutes les commandes essentielles organisées par catégorie pour une révision efficace
+            </p>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {pythonCommands.map((command, index) => (
+                  <div 
+                    key={index}
+                    className="bg-white p-3 rounded-lg border border-blue-200 hover:border-blue-400 transition-colors"
+                  >
+                    <code className="text-sm font-mono text-blue-800 bg-blue-50 px-2 py-1 rounded">
+                      {command}
+                    </code>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="mt-6 text-center">
+              <Link to="/python-reference">
+                <Button variant="outline" size="lg" className="border-blue-600 text-blue-600 hover:bg-blue-50">
+                  <Code className="mr-2 h-5 w-5" />
+                  Voir la référence détaillée avec exemples
+                </Button>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
       </div>
       </div>
 
