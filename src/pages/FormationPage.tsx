@@ -3,9 +3,30 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { Code, Calculator, TrendingUp, BarChart3, Play, BookOpen } from 'lucide-react';
+import { Code, Calculator, TrendingUp, BarChart3, Play, BookOpen, Lock } from 'lucide-react';
+import { usePythonModuleAccess } from '@/hooks/usePythonModuleAccess';
+import { PythonRestrictedAccessModal } from '@/components/python/PythonRestrictedAccessModal';
 
 const FormationPage = () => {
+  const { 
+    checkModuleAccess, 
+    showRestrictedModal, 
+    currentModule, 
+    handleModalClose,
+    isRestrictedModule 
+  } = usePythonModuleAccess();
+
+  const handleModuleClick = (moduleId: number, moduleName: string, link: string) => {
+    if (checkModuleAccess(moduleId, moduleName)) {
+      window.location.href = link;
+    }
+  };
+
+  const handleExerciseClick = (moduleId: number, moduleName: string, link: string) => {
+    if (checkModuleAccess(moduleId, moduleName)) {
+      window.location.href = link;
+    }
+  };
   const coursModules = [
     {
       id: 0,
@@ -76,7 +97,8 @@ const FormationPage = () => {
   ];
 
   return (
-    <div className="container mx-auto py-8 px-4">
+    <>
+      <div className="container mx-auto py-8 px-4">
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold mb-4 flex items-center justify-center gap-3">
           <div className="p-3 rounded-lg bg-blue-600 text-white">
@@ -128,12 +150,13 @@ const FormationPage = () => {
                     <li key={index}>{topic}</li>
                   ))}
                 </ul>
-                <Link to={module.link}>
-                  <Button className={`${module.color} hover:opacity-90 w-full`}>
-                    <Play className="mr-2 h-4 w-4" />
-                    Commencer le module
-                  </Button>
-                </Link>
+                <Button 
+                  className={`${module.color} hover:opacity-90 w-full`}
+                  onClick={() => handleModuleClick(module.id, module.title, module.link)}
+                >
+                  <Play className="mr-2 h-4 w-4" />
+                  Commencer le module
+                </Button>
               </CardContent>
             </Card>
           ))}
@@ -158,7 +181,14 @@ const FormationPage = () => {
                     <div>
                       <CardTitle className="flex items-center gap-2">
                         Module {module.id}
-                        <Badge className="bg-green-600 text-white">Disponible</Badge>
+                        {isRestrictedModule(module.id) ? (
+                          <Badge className="bg-orange-600 text-white flex items-center gap-1">
+                            <Lock className="h-3 w-3" />
+                            Accès restreint
+                          </Badge>
+                        ) : (
+                          <Badge className="bg-green-600 text-white">Disponible</Badge>
+                        )}
                       </CardTitle>
                       <h3 className="text-xl font-semibold text-primary mt-1">
                         {module.title}
@@ -175,25 +205,38 @@ const FormationPage = () => {
                   ))}
                 </ul>
                 <div className="flex gap-3">
-                  <Link to={module.link} className="flex-1">
-                    <Button variant="outline" className="w-full">
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Voir le cours
-                    </Button>
-                  </Link>
-                  <Link to={module.exerciseLink} className="flex-1">
-                    <Button className={`${module.color} hover:opacity-90 w-full`}>
-                      <Play className="mr-2 h-4 w-4" />
-                      Commencer le module
-                    </Button>
-                  </Link>
+                  <Button 
+                    variant="outline" 
+                    className="flex-1"
+                    onClick={() => handleModuleClick(module.id, module.title, module.link)}
+                  >
+                    <BookOpen className="mr-2 h-4 w-4" />
+                    Voir le cours
+                  </Button>
+                  <Button 
+                    className={`${module.color} hover:opacity-90 flex-1`}
+                    onClick={() => handleExerciseClick(module.id, module.title, module.exerciseLink)}
+                  >
+                    <Play className="mr-2 h-4 w-4" />
+                    Commencer les exercices
+                  </Button>
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
       </div>
-    </div>
+      </div>
+
+      {showRestrictedModal && currentModule && (
+        <PythonRestrictedAccessModal
+          isOpen={showRestrictedModal}
+          onClose={handleModalClose}
+          moduleId={currentModule.id}
+          moduleName={currentModule.name}
+        />
+      )}
+    </>
   );
 };
 

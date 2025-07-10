@@ -10,6 +10,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, Target, Book, CheckCircle, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { PythonModuleGuard } from '@/components/python/PythonModuleGuard';
 
 const PythonProbabilitesExercicesPage = () => {
   const [selectedExercise, setSelectedExercise] = useState<number | null>(null);
@@ -927,7 +928,8 @@ test_complet(0.5, 0.4`)}
   }
 
   return (
-    <div className="min-h-screen bg-background py-8">
+    <PythonModuleGuard moduleId={3} moduleName="Probabilités">
+      <div className="min-h-screen bg-background py-8">
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-8">
           <Link to="/formation">
@@ -1020,6 +1022,7 @@ test_complet(0.5, 0.4`)}
         </div>
       </div>
     </div>
+    </PythonModuleGuard>
   );
 };
 

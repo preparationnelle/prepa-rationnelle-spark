@@ -10,6 +10,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { PythonModuleGuard } from '@/components/python/PythonModuleGuard';
 
 const PythonAnalyseExercicesPage = () => {
   const [selectedExercise, setSelectedExercise] = useState<number | null>(null);
@@ -1311,7 +1312,8 @@ print("Somme :", S)`}</code>
   }
 
   return (
-    <div className="min-h-screen bg-background py-8">
+    <PythonModuleGuard moduleId={2} moduleName="Analyse">
+      <div className="min-h-screen bg-background py-8">
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-8">
           <Link to="/formation">
@@ -1418,6 +1420,7 @@ print("Somme :", S)`}</code>
         </div>
       </div>
     </div>
+    </PythonModuleGuard>
   );
 };
 

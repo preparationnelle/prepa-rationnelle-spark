@@ -18,10 +18,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { PythonModuleGuard } from '@/components/python/PythonModuleGuard';
 
 const PythonProbabilitesPage = () => {
   return (
-    <div className="min-h-screen bg-background py-8">
+    <PythonModuleGuard moduleId={3} moduleName="Probabilités">
+      <div className="min-h-screen bg-background py-8">
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-8">
           <Link to="/formation">
@@ -628,6 +630,7 @@ rd.normal(mean, sigma)   # normale`}
         </Card>
       </div>
     </div>
+    </PythonModuleGuard>
   );
 };
 

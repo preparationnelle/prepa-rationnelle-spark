@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, Calculator, Target, Play, CheckCircle, Eye, EyeOff } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { PythonModuleGuard } from '@/components/python/PythonModuleGuard';
 const PythonMatricesExercicesPage = () => {
   const [selectedExercise, setSelectedExercise] = useState<number | null>(null);
   const [showSolution, setShowSolution] = useState<{
@@ -381,7 +382,9 @@ def Nilp(A):
         </div>
       </div>;
   }
-  return <div className="min-h-screen bg-background py-8">
+  return (
+    <PythonModuleGuard moduleId={1} moduleName="Les Matrices NumPy">
+      <div className="min-h-screen bg-background py-8">
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-8">
           <Link to="/formation">
@@ -457,6 +460,8 @@ def Nilp(A):
             </Card>)}
         </div>
       </div>
-    </div>;
+    </div>
+    </PythonModuleGuard>
+  );
 };
 export default PythonMatricesExercicesPage;
