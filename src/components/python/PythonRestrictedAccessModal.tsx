@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { MessageCircle, Key, Lock, Loader2 } from 'lucide-react';
 import { usePythonAccess } from '@/hooks/usePythonAccess';
+import { usePythonModuleAccess } from '@/hooks/usePythonModuleAccess';
 
 interface PythonRestrictedAccessModalProps {
   isOpen: boolean;
@@ -26,13 +27,14 @@ export const PythonRestrictedAccessModal: React.FC<PythonRestrictedAccessModalPr
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { validateAccessCode } = usePythonAccess();
+  const { grantModuleAccess } = usePythonModuleAccess();
 
-  const handleWhatsAppClick = () => {
+  const handleWhatsAppClick = async () => {
     const message = encodeURIComponent("Bonjour, je suis intéressé par le module Python. Je souhaiterais obtenir l'accès !");
     window.open(`https://wa.me/33609164668?text=${message}`, '_blank');
     
-    // Marquer l'accès comme accordé pour ce module spécifique après envoi WhatsApp
-    localStorage.setItem(`python_module_${moduleId}_access`, 'granted');
+    // Sauvegarder l'accès accordé en base de données après contact WhatsApp
+    await grantModuleAccess(moduleId, moduleName, 'WHATSAPP_CONTACT');
     onClose();
   };
 
@@ -44,10 +46,33 @@ export const PythonRestrictedAccessModal: React.FC<PythonRestrictedAccessModalPr
     setError('');
 
     try {
-      await validateAccessCode(code, email || undefined);
-      onClose();
+      // Vérifier d'abord si c'est un code d'accès général Python
+      try {
+        await validateAccessCode(code, email || undefined);
+        onClose();
+        return;
+      } catch (generalError) {
+        // Si ce n'est pas un code général, vérifier si c'est un code spécifique au module
+        const moduleSpecificCodes = [
+          'MATRICES2024',
+          'ANALYSE2024', 
+          'PROBAS2024',
+          'FUNDAMENTALS2024'
+        ];
+
+        if (moduleSpecificCodes.includes(code)) {
+          // Accorder l'accès spécifiquement à ce module
+          const success = await grantModuleAccess(moduleId, moduleName, code);
+          if (success) {
+            onClose();
+            return;
+          }
+        }
+        
+        throw generalError;
+      }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Erreur lors de la validation du code');
+      setError(err instanceof Error ? err.message : 'Code d\'accès invalide');
     } finally {
       setLoading(false);
     }
