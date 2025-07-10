@@ -20,6 +20,12 @@ export const usePythonModuleAccess = () => {
       return true;
     }
 
+    // Vérifier l'accès spécifique au module (persistance)
+    const moduleAccess = localStorage.getItem(`python_module_${moduleId}_access`);
+    if (moduleAccess === 'granted') {
+      return true;
+    }
+
     // Modules restreints nécessitent une autorisation
     if (RESTRICTED_MODULES.includes(moduleId)) {
       setCurrentModule({ id: moduleId, name: moduleName });

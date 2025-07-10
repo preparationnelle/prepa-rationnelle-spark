@@ -10,6 +10,7 @@ import { CallToActionSection } from '@/components/sections/CallToActionSection';
 import { PodcastSection } from '@/components/sections/PodcastSection';
 import { PartnersSection } from '@/components/sections/PartnersSection';
 import { FormationsSection } from '@/components/sections/FormationsSection';
+import { PythonECGSection } from '@/components/sections/PythonECGSection';
 import OptionalLoginBanner from '@/components/OptionalLoginBanner';
 import OffersSection from '@/components/OffersSection';
 
@@ -33,6 +34,7 @@ const HomePage = () => {
         <OptionalLoginBanner />
       </div>
       <FormationsSection />
+      <PythonECGSection />
       <OffersSection />
       <AutomationsSection />
       <TestimonialsSection />

@@ -30,6 +30,10 @@ export const PythonRestrictedAccessModal: React.FC<PythonRestrictedAccessModalPr
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent("Bonjour, je suis intéressé par le module Python. Je souhaiterais obtenir l'accès !");
     window.open(`https://wa.me/33609164668?text=${message}`, '_blank');
+    
+    // Marquer l'accès comme accordé pour ce module spécifique après envoi WhatsApp
+    localStorage.setItem(`python_module_${moduleId}_access`, 'granted');
+    onClose();
   };
 
   const handleCodeSubmit = async (e: React.FormEvent) => {
