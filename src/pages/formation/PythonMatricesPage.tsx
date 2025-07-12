@@ -8,12 +8,10 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { PythonModuleQuiz } from '@/components/python/PythonModuleQuiz';
 import { matricesQuizQuestions } from '@/data/pythonQuizQuestions';
-import { PythonModuleGuard } from '@/components/python/PythonModuleGuard';
 
 const PythonMatricesPage = () => {
   return (
-    <PythonModuleGuard moduleId={1} moduleName="Les Matrices NumPy">
-      <div className="min-h-screen bg-background py-8">
+    <div className="min-h-screen bg-background py-8">
       <div className="max-w-4xl mx-auto px-6">
         {/* Header */}
         <div className="mb-8">
@@ -719,7 +717,6 @@ const PythonMatricesPage = () => {
         </div>
       </div>
     </div>
-    </PythonModuleGuard>
   );
 };
 

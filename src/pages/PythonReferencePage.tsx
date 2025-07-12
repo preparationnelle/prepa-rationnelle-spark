@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -6,7 +7,6 @@ import { Link } from 'react-router-dom';
 import { pythonCommands } from '@/data/pythonCommands';
 import SearchBar from '@/components/python/SearchBar';
 import CommandSection from '@/components/python/CommandSection';
-import { PythonReferenceGuard } from '@/components/python/PythonReferenceGuard';
 
 const PythonReferencePage = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -28,95 +28,93 @@ const PythonReferencePage = () => {
   })).filter(section => section.commands.length > 0);
 
   return (
-    <PythonReferenceGuard>
-      <div className="min-h-screen bg-background py-8">
-        <div className="max-w-6xl mx-auto px-6">
-          {/* Header */}
-          <div className="mb-8">
-            <div className="flex items-center gap-4 mb-4">
-              <Link to="/pourquoi-python-prepa-ecg">
-                <Button variant="outline" size="sm" className="flex items-center gap-2">
-                  <ArrowLeft className="h-4 w-4" />
-                  Retour à l'article Python
-                </Button>
-              </Link>
-            </div>
-            
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-              Référence Python ECG
-            </h1>
-            <p className="text-xl text-muted-foreground mb-6">
-              Toutes les 54 commandes Python au programme de prépa ECG
-            </p>
-            
-            <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+    <div className="min-h-screen bg-background py-8">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Header */}
+        <div className="mb-8">
+          <div className="flex items-center gap-4 mb-4">
+            <Link to="/pourquoi-python-prepa-ecg">
+              <Button variant="outline" size="sm" className="flex items-center gap-2">
+                <ArrowLeft className="h-4 w-4" />
+                Retour à l'article Python
+              </Button>
+            </Link>
           </div>
+          
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+            Référence Python ECG
+          </h1>
+          <p className="text-xl text-muted-foreground mb-6">
+            Toutes les 54 commandes Python au programme de prépa ECG
+          </p>
+          
+          <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+        </div>
 
-          {/* Tabs pour les catégories */}
-          <Tabs defaultValue="all" className="w-full">
-            <TabsList className="grid w-full grid-cols-5 lg:grid-cols-10 mb-6 h-auto flex-wrap">
-              <TabsTrigger value="all" className="text-xs">Toutes</TabsTrigger>
-              <TabsTrigger value="imports" className="text-xs">Imports</TabsTrigger>
-              <TabsTrigger value="functions" className="text-xs">Fonctions</TabsTrigger>
-              <TabsTrigger value="constants" className="text-xs">Constantes</TabsTrigger>
-              <TabsTrigger value="vectors" className="text-xs">Vecteurs</TabsTrigger>
-              <TabsTrigger value="matrices" className="text-xs">Matrices</TabsTrigger>
-              <TabsTrigger value="operations" className="text-xs">Opérations</TabsTrigger>
-              <TabsTrigger value="linalg" className="text-xs">Algèbre</TabsTrigger>
-              <TabsTrigger value="random" className="text-xs">Aléatoire</TabsTrigger>
-              <TabsTrigger value="graphics" className="text-xs">Graphiques</TabsTrigger>
-            </TabsList>
+        {/* Tabs pour les catégories */}
+        <Tabs defaultValue="all" className="w-full">
+          <TabsList className="grid w-full grid-cols-5 lg:grid-cols-10 mb-6 h-auto flex-wrap">
+            <TabsTrigger value="all" className="text-xs">Toutes</TabsTrigger>
+            <TabsTrigger value="imports" className="text-xs">Imports</TabsTrigger>
+            <TabsTrigger value="functions" className="text-xs">Fonctions</TabsTrigger>
+            <TabsTrigger value="constants" className="text-xs">Constantes</TabsTrigger>
+            <TabsTrigger value="vectors" className="text-xs">Vecteurs</TabsTrigger>
+            <TabsTrigger value="matrices" className="text-xs">Matrices</TabsTrigger>
+            <TabsTrigger value="operations" className="text-xs">Opérations</TabsTrigger>
+            <TabsTrigger value="linalg" className="text-xs">Algèbre</TabsTrigger>
+            <TabsTrigger value="random" className="text-xs">Aléatoire</TabsTrigger>
+            <TabsTrigger value="graphics" className="text-xs">Graphiques</TabsTrigger>
+          </TabsList>
 
-            <TabsContent value="all">
-              <div className="space-y-8">
-                {filteredCommands.map((section) => (
-                  <CommandSection
-                    key={section.key}
-                    title={section.title}
-                    commands={section.commands}
-                    copiedCommand={copiedCommand}
-                    onCopy={copyToClipboard}
-                  />
-                ))}
-              </div>
-            </TabsContent>
-
-            {Object.entries(pythonCommands).map(([key, section]) => (
-              <TabsContent key={key} value={key}>
+          <TabsContent value="all">
+            <div className="space-y-8">
+              {filteredCommands.map((section) => (
                 <CommandSection
+                  key={section.key}
                   title={section.title}
                   commands={section.commands}
                   copiedCommand={copiedCommand}
                   onCopy={copyToClipboard}
                 />
-              </TabsContent>
-            ))}
-          </Tabs>
+              ))}
+            </div>
+          </TabsContent>
 
-          {/* Call to action */}
-          <div className="mt-12 text-center">
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-8 rounded-lg border">
-              <h3 className="text-2xl font-bold mb-4">Prêt à maîtriser Python ?</h3>
-              <p className="text-muted-foreground mb-6">
-                Transformez ces commandes en +3 à +5 points sûrs aux concours
-              </p>
-              <div className="flex gap-4 justify-center flex-wrap">
-                <Link to="/python-flashcards">
-                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-                    🧠 Tester avec les flashcards
-                  </Button>
-                </Link>
-                <Link to="/offre/coaching-python">
-                  <Button size="lg" variant="outline">
-                    Coaching Python individuel
-                  </Button>
-                </Link>
-              </div>
+          {Object.entries(pythonCommands).map(([key, section]) => (
+            <TabsContent key={key} value={key}>
+              <CommandSection
+                title={section.title}
+                commands={section.commands}
+                copiedCommand={copiedCommand}
+                onCopy={copyToClipboard}
+              />
+            </TabsContent>
+          ))}
+        </Tabs>
+
+        {/* Call to action */}
+        <div className="mt-12 text-center">
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-8 rounded-lg border">
+            <h3 className="text-2xl font-bold mb-4">Prêt à maîtriser Python ?</h3>
+            <p className="text-muted-foreground mb-6">
+              Transformez ces commandes en +3 à +5 points sûrs aux concours
+            </p>
+            <div className="flex gap-4 justify-center flex-wrap">
+              <Link to="/python-flashcards">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+                  🧠 Tester avec les flashcards
+                </Button>
+              </Link>
+              <Link to="/offre/coaching-python">
+                <Button size="lg" variant="outline">
+                  Coaching Python individuel
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
       </div>
-    </PythonReferenceGuard>
+    </div>
   );
 };
 

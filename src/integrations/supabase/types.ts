@@ -318,7 +318,6 @@ export type Database = {
           first_name: string | null
           id: string
           last_name: string | null
-          python_access_granted: boolean | null
           role: string
           updated_at: string
         }
@@ -327,7 +326,6 @@ export type Database = {
           first_name?: string | null
           id: string
           last_name?: string | null
-          python_access_granted?: boolean | null
           role?: string
           updated_at?: string
         }
@@ -336,7 +334,6 @@ export type Database = {
           first_name?: string | null
           id?: string
           last_name?: string | null
-          python_access_granted?: boolean | null
           role?: string
           updated_at?: string
         }
@@ -425,33 +422,6 @@ export type Database = {
           status?: string | null
           texte?: string
           title?: string | null
-          user_id?: string
-        }
-        Relationships: []
-      }
-      user_access_codes: {
-        Row: {
-          access_code: string
-          created_at: string | null
-          granted_at: string | null
-          id: string
-          module_name: string
-          user_id: string
-        }
-        Insert: {
-          access_code: string
-          created_at?: string | null
-          granted_at?: string | null
-          id?: string
-          module_name: string
-          user_id: string
-        }
-        Update: {
-          access_code?: string
-          created_at?: string | null
-          granted_at?: string | null
-          id?: string
-          module_name?: string
           user_id?: string
         }
         Relationships: []
