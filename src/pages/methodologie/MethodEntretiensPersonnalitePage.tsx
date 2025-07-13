@@ -165,7 +165,7 @@ const MethodEntretiensPersonnalitePage = () => {
           {/* Navigation */}
           <div className="mt-16 flex justify-center gap-4">
             <Link to="/methodologie">
-              <Button variant="outline">Retour à la méthodologie</Button>
+              
             </Link>
             <Link to="/nos-offres">
               <Button>Découvrir nos offres</Button>
