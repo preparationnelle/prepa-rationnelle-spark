@@ -113,7 +113,7 @@ export const InterviewPreparationSection = () => {
         </div>
 
         <div className="text-center">
-          <Link to="/questions">
+          <Link to="/methodologie/entretiens-personnalite">
             <Button size="lg">
               Explorer tous les contenus
             </Button>

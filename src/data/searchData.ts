@@ -158,7 +158,7 @@ export const searchData: SearchItem[] = [
     title: "Banque de Questions d'Entretien",
     description: "Large collection de questions d'entretien pour les écoles de commerce",
     category: "Questions",
-    url: "/questions",
+    url: "/methodologie/entretiens-personnalite",
     keywords: ["questions", "entretien", "oral", "admission", "preparation", "commerce"]
   },
   {

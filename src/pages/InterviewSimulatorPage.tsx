@@ -58,7 +58,7 @@ const InterviewSimulatorPage = () => {
             </CardFooter>
           </Card>
         ) : (
-          <InterviewSimulator onFinish={() => navigate('/questions')} />
+          <InterviewSimulator onFinish={() => navigate('/methodologie/entretiens-personnalite')} />
         )}
       </div>
       <Footer />

@@ -274,7 +274,7 @@ const DashboardPage = () => {
                 <a href="/generator">Découvrir les générateurs</a>
               </Button>
               <Button variant="outline" asChild>
-                <a href="/questions">Explorer les questions</a>
+                <a href="/methodologie/entretiens-personnalite">Explorer les méthodes d'entretien</a>
               </Button>
             </div>
           </div>

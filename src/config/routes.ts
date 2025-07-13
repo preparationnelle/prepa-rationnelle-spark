@@ -6,7 +6,6 @@ const LoginPage = lazy(() => import('../pages/LoginPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 const DashboardPage = lazy(() => import('../pages/DashboardPage'));
 const ContactPage = lazy(() => import('../pages/ContactPage'));
-const QuestionsPage = lazy(() => import('../pages/QuestionsPage'));
 const GeneratorPage = lazy(() => import('../pages/GeneratorPage'));
 const PythonArticlePage = lazy(() => import('../pages/PythonArticlePage'));
 const FormationPage = lazy(() => import('../pages/FormationPage'));
@@ -85,7 +84,6 @@ export const routes: RouteConfig[] = [
   { path: '/login', component: LoginPage, title: 'Connexion' },
   { path: '/register', component: RegisterPage, title: 'Inscription' },
   { path: '/contact', component: ContactPage, title: 'Contact' },
-  { path: '/questions', component: QuestionsPage, title: 'Questions d\'entretien' },
   { path: '/generator', component: GeneratorPage, title: 'Générateurs IA' },
   { path: '/python-article', component: PythonArticlePage, title: 'Article Python' },
   { path: '/formation', component: FormationPage, title: 'Formations' },

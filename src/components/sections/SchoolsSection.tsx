@@ -6,7 +6,6 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { questionCategories } from '@/data/questionCards';
 
 export const SchoolsSection = () => {
   const [showAllSchools, setShowAllSchools] = useState(false);
@@ -156,7 +155,7 @@ export const SchoolsSection = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-8">
           {visibleCategories.map((category) => (
-            <Link key={category.id} to={`/questions/${category.id}`} className="group">
+            <div key={category.id} className="group">
               <Card className="bg-accent/50 border-0 hover:shadow-md transition-all h-full">
                 <CardContent className="p-6 flex flex-col items-center text-center">
                   <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
@@ -166,7 +165,7 @@ export const SchoolsSection = () => {
                   <p className="text-sm text-muted-foreground">{category.description}</p>
                 </CardContent>
               </Card>
-            </Link>
+            </div>
           ))}
         </div>
         
@@ -183,7 +182,7 @@ export const SchoolsSection = () => {
                   <p className="text-sm text-muted-foreground mb-3">
                     Tout ce qu'il faut savoir pour créer un CV projectif convaincant pour SKEMA et autres écoles
                   </p>
-                  <Link to="/questions/cv-projectif">
+                  <Link to="/cv-projectif">
                     <Button size="sm" variant="outline">
                       Découvrir l'article complet
                     </Button>
@@ -204,7 +203,7 @@ export const SchoolsSection = () => {
                   <p className="text-sm text-muted-foreground mb-3">
                     Guide complet avec toutes les questions à poser lors de l'entretien inversé de 10 minutes à Grenoble EM
                   </p>
-                  <Link to="/questions/entretien-inverse-gem">
+                  <Link to="/entretien-inverse-gem">
                     <Button size="sm" variant="outline">
                       Découvrir l'article complet
                     </Button>
@@ -228,9 +227,9 @@ export const SchoolsSection = () => {
         )}
 
         <div className="text-center">
-          <Link to="/questions">
+          <Link to="/methodologie/entretiens-personnalite">
             <Button size="lg">
-              Explorer toutes les questions
+              Explorer les méthodes d'entretien
             </Button>
           </Link>
         </div>

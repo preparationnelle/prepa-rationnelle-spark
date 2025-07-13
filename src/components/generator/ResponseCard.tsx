@@ -58,8 +58,8 @@ export const ResponseCard = ({
           {language === 'fr' ? 'Générer une autre réponse' : 'Generate another answer'}
         </Button>
         <Button asChild>
-          <Link to="/questions">
-            {language === 'fr' ? 'Voir nos questions d\'entretien' : 'See our interview questions'}{' '}
+          <Link to="/methodologie/entretiens-personnalite">
+            {language === 'fr' ? 'Voir nos méthodes d\'entretien' : 'See our interview methods'}
             <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>

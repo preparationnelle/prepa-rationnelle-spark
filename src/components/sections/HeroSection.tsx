@@ -15,7 +15,7 @@ export const HeroSection = () => {
           <div className="flex items-center">
             <TrendingUp className="h-7 w-7 text-[#F36C00] mr-3" />
             <Link
-              to="/questions"
+              to="/methodologie/entretiens-personnalite"
               className="text-2xl md:text-2xl font-bold text-[#F36C00] uppercase tracking-widest hover:underline"
               style={{ letterSpacing: 2 }}
             >
