@@ -7,7 +7,7 @@ import { TrendingUp, Zap } from 'lucide-react';
 export const HeroSection = () => {
   return (
     <section
-      className="min-h-[78vh] w-full flex flex-col justify-center items-center bg-[#fef7e1] py-14 px-2"
+      className="min-h-[78vh] w-full flex flex-col justify-center items-center bg-gradient-to-br from-[#fef7e1] to-[#F36C00]/10 py-14 px-2"
     >
       <div className="w-full max-w-[1600px] flex flex-col items-center">
         {/* Top links, spread and larger */}
