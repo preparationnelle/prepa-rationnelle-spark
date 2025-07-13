@@ -6,7 +6,7 @@ import { useProgress } from '@/context/ProgressContext';
 import { SchoolCard } from '@/components/SchoolCard';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { PodcastSection } from '@/components/sections/PodcastSection';
-import { Bot, Users, GraduationCap, Puzzle, HelpCircle, BookOpen, Target, Brain } from 'lucide-react';
+import { Bot, Users, GraduationCap, Puzzle, HelpCircle, BookOpen, Target, Brain, FileText, MessageSquare, School, Heart, CheckCircle, AlertTriangle, HandHeart, Presentation } from 'lucide-react';
 const MethodEntretiensPersonnalitePage = () => {
   const {
     trackPageVisit
@@ -74,9 +74,126 @@ const MethodEntretiensPersonnalitePage = () => {
 
           {/* Méthodologie Section */}
           <div className="mb-12">
+            <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3">
+              <BookOpen className="h-7 w-7 text-primary" />
+              Méthodologie Générale
+            </h2>
             
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+              <Card className="hover:shadow-md transition-shadow">
+                <CardContent className="p-4">
+                  <Link to="/methodologie/storytelling" className="flex flex-col items-center gap-2 text-center">
+                    <MessageSquare className="h-8 w-8 text-primary" />
+                    <span className="font-medium">Storytelling</span>
+                  </Link>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-md transition-shadow">
+                <CardContent className="p-4">
+                  <Link to="/methodologie/motivation-ecole" className="flex flex-col items-center gap-2 text-center">
+                    <School className="h-8 w-8 text-primary" />
+                    <span className="font-medium">Motivation école</span>
+                  </Link>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-md transition-shadow">
+                <CardContent className="p-4">
+                  <Link to="/methodologie/projet-professionnel" className="flex flex-col items-center gap-2 text-center">
+                    <Target className="h-8 w-8 text-primary" />
+                    <span className="font-medium">Projet professionnel</span>
+                  </Link>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-md transition-shadow">
+                <CardContent className="p-4">
+                  <Link to="/methodologie/personnalite" className="flex flex-col items-center gap-2 text-center">
+                    <Heart className="h-8 w-8 text-primary" />
+                    <span className="font-medium">Questions personnalité</span>
+                  </Link>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-md transition-shadow">
+                <CardContent className="p-4">
+                  <Link to="/methodologie/finir-entretien" className="flex flex-col items-center gap-2 text-center">
+                    <CheckCircle className="h-8 w-8 text-primary" />
+                    <span className="font-medium">Finir un entretien</span>
+                  </Link>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-md transition-shadow">
+                <CardContent className="p-4">
+                  <Link to="/methodologie/erreur-entretien" className="flex flex-col items-center gap-2 text-center">
+                    <AlertTriangle className="h-8 w-8 text-primary" />
+                    <span className="font-medium">Erreurs à éviter</span>
+                  </Link>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-md transition-shadow">
+                <CardContent className="p-4">
+                  <Link to="/methodologie/tendre-perches" className="flex flex-col items-center gap-2 text-center">
+                    <HandHeart className="h-8 w-8 text-primary" />
+                    <span className="font-medium">Tendre des perches</span>
+                  </Link>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-md transition-shadow">
+                <CardContent className="p-4">
+                  <Link to="/methodologie/pitch-intro" className="flex flex-col items-center gap-2 text-center">
+                    <Presentation className="h-8 w-8 text-primary" />
+                    <span className="font-medium">Pitch d'introduction</span>
+                  </Link>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Nouvelles sections spécialisées */}
+            <h3 className="text-xl font-semibold mb-4 flex items-center gap-3">
+              <Users className="h-6 w-6 text-primary" />
+              Formats Spécialisés
+            </h3>
             
-            
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card className="hover:shadow-md transition-shadow">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-lg">
+                    <Users className="h-5 w-5 text-purple-600" />
+                    Entretien inversé GEM
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 mb-4">
+                    Guide complet pour réussir cette partie unique de l'oral de GEM où vous menez l'entretien.
+                  </p>
+                  <Link to="/entretien-inverse-gem">
+                    <Button variant="outline" className="w-full">Voir le guide</Button>
+                  </Link>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-md transition-shadow">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-lg">
+                    <FileText className="h-5 w-5 text-blue-600" />
+                    CV Projectif
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 mb-4">
+                    Tout savoir pour créer un CV projectif convaincant pour SKEMA et autres écoles.
+                  </p>
+                  <Link to="/cv-projectif">
+                    <Button variant="outline" className="w-full">Voir le guide</Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            </div>
           </div>
 
           {/* Outils de Préparation */}

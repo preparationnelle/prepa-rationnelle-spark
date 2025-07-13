@@ -145,24 +145,6 @@ const Navigation = () => {
                   <span>Entretiens de Personnalité</span>
                 </Link>
               </DropdownMenuItem>
-
-              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                <Link to="/entretien-inverse-gem" onClick={closeMenu} className="flex items-center gap-3 w-full">
-                  <span className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
-                    <Users className="h-4 w-4 text-purple-600" />
-                  </span>
-                  <span>Entretien inversé GEM</span>
-                </Link>
-              </DropdownMenuItem>
-
-              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                <Link to="/cv-projectif" onClick={closeMenu} className="flex items-center gap-3 w-full">
-                  <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                    <FileText className="h-4 w-4 text-blue-600" />
-                  </span>
-                  <span>CV Projectif</span>
-                </Link>
-              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
           
