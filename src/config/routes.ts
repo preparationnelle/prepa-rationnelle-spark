@@ -20,8 +20,6 @@ const AproposPage = lazy(() => import('../pages/AproposPage'));
 const CoachingPage = lazy(() => import('../pages/CoachingPage'));
 const PartnersPage = lazy(() => import('../pages/PartnersPage'));
 const FormationOverviewPage = lazy(() => import('../pages/FormationOverviewPage'));
-// Temporarily disable lazy loading for FormationPythonPage to debug
-import FormationPythonPage from '../pages/FormationPythonPage';
 const NotFound = lazy(() => import('../pages/NotFound'));
 
 // Formation pages
@@ -88,8 +86,7 @@ export const routes: RouteConfig[] = [
   { path: '/contact', component: ContactPage, title: 'Contact' },
   { path: '/generator', component: GeneratorPage, title: 'Générateurs IA' },
   { path: '/python-article', component: PythonArticlePage, title: 'Article Python' },
-  { path: '/formation', component: FormationOverviewPage, title: 'Vue d\'ensemble des Formations' },
-  { path: '/formation/python', component: FormationPythonPage, title: 'Formation Python ECG' },
+  { path: '/formation', component: FormationPage, title: 'Formations' },
   { path: '/pourquoi-python-prepa-ecg', component: PourquoiPythonPrepaECGPage, title: 'Pourquoi Python en Prépa ECG' },
   { path: '/python-reference', component: PythonReferencePage, title: 'Référence Python' },
   { path: '/python-flashcards', component: PythonFlashcardsPage, title: 'Flashcards Python' },
