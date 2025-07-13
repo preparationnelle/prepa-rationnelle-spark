@@ -42,6 +42,9 @@ const PreparationCubePage = lazy(() => import('../pages/offres/PreparationCubePa
 // Methodologie pages
 const MethodEntretiensPersonnalitePage = lazy(() => import('../pages/methodologie/MethodEntretiensPersonnalitePage'));
 
+// Articles pages
+const MathsEteControlePage = lazy(() => import('../pages/articles/MathsEteControlePage'));
+
 // School pages
 const ESCPPage = lazy(() => import('../pages/ESCPPage'));
 const ESSECPage = lazy(() => import('../pages/ESSECPage'));
@@ -117,6 +120,9 @@ export const routes: RouteConfig[] = [
   
   // Methodologie pages
   { path: '/methodologie/entretiens-personnalite', component: MethodEntretiensPersonnalitePage, title: 'Méthodologie Entretiens Personnalité' },
+  
+  // Articles pages
+  { path: '/articles/maths-ete-controle', component: MathsEteControlePage, title: 'Un été pour (re)prendre le contrôle en maths' },
   
   // School pages
   { path: '/escp', component: ESCPPage, title: 'ESCP Business School' },

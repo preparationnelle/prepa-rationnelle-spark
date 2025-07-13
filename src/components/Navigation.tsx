@@ -170,6 +170,15 @@ const Navigation = () => {
               <DropdownMenuSeparator className="my-2" />
 
               <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 mt-1 transition-colors">
+                <Link to="/articles/maths-ete-controle" onClick={closeMenu} className="flex items-center gap-3 w-full">
+                  <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <FileText className="h-4 w-4 text-primary" />
+                  </span>
+                  <span>Articles</span>
+                </Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 mt-1 transition-colors">
                 <Link to="/methodes/personnalite" onClick={closeMenu} className="flex items-center gap-3 w-full">
                   <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                     <User className="h-4 w-4 text-primary" />
@@ -354,6 +363,13 @@ const Navigation = () => {
                   <User className="h-4 w-4 text-primary" />
                 </span>
                 <span>À propos</span>
+              </Link>
+              
+              <Link to="/articles/maths-ete-controle" onClick={closeMenu} className="flex items-center gap-3">
+                <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <FileText className="h-4 w-4 text-primary" />
+                </span>
+                <span>Articles</span>
               </Link>
               
               <Link to="/methodes/personnalite" onClick={closeMenu} className="flex items-center gap-3">
