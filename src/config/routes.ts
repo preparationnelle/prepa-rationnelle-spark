@@ -20,7 +20,8 @@ const AproposPage = lazy(() => import('../pages/AproposPage'));
 const CoachingPage = lazy(() => import('../pages/CoachingPage'));
 const PartnersPage = lazy(() => import('../pages/PartnersPage'));
 const FormationOverviewPage = lazy(() => import('../pages/FormationOverviewPage'));
-const FormationPythonPage = lazy(() => import('../pages/FormationPythonPage'));
+// Temporarily disable lazy loading for FormationPythonPage to debug
+import FormationPythonPage from '../pages/FormationPythonPage';
 const NotFound = lazy(() => import('../pages/NotFound'));
 
 // Formation pages

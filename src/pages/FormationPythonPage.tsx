@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { BookOpen, Code, BarChart3, Calculator, Play, TrendingUp } from 'lucide-react';
 
 const FormationPythonPage = () => {
+  console.log('FormationPythonPage is being rendered');
   const coursModules = [
     {
       id: 0,
