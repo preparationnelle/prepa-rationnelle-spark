@@ -74,23 +74,9 @@ const MethodEntretiensPersonnalitePage = () => {
 
           {/* Méthodologie Section */}
           <div className="mb-12">
-            <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3">
-              <BookOpen className="h-7 w-7 text-primary" />
-              Méthodologie
-            </h2>
             
-            <Card className="mb-6">
-              
-              <CardContent>
-                <p className="text-gray-600 mb-4">
-                  Apprenez à structurer vos réponses, présenter vos qualités et défauts avec des exemples concrets, 
-                  et développer une introspection authentique qui impressionnera le jury.
-                </p>
-                <Link to="/methodes/personnalite">
-                  <Button>Découvrir la méthodologie</Button>
-                </Link>
-              </CardContent>
-            </Card>
+            
+            
           </div>
 
           {/* Outils de Préparation */}
