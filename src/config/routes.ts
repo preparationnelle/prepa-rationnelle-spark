@@ -61,10 +61,7 @@ const EDHECGeneratorPage = lazy(() => import('../pages/generator/EDHECGeneratorP
 const EMLyonGeneratorPage = lazy(() => import('../pages/generator/EMLyonGeneratorPage'));
 const GeopoliticsGeneratorPage = lazy(() => import('../pages/generator/GeopoliticsGeneratorPage'));
 const LanguagesGeneratorPage = lazy(() => import('../pages/generator/LanguagesGeneratorPage'));
-const MathTutorGeneratorPage = lazy(() => import('../pages/generator/MathTutorGeneratorPage'));
 const PrepaChatbotGeneratorPage = lazy(() => import('../pages/generator/PrepaChatbotGeneratorPage'));
-const PythonExercisesGeneratorPage = lazy(() => import('../pages/generator/PythonExercisesGeneratorPage'));
-const PythonTutorGeneratorPage = lazy(() => import('../pages/generator/PythonTutorGeneratorPage'));
 const SchoolProfileGeneratorPage = lazy(() => import('../pages/generator/SchoolProfileGeneratorPage'));
 const ThemeGrammarGeneratorPage = lazy(() => import('../pages/generator/ThemeGrammarGeneratorPage'));
 
@@ -140,10 +137,7 @@ export const routes: RouteConfig[] = [
   { path: '/generator/emlyon', component: EMLyonGeneratorPage, title: 'Générateur EM Lyon' },
   { path: '/generator/geopolitics', component: GeopoliticsGeneratorPage, title: 'Générateur Géopolitique' },
   { path: '/generator/languages', component: LanguagesGeneratorPage, title: 'Générateur de Langues' },
-  { path: '/generator/math-tutor', component: MathTutorGeneratorPage, title: 'Tuteur Mathématiques' },
   { path: '/generator/prepa-chatbot', component: PrepaChatbotGeneratorPage, title: 'Chatbot Prépa' },
-  { path: '/generator/python-exercises', component: PythonExercisesGeneratorPage, title: 'Exercices Python' },
-  { path: '/generator/python-tutor', component: PythonTutorGeneratorPage, title: 'Tuteur Python' },
   { path: '/generator/school-profile', component: SchoolProfileGeneratorPage, title: 'Profil d\'École' },
   { path: '/generator/theme-grammar', component: ThemeGrammarGeneratorPage, title: 'Grammaire Thématique' },
   

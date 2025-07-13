@@ -21,9 +21,6 @@ import { LanguageParagraphGenerator } from '@/components/generator/LanguageParag
 import { CaseStudyGenerator } from '@/components/generator/CaseStudyGenerator';
 import { ThemeGrammaticalGenerator } from '@/components/grammar/ThemeGrammaticalGenerator';
 import { SchoolProfileGenerator } from '@/components/generator/SchoolProfileGenerator';
-import { MathTutorGenerator } from '@/components/generator/MathTutorGenerator';
-import { PythonTutorGenerator } from '@/components/generator/PythonTutorGenerator';
-import { PythonExerciseGenerator } from '@/components/generator/PythonExerciseGenerator';
 import { PrepaChatbotGenerator } from '@/components/generator/PrepaChatbotGenerator';
 
 import { useGenerateAnswer } from '@/hooks/useGenerateAnswer';
@@ -42,9 +39,6 @@ type AutomationKey =
   | 'edhec'
   | 'theme-grammar'
   | 'school-profile'
-  | 'math-tutor'
-  | 'python-tutor'
-  | 'python-exercises'
   | 'prepa-chatbot';
 
 interface Automation {
@@ -158,35 +152,6 @@ const CATEGORIES: Category[] = [
       },
     ]
   },
-  {
-    title: "Mathématiques & Informatique",
-    description: "Assistants IA pour résoudre vos problèmes mathématiques et maîtriser la programmation",
-    icon: <Calculator className="h-8 w-8 text-white" />,
-    gradient: "bg-gradient-to-r from-green-600 to-teal-600",
-    automations: [
-      {
-        key: 'math-tutor',
-        icon: <Calculator className="h-8 w-8 text-primary" />,
-        title: "Prof de maths virtuel",
-        description: "Demande un indice, une explication ou la solution sur un exercice mathématiques.",
-        badge: "IA"
-      },
-      {
-        key: 'python-tutor',
-        icon: <Code className="h-8 w-8 text-primary" />,
-        title: "Assistant Python IA",
-        description: "Analyse ton code Python, détecte les erreurs et génère une version optimisée avec conseils adaptés à ton niveau.",
-        badge: "Nouveau"
-      },
-      {
-        key: 'python-exercises',
-        icon: <span className="inline-block p-1 rounded bg-gradient-to-br from-[#136ae5] to-[#2ddcb3]"><BookOpen className="h-7 w-7 text-white" /></span>,
-        title: "Exercices Python",
-        description: "Génère des exercices pratiques Python (matrice, algèbre…) et complète tes fonctions !",
-        badge: "Exos IA"
-      },
-    ]
-  },
 ];
 
 // Props et states propres à chaque automatisation
@@ -267,12 +232,6 @@ const GeneratorPage = () => {
         return <ThemeGrammaticalGenerator />;
       case "school-profile":
         return <SchoolProfileGenerator />;
-      case "math-tutor":
-        return <MathTutorGenerator />;
-      case "python-tutor":
-        return <PythonTutorGenerator />;
-      case "python-exercises":
-        return <PythonExerciseGenerator />;
       case "prepa-chatbot":
         return <PrepaChatbotGenerator />;
       default:
