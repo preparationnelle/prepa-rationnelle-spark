@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,83 +6,61 @@ import { useProgress } from '@/context/ProgressContext';
 import { SchoolCard } from '@/components/SchoolCard';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { PodcastSection } from '@/components/sections/PodcastSection';
-import { 
-  Bot, 
-  Users, 
-  GraduationCap, 
-  Puzzle, 
-  HelpCircle,
-  BookOpen,
-  Target,
-  Brain
-} from 'lucide-react';
-
+import { Bot, Users, GraduationCap, Puzzle, HelpCircle, BookOpen, Target, Brain } from 'lucide-react';
 const MethodEntretiensPersonnalitePage = () => {
-  const { trackPageVisit } = useProgress();
-  
+  const {
+    trackPageVisit
+  } = useProgress();
   useEffect(() => {
     trackPageVisit('method');
   }, [trackPageVisit]);
-
-  const schools = [
-    {
-      name: "ESSEC Business School",
-      duration: "Entretien de 30-45 minutes, coefficient 10.",
-      feature: "Format approfondi avec mise en situation initiale.",
-      link: "/essec"
-    },
-    {
-      name: "ESCP Business School",
-      duration: "Entretien de 30 minutes, coefficient 12.",
-      feature: "Entretien structuré autour d'un questionnaire préalable.",
-      link: "/escp"
-    },
-    {
-      name: "EDHEC Business School",
-      duration: "Entretien de 1h30, coefficient 15.",
-      feature: "Format tripartite avec présentation, travail de groupe et entretien.",
-      link: "/edhec"
-    },
-    {
-      name: "EM Lyon Business School",
-      duration: "Entretien de 25 minutes, coefficient 9.",
-      feature: "Format ludique avec cartes thématiques et présentation en 1 minute.",
-      link: "/emlyon"
-    },
-    {
-      name: "SKEMA Business School",
-      duration: "Entretien de 25 minutes, coefficient 20.",
-      feature: "CV fictif à 10 ans.",
-      link: "/skema"
-    },
-    {
-      name: "Audencia Business School",
-      duration: "Entretien de 30 minutes, coefficient 10.",
-      feature: "Forte dimension responsabilité sociétale avec partie en anglais.",
-      link: "/audencia"
-    },
-    {
-      name: "Grenoble École de Management",
-      duration: "Entretien de 30 minutes, coefficient 10.",
-      feature: "Format original avec entretien inversé.",
-      link: "/gem"
-    },
-    {
-      name: "KEDGE Business School",
-      duration: "Entretien de 30 minutes, coefficient 14.",
-      feature: "Approche 'Grow by Doing' et questionnaire 'maison'.",
-      link: "/kedge"
-    },
-    {
-      name: "NEOMA Business School",
-      duration: "Entretien de 30 minutes, coefficient 12.",
-      feature: "Format structuré autour de la 'réussite responsable'.",
-      link: "/neoma"
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-accent py-16">
+  const schools = [{
+    name: "ESSEC Business School",
+    duration: "Entretien de 30-45 minutes, coefficient 10.",
+    feature: "Format approfondi avec mise en situation initiale.",
+    link: "/essec"
+  }, {
+    name: "ESCP Business School",
+    duration: "Entretien de 30 minutes, coefficient 12.",
+    feature: "Entretien structuré autour d'un questionnaire préalable.",
+    link: "/escp"
+  }, {
+    name: "EDHEC Business School",
+    duration: "Entretien de 1h30, coefficient 15.",
+    feature: "Format tripartite avec présentation, travail de groupe et entretien.",
+    link: "/edhec"
+  }, {
+    name: "EM Lyon Business School",
+    duration: "Entretien de 25 minutes, coefficient 9.",
+    feature: "Format ludique avec cartes thématiques et présentation en 1 minute.",
+    link: "/emlyon"
+  }, {
+    name: "SKEMA Business School",
+    duration: "Entretien de 25 minutes, coefficient 20.",
+    feature: "CV fictif à 10 ans.",
+    link: "/skema"
+  }, {
+    name: "Audencia Business School",
+    duration: "Entretien de 30 minutes, coefficient 10.",
+    feature: "Forte dimension responsabilité sociétale avec partie en anglais.",
+    link: "/audencia"
+  }, {
+    name: "Grenoble École de Management",
+    duration: "Entretien de 30 minutes, coefficient 10.",
+    feature: "Format original avec entretien inversé.",
+    link: "/gem"
+  }, {
+    name: "KEDGE Business School",
+    duration: "Entretien de 30 minutes, coefficient 14.",
+    feature: "Approche 'Grow by Doing' et questionnaire 'maison'.",
+    link: "/kedge"
+  }, {
+    name: "NEOMA Business School",
+    duration: "Entretien de 30 minutes, coefficient 12.",
+    feature: "Format structuré autour de la 'réussite responsable'.",
+    link: "/neoma"
+  }];
+  return <div className="min-h-screen bg-accent py-16">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-4xl font-bold mb-6 text-center">
@@ -103,12 +80,7 @@ const MethodEntretiensPersonnalitePage = () => {
             </h2>
             
             <Card className="mb-6">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Target className="h-5 w-5" />
-                  Méthode Personnalité
-                </CardTitle>
-              </CardHeader>
+              
               <CardContent>
                 <p className="text-gray-600 mb-4">
                   Apprenez à structurer vos réponses, présenter vos qualités et défauts avec des exemples concrets, 
@@ -194,15 +166,7 @@ const MethodEntretiensPersonnalitePage = () => {
             </p>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {schools.map((school, index) => (
-                <SchoolCard 
-                  key={index}
-                  name={school.name}
-                  duration={school.duration}
-                  feature={school.feature}
-                  link={school.link}
-                />
-              ))}
+              {schools.map((school, index) => <SchoolCard key={index} name={school.name} duration={school.duration} feature={school.feature} link={school.link} />)}
             </div>
           </div>
 
@@ -223,8 +187,6 @@ const MethodEntretiensPersonnalitePage = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default MethodEntretiensPersonnalitePage;
