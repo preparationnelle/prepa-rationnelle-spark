@@ -78,7 +78,7 @@ const PourquoiPythonPrepaECGPage = () => {
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-2xl">
               <BookOpen className="h-8 w-8 text-blue-600" />
-              🚀 Accédez directement à la formation Python ECG
+              Accédez directement à la formation Python ECG
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -89,7 +89,7 @@ const PourquoiPythonPrepaECGPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Link to="/formation/python-fondamentaux" className="group">
                 <div className="bg-white p-6 rounded-lg border border-blue-200 hover:shadow-md transition-all group-hover:border-blue-400">
-                  <h4 className="font-bold text-blue-800 mb-2 text-lg">🐍 Module 1: Fondamentaux</h4>
+                  <h4 className="font-bold text-blue-800 mb-2 text-lg">Module 1: Fondamentaux</h4>
                   <p className="text-blue-700 mb-3">Variables, boucles, conditions, fonctions</p>
                   <div className="flex items-center text-blue-600 group-hover:text-blue-800">
                     <Play className="h-4 w-4 mr-2" />
@@ -100,7 +100,7 @@ const PourquoiPythonPrepaECGPage = () => {
               
               <Link to="/formation/python-matrices" className="group">
                 <div className="bg-white p-6 rounded-lg border border-blue-200 hover:shadow-md transition-all group-hover:border-blue-400">
-                  <h4 className="font-bold text-blue-800 mb-2 text-lg">🔢 Module 2: Matrices & Numpy</h4>
+                  <h4 className="font-bold text-blue-800 mb-2 text-lg">Module 2: Matrices & Numpy</h4>
                   <p className="text-blue-700 mb-3">Algèbre linéaire, résolution de systèmes</p>
                   <div className="flex items-center text-blue-600 group-hover:text-blue-800">
                     <Play className="h-4 w-4 mr-2" />
@@ -111,7 +111,7 @@ const PourquoiPythonPrepaECGPage = () => {
               
               <Link to="/formation/python-analyse" className="group">
                 <div className="bg-white p-6 rounded-lg border border-blue-200 hover:shadow-md transition-all group-hover:border-blue-400">
-                  <h4 className="font-bold text-blue-800 mb-2 text-lg">📊 Module 3: Analyse & Graphiques</h4>
+                  <h4 className="font-bold text-blue-800 mb-2 text-lg">Module 3: Analyse & Graphiques</h4>
                   <p className="text-blue-700 mb-3">Matplotlib, tracer des fonctions, suites</p>
                   <div className="flex items-center text-blue-600 group-hover:text-blue-800">
                     <Play className="h-4 w-4 mr-2" />
@@ -122,7 +122,7 @@ const PourquoiPythonPrepaECGPage = () => {
               
               <Link to="/formation/python-probabilites" className="group">
                 <div className="bg-white p-6 rounded-lg border border-blue-200 hover:shadow-md transition-all group-hover:border-blue-400">
-                  <h4 className="font-bold text-blue-800 mb-2 text-lg">🎲 Module 4: Probabilités</h4>
+                  <h4 className="font-bold text-blue-800 mb-2 text-lg">Module 4: Probabilités</h4>
                   <p className="text-blue-700 mb-3">Simulations, lois, statistiques</p>
                   <div className="flex items-center text-blue-600 group-hover:text-blue-800">
                     <Play className="h-4 w-4 mr-2" />
@@ -169,7 +169,7 @@ const PourquoiPythonPrepaECGPage = () => {
             </ul>
             <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
               <p className="text-orange-800">
-                <strong>👉 Moralité :</strong> même si tu n'es « pas fan d'info », ignorer Python revient à laisser jusqu'à 5 points sur la table. 
+                <strong>Moralité :</strong> même si tu n'es « pas fan d'info », ignorer Python revient à laisser jusqu'à 5 points sur la table. 
                 Dans une filière où chaque demi-point se paie d'heures de calcul intégral, c'est un luxe que tu ne peux pas te permettre.
               </p>
             </div>
@@ -340,7 +340,7 @@ const PourquoiPythonPrepaECGPage = () => {
             <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
               <h4 className="font-bold text-lg mb-2">Lead magnet gratuit</h4>
               <p className="text-gray-700">
-                💡 Quiz interactif « Commandes Python essentielles » – 15 questions chronométrées pour évaluer ton niveau immédiatement.
+                Quiz interactif « Commandes Python essentielles » – 15 questions chronométrées pour évaluer ton niveau immédiatement.
               </p>
             </div>
           </CardContent>
@@ -350,7 +350,7 @@ const PourquoiPythonPrepaECGPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
-              <span className="text-2xl">💰</span>
+              
               6. Combien ça coûte ?
             </CardTitle>
           </CardHeader>
@@ -415,18 +415,18 @@ const PourquoiPythonPrepaECGPage = () => {
               <div className="flex flex-wrap gap-3 justify-center">
                 <Link to="/python-flashcards">
                   <Button variant="outline" size="lg" className="text-base px-6 py-3">
-                    🧠 Flashcards Python
+                    Flashcards Python
                   </Button>
                 </Link>
                 <Link to="/python-reference">
                   <Button variant="outline" size="lg" className="text-base px-6 py-3">
-                    📚 Toutes les commandes
+                    Toutes les commandes
                   </Button>
                 </Link>
               </div>
               <Link to="/offre/coaching-python">
                 <Button size="lg" className="text-lg px-8 py-4 bg-orange-600 hover:bg-orange-700">
-                  🚀 Coaching personnalisé
+                  Coaching personnalisé
                 </Button>
               </Link>
             </div>

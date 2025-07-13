@@ -26,7 +26,7 @@ export const FormationsSection = () => {
                     <Code className="h-6 w-6 text-blue-600" />
                   </div>
                   <CardTitle className="text-xl group-hover:text-blue-600 transition-colors">
-                    🐍 Python ECG
+                    Python ECG
                   </CardTitle>
                 </div>
               </CardHeader>
@@ -55,7 +55,7 @@ export const FormationsSection = () => {
                     <Languages className="h-6 w-6 text-green-600" />
                   </div>
                   <CardTitle className="text-xl group-hover:text-green-600 transition-colors">
-                    🇬🇧 Anglais ECG
+                    Anglais ECG
                   </CardTitle>
                 </div>
               </CardHeader>
@@ -84,7 +84,7 @@ export const FormationsSection = () => {
                     <Languages className="h-6 w-6 text-red-600" />
                   </div>
                   <CardTitle className="text-xl group-hover:text-red-600 transition-colors">
-                    🇩🇪 Allemand ECG
+                    Allemand ECG
                   </CardTitle>
                 </div>
               </CardHeader>
@@ -113,7 +113,7 @@ export const FormationsSection = () => {
                     <Globe className="h-6 w-6 text-orange-600" />
                   </div>
                   <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
-                    🌍 Géopolitique
+                    Géopolitique
                   </CardTitle>
                 </div>
               </CardHeader>
@@ -142,7 +142,7 @@ export const FormationsSection = () => {
                     <Users className="h-6 w-6 text-purple-600" />
                   </div>
                   <CardTitle className="text-xl group-hover:text-purple-600 transition-colors">
-                    💬 Entretiens
+                    Entretiens
                   </CardTitle>
                 </div>
               </CardHeader>
@@ -171,7 +171,7 @@ export const FormationsSection = () => {
                     <BookOpen className="h-6 w-6 text-primary" />
                   </div>
                   <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                    📚 Vue d'ensemble
+                    Vue d'ensemble
                   </CardTitle>
                 </div>
               </CardHeader>
