@@ -18,7 +18,7 @@ export const FormationsSection = () => {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {/* Formation Python */}
-          <Link to="/formation/python-fondamentaux" className="group">
+          <Link to="/formation" className="group">
             <Card className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-blue-200">
               <CardHeader>
                 <div className="flex items-center gap-3 mb-3">
