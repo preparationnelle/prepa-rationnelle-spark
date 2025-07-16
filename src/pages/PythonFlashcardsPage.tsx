@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, Brain, Target, Code } from 'lucide-react';
 import { useProgress } from '@/context/ProgressContext';
 import PythonFlashcardGenerator from '@/components/python/PythonFlashcardGenerator';
+import PythonNavigationTabs from '@/components/formation/PythonNavigationTabs';
 
 const PythonFlashcardsPage = () => {
   const { trackPageVisit } = useProgress();
@@ -17,6 +18,9 @@ const PythonFlashcardsPage = () => {
 
   return (
     <div className="min-h-screen bg-background py-8">
+      {/* Navigation Tabs */}
+      <PythonNavigationTabs className="mb-8" />
+      
       <div className="max-w-4xl mx-auto px-6">
         {/* Header */}
         <div className="mb-8">

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { pythonCommands } from '@/data/pythonCommands';
 import SearchBar from '@/components/python/SearchBar';
 import CommandSection from '@/components/python/CommandSection';
+import PythonNavigationTabs from '@/components/formation/PythonNavigationTabs';
 
 const PythonReferencePage = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -29,6 +30,9 @@ const PythonReferencePage = () => {
 
   return (
     <div className="min-h-screen bg-background py-8">
+      {/* Navigation Tabs */}
+      <PythonNavigationTabs className="mb-8" />
+      
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="mb-8">
