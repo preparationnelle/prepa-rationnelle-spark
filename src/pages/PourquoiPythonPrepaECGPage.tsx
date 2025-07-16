@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Link } from 'react-router-dom';
 import { Youtube, Target, TrendingUp, Brain, Code, Star, Users, Calendar, CheckCircle, ArrowLeft, BookOpen, Play } from 'lucide-react';
 import { useProgress } from '@/context/ProgressContext';
+import PythonNavigationTabs from '@/components/formation/PythonNavigationTabs';
 
 const PourquoiPythonPrepaECGPage = () => {
   const { trackPageVisit } = useProgress();
@@ -16,17 +17,12 @@ const PourquoiPythonPrepaECGPage = () => {
 
   return (
     <div className="min-h-screen bg-background py-8">
+      {/* Navigation Tabs */}
+      <PythonNavigationTabs className="mb-8" />
+      
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="mb-8">
-          <div className="flex items-center gap-4 mb-4">
-            <Link to="/formation">
-              <Button variant="outline" size="sm" className="flex items-center gap-2">
-                <ArrowLeft className="h-4 w-4" />
-                Retour à la formation Python
-              </Button>
-            </Link>
-          </div>
           
           <div className="text-center">
             <Badge variant="destructive" className="mb-4 bg-orange-600 text-white">

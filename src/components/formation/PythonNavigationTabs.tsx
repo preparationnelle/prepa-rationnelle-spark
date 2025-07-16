@@ -14,13 +14,14 @@ const PythonNavigationTabs: React.FC<PythonNavigationTabsProps> = ({ className =
     if (location.pathname === '/formation') return 'cours';
     if (location.pathname === '/python-flashcards') return 'flashcards';
     if (location.pathname === '/python-reference') return 'reference';
+    if (location.pathname === '/pourquoi-python-prepa-ecg') return 'methodo';
     return 'cours';
   };
 
   return (
     <div className={`container mx-auto px-4 ${className}`}>
       <Tabs value={getActiveTab()} className="w-full">
-        <TabsList className="grid w-full grid-cols-3 max-w-md mx-auto">
+        <TabsList className="grid w-full grid-cols-4 max-w-2xl mx-auto">
           <TabsTrigger value="cours" asChild>
             <Link to="/formation" className="flex items-center gap-2">
               <BookOpen className="h-4 w-4" />
@@ -37,6 +38,12 @@ const PythonNavigationTabs: React.FC<PythonNavigationTabsProps> = ({ className =
             <Link to="/python-reference" className="flex items-center gap-2">
               <FileText className="h-4 w-4" />
               <span className="hidden sm:inline">Référence Python</span>
+            </Link>
+          </TabsTrigger>
+          <TabsTrigger value="methodo" asChild>
+            <Link to="/pourquoi-python-prepa-ecg" className="flex items-center gap-2">
+              <BookOpen className="h-4 w-4" />
+              <span className="hidden sm:inline">Méthodo / Conseil</span>
             </Link>
           </TabsTrigger>
         </TabsList>

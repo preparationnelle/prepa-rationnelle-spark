@@ -24,14 +24,6 @@ const PythonFlashcardsPage = () => {
       <div className="max-w-4xl mx-auto px-6">
         {/* Header */}
         <div className="mb-8">
-          <div className="flex items-center gap-4 mb-6">
-            <Link to="/pourquoi-python-prepa-ecg">
-              <Button variant="outline" size="sm" className="flex items-center gap-2">
-                <ArrowLeft className="h-4 w-4" />
-                Retour à l'article Python
-              </Button>
-            </Link>
-          </div>
           
           <div className="text-center mb-8">
             <Badge className="mb-4 bg-blue-600 text-white">
