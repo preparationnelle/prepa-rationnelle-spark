@@ -1,39 +1,30 @@
 import React from 'react';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, BookOpen, CheckCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Calculator, CheckCircle } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { PythonModuleQuiz } from '@/components/python/PythonModuleQuiz';
 import { matricesQuizQuestions } from '@/data/pythonQuizQuestions';
+import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 
 const PythonMatricesPage = () => {
   return (
-    <div className="min-h-screen bg-background py-8">
-      <div className="max-w-4xl mx-auto px-6">
-        {/* Header */}
-        <div className="mb-8">
-          <div className="flex items-center gap-4 mb-4">
-            <Link to="/formation">
-              <Button variant="outline" size="sm" className="flex items-center gap-2">
-                <ArrowLeft className="h-4 w-4" />
-                Retour à la formation
-              </Button>
-            </Link>
+    <PythonModuleLayout>
+      {/* Header */}
+      <div className="mb-8">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="p-3 rounded-lg bg-green-500 text-white">
+            <Calculator className="h-8 w-8" />
           </div>
-          
-          <div className="flex items-center gap-3 mb-4">
-            <BookOpen className="h-8 w-8 text-green-600" />
-            <div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">
-                Module 2 - Les Matrices NumPy
-              </h1>
-              <Badge variant="secondary" className="mt-2 bg-green-100 text-green-700">Module 2</Badge>
-            </div>
+          <div>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">
+              Module 1 - Les Matrices NumPy
+            </h1>
+            <Badge variant="secondary" className="mt-2 bg-green-100 text-green-700">Module 1</Badge>
           </div>
         </div>
+      </div>
 
         {/* Présentation générale */}
         <Card className="mb-8 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50">
@@ -705,18 +696,7 @@ const PythonMatricesPage = () => {
           </CardContent>
         </Card>
 
-        {/* Navigation footer */}
-        <div className="mt-12 flex justify-between items-center">
-          <Link to="/formation">
-            <Button variant="outline">
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Retour à la formation
-            </Button>
-          </Link>
-          <Badge variant="secondary" className="bg-green-100 text-green-700">Module 2 terminé</Badge>
-        </div>
-      </div>
-    </div>
+    </PythonModuleLayout>
   );
 };
 

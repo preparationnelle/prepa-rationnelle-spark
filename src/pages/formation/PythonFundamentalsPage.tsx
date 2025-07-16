@@ -1,40 +1,31 @@
 
 import React from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, BookOpen, CheckCircle, Target, Lightbulb, Code, Settings } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { CheckCircle, Target, Lightbulb, Code, Settings } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { PythonModuleQuiz } from '@/components/python/PythonModuleQuiz';
 import { fundamentalsQuizQuestions } from '@/data/pythonQuizQuestions';
+import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const PythonFundamentalsPage = () => {
   return (
-    <div className="min-h-screen bg-background py-8">
-      <div className="max-w-4xl mx-auto px-6">
-        {/* Header */}
-        <div className="mb-8">
-          <div className="flex items-center gap-4 mb-4">
-            <Link to="/formation">
-              <Button variant="outline" size="sm" className="flex items-center gap-2">
-                <ArrowLeft className="h-4 w-4" />
-                Retour à la formation
-              </Button>
-            </Link>
+    <PythonModuleLayout>
+      {/* Header */}
+      <div className="mb-8">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="p-3 rounded-lg bg-orange-500 text-white">
+            <Code className="h-8 w-8" />
           </div>
-          
-          <div className="flex items-center gap-3 mb-4">
-            <BookOpen className="h-8 w-8 text-orange-600" />
-            <div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-red-500 bg-clip-text text-transparent">
-                Module 0 - Les Fondamentaux
-              </h1>
-              <Badge variant="secondary" className="mt-2 bg-orange-100 text-orange-700">Module 0</Badge>
-            </div>
+          <div>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-red-500 bg-clip-text text-transparent">
+              Module 0 - Les Fondamentaux
+            </h1>
+            <Badge variant="secondary" className="mt-2 bg-orange-100 text-orange-700">Module 0</Badge>
           </div>
         </div>
+      </div>
 
         {/* Objectifs */}
         <Card className="mb-8">
@@ -1167,18 +1158,7 @@ const PythonFundamentalsPage = () => {
           moduleColor="orange"
         />
 
-        {/* Navigation footer */}
-        <div className="mt-12 flex justify-between items-center">
-          <Link to="/formation">
-            <Button variant="outline">
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Retour à la formation
-            </Button>
-          </Link>
-          <Badge variant="secondary" className="bg-orange-100 text-orange-700">Module 0 terminé</Badge>
-        </div>
-      </div>
-    </div>
+    </PythonModuleLayout>
   );
 };
 
