@@ -932,16 +932,19 @@ const PythonAnalysePage = () => {
           </CardContent>
         </Card>
 
-        {/* Navigation vers les exercices */}
-        <ModuleNavigationCards currentModule={{
-      id: 2,
-      title: "Analyse",
-      slug: "analyse",
-      color: "blue"
-    }} isExercisePage={false} />
-
       {/* Quiz Section */}
       <PythonModuleQuiz title="Quiz pratique - Module 2" questions={analyseQuizQuestions} moduleColor="blue" />
+
+        {/* Navigation vers les exercices */}
+        <ModuleNavigationCards 
+          currentModule={{
+            id: 2,
+            title: "Analyse",
+            slug: "analyse",
+            color: "blue"
+          }} 
+          isExercisePage={false} 
+        />
     </PythonModuleLayout>;
 };
 export default PythonAnalysePage;

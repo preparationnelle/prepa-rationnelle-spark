@@ -1151,6 +1151,13 @@ const PythonFundamentalsPage = () => {
 
         </div>
 
+        {/* Quiz Section */}
+        <PythonModuleQuiz 
+          title="🧠 Quiz Pratique - Module 0"
+          questions={fundamentalsQuizQuestions}
+          moduleColor="orange"
+        />
+
         {/* Navigation vers les exercices */}
         <ModuleNavigationCards 
           currentModule={{
@@ -1160,13 +1167,6 @@ const PythonFundamentalsPage = () => {
             color: "orange"
           }}
           isExercisePage={false}
-        />
-
-        {/* Quiz Section */}
-        <PythonModuleQuiz 
-          title="🧠 Quiz Pratique - Module 0"
-          questions={fundamentalsQuizQuestions}
-          moduleColor="orange"
         />
 
     </PythonModuleLayout>
