@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,16 +7,14 @@ import { ArrowLeft, Brain, Target, Code } from 'lucide-react';
 import { useProgress } from '@/context/ProgressContext';
 import PythonFlashcardGenerator from '@/components/python/PythonFlashcardGenerator';
 import PythonNavigationTabs from '@/components/formation/PythonNavigationTabs';
-
 const PythonFlashcardsPage = () => {
-  const { trackPageVisit } = useProgress();
-  
+  const {
+    trackPageVisit
+  } = useProgress();
   useEffect(() => {
     trackPageVisit('python-flashcards');
   }, [trackPageVisit]);
-
-  return (
-    <div className="min-h-screen bg-background py-8">
+  return <div className="min-h-screen bg-background py-8">
       <div className="max-w-4xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-8">
@@ -34,9 +31,7 @@ const PythonFlashcardsPage = () => {
         
         <div className="mb-8">
           <div className="text-center mb-6">
-            <Badge className="bg-blue-600 text-white">
-              Quiz interactif
-            </Badge>
+            
           </div>
 
           {/* Stats */}
@@ -110,8 +105,6 @@ const PythonFlashcardsPage = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default PythonFlashcardsPage;
