@@ -157,12 +157,7 @@ const PythonModuleNavigation: React.FC = () => {
                   </Button>
                 </Link>
               ) : (
-                <Link to="/formation">
-                  <Button variant="outline" size="sm" className="flex items-center gap-2">
-                    <ChevronLeft className="h-4 w-4" />
-                    <span>Formation</span>
-                  </Button>
-                </Link>
+                <div className="w-full"></div>
               )}
             </div>
 
