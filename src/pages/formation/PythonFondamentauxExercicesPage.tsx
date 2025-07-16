@@ -45,31 +45,30 @@ const PythonFondamentauxExercicesPage = () => {
           >
             ← Retour aux exercices
           </Button>
-            
-            <div className="text-center mb-8">
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-                {exercises[selectedExercise - 1].title}
-              </h1>
-              <Badge variant="secondary" className="bg-green-100 text-green-700">
-                {exercises[selectedExercise - 1].difficulty}
-              </Badge>
-            </div>
+          
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+              {exercises[selectedExercise - 1].title}
+            </h1>
+            <Badge variant="secondary" className="bg-green-100 text-green-700">
+              {exercises[selectedExercise - 1].difficulty}
+            </Badge>
           </div>
-
-          <Card className="mb-8">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-blue-700">
-                <Calculator className="h-6 w-6" />
-                Contenu à venir
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Le contenu détaillé de cet exercice sera ajouté prochainement.
-              </p>
-            </CardContent>
-          </Card>
         </div>
+
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3 text-blue-700">
+              <Calculator className="h-6 w-6" />
+              Contenu à venir
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-muted-foreground">
+              Le contenu détaillé de cet exercice sera ajouté prochainement.
+            </p>
+          </CardContent>
+        </Card>
       </PythonModuleLayout>
     );
   }
