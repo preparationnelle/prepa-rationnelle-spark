@@ -89,9 +89,9 @@ const FormationPage = () => {
             Formation complète en Python pour les concours des Grandes Écoles de Commerce
           </p>
           <div className="flex justify-center gap-2">
-            <Badge variant="secondary">Débutant à avancé</Badge>
-            <Badge variant="outline">10-12 heures</Badge>
-            <Badge className="bg-blue-600">Complet</Badge>
+            
+            
+            
           </div>
         </div>
 
