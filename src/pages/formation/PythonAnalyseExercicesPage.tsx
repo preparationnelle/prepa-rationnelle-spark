@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { TrendingUp, Target, CheckCircle, Play, ChevronLeft, ChevronRight, Calculator, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { TrendingUp, Target, CheckCircle, Play, ChevronLeft, ChevronRight, Calculator } from 'lucide-react';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import {
   Accordion,
@@ -125,18 +124,16 @@ const PythonAnalyseExercicesPage = () => {
 
   if (selectedExercise) {
     return (
-      <div className="min-h-screen bg-background py-8">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="mb-8">
-            <Button
-              variant="outline"
-              size="sm"
-              className="flex items-center gap-2 mb-6"
-              onClick={() => setSelectedExercise(null)}
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Retour aux exercices
-            </Button>
+      <PythonModuleLayout>
+        <div className="mb-8">
+          <Button
+            variant="outline"
+            size="sm"
+            className="flex items-center gap-2 mb-6"
+            onClick={() => setSelectedExercise(null)}
+          >
+            ← Retour aux exercices
+          </Button>
             
             <div className="text-center mb-8">
               <h1 className="text-4xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent mb-4">
@@ -1307,30 +1304,20 @@ print("Somme :", S)`}</code>
             </CardContent>
           </Card>
         </div>
-      </div>
+      </PythonModuleLayout>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background py-8">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-8">
-          <Link to="/formation">
-            <Button variant="outline" size="sm" className="flex items-center gap-2 mb-6">
-              <ArrowLeft className="h-4 w-4" />
-              Retour à la formation
-            </Button>
-          </Link>
-          
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent mb-4">
-              Module 3 : Exercices - Analyse
-            </h1>
-            <p className="text-xl text-muted-foreground">
-              Exercices pratiques sur l'analyse numérique avec NumPy
-            </p>
-          </div>
-        </div>
+    <PythonModuleLayout>
+      <div className="text-center mb-8">
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent mb-4">
+          Module 3 : Exercices - Analyse
+        </h1>
+        <p className="text-xl text-muted-foreground">
+          Exercices pratiques sur l'analyse numérique avec NumPy
+        </p>
+      </div>
 
         {/* Objectifs des exercices */}
         <Card className="mb-8">
@@ -1416,9 +1403,8 @@ print("Somme :", S)`}</code>
               </CardContent>
             </Card>
           ))}
-        </div>
       </div>
-    </div>
+    </PythonModuleLayout>
   );
 };
 

@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Calculator, Target, Play, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Calculator, Target, Play } from 'lucide-react';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 
 const PythonFondamentauxExercicesPage = () => {
@@ -36,18 +35,16 @@ const PythonFondamentauxExercicesPage = () => {
 
   if (selectedExercise) {
     return (
-      <div className="min-h-screen bg-background py-8">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="mb-8">
-            <Button
-              variant="outline"
-              size="sm"
-              className="flex items-center gap-2 mb-6"
-              onClick={() => setSelectedExercise(null)}
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Retour aux exercices
-            </Button>
+      <PythonModuleLayout>
+        <div className="mb-8">
+          <Button
+            variant="outline"
+            size="sm"
+            className="flex items-center gap-2 mb-6"
+            onClick={() => setSelectedExercise(null)}
+          >
+            ← Retour aux exercices
+          </Button>
             
             <div className="text-center mb-8">
               <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
@@ -73,20 +70,13 @@ const PythonFondamentauxExercicesPage = () => {
             </CardContent>
           </Card>
         </div>
-      </div>
+      </PythonModuleLayout>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background py-8">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-8">
-          <Link to="/formation">
-            <Button variant="outline" size="sm" className="flex items-center gap-2 mb-6">
-              <ArrowLeft className="h-4 w-4" />
-              Retour à la formation
-            </Button>
-          </Link>
+    <PythonModuleLayout>
+      <div className="mb-8">
           
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
@@ -162,8 +152,7 @@ const PythonFondamentauxExercicesPage = () => {
             </Card>
           ))}
         </div>
-      </div>
-    </div>
+    </PythonModuleLayout>
   );
 };
 
