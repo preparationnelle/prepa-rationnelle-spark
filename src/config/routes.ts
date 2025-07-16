@@ -12,6 +12,7 @@ const FormationPage = lazy(() => import('../pages/FormationPage'));
 const PourquoiPythonPrepaECGPage = lazy(() => import('../pages/PourquoiPythonPrepaECGPage'));
 const PythonReferencePage = lazy(() => import('../pages/PythonReferencePage'));
 const PythonFlashcardsPage = lazy(() => import('../pages/PythonFlashcardsPage'));
+const PythonExercicesPage = lazy(() => import('../pages/PythonExercicesPage'));
 const FormationAnglaisPage = lazy(() => import('../pages/FormationAnglaisPage'));
 const FormationAllemandPage = lazy(() => import('../pages/FormationAllemandPage'));
 const FormationGeopolitiquePage = lazy(() => import('../pages/FormationGeopolitiquePage'));
@@ -90,6 +91,7 @@ export const routes: RouteConfig[] = [
   { path: '/pourquoi-python-prepa-ecg', component: PourquoiPythonPrepaECGPage, title: 'Pourquoi Python en Prépa ECG' },
   { path: '/python-reference', component: PythonReferencePage, title: 'Référence Python' },
   { path: '/python-flashcards', component: PythonFlashcardsPage, title: 'Flashcards Python' },
+  { path: '/python-exercices', component: PythonExercicesPage, title: 'Exercices Python' },
   { path: '/nos-offres', component: NosOffresPage, title: 'Nos Offres' },
   { path: '/apropos', component: AproposPage, title: 'À propos' },
   { path: '/coaching', component: CoachingPage, title: 'Coaching individuel' },
