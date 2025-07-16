@@ -1,48 +1,34 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Calculator, Target, Play } from 'lucide-react';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
-
 const PythonFondamentauxExercicesPage = () => {
   const [selectedExercise, setSelectedExercise] = useState<number | null>(null);
-
-  const exercises = [
-    {
-      id: 1,
-      title: "Exercice 1 - Variables et types",
-      difficulty: "Facile",
-      description: "Manipulation des types de base : int, float, str, bool. Conversions et opérations.",
-      color: "green"
-    },
-    {
-      id: 2,
-      title: "Exercice 2 - Opérateurs",
-      difficulty: "Facile",
-      description: "Opérateurs arithmétiques, de comparaison et logiques. Priorités des opérateurs.",
-      color: "green"
-    },
-    {
-      id: 3,
-      title: "Exercice 3 - Structures conditionnelles",
-      difficulty: "Facile",
-      description: "Instructions if, elif, else. Conditions composées et imbriquées.",
-      color: "green"
-    }
-  ];
-
+  const exercises = [{
+    id: 1,
+    title: "Exercice 1 - Variables et types",
+    difficulty: "Facile",
+    description: "Manipulation des types de base : int, float, str, bool. Conversions et opérations.",
+    color: "green"
+  }, {
+    id: 2,
+    title: "Exercice 2 - Opérateurs",
+    difficulty: "Facile",
+    description: "Opérateurs arithmétiques, de comparaison et logiques. Priorités des opérateurs.",
+    color: "green"
+  }, {
+    id: 3,
+    title: "Exercice 3 - Structures conditionnelles",
+    difficulty: "Facile",
+    description: "Instructions if, elif, else. Conditions composées et imbriquées.",
+    color: "green"
+  }];
   if (selectedExercise) {
-    return (
-      <PythonModuleLayout>
+    return <PythonModuleLayout>
         <div className="mb-8">
-          <Button
-            variant="outline"
-            size="sm"
-            className="flex items-center gap-2 mb-6"
-            onClick={() => setSelectedExercise(null)}
-          >
+          <Button variant="outline" size="sm" className="flex items-center gap-2 mb-6" onClick={() => setSelectedExercise(null)}>
             ← Retour aux exercices
           </Button>
           
@@ -69,18 +55,13 @@ const PythonFondamentauxExercicesPage = () => {
             </p>
           </CardContent>
         </Card>
-      </PythonModuleLayout>
-    );
+      </PythonModuleLayout>;
   }
-
-  return (
-    <PythonModuleLayout>
+  return <PythonModuleLayout>
       <div className="mb-8">
           
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-              Module 1 : Exercices - Fondamentaux
-            </h1>
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">Module 0 : Exercices - Fondamentaux</h1>
             <p className="text-xl text-muted-foreground">
               Exercices pratiques sur les bases de Python
             </p>
@@ -119,12 +100,7 @@ const PythonFondamentauxExercicesPage = () => {
         </Card>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {exercises.map((exercise) => (
-            <Card 
-              key={exercise.id} 
-              className="hover:shadow-lg transition-shadow cursor-pointer border border-green-200"
-              onClick={() => setSelectedExercise(exercise.id)}
-            >
+          {exercises.map(exercise => <Card key={exercise.id} className="hover:shadow-lg transition-shadow cursor-pointer border border-green-200" onClick={() => setSelectedExercise(exercise.id)}>
               <CardHeader>
                 <div className="flex items-center gap-3">
                   <Calculator className="h-6 w-6 text-green-600" />
@@ -148,11 +124,8 @@ const PythonFondamentauxExercicesPage = () => {
                   Commencer l'exercice
                 </Button>
               </CardContent>
-            </Card>
-          ))}
+            </Card>)}
         </div>
-    </PythonModuleLayout>
-  );
+    </PythonModuleLayout>;
 };
-
 export default PythonFondamentauxExercicesPage;
