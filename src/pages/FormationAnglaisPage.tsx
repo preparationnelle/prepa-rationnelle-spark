@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { BookOpen, Wand2, MessageSquare, ArrowLeft } from 'lucide-react';
+import { BookOpen, Wand2, MessageSquare } from 'lucide-react';
 import { LanguageParagraphGenerator } from '@/components/generator/LanguageParagraphGenerator';
 import { ThemeGrammaticalGenerator } from '@/components/grammar/ThemeGrammaticalGenerator';
 import { VocabularyFlashcards } from '@/components/VocabularyFlashcards';
@@ -32,15 +32,6 @@ const FormationAnglaisPage = () => {
 
   return (
     <div className="container mx-auto py-8 px-4">
-      <div className="mb-6">
-        <Link to="/formation">
-          <Button variant="outline" className="mb-4">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Retour aux formations
-          </Button>
-        </Link>
-      </div>
-
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold mb-4 flex items-center justify-center gap-3">
           <div className="p-3 rounded-lg bg-green-500 text-white">

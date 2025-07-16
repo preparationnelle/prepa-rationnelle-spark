@@ -20,12 +20,6 @@ const PythonIntroductionPage = () => {
 
   return (
     <div className="container mx-auto py-8 px-4">
-      <div className="mb-6">
-        <Link to="/formation">
-          <Button variant="outline" className="mb-4">← Retour aux formations</Button>
-        </Link>
-      </div>
-
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-4 flex items-center justify-center gap-3">
