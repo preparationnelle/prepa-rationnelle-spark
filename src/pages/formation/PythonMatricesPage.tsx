@@ -574,15 +574,15 @@ const PythonMatricesPage = () => {
           </CardContent>
         </Card>
 
-        {/* Quiz Section */}
-        <PythonModuleQuiz 
-          title="🧠 Quiz Pratique - Module 2"
-          questions={matricesQuizQuestions}
-          moduleColor="green"
-        />
+      {/* Quiz Section */}
+      <PythonModuleQuiz 
+        title="🧠 Quiz Pratique - Module 2"
+        questions={matricesQuizQuestions}
+        moduleColor="green"
+      />
 
-        {/* Exercices */}
-        <Card className="mb-8 border-gray-200 bg-gradient-to-br from-gray-50 to-slate-50">
+      {/* Exercices */}
+      <Card className="mb-8 border-gray-200 bg-gradient-to-br from-gray-50 to-slate-50">
           <CardHeader>
             <CardTitle className="text-xl text-gray-700">EXERCICES D'APPLICATION</CardTitle>
           </CardHeader>
