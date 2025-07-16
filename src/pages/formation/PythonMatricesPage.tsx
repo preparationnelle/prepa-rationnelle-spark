@@ -7,6 +7,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { PythonModuleQuiz } from '@/components/python/PythonModuleQuiz';
 import { matricesQuizQuestions } from '@/data/pythonQuizQuestions';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
+import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 
 const PythonMatricesPage = () => {
   return (
@@ -695,6 +696,17 @@ const PythonMatricesPage = () => {
             </Accordion>
           </CardContent>
         </Card>
+
+        {/* Navigation vers les exercices */}
+        <ModuleNavigationCards 
+          currentModule={{
+            id: 1,
+            title: "Matrices",
+            slug: "matrices",
+            color: "green"
+          }}
+          isExercisePage={false}
+        />
 
     </PythonModuleLayout>
   );

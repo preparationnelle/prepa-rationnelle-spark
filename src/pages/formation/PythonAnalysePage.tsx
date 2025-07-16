@@ -7,6 +7,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { PythonModuleQuiz } from '@/components/python/PythonModuleQuiz';
 import { analyseQuizQuestions } from '@/data/pythonQuizQuestions';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
+import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 
 const PythonAnalysePage = () => {
   return (
@@ -934,6 +935,17 @@ const PythonAnalysePage = () => {
             </Accordion>
           </CardContent>
         </Card>
+
+        {/* Navigation vers les exercices */}
+        <ModuleNavigationCards 
+          currentModule={{
+            id: 2,
+            title: "Analyse",
+            slug: "analyse",
+            color: "blue"
+          }}
+          isExercisePage={false}
+        />
 
       {/* Quiz Section */}
       <PythonModuleQuiz 

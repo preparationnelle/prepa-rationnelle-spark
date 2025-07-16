@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { TrendingUp, Target, CheckCircle, Play, ChevronLeft, ChevronRight, Calculator } from 'lucide-react';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
+import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 import {
   Accordion,
   AccordionContent,
@@ -221,6 +222,17 @@ const PythonAnalyseExercicesPage = () => {
           </Card>
         ))}
       </div>
+
+      {/* Navigation retour au cours */}
+      <ModuleNavigationCards 
+        currentModule={{
+          id: 2,
+          title: "Analyse",
+          slug: "analyse",
+          color: "blue"
+        }}
+        isExercisePage={true}
+      />
     </PythonModuleLayout>
   );
 };
