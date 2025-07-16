@@ -155,52 +155,8 @@ const FormationPage = () => {
 
       {/* Navigation Guide */}
       <Card className="mb-8 border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50">
-        <CardHeader>
-          <CardTitle className="text-xl text-blue-700 flex items-center gap-2">
-            <ArrowRight className="h-5 w-5" />
-            Guide de Navigation
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <p className="text-blue-800 mb-4">
-              Chaque module dispose d'une navigation intelligente avec breadcrumbs, progression et liens rapides.
-            </p>
-            
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-white p-4 rounded-lg border border-blue-200">
-                <h4 className="font-semibold text-blue-800 mb-2 flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4" />
-                  Navigation fluide
-                </h4>
-                <ul className="text-sm space-y-1 text-blue-700">
-                  <li>• Breadcrumbs contextuels</li>
-                  <li>• Boutons précédent/suivant intelligents</li>
-                  <li>• Indicateur de progression visuel</li>
-                </ul>
-              </div>
-              
-              <div className="bg-white p-4 rounded-lg border border-blue-200">
-                <h4 className="font-semibold text-blue-800 mb-2 flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4" />
-                  Accès rapide
-                </h4>
-                <ul className="text-sm space-y-1 text-blue-700">
-                  <li>• Liens directs cours ↔ exercices</li>
-                  <li>• Accès aux flashcards Python</li>
-                  <li>• Référence des commandes</li>
-                </ul>
-              </div>
-            </div>
-            
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
-              <p className="text-sm text-yellow-800">
-                💡 <strong>Astuce :</strong> Utilisez les boutons de navigation en bas de chaque module pour une progression fluide, 
-                ou les breadcrumbs pour revenir rapidement à un niveau supérieur.
-              </p>
-            </div>
-          </div>
-        </CardContent>
+        
+        
       </Card>
     </div>;
 };
