@@ -96,10 +96,10 @@ const FormationPage = () => {
                   {module.topics.map((topic, index) => <li key={index}>{topic}</li>)}
                 </ul>
                 <Link to={module.link}>
-                  <Button className={`${module.color} hover:opacity-90 w-full`}>
-                    <Play className="mr-2 h-4 w-4" />
-                    Commencer le module
-                  </Button>
+                    <Button className={`${module.color} hover:opacity-90 w-full`}>
+                      <Play className="mr-2 h-4 w-4" />
+                      Voir les exercices
+                    </Button>
                 </Link>
               </CardContent>
             </Card>)}
@@ -144,7 +144,7 @@ const FormationPage = () => {
                   <Link to={module.exerciseLink} className="flex-1">
                     <Button className={`${module.color} hover:opacity-90 w-full`}>
                       <Play className="mr-2 h-4 w-4" />
-                      Commencer le module
+                      Voir les exercices
                     </Button>
                   </Link>
                 </div>
