@@ -941,7 +941,7 @@ const PythonAnalysePage = () => {
     }} isExercisePage={false} />
 
       {/* Quiz Section */}
-      <PythonModuleQuiz title="🧠 Quiz Pratique - Module 3" questions={analyseQuizQuestions} moduleColor="blue" />
+      <PythonModuleQuiz title="Quiz pratique - Module 2" questions={analyseQuizQuestions} moduleColor="blue" />
     </PythonModuleLayout>;
 };
 export default PythonAnalysePage;
