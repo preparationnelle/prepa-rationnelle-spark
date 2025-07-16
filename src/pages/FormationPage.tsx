@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { Code, Calculator, TrendingUp, BarChart3, Play, BookOpen, ArrowRight, CheckCircle } from 'lucide-react';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Code, Calculator, TrendingUp, BarChart3, Play, BookOpen, ArrowRight, CheckCircle, ChevronDown } from 'lucide-react';
 const FormationPage = () => {
+  const [openModules, setOpenModules] = useState<Record<string, boolean>>({});
+
+  const toggleModule = (moduleId: string) => {
+    setOpenModules(prev => ({
+      ...prev,
+      [moduleId]: !prev[moduleId]
+    }));
+  };
+
   const coursModules = [{
     id: 0,
     title: "Les Fondamentaux",
@@ -74,11 +84,11 @@ const FormationPage = () => {
           {coursModules.map(module => <Card key={module.id} className="border-2 hover:border-primary/50 transition-colors">
               <CardHeader>
                 <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-4 flex-1">
                     <div className={`p-3 rounded-lg ${module.color} text-white`}>
                       <module.icon className="h-6 w-6" />
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <CardTitle className="flex items-center gap-2">
                         Module {module.id}
                         <Badge className="bg-black text-white">Disponible</Badge>
@@ -88,13 +98,33 @@ const FormationPage = () => {
                       </h3>
                     </div>
                   </div>
+                  <Collapsible open={openModules[`cours-${module.id}`]} onOpenChange={() => toggleModule(`cours-${module.id}`)}>
+                    <CollapsibleTrigger asChild>
+                      <Button variant="ghost" size="sm" className="p-2">
+                        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${openModules[`cours-${module.id}`] ? 'rotate-180' : ''}`} />
+                        <span className="sr-only">Voir le détail</span>
+                      </Button>
+                    </CollapsibleTrigger>
+                  </Collapsible>
                 </div>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4">{module.description}</p>
-                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-6">
-                  {module.topics.map((topic, index) => <li key={index}>{topic}</li>)}
-                </ul>
+                
+                <Collapsible open={openModules[`cours-${module.id}`]} onOpenChange={() => toggleModule(`cours-${module.id}`)}>
+                  <CollapsibleTrigger asChild>
+                    <Button variant="outline" size="sm" className="mb-4">
+                      <ChevronDown className={`h-4 w-4 mr-2 transition-transform duration-200 ${openModules[`cours-${module.id}`] ? 'rotate-180' : ''}`} />
+                      Voir le détail
+                    </Button>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up overflow-hidden">
+                    <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-6">
+                      {module.topics.map((topic, index) => <li key={index}>{topic}</li>)}
+                    </ul>
+                  </CollapsibleContent>
+                </Collapsible>
+
                 <Link to={module.link}>
                     <Button className={`${module.color} hover:opacity-90 w-full`}>
                       <Play className="mr-2 h-4 w-4" />
@@ -108,16 +138,15 @@ const FormationPage = () => {
 
       {/* Section Exercices */}
       <div>
-        
         <div className="grid gap-6">
           {exerciseModules.map(module => <Card key={module.id} className="border-2 hover:border-primary/50 transition-colors">
               <CardHeader>
                 <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-4 flex-1">
                     <div className={`p-3 rounded-lg ${module.color} text-white`}>
                       <module.icon className="h-6 w-6" />
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <CardTitle className="flex items-center gap-2">
                         Module {module.id}
                         <Badge className="bg-green-600 text-white">Disponible</Badge>
@@ -127,13 +156,33 @@ const FormationPage = () => {
                       </h3>
                     </div>
                   </div>
+                  <Collapsible open={openModules[`exercice-${module.id}`]} onOpenChange={() => toggleModule(`exercice-${module.id}`)}>
+                    <CollapsibleTrigger asChild>
+                      <Button variant="ghost" size="sm" className="p-2">
+                        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${openModules[`exercice-${module.id}`] ? 'rotate-180' : ''}`} />
+                        <span className="sr-only">Voir le détail</span>
+                      </Button>
+                    </CollapsibleTrigger>
+                  </Collapsible>
                 </div>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4">{module.description}</p>
-                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-6">
-                  {module.topics.map((topic, index) => <li key={index}>{topic}</li>)}
-                </ul>
+                
+                <Collapsible open={openModules[`exercice-${module.id}`]} onOpenChange={() => toggleModule(`exercice-${module.id}`)}>
+                  <CollapsibleTrigger asChild>
+                    <Button variant="outline" size="sm" className="mb-4">
+                      <ChevronDown className={`h-4 w-4 mr-2 transition-transform duration-200 ${openModules[`exercice-${module.id}`] ? 'rotate-180' : ''}`} />
+                      Voir le détail
+                    </Button>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up overflow-hidden">
+                    <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-6">
+                      {module.topics.map((topic, index) => <li key={index}>{topic}</li>)}
+                    </ul>
+                  </CollapsibleContent>
+                </Collapsible>
+
                 <div className="flex gap-3">
                   <Link to={module.link} className="flex-1">
                     <Button variant="outline" className="w-full">
