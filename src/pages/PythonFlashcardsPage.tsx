@@ -47,14 +47,14 @@ const PythonFlashcardsPage = () => {
 
         {/* Navigation Tabs */}
         <PythonNavigationTabs className="mb-8" />
-        
-        <div className="mb-8">
-          <div className="text-center mb-6">
-            
-          </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        {/* Flashcard Generator */}
+        <PythonFlashcardGenerator />
+
+        {/* Stats Section */}
+        <div className="mt-12 mb-8">
+          <h2 className="text-2xl font-bold text-center mb-6">Informations</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Card>
               <CardContent className="p-4 text-center">
                 <div className="flex items-center justify-center gap-2 mb-2">
@@ -85,26 +85,7 @@ const PythonFlashcardsPage = () => {
               </CardContent>
             </Card>
           </div>
-
-          {/* Instructions */}
-          <Card className="mb-8 bg-blue-50 border-blue-200">
-            <CardHeader>
-              <CardTitle className="text-blue-800">Comment ça marche ?</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ol className="space-y-2 text-blue-700">
-                <li><strong>1.</strong> Une commande Python s'affiche</li>
-                <li><strong>2.</strong> Essayez de deviner ce qu'elle fait</li>
-                <li><strong>3.</strong> Cliquez pour révéler la réponse</li>
-                <li><strong>4.</strong> Indiquez si vous avez trouvé ou non</li>
-                <li><strong>5.</strong> Obtenez votre score final sur 54 commandes</li>
-              </ol>
-            </CardContent>
-          </Card>
         </div>
-
-        {/* Flashcard Generator */}
-        <PythonFlashcardGenerator />
 
         {/* Links */}
         <div className="mt-12 text-center space-y-4">

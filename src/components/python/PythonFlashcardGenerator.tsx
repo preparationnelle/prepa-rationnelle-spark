@@ -4,7 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { Shuffle, RotateCcw, CheckCircle, X, ArrowRight } from 'lucide-react';
+import { Shuffle, RotateCcw, CheckCircle, X, ArrowRight, HelpCircle } from 'lucide-react';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { pythonCommands } from '@/data/pythonCommands';
 
 interface FlashcardData {
@@ -136,32 +137,52 @@ const PythonFlashcardGenerator = () => {
   const progress = ((currentIndex + 1) / flashcards.length) * 100;
 
   return (
-    <div className="max-w-2xl mx-auto space-y-6">
-      {/* Progress */}
-      <div className="space-y-2">
-        <div className="flex justify-between text-sm text-muted-foreground">
-          <span>Question {currentIndex + 1} sur {flashcards.length}</span>
-          <span>Score: {score.correct}/{score.total}</span>
-        </div>
-        <Progress value={progress} className="h-2" />
-      </div>
-
-      {/* Flashcard */}
-      <Card className="min-h-[400px]">
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <Badge variant="outline">{currentCard.category}</Badge>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={handleShuffle}
-              className="flex items-center gap-2"
-            >
-              <Shuffle className="h-4 w-4" />
-              Mélanger
-            </Button>
+    <TooltipProvider>
+      <div className="max-w-2xl mx-auto space-y-6">
+        {/* Progress */}
+        <div className="space-y-2">
+          <div className="flex justify-between text-sm text-muted-foreground">
+            <span>Question {currentIndex + 1} sur {flashcards.length}</span>
+            <span>Score: {score.correct}/{score.total}</span>
           </div>
-        </CardHeader>
+          <Progress value={progress} className="h-2" />
+        </div>
+
+        {/* Flashcard */}
+        <Card className="min-h-[400px]">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <Badge variant="outline">{currentCard.category}</Badge>
+              <div className="flex items-center gap-2">
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                      <HelpCircle className="h-4 w-4" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="left" className="max-w-xs">
+                    <div className="space-y-1 text-sm">
+                      <p><strong>Comment ça marche ?</strong></p>
+                      <p>1. Une commande Python s'affiche</p>
+                      <p>2. Essayez de deviner ce qu'elle fait</p>
+                      <p>3. Cliquez pour révéler la réponse</p>
+                      <p>4. Indiquez si vous avez trouvé ou non</p>
+                      <p>5. Obtenez votre score final sur 54 commandes</p>
+                    </div>
+                  </TooltipContent>
+                </Tooltip>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleShuffle}
+                  className="flex items-center gap-2"
+                >
+                  <Shuffle className="h-4 w-4" />
+                  Mélanger
+                </Button>
+              </div>
+            </div>
+          </CardHeader>
         <CardContent className="space-y-6 text-center">
           <div className="space-y-4">
             <h3 className="text-sm text-muted-foreground">Que fait cette commande Python ?</h3>
@@ -215,7 +236,8 @@ const PythonFlashcardGenerator = () => {
           )}
         </CardContent>
       </Card>
-    </div>
+      </div>
+    </TooltipProvider>
   );
 };
 
