@@ -9,7 +9,6 @@ import { Code, Calculator, TrendingUp, BarChart3, Play, BookOpen, ChevronDown, H
 import PythonNavigationTabs from "@/components/formation/PythonNavigationTabs";
 const FormationPage = () => {
   const [openModules, setOpenModules] = useState<Set<number>>(new Set());
-
   const toggleModule = (moduleId: number) => {
     const newOpenModules = new Set(openModules);
     if (newOpenModules.has(moduleId)) {
@@ -60,8 +59,7 @@ const FormationPage = () => {
     color: "bg-purple-500",
     available: true
   }];
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       {/* Sticky Breadcrumb */}
       <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -84,9 +82,7 @@ const FormationPage = () => {
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-blue-600 text-white">
-              <Code className="h-8 w-8" />
-            </div>
+            
             Formation Python ECG
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
@@ -113,8 +109,7 @@ const FormationPage = () => {
           Cours
         </h2>
         <div className="grid gap-6">
-          {coursModules.map(module => (
-            <Link key={module.id} to={module.link} className="block">
+          {coursModules.map(module => <Link key={module.id} to={module.link} className="block">
               <Card className="border-2 hover:border-primary/50 transition-colors cursor-pointer">
                 <CardHeader>
                   <div className="flex items-start justify-between">
@@ -139,7 +134,7 @@ const FormationPage = () => {
                   
                   <Collapsible open={openModules.has(module.id)} onOpenChange={() => toggleModule(module.id)}>
                     <CollapsibleTrigger asChild>
-                      <Button variant="ghost" className="w-full justify-between p-0 h-auto mb-4" onClick={(e) => e.preventDefault()}>
+                      <Button variant="ghost" className="w-full justify-between p-0 h-auto mb-4" onClick={e => e.preventDefault()}>
                         <span className="text-sm font-medium">Voir le détail</span>
                         <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${openModules.has(module.id) ? 'rotate-180' : ''}`} />
                       </Button>
@@ -151,7 +146,7 @@ const FormationPage = () => {
                     </CollapsibleContent>
                   </Collapsible>
 
-                  <div className="flex gap-3" onClick={(e) => e.preventDefault()}>
+                  <div className="flex gap-3" onClick={e => e.preventDefault()}>
                     <Link to={module.link} className="flex-1">
                       <Button variant="outline" className="w-full">
                         <BookOpen className="mr-2 h-4 w-4" />
@@ -167,8 +162,7 @@ const FormationPage = () => {
                   </div>
                 </CardContent>
               </Card>
-            </Link>
-          ))}
+            </Link>)}
         </div>
       </div>
 
@@ -176,8 +170,7 @@ const FormationPage = () => {
       <div>
         
         <div className="grid gap-6">
-          {exerciseModules.map(module => (
-            <Link key={module.id} to={module.link} className="block">
+          {exerciseModules.map(module => <Link key={module.id} to={module.link} className="block">
               <Card className="border-2 hover:border-primary/50 transition-colors cursor-pointer">
                 <CardHeader>
                   <div className="flex items-start justify-between">
@@ -202,7 +195,7 @@ const FormationPage = () => {
                   
                   <Collapsible open={openModules.has(module.id)} onOpenChange={() => toggleModule(module.id)}>
                     <CollapsibleTrigger asChild>
-                      <Button variant="ghost" className="w-full justify-between p-0 h-auto mb-4" onClick={(e) => e.preventDefault()}>
+                      <Button variant="ghost" className="w-full justify-between p-0 h-auto mb-4" onClick={e => e.preventDefault()}>
                         <span className="text-sm font-medium">Voir le détail</span>
                         <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${openModules.has(module.id) ? 'rotate-180' : ''}`} />
                       </Button>
@@ -214,7 +207,7 @@ const FormationPage = () => {
                     </CollapsibleContent>
                   </Collapsible>
 
-                  <div className="flex gap-3" onClick={(e) => e.preventDefault()}>
+                  <div className="flex gap-3" onClick={e => e.preventDefault()}>
                     <Link to={module.link} className="flex-1">
                       <Button variant="outline" className="w-full">
                         <BookOpen className="mr-2 h-4 w-4" />
@@ -230,8 +223,7 @@ const FormationPage = () => {
                   </div>
                 </CardContent>
               </Card>
-            </Link>
-          ))}
+            </Link>)}
         </div>
       </div>
 
@@ -239,8 +231,6 @@ const FormationPage = () => {
         </Tabs>
       </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default FormationPage;
