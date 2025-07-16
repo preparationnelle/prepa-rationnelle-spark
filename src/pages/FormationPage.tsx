@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Link } from "react-router-dom";
-import { Code, Calculator, TrendingUp, BarChart3, Play, BookOpen, ArrowRight, CheckCircle } from 'lucide-react';
+import { Code, Calculator, TrendingUp, BarChart3, Play, BookOpen, ChevronDown } from 'lucide-react';
 const FormationPage = () => {
+  const [openModules, setOpenModules] = useState<Set<number>>(new Set());
+
+  const toggleModule = (moduleId: number) => {
+    const newOpenModules = new Set(openModules);
+    if (newOpenModules.has(moduleId)) {
+      newOpenModules.delete(moduleId);
+    } else {
+      newOpenModules.add(moduleId);
+    }
+    setOpenModules(newOpenModules);
+  };
   const coursModules = [{
     id: 0,
     title: "Les Fondamentaux",
@@ -71,7 +83,8 @@ const FormationPage = () => {
           Cours
         </h2>
         <div className="grid gap-6">
-          {coursModules.map(module => <Card key={module.id} className="border-2 hover:border-primary/50 transition-colors">
+          {coursModules.map(module => (
+            <Card key={module.id} className="border-2 hover:border-primary/50 transition-colors">
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-4">
@@ -92,9 +105,21 @@ const FormationPage = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4">{module.description}</p>
-                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-6">
-                  {module.topics.map((topic, index) => <li key={index}>{topic}</li>)}
-                </ul>
+                
+                <Collapsible open={openModules.has(module.id)} onOpenChange={() => toggleModule(module.id)}>
+                  <CollapsibleTrigger asChild>
+                    <Button variant="ghost" className="w-full justify-between p-0 h-auto mb-4">
+                      <span className="text-sm font-medium">Voir le détail</span>
+                      <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${openModules.has(module.id) ? 'rotate-180' : ''}`} />
+                    </Button>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="space-y-2">
+                    <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-6">
+                      {module.topics.map((topic, index) => <li key={index}>{topic}</li>)}
+                    </ul>
+                  </CollapsibleContent>
+                </Collapsible>
+
                 <Link to={module.link}>
                     <Button className={`${module.color} hover:opacity-90 w-full`}>
                       <Play className="mr-2 h-4 w-4" />
@@ -102,7 +127,8 @@ const FormationPage = () => {
                     </Button>
                 </Link>
               </CardContent>
-            </Card>)}
+            </Card>
+          ))}
         </div>
       </div>
 
@@ -110,7 +136,8 @@ const FormationPage = () => {
       <div>
         
         <div className="grid gap-6">
-          {exerciseModules.map(module => <Card key={module.id} className="border-2 hover:border-primary/50 transition-colors">
+          {exerciseModules.map(module => (
+            <Card key={module.id} className="border-2 hover:border-primary/50 transition-colors">
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-4">
@@ -131,9 +158,21 @@ const FormationPage = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4">{module.description}</p>
-                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-6">
-                  {module.topics.map((topic, index) => <li key={index}>{topic}</li>)}
-                </ul>
+                
+                <Collapsible open={openModules.has(module.id)} onOpenChange={() => toggleModule(module.id)}>
+                  <CollapsibleTrigger asChild>
+                    <Button variant="ghost" className="w-full justify-between p-0 h-auto mb-4">
+                      <span className="text-sm font-medium">Voir le détail</span>
+                      <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${openModules.has(module.id) ? 'rotate-180' : ''}`} />
+                    </Button>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="space-y-2">
+                    <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-6">
+                      {module.topics.map((topic, index) => <li key={index}>{topic}</li>)}
+                    </ul>
+                  </CollapsibleContent>
+                </Collapsible>
+
                 <div className="flex gap-3">
                   <Link to={module.link} className="flex-1">
                     <Button variant="outline" className="w-full">
@@ -149,7 +188,8 @@ const FormationPage = () => {
                   </Link>
                 </div>
               </CardContent>
-            </Card>)}
+            </Card>
+          ))}
         </div>
       </div>
 
