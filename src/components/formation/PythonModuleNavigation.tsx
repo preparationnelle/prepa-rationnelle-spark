@@ -80,9 +80,7 @@ const PythonModuleNavigation: React.FC = () => {
   };
   return <div className="space-y-6">
       {/* Current Module Navigation */}
-      <Card className="border-2">
-        
-      </Card>
+      
 
       {/* Module Progression */}
       <Card>
