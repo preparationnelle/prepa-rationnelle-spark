@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Calculator, Target, Play } from 'lucide-react';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
+import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 const PythonFondamentauxExercicesPage = () => {
   const [selectedExercise, setSelectedExercise] = useState<number | null>(null);
   const exercises = [{
@@ -126,6 +127,17 @@ const PythonFondamentauxExercicesPage = () => {
               </CardContent>
             </Card>)}
         </div>
+
+        {/* Navigation Card */}
+        <ModuleNavigationCards 
+          currentModule={{
+            id: 0,
+            title: "Fondamentaux",
+            slug: "fondamentaux", 
+            color: "orange"
+          }}
+          isExercisePage={true}
+        />
     </PythonModuleLayout>;
 };
 export default PythonFondamentauxExercicesPage;

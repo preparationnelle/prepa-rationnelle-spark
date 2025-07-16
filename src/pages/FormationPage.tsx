@@ -24,6 +24,7 @@ const FormationPage = () => {
     description: "Variables, types, opérateurs, fonctions et structures de contrôle. Les bases essentielles pour débuter en Python.",
     topics: ["Types fondamentaux (int, float, bool, str)", "Opérateurs numériques", "Fonctions et structures de contrôle", "Listes et boucles"],
     link: "/formation/python-fondamentaux",
+    exerciseLink: "/formation/python-fondamentaux-exercices",
     icon: BookOpen,
     color: "bg-orange-500",
     available: true
@@ -147,7 +148,7 @@ const FormationPage = () => {
                         Voir le cours
                       </Button>
                     </Link>
-                    <Link to={module.link} className="flex-1">
+                    <Link to={module.exerciseLink || module.link} className="flex-1">
                       <Button className={`${module.color} hover:opacity-90 w-full`}>
                         <Play className="mr-2 h-4 w-4" />
                         Voir les exercices
