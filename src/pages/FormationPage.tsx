@@ -120,12 +120,20 @@ const FormationPage = () => {
                   </CollapsibleContent>
                 </Collapsible>
 
-                <Link to={module.link}>
+                <div className="flex gap-3">
+                  <Link to={module.link} className="flex-1">
+                    <Button variant="outline" className="w-full">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Voir le cours
+                    </Button>
+                  </Link>
+                  <Link to={module.link} className="flex-1">
                     <Button className={`${module.color} hover:opacity-90 w-full`}>
                       <Play className="mr-2 h-4 w-4" />
                       Voir les exercices
                     </Button>
-                </Link>
+                  </Link>
+                </div>
               </CardContent>
             </Card>
           ))}
