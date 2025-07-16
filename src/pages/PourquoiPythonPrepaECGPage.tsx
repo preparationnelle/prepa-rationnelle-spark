@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -7,16 +6,14 @@ import { Link } from 'react-router-dom';
 import { Youtube, Target, TrendingUp, Brain, Code, Star, Users, Calendar, CheckCircle, ArrowLeft, BookOpen, Play } from 'lucide-react';
 import { useProgress } from '@/context/ProgressContext';
 import PythonNavigationTabs from '@/components/formation/PythonNavigationTabs';
-
 const PourquoiPythonPrepaECGPage = () => {
-  const { trackPageVisit } = useProgress();
-
+  const {
+    trackPageVisit
+  } = useProgress();
   useEffect(() => {
     trackPageVisit('python-article');
   }, [trackPageVisit]);
-
-  return (
-    <div className="min-h-screen bg-background py-8">
+  return <div className="min-h-screen bg-background py-8">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-8">
@@ -26,9 +23,7 @@ const PourquoiPythonPrepaECGPage = () => {
           <p className="text-xl text-muted-foreground mb-6">
             (et pourquoi mon coaching est ta meilleure option)
           </p>
-          <Badge variant="destructive" className="bg-orange-600 text-white">
-            +3 à 5 points sûrs
-          </Badge>
+          
         </div>
 
         {/* Navigation Tabs */}
@@ -56,12 +51,7 @@ const PourquoiPythonPrepaECGPage = () => {
           </CardHeader>
           <CardContent>
             <div className="aspect-video w-full">
-              <iframe 
-                src="https://www.loom.com/embed/bb87a1911d4a494ba229aaca00ee88cb" 
-                frameBorder="0" 
-                allowFullScreen 
-                className="w-full h-full rounded-lg"
-              ></iframe>
+              <iframe src="https://www.loom.com/embed/bb87a1911d4a494ba229aaca00ee88cb" frameBorder="0" allowFullScreen className="w-full h-full rounded-lg"></iframe>
             </div>
           </CardContent>
         </Card>
@@ -459,18 +449,11 @@ const PourquoiPythonPrepaECGPage = () => {
           </CardHeader>
           <CardContent>
             <div className="aspect-video w-full">
-              <iframe 
-                src="https://www.youtube.com/embed/cBG8EJsHkwA" 
-                frameBorder="0" 
-                allowFullScreen 
-                className="w-full h-full rounded-lg"
-              ></iframe>
+              <iframe src="https://www.youtube.com/embed/cBG8EJsHkwA" frameBorder="0" allowFullScreen className="w-full h-full rounded-lg"></iframe>
             </div>
           </CardContent>
         </Card>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default PourquoiPythonPrepaECGPage;
