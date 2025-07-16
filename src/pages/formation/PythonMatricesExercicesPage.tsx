@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Calculator, Target, Play, CheckCircle, Eye, EyeOff } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Calculator, Target, Play, CheckCircle, Eye, EyeOff } from 'lucide-react';
+import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 const PythonMatricesExercicesPage = () => {
   const [selectedExercise, setSelectedExercise] = useState<number | null>(null);
   const [showSolution, setShowSolution] = useState<{
@@ -359,47 +359,46 @@ def Nilp(A):
   };
   if (selectedExercise) {
     const exercise = exercises[selectedExercise - 1];
-    return <div className="min-h-screen bg-background py-8">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="mb-8">
-            <Button variant="outline" size="sm" className="flex items-center gap-2 mb-6" onClick={() => setSelectedExercise(null)}>
-              <ArrowLeft className="h-4 w-4" />
-              Retour aux exercices
-            </Button>
-            
-            <div className="text-center mb-8">
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-4">
-                {exercise.title}
-              </h1>
-              <Badge variant="secondary" className={`${exercise.color === 'green' ? 'bg-green-100 text-green-700' : exercise.color === 'blue' ? 'bg-blue-100 text-blue-700' : exercise.color === 'red' ? 'bg-red-100 text-red-700' : 'bg-orange-100 text-orange-700'}`}>
-                {exercise.difficulty}
-              </Badge>
-            </div>
-          </div>
-
-          {exercise.type === 'qcm' ? renderQCMContent() : renderExerciseContent()}
-        </div>
-      </div>;
-  }
-  return <div className="min-h-screen bg-background py-8">
-      <div className="max-w-6xl mx-auto px-6">
+    return (
+      <PythonModuleLayout>
         <div className="mb-8">
-          <Link to="/formation">
-            <Button variant="outline" size="sm" className="flex items-center gap-2 mb-6">
-              <ArrowLeft className="h-4 w-4" />
-              Retour à la formation
-            </Button>
-          </Link>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="flex items-center gap-2 mb-6" 
+            onClick={() => setSelectedExercise(null)}
+          >
+            ← Retour aux exercices
+          </Button>
           
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-4">
-              Module 2 : Exercices - Matrices NumPy
+              {exercise.title}
             </h1>
-            <p className="text-xl text-muted-foreground">
-              Exercices pratiques sur les matrices et NumPy
-            </p>
+            <Badge 
+              variant="secondary" 
+              className={`${exercise.color === 'green' ? 'bg-green-100 text-green-700' : exercise.color === 'blue' ? 'bg-blue-100 text-blue-700' : exercise.color === 'red' ? 'bg-red-100 text-red-700' : 'bg-orange-100 text-orange-700'}`}
+            >
+              {exercise.difficulty}
+            </Badge>
           </div>
         </div>
+
+        {exercise.type === 'qcm' ? renderQCMContent() : renderExerciseContent()}
+      </PythonModuleLayout>
+    );
+  }
+  
+  return (
+    <PythonModuleLayout>
+      <div className="text-center mb-8">
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-4">
+          Module 1 : Exercices - Matrices NumPy
+        </h1>
+        <p className="text-xl text-muted-foreground">
+          Exercices pratiques sur les matrices et NumPy
+        </p>
+      </div>
 
         <Card className="mb-8">
           <CardHeader>
@@ -456,7 +455,7 @@ def Nilp(A):
               </CardContent>
             </Card>)}
         </div>
-      </div>
-    </div>;
+    </PythonModuleLayout>
+  );
 };
 export default PythonMatricesExercicesPage;

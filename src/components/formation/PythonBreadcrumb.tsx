@@ -83,10 +83,10 @@ const PythonBreadcrumb: React.FC = () => {
   const breadcrumbs = getBreadcrumbs();
 
   return (
-    <nav className="flex items-center space-x-2 text-sm text-muted-foreground mb-6">
+    <nav className="flex items-center text-sm text-muted-foreground mb-6">
       {breadcrumbs.map((item, index) => (
-        <React.Fragment key={index}>
-          {index > 0 && <ChevronRight className="h-4 w-4 text-muted-foreground/50" />}
+        <div key={index} className="flex items-center">
+          {index > 0 && <ChevronRight className="h-4 w-4 text-muted-foreground/50 mx-2" />}
           
           {item.href && !item.current ? (
             <Link
@@ -107,7 +107,7 @@ const PythonBreadcrumb: React.FC = () => {
               <span>{item.label}</span>
             </span>
           )}
-        </React.Fragment>
+        </div>
       ))}
     </nav>
   );
