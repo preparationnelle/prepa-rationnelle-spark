@@ -10,7 +10,6 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { BarChart3, Target, Book, CheckCircle, Play } from 'lucide-react';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
-import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 
 const PythonProbabilitesExercicesPage = () => {
   const [selectedExercise, setSelectedExercise] = useState<number | null>(null);
@@ -155,17 +154,6 @@ const PythonProbabilitesExercicesPage = () => {
           </Card>
         ))}
       </div>
-
-      {/* Navigation vers cours */}
-      <ModuleNavigationCards 
-        currentModule={{
-          id: 3,
-          title: "Probabilités",
-          slug: "probabilites",
-          color: "purple"
-        }}
-        isExercisePage={true}
-      />
     </PythonModuleLayout>
   );
 };
