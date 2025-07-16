@@ -113,21 +113,11 @@ const PythonModuleNavigation: React.FC = () => {
             
             {module.hasExercises && (
               <div className="flex gap-2">
-                <Link to={`/formation/python-${module.slug}`}>
-                  <Button 
-                    variant={!isExercises ? "default" : "outline"} 
-                    size="sm"
-                    className={!isExercises ? getColorClasses(module.color) : ''}
-                  >
-                    <BookOpen className="h-4 w-4 mr-1" />
-                    Cours
-                  </Button>
-                </Link>
                 <Link to={`/formation/python-${module.slug}-exercices`}>
                   <Button 
-                    variant={isExercises ? "default" : "outline"} 
+                    variant="default"
                     size="sm"
-                    className={isExercises ? getColorClasses(module.color) : ''}
+                    className={getColorClasses(module.color)}
                   >
                     <PlayCircle className="h-4 w-4 mr-1" />
                     Exercices

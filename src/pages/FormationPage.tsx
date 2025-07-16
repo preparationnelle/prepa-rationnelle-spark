@@ -104,58 +104,60 @@ const FormationPage = () => {
         </h2>
         <div className="grid gap-6">
           {coursModules.map(module => (
-            <Card key={module.id} className="border-2 hover:border-primary/50 transition-colors">
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className={`p-3 rounded-lg ${module.color} text-white`}>
-                      <module.icon className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <CardTitle className="flex items-center gap-2">
-                        Module {module.id}
-                        <Badge className="bg-black text-white">Disponible</Badge>
-                      </CardTitle>
-                      <h3 className="text-xl font-semibold text-primary mt-1">
-                        {module.title}
-                      </h3>
+            <Link key={module.id} to={module.link} className="block">
+              <Card className="border-2 hover:border-primary/50 transition-colors cursor-pointer">
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className={`p-3 rounded-lg ${module.color} text-white`}>
+                        <module.icon className="h-6 w-6" />
+                      </div>
+                      <div>
+                        <CardTitle className="flex items-center gap-2">
+                          Module {module.id}
+                          <Badge className="bg-black text-white">Disponible</Badge>
+                        </CardTitle>
+                        <h3 className="text-xl font-semibold text-primary mt-1">
+                          {module.title}
+                        </h3>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4">{module.description}</p>
-                
-                <Collapsible open={openModules.has(module.id)} onOpenChange={() => toggleModule(module.id)}>
-                  <CollapsibleTrigger asChild>
-                    <Button variant="ghost" className="w-full justify-between p-0 h-auto mb-4">
-                      <span className="text-sm font-medium">Voir le détail</span>
-                      <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${openModules.has(module.id) ? 'rotate-180' : ''}`} />
-                    </Button>
-                  </CollapsibleTrigger>
-                  <CollapsibleContent className="space-y-2">
-                    <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-6">
-                      {module.topics.map((topic, index) => <li key={index}>{topic}</li>)}
-                    </ul>
-                  </CollapsibleContent>
-                </Collapsible>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground mb-4">{module.description}</p>
+                  
+                  <Collapsible open={openModules.has(module.id)} onOpenChange={() => toggleModule(module.id)}>
+                    <CollapsibleTrigger asChild>
+                      <Button variant="ghost" className="w-full justify-between p-0 h-auto mb-4" onClick={(e) => e.preventDefault()}>
+                        <span className="text-sm font-medium">Voir le détail</span>
+                        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${openModules.has(module.id) ? 'rotate-180' : ''}`} />
+                      </Button>
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="space-y-2">
+                      <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-6">
+                        {module.topics.map((topic, index) => <li key={index}>{topic}</li>)}
+                      </ul>
+                    </CollapsibleContent>
+                  </Collapsible>
 
-                <div className="flex gap-3">
-                  <Link to={module.link} className="flex-1">
-                    <Button variant="outline" className="w-full">
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Voir le cours
-                    </Button>
-                  </Link>
-                  <Link to={module.link} className="flex-1">
-                    <Button className={`${module.color} hover:opacity-90 w-full`}>
-                      <Play className="mr-2 h-4 w-4" />
-                      Voir les exercices
-                    </Button>
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
+                  <div className="flex gap-3" onClick={(e) => e.preventDefault()}>
+                    <Link to={module.link} className="flex-1">
+                      <Button variant="outline" className="w-full">
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Voir le cours
+                      </Button>
+                    </Link>
+                    <Link to={module.link} className="flex-1">
+                      <Button className={`${module.color} hover:opacity-90 w-full`}>
+                        <Play className="mr-2 h-4 w-4" />
+                        Voir les exercices
+                      </Button>
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
       </div>
@@ -165,58 +167,60 @@ const FormationPage = () => {
         
         <div className="grid gap-6">
           {exerciseModules.map(module => (
-            <Card key={module.id} className="border-2 hover:border-primary/50 transition-colors">
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className={`p-3 rounded-lg ${module.color} text-white`}>
-                      <module.icon className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <CardTitle className="flex items-center gap-2">
-                        Module {module.id}
-                        <Badge className="bg-green-600 text-white">Disponible</Badge>
-                      </CardTitle>
-                      <h3 className="text-xl font-semibold text-primary mt-1">
-                        {module.title}
-                      </h3>
+            <Link key={module.id} to={module.link} className="block">
+              <Card className="border-2 hover:border-primary/50 transition-colors cursor-pointer">
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className={`p-3 rounded-lg ${module.color} text-white`}>
+                        <module.icon className="h-6 w-6" />
+                      </div>
+                      <div>
+                        <CardTitle className="flex items-center gap-2">
+                          Module {module.id}
+                          <Badge className="bg-green-600 text-white">Disponible</Badge>
+                        </CardTitle>
+                        <h3 className="text-xl font-semibold text-primary mt-1">
+                          {module.title}
+                        </h3>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4">{module.description}</p>
-                
-                <Collapsible open={openModules.has(module.id)} onOpenChange={() => toggleModule(module.id)}>
-                  <CollapsibleTrigger asChild>
-                    <Button variant="ghost" className="w-full justify-between p-0 h-auto mb-4">
-                      <span className="text-sm font-medium">Voir le détail</span>
-                      <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${openModules.has(module.id) ? 'rotate-180' : ''}`} />
-                    </Button>
-                  </CollapsibleTrigger>
-                  <CollapsibleContent className="space-y-2">
-                    <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-6">
-                      {module.topics.map((topic, index) => <li key={index}>{topic}</li>)}
-                    </ul>
-                  </CollapsibleContent>
-                </Collapsible>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground mb-4">{module.description}</p>
+                  
+                  <Collapsible open={openModules.has(module.id)} onOpenChange={() => toggleModule(module.id)}>
+                    <CollapsibleTrigger asChild>
+                      <Button variant="ghost" className="w-full justify-between p-0 h-auto mb-4" onClick={(e) => e.preventDefault()}>
+                        <span className="text-sm font-medium">Voir le détail</span>
+                        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${openModules.has(module.id) ? 'rotate-180' : ''}`} />
+                      </Button>
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="space-y-2">
+                      <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-6">
+                        {module.topics.map((topic, index) => <li key={index}>{topic}</li>)}
+                      </ul>
+                    </CollapsibleContent>
+                  </Collapsible>
 
-                <div className="flex gap-3">
-                  <Link to={module.link} className="flex-1">
-                    <Button variant="outline" className="w-full">
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Voir le cours
-                    </Button>
-                  </Link>
-                  <Link to={module.exerciseLink} className="flex-1">
-                    <Button className={`${module.color} hover:opacity-90 w-full`}>
-                      <Play className="mr-2 h-4 w-4" />
-                      Voir les exercices
-                    </Button>
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
+                  <div className="flex gap-3" onClick={(e) => e.preventDefault()}>
+                    <Link to={module.link} className="flex-1">
+                      <Button variant="outline" className="w-full">
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Voir le cours
+                      </Button>
+                    </Link>
+                    <Link to={module.exerciseLink} className="flex-1">
+                      <Button className={`${module.color} hover:opacity-90 w-full`}>
+                        <Play className="mr-2 h-4 w-4" />
+                        Voir les exercices
+                      </Button>
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
       </div>
