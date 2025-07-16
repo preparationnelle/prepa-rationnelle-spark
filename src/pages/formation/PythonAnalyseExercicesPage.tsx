@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { TrendingUp, Target, CheckCircle, Play, ChevronLeft, ChevronRight } from 'lucide-react';
+import { TrendingUp, Target, CheckCircle, Play, ChevronLeft, ChevronRight, Calculator, ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import {
   Accordion,

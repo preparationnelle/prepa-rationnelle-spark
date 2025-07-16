@@ -10,29 +10,19 @@ import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 
 const PythonAnalysePage = () => {
   return (
-    <div className="min-h-screen bg-background py-8">
-      <div className="max-w-4xl mx-auto px-6">
-        {/* Header */}
-        <div className="mb-8">
-          <div className="flex items-center gap-4 mb-4">
-            <Link to="/formation">
-              <Button variant="outline" size="sm" className="flex items-center gap-2">
-                <ArrowLeft className="h-4 w-4" />
-                Retour à la formation
-              </Button>
-            </Link>
-          </div>
-          
-          <div className="flex items-center gap-3 mb-4">
-            <BookOpen className="h-8 w-8 text-blue-600" />
-            <div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-violet-500 bg-clip-text text-transparent">
-                Module 3 - Analyse
-              </h1>
-              <Badge variant="secondary" className="mt-2 bg-blue-100 text-blue-700">Module 3</Badge>
-            </div>
+    <PythonModuleLayout>
+      {/* Header */}
+      <div className="mb-8">
+        <div className="flex items-center gap-3 mb-4">
+          <TrendingUp className="h-8 w-8 text-blue-600" />
+          <div>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-violet-500 bg-clip-text text-transparent">
+              Module 3 - Analyse
+            </h1>
+            <Badge variant="secondary" className="mt-2 bg-blue-100 text-blue-700">Module 3</Badge>
           </div>
         </div>
+      </div>
 
         {/* Présentation générale */}
         <Card className="mb-8 border-blue-200 bg-gradient-to-br from-blue-50 to-violet-50">
@@ -945,12 +935,14 @@ const PythonAnalysePage = () => {
           </CardContent>
         </Card>
 
-        {/* Quiz Section */}
-        <PythonModuleQuiz 
-          title="🧠 Quiz Pratique - Module 3"
-          questions={analyseQuizQuestions}
-          moduleColor="blue"
-        />
-
+      {/* Quiz Section */}
+      <PythonModuleQuiz 
+        title="🧠 Quiz Pratique - Module 3"
+        questions={analyseQuizQuestions}
+        moduleColor="blue"
+      />
     </PythonModuleLayout>
+  );
+};
+
 export default PythonAnalysePage;
