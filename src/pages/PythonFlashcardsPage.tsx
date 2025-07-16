@@ -18,23 +18,25 @@ const PythonFlashcardsPage = () => {
 
   return (
     <div className="min-h-screen bg-background py-8">
-      {/* Navigation Tabs */}
-      <PythonNavigationTabs className="mb-8" />
-      
       <div className="max-w-4xl mx-auto px-6">
         {/* Header */}
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+            Flashcards Python ECG
+          </h1>
+          <p className="text-xl text-muted-foreground mb-6">
+            Testez vos connaissances sur les 54 commandes essentielles
+          </p>
+        </div>
+
+        {/* Navigation Tabs */}
+        <PythonNavigationTabs className="mb-8" />
+        
         <div className="mb-8">
-          
-          <div className="text-center mb-8">
-            <Badge className="mb-4 bg-blue-600 text-white">
+          <div className="text-center mb-6">
+            <Badge className="bg-blue-600 text-white">
               Quiz interactif
             </Badge>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-              Flashcards Python ECG
-            </h1>
-            <p className="text-xl text-muted-foreground mb-6">
-              Testez vos connaissances sur les 54 commandes essentielles
-            </p>
           </div>
 
           {/* Stats */}

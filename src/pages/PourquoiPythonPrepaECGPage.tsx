@@ -17,25 +17,22 @@ const PourquoiPythonPrepaECGPage = () => {
 
   return (
     <div className="min-h-screen bg-background py-8">
-      {/* Navigation Tabs */}
-      <PythonNavigationTabs className="mb-8" />
-      
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
-        <div className="mb-8">
-          
-          <div className="text-center">
-            <Badge variant="destructive" className="mb-4 bg-orange-600 text-white">
-              +3 à 5 points sûrs
-            </Badge>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-4">
-              Pourquoi travailler Python en prépa ECG
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              (et pourquoi mon coaching est ta meilleure option)
-            </p>
-          </div>
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-4">
+            Pourquoi travailler Python en prépa ECG
+          </h1>
+          <p className="text-xl text-muted-foreground mb-6">
+            (et pourquoi mon coaching est ta meilleure option)
+          </p>
+          <Badge variant="destructive" className="bg-orange-600 text-white">
+            +3 à 5 points sûrs
+          </Badge>
         </div>
+
+        {/* Navigation Tabs */}
+        <PythonNavigationTabs className="mb-8" />
 
         {/* Témoignage en vedette */}
         <Card className="mb-8 bg-blue-50 border-l-4 border-blue-400">

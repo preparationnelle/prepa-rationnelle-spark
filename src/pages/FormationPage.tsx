@@ -81,25 +81,26 @@ const FormationPage = () => {
       </nav>
 
       <div className="container mx-auto py-8 px-4">
+        {/* Header */}
         <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold mb-4 flex items-center justify-center gap-3">
-          <div className="p-3 rounded-lg bg-blue-600 text-white">
-            <Code className="h-8 w-8" />
+          <h1 className="text-4xl font-bold mb-4 flex items-center justify-center gap-3">
+            <div className="p-3 rounded-lg bg-blue-600 text-white">
+              <Code className="h-8 w-8" />
+            </div>
+            Formation Python ECG
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
+            Formation complète en Python pour les concours des Grandes Écoles de Commerce
+          </p>
+          <div className="flex justify-center gap-2">
+            <Badge variant="secondary">Débutant à avancé</Badge>
+            <Badge variant="outline">10-12 heures</Badge>
+            <Badge className="bg-blue-600">Complet</Badge>
           </div>
-          Formation Python ECG
-        </h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Formation complète en Python pour les concours des Grandes Écoles de Commerce
-        </p>
-        <div className="flex justify-center gap-2 mt-4">
-          <Badge variant="secondary">Débutant à avancé</Badge>
-          <Badge variant="outline">10-12 heures</Badge>
-          <Badge className="bg-blue-600">Complet</Badge>
         </div>
-      </div>
 
-      {/* Navigation Tabs */}
-      <PythonNavigationTabs className="mb-8" />
+        {/* Navigation Tabs */}
+        <PythonNavigationTabs className="mb-8" />
 
       <div className="container mx-auto px-4">
         <Tabs defaultValue="cours" className="w-full">

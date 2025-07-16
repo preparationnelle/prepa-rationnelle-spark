@@ -30,20 +30,21 @@ const PythonReferencePage = () => {
 
   return (
     <div className="min-h-screen bg-background py-8">
-      {/* Navigation Tabs */}
-      <PythonNavigationTabs className="mb-8" />
-      
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
-        <div className="mb-8">
-          
+        <div className="text-center mb-8">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
             Référence Python ECG
           </h1>
           <p className="text-xl text-muted-foreground mb-6">
             Toutes les 54 commandes Python au programme de prépa ECG
           </p>
-          
+        </div>
+
+        {/* Navigation Tabs */}
+        <PythonNavigationTabs className="mb-8" />
+        
+        <div className="mb-8">
           <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
         </div>
 
