@@ -130,39 +130,39 @@ const PythonExercicesPage: React.FC = () => {
             };
 
             return (
-              <Card key={module.id} className={`bg-gradient-to-br ${colorClasses[module.color as keyof typeof colorClasses]} transition-all duration-300 hover:shadow-lg hover:scale-105`}>
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className={`p-2 rounded-lg bg-${module.color}-100 dark:bg-${module.color}-900/20`}>
-                      <IconComponent className={`h-6 w-6 text-${module.color}-600 dark:text-${module.color}-400`} />
+              <Link key={module.id} to={module.link} className="block">
+                <Card className={`bg-gradient-to-br ${colorClasses[module.color as keyof typeof colorClasses]} transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer`}>
+                  <CardHeader>
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className={`p-2 rounded-lg bg-${module.color}-100 dark:bg-${module.color}-900/20`}>
+                        <IconComponent className={`h-6 w-6 text-${module.color}-600 dark:text-${module.color}-400`} />
+                      </div>
+                      <CardTitle className="text-xl">{module.title}</CardTitle>
                     </div>
-                    <CardTitle className="text-xl">{module.title}</CardTitle>
-                  </div>
-                  <CardDescription className="text-base">
-                    {module.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-medium mb-2 text-foreground">Au programme :</h4>
-                      <ul className="space-y-1">
-                        {module.topics.map((topic, index) => (
-                          <li key={index} className="text-sm text-muted-foreground flex items-center gap-2">
-                            <div className={`w-1.5 h-1.5 rounded-full bg-${module.color}-500`} />
-                            {topic}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <Button asChild className={`w-full bg-${module.color}-600 hover:bg-${module.color}-700`}>
-                      <Link to={module.link}>
+                    <CardDescription className="text-base">
+                      {module.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="font-medium mb-2 text-foreground">Au programme :</h4>
+                        <ul className="space-y-1">
+                          {module.topics.map((topic, index) => (
+                            <li key={index} className="text-sm text-muted-foreground flex items-center gap-2">
+                              <div className={`w-1.5 h-1.5 rounded-full bg-${module.color}-500`} />
+                              {topic}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <Button className={`w-full bg-${module.color}-600 hover:bg-${module.color}-700 pointer-events-none`}>
                         Accéder aux exercices
-                      </Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             );
           })}
         </div>
