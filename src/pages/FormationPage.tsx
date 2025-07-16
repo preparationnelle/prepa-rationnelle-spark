@@ -3,8 +3,9 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Link } from "react-router-dom";
-import { Code, Calculator, TrendingUp, BarChart3, Play, BookOpen, ChevronDown, Home, ChevronRight } from 'lucide-react';
+import { Code, Calculator, TrendingUp, BarChart3, Play, BookOpen, ChevronDown, Home, ChevronRight, CreditCard, FileText } from 'lucide-react';
 const FormationPage = () => {
   const [openModules, setOpenModules] = useState<Set<number>>(new Set());
 
@@ -95,6 +96,30 @@ const FormationPage = () => {
           <Badge className="bg-blue-600">Complet</Badge>
         </div>
       </div>
+
+      {/* Navigation Tabs */}
+      <div className="container mx-auto px-4 mb-8">
+        <Tabs defaultValue="cours" className="w-full">
+          <TabsList className="grid w-full grid-cols-3 max-w-md mx-auto">
+            <TabsTrigger value="cours" className="flex items-center gap-2">
+              <BookOpen className="h-4 w-4" />
+              <span className="hidden sm:inline">Cours</span>
+            </TabsTrigger>
+            <TabsTrigger value="flashcards" asChild>
+              <Link to="/python-flashcards" className="flex items-center gap-2">
+                <CreditCard className="h-4 w-4" />
+                <span className="hidden sm:inline">Flashcards Python</span>
+              </Link>
+            </TabsTrigger>
+            <TabsTrigger value="reference" asChild>
+              <Link to="/python-reference" className="flex items-center gap-2">
+                <FileText className="h-4 w-4" />
+                <span className="hidden sm:inline">Référence Python</span>
+              </Link>
+            </TabsTrigger>
+          </TabsList>
+          
+          <TabsContent value="cours" className="mt-8">
 
       {/* Section Cours */}
       <div className="mb-12">
@@ -225,11 +250,9 @@ const FormationPage = () => {
         </div>
       </div>
 
-      {/* Navigation Guide */}
-      <Card className="mb-8 border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50">
-        
-        
-      </Card>
+          </TabsContent>
+        </Tabs>
+      </div>
       </div>
     </div>
   );

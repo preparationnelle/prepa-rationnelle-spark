@@ -187,31 +187,6 @@ const PythonModuleNavigation: React.FC = () => {
         </CardContent>
       </Card>
 
-      {/* Quick Actions */}
-      <Card>
-        <CardContent className="p-4">
-          <div className="flex flex-wrap gap-2 justify-center">
-            <Link to="/formation">
-              <Button variant="outline" size="sm">
-                <BookOpen className="h-4 w-4 mr-1" />
-                Tous les modules
-              </Button>
-            </Link>
-            <Link to="/python-flashcards">
-              <Button variant="outline" size="sm">
-                <PlayCircle className="h-4 w-4 mr-1" />
-                Flashcards Python
-              </Button>
-            </Link>
-            <Link to="/python-reference">
-              <Button variant="outline" size="sm">
-                <Calculator className="h-4 w-4 mr-1" />
-                Référence Python
-              </Button>
-            </Link>
-          </div>
-        </CardContent>
-      </Card>
     </div>
   );
 };
