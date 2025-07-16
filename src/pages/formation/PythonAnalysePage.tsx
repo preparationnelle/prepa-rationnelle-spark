@@ -1,13 +1,12 @@
 import React from 'react';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, BookOpen, CheckCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { TrendingUp, CheckCircle } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { PythonModuleQuiz } from '@/components/python/PythonModuleQuiz';
 import { analyseQuizQuestions } from '@/data/pythonQuizQuestions';
+import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 
 const PythonAnalysePage = () => {
   return (
@@ -953,19 +952,5 @@ const PythonAnalysePage = () => {
           moduleColor="blue"
         />
 
-        {/* Navigation footer */}
-        <div className="mt-12 flex justify-between items-center">
-          <Link to="/formation">
-            <Button variant="outline">
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Retour à la formation
-            </Button>
-          </Link>
-          <Badge variant="secondary" className="bg-blue-100 text-blue-700">Module 3 terminé</Badge>
-        </div>
-      </div>
-    </div>
-  );
-};
-
+    </PythonModuleLayout>
 export default PythonAnalysePage;

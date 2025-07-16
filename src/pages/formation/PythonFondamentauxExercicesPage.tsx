@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Calculator, Target, Play } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Calculator, Target, Play } from 'lucide-react';
+import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 
 const PythonFondamentauxExercicesPage = () => {
   const [selectedExercise, setSelectedExercise] = useState<number | null>(null);

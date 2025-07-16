@@ -1,9 +1,7 @@
 import React from 'react';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Target, Code, BarChart, Calculator, TrendingUp } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { BarChart3, Target, Code, Calculator, TrendingUp } from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -18,28 +16,24 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 
 const PythonProbabilitesPage = () => {
   return (
-    <div className="min-h-screen bg-background py-8">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-8">
-          <Link to="/formation">
-            <Button variant="outline" size="sm" className="flex items-center gap-2 mb-6">
-              <ArrowLeft className="h-4 w-4" />
-              Retour à la formation
-            </Button>
-          </Link>
-          
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-4">
-              Module 4 : Probabilités
+    <PythonModuleLayout>
+      <div className="mb-8">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="p-3 rounded-lg bg-purple-500 text-white">
+            <BarChart3 className="h-8 w-8" />
+          </div>
+          <div>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
+              Module 3 - Probabilités
             </h1>
-            <p className="text-xl text-muted-foreground">
-              Simulation et statistiques avec NumPy & Matplotlib
-            </p>
+            <Badge variant="secondary" className="mt-2 bg-purple-100 text-purple-700">Module 3</Badge>
           </div>
         </div>
+      </div>
 
         {/* Objectifs du module */}
         <Card className="mb-8">
@@ -486,8 +480,7 @@ rd.normal(mean, sigma)   # normale`}
             </div>
           </CardContent>
         </Card>
-      </div>
-    </div>
+    </PythonModuleLayout>
   );
 };
 
