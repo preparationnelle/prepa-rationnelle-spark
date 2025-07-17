@@ -33,16 +33,14 @@ export const useRoleAccess = (): RoleHookReturn => {
           .eq('user_id', currentUser.id)
           .order('created_at', { ascending: false })
           .limit(1)
-          .single();
+          .maybeSingle();
 
         if (error) {
-          // If no role found, default to 'user'
-          if (error.code === 'PGRST116') {
-            setUserRole('user');
-          } else {
-            console.error('Error fetching user role:', error);
-            setUserRole('user');
-          }
+          console.error('Error fetching user role:', error);
+          setUserRole('user');
+        } else if (!data) {
+          // No role found, default to 'user'
+          setUserRole('user');
         } else {
           setUserRole(data.role as UserRole);
         }
