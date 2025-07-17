@@ -33,6 +33,14 @@ const PythonFlashcardGenerator = () => {
           handleShowAnswer();
         }
         break;
+      case 'ArrowRight':
+        event.preventDefault();
+        goToNext();
+        break;
+      case 'ArrowLeft':
+        event.preventDefault();
+        goToPrevious();
+        break;
     }
   }, [showAnswer, isFinished]);
 
@@ -94,6 +102,20 @@ const PythonFlashcardGenerator = () => {
     setFlashcards(shuffled);
     setCurrentIndex(0);
     setShowAnswer(false);
+  };
+
+  const goToNext = () => {
+    if (currentIndex < flashcards.length - 1) {
+      setCurrentIndex(prev => prev + 1);
+      setShowAnswer(false);
+    }
+  };
+
+  const goToPrevious = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(prev => prev - 1);
+      setShowAnswer(false);
+    }
   };
 
   if (flashcards.length === 0) {
@@ -190,6 +212,7 @@ const PythonFlashcardGenerator = () => {
                       <p>3. Appuyez sur Entrée ou cliquez pour révéler la réponse</p>
                       <p>4. Indiquez si vous avez trouvé ou non</p>
                       <p>5. Obtenez votre score final sur 54 commandes</p>
+                      <p><strong>Raccourcis :</strong> ← → pour naviguer, Entrée pour révéler</p>
                     </div>
                   </TooltipContent>
                 </Tooltip>
