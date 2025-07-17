@@ -2,11 +2,12 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
+import { useRoleAccess } from '@/hooks/useRoleAccess';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { GlobalSearch } from '@/components/search/GlobalSearch';
 import { MobileSearch } from '@/components/search/MobileSearch';
-import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, BarChart3, Code, Languages, Globe } from 'lucide-react';
+import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, BarChart3, Code, Languages, Globe, UserCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from '@/components/ui/dropdown-menu';
@@ -16,6 +17,7 @@ const Navigation = () => {
     currentUser,
     logout
   } = useAuth();
+  const { isProfessor } = useRoleAccess();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
@@ -270,6 +272,12 @@ const Navigation = () => {
                 <BarChart3 className="h-4 w-4" />
                 Dashboard
               </Link>
+              {isProfessor && (
+                <Link to="/prof" className="text-foreground hover:text-primary transition flex items-center gap-2" onClick={closeMenu}>
+                  <UserCheck className="h-4 w-4" />
+                  Interface Prof
+                </Link>
+              )}
               <Button variant="outline" size="sm" onClick={() => {
             handleLogout();
             closeMenu();
@@ -450,6 +458,12 @@ const Navigation = () => {
                 <BarChart3 className="h-4 w-4" />
                 Dashboard
               </Link>
+              {isProfessor && (
+                <Link to="/prof" className="text-lg py-2 border-b border-border flex items-center gap-2" onClick={closeMenu}>
+                  <UserCheck className="h-4 w-4" />
+                  Interface Prof
+                </Link>
+              )}
               <Button variant="outline" onClick={() => {
             handleLogout();
             closeMenu();
