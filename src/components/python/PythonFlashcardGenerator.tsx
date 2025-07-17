@@ -292,59 +292,59 @@ const PythonFlashcardGenerator = () => {
               </div>
             </div>
           </CardHeader>
-        <CardContent className="space-y-6 text-center">
-          <div className="space-y-4">
-            <h3 className="text-sm text-muted-foreground">Que fait cette commande Python ?</h3>
-            <div className="bg-slate-100 p-6 rounded-lg">
-              <code className="text-2xl font-mono font-bold text-blue-600">
-                {currentCard.command}
-              </code>
-            </div>
-          </div>
-
-          {showAnswer ? (
-            <div className="space-y-6">
-              <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
-                <p className="text-lg text-green-800 font-semibold">
-                  {currentCard.description}
-                </p>
+          <CardContent className="space-y-6 text-center">
+            <div className="space-y-4">
+              <h3 className="text-sm text-muted-foreground">Que fait cette commande Python ?</h3>
+              <div className="bg-slate-100 p-6 rounded-lg">
+                <code className="text-2xl font-mono font-bold text-blue-600">
+                  {currentCard.command}
+                </code>
               </div>
-              
-              <div className="space-y-4">
-                <p className="text-muted-foreground">Avez-vous trouvé la bonne réponse ?</p>
-                <div className="flex gap-4 justify-center">
-                  <Button
-                    onClick={() => handleAnswer(true)}
-                    className="flex items-center gap-2 bg-green-600 hover:bg-green-700"
-                  >
-                    <CheckCircle className="h-4 w-4" />
-                    Oui, j'ai trouvé !
-                  </Button>
-                  <Button
-                    onClick={() => handleAnswer(false)}
-                    variant="outline"
-                    className="flex items-center gap-2 border-red-300 text-red-600 hover:bg-red-50"
-                  >
-                    <X className="h-4 w-4" />
-                    Non, je me suis trompé
-                  </Button>
+            </div>
+
+            {showAnswer ? (
+              <div className="space-y-6">
+                <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                  <p className="text-lg text-green-800 font-semibold">
+                    {currentCard.description}
+                  </p>
+                </div>
+                
+                <div className="space-y-4">
+                  <p className="text-muted-foreground">Avez-vous trouvé la bonne réponse ?</p>
+                  <div className="flex gap-4 justify-center">
+                    <Button
+                      onClick={() => handleAnswer(true)}
+                      className="flex items-center gap-2 bg-green-600 hover:bg-green-700"
+                    >
+                      <CheckCircle className="h-4 w-4" />
+                      Oui, j'ai trouvé !
+                    </Button>
+                    <Button
+                      onClick={() => handleAnswer(false)}
+                      variant="outline"
+                      className="flex items-center gap-2 border-red-300 text-red-600 hover:bg-red-50"
+                    >
+                      <X className="h-4 w-4" />
+                      Non, je me suis trompé
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ) : (
-            <div className="space-y-6">
-              <Button
-                onClick={handleShowAnswer}
-                size="lg"
-                className="flex items-center gap-2"
-              >
-                Révéler la réponse
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </div>
-          )}
-        </CardContent>
-      </Card>
+            ) : (
+              <div className="space-y-6">
+                <Button
+                  onClick={handleShowAnswer}
+                  size="lg"
+                  className="flex items-center gap-2"
+                >
+                  Révéler la réponse
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+              </div>
+            )}
+          </CardContent>
+        </Card>
       </div>
     </TooltipProvider>
   );
