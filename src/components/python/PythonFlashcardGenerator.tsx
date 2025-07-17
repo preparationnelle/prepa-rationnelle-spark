@@ -134,39 +134,91 @@ const PythonFlashcardGenerator = () => {
     
     return (
       <div className="max-w-2xl mx-auto">
-        <Card className="text-center">
-          <CardHeader>
-            <CardTitle className="flex items-center justify-center gap-2">
-              <CheckCircle className="h-6 w-6 text-green-600" />
-              Quiz terminé !
+        <Card className="text-center border-2 border-yellow-300 bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20">
+          <CardHeader className="pb-6">
+            <div className="text-6xl mb-4">🎉</div>
+            <CardTitle className="text-3xl font-bold text-yellow-600 dark:text-yellow-400 mb-2">
+              Félicitations ! 
             </CardTitle>
+            <p className="text-lg text-muted-foreground">
+              Vous avez terminé toutes les flashcards Python !
+            </p>
           </CardHeader>
           <CardContent className="space-y-6">
-            <div className="text-6xl font-bold text-primary">
-              {percentage}%
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border-2 border-yellow-200 dark:border-yellow-700">
+              <div className="text-5xl font-bold text-primary mb-2">
+                {percentage}%
+              </div>
+              <p className="text-xl">
+                Score final : <strong className="text-green-600">{score.correct}</strong> sur <strong>{score.total}</strong> questions
+              </p>
             </div>
-            <p className="text-xl">
-              Vous avez réussi <strong>{score.correct}</strong> sur <strong>{score.total}</strong> questions
-            </p>
             
-            <div className="space-y-2">
-              {percentage >= 80 && (
-                <p className="text-green-600 font-semibold">🎉 Excellent ! Vous maîtrisez très bien Python !</p>
+            <div className="space-y-3">
+              {percentage >= 90 && (
+                <div className="bg-green-100 dark:bg-green-900/30 p-4 rounded-lg border border-green-300 dark:border-green-700">
+                  <p className="text-green-800 dark:text-green-200 font-semibold text-lg">
+                    🏆 Exceptionnel ! Vous êtes un vrai expert Python ! 
+                  </p>
+                  <p className="text-green-700 dark:text-green-300 text-sm mt-1">
+                    Avec ce niveau, vous êtes prêt(e) pour les concours les plus exigeants !
+                  </p>
+                </div>
               )}
-              {percentage >= 60 && percentage < 80 && (
-                <p className="text-orange-600 font-semibold">👍 Bon travail ! Quelques révisions et ce sera parfait !</p>
+              {percentage >= 75 && percentage < 90 && (
+                <div className="bg-blue-100 dark:bg-blue-900/30 p-4 rounded-lg border border-blue-300 dark:border-blue-700">
+                  <p className="text-blue-800 dark:text-blue-200 font-semibold text-lg">
+                    🎯 Excellent travail ! Vous maîtrisez très bien Python !
+                  </p>
+                  <p className="text-blue-700 dark:text-blue-300 text-sm mt-1">
+                    Encore quelques révisions et ce sera parfait !
+                  </p>
+                </div>
+              )}
+              {percentage >= 60 && percentage < 75 && (
+                <div className="bg-orange-100 dark:bg-orange-900/30 p-4 rounded-lg border border-orange-300 dark:border-orange-700">
+                  <p className="text-orange-800 dark:text-orange-200 font-semibold text-lg">
+                    👍 Bon travail ! Vous êtes sur la bonne voie !
+                  </p>
+                  <p className="text-orange-700 dark:text-orange-300 text-sm mt-1">
+                    Continuez à vous entraîner, les progrès sont là !
+                  </p>
+                </div>
               )}
               {percentage < 60 && (
-                <p className="text-red-600 font-semibold">💪 Il faut encore travailler, mais c'est un bon début !</p>
+                <div className="bg-purple-100 dark:bg-purple-900/30 p-4 rounded-lg border border-purple-300 dark:border-purple-700">
+                  <p className="text-purple-800 dark:text-purple-200 font-semibold text-lg">
+                    💪 Bravo pour votre persévérance ! 
+                  </p>
+                  <p className="text-purple-700 dark:text-purple-300 text-sm mt-1">
+                    Chaque révision vous rapproche de la maîtrise ! N'abandonnez pas !
+                  </p>
+                </div>
               )}
             </div>
 
-            <div className="flex gap-4 justify-center">
-              <Button onClick={handleRestart} className="flex items-center gap-2">
+            <div className="bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl p-4 text-white">
+              <p className="font-semibold mb-2">🚀 Prêt(e) pour la suite ?</p>
+              <p className="text-sm opacity-90">
+                Explorez nos autres modules de formation ou recommencez pour améliorer votre score !
+              </p>
+            </div>
+
+            <div className="flex gap-4 justify-center flex-wrap">
+              <Button 
+                onClick={handleRestart} 
+                className="flex items-center gap-2 bg-green-600 hover:bg-green-700"
+                size="lg"
+              >
                 <RotateCcw className="h-4 w-4" />
                 Recommencer
               </Button>
-              <Button variant="outline" onClick={handleShuffle}>
+              <Button 
+                variant="outline" 
+                onClick={handleShuffle}
+                size="lg"
+                className="border-2"
+              >
                 <Shuffle className="h-4 w-4 mr-2" />
                 Nouveau mélange
               </Button>
