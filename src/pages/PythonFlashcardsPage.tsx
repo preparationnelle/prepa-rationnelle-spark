@@ -4,41 +4,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Code, Home, ChevronRight, Brain, Target } from 'lucide-react';
 import PythonFlashcardGenerator from '@/components/python/PythonFlashcardGenerator';
 
-const PythonModuleSelection = () => {
-  const modules = [
-    { id: 'all', label: 'Toutes les 54 commandes', description: 'Réviser l\'ensemble du programme', active: true },
-    { id: 'fundamentals', label: 'Module 0 - Fondamentaux', description: 'Imports et fonctions de base' },
-    { id: 'analysis', label: 'Module 1 - Analyse', description: 'Vecteurs et matrices' },
-    { id: 'matrices', label: 'Module 2 - Matrices', description: 'Opérations et algèbre linéaire' },
-    { id: 'probabilities', label: 'Module 3 - Probabilités', description: 'Variables aléatoires et graphiques' }
-  ];
-
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-      {modules.map((module) => (
-        <Card key={module.id} className={`cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-105 ${
-          module.active ? 'border-2 border-blue-500 bg-blue-50 dark:bg-blue-900/20' : 'hover:border-blue-300'
-        }`}>
-          <CardContent className="p-4 text-center">
-            <h3 className={`font-semibold text-lg mb-2 ${module.active ? 'text-blue-700 dark:text-blue-300' : ''}`}>
-              {module.label}
-            </h3>
-            <p className="text-sm text-muted-foreground mb-4">
-              {module.description}
-            </p>
-            <Button 
-              variant={module.active ? "default" : "outline"} 
-              size="sm"
-              className="w-full"
-            >
-              {module.active ? 'En cours' : 'Réviser'}
-            </Button>
-          </CardContent>
-        </Card>
-      ))}
-    </div>
-  );
-};
 
 const PythonFlashcardsPage = () => {
   return (
@@ -72,13 +37,9 @@ const PythonFlashcardsPage = () => {
             Flashcards Python
           </h1>
           <p className="text-xl text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Maîtrisez les 54 commandes essentielles avec nos flashcards interactives. 
-            Choisissez le module que vous souhaitez réviser !
+            Maîtrisez les 54 commandes essentielles avec nos flashcards interactives !
           </p>
         </div>
-
-        {/* Module Selection */}
-        <PythonModuleSelection />
 
         {/* Flashcard Generator */}
         <PythonFlashcardGenerator />
