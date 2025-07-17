@@ -72,6 +72,11 @@ const ThemeGrammarGeneratorPage = lazy(() => import('../pages/generator/ThemeGra
 
 // Teacher pages
 const TeacherDashboardPage = lazy(() => import('../pages/teacher/TeacherDashboardPage'));
+const TeacherCoursesPage = lazy(() => import('../pages/teacher/TeacherCoursesPage'));
+const TeacherCourseDetailPage = lazy(() => import('../pages/teacher/TeacherCourseDetailPage'));
+const TeacherCourseStudentsPage = lazy(() => import('../pages/teacher/TeacherCourseStudentsPage'));
+const TeacherCourseGradesPage = lazy(() => import('../pages/teacher/TeacherCourseGradesPage'));
+const TeacherCourseAssignmentPage = lazy(() => import('../pages/teacher/TeacherCourseAssignmentPage'));
 
 export interface RouteConfig {
   path: string;
@@ -106,6 +111,12 @@ export const routes: RouteConfig[] = [
   
   // Teacher pages
   { path: '/prof', component: TeacherDashboardPage, title: 'Interface Professeur', protected: true },
+  { path: '/prof/dashboard', component: TeacherDashboardPage, title: 'Dashboard Professeur', protected: true },
+  { path: '/prof/courses', component: TeacherCoursesPage, title: 'Mes Cours', protected: true },
+  { path: '/prof/courses/:courseId', component: TeacherCourseDetailPage, title: 'Détails du Cours', protected: true },
+  { path: '/prof/courses/:courseId/students', component: TeacherCourseStudentsPage, title: 'Étudiants du Cours', protected: true },
+  { path: '/prof/courses/:courseId/grades', component: TeacherCourseGradesPage, title: 'Notes du Cours', protected: true },
+  { path: '/prof/courses/:courseId/assignment/:assignmentId', component: TeacherCourseAssignmentPage, title: 'Gestion Devoir', protected: true },
   
   // Formation pages
   { path: '/formation/anglais', component: FormationAnglaisPage, title: 'Formation Anglais' },

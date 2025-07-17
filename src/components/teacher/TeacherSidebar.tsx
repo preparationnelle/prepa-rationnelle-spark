@@ -21,9 +21,15 @@ const navigationItems = [
     description: 'Statistiques et analytics'
   },
   {
+    title: 'Mes Cours',
+    href: '/prof/courses',
+    icon: BookOpen,
+    description: 'Gestion des cours'
+  },
+  {
     title: 'Gestion de contenu',
     href: '/prof/content',
-    icon: BookOpen,
+    icon: FileText,
     submenu: [
       { title: 'Modules', href: '/prof/content/modules', icon: FileText },
       { title: 'Leçons', href: '/prof/content/lessons', icon: BookOpen },
