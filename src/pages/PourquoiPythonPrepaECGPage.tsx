@@ -202,4 +202,64 @@ const PourquoiPythonPrepaECGPage = () => {
                 <span><strong>Absence de méthodo :</strong> on survole les commandes en TP, sans vraie feuille de route</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-red-500 font-bold">•
+                <span className="text-red-500 font-bold">•</span>
+                <span><strong>Abandon trop rapide :</strong> dès qu'on bloque 5 minutes, on passe à autre chose sans creuser</span>
+              </li>
+            </ul>
+            <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+              <p className="text-red-800">
+                <strong>Résultat :</strong> l'immense majorité arrive aux concours avec une compréhension superficielle qui s'effondre dès la première difficulté.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Section 3 - Pourquoi mon coaching fait la différence */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3">
+              <Brain className="h-6 w-6 text-green-600" />
+              3. Pourquoi mon coaching Python fait la différence
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3">
+                <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <span><strong>Méthodo progressive :</strong> de zéro à l'autonomie complète en 4 modules structurés</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <span><strong>Exercices calibrés :</strong> chaque exercice a été testé sur des centaines d'étudiants pour maximiser l'apprentissage</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <span><strong>Suivi personnalisé :</strong> tracking de progression + feedback instantané sur tes erreurs</span>
+              </li>
+            </ul>
+          </CardContent>
+        </Card>
+
+        {/* Call to action final */}
+        <Card className="bg-gradient-to-r from-green-50 to-blue-50 border-green-200">
+          <CardContent className="p-8 text-center">
+            <h3 className="text-2xl font-bold mb-4 text-green-800">
+              Prêt à transformer ta relation avec Python ?
+            </h3>
+            <p className="text-green-700 mb-6 text-lg">
+              Rejoins les centaines d'étudiants qui ont déjà pris de l'avance grâce à cette formation.
+            </p>
+            <Link to="/formation/python-fondamentaux">
+              <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg">
+                <Code className="h-5 w-5 mr-2" />
+                Commencer maintenant
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+};
+
+export default PourquoiPythonPrepaECGPage;
