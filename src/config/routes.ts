@@ -70,6 +70,9 @@ const PrepaChatbotGeneratorPage = lazy(() => import('../pages/generator/PrepaCha
 const SchoolProfileGeneratorPage = lazy(() => import('../pages/generator/SchoolProfileGeneratorPage'));
 const ThemeGrammarGeneratorPage = lazy(() => import('../pages/generator/ThemeGrammarGeneratorPage'));
 
+// Teacher pages
+const TeacherDashboardPage = lazy(() => import('../pages/teacher/TeacherDashboardPage'));
+
 export interface RouteConfig {
   path: string;
   component: ComponentType<any>;
@@ -100,6 +103,9 @@ export const routes: RouteConfig[] = [
   
   // Protected pages
   { path: '/dashboard', component: DashboardPage, title: 'Tableau de bord', protected: true },
+  
+  // Teacher pages
+  { path: '/prof', component: TeacherDashboardPage, title: 'Interface Professeur', protected: true },
   
   // Formation pages
   { path: '/formation/anglais', component: FormationAnglaisPage, title: 'Formation Anglais' },

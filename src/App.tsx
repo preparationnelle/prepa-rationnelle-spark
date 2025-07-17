@@ -5,6 +5,7 @@ import { AuthProvider } from './context/AuthContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoute from './components/ProtectedRoute';
+import TeacherProtectedRoute from './components/teacher/TeacherProtectedRoute';
 import { ProgressProvider } from './context/ProgressContext';
 import { routes } from './config/routes';
 import { useRouteValidation } from './hooks/useRouteValidation';
@@ -32,13 +33,26 @@ function App() {
               <Routes>
                 {routes.map((route) => {
                   const Component = route.component;
-                  const element = route.protected ? (
-                    <ProtectedRoute>
-                      <Component />
-                    </ProtectedRoute>
-                  ) : (
-                    <Component />
-                  );
+                  let element;
+                  
+                  if (route.path.startsWith('/prof')) {
+                    // Teacher routes require professor role
+                    element = (
+                      <TeacherProtectedRoute>
+                        <Component />
+                      </TeacherProtectedRoute>
+                    );
+                  } else if (route.protected) {
+                    // Regular protected routes
+                    element = (
+                      <ProtectedRoute>
+                        <Component />
+                      </ProtectedRoute>
+                    );
+                  } else {
+                    // Public routes
+                    element = <Component />;
+                  }
                   
                   return (
                     <Route 
