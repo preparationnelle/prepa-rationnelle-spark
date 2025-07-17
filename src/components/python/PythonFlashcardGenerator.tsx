@@ -180,6 +180,18 @@ const PythonFlashcardGenerator = () => {
   const currentCard = flashcards[currentIndex];
   const progress = ((currentIndex + 1) / flashcards.length) * 100;
 
+  // Si pas de carte actuelle, ne pas rendre le composant
+  if (!currentCard) {
+    return (
+      <div className="flex items-center justify-center p-8">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+          <p>Chargement des flashcards...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <TooltipProvider>
       <div className="max-w-2xl mx-auto space-y-6">
