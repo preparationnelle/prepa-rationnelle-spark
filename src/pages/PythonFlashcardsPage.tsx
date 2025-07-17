@@ -2,167 +2,408 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Link } from 'react-router-dom';
-import { Code, Brain, Target, Home, ChevronRight, ArrowLeft, ArrowRight, RotateCw } from 'lucide-react';
-import PythonNavigationTabs from '@/components/formation/PythonNavigationTabs';
+import { ArrowLeft, Brain, Target, Code, Home, ChevronRight, RotateCcw, ChevronLeft, Play, Pause, Shuffle } from 'lucide-react';
 
-// EXEMPLE de données flashcards – à remplacer par tes vraies data
-const FLASHCARDS = [
-  { question: 'Comment afficher un texte à l’écran ?', answer: 'print("Hello world")' },
-  { question: 'Comment faire une boucle de 0 à 4 ?', answer: 'for i in range(5):' },
-  { question: 'Comment importer numpy ?', answer: 'import numpy as np' },
-  { question: 'Comment créer une liste ?', answer: 'ma_liste = [1, 2, 3]' },
-  // ... à compléter avec tes vraies 54 commandes
+// Données d'exemple pour les flashcards Python
+const pythonCommands = [
+  {
+    id: 1,
+    category: "Imports",
+    command: "import numpy as np",
+    description: "Importe la bibliothèque NumPy avec l'alias 'np'",
+    example: "import numpy as np\narr = np.array([1, 2, 3])"
+  },
+  {
+    id: 2,
+    category: "Imports",
+    command: "import pandas as pd",
+    description: "Importe la bibliothèque Pandas avec l'alias 'pd'",
+    example: "import pandas as pd\ndf = pd.DataFrame({'A': [1, 2, 3]})"
+  },
+  {
+    id: 3,
+    category: "Matrices",
+    command: "np.array()",
+    description: "Crée un tableau NumPy à partir d'une liste",
+    example: "arr = np.array([1, 2, 3, 4])\nprint(arr)"
+  },
+  {
+    id: 4,
+    category: "Matrices",
+    command: "np.zeros()",
+    description: "Crée un tableau rempli de zéros",
+    example: "zeros = np.zeros((3, 4))\nprint(zeros)"
+  },
+  {
+    id: 5,
+    category: "Graphiques",
+    command: "plt.plot()",
+    description: "Crée un graphique linéaire",
+    example: "import matplotlib.pyplot as plt\nplt.plot([1, 2, 3], [4, 5, 6])\nplt.show()"
+  }
 ];
 
-// FLASHCARD GENERATOR avec navigation clavier
-function FlashcardViewer() {
-  const [index, setIndex] = useState(0);
+const PythonFlashcardGenerator = () => {
+  const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [isAutoPlay, setIsAutoPlay] = useState(false);
+  const [shuffledCards, setShuffledCards] = useState(pythonCommands);
 
-  const goPrev = useCallback(() => {
-    setIndex((prev) => (prev > 0 ? prev - 1 : FLASHCARDS.length - 1));
-    setIsFlipped(false);
-  }, []);
-  const goNext = useCallback(() => {
-    setIndex((prev) => (prev + 1) % FLASHCARDS.length);
-    setIsFlipped(false);
-  }, []);
-  const flip = useCallback(() => setIsFlipped((v) => !v), []);
+  // Gestion du clavier
+  const handleKeyPress = useCallback((event) => {
+    switch(event.key) {
+      case 'Enter':
+      case ' ':
+        event.preventDefault();
+        setIsFlipped(!isFlipped);
+        break;
+      case 'ArrowRight':
+        event.preventDefault();
+        goToNext();
+        break;
+      case 'ArrowLeft':
+        event.preventDefault();
+        goToPrevious();
+        break;
+      case 'r':
+      case 'R':
+        event.preventDefault();
+        shuffleCards();
+        break;
+    }
+  }, [isFlipped]);
 
   useEffect(() => {
-    const handleKey = (e) => {
-      if (e.key === 'ArrowRight') goNext();
-      else if (e.key === 'ArrowLeft') goPrev();
-      else if (e.key === 'Enter' || e.key === ' ') flip();
+    document.addEventListener('keydown', handleKeyPress);
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
     };
-    window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
-  }, [goNext, goPrev, flip]);
+  }, [handleKeyPress]);
+
+  // Auto-play functionality
+  useEffect(() => {
+    let interval;
+    if (isAutoPlay) {
+      interval = setInterval(() => {
+        setCurrentCardIndex((prev) => (prev + 1) % shuffledCards.length);
+        setIsFlipped(false);
+      }, 3000);
+    }
+    return () => clearInterval(interval);
+  }, [isAutoPlay, shuffledCards.length]);
+
+  const goToNext = () => {
+    setCurrentCardIndex((prev) => (prev + 1) % shuffledCards.length);
+    setIsFlipped(false);
+  };
+
+  const goToPrevious = () => {
+    setCurrentCardIndex((prev) => (prev - 1 + shuffledCards.length) % shuffledCards.length);
+    setIsFlipped(false);
+  };
+
+  const shuffleCards = () => {
+    const shuffled = [...pythonCommands].sort(() => Math.random() - 0.5);
+    setShuffledCards(shuffled);
+    setCurrentCardIndex(0);
+    setIsFlipped(false);
+  };
+
+  const currentCard = shuffledCards[currentCardIndex];
 
   return (
-    <div className="flex flex-col items-center gap-6 mt-8">
-      <div
-        tabIndex={0}
-        aria-label="Flashcard"
-        className={`relative select-none bg-white/80 backdrop-blur shadow-2xl rounded-3xl w-full max-w-xl h-64 flex items-center justify-center cursor-pointer transition-all duration-500 border-4 ${isFlipped ? 'rotate-y-180 border-purple-300' : 'border-blue-200 hover:border-blue-400'}`}
-        style={{ perspective: 1200 }}
-        onClick={flip}
-      >
-        <div className={`absolute inset-0 flex items-center justify-center p-8 text-2xl font-semibold transition-transform duration-500 ${isFlipped ? 'opacity-0' : 'opacity-100'}`}>
-          <span className="text-blue-900">{FLASHCARDS[index].question}</span>
+    <div className="max-w-4xl mx-auto">
+      {/* Contrôles */}
+      <div className="flex flex-wrap items-center justify-between mb-6 p-4 bg-muted/50 rounded-lg border">
+        <div className="flex items-center gap-2 mb-2 sm:mb-0">
+          <Badge variant="secondary" className="text-sm">
+            {currentCardIndex + 1} / {shuffledCards.length}
+          </Badge>
+          <Badge variant="outline" className="text-sm">
+            {currentCard.category}
+          </Badge>
         </div>
-        <div className={`absolute inset-0 flex items-center justify-center p-8 text-2xl font-semibold transition-transform duration-500 ${isFlipped ? 'opacity-100 rotate-y-180' : 'opacity-0'}`}>
-          <span className="text-green-800">{FLASHCARDS[index].answer}</span>
+        
+        <div className="flex items-center gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={shuffleCards}
+            className="flex items-center gap-1"
+          >
+            <Shuffle className="h-3 w-3" />
+            Mélanger
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setIsAutoPlay(!isAutoPlay)}
+            className="flex items-center gap-1"
+          >
+            {isAutoPlay ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
+            {isAutoPlay ? 'Pause' : 'Auto'}
+          </Button>
         </div>
       </div>
-      <div className="flex gap-4 justify-center items-center mt-2">
-        <Button variant="outline" size="icon" aria-label="Précédent" onClick={goPrev}>
-          <ArrowLeft />
+
+      {/* Flashcard */}
+      <div className="relative mb-6">
+        <div 
+          className={`relative w-full h-96 cursor-pointer transition-all duration-700 transform-style-preserve-3d ${
+            isFlipped ? 'rotate-y-180' : ''
+          }`}
+          onClick={() => setIsFlipped(!isFlipped)}
+          style={{ transformStyle: 'preserve-3d' }}
+        >
+          {/* Face avant */}
+          <Card className={`absolute inset-0 w-full h-full backface-hidden border-2 transition-all duration-300 ${
+            isFlipped ? 'opacity-0' : 'opacity-100 hover:border-blue-300 hover:shadow-lg'
+          }`}>
+            <CardHeader className="text-center pb-4">
+              <CardTitle className="text-2xl font-bold text-blue-600 mb-2">
+                Commande Python
+              </CardTitle>
+              <p className="text-sm text-muted-foreground">
+                Cliquez ou appuyez sur Entrée pour voir la réponse
+              </p>
+            </CardHeader>
+            <CardContent className="flex-1 flex items-center justify-center">
+              <div className="text-center">
+                <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-6 mb-4 border-2 border-dashed border-gray-300 dark:border-gray-600">
+                  <code className="text-2xl font-mono font-bold text-green-600 dark:text-green-400">
+                    {currentCard.command}
+                  </code>
+                </div>
+                <p className="text-lg text-muted-foreground">
+                  Que fait cette commande ?
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Face arrière */}
+          <Card className={`absolute inset-0 w-full h-full backface-hidden border-2 transition-all duration-300 ${
+            isFlipped ? 'opacity-100 border-green-300 shadow-lg' : 'opacity-0'
+          }`} style={{ transform: 'rotateY(180deg) scaleX(-1)' }}>
+            <CardHeader className="text-center pb-4">
+              <CardTitle className="text-2xl font-bold text-green-600 mb-2">
+                Réponse
+              </CardTitle>
+              <Badge variant="secondary" className="text-sm">
+                {currentCard.category}
+              </Badge>
+            </CardHeader>
+            <CardContent className="flex-1 flex items-center justify-center">
+              <div className="text-center space-y-4">
+                <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 mb-4">
+                  <code className="text-lg font-mono font-bold text-green-600 dark:text-green-400">
+                    {currentCard.command}
+                  </code>
+                </div>
+                <p className="text-lg font-medium mb-4">
+                  {currentCard.description}
+                </p>
+                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
+                  <p className="text-sm font-semibold text-blue-800 dark:text-blue-200 mb-2">
+                    Exemple d'utilisation :
+                  </p>
+                  <pre className="text-sm text-left bg-gray-900 text-green-400 p-3 rounded overflow-x-auto">
+                    <code>{currentCard.example}</code>
+                  </pre>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      {/* Navigation */}
+      <div className="flex items-center justify-between mb-6">
+        <Button
+          variant="outline"
+          onClick={goToPrevious}
+          className="flex items-center gap-2"
+        >
+          <ChevronLeft className="h-4 w-4" />
+          Précédent
         </Button>
-        <span className="font-bold text-lg">
-          {index + 1} / {FLASHCARDS.length}
-        </span>
-        <Button variant="outline" size="icon" aria-label="Suivant" onClick={goNext}>
-          <ArrowRight />
-        </Button>
-        <Button variant="ghost" size="icon" aria-label="Retourner la carte" onClick={flip}>
-          <RotateCw />
+        
+        <div className="flex items-center gap-2">
+          <Button
+            variant="outline"
+            onClick={() => setIsFlipped(!isFlipped)}
+            className="flex items-center gap-2"
+          >
+            <RotateCcw className="h-4 w-4" />
+            Retourner
+          </Button>
+        </div>
+        
+        <Button
+          variant="outline"
+          onClick={goToNext}
+          className="flex items-center gap-2"
+        >
+          Suivant
+          <ChevronRight className="h-4 w-4" />
         </Button>
       </div>
-      <p className="text-gray-500 text-sm mt-2">Astuce : <kbd className="px-2 py-1 rounded bg-gray-100 border text-xs">⏎</kbd> ou <kbd className="px-2 py-1 rounded bg-gray-100 border text-xs">Espace</kbd> = retourner &nbsp; | &nbsp; <kbd className="px-2 py-1 rounded bg-gray-100 border text-xs">←</kbd> / <kbd className="px-2 py-1 rounded bg-gray-100 border text-xs">→</kbd> = naviguer</p>
+
+      {/* Raccourcis clavier */}
+      <Card className="bg-muted/30 border-dashed">
+        <CardContent className="p-4">
+          <h4 className="font-semibold mb-3 text-center">Raccourcis clavier</h4>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+            <div className="flex items-center gap-2">
+              <Badge variant="outline" className="text-xs">Entrée</Badge>
+              <span className="text-muted-foreground">Retourner</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Badge variant="outline" className="text-xs">→</Badge>
+              <span className="text-muted-foreground">Suivant</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Badge variant="outline" className="text-xs">←</Badge>
+              <span className="text-muted-foreground">Précédent</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Badge variant="outline" className="text-xs">R</Badge>
+              <span className="text-muted-foreground">Mélanger</span>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
-}
+};
 
-// PAGE PRINCIPALE FLASHCARDS
-const PythonFlashcardsPage = () => {
-  useEffect(() => {
-    // Par exemple : trackPageVisit('python-flashcards');
-  }, []);
+const PythonNavigationTabs = ({ className }) => {
+  const tabs = [
+    { id: 'flashcards', label: 'Flashcards', active: true },
+    { id: 'reference', label: 'Référence complète' },
+    { id: 'quiz', label: 'Quiz interactif' },
+    { id: 'progression', label: 'Ma progression' }
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 via-white to-purple-100">
-      {/* Breadcrumb */}
-      <nav className="sticky top-0 z-40 bg-background/80 backdrop-blur border-b border-border/40">
+    <div className={`flex flex-wrap justify-center gap-2 ${className}`}>
+      {tabs.map((tab) => (
+        <Button
+          key={tab.id}
+          variant={tab.active ? "default" : "outline"}
+          className="flex items-center gap-2"
+        >
+          {tab.label}
+        </Button>
+      ))}
+    </div>
+  );
+};
+
+const PythonFlashcardsPage = () => {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+      {/* Sticky Breadcrumb */}
+      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <Home className="h-3 w-3" /> <span>Accueil</span>
-            </Link>
+            <div className="flex items-center gap-1 hover:text-foreground transition-colors cursor-pointer">
+              <Home className="h-3 w-3" />
+              <span>Accueil</span>
+            </div>
             <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formation" className="hover:text-foreground transition-colors">Formation</Link>
+            <div className="hover:text-foreground transition-colors cursor-pointer">
+              Formation
+            </div>
             <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Flashcards Python ECG</span>
+            <span className="text-foreground font-medium">Formation Python ECG</span>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto py-12 px-4">
-        {/* Hero */}
-        <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl shadow-xl py-12 mb-12 text-center border border-blue-100">
-          <h1 className="text-5xl font-extrabold text-blue-900 mb-2 tracking-tight">
-            <Badge variant="outline" className="bg-yellow-50 text-yellow-700 px-4 py-2 rounded-xl text-lg mr-2">Nouveau</Badge>
-            Flashcards Python ECG
+      <div className="container mx-auto py-8 px-4">
+        {/* Header amélioré */}
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center gap-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-full text-sm font-medium mb-4">
+            <Code className="h-4 w-4" />
+            Formation Python ECG
+          </div>
+          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Flashcards Python
           </h1>
-          <p className="text-2xl text-blue-600 mb-6">Entraîne-toi sur les <span className="font-bold text-blue-800">54 commandes-clés</span> du programme ECG et rafle les points faciles au concours.</p>
+          <p className="text-xl text-muted-foreground mb-6 max-w-2xl mx-auto">
+            Maîtrisez les 54 commandes essentielles avec nos flashcards interactives. 
+            Utilisez votre clavier pour naviguer rapidement !
+          </p>
         </div>
 
         {/* Navigation Tabs */}
-        <PythonNavigationTabs className="mb-10" />
+        <PythonNavigationTabs className="mb-8" />
 
-        {/* Flashcards */}
-        <FlashcardViewer />
+        {/* Flashcard Generator */}
+        <PythonFlashcardGenerator />
 
-        {/* Stats Section */}
-        <div className="mt-16 mb-12">
-          <h2 className="text-2xl font-bold text-center mb-8 text-blue-800">Pourquoi bosser les flashcards ?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="shadow-lg hover:shadow-2xl transition-all border-2 border-blue-100">
+        {/* Stats Section améliorée */}
+        <div className="mt-16 mb-8">
+          <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent dark:from-gray-200 dark:to-gray-400">
+            Pourquoi ces flashcards ?
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="hover:shadow-lg transition-all duration-300 border-2 hover:border-blue-300 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20">
               <CardContent className="p-6 text-center">
-                <div className="flex items-center justify-center gap-2 mb-3">
-                  <Code className="h-5 w-5 text-blue-600" />
-                  <span className="font-semibold">54 Commandes</span>
+                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Code className="h-6 w-6 text-white" />
                 </div>
-                <p className="text-sm text-muted-foreground">Toutes les commandes du programme ECG</p>
+                <h3 className="font-bold text-lg mb-2">54 Commandes</h3>
+                <p className="text-sm text-muted-foreground">
+                  Toutes les commandes Python au programme ECG, organisées par catégories
+                </p>
               </CardContent>
             </Card>
-            <Card className="shadow-lg hover:shadow-2xl transition-all border-2 border-green-100">
+            
+            <Card className="hover:shadow-lg transition-all duration-300 border-2 hover:border-green-300 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20">
               <CardContent className="p-6 text-center">
-                <div className="flex items-center justify-center gap-2 mb-3">
-                  <Brain className="h-5 w-5 text-green-600" />
-                  <span className="font-semibold">9 Catégories</span>
+                <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Brain className="h-6 w-6 text-white" />
                 </div>
-                <p className="text-sm text-muted-foreground">Imports, matrices, graphiques...</p>
+                <h3 className="font-bold text-lg mb-2">9 Catégories</h3>
+                <p className="text-sm text-muted-foreground">
+                  Imports, matrices, graphiques, statistiques et bien plus
+                </p>
               </CardContent>
             </Card>
-            <Card className="shadow-lg hover:shadow-2xl transition-all border-2 border-orange-100">
+            
+            <Card className="hover:shadow-lg transition-all duration-300 border-2 hover:border-orange-300 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20">
               <CardContent className="p-6 text-center">
-                <div className="flex items-center justify-center gap-2 mb-3">
-                  <Target className="h-5 w-5 text-orange-600" />
-                  <span className="font-semibold">+3 à 5 pts</span>
+                <div className="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Target className="h-6 w-6 text-white" />
                 </div>
-                <p className="text-sm text-muted-foreground">Des points sûrs aux concours</p>
+                <h3 className="font-bold text-lg mb-2">+3 à 5 points</h3>
+                <p className="text-sm text-muted-foreground">
+                  Points sûrs aux concours avec une préparation optimale
+                </p>
               </CardContent>
             </Card>
           </div>
         </div>
 
-        {/* Call to Action */}
-        <div className="mt-10 text-center space-y-4">
-          <p className="text-muted-foreground text-lg">Envie d'aller plus loin ?</p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link to="/python-reference">
-              <Button variant="outline" className="flex items-center gap-2">
+        {/* Call to Action amélioré */}
+        <div className="mt-16 text-center">
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white mb-8">
+            <h3 className="text-2xl font-bold mb-4">Prêt à aller plus loin ?</h3>
+            <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+              Découvrez notre référence complète des commandes Python et notre coaching personnalisé
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Button variant="secondary" className="flex items-center gap-2 bg-white text-blue-600 hover:bg-blue-50">
                 <Code className="h-4 w-4" />
-                Voir toutes les commandes
+                Référence complète
               </Button>
-            </Link>
-            <Link to="/offre/coaching-python">
-              <Button className="bg-orange-600 hover:bg-orange-700 text-white text-base">
-                Coaching Python individuel
+              <Button variant="outline" className="flex items-center gap-2 border-white text-white hover:bg-white hover:text-blue-600">
+                <Target className="h-4 w-4" />
+                Coaching individuel
               </Button>
-            </Link>
+            </div>
           </div>
         </div>
       </div>
