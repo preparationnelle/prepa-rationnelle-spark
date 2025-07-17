@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -20,6 +20,28 @@ const PythonFlashcardGenerator = () => {
   const [showAnswer, setShowAnswer] = useState(false);
   const [score, setScore] = useState({ correct: 0, total: 0 });
   const [isFinished, setIsFinished] = useState(false);
+
+  // Gestion du clavier
+  const handleKeyPress = useCallback((event: KeyboardEvent) => {
+    if (isFinished) return;
+    
+    switch(event.key) {
+      case 'Enter':
+      case ' ':
+        event.preventDefault();
+        if (!showAnswer) {
+          handleShowAnswer();
+        }
+        break;
+    }
+  }, [showAnswer, isFinished]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyPress);
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [handleKeyPress]);
 
   useEffect(() => {
     // Créer toutes les flashcards à partir des données
@@ -165,7 +187,7 @@ const PythonFlashcardGenerator = () => {
                       <p><strong>Comment ça marche ?</strong></p>
                       <p>1. Une commande Python s'affiche</p>
                       <p>2. Essayez de deviner ce qu'elle fait</p>
-                      <p>3. Cliquez pour révéler la réponse</p>
+                      <p>3. Appuyez sur Entrée ou cliquez pour révéler la réponse</p>
                       <p>4. Indiquez si vous avez trouvé ou non</p>
                       <p>5. Obtenez votre score final sur 54 commandes</p>
                     </div>
