@@ -8,6 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import { ProgressProvider } from './context/ProgressContext';
 import { routes } from './config/routes';
 import { useRouteValidation } from './hooks/useRouteValidation';
+import ChatWidget from './components/chat/ChatWidget';
 
 // Loading component for lazy-loaded pages
 const PageLoader = () => (
@@ -49,6 +50,7 @@ function App() {
                 })}
               </Routes>
             </Suspense>
+            <ChatWidget />
           </div>
         </Router>
       </ProgressProvider>
