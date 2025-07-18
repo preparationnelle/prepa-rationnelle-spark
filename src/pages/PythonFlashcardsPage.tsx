@@ -1,24 +1,61 @@
 import React from 'react';
+import Link from 'next/link'; // ou 'react-router-dom' selon ton stack
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Code, Home, ChevronRight, Brain, Target } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Code, Home, ChevronRight, Brain, Target, FileText, BookOpen, ListChecks } from 'lucide-react';
 import PythonFlashcardGenerator from '@/components/python/PythonFlashcardGenerator';
+
+// Helper pour l'onglet actif
+const MENU_ITEMS = [
+  { label: "Méthodo / Conseil", icon: <BookOpen className="h-5 w-5" />, href: "/formation/methode" },
+  { label: "Cours", icon: <BookOpen className="h-5 w-5" />, href: "/formation/cours" },
+  { label: "Exercices", icon: <ListChecks className="h-5 w-5" />, href: "/formation/exercices" },
+  { label: "Flashcards Python", icon: <Code className="h-5 w-5" />, href: "/formation/flashcards", active: true }, // On est sur cette page !
+  { label: "Référence Python", icon: <FileText className="h-5 w-5" />, href: "/formation/reference" },
+];
+
 const PythonFlashcardsPage = () => {
-  return <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
-      {/* Sticky Breadcrumb */}
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+      
+      {/* Breadcrumb */}
       <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40">
-        <div className="container mx-auto px-4 py-2">
+        <div className="container mx-auto px-4 py-2 flex flex-col gap-3">
+          {/* Fil d'Ariane */}
           <div className="flex items-center text-xs text-muted-foreground">
-            <div className="flex items-center gap-1 hover:text-foreground transition-colors cursor-pointer">
+            <Link href="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
-            </div>
+            </Link>
             <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <div className="hover:text-foreground transition-colors cursor-pointer">
+            <Link href="/formation" className="hover:text-foreground transition-colors">
               Formation
-            </div>
+            </Link>
             <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Formation Python ECG</span>
+            <span className="text-foreground font-semibold">Flashcards Python</span>
+          </div>
+
+          {/* MENU HORIZONTAL */}
+          <div className="flex flex-wrap rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-900/80 shadow-sm mt-1">
+            {MENU_ITEMS.map((item, idx) => (
+              <Link key={item.label} href={item.href}
+                className={`
+                  flex items-center gap-2 px-5 py-3 text-base font-medium
+                  transition-colors
+                  ${item.active
+                    ? "bg-white dark:bg-gray-950 text-foreground shadow-none"
+                    : "text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800"
+                  }
+                `}
+                style={{
+                  borderRight: idx !== MENU_ITEMS.length - 1 ? '1px solid #eee' : undefined
+                }}
+                aria-current={item.active ? "page" : undefined}
+              >
+                {item.icon}
+                {item.label}
+              </Link>
+            ))}
           </div>
         </div>
       </nav>
@@ -26,9 +63,9 @@ const PythonFlashcardsPage = () => {
       <div className="container mx-auto py-8 px-4">
         {/* Header */}
         <div className="text-center mb-8">
-          
-          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Flashcards Python ECG
-        </h1>
+          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Flashcards Python ECG
+          </h1>
           <p className="text-xl text-muted-foreground mb-6 max-w-2xl mx-auto">
             Maîtrisez les 54 commandes essentielles avec nos flashcards interactives !
           </p>
@@ -54,7 +91,6 @@ const PythonFlashcardsPage = () => {
                 </p>
               </CardContent>
             </Card>
-            
             <Card className="hover:shadow-lg transition-all duration-300 border-2 hover:border-green-300 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20">
               <CardContent className="p-6 text-center">
                 <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -66,7 +102,6 @@ const PythonFlashcardsPage = () => {
                 </p>
               </CardContent>
             </Card>
-            
             <Card className="hover:shadow-lg transition-all duration-300 border-2 hover:border-orange-300 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20">
               <CardContent className="p-6 text-center">
                 <div className="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -97,6 +132,8 @@ const PythonFlashcardsPage = () => {
           </div>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default PythonFlashcardsPage;
