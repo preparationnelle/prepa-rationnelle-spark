@@ -82,9 +82,7 @@ const FormationPage = () => {
       <div className="container mx-auto py-8 px-4">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4">
-            Formation Python ECG
-          </h1>
+          <h1 className="text-4xl font-bold mb-4">Cours Python ECG</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-6">Formation complète en Python pour les concours </p>
         </div>
 
