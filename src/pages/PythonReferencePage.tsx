@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -8,28 +7,20 @@ import { pythonCommands } from '@/data/pythonCommands';
 import SearchBar from '@/components/python/SearchBar';
 import CommandSection from '@/components/python/CommandSection';
 import PythonNavigationTabs from '@/components/formation/PythonNavigationTabs';
-
 const PythonReferencePage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [copiedCommand, setCopiedCommand] = useState<string | null>(null);
-
   const copyToClipboard = (command: string) => {
     navigator.clipboard.writeText(command);
     setCopiedCommand(command);
     setTimeout(() => setCopiedCommand(null), 2000);
   };
-
   const filteredCommands = Object.entries(pythonCommands).map(([key, section]) => ({
     ...section,
     key,
-    commands: section.commands.filter(cmd => 
-      cmd.command.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      cmd.description.toLowerCase().includes(searchTerm.toLowerCase())
-    )
+    commands: section.commands.filter(cmd => cmd.command.toLowerCase().includes(searchTerm.toLowerCase()) || cmd.description.toLowerCase().includes(searchTerm.toLowerCase()))
   })).filter(section => section.commands.length > 0);
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       {/* Sticky Breadcrumb */}
       <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -51,9 +42,7 @@ const PythonReferencePage = () => {
       <div className="container mx-auto py-8 px-4">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4">
-            Référence Python ECG
-          </h1>
+          <h1 className="text-4xl font-bold mb-4">Références Python ECG</h1>
           <p className="text-xl text-muted-foreground mb-6">
             Toutes les 54 commandes Python au programme de prépa ECG
           </p>
@@ -83,28 +72,13 @@ const PythonReferencePage = () => {
 
           <TabsContent value="all">
             <div className="space-y-8">
-              {filteredCommands.map((section) => (
-                <CommandSection
-                  key={section.key}
-                  title={section.title}
-                  commands={section.commands}
-                  copiedCommand={copiedCommand}
-                  onCopy={copyToClipboard}
-                />
-              ))}
+              {filteredCommands.map(section => <CommandSection key={section.key} title={section.title} commands={section.commands} copiedCommand={copiedCommand} onCopy={copyToClipboard} />)}
             </div>
           </TabsContent>
 
-          {Object.entries(pythonCommands).map(([key, section]) => (
-            <TabsContent key={key} value={key}>
-              <CommandSection
-                title={section.title}
-                commands={section.commands}
-                copiedCommand={copiedCommand}
-                onCopy={copyToClipboard}
-              />
-            </TabsContent>
-          ))}
+          {Object.entries(pythonCommands).map(([key, section]) => <TabsContent key={key} value={key}>
+              <CommandSection title={section.title} commands={section.commands} copiedCommand={copiedCommand} onCopy={copyToClipboard} />
+            </TabsContent>)}
         </Tabs>
 
         {/* Call to action */}
@@ -129,8 +103,6 @@ const PythonReferencePage = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default PythonReferencePage;
