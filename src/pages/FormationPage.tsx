@@ -85,9 +85,7 @@ const FormationPage = () => {
           <h1 className="text-4xl font-bold mb-4">
             Formation Python ECG
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
-            Formation complète en Python pour les concours des Grandes Écoles de Commerce
-          </p>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-6">Formation complète en Python pour les concours </p>
         </div>
 
         {/* Navigation Tabs */}
