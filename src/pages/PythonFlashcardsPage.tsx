@@ -1,15 +1,15 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Home, ChevronRight, Menu, Code, Brain, Target } from 'lucide-react';
+import { Home, ChevronRight, Menu, Code, Brain, Target, RefreshCw } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import PythonFlashcardGenerator from '@/components/python/PythonFlashcardGenerator';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Badge } from '@/components/ui/badge';
 
 const PythonFlashcardsPage = () => {
   return (
@@ -68,6 +68,45 @@ const PythonFlashcardsPage = () => {
             Maîtrisez les 54 commandes essentielles avec nos flashcards interactives !
           </p>
 
+          {/* Menu déroulant pour la navigation (version desktop) */}
+          <div className="flex justify-center mb-8">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" className="gap-2">
+                  <Menu className="h-4 w-4" />
+                  Navigation
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56">
+                <DropdownMenuItem asChild>
+                  <Link to="/methodo" className="w-full">
+                    Méthodo/Conseil
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/cours" className="w-full">
+                    Cours
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/exercices" className="w-full">
+                    Exercices
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild className="bg-accent">
+                  <Link to="/flashcards" className="w-full font-medium">
+                    Flashcards Python
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/reference" className="w-full">
+                    Référence Python
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+
           {/* Navigation horizontale (version desktop) */}
           <div className="hidden md:flex justify-center border-b">
             <nav className="flex gap-1 p-1 bg-muted rounded-lg">
@@ -101,10 +140,10 @@ const PythonFlashcardsPage = () => {
           </CardHeader>
           <CardContent className="text-center space-y-4">
             <div className="space-y-2">
-              <Badge variant="secondary">Importation des modules</Badge>
+              <Badge variant="secondary">Création de vecteurs</Badge>
               <p className="text-lg">Que fait cette commande Python ?</p>
               <code className="block bg-gray-100 dark:bg-gray-800 p-2 rounded-md text-sm">
-                import matplotlib.pyplot as plt
+                np.arange(a,b,r)
               </code>
             </div>
             <Button className="gap-2">
