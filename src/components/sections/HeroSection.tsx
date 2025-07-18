@@ -1,20 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { TrendingUp, Zap } from 'lucide-react';
+import { Zap } from 'lucide-react';
 export const HeroSection = () => {
   return <section className="min-h-[78vh] w-full flex flex-col justify-center items-center bg-gradient-to-br from-[#fef7e1] to-[#F36C00]/10 py-14 px-2">
       <div className="w-full max-w-[1600px] flex flex-col items-center">
-        {/* Top links, spread and larger */}
+        {/* Top links */}
         <div className="mb-12 flex flex-col gap-4 items-center">
-          <div className="flex items-center">
-            <TrendingUp className="h-7 w-7 text-[#F36C00] mr-3" />
-            <Link to="/methodologie/entretiens-personnalite" className="text-2xl md:text-2xl font-bold text-[#F36C00] uppercase tracking-widest hover:underline" style={{
-            letterSpacing: 2
-          }}>
-              PRÉPAREZ VOTRE ENTRETIEN
-            </Link>
-          </div>
           <div className="flex items-center">
             <Zap className="h-7 w-7 text-[#F36C00] mr-3" />
             <Link to="/generator" className="text-2xl md:text-2xl font-bold text-[#F36C00] uppercase tracking-widest hover:underline" style={{
