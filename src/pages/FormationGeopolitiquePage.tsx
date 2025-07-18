@@ -4,11 +4,20 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { Globe, MapPin, TrendingUp, FileText, Users } from 'lucide-react';
+import { Globe, ArrowLeft, MapPin, TrendingUp, FileText, Users } from 'lucide-react';
 
 const FormationGeopolitiquePage = () => {
   return (
     <div className="container mx-auto py-8 px-4">
+      <div className="mb-6">
+        <Link to="/formation">
+          <Button variant="outline" className="mb-4">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Retour aux formations
+          </Button>
+        </Link>
+      </div>
+
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold mb-4 flex items-center justify-center gap-3">
           <div className="p-3 rounded-lg bg-orange-500 text-white">

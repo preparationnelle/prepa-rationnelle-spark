@@ -95,39 +95,6 @@ export type Database = {
         }
         Relationships: []
       }
-      content_versions: {
-        Row: {
-          changelog: string | null
-          content_data: Json
-          content_id: string
-          content_type: string
-          created_at: string
-          created_by: string
-          id: string
-          version_number: number
-        }
-        Insert: {
-          changelog?: string | null
-          content_data: Json
-          content_id: string
-          content_type: string
-          created_at?: string
-          created_by: string
-          id?: string
-          version_number: number
-        }
-        Update: {
-          changelog?: string | null
-          content_data?: Json
-          content_id?: string
-          content_type?: string
-          created_at?: string
-          created_by?: string
-          id?: string
-          version_number?: number
-        }
-        Relationships: []
-      }
       course_purchases: {
         Row: {
           access_code_id: string | null
@@ -171,125 +138,6 @@ export type Database = {
             columns: ["access_code_id"]
             isOneToOne: false
             referencedRelation: "access_codes"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      exercise_templates: {
-        Row: {
-          concepts: string[] | null
-          created_at: string
-          created_by: string
-          description: string | null
-          difficulty_range: number[] | null
-          example_values: Json | null
-          id: string
-          is_active: boolean
-          name: string
-          parameters: Json
-          template_latex: string
-          updated_at: string
-        }
-        Insert: {
-          concepts?: string[] | null
-          created_at?: string
-          created_by: string
-          description?: string | null
-          difficulty_range?: number[] | null
-          example_values?: Json | null
-          id?: string
-          is_active?: boolean
-          name: string
-          parameters?: Json
-          template_latex: string
-          updated_at?: string
-        }
-        Update: {
-          concepts?: string[] | null
-          created_at?: string
-          created_by?: string
-          description?: string | null
-          difficulty_range?: number[] | null
-          example_values?: Json | null
-          id?: string
-          is_active?: boolean
-          name?: string
-          parameters?: Json
-          template_latex?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      exercises: {
-        Row: {
-          concepts: string[] | null
-          created_at: string
-          created_by: string
-          description: string | null
-          difficulty_level: number | null
-          estimated_time_minutes: number | null
-          hints: string[] | null
-          id: string
-          image_urls: string[] | null
-          is_active: boolean
-          lesson_id: string | null
-          problem_statement: string
-          problem_statement_latex: string | null
-          solution: string | null
-          solution_latex: string | null
-          tags: string[] | null
-          title: string
-          updated_at: string
-          version: number
-        }
-        Insert: {
-          concepts?: string[] | null
-          created_at?: string
-          created_by: string
-          description?: string | null
-          difficulty_level?: number | null
-          estimated_time_minutes?: number | null
-          hints?: string[] | null
-          id?: string
-          image_urls?: string[] | null
-          is_active?: boolean
-          lesson_id?: string | null
-          problem_statement: string
-          problem_statement_latex?: string | null
-          solution?: string | null
-          solution_latex?: string | null
-          tags?: string[] | null
-          title: string
-          updated_at?: string
-          version?: number
-        }
-        Update: {
-          concepts?: string[] | null
-          created_at?: string
-          created_by?: string
-          description?: string | null
-          difficulty_level?: number | null
-          estimated_time_minutes?: number | null
-          hints?: string[] | null
-          id?: string
-          image_urls?: string[] | null
-          is_active?: boolean
-          lesson_id?: string | null
-          problem_statement?: string
-          problem_statement_latex?: string | null
-          solution?: string | null
-          solution_latex?: string | null
-          tags?: string[] | null
-          title?: string
-          updated_at?: string
-          version?: number
-        }
-        Relationships: [
-          {
-            foreignKeyName: "exercises_lesson_id_fkey"
-            columns: ["lesson_id"]
-            isOneToOne: false
-            referencedRelation: "lessons"
             referencedColumns: ["id"]
           },
         ]
@@ -440,107 +288,6 @@ export type Database = {
         }
         Relationships: []
       }
-      lessons: {
-        Row: {
-          content: string | null
-          content_latex: string | null
-          created_at: string
-          created_by: string
-          description: string | null
-          difficulty_level: number | null
-          duration_minutes: number | null
-          id: string
-          is_active: boolean
-          module_id: string
-          order_index: number
-          prerequisites: string[] | null
-          title: string
-          updated_at: string
-          version: number
-        }
-        Insert: {
-          content?: string | null
-          content_latex?: string | null
-          created_at?: string
-          created_by: string
-          description?: string | null
-          difficulty_level?: number | null
-          duration_minutes?: number | null
-          id?: string
-          is_active?: boolean
-          module_id: string
-          order_index?: number
-          prerequisites?: string[] | null
-          title: string
-          updated_at?: string
-          version?: number
-        }
-        Update: {
-          content?: string | null
-          content_latex?: string | null
-          created_at?: string
-          created_by?: string
-          description?: string | null
-          difficulty_level?: number | null
-          duration_minutes?: number | null
-          id?: string
-          is_active?: boolean
-          module_id?: string
-          order_index?: number
-          prerequisites?: string[] | null
-          title?: string
-          updated_at?: string
-          version?: number
-        }
-        Relationships: [
-          {
-            foreignKeyName: "lessons_module_id_fkey"
-            columns: ["module_id"]
-            isOneToOne: false
-            referencedRelation: "modules"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      modules: {
-        Row: {
-          created_at: string
-          created_by: string
-          description: string | null
-          id: string
-          is_active: boolean
-          order_index: number
-          slug: string
-          title: string
-          updated_at: string
-          version: number
-        }
-        Insert: {
-          created_at?: string
-          created_by: string
-          description?: string | null
-          id?: string
-          is_active?: boolean
-          order_index?: number
-          slug: string
-          title: string
-          updated_at?: string
-          version?: number
-        }
-        Update: {
-          created_at?: string
-          created_by?: string
-          description?: string | null
-          id?: string
-          is_active?: boolean
-          order_index?: number
-          slug?: string
-          title?: string
-          updated_at?: string
-          version?: number
-        }
-        Relationships: []
-      }
       pricing: {
         Row: {
           description: string
@@ -682,33 +429,6 @@ export type Database = {
         }
         Relationships: []
       }
-      teacher_analytics: {
-        Row: {
-          created_at: string
-          date_recorded: string
-          id: string
-          metadata: Json | null
-          metric_name: string
-          metric_value: number | null
-        }
-        Insert: {
-          created_at?: string
-          date_recorded?: string
-          id?: string
-          metadata?: Json | null
-          metric_name: string
-          metric_value?: number | null
-        }
-        Update: {
-          created_at?: string
-          date_recorded?: string
-          id?: string
-          metadata?: Json | null
-          metric_name?: string
-          metric_value?: number | null
-        }
-        Relationships: []
-      }
       user_access_codes: {
         Row: {
           access_code: string
@@ -772,55 +492,15 @@ export type Database = {
         }
         Relationships: []
       }
-      user_roles: {
-        Row: {
-          assigned_at: string
-          assigned_by: string | null
-          created_at: string
-          id: string
-          role: Database["public"]["Enums"]["user_role"]
-          updated_at: string
-          user_id: string
-        }
-        Insert: {
-          assigned_at?: string
-          assigned_by?: string | null
-          created_at?: string
-          id?: string
-          role?: Database["public"]["Enums"]["user_role"]
-          updated_at?: string
-          user_id: string
-        }
-        Update: {
-          assigned_at?: string
-          assigned_by?: string | null
-          created_at?: string
-          id?: string
-          role?: Database["public"]["Enums"]["user_role"]
-          updated_at?: string
-          user_id?: string
-        }
-        Relationships: []
-      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      get_user_role: {
-        Args: { user_id: string }
-        Returns: Database["public"]["Enums"]["user_role"]
-      }
-      has_role: {
-        Args: {
-          user_id: string
-          required_role: Database["public"]["Enums"]["user_role"]
-        }
-        Returns: boolean
-      }
+      [_ in never]: never
     }
     Enums: {
-      user_role: "user" | "prof" | "admin" | "super_admin"
+      [_ in never]: never
     }
     CompositeTypes: {
       [_ in never]: never
@@ -947,8 +627,6 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {
-      user_role: ["user", "prof", "admin", "super_admin"],
-    },
+    Enums: {},
   },
 } as const

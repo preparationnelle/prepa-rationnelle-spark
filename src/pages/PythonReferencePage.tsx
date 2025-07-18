@@ -2,12 +2,11 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowLeft, Home, ChevronRight } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { pythonCommands } from '@/data/pythonCommands';
 import SearchBar from '@/components/python/SearchBar';
 import CommandSection from '@/components/python/CommandSection';
-import PythonNavigationTabs from '@/components/formation/PythonNavigationTabs';
 
 const PythonReferencePage = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -29,40 +28,26 @@ const PythonReferencePage = () => {
   })).filter(section => section.commands.length > 0);
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <Home className="h-3 w-3" />
-              <span>Accueil</span>
-            </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formation" className="hover:text-foreground transition-colors">
-              Formation
-            </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Formation Python ECG</span>
-          </div>
-        </div>
-      </nav>
-
-      <div className="container mx-auto py-8 px-4">
+    <div className="min-h-screen bg-background py-8">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4">
+        <div className="mb-8">
+          <div className="flex items-center gap-4 mb-4">
+            <Link to="/pourquoi-python-prepa-ecg">
+              <Button variant="outline" size="sm" className="flex items-center gap-2">
+                <ArrowLeft className="h-4 w-4" />
+                Retour à l'article Python
+              </Button>
+            </Link>
+          </div>
+          
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
             Référence Python ECG
           </h1>
           <p className="text-xl text-muted-foreground mb-6">
             Toutes les 54 commandes Python au programme de prépa ECG
           </p>
-        </div>
-
-        {/* Navigation Tabs */}
-        <PythonNavigationTabs className="mb-8" />
-        
-        <div className="mb-8">
+          
           <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
         </div>
 

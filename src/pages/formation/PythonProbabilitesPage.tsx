@@ -17,7 +17,6 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
-import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 
 const PythonProbabilitesPage = () => {
   return (
@@ -481,16 +480,6 @@ rd.normal(mean, sigma)   # normale`}
             </div>
           </CardContent>
         </Card>
-
-        {/* Navigation vers exercices */}
-        <ModuleNavigationCards 
-          currentModule={{
-            id: 3,
-            title: "Probabilités",
-            slug: "probabilites",
-            color: "purple"
-          }}
-        />
     </PythonModuleLayout>
   );
 };

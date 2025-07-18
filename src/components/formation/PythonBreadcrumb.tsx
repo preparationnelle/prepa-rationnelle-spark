@@ -17,8 +17,7 @@ const PythonBreadcrumb: React.FC = () => {
   const getBreadcrumbs = (): BreadcrumbItem[] => {
     const items: BreadcrumbItem[] = [
       { label: 'Accueil', href: '/', icon: Home },
-      { label: 'Formation', href: '/formation', icon: BookOpen },
-      { label: 'Formation Python ECG', href: '/formation', icon: Code }
+      { label: 'Formation', href: '/formation', icon: BookOpen }
     ];
 
     // Python specific breadcrumbs
@@ -84,34 +83,32 @@ const PythonBreadcrumb: React.FC = () => {
   const breadcrumbs = getBreadcrumbs();
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40 mb-6">
-      <div className="flex items-center text-xs text-muted-foreground py-2">
-        {breadcrumbs.map((item, index) => (
-          <div key={index} className="flex items-center">
-            {index > 0 && <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />}
+    <nav className="flex items-center text-sm text-muted-foreground mb-6">
+      {breadcrumbs.map((item, index) => (
+        <div key={index} className="flex items-center">
+          {index > 0 && <ChevronRight className="h-4 w-4 text-muted-foreground/50 mx-2" />}
           
-            {item.href && !item.current ? (
-              <Link
-                to={item.href}
-                className="flex items-center gap-1 hover:text-foreground transition-colors"
-              >
-                {item.icon && <item.icon className="h-3 w-3" />}
-                <span>{item.label}</span>
-              </Link>
-            ) : (
-              <span
-                className={cn(
-                  "flex items-center gap-1",
-                  item.current && "text-foreground font-medium"
-                )}
-              >
-                {item.icon && <item.icon className="h-3 w-3" />}
-                <span>{item.label}</span>
-              </span>
-            )}
-          </div>
-        ))}
-      </div>
+          {item.href && !item.current ? (
+            <Link
+              to={item.href}
+              className="flex items-center gap-1.5 hover:text-foreground transition-colors"
+            >
+              {item.icon && <item.icon className="h-4 w-4" />}
+              <span>{item.label}</span>
+            </Link>
+          ) : (
+            <span
+              className={cn(
+                "flex items-center gap-1.5",
+                item.current && "text-foreground font-medium"
+              )}
+            >
+              {item.icon && <item.icon className="h-4 w-4" />}
+              <span>{item.label}</span>
+            </span>
+          )}
+        </div>
+      ))}
     </nav>
   );
 };
