@@ -41,6 +41,7 @@ const PreparationCubePage = lazy(() => import('../pages/offres/PreparationCubePa
 
 // Methodologie pages
 const MethodEntretiensPersonnalitePage = lazy(() => import('../pages/methodologie/MethodEntretiensPersonnalitePage'));
+const StorytellingMethodePage = lazy(() => import('../pages/StorytellingMethodePage'));
 
 // Articles pages
 const MathsEteControlePage = lazy(() => import('../pages/articles/MathsEteControlePage'));
