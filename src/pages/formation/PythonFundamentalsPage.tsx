@@ -1,5 +1,4 @@
 
-import React from 'react';
 import { Badge } from '@/components/ui/badge';
 import { CheckCircle, Target, Lightbulb, Code, Settings } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -8,6 +7,7 @@ import { PythonModuleQuiz } from '@/components/python/PythonModuleQuiz';
 import { fundamentalsQuizQuestions } from '@/data/pythonQuizQuestions';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 
 const PythonFundamentalsPage = () => {
   return (
@@ -1156,6 +1156,17 @@ const PythonFundamentalsPage = () => {
           title="🧠 Quiz Pratique - Module 0"
           questions={fundamentalsQuizQuestions}
           moduleColor="orange"
+        />
+
+        {/* Navigation vers les exercices */}
+        <ModuleNavigationCards 
+          currentModule={{
+            id: 0,
+            title: "Fondamentaux",
+            slug: "fondamentaux",
+            color: "orange"
+          }}
+          isExercisePage={false}
         />
 
     </PythonModuleLayout>

@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Calculator, Target, Play, CheckCircle, Eye, EyeOff } from 'lucide-react';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
+import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 const PythonMatricesExercicesPage = () => {
   const [selectedExercise, setSelectedExercise] = useState<number | null>(null);
   const [showSolution, setShowSolution] = useState<{
@@ -455,7 +456,19 @@ def Nilp(A):
               </CardContent>
             </Card>)}
         </div>
+
+        {/* Navigation retour au cours */}
+        <ModuleNavigationCards 
+          currentModule={{
+            id: 1,
+            title: "Matrices",
+            slug: "matrices",
+            color: "green"
+          }}
+          isExercisePage={true}
+        />
     </PythonModuleLayout>
   );
 };
+
 export default PythonMatricesExercicesPage;

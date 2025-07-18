@@ -7,18 +7,15 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { PythonModuleQuiz } from '@/components/python/PythonModuleQuiz';
 import { analyseQuizQuestions } from '@/data/pythonQuizQuestions';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
-
+import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 const PythonAnalysePage = () => {
-  return (
-    <PythonModuleLayout>
+  return <PythonModuleLayout>
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <TrendingUp className="h-8 w-8 text-blue-600" />
           <div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-violet-500 bg-clip-text text-transparent">
-              Module 3 - Analyse
-            </h1>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-violet-500 bg-clip-text text-transparent">Module 2 - Analyse</h1>
             <Badge variant="secondary" className="mt-2 bg-blue-100 text-blue-700">Module 3</Badge>
           </div>
         </div>
@@ -936,13 +933,18 @@ const PythonAnalysePage = () => {
         </Card>
 
       {/* Quiz Section */}
-      <PythonModuleQuiz 
-        title="🧠 Quiz Pratique - Module 3"
-        questions={analyseQuizQuestions}
-        moduleColor="blue"
-      />
-    </PythonModuleLayout>
-  );
-};
+      <PythonModuleQuiz title="Quiz pratique - Module 2" questions={analyseQuizQuestions} moduleColor="blue" />
 
+        {/* Navigation vers les exercices */}
+        <ModuleNavigationCards 
+          currentModule={{
+            id: 2,
+            title: "Analyse",
+            slug: "analyse",
+            color: "blue"
+          }} 
+          isExercisePage={false} 
+        />
+    </PythonModuleLayout>;
+};
 export default PythonAnalysePage;

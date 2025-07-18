@@ -12,6 +12,7 @@ const FormationPage = lazy(() => import('../pages/FormationPage'));
 const PourquoiPythonPrepaECGPage = lazy(() => import('../pages/PourquoiPythonPrepaECGPage'));
 const PythonReferencePage = lazy(() => import('../pages/PythonReferencePage'));
 const PythonFlashcardsPage = lazy(() => import('../pages/PythonFlashcardsPage'));
+const PythonExercicesPage = lazy(() => import('../pages/PythonExercicesPage'));
 const FormationAnglaisPage = lazy(() => import('../pages/FormationAnglaisPage'));
 const FormationAllemandPage = lazy(() => import('../pages/FormationAllemandPage'));
 const FormationGeopolitiquePage = lazy(() => import('../pages/FormationGeopolitiquePage'));
@@ -40,6 +41,7 @@ const PreparationCubePage = lazy(() => import('../pages/offres/PreparationCubePa
 
 // Methodologie pages
 const MethodEntretiensPersonnalitePage = lazy(() => import('../pages/methodologie/MethodEntretiensPersonnalitePage'));
+const StorytellingMethodePage = lazy(() => import('../pages/StorytellingMethodePage'));
 
 // Articles pages
 const MathsEteControlePage = lazy(() => import('../pages/articles/MathsEteControlePage'));
@@ -69,6 +71,14 @@ const PrepaChatbotGeneratorPage = lazy(() => import('../pages/generator/PrepaCha
 const SchoolProfileGeneratorPage = lazy(() => import('../pages/generator/SchoolProfileGeneratorPage'));
 const ThemeGrammarGeneratorPage = lazy(() => import('../pages/generator/ThemeGrammarGeneratorPage'));
 
+// Teacher pages
+const TeacherDashboardPage = lazy(() => import('../pages/teacher/TeacherDashboardPage'));
+const TeacherCoursesPage = lazy(() => import('../pages/teacher/TeacherCoursesPage'));
+const TeacherCourseDetailPage = lazy(() => import('../pages/teacher/TeacherCourseDetailPage'));
+const TeacherCourseStudentsPage = lazy(() => import('../pages/teacher/TeacherCourseStudentsPage'));
+const TeacherCourseGradesPage = lazy(() => import('../pages/teacher/TeacherCourseGradesPage'));
+const TeacherCourseAssignmentPage = lazy(() => import('../pages/teacher/TeacherCourseAssignmentPage'));
+
 export interface RouteConfig {
   path: string;
   component: ComponentType<any>;
@@ -90,14 +100,25 @@ export const routes: RouteConfig[] = [
   { path: '/pourquoi-python-prepa-ecg', component: PourquoiPythonPrepaECGPage, title: 'Pourquoi Python en Prépa ECG' },
   { path: '/python-reference', component: PythonReferencePage, title: 'Référence Python' },
   { path: '/python-flashcards', component: PythonFlashcardsPage, title: 'Flashcards Python' },
+  { path: '/python-exercices', component: PythonExercicesPage, title: 'Exercices Python' },
   { path: '/nos-offres', component: NosOffresPage, title: 'Nos Offres' },
   { path: '/apropos', component: AproposPage, title: 'À propos' },
   { path: '/coaching', component: CoachingPage, title: 'Coaching individuel' },
   { path: '/partners', component: PartnersPage, title: 'Partenaires' },
   { path: '/methodes/personnalite', component: MethodEntretiensPersonnalitePage, title: 'Méthodes Personnalité' },
+  { path: '/methodologie/storytelling', component: StorytellingMethodePage, title: 'Méthodologie Storytelling' },
   
   // Protected pages
   { path: '/dashboard', component: DashboardPage, title: 'Tableau de bord', protected: true },
+  
+  // Teacher pages
+  { path: '/prof', component: TeacherDashboardPage, title: 'Interface Professeur', protected: true },
+  { path: '/prof/dashboard', component: TeacherDashboardPage, title: 'Dashboard Professeur', protected: true },
+  { path: '/prof/courses', component: TeacherCoursesPage, title: 'Mes Cours', protected: true },
+  { path: '/prof/courses/:courseId', component: TeacherCourseDetailPage, title: 'Détails du Cours', protected: true },
+  { path: '/prof/courses/:courseId/students', component: TeacherCourseStudentsPage, title: 'Étudiants du Cours', protected: true },
+  { path: '/prof/courses/:courseId/grades', component: TeacherCourseGradesPage, title: 'Notes du Cours', protected: true },
+  { path: '/prof/courses/:courseId/assignment/:assignmentId', component: TeacherCourseAssignmentPage, title: 'Gestion Devoir', protected: true },
   
   // Formation pages
   { path: '/formation/anglais', component: FormationAnglaisPage, title: 'Formation Anglais' },
