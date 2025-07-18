@@ -3,11 +3,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Code, Home, ChevronRight, Brain, Target } from 'lucide-react';
 import PythonFlashcardGenerator from '@/components/python/PythonFlashcardGenerator';
-
-
 const PythonFlashcardsPage = () => {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+  return <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
       {/* Sticky Breadcrumb */}
       <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -29,10 +26,7 @@ const PythonFlashcardsPage = () => {
       <div className="container mx-auto py-8 px-4">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-full text-sm font-medium mb-4">
-            <Code className="h-4 w-4" />
-            Formation Python ECG
-          </div>
+          
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             Flashcards Python
           </h1>
@@ -104,8 +98,6 @@ const PythonFlashcardsPage = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default PythonFlashcardsPage;
