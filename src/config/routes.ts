@@ -105,6 +105,7 @@ export const routes: RouteConfig[] = [
   { path: '/coaching', component: CoachingPage, title: 'Coaching individuel' },
   { path: '/partners', component: PartnersPage, title: 'Partenaires' },
   { path: '/methodes/personnalite', component: MethodEntretiensPersonnalitePage, title: 'Méthodes Personnalité' },
+  { path: '/methodologie/storytelling', component: StorytellingMethodePage, title: 'Méthodologie Storytelling' },
   
   // Protected pages
   { path: '/dashboard', component: DashboardPage, title: 'Tableau de bord', protected: true },
