@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link'; // ou 'react-router-dom' selon ton stack
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Code, Home, ChevronRight, Brain, Target, FileText, BookOpen, ListChecks } from 'lucide-react';
