@@ -101,6 +101,7 @@ export const routes: RouteConfig[] = [
   { path: '/python-reference', component: PythonReferencePage, title: 'Référence Python' },
   { path: '/python-flashcards', component: PythonFlashcardsPage, title: 'Flashcards Python' },
   { path: '/python-exercices', component: PythonExercicesPage, title: 'Exercices Python' },
+  { path: '/formation/exercices', component: PythonExercicesPage, title: 'Exercices Python' },
   { path: '/nos-offres', component: NosOffresPage, title: 'Nos Offres' },
   { path: '/apropos', component: AproposPage, title: 'À propos' },
   { path: '/coaching', component: CoachingPage, title: 'Coaching individuel' },
