@@ -23,11 +23,11 @@ const PythonFlashcardsPage = () => {
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formation" className="hover:text-foreground transition-colors">
-              Formation
+            <Link to="/formations" className="hover:text-foreground transition-colors">
+              Toutes les formations
             </Link>
             <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Flashcards Python</span>
+            <span className="text-foreground font-medium">Formation Python ECG</span>
           </div>
 
           {/* Menu déroulant mobile/tablette */}
