@@ -20,7 +20,6 @@ const Navigation = () => {
   const { isProfessor } = useRoleAccess();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const {
     toast
@@ -168,28 +167,7 @@ const Navigation = () => {
 
           {/* Search Icon - Desktop */}
           <div className="relative">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="p-2"
-            >
-              <Search className="h-4 w-4" />
-            </Button>
-            
-            {isSearchOpen && (
-              <div className="absolute right-0 top-full mt-2 w-80 bg-background border border-border rounded-lg shadow-lg p-4 z-50">
-                <GlobalSearch />
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setIsSearchOpen(false)}
-                  className="absolute top-2 right-2 p-1"
-                >
-                  <X className="h-4 w-4" />
-                </Button>
-              </div>
-            )}
+            <GlobalSearch />
           </div>
 
           <ThemeToggle variant="icon" />
@@ -224,28 +202,12 @@ const Navigation = () => {
 
         {/* Mobile Navigation Toggle */}
         <div className="lg:hidden flex items-center gap-2">
-          <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(!isSearchOpen)}>
-            <Search className="h-5 w-5" />
-          </Button>
+          <MobileSearch />
           <Button variant="ghost" size="icon" onClick={toggleMenu} aria-label="Toggle Menu">
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
         </div>
       </nav>
-
-      {/* Mobile Search Overlay */}
-      {isSearchOpen && (
-        <div className="lg:hidden fixed inset-0 z-50 bg-background">
-          <div className="flex items-center gap-4 p-4 border-b">
-            <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(false)}>
-              <X className="h-5 w-5" />
-            </Button>
-            <div className="flex-1">
-              <GlobalSearch />
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Mobile Navigation Menu */}
       <div className={cn("fixed inset-0 z-40 bg-background transform transition-transform duration-300 ease-in-out", isMenuOpen ? "translate-x-0" : "translate-x-full")}>
