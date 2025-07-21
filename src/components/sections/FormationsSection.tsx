@@ -193,12 +193,7 @@ export const FormationsSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Link to="/formation">
-            <Button size="lg" className="px-8 py-4 text-lg">
-              <BookOpen className="h-5 w-5 mr-2" />
-              Découvrir toutes nos formations
-            </Button>
-          </Link>
+          {/* Bouton 'Découvrir toutes nos formations' supprimé */}
         </div>
       </div>
     </section>

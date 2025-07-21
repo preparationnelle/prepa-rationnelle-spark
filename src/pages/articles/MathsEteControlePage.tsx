@@ -1,12 +1,26 @@
 import React from 'react';
-import Navigation from '@/components/Navigation';
 import { Button } from '@/components/ui/button';
 import { Mail, FileText } from 'lucide-react';
 
 const MathsEteControlePage = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
+      {/* Fil d'Ariane sticky en haut de page */}
+      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40">
+        <div className="container mx-auto px-4 py-2">
+          <div className="flex items-center text-xs text-muted-foreground">
+            <a href="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              <span className="font-bold">Accueil</span>
+            </a>
+            <span className="mx-1">&gt;</span>
+            <a href="/articles" className="hover:text-foreground transition-colors">
+              <span className="font-bold">Articles</span>
+            </a>
+            <span className="mx-1">&gt;</span>
+            <span className="text-foreground font-bold">Un été pour (re)prendre le contrôle en maths</span>
+          </div>
+        </div>
+      </nav>
       
       <div className="container mx-auto px-4 py-12 max-w-4xl">
         {/* Header */}

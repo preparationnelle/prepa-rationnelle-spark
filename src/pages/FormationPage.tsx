@@ -7,6 +7,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Code, Calculator, TrendingUp, BarChart3, Play, BookOpen, ChevronDown, Home, ChevronRight } from 'lucide-react';
 import PythonNavigationTabs from "@/components/formation/PythonNavigationTabs";
+import Navigation from '@/components/Navigation';
 const FormationPage = () => {
   const [openModules, setOpenModules] = useState<Set<number>>(new Set());
   const toggleModule = (moduleId: number) => {
@@ -61,6 +62,7 @@ const FormationPage = () => {
     available: true
   }];
   return <div className="min-h-screen bg-background">
+    <Navigation />
       {/* Sticky Breadcrumb */}
       <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">

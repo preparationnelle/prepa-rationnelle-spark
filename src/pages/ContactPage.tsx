@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Instagram, Linkedin, Globe, MessageCircle } from "lucide-react";
 import OffersSection from "@/components/OffersSection";
+import Navigation from '@/components/Navigation';
 
 export default function ContactPage() {
   const [name, setName] = useState('');
@@ -44,7 +45,9 @@ Merci de me recontacter dès que possible !`;
   };
 
   return (
-    <div className="container max-w-3xl py-10 animate-fade-in" id="contact">
+    <>
+      <Navigation />
+      <div className="min-h-screen bg-background py-12 px-4">
       {/* NOUVEAU : Section Nos offres bien mise en évidence */}
       <OffersSection />
 
@@ -216,5 +219,6 @@ Merci de me recontacter dès que possible !`;
         />
       </div>
     </div>
+    </>
   );
 }

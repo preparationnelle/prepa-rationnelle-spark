@@ -27,6 +27,7 @@ import { useGenerateAnswer } from '@/hooks/useGenerateAnswer';
 import { useProgress } from "@/context/ProgressContext";
 
 import { Answer } from '@/components/generator/ResponseTabs';
+import Navigation from '@/components/Navigation';
 
 // MiniCard type
 type AutomationKey =
@@ -249,43 +250,46 @@ const GeneratorPage = () => {
   }, [trackPageVisit]);
 
   return (
-    <div className="container mx-auto py-8 px-4">
-      <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-          Générateurs IA
-        </h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Préparez vos entretiens avec nos générateurs intelligents : réponses personnalisées, flashcards, langues et géopolitique
-        </p>
-      </div>
-      
-      <OptionalLoginBanner />
-      
-      {!selectedKey && (
-        <>
-          <GeneratorCategorySection
-            categories={CATEGORIES}
-            onSelect={handleKeySelect}
-          />
-          <div className="text-center mt-8 text-muted-foreground text-sm">
-            Cliquez sur une automatisation pour commencer&nbsp;!
-          </div>
-        </>
-      )}
-      {selectedKey && (
-        <div>
-          <button
-            onClick={() => setSelectedKey(null)}
-            className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded bg-gray-100 text-gray-700 hover:bg-gray-200 transition"
-          >
-            ← Retour aux automatisations
-          </button>
-          <div>
-            {renderAutomationContent()}
-          </div>
+    <>
+      <Navigation />
+      <div className="container mx-auto py-8 px-4">
+        <div className="text-center mb-10">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+            Générateurs IA
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Préparez vos entretiens avec nos générateurs intelligents : réponses personnalisées, flashcards, langues et géopolitique
+          </p>
         </div>
-      )}
-    </div>
+        
+        <OptionalLoginBanner />
+        
+        {!selectedKey && (
+          <>
+            <GeneratorCategorySection
+              categories={CATEGORIES}
+              onSelect={handleKeySelect}
+            />
+            <div className="text-center mt-8 text-muted-foreground text-sm">
+              Cliquez sur une automatisation pour commencer&nbsp;!
+            </div>
+          </>
+        )}
+        {selectedKey && (
+          <div>
+            <button
+              onClick={() => setSelectedKey(null)}
+              className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded bg-gray-100 text-gray-700 hover:bg-gray-200 transition"
+            >
+              ← Retour aux automatisations
+            </button>
+            <div>
+              {renderAutomationContent()}
+            </div>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

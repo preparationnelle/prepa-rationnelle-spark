@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { FileText, Calendar, User, ArrowRight } from 'lucide-react';
+import Navigation from '@/components/Navigation';
 
 const ArticlesPage = () => {
   const articles = [
@@ -42,103 +43,106 @@ const ArticlesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background py-16">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4">
-              <span className="gradient-text">Conseils & Articles</span>
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Découvrez nos conseils d'experts et articles pratiques pour réussir votre prépa et vos concours.
-            </p>
-          </div>
+    <>
+      <Navigation />
+      <div className="min-h-screen bg-background py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            {/* Header */}
+            <div className="text-center mb-12">
+              <h1 className="text-4xl font-bold mb-4">
+                <span className="gradient-text">Conseils & Articles</span>
+              </h1>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Découvrez nos conseils d'experts et articles pratiques pour réussir votre prépa et vos concours.
+              </p>
+            </div>
 
-          {/* Articles Grid */}
-          <div className="space-y-8">
-            {articles.map((article) => (
-              <Card key={article.id} className={`hover:shadow-lg transition-all duration-300 ${article.featured ? 'border-primary/20 bg-primary/5' : ''}`}>
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      {article.featured && (
-                        <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary text-primary-foreground mb-3">
-                          Article vedette
-                        </div>
-                      )}
-                      <CardTitle className="text-2xl mb-2 hover:text-primary transition-colors">
-                        <Link to={article.link}>
-                          {article.title}
-                        </Link>
-                      </CardTitle>
-                      {article.subtitle && (
-                        <p className="text-lg text-muted-foreground font-medium mb-3">
-                          {article.subtitle}
+            {/* Articles Grid */}
+            <div className="space-y-8">
+              {articles.map((article) => (
+                <Card key={article.id} className={`hover:shadow-lg transition-all duration-300 ${article.featured ? 'border-primary/20 bg-primary/5' : ''}`}>
+                  <CardHeader>
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        {article.featured && (
+                          <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary text-primary-foreground mb-3">
+                            Article vedette
+                          </div>
+                        )}
+                        <CardTitle className="text-2xl mb-2 hover:text-primary transition-colors">
+                          <Link to={article.link}>
+                            {article.title}
+                          </Link>
+                        </CardTitle>
+                        {article.subtitle && (
+                          <p className="text-lg text-muted-foreground font-medium mb-3">
+                            {article.subtitle}
+                          </p>
+                        )}
+                        <p className="text-muted-foreground mb-4">
+                          {article.description}
                         </p>
-                      )}
-                      <p className="text-muted-foreground mb-4">
-                        {article.description}
-                      </p>
-                      
-                      {/* Meta information */}
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-                        <div className="flex items-center gap-1">
-                          <User className="h-4 w-4" />
-                          <span>{article.author}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Calendar className="h-4 w-4" />
-                          <span>{article.date}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <FileText className="h-4 w-4" />
-                          <span>{article.readTime} de lecture</span>
+                        
+                        {/* Meta information */}
+                        <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
+                          <div className="flex items-center gap-1">
+                            <User className="h-4 w-4" />
+                            <span>{article.author}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Calendar className="h-4 w-4" />
+                            <span>{article.date}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <FileText className="h-4 w-4" />
+                            <span>{article.readTime} de lecture</span>
+                          </div>
                         </div>
                       </div>
                     </div>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <Link to={article.link}>
+                      <Button className="group">
+                        Lire l'article
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            {/* Call to Action */}
+            <div className="mt-16 text-center">
+              <Card className="bg-gradient-to-r from-primary/10 to-orange-500/10 border-primary/20">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold mb-4">
+                    Besoin de conseils personnalisés ?
+                  </h3>
+                  <p className="text-muted-foreground mb-6">
+                    Nos experts sont là pour vous accompagner dans votre réussite.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Link to="/contact">
+                      <Button size="lg">
+                        Nous contacter
+                      </Button>
+                    </Link>
+                    <Link to="/coaching">
+                      <Button variant="outline" size="lg">
+                        Coaching individuel
+                      </Button>
+                    </Link>
                   </div>
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <Link to={article.link}>
-                    <Button className="group">
-                      Lire l'article
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
                 </CardContent>
               </Card>
-            ))}
-          </div>
-
-          {/* Call to Action */}
-          <div className="mt-16 text-center">
-            <Card className="bg-gradient-to-r from-primary/10 to-orange-500/10 border-primary/20">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-4">
-                  Besoin de conseils personnalisés ?
-                </h3>
-                <p className="text-muted-foreground mb-6">
-                  Nos experts sont là pour vous accompagner dans votre réussite.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link to="/contact">
-                    <Button size="lg">
-                      Nous contacter
-                    </Button>
-                  </Link>
-                  <Link to="/coaching">
-                    <Button variant="outline" size="lg">
-                      Coaching individuel
-                    </Button>
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
