@@ -8,7 +8,7 @@ import { ThemeToggle } from '@/components/ThemeToggle';
 import { GlobalSearch } from '@/components/search/GlobalSearch';
 import { MobileSearch } from '@/components/search/MobileSearch';
 import { SearchTrigger } from '@/components/search/SearchTrigger';
-import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, BarChart3, Code, Languages, Globe, UserCheck } from 'lucide-react';
+import { LogOut, Menu, X, ChevronDown, ChevronRight, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, BarChart3, Code, Languages, Globe, UserCheck, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from '@/components/ui/dropdown-menu';
@@ -22,6 +22,7 @@ const Navigation = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
+  const [isFormationsOpen, setIsFormationsOpen] = useState(false);
   const {
     toast
   } = useToast();
@@ -210,119 +211,143 @@ const Navigation = () => {
       </nav>
 
       {/* Mobile Navigation Menu */}
-      <div className={cn("fixed inset-0 z-50 bg-background transform transition-transform duration-300 ease-in-out pt-20", isMenuOpen ? "translate-x-0" : "translate-x-full")}>
-        <div className="container mx-auto px-4 flex flex-col space-y-4">
-          <Link to="/" className="text-lg py-2 border-b border-border" onClick={closeMenu}>
+      <div className={cn("fixed inset-0 z-50 bg-background transform transition-transform duration-300 ease-in-out", isMenuOpen ? "translate-x-0" : "translate-x-full")}>
+        {/* Header avec bouton de fermeture */}
+        <div className="flex justify-between items-center p-4 border-b border-border">
+          <img src="/lovable-uploads/73c4719b-7030-411f-8d46-20d32035daba.png" alt="Prepa Rationnelle Logo" className="h-8" />
+          <Button variant="ghost" size="icon" onClick={toggleMenu} aria-label="Fermer le menu">
+            <X className="h-6 w-6" />
+          </Button>
+        </div>
+        
+        <div className="flex flex-col h-full overflow-y-auto">
+          <div className="flex-1 px-6 py-6 space-y-6">
+            {/* Accueil */}
+            <Link to="/" className="block text-center text-xl py-3 border-b border-border" onClick={closeMenu}>
             Accueil
           </Link>
 
-          {/* Menu mobile Formation */}
-          <div className="space-y-2 py-2 border-b border-border">
-            <h3 className="text-lg font-medium text-primary">Formations</h3>
-            <div className="pl-4 flex flex-col space-y-4">
-              <Link to="/pourquoi-python-prepa-ecg" onClick={closeMenu} className="flex items-center gap-3">
-                <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <Code className="h-4 w-4 text-blue-600" />
-                </span>
-                <span>🐍 Python</span>
-              </Link>
+            {/* Formations avec accordéon */}
+            <div className="border-b border-border pb-4">
+              <button 
+                onClick={() => setIsFormationsOpen(!isFormationsOpen)}
+                className="w-full flex items-center justify-center gap-2 text-xl py-3 text-primary font-medium"
+              >
+                <span>Formations</span>
+                <ChevronRight className={cn("h-5 w-5 transition-transform duration-200", isFormationsOpen && "rotate-90")} />
+              </button>
               
-              <Link to="/formation/anglais" onClick={closeMenu} className="flex items-center gap-3">
-                <span className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                  <Languages className="h-4 w-4 text-green-600" />
-                </span>
-                <span>🇬🇧 Anglais</span>
-              </Link>
+              {isFormationsOpen && (
+                <div className="mt-4 space-y-4 animate-in slide-in-from-top-2 duration-200">
+                  <Link to="/pourquoi-python-prepa-ecg" onClick={closeMenu} className="flex items-center justify-center gap-3 py-2">
+                    <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                      <Code className="h-4 w-4 text-blue-600" />
+                    </span>
+                    <span>🐍 Python</span>
+                  </Link>
+                  
+                  <Link to="/formation/anglais" onClick={closeMenu} className="flex items-center justify-center gap-3 py-2">
+                    <span className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                      <Languages className="h-4 w-4 text-green-600" />
+                    </span>
+                    <span>🇬🇧 Anglais</span>
+                  </Link>
 
-              <Link to="/formation/allemand" onClick={closeMenu} className="flex items-center gap-3">
-                <span className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
-                  <Languages className="h-4 w-4 text-red-600" />
-                </span>
-                <span>🇩🇪 Allemand</span>
-              </Link>
+                  <Link to="/formation/allemand" onClick={closeMenu} className="flex items-center justify-center gap-3 py-2">
+                    <span className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                      <Languages className="h-4 w-4 text-red-600" />
+                    </span>
+                    <span>🇩🇪 Allemand</span>
+                  </Link>
 
-              <Link to="/formation/geopolitique" onClick={closeMenu} className="flex items-center gap-3">
-                <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-                  <Globe className="h-4 w-4 text-orange-600" />
-                </span>
-                <span>🌍 Géopolitique</span>
-              </Link>
+                  <Link to="/formation/geopolitique" onClick={closeMenu} className="flex items-center justify-center gap-3 py-2">
+                    <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                      <Globe className="h-4 w-4 text-orange-600" />
+                    </span>
+                    <span>🌍 Géopolitique</span>
+                  </Link>
 
-              <Link to="/methodologie/entretiens-personnalite" onClick={closeMenu} className="flex items-center gap-3">
-                <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-                  <Users className="h-4 w-4 text-orange-600" />
-                </span>
-                <span>Entretiens de Personnalité</span>
-              </Link>
+                  <Link to="/methodologie/entretiens-personnalite" onClick={closeMenu} className="flex items-center justify-center gap-3 py-2">
+                    <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                      <Users className="h-4 w-4 text-orange-600" />
+                    </span>
+                    <span>Entretiens de Personnalité</span>
+                  </Link>
 
-              <Link to="/entretien-inverse-gem" onClick={closeMenu} className="flex items-center gap-3">
-                <span className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
-                  <Users className="h-4 w-4 text-purple-600" />
-                </span>
-                <span>Entretien inversé GEM</span>
-              </Link>
+                  <Link to="/entretien-inverse-gem" onClick={closeMenu} className="flex items-center justify-center gap-3 py-2">
+                    <span className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                      <Users className="h-4 w-4 text-purple-600" />
+                    </span>
+                    <span>Entretien inversé GEM</span>
+                  </Link>
 
-              <Link to="/cv-projectif" onClick={closeMenu} className="flex items-center gap-3">
-                <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <FileText className="h-4 w-4 text-blue-600" />
-                </span>
-                <span>CV Projectif</span>
-              </Link>
+                  <Link to="/cv-projectif" onClick={closeMenu} className="flex items-center justify-center gap-3 py-2">
+                    <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                      <FileText className="h-4 w-4 text-blue-600" />
+                    </span>
+                    <span>CV Projectif</span>
+                  </Link>
 
-              <Link to="/formations" onClick={closeMenu} className="flex items-center gap-3">
-                <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                  <BookOpen className="h-4 w-4 text-primary" />
-                </span>
-                <span>Toutes nos formations</span>
-              </Link>
-            </div>
-          </div>
-
-          <Link to="/generator" className="text-lg py-2 border-b border-border" onClick={closeMenu}>
-            Générateur
-          </Link>
-
-          <Link to="/apropos" className="text-lg py-2 border-b border-border" onClick={closeMenu}>
-            À propos
-          </Link>
-
-          <Link to="/articles" className="text-lg py-2 border-b border-border" onClick={closeMenu}>
-            Conseils / Articles
-          </Link>
-
-          <Link to="/contact" className="text-lg py-2 border-b border-border" onClick={closeMenu}>
-            Prendre un rendez-vous
-          </Link>
-          
-          {currentUser ? <>
-              <Link to="/dashboard" className="text-lg py-2 border-b border-border flex items-center gap-2" onClick={closeMenu}>
-                <BarChart3 className="h-4 w-4" />
-                Dashboard
-              </Link>
-              {isProfessor && (
-                <Link to="/prof" className="text-lg py-2 border-b border-border flex items-center gap-2" onClick={closeMenu}>
-                  <UserCheck className="h-4 w-4" />
-                  Interface Prof
-                </Link>
+                  <Link to="/formations" onClick={closeMenu} className="flex items-center justify-center gap-3 py-2">
+                    <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                      <BookOpen className="h-4 w-4 text-primary" />
+                    </span>
+                    <span>Toutes nos formations</span>
+                  </Link>
+                </div>
               )}
-              <Button variant="outline" onClick={() => {
-            handleLogout();
-            closeMenu();
-          }} className="mt-4 w-full flex items-center justify-center" disabled={isLoggingOut}>
-                <LogOut className="mr-2 h-4 w-4" /> 
-                {isLoggingOut ? 'Déconnexion...' : 'Déconnexion'}
-              </Button>
-            </> : <>
-              <Link to="/login" className="text-lg py-2 border-b border-border" onClick={closeMenu}>
-                Connexion
-              </Link>
-              <Link to="/register" onClick={closeMenu} className="mt-4">
-                <Button className="w-full">S'inscrire</Button>
-              </Link>
-            </>}
-        </div>
-      </div>
-    </header>;
-};
+            </div>
+
+            {/* Autres liens principaux */}
+            <Link to="/generator" className="block text-center text-xl py-3 border-b border-border" onClick={closeMenu}>
+              Générateur
+            </Link>
+
+            <Link to="/apropos" className="block text-center text-xl py-3 border-b border-border" onClick={closeMenu}>
+              À propos
+            </Link>
+
+            <Link to="/articles" className="block text-center text-xl py-3 border-b border-border" onClick={closeMenu}>
+              Conseils / Articles
+            </Link>
+
+            <Link to="/contact" className="block text-center text-xl py-3 border-b border-border" onClick={closeMenu}>
+              Prendre un rendez-vous
+            </Link>
+          </div>
+          
+          {/* Section auth en bas */}
+          <div className="bg-accent/30 p-6 space-y-4">
+            {currentUser ? (
+              <>
+                <Link to="/dashboard" className="block text-center text-lg py-2 flex items-center justify-center gap-2" onClick={closeMenu}>
+                  <BarChart3 className="h-4 w-4" />
+                  Dashboard
+                </Link>
+                {isProfessor && (
+                  <Link to="/prof" className="block text-center text-lg py-2 flex items-center justify-center gap-2" onClick={closeMenu}>
+                    <UserCheck className="h-4 w-4" />
+                    Interface Prof
+                  </Link>
+                )}
+                <Button variant="outline" onClick={() => {
+                  handleLogout();
+                  closeMenu();
+                }} className="w-full flex items-center justify-center" disabled={isLoggingOut}>
+                  <LogOut className="mr-2 h-4 w-4" /> 
+                  {isLoggingOut ? 'Déconnexion...' : 'Déconnexion'}
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link to="/login" className="block text-center text-lg py-2" onClick={closeMenu}>
+                  Connexion
+                </Link>
+                <Link to="/register" onClick={closeMenu}>
+                  <Button className="w-full">S'inscrire</Button>
+                </Link>
+              </>
+            )}
+          </div>
 
 export default Navigation;
