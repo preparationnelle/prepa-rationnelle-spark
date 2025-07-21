@@ -177,7 +177,7 @@ const PourquoiPythonPrepaECGPage = () => {
             <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
               <p className="text-orange-800">
                 <strong>Moralité :</strong> même si tu n'es « pas fan d'info », ignorer Python revient à laisser jusqu'à 5 points sur la table. 
-                Dans une filière où chaque demi-point se paie d'heures de calcul intégral, c'est un luxe que tu ne peux pas te permettre.
+                Dans une filière où chaque demi-point se paie d'heures de calcul intégral, c\'est un luxe que tu ne peux pas te permettre.
               </p>
             </div>
           </CardContent>
