@@ -9,6 +9,7 @@ const ContactPage = lazy(() => import('../pages/ContactPage'));
 const GeneratorPage = lazy(() => import('../pages/GeneratorPage'));
 const PythonArticlePage = lazy(() => import('../pages/PythonArticlePage'));
 const FormationPage = lazy(() => import('../pages/FormationPage'));
+const FormationsOverviewPage = lazy(() => import('../pages/FormationsOverviewPage'));
 const PourquoiPythonPrepaECGPage = lazy(() => import('../pages/PourquoiPythonPrepaECGPage'));
 const PythonReferencePage = lazy(() => import('../pages/PythonReferencePage'));
 const PythonFlashcardsPage = lazy(() => import('../pages/PythonFlashcardsPage'));
@@ -97,6 +98,7 @@ export const routes: RouteConfig[] = [
   { path: '/generator', component: GeneratorPage, title: 'Générateurs IA' },
   { path: '/python-article', component: PythonArticlePage, title: 'Article Python' },
   { path: '/formation', component: FormationPage, title: 'Formations' },
+  { path: '/formations', component: FormationsOverviewPage, title: 'Toutes nos formations' },
   { path: '/pourquoi-python-prepa-ecg', component: PourquoiPythonPrepaECGPage, title: 'Pourquoi Python en Prépa ECG' },
   { path: '/python-reference', component: PythonReferencePage, title: 'Référence Python' },
   { path: '/python-flashcards', component: PythonFlashcardsPage, title: 'Flashcards Python' },

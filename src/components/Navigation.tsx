@@ -93,7 +93,7 @@ const Navigation = () => {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="center" className="w-64 bg-popover rounded-lg shadow-lg border p-2">
               <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                <Link to="/formation" onClick={closeMenu} className="flex items-center gap-3 w-full">
+                <Link to="/formations" onClick={closeMenu} className="flex items-center gap-3 w-full">
                   <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                     <BookOpen className="h-4 w-4 text-primary" />
                   </span>
@@ -316,7 +316,7 @@ const Navigation = () => {
           <div className="space-y-2 py-2 border-b border-border">
             <h3 className="text-lg font-medium text-primary">Formation</h3>
             <div className="pl-4 flex flex-col space-y-4">
-              <Link to="/formation" onClick={closeMenu} className="flex items-center gap-3">
+              <Link to="/formations" onClick={closeMenu} className="flex items-center gap-3">
                 <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                   <BookOpen className="h-4 w-4 text-primary" />
                 </span>
