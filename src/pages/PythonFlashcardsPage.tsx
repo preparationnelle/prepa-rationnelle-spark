@@ -1,15 +1,10 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Home, ChevronRight, Menu, Code, Brain, Target, RefreshCw } from 'lucide-react';
+import { Home, ChevronRight, Code, Brain, Target, RefreshCw } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import { Badge } from '@/components/ui/badge';
+import PythonNavigationTabs from '@/components/formation/PythonNavigationTabs';
 
 const PythonFlashcardsPage = () => {
   return (
@@ -30,31 +25,6 @@ const PythonFlashcardsPage = () => {
             <span className="text-foreground font-medium">Formation Python ECG</span>
           </div>
 
-          {/* Menu déroulant mobile/tablette */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu className="h-5 w-5" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem asChild>
-                <Link to="/methodo">Méthodo/Conseil</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link to="/cours">Cours</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link to="/exercices">Exercices</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link to="/flashcards" className="font-semibold">Flashcards Python</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link to="/reference">Référence Python</Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
         </div>
       </nav>
 
@@ -68,67 +38,10 @@ const PythonFlashcardsPage = () => {
             Maîtrisez les 54 commandes essentielles avec nos flashcards interactives !
           </p>
 
-          {/* Menu déroulant pour la navigation (version desktop) */}
-          <div className="flex justify-center mb-8">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="gap-2">
-                  <Menu className="h-4 w-4" />
-                  Navigation
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56">
-                <DropdownMenuItem asChild>
-                  <Link to="/methodo" className="w-full">
-                    Méthodo/Conseil
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/cours" className="w-full">
-                    Cours
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/exercices" className="w-full">
-                    Exercices
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild className="bg-accent">
-                  <Link to="/flashcards" className="w-full font-medium">
-                    Flashcards Python
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/reference" className="w-full">
-                    Référence Python
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
-
-          {/* Navigation horizontale (version desktop) */}
-          <div className="hidden md:flex justify-center border-b">
-            <nav className="flex gap-1 p-1 bg-muted rounded-lg">
-              {[
-                { name: 'Méthodo', path: '/methodo' },
-                { name: 'Cours', path: '/cours' },
-                { name: 'Exercices', path: '/exercices' },
-                { name: 'Flashcards', path: '/flashcards', active: true },
-                { name: 'Référence', path: '/reference' }
-              ].map((item) => (
-                <Button
-                  key={item.name}
-                  asChild
-                  variant={item.active ? 'default' : 'ghost'}
-                  className={`rounded-md px-4 py-2 text-sm ${item.active ? 'bg-background shadow' : 'text-muted-foreground'}`}
-                >
-                  <Link to={item.path}>{item.name}</Link>
-                </Button>
-              ))}
-            </nav>
-          </div>
         </div>
+
+        {/* Navigation Tabs */}
+        <PythonNavigationTabs className="mb-8" />
 
         {/* Flashcard interactive */}
         <Card className="mb-8">
