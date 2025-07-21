@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { GlobalSearch } from '@/components/search/GlobalSearch';
 import { MobileSearch } from '@/components/search/MobileSearch';
-import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, BarChart3, Code, Languages, Globe, UserCheck, Search } from 'lucide-react';
+import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, BarChart3, Code, Languages, Globe, UserCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from '@/components/ui/dropdown-menu';
@@ -73,20 +73,21 @@ const Navigation = () => {
   };
 
   return <header className="bg-background shadow-sm border-b border-border">
-      <nav className="container mx-auto px-4 py-3 flex items-center justify-between">
+      <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center" onClick={closeMenu}>
-          <img src="/lovable-uploads/73c4719b-7030-411f-8d46-20d32035daba.png" alt="Prepa Rationnelle Logo" className="h-8" />
+          <img src="/lovable-uploads/73c4719b-7030-411f-8d46-20d32035daba.png" alt="Prepa Rationnelle Logo" className="h-10 mr-2" />
+          <span className="text-xl font-bold text-primary">Prepa Rationnelle</span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-6">
           <Link to="/" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
             Accueil
           </Link>
           
           {/* Menu déroulant "Formations" */}
           <DropdownMenu>
-            <DropdownMenuTrigger className="text-foreground hover:text-primary transition flex items-center gap-1 focus:outline-none text-sm">
+            <DropdownMenuTrigger className="text-foreground hover:text-primary transition flex items-center gap-1 focus:outline-none">
               Formations
               <ChevronDown className="h-4 w-4" />
             </DropdownMenuTrigger>
@@ -149,36 +150,34 @@ const Navigation = () => {
             </DropdownMenuContent>
           </DropdownMenu>
           
-          <Link to="/generator" className="text-foreground hover:text-primary transition text-sm" onClick={closeMenu}>
+          <Link to="/generator" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
             Générateur
           </Link>
 
-          <Link to="/apropos" className="text-foreground hover:text-primary transition text-sm" onClick={closeMenu}>
+          <Link to="/apropos" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
             À propos
           </Link>
 
-          <Link to="/articles" className="text-foreground hover:text-primary transition text-sm" onClick={closeMenu}>
+          <Link to="/articles" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
             Conseils / Articles
           </Link>
 
-          <Link to="/contact" className="text-foreground hover:text-primary transition text-sm" onClick={closeMenu}>
+          <Link to="/contact" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
             Prendre un rendez-vous
           </Link>
 
-          {/* Search Icon - Desktop */}
-          <div className="relative">
-            <GlobalSearch />
-          </div>
+          {/* Search Component - Desktop */}
+          <GlobalSearch />
 
           <ThemeToggle variant="icon" />
 
           {currentUser ? <div className="flex items-center space-x-4">
-              <Link to="/dashboard" className="text-foreground hover:text-primary transition flex items-center gap-2 text-sm" onClick={closeMenu}>
+              <Link to="/dashboard" className="text-foreground hover:text-primary transition flex items-center gap-2" onClick={closeMenu}>
                 <BarChart3 className="h-4 w-4" />
                 Dashboard
               </Link>
               {isProfessor && (
-                <Link to="/prof" className="text-foreground hover:text-primary transition flex items-center gap-2 text-sm" onClick={closeMenu}>
+                <Link to="/prof" className="text-foreground hover:text-primary transition flex items-center gap-2" onClick={closeMenu}>
                   <UserCheck className="h-4 w-4" />
                   Interface Prof
                 </Link>
@@ -191,7 +190,7 @@ const Navigation = () => {
                 {isLoggingOut ? 'Déconnexion...' : 'Déconnexion'}
               </Button>
             </div> : <>
-              <Link to="/login" className="text-foreground hover:text-primary transition text-sm" onClick={closeMenu}>
+              <Link to="/login" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
                 Connexion
               </Link>
               <Link to="/register" onClick={closeMenu}>
@@ -201,8 +200,9 @@ const Navigation = () => {
         </div>
 
         {/* Mobile Navigation Toggle */}
-        <div className="lg:hidden flex items-center gap-2">
+        <div className="md:hidden flex items-center gap-2">
           <MobileSearch />
+          <ThemeToggle variant="icon" />
           <Button variant="ghost" size="icon" onClick={toggleMenu} aria-label="Toggle Menu">
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
@@ -210,123 +210,9 @@ const Navigation = () => {
       </nav>
 
       {/* Mobile Navigation Menu */}
-      <div className={cn("fixed inset-0 z-40 bg-background transform transition-transform duration-300 ease-in-out", isMenuOpen ? "translate-x-0" : "translate-x-full")}>
-        <div className="flex flex-col h-full pt-20">
-          <div className="flex-1 overflow-y-auto px-6 py-6">
-            <div className="space-y-6">
-              {/* Navigation Links */}
-              <div className="space-y-4">
-                <Link to="/" className="block text-xl font-medium py-3 border-b border-border/50 hover:text-primary transition-colors" onClick={closeMenu}>
-                  Accueil
-                </Link>
-
-                {/* Formations Section */}
-                <div className="space-y-3">
-                  <h3 className="text-lg font-semibold text-primary">Formations</h3>
-                  <div className="pl-4 space-y-3">
-                    <Link to="/pourquoi-python-prepa-ecg" onClick={closeMenu} className="flex items-center gap-3 py-2 hover:text-primary transition-colors">
-                      <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                        <Code className="h-4 w-4 text-blue-600" />
-                      </span>
-                      <span>🐍 Python</span>
-                    </Link>
-                    
-                    <Link to="/formation/anglais" onClick={closeMenu} className="flex items-center gap-3 py-2 hover:text-primary transition-colors">
-                      <span className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                        <Languages className="h-4 w-4 text-green-600" />
-                      </span>
-                      <span>🇬🇧 Anglais</span>
-                    </Link>
-
-                    <Link to="/formation/allemand" onClick={closeMenu} className="flex items-center gap-3 py-2 hover:text-primary transition-colors">
-                      <span className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
-                        <Languages className="h-4 w-4 text-red-600" />
-                      </span>
-                      <span>🇩🇪 Allemand</span>
-                    </Link>
-
-                    <Link to="/formation/geopolitique" onClick={closeMenu} className="flex items-center gap-3 py-2 hover:text-primary transition-colors">
-                      <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-                        <Globe className="h-4 w-4 text-orange-600" />
-                      </span>
-                      <span>🌍 Géopolitique</span>
-                    </Link>
-
-                    <Link to="/methodologie/entretiens-personnalite" onClick={closeMenu} className="flex items-center gap-3 py-2 hover:text-primary transition-colors">
-                      <span className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
-                        <Users className="h-4 w-4 text-purple-600" />
-                      </span>
-                      <span>Entretiens de Personnalité</span>
-                    </Link>
-
-                    <Link to="/formations" onClick={closeMenu} className="flex items-center gap-3 py-2 hover:text-primary transition-colors">
-                      <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                        <BookOpen className="h-4 w-4 text-primary" />
-                      </span>
-                      <span>Toutes nos formations</span>
-                    </Link>
-                  </div>
-                </div>
-
-                <Link to="/generator" className="block text-xl font-medium py-3 border-b border-border/50 hover:text-primary transition-colors" onClick={closeMenu}>
-                  Générateur
-                </Link>
-
-                <Link to="/apropos" className="block text-xl font-medium py-3 border-b border-border/50 hover:text-primary transition-colors" onClick={closeMenu}>
-                  À propos
-                </Link>
-
-                <Link to="/articles" className="block text-xl font-medium py-3 border-b border-border/50 hover:text-primary transition-colors" onClick={closeMenu}>
-                  Conseils / Articles
-                </Link>
-
-                <Link to="/contact" className="block text-xl font-medium py-3 border-b border-border/50 hover:text-primary transition-colors" onClick={closeMenu}>
-                  Prendre un rendez-vous
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Auth Section */}
-          <div className="border-t border-border/50 p-6 bg-accent/30">
-            {currentUser ? (
-              <div className="space-y-4">
-                <Link to="/dashboard" className="flex items-center gap-3 text-lg font-medium py-2 hover:text-primary transition-colors" onClick={closeMenu}>
-                  <BarChart3 className="h-5 w-5" />
-                  Dashboard
-                </Link>
-                {isProfessor && (
-                  <Link to="/prof" className="flex items-center gap-3 text-lg font-medium py-2 hover:text-primary transition-colors" onClick={closeMenu}>
-                    <UserCheck className="h-5 w-5" />
-                    Interface Prof
-                  </Link>
-                )}
-                <Button 
-                  variant="outline" 
-                  onClick={() => {
-                    handleLogout();
-                    closeMenu();
-                  }} 
-                  className="w-full flex items-center justify-center" 
-                  disabled={isLoggingOut}
-                >
-                  <LogOut className="mr-2 h-4 w-4" /> 
-                  {isLoggingOut ? 'Déconnexion...' : 'Déconnexion'}
-                </Button>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                <Link to="/login" className="block text-lg font-medium py-2 hover:text-primary transition-colors" onClick={closeMenu}>
-                  Connexion
-                </Link>
-                <Link to="/register" onClick={closeMenu}>
-                  <Button className="w-full">S'inscrire</Button>
-                </Link>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
+      <div className={cn("fixed inset-0 z-50 bg-background transform transition-transform duration-300 ease-in-out pt-20", isMenuOpen ? "translate-x-0" : "translate-x-full")}>
+        <div className="container mx-auto px-4 flex flex-col space-y-4">
+          <Link to="/" className="text-lg py-2 border-b border-border" onClick={closeMenu}>
             Accueil
           </Link>
 
@@ -409,12 +295,12 @@ const Navigation = () => {
           </Link>
           
           {currentUser ? <>
-              <Link to="/dashboard" className="text-lg py-2 border-b border-border flex items-center gap-2 text-sm" onClick={closeMenu}>
+              <Link to="/dashboard" className="text-lg py-2 border-b border-border flex items-center gap-2" onClick={closeMenu}>
                 <BarChart3 className="h-4 w-4" />
                 Dashboard
               </Link>
               {isProfessor && (
-                <Link to="/prof" className="text-lg py-2 border-b border-border flex items-center gap-2 text-sm" onClick={closeMenu}>
+                <Link to="/prof" className="text-lg py-2 border-b border-border flex items-center gap-2" onClick={closeMenu}>
                   <UserCheck className="h-4 w-4" />
                   Interface Prof
                 </Link>
