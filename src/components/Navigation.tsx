@@ -224,18 +224,147 @@ const Navigation = () => {
 
         {/* Mobile Navigation Toggle */}
         <div className="lg:hidden flex items-center gap-2">
-          <MobileSearch />
-          <ThemeToggle variant="icon" />
+          <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(!isSearchOpen)}>
+            <Search className="h-5 w-5" />
+          </Button>
           <Button variant="ghost" size="icon" onClick={toggleMenu} aria-label="Toggle Menu">
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
         </div>
       </nav>
 
+      {/* Mobile Search Overlay */}
+      {isSearchOpen && (
+        <div className="lg:hidden fixed inset-0 z-50 bg-background">
+          <div className="flex items-center gap-4 p-4 border-b">
+            <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(false)}>
+              <X className="h-5 w-5" />
+            </Button>
+            <div className="flex-1">
+              <GlobalSearch />
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Mobile Navigation Menu */}
-      <div className={cn("fixed inset-0 z-50 bg-background transform transition-transform duration-300 ease-in-out pt-20", isMenuOpen ? "translate-x-0" : "translate-x-full")}>
-        <div className="container mx-auto px-4 flex flex-col space-y-4">
-          <Link to="/" className="text-lg py-2 border-b border-border" onClick={closeMenu}>
+      <div className={cn("fixed inset-0 z-40 bg-background transform transition-transform duration-300 ease-in-out", isMenuOpen ? "translate-x-0" : "translate-x-full")}>
+        <div className="flex flex-col h-full pt-20">
+          <div className="flex-1 overflow-y-auto px-6 py-6">
+            <div className="space-y-6">
+              {/* Navigation Links */}
+              <div className="space-y-4">
+                <Link to="/" className="block text-xl font-medium py-3 border-b border-border/50 hover:text-primary transition-colors" onClick={closeMenu}>
+                  Accueil
+                </Link>
+
+                {/* Formations Section */}
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold text-primary">Formations</h3>
+                  <div className="pl-4 space-y-3">
+                    <Link to="/pourquoi-python-prepa-ecg" onClick={closeMenu} className="flex items-center gap-3 py-2 hover:text-primary transition-colors">
+                      <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                        <Code className="h-4 w-4 text-blue-600" />
+                      </span>
+                      <span>🐍 Python</span>
+                    </Link>
+                    
+                    <Link to="/formation/anglais" onClick={closeMenu} className="flex items-center gap-3 py-2 hover:text-primary transition-colors">
+                      <span className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                        <Languages className="h-4 w-4 text-green-600" />
+                      </span>
+                      <span>🇬🇧 Anglais</span>
+                    </Link>
+
+                    <Link to="/formation/allemand" onClick={closeMenu} className="flex items-center gap-3 py-2 hover:text-primary transition-colors">
+                      <span className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                        <Languages className="h-4 w-4 text-red-600" />
+                      </span>
+                      <span>🇩🇪 Allemand</span>
+                    </Link>
+
+                    <Link to="/formation/geopolitique" onClick={closeMenu} className="flex items-center gap-3 py-2 hover:text-primary transition-colors">
+                      <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                        <Globe className="h-4 w-4 text-orange-600" />
+                      </span>
+                      <span>🌍 Géopolitique</span>
+                    </Link>
+
+                    <Link to="/methodologie/entretiens-personnalite" onClick={closeMenu} className="flex items-center gap-3 py-2 hover:text-primary transition-colors">
+                      <span className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                        <Users className="h-4 w-4 text-purple-600" />
+                      </span>
+                      <span>Entretiens de Personnalité</span>
+                    </Link>
+
+                    <Link to="/formations" onClick={closeMenu} className="flex items-center gap-3 py-2 hover:text-primary transition-colors">
+                      <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                        <BookOpen className="h-4 w-4 text-primary" />
+                      </span>
+                      <span>Toutes nos formations</span>
+                    </Link>
+                  </div>
+                </div>
+
+                <Link to="/generator" className="block text-xl font-medium py-3 border-b border-border/50 hover:text-primary transition-colors" onClick={closeMenu}>
+                  Générateur
+                </Link>
+
+                <Link to="/apropos" className="block text-xl font-medium py-3 border-b border-border/50 hover:text-primary transition-colors" onClick={closeMenu}>
+                  À propos
+                </Link>
+
+                <Link to="/articles" className="block text-xl font-medium py-3 border-b border-border/50 hover:text-primary transition-colors" onClick={closeMenu}>
+                  Conseils / Articles
+                </Link>
+
+                <Link to="/contact" className="block text-xl font-medium py-3 border-b border-border/50 hover:text-primary transition-colors" onClick={closeMenu}>
+                  Prendre un rendez-vous
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Auth Section */}
+          <div className="border-t border-border/50 p-6 bg-accent/30">
+            {currentUser ? (
+              <div className="space-y-4">
+                <Link to="/dashboard" className="flex items-center gap-3 text-lg font-medium py-2 hover:text-primary transition-colors" onClick={closeMenu}>
+                  <BarChart3 className="h-5 w-5" />
+                  Dashboard
+                </Link>
+                {isProfessor && (
+                  <Link to="/prof" className="flex items-center gap-3 text-lg font-medium py-2 hover:text-primary transition-colors" onClick={closeMenu}>
+                    <UserCheck className="h-5 w-5" />
+                    Interface Prof
+                  </Link>
+                )}
+                <Button 
+                  variant="outline" 
+                  onClick={() => {
+                    handleLogout();
+                    closeMenu();
+                  }} 
+                  className="w-full flex items-center justify-center" 
+                  disabled={isLoggingOut}
+                >
+                  <LogOut className="mr-2 h-4 w-4" /> 
+                  {isLoggingOut ? 'Déconnexion...' : 'Déconnexion'}
+                </Button>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                <Link to="/login" className="block text-lg font-medium py-2 hover:text-primary transition-colors" onClick={closeMenu}>
+                  Connexion
+                </Link>
+                <Link to="/register" onClick={closeMenu}>
+                  <Button className="w-full">S'inscrire</Button>
+                </Link>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
             Accueil
           </Link>
 
