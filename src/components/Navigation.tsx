@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { GlobalSearch } from '@/components/search/GlobalSearch';
 import { MobileSearch } from '@/components/search/MobileSearch';
+import { SearchTrigger } from '@/components/search/SearchTrigger';
 import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, BarChart3, Code, Languages, Globe, UserCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
@@ -73,23 +74,22 @@ const Navigation = () => {
   };
 
   return <header className="bg-background shadow-sm border-b border-border">
-      <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
+      <nav className="container mx-auto px-4 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center" onClick={closeMenu}>
-          <img src="/lovable-uploads/73c4719b-7030-411f-8d46-20d32035daba.png" alt="Prepa Rationnelle Logo" className="h-10 mr-2" />
-          <span className="text-xl font-bold text-primary">Prepa Rationnelle</span>
+          <img src="/lovable-uploads/73c4719b-7030-411f-8d46-20d32035daba.png" alt="Prepa Rationnelle Logo" className="h-8" />
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-6">
-          <Link to="/" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
+        <div className="hidden md:flex items-center space-x-4">
+          <Link to="/" className="text-sm text-foreground hover:text-primary transition" onClick={closeMenu}>
             Accueil
           </Link>
           
           {/* Menu déroulant "Formations" */}
           <DropdownMenu>
-            <DropdownMenuTrigger className="text-foreground hover:text-primary transition flex items-center gap-1 focus:outline-none">
+            <DropdownMenuTrigger className="text-sm text-foreground hover:text-primary transition flex items-center gap-1 focus:outline-none">
               Formations
-              <ChevronDown className="h-4 w-4" />
+              <ChevronDown className="h-3 w-3" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="center" className="w-64 bg-popover rounded-lg shadow-lg border p-2">
               <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
@@ -150,51 +150,51 @@ const Navigation = () => {
             </DropdownMenuContent>
           </DropdownMenu>
           
-          <Link to="/generator" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
+          <Link to="/generator" className="text-sm text-foreground hover:text-primary transition" onClick={closeMenu}>
             Générateur
           </Link>
 
-          <Link to="/apropos" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
+          <Link to="/apropos" className="text-sm text-foreground hover:text-primary transition" onClick={closeMenu}>
             À propos
           </Link>
 
-          <Link to="/articles" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
-            Conseils / Articles
+          <Link to="/articles" className="text-sm text-foreground hover:text-primary transition" onClick={closeMenu}>
+            Articles
           </Link>
 
-          <Link to="/contact" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
-            Prendre un rendez-vous
+          <Link to="/contact" className="text-sm text-foreground hover:text-primary transition" onClick={closeMenu}>
+            Contact
           </Link>
 
-          {/* Search Component - Desktop */}
-          <GlobalSearch />
+          {/* Search Trigger - Desktop */}
+          <SearchTrigger />
 
           <ThemeToggle variant="icon" />
 
-          {currentUser ? <div className="flex items-center space-x-4">
-              <Link to="/dashboard" className="text-foreground hover:text-primary transition flex items-center gap-2" onClick={closeMenu}>
-                <BarChart3 className="h-4 w-4" />
+          {currentUser ? <div className="flex items-center space-x-3">
+              <Link to="/dashboard" className="text-sm text-foreground hover:text-primary transition flex items-center gap-1" onClick={closeMenu}>
+                <BarChart3 className="h-3 w-3" />
                 Dashboard
               </Link>
               {isProfessor && (
-                <Link to="/prof" className="text-foreground hover:text-primary transition flex items-center gap-2" onClick={closeMenu}>
-                  <UserCheck className="h-4 w-4" />
-                  Interface Prof
+                <Link to="/prof" className="text-sm text-foreground hover:text-primary transition flex items-center gap-1" onClick={closeMenu}>
+                  <UserCheck className="h-3 w-3" />
+                  Prof
                 </Link>
               )}
               <Button variant="outline" size="sm" onClick={() => {
             handleLogout();
             closeMenu();
-          }} className="flex items-center" disabled={isLoggingOut}>
-                <LogOut className="mr-2 h-4 w-4" /> 
+          }} className="flex items-center h-8 px-3 text-xs" disabled={isLoggingOut}>
+                <LogOut className="mr-1 h-3 w-3" /> 
                 {isLoggingOut ? 'Déconnexion...' : 'Déconnexion'}
               </Button>
             </div> : <>
-              <Link to="/login" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
+              <Link to="/login" className="text-sm text-foreground hover:text-primary transition" onClick={closeMenu}>
                 Connexion
               </Link>
               <Link to="/register" onClick={closeMenu}>
-                <Button>S'inscrire</Button>
+                <Button size="sm" className="h-8 px-3 text-xs">S'inscrire</Button>
               </Link>
             </>}
         </div>
