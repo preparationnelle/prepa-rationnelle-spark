@@ -20,6 +20,7 @@ const Navigation = () => {
   const { isProfessor } = useRoleAccess();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const {
     toast
@@ -73,21 +74,20 @@ const Navigation = () => {
   };
 
   return <header className="bg-background shadow-sm border-b border-border">
-      <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
+      <nav className="container mx-auto px-4 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center" onClick={closeMenu}>
-          <img src="/lovable-uploads/73c4719b-7030-411f-8d46-20d32035daba.png" alt="Prepa Rationnelle Logo" className="h-10 mr-2" />
-          <span className="text-xl font-bold text-primary">Prepa Rationnelle</span>
+          <img src="/lovable-uploads/73c4719b-7030-411f-8d46-20d32035daba.png" alt="Prepa Rationnelle Logo" className="h-8" />
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-6">
+        <div className="hidden lg:flex items-center space-x-8">
           <Link to="/" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
             Accueil
           </Link>
           
           {/* Menu déroulant "Formations" */}
           <DropdownMenu>
-            <DropdownMenuTrigger className="text-foreground hover:text-primary transition flex items-center gap-1 focus:outline-none">
+            <DropdownMenuTrigger className="text-foreground hover:text-primary transition flex items-center gap-1 focus:outline-none text-sm">
               Formations
               <ChevronDown className="h-4 w-4" />
             </DropdownMenuTrigger>
@@ -150,34 +150,57 @@ const Navigation = () => {
             </DropdownMenuContent>
           </DropdownMenu>
           
-          <Link to="/generator" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
+          <Link to="/generator" className="text-foreground hover:text-primary transition text-sm" onClick={closeMenu}>
             Générateur
           </Link>
 
-          <Link to="/apropos" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
+          <Link to="/apropos" className="text-foreground hover:text-primary transition text-sm" onClick={closeMenu}>
             À propos
           </Link>
 
-          <Link to="/articles" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
+          <Link to="/articles" className="text-foreground hover:text-primary transition text-sm" onClick={closeMenu}>
             Conseils / Articles
           </Link>
 
-          <Link to="/contact" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
+          <Link to="/contact" className="text-foreground hover:text-primary transition text-sm" onClick={closeMenu}>
             Prendre un rendez-vous
           </Link>
 
-          {/* Search Component - Desktop */}
-          <GlobalSearch />
+          {/* Search Icon - Desktop */}
+          <div className="relative">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              className="p-2"
+            >
+              <Search className="h-4 w-4" />
+            </Button>
+            
+            {isSearchOpen && (
+              <div className="absolute right-0 top-full mt-2 w-80 bg-background border border-border rounded-lg shadow-lg p-4 z-50">
+                <GlobalSearch />
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setIsSearchOpen(false)}
+                  className="absolute top-2 right-2 p-1"
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
+            )}
+          </div>
 
           <ThemeToggle variant="icon" />
 
           {currentUser ? <div className="flex items-center space-x-4">
-              <Link to="/dashboard" className="text-foreground hover:text-primary transition flex items-center gap-2" onClick={closeMenu}>
+              <Link to="/dashboard" className="text-foreground hover:text-primary transition flex items-center gap-2 text-sm" onClick={closeMenu}>
                 <BarChart3 className="h-4 w-4" />
                 Dashboard
               </Link>
               {isProfessor && (
-                <Link to="/prof" className="text-foreground hover:text-primary transition flex items-center gap-2" onClick={closeMenu}>
+                <Link to="/prof" className="text-foreground hover:text-primary transition flex items-center gap-2 text-sm" onClick={closeMenu}>
                   <UserCheck className="h-4 w-4" />
                   Interface Prof
                 </Link>
@@ -190,7 +213,7 @@ const Navigation = () => {
                 {isLoggingOut ? 'Déconnexion...' : 'Déconnexion'}
               </Button>
             </div> : <>
-              <Link to="/login" className="text-foreground hover:text-primary transition" onClick={closeMenu}>
+              <Link to="/login" className="text-foreground hover:text-primary transition text-sm" onClick={closeMenu}>
                 Connexion
               </Link>
               <Link to="/register" onClick={closeMenu}>
@@ -200,7 +223,7 @@ const Navigation = () => {
         </div>
 
         {/* Mobile Navigation Toggle */}
-        <div className="md:hidden flex items-center gap-2">
+        <div className="lg:hidden flex items-center gap-2">
           <MobileSearch />
           <ThemeToggle variant="icon" />
           <Button variant="ghost" size="icon" onClick={toggleMenu} aria-label="Toggle Menu">
@@ -295,12 +318,12 @@ const Navigation = () => {
           </Link>
           
           {currentUser ? <>
-              <Link to="/dashboard" className="text-lg py-2 border-b border-border flex items-center gap-2" onClick={closeMenu}>
+              <Link to="/dashboard" className="text-lg py-2 border-b border-border flex items-center gap-2 text-sm" onClick={closeMenu}>
                 <BarChart3 className="h-4 w-4" />
                 Dashboard
               </Link>
               {isProfessor && (
-                <Link to="/prof" className="text-lg py-2 border-b border-border flex items-center gap-2" onClick={closeMenu}>
+                <Link to="/prof" className="text-lg py-2 border-b border-border flex items-center gap-2 text-sm" onClick={closeMenu}>
                   <UserCheck className="h-4 w-4" />
                   Interface Prof
                 </Link>
