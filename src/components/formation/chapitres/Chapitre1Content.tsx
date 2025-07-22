@@ -51,7 +51,7 @@ export const Chapitre1Content = () => {
                   Définition 1.2 — Négation
                 </p>
                 <p className="text-slate-700 leading-relaxed">
-                  Pour une proposition <LatexRenderer latex="P" />, on note <LatexRenderer latex="\\lnot P" /> sa proposition contraire (ou négation), vraie lorsque <LatexRenderer latex="P" /> est fausse.
+                  Pour une proposition <LatexRenderer latex="P" />, on note <LatexRenderer latex="\lnot P" /> sa proposition contraire (ou négation), vraie lorsque <LatexRenderer latex="P" /> est fausse.
                 </p>
               </div>
 
@@ -61,8 +61,8 @@ export const Chapitre1Content = () => {
                   Opérations « et », « ou »
                 </p>
                 <p className="text-slate-700 leading-relaxed">
-                  <LatexRenderer latex="P \\land Q" /> est vraie lorsque <LatexRenderer latex="P" /> et <LatexRenderer latex="Q" /> sont vraies ; 
-                  <LatexRenderer latex="P \\lor Q" /> est vraie lorsque l'une au moins des deux l'est.
+                  <LatexRenderer latex="P \land Q" /> est vraie lorsque <LatexRenderer latex="P" /> et <LatexRenderer latex="Q" /> sont vraies ; 
+                  <LatexRenderer latex="P \lor Q" /> est vraie lorsque l'une au moins des deux l'est.
                 </p>
               </div>
 
@@ -71,19 +71,15 @@ export const Chapitre1Content = () => {
                   <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                   Définition 1.3 — Implication et équivalence
                 </p>
-                <div className="text-slate-700 space-y-4 mt-3">
-                  <div>
-                    <LatexRenderer latex="P \\Rightarrow Q" block />
-                    <span>
-                      signifie : si <LatexRenderer latex="P" /> est vraie alors <LatexRenderer latex="Q" /> l'est (<em className="text-slate-600">condition suffisante</em>).
-                    </span>
-                  </div>
-                  <div>
-                    <LatexRenderer latex="P \\Leftrightarrow Q" block />
-                    <span>
-                      signifie : <LatexRenderer latex="P \\Rightarrow Q" /> et <LatexRenderer latex="Q \\Rightarrow P" /> (<em className="text-slate-600">condition nécessaire et suffisante</em>).
-                    </span>
-                  </div>
+                <div className="text-slate-700 space-y-2 mt-3">
+                  <p className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span><LatexRenderer latex="P \Rightarrow Q" /> signifie : si <LatexRenderer latex="P" /> est vraie alors <LatexRenderer latex="Q" /> l'est (<em className="text-slate-600">condition suffisante</em>).</span>
+                  </p>
+                  <p className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span><LatexRenderer latex="P \Leftrightarrow Q" /> signifie : <LatexRenderer latex="P \Rightarrow Q" /> et <LatexRenderer latex="Q \Rightarrow P" /> (<em className="text-slate-600">condition nécessaire et suffisante</em>).</span>
+                  </p>
                 </div>
               </div>
             </div>
@@ -105,15 +101,15 @@ export const Chapitre1Content = () => {
               <div className="text-slate-700 space-y-2 font-medium">
                 <p className="flex items-center gap-3">
                   <span className="text-purple-600 text-lg">∃</span>
-                  <span><LatexRenderer latex="\\exists\\,x" /> : il existe un <LatexRenderer latex="x" /> tel que...</span>
+                  <span><LatexRenderer latex="\exists\,x" /> : il existe un <LatexRenderer latex="x" /> tel que...</span>
                 </p>
                 <p className="flex items-center gap-3">
                   <span className="text-purple-600 text-lg">∃!</span>
-                  <span><LatexRenderer latex="\\exists!\\,x" /> : il existe un <em className="text-slate-600">unique</em> <LatexRenderer latex="x" /> tel que...</span>
+                  <span><LatexRenderer latex="\exists!\,x" /> : il existe un <em className="text-slate-600">unique</em> <LatexRenderer latex="x" /> tel que...</span>
                 </p>
                 <p className="flex items-center gap-3">
                   <span className="text-purple-600 text-lg">∀</span>
-                  <span><LatexRenderer latex="\\forall x" /> : pour tout <LatexRenderer latex="x" />...</span>
+                  <span><LatexRenderer latex="\forall x" /> : pour tout <LatexRenderer latex="x" />...</span>
                 </p>
               </div>
             </div>
@@ -164,7 +160,7 @@ export const Chapitre1Content = () => {
                   Définition 1.7
                 </p>
                 <p className="text-slate-700 leading-relaxed">
-                  La contraposée de <LatexRenderer latex="P \\Rightarrow Q" /> est <LatexRenderer latex="\\lnot Q \\Rightarrow \\lnot P" />.
+                  La contraposée de <LatexRenderer latex="P \Rightarrow Q" /> est <LatexRenderer latex="\lnot Q \Rightarrow \lnot P" />.
                 </p>
               </div>
 
@@ -174,7 +170,7 @@ export const Chapitre1Content = () => {
                   Théorème 1.8
                 </p>
                 <p className="text-slate-700 leading-relaxed">
-                  Les implications <LatexRenderer latex="P \\Rightarrow Q" /> et sa contraposée sont équivalentes.
+                  Les implications <LatexRenderer latex="P \Rightarrow Q" /> et sa contraposée sont équivalentes.
                 </p>
               </div>
 
@@ -184,7 +180,7 @@ export const Chapitre1Content = () => {
                   Méthode 1.9
                 </p>
                 <p className="text-slate-700 leading-relaxed">
-                  Pour prouver <LatexRenderer latex="P \\Rightarrow Q" />, démontrer la contraposée peut être plus simple.
+                  Pour prouver <LatexRenderer latex="P \Rightarrow Q" />, démontrer la contraposée peut être plus simple.
                 </p>
               </div>
             </div>
@@ -205,7 +201,7 @@ export const Chapitre1Content = () => {
                   Théorème 1.10
                 </p>
                 <p className="text-slate-700 leading-relaxed">
-                  <LatexRenderer latex="P \\Rightarrow Q" /> est équivalente à la fausseté de <LatexRenderer latex="P \\land \\lnot Q" />.
+                  <LatexRenderer latex="P \Rightarrow Q" /> est équivalente à la fausseté de <LatexRenderer latex="P \land \lnot Q" />.
                 </p>
               </div>
 
@@ -215,7 +211,7 @@ export const Chapitre1Content = () => {
                   Méthode 1.11
                 </p>
                 <p className="text-slate-700 leading-relaxed">
-                  Supposer <LatexRenderer latex="P" /> et <LatexRenderer latex="\\lnot Q" /> vraies, mener à une contradiction.
+                  Supposer <LatexRenderer latex="P" /> et <LatexRenderer latex="\lnot Q" /> vraies, mener à une contradiction.
                 </p>
               </div>
             </div>
@@ -236,8 +232,8 @@ export const Chapitre1Content = () => {
                   Théorème 1.12 — Récurrence simple
                 </p>
                 <p className="text-slate-700 leading-relaxed">
-                  Si <LatexRenderer latex="P(0)" /> est vraie et <LatexRenderer latex="P(n) \\Rightarrow P(n+1)" /> pour tout <LatexRenderer latex="n\\in\\mathbb{N}" />, 
-                  alors <LatexRenderer latex="\\forall n\\in \\mathbb{N},\\;P(n)" /> est vraie.
+                  Si <LatexRenderer latex="P(0)" /> est vraie et <LatexRenderer latex="P(n) \Rightarrow P(n+1)" /> pour tout <LatexRenderer latex="n\in\mathbb{N}" />, 
+                  alors <LatexRenderer latex="\forall n\in \mathbb{N},\;P(n)" /> est vraie.
                 </p>
               </div>
 
@@ -247,9 +243,9 @@ export const Chapitre1Content = () => {
                   Théorème 1.13 — Récurrence multiple
                 </p>
                 <p className="text-slate-700 leading-relaxed">
-                  Fixé <LatexRenderer latex="k\\ge1" />. Si <LatexRenderer latex="P(0),\\ldots,P(k-1)" /> vraies et 
-                  <LatexRenderer latex="P(n)\\land\\cdots\\land P(n+k-1) \\Rightarrow P(n+k)" />, 
-                  alors <LatexRenderer latex="\\forall n\\in\\mathbb{N},\\,P(n)" /> est vraie.
+                  Fixé <LatexRenderer latex="k\ge1" />. Si <LatexRenderer latex="P(0),\ldots,P(k-1)" /> vraies et 
+                  <LatexRenderer latex="P(n)\land\cdots\land P(n+k-1) \Rightarrow P(n+k)" />, 
+                  alors <LatexRenderer latex="\forall n\in\mathbb{N},\,P(n)" /> est vraie.
                 </p>
               </div>
 
@@ -259,8 +255,8 @@ export const Chapitre1Content = () => {
                   Théorème 1.14 — Récurrence forte
                 </p>
                 <p className="text-slate-700 leading-relaxed">
-                  Si <LatexRenderer latex="P(0)" /> vraie et <LatexRenderer latex="P(0)\\land\\cdots\\land P(n) \\Rightarrow P(n+1)" />, 
-                  alors <LatexRenderer latex="\\forall n\\in\\mathbb{N},\\,P(n)" /> vraie.
+                  Si <LatexRenderer latex="P(0)" /> vraie et <LatexRenderer latex="P(0)\land\cdots\land P(n) \Rightarrow P(n+1)" />, 
+                  alors <LatexRenderer latex="\forall n\in\mathbb{N},\,P(n)" /> vraie.
                 </p>
               </div>
             </div>
@@ -301,4 +297,4 @@ export const Chapitre1Content = () => {
       </Card>
     </div>
   );
-}; 
+};
