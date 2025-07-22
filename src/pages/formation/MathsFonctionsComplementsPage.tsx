@@ -264,3 +264,6 @@ export const Chapitre5Content = () => {
     </div>
   );
 };
+
+// Add default export for lazy loading
+export default Chapitre5Content;
