@@ -261,6 +261,6 @@ export const Chapitre5Content = () => {
           </div>
         </CardContent>
       </Card>
- 
+    </div>
   );
 };
