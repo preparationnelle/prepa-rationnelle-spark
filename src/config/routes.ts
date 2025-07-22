@@ -34,6 +34,8 @@ const PythonFondamentauxExercicesPage = lazy(() => import('../pages/formation/Py
 const PythonMatricesExercicesPage = lazy(() => import('../pages/formation/PythonMatricesExercicesPage'));
 const PythonAnalyseExercicesPage = lazy(() => import('../pages/formation/PythonAnalyseExercicesPage'));
 const PythonProbabilitesExercicesPage = lazy(() => import('../pages/formation/PythonProbabilitesExercicesPage'));
+const MathsFormationPage = lazy(() => import('../pages/formation/MathsFormationPage'));
+const MathsLogiquePage = lazy(() => import('../pages/formation/MathsLogiquePage'));
 
 // Offres pages
 const CoachingPythonPage = lazy(() => import('../pages/offres/CoachingPythonPage'));
@@ -137,6 +139,8 @@ export const routes: RouteConfig[] = [
   { path: '/formation/python-matrices-exercices', component: PythonMatricesExercicesPage, title: 'Exercices Python Matrices' },
   { path: '/formation/python-analyse-exercices', component: PythonAnalyseExercicesPage, title: 'Exercices Python Analyse' },
   { path: '/formation/python-probabilites-exercices', component: PythonProbabilitesExercicesPage, title: 'Exercices Python Probabilités' },
+  { path: '/formation/maths', component: MathsFormationPage, title: 'Formation Maths ECG' },
+  { path: '/formation/maths-logique', component: MathsLogiquePage, title: 'Maths - Éléments de logique' },
   
   // Offres pages
   { path: '/offre/coaching-python', component: CoachingPythonPage, title: 'Coaching Python' },

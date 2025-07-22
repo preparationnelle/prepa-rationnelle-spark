@@ -7,7 +7,7 @@ import { ThemeToggle } from '@/components/ThemeToggle';
 import { GlobalSearch } from '@/components/search/GlobalSearch';
 import { MobileSearch } from '@/components/search/MobileSearch';
 import { SearchTrigger } from '@/components/search/SearchTrigger';
-import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, BarChart3, Code, Languages, Globe, UserCheck } from 'lucide-react';
+import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, BarChart3, Code, Languages, Globe, UserCheck, Calculator } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from '@/components/ui/dropdown-menu';
@@ -63,6 +63,12 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                 <Link to="/pourquoi-python-prepa-ecg" onClick={closeMenu} className="flex items-center gap-3 w-full">
                   <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center"><Code className="h-4 w-4 text-blue-600" /></span>
                   <span>Python</span>
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                <Link to="/formation/maths" onClick={closeMenu} className="flex items-center gap-3 w-full">
+                  <span className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center"><Calculator className="h-4 w-4 text-yellow-600" /></span>
+                  <span>Maths</span>
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
@@ -136,6 +142,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
             <h3 className="text-lg font-medium text-primary">Formations</h3>
             <div className="pl-4 flex flex-col space-y-4">
               <Link to="/pourquoi-python-prepa-ecg" onClick={closeMenu} className="flex items-center gap-3"><span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center"><Code className="h-4 w-4 text-blue-600" /></span><span>🐍 Python</span></Link>
+              <Link to="/formation/maths" onClick={closeMenu} className="flex items-center gap-3"><span className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center"><Calculator className="h-4 w-4 text-yellow-600" /></span><span>🧮 Maths</span></Link>
               <Link to="/formation/anglais" onClick={closeMenu} className="flex items-center gap-3"><span className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center"><Languages className="h-4 w-4 text-green-600" /></span><span>🇬🇧 Anglais</span></Link>
               <Link to="/formation/allemand" onClick={closeMenu} className="flex items-center gap-3"><span className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center"><Languages className="h-4 w-4 text-red-600" /></span><span>🇩🇪 Allemand</span></Link>
               <Link to="/formation/geopolitique" onClick={closeMenu} className="flex items-center gap-3"><span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center"><Globe className="h-4 w-4 text-orange-600" /></span><span>🌍 Géopolitique</span></Link>

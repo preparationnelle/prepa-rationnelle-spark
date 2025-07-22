@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Code, Languages, Globe, Users, BookOpen, Home, ChevronRight } from 'lucide-react';
+import { Code, Languages, Globe, Users, BookOpen, Home, ChevronRight, Calculator } from 'lucide-react';
 
 const FormationsOverviewPage = () => {
   return (
@@ -177,34 +177,34 @@ const FormationsOverviewPage = () => {
               </Card>
             </Link>
 
-            {/* Vue d'ensemble - Card spéciale */}
-            <Card className="h-full bg-gradient-to-r from-primary/5 to-orange-500/5 hover:shadow-xl transition-all duration-300 border-2 border-primary/20 group-hover:border-primary/40">
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <BookOpen className="h-6 w-6 text-primary" />
+            {/* Formation Maths */}
+            <Link to="/formation/maths" className="group">
+              <Card className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-yellow-200">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+                      <Calculator className="h-6 w-6 text-yellow-600" />
+                    </div>
+                    <CardTitle className="text-xl group-hover:text-yellow-600 transition-colors">
+                      Maths ECG
+                    </CardTitle>
                   </div>
-                  <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                    Accompagnement personnalisé
-                  </CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">
-                  Bénéficiez d'un coaching individuel adapté à vos besoins spécifiques et à vos objectifs.
-                </p>
-                <div className="space-y-2 mb-4">
-                  <div className="text-sm text-primary">✓ Coaching sur mesure</div>
-                  <div className="text-sm text-primary">✓ Suivi personnalisé</div>
-                  <div className="text-sm text-primary">✓ Méthodes adaptées</div>
-                </div>
-                <Link to="/coaching">
-                  <Button variant="ghost" className="text-primary group-hover:bg-primary/5 w-full">
-                    Découvrir le coaching →
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 mb-4">
+                    Maîtrisez tout le programme de maths ECG : logique, analyse, probabilités, algèbre, exercices corrigés et méthodes efficaces.
+                  </p>
+                  <div className="space-y-2 mb-4">
+                    <div className="text-sm text-yellow-600">✓ 20 chapitres progressifs</div>
+                    <div className="text-sm text-yellow-600">✓ Exercices type concours</div>
+                    <div className="text-sm text-yellow-600">✓ Méthodes et astuces de prépa</div>
+                  </div>
+                  <Button variant="ghost" className="text-yellow-600 group-hover:bg-yellow-50 w-full">
+                    Découvrir la formation →
                   </Button>
-                </Link>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </Link>
           </div>
 
           <div className="text-center mt-12">
