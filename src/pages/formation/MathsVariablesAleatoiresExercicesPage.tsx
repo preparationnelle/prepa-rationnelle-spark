@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { MathChapterTemplate } = '@/components/formation/MathChapterTemplate';
+import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
 
 const MathsVariablesAleatoiresExercicesPage = () => {
   return (
