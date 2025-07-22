@@ -60,15 +60,15 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="center" className="w-64 bg-popover rounded-lg shadow-lg border p-2">
               <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                <Link to="/pourquoi-python-prepa-ecg" onClick={closeMenu} className="flex items-center gap-3 w-full">
-                  <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center"><Code className="h-4 w-4 text-blue-600" /></span>
-                  <span>Python</span>
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
                 <Link to="/formation/maths" onClick={closeMenu} className="flex items-center gap-3 w-full">
                   <span className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center"><Calculator className="h-4 w-4 text-yellow-600" /></span>
                   <span>Maths</span>
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                <Link to="/pourquoi-python-prepa-ecg" onClick={closeMenu} className="flex items-center gap-3 w-full">
+                  <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center"><Code className="h-4 w-4 text-blue-600" /></span>
+                  <span>Python</span>
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
@@ -141,8 +141,8 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
           <div className="space-y-2 py-2 border-b border-border">
             <h3 className="text-lg font-medium text-primary">Formations</h3>
             <div className="pl-4 flex flex-col space-y-4">
-              <Link to="/pourquoi-python-prepa-ecg" onClick={closeMenu} className="flex items-center gap-3"><span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center"><Code className="h-4 w-4 text-blue-600" /></span><span>🐍 Python</span></Link>
               <Link to="/formation/maths" onClick={closeMenu} className="flex items-center gap-3"><span className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center"><Calculator className="h-4 w-4 text-yellow-600" /></span><span>🧮 Maths</span></Link>
+              <Link to="/pourquoi-python-prepa-ecg" onClick={closeMenu} className="flex items-center gap-3"><span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center"><Code className="h-4 w-4 text-blue-600" /></span><span>🐍 Python</span></Link>
               <Link to="/formation/anglais" onClick={closeMenu} className="flex items-center gap-3"><span className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center"><Languages className="h-4 w-4 text-green-600" /></span><span>🇬🇧 Anglais</span></Link>
               <Link to="/formation/allemand" onClick={closeMenu} className="flex items-center gap-3"><span className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center"><Languages className="h-4 w-4 text-red-600" /></span><span>🇩🇪 Allemand</span></Link>
               <Link to="/formation/geopolitique" onClick={closeMenu} className="flex items-center gap-3"><span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center"><Globe className="h-4 w-4 text-orange-600" /></span><span>🌍 Géopolitique</span></Link>

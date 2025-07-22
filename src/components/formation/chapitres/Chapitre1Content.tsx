@@ -4,7 +4,25 @@ import { LatexRenderer } from "@/components/LatexRenderer";
 
 export const Chapitre1Content = () => {
   return (
-    <div className="space-y-8 max-w-4xl mx-auto px-4 py-8">
+    <>
+      {/* Breadcrumb moderne */}
+      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+        <div className="container mx-auto px-4 py-2">
+          <div className="flex items-center text-xs font-medium text-[#2D5BFF]">
+            <a href="/" className="flex items-center gap-1 hover:text-[#1e3a8a] transition-colors">
+              <svg className="h-3 w-3 text-[#2D5BFF]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6" /></svg>
+              <span>Accueil</span>
+            </a>
+            <span className="mx-1 text-[#2D5BFF]/50">›</span>
+            <a href="/formations" className="hover:text-[#1e3a8a] transition-colors">Toutes les formations</a>
+            <span className="mx-1 text-[#2D5BFF]/50">›</span>
+            <a href="/formation/maths" className="hover:text-[#1e3a8a] transition-colors">Formation Maths ECG</a>
+            <span className="mx-1 text-[#2D5BFF]/50">›</span>
+            <span className="text-[#2D5BFF] font-bold">Logique et méthodes de raisonnement</span>
+          </div>
+        </div>
+      </nav>
+      <div className="space-y-8 max-w-4xl mx-auto px-4 py-8">
       {/* Introduction */}
       <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-indigo-50">
         <CardHeader className="pb-3">
@@ -296,5 +314,6 @@ export const Chapitre1Content = () => {
         </CardContent>
       </Card>
     </div>
+    </>
   );
 };

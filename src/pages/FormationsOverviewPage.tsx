@@ -32,6 +32,34 @@ const FormationsOverviewPage = () => {
           </p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {/* Formation Maths */}
+            <Link to="/formation/maths" className="group">
+              <Card className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-yellow-200">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+                      <Calculator className="h-6 w-6 text-yellow-600" />
+                    </div>
+                    <CardTitle className="text-xl group-hover:text-yellow-600 transition-colors">
+                      Maths ECG
+                    </CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 mb-4">
+                    Maîtrisez tout le programme de maths ECG : logique, analyse, probabilités, algèbre, exercices corrigés et méthodes efficaces.
+                  </p>
+                  <div className="space-y-2 mb-4">
+                    <div className="text-sm text-yellow-600">✓ 20 chapitres progressifs</div>
+                    <div className="text-sm text-yellow-600">✓ Exercices type concours</div>
+                    <div className="text-sm text-yellow-600">✓ Méthodes et astuces de prépa</div>
+                  </div>
+                  <Button variant="ghost" className="text-yellow-600 group-hover:bg-yellow-50 w-full">
+                    Découvrir la formation →
+                  </Button>
+                </CardContent>
+              </Card>
+            </Link>
             {/* Formation Python */}
             <Link to="/formation" className="group">
               <Card className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-blue-200">
@@ -172,35 +200,6 @@ const FormationsOverviewPage = () => {
                   </div>
                   <Button variant="ghost" className="text-purple-600 group-hover:bg-purple-50 w-full">
                     Préparer mes entretiens →
-                  </Button>
-                </CardContent>
-              </Card>
-            </Link>
-
-            {/* Formation Maths */}
-            <Link to="/formation/maths" className="group">
-              <Card className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-yellow-200">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
-                      <Calculator className="h-6 w-6 text-yellow-600" />
-                    </div>
-                    <CardTitle className="text-xl group-hover:text-yellow-600 transition-colors">
-                      Maths ECG
-                    </CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    Maîtrisez tout le programme de maths ECG : logique, analyse, probabilités, algèbre, exercices corrigés et méthodes efficaces.
-                  </p>
-                  <div className="space-y-2 mb-4">
-                    <div className="text-sm text-yellow-600">✓ 20 chapitres progressifs</div>
-                    <div className="text-sm text-yellow-600">✓ Exercices type concours</div>
-                    <div className="text-sm text-yellow-600">✓ Méthodes et astuces de prépa</div>
-                  </div>
-                  <Button variant="ghost" className="text-yellow-600 group-hover:bg-yellow-50 w-full">
-                    Découvrir la formation →
                   </Button>
                 </CardContent>
               </Card>
