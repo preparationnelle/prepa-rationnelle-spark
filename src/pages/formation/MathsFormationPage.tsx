@@ -88,61 +88,99 @@ const MathsFormationPage = () => {
       {/* Grille chapitres */}
       <div className="container mx-auto px-4 pb-16">
         {/* Semestre 1 */}
-        <h2 className="text-2xl font-bold mb-6 text-[#2D5BFF] text-center">Semestre 1</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {SEMESTRE_1.map((chap) => (
-            <div key={chap.id} className="rounded-3xl bg-white shadow-xl p-6 flex flex-col gap-4 items-center border border-[#F5F7FF] transition-transform hover:scale-[1.025] hover:shadow-2xl">
-              {/* Header chapitre */}
-              <div className="flex flex-col items-center w-full mb-2">
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#F5F7FF] shadow text-lg font-bold text-[#2D5BFF] border-2 border-[#E0E7FF]">{chap.id}</span>
-                  <span className="text-lg md:text-xl font-bold text-[#2D5BFF] text-center">{chap.title}</span>
-                </div>
-              </div>
-              {/* Actions */}
-              <div className="flex gap-4 w-full">
-                    <Link to={`/formation/maths-${chap.slug}`} className="w-1/2">
-                  <button className="w-full py-2 rounded-2xl bg-[#2D5BFF] text-white font-semibold shadow-lg text-base flex items-center justify-center gap-2 transition-all duration-200 hover:bg-[#6B5FFF] hover:shadow-xl">
-                    <BookOpen className="h-5 w-5" /> Cours
-                  </button>
-                    </Link>
-                    <Link to={`/formation/maths-${chap.slug}-exercices`} className="w-1/2">
-                  <button className="w-full py-2 rounded-2xl bg-[#FF5C1B] text-white font-semibold shadow-lg text-base flex items-center justify-center gap-2 transition-all duration-200 hover:bg-[#FF7C4D] hover:shadow-xl">
-                    <Play className="h-5 w-5" /> Exercice
-                  </button>
-                    </Link>
-                  </div>
+        <h2 className="text-2xl font-bold mb-6 text-[#2D5BFF] text-center">Chapitres — Semestre 1</h2>
+        <div className="flex flex-col gap-4">
+          {SEMESTRE_1.map((chap) => (
+            <div
+              key={chap.id}
+              className="group relative flex items-center bg-white rounded-2xl shadow p-3 md:p-4 border border-[#F5F7FF] transition hover:shadow-2xl hover:-translate-y-0.5 cursor-pointer focus-within:ring-2 focus-within:ring-[#2D5BFF]"
+              tabIndex={0}
+              onClick={() => window.location.href = `/formation/maths-${chap.slug}`}
+              onKeyDown={e => { if (e.key === 'Enter') window.location.href = `/formation/maths-${chap.slug}`; }}
+              aria-label={`Accéder au cours ${chap.title}`}
+            >
+              {/* Badge numéro */}
+              <span className="flex-shrink-0 w-10 h-10 rounded-full bg-[#F5F7FF] shadow text-lg font-bold text-[#2D5BFF] border-2 border-[#E0E7FF] flex items-center justify-center mr-4">{chap.id}</span>
+              {/* Titre chapitre */}
+              <span className="text-base md:text-lg font-semibold text-[#2D5BFF] flex-1 group-hover:underline">
+                {chap.title}
+              </span>
+              {/* Bouton Cours */}
+              <Link
+                to={`/formation/maths-${chap.slug}`}
+                className="ml-4 z-10"
+                tabIndex={0}
+                aria-label={`Accéder au cours de ${chap.title}`}
+                onClick={e => e.stopPropagation()}
+                onKeyDown={e => e.stopPropagation()}
+              >
+                <button className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#2D5BFF] text-white font-semibold shadow hover:bg-[#6B5FFF] transition">
+                  <BookOpen className="h-5 w-5" /> Cours
+                </button>
+              </Link>
+              {/* Bouton Exercice */}
+              <Link
+                to={`/formation/maths-${chap.slug}-exercices`}
+                className="ml-4 z-10"
+                tabIndex={0}
+                aria-label={`Accéder aux exercices de ${chap.title}`}
+                onClick={e => e.stopPropagation()}
+                onKeyDown={e => e.stopPropagation()}
+              >
+                <button className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FF5C1B] text-white font-semibold shadow hover:bg-[#FF7C4D] transition">
+                  <Play className="h-5 w-5" /> Exercice
+                </button>
+              </Link>
             </div>
-            ))}
+          ))}
         </div>
 
         {/* Semestre 2 */}
-        <h2 className="text-2xl font-bold mt-16 mb-6 text-[#6B5FFF] text-center">Semestre 2</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {SEMESTRE_2.map((chap) => (
-            <div key={chap.id} className="rounded-3xl bg-white shadow-xl p-6 flex flex-col gap-4 items-center border border-[#F5F7FF] transition-transform hover:scale-[1.025] hover:shadow-2xl">
-              {/* Header chapitre */}
-              <div className="flex flex-col items-center w-full mb-2">
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#F5F7FF] shadow text-lg font-bold text-[#6B5FFF] border-2 border-[#E0E7FF]">{chap.id}</span>
-                  <span className="text-lg md:text-xl font-bold text-[#6B5FFF] text-center">{chap.title}</span>
-                </div>
-              </div>
-              {/* Actions */}
-              <div className="flex gap-4 w-full">
-                    <Link to={`/formation/maths-${chap.slug}`} className="w-1/2">
-                  <button className="w-full py-2 rounded-2xl bg-[#2D5BFF] text-white font-semibold shadow-lg text-base flex items-center justify-center gap-2 transition-all duration-200 hover:bg-[#6B5FFF] hover:shadow-xl">
-                    <BookOpen className="h-5 w-5" /> Cours
-                  </button>
-                    </Link>
-                    <Link to={`/formation/maths-${chap.slug}-exercices`} className="w-1/2">
-                  <button className="w-full py-2 rounded-2xl bg-[#FF5C1B] text-white font-semibold shadow-lg text-base flex items-center justify-center gap-2 transition-all duration-200 hover:bg-[#FF7C4D] hover:shadow-xl">
-                    <Play className="h-5 w-5" /> Exercice
-                  </button>
-                    </Link>
-                  </div>
+        <h2 className="text-2xl font-bold mt-12 mb-6 text-[#6B5FFF] text-center">Chapitres — Semestre 2</h2>
+        <div className="flex flex-col gap-4">
+          {SEMESTRE_2.map((chap) => (
+            <div
+              key={chap.id}
+              className="group relative flex items-center bg-white rounded-2xl shadow p-3 md:p-4 border border-[#F5F7FF] transition hover:shadow-2xl hover:-translate-y-0.5 cursor-pointer focus-within:ring-2 focus-within:ring-[#6B5FFF]"
+              tabIndex={0}
+              onClick={() => window.location.href = `/formation/maths-${chap.slug}`}
+              onKeyDown={e => { if (e.key === 'Enter') window.location.href = `/formation/maths-${chap.slug}`; }}
+              aria-label={`Accéder au cours ${chap.title}`}
+            >
+              {/* Badge numéro */}
+              <span className="flex-shrink-0 w-10 h-10 rounded-full bg-[#F5F7FF] shadow text-lg font-bold text-[#6B5FFF] border-2 border-[#E0E7FF] flex items-center justify-center mr-4">{chap.id}</span>
+              {/* Titre chapitre */}
+              <span className="text-base md:text-lg font-semibold text-[#6B5FFF] flex-1 group-hover:underline">
+                {chap.title}
+              </span>
+              {/* Bouton Cours */}
+              <Link
+                to={`/formation/maths-${chap.slug}`}
+                className="ml-4 z-10"
+                tabIndex={0}
+                aria-label={`Accéder au cours de ${chap.title}`}
+                onClick={e => e.stopPropagation()}
+                onKeyDown={e => e.stopPropagation()}
+              >
+                <button className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#2D5BFF] text-white font-semibold shadow hover:bg-[#6B5FFF] transition">
+                  <BookOpen className="h-5 w-5" /> Cours
+                </button>
+              </Link>
+              {/* Bouton Exercice */}
+              <Link
+                to={`/formation/maths-${chap.slug}-exercices`}
+                className="ml-4 z-10"
+                tabIndex={0}
+                aria-label={`Accéder aux exercices de ${chap.title}`}
+                onClick={e => e.stopPropagation()}
+                onKeyDown={e => e.stopPropagation()}
+              >
+                <button className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FF5C1B] text-white font-semibold shadow hover:bg-[#FF7C4D] transition">
+                  <Play className="h-5 w-5" /> Exercice
+                </button>
+              </Link>
             </div>
-            ))}
+          ))}
         </div>
       </div>
     </div>
