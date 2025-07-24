@@ -34,7 +34,7 @@ const PythonFondamentauxExercicesPage = lazy(() => import('../pages/formation/Py
 const PythonMatricesExercicesPage = lazy(() => import('../pages/formation/PythonMatricesExercicesPage'));
 const PythonAnalyseExercicesPage = lazy(() => import('../pages/formation/PythonAnalyseExercicesPage'));
 const PythonProbabilitesExercicesPage = lazy(() => import('../pages/formation/PythonProbabilitesExercicesPage'));
-const MathsFormationPage = lazy(() => import('../pages/formation/MathsFormationPage'));
+const MathsApprofondiesPage = lazy(() => import('../pages/formation/MathsApprofondiesPage'));
 const MathsLogiquePage = lazy(() => import('../pages/formation/MathsLogiquePage'));
 
 // Math chapter pages - Semester 1
@@ -139,6 +139,7 @@ export interface RouteConfig {
   exact?: boolean;
 }
 
+// Routes principales pour les formations mathématiques
 export const routes: RouteConfig[] = [
   // Main pages
   { path: '/', component: HomePage, title: 'Accueil' },
@@ -186,7 +187,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/python-matrices-exercices', component: PythonMatricesExercicesPage, title: 'Exercices Python Matrices' },
   { path: '/formation/python-analyse-exercices', component: PythonAnalyseExercicesPage, title: 'Exercices Python Analyse' },
   { path: '/formation/python-probabilites-exercices', component: PythonProbabilitesExercicesPage, title: 'Exercices Python Probabilités' },
-  { path: '/formation/maths', component: MathsFormationPage, title: 'Formation Maths ECG' },
+  { path: '/formation/maths', component: MathsApprofondiesPage, title: 'Formation Maths ECG' },
   { path: '/formation/maths-logique', component: MathsLogiquePage, title: 'Maths - Éléments de logique' },
   { path: '/formation/maths-ensembles', component: MathsEnsemblesPage, title: 'Maths - Ensembles et applications' },
   { path: '/formation/maths-entiers', component: MathsEntiersPage, title: 'Maths - Entiers' },
@@ -265,8 +266,47 @@ export const routes: RouteConfig[] = [
   { path: '/generator/school-profile', component: SchoolProfileGeneratorPage, title: 'Profil d\'École' },
   { path: '/generator/theme-grammar', component: ThemeGrammarGeneratorPage, title: 'Grammaire Thématique' },
   
+  // Routes pour les formations mathématiques
+  { 
+    path: '/formation/maths-choix', 
+    component: lazy(() => import('../pages/formation/MathsChoixOptionPage')),
+    title: 'Choix option Maths ECG',
+    protected: true 
+  },
+  { 
+    path: '/formation/maths-approfondies', 
+    component: lazy(() => import('../pages/formation/MathsApprofondiesPage')),
+    title: 'Maths Approfondies',
+    protected: true 
+  },
+  { 
+    path: '/formation/maths-appliquees', 
+    component: lazy(() => import('../pages/formation/MathsAppliqueesPage')),
+    title: 'Maths Appliquées',
+    protected: true 
+  },
+  
   // 404 - Must be last
   { path: '*', component: NotFound, title: 'Page non trouvée' }
+];
+
+// Routes pour les formations mathématiques
+export const MATHS_ROUTES = [
+  {
+    path: '/formation/maths-choix',
+    component: lazy(() => import('@/pages/formation/MathsChoixOptionPage')),
+    protected: true
+  },
+  {
+    path: '/formation/maths-approfondies',
+    component: lazy(() => import('@/pages/formation/MathsApprofondiesPage')),
+    protected: true
+  },
+  {
+    path: '/formation/maths-appliquees',
+    component: lazy(() => import('@/pages/formation/MathsAppliqueesPage')),
+    protected: true
+  },
 ];
 
 // Helper functions
