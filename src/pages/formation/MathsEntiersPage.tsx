@@ -160,7 +160,7 @@ const MathsEntiersPage = () => {
               <div>
                 <h3 className="text-xl font-bold mb-2 text-slate-800">Symétrie</h3>
                 <p className="mb-2">Les coefficients binomiaux vérifient la relation de symétrie :</p>
-                {orangeBox(<LatexRenderer latex={'\\boxed{\\displaystyle \\binom{n}{p} = \\binom{n}{n-p}}'} />)}
+                {orangeBox(<LatexRenderer latex={'\\displaystyle \\binom{n}{p} = \\binom{n}{n-p}'} />)}
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-2 text-slate-800">Relations « diagonales »</h3>

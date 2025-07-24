@@ -18,10 +18,10 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
   children
 }) => {
   return (
-    <div className="min-h-screen bg-[#EEF3FC] py-8">
+    <div className="min-h-screen bg-[#EEF3FC]">
       {/* Breadcrumb moderne */}
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
-        <div className="container mx-auto px-4 py-2">
+        <div className="container mx-auto px-0 py-0">
           <div className="flex items-center text-xs font-medium text-[#2D5BFF]">
             <Link to="/" className="flex items-center gap-1 hover:text-[#1e3a8a] transition-colors">
               <Home className="h-3 w-3 text-[#2D5BFF]" />
@@ -41,7 +41,7 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
         </div>
       </nav>
 
-      <div className="space-y-8 max-w-4xl mx-auto px-4 py-8">
+      <div className="space-y-8 max-w-5xl mx-auto px-4 py-8">
         {/* Introduction */}
         <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-purple-50">
           <CardHeader className="pb-3">
