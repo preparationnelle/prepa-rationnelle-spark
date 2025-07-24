@@ -8,7 +8,7 @@ import PythonNavigationTabs from '@/components/formation/PythonNavigationTabs';
 
 const PythonFlashcardsPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-[#F8FAFF]">
       {/* Fil d'Ariane identique aux autres pages */}
       <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2 flex justify-between items-center">

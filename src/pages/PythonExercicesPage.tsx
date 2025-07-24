@@ -45,9 +45,9 @@ const PythonExercicesPage: React.FC = () => {
     link: "/formation/python-probabilites-exercices",
     topics: ["Distributions de probabilité", "Échantillonnage et simulation", "Tests statistiques", "Intervalles de confiance", "Applications ECG"]
   }];
-  return <div className="min-h-screen bg-gradient-to-br from-background to-muted">
+  return <div className="min-h-screen bg-[#F8FAFF]">
       {/* Breadcrumb Navigation */}
-      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -67,7 +67,7 @@ const PythonExercicesPage: React.FC = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-[#FF6B00] to-[#FF7A1C] bg-clip-text text-transparent">
             Exercices Python ECG
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -83,17 +83,17 @@ const PythonExercicesPage: React.FC = () => {
           {exerciseModules.map(module => {
           const IconComponent = module.icon;
           const colorClasses = {
-            orange: "from-orange-500/20 to-orange-600/20 border-orange-200 dark:border-orange-800",
-            green: "from-green-500/20 to-green-600/20 border-green-200 dark:border-green-800",
-            blue: "from-blue-500/20 to-blue-600/20 border-blue-200 dark:border-blue-800",
-            purple: "from-purple-500/20 to-purple-600/20 border-purple-200 dark:border-purple-800"
+            orange: "from-[#FF6B00]/10 to-[#FF7A1C]/10 border-[#FF7A1C] hover:border-[#FF6B00]",
+            green: "from-green-100 to-green-50 border-green-200 hover:border-green-400",
+            blue: "from-blue-100 to-blue-50 border-blue-200 hover:border-blue-400",
+            purple: "from-purple-100 to-purple-50 border-purple-200 hover:border-purple-400"
           };
           return <Link key={module.id} to={module.link} className="block">
-                <Card className={`bg-gradient-to-br ${colorClasses[module.color as keyof typeof colorClasses]} transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer`}>
+                <Card className={`bg-gradient-to-br ${colorClasses[module.color as keyof typeof colorClasses]} transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer border-2`}>
                   <CardHeader>
                     <div className="flex items-center gap-3 mb-2">
-                      <div className={`p-2 rounded-lg bg-${module.color}-100 dark:bg-${module.color}-900/20`}>
-                        <IconComponent className={`h-6 w-6 text-${module.color}-600 dark:text-${module.color}-400`} />
+                      <div className={`p-2 rounded-lg ${module.color === 'orange' ? 'bg-[#FF7A1C]/10' : `bg-${module.color}-100`}` }>
+                        <IconComponent className={`h-6 w-6 ${module.color === 'orange' ? 'text-[#FF6B00]' : `text-${module.color}-600`}` } />
                       </div>
                       <CardTitle className="text-xl">{module.title}</CardTitle>
                     </div>

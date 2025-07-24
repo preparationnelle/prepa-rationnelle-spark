@@ -61,10 +61,10 @@ const FormationPage = () => {
     color: "bg-purple-500",
     available: true
   }];
-  return <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-[#F8FAFF]">
     {/* <Navigation /> Barre de navigation supprimée */}
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">

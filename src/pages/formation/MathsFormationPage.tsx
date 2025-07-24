@@ -22,20 +22,20 @@ const SEMESTRE_1 = [
   { id: 6, slug: 'derivation', title: 'Dérivation' },
   { id: 7, slug: 'integration', title: 'Intégration' },
   { id: 8, slug: 'polynomes', title: 'Polynômes et trigonométrie' },
-  { id: 9, slug: 'espaces-vectoriels', title: 'Espaces vectoriels' },
-  { id: 10, slug: 'probabilites-finies', title: 'Probabilités sur un univers fini' },
+  { id: 9, slug: 'espaces-vectoriels', title: 'Matrices, systèmes linéaires et espaces vectoriels' },
+  { id: 10, slug: 'probabilites-finies', title: 'Espaces probabilisés et conditionnement' },
 ];
 
 const SEMESTRE_2 = [
-  { id: 11, slug: 'espaces-vectoriels-complements', title: 'Espaces vectoriels : compléments' },
-  { id: 12, slug: 'comparaisons', title: 'Comparaisons' },
-  { id: 13, slug: 'series', title: 'Séries numériques' },
-  { id: 14, slug: 'developpements-limites', title: 'Développements limités' },
-  { id: 15, slug: 'fonctions-complements', title: 'Compléments sur l’étude de fonctions' },
-  { id: 16, slug: 'integration-intervalle', title: 'Intégration sur un intervalle quelconque' },
-  { id: 17, slug: 'probabilites-univers', title: 'Probabilités sur un univers quelconque' },
-  { id: 18, slug: 'variables-aleatoires', title: 'Variables aléatoires réelles discrètes' },
-  { id: 19, slug: 'inegalites', title: 'Inégalités et convergences' },
+  { id: 11, slug: 'espaces-vectoriels-complements', title: 'Applications linéaires et structures vectorielles' },
+  { id: 12, slug: 'comparaisons', title: 'Négligeabilité et équivalence asymptotique' },
+  { id: 13, slug: 'series', title: 'Séries numériques et convergence' },
+  { id: 14, slug: 'developpements-limites', title: 'Développements limités et formule de Taylor' },
+  { id: 15, slug: 'fonctions-complements', title: 'Compléments sur l\'étude de fonctions' },
+  { id: 16, slug: 'integration-intervalle', title: 'Intégrales impropres et critères de convergence' },
+  { id: 17, slug: 'probabilites-univers', title: 'Espaces probabilisés et probabilités conditionnelles' },
+  { id: 18, slug: 'variables-aleatoires', title: 'Variables aléatoires discrètes et lois de probabilité' },
+  { id: 19, slug: 'inegalites', title: 'Convergences et théorèmes limites' },
   { id: 20, slug: 'python', title: 'Python' },
 ];
 
@@ -224,4 +224,4 @@ const MathsApprofondiesPage = () => {
   );
 };
 
-export default MathsApprofondiesPage; 
+export default MathsApprofondiesPage;
