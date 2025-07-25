@@ -12,8 +12,8 @@ const MathsDerivationPage = () => {
   return (
     <MathChapterTemplate
       chapterNumber={6}
-      chapterTitle="Dérivation"
-      description="Dérivabilité et calcul différentiel"
+      chapterTitle="Chapitre 6 : Dérivation"
+      description="Dérivabilité, calcul différentiel, règles de dérivation, théorèmes de Rolle et des accroissements finis, extremums et convexité"
     >
       <div className="space-y-8 py-8">
         <Card className="border-0 shadow-xl hover:shadow-2xl transition-shadow duration-300">

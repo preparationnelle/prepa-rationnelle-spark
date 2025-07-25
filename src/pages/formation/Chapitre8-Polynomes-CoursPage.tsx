@@ -22,8 +22,8 @@ const MathsPolynomesPage = () => {
   return (
     <MathChapterTemplate
       chapterNumber={8}
-      chapterTitle="Polynômes"
-      description="Définitions, opérations, dérivation, racines et factorisation"
+      chapterTitle="Chapitre 8 : Polynômes"
+      description="Définitions, opérations (somme, produit, division euclidienne), dérivées, racines & factorisation (trinôme, discriminant, relations racines-coefficients), binôme de Newton & formule de Taylor"
     >
       <div className="space-y-8 py-8">
         <Card className="border-0 shadow-xl hover:shadow-2xl transition-shadow duration-300">

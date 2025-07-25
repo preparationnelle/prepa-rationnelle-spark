@@ -22,8 +22,8 @@ const Box = ({ color, title, children }: { color: string, title: string, childre
 const MathsFonctionsPage = () => (
   <MathChapterTemplate
     chapterNumber={5}
-    chapterTitle="Fonctions d'une variable réelle"
-    description="Fonctions, propriétés, continuité, limites, trigonométrie"
+    chapterTitle="Chapitre 5 : Fonctions d’une variable réelle"
+    description="Généralités (parité, périodicité, bornes, variations) ; limites et opérations sur les limites ; continuité et théorèmes fondamentaux (valeurs intermédiaires, Weierstrass, bijection continue) ; fonctions usuelles et trigonométriques"
   >
     <div className="space-y-8 py-8 max-w-4xl mx-auto px-6 md:px-10">
       {/* 1. Fonctions d'une variable réelle */}

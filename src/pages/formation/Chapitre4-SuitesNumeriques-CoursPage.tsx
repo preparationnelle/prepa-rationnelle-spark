@@ -13,8 +13,8 @@ const MathsSuitesPage = () => {
     <div className="bg-[#EEF3FC] min-h-screen">
       <MathChapterTemplate
         chapterNumber={4}
-        chapterTitle="Suites : bornes, variations, convergence et théorèmes fondamentaux"
-        description="Définitions, propriétés, opérations sur les limites, théorèmes de convergence, suites extraites et résultats essentiels pour la prépa ECG Math Appro."
+        chapterTitle="Chapitre 4 : Suites numériques"
+        description="Bornes, variations & convergence — définitions des suites réelles, opérations sur les limites ; théorèmes de convergence (monotone, encadrement, comparaison, suites adjacentes, point fixe) ; suites extraites"
       >
         <div className="space-y-8 py-8">
           <Card className="border-0 shadow-xl hover:shadow-2xl transition-shadow duration-300">

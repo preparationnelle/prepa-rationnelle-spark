@@ -38,15 +38,15 @@ const MathsApprofondiesPage = lazy(() => import('../pages/formation/MathsApprofo
 const MathsLogiquePage = lazy(() => import('../pages/formation/Chapitre1-LogiqueEtRaisonnementFondamentaux-CoursPage'));
 
 // Math chapter pages - Semester 1
-const MathsEnsemblesPage = lazy(() => import('../pages/formation/MathsEnsemblesPage'));
-const MathsEntiersPage = lazy(() => import('../pages/formation/MathsEntiersPage'));
-const MathsSuitesPage = lazy(() => import('../pages/formation/MathsSuitesPage'));
-const MathsFonctionsPage = lazy(() => import('../pages/formation/MathsFonctionsPage'));
-const MathsDerivationPage = lazy(() => import('../pages/formation/MathsDerivationPage'));
-const MathsIntegrationPage = lazy(() => import('../pages/formation/MathsIntegrationPage'));
-const MathsPolynomesPage = lazy(() => import('../pages/formation/MathsPolynomesPage'));
-const MathsEspacesVectorielsPage = lazy(() => import('../pages/formation/MathsEspacesVectorielsPage'));
-const MathsProbabilitesFiniesPage = lazy(() => import('../pages/formation/MathsProbabilitesFiniesPage'));
+const MathsEnsemblesPage = lazy(() => import('../pages/formation/Chapitre2-EnsemblesEtApplications-CoursPage'));
+const MathsEntiersPage = lazy(() => import('../pages/formation/Chapitre3-SommesProduitsEtCoefficientsBinomiaux-CoursPage'));
+const MathsSuitesPage = lazy(() => import('../pages/formation/Chapitre4-SuitesNumeriques-CoursPage'));
+const MathsFonctionsPage = lazy(() => import('../pages/formation/Chapitre5-FonctionsUneVariableReelle-CoursPage'));
+const MathsDerivationPage = lazy(() => import('../pages/formation/Chapitre6-Derivation-CoursPage'));
+const MathsIntegrationPage = lazy(() => import('../pages/formation/Chapitre7-IntegrationSurUnSegment-CoursPage'));
+const MathsPolynomesPage = lazy(() => import('../pages/formation/Chapitre8-Polynomes-CoursPage'));
+const MathsEspacesVectorielsPage = lazy(() => import('../pages/formation/Chapitre9-MatricesEtEspacesVectoriels-CoursPage'));
+const MathsProbabilitesFiniesPage = lazy(() => import('../pages/formation/Chapitre10-ProbabilitesEtConditionnement-CoursPage'));
 
 // Math chapter pages - Semester 2
 const MathsEspacesVectorielsComplementsPage = lazy(() => import('../pages/formation/MathsEspacesVectorielsComplementsPage'));
@@ -188,16 +188,21 @@ export const routes: RouteConfig[] = [
   { path: '/formation/python-analyse-exercices', component: PythonAnalyseExercicesPage, title: 'Exercices Python Analyse' },
   { path: '/formation/python-probabilites-exercices', component: PythonProbabilitesExercicesPage, title: 'Exercices Python Probabilités' },
   { path: '/formation/maths', component: MathsApprofondiesPage, title: 'Formation Maths ECG' },
-  { path: '/formation/maths-logique', component: MathsLogiquePage, title: 'Chapitre 1 : Logique & raisonnement fondamentaux' },
+  { path: '/formation/maths-elements-de-logique', component: MathsLogiquePage, title: 'Chapitre 1 : Logique & raisonnement fondamentaux' },
   { path: '/formation/maths-ensembles', component: MathsEnsemblesPage, title: 'Maths - Ensembles et applications' },
-  { path: '/formation/maths-entiers', component: MathsEntiersPage, title: 'Maths - Entiers' },
+  { path: '/formation/maths-ensembles-et-applications', component: MathsEnsemblesPage, title: 'Maths - Ensembles et applications' },
+  { path: '/formation/maths-sommes-produits-coefficients-binomiaux', component: MathsEntiersPage, title: 'Maths - Sommes, produits & coefficients binomiaux' },
   { path: '/formation/maths-suites', component: MathsSuitesPage, title: 'Maths - Suites numériques' },
+  { path: '/formation/maths-suites-numeriques', component: MathsSuitesPage, title: 'Maths - Suites numériques' },
   { path: '/formation/maths-fonctions', component: MathsFonctionsPage, title: 'Maths - Fonctions réelles — continuité' },
+  { path: '/formation/maths-fonctions-d-une-variable-reelle', component: MathsFonctionsPage, title: 'Maths - Fonctions d’une variable réelle' },
   { path: '/formation/maths-derivation', component: MathsDerivationPage, title: 'Maths - Dérivation' },
   { path: '/formation/maths-integration', component: MathsIntegrationPage, title: 'Maths - Intégration' },
-  { path: '/formation/maths-polynomes', component: MathsPolynomesPage, title: 'Maths - Polynômes et trigonométrie' },
-  { path: '/formation/maths-espaces-vectoriels', component: MathsEspacesVectorielsPage, title: 'Maths - Espaces vectoriels' },
+  { path: '/formation/maths-polynomes', component: MathsPolynomesPage, title: 'Maths - Polynômes' },
+  { path: '/formation/maths-matrices-espaces-vectoriels', component: MathsEspacesVectorielsPage, title: 'Maths - Matrices & espaces vectoriels' },
+  { path: '/formation/maths-espaces-vectoriels', component: MathsEspacesVectorielsPage, title: 'Maths - Matrices & espaces vectoriels' },
   { path: '/formation/maths-probabilites-finies', component: MathsProbabilitesFiniesPage, title: 'Maths - Probabilités sur un univers fini' },
+  { path: '/formation/maths-probabilites-conditionnement', component: MathsProbabilitesFiniesPage, title: 'Maths - Probabilités & conditionnement' },
   { path: '/formation/maths-espaces-vectoriels-complements', component: MathsEspacesVectorielsComplementsPage, title: 'Maths - Espaces vectoriels : compléments' },
   { path: '/formation/maths-comparaisons', component: MathsComparaisonsPage, title: 'Maths - Comparaisons' },
   { path: '/formation/maths-series', component: MathsSeriesPage, title: 'Maths - Séries numériques' },
@@ -284,6 +289,12 @@ export const routes: RouteConfig[] = [
     component: lazy(() => import('../pages/formation/MathsAppliqueesPage')),
     title: 'Maths Appliquées',
     protected: true 
+  },
+  {
+    path: '/formation/maths-integration-sur-un-segment',
+    component: MathsIntegrationPage,
+    title: 'Maths - Intégration sur un segment',
+    protected: true
   },
   
   // 404 - Must be last

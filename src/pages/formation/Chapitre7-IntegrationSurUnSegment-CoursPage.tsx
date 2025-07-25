@@ -22,8 +22,8 @@ const MathsIntegrationPage = () => {
   return (
     <MathChapterTemplate
       chapterNumber={7}
-      chapterTitle="Intégration sur un segment"
-      description="Primitives, intégrales définies, propriétés et techniques d'intégration"
+      chapterTitle="Chapitre 7 : Intégration sur un segment"
+      description="Primitives, intégrale définie, propriétés (Chasles, positivité, croissance), sommes de Riemann ; techniques d’intégration (par parties, changement de variable)"
     >
       <div className="space-y-8 py-8">
         <Card className="border-0 shadow-xl hover:shadow-2xl transition-shadow duration-300">

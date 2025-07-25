@@ -9,13 +9,13 @@ const orangeBox = (children: React.ReactNode) => (
   <div style={{ background: '#fff7eb', border: '2px solid #ffa94d', borderRadius: '10px', padding: '18px 20px', marginBottom: '16px' }}>{children}</div>
 );
 
-const MathsEntiersPage = () => {
+const Chapitre3SommesProduitsEtCoefficientsBinomiauxCoursPage = () => {
   return (
     <div className="bg-[#EEF3FC] min-h-screen">
       <MathChapterTemplate
         chapterNumber={3}
-        chapterTitle="Sommes, produits et coefficients binomiaux"
-        description="Formules fermées, techniques de manipulation, produits, coefficients binomiaux et propriétés fondamentales pour la prépa ECG Math Appro."
+        chapterTitle="Sommes, produits & coefficients binomiaux"
+        description="Formules fermées, manipulations d’indices, produits télescopiques, coefficients « n choisir p » et binôme de Newton"
       >
         <div className="space-y-8 py-8">
           <Card className="border-0 shadow-xl hover:shadow-2xl transition-shadow duration-300">
@@ -207,4 +207,4 @@ const MathsEntiersPage = () => {
   );
 };
 
-export default MathsEntiersPage;
+export default Chapitre3SommesProduitsEtCoefficientsBinomiauxCoursPage;

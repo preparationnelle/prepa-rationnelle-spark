@@ -8,8 +8,8 @@ const MathsProbabilitesFiniesPage = () => {
   return (
     <MathChapterTemplate
       chapterNumber={10}
-      chapterTitle="Espaces probabilisés et conditionnement"
-      description="Fondements des probabilités, conditionnement et indépendance"
+      chapterTitle="Chapitre 10 : Espaces probabilisés & conditionnement"
+      description="Fondements (univers, tribu, axiomes de Kolmogorov, continuité croissante/décroissante) ; propriétés et calculs (crible, complémentaire, équiprobabilité, probabilités composées) ; conditionnement et formule de Bayes ; indépendance d’événements et familles indépendantes"
     >
       {/* Section 1: Fondements */}
       <Card className="border-0 shadow-lg">

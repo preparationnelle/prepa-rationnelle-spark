@@ -8,8 +8,8 @@ const MathsEspacesVectorielsPage = () => {
   return (
     <MathChapterTemplate
       chapterNumber={9}
-      chapterTitle="Matrices, systèmes linéaires et espaces vectoriels"
-      description="Structures vectorielles et applications linéaires"
+      chapterTitle="Matrices, systèmes linéaires & espaces vectoriels"
+      description="Structures vectorielles (combinaisons, base, dimension, rang) ; opérations sur les matrices (somme, produit, transposée, inverse, déterminant) ; résolution de systèmes linéaires (pivot de Gauss, Gauss-Jordan)"
     >
       {/* Section 1: Matrices */}
       <Card className="border-0 shadow-lg">

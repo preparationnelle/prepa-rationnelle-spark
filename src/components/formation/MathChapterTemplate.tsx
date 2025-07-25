@@ -49,7 +49,7 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
               Chapitre {chapterNumber} : {chapterTitle}
             </CardTitle>
             <p className="text-sm text-slate-600 mt-2 font-medium">
-              {description} — Semestre {chapterNumber <= 10 ? '1' : '2'}, Prépa ECG Maths Approfondies
+              {description}
             </p>
           </CardHeader>
         </Card>

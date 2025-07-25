@@ -14,16 +14,16 @@ const COLOR_LILAC = 'text-[#9370FF]';
 const GRADIENT_HEADER = 'bg-gradient-to-r from-[#6B5FFF] to-[#29E3F5]';
 
 const SEMESTRE_1 = [
-  { id: 1, slug: 'logique', title: 'Éléments de logique' },
-  { id: 2, slug: 'ensembles', title: 'Ensembles et applications' },
-  { id: 3, slug: 'entiers', title: 'Entiers' },
-  { id: 4, slug: 'suites', title: 'Suites numériques' },
-  { id: 5, slug: 'fonctions', title: 'Fonctions réelles — continuité' },
+  { id: 1, slug: 'elements-de-logique', title: 'Éléments de logique' },
+  { id: 2, slug: 'ensembles-et-applications', title: 'Ensembles et applications' },
+  { id: 3, slug: 'sommes-produits-coefficients-binomiaux', title: 'Sommes, produits & coefficients binomiaux' },
+  { id: 4, slug: 'suites-numeriques', title: 'Suites numériques' },
+  { id: 5, slug: 'fonctions-d-une-variable-reelle', title: 'Fonctions d’une variable réelle' },
   { id: 6, slug: 'derivation', title: 'Dérivation' },
-  { id: 7, slug: 'integration', title: 'Intégration' },
-  { id: 8, slug: 'polynomes', title: 'Polynômes et trigonométrie' },
-  { id: 9, slug: 'espaces-vectoriels', title: 'Espaces vectoriels' },
-  { id: 10, slug: 'probabilites-finies', title: 'Probabilités sur un univers fini' },
+  { id: 7, slug: 'integration-sur-un-segment', title: 'Intégration sur un segment' },
+  { id: 8, slug: 'polynomes', title: 'Polynômes' },
+  { id: 9, slug: 'matrices-espaces-vectoriels', title: 'Matrices & espaces vectoriels' },
+  { id: 10, slug: 'probabilites-conditionnement', title: 'Probabilités & conditionnement' },
 ];
 
 const SEMESTRE_2 = [
