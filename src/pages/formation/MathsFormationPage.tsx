@@ -14,7 +14,7 @@ const COLOR_LILAC = 'text-[#9370FF]';
 const GRADIENT_HEADER = 'bg-gradient-to-r from-[#6B5FFF] to-[#29E3F5]';
 
 const SEMESTRE_1 = [
-  { id: 1, slug: 'logique', title: 'Éléments de logique' },
+  { id: 1, slug: 'logique', title: 'Logique & raisonnement fondamentaux' },
   { id: 2, slug: 'ensembles', title: 'Ensembles et applications' },
   { id: 3, slug: 'entiers', title: 'Entiers' },
   { id: 4, slug: 'suites', title: 'Suites numériques' },

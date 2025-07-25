@@ -35,7 +35,7 @@ const PythonMatricesExercicesPage = lazy(() => import('../pages/formation/Python
 const PythonAnalyseExercicesPage = lazy(() => import('../pages/formation/PythonAnalyseExercicesPage'));
 const PythonProbabilitesExercicesPage = lazy(() => import('../pages/formation/PythonProbabilitesExercicesPage'));
 const MathsApprofondiesPage = lazy(() => import('../pages/formation/MathsApprofondiesPage'));
-const MathsLogiquePage = lazy(() => import('../pages/formation/MathsLogiquePage'));
+const MathsLogiquePage = lazy(() => import('../pages/formation/Chapitre1-LogiqueEtRaisonnementFondamentaux-CoursPage'));
 
 // Math chapter pages - Semester 1
 const MathsEnsemblesPage = lazy(() => import('../pages/formation/MathsEnsemblesPage'));
@@ -188,7 +188,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/python-analyse-exercices', component: PythonAnalyseExercicesPage, title: 'Exercices Python Analyse' },
   { path: '/formation/python-probabilites-exercices', component: PythonProbabilitesExercicesPage, title: 'Exercices Python Probabilités' },
   { path: '/formation/maths', component: MathsApprofondiesPage, title: 'Formation Maths ECG' },
-  { path: '/formation/maths-logique', component: MathsLogiquePage, title: 'Maths - Éléments de logique' },
+  { path: '/formation/maths-logique', component: MathsLogiquePage, title: 'Chapitre 1 : Logique & raisonnement fondamentaux' },
   { path: '/formation/maths-ensembles', component: MathsEnsemblesPage, title: 'Maths - Ensembles et applications' },
   { path: '/formation/maths-entiers', component: MathsEntiersPage, title: 'Maths - Entiers' },
   { path: '/formation/maths-suites', component: MathsSuitesPage, title: 'Maths - Suites numériques' },
