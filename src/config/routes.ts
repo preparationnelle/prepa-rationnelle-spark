@@ -26,63 +26,56 @@ const ArticlesPage = lazy(() => import('../pages/ArticlesPage'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 
 // Formation pages
-const PythonFundamentalsPage = lazy(() => import('../pages/formation/PythonFundamentalsPage'));
-const PythonMatricesPage = lazy(() => import('../pages/formation/PythonMatricesPage'));
-const PythonAnalysePage = lazy(() => import('../pages/formation/PythonAnalysePage'));
-const PythonProbabilitesPage = lazy(() => import('../pages/formation/PythonProbabilitesPage'));
-const PythonFondamentauxExercicesPage = lazy(() => import('../pages/formation/PythonFondamentauxExercicesPage'));
-const PythonMatricesExercicesPage = lazy(() => import('../pages/formation/PythonMatricesExercicesPage'));
-const PythonAnalyseExercicesPage = lazy(() => import('../pages/formation/PythonAnalyseExercicesPage'));
-const PythonProbabilitesExercicesPage = lazy(() => import('../pages/formation/PythonProbabilitesExercicesPage'));
-const MathsApprofondiesPage = lazy(() => import('../pages/formation/MathsApprofondiesPage'));
-const MathsLogiquePage = lazy(() => import('../pages/formation/Chapitre1-LogiqueEtRaisonnementFondamentaux-CoursPage'));
+const PythonFundamentalsPage = lazy(() => import('../pages/formation/Python/PythonFundamentalsPage'));
+const PythonMatricesPage = lazy(() => import('../pages/formation/Python/PythonMatricesPage'));
+const PythonAnalysePage = lazy(() => import('../pages/formation/Python/PythonAnalysePage'));
+const PythonProbabilitesPage = lazy(() => import('../pages/formation/Python/PythonProbabilitesPage'));
+const PythonFondamentauxExercicesPage = lazy(() => import('../pages/formation/Python/PythonFondamentauxExercicesPage'));
+const PythonMatricesExercicesPage = lazy(() => import('../pages/formation/Python/PythonMatricesExercicesPage'));
+const PythonAnalyseExercicesPage = lazy(() => import('../pages/formation/Python/PythonAnalyseExercicesPage'));
+const PythonProbabilitesExercicesPage = lazy(() => import('../pages/formation/Python/PythonProbabilitesExercicesPage'));
+const MathsApprofondiesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/MathsApprofondiesPage'));
+const MathsLogiquePage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre1-LogiqueEtRaisonnementFondamentaux-CoursPage'));
 
 // Math chapter pages - Semester 1
-const MathsEnsemblesPage = lazy(() => import('../pages/formation/Chapitre2-EnsemblesEtApplications-CoursPage'));
-const MathsEntiersPage = lazy(() => import('../pages/formation/Chapitre3-SommesProduitsEtCoefficientsBinomiaux-CoursPage'));
-const MathsSuitesPage = lazy(() => import('../pages/formation/Chapitre4-SuitesNumeriques-CoursPage'));
-const MathsFonctionsPage = lazy(() => import('../pages/formation/Chapitre5-FonctionsUneVariableReelle-CoursPage'));
-const MathsDerivationPage = lazy(() => import('../pages/formation/Chapitre6-Derivation-CoursPage'));
-const MathsIntegrationPage = lazy(() => import('../pages/formation/Chapitre7-IntegrationSurUnSegment-CoursPage'));
-const MathsPolynomesPage = lazy(() => import('../pages/formation/Chapitre8-Polynomes-CoursPage'));
-const MathsEspacesVectorielsPage = lazy(() => import('../pages/formation/Chapitre9-MatricesEtEspacesVectoriels-CoursPage'));
-const MathsProbabilitesFiniesPage = lazy(() => import('../pages/formation/Chapitre10-ProbabilitesEtConditionnement-CoursPage'));
+const MathsEnsemblesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre2-EnsemblesEtApplications-CoursPage'));
+const MathsEntiersPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre3-SommesProduitsEtCoefficientsBinomiaux-CoursPage'));
+const MathsSuitesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre4-SuitesNumeriques-CoursPage'));
+const MathsFonctionsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre5-FonctionsUneVariableReelle-CoursPage'));
+const MathsDerivationPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre6-Derivation-CoursPage'));
+const MathsIntegrationPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre7-IntegrationSurUnSegment-CoursPage'));
+const MathsPolynomesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre8-Polynomes-CoursPage'));
+const MathsEspacesVectorielsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre9-MatricesEtEspacesVectoriels-CoursPage'));
+const MathsProbabilitesFiniesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre10-ProbabilitesEtConditionnement-CoursPage'));
 
 // Math chapter pages - Semester 2
-const MathsEspacesVectorielsComplementsPage = lazy(() => import('../pages/formation/MathsEspacesVectorielsComplementsPage'));
-const MathsComparaisonsPage = lazy(() => import('../pages/formation/MathsComparaisonsPage'));
-const MathsSeriesPage = lazy(() => import('../pages/formation/MathsSeriesPage'));
-const MathsDeveloppementsLimitesPage = lazy(() => import('../pages/formation/MathsDeveloppementsLimitesPage'));
-const MathsFonctionsComplementsPage = lazy(() => import('../pages/formation/MathsFonctionsComplementsPage'));
-const MathsIntegrationIntervallePage = lazy(() => import('../pages/formation/MathsIntegrationIntervallePage'));
-const MathsProbabilitesUniversPage = lazy(() => import('../pages/formation/MathsProbabilitesUniversPage'));
-const MathsVariablesAleatoiresPage = lazy(() => import('../pages/formation/MathsVariablesAleatoiresPage'));
-const MathsInegalitesPage = lazy(() => import('../pages/formation/MathsInegalitesPage'));
-const MathsPythonPage = lazy(() => import('../pages/formation/MathsPythonPage'));
-
-// Math exercise pages - Semester 1
-const MathsLogiqueExercicesPage = lazy(() => import('../pages/formation/MathsLogiqueExercicesPage'));
-const MathsEnsemblesExercicesPage = lazy(() => import('../pages/formation/MathsEnsemblesExercicesPage'));
-const MathsEntiersExercicesPage = lazy(() => import('../pages/formation/MathsEntiersExercicesPage'));
-const MathsSuitesExercicesPage = lazy(() => import('../pages/formation/MathsSuitesExercicesPage'));
-const MathsFonctionsExercicesPage = lazy(() => import('../pages/formation/MathsFonctionsExercicesPage'));
-const MathsDerivationExercicesPage = lazy(() => import('../pages/formation/MathsDerivationExercicesPage'));
-const MathsIntegrationExercicesPage = lazy(() => import('../pages/formation/MathsIntegrationExercicesPage'));
-const MathsPolynomesExercicesPage = lazy(() => import('../pages/formation/MathsPolynomesExercicesPage'));
-const MathsEspacesVectorielsExercicesPage = lazy(() => import('../pages/formation/MathsEspacesVectorielsExercicesPage'));
-const MathsProbabilitesFiniesExercicesPage = lazy(() => import('../pages/formation/MathsProbabilitesFiniesExercicesPage'));
-
-// Math exercise pages - Semester 2
-const MathsEspacesVectorielsComplementsExercicesPage = lazy(() => import('../pages/formation/MathsEspacesVectorielsComplementsExercicesPage'));
-const MathsComparaisonsExercicesPage = lazy(() => import('../pages/formation/MathsComparaisonsExercicesPage'));
-const MathsSeriesExercicesPage = lazy(() => import('../pages/formation/MathsSeriesExercicesPage'));
-const MathsDeveloppementsLimitesExercicesPage = lazy(() => import('../pages/formation/MathsDeveloppementsLimitesExercicesPage'));
-const MathsFonctionsComplementsExercicesPage = lazy(() => import('../pages/formation/MathsFonctionsComplementsExercicesPage'));
-const MathsIntegrationIntervalleExercicesPage = lazy(() => import('../pages/formation/MathsIntegrationIntervalleExercicesPage'));
-const MathsProbabilitesUniversExercicesPage = lazy(() => import('../pages/formation/MathsProbabilitesUniversExercicesPage'));
-const MathsVariablesAleatoiresExercicesPage = lazy(() => import('../pages/formation/MathsVariablesAleatoiresExercicesPage'));
-const MathsInegalitesExercicesPage = lazy(() => import('../pages/formation/MathsInegalitesExercicesPage'));
-const MathsPythonExercicesPage = lazy(() => import('../pages/formation/MathsPythonExercicesPage'));
+const MathsEspacesVectorielsComplementsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre11-ApplicationsLineairesEtStructuresVectorielles-CoursPage'));
+const MathsComparaisonsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre12-Comparaison-NegligeabiliteEquivalence-CoursPage'));
+const MathsSeriesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre13-SeriesNumeriques-CoursPage'));
+const MathsDeveloppementsLimitesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre14-DeveloppementsLimitesEtTaylor-CoursPage'));
+const MathsIntegrationIntervallePage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre15-IntegralesImpropresEtCriteres-CoursPage'));
+const MathsProbabilitesUniversPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre16-EspacesProbabilisesEtConditionnement-CoursPage'));
+const MathsVariablesAleatoiresPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre17-VariablesAleatoiresDiscretes-Lois-CoursPage'));
+const MathsInegalitesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre18-Convergences-Et-TheoremesLimites-CoursPage'));
+// Math exercise pages - New structure
+const Chapitre1LogiqueExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre1-LogiqueEtRaisonnementFondamentaux-ExercicesPage'));
+const Chapitre2EnsemblesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre2-EnsemblesEtApplications-ExercicesPage'));
+const Chapitre3SommesProduitsExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre3-SommesProduitsEtCoefficientsBinomiaux-ExercicesPage'));
+const Chapitre4SuitesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre4-SuitesNumeriques-ExercicesPage'));
+const Chapitre5FonctionsExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre5-FonctionsUneVariableReelle-ExercicesPage'));
+const Chapitre6DerivationExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre6-Derivation-ExercicesPage'));
+const Chapitre7IntegrationExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre7-IntegrationSurUnSegment-ExercicesPage'));
+const Chapitre8PolynomesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre8-Polynomes-ExercicesPage'));
+const Chapitre9MatricesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre9-MatricesEtEspacesVectoriels-ExercicesPage'));
+const Chapitre10ProbabilitesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre10-ProbabilitesEtConditionnement-ExercicesPage'));
+const Chapitre11ApplicationsLineairesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre11-ApplicationsLineairesEtStructuresVectorielles-ExercicesPage'));
+const Chapitre12ComparaisonExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre12-Comparaison-NegligeabiliteEquivalence-ExercicesPage'));
+const Chapitre13SeriesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre13-SeriesNumeriques-ExercicesPage'));
+const Chapitre14DeveloppementsExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre14-DeveloppementsLimitesEtTaylor-ExercicesPage'));
+const Chapitre15IntegralesImpropresExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre15-IntegralesImpropresEtCriteres-ExercicesPage'));
+const Chapitre16EspacesProbabilisesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre16-EspacesProbabilisesEtConditionnement-ExercicesPage'));
+const Chapitre17VariablesAleatoiresExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre17-VariablesAleatoiresDiscretes-Lois-ExercicesPage'));
+const Chapitre18ConvergencesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre18-Convergences-Et-TheoremesLimites-ExercicesPage'));
 
 // Offres pages
 const CoachingPythonPage = lazy(() => import('../pages/offres/CoachingPythonPage'));
@@ -203,36 +196,33 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-espaces-vectoriels', component: MathsEspacesVectorielsPage, title: 'Maths - Matrices & espaces vectoriels' },
   { path: '/formation/maths-probabilites-finies', component: MathsProbabilitesFiniesPage, title: 'Maths - Probabilités sur un univers fini' },
   { path: '/formation/maths-probabilites-conditionnement', component: MathsProbabilitesFiniesPage, title: 'Maths - Probabilités & conditionnement' },
-  { path: '/formation/maths-espaces-vectoriels-complements', component: MathsEspacesVectorielsComplementsPage, title: 'Maths - Espaces vectoriels : compléments' },
-  { path: '/formation/maths-comparaisons', component: MathsComparaisonsPage, title: 'Maths - Comparaisons' },
-  { path: '/formation/maths-series', component: MathsSeriesPage, title: 'Maths - Séries numériques' },
-  { path: '/formation/maths-developpements-limites', component: MathsDeveloppementsLimitesPage, title: 'Maths - Développements limités' },
-  { path: '/formation/maths-fonctions-complements', component: MathsFonctionsComplementsPage, title: 'Maths - Compléments sur l\'étude de fonctions' },
-  { path: '/formation/maths-integration-intervalle', component: MathsIntegrationIntervallePage, title: 'Maths - Intégration sur un intervalle quelconque' },
-  { path: '/formation/maths-probabilites-univers', component: MathsProbabilitesUniversPage, title: 'Maths - Probabilités sur un univers quelconque' },
-  { path: '/formation/maths-variables-aleatoires', component: MathsVariablesAleatoiresPage, title: 'Maths - Variables aléatoires réelles discrètes' },
-  { path: '/formation/maths-inegalites', component: MathsInegalitesPage, title: 'Maths - Inégalités et convergences' },
-  { path: '/formation/maths-python', component: MathsPythonPage, title: 'Maths - Python' },
-  { path: '/formation/maths-logique-exercices', component: MathsLogiqueExercicesPage, title: 'Exercices - Éléments de logique' },
-  { path: '/formation/maths-ensembles-exercices', component: MathsEnsemblesExercicesPage, title: 'Exercices - Ensembles et applications' },
-  { path: '/formation/maths-entiers-exercices', component: MathsEntiersExercicesPage, title: 'Exercices - Entiers' },
-  { path: '/formation/maths-suites-exercices', component: MathsSuitesExercicesPage, title: 'Exercices - Suites numériques' },
-  { path: '/formation/maths-fonctions-exercices', component: MathsFonctionsExercicesPage, title: 'Exercices - Fonctions réelles — continuité' },
-  { path: '/formation/maths-derivation-exercices', component: MathsDerivationExercicesPage, title: 'Exercices - Dérivation' },
-  { path: '/formation/maths-integration-exercices', component: MathsIntegrationExercicesPage, title: 'Exercices - Intégration' },
-  { path: '/formation/maths-polynomes-exercices', component: MathsPolynomesExercicesPage, title: 'Exercices - Polynômes et trigonométrie' },
-  { path: '/formation/maths-espaces-vectoriels-exercices', component: MathsEspacesVectorielsExercicesPage, title: 'Exercices - Espaces vectoriels' },
-  { path: '/formation/maths-probabilites-finies-exercices', component: MathsProbabilitesFiniesExercicesPage, title: 'Exercices - Probabilités sur un univers fini' },
-  { path: '/formation/maths-espaces-vectoriels-complements-exercices', component: MathsEspacesVectorielsComplementsExercicesPage, title: 'Exercices - Espaces vectoriels : compléments' },
-  { path: '/formation/maths-comparaisons-exercices', component: MathsComparaisonsExercicesPage, title: 'Exercices - Comparaisons' },
-  { path: '/formation/maths-series-exercices', component: MathsSeriesExercicesPage, title: 'Exercices - Séries numériques' },
-  { path: '/formation/maths-developpements-limites-exercices', component: MathsDeveloppementsLimitesExercicesPage, title: 'Exercices - Développements limités' },
-  { path: '/formation/maths-fonctions-complements-exercices', component: MathsFonctionsComplementsExercicesPage, title: 'Exercices - Compléments sur l\'étude de fonctions' },
-  { path: '/formation/maths-integration-intervalle-exercices', component: MathsIntegrationIntervalleExercicesPage, title: 'Exercices - Intégration sur un intervalle quelconque' },
-  { path: '/formation/maths-probabilites-univers-exercices', component: MathsProbabilitesUniversExercicesPage, title: 'Exercices - Probabilités sur un univers quelconque' },
-  { path: '/formation/maths-variables-aleatoires-exercices', component: MathsVariablesAleatoiresExercicesPage, title: 'Exercices - Variables aléatoires réelles discrètes' },
-  { path: '/formation/maths-inegalites-exercices', component: MathsInegalitesExercicesPage, title: 'Exercices - Inégalités et convergences' },
-  { path: '/formation/maths-python-exercices', component: MathsPythonExercicesPage, title: 'Exercices - Python' },
+  { path: '/formation/maths-applications-lineaires-structures-vectorielles', component: MathsEspacesVectorielsComplementsPage, title: 'Maths - Applications linéaires & structures vectorielles' },
+  { path: '/formation/maths-comparaison-negligeabilite-equivalence', component: MathsComparaisonsPage, title: 'Maths - Comparaison — négligeabilité & équivalence' },
+  { path: '/formation/maths-series-numeriques', component: MathsSeriesPage, title: 'Maths - Séries numériques' },
+  { path: '/formation/maths-developpements-limites-formule-de-taylor', component: MathsDeveloppementsLimitesPage, title: 'Maths - Développements limités & formule de Taylor' },
+  { path: '/formation/maths-integrales-impropres-criteres-de-convergence', component: MathsIntegrationIntervallePage, title: 'Maths - Intégrales impropres & critères de convergence' },
+  { path: '/formation/maths-espaces-probabilises-conditionnement', component: MathsProbabilitesUniversPage, title: 'Maths - Espaces probabilisés & conditionnement' },
+  { path: '/formation/maths-variables-aleatoires-discretes-lois', component: MathsVariablesAleatoiresPage, title: 'Maths - Variables aléatoires discrètes & lois' },
+  { path: '/formation/maths-convergences-theoremes-limites', component: MathsInegalitesPage, title: 'Maths - Convergences & théorèmes limites' },
+  { path: '/formation/maths-python', component: FormationPage, title: 'Formation Python ECG' },
+  { path: '/formation/maths-elements-de-logique-exercices', component: Chapitre1LogiqueExercicesPage, title: 'Exercices - Chapitre 1 : Logique & raisonnement fondamentaux' },
+  { path: '/formation/maths-ensembles-et-applications-exercices', component: Chapitre2EnsemblesExercicesPage, title: 'Exercices - Chapitre 2 : Ensembles et applications' },
+  { path: '/formation/maths-sommes-produits-coefficients-binomiaux-exercices', component: Chapitre3SommesProduitsExercicesPage, title: 'Exercices - Chapitre 3 : Sommes, produits & coefficients binomiaux' },
+  { path: '/formation/maths-suites-numeriques-exercices', component: Chapitre4SuitesExercicesPage, title: 'Exercices - Chapitre 4 : Suites numériques' },
+  { path: '/formation/maths-fonctions-d-une-variable-reelle-exercices', component: Chapitre5FonctionsExercicesPage, title: 'Exercices - Chapitre 5 : Fonctions d\'une variable réelle' },
+  { path: '/formation/maths-derivation-exercices', component: Chapitre6DerivationExercicesPage, title: 'Exercices - Chapitre 6 : Dérivation' },
+  { path: '/formation/maths-integration-sur-un-segment-exercices', component: Chapitre7IntegrationExercicesPage, title: 'Exercices - Chapitre 7 : Intégration sur un segment' },
+  { path: '/formation/maths-polynomes-exercices', component: Chapitre8PolynomesExercicesPage, title: 'Exercices - Chapitre 8 : Polynômes' },
+  { path: '/formation/maths-matrices-espaces-vectoriels-exercices', component: Chapitre9MatricesExercicesPage, title: 'Exercices - Chapitre 9 : Matrices & espaces vectoriels' },
+  { path: '/formation/maths-probabilites-conditionnement-exercices', component: Chapitre10ProbabilitesExercicesPage, title: 'Exercices - Chapitre 10 : Probabilités & conditionnement' },
+  { path: '/formation/maths-applications-lineaires-structures-vectorielles-exercices', component: Chapitre11ApplicationsLineairesExercicesPage, title: 'Exercices - Chapitre 11 : Applications linéaires & structures vectorielles' },
+  { path: '/formation/maths-comparaison-negligeabilite-equivalence-exercices', component: Chapitre12ComparaisonExercicesPage, title: 'Exercices - Chapitre 12 : Comparaison — négligeabilité & équivalence' },
+  { path: '/formation/maths-series-numeriques-exercices', component: Chapitre13SeriesExercicesPage, title: 'Exercices - Chapitre 13 : Séries numériques' },
+  { path: '/formation/maths-developpements-limites-formule-de-taylor-exercices', component: Chapitre14DeveloppementsExercicesPage, title: 'Exercices - Chapitre 14 : Développements limités & formule de Taylor' },
+  { path: '/formation/maths-integrales-impropres-criteres-de-convergence-exercices', component: Chapitre15IntegralesImpropresExercicesPage, title: 'Exercices - Chapitre 15 : Intégrales impropres & critères de convergence' },
+  { path: '/formation/maths-espaces-probabilises-conditionnement-exercices', component: Chapitre16EspacesProbabilisesExercicesPage, title: 'Exercices - Chapitre 16 : Espaces probabilisés & conditionnement' },
+  { path: '/formation/maths-variables-aleatoires-discretes-lois-exercices', component: Chapitre17VariablesAleatoiresExercicesPage, title: 'Exercices - Chapitre 17 : Variables aléatoires discrètes & lois' },
+  { path: '/formation/maths-convergences-theoremes-limites-exercices', component: Chapitre18ConvergencesExercicesPage, title: 'Exercices - Chapitre 18 : Convergences & théorèmes limites' },
   
   // Offres pages
   { path: '/offre/coaching-python', component: CoachingPythonPage, title: 'Coaching Python' },
@@ -274,19 +264,19 @@ export const routes: RouteConfig[] = [
   // Routes pour les formations mathématiques
   { 
     path: '/formation/maths-choix', 
-    component: lazy(() => import('../pages/formation/MathsChoixOptionPage')),
+    component: lazy(() => import('../pages/formation/Python/MathsChoixOptionPage')),
     title: 'Choix option Maths ECG',
     protected: true 
   },
   { 
     path: '/formation/maths-approfondies', 
-    component: lazy(() => import('../pages/formation/MathsApprofondiesPage')),
+    component: lazy(() => import('../pages/formation/math/MathsApprofondies/MathsApprofondiesPage')),
     title: 'Maths Approfondies',
     protected: true 
   },
   { 
     path: '/formation/maths-appliquees', 
-    component: lazy(() => import('../pages/formation/MathsAppliqueesPage')),
+    component: lazy(() => import('../pages/formation/math/MathsAppliquees/MathsAppliqueesPage')),
     title: 'Maths Appliquées',
     protected: true 
   },
@@ -296,6 +286,8 @@ export const routes: RouteConfig[] = [
     title: 'Maths - Intégration sur un segment',
     protected: true
   },
+
+
   
   // 404 - Must be last
   { path: '*', component: NotFound, title: 'Page non trouvée' }
@@ -305,17 +297,17 @@ export const routes: RouteConfig[] = [
 export const MATHS_ROUTES = [
   {
     path: '/formation/maths-choix',
-    component: lazy(() => import('@/pages/formation/MathsChoixOptionPage')),
+    component: lazy(() => import('@/pages/formation/Python/MathsChoixOptionPage')),
     protected: true
   },
   {
     path: '/formation/maths-approfondies',
-    component: lazy(() => import('@/pages/formation/MathsApprofondiesPage')),
+    component: lazy(() => import('@/pages/formation/math/MathsApprofondies/MathsApprofondiesPage')),
     protected: true
   },
   {
     path: '/formation/maths-appliquees',
-    component: lazy(() => import('@/pages/formation/MathsAppliqueesPage')),
+    component: lazy(() => import('@/pages/formation/math/MathsAppliquees/MathsAppliqueesPage')),
     protected: true
   },
 ];
