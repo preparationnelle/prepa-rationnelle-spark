@@ -120,10 +120,15 @@ const GeopoliticsGeneratorPage = lazy(() => import('../pages/generator/Geopoliti
 const GeopoliticsUnifiedGeneratorPage = lazy(() => import('../pages/generator/GeopoliticsUnifiedGeneratorPage'));
 const LanguagesGeneratorPage = lazy(() => import('../pages/generator/LanguagesGeneratorPage'));
 const PrepaChatbotGeneratorPage = lazy(() => import('../pages/generator/PrepaChatbotGeneratorPage'));
+<<<<<<< HEAD
 
 const ThemeGrammarGeneratorPage = lazy(() => import('../pages/generator/ThemeGrammarGeneratorPage'));
 const UnifiedLanguagesGeneratorPage = lazy(() => import('../pages/generator/UnifiedLanguagesGeneratorPage'));
 const UnifiedOralGeneratorPage = lazy(() => import('../pages/generator/UnifiedOralGeneratorPage'));
+=======
+const SchoolProfileGeneratorPage = lazy(() => import('../pages/generator/SchoolProfileGeneratorPage'));
+const ThemeGrammarGeneratorPage = lazy(() => import('../pages/generator/ThemeGrammarGeneratorPage'));
+>>>>>>> b69c73a4d7f84c086a9703dde52b20c4ecddffa9
 
 // Teacher pages
 const TeacherDashboardPage = lazy(() => import('../pages/teacher/TeacherDashboardPage'));
@@ -156,7 +161,11 @@ export const routes: RouteConfig[] = [
   { path: '/pourquoi-python-prepa-ecg', component: PourquoiPythonPrepaECGPage, title: 'Pourquoi Python en Prépa ECG' },
   { path: '/python-reference', component: PythonReferencePage, title: 'Référence Python' },
   { path: '/python-flashcards', component: PythonFlashcardsPage, title: 'Flashcards Python' },
+<<<<<<< HEAD
 
+=======
+  { path: '/python-exercices', component: PythonExercicesPage, title: 'Exercices Python' },
+>>>>>>> b69c73a4d7f84c086a9703dde52b20c4ecddffa9
   { path: '/formation/exercices', component: PythonExercicesPage, title: 'Exercices Python' },
   { path: '/nos-offres', component: NosOffresPage, title: 'Nos Offres' },
   { path: '/apropos', component: AproposPage, title: 'À propos' },
@@ -168,6 +177,10 @@ export const routes: RouteConfig[] = [
   { path: '/methodologie/storytelling', component: StorytellingMethodePage, title: 'Méthodologie Storytelling' },
   
   // Protected pages
+<<<<<<< HEAD
+=======
+  { path: '/dashboard', component: DashboardPage, title: 'Tableau de bord', protected: true },
+>>>>>>> b69c73a4d7f84c086a9703dde52b20c4ecddffa9
   
   // Teacher pages
   { path: '/prof', component: TeacherDashboardPage, title: 'Interface Professeur', protected: true },
@@ -274,10 +287,15 @@ export const routes: RouteConfig[] = [
   { path: '/generator/geopolitics', component: GeopoliticsGeneratorPage, title: 'Générateur Géopolitique' },
   { path: '/generator/geopolitics-unified', component: GeopoliticsUnifiedGeneratorPage, title: 'Générateur Géopolitique Unifié' },
   { path: '/generator/languages', component: LanguagesGeneratorPage, title: 'Générateur de Langues' },
+<<<<<<< HEAD
   { path: '/generator/languages-unified', component: UnifiedLanguagesGeneratorPage, title: 'Générateur Langues Unifié' },
   { path: '/generator/orals-unified', component: UnifiedOralGeneratorPage, title: 'Générateur Oraux Unifié' },
   { path: '/generator/prepa-chatbot', component: PrepaChatbotGeneratorPage, title: 'Chatbot Prépa' },
 
+=======
+  { path: '/generator/prepa-chatbot', component: PrepaChatbotGeneratorPage, title: 'Chatbot Prépa' },
+  { path: '/generator/school-profile', component: SchoolProfileGeneratorPage, title: 'Profil d\'École' },
+>>>>>>> b69c73a4d7f84c086a9703dde52b20c4ecddffa9
   { path: '/generator/theme-grammar', component: ThemeGrammarGeneratorPage, title: 'Grammaire Thématique' },
   
   // Routes pour les formations mathématiques
