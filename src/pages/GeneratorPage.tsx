@@ -41,6 +41,7 @@ const GeneratorPage: React.FC = () => {
       badgeColor: 'bg-black text-white',
       link: '/generator/flashcards'
     },
+
     {
       id: 'languages-unified',
       title: 'Générateur Langues',
@@ -62,7 +63,6 @@ const GeneratorPage: React.FC = () => {
       link: '/generator/geopolitics-unified'
     },
     {
-<<<<<<< HEAD
       id: 'orals-unified',
       title: 'Générateur Oraux',
       description: 'Générez vos réponses orales ou entraînez-vous avec des questions types',
@@ -87,103 +87,6 @@ const GeneratorPage: React.FC = () => {
 
 
 
-=======
-      id: 'math-assistant',
-      title: 'Assistant Maths',
-      description: 'Obtenez de l\'aide en mathématiques avec IA',
-      icon: <Calculator className="h-8 w-8" />,
-      color: 'bg-red-500',
-      badge: 'IA',
-      badgeColor: 'bg-black text-white',
-      link: '/dashboard'
-    }
-  ];
-
-  // Outils pour les entretiens de personnalité
-  const interviewTools = [
-    {
-      id: 'interview-answer',
-      title: 'Réponse d\'entretien',
-      description: 'Générez des réponses structurées et personnalisées pour vos entretiens de personnalité avec du storytelling adapté.',
-      icon: <MessageSquare className="h-6 w-6" />,
-      color: 'bg-orange-100',
-      iconColor: 'text-orange-600',
-      badge: 'IA',
-      badgeColor: 'bg-orange-500 text-white',
-      link: '/generator/answer'
-    },
-    {
-      id: 'emlyon-questions',
-      title: 'Questions EM Lyon',
-      description: 'Questions aléatoires pour l\'entretien \'Flash\' avec cartes thématiques.',
-      icon: <Sparkles className="h-6 w-6" />,
-      color: 'bg-orange-100',
-      iconColor: 'text-orange-600',
-      badge: 'Interactif',
-      badgeColor: 'bg-orange-500 text-white',
-      link: '/generator/emlyon'
-    },
-    {
-      id: 'edhec-words',
-      title: 'Générateur de mots EDHEC',
-      description: 'Générateur de mots aléatoires pour votre présentation EDHEC.',
-      icon: <ExternalLink className="h-6 w-6" />,
-      color: 'bg-orange-100',
-      iconColor: 'text-orange-600',
-      badge: 'Rapide',
-      badgeColor: 'bg-orange-500 text-white',
-      link: '/generator/edhec'
-    },
-    {
-      id: 'school-profile',
-      title: 'Fiche école personnalisée',
-      description: 'Automatise la recherche des infos-clés pour ton entretien : valeurs, assos, doubles diplômes, actu, etc.',
-      icon: <BookOpen className="h-6 w-6" />,
-      color: 'bg-orange-100',
-      iconColor: 'text-orange-600',
-      badge: 'Nouveau',
-      badgeColor: 'bg-orange-500 text-white',
-      link: '/generator/school-profile'
-    },
-    {
-      id: 'prepa-chatbot',
-      title: 'Chatbot prépa',
-      description: 'Conseils motivation, méthode & bien-être. Ton assistant IA inspiré par Major-Prépa & Mister Prépa.',
-      icon: <Heart className="h-6 w-6" />,
-      color: 'bg-pink-100',
-      iconColor: 'text-pink-600',
-      badge: 'IA Coach',
-      badgeColor: 'bg-orange-500 text-white',
-      link: '/generator/prepa-chatbot'
-    }
-  ];
-
-  // Outils pour les langues
-  const languageTools = [
-    {
-      id: 'language-paragraph',
-      title: 'Paragraphe Langues',
-      description: 'Générez des paragraphes argumentatifs de 150 mots en anglais, allemand ou espagnol avec vocabulaire clé.',
-      icon: <Languages className="h-6 w-6" />,
-      color: 'bg-orange-100',
-      iconColor: 'text-orange-600',
-      badge: 'Nouveau',
-      badgeColor: 'bg-orange-500 text-white',
-      link: '/generator/languages'
-    },
-    {
-      id: 'theme-grammar-2',
-      title: 'Thème Grammatical',
-      description: 'Générateur et correcteur de thèmes de traduction : notation détaillée instantanée.',
-      icon: <Languages className="h-6 w-6" />,
-      color: 'bg-orange-100',
-      iconColor: 'text-orange-600',
-      badge: 'Nouveau',
-      badgeColor: 'bg-orange-500 text-white',
-      link: '/generator/theme-grammar'
-    }
-  ];
->>>>>>> b69c73a4d7f84c086a9703dde52b20c4ecddffa9
 
   const handleGeneratorClick = (generator: any) => {
     // Seuls les générateurs Premium nécessitent une connexion
@@ -252,109 +155,9 @@ const GeneratorPage: React.FC = () => {
           ))}
         </div>
 
-<<<<<<< HEAD
 
 
 
-=======
-        {/* Section Entretiens de Personnalité */}
-        <div className="mb-16">
-          <div className="bg-gradient-to-r from-orange-500 to-red-500 rounded-xl p-8 mb-8 text-white">
-            <div className="flex items-center gap-3 mb-4">
-              <User className="h-8 w-8" />
-              <div>
-                <h2 className="text-3xl font-bold">Outils pour les entretiens de personnalité</h2>
-                <p className="text-orange-100 mt-2">Générateurs spécialisés pour réussir vos entretiens avec storytelling et préparation ciblée</p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {interviewTools.map((tool) => (
-              <Card 
-                key={tool.id}
-                className="group hover:shadow-lg transition-all duration-300 cursor-pointer bg-white"
-                onClick={() => handleGeneratorClick(tool)}
-              >
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className={`w-12 h-12 ${tool.color} rounded-lg flex items-center justify-center`}>
-                      <div className={tool.iconColor}>
-                        {tool.icon}
-                      </div>
-                    </div>
-                    <Badge className={`text-xs ${tool.badgeColor} px-2 py-1 rounded`}>
-                      {tool.badge}
-                    </Badge>
-                  </div>
-                  
-                  <h3 className="text-lg font-semibold mb-2 group-hover:text-orange-600 transition-colors">
-                    {tool.title}
-                  </h3>
-                  
-                  <p className="text-sm text-gray-600 mb-4">
-                    {tool.description}
-                  </p>
-                  
-                  <Button className="w-full bg-[#F36C00] hover:bg-[#e66200] text-white">
-                    <ExternalLink className="h-4 w-4 mr-2" />
-                    Accéder à l'outil
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Section Langues */}
-        <div className="mb-16">
-          <div className="bg-gradient-to-r from-purple-500 to-indigo-500 rounded-xl p-8 mb-8 text-white">
-            <div className="flex items-center gap-3 mb-4">
-              <Languages className="h-8 w-8" />
-              <div>
-                <h2 className="text-3xl font-bold">Langues</h2>
-                <p className="text-purple-100 mt-2">Outils pour améliorer vos compétences linguistiques et réussir les épreuves de langues</p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {languageTools.map((tool) => (
-              <Card 
-                key={tool.id}
-                className="group hover:shadow-lg transition-all duration-300 cursor-pointer bg-white"
-                onClick={() => handleGeneratorClick(tool)}
-              >
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className={`w-12 h-12 ${tool.color} rounded-lg flex items-center justify-center`}>
-                      <div className={tool.iconColor}>
-                        {tool.icon}
-                      </div>
-                    </div>
-                    <Badge className={`text-xs ${tool.badgeColor} px-2 py-1 rounded`}>
-                      {tool.badge}
-                    </Badge>
-                  </div>
-                  
-                  <h3 className="text-lg font-semibold mb-2 group-hover:text-purple-600 transition-colors">
-                    {tool.title}
-                  </h3>
-                  
-                  <p className="text-sm text-gray-600 mb-4">
-                    {tool.description}
-                  </p>
-                  
-                  <Button className="w-full bg-[#F36C00] hover:bg-[#e66200] text-white">
-                    <ExternalLink className="h-4 w-4 mr-2" />
-                    Accéder à l'outil
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
->>>>>>> b69c73a4d7f84c086a9703dde52b20c4ecddffa9
 
         {/* Footer CTA */}
         <div className="text-center">
