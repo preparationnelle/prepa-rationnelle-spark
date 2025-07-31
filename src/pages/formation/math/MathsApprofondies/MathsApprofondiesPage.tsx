@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Home, ChevronRight, BookOpen, Play, Target, ArrowRight } from 'lucide-react';
@@ -13,20 +13,8 @@ const COLOR_ORANGE = 'text-[#FF5C1B]';
 const COLOR_LILAC = 'text-[#9370FF]';
 const GRADIENT_HEADER = 'bg-gradient-to-r from-[#6B5FFF] to-[#29E3F5]';
 
-const METHODOLOGIE_ARTICLES = [
-  {
-    id: 'attentes-concours',
-    title: 'Les attentes du concours ?',
-    description: 'Décoder les attentes des jurys et optimiser votre stratégie de préparation',
-    icon: <Target className="h-6 w-6" />,
-    color: 'bg-[#F0F8FF]',
-    borderColor: 'border-orange-200',
-    textColor: 'text-orange-700',
-    link: '/articles/attentes-concours'
-  }
-];
-
 const SEMESTRE_1 = [
+  { id: 0, slug: 'methodologie', title: 'Méthodologie', isMethodology: true },
   { id: 1, slug: 'elements-de-logique', title: 'Éléments de logique' },
   { id: 2, slug: 'ensembles-et-applications', title: 'Ensembles et applications' },
   { id: 3, slug: 'sommes-produits-coefficients-binomiaux', title: 'Sommes, produits & coefficients binomiaux' },
@@ -92,87 +80,67 @@ const MathsApprofondiesPage = () => {
 
         {/* Grille chapitres */}
         <div className="container mx-auto px-4 pb-16">
-          {/* Chapitre 0 - Méthodologie */}
-          <h2 className="text-2xl font-bold mb-6 text-orange-600 text-center">Méthodologie</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {METHODOLOGIE_ARTICLES.map((article) => (
-              <Card 
-                key={article.id}
-                className={`group hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-orange-200 bg-white cursor-pointer ${article.color}`}
-                onClick={() => window.location.href = article.link}
-              >
-                <CardHeader className="pb-4 relative">
-                  <div className="flex items-start justify-between mb-3">
-                    <div className={`w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center ${article.textColor}`}>
-                      {article.icon}
-                    </div>
-                    <Badge className="text-xs bg-orange-500 text-white px-2 py-1 rounded">
-                      Article
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
-                    {article.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                    {article.description}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-orange-600 font-medium group-hover:underline">
-                      Lire l'article
-                    </span>
-                    <ArrowRight className="h-4 w-4 text-orange-600 group-hover:scale-110 transition-transform" />
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
           {/* Semestre 1 */}
           <h2 className="text-2xl font-bold mb-6 text-[#2D5BFF] text-center">Chapitres — Semestre 1</h2>
           <div className="flex flex-col gap-4">
             {SEMESTRE_1.map((chap) => (
               <div
                 key={chap.id}
-                className="group relative flex items-center bg-white rounded-2xl shadow p-3 md:p-4 border border-[#F5F7FF] transition hover:shadow-2xl hover:-translate-y-0.5 cursor-pointer focus-within:ring-2 focus-within:ring-[#2D5BFF]"
+                className={`group relative flex items-center bg-white rounded-2xl shadow p-3 md:p-4 border border-[#F5F7FF] transition hover:shadow-2xl hover:-translate-y-0.5 cursor-pointer focus-within:ring-2 focus-within:ring-[#2D5BFF] ${
+                  chap.isMethodology ? 'border-orange-200 bg-orange-50/30' : ''
+                }`}
                 tabIndex={0}
-                onClick={() => window.location.href = `/formation/maths-${chap.slug}`}
-                onKeyDown={e => { if (e.key === 'Enter') window.location.href = `/formation/maths-${chap.slug}`; }}
+                onClick={() => window.location.href = chap.isMethodology ? '/formation/maths-methodologie' : `/formation/maths-${chap.slug}`}
+                onKeyDown={e => { 
+                  if (e.key === 'Enter') window.location.href = chap.isMethodology ? '/formation/maths-methodologie' : `/formation/maths-${chap.slug}`; 
+                }}
                 aria-label={`Accéder au cours ${chap.title}`}
               >
                 {/* Badge numéro */}
-                <span className="flex-shrink-0 w-10 h-10 rounded-full bg-[#F5F7FF] shadow text-lg font-bold text-[#2D5BFF] border-2 border-[#E0E7FF] flex items-center justify-center mr-4">{chap.id}</span>
+                <span className={`flex-shrink-0 w-10 h-10 rounded-full shadow text-lg font-bold border-2 flex items-center justify-center mr-4 ${
+                  chap.isMethodology 
+                    ? 'bg-orange-100 text-orange-600 border-orange-200' 
+                    : 'bg-[#F5F7FF] text-[#2D5BFF] border-[#E0E7FF]'
+                }`}>
+                  {chap.id}
+                </span>
                 {/* Titre chapitre */}
-                <span className="text-base md:text-lg font-semibold text-[#2D5BFF] flex-1 group-hover:underline">
+                <span className={`text-base md:text-lg font-semibold flex-1 group-hover:underline ${
+                  chap.isMethodology ? 'text-orange-700' : 'text-[#2D5BFF]'
+                }`}>
                   {chap.title}
                 </span>
-                {/* Bouton Cours */}
-                <Link
-                  to={`/formation/maths-${chap.slug}`}
-                  className="ml-4 z-10"
-                  tabIndex={0}
-                  aria-label={`Accéder au cours de ${chap.title}`}
-                  onClick={e => e.stopPropagation()}
-                  onKeyDown={e => e.stopPropagation()}
-                >
-                  <button className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#2D5BFF] text-white font-semibold shadow hover:bg-[#6B5FFF] transition">
-                    <BookOpen className="h-5 w-5" /> Cours
-                  </button>
-                </Link>
-                {/* Bouton Exercice */}
-                <Link
-                  to={`/formation/maths-${chap.slug}-exercices`}
-                  className="ml-4 z-10"
-                  tabIndex={0}
-                  aria-label={`Accéder aux exercices de ${chap.title}`}
-                  onClick={e => e.stopPropagation()}
-                  onKeyDown={e => e.stopPropagation()}
-                >
-                  <button className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FF5C1B] text-white font-semibold shadow hover:bg-[#FF7C4D] transition">
-                    <Play className="h-5 w-5" /> Exercice
-                  </button>
-                </Link>
+                {/* Boutons Cours et Exercice - seulement pour les chapitres non-méthodologie */}
+                {!chap.isMethodology && (
+                  <>
+                    {/* Bouton Cours */}
+                    <Link
+                      to={`/formation/maths-${chap.slug}`}
+                      className="ml-4 z-10"
+                      tabIndex={0}
+                      aria-label={`Accéder au cours de ${chap.title}`}
+                      onClick={e => e.stopPropagation()}
+                      onKeyDown={e => e.stopPropagation()}
+                    >
+                      <button className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#2D5BFF] text-white font-semibold shadow hover:bg-[#6B5FFF] transition">
+                        <BookOpen className="h-5 w-5" /> Cours
+                      </button>
+                    </Link>
+                    {/* Bouton Exercice */}
+                    <Link
+                      to={`/formation/maths-${chap.slug}-exercices`}
+                      className="ml-4 z-10"
+                      tabIndex={0}
+                      aria-label={`Accéder aux exercices de ${chap.title}`}
+                      onClick={e => e.stopPropagation()}
+                      onKeyDown={e => e.stopPropagation()}
+                    >
+                      <button className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FF5C1B] text-white font-semibold shadow hover:bg-[#FF7C4D] transition">
+                        <Play className="h-5 w-5" /> Exercice
+                      </button>
+                    </Link>
+                  </>
+                )}
               </div>
             ))}
           </div>

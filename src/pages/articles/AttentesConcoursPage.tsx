@@ -17,8 +17,20 @@ const AttentesConcoursPage = () => {
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
+            <Link to="/formations" className="hover:text-[#1e3a8a] transition-colors">
+              Toutes les formations
+            </Link>
+            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
+            <Link to="/formation/maths-choix" className="hover:text-[#1e3a8a] transition-colors">
+              Choix option Maths
+            </Link>
+            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
             <Link to="/formation/maths-approfondies" className="hover:text-[#1e3a8a] transition-colors">
               Maths Approfondies
+            </Link>
+            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
+            <Link to="/formation/maths-methodologie" className="hover:text-[#1e3a8a] transition-colors">
+              Méthodologie
             </Link>
             <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
             <span className="text-[#2D5BFF] font-bold">Les attentes du concours</span>
@@ -27,16 +39,6 @@ const AttentesConcoursPage = () => {
       </nav>
 
       <div className="container mx-auto px-4 py-8">
-        {/* Bouton retour */}
-        <div className="mb-6">
-          <Link to="/formation/maths-approfondies">
-            <Button variant="outline" className="flex items-center gap-2">
-              <ArrowLeft className="h-4 w-4" />
-              Retour aux Maths Approfondies
-            </Button>
-          </Link>
-        </div>
-
         {/* Article */}
         <Card className="max-w-4xl mx-auto shadow-lg">
           <CardHeader className="bg-gradient-to-r from-orange-50 to-orange-100 rounded-t-lg">
@@ -49,6 +51,9 @@ const AttentesConcoursPage = () => {
                 <CardTitle className="text-3xl font-bold text-gray-800">
                   Prépa ECG : Les secrets des Jurys Révélés – Décoder les attentes des concours
                 </CardTitle>
+                <p className="text-lg text-gray-600 mt-2">
+                  Stratégies pour aligner votre préparation sur les attentes réelles du concours
+                </p>
               </div>
             </div>
           </CardHeader>
@@ -156,6 +161,16 @@ const AttentesConcoursPage = () => {
             </div>
           </CardContent>
         </Card>
+      </div>
+      
+      {/* Bouton retour */}
+      <div className="text-center py-8">
+        <Link to="/formation/maths-methodologie">
+          <Button variant="outline" className="flex items-center gap-2 mx-auto">
+            <ArrowLeft className="h-4 w-4" />
+            Retour à la méthodologie
+          </Button>
+        </Link>
       </div>
     </div>
   );
