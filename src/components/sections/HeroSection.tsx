@@ -67,7 +67,7 @@ export const HeroSection = () => {
         <div className="flex flex-col sm:flex-row justify-center gap-6 w-full max-w-[600px] mb-8">
           <Button 
             size="lg" 
-            className="w-full sm:w-auto px-10 py-6 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold text-xl rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border-0 relative overflow-hidden group" 
+            className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold text-lg rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border-0 relative overflow-hidden group min-w-fit whitespace-nowrap" 
             style={{
               boxShadow: "0 8px 25px rgba(243,108,0,0.3)"
             }}
