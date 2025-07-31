@@ -75,7 +75,7 @@ export const HeroSection = () => {
           >
             <span className="relative z-10 flex items-center gap-2">
               <CheckCircle className="h-5 w-5" />
-              Groupe WhatsApp ECO
+              Groupe WhatsApp ECG
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-orange-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </Button>
