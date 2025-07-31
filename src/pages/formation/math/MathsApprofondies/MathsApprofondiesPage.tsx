@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Home, ChevronRight, BookOpen, Play } from 'lucide-react';
+import { Home, ChevronRight, BookOpen, Play, Target, ArrowRight } from 'lucide-react';
 import { FaRuler } from 'react-icons/fa'; // Pour le logo 📐
 import { useState } from 'react';
 
@@ -13,12 +13,25 @@ const COLOR_ORANGE = 'text-[#FF5C1B]';
 const COLOR_LILAC = 'text-[#9370FF]';
 const GRADIENT_HEADER = 'bg-gradient-to-r from-[#6B5FFF] to-[#29E3F5]';
 
+const METHODOLOGIE_ARTICLES = [
+  {
+    id: 'attentes-concours',
+    title: 'Les attentes du concours ?',
+    description: 'Décoder les attentes des jurys et optimiser votre stratégie de préparation',
+    icon: <Target className="h-6 w-6" />,
+    color: 'bg-[#F0F8FF]',
+    borderColor: 'border-orange-200',
+    textColor: 'text-orange-700',
+    link: '/articles/attentes-concours'
+  }
+];
+
 const SEMESTRE_1 = [
   { id: 1, slug: 'elements-de-logique', title: 'Éléments de logique' },
   { id: 2, slug: 'ensembles-et-applications', title: 'Ensembles et applications' },
   { id: 3, slug: 'sommes-produits-coefficients-binomiaux', title: 'Sommes, produits & coefficients binomiaux' },
   { id: 4, slug: 'suites-numeriques', title: 'Suites numériques' },
-  { id: 5, slug: 'fonctions-d-une-variable-reelle', title: 'Fonctions d’une variable réelle' },
+  { id: 5, slug: 'fonctions-d-une-variable-reelle', title: 'Fonctions d\'une variable réelle' },
   { id: 6, slug: 'derivation', title: 'Dérivation' },
   { id: 7, slug: 'integration-sur-un-segment', title: 'Intégration sur un segment' },
   { id: 8, slug: 'polynomes', title: 'Polynômes' },
@@ -79,6 +92,43 @@ const MathsApprofondiesPage = () => {
 
         {/* Grille chapitres */}
         <div className="container mx-auto px-4 pb-16">
+          {/* Chapitre 0 - Méthodologie */}
+          <h2 className="text-2xl font-bold mb-6 text-orange-600 text-center">Méthodologie</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {METHODOLOGIE_ARTICLES.map((article) => (
+              <Card 
+                key={article.id}
+                className={`group hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-orange-200 bg-white cursor-pointer ${article.color}`}
+                onClick={() => window.location.href = article.link}
+              >
+                <CardHeader className="pb-4 relative">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className={`w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center ${article.textColor}`}>
+                      {article.icon}
+                    </div>
+                    <Badge className="text-xs bg-orange-500 text-white px-2 py-1 rounded">
+                      Article
+                    </Badge>
+                  </div>
+                  <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
+                    {article.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="pt-0">
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                    {article.description}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-orange-600 font-medium group-hover:underline">
+                      Lire l'article
+                    </span>
+                    <ArrowRight className="h-4 w-4 text-orange-600 group-hover:scale-110 transition-transform" />
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
           {/* Semestre 1 */}
           <h2 className="text-2xl font-bold mb-6 text-[#2D5BFF] text-center">Chapitres — Semestre 1</h2>
           <div className="flex flex-col gap-4">

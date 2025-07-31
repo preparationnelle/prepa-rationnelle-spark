@@ -96,6 +96,7 @@ const StorytellingMethodePage = lazy(() => import('../pages/StorytellingMethodeP
 
 // Articles pages
 const MathsEteControlePage = lazy(() => import('../pages/articles/MathsEteControlePage'));
+const AttentesConcoursPage = lazy(() => import('../pages/articles/AttentesConcoursPage'));
 const EntretienInverseGEMPage = lazy(() => import('../pages/EntretienInverseGEMPage'));
 const CVProjectifPage = lazy(() => import('../pages/CVProjectifPage'));
 
@@ -251,6 +252,7 @@ export const routes: RouteConfig[] = [
   
   // Articles pages
   { path: '/articles/maths-ete-controle', component: MathsEteControlePage, title: 'Un été pour (re)prendre le contrôle en maths' },
+  { path: '/articles/attentes-concours', component: AttentesConcoursPage, title: 'Les attentes du concours - Décoder les jurys' },
   { path: '/entretien-inverse-gem', component: EntretienInverseGEMPage, title: 'L\'entretien inversé à GEM' },
   { path: '/cv-projectif', component: CVProjectifPage, title: 'Guide complet pour réaliser son CV projectif' },
   
