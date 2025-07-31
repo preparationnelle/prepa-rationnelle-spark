@@ -63,6 +63,39 @@ export const HeroSection = () => {
           Gagne +5 points avec nos formations maths et python
         </p>
 
+        {/* Enhanced Buttons */}
+        <div className="flex flex-col sm:flex-row justify-center gap-6 w-full max-w-[600px] mb-8">
+          <Button 
+            size="lg" 
+            className="w-full sm:w-auto px-10 py-6 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold text-xl rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border-0 relative overflow-hidden group" 
+            style={{
+              boxShadow: "0 8px 25px rgba(243,108,0,0.3)"
+            }}
+            onClick={() => setShowWhatsAppModal(true)}
+          >
+            <span className="relative z-10 flex items-center gap-2">
+              <CheckCircle className="h-5 w-5" />
+              Groupe WhatsApp ECO
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-orange-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </Button>
+          <Link to="/formations" className="flex-1 sm:flex-none">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="w-full sm:w-auto px-10 py-6 text-orange-600 border-2 border-orange-500 bg-white/90 backdrop-blur-sm hover:bg-gradient-to-r hover:from-orange-500 hover:to-orange-600 hover:text-white font-bold text-xl rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group" 
+              style={{
+                boxShadow: "0 4px 15px rgba(243,108,0,0.1)"
+              }}
+            >
+              <span className="flex items-center gap-2">
+                Découvre nos formations
+                <TrendingUp className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </Button>
+          </Link>
+        </div>
+
         {/* Enhanced Statistics Section */}
         <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 mb-8 shadow-2xl border border-orange-100 relative overflow-hidden">
           {/* Background pattern */}
@@ -118,39 +151,6 @@ export const HeroSection = () => {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Enhanced Buttons */}
-        <div className="flex flex-col sm:flex-row justify-center gap-6 w-full max-w-[600px]">
-          <Button 
-            size="lg" 
-            className="w-full sm:w-auto px-10 py-6 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold text-xl rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border-0 relative overflow-hidden group" 
-            style={{
-              boxShadow: "0 8px 25px rgba(243,108,0,0.3)"
-            }}
-            onClick={() => setShowWhatsAppModal(true)}
-          >
-            <span className="relative z-10 flex items-center gap-2">
-              <CheckCircle className="h-5 w-5" />
-              Groupe WhatsApp ECO
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-orange-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </Button>
-          <Link to="/formations" className="flex-1 sm:flex-none">
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="w-full sm:w-auto px-10 py-6 text-orange-600 border-2 border-orange-500 bg-white/90 backdrop-blur-sm hover:bg-gradient-to-r hover:from-orange-500 hover:to-orange-600 hover:text-white font-bold text-xl rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group" 
-              style={{
-                boxShadow: "0 4px 15px rgba(243,108,0,0.1)"
-              }}
-            >
-              <span className="flex items-center gap-2">
-                Découvre nos formations
-                <TrendingUp className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </Button>
-          </Link>
         </div>
       </div>
 
