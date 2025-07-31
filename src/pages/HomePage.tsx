@@ -1,6 +1,5 @@
 
 import React from 'react';
-import Navigation from '@/components/Navigation';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { FormationsSection } from '@/components/sections/FormationsSection';
 import { OffersSection } from '@/components/OffersSection';
@@ -12,8 +11,7 @@ import { CallToActionSection } from '@/components/sections/CallToActionSection';
 
 const HomePage: React.FC = () => {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#F0F8FF' }}>
-      <Navigation />
+    <div className="min-h-screen bg-white">
       <HeroSection />
       <FormationsSection />
       <OffersSection />

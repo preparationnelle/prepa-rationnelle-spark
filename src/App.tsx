@@ -10,6 +10,7 @@ import { ProgressProvider } from './context/ProgressContext';
 import { routes } from './config/routes';
 import { useRouteValidation } from './hooks/useRouteValidation';
 import ChatWidget from './components/chat/ChatWidget';
+import { Layout } from './components/Layout';
 
 // Loading component for lazy-loaded pages
 const PageLoader = () => (
@@ -39,19 +40,27 @@ function App() {
                     // Teacher routes require professor role
                     element = (
                       <TeacherProtectedRoute>
-                        <Component />
+                        <Layout showFooter={false}>
+                          <Component />
+                        </Layout>
                       </TeacherProtectedRoute>
                     );
                   } else if (route.protected) {
                     // Regular protected routes
                     element = (
                       <ProtectedRoute>
-                        <Component />
+                        <Layout>
+                          <Component />
+                        </Layout>
                       </ProtectedRoute>
                     );
                   } else {
                     // Public routes
-                    element = <Component />;
+                    element = (
+                      <Layout>
+                        <Component />
+                      </Layout>
+                    );
                   }
                   
                   return (

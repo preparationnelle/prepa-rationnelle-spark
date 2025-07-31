@@ -144,7 +144,7 @@ export const SuperprofReviewsSection = () => {
       };
     }
     return {
-      avatar: "bg-gradient-to-br from-blue-500 to-purple-600",
+              avatar: "bg-gradient-to-br from-orange-400 to-orange-600",
       border: "border-blue-200 hover:border-blue-300",
       quote: "text-blue-400"
     };
@@ -197,7 +197,7 @@ export const SuperprofReviewsSection = () => {
               <div className="text-gray-600">Satisfaction</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-purple-600 mb-2">+5</div>
+                              <div className="text-3xl font-bold text-orange-600 mb-2">+5</div>
               <div className="text-gray-600">Points de progression</div>
             </div>
           </div>
@@ -299,7 +299,7 @@ export const SuperprofReviewsSection = () => {
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-gray-600">Satisfaction élèves</span>
-                <span className="text-sm font-semibold text-purple-600">100%</span>
+                <span className="text-sm font-semibold text-orange-600">100%</span>
               </div>
             </div>
 
@@ -310,7 +310,7 @@ export const SuperprofReviewsSection = () => {
             >
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-4 px-8 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-4 px-8 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               >
                 Découvrir tous les avis sur Superprof
                 <ExternalLink className="ml-2 h-5 w-5" />

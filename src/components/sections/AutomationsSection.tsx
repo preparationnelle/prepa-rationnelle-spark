@@ -28,7 +28,7 @@ export const AutomationsSection = () => {
       title: 'Générateur Langues',
       description: 'Générez des paragraphes ou corrigez vos thèmes avec IA',
       icon: <Languages className="h-8 w-8" />,
-      color: 'bg-purple-500',
+      color: 'bg-orange-500',
       badge: 'Nouveau',
       badgeColor: 'bg-orange-500 text-white',
       link: '/generator/languages-unified'
@@ -38,7 +38,7 @@ export const AutomationsSection = () => {
       title: 'Générateur Oraux',
       description: 'Générez vos réponses orales ou entraînez-vous avec des questions types',
       icon: <Mic className="h-8 w-8" />,
-      color: 'bg-purple-500',
+      color: 'bg-orange-500',
       badge: 'IA',
       badgeColor: 'bg-black text-white',
       link: '/generator/orals-unified'
@@ -101,14 +101,7 @@ export const AutomationsSection = () => {
           ))}
         </div>
 
-        <div className="text-center">
-          <Link to="/generator">
-            <Button size="lg" variant="outline" className="bg-gradient-to-r from-primary/10 to-orange-500/10 hover:from-primary/20 hover:to-orange-500/20">
-              <Zap className="h-5 w-5 mr-2" />
-              Découvrir tous les générateurs
-            </Button>
-          </Link>
-        </div>
+
       </div>
     </section>
   );

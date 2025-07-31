@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { useRoleAccess } from '@/hooks/useRoleAccess';
@@ -23,7 +23,34 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { toast } = useToast();
+
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Calculate scroll progress
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScrollProgress = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      setScrollProgress(Math.min(progress, 100));
+    };
+
+    window.addEventListener('scroll', handleScrollProgress);
+    return () => window.removeEventListener('scroll', handleScrollProgress);
+  }, []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => { if (isMenuOpen) setIsMenuOpen(false); };
@@ -45,17 +72,23 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
   };
 
   return (
-    <header className="shadow-sm border-b border-blue-100/30" style={{ backgroundColor: '#FAFCFF' }}>
-      <nav className="container mx-auto px-4 py-3 flex items-center justify-between">
+    <>
+      <header className={cn(
+        "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
+        isScrolled 
+          ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200" 
+          : "bg-white/90 backdrop-blur-sm shadow-sm border-b border-blue-100/30"
+      )}>
+        <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center" onClick={closeMenu}>
           <Logo size="sm" />
         </Link>
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-4">
-          <Link to="/" className="text-sm text-foreground hover:text-primary transition" onClick={closeMenu}>Accueil</Link>
+        <div className="hidden md:flex items-center space-x-6">
+          <Link to="/" className="text-sm font-medium text-foreground hover:text-primary transition px-2 py-1 rounded-md hover:bg-gray-50" onClick={closeMenu}>Accueil</Link>
           {/* Menu déroulant "Formations" */}
           <DropdownMenu>
-            <DropdownMenuTrigger className="text-sm text-foreground hover:text-primary transition flex items-center gap-1 focus:outline-none">
+            <DropdownMenuTrigger className="text-sm font-medium text-foreground hover:text-primary transition flex items-center gap-1 focus:outline-none px-2 py-1 rounded-md hover:bg-gray-50">
               Formations
               <ChevronDown className="h-3 w-3" />
             </DropdownMenuTrigger>
@@ -105,18 +138,18 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <Link to="/generator" className="text-sm text-foreground hover:text-primary transition" onClick={closeMenu}>Générateur</Link>
-          <Link to="/apropos" className="text-sm text-foreground hover:text-primary transition" onClick={closeMenu}>À propos</Link>
-          <Link to="/articles" className="text-sm text-foreground hover:text-primary transition" onClick={closeMenu}>Articles</Link>
-          <Link to="/contact" className="text-sm text-foreground hover:text-primary transition" onClick={closeMenu}>Contact</Link>
-          <Link to="/avis" className="text-sm text-foreground hover:text-primary transition flex items-center gap-1" onClick={closeMenu}>
+          <Link to="/generator" className="text-sm font-medium text-foreground hover:text-primary transition px-2 py-1 rounded-md hover:bg-gray-50" onClick={closeMenu}>Générateur</Link>
+          <Link to="/apropos" className="text-sm font-medium text-foreground hover:text-primary transition px-2 py-1 rounded-md hover:bg-gray-50" onClick={closeMenu}>À propos</Link>
+          <Link to="/articles" className="text-sm font-medium text-foreground hover:text-primary transition px-2 py-1 rounded-md hover:bg-gray-50" onClick={closeMenu}>Articles</Link>
+          <Link to="/contact" className="text-sm font-medium text-foreground hover:text-primary transition px-2 py-1 rounded-md hover:bg-gray-50" onClick={closeMenu}>Contact</Link>
+          <Link to="/avis" className="text-sm font-medium text-foreground hover:text-primary transition flex items-center gap-1 px-2 py-1 rounded-md hover:bg-gray-50" onClick={closeMenu}>
             <Star className="h-4 w-4 text-yellow-400" />
             Avis
           </Link>
           <SearchTrigger />
           
           {/* Liens réseaux sociaux */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-3 ml-4">
             <a 
               href="https://www.instagram.com/prepa_rationnelle" 
               target="_blank" 
@@ -141,7 +174,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
           
           <ThemeToggle variant="icon" />
           {currentUser ? (
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-4 ml-4">
               <Link to="/dashboard" className="text-sm text-foreground hover:text-primary transition flex items-center gap-1" onClick={closeMenu}><BarChart3 className="h-3 w-3" />Dashboard</Link>
               {isProfessor && (
                 <Link to="/prof" className="text-sm text-foreground hover:text-primary transition flex items-center gap-1" onClick={closeMenu}><UserCheck className="h-3 w-3" />Prof</Link>
@@ -150,9 +183,9 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
             </div>
           ) : (
             <>
-              <Link to="/login" className="text-sm text-foreground hover:text-primary transition" onClick={closeMenu}>Connexion</Link>
+              <Link to="/login" className="text-sm font-medium text-foreground hover:text-primary transition px-3 py-1 rounded-md hover:bg-gray-50" onClick={closeMenu}>Connexion</Link>
               {showSignup !== false && (
-                <Link to="/register" onClick={closeMenu}><Button size="sm" className="h-8 px-3 text-xs">S'inscrire</Button></Link>
+                <Link to="/register" onClick={closeMenu}><Button size="sm" className="h-8 px-4 text-xs font-medium">S'inscrire</Button></Link>
               )}
             </>
           )}
@@ -225,7 +258,19 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
           </>)}
         </div>
       </div>
+      
+      {/* Barre de progression animée */}
+      <div className="fixed top-12 left-0 w-full h-1 bg-gray-100 z-50">
+        <div 
+          className="h-full bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 transition-all duration-300 ease-out relative overflow-hidden"
+          style={{ width: `${scrollProgress}%` }}
+        >
+          {/* Effet de brillance animé */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer" />
+        </div>
+      </div>
     </header>
+    </>
   );
 };
 
