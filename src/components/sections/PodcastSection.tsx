@@ -64,51 +64,26 @@ export const PodcastSection = () => {
             </div>
           </div>
           
-          {/* Schools logos section */}
-          <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-orange-100">
-            <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
-              Nos étudiants intègrent :
-            </h3>
+          {/* Visual element */}
+          <div className="relative">
+            <a 
+              href={podcastUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="transition-transform hover:scale-105 block"
+            >
+              <img 
+                src="/lovable-uploads/b7d741c4-5fa9-4c55-8fe0-37e63fa54d5f.png" 
+                alt="Interview Europe 1 - Jeune homme parlant dans un microphone bleu" 
+                className="shadow-2xl rounded-2xl w-96 md:w-[500px] h-auto object-cover"
+              />
+            </a>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
-              <div className="flex justify-center">
-                <img 
-                  src="/lovable-uploads/32398317-bb54-4b85-99f3-21247ecb9e95.png" 
-                  alt="HEC Paris" 
-                  className="h-16 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-              
-              <div className="flex justify-center">
-                <img 
-                  src="/lovable-uploads/c6cfc2c2-ee21-48be-ad58-9fa106616bd7.png" 
-                  alt="ESSEC Business School" 
-                  className="h-16 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-              
-              <div className="flex justify-center">
-                <img 
-                  src="/lovable-uploads/8b0d9bde-2b1c-4287-98e6-815b3b5a021b.png" 
-                  alt="ESCP Business School" 
-                  className="h-16 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-              
-              <div className="flex justify-center">
-                <img 
-                  src="/lovable-uploads/d8388a7f-02a4-4b44-84ef-900fa8fa9574.png" 
-                  alt="EDHEC Business School" 
-                  className="h-16 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-              
-              <div className="flex justify-center col-span-2 md:col-span-1">
-                <img 
-                  src="/lovable-uploads/a3d4a91b-bf18-4bb7-8470-c6dd0ae311ea.png" 
-                  alt="EM Lyon Business School" 
-                  className="h-16 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                />
+            {/* Europe 1 badge */}
+            <div className="absolute -bottom-4 -right-4 bg-white rounded-lg shadow-lg px-4 py-2 border border-orange-200">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
+                <span className="font-bold text-blue-600">Europe 1</span>
               </div>
             </div>
           </div>
