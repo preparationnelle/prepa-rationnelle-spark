@@ -73,7 +73,7 @@ export const PodcastSection = () => {
               className="transition-transform hover:scale-105 block"
             >
               <img 
-                src="/lovable-uploads/podcast-europe1-interview.jpg" 
+                src="/lovable-uploads/b7d741c4-5fa9-4c55-8fe0-37e63fa54d5f.png" 
                 alt="Interview Europe 1 - Jeune homme parlant dans un microphone bleu" 
                 className="shadow-2xl rounded-2xl w-80 h-auto object-cover"
               />
