@@ -99,12 +99,12 @@ const FormationPage = () => {
       {/* Section Cours */}
       <div className="mb-12">
         <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-          <BookOpen className="h-6 w-6 text-primary" />
+          <BookOpen className="h-6 w-6 text-orange-500" />
           Cours
         </h2>
         <div className="grid gap-6">
           {coursModules.map(module => <Link key={module.id} to={module.link} className="block">
-              <Card className="border-2 hover:border-primary/50 transition-colors cursor-pointer">
+              <Card className="border-2 hover:border-orange-500/50 transition-colors cursor-pointer">
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-4">
@@ -114,9 +114,9 @@ const FormationPage = () => {
                       <div>
                         <CardTitle className="flex items-center gap-2">
                           Module {module.id}
-                          <Badge className="bg-black text-white">Disponible</Badge>
+                          <Badge className="bg-orange-500 text-white">Disponible</Badge>
                         </CardTitle>
-                        <h3 className="text-xl font-semibold text-primary mt-1">
+                        <h3 className="text-xl font-semibold text-gray-800 mt-1">
                           {module.title}
                         </h3>
                       </div>
@@ -177,7 +177,7 @@ const FormationPage = () => {
                           Module {module.id}
                           <Badge className="bg-green-600 text-white">Disponible</Badge>
                         </CardTitle>
-                        <h3 className="text-xl font-semibold text-primary mt-1">
+                        <h3 className="text-xl font-semibold text-gray-800 mt-1">
                           {module.title}
                         </h3>
                       </div>

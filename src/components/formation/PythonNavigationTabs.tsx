@@ -12,7 +12,7 @@ const PythonNavigationTabs: React.FC<PythonNavigationTabsProps> = ({ className =
   
   const getActiveTab = () => {
     if (location.pathname === '/formation') return 'cours';
-    if (location.pathname === '/python-exercices') return 'exercices';
+    if (location.pathname === '/formation/exercices') return 'exercices';
     if (location.pathname === '/python-flashcards') return 'flashcards';
     if (location.pathname === '/python-reference') return 'reference';
     if (location.pathname === '/pourquoi-python-prepa-ecg') return 'methodo';
@@ -36,7 +36,7 @@ const PythonNavigationTabs: React.FC<PythonNavigationTabsProps> = ({ className =
             </Link>
           </TabsTrigger>
           <TabsTrigger value="exercices" asChild>
-            <Link to="/python-exercices" className="flex items-center gap-2">
+            <Link to="/formation/exercices" className="flex items-center gap-2">
               <PenTool className="h-4 w-4" />
               <span className="hidden sm:inline">Exercices</span>
             </Link>

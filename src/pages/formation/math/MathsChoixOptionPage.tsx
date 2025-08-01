@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
-import { ChevronRight, Home, BookOpen, Calculator } from 'lucide-react';
+import { ChevronRight, Home, BookOpen, Calculator, BookMarked } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -57,17 +57,17 @@ const MathsChoixOptionPage = () => {
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-[#2D5BFF]">
-            <Link to="/" className="flex items-center gap-1 hover:text-[#1e3a8a] transition-colors">
+          <div className="flex items-center text-xs font-medium text-gray-600">
+            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formations" className="hover:text-[#1e3a8a] transition-colors">
+            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
+            <Link to="/formations" className="hover:text-gray-900 transition-colors">
               Toutes les formations
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <span className="text-[#2D5BFF] font-bold">Choix option Maths</span>
+            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
+            <span className="text-gray-900 font-bold">Choix option Maths</span>
           </div>
         </div>
       </nav>
@@ -126,6 +126,33 @@ const MathsChoixOptionPage = () => {
               </p>
               <div className="bg-green-600 text-white font-semibold py-3 px-4 rounded-lg text-center hover:bg-green-700 transition-colors">
                 Accéder à la formation
+              </div>
+            </div>
+          </Card>
+        </div>
+        
+        {/* Carte Méthodologie */}
+        <div className="mt-12 max-w-4xl mx-auto">
+          <Card 
+            className="p-6 hover:shadow-lg transition-all duration-200 bg-white cursor-pointer transform hover:-translate-y-1 border-l-4 border-orange-500"
+            onClick={() => navigate('/formation/maths-methodologie')}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === 'Enter' && navigate('/formation/maths-methodologie')}
+          >
+            <div className="flex flex-col h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                  <BookMarked className="w-6 h-6 text-orange-600" />
+                </div>
+                <h2 className="text-2xl font-semibold text-gray-800">Méthodologie</h2>
+              </div>
+              <p className="text-gray-600 mb-6 flex-grow">
+                Articles et conseils pour optimiser votre préparation aux concours,
+                avec des stratégies d'apprentissage et des méthodes de résolution.
+              </p>
+              <div className="border border-orange-500 text-orange-600 font-semibold py-3 px-4 rounded-lg text-center hover:bg-orange-50 transition-colors">
+                Accéder à la méthodologie
               </div>
             </div>
           </Card>

@@ -8,13 +8,14 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
-import { BarChart3, Target, Book, CheckCircle, Play, Code, Calculator, ChevronDown, ChevronUp, Trophy, Star } from 'lucide-react';
+import { BarChart3, Target, Book, CheckCircle, Play, Code, Calculator, ChevronDown, ChevronUp, Trophy, Star, ArrowLeft } from 'lucide-react';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 
 const PythonProbabilitesExercicesPage = () => {
   const [selectedExercise, setSelectedExercise] = useState<number | null>(null);
   const [showCorrections, setShowCorrections] = useState<Set<number>>(new Set());
+  const [showQCM, setShowQCM] = useState(false);
   
   // États pour le QCM d'évaluation
   const [qcmAnswers, setQcmAnswers] = useState<{[key: number]: string}>({});
@@ -57,6 +58,14 @@ const PythonProbabilitesExercicesPage = () => {
     setQcmAnswers({});
     setQcmSubmitted(false);
     setQcmScore(null);
+  };
+
+  const handleNavigate = (newExerciseId: number) => {
+    const exerciseExists = exercices.some(ex => ex.id === newExerciseId);
+    if (exerciseExists) {
+      setSelectedExercise(newExerciseId);
+      window.scrollTo(0, 0);
+    }
   };
 
   const qcmQuestions = [{
@@ -361,6 +370,196 @@ p1, p2 = 0.3, 0.5
 prob_estimee = estimation_monte_carlo(p1, p2)
 print(f"P(X = 2Y) ≈ {prob_estimee:.4f}")`
       }
+    },
+    {
+      id: 7,
+      title: "Marche aléatoire simple",
+      description: "Simuler une marche aléatoire et compter les passages à l'origine.",
+      difficulty: "Facile",
+      badge: "Simulation",
+      content: {
+        objective: "Simuler une marche aléatoire simple et analyser ses propriétés.",
+        enonce: `On considère un mobile qui, à chaque unité de temps, avance d'une unité avec une probabilité égale à 1/2 ou recule d'une unité avec la même probabilité. Au départ, le mobile se situe en position 0.
+
+1.  Écrire une fonction Python \`position_finale(n)\` qui simule ce déplacement et retourne la position finale.
+2.  Écrire une variante \`passages_origine(n)\` qui compte le nombre de fois où le mobile repasse par l'origine.
+3.  Écrire une fonction \`temps_sortie(borne)\` qui simule la marche jusqu’à ce que le mobile sorte de l’intervalle [-borne, borne] et renvoie le nombre de pas.
+4.  Écrire une fonction \`moyenne_position(n, essais)\` qui calcule la moyenne des positions finales sur un grand nombre d'essais.`,
+        corrections: [
+          {
+            title: "Correction 1 : Position Finale",
+            code: `import random as rd
+
+def position_finale(n):
+    pos = 0
+    for i in range(n):
+        if rd.random() < 0.5:
+            pos += 1
+        else:
+            pos -= 1
+    return pos
+
+# Exemple de test :
+print(position_finale(10))`
+          },
+          {
+            title: "Correction 2 : Passages à l'Origine",
+            code: `import random as rd
+
+def passages_origine(n):
+    pos = 0
+    compte = 0
+    for i in range(n):
+        if rd.random() < 0.5:
+            pos += 1
+        else:
+            pos -= 1
+        if pos == 0:
+            compte += 1
+    return compte
+
+# Exemple de test :
+print(passages_origine(10))`
+          },
+          {
+            title: "Correction 3 : Temps de Sortie d'Intervalle",
+            code: `import random as rd
+
+def temps_sortie(borne, pos=0):
+    n = 0
+    while -borne <= pos <= borne:
+        if rd.random() < 0.5:
+            pos += 1
+        else:
+            pos -= 1
+        n += 1
+    return n
+
+print(temps_sortie(5))`
+          },
+          {
+            title: "Correction 4 : Moyenne de la Position Finale",
+            code: `import random as rd
+
+def moyenne_position(n, essais=1000):
+    total = 0
+    for _ in range(essais):
+        pos = 0
+        for i in range(n):
+            if rd.random() < 0.5:
+                pos += 1
+            else:
+                pos -= 1
+        total += pos
+    return total / essais
+
+# Sur 10000 essais pour une marche de 10 pas :
+print(moyenne_position(10, 10000))`
+          }
+        ]
+      }
+    },
+    {
+      id: 8,
+      title: "Loi d'arrêt aléatoire",
+      description: "Simuler le rang d'obtention de deux Piles consécutifs.",
+      difficulty: "Avancé",
+      badge: "Simulation",
+      content: {
+        objective: "Simuler une variable aléatoire d'arrêt pour obtenir deux Piles consécutifs.",
+        enonce: `On lance indéfiniment une pièce équilibrée (Pile ou Face). On note X la variable aléatoire égale au rang du lancer où, pour la première fois, on obtient deux Pile consécutifs.
+
+Par exemple, si la suite des résultats est : Pile, Face, Face, Pile, Pile, ..., alors on a X = 5.
+
+Compléter la fonction Python \`simulX()\` pour qu'elle simule les lancers et renvoie le nombre de lancers effectués (la valeur de X).`,
+        correction: `import random as rd
+
+def simulX():
+    tirs = 0
+    pile = 0
+    while pile < 2:
+        if rd.random() < 0.5:  # On obtient Pile
+            pile += 1
+        else:                 # On obtient Face
+            pile = 0
+        tirs += 1
+    return tirs
+
+# Test de la simulation
+print(f"Nombre de lancers pour obtenir deux Piles consécutifs : {simulX()}")`
+      }
+    },
+    {
+      id: 9,
+      title: "Processus de renforcement dans une urne",
+      description: "Simuler un processus de tirage avec renforcement jusqu'à atteindre n boules vertes.",
+      difficulty: "Avancé",
+      badge: "Simulation",
+      content: {
+        objective: "Simuler une variable d'arrêt dans un processus d'urne de Polya modifié.",
+        enonce: `On considère une urne contenant au départ : 1 boule rouge et 1 boule verte.
+
+On effectue une série de tirages avec remise, selon le protocole suivant :
+- Si on tire une boule rouge, on la remet et on ajoute 2 boules rouges dans l'urne.
+- Si on tire une boule verte, on la remet et on ajoute 1 rouge et 2 vertes.
+
+On note Y_n la variable aléatoire égale au rang du tirage à l'issue duquel le nombre de boules vertes devient supérieur ou égal à n (pour un entier n ≥ 2).
+
+Compléter la fonction Python \`simulY(n)\` pour qu'elle simule ce processus et renvoie la valeur de Y_n.`,
+        correction: `import random as rd
+
+def simulY(n):
+    r = 1  # nombre de boules rouges
+    v = 1  # nombre de boules vertes
+    Y = 0
+    while v < n:
+        # On tire un numéro entre 1 et r+v
+        numero_boule = rd.randint(1, r + v)
+        if numero_boule <= r:  # On a tiré une rouge
+            r += 2
+        else:                  # On a tiré une verte
+            r += 1
+            v += 2
+        Y += 1
+    return Y
+
+# Test pour n=10
+print(f"Nombre de tirages pour atteindre 10 boules vertes : {simulY(10)}")`
+      }
+    },
+    {
+      id: 10,
+      title: "Sauts aléatoires dans un escalier",
+      description: "Simuler le nombre de sauts nécessaires pour gravir un escalier de n marches.",
+      difficulty: "Intermédiaire",
+      badge: "Simulation",
+      content: {
+        objective: "Simuler le comportement d'un animal qui monte un escalier par bonds de 1 ou 2 marches.",
+        enonce: `Un animal doit gravir un escalier comportant n marches. À chaque bond, il choisit au hasard de monter soit 1 marche, soit 2 marches, avec une probabilité égale.
+
+Écrire une fonction Python \`saut_escalier(n)\` qui :
+- Prend en argument un entier n (le nombre de marches).
+- Simule le comportement de l’animal.
+- Retourne le nombre de bonds effectués pour atteindre (ou dépasser) la dernière marche.`,
+        correction: `import numpy.random as rd
+
+def saut_escalier(n):
+    marches = 0     # nombre de marches montées
+    sauts = 0       # nombre de bonds effectués
+    
+    while marches < n:
+        r = rd.random()
+        if r < 0.5:
+            marches += 1
+        else:
+            marches += 2
+        sauts += 1
+    
+    return sauts
+
+# Test pour un escalier de 20 marches
+print(f"Nombre de sauts pour 20 marches : {saut_escalier(20)}")`
+      }
     }
   ];
 
@@ -380,6 +579,9 @@ print(f"P(X = 2Y) ≈ {prob_estimee:.4f}")`
   };
 
   if (selectedExercise) {
+    const exercise = exercices.find(ex => ex.id === selectedExercise);
+    if (!exercise) return null;
+
     return (
       <PythonModuleLayout>
         <div className="mb-8">
@@ -394,13 +596,12 @@ print(f"P(X = 2Y) ≈ {prob_estimee:.4f}")`
           
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent mb-4">
-              Exercice {selectedExercise} - Probabilités
+              Exercice {selectedExercise} - {exercise.title}
             </h1>
           </div>
         </div>
 
-        {/* Exercices avec contenu structuré */}
-        {exercices[selectedExercise - 1].content ? (
+        {exercise.content ? (
           <>
             <Card className="mb-8 border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50 shadow-lg">
               <CardHeader>
@@ -411,12 +612,11 @@ print(f"P(X = 2Y) ≈ {prob_estimee:.4f}")`
               </CardHeader>
               <CardContent>
                 <p className="text-purple-700 font-medium mb-4">
-                  {exercices[selectedExercise - 1].content.objective}
+                  {exercise.content.objective}
                 </p>
               </CardContent>
             </Card>
 
-            {/* Énoncé */}
             <Card className="mb-8 border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50 shadow-lg">
               <CardHeader>
                 <CardTitle className="flex items-center gap-3 text-purple-700">
@@ -425,11 +625,10 @@ print(f"P(X = 2Y) ≈ {prob_estimee:.4f}")`
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-purple-700 whitespace-pre-line">{exercices[selectedExercise - 1].content.enonce}</p>
+                <p className="text-purple-700 whitespace-pre-line">{exercise.content.enonce}</p>
               </CardContent>
             </Card>
 
-            {/* Bouton pour afficher/masquer la correction */}
             <div className="flex justify-center mb-6">
               <Button 
                 variant="outline" 
@@ -450,23 +649,44 @@ print(f"P(X = 2Y) ≈ {prob_estimee:.4f}")`
               </Button>
             </div>
 
-            {/* Correction (affichée conditionnellement) */}
             {showCorrections.has(selectedExercise) && (
-              <Card className="mb-8 border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-green-700">
-                    <Code className="h-6 w-6" />
-                    Correction
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                    <pre className="text-green-400 text-sm font-mono">
-                      <code>{exercices[selectedExercise - 1].content.correction}</code>
-                    </pre>
-                  </div>
-                </CardContent>
-              </Card>
+              <>
+                {exercise.content.correction && (
+                  <Card className="mb-8 border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-3 text-green-700">
+                        <Code className="h-6 w-6" />
+                        Correction
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <pre className="text-green-400 text-sm font-mono">
+                          <code>{exercise.content.correction}</code>
+                        </pre>
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
+                {exercise.content.corrections &&
+                  exercise.content.corrections.map((corr, index) => (
+                    <Card key={index} className="mb-8 border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg">
+                      <CardHeader>
+                        <CardTitle className="flex items-center gap-3 text-green-700">
+                          <Code className="h-6 w-6" />
+                          {corr.title}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                          <pre className="text-green-400 text-sm font-mono">
+                            <code>{corr.code}</code>
+                          </pre>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+              </>
             )}
           </>
         ) : (
@@ -480,10 +700,23 @@ print(f"P(X = 2Y) ≈ {prob_estimee:.4f}")`
             </Card>
           </div>
         )}
+
+      <ModuleNavigationCards 
+        currentModule={{
+          id: 3,
+          title: "Probabilités",
+          slug: "probabilites",
+          color: "purple"
+        }}
+        isExercisePage={true}
+        totalExercises={exercices.length}
+        currentExerciseId={selectedExercise}
+        onNavigate={handleNavigate}
+      />
       </PythonModuleLayout>
     );
   }
-
+  
   return (
     <PythonModuleLayout>
       <div className="text-center mb-8">
@@ -495,149 +728,189 @@ print(f"P(X = 2Y) ≈ {prob_estimee:.4f}")`
         </p>
       </div>
 
-      {/* QCM d'évaluation en haut de page */}
-      <Card className="mb-8 border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50 shadow-lg">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-purple-700">
-            <Trophy className="h-6 w-6" />
-            QCM d'évaluation - Testez vos connaissances
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          {!qcmSubmitted ? (
-            <div className="space-y-6">
-              <div className="flex items-center justify-between mb-4">
-                <p className="text-purple-700 font-medium">
-                  Répondez aux 20 questions pour évaluer votre niveau sur les probabilités et statistiques
-                </p>
-                <Badge variant="outline" className="bg-purple-100 text-purple-700">
-                  {Object.keys(qcmAnswers).length}/20 répondues
-                </Badge>
-              </div>
-              
-              {/* QCM compact en 4 colonnes */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {qcmQuestions.map((question, index) => (
-                  <Card key={question.id} className="border border-purple-200 hover:border-purple-300 transition-colors">
-                    <CardContent className="pt-4">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Badge variant="outline" className="bg-purple-100 text-purple-700 text-xs">
-                          Q{question.id}
-                        </Badge>
-                        {qcmAnswers[question.id] && (
-                          <CheckCircle className="h-3 w-3 text-green-600" />
-                        )}
-                      </div>
-                      <p className="mb-3 text-xs line-clamp-3">{question.question}</p>
-                      <div className="space-y-1">
-                        {question.options.map((option, optIndex) => (
-                          <label key={optIndex} className="flex items-center gap-1 p-1 rounded hover:bg-purple-50 cursor-pointer">
-                            <input
-                              type="radio"
-                              name={`question-${question.id}`}
-                              value={option}
-                              checked={qcmAnswers[question.id] === option}
-                              onChange={(e) => handleQCMAnswer(question.id, e.target.value)}
-                              className="text-purple-600 text-xs"
-                            />
-                            <span className="text-xs">{option.split(') ')[1] || option}</span>
-                          </label>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-              
-              <div className="flex justify-center">
-                <Button 
-                  onClick={submitQCM}
-                  disabled={Object.keys(qcmAnswers).length < 20}
-                  className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3"
-                >
-                  <Trophy className="h-4 w-4 mr-2" />
-                  Valider le QCM
-                </Button>
-              </div>
-            </div>
-          ) : (
-            <div className="space-y-4">
-              {/* Résultats compacts */}
-              <div className="text-center space-y-2">
-                <div className="flex items-center justify-center gap-2">
-                  <Trophy className="h-6 w-6 text-yellow-600" />
-                  <h3 className="text-lg font-bold text-purple-700">Résultats du QCM</h3>
-                </div>
-                
-                <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-4 border-2 border-purple-200">
-                  <div className="text-2xl font-bold text-purple-700 mb-2">
-                    {qcmScore?.toFixed(1)}/20
-                  </div>
-                  <div className="flex items-center justify-center gap-1 mb-2">
-                    {[...Array(5)].map((_, i) => (
-                      <Star 
-                        key={i} 
-                        className={`h-4 w-4 ${i < Math.floor((qcmScore || 0) / 4) ? 'text-yellow-500 fill-current' : 'text-gray-300'}`} 
-                      />
-                    ))}
-                  </div>
-                  <p className="text-purple-700 text-sm">
-                    {qcmScore && qcmScore >= 16 ? "Excellent ! Vous maîtrisez parfaitement les probabilités et statistiques." :
-                     qcmScore && qcmScore >= 12 ? "Bon niveau ! Quelques révisions pour perfectionner." :
-                     qcmScore && qcmScore >= 8 ? "Niveau correct. Continuez à vous entraîner." :
-                     "Niveau à améliorer. Revenez sur les bases des probabilités."}
-                  </p>
-                </div>
-              </div>
-              
-              <div className="flex gap-2 justify-center">
-                <Button 
-                  variant="outline" 
-                  onClick={restartQCM}
-                  className="border-purple-300 text-purple-700 hover:bg-purple-50 text-sm"
-                >
-                  Recommencer le QCM
-                </Button>
-              </div>
-            </div>
-          )}
-        </CardContent>
-      </Card>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {exercices.map((exercice) => (
-          <Card key={exercice.id} className="border-2 hover:border-purple-300 transition-colors cursor-pointer"
-                onClick={() => handleStartExercise(exercice.id)}>
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-purple-500 text-white">
-                  <BarChart3 className="h-5 w-5" />
-                </div>
+      {!showQCM && !selectedExercise && (
+        <>
+          <Card className="mb-8 hover:shadow-lg transition-shadow cursor-pointer" onClick={() => setShowQCM(true)}>
+            <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50">
+              <CardTitle className="flex items-center gap-3">
+                <Trophy className="h-8 w-8 text-purple-600" />
                 <div>
-                  <CardTitle className="text-lg">Exercice {exercice.id}</CardTitle>
-                  <Badge variant="secondary" className="bg-purple-100 text-purple-700">
-                    {exercice.difficulty}
-                  </Badge>
+                  <h2 className="text-2xl text-purple-800">QCM d'évaluation</h2>
+                  <p className="text-sm text-purple-600 mt-1">Testez vos connaissances en probabilités et statistiques</p>
                 </div>
-              </div>
+              </CardTitle>
             </CardHeader>
-            <CardContent>
-              <h3 className="font-semibold mb-2 text-purple-700">
-                {exercice.title}
-              </h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                {exercice.description}
-              </p>
-              <Button className="w-full bg-purple-600 hover:bg-purple-700">
-                <Play className="h-4 w-4 mr-2" />
-                Commencer l'exercice
-              </Button>
+            <CardContent className="pt-4">
+              <div className="flex items-center justify-between">
+                <p className="text-gray-600">20 questions pour évaluer votre niveau</p>
+                <Button variant="outline" className="flex items-center gap-2">
+                  <Play className="h-4 w-4" />
+                  Commencer le QCM
+                </Button>
+              </div>
             </CardContent>
           </Card>
-        ))}
-      </div>
 
-      {/* Navigation vers cours */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {exercices.map((exercice) => (
+              <Card key={exercice.id} className="border-2 hover:border-purple-300 transition-colors cursor-pointer"
+                    onClick={() => handleStartExercise(exercice.id)}>
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-purple-500 text-white">
+                      <BarChart3 className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-lg">Exercice {exercice.id}</CardTitle>
+                      <Badge variant="secondary" className="bg-purple-100 text-purple-700">
+                        {exercice.difficulty}
+                      </Badge>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <h3 className="font-semibold mb-2 text-purple-700">
+                    {exercice.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    {exercice.description}
+                  </p>
+                  <Button className="w-full bg-purple-600 hover:bg-purple-700">
+                    <Play className="h-4 w-4 mr-2" />
+                    Commencer l'exercice
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </>
+      )}
+
+      {showQCM && (
+        <>
+          <Button
+            variant="outline"
+            size="sm"
+            className="flex items-center gap-2 mb-6"
+            onClick={() => {
+              setShowQCM(false);
+              setQcmSubmitted(false);
+              setQcmAnswers({});
+              setQcmScore(null);
+            }}
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Retour aux exercices
+          </Button>
+
+          <Card className="mb-8 border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50 shadow-lg">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3 text-purple-700">
+                <Trophy className="h-6 w-6" />
+                QCM d'évaluation - Testez vos connaissances
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {!qcmSubmitted ? (
+                <div className="space-y-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <p className="text-purple-700 font-medium">
+                      Répondez aux 20 questions pour évaluer votre niveau sur les probabilités et statistiques
+                    </p>
+                    <Badge variant="outline" className="bg-purple-100 text-purple-700">
+                      {Object.keys(qcmAnswers).length}/20 répondues
+                    </Badge>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {qcmQuestions.map((question) => (
+                      <Card key={question.id} className="border border-purple-200 hover:border-purple-300 transition-colors">
+                        <CardContent className="pt-4">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Badge variant="outline" className="bg-purple-100 text-purple-700 text-xs">
+                              Q{question.id}
+                            </Badge>
+                            {qcmAnswers[question.id] && (
+                              <CheckCircle className="h-3 w-3 text-green-600" />
+                            )}
+                          </div>
+                          <p className="mb-3 text-xs line-clamp-3">{question.question}</p>
+                          <div className="space-y-1">
+                            {question.options.map((option, optIndex) => (
+                              <label key={optIndex} className="flex items-center gap-1 p-1 rounded hover:bg-purple-50 cursor-pointer">
+                                <input
+                                  type="radio"
+                                  name={`question-${question.id}`}
+                                  value={option}
+                                  checked={qcmAnswers[question.id] === option}
+                                  onChange={(e) => handleQCMAnswer(question.id, e.target.value)}
+                                  className="text-purple-600 text-xs"
+                                />
+                                <span className="text-xs">{option.split(') ')[1] || option}</span>
+                              </label>
+                            ))}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                  
+                  <div className="flex justify-center">
+                    <Button 
+                      onClick={submitQCM}
+                      disabled={Object.keys(qcmAnswers).length < 20}
+                      className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3"
+                    >
+                      <Trophy className="h-4 w-4 mr-2" />
+                      Valider le QCM
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  <div className="text-center space-y-2">
+                    <div className="flex items-center justify-center gap-2">
+                      <Trophy className="h-6 w-6 text-yellow-600" />
+                      <h3 className="text-lg font-bold text-purple-700">Résultats du QCM</h3>
+                    </div>
+                    
+                    <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-4 border-2 border-purple-200">
+                      <div className="text-2xl font-bold text-purple-700 mb-2">
+                        {qcmScore?.toFixed(1)}/20
+                      </div>
+                      <div className="flex items-center justify-center gap-1 mb-2">
+                        {[...Array(5)].map((_, i) => (
+                          <Star 
+                            key={i} 
+                            className={`h-4 w-4 ${i < Math.floor((qcmScore || 0) / 4) ? 'text-yellow-500 fill-current' : 'text-gray-300'}`} 
+                          />
+                        ))}
+                      </div>
+                      <p className="text-purple-700 text-sm">
+                        {qcmScore && qcmScore >= 16 ? "Excellent ! Vous maîtrisez parfaitement les probabilités et statistiques." :
+                         qcmScore && qcmScore >= 12 ? "Bon niveau ! Quelques révisions pour perfectionner." :
+                         qcmScore && qcmScore >= 8 ? "Niveau correct. Continuez à vous entraîner." :
+                         "Niveau à améliorer. Revenez sur les bases des probabilités."}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex gap-2 justify-center">
+                    <Button 
+                      variant="outline" 
+                      onClick={restartQCM}
+                      className="border-purple-300 text-purple-700 hover:bg-purple-50 text-sm"
+                    >
+                      Recommencer le QCM
+                    </Button>
+                  </div>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </>
+      )}
+
       <ModuleNavigationCards 
         currentModule={{
           id: 3,
@@ -646,6 +919,9 @@ print(f"P(X = 2Y) ≈ {prob_estimee:.4f}")`
           color: "purple"
         }}
         isExercisePage={true}
+        totalExercises={exercices.length}
+        currentExerciseId={selectedExercise}
+        onNavigate={handleNavigate}
       />
     </PythonModuleLayout>
   );

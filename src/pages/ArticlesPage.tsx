@@ -45,15 +45,15 @@ const ArticlesPage = () => {
   return (
     <>
       <Navigation />
-      <div className="min-h-screen bg-background py-16">
-        <div className="container mx-auto px-4">
+      <div className="min-h-screen bg-background py-8 sm:py-16">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
             {/* Header */}
             <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold mb-4">
+              <h1 className="text-3xl sm:text-4xl font-bold mb-4">
                 <span className="gradient-text">Conseils & Articles</span>
               </h1>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
                 Découvrez nos conseils d'experts et articles pratiques pour réussir votre prépa et vos concours.
               </p>
             </div>

@@ -47,11 +47,12 @@ Merci de me recontacter dès que possible !`;
   return (
     <>
       <Navigation />
-      <div className="min-h-screen bg-background py-12 px-4">
-      {/* NOUVEAU : Section Nos offres bien mise en évidence */}
-      <OffersSection />
+      <div className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          {/* NOUVEAU : Section Nos offres bien mise en évidence */}
+          <OffersSection />
 
-      <Card>
+          <Card className="mt-8">
         <CardHeader>
           <CardTitle className="text-primary text-3xl">
             Contactez-nous via WhatsApp
@@ -218,7 +219,8 @@ Merci de me recontacter dès que possible !`;
           style={{ border: 0 }}
         />
       </div>
-    </div>
+        </div>
+      </div>
     </>
   );
 }

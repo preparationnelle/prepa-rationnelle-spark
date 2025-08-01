@@ -41,7 +41,7 @@ const PythonMatricesExercicesPage = lazy(() => import('../pages/formation/Python
 const PythonAnalyseExercicesPage = lazy(() => import('../pages/formation/Python/PythonAnalyseExercicesPage'));
 const PythonProbabilitesExercicesPage = lazy(() => import('../pages/formation/Python/PythonProbabilitesExercicesPage'));
 const MathsApprofondiesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/MathsApprofondiesPage'));
-const MathsMethodologiePage = lazy(() => import('../pages/formation/math/MathsApprofondies/MathsMethodologiePage'));
+const MathsMethodologiePage = lazy(() => import('../pages/formation/math/MathsMethodologiePage'));
 const MathsChoixOptionPage = lazy(() => import('../pages/formation/math/MathsChoixOptionPage'));
 const MathsLogiquePage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre1-LogiqueEtRaisonnementFondamentaux-CoursPage'));
 
@@ -297,9 +297,9 @@ export const routes: RouteConfig[] = [
   },
   { 
     path: '/formation/maths-methodologie', 
-    component: lazy(() => import('../pages/formation/math/MathsApprofondies/MathsMethodologiePage')),
-    title: 'Méthodologie - Maths Approfondies',
-    protected: true 
+    component: lazy(() => import('../pages/formation/math/MathsMethodologiePage')),
+    title: 'Méthodologie Mathématiques',
+    protected: false 
   },
   { 
     path: '/formation/maths-appliquees', 
@@ -331,6 +331,11 @@ export const MATHS_ROUTES = [
     path: '/formation/maths-approfondies',
     component: lazy(() => import('@/pages/formation/math/MathsApprofondies/MathsApprofondiesPage')),
     protected: true
+  },
+  {
+    path: '/formation/maths-methodologie',
+    component: lazy(() => import('@/pages/formation/math/MathsMethodologiePage')),
+    protected: false
   },
   {
     path: '/formation/maths-appliquees',

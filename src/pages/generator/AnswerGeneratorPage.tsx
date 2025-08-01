@@ -39,12 +39,12 @@ const AnswerGeneratorPage = () => {
   }, [trackPageVisit]);
 
   return (
-    <div className="container mx-auto py-8 px-4">
+    <div className="container mx-auto py-8 px-4 sm:px-6">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-4">
+        <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-4">
           Réponse d'entretien
         </h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
+        <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mb-6">
           Générez des réponses structurées et personnalisées pour vos entretiens de personnalité avec des questions contextuelles adaptées.
         </p>
         

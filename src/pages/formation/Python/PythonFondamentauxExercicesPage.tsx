@@ -20,6 +20,14 @@ const PythonFondamentauxExercicesPage = () => {
     setShowCorrections(newShowCorrections);
   };
 
+  const handleNavigate = (newExerciseId: number) => {
+    const exerciseExists = exercises.some(ex => ex.id === newExerciseId);
+    if (exerciseExists) {
+      setSelectedExercise(newExerciseId);
+      window.scrollTo(0, 0);
+    }
+  };
+
   const exercises = [{
     id: 1,
     title: "Exercice 1 - Double somme avec division",
@@ -170,6 +178,32 @@ elif x <= 1:
 else:
     print("g(x) =", -2)`
     }
+  }, {
+    id: 9,
+    title: "Exercice 9 - Partie entière",
+    difficulty: "Facile",
+    description: "Comprendre le fonctionnement d'une boucle while avec un compteur",
+    color: "green",
+    content: {
+      objective: "Analyser le comportement d'un code utilisant une boucle while",
+      exercices: [{
+        titre: "Analyse de code",
+        enonce: "Que fait le code suivant ?\n\nx = float(input(\"Entrez un réel positif\"))\nn = 0\nwhile n <= x - 1:\n    n += 1\nprint(n)",
+        correction: `# Le code calcule la partie entière d'un nombre positif
+x = float(input("Entrez un réel positif"))
+n = 0
+while n <= x - 1:
+    n += 1
+print(n)
+
+# Explication :
+# La boucle incrémente n jusqu'à ce qu'il atteigne la partie entière de x.
+# Par exemple :
+# - Pour x = 3.7, n va jusqu'à 3
+# - Pour x = 5.2, n va jusqu'à 5
+# - Pour x = 2.0, n va jusqu'à 2`
+      }]
+    }
   }];
 
   if (selectedExercise) {
@@ -281,6 +315,19 @@ else:
             </CardContent>
           </Card>
         )}
+
+      <ModuleNavigationCards 
+        currentModule={{
+          id: 0,
+          title: "Fondamentaux",
+          slug: "fondamentaux", 
+          color: "orange"
+        }}
+        isExercisePage={true}
+        totalExercises={exercises.length}
+        currentExerciseId={selectedExercise}
+        onNavigate={handleNavigate}
+      />
       </PythonModuleLayout>;
   }
   
@@ -393,6 +440,9 @@ else:
           color: "orange"
         }}
         isExercisePage={true}
+        totalExercises={exercises.length}
+        currentExerciseId={selectedExercise}
+        onNavigate={handleNavigate}
       />
     </PythonModuleLayout>
   );

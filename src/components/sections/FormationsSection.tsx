@@ -7,16 +7,16 @@ import { Code, Languages, Globe, Users, BookOpen, TrendingUp, CheckCircle, Calcu
 
 export const FormationsSection = () => {
   return (
-    <section className="py-16 px-4 bg-white">
+    <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white">
       <div className="container mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4">
           Nos <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">formations spécialisées</span>
         </h2>
-        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto text-lg">
+        <p className="text-center text-gray-600 mb-8 sm:mb-12 max-w-2xl mx-auto text-base sm:text-lg">
           Formations conçues spécifiquement pour les étudiants en prépa ECG, avec méthodes éprouvées et accompagnement personnalisé.
         </p>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
           {/* Formation Maths */}
           <Link to="/formation/maths" className="group">
             <Card className="h-full bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-yellow-200 relative overflow-hidden">

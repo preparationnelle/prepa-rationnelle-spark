@@ -15,18 +15,18 @@ import {
 } from "lucide-react";
 
 export const OffersSection = () => (
-  <section className="py-16 px-4" style={{ backgroundColor: '#F0F8FF' }}>
+  <section className="py-12 sm:py-16 px-4 sm:px-6" style={{ backgroundColor: '#F0F8FF' }}>
     <div className="container mx-auto max-w-6xl">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold mb-6">
+      <div className="text-center mb-8 sm:mb-12">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
           Quelle est ta situation <span className="text-[#F36C00]">actuellement</span> ?
         </h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
           Découvre nos solutions personnalisées pour t'accompagner dans ta réussite
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
         {/* Colonne principale - Questions */}
         <div className="space-y-6">
           <Link to="/offre/organisation-ete" className="block">

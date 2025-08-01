@@ -69,58 +69,93 @@ const PourquoiPythonPrepaECGPage = () => {
         </Card>
 
         {/* Accès direct à la formation - Plus visible */}
-        <Card className="mb-8 bg-gradient-to-r from-[#FFFAF3] to-[#F8FAFF] border-[#FF7A1C] shadow-lg">
+        <Card className="mb-10 bg-white">
           <CardHeader>
-            <CardTitle className="flex items-center gap-3 text-2xl text-[#FF6B00]">
-              <BookOpen className="h-8 w-8 text-[#FF6B00]" />
-              Accédez directement à la formation Python ECG
-            </CardTitle>
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <Code className="h-6 w-6 text-blue-600" />
+              </div>
+              <CardTitle className="text-2xl">Formation Python ECG</CardTitle>
+            </div>
+            <p className="text-gray-600 text-lg">
+              Découvrez notre formation complète Python structurée en 4 modules progressifs avec exercices pratiques
+            </p>
           </CardHeader>
           <CardContent className="space-y-6">
-            <p className="text-[#FF6B00] text-lg mb-6">
-              Découvrez notre formation complète Python structurée en 4 modules progressifs avec exercices pratiques :
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Module Links */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Module 1 */}
               <Link to="/formation/python-fondamentaux" className="group">
-                <div className="bg-white p-6 rounded-lg border border-[#FF7A1C] hover:shadow-md transition-all group-hover:border-[#FF6B00]">
-                  <h4 className="font-bold text-[#FF6B00] mb-2 text-lg">Module 1: Fondamentaux</h4>
-                  <p className="text-[#FF7A1C] mb-3">Variables, boucles, conditions, fonctions</p>
-                  <div className="flex items-center text-[#FF6B00] group-hover:text-[#FF7A1C]">
-                    <Play className="h-4 w-4 mr-2" /> <span className="font-medium">Commencer →</span>
+                <div className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-blue-200 rounded-xl p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                      <span className="text-blue-600 font-semibold">01</span>
+                    </div>
+                    <h3 className="text-xl font-semibold group-hover:text-blue-600 transition-colors">Fondamentaux</h3>
                   </div>
+                  <p className="text-gray-600 mb-4">Variables, boucles, conditions, fonctions</p>
+                  <Button variant="ghost" className="text-blue-600 group-hover:bg-blue-50 w-full justify-start">
+                    <Play className="h-4 w-4 mr-2" />
+                    Commencer le module
+                  </Button>
                 </div>
               </Link>
 
+              {/* Module 2 */}
               <Link to="/formation/python-matrices" className="group">
-                <div className="bg-white p-6 rounded-lg border border-[#FF7A1C] hover:shadow-md transition-all group-hover:border-[#FF6B00]">
-                  <h4 className="font-bold text-[#FF6B00] mb-2 text-lg">Module 2: Matrices & Numpy</h4>
-                  <p className="text-[#FF7A1C] mb-3">Algèbre linéaire, résolution de systèmes</p>
-                  <div className="flex items-center text-[#FF6B00] group-hover:text-[#FF7A1C]">
-                    <Play className="h-4 w-4 mr-2" /> <span className="font-medium">Commencer →</span>
+                <div className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-blue-200 rounded-xl p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                      <span className="text-blue-600 font-semibold">02</span>
+                    </div>
+                    <h3 className="text-xl font-semibold group-hover:text-blue-600 transition-colors">Matrices & Numpy</h3>
                   </div>
+                  <p className="text-gray-600 mb-4">Algèbre linéaire, résolution de systèmes</p>
+                  <Button variant="ghost" className="text-blue-600 group-hover:bg-blue-50 w-full justify-start">
+                    <Play className="h-4 w-4 mr-2" />
+                    Commencer le module
+                  </Button>
                 </div>
               </Link>
 
+              {/* Module 3 */}
               <Link to="/formation/python-analyse" className="group">
-                <div className="bg-white p-6 rounded-lg border border-[#FF7A1C] hover:shadow-md transition-all group-hover:border-[#FF6B00]">
-                  <h4 className="font-bold text-[#FF6B00] mb-2 text-lg">Module 3: Analyse & Graphiques</h4>
-                  <p className="text-[#FF7A1C] mb-3">Matplotlib, tracer des fonctions, suites</p>
-                  <div className="flex items-center text-[#FF6B00] group-hover:text-[#FF7A1C]">
-                    <Play className="h-4 w-4 mr-2" /> <span className="font-medium">Commencer →</span>
+                <div className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-blue-200 rounded-xl p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                      <span className="text-blue-600 font-semibold">03</span>
+                    </div>
+                    <h3 className="text-xl font-semibold group-hover:text-blue-600 transition-colors">Analyse & Graphiques</h3>
                   </div>
+                  <p className="text-gray-600 mb-4">Matplotlib, tracer des fonctions, suites</p>
+                  <Button variant="ghost" className="text-blue-600 group-hover:bg-blue-50 w-full justify-start">
+                    <Play className="h-4 w-4 mr-2" />
+                    Commencer le module
+                  </Button>
                 </div>
               </Link>
 
+              {/* Module 4 */}
               <Link to="/formation/python-probabilites" className="group">
-                <div className="bg-white p-6 rounded-lg border border-[#FF7A1C] hover:shadow-md transition-all group-hover:border-[#FF6B00]">
-                  <h4 className="font-bold text-[#FF6B00] mb-2 text-lg">Module 4: Probabilités</h4>
-                  <p className="text-[#FF7A1C] mb-3">Simulations, lois, statistiques</p>
-                  <div className="flex items-center text-[#FF6B00] group-hover:text-[#FF7A1C]">
-                    <Play className="h-4 w-4 mr-2" /> <span className="font-medium">Commencer →</span>
+                <div className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-blue-200 rounded-xl p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                      <span className="text-blue-600 font-semibold">04</span>
+                    </div>
+                    <h3 className="text-xl font-semibold group-hover:text-blue-600 transition-colors">Probabilités</h3>
                   </div>
+                  <p className="text-gray-600 mb-4">Simulations, lois, statistiques</p>
+                  <Button variant="ghost" className="text-blue-600 group-hover:bg-blue-50 w-full justify-start">
+                    <Play className="h-4 w-4 mr-2" />
+                    Commencer le module
+                  </Button>
                 </div>
               </Link>
+            </div>
+
+            <div className="space-y-2 mt-6 bg-blue-50 p-6 rounded-xl border border-blue-100">
+              <div className="text-sm text-blue-600">✓ 54 commandes essentielles</div>
+              <div className="text-sm text-blue-600">✓ Exercices type concours</div>
+              <div className="text-sm text-blue-600">✓ +3 à 5 points garantis</div>
             </div>
 
             <div className="text-center mt-8">

@@ -93,6 +93,48 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+  }
+
+  /* Amélioration du responsive design */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Optimisation pour mobile */
+  @media (max-width: 640px) {
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    /* Amélioration de la lisibilité sur mobile */
+    h1, h2, h3 {
+      line-height: 1.2;
+    }
+    
+    /* Optimisation des espacements sur mobile */
+    .space-y-4 > * + * {
+      margin-top: 1rem;
+    }
+    
+    .space-y-6 > * + * {
+      margin-top: 1.5rem;
+    }
+    
+    .space-y-8 > * + * {
+      margin-top: 2rem;
+    }
+    
+    /* Empêcher les chevauchements sur mobile */
+    .relative {
+      position: relative;
+    }
+    
+    /* Améliorer la navigation mobile */
+    .fixed {
+      position: fixed;
+    }
   }
 }
 
