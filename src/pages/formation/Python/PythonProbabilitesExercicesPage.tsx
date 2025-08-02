@@ -652,21 +652,21 @@ print(f"Nombre de sauts pour 20 marches : {saut_escalier(20)}")`
             {showCorrections.has(selectedExercise) && (
               <>
                 {exercise.content.correction && (
-                  <Card className="mb-8 border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg">
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-3 text-green-700">
-                        <Code className="h-6 w-6" />
-                        Correction
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                        <pre className="text-green-400 text-sm font-mono">
+              <Card className="mb-8 border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3 text-green-700">
+                    <Code className="h-6 w-6" />
+                    Correction
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                    <pre className="text-green-400 text-sm font-mono">
                           <code>{exercise.content.correction}</code>
-                        </pre>
-                      </div>
-                    </CardContent>
-                  </Card>
+                    </pre>
+                  </div>
+                </CardContent>
+              </Card>
                 )}
                 {exercise.content.corrections &&
                   exercise.content.corrections.map((corr, index) => (
@@ -716,7 +716,7 @@ print(f"Nombre de sauts pour 20 marches : {saut_escalier(20)}")`
       </PythonModuleLayout>
     );
   }
-  
+
   return (
     <PythonModuleLayout>
       <div className="text-center mb-8">
@@ -803,111 +803,111 @@ print(f"Nombre de sauts pour 20 marches : {saut_escalier(20)}")`
             Retour aux exercices
           </Button>
 
-          <Card className="mb-8 border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50 shadow-lg">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-purple-700">
-                <Trophy className="h-6 w-6" />
-                QCM d'évaluation - Testez vos connaissances
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              {!qcmSubmitted ? (
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <p className="text-purple-700 font-medium">
-                      Répondez aux 20 questions pour évaluer votre niveau sur les probabilités et statistiques
-                    </p>
-                    <Badge variant="outline" className="bg-purple-100 text-purple-700">
-                      {Object.keys(qcmAnswers).length}/20 répondues
-                    </Badge>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <Card className="mb-8 border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50 shadow-lg">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-3 text-purple-700">
+            <Trophy className="h-6 w-6" />
+            QCM d'évaluation - Testez vos connaissances
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          {!qcmSubmitted ? (
+            <div className="space-y-6">
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-purple-700 font-medium">
+                  Répondez aux 20 questions pour évaluer votre niveau sur les probabilités et statistiques
+                </p>
+                <Badge variant="outline" className="bg-purple-100 text-purple-700">
+                  {Object.keys(qcmAnswers).length}/20 répondues
+                </Badge>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {qcmQuestions.map((question) => (
-                      <Card key={question.id} className="border border-purple-200 hover:border-purple-300 transition-colors">
-                        <CardContent className="pt-4">
-                          <div className="flex items-center gap-2 mb-2">
-                            <Badge variant="outline" className="bg-purple-100 text-purple-700 text-xs">
-                              Q{question.id}
-                            </Badge>
-                            {qcmAnswers[question.id] && (
-                              <CheckCircle className="h-3 w-3 text-green-600" />
-                            )}
-                          </div>
-                          <p className="mb-3 text-xs line-clamp-3">{question.question}</p>
-                          <div className="space-y-1">
-                            {question.options.map((option, optIndex) => (
-                              <label key={optIndex} className="flex items-center gap-1 p-1 rounded hover:bg-purple-50 cursor-pointer">
-                                <input
-                                  type="radio"
-                                  name={`question-${question.id}`}
-                                  value={option}
-                                  checked={qcmAnswers[question.id] === option}
-                                  onChange={(e) => handleQCMAnswer(question.id, e.target.value)}
-                                  className="text-purple-600 text-xs"
-                                />
-                                <span className="text-xs">{option.split(') ')[1] || option}</span>
-                              </label>
-                            ))}
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                  
-                  <div className="flex justify-center">
-                    <Button 
-                      onClick={submitQCM}
-                      disabled={Object.keys(qcmAnswers).length < 20}
-                      className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3"
-                    >
-                      <Trophy className="h-4 w-4 mr-2" />
-                      Valider le QCM
-                    </Button>
-                  </div>
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  <div className="text-center space-y-2">
-                    <div className="flex items-center justify-center gap-2">
-                      <Trophy className="h-6 w-6 text-yellow-600" />
-                      <h3 className="text-lg font-bold text-purple-700">Résultats du QCM</h3>
-                    </div>
-                    
-                    <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-4 border-2 border-purple-200">
-                      <div className="text-2xl font-bold text-purple-700 mb-2">
-                        {qcmScore?.toFixed(1)}/20
+                  <Card key={question.id} className="border border-purple-200 hover:border-purple-300 transition-colors">
+                    <CardContent className="pt-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Badge variant="outline" className="bg-purple-100 text-purple-700 text-xs">
+                          Q{question.id}
+                        </Badge>
+                        {qcmAnswers[question.id] && (
+                          <CheckCircle className="h-3 w-3 text-green-600" />
+                        )}
                       </div>
-                      <div className="flex items-center justify-center gap-1 mb-2">
-                        {[...Array(5)].map((_, i) => (
-                          <Star 
-                            key={i} 
-                            className={`h-4 w-4 ${i < Math.floor((qcmScore || 0) / 4) ? 'text-yellow-500 fill-current' : 'text-gray-300'}`} 
-                          />
+                      <p className="mb-3 text-xs line-clamp-3">{question.question}</p>
+                      <div className="space-y-1">
+                        {question.options.map((option, optIndex) => (
+                          <label key={optIndex} className="flex items-center gap-1 p-1 rounded hover:bg-purple-50 cursor-pointer">
+                            <input
+                              type="radio"
+                              name={`question-${question.id}`}
+                              value={option}
+                              checked={qcmAnswers[question.id] === option}
+                              onChange={(e) => handleQCMAnswer(question.id, e.target.value)}
+                              className="text-purple-600 text-xs"
+                            />
+                            <span className="text-xs">{option.split(') ')[1] || option}</span>
+                          </label>
                         ))}
                       </div>
-                      <p className="text-purple-700 text-sm">
-                        {qcmScore && qcmScore >= 16 ? "Excellent ! Vous maîtrisez parfaitement les probabilités et statistiques." :
-                         qcmScore && qcmScore >= 12 ? "Bon niveau ! Quelques révisions pour perfectionner." :
-                         qcmScore && qcmScore >= 8 ? "Niveau correct. Continuez à vous entraîner." :
-                         "Niveau à améliorer. Revenez sur les bases des probabilités."}
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex gap-2 justify-center">
-                    <Button 
-                      variant="outline" 
-                      onClick={restartQCM}
-                      className="border-purple-300 text-purple-700 hover:bg-purple-50 text-sm"
-                    >
-                      Recommencer le QCM
-                    </Button>
-                  </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+              
+              <div className="flex justify-center">
+                <Button 
+                  onClick={submitQCM}
+                  disabled={Object.keys(qcmAnswers).length < 20}
+                  className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3"
+                >
+                  <Trophy className="h-4 w-4 mr-2" />
+                  Valider le QCM
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              <div className="text-center space-y-2">
+                <div className="flex items-center justify-center gap-2">
+                  <Trophy className="h-6 w-6 text-yellow-600" />
+                  <h3 className="text-lg font-bold text-purple-700">Résultats du QCM</h3>
                 </div>
-              )}
-            </CardContent>
-          </Card>
+                
+                <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-4 border-2 border-purple-200">
+                  <div className="text-2xl font-bold text-purple-700 mb-2">
+                    {qcmScore?.toFixed(1)}/20
+                  </div>
+                  <div className="flex items-center justify-center gap-1 mb-2">
+                    {[...Array(5)].map((_, i) => (
+                      <Star 
+                        key={i} 
+                        className={`h-4 w-4 ${i < Math.floor((qcmScore || 0) / 4) ? 'text-yellow-500 fill-current' : 'text-gray-300'}`} 
+                      />
+                    ))}
+                  </div>
+                  <p className="text-purple-700 text-sm">
+                    {qcmScore && qcmScore >= 16 ? "Excellent ! Vous maîtrisez parfaitement les probabilités et statistiques." :
+                     qcmScore && qcmScore >= 12 ? "Bon niveau ! Quelques révisions pour perfectionner." :
+                     qcmScore && qcmScore >= 8 ? "Niveau correct. Continuez à vous entraîner." :
+                     "Niveau à améliorer. Revenez sur les bases des probabilités."}
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex gap-2 justify-center">
+                <Button 
+                  variant="outline" 
+                  onClick={restartQCM}
+                  className="border-purple-300 text-purple-700 hover:bg-purple-50 text-sm"
+                >
+                  Recommencer le QCM
+                </Button>
+              </div>
+            </div>
+          )}
+        </CardContent>
+      </Card>
         </>
       )}
 

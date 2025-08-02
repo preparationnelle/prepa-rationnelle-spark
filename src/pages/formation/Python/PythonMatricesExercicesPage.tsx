@@ -977,7 +977,7 @@ def Nilp(A):
           </Card>
 
           <Card className="mb-8">
-            <CardHeader>
+        <CardHeader>
               <CardTitle className="flex items-center gap-3 text-green-700">
                 <Target className="h-6 w-6" />
                 Objectifs des exercices
@@ -1081,202 +1081,202 @@ def Nilp(A):
           <Card className="mb-8 border-2 border-green-200 bg-gradient-to-br from-green-50 to-blue-50 shadow-lg">
             <CardHeader>
               <CardTitle className="flex items-center gap-3 text-green-700">
-                <Trophy className="h-6 w-6" />
-                QCM d'évaluation - Testez vos connaissances
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              {!qcmSubmitted ? (
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between mb-4">
+            <Trophy className="h-6 w-6" />
+            QCM d'évaluation - Testez vos connaissances
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          {!qcmSubmitted ? (
+            <div className="space-y-6">
+              <div className="flex items-center justify-between mb-4">
                     <p className="text-green-700 font-medium">
-                      Répondez aux 20 questions pour évaluer votre niveau sur les matrices NumPy
-                    </p>
+                  Répondez aux 20 questions pour évaluer votre niveau sur les matrices NumPy
+                </p>
                     <Badge variant="outline" className="bg-green-100 text-green-700">
-                      {Object.keys(qcmAnswers).length}/20 répondues
-                    </Badge>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {qcmQuestions.map((question, index) => (
+                  {Object.keys(qcmAnswers).length}/20 répondues
+                </Badge>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {qcmQuestions.map((question, index) => (
                       <Card key={question.id} className="border border-green-200 hover:border-green-300 transition-colors">
-                        <CardContent className="pt-6">
-                          <div className="flex items-center gap-2 mb-3">
+                    <CardContent className="pt-6">
+                      <div className="flex items-center gap-2 mb-3">
                             <Badge variant="outline" className="bg-green-100 text-green-700">
-                              Question {question.id}
-                            </Badge>
-                            {qcmAnswers[question.id] && (
-                              <CheckCircle className="h-4 w-4 text-green-600" />
-                            )}
-                          </div>
-                          <p className="mb-4 text-sm">{question.question}</p>
-                          <div className="space-y-2">
-                            {question.options.map((option, optIndex) => (
-                              <label key={optIndex} className="flex items-center gap-2 p-2 rounded hover:bg-green-50 cursor-pointer">
-                                <input
-                                  type="radio"
-                                  name={`question-${question.id}`}
-                                  value={option}
-                                  checked={qcmAnswers[question.id] === option}
-                                  onChange={(e) => handleQCMAnswer(question.id, e.target.value)}
-                                  className="text-green-600"
-                                />
-                                <span className="text-sm">{option}</span>
-                              </label>
-                            ))}
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                  
-                  <div className="flex justify-center">
-                    <Button 
-                      onClick={submitQCM}
-                      disabled={Object.keys(qcmAnswers).length < 20}
-                      className="bg-green-600 hover:bg-green-700 text-white px-8 py-3"
-                    >
-                      <Trophy className="h-4 w-4 mr-2" />
-                      Valider le QCM
-                    </Button>
-                  </div>
-                </div>
-              ) : (
-                <div className="space-y-6">
-                  {/* Résultats en haut */}
-                  <div className="text-center space-y-4">
-                    <div className="flex items-center justify-center gap-3">
-                      <Trophy className="h-8 w-8 text-yellow-600" />
-                      <h3 className="text-2xl font-bold text-green-700">Résultats du QCM</h3>
-                    </div>
-                    
-                    <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6 border-2 border-green-200">
-                      <div className="text-4xl font-bold text-green-700 mb-2">
-                        {qcmScore?.toFixed(1)}/20
+                          Question {question.id}
+                        </Badge>
+                        {qcmAnswers[question.id] && (
+                          <CheckCircle className="h-4 w-4 text-green-600" />
+                        )}
                       </div>
-                      <div className="flex items-center justify-center gap-2 mb-4">
-                        {[...Array(5)].map((_, i) => (
-                          <Star 
-                            key={i} 
-                            className={`h-6 w-6 ${i < Math.floor((qcmScore || 0) / 4) ? 'text-yellow-500 fill-current' : 'text-gray-300'}`} 
-                          />
+                      <p className="mb-4 text-sm">{question.question}</p>
+                      <div className="space-y-2">
+                        {question.options.map((option, optIndex) => (
+                              <label key={optIndex} className="flex items-center gap-2 p-2 rounded hover:bg-green-50 cursor-pointer">
+                            <input
+                              type="radio"
+                              name={`question-${question.id}`}
+                              value={option}
+                              checked={qcmAnswers[question.id] === option}
+                              onChange={(e) => handleQCMAnswer(question.id, e.target.value)}
+                                  className="text-green-600"
+                            />
+                            <span className="text-sm">{option}</span>
+                          </label>
                         ))}
                       </div>
-                      <p className="text-green-700 font-medium">
-                        {qcmScore && qcmScore >= 16 ? "Excellent ! Vous maîtrisez parfaitement les matrices NumPy." :
-                         qcmScore && qcmScore >= 12 ? "Bon niveau ! Quelques révisions pour perfectionner." :
-                         qcmScore && qcmScore >= 8 ? "Niveau correct. Continuez à vous entraîner." :
-                         "Niveau à améliorer. Revenez sur les bases des matrices NumPy."}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Détail des réponses */}
-                  <div className="space-y-4">
-                    <h4 className="text-lg font-semibold text-green-700 text-center">
-                      Détail de vos réponses
-                    </h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      {qcmQuestions.map((question) => {
-                        const userAnswer = qcmAnswers[question.id];
-                        const isCorrect = userAnswer === question.answer;
-                        
-                        return (
-                          <Card 
-                            key={question.id} 
-                            className={`border-2 transition-colors ${
-                              isCorrect 
-                                ? 'border-green-200 bg-gradient-to-br from-green-50 to-emerald-50' 
-                                : 'border-red-200 bg-gradient-to-br from-red-50 to-pink-50'
-                            }`}
-                          >
-                            <CardContent className="pt-6">
-                              <div className="flex items-center gap-2 mb-3">
-                                <Badge variant="outline" className={`${
-                                  isCorrect ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
-                                }`}>
-                                  Question {question.id}
-                                </Badge>
-                                {isCorrect ? (
-                                  <CheckCircle className="h-4 w-4 text-green-600" />
-                                ) : (
-                                  <div className="h-4 w-4 text-red-600">✗</div>
-                                )}
-                              </div>
-                              
-                              <p className="mb-4 text-sm font-medium">{question.question}</p>
-                              
-                              <div className="space-y-2">
-                                {question.options.map((option, optIndex) => {
-                                  const isUserAnswer = userAnswer === option;
-                                  const isCorrectAnswer = question.answer === option;
-                                  
-                                  let optionStyle = "flex items-center gap-2 p-2 rounded";
-                                  let textStyle = "text-sm";
-                                  
-                                  if (isCorrectAnswer) {
-                                    // Bonne réponse toujours en vert
-                                    optionStyle += " bg-green-100 border border-green-300";
-                                    textStyle += " font-semibold text-green-700";
-                                  } else if (isUserAnswer && !isCorrect) {
-                                    // Mauvaise réponse de l'utilisateur en rouge
-                                    optionStyle += " bg-red-100 border border-red-300";
-                                    textStyle += " font-semibold text-red-700";
-                                  } else {
-                                    // Autres options neutres
-                                    optionStyle += " bg-gray-50";
-                                    textStyle += " text-gray-600";
-                                  }
-                                  
-                                  return (
-                                    <div key={optIndex} className={optionStyle}>
-                                      <div className="flex items-center gap-2">
-                                        {isCorrectAnswer && (
-                                          <CheckCircle className="h-4 w-4 text-green-600" />
-                                        )}
-                                        {isUserAnswer && !isCorrect && (
-                                          <div className="h-4 w-4 text-red-600">✗</div>
-                                        )}
-                                        {!isCorrectAnswer && !isUserAnswer && (
-                                          <div className="h-4 w-4 text-gray-400">○</div>
-                                        )}
-                                      </div>
-                                      <span className={textStyle}>{option}</span>
-                                    </div>
-                                  );
-                                })}
-                              </div>
-                              
-                              {!isCorrect && (
-                                <div className="mt-3 p-2 bg-yellow-50 border border-yellow-200 rounded">
-                                  <p className="text-sm text-yellow-700">
-                                    <span className="font-semibold">Votre réponse :</span> {userAnswer}
-                                  </p>
-                                  <p className="text-sm text-yellow-700">
-                                    <span className="font-semibold">Bonne réponse :</span> {question.answer}
-                                  </p>
-                                </div>
-                              )}
-                            </CardContent>
-                          </Card>
-                        );
-                      })}
-                    </div>
-                  </div>
-                  
-                  <div className="flex gap-4 justify-center">
-                    <Button 
-                      variant="outline" 
-                      onClick={restartQCM}
-                      className="border-green-300 text-green-700 hover:bg-green-50"
-                    >
-                      Recommencer le QCM
-                    </Button>
-                  </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+              
+              <div className="flex justify-center">
+                <Button 
+                  onClick={submitQCM}
+                  disabled={Object.keys(qcmAnswers).length < 20}
+                      className="bg-green-600 hover:bg-green-700 text-white px-8 py-3"
+                >
+                  <Trophy className="h-4 w-4 mr-2" />
+                  Valider le QCM
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-6">
+              {/* Résultats en haut */}
+              <div className="text-center space-y-4">
+                <div className="flex items-center justify-center gap-3">
+                  <Trophy className="h-8 w-8 text-yellow-600" />
+                      <h3 className="text-2xl font-bold text-green-700">Résultats du QCM</h3>
                 </div>
-              )}
-            </CardContent>
-          </Card>
+                
+                    <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6 border-2 border-green-200">
+                      <div className="text-4xl font-bold text-green-700 mb-2">
+                    {qcmScore?.toFixed(1)}/20
+                  </div>
+                  <div className="flex items-center justify-center gap-2 mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star 
+                        key={i} 
+                        className={`h-6 w-6 ${i < Math.floor((qcmScore || 0) / 4) ? 'text-yellow-500 fill-current' : 'text-gray-300'}`} 
+                      />
+                    ))}
+                  </div>
+                      <p className="text-green-700 font-medium">
+                    {qcmScore && qcmScore >= 16 ? "Excellent ! Vous maîtrisez parfaitement les matrices NumPy." :
+                     qcmScore && qcmScore >= 12 ? "Bon niveau ! Quelques révisions pour perfectionner." :
+                     qcmScore && qcmScore >= 8 ? "Niveau correct. Continuez à vous entraîner." :
+                     "Niveau à améliorer. Revenez sur les bases des matrices NumPy."}
+                  </p>
+                </div>
+              </div>
+
+              {/* Détail des réponses */}
+              <div className="space-y-4">
+                    <h4 className="text-lg font-semibold text-green-700 text-center">
+                  Détail de vos réponses
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {qcmQuestions.map((question) => {
+                    const userAnswer = qcmAnswers[question.id];
+                    const isCorrect = userAnswer === question.answer;
+                    
+                    return (
+                      <Card 
+                        key={question.id} 
+                        className={`border-2 transition-colors ${
+                          isCorrect 
+                            ? 'border-green-200 bg-gradient-to-br from-green-50 to-emerald-50' 
+                            : 'border-red-200 bg-gradient-to-br from-red-50 to-pink-50'
+                        }`}
+                      >
+                        <CardContent className="pt-6">
+                          <div className="flex items-center gap-2 mb-3">
+                            <Badge variant="outline" className={`${
+                              isCorrect ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+                            }`}>
+                              Question {question.id}
+                            </Badge>
+                            {isCorrect ? (
+                              <CheckCircle className="h-4 w-4 text-green-600" />
+                            ) : (
+                              <div className="h-4 w-4 text-red-600">✗</div>
+                            )}
+                          </div>
+                          
+                          <p className="mb-4 text-sm font-medium">{question.question}</p>
+                          
+                          <div className="space-y-2">
+                            {question.options.map((option, optIndex) => {
+                              const isUserAnswer = userAnswer === option;
+                              const isCorrectAnswer = question.answer === option;
+                              
+                              let optionStyle = "flex items-center gap-2 p-2 rounded";
+                              let textStyle = "text-sm";
+                              
+                              if (isCorrectAnswer) {
+                                // Bonne réponse toujours en vert
+                                optionStyle += " bg-green-100 border border-green-300";
+                                textStyle += " font-semibold text-green-700";
+                              } else if (isUserAnswer && !isCorrect) {
+                                // Mauvaise réponse de l'utilisateur en rouge
+                                optionStyle += " bg-red-100 border border-red-300";
+                                textStyle += " font-semibold text-red-700";
+                              } else {
+                                // Autres options neutres
+                                optionStyle += " bg-gray-50";
+                                textStyle += " text-gray-600";
+                              }
+                              
+                              return (
+                                <div key={optIndex} className={optionStyle}>
+                                  <div className="flex items-center gap-2">
+                                    {isCorrectAnswer && (
+                                      <CheckCircle className="h-4 w-4 text-green-600" />
+                                    )}
+                                    {isUserAnswer && !isCorrect && (
+                                      <div className="h-4 w-4 text-red-600">✗</div>
+                                    )}
+                                    {!isCorrectAnswer && !isUserAnswer && (
+                                      <div className="h-4 w-4 text-gray-400">○</div>
+                                    )}
+                                  </div>
+                                  <span className={textStyle}>{option}</span>
+                                </div>
+                              );
+                            })}
+                          </div>
+                          
+                          {!isCorrect && (
+                            <div className="mt-3 p-2 bg-yellow-50 border border-yellow-200 rounded">
+                              <p className="text-sm text-yellow-700">
+                                <span className="font-semibold">Votre réponse :</span> {userAnswer}
+                              </p>
+                              <p className="text-sm text-yellow-700">
+                                <span className="font-semibold">Bonne réponse :</span> {question.answer}
+                              </p>
+                            </div>
+                          )}
+                        </CardContent>
+                      </Card>
+                    );
+                  })}
+                </div>
+              </div>
+              
+              <div className="flex gap-4 justify-center">
+                <Button 
+                  variant="outline" 
+                  onClick={restartQCM}
+                      className="border-green-300 text-green-700 hover:bg-green-50"
+                >
+                  Recommencer le QCM
+                </Button>
+              </div>
+            </div>
+          )}
+        </CardContent>
+      </Card>
         </>
       )}
 

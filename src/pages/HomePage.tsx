@@ -29,14 +29,7 @@ const HomePage: React.FC = () => {
             Formations conçues spécifiquement pour les étudiants en prépa ECG, avec méthodes éprouvées et accompagnement personnalisé.
           </p>
 
-          <Tabs defaultValue="all" className="w-full max-w-4xl mx-auto">
-            <TabsList className="grid grid-cols-3 mb-8">
-              <TabsTrigger value="all">Toutes les formations</TabsTrigger>
-              <TabsTrigger value="maths-info">Maths & Informatique</TabsTrigger>
-              <TabsTrigger value="langues-geo">Langues & Géopolitique</TabsTrigger>
-            </TabsList>
-            
-            <TabsContent value="all" className="mt-2">
+          <div className="w-full max-w-4xl mx-auto">
               <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                 {/* Maths */}
                 <Link to="/formation/maths" className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center">
@@ -101,61 +94,7 @@ const HomePage: React.FC = () => {
                   </Button>
                 </Link>
               </div>
-            </TabsContent>
-            
-            <TabsContent value="maths-info" className="mt-2">
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                {/* Maths */}
-                <Link to="/formation/maths" className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center">
-                  <div className="w-14 h-14 bg-yellow-100 rounded-full flex items-center justify-center mb-3">
-                    <Calculator className="h-7 w-7 text-yellow-600" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-1">Maths</h3>
-                  <p className="text-sm text-gray-500">Maîtrisez tout le programme ECG</p>
-                </Link>
-                
-                {/* Python */}
-                <Link to="/pourquoi-python-prepa-ecg" className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center">
-                  <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-3">
-                    <Code className="h-7 w-7 text-blue-600" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-1">Python</h3>
-                  <p className="text-sm text-gray-500">54 commandes essentielles</p>
-                </Link>
               </div>
-            </TabsContent>
-            
-            <TabsContent value="langues-geo" className="mt-2">
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                {/* Anglais */}
-                <Link to="/formation/anglais" className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center">
-                  <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mb-3">
-                    <Languages className="h-7 w-7 text-green-600" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-1">Anglais</h3>
-                  <p className="text-sm text-gray-500">Grammaire et synthèses</p>
-                </Link>
-                
-                {/* Allemand */}
-                <Link to="/formation/allemand" className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center">
-                  <div className="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mb-3">
-                    <Languages className="h-7 w-7 text-red-600" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-1">Allemand</h3>
-                  <p className="text-sm text-gray-500">Déclinaisons et cas</p>
-                </Link>
-                
-                {/* Géopolitique */}
-                <Link to="/formation/geopolitique" className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center">
-                  <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-3">
-                    <Globe className="h-7 w-7 text-orange-600" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-1">Géopolitique</h3>
-                  <p className="text-sm text-gray-500">Enjeux contemporains</p>
-                </Link>
-              </div>
-            </TabsContent>
-          </Tabs>
         </div>
       </section>
 

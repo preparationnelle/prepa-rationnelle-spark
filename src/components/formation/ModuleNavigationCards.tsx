@@ -61,8 +61,8 @@ const ModuleNavigationCards: React.FC<ModuleNavigationCardsProps> = ({
               Exercice suivant
               <ArrowRight className="h-4 w-4" />
             </Button>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
       </div>
     );
   }
