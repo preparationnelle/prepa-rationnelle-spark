@@ -17,6 +17,15 @@ export const supabase = createClient<Database>(
       storage: localStorage,
       persistSession: true,
       autoRefreshToken: true,
+    },
+    global: {
+      headers: {
+        'X-Client-Info': 'supabase-js/2.49.4'
+      }
+    },
+    // Ajoutez des timeouts plus longs
+    realtime: {
+      timeout: 20000
     }
   }
 );

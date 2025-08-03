@@ -14,7 +14,6 @@ const COLOR_LILAC = 'text-[#9370FF]';
 const GRADIENT_HEADER = 'bg-gradient-to-r from-[#6B5FFF] to-[#29E3F5]';
 
 const SEMESTRE_1 = [
-  { id: 0, slug: 'methodologie', title: 'Méthodologie', isMethodology: true },
   { id: 1, slug: 'elements-de-logique', title: 'Éléments de logique' },
   { id: 2, slug: 'ensembles-et-applications', title: 'Ensembles et applications' },
   { id: 3, slug: 'sommes-produits-coefficients-binomiaux', title: 'Sommes, produits & coefficients binomiaux' },
