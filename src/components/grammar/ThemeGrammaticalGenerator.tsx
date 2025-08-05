@@ -56,7 +56,7 @@ interface ThemeEvaluation {
 }
 
 export const ThemeGrammaticalGenerator: React.FC = () => {
-  const [language, setLanguage] = useState<'en' | 'de' | 'es'>('de');
+  const [language, setLanguage] = useState<'en' | 'de' | 'es'>('en');
   const [currentSentence, setCurrentSentence] = useState<ThemeSentence | null>(null);
   const [studentAnswer, setStudentAnswer] = useState('');
   const [evaluation, setEvaluation] = useState<ThemeEvaluation | null>(null);
@@ -190,6 +190,186 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
     }
   }, [language, history, examMode, toast]);
 
+  const analyzeGermanErrors = useCallback((studentAnswer: string, reference: string) => {
+    const errors = {
+      major_errors: [] as any[],
+      minor_errors: [] as any[],
+      accepted_variations: [] as string[]
+    };
+
+    // Analyse des erreurs communes en allemand
+    const student = studentAnswer.toLowerCase();
+    const ref = reference.toLowerCase();
+    
+    // Erreur 1: Article défini manquant
+    if (ref.includes('die ') && !student.includes('die ')) {
+      errors.major_errors.push({
+        error: "Article défini 'die' manquant",
+        explanation: "L'article défini 'die' est obligatoire en allemand pour marquer le genre et le cas",
+        correction: "Ajouter 'die' devant le nom féminin ou pluriel",
+        rule: "Die = article féminin nominatif/accusatif ou pluriel nominatif/accusatif"
+      });
+    }
+
+    if (ref.includes('der ') && !student.includes('der ')) {
+      errors.major_errors.push({
+        error: "Article défini 'der' manquant",
+        explanation: "L'article défini 'der' est obligatoire pour marquer le genre masculin ou le génitif féminin",
+        correction: "Ajouter 'der' devant le nom masculin ou au génitif féminin",
+        rule: "Der = article masculin nominatif ou génitif féminin/pluriel"
+      });
+    }
+
+    if (ref.includes('das ') && !student.includes('das ')) {
+      errors.major_errors.push({
+        error: "Article défini 'das' manquant",
+        explanation: "L'article défini 'das' est obligatoire pour marquer le genre neutre",
+        correction: "Ajouter 'das' devant le nom neutre",
+        rule: "Das = article neutre nominatif/accusatif"
+      });
+    }
+
+    // Erreur 2: Préposition 'zu' avec mauvais cas
+    if (student.includes('zu eine') && ref.includes('zu einer')) {
+      errors.major_errors.push({
+        error: "Cas incorrect après 'zu'",
+        explanation: "La préposition 'zu' régit toujours le datif en allemand",
+        correction: "Utiliser 'zu einer' (datif féminin) au lieu de 'zu eine' (accusatif)",
+        rule: "La préposition 'zu' régit toujours le datif"
+      });
+    }
+
+    // Erreur 3: Construction infinitive manquante
+    if (ref.includes('zu ') && student.includes('plan') && !student.includes('zu')) {
+      errors.major_errors.push({
+        error: "Construction infinitive 'zu + infinitif' manquante",
+        explanation: "Après 'planen', on utilise la construction infinitive avec 'zu' + infinitif",
+        correction: "Ajouter 'zu' + infinitif : 'plant, zu + infinitif'",
+        rule: "Après 'planen', 'vorhaben', 'versuchen' → zu + infinitif"
+      });
+    }
+
+    // Erreur 4: Ordre des mots incorrect
+    if (student.includes('haben') && student.includes('geführt') && 
+        student.indexOf('haben') > student.indexOf('geführt')) {
+      errors.minor_errors.push({
+        error: "Ordre des mots au parfait incorrect",
+        explanation: "Au parfait, l'auxiliaire 'haben' vient avant le participe passé",
+        correction: "Ordre correct : haben + participe passé",
+        rule: "Parfait = haben/sein + participe passé en fin de phrase"
+      });
+    }
+
+    // Erreur 5: Mauvaise traduction de 'führen zu'
+    if (student.includes('lead to') || student.includes('conduire')) {
+      errors.minor_errors.push({
+        error: "Traduction directe au lieu de 'führen zu'",
+        explanation: "En allemand, 'conduire à' se traduit par 'führen zu' + datif",
+        correction: "Utiliser 'führen zu' + datif",
+        rule: "Führen zu + datif = conduire à, mener à"
+      });
+    }
+
+    return errors;
+  }, []);
+
+  const generateFallbackEvaluation = useCallback((language: string, studentAnswer: string, reference: string) => {
+    const fallbackData = {
+      de: (() => {
+        const analyzedErrors = analyzeGermanErrors(studentAnswer, reference);
+        const totalErrors = analyzedErrors.major_errors.length + analyzedErrors.minor_errors.length;
+        const score = Math.max(0, 10 - (analyzedErrors.major_errors.length * 2) - (analyzedErrors.minor_errors.length * 1));
+        
+        return {
+          score: score,
+          severity: analyzedErrors,
+          corrected: reference,
+          reference: reference,
+          grammar_rules: ["Déclinaisons des articles", "Prépositions + cas", "Constructions infinitives", "Ordre des mots"],
+          tips: [
+            "Les articles définis se déclinent selon le genre, nombre et cas",
+            "La préposition 'zu' régit toujours le datif",
+            "Après 'planen' → zu + infinitif",
+            "Au parfait : auxiliaire + participe passé en fin"
+          ],
+          weak_grammar_points: ["déclinaisons", "prépositions + cas", "infinitif"],
+          similar_sentences: [
+            "Die Regierung plant, neue Maßnahmen zu ergreifen.",
+            "Experten kritisieren die mangelnde Transparenz.",
+            "Die Krise führt zu wirtschaftlichen Problemen."
+          ],
+          flashcard_rule: "Les articles définis allemands : der/die/das se déclinent selon genre, nombre et cas"
+        };
+      })(),
+      en: {
+        score: 7,
+        severity: {
+          major_errors: [{
+            error: "Temps verbal incorrect",
+            explanation: "Le present perfect est utilisé pour des actions passées avec impact présent",
+            correction: "Utiliser 'have/has + past participle' au lieu du simple past",
+            rule: "Present perfect = have/has + past participle pour les actions passées avec conséquence présente"
+          }],
+          minor_errors: [{
+            error: "Préposition incorrecte",
+            explanation: "Certaines prépositions sont spécifiques au contexte géopolitique",
+            correction: "Vérifier les collocations standard en anglais journalistique",
+            rule: "Les prépositions varient selon le contexte (between...and, due to, according to)"
+          }],
+          accepted_variations: []
+        },
+        corrected: `${reference}`,
+        reference: reference,
+        grammar_rules: ["Present perfect", "Voix passive", "Modaux"],
+        tips: [
+          "Le present perfect exprime une action passée avec conséquence présente",
+          "La voix passive est courante dans la presse pour l'objectivité"
+        ],
+        weak_grammar_points: ["present perfect", "passive voice"],
+        similar_sentences: [
+          "The government has announced new measures.",
+          "Tensions have led to diplomatic crisis.",
+          "The economy will have to adapt to changes."
+        ],
+        flashcard_rule: "Present perfect = have/has + past participle pour actions passées avec impact présent"
+      },
+      es: {
+        score: 6,
+        severity: {
+          major_errors: [{
+            error: "Subjonctif manquant",
+            explanation: "Après 'es importante que', on utilise le subjonctif présent",
+            correction: "Remplacer l'indicatif par le subjonctif",
+            rule: "Après es importante que, es necesario que → subjonctif présent"
+          }],
+          minor_errors: [{
+            error: "Confusion ser/estar",
+            explanation: "Ser exprime une caractéristique permanente, estar un état temporaire",
+            correction: "Utiliser 'estar' pour les états temporaires",
+            rule: "Ser = permanent, estar = temporaire"
+          }],
+          accepted_variations: []
+        },
+        corrected: `${reference}`,
+        reference: reference,
+        grammar_rules: ["Subjonctif présent", "Ser vs estar", "Por vs para"],
+        tips: [
+          "Le subjonctif exprime la subjectivité, l'émotion, le doute",
+          "Ser/estar : caractéristique vs état"
+        ],
+        weak_grammar_points: ["subjonctif", "ser/estar"],
+        similar_sentences: [
+          "Es importante que el gobierno tome medidas.",
+          "La situación está grave pero no es irreversible.",
+          "Las reformas son necesarias para la economía."
+        ],
+        flashcard_rule: "Après es importante que → subjonctif présent"
+      }
+    };
+
+    return fallbackData[language as keyof typeof fallbackData] || fallbackData.en;
+  }, []);
+
   const evaluateAnswer = useCallback(async () => {
     if (!currentSentence || !studentAnswer.trim() || isEvaluating) {
       return;
@@ -215,24 +395,33 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
 
       console.log('📊 Évaluation reçue:', { data, error });
 
-      if (error) {
-        console.error('❌ Erreur d\'évaluation:', error);
-        throw error;
+      let evaluationData = data;
+
+      // Si l'API échoue ou retourne des données incomplètes, utiliser les données de secours
+      if (error || !data || !data.corrected || data.corrected === "Correction non disponible") {
+        console.log('🔄 Utilisation des données de secours pour le feedback');
+        evaluationData = generateFallbackEvaluation(language, studentAnswer.trim(), currentSentence.reference);
+        
+        toast({
+          title: "Évaluation de secours",
+          description: "L'IA principale n'est pas disponible, utilisation du système de correction de secours",
+          variant: "default"
+        });
       }
 
-      if (!data) {
-        throw new Error('Pas de données d\'évaluation reçues');
+      if (!evaluationData) {
+        throw new Error('Pas de données d\'évaluation disponibles');
       }
 
       console.log('✅ Évaluation terminée avec succès:', {
-        score: data.score,
-        major_errors: data.severity?.major_errors?.length || 0,
-        minor_errors: data.severity?.minor_errors?.length || 0
+        score: evaluationData.score,
+        major_errors: evaluationData.severity?.major_errors?.length || 0,
+        minor_errors: evaluationData.severity?.minor_errors?.length || 0
       });
 
-      setEvaluation(data);
-      setWeakGrammarPoints(data.weak_grammar_points || []);
-      setSimilarSentences(data.similar_sentences || []);
+      setEvaluation(evaluationData);
+      setWeakGrammarPoints(evaluationData.weak_grammar_points || []);
+      setSimilarSentences(evaluationData.similar_sentences || []);
       setCompletedSentence(true);
 
       // Stop timer in exam mode
@@ -600,92 +789,12 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <Tabs defaultValue="feedback" className="w-full">
+                  <Tabs defaultValue="correction" className="w-full">
                     <TabsList className="grid w-full grid-cols-2">
-                      <TabsTrigger value="feedback">Feedback</TabsTrigger>
                       <TabsTrigger value="correction">Correction</TabsTrigger>
+                      <TabsTrigger value="feedback">Feedback</TabsTrigger>
                     </TabsList>
                     
-                    <TabsContent value="feedback" className="space-y-4">
-                      {/* Feedback positif */}
-                      <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                        <div className="flex items-center gap-3 mb-3">
-                          <ThumbsUp className="h-5 w-5 text-green-600" />
-                          <h4 className="font-semibold text-green-800">Points forts :</h4>
-                        </div>
-                        <div className="space-y-2">
-                          {(() => {
-                            const positivePoints = [];
-                            if (studentAnswer.toLowerCase().includes('have') || studentAnswer.toLowerCase().includes('has')) {
-                              positivePoints.push("Utilisation correcte du present perfect");
-                            }
-                            if (evaluation.severity.accepted_variations.length > 0) {
-                              positivePoints.push("Variations stylistiques acceptables");
-                            }
-                            if (positivePoints.length === 0) {
-                              if (evaluation.score >= 6) {
-                                positivePoints.push("Structure grammaticale solide");
-                                positivePoints.push("Registre formel respecté");
-                              } else {
-                                positivePoints.push("Tentative de traduction complète");
-                                positivePoints.push("Compréhension du sens général");
-                              }
-                            }
-                            return positivePoints.slice(0, 3).map((point, index) => (
-                              <div key={index} className="flex items-start gap-2">
-                                <CheckCircle className="h-4 w-4 text-green-600 mt-0.5" />
-                                <p className="text-green-700">{point}</p>
-                              </div>
-                            ));
-                          })()}
-                        </div>
-                      </div>
-
-                      {/* Points à améliorer */}
-                      <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
-                        <div className="flex items-center gap-3 mb-3">
-                          <ThumbsDown className="h-5 w-5 text-amber-600" />
-                          <h4 className="font-semibold text-amber-800">Points à améliorer :</h4>
-                        </div>
-                        <div className="space-y-2">
-                          {(() => {
-                            const improvementPoints = [];
-                            if (evaluation.severity.major_errors.length > 0) {
-                              improvementPoints.push("Erreurs grammaticales majeures à corriger");
-                            }
-                            if (evaluation.severity.minor_errors.length > 0) {
-                              improvementPoints.push("Précision lexicale à améliorer");
-                            }
-                            if (evaluation.score < 6) {
-                              improvementPoints.push("Structure de phrase à retravailler");
-                            }
-                            return improvementPoints.map((point, index) => (
-                              <div key={index} className="flex items-start gap-2">
-                                <AlertCircle className="h-4 w-4 text-amber-600 mt-0.5" />
-                                <p className="text-amber-700">{point}</p>
-                              </div>
-                            ));
-                          })()}
-                        </div>
-                      </div>
-
-                      {/* Conseils personnalisés */}
-                      <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                        <div className="flex items-center gap-3 mb-3">
-                          <Lightbulb className="h-5 w-5 text-blue-600" />
-                          <h4 className="font-semibold text-blue-800">Conseils pour cette phrase :</h4>
-                        </div>
-                        <div className="space-y-2">
-                          {evaluation.tips.slice(0, 2).map((tip, index) => (
-                            <div key={index} className="flex items-start gap-2">
-                              <Star className="h-4 w-4 text-blue-600 mt-0.5" />
-                              <p className="text-blue-700 text-sm">{tip}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </TabsContent>
-
                     <TabsContent value="correction" className="space-y-4">
                       {/* Correction */}
                       <div className="bg-white p-4 rounded-lg border border-gray-200">
@@ -785,6 +894,86 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                           )}
                         </div>
                       )}
+                    </TabsContent>
+
+                    <TabsContent value="feedback" className="space-y-4">
+                      {/* Feedback positif */}
+                      <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                        <div className="flex items-center gap-3 mb-3">
+                          <ThumbsUp className="h-5 w-5 text-green-600" />
+                          <h4 className="font-semibold text-green-800">Points forts :</h4>
+                        </div>
+                        <div className="space-y-2">
+                          {(() => {
+                            const positivePoints = [];
+                            if (studentAnswer.toLowerCase().includes('have') || studentAnswer.toLowerCase().includes('has')) {
+                              positivePoints.push("Utilisation correcte du present perfect");
+                            }
+                            if (evaluation.severity.accepted_variations.length > 0) {
+                              positivePoints.push("Variations stylistiques acceptables");
+                            }
+                            if (positivePoints.length === 0) {
+                              if (evaluation.score >= 6) {
+                                positivePoints.push("Structure grammaticale solide");
+                                positivePoints.push("Registre formel respecté");
+                              } else {
+                                positivePoints.push("Tentative de traduction complète");
+                                positivePoints.push("Compréhension du sens général");
+                              }
+                            }
+                            return positivePoints.slice(0, 3).map((point, index) => (
+                              <div key={index} className="flex items-start gap-2">
+                                <CheckCircle className="h-4 w-4 text-green-600 mt-0.5" />
+                                <p className="text-green-700">{point}</p>
+                              </div>
+                            ));
+                          })()}
+                        </div>
+                      </div>
+
+                      {/* Points à améliorer */}
+                      <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
+                        <div className="flex items-center gap-3 mb-3">
+                          <ThumbsDown className="h-5 w-5 text-amber-600" />
+                          <h4 className="font-semibold text-amber-800">Points à améliorer :</h4>
+                        </div>
+                        <div className="space-y-2">
+                          {(() => {
+                            const improvementPoints = [];
+                            if (evaluation.severity.major_errors.length > 0) {
+                              improvementPoints.push("Erreurs grammaticales majeures à corriger");
+                            }
+                            if (evaluation.severity.minor_errors.length > 0) {
+                              improvementPoints.push("Précision lexicale à améliorer");
+                            }
+                            if (evaluation.score < 6) {
+                              improvementPoints.push("Structure de phrase à retravailler");
+                            }
+                            return improvementPoints.map((point, index) => (
+                              <div key={index} className="flex items-start gap-2">
+                                <AlertCircle className="h-4 w-4 text-amber-600 mt-0.5" />
+                                <p className="text-amber-700">{point}</p>
+                              </div>
+                            ));
+                          })()}
+                        </div>
+                      </div>
+
+                      {/* Conseils personnalisés */}
+                      <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                        <div className="flex items-center gap-3 mb-3">
+                          <Lightbulb className="h-5 w-5 text-blue-600" />
+                          <h4 className="font-semibold text-blue-800">Conseils pour cette phrase :</h4>
+                        </div>
+                        <div className="space-y-2">
+                          {evaluation.tips.slice(0, 2).map((tip, index) => (
+                            <div key={index} className="flex items-start gap-2">
+                              <Star className="h-4 w-4 text-blue-600 mt-0.5" />
+                              <p className="text-blue-700 text-sm">{tip}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </TabsContent>
                   </Tabs>
                 </CardContent>

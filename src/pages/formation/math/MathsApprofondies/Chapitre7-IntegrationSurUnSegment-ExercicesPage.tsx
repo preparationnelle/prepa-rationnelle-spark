@@ -178,352 +178,1019 @@ const Chapitre7IntegrationSurUnSegmentExercicesPage = () => {
           </div>
         </Card>
 
-        {/* Tableau de primitives */}
-        <Card className="mb-8 border-0 shadow-lg">
-          <div className="p-6">
-            <h2 className="text-2xl font-bold mb-4">
-              Tableau de primitives classiques
-            </h2>
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr className="bg-blue-50">
-                    <th className="border p-3">
-                      <LatexRenderer latex="f(x)" />
-                    </th>
-                    <th className="border p-3">
-                      <LatexRenderer latex="\\text{Domaine } D_f" />
-                    </th>
-                    <th className="border p-3">
-                      <LatexRenderer latex="\\text{Une primitive sur } D_f" />
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border p-3">
-                      <LatexRenderer latex="x^n \\quad (n \\in \\mathbb{N})" />
-                    </td>
-                    <td className="border p-3">
-                      <LatexRenderer latex="\\mathbb{R}" />
-                    </td>
-                    <td className="border p-3">
-                      <LatexRenderer latex="\\frac{x^{n+1}}{n+1}" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border p-3">
-                      <LatexRenderer latex="\\frac{1}{x^n} \\quad (n \\geq 1)" />
-                    </td>
-                    <td className="border p-3">
-                      <LatexRenderer latex="\\mathbb{R}^{\\ast}" />
-                    </td>
-                    <td className="border p-3">
-                      <LatexRenderer latex="-\\frac{1}{(n-1)x^{n-1}}" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border p-3">
-                      <LatexRenderer latex="x^{\\alpha} \\quad (\\alpha \\neq -1)" />
-                    </td>
-                    <td className="border p-3">
-                      <LatexRenderer latex="\\mathbb{R}_{+}^{\\ast}" />
-                    </td>
-                    <td className="border p-3">
-                      <LatexRenderer latex="\\frac{x^{\\alpha+1}}{\\alpha+1}" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border p-3">
-                      <LatexRenderer latex="\\frac{1}{x}" />
-                    </td>
-                    <td className="border p-3">
-                      <LatexRenderer latex="\\mathbb{R}^{\\ast}" />
-                    </td>
-                    <td className="border p-3">
-                      <LatexRenderer latex="\\ln|x|" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border p-3">
-                      <LatexRenderer latex="\\frac{1}{\\sqrt{x}}" />
-                    </td>
-                    <td className="border p-3">
-                      <LatexRenderer latex="\\mathbb{R}_{+}^{\\ast}" />
-                    </td>
-                    <td className="border p-3">
-                      <LatexRenderer latex="2\\sqrt{x}" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border p-3">
-                      <LatexRenderer latex="e^x" />
-                    </td>
-                    <td className="border p-3">
-                      <LatexRenderer latex="\\mathbb{R}" />
-                    </td>
-                    <td className="border p-3">
-                      <LatexRenderer latex="e^x" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border p-3">
-                      <LatexRenderer latex="\\ln x" />
-                    </td>
-                    <td className="border p-3">
-                      <LatexRenderer latex="\\mathbb{R}_{+}^{\\ast}" />
-                    </td>
-                    <td className="border p-3">
-                      <LatexRenderer latex="x\\ln x - x" />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </Card>
-
-        {/* ----------------------------------------------------
-            Niveau 1
-        ---------------------------------------------------- */}
-        <DifficultyHeader
-          level="Niveau 1"
-          title="Intégration sur un segment"
-          icon={BookOpen}
-          stars={1}
-        />
-
-        <ExerciseCard
-          id="1.1"
+                <ExerciseCard
+          id="ex1"
           title="Exercice 1"
           difficulty="Facile"
           content={
             <div>
-              <p className="mb-2">Calculer&nbsp;:</p>
-              <LatexRenderer latex="I = \\int_{-1}^{2} e^{-|x|} \\, dx" />
+              <p className="mb-4"><strong>Calculer :</strong></p>
+              <div className="text-center">
+                <LatexRenderer latex="\int_{-1}^{2} e^{-|x|} \, dx" />
             </div>
+          </div>
           }
           correction={
-            <div className="space-y-3">
-              <p>La fonction est paire. On scinde l’intégrale&nbsp;:</p>
-              <LatexRenderer latex="I = \\int_{-1}^{0} e^{x} \\, dx + \\int_{0}^{2} e^{-x} \\, dx" />
-              <p>
-                <LatexRenderer latex="\\int_{-1}^{0} e^{x} \\, dx = [e^{x}]_{-1}^{0} = 1 - \\frac{1}{e}" />
-              </p>
-              <p>
-                <LatexRenderer latex="\\int_{0}^{2} e^{-x} \\, dx = [-e^{-x}]_{0}^{2} = 1 - \\frac{1}{e^2}" />
-              </p>
-              <p>D’où&nbsp;:</p>
-              <LatexRenderer latex="I = 2 - \\frac{1}{e} - \\frac{1}{e^2}" />
+            <div className="space-y-4">
+              <div>
+                <strong className="text-green-600">Propriété de la valeur absolue :</strong>
+                <p>On utilise la propriété suivante :</p>
+                <div className="text-center space-y-2">
+                  <LatexRenderer latex="\forall x \leq 0, \quad |x| = -x" />
+                  <LatexRenderer latex="\forall x \geq 0, \quad |x| = x" />
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Décomposition par la relation de Chasles :</strong>
+                <div className="text-center">
+                  <LatexRenderer latex="\int_{-1}^{2} e^{-|x|} \, dx = \int_{-1}^{0} e^{x} \, dx + \int_{0}^{2} e^{-x} \, dx" />
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Calcul de la première intégrale :</strong>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="\int_{-1}^{0} e^{x} \, dx = \left[e^{x}\right]_{-1}^{0}" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= e^{0} - e^{-1} = 1 - \frac{1}{e}" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Calcul de la seconde intégrale :</strong>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="\int_{0}^{2} e^{-x} \, dx = \left[-e^{-x}\right]_{0}^{2}" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= -e^{-2} + e^{0} = 1 - \frac{1}{e^2}" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Résultat final :</strong>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="\int_{-1}^{2} e^{-|x|} \, dx = \left(1 - \frac{1}{e}\right) + \left(1 - \frac{1}{e^2}\right)" />
+                  </div>
+                  
+                  <div className="text-center bg-green-50 p-4 rounded border-2 border-green-400">
+                    <LatexRenderer latex="\int_{-1}^{2} e^{-|x|} \, dx = 2 - \frac{1}{e} - \frac{1}{e^2}" />
+                  </div>
+                </div>
+              </div>
             </div>
           }
         />
 
         <ExerciseCard
-          id="1.2"
+          id="ex2"
           title="Exercice 2"
           difficulty="Facile"
           content={
             <div>
-              <p className="mb-2">
-                Soient <LatexRenderer latex="n \\in \\mathbb{N}^{\\ast}" /> et{' '}
-                <LatexRenderer latex="x \\in ]0,1[" />. Montrer que :
-              </p>
-              <LatexRenderer latex="\\int_{0}^{x} \\frac{t^{n-1}}{1-t} \\, dt = \\sum_{k=1}^{n} \\frac{x^k}{k}" />
+              <p className="mb-4"><strong>Calculer :</strong></p>
+              <div className="text-center">
+                <LatexRenderer latex="\int_0^n \lfloor x \rfloor \, dx \quad \text{pour } n \in \mathbb{N}^*" />
+              </div>
             </div>
           }
           correction={
-            <div className="space-y-3">
-              <p>Pour <LatexRenderer latex="|t| < 1" />, la série géométrique donne :</p>
-              <LatexRenderer latex="\\frac{1}{1-t} = \\sum_{k=0}^{\\infty} t^k" />
-              <p>Donc&nbsp;:</p>
-              <LatexRenderer latex="\\frac{t^{n-1}}{1-t} = \\sum_{k=0}^{\\infty} t^{n+k-1}" />
-              <p>La convergence est absolue sur <LatexRenderer latex="[0,x]" /> ; on intègre terme à terme&nbsp;:</p>
-              <LatexRenderer latex="\\int_{0}^{x} \\frac{t^{n-1}}{1-t} \\, dt = \\sum_{k=0}^{\\infty} \\frac{x^{n+k}}{n+k}" />
-              <p>Changement d’indice <LatexRenderer latex="j=n+k" /> donne le résultat voulu.</p>
+            <div className="space-y-4">
+              <div>
+                <strong className="text-green-600">Analyse de la fonction partie entière :</strong>
+                <p>Soit <LatexRenderer latex="n \in \mathbb{N}^*" />. La fonction partie entière est continue sur <LatexRenderer latex="]0,1[, ]1,2[, ]2,3[, \ldots, ]n-1,n[" />, et elle admet une limite à droite et à gauche en chacun des points de discontinuité.</p>
+                <p>Elle est donc continue par morceaux sur <LatexRenderer latex="[0,n]" />.</p>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Comportement sur chaque intervalle :</strong>
+                <p>Pour <LatexRenderer latex="k \in \llbracket 0, n-1 \rrbracket" />, on a :</p>
+                <div className="text-center">
+                  <LatexRenderer latex="\forall x \in [k, k+1[, \quad \lfloor x \rfloor = k" />
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Décomposition de l'intégrale :</strong>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="\int_0^n \lfloor x \rfloor \, dx = \sum_{k=0}^{n-1} \int_k^{k+1} \lfloor x \rfloor \, dx" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= \sum_{k=0}^{n-1} \int_k^{k+1} k \, dx = \sum_{k=0}^{n-1} k \int_k^{k+1} dx" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= \sum_{k=0}^{n-1} k \cdot (k+1 - k) = \sum_{k=0}^{n-1} k" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Calcul de la somme :</strong>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="\sum_{k=0}^{n-1} k = \frac{(n-1)n}{2}" />
+                  </div>
+                  
+                  <div className="text-center bg-green-50 p-4 rounded border-2 border-green-400">
+                    <LatexRenderer latex="\forall n \in \mathbb{N}^*, \quad \int_0^n \lfloor x \rfloor \, dx = \frac{n(n - 1)}{2}" />
+                  </div>
+                </div>
+              </div>
             </div>
           }
         />
 
         <ExerciseCard
-          id="1.3"
+          id="ex3"
           title="Exercice 3"
-          difficulty="Facile"
+          difficulty="Moyen"
           content={
             <div>
-              <p className="mb-2">
-                Pour <LatexRenderer latex="n\in\mathbb{N}" /> calculer&nbsp;:
-              </p>
-              <LatexRenderer latex="J_{n}=\displaystyle\int_{0}^{1}\lfloor nt\rfloor\,\mathrm{d}t" />
+              <p className="mb-4">Montrer que <LatexRenderer latex="\forall x \in ]0,1[" /> :</p>
+              <div className="text-center">
+                <LatexRenderer latex="\forall n \in \mathbb{N}, \quad 0 \leq \int_0^x \frac{t^n}{1 - t} \, dt \leq -\ln(1 - x)" />
+              </div>
             </div>
           }
           correction={
-            <div className="space-y-3">
-              <p>On découpe <LatexRenderer latex="[0,1]" /> en <LatexRenderer latex="n" /> intervalles&nbsp;:</p>
-              <LatexRenderer latex="I_{k}=\Bigl[\tfrac{k}{n},\tfrac{k+1}{n}\Bigr),\quad 0\leq k\leq n-1" />
-              <p>Sur chaque <LatexRenderer latex="I_{k}" /> on a <LatexRenderer latex="\lfloor nt\rfloor=k" />.</p>
-              <LatexRenderer latex="J_{n}=\sum_{k=0}^{n-1}k\int_{k/n}^{(k+1)/n}\mathrm{d}t=\frac{1}{n}\sum_{k=0}^{n-1}k=\frac{n-1}{2}" />
-            </div>
-          }
-        />
+            <div className="space-y-4">
+              <div>
+                <strong className="text-green-600">Données :</strong>
+                <p>Soit <LatexRenderer latex="x \in ]0,1[" /> et <LatexRenderer latex="n \in \mathbb{N}" />.</p>
+              </div>
 
-        {/* ----------------------------------------------------
-            Niveau 2
-        ---------------------------------------------------- */}
-        <DifficultyHeader
-          level="Niveau 2"
-          title="Intégration par parties et changements de variable"
-          icon={Lightbulb}
-          stars={2}
-          color="green"
-        />
+              <div>
+                <strong className="text-green-600">Encadrement de l'intégrande :</strong>
+                <p>Pour tout <LatexRenderer latex="t \in [0,x]" />, on a :</p>
+                <div className="text-center space-y-2">
+                  <LatexRenderer latex="0 \leq t^n \leq x^n \leq 1" />
+                  <LatexRenderer latex="\Rightarrow \quad 0 \leq \frac{t^n}{1 - t} \leq \frac{1}{1 - t} \quad \text{car } 1 - t > 0" />
+                </div>
+              </div>
 
-        <ExerciseCard
-          id="2.1"
-          title="Exercice 9"
-          difficulty="Intermédiaire"
-          content={
-            <div>
-              <p className="mb-2">Calculer&nbsp;:</p>
-              <LatexRenderer latex="I=\displaystyle\int_{1}^{2}\frac{\ln t}{t^{2}+1}\,\mathrm{d}t" />
-            </div>
-          }
-          correction={
-            <div className="space-y-3">
-              <p>Intégration par parties avec</p>
-              <LatexRenderer latex="u=\ln t,\quad\mathrm{d}v=\frac{\mathrm{d}t}{t^{2}+1}" />
-              <LatexRenderer latex="\implies\mathrm{d}u=\frac{\mathrm{d}t}{t},\quad v=\arctan t" />
-              <p>D’où&nbsp;:</p>
-              <LatexRenderer latex="I=\Bigl[\ln t\,\arctan t\Bigr]_{1}^{2}-\int_{1}^{2}\frac{\arctan t}{t}\,\mathrm{d}t" />
-              <p>Substitution <LatexRenderer latex="t=\mathrm{e}^{x}" /> puis calcul complet&nbsp;:</p>
-              <LatexRenderer latex="I=\frac{\ln 2-\arctan 2+\tfrac{\pi}{4}}{2}" />
-            </div>
-          }
-        />
+              <div>
+                <strong className="text-green-600">Application de la croissance de l'intégrale :</strong>
+                <div className="text-center">
+                  <LatexRenderer latex="0 \leq \int_0^x \frac{t^n}{1 - t} \, dt \leq \int_0^x \frac{1}{1 - t} \, dt" />
+                </div>
+              </div>
 
-        <ExerciseCard
-          id="2.2"
-          title="Exercice 10"
-          difficulty="Intermédiaire"
-          content={
-            <div>
-              <p className="mb-2">Calculer&nbsp;:</p>
-              <LatexRenderer latex="I=\displaystyle\int_{0}^{1}(x-1)\,\mathrm{e}^{x}\,\mathrm{d}x" />
-            </div>
-          }
-          correction={
-            <div className="space-y-3">
-              <p>Par parties avec <LatexRenderer latex="u=x-1,\;\mathrm{d}v=\mathrm{e}^{x}\mathrm{d}x" /> :</p>
-              <LatexRenderer latex="I=\Bigl[(x-1)\,\mathrm{e}^{x}\Bigr]_{0}^{1}-\int_{0}^{1}\mathrm{e}^{x}\,\mathrm{d}x=0-\Bigl[\mathrm{e}^{x}\Bigr]_{0}^{1}=1-\mathrm{e}" />
+              <div>
+                <strong className="text-green-600">Calcul de l'intégrale majorante :</strong>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="\int_0^x \frac{1}{1 - t} \, dt = \left[ -\ln(1 - t) \right]_0^x" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= -\ln(1 - x) + \ln(1) = -\ln(1 - x)" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Conclusion :</strong>
+                <div className="text-center bg-green-50 p-4 rounded border-2 border-green-400">
+                  <LatexRenderer latex="0 \leq \int_0^x \frac{t^n}{1 - t} \, dt \leq -\ln(1 - x)" />
+                </div>
+              </div>
             </div>
           }
         />
 
         <ExerciseCard
-          id="2.3"
-          title="Exercice 11"
-          difficulty="Intermédiaire"
+          id="ex4"
+          title="Exercice 4"
+          difficulty="Moyen"
           content={
             <div>
-              <p className="mb-2">Calculer&nbsp;:</p>
-              <LatexRenderer latex="I=\displaystyle\int_{0}^{1}\ln\!\left(x^{2}+3\right)\mathrm{d}x" />
+              <p className="mb-4">On note pour <LatexRenderer latex="n \in \mathbb{N}" /> :</p>
+              <div className="text-center mb-4">
+                <LatexRenderer latex="I_n = \int_0^1 \frac{(-t)^n}{1 + t} \, dt" />
+              </div>
+              <p>Montrer que :</p>
+              <div className="text-center">
+                <LatexRenderer latex="\forall n \in \mathbb{N}, \quad 0 \leq |I_n| \leq \ln(2)" />
+              </div>
             </div>
           }
           correction={
-            <div className="space-y-3">
-              <p>Par symétrie <LatexRenderer latex="x\mapsto 1-x" /> et calculs&nbsp;:</p>
-              <LatexRenderer latex="I=2\ln 2-2+\ln 3" />
+            <div className="space-y-4">
+              <div>
+                <strong className="text-green-600">Données :</strong>
+                <p>Soit <LatexRenderer latex="n \in \mathbb{N}" />.</p>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Inégalité évidente :</strong>
+                <p>On a évidemment <LatexRenderer latex="0 \leq |I_n|" />.</p>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Majoration par inégalité triangulaire :</strong>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="|I_n| = \left| \int_0^1 \frac{(-t)^n}{1 + t} \, dt \right| \leq \int_0^1 \left| \frac{(-t)^n}{1 + t} \right| dt" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= \int_0^1 \frac{t^n}{1 + t} \, dt" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Encadrement :</strong>
+                <p>Pour tout <LatexRenderer latex="t \in [0,1]" /> :</p>
+                <div className="text-center">
+                  <LatexRenderer latex="\frac{t^n}{1 + t} \leq \frac{1}{1 + t} \quad \Rightarrow \quad \int_0^1 \frac{t^n}{1 + t} \, dt \leq \int_0^1 \frac{1}{1 + t} \, dt" />
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Calcul de l'intégrale majorante :</strong>
+                <div className="text-center">
+                  <LatexRenderer latex="\int_0^1 \frac{1}{1 + t} \, dt = [\ln(1 + t)]_0^1 = \ln(2)" />
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Conclusion :</strong>
+                <div className="text-center bg-green-50 p-4 rounded border-2 border-green-400">
+                  <LatexRenderer latex="\forall n \in \mathbb{N}, \quad 0 \leq |I_n| \leq \ln(2)" />
+                </div>
+              </div>
             </div>
           }
         />
 
-        {/* ----------------------------------------------------
-            Niveau 3
-        ---------------------------------------------------- */}
-        <DifficultyHeader
-          level="Niveau 3"
-          title="Suites d’intégrales"
-          icon={Target}
-          stars={3}
-          color="orange"
+        <ExerciseCard
+          id="ex5"
+          title="Exercice 5"
+          difficulty="Moyen"
+          content={
+            <div>
+              <p className="mb-4">Étudier le sens de variation de la suite <LatexRenderer latex="(I_n)_{n \in \mathbb{N}}" /> définie par :</p>
+              <div className="text-center">
+                <LatexRenderer latex="\forall n \in \mathbb{N}, \quad I_n = \int_0^1 \frac{e^{nx}}{e^x + 1} \, dx" />
+              </div>
+            </div>
+          }
+          correction={
+            <div className="space-y-4">
+              <div>
+                <strong className="text-green-600">Calcul de la différence :</strong>
+                <p>Soit <LatexRenderer latex="n \in \mathbb{N}" />.</p>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="I_{n+1} - I_n = \int_0^1 \frac{e^{(n+1)x}}{e^x + 1} \, dx - \int_0^1 \frac{e^{nx}}{e^x + 1} \, dx" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= \int_0^1 \left( \frac{e^{(n+1)x}}{e^x + 1} - \frac{e^{nx}}{e^x + 1} \right) dx" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Simplification :</strong>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="= \int_0^1 \frac{e^{nx} e^x - e^{nx}}{e^x + 1} \, dx = \int_0^1 \frac{e^{nx}(e^x - 1)}{e^x + 1} \, dx" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Analyse du signe :</strong>
+                <p>Pour <LatexRenderer latex="\forall x \in [0,1]" /> :</p>
+                <div className="text-center space-y-2">
+                  <LatexRenderer latex="e^{nx} > 0, \quad e^x > 0, \quad e^x - 1 \geq 0, \quad e^x + 1 > 0" />
+                  <LatexRenderer latex="\Rightarrow \frac{e^{nx}(e^x - 1)}{e^x + 1} \geq 0" />
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Conclusion :</strong>
+                <p>De plus, la fonction intégrée est continue sur <LatexRenderer latex="[0,1]" />.</p>
+                <p>Donc par croissance de l'intégrale :</p>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="\int_0^1 \frac{e^{nx}(e^x - 1)}{e^x + 1} \, dx \geq 0 \Rightarrow I_{n+1} \geq I_n" />
+                  </div>
+                  
+                  <div className="text-center bg-green-50 p-4 rounded border-2 border-green-400">
+                    <LatexRenderer latex="\forall n \in \mathbb{N}, \quad I_{n+1} \geq I_n \quad \text{et donc la suite } (I_n) \text{ est croissante}" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
         />
 
         <ExerciseCard
-          id="3.1"
+          id="ex6"
+          title="Exercice 6"
+          difficulty="Moyen"
+          content={
+            <div>
+              <p className="mb-4">Déterminer la limite de la suite <LatexRenderer latex="(I_n)_{n \in \mathbb{N}}" /> définie par :</p>
+              <div className="text-center">
+                <LatexRenderer latex="\forall n \in \mathbb{N}, \quad I_n = \int_0^1 x^n \ln(x + 1) \, dx" />
+              </div>
+            </div>
+          }
+          correction={
+            <div className="space-y-4">
+              <div>
+                <strong className="text-green-600">Encadrement de ln(x+1) :</strong>
+                <p>Soit <LatexRenderer latex="n \in \mathbb{N}" />. Pour tout <LatexRenderer latex="x \in [0,1]" /> :</p>
+                <div className="text-center">
+                  <LatexRenderer latex="\ln(1) \leq \ln(1 + x) \leq \ln(2)" />
+                </div>
+                <div className="text-center">
+                  <LatexRenderer latex="\Rightarrow \quad 0 \leq x^n \ln(1 + x) \leq x^n \ln(2)" />
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Continuité :</strong>
+                <p>Les fonctions <LatexRenderer latex="x \mapsto x^n \ln(1 + x)" /> et <LatexRenderer latex="x \mapsto x^n \ln(2)" /> sont continues sur <LatexRenderer latex="[0,1]" />.</p>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Application de la croissance de l'intégrale :</strong>
+                <div className="text-center">
+                  <LatexRenderer latex="0 \leq \int_0^1 x^n \ln(1 + x) \, dx \leq \int_0^1 x^n \ln(2) \, dx" />
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Calcul de l'intégrale majorante :</strong>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="\int_0^1 x^n \ln(2) \, dx = \ln(2) \int_0^1 x^n \, dx = \ln(2) \cdot \left[ \frac{x^{n+1}}{n+1} \right]_0^1 = \frac{\ln(2)}{n+1}" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Encadrement final :</strong>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="0 \leq I_n \leq \frac{\ln(2)}{n+1}" />
+                  </div>
+                  <p>Or <LatexRenderer latex="\lim_{n \to \infty} \frac{\ln(2)}{n+1} = 0" /></p>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Conclusion par encadrement :</strong>
+                <div className="text-center bg-green-50 p-4 rounded border-2 border-green-400">
+                  <LatexRenderer latex="\lim_{n \to \infty} I_n = 0" />
+                </div>
+              </div>
+            </div>
+          }
+        />
+
+        <ExerciseCard
+          id="ex7"
+          title="Exercice 7"
+          difficulty="Moyen"
+          content={
+            <div>
+              <p className="mb-4"><strong>Intégration par parties - ln(x) et polynôme</strong></p>
+              <p className="mb-4">Calculer l'intégrale suivante :</p>
+              <div className="text-center">
+                <LatexRenderer latex="I = \int_1^2 \frac{\ln(x)}{x^2} \, dx" />
+              </div>
+            </div>
+          }
+          correction={
+            <div className="space-y-4">
+              <div>
+                <strong className="text-green-600">Choix des fonctions :</strong>
+                <p>On pose :</p>
+                <div className="text-center space-y-2">
+                  <LatexRenderer latex="u(x) = \ln(x), \quad v'(x) = \frac{1}{x^2}" />
+                  <LatexRenderer latex="\Rightarrow u'(x) = \frac{1}{x}, \quad v(x) = -\frac{1}{x}" />
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Conditions de régularité :</strong>
+                <p>Les fonctions <LatexRenderer latex="u" /> et <LatexRenderer latex="v" /> sont de classe <LatexRenderer latex="\mathcal{C}^1" /> sur <LatexRenderer latex="[1,2]" />.</p>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Application de la formule d'IPP :</strong>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="I = \left[ \frac{-\ln(x)}{x} \right]_1^2 - \int_1^2 \left( -\frac{1}{x} \cdot \frac{1}{x} \right) dx" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= -\frac{\ln(2)}{2} + \ln(1) + \int_1^2 \frac{1}{x^2} \, dx" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Calculs :</strong>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="= -\frac{1}{2} \ln(2) + \left[ -\frac{1}{x} \right]_1^2" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= -\frac{1}{2} \ln(2) + \left( -\frac{1}{2} + 1 \right)" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= -\frac{1}{2} \ln(2) + \frac{1}{2}" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Résultat final :</strong>
+                <div className="text-center bg-green-50 p-4 rounded border-2 border-green-400">
+                  <LatexRenderer latex="\int_1^2 \frac{\ln(x)}{x^2} \, dx = \frac{1}{2} - \frac{1}{2} \ln(2)" />
+                </div>
+              </div>
+            </div>
+          }
+        />
+
+        <ExerciseCard
+          id="ex8"
           title="Exercice 8"
+          difficulty="Moyen"
+          content={
+            <div>
+              <p className="mb-4"><strong>IPP exponentielle et polynôme</strong></p>
+              <p className="mb-4">Calculer l'intégrale suivante :</p>
+              <div className="text-center">
+                <LatexRenderer latex="I = \int_0^1 (x - 1) e^{2x} \, dx" />
+              </div>
+            </div>
+          }
+          correction={
+            <div className="space-y-4">
+              <div>
+                <strong className="text-green-600">Choix des fonctions :</strong>
+                <p>On pose :</p>
+                <div className="text-center space-y-2">
+                  <LatexRenderer latex="u(x) = x - 1, \quad v'(x) = e^{2x}" />
+                  <LatexRenderer latex="\Rightarrow u'(x) = 1, \quad v(x) = \frac{1}{2} e^{2x}" />
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Application de l'IPP :</strong>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="I = \left[ \frac{1}{2}(x - 1) e^{2x} \right]_0^1 - \int_0^1 \frac{1}{2} e^{2x} \, dx" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= \frac{1}{2}(1 - 1)e^{2} - \frac{1}{2}(0 - 1) e^{0} - \frac{1}{2} \int_0^1 e^{2x} \, dx" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Simplification :</strong>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="= \frac{1}{2} \cdot 0 - \left( -\frac{1}{2} \cdot 1 \right) - \frac{1}{2} \left[ \frac{1}{2} e^{2x} \right]_0^1" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= \frac{1}{2} + \left( -\frac{1}{4} (e^2 - 1) \right)" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= \frac{1}{2} - \frac{1}{4} e^2 + \frac{1}{4} = \frac{3}{4} - \frac{1}{4} e^2" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Résultat final :</strong>
+                <div className="text-center bg-green-50 p-4 rounded border-2 border-green-400">
+                  <LatexRenderer latex="\int_0^1 (x - 1) e^{2x} \, dx = \frac{3 - e^2}{4}" />
+                </div>
+              </div>
+            </div>
+          }
+        />
+
+        <ExerciseCard
+          id="ex9"
+          title="Exercice 9"
+          difficulty="Moyen"
+          content={
+            <div>
+              <p className="mb-4"><strong>La « grosse astuce » - Intégration par parties</strong></p>
+              <p className="mb-4">Calculer l'intégrale suivante :</p>
+              <div className="text-center">
+                <LatexRenderer latex="I = \int_0^1 \ln(2 + x) \, dx" />
+              </div>
+            </div>
+          }
+          correction={
+            <div className="space-y-4">
+              <div>
+                <strong className="text-green-600">Choix des fonctions :</strong>
+                <p>On pose :</p>
+                <div className="text-center space-y-2">
+                  <LatexRenderer latex="u(x) = \ln(2 + x), \quad v'(x) = 1" />
+                  <LatexRenderer latex="\Rightarrow u'(x) = \frac{1}{2 + x}, \quad v(x) = x" />
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Application de l'IPP :</strong>
+                <div className="text-center">
+                  <LatexRenderer latex="I = \left[ x \ln(2 + x) \right]_0^1 - \int_0^1 \frac{x}{2 + x} \, dx" />
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Calcul du terme tout intégré :</strong>
+                <div className="text-center">
+                  <LatexRenderer latex="x \ln(2 + x) \bigg|_0^1 = 1 \cdot \ln(3) - 0 \cdot \ln(2) = \ln(3)" />
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Calcul de l'intégrale restante :</strong>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="\int_0^1 \frac{x}{2 + x} \, dx = \int_0^1 \left(1 - \frac{2}{2 + x} \right) dx" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= \int_0^1 1 \, dx - 2 \int_0^1 \frac{1}{2 + x} \, dx" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= [x]_0^1 - 2 [\ln(2 + x)]_0^1" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= 1 - 2(\ln(3) - \ln(2)) = 1 - 2 \ln\left(\frac{3}{2}\right)" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Calcul final :</strong>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="I = \ln(3) - (1 - 2\ln(3) + 2\ln(2))" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= \ln(3) - 1 + 2\ln(3) - 2\ln(2)" />
+                  </div>
+                  
+                  <div className="text-center bg-green-50 p-4 rounded border-2 border-green-400">
+                    <LatexRenderer latex="\int_0^1 \ln(2 + x) \, dx = 3 \ln(3) - 2 \ln(2) - 1" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        />
+
+        <ExerciseCard
+          id="ex10"
+          title="Exercice 10"
+          difficulty="Moyen"
+          content={
+            <div>
+              <p className="mb-4"><strong>Changement de variable affine</strong></p>
+              <p className="mb-4">Calculer l'intégrale suivante :</p>
+              <div className="text-center">
+                <LatexRenderer latex="I = \int_0^1 \frac{x}{2x + 1} \, dx" />
+              </div>
+            </div>
+          }
+          correction={
+            <div className="space-y-4">
+              <div>
+                <strong className="text-green-600">Méthode par linéarité :</strong>
+                <p>On factorise :</p>
+              <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="I = \frac{1}{2} \int_0^1 \frac{2x}{2x + 1} \, dx = \frac{1}{2} \int_0^1 \left( \frac{2x + 1 - 1}{2x + 1} \right) dx" />
+              </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= \frac{1}{2} \int_0^1 \left(1 - \frac{1}{2x + 1} \right) dx" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Décomposition :</strong>
+                <div className="text-center">
+                  <LatexRenderer latex="= \frac{1}{2} \left( \int_0^1 1 \, dx - \int_0^1 \frac{1}{2x + 1} \, dx \right)" />
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Calcul de l'intégrale :</strong>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="\int_0^1 \frac{1}{2x + 1} \, dx = \frac{1}{2} \int_0^1 \frac{2}{2x + 1} \, dx" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= \frac{1}{2} \left[ \ln(2x + 1) \right]_0^1 = \frac{1}{2} \ln(3)" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Résultat final :</strong>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="I = \frac{1}{2} \left( 1 - \frac{1}{2} \ln(3) \right) = \frac{1}{4} (2 - \ln(3))" />
+                  </div>
+                  
+                  <div className="text-center bg-green-50 p-4 rounded border-2 border-green-400">
+                    <LatexRenderer latex="\int_0^1 \frac{x}{2x + 1} \, dx = \frac{1}{4} (2 - \ln(3))" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        />
+
+        <ExerciseCard
+          id="ex11"
+          title="Exercice 11"
           difficulty="Avancé"
           content={
             <div>
-              <p className="mb-2">
-                Pour <LatexRenderer latex="n\in\mathbb{N}" /> on pose&nbsp;:
-              </p>
-              <div className="space-y-2">
-                <LatexRenderer latex="h_{n}=\displaystyle\int_{0}^{1}\frac{t^{n}}{1+t}\,\mathrm{d}t" />
-                <LatexRenderer latex="k_{n}=\displaystyle\int_{0}^{1}\frac{t^{n}}{(1+t)^{2}}\,\mathrm{d}t" />
+              <p className="mb-4"><strong>Changement de variable non affine</strong></p>
+              <p className="mb-4">En posant le changement de variable <LatexRenderer latex="x = \ln(t)" />, calculer :</p>
+              <div className="text-center">
+                <LatexRenderer latex="I = \int_0^1 \frac{dx}{1 + e^x}" />
               </div>
-              <p className="mt-2">Étudier ces suites d’intégrales.</p>
             </div>
           }
           correction={
+            <div className="space-y-4">
+              <div>
+                <strong className="text-green-600">Changement de variable :</strong>
+                <p>On pose :</p>
+                <div className="text-center space-y-2">
+                  <LatexRenderer latex="x = \ln(t) \Rightarrow e^x = t \Rightarrow dx = \frac{1}{t} \, dt" />
+                </div>
+                <p>Pour <LatexRenderer latex="x \in [0,1]" />, on a <LatexRenderer latex="t \in [1, e]" />.</p>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Transformation de l'intégrale :</strong>
+                <div className="text-center">
+                  <LatexRenderer latex="I = \int_1^e \frac{1}{1 + t} \cdot \frac{1}{t} \, dt = \int_1^e \frac{1}{t(1 + t)} \, dt" />
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Décomposition en éléments simples :</strong>
             <div className="space-y-2">
-              <p>
-                <strong>1)</strong> Les intégrandes sont continues sur{' '}
-                <LatexRenderer latex="[0,1]" /> ⟹ existence.
-              </p>
-              <p>
-                <strong>2)</strong>{' '}
-                <LatexRenderer latex="k_{0}=\frac12" />
-              </p>
-              <p>
-                <strong>3)</strong> <LatexRenderer latex="h_{n+1}\leq h_{n}" /> (suite décroissante).
-              </p>
-              <p>
-                <strong>4)</strong> <LatexRenderer latex="0\leq h_{n}\leq\frac{1}{n+1}" />
-              </p>
-              <p>
-                <strong>5)</strong> <LatexRenderer latex="\lim_{n\to\infty}h_{n}=0" />
-              </p>
-              <p>
-                <strong>6)</strong> <LatexRenderer latex="0\leq k_{n}\leq h_{n}\Rightarrow k_{n}\to0" />
-              </p>
+                  <div className="text-center">
+                    <LatexRenderer latex="\frac{1}{t(1 + t)} = \frac{1}{t} - \frac{1}{1 + t}" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="\Rightarrow I = \int_1^e \left( \frac{1}{t} - \frac{1}{1 + t} \right) dt" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Calcul :</strong>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="= \left[ \ln|t| - \ln(1 + t) \right]_1^e" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= \left( \ln(e) - \ln(1 + e) \right) - \left( \ln(1) - \ln(2) \right)" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= 1 - \ln(1 + e) + \ln(2)" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Résultat final :</strong>
+                <div className="text-center bg-green-50 p-4 rounded border-2 border-green-400">
+                  <LatexRenderer latex="\int_0^1 \frac{dx}{1 + e^x} = 1 + \ln(2) - \ln(1 + e)" />
+                </div>
+              </div>
             </div>
           }
-        />
-
-        {/* ----------------------------------------------------
-            Niveau 4
-        ---------------------------------------------------- */}
-        <DifficultyHeader
-          level="Niveau 4"
-          title="Sommes de Riemann"
-          icon={Crown}
-          stars={4}
-          color="purple"
         />
 
         <ExerciseCard
-          id="4.1"
-          title="Exercice 15"
-          difficulty="Expert"
+          id="ex12"
+          title="Exercice 12"
+          difficulty="Avancé"
           content={
             <div>
-              <p className="mb-2">
-                Soit <LatexRenderer latex="f\in\mathcal{C}^{1}([0,1])" /> et{' '}
-                <LatexRenderer latex="M=\max_{[0,1]}|f'|" />. On pose&nbsp;:
-              </p>
-              <LatexRenderer latex="S_{n}=\sum_{k=1}^{n}f\!\left(\frac{k}{n}\right)\frac{1}{n}" />
-              <p className="mt-2">
-                Montrer, pour tout <LatexRenderer latex="n\in\mathbb{N}^{\ast}" /> :
-              </p>
-              <LatexRenderer latex="\left|\displaystyle\int_{0}^{1}f(t)\,\mathrm{d}t-S_{n}\right|\leq\frac{M}{2n}" />
+              <p className="mb-4"><strong>Changement de variable <LatexRenderer latex="u = e^x" /></strong></p>
+              <p className="mb-4">Calculer l'intégrale suivante :</p>
+              <div className="text-center">
+                <LatexRenderer latex="I = \int_0^1 \frac{e^x}{1 + e^x} \, dx" />
+              </div>
             </div>
           }
           correction={
-            <div className="space-y-3">
-              <p>Découpage en <LatexRenderer latex="n" /> sous-intervalles&nbsp;:</p>
-              <LatexRenderer latex="I_{k}=\Bigl[\frac{k-1}{n},\frac{k}{n}\Bigr]" />
-              <p>Accroissements finis puis sommation&nbsp;:</p>
-              <LatexRenderer latex="\left|\int_{0}^{1}f(t)\,\mathrm{d}t-S_{n}\right|\leq\frac{M}{2n}" />
+            <div className="space-y-4">
+              <div>
+                <strong className="text-green-600">Changement de variable :</strong>
+                <p>On pose :</p>
+                <div className="text-center">
+                  <LatexRenderer latex="u = e^x \quad \Rightarrow \quad du = e^x dx" />
+                </div>
+                <p>Pour <LatexRenderer latex="x \in [0,1]" />, on a <LatexRenderer latex="u \in [1,e]" />.</p>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Transformation de l'intégrale :</strong>
+                <div className="text-center">
+                  <LatexRenderer latex="I = \int_1^e \frac{1}{1 + u} \, du" />
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Calcul direct :</strong>
+                <div className="space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex="= \left[ \ln(1 + u) \right]_1^e" />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex="= \ln(1 + e) - \ln(2)" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">Résultat final :</strong>
+                <div className="text-center bg-green-50 p-4 rounded border-2 border-green-400">
+                  <LatexRenderer latex="\int_0^1 \frac{e^x}{1 + e^x} \, dx = \ln(1 + e) - \ln(2)" />
+                </div>
+              </div>
+            </div>
+          }
+        />
+
+        <ExerciseCard
+          id="ex12"
+          title="Exercice 12"
+          difficulty="Avancé"
+          content={
+            <div>
+              <p className="mb-4"><strong>Intégration et dérivation</strong></p>
+              <p className="mb-4">On considère la fonction :</p>
+              <div className="text-center mb-6">
+                <LatexRenderer latex="F(x) = \int_0^1 \frac{e^t}{t + x} \, dt \quad \text{définie sur } \mathbb{R}_+^*" />
+              </div>
+              
+              <ol className="list-decimal ml-6 space-y-3">
+                <li>Montrer que <LatexRenderer latex="F" /> est décroissante sur <LatexRenderer latex="\mathbb{R}_+^*" />.</li>
+                <li>Montrer que <LatexRenderer latex="F(x) = e^{-x} \int_x^{x+1} \frac{e^u}{u} \, du" />.</li>
+                <li>Montrer que <LatexRenderer latex="F'(x) + F(x) = \frac{e}{x+1} - \frac{1}{x}" />.</li>
+                <li>Étudier la limite de <LatexRenderer latex="F(x)" /> en <LatexRenderer latex="+\infty" />.</li>
+              </ol>
+            </div>
+          }
+          correction={
+            <div className="space-y-6">
+              <div>
+                <strong className="text-green-600">1. F est décroissante sur ℝ₊*</strong>
+                <div className="mt-2 space-y-2">
+                  <p>Soient <LatexRenderer latex="x, y \in \mathbb{R}_+^*" /> avec <LatexRenderer latex="x < y" />. Pour tout <LatexRenderer latex="t \in [0,1]" />, on a :</p>
+                  <div className="text-center">
+                    <LatexRenderer latex="t + x < t + y \Rightarrow \frac{1}{t + x} > \frac{1}{t + y}" />
+                  </div>
+                  <p>Comme <LatexRenderer latex="e^t > 0" />, on obtient :</p>
+                  <div className="text-center">
+                    <LatexRenderer latex="\frac{e^t}{t + x} > \frac{e^t}{t + y}" />
+                  </div>
+                  <p>Par intégration :</p>
+                  <div className="text-center bg-green-50 p-3 rounded">
+                    <LatexRenderer latex="F(x) = \int_0^1 \frac{e^t}{t + x} \, dt > \int_0^1 \frac{e^t}{t + y} \, dt = F(y)" />
+                  </div>
+                  <p className="text-center"><strong>Donc F est décroissante sur ℝ₊*.</strong></p>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">2. Changement de variable</strong>
+                <div className="mt-2 space-y-2">
+                  <p>On effectue le changement de variable <LatexRenderer latex="u = t + x \Rightarrow du = dt" />.</p>
+                  <p>Quand <LatexRenderer latex="t = 0" />, <LatexRenderer latex="u = x" />. Quand <LatexRenderer latex="t = 1" />, <LatexRenderer latex="u = x + 1" />.</p>
+                  <div className="text-center space-y-2">
+                    <LatexRenderer latex="F(x) = \int_0^1 \frac{e^t}{t + x} dt = \int_x^{x+1} \frac{e^{u - x}}{u} \, du" />
+                    <LatexRenderer latex="= \int_x^{x+1} \frac{e^{-x} \cdot e^u}{u} \, du = e^{-x} \int_x^{x+1} \frac{e^u}{u} \, du" />
+                  </div>
+                  <div className="text-center bg-green-50 p-3 rounded">
+                    <LatexRenderer latex="F(x) = e^{-x} \int_x^{x+1} \frac{e^u}{u} \, du" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">3. Relation différentielle</strong>
+                <div className="mt-2 space-y-2">
+                  <p>Soit <LatexRenderer latex="G(x) = \int_1^x \frac{e^u}{u} \, du" />. Alors <LatexRenderer latex="G'(x) = \frac{e^x}{x}" />.</p>
+                  <p>On peut écrire :</p>
+                  <div className="text-center">
+                    <LatexRenderer latex="F(x) = e^{-x} \left[ G(x+1) - G(x) \right]" />
+                  </div>
+                  <p>En dérivant :</p>
+            <div className="space-y-2">
+                    <div className="text-center">
+                      <LatexRenderer latex="F'(x) = -e^{-x} [G(x+1) - G(x)] + e^{-x} [G'(x+1) - G'(x)]" />
+                    </div>
+                    <div className="text-center">
+                      <LatexRenderer latex="= -F(x) + e^{-x} \left( \frac{e^{x+1}}{x+1} - \frac{e^x}{x} \right)" />
+                    </div>
+                    <div className="text-center">
+                      <LatexRenderer latex="= -F(x) + \frac{e}{x+1} - \frac{1}{x}" />
+                    </div>
+                  </div>
+                  <div className="text-center bg-green-50 p-3 rounded">
+                    <LatexRenderer latex="F'(x) + F(x) = \frac{e}{x + 1} - \frac{1}{x}" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">4. Limite en +∞</strong>
+                <div className="mt-2 space-y-2">
+                  <p>On encadre l'intégrande. Pour <LatexRenderer latex="t \in [0,1]" /> :</p>
+                  <div className="text-center">
+                    <LatexRenderer latex="0 < \frac{1}{t + x} \leq \frac{1}{x} \quad \Rightarrow \quad \frac{e^t}{t + x} \leq \frac{e^t}{x}" />
+                  </div>
+                  <p>Par intégration :</p>
+                  <div className="space-y-2">
+                    <div className="text-center">
+                      <LatexRenderer latex="0 \leq F(x) \leq \frac{1}{x} \int_0^1 e^t dt = \frac{e - 1}{x}" />
+                    </div>
+                  </div>
+                  <p>Par le théorème des gendarmes :</p>
+                  <div className="text-center bg-green-50 p-3 rounded">
+                    <LatexRenderer latex="\lim_{x \to +\infty} F(x) = 0" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        />
+
+        <ExerciseCard
+          id="ex13"
+          title="Exercice 13"
+          difficulty="Expert"
+          content={
+            <div>
+              <p className="mb-4"><strong>Variante des intégrales de Wallis</strong></p>
+              <p className="mb-4">Pour tout <LatexRenderer latex="x \in \mathbb{R}" />, on pose :</p>
+              <div className="text-center mb-4">
+                <LatexRenderer latex="c(x) = \frac{e^x + e^{-x}}{2}, \quad s(x) = \frac{e^x - e^{-x}}{2}" />
+              </div>
+              <p className="mb-4">On vérifie que <LatexRenderer latex="c'(x) = s(x)" />, <LatexRenderer latex="s'(x) = c(x)" />, et <LatexRenderer latex="c(x)^2 - s(x)^2 = 1" />.</p>
+              <p className="mb-4">Soit <LatexRenderer latex="\alpha = \ln(1 + \sqrt{2})" />. Pour <LatexRenderer latex="n \in \mathbb{N}" />, on pose :</p>
+              <div className="text-center mb-6">
+                <LatexRenderer latex="W_n = \int_0^\alpha s(t)^n \, dt" />
+              </div>
+              
+              <ol className="list-decimal ml-6 space-y-3">
+                <li>
+                  <p>a) Vérifier que <LatexRenderer latex="s(\alpha) = 1" />.</p>
+                  <p>b) Étudier les variations de la suite <LatexRenderer latex="W_n" />.</p>
+                  <p>c) Étudier la convergence de <LatexRenderer latex="W_n" />.</p>
+                </li>
+                <li>Établir la relation de récurrence : <LatexRenderer latex="(n + 2)W_{n+2} + (n + 1)W_n = \sqrt{2}" />.</li>
+                <li>En déduire un encadrement de <LatexRenderer latex="W_n" />.</li>
+                <li>Déterminer le comportement asymptotique de <LatexRenderer latex="W_n" />.</li>
+              </ol>
+            </div>
+          }
+          correction={
+            <div className="space-y-6">
+              <div>
+                <strong className="text-green-600">1a. Calcul de s(α)</strong>
+                <div className="mt-2 space-y-2">
+                  <p>Avec <LatexRenderer latex="\alpha = \ln(1 + \sqrt{2})" /> :</p>
+                  <div className="space-y-2">
+                    <div className="text-center">
+                      <LatexRenderer latex="e^\alpha = 1 + \sqrt{2}" />
+                    </div>
+                    <div className="text-center">
+                      <LatexRenderer latex="e^{-\alpha} = \frac{1}{1 + \sqrt{2}} = \frac{1 - \sqrt{2}}{(1 + \sqrt{2})(1 - \sqrt{2})} = \frac{1 - \sqrt{2}}{1 - 2} = \sqrt{2} - 1" />
+                    </div>
+                  </div>
+                  <p>Donc :</p>
+                  <div className="text-center bg-green-50 p-3 rounded">
+                    <LatexRenderer latex="s(\alpha) = \frac{e^\alpha - e^{-\alpha}}{2} = \frac{(1 + \sqrt{2}) - (\sqrt{2} - 1)}{2} = \frac{2}{2} = 1" />
+                  </div>
+                  <p>Comme <LatexRenderer latex="s" /> est croissante sur ℝ, pour tout <LatexRenderer latex="t \in [0, \alpha]" /> : <LatexRenderer latex="0 \leq s(t) \leq 1" />.</p>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">1b. Variations de Wₙ</strong>
+                <div className="mt-2 space-y-2">
+                  <p>Comme <LatexRenderer latex="0 \leq s(t) \leq 1" /> pour <LatexRenderer latex="t \in [0, \alpha]" />, on a :</p>
+                  <div className="text-center">
+                    <LatexRenderer latex="s(t)^{n+1} \leq s(t)^n \quad \text{pour tout } t \in [0, \alpha]" />
+                  </div>
+                  <p>Par intégration :</p>
+                  <div className="text-center bg-green-50 p-3 rounded">
+                    <LatexRenderer latex="0 \leq W_{n+1} \leq W_n \Rightarrow (W_n) \text{ est décroissante}" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">1c. Convergence de Wₙ</strong>
+                <div className="mt-2">
+                  <p>La suite <LatexRenderer latex="(W_n)" /> est décroissante et minorée par 0, donc elle converge vers une limite réelle <LatexRenderer latex="\ell \in \mathbb{R}_+" />.</p>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">2. Relation de récurrence</strong>
+                <div className="mt-2 space-y-3">
+                  <p><strong>Intégration par parties :</strong></p>
+                  <p>On pose <LatexRenderer latex="u = s(t)^{n+1}" /> et <LatexRenderer latex="dv = s(t) dt" />.</p>
+                  <p>Alors <LatexRenderer latex="du = (n+1)s(t)^n c(t) dt" /> et <LatexRenderer latex="v = c(t)" />.</p>
+                  
+                  <div className="space-y-2">
+                    <div className="text-center">
+                      <LatexRenderer latex="W_{n+2} = \int_0^\alpha s(t)^{n+2} dt = [c(t)s(t)^{n+1}]_0^\alpha - \int_0^\alpha c(t)(n+1)s(t)^n c(t) dt" />
+                    </div>
+                    <div className="text-center">
+                      <LatexRenderer latex="= c(\alpha)s(\alpha)^{n+1} - (n+1)\int_0^\alpha c(t)^2 s(t)^n dt" />
+                    </div>
+                  </div>
+                  
+                  <p>Avec <LatexRenderer latex="c(\alpha) = \frac{e^\alpha + e^{-\alpha}}{2} = \frac{(1+\sqrt{2}) + (\sqrt{2}-1)}{2} = \sqrt{2}" /> et <LatexRenderer latex="c(t)^2 = 1 + s(t)^2" /> :</p>
+                  
+                  <div className="space-y-2">
+                    <div className="text-center">
+                      <LatexRenderer latex="W_{n+2} = \sqrt{2} - (n+1)(W_n + W_{n+2})" />
+                    </div>
+                  </div>
+                  
+                  <div className="text-center bg-green-50 p-3 rounded">
+                    <LatexRenderer latex="(n + 2)W_{n+2} + (n + 1)W_n = \sqrt{2}" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">3. Encadrement de Wₙ</strong>
+                <div className="mt-2 space-y-2">
+                  <p>Comme <LatexRenderer latex="W_n" /> est décroissante : <LatexRenderer latex="W_{n+2} \leq W_n" />.</p>
+                  <p>De la relation de récurrence :</p>
+                  <div className="space-y-2">
+                    <div className="text-center">
+                      <LatexRenderer latex="(n+2)W_{n+2} + (n+1)W_n \leq (n+2)W_n + (n+1)W_n = (2n+3)W_n" />
+                    </div>
+                    <div className="text-center">
+                      <LatexRenderer latex="\sqrt{2} \leq (2n+3)W_n \Rightarrow W_n \geq \frac{\sqrt{2}}{2n+3}" />
+                    </div>
+                  </div>
+                  
+                  <p>De même, <LatexRenderer latex="W_n \geq W_{n+2}" /> donne :</p>
+                  <div className="text-center">
+                    <LatexRenderer latex="W_n \leq \frac{\sqrt{2}}{2n-1}" />
+                  </div>
+                  
+                  <div className="text-center bg-green-50 p-3 rounded">
+                    <LatexRenderer latex="\frac{\sqrt{2}}{2n+3} \leq W_n \leq \frac{\sqrt{2}}{2n-1}" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-green-600">4. Comportement asymptotique</strong>
+                <div className="mt-2 space-y-2">
+                  <p>Par le théorème des gendarmes :</p>
+                  <div className="space-y-2">
+                    <div className="text-center">
+                      <LatexRenderer latex="\lim_{n \to +\infty} \frac{\sqrt{2}}{2n+3} = \lim_{n \to +\infty} \frac{\sqrt{2}}{2n-1} = 0" />
+                    </div>
+                  </div>
+                  
+                  <div className="text-center bg-green-50 p-4 rounded border-2 border-green-400">
+                    <LatexRenderer latex="W_n \to 0 \quad \text{et} \quad W_n \sim \frac{\sqrt{2}}{2n}" />
+                  </div>
+                </div>
+              </div>
             </div>
           }
         />

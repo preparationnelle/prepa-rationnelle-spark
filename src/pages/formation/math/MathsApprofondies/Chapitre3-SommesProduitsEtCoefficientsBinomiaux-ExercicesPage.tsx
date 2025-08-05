@@ -15,14 +15,14 @@ const Chapitre3SommesProduitsEtCoefficientsBinomiauxExercicesPage = () => {
     }));
   };
 
-  const DifficultyHeader = ({
-    level,
-    title,
-    icon: Icon,
-  }: {
-    level: string;
-    title: string;
-    icon: any;
+  const DifficultyHeader = ({ 
+    level, 
+    title, 
+    icon: Icon, 
+  }: { 
+    level: string; 
+    title: string; 
+    icon: any; 
   }) => (
     <div className="bg-gradient-to-r from-blue-100 to-blue-50 border-l-4 border-blue-500 p-6 mb-6 rounded-r-lg shadow-sm">
       <div className="flex items-center gap-3">
@@ -36,18 +36,18 @@ const Chapitre3SommesProduitsEtCoefficientsBinomiauxExercicesPage = () => {
     </div>
   );
 
-  const ExerciseCard = ({
-    id,
-    title,
-    content,
-    correction,
-    difficulty
-  }: {
-    id: string;
-    title: string;
-    content: React.ReactNode;
-    correction: React.ReactNode;
-    difficulty: string;
+  const ExerciseCard = ({ 
+    id, 
+    title, 
+    content, 
+    correction, 
+    difficulty 
+  }: { 
+    id: string; 
+    title: string; 
+    content: React.ReactNode; 
+    correction: React.ReactNode; 
+    difficulty: string; 
   }) => (
     <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
       <div className="p-6">
@@ -136,10 +136,47 @@ const Chapitre3SommesProduitsEtCoefficientsBinomiauxExercicesPage = () => {
           title="Exercice 1"
           difficulty="Facile"
           content={
-            <LatexRenderer latex={"\\sum_{k=3}^{n} (2k + 4), \\quad \\text{pour } n \\geq 3"} />
+            <div>
+              <p>Calculer la somme suivante pour <LatexRenderer latex={"n \\geq 3"} /> :</p>
+              <div className="text-center my-4">
+                <LatexRenderer latex={"\\sum_{k=3}^{n} (2k + 4)"} />
+              </div>
+            </div>
           }
           correction={
-            <LatexRenderer latex={"\\begin{aligned} \\sum_{k=3}^{n} (2k + 4) &= 2 \\sum_{k=3}^{n} k + \\sum_{k=3}^{n} 4 \\\\ &= 2\\left( \\sum_{k=0}^{n} k - (0 + 1 + 2) \\right) + 4(n - 2) \\\\ &= 2\\left( \\frac{n(n+1)}{2} - 3 \\right) + 4(n - 2) \\\\ &= n(n+1) + 4n - 14 \\\\ &= n(n + 5) - 14 \\end{aligned}"} />
+            <div className="space-y-4">
+              <div>
+                <strong className="text-blue-600">Décomposition de la somme :</strong>
+                <div className="mt-2 text-center">
+                  <LatexRenderer latex={"\\sum_{k=3}^{n} (2k + 4) = 2 \\sum_{k=3}^{n} k + \\sum_{k=3}^{n} 4"} />
+                </div>
+              </div>
+              <div>
+                <strong className="text-blue-600">Calcul de chaque partie :</strong>
+                <div className="mt-2 space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex={"\\sum_{k=3}^{n} k = \\sum_{k=0}^{n} k - (0 + 1 + 2) = \\frac{n(n+1)}{2} - 3"} />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex={"\\sum_{k=3}^{n} 4 = 4(n - 2)"} />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <strong className="text-blue-600">Résultat final :</strong>
+                <div className="mt-2 space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex={"2\\left( \\frac{n(n+1)}{2} - 3 \\right) + 4(n - 2)"} />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex={"= n(n+1) - 6 + 4n - 8"} />
+                  </div>
+                  <div className="text-center bg-blue-50 p-2 rounded">
+                    <LatexRenderer latex={"= n(n + 5) - 14"} />
+                  </div>
+                </div>
+              </div>
+            </div>
           }
         />
 
@@ -148,10 +185,34 @@ const Chapitre3SommesProduitsEtCoefficientsBinomiauxExercicesPage = () => {
           title="Exercice 2"
           difficulty="Facile"
           content={
-            <LatexRenderer latex={"\\sum_{k=0}^{n} 3^{k+1}, \\quad \\text{pour } n \\in \\mathbb{N}"} />
+            <div>
+              <p>Calculer la somme suivante pour <LatexRenderer latex={"n \\in \\mathbb{N}"} /> :</p>
+              <div className="text-center my-4">
+                <LatexRenderer latex={"\\sum_{k=0}^{n} 3^{k+1}"} />
+              </div>
+            </div>
           }
           correction={
-            <LatexRenderer latex={"\\begin{aligned} \\sum_{k=0}^{n} 3^{k+1} &= 3 \\sum_{k=0}^{n} 3^k \\\\ &= 3 \\cdot \\frac{1 - 3^{n+1}}{1 - 3} \\\\ &= \\frac{3}{2}(3^{n+1} - 1) \\end{aligned}"} />
+            <div className="space-y-4">
+              <div>
+                <strong className="text-blue-600">Factorisation :</strong>
+                <div className="mt-2 text-center">
+                  <LatexRenderer latex={"\\sum_{k=0}^{n} 3^{k+1} = 3 \\sum_{k=0}^{n} 3^k"} />
+                </div>
+              </div>
+              <div>
+                <strong className="text-blue-600">Somme géométrique :</strong>
+                <div className="mt-2 text-center">
+                  <LatexRenderer latex={"\\sum_{k=0}^{n} 3^k = \\frac{1 - 3^{n+1}}{1 - 3} = \\frac{3^{n+1} - 1}{2}"} />
+                </div>
+              </div>
+            <div>
+                <strong className="text-blue-600">Résultat final :</strong>
+                <div className="mt-2 text-center bg-blue-50 p-2 rounded">
+                  <LatexRenderer latex={"\\sum_{k=0}^{n} 3^{k+1} = \\frac{3(3^{n+1} - 1)}{2}"} />
+                </div>
+              </div>
+            </div>
           }
         />
 
@@ -160,10 +221,34 @@ const Chapitre3SommesProduitsEtCoefficientsBinomiauxExercicesPage = () => {
           title="Exercice 3"
           difficulty="Facile"
           content={
-            <LatexRenderer latex={"\\sum_{k=0}^{n} 2^{3k+2}, \\quad \\text{pour } n \\in \\mathbb{N}"} />
+            <div>
+              <p>Calculer la somme suivante pour <LatexRenderer latex={"n \\in \\mathbb{N}"} /> :</p>
+              <div className="text-center my-4">
+                <LatexRenderer latex={"\\sum_{k=0}^{n} 2^{3k+2}"} />
+              </div>
+            </div>
           }
           correction={
-            <LatexRenderer latex={"\\begin{aligned} \\sum_{k=0}^{n} 2^{3k+2} &= 4 \\sum_{k=0}^{n} 8^k \\\\ &= 4 \\cdot \\frac{1 - 8^{n+1}}{1 - 8} \\\\ &= \\frac{4}{7}(8^{n+1} - 1) \\end{aligned}"} />
+            <div className="space-y-4">
+            <div>
+                <strong className="text-blue-600">Factorisation :</strong>
+                <div className="mt-2 text-center">
+                  <LatexRenderer latex={"\\sum_{k=0}^{n} 2^{3k+2} = \\sum_{k=0}^{n} 2^2 \\cdot 2^{3k} = 4 \\sum_{k=0}^{n} (2^3)^k = 4 \\sum_{k=0}^{n} 8^k"} />
+                </div>
+              </div>
+                <div>
+                <strong className="text-blue-600">Somme géométrique :</strong>
+                <div className="mt-2 text-center">
+                  <LatexRenderer latex={"\\sum_{k=0}^{n} 8^k = \\frac{1 - 8^{n+1}}{1 - 8} = \\frac{8^{n+1} - 1}{7}"} />
+                </div>
+                </div>
+                <div>
+                <strong className="text-blue-600">Résultat final :</strong>
+                <div className="mt-2 text-center bg-blue-50 p-2 rounded">
+                  <LatexRenderer latex={"\\sum_{k=0}^{n} 2^{3k+2} = \\frac{4(8^{n+1} - 1)}{7}"} />
+                </div>
+              </div>
+            </div>
           }
         />
 
@@ -172,10 +257,40 @@ const Chapitre3SommesProduitsEtCoefficientsBinomiauxExercicesPage = () => {
           title="Exercice 4"
           difficulty="Facile"
           content={
-            <LatexRenderer latex={"\\sum_{k=0}^{n} \\frac{1}{2^{3k+2}}, \\quad \\text{pour } n \\in \\mathbb{N}"} />
+            <div>
+              <p>Calculer la somme suivante pour <LatexRenderer latex={"n \\in \\mathbb{N}"} /> :</p>
+              <div className="text-center my-4">
+                <LatexRenderer latex={"\\sum_{k=0}^{n} \\frac{1}{2^{3k+2}}"} />
+              </div>
+            </div>
           }
           correction={
-            <LatexRenderer latex={"\\begin{aligned} \\sum_{k=0}^{n} \\frac{1}{2^{3k+2}} &= \\frac{1}{4} \\sum_{k=0}^{n} \\left(\\frac{1}{8}\\right)^k \\\\ &= \\frac{1}{4} \\cdot \\frac{1 - (1/8)^{n+1}}{1 - 1/8} \\\\ &= \\frac{2}{7} \\left(1 - \\left(\\frac{1}{8}\\right)^{n+1} \\right) \\end{aligned}"} />
+            <div className="space-y-4">
+              <div>
+                <strong className="text-blue-600">Réécriture :</strong>
+                <div className="mt-2 text-center">
+                  <LatexRenderer latex={"\\frac{1}{2^{3k+2}} = \\frac{1}{2^2 \\cdot 2^{3k}} = \\frac{1}{4} \\cdot \\frac{1}{8^k}"} />
+                </div>
+              </div>
+              <div>
+                <strong className="text-blue-600">Factorisation :</strong>
+                <div className="mt-2 text-center">
+                  <LatexRenderer latex={"\\sum_{k=0}^{n} \\frac{1}{2^{3k+2}} = \\frac{1}{4} \\sum_{k=0}^{n} \\left(\\frac{1}{8}\\right)^k"} />
+                </div>
+              </div>
+              <div>
+                <strong className="text-blue-600">Somme géométrique :</strong>
+                <div className="mt-2 text-center">
+                  <LatexRenderer latex={"\\sum_{k=0}^{n} \\left(\\frac{1}{8}\\right)^k = \\frac{1 - \\left(\\frac{1}{8}\\right)^{n+1}}{1 - \\frac{1}{8}} = \\frac{8}{7}\\left(1 - \\left(\\frac{1}{8}\\right)^{n+1}\\right)"} />
+                </div>
+              </div>
+              <div>
+                <strong className="text-blue-600">Résultat final :</strong>
+                <div className="mt-2 text-center bg-blue-50 p-2 rounded">
+                  <LatexRenderer latex={"\\sum_{k=0}^{n} \\frac{1}{2^{3k+2}} = \\frac{2}{7}\\left(1 - \\left(\\frac{1}{8}\\right)^{n+1}\\right)"} />
+                </div>
+              </div>
+            </div>
           }
         />
 
@@ -184,10 +299,40 @@ const Chapitre3SommesProduitsEtCoefficientsBinomiauxExercicesPage = () => {
           title="Exercice 5"
           difficulty="Facile"
           content={
-            <LatexRenderer latex={"\\sum_{k=2}^{n} \\frac{-1}{3^k}, \\quad \\text{pour } n \\geq 2"} />
+            <div>
+              <p>Calculer la somme suivante pour <LatexRenderer latex={"n \\geq 2"} /> :</p>
+              <div className="text-center my-4">
+                <LatexRenderer latex={"\\sum_{k=2}^{n} \\frac{-1}{3^k}"} />
+              </div>
+            </div>
           }
           correction={
-            <LatexRenderer latex={"\\begin{aligned} \\sum_{k=2}^{n} \\frac{-1}{3^k} &= - \\left( \\sum_{k=0}^{n} \\left( \\frac{1}{3} \\right)^k - 1 - \\frac{1}{3} \\right) \\\\ &= - \\left( \\frac{1 - (1/3)^{n+1}}{1 - 1/3} - \\frac{4}{3} \\right) \\\\ &= \\frac{1}{2} \\left( \\left( \\frac{1}{3} \\right)^n - \\frac{1}{9} \\right) \\end{aligned}"} />
+            <div className="space-y-4">
+              <div>
+                <strong className="text-blue-600">Factorisation :</strong>
+                <div className="mt-2 text-center">
+                  <LatexRenderer latex={"\\sum_{k=2}^{n} \\frac{-1}{3^k} = -\\sum_{k=2}^{n} \\left(\\frac{1}{3}\\right)^k"} />
+                </div>
+              </div>
+              <div>
+                <strong className="text-blue-600">Décomposition :</strong>
+                <div className="mt-2 text-center">
+                  <LatexRenderer latex={"\\sum_{k=2}^{n} \\left(\\frac{1}{3}\\right)^k = \\sum_{k=0}^{n} \\left(\\frac{1}{3}\\right)^k - 1 - \\frac{1}{3}"} />
+                </div>
+              </div>
+              <div>
+                <strong className="text-blue-600">Somme géométrique :</strong>
+                <div className="mt-2 text-center">
+                  <LatexRenderer latex={"\\sum_{k=0}^{n} \\left(\\frac{1}{3}\\right)^k = \\frac{1 - \\left(\\frac{1}{3}\\right)^{n+1}}{1 - \\frac{1}{3}} = \\frac{3}{2}\\left(1 - \\left(\\frac{1}{3}\\right)^{n+1}\\right)"} />
+                </div>
+              </div>
+              <div>
+                <strong className="text-blue-600">Résultat final :</strong>
+                <div className="mt-2 text-center bg-blue-50 p-2 rounded">
+                  <LatexRenderer latex={"\\sum_{k=2}^{n} \\frac{-1}{3^k} = \\frac{1}{6} - \\frac{1}{2} \\left(\\frac{1}{3}\\right)^{n+1}"} />
+                </div>
+              </div>
+            </div>
           }
         />
 
@@ -196,10 +341,34 @@ const Chapitre3SommesProduitsEtCoefficientsBinomiauxExercicesPage = () => {
           title="Exercice 6"
           difficulty="Facile"
           content={
-            <LatexRenderer latex={"\\sum_{k=0}^{2n} 5^{n+k}, \\quad \\text{pour } n \\in \\mathbb{N}"} />
+            <div>
+              <p>Calculer la somme suivante pour <LatexRenderer latex={"n \\in \\mathbb{N}"} /> :</p>
+              <div className="text-center my-4">
+                <LatexRenderer latex={"\\sum_{k=0}^{2n} 5^{n+k}"} />
+              </div>
+            </div>
           }
           correction={
-            <LatexRenderer latex={"\\begin{aligned} \\sum_{k=0}^{2n} 5^{n+k} &= 5^n \\sum_{k=0}^{2n} 5^k \\\\ &= 5^n \\cdot \\frac{1 - 5^{2n+1}}{1 - 5} \\\\ &= \\frac{5^n (5^{2n+1} - 1)}{4} \\end{aligned}"} />
+            <div className="space-y-4">
+              <div>
+                <strong className="text-blue-600">Factorisation :</strong>
+                <div className="mt-2 text-center">
+                  <LatexRenderer latex={"\\sum_{k=0}^{2n} 5^{n+k} = 5^n \\sum_{k=0}^{2n} 5^k"} />
+                </div>
+              </div>
+              <div>
+                <strong className="text-blue-600">Somme géométrique :</strong>
+                <div className="mt-2 text-center">
+                  <LatexRenderer latex={"\\sum_{k=0}^{2n} 5^k = \\frac{1 - 5^{2n+1}}{1 - 5} = \\frac{5^{2n+1} - 1}{4}"} />
+                </div>
+              </div>
+            <div>
+                <strong className="text-blue-600">Résultat final :</strong>
+                <div className="mt-2 text-center bg-blue-50 p-2 rounded">
+                  <LatexRenderer latex={"\\sum_{k=0}^{2n} 5^{n+k} = \\frac{5^n (5^{2n+1} - 1)}{4}"} />
+                </div>
+              </div>
+            </div>
           }
         />
 
@@ -208,10 +377,45 @@ const Chapitre3SommesProduitsEtCoefficientsBinomiauxExercicesPage = () => {
           title="Exercice 7"
           difficulty="Facile"
           content={
-            <LatexRenderer latex={"\\sum_{k=0}^{n} k(k+1)(k-1), \\quad \\text{pour } n \\in \\mathbb{N}"} />
+            <div>
+              <p>Calculer la somme suivante pour <LatexRenderer latex={"n \\in \\mathbb{N}"} /> :</p>
+              <div className="text-center my-4">
+                <LatexRenderer latex={"\\sum_{k=0}^{n} k(k+1)(k-1)"} />
+              </div>
+            </div>
           }
           correction={
-            <LatexRenderer latex={"\\begin{aligned} \\sum_{k=0}^{n} k(k+1)(k-1) &= \\sum_{k=0}^{n} (k^3 - k) \\\\ &= \\left( \\frac{n(n+1)}{2} \\right)^2 - \\frac{n(n+1)}{2} \\\\ &= \\frac{n(n+1)}{2} \\left( \\frac{n(n+1)}{2} - 1 \\right) \\\\ &= \\frac{n(n+1)(n-1)(n+2)}{4} \\end{aligned}"} />
+            <div className="space-y-4">
+              <div>
+                <strong className="text-blue-600">Développement :</strong>
+                <div className="mt-2 text-center">
+                  <LatexRenderer latex={"k(k+1)(k-1) = k(k^2-1) = k^3 - k"} />
+                </div>
+              </div>
+              <div>
+                <strong className="text-blue-600">Séparation :</strong>
+                <div className="mt-2 text-center">
+                  <LatexRenderer latex={"\\sum_{k=0}^{n} (k^3 - k) = \\sum_{k=0}^{n} k^3 - \\sum_{k=0}^{n} k"} />
+                </div>
+              </div>
+              <div>
+                <strong className="text-blue-600">Formules classiques :</strong>
+                <div className="mt-2 space-y-2">
+                  <div className="text-center">
+                    <LatexRenderer latex={"\\sum_{k=0}^{n} k^3 = \\left(\\frac{n(n+1)}{2}\\right)^2"} />
+                  </div>
+                  <div className="text-center">
+                    <LatexRenderer latex={"\\sum_{k=0}^{n} k = \\frac{n(n+1)}{2}"} />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <strong className="text-blue-600">Résultat final :</strong>
+                <div className="mt-2 text-center bg-blue-50 p-2 rounded">
+                  <LatexRenderer latex={"\\sum_{k=0}^{n} k(k+1)(k-1) = \\frac{n(n+1)(n-1)(n+2)}{4}"} />
+                </div>
+              </div>
+            </div>
           }
         />
 
@@ -230,27 +434,112 @@ const Chapitre3SommesProduitsEtCoefficientsBinomiauxExercicesPage = () => {
             </div>
           }
           correction={
-            <div>
-              <div className="mb-3">
-                <strong>1. Par identification :</strong>
-                <LatexRenderer latex={"\\frac{1}{k+1} - \\frac{1}{k+2} = \\frac{(k+2)-(k+1)}{(k+1)(k+2)} = \\frac{1}{(k+1)(k+2)}"} />
-                <LatexRenderer latex={"\\frac{1}{(k+1)(k+2)} = \\frac{1}{k+1} - \\frac{1}{k+2}"} />
+            <div className="space-y-4">
+              <div>
+                <strong className="text-blue-600">1. Par identification :</strong>
+                <div className="mt-2 space-y-2">
+                  <LatexRenderer latex={"\\frac{1}{k+1} - \\frac{1}{k+2} = \\frac{(k+2)-(k+1)}{(k+1)(k+2)} = \\frac{1}{(k+1)(k+2)}"} />
+                  <LatexRenderer latex={"\\frac{1}{(k+1)(k+2)} = \\frac{1}{k+1} - \\frac{1}{k+2}"} />
+                </div>
               </div>
-              <div className="mb-3">
-                <strong>2. On applique la linéarité de la somme :</strong>
-                <LatexRenderer latex={"\\sum_{k=0}^{98} \\frac{1}{(k+1)(k+2)} = \\sum_{k=0}^{98} \\left( \\frac{1}{k+1} - \\frac{1}{k+2} \\right)"} />
-                <LatexRenderer latex={"= \\left(\\frac{1}{1} - \\frac{1}{2} \\right) + \\left( \\frac{1}{2} - \\frac{1}{3} \\right) + \\cdots + \\left( \\frac{1}{99} - \\frac{1}{100} \\right)"} />
-                <LatexRenderer latex={"= 1 - \\frac{1}{100} = \\frac{99}{100}"} />
+              <div>
+                <strong className="text-blue-600">2. On applique la linéarité de la somme :</strong>
+                <div className="mt-2 space-y-2">
+                  <LatexRenderer latex={"\\sum_{k=0}^{98} \\frac{1}{(k+1)(k+2)} = \\sum_{k=0}^{98} \\left( \\frac{1}{k+1} - \\frac{1}{k+2} \\right)"} />
+                  <LatexRenderer latex={"= \\left(\\frac{1}{1} - \\frac{1}{2} \\right) + \\left( \\frac{1}{2} - \\frac{1}{3} \\right) + \\cdots + \\left( \\frac{1}{99} - \\frac{1}{100} \\right)"} />
+                  <LatexRenderer latex={"= 1 - \\frac{1}{100} = \\frac{99}{100}"} />
+              </div>
               </div>
             </div>
           }
         />
 
+        <ExerciseCard
+          id="ex9"
+          title="Exercice 9"
+          difficulty="Difficile"
+          content={
+            <div>
+              <p>Démontrer par récurrence que pour tout <LatexRenderer latex={"n \\in \\mathbb{N}"} /> :</p>
+              <div className="space-y-2">
+                <div>1. <LatexRenderer latex={"\\sum_{k=0}^{n} k = \\frac{n(n+1)}{2}"} /></div>
+                <div>2. <LatexRenderer latex={"\\sum_{k=0}^{n} k^2 = \\frac{n(n+1)(2n+1)}{6}"} /></div>
+                <div>3. <LatexRenderer latex={"\\sum_{k=0}^{n} k^3 = \\frac{n^2(n+1)^2}{4}"} /></div>
+              </div>
+            </div>
+          }
+          correction={
+            <div className="space-y-6">
+              <div>
+                <strong className="text-blue-600">1. Somme des entiers :</strong>
+                <div className="mt-2 space-y-2">
+                  <p><strong>Initialisation :</strong> Pour n = 0, <LatexRenderer latex={"\\sum_{k=0}^{0} k = 0 = \\frac{0(0+1)}{2}"} /></p>
+                  <p><strong>Hérédité :</strong> Supposons <LatexRenderer latex={"\\sum_{k=0}^{n} k = \\frac{n(n+1)}{2}"} /> vraie.</p>
+                  <LatexRenderer latex={"\\sum_{k=0}^{n+1} k = \\sum_{k=0}^{n} k + (n+1) = \\frac{n(n+1)}{2} + (n+1) = \\frac{n(n+1) + 2(n+1)}{2} = \\frac{(n+1)(n+2)}{2}"} />
+                </div>
+              </div>
+              <div>
+                <strong className="text-blue-600">2. Somme des carrés :</strong>
+                <div className="mt-2 space-y-2">
+                  <p><strong>Initialisation :</strong> Pour n = 0, <LatexRenderer latex={"\\sum_{k=0}^{0} k^2 = 0 = \\frac{0(0+1)(2\\cdot 0+1)}{6}"} /></p>
+                  <p><strong>Hérédité :</strong> Supposons <LatexRenderer latex={"\\sum_{k=0}^{n} k^2 = \\frac{n(n+1)(2n+1)}{6}"} /> vraie.</p>
+                  <LatexRenderer latex={"\\sum_{k=0}^{n+1} k^2 = \\sum_{k=0}^{n} k^2 + (n+1)^2 = \\frac{n(n+1)(2n+1)}{6} + (n+1)^2"} />
+                  <LatexRenderer latex={"= \\frac{n(n+1)(2n+1) + 6(n+1)^2}{6} = \\frac{(n+1)(n(2n+1) + 6(n+1))}{6}"} />
+                  <LatexRenderer latex={"= \\frac{(n+1)(2n^2 + n + 6n + 6)}{6} = \\frac{(n+1)(2n^2 + 7n + 6)}{6}"} />
+                  <LatexRenderer latex={"= \\frac{(n+1)(n+2)(2n+3)}{6} = \\frac{(n+1)((n+1)+1)(2(n+1)+1)}{6}"} />
+                </div>
+              </div>
+              <div>
+                <strong className="text-blue-600">3. Somme des cubes :</strong>
+                <div className="mt-2 space-y-2">
+                  <p><strong>Initialisation :</strong> Pour n = 0, <LatexRenderer latex={"\\sum_{k=0}^{0} k^3 = 0 = \\frac{0^2(0+1)^2}{4}"} /></p>
+                  <p><strong>Hérédité :</strong> Supposons <LatexRenderer latex={"\\sum_{k=0}^{n} k^3 = \\frac{n^2(n+1)^2}{4}"} /> vraie.</p>
+                  <LatexRenderer latex={"\\sum_{k=0}^{n+1} k^3 = \\sum_{k=0}^{n} k^3 + (n+1)^3 = \\frac{n^2(n+1)^2}{4} + (n+1)^3"} />
+                  <LatexRenderer latex={"= \\frac{n^2(n+1)^2 + 4(n+1)^3}{4} = \\frac{(n+1)^2(n^2 + 4(n+1))}{4}"} />
+                  <LatexRenderer latex={"= \\frac{(n+1)^2(n^2 + 4n + 4)}{4} = \\frac{(n+1)^2(n+2)^2}{4} = \\frac{(n+1)^2((n+1)+1)^2}{4}"} />
+                </div>
+              </div>
+            </div>
+          }
+        />
 
-
-
-
-
+        <ExerciseCard
+          id="ex10"
+          title="Exercice 10"
+          difficulty="Difficile"
+          content={
+            <div>
+              <p>Montrer par récurrence les propriétés suivantes :</p>
+              <div className="space-y-2">
+                <div>1. <LatexRenderer latex={"\\forall n \\geq 4, \\quad 2^n \\leq n!"} /></div>
+                <div>2. <LatexRenderer latex={"\\forall x \\geq 0,\\ \\forall n \\in \\mathbb{N},\\ \\ (1 + x)^n \\geq 1 + nx"} /></div>
+              </div>
+            </div>
+          }
+          correction={
+            <div className="space-y-6">
+              <div>
+                <strong className="text-blue-600">1. Inégalité 2^n ≤ n! :</strong>
+                <div className="mt-2 space-y-2">
+                  <p><strong>Initialisation :</strong> Pour n = 4, <LatexRenderer latex={"2^4 = 16 \\leq 24 = 4!"} /></p>
+                  <p><strong>Hérédité :</strong> Supposons <LatexRenderer latex={"2^n \\leq n!"} /> vraie pour n ≥ 4.</p>
+                  <LatexRenderer latex={"2^{n+1} = 2 \\cdot 2^n \\leq 2 \\cdot n! \\leq (n+1) \\cdot n! = (n+1)!"} />
+                  <p>Car n ≥ 4, donc 2 ≤ n+1.</p>
+                </div>
+              </div>
+              <div>
+                <strong className="text-blue-600">2. Inégalité de Bernoulli :</strong>
+                <div className="mt-2 space-y-2">
+                  <p><strong>Initialisation :</strong> Pour n = 0, <LatexRenderer latex={"1 \\geq 1"} /> (égalité).</p>
+                  <p><strong>Hérédité :</strong> Supposons <LatexRenderer latex={"(1 + x)^n \\geq 1 + nx"} /> vraie.</p>
+                  <LatexRenderer latex={"(1 + x)^{n+1} = (1 + x)^n \\cdot (1 + x) \\geq (1 + nx)(1 + x)"} />
+                  <LatexRenderer latex={"= 1 + x + nx + nx^2 = 1 + (n+1)x + nx^2 \\geq 1 + (n+1)x"} />
+                  <p>Car <LatexRenderer latex={"nx^2 \\geq 0"} /> pour x ≥ 0.</p>
+                </div>
+              </div>
+            </div>
+          }
+        />
 
 
 
@@ -263,4 +552,4 @@ const Chapitre3SommesProduitsEtCoefficientsBinomiauxExercicesPage = () => {
   );
 };
 
-export default Chapitre3SommesProduitsEtCoefficientsBinomiauxExercicesPage;
+export default Chapitre3SommesProduitsEtCoefficientsBinomiauxExercicesPage; 

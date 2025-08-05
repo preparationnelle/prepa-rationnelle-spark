@@ -11,6 +11,7 @@ import { routes } from './config/routes';
 import { useRouteValidation } from './hooks/useRouteValidation';
 import ChatWidget from './components/chat/ChatWidget';
 import { Layout } from './components/Layout';
+import { initPostHog } from './integrations/posthog/client';
 
 // Loading component for lazy-loaded pages
 const PageLoader = () => (
@@ -22,6 +23,11 @@ const PageLoader = () => (
 function App() {
   // Initialize route validation in development
   useRouteValidation();
+  
+  // Initialize PostHog analytics
+  useEffect(() => {
+    initPostHog();
+  }, []);
   
   return (
     <AuthProvider>

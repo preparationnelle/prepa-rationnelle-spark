@@ -14,6 +14,12 @@ export const HeroSection = () => {
     setShowWhatsAppModal(false);
   };
 
+  const handleReservationClick = () => {
+    // Lien vers WhatsApp pour réserver le premier cours gratuit
+    const message = encodeURIComponent("Bonjour, je souhaite réserver mon premier cours gratuit !");
+    window.open(`https://wa.me/33609164668?text=${message}`, '_blank');
+  };
+
   const joinWhatsAppGroup = () => {
     window.open('https://chat.whatsapp.com/Lx0UqZQY0607ZeRLGrCY9N?mode=ac_t', '_blank');
   };
@@ -92,21 +98,20 @@ export const HeroSection = () => {
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </Button>
-          <Link to="/formations" className="flex-1 sm:flex-none">
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="w-full sm:w-auto px-6 sm:px-10 py-3 sm:py-6 text-orange-600 border-2 border-orange-500 bg-white/90 backdrop-blur-sm hover:bg-gradient-to-r hover:from-orange-500 hover:to-orange-600 hover:text-white font-bold text-base sm:text-xl rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group relative z-10" 
-              style={{
-                boxShadow: "0 4px 15px rgba(243,108,0,0.1)"
-              }}
-            >
-              <span className="flex items-center gap-2">
-                Découvre nos formations
-                <TrendingUp className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </Button>
-          </Link>
+          <Button 
+            size="lg" 
+            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold text-base sm:text-lg rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border-0 relative overflow-hidden group min-w-fit whitespace-nowrap z-10" 
+            style={{
+              boxShadow: "0 8px 25px rgba(34, 197, 94, 0.3)"
+            }}
+            onClick={handleReservationClick}
+          >
+            <span className="relative z-10 flex items-center gap-2">
+              Réserver mon premier cours gratuit
+              <TrendingUp className="h-5 w-5" />
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </Button>
         </div>
 
         {/* Enhanced Statistics Section */}

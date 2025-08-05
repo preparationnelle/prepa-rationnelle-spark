@@ -1,53 +1,37 @@
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Textarea } from '@/components/ui/textarea';
 import { 
   Languages, 
-  Globe,
-  Mic,
-  Zap
+  Zap,
+  CheckCircle,
+  ArrowRight
 } from 'lucide-react';
 
 export const AutomationsSection = () => {
-  const automations = [
-    {
-      id: 'geopolitics-unified',
-      title: 'Générateur Géopo',
-      description: 'Générez des études ou des fiches de géopolitique automatiquement',
-      icon: <Globe className="h-8 w-8" />,
-      color: 'bg-orange-500',
-      badge: 'Nouveau',
-      badgeColor: 'bg-orange-500 text-white',
-      link: '/generator/geopolitics-unified'
-    },
-    {
-      id: 'languages-unified',
-      title: 'Générateur Langues',
-      description: 'Générez des paragraphes ou corrigez vos thèmes avec IA',
-      icon: <Languages className="h-8 w-8" />,
-      color: 'bg-orange-500',
-      badge: 'Nouveau',
-      badgeColor: 'bg-orange-500 text-white',
-      link: '/generator/languages-unified'
-    },
-    {
-      id: 'orals-unified',
-      title: 'Générateur Oraux',
-      description: 'Générez vos réponses orales ou entraînez-vous avec des questions types',
-      icon: <Mic className="h-8 w-8" />,
-      color: 'bg-orange-500',
-      badge: 'IA',
-      badgeColor: 'bg-black text-white',
-      link: '/generator/orals-unified'
-    }
-  ];
+  const [userTranslation, setUserTranslation] = useState('');
+  const [showResult, setShowResult] = useState(false);
+  const navigate = useNavigate();
 
-  const handleGeneratorClick = (automation: any) => {
-    // Navigation vers la page du générateur
-    window.location.href = automation.link;
+  const sampleSentence = "Les tensions géopolitiques entre la Chine et les États-Unis ont conduit à une révision des politiques commerciales internationales.";
+  const correctTranslation = "The geopolitical tensions between China and the United States have led to a revision of international trade policies.";
+
+  const handleTryTranslation = () => {
+    if (userTranslation.trim()) {
+      setShowResult(true);
+      setTimeout(() => {
+        // Redirection vers le générateur de langues
+        navigate('/generator/languages-unified');
+      }, 2000);
+    }
+  };
+
+  const handleDirectAccess = () => {
+    navigate('/generator/languages-unified');
   };
 
   return (
@@ -57,51 +41,113 @@ export const AutomationsSection = () => {
           <div className="flex justify-center items-center gap-2 mb-4">
             <Zap className="h-8 w-8 text-[#F36C00]" />
             <h2 className="text-4xl md:text-5xl font-bold">
-              Automatisations <span className="text-[#F36C00]">IA</span>
+              Automatisation <span className="text-[#F36C00]">IA</span>
             </h2>
           </div>
           <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto text-lg">
-            Découvrez nos outils d'intelligence artificielle spécialisés qui automatisent votre préparation 
-            et vous font gagner des heures de travail.
+            Découvrez notre outil d'intelligence artificielle spécialisé qui automatise votre préparation 
+            aux thèmes grammaticaux et vous fait gagner des heures de travail.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-8">
-          {automations.map((automation) => (
-            <Card 
-              key={automation.id} 
-              className="group hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-gray-200 bg-white cursor-pointer"
-              onClick={() => handleGeneratorClick(automation)}
-            >
-              <CardHeader className="pb-4 relative">
-                <div className="flex items-start justify-between mb-3">
-                  <div className={`w-16 h-16 ${automation.color} rounded-full flex items-center justify-center text-white`}>
-                    {automation.icon}
-                  </div>
-                  <Badge className={`text-xs ${automation.badgeColor} px-2 py-1 rounded`}>
-                    {automation.badge}
-                  </Badge>
+        <div className="max-w-4xl mx-auto">
+          <Card className="border-2 border-orange-200 bg-gradient-to-br from-orange-50 to-amber-50 shadow-xl">
+            <CardHeader className="text-center pb-6">
+              <div className="flex justify-center items-center gap-4 mb-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center">
+                  <Languages className="h-8 w-8 text-white" />
                 </div>
-                <CardTitle className="text-xl group-hover:text-[#F36C00] transition-colors">
-                  {automation.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                  {automation.description}
+                <Badge className="bg-orange-500 text-white px-3 py-1 text-sm">
+                  Nouveau
+                </Badge>
+              </div>
+              <CardTitle className="text-3xl font-bold text-gray-900 mb-2">
+                Générateur de Thèmes Grammaticaux
+              </CardTitle>
+              <p className="text-gray-600 text-lg">
+                Traduisez des phrases avec correction instantanée et feedback détaillé
+              </p>
+            </CardHeader>
+            
+            <CardContent className="space-y-6">
+              {/* Phrase à traduire */}
+              <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                <h3 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                  🇫🇷 Phrase à traduire en anglais :
+                </h3>
+                <p className="text-gray-700 text-lg leading-relaxed italic">
+                  "{sampleSentence}"
                 </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-[#F36C00] font-medium group-hover:underline">
-                    Essayer maintenant
-                  </span>
-                  <Zap className="h-4 w-4 text-[#F36C00] group-hover:scale-110 transition-transform" />
+              </div>
+
+              {/* Zone de saisie */}
+              <div className="space-y-4">
+                <h3 className="font-semibold text-gray-800 flex items-center gap-2">
+                  🇬🇧 Votre traduction :
+                </h3>
+                <Textarea
+                  value={userTranslation}
+                  onChange={(e) => setUserTranslation(e.target.value)}
+                  placeholder="Tapez votre traduction en anglais ici..."
+                  className="min-h-[80px] border-2 border-orange-200 focus:border-orange-400"
+                />
+              </div>
+
+              {/* Résultat */}
+              {showResult && (
+                <div className="bg-green-50 p-6 rounded-lg border border-green-200 animate-fade-in">
+                  <div className="flex items-center gap-2 mb-3">
+                    <CheckCircle className="h-5 w-5 text-green-600" />
+                    <h3 className="font-semibold text-green-800">Correction :</h3>
+                  </div>
+                  <p className="text-green-700 mb-3">
+                    "{correctTranslation}"
+                  </p>
+                  <p className="text-sm text-green-600">
+                    ✅ Redirection vers l'outil complet dans quelques secondes...
+                  </p>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
+              )}
+
+              {/* Boutons d'action */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Button
+                  onClick={handleTryTranslation}
+                  disabled={!userTranslation.trim() || showResult}
+                  className="flex-1 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white py-3 text-lg font-semibold"
+                >
+                  {showResult ? (
+                    <>
+                      <CheckCircle className="h-5 w-5 mr-2" />
+                      Correction effectuée !
+                    </>
+                  ) : (
+                    <>
+                      <Zap className="h-5 w-5 mr-2" />
+                      Corriger ma traduction
+                    </>
+                  )}
+                </Button>
+                
+                <Button
+                  onClick={handleDirectAccess}
+                  variant="outline"
+                  className="flex-1 border-2 border-orange-500 text-orange-600 hover:bg-orange-50 py-3 text-lg font-semibold"
+                >
+                  Accéder à l'outil complet
+                  <ArrowRight className="h-5 w-5 ml-2" />
+                </Button>
+              </div>
+
+              {/* Call to action */}
+              <div className="text-center pt-4 border-t border-orange-200">
+                <p className="text-sm text-gray-600 mb-2">
+                  📚 Plus de 50 phrases spécialisées • 🎯 Correction détaillée • ⚡ Feedback instantané
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
-
-
       </div>
     </section>
   );
