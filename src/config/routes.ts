@@ -313,6 +313,12 @@ export const routes: RouteConfig[] = [
     title: 'Maths - Intégration sur un segment',
     protected: true
   },
+  {
+    path: '/formation/math/terminale-vers-prepa',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/index')),
+    title: 'Terminale vers la prépa',
+    protected: false
+  },
 
 
   

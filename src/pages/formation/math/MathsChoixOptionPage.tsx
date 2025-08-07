@@ -131,8 +131,34 @@ const MathsChoixOptionPage = () => {
           </Card>
         </div>
         
-        {/* Carte Méthodologie */}
+        {/* Bloc Terminale vers la prépa */}
         <div className="mt-12 max-w-4xl mx-auto">
+          <Card 
+            className="p-6 hover:shadow-lg transition-all duration-200 bg-white cursor-pointer transform hover:-translate-y-1 border-l-4 border-violet-500"
+            onClick={() => navigate('/formation/math/terminale-vers-prepa')}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === 'Enter' && navigate('/formation/math/terminale-vers-prepa')}
+          >
+            <div className="flex flex-col h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-violet-100 rounded-full flex items-center justify-center">
+                  <Calculator className="w-6 h-6 text-violet-600" />
+                </div>
+                <h2 className="text-2xl font-semibold text-violet-700">Terminale → Prépa</h2>
+              </div>
+              <p className="text-gray-600 mb-6 flex-grow">
+                Conseils et ressources pour réussir la transition entre la Terminale et la prépa ECG : méthodes de travail, organisation, et points clés à anticiper en mathématiques.
+              </p>
+              <div className="border border-violet-500 text-violet-700 font-semibold py-3 px-4 rounded-lg text-center hover:bg-violet-50 transition-colors">
+                Découvrir les conseils
+              </div>
+            </div>
+          </Card>
+        </div>
+
+        {/* Carte Méthodologie */}
+        <div className="mt-8 max-w-4xl mx-auto">
           <Card 
             className="p-6 hover:shadow-lg transition-all duration-200 bg-white cursor-pointer transform hover:-translate-y-1 border-l-4 border-orange-500"
             onClick={() => navigate('/formation/maths-methodologie')}

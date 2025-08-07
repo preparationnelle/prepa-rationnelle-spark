@@ -25,10 +25,6 @@ const AttentesConcoursPage = () => {
               Choix option Maths
             </Link>
             <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formation/maths-approfondies" className="hover:text-[#1e3a8a] transition-colors">
-              Maths Approfondies
-            </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
             <Link to="/formation/maths-methodologie" className="hover:text-[#1e3a8a] transition-colors">
               Méthodologie
             </Link>
