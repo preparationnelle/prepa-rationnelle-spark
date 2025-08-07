@@ -71,7 +71,14 @@ const TerminaleVersPrepaPage = () => {
                       Cours
                     </a>
                     <a
-                      href={"#"}
+                      href={
+                        chap.slug === 'calculs' ? "/formation/math/terminale-vers-prepa/calculs-exercices" :
+                        chap.slug === 'fonctions' ? "/formation/math/terminale-vers-prepa/fonctions-exercices" :
+                        chap.slug === 'derivées' ? "/formation/math/terminale-vers-prepa/derivees-exercices" :
+                        chap.slug === 'integrale' ? "/formation/math/terminale-vers-prepa/integrale-exercices" :
+                        chap.slug === 'probabilites' ? "/formation/math/terminale-vers-prepa/probabilites-exercices" :
+                        chap.slug === 'matrice' ? "/formation/math/terminale-vers-prepa/matrice-exercices" : "#"
+                      }
                       className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold py-2 rounded-lg shadow transition-colors"
                     >
                       <Play className="w-5 h-5" />

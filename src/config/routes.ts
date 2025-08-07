@@ -319,6 +319,42 @@ export const routes: RouteConfig[] = [
     title: 'Terminale vers la prépa',
     protected: false
   },
+  {
+    path: '/formation/math/terminale-vers-prepa/calculs-exercices',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre1-Calculs-ExercicesPage')),
+    title: 'Exercices - Chapitre 1 : Calculs',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/fonctions-exercices',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre3-Fonctions-ExercicesPage')),
+    title: 'Exercices - Chapitre 3 : Fonctions',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/derivees-exercices',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre4-Derivees-ExercicesPage')),
+    title: 'Exercices - Chapitre 4 : Dérivées',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/integrale-exercices',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre5-Integrale-ExercicesPage')),
+    title: 'Exercices - Chapitre 5 : Intégrale',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/probabilites-exercices',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre6-Probabilites-ExercicesPage')),
+    title: 'Exercices - Chapitre 6 : Probabilités',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/matrice-exercices',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre7-Matrice-ExercicesPage')),
+    title: 'Exercices - Chapitre 7 : Matrice',
+    protected: false
+  },
 
 
   
