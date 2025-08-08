@@ -5,7 +5,6 @@ import { MessageSquare } from 'lucide-react';
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { QuestionForm } from '@/components/generator/QuestionForm';
 import { ContextualQuestionsForm } from '@/components/generator/ContextualQuestionsForm';
-import { InfoPanel } from '@/components/generator/InfoPanel';
 import { ResponseCard } from '@/components/generator/ResponseCard';
 import { Answer } from '@/components/generator/ResponseTabs';
 
@@ -47,8 +46,8 @@ export const AnswerAutomation: React.FC<AnswerAutomationProps> = ({
   onResetFlow,
 }) => (
   <>
-    <Card className="overflow-hidden border-0 shadow-xl bg-gradient-to-br from-white via-orange-50/30 to-red-50/30 mb-12">
-      <CardHeader className="bg-gradient-to-r from-orange-600 to-red-600 text-white">
+    <Card className="bg-white shadow-sm border border-gray-200 rounded-xl overflow-hidden">
+      <CardHeader className="bg-gradient-to-r from-[#5B3FFF] to-[#FF6B9D] text-white">
         <div className="flex justify-between items-start">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
@@ -58,7 +57,7 @@ export const AnswerAutomation: React.FC<AnswerAutomationProps> = ({
               <CardTitle className="text-2xl font-bold">
                 Générer une nouvelle réponse
               </CardTitle>
-              <CardDescription className="text-orange-100 mt-1">
+              <CardDescription className="text-white/90 mt-1">
                 {!showContextualQuestions 
                   ? "Entrez une question d'entretien pour commencer" 
                   : "Répondez aux questions pour personnaliser votre réponse"}
@@ -69,18 +68,18 @@ export const AnswerAutomation: React.FC<AnswerAutomationProps> = ({
             type="single"
             value={language}
             onValueChange={(value) => value && setLanguage(value as 'fr' | 'en')}
-            className="bg-white/20 backdrop-blur-sm"
+            className="bg-white/20 backdrop-blur-sm rounded-lg"
           >
-            <ToggleGroupItem value="fr" aria-label="Français" className="text-white hover:bg-white/30">
+            <ToggleGroupItem value="fr" aria-label="Français" className="text-white hover:bg-white/30 rounded-l-lg">
               🇫🇷
             </ToggleGroupItem>
-            <ToggleGroupItem value="en" aria-label="English" className="text-white hover:bg-white/30">
+            <ToggleGroupItem value="en" aria-label="English" className="text-white hover:bg-white/30 rounded-r-lg">
               🇬🇧
             </ToggleGroupItem>
           </ToggleGroup>
         </div>
       </CardHeader>
-      <CardContent className="p-8">
+      <CardContent className="p-6">
         {!showContextualQuestions ? (
           <QuestionForm
             question={question}
@@ -119,10 +118,6 @@ export const AnswerAutomation: React.FC<AnswerAutomationProps> = ({
           onResetFlow();
         }}
       />
-    )}
-    
-    {!currentAnswer && !generating && !showContextualQuestions && !generatingQuestions && (
-      <InfoPanel language={language} />
     )}
   </>
 );

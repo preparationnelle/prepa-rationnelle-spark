@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Star, ExternalLink, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -303,19 +304,32 @@ export const SuperprofReviewsSection = () => {
               </div>
             </div>
 
-            <a 
-              href="https://www.superprof.fr/maths-cours-particuliers-maths-colleur-grandes-prepas-parisiennes.html" 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-4 px-8 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="https://www.superprof.fr/maths-cours-particuliers-maths-colleur-grandes-prepas-parisiennes.html" 
+                target="_blank" 
+                rel="noopener noreferrer"
               >
-                Découvrir tous les avis sur Superprof
-                <ExternalLink className="ml-2 h-5 w-5" />
-              </Button>
-            </a>
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-4 px-8 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                >
+                  Découvrir tous les avis sur Superprof
+                  <ExternalLink className="ml-2 h-5 w-5" />
+                </Button>
+              </a>
+              
+              <Link to="/avis">
+                <Button 
+                  variant="outline"
+                  size="lg" 
+                  className="border-2 border-blue-500 text-blue-600 hover:bg-blue-50 font-semibold py-4 px-8 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                >
+                  Voir tous les avis
+                  <Star className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

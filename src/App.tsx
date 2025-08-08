@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoute from './components/ProtectedRoute';
 import TeacherProtectedRoute from './components/teacher/TeacherProtectedRoute';
+import { WhitelistProtectedRoute } from './components/WhitelistProtectedRoute';
 import { ProgressProvider } from './context/ProgressContext';
 import { routes } from './config/routes';
 import { useRouteValidation } from './hooks/useRouteValidation';
@@ -68,6 +69,13 @@ function App() {
                       </Layout>
                     );
                   }
+                  
+                  // Wrap with whitelist protection for all routes
+                  element = (
+                    <WhitelistProtectedRoute>
+                      {element}
+                    </WhitelistProtectedRoute>
+                  );
                   
                   return (
                     <Route 

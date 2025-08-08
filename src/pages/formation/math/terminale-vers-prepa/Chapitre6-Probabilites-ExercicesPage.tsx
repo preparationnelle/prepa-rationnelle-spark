@@ -239,7 +239,7 @@ const Chapitre6ProbabilitesExercicesPage = () => {
                 <strong className="text-green-600">Question 2 : Condition "le premier résultat est 6"</strong>
                 <div className="mt-2 space-y-3">
                   <div>
-                    <p className="mb-2">Si le premier résultat est 6, les cas favorables (somme > 10) sont :</p>
+                                          <p className="mb-2">Si le premier résultat est 6, les cas favorables (somme <span className="inline-block align-middle"><LatexRenderer latex={"> 10"} /></span>) sont :</p>
                     <div className="space-y-1">
                       <div>• <span className="inline-block align-middle"><LatexRenderer latex={"(6,5)"} /></span> : somme = 11</div>
                       <div>• <span className="inline-block align-middle"><LatexRenderer latex={"(6,6)"} /></span> : somme = 12</div>

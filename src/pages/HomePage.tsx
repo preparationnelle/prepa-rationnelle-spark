@@ -31,7 +31,7 @@ const HomePage: React.FC = () => {
 
           <div className="w-full max-w-4xl mx-auto">
               <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                {/* Maths */}
+                {/* Maths - toujours visible */}
                 <Link to="/formation/maths" className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center">
                   <div className="w-14 h-14 bg-yellow-100 rounded-full flex items-center justify-center mb-3">
                     <Calculator className="h-7 w-7 text-yellow-600" />
@@ -40,7 +40,7 @@ const HomePage: React.FC = () => {
                   <p className="text-sm text-gray-500">Maîtrisez tout le programme ECG</p>
                 </Link>
                 
-                {/* Python */}
+                {/* Python - toujours visible */}
                 <Link to="/pourquoi-python-prepa-ecg" className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center">
                   <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-3">
                     <Code className="h-7 w-7 text-blue-600" />
@@ -101,11 +101,11 @@ const HomePage: React.FC = () => {
       {/* Section Offres */}
       <OffersSection />
       
+      {/* Section Générateur IA */}
+      <AutomationsSection />
+      
       {/* Section Témoignages */}
       <SuperprofReviewsSection />
-      
-      {/* Section Automatisations */}
-      <AutomationsSection />
       
       {/* Section Podcast */}
       <PodcastSection />

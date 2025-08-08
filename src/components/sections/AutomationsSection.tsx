@@ -1,152 +1,147 @@
 
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Textarea } from '@/components/ui/textarea';
-import { 
-  Languages, 
-  Zap,
-  CheckCircle,
-  ArrowRight
-} from 'lucide-react';
+import { CheckCircle, TrendingUp, Languages, Globe, Mic } from 'lucide-react';
 
 export const AutomationsSection = () => {
-  const [userTranslation, setUserTranslation] = useState('');
-  const [showResult, setShowResult] = useState(false);
-  const navigate = useNavigate();
-
-  const sampleSentence = "Les tensions géopolitiques entre la Chine et les États-Unis ont conduit à une révision des politiques commerciales internationales.";
-  const correctTranslation = "The geopolitical tensions between China and the United States have led to a revision of international trade policies.";
-
-  const handleTryTranslation = () => {
-    if (userTranslation.trim()) {
-      setShowResult(true);
-      setTimeout(() => {
-        // Redirection vers le générateur de langues
-        navigate('/generator/languages-unified');
-      }, 2000);
-    }
-  };
-
-  const handleDirectAccess = () => {
-    navigate('/generator/languages-unified');
-  };
-
   return (
-    <section className="py-16 px-4">
+    <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white">
       <div className="container mx-auto">
-        <div className="text-center mb-12">
-          <div className="flex justify-center items-center gap-2 mb-4">
-            <Zap className="h-8 w-8 text-[#F36C00]" />
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Automatisation <span className="text-[#F36C00]">IA</span>
-            </h2>
-          </div>
-          <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto text-lg">
-            Découvrez notre outil d'intelligence artificielle spécialisé qui automatise votre préparation 
-            aux thèmes grammaticaux et vous fait gagner des heures de travail.
-          </p>
-        </div>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4">
+          Nos <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">générateurs IA</span>
+        </h2>
+        <p className="text-center text-gray-600 mb-8 sm:mb-12 max-w-2xl mx-auto text-base sm:text-lg">
+          Outils d'intelligence artificielle spécialisés qui automatisent votre préparation et vous font gagner des heures de travail.
+        </p>
         
-        <div className="max-w-4xl mx-auto">
-          <Card className="border-2 border-orange-200 bg-gradient-to-br from-orange-50 to-amber-50 shadow-xl">
-            <CardHeader className="text-center pb-6">
-              <div className="flex justify-center items-center gap-4 mb-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center">
-                  <Languages className="h-8 w-8 text-white" />
-                </div>
-                <Badge className="bg-orange-500 text-white px-3 py-1 text-sm">
-                  Nouveau
-                </Badge>
-              </div>
-              <CardTitle className="text-3xl font-bold text-gray-900 mb-2">
-                Générateur de Thèmes Grammaticaux
-              </CardTitle>
-              <p className="text-gray-600 text-lg">
-                Traduisez des phrases avec correction instantanée et feedback détaillé
-              </p>
-            </CardHeader>
-            
-            <CardContent className="space-y-6">
-              {/* Phrase à traduire */}
-              <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-                <h3 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                  🇫🇷 Phrase à traduire en anglais :
-                </h3>
-                <p className="text-gray-700 text-lg leading-relaxed italic">
-                  "{sampleSentence}"
-                </p>
-              </div>
-
-              {/* Zone de saisie */}
-              <div className="space-y-4">
-                <h3 className="font-semibold text-gray-800 flex items-center gap-2">
-                  🇬🇧 Votre traduction :
-                </h3>
-                <Textarea
-                  value={userTranslation}
-                  onChange={(e) => setUserTranslation(e.target.value)}
-                  placeholder="Tapez votre traduction en anglais ici..."
-                  className="min-h-[80px] border-2 border-orange-200 focus:border-orange-400"
-                />
-              </div>
-
-              {/* Résultat */}
-              {showResult && (
-                <div className="bg-green-50 p-6 rounded-lg border border-green-200 animate-fade-in">
-                  <div className="flex items-center gap-2 mb-3">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
-                    <h3 className="font-semibold text-green-800">Correction :</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
+          {/* Générateur Langue */}
+          <Link to="/generator/languages-unified" className="group">
+            <Card className="h-full bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-green-200 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-green-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <CardHeader className="relative z-10">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
+                    <Languages className="h-6 w-6 text-green-600" />
                   </div>
-                  <p className="text-green-700 mb-3">
-                    "{correctTranslation}"
-                  </p>
-                  <p className="text-sm text-green-600">
-                    ✅ Redirection vers l'outil complet dans quelques secondes...
-                  </p>
+                  <CardTitle className="text-xl group-hover:text-green-600 transition-colors">
+                    Générateur Langue
+                  </CardTitle>
                 </div>
-              )}
-
-              {/* Boutons d'action */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button
-                  onClick={handleTryTranslation}
-                  disabled={!userTranslation.trim() || showResult}
-                  className="flex-1 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white py-3 text-lg font-semibold"
-                >
-                  {showResult ? (
-                    <>
-                      <CheckCircle className="h-5 w-5 mr-2" />
-                      Correction effectuée !
-                    </>
-                  ) : (
-                    <>
-                      <Zap className="h-5 w-5 mr-2" />
-                      Corriger ma traduction
-                    </>
-                  )}
-                </Button>
-                
-                <Button
-                  onClick={handleDirectAccess}
-                  variant="outline"
-                  className="flex-1 border-2 border-orange-500 text-orange-600 hover:bg-orange-50 py-3 text-lg font-semibold"
-                >
-                  Accéder à l'outil complet
-                  <ArrowRight className="h-5 w-5 ml-2" />
-                </Button>
-              </div>
-
-              {/* Call to action */}
-              <div className="text-center pt-4 border-t border-orange-200">
-                <p className="text-sm text-gray-600 mb-2">
-                  📚 Plus de 50 phrases spécialisées • 🎯 Correction détaillée • ⚡ Feedback instantané
+              </CardHeader>
+              <CardContent className="relative z-10">
+                <p className="text-gray-600 mb-4">
+                  Traductions, résumés et entraînement linguistique avec correction instantanée et feedback détaillé.
                 </p>
-              </div>
-            </CardContent>
-          </Card>
+                <div className="space-y-2 mb-4">
+                  <div className="text-sm text-green-600 flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4" />
+                    Paragraphes et thèmes grammaticaux
+                  </div>
+                  <div className="text-sm text-green-600 flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4" />
+                    Correction instantanée
+                  </div>
+                  <div className="text-sm text-green-600 flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4" />
+                    Feedback détaillé
+                  </div>
+                </div>
+                <Button variant="ghost" className="text-green-600 group-hover:bg-green-50 w-full group-hover:scale-105 transition-all duration-300">
+                  <span className="flex items-center gap-2">
+                    Essayer maintenant
+                    <TrendingUp className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Button>
+              </CardContent>
+            </Card>
+          </Link>
+
+          {/* Générateur Géopolitique */}
+          <Link to="/generator/geopolitics-unified" className="group">
+            <Card className="h-full bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-orange-200 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <CardHeader className="relative z-10">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
+                    <Globe className="h-6 w-6 text-orange-600" />
+                  </div>
+                  <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
+                    Générateur Géopolitique
+                  </CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent className="relative z-10">
+                <p className="text-gray-600 mb-4">
+                  Cours structurés et études de cas automatiquement générés pour analyser les enjeux mondiaux.
+                </p>
+                <div className="space-y-2 mb-4">
+                  <div className="text-sm text-orange-600 flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4" />
+                    Contenu géopolitique complet
+                  </div>
+                  <div className="text-sm text-orange-600 flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4" />
+                    Études de cas d'actualité
+                  </div>
+                  <div className="text-sm text-orange-600 flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4" />
+                    Analyses structurées
+                  </div>
+                </div>
+                <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full group-hover:scale-105 transition-all duration-300">
+                  <span className="flex items-center gap-2">
+                    Essayer maintenant
+                    <TrendingUp className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Button>
+              </CardContent>
+            </Card>
+          </Link>
+
+          {/* Générateur Oraux */}
+          <Link to="/generator/oral-unified" className="group">
+            <Card className="h-full bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-purple-200 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <CardHeader className="relative z-10">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
+                    <Mic className="h-6 w-6 text-purple-600" />
+                  </div>
+                  <CardTitle className="text-xl group-hover:text-purple-600 transition-colors">
+                    Générateur Oraux
+                  </CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent className="relative z-10">
+                <p className="text-gray-600 mb-4">
+                  Réponses et préparation d'entretiens avec génération automatique de réponses personnalisées.
+                </p>
+                <div className="space-y-2 mb-4">
+                  <div className="text-sm text-purple-600 flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4" />
+                    Réponses d'entretien
+                  </div>
+                  <div className="text-sm text-purple-600 flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4" />
+                    Questions EM Lyon
+                  </div>
+                  <div className="text-sm text-purple-600 flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4" />
+                    Générateur EDHEC
+                  </div>
+                </div>
+                <Button variant="ghost" className="text-purple-600 group-hover:bg-purple-50 w-full group-hover:scale-105 transition-all duration-300">
+                  <span className="flex items-center gap-2">
+                    Essayer maintenant
+                    <TrendingUp className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Button>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
       </div>
     </section>

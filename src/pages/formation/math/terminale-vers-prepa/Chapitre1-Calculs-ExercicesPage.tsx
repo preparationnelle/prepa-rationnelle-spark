@@ -917,7 +917,7 @@ const Chapitre1CalculsExercicesPage = () => {
                     <div className="ml-4 space-y-1">
                       <div>• <span className="inline-block align-middle"><LatexRenderer latex={"\\ln a + \\ln b = \\ln(ab)"} /></span></div>
                       <div>• <span className="inline-block align-middle"><LatexRenderer latex={"n \\ln a = \\ln(a^n)"} /></span></div>
-                      <div>• <span className="inline-block align-middle"><LatexRenderer latex={"\\ln a = \\ln b \\Longleftrightarrow a = b"} /></span> (pour a, b > 0)</div>
+                                              <div>• <span className="inline-block align-middle"><LatexRenderer latex={"\\ln a = \\ln b \\Longleftrightarrow a = b"} /></span> (pour <span className="inline-block align-middle"><LatexRenderer latex={"a, b > 0"} /></span>)</div>
                     </div>
                   </div>
                   <div>

@@ -6,6 +6,8 @@ const LoginPage = lazy(() => import('../pages/LoginPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 const ContactPage = lazy(() => import('../pages/ContactPage'));
 const GeneratorPage = lazy(() => import('../pages/GeneratorPage'));
+const StageAccompagnementPage = lazy(() => import('../pages/StageAccompagnementPage'));
+const PreRentreePage = lazy(() => import('../pages/offres/PreRentreePage'));
 const PythonArticlePage = lazy(() => import('../pages/formation/Python/PythonArticlePage'));
 const FormationPage = lazy(() => import('../pages/formation/Python/FormationPage'));
 const FormationsOverviewPage = lazy(() => import('../pages/FormationsOverviewPage'));
@@ -152,6 +154,8 @@ export const routes: RouteConfig[] = [
   { path: '/register', component: RegisterPage, title: 'Inscription' },
   { path: '/contact', component: ContactPage, title: 'Contact' },
   { path: '/generator', component: GeneratorPage, title: 'Générateurs IA' },
+  { path: '/stage-accompagnement', component: StageAccompagnementPage, title: 'Stage & Accompagnement' },
+  { path: '/offres/pre-rentree', component: PreRentreePage, title: 'Stage de Pré-entrée' },
   { path: '/python-article', component: PythonArticlePage, title: 'Article Python' },
   { path: '/formation', component: FormationPage, title: 'Formations' },
   { path: '/formations', component: FormationsOverviewPage, title: 'Toutes nos formations' },

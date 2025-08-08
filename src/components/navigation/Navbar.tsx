@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { useRoleAccess } from '@/hooks/useRoleAccess';
@@ -24,7 +24,10 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isFormationsOpen, setIsFormationsOpen] = useState(false);
   const { toast } = useToast();
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const formationsRef = useRef<HTMLDivElement>(null);
 
   // Handle scroll effect
   useEffect(() => {
@@ -90,6 +93,49 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
     }
   };
 
+  // Gestion du hover sur le menu Formations
+  const handleFormationsHover = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+    
+    hoverTimeoutRef.current = setTimeout(() => {
+      setIsFormationsOpen(true);
+    }, 300); // Délai de 300ms avant d'ouvrir
+  };
+
+  const handleFormationsLeave = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+    
+    // Délai avant de fermer pour permettre de naviguer vers le menu
+    hoverTimeoutRef.current = setTimeout(() => {
+      setIsFormationsOpen(false);
+    }, 150);
+  };
+
+  const handleMenuHover = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+  };
+
+  const handleMenuLeave = () => {
+    hoverTimeoutRef.current = setTimeout(() => {
+      setIsFormationsOpen(false);
+    }, 150);
+  };
+
+  // Nettoyage du timeout à la destruction du composant
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+    };
+  }, []);
+
   // Style pour le menu mobile
   const mobileMenuStyle: React.CSSProperties = {
     position: 'fixed',
@@ -121,69 +167,74 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link to="/" className="text-sm font-medium text-foreground hover:text-primary transition px-2 py-1 rounded-md hover:bg-gray-50" onClick={closeMenu}>Accueil</Link>
+            <Link to="/" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Accueil</Link>
             
-            {/* Menu déroulant "Formations" */}
-            <DropdownMenu>
-              <DropdownMenuTrigger className="text-sm font-medium text-foreground hover:text-primary transition flex items-center gap-1 focus:outline-none px-2 py-1 rounded-md hover:bg-gray-50">
+            {/* Menu déroulant "Formations" avec hover */}
+            <div 
+              className="relative"
+              ref={formationsRef}
+              onMouseEnter={handleFormationsHover}
+              onMouseLeave={handleFormationsLeave}
+            >
+              <button className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 flex items-center gap-1 focus:outline-none px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4">
                 Formations
-                <ChevronDown className="h-3 w-3" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="center" className="w-64 bg-popover rounded-lg shadow-lg border p-2">
-                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                  <Link to="/formation/maths" onClick={closeMenu} className="flex items-center gap-3 w-full">
-                    <span className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center"><Calculator className="h-4 w-4 text-yellow-600" /></span>
-                    <span>Maths</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                  <Link to="/pourquoi-python-prepa-ecg" onClick={closeMenu} className="flex items-center gap-3 w-full">
-                    <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center"><Code className="h-4 w-4 text-blue-600" /></span>
-                    <span>Python</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                  <Link to="/formation/anglais" onClick={closeMenu} className="flex items-center gap-3 w-full">
-                    <span className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center"><Languages className="h-4 w-4 text-green-600" /></span>
-                    <span>Anglais</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                  <Link to="/formation/allemand" onClick={closeMenu} className="flex items-center gap-3 w-full">
-                    <span className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center"><Languages className="h-4 w-4 text-red-600" /></span>
-                    <span>Allemand</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                  <Link to="/formation/geopolitique" onClick={closeMenu} className="flex items-center gap-3 w-full">
-                    <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center"><Globe className="h-4 w-4 text-orange-600" /></span>
-                    <span>Géopolitique</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                  <Link to="/methodologie/entretiens-personnalite" onClick={closeMenu} className="flex items-center gap-3 w-full">
-                    <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center"><Users className="h-4 w-4 text-orange-600" /></span>
-                    <span>Entretiens de Personnalité</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator className="my-2" />
-                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                  <Link to="/formations" onClick={closeMenu} className="flex items-center gap-3 w-full">
-                    <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center"><BookOpen className="h-4 w-4 text-primary" /></span>
-                    <span>Toutes nos formations</span>
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                <ChevronDown className={cn("h-3 w-3 transition-transform duration-200", isFormationsOpen && "rotate-180")} />
+              </button>
+              
+              {/* Menu déroulant */}
+              <div 
+                className={cn(
+                  "absolute top-full left-1/2 transform -translate-x-1/2 w-64 bg-white rounded-lg shadow-lg border p-2 transition-all duration-200 z-50",
+                  isFormationsOpen 
+                    ? "opacity-100 translate-y-0 pointer-events-auto" 
+                    : "opacity-0 -translate-y-2 pointer-events-none"
+                )}
+                onMouseEnter={handleMenuHover}
+                onMouseLeave={handleMenuLeave}
+              >
+                {/* Maths - toujours visible */}
+                <Link to="/formation/maths" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center"><Calculator className="h-4 w-4 text-yellow-600" /></span>
+                  <span>Maths</span>
+                </Link>
+                
+                {/* Python - toujours visible */}
+                <Link to="/pourquoi-python-prepa-ecg" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center"><Code className="h-4 w-4 text-blue-600" /></span>
+                  <span>Python</span>
+                </Link>
+                
+                {/* Formations publiques - toujours visibles */}
+                <Link to="/formation/anglais" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center"><Languages className="h-4 w-4 text-green-600" /></span>
+                  <span>Anglais</span>
+                </Link>
+                <Link to="/formation/allemand" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center"><Languages className="h-4 w-4 text-red-600" /></span>
+                  <span>Allemand</span>
+                </Link>
+                <Link to="/formation/geopolitique" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center"><Globe className="h-4 w-4 text-orange-600" /></span>
+                  <span>Géopolitique</span>
+                </Link>
+                <Link to="/methodologie/entretiens-personnalite" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center"><Users className="h-4 w-4 text-orange-600" /></span>
+                  <span>Entretiens de Personnalité</span>
+                </Link>
+                
+                <div className="border-t border-gray-200 my-2"></div>
+                <Link to="/formations" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center"><BookOpen className="h-4 w-4 text-primary" /></span>
+                  <span>Toutes nos formations</span>
+                </Link>
+              </div>
+            </div>
             
-            <Link to="/generator" className="text-sm font-medium text-foreground hover:text-primary transition px-2 py-1 rounded-md hover:bg-gray-50" onClick={closeMenu}>Générateur</Link>
-            <Link to="/apropos" className="text-sm font-medium text-foreground hover:text-primary transition px-2 py-1 rounded-md hover:bg-gray-50" onClick={closeMenu}>À propos</Link>
-            <Link to="/articles" className="text-sm font-medium text-foreground hover:text-primary transition px-2 py-1 rounded-md hover:bg-gray-50" onClick={closeMenu}>Articles</Link>
-            <Link to="/contact" className="text-sm font-medium text-foreground hover:text-primary transition px-2 py-1 rounded-md hover:bg-gray-50" onClick={closeMenu}>Contact</Link>
-            <Link to="/avis" className="text-sm font-medium text-foreground hover:text-primary transition flex items-center gap-1 px-2 py-1 rounded-md hover:bg-gray-50" onClick={closeMenu}>
-              <Star className="h-4 w-4 text-yellow-400" />
-              Avis
-            </Link>
+            <Link to="/generator" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Générateur</Link>
+            <Link to="/apropos" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>À propos</Link>
+            <Link to="/articles" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Articles</Link>
+            <Link to="/contact" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Contact</Link>
+            <Link to="/stage-accompagnement" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Stage & Accompagnement</Link>
             <SearchTrigger />
             
             {/* Liens réseaux sociaux */}
@@ -273,15 +324,12 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
         
         {/* Menu principal en deux colonnes */}
         <div className="grid grid-cols-2 gap-4 mb-6">
-          <Link to="/" className="text-base py-2 border-b border-gray-200 bg-white px-3 rounded-md" onClick={closeMenu}>Accueil</Link>
-          <Link to="/generator" className="text-base py-2 border-b border-gray-200 bg-white px-3 rounded-md" onClick={closeMenu}>Générateur</Link>
-          <Link to="/apropos" className="text-base py-2 border-b border-gray-200 bg-white px-3 rounded-md" onClick={closeMenu}>À propos</Link>
-          <Link to="/articles" className="text-base py-2 border-b border-gray-200 bg-white px-3 rounded-md" onClick={closeMenu}>Articles</Link>
-          <Link to="/contact" className="text-base py-2 border-b border-gray-200 bg-white px-3 rounded-md" onClick={closeMenu}>Contact</Link>
-          <Link to="/avis" className="text-base py-2 border-b border-gray-200 flex items-center gap-2 bg-white px-3 rounded-md" onClick={closeMenu}>
-            <Star className="h-4 w-4 text-primary" />
-            Avis
-          </Link>
+          <Link to="/" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Accueil</Link>
+          <Link to="/generator" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Générateur</Link>
+          <Link to="/apropos" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>À propos</Link>
+          <Link to="/articles" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Articles</Link>
+          <Link to="/contact" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Contact</Link>
+          <Link to="/stage-accompagnement" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Stage & Accompagnement</Link>
         </div>
         
         {/* Titre formations */}

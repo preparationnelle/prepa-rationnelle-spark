@@ -39,22 +39,14 @@ const AnswerGeneratorPage = () => {
   }, [trackPageVisit]);
 
   return (
-    <div className="container mx-auto py-8 px-4 sm:px-6">
-      <div className="text-center mb-8">
-        <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-4">
+    <div className="space-y-6">
+      <div className="text-center mb-6">
+        <h1 className="text-3xl sm:text-4xl font-bold text-[#5B3FFF] mb-4">
           Réponse d'entretien
         </h1>
-        <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mb-6">
+        <p className="text-lg sm:text-xl text-[#333333] max-w-3xl mx-auto">
           Générez des réponses structurées et personnalisées pour vos entretiens de personnalité avec des questions contextuelles adaptées.
         </p>
-        
-        {/* Usage Instructions */}
-        <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r max-w-4xl mx-auto mb-8">
-          <p className="text-sm text-blue-800 font-medium mb-2">💡 Comment l'utiliser :</p>
-          <p className="text-sm text-blue-700">
-            Saisissez votre question d'entretien, puis répondez aux questions contextuelles générées par l'IA. Ces questions vous aideront à identifier vos expériences les plus pertinentes pour créer une réponse personnalisée.
-          </p>
-        </div>
       </div>
 
       <AnswerAutomation
