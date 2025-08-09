@@ -14,15 +14,19 @@ export const isWhitelisted = (email: string | null | undefined): boolean => {
   return WHITELISTED_EMAILS.includes(normalized);
 };
 
-// Pages/sections protégées par liste blanche
+// Pages/sections protégées par liste blanche — un seul mécanisme (Maths & Python)
+// Zones protégées
+// - Exact: '/formation' (page d'entrée Python ECG)
+// - Préfixes: sous-pages Python
+const PROTECTED_EXACT = ['/formation'];
+const PROTECTED_PREFIXES = ['/formation/python-'];
 const WHITELISTED_SECTIONS = [
-  '/formation/math',
-  '/formation/maths',
-  '/formation/python',
+  '/formation/maths-approfondies',
+  '/formation/maths-appliquees',
 ];
 
 export const useWhitelistAccess = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, loading } = useAuth();
   const [hasAccess, setHasAccess] = useState<boolean | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -30,6 +34,12 @@ export const useWhitelistAccess = () => {
     const checkAccess = () => {
       setIsLoading(true);
       
+      // Tant que l'état auth global charge, on attend (évite double sas)
+      if (loading) {
+        setIsLoading(true);
+        return;
+      }
+
       // Si pas d'utilisateur connecté, pas d'accès
       if (!currentUser) {
         setHasAccess(false);
@@ -45,12 +55,28 @@ export const useWhitelistAccess = () => {
     };
 
     checkAccess();
-  }, [currentUser]);
+  }, [currentUser, loading]);
 
   const isSectionProtected = (path: string): boolean => {
     // Normaliser le path (supprimer trailing slash)
     const normalized = path.endsWith('/') && path.length > 1 ? path.slice(0, -1) : path;
-    return WHITELISTED_SECTIONS.some((section) => normalized.startsWith(section));
+
+    // 1) Protection exacte (ne doit PAS attraper '/formations')
+    if (PROTECTED_EXACT.includes(normalized)) {
+      return true;
+    }
+
+    // 2) Protection par préfixe pour toutes les sous-pages Python
+    if (PROTECTED_PREFIXES.some((prefix) => normalized.startsWith(prefix))) {
+      return true;
+    }
+
+    // 3) Protection Maths (préfixe)
+    if (WHITELISTED_SECTIONS.some((section) => normalized.startsWith(section))) {
+      return true;
+    }
+
+    return false;
   };
 
   return {

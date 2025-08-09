@@ -157,6 +157,32 @@ const MathsChoixOptionPage = () => {
           </Card>
         </div>
 
+        {/* Bloc Première → Deuxième année */}
+        <div className="mt-8 max-w-4xl mx-auto">
+          <Card 
+            className="p-6 hover:shadow-lg transition-all duration-200 bg-white cursor-pointer transform hover:-translate-y-1 border-l-4 border-blue-500"
+            onClick={() => navigate('/formation/math/premiere-vers-deuxieme')}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === 'Enter' && navigate('/formation/math/premiere-vers-deuxieme')}
+          >
+            <div className="flex flex-col h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <BookOpen className="w-6 h-6 text-blue-600" />
+                </div>
+                <h2 className="text-2xl font-semibold text-blue-700">Première année → Deuxième année</h2>
+              </div>
+              <p className="text-gray-600 mb-6 flex-grow">
+                Transition vers l'ECG2: révisions d'été, objectifs de rentrée, planning type et ressources clés pour démarrer fort.
+              </p>
+              <div className="border border-blue-500 text-blue-700 font-semibold py-3 px-4 rounded-lg text-center hover:bg-blue-50 transition-colors">
+                Accéder au module
+              </div>
+            </div>
+          </Card>
+        </div>
+
         {/* Carte Méthodologie */}
         <div className="mt-8 max-w-4xl mx-auto">
           <Card 

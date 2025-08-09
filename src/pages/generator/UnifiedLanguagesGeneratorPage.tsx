@@ -305,19 +305,19 @@ const UnifiedLanguagesGeneratorPage = () => {
                       <Eye className="w-4 h-4 mr-2" />
                       Indices
                     </Button>
-                    <Button 
+                <Button 
                       variant="ghost"
                       onClick={() => setShowGlossary(!showGlossary)}
                       className={showGlossary ? 'bg-blue-50 text-blue-700' : ''}
-                    >
+                >
                       <BookOpen className="w-4 h-4 mr-2" />
                       Glossaire
-                    </Button>
+                </Button>
                   </div>
                 </>
               )}
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
 
           {/* Panneau Réponse - seulement pour le thème grammatical */}
           {selectedTool === 'grammar' && (
@@ -344,13 +344,13 @@ const UnifiedLanguagesGeneratorPage = () => {
                     <RotateCcw className="w-4 h-4 mr-2" />
                     Reset
                   </Button>
-                  <Button 
+                <Button 
                     onClick={handleEvaluate}
                     className="bg-orange-500 hover:bg-orange-600 text-white"
-                  >
+                >
                     <CheckCircle className="w-4 h-4 mr-2" />
                     Évaluer
-                  </Button>
+                </Button>
                 </div>
               </CardContent>
             </Card>

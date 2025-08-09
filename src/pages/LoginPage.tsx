@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
+import { supabase } from '@/integrations/supabase/client';
 import { isWhitelisted } from '@/hooks/useWhitelistAccess';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -38,14 +39,27 @@ const LoginPage = () => {
       const hasAccess = isWhitelisted(normalizedEmail);
 
       if (hasAccess) {
+        // Attendre que l'état utilisateur soit bien disponible pour éviter le double sas
+        let tries = 0;
+        let userReady = false;
+        while (tries < 10 && !userReady) {
+          const { data } = await supabase.auth.getUser();
+          if (data.user) {
+            userReady = true;
+            break;
+          }
+          await new Promise(r => setTimeout(r, 100));
+          tries += 1;
+        }
+
         if (next && next.startsWith('/')) {
-          navigate(next);
+          navigate(next, { replace: true });
         } else {
-          navigate('/formation/maths');
+          navigate('/formation/maths-choix', { replace: true });
         }
       } else {
-        const target = next && next.startsWith('/') ? next : '/formation/maths';
-        navigate(`/acces-restreint?next=${encodeURIComponent(target)}`);
+        const target = next && next.startsWith('/') ? next : '/formation/maths-choix';
+        navigate(`/acces-restreint?next=${encodeURIComponent(target)}`, { replace: true });
       }
     } catch (err: any) {
       setError(err.message || 'Une erreur est survenue lors de la connexion.');

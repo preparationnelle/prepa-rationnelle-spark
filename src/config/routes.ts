@@ -47,6 +47,7 @@ const MathsApprofondiesPage = lazy(() => import('../pages/formation/math/MathsAp
 const MathsMethodologiePage = lazy(() => import('../pages/formation/math/MathsMethodologiePage'));
 const MathsChoixOptionPage = lazy(() => import('../pages/formation/math/MathsChoixOptionPage'));
 const MathsLogiquePage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre1-LogiqueEtRaisonnementFondamentaux-CoursPage'));
+const PremiereVersDeuxiemePage = lazy(() => import('../pages/formation/math/premiere-vers-deuxieme/index'));
 
 // Math chapter pages - Semester 1
 const MathsEnsemblesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre2-EnsemblesEtApplications-CoursPage'));
@@ -205,6 +206,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/python-analyse-exercices', component: PythonAnalyseExercicesPage, title: 'Exercices Python Analyse' },
   { path: '/formation/python-probabilites-exercices', component: PythonProbabilitesExercicesPage, title: 'Exercices Python Probabilités' },
   { path: '/formation/maths', component: MathsChoixOptionPage, title: 'Choix option Maths ECG' },
+  { path: '/formation/math/premiere-vers-deuxieme', component: PremiereVersDeuxiemePage, title: 'Première → Deuxième année' },
   { path: '/formation/maths-elements-de-logique', component: MathsLogiquePage, title: 'Chapitre 1 : Logique & raisonnement fondamentaux' },
   { path: '/formation/maths-ensembles', component: MathsEnsemblesPage, title: 'Maths - Ensembles et applications' },
   { path: '/formation/maths-ensembles-et-applications', component: MathsEnsemblesPage, title: 'Maths - Ensembles et applications' },

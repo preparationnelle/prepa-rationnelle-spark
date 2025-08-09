@@ -156,8 +156,10 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
   const isWhitelistedUser = isWhitelisted(currentUser?.email || '');
 
   // Targets for protected sections
-  const mathsHref = isWhitelistedUser ? '/formation/maths' : `/acces-restreint?next=${encodeURIComponent('/formation/maths')}`;
-  const pythonHref = isWhitelistedUser ? '/formation/python-fondamentaux' : `/acces-restreint?next=${encodeURIComponent('/formation/python-fondamentaux')}`;
+  // Navigation: le gating ne s'applique qu'aux pages deep (appro/appli)
+  const mathsHref = '/formation/maths';
+  // Bouton Python doit toujours pointer vers la page d'entrée Cours Python ECG
+  const pythonHref = '/formation';
 
   return (
     <>

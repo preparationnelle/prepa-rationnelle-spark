@@ -15,9 +15,11 @@ const PythonBreadcrumb: React.FC = () => {
   const path = location.pathname;
 
   const getBreadcrumbs = (): BreadcrumbItem[] => {
+    // Structure souhaitée:
+    // Accueil > Toutes les formations > Formation Python ECG > Module X - ... > Exercices (si applicable)
     const items: BreadcrumbItem[] = [
       { label: 'Accueil', href: '/', icon: Home },
-      { label: 'Formation', href: '/formation', icon: BookOpen },
+      { label: 'Toutes les formations', href: '/formations', icon: BookOpen },
       { label: 'Formation Python ECG', href: '/formation', icon: Code }
     ];
 
@@ -84,8 +86,9 @@ const PythonBreadcrumb: React.FC = () => {
   const breadcrumbs = getBreadcrumbs();
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40 mb-6">
-      <div className="flex items-center text-xs text-muted-foreground py-2">
+    <nav className="sticky top-0 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40">
+      <div className="container mx-auto px-4 py-2">
+        <div className="flex items-center text-xs text-muted-foreground">
         {breadcrumbs.map((item, index) => (
           <div key={index} className="flex items-center">
             {index > 0 && <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />}
@@ -111,6 +114,7 @@ const PythonBreadcrumb: React.FC = () => {
             )}
           </div>
         ))}
+        </div>
       </div>
     </nav>
   );

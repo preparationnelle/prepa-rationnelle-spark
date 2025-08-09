@@ -70,7 +70,7 @@ function App() {
                     );
                   }
                   
-                  // Wrap with whitelist protection for all routes
+                  // Wrap with whitelist protection ONCE for all routes (single guard)
                   element = (
                     <WhitelistProtectedRoute>
                       {element}

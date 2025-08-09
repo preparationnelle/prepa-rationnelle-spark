@@ -129,13 +129,13 @@ const MathsApprofondiesPage = () => {
                </CardHeader>
                <CardContent className="p-4 flex-grow flex flex-col justify-between">
                  <div className="flex flex-col sm:flex-row gap-2 mt-auto">
-                   <Link to={chap.slug === 'python' ? '/formation/python' : `/formation/maths-${chap.slug}`} className="w-full">
+                    <Link to={chap.slug === 'python' ? '/formation' : `/formation/maths-${chap.slug}`} className="w-full">
                      <Button variant="default" className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-lg">
                        <BookOpen className="w-4 h-4 mr-2" />
                        Cours
                      </Button>
                    </Link>
-                   <Link to={chap.slug === 'python' ? '/formation/python-exercices' : `/formation/maths-${chap.slug}-exercices`} className="w-full">
+                    <Link to={chap.slug === 'python' ? '/formation/python-exercices' : `/formation/maths-${chap.slug}-exercices`} className="w-full">
                       <Button variant="secondary" className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white shadow-lg">
                        <Play className="w-4 h-4 mr-2" />
                        Exercices

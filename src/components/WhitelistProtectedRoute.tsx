@@ -20,7 +20,7 @@ export const WhitelistProtectedRoute: React.FC<WhitelistProtectedRouteProps> = (
     return <>{children}</>;
   }
 
-  // Pendant le chargement
+  // Pendant le chargement de l'état d'accès, ne pas enchaîner les écrans
   if (isLoading) {
     return (
       <div className="min-h-screen bg-[#F0F8FF] flex items-center justify-center">

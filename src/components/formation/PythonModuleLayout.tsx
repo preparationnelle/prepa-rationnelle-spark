@@ -12,17 +12,17 @@ const PythonModuleLayout: React.FC<PythonModuleLayoutProps> = ({
   showNavigation = true 
 }) => {
   return (
-    <div className="min-h-screen bg-[#F8FAFF] py-8">
-      <div className="max-w-4xl mx-auto px-6">
-        {/* Breadcrumb */}
-        <PythonBreadcrumb />
-        
-        {/* Main Content */}
+    <div className="min-h-screen bg-[#F8FAFF]">
+      {/* Fil d'Ariane global, juste sous la navbar */}
+      <PythonBreadcrumb />
+
+      <div className="max-w-4xl mx-auto px-6 py-8">
+        {/* Contenu principal */}
         <div className="mb-8">
           {children}
         </div>
-        
-        {/* Navigation */}
+
+        {/* Navigation module */}
         {showNavigation && (
           <div className="mt-12">
             <PythonModuleNavigation />

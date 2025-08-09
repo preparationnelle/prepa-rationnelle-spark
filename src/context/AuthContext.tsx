@@ -181,5 +181,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     logout,
   };
 
-  return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
+  // Toujours rendre les enfants; c'est le garde Whitelist qui gère l'accès.
+  // Ne pas masquer l'arbre avec `!loading` pour éviter les états transitoires qui peuvent provoquer un double sas.
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
