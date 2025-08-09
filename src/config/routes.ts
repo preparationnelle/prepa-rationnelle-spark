@@ -3,6 +3,7 @@ import { ComponentType, lazy } from 'react';
 // Lazy load all pages for better performance
 const HomePage = lazy(() => import('../pages/HomePage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
+const AccesRestreintPage = lazy(() => import('../pages/AccesRestreintPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 const ContactPage = lazy(() => import('../pages/ContactPage'));
 const GeneratorPage = lazy(() => import('../pages/GeneratorPage'));
@@ -151,6 +152,7 @@ export const routes: RouteConfig[] = [
   // Main pages
   { path: '/', component: HomePage, title: 'Accueil' },
   { path: '/login', component: LoginPage, title: 'Connexion' },
+  { path: '/acces-restreint', component: AccesRestreintPage, title: 'Accès restreint' },
   { path: '/register', component: RegisterPage, title: 'Inscription' },
   { path: '/contact', component: ContactPage, title: 'Contact' },
   { path: '/generator', component: GeneratorPage, title: 'Générateurs IA' },

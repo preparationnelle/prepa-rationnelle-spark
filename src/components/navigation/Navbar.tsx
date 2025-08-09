@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
+import { isWhitelisted } from '@/hooks/useWhitelistAccess';
 import { useRoleAccess } from '@/hooks/useRoleAccess';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ThemeToggle';
@@ -152,6 +153,12 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
     display: isMenuOpen ? 'block' : 'none'
   };
 
+  const isWhitelistedUser = isWhitelisted(currentUser?.email || '');
+
+  // Targets for protected sections
+  const mathsHref = isWhitelistedUser ? '/formation/maths' : `/acces-restreint?next=${encodeURIComponent('/formation/maths')}`;
+  const pythonHref = isWhitelistedUser ? '/formation/python-fondamentaux' : `/acces-restreint?next=${encodeURIComponent('/formation/python-fondamentaux')}`;
+
   return (
     <>
       <header className={cn(
@@ -192,14 +199,14 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                 onMouseEnter={handleMenuHover}
                 onMouseLeave={handleMenuLeave}
               >
-                {/* Maths - toujours visible */}
-                <Link to="/formation/maths" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                {/* Maths - visible, redirigé si non whitelist */}
+                <Link to={mathsHref} onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
                   <span className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center"><Calculator className="h-4 w-4 text-yellow-600" /></span>
                   <span>Maths</span>
                 </Link>
                 
-                {/* Python - toujours visible */}
-                <Link to="/pourquoi-python-prepa-ecg" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                {/* Python - visible, redirigé si non whitelist */}
+                <Link to={pythonHref} onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
                   <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center"><Code className="h-4 w-4 text-blue-600" /></span>
                   <span>Python</span>
                 </Link>
@@ -337,13 +344,13 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
         
         {/* Formations en deux colonnes */}
         <div className="grid grid-cols-2 gap-3 mb-6">
-          <Link to="/formation/maths" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-white p-2 rounded-md shadow-sm">
+          <Link to={mathsHref} onClick={closeMenu} className="flex flex-col items-center gap-2 bg-white p-2 rounded-md shadow-sm">
             <span className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
               <Calculator className="h-4 w-4 text-primary" />
             </span>
             <span className="text-sm text-center">Maths</span>
           </Link>
-          <Link to="/pourquoi-python-prepa-ecg" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-white p-2 rounded-md shadow-sm">
+          <Link to={pythonHref} onClick={closeMenu} className="flex flex-col items-center gap-2 bg-white p-2 rounded-md shadow-sm">
             <span className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
               <Code className="h-4 w-4 text-primary" />
             </span>

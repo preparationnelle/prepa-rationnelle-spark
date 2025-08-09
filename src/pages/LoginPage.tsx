@@ -1,7 +1,8 @@
 
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
+import { isWhitelisted } from '@/hooks/useWhitelistAccess';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -16,6 +17,7 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,8 +31,22 @@ const LoginPage = () => {
     try {
       setLoading(true);
       await login(email, password);
-      // Rediriger vers la page du générateur après connexion
-      navigate('/generator');
+      // Récupérer ?next= depuis l'URL
+      const params = new URLSearchParams(location.search);
+      const next = params.get('next');
+      const normalizedEmail = email.trim().toLowerCase();
+      const hasAccess = isWhitelisted(normalizedEmail);
+
+      if (hasAccess) {
+        if (next && next.startsWith('/')) {
+          navigate(next);
+        } else {
+          navigate('/formation/maths');
+        }
+      } else {
+        const target = next && next.startsWith('/') ? next : '/formation/maths';
+        navigate(`/acces-restreint?next=${encodeURIComponent(target)}`);
+      }
     } catch (err: any) {
       setError(err.message || 'Une erreur est survenue lors de la connexion.');
     } finally {

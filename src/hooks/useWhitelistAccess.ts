@@ -4,21 +4,25 @@ import { useAuth } from '@/context/AuthContext';
 // Liste blanche des emails autorisés
 const WHITELISTED_EMAILS = [
   'davelkeza61@gmail.com',
-  'dimitrovdimitar556@gmail.com'
+  'dimitrovdimitar556@gmail.com',
 ];
+
+// Helper public pour vérifier un email (normalisé)
+export const isWhitelisted = (email: string | null | undefined): boolean => {
+  if (!email) return false;
+  const normalized = email.trim().toLowerCase();
+  return WHITELISTED_EMAILS.includes(normalized);
+};
 
 // Pages/sections protégées par liste blanche
 const WHITELISTED_SECTIONS = [
   '/formation/math',
-  '/formation/python',
   '/formation/maths',
-  '/formation/python/',
-  '/formation/math/',
-  '/formation/maths/'
+  '/formation/python',
 ];
 
 export const useWhitelistAccess = () => {
-  const { user } = useAuth();
+  const { currentUser } = useAuth();
   const [hasAccess, setHasAccess] = useState<boolean | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -27,35 +31,32 @@ export const useWhitelistAccess = () => {
       setIsLoading(true);
       
       // Si pas d'utilisateur connecté, pas d'accès
-      if (!user) {
+      if (!currentUser) {
         setHasAccess(false);
         setIsLoading(false);
         return;
       }
 
       // Vérifier si l'email est dans la liste blanche
-      const userEmail = user.email?.toLowerCase();
-      const isWhitelisted = WHITELISTED_EMAILS.some(
-        email => email.toLowerCase() === userEmail
-      );
+      const allowed = isWhitelisted(currentUser.email);
 
-      setHasAccess(isWhitelisted);
+      setHasAccess(allowed);
       setIsLoading(false);
     };
 
     checkAccess();
-  }, [user]);
+  }, [currentUser]);
 
   const isSectionProtected = (path: string): boolean => {
-    return WHITELISTED_SECTIONS.some(section => 
-      path.startsWith(section)
-    );
+    // Normaliser le path (supprimer trailing slash)
+    const normalized = path.endsWith('/') && path.length > 1 ? path.slice(0, -1) : path;
+    return WHITELISTED_SECTIONS.some((section) => normalized.startsWith(section));
   };
 
   return {
     hasAccess,
     isLoading,
     isSectionProtected,
-    whitelistedEmails: WHITELISTED_EMAILS
+    whitelistedEmails: WHITELISTED_EMAILS,
   };
 }; 
