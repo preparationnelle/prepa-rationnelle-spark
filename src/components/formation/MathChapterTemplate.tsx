@@ -43,11 +43,9 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
 
       <div className="space-y-8 max-w-5xl mx-auto px-4 py-8">
         {/* Introduction */}
-        <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-purple-50">
+        <Card className="border-0 shadow-lg bg-white">
           <CardHeader className="pb-3">
-            <CardTitle className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Chapitre {chapterNumber} : {chapterTitle}
-            </CardTitle>
+            <CardTitle className="text-3xl font-bold text-[#2D5BFF]">Chapitre {chapterNumber} : {chapterTitle}</CardTitle>
             <p className="text-sm text-slate-600 mt-2 font-medium">
               {description}
             </p>

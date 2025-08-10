@@ -16,6 +16,7 @@ const PourquoiPythonPrepaECGPage = lazy(() => import('../pages/formation/Python/
 const PythonReferencePage = lazy(() => import('../pages/formation/Python/PythonReferencePage'));
 const PythonFlashcardsPage = lazy(() => import('../pages/formation/Python/PythonFlashcardsPage'));
 const PythonExercicesPage = lazy(() => import('../pages/formation/Python/PythonExercicesPage'));
+const PythonQuizPage = lazy(() => import('../pages/formation/Python/PythonQuizPage'));
 const FormationAnglaisPage = lazy(() => import('../pages/FormationAnglaisPage'));
 const FormationAllemandPage = lazy(() => import('../pages/FormationAllemandPage'));
 const DeclinaisonsPage = lazy(() => import('../pages/formation/allemand/DeclinaisonsPage'));
@@ -59,6 +60,8 @@ const MathsIntegrationPage = lazy(() => import('../pages/formation/math/MathsApp
 const MathsPolynomesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre8-Polynomes-CoursPage'));
 const MathsEspacesVectorielsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre9-MatricesEtEspacesVectoriels-CoursPage'));
 const MathsProbabilitesFiniesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre10-ProbabilitesEtConditionnement-CoursPage'));
+// Generic Maths approfondies quiz dispatcher
+const MathsApprofondiesQuizPage = lazy(() => import('../pages/formation/math/MathsApprofondies/MathsApprofondiesQuizPage'));
 
 // Math chapter pages - Semester 2
 const MathsEspacesVectorielsComplementsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre11-ApplicationsLineairesEtStructuresVectorielles-CoursPage'));
@@ -102,6 +105,15 @@ const StorytellingMethodePage = lazy(() => import('../pages/StorytellingMethodeP
 // Articles pages
 const MathsEteControlePage = lazy(() => import('../pages/articles/MathsEteControlePage'));
 const AttentesConcoursPage = lazy(() => import('../pages/articles/AttentesConcoursPage'));
+const CollesDsPage = lazy(() => import('../pages/articles/CollesDsPage'));
+const CarnetErreursPage = lazy(() => import('../pages/articles/CarnetErreursPage'));
+const RoutineMathsBetonPage = lazy(() => import('../pages/articles/RoutineMathsBetonPage'));
+const Planning360Page = lazy(() => import('../pages/articles/Planning360Page'));
+const PlanAntiDecouragementPage = lazy(() => import('../pages/articles/PlanAntiDecouragementPage'));
+const ParticipationActivePage = lazy(() => import('../pages/articles/ParticipationActivePage'));
+const CoursMathsMaitrisePage = lazy(() => import('../pages/articles/CoursMathsMaitrisePage'));
+const ExosClassiquesPage = lazy(() => import('../pages/articles/ExosClassiquesPage'));
+const AnnalesStrategiePage = lazy(() => import('../pages/articles/AnnalesStrategiePage'));
 const EntretienInverseGEMPage = lazy(() => import('../pages/EntretienInverseGEMPage'));
 const CVProjectifPage = lazy(() => import('../pages/CVProjectifPage'));
 
@@ -133,6 +145,8 @@ const UnifiedOralGeneratorPage = lazy(() => import('../pages/generator/UnifiedOr
 
 // Teacher pages
 const TeacherDashboardPage = lazy(() => import('../pages/teacher/TeacherDashboardPage'));
+// User dashboard
+const DashboardPage = lazy(() => import('../pages/DashboardPage'));
 const TeacherCoursesPage = lazy(() => import('../pages/teacher/TeacherCoursesPage'));
 const TeacherCourseDetailPage = lazy(() => import('../pages/teacher/TeacherCourseDetailPage'));
 const TeacherCourseStudentsPage = lazy(() => import('../pages/teacher/TeacherCourseStudentsPage'));
@@ -175,6 +189,7 @@ export const routes: RouteConfig[] = [
   { path: '/articles', component: ArticlesPage, title: 'Conseils & Articles' },
   { path: '/avis', component: AvisPage, title: 'Avis Superprof' },
   { path: '/methodologie/storytelling', component: StorytellingMethodePage, title: 'Méthodologie Storytelling' },
+  { path: '/dashboard', component: DashboardPage, title: 'Mon Tableau de bord', protected: true },
   
   // Protected pages
   
@@ -205,6 +220,26 @@ export const routes: RouteConfig[] = [
   { path: '/formation/python-matrices-exercices', component: PythonMatricesExercicesPage, title: 'Exercices Python Matrices' },
   { path: '/formation/python-analyse-exercices', component: PythonAnalyseExercicesPage, title: 'Exercices Python Analyse' },
   { path: '/formation/python-probabilites-exercices', component: PythonProbabilitesExercicesPage, title: 'Exercices Python Probabilités' },
+  { path: '/formation/python-quiz', component: PythonQuizPage, title: 'Quiz Python' },
+  // Maths approfondies — explicit quiz routes (safer matching than dynamic pattern)
+  { path: '/formation/maths-elements-de-logique-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Éléments de logique', protected: true },
+  { path: '/formation/maths-ensembles-et-applications-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Ensembles et applications', protected: true },
+  { path: '/formation/maths-sommes-produits-coefficients-binomiaux-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Sommes, produits & coefficients binomiaux', protected: true },
+  { path: '/formation/maths-suites-numeriques-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Suites numériques', protected: true },
+  { path: "/formation/maths-fonctions-d-une-variable-reelle-quiz", component: MathsApprofondiesQuizPage, title: "Quiz - Fonctions d'une variable réelle", protected: true },
+  { path: '/formation/maths-derivation-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Dérivation', protected: true },
+  { path: '/formation/maths-integration-sur-un-segment-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Intégration sur un segment', protected: true },
+  { path: '/formation/maths-polynomes-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Polynômes', protected: true },
+  { path: '/formation/maths-matrices-espaces-vectoriels-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Matrices & espaces vectoriels', protected: true },
+  { path: '/formation/maths-probabilites-conditionnement-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Probabilités & conditionnement', protected: true },
+  { path: '/formation/maths-applications-lineaires-structures-vectorielles-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Applications linéaires & structures vectorielles', protected: true },
+  { path: '/formation/maths-comparaison-negligeabilite-equivalence-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Comparaison — négligeabilité & équivalence', protected: true },
+  { path: '/formation/maths-series-numeriques-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Séries numériques', protected: true },
+  { path: '/formation/maths-developpements-limites-formule-de-taylor-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Développements limités & formule de Taylor', protected: true },
+  { path: '/formation/maths-integrales-impropres-criteres-de-convergence-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Intégrales impropres & critères de convergence', protected: true },
+  { path: '/formation/maths-espaces-probabilises-conditionnement-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Espaces probabilisés & conditionnement', protected: true },
+  { path: '/formation/maths-variables-aleatoires-discretes-lois-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Variables aléatoires discrètes & lois', protected: true },
+  { path: '/formation/maths-convergences-theoremes-limites-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Convergences & théorèmes limites', protected: true },
   { path: '/formation/maths', component: MathsChoixOptionPage, title: 'Choix option Maths ECG' },
   { path: '/formation/math/premiere-vers-deuxieme', component: PremiereVersDeuxiemePage, title: 'Première → Deuxième année' },
   { path: '/formation/maths-elements-de-logique', component: MathsLogiquePage, title: 'Chapitre 1 : Logique & raisonnement fondamentaux' },
@@ -222,6 +257,8 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-espaces-vectoriels', component: MathsEspacesVectorielsPage, title: 'Maths - Matrices & espaces vectoriels' },
   { path: '/formation/maths-probabilites-finies', component: MathsProbabilitesFiniesPage, title: 'Maths - Probabilités sur un univers fini' },
   { path: '/formation/maths-probabilites-conditionnement', component: MathsProbabilitesFiniesPage, title: 'Maths - Probabilités & conditionnement' },
+  // Generic catch-all quiz route for maths approfondies chapters (kept for future)
+  { path: '/formation/maths-:slug-quiz', component: MathsApprofondiesQuizPage, title: 'Maths Approfondies - Quiz', protected: true },
   { path: '/formation/maths-applications-lineaires-structures-vectorielles', component: MathsEspacesVectorielsComplementsPage, title: 'Maths - Applications linéaires & structures vectorielles' },
   { path: '/formation/maths-comparaison-negligeabilite-equivalence', component: MathsComparaisonsPage, title: 'Maths - Comparaison — négligeabilité & équivalence' },
   { path: '/formation/maths-series-numeriques', component: MathsSeriesPage, title: 'Maths - Séries numériques' },
@@ -262,6 +299,15 @@ export const routes: RouteConfig[] = [
   // Articles pages
   { path: '/articles/maths-ete-controle', component: MathsEteControlePage, title: 'Un été pour (re)prendre le contrôle en maths' },
   { path: '/articles/attentes-concours', component: AttentesConcoursPage, title: 'Les attentes du concours - Décoder les jurys' },
+  { path: '/articles/colles-ds', component: CollesDsPage, title: 'Prépa ECG : colles & DS' },
+  { path: '/articles/carnet-erreurs', component: CarnetErreursPage, title: 'Carnet d\'erreurs — apprendre de ses erreurs' },
+  { path: '/articles/routine-maths-beton', component: RoutineMathsBetonPage, title: 'Routine maths béton' },
+  { path: '/articles/planning-360', component: Planning360Page, title: 'Intégrer les maths — méthode 360°' },
+  { path: '/articles/plan-anti-decouragement', component: PlanAntiDecouragementPage, title: 'Plan anti‑découragement' },
+  { path: '/articles/participation-active', component: ParticipationActivePage, title: 'Participation active' },
+  { path: '/articles/cours-maths-maitrise', component: CoursMathsMaitrisePage, title: 'Cours maths maîtrisé' },
+  { path: '/articles/exos-classiques', component: ExosClassiquesPage, title: 'Exos classiques' },
+  { path: '/articles/annales-strategie', component: AnnalesStrategiePage, title: 'Dompter les annales' },
   { path: '/entretien-inverse-gem', component: EntretienInverseGEMPage, title: 'L\'entretien inversé à GEM' },
   { path: '/cv-projectif', component: CVProjectifPage, title: 'Guide complet pour réaliser son CV projectif' },
   

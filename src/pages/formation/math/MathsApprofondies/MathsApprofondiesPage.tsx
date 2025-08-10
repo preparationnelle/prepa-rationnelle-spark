@@ -66,9 +66,9 @@ const MathsApprofondiesPage = () => {
 
       <div className="container mx-auto px-4 py-8">
         {/* En-tête */}
-                  <Card className="border-0 shadow-lg bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50 mb-8">
+          <Card className="border-0 shadow-lg bg-white mb-8">
                             <div className="p-8">
-                    <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4">
+                    <h1 className="text-3xl md:text-4xl font-bold text-[#2D5BFF] mb-4">
                       Maths Approfondies
                     </h1>
                     <p className="text-slate-600 text-lg">
@@ -80,29 +80,35 @@ const MathsApprofondiesPage = () => {
         {/* Grille chapitres */}
         <div className="container mx-auto px-4 pb-16">
           {/* Semestre 1 */}
-                                <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent text-center">Chapitres — Semestre 1</h2>
+                                <h2 className="text-2xl font-bold mb-6 text-[#2D5BFF] text-center">Chapitres — Semestre 1</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {SEMESTRE_1.map((chap) => (
-              <Card key={chap.id} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 flex flex-col overflow-hidden border border-gray-100">
-                <CardHeader className="flex flex-row items-center gap-4 p-4 bg-gradient-to-r from-purple-50 to-blue-50">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
+               <Card key={chap.id} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 flex flex-col overflow-hidden border border-gray-100">
+                <CardHeader className="flex flex-row items-center gap-4 p-4 bg-gradient-to-r from-orange-50 to-orange-100">
+                  <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center shadow-lg">
                     {chap.icon && <chap.icon className="h-6 w-6 text-white" />}
                   </div>
                   <div>
-                    <Badge className="mb-1 bg-gradient-to-r from-purple-500 to-blue-600 text-white border-0 shadow-sm">Chapitre {chap.id}</Badge>
+                    <Badge className="mb-1 bg-orange-500 text-white border-0 shadow-sm">Chapitre {chap.id}</Badge>
                     <CardTitle className="text-md font-bold text-gray-800 leading-tight">{chap.title}</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent className="p-4 flex-grow flex flex-col justify-between">
                   <div className="flex flex-col sm:flex-row gap-2 mt-auto">
                     <Link to={`/formation/maths-${chap.slug}`} className="w-full">
-                      <Button variant="default" className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white shadow-lg">
+                      <Button variant="default" className="w-full h-11 rounded-xl bg-slate-900 hover:bg-slate-800 text-white transition-colors">
                         <BookOpen className="w-4 h-4 mr-2" />
                         Cours
                       </Button>
                     </Link>
+                    <Link to={`/formation/maths-${chap.slug}-quiz`} className="w-full">
+                      <Button variant="outline" className="w-full h-11 rounded-xl border-slate-300 text-slate-800 hover:bg-slate-900 hover:text-white transition-colors">
+                        <Target className="w-4 h-4 mr-2" />
+                        Quiz
+                      </Button>
+                    </Link>
                     <Link to={`/formation/maths-${chap.slug}-exercices`} className="w-full">
-                       <Button variant="secondary" className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white shadow-lg">
+                       <Button variant="outline" className="w-full h-11 rounded-xl border-slate-300 text-slate-800 hover:bg-slate-900 hover:text-white transition-colors">
                         <Play className="w-4 h-4 mr-2" />
                         Exercices
                       </Button>
@@ -114,29 +120,35 @@ const MathsApprofondiesPage = () => {
           </div>
 
                     {/* Semestre 2 */}
-          <h2 className="text-2xl font-bold mt-12 mb-6 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent text-center">Chapitres — Semestre 2</h2>
+          <h2 className="text-2xl font-bold mt-12 mb-6 text-[#2D5BFF] text-center">Chapitres — Semestre 2</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {SEMESTRE_2.map((chap) => (
                <Card key={chap.id} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 flex flex-col overflow-hidden border border-gray-100">
-               <CardHeader className="flex flex-row items-center gap-4 p-4 bg-gradient-to-r from-indigo-50 to-purple-50">
-                 <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+               <CardHeader className="flex flex-row items-center gap-4 p-4 bg-gradient-to-r from-orange-50 to-orange-100">
+                 <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center shadow-lg">
                    {chap.icon && <chap.icon className="h-6 w-6 text-white" />}
                  </div>
                  <div>
-                   <Badge className="mb-1 bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-0 shadow-sm">Chapitre {chap.id}</Badge>
+                   <Badge className="mb-1 bg-orange-500 text-white border-0 shadow-sm">Chapitre {chap.id}</Badge>
                    <CardTitle className="text-md font-bold text-gray-800 leading-tight">{chap.title}</CardTitle>
                  </div>
                </CardHeader>
                <CardContent className="p-4 flex-grow flex flex-col justify-between">
                  <div className="flex flex-col sm:flex-row gap-2 mt-auto">
                     <Link to={chap.slug === 'python' ? '/formation' : `/formation/maths-${chap.slug}`} className="w-full">
-                     <Button variant="default" className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-lg">
+                     <Button variant="default" className="w-full h-11 rounded-xl bg-slate-900 hover:bg-slate-800 text-white transition-colors">
                        <BookOpen className="w-4 h-4 mr-2" />
                        Cours
                      </Button>
                    </Link>
+                    <Link to={chap.slug === 'python' ? '/formation/python-quiz' : `/formation/maths-${chap.slug}-quiz`} className="w-full">
+                      <Button variant="outline" className="w-full h-11 rounded-xl border-slate-300 text-slate-800 hover:bg-slate-900 hover:text-white transition-colors">
+                        <Target className="w-4 h-4 mr-2" />
+                        Quiz
+                      </Button>
+                    </Link>
                     <Link to={chap.slug === 'python' ? '/formation/python-exercices' : `/formation/maths-${chap.slug}-exercices`} className="w-full">
-                      <Button variant="secondary" className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white shadow-lg">
+                      <Button variant="outline" className="w-full h-11 rounded-xl border-slate-300 text-slate-800 hover:bg-slate-900 hover:text-white transition-colors">
                        <Play className="w-4 h-4 mr-2" />
                        Exercices
                      </Button>

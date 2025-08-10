@@ -28,6 +28,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
+  // Local recorder to avoid using context-dependent hooks here
+  const recordActivity = async (type: 'login' | 'logout', userId?: string) => {
+    try {
+      const uid = userId || currentUser?.id;
+      if (!uid) return;
+      await supabase.from('user_activity_history').insert({
+        user_id: uid,
+        activity_type: type
+      });
+    } catch (e) {
+      console.error('Failed to record auth activity', e);
+    }
+  };
 
   useEffect(() => {
     console.log("Setting up auth state listener");
@@ -108,6 +121,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       
       // Track login event
       posthog.capture('user_logged_in');
+      // Save activity for user dashboard
+      try { await recordActivity('login', data.user?.id); } catch {}
       
       toast({
         title: "Connexion réussie",
@@ -137,6 +152,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       // Track logout event before the user is logged out
       posthog.capture('user_logged_out');
+      try { await recordActivity('logout'); } catch {}
       
       // Always clear local state first to ensure UI updates even if request fails
       const { error } = await supabase.auth.signOut();

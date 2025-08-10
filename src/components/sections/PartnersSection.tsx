@@ -62,6 +62,8 @@ export const PartnersSection = () => {
               <img 
                 src={partner.logo} 
                 alt={partner.alt} 
+                loading="lazy"
+                decoding="async"
                 className="h-16 w-auto object-contain mb-2"
               />
               <span className="text-base text-primary text-center">{partner.name}</span>

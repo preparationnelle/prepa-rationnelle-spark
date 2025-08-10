@@ -8,13 +8,112 @@ import { Home, ChevronRight, Target, ArrowRight, BookOpen, Play, CheckCircle2 } 
 const METHODOLOGIE_ARTICLES = [
   {
     id: 'attentes-concours',
-    title: 'Les attentes du concours ?',
+    title: '1. Les attentes du concours',
     description: 'Décoder les attentes des jurys et optimiser votre stratégie de préparation',
     icon: <Target className="h-6 w-6" />,
     color: 'bg-white',
     borderColor: 'border-orange-200',
     textColor: 'text-orange-700',
     link: '/articles/attentes-concours',
+    badge: 'Article'
+  },
+  {
+    id: 'colles-ds',
+    title: '2. Prépa ECG : colles & DS – le combo gagnant',
+    description: "S'organiser, exploiter le feedback et progresser à l'écrit comme à l'oral",
+    icon: <BookOpen className="h-6 w-6" />,
+    color: 'bg-white',
+    borderColor: 'border-orange-200',
+    textColor: 'text-orange-700',
+    link: '/articles/colles-ds',
+    badge: 'Article'
+  },
+  {
+    id: 'carnet-erreurs',
+    title: '3. Apprendre de ses erreurs : le carnet d\'erreurs',
+    description: 'Méthode structurée pour transformer vos erreurs en points aux concours',
+    icon: <CheckCircle2 className="h-6 w-6" />,
+    color: 'bg-white',
+    borderColor: 'border-orange-200',
+    textColor: 'text-orange-700',
+    link: '/articles/carnet-erreurs',
+    badge: 'Article'
+  },
+  {
+    id: 'routine-maths-beton',
+    title: '4. Routine maths béton : discipline et clarté',
+    description: 'Construire une routine simple et efficace pour des progrès réguliers',
+    icon: <BookOpen className="h-6 w-6" />,
+    color: 'bg-white',
+    borderColor: 'border-orange-200',
+    textColor: 'text-orange-700',
+    link: '/articles/routine-maths-beton',
+    badge: 'Article'
+  },
+  {
+    id: 'planning-360',
+    title: '5. Intégrer les maths dans un planning chargé — méthode 360°',
+    description: 'Répartir intelligemment les maths ECG avec les autres matières',
+    icon: <Target className="h-6 w-6" />,
+    color: 'bg-white',
+    borderColor: 'border-orange-200',
+    textColor: 'text-orange-700',
+    link: '/articles/planning-360',
+    badge: 'Article'
+  },
+  {
+    id: 'plan-anti-decouragement',
+    title: '6. Résister quand les maths deviennent dures : plan anti‑découragement',
+    description: 'Régularité, objectifs clairs et analyse pour rebondir',
+    icon: <CheckCircle2 className="h-6 w-6" />,
+    color: 'bg-white',
+    borderColor: 'border-orange-200',
+    textColor: 'text-orange-700',
+    link: '/articles/plan-anti-decouragement',
+    badge: 'Article'
+  },
+  {
+    id: 'participation-active',
+    title: '7. Dominer le cours : participation active, notes qui grimpent',
+    description: 'Transformer 50 minutes de cours en maîtrise réelle',
+    icon: <BookOpen className="h-6 w-6" />,
+    color: 'bg-white',
+    borderColor: 'border-orange-200',
+    textColor: 'text-orange-700',
+    link: '/articles/participation-active',
+    badge: 'Article'
+  },
+  {
+    id: 'cours-maths-maitrise',
+    title: '8. Cours maths maîtrisé = notes boostées',
+    description: 'Apprendre, comprendre et ancrer les 20 chapitres efficacement',
+    icon: <BookOpen className="h-6 w-6" />,
+    color: 'bg-white',
+    borderColor: 'border-orange-200',
+    textColor: 'text-orange-700',
+    link: '/articles/cours-maths-maitrise',
+    badge: 'Article'
+  },
+  {
+    id: 'exos-classiques',
+    title: '9. Domptez les exos classiques — doublez votre progression',
+    description: 'Boucle efficace pour ancrer rigueur, vitesse et créativité',
+    icon: <CheckCircle2 className="h-6 w-6" />,
+    color: 'bg-white',
+    borderColor: 'border-orange-200',
+    textColor: 'text-orange-700',
+    link: '/articles/exos-classiques',
+    badge: 'Article'
+  },
+  {
+    id: 'annales-strategie',
+    title: '10. Dompter les annales — quand, pourquoi, comment',
+    description: 'Méthode sous contrainte de temps pour transformer les acquis en points',
+    icon: <Target className="h-6 w-6" />,
+    color: 'bg-white',
+    borderColor: 'border-orange-200',
+    textColor: 'text-orange-700',
+    link: '/articles/annales-strategie',
     badge: 'Article'
   }
 ];
