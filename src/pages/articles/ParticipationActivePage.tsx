@@ -36,29 +36,85 @@ const ParticipationActivePage = () => {
             </div>
           </CardHeader>
           <CardContent className="p-8 prose prose-lg max-w-none">
-            <h3>Introduction</h3>
-            <p>Imaginez-vous en cours de maths ECG : le prof démontre un théorème complexe, et vous notez frénétiquement sans vraiment capter. À la sortie, vous avez un script parfait, mais zéro compréhension — un piège courant en prépa ECG qui mène à des révisions interminables et des notes moyennes.</p>
+            <div className="space-y-8">
+              {/* Introduction */}
+              <div className="bg-pink-50 p-6 rounded-lg border-l-4 border-pink-400">
+                <h3 className="text-xl font-bold text-pink-800 mb-3">Introduction</h3>
+                <p className="text-pink-900/80">
+                  Imaginez-vous en cours de maths ECG : le prof démontre un théorème complexe, et vous notez frénétiquement sans vraiment capter. À la sortie, vous avez un script parfait, mais zéro compréhension — un piège courant qui mène à des révisions interminables et des notes moyennes.
+                </p>
+              </div>
 
-            <h3>Le problème : passivité en cours, le frein majeur</h3>
-            <p>En prépa ECG, les cours maths filent vite : démonstrations en chaîne, exercices basiques zappés, et vous voilà à scripter sans pause. Résultat ? Vous ne comprenez pas les démos, accumulez des blocages, et perdez du temps précieux sur des exos trop durs non adaptés. Pire, vous n'osez pas poser de questions.</p>
+              {/* Problème */}
+              <div className="bg-pink-100 p-6 rounded-lg border-l-4 border-pink-500">
+                <h3 className="text-xl font-bold text-pink-900 mb-3">Le problème : passivité en cours, le frein majeur</h3>
+                <p className="text-pink-900/80 mb-2">
+                  Les cours filent vite : démonstrations en chaîne, exercices basiques zappés, et vous voilà à scripter sans pause. Résultat ? Démonstrations mal comprises, blocages récurrents, et temps perdu sur des exos trop durs.
+                </p>
+                <p className="text-pink-900/80">
+                  Pire, ne pas oser poser de questions entretient ces lacunes et empêche de progresser au rythme attendu en prépa ECG.
+                </p>
+              </div>
 
-            <h3>La solution : soyez actif en cours pour progresser</h3>
-            <p>C'est pas une question de génie, mais de méthode et d'organisation. Tirez le max du cours en arrivant préparé, interagissant, et sortant au niveau des top étudiants.</p>
+              {/* Solution */}
+              <div className="bg-pink-50 p-6 rounded-lg border-l-4 border-pink-400">
+                <h3 className="text-xl font-bold text-pink-800 mb-3">La solution : participation active et organisation</h3>
+                <p className="text-pink-900/80">
+                  Pas une question de génie, mais de méthode. Arrivez préparé, participez pendant le cours, puis consolidez immédiatement après pour transformer la passivité en maîtrise.
+                </p>
+              </div>
 
-            <h3>1. Préparez-vous avant le cours pour gagner du temps</h3>
-            <p>Arrivez avec vos points de blocage identifiés. Relisez le chapitre précédent : notez 2–3 questions sur les bases ou exos simples. Cela libère du temps en cours pour les démos complexes. Allouez 20–30 min pré-cours ; intégrez à votre routine maths ECG.</p>
+              {/* Stratégies détaillées */}
+              <div className="space-y-6">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                  <h4 className="text-lg font-bold text-pink-900 mb-3 flex items-center gap-2">
+                    <span className="bg-pink-100 text-pink-700 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">1</span>
+                    Préparez-vous avant le cours pour gagner du temps
+                  </h4>
+                  <div className="space-y-3">
+                    <p className="text-gray-700">Identifiez 2–3 questions sur les bases ou exos simples en relisant le chapitre précédent. 20–30 minutes suffisent pour libérer du temps en cours sur les démos complexes.</p>
+                  </div>
+                </div>
 
-            <h3>2. Soyez actif pendant le cours : posez et participez</h3>
-            <p>Ne scriptez pas tout — engagez-vous. Posez vos questions : si une démo bloque, levez la main : "Comment relie-t-on ça au théorème précédent ?" Interagissez : reformulez une idée. Évitez le piège : ne copiez pas mécaniquement ; notez clés et liens. Passez de 10% à 50% de maîtrise en une heure.</p>
+                <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                  <h4 className="text-lg font-bold text-pink-900 mb-3 flex items-center gap-2">
+                    <span className="bg-pink-100 text-pink-700 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">2</span>
+                    Soyez actif pendant le cours : posez et participez
+                  </h4>
+                  <div className="space-y-3">
+                    <p className="text-gray-700">Ne scriptez pas tout : engagez-vous. Posez vos questions, reformulez une idée, notez les liens entre résultats. Vous pouvez passer de 10% à 50% de maîtrise en une heure.</p>
+                  </div>
+                </div>
 
-            <h3>3. Organisez post-cours pour consolider et progresser</h3>
-            <p>Après, mettez un temps limite : 45 min pour revoir notes, corriger blocages, et tester un exo simple. Notez erreurs dans un carnet ; reliez aux démos comprises en cours. Visez 15 de moyenne en DS et 18+ aux concours BCE en appliquant ça toute l'année.</p>
+                <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                  <h4 className="text-lg font-bold text-pink-900 mb-3 flex items-center gap-2">
+                    <span className="bg-pink-100 text-pink-700 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">3</span>
+                    Organisez le post-cours pour consolider
+                  </h4>
+                  <div className="space-y-3">
+                    <p className="text-gray-700">Fixez 45 minutes pour revoir vos notes, corriger les blocages et tester un exercice simple. Notez les erreurs dans un carnet et reliez-les aux démos vues en cours.</p>
+                  </div>
+                </div>
 
-            <h3>4. Surmontez les barrières mentales</h3>
-            <p>Ne vous sentez pas illégitime — poser questions est pro. C'est une question de méthode : organisez pour avoir le temps, et tout se passe bien. Si frustré par des exos inadaptés, revenez aux bases actives en cours.</p>
+                <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                  <h4 className="text-lg font-bold text-pink-900 mb-3 flex items-center gap-2">
+                    <span className="bg-pink-100 text-pink-700 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">4</span>
+                    Surmontez les barrières mentales
+                  </h4>
+                  <div className="space-y-3">
+                    <p className="text-gray-700">Poser des questions est professionnel. Organisez votre temps pour les poser au bon moment. Si les exos paraissent inadaptés, revenez aux bases travaillées activement en cours.</p>
+                  </div>
+                </div>
+              </div>
 
-            <h3>Conclusion</h3>
-            <p>Être actif en cours maths ECG — préparer blocages, poser questions, interagir — transforme passivité en maîtrise. Organisation clé : arrivez prêt, engagez-vous, consolidez post-cours pour passer de 10% à 50% compréhension. Pas de génie requis, juste méthode pour progresser, viser 15 en DS et 18+ aux concours BCE.</p>
+              {/* Conclusion */}
+              <div className="bg-pink-50 p-6 rounded-lg border-l-4 border-pink-400">
+                <h3 className="text-xl font-bold text-pink-800 mb-3">Conclusion</h3>
+                <p className="text-pink-900/80">
+                  Participation active = maîtrise réelle : préparez les blocages, posez vos questions, consolidez immédiatement. Avec cette méthode, viser 15 en DS et 18+ aux concours BCE devient réaliste.
+                </p>
+              </div>
+            </div>
           </CardContent>
         </Card>
       </div>

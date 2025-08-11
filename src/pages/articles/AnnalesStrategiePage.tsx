@@ -36,32 +36,78 @@ const AnnalesStrategiePage = () => {
             </div>
           </CardHeader>
           <CardContent className="p-8 prose prose-lg max-w-none">
-            <h3>Introduction</h3>
-            <p>« Faire des annales sans chrono, c'est s'entraîner sans adversaire. » Les annales ne sont pas de simples sujets "en plus" : elles font passer votre préparation du laboratoire à l'arène. Mal utilisées, elles épuisent et découragent ; exploitées au bon moment, elles transforment vos acquis en points réels.</p>
+            <div className="space-y-8">
+              {/* Introduction */}
+              <div className="bg-green-50 p-6 rounded-lg border-l-4 border-green-400">
+                <h3 className="text-xl font-bold text-green-800 mb-3">Introduction</h3>
+                <p className="text-green-900/80">« Faire des annales sans chrono, c'est s'entraîner sans adversaire. » Bien utilisées, elles transforment vos acquis en points ; mal exploitées, elles épuisent pour peu de progrès.</p>
+              </div>
 
-            <h3>Le problème : annales mal utilisées, un gaspillage</h3>
-            <p>En prépa ECG, l'envie de "s'entraîner pour de vrai" pousse à enchaîner annales BCE dès la première année, souvent sans fondations. Vous donnez tout en colle ou DS, bachotez des sujets complexes, mais progressez peu — pourquoi ? Sans continuité dans la difficulté, vous ratez attentes jury : rigueur, gestion temps, et priorisation questions.</p>
+              {/* Problème */}
+              <div className="bg-green-100 p-6 rounded-lg border-l-4 border-green-500">
+                <h3 className="text-xl font-bold text-green-900 mb-3">Le problème : annales mal utilisées, un gaspillage</h3>
+                <p className="text-green-900/80">Se lancer trop tôt, sans bases ni continuité dans la difficulté, fait rater les attentes des jurys : rigueur, gestion du temps, priorisation des questions.</p>
+              </div>
 
-            <h3>La solution : quand, pourquoi et comment travailler les annales</h3>
-            <p>Intégrez annales BCE progressivement, comme continuité après cours et exos. Focalisez sur attentes exactes, préparation mentale, chrono réel, et gestion épreuve — toujours noter erreurs dans un carnet.</p>
+              {/* Solution */}
+              <div className="bg-green-50 p-6 rounded-lg border-l-4 border-green-400">
+                <h3 className="text-xl font-bold text-green-800 mb-3">La solution : timing, objectifs, contrainte de temps</h3>
+                <p className="text-green-900/80">Intégrez les annales progressivement après cours et exercices, sous chrono réel, en notant systématiquement les erreurs dans un carnet.</p>
+              </div>
 
-            <h3>1. Quand commencer : pas trop tôt, pour une progression logique</h3>
-            <p>Évitez annales en début prépa ECG ; priorisez exos classiques pour bases. Fin première année : après assimilation cours et exercices d'application, débutez avec accessibles : EDHEC (moyenne 10–11/20, questions standard). Deuxième année, dès février : intensifiez : passez à EM Lyon (équilibrée, moyenne 10,4/20), puis parisiennes (HEC-ESSEC, 40–54% suffit pour 20/20).</p>
+              {/* Stratégies détaillées */}
+              <div className="space-y-6">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                  <h4 className="text-lg font-bold text-green-900 mb-3 flex items-center gap-2">
+                    <span className="bg-green-100 text-green-700 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">1</span>
+                    Quand commencer : pas trop tôt
+                  </h4>
+                  <p className="text-gray-700">Début de prépa : priorité aux exercices classiques. Fin de première année, démarrez par EDHEC (questions standard). En deuxième année (dès février), enchaînez EM Lyon puis parisiennes (HEC‑ESSEC).</p>
+                </div>
 
-            <h3>2. Pourquoi les travailler : quatre bénéfices clés</h3>
-            <ul>
-              <li><strong>Voir attentes exactes</strong> : format questions, thèmes récurrents (algèbre linéaire, probas ECG), et rigueur jury.</li>
-              <li><strong>Être prêt mentalement</strong> : habituez à pression ; apprenez réfléchir long (HEC) ou multi-exercices (EDHEC).</li>
-              <li><strong>Se chronométrer en temps réel</strong> : gérez 3–4h ; traitez beaucoup questions sans bloquer.</li>
-              <li><strong>Apprendre gérer épreuve</strong> : survol rapide pour prioriser.</li>
-            </ul>
-            <p>Toujours noter erreurs : carnet pour éviter répétitions, crucial BCE.</p>
+                <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                  <h4 className="text-lg font-bold text-green-900 mb-3 flex items-center gap-2">
+                    <span className="bg-green-100 text-green-700 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">2</span>
+                    Pourquoi les travailler : 4 bénéfices clés
+                  </h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h5 className="font-semibold text-gray-800 mb-2">Voir attentes exactes</h5>
+                      <p className="text-gray-700 text-sm">Format, thèmes récurrents et niveau de rigueur.</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h5 className="font-semibold text-gray-800 mb-2">Préparation mentale</h5>
+                      <p className="text-gray-700 text-sm">Gérer la pression et la longueur des sujets.</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h5 className="font-semibold text-gray-800 mb-2">Chrono réel</h5>
+                      <p className="text-gray-700 text-sm">Traiter un maximum de questions sans bloquer.</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h5 className="font-semibold text-gray-800 mb-2">Gestion d'épreuve</h5>
+                      <p className="text-gray-700 text-sm">Survol, priorisation, et rédaction claire.</p>
+                    </div>
+                  </div>
+                </div>
 
-            <h3>3. Comment les travailler : sous contrainte temps, efficacement</h3>
-            <p>Simulez conditions : calme, chrono strict. Pas de groupe au début — solo pour autonomie. Commencez accessibles : EDHEC pour questions classiques ; analysez corrigés profs. Passez progressif : EM Lyon pour équilibre ; parisiennes pour réflexion poussée. Survol épreuve (5–10 min) : identifiez faciles/chronophages, priorisez. Pour difficiles : listez "ce qu'on a" (données), "ce qu'on veut" (résultat) ; rédigez clair.</p>
+                <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                  <h4 className="text-lg font-bold text-green-900 mb-3 flex items-center gap-2">
+                    <span className="bg-green-100 text-green-700 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">3</span>
+                    Comment les travailler efficacement
+                  </h4>
+                  <div className="space-y-3">
+                    <p className="text-gray-700">Simulez les conditions réelles : calme, durée stricte, solo au début. Commencez par EDHEC, analysez les corrigés, puis augmentez la difficulté.</p>
+                    <p className="text-gray-700">Survol d'épreuve 5–10 min : repérez rapides vs chronophages, priorisez. Pour une question difficile : listez « ce qu'on a » et « ce qu'on veut », rédigez proprement.</p>
+                  </div>
+                </div>
+              </div>
 
-            <h3>Conclusion</h3>
-            <p>Travailler annales BCE en prépa ECG exige timing précis : fin première année pour accessibles (EDHEC), intensification deuxième pour difficiles (parisiennes). Pourquoi ? Pour attentes jury, préparation temps réel, lacunes corrigées, confiance gagnée. Comment ? Survol priorisation, rédaction rigoureuse, analyse erreurs — toujours carnet à jour.</p>
+              {/* Conclusion */}
+              <div className="bg-green-50 p-6 rounded-lg border-l-4 border-green-400">
+                <h3 className="text-xl font-bold text-green-800 mb-3">Conclusion</h3>
+                <p className="text-green-900/80">Timing progressif, travail sous chrono, priorisation et carnet d'erreurs : la recette pour convertir vos acquis en points dès les prochains sujets d'annales.</p>
+              </div>
+            </div>
           </CardContent>
         </Card>
       </div>

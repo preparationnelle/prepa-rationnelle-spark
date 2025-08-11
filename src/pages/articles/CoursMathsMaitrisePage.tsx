@@ -36,29 +36,66 @@ const CoursMathsMaitrisePage = () => {
             </div>
           </CardHeader>
           <CardContent className="p-8 prose prose-lg max-w-none">
-            <h3>Introduction</h3>
-            <p>« Sans cours solide, pas de points, pas d'école ». En prépa ECG, le cours de maths est l'ossature de vos futures réussites : définitions, théorèmes et démonstrations nourrissent chaque exercice concours. Pourtant, trop d'étudiants pensent « réviser » en feuilletant leurs notes sans jamais se tester.</p>
+            <div className="space-y-8">
+              {/* Introduction */}
+              <div className="bg-sky-50 p-6 rounded-lg border-l-4 border-sky-400">
+                <h3 className="text-xl font-bold text-sky-800 mb-3">Introduction</h3>
+                <p className="text-sky-900/80">« Sans cours solide, pas de points, pas d'école ». Le cours de maths est l'ossature de vos réussites : définitions, théorèmes et démos nourrissent chaque exercice concours.</p>
+              </div>
 
-            <h3>Le problème : bachoter le cours sans vraie maîtrise</h3>
-            <p>En prépa ECG, le cours maths représente le socle : sans lui, exercices et annales BCE deviennent un calvaire. Pourtant, trop d'étudiants se contentent d'une lecture passive, copiant démos sans les saisir, ou sautant directement aux exos complexes. Résultat ? Erreurs récurrentes et compréhension approximative qui s'ancre durablement.</p>
+              {/* Problème */}
+              <div className="bg-sky-100 p-6 rounded-lg border-l-4 border-sky-500">
+                <h3 className="text-xl font-bold text-sky-900 mb-3">Le problème : bachoter sans vraie maîtrise</h3>
+                <p className="text-sky-900/80">Lecture passive, copies des démos, saut direct aux exos difficiles : erreurs récurrentes et compréhension approximative qui s'ancre durablement.</p>
+              </div>
 
-            <h3>La solution : méthode pas-à-pas pour travailler le cours efficacement</h3>
-            <p>Priorisez la compréhension active. Voici un plan concret pour maîtriser le cours maths ECG, en intégrant exercices et révisions espacées.</p>
+              {/* Solution */}
+              <div className="bg-sky-50 p-6 rounded-lg border-l-4 border-sky-400">
+                <h3 className="text-xl font-bold text-sky-800 mb-3">La solution : méthode pas‑à‑pas pour travailler le cours</h3>
+                <p className="text-sky-900/80">Priorisez la compréhension active et l'entraînement progressif. Voici un plan concret.</p>
+              </div>
 
-            <h3>1. Soyez actif en cours et prenez des notes de qualité</h3>
-            <p>Commencez par l'évidence : concentration maximale. Posez des questions sur les points obscurs — "Pourquoi cette hypothèse dans le TVI ?" — pour une compréhension partielle immédiate. Utilisez couleurs pour hypothèses, marges pour annotations. Reformulez les définitions en vos mots ; cela ancre dès le départ. Reliez notions : matrices à applications linéaires, pour éviter réapprentissages.</p>
+              {/* Stratégies détaillées */}
+              <div className="space-y-6">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                  <h4 className="text-lg font-bold text-sky-900 mb-3 flex items-center gap-2">
+                    <span className="bg-sky-100 text-sky-700 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">1</span>
+                    Soyez actif en cours et prenez des notes de qualité
+                  </h4>
+                  <p className="text-gray-700">Posez des questions ciblées, reformulez définitions, utilisez codes couleur pour hypothèses et conclusions, reliez les notions entre chapitres.</p>
+                </div>
 
-            <h3>2. Relisez et comprenez le cours post-séance</h3>
-            <p>Relisez attentivement le soir même : une, deux fois si besoin. Focalisez sur démos clés — pas toutes à mémoriser, mais à comprendre pour intuition. Réécrivez-les ; identifiez utilité des hypothèses. Utilisez exemples classiques. Reliez chapitres : probas à intégrales ECG. Cela passe de 10% à 50% compréhension rapidement.</p>
+                <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                  <h4 className="text-lg font-bold text-sky-900 mb-3 flex items-center gap-2">
+                    <span className="bg-sky-100 text-sky-700 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">2</span>
+                    Relisez et comprenez le cours post‑séance
+                  </h4>
+                  <p className="text-gray-700">Le soir même : focalisez sur démos clés. Réécrivez-les, identifiez le rôle des hypothèses, connectez avec des exemples standards.</p>
+                </div>
 
-            <h3>3. Apprenez en faisant : refaites exos et applications</h3>
-            <p>Apprenez le cours via exercices, pas isolément. Refaites exos du cours : listez idées, rédigez sans correction. Comparez : analysez pourquoi vous bloquez — point cours oublié ? Commencez par simples pour ancrer. Écrivez points cours utilisés ; vérifiez rigorisme. Prenez temps pour rédiger nouvelles notions 100% correctement.</p>
+                <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                  <h4 className="text-lg font-bold text-sky-900 mb-3 flex items-center gap-2">
+                    <span className="bg-sky-100 text-sky-700 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">3</span>
+                    Apprenez en faisant : exos d'application
+                  </h4>
+                  <p className="text-gray-700">Refaites les exos du cours sans correction, puis comparez. Notez explicitement les points de cours utilisés et soignez la rédaction.</p>
+                </div>
 
-            <h3>4. Testez et révisez : binôme, flashcards et répétition espacée</h3>
-            <p>Une fois les bases posées, testez-vous. En binôme : travaillez avec un ami ; posez questions : "Définition matrice inversible ?" Renforce automatismes, comble lacunes. Flashcards : sur notions clés ; révisez hebdo pour répétition espacée. Fin chapitre, fiche ciblée : définitions reformulées, théorèmes essentiels, exemples/contre-exemples.</p>
+                <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                  <h4 className="text-lg font-bold text-sky-900 mb-3 flex items-center gap-2">
+                    <span className="bg-sky-100 text-sky-700 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">4</span>
+                    Testez et révisez : binôme, flashcards, répétition espacée
+                  </h4>
+                  <p className="text-gray-700">Travaillez en binôme pour questions rapides, créez des flashcards sur les notions clés et planifiez des révisions hebdomadaires.</p>
+                </div>
+              </div>
 
-            <h3>Conclusion</h3>
-            <p>Maîtriser le cours maths ECG avec participation active, relecture approfondie, pratique via exercices et tests réguliers transforme vos lacunes en automatismes solides. Boostez vos notes aux concours BCE en comprenant pour retenir, pas en bachotant mécaniquement.</p>
+              {/* Conclusion */}
+              <div className="bg-sky-50 p-6 rounded-lg border-l-4 border-sky-400">
+                <h3 className="text-xl font-bold text-sky-800 mb-3">Conclusion</h3>
+                <p className="text-sky-900/80">Comprendre pour retenir : participation active, relecture ciblée, pratique d'application et tests réguliers transforment les lacunes en automatismes solides pour les concours BCE.</p>
+              </div>
+            </div>
           </CardContent>
         </Card>
       </div>

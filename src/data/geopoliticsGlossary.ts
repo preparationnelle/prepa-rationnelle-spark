@@ -1,0 +1,296 @@
+export interface GeopoliticsGlossaryItem {
+  term: string;
+  definition: string;
+}
+
+export const geopoliticsGlossary: GeopoliticsGlossaryItem[] = [
+  {
+    term: 'Gendarmes du monde',
+    definition:
+      "Terme lié à l'hyperpuissance: après la guerre froide, les USA dominent tous les domaines (hégémon) et endossent la charge de l'ordre mondial comme un empire de fait.",
+  },
+  { term: 'Désindustrialisation', definition: "Diminution de la part de l'industrie dans le PIB et l'emploi." },
+  { term: 'Ordre', definition: "Par opposition au désordre; suppose une stabilité et des règles partagées." },
+  { term: 'Mobilités', definition: 'Ensemble des déplacements temporaires liés au travail.' },
+  { term: 'Migration', definition: 'Changement de résidence impliquant un déplacement durable.' },
+  {
+    term: 'Bidonville',
+    definition:
+      "Habitat précaire sans services urbains associés et sans titre de propriété.",
+  },
+  {
+    term: 'Balkanisation',
+    definition:
+      "Processus de division d'un ensemble territorial/politique en entités plus petites, souvent en conflit les unes avec les autres.",
+  },
+  {
+    term: 'Dividende démographique',
+    definition:
+      "Phase de transition démographique où les actifs sont nombreux, la natalité faible et la population âgée encore limitée — favorable à la croissance.",
+  },
+  {
+    term: 'Quart monde',
+    definition:
+      "Population des pays développés vivant sous le seuil de pauvreté, souvent invisibilisée dans les débats.",
+  },
+  {
+    term: 'Révolution verte',
+    definition:
+      "Politiques agricoles (surtout au Sud) visant à accroître la productivité pour atteindre l'autosuffisance. Nehru, 1947: « tout peut attendre sauf l'agriculture ».",
+  },
+  {
+    term: 'Sous-développement',
+    definition:
+      "Situation des PMA marquée par pauvreté de masse, fortes inégalités, insécurité alimentaire/sanitaire/environnementale (Sylvie Brunel).",
+  },
+  {
+    term: 'Diplomatie',
+    definition:
+      "Art de représenter un État auprès d'un autre pour régler les différends sans recourir à la force.",
+  },
+  {
+    term: 'Superpuissance',
+    definition:
+      "Nation au rayonnement économique, culturel, politique et militaire prééminent. Pendant la GF: USA et URSS.",
+  },
+  {
+    term: 'Hyperpuissance',
+    definition:
+      "Védrine: domination globale des États‑Unis après la GF, incluant un puissant soft power.",
+  },
+  {
+    term: 'Hégémonie',
+    definition:
+      "Suprématie permettant de diriger les affaires (sens antique); une seule puissance véritablement hégémonique à la fois.",
+  },
+  {
+    term: 'Leadership',
+    definition:
+      "Prépondérance et initiative revendiquées (ex. Obama); domination volontaire, non imposée.",
+  },
+  { term: 'Impérialisme', definition: "Politique d'un État visant à placer d'autres sous dépendance politique/économique." },
+  { term: 'Islamisme', definition: "Idéologie politique prônant un État fondé sur l'islam (droit, institutions, économie)." },
+  {
+    term: 'Soft power (Joseph Nye)',
+    definition:
+      "Capacité d'influence par la persuasion (entreprises, culture, individus) plutôt que par la force.",
+  },
+  {
+    term: 'DIT / NDIT',
+    definition:
+      "Spécialisations fondées sur les avantages comparatifs; la NDIT traduit l'industrialisation au Sud tandis que le Nord monte en gamme (vol d'oies sauvages, Akamatsu).",
+  },
+  {
+    term: 'DIPP / Chaînes de valeur',
+    definition:
+      "Division internationale des processus de production: modularisation, sous‑traitance et circulation de composants vers divers lieux d'assemblage.",
+  },
+  { term: 'Dragons asiatiques', definition: 'Corée du Sud, Taïwan, Hong Kong, Singapour — trajectoires d’industrialisation rapide.' },
+  {
+    term: "Droit d'asile",
+    definition:
+      "DUDH 1948, art. 14: toute personne persécutée a le droit de chercher et de bénéficier de l'asile.",
+  },
+  { term: 'Hard power', definition: "Pouvoir de contrainte/coercition d'un État." },
+  { term: 'Économie', definition: 'Production, distribution, échange et consommation de richesses (biens et services).' },
+  {
+    term: 'Économie collaborative',
+    definition:
+      "Échanges de biens/services entre particuliers via plateformes (ex. LeBonCoin, BlaBlaCar).",
+  },
+  { term: 'Économie informelle', definition: "Activités rémunératrices hors contrôle de l'État (statut variable selon les pays)." },
+  {
+    term: 'Émergence',
+    definition:
+      "Pays connaissant une croissance et un développement rapides via insertion accrue dans la mondialisation (pluralité de critères).",
+  },
+  { term: "État d'urgence", definition: "Régime d'exception renforçant les pouvoirs publics en cas d'atteinte grave à l'ordre public." },
+  { term: 'État islamique', definition: "Organisation terroriste prétendant établir un État fondé sur l'islam avec assise territoriale." },
+  { term: 'Risque', definition: "Capacité sans volonté: potentiel de nuisance non actualisé." },
+  { term: 'Menace', definition: "Capacité + volonté: danger actualisé." },
+  { term: 'Environnement', definition: "Ensemble des éléments physiques et humains en interaction constituant le cadre de vie." },
+  { term: 'Écologie', definition: "Science des relations homme/environnement; aujourd'hui aussi action de préservation." },
+  { term: 'Empreinte écologique', definition: "Surface nécessaire pour produire et absorber les rejets d'une population." },
+  { term: 'Guerre (Sun Tzu)', definition: "Art de soumettre l'ennemi sans combattre." },
+  { term: 'Grande récession', definition: 'Expression de Paul Krugman pour la récession post‑2008.' },
+  {
+    term: "Fin de l'histoire (F. Fukuyama, 1992)",
+    definition:
+      "Thèse d'un triomphe planétaire de la démocratie libérale après la GF (controversée).",
+  },
+  {
+    term: "Financiarisation de l'économie",
+    definition:
+      "Montée du poids des activités financières dans le PIB via dérèglementation et innovation financière.",
+  },
+  { term: 'Flux', definition: "Somme des échanges effectués par divers acteurs de l'économie." },
+  {
+    term: 'Fonds vautours',
+    definition:
+      "Institutions rachetant à bas prix des dettes d'États/entreprises pour imposer des restructurations et en tirer profit.",
+  },
+  {
+    term: 'Syndrome hollandais',
+    definition:
+      "Lien entre exploitation de ressources et déclin manufacturier/compétitivité (ex. gaz aux Pays‑Bas).",
+  },
+  { term: 'Smart power', definition: "Combinaison intelligente du hard et du soft power (Obama, Clinton)." },
+  { term: 'Puissance (une)', definition: "Entité (État, FTN...) disposant de moyens d'action et d'influence." },
+  {
+    term: 'Sharp power',
+    definition:
+      "Pouvoir de manipulation/désinformation pour influencer des opinions étrangères (Nye).",
+  },
+  { term: 'Crise (Gramsci)', definition: "Quand l'ancien monde meurt et que le nouveau tarde à paraître." },
+  {
+    term: 'Guerre économique (Ali Laïdi)',
+    definition:
+      'Stratégie économique agressive d’un État/entreprise visant des parts de marché ou la puissance.',
+  },
+  { term: 'Unipolaire', definition: 'Système international dominé par un seul centre.' },
+  {
+    term: 'Ordre westphalien',
+    definition:
+      "Relations entre États souverains aux frontières linéaires; principe de non‑ingérence (1648).",
+  },
+  { term: 'Unilatéralisme', definition: "Décision de la puissance dominante selon son seul intérêt." },
+  { term: 'Polylatéralisme', definition: "Gouvernance associant États, ONG, FTN et institutions internationales." },
+  { term: 'Protectionnisme', definition: "Mesures pour protéger un marché (tarifaires ou non)." },
+  { term: 'Pôle / Centre / Nœud', definition: "Pôle: attire les flux; centre: concentre activités; nœud: connecte les flux." },
+  { term: 'Capitalisme', definition: 'Régime fondé sur le profit, la propriété privée et la libre circulation des biens/services.' },
+  { term: 'Libre‑échange', definition: "Libéralisation des échanges par la réduction/suppression des barrières douanières." },
+  { term: 'Guerre des monnaies', definition: "Jeux sur les parités pour gagner en compétitivité externe." },
+  { term: 'Cryptomonnaies', definition: 'Monnaies virtuelles utilisables sur réseaux informatiques, non souveraines.' },
+  { term: 'Globalisation financière', definition: 'Marché planétaire des devises et capitaux.' },
+  { term: 'Désintermédiation', definition: "Accès direct des acteurs aux marchés sans passer par les banques." },
+  { term: 'Dérèglementation', definition: "Libération des mouvements de capitaux et assouplissement des contrôles." },
+  { term: 'Décloisonnement', definition: 'Intégration des marchés financiers en un marché mondial.' },
+  { term: 'Libéralisme', definition: `Doctrine politique (limitation des pouvoirs de l'État, primat des libertés) et doctrine économique (non‑intervention de l'État, promotion du libre‑échange).` },
+  { term: 'Marché financier', definition: `Marché où États et entreprises se financent via l'émission de titres négociables; alternative aux crédits bancaires.` },
+  { term: 'Action', definition: `Titre représentant une part du capital d'une entreprise; sa valeur dépend de l'offre et la demande.` },
+  { term: 'Obligation', definition: `Titre de dette émis par un État ou une entreprise, négocié sur le marché obligataire.` },
+  { term: 'Devises', definition: `Monnaies échangées entre banques; instrument majeur de politique monétaire.` },
+  { term: 'Jour du dépassement', definition: `Date à partir de laquelle l'humanité a consommé toutes les ressources que la Terre peut régénérer en un an.` },
+  { term: 'Krach boursier', definition: `Effondrement des cours, souvent lié à l'explosion d'une bulle financière.` },
+  { term: 'Choc des civilisations (S. Huntington, 1996)', definition: `Vision des relations internationales structurées par 8 grandes civilisations; thèse très controversée.` },
+  { term: 'Consensus de Washington (1989)', definition: `Paquet de réformes (BM/FMI/FED) promouvant la libéralisation dans les PED via PAS; très contesté.` },
+  { term: `Main invisible (A. Smith, 1776)`, definition: `La poursuite de l'intérêt individuel contribue à la richesse collective via le marché.` },
+  { term: 'Malthusianisme', definition: `Théorie prônant la limitation des naissances face au risque de surpopulation (T. Malthus).` },
+  { term: `Maritimisation de l'économie`, definition: `Intégration croissante de la voie maritime dans les échanges (conteneurisation, façades dynamiques).` },
+  { term: 'Métropolisation', definition: `Concentration des hommes et des fonctions supérieures dans de grandes métropoles attractives.` },
+  { term: 'Mondialisation (J. Lévy)', definition: `Création d'un espace unique à l'échelle mondiale (géopolitique et économique).` },
+  { term: 'Mondialisation (L. Carroué)', definition: `Processus d'extension du système capitaliste à l'échelle mondiale.` },
+  { term: 'Mondialisation (J. Stiglitz)', definition: `Intégration accrue des pays via baisse des coûts de transport/communications et abaissement des barrières.` },
+  { term: 'Multiculturalisme', definition: `Promotion de l'intégration respectant la diversité plutôt que l'assimilation.` },
+  { term: `Banque d'affaires / d'investissement`, definition: `Acteur opérant sur marchés (devises, actions), fusions‑acquisitions, etc.` },
+  { term: 'Banque commerciale', definition: `Collecte de dépôts et octroi de crédits aux ménages/entreprises.` },
+  { term: 'Identité', definition: `Appartenance et singularité d'un individu/groupe; notion de communauté et d'individualité.` },
+  { term: `Identité (Les mots de la géographie)`, definition: `Le géographe « grave » l'identité dans l'espace par la codification du territoire (A. Frémont).` },
+  { term: 'Société', definition: `Ensemble d'individus aux rapports durables, organisés par des institutions.` },
+  { term: 'Banques privées', definition: `Gestion des grandes fortunes.` },
+  { term: `Fonds d'investissement`, definition: `Sociétés regroupant les capitaux d'investisseurs pour acheter actions/obligations/entreprises.` },
+  { term: 'Fonds souverain', definition: `Fonds d'investissement public destiné à placer les ressources financières d'un État.` },
+  { term: 'Fonds spéculatifs (Hedge funds)', definition: `Stratégies à haut risque/haut rendement (produits dérivés, matières premières).` },
+  { term: 'Shadow banking', definition: `Financement par des acteurs non bancaires, hors régulation bancaire traditionnelle.` },
+  { term: 'Ingérence', definition: `Intervention d'un État dans les affaires d'un autre sans son accord (vs. ingérence humanitaire).` },
+  { term: 'Intégration (éco.)', definition: `Regroupement d'activités d'entreprise verticalement/horizontalement.` },
+  { term: 'Intégration (géopo.)', definition: `États réunis en ZIR (UE, Mercosur) pour peser davantage économiquement et politiquement.` },
+  { term: 'Frontière (J. Gottmann, 1950)', definition: `Limite de la souveraineté d'un État.` },
+  { term: 'Frontière (Postel‑Vinay)', definition: `Ligne de partage: division et mise en commun; lieu d'échanges.` },
+  { term: `Frontières (M. Foucher, 2012)`, definition: `Discontinuités géopolitiques linéaires et marqueurs spatiaux.` },
+  { term: `Frontière culturelle (M. Foucher, 2012)`, definition: `« Du temps inscrit dans l'espace », lieux de mémoire et de ressentiment.` },
+  { term: 'Métafrontière', definition: `Frontière symbolique entre vastes espaces (religion, valeurs, idéologie).` },
+  { term: 'Gentrification', definition: `Remplacement de populations modestes par plus aisées dans les centres urbains.` },
+  { term: 'Produits financiers dérivés', definition: `Contrats fondés sur un sous‑jacent (swaps, CDS), facilités par la titrisation.` },
+  { term: 'Titrisation', definition: `Transformation de créances en titres échangeables; complexifie le risque.` },
+  { term: 'Risque systémique', definition: `Opacité/propagation du risque menaçant la stabilité financière.` },
+  { term: 'Finance de marché', definition: `Ingénierie financière et recomposition d'actifs via titrisation.` },
+  { term: 'LBO (effet de levier)', definition: `Rachat d'entreprise financé par dette transférée à la cible.` },
+  { term: 'Place boursière', definition: `Concentration d'activités de financement/gestion du risque; attire capitaux (effet de réseau).` },
+  { term: 'Paradis fiscal', definition: `Faible fiscalité, secret bancaire, faible régulation: attractif pour capitaux.` },
+  { term: 'FTN (Carroué)', definition: `Entreprise capable d'organiser des activités complexes à l'échelle multinationale.` },
+  { term: 'Réseau', definition: `Infrastructures reliant régions/acteurs (routes, lignes aériennes, etc.).` },
+  { term: 'Filiale', definition: `Société juridiquement distincte contrôlée par une société mère.` },
+  { term: 'Hollow company', definition: `Entreprise sans usine, recourant massivement à la sous‑traitance.` },
+  { term: 'Joint‑venture', definition: `Co‑entreprise facilitant transferts de technologies (ex. en Chine).` },
+  { term: 'OPA', definition: `Offre publique d'achat d'une entreprise.` },
+  { term: `Valeur d'une marque`, definition: `Popularité et capital de marque associés.` },
+  { term: 'Oligopole', definition: `Marché dominé par un petit nombre de vendeurs de grande envergure.` },
+  { term: 'Pouvoir', definition: `Capacité d'agir/influencer; peut découler de la puissance.` },
+  { term: 'GAFA / GAFAM', definition: `Grands acteurs du numérique (plateformes, réseaux) bouleversant l'économie mondiale.` },
+  { term: 'Loi anti‑trust (Sherman Act, 1890)', definition: `Lutte contre les monopoles aux États‑Unis.` },
+  { term: 'État', definition: `Autorité souveraine sur un territoire délimité.` },
+  { term: 'État‑nation', definition: `Institutions + peuple + territoire aux frontières reconnues.` },
+  { term: 'Souveraineté', definition: `Pouvoir suprême de l'État (interne/externe), limité par le droit international.` },
+  { term: 'Populisme', definition: `Critique des élites portée par un leader charismatique; solutions simples à problèmes complexes.` },
+  { term: 'État failli', definition: `Incapacité d'assurer les fonctions régaliennes (contrôle du territoire/population).` },
+  { term: 'Gouvernance mondiale', definition: `Régulation collective et coopérative des enjeux globaux (biens publics mondiaux).` },
+  { term: 'Guerre (Clausewitz, 1831)', definition: `« Acte de violence destiné à contraindre l'adversaire »; continuation de la politique par d'autres moyens.` },
+  { term: 'Djihad', definition: `Aujourd'hui: lutte armée pour instaurer un État islamique; sens originel: effort religieux.` },
+  { term: 'Conflit de haute intensité', definition: `Grandes puissances mobilisées; risque d'extension large.` },
+  { term: 'Conflit de basse intensité', definition: `Conflit local impliquant des acteurs secondaires.` },
+  { term: 'Système de conflits', definition: `Extension/complexification d'un conflit de basse intensité à une région entière.` },
+  { term: 'Zone grise', definition: `Espace partiellement hors contrôle des autorités centrales.` },
+  { term: 'Pic pétrolier (peak oil)', definition: `Moment où la production mondiale de pétrole entame son déclin.` },
+  { term: 'Réforme agraire', definition: `Transformation de la propriété/exploitation foncière (partage des grands domaines).` },
+  { term: 'Land grabbing', definition: `Accaparement foncier par des États/acteurs étrangers via baux de longue durée.` },
+  { term: 'Basculement du monde', definition: `Rééquilibrage des puissances (ré‑émergence Russie, éveil Chine, BRICS, ralentissement Nord).` },
+  { term: 'Crise (général)', definition: `Rupture brutale d'équilibres: économique, politique ou sociale.` },
+  { term: 'Démocratie', definition: `Séparation des pouvoirs exercés par des représentants élus au suffrage universel.` },
+  { term: 'Dictature', definition: `Concentration des pouvoirs entre les mains d'un individu/groupe, sans limite.` },
+  { term: 'Développement (B. Bret)', definition: `« La croissance plus la justice ». ` },
+  { term: 'Croissance zéro (Rapport Meadows, 1972)', definition: `Hypothèse d'arrêt de la croissance dans les PDEM pour un nouveau paradigme durable.` },
+  { term: 'Puissance (R. Aron)', definition: `Capacité d'une unité politique d'imposer sa volonté aux autres.` },
+  { term: 'Puissance (H. Morgenthau)', definition: `Cinq piliers: poids géographique, géopolitique, rayonnement culturel, économie, mobilisation autour de valeurs.` },
+  { term: 'Clientélisme', definition: `Octroi de faveurs à un groupe pour obtenir son soutien politique.` },
+  { term: 'Géopolitique (Y. Lacoste)', definition: `Étude des interactions entre politique et territoire; rivalités et tensions spatiales.` },
+  { term: 'Capitalisation boursière', definition: `Valeur de l'ensemble des titres d'une entreprise au prix du marché.` },
+  { term: 'Capitalisme (Schumpeter)', definition: `Processus de destruction créatrice transformant en permanence la structure économique.` },
+  { term: 'Première mondialisation (S. Berger)', definition: `1870–1914: internationalisation commerce/capitaux au niveau retrouvé seulement vers les années 1980.` },
+  { term: 'Innovation', definition: `Nouvelle idée mise en œuvre pour répondre au marché et créer un avantage compétitif.` },
+  { term: `Économies d'échelle`, definition: `Baisse du coût unitaire avec l'augmentation des quantités produites.` },
+  { term: 'Libertarianisme', definition: `Primat absolu des libertés individuelles et de la propriété; État minimal.` },
+  { term: 'Multipolaire', definition: `Système international régi par plusieurs centres de puissance.` },
+  { term: 'Polycentrisme (M. Foucher)', definition: `Système d'influences autour de centres très inégaux.` },
+  { term: 'Bipolaire', definition: `Système international dominé par deux pôles.` },
+  { term: 'Apolaire', definition: `Système sans centre dominant clairement organisé.` },
+  { term: `Zones d'influence`, definition: `Régions dominées par une puissance au sein d'un ordre multipolaire.` },
+  { term: 'Bilatéralisme', definition: `Relations fondées sur accords/échanges entre deux États.` },
+  { term: 'Système productif (Carroué)', definition: `Facteurs/acteurs de production, circulation et consommation; articulation avec reproduction sociale.` },
+  { term: 'Territorialisation', definition: `Appropriation/limitation d'un espace (juridique, économique, symbolique).` },
+  { term: 'Multilatéralisme', definition: `Gouvernance fondée sur l'égalité de droit entre États et adoption de règles concertées.` },
+  { term: 'Minilatéralisme', definition: `Gestion de questions internationales par un groupe restreint de pays.` },
+  { term: 'Isolationnisme', definition: `Repli sur soi d'un État, priorité aux affaires internes; souvent couplé au protectionnisme.` },
+  { term: 'Développement (néolibéraux)', definition: `Production, répartition et accumulation des richesses.` },
+  { term: `Économie du développement`, definition: `Objectif de croissance des PMA pour une convergence de long terme.` },
+  { term: 'Théorie linéaire du développement', definition: `Années 50‑60: croissance rapide via investissement + intervention de l'État (inspiration Plan Marshall).` },
+  { term: 'Cercle vicieux de Nurkse (1953)', definition: `Pauvreté auto‑entretenue par faiblesse des revenus/épargne/capital et de la fiscalité.` },
+  { term: 'Croissance de Rostow', definition: `Cinq étapes: société traditionnelle → préalables → décollage → maturité → consommation de masse.` },
+  { term: 'Changement structurel (néolibéral, 70s)', definition: `Transformation d'une économie agricole vers une économie moderne urbanisée et diversifiée.` },
+  { term: 'Théorie de la dépendance (70s)', definition: `Sous‑développement comme conséquence de rapports asymétriques Nord‑Sud.` },
+  { term: `Détérioration des termes de l'échange (Prebisch‑Singer)`, definition: `Exportateurs de produits primaires condamnés à importer toujours plus de produits manufacturés.` },
+  { term: `Industrialisation par Substitution des Importations (ISI)`, definition: `Produire localement ce qui était importé pour réduire la dépendance (limites: marchés intérieurs faibles).` },
+  { term: 'Approches néolibérales (80s)', definition: `Libre‑marché; Public choice; Market‑friendly: l'État n'est que facilitateur non sélectif.` },
+  { term: 'Peuplement', definition: `Répartition des populations sur Terre.` },
+  { term: 'Démographie', definition: `Étude statistique des populations.` },
+  { term: 'Œkoumène', definition: `Espace habité par les hommes.` },
+  { term: 'Métropole', definition: `Ville de commandement au rayonnement étendu.` },
+  { term: 'Mégalopole', definition: `Continuum urbain de très grande taille.` },
+  { term: 'Conurbation', definition: `Ensemble urbain formé de plusieurs agglomérations contiguës.` },
+  { term: 'Ville mondiale', definition: `Ville concentrant les fonctions de commandement supérieures.` },
+  { term: 'Pauvreté extrême', definition: `Moins de 1 dollar (ou 2,15$) par jour selon les seuils internationaux.` },
+  { term: 'Européanité', definition: `Sentiment d'appartenance à une Europe politique et culturelle.` },
+  { term: 'Territoire', definition: `Espace approprié/administré où s'exerce un pouvoir; aussi « espace vécu ». ` },
+  { term: 'République bananière', definition: `Micro‑États d'Amérique centrale dominés par des intérêts étrangers.` },
+  { term: 'Espace (géographique)', definition: `Espace social produit par les groupes humains pour répondre à des objectifs fondamentaux.` },
+  { term: 'Nativisme', definition: `Idéologie hostile aux nouvelles immigrations (mythe WASP aux USA).` },
+  { term: 'Croissance économique', definition: `Accroissement durable de la production globale d'une économie.` },
+  { term: 'Développement durable (Rapport Brundtland, 1987)', definition: `Répondre aux besoins présents sans compromettre ceux des générations futures (3 piliers).` },
+  { term: 'Modèle de croissance extensif', definition: `Forte intensité énergétique; trajectoire peu soutenable.` },
+  { term: 'Modèle de croissance intensif', definition: `Gains de productivité et montée en gamme.` },
+  { term: 'Terrorisme', definition: `Usage de la violence à des fins politiques par des acteurs non étatiques.` },
+  { term: 'Djihadisme', definition: `Courants prônant la lutte armée au nom de l'islam contre les États en place.` },
+  { term: `Nationalisme`, definition: `Idéologie exaltant ou revendiquant la nation; quête d'un État pour une communauté (Jaffrelot).` },
+  { term: `Économie populaire`, definition: `Activités/solidarités économiques locales mobilisant travail et ressources pour besoins de base.` },
+];
+

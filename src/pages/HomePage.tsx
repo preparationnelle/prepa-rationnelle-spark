@@ -1,16 +1,13 @@
 
 import React from 'react';
 import { HeroSection } from '@/components/sections/HeroSection';
-import { FormationsSection } from '@/components/sections/FormationsSection';
 import { OffersSection } from '@/components/OffersSection';
 import { SuperprofReviewsSection } from '@/components/sections/SuperprofReviewsSection';
 import { AutomationsSection } from '@/components/sections/AutomationsSection';
 import { PodcastSection } from '@/components/sections/PodcastSection';
 import { PartnersSection } from '@/components/sections/PartnersSection';
 import { CallToActionSection } from '@/components/sections/CallToActionSection';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, BookOpen, Calculator, Code, Globe, Languages, Users } from 'lucide-react';
+import { BookOpen, Calculator, Code, Globe, Languages } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const HomePage: React.FC = () => {
@@ -76,24 +73,16 @@ const HomePage: React.FC = () => {
                   <p className="text-sm text-gray-500">Enjeux contemporains</p>
                 </Link>
                 
-                {/* Entretiens */}
-                <Link to="/methodologie/entretiens-personnalite" className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center">
+                {/* Culture générale */}
+                <Link to="/formation/culture-generale" className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center">
                   <div className="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center mb-3">
-                    <Users className="h-7 w-7 text-purple-600" />
+                    <BookOpen className="h-7 w-7 text-purple-600" />
                   </div>
-                  <h3 className="font-semibold text-lg mb-1">Entretiens</h3>
-                  <p className="text-sm text-gray-500">Techniques de présentation</p>
+                  <h3 className="font-semibold text-lg mb-1">Culture générale</h3>
+                  <p className="text-sm text-gray-500">Typologie des sujets & méthodes</p>
                 </Link>
               </div>
-              
-              <div className="mt-8 text-center">
-                <Link to="/formations">
-                  <Button className="bg-orange-500 hover:bg-orange-600">
-                    Voir toutes nos formations
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-              </div>
+
               </div>
         </div>
       </section>

@@ -36,29 +36,66 @@ const ExosClassiquesPage = () => {
             </div>
           </CardHeader>
           <CardContent className="p-8 prose prose-lg max-w-none">
-            <h3>Introduction</h3>
-            <p>Vous tournez en rond sur les sujets d'annales ? Le déclic se joue bien avant. En prépa ECG, les exercices classiques sont la forge où s'acquièrent réflexes, rigueur et créativité. Travaillés dans une boucle d'exos intelligente — chercher, rédiger, corriger, recommencer — ils transforment chaque ligne de calcul en points sûrs au concours BCE.</p>
+            <div className="space-y-8">
+              {/* Introduction */}
+              <div className="bg-amber-50 p-6 rounded-lg border-l-4 border-amber-400">
+                <h3 className="text-xl font-bold text-amber-800 mb-3">Introduction</h3>
+                <p className="text-amber-900/80">Vous tournez en rond sur les annales ? Le déclic se joue avant. Les exercices classiques forgent réflexes, rigueur et créativité — travaillés en boucle intelligente, ils deviennent des points sûrs au concours BCE.</p>
+              </div>
 
-            <h3>Le problème : exercices négligés, le frein à la progression</h3>
-            <p>En prépa ECG, les exercices classiques — ces basiques d'application du cours — sont souvent boudés pour des annales BCE plus "prestigieuses". Vous passez des heures sur un sujet complexe, sans rien retenir, car les fondations manquent. Pire, les calculatoires (dérivées, matrices) paraissent barbants, menant à des erreurs stupides sous pression.</p>
+              {/* Problème */}
+              <div className="bg-amber-100 p-6 rounded-lg border-l-4 border-amber-500">
+                <h3 className="text-xl font-bold text-amber-900 mb-3">Le problème : classiques négligés</h3>
+                <p className="text-amber-900/80">Bouder les basiques pour des annales "prestigieuses" crée des fondations fragiles. Les calculatoires paraissent barbants et provoquent des erreurs sous pression.</p>
+              </div>
 
-            <h3>La solution : exercices classiques et boucle pour maîtriser</h3>
-            <p>Passez à une stratégie gagnante : exercices classiques d'abord, boucle répétitive ensuite. Qualité prime ; développez créativité et rigueur pour concours BCE.</p>
+              {/* Solution */}
+              <div className="bg-amber-50 p-6 rounded-lg border-l-4 border-amber-400">
+                <h3 className="text-xl font-bold text-amber-800 mb-3">La solution : boucle d'exercices classiques</h3>
+                <p className="text-amber-900/80">Exercices classiques d'abord, répétitions ensuite. La qualité prime pour développer créativité et rigueur.</p>
+              </div>
 
-            <h3>1. Priorisez les exercices classiques pour ancrer le cours</h3>
-            <p>Commencez par des exos simples liés au chapitre : systèmes linéaires en algèbre, limites en analyse ECG. Ils construisent intuition — apprendre à calculer, réfléchir patterns. Prenez temps : relisez cours, recopiez points clés (théorèmes, hypothèses). Rédigez rigoureusement : une étape par ligne pour automatiser. Pourquoi cruciaux ? Ils évitent illusions ; refaites-les pour voir ce qui cloche.</p>
+              {/* Stratégies détaillées */}
+              <div className="space-y-6">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                  <h4 className="text-lg font-bold text-amber-900 mb-3 flex items-center gap-2">
+                    <span className="bg-amber-100 text-amber-700 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">1</span>
+                    Priorisez les classiques pour ancrer le cours
+                  </h4>
+                  <p className="text-gray-700">Commencez par des exos simples du chapitre. Relisez le cours, notez théorèmes et hypothèses, rédigez une étape par ligne pour automatiser.</p>
+                </div>
 
-            <h3>2. Implémentez la boucle des exos : répétez pour progresser</h3>
-            <p>La boucle ? Refaites exos classiques plusieurs fois, réfléchies. Vital — c'est là que tout se joue pour automatismes durables. Répétez stratégiquement : première fois recherche solo. Deuxième : analysez erreurs, fiche méthodes. Troisième : sous chrono pour gestion temps. Ne sautez pas dérivées ou intégrales ECG ; pratique régulière gagne vitesse, réduit fautes. Développez créativité : résolvez de multiples façons.</p>
+                <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                  <h4 className="text-lg font-bold text-amber-900 mb-3 flex items-center gap-2">
+                    <span className="bg-amber-100 text-amber-700 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">2</span>
+                    Implémentez la boucle des exos
+                  </h4>
+                  <p className="text-gray-700">1) Recherche solo. 2) Analyse d'erreurs et fiche méthodes. 3) Refaire sous chrono. Pratique régulière sur calculatoires pour gagner vitesse et réduire fautes.</p>
+                </div>
 
-            <h3>3. Travaillez en groupe intelligemment, sans oublier solo</h3>
-            <p>Abordez exos ensemble après recherche individuelle — fructueux pour feedback. Phase solo d'abord (conditions réelles). Puis comparez : méthodes, rigueur rédaction, propreté copie. Corrigez mutuellement via profs. À l'approche BCE : intégrez annales en groupe : discutez points manqués, mais finissez seul pour autonomie.</p>
+                <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                  <h4 className="text-lg font-bold text-amber-900 mb-3 flex items-center gap-2">
+                    <span className="bg-amber-100 text-amber-700 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">3</span>
+                    Travaillez en groupe intelligemment
+                  </h4>
+                  <p className="text-gray-700">Solo d'abord, puis comparaison des méthodes et de la rédaction. Intégrez des annales en groupe à l'approche BCE, mais finalisez seul pour l'autonomie.</p>
+                </div>
 
-            <h3>4. Évitez pièges : qualité vs quantité, annales au bon moment</h3>
-            <p>Ne perdez pas temps sur annales prématurées — hérésie ! Bases d'abord pour progrès durables. Qualité prime : cherchez profondeur ; revenez cours à chaque exo pour mémorisation. Apprenez réfléchir : exercices classiques forgent calcul, réflexion, créativité — essentiels BCE.</p>
+                <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                  <h4 className="text-lg font-bold text-amber-900 mb-3 flex items-center gap-2">
+                    <span className="bg-amber-100 text-amber-700 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">4</span>
+                    Évitez les pièges
+                  </h4>
+                  <p className="text-gray-700">Qualité plutôt que quantité, annales au bon moment. Revenez au cours après chaque exercice pour mémoriser et réfléchir plus juste.</p>
+                </div>
+              </div>
 
-            <h3>Conclusion</h3>
-            <p>Travailler exercices maths ECG efficacement repose sur classiques pour bases, boucle répétitive pour automatismes, et groupe pour feedback — qualité l'emporte sur quantité. Évitez annales trop tôt ; focalisez rigueur, calcul, créativité pour progrès fous et notes boostées aux concours BCE.</p>
+              {/* Conclusion */}
+              <div className="bg-amber-50 p-6 rounded-lg border-l-4 border-amber-400">
+                <h3 className="text-xl font-bold text-amber-800 mb-3">Conclusion</h3>
+                <p className="text-amber-900/80">Bases solides via classiques, boucle répétitive pour automatismes, groupe pour feedback — la qualité l'emporte. Les points BCE suivent.</p>
+              </div>
+            </div>
           </CardContent>
         </Card>
       </div>

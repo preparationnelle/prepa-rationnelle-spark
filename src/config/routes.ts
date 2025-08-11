@@ -26,6 +26,7 @@ const StructurePage = lazy(() => import('../pages/formation/allemand/StructurePa
 const RecurrentsPage = lazy(() => import('../pages/formation/allemand/RecurrentsPage'));
 const VerbIrregulierPage = lazy(() => import('../pages/formation/allemand/VerbIrregulierPage'));
 const FormationGeopolitiquePage = lazy(() => import('../pages/FormationGeopolitiquePage'));
+const FormationCultureGeneralePage = lazy(() => import('../pages/FormationCultureGeneralePage.tsx'));
 const NosOffresPage = lazy(() => import('../pages/NosOffresPage'));
 const AproposPage = lazy(() => import('../pages/AproposPage'));
 const CoachingPage = lazy(() => import('../pages/CoachingPage'));
@@ -211,6 +212,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/allemand-structure', component: StructurePage, title: 'Structure de la Phrase' },
   { path: '/formation/allemand-recurrents', component: RecurrentsPage, title: 'Points de Grammaire Récurrents' },
   { path: '/formation/allemand-verbes', component: VerbIrregulierPage, title: 'Verbes Irréguliers Allemands' },
+  { path: '/formation/culture-generale', component: FormationCultureGeneralePage, title: 'Formation Culture Générale' },
   { path: '/formation/geopolitique', component: FormationGeopolitiquePage, title: 'Formation Géopolitique' },
   { path: '/formation/python-fondamentaux', component: PythonFundamentalsPage, title: 'Python Fondamentaux' },
   { path: '/formation/python-matrices', component: PythonMatricesPage, title: 'Python Matrices' },

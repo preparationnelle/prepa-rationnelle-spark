@@ -1,10 +1,13 @@
 import React from 'react';
-import { Play, Star, GraduationCap, BookOpen, Zap } from 'lucide-react';
+import { Star, GraduationCap, BookOpen, Zap } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
 const StageAccompagnementPage = () => {
+  const whatsappPhone = '33609164668';
+  const buildWhatsAppLink = (message: string) =>
+    `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(message)}`;
   return (
     <div className="min-h-screen bg-[#F0F8FF]">
       {/* Section 1 - Choisis l'offre qui boostera ta prépa */}
@@ -25,21 +28,23 @@ const StageAccompagnementPage = () => {
                 Stage de Pré-entrée
               </h3>
               <p className="text-gray-600 mb-4">
-                6 jours intensifs - 199€
+                6 jours intensifs
           </p>
-          <Button 
-                asChild
-                variant="ghost" 
-                className="text-orange-500 hover:text-orange-600 hover:bg-orange-50"
-              >
-                <Link to="/offres/pre-rentree">
-                  Découvrir
-                </Link>
+              <Button asChild variant="outline" className="hover:bg-orange-50">
+                <a
+                  href={buildWhatsAppLink(
+                    'Prepa Rationnelle, je suis interessé par le stage de Pré-entrée'
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Contacter sur WhatsApp
+                </a>
               </Button>
             </Card>
 
             {/* Coaching 1ère année */}
-            <Card className="p-6 text-center hover:shadow-lg transition-all opacity-75 bg-white">
+            <Card className="p-6 text-center hover:shadow-lg transition-all bg-white">
               <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full mx-auto mb-4 flex items-center justify-center">
                 <BookOpen className="w-8 h-8 text-white" />
               </div>
@@ -49,13 +54,21 @@ const StageAccompagnementPage = () => {
               <p className="text-gray-600 mb-4">
                 Accompagnement annuel
               </p>
-              <Button variant="outline" disabled>
-                Bientôt disponible
+              <Button asChild variant="outline" className="hover:bg-blue-50">
+                <a
+                  href={buildWhatsAppLink(
+                    'Prepa Rationnelle, je suis interessé par un coaching en première année'
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Contacter sur WhatsApp
+                </a>
               </Button>
             </Card>
 
             {/* Coaching 2ème année */}
-            <Card className="p-6 text-center hover:shadow-lg transition-all opacity-75 bg-white">
+            <Card className="p-6 text-center hover:shadow-lg transition-all bg-white">
               <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-teal-500 rounded-full mx-auto mb-4 flex items-center justify-center">
                 <Zap className="w-8 h-8 text-white" />
               </div>
@@ -65,37 +78,23 @@ const StageAccompagnementPage = () => {
               <p className="text-gray-600 mb-4">
                 Accompagnement annuel
               </p>
-              <Button variant="outline" disabled>
-                Bientôt disponible
-          </Button>
+              <Button asChild variant="outline" className="hover:bg-green-50">
+                <a
+                  href={buildWhatsAppLink(
+                    'Prepa Rationnelle, je suis interessé par un coaching en deuxième année'
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Contacter sur WhatsApp
+                </a>
+              </Button>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* Section 2 - Présentation de notre méthode */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Présentation de notre méthode
-          </h2>
-          <div className="bg-gray-100 rounded-2xl p-8 shadow-lg">
-            <div className="aspect-video bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center">
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="bg-white/90 hover:bg-white text-gray-900 border-0 shadow-lg"
-              >
-                <Play className="w-8 h-8 mr-2" />
-                Regarder la présentation
-              </Button>
-            </div>
-            <p className="text-gray-600 mt-4">
-              Découvre comment notre méthode peut transformer ton approche de la prépa
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Section 2 supprimée (vidéo) */}
 
       {/* Section 3 - Ce que disent nos étudiants */}
       <section className="py-16 px-4 bg-[#F0F8FF]">
@@ -152,6 +151,29 @@ const StageAccompagnementPage = () => {
               </div>
             </div>
             <p className="text-gray-600 mt-2">Note moyenne de nos formations</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4 - Tarif */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Tarif</h2>
+            <p className="text-gray-700 text-lg mb-6">
+              Stage de Pré-entrée: <span className="font-semibold">199€</span>
+            </p>
+            <Button asChild size="lg" className="bg-green-600 hover:bg-green-700">
+              <a
+                href={buildWhatsAppLink(
+                  'Prepa Rationnelle, je souhaite réserver le stage de Pré-entrée (199€)'
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Réserver via WhatsApp
+              </a>
+            </Button>
           </div>
         </div>
       </section>
