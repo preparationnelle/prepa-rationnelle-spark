@@ -7,7 +7,7 @@ import { AutomationsSection } from '@/components/sections/AutomationsSection';
 import { PodcastSection } from '@/components/sections/PodcastSection';
 import { PartnersSection } from '@/components/sections/PartnersSection';
 import { CallToActionSection } from '@/components/sections/CallToActionSection';
-import { BookOpen, Calculator, Code, Globe, Languages } from 'lucide-react';
+import { BookOpen, Calculator, Code } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const HomePage: React.FC = () => {
@@ -23,11 +23,11 @@ const HomePage: React.FC = () => {
             Nos <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">formations spécialisées</span>
           </h2>
           <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto text-base sm:text-lg">
-            Formations conçues spécifiquement pour les étudiants en prépa ECG, avec méthodes éprouvées et accompagnement personnalisé.
+            Méthodes éprouvées, +250 exercices validés, et accompagnement personnalisé pour +5 points garantis.
           </p>
 
           <div className="w-full max-w-4xl mx-auto">
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {/* Maths - toujours visible */}
                 <Link to="/formation/maths" className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center">
                   <div className="w-14 h-14 bg-yellow-100 rounded-full flex items-center justify-center mb-3">
@@ -43,43 +43,16 @@ const HomePage: React.FC = () => {
                     <Code className="h-7 w-7 text-blue-600" />
                   </div>
                   <h3 className="font-semibold text-lg mb-1">Python</h3>
-                  <p className="text-sm text-gray-500">54 commandes essentielles</p>
+                  <p className="text-sm text-gray-500">+100 commandes et scripts essentiels</p>
                 </Link>
                 
-                {/* Anglais */}
-                <Link to="/formation/anglais" className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center">
-                  <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mb-3">
-                    <Languages className="h-7 w-7 text-green-600" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-1">Anglais</h3>
-                  <p className="text-sm text-gray-500">Grammaire et synthèses</p>
-                </Link>
-                
-                {/* Allemand */}
-                <Link to="/formation/allemand" className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center">
-                  <div className="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mb-3">
-                    <Languages className="h-7 w-7 text-red-600" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-1">Allemand</h3>
-                  <p className="text-sm text-gray-500">Déclinaisons et cas</p>
-                </Link>
-                
-                {/* Géopolitique */}
-                <Link to="/formation/geopolitique" className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center">
-                  <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-3">
-                    <Globe className="h-7 w-7 text-orange-600" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-1">Géopolitique</h3>
-                  <p className="text-sm text-gray-500">Enjeux contemporains</p>
-                </Link>
-                
-                {/* Culture générale */}
-                <Link to="/formation/culture-generale" className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center">
+                {/* Découvrir toutes nos formations */}
+                <Link to="/formations" className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center">
                   <div className="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center mb-3">
                     <BookOpen className="h-7 w-7 text-purple-600" />
                   </div>
-                  <h3 className="font-semibold text-lg mb-1">Culture générale</h3>
-                  <p className="text-sm text-gray-500">Typologie des sujets & méthodes</p>
+                  <h3 className="font-semibold text-lg mb-1">Découvrir toutes nos formations</h3>
+                  <p className="text-sm text-gray-500">Anglais, Allemand, Géopolitique, Culture générale…</p>
                 </Link>
               </div>
 
