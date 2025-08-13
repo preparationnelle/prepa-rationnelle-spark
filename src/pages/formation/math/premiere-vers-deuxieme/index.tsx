@@ -16,31 +16,31 @@ const MODULES: ModuleCard[] = [
     id: 1,
     title: 'Application linéaire',
     icon: Move,
-    exercicesPath: '/formation/maths-applications-lineaires-structures-vectorielles-exercices',
+    exercicesPath: '/formation/math/premiere-vers-deuxieme/module-1-applications-lineaires-exercices',
   },
   {
     id: 2,
     title: 'Vecteur aléatoire',
     icon: Grid,
-    exercicesPath: '/formation/maths-espaces-probabilises-conditionnement-exercices',
+    exercicesPath: '/formation/math/premiere-vers-deuxieme/module-2-vecteur-aleatoire-exercices',
   },
   {
     id: 3,
     title: 'Intégrale impropre',
     icon: AreaChart,
-    exercicesPath: '/formation/maths-integrales-impropres-criteres-de-convergence-exercices',
+    exercicesPath: '/formation/math/premiere-vers-deuxieme/module-3-integrale-impropre-exercices',
   },
   {
     id: 4,
     title: 'Complément de probas',
     icon: Dices,
-    exercicesPath: '/formation/maths-probabilites-conditionnement-exercices',
+    exercicesPath: '/formation/math/premiere-vers-deuxieme/module-4-complement-probabilites-exercices',
   },
   {
     id: 5,
     title: 'Variable aléatoire',
     icon: Variable,
-    exercicesPath: '/formation/maths-variables-aleatoires-discretes-lois-exercices',
+    exercicesPath: '/formation/math/premiere-vers-deuxieme/module-5-variable-aleatoire-exercices',
   },
 ];
 
@@ -89,7 +89,7 @@ const PremiereVersDeuxiemePage: React.FC = () => {
                     {mod.icon && <mod.icon className="h-6 w-6 text-white" />}
                   </div>
                   <div>
-                    <Badge className="mb-1 bg-gradient-to-r from-purple-500 to-blue-600 text-white border-0 shadow-sm">Chapitre {mod.id}</Badge>
+                    <Badge className="mb-1 bg-gradient-to-r from-purple-500 to-blue-600 text-white border-0 shadow-sm">Module {mod.id}</Badge>
                     <CardTitle className="text-md font-bold text-gray-800 leading-tight">{mod.title}</CardTitle>
                   </div>
                 </CardHeader>

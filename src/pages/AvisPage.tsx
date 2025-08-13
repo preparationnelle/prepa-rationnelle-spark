@@ -100,13 +100,13 @@ const AvisPage = () => {
             </Link>
             
             <div className="text-center mb-12">
-              <div className="flex items-center justify-center gap-2 mb-4">
+              <h1 className="text-4xl md:text-5xl font-bold mb-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Avis Superprof
+              </h1>
+              <div className="flex items-center justify-center gap-2 mb-6">
                 {renderStars()}
                 <span className="text-2xl font-bold text-gray-800 ml-2">5.0/5</span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Avis Superprof
-              </h1>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 Découvrez ce que disent mes élèves sur Superprof
               </p>

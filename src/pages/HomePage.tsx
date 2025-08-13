@@ -8,6 +8,7 @@ import { PodcastSection } from '@/components/sections/PodcastSection';
 import { PartnersSection } from '@/components/sections/PartnersSection';
 import { CallToActionSection } from '@/components/sections/CallToActionSection';
 import { BookOpen, Calculator, Code } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
 const HomePage: React.FC = () => {
@@ -53,6 +54,20 @@ const HomePage: React.FC = () => {
                   </div>
                   <h3 className="font-semibold text-lg mb-1">Découvrir toutes nos formations</h3>
                   <p className="text-sm text-gray-500">Anglais, Allemand, Géopolitique, Culture générale…</p>
+                </Link>
+              </div>
+
+              <div className="w-full flex justify-center mt-8">
+                <Link to="/formations">
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700"
+                  >
+                    <span className="flex items-center gap-2">
+                      Voir toutes les formations
+                      <BookOpen className="h-4 w-4" />
+                    </span>
+                  </Button>
                 </Link>
               </div>
 

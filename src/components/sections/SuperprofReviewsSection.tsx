@@ -171,16 +171,16 @@ export const SuperprofReviewsSection = () => {
   };
 
   return (
-    <section className="py-16 px-4">
+    <section className="py-16 px-4 bg-gradient-to-b from-blue-50 to-blue-100/40">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-2 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-3">
+            <span className="text-[#252523]">Avis</span>
+          </h2>
+          <div className="flex items-center justify-center gap-2 mb-6">
             {renderStars()}
             <span className="text-lg font-semibold text-gray-700 ml-2">5.0/5</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-[#252523]">Avis</span>
-          </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Découvrez ce que disent mes élèves sur Superprof
           </p>

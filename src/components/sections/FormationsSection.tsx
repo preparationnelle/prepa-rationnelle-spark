@@ -271,7 +271,17 @@ export const FormationsSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          {/* Bouton 'Découvrir toutes nos formations' supprimé */}
+          <Link to="/formations">
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700"
+            >
+              <span className="flex items-center gap-2">
+                Voir toutes les formations
+                <BookOpen className="h-4 w-4" />
+              </span>
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

@@ -143,6 +143,20 @@ export const AutomationsSection = () => {
             </Card>
           </Link>
         </div>
+
+        <div className="text-center mt-12">
+          <Link to="/generator">
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700"
+            >
+              <span className="flex items-center gap-2">
+                Voir tous nos générateurs
+                <TrendingUp className="h-4 w-4" />
+              </span>
+            </Button>
+          </Link>
+        </div>
       </div>
     </section>
   );

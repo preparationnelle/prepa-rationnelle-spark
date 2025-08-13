@@ -41,9 +41,6 @@ const Chapitre11ApplicationsLineairesEtStructuresVectoriellesExercicesPage = () 
             <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4">
               Exercices - Chapitre : Applications linéaires & structures vectorielles
             </h1>
-            <p className="text-slate-600 text-lg">
-              Exercices du chapitre 11
-            </p>
           </div>
         </Card>
 

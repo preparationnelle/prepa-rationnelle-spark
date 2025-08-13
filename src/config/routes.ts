@@ -50,6 +50,11 @@ const MathsMethodologiePage = lazy(() => import('../pages/formation/math/MathsMe
 const MathsChoixOptionPage = lazy(() => import('../pages/formation/math/MathsChoixOptionPage'));
 const MathsLogiquePage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre1-LogiqueEtRaisonnementFondamentaux-CoursPage'));
 const PremiereVersDeuxiemePage = lazy(() => import('../pages/formation/math/premiere-vers-deuxieme/index'));
+  const Module1ApplicationsLineairesExercicesPage = lazy(() => import('../pages/formation/math/premiere-vers-deuxieme/Module1-ApplicationsLineaires-ExercicesPage'));
+  const Module2VecteurAleatoireExercicesPage = lazy(() => import('../pages/formation/math/premiere-vers-deuxieme/Module2-VecteurAleatoire-ExercicesPage'));
+  const Module3IntegraleImpropreExercicesPage = lazy(() => import('../pages/formation/math/premiere-vers-deuxieme/Module3-IntegraleImpropre-ExercicesPage'));
+  const Module4ComplementProbabilitesExercicesPage = lazy(() => import('../pages/formation/math/premiere-vers-deuxieme/Module4-ComplementProbabilites-ExercicesPage'));
+  const Module5VariableAleatoireExercicesPage = lazy(() => import('../pages/formation/math/premiere-vers-deuxieme/Module5-VariableAleatoire-ExercicesPage'));
 
 // Math chapter pages - Semester 1
 const MathsEnsemblesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre2-EnsemblesEtApplications-CoursPage'));
@@ -244,6 +249,11 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-convergences-theoremes-limites-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Convergences & théorèmes limites', protected: true },
   { path: '/formation/maths', component: MathsChoixOptionPage, title: 'Choix option Maths ECG' },
   { path: '/formation/math/premiere-vers-deuxieme', component: PremiereVersDeuxiemePage, title: 'Première → Deuxième année' },
+  { path: '/formation/math/premiere-vers-deuxieme/module-1-applications-lineaires-exercices', component: Module1ApplicationsLineairesExercicesPage, title: 'Module 1 - Applications linéaires - Exercices' },
+  { path: '/formation/math/premiere-vers-deuxieme/module-2-vecteur-aleatoire-exercices', component: Module2VecteurAleatoireExercicesPage, title: 'Module 2 - Vecteur aléatoire - Exercices' },
+  { path: '/formation/math/premiere-vers-deuxieme/module-3-integrale-impropre-exercices', component: Module3IntegraleImpropreExercicesPage, title: 'Module 3 - Intégrale impropre - Exercices' },
+  { path: '/formation/math/premiere-vers-deuxieme/module-4-complement-probabilites-exercices', component: Module4ComplementProbabilitesExercicesPage, title: 'Module 4 - Complément de probabilités - Exercices' },
+  { path: '/formation/math/premiere-vers-deuxieme/module-5-variable-aleatoire-exercices', component: Module5VariableAleatoireExercicesPage, title: 'Module 5 - Variable aléatoire - Exercices' },
   { path: '/formation/maths-elements-de-logique', component: MathsLogiquePage, title: 'Chapitre 1 : Logique & raisonnement fondamentaux' },
   { path: '/formation/maths-ensembles', component: MathsEnsemblesPage, title: 'Maths - Ensembles et applications' },
   { path: '/formation/maths-ensembles-et-applications', component: MathsEnsemblesPage, title: 'Maths - Ensembles et applications' },
