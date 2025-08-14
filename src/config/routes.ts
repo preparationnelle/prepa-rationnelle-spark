@@ -26,7 +26,7 @@ const StructurePage = lazy(() => import('../pages/formation/allemand/StructurePa
 const RecurrentsPage = lazy(() => import('../pages/formation/allemand/RecurrentsPage'));
 const VerbIrregulierPage = lazy(() => import('../pages/formation/allemand/VerbIrregulierPage'));
 const FormationGeopolitiquePage = lazy(() => import('../pages/FormationGeopolitiquePage'));
-const FormationCultureGeneralePage = lazy(() => import('../pages/FormationCultureGeneralePage.tsx'));
+const FormationCultureGeneralePage = lazy(() => import('../pages/FormationCultureGeneralePage'));
 const NosOffresPage = lazy(() => import('../pages/NosOffresPage'));
 const AproposPage = lazy(() => import('../pages/AproposPage'));
 const CoachingPage = lazy(() => import('../pages/CoachingPage'));

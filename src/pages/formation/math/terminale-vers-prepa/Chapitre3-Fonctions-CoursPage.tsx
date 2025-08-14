@@ -148,7 +148,7 @@ const Chapitre3FonctionsCoursPage = () => {
                   <p className="text-slate-700 mb-3"><strong>Croissante</strong> sur I si <span className="inline-block align-middle"><LatexRenderer latex={"x_1 < x_2 \\implies f(x_1) < f(x_2)"} /></span> (strictement) ou ≤ (au sens large)</p>
                 </div>
                 <div className="bg-red-50 p-6 rounded-lg">
-                  <p className="text-slate-700 mb-3"><strong>Décroissante</strong> pareil avec > ou ≥</p>
+                  <p className="text-slate-700 mb-3"><strong>Décroissante</strong> pareil avec &gt; ou ≥</p>
                 </div>
               </div>
 

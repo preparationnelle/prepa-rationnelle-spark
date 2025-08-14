@@ -77,7 +77,7 @@ export const PodcastSection = () => {
                 alt="Interview Europe 1 - Jeune homme parlant dans un microphone bleu" 
                 width={500}
                 height={313}
-                fetchpriority="high"
+                fetchPriority="high"
                 className="shadow-2xl rounded-2xl w-96 md:w-[500px] h-auto object-cover"
               />
             </a>

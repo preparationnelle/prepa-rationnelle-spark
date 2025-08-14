@@ -19,7 +19,7 @@ const FormationAnglaisPage = () => {
       title: 'Générateur de Paragraphes',
       description: 'Créez des paragraphes argumentatifs en anglais basés sur des articles de presse',
       icon: MessageSquare,
-      component: <LanguageParagraphGenerator language={language} />
+      component: <LanguageParagraphGenerator language={language} selectedLanguage="anglais" />
     },
     {
       id: 'grammar',

@@ -200,7 +200,7 @@ const Chapitre4DeriveesCoursPage = () => {
                 <div className="text-center">
                   <LatexRenderer latex={"(\\ln x)' = \\frac{1}{x}"} />
                 </div>
-                <p className="text-slate-600 text-xs text-center mt-2">(pour x > 0)</p>
+                <p className="text-slate-600 text-xs text-center mt-2">(pour x &gt; 0)</p>
               </div>
 
               <div className="bg-yellow-50 p-6 rounded-lg">
@@ -314,7 +314,7 @@ const Chapitre4DeriveesCoursPage = () => {
               
               <div className="bg-yellow-50 p-4 rounded-lg">
                 <p className="text-slate-700 mb-2"><strong>3.</strong> Étudier les variations de <span className="inline-block align-middle"><LatexRenderer latex={"f(x) = e^x + x"} /></span></p>
-                <p className="text-slate-600 text-sm">(f'(x) = e^x + 1 > 0 toujours, donc strictement croissante)</p>
+                <p className="text-slate-600 text-sm">(f'(x) = e^x + 1 &gt; 0 toujours, donc strictement croissante)</p>
               </div>
               
               <div className="bg-purple-50 p-4 rounded-lg">
