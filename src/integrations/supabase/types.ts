@@ -6,38 +6,14 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[]
 
-export interface Database {
+export type Database = {
+  // Allows to automatically instanciate createClient with right options
+  // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
+  __InternalSupabase: {
+    PostgrestVersion: "12.2.3 (519615d)"
+  }
   public: {
     Tables: {
-      user_preferences: {
-        Row: {
-          id: string
-          user_id: string
-          math_option: 'approfondies' | 'appliquees'
-          updated_at: string
-        }
-        Insert: {
-          id?: string
-          user_id: string
-          math_option: 'approfondies' | 'appliquees'
-          updated_at?: string
-        }
-        Update: {
-          id?: string
-          user_id?: string
-          math_option?: 'approfondies' | 'appliquees'
-          updated_at?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "user_preferences_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: true
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
-      }
       access_codes: {
         Row: {
           active: boolean
