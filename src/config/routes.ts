@@ -386,9 +386,39 @@ export const routes: RouteConfig[] = [
     protected: false
   },
   {
+    path: '/formation/math/terminale-vers-prepa/introduction-bilan',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/IntroductionBilanPage')),
+    title: 'Introduction & Bilan - Révisions mathématiques pour la prépa ECG',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/calculs-cours',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre1-Calculs-CoursPage')),
+    title: 'Cours - Chapitre 1 : Calculs',
+    protected: false
+  },
+  {
     path: '/formation/math/terminale-vers-prepa/calculs-exercices',
     component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre1-Calculs-ExercicesPage')),
     title: 'Exercices - Chapitre 1 : Calculs',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/sommes-suites-cours',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre2-SommesSuites-CoursPage')),
+    title: 'Cours - Chapitre 2 : Sommes, suites et produits',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/sommes-suites-exercices',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre2-SommesSuites-ExercicesPage')),
+    title: 'Exercices - Chapitre 2 : Sommes, suites et produits',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/fonctions-cours',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre3-Fonctions-CoursPage')),
+    title: 'Cours - Chapitre 3 : Fonctions',
     protected: false
   },
   {
@@ -398,15 +428,39 @@ export const routes: RouteConfig[] = [
     protected: false
   },
   {
+    path: '/formation/math/terminale-vers-prepa/derivees-cours',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre4-Derivees-CoursPage')),
+    title: 'Cours - Chapitre 4 : Dérivées',
+    protected: false
+  },
+  {
     path: '/formation/math/terminale-vers-prepa/derivees-exercices',
     component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre4-Derivees-ExercicesPage')),
     title: 'Exercices - Chapitre 4 : Dérivées',
     protected: false
   },
   {
+    path: '/formation/math/terminale-vers-prepa/integrales-cours',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre5-Integrales-CoursPage')),
+    title: 'Cours - Chapitre 5 : Intégrales',
+    protected: false
+  },
+  {
     path: '/formation/math/terminale-vers-prepa/integrale-exercices',
     component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre5-Integrale-ExercicesPage')),
     title: 'Exercices - Chapitre 5 : Intégrale',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/probabilites-cours',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre6-Probabilites-CoursPage')),
+    title: 'Cours - Chapitre 6 : Probabilités',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/matrices-cours',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre7-Matrices-CoursPage')),
+    title: 'Cours - Chapitre 7 : Matrices',
     protected: false
   },
   {

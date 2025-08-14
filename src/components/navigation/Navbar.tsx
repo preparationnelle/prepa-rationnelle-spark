@@ -169,7 +169,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
           ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200" 
           : "bg-white/90 backdrop-blur-sm shadow-sm border-b border-blue-100/30"
       )}>
-        <nav className="container mx-auto px-4 sm:px-6 py-4 flex items-center justify-between min-h-[64px] bg-white">
+        <nav className="container mx-auto px-4 sm:px-6 py-2 flex items-center justify-between min-h-[48px] bg-white">
           <Link to="/" className="flex items-center" onClick={closeMenu}>
             <Logo size="sm" />
           </Link>
@@ -243,7 +243,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
             <Link to="/apropos" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>À propos</Link>
             <Link to="/articles" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Articles</Link>
             <Link to="/contact" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Contact</Link>
-            <Link to="/stage-accompagnement" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Stage & Accompagnement</Link>
+            <Link to="/stage-accompagnement" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Offres</Link>
             <SearchTrigger />
             
             {/* Liens réseaux sociaux */}
@@ -338,7 +338,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
           <Link to="/apropos" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>À propos</Link>
           <Link to="/articles" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Articles</Link>
           <Link to="/contact" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Contact</Link>
-          <Link to="/stage-accompagnement" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Stage & Accompagnement</Link>
+          <Link to="/stage-accompagnement" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Offres</Link>
         </div>
         
         {/* Titre formations */}

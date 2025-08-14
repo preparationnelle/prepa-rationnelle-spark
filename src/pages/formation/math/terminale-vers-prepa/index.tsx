@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { BookOpen, Sigma, TrendingUp, FunctionSquare, Spline, AreaChart, Dices, Grid, Play } from 'lucide-react';
+import { BookOpen, Sigma, TrendingUp, FunctionSquare, Spline, AreaChart, Dices, Grid, Play, Target, ArrowRight } from 'lucide-react';
 
 const CHAPITRES = [
   { id: 1, slug: 'calculs', title: 'Calculs', icon: BookOpen },
@@ -46,6 +47,25 @@ const TerminaleVersPrepaPage = () => {
           </div>
         </Card>
 
+        {/* Introduction & Bilan */}
+        <Card className="border-0 shadow-xl bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 mb-8">
+          <CardContent className="pt-6 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-600 bg-clip-text text-transparent mb-4">
+              🎯 Guide complet de révisions
+            </h2>
+            <p className="text-slate-700 text-lg mb-6 max-w-2xl mx-auto">
+              Plan détaillé, l'essentiel à retenir, et stratégies pour une entrée sereine en prépa ECG
+            </p>
+            <Link to="/formation/math/terminale-vers-prepa/introduction-bilan">
+              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-6 py-3 rounded-lg hover:from-orange-600 hover:to-amber-600 transition-all duration-300 transform hover:scale-105 shadow-lg font-semibold">
+                <Target className="h-5 w-5" />
+                <span>Voir l'introduction & bilan complet</span>
+                <ArrowRight className="h-4 w-4" />
+              </div>
+            </Link>
+          </CardContent>
+        </Card>
+
         {/* Grille chapitres */}
         <div className="container mx-auto px-4 pb-16">
           <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent text-center">Chapitres à maîtriser</h2>
@@ -64,7 +84,15 @@ const TerminaleVersPrepaPage = () => {
                 <CardContent className="p-4 flex-grow flex flex-col justify-between">
                   <div className="flex flex-col sm:flex-row gap-2 mt-auto">
                     <a
-                      href={"#"}
+                      href={
+                        chap.slug === 'calculs' ? "/formation/math/terminale-vers-prepa/calculs-cours" :
+                        chap.slug === 'sommes-suites-produits' ? "/formation/math/terminale-vers-prepa/sommes-suites-cours" :
+                        chap.slug === 'fonctions' ? "/formation/math/terminale-vers-prepa/fonctions-cours" :
+                        chap.slug === 'derivées' ? "/formation/math/terminale-vers-prepa/derivees-cours" :
+                        chap.slug === 'integrale' ? "/formation/math/terminale-vers-prepa/integrales-cours" :
+                        chap.slug === 'probabilites' ? "/formation/math/terminale-vers-prepa/probabilites-cours" :
+                        chap.slug === 'matrice' ? "/formation/math/terminale-vers-prepa/matrices-cours" : "#"
+                      }
                       className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-2 rounded-lg shadow transition-colors"
                     >
                       <BookOpen className="w-5 h-5" />
@@ -73,6 +101,7 @@ const TerminaleVersPrepaPage = () => {
                     <a
                       href={
                         chap.slug === 'calculs' ? "/formation/math/terminale-vers-prepa/calculs-exercices" :
+                        chap.slug === 'sommes-suites-produits' ? "/formation/math/terminale-vers-prepa/sommes-suites-exercices" :
                         chap.slug === 'fonctions' ? "/formation/math/terminale-vers-prepa/fonctions-exercices" :
                         chap.slug === 'derivées' ? "/formation/math/terminale-vers-prepa/derivees-exercices" :
                         chap.slug === 'integrale' ? "/formation/math/terminale-vers-prepa/integrale-exercices" :
