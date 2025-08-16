@@ -11,7 +11,9 @@ import {
   Calculator, 
   Code, 
   GraduationCap, 
-  ArrowRight
+  ArrowRight,
+  Video,
+  Gift
 } from "lucide-react";
 
 export const OffersSection = () => {
@@ -87,6 +89,48 @@ export const OffersSection = () => {
 
         {/* Colonne droite — Offres listées */}
         <div className="space-y-6">
+          {/* Chapitres Libres - Nouvelle offre en premier */}
+          <Link to="/chapitres-libres" className="block">
+            <Card className="group hover:shadow-xl transition-all duration-300 border-l-4 border-green-500 bg-gradient-to-r from-green-50 to-emerald-50 backdrop-blur-sm hover:bg-white relative overflow-hidden">
+              <CardContent className="p-6">
+                <div className="absolute top-2 right-2">
+                  <span className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">LIBRE</span>
+                </div>
+                <div className="flex items-center gap-4 group-hover:scale-105 transition-transform">
+                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center group-hover:bg-green-200 transition-colors">
+                    <Video className="h-6 w-6 text-green-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-gray-800 group-hover:text-green-700 transition-colors mb-2">Chapitres Maths Gratuits !</h3>
+                    <p className="text-sm text-gray-600">Suites, Séries, Intégrales impropres - Cours + Exercices + Quiz</p>
+                  </div>
+                  <ArrowRight className="h-5 w-5 text-green-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
+
+          {/* Offre Gratuite */}
+          <Link to="/offre/gratuite" className="block">
+            <Card className="group hover:shadow-xl transition-all duration-300 border-l-4 border-purple-500 bg-gradient-to-r from-purple-50 to-pink-50 backdrop-blur-sm hover:bg-white relative overflow-hidden">
+              <CardContent className="p-6">
+                <div className="absolute top-2 right-2">
+                  <span className="bg-purple-500 text-white text-xs font-bold px-2 py-1 rounded-full">GRATUIT</span>
+                </div>
+                <div className="flex items-center gap-4 group-hover:scale-105 transition-transform">
+                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center group-hover:bg-purple-200 transition-colors">
+                    <Gift className="h-6 w-6 text-purple-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-gray-800 group-hover:text-purple-700 transition-colors mb-2">Sessions Live Gratuites !</h3>
+                    <p className="text-sm text-gray-600">Préparation rentrée ECG1/ECG2 - 15 & 16 août 2025</p>
+                  </div>
+                  <ArrowRight className="h-5 w-5 text-purple-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
+
           <Link to="/offre/organisation-ete" className="block">
             <Card className="group hover:shadow-xl transition-all duration-300 border-l-4 border-orange-500 bg-white/90 backdrop-blur-sm hover:bg-white">
               <CardContent className="p-6">

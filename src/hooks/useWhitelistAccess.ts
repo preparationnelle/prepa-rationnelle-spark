@@ -17,10 +17,11 @@ export const isWhitelisted = (email: string | null | undefined): boolean => {
 // Pages/sections protégées par liste blanche — un seul mécanisme (Maths & Python)
 // Zones protégées
 // - Exact: '/formation' (page d'entrée Python ECG)
-// - Préfixes: sous-pages Python
+// - Préfixes: sous-pages Python, formations Maths principales
 const PROTECTED_EXACT = ['/formation'];
 const PROTECTED_PREFIXES = ['/formation/python-'];
 const WHITELISTED_SECTIONS = [
+  '/formation/maths-methodologie',
   '/formation/maths-approfondies',
   '/formation/maths-appliquees',
 ];

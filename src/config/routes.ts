@@ -50,11 +50,7 @@ const MathsMethodologiePage = lazy(() => import('../pages/formation/math/MathsMe
 const MathsChoixOptionPage = lazy(() => import('../pages/formation/math/MathsChoixOptionPage'));
 const MathsLogiquePage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre1-LogiqueEtRaisonnementFondamentaux-CoursPage'));
 const PremiereVersDeuxiemePage = lazy(() => import('../pages/formation/math/premiere-vers-deuxieme/index'));
-  const Module1ApplicationsLineairesExercicesPage = lazy(() => import('../pages/formation/math/premiere-vers-deuxieme/Module1-ApplicationsLineaires-ExercicesPage'));
-  const Module2VecteurAleatoireExercicesPage = lazy(() => import('../pages/formation/math/premiere-vers-deuxieme/Module2-VecteurAleatoire-ExercicesPage'));
-  const Module3IntegraleImpropreExercicesPage = lazy(() => import('../pages/formation/math/premiere-vers-deuxieme/Module3-IntegraleImpropre-ExercicesPage'));
-  const Module4ComplementProbabilitesExercicesPage = lazy(() => import('../pages/formation/math/premiere-vers-deuxieme/Module4-ComplementProbabilites-ExercicesPage'));
-  const Module5VariableAleatoireExercicesPage = lazy(() => import('../pages/formation/math/premiere-vers-deuxieme/Module5-VariableAleatoire-ExercicesPage'));
+const Module1ApplicationsLineairesExercicesPage = lazy(() => import('../pages/formation/math/premiere-vers-deuxieme/Module1-ApplicationsLineaires-ExercicesPage'));
 
 // Math chapter pages - Semester 1
 const MathsEnsemblesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre2-EnsemblesEtApplications-CoursPage'));
@@ -103,6 +99,7 @@ const CoachingPythonPage = lazy(() => import('../pages/offres/CoachingPythonPage
 const CoachingMathsPage = lazy(() => import('../pages/offres/CoachingMathsPage'));
 const OrganisationEtePage = lazy(() => import('../pages/offres/OrganisationEtePage'));
 const PreparationCubePage = lazy(() => import('../pages/offres/PreparationCubePage'));
+const OffreGratuitePage = lazy(() => import('../pages/offres/OffreGratuitePage'));
 
 // Methodologie pages
 const MethodEntretiensPersonnalitePage = lazy(() => import('../pages/methodologie/MethodEntretiensPersonnalitePage'));
@@ -158,6 +155,7 @@ const TeacherCourseDetailPage = lazy(() => import('../pages/teacher/TeacherCours
 const TeacherCourseStudentsPage = lazy(() => import('../pages/teacher/TeacherCourseStudentsPage'));
 const TeacherCourseGradesPage = lazy(() => import('../pages/teacher/TeacherCourseGradesPage'));
 const TeacherCourseAssignmentPage = lazy(() => import('../pages/teacher/TeacherCourseAssignmentPage'));
+const ChapitresLibresPage = lazy(() => import('../pages/ChapitresLibresPage'));
 
 export interface RouteConfig {
   path: string;
@@ -248,12 +246,23 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-variables-aleatoires-discretes-lois-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Variables aléatoires discrètes & lois', protected: true },
   { path: '/formation/maths-convergences-theoremes-limites-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Convergences & théorèmes limites', protected: true },
   { path: '/formation/maths', component: MathsChoixOptionPage, title: 'Choix option Maths ECG' },
-  { path: '/formation/math/premiere-vers-deuxieme', component: PremiereVersDeuxiemePage, title: 'Première → Deuxième année' },
-  { path: '/formation/math/premiere-vers-deuxieme/module-1-applications-lineaires-exercices', component: Module1ApplicationsLineairesExercicesPage, title: 'Module 1 - Applications linéaires - Exercices' },
-  { path: '/formation/math/premiere-vers-deuxieme/module-2-vecteur-aleatoire-exercices', component: Module2VecteurAleatoireExercicesPage, title: 'Module 2 - Vecteur aléatoire - Exercices' },
-  { path: '/formation/math/premiere-vers-deuxieme/module-3-integrale-impropre-exercices', component: Module3IntegraleImpropreExercicesPage, title: 'Module 3 - Intégrale impropre - Exercices' },
-  { path: '/formation/math/premiere-vers-deuxieme/module-4-complement-probabilites-exercices', component: Module4ComplementProbabilitesExercicesPage, title: 'Module 4 - Complément de probabilités - Exercices' },
-  { path: '/formation/math/premiere-vers-deuxieme/module-5-variable-aleatoire-exercices', component: Module5VariableAleatoireExercicesPage, title: 'Module 5 - Variable aléatoire - Exercices' },
+  { path: '/formation/math/premiere-vers-deuxieme', component: PremiereVersDeuxiemePage, title: 'Première → Deuxième année', protected: false },
+  { path: '/formation/math/premiere-vers-deuxieme/module-1-applications-lineaires-exercices', component: Module1ApplicationsLineairesExercicesPage, title: 'Module 1 - Applications linéaires - Exercices', protected: false },
+  
+  // Page d'accueil des chapitres libres
+  { path: '/chapitres-libres', component: ChapitresLibresPage, title: 'Chapitres Libres d\'Accès', protected: false },
+  
+  // Chapitres libres d'accès issus de Maths Approfondies
+  { path: '/chapitres-libres/suites-cours', component: MathsSuitesPage, title: 'Cours - Suites numériques', protected: false },
+  { path: '/chapitres-libres/suites-exercices', component: Chapitre4SuitesExercicesPage, title: 'Exercices - Suites numériques', protected: false },
+  { path: '/chapitres-libres/suites-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Suites numériques', protected: false },
+  { path: '/chapitres-libres/series-cours', component: MathsSeriesPage, title: 'Cours - Séries numériques', protected: false },
+  { path: '/chapitres-libres/series-exercices', component: Chapitre13SeriesExercicesPage, title: 'Exercices - Séries numériques', protected: false },
+  { path: '/chapitres-libres/series-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Séries numériques', protected: false },
+  { path: '/chapitres-libres/integrales-impropres-cours', component: MathsIntegrationIntervallePage, title: 'Cours - Intégrales impropres', protected: false },
+  { path: '/chapitres-libres/integrales-impropres-exercices', component: Chapitre15IntegralesImpropresExercicesPage, title: 'Exercices - Intégrales impropres', protected: false },
+  { path: '/chapitres-libres/integrales-impropres-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Intégrales impropres', protected: false },
+
   { path: '/formation/maths-elements-de-logique', component: MathsLogiquePage, title: 'Chapitre 1 : Logique & raisonnement fondamentaux' },
   { path: '/formation/maths-ensembles', component: MathsEnsemblesPage, title: 'Maths - Ensembles et applications' },
   { path: '/formation/maths-ensembles-et-applications', component: MathsEnsemblesPage, title: 'Maths - Ensembles et applications' },
@@ -304,6 +313,7 @@ export const routes: RouteConfig[] = [
   { path: '/offre/coaching-maths', component: CoachingMathsPage, title: 'Coaching Maths' },
   { path: '/offre/organisation-ete', component: OrganisationEtePage, title: 'Organisation Été' },
   { path: '/offre/preparation-cube', component: PreparationCubePage, title: 'Préparation Cube' },
+  { path: '/offre/gratuite', component: OffreGratuitePage, title: 'Offre Gratuite - Sessions Live' },
   
   // Methodologie pages
   { path: '/methodologie/entretiens-personnalite', component: MethodEntretiensPersonnalitePage, title: 'Méthodologie Entretiens Personnalité' },
@@ -365,7 +375,7 @@ export const routes: RouteConfig[] = [
     path: '/formation/maths-methodologie', 
     component: lazy(() => import('../pages/formation/math/MathsMethodologiePage')),
     title: 'Méthodologie Mathématiques',
-    protected: false 
+    protected: true 
   },
   { 
     path: '/formation/maths-appliquees', 
@@ -487,22 +497,22 @@ export const MATHS_ROUTES = [
   {
     path: '/formation/maths-choix',
     component: lazy(() => import('@/pages/formation/math/MathsChoixOptionPage')),
-    protected: true
+    protected: false
   },
   {
     path: '/formation/maths-approfondies',
     component: lazy(() => import('@/pages/formation/math/MathsApprofondies/MathsApprofondiesPage')),
-    protected: true
+    protected: false
   },
   {
     path: '/formation/maths-methodologie',
     component: lazy(() => import('@/pages/formation/math/MathsMethodologiePage')),
-    protected: false
+    protected: true
   },
   {
     path: '/formation/maths-appliquees',
     component: lazy(() => import('@/pages/formation/math/MathsAppliquees/MathsAppliqueesPage')),
-    protected: true
+    protected: false
   },
 ];
 

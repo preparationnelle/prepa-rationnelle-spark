@@ -1,50 +1,86 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Home, ChevronRight, Move, Dices, AreaChart, Variable, Grid, Play } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Home, ChevronRight, Move, ArrowRight, Play, ExternalLink, BookOpen, Target, Calculator } from 'lucide-react';
+import BookingPopup from '@/components/BookingPopup';
 
-type ModuleCard = {
+type ChapitreLibre = {
   id: number;
   title: string;
+  description: string;
   icon: React.ComponentType<{ className?: string }>;
-  exercicesPath: string;
+  color: string;
+  paths: {
+    cours: string;
+    exercices: string;
+    quiz: string;
+  };
 };
 
-const MODULES: ModuleCard[] = [
+const CHAPITRES_LIBRES: ChapitreLibre[] = [
   {
     id: 1,
-    title: 'Application linéaire',
-    icon: Move,
-    exercicesPath: '/formation/math/premiere-vers-deuxieme/module-1-applications-lineaires-exercices',
+    title: 'Suites numériques',
+    description: 'Convergence, récurrence, et propriétés fondamentales des suites',
+    icon: Calculator,
+    color: 'blue',
+    paths: {
+      cours: '/chapitres-libres/suites-cours',
+      exercices: '/chapitres-libres/suites-exercices',
+      quiz: '/chapitres-libres/suites-quiz'
+    }
   },
   {
     id: 2,
-    title: 'Vecteur aléatoire',
-    icon: Grid,
-    exercicesPath: '/formation/math/premiere-vers-deuxieme/module-2-vecteur-aleatoire-exercices',
+    title: 'Séries numériques',
+    description: 'Critères de convergence et étude des séries infinies',
+    icon: Target,
+    color: 'green',
+    paths: {
+      cours: '/chapitres-libres/series-cours',
+      exercices: '/chapitres-libres/series-exercices',
+      quiz: '/chapitres-libres/series-quiz'
+    }
   },
   {
     id: 3,
-    title: 'Intégrale impropre',
-    icon: AreaChart,
-    exercicesPath: '/formation/math/premiere-vers-deuxieme/module-3-integrale-impropre-exercices',
+    title: 'Intégrales impropres',
+    description: 'Convergence et calculs d\'intégrales sur intervalles non bornés',
+    icon: BookOpen,
+    color: 'purple',
+    paths: {
+      cours: '/chapitres-libres/integrales-impropres-cours',
+      exercices: '/chapitres-libres/integrales-impropres-exercices',
+      quiz: '/chapitres-libres/integrales-impropres-quiz'
+    }
   },
   {
     id: 4,
-    title: 'Complément de probas',
-    icon: Dices,
-    exercicesPath: '/formation/math/premiere-vers-deuxieme/module-4-complement-probabilites-exercices',
-  },
-  {
-    id: 5,
-    title: 'Variable aléatoire',
-    icon: Variable,
-    exercicesPath: '/formation/math/premiere-vers-deuxieme/module-5-variable-aleatoire-exercices',
-  },
+    title: 'Applications linéaires',
+    description: 'Transformations linéaires, noyau, image et propriétés essentielles',
+    icon: Move,
+    color: 'orange',
+    paths: {
+      cours: '#',
+      exercices: '/formation/math/premiere-vers-deuxieme/module-1-applications-lineaires-exercices',
+      quiz: '#'
+    }
+  }
 ];
 
 const PremiereVersDeuxiemePage: React.FC = () => {
+  const [isBookingPopupOpen, setIsBookingPopupOpen] = useState(false);
+
+  const handleQuizClick = () => {
+    setIsBookingPopupOpen(true);
+  };
+
+  const handleCoursApplicationsClick = () => {
+    setIsBookingPopupOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-[#F0F8FF]">
       {/* Fil d'Ariane */}
@@ -78,34 +114,141 @@ const PremiereVersDeuxiemePage: React.FC = () => {
           </div>
         </Card>
 
-        {/* Grille modules */}
+
+
+        {/* Chapitres libres d'accès */}
         <div className="container mx-auto px-4 pb-16">
-          <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent text-center">5 modules d’exercices</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {MODULES.map((mod) => (
-              <Card key={mod.id} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 flex flex-col overflow-hidden border border-gray-100">
-                <CardHeader className="flex flex-row items-center gap-4 p-4 bg-gradient-to-r from-purple-50 to-blue-50">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
-                    {mod.icon && <mod.icon className="h-6 w-6 text-white" />}
-                  </div>
-                  <div>
-                    <Badge className="mb-1 bg-gradient-to-r from-purple-500 to-blue-600 text-white border-0 shadow-sm">Module {mod.id}</Badge>
-                    <CardTitle className="text-md font-bold text-gray-800 leading-tight">{mod.title}</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent className="p-4 flex-grow flex flex-col justify-between">
-                  <div className="flex flex-col sm:flex-row gap-2 mt-auto">
-                    <a href={mod.exercicesPath} className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold py-2 rounded-lg shadow transition-colors">
-                      <Play className="w-5 h-5" />
-                      Exercices
-                    </a>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-8 border border-green-200">
+            <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent text-center">
+              Autres chapitres essentiels (accès libre)
+            </h2>
+            <p className="text-gray-600 text-center mb-8 max-w-3xl mx-auto">
+              Pour compléter votre préparation, découvrez ces chapitres fondamentaux issus de la formation Maths Approfondies, 
+              maintenant <strong>gratuits et accessibles à tous</strong> !
+            </p>
+            
+            <div className="space-y-6 mb-8">
+              {CHAPITRES_LIBRES.map((chapitre) => {
+                const getColorClasses = () => {
+                  switch(chapitre.color) {
+                    case 'blue': return {
+                      bg: 'bg-blue-50',
+                      border: 'border-blue-200',
+                      icon: 'bg-blue-500',
+                      badge: 'bg-blue-500',
+                      title: 'text-blue-900'
+                    };
+                    case 'green': return {
+                      bg: 'bg-green-50',
+                      border: 'border-green-200',
+                      icon: 'bg-green-500',
+                      badge: 'bg-green-500',
+                      title: 'text-green-900'
+                    };
+                    case 'purple': return {
+                      bg: 'bg-purple-50',
+                      border: 'border-purple-200',
+                      icon: 'bg-purple-500',
+                      badge: 'bg-purple-500',
+                      title: 'text-purple-900'
+                    };
+                    case 'orange': return {
+                      bg: 'bg-orange-50',
+                      border: 'border-orange-200',
+                      icon: 'bg-orange-500',
+                      badge: 'bg-orange-500',
+                      title: 'text-orange-900'
+                    };
+                    default: return {
+                      bg: 'bg-gray-50',
+                      border: 'border-gray-200',
+                      icon: 'bg-gray-500',
+                      badge: 'bg-gray-500',
+                      title: 'text-gray-900'
+                    };
+                  }
+                };
+                
+                const colors = getColorClasses();
+                
+                return (
+                  <Card key={chapitre.id} className={`${colors.bg} ${colors.border} hover:shadow-lg transition-all duration-200`}>
+                    <CardContent className="p-6">
+                      <div className="flex flex-col lg:flex-row lg:items-center gap-6">
+                        {/* Header avec icône et titre */}
+                        <div className="flex items-center gap-4">
+                          <div className={`w-16 h-16 ${colors.icon} rounded-full flex items-center justify-center shadow-lg`}>
+                            <chapitre.icon className="h-8 w-8 text-white" />
+                          </div>
+                          <div>
+                            <Badge className={`mb-2 ${colors.badge} text-white border-0 shadow-sm`}>
+                              Chapitre {chapitre.id}
+                            </Badge>
+                            <h3 className={`text-xl font-bold ${colors.title} leading-tight`}>
+                              {chapitre.title}
+                            </h3>
+                            <p className="text-gray-600 text-sm mt-1">
+                              {chapitre.description}
+                            </p>
+                          </div>
+                        </div>
+                        
+                        {/* Boutons Cours, Quiz, Exercices */}
+                        <div className="flex flex-col sm:flex-row gap-3 lg:ml-auto">
+                          {chapitre.id === 4 ? (
+                            <Button 
+                              onClick={handleCoursApplicationsClick}
+                              className="w-full sm:w-auto bg-gray-800 hover:bg-gray-900 text-white px-6 py-2 rounded-lg shadow flex items-center justify-center gap-2"
+                            >
+                              <BookOpen className="w-4 h-4" />
+                              Cours
+                            </Button>
+                          ) : (
+                            <Link to={chapitre.paths.cours}>
+                              <Button className="w-full sm:w-auto bg-gray-800 hover:bg-gray-900 text-white px-6 py-2 rounded-lg shadow flex items-center justify-center gap-2">
+                                <BookOpen className="w-4 h-4" />
+                                Cours
+                              </Button>
+                            </Link>
+                          )}
+                          <Button 
+                            onClick={handleQuizClick}
+                            variant="outline" 
+                            className="w-full sm:w-auto border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-2 rounded-lg shadow flex items-center justify-center gap-2"
+                          >
+                            <Target className="w-4 h-4" />
+                            Quiz
+                          </Button>
+                          <Link to={chapitre.paths.exercices}>
+                            <Button className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-6 py-2 rounded-lg shadow flex items-center justify-center gap-2">
+                              <Play className="w-4 h-4" />
+                              Exercices
+                            </Button>
+                          </Link>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+
+            <div className="text-center">
+              <Link to="/chapitres-libres">
+                <Button variant="outline" className="border-green-500 text-green-600 hover:bg-green-50">
+                  Voir tous les chapitres libres
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
+      
+      <BookingPopup 
+        isOpen={isBookingPopupOpen} 
+        onClose={() => setIsBookingPopupOpen(false)} 
+      />
     </div>
   );
 };

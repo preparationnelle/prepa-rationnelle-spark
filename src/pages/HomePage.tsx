@@ -40,8 +40,8 @@ const HomePage: React.FC = () => {
                 
                 {/* Python - toujours visible */}
                 <Link to="/pourquoi-python-prepa-ecg" className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center">
-                  <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-3">
-                    <Code className="h-7 w-7 text-blue-600" />
+                  <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-3">
+                    <Code className="h-7 w-7 text-orange-600" />
                   </div>
                   <h3 className="font-semibold text-lg mb-1">Python</h3>
                   <p className="text-sm text-gray-500">+100 commandes et scripts essentiels</p>
