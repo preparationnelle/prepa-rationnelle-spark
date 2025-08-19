@@ -8,8 +8,11 @@ const AccesRestreintPage: React.FC = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const next = params.get('next') || '/formation/maths';
+  const section = params.get('section') || 'maths'; // python ou maths
   const safeNext = next.startsWith('/') ? next : '/formation/maths';
   const loginHref = `/login?next=${encodeURIComponent(safeNext)}`;
+
+  const isPythonSection = section === 'python';
 
   return (
     <div className="min-h-screen bg-[#F0F8FF] flex items-center justify-center p-4">
@@ -18,17 +21,29 @@ const AccesRestreintPage: React.FC = () => {
           <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <Lock className="w-8 h-8 text-orange-500" />
           </div>
-          <CardTitle className="text-2xl font-bold text-gray-900">Accès restreint</CardTitle>
-          <p className="text-gray-600 mt-2">Cette section est réservée aux utilisateurs autorisés</p>
+          <CardTitle className="text-2xl font-bold text-gray-900">
+            {isPythonSection ? 'Connexion requise' : 'Accès restreint'}
+          </CardTitle>
+          <p className="text-gray-600 mt-2">
+            {isPythonSection 
+              ? 'Connectez-vous pour accéder aux formations Python'
+              : 'Cette section est réservée aux utilisateurs autorisés'
+            }
+          </p>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
             <div className="flex items-start gap-3">
               <AlertTriangle className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
               <div className="text-sm">
-                <p className="font-medium text-orange-800 mb-1">Section protégée</p>
+                <p className="font-medium text-orange-800 mb-1">
+                  {isPythonSection ? 'Formation Python' : 'Section protégée'}
+                </p>
                 <p className="text-orange-700">
-                  Les formations Maths et Python ne sont accessibles qu'aux utilisateurs inscrits sur la liste blanche.
+                  {isPythonSection 
+                    ? 'Les formations Python sont accessibles gratuitement à tous les utilisateurs connectés.'
+                    : 'Les formations Maths ne sont accessibles qu\'aux utilisateurs inscrits sur la liste blanche.'
+                  }
                 </p>
               </div>
             </div>
@@ -44,14 +59,24 @@ const AccesRestreintPage: React.FC = () => {
                 <span className="w-1.5 h-1.5 bg-orange-500 rounded-full"></span>
                 Connectez-vous avec votre compte
               </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-orange-500 rounded-full"></span>
-                Votre email doit être dans la liste autorisée
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-orange-500 rounded-full"></span>
-                Contactez l'équipe pour demander l'accès
-              </li>
+              {!isPythonSection && (
+                <>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 bg-orange-500 rounded-full"></span>
+                    Votre email doit être dans la liste autorisée
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 bg-orange-500 rounded-full"></span>
+                    Contactez l'équipe pour demander l'accès
+                  </li>
+                </>
+              )}
+              {isPythonSection && (
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-orange-500 rounded-full"></span>
+                  Accès libre après inscription !
+                </li>
+              )}
             </ul>
           </div>
 
@@ -59,9 +84,16 @@ const AccesRestreintPage: React.FC = () => {
             <Button asChild className="bg-orange-500 hover:bg-orange-600 text-white flex-1">
               <Link to={loginHref}>Se connecter</Link>
             </Button>
-            <Button asChild variant="outline" className="flex-1">
-              <a href="mailto:preparationnelle@gmail.com">Demander l'accès</a>
-            </Button>
+            {!isPythonSection && (
+              <Button asChild variant="outline" className="flex-1">
+                <a href="mailto:preparationnelle@gmail.com">Demander l'accès</a>
+              </Button>
+            )}
+            {isPythonSection && (
+              <Button asChild variant="outline" className="flex-1">
+                <Link to={`/register?next=${encodeURIComponent(safeNext)}`}>S'inscrire</Link>
+              </Button>
+            )}
           </div>
 
           <div className="text-center pt-4 border-t border-gray-200">

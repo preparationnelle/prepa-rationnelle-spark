@@ -1,7 +1,8 @@
 
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
+import { useWhitelistAccess, isWhitelisted } from '@/hooks/useWhitelistAccess';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -18,7 +19,9 @@ const RegisterPage = () => {
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const { register } = useAuth();
+  const { isPythonSection, isMathsSection } = useWhitelistAccess();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,8 +45,34 @@ const RegisterPage = () => {
     try {
       setLoading(true);
       await register(email, password, name, phone);
-      // Rediriger vers la page du générateur après inscription
-      navigate('/generator');
+      
+      // Récupérer ?next= depuis l'URL pour rediriger vers la page d'origine
+      const params = new URLSearchParams(location.search);
+      const next = params.get('next');
+
+      if (next && next.startsWith('/')) {
+        // Si nous avons une destination spécifique
+        if (isPythonSection(next)) {
+          // Pour Python : accès libre après inscription
+          navigate(next, { replace: true });
+        } else if (isMathsSection(next)) {
+          // Pour Maths : vérifier la liste blanche
+          const normalizedEmail = email.trim().toLowerCase();
+          const hasAccess = isWhitelisted(normalizedEmail);
+          
+          if (hasAccess) {
+            navigate(next, { replace: true });
+          } else {
+            navigate(`/acces-restreint?next=${encodeURIComponent(next)}&section=maths`, { replace: true });
+          }
+        } else {
+          // Pour les autres pages, redirection directe
+          navigate(next, { replace: true });
+        }
+      } else {
+        // Pas de destination spécifique → rediriger vers l'accueil
+        navigate('/', { replace: true });
+      }
     } catch (err: any) {
       setError(err.message || "Une erreur est survenue lors de l'inscription.");
     } finally {

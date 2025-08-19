@@ -14,13 +14,12 @@ export const isWhitelisted = (email: string | null | undefined): boolean => {
   return WHITELISTED_EMAILS.includes(normalized);
 };
 
-// Pages/sections protégées par liste blanche — un seul mécanisme (Maths & Python)
-// Zones protégées
-// - Exact: '/formation' (page d'entrée Python ECG)
-// - Préfixes: sous-pages Python, formations Maths principales
-const PROTECTED_EXACT = ['/formation'];
-const PROTECTED_PREFIXES = ['/formation/python-'];
-const WHITELISTED_SECTIONS = [
+// Sections Python (accès libre après connexion)
+const PYTHON_SECTIONS = ['/formation'];
+const PYTHON_PREFIXES = ['/formation/python-'];
+
+// Sections Maths (protection par liste blanche)
+const MATHS_WHITELISTED_SECTIONS = [
   '/formation/maths-methodologie',
   '/formation/maths-approfondies',
   '/formation/maths-appliquees',
@@ -48,7 +47,8 @@ export const useWhitelistAccess = () => {
         return;
       }
 
-      // Vérifier si l'email est dans la liste blanche
+      // Pour les sections Maths : vérifier la liste blanche
+      // Pour les sections Python : accès libre après connexion
       const allowed = isWhitelisted(currentUser.email);
 
       setHasAccess(allowed);
@@ -58,32 +58,27 @@ export const useWhitelistAccess = () => {
     checkAccess();
   }, [currentUser, loading]);
 
-  const isSectionProtected = (path: string): boolean => {
-    // Normaliser le path (supprimer trailing slash)
+  const isPythonSection = (path: string): boolean => {
     const normalized = path.endsWith('/') && path.length > 1 ? path.slice(0, -1) : path;
+    return PYTHON_SECTIONS.includes(normalized) || 
+           PYTHON_PREFIXES.some((prefix) => normalized.startsWith(prefix));
+  };
 
-    // 1) Protection exacte (ne doit PAS attraper '/formations')
-    if (PROTECTED_EXACT.includes(normalized)) {
-      return true;
-    }
+  const isMathsSection = (path: string): boolean => {
+    const normalized = path.endsWith('/') && path.length > 1 ? path.slice(0, -1) : path;
+    return MATHS_WHITELISTED_SECTIONS.some((section) => normalized.startsWith(section));
+  };
 
-    // 2) Protection par préfixe pour toutes les sous-pages Python
-    if (PROTECTED_PREFIXES.some((prefix) => normalized.startsWith(prefix))) {
-      return true;
-    }
-
-    // 3) Protection Maths (préfixe)
-    if (WHITELISTED_SECTIONS.some((section) => normalized.startsWith(section))) {
-      return true;
-    }
-
-    return false;
+  const isSectionProtected = (path: string): boolean => {
+    return isPythonSection(path) || isMathsSection(path);
   };
 
   return {
     hasAccess,
     isLoading,
     isSectionProtected,
+    isPythonSection,
+    isMathsSection,
     whitelistedEmails: WHITELISTED_EMAILS,
   };
 }; 

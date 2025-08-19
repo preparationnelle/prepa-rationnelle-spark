@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
-import { isWhitelisted } from '@/hooks/useWhitelistAccess';
+import { isWhitelisted, useWhitelistAccess } from '@/hooks/useWhitelistAccess';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -17,6 +17,7 @@ const LoginPage = () => {
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const { login } = useAuth();
+  const { isPythonSection, isMathsSection } = useWhitelistAccess();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -32,34 +33,46 @@ const LoginPage = () => {
     try {
       setLoading(true);
       await login(email, password);
+      
+      // Attendre que l'état utilisateur soit bien disponible
+      let tries = 0;
+      let userReady = false;
+      while (tries < 10 && !userReady) {
+        const { data } = await supabase.auth.getUser();
+        if (data.user) {
+          userReady = true;
+          break;
+        }
+        await new Promise(r => setTimeout(r, 100));
+        tries += 1;
+      }
+
       // Récupérer ?next= depuis l'URL
       const params = new URLSearchParams(location.search);
       const next = params.get('next');
-      const normalizedEmail = email.trim().toLowerCase();
-      const hasAccess = isWhitelisted(normalizedEmail);
 
-      if (hasAccess) {
-        // Attendre que l'état utilisateur soit bien disponible pour éviter le double sas
-        let tries = 0;
-        let userReady = false;
-        while (tries < 10 && !userReady) {
-          const { data } = await supabase.auth.getUser();
-          if (data.user) {
-            userReady = true;
-            break;
-          }
-          await new Promise(r => setTimeout(r, 100));
-          tries += 1;
-        }
-
-        if (next && next.startsWith('/')) {
+      if (next && next.startsWith('/')) {
+        // Si nous avons une destination spécifique
+        if (isPythonSection(next)) {
+          // Pour Python : accès libre après connexion
           navigate(next, { replace: true });
+        } else if (isMathsSection(next)) {
+          // Pour Maths : vérifier la liste blanche
+          const normalizedEmail = email.trim().toLowerCase();
+          const hasAccess = isWhitelisted(normalizedEmail);
+          
+          if (hasAccess) {
+            navigate(next, { replace: true });
+          } else {
+            navigate(`/acces-restreint?next=${encodeURIComponent(next)}&section=maths`, { replace: true });
+          }
         } else {
-          navigate('/formation/maths-choix', { replace: true });
+          // Pour les autres pages, redirection directe
+          navigate(next, { replace: true });
         }
       } else {
-        const target = next && next.startsWith('/') ? next : '/formation/maths-choix';
-        navigate(`/acces-restreint?next=${encodeURIComponent(target)}`, { replace: true });
+        // Pas de destination spécifique → rediriger vers l'accueil
+        navigate('/', { replace: true });
       }
     } catch (err: any) {
       setError(err.message || 'Une erreur est survenue lors de la connexion.');

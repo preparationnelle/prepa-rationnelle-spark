@@ -1,8 +1,12 @@
-# 🔒 Gating par Liste Blanche - Maths & Python
+# 🔒 Contrôle d'Accès aux Formations - Maths & Python
 
 ## 🎯 **Objectif**
 
-Les sections/pages **Formations → Maths** et **Formations → Python** sont visibles dans la navigation et sur la page d'accueil, mais affichent une page d'accès restreint quand on clique dessus si l'utilisateur n'est pas connecté ou si son email n'est pas dans la liste autorisée.
+### Python : Accès Libre Après Connexion ✨
+Les formations **Python** sont désormais **accessibles gratuitement** à tous les utilisateurs après simple inscription et connexion.
+
+### Maths : Protection par Liste Blanche 🔐  
+Les formations **Maths** restent protégées par liste blanche et nécessitent une autorisation spécifique.
 
 ## 📧 **Liste Blanche Initiale**
 
@@ -17,7 +21,9 @@ dimitrovdimitar556@gmail.com
 - **Fichier** : `src/hooks/useWhitelistAccess.ts`
 - **Fonctionnalités** :
   - ✅ Vérification de l'authentification utilisateur
-  - ✅ Validation de l'email contre la liste blanche
+  - ✅ **NOUVEAU** : Distinction Python/Maths dans la logique d'accès
+  - ✅ **NOUVEAU** : Accès libre Python pour utilisateurs connectés
+  - ✅ Validation de l'email contre la liste blanche (Maths uniquement)
   - ✅ Détection des sections protégées
   - ✅ État de chargement
 
@@ -25,43 +31,88 @@ dimitrovdimitar556@gmail.com
 - **Fichier** : `src/components/WhitelistProtectedRoute.tsx`
 - **Fonctionnalités** :
   - ✅ Protection automatique des routes
-  - ✅ Interface d'accès restreint
+  - ✅ **NOUVEAU** : Logique séparée Python vs Maths
+  - ✅ Interface d'accès restreint différentiée
   - ✅ Redirection vers connexion
   - ✅ Design cohérent avec la DA
 
-### **3. Intégration dans l'App**
+### **3. Page d'Accès Restreint**
+- **Fichier** : `src/pages/AccesRestreintPage.tsx`
+- **Fonctionnalités** :
+  - ✅ **NOUVEAU** : Messages différenciés Python/Maths
+  - ✅ **NOUVEAU** : Interface adaptée selon le type de section
+  - ✅ **NOUVEAU** : Bouton d'inscription pour Python
+
+### **4. Intégration dans l'App**
 - **Fichier** : `src/App.tsx`
 - **Fonctionnalités** :
   - ✅ Protection globale de toutes les routes
   - ✅ Vérification automatique des sections protégées
 
-## 🛡️ **Sections Protégées**
+## 🛡️ **Sections et Accès**
 
-### **Routes Protégées**
+### **🐍 Routes Python - Accès Libre**
 ```
-/formation/math
-/formation/maths
-/formation/python
-/formation/python/
-/formation/math/
-/formation/maths/
+/formation              → Accès libre après connexion
+/formation/python-*     → Accès libre après connexion
 ```
 
-### **Pages Impactées**
-- ✅ Toutes les pages sous `/formation/maths/*`
-- ✅ Toutes les pages sous `/formation/python/*`
+### **📊 Routes Maths - Liste Blanche**
+```
+/formation/maths-methodologie    → Nécessite liste blanche
+/formation/maths-approfondies    → Nécessite liste blanche  
+/formation/maths-appliquees      → Nécessite liste blanche
+```
+
+### **📄 Pages Impactées**
+
+#### Python (Accès Libre) ✨
+- ✅ Page principale `/formation`
+- ✅ Toutes les pages sous `/formation/python-*`
 - ✅ Pages de référence Python
 - ✅ Pages d'exercices Python
+- ✅ Flashcards et quiz Python
+
+#### Maths (Liste Blanche) 🔐
+- ✅ Toutes les pages sous `/formation/maths-*`
 - ✅ Pages de cours Maths
+- ✅ Exercices et quiz Maths
 
 ## 🎨 **Interface Utilisateur**
 
 ### **1. Navigation - Liens Toujours Visibles**
 - ✅ **Navbar** : Liens Maths et Python toujours visibles dans le menu Formations
 - ✅ **Page d'accueil** : Cartes Maths et Python toujours visibles
-- ✅ **Comportement** : Clic → Page d'accès restreint si non autorisé
+- ✅ **Comportement** : Clic → Page d'accès appropriée selon le type
 
-### **2. Page d'Accès Restreint**
+### **2. Page d'Accès - Comportements Différenciés**
+
+#### Pour Python ✨
+- 👤 **Utilisateur non connecté** : Page "Connexion requise" avec bouton inscription
+- ✅ **Utilisateur connecté** : Accès direct et libre
+
+#### Pour Maths 🔐
+- 👤 **Utilisateur non connecté** : Page "Accès restreint" 
+- ❌ **Utilisateur connecté (pas whitelisté)** : Page "Accès restreint"
+- ✅ **Utilisateur whitelisté** : Accès direct
+
+## 🚀 **Flux d'Accès Mis à Jour**
+
+### **Accès Python - Simple et Ouvert**
+```
+1. Utilisateur clique sur Python
+2. Si non connecté → Page "Connexion requise" 
+3. Utilisateur s'inscrit ou se connecte
+4. ✅ Accès immédiat à toutes les formations Python
+```
+
+### **Accès Maths - Contrôlé** 
+```
+1. Utilisateur clique sur Maths  
+2. Si non connecté → Connexion requise
+3. Si connecté mais pas whitelisté → Page "Accès restreint"
+4. Si whitelisté → ✅ Accès aux formations Maths
+```
 ```
 ┌─────────────────────────────────────────┐
 │ 🔒 Accès restreint                      │
