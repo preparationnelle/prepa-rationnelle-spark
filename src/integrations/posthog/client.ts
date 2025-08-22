@@ -7,9 +7,9 @@ export const initPostHog = () => {
     // Initialise PostHog après que le thread est idle pour ne pas bloquer le first paint
     const start = () => {
       posthog.init(
-        import.meta.env.VITE_POSTHOG_KEY || 'ph_disabled',
+        'phx_WuSstYiK9zBuLMrTxDi0qzKp9tGLA9p0aaH2XnQ4BcQ1emk',
         {
-          api_host: import.meta.env.VITE_POSTHOG_HOST || 'https://eu.i.posthog.com',
+          api_host: 'https://eu.posthog.com',
           capture_pageview: false,
           persistence: 'localStorage',
           person_profiles: 'identified_only',

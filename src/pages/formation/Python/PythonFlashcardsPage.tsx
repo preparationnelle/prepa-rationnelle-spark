@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Home, ChevronRight, RefreshCw, ChevronLeft, HelpCircle, Maximize, Minimize, RotateCcw, ArrowRight, ArrowLeft, Space, Enter } from 'lucide-react';
+import { Home, ChevronRight, RefreshCw, ChevronLeft, HelpCircle, Maximize, Minimize, RotateCcw, ArrowRight, ArrowLeft, Space } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
 import PythonNavigationTabs from '@/components/formation/PythonNavigationTabs';

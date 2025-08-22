@@ -13,7 +13,7 @@ const MathsChoixOptionPage = () => {
       try {
         const { data: { user } } = await supabase.auth.getUser();
         if (user) {
-          const { data: preference } = await supabase
+          const { data: preference } = await (supabase as any)
             .from('user_preferences')
             .select('math_option')
             .eq('user_id', user.id)
@@ -41,7 +41,7 @@ const MathsChoixOptionPage = () => {
     // Enregistrer la préférence en base en arrière-plan
     supabase.auth.getUser().then(({ data: { user } }) => {
       if (user) {
-        supabase
+        (supabase as any)
           .from('user_preferences')
           .upsert({
             user_id: user.id,
