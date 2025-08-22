@@ -1197,7 +1197,7 @@ const ContinentAfricainPage = () => {
                             <strong>Pôles urbains dynamiques, interfaces avec le monde :</strong>
                             <ul className="mt-1 space-y-1">
                               <li>• Concentration infrastructures, services, réseaux numériques/financiers</li>
-                              <li>• 63% Subsahariens ruraux, mais >50% citadins vivent en bidonvilles</li>
+                              <li>• 63% Subsahariens ruraux, mais &gt;50% citadins vivent en bidonvilles</li>
                             </ul>
                             <div className="bg-blue-50 p-2 rounded mt-2">
                               <strong>Exemple :</strong> Johannesburg → 1ère bourse financière Afrique, ville connectée flux mondiaux

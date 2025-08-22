@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
-import { Home, ChevronRight, BookOpen, Globe, Quote, AlertTriangle } from 'lucide-react';
+import { Home, ChevronRight, BookOpen, Globe, Quote, AlertTriangle, CheckCircle } from 'lucide-react';
 
 const AmeriqueLatinePage = () => {
   return (
@@ -502,7 +502,7 @@ const AmeriqueLatinePage = () => {
                           
                           <div className="bg-blue-50 p-4 rounded-lg">
                             <h6 className="font-semibold text-blue-700 mb-2">Reprimarisation depuis les années 2000</h6>
-                            <p class="text-sm text-gray-700 mb-2">
+                            <p className="text-sm text-gray-700 mb-2">
                               <strong>Concept de José Antonio Ocampo :</strong> "reprimarisation" → retour à une économie fondée sur l'exportation de matières premières.
                             </p>
                             <p className="text-sm text-gray-700">
@@ -1085,7 +1085,7 @@ const AmeriqueLatinePage = () => {
                         <div className="space-y-4">
                           <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
                             <h6 className="font-semibold text-amber-800 mb-2">L'Amérique latine devient un "grenier du monde"</h6>
-                            <p class="text-sm text-gray-700 mb-3">
+                            <p className="text-sm text-gray-700 mb-3">
                               Dès le XIXᵉ siècle, exportation massive de matières premières vers l'Europe et l'Amérique du Nord :
                             </p>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
@@ -1188,7 +1188,7 @@ const AmeriqueLatinePage = () => {
                         <div className="space-y-4">
                           <div className="bg-purple-50 p-4 rounded-lg">
                             <h6 className="font-semibold text-purple-700 mb-2">Financement des programmes sociaux</h6>
-                            <p class="text-sm text-gray-700 mb-2">
+                            <p className="text-sm text-gray-700 mb-2">
                               Les bénéfices tirés des matières premières permettent aux gouvernements de financer 
                               des programmes sociaux ambitieux.
                             </p>
@@ -1249,7 +1249,7 @@ const AmeriqueLatinePage = () => {
                         <div className="space-y-4">
                           <div className="bg-orange-50 p-4 rounded-lg">
                             <h6 className="font-semibold text-orange-700 mb-2">Fragilisation des gouvernements de gauche</h6>
-                            <p class="text-sm text-gray-700 mb-2">
+                            <p className="text-sm text-gray-700 mb-2">
                               Le ralentissement économique fragilise les gouvernements de gauche et entraîne des tensions sociales.
                             </p>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
@@ -1605,7 +1605,7 @@ const AmeriqueLatinePage = () => {
                         <div className="space-y-4">
                           <div className="bg-red-50 p-4 rounded-lg">
                             <h6 className="font-semibold text-red-700 mb-2">Mécanismes de vulnérabilité</h6>
-                            <p class="text-sm text-gray-700 mb-2">
+                            <p className="text-sm text-gray-700 mb-2">
                               Les crises économiques en Amérique latine sont souvent déclenchées par des facteurs extérieurs :
                             </p>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
@@ -1623,7 +1623,7 @@ const AmeriqueLatinePage = () => {
                         <div className="space-y-4">
                           <div className="bg-orange-50 p-4 rounded-lg">
                             <h6 className="font-semibold text-orange-700 mb-2">Dépendance au marché américain</h6>
-                            <p class="text-sm text-gray-700 mb-2">
+                            <p className="text-sm text-gray-700 mb-2">
                               En 1929, les États-Unis étaient le débouché principal de l'Amérique latine :
                             </p>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
@@ -1723,7 +1723,7 @@ const AmeriqueLatinePage = () => {
                         <div className="space-y-4">
                           <div className="bg-purple-50 p-4 rounded-lg">
                             <h6 className="font-semibold text-purple-700 mb-2">Un État parallèle depuis les années 1980</h6>
-                            <p class="text-sm text-gray-700 mb-2">
+                            <p className="text-sm text-gray-700 mb-2">
                               Le narcotrafic est devenu un État parallèle en Amérique latine, contrecarrant l'autorité des gouvernements.
                             </p>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
@@ -1814,7 +1814,7 @@ const AmeriqueLatinePage = () => {
                         <div className="space-y-4">
                           <div className="bg-blue-50 p-4 rounded-lg">
                             <h6 className="font-semibold text-blue-700 mb-2">Phénomène historique récurrent</h6>
-                            <p class="text-sm text-gray-700 mb-2">
+                            <p className="text-sm text-gray-700 mb-2">
                               Le populisme en Amérique latine est un phénomène historique qui répond aux crises sociales et économiques.
                             </p>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
