@@ -118,6 +118,35 @@ const FormationsOverviewPage = () => {
               </Card>
             </Link>
 
+            {/* Formation Espagnol */}
+            <Link to="/formation/espagnol" className="group">
+              <Card className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-orange-200">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                      <Languages className="h-6 w-6 text-orange-600" />
+                    </div>
+                    <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
+                      Espagnol ECG
+                    </CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 mb-4">
+                    Perfectionnez votre espagnol avec méthodes ciblées, grammaire avancée et préparation intensive aux concours.
+                  </p>
+                  <div className="space-y-2 mb-4">
+                    <div className="text-sm text-orange-600">✓ Grammaire et conjugaison</div>
+                    <div className="text-sm text-orange-600">✓ Thèmes et versions</div>
+                    <div className="text-sm text-orange-600">✓ Expression écrite et orale</div>
+                  </div>
+                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full">
+                    Voir la formation →
+                  </Button>
+                </CardContent>
+              </Card>
+            </Link>
+
             {/* Formation Allemand */}
             <Link to="/formation/allemand" className="group">
               <Card className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-red-200">

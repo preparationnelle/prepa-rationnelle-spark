@@ -185,6 +185,48 @@ export const FormationsSection = () => {
             </Card>
           </Link>
 
+          {/* Formation Espagnol */}
+          <Link to="/formation/espagnol" className="group">
+            <Card className="h-full bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-orange-200 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <CardHeader className="relative z-10">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
+                    <Languages className="h-6 w-6 text-orange-600" />
+                  </div>
+                  <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
+                    Espagnol ECG
+                  </CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent className="relative z-10">
+                <p className="text-gray-600 mb-4">
+                  Perfectionnez votre espagnol avec méthodes ciblées, grammaire avancée et préparation intensive aux concours.
+                </p>
+                <div className="space-y-2 mb-4">
+                  <div className="text-sm text-orange-600 flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4" />
+                    Grammaire et conjugaison
+                  </div>
+                  <div className="text-sm text-orange-600 flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4" />
+                    Thèmes et versions
+                  </div>
+                  <div className="text-sm text-orange-600 flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4" />
+                    Expression écrite et orale
+                  </div>
+                </div>
+                <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full group-hover:scale-105 transition-all duration-300">
+                  <span className="flex items-center gap-2">
+                    Voir la formation
+                    <TrendingUp className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Button>
+              </CardContent>
+            </Card>
+          </Link>
+
           {/* Formation Géopolitique */}
           <Link to="/formation/geopolitique" className="group">
             <Card className="h-full bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-orange-200 relative overflow-hidden">

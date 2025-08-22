@@ -1,0 +1,214 @@
+import React from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
+import { Languages, BookOpen, FileText, List, Play, FlipHorizontal, Home, ChevronRight } from 'lucide-react';
+
+const FormationAllemandGrammairePage = () => {
+  const grammarModules = [
+    {
+      id: 1,
+      title: "Adjektivdeklination",
+      description: "Meistern Sie die drei Deklinationsarten (schwach, gemischt, stark) mit vollständigen Tabellen und praktischen Übungen.",
+      topics: [
+        "Schwache Deklination (der/die/das + Adj.)",
+        "Gemischte Deklination (ein/kein + Adj.)",
+        "Starke Deklination (Adj. allein)",
+        "Regeln und Merkhilfen"
+      ],
+      link: "/formation/allemand-declinaisons",
+      icon: FileText,
+      color: "bg-blue-500"
+    },
+    {
+      id: 2,
+      title: "Der Relativsatz",
+      description: "Relativpronomen, Bezugswörter, Konstruktion der Relativsätze und Umwandlung in Partizipialsätze.",
+      topics: [
+        "Tabelle der Relativpronomen",
+        "Wahl des richtigen Pronomens (Genus und Kasus)",
+        "Übersetzung von 'dont' ins Deutsche",
+        "Partizipialsätze"
+      ],
+      link: "/formation/allemand-relatives",
+      icon: FileText,
+      color: "bg-green-500"
+    },
+    {
+      id: 3,
+      title: "Das Passiv im Deutschen",
+      description: "Vorgangspassiv (werden), Zustandspassiv (sein), Passiv mit Modalverben und Behandlung des Agens.",
+      topics: [
+        "Vorgangspassiv (werden + Part. II)",
+        "Zustandspassiv (sein + Part. II)",
+        "Passiv mit Modalverben",
+        "Agens (von) vs. Mittel (durch)"
+      ],
+      link: "/formation/allemand-passif",
+      icon: FileText,
+      color: "bg-red-500"
+    },
+    {
+      id: 4,
+      title: "Satzstruktur",
+      description: "Wortstellung, Verbpositionen, Inversion und Konstruktion der Nebensätze.",
+      topics: [
+        "Die drei Verbpositionen",
+        "Satzklammer (Verbalklammer)",
+        "Reihenfolge der Ergänzungen (T-L-M)",
+        "Verneinung mit 'nicht'"
+      ],
+      link: "/formation/allemand-structure",
+      icon: FileText,
+      color: "bg-indigo-500"
+    },
+    {
+      id: 5,
+      title: "Wiederkehrende Grammatikpunkte",
+      description: "Vollständige Liste der wesentlichen Grammatikregeln, die für die Prüfungen zu beherrschen sind.",
+      topics: [
+        "26 wesentliche Grammatikpunkte",
+        "Nebensatzkonstruktionen",
+        "Deklinationen und Präpositionen",
+        "Häufige Fehler zu vermeiden"
+      ],
+      link: "/formation/allemand-recurrents",
+      icon: List,
+      color: "bg-amber-500"
+    },
+    {
+      id: 6,
+      title: "Unregelmäßige Verben",
+      description: "Wiederholen Sie mehr als 120 unregelmäßige deutsche Verben mit interaktiven Lernkarten.",
+      topics: [
+        "Mehr als 120 wesentliche Verben",
+        "Alle Konjugationsformen",
+        "Intuitive Navigation",
+        "Lern- und Suchmodus"
+      ],
+      link: "/formation/allemand-verbes",
+      icon: FlipHorizontal,
+      color: "bg-yellow-500",
+      badge: "Flashcards"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Fil d'Ariane */}
+      <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+        <div className="container mx-auto px-4 py-2">
+          <div className="flex items-center text-xs font-medium text-gray-600">
+            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+              <Home className="h-3 w-3" />
+              <span>Accueil</span>
+            </Link>
+            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
+            <Link to="/formation/allemand" className="hover:text-gray-900 transition-colors">
+              Formation Allemand
+            </Link>
+            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
+            <span className="text-gray-900 font-bold">Grammaire</span>
+          </div>
+        </div>
+      </nav>
+
+      <div className="container mx-auto px-4 py-12">
+        <div className="text-center mb-10">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
+            <div className="p-3 rounded-lg bg-red-600 text-white">
+              <BookOpen className="h-9 w-9" />
+            </div>
+            Deutsche Grammatik
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Beherrschen Sie alle wesentlichen Grammatikpunkte für den Erfolg bei Ihren ECG-Wettbewerben
+          </p>
+          <div className="flex justify-center gap-2 mt-4">
+            <Badge variant="secondary">6 fiches complètes</Badge>
+            <Badge variant="outline">Exercices inclus</Badge>
+            <Badge className="bg-red-600">Niveau Prépa</Badge>
+          </div>
+        </div>
+
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Vollständige Grammatikblätter</h2>
+          <div className="grid gap-6">
+            {grammarModules.map((module) => (
+              <Card key={module.id} className="border-2 hover:border-red-500/50 transition-colors shadow-md">
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className={`p-4 rounded-lg ${module.color} text-white shadow-lg`}>
+                        <module.icon className="h-7 w-7" />
+                      </div>
+                      <div>
+                        <CardTitle className="flex items-center gap-3">
+                          <span className="text-2xl font-bold text-gray-800">
+                            {module.title}
+                          </span>
+                          {module.badge && (
+                            <Badge className="bg-red-600 text-white">{module.badge}</Badge>
+                          )}
+                        </CardTitle>
+                        <p className="text-muted-foreground mt-2 text-base">{module.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid md:grid-cols-2 gap-4 mb-6">
+                    {module.topics.map((topic, index) => (
+                      <div key={index} className="flex items-center gap-2 p-3 bg-red-50 rounded-lg border border-red-200">
+                        <div className="w-2 h-2 bg-red-500 rounded-full flex-shrink-0"></div>
+                        <span className="text-sm font-medium text-red-800">{topic}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Link to={module.link}>
+                    <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 text-base">
+                      <Play className="mr-2 h-5 w-5" />
+                      Consulter la fiche complète
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        <Card className="border-2 border-red-200 bg-gradient-to-r from-red-50 to-red-100/50 shadow-lg">
+          <CardHeader>
+            <CardTitle className="text-xl flex items-center gap-2 text-red-800">
+              <Languages className="h-5 w-5" />
+              Tipps für die deutsche Grammatik
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="text-red-700 space-y-4">
+            <p className="leading-relaxed">
+              Die deutsche Grammatik mag komplex erscheinen, aber ein methodisches Vorgehen ermöglicht es, sie effektiv zu beherrschen. 
+              Jedes Blatt präsentiert die Regeln klar mit konkreten Beispielen und Anwendungsübungen.
+            </p>
+            <div className="grid md:grid-cols-3 gap-4">
+              <div className="p-4 border border-red-300 rounded-lg bg-white shadow-sm">
+                <h3 className="font-semibold text-red-900 mb-2">1. Deklinationen</h3>
+                <p className="text-sm text-red-700">Grundlage: Beherrschen Sie zuerst die 3 Deklinationsarten.</p>
+              </div>
+              <div className="p-4 border border-red-300 rounded-lg bg-white shadow-sm">
+                <h3 className="font-semibold text-red-900 mb-2">2. Struktur</h3>
+                <p className="text-sm text-red-700">Verstehen Sie die Wortstellung und die Verbpositionen.</p>
+              </div>
+              <div className="p-4 border border-red-300 rounded-lg bg-white shadow-sm">
+                <h3 className="font-semibold text-red-900 mb-2">3. Praxis</h3>
+                <p className="text-sm text-red-700">Wiederholen Sie regelmäßig die unregelmäßigen Verben mit den Lernkarten.</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+};
+
+export default FormationAllemandGrammairePage;

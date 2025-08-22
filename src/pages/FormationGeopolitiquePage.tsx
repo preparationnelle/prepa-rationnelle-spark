@@ -1,17 +1,17 @@
-
 import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Link } from "react-router-dom";
-import { Globe, Target, Newspaper, FileText, ExternalLink, Sparkles, CheckCircle } from 'lucide-react';
+import { Link, useNavigate } from "react-router-dom";
+import { Globe, Target, Newspaper, FileText, ExternalLink, Sparkles, CheckCircle, BookOpen } from 'lucide-react';
 import { GeopoliticsGenerator } from '@/components/generator/GeopoliticsGenerator';
 import { GeopoliticsFlashcards } from '@/components/GeopoliticsFlashcards';
 import { GeopoliticsReferences } from '@/components/GeopoliticsReferences';
 
 const FormationGeopolitiquePage = () => {
   const [language] = useState<'fr' | 'en'>('fr');
+  const navigate = useNavigate();
 
   const programmeModules = [
     {
@@ -72,14 +72,142 @@ const FormationGeopolitiquePage = () => {
         </div>
       </div>
 
+      {/* Navigation par Chapitres */}
+      <div className="mb-10">
+        <h2 className="text-center text-3xl font-bold text-gray-800 mb-8">Choisissez votre niveau d'étude</h2>
+        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Sélectionnez l'année correspondant à votre niveau pour accéder au programme détaillé des modules de géopolitique.
+        </p>
+        
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <Card 
+            className="p-6 hover:shadow-lg transition-all duration-200 bg-white cursor-pointer transform hover:-translate-y-1"
+            onClick={() => navigate('/formation/geopolitique/premiere-annee')}
+            role="button"
+            tabIndex={0}
+          >
+            <div className="flex flex-col h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <BookOpen className="w-6 h-6 text-blue-600" />
+                </div>
+                <h2 className="text-2xl font-semibold text-blue-600">Première Année</h2>
+              </div>
+              <p className="text-gray-600 mb-6 flex-grow">
+                Modules 1 & 2 : Les grandes mutations du monde (1913 à nos jours) et la mondialisation contemporaine. Formation aux méthodes et concepts de base de la géopolitique.
+              </p>
+              <div className="bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg text-center hover:bg-blue-700 transition-colors">
+                Accéder aux modules
+              </div>
+            </div>
+          </Card>
+
+          <Card 
+            className="p-6 hover:shadow-lg transition-all duration-200 bg-white cursor-pointer transform hover:-translate-y-1"
+            onClick={() => navigate('/formation/geopolitique/deuxieme-annee')}
+            role="button"
+            tabIndex={0}
+          >
+            <div className="flex flex-col h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                  <Globe className="w-6 h-6 text-orange-600" />
+                </div>
+                <h2 className="text-2xl font-semibold text-orange-600">Deuxième Année</h2>
+              </div>
+              <p className="text-gray-600 mb-6 flex-grow">
+                Modules 3 & 4 : Géodynamiques régionales de l'Union européenne, de l'Afrique, du Proche et Moyen-Orient, des Amériques et de l'Asie. Approche synthétique par aires géographiques.
+              </p>
+              <div className="bg-orange-600 text-white font-semibold py-3 px-4 rounded-lg text-center hover:bg-orange-700 transition-colors">
+                Accéder aux modules
+              </div>
+            </div>
+          </Card>
+        </div>
+
+        {/* Module transversal - Sujets probables */}
+        <div className="mt-8 max-w-4xl mx-auto">
+          <Card 
+            className="p-6 hover:shadow-lg transition-all duration-200 bg-white cursor-pointer transform hover:-translate-y-1 border-l-4 border-green-500"
+            onClick={() => navigate('/formation/geopolitique/sujets-probables')}
+            role="button"
+            tabIndex={0}
+          >
+            <div className="flex flex-col h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                  <Target className="w-6 h-6 text-green-600" />
+                </div>
+                <h2 className="text-2xl font-semibold text-green-600">Pronostics géopolitiques 2025</h2>
+              </div>
+              <p className="text-gray-600 mb-6 flex-grow">
+                Découvrez les sujets les plus probables pour les concours 2025, analysés par des experts. Entraînez-vous avec des plans détaillés et des développements complets sur les thématiques prioritaires.
+              </p>
+              <div className="bg-green-600 text-white font-semibold py-3 px-4 rounded-lg text-center hover:bg-green-700 transition-colors">
+                Découvrir les pronostics 2025
+              </div>
+            </div>
+          </Card>
+        </div>
+
+        {/* Module transversal - Chronologie de l'Europe */}
+        <div className="mt-8 max-w-4xl mx-auto">
+          <Card 
+            className="p-6 hover:shadow-lg transition-all duration-200 bg-white cursor-pointer transform hover:-translate-y-1 border-l-4 border-blue-500"
+            onClick={() => navigate('/formation/geopolitique/chronologie-europe')}
+            role="button"
+            tabIndex={0}
+          >
+            <div className="flex flex-col h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <Globe className="w-6 h-6 text-blue-600" />
+                </div>
+                <h2 className="text-2xl font-semibold text-blue-600">Chronologie de l'Europe</h2>
+              </div>
+              <p className="text-gray-600 mb-6 flex-grow">
+                Maîtrisez l'histoire européenne de 1648 à nos jours : des traités de Westphalie à la construction européenne contemporaine. Tous les événements clés chronologiquement organisés.
+              </p>
+              <div className="bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg text-center hover:bg-blue-700 transition-colors">
+                Explorer la chronologie européenne
+              </div>
+            </div>
+          </Card>
+        </div>
+
+        {/* Module transversal - Amérique latine */}
+        <div className="mt-8 max-w-4xl mx-auto">
+          <Card 
+            className="p-6 hover:shadow-lg transition-all duration-200 bg-white cursor-pointer transform hover:-translate-y-1 border-l-4 border-amber-500"
+            onClick={() => navigate('/formation/geopolitique/amerique-latine')}
+            role="button"
+            tabIndex={0}
+          >
+            <div className="flex flex-col h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center">
+                  <Globe className="w-6 h-6 text-amber-600" />
+                </div>
+                <h2 className="text-2xl font-semibold text-amber-600">Amérique latine</h2>
+              </div>
+              <p className="text-gray-600 mb-6 flex-grow">
+                Émergences, crises, intégrations régionales et géopolitique du sous-continent latino-américain. Entre rêve d'unité, influences extérieures et instabilités internes.
+              </p>
+              <div className="bg-amber-600 text-white font-semibold py-3 px-4 rounded-lg text-center hover:bg-amber-700 transition-colors">
+                Accéder au cours →
+              </div>
+            </div>
+          </Card>
+        </div>
+      </div>
+
       <Tabs defaultValue="programme" className="w-full">
-        <TabsList className="grid w-full grid-cols-6 mb-8">
+        <TabsList className="grid w-full grid-cols-5 mb-8">
           <TabsTrigger value="programme">Programme</TabsTrigger>
           <TabsTrigger value="flashcards">Flashcards</TabsTrigger>
           <TabsTrigger value="generateurs">Générateur</TabsTrigger>
           <TabsTrigger value="references">Références</TabsTrigger>
           <TabsTrigger value="actualites">Actualités</TabsTrigger>
-          <TabsTrigger value="ressources">Ressources</TabsTrigger>
         </TabsList>
 
         {/* Programme */}
@@ -173,42 +301,6 @@ const FormationGeopolitiquePage = () => {
               </div>
             </CardContent>
           </Card>
-        </TabsContent>
-
-        {/* Ressources */}
-        <TabsContent value="ressources">
-          <div className="grid md:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Outils d'entraînement</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <Link to="/generator/geopolitics" className="block p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                  <h3 className="font-semibold mb-2">Générateur Géopolitique</h3>
-                  <p className="text-sm text-muted-foreground">Créez des analyses et des fiches personnalisées</p>
-                </Link>
-                <Link to="/generator/geopolitics-unified" className="block p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                  <h3 className="font-semibold mb-2">Générateur Unifié</h3>
-                  <p className="text-sm text-muted-foreground">Pipeline complet pour cours + sujets + veille</p>
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>À propos de la formation</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4">
-                  Cette formation vise l'autonomie méthodologique et l'actualisation continue des connaissances. Elle combine cours structurés, veille et entraînement.
-                </p>
-                <Link to="/formations" className="inline-flex items-center gap-2 text-orange-700 hover:underline">
-                  <ExternalLink className="h-4 w-4" />
-                  Découvrir nos autres formations
-                </Link>
-              </CardContent>
-            </Card>
-          </div>
         </TabsContent>
       </Tabs>
     </div>

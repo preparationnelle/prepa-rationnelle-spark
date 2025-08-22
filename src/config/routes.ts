@@ -18,7 +18,22 @@ const PythonFlashcardsPage = lazy(() => import('../pages/formation/Python/Python
 const PythonExercicesPage = lazy(() => import('../pages/formation/Python/PythonExercicesPage'));
 const PythonQuizPage = lazy(() => import('../pages/formation/Python/PythonQuizPage'));
 const FormationAnglaisPage = lazy(() => import('../pages/FormationAnglaisPage'));
+const FormationEspagnolPage = lazy(() => import('../pages/FormationEspagnolPage'));
+const FormationEspagnolGrammairePage = lazy(() => import('../pages/formation/espagnol/FormationEspagnolGrammairePage'));
+const FormationEspagnolCivilisationPage = lazy(() => import('../pages/formation/espagnol/FormationEspagnolCivilisationPage'));
 const FormationAllemandPage = lazy(() => import('../pages/FormationAllemandPage'));
+const FormationAllemandGrammairePage = lazy(() => import('../pages/formation/allemand/FormationAllemandGrammairePage'));
+const FormationAllemandCivilisationPage = lazy(() => import('../pages/formation/allemand/FormationAllemandCivilisationPage'));
+const VocabulairePolitiqueFlashcardsPage = lazy(() => import('../pages/formation/allemand/VocabulairePolitiqueFlashcardsPage'));
+const VocabulaireDemographieFlashcardsPage = lazy(() => import('../pages/formation/allemand/VocabulaireDemographieFlashcardsPage'));
+const VocabulaireEcologieFlashcardsPage = lazy(() => import('../pages/formation/allemand/VocabulaireEcologieFlashcardsPage'));
+const VocabulaireGeopolitiqueFlashcardsPage = lazy(() => import('../pages/formation/allemand/VocabulaireGeopolitiqueFlashcardsPage'));
+const VocabulaireWirtschaftFlashcardsPage = lazy(() => import('../pages/formation/allemand/VocabulaireWirtschaftFlashcardsPage'));
+const VocabulaireKulturFlashcardsPage = lazy(() => import('../pages/formation/allemand/VocabulaireKulturFlashcardsPage'));
+const VocabulaireBildungFlashcardsPage = lazy(() => import('../pages/formation/allemand/VocabulaireBildungFlashcardsPage'));
+const VocabulaireInnovationFlashcardsPage = lazy(() => import('../pages/formation/allemand/VocabulaireInnovationFlashcardsPage'));
+const VocabulaireFrauenFlashcardsPage = lazy(() => import('../pages/formation/allemand/VocabulaireFrauenFlashcardsPage'));
+const VocabulaireGeschichteFlashcardsPage = lazy(() => import('../pages/formation/allemand/VocabulaireGeschichteFlashcardsPage'));
 const DeclinaisonsPage = lazy(() => import('../pages/formation/allemand/DeclinaisonsPage'));
 const RelativePage = lazy(() => import('../pages/formation/allemand/RelativePage'));
 const PassifPage = lazy(() => import('../pages/formation/allemand/PassifPage'));
@@ -26,6 +41,15 @@ const StructurePage = lazy(() => import('../pages/formation/allemand/StructurePa
 const RecurrentsPage = lazy(() => import('../pages/formation/allemand/RecurrentsPage'));
 const VerbIrregulierPage = lazy(() => import('../pages/formation/allemand/VerbIrregulierPage'));
 const FormationGeopolitiquePage = lazy(() => import('../pages/FormationGeopolitiquePage'));
+const GeopolitiquePremiereAnneePage = lazy(() => import('../pages/formation/geopolitique/GeopolitiquePremiereAnneePage'));
+const GeopolitiqueDeuxiemeAnneePage = lazy(() => import('../pages/formation/geopolitique/GeopolitiqueDeuxiemeAnneePage'));
+const GeopolitiqueSujetsProbablesPage = lazy(() => import('../pages/formation/geopolitique/GeopolitiqueSujetsProbablesPage'));
+const ContinentAfricainPage = lazy(() => import('../pages/formation/geopolitique/ContinentAfricainPage'));
+const ContinentAfricainChronologiePage = lazy(() => import('../pages/formation/geopolitique/ContinentAfricainChronologiePage'));
+const ProcheMoyenOrientPage = lazy(() => import('../pages/formation/geopolitique/ProcheMoyenOrientPage'));
+const ChronologieEuropePage = lazy(() => import('../pages/formation/geopolitique/ChronologieEuropePage'));
+const UnionEuropeennePageSimple = lazy(() => import('../pages/formation/geopolitique/UnionEuropeennePageSimple'));
+const AmeriqueLatinePage = lazy(() => import('../pages/formation/geopolitique/AmeriqueLatinePage'));
 const FormationCultureGeneralePage = lazy(() => import('../pages/FormationCultureGeneralePage'));
 const NosOffresPage = lazy(() => import('../pages/NosOffresPage'));
 const AproposPage = lazy(() => import('../pages/AproposPage'));
@@ -208,7 +232,22 @@ export const routes: RouteConfig[] = [
   
   // Formation pages
   { path: '/formation/anglais', component: FormationAnglaisPage, title: 'Formation Anglais' },
+  { path: '/formation/espagnol', component: FormationEspagnolPage, title: 'Formation Espagnol' },
+  { path: '/formation/espagnol/grammaire', component: FormationEspagnolGrammairePage, title: 'Grammaire Espagnole' },
+  { path: '/formation/espagnol/civilisation', component: FormationEspagnolCivilisationPage, title: 'Civilisation Hispanique' },
   { path: '/formation/allemand', component: FormationAllemandPage, title: 'Formation Allemand' },
+  { path: '/formation/allemand/grammaire', component: FormationAllemandGrammairePage, title: 'Grammaire Allemande' },
+  { path: '/formation/allemand/civilisation', component: FormationAllemandCivilisationPage, title: 'Civilisation Allemande' },
+  { path: '/formation/allemand/vocabulaire-politique', component: VocabulairePolitiqueFlashcardsPage, title: 'Vocabulaire Politique - Flashcards' },
+  { path: '/formation/allemand/vocabulaire-demographie', component: VocabulaireDemographieFlashcardsPage, title: 'Vocabulaire Démographie - Flashcards' },
+  { path: '/formation/allemand/vocabulaire-ecologie', component: VocabulaireEcologieFlashcardsPage, title: 'Vocabulaire Écologie - Flashcards' },
+  { path: '/formation/allemand/vocabulaire-geopolitique', component: VocabulaireGeopolitiqueFlashcardsPage, title: 'Vocabulaire Géopolitique - Flashcards' },
+  { path: '/formation/allemand/vocabulaire-wirtschaft', component: VocabulaireWirtschaftFlashcardsPage, title: 'Vocabulaire Économie - Flashcards' },
+  { path: '/formation/allemand/vocabulaire-kultur', component: VocabulaireKulturFlashcardsPage, title: 'Vocabulaire Culture - Flashcards' },
+  { path: '/formation/allemand/vocabulaire-bildung', component: VocabulaireBildungFlashcardsPage, title: 'Vocabulaire Éducation - Flashcards' },
+  { path: '/formation/allemand/vocabulaire-innovation', component: VocabulaireInnovationFlashcardsPage, title: 'Vocabulaire Innovation - Flashcards' },
+  { path: '/formation/allemand/vocabulaire-frauen', component: VocabulaireFrauenFlashcardsPage, title: 'Vocabulaire Femmes - Flashcards' },
+  { path: '/formation/allemand/vocabulaire-geschichte', component: VocabulaireGeschichteFlashcardsPage, title: 'Vocabulaire Histoire - Flashcards' },
   { path: '/formation/allemand-declinaisons', component: DeclinaisonsPage, title: 'Les Déclinaisons de l\'Adjectif' },
   { path: '/formation/allemand-relatives', component: RelativePage, title: 'La Proposition Relative' },
   { path: '/formation/allemand-passif', component: PassifPage, title: 'Le Passif en Allemand' },
@@ -217,6 +256,15 @@ export const routes: RouteConfig[] = [
   { path: '/formation/allemand-verbes', component: VerbIrregulierPage, title: 'Verbes Irréguliers Allemands' },
   { path: '/formation/culture-generale', component: FormationCultureGeneralePage, title: 'Formation Culture Générale' },
   { path: '/formation/geopolitique', component: FormationGeopolitiquePage, title: 'Formation Géopolitique' },
+  { path: '/formation/geopolitique/premiere-annee', component: GeopolitiquePremiereAnneePage, title: 'Géopolitique - Première Année' },
+  { path: '/formation/geopolitique/deuxieme-annee', component: GeopolitiqueDeuxiemeAnneePage, title: 'Géopolitique - Deuxième Année' },
+  { path: '/formation/geopolitique/sujets-probables', component: GeopolitiqueSujetsProbablesPage, title: 'Pronostics Géopolitiques 2025' },
+  { path: '/formation/geopolitique/continent-africain', component: ContinentAfricainPage, title: 'Continent Africain' },
+  { path: '/formation/geopolitique/continent-africain/chronologie', component: ContinentAfricainChronologiePage, title: 'Chronologie - Continent Africain' },
+  { path: '/formation/geopolitique/proche-moyen-orient', component: ProcheMoyenOrientPage, title: 'Proche et Moyen-Orient' },
+  { path: '/formation/geopolitique/chronologie-europe', component: ChronologieEuropePage, title: 'Chronologie de l\'Europe' },
+  { path: '/formation/geopolitique/union-europeenne', component: UnionEuropeennePageSimple, title: 'Union européenne' },
+  { path: '/formation/geopolitique/amerique-latine', component: AmeriqueLatinePage, title: 'Amérique latine' },
   { path: '/formation/python-fondamentaux', component: PythonFundamentalsPage, title: 'Python Fondamentaux' },
   { path: '/formation/python-matrices', component: PythonMatricesPage, title: 'Python Matrices' },
   { path: '/formation/python-analyse', component: PythonAnalysePage, title: 'Python Analyse' },

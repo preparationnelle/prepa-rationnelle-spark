@@ -4,19 +4,22 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { Languages, BookOpen, Target, FileText, List, Play, ExternalLink, FlipHorizontal } from 'lucide-react';
+import { Languages, BookOpen, Target, FileText, List, Play, ExternalLink, FlipHorizontal, Globe, Users, Leaf, Building } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const FormationAllemandPage = () => {
+  const navigate = useNavigate();
+  
   const generatorModules = [
     {
       id: 1,
-      title: "Thème Grammatical",
-      description: "Générateur et correcteur de thèmes de traduction avec phrases spécialisées et notation détaillée instantanée.",
+      title: "Grammatische Themen",
+      description: "Generator und Korrektor für Übersetzungsthemen mit spezialisierten Sätzen und detaillierte sofortige Bewertung.",
       topics: [
-        "Phrases de presse spécialisées",
-        "Correction IA détaillée avec scoring",
-        "Règles grammaticales personnalisées",
-        "Suivi des erreurs et progression"
+        "Spezialisierte Pressesätze",
+        "Detaillierte KI-Korrektur mit Bewertung",
+        "Personalisierte Grammatikregeln",
+        "Fehlerverfolgung und Fortschritt"
       ],
       link: "/generator/theme-grammar",
       icon: Target,
@@ -25,13 +28,13 @@ const FormationAllemandPage = () => {
     },
     {
       id: 2,
-      title: "Paragraphes d'Allemand",
-      description: "Générez des paragraphes argumentatifs de 150 mots en allemand avec vocabulaire clé à partir d'articles de presse.",
+      title: "Deutsche Paragraphen",
+      description: "Erstellen Sie argumentative Paragraphen von 150 Wörtern auf Deutsch mit Schlüsselvokabular aus Presseartikeln.",
       topics: [
-        "Paragraphes de 150 mots",
-        "Vocabulaire spécialisé",
-        "Analyse d'articles de presse",
-        "Idées argumentatives structurées"
+        "Paragraphen mit 150 Wörtern",
+        "Spezialisiertes Vokabular",
+        "Analyse von Presseartikeln",
+        "Strukturierte argumentative Ideen"
       ],
       link: "/generator/languages",
       icon: Languages,
@@ -43,13 +46,13 @@ const FormationAllemandPage = () => {
   const grammarModules = [
     {
       id: 1,
-      title: "Les Déclinaisons de l'Adjectif",
-      description: "Maîtrisez les trois types de déclinaisons (faible, mixte, forte) avec tableaux complets et exercices pratiques.",
+      title: "Adjektivdeklination",
+      description: "Meistern Sie die drei Deklinationsarten (schwach, gemischt, stark) mit vollständigen Tabellen und praktischen Übungen.",
       topics: [
-        "Déclinaison faible (der/die/das + adj.)",
-        "Déclinaison mixte (ein/kein + adj.)",
-        "Déclinaison forte (adj. seul)",
-        "Règles et mémos mnémotechniques"
+        "Schwache Deklination (der/die/das + Adj.)",
+        "Gemischte Deklination (ein/kein + Adj.)",
+        "Starke Deklination (Adj. allein)",
+        "Regeln und Merkhilfen"
       ],
       link: "/formation/allemand-declinaisons",
       icon: FileText,
@@ -57,13 +60,13 @@ const FormationAllemandPage = () => {
     },
     {
       id: 2,
-      title: "La Proposition Relative",
-      description: "Pronoms relatifs, antécédents, construction des relatives et transformation en relatives participiales.",
+      title: "Der Relativsatz",
+      description: "Relativpronomen, Bezugswörter, Konstruktion der Relativsätze und Umwandlung in Partizipialsätze.",
       topics: [
-        "Tableau des pronoms relatifs",
-        "Choix du bon pronom (genre et cas)",
-        "Traduction de 'dont' en allemand",
-        "Relatives participiales"
+        "Tabelle der Relativpronomen",
+        "Wahl des richtigen Pronomens (Genus und Kasus)",
+        "Übersetzung von 'dont' ins Deutsche",
+        "Partizipialsätze"
       ],
       link: "/formation/allemand-relatives",
       icon: FileText,
@@ -71,13 +74,13 @@ const FormationAllemandPage = () => {
     },
     {
       id: 3,
-      title: "Le Passif en Allemand",
-      description: "Passif d'action (werden), passif d'état (sein), passif modal et gestion de l'agent.",
+      title: "Das Passiv im Deutschen",
+      description: "Vorgangspassiv (werden), Zustandspassiv (sein), Passiv mit Modalverben und Behandlung des Agens.",
       topics: [
         "Vorgangspassiv (werden + Part. II)",
         "Zustandspassiv (sein + Part. II)",
-        "Passif avec modaux",
-        "Agent (von) vs moyen (durch)"
+        "Passiv mit Modalverben",
+        "Agens (von) vs. Mittel (durch)"
       ],
       link: "/formation/allemand-passif",
       icon: FileText,
@@ -85,13 +88,13 @@ const FormationAllemandPage = () => {
     },
     {
       id: 4,
-      title: "Structure de la Phrase",
-      description: "Ordre des mots, positions du verbe, inversion et construction des subordonnées.",
+      title: "Satzstruktur",
+      description: "Wortstellung, Verbpositionen, Inversion und Konstruktion der Nebensätze.",
       topics: [
-        "Les trois positions du verbe",
-        "Klammer (parenthèse verbale)",
-        "Ordre des compléments (T-L-M)",
-        "Négation avec 'nicht'"
+        "Die drei Verbpositionen",
+        "Satzklammer (Verbalklammer)",
+        "Reihenfolge der Ergänzungen (T-L-M)",
+        "Verneinung mit 'nicht'"
       ],
       link: "/formation/allemand-structure",
       icon: FileText,
@@ -99,13 +102,13 @@ const FormationAllemandPage = () => {
     },
     {
       id: 5,
-      title: "Points de Grammaire Récurrents",
-      description: "Liste complète des règles grammaticales essentielles à maîtriser pour les concours.",
+      title: "Wiederkehrende Grammatikpunkte",
+      description: "Vollständige Liste der wesentlichen Grammatikregeln, die für die Prüfungen zu beherrschen sind.",
       topics: [
-        "26 points grammaticaux essentiels",
-        "Constructions subordonnées",
-        "Déclinaisons et prépositions",
-        "Erreurs fréquentes à éviter"
+        "26 wesentliche Grammatikpunkte",
+        "Nebensatzkonstruktionen",
+        "Deklinationen und Präpositionen",
+        "Häufige Fehler zu vermeiden"
       ],
       link: "/formation/allemand-recurrents",
       icon: List,
@@ -113,13 +116,13 @@ const FormationAllemandPage = () => {
     },
     {
       id: 6,
-      title: "Verbes Irréguliers",
-      description: "Révisez plus de 120 verbes irréguliers allemands avec des flashcards interactives.",
+      title: "Unregelmäßige Verben",
+      description: "Wiederholen Sie mehr als 120 unregelmäßige deutsche Verben mit interaktiven Lernkarten.",
       topics: [
-        "Plus de 120 verbes essentiels",
-        "Toutes les formes de conjugaison",
-        "Navigation intuitive",
-        "Mode apprentissage et recherche"
+        "Mehr als 120 wesentliche Verben",
+        "Alle Konjugationsformen",
+        "Intuitive Navigation",
+        "Lern- und Suchmodus"
       ],
       link: "/formation/allemand-verbes",
       icon: FlipHorizontal,
@@ -135,10 +138,10 @@ const FormationAllemandPage = () => {
           <div className="p-3 rounded-lg bg-red-600 text-white">
             <Languages className="h-8 w-8" />
           </div>
-          Formation Allemand
+          Deutschausbildung
         </h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Formation complète en allemand pour les concours des Grandes Écoles de Commerce : générateurs IA et fiches de grammaire détaillées
+          Vollständige Deutschausbildung für Wirtschaftshochschul-Wettbewerbe: KI-Generatoren und detaillierte Grammatikblätter
         </p>
         <div className="flex justify-center gap-2 mt-4">
           <Badge variant="secondary">Niveau prépa</Badge>
@@ -147,15 +150,74 @@ const FormationAllemandPage = () => {
         </div>
       </div>
 
+      {/* Navigation vers les sections principales - EN PREMIER */}
+      <div className="mb-16">
+        <h2 className="text-center text-3xl font-bold text-gray-800 mb-8">Entdecken Sie die Ausbildungsmodule</h2>
+        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Wählen Sie Ihr Studiengebiet für den Zugang zu detaillierten und thematisch strukturierten Inhalten.
+        </p>
+        
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <Card 
+            className="p-6 hover:shadow-lg transition-all duration-200 bg-white cursor-pointer transform hover:-translate-y-1"
+            onClick={() => navigate('/formation/allemand/grammaire')}
+            role="button"
+            tabIndex={0}
+          >
+            <div className="flex flex-col h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                  <BookOpen className="w-6 h-6 text-red-600" />
+                </div>
+                <h2 className="text-2xl font-semibold text-red-600">Grammatik</h2>
+              </div>
+              <p className="text-gray-600 mb-6 flex-grow">
+                Beherrschen Sie alle wesentlichen Grammatikpunkte: Deklinationen, Relativsätze, Passiv, Satzstruktur und unregelmäßige Verben. 6 vollständige Blätter mit Übungen.
+              </p>
+              <div className="bg-red-600 text-white font-semibold py-3 px-4 rounded-lg text-center hover:bg-red-700 transition-colors">
+                Accéder aux fiches de grammaire
+              </div>
+            </div>
+          </Card>
+
+          <Card 
+            className="p-6 hover:shadow-lg transition-all duration-200 bg-white cursor-pointer transform hover:-translate-y-1"
+            onClick={() => navigate('/formation/allemand/civilisation')}
+            role="button"
+            tabIndex={0}
+          >
+            <div className="flex flex-col h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <Globe className="w-6 h-6 text-blue-600" />
+                </div>
+                <h2 className="text-2xl font-semibold text-blue-600">Landeskunde</h2>
+              </div>
+              <p className="text-gray-600 mb-6 flex-grow">
+                Entdecken Sie das zeitgenössische Deutschland: Politik, Demografie, Ökologie und europäische Geopolitik. 4 aktualisierte thematische Module.
+              </p>
+              <div className="bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg text-center hover:bg-blue-700 transition-colors">
+                Découvrir la civilisation allemande
+              </div>
+            </div>
+          </Card>
+        </div>
+      </div>
+
       {/* Section Générateurs */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-          <Target className="h-6 w-6 text-primary" />
-          Générateurs Intelligents
-        </h2>
-        <div className="grid gap-6">
+      <div className="mb-16">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold mb-4 flex items-center justify-center gap-3">
+            <div className="p-3 rounded-lg bg-orange-600 text-white">
+              <Target className="h-6 w-6" />
+            </div>
+            Intelligente Generatoren
+          </h2>
+          <p className="text-muted-foreground">KI-Tools für praktisches Training und automatische Korrektur</p>
+        </div>
+        <div className="grid gap-6 max-w-4xl mx-auto">
           {generatorModules.map((module) => (
-            <Card key={module.id} className="border-2 hover:border-primary/50 transition-colors">
+            <Card key={module.id} className="border-2 hover:border-orange-500/50 transition-colors">
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-4">
@@ -192,64 +254,26 @@ const FormationAllemandPage = () => {
         </div>
       </div>
 
-      {/* Section Fiches de Grammaire */}
-      <div>
-        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-          <BookOpen className="h-6 w-6 text-primary" />
-          Fiches de Grammaire
-        </h2>
-        <div className="grid gap-6">
-          {grammarModules.map((module) => (
-            <Card key={module.id} className="border-2 hover:border-primary/50 transition-colors">
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className={`p-3 rounded-lg ${module.color} text-white`}>
-                      <module.icon className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <CardTitle className="flex items-center gap-2">
-                        <span className="text-xl font-semibold text-primary">
-                          {module.title}
-                        </span>
-                        <Badge variant="outline">Fiche complète</Badge>
-                      </CardTitle>
-                    </div>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4">{module.description}</p>
-                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-6">
-                  {module.topics.map((topic, index) => (
-                    <li key={index}>{topic}</li>
-                  ))}
-                </ul>
-                <Link to={module.link}>
-                  <Button variant="outline" className="w-full border-2 hover:bg-primary hover:text-white transition-all duration-300">
-                    <Play className="mr-2 h-4 w-4" />
-                    Consulter la fiche
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-
       {/* Note informative */}
-      <div className="mt-12 p-6 bg-red-50 border border-red-200 rounded-lg">
-        <div className="flex items-start gap-3">
-          <Languages className="h-6 w-6 text-red-600 mt-1 flex-shrink-0" />
-          <div>
-            <h3 className="font-semibold text-red-800 mb-2">Formation Allemand LV2</h3>
-            <p className="text-red-700 text-sm leading-relaxed">
-              Cette formation d'allemand est spécialement conçue pour les étudiants de prépa ECG. 
-              Elle combine des outils de génération IA pour l'entraînement pratique et des fiches de grammaire 
-              détaillées couvrant tous les points essentiels du programme. Chaque fiche inclut des exemples, 
-              des tableaux récapitulatifs et des exercices d'application.
-            </p>
+      <div className="bg-gradient-to-r from-red-50 to-blue-50 border-2 border-red-200 rounded-2xl p-8">
+        <div className="text-center">
+          <div className="flex justify-center gap-4 mb-4">
+            <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
+              <BookOpen className="h-6 w-6 text-white" />
+            </div>
+            <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+              <Globe className="h-6 w-6 text-white" />
+            </div>
           </div>
+          <h3 className="text-2xl font-bold text-gray-800 mb-4">Vollständige ECG-Deutschausbildung</h3>
+          <p className="text-gray-700 leading-relaxed max-w-3xl mx-auto">
+            Vollständige Deutschausbildung für ECG-Wettbewerbe, strukturiert in drei komplementäre Achsen: 
+            <span className="font-semibold text-orange-600"> KI-Tools für das Training</span>, 
+            <span className="font-semibold text-red-600"> vollständige Grammatik mit 6 detaillierten Blättern</span> und 
+            <span className="font-semibold text-blue-600"> zeitgenössische deutsche Landeskunde</span>. 
+            Jedes Modul umfasst konkrete Beispiele, praktische Übungen und aktualisierte Ressourcen 
+            für eine optimale Prüfungsvorbereitung.
+          </p>
         </div>
       </div>
     </div>

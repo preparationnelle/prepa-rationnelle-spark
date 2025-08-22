@@ -218,6 +218,10 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                   <span className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center"><Languages className="h-4 w-4 text-green-600" /></span>
                   <span>Anglais</span>
                 </Link>
+                <Link to="/formation/espagnol" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center"><Languages className="h-4 w-4 text-pink-600" /></span>
+                  <span>Espagnol</span>
+                </Link>
                 <Link to="/formation/allemand" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
                   <span className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center"><Languages className="h-4 w-4 text-red-600" /></span>
                   <span>Allemand</span>
@@ -363,6 +367,12 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               <Languages className="h-4 w-4 text-primary" />
             </span>
             <span className="text-sm text-center">Anglais</span>
+          </Link>
+          <Link to="/formation/espagnol" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-white p-2 rounded-md shadow-sm">
+            <span className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+              <Languages className="h-4 w-4 text-primary" />
+            </span>
+            <span className="text-sm text-center">Espagnol</span>
           </Link>
           <Link to="/formation/allemand" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-white p-2 rounded-md shadow-sm">
             <span className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
