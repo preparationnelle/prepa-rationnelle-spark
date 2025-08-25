@@ -313,7 +313,7 @@ const PronounsPage = () => {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-2 h-2 rounded-full bg-purple-400 mt-1.5 flex-shrink-0"></span>
-                    <span>Ordre des pronoms : Réfléchi > COI > COD</span>
+                                          <span>Ordre des pronoms : Réfléchi {'>'} COI {'>'} COD</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-2 h-2 rounded-full bg-purple-400 mt-1.5 flex-shrink-0"></span>

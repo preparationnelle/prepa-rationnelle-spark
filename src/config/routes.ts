@@ -58,8 +58,10 @@ const FormationEspagnolPage = lazy(() => import('../pages/FormationEspagnolPage'
 const FormationEspagnolGrammairePage = lazy(() => import('../pages/formation/espagnol/FormationEspagnolGrammairePage'));
 const ThemeGrammaticalPage = lazy(() => import('../pages/formation/espagnol/grammaire/ThemeGrammaticalPage'));
 const ConjugaisonPage = lazy(() => import('../pages/formation/espagnol/grammaire/ConjugaisonPage'));
+const ConjugaisonExercicesPage = lazy(() => import('../pages/formation/espagnol/grammaire/ConjugaisonExercicesPage'));
 const SerEstarPage = lazy(() => import('../pages/formation/espagnol/grammaire/SerEstarPage'));
 const SyntaxePage = lazy(() => import('../pages/formation/espagnol/grammaire/SyntaxePage'));
+const SyntaxeExercicesPage = lazy(() => import('../pages/formation/espagnol/grammaire/SyntaxeExercicesPage'));
 const PrepositionsPage = lazy(() => import('../pages/formation/espagnol/grammaire/PrepositionsPage'));
 const QuestionsPage = lazy(() => import('../pages/formation/espagnol/grammaire/QuestionsPage'));
 const NegationsPage = lazy(() => import('../pages/formation/espagnol/grammaire/NegationsPage'));
@@ -385,15 +387,17 @@ export const routes: RouteConfig[] = [
   { path: '/formation/espagnol/grammaire', component: FormationEspagnolGrammairePage, title: 'Grammaire Espagnole' },
   { path: '/formation/espagnol/grammaire/theme', component: ThemeGrammaticalPage, title: 'Thème Grammatical' },
   { path: '/formation/espagnol/grammaire/conjugaison', component: ConjugaisonPage, title: 'Conjugaison et Temps Verbaux' },
+  { path: '/formation/espagnol/grammaire/conjugaison/exercices', component: ConjugaisonExercicesPage, title: 'Exercices de Conjugaison' },
   { path: '/formation/espagnol/grammaire/ser-estar', component: SerEstarPage, title: 'Ser vs Estar et Constructions' },
-  { path: '/formation/espagnol/grammaire/syntaxe', component: SyntaxePage, title: 'Syntaxe et Structures Complexes' },
-{ path: '/formation/espagnol/grammaire/prepositions', component: PrepositionsPage, title: 'Prépositions et Locutions' },
-{ path: '/formation/espagnol/grammaire/questions', component: QuestionsPage, title: 'Questions et Interrogatifs' },
-{ path: '/formation/espagnol/grammaire/negations', component: NegationsPage, title: 'Négations' },
-{ path: '/formation/espagnol/grammaire/temporal', component: TemporalPage, title: 'Vocabulaire Temporel' },
-{ path: '/formation/espagnol/grammaire/pronouns', component: PronounsPage, title: 'Pronoms' },
-{ path: '/formation/espagnol/grammaire/affective-verbs', component: AffectiveVerbsPage, title: 'Verbes Affectifs' },
-{ path: '/formation/espagnol/grammaire/adjectives-adverbs', component: AdjectivesAdverbsPage, title: 'Adjectifs et Adverbes' },
+  { path: '/formation/espagnol/grammaire/syntaxe-structures-complexes', component: SyntaxePage, title: 'Syntaxe et Structures Complexes' },
+  { path: '/formation/espagnol/grammaire/syntaxe-structures-complexes/exercices', component: SyntaxeExercicesPage, title: 'Exercices de Syntaxe et Structures Complexes' },
+  { path: '/formation/espagnol/grammaire/prepositions', component: PrepositionsPage, title: 'Prépositions et Locutions' },
+  { path: '/formation/espagnol/grammaire/questions', component: QuestionsPage, title: 'Questions et Interrogatifs' },
+  { path: '/formation/espagnol/grammaire/negations', component: NegationsPage, title: 'Négations' },
+  { path: '/formation/espagnol/grammaire/temporal', component: TemporalPage, title: 'Vocabulaire Temporel' },
+  { path: '/formation/espagnol/grammaire/pronouns', component: PronounsPage, title: 'Pronoms' },
+  { path: '/formation/espagnol/grammaire/affective-verbs', component: AffectiveVerbsPage, title: 'Verbes Affectifs' },
+  { path: '/formation/espagnol/grammaire/adjectives-adverbs', component: AdjectivesAdverbsPage, title: 'Adjectifs et Adverbes' },
   { path: '/formation/espagnol/civilisation', component: FormationEspagnolCivilisationPage, title: 'Civilisation Hispanique' },
   { path: '/formation/espagnol/civilisation/module1', component: Module1PoliticaRegimenesPage, title: 'Política y Regímenes' },
   { path: '/formation/espagnol/civilisation/module4', component: Module4MigracionesDesplazamientosPage, title: 'Migraciones y Desplazamientos' },

@@ -700,10 +700,12 @@ const FormationEspagnolGrammairePage = () => {
                               Accéder au module
                             </Button>
                           </Link>
-                          <Button variant="outline" className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}>
-                            <Briefcase className="mr-2 h-4 w-4" />
-                            Exercices
-                          </Button>
+                          <Link to="/formation/espagnol/grammaire/conjugaison/exercices">
+                            <Button variant="outline" className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}>
+                              <Briefcase className="mr-2 h-4 w-4" />
+                              Exercices
+                            </Button>
+                          </Link>
                         </>
                       ) : module.id === 3 ? (
                         <>
