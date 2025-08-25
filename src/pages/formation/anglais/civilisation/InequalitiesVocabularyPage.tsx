@@ -1,0 +1,433 @@
+import React, { useState, useCallback, useEffect } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { ArrowLeft, ArrowRight, RotateCcw, Shuffle, HelpCircle, Keyboard, BookOpen, Heart } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+interface VocabularyCard {
+  id: number;
+  french: string;
+  english: string;
+  category: string;
+}
+
+const InequalitiesVocabularyPage = () => {
+  const vocabularyData: VocabularyCard[] = [
+    // 1. Inégalités fondamentales / Fundamental Inequalities
+    { id: 1, french: "Inégalités sociales", english: "Social inequalities", category: "Inégalités fondamentales" },
+    { id: 2, french: "Inégalités raciales", english: "Racial inequalities", category: "Inégalités fondamentales" },
+    { id: 3, french: "Inégalité de genre", english: "Gender inequality", category: "Inégalités fondamentales" },
+    { id: 4, french: "Inégalités économiques", english: "Economic inequalities", category: "Inégalités fondamentales" },
+    { id: 5, french: "Inégalités éducatives", english: "Educational inequalities", category: "Inégalités fondamentales" },
+    { id: 6, french: "Inégalités de santé", english: "Health inequalities", category: "Inégalités fondamentales" },
+    { id: 7, french: "Inégalités urbaines", english: "Urban inequalities", category: "Inégalités fondamentales" },
+    { id: 8, french: "Inégalités rurales", english: "Rural inequalities", category: "Inégalités fondamentales" },
+    { id: 9, french: "Inégalités globales", english: "Global inequalities", category: "Inégalités fondamentales" },
+    { id: 10, french: "Inégalités structurelles", english: "Structural inequalities", category: "Inégalités fondamentales" },
+
+    // 2. Discrimination et préjugés / Discrimination and Prejudice
+    { id: 11, french: "Discrimination", english: "Discrimination", category: "Discrimination et préjugés" },
+    { id: 12, french: "Racisme", english: "Racism", category: "Discrimination et préjugés" },
+    { id: 13, french: "Préjugé", english: "Prejudice", category: "Discrimination et préjugés" },
+    { id: 14, french: "Stéréotype", english: "Stereotype", category: "Discrimination et préjugés" },
+    { id: 15, french: "Discrimination systémique", english: "Systemic discrimination", category: "Discrimination et préjugés" },
+    { id: 16, french: "Discrimination au travail", english: "Workplace discrimination", category: "Discrimination et préjugés" },
+    { id: 17, french: "Xénophobie", english: "Xenophobia", category: "Discrimination et préjugés" },
+    { id: 18, french: "Intolérance", english: "Intolerance", category: "Discrimination et préjugés" },
+    { id: 19, french: "Stigmatisation", english: "Stigmatization", category: "Discrimination et préjugés" },
+    { id: 20, french: "Lutte contre la discrimination", english: "Fight against discrimination", category: "Discrimination et préjugés" },
+
+    // 3. Classes et stratification / Classes and Stratification
+    { id: 21, french: "Stratification sociale", english: "Social stratification", category: "Classes et stratification" },
+    { id: 22, french: "Classe sociale", english: "Social class", category: "Classes et stratification" },
+    { id: 23, french: "Lutte des classes", english: "Class struggle", category: "Classes et stratification" },
+    { id: 24, french: "Privilège blanc", english: "White privilege", category: "Classes et stratification" },
+    { id: 25, french: "Capital culturel", english: "Cultural capital", category: "Classes et stratification" },
+    { id: 26, french: "Capital social", english: "Social capital", category: "Classes et stratification" },
+    { id: 27, french: "Capital économique", english: "Economic capital", category: "Classes et stratification" },
+    { id: 28, french: "Héritage", english: "Heritage", category: "Classes et stratification" },
+    { id: 29, french: "Mobilité sociale", english: "Social mobility", category: "Classes et stratification" },
+    { id: 30, french: "Mobilité professionnelle", english: "Professional mobility", category: "Classes et stratification" },
+
+    // 4. Exclusion et ségrégation / Exclusion and Segregation
+    { id: 31, french: "Exclusion", english: "Exclusion", category: "Exclusion et ségrégation" },
+    { id: 32, french: "Ségrégation", english: "Segregation", category: "Exclusion et ségrégation" },
+    { id: 33, french: "Ségrégation raciale", english: "Racial segregation", category: "Exclusion et ségrégation" },
+    { id: 34, french: "Ségrégation scolaire", english: "School segregation", category: "Exclusion et ségrégation" },
+    { id: 35, french: "Ghetto", english: "Ghetto", category: "Exclusion et ségrégation" },
+    { id: 36, french: "Marginalisation", english: "Marginalization", category: "Exclusion et ségrégation" },
+    { id: 37, french: "Gentrification", english: "Gentrification", category: "Exclusion et ségrégation" },
+    { id: 38, french: "Déplacement forcé", english: "Forced displacement", category: "Exclusion et ségrégation" },
+    { id: 39, french: "Exclusion numérique", english: "Digital exclusion", category: "Exclusion et ségrégation" },
+    { id: 40, french: "Fractures sociales", english: "Social fractures", category: "Exclusion et ségrégation" },
+
+    // 5. Accès et opportunités / Access and Opportunities
+    { id: 41, french: "Accès à l'éducation", english: "Access to education", category: "Accès et opportunités" },
+    { id: 42, french: "Accès aux soins", english: "Access to healthcare", category: "Accès et opportunités" },
+    { id: 43, french: "Accès à la technologie", english: "Access to technology", category: "Accès et opportunités" },
+    { id: 44, french: "Accès à la justice", english: "Access to justice", category: "Accès et opportunités" },
+    { id: 45, french: "Inégalité d'accès", english: "Access inequality", category: "Accès et opportunités" },
+    { id: 46, french: "Inégalités d'opportunité", english: "Inequality of opportunity", category: "Accès et opportunités" },
+    { id: 47, french: "Égalité des chances", english: "Equal opportunity", category: "Accès et opportunités" },
+    { id: 48, french: "Éducation inclusive", english: "Inclusive education", category: "Accès et opportunités" },
+    { id: 49, french: "Santé publique", english: "Public health", category: "Accès et opportunités" },
+    { id: 50, french: "Inégalités d'opportunité", english: "Inequality of opportunity", category: "Accès et opportunités" },
+
+    // 6. Économie et ressources / Economy and Resources
+    { id: 51, french: "Pauvreté", english: "Poverty", category: "Économie et ressources" },
+    { id: 52, french: "Richesse", english: "Wealth", category: "Économie et ressources" },
+    { id: 53, french: "Déparités économiques", english: "Economic disparities", category: "Économie et ressources" },
+    { id: 54, french: "Inégalité salariale", english: "Wage inequality", category: "Économie et ressources" },
+    { id: 55, french: "Inégalités de revenu", english: "Income inequality", category: "Économie et ressources" },
+    { id: 56, french: "Répartition des richesses", english: "Wealth distribution", category: "Économie et ressources" },
+    { id: 57, french: "Dépendance économique", english: "Economic dependence", category: "Économie et ressources" },
+    { id: 58, french: "Précarité", english: "Precariousness", category: "Économie et ressources" },
+    { id: 59, french: "Logement", english: "Housing", category: "Économie et ressources" },
+    { id: 60, french: "Emploi", english: "Employment", category: "Économie et ressources" },
+
+    // 7. Identité et culture / Identity and Culture
+    { id: 61, french: "Identité ethnique", english: "Ethnic identity", category: "Identité et culture" },
+    { id: 62, french: "Minorité", english: "Minority", category: "Identité et culture" },
+    { id: 63, french: "Majorité", english: "Majority", category: "Identité et culture" },
+    { id: 64, french: "Intégration", english: "Integration", category: "Identité et culture" },
+    { id: 65, french: "Assimilation", english: "Assimilation", category: "Identité et culture" },
+    { id: 66, french: "Multiculturalisme", english: "Multiculturalism", category: "Identité et culture" },
+    { id: 67, french: "Colonialisme", english: "Colonialism", category: "Identité et culture" },
+    { id: 68, french: "Post-colonialisme", english: "Post-colonialism", category: "Identité et culture" },
+    { id: 69, french: "Apartheid", english: "Apartheid", category: "Identité et culture" },
+    { id: 70, french: "Inégalités culturelles", english: "Cultural inequalities", category: "Identité et culture" },
+
+    // 8. Mobilisation et résistance / Mobilization and Resistance
+    { id: 71, french: "Mobilisation sociale", english: "Social mobilization", category: "Mobilisation et résistance" },
+    { id: 72, french: "Mobilisation communautaire", english: "Community mobilization", category: "Mobilisation et résistance" },
+    { id: 73, french: "Activism", english: "Activism", category: "Mobilisation et résistance" },
+    { id: 74, french: "Protestation", english: "Protest", category: "Mobilisation et résistance" },
+    { id: 75, french: "Mouvement social", english: "Social movement", category: "Mobilisation et résistance" },
+    { id: 76, french: "Lutte pour l'égalité", english: "Fight for equality", category: "Mobilisation et résistance" },
+    { id: 77, french: "Réforme sociale", english: "Social reform", category: "Mobilisation et résistance" },
+    { id: 78, french: "Réduction des inégalités", english: "Inequality reduction", category: "Mobilisation et résistance" },
+    { id: 79, french: "Réduction des écarts", english: "Gap reduction", category: "Mobilisation et résistance" },
+    { id: 80, french: "Solidarité", english: "Solidarity", category: "Mobilisation et résistance" },
+
+    // 9. Inclusion et cohésion / Inclusion and Cohesion
+    { id: 81, french: "Inclusion", english: "Inclusion", category: "Inclusion et cohésion" },
+    { id: 82, french: "Inclusion sociale", english: "Social inclusion", category: "Inclusion et cohésion" },
+    { id: 83, french: "Inclusion ethnique", english: "Ethnic inclusion", category: "Inclusion et cohésion" },
+    { id: 84, french: "Diversité", english: "Diversity", category: "Inclusion et cohésion" },
+    { id: 85, french: "Cohésion sociale", english: "Social cohesion", category: "Inclusion et cohésion" },
+    { id: 86, french: "Cohabitation", english: "Cohabitation", category: "Inclusion et cohésion" },
+    { id: 87, french: "Solidarité internationale", english: "International solidarity", category: "Inclusion et cohésion" },
+    { id: 88, french: "Justice sociale", english: "Social justice", category: "Inclusion et cohésion" },
+    { id: 89, french: "Équité", english: "Equity", category: "Inclusion et cohésion" },
+    { id: 90, french: "Réparation", english: "Reparation", category: "Inclusion et cohésion" },
+
+    // 10. Pouvoirs et représentations / Powers and Representations
+    { id: 91, french: "Inégalités de pouvoir", english: "Power inequalities", category: "Pouvoirs et représentations" },
+    { id: 92, french: "Inégalités politiques", english: "Political inequalities", category: "Pouvoirs et représentations" },
+    { id: 93, french: "Inégalités de représentation", english: "Representation inequalities", category: "Pouvoirs et représentations" },
+    { id: 94, french: "Inégalités intergénérationnelles", english: "Intergenerational inequalities", category: "Pouvoirs et représentations" },
+    { id: 95, french: "Inégalités environnementales", english: "Environmental inequalities", category: "Pouvoirs et représentations" },
+    { id: 96, french: "Inégalités régionales", english: "Regional inequality", category: "Pouvoirs et représentations" },
+    { id: 97, french: "Mobilité géographique", english: "Geographic mobility", category: "Pouvoirs et représentations" },
+    { id: 98, french: "Dépendance sociale", english: "Social dependence", category: "Pouvoirs et représentations" },
+    { id: 99, french: "Intersectionnalité", english: "Intersectionality", category: "Pouvoirs et représentations" },
+    { id: 100, french: "Injustice", english: "Injustice", category: "Pouvoirs et représentations" },
+  ];
+
+  const [currentCardIndex, setCurrentCardIndex] = useState(0);
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [showHelp, setShowHelp] = useState(false);
+
+  const currentCard = vocabularyData[currentCardIndex];
+
+  const nextCard = useCallback(() => {
+    setCurrentCardIndex((prev) => (prev + 1) % vocabularyData.length);
+    setIsFlipped(false);
+  }, [vocabularyData.length]);
+
+  const previousCard = useCallback(() => {
+    setCurrentCardIndex((prev) => (prev - 1 + vocabularyData.length) % vocabularyData.length);
+    setIsFlipped(false);
+  }, [vocabularyData.length]);
+
+  const shuffleCards = useCallback(() => {
+    const shuffled = [...vocabularyData].sort(() => Math.random() - 0.5);
+    vocabularyData.splice(0, vocabularyData.length, ...shuffled);
+    setCurrentCardIndex(0);
+    setIsFlipped(false);
+  }, []);
+
+  const resetCards = useCallback(() => {
+    setCurrentCardIndex(0);
+    setIsFlipped(false);
+    setProgress(0);
+  }, []);
+
+  useEffect(() => {
+    setProgress(((currentCardIndex + 1) / vocabularyData.length) * 100);
+  }, [currentCardIndex, vocabularyData.length]);
+
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      switch (event.key) {
+        case 'ArrowLeft':
+          previousCard();
+          break;
+        case 'ArrowRight':
+          nextCard();
+          break;
+        case ' ':
+          event.preventDefault();
+          setIsFlipped(!isFlipped);
+          break;
+        case 'r':
+        case 'R':
+          resetCards();
+          break;
+        case 's':
+        case 'S':
+          shuffleCards();
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [previousCard, nextCard, isFlipped, resetCards, shuffleCards]);
+
+  const getCategoryColor = (category: string) => {
+    const colors: { [key: string]: string } = {
+      'Inégalités fondamentales': 'bg-red-500',
+      'Discrimination et préjugés': 'bg-orange-500',
+      'Classes et stratification': 'bg-yellow-500',
+      'Exclusion et ségrégation': 'bg-pink-500',
+      'Accès et opportunités': 'bg-green-500',
+      'Économie et ressources': 'bg-blue-500',
+      'Identité et culture': 'bg-indigo-500',
+      'Mobilisation et résistance': 'bg-purple-500',
+      'Inclusion et cohésion': 'bg-teal-500',
+      'Pouvoirs et représentations': 'bg-cyan-500',
+    };
+    return colors[category] || 'bg-gray-500';
+  };
+
+  return (
+    <div className="min-h-screen bg-[#F8FAFF]">
+      {/* Navigation */}
+      <div className="bg-white shadow-sm border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center">
+              <Link to="/formation/anglais/civilisation" className="text-gray-600 hover:text-gray-900">
+                <ArrowLeft className="h-5 w-5 mr-2" />
+                Retour à la civilisation anglaise
+              </Link>
+            </div>
+            <div className="flex items-center gap-4">
+              <Badge variant="outline" className="bg-red-50 text-red-700 border-red-200">
+                Inégalités sociales et raciales
+              </Badge>
+              <span className="text-sm text-gray-600">
+                {currentCardIndex + 1} / {vocabularyData.length}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Barre de progression */}
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-sm font-medium text-gray-700">Progression</span>
+            <span className="text-sm text-gray-500">{Math.round(progress)}%</span>
+          </div>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div
+              className="bg-red-600 h-2 rounded-full transition-all duration-300"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+        </div>
+
+        {/* Carte principale */}
+        <Card className="mb-8 border-2 border-red-200">
+          <CardHeader className="bg-gradient-to-r from-red-50 to-pink-50">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <Badge className={`${getCategoryColor(currentCard.category)} text-white`}>
+                  {currentCard.category}
+                </Badge>
+                <span className="text-sm text-gray-600">#{currentCard.id}</span>
+              </div>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setShowHelp(!showHelp)}
+              >
+                <Keyboard className="h-4 w-4 mr-2" />
+                Raccourcis
+              </Button>
+            </div>
+          </CardHeader>
+          <CardContent className="p-8">
+            <div className="relative min-h-[300px] flex items-center justify-center cursor-pointer">
+              {/* Face avant */}
+              <div 
+                className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${
+                  isFlipped ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+                }`}
+              >
+                <div className="text-center">
+                  <h2 className="text-3xl font-bold text-gray-800 mb-4">
+                    {currentCard.french}
+                  </h2>
+                  <p className="text-gray-600">Cliquez pour voir la traduction</p>
+                </div>
+              </div>
+
+              {/* Face arrière */}
+              <div 
+                className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${
+                  isFlipped ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                }`}
+              >
+                <div className="text-center">
+                  <h2 className="text-3xl font-bold text-red-600 mb-4">
+                    {currentCard.english}
+                  </h2>
+                  <p className="text-gray-600">Traduction en anglais</p>
+                </div>
+              </div>
+
+              {/* Zone cliquable */}
+              <div 
+                className="absolute inset-0 z-10"
+                onClick={() => setIsFlipped(!isFlipped)}
+              />
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Contrôles */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+          <Button
+            variant="outline"
+            onClick={previousCard}
+            disabled={currentCardIndex === 0}
+            className="flex items-center gap-2"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Précédent
+          </Button>
+
+          <Button
+            variant="outline"
+            onClick={() => setIsFlipped(!isFlipped)}
+            className="flex items-center gap-2"
+          >
+            <RotateCcw className="h-4 w-4" />
+            Retourner
+          </Button>
+
+          <Button
+            variant="outline"
+            onClick={nextCard}
+            disabled={currentCardIndex === vocabularyData.length - 1}
+            className="flex items-center gap-2"
+          >
+            Suivant
+            <ArrowRight className="h-4 w-4" />
+          </Button>
+        </div>
+
+        {/* Actions supplémentaires */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+          <Button
+            variant="outline"
+            onClick={shuffleCards}
+            className="flex items-center gap-2 bg-green-50 border-green-200 text-green-700 hover:bg-green-100"
+          >
+            <Shuffle className="h-4 w-4" />
+            Mélanger
+          </Button>
+
+          <Button
+            variant="outline"
+            onClick={resetCards}
+            className="flex items-center gap-2 bg-red-50 border-red-200 text-red-700 hover:bg-red-100"
+          >
+            <RotateCcw className="h-4 w-4" />
+            Recommencer
+          </Button>
+        </div>
+
+        {/* Aide */}
+        {showHelp && (
+          <Card className="mb-8 border-2 border-yellow-200">
+            <CardHeader className="bg-gradient-to-r from-yellow-50 to-orange-50">
+              <CardTitle className="flex items-center gap-2">
+                <HelpCircle className="h-5 w-5 text-yellow-600" />
+                Raccourcis clavier
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div>
+                  <p className="font-semibold mb-2">Navigation :</p>
+                  <p>← → : Carte précédente/suivante</p>
+                  <p>Espace : Retourner la carte</p>
+                </div>
+                <div>
+                  <p className="font-semibold mb-2">Actions :</p>
+                  <p>R : Recommencer</p>
+                  <p>S : Mélanger</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Statistiques */}
+        <Card className="border-2 border-gray-200">
+          <CardHeader className="bg-gradient-to-r from-gray-50 to-slate-50">
+            <CardTitle className="flex items-center gap-2">
+              <Heart className="h-5 w-5 text-gray-600" />
+              Statistiques du module
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+              <div>
+                <p className="text-2xl font-bold text-red-600">{vocabularyData.length}</p>
+                <p className="text-sm text-gray-600">Mots au total</p>
+              </div>
+              <div>
+                <p className="text-2xl font-bold text-green-600">
+                  {Math.ceil(vocabularyData.length / 10)}
+                </p>
+                <p className="text-sm text-gray-600">Catégories</p>
+              </div>
+              <div>
+                <p className="text-2xl font-bold text-red-600">
+                  {Math.round(progress)}%
+                </p>
+                <p className="text-sm text-gray-600">Progression</p>
+              </div>
+              <div>
+                <p className="text-2xl font-bold text-orange-600">
+                  {currentCardIndex + 1}
+                </p>
+                <p className="text-sm text-gray-600">Carte actuelle</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+};
+
+export default InequalitiesVocabularyPage; 

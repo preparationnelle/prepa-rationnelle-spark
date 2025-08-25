@@ -387,10 +387,82 @@ const FormationAllemandCivilisationPage = () => {
                       </div>
                     </div>
                     <div className="flex gap-3">
-                      <Button className={`flex-1 ${themeColors.button} text-white font-semibold py-3`}>
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Accéder au module
-                      </Button>
+                      {module.id === 1 ? (
+                        <Link to="/formation/allemand/politik" className="flex-1">
+                          <Button className={`w-full ${themeColors.button} text-white font-semibold py-3`}>
+                            <Calendar className="mr-2 h-4 w-4" />
+                            Accéder au module
+                          </Button>
+                        </Link>
+                      ) : module.id === 2 ? (
+                        <Link to="/formation/allemand/demographie" className="flex-1">
+                          <Button className={`w-full ${themeColors.button} text-white font-semibold py-3`}>
+                            <Calendar className="mr-2 h-4 w-4" />
+                            Accéder au module
+                          </Button>
+                        </Link>
+                      ) : module.id === 3 ? (
+                        <Link to="/formation/allemand/ecologie" className="flex-1">
+                          <Button className={`w-full ${themeColors.button} text-white font-semibold py-3`}>
+                            <Calendar className="mr-2 h-4 w-4" />
+                            Accéder au module
+                          </Button>
+                        </Link>
+                      ) : module.id === 4 ? (
+                        <Link to="/formation/allemand/geopolitique" className="flex-1">
+                          <Button className={`w-full ${themeColors.button} text-white font-semibold py-3`}>
+                            <Calendar className="mr-2 h-4 w-4" />
+                            Accéder au module
+                          </Button>
+                        </Link>
+                      ) : module.id === 5 ? (
+                        <Link to="/formation/allemand/industrie" className="flex-1">
+                          <Button className={`w-full ${themeColors.button} text-white font-semibold py-3`}>
+                            <Calendar className="mr-2 h-4 w-4" />
+                            Accéder au module
+                          </Button>
+                        </Link>
+                      ) : module.id === 6 ? (
+                        <Link to="/formation/allemand/culture" className="flex-1">
+                          <Button className={`w-full ${themeColors.button} text-white font-semibold py-3`}>
+                            <Calendar className="mr-2 h-4 w-4" />
+                            Accéder au module
+                          </Button>
+                        </Link>
+                      ) : module.id === 7 ? (
+                        <Link to="/formation/allemand/education" className="flex-1">
+                          <Button className={`w-full ${themeColors.button} text-white font-semibold py-3`}>
+                            <Calendar className="mr-2 h-4 w-4" />
+                            Accéder au module
+                          </Button>
+                        </Link>
+                      ) : module.id === 8 ? (
+                        <Link to="/formation/allemand/technologie" className="flex-1">
+                          <Button className={`w-full ${themeColors.button} text-white font-semibold py-3`}>
+                            <Calendar className="mr-2 h-4 w-4" />
+                            Accéder au module
+                          </Button>
+                        </Link>
+                      ) : module.id === 9 ? (
+                        <Link to="/formation/allemand/femmes" className="flex-1">
+                          <Button className={`w-full ${themeColors.button} text-white font-semibold py-3`}>
+                            <Calendar className="mr-2 h-4 w-4" />
+                            Accéder au module
+                          </Button>
+                        </Link>
+                      ) : module.id === 10 ? (
+                        <Link to="/formation/allemand/geschichte" className="flex-1">
+                          <Button className={`w-full ${themeColors.button} text-white font-semibold py-3`}>
+                            <Calendar className="mr-2 h-4 w-4" />
+                            Accéder au module
+                          </Button>
+                        </Link>
+                      ) : (
+                        <Button className={`flex-1 ${themeColors.button} text-white font-semibold py-3`}>
+                          <Calendar className="mr-2 h-4 w-4" />
+                          Accéder au module
+                        </Button>
+                      )}
                       <Button variant="outline" className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}>
                         <Briefcase className="mr-2 h-4 w-4" />
                         Ressources

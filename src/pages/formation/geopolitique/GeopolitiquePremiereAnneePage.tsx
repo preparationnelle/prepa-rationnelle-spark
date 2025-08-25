@@ -35,6 +35,7 @@ const GeopolitiquePremiereAnneePage = () => {
         "Limites de la mondialisation",
         "Défis géopolitiques du développement durable",
         "Ressources : enjeu stratégique",
+        "Sciences et Technologies dans le Monde Contemporain : Des Enjeux Géopolitiques ?",
         "Changement climatique",
         "La France : puissance en mutations"
       ],
@@ -93,14 +94,33 @@ const GeopolitiquePremiereAnneePage = () => {
               
               <CardContent>
                 <div className="grid md:grid-cols-2 gap-4">
-                  {module.chapters.map((chapter, i) => (
-                    <div key={i} className="p-3 border rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
+                  {module.chapters.map((chapter, i) => {
+                    const isClickable = chapter === "Sciences et Technologies dans le Monde Contemporain : Des Enjeux Géopolitiques ?";
+                    const content = (
                       <div className="flex items-start gap-2">
                         <CheckCircle className={`h-4 w-4 text-${module.color}-600 mt-0.5 flex-shrink-0`} />
                         <span className="text-sm font-medium">{chapter}</span>
                       </div>
-                    </div>
-                  ))}
+                    );
+                    
+                    if (isClickable) {
+                      return (
+                        <Link 
+                          key={i} 
+                          to="/formation/geopolitique/sciences-technologies"
+                          className="p-3 border rounded-lg bg-gray-50 hover:bg-indigo-100 transition-colors cursor-pointer border-indigo-200"
+                        >
+                          {content}
+                        </Link>
+                      );
+                    }
+                    
+                    return (
+                      <div key={i} className="p-3 border rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
+                        {content}
+                      </div>
+                    );
+                  })}
                 </div>
 
                 <div className="mt-6 flex flex-wrap gap-3">

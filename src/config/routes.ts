@@ -18,12 +18,79 @@ const PythonFlashcardsPage = lazy(() => import('../pages/formation/Python/Python
 const PythonExercicesPage = lazy(() => import('../pages/formation/Python/PythonExercicesPage'));
 const PythonQuizPage = lazy(() => import('../pages/formation/Python/PythonQuizPage'));
 const FormationAnglaisPage = lazy(() => import('../pages/FormationAnglaisPage'));
+const AnglaisCivilisationOverviewPage = lazy(() => import('../pages/formation/anglais/CivilisationOverviewPage'));
+const AnglaisEnvironmentPage = lazy(() => import('../pages/formation/anglais/civilisation/EnvironmentPage'));
+const AnglaisEnvironmentVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/EnvironmentVocabularyPage'));
+const AnglaisPoliticsPage = lazy(() => import('../pages/formation/anglais/civilisation/PoliticsPage'));
+const AnglaisPoliticsVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/PoliticsVocabularyPage'));
+const AnglaisGeopoliticsVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/GeopoliticsVocabularyPage'));
+const AnglaisAITechnologyVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/AITechnologyVocabularyPage'));
+const AnglaisEconomyVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/EconomyVocabularyPage'));
+const AnglaisHealthVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/HealthVocabularyPage'));
+const AnglaisEducationVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/EducationVocabularyPage'));
+const AnglaisMediaVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/MediaVocabularyPage'));
+const AnglaisJusticeVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/JusticeVocabularyPage'));
+const AnglaisInequalitiesVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/InequalitiesVocabularyPage'));
+const AnglaisCivilRightsVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/CivilRightsVocabularyPage'));
+const AnglaisBrexitVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/BrexitVocabularyPage'));
+const AnglaisCommonwealthVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/CommonwealthVocabularyPage'));
+const AnglaisCivilReligionVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/CivilReligionVocabularyPage'));
+const AnglaisImmigrationVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/ImmigrationVocabularyPage'));
+const AnglaisCrisesVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/CrisesVocabularyPage'));
+const AnglaisGeopoliticsPage = lazy(() => import('../pages/formation/anglais/civilisation/GeopoliticsPage'));
+const AnglaisAITechnologyPage = lazy(() => import('../pages/formation/anglais/civilisation/AITechnologyPage'));
+const AnglaisEconomyPage = lazy(() => import('../pages/formation/anglais/civilisation/EconomyPage'));
+const AnglaisHealthPage = lazy(() => import('../pages/formation/anglais/civilisation/HealthPage'));
+const AnglaisEducationPage = lazy(() => import('../pages/formation/anglais/civilisation/EducationPage'));
+const AnglaisMediaPage = lazy(() => import('../pages/formation/anglais/civilisation/MediaPage'));
+const AnglaisJusticePage = lazy(() => import('../pages/formation/anglais/civilisation/JusticePage'));
+const AnglaisInequalitiesPage = lazy(() => import('../pages/formation/anglais/civilisation/InequalitiesPage'));
+const AnglaisCivilRightsPage = lazy(() => import('../pages/formation/anglais/civilisation/CivilRightsPage'));
+const AnglaisBrexitPage = lazy(() => import('../pages/formation/anglais/civilisation/BrexitPage'));
+const AnglaisCommonwealthPage = lazy(() => import('../pages/formation/anglais/civilisation/CommonwealthPage'));
+const AnglaisCivilReligionPage = lazy(() => import('../pages/formation/anglais/civilisation/CivilReligionPage'));
+const AnglaisImmigrationPage = lazy(() => import('../pages/formation/anglais/civilisation/ImmigrationPage'));
+const AnglaisContemporaryCrisesPage = lazy(() => import('../pages/formation/anglais/civilisation/ContemporaryCrisesPage'));
+const AnglaisRessourcesPage = lazy(() => import('../pages/formation/anglais/RessourcesPage'));
+const MethodologieAnglaisPage = lazy(() => import('../pages/formation/anglais/MethodologieAnglaisPage'));
+
 const FormationEspagnolPage = lazy(() => import('../pages/FormationEspagnolPage'));
 const FormationEspagnolGrammairePage = lazy(() => import('../pages/formation/espagnol/FormationEspagnolGrammairePage'));
+const ThemeGrammaticalPage = lazy(() => import('../pages/formation/espagnol/grammaire/ThemeGrammaticalPage'));
+const ConjugaisonPage = lazy(() => import('../pages/formation/espagnol/grammaire/ConjugaisonPage'));
+const SerEstarPage = lazy(() => import('../pages/formation/espagnol/grammaire/SerEstarPage'));
+const SyntaxePage = lazy(() => import('../pages/formation/espagnol/grammaire/SyntaxePage'));
+const PrepositionsPage = lazy(() => import('../pages/formation/espagnol/grammaire/PrepositionsPage'));
+const QuestionsPage = lazy(() => import('../pages/formation/espagnol/grammaire/QuestionsPage'));
+const NegationsPage = lazy(() => import('../pages/formation/espagnol/grammaire/NegationsPage'));
+const TemporalPage = lazy(() => import('../pages/formation/espagnol/grammaire/TemporalPage'));
+const PronounsPage = lazy(() => import('../pages/formation/espagnol/grammaire/PronounsPage'));
+const AffectiveVerbsPage = lazy(() => import('../pages/formation/espagnol/grammaire/AffectiveVerbsPage'));
+const AdjectivesAdverbsPage = lazy(() => import('../pages/formation/espagnol/grammaire/AdjectivesAdverbsPage'));
 const FormationEspagnolCivilisationPage = lazy(() => import('../pages/formation/espagnol/FormationEspagnolCivilisationPage'));
+const Module1PoliticaRegimenesPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module1PoliticaRegimenesPage'));
+const Module4MigracionesDesplazamientosPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module4MigracionesDesplazamientosPage'));
+const Module5ViolenciaNarcotraficoPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module5ViolenciaNarcotraficoPage'));
+const Module7MedioAmbienteClimaPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module7MedioAmbienteClimaPage'));
 const FormationAllemandPage = lazy(() => import('../pages/FormationAllemandPage'));
 const FormationAllemandGrammairePage = lazy(() => import('../pages/formation/allemand/FormationAllemandGrammairePage'));
 const FormationAllemandCivilisationPage = lazy(() => import('../pages/formation/allemand/FormationAllemandCivilisationPage'));
+const PolitikAllemandePage = lazy(() => import('../pages/formation/allemand/PolitikAllemandePage'));
+const PolitikAllemandeTestPage = lazy(() => import('../pages/formation/allemand/PolitikAllemandeTestPage'));
+const PolitikAllemandeMinimalPage = lazy(() => import('../pages/formation/allemand/PolitikAllemandeMinimalPage'));
+const DemographieAllemandePage = lazy(() => import('../pages/formation/allemand/DemographieAllemandePage'));
+const EcologieAllemandePage = lazy(() => import('../pages/formation/allemand/EcologieAllemandePage'));
+const GeopolitiqueEuropeennePage = lazy(() => import('../pages/formation/allemand/GeopolitiqueEuropeennePage'));
+const IndustrieAllemandePage = lazy(() => import('../pages/formation/allemand/IndustrieAllemandePage'));
+const CultureIdentiteAllemandePage = lazy(() => import('../pages/formation/allemand/CultureIdentiteAllemandePage'));
+const EducationAllemandePage = lazy(() => import('../pages/formation/allemand/EducationAllemandePage'));
+const TechnologieInnovationAllemandePage = lazy(() => import('../pages/formation/allemand/TechnologieInnovationAllemandePage'));
+const FemmesEgaliteAllemandePage = lazy(() => import('../pages/formation/allemand/FemmesEgaliteAllemandePage'));
+const HistoireMemoireAllemandePage = lazy(() => import('../pages/formation/allemand/HistoireMemoireAllemandePage'));
+const ReussirEpreuvesAllemandePage = lazy(() => import('../pages/formation/allemand/ReussirEpreuvesAllemandePage'));
+const ReussirLaisserPage = lazy(() => import('../pages/formation/allemand/ReussirLaisserPage'));
+const ReussirCollePage = lazy(() => import('../pages/formation/allemand/ReussirCollePage'));
+const ReussirSynthesePage = lazy(() => import('../pages/formation/allemand/ReussirSynthesePage'));
 const VocabulairePolitiqueFlashcardsPage = lazy(() => import('../pages/formation/allemand/VocabulairePolitiqueFlashcardsPage'));
 const VocabulaireDemographieFlashcardsPage = lazy(() => import('../pages/formation/allemand/VocabulaireDemographieFlashcardsPage'));
 const VocabulaireEcologieFlashcardsPage = lazy(() => import('../pages/formation/allemand/VocabulaireEcologieFlashcardsPage'));
@@ -47,9 +114,55 @@ const GeopolitiqueSujetsProbablesPage = lazy(() => import('../pages/formation/ge
 const ContinentAfricainPage = lazy(() => import('../pages/formation/geopolitique/ContinentAfricainPage'));
 const ContinentAfricainChronologiePage = lazy(() => import('../pages/formation/geopolitique/ContinentAfricainChronologiePage'));
 const ProcheMoyenOrientPage = lazy(() => import('../pages/formation/geopolitique/ProcheMoyenOrientPage'));
+const ProcheMoyenOrientChronologiePage = lazy(() => import('../pages/formation/geopolitique/ProcheMoyenOrientChronologiePage'));
 const ChronologieEuropePage = lazy(() => import('../pages/formation/geopolitique/ChronologieEuropePage'));
 const UnionEuropeennePageSimple = lazy(() => import('../pages/formation/geopolitique/UnionEuropeennePageSimple'));
 const AmeriqueLatinePage = lazy(() => import('../pages/formation/geopolitique/AmeriqueLatinePage'));
+const AsieChronologiePage = lazy(() => import('../pages/formation/geopolitique/AsieChronologiePage'));
+const AmeriqueLatineChronologiePage = lazy(() => import('../pages/formation/geopolitique/AmeriqueLatineChronologiePage'));
+const AmeriqueNordChronologiePage = lazy(() => import('../pages/formation/geopolitique/AmeriqueNordChronologiePage'));
+const SciencesTechnologiesPage = lazy(() => import('../pages/formation/geopolitique/SciencesTechnologiesPage'));
+const EtudesDeCasPage = lazy(() => import('../pages/formation/geopolitique/EtudesDeCasPage'));
+const MigrationsPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/MigrationsPage'));
+const TransportsPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/TransportsPage'));
+const EnergiePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/EnergiePage'));
+const TourismePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/TourismePage'));
+const MetauxPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/MetauxPage'));
+const ForetPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/ForetPage'));
+const AgroalimentairePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/AgroalimentairePage'));
+const EauPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/EauPage'));
+const EconomiePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/EconomiePage'));
+const RussiePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/RussiePage'));
+const ChinePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/ChinePage'));
+const CrisesPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/CrisesPage'));
+const UrbanisationPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/UrbanisationPage'));
+const PuissancesPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/PuissancesPage'));
+const DeveloppementDurablePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/DeveloppementDurablePage'));
+const InegalitesPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/InegalitesPage'));
+const FrontieresPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/FrontieresPage'));
+const CriminalitePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/CriminalitePage'));
+const ChronologiesPage = lazy(() => import('../pages/formation/geopolitique/ChronologiesPage'));
+const GeopolitiquesFlashcardsPage = lazy(() => import('../pages/formation/geopolitique/GeopolitiquesFlashcardsPage'));
+const GeopolitiquesReferencesPage = lazy(() => import('../pages/formation/geopolitique/GeopolitiquesReferencesPage'));
+const GeopolitiquesMethodologiePage = lazy(() => import('../pages/formation/geopolitique/GeopolitiquesMethodologiePage'));
+const MethodologieDissertationPage = lazy(() => import('../pages/formation/geopolitique/MethodologieDissertationPage'));
+const EnvironmentPage = lazy(() => import('../pages/formation/anglais/civilisation/EnvironmentPage'));
+const PoliticsPage = lazy(() => import('../pages/formation/anglais/civilisation/PoliticsPage'));
+const CivilisationOverviewPage = lazy(() => import('../pages/formation/anglais/CivilisationOverviewPage'));
+const GeopoliticsPage = lazy(() => import('../pages/formation/anglais/civilisation/GeopoliticsPage'));
+const AITechnologyPage = lazy(() => import('../pages/formation/anglais/civilisation/AITechnologyPage'));
+const EconomyPage = lazy(() => import('../pages/formation/anglais/civilisation/EconomyPage'));
+const HealthPage = lazy(() => import('../pages/formation/anglais/civilisation/HealthPage'));
+const EducationPage = lazy(() => import('../pages/formation/anglais/civilisation/EducationPage'));
+const MediaPage = lazy(() => import('../pages/formation/anglais/civilisation/MediaPage'));
+const JusticePage = lazy(() => import('../pages/formation/anglais/civilisation/JusticePage'));
+const InequalitiesPage = lazy(() => import('../pages/formation/anglais/civilisation/InequalitiesPage'));
+const CivilRightsPage = lazy(() => import('../pages/formation/anglais/civilisation/CivilRightsPage'));
+const BrexitPage = lazy(() => import('../pages/formation/anglais/civilisation/BrexitPage'));
+const CommonwealthPage = lazy(() => import('../pages/formation/anglais/civilisation/CommonwealthPage'));
+const CivilReligionPage = lazy(() => import('../pages/formation/anglais/civilisation/CivilReligionPage'));
+const ImmigrationPage = lazy(() => import('../pages/formation/anglais/civilisation/ImmigrationPage'));
+const ContemporaryCrisesPage = lazy(() => import('../pages/formation/anglais/civilisation/ContemporaryCrisesPage'));
 const FormationCultureGeneralePage = lazy(() => import('../pages/FormationCultureGeneralePage'));
 const NosOffresPage = lazy(() => import('../pages/NosOffresPage'));
 const AproposPage = lazy(() => import('../pages/AproposPage'));
@@ -232,12 +345,77 @@ export const routes: RouteConfig[] = [
   
   // Formation pages
   { path: '/formation/anglais', component: FormationAnglaisPage, title: 'Formation Anglais' },
+  { path: '/formation/anglais/civilisation', component: AnglaisCivilisationOverviewPage, title: 'Civilisation Anglaise' },
+  { path: '/formation/anglais/civilisation/environment', component: AnglaisEnvironmentPage, title: 'Environment and Ecology' },
+  { path: '/formation/anglais/civilisation/environment/vocabulary', component: AnglaisEnvironmentVocabularyPage, title: 'Environment Vocabulary - Flashcards' },
+  { path: '/formation/anglais/civilisation/politics', component: AnglaisPoliticsPage, title: 'Politics (US & UK)' },
+  { path: '/formation/anglais/civilisation/politics/vocabulary', component: AnglaisPoliticsVocabularyPage, title: 'Politics Vocabulary - Flashcards' },
+  { path: '/formation/anglais/civilisation/geopolitics/vocabulary', component: AnglaisGeopoliticsVocabularyPage, title: 'Geopolitics Vocabulary - Flashcards' },
+  { path: '/formation/anglais/civilisation/geopolitics', component: AnglaisGeopoliticsPage, title: 'Geopolitics and International Relations' },
+  { path: '/formation/anglais/civilisation/ai-technology', component: AnglaisAITechnologyPage, title: 'AI and Technology' },
+  { path: '/formation/anglais/civilisation/economy/vocabulary', component: AnglaisEconomyVocabularyPage, title: 'Economy and Globalization Vocabulary - Flashcards' },
+  { path: '/formation/anglais/civilisation/economy', component: AnglaisEconomyPage, title: 'Economy and Globalization' },
+  { path: '/formation/anglais/civilisation/health/vocabulary', component: AnglaisHealthVocabularyPage, title: 'Health and Healthcare Vocabulary - Flashcards' },
+  { path: '/formation/anglais/civilisation/health', component: AnglaisHealthPage, title: 'Health and Healthcare' },
+  { path: '/formation/anglais/civilisation/education/vocabulary', component: AnglaisEducationVocabularyPage, title: 'Education and Culture Wars Vocabulary - Flashcards' },
+  { path: '/formation/anglais/civilisation/education', component: AnglaisEducationPage, title: 'Education and Culture Wars' },
+  { path: '/formation/anglais/civilisation/media/vocabulary', component: AnglaisMediaVocabularyPage, title: 'Media and Social Networks Vocabulary - Flashcards' },
+  { path: '/formation/anglais/civilisation/media', component: AnglaisMediaPage, title: 'Media and Social Networks' },
+  { path: '/formation/anglais/civilisation/justice/vocabulary', component: AnglaisJusticeVocabularyPage, title: 'Justice and Rule of Law Vocabulary - Flashcards' },
+  { path: '/formation/anglais/civilisation/justice', component: AnglaisJusticePage, title: 'Justice and Rule of Law' },
+  { path: '/formation/anglais/civilisation/inequalities/vocabulary', component: AnglaisInequalitiesVocabularyPage, title: 'Social and Racial Inequalities Vocabulary - Flashcards' },
+  { path: '/formation/anglais/civilisation/inequalities', component: AnglaisInequalitiesPage, title: 'Social and Racial Inequalities' },
+  { path: '/formation/anglais/civilisation/civil-rights/vocabulary', component: AnglaisCivilRightsVocabularyPage, title: 'Civil Rights and Social Movements Vocabulary - Flashcards' },
+  { path: '/formation/anglais/civilisation/civil-rights', component: AnglaisCivilRightsPage, title: 'Civil Rights and Social Movements' },
+  { path: '/formation/anglais/civilisation/brexit/vocabulary', component: AnglaisBrexitVocabularyPage, title: 'Brexit and its Aftermath Vocabulary - Flashcards' },
+  { path: '/formation/anglais/civilisation/brexit', component: AnglaisBrexitPage, title: 'Brexit and Aftermath' },
+  { path: '/formation/anglais/civilisation/commonwealth/vocabulary', component: AnglaisCommonwealthVocabularyPage, title: 'The Commonwealth and Post-Colonial Legacy Vocabulary - Flashcards' },
+  { path: '/formation/anglais/civilisation/commonwealth', component: AnglaisCommonwealthPage, title: 'Commonwealth and Post-Colonialism' },
+  { path: '/formation/anglais/civilisation/civil-religion/vocabulary', component: AnglaisCivilReligionVocabularyPage, title: 'Civil Religion and National Identity Vocabulary - Flashcards' },
+  { path: '/formation/anglais/civilisation/civil-religion', component: AnglaisCivilReligionPage, title: 'Civil Religion and Values' },
+  { path: '/formation/anglais/civilisation/immigration/vocabulary', component: AnglaisImmigrationVocabularyPage, title: 'Immigration and Border Control Vocabulary - Flashcards' },
+  { path: '/formation/anglais/civilisation/immigration', component: AnglaisImmigrationPage, title: 'Immigration and Integration' },
+  { path: '/formation/anglais/civilisation/crises/vocabulary', component: AnglaisCrisesVocabularyPage, title: 'Major Contemporary Crises Vocabulary - Flashcards' },
+  { path: '/formation/anglais/civilisation/crises', component: AnglaisContemporaryCrisesPage, title: 'Contemporary Crises' },
+  { path: '/formation/anglais/civilisation/ai-technology/vocabulary', component: AnglaisAITechnologyVocabularyPage, title: 'Artificial Intelligence and Technology Vocabulary - Flashcards' },
+  { path: '/formation/anglais/ressources', component: AnglaisRessourcesPage, title: 'Ressources Anglais' },
+  { path: '/formation/anglais/methodologie-complete', component: MethodologieAnglaisPage, title: 'Méthodologie Complète Anglais' },
+
   { path: '/formation/espagnol', component: FormationEspagnolPage, title: 'Formation Espagnol' },
   { path: '/formation/espagnol/grammaire', component: FormationEspagnolGrammairePage, title: 'Grammaire Espagnole' },
+  { path: '/formation/espagnol/grammaire/theme', component: ThemeGrammaticalPage, title: 'Thème Grammatical' },
+  { path: '/formation/espagnol/grammaire/conjugaison', component: ConjugaisonPage, title: 'Conjugaison et Temps Verbaux' },
+  { path: '/formation/espagnol/grammaire/ser-estar', component: SerEstarPage, title: 'Ser vs Estar et Constructions' },
+  { path: '/formation/espagnol/grammaire/syntaxe', component: SyntaxePage, title: 'Syntaxe et Structures Complexes' },
+{ path: '/formation/espagnol/grammaire/prepositions', component: PrepositionsPage, title: 'Prépositions et Locutions' },
+{ path: '/formation/espagnol/grammaire/questions', component: QuestionsPage, title: 'Questions et Interrogatifs' },
+{ path: '/formation/espagnol/grammaire/negations', component: NegationsPage, title: 'Négations' },
+{ path: '/formation/espagnol/grammaire/temporal', component: TemporalPage, title: 'Vocabulaire Temporel' },
+{ path: '/formation/espagnol/grammaire/pronouns', component: PronounsPage, title: 'Pronoms' },
+{ path: '/formation/espagnol/grammaire/affective-verbs', component: AffectiveVerbsPage, title: 'Verbes Affectifs' },
+{ path: '/formation/espagnol/grammaire/adjectives-adverbs', component: AdjectivesAdverbsPage, title: 'Adjectifs et Adverbes' },
   { path: '/formation/espagnol/civilisation', component: FormationEspagnolCivilisationPage, title: 'Civilisation Hispanique' },
+  { path: '/formation/espagnol/civilisation/module1', component: Module1PoliticaRegimenesPage, title: 'Política y Regímenes' },
+  { path: '/formation/espagnol/civilisation/module4', component: Module4MigracionesDesplazamientosPage, title: 'Migraciones y Desplazamientos' },
+  { path: '/formation/espagnol/civilisation/module5', component: Module5ViolenciaNarcotraficoPage, title: 'Violencia y Narcotráfico' },
+  { path: '/formation/espagnol/civilisation/module7', component: Module7MedioAmbienteClimaPage, title: 'Medio Ambiente y Clima' },
   { path: '/formation/allemand', component: FormationAllemandPage, title: 'Formation Allemand' },
   { path: '/formation/allemand/grammaire', component: FormationAllemandGrammairePage, title: 'Grammaire Allemande' },
   { path: '/formation/allemand/civilisation', component: FormationAllemandCivilisationPage, title: 'Civilisation Allemande' },
+  { path: '/formation/allemand/politik', component: PolitikAllemandeMinimalPage, title: 'Politik in Deutschland - Allemand' },
+  { path: '/formation/allemand/demographie', component: DemographieAllemandePage, title: 'Demographie in Deutschland - Allemand' },
+  { path: '/formation/allemand/ecologie', component: EcologieAllemandePage, title: 'Ökologie und Umwelt in Deutschland - Allemand' },
+  { path: '/formation/allemand/geopolitique', component: GeopolitiqueEuropeennePage, title: 'Europäische Geopolitik und Verteidigung - Allemand' },
+  { path: '/formation/allemand/industrie', component: IndustrieAllemandePage, title: 'Deutsche Industrie und Wirtschaft - Allemand' },
+  { path: '/formation/allemand/culture', component: CultureIdentiteAllemandePage, title: 'Deutsche Kultur und Identität - Allemand' },
+  { path: '/formation/allemand/education', component: EducationAllemandePage, title: 'Das deutsche Bildungssystem - Allemand' },
+  { path: '/formation/allemand/technologie', component: TechnologieInnovationAllemandePage, title: 'Technologie und Innovation in Deutschland - Allemand' },
+  { path: '/formation/allemand/femmes', component: FemmesEgaliteAllemandePage, title: 'Frauen und Gleichstellung in Deutschland - Allemand' },
+  { path: '/formation/allemand/geschichte', component: HistoireMemoireAllemandePage, title: 'Geschichte und Erinnerungskultur in Deutschland - Allemand' },
+  { path: '/formation/allemand/epreuves', component: ReussirEpreuvesAllemandePage, title: 'Réussir les épreuves d\'allemand - Allemand' },
+  { path: '/formation/allemand/laisser', component: ReussirLaisserPage, title: 'Comment réussir le laisser - Allemand' },
+  { path: '/formation/allemand/colle', component: ReussirCollePage, title: 'Comment réussir la colle - Allemand' },
+  { path: '/formation/allemand/synthese', component: ReussirSynthesePage, title: 'Comment réussir la synthèse de texte - Allemand' },
   { path: '/formation/allemand/vocabulaire-politique', component: VocabulairePolitiqueFlashcardsPage, title: 'Vocabulaire Politique - Flashcards' },
   { path: '/formation/allemand/vocabulaire-demographie', component: VocabulaireDemographieFlashcardsPage, title: 'Vocabulaire Démographie - Flashcards' },
   { path: '/formation/allemand/vocabulaire-ecologie', component: VocabulaireEcologieFlashcardsPage, title: 'Vocabulaire Écologie - Flashcards' },
@@ -262,9 +440,55 @@ export const routes: RouteConfig[] = [
   { path: '/formation/geopolitique/continent-africain', component: ContinentAfricainPage, title: 'Continent Africain' },
   { path: '/formation/geopolitique/continent-africain/chronologie', component: ContinentAfricainChronologiePage, title: 'Chronologie - Continent Africain' },
   { path: '/formation/geopolitique/proche-moyen-orient', component: ProcheMoyenOrientPage, title: 'Proche et Moyen-Orient' },
+  { path: '/formation/geopolitique/proche-moyen-orient/chronologie', component: ProcheMoyenOrientChronologiePage, title: 'Chronologie - Proche et Moyen-Orient' },
   { path: '/formation/geopolitique/chronologie-europe', component: ChronologieEuropePage, title: 'Chronologie de l\'Europe' },
   { path: '/formation/geopolitique/union-europeenne', component: UnionEuropeennePageSimple, title: 'Union européenne' },
   { path: '/formation/geopolitique/amerique-latine', component: AmeriqueLatinePage, title: 'Amérique latine' },
+  { path: '/formation/geopolitique/amerique-latine/chronologie', component: AmeriqueLatineChronologiePage, title: 'Chronologie - Amérique latine' },
+  { path: '/formation/geopolitique/asie/chronologie', component: AsieChronologiePage, title: 'Chronologie - Asie' },
+  { path: '/formation/geopolitique/amerique-nord/chronologie', component: AmeriqueNordChronologiePage, title: 'Chronologie - Amérique du Nord' },
+  { path: '/formation/geopolitique/sciences-technologies', component: SciencesTechnologiesPage, title: 'Sciences et Technologies dans le Monde Contemporain' },
+  { path: '/formation/geopolitique/etudes-de-cas', component: EtudesDeCasPage, title: 'Études de cas essentielles' },
+  { path: '/formation/geopolitique/etudes-de-cas/migrations', component: MigrationsPage, title: 'Migrations internationales' },
+  { path: '/formation/geopolitique/etudes-de-cas/transports', component: TransportsPage, title: 'Réseaux de transport mondiaux' },
+  { path: '/formation/geopolitique/etudes-de-cas/energie', component: EnergiePage, title: 'Géopolitique énergétique' },
+  { path: '/formation/geopolitique/etudes-de-cas/tourisme', component: TourismePage, title: 'Industrie touristique mondiale' },
+  { path: '/formation/geopolitique/etudes-de-cas/metaux', component: MetauxPage, title: 'Métaux et ressources critiques' },
+  { path: '/formation/geopolitique/etudes-de-cas/foret', component: ForetPage, title: 'Ressources forestières mondiales' },
+  { path: '/formation/geopolitique/etudes-de-cas/agroalimentaire', component: AgroalimentairePage, title: 'Système agroalimentaire mondial' },
+  { path: '/formation/geopolitique/etudes-de-cas/eau', component: EauPage, title: 'Ressources hydriques mondiales' },
+  { path: '/formation/geopolitique/etudes-de-cas/economie', component: EconomiePage, title: 'Économie mondiale' },
+  { path: '/formation/geopolitique/etudes-de-cas/russie', component: RussiePage, title: 'Russie - Puissance énergétique' },
+  { path: '/formation/geopolitique/etudes-de-cas/chine', component: ChinePage, title: 'Chine - Puissance émergente' },
+  { path: '/formation/geopolitique/etudes-de-cas/crises', component: CrisesPage, title: 'Crises mondiales contemporaines' },
+  { path: '/formation/geopolitique/etudes-de-cas/urbanisation', component: UrbanisationPage, title: 'Urbanisation mondiale' },
+  { path: '/formation/geopolitique/etudes-de-cas/puissances', component: PuissancesPage, title: 'Puissances mondiales' },
+  { path: '/formation/geopolitique/etudes-de-cas/developpement-durable', component: DeveloppementDurablePage, title: 'Développement durable' },
+  { path: '/formation/geopolitique/etudes-de-cas/inegalites', component: InegalitesPage, title: 'Inégalités sociales au monde' },
+  { path: '/formation/geopolitique/etudes-de-cas/frontieres', component: FrontieresPage, title: 'Géopolitique des frontières' },
+  { path: '/formation/geopolitique/etudes-de-cas/criminalite', component: CriminalitePage, title: 'Criminalité organisée mondiale' },
+  { path: '/formation/geopolitique/chronologies', component: ChronologiesPage, title: 'Chronologies géopolitiques' },
+  { path: '/formation/geopolitique/flashcards', component: GeopolitiquesFlashcardsPage, title: 'Flashcards Géopolitiques' },
+  { path: '/formation/geopolitique/references', component: GeopolitiquesReferencesPage, title: 'Références Géopolitiques' },
+  { path: '/formation/geopolitique/methodologie', component: GeopolitiquesMethodologiePage, title: 'Méthodologie Géopolitique' },
+  { path: '/formation/geopolitique/methodologie/dissertation', component: MethodologieDissertationPage, title: 'Méthodologie Dissertation' },
+  { path: '/formation/anglais/civilisation', component: CivilisationOverviewPage, title: 'English Civilization - Current Affairs' },
+  { path: '/formation/anglais/civilisation/environment', component: EnvironmentPage, title: 'Environment and Ecology - English Civilization' },
+  { path: '/formation/anglais/civilisation/politics', component: PoliticsPage, title: 'Politics (US & UK) - English Civilization' },
+  { path: '/formation/anglais/civilisation/geopolitics', component: GeopoliticsPage, title: 'Geopolitics and International Relations - English Civilization' },
+  { path: '/formation/anglais/civilisation/ai-technology', component: AITechnologyPage, title: 'Artificial Intelligence and Technology - English Civilization' },
+  { path: '/formation/anglais/civilisation/economy', component: EconomyPage, title: 'Economy and Globalization - English Civilization' },
+  { path: '/formation/anglais/civilisation/health', component: HealthPage, title: 'Health and Healthcare Systems - English Civilization' },
+  { path: '/formation/anglais/civilisation/education', component: EducationPage, title: 'Education and Culture Wars - English Civilization' },
+  { path: '/formation/anglais/civilisation/media', component: MediaPage, title: 'Media and Social Networks - English Civilization' },
+  { path: '/formation/anglais/civilisation/justice', component: JusticePage, title: 'Justice and the Rule of Law - English Civilization' },
+  { path: '/formation/anglais/civilisation/inequalities', component: InequalitiesPage, title: 'Social and Racial Inequalities - English Civilization' },
+  { path: '/formation/anglais/civilisation/civil-rights', component: CivilRightsPage, title: 'Civil Rights and Social Movements - English Civilization' },
+  { path: '/formation/anglais/civilisation/brexit', component: BrexitPage, title: 'Brexit and its Aftermath - English Civilization' },
+  { path: '/formation/anglais/civilisation/commonwealth', component: CommonwealthPage, title: 'The Commonwealth and Post-Colonial Legacy - English Civilization' },
+  { path: '/formation/anglais/civilisation/civil-religion', component: CivilReligionPage, title: 'Civil Religion and National Identity - English Civilization' },
+  { path: '/formation/anglais/civilisation/immigration', component: ImmigrationPage, title: 'Immigration and Border Control - English Civilization' },
+  { path: '/formation/anglais/civilisation/contemporary-crises', component: ContemporaryCrisesPage, title: 'Major Contemporary Crises - English Civilization' },
   { path: '/formation/python-fondamentaux', component: PythonFundamentalsPage, title: 'Python Fondamentaux' },
   { path: '/formation/python-matrices', component: PythonMatricesPage, title: 'Python Matrices' },
   { path: '/formation/python-analyse', component: PythonAnalysePage, title: 'Python Analyse' },
@@ -318,7 +542,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-suites', component: MathsSuitesPage, title: 'Maths - Suites numériques' },
   { path: '/formation/maths-suites-numeriques', component: MathsSuitesPage, title: 'Maths - Suites numériques' },
   { path: '/formation/maths-fonctions', component: MathsFonctionsPage, title: 'Maths - Fonctions réelles — continuité' },
-  { path: '/formation/maths-fonctions-d-une-variable-reelle', component: MathsFonctionsPage, title: 'Maths - Fonctions d’une variable réelle' },
+  { path: '/formation/maths-fonctions-d-une-variable-reelle', component: MathsFonctionsPage, title: 'Maths - Fonctions d\'une variable réelle' },
   { path: '/formation/maths-derivation', component: MathsDerivationPage, title: 'Maths - Dérivation' },
   { path: '/formation/maths-integration', component: MathsIntegrationPage, title: 'Maths - Intégration' },
   { path: '/formation/maths-polynomes', component: MathsPolynomesPage, title: 'Maths - Polynômes' },

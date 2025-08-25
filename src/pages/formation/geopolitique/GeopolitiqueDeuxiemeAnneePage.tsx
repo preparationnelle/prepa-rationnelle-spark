@@ -295,9 +295,9 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
                   <div className="border border-gray-300 text-gray-600 py-1.5 px-2 rounded text-center hover:bg-gray-50 transition-colors cursor-pointer text-xs font-medium">
                     Flashcards
                   </div>
-                  <div className="border border-gray-300 text-gray-600 py-1.5 px-2 rounded text-center hover:bg-gray-50 transition-colors cursor-pointer text-xs font-medium">
+                  <Link to="/formation/geopolitique/proche-moyen-orient/chronologie" className="border border-gray-300 text-gray-600 py-1.5 px-2 rounded text-center hover:bg-gray-50 transition-colors cursor-pointer text-xs font-medium">
                     Chronologie
-                  </div>
+                  </Link>
                   <div className="border border-gray-300 text-gray-600 py-1.5 px-2 rounded text-center hover:bg-gray-50 transition-colors cursor-pointer text-xs font-medium">
                     Dissertations
                   </div>
@@ -353,9 +353,9 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
                   <div className="border border-gray-300 text-gray-600 py-1.5 px-2 rounded text-center hover:bg-gray-50 transition-colors cursor-pointer text-xs font-medium">
                     Flashcards
                   </div>
-                  <div className="border border-gray-300 text-gray-600 py-1.5 px-2 rounded text-center hover:bg-gray-50 transition-colors cursor-pointer text-xs font-medium">
+                  <Link to="/formation/geopolitique/amerique-nord/chronologie" className="border border-gray-300 text-gray-600 py-1.5 px-2 rounded text-center hover:bg-gray-50 transition-colors cursor-pointer text-xs font-medium">
                     Chronologie
-                  </div>
+                  </Link>
                   <div className="border border-gray-300 text-gray-600 py-1.5 px-2 rounded text-center hover:bg-gray-50 transition-colors cursor-pointer text-xs font-medium">
                     Dissertations
                   </div>
@@ -411,9 +411,9 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
                   <div className="border border-gray-300 text-gray-600 py-1.5 px-2 rounded text-center hover:bg-gray-50 transition-colors cursor-pointer text-xs font-medium">
                     Flashcards
                   </div>
-                  <div className="border border-gray-300 text-gray-600 py-1.5 px-2 rounded text-center hover:bg-gray-50 transition-colors cursor-pointer text-xs font-medium">
+                  <Link to="/formation/geopolitique/amerique-latine/chronologie" className="border border-gray-300 text-gray-600 py-1.5 px-2 rounded text-center hover:bg-gray-50 transition-colors cursor-pointer text-xs font-medium">
                     Chronologie
-                  </div>
+                  </Link>
                   <div className="border border-gray-300 text-gray-600 py-1.5 px-2 rounded text-center hover:bg-gray-50 transition-colors cursor-pointer text-xs font-medium">
                     Dissertations
                   </div>
@@ -469,9 +469,9 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
                   <div className="border border-gray-300 text-gray-600 py-1.5 px-2 rounded text-center hover:bg-gray-50 transition-colors cursor-pointer text-xs font-medium">
                     Flashcards
                   </div>
-                  <div className="border border-gray-300 text-gray-600 py-1.5 px-2 rounded text-center hover:bg-gray-50 transition-colors cursor-pointer text-xs font-medium">
+                  <Link to="/formation/geopolitique/asie/chronologie" className="border border-gray-300 text-gray-600 py-1.5 px-2 rounded text-center hover:bg-gray-50 transition-colors cursor-pointer text-xs font-medium">
                     Chronologie
-                  </div>
+                  </Link>
                   <div className="border border-gray-300 text-gray-600 py-1.5 px-2 rounded text-center hover:bg-gray-50 transition-colors cursor-pointer text-xs font-medium">
                     Dissertations
                   </div>

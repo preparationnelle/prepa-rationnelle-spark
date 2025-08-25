@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
-import { Home, ChevronRight, BookOpen, Globe, Quote, AlertTriangle, CheckCircle } from 'lucide-react';
+import { Home, ChevronRight, BookOpen, Globe, Quote, AlertTriangle, CheckCircle, Clock, Calendar } from 'lucide-react';
 
 const AmeriqueLatinePage = () => {
   return (
@@ -2709,6 +2709,116 @@ const AmeriqueLatinePage = () => {
               </AccordionItem>
 
             </Accordion>
+          </CardContent>
+        </Card>
+
+        {/* Chronologie */}
+        <Card className="mt-8 border-2 border-yellow-200 bg-gradient-to-br from-yellow-50 to-orange-50 shadow-lg">
+          <CardHeader>
+            <CardTitle className="text-2xl flex items-center gap-3">
+              <Clock className="h-6 w-6 text-yellow-600" />
+              Chronologie de l'Amérique Latine
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <p className="text-gray-700 mb-6">
+                Les événements clés qui ont façonné l'Amérique Latine, des luttes pour l'indépendance aux défis contemporains du XXIe siècle.
+              </p>
+              
+              <div className="space-y-3 max-h-96 overflow-y-auto bg-white p-4 rounded-lg border border-yellow-200">
+                {[
+                  { year: "1810-1821", event: "Révolte au Mexique : Guerre d'Indépendance" },
+                  { year: "1816", event: "Indépendance de l'Argentine" },
+                  { year: "1818", event: "Indépendance du Chili" },
+                  { year: "1819", event: "Fondation de la Grande Colombie par Simón Bolívar" },
+                  { year: "1821", event: "Indépendance du Mexique" },
+                  { year: "1822", event: "Indépendance du Brésil" },
+                  { year: "1825", event: "Indépendance de la Bolivie" },
+                  { year: "1830", event: "Dissolution de la Grande Colombie" },
+                  { year: "1845-1848", event: "Guerre américano-mexicaine" },
+                  { year: "1864-1870", event: "Guerre de la Triple Alliance contre le Paraguay" },
+                  { year: "1879-1884", event: "Guerre du Pacifique (Chili vs Pérou et Bolivie)" },
+                  { year: "1889", event: "Proclamation de la République au Brésil" },
+                  { year: "1898", event: "Guerre hispano-américaine, Cuba devient protectorat américain" },
+                  { year: "1903", event: "Indépendance du Panama avec soutien américain" },
+                  { year: "1910-1920", event: "Révolution mexicaine" },
+                  { year: "1929", event: "Grande Dépression, impact majeur sur les économies d'exportation" },
+                  { year: "1930", event: "Révolution de 1930 au Brésil, arrivée de Getúlio Vargas" },
+                  { year: "1938", event: "Nationalisation du pétrole au Mexique par Lázaro Cárdenas" },
+                  { year: "1946", event: "Retour à la démocratie en Argentine avec Juan Perón" },
+                  { year: "1954", event: "Coup d'État CIA au Guatemala contre Jacobo Árbenz" },
+                  { year: "1959", event: "Révolution cubaine, Fidel Castro prend le pouvoir" },
+                  { year: "1961", event: "Échec du débarquement de la Baie des Cochons" },
+                  { year: "1962", event: "Crise des missiles de Cuba" },
+                  { year: "1964", event: "Coup d'État militaire au Brésil" },
+                  { year: "1970", event: "Élection de Salvador Allende au Chili" },
+                  { year: "1973", event: "Coup d'État de Pinochet au Chili, mort d'Allende" },
+                  { year: "1976", event: "Coup d'État militaire en Argentine" },
+                  { year: "1979", event: "Révolution sandiniste au Nicaragua" },
+                  { year: "1982", event: "Guerre des Malouines entre Argentine et Royaume-Uni" },
+                  { year: "1982", event: "Crise de la dette latino-américaine, 'décennie perdue'" },
+                  { year: "1985", event: "Retour à la démocratie au Brésil" },
+                  { year: "1989", event: "Invasion américaine du Panama" },
+                  { year: "1990", event: "Fin de la dictature de Pinochet au Chili" },
+                  { year: "1991", event: "Création du Mercosur (Marché commun du Sud)" },
+                  { year: "1994", event: "Entrée en vigueur de l'ALÉNA (NAFTA)" },
+                  { year: "1994", event: "Soulèvement zapatiste au Chiapas, Mexique" },
+                  { year: "1998", event: "Arrestation de Pinochet à Londres" },
+                  { year: "1999", event: "Hugo Chávez devient président du Venezuela" },
+                  { year: "2001", event: "Crise économique en Argentine, cessation de paiement" },
+                  { year: "2002", event: "Lula da Silva élu président du Brésil" },
+                  { year: "2005", event: "Evo Morales élu premier président indigène de Bolivie" },
+                  { year: "2006", event: "Michelle Bachelet première femme présidente du Chili" },
+                  { year: "2008", event: "Crise financière mondiale affecte la région" },
+                  { year: "2009", event: "Coup d'État au Honduras contre Manuel Zelaya" },
+                  { year: "2010", event: "Séisme de magnitude 8,8 au Chili" },
+                  { year: "2011", event: "Mort d'Hugo Chávez au Venezuela" },
+                  { year: "2013", event: "Élection du pape François, premier pape latino-américain" },
+                  { year: "2014-2016", event: "Chute des prix des matières premières, récession" },
+                  { year: "2016", event: "Impeachment de Dilma Rousseff au Brésil" },
+                  { year: "2016", event: "Accords de paix en Colombie avec les FARC" },
+                  { year: "2018", event: "Élection de Jair Bolsonaro au Brésil" },
+                  { year: "2018", event: "Élection d'Andrés Manuel López Obrador au Mexique" },
+                  { year: "2019", event: "Crise politique en Bolivie, démission d'Evo Morales" },
+                  { year: "2019", event: "Manifestations massives au Chili contre les inégalités" },
+                  { year: "2020", event: "Pandémie de COVID-19, impact économique majeur" },
+                  { year: "2021", event: "Pedro Castillo élu président du Pérou" },
+                  { year: "2021", event: "Gabriel Boric élu président du Chili" },
+                  { year: "2022", event: "Gustavo Petro élu premier président de gauche en Colombie" },
+                  { year: "2022", event: "Lula da Silva réélu président du Brésil" },
+                  { year: "2023", event: "Javier Milei élu président d'Argentine sur un programme ultra-libéral" },
+                  { year: "2024", event: "Intensification de la crise migratoire vénézuélienne" },
+                  { year: "2025", event: "Mouvements de mères des disparus en Amérique latine gagnent en visibilité internationale" },
+                ].map((item, index) => (
+                  <div key={index} className="flex items-start border-b border-gray-100 pb-2">
+                    <span className="flex-shrink-0 w-20 text-sm font-semibold text-yellow-700 mr-3">
+                      {item.year}
+                    </span>
+                    <p className="flex-grow text-gray-700 text-sm leading-relaxed">
+                      {item.event}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="mt-4 p-4 bg-yellow-100 rounded-lg border border-yellow-300">
+                <div className="flex items-center gap-2 mb-2">
+                  <Calendar className="h-5 w-5 text-yellow-600" />
+                  <p className="font-semibold text-yellow-800">Chronologie complète</p>
+                </div>
+                <p className="text-sm text-yellow-700">
+                  Cette chronologie présente les événements majeurs de 1810 à 2025. Pour une version plus détaillée avec 
+                  catégorisation et analyse, consultez la page dédiée.
+                </p>
+                <Link 
+                  to="/formation/geopolitique/amerique-latine/chronologie" 
+                  className="inline-flex items-center mt-2 text-yellow-600 hover:text-yellow-800 font-medium text-sm"
+                >
+                  Voir la chronologie détaillée →
+                </Link>
+              </div>
+            </div>
           </CardContent>
         </Card>
 

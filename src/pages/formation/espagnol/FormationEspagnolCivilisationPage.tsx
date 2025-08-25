@@ -713,10 +713,12 @@ Los casos de Argentina y España evidencian que la igualdad progresa cuando conv
                     </div>
 
                     <div className="flex gap-3">
-                      <Button className={`flex-1 ${themeColors.button} text-white font-semibold py-3`}>
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Accéder au module
-                      </Button>
+                      <Link to={`/formation/espagnol/civilisation/module${module.id}`}>
+                        <Button className={`flex-1 ${themeColors.button} text-white font-semibold py-3`}>
+                          <Calendar className="mr-2 h-4 w-4" />
+                          Accéder au module
+                        </Button>
+                      </Link>
                       <Button 
                         variant="outline" 
                         className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}

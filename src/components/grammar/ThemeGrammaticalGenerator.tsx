@@ -6,7 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Loader2, Languages, Target, RefreshCw, Eye, EyeOff, Plus, CheckCircle, AlertCircle, BookOpen, Lightbulb, Timer, Save, Play, Pause, Clock, Trophy, Zap, ThumbsUp, ThumbsDown, Star, MessageSquare } from 'lucide-react';
+import { Loader2, Languages, Target, RefreshCw, Eye, EyeOff, Plus, CheckCircle, AlertCircle, BookOpen, Lightbulb, Timer, Save, Play, Pause, Clock, Trophy, Zap, ThumbsUp, ThumbsDown, Star, MessageSquare, Sparkles, Brain, Award, BookOpenCheck } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';
@@ -81,6 +81,11 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
     bestScore: 0,
     timeSpent: 0
   });
+
+  // Nouveaux états pour l'interface améliorée
+  const [showPerfectAnswer, setShowPerfectAnswer] = useState(false);
+  const [isLoadingFeedback, setIsLoadingFeedback] = useState(false);
+  const [feedbackLoaded, setFeedbackLoaded] = useState(false);
 
   const { currentUser } = useAuth();
   const { toast } = useToast();
@@ -162,6 +167,8 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
         setWeakGrammarPoints([]);
         setSimilarSentences([]);
         setCompletedSentence(false);
+        setShowPerfectAnswer(false);
+        setFeedbackLoaded(false);
         
         // Start timer in exam mode
         if (examMode) {
@@ -190,117 +197,165 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
     }
   }, [language, history, examMode, toast]);
 
-  const analyzeGermanErrors = useCallback((studentAnswer: string, reference: string) => {
-    const errors = {
-      major_errors: [] as any[],
-      minor_errors: [] as any[],
-      accepted_variations: [] as string[]
-    };
+  // NOUVELLE FONCTION : Évaluation en deux étapes
+  const evaluateAnswer = useCallback(async () => {
+    if (!currentSentence || !studentAnswer.trim() || isEvaluating) {
+      return;
+    }
 
-    // Analyse des erreurs communes en allemand
-    const student = studentAnswer.toLowerCase();
-    const ref = reference.toLowerCase();
+    console.log(`🔍 Évaluation de la réponse en ${language}:`, {
+      student: studentAnswer.trim(),
+      french: currentSentence.french,
+      reference: currentSentence.reference
+    });
+
+    setIsEvaluating(true);
     
-    // Erreur 1: Article défini manquant
-    if (ref.includes('die ') && !student.includes('die ')) {
-      errors.major_errors.push({
-        error: "Article défini 'die' manquant",
-        explanation: "L'article défini 'die' est obligatoire en allemand pour marquer le genre et le cas",
-        correction: "Ajouter 'die' devant le nom féminin ou pluriel",
-        rule: "Die = article féminin nominatif/accusatif ou pluriel nominatif/accusatif"
+    try {
+      // ÉTAPE 1 : Montrer immédiatement la correction parfaite
+      setShowPerfectAnswer(true);
+      setEvaluation({
+        score: 0, // Temporaire
+        severity: { major_errors: [], minor_errors: [], accepted_variations: [] },
+        corrected: currentSentence.reference,
+        reference: currentSentence.reference,
+        grammar_rules: [],
+        tips: [],
+        weak_grammar_points: [],
+        similar_sentences: [],
+        flashcard_rule: ""
       });
-    }
+      
+      setCompletedSentence(true);
+      
+      // Stop timer in exam mode
+      if (examMode) {
+        setIsTimerRunning(false);
+      }
 
-    if (ref.includes('der ') && !student.includes('der ')) {
-      errors.major_errors.push({
-        error: "Article défini 'der' manquant",
-        explanation: "L'article défini 'der' est obligatoire pour marquer le genre masculin ou le génitif féminin",
-        correction: "Ajouter 'der' devant le nom masculin ou au génitif féminin",
-        rule: "Der = article masculin nominatif ou génitif féminin/pluriel"
+      toast({
+        title: "Correction disponible !",
+        description: "La correction parfaite est affichée. Le feedback détaillé se charge...",
+        variant: "default"
       });
-    }
 
-    if (ref.includes('das ') && !student.includes('das ')) {
-      errors.major_errors.push({
-        error: "Article défini 'das' manquant",
-        explanation: "L'article défini 'das' est obligatoire pour marquer le genre neutre",
-        correction: "Ajouter 'das' devant le nom neutre",
-        rule: "Das = article neutre nominatif/accusatif"
+      // ÉTAPE 2 : Charger le feedback détaillé en arrière-plan
+      setIsLoadingFeedback(true);
+      
+      const { data, error } = await supabase.functions.invoke('evaluate-theme-translation', {
+        body: {
+          language,
+          student: studentAnswer.trim(),
+          french: currentSentence.french,
+          reference: currentSentence.reference,
+          grammar_points: currentSentence.grammar_points
+        }
       });
-    }
 
-    // Erreur 2: Préposition 'zu' avec mauvais cas
-    if (student.includes('zu eine') && ref.includes('zu einer')) {
-      errors.major_errors.push({
-        error: "Cas incorrect après 'zu'",
-        explanation: "La préposition 'zu' régit toujours le datif en allemand",
-        correction: "Utiliser 'zu einer' (datif féminin) au lieu de 'zu eine' (accusatif)",
-        rule: "La préposition 'zu' régit toujours le datif"
+      console.log('📊 Évaluation détaillée reçue:', { data, error });
+
+      let evaluationData = data;
+
+      // Si l'API échoue, utiliser les données de secours
+      if (error || !data || !data.corrected || data.corrected === "Correction non disponible") {
+        console.log('🔄 Utilisation des données de secours pour le feedback');
+        evaluationData = generateFallbackEvaluation(language, studentAnswer.trim(), currentSentence.reference);
+        
+        toast({
+          title: "Feedback de secours",
+          description: "L'IA principale n'est pas disponible, utilisation du système de correction de secours",
+          variant: "default"
+        });
+      }
+
+      if (!evaluationData) {
+        throw new Error('Pas de données d\'évaluation disponibles');
+      }
+
+      // Mettre à jour l'évaluation avec les données complètes
+      setEvaluation(evaluationData);
+      setWeakGrammarPoints(evaluationData.weak_grammar_points || []);
+      setSimilarSentences(evaluationData.similar_sentences || []);
+      setFeedbackLoaded(true);
+
+      // Update session stats
+      setSessionStats(prev => ({
+        totalExercises: prev.totalExercises + 1,
+        averageScore: (prev.averageScore * prev.totalExercises + evaluationData.score) / (prev.totalExercises + 1),
+        bestScore: Math.max(prev.bestScore, evaluationData.score),
+        timeSpent: prev.timeSpent + timer
+      }));
+
+      // Sauvegarder l'erreur pour la mémoire si il y a des erreurs grammaticales
+      if (evaluationData.severity?.major_errors?.length > 0 && currentUser?.id) {
+        const grammarError = {
+          grammar_point: evaluationData.weak_grammar_points?.[0] || currentSentence.grammar_points[0],
+          rule: evaluationData.flashcard_rule || "Règle à réviser",
+          french_sentence: currentSentence.french,
+          student_answer: studentAnswer.trim(),
+          correct_answer: evaluationData.corrected || currentSentence.reference,
+          error_type: evaluationData.severity.major_errors[0] || "Erreur grammaticale"
+        };
+        setNewError(grammarError);
+      }
+
+      toast({
+        title: `Score: ${evaluationData.score}/10`,
+        description: evaluationData.score >= 8 ? "Excellente traduction !" : 
+                    evaluationData.score >= 6 ? "Bonne traduction, quelques erreurs à corriger" :
+                    "Traduction à retravailler, consultez les corrections",
+        variant: evaluationData.score >= 6 ? "default" : "destructive"
       });
-    }
 
-    // Erreur 3: Construction infinitive manquante
-    if (ref.includes('zu ') && student.includes('plan') && !student.includes('zu')) {
-      errors.major_errors.push({
-        error: "Construction infinitive 'zu + infinitif' manquante",
-        explanation: "Après 'planen', on utilise la construction infinitive avec 'zu' + infinitif",
-        correction: "Ajouter 'zu' + infinitif : 'plant, zu + infinitif'",
-        rule: "Après 'planen', 'vorhaben', 'versuchen' → zu + infinitif"
+    } catch (error) {
+      console.error('💥 Erreur complète lors de l\'évaluation:', error);
+      toast({
+        title: "Erreur d'évaluation",
+        description: `Une erreur est survenue: ${error instanceof Error ? error.message : 'Erreur inconnue'}`,
+        variant: "destructive"
       });
+    } finally {
+      setIsEvaluating(false);
+      setIsLoadingFeedback(false);
     }
+  }, [currentSentence, studentAnswer, language, currentUser, toast, examMode, timer]);
 
-    // Erreur 4: Ordre des mots incorrect
-    if (student.includes('haben') && student.includes('geführt') && 
-        student.indexOf('haben') > student.indexOf('geführt')) {
-      errors.minor_errors.push({
-        error: "Ordre des mots au parfait incorrect",
-        explanation: "Au parfait, l'auxiliaire 'haben' vient avant le participe passé",
-        correction: "Ordre correct : haben + participe passé",
-        rule: "Parfait = haben/sein + participe passé en fin de phrase"
-      });
-    }
-
-    // Erreur 5: Mauvaise traduction de 'führen zu'
-    if (student.includes('lead to') || student.includes('conduire')) {
-      errors.minor_errors.push({
-        error: "Traduction directe au lieu de 'führen zu'",
-        explanation: "En allemand, 'conduire à' se traduit par 'führen zu' + datif",
-        correction: "Utiliser 'führen zu' + datif",
-        rule: "Führen zu + datif = conduire à, mener à"
-      });
-    }
-
-    return errors;
-  }, []);
-
+  // Fonction de secours pour l'évaluation
   const generateFallbackEvaluation = useCallback((language: string, studentAnswer: string, reference: string) => {
     const fallbackData = {
-      de: (() => {
-        const analyzedErrors = analyzeGermanErrors(studentAnswer, reference);
-        const totalErrors = analyzedErrors.major_errors.length + analyzedErrors.minor_errors.length;
-        const score = Math.max(0, 10 - (analyzedErrors.major_errors.length * 2) - (analyzedErrors.minor_errors.length * 1));
-        
-        return {
-          score: score,
-          severity: analyzedErrors,
-          corrected: reference,
-          reference: reference,
-          grammar_rules: ["Déclinaisons des articles", "Prépositions + cas", "Constructions infinitives", "Ordre des mots"],
-          tips: [
-            "Les articles définis se déclinent selon le genre, nombre et cas",
-            "La préposition 'zu' régit toujours le datif",
-            "Après 'planen' → zu + infinitif",
-            "Au parfait : auxiliaire + participe passé en fin"
-          ],
-          weak_grammar_points: ["déclinaisons", "prépositions + cas", "infinitif"],
-          similar_sentences: [
-            "Die Regierung plant, neue Maßnahmen zu ergreifen.",
-            "Experten kritisieren die mangelnde Transparenz.",
-            "Die Krise führt zu wirtschaftlichen Problemen."
-          ],
-          flashcard_rule: "Les articles définis allemands : der/die/das se déclinent selon genre, nombre et cas"
-        };
-      })(),
+      de: {
+        score: 7,
+        severity: {
+          major_errors: [{
+            error: "Déclinaison incorrecte",
+            explanation: "Les articles définis se déclinent selon le genre, nombre et cas en allemand",
+            correction: "Vérifier la déclinaison des articles der/die/das",
+            rule: "Les articles définis se déclinent selon le genre, nombre et cas"
+          }],
+          minor_errors: [{
+            error: "Préposition + cas",
+            explanation: "Certaines prépositions régissent un cas spécifique",
+            correction: "Vérifier le régime des prépositions (zu + datif, für + accusatif)",
+            rule: "Chaque préposition régit un cas spécifique"
+          }],
+          accepted_variations: []
+        },
+        corrected: reference,
+        reference: reference,
+        grammar_rules: ["Déclinaisons des articles", "Prépositions + cas", "Constructions infinitives"],
+        tips: [
+          "Les articles définis se déclinent selon le genre, nombre et cas",
+          "La préposition 'zu' régit toujours le datif",
+          "Après 'planen' → zu + infinitif"
+        ],
+        weak_grammar_points: ["déclinaisons", "prépositions + cas", "infinitif"],
+        similar_sentences: [
+          "Die Regierung plant, neue Maßnahmen zu ergreifen.",
+          "Experten kritisieren die mangelnde Transparenz.",
+          "Die Krise führt zu wirtschaftlichen Problemen."
+        ],
+        flashcard_rule: "Les articles définis allemands : der/die/das se déclinent selon genre, nombre et cas"
+      },
       en: {
         score: 7,
         severity: {
@@ -318,7 +373,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
           }],
           accepted_variations: []
         },
-        corrected: `${reference}`,
+        corrected: reference,
         reference: reference,
         grammar_rules: ["Present perfect", "Voix passive", "Modaux"],
         tips: [
@@ -350,7 +405,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
           }],
           accepted_variations: []
         },
-        corrected: `${reference}`,
+        corrected: reference,
         reference: reference,
         grammar_rules: ["Subjonctif présent", "Ser vs estar", "Por vs para"],
         tips: [
@@ -370,106 +425,6 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
     return fallbackData[language as keyof typeof fallbackData] || fallbackData.en;
   }, []);
 
-  const evaluateAnswer = useCallback(async () => {
-    if (!currentSentence || !studentAnswer.trim() || isEvaluating) {
-      return;
-    }
-
-    console.log(`🔍 Évaluation de la réponse en ${language}:`, {
-      student: studentAnswer.trim(),
-      french: currentSentence.french,
-      reference: currentSentence.reference
-    });
-
-    setIsEvaluating(true);
-    try {
-      const { data, error } = await supabase.functions.invoke('evaluate-theme-translation', {
-        body: {
-          language,
-          student: studentAnswer.trim(),
-          french: currentSentence.french,
-          reference: currentSentence.reference,
-          grammar_points: currentSentence.grammar_points
-        }
-      });
-
-      console.log('📊 Évaluation reçue:', { data, error });
-
-      let evaluationData = data;
-
-      // Si l'API échoue ou retourne des données incomplètes, utiliser les données de secours
-      if (error || !data || !data.corrected || data.corrected === "Correction non disponible") {
-        console.log('🔄 Utilisation des données de secours pour le feedback');
-        evaluationData = generateFallbackEvaluation(language, studentAnswer.trim(), currentSentence.reference);
-        
-        toast({
-          title: "Évaluation de secours",
-          description: "L'IA principale n'est pas disponible, utilisation du système de correction de secours",
-          variant: "default"
-        });
-      }
-
-      if (!evaluationData) {
-        throw new Error('Pas de données d\'évaluation disponibles');
-      }
-
-      console.log('✅ Évaluation terminée avec succès:', {
-        score: evaluationData.score,
-        major_errors: evaluationData.severity?.major_errors?.length || 0,
-        minor_errors: evaluationData.severity?.minor_errors?.length || 0
-      });
-
-      setEvaluation(evaluationData);
-      setWeakGrammarPoints(evaluationData.weak_grammar_points || []);
-      setSimilarSentences(evaluationData.similar_sentences || []);
-      setCompletedSentence(true);
-
-      // Stop timer in exam mode
-      if (examMode) {
-        setIsTimerRunning(false);
-      }
-
-      // Update session stats
-      setSessionStats(prev => ({
-        totalExercises: prev.totalExercises + 1,
-        averageScore: (prev.averageScore * prev.totalExercises + data.score) / (prev.totalExercises + 1),
-        bestScore: Math.max(prev.bestScore, data.score),
-        timeSpent: prev.timeSpent + timer
-      }));
-
-      // Sauvegarder l'erreur pour la mémoire si il y a des erreurs grammaticales
-      if (data.severity?.major_errors?.length > 0 && currentUser?.id) {
-        const grammarError = {
-          grammar_point: data.weak_grammar_points?.[0] || currentSentence.grammar_points[0],
-          rule: data.flashcard_rule || "Règle à réviser",
-          french_sentence: currentSentence.french,
-          student_answer: studentAnswer.trim(),
-          correct_answer: data.corrected || currentSentence.reference,
-          error_type: data.severity.major_errors[0] || "Erreur grammaticale"
-        };
-        setNewError(grammarError);
-      }
-
-      toast({
-        title: `Score: ${data.score}/10`,
-        description: data.score >= 8 ? "Excellente traduction !" : 
-                    data.score >= 6 ? "Bonne traduction, quelques erreurs à corriger" :
-                    "Traduction à retravailler, consultez les corrections",
-        variant: data.score >= 6 ? "default" : "destructive"
-      });
-
-    } catch (error) {
-      console.error('💥 Erreur complète lors de l\'évaluation:', error);
-      toast({
-        title: "Erreur d'évaluation",
-        description: `Une erreur est survenue: ${error instanceof Error ? error.message : 'Erreur inconnue'}`,
-        variant: "destructive"
-      });
-    } finally {
-      setIsEvaluating(false);
-    }
-  }, [currentSentence, studentAnswer, language, currentUser, toast, examMode, timer]);
-
   const resetExercise = useCallback(() => {
     console.log('🔄 Reset de l\'exercice');
     setCurrentSentence(null);
@@ -482,6 +437,8 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
     setSimilarSentences([]);
     setHistory([]);
     setCompletedSentence(false);
+    setShowPerfectAnswer(false);
+    setFeedbackLoaded(false);
     if (examMode) {
       setIsTimerRunning(false);
       setTimer(0);
@@ -496,7 +453,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6 space-y-8">
+    <div className="max-w-7xl mx-auto p-6 space-y-8">
       {/* Header moderne avec navigation et stats */}
       <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
@@ -589,8 +546,8 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
         completedSentence={completedSentence}
       />
 
-      {/* Zone principale : Génération et exercice */}
-      <div className="grid lg:grid-cols-3 gap-8">
+      {/* Zone principale : Interface refaite et plus logique */}
+      <div className="grid lg:grid-cols-2 gap-8">
         
         {/* Colonne 1 : Génération et phrase source */}
         <div className="space-y-6">
@@ -715,289 +672,337 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
           )}
         </div>
 
-        {/* Colonne 2 : Zone de réponse */}
+        {/* Colonne 2 : Zone de réponse et correction - INTERFACE REFAITE */}
         <div className="space-y-6">
           {currentSentence && (
-            <Card className="border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg">
-              <CardHeader className="pb-4">
-                <CardTitle className="flex items-center gap-2 text-green-800">
-                  <MessageSquare className="h-5 w-5" />
-                  Votre traduction
-                  {examMode && (
-                    <Badge variant="destructive">
-                      <Clock className="h-3 w-3 mr-1" />
-                      {formatTime(timer)}
-                    </Badge>
-                  )}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <Textarea
-                  value={studentAnswer}
-                  onChange={(e) => setStudentAnswer(e.target.value)}
-                  placeholder="Tapez votre traduction ici..."
-                  className="min-h-[120px] border-green-300 focus:border-green-500"
-                  disabled={examMode && isTimerRunning}
-                />
-                
-                <div className="flex gap-2">
-                  <Button
-                    onClick={evaluateAnswer}
-                    disabled={!studentAnswer.trim() || isEvaluating}
-                    className="flex-1 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white"
-                  >
-                    {isEvaluating ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Évaluation...
-                      </>
-                    ) : (
-                      <>
-                        <CheckCircle className="mr-2 h-4 w-4" />
-                        Évaluer
-                      </>
-                    )}
-                  </Button>
-                  
-                  <Button
-                    variant="outline"
-                    onClick={resetExercise}
-                    className="border-green-300 text-green-700 hover:bg-green-100"
-                  >
-                    <RefreshCw className="mr-2 h-4 w-4" />
-                    Reset
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          )}
-        </div>
-
-        {/* Colonne 3 : Résultats et feedback */}
-        <div className="space-y-6">
-          {evaluation && (
             <>
-              {/* Score et évaluation générale */}
-              <Card className="border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50 shadow-lg">
+              {/* Zone de réponse améliorée */}
+              <Card className="border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg">
                 <CardHeader className="pb-4">
-                  <CardTitle className="flex items-center gap-2 text-purple-800">
-                    <Trophy className="h-5 w-5" />
-                    Résultats
-                    <Badge className={`${getScoreColor(evaluation.score)} bg-white border`}>
-                      {evaluation.score}/10
-                    </Badge>
+                  <CardTitle className="flex items-center gap-2 text-green-800">
+                    <MessageSquare className="h-5 w-5" />
+                    Votre traduction
+                    {examMode && (
+                      <Badge variant="destructive">
+                        <Clock className="h-3 w-3 mr-1" />
+                        {formatTime(timer)}
+                      </Badge>
+                    )}
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <Tabs defaultValue="correction" className="w-full">
-                    <TabsList className="grid w-full grid-cols-2">
-                      <TabsTrigger value="correction">Correction</TabsTrigger>
-                      <TabsTrigger value="feedback">Feedback</TabsTrigger>
-                    </TabsList>
-                    
-                    <TabsContent value="correction" className="space-y-4">
-                      {/* Correction */}
-                      <div className="bg-white p-4 rounded-lg border border-gray-200">
-                        <h4 className="font-medium text-gray-800 mb-2">Correction :</h4>
-                        <p className="text-gray-700">{evaluation.corrected}</p>
-                      </div>
-
-                      {/* Analyse des erreurs */}
-                      {(evaluation.severity.major_errors.length > 0 || evaluation.severity.minor_errors.length > 0) && (
-                        <div className="space-y-4">
-                          <h4 className="font-semibold text-gray-800">Analyse détaillée des erreurs :</h4>
-                          
-                          {evaluation.severity.major_errors.length > 0 && (
-                            <div className="bg-red-50 p-4 rounded-lg border border-red-200">
-                              <p className="text-sm font-medium text-red-700 mb-3">Erreurs graves (-2 points) :</p>
-                              <div className="space-y-3">
-                                {evaluation.severity.major_errors.map((error, index) => (
-                                  <div key={index} className="bg-white p-3 rounded border border-red-200">
-                                    {typeof error === 'string' ? (
-                                      <p className="text-red-600 flex items-start">
-                                        <span className="text-red-500 mr-2">•</span>
-                                        {error}
-                                      </p>
-                                    ) : (
-                                      <div className="space-y-2">
-                                        <div className="flex items-start">
-                                          <span className="text-red-500 mr-2">•</span>
-                                          <div className="flex-1">
-                                            <p className="text-red-800 font-medium">{error.error}</p>
-                                            <p className="text-red-600 text-sm mt-1">
-                                              <span className="font-medium">Pourquoi :</span> {error.explanation}
-                                            </p>
-                                            <p className="text-green-600 text-sm mt-1">
-                                              <span className="font-medium">Correction :</span> {error.correction}
-                                            </p>
-                                            <p className="text-blue-600 text-sm mt-1">
-                                              <span className="font-medium">Règle :</span> {error.rule}
-                                            </p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    )}
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-
-                          {evaluation.severity.minor_errors.length > 0 && (
-                            <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
-                              <p className="text-sm font-medium text-amber-700 mb-3">Erreurs mineures (-1 point) :</p>
-                              <div className="space-y-3">
-                                {evaluation.severity.minor_errors.map((error, index) => (
-                                  <div key={index} className="bg-white p-3 rounded border border-amber-200">
-                                    {typeof error === 'string' ? (
-                                      <p className="text-amber-600 flex items-start">
-                                        <span className="text-amber-500 mr-2">•</span>
-                                        {error}
-                                      </p>
-                                    ) : (
-                                      <div className="space-y-2">
-                                        <div className="flex items-start">
-                                          <span className="text-amber-500 mr-2">•</span>
-                                          <div className="flex-1">
-                                            <p className="text-amber-800 font-medium">{error.error}</p>
-                                            <p className="text-amber-600 text-sm mt-1">
-                                              <span className="font-medium">Pourquoi :</span> {error.explanation}
-                                            </p>
-                                            <p className="text-green-600 text-sm mt-1">
-                                              <span className="font-medium">Correction :</span> {error.correction}
-                                            </p>
-                                            <p className="text-blue-600 text-sm mt-1">
-                                              <span className="font-medium">Règle :</span> {error.rule}
-                                            </p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    )}
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-
-                          {evaluation.severity.accepted_variations.length > 0 && (
-                            <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                              <p className="text-sm font-medium text-green-700 mb-2">Variations acceptées :</p>
-                              <ul className="space-y-1">
-                                {evaluation.severity.accepted_variations.map((variation, index) => (
-                                  <li key={index} className="text-green-600 flex items-start">
-                                    <span className="text-green-500 mr-2">✓</span>
-                                    {variation}
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          )}
-                        </div>
+                <CardContent className="space-y-4">
+                  {/* Zone de saisie améliorée et plus logique */}
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-gray-700">
+                      Tapez votre traduction ici :
+                    </label>
+                    <Textarea
+                      value={studentAnswer}
+                      onChange={(e) => setStudentAnswer(e.target.value)}
+                      placeholder={`Traduisez en ${language === 'de' ? 'allemand' : language === 'en' ? 'anglais' : 'espagnol'}...`}
+                      className="min-h-[140px] border-green-300 focus:border-green-500 text-base leading-relaxed resize-none"
+                      disabled={examMode && isTimerRunning}
+                    />
+                  </div>
+                  
+                  <div className="flex gap-2">
+                    <Button
+                      onClick={evaluateAnswer}
+                      disabled={!studentAnswer.trim() || isEvaluating}
+                      className="flex-1 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white shadow-lg"
+                    >
+                      {isEvaluating ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Évaluation...
+                        </>
+                      ) : (
+                        <>
+                          <CheckCircle className="mr-2 h-4 w-4" />
+                          Corriger
+                        </>
                       )}
-                    </TabsContent>
-
-                    <TabsContent value="feedback" className="space-y-4">
-                      {/* Feedback positif */}
-                      <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                        <div className="flex items-center gap-3 mb-3">
-                          <ThumbsUp className="h-5 w-5 text-green-600" />
-                          <h4 className="font-semibold text-green-800">Points forts :</h4>
-                        </div>
-                        <div className="space-y-2">
-                          {(() => {
-                            const positivePoints = [];
-                            if (studentAnswer.toLowerCase().includes('have') || studentAnswer.toLowerCase().includes('has')) {
-                              positivePoints.push("Utilisation correcte du present perfect");
-                            }
-                            if (evaluation.severity.accepted_variations.length > 0) {
-                              positivePoints.push("Variations stylistiques acceptables");
-                            }
-                            if (positivePoints.length === 0) {
-                              if (evaluation.score >= 6) {
-                                positivePoints.push("Structure grammaticale solide");
-                                positivePoints.push("Registre formel respecté");
-                              } else {
-                                positivePoints.push("Tentative de traduction complète");
-                                positivePoints.push("Compréhension du sens général");
-                              }
-                            }
-                            return positivePoints.slice(0, 3).map((point, index) => (
-                              <div key={index} className="flex items-start gap-2">
-                                <CheckCircle className="h-4 w-4 text-green-600 mt-0.5" />
-                                <p className="text-green-700">{point}</p>
-                              </div>
-                            ));
-                          })()}
-                        </div>
-                      </div>
-
-                      {/* Points à améliorer */}
-                      <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
-                        <div className="flex items-center gap-3 mb-3">
-                          <ThumbsDown className="h-5 w-5 text-amber-600" />
-                          <h4 className="font-semibold text-amber-800">Points à améliorer :</h4>
-                        </div>
-                        <div className="space-y-2">
-                          {(() => {
-                            const improvementPoints = [];
-                            if (evaluation.severity.major_errors.length > 0) {
-                              improvementPoints.push("Erreurs grammaticales majeures à corriger");
-                            }
-                            if (evaluation.severity.minor_errors.length > 0) {
-                              improvementPoints.push("Précision lexicale à améliorer");
-                            }
-                            if (evaluation.score < 6) {
-                              improvementPoints.push("Structure de phrase à retravailler");
-                            }
-                            return improvementPoints.map((point, index) => (
-                              <div key={index} className="flex items-start gap-2">
-                                <AlertCircle className="h-4 w-4 text-amber-600 mt-0.5" />
-                                <p className="text-amber-700">{point}</p>
-                              </div>
-                            ));
-                          })()}
-                        </div>
-                      </div>
-
-                      {/* Conseils personnalisés */}
-                      <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                        <div className="flex items-center gap-3 mb-3">
-                          <Lightbulb className="h-5 w-5 text-blue-600" />
-                          <h4 className="font-semibold text-blue-800">Conseils pour cette phrase :</h4>
-                        </div>
-                        <div className="space-y-2">
-                          {evaluation.tips.slice(0, 2).map((tip, index) => (
-                            <div key={index} className="flex items-start gap-2">
-                              <Star className="h-4 w-4 text-blue-600 mt-0.5" />
-                              <p className="text-blue-700 text-sm">{tip}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </TabsContent>
-                  </Tabs>
+                    </Button>
+                    
+                    <Button
+                      variant="outline"
+                      onClick={resetExercise}
+                      className="border-green-300 text-green-700 hover:bg-green-100"
+                    >
+                      <RefreshCw className="mr-2 h-4 w-4" />
+                      Reset
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
 
-              {/* Phrases similaires */}
-              <SimilarSentencesGenerator 
-                weakGrammarPoints={weakGrammarPoints}
-                similarSentences={similarSentences}
-                language={language}
-                onPracticeSentence={() => {}}
-              />
-
-              {/* Mémoire des erreurs */}
-              {newError && (
-                <GrammarErrorMemory 
-                  language={language}
-                  newError={newError}
-                />
+              {/* CORRECTION PARFAITE IMMÉDIATEMENT DISPONIBLE */}
+              {showPerfectAnswer && (
+                <Card className="border-2 border-emerald-200 bg-gradient-to-br from-emerald-50 to-green-50 shadow-lg">
+                  <CardHeader className="pb-4">
+                    <CardTitle className="flex items-center gap-2 text-emerald-800">
+                      <Award className="h-5 w-5" />
+                      Correction parfaite
+                      <Badge className="bg-emerald-100 text-emerald-800 border-emerald-200">
+                        Disponible immédiatement
+                      </Badge>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="p-4 bg-white rounded-lg border border-emerald-200 shadow-sm">
+                      <p className="text-lg font-medium text-gray-800 leading-relaxed">
+                        {currentSentence.reference}
+                      </p>
+                    </div>
+                    
+                    {/* Indicateur de chargement du feedback */}
+                    {isLoadingFeedback && (
+                      <div className="flex items-center gap-2 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                        <Loader2 className="h-4 w-4 animate-spin text-blue-600" />
+                        <span className="text-sm text-blue-700">
+                          Chargement du feedback détaillé...
+                        </span>
+                      </div>
+                    )}
+                    
+                    {feedbackLoaded && (
+                      <div className="flex items-center gap-2 p-3 bg-green-50 rounded-lg border border-green-200">
+                        <CheckCircle className="h-4 w-4 text-green-600" />
+                        <span className="text-sm text-green-700">
+                          Feedback détaillé disponible !
+                        </span>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
               )}
             </>
           )}
         </div>
       </div>
+
+      {/* Colonne 3 : Résultats et feedback détaillé - SEULEMENT APRÈS ÉVALUATION */}
+      {evaluation && feedbackLoaded && (
+        <div className="space-y-6">
+          {/* Score et évaluation générale */}
+          <Card className="border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50 shadow-lg">
+            <CardHeader className="pb-4">
+              <CardTitle className="flex items-center gap-2 text-purple-800">
+                <Trophy className="h-5 w-5" />
+                Résultats détaillés
+                <Badge className={`${getScoreColor(evaluation.score)} bg-white border`}>
+                  {evaluation.score}/10
+                </Badge>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Tabs defaultValue="correction" className="w-full">
+                <TabsList className="grid w-full grid-cols-2">
+                  <TabsTrigger value="correction">Correction</TabsTrigger>
+                  <TabsTrigger value="feedback">Feedback</TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="correction" className="space-y-4">
+                  {/* Correction */}
+                  <div className="bg-white p-4 rounded-lg border border-gray-200">
+                    <h4 className="font-medium text-gray-800 mb-2">Correction :</h4>
+                    <p className="text-gray-700">{evaluation.corrected}</p>
+                  </div>
+
+                  {/* Analyse des erreurs */}
+                  {(evaluation.severity.major_errors.length > 0 || evaluation.severity.minor_errors.length > 0) && (
+                    <div className="space-y-4">
+                      <h4 className="font-semibold text-gray-800">Analyse détaillée des erreurs :</h4>
+                      
+                      {evaluation.severity.major_errors.length > 0 && (
+                        <div className="bg-red-50 p-4 rounded-lg border border-red-200">
+                          <p className="text-sm font-medium text-red-700 mb-3">Erreurs graves (-2 points) :</p>
+                          <div className="space-y-3">
+                            {evaluation.severity.major_errors.map((error, index) => (
+                              <div key={index} className="bg-white p-3 rounded border border-red-200">
+                                {typeof error === 'string' ? (
+                                  <p className="text-red-600 flex items-start">
+                                    <span className="text-red-500 mr-2">•</span>
+                                    {error}
+                                  </p>
+                                ) : (
+                                  <div className="space-y-2">
+                                    <div className="flex items-start">
+                                      <span className="text-red-500 mr-2">•</span>
+                                      <div className="flex-1">
+                                        <p className="text-red-800 font-medium">{error.error}</p>
+                                        <p className="text-red-600 text-sm mt-1">
+                                          <span className="font-medium">Pourquoi :</span> {error.explanation}
+                                        </p>
+                                        <p className="text-green-600 text-sm mt-1">
+                                          <span className="font-medium">Correction :</span> {error.correction}
+                                        </p>
+                                        <p className="text-blue-600 text-sm mt-1">
+                                          <span className="font-medium">Règle :</span> {error.rule}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {evaluation.severity.minor_errors.length > 0 && (
+                        <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
+                          <p className="text-sm font-medium text-amber-700 mb-3">Erreurs mineures (-1 point) :</p>
+                          <div className="space-y-3">
+                            {evaluation.severity.minor_errors.map((error, index) => (
+                              <div key={index} className="bg-white p-3 rounded border border-amber-200">
+                                {typeof error === 'string' ? (
+                                  <p className="text-amber-600 flex items-start">
+                                    <span className="text-amber-500 mr-2">•</span>
+                                    {error}
+                                  </p>
+                                ) : (
+                                  <div className="space-y-2">
+                                    <div className="flex items-start">
+                                      <span className="text-amber-500 mr-2">•</span>
+                                      <div className="flex-1">
+                                        <p className="text-amber-800 font-medium">{error.error}</p>
+                                        <p className="text-amber-600 text-sm mt-1">
+                                          <span className="font-medium">Pourquoi :</span> {error.explanation}
+                                        </p>
+                                        <p className="text-green-600 text-sm mt-1">
+                                          <span className="font-medium">Correction :</span> {error.correction}
+                                        </p>
+                                        <p className="text-blue-600 text-sm mt-1">
+                                          <span className="font-medium">Règle :</span> {error.rule}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {evaluation.severity.accepted_variations.length > 0 && (
+                        <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                          <p className="text-sm font-medium text-green-700 mb-2">Variations acceptées :</p>
+                          <ul className="space-y-1">
+                            {evaluation.severity.accepted_variations.map((variation, index) => (
+                              <li key={index} className="text-green-600 flex items-start">
+                                <span className="text-green-500 mr-2">✓</span>
+                                {variation}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </TabsContent>
+
+                <TabsContent value="feedback" className="space-y-4">
+                  {/* Feedback positif */}
+                  <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                    <div className="flex items-center gap-3 mb-3">
+                      <ThumbsUp className="h-5 w-5 text-green-600" />
+                      <h4 className="font-semibold text-green-800">Points forts :</h4>
+                    </div>
+                    <div className="space-y-2">
+                      {(() => {
+                        const positivePoints = [];
+                        if (studentAnswer.toLowerCase().includes('have') || studentAnswer.toLowerCase().includes('has')) {
+                          positivePoints.push("Utilisation correcte du present perfect");
+                        }
+                        if (evaluation.severity.accepted_variations.length > 0) {
+                          positivePoints.push("Variations stylistiques acceptables");
+                        }
+                        if (positivePoints.length === 0) {
+                          if (evaluation.score >= 6) {
+                            positivePoints.push("Structure grammaticale solide");
+                            positivePoints.push("Registre formel respecté");
+                          } else {
+                            positivePoints.push("Tentative de traduction complète");
+                            positivePoints.push("Compréhension du sens général");
+                          }
+                        }
+                        return positivePoints.slice(0, 3).map((point, index) => (
+                          <div key={index} className="flex items-start gap-2">
+                            <CheckCircle className="h-4 w-4 text-green-600 mt-0.5" />
+                            <p className="text-green-700">{point}</p>
+                          </div>
+                        ));
+                      })()}
+                    </div>
+                  </div>
+
+                  {/* Points à améliorer */}
+                  <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
+                    <div className="flex items-center gap-3 mb-3">
+                      <ThumbsDown className="h-5 w-5 text-amber-600" />
+                      <h4 className="font-semibold text-amber-800">Points à améliorer :</h4>
+                    </div>
+                    <div className="space-y-2">
+                      {(() => {
+                        const improvementPoints = [];
+                        if (evaluation.severity.major_errors.length > 0) {
+                          improvementPoints.push("Erreurs grammaticales majeures à corriger");
+                        }
+                        if (evaluation.severity.minor_errors.length > 0) {
+                          improvementPoints.push("Précision lexicale à améliorer");
+                        }
+                        if (evaluation.score < 6) {
+                          improvementPoints.push("Structure de phrase à retravailler");
+                        }
+                        return improvementPoints.map((point, index) => (
+                          <div key={index} className="flex items-start gap-2">
+                            <AlertCircle className="h-4 w-4 text-amber-600 mt-0.5" />
+                            <p className="text-amber-700">{point}</p>
+                          </div>
+                        ));
+                      })()}
+                    </div>
+                  </div>
+
+                  {/* Conseils personnalisés */}
+                  <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <div className="flex items-center gap-3 mb-3">
+                      <Lightbulb className="h-5 w-5 text-blue-600" />
+                      <h4 className="font-semibold text-blue-800">Conseils pour cette phrase :</h4>
+                    </div>
+                    <div className="space-y-2">
+                      {evaluation.tips.slice(0, 2).map((tip, index) => (
+                        <div key={index} className="flex items-start gap-2">
+                          <Star className="h-4 w-4 text-blue-600 mt-0.5" />
+                          <p className="text-blue-700 text-sm">{tip}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </TabsContent>
+              </Tabs>
+            </CardContent>
+          </Card>
+
+          {/* Phrases similaires */}
+          <SimilarSentencesGenerator 
+            weakGrammarPoints={weakGrammarPoints}
+            similarSentences={similarSentences}
+            language={language}
+            onPracticeSentence={() => {}}
+          />
+
+          {/* Mémoire des erreurs */}
+          {newError && (
+            <GrammarErrorMemory 
+              language={language}
+              newError={newError}
+            />
+          )}
+        </div>
+      )}
     </div>
   );
 };

@@ -157,7 +157,7 @@ const FormationAllemandPage = () => {
           Wählen Sie Ihr Studiengebiet für den Zugang zu detaillierten und thematisch strukturierten Inhalten.
         </p>
         
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <Card 
             className="p-6 hover:shadow-lg transition-all duration-200 bg-white cursor-pointer transform hover:-translate-y-1"
             onClick={() => navigate('/formation/allemand/grammaire')}
@@ -198,6 +198,28 @@ const FormationAllemandPage = () => {
               </p>
               <div className="bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg text-center hover:bg-blue-700 transition-colors">
                 Découvrir la civilisation allemande
+              </div>
+            </div>
+          </Card>
+
+          <Card 
+            className="p-6 hover:shadow-lg transition-all duration-200 bg-white cursor-pointer transform hover:-translate-y-1"
+            onClick={() => navigate('/formation/allemand/epreuves')}
+            role="button"
+            tabIndex={0}
+          >
+            <div className="flex flex-col h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                  <Target className="w-6 h-6 text-green-600" />
+                </div>
+                <h2 className="text-2xl font-semibold text-green-600">Réussir les épreuves</h2>
+              </div>
+              <p className="text-gray-600 mb-6 flex-grow">
+                Maîtrisez les différentes épreuves du concours : laisser, colle et synthèse de texte. Techniques, méthodologie et conseils pratiques pour exceller.
+              </p>
+              <div className="bg-green-600 text-white font-semibold py-3 px-4 rounded-lg text-center hover:bg-green-700 transition-colors">
+                Maîtriser les épreuves
               </div>
             </div>
           </Card>
@@ -264,13 +286,17 @@ const FormationAllemandPage = () => {
             <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
               <Globe className="h-6 w-6 text-white" />
             </div>
+            <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
+              <Target className="h-6 w-6 text-white" />
+            </div>
           </div>
           <h3 className="text-2xl font-bold text-gray-800 mb-4">Vollständige ECG-Deutschausbildung</h3>
           <p className="text-gray-700 leading-relaxed max-w-3xl mx-auto">
-            Vollständige Deutschausbildung für ECG-Wettbewerbe, strukturiert in drei komplementäre Achsen: 
+            Vollständige Deutschausbildung für ECG-Wettbewerbe, strukturiert in vier komplementäre Achsen: 
             <span className="font-semibold text-orange-600"> KI-Tools für das Training</span>, 
-            <span className="font-semibold text-red-600"> vollständige Grammatik mit 6 detaillierten Blättern</span> und 
-            <span className="font-semibold text-blue-600"> zeitgenössische deutsche Landeskunde</span>. 
+            <span className="font-semibold text-red-600"> vollständige Grammatik mit 6 detaillierten Blättern</span>, 
+            <span className="font-semibold text-blue-600"> zeitgenössische deutsche Landeskunde</span> und
+            <span className="font-semibold text-green-600"> Methodik für Prüfungserfolg</span>. 
             Jedes Modul umfasst konkrete Beispiele, praktische Übungen und aktualisierte Ressourcen 
             für eine optimale Prüfungsvorbereitung.
           </p>
