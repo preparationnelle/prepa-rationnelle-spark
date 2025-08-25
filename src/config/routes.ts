@@ -62,8 +62,16 @@ const ConjugaisonExercicesPage = lazy(() => import('../pages/formation/espagnol/
 const SerEstarPage = lazy(() => import('../pages/formation/espagnol/grammaire/SerEstarPage'));
 const SyntaxePage = lazy(() => import('../pages/formation/espagnol/grammaire/SyntaxePage'));
 const SyntaxeExercicesPage = lazy(() => import('../pages/formation/espagnol/grammaire/SyntaxeExercicesPage'));
+const SerEstarExercicesPage = lazy(() => import('../pages/formation/espagnol/grammaire/SerEstarExercicesPage'));
 const PrepositionsPage = lazy(() => import('../pages/formation/espagnol/grammaire/PrepositionsPage'));
+const PrepositionsExercicesPage = lazy(() => import('../pages/formation/espagnol/grammaire/PrepositionsExercicesPage'));
+const QuestionsExercicesPage = lazy(() => import('../pages/formation/espagnol/grammaire/QuestionsExercicesPage'));
 const QuestionsPage = lazy(() => import('../pages/formation/espagnol/grammaire/QuestionsPage'));
+const NegationsExercicesPage = lazy(() => import('../pages/formation/espagnol/grammaire/NegationsExercicesPage'));
+const TemporalExercicesPage = lazy(() => import('../pages/formation/espagnol/grammaire/TemporalExercicesPage'));
+const PronounsExercicesPage = lazy(() => import('../pages/formation/espagnol/grammaire/PronounsExercicesPage'));
+const AffectiveVerbsExercicesPage = lazy(() => import('../pages/formation/espagnol/grammaire/AffectiveVerbsExercicesPage'));
+const AdjectivesAdverbsExercicesPage = lazy(() => import('../pages/formation/espagnol/grammaire/AdjectivesAdverbsExercicesPage'));
 const NegationsPage = lazy(() => import('../pages/formation/espagnol/grammaire/NegationsPage'));
 const TemporalPage = lazy(() => import('../pages/formation/espagnol/grammaire/TemporalPage'));
 const PronounsPage = lazy(() => import('../pages/formation/espagnol/grammaire/PronounsPage'));
@@ -389,11 +397,19 @@ export const routes: RouteConfig[] = [
   { path: '/formation/espagnol/grammaire/conjugaison', component: ConjugaisonPage, title: 'Conjugaison et Temps Verbaux' },
   { path: '/formation/espagnol/grammaire/conjugaison/exercices', component: ConjugaisonExercicesPage, title: 'Exercices de Conjugaison' },
   { path: '/formation/espagnol/grammaire/ser-estar', component: SerEstarPage, title: 'Ser vs Estar et Constructions' },
+  { path: '/formation/espagnol/grammaire/ser-estar/exercices', component: SerEstarExercicesPage, title: 'Exercices Ser vs Estar' },
   { path: '/formation/espagnol/grammaire/syntaxe-structures-complexes', component: SyntaxePage, title: 'Syntaxe et Structures Complexes' },
   { path: '/formation/espagnol/grammaire/syntaxe-structures-complexes/exercices', component: SyntaxeExercicesPage, title: 'Exercices de Syntaxe et Structures Complexes' },
   { path: '/formation/espagnol/grammaire/prepositions', component: PrepositionsPage, title: 'Prépositions et Locutions' },
+  { path: '/formation/espagnol/grammaire/prepositions/exercices', component: PrepositionsExercicesPage, title: 'Exercices Prépositions et Locutions' },
   { path: '/formation/espagnol/grammaire/questions', component: QuestionsPage, title: 'Questions et Interrogatifs' },
+  { path: '/formation/espagnol/grammaire/questions/exercices', component: QuestionsExercicesPage, title: 'Exercices Questions et Interrogatifs' },
   { path: '/formation/espagnol/grammaire/negations', component: NegationsPage, title: 'Négations' },
+  { path: '/formation/espagnol/grammaire/negations/exercices', component: NegationsExercicesPage, title: 'Exercices Négations' },
+  { path: '/formation/espagnol/grammaire/temporal/exercices', component: TemporalExercicesPage, title: 'Exercices Vocabulaire Temporel' },
+  { path: '/formation/espagnol/grammaire/pronouns/exercices', component: PronounsExercicesPage, title: 'Exercices Pronoms' },
+  { path: '/formation/espagnol/grammaire/affective-verbs/exercices', component: AffectiveVerbsExercicesPage, title: 'Exercices Verbes Affectifs' },
+  { path: '/formation/espagnol/grammaire/adjectives-adverbs/exercices', component: AdjectivesAdverbsExercicesPage, title: 'Exercices Adjectifs et Adverbes' },
   { path: '/formation/espagnol/grammaire/temporal', component: TemporalPage, title: 'Vocabulaire Temporel' },
   { path: '/formation/espagnol/grammaire/pronouns', component: PronounsPage, title: 'Pronoms' },
   { path: '/formation/espagnol/grammaire/affective-verbs', component: AffectiveVerbsPage, title: 'Verbes Affectifs' },

@@ -320,6 +320,27 @@ const SerEstarPage = () => {
             </div>
           </CardContent>
         </Card>
+
+        {/* Bouton vers les exercices */}
+        <Card className="border-2 border-green-200 bg-gradient-to-r from-green-50 to-emerald-50">
+          <CardHeader>
+            <CardTitle className="text-2xl flex items-center gap-2 text-green-800">
+              <Target className="h-6 w-6" />
+              Prêt à tester vos connaissances ?
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="text-center">
+            <p className="text-lg text-green-700 mb-6">
+              Maintenant que vous avez étudié la théorie, mettez vos connaissances en pratique avec nos exercices interactifs !
+            </p>
+            <Link to="/formation/espagnol/grammaire/ser-estar/exercices">
+              <Button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 text-lg">
+                <Target className="h-5 w-5 mr-2" />
+                Commencer les exercices
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

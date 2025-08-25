@@ -715,23 +715,27 @@ const FormationEspagnolGrammairePage = () => {
                               Accéder au module
                             </Button>
                           </Link>
-                          <Button variant="outline" className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}>
-                            <Briefcase className="mr-2 h-4 w-4" />
-                            Exercices
-                          </Button>
+                          <Link to="/formation/espagnol/grammaire/ser-estar/exercices">
+                            <Button variant="outline" className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}>
+                              <Briefcase className="mr-2 h-4 w-4" />
+                              Exercices
+                            </Button>
+                          </Link>
                         </>
                       ) : module.id === 2 ? (
                         <>
-                          <Link to="/formation/espagnol/grammaire/syntaxe" className="flex-1">
+                          <Link to="/formation/espagnol/grammaire/syntaxe-structures-complexes" className="flex-1">
                             <Button className={`w-full ${themeColors.button} text-white font-semibold py-3`}>
                               <Calendar className="mr-2 h-4 w-4" />
                               Accéder au module
                             </Button>
                           </Link>
-                          <Button variant="outline" className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}>
-                            <Briefcase className="mr-2 h-4 w-4" />
-                            Exercices
-                          </Button>
+                          <Link to="/formation/espagnol/grammaire/syntaxe-structures-complexes/exercices">
+                            <Button variant="outline" className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}>
+                              <Briefcase className="mr-2 h-4 w-4" />
+                              Exercices
+                            </Button>
+                          </Link>
                         </>
                       ) : module.id === 4 ? (
                         <>
@@ -741,10 +745,12 @@ const FormationEspagnolGrammairePage = () => {
                               Accéder au module
                             </Button>
                           </Link>
-                          <Button variant="outline" className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}>
-                            <Briefcase className="mr-2 h-4 w-4" />
-                            Exercices
-                          </Button>
+                          <Link to="/formation/espagnol/grammaire/prepositions/exercices">
+                            <Button variant="outline" className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}>
+                              <Briefcase className="mr-2 h-4 w-4" />
+                              Exercices
+                            </Button>
+                          </Link>
                         </>
                       ) : module.id === 5 ? (
                         <>
@@ -754,10 +760,12 @@ const FormationEspagnolGrammairePage = () => {
                               Accéder au module
                             </Button>
                           </Link>
-                          <Button variant="outline" className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}>
-                            <Briefcase className="mr-2 h-4 w-4" />
-                            Exercices
-                          </Button>
+                          <Link to="/formation/espagnol/grammaire/questions/exercices">
+                            <Button variant="outline" className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}>
+                              <Briefcase className="mr-2 h-4 w-4" />
+                              Exercices
+                            </Button>
+                          </Link>
                         </>
                       ) : module.id === 6 ? (
                         <>
@@ -767,10 +775,12 @@ const FormationEspagnolGrammairePage = () => {
                               Accéder au module
                             </Button>
                           </Link>
-                          <Button variant="outline" className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}>
-                            <Briefcase className="mr-2 h-4 w-4" />
-                            Exercices
-                          </Button>
+                          <Link to="/formation/espagnol/grammaire/negations/exercices">
+                            <Button variant="outline" className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}>
+                              <Briefcase className="mr-2 h-4 w-4" />
+                              Exercices
+                            </Button>
+                          </Link>
                         </>
                       ) : module.id === 7 ? (
                         <>
@@ -780,10 +790,12 @@ const FormationEspagnolGrammairePage = () => {
                               Accéder au module
                             </Button>
                           </Link>
-                          <Button variant="outline" className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}>
-                            <Briefcase className="mr-2 h-4 w-4" />
-                            Exercices
-                          </Button>
+                          <Link to="/formation/espagnol/grammaire/temporal/exercices">
+                            <Button variant="outline" className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}>
+                              <Briefcase className="mr-2 h-4 w-4" />
+                              Exercices
+                            </Button>
+                          </Link>
                         </>
                       ) : module.id === 8 ? (
                         <>
@@ -793,10 +805,12 @@ const FormationEspagnolGrammairePage = () => {
                               Accéder au module
                             </Button>
                           </Link>
-                          <Button variant="outline" className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}>
-                            <Briefcase className="mr-2 h-4 w-4" />
-                            Exercices
-                          </Button>
+                          <Link to="/formation/espagnol/grammaire/pronouns/exercices">
+                            <Button variant="outline" className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}>
+                              <Briefcase className="mr-2 h-4 w-4" />
+                              Exercices
+                            </Button>
+                          </Link>
                         </>
                       ) : module.id === 9 ? (
                         <>
@@ -806,21 +820,27 @@ const FormationEspagnolGrammairePage = () => {
                               Accéder au module
                             </Button>
                           </Link>
-                          <Button variant="outline" className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}>
-                            <Briefcase className="mr-2 h-4 w-4" />
-                            Exercices
-                          </Button>
+                          <Link to="/formation/espagnol/grammaire/affective-verbs/exercices">
+                            <Button variant="outline" className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}>
+                              <Briefcase className="mr-2 h-4 w-4" />
+                              Exercices
+                            </Button>
+                          </Link>
                         </>
                       ) : (
                         <>
-                          <Button className={`flex-1 ${themeColors.button} text-white font-semibold py-3`}>
-                            <Calendar className="mr-2 h-4 w-4" />
-                            Accéder au module
-                          </Button>
-                          <Button variant="outline" className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}>
-                            <Briefcase className="mr-2 h-4 w-4" />
-                            Exercices
-                          </Button>
+                          <Link to="/formation/espagnol/grammaire/adjectives-adverbs" className="flex-1">
+                            <Button className={`w-full ${themeColors.button} text-white font-semibold py-3`}>
+                              <Calendar className="mr-2 h-4 w-4" />
+                              Accéder au module
+                            </Button>
+                          </Link>
+                          <Link to="/formation/espagnol/grammaire/adjectives-adverbs/exercices">
+                            <Button variant="outline" className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}>
+                              <Briefcase className="mr-2 h-4 w-4" />
+                              Exercices
+                            </Button>
+                          </Link>
                         </>
                       )}
                     </div>
