@@ -25,7 +25,7 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-[90vh] w-full flex flex-col justify-center items-center py-12 sm:py-20 px-4 sm:px-6 relative overflow-hidden">
+    <section className="min-h-[95vh] w-full flex flex-col justify-center items-center py-16 sm:py-24 px-4 sm:px-6 relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-white"></div>
       
@@ -47,35 +47,38 @@ export const HeroSection = () => {
           Ta méthode pour intégrer le <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent uppercase">TOP 3</span> en prépa <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent uppercase">ECG</span>
         </h1>
 
-        {/* Enhanced Triptyque with icons */}
-        <div className="flex flex-col md:flex-row justify-center items-center gap-6 sm:gap-8 mb-6 sm:mb-8 w-full max-w-[900px] px-4">
-          <Link to="/formations" className="text-center group cursor-pointer relative">
-            <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:shadow-xl transition-all duration-300 relative z-10">
-              <BookOpen className="h-8 w-8 text-white" />
+        {/* Enhanced Triptyque with icons - Uniform sizing */}
+        <div className="flex flex-col md:flex-row justify-center items-center gap-8 sm:gap-12 mb-8 sm:mb-12 w-full max-w-[1100px] px-4">
+          <Link to="/formations" className="text-center group cursor-pointer relative flex-1 max-w-[300px]">
+            <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300 relative z-10">
+              <BookOpen className="h-10 w-10 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-orange-600 transition-colors relative z-10">Exercices<br/>incontournables</h3>
-            <p className="text-gray-600 relative z-10">On s'entraîne avec ce qui a de plus classique.</p>
+            <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-orange-600 transition-colors relative z-10">Exercices<br/>incontournables</h3>
+            <p className="text-gray-600 text-lg leading-relaxed relative z-10 px-2 min-h-[3.5rem] flex items-center justify-center">On s'entraîne avec ce qui a de plus classique.</p>
           </Link>
-          <div className="hidden md:block w-px h-16 bg-gradient-to-b from-orange-200 to-transparent"></div>
-          <Link to="/apropos" className="text-center group cursor-pointer relative">
-            <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:shadow-xl transition-all duration-300 relative z-10">
-              <Users className="h-8 w-8 text-white" />
+          <div className="hidden md:block w-px h-24 bg-gradient-to-b from-orange-200 to-transparent"></div>
+          <div className="text-center group cursor-pointer relative flex-1 max-w-[300px]" onClick={() => window.open('https://calendly.com/preparationnelle/30min', '_blank')}>
+            <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300 relative z-10">
+              <Users className="h-10 w-10 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-orange-600 transition-colors relative z-10">Cours particuliers</h3>
-            <p className="text-gray-600 relative z-10">Coaching pour surmonter tes blocages et progresser.</p>
-          </Link>
-          <div className="hidden md:block w-px h-16 bg-gradient-to-b from-orange-200 to-transparent"></div>
-          <Link to="/avis" className="text-center group cursor-pointer relative">
-            <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:shadow-xl transition-all duration-300 relative z-10">
-              <TrendingUp className="h-8 w-8 text-white" />
+            <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-orange-600 transition-colors relative z-10">Cours particuliers</h3>
+            <p className="text-gray-600 text-lg leading-relaxed relative z-10 px-2 min-h-[3.5rem] flex items-center justify-center">Coaching pour surmonter tes blocages et progresser.</p>
+            <div className="mt-4 px-6 py-3 bg-orange-100 text-orange-700 rounded-lg text-base font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 relative z-10 shadow-md">
+              Réserver un cours →
             </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-orange-600 transition-colors relative z-10">Résultats Concrets</h3>
-            <p className="text-gray-600 relative z-10">Une progression mesurable et objectifs atteints dès 1 mois.</p>
+          </div>
+          <div className="hidden md:block w-px h-24 bg-gradient-to-b from-orange-200 to-transparent"></div>
+          <Link to="/avis" className="text-center group cursor-pointer relative flex-1 max-w-[300px]">
+            <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300 relative z-10">
+              <TrendingUp className="h-10 w-10 text-white" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-orange-600 transition-colors relative z-10">Résultats Concrets</h3>
+            <p className="text-gray-600 text-lg leading-relaxed relative z-10 px-2 min-h-[3.5rem] flex items-center justify-center">Une progression mesurable et objectifs atteints dès 1 mois.</p>
           </Link>
         </div>
 
         {/* Enhanced message with gradient */}
-        <p className="text-lg sm:text-xl text-center font-medium leading-[1.4] mb-6 max-w-[900px] bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
+        <p className="text-xl sm:text-2xl text-center font-medium leading-[1.4] mb-8 max-w-[1000px] bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
           La Méthode <span className="font-bold">RATIONNELLE</span> pour Gagner <span className="font-extrabold">+5</span> Points en Maths et Python
         </p>
 
@@ -101,7 +104,7 @@ export const HeroSection = () => {
         </div>
 
         {/* Enhanced Statistics Section */}
-        <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 sm:p-8 mb-6 sm:mb-8 shadow-2xl border border-orange-100 relative overflow-hidden z-10">
+        <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 sm:p-10 mb-8 sm:mb-10 shadow-2xl border border-orange-100 relative overflow-hidden z-10">
           {/* Background pattern */}
           <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-blue-50/50"></div>
           
@@ -111,51 +114,38 @@ export const HeroSection = () => {
           <div className="absolute top-1/2 left-1/4 w-12 h-12 bg-orange-50 rounded-full opacity-20"></div>
           
           <div className="relative z-10">
-                         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                <div className="group">
-                 <div className="flex items-center justify-center mb-2">
-                   <Star className="h-6 w-6 text-orange-500 mr-2" />
-                   <div className="text-3xl font-bold text-orange-500">5/5</div>
+                 <div className="flex items-center justify-center mb-3">
+                   <Star className="h-8 w-8 text-orange-500 mr-3" />
+                   <div className="text-4xl font-bold text-orange-500">5/5</div>
                  </div>
-                 <div className="text-sm text-gray-600">Satisfaction client</div>
+                 <div className="text-base text-gray-600 font-medium">Satisfaction client</div>
                </div>
                <div className="group">
-                 <div className="flex items-center justify-center mb-2">
-                   <TrendingUp className="h-6 w-6 text-orange-500 mr-2" />
-                   <div className="text-3xl font-bold text-orange-500">+5pts</div>
+                 <div className="flex items-center justify-center mb-3">
+                   <TrendingUp className="h-8 w-8 text-orange-500 mr-3" />
+                   <div className="text-4xl font-bold text-orange-500">+5pts</div>
                  </div>
-                 <div className="text-sm text-gray-600">Gain en maths</div>
+                 <div className="text-base text-gray-600 font-medium">Gain en maths</div>
                </div>
                <div className="group">
-                 <div className="flex items-center justify-center mb-2">
-                   <Users className="h-6 w-6 text-orange-500 mr-2" />
-                   <div className="text-3xl font-bold text-orange-500">50+</div>
+                 <div className="flex items-center justify-center mb-3">
+                   <Users className="h-8 w-8 text-orange-500 mr-3" />
+                   <div className="text-4xl font-bold text-orange-500">50+</div>
                  </div>
-                 <div className="text-sm text-gray-600">Étudiants accompagnés</div>
+                 <div className="text-base text-gray-600 font-medium">Étudiants accompagnés</div>
                </div>
                <div className="group">
-                 <div className="flex items-center justify-center mb-2">
-                   <Award className="h-6 w-6 text-orange-500 mr-2" />
-                   <div className="text-3xl font-bold text-orange-500">Top 5</div>
+                 <div className="flex items-center justify-center mb-3">
+                   <Award className="h-8 w-8 text-orange-500 mr-3" />
+                   <div className="text-4xl font-bold text-orange-500">Top 5</div>
                  </div>
-                 <div className="text-sm text-gray-600">Écoles intégrées</div>
+                 <div className="text-base text-gray-600 font-medium">Classement national</div>
                </div>
              </div>
             
-            {/* Schools section with gray background */}
-            <div className="w-full bg-gray-100 py-6 px-8 rounded-xl mt-8">
-              <p className="text-center text-gray-600 mb-4 font-medium">Nos étudiants intègrent :</p>
-              <div className="flex justify-center items-center gap-4 flex-wrap">
-                {['HEC', 'ESSEC', 'ESCP', 'EDHEC', 'EM Lyon'].map((school) => (
-                  <span 
-                    key={school}
-                    className="font-bold text-gray-800 text-base px-3 py-2 bg-orange-100 rounded-lg"
-                  >
-                    {school}
-                  </span>
-                ))}
-              </div>
-            </div>
+
           </div>
         </div>
       </div>

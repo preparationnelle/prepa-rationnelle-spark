@@ -95,7 +95,18 @@ const FormationAllemandGrammairePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white relative overflow-hidden">
+      {/* Floating bubbles */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-20 animate-pulse"></div>
+      <div className="absolute top-40 right-20 w-24 h-24 bg-amber-200 rounded-full opacity-30 animate-pulse"></div>
+      <div className="absolute top-80 left-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-25 animate-pulse"></div>
+      <div className="absolute bottom-40 right-10 w-36 h-36 bg-amber-100 rounded-full opacity-20 animate-pulse"></div>
+      <div className="absolute bottom-20 left-20 w-28 h-28 bg-blue-50 rounded-full opacity-30 animate-pulse"></div>
+      <div className="absolute top-1/3 right-1/3 w-20 h-20 bg-amber-50 rounded-full opacity-25 animate-pulse"></div>
+      <div className="absolute top-2/3 left-1/3 w-44 h-44 bg-blue-300 rounded-full opacity-15 animate-pulse"></div>
+      <div className="absolute bottom-1/3 right-1/4 w-32 h-32 bg-amber-300 rounded-full opacity-20 animate-pulse"></div>
+      <div className="absolute top-10 left-1/2 w-16 h-16 bg-blue-400 rounded-full opacity-25 animate-pulse"></div>
+      <div className="absolute bottom-10 left-2/3 w-20 h-20 bg-amber-400 rounded-full opacity-20 animate-pulse"></div>
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -114,7 +125,7 @@ const FormationAllemandGrammairePage = () => {
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-12 relative z-10">
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
             <div className="p-3 rounded-lg bg-red-600 text-white">
@@ -136,15 +147,16 @@ const FormationAllemandGrammairePage = () => {
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Vollständige Grammatikblätter</h2>
           <div className="grid gap-6">
             {grammarModules.map((module) => (
-              <Card key={module.id} className="border-2 hover:border-red-500/50 transition-colors shadow-md">
-                <CardHeader>
+              <Card key={module.id} className="group bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-gray-200 hover:border-amber-200 shadow-lg relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-50/20 to-blue-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <CardHeader className="relative z-10">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-4">
                       <div className={`p-4 rounded-lg ${module.color} text-white shadow-lg`}>
                         <module.icon className="h-7 w-7" />
                       </div>
                       <div>
-                        <CardTitle className="flex items-center gap-3">
+                        <CardTitle className="flex items-center gap-3 relative z-10">
                           <span className="text-2xl font-bold text-gray-800">
                             {module.title}
                           </span>
@@ -152,22 +164,22 @@ const FormationAllemandGrammairePage = () => {
                             <Badge className="bg-red-600 text-white">{module.badge}</Badge>
                           )}
                         </CardTitle>
-                        <p className="text-muted-foreground mt-2 text-base">{module.description}</p>
+                        <p className="text-gray-600 mt-2 text-base relative z-10">{module.description}</p>
                       </div>
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="relative z-10">
                   <div className="grid md:grid-cols-2 gap-4 mb-6">
                     {module.topics.map((topic, index) => (
-                      <div key={index} className="flex items-center gap-2 p-3 bg-red-50 rounded-lg border border-red-200">
-                        <div className="w-2 h-2 bg-red-500 rounded-full flex-shrink-0"></div>
-                        <span className="text-sm font-medium text-red-800">{topic}</span>
+                      <div key={index} className="flex items-center gap-2 p-3 bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-colors duration-200 rounded-lg">
+                        <div className="w-2 h-2 bg-amber-400 rounded-full flex-shrink-0"></div>
+                        <span className="text-sm font-medium text-gray-700">{topic}</span>
                       </div>
                     ))}
                   </div>
                   <Link to={module.link}>
-                    <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 text-base">
+                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 text-base">
                       <Play className="mr-2 h-5 w-5" />
                       Consulter la fiche complète
                     </Button>
@@ -178,30 +190,30 @@ const FormationAllemandGrammairePage = () => {
           </div>
         </div>
 
-        <Card className="border-2 border-red-200 bg-gradient-to-r from-red-50 to-red-100/50 shadow-lg">
+        <Card className="bg-gradient-to-r from-blue-50 to-amber-50 border border-blue-200 shadow-lg">
           <CardHeader>
-            <CardTitle className="text-xl flex items-center gap-2 text-red-800">
+            <CardTitle className="text-xl flex items-center gap-2 text-gray-900">
               <Languages className="h-5 w-5" />
               Tipps für die deutsche Grammatik
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-red-700 space-y-4">
+          <CardContent className="text-gray-700 space-y-4">
             <p className="leading-relaxed">
               Die deutsche Grammatik mag komplex erscheinen, aber ein methodisches Vorgehen ermöglicht es, sie effektiv zu beherrschen. 
               Jedes Blatt präsentiert die Regeln klar mit konkreten Beispielen und Anwendungsübungen.
             </p>
             <div className="grid md:grid-cols-3 gap-4">
-              <div className="p-4 border border-red-300 rounded-lg bg-white shadow-sm">
-                <h3 className="font-semibold text-red-900 mb-2">1. Deklinationen</h3>
-                <p className="text-sm text-red-700">Grundlage: Beherrschen Sie zuerst die 3 Deklinationsarten.</p>
+              <div className="p-4 border border-gray-200 rounded-lg bg-white shadow-sm hover:border-blue-200 transition-colors duration-200">
+                <h3 className="font-semibold text-gray-900 mb-2">1. Deklinationen</h3>
+                <p className="text-sm text-gray-600">Grundlage: Beherrschen Sie zuerst die 3 Deklinationsarten.</p>
               </div>
-              <div className="p-4 border border-red-300 rounded-lg bg-white shadow-sm">
-                <h3 className="font-semibold text-red-900 mb-2">2. Struktur</h3>
-                <p className="text-sm text-red-700">Verstehen Sie die Wortstellung und die Verbpositionen.</p>
+              <div className="p-4 border border-gray-200 rounded-lg bg-white shadow-sm hover:border-blue-200 transition-colors duration-200">
+                <h3 className="font-semibold text-gray-900 mb-2">2. Struktur</h3>
+                <p className="text-sm text-gray-600">Verstehen Sie die Wortstellung und die Verbpositionen.</p>
               </div>
-              <div className="p-4 border border-red-300 rounded-lg bg-white shadow-sm">
-                <h3 className="font-semibold text-red-900 mb-2">3. Praxis</h3>
-                <p className="text-sm text-red-700">Wiederholen Sie regelmäßig die unregelmäßigen Verben mit den Lernkarten.</p>
+              <div className="p-4 border border-gray-200 rounded-lg bg-white shadow-sm hover:border-blue-200 transition-colors duration-200">
+                <h3 className="font-semibold text-gray-900 mb-2">3. Praxis</h3>
+                <p className="text-sm text-gray-600">Wiederholen Sie regelmäßig die unregelmäßigen Verben mit den Lernkarten.</p>
               </div>
             </div>
           </CardContent>

@@ -1,13 +1,13 @@
 
 import React from 'react';
 import { HeroSection } from '@/components/sections/HeroSection';
-import { OffersSection } from '@/components/OffersSection';
+
 import { SuperprofReviewsSection } from '@/components/sections/SuperprofReviewsSection';
 import { AutomationsSection } from '@/components/sections/AutomationsSection';
 import { PodcastSection } from '@/components/sections/PodcastSection';
 import { PartnersSection } from '@/components/sections/PartnersSection';
 import { CallToActionSection } from '@/components/sections/CallToActionSection';
-import { BookOpen, Calculator, Code } from 'lucide-react';
+import { BookOpen, Calculator, Code, Languages, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
@@ -21,48 +21,157 @@ const HomePage: React.FC = () => {
       <section className="py-16 px-4 sm:px-6 bg-gray-50">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6">
-            Nos <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">formations spécialisées</span>
+            <span className="text-amber-600 font-bold">Nos formations spécialisées</span>
           </h2>
           <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto text-base sm:text-lg">
             Méthodes éprouvées, +250 exercices validés, et accompagnement personnalisé pour +5 points garantis.
           </p>
 
-          <div className="w-full max-w-4xl mx-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                {/* Maths - toujours visible */}
-                <Link to="/formation/maths" className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center">
-                  <div className="w-14 h-14 bg-yellow-100 rounded-full flex items-center justify-center mb-3">
-                    <Calculator className="h-7 w-7 text-yellow-600" />
+          <div className="w-full max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Maths ECG */}
+                <Link to="/formation/maths" className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center group">
+                  <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-yellow-200 transition-colors">
+                    <Calculator className="h-8 w-8 text-yellow-600" />
                   </div>
-                  <h3 className="font-semibold text-lg mb-1">Maths</h3>
-                  <p className="text-sm text-gray-500">Maîtrisez tout le programme ECG</p>
+                  <h3 className="font-semibold text-xl mb-2">Maths ECG</h3>
+                  <p className="text-sm text-gray-600 mb-3">Maîtrisez tout le programme de maths ECG : logique, analyse, probabilités, algèbre, exercices corrigés et méthodes efficaces.</p>
+                  <div className="space-y-1 text-xs text-left w-full">
+                    <div className="flex items-center text-yellow-600">
+                      <span className="mr-2">✓</span>
+                      <span>20 chapitres progressifs</span>
+                    </div>
+                    <div className="flex items-center text-yellow-600">
+                      <span className="mr-2">✓</span>
+                      <span>Exercices type concours</span>
+                    </div>
+                    <div className="flex items-center text-yellow-600">
+                      <span className="mr-2">✓</span>
+                      <span>Méthodes et astuces de prépa</span>
+                    </div>
+                  </div>
                 </Link>
                 
-                {/* Python - toujours visible */}
-                <Link to="/pourquoi-python-prepa-ecg" className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center">
-                  <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-3">
-                    <Code className="h-7 w-7 text-orange-600" />
+                {/* Python ECG */}
+                <Link to="/pourquoi-python-prepa-ecg" className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center group">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-200 transition-colors">
+                    <Code className="h-8 w-8 text-blue-600" />
                   </div>
-                  <h3 className="font-semibold text-lg mb-1">Python</h3>
-                  <p className="text-sm text-gray-500">+100 commandes et scripts essentiels</p>
+                  <h3 className="font-semibold text-xl mb-2">Python ECG</h3>
+                  <p className="text-sm text-gray-600 mb-3">Maîtrisez Python pour les concours : 4 modules progressifs avec exercices pratiques et coaching personnalisé.</p>
+                  <div className="space-y-1 text-xs text-left w-full">
+                    <div className="flex items-center text-blue-600">
+                      <span className="mr-2">✓</span>
+                      <span>54 commandes essentielles</span>
+                    </div>
+                    <div className="flex items-center text-blue-600">
+                      <span className="mr-2">✓</span>
+                      <span>Exercices type concours</span>
+                    </div>
+                    <div className="flex items-center text-blue-600">
+                      <span className="mr-2">✓</span>
+                      <span>+3 à 5 points garantis</span>
+                    </div>
+                  </div>
                 </Link>
                 
-                {/* Découvrir toutes nos formations */}
-                <Link to="/formations" className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center">
-                  <div className="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center mb-3">
-                    <BookOpen className="h-7 w-7 text-purple-600" />
+                {/* Anglais ECG */}
+                <Link to="/formation/anglais" className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center group">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-green-200 transition-colors">
+                    <Languages className="h-8 w-8 text-green-600" />
                   </div>
-                  <h3 className="font-semibold text-lg mb-1">Découvrir toutes nos formations</h3>
-                  <p className="text-sm text-gray-500">Anglais, Allemand, Géopolitique, Culture générale…</p>
+                  <h3 className="font-semibold text-xl mb-2">Anglais ECG</h3>
+                  <p className="text-sm text-gray-600 mb-3">Perfectionnez votre anglais avec méthodes ciblées, grammaire avancée et préparation aux épreuves.</p>
+                  <div className="space-y-1 text-xs text-left w-full">
+                    <div className="flex items-center text-green-600">
+                      <span className="mr-2">✓</span>
+                      <span>Grammaire systématique</span>
+                    </div>
+                    <div className="flex items-center text-green-600">
+                      <span className="mr-2">✓</span>
+                      <span>Thèmes et versions</span>
+                    </div>
+                    <div className="flex items-center text-green-600">
+                      <span className="mr-2">✓</span>
+                      <span>Essais et synthèses</span>
+                    </div>
+                  </div>
+                </Link>
+
+                {/* Espagnol ECG */}
+                <Link to="/formation/espagnol" className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center group">
+                  <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-red-200 transition-colors">
+                    <Languages className="h-8 w-8 text-red-600" />
+                  </div>
+                  <h3 className="font-semibold text-xl mb-2">Espagnol ECG</h3>
+                  <p className="text-sm text-gray-600 mb-3">Perfectionnez votre espagnol avec méthodes ciblées, grammaire avancée et préparation intensive aux concours.</p>
+                  <div className="space-y-1 text-xs text-left w-full">
+                    <div className="flex items-center text-red-600">
+                      <span className="mr-2">✓</span>
+                      <span>Grammaire et conjugaison</span>
+                    </div>
+                    <div className="flex items-center text-red-600">
+                      <span className="mr-2">✓</span>
+                      <span>Thèmes et versions</span>
+                    </div>
+                    <div className="flex items-center text-red-600">
+                      <span className="mr-2">✓</span>
+                      <span>Expression écrite et orale</span>
+                    </div>
+                  </div>
+                </Link>
+
+                {/* Géopolitique */}
+                <Link to="/formation/geopolitique" className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center group">
+                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors">
+                    <Globe className="h-8 w-8 text-orange-600" />
+                  </div>
+                  <h3 className="font-semibold text-xl mb-2">Géopolitique</h3>
+                  <p className="text-sm text-gray-600 mb-3">Analysez les enjeux mondiaux contemporains avec méthodes et outils pour briller aux concours.</p>
+                  <div className="space-y-1 text-xs text-left w-full">
+                    <div className="flex items-center text-orange-600">
+                      <span className="mr-2">✓</span>
+                      <span>Enjeux contemporains</span>
+                    </div>
+                    <div className="flex items-center text-orange-600">
+                      <span className="mr-2">✓</span>
+                      <span>Méthodes d'analyse</span>
+                    </div>
+                    <div className="flex items-center text-orange-600">
+                      <span className="mr-2">✓</span>
+                      <span>Actualité stratégique</span>
+                    </div>
+                  </div>
+                </Link>
+
+                {/* Culture Générale */}
+                <Link to="/formation/culture-generale" className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center group">
+                  <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-purple-200 transition-colors">
+                    <BookOpen className="h-8 w-8 text-purple-600" />
+                  </div>
+                  <h3 className="font-semibold text-xl mb-2">Culture Générale</h3>
+                  <p className="text-sm text-gray-600 mb-3">Développez votre culture générale avec méthodes et outils pour réussir les épreuves de synthèse et d'essai.</p>
+                  <div className="space-y-1 text-xs text-left w-full">
+                    <div className="flex items-center text-purple-600">
+                      <span className="mr-2">✓</span>
+                      <span>Méthodes de synthèse</span>
+                    </div>
+                    <div className="flex items-center text-purple-600">
+                      <span className="mr-2">✓</span>
+                      <span>Analyse de textes</span>
+                    </div>
+                    <div className="flex items-center text-purple-600">
+                      <span className="mr-2">✓</span>
+                      <span>Épreuves d'essai</span>
+                    </div>
+                  </div>
                 </Link>
               </div>
             </div>
         </div>
       </section>
 
-      {/* Section Offres */}
-      <OffersSection />
-      
+
       {/* Section Générateur IA */}
       <AutomationsSection />
       

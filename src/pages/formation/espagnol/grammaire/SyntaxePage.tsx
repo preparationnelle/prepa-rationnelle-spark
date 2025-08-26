@@ -38,7 +38,7 @@ const SyntaxePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-amber-50">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-blue-50">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -90,7 +90,7 @@ const SyntaxePage = () => {
         </div>
 
         {/* Instructions */}
-        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
               <Lightbulb className="h-6 w-6" />
@@ -132,7 +132,7 @@ const SyntaxePage = () => {
           </h2>
           
           <div className="space-y-6">
-            <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+            <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50">
               <CardContent className="p-6">
                 <ul className="list-disc list-inside space-y-2 text-lg text-orange-800">
                   <li>Propositions relatives complexes</li>
@@ -155,7 +155,7 @@ const SyntaxePage = () => {
           </h2>
           
           <div className="space-y-6">
-            <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+            <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50">
               <CardContent className="p-6">
                 <ul className="list-disc list-inside space-y-2 text-lg text-orange-800">
                   <li>Relatifs : que, quien, cuyo, donde</li>
@@ -178,7 +178,7 @@ const SyntaxePage = () => {
           </h2>
           
           <div className="space-y-6">
-            <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+            <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50">
               <CardContent className="p-6">
                 <ul className="list-disc list-inside space-y-2 text-lg text-orange-800">
                   <li>Transformer en discours rapporté</li>
@@ -192,7 +192,7 @@ const SyntaxePage = () => {
         </div>
 
         {/* Bouton vers les exercices */}
-        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
               <Target className="h-6 w-6" />
@@ -213,7 +213,7 @@ const SyntaxePage = () => {
         </Card>
 
         {/* Conseils méthodologiques */}
-        <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+        <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
               <Zap className="h-6 w-6" />

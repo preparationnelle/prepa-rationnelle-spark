@@ -53,7 +53,7 @@ const AffectiveVerbsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-yellow-50">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-blue-50">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -89,7 +89,7 @@ const AffectiveVerbsPage = () => {
           </div>
           
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-pink-600 text-white">
+            <div className="p-3 rounded-lg bg-orange-600 text-white">
               <Heart className="h-9 w-9" />
             </div>
             Verbes Particuliers et Tournures Affectives
@@ -100,39 +100,39 @@ const AffectiveVerbsPage = () => {
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">Intermédiaire</Badge>
             <Badge variant="outline">1-2 heures</Badge>
-            <Badge className="bg-pink-600">Module essentiel</Badge>
+            <Badge className="bg-orange-600">Module essentiel</Badge>
           </div>
         </div>
 
         {/* Instructions */}
-        <Card className="mb-8 border-2 border-pink-200 bg-gradient-to-r from-pink-50 to-yellow-50">
+        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-pink-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
               <Brain className="h-6 w-6" />
               Comment utiliser ce module
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-pink-700">
+          <CardContent className="text-orange-700">
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <BookOpenIcon className="h-8 w-8 text-pink-600" />
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <BookOpenIcon className="h-8 w-8 text-orange-600" />
                 </div>
-                <h3 className="font-semibold text-pink-900 mb-2">1. Comprenez l'inversion</h3>
+                <h3 className="font-semibold text-orange-900 mb-2">1. Comprenez l'inversion</h3>
                 <p className="text-sm">Apprenez la structure inversée des verbes affectifs</p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Table className="h-8 w-8 text-pink-600" />
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Table className="h-8 w-8 text-orange-600" />
                 </div>
-                <h3 className="font-semibold text-pink-900 mb-2">2. Consultez les tableaux</h3>
+                <h3 className="font-semibold text-orange-900 mb-2">2. Consultez les tableaux</h3>
                 <p className="text-sm">Mémorisez les verbes et leurs conjugaisons</p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <CheckCircle className="h-8 w-8 text-pink-600" />
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <CheckCircle className="h-8 w-8 text-orange-600" />
                 </div>
-                <h3 className="font-semibold text-pink-900 mb-2">3. Pratiquez les exercices</h3>
+                <h3 className="font-semibold text-orange-900 mb-2">3. Pratiquez les exercices</h3>
                 <p className="text-sm">Appliquez vos connaissances avec les exercices</p>
               </div>
             </div>
@@ -142,7 +142,7 @@ const AffectiveVerbsPage = () => {
         {/* Tableaux de référence */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <Table className="h-8 w-8 text-pink-600" />
+            <Table className="h-8 w-8 text-orange-600" />
             Tableaux de Référence
           </h2>
           
@@ -170,7 +170,7 @@ const AffectiveVerbsPage = () => {
         {/* Sections théoriques */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <BookOpenIcon className="h-8 w-8 text-pink-600" />
+            <BookOpenIcon className="h-8 w-8 text-orange-600" />
             Théorie et Règles
           </h2>
           
@@ -184,20 +184,20 @@ const AffectiveVerbsPage = () => {
         {/* Exercices pratiques */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <TargetIcon className="h-8 w-8 text-pink-600" />
+            <TargetIcon className="h-8 w-8 text-orange-600" />
             Exercices Pratiques
           </h2>
           
           <div className="space-y-6">
             {affectiveVerbExercises.map((exercise) => (
-              <Card key={exercise.id} className="border-2 border-pink-200 bg-gradient-to-r from-pink-50 to-yellow-50">
+              <Card key={exercise.id} className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50">
                 <CardHeader>
-                  <CardTitle className="text-xl flex items-center gap-2 text-pink-800">
+                  <CardTitle className="text-xl flex items-center gap-2 text-orange-800">
                     <FileText className="h-5 w-5" />
                     {exercise.title}
                   </CardTitle>
                   <div className="flex gap-2">
-                    <Badge variant="outline" className="text-pink-600">
+                    <Badge variant="outline" className="text-orange-600">
                       {exercise.level}
                     </Badge>
                     <Badge variant="secondary">
@@ -207,14 +207,14 @@ const AffectiveVerbsPage = () => {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {/* Instruction */}
-                  <div className="bg-white/70 rounded-lg p-4 border border-pink-200">
-                    <h4 className="font-semibold text-pink-900 mb-2">📝 Instruction :</h4>
+                  <div className="bg-white/70 rounded-lg p-4 border border-orange-200">
+                    <h4 className="font-semibold text-orange-900 mb-2">📝 Instruction :</h4>
                     <p className="text-lg text-gray-800">{exercise.instruction}</p>
                   </div>
 
                   {/* Question */}
-                  <div className="bg-yellow-50 rounded-lg p-4 border border-yellow-200">
-                    <h4 className="font-semibold text-yellow-900 mb-2">🎯 Question :</h4>
+                  <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                    <h4 className="font-semibold text-blue-900 mb-2">🎯 Question :</h4>
                     <p className="text-lg text-gray-800 font-mono">{exercise.content.question}</p>
                   </div>
 
@@ -274,53 +274,53 @@ const AffectiveVerbsPage = () => {
         </div>
 
         {/* Conseils méthodologiques */}
-        <Card className="border-2 border-pink-200 bg-gradient-to-r from-pink-50 to-yellow-50">
+        <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-pink-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
               <Zap className="h-6 w-6" />
               Conseils pour maîtriser les Verbes Affectifs
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-pink-700 space-y-6">
+          <CardContent className="text-orange-700 space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h3 className="font-semibold text-pink-900 mb-3">🎯 Stratégie d'apprentissage :</h3>
+                <h3 className="font-semibold text-orange-900 mb-3">🎯 Stratégie d'apprentissage :</h3>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-pink-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                     <span>Commencez par comprendre la structure inversée</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-pink-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                     <span>Pratiquez avec gustar avant d'aborder d'autres verbes</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-pink-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                     <span>Attention à l'accord du verbe avec le sujet réel</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-pink-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                     <span>Utilisez des situations quotidiennes pour pratiquer</span>
                   </li>
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold text-pink-900 mb-3">📚 Points de grammaire essentiels :</h3>
+                <h3 className="font-semibold text-orange-900 mb-3">📚 Points de grammaire essentiels :</h3>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-pink-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                     <span>Structure inversée : me gusta vs j'aime</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-pink-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                     <span>Accord avec le sujet (gusta/gustan)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-pink-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                     <span>Pronoms indirects obligatoires (me/te/le/nos/os/les)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-pink-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                     <span>Différences d'intensité (gustar vs encantar vs fascinar)</span>
                   </li>
                 </ul>

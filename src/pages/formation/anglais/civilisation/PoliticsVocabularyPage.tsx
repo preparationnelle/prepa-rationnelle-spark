@@ -220,7 +220,7 @@ const PoliticsVocabularyPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFF]">
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="bg-white border-b border-gray-200 px-4 py-3">
         <div className="container mx-auto flex items-center justify-between">

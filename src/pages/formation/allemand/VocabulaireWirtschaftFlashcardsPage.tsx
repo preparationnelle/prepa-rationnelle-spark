@@ -197,7 +197,7 @@ const VocabulaireWirtschaftFlashcardsPage = () => {
 
   const getCategoryColor = (category: string) => {
     const colors = {
-      "Modèle économique": "bg-orange-100 text-orange-800",
+      "Modèle économique": "bg-amber-100 text-orange-800",
       "Transformation industrielle": "bg-amber-100 text-amber-800",
       "Défis économiques": "bg-red-100 text-red-800",
       "Crises économiques": "bg-red-100 text-red-800",
@@ -216,7 +216,7 @@ const VocabulaireWirtschaftFlashcardsPage = () => {
       "Indicateurs économiques": "bg-yellow-100 text-yellow-800",
       "Emploi": "bg-teal-100 text-teal-800",
       "Mondialisation": "bg-violet-100 text-violet-800",
-      "Chaînes de production": "bg-orange-100 text-orange-800",
+      "Chaînes de production": "bg-amber-100 text-orange-800",
       "Crises sectorielles": "bg-red-100 text-red-800",
       "Coûts de production": "bg-amber-100 text-amber-800",
       "Compétitivité": "bg-blue-100 text-blue-800",
@@ -224,7 +224,7 @@ const VocabulaireWirtschaftFlashcardsPage = () => {
       "Entreprises performantes": "bg-green-100 text-green-800",
       "Types d'entreprises": "bg-slate-100 text-slate-800",
       "Formation professionnelle": "bg-indigo-100 text-indigo-800",
-      "Défis du travail": "bg-orange-100 text-orange-800",
+      "Défis du travail": "bg-amber-100 text-orange-800",
       "Technologies avancées": "bg-purple-100 text-purple-800",
       "Technologies numériques": "bg-blue-100 text-blue-800",
       "Technologies de production": "bg-cyan-100 text-cyan-800",
@@ -234,7 +234,7 @@ const VocabulaireWirtschaftFlashcardsPage = () => {
       "Contraintes administratives": "bg-gray-100 text-gray-800",
       "Politique fiscale": "bg-yellow-100 text-yellow-800",
       "Financement": "bg-emerald-100 text-emerald-800",
-      "Politique économique": "bg-orange-100 text-orange-800",
+      "Politique économique": "bg-amber-100 text-orange-800",
       "Politique budgétaire": "bg-lime-100 text-lime-800",
       "Gouvernement": "bg-rose-100 text-rose-800",
       "Instituts de recherche": "bg-violet-100 text-violet-800",
@@ -279,7 +279,7 @@ const VocabulaireWirtschaftFlashcardsPage = () => {
 
       {/* Arrière-plan animé */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-orange-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-amber-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-amber-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse" style={{animationDelay: '2s'}}></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-yellow-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{animationDelay: '4s'}}></div>
       </div>
@@ -288,7 +288,7 @@ const VocabulaireWirtschaftFlashcardsPage = () => {
         {/* En-tête */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-orange-600 text-white">
+            <div className="p-3 rounded-lg bg-amber-600 text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Vocabulaire Économie et Industrie
@@ -299,7 +299,7 @@ const VocabulaireWirtschaftFlashcardsPage = () => {
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">{cards.length} mots</Badge>
             <Badge variant="outline">Module 5 - Wirtschaft und Industrie</Badge>
-            <Badge className="bg-orange-600">Flashcards</Badge>
+            <Badge className="bg-amber-600">Flashcards</Badge>
           </div>
         </div>
 
@@ -348,14 +348,14 @@ const VocabulaireWirtschaftFlashcardsPage = () => {
 
           {/* Aide aux raccourcis */}
           {showHelp && (
-            <Card className="mb-4 bg-orange-50 border-orange-200">
+            <Card className="mb-4 bg-amber-50 border-orange-200">
               <CardContent className="p-4">
                 <h3 className="font-semibold text-orange-900 mb-3">Raccourcis clavier :</h3>
                 <div className="grid grid-cols-2 gap-2 text-sm text-orange-700">
-                  <div><kbd className="bg-orange-100 px-2 py-1 rounded">Espace</kbd> ou <kbd className="bg-orange-100 px-2 py-1 rounded">Entrée</kbd> : Retourner la carte</div>
-                  <div><kbd className="bg-orange-100 px-2 py-1 rounded">←</kbd> <kbd className="bg-orange-100 px-2 py-1 rounded">→</kbd> : Navigation</div>
-                  <div><kbd className="bg-orange-100 px-2 py-1 rounded">S</kbd> : Mélanger</div>
-                  <div><kbd className="bg-orange-100 px-2 py-1 rounded">R</kbd> : Recommencer</div>
+                  <div><kbd className="bg-amber-100 px-2 py-1 rounded">Espace</kbd> ou <kbd className="bg-amber-100 px-2 py-1 rounded">Entrée</kbd> : Retourner la carte</div>
+                  <div><kbd className="bg-amber-100 px-2 py-1 rounded">←</kbd> <kbd className="bg-amber-100 px-2 py-1 rounded">→</kbd> : Navigation</div>
+                  <div><kbd className="bg-amber-100 px-2 py-1 rounded">S</kbd> : Mélanger</div>
+                  <div><kbd className="bg-amber-100 px-2 py-1 rounded">R</kbd> : Recommencer</div>
                 </div>
               </CardContent>
             </Card>

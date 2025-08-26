@@ -40,9 +40,9 @@ const EnvironmentPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFF]">
+    <div className="min-h-screen bg-white">
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -62,13 +62,13 @@ const EnvironmentPage = () => {
       <div className="container mx-auto py-8 px-4">
         {/* Header */}
         <div className="max-w-4xl mx-auto">
-          <Card className="border-2 border-green-500/30 mb-8">
-            <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50">
+          <Card className="border border-gray-200 mb-8">
+            <CardHeader className="bg-gray-50/50">
               <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-green-500 text-white">
+                <div className="p-2 rounded-lg bg-orange-600 text-white">
                   <Globe className="h-5 w-5" />
                 </div>
-                <Badge className="bg-green-500">Civilization</Badge>
+                <Badge className="bg-orange-600">Civilization</Badge>
                 <span className="text-sm text-muted-foreground">Updated 2025</span>
               </div>
               <CardTitle className="text-2xl">Environment and Ecology</CardTitle>
@@ -79,7 +79,7 @@ const EnvironmentPage = () => {
           </Card>
 
           {/* Statistics */}
-          <Card className="mb-8 bg-gradient-to-r from-green-600 to-emerald-600 text-white">
+          <Card className="mb-8 bg-gradient-to-r from-blue-600 to-orange-600 text-white">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-center">Key Environmental Facts 2025</CardTitle>
             </CardHeader>
@@ -87,19 +87,19 @@ const EnvironmentPage = () => {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                 <div className="bg-white/10 rounded-lg p-3">
                   <div className="text-2xl font-bold">15M</div>
-                  <div className="text-sm text-green-100">Hectares burned Canada 2023</div>
+                  <div className="text-sm text-blue-100">Hectares burned Canada 2023</div>
                 </div>
                 <div className="bg-white/10 rounded-lg p-3">
                   <div className="text-2xl font-bold">12%</div>
-                  <div className="text-sm text-green-100">Global renewable electricity</div>
+                  <div className="text-sm text-blue-100">Global renewable electricity</div>
                 </div>
                 <div className="bg-white/10 rounded-lg p-3">
                   <div className="text-2xl font-bold">1M</div>
-                  <div className="text-sm text-green-100">Species at risk extinction</div>
+                  <div className="text-sm text-blue-100">Species at risk extinction</div>
                 </div>
                 <div className="bg-white/10 rounded-lg p-3">
                   <div className="text-2xl font-bold">75%</div>
-                  <div className="text-sm text-green-100">Insect decline Europe</div>
+                  <div className="text-sm text-blue-100">Insect decline Europe</div>
                 </div>
               </div>
             </CardContent>
@@ -112,7 +112,7 @@ const EnvironmentPage = () => {
             <AccordionItem value="key-topics" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-green-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Leaf className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -124,7 +124,7 @@ const EnvironmentPage = () => {
               <AccordionContent className="px-6 pb-6">
                 <div className="grid gap-4">
                   {keyTopics.map((topic, index) => (
-                    <Card key={index} className="border-l-4 border-l-green-500">
+                    <Card key={index} className="border-l-4 border-l-orange-600">
                       <CardContent className="p-4">
                         <h4 className="font-semibold mb-2">{topic.title}</h4>
                         <p className="text-sm text-muted-foreground mb-3">{topic.content}</p>
@@ -146,7 +146,7 @@ const EnvironmentPage = () => {
             <AccordionItem value="climate-disasters" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-red-500 text-white">
+                  <div className="p-2 rounded-lg bg-blue-600 text-white">
                     <Thermometer className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -163,15 +163,15 @@ const EnvironmentPage = () => {
                   <p className="text-justify leading-relaxed">
                     Scientists warn that such events will only intensify unless global carbon emissions are curbed. The human and economic costs—from displaced communities to billions in damage—are acting as a fiery wake-up call. Increasingly, even skeptical policymakers are acknowledging that adaptation and mitigation efforts must accelerate. The question remains whether this urgency will translate into effective global action or if catastrophic events will simply become the new normal.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                  <div className="bg-blue-50/50 p-4 rounded-lg border-l-4 border-blue-600">
                     <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
                     <p className="text-sm text-blue-700">
                       This paragraph can be used to illustrate the concrete impacts of climate change and the urgency for action. It is useful in discussions about environmental policy, international climate agreements, or the cost of inaction. It provides current examples (2022–2023) to show that climate disasters are happening now, strengthening arguments for sustainability or against climate skepticism.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       unprecedented; tangible reality; scorched; droughts; mitigate; displaced; wake-up call; adaptation; mitigation; catastrophic
                     </p>
                   </div>
@@ -200,15 +200,15 @@ const EnvironmentPage = () => {
                   <p className="text-justify leading-relaxed">
                     Companies like ExxonMobil, Chevron, and Saudi Aramco collectively spend hundreds of millions annually on lobbying and advertising to protect their interests, frequently branding themselves as part of the "energy transition" while expanding oil production. This influence has tangible effects: proposals to aggressively curb emissions or eliminate coal subsidies are frequently watered down or stalled. Meanwhile, voices from climate-vulnerable nations struggle to be heard. Low-lying countries such as Bangladesh and Pacific Island states, which bear the brunt of climate change through floods and rising seas, often lack comparable representation. The imbalance highlights a critical tension in global climate politics: even as scientific consensus calls for urgent action, economic interests tied to fossil fuels work to slow the pace of change.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                  <div className="bg-blue-50/50 p-4 rounded-lg border-l-4 border-blue-600">
                     <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
                     <p className="text-sm text-blue-700">
                       Use this paragraph when discussing why climate policy progress is slow or uneven. It exemplifies how corporate lobbying and political interests can undermine environmental agreements, which is relevant in essays about international relations, the role of capitalism in climate change, or environmental ethics. It also introduces the contrast between big emitters and vulnerable nations, useful for arguments on climate justice.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       outsized influence; delegations; clout; phasing out; hydrocarbons; lobbying; branding; emissions; watered down; climate-vulnerable; representation; consensus; fossil fuels
                     </p>
                   </div>
@@ -220,7 +220,7 @@ const EnvironmentPage = () => {
             <AccordionItem value="climate-justice" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-purple-500 text-white">
+                  <div className="p-2 rounded-lg bg-blue-600 text-white">
                     <Users className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -237,15 +237,15 @@ const EnvironmentPage = () => {
                   <p className="text-justify leading-relaxed">
                     In response, developing countries have increasingly pushed for "loss and damage" funding, arguing that industrialized nations owe a climate debt. A breakthrough came at the 2022 UN climate conference (COP27) where a dedicated loss-and-damage fund was agreed upon, acknowledging the principle that rich nations should help pay for climate-inflicted harm. However, debates over how to structure and finance this fund continue, reflecting ongoing North-South tensions. At heart is a moral question: can a form of global solidarity emerge to address climate injustice, or will the chasm between emitters and sufferers widen further?
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                  <div className="bg-blue-50/50 p-4 rounded-lg border-l-4 border-blue-600">
                     <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
                     <p className="text-sm text-blue-700">
                       This paragraph is useful in discussions of global justice, international aid, or environmental ethics. It provides a concrete example (Pakistan's floods) and references an actual policy development (loss-and-damage fund) to argue how climate change intersects with issues of equity and responsibility. It helps substantiate points about the responsibility of developed nations or the need for global cooperation.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       inequities; per-capita emissions; development; loss and damage; climate debt; industrialized nations; breakthrough; finance; North-South tensions; solidarity; climate injustice
                     </p>
                   </div>
@@ -257,7 +257,7 @@ const EnvironmentPage = () => {
             <AccordionItem value="renewable-energy" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-green-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-50/500 text-white">
                     <Zap className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -274,15 +274,15 @@ const EnvironmentPage = () => {
                   <p className="text-justify leading-relaxed">
                     Yet significant challenges remain. Renewable deployment is uneven worldwide; developing nations often lack the grid infrastructure or financing to expand clean energy. Intermittency issues (the sun doesn't always shine, nor the wind blow) mean grids need upgrades and storage solutions to maintain reliability. Moreover, political resistance and bureaucratic delays—like lengthy permitting processes for new wind farms—slow progress even where economics are favorable. The next few years will test whether the world can overcome these obstacles to truly transform its energy systems and meet climate targets.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                  <div className="bg-blue-50/50 p-4 rounded-lg border-l-4 border-blue-600">
                     <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
                     <p className="text-sm text-blue-700">
                       Use this paragraph to highlight both optimism and realism about the clean energy transition. It's relevant in essays on sustainable development, energy policy, or technological innovation. The paragraph balances positive data (increased renewable share, policy support) with challenges (infrastructure and intermittency), which can strengthen arguments that acknowledge complexity rather than just advocating idealistically.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       renewable energy; hurdles; wind turbines; clean power; subsidies; deployment; grid infrastructure; intermittency; storage solutions; permitting; transform; energy systems
                     </p>
                   </div>
@@ -294,7 +294,7 @@ const EnvironmentPage = () => {
             <AccordionItem value="biodiversity" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-emerald-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Leaf className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -311,15 +311,15 @@ const EnvironmentPage = () => {
                   <p className="text-justify leading-relaxed">
                     This collapse of wildlife is not just a moral tragedy but a direct threat to humanity—jeopardizing pollination of crops, fisheries, and natural systems that purify air and water. Efforts to address the crisis have gathered steam: over 190 countries signed the 2022 Montreal agreement pledging to protect 30% of Earth's land and oceans by 2030 (the "30x30" target) and restore degraded ecosystems. However, implementation remains a major challenge, often colliding with economic pressures and land-use conflicts. The fate of the world's forests, coral reefs, and wetlands will depend on whether global promises translate into local action in time to halt the unraveling of nature's web.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                  <div className="bg-blue-50/50 p-4 rounded-lg border-l-4 border-blue-600">
                     <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
                     <p className="text-sm text-blue-700">
                       This paragraph can support arguments about environmental preservation, the importance of biodiversity, or the scope of human impact on the planet. It's useful for broad environment-themed essays that should go beyond climate change. It offers concrete data and agreements (UN report, Montreal pact) to lend credibility when emphasizing that ecological health is crucial for human well-being.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       biodiversity; mass extinction; linchpins; habitat loss; pollination; fisheries; gathered steam; degraded ecosystems; implementation; land-use conflicts; coral reefs; wetlands; unraveling
                     </p>
                   </div>
@@ -364,7 +364,7 @@ const EnvironmentPage = () => {
             <AccordionItem value="essay-questions" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-purple-500 text-white">
+                  <div className="p-2 rounded-lg bg-blue-600 text-white">
                     <Building2 className="h-5 w-5" />
                   </div>
                   <div className="text-left">

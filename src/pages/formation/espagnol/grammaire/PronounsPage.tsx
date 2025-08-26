@@ -53,7 +53,7 @@ const PronounsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-blue-50">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -89,7 +89,7 @@ const PronounsPage = () => {
           </div>
           
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-purple-600 text-white">
+            <div className="p-3 rounded-lg bg-orange-600 text-white">
               <User className="h-9 w-9" />
             </div>
             Pronoms
@@ -100,39 +100,39 @@ const PronounsPage = () => {
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">Intermédiaire</Badge>
             <Badge variant="outline">1-2 heures</Badge>
-            <Badge className="bg-purple-600">Module essentiel</Badge>
+            <Badge className="bg-orange-600">Module essentiel</Badge>
           </div>
         </div>
 
         {/* Instructions */}
-        <Card className="mb-8 border-2 border-purple-200 bg-gradient-to-r from-purple-50 to-pink-50">
+        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-purple-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
               <Brain className="h-6 w-6" />
               Comment utiliser ce module
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-purple-700">
+          <CardContent className="text-orange-700">
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <BookOpenIcon className="h-8 w-8 text-purple-600" />
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <BookOpenIcon className="h-8 w-8 text-orange-600" />
                 </div>
-                <h3 className="font-semibold text-purple-900 mb-2">1. Étudiez la théorie</h3>
+                <h3 className="font-semibold text-orange-900 mb-2">1. Étudiez la théorie</h3>
                 <p className="text-sm">Lisez les règles et exemples de chaque section</p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Table className="h-8 w-8 text-purple-600" />
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Table className="h-8 w-8 text-orange-600" />
                 </div>
-                <h3 className="font-semibold text-purple-900 mb-2">2. Consultez les tableaux</h3>
+                <h3 className="font-semibold text-orange-900 mb-2">2. Consultez les tableaux</h3>
                 <p className="text-sm">Mémorisez les types de pronoms et leurs usages</p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <CheckCircle className="h-8 w-8 text-purple-600" />
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <CheckCircle className="h-8 w-8 text-orange-600" />
                 </div>
-                <h3 className="font-semibold text-purple-900 mb-2">3. Pratiquez les exercices</h3>
+                <h3 className="font-semibold text-orange-900 mb-2">3. Pratiquez les exercices</h3>
                 <p className="text-sm">Appliquez vos connaissances avec les exercices</p>
               </div>
             </div>
@@ -142,7 +142,7 @@ const PronounsPage = () => {
         {/* Tableaux de référence */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <Table className="h-8 w-8 text-purple-600" />
+            <Table className="h-8 w-8 text-orange-600" />
             Tableaux de Référence
           </h2>
           
@@ -170,7 +170,7 @@ const PronounsPage = () => {
         {/* Sections théoriques */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <BookOpenIcon className="h-8 w-8 text-purple-600" />
+            <BookOpenIcon className="h-8 w-8 text-orange-600" />
             Théorie et Règles
           </h2>
           
@@ -184,20 +184,20 @@ const PronounsPage = () => {
         {/* Exercices pratiques */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <TargetIcon className="h-8 w-8 text-purple-600" />
+            <TargetIcon className="h-8 w-8 text-orange-600" />
             Exercices Pratiques
           </h2>
           
           <div className="space-y-6">
             {pronounExercises.map((exercise) => (
-              <Card key={exercise.id} className="border-2 border-purple-200 bg-gradient-to-r from-purple-50 to-pink-50">
+              <Card key={exercise.id} className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50">
                 <CardHeader>
-                  <CardTitle className="text-xl flex items-center gap-2 text-purple-800">
+                  <CardTitle className="text-xl flex items-center gap-2 text-orange-800">
                     <FileText className="h-5 w-5" />
                     {exercise.title}
                   </CardTitle>
                   <div className="flex gap-2">
-                    <Badge variant="outline" className="text-purple-600">
+                    <Badge variant="outline" className="text-orange-600">
                       {exercise.level}
                     </Badge>
                     <Badge variant="secondary">
@@ -207,14 +207,14 @@ const PronounsPage = () => {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {/* Instruction */}
-                  <div className="bg-white/70 rounded-lg p-4 border border-purple-200">
-                    <h4 className="font-semibold text-purple-900 mb-2">📝 Instruction :</h4>
+                  <div className="bg-white/70 rounded-lg p-4 border border-orange-200">
+                    <h4 className="font-semibold text-orange-900 mb-2">📝 Instruction :</h4>
                     <p className="text-lg text-gray-800">{exercise.instruction}</p>
                   </div>
 
                   {/* Question */}
-                  <div className="bg-pink-50 rounded-lg p-4 border border-pink-200">
-                    <h4 className="font-semibold text-pink-900 mb-2">🎯 Question :</h4>
+                  <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                    <h4 className="font-semibold text-blue-900 mb-2">🎯 Question :</h4>
                     <p className="text-lg text-gray-800 font-mono">{exercise.content.question}</p>
                   </div>
 
@@ -274,53 +274,53 @@ const PronounsPage = () => {
         </div>
 
         {/* Conseils méthodologiques */}
-        <Card className="border-2 border-purple-200 bg-gradient-to-r from-purple-50 to-pink-50">
+        <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-purple-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
               <Zap className="h-6 w-6" />
               Conseils pour maîtriser les Pronoms
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-purple-700 space-y-6">
+          <CardContent className="text-orange-700 space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h3 className="font-semibold text-purple-900 mb-3">🎯 Stratégie d'apprentissage :</h3>
+                <h3 className="font-semibold text-orange-900 mb-3">🎯 Stratégie d'apprentissage :</h3>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-purple-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                     <span>Commencez par les pronoms sujets et leurs conjugaisons</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-purple-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                     <span>Pratiquez la distinction COD/COI avec des exemples simples</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-purple-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                     <span>Apprenez les règles de placement et d'enclise</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-purple-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                     <span>Attention aux différences régionales (vosotros vs ustedes)</span>
                   </li>
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold text-purple-900 mb-3">📚 Points de grammaire essentiels :</h3>
+                <h3 className="font-semibold text-orange-900 mb-3">📚 Points de grammaire essentiels :</h3>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-purple-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                     <span>Vouvoiement vs tutoiement : usted/ustedes vs tú/vosotros</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-purple-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                                           <span>Ordre des pronoms : Réfléchi {'>'} COI {'>'} COD</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-purple-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                     <span>Placement : avant verbe conjugué, enclise avec infinitif/gérondif</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-purple-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                     <span>Évitez leísmo, laísmo, loísmo en espagnol standard</span>
                   </li>
                 </ul>

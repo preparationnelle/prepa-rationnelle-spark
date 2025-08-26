@@ -40,9 +40,9 @@ const PoliticsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFF]">
+    <div className="min-h-screen bg-white">
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -62,13 +62,13 @@ const PoliticsPage = () => {
       <div className="container mx-auto py-8 px-4">
         {/* Header */}
         <div className="max-w-4xl mx-auto">
-          <Card className="border-2 border-blue-500/30 mb-8">
-            <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50">
+          <Card className="border border-gray-200 mb-8">
+            <CardHeader className="bg-gray-50/50">
               <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-blue-500 text-white">
+                <div className="p-2 rounded-lg bg-blue-600 text-white">
                   <Crown className="h-5 w-5" />
                 </div>
-                <Badge className="bg-blue-500">Civilization</Badge>
+                <Badge className="bg-blue-600">Civilization</Badge>
                 <span className="text-sm text-muted-foreground">Updated 2025</span>
               </div>
               <CardTitle className="text-2xl">Politics (United States & United Kingdom)</CardTitle>
@@ -79,7 +79,7 @@ const PoliticsPage = () => {
           </Card>
 
           {/* Statistics */}
-          <Card className="mb-8 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+          <Card className="mb-8 bg-gradient-to-r from-blue-600 to-orange-600 text-white">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-center">Key Political Facts 2025</CardTitle>
             </CardHeader>
@@ -124,7 +124,7 @@ const PoliticsPage = () => {
               <AccordionContent className="px-6 pb-6">
                 <div className="grid gap-4">
                   {keyTopics.map((topic, index) => (
-                    <Card key={index} className="border-l-4 border-l-blue-500">
+                    <Card key={index} className="border-l-4 border-l-blue-600">
                       <CardContent className="p-4">
                         <h4 className="font-semibold mb-2">{topic.title}</h4>
                         <p className="text-sm text-muted-foreground mb-3">{topic.content}</p>
@@ -146,7 +146,7 @@ const PoliticsPage = () => {
             <AccordionItem value="democratic-backsliding" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-red-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Shield className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -169,9 +169,9 @@ const PoliticsPage = () => {
                       This paragraph is apt for essays on threats to democracy, political polarization, or the resilience of institutions. It provides a concrete example (Capitol riot) with consequences, illustrating how misinformation and populism can undermine democratic processes. Use it to argue about the importance of rule of law, the impact of leadership on democratic norms, or to compare with historical incidents of democratic crisis.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       concede; fraud; culminated; incited; insurrection; fragility; aftermath; concerted effort; rifts; Big Lie; litmus test; peaceful transfer of power
                     </p>
                   </div>
@@ -183,7 +183,7 @@ const PoliticsPage = () => {
             <AccordionItem value="supreme-court" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-purple-500 text-white">
+                  <div className="p-2 rounded-lg bg-blue-600 text-white">
                     <Scale className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -206,9 +206,9 @@ const PoliticsPage = () => {
                       Use this paragraph in discussions of the U.S. political system, checks and balances, or social policy. It links political events (Trump's presidency) to long-term legal consequences (Court decisions), which is useful in arguments about how leaders can have lasting influence. It's particularly relevant to topics like abortion rights, the role of the judiciary, or the politicization of institutions.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       enduring; bench; right-leaning; landmark decisions; overturned; federal constitutional right; originalist; out of step; eroding; politicized; confirmation; precedents; nominations
                     </p>
                   </div>
@@ -243,9 +243,9 @@ const PoliticsPage = () => {
                       This paragraph works well in essays about political polarization, governance, or the stability of policy. It provides specific examples of policy whiplash (climate, healthcare, immigration) to argue that U.S. politics is deeply divided. This can support a point about the challenges of long-term planning in a polarized democracy or the importance of institutional safeguards that outlast individual administrations.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       seesaw shifts; consensus-building; repeal; dismantling; withdrew; nixing; pendulum swung; hardline stances; whiplash governance; bipartisan; precarious; settled law
                     </p>
                   </div>
@@ -257,7 +257,7 @@ const PoliticsPage = () => {
             <AccordionItem value="voting-rights" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-green-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Vote className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -280,9 +280,9 @@ const PoliticsPage = () => {
                       Deploy this paragraph for topics concerning democratic systems, civil rights, or comparisons between countries' electoral practices. It provides concrete legislative examples and the historical analogy to Jim Crow, which is powerful for arguing how current events echo past injustices. It can support points about how democracies must constantly work to ensure free and fair elections, or how partisan interests can conflict with democratic principles.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       ballot access; security; ID requirements; mail-in ballots; suppress turnout; Jim Crow 2.0; absentee voting; redistricting; partisan gerrymandering; independent commissions; competitive races; disenfranchisement
                     </p>
                   </div>
@@ -294,7 +294,7 @@ const PoliticsPage = () => {
             <AccordionItem value="inclusion" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-indigo-500 text-white">
+                  <div className="p-2 rounded-lg bg-blue-600 text-white">
                     <Users className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -317,9 +317,9 @@ const PoliticsPage = () => {
                       This paragraph is useful when writing about social progress, government policy on diversity, or contrasting political philosophies. It provides factual examples of representation that can bolster arguments about why diversity matters (or, if taking the opposite stance, can be critiqued as identity politics). It fits well in discussions about meritocracy vs representation, or the impact of role models in leadership.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       deliberate effort; looks like America; shattered glass ceilings; milestones; openly transgender; perspectives; stake; voice; symbolic; policymaking; marginalized; legitimacy; identity politics
                     </p>
                   </div>
@@ -335,8 +335,8 @@ const PoliticsPage = () => {
                     <Crown className="h-5 w-5" />
                   </div>
                   <div className="text-left">
-                    <h3 className="text-lg font-semibold text-red-800">United Kingdom Politics</h3>
-                    <p className="text-sm text-red-700">Contemporary political developments and challenges in the UK</p>
+                    <h3 className="text-lg font-semibold text-blue-800">United Kingdom Politics</h3>
+                    <p className="text-sm text-blue-700">Contemporary political developments and challenges in the UK</p>
                   </div>
                 </div>
               </AccordionTrigger>
@@ -353,7 +353,7 @@ const PoliticsPage = () => {
             <AccordionItem value="brexit-fallout" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-red-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Flag className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -376,9 +376,9 @@ const PoliticsPage = () => {
                       Use this paragraph to provide a nuanced view of Brexit's impact beyond the political slogans. It helps ground an argument about economic consequences, labor market issues, or the challenges of de-globalization. The specific examples (drivers, M&S in France, fishing, GDP impact) add credibility to points about unintended outcomes of policy choices or the complexity of reversing integration.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       aftershocks; labor shortages; exodus; shortfall; HGV drivers; supply chain; disruptions; hampered; red tape; visa schemes; GDP growth; resilience
                     </p>
                   </div>
@@ -413,9 +413,9 @@ const PoliticsPage = () => {
                       This paragraph is useful for debates on immigration policy, ethics in government policy, or international law. It gives a concrete case study of an unusual policy, including both the government's justification and the legal/moral pushback. It can support arguments about how democracies handle migration crises, or the tension between national sovereignty and human rights.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       hardline; offshore asylum processing; small-boat crossings; business model (of smugglers); deter; mired; outrage; deemed; lawful/unlawful; emergency legislation; patchy record; responsibility-sharing; asylum
                     </p>
                   </div>
@@ -427,7 +427,7 @@ const PoliticsPage = () => {
             <AccordionItem value="cost-of-living" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-yellow-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Scale className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -450,9 +450,9 @@ const PoliticsPage = () => {
                       This paragraph can be used in essays about economic policy, social unrest, or contemporary British society. It provides concrete data on inflation and real pay, and links those to tangible events (strikes), which is useful for arguments about government responsibility or the social contract. It could also support a point about parallels between past and present (alluding to the 1970s), or about how economic stress translates into political pressure.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       cost-of-living crisis; industrial unrest; soaring; basic necessities; walked off the job; pay rises; winter of discontent; picket lines; real-terms pay; burnout; exodus; tight public finances; hard line; disruption; living standards; social cohesion
                     </p>
                   </div>
@@ -487,9 +487,9 @@ const PoliticsPage = () => {
                       This paragraph can support discussions about political change, leadership, or party strategy. It's useful for illustrating how opposition parties can reinvent themselves and regain popularity, as well as highlighting the impact of leadership style (Starmer vs Corbyn). It provides context about current UK political dynamics, which can bolster points about the consequences of long governance (Conservative fatigue) or the role of public opinion in democracies.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       revival; moving toward the center; purging; marred; tenure; voter discontent; woes; calibrated; fiscally responsible; baggage (of years in power); tumultuous legacy; momentum; cusp; changing of the guard; competence; mismanagement; fresh leadership
                     </p>
                   </div>
@@ -524,9 +524,9 @@ const PoliticsPage = () => {
                       Use this paragraph for topics on national identity, decentralization, or contemporary challenges to nation-states. It provides concrete examples from Scotland and Northern Ireland, which help arguments about how globalization (or Brexit) can revive separatist sentiments. It's also useful when comparing different countries' approaches to federalism or devolution, or discussing the impact of supranational entities (EU) on domestic unity.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       autonomy; dominant force; referendum; materially changed; successors; unilaterally; upended; Protocol; hard border; impasse; nationalist; symbolic boost; envisioning; devolution; divergent; breakup of the union
                     </p>
                   </div>
@@ -550,7 +550,7 @@ const PoliticsPage = () => {
               <AccordionContent className="px-6 pb-6">
                 <div className="grid gap-3">
                   {essentialVocabulary.map((item, index) => (
-                    <Card key={index} className="border-l-4 border-l-blue-500">
+                    <Card key={index} className="border-l-4 border-l-blue-600">
                       <CardContent className="p-4">
                         <div className="flex flex-col sm:flex-row sm:items-start gap-2">
                           <div className="sm:w-1/3">
@@ -571,7 +571,7 @@ const PoliticsPage = () => {
             <AccordionItem value="essay-questions" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-purple-500 text-white">
+                  <div className="p-2 rounded-lg bg-blue-600 text-white">
                     <Building2 className="h-5 w-5" />
                   </div>
                   <div className="text-left">

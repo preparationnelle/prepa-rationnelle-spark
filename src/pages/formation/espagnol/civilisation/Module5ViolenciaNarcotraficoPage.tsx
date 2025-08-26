@@ -23,7 +23,19 @@ import {
 
 const Module5ViolenciaNarcotraficoPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-orange-50">
+    <div className="min-h-screen bg-white relative overflow-hidden">
+      {/* Floating elements - Bubbles like landing page */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute bottom-40 left-20 w-56 h-56 bg-orange-200 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute top-1/2 left-10 w-24 h-24 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute bottom-1/3 right-5 w-36 h-36 bg-blue-50 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute top-60 right-1/3 w-20 h-20 bg-blue-200 rounded-full opacity-8 animate-pulse"></div>
+      <div className="absolute bottom-60 left-1/4 w-44 h-44 bg-orange-100 rounded-full opacity-8 animate-pulse-slow"></div>
+      
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -46,7 +58,7 @@ const Module5ViolenciaNarcotraficoPage = () => {
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-12 relative z-10">
         {/* En-tête du module */}
         <div className="text-center mb-10">
           <div className="flex justify-center mb-4">
@@ -78,34 +90,37 @@ const Module5ViolenciaNarcotraficoPage = () => {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Colonne de gauche - Navigation du module */}
           <div className="lg:col-span-1">
-            <Card className="sticky top-24 border-2 border-red-300 bg-gradient-to-br from-red-50 to-orange-50">
-              <CardHeader>
-                <CardTitle className="text-xl flex items-center gap-2 text-red-800">
-                  <Target className="h-5 w-5" />
+            <Card className="sticky top-24 border-2 border-gray-200 bg-white/95 backdrop-blur-sm hover:shadow-2xl hover:border-orange-200 transition-all duration-300 shadow-lg relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-50/20 to-blue-50/20 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+              <CardHeader className="relative z-10">
+                <CardTitle className="text-xl flex items-center gap-2 text-gray-900">
+                  <div className="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center">
+                    <Target className="h-4 w-4 text-orange-600" />
+                  </div>
                   Contenu du module
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-3">
+              <CardContent className="space-y-3 relative z-10">
                 <div className="space-y-2">
-                  <div className="p-3 rounded-lg bg-red-100 border border-red-200">
-                    <h4 className="font-semibold text-red-800 mb-2">1. Introduction</h4>
-                    <p className="text-sm text-red-700">Panorama de la violence et du narcotrafic</p>
+                  <div className="p-3 rounded-lg bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-all duration-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">1. Introduction</h4>
+                    <p className="text-sm text-gray-600">Panorama de la violence et du narcotrafic</p>
                   </div>
-                  <div className="p-3 rounded-lg bg-red-100 border border-red-200">
-                    <h4 className="font-semibold text-red-800 mb-2">2. Cartels mexicains et colombiens</h4>
-                    <p className="text-sm text-red-700">Organisations criminelles principales</p>
+                  <div className="p-3 rounded-lg bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-all duration-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">2. Cartels mexicains et colombiens</h4>
+                    <p className="text-sm text-gray-600">Organisations criminelles principales</p>
                   </div>
-                  <div className="p-3 rounded-lg bg-red-100 border border-red-200">
-                    <h4 className="font-semibold text-red-800 mb-2">3. Impact social de la violence</h4>
-                    <p className="text-sm text-red-700">Conséquences sur les sociétés</p>
+                  <div className="p-3 rounded-lg bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-all duration-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">3. Impact social de la violence</h4>
+                    <p className="text-sm text-gray-600">Conséquences sur les sociétés</p>
                   </div>
-                  <div className="p-3 rounded-lg bg-red-100 border border-red-200">
-                    <h4 className="font-semibold text-red-800 mb-2">4. Stratégies anti-narcotrafic</h4>
-                    <p className="text-sm text-red-700">Réponses étatiques et internationales</p>
+                  <div className="p-3 rounded-lg bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-all duration-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">4. Stratégies anti-narcotrafic</h4>
+                    <p className="text-sm text-gray-600">Réponses étatiques et internationales</p>
                   </div>
-                  <div className="p-3 rounded-lg bg-red-100 border border-red-200">
-                    <h4 className="font-semibold text-red-800 mb-2">5. Essai rédigé</h4>
-                    <p className="text-sm text-red-700">Narcotrafic 4.0 et innovation criminelle</p>
+                  <div className="p-3 rounded-lg bg-gray-50 border border-gray-200 hover:bg-orange-50 hover:border-orange-200 transition-all duration-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">5. Essai rédigé</h4>
+                    <p className="text-sm text-gray-600">Narcotrafic 4.0 et innovation criminelle</p>
                   </div>
                 </div>
               </CardContent>
@@ -115,16 +130,19 @@ const Module5ViolenciaNarcotraficoPage = () => {
           {/* Colonne centrale - Contenu principal */}
           <div className="lg:col-span-2 space-y-8">
             {/* Section Introduction */}
-            <Card className="border-2 border-red-300 bg-gradient-to-r from-red-50 to-orange-50">
-              <CardHeader>
-                <CardTitle className="text-2xl flex items-center gap-2 text-red-800">
-                  <BookOpen className="h-6 w-6" />
+            <Card className="group border-2 border-gray-200 bg-white/95 backdrop-blur-sm hover:shadow-2xl hover:border-orange-200 transition-all duration-300 shadow-lg relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-50/20 to-blue-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <CardHeader className="relative z-10">
+                <CardTitle className="text-2xl flex items-center gap-2 text-gray-900 group-hover:text-orange-600 transition-colors">
+                  <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                    <BookOpen className="h-5 w-5 text-orange-600" />
+                  </div>
                   Introduction - Panorama de la violence et du narcotrafic
                 </CardTitle>
               </CardHeader>
-              <CardContent className="text-red-700 space-y-6">
-                <div className="bg-white/70 rounded-lg p-6 border border-red-200">
-                  <h3 className="font-bold text-red-900 mb-3">Contexte général</h3>
+              <CardContent className="text-gray-700 space-y-6 relative z-10">
+                <div className="bg-white/70 rounded-lg p-6 border border-gray-200">
+                  <h3 className="font-bold text-gray-900 mb-3">Contexte général</h3>
                   <p className="leading-relaxed mb-4">
                     La violence et le narcotrafic constituent des défis majeurs pour la sécurité 
                     et la stabilité en Amérique latine. Les cartels mexicains et colombiens ont 
@@ -139,43 +157,49 @@ const Module5ViolenciaNarcotraficoPage = () => {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-4">
-                    <h3 className="font-semibold text-red-900 mb-3">🎯 Points clés :</h3>
-                    <ul className="text-sm text-red-700 space-y-2">
+                    <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                      <span className="text-xl">🎯</span>
+                      Points clés :
+                    </h3>
+                    <ul className="text-sm text-gray-600 space-y-2">
                       <li className="flex items-start gap-2">
-                        <span className="w-2 h-2 rounded-full bg-red-400 mt-1.5 flex-shrink-0"></span>
+                        <span className="w-2 h-2 rounded-full bg-blue-400 mt-1.5 flex-shrink-0"></span>
                         <span>Cartels mexicains et colombiens</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-2 h-2 rounded-full bg-red-400 mt-1.5 flex-shrink-0"></span>
+                        <span className="w-2 h-2 rounded-full bg-blue-400 mt-1.5 flex-shrink-0"></span>
                         <span>Impact social de la violence</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-2 h-2 rounded-full bg-red-400 mt-1.5 flex-shrink-0"></span>
+                        <span className="w-2 h-2 rounded-full bg-blue-400 mt-1.5 flex-shrink-0"></span>
                         <span>Stratégies anti-narcotrafic</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-2 h-2 rounded-full bg-red-400 mt-1.5 flex-shrink-0"></span>
+                        <span className="w-2 h-2 rounded-full bg-blue-400 mt-1.5 flex-shrink-0"></span>
                         <span>Innovation technologique criminelle</span>
                       </li>
                     </ul>
                   </div>
                   <div className="space-y-4">
-                    <h3 className="font-semibold text-red-900 mb-3">📚 Pour les concours :</h3>
-                    <ul className="text-sm text-red-700 space-y-2">
+                    <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                      <span className="text-xl">📚</span>
+                      Pour les concours :
+                    </h3>
+                    <ul className="text-sm text-gray-600 space-y-2">
                       <li className="flex items-start gap-2">
-                        <span className="w-2 h-2 rounded-full bg-red-400 mt-1.5 flex-shrink-0"></span>
+                        <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                         <span>Contexte pour versions et thèmes</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-2 h-2 rounded-full bg-red-400 mt-1.5 flex-shrink-0"></span>
+                        <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                         <span>Exemples pour essais argumentatifs</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-2 h-2 rounded-full bg-red-400 mt-1.5 flex-shrink-0"></span>
+                        <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                         <span>Vocabulaire sécuritaire spécialisé</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-2 h-2 rounded-full bg-red-400 mt-1.5 flex-shrink-0"></span>
+                        <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                         <span>Actualité sécuritaire hispanique</span>
                       </li>
                     </ul>

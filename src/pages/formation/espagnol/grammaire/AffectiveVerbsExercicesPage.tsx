@@ -227,7 +227,7 @@ const AffectiveVerbsExercicesPage = () => {
   }, [examMode, examStarted]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-rose-50">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-blue-50">
       <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs font-medium text-gray-600">
@@ -265,7 +265,7 @@ const AffectiveVerbsExercicesPage = () => {
           </div>
           
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-pink-600 text-white">
+            <div className="p-3 rounded-lg bg-orange-600 text-white">
               <Target className="h-9 w-9" />
             </div>
             Exercices Verbes Affectifs
@@ -276,7 +276,7 @@ const AffectiveVerbsExercicesPage = () => {
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">Niveau Prépa ECG</Badge>
             <Badge variant="outline">{affectiveVerbsExercises.length} exercices</Badge>
-            <Badge className="bg-pink-600">Constructions complexes</Badge>
+            <Badge className="bg-orange-600">Constructions complexes</Badge>
           </div>
         </div>
 
@@ -324,9 +324,9 @@ const AffectiveVerbsExercicesPage = () => {
           </Card>
         )}
 
-        <Card className="mb-8 border-2 border-pink-200 bg-gradient-to-r from-pink-50 to-rose-50">
+        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50">
           <CardHeader>
-            <CardTitle className="text-xl flex items-center gap-2 text-pink-800">
+            <CardTitle className="text-xl flex items-center gap-2 text-orange-800">
               <Target className="h-5 w-5" />
               Filtrer les exercices
             </CardTitle>
@@ -334,13 +334,13 @@ const AffectiveVerbsExercicesPage = () => {
           <CardContent>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-pink-700 mb-2">
+                <label className="block text-sm font-medium text-orange-700 mb-2">
                   Catégorie :
                 </label>
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full px-3 py-2 border border-pink-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  className="w-full px-3 py-2 border border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   disabled={examStarted}
                 >
                   <option value="toutes">Toutes les catégories</option>
@@ -350,13 +350,13 @@ const AffectiveVerbsExercicesPage = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-pink-700 mb-2">
+                <label className="block text-sm font-medium text-orange-700 mb-2">
                   Niveau :
                 </label>
                 <select
                   value={selectedLevel}
                   onChange={(e) => setSelectedLevel(e.target.value)}
-                  className="w-full px-3 py-2 border border-pink-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  className="w-full px-3 py-2 border border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   disabled={examStarted}
                 >
                   <option value="tous">Tous les niveaux</option>
@@ -408,23 +408,23 @@ const AffectiveVerbsExercicesPage = () => {
         {filteredExercises.length > 0 && currentExercise && (
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-              <FileText className="h-8 w-8 text-pink-600" />
+              <FileText className="h-8 w-8 text-orange-600" />
               Question {currentExerciseIndex + 1} / {filteredExercises.length}
               <Badge variant="outline" className="ml-2">
                 {currentExercise.category} - {currentExercise.level}
               </Badge>
             </h2>
 
-            <Card key={currentExercise.id} className="border-2 border-pink-200 bg-gradient-to-r from-pink-50 to-rose-50">
+            <Card key={currentExercise.id} className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50">
               <CardHeader>
-                <CardTitle className="text-xl flex items-center gap-2 text-pink-800">
+                <CardTitle className="text-xl flex items-center gap-2 text-orange-800">
                   <FileText className="h-5 w-5" />
                   Exercice de {selectedExerciseType === 'qcm' ? 'QCM' : selectedExerciseType === 'choix' ? 'Choix multiples' : 'Mots à compléter'}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="bg-white/70 rounded-lg p-4 border border-pink-200">
-                  <h4 className="font-semibold text-pink-900 mb-2">🎯 Question :</h4>
+                <div className="bg-white/70 rounded-lg p-4 border border-orange-200">
+                  <h4 className="font-semibold text-orange-900 mb-2">🎯 Question :</h4>
                   <p className="text-lg text-gray-800 font-mono">{currentExercise.question}</p>
                 </div>
 
@@ -438,7 +438,7 @@ const AffectiveVerbsExercicesPage = () => {
                           value={option}
                           checked={userAnswers[currentExercise.id] === option}
                           onChange={(e) => handleAnswerChange(currentExercise.id, e.target.value)}
-                          className="text-pink-600 focus:ring-pink-500"
+                          className="text-orange-600 focus:ring-orange-500"
                           disabled={examMode && examStarted}
                         />
                         <span className="text-gray-800">{option}</span>
@@ -446,13 +446,13 @@ const AffectiveVerbsExercicesPage = () => {
                     ))}
                   </div>
                 ) : (
-                  <div className="bg-pink-50 rounded-lg p-4 border border-pink-200">
-                    <h4 className="font-semibold text-pink-900 mb-2">✍️ Votre réponse :</h4>
+                  <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
+                    <h4 className="font-semibold text-orange-900 mb-2">✍️ Votre réponse :</h4>
                     <input
                       type="text"
                       value={userAnswers[currentExercise.id] || ''}
                       onChange={(e) => handleAnswerChange(currentExercise.id, e.target.value)}
-                      className="w-full p-2 border border-pink-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 text-lg text-gray-800"
+                      className="w-full p-2 border border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 text-lg text-gray-800"
                       placeholder="Tapez votre réponse ici..."
                       disabled={examMode && examStarted}
                     />

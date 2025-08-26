@@ -91,8 +91,19 @@ const DemographieAllemandePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+    <div className="min-h-screen bg-white relative overflow-hidden">
+      {/* Floating bubbles */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-20 animate-pulse"></div>
+      <div className="absolute top-40 right-20 w-24 h-24 bg-amber-200 rounded-full opacity-30 animate-pulse"></div>
+      <div className="absolute top-80 left-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-25 animate-pulse"></div>
+      <div className="absolute bottom-40 right-10 w-36 h-36 bg-amber-100 rounded-full opacity-20 animate-pulse"></div>
+      <div className="absolute bottom-20 left-20 w-28 h-28 bg-blue-50 rounded-full opacity-30 animate-pulse"></div>
+      <div className="absolute top-1/3 right-1/3 w-20 h-20 bg-amber-50 rounded-full opacity-25 animate-pulse"></div>
+      <div className="absolute top-2/3 left-1/3 w-44 h-44 bg-blue-300 rounded-full opacity-15 animate-pulse"></div>
+      <div className="absolute bottom-1/3 right-1/4 w-32 h-32 bg-amber-300 rounded-full opacity-20 animate-pulse"></div>
+      <div className="absolute top-10 left-1/2 w-16 h-16 bg-blue-400 rounded-full opacity-25 animate-pulse"></div>
+      <div className="absolute bottom-10 left-2/3 w-20 h-20 bg-amber-400 rounded-full opacity-20 animate-pulse"></div>
+      <div className="container mx-auto px-4 py-8 max-w-6xl relative z-10">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-6">
@@ -115,9 +126,9 @@ const DemographieAllemandePage: React.FC = () => {
         </div>
 
         {/* Statistiques clés */}
-        <Card className="mb-8 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+        <Card className="mb-8 bg-gradient-to-r from-blue-50 to-orange-50 border border-blue-200 shadow-lg">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-center">
+            <CardTitle className="text-2xl font-bold text-center text-gray-900">
               Wichtige demografische Kennzahlen (2025)
             </CardTitle>
           </CardHeader>
@@ -125,15 +136,15 @@ const DemographieAllemandePage: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
               <div>
                 <div className="text-3xl font-bold">46</div>
-                <div className="text-blue-100">Durchschnittsalter (Jahre)</div>
+                <div className="text-gray-600">Durchschnittsalter (Jahre)</div>
               </div>
               <div>
                 <div className="text-3xl font-bold">1,4</div>
-                <div className="text-blue-100">Geburtenrate (Kinder pro Frau)</div>
+                <div className="text-gray-600">Geburtenrate (Kinder pro Frau)</div>
               </div>
               <div>
                 <div className="text-3xl font-bold">28%</div>
-                <div className="text-blue-100">Migrationshintergrund</div>
+                <div className="text-gray-600">Migrationshintergrund</div>
               </div>
             </div>
           </CardContent>
@@ -142,18 +153,19 @@ const DemographieAllemandePage: React.FC = () => {
         {/* Contenu principal */}
         <div className="space-y-6">
           {demographieTopics.map((topic, index) => (
-            <Card key={topic.id} className="shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
+            <Card key={topic.id} className="group bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-gray-200 hover:border-orange-200 shadow-lg relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-50/20 to-blue-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <CardHeader className="relative z-10">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-blue-100 rounded-lg text-blue-600">
                     {topic.icon}
                   </div>
-                  <CardTitle className="text-xl text-gray-900">
+                  <CardTitle className="text-xl text-gray-900 relative z-10">
                     {topic.title}
                   </CardTitle>
                 </div>
               </CardHeader>
-              <CardContent>
+              <CardContent className="relative z-10">
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem value={`item-${topic.id}`}>
                     <AccordionTrigger className="text-left">
@@ -162,23 +174,23 @@ const DemographieAllemandePage: React.FC = () => {
                       </span>
                     </AccordionTrigger>
                     <AccordionContent className="space-y-4">
-                      <div className="bg-gray-50 p-4 rounded-lg">
+                      <div className="bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-colors duration-200 p-4 rounded-lg">
                         <h4 className="font-semibold text-gray-800 mb-2">Beschreibung:</h4>
                         <p className="text-gray-700">{topic.content.description}</p>
                       </div>
                       
-                      <div className="bg-blue-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-blue-800 mb-2">Détails:</h4>
-                        <p className="text-blue-700">{topic.content.details}</p>
+                      <div className="bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-colors duration-200 p-4 rounded-lg">
+                        <h4 className="font-semibold text-gray-900 mb-2">Détails:</h4>
+                        <p className="text-gray-600">{topic.content.details}</p>
                       </div>
 
-                      <div className="bg-green-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-green-800 mb-2">Verwendung in Aufsätzen:</h4>
-                        <p className="text-green-700">{topic.content.essayUsage}</p>
+                      <div className="bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-colors duration-200 p-4 rounded-lg">
+                        <h4 className="font-semibold text-gray-900 mb-2">Verwendung in Aufsätzen:</h4>
+                        <p className="text-gray-600">{topic.content.essayUsage}</p>
                       </div>
 
-                      <div className="bg-purple-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-purple-800 mb-2">Wichtige Vokabeln:</h4>
+                      <div className="bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-colors duration-200 p-4 rounded-lg">
+                        <h4 className="font-semibold text-gray-900 mb-2">Wichtige Vokabeln:</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                           {topic.content.vocabulary.map((vocab, vocabIndex) => (
                             <div key={vocabIndex} className="flex justify-between items-center p-2 bg-white rounded border">

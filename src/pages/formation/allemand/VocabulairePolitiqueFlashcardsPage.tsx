@@ -166,7 +166,7 @@ const VocabulairePolitiqueFlashcardsPage = () => {
       "Droits": "bg-emerald-100 text-emerald-800",
       "Droit": "bg-emerald-100 text-emerald-800",
       "Relations internationales": "bg-teal-100 text-teal-800",
-      "Idéologies": "bg-orange-100 text-orange-800",
+      "Idéologies": "bg-amber-100 text-orange-800",
       "Acteurs politiques": "bg-pink-100 text-pink-800",
       "Partis": "bg-violet-100 text-violet-800",
       "Opinion": "bg-cyan-100 text-cyan-800",

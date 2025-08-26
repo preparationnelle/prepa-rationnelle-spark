@@ -175,7 +175,7 @@ const AdjectivesAdverbsExercicesPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-blue-50">
       <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs font-medium text-gray-600">
@@ -213,7 +213,7 @@ const AdjectivesAdverbsExercicesPage = () => {
           </div>
           
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-emerald-600 text-white">
+            <div className="p-3 rounded-lg bg-orange-600 text-white">
               <Target className="h-9 w-9" />
             </div>
             Exercices Adjectifs et Adverbes
@@ -224,19 +224,19 @@ const AdjectivesAdverbsExercicesPage = () => {
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">Niveau Prépa ECG</Badge>
             <Badge variant="outline">{adjectivesAdverbsExercises.length} exercices</Badge>
-            <Badge className="bg-emerald-600">Accord et formation</Badge>
+            <Badge className="bg-orange-600">Accord et formation</Badge>
           </div>
         </div>
 
-        <Card className="mb-8 border-2 border-emerald-200 bg-gradient-to-r from-emerald-50 to-teal-50">
+        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50">
           <CardHeader>
-            <CardTitle className="text-xl flex items-center gap-2 text-emerald-800">
+            <CardTitle className="text-xl flex items-center gap-2 text-orange-800">
               <Target className="h-5 w-5" />
               Exercices de base
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-emerald-700">
+            <p className="text-orange-700">
               🚧 Cette section est en cours de développement. Quelques exercices de base sont disponibles pour tester la structure.
             </p>
           </CardContent>
@@ -245,23 +245,23 @@ const AdjectivesAdverbsExercicesPage = () => {
         {filteredExercises.length > 0 && currentExercise && (
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-              <FileText className="h-8 w-8 text-emerald-600" />
+              <FileText className="h-8 w-8 text-orange-600" />
               Question {currentExerciseIndex + 1} / {filteredExercises.length}
               <Badge variant="outline" className="ml-2">
                 {currentExercise.category} - {currentExercise.level}
               </Badge>
             </h2>
 
-            <Card key={currentExercise.id} className="border-2 border-emerald-200 bg-gradient-to-r from-emerald-50 to-teal-50">
+            <Card key={currentExercise.id} className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50">
               <CardHeader>
-                <CardTitle className="text-xl flex items-center gap-2 text-emerald-800">
+                <CardTitle className="text-xl flex items-center gap-2 text-orange-800">
                   <FileText className="h-5 w-5" />
                   Exercice de {selectedExerciseType === 'qcm' ? 'QCM' : selectedExerciseType === 'choix' ? 'Choix multiples' : 'Mots à compléter'}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="bg-white/70 rounded-lg p-4 border border-emerald-200">
-                  <h4 className="font-semibold text-emerald-900 mb-2">🎯 Question :</h4>
+                <div className="bg-white/70 rounded-lg p-4 border border-orange-200">
+                  <h4 className="font-semibold text-orange-900 mb-2">🎯 Question :</h4>
                   <p className="text-lg text-gray-800 font-mono">{currentExercise.question}</p>
                 </div>
 
@@ -275,20 +275,20 @@ const AdjectivesAdverbsExercicesPage = () => {
                           value={option}
                           checked={userAnswers[currentExercise.id] === option}
                           onChange={(e) => handleAnswerChange(currentExercise.id, e.target.value)}
-                          className="text-emerald-600 focus:ring-emerald-500"
+                          className="text-orange-600 focus:ring-orange-500"
                         />
                         <span className="text-gray-800">{option}</span>
                       </label>
                     ))}
                   </div>
                 ) : (
-                  <div className="bg-emerald-50 rounded-lg p-4 border border-emerald-200">
-                    <h4 className="font-semibold text-emerald-900 mb-2">✍️ Votre réponse :</h4>
+                  <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
+                    <h4 className="font-semibold text-orange-900 mb-2">✍️ Votre réponse :</h4>
                     <input
                       type="text"
                       value={userAnswers[currentExercise.id] || ''}
                       onChange={(e) => handleAnswerChange(currentExercise.id, e.target.value)}
-                      className="w-full p-2 border border-emerald-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 text-lg text-gray-800"
+                      className="w-full p-2 border border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 text-lg text-gray-800"
                       placeholder="Tapez votre réponse ici..."
                     />
                   </div>

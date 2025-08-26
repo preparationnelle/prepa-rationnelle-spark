@@ -40,9 +40,9 @@ const EconomyPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFF]">
+    <div className="min-h-screen bg-white">
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -62,13 +62,13 @@ const EconomyPage = () => {
       <div className="container mx-auto py-8 px-4">
         {/* Header */}
         <div className="max-w-4xl mx-auto">
-          <Card className="border-2 border-green-500/30 mb-8">
-            <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50">
+          <Card className="border border-gray-200 mb-8">
+            <CardHeader className="bg-gray-50/50">
               <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-green-500 text-white">
+                <div className="p-2 rounded-lg bg-orange-600 text-white">
                   <TrendingUp className="h-5 w-5" />
                 </div>
-                <Badge className="bg-green-500">Civilization</Badge>
+                <Badge className="bg-orange-600">Civilization</Badge>
                 <span className="text-sm text-muted-foreground">Updated 2025</span>
               </div>
               <CardTitle className="text-2xl">Economy and Globalization</CardTitle>
@@ -79,7 +79,7 @@ const EconomyPage = () => {
           </Card>
 
           {/* Statistics */}
-          <Card className="mb-8 bg-gradient-to-r from-green-600 to-emerald-600 text-white">
+          <Card className="mb-8 bg-gradient-to-r from-blue-600 to-orange-600 text-white">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-center">Key Economic Facts 2025</CardTitle>
             </CardHeader>
@@ -87,19 +87,19 @@ const EconomyPage = () => {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                 <div className="bg-white/10 rounded-lg p-3">
                   <div className="text-2xl font-bold">9.1%</div>
-                  <div className="text-sm text-green-100">US inflation peak 2022</div>
+                  <div className="text-sm text-blue-100">US inflation peak 2022</div>
                 </div>
                 <div className="bg-white/10 rounded-lg p-3">
                   <div className="text-2xl font-bold">$369B</div>
-                  <div className="text-sm text-green-100">US Inflation Reduction Act</div>
+                  <div className="text-sm text-blue-100">US Inflation Reduction Act</div>
                 </div>
                 <div className="bg-white/10 rounded-lg p-3">
                   <div className="text-2xl font-bold">15%</div>
-                  <div className="text-sm text-green-100">Global minimum tax rate</div>
+                  <div className="text-sm text-blue-100">Global minimum tax rate</div>
                 </div>
                 <div className="bg-white/10 rounded-lg p-3">
                   <div className="text-2xl font-bold">$245B</div>
-                  <div className="text-sm text-green-100">Annual tax avoidance</div>
+                  <div className="text-sm text-blue-100">Annual tax avoidance</div>
                 </div>
               </div>
             </CardContent>
@@ -112,7 +112,7 @@ const EconomyPage = () => {
             <AccordionItem value="key-topics" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-green-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <TrendingUp className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -124,7 +124,7 @@ const EconomyPage = () => {
               <AccordionContent className="px-6 pb-6">
                 <div className="grid gap-4">
                   {keyTopics.map((topic, index) => (
-                    <Card key={index} className="border-l-4 border-l-green-500">
+                    <Card key={index} className="border-l-4 border-l-orange-600">
                       <CardContent className="p-4">
                         <h4 className="font-semibold mb-2">{topic.title}</h4>
                         <p className="text-sm text-muted-foreground mb-3">{topic.content}</p>
@@ -146,7 +146,7 @@ const EconomyPage = () => {
             <AccordionItem value="inflation-cost-living" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-red-500 text-white">
+                  <div className="p-2 rounded-lg bg-blue-600 text-white">
                     <DollarSign className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -169,9 +169,9 @@ const EconomyPage = () => {
                       Employ this paragraph to underscore the socio-economic impact of inflation or to discuss economic policy. It provides data on inflation rates and responses, useful for arguing about the effectiveness of central banks or the causes of public discontent. It can also bolster a point on how global crises (pandemic, war) directly affect domestic economics and politics.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       price surges; household budgets; perfect storm; supply chain chaos; stimulus; spiked; hiked interest rates; cool the economy; acutely; central banks; deflation; monetary policy; inducing recessions; profound; essentials; staples; real wages; unrest; incumbent; dented; price stability; unravel; inequality; inflation bites
                     </p>
                   </div>
@@ -206,9 +206,9 @@ const EconomyPage = () => {
                       This paragraph can bolster discussions on international trade, climate policy, or US-EU relations. It offers a concrete example of how good intentions (climate action) can cause diplomatic friction. Use it to illustrate the complexity of balancing domestic interests with global cooperation, or as evidence in arguments about rising protectionism and the future of globalization.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       sweeping; hailed; consternation; brazenly; sticking point; provision; disadvantage; tilt; violates; trade war; subsidies; state-aid limits; geoeconomics; free trade principles; economic nationalism; industrial strategy; tit-for-tat protectionism; unresolved
                     </p>
                   </div>
@@ -220,7 +220,7 @@ const EconomyPage = () => {
             <AccordionItem value="global-minimum-tax" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-purple-500 text-white">
+                  <div className="p-2 rounded-lg bg-blue-600 text-white">
                     <Globe className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -243,9 +243,9 @@ const EconomyPage = () => {
                       Use this paragraph for topics on globalization, inequality, or international cooperation. It provides a positive example of collective action and can support arguments about curbing corporate power or ensuring fairness. It's useful for economic justice discussions or when highlighting contrasts between unilateral and multilateral approaches.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       landmark; race to the bottom; tax havens; unanimous; enact; championed; OECD; top-up tax; incentive; jurisdictions; treasuries; gridlock; level the playing field; footloose capital; dull (competitive edge); loopholes; turning point; coordinate; equity; globalization
                     </p>
                   </div>
@@ -280,9 +280,9 @@ const EconomyPage = () => {
                       This paragraph provides a case study of hypocrisy in policy and the complexity of global finance. It's great for arguments about inequality, explaining why developing countries lose revenue, or critiquing powerful nations' double standards. It supplies hard data (one-third of avoidance, $245b lost) useful for highlighting scale. It can also support a point on the challenges of reforming entrenched systems due to vested interests.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       offshore finance; ultra-wealthy; minimize taxes; spider's web; crown dependencies; profit-shifting; drain; secrecy; shell company; funnel; eroding; facilitators; criticism; shelters; blacklist; half-hearted; lobby; sovereignty; moral quandary; austere; elites; sidestep; political will; escape routes
                     </p>
                   </div>
@@ -294,7 +294,7 @@ const EconomyPage = () => {
             <AccordionItem value="labor-movements" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-emerald-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Users className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -317,9 +317,9 @@ const EconomyPage = () => {
                       This paragraph is apt for discussions on labor rights, social change, or economic inequality. It provides concrete examples of union activity and polling data, which can support arguments about rising worker consciousness or the impact of COVID on labor. Use it to argue that social movements can wax and wane with broader conditions, or to compare labor relations internationally.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       momentum; tight labor market; decline; high-profile; behemoths; grabbed headlines; defied the odds; unionize; fierce resistance; unprecedented; protests; approval; precarity; leverage; pro-union; rolling back; labor boards; tilt (in favor); deploy; captive-audience meetings; bust (a union); organizers; workforce; turning point; blip; goodwill; tangible
                     </p>
                   </div>
@@ -331,7 +331,7 @@ const EconomyPage = () => {
             <AccordionItem value="corporate-activism" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-indigo-500 text-white">
+                  <div className="p-2 rounded-lg bg-blue-600 text-white">
                     <Building2 className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -354,9 +354,9 @@ const EconomyPage = () => {
                       This paragraph can be used in discussions about business ethics, globalization, or the role of private companies in politics. It gives a concrete scenario that can be analyzed for arguments about corporate responsibility vs shareholder duty, or free speech vs consequences in commerce. It's also a good cultural example to bring in for essays on activism.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       drawn into; court controversy; ethos; inconsistent; values; boycott; firestorm; principled stance; occupation; human rights; blasted; singling out; antisemitism; backlash; licensee; circumventing; tightrope; wading into; stakeholder; personhood; leverage; conscience; clear-cut
                     </p>
                   </div>
@@ -368,7 +368,7 @@ const EconomyPage = () => {
             <AccordionItem value="greenwashing" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-teal-500 text-white">
+                  <div className="p-2 rounded-lg bg-blue-600 text-white">
                     <Leaf className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -391,9 +391,9 @@ const EconomyPage = () => {
                       Use this in essays on corporate social responsibility, marketing ethics, or climate change. It provides a critical perspective that can support arguments about needing regulation or skepticism of corporate motives. The BP example with numbers makes the point tangible. It's also a nice counterpoint if discussing positive corporate efforts, to show not all that glitters is green.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       scrutiny; claims; target (as verb); regulators; rebrand; sustainability claims; pivot (to clean energy); expenditures; touting; renewables; windfall profits; dissonance; backlash; watchdogs; complaints; generic; ban; reputational risk; authenticity; slick PR; intensifies; put money and effort where their mouth is; public ire
                     </p>
                   </div>
@@ -438,7 +438,7 @@ const EconomyPage = () => {
             <AccordionItem value="essay-questions" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-green-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Factory className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -514,7 +514,7 @@ const EconomyPage = () => {
               </Button>
             </Link>
             <Link to="/formation/anglais/civilisation/health">
-              <Button className="flex items-center gap-2 bg-green-500 hover:bg-green-600">
+              <Button className="flex items-center gap-2 bg-orange-600 hover:bg-green-600">
                 Next: Health and Healthcare Systems
                 <ArrowRight className="h-4 w-4" />
               </Button>

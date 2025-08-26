@@ -154,7 +154,7 @@ const GeopolitiqueEuropeennePage: React.FC = () => {
             <Card key={topic.id} className="shadow-lg hover:shadow-xl transition-shadow">
               <CardHeader>
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-orange-100 rounded-lg text-orange-600">
+                  <div className="p-2 bg-amber-100 rounded-lg text-orange-600">
                     {topic.icon}
                   </div>
                   <CardTitle className="text-xl text-gray-900">
@@ -176,7 +176,7 @@ const GeopolitiqueEuropeennePage: React.FC = () => {
                         <p className="text-gray-700">{topic.content.description}</p>
                       </div>
                       
-                      <div className="bg-orange-50 p-4 rounded-lg">
+                      <div className="bg-amber-50 p-4 rounded-lg">
                         <h4 className="font-semibold text-orange-800 mb-2">Détails:</h4>
                         <p className="text-orange-700">{topic.content.details}</p>
                       </div>

@@ -227,7 +227,7 @@ const NegationsExercicesPage = () => {
   }, [examMode, examStarted]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-amber-50">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-blue-50">
       <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs font-medium text-gray-600">
@@ -324,7 +324,7 @@ const NegationsExercicesPage = () => {
           </Card>
         )}
 
-        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50">
           <CardHeader>
             <CardTitle className="text-xl flex items-center gap-2 text-orange-800">
               <Target className="h-5 w-5" />
@@ -415,7 +415,7 @@ const NegationsExercicesPage = () => {
               </Badge>
             </h2>
 
-            <Card key={currentExercise.id} className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+            <Card key={currentExercise.id} className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50">
               <CardHeader>
                 <CardTitle className="text-xl flex items-center gap-2 text-orange-800">
                   <FileText className="h-5 w-5" />
@@ -499,7 +499,7 @@ const NegationsExercicesPage = () => {
         )}
 
         {filteredExercises.length === 0 && (
-          <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+          <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50">
             <CardContent className="text-center py-8">
               <p className="text-orange-600 text-lg">
                 Aucun exercice trouvé avec les filtres actuels. Modifiez vos critères de recherche.

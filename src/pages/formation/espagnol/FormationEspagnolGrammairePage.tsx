@@ -71,8 +71,8 @@ const FormationEspagnolGrammairePage = () => {
       title: "Syntaxe et Structures Complexes",
       description: "Structures syntaxiques sophistiquées pour enrichir l'expression écrite et orale",
       icon: Target,
-      color: "bg-rose-600",
-      theme: "rose",
+      color: "bg-orange-600",
+      theme: "orange",
       level: "Avancé",
       duration: "2-3 heures",
       essentialTopics: [
@@ -110,8 +110,8 @@ const FormationEspagnolGrammairePage = () => {
       title: "Ser vs Estar et Constructions",
       description: "Maîtrisez les nuances entre ser et estar, constructions spéciales et verbes d'état",
       icon: Zap,
-      color: "bg-purple-600",
-      theme: "purple",
+      color: "bg-orange-600",
+      theme: "orange",
       level: "Intermédiaire",
       duration: "1-2 heures",
       essentialTopics: [
@@ -147,8 +147,8 @@ const FormationEspagnolGrammairePage = () => {
       title: "Prépositions et Locutions",
       description: "Emploi précis des prépositions et locutions prépositionnelles en espagnol",
       icon: FileText,
-      color: "bg-indigo-600",
-      theme: "indigo",
+      color: "bg-orange-600",
+      theme: "orange",
       level: "Tous niveaux",
       duration: "1-2 heures",
       essentialTopics: [
@@ -183,8 +183,8 @@ const FormationEspagnolGrammairePage = () => {
       title: "Questions et Interrogatifs",
       description: "Maîtrisez la formulation des questions et l'usage des mots interrogatifs",
       icon: HelpCircle,
-      color: "bg-teal-600",
-      theme: "teal",
+      color: "bg-orange-600",
+      theme: "orange",
       level: "Débutant - Intermédiaire",
       duration: "1-2 heures",
       essentialTopics: [
@@ -217,8 +217,8 @@ const FormationEspagnolGrammairePage = () => {
       title: "Négations",
       description: "Maîtrisez les formes négatives et leurs emplois en espagnol",
       icon: Minus,
-      color: "bg-red-600",
-      theme: "red",
+      color: "bg-orange-600",
+      theme: "orange",
       level: "Débutant - Intermédiaire",
       duration: "1 heure",
       essentialTopics: [
@@ -248,8 +248,8 @@ const FormationEspagnolGrammairePage = () => {
       title: "Vocabulaire Temporel : Dates et Heures",
       description: "Maîtrisez l'expression du temps, des dates et des heures en espagnol",
       icon: Calendar,
-      color: "bg-green-600",
-      theme: "green",
+      color: "bg-orange-600",
+      theme: "orange",
       level: "Tous niveaux",
       duration: "1 heure",
       essentialTopics: [
@@ -280,8 +280,8 @@ const FormationEspagnolGrammairePage = () => {
       title: "Pronoms",
       description: "Maîtrisez l'usage des pronoms personnels, possessifs et démonstratifs",
       icon: Users,
-      color: "bg-yellow-600",
-      theme: "yellow",
+      color: "bg-orange-600",
+      theme: "orange",
       level: "Intermédiaire",
       duration: "1-2 heures",
       essentialTopics: [
@@ -313,8 +313,8 @@ const FormationEspagnolGrammairePage = () => {
       title: "Verbes Particuliers et Tournures Affectives",
       description: "Maîtrisez les verbes comme gustar et les constructions affectives",
       icon: Star,
-      color: "bg-pink-600",
-      theme: "pink",
+      color: "bg-orange-600",
+      theme: "orange",
       level: "Intermédiaire",
       duration: "1-2 heures",
       essentialTopics: [
@@ -345,8 +345,8 @@ const FormationEspagnolGrammairePage = () => {
       title: "Adjectifs et Adverbes",
       description: "Maîtrisez l'accord des adjectifs, les adverbes et leurs emplois",
       icon: CheckCircle,
-      color: "bg-emerald-600",
-      theme: "emerald",
+      color: "bg-orange-600",
+      theme: "orange",
       level: "Débutant - Intermédiaire",
       duration: "1-2 heures",
       essentialTopics: [
@@ -380,8 +380,8 @@ const FormationEspagnolGrammairePage = () => {
       title: "Thème Grammatical",
       description: "Techniques de traduction français → espagnol avec pièges classiques et méthodologie",
       icon: MessageSquare,
-      color: "bg-blue-600",
-      theme: "blue",
+      color: "bg-orange-600",
+      theme: "orange",
       level: "Concours",
       duration: "3-4 heures",
       essentialTopics: [
@@ -413,101 +413,23 @@ const FormationEspagnolGrammairePage = () => {
   ];
 
   const getThemeColors = (theme: string) => {
+    // Design sobre et cohérent - tous les modules utilisent l'orange pour les éléments principaux
+    // Fond très clair, texte en nuances de bleu pour la lisibilité
     const colors = {
       orange: {
-        bg: "from-orange-50 to-amber-50",
-        border: "border-orange-200",
-        text: "text-orange-800",
-        accent: "text-orange-600",
-        button: "bg-orange-600 hover:bg-orange-700",
-        tag: "bg-orange-100 border-orange-200"
-      },
-      rose: {
-        bg: "from-rose-50 to-pink-50",
-        border: "border-rose-200",
-        text: "text-rose-800",
-        accent: "text-rose-600",
-        button: "bg-rose-600 hover:bg-rose-700",
-        tag: "bg-rose-100 border-rose-200"
-      },
-      purple: {
-        bg: "from-purple-50 to-pink-50",
-        border: "border-purple-200",
-        text: "text-purple-800",
-        accent: "text-purple-600",
-        button: "bg-purple-600 hover:bg-purple-700",
-        tag: "bg-purple-100 border-purple-200"
-      },
-      indigo: {
-        bg: "from-indigo-50 to-purple-50",
-        border: "border-indigo-200",
-        text: "text-indigo-800",
-        accent: "text-indigo-600",
-        button: "bg-indigo-600 hover:bg-indigo-700",
-        tag: "bg-indigo-100 border-indigo-200"
-      },
-      teal: {
-        bg: "from-teal-50 to-blue-50",
-        border: "border-teal-200",
-        text: "text-teal-800",
-        accent: "text-teal-600",
-        button: "bg-teal-600 hover:bg-teal-700",
-        tag: "bg-teal-100 border-teal-200"
-      },
-      red: {
-        bg: "from-red-50 to-pink-50",
-        border: "border-red-200",
-        text: "text-red-800",
-        accent: "text-red-600",
-        button: "bg-red-600 hover:bg-red-700",
-        tag: "bg-red-100 border-red-200"
-      },
-      green: {
-        bg: "from-green-50 to-emerald-50",
-        border: "border-green-200",
-        text: "text-green-800",
-        accent: "text-green-600",
-        button: "bg-green-600 hover:bg-green-700",
-        tag: "bg-green-100 border-green-200"
-      },
-      yellow: {
-        bg: "from-yellow-50 to-amber-50",
-        border: "border-yellow-200",
-        text: "text-yellow-800",
-        accent: "text-yellow-600",
-        button: "bg-yellow-600 hover:bg-yellow-700",
-        tag: "bg-yellow-100 border-yellow-200"
-      },
-      pink: {
-        bg: "from-pink-50 to-rose-50",
-        border: "border-pink-200",
-        text: "text-pink-800",
-        accent: "text-pink-600",
-        button: "bg-pink-600 hover:bg-pink-700",
-        tag: "bg-pink-100 border-pink-200"
-      },
-      emerald: {
-        bg: "from-emerald-50 to-green-50",
-        border: "border-emerald-200",
-        text: "text-emerald-800",
-        accent: "text-emerald-600",
-        button: "bg-emerald-600 hover:bg-emerald-700",
-        tag: "bg-emerald-100 border-emerald-200"
-      },
-      blue: {
-        bg: "from-blue-50 to-indigo-50",
-        border: "border-blue-200",
-        text: "text-blue-800",
-        accent: "text-blue-600",
-        button: "bg-blue-600 hover:bg-blue-700",
-        tag: "bg-blue-100 border-blue-200"
+        bg: "from-gray-50/30 to-white", // Fond très sobre et clair
+        border: "border-gray-200", // Bordures subtiles
+        text: "text-gray-800", // Texte principal en gris foncé
+        accent: "text-blue-600", // Accent en bleu pour les éléments secondaires
+        button: "bg-orange-600 hover:bg-orange-700", // Boutons toujours en orange
+        tag: "bg-gray-50 border-gray-200" // Tags très sobres
       }
     };
     return colors[theme as keyof typeof colors] || colors.orange;
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-amber-50">
+    <div className="min-h-screen bg-gray-50/20">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -609,10 +531,10 @@ const FormationEspagnolGrammairePage = () => {
                         </CardTitle>
                         <p className="text-gray-700 text-lg">{module.description}</p>
                         <div className="flex gap-3 mt-2">
-                          <Badge variant="outline" className={`${themeColors.accent} border-current`}>
+                          <Badge variant="outline" className="text-blue-600 border-blue-200 bg-blue-50/50">
                             {module.level}
                           </Badge>
-                          <Badge variant="outline" className={`${themeColors.accent} border-current`}>
+                          <Badge variant="outline" className="text-blue-600 border-blue-200 bg-blue-50/50">
                             {module.duration}
                           </Badge>
                         </div>
@@ -851,22 +773,25 @@ const FormationEspagnolGrammairePage = () => {
           </div>
         </div>
 
-        <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50 shadow-lg">
+        <Card className="border border-gray-200 bg-white/60 shadow-sm">
           <CardHeader>
-            <CardTitle className="text-xl flex items-center gap-2 text-orange-800">
-              <BookOpen className="h-5 w-5" />
+            <CardTitle className="text-xl flex items-center gap-2 text-gray-800">
+              <BookOpen className="h-5 w-5 text-orange-600" />
               Méthodologie de révision
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-orange-700 space-y-4">
+          <CardContent className="text-gray-700 space-y-4">
             <p className="leading-relaxed">
               La grammaire espagnole demande une approche progressive et systématique. 
               Chaque module s'appuie sur des points fondamentaux pour construire une maîtrise complète.
             </p>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-3">
-                <h3 className="font-semibold text-orange-900 mb-2">📚 Progression conseillée :</h3>
-                <ul className="text-sm text-orange-700 space-y-1">
+                <h3 className="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                  <BookOpen className="h-4 w-4 text-orange-600" />
+                  Progression conseillée
+                </h3>
+                <ul className="text-sm text-gray-600 space-y-1">
                   <li>• Commencer par Ser/Estar et prépositions (bases)</li>
                   <li>• Maîtriser les temps verbaux progressivement</li>
                   <li>• Approfondir la syntaxe complexe</li>
@@ -874,8 +799,11 @@ const FormationEspagnolGrammairePage = () => {
                 </ul>
               </div>
               <div className="space-y-3">
-                <h3 className="font-semibold text-orange-900 mb-2">🎯 Pour les concours :</h3>
-                <ul className="text-sm text-orange-700 space-y-1">
+                <h3 className="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                  <Target className="h-4 w-4 text-orange-600" />
+                  Pour les concours
+                </h3>
+                <ul className="text-sm text-gray-600 space-y-1">
                   <li>• Subjonctif : 70% des thèmes en contiennent</li>
                   <li>• Prépositions : source principale d'erreurs</li>
                   <li>• Ser/Estar : nuances indispensables</li>

@@ -82,6 +82,7 @@ const Module1PoliticaRegimenesPage = lazy(() => import('../pages/formation/espag
 const Module4MigracionesDesplazamientosPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module4MigracionesDesplazamientosPage'));
 const Module5ViolenciaNarcotraficoPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module5ViolenciaNarcotraficoPage'));
 const Module7MedioAmbienteClimaPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module7MedioAmbienteClimaPage'));
+const FormationEspagnolMethodologiePage = lazy(() => import('../pages/formation/espagnol/FormationEspagnolMethodologiePage'));
 const FormationAllemandPage = lazy(() => import('../pages/FormationAllemandPage'));
 const FormationAllemandGrammairePage = lazy(() => import('../pages/formation/allemand/FormationAllemandGrammairePage'));
 const FormationAllemandCivilisationPage = lazy(() => import('../pages/formation/allemand/FormationAllemandCivilisationPage'));
@@ -393,6 +394,9 @@ export const routes: RouteConfig[] = [
 
   { path: '/formation/espagnol', component: FormationEspagnolPage, title: 'Formation Espagnol' },
   { path: '/formation/espagnol/grammaire', component: FormationEspagnolGrammairePage, title: 'Grammaire Espagnole' },
+  { path: '/formation/espagnol/vocabulaire', component: lazy(() => import('../pages/formation/espagnol/FormationEspagnolVocabulairePage')), title: 'Vocabulaire Espagnol' },
+  { path: '/formation/espagnol/sommaire', component: lazy(() => import('../pages/formation/espagnol/FormationEspagnolSommairePage')), title: 'Sommaire Formation Espagnol' },
+  { path: '/formation/espagnol/generateurs', component: lazy(() => import('../pages/formation/espagnol/FormationEspagnolGenerateursPage')), title: 'Générateurs IA Formation Espagnol' },
   { path: '/formation/espagnol/grammaire/theme', component: ThemeGrammaticalPage, title: 'Thème Grammatical' },
   { path: '/formation/espagnol/grammaire/conjugaison', component: ConjugaisonPage, title: 'Conjugaison et Temps Verbaux' },
   { path: '/formation/espagnol/grammaire/conjugaison/exercices', component: ConjugaisonExercicesPage, title: 'Exercices de Conjugaison' },
@@ -419,6 +423,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/espagnol/civilisation/module4', component: Module4MigracionesDesplazamientosPage, title: 'Migraciones y Desplazamientos' },
   { path: '/formation/espagnol/civilisation/module5', component: Module5ViolenciaNarcotraficoPage, title: 'Violencia y Narcotráfico' },
   { path: '/formation/espagnol/civilisation/module7', component: Module7MedioAmbienteClimaPage, title: 'Medio Ambiente y Clima' },
+  { path: '/formation/espagnol/methodologie', component: FormationEspagnolMethodologiePage, title: 'Méthodologie des Épreuves Espagnol' },
   { path: '/formation/allemand', component: FormationAllemandPage, title: 'Formation Allemand' },
   { path: '/formation/allemand/grammaire', component: FormationAllemandGrammairePage, title: 'Grammaire Allemande' },
   { path: '/formation/allemand/civilisation', component: FormationAllemandCivilisationPage, title: 'Civilisation Allemande' },

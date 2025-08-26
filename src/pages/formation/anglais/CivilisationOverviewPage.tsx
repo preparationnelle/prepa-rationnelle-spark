@@ -12,7 +12,7 @@ const CivilisationOverviewPage = () => {
       title: 'Environment and Ecology',
       description: 'Climate change, green policies, and environmental challenges in the English-speaking world',
       icon: Globe,
-      color: 'bg-green-500',
+      color: 'bg-orange-600',
       route: '/formation/anglais/civilisation/environment'
     },
     {
@@ -20,7 +20,7 @@ const CivilisationOverviewPage = () => {
       title: 'Politics (United States & United Kingdom)',
       description: 'Political systems, elections, and contemporary political developments',
       icon: Crown,
-      color: 'bg-blue-500',
+      color: 'bg-blue-600',
       route: '/formation/anglais/civilisation/politics'
     },
     {
@@ -28,7 +28,7 @@ const CivilisationOverviewPage = () => {
       title: 'Geopolitics and International Relations',
       description: 'Anglo-American foreign policy, international alliances, and global influence',
       icon: MapPin,
-      color: 'bg-purple-500',
+      color: 'bg-orange-600',
       route: '/formation/anglais/civilisation/geopolitics'
     },
     {
@@ -44,7 +44,7 @@ const CivilisationOverviewPage = () => {
       title: 'Economy and Globalization',
       description: 'Economic systems, trade, and the impact of globalization',
       icon: TrendingUp,
-      color: 'bg-emerald-500',
+      color: 'bg-blue-600',
       route: '/formation/anglais/civilisation/economy'
     },
     {
@@ -52,7 +52,7 @@ const CivilisationOverviewPage = () => {
       title: 'Health and Healthcare Systems',
       description: 'Healthcare policies, public health crises, and medical innovations',
       icon: Heart,
-      color: 'bg-red-500',
+      color: 'bg-orange-600',
       route: '/formation/anglais/civilisation/health'
     },
     {
@@ -60,7 +60,7 @@ const CivilisationOverviewPage = () => {
       title: 'Education and Culture Wars',
       description: 'Education systems, cultural debates, and academic controversies',
       icon: GraduationCap,
-      color: 'bg-indigo-500',
+      color: 'bg-blue-600',
       route: '/formation/anglais/civilisation/education'
     },
     {
@@ -68,7 +68,7 @@ const CivilisationOverviewPage = () => {
       title: 'Media and Social Networks',
       description: 'Digital media, social platforms, and the information age',
       icon: Newspaper,
-      color: 'bg-pink-500',
+      color: 'bg-orange-600',
       route: '/formation/anglais/civilisation/media'
     },
     {
@@ -76,7 +76,7 @@ const CivilisationOverviewPage = () => {
       title: 'Justice and the Rule of Law',
       description: 'Legal systems, criminal justice, and constitutional law',
       icon: Scale,
-      color: 'bg-gray-600',
+      color: 'bg-blue-600',
       route: '/formation/anglais/civilisation/justice'
     },
     {
@@ -84,7 +84,7 @@ const CivilisationOverviewPage = () => {
       title: 'Social and Racial Inequalities',
       description: 'Social stratification, racial issues, and economic disparities',
       icon: Users,
-      color: 'bg-yellow-600',
+      color: 'bg-orange-600',
       route: '/formation/anglais/civilisation/inequalities'
     },
     {
@@ -92,7 +92,7 @@ const CivilisationOverviewPage = () => {
       title: 'Civil Rights and Social Movements',
       description: 'Historical and contemporary social movements and civil rights',
       icon: Shield,
-      color: 'bg-teal-500',
+      color: 'bg-blue-600',
       route: '/formation/anglais/civilisation/civil-rights'
     },
     {
@@ -100,7 +100,7 @@ const CivilisationOverviewPage = () => {
       title: 'Brexit and its Aftermath',
       description: 'Brexit process, consequences, and UK-EU relations',
       icon: Ship,
-      color: 'bg-slate-600',
+      color: 'bg-orange-600',
       route: '/formation/anglais/civilisation/brexit'
     },
     {
@@ -108,7 +108,7 @@ const CivilisationOverviewPage = () => {
       title: 'The Commonwealth and Post-Colonial Legacy',
       description: 'Commonwealth relations and post-colonial developments',
       icon: Crown,
-      color: 'bg-amber-600',
+      color: 'bg-blue-600',
       route: '/formation/anglais/civilisation/commonwealth'
     },
     {
@@ -116,7 +116,7 @@ const CivilisationOverviewPage = () => {
       title: 'Civil Religion and National Identity',
       description: 'National identity, patriotism, and civic culture',
       icon: Home,
-      color: 'bg-rose-500',
+      color: 'bg-orange-600',
       route: '/formation/anglais/civilisation/civil-religion'
     },
     {
@@ -124,7 +124,7 @@ const CivilisationOverviewPage = () => {
       title: 'Immigration and Border Control',
       description: 'Immigration policies, border security, and demographic changes',
       icon: MapPin,
-      color: 'bg-cyan-500',
+      color: 'bg-blue-600',
       route: '/formation/anglais/civilisation/immigration'
     },
     {
@@ -132,15 +132,15 @@ const CivilisationOverviewPage = () => {
       title: 'Major Contemporary Crises',
       description: 'Pandemic response, inflation, and other major contemporary challenges',
       icon: AlertTriangle,
-      color: 'bg-red-600',
+      color: 'bg-orange-600',
       route: '/formation/anglais/civilisation/crises'
     }
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFF]">
+    <div className="min-h-screen bg-white">
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -168,7 +168,7 @@ const CivilisationOverviewPage = () => {
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">16 Chapitres</Badge>
             <Badge variant="outline">2025 Update</Badge>
-            <Badge className="bg-blue-500">Comprehensive</Badge>
+            <Badge className="bg-blue-600">Comprehensive</Badge>
           </div>
         </div>
 

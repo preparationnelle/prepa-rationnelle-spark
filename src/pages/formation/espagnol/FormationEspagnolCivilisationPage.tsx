@@ -76,8 +76,8 @@ const FormationEspagnolCivilisationPage = () => {
       subtitle: "Amérique latine et Espagne",
       description: "Crises démocratiques, extrême droite/gauche, évolution politique",
       icon: Scale,
-      color: "bg-red-600",
-      theme: "red",
+      color: "bg-blue-600",
+      theme: "blue",
       topics: [
         "Crises démocratiques en Amérique latine",
         "Poids de l'extrême droite (Vox en Espagne)",
@@ -110,8 +110,8 @@ Lo que más revela este balance es la tensión entre logros rápidos y contrapes
       subtitle: "Féminisme et égalité",
       description: "Machisme, féminisme, leadership féminin, droits reproductifs",
       icon: Users,
-      color: "bg-purple-600",
-      theme: "purple",
+      color: "bg-blue-600",
+      theme: "blue",
       topics: [
         "Violence machiste et loi de 2004 (Espagne)",
         "Leadership féminin (Claudia Sheinbaum 2025)",
@@ -158,8 +158,8 @@ Lo que más revela este balance es la tensión entre logros rápidos y contrapes
       subtitle: "Flux migratoires et déplacements forcés",
       description: "Venezuela→Colombie, caravanes, politique américaine, transit",
       icon: Plane,
-      color: "bg-orange-600",
-      theme: "orange",
+      color: "bg-blue-600",
+      theme: "blue",
       topics: [
         "Flux Venezuela → Colombie",
         "Caravanes d'Amérique centrale",
@@ -192,8 +192,8 @@ La gestión de la crisis demuestra que la respuesta aislada no basta; es necesar
       subtitle: "Violence chronique et cartels",
       description: "Violence, corruption, cartels, sécurité et maintien de l'ordre",
       icon: Shield,
-      color: "bg-red-700",
-      theme: "red",
+      color: "bg-blue-600",
+      theme: "blue",
       topics: [
         "Violence chronique en Amérique latine",
         "Corruption et cartels",
@@ -226,8 +226,8 @@ En definitiva, la creciente brecha entre la invención criminal y la respuesta i
       subtitle: "Pauvreté et travail des enfants",
       description: "Seuil de pauvreté, envois de fonds, travail infantile",
       icon: DollarSign,
-      color: "bg-yellow-600",
-      theme: "yellow",
+      color: "bg-blue-600",
+      theme: "blue",
       topics: [
         "64% des Honduriens sous le seuil de pauvreté",
         "Dépendance aux envois de fonds (Salvador)",
@@ -250,8 +250,8 @@ En definitiva, la creciente brecha entre la invención criminal y la respuesta i
       subtitle: "Environnement et justice climatique",
       description: "COP 16, Gustavo Petro, fast-fashion, peuples autochtones",
       icon: TreePine,
-      color: "bg-green-600",
-      theme: "green",
+      color: "bg-blue-600",
+      theme: "blue",
       topics: [
         "Discours de Gustavo Petro (COP 16)",
         "\"État de mort clinique\" du monde",
@@ -284,8 +284,8 @@ La gran lección es la tensión entre ambición climática y recursos hídricos 
       subtitle: "Histoire et mémoire collective",
       description: "Franquisme, transition, guerre civile, colonisation",
       icon: BookOpen,
-      color: "bg-indigo-600",
-      theme: "indigo",
+      color: "bg-blue-600",
+      theme: "blue",
       topics: [
         "Rappels du franquisme",
         "Transition démocratique espagnole",
@@ -318,8 +318,8 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
       subtitle: "Soberanía tecnológica e inclusión digital",
       description: "IA generativa, modelos hispanohablantes, brecha digital",
       icon: BookOpen,
-      color: "bg-cyan-600",
-      theme: "cyan",
+      color: "bg-blue-600",
+      theme: "blue",
       topics: [
         "Plan Nacional de IA español (600 M€)",
         "México: 70% adopción empresarial ChatGPT",
@@ -352,8 +352,8 @@ En definitiva, lo que más revela este panorama es la distancia entre innovació
       subtitle: "Alianza estratégica vs dependencia 2.0",
       description: "Franja y Ruta, intercambio comercial, soberanía regional",
       icon: Globe,
-      color: "bg-amber-600",
-      theme: "amber",
+      color: "bg-blue-600",
+      theme: "blue",
       topics: [
         "370 000 M US$ intercambio comercial 2024",
         "22 países adheridos Franja y la Ruta",
@@ -386,8 +386,8 @@ La principal lección es la tensión entre ganancias rápidas y autonomía estra
       subtitle: "Luttes féministes et résistance citoyenne",
       description: "Reversibilité des droits, mobilisation sociale, garanties étatiques",
       icon: Users,
-      color: "bg-pink-600",
-      theme: "pink",
+      color: "bg-blue-600",
+      theme: "blue",
       topics: [
         "España: 76,7 puntos Gender Equality Index (4.º UE)",
         "Argentina: supresión Ministerio de las Mujeres",
@@ -420,8 +420,8 @@ Los casos de Argentina y España evidencian que la igualdad progresa cuando conv
       subtitle: "Inégalités et pauvreté en Ibéroamérique",
       description: "Indices, groupes vulnérables, mécanismes et politiques sociales",
       icon: DollarSign,
-      color: "bg-yellow-600",
-      theme: "yellow",
+      color: "bg-blue-600",
+      theme: "blue",
       topics: [
         "Coeficiente de Gini : América Latina más desigual",
         "40% en pobreza extrema (< 1,9$/día ONU)",
@@ -441,94 +441,31 @@ Los casos de Argentina y España evidencian que la igualdad progresa cuando conv
     }
   ];
 
-  const getThemeColors = (theme: string) => {
-    const colors = {
-      red: {
-        bg: "from-red-50 to-orange-50",
-        border: "border-red-200",
-        text: "text-red-800",
-        accent: "text-red-600",
-        button: "bg-red-600 hover:bg-red-700",
-        tag: "bg-red-100 border-red-200"
-      },
-      purple: {
-        bg: "from-purple-50 to-orange-50",
-        border: "border-purple-200",
-        text: "text-purple-800",
-        accent: "text-purple-600",
-        button: "bg-purple-600 hover:bg-purple-700",
-        tag: "bg-purple-100 border-purple-200"
-      },
-      blue: {
-        bg: "from-blue-50 to-indigo-50",
-        border: "border-blue-200",
-        text: "text-blue-800",
-        accent: "text-blue-600",
-        button: "bg-blue-600 hover:bg-blue-700",
-        tag: "bg-blue-100 border-blue-200"
-      },
-      orange: {
-        bg: "from-orange-50 to-yellow-50",
-        border: "border-orange-200",
-        text: "text-orange-800",
-        accent: "text-orange-600",
-        button: "bg-orange-600 hover:bg-orange-700",
-        tag: "bg-orange-100 border-orange-200"
-      },
-      yellow: {
-        bg: "from-yellow-50 to-orange-50",
-        border: "border-yellow-200",
-        text: "text-yellow-800",
-        accent: "text-yellow-700",
-        button: "bg-yellow-600 hover:bg-yellow-700",
-        tag: "bg-yellow-100 border-yellow-200"
-      },
-      green: {
-        bg: "from-green-50 to-emerald-50",
-        border: "border-green-200",
-        text: "text-green-800",
-        accent: "text-green-600",
-        button: "bg-green-600 hover:bg-green-700",
-        tag: "bg-green-100 border-green-200"
-      },
-      indigo: {
-        bg: "from-indigo-50 to-purple-50",
-        border: "border-indigo-200",
-        text: "text-indigo-800",
-        accent: "text-indigo-600",
-        button: "bg-indigo-600 hover:bg-indigo-700",
-        tag: "bg-indigo-100 border-indigo-200"
-      },
-      cyan: {
-        bg: "from-cyan-50 to-blue-50",
-        border: "border-cyan-200",
-        text: "text-cyan-800",
-        accent: "text-cyan-600",
-        button: "bg-cyan-600 hover:bg-cyan-700",
-        tag: "bg-cyan-100 border-cyan-200"
-      },
-      amber: {
-        bg: "from-amber-50 to-yellow-50",
-        border: "border-amber-200",
-        text: "text-amber-800",
-        accent: "text-amber-600",
-        button: "bg-amber-600 hover:bg-amber-700",
-        tag: "bg-amber-100 border-amber-200"
-      },
-      pink: {
-        bg: "from-pink-50 to-rose-50",
-        border: "border-pink-200",
-        text: "text-pink-800",
-        accent: "text-pink-600",
-        button: "bg-pink-600 hover:bg-pink-700",
-        tag: "bg-pink-100 border-pink-200"
-      }
+  const getThemeColors = () => {
+    return {
+      bg: "from-orange-50 to-amber-50",
+      border: "border-orange-200",
+      text: "text-orange-800",
+      accent: "text-orange-600",
+      button: "bg-orange-600 hover:bg-orange-700",
+      tag: "bg-orange-100 border-orange-200"
     };
-    return colors[theme as keyof typeof colors] || colors.blue;
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-amber-50">
+    <div className="min-h-screen bg-white relative overflow-hidden">
+      {/* Floating elements - Bubbles like landing page */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute bottom-40 left-20 w-56 h-56 bg-orange-200 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute top-1/2 left-10 w-24 h-24 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute bottom-1/3 right-5 w-36 h-36 bg-blue-50 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute top-60 right-1/3 w-20 h-20 bg-blue-200 rounded-full opacity-8 animate-pulse"></div>
+      <div className="absolute bottom-60 left-1/4 w-44 h-44 bg-orange-100 rounded-full opacity-8 animate-pulse-slow"></div>
+      
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -547,7 +484,7 @@ Los casos de Argentina y España evidencian que la igualdad progresa cuando conv
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-12 relative z-10">
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
             <div className="p-3 rounded-lg bg-orange-600 text-white">
@@ -566,14 +503,17 @@ Los casos de Argentina y España evidencian que la igualdad progresa cuando conv
         </div>
 
         {/* Article d'introduction */}
-        <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50 shadow-lg mb-10">
-          <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
-              <Globe className="h-6 w-6" />
+        <Card className="border-2 border-gray-200 bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 hover:border-orange-200 shadow-lg mb-10 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-50/20 to-blue-50/20 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+          <CardHeader className="relative z-10">
+            <CardTitle className="text-2xl flex items-center gap-2 text-gray-900">
+              <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                <Globe className="h-5 w-5 text-orange-600" />
+              </div>
               Les enjeux de la civilisation hispanique aux concours
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-orange-700 space-y-6">
+          <CardContent className="text-gray-700 space-y-6 relative z-10">
             <div className="bg-white/70 rounded-lg p-6 border border-orange-200">
               <h3 className="font-bold text-orange-900 mb-3">Pourquoi étudier la civilisation hispanique ?</h3>
               <p className="leading-relaxed mb-4">
@@ -590,29 +530,35 @@ Los casos de Argentina y España evidencian que la igualdad progresa cuando conv
 
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-4">
-                <h3 className="font-semibold text-orange-900 mb-3">🎯 Objectifs pédagogiques :</h3>
-                <ul className="text-sm text-orange-700 space-y-2">
+                <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                  <span className="text-xl">🎯</span>
+                  Objectifs pédagogiques :
+                </h3>
+                <ul className="text-sm text-gray-600 space-y-2">
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-blue-400 mt-1.5 flex-shrink-0"></span>
                     <span>Maîtriser les enjeux politiques et sociaux contemporains</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-blue-400 mt-1.5 flex-shrink-0"></span>
                     <span>Comprendre les spécificités régionales (Espagne vs Amérique latine)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-blue-400 mt-1.5 flex-shrink-0"></span>
                     <span>Analyser les défis démocratiques et les transitions politiques</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-blue-400 mt-1.5 flex-shrink-0"></span>
                     <span>Appréhender les questions migratoires et environnementales</span>
                   </li>
                 </ul>
               </div>
               <div className="space-y-4">
-                <h3 className="font-semibold text-orange-900 mb-3">📚 Pour les concours :</h3>
-                <ul className="text-sm text-orange-700 space-y-2">
+                <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                  <span className="text-xl">📚</span>
+                  Pour les concours :
+                </h3>
+                <ul className="text-sm text-gray-600 space-y-2">
                   <li className="flex items-start gap-2">
                     <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                     <span>Contexte indispensable pour comprendre les versions</span>
@@ -633,9 +579,12 @@ Los casos de Argentina y España evidencian que la igualdad progresa cuando conv
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-orange-100 to-amber-100 rounded-lg p-4 border border-orange-300">
-              <h4 className="font-semibold text-orange-900 mb-2">💡 Conseil stratégique :</h4>
-              <p className="text-sm text-orange-800 leading-relaxed">
+            <div className="bg-gradient-to-r from-blue-50 to-orange-50 rounded-lg p-4 border border-blue-200">
+              <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                <span className="text-lg">💡</span>
+                Conseil stratégique :
+              </h4>
+              <p className="text-sm text-gray-700 leading-relaxed">
                 <strong>Croiser civilisation et vocabulaire</strong> : chaque thème civilisationnel possède un vocabulaire 
                 spécialisé (ex: violencia de género + lexique judiciaire) qu'il faut réviser en contexte 
                 plutôt qu'en listes isolées. Les sujets sont souvent tirés d'articles récents.
@@ -648,66 +597,71 @@ Los casos de Argentina y España evidencian que la igualdad progresa cuando conv
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Thématiques de Civilisation</h2>
           <div className="grid gap-8">
             {civilisationModules.map((module) => {
-              const themeColors = getThemeColors(module.theme);
+              const themeColors = getThemeColors();
               return (
-                <Card key={module.id} className={`bg-gradient-to-br ${themeColors.bg} border-2 ${themeColors.border} shadow-lg`}>
-                  <CardHeader>
+                <Card key={module.id} className="group bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-gray-200 hover:border-orange-200 shadow-lg relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-50/20 to-blue-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <CardHeader className="relative z-10">
                     <div className="flex items-center gap-4 mb-4">
-                      <div className={`p-4 rounded-xl ${module.color} text-white shadow-lg`}>
+                      <div className={`p-4 rounded-xl ${module.color} text-white shadow-lg group-hover:shadow-xl transition-all duration-300`}>
                         <module.icon className="h-8 w-8" />
                       </div>
                       <div className="flex-1">
-                        <CardTitle className={`text-3xl font-bold ${themeColors.text} mb-2 flex items-center gap-3`}>
-                          <span className={`${module.color} text-white px-3 py-1 rounded-full text-xl font-bold`}>
+                        <CardTitle className="text-3xl font-bold text-gray-900 mb-2 flex items-center gap-3 group-hover:text-orange-600 transition-colors">
+                          <span className="bg-orange-600 text-white px-3 py-1 rounded-full text-xl font-bold">
                             {module.id}
                           </span>
                           {module.title}
                         </CardTitle>
-                        <p className={`${themeColors.accent} text-lg font-medium`}>{module.subtitle}</p>
-                        <p className="text-gray-700 mt-1">{module.description}</p>
+                        <p className="text-orange-600 text-lg font-medium">{module.subtitle}</p>
+                        <p className="text-gray-600 mt-1">{module.description}</p>
                       </div>
                     </div>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="relative z-10">
                     <div className="grid md:grid-cols-2 gap-6 mb-6">
                       <div>
-                        <h4 className={`font-semibold ${themeColors.text} mb-3 flex items-center gap-2`}>
-                          <TrendingUp className="h-4 w-4" />
+                        <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                          <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center">
+                            <TrendingUp className="h-3 w-3 text-blue-600" />
+                          </div>
                           Points clés récurrents
                         </h4>
                         <div className="space-y-2">
                           {module.topics.map((topic, index) => (
-                            <div key={index} className={`p-3 rounded-lg border ${themeColors.tag}`}>
-                              <span className="text-sm font-medium">{topic}</span>
+                            <div key={index} className="p-3 rounded-lg border border-gray-200 bg-gray-50 hover:bg-blue-50 hover:border-blue-200 transition-all duration-200">
+                              <span className="text-sm font-medium text-gray-700">{topic}</span>
                             </div>
                           ))}
                         </div>
                       </div>
                       <div>
-                        <h4 className={`font-semibold ${themeColors.text} mb-3 flex items-center gap-2`}>
-                          <MapPin className="h-4 w-4" />
+                        <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                          <div className="w-5 h-5 bg-orange-100 rounded-full flex items-center justify-center">
+                            <MapPin className="h-3 w-3 text-orange-600" />
+                          </div>
                           Approfondissements
                         </h4>
                         <div className="space-y-2">
                           {module.detailedTopics.map((topic, index) => (
                             <div key={index} className="flex items-center gap-2">
-                              <div className={`w-2 h-2 rounded-full ${module.color.replace('bg-', 'bg-')}`}></div>
-                              <span className={`text-sm ${themeColors.accent}`}>{topic}</span>
+                              <div className="w-2 h-2 rounded-full bg-orange-400"></div>
+                              <span className="text-sm text-gray-600">{topic}</span>
                             </div>
                           ))}
                         </div>
                       </div>
                     </div>
 
-                    <div className={`bg-white/50 rounded-lg p-4 mb-4 border ${themeColors.border}`}>
+                    <div className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-lg p-4 mb-4 border border-gray-200">
                       <div className="grid md:grid-cols-2 gap-4 text-sm">
                         <div>
-                          <strong className={themeColors.text}>Importance :</strong>
-                          <p className={themeColors.accent}>{module.importance}</p>
+                          <strong className="text-gray-900">Importance :</strong>
+                          <p className="text-gray-600">{module.importance}</p>
                         </div>
                         <div>
-                          <strong className={themeColors.text}>Exemples d'annales :</strong>
-                          <p className={themeColors.accent}>{module.examples}</p>
+                          <strong className="text-gray-900">Exemples d'annales :</strong>
+                          <p className="text-gray-600">{module.examples}</p>
                         </div>
                       </div>
                     </div>
@@ -721,7 +675,7 @@ Los casos de Argentina y España evidencian que la igualdad progresa cuando conv
                       </Link>
                       <Button 
                         variant="outline" 
-                        className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}
+                        className={`px-6 ${themeColors.border} ${themeColors.accent} hover:bg-orange-50`}
                         onClick={() => handleResourcesClick(module.id)}
                       >
                         <Briefcase className="mr-2 h-4 w-4" />
@@ -730,7 +684,7 @@ Los casos de Argentina y España evidencian que la igualdad progresa cuando conv
                       {module.redactedSubject ? (
                         <Button 
                           variant="outline" 
-                          className={`px-6 ${themeColors.border} ${themeColors.accent} hover:${themeColors.bg.split(' ')[0]}`}
+                          className={`px-6 ${themeColors.border} ${themeColors.accent} hover:bg-orange-50`}
                           onClick={() => handleSubjectClick(module.redactedSubject!)}
                         >
                         <BookOpen className="mr-2 h-4 w-4" />
@@ -756,14 +710,17 @@ Los casos de Argentina y España evidencian que la igualdad progresa cuando conv
 
         {/* Section vocabulaire et conseils */}
         <div className="grid md:grid-cols-2 gap-8">
-          <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50 shadow-lg">
-            <CardHeader>
-              <CardTitle className="text-xl flex items-center gap-2 text-orange-800">
-                <BookOpen className="h-5 w-5" />
+          <Card className="group border-2 border-gray-200 bg-white/95 backdrop-blur-sm hover:shadow-2xl hover:border-blue-200 transition-all duration-300 shadow-lg relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-orange-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <CardHeader className="relative z-10">
+              <CardTitle className="text-xl flex items-center gap-2 text-gray-900 group-hover:text-blue-600 transition-colors">
+                <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
+                  <BookOpen className="h-4 w-4 text-blue-600" />
+                </div>
                 Vocabulaire par thématique
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-orange-700 space-y-4">
+            <CardContent className="text-gray-700 space-y-4 relative z-10">
               <p className="text-sm leading-relaxed">
                 Chaque thématique civilisationnelle possède son vocabulaire spécialisé indispensable 
                 pour les épreuves de traduction et d'expression.
@@ -781,14 +738,17 @@ Los casos de Argentina y España evidencian que la igualdad progresa cuando conv
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50 shadow-lg">
-            <CardHeader>
-              <CardTitle className="text-xl flex items-center gap-2 text-orange-800">
-                <TrendingUp className="h-5 w-5" />
+          <Card className="group border-2 border-gray-200 bg-white/95 backdrop-blur-sm hover:shadow-2xl hover:border-orange-200 transition-all duration-300 shadow-lg relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-50/20 to-blue-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <CardHeader className="relative z-10">
+              <CardTitle className="text-xl flex items-center gap-2 text-gray-900 group-hover:text-orange-600 transition-colors">
+                <div className="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center">
+                  <TrendingUp className="h-4 w-4 text-orange-600" />
+                </div>
                 Actualité et concours 2025
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-orange-700 space-y-4">
+            <CardContent className="text-gray-700 space-y-4 relative z-10">
               <p className="text-sm leading-relaxed">
                 Surveillez l'actualité hispanique jusqu'aux concours : les sujets s'appuient 
                 souvent sur des événements récents.
@@ -850,25 +810,19 @@ Los casos de Argentina y España evidencian que la igualdad progresa cuando conv
           <div className="bg-white rounded-lg max-w-6xl w-full max-h-[95vh] overflow-y-auto">
             <div className="sticky top-0 bg-white border-b p-6 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className={`p-2 rounded-lg ${
-                  selectedVocabularyModule === 4 ? 'bg-blue-100' :
-                  selectedVocabularyModule === 5 ? 'bg-red-100' : 
-                  selectedVocabularyModule === 6 ? 'bg-orange-100' :
-                  selectedVocabularyModule === 7 ? 'bg-green-100' :
-                  selectedVocabularyModule === 11 ? 'bg-pink-100' : 'bg-yellow-100'
-                }`}>
+                <div className="p-2 rounded-lg bg-orange-100">
                   {selectedVocabularyModule === 4 ? (
-                    <Plane className="h-5 w-5 text-blue-600" />
+                    <Plane className="h-5 w-5 text-orange-600" />
                   ) : selectedVocabularyModule === 5 ? (
-                    <Shield className="h-5 w-5 text-red-600" />
+                    <Shield className="h-5 w-5 text-orange-600" />
                   ) : selectedVocabularyModule === 6 ? (
                     <TrendingUp className="h-5 w-5 text-orange-600" />
                   ) : selectedVocabularyModule === 7 ? (
-                    <TreePine className="h-5 w-5 text-green-600" />
+                    <TreePine className="h-5 w-5 text-orange-600" />
                   ) : selectedVocabularyModule === 11 ? (
-                    <Users className="h-5 w-5 text-pink-600" />
+                    <Users className="h-5 w-5 text-orange-600" />
                   ) : (
-                    <DollarSign className="h-5 w-5 text-yellow-600" />
+                    <DollarSign className="h-5 w-5 text-orange-600" />
                   )}
                 </div>
                 <div>
@@ -908,27 +862,9 @@ Los casos de Argentina y España evidencian que la igualdad progresa cuando conv
             </div>
             
             <div className="p-6">
-              <div className={`mb-6 p-4 ${
-                selectedVocabularyModule === 4 ? 'bg-blue-50 border-blue-200' :
-                selectedVocabularyModule === 5 ? 'bg-red-50 border-red-200' : 
-                selectedVocabularyModule === 6 ? 'bg-orange-50 border-orange-200' :
-                selectedVocabularyModule === 7 ? 'bg-green-50 border-green-200' :
-                selectedVocabularyModule === 11 ? 'bg-pink-50 border-pink-200' : 'bg-yellow-50 border-yellow-200'
-              } border rounded-lg`}>
-                <h3 className={`font-semibold ${
-                  selectedVocabularyModule === 4 ? 'text-blue-800' :
-                  selectedVocabularyModule === 5 ? 'text-red-800' : 
-                  selectedVocabularyModule === 6 ? 'text-orange-800' :
-                  selectedVocabularyModule === 7 ? 'text-green-800' :
-                  selectedVocabularyModule === 11 ? 'text-pink-800' : 'text-yellow-800'
-                } mb-2`}>📚 Contenu spécialisé</h3>
-                <p className={`text-sm ${
-                  selectedVocabularyModule === 4 ? 'text-blue-700' :
-                  selectedVocabularyModule === 5 ? 'text-red-700' : 
-                  selectedVocabularyModule === 6 ? 'text-orange-700' :
-                  selectedVocabularyModule === 7 ? 'text-green-700' :
-                  selectedVocabularyModule === 11 ? 'text-pink-700' : 'text-yellow-700'
-                }`}>
+              <div className="mb-6 p-4 bg-orange-50 border-orange-200 border rounded-lg">
+                <h3 className="font-semibold text-orange-800 mb-2">📚 Contenu spécialisé</h3>
+                <p className="text-sm text-orange-700">
                   {selectedVocabularyModule === 4 
                     ? 'Ce vocabulaire de 47 termes couvre 6 thématiques migratoires : conceptos e indicadores, categorías de personas, procesos y trámites, fronteras y rutas, políticas migratorias, et expressions clés. Terminologie officielle OIM/ACNUR.'
                     : selectedVocabularyModule === 5 
@@ -1004,13 +940,7 @@ Los casos de Argentina y España evidencian que la igualdad progresa cuando conv
             <div className="sticky bottom-0 bg-gray-50 border-t p-4 flex justify-end">
               <Button 
                 onClick={closeVocabularyResources} 
-                className={`${
-                  selectedVocabularyModule === 4 ? 'bg-blue-600 hover:bg-blue-700' :
-                  selectedVocabularyModule === 5 ? 'bg-red-600 hover:bg-red-700' : 
-                  selectedVocabularyModule === 6 ? 'bg-orange-600 hover:bg-orange-700' :
-                  selectedVocabularyModule === 7 ? 'bg-green-600 hover:bg-green-700' :
-                  selectedVocabularyModule === 11 ? 'bg-pink-600 hover:bg-pink-700' : 'bg-yellow-600 hover:bg-yellow-700'
-                } text-white`}
+                className="bg-orange-600 hover:bg-orange-700 text-white"
               >
                 Fermer
               </Button>
