@@ -161,9 +161,17 @@ const PolitikAllemandePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFF]">
+    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
+      {/* Floating elements - Orange and blue bubbles */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
+
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -180,16 +188,16 @@ const PolitikAllemandePage = () => {
         </div>
       </nav>
 
-      <div className="container mx-auto py-8 px-4">
+      <div className="container mx-auto py-8 px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <Card className="border-2 border-blue-500/30 mb-8">
-            <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50">
+          <Card className="border-2 border-orange-500/30 mb-8">
+            <CardHeader className="bg-gradient-to-r from-orange-50 to-blue-50">
               <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-blue-500 text-white">
+                <div className="p-2 rounded-lg bg-gradient-to-r from-orange-500 to-blue-500 text-white">
                   <Flag className="h-5 w-5" />
                 </div>
-                <Badge className="bg-blue-500">Civilisation</Badge>
+                <Badge className="bg-gradient-to-r from-orange-500 to-blue-500 text-white">Civilisation</Badge>
                 <span className="text-sm text-muted-foreground">Updated 2025</span>
               </div>
               <CardTitle className="text-3xl">Politik in Deutschland</CardTitle>

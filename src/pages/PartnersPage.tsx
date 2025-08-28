@@ -42,7 +42,7 @@ const partners = [
 
 export default function PartnersPage() {
   return (
-    <div className="py-12 bg-background min-h-screen">
+    <div className="py-8 bg-background min-h-screen">
       <div className="container mx-auto px-4">
         <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-primary text-center">Nos partenaires</h1>
         <p className="text-center text-muted-foreground mb-10">

@@ -97,7 +97,7 @@ const StageAccompagnementPage = () => {
       {/* Section 2 supprimée (vidéo) */}
 
       {/* Section 3 - Ce que disent nos étudiants */}
-      <section className="py-16 px-4 bg-[#F0F8FF]">
+      <section className="py-8 px-4 bg-[#F0F8FF]">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
             Ce que disent nos étudiants
@@ -156,7 +156,7 @@ const StageAccompagnementPage = () => {
       </section>
 
       {/* Section 4 - Tarif */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-8 px-4 bg-white">
         <div className="max-w-3xl mx-auto text-center">
           <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Tarif</h2>

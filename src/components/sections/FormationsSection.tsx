@@ -7,7 +7,7 @@ import { Code, Languages, Globe, Users, BookOpen, TrendingUp, CheckCircle, Calcu
 
 export const FormationsSection = () => {
   return (
-    <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white">
+    <section className="py-12 sm:py-8 px-4 sm:px-6 bg-white">
       <div className="container mx-auto">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4">
           Nos <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">formations spécialisées</span>

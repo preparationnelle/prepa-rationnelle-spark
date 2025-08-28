@@ -91,18 +91,14 @@ const DemographieAllemandePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white relative overflow-hidden">
-      {/* Floating bubbles */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-20 animate-pulse"></div>
-      <div className="absolute top-40 right-20 w-24 h-24 bg-amber-200 rounded-full opacity-30 animate-pulse"></div>
-      <div className="absolute top-80 left-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-25 animate-pulse"></div>
-      <div className="absolute bottom-40 right-10 w-36 h-36 bg-amber-100 rounded-full opacity-20 animate-pulse"></div>
-      <div className="absolute bottom-20 left-20 w-28 h-28 bg-blue-50 rounded-full opacity-30 animate-pulse"></div>
-      <div className="absolute top-1/3 right-1/3 w-20 h-20 bg-amber-50 rounded-full opacity-25 animate-pulse"></div>
-      <div className="absolute top-2/3 left-1/3 w-44 h-44 bg-blue-300 rounded-full opacity-15 animate-pulse"></div>
-      <div className="absolute bottom-1/3 right-1/4 w-32 h-32 bg-amber-300 rounded-full opacity-20 animate-pulse"></div>
-      <div className="absolute top-10 left-1/2 w-16 h-16 bg-blue-400 rounded-full opacity-25 animate-pulse"></div>
-      <div className="absolute bottom-10 left-2/3 w-20 h-20 bg-amber-400 rounded-full opacity-20 animate-pulse"></div>
+    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
+      {/* Floating elements - Orange and blue bubbles */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
       <div className="container mx-auto px-4 py-8 max-w-6xl relative z-10">
         {/* Header */}
         <div className="mb-8">
@@ -126,9 +122,9 @@ const DemographieAllemandePage: React.FC = () => {
         </div>
 
         {/* Statistiques clés */}
-        <Card className="mb-8 bg-gradient-to-r from-blue-50 to-orange-50 border border-blue-200 shadow-lg">
+        <Card className="mb-8 bg-gradient-to-r from-orange-500 to-blue-500 text-white shadow-lg">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-center text-gray-900">
+            <CardTitle className="text-2xl font-bold text-center">
               Wichtige demografische Kennzahlen (2025)
             </CardTitle>
           </CardHeader>
@@ -136,15 +132,15 @@ const DemographieAllemandePage: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
               <div>
                 <div className="text-3xl font-bold">46</div>
-                <div className="text-gray-600">Durchschnittsalter (Jahre)</div>
+                <div className="text-orange-100">Durchschnittsalter (Jahre)</div>
               </div>
               <div>
                 <div className="text-3xl font-bold">1,4</div>
-                <div className="text-gray-600">Geburtenrate (Kinder pro Frau)</div>
+                <div className="text-orange-100">Geburtenrate (Kinder pro Frau)</div>
               </div>
               <div>
                 <div className="text-3xl font-bold">28%</div>
-                <div className="text-gray-600">Migrationshintergrund</div>
+                <div className="text-orange-100">Migrationshintergrund</div>
               </div>
             </div>
           </CardContent>
@@ -157,7 +153,7 @@ const DemographieAllemandePage: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-orange-50/20 to-blue-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardHeader className="relative z-10">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-blue-100 rounded-lg text-blue-600">
+                  <div className="p-2 bg-orange-100 rounded-lg text-orange-600">
                     {topic.icon}
                   </div>
                   <CardTitle className="text-xl text-gray-900 relative z-10">

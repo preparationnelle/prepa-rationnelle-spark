@@ -96,18 +96,14 @@ const CultureIdentiteAllemandePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white relative overflow-hidden">
-      {/* Floating bubbles */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-20 animate-pulse"></div>
-      <div className="absolute top-40 right-20 w-24 h-24 bg-amber-200 rounded-full opacity-30 animate-pulse"></div>
-      <div className="absolute top-80 left-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-25 animate-pulse"></div>
-      <div className="absolute bottom-40 right-10 w-36 h-36 bg-amber-100 rounded-full opacity-20 animate-pulse"></div>
-      <div className="absolute bottom-20 left-20 w-28 h-28 bg-blue-50 rounded-full opacity-30 animate-pulse"></div>
-      <div className="absolute top-1/3 right-1/3 w-20 h-20 bg-amber-50 rounded-full opacity-25 animate-pulse"></div>
-      <div className="absolute top-2/3 left-1/3 w-44 h-44 bg-blue-300 rounded-full opacity-15 animate-pulse"></div>
-      <div className="absolute bottom-1/3 right-1/4 w-32 h-32 bg-amber-300 rounded-full opacity-20 animate-pulse"></div>
-      <div className="absolute top-10 left-1/2 w-16 h-16 bg-blue-400 rounded-full opacity-25 animate-pulse"></div>
-      <div className="absolute bottom-10 left-2/3 w-20 h-20 bg-amber-400 rounded-full opacity-20 animate-pulse"></div>
+    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
+      {/* Floating elements - Orange and blue bubbles */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
       <div className="container mx-auto px-4 py-8 max-w-6xl relative z-10">
         {/* Header */}
         <div className="mb-8">
@@ -131,7 +127,7 @@ const CultureIdentiteAllemandePage: React.FC = () => {
         </div>
 
         {/* Statistiques clés */}
-        <Card className="mb-8 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
+        <Card className="mb-8 bg-gradient-to-r from-orange-500 to-blue-500 text-white">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center">
               Wichtige Kulturkennzahlen (2023-2025)
@@ -141,19 +137,19 @@ const CultureIdentiteAllemandePage: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
               <div>
                 <div className="text-3xl font-bold">28%</div>
-                <div className="text-emerald-100">Migrationshintergrund</div>
+                <div className="text-orange-100">Migrationshintergrund</div>
               </div>
               <div>
                 <div className="text-3xl font-bold">500.000</div>
-                <div className="text-emerald-100">Kirchenaustritte 2023</div>
+                <div className="text-orange-100">Kirchenaustritte 2023</div>
               </div>
               <div>
                 <div className="text-3xl font-bold">5 Mio.</div>
-                <div className="text-emerald-100">Muslime in Deutschland</div>
+                <div className="text-orange-100">Muslime in Deutschland</div>
               </div>
               <div>
                 <div className="text-3xl font-bold">2025</div>
-                <div className="text-emerald-100">AfD-Aufstieg</div>
+                <div className="text-orange-100">AfD-Aufstieg</div>
               </div>
             </div>
           </CardContent>
@@ -165,7 +161,7 @@ const CultureIdentiteAllemandePage: React.FC = () => {
             <Card key={topic.id} className="shadow-lg hover:shadow-xl transition-shadow">
               <CardHeader>
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-emerald-100 rounded-lg text-emerald-600">
+                  <div className="p-2 bg-orange-100 rounded-lg text-orange-600">
                     {topic.icon}
                   </div>
                   <CardTitle className="text-xl text-gray-900">
@@ -187,9 +183,9 @@ const CultureIdentiteAllemandePage: React.FC = () => {
                         <p className="text-gray-700">{topic.content.description}</p>
                       </div>
                       
-                      <div className="bg-emerald-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-emerald-800 mb-2">Détails:</h4>
-                        <p className="text-emerald-700">{topic.content.details}</p>
+                      <div className="bg-orange-50 p-4 rounded-lg">
+                        <h4 className="font-semibold text-orange-800 mb-2">Détails:</h4>
+                        <p className="text-orange-700">{topic.content.details}</p>
                       </div>
 
                       <div className="bg-blue-50 p-4 rounded-lg">
@@ -197,8 +193,8 @@ const CultureIdentiteAllemandePage: React.FC = () => {
                         <p className="text-blue-700">{topic.content.essayUsage}</p>
                       </div>
 
-                      <div className="bg-teal-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-teal-800 mb-2">Wichtige Vokabeln:</h4>
+                      <div className="bg-orange-50 p-4 rounded-lg">
+                        <h4 className="font-semibold text-orange-800 mb-2">Wichtige Vokabeln:</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                           {topic.content.vocabulary.map((vocab, vocabIndex) => (
                             <div key={vocabIndex} className="flex justify-between items-center p-2 bg-white rounded border">

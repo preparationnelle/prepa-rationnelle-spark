@@ -1,224 +1,192 @@
 import React from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { Languages, BookOpen, FileText, List, Play, FlipHorizontal, Home, ChevronRight } from 'lucide-react';
+import { BookOpen, Home, ChevronRight } from 'lucide-react';
 
 const FormationAllemandGrammairePage = () => {
-  const grammarModules = [
-    {
-      id: 1,
-      title: "Adjektivdeklination",
-      description: "Meistern Sie die drei Deklinationsarten (schwach, gemischt, stark) mit vollständigen Tabellen und praktischen Übungen.",
-      topics: [
-        "Schwache Deklination (der/die/das + Adj.)",
-        "Gemischte Deklination (ein/kein + Adj.)",
-        "Starke Deklination (Adj. allein)",
-        "Regeln und Merkhilfen"
-      ],
-      link: "/formation/allemand-declinaisons",
-      icon: FileText,
-      color: "bg-blue-500"
-    },
-    {
-      id: 2,
-      title: "Der Relativsatz",
-      description: "Relativpronomen, Bezugswörter, Konstruktion der Relativsätze und Umwandlung in Partizipialsätze.",
-      topics: [
-        "Tabelle der Relativpronomen",
-        "Wahl des richtigen Pronomens (Genus und Kasus)",
-        "Übersetzung von 'dont' ins Deutsche",
-        "Partizipialsätze"
-      ],
-      link: "/formation/allemand-relatives",
-      icon: FileText,
-      color: "bg-green-500"
-    },
-    {
-      id: 3,
-      title: "Das Passiv im Deutschen",
-      description: "Vorgangspassiv (werden), Zustandspassiv (sein), Passiv mit Modalverben und Behandlung des Agens.",
-      topics: [
-        "Vorgangspassiv (werden + Part. II)",
-        "Zustandspassiv (sein + Part. II)",
-        "Passiv mit Modalverben",
-        "Agens (von) vs. Mittel (durch)"
-      ],
-      link: "/formation/allemand-passif",
-      icon: FileText,
-      color: "bg-red-500"
-    },
-    {
-      id: 4,
-      title: "Satzstruktur",
-      description: "Wortstellung, Verbpositionen, Inversion und Konstruktion der Nebensätze.",
-      topics: [
-        "Die drei Verbpositionen",
-        "Satzklammer (Verbalklammer)",
-        "Reihenfolge der Ergänzungen (T-L-M)",
-        "Verneinung mit 'nicht'"
-      ],
-      link: "/formation/allemand-structure",
-      icon: FileText,
-      color: "bg-indigo-500"
-    },
-    {
-      id: 5,
-      title: "Wiederkehrende Grammatikpunkte",
-      description: "Vollständige Liste der wesentlichen Grammatikregeln, die für die Prüfungen zu beherrschen sind.",
-      topics: [
-        "26 wesentliche Grammatikpunkte",
-        "Nebensatzkonstruktionen",
-        "Deklinationen und Präpositionen",
-        "Häufige Fehler zu vermeiden"
-      ],
-      link: "/formation/allemand-recurrents",
-      icon: List,
-      color: "bg-amber-500"
-    },
-    {
-      id: 6,
-      title: "Unregelmäßige Verben",
-      description: "Wiederholen Sie mehr als 120 unregelmäßige deutsche Verben mit interaktiven Lernkarten.",
-      topics: [
-        "Mehr als 120 wesentliche Verben",
-        "Alle Konjugationsformen",
-        "Intuitive Navigation",
-        "Lern- und Suchmodus"
-      ],
-      link: "/formation/allemand-verbes",
-      icon: FlipHorizontal,
-      color: "bg-yellow-500",
-      badge: "Flashcards"
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-white relative overflow-hidden">
-      {/* Floating bubbles */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-20 animate-pulse"></div>
-      <div className="absolute top-40 right-20 w-24 h-24 bg-amber-200 rounded-full opacity-30 animate-pulse"></div>
-      <div className="absolute top-80 left-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-25 animate-pulse"></div>
-      <div className="absolute bottom-40 right-10 w-36 h-36 bg-amber-100 rounded-full opacity-20 animate-pulse"></div>
-      <div className="absolute bottom-20 left-20 w-28 h-28 bg-blue-50 rounded-full opacity-30 animate-pulse"></div>
-      <div className="absolute top-1/3 right-1/3 w-20 h-20 bg-amber-50 rounded-full opacity-25 animate-pulse"></div>
-      <div className="absolute top-2/3 left-1/3 w-44 h-44 bg-blue-300 rounded-full opacity-15 animate-pulse"></div>
-      <div className="absolute bottom-1/3 right-1/4 w-32 h-32 bg-amber-300 rounded-full opacity-20 animate-pulse"></div>
-      <div className="absolute top-10 left-1/2 w-16 h-16 bg-blue-400 rounded-full opacity-25 animate-pulse"></div>
-      <div className="absolute bottom-10 left-2/3 w-20 h-20 bg-amber-400 rounded-full opacity-20 animate-pulse"></div>
-      {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
+      {/* Floating elements - Blue and orange bubbles */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
+
+      {/* Sticky Breadcrumb */}
+      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
-              <Home className="h-3 w-3" />
+          <div className="flex items-center text-xs text-muted-foreground">
+            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              <div className="h-3 w-3">🏠</div>
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/allemand" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formations" className="hover:text-foreground transition-colors">
+              Toutes les formations
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formation/allemand" className="hover:text-foreground transition-colors">
               Formation Allemand
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <span className="text-gray-900 font-bold">Grammaire</span>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <span className="text-foreground">Grammaire</span>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 py-12 relative z-10">
-        <div className="text-center mb-10">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-red-600 text-white">
-              <BookOpen className="h-9 w-9" />
+      {/* Section Héro moderne */}
+      <section className="bg-gradient-to-br from-orange-50 via-white to-blue-50 py-8 px-4 sm:px-6 relative z-10">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <div className="flex justify-center mb-6">
+              <div className="p-4 rounded-2xl bg-gradient-to-br from-orange-500 to-blue-500 text-white shadow-lg">
+                <BookOpen className="h-12 w-12" />
+              </div>
             </div>
-            Deutsche Grammatik
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Beherrschen Sie alle wesentlichen Grammatikpunkte für den Erfolg bei Ihren ECG-Wettbewerben
-          </p>
-          <div className="flex justify-center gap-2 mt-4">
-            <Badge variant="secondary">6 fiches complètes</Badge>
-            <Badge variant="outline">Exercices inclus</Badge>
-            <Badge className="bg-red-600">Niveau Prépa</Badge>
-          </div>
-        </div>
-
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Vollständige Grammatikblätter</h2>
-          <div className="grid gap-6">
-            {grammarModules.map((module) => (
-              <Card key={module.id} className="group bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-gray-200 hover:border-amber-200 shadow-lg relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-50/20 to-blue-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <CardHeader className="relative z-10">
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className={`p-4 rounded-lg ${module.color} text-white shadow-lg`}>
-                        <module.icon className="h-7 w-7" />
-                      </div>
-                      <div>
-                        <CardTitle className="flex items-center gap-3 relative z-10">
-                          <span className="text-2xl font-bold text-gray-800">
-                            {module.title}
-                          </span>
-                          {module.badge && (
-                            <Badge className="bg-red-600 text-white">{module.badge}</Badge>
-                          )}
-                        </CardTitle>
-                        <p className="text-gray-600 mt-2 text-base relative z-10">{module.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="relative z-10">
-                  <div className="grid md:grid-cols-2 gap-4 mb-6">
-                    {module.topics.map((topic, index) => (
-                      <div key={index} className="flex items-center gap-2 p-3 bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-colors duration-200 rounded-lg">
-                        <div className="w-2 h-2 bg-amber-400 rounded-full flex-shrink-0"></div>
-                        <span className="text-sm font-medium text-gray-700">{topic}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <Link to={module.link}>
-                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 text-base">
-                      <Play className="mr-2 h-5 w-5" />
-                      Consulter la fiche complète
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        <Card className="bg-gradient-to-r from-blue-50 to-amber-50 border border-blue-200 shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-xl flex items-center gap-2 text-gray-900">
-              <Languages className="h-5 w-5" />
-              Tipps für die deutsche Grammatik
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="text-gray-700 space-y-4">
-            <p className="leading-relaxed">
-              Die deutsche Grammatik mag komplex erscheinen, aber ein methodisches Vorgehen ermöglicht es, sie effektiv zu beherrschen. 
-              Jedes Blatt präsentiert die Regeln klar mit konkreten Beispielen und Anwendungsübungen.
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-orange-600 via-blue-600 to-orange-600 bg-clip-text text-transparent font-bold">
+                Grammaire Allemande
+              </span>
+            </h1>
+            <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-5xl mx-auto whitespace-nowrap">
+              Maîtrisez tous les points de grammaire essentiels de l'allemand
             </p>
-            <div className="grid md:grid-cols-3 gap-4">
-              <div className="p-4 border border-gray-200 rounded-lg bg-white shadow-sm hover:border-blue-200 transition-colors duration-200">
-                <h3 className="font-semibold text-gray-900 mb-2">1. Deklinationen</h3>
-                <p className="text-sm text-gray-600">Grundlage: Beherrschen Sie zuerst die 3 Deklinationsarten.</p>
-              </div>
-              <div className="p-4 border border-gray-200 rounded-lg bg-white shadow-sm hover:border-blue-200 transition-colors duration-200">
-                <h3 className="font-semibold text-gray-900 mb-2">2. Struktur</h3>
-                <p className="text-sm text-gray-600">Verstehen Sie die Wortstellung und die Verbpositionen.</p>
-              </div>
-              <div className="p-4 border border-gray-200 rounded-lg bg-white shadow-sm hover:border-blue-200 transition-colors duration-200">
-                <h3 className="font-semibold text-gray-900 mb-2">3. Praxis</h3>
-                <p className="text-sm text-gray-600">Wiederholen Sie regelmäßig die unregelmäßigen Verben mit den Lernkarten.</p>
-              </div>
+            <div className="flex flex-wrap justify-center gap-3 mb-8">
+              <span className="px-4 py-2 text-sm font-medium bg-orange-100 text-orange-700 rounded-full">6 fiches complètes</span>
+              <span className="px-4 py-2 text-sm font-medium bg-blue-100 text-blue-700 rounded-full">Exercices pratiques</span>
+              <span className="px-4 py-2 text-sm font-medium bg-orange-100 text-orange-700 rounded-full">Toutes conjugaisons</span>
             </div>
-          </CardContent>
-        </Card>
-      </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section Contenu */}
+      <section className="py-8 px-4 sm:px-6 bg-gray-50 relative z-10">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-6">Points de Grammaire Allemande</h2>
+            <p className="text-lg text-gray-600 mb-8">
+              Maîtrisez les règles essentielles de la grammaire allemande pour les concours
+            </p>
+          </div>
+
+          {/* Modules principaux */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {/* Déclinaisons */}
+            <Link
+              to="/formation/allemand-declinaisons"
+              className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
+            >
+              <div className="flex flex-col items-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-blue-200 transition-all duration-300">
+                  <span className="text-2xl">📝</span>
+                </div>
+                <h3 className="font-bold text-xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Déclinaisons</h3>
+                <p className="text-sm text-orange-700 mb-6 text-center leading-relaxed">Les déclinaisons de l'adjectif et leurs cas en allemand</p>
+              </div>
+              <Button className="w-full bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white font-medium transition-all duration-300">
+                Étudier les déclinaisons
+              </Button>
+            </Link>
+
+            {/* Proposition Relative */}
+            <Link
+              to="/formation/allemand-relatives"
+              className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
+            >
+              <div className="flex flex-col items-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-blue-200 transition-all duration-300">
+                  <span className="text-2xl">🔗</span>
+                </div>
+                <h3 className="font-bold text-xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Proposition Relative</h3>
+                <p className="text-sm text-orange-700 mb-6 text-center leading-relaxed">Formation et utilisation des propositions relatives</p>
+              </div>
+              <Button className="w-full bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white font-medium transition-all duration-300">
+                Étudier les relatives
+              </Button>
+            </Link>
+
+            {/* Le Passif */}
+            <Link
+              to="/formation/allemand-passif"
+              className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
+            >
+              <div className="flex flex-col items-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-blue-200 transition-all duration-300">
+                  <span className="text-2xl">⚖️</span>
+                </div>
+                <h3 className="font-bold text-xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Le Passif</h3>
+                <p className="text-sm text-orange-700 mb-6 text-center leading-relaxed">Formation et utilisation du passif en allemand</p>
+              </div>
+              <Button className="w-full bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white font-medium transition-all duration-300">
+                Étudier le passif
+              </Button>
+            </Link>
+
+            {/* Structure de la Phrase */}
+            <Link
+              to="/formation/allemand-structure"
+              className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
+            >
+              <div className="flex flex-col items-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-blue-200 transition-all duration-300">
+                  <span className="text-2xl">📋</span>
+                </div>
+                <h3 className="font-bold text-xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Structure de la Phrase</h3>
+                <p className="text-sm text-orange-700 mb-6 text-center leading-relaxed">Ordre des mots et structure des phrases allemandes</p>
+              </div>
+              <Button className="w-full bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white font-medium transition-all duration-300">
+                Étudier la structure
+              </Button>
+            </Link>
+
+            {/* Points Récurrents */}
+            <Link
+              to="/formation/allemand-recurrents"
+              className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
+            >
+              <div className="flex flex-col items-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-blue-200 transition-all duration-300">
+                  <span className="text-2xl">🔄</span>
+                </div>
+                <h3 className="font-bold text-xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Points Récurrents</h3>
+                <p className="text-sm text-orange-700 mb-6 text-center leading-relaxed">Les règles de grammaire les plus fréquemment testées</p>
+              </div>
+              <Button className="w-full bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white font-medium transition-all duration-300">
+                Voir les points récurrents
+              </Button>
+            </Link>
+
+            {/* Verbes Irréguliers */}
+            <Link
+              to="/formation/allemand-verbes"
+              className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
+            >
+              <div className="flex flex-col items-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-blue-200 transition-all duration-300">
+                  <span className="text-2xl">⚡</span>
+                </div>
+                <h3 className="font-bold text-xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Verbes Irréguliers</h3>
+                <p className="text-sm text-orange-700 mb-6 text-center leading-relaxed">Liste complète des verbes irréguliers allemands</p>
+              </div>
+              <Button className="w-full bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white font-medium transition-all duration-300">
+                Étudier les verbes
+              </Button>
+            </Link>
+          </div>
+
+          <div className="text-center">
+            <Link
+              to="/formation/allemand"
+              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white font-medium rounded-lg transition-all duration-300"
+            >
+              Retour à la formation Allemand
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

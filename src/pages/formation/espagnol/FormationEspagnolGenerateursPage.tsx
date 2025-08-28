@@ -91,7 +91,7 @@ const FormationEspagnolGenerateursPage = () => {
         </div>
 
         {/* Section Générateurs IA */}
-        <section className="py-16 px-4 sm:px-6 relative z-10">
+        <section className="py-8 px-4 sm:px-6 relative z-10">
           <div className="container mx-auto max-w-6xl">
             <div className="grid gap-6 max-w-4xl mx-auto">
               {generatorTools.map((tool) => (

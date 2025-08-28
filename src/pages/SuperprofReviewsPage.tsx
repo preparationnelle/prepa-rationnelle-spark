@@ -105,7 +105,7 @@ const SuperprofReviewsPage = () => {
         </div>
       </nav>
 
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-12 px-4">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-8 px-4">
         <div className="container mx-auto max-w-6xl">
           {/* En-tête */}
           <div className="text-center mb-12">

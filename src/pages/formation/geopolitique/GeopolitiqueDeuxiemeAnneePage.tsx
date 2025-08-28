@@ -124,7 +124,7 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold text-center mb-8">Géopolitique - Deuxième Année</h1>
         <p className="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
           Explorez les modules 3 et 4 du programme officiel ECG : géodynamiques régionales 

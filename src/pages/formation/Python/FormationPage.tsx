@@ -38,7 +38,7 @@ const FormationPage = () => {
     link: "/formation/python-matrices",
     exerciseLink: "/formation/python-matrices-exercices",
     icon: Calculator,
-    color: "bg-green-500",
+    color: "bg-blue-500",
     available: true
   }, {
     id: 2,
@@ -48,7 +48,7 @@ const FormationPage = () => {
     link: "/formation/python-analyse",
     exerciseLink: "/formation/python-analyse-exercices",
     icon: TrendingUp,
-    color: "bg-blue-500",
+    color: "bg-orange-500",
     available: true
   }, {
     id: 3,
@@ -58,7 +58,7 @@ const FormationPage = () => {
     link: "/formation/python-probabilites",
     exerciseLink: "/formation/python-probabilites-exercices",
     icon: BarChart3,
-    color: "bg-purple-500",
+    color: "bg-blue-500",
     available: true
   }];
   return <div className="min-h-screen bg-[#F8FAFF]">
@@ -175,7 +175,7 @@ const FormationPage = () => {
                       <div>
                         <CardTitle className="flex items-center gap-2">
                           Module {module.id}
-                          <Badge className="bg-green-600 text-white">Disponible</Badge>
+                          <Badge className="bg-blue-600 text-white">Disponible</Badge>
                         </CardTitle>
                         <h3 className="text-xl font-semibold text-gray-800 mt-1">
                           {module.title}

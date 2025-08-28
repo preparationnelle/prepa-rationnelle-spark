@@ -5,7 +5,7 @@ import { ArrowLeft, Target } from 'lucide-react';
 const MethodologieAnglaisPage = () => {
   return (
     <div className="min-h-screen bg-white">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-10">
           <div className="flex justify-center mb-4">
             <Link to="/formation/anglais" className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg border hover:bg-gray-50">

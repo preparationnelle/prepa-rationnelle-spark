@@ -1,23 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { 
-  Code, 
-  Languages, 
-  Zap, 
-  BookOpen, 
-  Globe, 
-  Users, 
-  Calculator,
-  Sparkles,
-  ArrowRight,
-  MessageSquare,
-  User,
-  ExternalLink,
-  TrendingUp,
+import {
+  Languages,
+  Zap,
+  BookOpen,
+  Globe,
   Heart,
   Mic
 } from 'lucide-react';
@@ -36,20 +24,29 @@ const GeneratorPage: React.FC = () => {
       title: 'Générateur de Flashcards',
       description: 'Créez des flashcards personnalisées pour réviser efficacement',
       icon: <BookOpen className="h-8 w-8" />,
-      color: 'bg-blue-500',
-      badge: 'Populaire',
-      badgeColor: 'bg-black text-white',
+      iconBg: 'bg-blue-100',
+      iconColor: 'text-blue-600',
+      hoverBorder: 'hover:border-blue-200',
+      features: [
+        'Flashcards personnalisées',
+        'Révision intelligente',
+        'Suivi des progrès'
+      ],
       link: '/generator/flashcards'
     },
-
     {
       id: 'languages-unified',
       title: 'Générateur Langues',
       description: 'Générez des paragraphes ou corrigez vos thèmes avec IA',
       icon: <Languages className="h-8 w-8" />,
-      color: 'bg-purple-500',
-      badge: 'Nouveau',
-      badgeColor: 'bg-orange-500 text-white',
+      iconBg: 'bg-green-100',
+      iconColor: 'text-green-600',
+      hoverBorder: 'hover:border-green-200',
+      features: [
+        'Correction automatique',
+        'Génération de paragraphes',
+        'Thèmes corrigés'
+      ],
       link: '/generator/languages-unified'
     },
     {
@@ -57,9 +54,14 @@ const GeneratorPage: React.FC = () => {
       title: 'Générateur Géopo',
       description: 'Générez des études ou des fiches de géopolitique automatiquement',
       icon: <Globe className="h-8 w-8" />,
-      color: 'bg-orange-500',
-      badge: 'Nouveau',
-      badgeColor: 'bg-orange-500 text-white',
+      iconBg: 'bg-orange-100',
+      iconColor: 'text-orange-600',
+      hoverBorder: 'hover:border-orange-200',
+      features: [
+        'Études géopolitiques',
+        'Fiches automatiques',
+        'Analyse stratégique'
+      ],
       link: '/generator/geopolitics-unified'
     },
     {
@@ -67,9 +69,14 @@ const GeneratorPage: React.FC = () => {
       title: 'Générateur Oraux',
       description: 'Générez vos réponses orales ou entraînez-vous avec des questions types',
       icon: <Mic className="h-8 w-8" />,
-      color: 'bg-purple-500',
-      badge: 'IA',
-      badgeColor: 'bg-black text-white',
+      iconBg: 'bg-purple-100',
+      iconColor: 'text-purple-600',
+      hoverBorder: 'hover:border-purple-200',
+      features: [
+        'Questions types concours',
+        'Réponses générées',
+        'Entraînement oral'
+      ],
       link: '/generator/orals-unified'
     },
     {
@@ -77,9 +84,14 @@ const GeneratorPage: React.FC = () => {
       title: 'Chat-bot prépa',
       description: 'Conseils méthode, motivation & bien-être pour ta prépa',
       icon: <Heart className="h-8 w-8" />,
-      color: 'bg-pink-500',
-      badge: 'IA Coach',
-      badgeColor: 'bg-orange-500 text-white',
+      iconBg: 'bg-pink-100',
+      iconColor: 'text-pink-600',
+      hoverBorder: 'hover:border-pink-200',
+      features: [
+        'Conseils méthodologiques',
+        'Motivation quotidienne',
+        'Bien-être prépa'
+      ],
       link: '/generator/prepa-chatbot'
     },
   ];
@@ -103,67 +115,46 @@ const GeneratorPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 sm:px-6 py-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="flex justify-center items-center gap-2 mb-4">
-            <Zap className="h-8 w-8 text-[#F36C00]" />
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
-              Générateurs <span className="text-[#F36C00]">IA</span>
-            </h1>
-          </div>
-          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-            Découvrez nos outils d'intelligence artificielle spécialisés qui automatisent votre préparation 
-            et vous font gagner des heures de travail.
+    <div className="min-h-screen bg-white">
+      {/* Section Générateurs IA */}
+      <section className="pb-16 px-4 sm:px-6 bg-gray-50">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6">
+            <span className="text-orange-600 font-bold">Générateurs IA</span>
+          </h2>
+          <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto text-base sm:text-lg">
+            Découvrez nos outils IA pour gagner du temps en prépa
           </p>
-        </div>
 
-        {/* Main Generators Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto mb-16">
-          {mainGenerators.map((generator) => (
-            <Card 
-              key={generator.id} 
-              className="group hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-gray-200 bg-white cursor-pointer"
-              onClick={() => handleGeneratorClick(generator)}
-            >
-              <CardHeader className="pb-4 relative">
-                <div className="flex items-start justify-between mb-3">
-                  <div className={`w-16 h-16 ${generator.color} rounded-full flex items-center justify-center text-white`}>
-                    {generator.icon}
+          <div className="w-full max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {mainGenerators.map((generator) => (
+                <Link
+                  key={generator.id}
+                  to={generator.link}
+                  className={`bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent ${generator.hoverBorder} flex flex-col items-center text-center group`}
+                >
+                  <div className={`w-16 h-16 ${generator.iconBg} rounded-full flex items-center justify-center mb-4 group-hover:bg-opacity-80 transition-colors`}>
+                    <div className={generator.iconColor}>
+                      {generator.icon}
+                    </div>
                   </div>
-                  <Badge className={`text-xs ${generator.badgeColor} px-2 py-1 rounded`}>
-                    {generator.badge}
-                  </Badge>
-                </div>
-                <CardTitle className="text-xl group-hover:text-[#F36C00] transition-colors">
-                  {generator.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                  {generator.description}
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-[#F36C00] font-medium group-hover:underline">
-                    Essayer maintenant
-                  </span>
-                  <ArrowRight className="h-4 w-4 text-[#F36C00] group-hover:translate-x-1 transition-transform" />
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                  <h3 className="font-semibold text-xl mb-2">{generator.title}</h3>
+                  <p className="text-sm text-gray-600 mb-3">{generator.description}</p>
+                  <div className="space-y-1 text-xs text-left w-full">
+                    {generator.features.map((feature, index) => (
+                      <div key={index} className={`flex items-center ${generator.iconColor}`}>
+                        <span className="mr-2">✓</span>
+                        <span>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
-
-
-
-
-
-        {/* Footer CTA */}
-        <div className="text-center">
-          <p className="text-gray-600 mb-8">Cliquez sur une automatisation pour commencer !</p>
-        </div>
-      </div>
+      </section>
     </div>
   );
 };

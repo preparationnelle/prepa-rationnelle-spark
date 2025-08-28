@@ -69,8 +69,8 @@ const PythonAnalysePage = () => {
                       <div className="ml-4">S += k**2 # pour ∑k^2</div>
                       <div>print(S)</div>
                     </div>
-                    <div className="p-3 bg-green-50 border border-green-200 rounded">
-                      <p className="text-green-700">
+                    <div className="p-3 bg-blue-50 border border-blue-200 rounded">
+                      <p className="text-blue-600">
                         ✔️ Méthode simple et lisible. Fonctionne dans tous les cas, même avec des doubles sommes.
                       </p>
                     </div>
@@ -88,8 +88,8 @@ const PythonAnalysePage = () => {
                       <div>S = np.sum(L)</div>
                       <div>print(S)</div>
                     </div>
-                    <div className="p-3 bg-green-50 border border-green-200 rounded">
-                      <p className="text-green-700">
+                    <div className="p-3 bg-blue-50 border border-blue-200 rounded">
+                      <p className="text-blue-600">
                         ✔️ Permet de manipuler la liste des termes si besoin (affichage, tracé).
                       </p>
                     </div>
@@ -109,8 +109,8 @@ const PythonAnalysePage = () => {
                       <div>S = np.sum(k**2)</div>
                       <div>print(S)</div>
                     </div>
-                    <div className="p-3 bg-green-50 border border-green-200 rounded">
-                      <p className="text-green-700">
+                    <div className="p-3 bg-blue-50 border border-blue-200 rounded">
+                      <p className="text-blue-600">
                         ✔️ Très rapide pour de grandes tailles. ⚠️ Moins intuitif pour débutants.
                       </p>
                     </div>
@@ -236,13 +236,13 @@ const PythonAnalysePage = () => {
                       <div className="ml-4">P *= k</div>
                       <div>print(P)</div>
                     </div>
-                    <div className="p-3 bg-green-50 border border-green-200 rounded">
-                      <p className="text-green-700">
+                    <div className="p-3 bg-blue-50 border border-blue-200 rounded">
+                      <p className="text-blue-600">
                         ✔️ Lisible, robuste. Adaptée à toutes les situations.
                       </p>
                     </div>
-                    <div className="p-3 bg-red-50 border border-red-200 rounded">
-                      <p className="text-red-700">
+                    <div className="p-3 bg-orange-50 border border-orange-200 rounded">
+                      <p className="text-orange-600">
                         ⚠️ Ne jamais initialiser à 0 : le produit serait annulé.
                       </p>
                     </div>
@@ -283,13 +283,13 @@ const PythonAnalysePage = () => {
                       <div>P = np.prod(k)</div>
                       <div>print(P)</div>
                     </div>
-                    <div className="p-3 bg-green-50 border border-green-200 rounded">
-                      <p className="text-green-700">
+                    <div className="p-3 bg-blue-50 border border-blue-200 rounded">
+                      <p className="text-blue-600">
                         ✔️ Plus rapide pour de grands n, mais moins souple pour des produits complexes.
                       </p>
                     </div>
-                    <div className="p-3 bg-yellow-50 border border-yellow-200 rounded">
-                      <p className="text-yellow-700">
+                    <div className="p-3 bg-orange-50 border border-orange-200 rounded">
+                      <p className="text-orange-600">
                         ⚠️ À utiliser uniquement si les termes sont tous connus à l'avance.
                       </p>
                     </div>
@@ -795,18 +795,18 @@ const PythonAnalysePage = () => {
                 <AccordionTrigger className="text-gray-600">Bonnes pratiques</AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-3">
-                    <div className="p-3 bg-green-50 border border-green-200 rounded">
-                      <p className="text-green-700 font-semibold">✔️ À faire :</p>
-                      <ul className="text-green-700 text-sm mt-2 space-y-1">
+                    <div className="p-3 bg-blue-50 border border-blue-200 rounded">
+                      <p className="text-blue-600 font-semibold">✔️ À faire :</p>
+                      <ul className="text-blue-600 text-sm mt-2 space-y-1">
                         <li>• Noms de fonctions explicites</li>
                         <li>• Docstring claire et concise</li>
                         <li>• Indentation cohérente (4 espaces)</li>
                         <li>• Toujours un return</li>
                       </ul>
                     </div>
-                    <div className="p-3 bg-red-50 border border-red-200 rounded">
-                      <p className="text-red-700 font-semibold">❌ À éviter :</p>
-                      <ul className="text-red-700 text-sm mt-2 space-y-1">
+                    <div className="p-3 bg-orange-50 border border-orange-200 rounded">
+                      <p className="text-orange-600 font-semibold">❌ À éviter :</p>
+                      <ul className="text-orange-600 text-sm mt-2 space-y-1">
                         <li>• Fonctions sans docstring</li>
                         <li>• Oublier le return</li>
                         <li>• Indentation incorrecte</li>
@@ -844,8 +844,8 @@ const PythonAnalysePage = () => {
                       <li>• <strong>le théorème des valeurs intermédiaires :</strong> si f(a)·f(b) {'<'} 0, alors f s'annule entre a et b.</li>
                       <li>• <strong>une recherche par découpage successif :</strong> on remplace [a,b] par la moitié où le signe change.</li>
                     </ul>
-                    <div className="p-3 bg-red-50 border border-red-200 rounded">
-                      <p className="text-red-700 font-semibold">
+                    <div className="p-3 bg-orange-50 border border-orange-200 rounded">
+                      <p className="text-orange-600 font-semibold">
                         Condition obligatoire : f(a)·f(b) {'<'} 0 (changement de signe)
                       </p>
                     </div>

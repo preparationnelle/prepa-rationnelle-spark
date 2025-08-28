@@ -25,7 +25,7 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-[95vh] w-full flex flex-col justify-center items-center py-16 sm:py-24 px-4 sm:px-6 relative overflow-hidden">
+    <section className="min-h-[95vh] w-full flex flex-col justify-center items-center py-8 sm:py-24 px-4 sm:px-6 relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-white"></div>
       
@@ -41,40 +41,46 @@ export const HeroSection = () => {
       <div className="absolute top-1/2 left-10 w-24 h-24 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
       <div className="absolute bottom-1/3 right-5 w-36 h-36 bg-blue-50 rounded-full opacity-5 animate-pulse"></div>
       
-      <div className="w-full max-w-[1200px] flex flex-col items-center relative z-10">
+      <div className="w-full max-w-[1200px] flex flex-col items-center justify-center relative z-10 px-4 sm:px-6">
         {/* Main Heading with improved typography */}
         <h1 className="text-[1.2rem] sm:text-[1.5rem] md:text-[1.8rem] lg:text-[2rem] xl:text-[2.2rem] font-bold text-center mb-6 sm:mb-8 leading-[1.1] w-full max-w-[1000px] px-4">
           Ta méthode pour intégrer le <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent uppercase">TOP 3</span> en prépa <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent uppercase">ECG</span>
         </h1>
 
         {/* Enhanced Triptyque with icons - Uniform sizing */}
-        <div className="flex flex-col md:flex-row justify-center items-center gap-8 sm:gap-12 mb-8 sm:mb-12 w-full max-w-[1100px] px-4">
-          <Link to="/formations" className="text-center group cursor-pointer relative flex-1 max-w-[300px]">
+        <div className="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-6 sm:gap-8 md:gap-12 mb-6 sm:mb-8 md:mb-12 w-full max-w-[1100px] px-2 sm:px-4">
+          <div className="text-center group cursor-pointer relative flex-1 max-w-[300px] min-h-[12rem]" onClick={() => window.location.href = '/formations'}>
             <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300 relative z-10">
               <BookOpen className="h-10 w-10 text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-orange-600 transition-colors relative z-10">Exercices<br/>incontournables</h3>
-            <p className="text-gray-600 text-lg leading-relaxed relative z-10 px-2 min-h-[3.5rem] flex items-center justify-center">On s'entraîne avec ce qui a de plus classique.</p>
-          </Link>
-          <div className="hidden md:block w-px h-24 bg-gradient-to-b from-orange-200 to-transparent"></div>
-          <div className="text-center group cursor-pointer relative flex-1 max-w-[300px]" onClick={() => window.open('https://calendly.com/preparationnelle/30min', '_blank')}>
+            <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-orange-600 transition-colors relative z-10 text-center leading-tight">Exercices<br/>incontournables</h3>
+            <p className="text-gray-600 text-lg leading-relaxed relative z-10 px-2 flex items-center justify-center h-16">On s'entraîne avec ce qui a de plus classique.</p>
+            <div className="mt-0.5 px-4 sm:px-6 py-2 sm:py-3 bg-orange-100 text-orange-700 rounded-lg text-sm sm:text-base font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 relative z-10 shadow-md whitespace-nowrap">
+              Découvre nos formations →
+            </div>
+          </div>
+          <div className="hidden md:block w-px h-32 bg-gradient-to-b from-orange-200 to-transparent self-center"></div>
+          <div className="text-center group cursor-pointer relative flex-1 max-w-[300px] min-h-[12rem]" onClick={() => window.open('https://calendly.com/preparationnelle/30min', '_blank')}>
             <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300 relative z-10">
               <Users className="h-10 w-10 text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-orange-600 transition-colors relative z-10">Cours particuliers</h3>
-            <p className="text-gray-600 text-lg leading-relaxed relative z-10 px-2 min-h-[3.5rem] flex items-center justify-center">Coaching pour surmonter tes blocages et progresser.</p>
-            <div className="mt-4 px-6 py-3 bg-orange-100 text-orange-700 rounded-lg text-base font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 relative z-10 shadow-md">
-              Réserver un cours →
+            <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-orange-600 transition-colors relative z-10 text-center">Cours particuliers</h3>
+            <p className="text-gray-600 text-lg leading-relaxed relative z-10 px-2 flex items-center justify-center h-16">Coaching pour surmonter tes blocages. Réserve ta première séance gratuitement.</p>
+            <div className="mt-4 px-4 sm:px-6 py-2 sm:py-3 bg-orange-100 text-orange-700 rounded-lg text-sm sm:text-base font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 relative z-10 shadow-md whitespace-nowrap">
+              Réserve un cours gratuit →
             </div>
           </div>
-          <div className="hidden md:block w-px h-24 bg-gradient-to-b from-orange-200 to-transparent"></div>
-          <Link to="/avis" className="text-center group cursor-pointer relative flex-1 max-w-[300px]">
+          <div className="hidden md:block w-px h-32 bg-gradient-to-b from-orange-200 to-transparent self-center"></div>
+          <div className="text-center group cursor-pointer relative flex-1 max-w-[300px] min-h-[12rem]" onClick={() => window.location.href = '/avis'}>
             <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300 relative z-10">
               <TrendingUp className="h-10 w-10 text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-orange-600 transition-colors relative z-10">Résultats Concrets</h3>
-            <p className="text-gray-600 text-lg leading-relaxed relative z-10 px-2 min-h-[3.5rem] flex items-center justify-center">Une progression mesurable et objectifs atteints dès 1 mois.</p>
-          </Link>
+            <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-orange-600 transition-colors relative z-10 text-center leading-tight">Résultats<br/>Concrets</h3>
+            <p className="text-gray-600 text-lg leading-relaxed relative z-10 px-2 flex items-center justify-center h-16">Une progression mesurable et objectifs atteints dès 1 mois.</p>
+            <div className="mt-0.5 px-4 sm:px-6 py-2 sm:py-3 bg-orange-100 text-orange-700 rounded-lg text-sm sm:text-base font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 relative z-10 shadow-md whitespace-nowrap">
+              Les avis →
+            </div>
+          </div>
         </div>
 
         {/* Enhanced message with gradient */}

@@ -171,7 +171,7 @@ export const SuperprofReviewsSection = () => {
   };
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-b from-blue-50 to-blue-100/40">
+    <section className="py-8 px-4 bg-gradient-to-b from-blue-50 to-blue-100/40">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-3">
@@ -190,8 +190,8 @@ export const SuperprofReviewsSection = () => {
         <div className="bg-white rounded-2xl shadow-lg p-8 mb-12 max-w-4xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">+20</div>
-              <div className="text-gray-600">Avis vérifiés</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">+50</div>
+              <div className="text-gray-600">Étudiants accompagnés</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-green-600 mb-2">100%</div>
@@ -205,7 +205,7 @@ export const SuperprofReviewsSection = () => {
         </div>
 
         {/* Carousel Container */}
-        <div className="relative mb-8">
+        <div className="relative mb-12">
           {/* Navigation Buttons */}
           <button
             onClick={prevSlide}
@@ -224,29 +224,26 @@ export const SuperprofReviewsSection = () => {
           </button>
 
           {/* Reviews Grid */}
-          <div className="grid md:grid-cols-3 gap-6 px-12">
+          <div className="grid md:grid-cols-3 gap-8 px-12 justify-center max-w-6xl mx-auto">
             {getCurrentReviews().map((review, index) => {
               const colors = getColorClasses(review.color);
               return (
-                <Card key={index} className={`group hover:shadow-xl transition-all duration-300 border-2 ${colors.border} bg-white/80 backdrop-blur-sm`}>
-                  <CardContent className="p-6">
+                <Card key={index} className={`group hover:shadow-xl transition-all duration-300 border-2 ${colors.border} bg-white/95 backdrop-blur-sm h-full`}>
+                  <CardContent className="p-6 h-full flex flex-col">
                     <div className="flex items-start gap-4">
                       <div className={`w-12 h-12 ${colors.avatar} rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0`}>
                         {review.name.charAt(0)}
                       </div>
-                      <div className="flex-1">
+                      <div className="flex-1 flex flex-col">
                         <h3 className="font-semibold text-gray-800 mb-2">{review.name}</h3>
                         <div className="flex items-center gap-1 mb-3">
                           {renderStars()}
                         </div>
                         <p className="text-sm text-gray-600 mb-3">{review.subject}</p>
-                        <div className="relative">
+                        <div className="relative flex-1">
                           <Quote className={`h-4 w-4 ${colors.quote} absolute -top-1 -left-1`} />
-                          <p className="text-sm text-gray-700 leading-relaxed pl-4">
-                            {review.content.length > 200 
-                              ? `${review.content.substring(0, 200)}...` 
-                              : review.content
-                            }
+                          <p className="text-xs text-gray-700 leading-relaxed pl-4 line-clamp-6">
+                            {review.content}
                           </p>
                         </div>
                       </div>
@@ -276,7 +273,7 @@ export const SuperprofReviewsSection = () => {
 
         {/* Slide Counter */}
         <div className="text-center text-sm text-gray-600 mb-8">
-          {currentSlide + 1} sur {totalSlides} • {reviews.length} avis au total
+          {currentSlide + 1} sur {totalSlides} • {reviews.length} témoignages d'élèves
         </div>
 
         <div className="text-center">
@@ -286,23 +283,10 @@ export const SuperprofReviewsSection = () => {
                 {renderStars()}
                 <span className="text-2xl font-bold text-gray-800">5.0</span>
               </div>
-              <span className="text-gray-600">sur {reviews.length}+ avis vérifiés</span>
+
             </div>
             
-            <div className="space-y-4 mb-8">
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600">Progression en maths</span>
-                <span className="text-sm font-semibold text-green-600">+5 points</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600">Admissions réussies</span>
-                <span className="text-sm font-semibold text-blue-600">ESCP, ESSEC</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600">Satisfaction élèves</span>
-                <span className="text-sm font-semibold text-orange-600">100%</span>
-              </div>
-            </div>
+
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 

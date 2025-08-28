@@ -96,8 +96,16 @@ const IndustrieAllemandePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-indigo-50">
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
+      {/* Floating elements - Orange and blue bubbles */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
+
+      <div className="container mx-auto px-4 py-8 max-w-6xl relative z-10">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-6">
@@ -120,7 +128,7 @@ const IndustrieAllemandePage: React.FC = () => {
         </div>
 
         {/* Statistiques clés */}
-        <Card className="mb-8 bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
+        <Card className="mb-8 bg-gradient-to-r from-orange-500 to-blue-500 text-white">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center">
               Wichtige Wirtschaftskennzahlen (2023-2025)
@@ -130,19 +138,19 @@ const IndustrieAllemandePage: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
               <div>
                 <div className="text-3xl font-bold">0%</div>
-                <div className="text-purple-100">Wachstum 2025</div>
+                <div className="text-orange-100">Wachstum 2025</div>
               </div>
               <div>
                 <div className="text-3xl font-bold">260.000</div>
-                <div className="text-purple-100">Roboter in Fabriken</div>
+                <div className="text-orange-100">Roboter in Fabriken</div>
               </div>
               <div>
                 <div className="text-3xl font-bold">300 Mrd. €</div>
-                <div className="text-purple-100">Handel mit China</div>
+                <div className="text-orange-100">Handel mit China</div>
               </div>
               <div>
                 <div className="text-3xl font-bold">2019</div>
-                <div className="text-purple-100">Beginn der Krise</div>
+                <div className="text-orange-100">Beginn der Krise</div>
               </div>
             </div>
           </CardContent>
@@ -154,7 +162,7 @@ const IndustrieAllemandePage: React.FC = () => {
             <Card key={topic.id} className="shadow-lg hover:shadow-xl transition-shadow">
               <CardHeader>
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-purple-100 rounded-lg text-purple-600">
+                  <div className="p-2 bg-orange-100 rounded-lg text-orange-600">
                     {topic.icon}
                   </div>
                   <CardTitle className="text-xl text-gray-900">

@@ -25,7 +25,7 @@ export const TestimonialsSection = () => {
   ];
 
   return (
-    <section className="py-16 px-4 bg-accent">
+    <section className="py-8 px-4 bg-accent">
       <div className="container mx-auto">
         <h2 className="section-heading text-center mb-12">
           Ce que nos étudiants disent

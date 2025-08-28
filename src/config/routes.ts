@@ -18,6 +18,7 @@ const PythonFlashcardsPage = lazy(() => import('../pages/formation/Python/Python
 const PythonExercicesPage = lazy(() => import('../pages/formation/Python/PythonExercicesPage'));
 const PythonQuizPage = lazy(() => import('../pages/formation/Python/PythonQuizPage'));
 const FormationAnglaisPage = lazy(() => import('../pages/FormationAnglaisPage'));
+const FormationAnglaisGrammairePage = lazy(() => import('../pages/formation/anglais/FormationAnglaisGrammairePage'));
 const AnglaisCivilisationOverviewPage = lazy(() => import('../pages/formation/anglais/CivilisationOverviewPage'));
 const AnglaisEnvironmentPage = lazy(() => import('../pages/formation/anglais/civilisation/EnvironmentPage'));
 const AnglaisEnvironmentVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/EnvironmentVocabularyPage'));
@@ -51,7 +52,7 @@ const AnglaisCommonwealthPage = lazy(() => import('../pages/formation/anglais/ci
 const AnglaisCivilReligionPage = lazy(() => import('../pages/formation/anglais/civilisation/CivilReligionPage'));
 const AnglaisImmigrationPage = lazy(() => import('../pages/formation/anglais/civilisation/ImmigrationPage'));
 const AnglaisContemporaryCrisesPage = lazy(() => import('../pages/formation/anglais/civilisation/ContemporaryCrisesPage'));
-const AnglaisRessourcesPage = lazy(() => import('../pages/formation/anglais/RessourcesPage'));
+
 const MethodologieAnglaisPage = lazy(() => import('../pages/formation/anglais/MethodologieAnglaisPage'));
 
 const FormationEspagnolPage = lazy(() => import('../pages/FormationEspagnolPage'));
@@ -79,9 +80,21 @@ const AffectiveVerbsPage = lazy(() => import('../pages/formation/espagnol/gramma
 const AdjectivesAdverbsPage = lazy(() => import('../pages/formation/espagnol/grammaire/AdjectivesAdverbsPage'));
 const FormationEspagnolCivilisationPage = lazy(() => import('../pages/formation/espagnol/FormationEspagnolCivilisationPage'));
 const Module1PoliticaRegimenesPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module1PoliticaRegimenesPage'));
+const Module1VocabularyPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module1VocabularyPage'));
+const Module2VocabularyPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module2VocabularyPage'));
+const Module3VocabularyPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module3VocabularyPage'));
+const Module6VocabularyPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module6VocabularyPage'));
+const Module7VocabularyPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module7VocabularyPage'));
+const Module8VocabularyPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module8VocabularyPage'));
+const Module9VocabularyPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module9VocabularyPage'));
 const Module4MigracionesDesplazamientosPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module4MigracionesDesplazamientosPage'));
 const Module5ViolenciaNarcotraficoPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module5ViolenciaNarcotraficoPage'));
 const Module7MedioAmbienteClimaPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module7MedioAmbienteClimaPage'));
+const Module10IATransformacionDigitalPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module10IATransformacionDigitalPage'));
+const Module10ChinaGeopoliticaPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module10ChinaGeopoliticaPage'));
+const Module10VocabularyPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module10VocabularyPage'));
+const Module11VocabularyPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module11VocabularyPage'));
+const Module12VocabularyPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module12VocabularyPage'));
 const FormationEspagnolMethodologiePage = lazy(() => import('../pages/formation/espagnol/FormationEspagnolMethodologiePage'));
 const FormationAllemandPage = lazy(() => import('../pages/FormationAllemandPage'));
 const FormationAllemandGrammairePage = lazy(() => import('../pages/formation/allemand/FormationAllemandGrammairePage'));
@@ -242,6 +255,20 @@ const Chapitre16EspacesProbabilisesExercicesPage = lazy(() => import('../pages/f
 const Chapitre17VariablesAleatoiresExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre17-VariablesAleatoiresDiscretes-Lois-ExercicesPage'));
 const Chapitre18ConvergencesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre18-Convergences-Et-TheoremesLimites-ExercicesPage'));
 
+// Maths Appliquées - Nouveaux chapitres
+const Chapitre19EquationsDifferentiellesCoursPage = lazy(() => import('../pages/formation/math/MathsAppliquees/Chapitre19-EquationsDifferentiellesApplicationsConcretes-CoursPage'));
+const Chapitre19EquationsDifferentiellesExercicesPage = lazy(() => import('../pages/formation/math/MathsAppliquees/Chapitre19-EquationsDifferentiellesApplicationsConcretes-ExercicesPage'));
+const Chapitre19EquationsDifferentiellesQuizPage = lazy(() => import('../pages/formation/math/MathsAppliquees/Chapitre19-EquationsDifferentiellesApplicationsConcretes-QuizPage'));
+const Chapitre21ChainesDeMarkovCoursPage = lazy(() => import('../pages/formation/math/MathsAppliquees/Chapitre21-ChainesDeMarkov-CoursPage'));
+const Chapitre21ChainesDeMarkovExercicesPage = lazy(() => import('../pages/formation/math/MathsAppliquees/Chapitre21-ChainesDeMarkov-ExercicesPage'));
+const Chapitre21ChainesDeMarkovQuizPage = lazy(() => import('../pages/formation/math/MathsAppliquees/Chapitre21-ChainesDeMarkov-QuizPage'));
+const Chapitre22TheorieDesGraphesApprofondieCoursPage = lazy(() => import('../pages/formation/math/MathsAppliquees/Chapitre22-TheorieDesGraphesApprofondie-CoursPage'));
+const Chapitre22TheorieDesGraphesApprofondieExercicesPage = lazy(() => import('../pages/formation/math/MathsAppliquees/Chapitre22-TheorieDesGraphesApprofondie-ExercicesPage'));
+const Chapitre22TheorieDesGraphesApprofondieQuizPage = lazy(() => import('../pages/formation/math/MathsAppliquees/Chapitre22-TheorieDesGraphesApprofondie-QuizPage'));
+const Chapitre23StatistiquesDescriptivesCoursPage = lazy(() => import('../pages/formation/math/MathsAppliquees/Chapitre23-StatistiquesDescriptives-CoursPage'));
+const Chapitre23StatistiquesDescriptivesExercicesPage = lazy(() => import('../pages/formation/math/MathsAppliquees/Chapitre23-StatistiquesDescriptives-ExercicesPage'));
+const Chapitre23StatistiquesDescriptivesQuizPage = lazy(() => import('../pages/formation/math/MathsAppliquees/Chapitre23-StatistiquesDescriptives-QuizPage'));
+
 // Offres pages
 const CoachingPythonPage = lazy(() => import('../pages/offres/CoachingPythonPage'));
 const CoachingMathsPage = lazy(() => import('../pages/offres/CoachingMathsPage'));
@@ -356,6 +383,7 @@ export const routes: RouteConfig[] = [
   
   // Formation pages
   { path: '/formation/anglais', component: FormationAnglaisPage, title: 'Formation Anglais' },
+  { path: '/formation/anglais/grammaire', component: FormationAnglaisGrammairePage, title: 'Grammaire Anglaise' },
   { path: '/formation/anglais/civilisation', component: AnglaisCivilisationOverviewPage, title: 'Civilisation Anglaise' },
   { path: '/formation/anglais/civilisation/environment', component: AnglaisEnvironmentPage, title: 'Environment and Ecology' },
   { path: '/formation/anglais/civilisation/environment/vocabulary', component: AnglaisEnvironmentVocabularyPage, title: 'Environment Vocabulary - Flashcards' },
@@ -389,7 +417,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/anglais/civilisation/crises/vocabulary', component: AnglaisCrisesVocabularyPage, title: 'Major Contemporary Crises Vocabulary - Flashcards' },
   { path: '/formation/anglais/civilisation/crises', component: AnglaisContemporaryCrisesPage, title: 'Contemporary Crises' },
   { path: '/formation/anglais/civilisation/ai-technology/vocabulary', component: AnglaisAITechnologyVocabularyPage, title: 'Artificial Intelligence and Technology Vocabulary - Flashcards' },
-  { path: '/formation/anglais/ressources', component: AnglaisRessourcesPage, title: 'Ressources Anglais' },
+
   { path: '/formation/anglais/methodologie-complete', component: MethodologieAnglaisPage, title: 'Méthodologie Complète Anglais' },
 
   { path: '/formation/espagnol', component: FormationEspagnolPage, title: 'Formation Espagnol' },
@@ -420,13 +448,29 @@ export const routes: RouteConfig[] = [
   { path: '/formation/espagnol/grammaire/adjectives-adverbs', component: AdjectivesAdverbsPage, title: 'Adjectifs et Adverbes' },
   { path: '/formation/espagnol/civilisation', component: FormationEspagnolCivilisationPage, title: 'Civilisation Hispanique' },
   { path: '/formation/espagnol/civilisation/module1', component: Module1PoliticaRegimenesPage, title: 'Política y Regímenes' },
+  { path: '/formation/espagnol/civilisation/module1/vocabulaire', component: Module1VocabularyPage, title: 'Vocabulaire Démocratique' },
+  { path: '/formation/espagnol/civilisation/module2/vocabulaire', component: Module2VocabularyPage, title: 'Vocabulaire Féminin' },
+  { path: '/formation/espagnol/civilisation/module3/vocabulaire', component: Module3VocabularyPage, title: 'Vocabulaire Éducatif' },
+  { path: '/formation/espagnol/civilisation/module6/vocabulaire', component: Module6VocabularyPage, title: 'Vocabulaire Économique et Social' },
+  { path: '/formation/espagnol/civilisation/module7/vocabulaire', component: Module7VocabularyPage, title: 'Vocabulaire Environnemental' },
+  { path: '/formation/espagnol/civilisation/module8/vocabulaire', component: Module8VocabularyPage, title: 'Vocabulaire Historique' },
+  { path: '/formation/espagnol/civilisation/module10/vocabulaire', component: Module10VocabularyPage, title: 'Vocabulaire Géopolitique Chinois' },
+  { path: '/formation/espagnol/civilisation/module11/vocabulaire', component: Module11VocabularyPage, title: 'Vocabulaire Énergétique Espagnol' },
+  { path: '/formation/espagnol/civilisation/module12/vocabulaire', component: Module12VocabularyPage, title: 'Vocabulaire des Inégalités' },
   { path: '/formation/espagnol/civilisation/module4', component: Module4MigracionesDesplazamientosPage, title: 'Migraciones y Desplazamientos' },
+  { path: '/formation/espagnol/civilisation/module4/vocabulaire', component: Module4MigracionesDesplazamientosPage, title: 'Vocabulaire Migratoire' },
   { path: '/formation/espagnol/civilisation/module5', component: Module5ViolenciaNarcotraficoPage, title: 'Violencia y Narcotráfico' },
+  { path: '/formation/espagnol/civilisation/module5/vocabulaire', component: Module5ViolenciaNarcotraficoPage, title: 'Vocabulaire Violence' },
   { path: '/formation/espagnol/civilisation/module7', component: Module7MedioAmbienteClimaPage, title: 'Medio Ambiente y Clima' },
+  { path: '/formation/espagnol/civilisation/module9', component: Module10IATransformacionDigitalPage, title: 'Inteligencia Artificial y Transformación Digital' },
+  { path: '/formation/espagnol/civilisation/module9/vocabulaire', component: Module10IATransformacionDigitalPage, title: 'Vocabulaire IA' },
+  { path: '/formation/espagnol/civilisation/module10', component: Module10ChinaGeopoliticaPage, title: 'China y Geopolítica Global' },
   { path: '/formation/espagnol/methodologie', component: FormationEspagnolMethodologiePage, title: 'Méthodologie des Épreuves Espagnol' },
   { path: '/formation/allemand', component: FormationAllemandPage, title: 'Formation Allemand' },
   { path: '/formation/allemand/grammaire', component: FormationAllemandGrammairePage, title: 'Grammaire Allemande' },
+  { path: '/formation/allemand/vocabulaire', component: lazy(() => import('../pages/formation/allemand/FormationAllemandVocabulairePage')), title: 'Vocabulaire Allemand' },
   { path: '/formation/allemand/civilisation', component: FormationAllemandCivilisationPage, title: 'Civilisation Allemande' },
+  { path: '/formation/allemand/epreuves', component: ReussirEpreuvesAllemandePage, title: 'Réussir les épreuves d\'allemand - Allemand' },
   { path: '/formation/allemand/politik', component: PolitikAllemandeMinimalPage, title: 'Politik in Deutschland - Allemand' },
   { path: '/formation/allemand/demographie', component: DemographieAllemandePage, title: 'Demographie in Deutschland - Allemand' },
   { path: '/formation/allemand/ecologie', component: EcologieAllemandePage, title: 'Ökologie und Umwelt in Deutschland - Allemand' },
@@ -438,9 +482,6 @@ export const routes: RouteConfig[] = [
   { path: '/formation/allemand/femmes', component: FemmesEgaliteAllemandePage, title: 'Frauen und Gleichstellung in Deutschland - Allemand' },
   { path: '/formation/allemand/geschichte', component: HistoireMemoireAllemandePage, title: 'Geschichte und Erinnerungskultur in Deutschland - Allemand' },
   { path: '/formation/allemand/epreuves', component: ReussirEpreuvesAllemandePage, title: 'Réussir les épreuves d\'allemand - Allemand' },
-  { path: '/formation/allemand/laisser', component: ReussirLaisserPage, title: 'Comment réussir le laisser - Allemand' },
-  { path: '/formation/allemand/colle', component: ReussirCollePage, title: 'Comment réussir la colle - Allemand' },
-  { path: '/formation/allemand/synthese', component: ReussirSynthesePage, title: 'Comment réussir la synthèse de texte - Allemand' },
   { path: '/formation/allemand/vocabulaire-politique', component: VocabulairePolitiqueFlashcardsPage, title: 'Vocabulaire Politique - Flashcards' },
   { path: '/formation/allemand/vocabulaire-demographie', component: VocabulaireDemographieFlashcardsPage, title: 'Vocabulaire Démographie - Flashcards' },
   { path: '/formation/allemand/vocabulaire-ecologie', component: VocabulaireEcologieFlashcardsPage, title: 'Vocabulaire Écologie - Flashcards' },
@@ -604,7 +645,21 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-espaces-probabilises-conditionnement-exercices', component: Chapitre16EspacesProbabilisesExercicesPage, title: 'Exercices - Chapitre 16 : Espaces probabilisés & conditionnement' },
   { path: '/formation/maths-variables-aleatoires-discretes-lois-exercices', component: Chapitre17VariablesAleatoiresExercicesPage, title: 'Exercices - Chapitre 17 : Variables aléatoires discrètes & lois' },
   { path: '/formation/maths-convergences-theoremes-limites-exercices', component: Chapitre18ConvergencesExercicesPage, title: 'Exercices - Chapitre 18 : Convergences & théorèmes limites' },
-  
+
+  // Maths Appliquées - Nouveaux chapitres
+  { path: '/formation/maths-equations-differentielles-applications-concretes', component: Chapitre19EquationsDifferentiellesCoursPage, title: 'Chapitre 19 : Équations différentielles avec applications concrètes', protected: true },
+  { path: '/formation/maths-equations-differentielles-applications-concretes-exercices', component: Chapitre19EquationsDifferentiellesExercicesPage, title: 'Exercices - Chapitre 19 : Équations différentielles avec applications concrètes', protected: true },
+  { path: '/formation/maths-equations-differentielles-applications-concretes-quiz', component: Chapitre19EquationsDifferentiellesQuizPage, title: 'Quiz - Chapitre 19 : Équations différentielles avec applications concrètes', protected: true },
+  { path: '/formation/maths-chaines-de-markov', component: Chapitre21ChainesDeMarkovCoursPage, title: 'Chapitre 21 : Les chaînes de Markov', protected: true },
+  { path: '/formation/maths-chaines-de-markov-exercices', component: Chapitre21ChainesDeMarkovExercicesPage, title: 'Exercices - Chapitre 21 : Les chaînes de Markov', protected: true },
+  { path: '/formation/maths-chaines-de-markov-quiz', component: Chapitre21ChainesDeMarkovQuizPage, title: 'Quiz - Chapitre 21 : Les chaînes de Markov', protected: true },
+  { path: '/formation/maths-theorie-des-graphes-approfondie', component: Chapitre22TheorieDesGraphesApprofondieCoursPage, title: 'Chapitre 22 : La théorie des graphes approfondie', protected: true },
+  { path: '/formation/maths-theorie-des-graphes-approfondie-exercices', component: Chapitre22TheorieDesGraphesApprofondieExercicesPage, title: 'Exercices - Chapitre 22 : La théorie des graphes approfondie', protected: true },
+  { path: '/formation/maths-theorie-des-graphes-approfondie-quiz', component: Chapitre22TheorieDesGraphesApprofondieQuizPage, title: 'Quiz - Chapitre 22 : La théorie des graphes approfondie', protected: true },
+  { path: '/formation/maths-statistiques-descriptives', component: Chapitre23StatistiquesDescriptivesCoursPage, title: 'Chapitre 23 : Les statistiques descriptives', protected: true },
+  { path: '/formation/maths-statistiques-descriptives-exercices', component: Chapitre23StatistiquesDescriptivesExercicesPage, title: 'Exercices - Chapitre 23 : Les statistiques descriptives', protected: true },
+  { path: '/formation/maths-statistiques-descriptives-quiz', component: Chapitre23StatistiquesDescriptivesQuizPage, title: 'Quiz - Chapitre 23 : Les statistiques descriptives', protected: true },
+
   // Offres pages
   { path: '/offre/coaching-python', component: CoachingPythonPage, title: 'Coaching Python' },
   { path: '/offre/coaching-maths', component: CoachingMathsPage, title: 'Coaching Maths' },

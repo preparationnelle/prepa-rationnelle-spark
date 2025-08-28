@@ -560,8 +560,8 @@ for row in triangle_result:
               {showSolution[`qcm-${q.id}`] ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               {showSolution[`qcm-${q.id}`] ? 'Masquer' : 'Voir'} la réponse
             </Button>
-            {showSolution[`qcm-${q.id}`] && <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded">
-                <div className="flex items-center gap-2 text-green-700">
+            {showSolution[`qcm-${q.id}`] && <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded">
+                <div className="flex items-center gap-2 text-blue-600">
                   <CheckCircle className="h-4 w-4" />
                   <span className="font-semibold">Réponse correcte : {q.answer}</span>
                 </div>
@@ -575,7 +575,7 @@ for row in triangle_result:
       return <div className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle className="text-green-700">Exercice 1.1</CardTitle>
+              <CardTitle className="text-blue-600">Exercice 1.1</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="mb-4">Créer une matrice 3×4 contenant uniquement des zéros, puis une matrice 2×3 contenant uniquement des uns.</p>
@@ -611,7 +611,7 @@ print(M2)`}
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-green-700">Exercice 1.2</CardTitle>
+              <CardTitle className="text-blue-600">Exercice 1.2</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="mb-4">Soit A = np.array([[1,2,3],[4,5,6]]). Extraire l'élément de la deuxième ligne et troisième colonne.</p>
@@ -780,7 +780,7 @@ print(C_T)`}
       return <div className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle className="text-red-700">Matrices nilpotentes</CardTitle>
+              <CardTitle className="text-orange-600">Matrices nilpotentes</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="mb-4">
@@ -842,12 +842,12 @@ def Nilp(A):
           </Button>
           
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-4">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent mb-4">
               {exercise.title}
             </h1>
             <Badge 
               variant="secondary" 
-              className={`${exercise.color === 'green' ? 'bg-green-100 text-green-700' : exercise.color === 'blue' ? 'bg-blue-100 text-blue-700' : exercise.color === 'red' ? 'bg-red-100 text-red-700' : 'bg-orange-100 text-orange-700'}`}
+              className={`${exercise.color === 'green' ? 'bg-blue-50 text-blue-600' : exercise.color === 'blue' ? 'bg-blue-100 text-blue-700' : exercise.color === 'red' ? 'bg-orange-50 text-orange-600' : 'bg-orange-100 text-orange-700'}`}
             >
               {exercise.difficulty}
             </Badge>
@@ -856,15 +856,15 @@ def Nilp(A):
 
         {exercise.content ? (
           <>
-            <Card className="mb-8 border-2 border-red-200 bg-gradient-to-br from-red-50 to-pink-50 shadow-lg">
+            <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-br from-orange-500 to-pink-50 shadow-lg">
               <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-red-700">
+                <CardTitle className="flex items-center gap-3 text-orange-600">
                   <Calculator className="h-6 w-6" />
                   Objectif de l'exercice
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-red-700 font-medium mb-4">
+                <p className="text-orange-600 font-medium mb-4">
                   {exercise.content.objective}
                 </p>
               </CardContent>
@@ -888,7 +888,7 @@ def Nilp(A):
               <Button 
                 variant="outline" 
                 onClick={() => toggleCorrection(0)}
-                className="flex items-center gap-2 border-green-300 text-green-700 hover:bg-green-50"
+                className="flex items-center gap-2 border-blue-200 text-blue-600 hover:bg-blue-50"
               >
                 {showCorrections.has(0) ? (
                   <>
@@ -906,16 +906,16 @@ def Nilp(A):
 
             {/* Correction (affichée conditionnellement) */}
             {showCorrections.has(0) && (
-              <Card className="border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg">
+              <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-500 to-emerald-50 shadow-lg">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-green-700">
+                  <CardTitle className="flex items-center gap-3 text-blue-600">
                     <Code className="h-6 w-6" />
                     Correction
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                    <pre className="text-green-400 text-sm font-mono">
+                    <pre className="text-blue-600 text-sm font-mono">
                       <code>{exercise.content.correction}</code>
                     </pre>
                   </div>
@@ -944,7 +944,7 @@ def Nilp(A):
   return (
     <PythonModuleLayout>
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-4">
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent mb-4">
           Module 1 : Exercices - Matrices NumPy
         </h1>
         <p className="text-xl text-muted-foreground">
@@ -956,12 +956,12 @@ def Nilp(A):
         <>
           {/* Section QCM */}
           <Card className="mb-8 hover:shadow-lg transition-shadow cursor-pointer" onClick={() => setShowQCM(true)}>
-            <CardHeader className="bg-gradient-to-r from-green-50 to-blue-50">
+            <CardHeader className="bg-gradient-to-r from-blue-500 to-blue-50">
               <CardTitle className="flex items-center gap-3">
-                <Trophy className="h-8 w-8 text-green-600" />
+                <Trophy className="h-8 w-8 text-blue-600" />
                 <div>
-                  <h2 className="text-2xl text-green-800">QCM d'évaluation</h2>
-                  <p className="text-sm text-green-600 mt-1">Testez vos connaissances sur les matrices NumPy</p>
+                  <h2 className="text-2xl text-blue-600">QCM d'évaluation</h2>
+                  <p className="text-sm text-blue-600 mt-1">Testez vos connaissances sur les matrices NumPy</p>
                 </div>
               </CardTitle>
             </CardHeader>
@@ -978,7 +978,7 @@ def Nilp(A):
 
           <Card className="mb-8">
         <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-green-700">
+              <CardTitle className="flex items-center gap-3 text-blue-600">
                 <Target className="h-6 w-6" />
                 Objectifs des exercices
               </CardTitle>
@@ -1013,9 +1013,9 @@ def Nilp(A):
               <Card 
                 key={exercise.id} 
                 className={`hover:shadow-lg transition-shadow cursor-pointer ${
-                  exercise.color === 'green' ? 'border border-green-200' : 
+                  exercise.color === 'green' ? 'border border-blue-200' : 
                   exercise.color === 'blue' ? 'border border-blue-200' : 
-                  exercise.color === 'red' ? 'border border-red-200' : 
+                  exercise.color === 'red' ? 'border border-orange-200' : 
                   'border border-orange-200'
                 }`} 
                 onClick={() => setSelectedExercise(exercise.id)}
@@ -1023,17 +1023,17 @@ def Nilp(A):
                 <CardHeader>
                   <div className="flex items-center gap-3">
                     <Calculator className={`h-6 w-6 ${
-                      exercise.color === 'green' ? 'text-green-600' : 
+                      exercise.color === 'green' ? 'text-blue-600' : 
                       exercise.color === 'blue' ? 'text-blue-600' : 
-                      exercise.color === 'red' ? 'text-red-600' : 
+                      exercise.color === 'red' ? 'text-orange-600' : 
                       'text-orange-600'
                     }`} />
                     <div>
                       <CardTitle className="text-lg">{exercise.title}</CardTitle>
                       <Badge variant="secondary" className={`mt-1 ${
-                        exercise.color === 'green' ? 'bg-green-100 text-green-700' : 
+                        exercise.color === 'green' ? 'bg-blue-50 text-blue-600' : 
                         exercise.color === 'blue' ? 'bg-blue-100 text-blue-700' : 
-                        exercise.color === 'red' ? 'bg-red-100 text-red-700' : 
+                        exercise.color === 'red' ? 'bg-orange-50 text-orange-600' : 
                         'bg-orange-100 text-orange-700'
                       }`}>
                         {exercise.difficulty}
@@ -1046,9 +1046,9 @@ def Nilp(A):
                     {exercise.description}
                   </p>
                   <Button className={`w-full ${
-                    exercise.color === 'green' ? 'bg-green-600 hover:bg-green-700' : 
+                    exercise.color === 'green' ? 'bg-blue-50 hover:bg-blue-50' : 
                     exercise.color === 'blue' ? 'bg-blue-600 hover:bg-blue-700' : 
-                    exercise.color === 'red' ? 'bg-red-600 hover:bg-red-700' : 
+                    exercise.color === 'red' ? 'bg-orange-50 hover:bg-orange-50' : 
                     'bg-orange-600 hover:bg-orange-700'
                   }`}>
                     <Play className="h-4 w-4 mr-2" />
@@ -1078,9 +1078,9 @@ def Nilp(A):
             Retour aux exercices
           </Button>
 
-          <Card className="mb-8 border-2 border-green-200 bg-gradient-to-br from-green-50 to-blue-50 shadow-lg">
+          <Card className="mb-8 border-2 border-blue-200 bg-gradient-to-br from-blue-500 to-blue-50 shadow-lg">
             <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-green-700">
+              <CardTitle className="flex items-center gap-3 text-blue-600">
             <Trophy className="h-6 w-6" />
             QCM d'évaluation - Testez vos connaissances
           </CardTitle>
@@ -1089,37 +1089,37 @@ def Nilp(A):
           {!qcmSubmitted ? (
             <div className="space-y-6">
               <div className="flex items-center justify-between mb-4">
-                    <p className="text-green-700 font-medium">
+                    <p className="text-blue-600 font-medium">
                   Répondez aux 20 questions pour évaluer votre niveau sur les matrices NumPy
                 </p>
-                    <Badge variant="outline" className="bg-green-100 text-green-700">
+                    <Badge variant="outline" className="bg-blue-50 text-blue-600">
                   {Object.keys(qcmAnswers).length}/20 répondues
                 </Badge>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {qcmQuestions.map((question, index) => (
-                      <Card key={question.id} className="border border-green-200 hover:border-green-300 transition-colors">
+                      <Card key={question.id} className="border border-blue-200 hover:border-blue-200 transition-colors">
                     <CardContent className="pt-6">
                       <div className="flex items-center gap-2 mb-3">
-                            <Badge variant="outline" className="bg-green-100 text-green-700">
+                            <Badge variant="outline" className="bg-blue-50 text-blue-600">
                           Question {question.id}
                         </Badge>
                         {qcmAnswers[question.id] && (
-                          <CheckCircle className="h-4 w-4 text-green-600" />
+                          <CheckCircle className="h-4 w-4 text-blue-600" />
                         )}
                       </div>
                       <p className="mb-4 text-sm">{question.question}</p>
                       <div className="space-y-2">
                         {question.options.map((option, optIndex) => (
-                              <label key={optIndex} className="flex items-center gap-2 p-2 rounded hover:bg-green-50 cursor-pointer">
+                              <label key={optIndex} className="flex items-center gap-2 p-2 rounded hover:bg-blue-50 cursor-pointer">
                             <input
                               type="radio"
                               name={`question-${question.id}`}
                               value={option}
                               checked={qcmAnswers[question.id] === option}
                               onChange={(e) => handleQCMAnswer(question.id, e.target.value)}
-                                  className="text-green-600"
+                                  className="text-blue-600"
                             />
                             <span className="text-sm">{option}</span>
                           </label>
@@ -1134,7 +1134,7 @@ def Nilp(A):
                 <Button 
                   onClick={submitQCM}
                   disabled={Object.keys(qcmAnswers).length < 20}
-                      className="bg-green-600 hover:bg-green-700 text-white px-8 py-3"
+                      className="bg-blue-50 hover:bg-blue-50 text-white px-8 py-3"
                 >
                   <Trophy className="h-4 w-4 mr-2" />
                   Valider le QCM
@@ -1146,23 +1146,23 @@ def Nilp(A):
               {/* Résultats en haut */}
               <div className="text-center space-y-4">
                 <div className="flex items-center justify-center gap-3">
-                  <Trophy className="h-8 w-8 text-yellow-600" />
-                      <h3 className="text-2xl font-bold text-green-700">Résultats du QCM</h3>
+                  <Trophy className="h-8 w-8 text-orange-600" />
+                      <h3 className="text-2xl font-bold text-blue-600">Résultats du QCM</h3>
                 </div>
                 
-                    <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6 border-2 border-green-200">
-                      <div className="text-4xl font-bold text-green-700 mb-2">
+                    <div className="bg-gradient-to-r from-blue-500 to-blue-50 rounded-lg p-6 border-2 border-blue-200">
+                      <div className="text-4xl font-bold text-blue-600 mb-2">
                     {qcmScore?.toFixed(1)}/20
                   </div>
                   <div className="flex items-center justify-center gap-2 mb-4">
                     {[...Array(5)].map((_, i) => (
                       <Star 
                         key={i} 
-                        className={`h-6 w-6 ${i < Math.floor((qcmScore || 0) / 4) ? 'text-yellow-500 fill-current' : 'text-gray-300'}`} 
+                        className={`h-6 w-6 ${i < Math.floor((qcmScore || 0) / 4) ? 'text-orange-600 fill-current' : 'text-gray-300'}`} 
                       />
                     ))}
                   </div>
-                      <p className="text-green-700 font-medium">
+                      <p className="text-blue-600 font-medium">
                     {qcmScore && qcmScore >= 16 ? "Excellent ! Vous maîtrisez parfaitement les matrices NumPy." :
                      qcmScore && qcmScore >= 12 ? "Bon niveau ! Quelques révisions pour perfectionner." :
                      qcmScore && qcmScore >= 8 ? "Niveau correct. Continuez à vous entraîner." :
@@ -1173,7 +1173,7 @@ def Nilp(A):
 
               {/* Détail des réponses */}
               <div className="space-y-4">
-                    <h4 className="text-lg font-semibold text-green-700 text-center">
+                    <h4 className="text-lg font-semibold text-blue-600 text-center">
                   Détail de vos réponses
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -1186,21 +1186,21 @@ def Nilp(A):
                         key={question.id} 
                         className={`border-2 transition-colors ${
                           isCorrect 
-                            ? 'border-green-200 bg-gradient-to-br from-green-50 to-emerald-50' 
-                            : 'border-red-200 bg-gradient-to-br from-red-50 to-pink-50'
+                            ? 'border-blue-200 bg-gradient-to-br from-blue-500 to-emerald-50' 
+                            : 'border-orange-200 bg-gradient-to-br from-orange-500 to-pink-50'
                         }`}
                       >
                         <CardContent className="pt-6">
                           <div className="flex items-center gap-2 mb-3">
                             <Badge variant="outline" className={`${
-                              isCorrect ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+                              isCorrect ? 'bg-blue-50 text-blue-600' : 'bg-orange-50 text-orange-600'
                             }`}>
                               Question {question.id}
                             </Badge>
                             {isCorrect ? (
-                              <CheckCircle className="h-4 w-4 text-green-600" />
+                              <CheckCircle className="h-4 w-4 text-blue-600" />
                             ) : (
-                              <div className="h-4 w-4 text-red-600">✗</div>
+                              <div className="h-4 w-4 text-orange-600">✗</div>
                             )}
                           </div>
                           
@@ -1216,12 +1216,12 @@ def Nilp(A):
                               
                               if (isCorrectAnswer) {
                                 // Bonne réponse toujours en vert
-                                optionStyle += " bg-green-100 border border-green-300";
-                                textStyle += " font-semibold text-green-700";
+                                optionStyle += " bg-blue-50 border border-blue-200";
+                                textStyle += " font-semibold text-blue-600";
                               } else if (isUserAnswer && !isCorrect) {
                                 // Mauvaise réponse de l'utilisateur en rouge
-                                optionStyle += " bg-red-100 border border-red-300";
-                                textStyle += " font-semibold text-red-700";
+                                optionStyle += " bg-orange-50 border border-orange-200";
+                                textStyle += " font-semibold text-orange-600";
                               } else {
                                 // Autres options neutres
                                 optionStyle += " bg-gray-50";
@@ -1232,10 +1232,10 @@ def Nilp(A):
                                 <div key={optIndex} className={optionStyle}>
                                   <div className="flex items-center gap-2">
                                     {isCorrectAnswer && (
-                                      <CheckCircle className="h-4 w-4 text-green-600" />
+                                      <CheckCircle className="h-4 w-4 text-blue-600" />
                                     )}
                                     {isUserAnswer && !isCorrect && (
-                                      <div className="h-4 w-4 text-red-600">✗</div>
+                                      <div className="h-4 w-4 text-orange-600">✗</div>
                                     )}
                                     {!isCorrectAnswer && !isUserAnswer && (
                                       <div className="h-4 w-4 text-gray-400">○</div>
@@ -1248,11 +1248,11 @@ def Nilp(A):
                           </div>
                           
                           {!isCorrect && (
-                            <div className="mt-3 p-2 bg-yellow-50 border border-yellow-200 rounded">
-                              <p className="text-sm text-yellow-700">
+                            <div className="mt-3 p-2 bg-orange-50 border border-orange-200 rounded">
+                              <p className="text-sm text-orange-600">
                                 <span className="font-semibold">Votre réponse :</span> {userAnswer}
                               </p>
-                              <p className="text-sm text-yellow-700">
+                              <p className="text-sm text-orange-600">
                                 <span className="font-semibold">Bonne réponse :</span> {question.answer}
                               </p>
                             </div>
@@ -1268,7 +1268,7 @@ def Nilp(A):
                 <Button 
                   variant="outline" 
                   onClick={restartQCM}
-                      className="border-green-300 text-green-700 hover:bg-green-50"
+                      className="border-blue-200 text-blue-600 hover:bg-blue-50"
                 >
                   Recommencer le QCM
                 </Button>

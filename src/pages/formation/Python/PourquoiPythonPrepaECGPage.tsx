@@ -193,15 +193,15 @@ const PourquoiPythonPrepaECGPage = () => {
             <p>Depuis la réforme, Python remplace Scilab dans les épreuves de mathématiques appliquées comme approfondies. Résultat :</p>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
                 <span><strong>10 à 20 %</strong> selon les écoles (BCE, Ecricome, EDHEC, EM Lyon, HEC, etc.)</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
                 <span><strong>Présence systématique à l'oral :</strong> impossible de poursuivre l'entretien HEC sans répondre correctement à la question Python</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
                 <span><strong>Questions souvent "cadeaux" :</strong> analyser un script, compléter une fonction, traduire une somme ou un raisonnement en code</span>
               </li>
             </ul>
@@ -218,27 +218,27 @@ const PourquoiPythonPrepaECGPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
-              <TrendingUp className="h-6 w-6 text-red-600" />
+              <TrendingUp className="h-6 w-6 text-orange-600" />
               2. Pourquoi la plupart des préparationnaires passent à côté
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <span className="text-red-500 font-bold">•</span>
+                <span className="text-orange-600 font-bold">•</span>
                 <span><strong>Effet de mode inversé :</strong> « tout le monde dit que Python, c'est facile » → donc personne ne l'approfondit vraiment</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-red-500 font-bold">•</span>
+                <span className="text-orange-600 font-bold">•</span>
                 <span><strong>Absence de méthodo :</strong> on survole les commandes en TP, sans vraie feuille de route</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-red-500 font-bold">•</span>
+                <span className="text-orange-600 font-bold">•</span>
                 <span><strong>Abandon trop rapide :</strong> dès qu'on bloque 5 minutes, on passe à autre chose sans creuser</span>
               </li>
             </ul>
-            <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
-              <p className="text-red-800">
+            <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-200">
+              <p className="text-orange-600">
                 <strong>Résultat :</strong> l'immense majorité arrive aux concours avec une compréhension superficielle qui s'effondre dès la première difficulté.
               </p>
             </div>
@@ -249,22 +249,22 @@ const PourquoiPythonPrepaECGPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
-              <Brain className="h-6 w-6 text-green-600" />
+              <Brain className="h-6 w-6 text-blue-600" />
               3. Pourquoi mon coaching Python fait la différence
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
                 <span><strong>Méthodo progressive :</strong> de zéro à l'autonomie complète en 4 modules structurés</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
                 <span><strong>Exercices calibrés :</strong> chaque exercice a été testé sur des centaines d'étudiants pour maximiser l'apprentissage</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
                 <span><strong>Suivi personnalisé :</strong> tracking de progression + feedback instantané sur tes erreurs</span>
               </li>
             </ul>
@@ -272,16 +272,16 @@ const PourquoiPythonPrepaECGPage = () => {
         </Card>
 
         {/* Call to action final */}
-        <Card className="bg-gradient-to-r from-green-50 to-blue-50 border-green-200">
+        <Card className="bg-gradient-to-r from-blue-500 to-blue-50 border-blue-200">
           <CardContent className="p-8 text-center">
-            <h3 className="text-2xl font-bold mb-4 text-green-800">
+            <h3 className="text-2xl font-bold mb-4 text-blue-600">
               Prêt à transformer ta relation avec Python ?
             </h3>
-            <p className="text-green-700 mb-6 text-lg">
+            <p className="text-blue-600 mb-6 text-lg">
               Rejoins les centaines d'étudiants qui ont déjà pris de l'avance grâce à cette formation.
             </p>
             <Link to="/formation/python-fondamentaux">
-              <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg">
+              <Button size="lg" className="bg-blue-50 hover:bg-blue-50 text-white px-8 py-4 text-lg">
                 <Code className="h-5 w-5 mr-2" />
                 Commencer maintenant
               </Button>

@@ -84,9 +84,9 @@ const PythonExercicesPage: React.FC = () => {
           const IconComponent = module.icon;
           const colorClasses = {
             orange: "from-[#FF6B00]/10 to-[#FF7A1C]/10 border-[#FF7A1C] hover:border-[#FF6B00]",
-            green: "from-green-100 to-green-50 border-green-200 hover:border-green-400",
+            green: "from-blue-500 to-blue-600 border-blue-200 hover:border-blue-200",
             blue: "from-blue-100 to-blue-50 border-blue-200 hover:border-blue-400",
-            purple: "from-purple-100 to-purple-50 border-purple-200 hover:border-purple-400"
+            purple: "from-blue-500 to-blue-600 border-blue-200 hover:border-blue-200"
           };
           return <Link key={module.id} to={module.link} className="block">
                 <Card className={`bg-gradient-to-br ${colorClasses[module.color as keyof typeof colorClasses]} transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer border-2`}>

@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 
 export const CallToActionSection = () => {
   return (
-    <section className="py-16 px-4">
+    <section className="py-8 px-4">
       <div className="container mx-auto text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-8">
           Prêt à transformer ta <span className="bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent">réussite</span> ?

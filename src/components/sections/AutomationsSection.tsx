@@ -7,13 +7,13 @@ import { CheckCircle, TrendingUp, Languages, Globe, Mic } from 'lucide-react';
 
 export const AutomationsSection = () => {
   return (
-    <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white">
+    <section className="py-12 sm:py-8 px-4 sm:px-6 bg-white">
       <div className="container mx-auto">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4">
           Nos <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">générateurs IA</span>
         </h2>
         <p className="text-center text-gray-600 mb-8 sm:mb-12 max-w-2xl mx-auto text-base sm:text-lg">
-          Outils d'intelligence artificielle spécialisés qui automatisent votre préparation et vous font gagner des heures de travail.
+Outils d'intelligence artificielle qui vous font gagner des heures de travail.
         </p>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">

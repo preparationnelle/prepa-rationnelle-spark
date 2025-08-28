@@ -68,8 +68,8 @@ export const PythonModuleQuiz: React.FC<PythonModuleQuizProps> = ({
   const score = answers.filter(Boolean).length;
   const colorClasses = {
     blue: "border-blue-200 bg-gradient-to-br from-blue-50 to-violet-50 text-blue-700",
-    green: "border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 text-green-700",
-    purple: "border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50 text-purple-700"
+    green: "border-blue-200 bg-gradient-to-br from-blue-500 to-emerald-50 text-blue-600",
+    purple: "border-blue-200 bg-gradient-to-br from-blue-500 to-pink-50 text-blue-600"
   };
 
   if (isCompleted) {
@@ -147,18 +147,18 @@ export const PythonModuleQuiz: React.FC<PythonModuleQuizProps> = ({
             <div className="space-y-3">
               <div className={`p-3 rounded flex items-center gap-2 ${
                 answers[currentQuestion] 
-                  ? 'bg-green-50 border border-green-200' 
-                  : 'bg-red-50 border border-red-200'
+                  ? 'bg-blue-50 border border-blue-200' 
+                  : 'bg-orange-50 border border-orange-200'
               }`}>
                 {answers[currentQuestion] ? (
                   <>
-                    <CheckCircle className="h-5 w-5 text-green-600" />
-                    <span className="text-green-700 font-semibold">Correct !</span>
+                    <CheckCircle className="h-5 w-5 text-blue-600" />
+                    <span className="text-blue-600 font-semibold">Correct !</span>
                   </>
                 ) : (
                   <>
-                    <XCircle className="h-5 w-5 text-red-600" />
-                    <span className="text-red-700 font-semibold">Incorrect</span>
+                    <XCircle className="h-5 w-5 text-orange-600" />
+                    <span className="text-orange-600 font-semibold">Incorrect</span>
                   </>
                 )}
               </div>
@@ -184,8 +184,8 @@ export const PythonModuleQuiz: React.FC<PythonModuleQuizProps> = ({
           )}
 
           {questions[currentQuestion].hint && !showResult && (
-            <div className="p-3 bg-yellow-50 border border-yellow-200 rounded">
-              <p className="text-yellow-700 text-sm">
+            <div className="p-3 bg-orange-50 border border-orange-200 rounded">
+              <p className="text-orange-600 text-sm">
                 💡 <strong>Indice :</strong> {questions[currentQuestion].hint}
               </p>
             </div>

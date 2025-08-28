@@ -139,6 +139,10 @@ const HealthVocabularyPage = () => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [progress, setProgress] = useState(0);
   const [showHelp, setShowHelp] = useState(false);
+  const [reviewCards, setReviewCards] = useState<Set<number>>(new Set());
+  const [isReviewMode, setIsReviewMode] = useState(false);
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
 
   const currentCard = vocabularyData[currentCardIndex];
 
@@ -273,7 +277,7 @@ const HealthVocabularyPage = () => {
             </div>
           </CardHeader>
           <CardContent className="p-8">
-            <div className="relative min-h-[300px] flex items-center justify-center cursor-pointer">
+                          <div className="relative min-h-[240px] max-h-[280px] flex items-center justify-center cursor-pointer">
               {/* Face avant */}
               <div 
                 className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${
@@ -370,23 +374,13 @@ const HealthVocabularyPage = () => {
             <CardHeader className="bg-gradient-to-r from-yellow-50 to-orange-50">
               <CardTitle className="flex items-center gap-2">
                 <HelpCircle className="h-5 w-5 text-yellow-600" />
-                Raccourcis clavier
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                <div>
-                  <p className="font-semibold mb-2">Navigation :</p>
-                  <p>← → : Carte précédente/suivante</p>
-                  <p>Espace : Retourner la carte</p>
-                </div>
                 <div>
                   <p className="font-semibold mb-2">Actions :</p>
                   <p>R : Recommencer</p>
                   <p>S : Mélanger</p>
                 </div>
-              </div>
-            </CardContent>
+              </CardTitle>
+            </CardHeader>
           </Card>
         )}
 
@@ -426,6 +420,80 @@ const HealthVocabularyPage = () => {
           </CardContent>
         </Card>
       </div>
+
+      {/* Raccourcis clavier - Format compact */}
+      <div className="mt-6 p-2 bg-gray-50 rounded-lg border border-gray-200">
+        <div className="text-center mb-1">
+          <h4 className="text-sm font-semibold text-gray-700">Raccourcis</h4>
+        </div>
+        <div className="flex flex-wrap justify-center gap-3 text-xs text-gray-600">
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">←</kbd>
+            <span>Précédent</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">→</kbd>
+            <span>Suivant</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">↵</kbd>
+            <span>Retourner</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">␣</kbd>
+            <span>Retourner</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">R</kbd>
+            <span>À revoir</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">S</kbd>
+            <span>Révision</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Message de félicitations et révision */}
+      {currentIndex === totalCards - 1 && (
+        <div className="text-center mt-8 p-6 bg-gradient-to-r from-orange-50 to-blue-50 rounded-lg border-2 border-orange-200">
+          <h3 className="text-xl font-bold mb-3 text-orange-700">
+            🎉 Félicitations !
+          </h3>
+          <p className="text-gray-600 mb-4">
+            Vous avez terminé toutes les cartes de vocabulaire santé !
+          </p>
+
+          {reviewCards.size > 0 && (
+            <div className="bg-orange-100 border border-orange-300 rounded-lg p-4 mb-4">
+              <p className="text-orange-800 font-semibold">
+                📚 Vous avez {reviewCards.size} carte{reviewCards.size > 1 ? 's' : ''} à réviser
+              </p>
+              <p className="text-orange-700 text-sm mt-1">
+                Concentrez-vous sur les mots que vous voulez maîtriser parfaitement
+              </p>
+            </div>
+          )}
+
+          <div className="mt-4 flex flex-col sm:flex-row justify-center gap-3">
+            <Button
+              onClick={resetCards}
+              className="bg-orange-200 hover:bg-orange-300 text-gray-800 px-6 py-2 font-medium"
+            >
+              🔄 Recommencer cette série
+            </Button>
+
+            {reviewCards.size > 0 && (
+              <Button
+                onClick={toggleReviewMode}
+                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 font-medium"
+              >
+                📖 Mode révision ({reviewCards.size})
+              </Button>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

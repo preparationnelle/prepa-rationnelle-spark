@@ -214,16 +214,16 @@ print(n)
           </Button>
           
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent mb-4">
               {exercises[selectedExercise - 1].title}
             </h1>
-            <Badge variant="secondary" className="bg-green-100 text-green-700">
+            <Badge variant="secondary" className="bg-blue-50 text-blue-600">
               {exercises[selectedExercise - 1].difficulty}
             </Badge>
           </div>
         </div>
 
-        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-br from-orange-50 to-red-50 shadow-lg">
+        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-br from-orange-50 to-orange-600 shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-orange-700">
               <Calculator className="h-6 w-6" />
@@ -259,7 +259,7 @@ print(n)
                   <Button 
                     variant="outline" 
                     onClick={() => toggleCorrection(index)}
-                    className="flex items-center gap-2 border-green-300 text-green-700 hover:bg-green-50"
+                    className="flex items-center gap-2 border-blue-200 text-blue-600 hover:bg-blue-50"
                   >
                     {showCorrections.has(index) ? (
                       <>
@@ -277,16 +277,16 @@ print(n)
 
                 {/* Correction (affichée conditionnellement) */}
                 {showCorrections.has(index) && (
-                  <Card className="border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg">
+                  <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-500 to-emerald-50 shadow-lg">
                     <CardHeader>
-                      <CardTitle className="flex items-center gap-3 text-green-700">
+                      <CardTitle className="flex items-center gap-3 text-blue-600">
                         <Code className="h-6 w-6" />
                         Correction
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                        <pre className="text-green-400 text-sm font-mono">
+                        <pre className="text-blue-600 text-sm font-mono">
                           <code>{exercice.correction}</code>
                         </pre>
                       </div>
@@ -308,7 +308,7 @@ print(n)
             </CardHeader>
             <CardContent>
               <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                <pre className="text-green-400 text-sm font-mono">
+                <pre className="text-blue-600 text-sm font-mono">
                   <code>{exercises[selectedExercise - 1].content.code}</code>
                 </pre>
               </div>
@@ -334,7 +334,7 @@ print(n)
   return (
     <PythonModuleLayout>
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-500 via-red-500 to-orange-600 bg-clip-text text-transparent mb-4">
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 bg-clip-text text-transparent mb-4">
           Module 0 : Exercices - Fondamentaux
         </h1>
         <p className="text-xl text-muted-foreground">
@@ -342,7 +342,7 @@ print(n)
         </p>
       </div>
 
-      <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-br from-orange-50 to-red-50 shadow-lg">
+      <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-br from-orange-50 to-orange-600 shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-3 text-orange-700">
             <Target className="h-6 w-6" />
@@ -381,7 +381,7 @@ print(n)
             <Card 
               key={exercise.id} 
               className={`hover:shadow-lg transition-shadow cursor-pointer border-2 ${
-                isGreen ? 'border-green-200 hover:border-green-300' : 
+                isGreen ? 'border-blue-200 hover:border-blue-200' : 
                 isOrange ? 'border-orange-200 hover:border-orange-300' : 
                 'border-gray-200 hover:border-gray-300'
               }`} 
@@ -390,14 +390,14 @@ print(n)
               <CardHeader>
                 <div className="flex items-center gap-3">
                   <Calculator className={`h-6 w-6 ${
-                    isGreen ? 'text-green-600' : 
+                    isGreen ? 'text-blue-600' : 
                     isOrange ? 'text-orange-600' : 
                     'text-gray-600'
                   }`} />
                   <div>
                     <CardTitle className="text-lg">Exercice {exercise.id}</CardTitle>
                     <Badge variant="secondary" className={`mt-1 ${
-                      isGreen ? 'bg-green-100 text-green-700' : 
+                      isGreen ? 'bg-blue-50 text-blue-600' : 
                       isOrange ? 'bg-orange-100 text-orange-700' : 
                       'bg-gray-100 text-gray-700'
                     }`}>
@@ -408,7 +408,7 @@ print(n)
               </CardHeader>
               <CardContent>
                 <h3 className={`font-semibold mb-2 ${
-                  isGreen ? 'text-green-700' : 
+                  isGreen ? 'text-blue-600' : 
                   isOrange ? 'text-orange-700' : 
                   'text-gray-700'
                 }`}>
@@ -418,7 +418,7 @@ print(n)
                   {exercise.description}
                 </p>
                 <Button className={`w-full ${
-                  isGreen ? 'bg-green-600 hover:bg-green-700' : 
+                  isGreen ? 'bg-blue-50 hover:bg-blue-50' : 
                   isOrange ? 'bg-orange-600 hover:bg-orange-700' : 
                   'bg-gray-600 hover:bg-gray-700'
                 }`}>

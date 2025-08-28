@@ -53,7 +53,7 @@ const Module7MedioAmbienteClimaPage = () => {
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 py-12 relative z-10">
+      <div className="container mx-auto px-4 py-8 relative z-10">
         {/* En-tête du module */}
         <div className="text-center mb-10">
           <div className="flex justify-center mb-4">

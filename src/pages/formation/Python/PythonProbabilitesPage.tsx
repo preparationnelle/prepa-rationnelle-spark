@@ -24,22 +24,22 @@ const PythonProbabilitesPage = () => {
     <PythonModuleLayout>
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
-          <div className="p-3 rounded-lg bg-purple-500 text-white">
+          <div className="p-3 rounded-lg bg-blue-50 text-white">
             <BarChart3 className="h-8 w-8" />
           </div>
           <div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-500 via-pink-500 to-blue-600 bg-clip-text text-transparent">
               Module 3 - Probabilités
             </h1>
-            <Badge variant="secondary" className="mt-3 bg-gradient-to-r from-purple-400 to-pink-500 text-white font-semibold px-4 py-2">Module 3</Badge>
+            <Badge variant="secondary" className="mt-3 bg-gradient-to-r from-blue-500 to-pink-500 text-white font-semibold px-4 py-2">Module 3</Badge>
           </div>
         </div>
       </div>
 
         {/* Objectifs du module */}
-        <Card className="mb-8 border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50 shadow-lg">
+        <Card className="mb-8 border-2 border-blue-200 bg-gradient-to-br from-blue-500 to-pink-50 shadow-lg">
           <CardHeader>
-            <CardTitle className="flex items-center gap-3 text-purple-700">
+            <CardTitle className="flex items-center gap-3 text-blue-600">
               <Target className="h-6 w-6" />
               Objectifs du module
             </CardTitle>
@@ -75,31 +75,31 @@ const PythonProbabilitesPage = () => {
         </Card>
 
         {/* Imports et principes généraux */}
-        <Card className="mb-8 border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50 shadow-lg">
+        <Card className="mb-8 border-2 border-blue-200 bg-gradient-to-br from-blue-500 to-pink-50 shadow-lg">
           <CardHeader>
-            <CardTitle className="flex items-center gap-3 text-purple-700">
+            <CardTitle className="flex items-center gap-3 text-blue-600">
               <Code className="h-6 w-6" />
               Imports et principes généraux
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="bg-slate-900 rounded-lg p-4 mb-4">
-              <pre className="text-green-400 text-sm">
+              <pre className="text-blue-600 text-sm">
 {`import numpy as np
 import numpy.random as rd
 import matplotlib.pyplot as plt`}
               </pre>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 bg-purple-50 rounded-lg">
-                <h4 className="font-semibold text-purple-800 mb-2">Simulation</h4>
-                <p className="text-sm text-purple-700">
+              <div className="p-4 bg-blue-50 rounded-lg">
+                <h4 className="font-semibold text-blue-600 mb-2">Simulation</h4>
+                <p className="text-sm text-blue-600">
                   Quand le nombre de tirages devient grand, la fréquence observée se rapproche de la probabilité théorique
                 </p>
               </div>
-              <div className="p-4 bg-purple-50 rounded-lg">
-                <h4 className="font-semibold text-purple-800 mb-2">Monte-Carlo</h4>
-                <p className="text-sm text-purple-700">
+              <div className="p-4 bg-blue-50 rounded-lg">
+                <h4 className="font-semibold text-blue-600 mb-2">Monte-Carlo</h4>
+                <p className="text-sm text-blue-600">
                   Pour estimer une espérance, on simule un grand nombre de valeurs et on prend la moyenne
                 </p>
               </div>
@@ -110,7 +110,7 @@ import matplotlib.pyplot as plt`}
         {/* Génération aléatoire de base */}
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle className="flex items-center gap-3 text-purple-700">
+            <CardTitle className="flex items-center gap-3 text-blue-600">
               <Calculator className="h-6 w-6" />
               Génération aléatoire de base
             </CardTitle>
@@ -152,7 +152,7 @@ import matplotlib.pyplot as plt`}
         {/* Lois discrètes courantes */}
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle className="flex items-center gap-3 text-purple-700">
+            <CardTitle className="flex items-center gap-3 text-blue-600">
               <BarChart className="h-6 w-6" />
               Lois discrètes courantes
             </CardTitle>
@@ -203,7 +203,7 @@ import matplotlib.pyplot as plt`}
                     <div>
                       <h4 className="font-semibold mb-2">Fonction Bernoulli</h4>
                       <div className="bg-slate-900 rounded-lg p-4">
-                        <pre className="text-green-400 text-sm">
+                        <pre className="text-blue-600 text-sm">
 {`def bernoulli(p):
     """Retourne 1 avec une probabilité p, 0 sinon."""
     return 1 if rd.random() <= p else 0`}
@@ -213,7 +213,7 @@ import matplotlib.pyplot as plt`}
                     <div>
                       <h4 className="font-semibold mb-2">Fonction Géométrique</h4>
                       <div className="bg-slate-900 rounded-lg p-4">
-                        <pre className="text-green-400 text-sm">
+                        <pre className="text-blue-600 text-sm">
 {`def geometrique(p):
     """Retourne le rang de la première réussite (>= 1)."""
     n = 1
@@ -226,7 +226,7 @@ import matplotlib.pyplot as plt`}
                     <div>
                       <h4 className="font-semibold mb-2">Fonction Binomiale</h4>
                       <div className="bg-slate-900 rounded-lg p-4">
-                        <pre className="text-green-400 text-sm">
+                        <pre className="text-blue-600 text-sm">
 {`def binomiale(n, p):
     """Retourne le nombre de succès sur n essais."""
     S = 0
@@ -247,7 +247,7 @@ import matplotlib.pyplot as plt`}
         {/* Statistiques descriptives */}
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle className="flex items-center gap-3 text-purple-700">
+            <CardTitle className="flex items-center gap-3 text-blue-600">
               <TrendingUp className="h-6 w-6" />
               Statistiques descriptives (NumPy)
             </CardTitle>
@@ -293,7 +293,7 @@ import matplotlib.pyplot as plt`}
         {/* Graphiques Matplotlib */}
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle className="flex items-center gap-3 text-purple-700">
+            <CardTitle className="flex items-center gap-3 text-blue-600">
               <BarChart className="h-6 w-6" />
               Graphiques de base (Matplotlib)
             </CardTitle>
@@ -359,7 +359,7 @@ import matplotlib.pyplot as plt`}
                 <div>
                   <h4 className="font-semibold mb-2">Exemple d'intégrale</h4>
                   <div className="bg-slate-900 rounded-lg p-4">
-                    <pre className="text-green-400 text-sm">
+                    <pre className="text-blue-600 text-sm">
 {`def approx_Jn(n, m=5000):
     x = rd.exponential(1, m)
     y = -x / (1 + np.exp(-n * x))
@@ -380,7 +380,7 @@ import matplotlib.pyplot as plt`}
                 <div>
                   <h4 className="font-semibold mb-2">1. Deux faces "Pile" consécutives au pile ou face</h4>
                   <div className="bg-slate-900 rounded-lg p-4">
-                    <pre className="text-green-400 text-sm">
+                    <pre className="text-blue-600 text-sm">
 {`def simul_X():
     tirs, pile = 0, 0
     while pile < 2:
@@ -393,7 +393,7 @@ import matplotlib.pyplot as plt`}
                 <div>
                   <h4 className="font-semibold mb-2">2. Jeu de dés : le joueur A gagne s'il obtient 6 avant B</h4>
                   <div className="bg-slate-900 rounded-lg p-4">
-                    <pre className="text-green-400 text-sm">
+                    <pre className="text-blue-600 text-sm">
 {`def partie():
     while True:
         if rd.randint(1, 7) == 6:  # A
@@ -408,7 +408,7 @@ proba_A = np.mean([partie() for _ in range(10000)])`}
                 <div>
                   <h4 className="font-semibold mb-2">3. Géométrique(p=0.2) : comparaison simulation / théorie</h4>
                   <div className="bg-slate-900 rounded-lg p-4">
-                    <pre className="text-green-400 text-sm">
+                    <pre className="text-blue-600 text-sm">
 {`ech = rd.geometric(0.2, 10000)
 c = np.arange(0.5, 21)
 plt.hist(ech, c, density=True, label="Simulation")
@@ -428,14 +428,14 @@ plt.legend(); plt.show()`}
         {/* Mémo-commandes rapides */}
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle className="flex items-center gap-3 text-purple-700">
+            <CardTitle className="flex items-center gap-3 text-blue-600">
               <Code className="h-6 w-6" />
               Mémo-commandes rapides
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="bg-slate-900 rounded-lg p-4">
-              <pre className="text-green-400 text-sm">
+              <pre className="text-blue-600 text-sm">
 {`rd.random()              # uniforme 0–1
 rd.randint(a, b)         # uniforme discrète a … b-1
 rd.binomial(n, p)        # binomiale
@@ -451,31 +451,31 @@ rd.normal(mean, sigma)   # normale`}
         {/* Quiz express */}
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-3 text-purple-700">
+            <CardTitle className="flex items-center gap-3 text-blue-600">
               <Target className="h-6 w-6" />
               Quiz express
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              <div className="p-3 bg-purple-50 rounded-lg">
+              <div className="p-3 bg-blue-50 rounded-lg">
                 <p className="text-sm font-medium">1. <code>rd.random((3,4))</code> produit-il bien 12 réels indépendants entre 0 et 1 ?</p>
               </div>
-              <div className="p-3 bg-purple-50 rounded-lg">
+              <div className="p-3 bg-blue-50 rounded-lg">
                 <p className="text-sm font-medium">2. Quelle commande simule une valeur de loi de Poisson avec paramètre 2 ?</p>
               </div>
-              <div className="p-3 bg-purple-50 rounded-lg">
+              <div className="p-3 bg-blue-50 rounded-lg">
                 <p className="text-sm font-medium">3. Pour estimer une espérance, quelle syntaxe est la plus simple ?</p>
               </div>
-              <div className="p-3 bg-purple-50 rounded-lg">
+              <div className="p-3 bg-blue-50 rounded-lg">
                 <p className="text-sm font-medium">4. Pourquoi ajouter <code>density=True</code> dans un histogramme ?</p>
               </div>
-              <div className="p-3 bg-purple-50 rounded-lg">
+              <div className="p-3 bg-blue-50 rounded-lg">
                 <p className="text-sm font-medium">5. Une ligne pour simuler dix mille valeurs de la loi géométrique avec paramètre 0.25 ?</p>
               </div>
             </div>
-            <div className="mt-4 p-4 bg-green-50 rounded-lg border border-green-200">
-              <p className="text-sm text-green-800">
+            <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <p className="text-sm text-blue-600">
                 <strong>Les réponses se déduisent des sections précédentes.</strong>
               </p>
             </div>

@@ -18,19 +18,19 @@ const HomePage: React.FC = () => {
       <HeroSection />
 
       {/* Section Formations avec onglets pour une meilleure organisation */}
-      <section className="py-16 px-4 sm:px-6 bg-gray-50">
+      <section className="pb-16 px-4 sm:px-6 bg-gray-50">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6">
-            <span className="text-amber-600 font-bold">Nos formations spécialisées</span>
+            <span className="text-orange-600 font-bold">Nos formations spécialisées</span>
           </h2>
           <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto text-base sm:text-lg">
-            Méthodes éprouvées, +250 exercices validés, et accompagnement personnalisé pour +5 points garantis.
+            Méthodes éprouvées, +250 exercices ultra classiques, flashcards, quizz
           </p>
 
           <div className="w-full max-w-6xl mx-auto">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Maths ECG */}
-                <Link to="/formation/maths" className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center group">
+                <Link to="/formation/maths" className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-yellow-200 flex flex-col items-center text-center group">
                   <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-yellow-200 transition-colors">
                     <Calculator className="h-8 w-8 text-yellow-600" />
                   </div>
@@ -53,7 +53,7 @@ const HomePage: React.FC = () => {
                 </Link>
                 
                 {/* Python ECG */}
-                <Link to="/pourquoi-python-prepa-ecg" className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center group">
+                <Link to="/pourquoi-python-prepa-ecg" className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-blue-200 flex flex-col items-center text-center group">
                   <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-200 transition-colors">
                     <Code className="h-8 w-8 text-blue-600" />
                   </div>
@@ -76,7 +76,7 @@ const HomePage: React.FC = () => {
                 </Link>
                 
                 {/* Anglais ECG */}
-                <Link to="/formation/anglais" className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center group">
+                <Link to="/formation/anglais" className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-green-200 flex flex-col items-center text-center group">
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-green-200 transition-colors">
                     <Languages className="h-8 w-8 text-green-600" />
                   </div>
@@ -99,7 +99,7 @@ const HomePage: React.FC = () => {
                 </Link>
 
                 {/* Espagnol ECG */}
-                <Link to="/formation/espagnol" className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center group">
+                <Link to="/formation/espagnol" className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-red-200 flex flex-col items-center text-center group">
                   <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-red-200 transition-colors">
                     <Languages className="h-8 w-8 text-red-600" />
                   </div>
@@ -122,7 +122,7 @@ const HomePage: React.FC = () => {
                 </Link>
 
                 {/* Géopolitique */}
-                <Link to="/formation/geopolitique" className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center group">
+                <Link to="/formation/geopolitique" className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 flex flex-col items-center text-center group">
                   <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors">
                     <Globe className="h-8 w-8 text-orange-600" />
                   </div>
@@ -145,7 +145,7 @@ const HomePage: React.FC = () => {
                 </Link>
 
                 {/* Culture Générale */}
-                <Link to="/formation/culture-generale" className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center group">
+                <Link to="/formation/culture-generale" className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-purple-200 flex flex-col items-center text-center group">
                   <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-purple-200 transition-colors">
                     <BookOpen className="h-8 w-8 text-purple-600" />
                   </div>

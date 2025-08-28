@@ -7,7 +7,7 @@ export const PodcastSection = () => {
   const podcastUrl = "https://www.europe1.fr/emissions/la-france-bouge-academie/prepa-rationnelle-concue-pour-revolutionner-le-monde-la-preparation-pour-integrer-les-ecoles-de-commerce-667526";
   
   return (
-    <section className="py-20 px-4 relative overflow-hidden">
+    <section className="py-8 px-4 relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-orange-50/30 via-white to-blue-50/30"></div>
       

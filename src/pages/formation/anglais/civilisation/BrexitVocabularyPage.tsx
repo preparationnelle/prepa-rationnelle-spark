@@ -254,62 +254,24 @@ const BrexitVocabularyPage = () => {
 
         {/* Carte principale */}
         <Card className="mb-8 border-2 border-red-200">
-          <CardHeader className="bg-gradient-to-r from-red-50 to-pink-50">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <Badge className={`${getCategoryColor(currentCard.category)} text-white`}>
-                  {currentCard.category}
-                </Badge>
-                <span className="text-sm text-gray-600">#{currentCard.id}</span>
-              </div>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setShowHelp(!showHelp)}
-              >
-                <Keyboard className="h-4 w-4 mr-2" />
-                Raccourcis
-              </Button>
-            </div>
-          </CardHeader>
-          <CardContent className="p-8">
-            <div className="relative min-h-[300px] flex items-center justify-center cursor-pointer">
-              {/* Face avant */}
-              <div 
-                className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${
-                  isFlipped ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
-                }`}
-              >
-                <div className="text-center">
-                  <h2 className="text-3xl font-bold text-gray-800 mb-4">
-                    {currentCard.french}
-                  </h2>
-                  <p className="text-gray-600">Cliquez pour voir la traduction</p>
+            <CardHeader className="bg-gradient-to-r from-yellow-50 to-orange-50">
+              <CardTitle className="flex items-center gap-2">
+                <HelpCircle className="h-5 w-5 text-yellow-600" />
+                <span>Actions disponibles</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span className="font-medium">R:</span>
+                  <span className="text-gray-600">Recommencer</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="font-medium">S:</span>
+                  <span className="text-gray-600">Mélanger</span>
                 </div>
               </div>
-
-              {/* Face arrière */}
-              <div 
-                className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${
-                  isFlipped ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-                }`}
-              >
-                <div className="text-center">
-                  <h2 className="text-3xl font-bold text-red-600 mb-4">
-                    {currentCard.english}
-                  </h2>
-                  <p className="text-gray-600">Traduction en anglais</p>
-                </div>
-              </div>
-
-              {/* Zone cliquable */}
-              <div 
-                className="absolute inset-0 z-10"
-                onClick={() => setIsFlipped(!isFlipped)}
-              />
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>        </Card>
 
         {/* Contrôles */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
@@ -370,61 +332,43 @@ const BrexitVocabularyPage = () => {
             <CardHeader className="bg-gradient-to-r from-yellow-50 to-orange-50">
               <CardTitle className="flex items-center gap-2">
                 <HelpCircle className="h-5 w-5 text-yellow-600" />
-                Raccourcis clavier
+                <span>Actions disponibles</span>
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                <div>
-                  <p className="font-semibold mb-2">Navigation :</p>
-                  <p>← → : Carte précédente/suivante</p>
-                  <p>Espace : Retourner la carte</p>
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span className="font-medium">R:</span>
+                  <span className="text-gray-600">Recommencer</span>
                 </div>
-                <div>
-                  <p className="font-semibold mb-2">Actions :</p>
-                  <p>R : Recommencer</p>
-                  <p>S : Mélanger</p>
+                <div className="flex justify-between">
+                  <span className="font-medium">S:</span>
+                  <span className="text-gray-600">Mélanger</span>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </CardContent>          </Card>
         )}
 
         {/* Statistiques */}
         <Card className="border-2 border-gray-200">
-          <CardHeader className="bg-gradient-to-r from-gray-50 to-slate-50">
-            <CardTitle className="flex items-center gap-2">
-              <Flag className="h-5 w-5 text-gray-600" />
-              Statistiques du module
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div>
-                <p className="text-2xl font-bold text-red-600">{vocabularyData.length}</p>
-                <p className="text-sm text-gray-600">Mots au total</p>
+            <CardHeader className="bg-gradient-to-r from-yellow-50 to-orange-50">
+              <CardTitle className="flex items-center gap-2">
+                <HelpCircle className="h-5 w-5 text-yellow-600" />
+                <span>Actions disponibles</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span className="font-medium">R:</span>
+                  <span className="text-gray-600">Recommencer</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="font-medium">S:</span>
+                  <span className="text-gray-600">Mélanger</span>
+                </div>
               </div>
-              <div>
-                <p className="text-2xl font-bold text-green-600">
-                  {Math.ceil(vocabularyData.length / 10)}
-                </p>
-                <p className="text-sm text-gray-600">Catégories</p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-red-600">
-                  {Math.round(progress)}%
-                </p>
-                <p className="text-sm text-gray-600">Progression</p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-orange-600">
-                  {currentCardIndex + 1}
-                </p>
-                <p className="text-sm text-gray-600">Carte actuelle</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>        </Card>
       </div>
     </div>
   );

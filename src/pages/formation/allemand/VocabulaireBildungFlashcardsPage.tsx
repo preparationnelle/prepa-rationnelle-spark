@@ -273,9 +273,17 @@ const VocabulaireBildungFlashcardsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
+      {/* Floating elements - Orange and blue bubbles */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
+
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs font-medium text-gray-600">
             <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
@@ -296,18 +304,11 @@ const VocabulaireBildungFlashcardsPage = () => {
         </div>
       </nav>
 
-      {/* Arrière-plan animé */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-indigo-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse" style={{animationDelay: '2s'}}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-sky-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{animationDelay: '4s'}}></div>
-      </div>
-
-      <div className="container mx-auto px-4 py-12 relative z-10">
+      <div className="container mx-auto px-4 py-8 relative z-10">
         {/* En-tête */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-blue-600 text-white">
+            <div className="p-3 rounded-lg bg-gradient-to-br from-orange-500 to-blue-500 text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Vocabulaire Éducation et Formation
@@ -318,7 +319,7 @@ const VocabulaireBildungFlashcardsPage = () => {
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">{cards.length} mots</Badge>
             <Badge variant="outline">Module 7 - Bildung und Ausbildung</Badge>
-            <Badge className="bg-blue-600">Flashcards</Badge>
+            <Badge className="bg-gradient-to-r from-orange-500 to-blue-500 text-white">Flashcards</Badge>
           </div>
         </div>
 
@@ -326,11 +327,11 @@ const VocabulaireBildungFlashcardsPage = () => {
         <div className="max-w-2xl mx-auto mb-6">
           <div className="flex justify-between items-center mb-2">
             <span className="text-sm font-medium text-gray-700">Progression</span>
-            <span className="text-sm font-medium text-blue-600">{currentIndex + 1} / {cards.length}</span>
+            <span className="text-sm font-medium text-orange-600">{currentIndex + 1} / {cards.length}</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2.5">
-            <div 
-              className="bg-gradient-to-r from-blue-500 to-indigo-500 h-2.5 rounded-full transition-all duration-300"
+            <div
+              className="bg-gradient-to-r from-orange-500 to-blue-500 h-2.5 rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -367,14 +368,14 @@ const VocabulaireBildungFlashcardsPage = () => {
 
           {/* Aide aux raccourcis */}
           {showHelp && (
-            <Card className="mb-4 bg-blue-50 border-blue-200">
+            <Card className="mb-4 bg-orange-50 border-orange-200">
               <CardContent className="p-4">
-                <h3 className="font-semibold text-blue-900 mb-3">Raccourcis clavier :</h3>
-                <div className="grid grid-cols-2 gap-2 text-sm text-blue-700">
-                  <div><kbd className="bg-blue-100 px-2 py-1 rounded">Espace</kbd> ou <kbd className="bg-blue-100 px-2 py-1 rounded">Entrée</kbd> : Retourner la carte</div>
-                  <div><kbd className="bg-blue-100 px-2 py-1 rounded">←</kbd> <kbd className="bg-blue-100 px-2 py-1 rounded">→</kbd> : Navigation</div>
-                  <div><kbd className="bg-blue-100 px-2 py-1 rounded">S</kbd> : Mélanger</div>
-                  <div><kbd className="bg-blue-100 px-2 py-1 rounded">R</kbd> : Recommencer</div>
+                <h3 className="font-semibold text-orange-900 mb-3">Raccourcis clavier :</h3>
+                <div className="grid grid-cols-2 gap-2 text-sm text-orange-700">
+                  <div><kbd className="bg-orange-100 px-2 py-1 rounded">Espace</kbd> ou <kbd className="bg-orange-100 px-2 py-1 rounded">Entrée</kbd> : Retourner la carte</div>
+                  <div><kbd className="bg-orange-100 px-2 py-1 rounded">←</kbd> <kbd className="bg-orange-100 px-2 py-1 rounded">→</kbd> : Navigation</div>
+                  <div><kbd className="bg-orange-100 px-2 py-1 rounded">S</kbd> : Mélanger</div>
+                  <div><kbd className="bg-orange-100 px-2 py-1 rounded">R</kbd> : Recommencer</div>
                 </div>
               </CardContent>
             </Card>
@@ -399,13 +400,13 @@ const VocabulaireBildungFlashcardsPage = () => {
               <div className="absolute top-4 left-4 flex items-center gap-2">
                 {isFlipped ? (
                   <>
-                    <Eye className="h-4 w-4 text-blue-600" />
-                    <span className="text-sm font-medium text-blue-600">Allemand</span>
+                    <Eye className="h-4 w-4 text-orange-600" />
+                    <span className="text-sm font-medium text-orange-600">Allemand</span>
                   </>
                 ) : (
                   <>
-                    <EyeOff className="h-4 w-4 text-blue-600" />
-                    <span className="text-sm font-medium text-blue-600">Français</span>
+                    <EyeOff className="h-4 w-4 text-orange-600" />
+                    <span className="text-sm font-medium text-orange-600">Français</span>
                   </>
                 )}
               </div>
@@ -459,13 +460,13 @@ const VocabulaireBildungFlashcardsPage = () => {
 
         {/* Section informative */}
         <div className="max-w-4xl mx-auto mt-12">
-          <Card className="border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50 shadow-lg">
+          <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50 shadow-lg">
             <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-blue-900 mb-4">🎓 Conseils pour l'apprentissage</h3>
+              <h3 className="text-xl font-bold text-orange-900 mb-4">🎓 Conseils pour l'apprentissage</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-3">
-                  <h4 className="font-semibold text-blue-800">Technique de révision :</h4>
-                  <ul className="text-sm text-blue-700 space-y-1">
+                  <h4 className="font-semibold text-orange-800">Technique de révision :</h4>
+                  <ul className="text-sm text-orange-700 space-y-1">
                     <li>• Commencez par le français (plus familier)</li>
                     <li>• Tentez de deviner l'allemand avant de retourner</li>
                     <li>• Répétez à voix haute pour la prononciation</li>
@@ -473,8 +474,8 @@ const VocabulaireBildungFlashcardsPage = () => {
                   </ul>
                 </div>
                 <div className="space-y-3">
-                  <h4 className="font-semibold text-blue-800">Pour les concours :</h4>
-                  <ul className="text-sm text-blue-700 space-y-1">
+                  <h4 className="font-semibold text-orange-800">Pour les concours :</h4>
+                  <ul className="text-sm text-orange-700 space-y-1">
                     <li>• Vocabulaire essentiel pour le système dual allemand</li>
                     <li>• Termes techniques de l'enseignement supérieur</li>
                     <li>• Base indispensable pour Module 7 - Bildung und Ausbildung</li>

@@ -295,7 +295,7 @@ const ImmigrationVocabularyPage = () => {
                 }`}
               >
                 <div className="text-center">
-                  <h2 className="text-3xl font-bold text-blue-600 mb-4">
+                  <h2 className="text-3xl font-bold text-orange-800 mb-4">
                     {currentCard.english}
                   </h2>
                   <p className="text-gray-600">Traduction en anglais</p>
@@ -370,16 +370,6 @@ const ImmigrationVocabularyPage = () => {
             <CardHeader className="bg-gradient-to-r from-yellow-50 to-orange-50">
               <CardTitle className="flex items-center gap-2">
                 <HelpCircle className="h-5 w-5 text-yellow-600" />
-                Raccourcis clavier
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                <div>
-                  <p className="font-semibold mb-2">Navigation :</p>
-                  <p>← → : Carte précédente/suivante</p>
-                  <p>Espace : Retourner la carte</p>
-                </div>
                 <div>
                   <p className="font-semibold mb-2">Actions :</p>
                   <p>R : Recommencer</p>
@@ -401,7 +391,7 @@ const ImmigrationVocabularyPage = () => {
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               <div>
-                <p className="text-2xl font-bold text-blue-600">{vocabularyData.length}</p>
+                <p className="text-2xl font-bold text-orange-800">{vocabularyData.length}</p>
                 <p className="text-sm text-gray-600">Mots au total</p>
               </div>
               <div>
@@ -411,7 +401,7 @@ const ImmigrationVocabularyPage = () => {
                 <p className="text-sm text-gray-600">Catégories</p>
               </div>
               <div>
-                <p className="text-2xl font-bold text-blue-600">
+                <p className="text-2xl font-bold text-orange-800">
                   {Math.round(progress)}%
                 </p>
                 <p className="text-sm text-gray-600">Progression</p>

@@ -77,7 +77,7 @@ const PourquoiPythonPrepaECGPage = () => {
         </Card>
 
         {/* Accès direct à la formation */}
-        <Card className="mb-8 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200 shadow-lg">
+        <Card className="mb-8 bg-gradient-to-r from-blue-50 to-blue-600 border-blue-200 shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-2xl">
               <BookOpen className="h-8 w-8 text-blue-600" /> Accédez directement à la formation Python ECG
@@ -157,19 +157,19 @@ const PourquoiPythonPrepaECGPage = () => {
             <p>Depuis la réforme, Python remplace Scilab dans les épreuves de mathématiques appliquées comme approfondies. Résultat :</p>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
                 <span>
                   <strong>10 à 20 %</strong> selon les écoles (BCE, Ecricome, EDHEC, EM Lyon, HEC, etc.)
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
                 <span>
                   <strong>Présence systématique à l'oral :</strong> impossible de poursuivre l'entretien HEC sans répondre correctement à la question Python
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
                 <span>
                   <strong>Questions souvent "cadeaux" :</strong> analyser un script, compléter une fonction, traduire une somme ou un raisonnement en code
                 </span>
@@ -187,32 +187,32 @@ const PourquoiPythonPrepaECGPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
-              <TrendingUp className="h-6 w-6 text-red-600" /> 2. Pourquoi la plupart des préparationnaires passent à côté
+              <TrendingUp className="h-6 w-6 text-orange-600" /> 2. Pourquoi la plupart des préparationnaires passent à côté
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <span className="text-red-500 font-bold">•</span>{' '}
+                <span className="text-orange-600 font-bold">•</span>{' '}
                 <span>
                   <strong>Effet de mode inversé :</strong> « tout le monde dit que Python, c'est facile » → donc personne ne l'approfondit vraiment
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-red-500 font-bold">•</span>{' '}
+                <span className="text-orange-600 font-bold">•</span>{' '}
                 <span>
                   <strong>Absence de méthodo :</strong> on survole les commandes en TP, sans vraie feuille de route
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-red-500 font-bold">•</span>{' '}
+                <span className="text-orange-600 font-bold">•</span>{' '}
                 <span>
                   <strong>Stress de l'install :</strong> certains n'ont jamais réussi à faire tourner Numpy sur leur PC ; d'autres découvrent Colab la veille du DS
                 </span>
               </li>
             </ul>
-            <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
-              <p className="text-red-800">
+            <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-200">
+              <p className="text-orange-600">
                 <strong>Résultat :</strong> le jour J, 80 % des candidats trébuchent sur trois erreurs classiques : indices hors liste, confusion entre print et return, boucle mal initialisée.
               </p>
             </div>
@@ -223,14 +223,14 @@ const PourquoiPythonPrepaECGPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
-              <Brain className="h-6 w-6 text-green-600" /> 3. La stratégie gagnante : régularité + feedback immédiat
+              <Brain className="h-6 w-6 text-blue-600" /> 3. La stratégie gagnante : régularité + feedback immédiat
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <p>Pour engranger les +3 à +5 pts sûrs, il suffit de :</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-green-50 p-4 rounded-lg text-center">
-                <div className="text-2xl font-bold text-green-600 mb-2">1</div>
+              <div className="bg-blue-50 p-4 rounded-lg text-center">
+                <div className="text-2xl font-bold text-blue-600 mb-2">1</div>
                 <p className="text-sm">
                   Mémoriser les <strong>54 commandes clés</strong> (import, boucles, Numpy, random, matplotlib)
                 </p>
@@ -241,8 +241,8 @@ const PourquoiPythonPrepaECGPage = () => {
                   S'entraîner <strong>1 h par semaine</strong> sur des questions type-concours
                 </p>
               </div>
-              <div className="bg-purple-50 p-4 rounded-lg text-center">
-                <div className="text-2xl font-bold text-purple-600 mb-2">3</div>
+              <div className="bg-blue-50 p-4 rounded-lg text-center">
+                <div className="text-2xl font-bold text-blue-600 mb-2">3</div>
                 <p className="text-sm">
                   Recevoir un <strong>feedback instantané</strong> qui corrige tes erreurs
                 </p>
@@ -258,7 +258,7 @@ const PourquoiPythonPrepaECGPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
-              <Code className="h-6 w-6 text-purple-600" /> 4. Ce que tu vas maîtriser (et comment)
+              <Code className="h-6 w-6 text-blue-600" /> 4. Ce que tu vas maîtriser (et comment)
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -312,7 +312,7 @@ const PourquoiPythonPrepaECGPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
-              <Star className="h-6 w-6 text-yellow-600" /> 5. L'offre en détail
+              <Star className="h-6 w-6 text-orange-600" /> 5. L'offre en détail
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -331,21 +331,21 @@ const PourquoiPythonPrepaECGPage = () => {
             <div>
               <h4 className="font-bold text-lg mb-4">Bonus</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                  <h5 className="font-semibold text-green-800">1. Pack 50 exercices</h5>
-                  <p className="text-sm text-green-700">À maîtriser avant les concours (avec corrigés vidéo)</p>
+                <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                  <h5 className="font-semibold text-blue-600">1. Pack 50 exercices</h5>
+                  <p className="text-sm text-blue-600">À maîtriser avant les concours (avec corrigés vidéo)</p>
                 </div>
                 <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
                   <h5 className="font-semibold text-blue-800">2. Cheatsheet PDF</h5>
                   <p className="text-sm text-blue-700">La fiche « 54 commandes » à coller sur ton bureau</p>
                 </div>
-                <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
-                  <h5 className="font-semibold text-purple-800">3. WhatsApp privé 30 jours</h5>
-                  <p className="text-sm text-purple-700">Questions illimitées, réponse en –24 h</p>
+                <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                  <h5 className="font-semibold text-blue-600">3. WhatsApp privé 30 jours</h5>
+                  <p className="text-sm text-blue-600">Questions illimitées, réponse en –24 h</p>
                 </div>
-                <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-                  <h5 className="font-semibold text-yellow-800">4. 1 h de contenu vidéo</h5>
-                  <p className="text-sm text-yellow-700">Optimisations & pièges classiques</p>
+                <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
+                  <h5 className="font-semibold text-orange-600">4. 1 h de contenu vidéo</h5>
+                  <p className="text-sm text-orange-600">Optimisations & pièges classiques</p>
                 </div>
               </div>
             </div>
@@ -365,17 +365,17 @@ const PourquoiPythonPrepaECGPage = () => {
             <CardTitle className="flex items-center gap-3">6. Combien ça coûte ?</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="text-center bg-gradient-to-r from-orange-50 to-red-50 p-6 rounded-lg border">
+            <div className="text-center bg-gradient-to-r from-orange-50 to-orange-600 p-6 rounded-lg border">
               <div className="text-3xl font-bold text-orange-600 mb-2">297 €</div>
               <p className="text-lg">Coaching 6 h + 4 bonus</p>
               <p className="text-sm text-gray-600">≈ 50 € l'heure, soit le tarif d'un cours particulier standard… avec tout le contenu numérique en prime.</p>
             </div>
             <ul className="space-y-2">
               <li className="flex items-center gap-2">
-                <CheckCircle className="h-5 w-5 text-green-600" /> <span>Paiement en 2 x sans frais disponible</span>
+                <CheckCircle className="h-5 w-5 text-blue-600" /> <span>Paiement en 2 x sans frais disponible</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-5 w-5 text-green-600 mt-0.5" />{' '}
+                <CheckCircle className="h-5 w-5 text-blue-600 mt-0.5" />{' '}
                 <span>
                   Pas de garantie ? Exact : tu payes si – et seulement si – tu veux ce résultat. (J'assume : mon taux de satisfaction est supérieur à 95 %, inutile de mettre un filet de sécurité artificiel.)
                 </span>
@@ -458,9 +458,9 @@ const PourquoiPythonPrepaECGPage = () => {
                 <p className="font-semibold text-blue-800">Q : Et si je n'ai jamais installé Python ?</p>
                 <p className="text-blue-700">R : On travaillera directement sur Google Colab : aucune installation, juste un navigateur.</p>
               </div>
-              <div className="border-l-4 border-green-500 pl-4">
-                <p className="font-semibold text-green-800">Q : Je vise HEC, pas EM Lyon ; c'est assez pointu ?</p>
-                <p className="text-green-700">R : Oui : on décortique les sujets HEC 2022-2024 et on pousse jusqu'aux pièges d'oraux.</p>
+              <div className="border-l-4 border-blue-200 pl-4">
+                <p className="font-semibold text-blue-600">Q : Je vise HEC, pas EM Lyon ; c'est assez pointu ?</p>
+                <p className="text-blue-600">R : Oui : on décortique les sujets HEC 2022-2024 et on pousse jusqu'aux pièges d'oraux.</p>
               </div>
               <div className="border-l-4 border-orange-500 pl-4">
                 <p className="font-semibold text-orange-800">Q : 297 € pour 6 h, c'est vraiment « premium mais pas trop cher » ؟</p>
@@ -476,7 +476,7 @@ const PourquoiPythonPrepaECGPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Youtube className="h-5 w-5 text-red-600" /> Pourquoi Python est essentiel en ECG
+              <Youtube className="h-5 w-5 text-orange-600" /> Pourquoi Python est essentiel en ECG
             </CardTitle>
           </CardHeader>
           <CardContent>

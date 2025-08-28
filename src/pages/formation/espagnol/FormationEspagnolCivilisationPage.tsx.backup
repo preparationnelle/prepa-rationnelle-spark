@@ -1,0 +1,1631 @@
+import React, { useState } from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
+import { 
+  Home, 
+  ChevronRight, 
+  Globe,
+  Calendar,
+  Briefcase,
+  Users,
+  Scale,
+  GraduationCap,
+  Plane,
+  Shield,
+  DollarSign,
+  TreePine,
+  BookOpen,
+  TrendingUp,
+  MapPin,
+  X,
+  FileText
+} from 'lucide-react';
+
+interface RedactedSubject {
+  title: string;
+  content: string;
+}
+
+const FormationEspagnolCivilisationPage = () => {
+  const [selectedSubject, setSelectedSubject] = useState<RedactedSubject | null>(null);
+  const [showVocabularyResources, setShowVocabularyResources] = useState(false);
+  const [selectedVocabularyModule, setSelectedVocabularyModule] = useState<number | null>(null);
+
+  const handleSubjectClick = (redactedSubject: RedactedSubject) => {
+    setSelectedSubject(redactedSubject);
+  };
+
+  const closeSubjectModal = () => {
+    setSelectedSubject(null);
+  };
+
+  const closeVocabularyResources = () => {
+    setShowVocabularyResources(false);
+    setSelectedVocabularyModule(null);
+  };
+
+  const openVocabularyResources = (moduleId: number) => {
+    setSelectedVocabularyModule(moduleId);
+    setShowVocabularyResources(true);
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      <div className="container mx-auto px-4 py-12">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center border border-orange-200">
+              <Globe className="h-6 w-6 text-orange-600" />
+            </div>
+
+            {/* Module 2 - Mujeres y Violencia de Género */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  2
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Mujeres y Violencia de Género</h3>
+                  <p className="text-gray-600 mb-4">Féminisme et égalité</p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Bientôt disponible
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 3 - Educación y Desigualdades */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  3
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Educación y Desigualdades</h3>
+                  <p className="text-gray-600 mb-4">Système éducatif et inégalités</p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Bientôt disponible
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 4 - Migraciones y Desplazamientos */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  4
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Migraciones y Desplazamientos</h3>
+                  <p className="text-gray-600 mb-4">Flux migratoires, caravanes, politique américaine, transit</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module4">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 5 - Violencia y Narcotráfico */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  5
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Violencia y Narcotráfico</h3>
+                  <p className="text-gray-600 mb-4">Violence chronique, cartels, sécurité, maintien de l'ordre</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module5">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 6 - Pobreza y Dependencia Económica */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  6
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Pobreza y Dependencia Económica</h3>
+                  <p className="text-gray-600 mb-4">Pauvreté et travail des enfants</p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Bientôt disponible
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 7 - Medio Ambiente y Clima */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  7
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Medio Ambiente y Clima</h3>
+                  <p className="text-gray-600 mb-4">COP 16, Gustavo Petro, fast-fashion, peuples autochtones</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module7">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Modules 8-12 */}
+            {[8, 9, 10, 11, 12].map((moduleId) => (
+              <div key={moduleId} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                    {moduleId}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      {moduleId === 8 && "Historia y Memoria"}
+                      {moduleId === 9 && "Inteligencia Artificial y Transformación Digital"}
+                      {moduleId === 10 && "China y Geopolítica Global"}
+                      {moduleId === 11 && "Derechos de las Mujeres y Movimientos Sociales"}
+                      {moduleId === 12 && "Desigualdades y Pobreza"}
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      {moduleId === 8 && "Histoire et mémoire collective"}
+                      {moduleId === 9 && "Soberanía tecnológica e inclusión digital"}
+                      {moduleId === 10 && "Alianza estratégica vs dependencia 2.0"}
+                      {moduleId === 11 && "Luttes féministes et résistance citoyenne"}
+                      {moduleId === 12 && "Inégalités et pauvreté en Ibéroamérique"}
+                    </p>
+                    <div className="flex gap-3">
+                      <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Bientôt disponible
+                      </Button>
+                      <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                        <Briefcase className="mr-2 h-4 w-4" />
+                        Ressources
+                      </Button>
+                      <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Sujets rédigés
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default FormationEspagnolCivilisationPage;
+            <h1 className="text-4xl font-bold text-gray-900">
+            Civilisation Hispanique
+          </h1>
+          </div>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Maîtrisez les enjeux contemporains d'Espagne et d'Amérique latine pour exceller aux concours ECG
+          </p>
+          <div className="flex justify-center gap-3 mt-6">
+            <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">10 thématiques essentielles</span>
+            <span className="px-4 py-2 border border-gray-200 text-gray-700 rounded-full text-sm font-medium">Actualisé 2024</span>
+            <span className="px-4 py-2 bg-orange-600 text-white rounded-full text-sm font-medium">Niveau Prépa</span>
+          </div>
+        </div>
+
+        {/* SOMMAIRE DES CHAPITRES */}
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Tous les Chapitres</h2>
+            <p className="text-gray-600">Découvrez notre programme complet de civilisation hispanique</p>
+            </div>
+
+            {/* Module 2 - Mujeres y Violencia de Género */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  2
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Mujeres y Violencia de Género</h3>
+                  <p className="text-gray-600 mb-4">Féminisme et égalité</p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Bientôt disponible
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 3 - Educación y Desigualdades */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  3
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Educación y Desigualdades</h3>
+                  <p className="text-gray-600 mb-4">Système éducatif et inégalités</p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Bientôt disponible
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 4 - Migraciones y Desplazamientos */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  4
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Migraciones y Desplazamientos</h3>
+                  <p className="text-gray-600 mb-4">Flux migratoires, caravanes, politique américaine, transit</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module4">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 5 - Violencia y Narcotráfico */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  5
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Violencia y Narcotráfico</h3>
+                  <p className="text-gray-600 mb-4">Violence chronique, cartels, sécurité, maintien de l'ordre</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module5">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 6 - Pobreza y Dependencia Económica */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  6
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Pobreza y Dependencia Económica</h3>
+                  <p className="text-gray-600 mb-4">Pauvreté et travail des enfants</p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Bientôt disponible
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 7 - Medio Ambiente y Clima */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  7
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Medio Ambiente y Clima</h3>
+                  <p className="text-gray-600 mb-4">COP 16, Gustavo Petro, fast-fashion, peuples autochtones</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module7">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Modules 8-12 */}
+            {[8, 9, 10, 11, 12].map((moduleId) => (
+              <div key={moduleId} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                    {moduleId}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      {moduleId === 8 && "Historia y Memoria"}
+                      {moduleId === 9 && "Inteligencia Artificial y Transformación Digital"}
+                      {moduleId === 10 && "China y Geopolítica Global"}
+                      {moduleId === 11 && "Derechos de las Mujeres y Movimientos Sociales"}
+                      {moduleId === 12 && "Desigualdades y Pobreza"}
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      {moduleId === 8 && "Histoire et mémoire collective"}
+                      {moduleId === 9 && "Soberanía tecnológica e inclusión digital"}
+                      {moduleId === 10 && "Alianza estratégica vs dependencia 2.0"}
+                      {moduleId === 11 && "Luttes féministes et résistance citoyenne"}
+                      {moduleId === 12 && "Inégalités et pauvreté en Ibéroamérique"}
+                    </p>
+                    <div className="flex gap-3">
+                      <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Bientôt disponible
+                      </Button>
+                      <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                        <Briefcase className="mr-2 h-4 w-4" />
+                        Ressources
+                      </Button>
+                      <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Sujets rédigés
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default FormationEspagnolCivilisationPage;
+
+              <div className="space-y-4">
+            {/* Module 1 - Política y Regímenes */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  1
+                </div>
+
+            {/* Module 2 - Mujeres y Violencia de Género */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  2
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Mujeres y Violencia de Género</h3>
+                  <p className="text-gray-600 mb-4">Féminisme et égalité</p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Bientôt disponible
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 3 - Educación y Desigualdades */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  3
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Educación y Desigualdades</h3>
+                  <p className="text-gray-600 mb-4">Système éducatif et inégalités</p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Bientôt disponible
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 4 - Migraciones y Desplazamientos */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  4
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Migraciones y Desplazamientos</h3>
+                  <p className="text-gray-600 mb-4">Flux migratoires, caravanes, politique américaine, transit</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module4">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 5 - Violencia y Narcotráfico */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  5
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Violencia y Narcotráfico</h3>
+                  <p className="text-gray-600 mb-4">Violence chronique, cartels, sécurité, maintien de l'ordre</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module5">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 6 - Pobreza y Dependencia Económica */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  6
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Pobreza y Dependencia Económica</h3>
+                  <p className="text-gray-600 mb-4">Pauvreté et travail des enfants</p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Bientôt disponible
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 7 - Medio Ambiente y Clima */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  7
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Medio Ambiente y Clima</h3>
+                  <p className="text-gray-600 mb-4">COP 16, Gustavo Petro, fast-fashion, peuples autochtones</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module7">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Modules 8-12 */}
+            {[8, 9, 10, 11, 12].map((moduleId) => (
+              <div key={moduleId} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                    {moduleId}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      {moduleId === 8 && "Historia y Memoria"}
+                      {moduleId === 9 && "Inteligencia Artificial y Transformación Digital"}
+                      {moduleId === 10 && "China y Geopolítica Global"}
+                      {moduleId === 11 && "Derechos de las Mujeres y Movimientos Sociales"}
+                      {moduleId === 12 && "Desigualdades y Pobreza"}
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      {moduleId === 8 && "Histoire et mémoire collective"}
+                      {moduleId === 9 && "Soberanía tecnológica e inclusión digital"}
+                      {moduleId === 10 && "Alianza estratégica vs dependencia 2.0"}
+                      {moduleId === 11 && "Luttes féministes et résistance citoyenne"}
+                      {moduleId === 12 && "Inégalités et pauvreté en Ibéroamérique"}
+                    </p>
+                    <div className="flex gap-3">
+                      <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Bientôt disponible
+                      </Button>
+                      <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                        <Briefcase className="mr-2 h-4 w-4" />
+                        Ressources
+                      </Button>
+                      <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Sujets rédigés
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default FormationEspagnolCivilisationPage;
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Política y Regímenes</h3>
+                  <p className="text-gray-600 mb-4">Crises démocratiques, extrême droite/gauche, évolution politique</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module1">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+
+            {/* Module 2 - Mujeres y Violencia de Género */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  2
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Mujeres y Violencia de Género</h3>
+                  <p className="text-gray-600 mb-4">Féminisme et égalité</p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Bientôt disponible
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 3 - Educación y Desigualdades */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  3
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Educación y Desigualdades</h3>
+                  <p className="text-gray-600 mb-4">Système éducatif et inégalités</p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Bientôt disponible
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 4 - Migraciones y Desplazamientos */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  4
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Migraciones y Desplazamientos</h3>
+                  <p className="text-gray-600 mb-4">Flux migratoires, caravanes, politique américaine, transit</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module4">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 5 - Violencia y Narcotráfico */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  5
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Violencia y Narcotráfico</h3>
+                  <p className="text-gray-600 mb-4">Violence chronique, cartels, sécurité, maintien de l'ordre</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module5">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 6 - Pobreza y Dependencia Económica */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  6
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Pobreza y Dependencia Económica</h3>
+                  <p className="text-gray-600 mb-4">Pauvreté et travail des enfants</p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Bientôt disponible
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 7 - Medio Ambiente y Clima */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  7
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Medio Ambiente y Clima</h3>
+                  <p className="text-gray-600 mb-4">COP 16, Gustavo Petro, fast-fashion, peuples autochtones</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module7">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Modules 8-12 */}
+            {[8, 9, 10, 11, 12].map((moduleId) => (
+              <div key={moduleId} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                    {moduleId}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      {moduleId === 8 && "Historia y Memoria"}
+                      {moduleId === 9 && "Inteligencia Artificial y Transformación Digital"}
+                      {moduleId === 10 && "China y Geopolítica Global"}
+                      {moduleId === 11 && "Derechos de las Mujeres y Movimientos Sociales"}
+                      {moduleId === 12 && "Desigualdades y Pobreza"}
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      {moduleId === 8 && "Histoire et mémoire collective"}
+                      {moduleId === 9 && "Soberanía tecnológica e inclusión digital"}
+                      {moduleId === 10 && "Alianza estratégica vs dependencia 2.0"}
+                      {moduleId === 11 && "Luttes féministes et résistance citoyenne"}
+                      {moduleId === 12 && "Inégalités et pauvreté en Ibéroamérique"}
+                    </p>
+                    <div className="flex gap-3">
+                      <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Bientôt disponible
+                      </Button>
+                      <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                        <Briefcase className="mr-2 h-4 w-4" />
+                        Ressources
+                      </Button>
+                      <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Sujets rédigés
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default FormationEspagnolCivilisationPage;
+                </div>
+
+            {/* Module 2 - Mujeres y Violencia de Género */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  2
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Mujeres y Violencia de Género</h3>
+                  <p className="text-gray-600 mb-4">Féminisme et égalité</p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Bientôt disponible
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 3 - Educación y Desigualdades */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  3
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Educación y Desigualdades</h3>
+                  <p className="text-gray-600 mb-4">Système éducatif et inégalités</p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Bientôt disponible
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 4 - Migraciones y Desplazamientos */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  4
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Migraciones y Desplazamientos</h3>
+                  <p className="text-gray-600 mb-4">Flux migratoires, caravanes, politique américaine, transit</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module4">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 5 - Violencia y Narcotráfico */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  5
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Violencia y Narcotráfico</h3>
+                  <p className="text-gray-600 mb-4">Violence chronique, cartels, sécurité, maintien de l'ordre</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module5">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 6 - Pobreza y Dependencia Económica */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  6
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Pobreza y Dependencia Económica</h3>
+                  <p className="text-gray-600 mb-4">Pauvreté et travail des enfants</p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Bientôt disponible
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 7 - Medio Ambiente y Clima */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  7
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Medio Ambiente y Clima</h3>
+                  <p className="text-gray-600 mb-4">COP 16, Gustavo Petro, fast-fashion, peuples autochtones</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module7">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Modules 8-12 */}
+            {[8, 9, 10, 11, 12].map((moduleId) => (
+              <div key={moduleId} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                    {moduleId}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      {moduleId === 8 && "Historia y Memoria"}
+                      {moduleId === 9 && "Inteligencia Artificial y Transformación Digital"}
+                      {moduleId === 10 && "China y Geopolítica Global"}
+                      {moduleId === 11 && "Derechos de las Mujeres y Movimientos Sociales"}
+                      {moduleId === 12 && "Desigualdades y Pobreza"}
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      {moduleId === 8 && "Histoire et mémoire collective"}
+                      {moduleId === 9 && "Soberanía tecnológica e inclusión digital"}
+                      {moduleId === 10 && "Alianza estratégica vs dependencia 2.0"}
+                      {moduleId === 11 && "Luttes féministes et résistance citoyenne"}
+                      {moduleId === 12 && "Inégalités et pauvreté en Ibéroamérique"}
+                    </p>
+                    <div className="flex gap-3">
+                      <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Bientôt disponible
+                      </Button>
+                      <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                        <Briefcase className="mr-2 h-4 w-4" />
+                        Ressources
+                      </Button>
+                      <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Sujets rédigés
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default FormationEspagnolCivilisationPage;
+              </div>
+
+            {/* Module 2 - Mujeres y Violencia de Género */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  2
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Mujeres y Violencia de Género</h3>
+                  <p className="text-gray-600 mb-4">Féminisme et égalité</p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Bientôt disponible
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 3 - Educación y Desigualdades */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  3
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Educación y Desigualdades</h3>
+                  <p className="text-gray-600 mb-4">Système éducatif et inégalités</p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Bientôt disponible
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 4 - Migraciones y Desplazamientos */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  4
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Migraciones y Desplazamientos</h3>
+                  <p className="text-gray-600 mb-4">Flux migratoires, caravanes, politique américaine, transit</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module4">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 5 - Violencia y Narcotráfico */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  5
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Violencia y Narcotráfico</h3>
+                  <p className="text-gray-600 mb-4">Violence chronique, cartels, sécurité, maintien de l'ordre</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module5">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 6 - Pobreza y Dependencia Económica */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  6
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Pobreza y Dependencia Económica</h3>
+                  <p className="text-gray-600 mb-4">Pauvreté et travail des enfants</p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Bientôt disponible
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 7 - Medio Ambiente y Clima */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  7
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Medio Ambiente y Clima</h3>
+                  <p className="text-gray-600 mb-4">COP 16, Gustavo Petro, fast-fashion, peuples autochtones</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module7">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Modules 8-12 */}
+            {[8, 9, 10, 11, 12].map((moduleId) => (
+              <div key={moduleId} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                    {moduleId}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      {moduleId === 8 && "Historia y Memoria"}
+                      {moduleId === 9 && "Inteligencia Artificial y Transformación Digital"}
+                      {moduleId === 10 && "China y Geopolítica Global"}
+                      {moduleId === 11 && "Derechos de las Mujeres y Movimientos Sociales"}
+                      {moduleId === 12 && "Desigualdades y Pobreza"}
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      {moduleId === 8 && "Histoire et mémoire collective"}
+                      {moduleId === 9 && "Soberanía tecnológica e inclusión digital"}
+                      {moduleId === 10 && "Alianza estratégica vs dependencia 2.0"}
+                      {moduleId === 11 && "Luttes féministes et résistance citoyenne"}
+                      {moduleId === 12 && "Inégalités et pauvreté en Ibéroamérique"}
+                    </p>
+                    <div className="flex gap-3">
+                      <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Bientôt disponible
+                      </Button>
+                      <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                        <Briefcase className="mr-2 h-4 w-4" />
+                        Ressources
+                      </Button>
+                      <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Sujets rédigés
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default FormationEspagnolCivilisationPage;
+            </div>
+
+            {/* Module 2 - Mujeres y Violencia de Género */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  2
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Mujeres y Violencia de Género</h3>
+                  <p className="text-gray-600 mb-4">Féminisme et égalité</p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Bientôt disponible
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 3 - Educación y Desigualdades */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  3
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Educación y Desigualdades</h3>
+                  <p className="text-gray-600 mb-4">Système éducatif et inégalités</p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Bientôt disponible
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 4 - Migraciones y Desplazamientos */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  4
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Migraciones y Desplazamientos</h3>
+                  <p className="text-gray-600 mb-4">Flux migratoires, caravanes, politique américaine, transit</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module4">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 5 - Violencia y Narcotráfico */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  5
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Violencia y Narcotráfico</h3>
+                  <p className="text-gray-600 mb-4">Violence chronique, cartels, sécurité, maintien de l'ordre</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module5">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 6 - Pobreza y Dependencia Económica */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  6
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Pobreza y Dependencia Económica</h3>
+                  <p className="text-gray-600 mb-4">Pauvreté et travail des enfants</p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Bientôt disponible
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 7 - Medio Ambiente y Clima */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  7
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Medio Ambiente y Clima</h3>
+                  <p className="text-gray-600 mb-4">COP 16, Gustavo Petro, fast-fashion, peuples autochtones</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/espagnol/civilisation/module7">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Ressources
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Sujets rédigés
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Modules 8-12 */}
+            {[8, 9, 10, 11, 12].map((moduleId) => (
+              <div key={moduleId} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                    {moduleId}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      {moduleId === 8 && "Historia y Memoria"}
+                      {moduleId === 9 && "Inteligencia Artificial y Transformación Digital"}
+                      {moduleId === 10 && "China y Geopolítica Global"}
+                      {moduleId === 11 && "Derechos de las Mujeres y Movimientos Sociales"}
+                      {moduleId === 12 && "Desigualdades y Pobreza"}
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      {moduleId === 8 && "Histoire et mémoire collective"}
+                      {moduleId === 9 && "Soberanía tecnológica e inclusión digital"}
+                      {moduleId === 10 && "Alianza estratégica vs dependencia 2.0"}
+                      {moduleId === 11 && "Luttes féministes et résistance citoyenne"}
+                      {moduleId === 12 && "Inégalités et pauvreté en Ibéroamérique"}
+                    </p>
+                    <div className="flex gap-3">
+                      <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Bientôt disponible
+                      </Button>
+                      <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                        <Briefcase className="mr-2 h-4 w-4" />
+                        Ressources
+                      </Button>
+                      <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Sujets rédigés
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default FormationEspagnolCivilisationPage;

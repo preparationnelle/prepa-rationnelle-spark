@@ -390,7 +390,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                 key={exercise.id}
                 className={`cursor-pointer transition-all hover:shadow-lg ${
                   exercise.color === 'green' 
-                    ? 'hover:border-green-400' 
+                    ? 'hover:border-blue-200' 
                     : 'hover:border-orange-400'
                 }`}
                 onClick={() => setSelectedExercise(exercise.id)}
@@ -399,7 +399,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                   <div className="flex items-center justify-between mb-2">
                     <Badge variant="secondary" className={`${
                       exercise.color === 'green' 
-                        ? 'bg-green-100 text-green-700' 
+                        ? 'bg-blue-50 text-blue-600' 
                         : 'bg-orange-100 text-orange-700'
                     }`}>
                       {exercise.difficulty}
@@ -464,7 +464,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                               Question {question.id}
                             </Badge>
                             {qcmAnswers[question.id] && (
-                              <CheckCircle className="h-4 w-4 text-green-600" />
+                              <CheckCircle className="h-4 w-4 text-blue-600" />
                             )}
                           </div>
                           <p className="mb-4 text-sm">{question.question}</p>
@@ -504,7 +504,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                   {/* Résultats en haut */}
                   <div className="text-center space-y-4">
                     <div className="flex items-center justify-center gap-3">
-                      <Trophy className="h-8 w-8 text-yellow-600" />
+                      <Trophy className="h-8 w-8 text-orange-600" />
                       <h3 className="text-2xl font-bold text-blue-700">Résultats du QCM</h3>
                     </div>
                     
@@ -516,7 +516,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                         {[...Array(5)].map((_, i) => (
                           <Star 
                             key={i} 
-                            className={`h-6 w-6 ${i < Math.floor((qcmScore || 0) / 4) ? 'text-yellow-500 fill-current' : 'text-gray-300'}`} 
+                            className={`h-6 w-6 ${i < Math.floor((qcmScore || 0) / 4) ? 'text-orange-600 fill-current' : 'text-gray-300'}`} 
                           />
                         ))}
                       </div>
@@ -544,21 +544,21 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                               key={question.id} 
                               className={`border-2 transition-colors ${
                                 isCorrect 
-                                  ? 'border-green-200 bg-gradient-to-br from-green-50 to-emerald-50' 
-                                  : 'border-red-200 bg-gradient-to-br from-red-50 to-pink-50'
+                                  ? 'border-blue-200 bg-gradient-to-br from-blue-500 to-emerald-50' 
+                                  : 'border-orange-200 bg-gradient-to-br from-orange-500 to-pink-50'
                               }`}
                             >
                               <CardContent className="pt-6">
                                 <div className="flex items-center gap-2 mb-3">
                                   <Badge variant="outline" className={`${
-                                    isCorrect ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+                                    isCorrect ? 'bg-blue-50 text-blue-600' : 'bg-orange-50 text-orange-600'
                                   }`}>
                                     Question {question.id}
                                   </Badge>
                                   {isCorrect ? (
-                                    <CheckCircle className="h-4 w-4 text-green-600" />
+                                    <CheckCircle className="h-4 w-4 text-blue-600" />
                                   ) : (
-                                    <div className="h-4 w-4 text-red-600">✗</div>
+                                    <div className="h-4 w-4 text-orange-600">✗</div>
                                   )}
                                 </div>
                                 
@@ -574,12 +574,12 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                                     
                                     if (isCorrectAnswer) {
                                       // Bonne réponse toujours en vert
-                                      optionStyle += " bg-green-100 border border-green-300";
-                                      textStyle += " font-semibold text-green-700";
+                                      optionStyle += " bg-blue-50 border border-blue-200";
+                                      textStyle += " font-semibold text-blue-600";
                                     } else if (isUserAnswer && !isCorrect) {
                                       // Mauvaise réponse de l'utilisateur en rouge
-                                      optionStyle += " bg-red-100 border border-red-300";
-                                      textStyle += " font-semibold text-red-700";
+                                      optionStyle += " bg-orange-50 border border-orange-200";
+                                      textStyle += " font-semibold text-orange-600";
                                     } else {
                                       // Autres options neutres
                                       optionStyle += " bg-gray-50";
@@ -590,10 +590,10 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                                       <div key={optIndex} className={optionStyle}>
                                         <div className="flex items-center gap-2">
                                           {isCorrectAnswer && (
-                                            <CheckCircle className="h-4 w-4 text-green-600" />
+                                            <CheckCircle className="h-4 w-4 text-blue-600" />
                                           )}
                                           {isUserAnswer && !isCorrect && (
-                                            <div className="h-4 w-4 text-red-600">✗</div>
+                                            <div className="h-4 w-4 text-orange-600">✗</div>
                                           )}
                                           {!isCorrectAnswer && !isUserAnswer && (
                                             <div className="h-4 w-4 text-gray-400">○</div>
@@ -606,11 +606,11 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                                 </div>
                                 
                                 {!isCorrect && (
-                                  <div className="mt-3 p-2 bg-yellow-50 border border-yellow-200 rounded">
-                                    <p className="text-sm text-yellow-700">
+                                  <div className="mt-3 p-2 bg-orange-50 border border-orange-200 rounded">
+                                    <p className="text-sm text-orange-600">
                                       <span className="font-semibold">Votre réponse :</span> {userAnswer}
                                     </p>
-                                    <p className="text-sm text-yellow-700">
+                                    <p className="text-sm text-orange-600">
                                       <span className="font-semibold">Bonne réponse :</span> {question.answer}
                                     </p>
                                   </div>
@@ -658,7 +658,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
               </h1>
               <Badge variant="secondary" className={`${
                 exercises[selectedExercise - 1].color === 'green' 
-                  ? 'bg-green-100 text-green-700' 
+                  ? 'bg-blue-50 text-blue-600' 
                   : 'bg-orange-100 text-orange-700'
               }`}>
                 {exercises[selectedExercise - 1].difficulty}
@@ -701,7 +701,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                 <Button 
                   variant="outline" 
                   onClick={() => toggleCorrection(selectedExercise)}
-                  className="flex items-center gap-2 border-green-300 text-green-700 hover:bg-green-50"
+                  className="flex items-center gap-2 border-blue-200 text-blue-600 hover:bg-blue-50"
                 >
                   {showCorrections.has(selectedExercise) ? (
                     <>
@@ -719,16 +719,16 @@ print(f"Erreur absolue : {abs(approx - exact)}")
 
               {/* Correction (affichée conditionnellement) */}
               {showCorrections.has(selectedExercise) && (
-                <Card className="mb-8 border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg">
+                <Card className="mb-8 border-2 border-blue-200 bg-gradient-to-br from-blue-500 to-emerald-50 shadow-lg">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-3 text-green-700">
+                    <CardTitle className="flex items-center gap-3 text-blue-600">
                       <Code className="h-6 w-6" />
                       Correction
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                      <pre className="text-green-400 text-sm font-mono">
+                      <pre className="text-blue-600 text-sm font-mono">
                         <code>{exercises[selectedExercise - 1].content.correction}</code>
                       </pre>
                     </div>
@@ -764,7 +764,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
 
                       <Accordion type="single" collapsible>
                         <AccordionItem value="correction-1a">
-                          <AccordionTrigger className="text-green-700 font-semibold">
+                          <AccordionTrigger className="text-blue-600 font-semibold">
                             <CheckCircle className="h-4 w-4 mr-2" />
                             Voir la correction 1(a)
                           </AccordionTrigger>
@@ -774,7 +774,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                                 On pourrait proposer l'instruction suivante, en faisant des opérations coefficient par coefficient :
                               </p>
                               <div className="bg-slate-900 rounded-lg p-4">
-                                <pre className="text-green-400 text-sm">
+                                <pre className="text-blue-600 text-sm">
                                   <code>x = np.arange(1,11)**(-2)</code>
                                 </pre>
                               </div>
@@ -789,7 +789,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                                 <strong>Solution :</strong> On va donc modifier le vecteur de départ pour qu'il contienne dès le début des flottants :
                               </p>
                               <div className="bg-slate-900 rounded-lg p-4">
-                                <pre className="text-green-400 text-sm">
+                                <pre className="text-blue-600 text-sm">
                                   <code>x = np.arange(1.,11.)**(-2)</code>
                                 </pre>
                               </div>
@@ -811,7 +811,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
 
                       <Accordion type="single" collapsible>
                         <AccordionItem value="correction-1b">
-                          <AccordionTrigger className="text-green-700 font-semibold">
+                          <AccordionTrigger className="text-blue-600 font-semibold">
                             <CheckCircle className="h-4 w-4 mr-2" />
                             Voir la correction 1(b)
                           </AccordionTrigger>
@@ -821,12 +821,12 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                                 Il suffit d'ajouter la fonction <code className="bg-slate-100 px-1 rounded">np.sum()</code> :
                               </p>
                               <div className="bg-slate-900 rounded-lg p-4">
-                                <pre className="text-green-400 text-sm">
+                                <pre className="text-blue-600 text-sm">
                                   <code>np.sum(np.arange(1.,11.)**(-2))</code>
                                 </pre>
                               </div>
-                              <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-                                <p className="text-sm text-green-800">
+                              <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                                <p className="text-sm text-blue-600">
                                   Cette commande calcule la somme des 10 premiers termes de la série harmonique d'ordre 2.
                                 </p>
                               </div>
@@ -864,7 +864,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
 
                       <Accordion type="single" collapsible>
                         <AccordionItem value="correction-2">
-                          <AccordionTrigger className="text-green-700 font-semibold">
+                          <AccordionTrigger className="text-blue-600 font-semibold">
                             <CheckCircle className="h-4 w-4 mr-2" />
                             Voir la correction 2
                           </AccordionTrigger>
@@ -874,7 +874,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                                 La solution utilise les puissances de 2 avec NumPy :
                               </p>
                               <div className="bg-slate-900 rounded-lg p-4">
-                                <pre className="text-green-400 text-sm">
+                                <pre className="text-blue-600 text-sm">
                                   <code>np.sum(1 / 2**np.arange(11))</code>
                                 </pre>
                               </div>
@@ -937,7 +937,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
 
                       <Accordion type="single" collapsible>
                         <AccordionItem value="correction-3">
-                          <AccordionTrigger className="text-green-700 font-semibold">
+                          <AccordionTrigger className="text-blue-600 font-semibold">
                             <CheckCircle className="h-4 w-4 mr-2" />
                             Voir la correction 3
                           </AccordionTrigger>
@@ -946,7 +946,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                               <div>
                                 <h4 className="font-semibold text-sm mb-2">(a) x = np.ones(10) ; y = np.cumsum(x)</h4>
                                 <div className="bg-slate-900 rounded-lg p-4 mb-3">
-                                  <pre className="text-green-400 text-sm">
+                                  <pre className="text-blue-600 text-sm">
                                     <code>x = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</code>
                                     <br />
                                     <code>y = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code>
@@ -960,7 +960,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                               <div>
                                 <h4 className="font-semibold text-sm mb-2">(b) x = np.ones(10) ; y = np.sum(np.cumsum(x))</h4>
                                 <div className="bg-slate-900 rounded-lg p-4 mb-3">
-                                  <pre className="text-green-400 text-sm">
+                                  <pre className="text-blue-600 text-sm">
                                     <code>np.cumsum(x) = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code>
                                     <br />
                                     <code>y = 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 = 55</code>
@@ -974,7 +974,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                               <div>
                                 <h4 className="font-semibold text-sm mb-2">(c) x = np.ones(10) ; y = np.sum(np.cumsum(np.cumsum(x)))</h4>
                                 <div className="bg-slate-900 rounded-lg p-4 mb-3">
-                                  <pre className="text-green-400 text-sm">
+                                  <pre className="text-blue-600 text-sm">
                                     <code>np.cumsum(x) = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code>
                                     <br />
                                     <code>np.cumsum(np.cumsum(x)) = [1, 3, 6, 10, 15, 21, 28, 36, 45, 55]</code>
@@ -987,8 +987,8 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                                 </p>
                               </div>
 
-                              <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-                                <p className="text-sm text-green-800">
+                              <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                                <p className="text-sm text-blue-600">
                                   <strong>Astuce :</strong> La double somme cumulative permet de calculer des sommes de sommes, 
                                   très utile pour les séries de nombres triangulaires ou les calculs combinatoires.
                                 </p>
@@ -1040,7 +1040,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                               Voici la fonction complète pour calculer la somme harmonique :
                             </p>
                             <div className="bg-slate-900 rounded-lg p-4">
-                              <pre className="text-green-400 text-sm">
+                              <pre className="text-blue-600 text-sm">
                                 <code>{`def sommeHarmonique(n):
     S = 0
     for k in range(1, n+1):
@@ -1100,7 +1100,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                               Voici le script complet utilisant une boucle while :
                             </p>
                             <div className="bg-slate-900 rounded-lg p-4">
-                              <pre className="text-green-400 text-sm">
+                              <pre className="text-blue-600 text-sm">
                                 <code>{`import numpy as np
 
 n = 1
@@ -1166,7 +1166,7 @@ print(n)`}</code>
                               Voici la fonction complète :
                             </p>
                             <div className="bg-slate-900 rounded-lg p-4">
-                              <pre className="text-green-400 text-sm">
+                              <pre className="text-blue-600 text-sm">
                                 <code>{`def entier(eps):
     n = 0
     while 1 / (2**n) > eps:
@@ -1229,7 +1229,7 @@ print(n)`}</code>
                               Voici la fonction complète :
                             </p>
                             <div className="bg-slate-900 rounded-lg p-4">
-                              <pre className="text-green-400 text-sm">
+                              <pre className="text-blue-600 text-sm">
                                 <code>{`def valApprox(eps):
     n, u = 0, 2
     while 1 / (2**n) > eps:
@@ -1297,7 +1297,7 @@ print(n)`}</code>
                               Voici la fonction complète :
                             </p>
                             <div className="bg-slate-900 rounded-lg p-4">
-                              <pre className="text-green-400 text-sm">
+                              <pre className="text-blue-600 text-sm">
                                 <code>{`import numpy as np
 
 def suite(n):
@@ -1365,7 +1365,7 @@ def suite(n):
                               Voici la fonction complète :
                             </p>
                             <div className="bg-slate-900 rounded-lg p-4">
-                              <pre className="text-green-400 text-sm">
+                              <pre className="text-blue-600 text-sm">
                                 <code>{`import numpy as np
 
 def premSuiteUTab(m):
@@ -1434,7 +1434,7 @@ def premSuiteUTab(m):
                             <div>
                               <h4 className="font-semibold text-sm mb-2">Version 1 - Avec NumPy</h4>
                               <div className="bg-slate-900 rounded-lg p-4">
-                                <pre className="text-green-400 text-sm">
+                                <pre className="text-blue-600 text-sm">
                                   <code>{`import numpy as np
 
 eps = float(input("Entrer la précision eps : "))
@@ -1454,7 +1454,7 @@ print("Valeur approchée de S :", S_approx)`}</code>
                             <div>
                               <h4 className="font-semibold text-sm mb-2">Version 2 - Avec boucle</h4>
                               <div className="bg-slate-900 rounded-lg p-4">
-                                <pre className="text-green-400 text-sm">
+                                <pre className="text-blue-600 text-sm">
                                   <code>{`eps = float(input("Entrer la précision eps : "))
 n = 1
 S = 1  # car 1/1^2 = 1
@@ -1522,7 +1522,7 @@ print("Valeur approchée de S :", S_approx)`}</code>
                               Voici la fonction et le script principal :
                             </p>
                             <div className="bg-slate-900 rounded-lg p-4">
-                              <pre className="text-green-400 text-sm">
+                              <pre className="text-blue-600 text-sm">
                                 <code>{`def somme_exponentielle(n):
     S = 0
     for k in range(1, n + 1):
@@ -1589,7 +1589,7 @@ print("Somme =", resultat)`}</code>
                               Voici la fonction complète :
                             </p>
                             <div className="bg-slate-900 rounded-lg p-4">
-                              <pre className="text-green-400 text-sm">
+                              <pre className="text-blue-600 text-sm">
                                 <code>{`def binomiale(n, k):
     if k > n:
         return 0
@@ -1651,7 +1651,7 @@ print("Somme =", resultat)`}</code>
                               Voici le script complet :
                             </p>
                             <div className="bg-slate-900 rounded-lg p-4">
-                              <pre className="text-green-400 text-sm">
+                              <pre className="text-blue-600 text-sm">
                                 <code>{`k = 1
 fact = 1
 
@@ -1673,8 +1673,8 @@ print(k)`}</code>
                                 <li>• Dès que k! &gt; 1 000 000, on affiche k</li>
                               </ul>
                             </div>
-                            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-                              <p className="text-sm text-green-800">
+                            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                              <p className="text-sm text-blue-600">
                                 <strong>Résultat :</strong> Le plus petit entier k tel que k! &gt; 1 000 000 est k = 10.
                               </p>
                             </div>
@@ -1722,7 +1722,7 @@ print(k)`}</code>
                               Voici le script complet :
                             </p>
                             <div className="bg-slate-900 rounded-lg p-4">
-                              <pre className="text-green-400 text-sm">
+                              <pre className="text-blue-600 text-sm">
                                 <code>{`x = float(input("Entrer un réel x : "))
 
 if x < -1:
@@ -1791,7 +1791,7 @@ else:
                             <div>
                               <h4 className="font-semibold text-sm mb-2">(a) Première somme double</h4>
                               <div className="bg-slate-900 rounded-lg p-4">
-                                <pre className="text-green-400 text-sm">
+                                <pre className="text-blue-600 text-sm">
                                   <code>{`n = int(input("Entrer n : "))
 S = 0
 for k in range(1, n + 1):
@@ -1805,7 +1805,7 @@ print("Somme :", S)`}</code>
                             <div>
                               <h4 className="font-semibold text-sm mb-2">(b) Deuxième somme double</h4>
                               <div className="bg-slate-900 rounded-lg p-4">
-                                <pre className="text-green-400 text-sm">
+                                <pre className="text-blue-600 text-sm">
                                   <code>{`n = int(input("Entrer n : "))
 p = int(input("Entrer p : "))
 S = 0
@@ -1876,7 +1876,7 @@ print("Somme :", S)`}</code>
                                 Voici la fonction complète :
                               </p>
                               <div className="bg-slate-900 rounded-lg p-4">
-                                <pre className="text-green-400 text-sm">
+                                <pre className="text-blue-600 text-sm">
                                   <code>{`import numpy as np
 
 def racine(a, eps):

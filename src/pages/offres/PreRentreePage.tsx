@@ -270,7 +270,7 @@ const PreRentreePage = () => {
 
 
       {/* Section 1 - Inscription au stage */}
-      <section id="inscription" className="py-16 px-4 bg-white">
+      <section id="inscription" className="py-8 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
             Inscription au Stage de Pré-entrée
@@ -388,7 +388,7 @@ const PreRentreePage = () => {
       </section>
 
       {/* Section 2 - Besoin d'aide ? */}
-      <section id="contact-support" className="py-16 px-4 bg-[#F0F8FF]">
+      <section id="contact-support" className="py-8 px-4 bg-[#F0F8FF]">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
             Besoin d'aide ?

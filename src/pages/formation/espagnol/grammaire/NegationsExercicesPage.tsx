@@ -253,7 +253,7 @@ const NegationsExercicesPage = () => {
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-10">
           <div className="flex justify-center mb-4">
             <Link to="/formation/espagnol/grammaire/negations">

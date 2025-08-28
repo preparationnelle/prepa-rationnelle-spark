@@ -45,7 +45,7 @@ const ArticlesPage = () => {
   return (
     <>
       <Navigation />
-      <div className="min-h-screen bg-background py-8 sm:py-16">
+      <div className="min-h-screen bg-background py-8 sm:py-8">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
             {/* Header */}

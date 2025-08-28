@@ -28,7 +28,7 @@ export const OffersSection = () => {
   };
 
   return (
-  <section className="py-12 sm:py-16 px-4 sm:px-6" style={{ backgroundColor: '#F0F8FF' }}>
+  <section className="py-12 sm:py-8 px-4 sm:px-6" style={{ backgroundColor: '#F0F8FF' }}>
     <div className="container mx-auto max-w-6xl">
       <div className="text-center mb-8 sm:mb-12">
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">

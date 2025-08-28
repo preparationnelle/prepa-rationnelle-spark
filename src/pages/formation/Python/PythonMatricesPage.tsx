@@ -15,33 +15,33 @@ const PythonMatricesPage = () => {
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
-          <div className="p-3 rounded-lg bg-green-500 text-white">
+          <div className="p-3 rounded-lg bg-blue-500 text-white">
             <Calculator className="h-8 w-8" />
           </div>
           <div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-green-500 via-emerald-500 to-green-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-500 via-emerald-500 to-blue-600 bg-clip-text text-transparent">
               Module 1 - Les Matrices NumPy
             </h1>
-            <Badge variant="secondary" className="mt-3 bg-gradient-to-r from-green-400 to-emerald-500 text-white font-semibold px-4 py-2">Module 1</Badge>
+            <Badge variant="secondary" className="mt-3 bg-gradient-to-r from-blue-400 to-blue-500 text-white font-semibold px-4 py-2">Module 1</Badge>
           </div>
         </div>
       </div>
 
         {/* Présentation générale */}
-        <Card className="mb-8 border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg">
+        <Card className="mb-8 border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-blue-50 shadow-lg">
           <CardHeader>
-            <CardTitle className="text-xl text-green-700">1. PRÉSENTATION GÉNÉRALE</CardTitle>
+            <CardTitle className="text-xl text-blue-700">1. PRÉSENTATION GÉNÉRALE</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <div>
-                <h3 className="font-semibold text-green-600 mb-2">Définition</h3>
+                <h3 className="font-semibold text-blue-600 mb-2">Définition</h3>
                 <p className="text-gray-700">
                   NumPy (Numerical Python) est une bibliothèque pour le calcul en Python. Elle fournit un objet tableau multidimensionnel performant ainsi qu'un ensemble d'outils pour travailler avec ces tableaux.
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold text-green-600 mb-2">Importation</h3>
+                <h3 className="font-semibold text-blue-600 mb-2">Importation</h3>
                 <div className="bg-gray-50 p-3 rounded font-mono text-sm">
                   import numpy as np
                 </div>
@@ -149,14 +149,14 @@ const PythonMatricesPage = () => {
         </Card>
 
         {/* Accès aux éléments */}
-        <Card className="mb-8 border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg">
+        <Card className="mb-8 border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-blue-50 shadow-lg">
           <CardHeader>
-            <CardTitle className="text-xl text-green-700">3. ACCÈS AUX ÉLÉMENTS</CardTitle>
+            <CardTitle className="text-xl text-blue-700">3. ACCÈS AUX ÉLÉMENTS</CardTitle>
           </CardHeader>
           <CardContent>
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="indexation">
-                <AccordionTrigger className="text-green-600">Système d'indexation</AccordionTrigger>
+                <AccordionTrigger className="text-blue-600">Système d'indexation</AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-3">
                     <p>Les matrices NumPy utilisent un système d'indexation commençant à 0. Pour une matrice A de dimensions n×m :</p>
@@ -169,7 +169,7 @@ const PythonMatricesPage = () => {
               </AccordionItem>
 
               <AccordionItem value="acces-elements">
-                <AccordionTrigger className="text-green-600">Accès aux éléments et lignes/colonnes</AccordionTrigger>
+                <AccordionTrigger className="text-blue-600">Accès aux éléments et lignes/colonnes</AccordionTrigger>
                 <AccordionContent>
                   <Table>
                     <TableHeader>
@@ -267,8 +267,8 @@ const PythonMatricesPage = () => {
                       </TableRow>
                     </TableBody>
                   </Table>
-                  <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded">
-                    <p className="text-red-700 font-semibold">⚠️ Attention : Il est crucial de ne pas confondre ces deux types de multiplication.</p>
+                  <div className="mt-4 p-3 bg-orange-50 border border-orange-200 rounded">
+                    <p className="text-orange-600 font-semibold">⚠️ Attention : Il est crucial de ne pas confondre ces deux types de multiplication.</p>
                   </div>
                 </AccordionContent>
               </AccordionItem>
@@ -304,14 +304,14 @@ const PythonMatricesPage = () => {
         </Card>
 
         {/* Fonctions d'analyse */}
-        <Card className="mb-8 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50">
+        <Card className="mb-8 border-blue-200 bg-gradient-to-br from-blue-50 to-blue-50">
           <CardHeader>
-            <CardTitle className="text-xl text-green-700">5. FONCTIONS D'ANALYSE</CardTitle>
+            <CardTitle className="text-xl text-blue-700">5. FONCTIONS D'ANALYSE</CardTitle>
           </CardHeader>
           <CardContent>
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="fonctions-globales">
-                <AccordionTrigger className="text-green-600">Fonctions globales</AccordionTrigger>
+                <AccordionTrigger className="text-blue-600">Fonctions globales</AccordionTrigger>
                 <AccordionContent>
                   <p className="mb-4">Ces fonctions s'appliquent à tous les éléments de la matrice :</p>
                   <div className="bg-gray-50 p-4 rounded font-mono text-sm space-y-1">
@@ -328,7 +328,7 @@ const PythonMatricesPage = () => {
               </AccordionItem>
 
               <AccordionItem value="fonctions-axe">
-                <AccordionTrigger className="text-green-600">Fonctions par axe</AccordionTrigger>
+                <AccordionTrigger className="text-blue-600">Fonctions par axe</AccordionTrigger>
                 <AccordionContent>
                   <p className="mb-4">Ces fonctions peuvent être appliquées ligne par ligne ou colonne par colonne :</p>
                   
@@ -353,7 +353,7 @@ const PythonMatricesPage = () => {
               </AccordionItem>
 
               <AccordionItem value="fonctions-speciales">
-                <AccordionTrigger className="text-green-600">Fonctions spéciales</AccordionTrigger>
+                <AccordionTrigger className="text-blue-600">Fonctions spéciales</AccordionTrigger>
                 <AccordionContent>
                   <div>
                     <h4 className="font-semibold mb-2">Somme cumulée</h4>
@@ -408,14 +408,14 @@ const PythonMatricesPage = () => {
         </Card>
 
         {/* Opérations de comparaison */}
-        <Card className="mb-8 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50">
+        <Card className="mb-8 border-blue-200 bg-gradient-to-br from-blue-50 to-blue-50">
           <CardHeader>
-            <CardTitle className="text-xl text-green-700">7. OPÉRATIONS DE COMPARAISON</CardTitle>
+            <CardTitle className="text-xl text-blue-700">7. OPÉRATIONS DE COMPARAISON</CardTitle>
           </CardHeader>
           <CardContent>
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="comparaison-valeur">
-                <AccordionTrigger className="text-green-600">Comparaison avec une valeur</AccordionTrigger>
+                <AccordionTrigger className="text-blue-600">Comparaison avec une valeur</AccordionTrigger>
                 <AccordionContent>
                   <div className="bg-gray-50 p-4 rounded font-mono text-sm space-y-1">
                     <div>A &gt; valeur    # Renvoie une matrice de booléens</div>
@@ -426,7 +426,7 @@ const PythonMatricesPage = () => {
               </AccordionItem>
 
               <AccordionItem value="comparaison-matrices">
-                <AccordionTrigger className="text-green-600">Comparaison entre matrices</AccordionTrigger>
+                <AccordionTrigger className="text-blue-600">Comparaison entre matrices</AccordionTrigger>
                 <AccordionContent>
                   <div className="bg-gray-50 p-4 rounded font-mono text-sm space-y-1">
                     <div>A == B        # Comparaison élément par élément</div>
@@ -448,25 +448,25 @@ const PythonMatricesPage = () => {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="p-4 bg-yellow-50 border border-yellow-200 rounded">
-                <h4 className="font-semibold text-yellow-800 mb-2">Conventions d'indexation</h4>
-                <ul className="space-y-1 text-yellow-700">
+              <div className="p-4 bg-orange-50 border border-orange-200 rounded">
+                <h4 className="font-semibold text-orange-600 mb-2">Conventions d'indexation</h4>
+                <ul className="space-y-1 text-orange-600">
                   <li>• La numérotation commence toujours à 0</li>
                   <li>• L'ordre des indices est toujours [ligne, colonne]</li>
                 </ul>
               </div>
 
-              <div className="p-4 bg-yellow-50 border border-yellow-200 rounded">
-                <h4 className="font-semibold text-yellow-800 mb-2">Distinction des opérations</h4>
-                <ul className="space-y-1 text-yellow-700">
+              <div className="p-4 bg-orange-50 border border-orange-200 rounded">
+                <h4 className="font-semibold text-orange-600 mb-2">Distinction des opérations</h4>
+                <ul className="space-y-1 text-orange-600">
                   <li>• L'opérateur * effectue une multiplication terme à terme, pas un produit matriciel</li>
                   <li>• Le produit matriciel s'obtient exclusivement avec np.dot()</li>
                 </ul>
               </div>
 
-              <div className="p-4 bg-red-50 border border-red-200 rounded">
-                <h4 className="font-semibold text-red-800 mb-2">Paramètre axis</h4>
-                <ul className="space-y-1 text-red-700">
+              <div className="p-4 bg-orange-50 border border-orange-200 rounded">
+                <h4 className="font-semibold text-orange-600 mb-2">Paramètre axis</h4>
+                <ul className="space-y-1 text-orange-600">
                   <li>• axis=0 : opération par colonne</li>
                   <li>• axis=1 : opération par ligne</li>
                 </ul>
@@ -556,12 +556,12 @@ const PythonMatricesPage = () => {
               <AccordionItem value="qcm-reponses">
                 <AccordionTrigger className="text-slate-600">Réponses du QCM</AccordionTrigger>
                 <AccordionContent>
-                  <div className="bg-green-50 p-4 rounded border border-green-200">
-                    <h4 className="font-semibold text-green-800 mb-3 flex items-center gap-2">
+                  <div className="bg-blue-50 p-4 rounded border border-blue-200">
+                    <h4 className="font-semibold text-blue-600 mb-3 flex items-center gap-2">
                       <CheckCircle className="h-5 w-5" />
                       Réponses correctes
                     </h4>
-                    <div className="space-y-2 text-green-700">
+                    <div className="space-y-2 text-blue-700">
                       <div><strong>1 - C</strong> (l'élément [1,0] vaut 3)</div>
                       <div><strong>2 - B</strong> (A * B = multiplication terme à terme, np.dot(A,B) = produit matriciel)</div>
                       <div><strong>3 - B</strong> (axis=1 pour les lignes)</div>
@@ -593,7 +593,7 @@ const PythonMatricesPage = () => {
               <AccordionItem value="niveau-1">
                 <AccordionTrigger className="text-gray-600">
                   <div className="flex items-center gap-2">
-                    <Badge variant="outline" className="bg-green-100 text-green-700">Niveau 1</Badge>
+                    <Badge variant="outline" className="bg-blue-50 text-blue-700">Niveau 1</Badge>
                     Application directe
                   </div>
                 </AccordionTrigger>
@@ -657,7 +657,7 @@ const PythonMatricesPage = () => {
               <AccordionItem value="niveau-4">
                 <AccordionTrigger className="text-gray-600">
                   <div className="flex items-center gap-2">
-                    <Badge variant="outline" className="bg-yellow-100 text-yellow-700">Niveau 4</Badge>
+                    <Badge variant="outline" className="bg-orange-50 text-orange-600">Niveau 4</Badge>
                     Analyse statistique
                   </div>
                 </AccordionTrigger>
@@ -676,7 +676,7 @@ const PythonMatricesPage = () => {
               <AccordionItem value="niveau-5">
                 <AccordionTrigger className="text-gray-600">
                   <div className="flex items-center gap-2">
-                    <Badge variant="outline" className="bg-red-100 text-red-700">Niveau 5</Badge>
+                    <Badge variant="outline" className="bg-orange-50 text-orange-600">Niveau 5</Badge>
                     Problèmes de synthèse
                   </div>
                 </AccordionTrigger>

@@ -89,7 +89,7 @@ const FormationEspagnolSommairePage = () => {
         </div>
 
         {/* Section Sommaire - Guide pas à pas */}
-        <section className="py-16 px-4 sm:px-6 relative z-10 bg-gradient-to-br from-blue-50 via-white to-blue-100">
+        <section className="py-8 px-4 sm:px-6 relative z-10 bg-gradient-to-br from-blue-50 via-white to-blue-100">
           <div className="container mx-auto max-w-6xl">
             <div className="grid gap-6 max-w-5xl mx-auto">
               {/* Étape 1: Modules principaux */}

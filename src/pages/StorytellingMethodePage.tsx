@@ -19,7 +19,7 @@ const StorytellingMethodePage = () => {
   return (
     <div className="min-h-screen bg-accent">
       {/* Hero Section */}
-      <div className="bg-white py-12">
+      <div className="bg-white py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center text-center mb-8">
             <Link to="/methodes" className="text-primary hover:underline mb-4 flex items-center">
@@ -36,7 +36,7 @@ const StorytellingMethodePage = () => {
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-sm p-8">
           
           {/* Section 1 */}

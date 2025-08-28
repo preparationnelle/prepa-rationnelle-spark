@@ -19,16 +19,16 @@ const PythonFundamentalsPage = () => {
             <Code className="h-8 w-8" />
           </div>
           <div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-500 via-red-500 to-orange-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 bg-clip-text text-transparent">
               Module 0 - Les Fondamentaux
             </h1>
-            <Badge variant="secondary" className="mt-3 bg-gradient-to-r from-orange-400 to-red-500 text-white font-semibold px-4 py-2">Module 0</Badge>
+            <Badge variant="secondary" className="mt-3 bg-gradient-to-r from-orange-400 to-orange-600 text-white font-semibold px-4 py-2">Module 0</Badge>
           </div>
         </div>
       </div>
 
         {/* Objectifs */}
-        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-br from-orange-50 to-red-50 shadow-lg">
+        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-br from-orange-50 to-orange-600 shadow-lg">
           <CardHeader>
             <CardTitle className="text-xl text-orange-700 flex items-center gap-2">
               <Target className="h-5 w-5" />
@@ -38,23 +38,23 @@ const PythonFundamentalsPage = () => {
           <CardContent>
             <ul className="space-y-3 text-gray-700">
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-green-600 mt-1" />
+                <CheckCircle className="h-4 w-4 text-blue-600 mt-1" />
                 Comprendre pourquoi Python rapporte facilement des points au concours ECG.
               </li>
               <li className="flex items-start gap-2">  
-                <CheckCircle className="h-4 w-4 text-green-600 mt-1" />
+                <CheckCircle className="h-4 w-4 text-blue-600 mt-1" />
                 Maîtriser les bases du langage et les principales librairies utiles.
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-green-600 mt-1" />
+                <CheckCircle className="h-4 w-4 text-blue-600 mt-1" />
                 Savoir écrire et structurer un script ou une fonction simple.
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-green-600 mt-1" />
+                <CheckCircle className="h-4 w-4 text-blue-600 mt-1" />
                 Manipuler les listes et utiliser les boucles/conditions efficacement.
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-green-600 mt-1" />
+                <CheckCircle className="h-4 w-4 text-blue-600 mt-1" />
                 Être capable de traiter tous les types d'exercices classiques en Python au concours.
               </li>
             </ul>
@@ -65,10 +65,10 @@ const PythonFundamentalsPage = () => {
         <div className="space-y-6">
           
           {/* Notion 1: Pourquoi miser sur Python */}
-          <Card className="border-2 border-yellow-200 bg-gradient-to-br from-yellow-50 to-orange-50 shadow-lg">
+          <Card className="border-2 border-orange-200 bg-gradient-to-br from-orange-500 to-orange-50 shadow-lg">
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
-                <Lightbulb className="h-5 w-5 text-yellow-600" />
+                <Lightbulb className="h-5 w-5 text-orange-600" />
                 Notion 1 - Pourquoi miser sur Python est (très) rentable aux concours ECG
               </CardTitle>
             </CardHeader>
@@ -95,19 +95,19 @@ const PythonFundamentalsPage = () => {
                           </p>
                         </div>
 
-                        <div className="bg-green-50 p-4 rounded-lg">
-                          <h4 className="font-semibold text-green-800 mb-2">2. Un barème qui pèse plus lourd qu'on le croit</h4>
-                          <p className="text-sm text-green-700 mb-2">
+                        <div className="bg-blue-50 p-4 rounded-lg">
+                          <h4 className="font-semibold text-blue-800 mb-2">2. Un barème qui pèse plus lourd qu'on le croit</h4>
+                          <p className="text-sm text-blue-700 mb-2">
                             La partie Python représente jusqu'à <strong>7 à 10 points</strong> du barème dans certaines épreuves.
                           </p>
-                          <p className="text-sm text-green-600">
+                          <p className="text-sm text-blue-600">
                             Faire l'essentiel en Python, c'est souvent gagner 4 à 5 points réels sur la note finale.
                           </p>
                         </div>
 
-                        <div className="bg-purple-50 p-4 rounded-lg">
-                          <h4 className="font-semibold text-purple-800 mb-2">3. Des points accessibles, même pour les non-experts</h4>
-                          <p className="text-sm text-purple-700">
+                        <div className="bg-blue-50 p-4 rounded-lg">
+                          <h4 className="font-semibold text-blue-800 mb-2">3. Des points accessibles, même pour les non-experts</h4>
+                          <p className="text-sm text-blue-700">
                             Les questions de Python sont souvent indépendantes : Tu peux les traiter même si tu as « sauté » une ou deux sous-questions mathématiques plus dures juste avant.
                           </p>
                         </div>
@@ -121,9 +121,9 @@ const PythonFundamentalsPage = () => {
                         </div>
                       </div>
 
-                      <div className="bg-gradient-to-r from-yellow-100 to-orange-100 p-4 rounded-lg border-l-4 border-yellow-500">
-                        <h4 className="font-semibold text-yellow-800 mb-2">🎯 La stratégie gagnante : toujours finir par Python</h4>
-                        <p className="text-sm text-yellow-700">
+                      <div className="bg-gradient-to-r from-orange-500 to-orange-100 p-4 rounded-lg border-l-4 border-orange-500">
+                        <h4 className="font-semibold text-orange-800 mb-2">🎯 La stratégie gagnante : toujours finir par Python</h4>
+                        <p className="text-sm text-orange-700">
                           À la fin de l'épreuve, même si tu bloques sur des questions difficiles ou que le temps file, revenir sur les questions Python permet souvent de "gratter" quelques points supplémentaires rapidement, sans stress ni perte de temps.
                         </p>
                       </div>
@@ -170,7 +170,7 @@ const PythonFundamentalsPage = () => {
                         </TableHeader>
                         <TableBody>
                           <TableRow>
-                            <TableCell className="font-mono text-red-600">random</TableCell>
+                            <TableCell className="font-mono text-orange-600">random</TableCell>
                             <TableCell className="font-mono">rd</TableCell>
                             <TableCell>Tirages aléatoires</TableCell>
                             <TableCell className="font-mono text-sm">rd.randint(), rd.choices()</TableCell>
@@ -182,13 +182,13 @@ const PythonFundamentalsPage = () => {
                             <TableCell className="font-mono text-sm">np.array(), np.sum()</TableCell>
                           </TableRow>
                           <TableRow>
-                            <TableCell className="font-mono text-green-600">matplotlib</TableCell>
+                            <TableCell className="font-mono text-blue-600">matplotlib</TableCell>
                             <TableCell className="font-mono">plt</TableCell>
                             <TableCell>Tracer des graphiques</TableCell>
                             <TableCell className="font-mono text-sm">plt.plot(), plt.show()</TableCell>
                           </TableRow>
                           <TableRow>
-                            <TableCell className="font-mono text-purple-600">pandas</TableCell>
+                            <TableCell className="font-mono text-blue-600">pandas</TableCell>
                             <TableCell className="font-mono">pd</TableCell>
                             <TableCell>Données type tableau/Excel</TableCell>
                             <TableCell className="font-mono text-sm">pd.DataFrame(), pd.read_csv()</TableCell>
@@ -197,9 +197,9 @@ const PythonFundamentalsPage = () => {
                       </Table>
 
                       <div className="grid md:grid-cols-2 gap-4 mt-6">
-                        <div className="bg-red-50 p-4 rounded-lg border-2 border-red-200 shadow-md hover:shadow-lg transition-shadow">
-                          <h4 className="font-semibold text-red-800 mb-2">1. random (rd)</h4>
-                          <p className="text-sm text-red-700 mb-2">Générer des nombres aléatoires</p>
+                        <div className="bg-orange-50 p-4 rounded-lg border-2 border-orange-200 shadow-md hover:shadow-lg transition-shadow">
+                          <h4 className="font-semibold text-orange-800 mb-2">1. random (rd)</h4>
+                          <p className="text-sm text-orange-700 mb-2">Générer des nombres aléatoires</p>
                           <div className="bg-gray-100 p-2 rounded font-mono text-sm">
                             <div>import random as rd</div>
                             <div>x = rd.randint(1, 6)  # Tire entre 1 et 6</div>
@@ -215,9 +215,9 @@ const PythonFundamentalsPage = () => {
                           </div>
                         </div>
 
-                        <div className="bg-green-50 p-4 rounded-lg border-2 border-green-200 shadow-md hover:shadow-lg transition-shadow">
-                          <h4 className="font-semibold text-green-800 mb-2">3. matplotlib (plt)</h4>
-                          <p className="text-sm text-green-700 mb-2">Créer des graphiques</p>
+                        <div className="bg-blue-50 p-4 rounded-lg border-2 border-blue-200 shadow-md hover:shadow-lg transition-shadow">
+                          <h4 className="font-semibold text-blue-800 mb-2">3. matplotlib (plt)</h4>
+                          <p className="text-sm text-blue-700 mb-2">Créer des graphiques</p>
                           <div className="bg-gray-100 p-2 rounded font-mono text-sm">
                             <div>import matplotlib.pyplot as plt</div>
                             <div>plt.plot(x, y)</div>
@@ -225,9 +225,9 @@ const PythonFundamentalsPage = () => {
                           </div>
                         </div>
 
-                        <div className="bg-purple-50 p-4 rounded-lg border-2 border-purple-200 shadow-md hover:shadow-lg transition-shadow">
-                          <h4 className="font-semibold text-purple-800 mb-2">4. pandas (pd)</h4>
-                          <p className="text-sm text-purple-700 mb-2">Travailler avec des données (type Excel)</p>
+                        <div className="bg-blue-50 p-4 rounded-lg border-2 border-blue-200 shadow-md hover:shadow-lg transition-shadow">
+                          <h4 className="font-semibold text-blue-800 mb-2">4. pandas (pd)</h4>
+                          <p className="text-sm text-blue-700 mb-2">Travailler avec des données (type Excel)</p>
                           <div className="bg-gray-100 p-2 rounded font-mono text-sm">
                             <div>import pandas as pd</div>
                             <div>df = pd.DataFrame(data)</div>
@@ -242,7 +242,7 @@ const PythonFundamentalsPage = () => {
           </Card>
 
           {/* Notion 3: Types fondamentaux et variables */}
-          <Card className="border-2 border-indigo-200 bg-gradient-to-br from-indigo-50 to-purple-50 shadow-lg">
+          <Card className="border-2 border-indigo-200 bg-gradient-to-br from-indigo-50 to-blue-600 shadow-lg">
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <Code className="h-5 w-5 text-indigo-600" />
@@ -287,7 +287,7 @@ const PythonFundamentalsPage = () => {
                         </TableBody>
                       </Table>
 
-                      <div className="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                      <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
                         <h4 className="font-semibold mb-2">Variables booléennes</h4>
                         <p className="text-sm mb-2"><code className="bg-gray-100 px-1 rounded">A==2</code> signifie « A est-il égal à 2 ?»</p>
                         <p className="text-sm"><code className="bg-gray-100 px-1 rounded">E = (A == C)</code> stocke TRUE ou FALSE dans E selon le test A==C</p>
@@ -388,9 +388,9 @@ const PythonFundamentalsPage = () => {
                           </div>
                         </div>
 
-                        <div className="bg-green-50 p-4 rounded-lg">
-                          <h4 className="font-semibold text-green-800 mb-2">2. L'instruction de saisie : input</h4>
-                          <p className="text-sm text-green-700 mb-2">Demander à l'utilisateur d'entrer une valeur.</p>
+                        <div className="bg-blue-50 p-4 rounded-lg">
+                          <h4 className="font-semibold text-blue-800 mb-2">2. L'instruction de saisie : input</h4>
+                          <p className="text-sm text-blue-700 mb-2">Demander à l'utilisateur d'entrer une valeur.</p>
                           <div className="bg-gray-100 p-3 rounded font-mono text-sm space-y-1">
                             <div>nom = input("Quel est votre nom ? ")</div>
                             <div>print("Bonjour, " + nom + " !")</div>
@@ -398,9 +398,9 @@ const PythonFundamentalsPage = () => {
                         </div>
                       </div>
 
-                      <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
-                        <h4 className="font-semibold text-red-800 mb-2">⚠️ Important : Conversion des types</h4>
-                        <p className="text-sm text-red-700 mb-2">Si tu veux récupérer un nombre, il faut convertir :</p>
+                      <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-200">
+                        <h4 className="font-semibold text-orange-800 mb-2">⚠️ Important : Conversion des types</h4>
+                        <p className="text-sm text-orange-700 mb-2">Si tu veux récupérer un nombre, il faut convertir :</p>
                         <div className="bg-gray-100 p-3 rounded font-mono text-sm space-y-1">
                           <div>n = int(input("Donne un nombre entier : "))</div>
                           <div>x = float(input("Donne un nombre décimal : "))</div>
@@ -410,7 +410,7 @@ const PythonFundamentalsPage = () => {
                       <div>
                         <h4 className="font-semibold mb-2">Script complet : Exemple interactif</h4>
                         <div className="bg-gray-100 p-4 rounded font-mono text-sm">
-                          <div className="text-green-600"># Script pour saisir un entier et afficher la somme des entiers de 1 à n</div>
+                          <div className="text-blue-600"># Script pour saisir un entier et afficher la somme des entiers de 1 à n</div>
                           <div className="mt-2 space-y-1">
                             <div>n = int(input("Saisis un entier positif n : "))</div>
                             <div>somme = 0</div>
@@ -452,9 +452,9 @@ const PythonFundamentalsPage = () => {
                           </div>
                         </div>
 
-                        <div className="bg-green-50 p-4 rounded-lg">
-                          <h4 className="font-semibold text-green-800 mb-2">2. Fonctions personnalisées</h4>
-                          <p className="text-sm text-green-700 mb-2">Quand aucune fonction ne correspond à ce que tu veux :</p>
+                        <div className="bg-blue-50 p-4 rounded-lg">
+                          <h4 className="font-semibold text-blue-800 mb-2">2. Fonctions personnalisées</h4>
+                          <p className="text-sm text-blue-700 mb-2">Quand aucune fonction ne correspond à ce que tu veux :</p>
                           <div className="bg-gray-100 p-3 rounded font-mono text-sm space-y-1">
                             <div>def f(x):</div>
                             <div className="ml-4">"""Calcule 7x³ + 1"""</div>
@@ -467,7 +467,7 @@ const PythonFundamentalsPage = () => {
                         </div>
                       </div>
 
-                      <div className="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                      <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
                         <h4 className="font-semibold mb-2">Bonnes pratiques</h4>
                         <ul className="text-sm space-y-1">
                           <li>• Le corps est indenté (4 espaces recommandés)</li>
@@ -508,8 +508,8 @@ const PythonFundamentalsPage = () => {
                           </div>
                         </div>
 
-                        <div className="bg-green-50 p-4 rounded-lg">
-                          <h4 className="font-semibold text-green-800 mb-2">Principales opérations</h4>
+                        <div className="bg-blue-50 p-4 rounded-lg">
+                          <h4 className="font-semibold text-blue-800 mb-2">Principales opérations</h4>
                           <div className="bg-gray-100 p-3 rounded font-mono text-sm space-y-1">
                             <div>L.append(8)      # Ajout</div>
                             <div>L.remove(4)      # Suppression</div>
@@ -571,8 +571,8 @@ const PythonFundamentalsPage = () => {
                         </TableBody>
                       </Table>
 
-                      <div className="bg-purple-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-purple-800 mb-2">Application mathématique</h4>
+                      <div className="bg-blue-50 p-4 rounded-lg">
+                        <h4 className="font-semibold text-blue-800 mb-2">Application mathématique</h4>
                         <div className="bg-gray-100 p-3 rounded font-mono text-sm space-y-1">
                           <div>S = sum(L)                    # Calcul de somme</div>
                           <div>moyenne = sum(L) / len(L)     # Moyenne</div>
@@ -643,9 +643,9 @@ const PythonFundamentalsPage = () => {
                           </div>
                         </div>
 
-                        <div className="bg-green-50 p-4 rounded-lg">
-                          <h4 className="font-semibold text-green-800 mb-2">Structure if</h4>
-                          <p className="text-sm text-green-700 mb-2">Pour prendre des décisions</p>
+                        <div className="bg-blue-50 p-4 rounded-lg">
+                          <h4 className="font-semibold text-blue-800 mb-2">Structure if</h4>
+                          <p className="text-sm text-blue-700 mb-2">Pour prendre des décisions</p>
                           <div className="bg-gray-100 p-3 rounded font-mono text-sm space-y-1">
                             <div>n = 5</div>
                             <div>if n % 2 == 0:</div>
@@ -655,9 +655,9 @@ const PythonFundamentalsPage = () => {
                           </div>
                         </div>
 
-                        <div className="bg-purple-50 p-4 rounded-lg">
-                          <h4 className="font-semibold text-purple-800 mb-2">Boucle while</h4>
-                          <p className="text-sm text-purple-700 mb-2">Quand on ne sait pas combien de fois</p>
+                        <div className="bg-blue-50 p-4 rounded-lg">
+                          <h4 className="font-semibold text-blue-800 mb-2">Boucle while</h4>
+                          <p className="text-sm text-blue-700 mb-2">Quand on ne sait pas combien de fois</p>
                           <div className="bg-gray-100 p-3 rounded font-mono text-sm space-y-1">
                             <div>n = 0</div>
                             <div>while 3*n + 1 &lt;= 5000:</div>
@@ -667,7 +667,7 @@ const PythonFundamentalsPage = () => {
                         </div>
                       </div>
 
-                      <div className="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                      <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
                         <h4 className="font-semibold mb-2">Bonnes pratiques</h4>
                         <ul className="text-sm space-y-1">
                           <li>• <strong>for :</strong> Préférer range() aux boucles indice manuelles</li>
@@ -700,7 +700,7 @@ const PythonFundamentalsPage = () => {
                             Ensemble d'instructions exécutées directement quand on lance le fichier. Effectue une tâche, mais n'est pas conçu pour être réutilisé facilement.
                           </p>
                           <div className="bg-gray-100 p-3 rounded font-mono text-sm space-y-1">
-                            <div className="text-green-600"># Script qui calcule la somme de 1 à n</div>
+                            <div className="text-blue-600"># Script qui calcule la somme de 1 à n</div>
                             <div>n = 10</div>
                             <div>somme = 0</div>
                             <div>for k in range(1, n+1):</div>
@@ -709,13 +709,13 @@ const PythonFundamentalsPage = () => {
                           </div>
                         </div>
 
-                        <div className="bg-green-50 p-4 rounded-lg">
-                          <h4 className="font-semibold text-green-800 mb-2">Fonction</h4>
-                          <p className="text-sm text-green-700 mb-3">
+                        <div className="bg-blue-50 p-4 rounded-lg">
+                          <h4 className="font-semibold text-blue-800 mb-2">Fonction</h4>
+                          <p className="text-sm text-blue-700 mb-3">
                             Bloc de code réutilisable, défini une seule fois, et que l'on peut appeler plusieurs fois avec des paramètres différents.
                           </p>
                           <div className="bg-gray-100 p-3 rounded font-mono text-sm space-y-1">
-                            <div className="text-green-600"># Fonction qui calcule la somme de 1 à n</div>
+                            <div className="text-blue-600"># Fonction qui calcule la somme de 1 à n</div>
                             <div>def somme_1_a_n(n):</div>
                             <div className="ml-4">somme = 0</div>
                             <div className="ml-4">for k in range(1, n+1):</div>
@@ -728,7 +728,7 @@ const PythonFundamentalsPage = () => {
                         </div>
                       </div>
 
-                      <div className="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                      <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
                         <h4 className="font-semibold mb-2">L'intérêt principal des fonctions</h4>
                         <p className="text-sm">
                           <strong>Réutilisabilité et clarté du code.</strong> Impossible de réutiliser facilement un script pour une autre valeur sans modifier le code ou relancer l'exécution. Avec une fonction, on peut l'appeler autant de fois qu'on veut avec des paramètres différents.
@@ -755,7 +755,7 @@ const PythonFundamentalsPage = () => {
                   <AccordionTrigger>Maîtriser la méthode de résolution</AccordionTrigger>
                   <AccordionContent>
                     <div className="space-y-6">
-                      <div className="bg-gradient-to-r from-orange-100 to-red-100 p-4 rounded-lg">
+                      <div className="bg-gradient-to-r from-orange-100 to-orange-600 p-4 rounded-lg">
                         <h4 className="font-semibold mb-2">Plan de résolution en 3 étapes</h4>
                         <p className="text-sm">Décomposer en trois grandes étapes : <strong>Initialisation → Traitement → Sortie</strong></p>
                       </div>
@@ -798,9 +798,9 @@ const PythonFundamentalsPage = () => {
                           </ul>
                         </div>
 
-                        <div className="bg-green-50 p-4 rounded-lg">
-                          <h4 className="font-semibold text-green-800 mb-2">2. Traitement</h4>
-                          <p className="text-sm text-green-700 mb-2">Mettre en œuvre l'algorithme</p>
+                        <div className="bg-blue-50 p-4 rounded-lg">
+                          <h4 className="font-semibold text-blue-800 mb-2">2. Traitement</h4>
+                          <p className="text-sm text-blue-700 mb-2">Mettre en œuvre l'algorithme</p>
                           <ul className="text-xs space-y-1">
                             <li>• Boucles (for ou while) pour répéter des calculs</li>
                             <li>• Transformation ou calcul sur des listes</li>
@@ -808,9 +808,9 @@ const PythonFundamentalsPage = () => {
                           </ul>
                         </div>
 
-                        <div className="bg-purple-50 p-4 rounded-lg">
-                          <h4 className="font-semibold text-purple-800 mb-2">3. Sortie</h4>
-                          <p className="text-sm text-purple-700 mb-2">Afficher ou retourner le résultat</p>
+                        <div className="bg-blue-50 p-4 rounded-lg">
+                          <h4 className="font-semibold text-blue-800 mb-2">3. Sortie</h4>
+                          <p className="text-sm text-blue-700 mb-2">Afficher ou retourner le résultat</p>
                           <ul className="text-xs space-y-1">
                             <li>• Script : utiliser print() pour l'utilisateur</li>
                             <li>• Fonction : utiliser return pour l'appelant</li>
@@ -819,7 +819,7 @@ const PythonFundamentalsPage = () => {
                         </div>
                       </div>
 
-                      <div className="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                      <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
                         <h4 className="font-semibold mb-2">Astuce méthode</h4>
                         <p className="text-sm">
                           Toujours écrire d'abord le plan sur papier avant de coder : <strong>Initialisation → Traitement → Sortie</strong>. Tester avec plusieurs cas (petit, grand, valeurs limites).
@@ -885,9 +885,9 @@ const PythonFundamentalsPage = () => {
                           </ul>
                         </div>
 
-                        <div className="bg-green-50 p-4 rounded-lg">
-                          <h4 className="font-semibold text-green-800 mb-2">Type 2 : Comprendre/Compléter</h4>
-                          <p className="text-sm text-green-700 mb-2">« Que fait ce script ? », « Compléter la ligne manquante »</p>
+                        <div className="bg-blue-50 p-4 rounded-lg">
+                          <h4 className="font-semibold text-blue-800 mb-2">Type 2 : Comprendre/Compléter</h4>
+                          <p className="text-sm text-blue-700 mb-2">« Que fait ce script ? », « Compléter la ligne manquante »</p>
                           <ul className="text-xs space-y-1">
                             <li>• Analyser un code fourni (en entier ou partiellement)</li>
                             <li>• Comprendre la logique des variables</li>
@@ -895,9 +895,9 @@ const PythonFundamentalsPage = () => {
                           </ul>
                         </div>
 
-                        <div className="bg-purple-50 p-4 rounded-lg">
-                          <h4 className="font-semibold text-purple-800 mb-2">Type 3 : Interpréter</h4>
-                          <p className="text-sm text-purple-700 mb-2">« Interpréter ce graphique », « Conclure sur la convergence »</p>
+                        <div className="bg-blue-50 p-4 rounded-lg">
+                          <h4 className="font-semibold text-blue-800 mb-2">Type 3 : Interpréter</h4>
+                          <p className="text-sm text-blue-700 mb-2">« Interpréter ce graphique », « Conclure sur la convergence »</p>
                           <ul className="text-xs space-y-1">
                             <li>• Lire, analyser et expliquer un résultat obtenu</li>
                             <li>• Interpréter courbe, tableau, histogramme</li>
@@ -906,7 +906,7 @@ const PythonFundamentalsPage = () => {
                         </div>
                       </div>
 
-                      <div className="bg-gradient-to-r from-orange-100 to-red-100 p-4 rounded-lg border-l-4 border-orange-500">
+                      <div className="bg-gradient-to-r from-orange-100 to-orange-600 p-4 rounded-lg border-l-4 border-orange-500">
                         <h4 className="font-semibold mb-2">🎯 Stratégie gagnante</h4>
                         <p className="text-sm">
                           Entraîne-toi régulièrement sur des annales en repérant à quelle catégorie appartient chaque question. Reconnaître rapidement le type d'exercice aide à organiser sa réflexion et à maximiser ses points le jour de l'épreuve.
@@ -945,9 +945,9 @@ const PythonFundamentalsPage = () => {
                           </ul>
                         </div>
 
-                        <div className="bg-green-50 p-4 rounded-lg">
-                          <h4 className="font-semibold text-green-800 mb-2">2. Réviser avec des fiches structurées</h4>
-                          <p className="text-sm text-green-700 mb-2">Avoir accès à toutes les notions du programme fait gagner un temps considérable :</p>
+                        <div className="bg-blue-50 p-4 rounded-lg">
+                          <h4 className="font-semibold text-blue-800 mb-2">2. Réviser avec des fiches structurées</h4>
+                          <p className="text-sm text-blue-700 mb-2">Avoir accès à toutes les notions du programme fait gagner un temps considérable :</p>
                           <ul className="text-xs space-y-1">
                             <li>• Définitions et syntaxes bien présentées</li>
                             <li>• Bonnes pratiques et astuces</li>
@@ -955,9 +955,9 @@ const PythonFundamentalsPage = () => {
                           </ul>
                         </div>
 
-                        <div className="bg-purple-50 p-4 rounded-lg">
-                          <h4 className="font-semibold text-purple-800 mb-2">3. S'entraîner sur les scripts classiques</h4>
-                          <p className="text-sm text-purple-700 mb-2">Retrouver tous les scripts tombés ou susceptibles de tomber :</p>
+                        <div className="bg-blue-50 p-4 rounded-lg">
+                          <h4 className="font-semibold text-blue-800 mb-2">3. S'entraîner sur les scripts classiques</h4>
+                          <p className="text-sm text-blue-700 mb-2">Retrouver tous les scripts tombés ou susceptibles de tomber :</p>
                           <ul className="text-xs space-y-1">
                             <li>• Sommes, produits, suites, simulations</li>
                             <li>• Les reconnaître au premier coup d'œil</li>
@@ -976,7 +976,7 @@ const PythonFundamentalsPage = () => {
                         </div>
                       </div>
 
-                      <div className="bg-gradient-to-r from-yellow-100 to-orange-100 p-4 rounded-lg border-l-4 border-yellow-500">
+                      <div className="bg-gradient-to-r from-orange-500 to-orange-100 p-4 rounded-lg border-l-4 border-orange-500">
                         <h4 className="font-semibold mb-2">🎒 Le kit de survie Python</h4>
                         <ul className="text-sm space-y-1">
                           <li>• Une liste exhaustive des commandes, structures, syntaxes à connaître</li>
@@ -987,9 +987,9 @@ const PythonFundamentalsPage = () => {
                         </ul>
                       </div>
 
-                      <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
-                        <h4 className="font-semibold text-red-800 mb-2">🔑 La clé : compréhension + pratique régulière</h4>
-                        <p className="text-sm text-red-700">
+                      <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-200">
+                        <h4 className="font-semibold text-orange-800 mb-2">🔑 La clé : compréhension + pratique régulière</h4>
+                        <p className="text-sm text-orange-700">
                           C'est la compréhension profonde des mécanismes de Python, associée à une pratique régulière et ciblée, qui te permettra de réussir dans n'importe quelle situation. Avoir un outil complet, c'est bien. Mais l'avoir personnalisé, enrichi, testé et retravaillé, c'est ce qui fait la différence le jour du concours.
                         </p>
                       </div>

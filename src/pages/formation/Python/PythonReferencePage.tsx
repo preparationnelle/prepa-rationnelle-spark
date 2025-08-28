@@ -83,7 +83,7 @@ const PythonReferencePage = () => {
 
         {/* Call to action */}
         <div className="mt-12 text-center">
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-8 rounded-lg border">
+          <div className="bg-gradient-to-r from-blue-50 to-blue-600 p-8 rounded-lg border">
             <h3 className="text-2xl font-bold mb-4">Prêt à maîtriser Python ?</h3>
             <p className="text-muted-foreground mb-6">
               Transformez ces commandes en +3 à +5 points sûrs aux concours

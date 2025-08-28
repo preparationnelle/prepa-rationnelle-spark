@@ -24,7 +24,7 @@ const CommandCard = ({ command, description, copiedCommand, onCopy }: CommandCar
         className="opacity-0 group-hover:opacity-100 transition-opacity"
       >
         {copiedCommand === command ? (
-          <span className="text-green-600 text-xs">✓</span>
+          <span className="text-blue-600 text-xs">✓</span>
         ) : (
           <Copy className="h-4 w-4" />
         )}

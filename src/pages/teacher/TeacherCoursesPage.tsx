@@ -116,7 +116,7 @@ const TeacherCoursesPage = () => {
         </div>
 
         {courses.length === 0 && (
-          <Card className="text-center py-12">
+          <Card className="text-center py-8">
             <CardContent>
               <BookOpen className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
               <h3 className="text-lg font-semibold mb-2">Aucun cours créé</h3>

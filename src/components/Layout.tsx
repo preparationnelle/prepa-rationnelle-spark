@@ -19,7 +19,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, showFooter = true }) =
       <div className="fixed top-1/2 left-1/4 w-56 h-56 bg-orange-50 rounded-full opacity-5 animate-pulse"></div>
       
       <Navigation />
-      <main className="flex-1 pt-20 w-full relative z-10">
+      <main className="flex-1 w-full relative z-10">
         <div className="w-full max-w-full">
           {children}
         </div>

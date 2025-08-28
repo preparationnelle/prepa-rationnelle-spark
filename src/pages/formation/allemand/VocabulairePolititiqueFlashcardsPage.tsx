@@ -207,7 +207,7 @@ const VocabulairePolititiqueFlashcardsPage = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{animationDelay: '4s'}}></div>
       </div>
 
-      <div className="container mx-auto px-4 py-12 relative z-10">
+      <div className="container mx-auto px-4 py-8 relative z-10">
         {/* En-tête */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
@@ -230,7 +230,7 @@ const VocabulairePolititiqueFlashcardsPage = () => {
         <div className="max-w-2xl mx-auto mb-6">
           <div className="flex justify-between items-center mb-2">
             <span className="text-sm font-medium text-gray-700">Progression</span>
-            <span className="text-sm font-medium text-blue-600">{currentIndex + 1} / {cards.length}</span>
+            <span className="text-sm font-medium text-orange-800">{currentIndex + 1} / {cards.length}</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2.5">
             <div 
@@ -308,8 +308,8 @@ const VocabulairePolititiqueFlashcardsPage = () => {
                   </>
                 ) : (
                   <>
-                    <EyeOff className="h-4 w-4 text-blue-600" />
-                    <span className="text-sm font-medium text-blue-600">Français</span>
+                    <EyeOff className="h-4 w-4 text-orange-800" />
+                    <span className="text-sm font-medium text-orange-800">Français</span>
                   </>
                 )}
               </div>

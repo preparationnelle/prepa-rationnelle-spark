@@ -370,16 +370,6 @@ const CivilReligionVocabularyPage = () => {
             <CardHeader className="bg-gradient-to-r from-yellow-50 to-orange-50">
               <CardTitle className="flex items-center gap-2">
                 <HelpCircle className="h-5 w-5 text-yellow-600" />
-                Raccourcis clavier
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                <div>
-                  <p className="font-semibold mb-2">Navigation :</p>
-                  <p>← → : Carte précédente/suivante</p>
-                  <p>Espace : Retourner la carte</p>
-                </div>
                 <div>
                   <p className="font-semibold mb-2">Actions :</p>
                   <p>R : Recommencer</p>

@@ -52,7 +52,7 @@ const Module1PoliticaRegimenesPage = () => {
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 py-12 relative z-10">
+      <div className="container mx-auto px-4 py-8 relative z-10">
         {/* En-tête du module */}
         <div className="text-center mb-10">
           <div className="flex justify-center mb-4">
@@ -112,8 +112,14 @@ const Module1PoliticaRegimenesPage = () => {
                     <h4 className="font-semibold text-gray-900 mb-2">4. Transitions politiques</h4>
                     <p className="text-sm text-gray-600">Évolutions en Amérique latine</p>
                   </div>
+                  <Link to="/formation/espagnol/civilisation/module1/vocabulaire">
+                    <div className="p-3 rounded-lg bg-gray-50 border border-gray-200 hover:bg-green-50 hover:border-green-200 transition-all duration-200 cursor-pointer">
+                      <h4 className="font-semibold text-gray-900 mb-2">5. Vocabulaire démocratique</h4>
+                      <p className="text-sm text-gray-600">50 termes clés de la démocratie</p>
+                    </div>
+                  </Link>
                   <div className="p-3 rounded-lg bg-gray-50 border border-gray-200 hover:bg-orange-50 hover:border-orange-200 transition-all duration-200">
-                    <h4 className="font-semibold text-gray-900 mb-2">5. Essai rédigé</h4>
+                    <h4 className="font-semibold text-gray-900 mb-2">6. Essai rédigé</h4>
                     <p className="text-sm text-gray-600">Démocratie et populisme</p>
                   </div>
                 </div>

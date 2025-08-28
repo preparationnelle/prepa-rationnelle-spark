@@ -141,11 +141,16 @@ const EnvironmentVocabularyPage = () => {
   const [showHelp, setShowHelp] = useState(false);
   const [cards, setCards] = useState(vocabularyData);
   const [progress, setProgress] = useState(0);
+  const [reviewCards, setReviewCards] = useState<Set<number>>(new Set());
+  const [isReviewMode, setIsReviewMode] = useState(false);
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
 
   // Calcul du progrès
   useEffect(() => {
-    setProgress(((currentIndex + 1) / cards.length) * 100);
-  }, [currentIndex, cards.length]);
+    const currentCards = isReviewMode ? cards.filter((_, index) => reviewCards.has(index)) : cards;
+    setProgress(((currentIndex + 1) / currentCards.length) * 100);
+  }, [currentIndex, cards.length, isReviewMode, reviewCards]);
 
   // Navigation avec les touches
   useEffect(() => {
@@ -170,7 +175,9 @@ const EnvironmentVocabularyPage = () => {
           break;
         case 'KeyR':
           event.preventDefault();
-          resetCards();
+          if (isFlipped) {
+            markForReview();
+          }
           break;
       }
     };
@@ -200,6 +207,49 @@ const EnvironmentVocabularyPage = () => {
     setCards(vocabularyData);
     setCurrentIndex(0);
     setIsFlipped(false);
+    setReviewCards(new Set());
+    setIsReviewMode(false);
+  };
+
+  const markForReview = () => {
+    const currentCard = cards[currentIndex];
+    if (currentCard) {
+      const originalIndex = vocabularyData.findIndex(card => card.id === currentCard.id);
+      setReviewCards(prev => new Set([...prev, originalIndex]));
+    }
+  };
+
+  const toggleReviewMode = () => {
+    setIsReviewMode(!isReviewMode);
+    setCurrentIndex(0);
+    setIsFlipped(false);
+  };
+
+  // Gestion du swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX || !touchEndX) return;
+
+    const distance = touchStartX - touchEndX;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      goToNext();
+    }
+    if (isRightSwipe) {
+      goToPrevious();
+    }
+
+    setTouchStartX(0);
+    setTouchEndX(0);
   };
 
   const currentCard = cards[currentIndex];
@@ -265,7 +315,12 @@ const EnvironmentVocabularyPage = () => {
           </div>
 
           {/* Carte principale */}
-          <Card className="mb-8 border-2 border-blue-200">
+          <Card
+            className="mb-8 border-2 border-blue-200"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -285,7 +340,7 @@ const EnvironmentVocabularyPage = () => {
               </div>
             </CardHeader>
             <CardContent className="p-8">
-              <div className="relative min-h-[300px] flex items-center justify-center cursor-pointer">
+              <div className="relative min-h-[240px] max-h-[280px] flex items-center justify-center cursor-pointer">
                 {/* Face avant */}
                 <div 
                   className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${
@@ -307,7 +362,7 @@ const EnvironmentVocabularyPage = () => {
                   }`}
                 >
                   <div className="text-center">
-                    <h2 className="text-3xl font-bold text-blue-600 mb-4">
+                    <h2 className="text-3xl font-bold text-orange-800 mb-4">
                       {currentCard.english}
                     </h2>
                     <p className="text-gray-600">Traduction en anglais</p>
@@ -337,11 +392,20 @@ const EnvironmentVocabularyPage = () => {
 
             <Button
               onClick={() => setIsFlipped(!isFlipped)}
-              className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3"
+              className="bg-orange-200 hover:bg-orange-300 text-gray-800 px-8 py-3"
             >
               <RotateCcw className="h-4 w-4 mr-2" />
               Retourner
             </Button>
+
+            {isFlipped && (
+              <Button
+                onClick={markForReview}
+                className="bg-red-500 hover:bg-red-600 text-white px-6 py-3"
+              >
+                À revoir (R)
+              </Button>
+            )}
 
             <Button
               variant="outline"
@@ -355,7 +419,19 @@ const EnvironmentVocabularyPage = () => {
           </div>
 
           {/* Actions */}
-          <div className="flex justify-center gap-4">
+          <div className="flex justify-center gap-4 flex-wrap">
+            {reviewCards.size > 0 && (
+              <Button
+                onClick={toggleReviewMode}
+                className={`flex items-center gap-2 ${
+                  isReviewMode
+                    ? 'bg-red-500 hover:bg-red-600 text-white'
+                    : 'bg-orange-500 hover:bg-orange-600 text-white'
+                }`}
+              >
+                🔄 {isReviewMode ? 'Quitter révision' : `À revoir (${reviewCards.size})`}
+              </Button>
+            )}
             <Button
               variant="outline"
               onClick={shuffleCards}
@@ -378,34 +454,97 @@ const EnvironmentVocabularyPage = () => {
           {showHelp && (
             <Card className="mt-8 border-2 border-orange-200">
               <CardHeader className="bg-gradient-to-r from-orange-50 to-amber-50">
-                <CardTitle className="text-orange-800">Raccourcis clavier</CardTitle>
-              </CardHeader>
-              <CardContent className="p-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                  <div className="space-y-2">
-                    <div className="flex justify-between">
-                      <span className="font-medium">Espace/Entrée:</span>
-                      <span className="text-gray-600">Retourner la carte</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="font-medium">← →:</span>
-                      <span className="text-gray-600">Navigation</span>
-                    </div>
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="font-medium">← →:</span>
+                    <span className="text-gray-600">Navigation</span>
                   </div>
-                  <div className="space-y-2">
-                    <div className="flex justify-between">
-                      <span className="font-medium">S:</span>
-                      <span className="text-gray-600">Mélanger</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="font-medium">R:</span>
-                      <span className="text-gray-600">Réinitialiser</span>
-                    </div>
+                  <div className="flex justify-between">
+                    <span className="font-medium">S:</span>
+                    <span className="text-gray-600">Mélanger</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-medium">R:</span>
+                    <span className="text-gray-600">Marquer à revoir (carte retournée)</span>
                   </div>
                 </div>
-              </CardContent>
+              </CardHeader>
             </Card>
           )}
+
+          {/* Message de félicitations et révision */}
+          {currentIndex === totalCards - 1 && (
+            <div className="text-center mt-8 p-6 bg-gradient-to-r from-orange-50 to-blue-50 rounded-lg border-2 border-orange-200">
+              <h3 className="text-xl font-bold mb-3 text-orange-700">
+                🎉 Félicitations !
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Vous avez terminé toutes les cartes de vocabulaire environnemental !
+              </p>
+
+              {reviewCards.size > 0 && (
+                <div className="bg-orange-100 border border-orange-300 rounded-lg p-4 mb-4">
+                  <p className="text-orange-800 font-semibold">
+                    📚 Vous avez {reviewCards.size} carte{reviewCards.size > 1 ? 's' : ''} à réviser
+                  </p>
+                  <p className="text-orange-700 text-sm mt-1">
+                    Concentrez-vous sur les mots que vous voulez maîtriser parfaitement
+                  </p>
+                </div>
+              )}
+
+              <div className="mt-4 flex flex-col sm:flex-row justify-center gap-3">
+                <Button
+                  onClick={resetCards}
+                  className="bg-orange-200 hover:bg-orange-300 text-gray-800 px-6 py-2 font-medium"
+                >
+                  🔄 Recommencer cette série
+                </Button>
+
+                {reviewCards.size > 0 && (
+                  <Button
+                    onClick={toggleReviewMode}
+                    className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 font-medium"
+                  >
+                    📖 Mode révision ({reviewCards.size})
+                  </Button>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Raccourcis clavier - Format compact */}
+      <div className="mt-6 p-2 bg-gray-50 rounded-lg border border-gray-200">
+        <div className="text-center mb-1">
+          <h4 className="text-sm font-semibold text-gray-700">Raccourcis</h4>
+        </div>
+        <div className="flex flex-wrap justify-center gap-3 text-xs text-gray-600">
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">←</kbd>
+            <span>Précédent</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">→</kbd>
+            <span>Suivant</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">↵</kbd>
+            <span>Retourner</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">␣</kbd>
+            <span>Retourner</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">R</kbd>
+            <span>À revoir</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">S</kbd>
+            <span>Révision</span>
+          </div>
         </div>
       </div>
     </div>

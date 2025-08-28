@@ -72,9 +72,9 @@ const PythonModuleNavigation: React.FC = () => {
   const getColorClasses = (color: string) => {
     const colorMap = {
       orange: 'bg-orange-500 hover:bg-orange-600 text-white',
-      green: 'bg-green-500 hover:bg-green-600 text-white',
+      green: 'bg-blue-50 hover:bg-blue-50 text-white',
       blue: 'bg-blue-500 hover:bg-blue-600 text-white',
-      purple: 'bg-purple-500 hover:bg-purple-600 text-white'
+      purple: 'bg-blue-50 hover:bg-blue-50 text-white'
     };
     return colorMap[color as keyof typeof colorMap] || 'bg-gray-500 hover:bg-gray-600 text-white';
   };
@@ -116,7 +116,7 @@ const PythonModuleNavigation: React.FC = () => {
                     <nextModule.icon className="h-4 w-4 ml-1" />
                     <ChevronRight className="h-4 w-4" />
                   </Button>
-                </Link> : <div className="flex items-center gap-2 text-green-600">
+                </Link> : <div className="flex items-center gap-2 text-blue-600">
                   <CheckCircle className="h-4 w-4" />
                   <span className="text-sm font-medium">Formation terminée !</span>
                 </div>}
