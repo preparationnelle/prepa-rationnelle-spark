@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { BookOpen, MessageSquare, Target, ChevronRight, Languages } from 'lucide-react';
+import { BookOpen, MessageSquare, Target, ChevronRight, FileText, Calendar, BarChart3 } from 'lucide-react';
 
-const FormationEspagnolPage = () => {
+const FormationSyntheseTextePage = () => {
 
   return (
     <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
@@ -32,152 +32,120 @@ const FormationEspagnolPage = () => {
               Toutes les formations
             </Link>
             <span className="mx-1 text-muted-foreground/50">›</span>
-            <span className="text-foreground font-medium">Formation Espagnol ECG</span>
+            <span className="text-foreground font-medium">Formation Synthèse de Texte ECG</span>
           </div>
         </div>
       </nav>
-      
+
       <div className="container mx-auto py-4 px-4 relative z-10">
         {/* Hero Section */}
         <div className="text-center mb-8">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent font-bold">
-              Formation Espagnol ECG
+              Formation Synthèse de Texte ECG
             </span>
           </h1>
           <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-5xl mx-auto whitespace-nowrap">
-            Formation complète pour exceller en espagnol aux concours des Grandes Écoles de Commerce
+            Formation complète pour maîtriser l'épreuve de synthèse aux concours des Grandes Écoles de Commerce
           </p>
         </div>
       </div>
 
       {/* Modules principaux */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
-        {/* Vocabulaire Espagnol */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-12">
+        {/* Méthode de l'Épreuve */}
         <Link
-          to="/formation/espagnol/vocabulaire"
-          className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[380px] justify-between hover:scale-[1.02] transform"
-        >
-          <div className="flex flex-col items-center">
-            <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
-              <Languages className="h-10 w-10 text-orange-600" />
-            </div>
-            <h3 className="font-bold text-2xl mb-3 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Vocabulaire Espagnol</h3>
-            <p className="text-sm text-orange-700 mb-4 text-center leading-relaxed font-medium">Lexique thématique et expressions<br/>idiomatiques pour maîtriser</p>
-            <div className="space-y-2 text-sm mb-6 w-full">
-              <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
-                <span className="mr-2 text-xs">✓</span>
-                <span className="font-medium">Économie et affaires</span>
-              </div>
-              <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
-                <span className="mr-2 text-xs">✓</span>
-                <span className="font-medium">Culture et société</span>
-              </div>
-              <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
-                <span className="mr-2 text-xs">✓</span>
-                <span className="font-medium">Expressions courantes</span>
-              </div>
-            </div>
-          </div>
-          <Button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-medium transition-all duration-300 group-hover:scale-105 shadow-lg rounded-lg">
-            <Languages className="mr-2 h-4 w-4" />
-            Accéder au Vocabulaire
-          </Button>
-        </Link>
-
-        {/* Grammaire Espagnole */}
-        <Link
-          to="/formation/espagnol/grammaire"
+          to="/formation/synthese-texte/methode"
           className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[380px] justify-between hover:scale-[1.02] transform"
         >
           <div className="flex flex-col items-center">
             <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-8 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
-              <BookOpen className="h-10 w-10 text-orange-600" />
-            </div>
-            <h3 className="font-bold text-2xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Grammaire Espagnole</h3>
-            <p className="text-sm text-orange-700 mb-4 text-center leading-relaxed font-medium">Conjugaisons, syntaxe et structures<br/>avancées pour maîtriser</p>
-            <div className="space-y-2 text-sm mb-6 w-full">
-              <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
-                <span className="mr-2 text-xs">✓</span>
-                <span className="font-medium">Temps verbaux</span>
-              </div>
-              <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
-                <span className="mr-2 text-xs">✓</span>
-                <span className="font-medium">Syntaxe idiomatique</span>
-              </div>
-              <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
-                <span className="mr-2 text-xs">✓</span>
-                <span className="font-medium">Thèmes grammaticaux</span>
-              </div>
-            </div>
-          </div>
-          <Button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-medium transition-all duration-300 group-hover:scale-105 shadow-lg rounded-lg">
-            <BookOpen className="mr-2 h-4 w-4" />
-            Accéder à la Grammaire
-          </Button>
-        </Link>
-
-        {/* Civilisation Hispanique */}
-        <Link
-          to="/formation/espagnol/civilisation"
-          className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[380px] justify-between hover:scale-[1.02] transform"
-        >
-          <div className="flex flex-col items-center">
-            <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
-              <MessageSquare className="h-10 w-10 text-orange-600" />
-            </div>
-            <h3 className="font-bold text-2xl mb-3 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Civilisation</h3>
-            <p className="text-sm text-orange-700 mb-4 text-center leading-relaxed font-medium">Enjeux contemporains d'Espagne<br/>et d'Amérique latine</p>
-            <div className="space-y-2 text-sm mb-6 w-full">
-              <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
-                <span className="mr-2 text-xs">✓</span>
-                <span className="font-medium">Politique et démocratie</span>
-              </div>
-              <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
-                <span className="mr-2 text-xs">✓</span>
-                <span className="font-medium">Enjeux sociaux et égalité</span>
-              </div>
-              <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
-                <span className="mr-2 text-xs">✓</span>
-                <span className="font-medium">Migrations et environnement</span>
-              </div>
-            </div>
-          </div>
-          <Button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-medium transition-all duration-300 group-hover:scale-105 shadow-lg rounded-lg">
-            <MessageSquare className="mr-2 h-4 w-4" />
-            Accéder à la Civilisation
-          </Button>
-        </Link>
-
-        {/* Méthodologie des Épreuves */}
-        <Link
-          to="/formation/espagnol/methodologie"
-          className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[380px] justify-between hover:scale-[1.02] transform"
-        >
-          <div className="flex flex-col items-center">
-            <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
               <Target className="h-10 w-10 text-orange-600" />
             </div>
-            <h3 className="font-bold text-2xl mb-3 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Méthodologie</h3>
-            <p className="text-sm text-orange-700 mb-4 text-center leading-relaxed font-medium">Techniques et stratégies<br/>pour réussir les épreuves</p>
+            <h3 className="font-bold text-2xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Méthode de l'Épreuve</h3>
+            <p className="text-sm text-orange-700 mb-4 text-center leading-relaxed font-medium">Technique complète et stratégie<br/>pour réussir l'épreuve de synthèse</p>
             <div className="space-y-2 text-sm mb-6 w-full">
               <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                 <span className="mr-2 text-xs">✓</span>
-                <span className="font-medium">Épreuves écrites</span>
+                <span className="font-medium">Structure de synthèse</span>
               </div>
               <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                 <span className="mr-2 text-xs">✓</span>
-                <span className="font-medium">Épreuves orales (colles)</span>
+                <span className="font-medium">Gestion du temps</span>
               </div>
               <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                 <span className="mr-2 text-xs">✓</span>
-                <span className="font-medium">Gestion du temps et stress</span>
+                <span className="font-medium">Critères d'évaluation</span>
               </div>
             </div>
           </div>
           <Button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-medium transition-all duration-300 group-hover:scale-105 shadow-lg rounded-lg">
             <Target className="mr-2 h-4 w-4" />
-            Accéder à la Méthodologie
+            Accéder à la Méthode
+          </Button>
+        </Link>
+
+        {/* Travail Annuel */}
+        <Link
+          to="/formation/synthese-texte/travail-annuel"
+          className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[380px] justify-between hover:scale-[1.02] transform"
+        >
+          <div className="flex flex-col items-center">
+            <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
+              <Calendar className="h-10 w-10 text-orange-600" />
+            </div>
+            <h3 className="font-bold text-2xl mb-3 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Travail Annuel</h3>
+            <p className="text-sm text-orange-700 mb-4 text-center leading-relaxed font-medium">Organisation complète du travail<br/>sur toute l'année de prépa</p>
+            <div className="space-y-2 text-sm mb-6 w-full">
+              <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
+                <span className="mr-2 text-xs">✓</span>
+                <span className="font-medium">Planning annuel</span>
+              </div>
+              <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
+                <span className="mr-2 text-xs">✓</span>
+                <span className="font-medium">Préparation progressive</span>
+              </div>
+              <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
+                <span className="mr-2 text-xs">✓</span>
+                <span className="font-medium">Révision et entraînement</span>
+              </div>
+            </div>
+          </div>
+          <Button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-medium transition-all duration-300 group-hover:scale-105 shadow-lg rounded-lg">
+            <Calendar className="mr-2 h-4 w-4" />
+            Accéder au Travail Annuel
+          </Button>
+        </Link>
+
+        {/* Ressources et Exercices */}
+        <Link
+          to="/formation/synthese-texte/ressources"
+          className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[380px] justify-between hover:scale-[1.02] transform"
+        >
+          <div className="flex flex-col items-center">
+            <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
+              <BookOpen className="h-10 w-10 text-orange-600" />
+            </div>
+            <h3 className="font-bold text-2xl mb-3 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Ressources & Exercices</h3>
+            <p className="text-sm text-orange-700 mb-4 text-center leading-relaxed font-medium">Outils, annales et exercices<br/>pour s'entraîner efficacement</p>
+            <div className="space-y-2 text-sm mb-6 w-full">
+              <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
+                <span className="mr-2 text-xs">✓</span>
+                <span className="font-medium">Annales corrigées</span>
+              </div>
+              <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
+                <span className="mr-2 text-xs">✓</span>
+                <span className="font-medium">Exercices pratiques</span>
+              </div>
+              <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
+                <span className="mr-2 text-xs">✓</span>
+                <span className="font-medium">Grilles d'évaluation</span>
+              </div>
+            </div>
+          </div>
+          <Button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-medium transition-all duration-300 group-hover:scale-105 shadow-lg rounded-lg">
+            <BookOpen className="mr-2 h-4 w-4" />
+            Accéder aux Ressources
           </Button>
         </Link>
       </div>
@@ -185,4 +153,4 @@ const FormationEspagnolPage = () => {
   );
 };
 
-export default FormationEspagnolPage;
+export default FormationSyntheseTextePage;

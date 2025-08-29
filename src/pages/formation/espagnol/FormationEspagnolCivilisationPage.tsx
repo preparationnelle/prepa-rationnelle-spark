@@ -137,7 +137,7 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-6">

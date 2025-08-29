@@ -7,13 +7,17 @@ const FormationAnglaisPage = () => {
 
   return (
     <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
-      {/* Floating elements - Orange and blue bubbles */}
+      {/* Floating elements - Blue and orange bubbles */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
       <div className="absolute top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-8 animate-pulse"></div>
       <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
+      <div className="absolute top-10 right-1/3 w-24 h-24 bg-blue-300 rounded-full opacity-12 animate-pulse-slow"></div>
+      <div className="absolute bottom-10 left-1/4 w-36 h-36 bg-blue-100 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute top-1/2 right-10 w-20 h-20 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
+      <div className="absolute top-1/3 left-10 w-28 h-28 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
 
       {/* Sticky Breadcrumb */}
       <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40 relative z-10">
@@ -36,16 +40,9 @@ const FormationAnglaisPage = () => {
       <div className="container mx-auto py-8 px-4 relative z-10">
         {/* Header Hero Section */}
         <div className="text-center mb-16">
-          {/* Hero Icon */}
-          <div className="flex justify-center mb-8">
-            <div className="p-4 rounded-2xl bg-orange-600 text-white shadow-lg">
-              <Languages className="h-12 w-12" />
-            </div>
-          </div>
-
-          {/* Main Title */}
+            {/* Main Title */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            <span className="text-orange-600 font-bold">
+            <span className="bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent font-bold">
               Formation Anglais ECG
             </span>
           </h1>
@@ -69,18 +66,18 @@ const FormationAnglaisPage = () => {
               <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-8 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
                 <BookOpen className="h-10 w-10 text-orange-600" />
               </div>
-              <h3 className="font-bold text-2xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Vocabulaire Anglais</h3>
-              <p className="text-sm text-orange-700 mb-8 text-center leading-relaxed font-medium">Maîtrisez le lexique essentiel pour vos épreuves de concours</p>
-              <div className="space-y-3 text-sm mb-8 w-full">
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+              <h3 className="font-bold text-2xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Vocabulaire</h3>
+              <p className="text-sm text-orange-700 mb-8 text-center leading-relaxed font-medium">Maîtrisez le lexique essentiel<br/>pour vos épreuves de concours</p>
+              <div className="space-y-2 text-sm mb-6 w-full">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
                   <span className="font-medium">200+ termes essentiels</span>
                 </div>
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
                   <span className="font-medium">Flashcards interactives</span>
                 </div>
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
                   <span className="font-medium">Système de révision</span>
                 </div>
@@ -100,18 +97,18 @@ const FormationAnglaisPage = () => {
               <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-8 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
                 <BookOpen className="h-10 w-10 text-orange-600" />
               </div>
-              <h3 className="font-bold text-2xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Grammaire en Anglais</h3>
-              <p className="text-sm text-orange-700 mb-8 text-center leading-relaxed font-medium">Maîtrisez les règles essentielles de grammaire anglaise pour les concours</p>
-              <div className="space-y-3 text-sm mb-8 w-full">
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+              <h3 className="font-bold text-2xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Grammaire</h3>
+              <p className="text-sm text-orange-700 mb-8 text-center leading-relaxed font-medium">Maîtrisez les règles essentielles<br/>de grammaire anglaise</p>
+              <div className="space-y-2 text-sm mb-6 w-full">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
                   <span className="font-medium">Temps verbaux complexes</span>
                 </div>
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
                   <span className="font-medium">Structures syntaxiques</span>
                 </div>
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
                   <span className="font-medium">Style et expression</span>
                 </div>
@@ -132,18 +129,18 @@ const FormationAnglaisPage = () => {
               <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-8 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
                 <Globe className="h-10 w-10 text-orange-600" />
               </div>
-              <h3 className="font-bold text-2xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Civilisation Anglophone</h3>
-              <p className="text-sm text-orange-700 mb-8 text-center leading-relaxed font-medium">Enjeux contemporains du monde anglophone pour réussir les épreuves</p>
-              <div className="space-y-3 text-sm mb-8 w-full">
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+              <h3 className="font-bold text-2xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Civilisation</h3>
+              <p className="text-sm text-orange-700 mb-8 text-center leading-relaxed font-medium">Enjeux contemporains<br/>du monde anglophone</p>
+              <div className="space-y-2 text-sm mb-6 w-full">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
                   <span className="font-medium">Politique et société</span>
                 </div>
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
                   <span className="font-medium">Économie et technologie</span>
                 </div>
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
                   <span className="font-medium">Culture et environnement</span>
                 </div>
@@ -164,18 +161,18 @@ const FormationAnglaisPage = () => {
               <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-8 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
                 <PenTool className="h-10 w-10 text-orange-600" />
               </div>
-              <h3 className="font-bold text-2xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Méthodologie Complète</h3>
-              <p className="text-sm text-orange-700 mb-8 text-center leading-relaxed font-medium">Méthode complète en 7 étapes pour réussir les épreuves d'anglais en prépa HEC</p>
-              <div className="space-y-3 text-sm mb-8 w-full">
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+              <h3 className="font-bold text-2xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Méthodologie</h3>
+              <p className="text-sm text-orange-700 mb-8 text-center leading-relaxed font-medium">Méthode complète en 7 étapes<br/>pour réussir les épreuves</p>
+              <div className="space-y-2 text-sm mb-6 w-full">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
                   <span className="font-medium">Traduction et grammaire</span>
                 </div>
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
                   <span className="font-medium">Essais et synthèses</span>
                 </div>
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
                   <span className="font-medium">Préparation aux colles</span>
                 </div>

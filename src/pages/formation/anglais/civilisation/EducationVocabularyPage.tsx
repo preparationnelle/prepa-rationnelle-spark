@@ -375,8 +375,8 @@ const EducationVocabularyPage = () => {
                   <p>R : Recommencer</p>
                   <p>S : Mélanger</p>
                 </div>
-              </div>
-            </CardContent>
+              </CardTitle>
+            </CardHeader>
           </Card>
         )}
 

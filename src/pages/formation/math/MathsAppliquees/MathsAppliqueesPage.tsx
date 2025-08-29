@@ -190,4 +190,4 @@ const MathsAppliqueesPage = () => {
   );
 };
 
-export default MathsAppliqueesPage; 
+export default MathsAppliqueesPage;

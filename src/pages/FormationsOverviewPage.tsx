@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Code, Languages, Globe, BookOpen, Home, ChevronRight, Calculator } from 'lucide-react';
+import { Code, Languages, Globe, BookOpen, Home, ChevronRight, Calculator, FileText } from 'lucide-react';
 
 const FormationsOverviewPage = () => {
   return (
@@ -228,6 +228,35 @@ const FormationsOverviewPage = () => {
                     <div className="text-sm text-purple-600">✓ Exemples argumentés</div>
                   </div>
                   <Button variant="ghost" className="text-purple-600 group-hover:bg-purple-50 w-full">
+                    Voir la formation →
+                  </Button>
+                </CardContent>
+              </Card>
+            </Link>
+
+            {/* Formation Synthèse de Texte */}
+            <Link to="/formation/synthese-texte" className="group">
+              <Card className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-teal-200">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center">
+                      <FileText className="h-6 w-6 text-teal-600" />
+                    </div>
+                    <CardTitle className="text-xl group-hover:text-teal-600 transition-colors">
+                      Synthèse de Texte ECG
+                    </CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 mb-4">
+                    Maîtrisez l'épreuve de synthèse de texte avec méthodes éprouvées, analyse de sujets et organisation annuelle complète.
+                  </p>
+                  <div className="space-y-2 mb-4">
+                    <div className="text-sm text-teal-600">✓ Méthodologie détaillée 4h</div>
+                    <div className="text-sm text-teal-600">✓ Types de sujets économiques</div>
+                    <div className="text-sm text-teal-600">✓ Travail annuel structuré</div>
+                  </div>
+                  <Button variant="ghost" className="text-teal-600 group-hover:bg-teal-50 w-full">
                     Voir la formation →
                   </Button>
                 </CardContent>

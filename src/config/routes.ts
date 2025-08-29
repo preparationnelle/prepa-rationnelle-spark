@@ -321,6 +321,13 @@ const ThemeGrammarGeneratorPage = lazy(() => import('../pages/generator/ThemeGra
 const UnifiedLanguagesGeneratorPage = lazy(() => import('../pages/generator/UnifiedLanguagesGeneratorPage'));
 const UnifiedOralGeneratorPage = lazy(() => import('../pages/generator/UnifiedOralGeneratorPage'));
 
+// Formation Synthèse de Texte
+const FormationSyntheseTextePage = lazy(() => import('../pages/formation/synthese-texte/FormationSyntheseTextePage'));
+const SyntheseTexteOverviewPage = lazy(() => import('../pages/formation/synthese-texte/SyntheseTexteOverviewPage'));
+const MethodologiePage = lazy(() => import('../pages/formation/synthese-texte/MethodologiePage'));
+const TravailAnnuelPage = lazy(() => import('../pages/formation/synthese-texte/TravailAnnuelPage'));
+const RessourcesPage = lazy(() => import('../pages/formation/synthese-texte/RessourcesPage'));
+
 // Teacher pages
 const TeacherDashboardPage = lazy(() => import('../pages/teacher/TeacherDashboardPage'));
 // User dashboard
@@ -498,6 +505,13 @@ export const routes: RouteConfig[] = [
   { path: '/formation/allemand-structure', component: StructurePage, title: 'Structure de la Phrase' },
   { path: '/formation/allemand-recurrents', component: RecurrentsPage, title: 'Points de Grammaire Récurrents' },
   { path: '/formation/allemand-verbes', component: VerbIrregulierPage, title: 'Verbes Irréguliers Allemands' },
+
+  // Formation Synthèse de Texte
+  { path: '/formation/synthese-texte', component: FormationSyntheseTextePage, title: 'Formation Synthèse de Texte ECG' },
+  { path: '/formation/synthese-texte/overview', component: SyntheseTexteOverviewPage, title: 'Guide Complet Synthèse de Texte' },
+  { path: '/formation/synthese-texte/methode', component: MethodologiePage, title: 'Méthode de l\'Épreuve de Synthèse' },
+  { path: '/formation/synthese-texte/travail-annuel', component: TravailAnnuelPage, title: 'Travail Annuel Synthèse de Texte' },
+  { path: '/formation/synthese-texte/ressources', component: RessourcesPage, title: 'Ressources & Exercices Synthèse' },
   { path: '/formation/culture-generale', component: FormationCultureGeneralePage, title: 'Formation Culture Générale' },
   { path: '/formation/geopolitique', component: FormationGeopolitiquePage, title: 'Formation Géopolitique' },
   { path: '/formation/geopolitique/premiere-annee', component: GeopolitiquePremiereAnneePage, title: 'Géopolitique - Première Année' },

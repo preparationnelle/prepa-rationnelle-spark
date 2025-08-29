@@ -7,13 +7,17 @@ import { BookOpen, Globe, Target, ChevronRight, Languages } from 'lucide-react';
 const FormationAllemandPage = () => {
   return (
     <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
-      {/* Floating elements - Orange and blue bubbles */}
+      {/* Floating elements - Blue and orange bubbles */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
       <div className="absolute top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-8 animate-pulse"></div>
       <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
+      <div className="absolute top-10 right-1/3 w-24 h-24 bg-blue-300 rounded-full opacity-12 animate-pulse-slow"></div>
+      <div className="absolute bottom-10 left-1/4 w-36 h-36 bg-blue-100 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute top-1/2 right-10 w-20 h-20 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
+      <div className="absolute top-1/3 left-10 w-28 h-28 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
 
       {/* Sticky Breadcrumb */}
       <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40 relative z-10">
@@ -33,16 +37,9 @@ const FormationAllemandPage = () => {
         </div>
       </nav>
 
-      <div className="container mx-auto py-8 px-4 relative z-10">
+      <div className="container mx-auto py-4 px-4 relative z-10">
         {/* Header Hero Section */}
-        <div className="text-center mb-16">
-          {/* Hero Icon */}
-          <div className="flex justify-center mb-8">
-            <div className="p-4 rounded-2xl bg-gradient-to-br from-orange-500 to-blue-500 text-white shadow-lg">
-              <Languages className="h-12 w-12" />
-            </div>
-          </div>
-
+        <div className="text-center mb-8">
           {/* Main Title */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-orange-600 via-blue-600 to-orange-600 bg-clip-text text-transparent font-bold">
@@ -57,28 +54,28 @@ const FormationAllemandPage = () => {
         </div>
 
         {/* Modules principaux */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
           {/* Vocabulaire Allemand */}
           <Link
             to="/formation/allemand/vocabulaire"
-            className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[420px] justify-between hover:scale-[1.02] transform"
+            className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[380px] justify-between hover:scale-[1.02] transform"
           >
             <div className="flex flex-col items-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-blue-100 rounded-2xl flex items-center justify-center mb-8 group-hover:from-orange-200 group-hover:to-blue-200 transition-all duration-300">
-                <Languages className="h-10 w-10 text-orange-600" />
-              </div>
-              <h3 className="font-bold text-2xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Vocabulaire Allemand</h3>
-              <p className="text-sm text-orange-700 mb-8 text-center leading-relaxed font-medium">Maîtrisez le lexique essentiel de l'allemand : termes économiques, expressions courantes, vocabulaire académique et professionnel</p>
-              <div className="space-y-3 text-sm mb-8 w-full">
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+                          <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-blue-200 transition-all duration-300">
+              <Languages className="h-10 w-10 text-orange-600" />
+            </div>
+            <h3 className="font-bold text-2xl mb-3 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Vocabulaire Allemand</h3>
+            <p className="text-sm text-orange-700 mb-4 text-center leading-relaxed font-medium">Lexique thématique et expressions<br/>idiomatiques pour maîtriser</p>
+              <div className="space-y-2 text-sm mb-6 w-full">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
                   <span className="font-medium">200+ termes essentiels</span>
                 </div>
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
                   <span className="font-medium">Vocabulaire thématique</span>
                 </div>
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
                   <span className="font-medium">Flashcards interactives</span>
                 </div>
@@ -93,26 +90,26 @@ const FormationAllemandPage = () => {
           {/* Grammatik */}
           <Link
             to="/formation/allemand/grammaire"
-            className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[420px] justify-between hover:scale-[1.02] transform"
+            className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[380px] justify-between hover:scale-[1.02] transform"
           >
             <div className="flex flex-col items-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-8 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
-                <BookOpen className="h-10 w-10 text-orange-600" />
-              </div>
-              <h3 className="font-bold text-2xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Grammatik</h3>
-              <p className="text-sm text-orange-700 mb-8 text-center leading-relaxed font-medium">Maîtrisez tous les points de grammaire essentiels : déclinaisons, propositions relatives, passif, structure de la phrase et verbes irréguliers</p>
-              <div className="space-y-3 text-sm mb-8 w-full">
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+                          <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
+              <BookOpen className="h-10 w-10 text-orange-600" />
+            </div>
+            <h3 className="font-bold text-2xl mb-3 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Grammaire Allemande</h3>
+            <p className="text-sm text-orange-700 mb-4 text-center leading-relaxed font-medium">Déclinaisons, propositions relatives<br/>et structures avancées</p>
+              <div className="space-y-2 text-sm mb-6 w-full">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
-                  <span className="font-medium">6 fiches de grammaire complètes</span>
+                  <span className="font-medium">6 fiches de grammaire</span>
                 </div>
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
-                  <span className="font-medium">Exercices pratiques et exemples</span>
+                  <span className="font-medium">Exercices pratiques</span>
                 </div>
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
-                  <span className="font-medium">Toutes les formes de conjugaison</span>
+                  <span className="font-medium">Conjugaisons</span>
                 </div>
               </div>
             </div>
@@ -125,26 +122,26 @@ const FormationAllemandPage = () => {
           {/* Landeskunde */}
           <Link
             to="/formation/allemand/civilisation"
-            className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[420px] justify-between hover:scale-[1.02] transform"
+            className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[380px] justify-between hover:scale-[1.02] transform"
           >
             <div className="flex flex-col items-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-8 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
-                <Globe className="h-10 w-10 text-orange-600" />
-              </div>
-              <h3 className="font-bold text-2xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Landeskunde</h3>
-              <p className="text-sm text-orange-700 mb-8 text-center leading-relaxed font-medium">Découvrez l'Allemagne contemporaine : politique, démographie, écologie et géopolitique européenne</p>
-              <div className="space-y-3 text-sm mb-8 w-full">
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+                          <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
+              <Globe className="h-10 w-10 text-orange-600" />
+            </div>
+            <h3 className="font-bold text-2xl mb-3 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Civilisation Allemande</h3>
+            <p className="text-sm text-orange-700 mb-4 text-center leading-relaxed font-medium">Politique, démographie<br/>et géopolitique européennes</p>
+              <div className="space-y-2 text-sm mb-6 w-full">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
-                  <span className="font-medium">4 modules thématiques actualisés</span>
+                  <span className="font-medium">4 modules thématiques</span>
                 </div>
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
-                  <span className="font-medium">Culture allemande contemporaine</span>
+                  <span className="font-medium">Culture allemande</span>
                 </div>
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
-                  <span className="font-medium">Géopolitique européenne</span>
+                  <span className="font-medium">Géopolitique</span>
                 </div>
               </div>
             </div>
@@ -157,24 +154,24 @@ const FormationAllemandPage = () => {
           {/* Prüfungserfolg */}
           <Link
             to="/formation/allemand/epreuves"
-            className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[420px] justify-between hover:scale-[1.02] transform"
+            className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[380px] justify-between hover:scale-[1.02] transform"
           >
             <div className="flex flex-col items-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-8 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
-                <Target className="h-10 w-10 text-orange-600" />
-              </div>
-              <h3 className="font-bold text-2xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Prüfungserfolg</h3>
-              <p className="text-sm text-orange-700 mb-8 text-center leading-relaxed font-medium">Maîtrisez les différentes épreuves du concours : laisser, colle et synthèse de texte. Techniques, méthodologie et conseils pratiques</p>
-              <div className="space-y-3 text-sm mb-8 w-full">
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+                          <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
+              <Target className="h-10 w-10 text-orange-600" />
+            </div>
+            <h3 className="font-bold text-2xl mb-3 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Méthodologie</h3>
+            <p className="text-sm text-orange-700 mb-4 text-center leading-relaxed font-medium">Techniques et stratégies<br/>pour réussir les épreuves</p>
+              <div className="space-y-2 text-sm mb-8 w-full">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
-                  <span className="font-medium">Techniques pour tous les examens</span>
+                  <span className="font-medium">Techniques d'examen</span>
                 </div>
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
-                  <span className="font-medium">Méthodologie et conseils</span>
+                  <span className="font-medium">Méthodologie</span>
                 </div>
-                <div className="flex items-center text-orange-600 bg-orange-50 rounded-lg py-2 px-3">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
                   <span className="font-medium">Exemples pratiques</span>
                 </div>
