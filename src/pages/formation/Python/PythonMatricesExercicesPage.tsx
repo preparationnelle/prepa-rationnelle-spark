@@ -1,31 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Calculator, Target, Play, CheckCircle, Eye, EyeOff, Code, BookOpen, ChevronDown, ChevronUp, Trophy, Star, ArrowLeft } from 'lucide-react';
+import { Calculator, Target, Play, CheckCircle, Eye, EyeOff, Code, BookOpen, ChevronDown, ChevronUp, Trophy, Star, ArrowLeft, HelpCircle, ChevronLeft } from 'lucide-react';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 
 const PythonMatricesExercicesPage = () => {
+  const [searchParams] = useSearchParams();
   const [selectedExercise, setSelectedExercise] = useState<number | null>(null);
   const [showSolution, setShowSolution] = useState<{
     [key: string]: boolean;
   }>({});
   const [showCorrections, setShowCorrections] = useState<Set<number>>(new Set());
   const [showQCM, setShowQCM] = useState(false);
-  
+
   // États pour le QCM d'évaluation
   const [qcmAnswers, setQcmAnswers] = useState<{[key: number]: string}>({});
   const [qcmSubmitted, setQcmSubmitted] = useState(false);
   const [qcmScore, setQcmScore] = useState<number | null>(null);
+
+  // Détecter le paramètre quiz dans l'URL
+  useEffect(() => {
+    const quizParam = searchParams.get('quiz');
+    if (quizParam === 'true') {
+      setShowQCM(true);
+    }
+  }, [searchParams]);
   
   const toggleSolution = (exerciseId: string) => {
     setShowSolution(prev => ({
       ...prev,
       [exerciseId]: !prev[exerciseId]
     }));
-  };
-  
+    };
+
   const toggleCorrection = (index: number) => {
     const newShowCorrections = new Set(showCorrections);
     if (newShowCorrections.has(index)) {
@@ -547,7 +557,7 @@ for row in triangle_result:
     }
   }];
   const renderQCMContent = () => <div className="space-y-6">
-      {qcmQuestions.map((q, index) => <Card key={q.id} className="border-blue-200">
+      {qcmQuestions.map((q, index) => <Card key={q.id} className="border-gray-200">
           <CardContent className="pt-6">
             <h3 className="font-semibold mb-4 text-lg">Question {q.id}</h3>
             <p className="mb-4">{q.question}</p>
@@ -556,12 +566,12 @@ for row in triangle_result:
                   {option}
                 </div>)}
             </div>
-            <Button variant="outline" size="sm" onClick={() => toggleSolution(`qcm-${q.id}`)} className="flex items-center gap-2">
+            <Button variant="outline" size="sm" onClick={() => toggleSolution(`qcm-${q.id}`)} className="flex items-center gap-2 border-gray-200 text-gray-600 hover:bg-gray-50">
               {showSolution[`qcm-${q.id}`] ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               {showSolution[`qcm-${q.id}`] ? 'Masquer' : 'Voir'} la réponse
             </Button>
-            {showSolution[`qcm-${q.id}`] && <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded">
-                <div className="flex items-center gap-2 text-blue-600">
+            {showSolution[`qcm-${q.id}`] && <div className="mt-4 p-4 bg-gray-50 border border-gray-200 rounded">
+                <div className="flex items-center gap-2 text-gray-600">
                   <CheckCircle className="h-4 w-4" />
                   <span className="font-semibold">Réponse correcte : {q.answer}</span>
                 </div>
@@ -575,7 +585,7 @@ for row in triangle_result:
       return <div className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle className="text-blue-600">Exercice 1.1</CardTitle>
+              <CardTitle className="text-gray-700">Exercice 1.1</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="mb-4">Créer une matrice 3×4 contenant uniquement des zéros, puis une matrice 2×3 contenant uniquement des uns.</p>
@@ -611,7 +621,7 @@ print(M2)`}
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-blue-600">Exercice 1.2</CardTitle>
+              <CardTitle className="text-gray-700">Exercice 1.2</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="mb-4">Soit A = np.array([[1,2,3],[4,5,6]]). Extraire l'élément de la deuxième ligne et troisième colonne.</p>
@@ -640,7 +650,7 @@ print(element)`}
       return <div className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle className="text-orange-700">Exercice 2.1</CardTitle>
+              <CardTitle className="text-gray-700">Exercice 2.1</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="mb-4">Créer un vecteur contenant 10 valeurs uniformément réparties entre 0 et 1.</p>
@@ -666,7 +676,7 @@ print(v)`}
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-orange-700">Exercice 2.2</CardTitle>
+              <CardTitle className="text-gray-700">Exercice 2.2</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="mb-4">Pour la matrice B = np.array([[10,20,30],[40,50,60]]), calculer la somme de chaque ligne et de chaque colonne.</p>
@@ -704,7 +714,7 @@ Sommes des colonnes : [50 70 90]`}
       return <div className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle className="text-orange-700">Exercice 3.1</CardTitle>
+              <CardTitle className="text-gray-700">Exercice 3.1</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="mb-4">Soient A = np.array([[1,2],[3,4]]) et B = np.array([[2,1],[1,2]]). Calculer A + B, A * B et np.dot(A,B).</p>
@@ -747,7 +757,7 @@ print("np.dot(A, B) =\\n", P_mat)`}
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-orange-700">Exercice 3.2</CardTitle>
+              <CardTitle className="text-gray-700">Exercice 3.2</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="mb-4">Calculer la transposée de la matrice C = np.array([[1,2,3],[4,5,6],[7,8,9]]).</p>
@@ -780,7 +790,7 @@ print(C_T)`}
       return <div className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle className="text-orange-600">Matrices nilpotentes</CardTitle>
+              <CardTitle className="text-gray-700">Matrices nilpotentes</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="mb-4">
@@ -842,12 +852,12 @@ def Nilp(A):
           </Button>
           
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent mb-4">
+            <h1 className="text-4xl font-bold text-gray-800 mb-4">
               {exercise.title}
             </h1>
-            <Badge 
-              variant="secondary" 
-              className={`${exercise.color === 'green' ? 'bg-blue-50 text-blue-600' : exercise.color === 'blue' ? 'bg-blue-100 text-blue-700' : exercise.color === 'red' ? 'bg-orange-50 text-orange-600' : 'bg-orange-100 text-orange-700'}`}
+            <Badge
+              variant="secondary"
+              className="bg-gray-100 text-gray-700"
             >
               {exercise.difficulty}
             </Badge>
@@ -856,39 +866,39 @@ def Nilp(A):
 
         {exercise.content ? (
           <>
-            <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-br from-orange-500 to-pink-50 shadow-lg">
+            <Card className="mb-8 border-2 border-gray-200 bg-gray-50 shadow-lg">
               <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-orange-600">
+                <CardTitle className="flex items-center gap-3 text-gray-700">
                   <Calculator className="h-6 w-6" />
                   Objectif de l'exercice
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-orange-600 font-medium mb-4">
+                <p className="text-gray-700 font-medium mb-4">
                   {exercise.content.objective}
                 </p>
               </CardContent>
             </Card>
 
             {/* Énoncé */}
-            <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50 shadow-lg mb-4">
+            <Card className="border-2 border-gray-200 bg-gray-50 shadow-lg mb-4">
               <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-blue-700">
+                <CardTitle className="flex items-center gap-3 text-gray-700">
                   <BookOpen className="h-6 w-6" />
                   Énoncé
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-blue-700 whitespace-pre-line">{exercise.content.enonce}</p>
+                <p className="text-gray-700 whitespace-pre-line">{exercise.content.enonce}</p>
               </CardContent>
             </Card>
 
             {/* Bouton pour afficher/masquer la correction */}
             <div className="flex justify-center mb-4">
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 onClick={() => toggleCorrection(0)}
-                className="flex items-center gap-2 border-blue-200 text-blue-600 hover:bg-blue-50"
+                className="flex items-center gap-2 border-gray-200 text-gray-600 hover:bg-gray-50"
               >
                 {showCorrections.has(0) ? (
                   <>
@@ -906,16 +916,16 @@ def Nilp(A):
 
             {/* Correction (affichée conditionnellement) */}
             {showCorrections.has(0) && (
-              <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-500 to-emerald-50 shadow-lg">
+              <Card className="border-2 border-gray-200 bg-gray-50 shadow-lg">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-blue-600">
+                  <CardTitle className="flex items-center gap-3 text-gray-700">
                     <Code className="h-6 w-6" />
                     Correction
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                    <pre className="text-blue-600 text-sm font-mono">
+                    <pre className="text-gray-600 text-sm font-mono">
                       <code>{exercise.content.correction}</code>
                     </pre>
                   </div>
@@ -944,7 +954,7 @@ def Nilp(A):
   return (
     <PythonModuleLayout>
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent mb-4">
+        <h1 className="text-4xl font-bold text-gray-800 mb-4">
           Module 1 : Exercices - Matrices NumPy
         </h1>
         <p className="text-xl text-muted-foreground">
@@ -955,20 +965,20 @@ def Nilp(A):
       {!showQCM && !selectedExercise && (
         <>
           {/* Section QCM */}
-          <Card className="mb-8 hover:shadow-lg transition-shadow cursor-pointer" onClick={() => setShowQCM(true)}>
-            <CardHeader className="bg-gradient-to-r from-blue-500 to-blue-50">
+          <Card className="mb-8 hover:shadow-lg transition-shadow cursor-pointer border-2 border-gray-200 hover:border-gray-300" onClick={() => setShowQCM(true)}>
+            <CardHeader className="bg-gray-50">
               <CardTitle className="flex items-center gap-3">
-                <Trophy className="h-8 w-8 text-blue-600" />
+                <Trophy className="h-8 w-8 text-gray-600" />
                 <div>
-                  <h2 className="text-2xl text-blue-600">QCM d'évaluation</h2>
-                  <p className="text-sm text-blue-600 mt-1">Testez vos connaissances sur les matrices NumPy</p>
+                  <h2 className="text-2xl text-gray-700">QCM d'évaluation</h2>
+                  <p className="text-sm text-gray-600 mt-1">Testez vos connaissances sur les matrices NumPy</p>
                 </div>
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-4">
               <div className="flex items-center justify-between">
                 <p className="text-gray-600">20 questions pour évaluer votre niveau</p>
-                <Button variant="outline" className="flex items-center gap-2">
+                <Button variant="outline" className="flex items-center gap-2 border-gray-200 text-gray-600 hover:bg-gray-50">
                   <Play className="h-4 w-4" />
                   Commencer le QCM
                 </Button>
@@ -976,84 +986,58 @@ def Nilp(A):
             </CardContent>
           </Card>
 
-          <Card className="mb-8">
-        <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-blue-600">
-                <Target className="h-6 w-6" />
-                Objectifs des exercices
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="space-y-2">
-                  <Badge variant="outline" className="mb-2">Création de matrices</Badge>
-                  <p className="text-sm text-muted-foreground">
-                    Maîtriser les différentes méthodes de création
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <Badge variant="outline" className="mb-2">Opérations matricielles</Badge>
-                  <p className="text-sm text-muted-foreground">
-                    Effectuer des calculs sur les matrices
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <Badge variant="outline" className="mb-2">Indexation</Badge>
-                  <p className="text-sm text-muted-foreground">
-                    Accéder et modifier les éléments des matrices
-                  </p>
-                </div>
+          <div className="mb-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="space-y-2">
+                <Badge variant="outline" className="bg-gray-100 text-gray-700 border-gray-300">Création de matrices</Badge>
+                <p className="text-sm text-gray-600">
+                  Maîtriser les différentes méthodes de création
+                </p>
               </div>
-            </CardContent>
-          </Card>
+              <div className="space-y-2">
+                <Badge variant="outline" className="bg-gray-100 text-gray-700 border-gray-300">Opérations matricielles</Badge>
+                <p className="text-sm text-gray-600">
+                  Effectuer des calculs sur les matrices
+                </p>
+              </div>
+              <div className="space-y-2">
+                <Badge variant="outline" className="bg-gray-100 text-gray-700 border-gray-300">Indexation</Badge>
+                <p className="text-sm text-gray-600">
+                  Accéder et modifier les éléments des matrices
+                </p>
+              </div>
+            </div>
+          </div>
 
           {/* Grille d'exercices */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {exercises.map(exercise => (
-              <Card 
-                key={exercise.id} 
-                className={`hover:shadow-lg transition-shadow cursor-pointer ${
-                  exercise.color === 'green' ? 'border border-blue-200' : 
-                  exercise.color === 'blue' ? 'border border-blue-200' : 
-                  exercise.color === 'red' ? 'border border-orange-200' : 
-                  'border border-orange-200'
-                }`} 
+              <Card
+                key={exercise.id}
+                className="hover:shadow-lg transition-shadow cursor-pointer border-2 border-gray-200 hover:border-gray-300 h-full flex flex-col"
                 onClick={() => setSelectedExercise(exercise.id)}
               >
-                <CardHeader>
+                <CardHeader className="flex-shrink-0">
                   <div className="flex items-center gap-3">
-                    <Calculator className={`h-6 w-6 ${
-                      exercise.color === 'green' ? 'text-blue-600' : 
-                      exercise.color === 'blue' ? 'text-blue-600' : 
-                      exercise.color === 'red' ? 'text-orange-600' : 
-                      'text-orange-600'
-                    }`} />
+                    <Calculator className="h-6 w-6 text-gray-600" />
                     <div>
                       <CardTitle className="text-lg">{exercise.title}</CardTitle>
-                      <Badge variant="secondary" className={`mt-1 ${
-                        exercise.color === 'green' ? 'bg-blue-50 text-blue-600' : 
-                        exercise.color === 'blue' ? 'bg-blue-100 text-blue-700' : 
-                        exercise.color === 'red' ? 'bg-orange-50 text-orange-600' : 
-                        'bg-orange-100 text-orange-700'
-                      }`}>
+                      <Badge variant="secondary" className="mt-1 bg-gray-100 text-gray-700">
                         {exercise.difficulty}
                       </Badge>
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4">
+                <CardContent className="flex-grow flex flex-col">
+                  <p className="text-sm text-muted-foreground mb-4 flex-grow">
                     {exercise.description}
                   </p>
-                  <Button className={`w-full ${
-                    exercise.color === 'green' ? 'bg-blue-50 hover:bg-blue-50' : 
-                    exercise.color === 'blue' ? 'bg-blue-600 hover:bg-blue-700' : 
-                    exercise.color === 'red' ? 'bg-orange-50 hover:bg-orange-50' : 
-                    'bg-orange-600 hover:bg-orange-700'
-                  }`}>
-                    <Play className="h-4 w-4 mr-2" />
-                    Commencer l'exercice
-                  </Button>
+                  <div className="mt-auto">
+                    <Button className="w-full bg-gray-600 hover:bg-gray-700">
+                      <Play className="h-4 w-4 mr-2" />
+                      Commencer l'exercice
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -1078,9 +1062,9 @@ def Nilp(A):
             Retour aux exercices
           </Button>
 
-          <Card className="mb-8 border-2 border-blue-200 bg-gradient-to-br from-blue-500 to-blue-50 shadow-lg">
+          <Card className="mb-8 border-2 border-gray-200 bg-gray-50 shadow-lg">
             <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-blue-600">
+              <CardTitle className="flex items-center gap-3 text-gray-700">
             <Trophy className="h-6 w-6" />
             QCM d'évaluation - Testez vos connaissances
           </CardTitle>
@@ -1089,37 +1073,37 @@ def Nilp(A):
           {!qcmSubmitted ? (
             <div className="space-y-6">
               <div className="flex items-center justify-between mb-4">
-                    <p className="text-blue-600 font-medium">
+                    <p className="text-gray-700 font-medium">
                   Répondez aux 20 questions pour évaluer votre niveau sur les matrices NumPy
                 </p>
-                    <Badge variant="outline" className="bg-blue-50 text-blue-600">
+                    <Badge variant="outline" className="bg-gray-100 text-gray-700">
                   {Object.keys(qcmAnswers).length}/20 répondues
                 </Badge>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {qcmQuestions.map((question, index) => (
-                      <Card key={question.id} className="border border-blue-200 hover:border-blue-200 transition-colors">
+                      <Card key={question.id} className="border border-gray-200 hover:border-gray-300 transition-colors">
                     <CardContent className="pt-6">
                       <div className="flex items-center gap-2 mb-3">
-                            <Badge variant="outline" className="bg-blue-50 text-blue-600">
+                            <Badge variant="outline" className="bg-gray-100 text-gray-700">
                           Question {question.id}
                         </Badge>
                         {qcmAnswers[question.id] && (
-                          <CheckCircle className="h-4 w-4 text-blue-600" />
+                          <CheckCircle className="h-4 w-4 text-gray-600" />
                         )}
                       </div>
                       <p className="mb-4 text-sm">{question.question}</p>
                       <div className="space-y-2">
                         {question.options.map((option, optIndex) => (
-                              <label key={optIndex} className="flex items-center gap-2 p-2 rounded hover:bg-blue-50 cursor-pointer">
+                              <label key={optIndex} className="flex items-center gap-2 p-2 rounded hover:bg-gray-50 cursor-pointer">
                             <input
                               type="radio"
                               name={`question-${question.id}`}
                               value={option}
                               checked={qcmAnswers[question.id] === option}
                               onChange={(e) => handleQCMAnswer(question.id, e.target.value)}
-                                  className="text-blue-600"
+                                  className="text-gray-600"
                             />
                             <span className="text-sm">{option}</span>
                           </label>
@@ -1131,10 +1115,10 @@ def Nilp(A):
               </div>
               
               <div className="flex justify-center">
-                <Button 
+                <Button
                   onClick={submitQCM}
                   disabled={Object.keys(qcmAnswers).length < 20}
-                      className="bg-blue-50 hover:bg-blue-50 text-white px-8 py-3"
+                      className="bg-gray-600 hover:bg-gray-700 text-white px-8 py-3"
                 >
                   <Trophy className="h-4 w-4 mr-2" />
                   Valider le QCM
@@ -1146,23 +1130,23 @@ def Nilp(A):
               {/* Résultats en haut */}
               <div className="text-center space-y-4">
                 <div className="flex items-center justify-center gap-3">
-                  <Trophy className="h-8 w-8 text-orange-600" />
-                      <h3 className="text-2xl font-bold text-blue-600">Résultats du QCM</h3>
+                  <Trophy className="h-8 w-8 text-gray-600" />
+                      <h3 className="text-2xl font-bold text-gray-700">Résultats du QCM</h3>
                 </div>
-                
-                    <div className="bg-gradient-to-r from-blue-500 to-blue-50 rounded-lg p-6 border-2 border-blue-200">
-                      <div className="text-4xl font-bold text-blue-600 mb-2">
+
+                    <div className="bg-gray-50 rounded-lg p-6 border-2 border-gray-200">
+                      <div className="text-4xl font-bold text-gray-700 mb-2">
                     {qcmScore?.toFixed(1)}/20
                   </div>
                   <div className="flex items-center justify-center gap-2 mb-4">
                     {[...Array(5)].map((_, i) => (
-                      <Star 
-                        key={i} 
-                        className={`h-6 w-6 ${i < Math.floor((qcmScore || 0) / 4) ? 'text-orange-600 fill-current' : 'text-gray-300'}`} 
+                      <Star
+                        key={i}
+                        className={`h-6 w-6 ${i < Math.floor((qcmScore || 0) / 4) ? 'text-gray-600 fill-current' : 'text-gray-300'}`}
                       />
                     ))}
                   </div>
-                      <p className="text-blue-600 font-medium">
+                      <p className="text-gray-700 font-medium">
                     {qcmScore && qcmScore >= 16 ? "Excellent ! Vous maîtrisez parfaitement les matrices NumPy." :
                      qcmScore && qcmScore >= 12 ? "Bon niveau ! Quelques révisions pour perfectionner." :
                      qcmScore && qcmScore >= 8 ? "Niveau correct. Continuez à vous entraîner." :
@@ -1173,34 +1157,34 @@ def Nilp(A):
 
               {/* Détail des réponses */}
               <div className="space-y-4">
-                    <h4 className="text-lg font-semibold text-blue-600 text-center">
+                    <h4 className="text-lg font-semibold text-gray-700 text-center">
                   Détail de vos réponses
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {qcmQuestions.map((question) => {
                     const userAnswer = qcmAnswers[question.id];
                     const isCorrect = userAnswer === question.answer;
-                    
+
                     return (
-                      <Card 
-                        key={question.id} 
+                      <Card
+                        key={question.id}
                         className={`border-2 transition-colors ${
-                          isCorrect 
-                            ? 'border-blue-200 bg-gradient-to-br from-blue-500 to-emerald-50' 
-                            : 'border-orange-200 bg-gradient-to-br from-orange-500 to-pink-50'
+                          isCorrect
+                            ? 'border-gray-200 bg-gray-50'
+                            : 'border-gray-200 bg-gray-100'
                         }`}
                       >
                         <CardContent className="pt-6">
                           <div className="flex items-center gap-2 mb-3">
                             <Badge variant="outline" className={`${
-                              isCorrect ? 'bg-blue-50 text-blue-600' : 'bg-orange-50 text-orange-600'
+                              isCorrect ? 'bg-gray-100 text-gray-700' : 'bg-gray-200 text-gray-700'
                             }`}>
                               Question {question.id}
                             </Badge>
                             {isCorrect ? (
-                              <CheckCircle className="h-4 w-4 text-blue-600" />
+                              <CheckCircle className="h-4 w-4 text-gray-600" />
                             ) : (
-                              <div className="h-4 w-4 text-orange-600">✗</div>
+                              <div className="h-4 w-4 text-gray-600">✗</div>
                             )}
                           </div>
                           
@@ -1213,15 +1197,15 @@ def Nilp(A):
                               
                               let optionStyle = "flex items-center gap-2 p-2 rounded";
                               let textStyle = "text-sm";
-                              
+
                               if (isCorrectAnswer) {
-                                // Bonne réponse toujours en vert
-                                optionStyle += " bg-blue-50 border border-blue-200";
-                                textStyle += " font-semibold text-blue-600";
+                                // Bonne réponse toujours en gris foncé
+                                optionStyle += " bg-gray-100 border border-gray-300";
+                                textStyle += " font-semibold text-gray-700";
                               } else if (isUserAnswer && !isCorrect) {
-                                // Mauvaise réponse de l'utilisateur en rouge
-                                optionStyle += " bg-orange-50 border border-orange-200";
-                                textStyle += " font-semibold text-orange-600";
+                                // Mauvaise réponse de l'utilisateur en gris clair
+                                optionStyle += " bg-gray-200 border border-gray-300";
+                                textStyle += " font-semibold text-gray-600";
                               } else {
                                 // Autres options neutres
                                 optionStyle += " bg-gray-50";
@@ -1232,10 +1216,10 @@ def Nilp(A):
                                 <div key={optIndex} className={optionStyle}>
                                   <div className="flex items-center gap-2">
                                     {isCorrectAnswer && (
-                                      <CheckCircle className="h-4 w-4 text-blue-600" />
+                                      <CheckCircle className="h-4 w-4 text-gray-600" />
                                     )}
                                     {isUserAnswer && !isCorrect && (
-                                      <div className="h-4 w-4 text-orange-600">✗</div>
+                                      <div className="h-4 w-4 text-gray-600">✗</div>
                                     )}
                                     {!isCorrectAnswer && !isUserAnswer && (
                                       <div className="h-4 w-4 text-gray-400">○</div>
@@ -1248,11 +1232,11 @@ def Nilp(A):
                           </div>
                           
                           {!isCorrect && (
-                            <div className="mt-3 p-2 bg-orange-50 border border-orange-200 rounded">
-                              <p className="text-sm text-orange-600">
+                            <div className="mt-3 p-2 bg-gray-100 border border-gray-200 rounded">
+                              <p className="text-sm text-gray-700">
                                 <span className="font-semibold">Votre réponse :</span> {userAnswer}
                               </p>
-                              <p className="text-sm text-orange-600">
+                              <p className="text-sm text-gray-700">
                                 <span className="font-semibold">Bonne réponse :</span> {question.answer}
                               </p>
                             </div>
@@ -1265,10 +1249,10 @@ def Nilp(A):
               </div>
               
               <div className="flex gap-4 justify-center">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   onClick={restartQCM}
-                      className="border-blue-200 text-blue-600 hover:bg-blue-50"
+                      className="border-gray-200 text-gray-600 hover:bg-gray-50"
                 >
                   Recommencer le QCM
                 </Button>
@@ -1277,6 +1261,132 @@ def Nilp(A):
           )}
         </CardContent>
       </Card>
+        </>
+      )}
+
+      {/* Section QCM */}
+      {showQCM && (
+        <>
+          <Button
+            variant="outline"
+            size="sm"
+            className="flex items-center gap-2 mb-6"
+            onClick={() => {
+              setShowQCM(false);
+              setQcmSubmitted(false);
+              setQcmAnswers({});
+              setQcmScore(null);
+            }}
+          >
+            <ChevronLeft className="h-4 w-4" />
+            Retour aux exercices
+          </Button>
+
+          <Card className="mb-8 border-2 border-gray-200 bg-gray-50 shadow-lg">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3 text-gray-700">
+                <HelpCircle className="h-6 w-6" />
+                QCM d'évaluation - Testez vos connaissances
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {!qcmSubmitted ? (
+                <div className="space-y-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <p className="text-gray-700 font-medium">
+                      Répondez aux 20 questions pour évaluer votre niveau sur les matrices NumPy
+                    </p>
+                    <Badge variant="outline" className="bg-gray-100 text-gray-700 border-gray-300">
+                      {Object.keys(qcmAnswers).length}/20 répondues
+                    </Badge>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {qcmQuestions.map((question) => (
+                      <Card key={question.id} className="border border-gray-200 hover:border-gray-300 transition-colors">
+                        <CardContent className="pt-4">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Badge variant="outline" className="bg-gray-100 text-gray-700 text-xs border-gray-300">
+                              Q{question.id}
+                            </Badge>
+                            {qcmAnswers[question.id] && (
+                              <CheckCircle className="h-3 w-3 text-gray-600" />
+                            )}
+                          </div>
+                          <p className="mb-3 text-sm">{question.question}</p>
+                          <div className="space-y-2">
+                            {question.options.map((option, optIndex) => (
+                              <label key={optIndex} className="flex items-center gap-2 p-2 rounded hover:bg-gray-50 cursor-pointer">
+                                <input
+                                  type="radio"
+                                  name={`question-${question.id}`}
+                                  value={option}
+                                  checked={qcmAnswers[question.id] === option}
+                                  onChange={(e) => handleQCMAnswer(question.id, e.target.value)}
+                                  className="text-gray-600"
+                                />
+                                <span className="text-sm">{option}</span>
+                              </label>
+                            ))}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+
+                  <div className="flex justify-center">
+                    <Button
+                      onClick={submitQCM}
+                      disabled={Object.keys(qcmAnswers).length < 20}
+                      className="bg-gray-600 hover:bg-gray-700 text-white px-8 py-3"
+                    >
+                      <HelpCircle className="h-4 w-4 mr-2" />
+                      Valider le QCM
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  <div className="text-center space-y-4">
+                    <div className="flex items-center justify-center gap-3">
+                      <HelpCircle className="h-8 w-8 text-gray-600" />
+                      <h3 className="text-2xl font-bold text-gray-700">Résultats du QCM</h3>
+                    </div>
+
+                    <div className="bg-gray-50 rounded-lg p-6 border-2 border-gray-200">
+                      <div className="text-4xl font-bold text-gray-700 mb-2">
+                        {qcmScore?.toFixed(1)}/20
+                      </div>
+                      <div className="flex items-center justify-center gap-2 mb-4">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`h-6 w-6 ${i < Math.floor((qcmScore || 0) / 4) ? 'text-gray-600 fill-current' : 'text-gray-300'}`}
+                          />
+                        ))}
+                      </div>
+                      <p className="text-gray-700 font-medium">
+                        {qcmScore && qcmScore >= 16 ? "Excellent ! Vous maîtrisez parfaitement les matrices NumPy." :
+                         qcmScore && qcmScore >= 12 ? "Bon niveau ! Quelques révisions pour perfectionner." :
+                         qcmScore && qcmScore >= 8 ? "Niveau correct. Continuez à vous entraîner." :
+                         "Niveau à améliorer. Revenez sur les bases des matrices NumPy."}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4 justify-center">
+                    <Button
+                      variant="outline"
+                      onClick={restartQCM}
+                      className="border-gray-300 text-gray-700 hover:bg-gray-50"
+                    >
+                      Recommencer le QCM
+                    </Button>
+                  </div>
+                </div>
+              )}
+            </CardContent>
+          </Card>
         </>
       )}
 

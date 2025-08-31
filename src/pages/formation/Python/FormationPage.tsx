@@ -1,70 +1,80 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Tabs, TabsContent } from "@/components/ui/tabs";
-import { Code, Calculator, TrendingUp, BarChart3, Play, BookOpen, ChevronDown, Home, ChevronRight } from 'lucide-react';
-import PythonNavigationTabs from "@/components/formation/PythonNavigationTabs";
-import Navigation from '@/components/Navigation';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Code, Calculator, TrendingUp, BarChart3, Home, ChevronRight, BookOpen, HelpCircle } from 'lucide-react';
 const FormationPage = () => {
-  const [openModules, setOpenModules] = useState<Set<number>>(new Set());
-  const toggleModule = (moduleId: number) => {
-    const newOpenModules = new Set(openModules);
-    if (newOpenModules.has(moduleId)) {
-      newOpenModules.delete(moduleId);
-    } else {
-      newOpenModules.add(moduleId);
+  const pythonModules = [
+    {
+      id: 0,
+      title: "Module 0 - Fondamentaux",
+      subtitle: "Les Fondamentaux",
+      description: "Variables, types, opérateurs, fonctions et structures de contrôle. Les bases essentielles pour débuter en Python.",
+      icon: Code,
+      courseLink: "/formation/python-fondamentaux",
+      exercisesLink: "/formation/python-fondamentaux-exercices",
+      detailsLink: "/formation/python-fondamentaux-details",
+      features: [
+        "✓ Types fondamentaux Python",
+        "✓ Structures de contrôle",
+        "✓ Fonctions et modules",
+        "✓ Exercices pratiques"
+      ]
+    },
+    {
+      id: 1,
+      title: "Module 1 - Matrices",
+      subtitle: "Les Matrices NumPy",
+      description: "Introduction à NumPy pour le calcul scientifique et les opérations matricielles. Création, manipulation et analyse de matrices.",
+      icon: Calculator,
+      courseLink: "/formation/python-matrices",
+      exercisesLink: "/formation/python-matrices-exercices",
+      detailsLink: "/formation/python-matrices-details",
+      features: [
+        "✓ Création de matrices",
+        "✓ Opérations matricielles",
+        "✓ Indexation avancée",
+        "✓ Applications pratiques"
+      ]
+    },
+    {
+      id: 2,
+      title: "Module 2 - Analyse",
+      subtitle: "Analyse Numérique",
+      description: "Méthodes d'analyse numérique : calcul de sommes et produits, étude des suites, et approximation par dichotomie.",
+      icon: TrendingUp,
+      courseLink: "/formation/python-analyse",
+      exercisesLink: "/formation/python-analyse-exercices",
+      detailsLink: "/formation/python-analyse-details",
+      features: [
+        "✓ Suites et récurrence",
+        "✓ Méthodes itératives",
+        "✓ Approximation numérique",
+        "✓ Visualisation des données"
+      ]
+    },
+    {
+      id: 3,
+      title: "Module 3 - Probabilités",
+      subtitle: "Probabilités & Simulation",
+      description: "Simulation et statistiques avec NumPy & Matplotlib. Lois de probabilité, méthode de Monte-Carlo et visualisations.",
+      icon: BarChart3,
+      courseLink: "/formation/python-probabilites",
+      exercisesLink: "/formation/python-probabilites-exercices",
+      detailsLink: "/formation/python-probabilites-details",
+      features: [
+        "✓ Simulation Monte-Carlo",
+        "✓ Lois de probabilité",
+        "✓ Processus stochastiques",
+        "✓ Visualisations statistiques"
+      ]
     }
-    setOpenModules(newOpenModules);
-  };
-  const coursModules = [{
-    id: 0,
-    title: "Les Fondamentaux",
-    description: "Variables, types, opérateurs, fonctions et structures de contrôle. Les bases essentielles pour débuter en Python.",
-    topics: ["Types fondamentaux (int, float, bool, str)", "Opérateurs numériques", "Fonctions et structures de contrôle", "Listes et boucles"],
-    link: "/formation/python-fondamentaux",
-    exerciseLink: "/formation/python-fondamentaux-exercices",
-    icon: BookOpen,
-    color: "bg-orange-500",
-    available: true
-  }];
-  const exerciseModules = [{
-    id: 1,
-    title: "Les Matrices NumPy",
-    description: "Introduction à NumPy pour le calcul scientifique et les opérations matricielles. Création, manipulation et analyse de matrices.",
-    topics: ["Création de matrices et vecteurs", "Opérations matricielles", "Fonctions d'analyse statistique", "Applications pratiques"],
-    link: "/formation/python-matrices",
-    exerciseLink: "/formation/python-matrices-exercices",
-    icon: Calculator,
-    color: "bg-blue-500",
-    available: true
-  }, {
-    id: 2,
-    title: "Analyse",
-    description: "Méthodes d'analyse numérique : calcul de sommes et produits, étude des suites, et approximation par dichotomie.",
-    topics: ["Calcul de sommes et produits finis", "Suites définies par récurrence", "Méthode de dichotomie", "Visualisation avec Matplotlib"],
-    link: "/formation/python-analyse",
-    exerciseLink: "/formation/python-analyse-exercices",
-    icon: TrendingUp,
-    color: "bg-orange-500",
-    available: true
-  }, {
-    id: 3,
-    title: "Probabilités",
-    description: "Simulation et statistiques avec NumPy & Matplotlib. Lois de probabilité, méthode de Monte-Carlo et visualisations.",
-    topics: ["Génération aléatoire et lois discrètes", "Statistiques descriptives", "Méthode de Monte-Carlo", "Graphiques statistiques"],
-    link: "/formation/python-probabilites",
-    exerciseLink: "/formation/python-probabilites-exercices",
-    icon: BarChart3,
-    color: "bg-blue-500",
-    available: true
-  }];
-  return <div className="min-h-screen bg-[#F8FAFF]">
-    {/* <Navigation /> Barre de navigation supprimée */}
+  ];
+
+  return (
+    <div className="min-h-screen bg-background">
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -72,159 +82,74 @@ const FormationPage = () => {
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formations" className="hover:text-foreground transition-colors">
-              Toutes les formations
-            </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Formation Python ECG</span>
+            <span className="text-foreground font-medium">Formation Python</span>
           </div>
         </div>
       </nav>
 
+      <div className="py-8 bg-accent">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h1 className="text-3xl md:text-4xl font-bold text-center mb-4">
+              Formation <span className="text-gray-700">Python ECG</span>
+            </h1>
+            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto text-lg">
+              Maîtrisez Python pour les concours : 4 modules progressifs avec exercices pratiques et coaching personnalisé.
+            </p>
 
-      <div className="container mx-auto py-8 px-4">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4">Cours Python ECG</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-6">Formation complète en Python pour les concours </p>
-        </div>
-
-        {/* Navigation Tabs */}
-        <PythonNavigationTabs className="mb-8" />
-
-      <div className="container mx-auto px-4">
-        <Tabs defaultValue="cours" className="w-full">
-          <TabsContent value="cours" className="mt-8">
-
-      {/* Section Cours */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-          <BookOpen className="h-6 w-6 text-orange-500" />
-          Cours
-        </h2>
-        <div className="grid gap-6">
-          {coursModules.map(module => <Link key={module.id} to={module.link} className="block">
-              <Card className="border-2 hover:border-orange-500/50 transition-colors cursor-pointer">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className={`p-3 rounded-lg ${module.color} text-white`}>
-                        <module.icon className="h-6 w-6" />
+            <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+              {pythonModules.map((module) => (
+                <Card key={module.id} className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-gray-300">
+                  <CardHeader>
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                        <module.icon className="h-6 w-6 text-gray-600" />
                       </div>
-                      <div>
-                        <CardTitle className="flex items-center gap-2">
-                          Module {module.id}
-                          <Badge className="bg-orange-500 text-white">Disponible</Badge>
-                        </CardTitle>
-                        <h3 className="text-xl font-semibold text-gray-800 mt-1">
-                          {module.title}
-                        </h3>
-                      </div>
+                      <CardTitle className="text-xl hover:text-gray-600 transition-colors">
+                        {module.subtitle}
+                      </CardTitle>
                     </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-4">{module.description}</p>
-                  
-                  <Collapsible open={openModules.has(module.id)} onOpenChange={() => toggleModule(module.id)}>
-                    <CollapsibleTrigger asChild>
-                      <Button variant="ghost" className="w-full justify-between p-0 h-auto mb-4" onClick={e => e.preventDefault()}>
-                        <span className="text-sm font-medium">Voir le détail</span>
-                        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${openModules.has(module.id) ? 'rotate-180' : ''}`} />
-                      </Button>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent className="space-y-2">
-                      <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-6">
-                        {module.topics.map((topic, index) => <li key={index}>{topic}</li>)}
-                      </ul>
-                    </CollapsibleContent>
-                  </Collapsible>
-
-                  <div className="flex gap-3" onClick={e => e.preventDefault()}>
-                    <Link to={module.link} className="flex-1">
-                      <Button variant="outline" className="w-full">
-                        <BookOpen className="mr-2 h-4 w-4" />
-                        Voir le cours
-                      </Button>
-                    </Link>
-                    <Link to={module.exerciseLink || module.link} className="flex-1">
-                      <Button className={`${module.color} hover:opacity-90 w-full`}>
-                        <Play className="mr-2 h-4 w-4" />
-                        Voir les exercices
-                      </Button>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>)}
-        </div>
-      </div>
-
-      {/* Section Exercices */}
-      <div>
-        
-        <div className="grid gap-6">
-          {exerciseModules.map(module => <Link key={module.id} to={module.link} className="block">
-              <Card className="border-2 hover:border-primary/50 transition-colors cursor-pointer">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className={`p-3 rounded-lg ${module.color} text-white`}>
-                        <module.icon className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <CardTitle className="flex items-center gap-2">
-                          Module {module.id}
-                          <Badge className="bg-blue-600 text-white">Disponible</Badge>
-                        </CardTitle>
-                        <h3 className="text-xl font-semibold text-gray-800 mt-1">
-                          {module.title}
-                        </h3>
-                      </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 mb-4">
+                      {module.description}
+                    </p>
+                    <div className="space-y-2 mb-4">
+                      {module.features.map((feature, index) => (
+                        <div key={index} className="text-sm text-gray-600">{feature}</div>
+                      ))}
                     </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-4">{module.description}</p>
-                  
-                  <Collapsible open={openModules.has(module.id)} onOpenChange={() => toggleModule(module.id)}>
-                    <CollapsibleTrigger asChild>
-                      <Button variant="ghost" className="w-full justify-between p-0 h-auto mb-4" onClick={e => e.preventDefault()}>
-                        <span className="text-sm font-medium">Voir le détail</span>
-                        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${openModules.has(module.id) ? 'rotate-180' : ''}`} />
-                      </Button>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent className="space-y-2">
-                      <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-6">
-                        {module.topics.map((topic, index) => <li key={index}>{topic}</li>)}
-                      </ul>
-                    </CollapsibleContent>
-                  </Collapsible>
-
-                  <div className="flex gap-3" onClick={e => e.preventDefault()}>
-                    <Link to={module.link} className="flex-1">
-                      <Button variant="outline" className="w-full">
-                        <BookOpen className="mr-2 h-4 w-4" />
-                        Voir le cours
-                      </Button>
-                    </Link>
-                    <Link to={module.exerciseLink} className="flex-1">
-                      <Button className={`${module.color} hover:opacity-90 w-full`}>
-                        <Play className="mr-2 h-4 w-4" />
-                        Voir les exercices
-                      </Button>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>)}
+                    <div className="space-y-2">
+                      <div className="flex gap-2">
+                        <Link to={module.courseLink} className="flex-1">
+                          <Button variant="outline" size="sm" className="w-full border-gray-200 text-gray-600 hover:bg-gray-50">
+                            <BookOpen className="h-4 w-4 mr-2" />
+                            Voir le cours
+                          </Button>
+                        </Link>
+                        <Link to={module.exercisesLink} className="flex-1">
+                          <Button size="default" className="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold">
+                            <Calculator className="h-4 w-4 mr-2" />
+                            Exercices
+                          </Button>
+                        </Link>
+                      </div>
+                      <Link to={`${module.exercisesLink}?quiz=true`} className="block">
+                        <Button variant="outline" size="sm" className="w-full border-gray-200 text-gray-600 hover:bg-gray-50 text-sm">
+                          <HelpCircle className="h-3 w-3 mr-2" />
+                          Quiz 20 questions
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-
-          </TabsContent>
-        </Tabs>
-      </div>
-      </div>
-    </div>;
+    </div>
+  );
 };
+
 export default FormationPage;

@@ -25,7 +25,7 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-[95vh] w-full flex flex-col justify-center items-center py-8 sm:py-24 px-4 sm:px-6 relative overflow-hidden">
+    <section className="min-h-[95vh] w-full flex flex-col justify-center items-center py-2 sm:py-8 px-4 sm:px-6 relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-white"></div>
       
@@ -42,13 +42,13 @@ export const HeroSection = () => {
       <div className="absolute bottom-1/3 right-5 w-36 h-36 bg-blue-50 rounded-full opacity-5 animate-pulse"></div>
       
       <div className="w-full max-w-[1200px] flex flex-col items-center justify-center relative z-10 px-4 sm:px-6">
-        {/* Main Heading with improved typography */}
-        <h1 className="text-[1.2rem] sm:text-[1.5rem] md:text-[1.8rem] lg:text-[2rem] xl:text-[2.2rem] font-bold text-center mb-6 sm:mb-8 leading-[1.1] w-full max-w-[1000px] px-4">
+        {/* Main Heading with improved typography - ZOOMED & SINGLE LINE */}
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-3 sm:mb-4 leading-[1.1] w-full max-w-[1000px] px-4 whitespace-nowrap">
           Ta méthode pour intégrer le <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent uppercase">TOP 3</span> en prépa <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent uppercase">ECG</span>
         </h1>
 
         {/* Enhanced Triptyque with icons - Uniform sizing */}
-        <div className="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-6 sm:gap-8 md:gap-12 mb-6 sm:mb-8 md:mb-12 w-full max-w-[1100px] px-2 sm:px-4">
+        <div className="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-6 sm:gap-8 md:gap-12 mb-2 sm:mb-3 md:mb-4 w-full max-w-[1100px] px-2 sm:px-4">
           <div className="text-center group cursor-pointer relative flex-1 max-w-[300px] min-h-[12rem]" onClick={() => window.location.href = '/formations'}>
             <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300 relative z-10">
               <BookOpen className="h-10 w-10 text-white" />
@@ -65,7 +65,7 @@ export const HeroSection = () => {
               <Users className="h-10 w-10 text-white" />
             </div>
             <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-orange-600 transition-colors relative z-10 text-center">Cours particuliers</h3>
-            <p className="text-gray-600 text-lg leading-relaxed relative z-10 px-2 flex items-center justify-center h-16">Coaching pour surmonter tes blocages. Réserve ta première séance gratuitement.</p>
+            <p className="text-gray-600 text-lg leading-relaxed relative z-10 px-2 flex items-center justify-center h-16">Réserve ta première séance gratuitement.</p>
             <div className="mt-4 px-4 sm:px-6 py-2 sm:py-3 bg-orange-100 text-orange-700 rounded-lg text-sm sm:text-base font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 relative z-10 shadow-md whitespace-nowrap">
               Réserve un cours gratuit →
             </div>
@@ -83,9 +83,9 @@ export const HeroSection = () => {
           </div>
         </div>
 
-        {/* Enhanced message with gradient */}
-        <p className="text-xl sm:text-2xl text-center font-medium leading-[1.4] mb-8 max-w-[1000px] bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
-          La Méthode <span className="font-bold">RATIONNELLE</span> pour Gagner <span className="font-extrabold">+5</span> Points en Maths et Python
+        {/* Enhanced message with selective orange highlighting */}
+        <p className="text-xl sm:text-2xl md:text-3xl text-center font-semibold leading-[1.3] mb-8 sm:mb-10 max-w-[1200px] mx-auto px-4 text-gray-800">
+          La Méthode <span className="font-bold text-orange-600">RATIONNELLE</span> pour Gagner <span className="font-bold text-orange-600">+5</span> Points en <span className="font-bold text-orange-600">Maths</span> et <span className="font-bold text-orange-600">Python</span>
         </p>
 
                 {/* Enhanced Buttons */}

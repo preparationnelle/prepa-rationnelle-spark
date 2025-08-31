@@ -15,7 +15,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'elements-de-logique',
         title: 'Éléments de logique',
         icon: BrainCircuit,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Concepts fondamentaux et démonstrations rigoureuses'
       },
       {
@@ -23,7 +23,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'ensembles-et-applications',
         title: 'Ensembles et applications',
         icon: Shapes,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Concepts fondamentaux et démonstrations rigoureuses'
       },
       {
@@ -31,7 +31,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'sommes-produits-coefficients-binomiaux',
         title: 'Sommes, produits & coefficients binomiaux',
         icon: Sigma,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Concepts fondamentaux et démonstrations rigoureuses'
       },
       {
@@ -39,7 +39,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'suites-numeriques',
         title: 'Suites numériques',
         icon: TrendingUp,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Concepts fondamentaux et démonstrations rigoureuses'
       },
       {
@@ -47,7 +47,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'fonctions-d-une-variable-reelle',
         title: 'Fonctions d\'une variable réelle',
         icon: FunctionSquare,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Concepts fondamentaux et démonstrations rigoureuses'
       },
       {
@@ -55,7 +55,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'derivation',
         title: 'Dérivation',
         icon: Spline,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Concepts fondamentaux et démonstrations rigoureuses'
       },
       {
@@ -63,7 +63,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'integration-sur-un-segment',
         title: 'Intégration sur un segment',
         icon: AreaChart,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Concepts fondamentaux et démonstrations rigoureuses'
       },
       {
@@ -71,7 +71,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'polynomes',
         title: 'Polynômes',
         icon: Cuboid,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Concepts fondamentaux et démonstrations rigoureuses'
       },
       {
@@ -79,7 +79,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'matrices-espaces-vectoriels',
         title: 'Matrices & espaces vectoriels',
         icon: Grid,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Concepts fondamentaux et démonstrations rigoureuses'
       },
       {
@@ -87,7 +87,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'probabilites-conditionnement',
         title: 'Probabilités & conditionnement',
         icon: Dices,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Concepts fondamentaux et démonstrations rigoureuses'
       }
     ]
@@ -101,7 +101,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'applications-lineaires-structures-vectorielles',
         title: 'Applications linéaires & structures vectorielles',
         icon: Move,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -109,7 +109,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'comparaison-negligeabilite-equivalence',
         title: 'Comparaison — négligeabilité & équivalence',
         icon: Scale,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -117,7 +117,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'series-numeriques',
         title: 'Séries numériques',
         icon: InfinityIcon,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -125,7 +125,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'developpements-limites-formule-de-taylor',
         title: 'Développements limités & formule de Taylor',
         icon: UnfoldVertical,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -133,7 +133,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'integrales-impropres-criteres-de-convergence',
         title: 'Intégrales impropres & critères de convergence',
         icon: AreaChart,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -141,7 +141,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'espaces-probabilises-conditionnement',
         title: 'Espaces probabilisés & conditionnement',
         icon: Dices,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -149,7 +149,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'variables-aleatoires-discretes-lois',
         title: 'Variables aléatoires discrètes & lois',
         icon: Variable,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -157,7 +157,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'convergences-theoremes-limites',
         title: 'Convergences & théorèmes limites',
         icon: LocateFixed,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -165,7 +165,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'equations-differentielles-applications-concretes',
         title: 'Équations différentielles avec applications concrètes',
         icon: FunctionSquare,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -173,7 +173,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'chaines-de-markov',
         title: 'Les chaînes de Markov',
         icon: Move,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -181,7 +181,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'theorie-des-graphes-approfondie',
         title: 'La théorie des graphes approfondie',
         icon: Grid,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -189,7 +189,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'statistiques-descriptives',
         title: 'Les statistiques descriptives',
         icon: Cuboid,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -197,7 +197,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         slug: 'python',
         title: 'Python',
         icon: Code,
-        color: 'bg-green-600',
+        color: 'bg-blue-600',
         description: 'Théorie approfondie et applications pratiques'
       }
     ]

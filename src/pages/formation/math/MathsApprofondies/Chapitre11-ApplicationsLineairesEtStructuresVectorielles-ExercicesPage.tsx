@@ -39,8 +39,11 @@ const Chapitre11ApplicationsLineairesEtStructuresVectoriellesExercicesPage = () 
         <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-indigo-50 mb-8">
           <div className="p-8">
             <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4">
-              Exercices - Chapitre : Applications linéaires & structures vectorielles
+              Exercices - Chapitre 11 : Applications linéaires & optimisation multivariée avancée
             </h1>
+            <p className="text-slate-600 text-lg">
+              Exercices sur les applications linéaires, structures vectorielles et optimisation multivariée.
+            </p>
           </div>
         </Card>
 
@@ -888,6 +891,124 @@ const Chapitre11ApplicationsLineairesEtStructuresVectoriellesExercicesPage = () 
                 )}
           </div>
         </Card>
+          );
+        })()}
+
+        {/* Exercice 17.3 - Optimisation multivariée */}
+        {(() => {
+          const [visible, setVisible] = useState(false);
+          return (
+            <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
+              <div className="p-6">
+                <div className="flex items-start gap-3 mb-4">
+                  <div className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">
+                    Exercice 17.3
+                  </div>
+                  <div className="text-xs text-blue-500 bg-blue-50 px-2 py-1 rounded">
+                    Avancé
+                  </div>
+                </div>
+
+                {/* Enoncé */}
+                <div className="mb-4 space-y-4">
+                  <p>
+                    Soit <LatexRenderer latex="f : \mathbb{R}^2 \to \mathbb{R}" /> définie par
+                  </p>
+                  <div className="text-center my-4">
+                    <LatexRenderer latex="f(x,y) = e^{x^2 + y^2}" />
+                  </div>
+                  
+                  <ol className="list-decimal pl-5 space-y-3">
+                    <li>
+                      Calculer le gradient <LatexRenderer latex="\nabla f" /> et le Hessien <LatexRenderer latex="H_f" /> de <LatexRenderer latex="f" />.
+                    </li>
+                    <li>
+                      Vérifier que <LatexRenderer latex="H_f" /> est définie positive.
+                    </li>
+                    <li>
+                      En déduire que <LatexRenderer latex="f" /> est convexe. Est-elle strictement convexe ?
+                    </li>
+                  </ol>
+                </div>
+
+                <Button onClick={() => setVisible(v => !v)} variant={visible ? 'secondary' : 'default'} className="mb-4">
+                  {visible ? 'Masquer la correction' : 'Afficher la correction'}
+                </Button>
+
+                {visible && (
+                  <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-r-lg space-y-6">
+                    <h4 className="font-semibold text-green-800">Solution</h4>
+                    
+                    {/* Question 1 */}
+                    <div className="text-green-800 space-y-3">
+                      <p className="font-semibold">1) Gradient et Hessien</p>
+                      <p>On calcule les dérivées partielles :</p>
+                      <div className="space-y-2">
+                        <LatexRenderer latex="\frac{\partial f}{\partial x}(x,y) = 2x e^{x^2+y^2}" />
+                        <LatexRenderer latex="\frac{\partial f}{\partial y}(x,y) = 2y e^{x^2+y^2}" />
+                      </div>
+                      <p>Ainsi :</p>
+                      <div className="text-center">
+                        <LatexRenderer latex="\nabla f(x,y) = \big( 2x e^{x^2+y^2}, \, 2y e^{x^2+y^2} \big)" />
+                      </div>
+                      
+                      <p>Pour le Hessien, on calcule les dérivées secondes :</p>
+                      <div className="space-y-2">
+                        <LatexRenderer latex="\frac{\partial^2 f}{\partial x^2}(x,y) = (4x^2+2) e^{x^2+y^2}" />
+                        <LatexRenderer latex="\frac{\partial^2 f}{\partial y^2}(x,y) = (4y^2+2) e^{x^2+y^2}" />
+                        <LatexRenderer latex="\frac{\partial^2 f}{\partial x \partial y}(x,y) = 4xy \, e^{x^2+y^2}" />
+                      </div>
+                      
+                      <p>Donc :</p>
+                      <div className="text-center">
+                        <LatexRenderer latex="H_f(x,y) = e^{x^2+y^2} \begin{pmatrix} 4x^2+2 & 4xy \\ 4xy & 4y^2+2 \end{pmatrix}" />
+                      </div>
+                    </div>
+
+                    {/* Question 2 */}
+                    <div className="text-green-800 space-y-3">
+                      <p className="font-semibold">2) Hessien définie positive</p>
+                      <p>Le déterminant du Hessien est :</p>
+                      <div className="space-y-2">
+                        <LatexRenderer latex="\det H_f(x,y) = e^{2(x^2+y^2)} \big( (4x^2+2)(4y^2+2) - (4xy)^2 \big)" />
+                      </div>
+                      
+                      <p>On développe :</p>
+                      <div className="space-y-2">
+                        <LatexRenderer latex="(4x^2+2)(4y^2+2) - (4xy)^2 = 16x^2y^2 + 8x^2 + 8y^2 + 4 - 16x^2y^2" />
+                        <LatexRenderer latex="= 8x^2 + 8y^2 + 4" />
+                      </div>
+                      
+                      <p>Ainsi :</p>
+                      <div className="text-center">
+                        <LatexRenderer latex="\det H_f(x,y) = e^{2(x^2+y^2)} (8x^2+8y^2+4) > 0" />
+                      </div>
+                      
+                      <p>De plus, la trace est :</p>
+                      <div className="text-center">
+                        <LatexRenderer latex="\text{tr}(H_f(x,y)) = e^{x^2+y^2}(4x^2+4y^2+4) > 0" />
+                      </div>
+                      
+                      <p>Donc <LatexRenderer latex="H_f(x,y)" /> est définie positive en tout point <LatexRenderer latex="(x,y)" />.</p>
+                    </div>
+
+                    {/* Question 3 */}
+                    <div className="text-green-800 space-y-3">
+                      <p className="font-semibold">3) Convexité de f</p>
+                      <p>
+                        Puisque le Hessien est définie positive en tout point, <LatexRenderer latex="f" /> est convexe.
+                      </p>
+                      <p>
+                        Comme <LatexRenderer latex="\det H_f(x,y) > 0" /> partout, <LatexRenderer latex="H_f" /> est définie positive stricte.
+                      </p>
+                      <p>
+                        <strong>Conclusion :</strong> <LatexRenderer latex="f" /> est strictement convexe.
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </Card>
           );
         })()}
       </div>

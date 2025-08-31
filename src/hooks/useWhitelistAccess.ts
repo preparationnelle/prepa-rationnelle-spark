@@ -7,6 +7,10 @@ const WHITELISTED_EMAILS = [
   'dimitrovdimitar556@gmail.com',
 ];
 
+// 🚨 TEMPORAIRE : Désactiver la protection Maths pour faciliter les modifications
+// À REMETTRE À false APRÈS LES MODIFICATIONS
+const TEMPORARILY_DISABLE_MATHS_PROTECTION = true;
+
 // Helper public pour vérifier un email (normalisé)
 export const isWhitelisted = (email: string | null | undefined): boolean => {
   if (!email) return false;
@@ -20,9 +24,11 @@ const PYTHON_PREFIXES = ['/formation/python-'];
 
 // Sections Maths (protection par liste blanche)
 const MATHS_WHITELISTED_SECTIONS = [
+  '/formation/maths',
   '/formation/maths-methodologie',
   '/formation/maths-approfondies',
   '/formation/maths-appliquees',
+  '/formation/maths-',
 ];
 
 export const useWhitelistAccess = () => {
@@ -33,7 +39,7 @@ export const useWhitelistAccess = () => {
   useEffect(() => {
     const checkAccess = () => {
       setIsLoading(true);
-      
+
       // Tant que l'état auth global charge, on attend (évite double sas)
       if (loading) {
         setIsLoading(true);
@@ -43,6 +49,13 @@ export const useWhitelistAccess = () => {
       // Si pas d'utilisateur connecté, pas d'accès
       if (!currentUser) {
         setHasAccess(false);
+        setIsLoading(false);
+        return;
+      }
+
+      // 🚨 TEMPORAIRE : Si la protection Maths est désactivée, accès libre pour tous
+      if (TEMPORARILY_DISABLE_MATHS_PROTECTION) {
+        setHasAccess(true);
         setIsLoading(false);
         return;
       }

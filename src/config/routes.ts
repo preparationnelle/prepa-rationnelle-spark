@@ -238,15 +238,22 @@ const MathsInegalitesPage = lazy(() => import('../pages/formation/math/MathsAppr
 // Math exercise pages - New structure
 const Chapitre1LogiqueExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre1-LogiqueEtRaisonnementFondamentaux-ExercicesPage'));
 const Chapitre2EnsemblesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre2-EnsemblesEtApplications-ExercicesPage'));
+const Chapitre2EndomorphismesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre2-EndomorphismesMatricesAvancees-ExercicesPage'));
 const Chapitre3SommesProduitsExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre3-SommesProduitsEtCoefficientsBinomiaux-ExercicesPage'));
 const Chapitre4SuitesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre4-SuitesNumeriques-ExercicesPage'));
 const Chapitre5FonctionsExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre5-FonctionsUneVariableReelle-ExercicesPage'));
 const Chapitre6DerivationExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre6-Derivation-ExercicesPage'));
+const Chapitre6VariablesAleatoiresDensiteExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre6-VariablesAleatoiresDensite-ExercicesPage'));
 const Chapitre7IntegrationExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre7-IntegrationSurUnSegment-ExercicesPage'));
 const Chapitre8PolynomesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre8-Polynomes-ExercicesPage'));
+const Chapitre1ComplementsAlgebreLineaireExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre1-ComplementsAlgebreLineaire-ExercicesPage'));
 const Chapitre9MatricesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre9-MatricesEtEspacesVectoriels-ExercicesPage'));
+const Chapitre3AlgebreBilineaireExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre3-AlgebreBilineaire-ExercicesPage'));
+const Chapitre9AlgebreBilineaireEspacesEuclidiensExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre9-AlgebreBilineaireEspacesEuclidiens-ExercicesPage'));
 const Chapitre10ProbabilitesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre10-ProbabilitesEtConditionnement-ExercicesPage'));
 const Chapitre11ApplicationsLineairesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre11-ApplicationsLineairesEtStructuresVectorielles-ExercicesPage'));
+const Chapitre11OptimisationMultivarieeAvanceeExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre11-OptimisationMultivarieeAvancee-ExercicesPage'));
+const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre4-FonctionsMultivariees-CalculDifferentiel-ExercicesPage'));
 const Chapitre12ComparaisonExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre12-Comparaison-NegligeabiliteEquivalence-ExercicesPage'));
 const Chapitre13SeriesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre13-SeriesNumeriques-ExercicesPage'));
 const Chapitre14DeveloppementsExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre14-DeveloppementsLimitesEtTaylor-ExercicesPage'));
@@ -254,6 +261,11 @@ const Chapitre15IntegralesImpropresExercicesPage = lazy(() => import('../pages/f
 const Chapitre16EspacesProbabilisesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre16-EspacesProbabilisesEtConditionnement-ExercicesPage'));
 const Chapitre17VariablesAleatoiresExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre17-VariablesAleatoiresDiscretes-Lois-ExercicesPage'));
 const Chapitre18ConvergencesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre18-Convergences-Et-TheoremesLimites-ExercicesPage'));
+const Chapitre10ReductionMatricesSymetriquesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre10-ReductionMatricesSymetriques-ExercicesPage'));
+const Chapitre12ConvergencesApproximationsExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre12-ConvergencesApproximations-ExercicesPage'));
+const Chapitre18EstimationStatistiqueAvanceeExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre18-EstimationStatistiqueAvancee-ExercicesPage'));
+const Chapitre14TheorieEstimationStatistiqueExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre14-TheorieEstimationStatistique-ExercicesPage'));
+const Chapitre5ComplementsVariablesAleatoiresExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre5-ComplementsVariablesAleatoires-ExercicesPage'));
 
 // Maths Appliquées - Nouveaux chapitres
 const Chapitre19EquationsDifferentiellesCoursPage = lazy(() => import('../pages/formation/math/MathsAppliquees/Chapitre19-EquationsDifferentiellesApplicationsConcretes-CoursPage'));
@@ -581,6 +593,32 @@ export const routes: RouteConfig[] = [
   // Maths approfondies — explicit quiz routes (safer matching than dynamic pattern)
   { path: '/formation/maths-elements-de-logique-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Éléments de logique', protected: true },
   { path: '/formation/maths-ensembles-et-applications-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Ensembles et applications', protected: true },
+
+  // Nouveaux modules de 2ème année
+  {
+    path: '/formation/maths-premiere-appliquees',
+    component: lazy(() => import('../pages/formation/math/MathsAppliquees/MathsAppliqueesPage')),
+    title: 'Maths Appliquées - 1ère année',
+    protected: true
+  },
+  {
+    path: '/formation/maths-premiere-approfondies',
+    component: lazy(() => import('../pages/formation/math/MathsApprofondies/MathsApprofondiesPage')),
+    title: 'Maths Approfondies - 1ère année',
+    protected: true
+  },
+  {
+    path: '/formation/maths-deuxieme-appliquees',
+    component: lazy(() => import('../pages/formation/math/MathsAppliquees2eAnneePage')),
+    title: 'Maths Appliquées - 2ème année',
+    protected: true
+  },
+  {
+    path: '/formation/maths-deuxieme-approfondies',
+    component: lazy(() => import('../pages/formation/math/MathsApprofondies2eAnneePage')),
+    title: 'Maths Approfondies - 2ème année',
+    protected: true
+  },
   { path: '/formation/maths-sommes-produits-coefficients-binomiaux-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Sommes, produits & coefficients binomiaux', protected: true },
   { path: '/formation/maths-suites-numeriques-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Suites numériques', protected: true },
   { path: "/formation/maths-fonctions-d-une-variable-reelle-quiz", component: MathsApprofondiesQuizPage, title: "Quiz - Fonctions d'une variable réelle", protected: true },
@@ -643,15 +681,22 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-python', component: FormationPage, title: 'Formation Python ECG' },
   { path: '/formation/maths-elements-de-logique-exercices', component: Chapitre1LogiqueExercicesPage, title: 'Exercices - Chapitre 1 : Logique & raisonnement fondamentaux' },
   { path: '/formation/maths-ensembles-et-applications-exercices', component: Chapitre2EnsemblesExercicesPage, title: 'Exercices - Chapitre 2 : Ensembles et applications' },
+  { path: '/formation/maths-endomorphismes-matrices-avancees-exercices', component: Chapitre2EndomorphismesExercicesPage, title: 'Exercices - Chapitre 2 : Éléments propres et réduction des endomorphismes et matrices carrées' },
   { path: '/formation/maths-sommes-produits-coefficients-binomiaux-exercices', component: Chapitre3SommesProduitsExercicesPage, title: 'Exercices - Chapitre 3 : Sommes, produits & coefficients binomiaux' },
   { path: '/formation/maths-suites-numeriques-exercices', component: Chapitre4SuitesExercicesPage, title: 'Exercices - Chapitre 4 : Suites numériques' },
   { path: '/formation/maths-fonctions-d-une-variable-reelle-exercices', component: Chapitre5FonctionsExercicesPage, title: 'Exercices - Chapitre 5 : Fonctions d\'une variable réelle' },
   { path: '/formation/maths-derivation-exercices', component: Chapitre6DerivationExercicesPage, title: 'Exercices - Chapitre 6 : Dérivation' },
+  { path: '/formation/maths-variables-aleatoires-densite-exercices', component: Chapitre6VariablesAleatoiresDensiteExercicesPage, title: 'Exercices - Chapitre 6 : Variables aléatoires à densité' },
   { path: '/formation/maths-integration-sur-un-segment-exercices', component: Chapitre7IntegrationExercicesPage, title: 'Exercices - Chapitre 7 : Intégration sur un segment' },
   { path: '/formation/maths-polynomes-exercices', component: Chapitre8PolynomesExercicesPage, title: 'Exercices - Chapitre 8 : Polynômes' },
+  { path: '/formation/maths-complements-algebre-lineaire-exercices', component: Chapitre1ComplementsAlgebreLineaireExercicesPage, title: 'Exercices - Chapitre 1 : Compléments d\'algèbre linéaire' },
   { path: '/formation/maths-matrices-espaces-vectoriels-exercices', component: Chapitre9MatricesExercicesPage, title: 'Exercices - Chapitre 9 : Matrices & espaces vectoriels' },
+  { path: '/formation/maths-algebre-bilineaire-exercices', component: Chapitre3AlgebreBilineaireExercicesPage, title: 'Exercices - Chapitre 3 : Algèbre bilinéaire' },
+  { path: '/formation/maths-algebre-bilineaire-espaces-euclidiens-exercices', component: Chapitre9AlgebreBilineaireEspacesEuclidiensExercicesPage, title: 'Exercices - Chapitre 9 : Algèbre bilinéaire et espaces euclidiens' },
   { path: '/formation/maths-probabilites-conditionnement-exercices', component: Chapitre10ProbabilitesExercicesPage, title: 'Exercices - Chapitre 10 : Probabilités & conditionnement' },
   { path: '/formation/maths-applications-lineaires-structures-vectorielles-exercices', component: Chapitre11ApplicationsLineairesExercicesPage, title: 'Exercices - Chapitre 11 : Applications linéaires & structures vectorielles' },
+  { path: '/formation/maths-optimisation-multivariee-avancee-exercices', component: Chapitre11OptimisationMultivarieeAvanceeExercicesPage, title: 'Exercices - Chapitre 11 : Optimisation multivariée avancée' },
+  { path: '/formation/maths-fonctions-multivariees-calcul-differentiel-exercices', component: Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage, title: 'Exercices - Chapitre 4 : Fonctions multivariées et calcul différentiel' },
   { path: '/formation/maths-comparaison-negligeabilite-equivalence-exercices', component: Chapitre12ComparaisonExercicesPage, title: 'Exercices - Chapitre 12 : Comparaison — négligeabilité & équivalence' },
   { path: '/formation/maths-series-numeriques-exercices', component: Chapitre13SeriesExercicesPage, title: 'Exercices - Chapitre 13 : Séries numériques' },
   { path: '/formation/maths-developpements-limites-formule-de-taylor-exercices', component: Chapitre14DeveloppementsExercicesPage, title: 'Exercices - Chapitre 14 : Développements limités & formule de Taylor' },
@@ -659,6 +704,11 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-espaces-probabilises-conditionnement-exercices', component: Chapitre16EspacesProbabilisesExercicesPage, title: 'Exercices - Chapitre 16 : Espaces probabilisés & conditionnement' },
   { path: '/formation/maths-variables-aleatoires-discretes-lois-exercices', component: Chapitre17VariablesAleatoiresExercicesPage, title: 'Exercices - Chapitre 17 : Variables aléatoires discrètes & lois' },
   { path: '/formation/maths-convergences-theoremes-limites-exercices', component: Chapitre18ConvergencesExercicesPage, title: 'Exercices - Chapitre 18 : Convergences & théorèmes limites' },
+  { path: '/formation/maths-reduction-matrices-symetriques-exercices', component: Chapitre10ReductionMatricesSymetriquesExercicesPage, title: 'Exercices - Chapitre 10 : Réduction des endomorphismes et matrices symétriques', protected: true },
+  { path: '/formation/maths-convergences-approximations-exercices', component: Chapitre12ConvergencesApproximationsExercicesPage, title: 'Exercices - Chapitre 12 : Convergences et approximations', protected: true },
+  { path: '/formation/maths-intervalles-confiance-exercices', component: Chapitre18EstimationStatistiqueAvanceeExercicesPage, title: 'Exercices - Chapitre 18 : Intervalles de confiance', protected: true },
+  { path: '/formation/maths-theorie-estimation-statistique-exercices', component: Chapitre14TheorieEstimationStatistiqueExercicesPage, title: 'Exercices - Chapitre 14 : Théorie de l\'estimation statistique', protected: true },
+  { path: '/formation/maths-complements-variables-aleatoires-exercices', component: Chapitre5ComplementsVariablesAleatoiresExercicesPage, title: 'Exercices - Chapitre 5 : Compléments sur les variables aléatoires', protected: true },
 
   // Maths Appliquées - Nouveaux chapitres
   { path: '/formation/maths-equations-differentielles-applications-concretes', component: Chapitre19EquationsDifferentiellesCoursPage, title: 'Chapitre 19 : Équations différentielles avec applications concrètes', protected: true },

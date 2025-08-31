@@ -13,30 +13,32 @@ const PythonAnalysePage = () => {
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
-          <TrendingUp className="h-8 w-8 text-blue-600" />
+          <div className="p-3 rounded-lg bg-gray-100 text-gray-600 border border-gray-200">
+            <TrendingUp className="h-8 w-8" />
+          </div>
           <div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-500 via-violet-500 to-blue-600 bg-clip-text text-transparent">Module 2 - Analyse</h1>
-            <Badge variant="secondary" className="mt-3 bg-gradient-to-r from-blue-400 to-violet-500 text-white font-semibold px-4 py-2">Module 2</Badge>
+            <h1 className="text-4xl font-bold text-gray-800">Module 2 - Analyse</h1>
+            <Badge variant="secondary" className="mt-3 bg-gray-100 text-gray-700 border border-gray-200 font-semibold px-4 py-2">Module 2</Badge>
           </div>
         </div>
       </div>
 
         {/* Présentation générale */}
-        <Card className="mb-8 border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-violet-50 shadow-lg">
+        <Card className="mb-8 border-2 border-gray-200 bg-gray-50 shadow-lg">
           <CardHeader>
-            <CardTitle className="text-xl text-blue-700">PRÉSENTATION GÉNÉRALE</CardTitle>
+            <CardTitle className="text-xl text-gray-700">PRÉSENTATION GÉNÉRALE</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <div>
-                <h3 className="font-semibold text-blue-600 mb-2">Objectifs du module</h3>
+                <h3 className="font-semibold text-gray-600 mb-2">Objectifs du module</h3>
                 <p className="text-gray-700">
                   Ce module couvre les méthodes d'analyse numérique essentielles en Python : calcul de sommes et produits finis, 
                   étude des suites par récurrence, et méthodes d'approximation comme la dichotomie.
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold text-blue-600 mb-2">Prérequis</h3>
+                <h3 className="font-semibold text-gray-600 mb-2">Prérequis</h3>
                 <p className="text-gray-700">
                   Maîtrise des modules 1 et 2 (fondamentaux Python et matrices NumPy). 
                   Connaissances de base en analyse mathématique.
@@ -53,7 +55,7 @@ const PythonAnalysePage = () => {
           </CardHeader>
           <CardContent>
             <div className="mb-4">
-              <h3 className="font-semibold text-blue-600 mb-2">Objectif</h3>
+              <h3 className="font-semibold text-gray-600 mb-2">Objectif</h3>
               <p className="text-gray-700 mb-4">Savoir calculer une somme de la forme S = ∑expression(k) en utilisant trois méthodes : boucle, liste, NumPy.</p>
             </div>
 
@@ -69,8 +71,8 @@ const PythonAnalysePage = () => {
                       <div className="ml-4">S += k**2 # pour ∑k^2</div>
                       <div>print(S)</div>
                     </div>
-                    <div className="p-3 bg-blue-50 border border-blue-200 rounded">
-                      <p className="text-blue-600">
+                    <div className="p-3 bg-gray-50 border border-gray-200 rounded">
+                      <p className="text-gray-600">
                         ✔️ Méthode simple et lisible. Fonctionne dans tous les cas, même avec des doubles sommes.
                       </p>
                     </div>
@@ -88,8 +90,8 @@ const PythonAnalysePage = () => {
                       <div>S = np.sum(L)</div>
                       <div>print(S)</div>
                     </div>
-                    <div className="p-3 bg-blue-50 border border-blue-200 rounded">
-                      <p className="text-blue-600">
+                    <div className="p-3 bg-gray-50 border border-gray-200 rounded">
+                      <p className="text-gray-600">
                         ✔️ Permet de manipuler la liste des termes si besoin (affichage, tracé).
                       </p>
                     </div>
@@ -109,8 +111,8 @@ const PythonAnalysePage = () => {
                       <div>S = np.sum(k**2)</div>
                       <div>print(S)</div>
                     </div>
-                    <div className="p-3 bg-blue-50 border border-blue-200 rounded">
-                      <p className="text-blue-600">
+                    <div className="p-3 bg-gray-50 border border-gray-200 rounded">
+                      <p className="text-gray-600">
                         ✔️ Très rapide pour de grandes tailles. ⚠️ Moins intuitif pour débutants.
                       </p>
                     </div>
@@ -218,7 +220,7 @@ const PythonAnalysePage = () => {
           </CardHeader>
           <CardContent>
             <div className="mb-4">
-              <h3 className="font-semibold text-blue-600 mb-2">Objectif</h3>
+              <h3 className="font-semibold text-gray-600 mb-2">Objectif</h3>
               <p className="text-gray-700 mb-4">
                 Savoir calculer un produit de la forme P = ∏(k=1 à n) expression(k) en utilisant une méthode par boucle, et éventuellement une version vectorisée.
               </p>
@@ -236,13 +238,13 @@ const PythonAnalysePage = () => {
                       <div className="ml-4">P *= k</div>
                       <div>print(P)</div>
                     </div>
-                    <div className="p-3 bg-blue-50 border border-blue-200 rounded">
-                      <p className="text-blue-600">
+                    <div className="p-3 bg-gray-50 border border-gray-200 rounded">
+                      <p className="text-gray-600">
                         ✔️ Lisible, robuste. Adaptée à toutes les situations.
                       </p>
                     </div>
-                    <div className="p-3 bg-orange-50 border border-orange-200 rounded">
-                      <p className="text-orange-600">
+                    <div className="p-3 bg-gray-50 border border-gray-200 rounded">
+                      <p className="text-gray-700">
                         ⚠️ Ne jamais initialiser à 0 : le produit serait annulé.
                       </p>
                     </div>
@@ -283,13 +285,13 @@ const PythonAnalysePage = () => {
                       <div>P = np.prod(k)</div>
                       <div>print(P)</div>
                     </div>
-                    <div className="p-3 bg-blue-50 border border-blue-200 rounded">
-                      <p className="text-blue-600">
+                    <div className="p-3 bg-gray-50 border border-gray-200 rounded">
+                      <p className="text-gray-600">
                         ✔️ Plus rapide pour de grands n, mais moins souple pour des produits complexes.
                       </p>
                     </div>
-                    <div className="p-3 bg-orange-50 border border-orange-200 rounded">
-                      <p className="text-orange-600">
+                    <div className="p-3 bg-gray-50 border border-gray-200 rounded">
+                      <p className="text-gray-700">
                         ⚠️ À utiliser uniquement si les termes sont tous connus à l'avance.
                       </p>
                     </div>
@@ -364,7 +366,7 @@ const PythonAnalysePage = () => {
           </CardHeader>
           <CardContent>
             <div className="mb-4">
-              <h3 className="font-semibold text-blue-600 mb-2">Objectif</h3>
+              <h3 className="font-semibold text-gray-600 mb-2">Objectif</h3>
               <p className="text-gray-700 mb-4">
                 Savoir simuler et analyser une suite définie par récurrence, en Python. 
                 Utiliser les bons algorithmes selon le type d'exercice.
@@ -565,7 +567,7 @@ const PythonAnalysePage = () => {
           </CardHeader>
           <CardContent>
             <div className="mb-4">
-              <h3 className="font-semibold text-blue-600 mb-2">Objectif</h3>
+              <h3 className="font-semibold text-gray-600 mb-2">Objectif</h3>
               <p className="text-gray-700 mb-4">
                 Maîtriser les fonctions mathématiques essentielles et les constantes prédéfinies de NumPy 
                 pour les calculs d'analyse numérique.
@@ -694,7 +696,7 @@ const PythonAnalysePage = () => {
           </CardHeader>
           <CardContent>
             <div className="mb-4">
-              <h3 className="font-semibold text-blue-600 mb-2">Objectif</h3>
+              <h3 className="font-semibold text-gray-600 mb-2">Objectif</h3>
               <p className="text-gray-700 mb-4">
                 Savoir créer ses propres fonctions Python pour structurer et réutiliser le code dans les calculs d'analyse.
               </p>
@@ -713,7 +715,7 @@ const PythonAnalysePage = () => {
                       <div className="ml-4">return resultat</div>
                     </div>
                     <div className="space-y-2">
-                      <p className="font-semibold text-blue-600">Points importants :</p>
+                      <p className="font-semibold text-gray-600">Points importants :</p>
                       <ul className="space-y-1 ml-4 text-sm">
                         <li>• Le corps est indenté (4 espaces recommandés)</li>
                         <li>• Toujours fournir une docstring courte</li>
@@ -795,18 +797,18 @@ const PythonAnalysePage = () => {
                 <AccordionTrigger className="text-gray-600">Bonnes pratiques</AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-3">
-                    <div className="p-3 bg-blue-50 border border-blue-200 rounded">
-                      <p className="text-blue-600 font-semibold">✔️ À faire :</p>
-                      <ul className="text-blue-600 text-sm mt-2 space-y-1">
+                    <div className="p-3 bg-gray-50 border border-gray-200 rounded">
+                      <p className="text-gray-600 font-semibold">✔️ À faire :</p>
+                      <ul className="text-gray-600 text-sm mt-2 space-y-1">
                         <li>• Noms de fonctions explicites</li>
                         <li>• Docstring claire et concise</li>
                         <li>• Indentation cohérente (4 espaces)</li>
                         <li>• Toujours un return</li>
                       </ul>
                     </div>
-                    <div className="p-3 bg-orange-50 border border-orange-200 rounded">
-                      <p className="text-orange-600 font-semibold">❌ À éviter :</p>
-                      <ul className="text-orange-600 text-sm mt-2 space-y-1">
+                    <div className="p-3 bg-gray-50 border border-gray-200 rounded">
+                      <p className="text-gray-700 font-semibold">❌ À éviter :</p>
+                      <ul className="text-gray-700 text-sm mt-2 space-y-1">
                         <li>• Fonctions sans docstring</li>
                         <li>• Oublier le return</li>
                         <li>• Indentation incorrecte</li>
@@ -821,13 +823,13 @@ const PythonAnalysePage = () => {
         </Card>
 
         {/* Méthode de dichotomie */}
-        <Card className="mb-8 border-blue-200 bg-gradient-to-br from-blue-50 to-violet-50">
+        <Card className="mb-8 border-gray-200 bg-gray-50">
           <CardHeader>
-            <CardTitle className="text-xl text-blue-700">6. MÉTHODE DE DICHOTOMIE</CardTitle>
+            <CardTitle className="text-xl text-gray-700">6. MÉTHODE DE DICHOTOMIE</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="mb-4">
-              <h3 className="font-semibold text-blue-600 mb-2">Objectif</h3>
+              <h3 className="font-semibold text-gray-600 mb-2">Objectif</h3>
               <p className="text-gray-700 mb-4">
                 Savoir implémenter en Python une méthode rapide et rigoureuse pour approximer une racine réelle 
                 d'une équation f(x) = 0 sur un intervalle donné.
@@ -836,7 +838,7 @@ const PythonAnalysePage = () => {
 
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="principe-mathematique">
-                <AccordionTrigger className="text-blue-600">Principe mathématique</AccordionTrigger>
+                <AccordionTrigger className="text-gray-600">Principe mathématique</AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-3">
                     <p>La méthode de dichotomie repose sur :</p>
@@ -844,8 +846,8 @@ const PythonAnalysePage = () => {
                       <li>• <strong>le théorème des valeurs intermédiaires :</strong> si f(a)·f(b) {'<'} 0, alors f s'annule entre a et b.</li>
                       <li>• <strong>une recherche par découpage successif :</strong> on remplace [a,b] par la moitié où le signe change.</li>
                     </ul>
-                    <div className="p-3 bg-orange-50 border border-orange-200 rounded">
-                      <p className="text-orange-600 font-semibold">
+                    <div className="p-3 bg-gray-50 border border-gray-200 rounded">
+                      <p className="text-gray-700 font-semibold">
                         Condition obligatoire : f(a)·f(b) {'<'} 0 (changement de signe)
                       </p>
                     </div>
@@ -854,7 +856,7 @@ const PythonAnalysePage = () => {
               </AccordionItem>
 
               <AccordionItem value="algorithme-python">
-                <AccordionTrigger className="text-blue-600">Algorithme Python – version commentée</AccordionTrigger>
+                <AccordionTrigger className="text-gray-600">Algorithme Python – version commentée</AccordionTrigger>
                 <AccordionContent>
                   <div className="bg-gray-50 p-4 rounded font-mono text-sm">
                     <div>def dichotomie(f, a, b, precision=1e-6):</div>
@@ -871,7 +873,7 @@ const PythonAnalysePage = () => {
               </AccordionItem>
 
               <AccordionItem value="explication-ligne">
-                <AccordionTrigger className="text-blue-600"> Explication ligne par ligne</AccordionTrigger>
+                <AccordionTrigger className="text-gray-600"> Explication ligne par ligne</AccordionTrigger>
                 <AccordionContent>
                   <Table>
                     <TableHeader>
@@ -911,7 +913,7 @@ const PythonAnalysePage = () => {
               </AccordionItem>
 
               <AccordionItem value="exemple-utilisation">
-                <AccordionTrigger className="text-blue-600"> Exemple d'utilisation</AccordionTrigger>
+                <AccordionTrigger className="text-gray-600"> Exemple d'utilisation</AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-3">
                     <div>
@@ -933,7 +935,7 @@ const PythonAnalysePage = () => {
         </Card>
 
       {/* Quiz Section */}
-      <PythonModuleQuiz title="Quiz pratique - Module 2" questions={analyseQuizQuestions} moduleColor="blue" />
+      <PythonModuleQuiz title="Quiz pratique - Module 2" questions={analyseQuizQuestions} moduleColor="gray" />
 
         {/* Navigation vers les exercices */}
         <ModuleNavigationCards 
@@ -941,7 +943,7 @@ const PythonAnalysePage = () => {
             id: 2,
             title: "Analyse",
             slug: "analyse",
-            color: "blue"
+            color: "gray"
           }} 
           isExercisePage={false} 
         />

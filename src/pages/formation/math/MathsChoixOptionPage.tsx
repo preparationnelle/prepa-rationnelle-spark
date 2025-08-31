@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ChevronRight, Home, BookOpen, Calculator, BookMarked, Target } from 'lucide-react';
+import { ChevronRight, Home, BookOpen, Calculator, BookMarked, Award, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -17,14 +17,13 @@ const MathsChoixOptionPage = () => {
         if (user) {
           const { data: preference } = await (supabase as any)
             .from('user_preferences')
-            .select('math_option')
+            .select('math_option, math_year')
             .eq('user_id', user.id)
             .single();
 
-          if (preference?.math_option) {
-            navigate(preference.math_option === 'approfondies'
-              ? '/formation/maths-approfondies'
-              : '/formation/maths-appliquees');
+          if (preference?.math_option && preference?.math_year) {
+            const route = `/formation/maths-${preference.math_year}-${preference.math_option}`;
+            navigate(route);
           }
         }
       } catch (error) {
@@ -35,11 +34,10 @@ const MathsChoixOptionPage = () => {
     checkUserPreference();
   }, [navigate]);
 
-  const handleOptionChoice = (option: 'approfondies' | 'appliquees') => {
+  const handleOptionChoice = (year: 'premiere' | 'deuxieme', option: 'approfondies' | 'appliquees') => {
+    const route = `/formation/maths-${year}-${option}`;
     // Naviguer immédiatement
-    navigate(option === 'approfondies'
-      ? '/formation/maths-approfondies'
-      : '/formation/maths-appliquees');
+    navigate(route);
     // Enregistrer la préférence en base en arrière-plan
     supabase.auth.getUser().then(({ data: { user } }) => {
       if (user) {
@@ -48,22 +46,46 @@ const MathsChoixOptionPage = () => {
           .upsert({
             user_id: user.id,
             math_option: option,
+            math_year: year,
             updated_at: new Date().toISOString()
           });
       }
     });
   };
 
-  const mathOptions = [
+  // Tous les modules regroupés pour une disposition en grille 2x2
+  const allModules = [
     {
-      id: 'approfondies',
-      title: 'Maths Approfondies',
-      description: 'Programme complet pour la voie approfondie en mathématiques, avec un focus sur les démonstrations et les concepts théoriques.',
-      icon: BookOpen,
+      id: 'premiere-appliquees',
+      year: 'premiere',
+      type: 'appliquees',
+      title: 'Maths Appliquées - 1ère année',
+      subtitle: 'Voie pratique',
+      description: 'Formation axée sur les applications pratiques des mathématiques, avec un accent sur les méthodes de résolution et les cas concrets.',
+      icon: Calculator,
       color: 'bg-blue-600',
       bgColor: 'bg-blue-50',
       borderColor: 'border-blue-200',
       buttonColor: 'bg-blue-600 hover:bg-blue-700',
+      features: [
+        'Applications pratiques',
+        'Méthodes de résolution',
+        'Cas concrets',
+        'Préparation ECG appliquée'
+      ]
+    },
+    {
+      id: 'premiere-approfondies',
+      year: 'premiere',
+      type: 'approfondies',
+      title: 'Maths Approfondies - 1ère année',
+      subtitle: 'Voie théorique',
+      description: 'Programme complet pour la voie approfondie en mathématiques, avec un focus sur les démonstrations et les concepts théoriques.',
+      icon: BookOpen,
+      color: 'bg-orange-600',
+      bgColor: 'bg-orange-50',
+      borderColor: 'border-orange-200',
+      buttonColor: 'bg-orange-600 hover:bg-orange-700',
       features: [
         'Démonstrations rigoureuses',
         'Concepts théoriques avancés',
@@ -72,19 +94,41 @@ const MathsChoixOptionPage = () => {
       ]
     },
     {
-      id: 'appliquees',
-      title: 'Maths Appliquées',
-      description: 'Formation axée sur les applications pratiques des mathématiques, avec un accent sur les méthodes de résolution et les cas concrets.',
-      icon: Calculator,
+      id: 'deuxieme-appliquees',
+      year: 'deuxieme',
+      type: 'appliquees',
+      title: 'Maths Appliquées - 2ème année',
+      subtitle: 'Voie appliquée avancée',
+      description: 'Deuxième année appliquée avec focus sur les applications industrielles et résolution de problèmes complexes.',
+      icon: TrendingUp,
+      color: 'bg-blue-600',
+      bgColor: 'bg-blue-50',
+      borderColor: 'border-blue-200',
+      buttonColor: 'bg-blue-600 hover:bg-blue-700',
+      features: [
+        'Applications industrielles',
+        'Problèmes complexes',
+        'Outils informatiques avancés',
+        'Préparation ECG appliquée'
+      ]
+    },
+    {
+      id: 'deuxieme-approfondies',
+      year: 'deuxieme',
+      type: 'approfondies',
+      title: 'Maths Approfondies - 2ème année',
+      subtitle: 'Voie théorique avancée',
+      description: 'Formation approfondie de deuxième année avec concepts mathématiques complexes et préparation intensive aux concours ECG.',
+      icon: Award,
       color: 'bg-orange-600',
       bgColor: 'bg-orange-50',
       borderColor: 'border-orange-200',
       buttonColor: 'bg-orange-600 hover:bg-orange-700',
       features: [
-        'Applications pratiques',
-        'Méthodes de résolution',
-        'Cas concrets',
-        'Préparation ECG appliquée'
+        'Concepts avancés',
+        'Préparation concours intensive',
+        'Démonstrations complexes',
+        'ECG niveau expert'
       ]
     }
   ];
@@ -134,140 +178,102 @@ const MathsChoixOptionPage = () => {
               Toutes les formations
             </Link>
             <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Choix option Maths</span>
+            <span className="text-foreground font-medium">Choix parcours Maths</span>
           </div>
         </div>
       </nav>
 
       <div className="container mx-auto py-8 px-4">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4">Choisissez votre voie en mathématiques</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
-            Sélectionnez l'option qui correspond à votre parcours en prépa ECG.
-            Ce choix sera mémorisé pour vos prochaines visites.
+        <div className="text-center mb-16">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-800">Choisissez votre parcours en mathématiques</h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Sélectionnez votre formation selon votre année et votre approche préférée.
           </p>
-          <Badge variant="outline" className="text-blue-600 border-blue-200 bg-blue-50/50">
-            Prépa ECG - Mathématiques
-          </Badge>
         </div>
 
-        {/* Main Options */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
-          {mathOptions.map((option) => (
-            <Link
-              key={option.id}
-              to="#"
-              onClick={(e) => {
-                e.preventDefault();
-                handleOptionChoice(option.id as 'approfondies' | 'appliquees');
-              }}
-              className={`bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-300 group block border-2 ${option.borderColor} hover:border-orange-200`}
-            >
-              <div className={`w-20 h-20 ${option.color} rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg group-hover:shadow-xl transition-all duration-300`}>
-                <option.icon className="h-10 w-10 text-white" />
-              </div>
-              <h3 className="font-semibold text-2xl mb-4 text-center">{option.title}</h3>
-              <p className="text-gray-600 mb-6 text-center leading-relaxed text-lg">{option.description}</p>
+        {/* Les 4 modules principaux - Style comme la page d'accueil */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-16">
+          {allModules.map((module) => {
+            const isAppliquees = module.type === 'appliquees';
+            const iconBgColor = isAppliquees ? 'bg-blue-100' : 'bg-orange-100';
+            const iconColor = isAppliquees ? 'text-blue-600' : 'text-orange-600';
+            const borderHover = isAppliquees ? 'hover:border-blue-200' : 'hover:border-orange-200';
+            const featureColor = isAppliquees ? 'text-blue-600' : 'text-orange-600';
 
-              <div className="grid grid-cols-2 gap-3 mb-6">
-                {option.features.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-2">
-                    <div className={`w-2 h-2 rounded-full ${option.color.replace('bg-', 'bg-')}`}></div>
-                    <span className="text-sm text-gray-700">{feature}</span>
-                  </div>
-                ))}
-              </div>
-
-              <Button className={`w-full ${option.buttonColor} text-white font-medium transition-all duration-300 group-hover:scale-105 shadow-md hover:shadow-lg`}>
-                <option.icon className="mr-2 h-4 w-4" />
-                Accéder à la formation
-              </Button>
-            </Link>
-          ))}
-        </div>
-
-        {/* Additional Modules */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-center mb-8">Modules complémentaires</h2>
-          <div className="grid gap-6 max-w-4xl mx-auto">
-            {additionalModules.map((module, index) => (
-              <Card
-                key={index}
-                className={`bg-gradient-to-r ${module.color === 'bg-blue-600' ? 'from-blue-50 to-indigo-50' : 'from-orange-50 to-red-50'} border-2 ${module.color === 'bg-blue-600' ? 'border-blue-200' : 'border-orange-200'} shadow-lg cursor-pointer hover:shadow-xl transition-all duration-300`}
-                onClick={() => navigate(module.route)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && navigate(module.route)}
+            return (
+              <Link
+                key={module.id}
+                to="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleOptionChoice(module.year as 'premiere' | 'deuxieme', module.type as 'approfondies' | 'appliquees');
+                }}
+                className={`bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent ${borderHover} flex flex-col items-center text-center group`}
               >
-                <CardHeader>
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className={`p-4 rounded-xl ${module.color} text-white shadow-lg`}>
-                      <module.icon className="h-8 w-8" />
+                <div className={`w-16 h-16 ${iconBgColor} rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                  <module.icon className={`h-8 w-8 ${iconColor}`} />
+                </div>
+                <h3 className="font-semibold text-xl mb-2">{module.title}</h3>
+                <p className="text-sm text-gray-600 mb-3">{module.description}</p>
+                <div className="space-y-1 text-xs text-left w-full mb-4">
+                  {module.features.slice(0, 3).map((feature, index) => (
+                    <div key={index} className={`flex items-center ${featureColor}`}>
+                      <span className="mr-2">✓</span>
+                      <span>{feature}</span>
                     </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <CardTitle className="text-2xl font-bold text-gray-800">
-                          {module.title}
-                        </CardTitle>
-                        <Badge variant="outline" className={`${module.color === 'bg-blue-600' ? 'text-blue-600 border-blue-200 bg-blue-50/50' : 'text-orange-600 border-orange-200 bg-orange-50/50'}`}>
-                          {module.badge}
-                        </Badge>
-                      </div>
-                      <p className="text-gray-700 text-lg">{module.description}</p>
+                  ))}
+                </div>
+                <Button className={`w-full ${isAppliquees ? 'bg-blue-600 hover:bg-blue-700' : 'bg-orange-600 hover:bg-orange-700'} text-white font-medium transition-colors`}>
+                  Accéder à la formation
+                  <ChevronRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Modules complémentaires - Style comme la page d'accueil */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-center mb-8 text-gray-800">Modules complémentaires</h2>
+          <div className="grid gap-6 max-w-4xl mx-auto">
+            {additionalModules.map((module, index) => {
+              const isBlue = module.color === 'bg-blue-600';
+              const iconBgColor = isBlue ? 'bg-blue-100' : 'bg-orange-100';
+              const iconColor = isBlue ? 'text-blue-600' : 'text-orange-600';
+              const borderHover = isBlue ? 'hover:border-blue-200' : 'hover:border-orange-200';
+              const badgeColor = isBlue ? 'text-blue-700 border-blue-200 bg-blue-50' : 'text-orange-700 border-orange-200 bg-orange-50';
+
+              return (
+                <div
+                  key={index}
+                  className={`bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent ${borderHover} flex flex-col items-center text-center group cursor-pointer`}
+                  onClick={() => navigate(module.route)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === 'Enter' && navigate(module.route)}
+                >
+                  <div className="flex items-center justify-between w-full mb-4">
+                    <div className={`w-16 h-16 ${iconBgColor} rounded-full flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                      <module.icon className={`h-8 w-8 ${iconColor}`} />
                     </div>
+                    <Badge variant="outline" className={`${badgeColor} text-xs px-3 py-1`}>
+                      {module.badge}
+                    </Badge>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <Button
-                    className={`${module.color === 'bg-blue-600' ? 'bg-blue-600 hover:bg-blue-700' : 'bg-orange-600 hover:bg-orange-700'} text-white font-semibold py-3 px-8 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg`}
-                  >
-                    <Target className="mr-2 h-4 w-4" />
+                  <h3 className="font-semibold text-xl mb-3 text-center">{module.title}</h3>
+                  <p className="text-sm text-gray-600 mb-4 text-center">{module.description}</p>
+                  <Button className={`w-full ${isBlue ? 'bg-blue-600 hover:bg-blue-700' : 'bg-orange-600 hover:bg-orange-700'} text-white font-medium transition-colors`}>
                     {module.buttonText}
+                    <ChevronRight className="ml-2 h-4 w-4" />
                   </Button>
-                </CardContent>
-              </Card>
-            ))}
+                </div>
+              );
+            })}
           </div>
         </div>
 
-        {/* Information Section */}
-        <Card className="border border-gray-200 bg-white/60 shadow-sm max-w-4xl mx-auto">
-          <CardHeader>
-            <CardTitle className="text-xl flex items-center gap-2 text-gray-800">
-              <BookOpen className="h-5 w-5 text-orange-600" />
-              Informations importantes
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="text-gray-700 space-y-4">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="space-y-3">
-                <h3 className="font-semibold text-gray-800 mb-2 flex items-center gap-2">
-                  <Target className="h-4 w-4 text-orange-600" />
-                  Choix de voie
-                </h3>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• Voie approfondie : démonstrations théoriques</li>
-                  <li>• Voie appliquée : méthodes pratiques</li>
-                  <li>• Choix mémorisé automatiquement</li>
-                  <li>• Possibilité de changer à tout moment</li>
-                </ul>
-              </div>
-              <div className="space-y-3">
-                <h3 className="font-semibold text-gray-800 mb-2 flex items-center gap-2">
-                  <Calculator className="h-4 w-4 text-orange-600" />
-                  Préparation ECG
-                </h3>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• Contenu adapté aux concours</li>
-                  <li>• Exercices progressifs</li>
-                  <li>• Méthodologie de résolution</li>
-                  <li>• Suivi personnalisé</li>
-                </ul>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+
       </div>
     </div>
   );
