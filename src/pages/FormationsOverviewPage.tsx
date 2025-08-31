@@ -27,17 +27,17 @@ const FormationsOverviewPage = () => {
           <h1 className="text-3xl md:text-4xl font-bold text-center mb-4">
             Toutes nos <span className="gradient-text">formations</span>
           </h1>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto text-lg">
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto text-lg whitespace-nowrap">
             Formations conçues spécifiquement pour les étudiants en prépa ECG, avec méthodes éprouvées et accompagnement personnalisé.
           </p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {/* Formation Maths */}
             <Link to="/formation/maths" className="group">
-              <Card className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-yellow-200">
+              <Card className="h-full bg-white hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-yellow-300 hover:bg-yellow-50">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center group-hover:bg-yellow-300 transition-colors duration-300">
                       <Calculator className="h-6 w-6 text-yellow-600" />
                     </div>
                     <CardTitle className="text-xl group-hover:text-yellow-600 transition-colors">
@@ -62,10 +62,10 @@ const FormationsOverviewPage = () => {
             </Link>
             {/* Formation Python */}
             <Link to="/formation" className="group">
-              <Card className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-blue-200">
+              <Card className="h-full bg-white hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-blue-300 hover:bg-blue-50">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-300 transition-colors duration-300">
                       <Code className="h-6 w-6 text-blue-600" />
                     </div>
                     <CardTitle className="text-xl group-hover:text-blue-600 transition-colors">
@@ -91,10 +91,10 @@ const FormationsOverviewPage = () => {
 
             {/* Formation Anglais */}
             <Link to="/formation/anglais" className="group">
-              <Card className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-green-200">
+              <Card className="h-full bg-white hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-green-300 hover:bg-green-50">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center group-hover:bg-green-300 transition-colors duration-300">
                       <Languages className="h-6 w-6 text-green-600" />
                     </div>
                     <CardTitle className="text-xl group-hover:text-green-600 transition-colors">
@@ -120,13 +120,13 @@ const FormationsOverviewPage = () => {
 
             {/* Formation Espagnol */}
             <Link to="/formation/espagnol" className="group">
-              <Card className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-orange-200">
+              <Card className="h-full bg-white hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-pink-300 hover:bg-pink-50">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                      <Languages className="h-6 w-6 text-orange-600" />
+                    <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center group-hover:bg-pink-300 transition-colors duration-300">
+                      <Languages className="h-6 w-6 text-pink-600" />
                     </div>
-                    <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
+                    <CardTitle className="text-xl group-hover:text-pink-600 transition-colors">
                       Espagnol ECG
                     </CardTitle>
                   </div>
@@ -136,11 +136,11 @@ const FormationsOverviewPage = () => {
                     Perfectionnez votre espagnol avec méthodes ciblées, grammaire avancée et préparation intensive aux concours.
                   </p>
                   <div className="space-y-2 mb-4">
-                    <div className="text-sm text-orange-600">✓ Grammaire et conjugaison</div>
-                    <div className="text-sm text-orange-600">✓ Thèmes et versions</div>
-                    <div className="text-sm text-orange-600">✓ Expression écrite et orale</div>
+                    <div className="text-sm text-pink-600">✓ Grammaire et conjugaison</div>
+                    <div className="text-sm text-pink-600">✓ Thèmes et versions</div>
+                    <div className="text-sm text-pink-600">✓ Expression écrite et orale</div>
                   </div>
-                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full">
+                  <Button variant="ghost" className="text-pink-600 group-hover:bg-pink-50 w-full">
                     Voir la formation →
                   </Button>
                 </CardContent>
@@ -149,10 +149,10 @@ const FormationsOverviewPage = () => {
 
             {/* Formation Allemand */}
             <Link to="/formation/allemand" className="group">
-              <Card className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-red-200">
+              <Card className="h-full bg-white hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-red-300 hover:bg-red-50">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center group-hover:bg-red-300 transition-colors duration-300">
                       <Languages className="h-6 w-6 text-red-600" />
                     </div>
                     <CardTitle className="text-xl group-hover:text-red-600 transition-colors">
@@ -178,10 +178,10 @@ const FormationsOverviewPage = () => {
 
             {/* Formation Géopolitique */}
             <Link to="/formation/geopolitique" className="group">
-              <Card className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-orange-200">
+              <Card className="h-full bg-white hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-orange-300 hover:bg-orange-50">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-300 transition-colors duration-300">
                       <Globe className="h-6 w-6 text-orange-600" />
                     </div>
                     <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
@@ -207,10 +207,10 @@ const FormationsOverviewPage = () => {
 
             {/* Formation Culture Générale */}
             <Link to="/formation/culture-generale" className="group">
-              <Card className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-purple-200">
+              <Card className="h-full bg-white hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-purple-300 hover:bg-purple-50">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center group-hover:bg-purple-300 transition-colors duration-300">
                       <BookOpen className="h-6 w-6 text-purple-600" />
                     </div>
                     <CardTitle className="text-xl group-hover:text-purple-600 transition-colors">
@@ -236,10 +236,10 @@ const FormationsOverviewPage = () => {
 
             {/* Formation Synthèse de Texte */}
             <Link to="/formation/synthese-texte" className="group">
-              <Card className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent group-hover:border-teal-200">
+              <Card className="h-full bg-white hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-teal-300 hover:bg-teal-50">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center group-hover:bg-teal-300 transition-colors duration-300">
                       <FileText className="h-6 w-6 text-teal-600" />
                     </div>
                     <CardTitle className="text-xl group-hover:text-teal-600 transition-colors">

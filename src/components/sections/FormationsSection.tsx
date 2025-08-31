@@ -12,7 +12,7 @@ export const FormationsSection = () => {
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4">
           Nos <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">formations spécialisées</span>
         </h2>
-        <p className="text-center text-gray-600 mb-8 sm:mb-12 max-w-2xl mx-auto text-base sm:text-lg">
+        <p className="text-center text-gray-600 mb-8 sm:mb-12 max-w-2xl mx-auto text-base sm:text-lg whitespace-nowrap">
           Formations conçues spécifiquement pour les étudiants en prépa ECG, avec méthodes éprouvées et accompagnement personnalisé.
         </p>
         

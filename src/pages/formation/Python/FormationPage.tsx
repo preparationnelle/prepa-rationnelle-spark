@@ -72,9 +72,19 @@ const FormationPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white relative overflow-hidden">
+      {/* Floating bubbles - Design décoratif comme la landing page */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-5 animate-pulse -z-10"></div>
+      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-5 animate-pulse-slow -z-10"></div>
+      <div className="absolute top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-3 animate-pulse-slow -z-10"></div>
+      <div className="absolute bottom-40 left-20 w-56 h-56 bg-orange-200 rounded-full opacity-3 animate-pulse -z-10"></div>
+      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-5 animate-pulse-slow -z-10"></div>
+      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-3 animate-pulse -z-10"></div>
+      <div className="absolute top-1/2 left-10 w-24 h-24 bg-orange-100 rounded-full opacity-5 animate-pulse-slow -z-10"></div>
+      <div className="absolute bottom-1/3 right-5 w-36 h-36 bg-blue-50 rounded-full opacity-3 animate-pulse -z-10"></div>
+
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -82,24 +92,27 @@ const FormationPage = () => {
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Formation Python</span>
+            <span className="text-foreground font-medium">Formation <span className="text-orange-600">Python</span></span>
           </div>
         </div>
       </nav>
 
-      <div className="py-8 bg-accent">
+      <div className="py-8 bg-white relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h1 className="text-3xl md:text-4xl font-bold text-center mb-4">
-              Formation <span className="text-gray-700">Python ECG</span>
+              Formation <span className="text-orange-600">Python</span> <span className="text-gray-700">ECG</span>
             </h1>
-            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto text-lg">
+            <p className="text-center text-gray-600 mb-12 max-w-4xl mx-auto text-lg whitespace-nowrap">
               Maîtrisez Python pour les concours : 4 modules progressifs avec exercices pratiques et coaching personnalisé.
             </p>
 
             <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
               {pythonModules.map((module) => (
-                <Card key={module.id} className="h-full bg-white hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-gray-300">
+                <Link key={module.id} to={module.courseLink} className="block h-full">
+                  <Card className="h-full bg-white shadow-xl shadow-blue-100/50 hover:shadow-orange-100/50 transition-all duration-500 border-2 border-blue-200 hover:border-orange-200 bg-blue-50/30 hover:bg-orange-50/30 relative overflow-hidden group cursor-pointer">
+                    {/* Effet de surbrillance bleu → orange au survol */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent group-hover:from-orange-50/20 group-hover:to-orange-100/10 opacity-100 transition-all duration-500 pointer-events-none"></div>
                   <CardHeader>
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
@@ -127,22 +140,23 @@ const FormationPage = () => {
                             Voir le cours
                           </Button>
                         </Link>
-                        <Link to={module.exercisesLink} className="flex-1">
-                          <Button size="default" className="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold">
-                            <Calculator className="h-4 w-4 mr-2" />
-                            Exercices
+                        <Link to={`${module.exercisesLink}?quiz=true`} className="flex-1">
+                          <Button variant="outline" size="sm" className="w-full border-gray-200 text-gray-600 hover:bg-gray-50">
+                            <HelpCircle className="h-3 w-3 mr-2" />
+                            Quiz 20 questions
                           </Button>
                         </Link>
                       </div>
-                      <Link to={`${module.exercisesLink}?quiz=true`} className="block">
-                        <Button variant="outline" size="sm" className="w-full border-gray-200 text-gray-600 hover:bg-gray-50 text-sm">
-                          <HelpCircle className="h-3 w-3 mr-2" />
-                          Quiz 20 questions
+                      <Link to={module.exercisesLink} className="block">
+                        <Button size="default" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold">
+                          <Calculator className="h-4 w-4 mr-2" />
+                          Exercices
                         </Button>
                       </Link>
                     </div>
                   </CardContent>
                 </Card>
+                </Link>
               ))}
             </div>
           </div>

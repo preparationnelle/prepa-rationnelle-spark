@@ -32,7 +32,9 @@ const FormationAnglaisPage = () => {
               Toutes les formations
             </Link>
             <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Formation Anglais ECG</span>
+            <span className="text-foreground font-medium">
+              Formation <span className="text-orange-600">Anglais</span> ECG
+            </span>
           </div>
         </div>
       </nav>
@@ -42,9 +44,9 @@ const FormationAnglaisPage = () => {
         <div className="text-center mb-16">
             {/* Main Title */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent font-bold">
-              Formation Anglais ECG
-            </span>
+            <span className="text-black">Formation </span>
+            <span className="text-orange-600">Anglais</span>
+            <span className="text-black"> ECG</span>
           </h1>
 
           {/* Subtitle */}
@@ -60,7 +62,7 @@ const FormationAnglaisPage = () => {
           {/* Vocabulaire Anglais */}
           <Link
             to="/formation/anglais/civilisation/politics/vocabulary"
-            className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[420px] justify-between hover:scale-[1.02] transform"
+            className="bg-white rounded-xl p-8 shadow-md hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 group flex flex-col items-center text-center min-h-[420px] justify-between border border-transparent hover:border-orange-300 hover:bg-orange-50 transform"
           >
             <div className="flex flex-col items-center">
               <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-8 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
@@ -91,7 +93,7 @@ const FormationAnglaisPage = () => {
           {/* Grammaire en Anglais */}
           <Link
             to="/formation/anglais/grammaire"
-            className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[420px] justify-between hover:scale-[1.02] transform"
+            className="bg-white rounded-xl p-8 shadow-md hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 group flex flex-col items-center text-center min-h-[420px] justify-between border border-transparent hover:border-orange-300 hover:bg-orange-50 transform"
           >
             <div className="flex flex-col items-center">
               <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-8 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
@@ -123,7 +125,7 @@ const FormationAnglaisPage = () => {
           {/* Civilisation Anglophone */}
           <Link
             to="/formation/anglais/civilisation"
-            className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[420px] justify-between hover:scale-[1.02] transform"
+            className="bg-white rounded-xl p-8 shadow-md hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 group flex flex-col items-center text-center min-h-[420px] justify-between border border-transparent hover:border-orange-300 hover:bg-orange-50 transform"
           >
             <div className="flex flex-col items-center">
               <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-8 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
@@ -155,7 +157,7 @@ const FormationAnglaisPage = () => {
           {/* Méthodologie Complète */}
           <Link
             to="/formation/anglais/methodologie-complete"
-            className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[420px] justify-between hover:scale-[1.02] transform"
+            className="bg-white rounded-xl p-8 shadow-md hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 group flex flex-col items-center text-center min-h-[420px] justify-between border border-transparent hover:border-orange-300 hover:bg-orange-50 transform"
           >
             <div className="flex flex-col items-center">
               <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-8 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">

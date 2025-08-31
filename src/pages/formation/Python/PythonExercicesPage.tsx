@@ -59,7 +59,7 @@ const PythonExercicesPage: React.FC = () => {
               Toutes les formations
             </Link>
             <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Formation Python ECG</span>
+            <span className="text-foreground font-medium">Formation <span className="text-orange-600">Python</span> ECG</span>
           </div>
         </div>
       </nav>

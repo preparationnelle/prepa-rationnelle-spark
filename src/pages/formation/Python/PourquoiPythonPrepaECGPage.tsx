@@ -29,7 +29,7 @@ const PourquoiPythonPrepaECGPage = () => {
               Toutes les formations
             </Link>
             <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Formation Python ECG</span>
+            <span className="text-foreground font-medium">Formation <span className="text-orange-600">Python</span> ECG</span>
           </div>
         </div>
       </nav>
@@ -75,7 +75,7 @@ const PourquoiPythonPrepaECGPage = () => {
               <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
                 <Code className="h-6 w-6 text-blue-600" />
               </div>
-              <CardTitle className="text-2xl">Formation Python ECG</CardTitle>
+              <CardTitle className="text-2xl">Formation <span className="text-orange-600">Python</span> ECG</CardTitle>
             </div>
             <p className="text-gray-600 text-lg">
               Découvrez notre formation complète Python structurée en 4 modules progressifs avec exercices pratiques

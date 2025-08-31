@@ -51,7 +51,7 @@ const PoliticsPage = () => {
             </Link>
             <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
             <Link to="/formation/anglais" className="hover:text-foreground transition-colors">
-              Formation Anglais
+              Formation <span className="text-orange-600">Anglais</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
             <span className="text-foreground font-medium">Politics (US & UK)</span>

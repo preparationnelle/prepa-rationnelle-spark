@@ -164,9 +164,19 @@ const MathsChoixOptionPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white relative overflow-hidden">
+      {/* Floating bubbles - Design décoratif comme la landing page */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-5 animate-pulse -z-10"></div>
+      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-5 animate-pulse-slow -z-10"></div>
+      <div className="absolute top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-3 animate-pulse-slow -z-10"></div>
+      <div className="absolute bottom-40 left-20 w-56 h-56 bg-orange-200 rounded-full opacity-3 animate-pulse -z-10"></div>
+      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-5 animate-pulse-slow -z-10"></div>
+      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-3 animate-pulse -z-10"></div>
+      <div className="absolute top-1/2 left-10 w-24 h-24 bg-orange-100 rounded-full opacity-5 animate-pulse-slow -z-10"></div>
+      <div className="absolute bottom-1/3 right-5 w-36 h-36 bg-blue-50 rounded-full opacity-3 animate-pulse -z-10"></div>
+
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -198,36 +208,38 @@ const MathsChoixOptionPage = () => {
             const isAppliquees = module.type === 'appliquees';
             const iconBgColor = isAppliquees ? 'bg-blue-100' : 'bg-orange-100';
             const iconColor = isAppliquees ? 'text-blue-600' : 'text-orange-600';
-            const borderHover = isAppliquees ? 'hover:border-blue-200' : 'hover:border-orange-200';
             const featureColor = isAppliquees ? 'text-blue-600' : 'text-orange-600';
+
+            const route = `/formation/maths-${module.year}-${module.type}`;
+            const bgColor = isAppliquees ? 'bg-blue-50' : 'bg-orange-50';
+            const borderColor = isAppliquees ? 'border-blue-200' : 'border-orange-200';
+            const shadowColor = isAppliquees ? 'shadow-blue-100/30' : 'shadow-orange-100/30';
 
             return (
               <Link
                 key={module.id}
-                to="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleOptionChoice(module.year as 'premiere' | 'deuxieme', module.type as 'approfondies' | 'appliquees');
-                }}
-                className={`bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent ${borderHover} flex flex-col items-center text-center group`}
+                to={route}
+                className="block h-full"
               >
-                <div className={`w-16 h-16 ${iconBgColor} rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                <div className={`h-full bg-white shadow-lg ${shadowColor} hover:shadow-xl transition-all duration-300 border-2 ${borderColor} ${bgColor} hover:bg-blue-50 rounded-xl p-6 relative overflow-hidden group cursor-pointer ${isAppliquees ? 'hover:bg-blue-100' : 'hover:bg-orange-100'}`}>
+                  <div className={`w-16 h-16 ${iconBgColor} rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform relative z-10`}>
                   <module.icon className={`h-8 w-8 ${iconColor}`} />
                 </div>
-                <h3 className="font-semibold text-xl mb-2">{module.title}</h3>
-                <p className="text-sm text-gray-600 mb-3">{module.description}</p>
-                <div className="space-y-1 text-xs text-left w-full mb-4">
-                  {module.features.slice(0, 3).map((feature, index) => (
-                    <div key={index} className={`flex items-center ${featureColor}`}>
-                      <span className="mr-2">✓</span>
-                      <span>{feature}</span>
-                    </div>
-                  ))}
+                  <h3 className="font-semibold text-xl mb-2 relative z-10">{module.title}</h3>
+                  <p className="text-sm text-gray-600 mb-3 relative z-10">{module.description}</p>
+                  <div className="space-y-1 text-xs text-left w-full mb-4 relative z-10">
+                    {module.features.slice(0, 3).map((feature, index) => (
+                      <div key={index} className={`flex items-center ${featureColor}`}>
+                        <span className="mr-2">✓</span>
+                        <span>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Button className={`w-full ${isAppliquees ? 'bg-blue-600 hover:bg-blue-700' : 'bg-orange-600 hover:bg-orange-700'} text-white font-bold transition-colors relative z-10`}>
+                    Accéder à la formation
+                    <ChevronRight className="ml-2 h-4 w-4" />
+                  </Button>
                 </div>
-                <Button className={`w-full ${isAppliquees ? 'bg-blue-600 hover:bg-blue-700' : 'bg-orange-600 hover:bg-orange-700'} text-white font-medium transition-colors`}>
-                  Accéder à la formation
-                  <ChevronRight className="ml-2 h-4 w-4" />
-                </Button>
               </Link>
             );
           })}
@@ -241,33 +253,34 @@ const MathsChoixOptionPage = () => {
               const isBlue = module.color === 'bg-blue-600';
               const iconBgColor = isBlue ? 'bg-blue-100' : 'bg-orange-100';
               const iconColor = isBlue ? 'text-blue-600' : 'text-orange-600';
-              const borderHover = isBlue ? 'hover:border-blue-200' : 'hover:border-orange-200';
               const badgeColor = isBlue ? 'text-blue-700 border-blue-200 bg-blue-50' : 'text-orange-700 border-orange-200 bg-orange-50';
+              const bgColor = isBlue ? 'bg-blue-50' : 'bg-orange-50';
+              const borderColor = isBlue ? 'border-blue-200' : 'border-orange-200';
+              const shadowColor = isBlue ? 'shadow-blue-100/30' : 'shadow-orange-100/30';
 
               return (
-                <div
+                <Link
                   key={index}
-                  className={`bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent ${borderHover} flex flex-col items-center text-center group cursor-pointer`}
-                  onClick={() => navigate(module.route)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => e.key === 'Enter' && navigate(module.route)}
+                  to={module.route}
+                  className="block"
                 >
-                  <div className="flex items-center justify-between w-full mb-4">
-                    <div className={`w-16 h-16 ${iconBgColor} rounded-full flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                      <module.icon className={`h-8 w-8 ${iconColor}`} />
+                  <div className={`bg-white shadow-lg ${shadowColor} hover:shadow-xl transition-all duration-300 border-2 ${borderColor} ${bgColor} rounded-xl p-6 relative overflow-hidden group cursor-pointer ${isBlue ? 'hover:bg-blue-100' : 'hover:bg-orange-100'}`}>
+                    <div className="flex items-center justify-between w-full mb-4 relative z-10">
+                      <div className={`w-16 h-16 ${iconBgColor} rounded-full flex items-center justify-center group-hover:scale-110 transition-transform relative z-10`}>
+                        <module.icon className={`h-8 w-8 ${iconColor}`} />
+                      </div>
+                      <Badge variant="outline" className={`${badgeColor} text-xs px-3 py-1 relative z-10`}>
+                        {module.badge}
+                      </Badge>
                     </div>
-                    <Badge variant="outline" className={`${badgeColor} text-xs px-3 py-1`}>
-                      {module.badge}
-                    </Badge>
+                    <h3 className="font-semibold text-xl mb-3 text-center relative z-10">{module.title}</h3>
+                    <p className="text-sm text-gray-600 mb-4 text-center relative z-10">{module.description}</p>
+                    <Button className={`w-full ${isBlue ? 'bg-blue-600 hover:bg-blue-700' : 'bg-orange-600 hover:bg-orange-700'} text-white font-bold transition-colors relative z-10`}>
+                      {module.buttonText}
+                      <ChevronRight className="ml-2 h-4 w-4" />
+                    </Button>
                   </div>
-                  <h3 className="font-semibold text-xl mb-3 text-center">{module.title}</h3>
-                  <p className="text-sm text-gray-600 mb-4 text-center">{module.description}</p>
-                  <Button className={`w-full ${isBlue ? 'bg-blue-600 hover:bg-blue-700' : 'bg-orange-600 hover:bg-orange-700'} text-white font-medium transition-colors`}>
-                    {module.buttonText}
-                    <ChevronRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </div>
+                </Link>
               );
             })}
           </div>

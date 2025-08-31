@@ -8,6 +8,7 @@ interface BreadcrumbItem {
   href?: string;
   icon?: React.ComponentType<{ className?: string }>;
   current?: boolean;
+  isPythonLabel?: boolean;
 }
 
 const PythonBreadcrumb: React.FC = () => {
@@ -20,7 +21,7 @@ const PythonBreadcrumb: React.FC = () => {
     const items: BreadcrumbItem[] = [
       { label: 'Accueil', href: '/', icon: Home },
       { label: 'Toutes les formations', href: '/formations', icon: BookOpen },
-      { label: 'Formation Python ECG', href: '/formation', icon: Code }
+      { label: 'Formation Python ECG', href: '/formation', icon: Code, isPythonLabel: true }
     ];
 
     // Python specific breadcrumbs
@@ -85,6 +86,17 @@ const PythonBreadcrumb: React.FC = () => {
 
   const breadcrumbs = getBreadcrumbs();
 
+  const renderLabel = (item: BreadcrumbItem) => {
+    if (item.isPythonLabel) {
+      return (
+        <span>
+          Formation <span className="text-orange-600">Python</span> ECG
+        </span>
+      );
+    }
+    return <span>{item.label}</span>;
+  };
+
   return (
     <nav className="sticky top-0 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40">
       <div className="container mx-auto px-4 py-2">
@@ -99,7 +111,7 @@ const PythonBreadcrumb: React.FC = () => {
                 className="flex items-center gap-1 hover:text-foreground transition-colors"
               >
                 {item.icon && <item.icon className="h-3 w-3" />}
-                <span>{item.label}</span>
+                {renderLabel(item)}
               </Link>
             ) : (
               <span
@@ -109,7 +121,7 @@ const PythonBreadcrumb: React.FC = () => {
                 )}
               >
                 {item.icon && <item.icon className="h-3 w-3" />}
-                <span>{item.label}</span>
+                {renderLabel(item)}
               </span>
             )}
           </div>
