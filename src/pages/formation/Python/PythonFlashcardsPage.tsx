@@ -194,11 +194,13 @@ const PythonFlashcardsPage = () => {
         {/* En-tête moderne - masqué en plein écran */}
         {!isFullscreen && (
           <div className="text-center mb-12">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-              <span className="text-black">Flashcards </span>
-              <span className="text-blue-600">Python ECG</span>
-            </h1>
-            <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+            <div className="inline-flex items-center gap-3 mb-6 p-3 rounded-lg bg-blue-100 text-blue-700 border border-blue-300">
+              <HelpCircle className="h-8 w-8" />
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-blue-800">
+                Flashcards Python ECG
+              </h1>
+            </div>
+            <p className="text-xl sm:text-2xl text-blue-600 mb-8 max-w-3xl mx-auto leading-relaxed">
               Maîtrisez les 54 commandes essentielles avec nos flashcards interactives !
             </p>
             
@@ -240,7 +242,7 @@ const PythonFlashcardsPage = () => {
                     onClick={handleShuffle}
                     size="sm"
                     variant="outline"
-                    className="border-blue-300 text-blue-600 hover:bg-blue-50 hover:border-blue-400 transition-all duration-200"
+                    className="border-blue-300 text-blue-600 hover:bg-orange-100 hover:text-orange-800 hover:border-orange-400 transition-all duration-200"
                   >
                     <RotateCcw className="h-3 w-3 mr-2" />
                     Mélanger
@@ -255,7 +257,7 @@ const PythonFlashcardsPage = () => {
                     variant="ghost"
                     size="sm"
                     onClick={() => setShowKeyboardHelp(!showKeyboardHelp)}
-                    className="h-8 w-8 p-0 text-blue-600 hover:text-blue-700 hover:bg-blue-50 flex items-center justify-center transition-colors"
+                    className="h-8 w-8 p-0 text-blue-600 hover:text-orange-700 hover:bg-orange-100 flex items-center justify-center transition-colors"
                     title="Raccourcis clavier"
                     data-keyboard-help
                   >
@@ -310,7 +312,7 @@ const PythonFlashcardsPage = () => {
                     variant="ghost"
                     size="sm"
                     onClick={handleToggleFullscreen}
-                    className="h-8 w-8 p-0 text-blue-600 hover:text-blue-700 hover:bg-blue-50 flex items-center justify-center transition-colors"
+                    className="h-8 w-8 p-0 text-blue-600 hover:text-orange-700 hover:bg-orange-100 flex items-center justify-center transition-colors"
                     title="Plein écran (F)"
                   >
                     <Maximize className="h-4 w-4" />
@@ -410,7 +412,7 @@ const PythonFlashcardsPage = () => {
 
               <Button 
                 onClick={handleFlip}
-                className={`${isFullscreen ? 'w-52 h-16 text-xl' : 'w-44 h-14 text-lg'} bg-blue-600 hover:bg-blue-700 text-white shadow-xl hover:shadow-2xl transition-all duration-200 transform hover:scale-105 active:scale-95 order-first sm:order-none`}
+                className={`${isFullscreen ? 'w-52 h-16 text-xl' : 'w-44 h-14 text-lg'} bg-blue-600 hover:bg-orange-600 text-white shadow-xl hover:shadow-2xl transition-all duration-200 transform hover:scale-105 active:scale-95 order-first sm:order-none`}
               >
                 <RotateCcw className={`${isFullscreen ? 'h-6 w-6' : 'h-5 w-5'} mr-3 ${isFlipped ? 'rotate-180' : ''} transition-transform duration-300`} />
                 {isFlipped ? 'Cacher' : 'Révéler'}

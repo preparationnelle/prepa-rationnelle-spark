@@ -1,84 +1,169 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Target, Home, ChevronRight } from 'lucide-react';
+import { Target, Calendar, Briefcase } from 'lucide-react';
 
 const ReussirEpreuvesAllemandePage = () => {
   return (
-    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
-      {/* Floating elements - Blue and orange bubbles */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-5 animate-pulse"></div>
-      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
-
-      {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40 relative z-10">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <div className="h-3 w-3">🏠</div>
-              <span>Accueil</span>
-            </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formations" className="hover:text-foreground transition-colors">
-              Toutes les formations
-            </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formation/allemand" className="hover:text-foreground transition-colors">
-              Formation Allemand
-            </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground">Épreuves</span>
+    <div className="min-h-screen bg-gray-50">
+      <div className="container mx-auto px-4 pt-16 pb-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center border border-orange-200">
+              <Target className="h-6 w-6 text-orange-600" />
+            </div>
+            <h1 className="text-4xl font-bold text-gray-900">
+              Réussir les épreuves allemandes
+            </h1>
           </div>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Maîtrisez toutes les épreuves du concours d'allemand
+          </p>
         </div>
-      </nav>
 
-      {/* Section Héro moderne */}
-      <section className="bg-gradient-to-br from-orange-50 via-white to-blue-50 py-8 px-4 sm:px-6 relative z-10">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <div className="flex justify-center mb-6">
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-orange-500 to-blue-500 text-white shadow-lg">
-                <Target className="h-12 w-12" />
+        {/* SOMMAIRE DES CHAPITRES */}
+        <div className="max-w-4xl mx-auto">
+          <div className="space-y-4">
+
+            {/* Module 1 - Réussir l'essai */}
+            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
+              <div className="flex items-start gap-4">
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
+                  <span className="font-bold text-orange-600 text-lg">1</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Réussir l'essai</h3>
+                  <p className="text-gray-600 mb-4">Structure argumentative en allemand, connecteurs logiques avancés et vocabulaire argumentatif spécialisé</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/allemand/reussir-essai">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Essai parfait
+                      </Button>
+                    </Link>
+                    <Link to="/formation/allemand/reussir-essai/exercices">
+                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                        <Briefcase className="mr-2 h-4 w-4" />
+                        Exercices
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-orange-600 via-blue-600 to-orange-600 bg-clip-text text-transparent font-bold">
-                Prüfungserfolg
-              </span>
-            </h1>
-            <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-5xl mx-auto whitespace-nowrap">
-              Maîtrisez toutes les épreuves du concours d'allemand
-            </p>
-            <div className="flex flex-wrap justify-center gap-3 mb-8">
-              <span className="px-4 py-2 text-sm font-medium bg-orange-100 text-orange-700 rounded-full">Épreuves écrites</span>
-              <span className="px-4 py-2 text-sm font-medium bg-blue-100 text-blue-700 rounded-full">Épreuves orales</span>
-              <span className="px-4 py-2 text-sm font-medium bg-orange-100 text-orange-700 rounded-full">Techniques d'excellence</span>
+
+            {/* Module 2 - Réussir la synthèse */}
+            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
+              <div className="flex items-start gap-4">
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
+                  <span className="font-bold text-orange-600 text-lg">2</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Réussir la synthèse</h3>
+                  <p className="text-gray-600 mb-4">Techniques de synthèse : identification des idées principales, structuration hiérarchique et langage objectif</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/allemand/reussir-synthese">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Synthèse parfaite
+                      </Button>
+                    </Link>
+                    <Link to="/formation/allemand/reussir-synthese/exercices">
+                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                        <Briefcase className="mr-2 h-4 w-4" />
+                        Exercices
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 3 - Méthodologie de travail */}
+            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
+              <div className="flex items-start gap-4">
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
+                  <span className="font-bold text-orange-600 text-lg">3</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Méthodologie de travail</h3>
+                  <p className="text-gray-600 mb-4">Méthode complète d'allemand en prépa : traduction, gestion des erreurs, approfondissement thématique et organisation du temps</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/allemand/methodologie">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Méthode complète
+                      </Button>
+                    </Link>
+                    <Link to="/formation/allemand/methodologie/exercices">
+                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                        <Briefcase className="mr-2 h-4 w-4" />
+                        Exercices
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 4 - Grammaire avancée */}
+            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
+              <div className="flex items-start gap-4">
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
+                  <span className="font-bold text-orange-600 text-lg">4</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Thèmes grammaticaux</h3>
+                  <p className="text-gray-600 mb-4">Subjonctif, constructions passives, relatives complexes et style indirect pour maîtriser l'allemand académique</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/allemand/grammaire-avancee">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Thèmes grammaticaux
+                      </Button>
+                    </Link>
+                    <Link to="/formation/allemand/grammaire-avancee/exercices">
+                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                        <Briefcase className="mr-2 h-4 w-4" />
+                        Exercices
+                      </Button>
+                    </Link>
+                  </div>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Section Contenu */}
-      <section className="py-8 px-4 sm:px-6 bg-gray-50 relative z-10">
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-6">Contenu en cours de développement</h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Cette section sera bientôt disponible avec un contenu complet sur les épreuves allemandes.
-            </p>
-            <Link
-              to="/formation/allemand"
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white font-medium rounded-lg transition-all duration-300"
-            >
-              Retour à la formation Allemand
+            {/* Module 5 - Épreuves orales */}
+            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
+              <div className="flex items-start gap-4">
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
+                  <span className="font-bold text-orange-600 text-lg">5</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Épreuves orales</h3>
+                  <p className="text-gray-600 mb-4">Préparation aux épreuves orales : présentation structurée, argumentation orale et gestion du temps</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/allemand/epreuves-orales">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Fiche méthodologique
+                      </Button>
+                    </Link>
+                    <Link to="/formation/allemand/epreuves-orales/exercices">
+                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                        <Briefcase className="mr-2 h-4 w-4" />
+                        Exercices
+                      </Button>
             </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 };

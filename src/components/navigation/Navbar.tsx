@@ -8,7 +8,7 @@ import { ThemeToggle } from '@/components/ThemeToggle';
 import { GlobalSearch } from '@/components/search/GlobalSearch';
 import { MobileSearch } from '@/components/search/MobileSearch';
 import { SearchTrigger } from '@/components/search/SearchTrigger';
-import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, BarChart3, Code, Languages, Globe, UserCheck, Calculator, Star } from 'lucide-react';
+import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, BarChart3, Code, Languages, Globe, UserCheck, Calculator, Star, Youtube } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from '@/components/ui/dropdown-menu';
@@ -230,6 +230,10 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                   <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center"><Globe className="h-4 w-4 text-orange-600" /></span>
                   <span>Géopolitique</span>
                 </Link>
+                <Link to="/formation/esh" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center"><GraduationCap className="h-4 w-4 text-blue-600" /></span>
+                  <span>ESH</span>
+                </Link>
                 <Link to="/methodologie/entretiens-personnalite" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
                   <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center"><Users className="h-4 w-4 text-orange-600" /></span>
                   <span>Entretiens de Personnalité</span>
@@ -261,9 +265,9 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               >
                 <Instagram className="h-4 w-4" />
               </a>
-              <a 
-                href="https://www.tiktok.com/@prepa_rationnelle" 
-                target="_blank" 
+              <a
+                href="https://www.tiktok.com/@prepa_rationnelle"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 text-foreground hover:text-black transition-colors"
                 aria-label="TikTok"
@@ -271,6 +275,15 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                 <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
                 </svg>
+              </a>
+              <a
+                href="https://www.youtube.com/@preparationnelle"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 text-foreground hover:text-red-500 transition-colors"
+                aria-label="YouTube"
+              >
+                <Youtube className="h-4 w-4" />
               </a>
             </div>
             
@@ -344,7 +357,40 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
           <Link to="/contact" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Contact</Link>
           <Link to="/stage-accompagnement" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Offres</Link>
         </div>
-        
+
+        {/* Liens réseaux sociaux mobiles */}
+        <div className="flex items-center justify-center space-x-4 mb-6">
+          <a
+            href="https://www.instagram.com/prepa_rationnelle"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 text-foreground hover:text-pink-500 transition-colors rounded-full hover:bg-gray-50"
+            aria-label="Instagram"
+          >
+            <Instagram className="h-5 w-5" />
+          </a>
+          <a
+            href="https://www.tiktok.com/@prepa_rationnelle"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 text-foreground hover:text-black transition-colors rounded-full hover:bg-gray-50"
+            aria-label="TikTok"
+          >
+            <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+            </svg>
+          </a>
+          <a
+            href="https://www.youtube.com/@preparationnelle"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 text-foreground hover:text-red-500 transition-colors rounded-full hover:bg-gray-50"
+            aria-label="YouTube"
+          >
+            <Youtube className="h-5 w-5" />
+          </a>
+        </div>
+
         {/* Titre formations */}
         <h3 className="text-lg font-medium text-primary px-3 mb-3">Formations</h3>
         
@@ -385,6 +431,12 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               <Globe className="h-4 w-4 text-primary" />
             </span>
             <span className="text-sm text-center">Géopolitique</span>
+          </Link>
+          <Link to="/formation/esh" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-white p-2 rounded-md shadow-sm">
+            <span className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+              <GraduationCap className="h-4 w-4 text-blue-600" />
+            </span>
+            <span className="text-sm text-center">ESH</span>
           </Link>
           <Link to="/methodologie/entretiens-personnalite" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-white p-2 rounded-md shadow-sm">
             <span className="w-8 h-8 bg-white rounded-full flex items-center justify-center">

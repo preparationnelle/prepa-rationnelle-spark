@@ -15,20 +15,20 @@ const PythonMatricesPage = () => {
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
-          <div className="p-3 rounded-lg bg-gray-100 text-gray-600 border border-gray-200">
+          <div className="p-3 rounded-lg bg-blue-100 text-blue-700 border border-blue-300">
             <Calculator className="h-8 w-8" />
           </div>
           <div>
             <h1 className="text-4xl font-bold text-gray-800">
               Module 1 - Les Matrices NumPy
             </h1>
-            <Badge variant="secondary" className="mt-3 bg-gray-100 text-gray-700 border border-gray-200 font-semibold px-4 py-2">Module 1</Badge>
+            <Badge variant="secondary" className="mt-3 bg-blue-100 text-blue-800 border border-blue-300 font-semibold px-4 py-2">Module 1</Badge>
           </div>
         </div>
       </div>
 
         {/* Présentation générale */}
-        <Card className="mb-8 border-2 border-gray-200 bg-gray-50 shadow-lg">
+        <Card className="mb-8 border-2 border-blue-300 bg-blue-50/50 shadow-lg">
           <CardHeader>
             <CardTitle className="text-xl text-gray-700">1. PRÉSENTATION GÉNÉRALE</CardTitle>
           </CardHeader>
@@ -149,7 +149,7 @@ const PythonMatricesPage = () => {
         </Card>
 
         {/* Accès aux éléments */}
-        <Card className="mb-8 border-2 border-gray-200 bg-gray-50 shadow-lg">
+        <Card className="mb-8 border-2 border-blue-300 bg-blue-50/50 shadow-lg">
           <CardHeader>
             <CardTitle className="text-xl text-gray-700">3. ACCÈS AUX ÉLÉMENTS</CardTitle>
           </CardHeader>

@@ -1,9 +1,7 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, ArrowRight, RotateCcw, Shuffle, HelpCircle, Keyboard, BookOpen } from 'lucide-react';
+import React from 'react';
+import { UnifiedFlashcards } from '@/components/ui/UnifiedFlashcards';
 import { Link } from 'react-router-dom';
+import { Home, ChevronRight } from 'lucide-react';
 
 interface VocabularyCard {
   id: number;
@@ -48,454 +46,163 @@ const HealthVocabularyPage = () => {
     { id: 27, french: "Service public de santé", english: "Public health service", category: "Hôpitaux et infrastructures" },
     { id: 28, french: "Infrastructure", english: "Infrastructure", category: "Hôpitaux et infrastructures" },
     { id: 29, french: "Équipement médical", english: "Medical equipment", category: "Hôpitaux et infrastructures" },
-    { id: 30, french: "Ambulance", english: "Ambulance", category: "Hôpitaux et infrastructures" },
+    { id: 30, french: "Technologie médicale", english: "Medical technology", category: "Hôpitaux et infrastructures" },
 
-    // 4. Santé publique / Public Health
-    { id: 31, french: "Santé publique", english: "Public health", category: "Santé publique" },
-    { id: 32, french: "Prévention", english: "Prevention", category: "Santé publique" },
-    { id: 33, french: "Campagne de vaccination", english: "Vaccination campaign", category: "Santé publique" },
-    { id: 34, french: "Assurance maladie", english: "Health insurance", category: "Santé publique" },
-    { id: 35, french: "Couverture maladie universelle", english: "Universal healthcare coverage", category: "Santé publique" },
-    { id: 36, french: "Accès aux soins", english: "Access to healthcare", category: "Santé publique" },
-    { id: 37, french: "Dépistage", english: "Screening", category: "Santé publique" },
-    { id: 38, french: "Tabagisme", english: "Smoking", category: "Santé publique" },
-    { id: 39, french: "Obésité", english: "Obesity", category: "Santé publique" },
-    { id: 40, french: "Alcoolisme", english: "Alcoholism", category: "Santé publique" },
+    // 4. Systèmes de santé / Healthcare Systems
+    { id: 31, french: "Système de santé", english: "Healthcare system", category: "Systèmes de santé" },
+    { id: 32, french: "NHS (Service National de Santé)", english: "NHS (National Health Service)", category: "Systèmes de santé" },
+    { id: 33, french: "Assurance maladie", english: "Health insurance", category: "Systèmes de santé" },
+    { id: 34, french: "Couverture universelle", english: "Universal coverage", category: "Systèmes de santé" },
+    { id: 35, french: "Système privé", english: "Private system", category: "Systèmes de santé" },
+    { id: 36, french: "Système public", english: "Public system", category: "Systèmes de santé" },
+    { id: 37, french: "Medicare", english: "Medicare", category: "Systèmes de santé" },
+    { id: 38, french: "Medicaid", english: "Medicaid", category: "Systèmes de santé" },
+    { id: 39, french: "Obamacare (ACA)", english: "Obamacare (Affordable Care Act)", category: "Systèmes de santé" },
+    { id: 40, french: "Payeur unique", english: "Single-payer", category: "Systèmes de santé" },
 
-    // 5. Le système de santé britannique (UK) / British Healthcare System
-    { id: 41, french: "NHS (Service national de santé)", english: "National Health Service (NHS)", category: "Système de santé britannique" },
-    { id: 42, french: "Médecine gratuite à la livraison", english: "Free-at-the-point-of-use healthcare", category: "Système de santé britannique" },
-    { id: 43, french: "Médecin de famille", english: "Family doctor", category: "Système de santé britannique" },
-    { id: 44, french: "Attente (liste d'attente)", english: "Waiting list", category: "Système de santé britannique" },
-    { id: 45, french: "Financement public", english: "Public funding", category: "Système de santé britannique" },
-    { id: 46, french: "Sous-financement", english: "Underfunding", category: "Système de santé britannique" },
-    { id: 47, french: "Privatisation partielle", english: "Partial privatization", category: "Système de santé britannique" },
-    { id: 48, french: "Couper dans le budget", english: "Budget cuts", category: "Système de santé britannique" },
-    { id: 49, french: "NHS trust", english: "NHS trust", category: "Système de santé britannique" },
-    { id: 50, french: "Reformes du NHS", english: "NHS reforms", category: "Système de santé britannique" },
+    // 5. Politiques de santé / Health Policy
+    { id: 41, french: "Politique de santé", english: "Health policy", category: "Politiques de santé" },
+    { id: 42, french: "Réforme de la santé", english: "Healthcare reform", category: "Politiques de santé" },
+    { id: 43, french: "Financement de la santé", english: "Healthcare funding", category: "Politiques de santé" },
+    { id: 44, french: "Budget santé", english: "Health budget", category: "Politiques de santé" },
+    { id: 45, french: "Dépenses de santé", english: "Healthcare spending", category: "Politiques de santé" },
+    { id: 46, french: "Coût des soins", english: "Cost of care", category: "Politiques de santé" },
+    { id: 47, french: "Prix des médicaments", english: "Drug prices", category: "Politiques de santé" },
+    { id: 48, french: "Négociation des prix", english: "Price negotiation", category: "Politiques de santé" },
+    { id: 49, french: "Réglementation", english: "Regulation", category: "Politiques de santé" },
+    { id: 50, french: "Loi sur la réduction de l'inflation", english: "Inflation Reduction Act", category: "Politiques de santé" },
 
-    // 6. Le système de santé américain (USA) / American Healthcare System
-    { id: 51, french: "Système de santé privé", english: "Private healthcare system", category: "Système de santé américain" },
-    { id: 52, french: "Assurance maladie", english: "Health insurance", category: "Système de santé américain" },
-    { id: 53, french: "Mutuelle", english: "Private health plan", category: "Système de santé américain" },
-    { id: 54, french: "Sans assurance", english: "Uninsured", category: "Système de santé américain" },
-    { id: 55, french: "Facture médicale", english: "Medical bill", category: "Système de santé américain" },
-    { id: 56, french: "Obamacare", english: "Affordable Care Act (Obamacare)", category: "Système de santé américain" },
-    { id: 57, french: "Medicare (assurance pour les personnes âgées)", english: "Medicare", category: "Système de santé américain" },
-    { id: 58, french: "Medicaid (aide pour les plus pauvres)", english: "Medicaid", category: "Système de santé américain" },
-    { id: 59, french: "Coût des soins", english: "Cost of care", category: "Système de santé américain" },
-    { id: 60, french: "Big Pharma", english: "Big Pharma", category: "Système de santé américain" },
+    // 6. Crises de santé publique / Public Health Crises
+    { id: 51, french: "Crise de santé publique", english: "Public health crisis", category: "Crises de santé publique" },
+    { id: 52, french: "Épidémie d'opioïdes", english: "Opioid epidemic", category: "Crises de santé publique" },
+    { id: 53, french: "COVID-19", english: "COVID-19", category: "Crises de santé publique" },
+    { id: 54, french: "Héritage de la pandémie", english: "Pandemic legacy", category: "Crises de santé publique" },
+    { id: 55, french: "Préparation aux pandémies", english: "Pandemic preparedness", category: "Crises de santé publique" },
+    { id: 56, french: "Équité vaccinale", english: "Vaccine equity", category: "Crises de santé publique" },
+    { id: 57, french: "Surdose", english: "Overdose", category: "Crises de santé publique" },
+    { id: 58, french: "Addiction", english: "Addiction", category: "Crises de santé publique" },
+    { id: 59, french: "Dépendance", english: "Dependency", category: "Crises de santé publique" },
+    { id: 60, french: "Gestion de crise", english: "Crisis management", category: "Crises de santé publique" },
 
-    // 7. Enjeux sociaux et inégalités / Social Issues and Inequalities
-    { id: 61, french: "Inégalités de santé", english: "Health inequalities", category: "Enjeux sociaux et inégalités" },
-    { id: 62, french: "Accès limité", english: "Limited access", category: "Enjeux sociaux et inégalités" },
-    { id: 63, french: "Zones rurales", english: "Rural areas", category: "Enjeux sociaux et inégalités" },
-    { id: 64, french: "Médecine urbaine", english: "Urban medicine", category: "Enjeux sociaux et inégalités" },
-    { id: 65, french: "Déserts médicaux", english: "Medical deserts", category: "Enjeux sociaux et inégalités" },
-    { id: 66, french: "Pauvreté", english: "Poverty", category: "Enjeux sociaux et inégalités" },
-    { id: 67, french: "Minorités", english: "Minorities", category: "Enjeux sociaux et inégalités" },
-    { id: 68, french: "Discrimination", english: "Discrimination", category: "Enjeux sociaux et inégalités" },
-    { id: 69, french: "Espérance de vie", english: "Life expectancy", category: "Enjeux sociaux et inégalités" },
-    { id: 70, french: "Santé mentale", english: "Mental health", category: "Enjeux sociaux et inégalités" },
+    // 7. Santé mentale / Mental Health
+    { id: 61, french: "Santé mentale", english: "Mental health", category: "Santé mentale" },
+    { id: 62, french: "Crise de santé mentale", english: "Mental health crisis", category: "Santé mentale" },
+    { id: 63, french: "Santé mentale des jeunes", english: "Youth mental health", category: "Santé mentale" },
+    { id: 64, french: "Anxiété", english: "Anxiety", category: "Santé mentale" },
+    { id: 65, french: "Dépression", english: "Depression", category: "Santé mentale" },
+    { id: 66, french: "Stigmate", english: "Stigma", category: "Santé mentale" },
+    { id: 67, french: "Counseling", english: "Counseling", category: "Santé mentale" },
+    { id: 68, french: "Thérapie", english: "Therapy", category: "Santé mentale" },
+    { id: 69, french: "Psychiatrie", english: "Psychiatry", category: "Santé mentale" },
+    { id: 70, french: "Impact des réseaux sociaux", english: "Social media impact", category: "Santé mentale" },
 
-    // 8. Débats éthiques et politiques / Ethical and Political Debates
-    { id: 71, french: "Bioéthique", english: "Bioethics", category: "Débats éthiques et politiques" },
-    { id: 72, french: "Fin de vie", english: "End of life", category: "Débats éthiques et politiques" },
-    { id: 73, french: "Euthanasie", english: "Euthanasia", category: "Débats éthiques et politiques" },
-    { id: 74, french: "Suicide assisté", english: "Assisted suicide", category: "Débats éthiques et politiques" },
-    { id: 75, french: "Avortement", english: "Abortion", category: "Débats éthiques et politiques" },
-    { id: 76, french: "Recherche médicale", english: "Medical research", category: "Débats éthiques et politiques" },
-    { id: 77, french: "Expérimentation", english: "Experimentation", category: "Débats éthiques et politiques" },
-    { id: 78, french: "Confidentialité médicale", english: "Medical confidentiality", category: "Débats éthiques et politiques" },
-    { id: 79, french: "Dossier médical électronique", english: "Electronic health record", category: "Débats éthiques et politiques" },
-    { id: 80, french: "Consentement éclairé", english: "Informed consent", category: "Débats éthiques et politiques" },
+    // 8. Inégalités de santé / Health Inequalities
+    { id: 71, french: "Inégalités de santé", english: "Health inequalities", category: "Inégalités de santé" },
+    { id: 72, french: "Disparités de santé", english: "Health disparities", category: "Inégalités de santé" },
+    { id: 73, french: "Accès aux soins", english: "Healthcare access", category: "Inégalités de santé" },
+    { id: 74, french: "Barrières à l'accès", english: "Access barriers", category: "Inégalités de santé" },
+    { id: 75, french: "Déserts médicaux", english: "Medical deserts", category: "Inégalités de santé" },
+    { id: 76, french: "Tourisme médical", english: "Medical tourism", category: "Inégalités de santé" },
+    { id: 77, french: "Justice sanitaire", english: "Health justice", category: "Inégalités de santé" },
+    { id: 78, french: "Déterminants sociaux", english: "Social determinants", category: "Inégalités de santé" },
+    { id: 79, french: "Mortalité maternelle", english: "Maternal mortality", category: "Inégalités de santé" },
+    { id: 80, french: "Espérance de vie", english: "Life expectancy", category: "Inégalités de santé" },
 
-    // 9. Santé mondiale et crises / Global Health and Crises
-    { id: 81, french: "Organisation mondiale de la santé", english: "World Health Organization (WHO)", category: "Santé mondiale et crises" },
-    { id: 82, french: "Aide humanitaire", english: "Humanitarian aid", category: "Santé mondiale et crises" },
-    { id: 83, french: "Vaccins pour tous", english: "Vaccines for all", category: "Santé mondiale et crises" },
-    { id: 84, french: "Accords internationaux", english: "International agreements", category: "Santé mondiale et crises" },
-    { id: 85, french: "Santé mondiale", english: "Global health", category: "Santé mondiale et crises" },
-    { id: 86, french: "Accès aux médicaments", english: "Access to medicine", category: "Santé mondiale et crises" },
-    { id: 87, french: "Pandémie mondiale", english: "Global pandemic", category: "Santé mondiale et crises" },
-    { id: 88, french: "Covid-19", english: "Covid-19", category: "Santé mondiale et crises" },
-    { id: 89, french: "Confinement", english: "Lockdown", category: "Santé mondiale et crises" },
-    { id: 90, french: "Gestes barrières", english: "Preventive measures", category: "Santé mondiale et crises" },
+    // 9. Personnel de santé / Healthcare Workforce
+    { id: 81, french: "Personnel de santé", english: "Healthcare workforce", category: "Personnel de santé" },
+    { id: 82, french: "Pénurie de personnel", english: "Workforce shortage", category: "Personnel de santé" },
+    { id: 83, french: "Épuisement professionnel", english: "Physician burnout", category: "Personnel de santé" },
+    { id: 84, french: "Restructuration du personnel", english: "Workforce restructuring", category: "Personnel de santé" },
+    { id: 85, french: "Formation médicale", english: "Medical training", category: "Personnel de santé" },
+    { id: 86, french: "Spécialisation", english: "Specialization", category: "Personnel de santé" },
+    { id: 87, french: "Médecine générale", english: "General practice", category: "Personnel de santé" },
+    { id: 88, french: "Rétention du personnel", english: "Staff retention", category: "Personnel de santé" },
+    { id: 89, french: "Recrutement", english: "Recruitment", category: "Personnel de santé" },
+    { id: 90, french: "Conditions de travail", english: "Working conditions", category: "Personnel de santé" },
 
-    // 10. Perspectives et réformes / Perspectives and Reforms
-    { id: 91, french: "Dépenses de santé", english: "Healthcare spending", category: "Perspectives et réformes" },
-    { id: 92, french: "Augmentation du budget", english: "Budget increase", category: "Perspectives et réformes" },
-    { id: 93, french: "Système universel", english: "Universal system", category: "Perspectives et réformes" },
-    { id: 94, french: "Système mixte", english: "Mixed system", category: "Perspectives et réformes" },
-    { id: 95, french: "Privatisation", english: "Privatization", category: "Perspectives et réformes" },
-    { id: 96, french: "Couverture universelle", english: "Universal coverage", category: "Perspectives et réformes" },
-    { id: 97, french: "Médecine préventive", english: "Preventive medicine", category: "Perspectives et réformes" },
-    { id: 98, french: "Télémédecine", english: "Telemedicine", category: "Perspectives et réformes" },
-    { id: 99, french: "Médecine personnalisée", english: "Personalized medicine", category: "Perspectives et réformes" },
-    { id: 100, french: "Innovation médicale", english: "Medical innovation", category: "Perspectives et réformes" },
+    // 10. Innovation et technologie / Innovation and Technology
+    { id: 91, french: "Innovation en santé", english: "Healthcare innovation", category: "Innovation et technologie" },
+    { id: 92, french: "Télémédecine", english: "Telemedicine", category: "Innovation et technologie" },
+    { id: 93, french: "Télésanté", english: "Telehealth", category: "Innovation et technologie" },
+    { id: 94, french: "Santé numérique", english: "Digital health", category: "Innovation et technologie" },
+    { id: 95, french: "Intelligence artificielle médicale", english: "Medical AI", category: "Innovation et technologie" },
+    { id: 96, french: "Dossiers médicaux électroniques", english: "Electronic health records", category: "Innovation et technologie" },
+    { id: 97, french: "Médecine personnalisée", english: "Personalized medicine", category: "Innovation et technologie" },
+    { id: 98, french: "Biotechnologie", english: "Biotechnology", category: "Innovation et technologie" },
+    { id: 99, french: "Recherche médicale", english: "Medical research", category: "Innovation et technologie" },
+    { id: 100, french: "Essais cliniques", english: "Clinical trials", category: "Innovation et technologie" },
+
+    // 11. Outcomes et performance / Outcomes and Performance
+    { id: 101, french: "Résultats de santé", english: "Health outcomes", category: "Outcomes et performance" },
+    { id: 102, french: "Indicateurs de performance", english: "Performance indicators", category: "Outcomes et performance" },
+    { id: 103, french: "Qualité des soins", english: "Quality of care", category: "Outcomes et performance" },
+    { id: 104, french: "Sécurité des patients", english: "Patient safety", category: "Outcomes et performance" },
+    { id: 105, french: "Satisfaction des patients", english: "Patient satisfaction", category: "Outcomes et performance" },
+    { id: 106, french: "Temps d'attente", english: "Waiting times", category: "Outcomes et performance" },
+    { id: 107, french: "Listes d'attente", english: "Waiting lists", category: "Outcomes et performance" },
+    { id: 108, french: "Efficacité", english: "Efficiency", category: "Outcomes et performance" },
+    { id: 109, french: "Efficience", english: "Effectiveness", category: "Outcomes et performance" },
+    { id: 110, french: "Rapport coût-efficacité", english: "Cost-effectiveness", category: "Outcomes et performance" },
+
+    // 12. Défis futurs / Future Challenges
+    { id: 111, french: "Vieillissement de la population", english: "Population aging", category: "Défis futurs" },
+    { id: 112, french: "Maladies chroniques", english: "Chronic diseases", category: "Défis futurs" },
+    { id: 113, french: "Prévention", english: "Prevention", category: "Défis futurs" },
+    { id: 114, french: "Promotion de la santé", english: "Health promotion", category: "Défis futurs" },
+    { id: 115, french: "Médecine préventive", english: "Preventive medicine", category: "Défis futurs" },
+    { id: 116, french: "Santé publique", english: "Public health", category: "Défis futurs" },
+    { id: 117, french: "Durabilité", english: "Sustainability", category: "Défis futurs" },
+    { id: 118, french: "Résilience du système", english: "System resilience", category: "Défis futurs" },
+    { id: 119, french: "Transformation numérique", english: "Digital transformation", category: "Défis futurs" },
+    { id: 120, french: "Intégration des soins", english: "Care integration", category: "Défis futurs" }
   ];
 
-  const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [showHelp, setShowHelp] = useState(false);
-  const [reviewCards, setReviewCards] = useState<Set<number>>(new Set());
-  const [isReviewMode, setIsReviewMode] = useState(false);
-  const [touchStartX, setTouchStartX] = useState(0);
-  const [touchEndX, setTouchEndX] = useState(0);
-
-  const currentCard = vocabularyData[currentCardIndex];
-
-  const nextCard = useCallback(() => {
-    setCurrentCardIndex((prev) => (prev + 1) % vocabularyData.length);
-    setIsFlipped(false);
-  }, [vocabularyData.length]);
-
-  const previousCard = useCallback(() => {
-    setCurrentCardIndex((prev) => (prev - 1 + vocabularyData.length) % vocabularyData.length);
-    setIsFlipped(false);
-  }, [vocabularyData.length]);
-
-  const shuffleCards = useCallback(() => {
-    const shuffled = [...vocabularyData].sort(() => Math.random() - 0.5);
-    vocabularyData.splice(0, vocabularyData.length, ...shuffled);
-    setCurrentCardIndex(0);
-    setIsFlipped(false);
-  }, []);
-
-  const resetCards = useCallback(() => {
-    setCurrentCardIndex(0);
-    setIsFlipped(false);
-    setProgress(0);
-  }, []);
-
-  useEffect(() => {
-    setProgress(((currentCardIndex + 1) / vocabularyData.length) * 100);
-  }, [currentCardIndex, vocabularyData.length]);
-
-  useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
-      switch (event.key) {
-        case 'ArrowLeft':
-          previousCard();
-          break;
-        case 'ArrowRight':
-          nextCard();
-          break;
-        case ' ':
-          event.preventDefault();
-          setIsFlipped(!isFlipped);
-          break;
-        case 'r':
-        case 'R':
-          resetCards();
-          break;
-        case 's':
-        case 'S':
-          shuffleCards();
-          break;
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [previousCard, nextCard, isFlipped, resetCards, shuffleCards]);
-
-  const getCategoryColor = (category: string) => {
-    const colors: { [key: string]: string } = {
-      'Concepts généraux de santé': 'bg-blue-500',
-      'Médecine et soins': 'bg-green-500',
-      'Hôpitaux et infrastructures': 'bg-purple-500',
-      'Santé publique': 'bg-orange-500',
-      'Système de santé britannique': 'bg-red-500',
-      'Système de santé américain': 'bg-emerald-500',
-      'Enjeux sociaux et inégalités': 'bg-teal-500',
-      'Débats éthiques et politiques': 'bg-indigo-500',
-      'Santé mondiale et crises': 'bg-pink-500',
-      'Perspectives et réformes': 'bg-cyan-500',
-    };
-    return colors[category] || 'bg-gray-500';
-  };
+  const mappedData = vocabularyData.map(({ category, french, english }) => ({ 
+    category, 
+    front: french, 
+    back: english 
+  }));
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <div className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <Link to="/formation/anglais/civilisation" className="text-gray-600 hover:text-gray-900">
-                <ArrowLeft className="h-5 w-5 mr-2" />
-                Retour à la civilisation anglaise
-              </Link>
-            </div>
-            <div className="flex items-center gap-4">
-              <Badge variant="outline" className="bg-teal-50 text-teal-700 border-teal-200">
-                Santé et Systèmes de santé
-              </Badge>
-              <span className="text-sm text-gray-600">
-                {currentCardIndex + 1} / {vocabularyData.length}
-              </span>
-            </div>
+      {/* Sticky Breadcrumb */}
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40 relative z-10">
+        <div className="container mx-auto px-4 py-2">
+          <div className="flex items-center text-xs text-muted-foreground">
+            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              <Home className="h-3 w-3" />
+              <span>Accueil</span>
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formations" className="hover:text-foreground transition-colors">
+              Toutes les formations
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formation/anglais" className="hover:text-foreground transition-colors">
+              Formation Anglais ECG
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formation/anglais/civilisation" className="hover:text-foreground transition-colors">
+              Civilisation Anglaise
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <span className="text-foreground font-medium">Systèmes de Santé US et UK</span>
           </div>
         </div>
+      </nav>
+
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        <UnifiedFlashcards
+          data={mappedData}
+          title="Vocabulaire Systèmes de Santé US et UK (FR → EN)"
+          frontKey="front"
+          backKey="back"
+          frontLabel="Français"
+          backLabel="Anglais"
+        />
       </div>
-
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Barre de progression */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-700">Progression</span>
-            <span className="text-sm text-gray-500">{Math.round(progress)}%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div
-              className="bg-teal-600 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-        </div>
-
-        {/* Carte principale */}
-        <Card className="mb-8 border-2 border-teal-200">
-          <CardHeader className="bg-gradient-to-r from-teal-50 to-green-50">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <Badge className={`${getCategoryColor(currentCard.category)} text-white`}>
-                  {currentCard.category}
-                </Badge>
-                <span className="text-sm text-gray-600">#{currentCard.id}</span>
-              </div>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setShowHelp(!showHelp)}
-              >
-                <Keyboard className="h-4 w-4 mr-2" />
-                Raccourcis
-              </Button>
-            </div>
-          </CardHeader>
-          <CardContent className="p-8">
-                          <div className="relative min-h-[240px] max-h-[280px] flex items-center justify-center cursor-pointer">
-              {/* Face avant */}
-              <div 
-                className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${
-                  isFlipped ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
-                }`}
-              >
-                <div className="text-center">
-                  <h2 className="text-3xl font-bold text-gray-800 mb-4">
-                    {currentCard.french}
-                  </h2>
-                  <p className="text-gray-600">Cliquez pour voir la traduction</p>
-                </div>
-              </div>
-
-              {/* Face arrière */}
-              <div 
-                className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${
-                  isFlipped ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-                }`}
-              >
-                <div className="text-center">
-                  <h2 className="text-3xl font-bold text-teal-600 mb-4">
-                    {currentCard.english}
-                  </h2>
-                  <p className="text-gray-600">Traduction en anglais</p>
-                </div>
-              </div>
-
-              {/* Zone cliquable */}
-              <div 
-                className="absolute inset-0 z-10"
-                onClick={() => setIsFlipped(!isFlipped)}
-              />
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Contrôles */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-          <Button
-            variant="outline"
-            onClick={previousCard}
-            disabled={currentCardIndex === 0}
-            className="flex items-center gap-2"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Précédent
-          </Button>
-
-          <Button
-            variant="outline"
-            onClick={() => setIsFlipped(!isFlipped)}
-            className="flex items-center gap-2"
-          >
-            <RotateCcw className="h-4 w-4" />
-            Retourner
-          </Button>
-
-          <Button
-            variant="outline"
-            onClick={nextCard}
-            disabled={currentCardIndex === vocabularyData.length - 1}
-            className="flex items-center gap-2"
-          >
-            Suivant
-            <ArrowRight className="h-4 w-4" />
-          </Button>
-        </div>
-
-        {/* Actions supplémentaires */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-          <Button
-            variant="outline"
-            onClick={shuffleCards}
-            className="flex items-center gap-2 bg-green-50 border-green-200 text-green-700 hover:bg-green-100"
-          >
-            <Shuffle className="h-4 w-4" />
-            Mélanger
-          </Button>
-
-          <Button
-            variant="outline"
-            onClick={resetCards}
-            className="flex items-center gap-2 bg-red-50 border-red-200 text-red-700 hover:bg-red-100"
-          >
-            <RotateCcw className="h-4 w-4" />
-            Recommencer
-          </Button>
-        </div>
-
-        {/* Aide */}
-        {showHelp && (
-          <Card className="mb-8 border-2 border-yellow-200">
-            <CardHeader className="bg-gradient-to-r from-yellow-50 to-orange-50">
-              <CardTitle className="flex items-center gap-2">
-                <HelpCircle className="h-5 w-5 text-yellow-600" />
-                <div>
-                  <p className="font-semibold mb-2">Actions :</p>
-                  <p>R : Recommencer</p>
-                  <p>S : Mélanger</p>
-                </div>
-              </CardTitle>
-            </CardHeader>
-          </Card>
-        )}
-
-        {/* Statistiques */}
-        <Card className="border-2 border-gray-200">
-          <CardHeader className="bg-gradient-to-r from-gray-50 to-slate-50">
-            <CardTitle className="flex items-center gap-2">
-              <BookOpen className="h-5 w-5 text-gray-600" />
-              Statistiques du module
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div>
-                <p className="text-2xl font-bold text-teal-600">{vocabularyData.length}</p>
-                <p className="text-sm text-gray-600">Mots au total</p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-green-600">
-                  {Math.ceil(vocabularyData.length / 10)}
-                </p>
-                <p className="text-sm text-gray-600">Catégories</p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-teal-600">
-                  {Math.round(progress)}%
-                </p>
-                <p className="text-sm text-gray-600">Progression</p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-orange-600">
-                  {currentCardIndex + 1}
-                </p>
-                <p className="text-sm text-gray-600">Carte actuelle</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Raccourcis clavier - Format compact */}
-      <div className="mt-6 p-2 bg-gray-50 rounded-lg border border-gray-200">
-        <div className="text-center mb-1">
-          <h4 className="text-sm font-semibold text-gray-700">Raccourcis</h4>
-        </div>
-        <div className="flex flex-wrap justify-center gap-3 text-xs text-gray-600">
-          <div className="flex items-center gap-1">
-            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">←</kbd>
-            <span>Précédent</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">→</kbd>
-            <span>Suivant</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">↵</kbd>
-            <span>Retourner</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">␣</kbd>
-            <span>Retourner</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">R</kbd>
-            <span>À revoir</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">S</kbd>
-            <span>Révision</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Message de félicitations et révision */}
-      {currentIndex === totalCards - 1 && (
-        <div className="text-center mt-8 p-6 bg-gradient-to-r from-orange-50 to-blue-50 rounded-lg border-2 border-orange-200">
-          <h3 className="text-xl font-bold mb-3 text-orange-700">
-            🎉 Félicitations !
-          </h3>
-          <p className="text-gray-600 mb-4">
-            Vous avez terminé toutes les cartes de vocabulaire santé !
-          </p>
-
-          {reviewCards.size > 0 && (
-            <div className="bg-orange-100 border border-orange-300 rounded-lg p-4 mb-4">
-              <p className="text-orange-800 font-semibold">
-                📚 Vous avez {reviewCards.size} carte{reviewCards.size > 1 ? 's' : ''} à réviser
-              </p>
-              <p className="text-orange-700 text-sm mt-1">
-                Concentrez-vous sur les mots que vous voulez maîtriser parfaitement
-              </p>
-            </div>
-          )}
-
-          <div className="mt-4 flex flex-col sm:flex-row justify-center gap-3">
-            <Button
-              onClick={resetCards}
-              className="bg-orange-200 hover:bg-orange-300 text-gray-800 px-6 py-2 font-medium"
-            >
-              🔄 Recommencer cette série
-            </Button>
-
-            {reviewCards.size > 0 && (
-              <Button
-                onClick={toggleReviewMode}
-                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 font-medium"
-              >
-                📖 Mode révision ({reviewCards.size})
-              </Button>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 };
 
-export default HealthVocabularyPage; 
+export default HealthVocabularyPage;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { BookOpen, Play, Target, LucideIcon } from 'lucide-react';
+import { BookOpen, Play, Target, LucideIcon, Brain } from 'lucide-react';
 
 interface ChapterCardProps {
   id: number;
@@ -50,6 +50,12 @@ const ChapterCard: React.FC<ChapterCardProps> = ({
             <Button variant="outline" className="w-full border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300 hover:scale-105">
               <Play className="mr-2 h-4 w-4" />
               Exercices
+            </Button>
+          </Link>
+          <Link to={`/formation/maths-${slug}-flashcards`} className="w-full">
+            <Button variant="outline" className="w-full border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300 hover:scale-105">
+              <Brain className="mr-2 h-4 w-4" />
+              Flashcards
             </Button>
           </Link>
           <Link to={`/formation/maths-${slug}-quiz`} className="w-full">

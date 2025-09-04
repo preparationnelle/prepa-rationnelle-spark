@@ -42,8 +42,11 @@ const PythonReferencePage = () => {
       <div className="container mx-auto py-8 px-4">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4">Références Python ECG</h1>
-          <p className="text-xl text-muted-foreground mb-6">
+          <div className="inline-flex items-center gap-3 mb-4 p-3 rounded-lg bg-blue-100 text-blue-700 border border-blue-300">
+            <ArrowLeft className="h-8 w-8" />
+            <h1 className="text-4xl font-bold text-blue-800">Références Python ECG</h1>
+          </div>
+          <p className="text-xl text-blue-600 mb-6">
             Toutes les 54 commandes Python au programme de prépa ECG
           </p>
         </div>
@@ -90,7 +93,7 @@ const PythonReferencePage = () => {
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
               <Link to="/python-flashcards">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+                <Button size="lg" className="bg-blue-600 hover:bg-orange-600">
                   🧠 Tester avec les flashcards
                 </Button>
               </Link>

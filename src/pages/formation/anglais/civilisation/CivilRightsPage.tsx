@@ -40,66 +40,53 @@ const CivilRightsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+    <div className="min-h-screen bg-white text-black">
+      {/* Minimal Breadcrumb */}
+      <nav className="sticky top-0 z-50 bg-white border-b border-orange-200">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <Home className="h-3 w-3" />
+          <div className="flex items-center text-xs text-black/70">
+            <Link to="/" className="flex items-center gap-1 hover:text-black transition-colors">
+              <Home className="h-3 w-3 text-orange-600" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formation/anglais" className="hover:text-foreground transition-colors">
+            <ChevronRight className="h-3 w-3 text-black/40 mx-1" />
+            <Link to="/formation/anglais" className="hover:text-black transition-colors">
               Formation <span className="text-orange-600">Anglais</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Civil Rights and Social Movements</span>
+            <ChevronRight className="h-3 w-3 text-black/40 mx-1" />
+            <span className="font-medium">Civil Rights and Social Movements</span>
           </div>
         </div>
       </nav>
 
       <div className="container mx-auto py-8 px-4">
-        {/* Header */}
+        {/* Header minimaliste + stats sobres */}
         <div className="max-w-4xl mx-auto">
-          <Card className="border-2 border-purple-500/30 mb-8">
-            <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-purple-500 text-white">
-                  <Flag className="h-5 w-5" />
-                </div>
-                <Badge className="bg-purple-500">Civilization</Badge>
-                <span className="text-sm text-muted-foreground">Updated 2025</span>
-              </div>
-              <CardTitle className="text-2xl">Civil Rights and Social Movements</CardTitle>
-              <p className="text-muted-foreground">
-                Activism, social change, and the fight for equality in contemporary society
-              </p>
-            </CardHeader>
-          </Card>
-
-          {/* Statistics */}
-          <Card className="mb-8 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-center">Key Civil Rights Facts 2025</CardTitle>
+          <div className="mb-6">
+            <h1 className="text-3xl font-bold">Civil Rights and Social Movements</h1>
+            <p className="text-sm text-black/70 mt-1">Minimal design • Orange accents only</p>
+          </div>
+          <Card className="mb-8 border border-orange-200">
+            <CardHeader className="py-3">
+              <CardTitle className="text-xl">Key Civil Rights Facts 2025</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">15-26M</div>
-                  <div className="text-sm text-purple-100">Americans in BLM protests 2020</div>
+                  <div className="text-sm text-black/70">Americans in BLM protests 2020</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">2022</div>
-                  <div className="text-sm text-purple-100">Roe v. Wade overturned</div>
+                  <div className="text-sm text-black/70">Roe v. Wade overturned</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">70%</div>
-                  <div className="text-sm text-purple-100">US support same-sex marriage</div>
+                  <div className="text-sm text-black/70">US support same-sex marriage</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">2023</div>
-                  <div className="text-sm text-purple-100">Gender recognition law debates UK</div>
+                  <div className="text-sm text-black/70">Gender recognition law debates UK</div>
                 </div>
               </div>
             </CardContent>
@@ -112,7 +99,7 @@ const CivilRightsPage = () => {
             <AccordionItem value="key-topics" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-purple-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Flag className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -124,7 +111,7 @@ const CivilRightsPage = () => {
               <AccordionContent className="px-6 pb-6">
                 <div className="grid gap-4">
                   {keyTopics.map((topic, index) => (
-                    <Card key={index} className="border-l-4 border-l-purple-500">
+                    <Card key={index} className="border-l-4 border-l-orange-600">
                       <CardContent className="p-4">
                         <h4 className="font-semibold mb-2">{topic.title}</h4>
                         <p className="text-sm text-muted-foreground mb-3">{topic.content}</p>
@@ -163,9 +150,9 @@ const CivilRightsPage = () => {
                   <p className="text-justify leading-relaxed">
                     In the UK too, BLM protests drew tens of thousands; in one iconic incident, demonstrators in Bristol toppled the statue of slave trader Edward Colston and threw it into the harbour. (Those protesters were later acquitted of vandalism, as jurors seemed to agree the statue's presence was offensive and outdated.) The Colston episode sparked a national conversation about how Britain commemorates its colonial past. We've since seen universities and museums re-evaluate symbols of imperialism, and some artefacts – like the Benin Bronzes – returned to their places of origin. Though the initial BLM momentum has slowed, it has left a lasting imprint: terms like "systemic racism" entered mainstream discourse, and communities of color continue to demand police reform and equal treatment.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This paragraph is excellent for discussions on social movements, racial justice, or the impact of mass protests. It provides concrete statistics on participation and can support arguments about the effectiveness of grassroots activism or the need for institutional reform. It's also useful for analyzing the relationship between social movements and policy change.
                     </p>
                   </div>
@@ -183,7 +170,7 @@ const CivilRightsPage = () => {
             <AccordionItem value="metoo-womens-rights" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-pink-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Users className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -200,9 +187,9 @@ const CivilRightsPage = () => {
                   <p className="text-justify leading-relaxed">
                     This galvanized massive protests nationwide – crowds poured into the streets of cities from New York to Los Angeles after the ruling, and many states immediately enacted abortion bans. President Biden and others decried the decision as a huge blow to women's freedom. In the year since, the fight has shifted to the state level: some states have protected abortion access or even enshrined it in law, while others have banned almost all abortions. The Roe reversal also prompted a rare bipartisan action in Congress: fearing that other rights (like same-sex marriage) might be in jeopardy, legislators passed the Respect for Marriage Act (RFMA) in late 2022. This law requires federal and interstate recognition of same-sex and interracial marriages, essentially codifying protections that had relied on Supreme Court precedents. The RFMA's passage – signed by President Biden – was a notable victory for LGBTQ+ rights at a time when other civil rights felt under threat.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This paragraph is valuable for discussions on women's rights, reproductive freedom, or the impact of social movements on policy. It provides concrete examples of legal changes and can support arguments about the importance of protecting civil rights or the role of the judiciary in social issues. It's also useful for analyzing the relationship between social movements and legislative responses.
                     </p>
                   </div>
@@ -220,7 +207,7 @@ const CivilRightsPage = () => {
             <AccordionItem value="lgbtq-rights-backlash" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-rainbow-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Heart className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -237,9 +224,9 @@ const CivilRightsPage = () => {
                   <p className="text-justify leading-relaxed">
                     Trans rights activists and major medical organizations oppose these measures as harmful and discriminatory, and protests have occurred in state capitols. This "culture war" over trans rights mirrors a larger pattern: progressive social movements push for inclusion and the expansion of rights, while an opposing movement mobilizes fears and seeks to claw back some of those gains. Similar dynamics are visible in the UK – for example, heated debates over reforming gender recognition laws led to political standoffs between the Scottish and UK governments in 2023. The tension between advancing LGBTQ+ rights and resisting conservative pushback has created a polarized environment where both sides see their fundamental values at stake.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This paragraph is excellent for discussions on LGBTQ+ rights, culture wars, or the tension between progress and resistance. It provides concrete examples of legal restrictions and can support arguments about the importance of protecting minority rights or the challenges of advancing social progress. It's also useful for analyzing the dynamics of social change and resistance.
                     </p>
                   </div>
@@ -257,7 +244,7 @@ const CivilRightsPage = () => {
             <AccordionItem value="climate-activism" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-green-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Leaf className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -274,9 +261,9 @@ const CivilRightsPage = () => {
                   <p className="text-justify leading-relaxed">
                     Still, climate activists have succeeded in keeping environmental issues in the public eye, especially as real-world extreme weather (heatwaves, wildfires, floods) validates their alarm. The urgency of their message has been reinforced by scientific consensus and increasingly visible climate impacts. While some criticize their methods as too disruptive, others argue that the scale of the climate crisis justifies more aggressive forms of protest. The effectiveness of climate activism lies not just in immediate policy changes, but in shifting public consciousness and making environmental issues impossible to ignore. This has created a complex dynamic where environmental concerns compete with economic interests and public order considerations in policy debates.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This paragraph is valuable for discussions on climate activism, civil disobedience, or the effectiveness of protest tactics. It provides concrete examples of activist groups and can support arguments about the importance of environmental awareness or the balance between protest rights and public order. It's also useful for analyzing the relationship between activism and policy responses.
                     </p>
                   </div>
@@ -294,7 +281,7 @@ const CivilRightsPage = () => {
             <AccordionItem value="civil-society-counter-movements" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-blue-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Shield className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -311,9 +298,9 @@ const CivilRightsPage = () => {
                   <p className="text-justify leading-relaxed">
                     But it's worth noting that public opinion has in many ways shifted towards inclusion: for example, support for same-sex marriage in the US is at an all-time high (~70%), and a majority of Americans also said they support the BLM goals even if they might disagree on tactics. Likewise in Britain, attitudes on race and empire are slowly changing – e.g. more people now acknowledge the negative aspects of colonialism and support teaching that history. Social movements have managed to broaden the conversation, even if the policy outcomes are mixed. The coming years will show whether these civil rights advances can be sustained and expanded, or whether pushback (legal and political) will stall their progress. The tension between advancing rights and maintaining social cohesion remains a central challenge for democratic societies.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This paragraph is excellent for discussions on civil society, social change, or the dynamics of progressive and conservative movements. It provides concrete data on public opinion and can support arguments about the direction of social progress or the challenges of maintaining social cohesion. It's also useful for analyzing the long-term impact of social movements.
                     </p>
                   </div>
@@ -331,7 +318,7 @@ const CivilRightsPage = () => {
             <AccordionItem value="vocabulary" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-cyan-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Building2 className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -343,11 +330,11 @@ const CivilRightsPage = () => {
               <AccordionContent className="px-6 pb-6">
                 <div className="grid gap-3">
                   {essentialVocabulary.map((item, index) => (
-                    <Card key={index} className="border-l-4 border-l-cyan-500">
+                    <Card key={index} className="border-l-4 border-l-orange-600">
                       <CardContent className="p-4">
                         <div className="flex flex-col sm:flex-row sm:items-start gap-2">
                           <div className="sm:w-1/3">
-                            <Badge className="bg-cyan-500">{item.term}</Badge>
+                            <Badge className="bg-orange-600">{item.term}</Badge>
                           </div>
                           <div className="sm:w-2/3">
                             <p className="text-sm text-muted-foreground">{item.definition}</p>
@@ -364,7 +351,7 @@ const CivilRightsPage = () => {
             <AccordionItem value="essay-questions" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-purple-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Building2 className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -434,13 +421,13 @@ const CivilRightsPage = () => {
           {/* Navigation */}
           <div className="flex justify-between items-center mt-8">
             <Link to="/formation/anglais/civilisation">
-              <Button variant="outline" className="flex items-center gap-2">
+              <Button variant="outline" className="flex items-center gap-2 border-orange-500 text-black hover:bg-orange-50">
                 <ArrowLeft className="h-4 w-4" />
                 Back to Civilization Overview
               </Button>
             </Link>
             <Link to="/formation/anglais/civilisation/brexit">
-              <Button className="flex items-center gap-2 bg-purple-500 hover:bg-purple-600">
+              <Button className="flex items-center gap-2 bg-orange-600 hover:bg-orange-700">
                 Next: Brexit and its Aftermath
                 <ArrowRight className="h-4 w-4" />
               </Button>

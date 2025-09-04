@@ -15,20 +15,20 @@ const PythonFundamentalsPage = () => {
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
-          <div className="p-3 rounded-lg bg-gray-100 text-gray-600 border border-gray-200">
+          <div className="p-3 rounded-lg bg-blue-100 text-blue-700 border border-blue-300">
             <Code className="h-8 w-8" />
           </div>
           <div>
             <h1 className="text-4xl font-bold text-gray-800">
               Module 0 - Les Fondamentaux
             </h1>
-            <Badge variant="secondary" className="mt-3 bg-gray-100 text-gray-700 border border-gray-200 font-semibold px-4 py-2">Module 0</Badge>
+            <Badge variant="secondary" className="mt-3 bg-blue-100 text-blue-800 border border-blue-300 font-semibold px-4 py-2">Module 0</Badge>
           </div>
         </div>
       </div>
 
         {/* Objectifs */}
-        <Card className="mb-8 border-2 border-gray-200 bg-gray-50 shadow-lg">
+        <Card className="mb-8 border-2 border-blue-300 bg-blue-50/50 shadow-lg">
           <CardHeader>
             <CardTitle className="text-xl text-gray-700 flex items-center gap-2">
               <Target className="h-5 w-5" />
@@ -65,7 +65,7 @@ const PythonFundamentalsPage = () => {
         <div className="space-y-6">
           
           {/* Notion 1: Pourquoi miser sur Python */}
-          <Card className="border-2 border-gray-200 bg-gray-50 shadow-lg">
+          <Card className="border-2 border-blue-300 bg-blue-50/50 shadow-lg">
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <Lightbulb className="h-5 w-5 text-gray-600" />
@@ -142,7 +142,7 @@ const PythonFundamentalsPage = () => {
           </Card>
 
           {/* Notion 2: Principales librairies */}
-          <Card className="border-2 border-gray-200 bg-gray-50 shadow-lg">
+          <Card className="border-2 border-blue-300 bg-blue-50/50 shadow-lg">
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <Code className="h-5 w-5 text-gray-600" />
@@ -242,7 +242,7 @@ const PythonFundamentalsPage = () => {
           </Card>
 
           {/* Notion 3: Types fondamentaux et variables */}
-          <Card className="border-2 border-gray-200 bg-gray-50 shadow-lg">
+          <Card className="border-2 border-blue-300 bg-blue-50/50 shadow-lg">
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <Code className="h-5 w-5 text-gray-600" />

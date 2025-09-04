@@ -2,45 +2,56 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Code, Languages, Globe, BookOpen, Home, ChevronRight, Calculator, FileText } from 'lucide-react';
+import { Code, Languages, Globe, BookOpen, Home, ChevronRight, Calculator, FileText, GraduationCap } from 'lucide-react';
 
 const FormationsOverviewPage = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
+      {/* Floating elements - Orange bubbles */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-28 h-28 bg-orange-200 rounded-full opacity-15 animate-pulse-slow"></div>
+      <div className="absolute top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute bottom-40 left-20 w-56 h-56 bg-orange-200 rounded-full opacity-8 animate-pulse"></div>
+      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-orange-100 rounded-full opacity-8 animate-pulse"></div>
+      <div className="absolute top-10 right-1/3 w-24 h-24 bg-orange-300 rounded-full opacity-12 animate-pulse-slow"></div>
+      <div className="absolute bottom-10 left-1/4 w-36 h-36 bg-orange-100 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute top-1/2 right-10 w-20 h-20 bg-orange-200 rounded-full opacity-15 animate-pulse-slow"></div>
+      <div className="absolute top-1/3 left-10 w-28 h-28 bg-orange-100 rounded-full opacity-8 animate-pulse"></div>
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <Home className="h-3 w-3" />
+              <div className="h-3 w-3">🏠</div>
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <span className="mx-1 text-muted-foreground/50">›</span>
             <span className="text-foreground font-medium">Toutes nos formations</span>
           </div>
         </div>
       </nav>
 
-      <div className="py-8 bg-accent">
+      <div className="py-8 relative z-10">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-bold text-center mb-4">
-            Toutes nos <span className="gradient-text">formations</span>
+            Toutes nos <span className="text-orange-600">formations</span>
           </h1>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto text-lg whitespace-nowrap">
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto text-lg">
             Formations conçues spécifiquement pour les étudiants en prépa ECG, avec méthodes éprouvées et accompagnement personnalisé.
           </p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {/* Formation Maths */}
             <Link to="/formation/maths" className="group">
-              <Card className="h-full bg-white hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-yellow-300 hover:bg-yellow-50">
+              <Card className="h-full bg-white hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-orange-200 hover:bg-orange-50">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center group-hover:bg-yellow-300 transition-colors duration-300">
-                      <Calculator className="h-6 w-6 text-yellow-600" />
+                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors duration-300">
+                      <Calculator className="h-6 w-6 text-orange-600" />
                     </div>
-                    <CardTitle className="text-xl group-hover:text-yellow-600 transition-colors">
+                    <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
                       Maths ECG
                     </CardTitle>
                   </div>
@@ -50,11 +61,11 @@ const FormationsOverviewPage = () => {
                     Maîtrisez tout le programme de maths ECG : logique, analyse, probabilités, algèbre, exercices corrigés et méthodes efficaces.
                   </p>
                   <div className="space-y-2 mb-4">
-                    <div className="text-sm text-yellow-600">✓ 20 chapitres progressifs</div>
-                    <div className="text-sm text-yellow-600">✓ Exercices type concours</div>
-                    <div className="text-sm text-yellow-600">✓ Méthodes et astuces de prépa</div>
+                    <div className="text-sm text-orange-600">✓ 20 chapitres progressifs</div>
+                    <div className="text-sm text-orange-600">✓ Exercices type concours</div>
+                    <div className="text-sm text-orange-600">✓ Méthodes et astuces de prépa</div>
                   </div>
-                  <Button variant="ghost" className="text-yellow-600 group-hover:bg-yellow-50 w-full">
+                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full">
                     Découvrir la formation →
                   </Button>
                 </CardContent>
@@ -62,13 +73,13 @@ const FormationsOverviewPage = () => {
             </Link>
             {/* Formation Python */}
             <Link to="/formation" className="group">
-              <Card className="h-full bg-white hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-blue-300 hover:bg-blue-50">
+              <Card className="h-full bg-white hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-orange-200 hover:bg-orange-50">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-300 transition-colors duration-300">
-                      <Code className="h-6 w-6 text-blue-600" />
+                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors duration-300">
+                      <Code className="h-6 w-6 text-orange-600" />
                     </div>
-                    <CardTitle className="text-xl group-hover:text-blue-600 transition-colors">
+                    <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
                       Python ECG
                     </CardTitle>
                   </div>
@@ -78,11 +89,11 @@ const FormationsOverviewPage = () => {
                     Maîtrisez Python pour les concours : 4 modules progressifs avec exercices pratiques et coaching personnalisé.
                   </p>
                   <div className="space-y-2 mb-4">
-                    <div className="text-sm text-blue-600">✓ 54 commandes essentielles</div>
-                    <div className="text-sm text-blue-600">✓ Exercices type concours</div>
-                    <div className="text-sm text-blue-600">✓ +3 à 5 points garantis</div>
+                    <div className="text-sm text-orange-600">✓ 54 commandes essentielles</div>
+                    <div className="text-sm text-orange-600">✓ Exercices type concours</div>
+                    <div className="text-sm text-orange-600">✓ +3 à 5 points garantis</div>
                   </div>
-                  <Button variant="ghost" className="text-blue-600 group-hover:bg-blue-50 w-full">
+                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full">
                     Commencer le module →
                   </Button>
                 </CardContent>
@@ -91,13 +102,13 @@ const FormationsOverviewPage = () => {
 
             {/* Formation Anglais */}
             <Link to="/formation/anglais" className="group">
-              <Card className="h-full bg-white hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-green-300 hover:bg-green-50">
+              <Card className="h-full bg-white hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-orange-200 hover:bg-orange-50">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center group-hover:bg-green-300 transition-colors duration-300">
-                      <Languages className="h-6 w-6 text-green-600" />
+                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors duration-300">
+                      <Languages className="h-6 w-6 text-orange-600" />
                     </div>
-                    <CardTitle className="text-xl group-hover:text-green-600 transition-colors">
+                    <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
                       Anglais ECG
                     </CardTitle>
                   </div>
@@ -107,11 +118,11 @@ const FormationsOverviewPage = () => {
                     Perfectionnez votre anglais avec méthodes ciblées, grammaire avancée et préparation aux épreuves.
                   </p>
                   <div className="space-y-2 mb-4">
-                    <div className="text-sm text-green-600">✓ Grammaire systématique</div>
-                    <div className="text-sm text-green-600">✓ Thèmes et versions</div>
-                    <div className="text-sm text-green-600">✓ Essais et synthèses</div>
+                    <div className="text-sm text-orange-600">✓ Grammaire systématique</div>
+                    <div className="text-sm text-orange-600">✓ Thèmes et versions</div>
+                    <div className="text-sm text-orange-600">✓ Essais et synthèses</div>
                   </div>
-                  <Button variant="ghost" className="text-green-600 group-hover:bg-green-50 w-full">
+                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full">
                     Voir la formation →
                   </Button>
                 </CardContent>
@@ -120,13 +131,13 @@ const FormationsOverviewPage = () => {
 
             {/* Formation Espagnol */}
             <Link to="/formation/espagnol" className="group">
-              <Card className="h-full bg-white hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-pink-300 hover:bg-pink-50">
+              <Card className="h-full bg-white hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-orange-200 hover:bg-orange-50">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center group-hover:bg-pink-300 transition-colors duration-300">
-                      <Languages className="h-6 w-6 text-pink-600" />
+                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors duration-300">
+                      <Languages className="h-6 w-6 text-orange-600" />
                     </div>
-                    <CardTitle className="text-xl group-hover:text-pink-600 transition-colors">
+                    <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
                       Espagnol ECG
                     </CardTitle>
                   </div>
@@ -136,11 +147,11 @@ const FormationsOverviewPage = () => {
                     Perfectionnez votre espagnol avec méthodes ciblées, grammaire avancée et préparation intensive aux concours.
                   </p>
                   <div className="space-y-2 mb-4">
-                    <div className="text-sm text-pink-600">✓ Grammaire et conjugaison</div>
-                    <div className="text-sm text-pink-600">✓ Thèmes et versions</div>
-                    <div className="text-sm text-pink-600">✓ Expression écrite et orale</div>
+                    <div className="text-sm text-orange-600">✓ Grammaire et conjugaison</div>
+                    <div className="text-sm text-orange-600">✓ Thèmes et versions</div>
+                    <div className="text-sm text-orange-600">✓ Expression écrite et orale</div>
                   </div>
-                  <Button variant="ghost" className="text-pink-600 group-hover:bg-pink-50 w-full">
+                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full">
                     Voir la formation →
                   </Button>
                 </CardContent>
@@ -149,13 +160,13 @@ const FormationsOverviewPage = () => {
 
             {/* Formation Allemand */}
             <Link to="/formation/allemand" className="group">
-              <Card className="h-full bg-white hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-red-300 hover:bg-red-50">
+              <Card className="h-full bg-white hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-orange-200 hover:bg-orange-50">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center group-hover:bg-red-300 transition-colors duration-300">
-                      <Languages className="h-6 w-6 text-red-600" />
+                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors duration-300">
+                      <Languages className="h-6 w-6 text-orange-600" />
                     </div>
-                    <CardTitle className="text-xl group-hover:text-red-600 transition-colors">
+                    <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
                       Allemand ECG
                     </CardTitle>
                   </div>
@@ -165,11 +176,11 @@ const FormationsOverviewPage = () => {
                     Maîtrisez les déclinaisons, la grammaire complexe et les techniques d'expression écrite et orale.
                   </p>
                   <div className="space-y-2 mb-4">
-                    <div className="text-sm text-red-600">✓ Déclinaisons et cas</div>
-                    <div className="text-sm text-red-600">✓ Structures complexes</div>
-                    <div className="text-sm text-red-600">✓ Essais méthodiques</div>
+                    <div className="text-sm text-orange-600">✓ Déclinaisons et cas</div>
+                    <div className="text-sm text-orange-600">✓ Structures complexes</div>
+                    <div className="text-sm text-orange-600">✓ Essais méthodiques</div>
                   </div>
-                  <Button variant="ghost" className="text-red-600 group-hover:bg-red-50 w-full">
+                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full">
                     Voir la formation →
                   </Button>
                 </CardContent>
@@ -178,10 +189,10 @@ const FormationsOverviewPage = () => {
 
             {/* Formation Géopolitique */}
             <Link to="/formation/geopolitique" className="group">
-              <Card className="h-full bg-white hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-orange-300 hover:bg-orange-50">
+              <Card className="h-full bg-white hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-orange-200 hover:bg-orange-50">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-300 transition-colors duration-300">
+                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors duration-300">
                       <Globe className="h-6 w-6 text-orange-600" />
                     </div>
                     <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
@@ -205,15 +216,44 @@ const FormationsOverviewPage = () => {
               </Card>
             </Link>
 
-            {/* Formation Culture Générale */}
-            <Link to="/formation/culture-generale" className="group">
-              <Card className="h-full bg-white hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-purple-300 hover:bg-purple-50">
+            {/* Formation ESH */}
+            <Link to="/formation/esh" className="group">
+              <Card className="h-full bg-white hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-orange-200 hover:bg-orange-50">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center group-hover:bg-purple-300 transition-colors duration-300">
-                      <BookOpen className="h-6 w-6 text-purple-600" />
+                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors duration-300">
+                      <GraduationCap className="h-6 w-6 text-orange-600" />
                     </div>
-                    <CardTitle className="text-xl group-hover:text-purple-600 transition-colors">
+                    <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
+                      ESH ECG
+                    </CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 mb-4">
+                    Maîtrisez l'économie et les sciences humaines avec méthodes ciblées et études de cas pratiques.
+                  </p>
+                  <div className="space-y-2 mb-4">
+                    <div className="text-sm text-orange-600">✓ Première et deuxième année</div>
+                    <div className="text-sm text-orange-600">✓ Méthodologie spécialisée</div>
+                    <div className="text-sm text-orange-600">✓ Études de cas concrètes</div>
+                  </div>
+                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full">
+                    Voir la formation →
+                  </Button>
+                </CardContent>
+              </Card>
+            </Link>
+
+            {/* Formation Culture Générale */}
+            <Link to="/formation/culture-generale" className="group">
+              <Card className="h-full bg-white hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-orange-200 hover:bg-orange-50">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors duration-300">
+                      <BookOpen className="h-6 w-6 text-orange-600" />
+                    </div>
+                    <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
                       Culture générale
                     </CardTitle>
                   </div>
@@ -223,11 +263,11 @@ const FormationsOverviewPage = () => {
                     Méthodes et articles pour analyser finement les sujets, de la grammaire du libellé aux références clés.
                   </p>
                   <div className="space-y-2 mb-4">
-                    <div className="text-sm text-purple-600">✓ Types de sujets et pièges</div>
-                    <div className="text-sm text-purple-600">✓ Analyses conceptuelles</div>
-                    <div className="text-sm text-purple-600">✓ Exemples argumentés</div>
+                    <div className="text-sm text-orange-600">✓ Types de sujets et pièges</div>
+                    <div className="text-sm text-orange-600">✓ Analyses conceptuelles</div>
+                    <div className="text-sm text-orange-600">✓ Exemples argumentés</div>
                   </div>
-                  <Button variant="ghost" className="text-purple-600 group-hover:bg-purple-50 w-full">
+                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full">
                     Voir la formation →
                   </Button>
                 </CardContent>
@@ -236,13 +276,13 @@ const FormationsOverviewPage = () => {
 
             {/* Formation Synthèse de Texte */}
             <Link to="/formation/synthese-texte" className="group">
-              <Card className="h-full bg-white hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-teal-300 hover:bg-teal-50">
+              <Card className="h-full bg-white hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-orange-200 hover:bg-orange-50">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center group-hover:bg-teal-300 transition-colors duration-300">
-                      <FileText className="h-6 w-6 text-teal-600" />
+                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors duration-300">
+                      <FileText className="h-6 w-6 text-orange-600" />
                     </div>
-                    <CardTitle className="text-xl group-hover:text-teal-600 transition-colors">
+                    <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
                       Synthèse de Texte ECG
                     </CardTitle>
                   </div>
@@ -252,11 +292,11 @@ const FormationsOverviewPage = () => {
                     Maîtrisez l'épreuve de synthèse de texte avec méthodes éprouvées, analyse de sujets et organisation annuelle complète.
                   </p>
                   <div className="space-y-2 mb-4">
-                    <div className="text-sm text-teal-600">✓ Méthodologie détaillée 4h</div>
-                    <div className="text-sm text-teal-600">✓ Types de sujets économiques</div>
-                    <div className="text-sm text-teal-600">✓ Travail annuel structuré</div>
+                    <div className="text-sm text-orange-600">✓ Méthodologie détaillée 4h</div>
+                    <div className="text-sm text-orange-600">✓ Types de sujets économiques</div>
+                    <div className="text-sm text-orange-600">✓ Travail annuel structuré</div>
                   </div>
-                  <Button variant="ghost" className="text-teal-600 group-hover:bg-teal-50 w-full">
+                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full">
                     Voir la formation →
                   </Button>
                 </CardContent>
@@ -266,7 +306,7 @@ const FormationsOverviewPage = () => {
 
           <div className="text-center mt-12">
             <Link to="/contact">
-              <Button size="lg" className="px-8 py-4 text-lg">
+              <Button size="lg" className="px-8 py-4 text-lg bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700">
                 <BookOpen className="h-5 w-5 mr-2" />
                 Nous contacter pour plus d'informations
               </Button>

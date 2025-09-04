@@ -23,17 +23,17 @@ const semestre1: Semester = {
   chapters: [
     {
       id: 1,
-      slug: 'complements-algebre-lineaire',
-      title: 'Compléments d\'algèbre linéaire',
-      description: 'Somme directe de sous-espaces vectoriels et bases',
-      icon: Calculator,
+      slug: 'elements-de-logique',
+      title: 'Éléments de logique',
+      description: 'Concepts fondamentaux et démonstrations rigoureuses',
+      icon: BrainCircuit,
       color: 'bg-blue-600'
     },
     {
       id: 2,
-      slug: 'endomorphismes-matrices-avancees',
-      title: 'Éléments propres et réduction des endomorphismes',
-      description: 'Vecteurs propres, espaces propres et réduction matricielle',
+      slug: 'ensembles-et-applications',
+      title: 'Ensembles et applications',
+      description: 'Concepts fondamentaux et démonstrations rigoureuses',
       icon: Shapes,
       color: 'bg-blue-600'
     },

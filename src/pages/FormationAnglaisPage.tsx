@@ -61,7 +61,7 @@ const FormationAnglaisPage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mb-16">
           {/* Vocabulaire Anglais */}
           <Link
-            to="/formation/anglais/civilisation/politics/vocabulary"
+            to="/formation/anglais/vocabulaire"
             className="bg-white rounded-xl p-8 shadow-md hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 group flex flex-col items-center text-center min-h-[420px] justify-between border border-transparent hover:border-orange-300 hover:bg-orange-50 transform"
           >
             <div className="flex flex-col items-center">

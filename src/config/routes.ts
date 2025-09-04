@@ -19,6 +19,7 @@ const PythonFlashcardsPage = lazy(() => import('../pages/formation/Python/Python
 const PythonExercicesPage = lazy(() => import('../pages/formation/Python/PythonExercicesPage'));
 const PythonQuizPage = lazy(() => import('../pages/formation/Python/PythonQuizPage'));
 const FormationAnglaisPage = lazy(() => import('../pages/FormationAnglaisPage'));
+const FormationAnglaisVocabulairePage = lazy(() => import('../pages/formation/anglais/FormationAnglaisVocabulairePage'));
 const FormationAnglaisGrammairePage = lazy(() => import('../pages/formation/anglais/FormationAnglaisGrammairePage'));
 const FormationAnglaisCivilisationPage = lazy(() => import('../pages/formation/anglais/FormationAnglaisCivilisationPage'));
 const AnglaisCivilisationOverviewPage = lazy(() => import('../pages/formation/anglais/CivilisationOverviewPage'));
@@ -28,12 +29,13 @@ const AnglaisPoliticsPage = lazy(() => import('../pages/formation/anglais/civili
 const AnglaisPoliticsVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/PoliticsVocabularyPage'));
 const AnglaisGeopoliticsVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/GeopoliticsVocabularyPage'));
 const AnglaisAITechnologyVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/AITechnologyVocabularyPage'));
+const AnglaisLaborVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/LaborVocabularyPage'));
 const AnglaisEconomyVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/EconomyVocabularyPage'));
 const AnglaisHealthVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/HealthVocabularyPage'));
+const AnglaisPolarizationVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/PolarizationVocabularyPage'));
 const AnglaisEducationVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/EducationVocabularyPage'));
 const AnglaisMediaVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/MediaVocabularyPage'));
 const AnglaisJusticeVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/JusticeVocabularyPage'));
-const AnglaisInequalitiesVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/InequalitiesVocabularyPage'));
 const AnglaisCivilRightsVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/CivilRightsVocabularyPage'));
 const AnglaisBrexitVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/BrexitVocabularyPage'));
 const AnglaisCommonwealthVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/CommonwealthVocabularyPage'));
@@ -44,10 +46,16 @@ const AnglaisGeopoliticsPage = lazy(() => import('../pages/formation/anglais/civ
 const AnglaisAITechnologyPage = lazy(() => import('../pages/formation/anglais/civilisation/AITechnologyPage'));
 const AnglaisEconomyPage = lazy(() => import('../pages/formation/anglais/civilisation/EconomyPage'));
 const AnglaisHealthPage = lazy(() => import('../pages/formation/anglais/civilisation/HealthPage'));
+const AnglaisHealthSystemsPage = lazy(() => import('../pages/formation/anglais/civilisation/HealthSystemsPage'));
 const AnglaisEducationPage = lazy(() => import('../pages/formation/anglais/civilisation/EducationPage'));
 const AnglaisMediaPage = lazy(() => import('../pages/formation/anglais/civilisation/MediaPage'));
+const AnglaisMediaSampleEssaysPage = lazy(() => import('../pages/formation/anglais/civilisation/MediaSampleEssaysPage'));
+const AnglaisPolarizationSampleEssaysPage = lazy(() => import('../pages/formation/anglais/civilisation/PolarizationSampleEssaysPage'));
+const AnglaisLaborSampleEssaysPage = lazy(() => import('../pages/formation/anglais/civilisation/LaborSampleEssaysPage'));
+const AnglaisBrexitSampleEssaysPage = lazy(() => import('../pages/formation/anglais/civilisation/BrexitSampleEssaysPage'));
+const AnglaisLaborPage = lazy(() => import('../pages/formation/anglais/civilisation/LaborPage'));
+const AnglaisPolarizationPage = lazy(() => import('../pages/formation/anglais/civilisation/PolarizationPage'));
 const AnglaisJusticePage = lazy(() => import('../pages/formation/anglais/civilisation/JusticePage'));
-const AnglaisInequalitiesPage = lazy(() => import('../pages/formation/anglais/civilisation/InequalitiesPage'));
 const AnglaisCivilRightsPage = lazy(() => import('../pages/formation/anglais/civilisation/CivilRightsPage'));
 const AnglaisBrexitPage = lazy(() => import('../pages/formation/anglais/civilisation/BrexitPage'));
 const AnglaisCommonwealthPage = lazy(() => import('../pages/formation/anglais/civilisation/CommonwealthPage'));
@@ -114,6 +122,14 @@ const TechnologieInnovationAllemandePage = lazy(() => import('../pages/formation
 const FemmesEgaliteAllemandePage = lazy(() => import('../pages/formation/allemand/FemmesEgaliteAllemandePage'));
 const HistoireMemoireAllemandePage = lazy(() => import('../pages/formation/allemand/HistoireMemoireAllemandePage'));
 const ReussirEpreuvesAllemandePage = lazy(() => import('../pages/formation/allemand/ReussirEpreuvesAllemandePage'));
+const EpreuvesOralesPage = lazy(() => import('../pages/formation/allemand/EpreuvesOralesPage'));
+const EpreuvesOralesExercicesPage = lazy(() => import('../pages/formation/allemand/EpreuvesOralesExercicesPage'));
+const EpreuvesEcritesEssaiPage = lazy(() => import('../pages/formation/allemand/EpreuvesEcritesEssaiPage'));
+const EpreuvesEcritesSynthesePage = lazy(() => import('../pages/formation/allemand/EpreuvesEcritesSynthesePage'));
+const GrammaireAvanceePage = lazy(() => import('../pages/formation/allemand/GrammaireAvanceePage'));
+const MethodologieTravailPage = lazy(() => import('../pages/formation/allemand/MethodologieTravailPage'));
+const ReussirSyntheseExercicesPage = lazy(() => import('../pages/formation/allemand/ReussirSyntheseExercicesPage'));
+const ReussirEssaiExercicesPage = lazy(() => import('../pages/formation/allemand/ReussirEssaiExercicesPage'));
 const ReussirLaisserPage = lazy(() => import('../pages/formation/allemand/ReussirLaisserPage'));
 const ReussirCollePage = lazy(() => import('../pages/formation/allemand/ReussirCollePage'));
 const ReussirSynthesePage = lazy(() => import('../pages/formation/allemand/ReussirSynthesePage'));
@@ -132,7 +148,31 @@ const RelativePage = lazy(() => import('../pages/formation/allemand/RelativePage
 const PassifPage = lazy(() => import('../pages/formation/allemand/PassifPage'));
 const StructurePage = lazy(() => import('../pages/formation/allemand/StructurePage'));
 const RecurrentsPage = lazy(() => import('../pages/formation/allemand/RecurrentsPage'));
-const VerbIrregulierPage = lazy(() => import('../pages/formation/allemand/VerbIrregulierPage'));
+
+const VerbesAParticulePage = lazy(() => import('../pages/formation/allemand/VerbesAParticulePage'));
+const TempsComposesPage = lazy(() => import('../pages/formation/allemand/TempsComposesPage'));
+const VerbesModauxComplexesPage = lazy(() => import('../pages/formation/allemand/VerbesModauxComplexesPage'));
+const PositionV2Page = lazy(() => import('../pages/formation/allemand/PositionV2Page'));
+const AuxiliaireParfaitPage = lazy(() => import('../pages/formation/allemand/AuxiliaireParfaitPage'));
+const GenetifPage = lazy(() => import('../pages/formation/allemand/GenetifPage'));
+const NegationPage = lazy(() => import('../pages/formation/allemand/NegationPage'));
+const PhrasesInterrogativesPage = lazy(() => import('../pages/formation/allemand/PhrasesInterrogativesPage'));
+const ComparatifSuperlatifPage = lazy(() => import('../pages/formation/allemand/ComparatifSuperlatifPage'));
+const DeclinaisonsExercicesPage = lazy(() => import('../pages/formation/allemand/DeclinaisonsExercicesPage'));
+const RelativeExercicesPage = lazy(() => import('../pages/formation/allemand/RelativeExercicesPage'));
+const StructureExercicesPage = lazy(() => import('../pages/formation/allemand/StructureExercicesPage'));
+const PassifExercicesPage = lazy(() => import('../pages/formation/allemand/PassifExercicesPage'));
+const RecurrentsExercicesPage = lazy(() => import('../pages/formation/allemand/RecurrentsExercicesPage'));
+
+const NegationExercicesPage = lazy(() => import('../pages/formation/allemand/NegationExercicesPage'));
+const PhrasesInterrogativesExercicesPage = lazy(() => import('../pages/formation/allemand/PhrasesInterrogativesExercicesPage'));
+const ComparatifSuperlatifExercicesPage = lazy(() => import('../pages/formation/allemand/ComparatifSuperlatifExercicesPage'));
+const GenetifExercicesPage = lazy(() => import('../pages/formation/allemand/GenetifExercicesPage'));
+const VerbesAParticuleExercicesPage = lazy(() => import('../pages/formation/allemand/VerbesAParticuleExercicesPage'));
+const TempsComposesExercicesPage = lazy(() => import('../pages/formation/allemand/TempsComposesExercicesPage'));
+const VerbesModauxComplexesExercicesPage = lazy(() => import('../pages/formation/allemand/VerbesModauxComplexesExercicesPage'));
+const PositionV2ExercicesPage = lazy(() => import('../pages/formation/allemand/PositionV2ExercicesPage'));
+const AuxiliaireParfaitExercicesPage = lazy(() => import('../pages/formation/allemand/AuxiliaireParfaitExercicesPage'));
 const FormationGeopolitiquePage = lazy(() => import('../pages/FormationGeopolitiquePage'));
 const GeopolitiquePremiereAnneePage = lazy(() => import('../pages/formation/geopolitique/GeopolitiquePremiereAnneePage'));
 const GeopolitiqueDeuxiemeAnneePage = lazy(() => import('../pages/formation/geopolitique/GeopolitiqueDeuxiemeAnneePage'));
@@ -172,6 +212,7 @@ const GeopolitiquesFlashcardsPage = lazy(() => import('../pages/formation/geopol
 const GeopolitiquesReferencesPage = lazy(() => import('../pages/formation/geopolitique/GeopolitiquesReferencesPage'));
 const GeopolitiquesMethodologiePage = lazy(() => import('../pages/formation/geopolitique/GeopolitiquesMethodologiePage'));
 const MethodologieDissertationPage = lazy(() => import('../pages/formation/geopolitique/MethodologieDissertationPage'));
+const AnnalesGeopolitiquePage = lazy(() => import('../pages/formation/geopolitique/AnnalesGeopolitiquePage'));
 const EnvironmentPage = lazy(() => import('../pages/formation/anglais/civilisation/EnvironmentPage'));
 const PoliticsPage = lazy(() => import('../pages/formation/anglais/civilisation/PoliticsPage'));
 const CivilisationOverviewPage = lazy(() => import('../pages/formation/anglais/CivilisationOverviewPage'));
@@ -182,7 +223,6 @@ const HealthPage = lazy(() => import('../pages/formation/anglais/civilisation/He
 const EducationPage = lazy(() => import('../pages/formation/anglais/civilisation/EducationPage'));
 const MediaPage = lazy(() => import('../pages/formation/anglais/civilisation/MediaPage'));
 const JusticePage = lazy(() => import('../pages/formation/anglais/civilisation/JusticePage'));
-const InequalitiesPage = lazy(() => import('../pages/formation/anglais/civilisation/InequalitiesPage'));
 const CivilRightsPage = lazy(() => import('../pages/formation/anglais/civilisation/CivilRightsPage'));
 const BrexitPage = lazy(() => import('../pages/formation/anglais/civilisation/BrexitPage'));
 const CommonwealthPage = lazy(() => import('../pages/formation/anglais/civilisation/CommonwealthPage'));
@@ -241,11 +281,14 @@ const MathsInegalitesPage = lazy(() => import('../pages/formation/math/MathsAppr
 const Chapitre1LogiqueExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre1-LogiqueEtRaisonnementFondamentaux-ExercicesPage'));
 const Chapitre2EnsemblesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre2-EnsemblesEtApplications-ExercicesPage'));
 const Chapitre2EndomorphismesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre2-EndomorphismesMatricesAvancees-ExercicesPage'));
+const Chapitre2EndomorphismesCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre2-EndomorphismesMatricesAvancees-CoursPage'));
 const Chapitre3SommesProduitsExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre3-SommesProduitsEtCoefficientsBinomiaux-ExercicesPage'));
 const Chapitre4SuitesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre4-SuitesNumeriques-ExercicesPage'));
 const Chapitre5FonctionsExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre5-FonctionsUneVariableReelle-ExercicesPage'));
 const Chapitre6DerivationExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre6-Derivation-ExercicesPage'));
+const Chapitre6VariablesAleatoiresDensiteCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre6-VariablesAleatoiresDensite-CoursPage'));
 const Chapitre6VariablesAleatoiresDensiteExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre6-VariablesAleatoiresDensite-ExercicesPage'));
+const Chapitre6VariablesAleatoiresDensiteFlashcardsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre6-VariablesAleatoiresDensite-FlashcardsPage'));
 const Chapitre7IntegrationExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre7-IntegrationSurUnSegment-ExercicesPage'));
 const Chapitre8PolynomesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre8-Polynomes-ExercicesPage'));
 const Chapitre1ComplementsAlgebreLineaireExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre1-ComplementsAlgebreLineaire-ExercicesPage'));
@@ -255,7 +298,10 @@ const Chapitre9AlgebreBilineaireEspacesEuclidiensExercicesPage = lazy(() => impo
 const Chapitre10ProbabilitesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre10-ProbabilitesEtConditionnement-ExercicesPage'));
 const Chapitre11ApplicationsLineairesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre11-ApplicationsLineairesEtStructuresVectorielles-ExercicesPage'));
 const Chapitre11OptimisationMultivarieeAvanceeExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre11-OptimisationMultivarieeAvancee-ExercicesPage'));
+const Chapitre11OptimisationMultivarieeAvanceeCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre11-OptimisationMultivarieeAvancee-CoursPage'));
+const Chapitre11OptimisationMultivarieeAvanceeQuizPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre11-OptimisationMultivarieeAvancee-QuizPage'));
 const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre4-FonctionsMultivariees-CalculDifferentiel-ExercicesPage'));
+const Chapitre4FonctionsMultivariees_CalculDifferentielCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre4-FonctionsMultivariees-CalculDifferentiel-CoursPage'));
 const Chapitre12ComparaisonExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre12-Comparaison-NegligeabiliteEquivalence-ExercicesPage'));
 const Chapitre13SeriesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre13-SeriesNumeriques-ExercicesPage'));
 const Chapitre14DeveloppementsExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre14-DeveloppementsLimitesEtTaylor-ExercicesPage'));
@@ -264,7 +310,10 @@ const Chapitre16EspacesProbabilisesExercicesPage = lazy(() => import('../pages/f
 const Chapitre17VariablesAleatoiresExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre17-VariablesAleatoiresDiscretes-Lois-ExercicesPage'));
 const Chapitre18ConvergencesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre18-Convergences-Et-TheoremesLimites-ExercicesPage'));
 const Chapitre10ReductionMatricesSymetriquesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre10-ReductionMatricesSymetriques-ExercicesPage'));
+const Chapitre10ReductionMatricesSymetriquesCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre10-ReductionMatricesSymetriques-CoursPage'));
 const Chapitre12ConvergencesApproximationsExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre12-ConvergencesApproximations-ExercicesPage'));
+const Chapitre12ConvergencesApproximationsCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre12-ConvergencesApproximations-CoursPage'));
+const Chapitre13EstimationStatistiqueAvanceeCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre13-EstimationStatistiqueAvancee-CoursPage'));
 const Chapitre18EstimationStatistiqueAvanceeExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre18-EstimationStatistiqueAvancee-ExercicesPage'));
 const Chapitre14TheorieEstimationStatistiqueExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre14-TheorieEstimationStatistique-ExercicesPage'));
 const Chapitre5ComplementsVariablesAleatoiresExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre5-ComplementsVariablesAleatoires-ExercicesPage'));
@@ -293,6 +342,12 @@ const OffreGratuitePage = lazy(() => import('../pages/offres/OffreGratuitePage')
 // Methodologie pages
 const MethodEntretiensPersonnalitePage = lazy(() => import('../pages/methodologie/MethodEntretiensPersonnalitePage'));
 const StorytellingMethodePage = lazy(() => import('../pages/StorytellingMethodePage'));
+
+// Pages légales
+const MentionsLegalesPage = lazy(() => import('../pages/MentionsLegalesPage'));
+const PolitiqueConfidentialitePage = lazy(() => import('../pages/PolitiqueConfidentialitePage'));
+const CGUPage = lazy(() => import('../pages/CGUPage'));
+const CGVPage = lazy(() => import('../pages/CGVPage'));
 
 // Pages méthodologie entretiens de personnalité
 const MotivationEcolePage = lazy(() => import('../pages/methodologie/MotivationEcolePage'));
@@ -360,6 +415,59 @@ const TeacherCourseGradesPage = lazy(() => import('../pages/teacher/TeacherCours
 const TeacherCourseAssignmentPage = lazy(() => import('../pages/teacher/TeacherCourseAssignmentPage'));
 const ChapitresLibresPage = lazy(() => import('../pages/ChapitresLibresPage'));
 
+// Formation ESH pages
+const FormationESHPage = lazy(() => import('../pages/formation/esh/FormationESHPage'));
+const PremiereAnneeESHPage = lazy(() => import('../pages/formation/esh/PremiereAnneeESHPage'));
+const DeuxiemeAnneeESHPage = lazy(() => import('../pages/formation/esh/DeuxiemeAnneeESHPage'));
+const MethodologieESHPage = lazy(() => import('../pages/formation/esh/MethodologieESHPage'));
+const EtudesCasESHPage = lazy(() => import('../pages/formation/esh/EtudesCasESHPage'));
+const RessourcesESHPage = lazy(() => import('../pages/formation/esh/RessourcesESHPage'));
+
+// Module 1 ESH chapters
+
+const ActeursFonctionsEconomiePage = lazy(() => import('../pages/formation/esh/module1/ActeursFonctionsEconomiePage'));
+const MonnaieFinancementEconomiePage = lazy(() => import('../pages/formation/esh/module1/MonnaieFinancementEconomiePage'));
+const CourantsEconomiquesPage = lazy(() => import('../pages/formation/esh/module1/CourantsEconomiquesPage'));
+
+// Module 3 ESH chapters
+const OuvertureEconomiesPage = lazy(() => import('../pages/formation/esh/module3/OuvertureEconomiesPage'));
+const AnalyseEchangesInternationauxPage = lazy(() => import('../pages/formation/esh/module3/AnalyseEchangesInternationauxPage'));
+const RegionalisationGouvernancePage = lazy(() => import('../pages/formation/esh/module3/RegionalisationGouvernancePage'));
+const BalancePaiementsChangePage = lazy(() => import('../pages/formation/esh/module3/BalancePaiementsChangePage'));
+const EvolutionSystemeMonetairePage = lazy(() => import('../pages/formation/esh/module3/EvolutionSystemeMonetairePage'));
+const MarcheCapitauxPage = lazy(() => import('../pages/formation/esh/module3/MarcheCapitauxPage'));
+const ConstructionEuropeennePage = lazy(() => import('../pages/formation/esh/module3/ConstructionEuropeennePage'));
+const EuropeEconomiqueMonetairePage = lazy(() => import('../pages/formation/esh/module3/EuropeEconomiqueMonetairePage'));
+const EuropeSocialePage = lazy(() => import('../pages/formation/esh/module3/EuropeSocialePage'));
+
+// Module 4 ESH chapters
+const InflationChomagePage = lazy(() => import('../pages/formation/esh/module4/InflationChomagePage'));
+const EquilibreMacroPage = lazy(() => import('../pages/formation/esh/module4/EquilibreMacroPage'));
+const FluctuationsEconomiquesPage = lazy(() => import('../pages/formation/esh/module4/FluctuationsEconomiquesPage'));
+const PolitiquesStructurellesPage = lazy(() => import('../pages/formation/esh/module4/PolitiquesStructurellesPage'));
+const ContraintesPolitiquesPage = lazy(() => import('../pages/formation/esh/module4/ContraintesPolitiquesPage'));
+const JusticeSocialePage = lazy(() => import('../pages/formation/esh/module4/JusticeSocialePage'));
+const LutteInegalitesPage = lazy(() => import('../pages/formation/esh/module4/LutteInegalitesPage'));
+const EtatProvidencePage = lazy(() => import('../pages/formation/esh/module4/EtatProvidencePage'));
+
+const EquilibreMicroPage = lazy(() => import('../pages/formation/esh/module1/EquilibreMicroPage'));
+const OffreDemandePage = lazy(() => import('../pages/formation/esh/module1/OffreDemandePage'));
+const DefaillancesMarchePage = lazy(() => import('../pages/formation/esh/module1/DefaillancesMarchePage'));
+
+const CourantsSociologiquesPage = lazy(() => import('../pages/formation/esh/module1/CourantsSociologiquesPage'));
+const MethodesSociologiquesPage = lazy(() => import('../pages/formation/esh/module1/MethodesSociologiquesPage'));
+
+// Module 2 ESH chapters
+const CroissanceEconomiquePage = lazy(() => import('../pages/formation/esh/module2/CroissanceEconomiquePage'));
+const InegalitesDeveloppementPage = lazy(() => import('../pages/formation/esh/module2/InegalitesDeveloppementPage'));
+const SoutenabiliteCroissancePage = lazy(() => import('../pages/formation/esh/module2/SoutenabiliteCroissancePage'));
+const TransformationsEconomiquesFinancieresPage = lazy(() => import('../pages/formation/esh/module2/TransformationsEconomiquesFinancieresPage'));
+const MobiliteSocialePage = lazy(() => import('../pages/formation/esh/module2/MobiliteSocialePage'));
+const TransformationsDemographiquesPage = lazy(() => import('../pages/formation/esh/module2/TransformationsDemographiquesPage'));
+const TransformationsEntreprisePage = lazy(() => import('../pages/formation/esh/module2/TransformationsEntreprisePage'));
+const ConcurrenceImparfaitePage = lazy(() => import('../pages/formation/esh/module2/ConcurrenceImparfaitePage'));
+const SociologieTravailPage = lazy(() => import('../pages/formation/esh/module2/SociologieTravailPage'));
+
 export interface RouteConfig {
   path: string;
   component: ComponentType<any>;
@@ -397,7 +505,13 @@ export const routes: RouteConfig[] = [
   { path: '/articles', component: ArticlesPage, title: 'Conseils & Articles' },
   { path: '/avis', component: AvisPage, title: 'Avis Superprof' },
   { path: '/methodologie/storytelling', component: StorytellingMethodePage, title: 'Méthodologie Storytelling' },
-  
+
+  // Pages légales
+  { path: '/mentions-legales', component: MentionsLegalesPage, title: 'Mentions légales' },
+  { path: '/politique-confidentialite', component: PolitiqueConfidentialitePage, title: 'Politique de confidentialité' },
+  { path: '/cgu', component: CGUPage, title: 'Conditions générales d\'utilisation' },
+  { path: '/cgv', component: CGVPage, title: 'Conditions générales de vente' },
+
   // Routes méthodologie entretiens de personnalité
   { path: '/methodologie/motivation-ecole', component: MotivationEcolePage, title: 'Motivation École' },
   { path: '/methodologie/projet-professionnel', component: ProjetProfessionnelPage, title: 'Projet Professionnel' },
@@ -421,6 +535,7 @@ export const routes: RouteConfig[] = [
   
   // Formation pages
   { path: '/formation/anglais', component: FormationAnglaisPage, title: 'Formation Anglais' },
+  { path: '/formation/anglais/vocabulaire', component: FormationAnglaisVocabulairePage, title: 'Vocabulaire Anglais' },
   { path: '/formation/anglais/grammaire', component: FormationAnglaisGrammairePage, title: 'Grammaire Anglaise' },
   { path: '/formation/anglais/civilisation', component: FormationAnglaisCivilisationPage, title: 'Civilisation Anglaise' },
   { path: '/formation/anglais/civilisation/environment', component: AnglaisEnvironmentPage, title: 'Environment and Ecology' },
@@ -433,15 +548,15 @@ export const routes: RouteConfig[] = [
   { path: '/formation/anglais/civilisation/economy/vocabulary', component: AnglaisEconomyVocabularyPage, title: 'Economy and Globalization Vocabulary - Flashcards' },
   { path: '/formation/anglais/civilisation/economy', component: AnglaisEconomyPage, title: 'Economy and Globalization' },
   { path: '/formation/anglais/civilisation/health/vocabulary', component: AnglaisHealthVocabularyPage, title: 'Health and Healthcare Vocabulary - Flashcards' },
+  { path: '/formation/anglais/civilisation/polarization/vocabulary', component: AnglaisPolarizationVocabularyPage, title: 'Polarization Vocabulary - Flashcards' },
   { path: '/formation/anglais/civilisation/health', component: AnglaisHealthPage, title: 'Health and Healthcare' },
+  { path: '/formation/anglais/civilisation/health-systems', component: AnglaisHealthSystemsPage, title: 'Health and Healthcare Systems: US and UK Policy Challenges and Crises' },
   { path: '/formation/anglais/civilisation/education/vocabulary', component: AnglaisEducationVocabularyPage, title: 'Education and Culture Wars Vocabulary - Flashcards' },
   { path: '/formation/anglais/civilisation/education', component: AnglaisEducationPage, title: 'Education and Culture Wars' },
   { path: '/formation/anglais/civilisation/media/vocabulary', component: AnglaisMediaVocabularyPage, title: 'Media and Social Networks Vocabulary - Flashcards' },
   { path: '/formation/anglais/civilisation/media', component: AnglaisMediaPage, title: 'Media and Social Networks' },
   { path: '/formation/anglais/civilisation/justice/vocabulary', component: AnglaisJusticeVocabularyPage, title: 'Justice and Rule of Law Vocabulary - Flashcards' },
   { path: '/formation/anglais/civilisation/justice', component: AnglaisJusticePage, title: 'Justice and Rule of Law' },
-  { path: '/formation/anglais/civilisation/inequalities/vocabulary', component: AnglaisInequalitiesVocabularyPage, title: 'Social and Racial Inequalities Vocabulary - Flashcards' },
-  { path: '/formation/anglais/civilisation/inequalities', component: AnglaisInequalitiesPage, title: 'Social and Racial Inequalities' },
   { path: '/formation/anglais/civilisation/civil-rights/vocabulary', component: AnglaisCivilRightsVocabularyPage, title: 'Civil Rights and Social Movements Vocabulary - Flashcards' },
   { path: '/formation/anglais/civilisation/civil-rights', component: AnglaisCivilRightsPage, title: 'Civil Rights and Social Movements' },
   { path: '/formation/anglais/civilisation/brexit/vocabulary', component: AnglaisBrexitVocabularyPage, title: 'Brexit and its Aftermath Vocabulary - Flashcards' },
@@ -455,6 +570,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/anglais/civilisation/crises/vocabulary', component: AnglaisCrisesVocabularyPage, title: 'Major Contemporary Crises Vocabulary - Flashcards' },
   { path: '/formation/anglais/civilisation/crises', component: AnglaisContemporaryCrisesPage, title: 'Contemporary Crises' },
   { path: '/formation/anglais/civilisation/ai-technology/vocabulary', component: AnglaisAITechnologyVocabularyPage, title: 'Artificial Intelligence and Technology Vocabulary - Flashcards' },
+  { path: '/formation/anglais/civilisation/labor/vocabulary', component: AnglaisLaborVocabularyPage, title: 'Labor Markets and Future of Work Vocabulary - Flashcards' },
 
   { path: '/formation/anglais/methodologie-complete', component: MethodologieAnglaisPage, title: 'Méthodologie Complète Anglais' },
 
@@ -509,6 +625,14 @@ export const routes: RouteConfig[] = [
   { path: '/formation/allemand/vocabulaire', component: lazy(() => import('../pages/formation/allemand/FormationAllemandVocabulairePage')), title: 'Vocabulaire Allemand' },
   { path: '/formation/allemand/civilisation', component: FormationAllemandCivilisationPage, title: 'Civilisation Allemande' },
   { path: '/formation/allemand/epreuves', component: ReussirEpreuvesAllemandePage, title: 'Réussir les épreuves d\'allemand - Allemand' },
+  { path: '/formation/allemand/epreuves-orales', component: EpreuvesOralesPage, title: 'Épreuves orales d\'allemand - Méthodologie' },
+  { path: '/formation/allemand/epreuves-orales/exercices', component: EpreuvesOralesExercicesPage, title: 'Exercices - Épreuves orales d\'allemand' },
+  { path: '/formation/allemand/reussir-essai', component: EpreuvesEcritesEssaiPage, title: 'Réussir l\'essai - Méthodologie' },
+  { path: '/formation/allemand/reussir-essai/exercices', component: ReussirEssaiExercicesPage, title: 'Exercices - Réussir l\'essai' },
+  { path: '/formation/allemand/reussir-synthese', component: EpreuvesEcritesSynthesePage, title: 'Réussir la synthèse - Méthodologie' },
+  { path: '/formation/allemand/reussir-synthese/exercices', component: ReussirSyntheseExercicesPage, title: 'Exercices - Réussir la synthèse' },
+  { path: '/formation/allemand/grammaire-avancee', component: GrammaireAvanceePage, title: 'Grammaire avancée - Thèmes grammaticaux' },
+  { path: '/formation/allemand/methodologie', component: MethodologieTravailPage, title: 'Méthodologie - Comment travailler l\'allemand en prépa' },
   { path: '/formation/allemand/politik', component: PolitikAllemandeMinimalPage, title: 'Politik in Deutschland - Allemand' },
   { path: '/formation/allemand/demographie', component: DemographieAllemandePage, title: 'Demographie in Deutschland - Allemand' },
   { path: '/formation/allemand/ecologie', component: EcologieAllemandePage, title: 'Ökologie und Umwelt in Deutschland - Allemand' },
@@ -535,7 +659,31 @@ export const routes: RouteConfig[] = [
   { path: '/formation/allemand-passif', component: PassifPage, title: 'Le Passif en Allemand' },
   { path: '/formation/allemand-structure', component: StructurePage, title: 'Structure de la Phrase' },
   { path: '/formation/allemand-recurrents', component: RecurrentsPage, title: 'Points de Grammaire Récurrents' },
-  { path: '/formation/allemand-verbes', component: VerbIrregulierPage, title: 'Verbes Irréguliers Allemands' },
+
+  { path: '/formation/allemand/verbes-particules', component: VerbesAParticulePage, title: 'Verbes à Particule Séparable' },
+  { path: '/formation/allemand-temps-composes', component: TempsComposesPage, title: 'Formation des Temps Composés' },
+  { path: '/formation/allemand-verbes-modaux', component: VerbesModauxComplexesPage, title: 'Verbes Modaux Complexes' },
+  { path: '/formation/allemand-position-v2', component: PositionV2Page, title: 'Règle de Position V2' },
+  { path: '/formation/allemand-auxiliaire-parfait', component: AuxiliaireParfaitPage, title: 'Choix de l\'Auxiliaire au Parfait' },
+  { path: '/formation/allemand-genitif', component: GenetifPage, title: 'Formation du Génitif' },
+  { path: '/formation/allemand-genitif/exercices', component: GenetifExercicesPage, title: 'Exercices du Génitif' },
+  { path: '/formation/allemand-declinaisons/exercices', component: DeclinaisonsExercicesPage, title: 'Exercices de Déclinaisons' },
+  { path: '/formation/allemand-relative/exercices', component: RelativeExercicesPage, title: 'Exercices de Propositions Relatives' },
+  { path: '/formation/allemand-structure/exercices', component: StructureExercicesPage, title: 'Exercices de Structure de Phrase' },
+  { path: '/formation/allemand-passif/exercices', component: PassifExercicesPage, title: 'Exercices du Passif' },
+  { path: '/formation/allemand-recurrents/exercices', component: RecurrentsExercicesPage, title: 'Exercices des Points Récurrents' },
+
+  { path: '/formation/allemand-negation/exercices', component: NegationExercicesPage, title: 'Exercices de la Négation' },
+  { path: '/formation/allemand-phrases-interrogatives/exercices', component: PhrasesInterrogativesExercicesPage, title: 'Exercices des Phrases Interrogatives' },
+  { path: '/formation/allemand-comparatif-superlatif/exercices', component: ComparatifSuperlatifExercicesPage, title: 'Exercices du Comparatif et Superlatif' },
+  { path: '/formation/allemand/verbes-particules/exercices', component: VerbesAParticuleExercicesPage, title: 'Exercices des Verbes à Particule Séparable' },
+  { path: '/formation/allemand-temps-composes/exercices', component: TempsComposesExercicesPage, title: 'Exercices des Temps Composés' },
+  { path: '/formation/allemand-verbes-modaux/exercices', component: VerbesModauxComplexesExercicesPage, title: 'Exercices des Verbes Modaux Complexes' },
+  { path: '/formation/allemand-position-v2/exercices', component: PositionV2ExercicesPage, title: 'Exercices de la Position V2' },
+  { path: '/formation/allemand-auxiliaire-parfait/exercices', component: AuxiliaireParfaitExercicesPage, title: 'Exercices du Choix de l\'Auxiliaire au Parfait' },
+  { path: '/formation/allemand-negation', component: NegationPage, title: 'La Négation et les Particules de Négation' },
+  { path: '/formation/allemand-phrases-interrogatives', component: PhrasesInterrogativesPage, title: 'Les Phrases Interrogatives' },
+  { path: '/formation/allemand-comparatif-superlatif', component: ComparatifSuperlatifPage, title: 'Comparatif et Superlatif' },
 
   // Formation Synthèse de Texte
   { path: '/formation/synthese-texte', component: FormationSyntheseTextePage, title: 'Formation Synthèse de Texte ECG' },
@@ -583,6 +731,59 @@ export const routes: RouteConfig[] = [
   { path: '/formation/geopolitique/references', component: GeopolitiquesReferencesPage, title: 'Références Géopolitiques' },
   { path: '/formation/geopolitique/methodologie', component: GeopolitiquesMethodologiePage, title: 'Méthodologie Géopolitique' },
   { path: '/formation/geopolitique/methodologie/dissertation', component: MethodologieDissertationPage, title: 'Méthodologie Dissertation' },
+  { path: '/formation/geopolitique/annales', component: AnnalesGeopolitiquePage, title: 'Annales Géopolitique' },
+
+  // Formation ESH
+{ path: '/formation/esh', component: FormationESHPage, title: 'Formation ESH ECG' },
+{ path: '/formation/esh/premiere-annee', component: PremiereAnneeESHPage, title: 'Première année ESH' },
+{ path: '/formation/esh/deuxieme-annee', component: DeuxiemeAnneeESHPage, title: 'Deuxième année ESH' },
+{ path: '/formation/esh/methodologie', component: MethodologieESHPage, title: 'Méthodologie ESH' },
+{ path: '/formation/esh/etudes-cas', component: EtudesCasESHPage, title: 'Ressources ESH' },
+{ path: '/formation/esh/ressources', component: RessourcesESHPage, title: 'Ressources ESH' },
+
+// Module 1 ESH chapters
+{ path: '/formation/esh/module1/acteurs-fonctions-economie', component: ActeursFonctionsEconomiePage, title: 'Les acteurs et les grandes fonctions de l\'économie' },
+{ path: '/formation/esh/module1/monnaie-financement-economie', component: MonnaieFinancementEconomiePage, title: 'La monnaie et le financement de l\'économie' },
+{ path: '/formation/esh/module1/courants-economiques', component: CourantsEconomiquesPage, title: 'Les grands courants de la pensée économique depuis le XVIe siècle' },
+
+{ path: '/formation/esh/module1/equilibre-micro', component: EquilibreMicroPage, title: 'L\'équilibre micro-économique du producteur et du consommateur' },
+{ path: '/formation/esh/module1/offre-demande', component: OffreDemandePage, title: 'L\'offre, la demande et l\'équilibre du marché en concurrence parfaite' },
+{ path: '/formation/esh/module1/defaillances-marche', component: DefaillancesMarchePage, title: 'Les défaillances de marché' },
+
+{ path: '/formation/esh/module1/courants-sociologiques', component: CourantsSociologiquesPage, title: 'Les grands courants de la pensée sociologique depuis le XIXe siècle' },
+{ path: '/formation/esh/module1/methodes-sociologiques', component: MethodesSociologiquesPage, title: 'La pluralité des méthodes sociologiques' },
+
+// Module 3 ESH chapters - La mondialisation économique et financière
+{ path: '/formation/esh/module3/ouverture-economies', component: OuvertureEconomiesPage, title: 'L\'ouverture des économies depuis le XIXe siècle : évolution et acteurs' },
+{ path: '/formation/esh/module3/analyse-echanges', component: AnalyseEchangesInternationauxPage, title: 'L\'analyse économique des échanges internationaux' },
+{ path: '/formation/esh/module3/regionalisation-gouvernance', component: RegionalisationGouvernancePage, title: 'Régionalisation, gouvernance et régulations internationales' },
+{ path: '/formation/esh/module3/balance-paiements', component: BalancePaiementsChangePage, title: 'Balance des paiements, cours de change et systèmes de change' },
+{ path: '/formation/esh/module3/evolution-systeme-monetaires', component: EvolutionSystemeMonetairePage, title: 'L\'évolution du système monétaire international depuis le XIXe siècle' },
+{ path: '/formation/esh/module3/marche-capitaux', component: MarcheCapitauxPage, title: 'Constitution et fonctionnement du marché international des capitaux' },
+{ path: '/formation/esh/module3/construction-europeenne', component: ConstructionEuropeennePage, title: 'La dynamique de la construction européenne' },
+{ path: '/formation/esh/module3/europe-economique-monetaires', component: EuropeEconomiqueMonetairePage, title: 'L\'Europe économique et monétaire' },
+{ path: '/formation/esh/module3/europe-sociale', component: EuropeSocialePage, title: 'L\'Europe sociale' },
+
+// Module 4 ESH chapters - Déséquilibres, régulation et action publique
+{ path: '/formation/esh/module4/inflation-chomage', component: InflationChomagePage, title: 'L\'inflation et le chômage' },
+{ path: '/formation/esh/module4/equilibre-macro', component: EquilibreMacroPage, title: 'L\'équilibre macroéconomique à travers les modèles : IS-LM / IS-LM-BP / OGDG' },
+{ path: '/formation/esh/module4/fluctuations-economiques', component: FluctuationsEconomiquesPage, title: 'Fluctuations économiques et politiques de régulation des cycles' },
+{ path: '/formation/esh/module4/politiques-structurelles', component: PolitiquesStructurellesPage, title: 'Politiques structurelles et interventions de l\'État face aux défaillances de marché' },
+{ path: '/formation/esh/module4/contraintes-politiques', component: ContraintesPolitiquesPage, title: 'Les contraintes auxquelles se heurtent les politiques économiques' },
+{ path: '/formation/esh/module4/justice-sociale', component: JusticeSocialePage, title: 'Justice sociale et légitimation de l\'intervention publique' },
+{ path: '/formation/esh/module4/lutte-inegalites', component: LutteInegalitesPage, title: 'Les politiques de lutte contre les inégalités' },
+{ path: '/formation/esh/module4/etat-providence', component: EtatProvidencePage, title: 'État-providence et protection sociale' },
+
+// Module 2 ESH chapters
+{ path: '/formation/esh/module2/croissance-economique', component: CroissanceEconomiquePage, title: 'La croissance économique' },
+{ path: '/formation/esh/module2/inegalites-developpement', component: InegalitesDeveloppementPage, title: 'Inégalités et stratégies de développement' },
+{ path: '/formation/esh/module2/soutenabilite-croissance', component: SoutenabiliteCroissancePage, title: 'La soutenabilité de la croissance et du développement' },
+{ path: '/formation/esh/module2/transformations-economiques-financieres', component: TransformationsEconomiquesFinancieresPage, title: 'Les transformations des structures économiques et financières' },
+{ path: '/formation/esh/module2/mobilite-sociale', component: MobiliteSocialePage, title: 'Mobilité sociale et transformations des structures sociales' },
+{ path: '/formation/esh/module2/transformations-demographiques', component: TransformationsDemographiquesPage, title: 'Transformations démographiques et évolution des modes de vie' },
+{ path: '/formation/esh/module2/transformations-entreprise', component: TransformationsEntreprisePage, title: 'Les transformations de l\'entreprise et de sa gouvernance depuis le XIXe siècle' },
+{ path: '/formation/esh/module2/concurrence-imparfaite', component: ConcurrenceImparfaitePage, title: 'Concurrence imparfaite et stratégies des firmes' },
+{ path: '/formation/esh/module2/sociologie-travail', component: SociologieTravailPage, title: 'Éléments de sociologie du travail et des organisations' },
   { path: '/formation/anglais/civilisation', component: CivilisationOverviewPage, title: 'English Civilization - Current Affairs' },
   { path: '/formation/anglais/civilisation/environment', component: EnvironmentPage, title: 'Environment and Ecology - English Civilization' },
   { path: '/formation/anglais/civilisation/politics', component: PoliticsPage, title: 'Politics (US & UK) - English Civilization' },
@@ -590,12 +791,17 @@ export const routes: RouteConfig[] = [
   { path: '/formation/anglais/civilisation/ai-technology', component: AITechnologyPage, title: 'Artificial Intelligence and Technology - English Civilization' },
   { path: '/formation/anglais/civilisation/economy', component: EconomyPage, title: 'Economy and Globalization - English Civilization' },
   { path: '/formation/anglais/civilisation/health', component: HealthPage, title: 'Health and Healthcare Systems - English Civilization' },
+  { path: '/formation/anglais/civilisation/labor', component: AnglaisLaborPage, title: 'Labor and the Future of Work - English Civilization' },
   { path: '/formation/anglais/civilisation/education', component: EducationPage, title: 'Education and Culture Wars - English Civilization' },
   { path: '/formation/anglais/civilisation/media', component: MediaPage, title: 'Media and Social Networks - English Civilization' },
+  { path: '/formation/anglais/civilisation/media/sample-essays', component: AnglaisMediaSampleEssaysPage, title: 'Media Sample Essays - English Civilization' },
+  { path: '/formation/anglais/civilisation/polarization/sample-essays', component: AnglaisPolarizationSampleEssaysPage, title: 'Polarization Sample Essays - English Civilization' },
+  { path: '/formation/anglais/civilisation/labor/sample-essays', component: AnglaisLaborSampleEssaysPage, title: 'Labor Sample Essays - English Civilization' },
+  { path: '/formation/anglais/civilisation/polarization', component: AnglaisPolarizationPage, title: 'Polarization - English Civilization' },
   { path: '/formation/anglais/civilisation/justice', component: JusticePage, title: 'Justice and the Rule of Law - English Civilization' },
-  { path: '/formation/anglais/civilisation/inequalities', component: InequalitiesPage, title: 'Social and Racial Inequalities - English Civilization' },
   { path: '/formation/anglais/civilisation/civil-rights', component: CivilRightsPage, title: 'Civil Rights and Social Movements - English Civilization' },
   { path: '/formation/anglais/civilisation/brexit', component: BrexitPage, title: 'Brexit and its Aftermath - English Civilization' },
+  { path: '/formation/anglais/civilisation/brexit/sample-essays', component: AnglaisBrexitSampleEssaysPage, title: 'Brexit Sample Essays - English Civilization' },
   { path: '/formation/anglais/civilisation/commonwealth', component: CommonwealthPage, title: 'The Commonwealth and Post-Colonial Legacy - English Civilization' },
   { path: '/formation/anglais/civilisation/civil-religion', component: CivilReligionPage, title: 'Civil Religion and National Identity - English Civilization' },
   { path: '/formation/anglais/civilisation/immigration', component: ImmigrationPage, title: 'Immigration and Border Control - English Civilization' },
@@ -612,6 +818,7 @@ export const routes: RouteConfig[] = [
   // Maths approfondies — explicit quiz routes (safer matching than dynamic pattern)
   { path: '/formation/maths-elements-de-logique-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Éléments de logique', protected: true },
   { path: '/formation/maths-ensembles-et-applications-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Ensembles et applications', protected: true },
+  // { path: '/formation/maths-endomorphismes-matrices-avancees', component: Chapitre2EndomorphismesCoursPage, title: 'Cours - Chapitre 2 : Éléments propres et réduction des endomorphismes' }, // Moved to 2nd year
 
   // Nouveaux modules de 2ème année
   {
@@ -700,21 +907,27 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-python', component: FormationPage, title: 'Formation Python ECG' },
   { path: '/formation/maths-elements-de-logique-exercices', component: Chapitre1LogiqueExercicesPage, title: 'Exercices - Chapitre 1 : Logique & raisonnement fondamentaux' },
   { path: '/formation/maths-ensembles-et-applications-exercices', component: Chapitre2EnsemblesExercicesPage, title: 'Exercices - Chapitre 2 : Ensembles et applications' },
-  { path: '/formation/maths-endomorphismes-matrices-avancees-exercices', component: Chapitre2EndomorphismesExercicesPage, title: 'Exercices - Chapitre 2 : Éléments propres et réduction des endomorphismes et matrices carrées' },
+  // { path: '/formation/maths-endomorphismes-matrices-avancees-exercices', component: Chapitre2EndomorphismesExercicesPage, title: 'Exercices - Chapitre 2 : Éléments propres et réduction des endomorphismes et matrices carrées' }, // Moved to 2nd year
   { path: '/formation/maths-sommes-produits-coefficients-binomiaux-exercices', component: Chapitre3SommesProduitsExercicesPage, title: 'Exercices - Chapitre 3 : Sommes, produits & coefficients binomiaux' },
   { path: '/formation/maths-suites-numeriques-exercices', component: Chapitre4SuitesExercicesPage, title: 'Exercices - Chapitre 4 : Suites numériques' },
   { path: '/formation/maths-fonctions-d-une-variable-reelle-exercices', component: Chapitre5FonctionsExercicesPage, title: 'Exercices - Chapitre 5 : Fonctions d\'une variable réelle' },
   { path: '/formation/maths-derivation-exercices', component: Chapitre6DerivationExercicesPage, title: 'Exercices - Chapitre 6 : Dérivation' },
+  { path: '/formation/maths-variables-aleatoires-densite', component: Chapitre6VariablesAleatoiresDensiteCoursPage, title: 'Cours - Chapitre 6 : Variables aléatoires à densité' },
   { path: '/formation/maths-variables-aleatoires-densite-exercices', component: Chapitre6VariablesAleatoiresDensiteExercicesPage, title: 'Exercices - Chapitre 6 : Variables aléatoires à densité' },
+  { path: '/formation/maths-variables-aleatoires-densite-flashcards', component: Chapitre6VariablesAleatoiresDensiteFlashcardsPage, title: 'Flashcards - Chapitre 6 : Variables aléatoires à densité' },
+  { path: '/formation/maths-variables-aleatoires-densite-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Variables aléatoires à densité', protected: true },
   { path: '/formation/maths-integration-sur-un-segment-exercices', component: Chapitre7IntegrationExercicesPage, title: 'Exercices - Chapitre 7 : Intégration sur un segment' },
   { path: '/formation/maths-polynomes-exercices', component: Chapitre8PolynomesExercicesPage, title: 'Exercices - Chapitre 8 : Polynômes' },
-  { path: '/formation/maths-complements-algebre-lineaire-exercices', component: Chapitre1ComplementsAlgebreLineaireExercicesPage, title: 'Exercices - Chapitre 1 : Compléments d\'algèbre linéaire' },
+  // { path: '/formation/maths-complements-algebre-lineaire-exercices', component: Chapitre1ComplementsAlgebreLineaireExercicesPage, title: 'Exercices - Chapitre 1 : Compléments d\'algèbre linéaire' }, // Moved to 2nd year
   { path: '/formation/maths-matrices-espaces-vectoriels-exercices', component: Chapitre9MatricesExercicesPage, title: 'Exercices - Chapitre 9 : Matrices & espaces vectoriels' },
   { path: '/formation/maths-algebre-bilineaire-exercices', component: Chapitre3AlgebreBilineaireExercicesPage, title: 'Exercices - Chapitre 3 : Algèbre bilinéaire' },
   { path: '/formation/maths-algebre-bilineaire-espaces-euclidiens-exercices', component: Chapitre9AlgebreBilineaireEspacesEuclidiensExercicesPage, title: 'Exercices - Chapitre 9 : Algèbre bilinéaire et espaces euclidiens' },
   { path: '/formation/maths-probabilites-conditionnement-exercices', component: Chapitre10ProbabilitesExercicesPage, title: 'Exercices - Chapitre 10 : Probabilités & conditionnement' },
   { path: '/formation/maths-applications-lineaires-structures-vectorielles-exercices', component: Chapitre11ApplicationsLineairesExercicesPage, title: 'Exercices - Chapitre 11 : Applications linéaires & structures vectorielles' },
+  { path: '/formation/maths-optimisation-multivariee-avancee', component: Chapitre11OptimisationMultivarieeAvanceeCoursPage, title: 'Chapitre 11 : Optimisation multivariée avancée', protected: true },
   { path: '/formation/maths-optimisation-multivariee-avancee-exercices', component: Chapitre11OptimisationMultivarieeAvanceeExercicesPage, title: 'Exercices - Chapitre 11 : Optimisation multivariée avancée' },
+  { path: '/formation/maths-optimisation-multivariee-avancee-quiz', component: Chapitre11OptimisationMultivarieeAvanceeQuizPage, title: 'Quiz - Chapitre 11 : Optimisation multivariée avancée', protected: true },
+  { path: '/formation/maths-fonctions-multivariees-calcul-differentiel', component: Chapitre4FonctionsMultivariees_CalculDifferentielCoursPage, title: 'Cours - Chapitre 4 : Fonctions multivariées et calcul différentiel' },
   { path: '/formation/maths-fonctions-multivariees-calcul-differentiel-exercices', component: Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage, title: 'Exercices - Chapitre 4 : Fonctions multivariées et calcul différentiel' },
   { path: '/formation/maths-comparaison-negligeabilite-equivalence-exercices', component: Chapitre12ComparaisonExercicesPage, title: 'Exercices - Chapitre 12 : Comparaison — négligeabilité & équivalence' },
   { path: '/formation/maths-series-numeriques-exercices', component: Chapitre13SeriesExercicesPage, title: 'Exercices - Chapitre 13 : Séries numériques' },
@@ -723,8 +936,11 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-espaces-probabilises-conditionnement-exercices', component: Chapitre16EspacesProbabilisesExercicesPage, title: 'Exercices - Chapitre 16 : Espaces probabilisés & conditionnement' },
   { path: '/formation/maths-variables-aleatoires-discretes-lois-exercices', component: Chapitre17VariablesAleatoiresExercicesPage, title: 'Exercices - Chapitre 17 : Variables aléatoires discrètes & lois' },
   { path: '/formation/maths-convergences-theoremes-limites-exercices', component: Chapitre18ConvergencesExercicesPage, title: 'Exercices - Chapitre 18 : Convergences & théorèmes limites' },
+  { path: '/formation/maths-reduction-matrices-symetriques', component: Chapitre10ReductionMatricesSymetriquesCoursPage, title: 'Chapitre 10 : Réduction des endomorphismes et matrices symétriques', protected: true },
   { path: '/formation/maths-reduction-matrices-symetriques-exercices', component: Chapitre10ReductionMatricesSymetriquesExercicesPage, title: 'Exercices - Chapitre 10 : Réduction des endomorphismes et matrices symétriques', protected: true },
+  { path: '/formation/maths-convergences-approximations', component: Chapitre12ConvergencesApproximationsCoursPage, title: 'Chapitre 12 : Convergences et approximations', protected: true },
   { path: '/formation/maths-convergences-approximations-exercices', component: Chapitre12ConvergencesApproximationsExercicesPage, title: 'Exercices - Chapitre 12 : Convergences et approximations', protected: true },
+  { path: '/formation/maths-estimation-statistique-avancee', component: Chapitre13EstimationStatistiqueAvanceeCoursPage, title: 'Chapitre 13 : Estimation statistique avancée', protected: true },
   { path: '/formation/maths-intervalles-confiance-exercices', component: Chapitre18EstimationStatistiqueAvanceeExercicesPage, title: 'Exercices - Chapitre 18 : Intervalles de confiance', protected: true },
   { path: '/formation/maths-theorie-estimation-statistique-exercices', component: Chapitre14TheorieEstimationStatistiqueExercicesPage, title: 'Exercices - Chapitre 14 : Théorie de l\'estimation statistique', protected: true },
   { path: '/formation/maths-complements-variables-aleatoires-exercices', component: Chapitre5ComplementsVariablesAleatoiresExercicesPage, title: 'Exercices - Chapitre 5 : Compléments sur les variables aléatoires', protected: true },

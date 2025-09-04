@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ChevronRight, Home, Star, BookOpen, Lightbulb, Target, Crown, Eye, EyeOff } from 'lucide-react';
+import { ChevronRight, Home, Star, BookOpen, Lightbulb, Target, Crown, Eye, EyeOff, Brain } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { LatexRenderer } from '@/components/LatexRenderer';
 
@@ -96,6 +96,12 @@ const Chapitre6VariablesAleatoiresDensiteExercicesPage = () => {
                 <Button variant="outline" className="border-slate-300 text-slate-700 hover:bg-slate-50 hover:border-slate-400 transition-colors">
                   <BookOpen className="mr-2 h-4 w-4" />
                   Cours
+                </Button>
+              </Link>
+              <Link to="/formation/maths-variables-aleatoires-densite-flashcards">
+                <Button variant="outline" className="border-slate-300 text-slate-700 hover:bg-slate-50 hover:border-slate-400 transition-colors">
+                  <Brain className="mr-2 h-4 w-4" />
+                  Flashcards
                 </Button>
               </Link>
               <Link to="/formation/maths-variables-aleatoires-densite-quiz">

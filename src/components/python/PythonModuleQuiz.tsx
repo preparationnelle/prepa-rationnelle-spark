@@ -78,10 +78,10 @@ export const PythonModuleQuiz: React.FC<PythonModuleQuizProps> = ({
 
   const score = answers.filter(Boolean).length;
   const colorClasses = {
-    blue: "border-blue-200 bg-gradient-to-br from-blue-50 to-violet-50 text-blue-700",
-    green: "border-blue-200 bg-gradient-to-br from-blue-500 to-emerald-50 text-blue-600",
-    purple: "border-blue-200 bg-gradient-to-br from-blue-500 to-pink-50 text-blue-600",
-    gray: "border-blue-200 bg-gradient-to-br from-blue-50 to-gray-50 text-blue-700"
+    blue: "border-blue-300 bg-gradient-to-br from-blue-100 to-blue-200 text-blue-800",
+    green: "border-blue-300 bg-gradient-to-br from-blue-400 to-blue-300 text-blue-700",
+    purple: "border-blue-300 bg-gradient-to-br from-blue-400 to-blue-300 text-blue-700",
+    gray: "border-blue-300 bg-gradient-to-br from-blue-100 to-blue-200 text-blue-800"
   };
 
   if (isCompleted) {
@@ -158,9 +158,9 @@ export const PythonModuleQuiz: React.FC<PythonModuleQuizProps> = ({
           ) : (
             <div className="space-y-3">
               <div className={`p-3 rounded flex items-center gap-2 ${
-                answers[currentQuestion] 
-                  ? 'bg-blue-50 border border-blue-200' 
-                  : 'bg-orange-50 border border-orange-200'
+                answers[currentQuestion]
+                  ? 'bg-blue-100 border border-blue-300'
+                  : 'bg-orange-100 border border-orange-300'
               }`}>
                 {answers[currentQuestion] ? (
                   <>
@@ -176,13 +176,13 @@ export const PythonModuleQuiz: React.FC<PythonModuleQuizProps> = ({
               </div>
               
               {!answers[currentQuestion] && (
-                <div className="p-3 bg-blue-50 border border-blue-200 rounded">
-                  <p className="text-blue-700 font-semibold mb-1">Réponse correcte :</p>
-                  <code className="bg-gray-100 px-2 py-1 rounded">
+                <div className="p-3 bg-blue-100 border border-blue-300 rounded">
+                  <p className="text-blue-800 font-semibold mb-1">Réponse correcte :</p>
+                  <code className="bg-gray-200 px-2 py-1 rounded text-blue-900">
                     {questions[currentQuestion].correctAnswers[0]}
                   </code>
                   {questions[currentQuestion].explanation && (
-                    <p className="text-blue-600 text-sm mt-2">
+                    <p className="text-blue-700 text-sm mt-2">
                       {questions[currentQuestion].explanation}
                     </p>
                   )}

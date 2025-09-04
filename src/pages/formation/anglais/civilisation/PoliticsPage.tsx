@@ -40,66 +40,53 @@ const PoliticsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+    <div className="min-h-screen bg-white text-black">
+      {/* Minimal Breadcrumb */}
+      <nav className="sticky top-0 z-50 bg-white border-b border-orange-200">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <Home className="h-3 w-3" />
+          <div className="flex items-center text-xs text-black/70">
+            <Link to="/" className="flex items-center gap-1 hover:text-black transition-colors">
+              <Home className="h-3 w-3 text-orange-600" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formation/anglais" className="hover:text-foreground transition-colors">
+            <ChevronRight className="h-3 w-3 text-black/40 mx-1" />
+            <Link to="/formation/anglais" className="hover:text-black transition-colors">
               Formation <span className="text-orange-600">Anglais</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Politics (US & UK)</span>
+            <ChevronRight className="h-3 w-3 text-black/40 mx-1" />
+            <span className="font-medium">Politics (US & UK)</span>
           </div>
         </div>
       </nav>
 
       <div className="container mx-auto py-8 px-4">
-        {/* Header */}
+        {/* Header minimaliste + stats sobres */}
         <div className="max-w-4xl mx-auto">
-          <Card className="border border-gray-200 mb-8">
-            <CardHeader className="bg-gray-50/50">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-blue-600 text-white">
-                  <Crown className="h-5 w-5" />
-                </div>
-                <Badge className="bg-blue-600">Civilization</Badge>
-                <span className="text-sm text-muted-foreground">Updated 2025</span>
-              </div>
-              <CardTitle className="text-2xl">Politics (United States & United Kingdom)</CardTitle>
-              <p className="text-muted-foreground">
-                Political systems, democratic processes, and contemporary political developments in the US and UK
-              </p>
-            </CardHeader>
-          </Card>
-
-          {/* Statistics */}
-          <Card className="mb-8 bg-gradient-to-r from-blue-600 to-orange-600 text-white">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-center">Key Political Facts 2025</CardTitle>
+          <div className="mb-6">
+            <h1 className="text-3xl font-bold">Politics (United States & United Kingdom)</h1>
+            <p className="text-sm text-black/70 mt-1">Minimal design • Orange accents only</p>
+          </div>
+          <Card className="mb-8 border border-orange-200">
+            <CardHeader className="py-3">
+              <CardTitle className="text-xl">Key Political Facts 2025</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">6-3</div>
-                  <div className="text-sm text-blue-100">US Supreme Court majority</div>
+                  <div className="text-sm text-black/70">US Supreme Court majority</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">11%</div>
-                  <div className="text-sm text-blue-100">UK inflation peak 2022</div>
+                  <div className="text-sm text-black/70">UK inflation peak 2022</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">70-100K</div>
-                  <div className="text-sm text-blue-100">UK HGV driver shortage</div>
+                  <div className="text-sm text-black/70">UK HGV driver shortage</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">4%</div>
-                  <div className="text-sm text-blue-100">UK GDP hit from Brexit</div>
+                  <div className="text-sm text-black/70">UK GDP hit from Brexit</div>
                 </div>
               </div>
             </CardContent>
@@ -112,7 +99,7 @@ const PoliticsPage = () => {
             <AccordionItem value="key-topics" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-blue-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Crown className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -124,7 +111,7 @@ const PoliticsPage = () => {
               <AccordionContent className="px-6 pb-6">
                 <div className="grid gap-4">
                   {keyTopics.map((topic, index) => (
-                    <Card key={index} className="border-l-4 border-l-blue-600">
+                    <Card key={index} className="border-l-4 border-l-orange-600">
                       <CardContent className="p-4">
                         <h4 className="font-semibold mb-2">{topic.title}</h4>
                         <p className="text-sm text-muted-foreground mb-3">{topic.content}</p>
@@ -163,9 +150,9 @@ const PoliticsPage = () => {
                   <p className="text-justify leading-relaxed">
                     In the aftermath, over 1,000 participants have been charged and congressional investigations exposed a concerted effort to overturn the election. Yet political rifts remain deep. Many Republican voters still believe the "Big Lie" of a stolen election, and some involved in the events have been hailed as martyrs on the far right. This episode has become a litmus test for U.S. democracy—prompting reforms to electoral count laws and greater scrutiny of extremist movements. It also serves as a warning: even long-established democracies are not immune to backsliding, and the peaceful transfer of power cannot be taken for granted.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This paragraph is apt for essays on threats to democracy, political polarization, or the resilience of institutions. It provides a concrete example (Capitol riot) with consequences, illustrating how misinformation and populism can undermine democratic processes. Use it to argue about the importance of rule of law, the impact of leadership on democratic norms, or to compare with historical incidents of democratic crisis.
                     </p>
                   </div>
@@ -183,7 +170,7 @@ const PoliticsPage = () => {
             <AccordionItem value="supreme-court" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-blue-600 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Scale className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -200,9 +187,9 @@ const PoliticsPage = () => {
                   <p className="text-justify leading-relaxed">
                     Supporters of these rulings applaud a return to "originalist" interpretations of the Constitution and states' rights. Critics argue the Court is out of step with public opinion and is eroding fundamental rights. The appointment process itself has grown more politicized, as seen in the rushed confirmation of Justice Barrett days before the 2020 election and bitter Senate battles. Looking ahead, this conservative super-majority is poised to influence American law for decades on issues ranging from voting rights and affirmative action to executive power. The Supreme Court's rightward turn exemplifies how electoral outcomes can swiftly upend legal precedents and why judicial nominations have become a central focus of U.S. politics.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       Use this paragraph in discussions of the U.S. political system, checks and balances, or social policy. It links political events (Trump's presidency) to long-term legal consequences (Court decisions), which is useful in arguments about how leaders can have lasting influence. It's particularly relevant to topics like abortion rights, the role of the judiciary, or the politicization of institutions.
                     </p>
                   </div>
@@ -237,9 +224,9 @@ const PoliticsPage = () => {
                   <p className="text-justify leading-relaxed">
                     Biden rejoined the Paris Agreement on day one, passed laws investing in green energy and infrastructure, and sought to restore Obama-era labor and civil rights policies. Yet a potential return of Trump or a similar figure in 2025 raises the prospect of another reversal—overturning Biden's initiatives and reinstating hardline stances on immigration, trade, and more. This whiplash governance, where each presidency cancels out the last, reveals a deeper problem: an absence of durable bipartisan agreement on major issues. It underscores that many U.S. policies today rest on precarious executive actions rather than settled law, making them vulnerable to the outcome of each election.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This paragraph works well in essays about political polarization, governance, or the stability of policy. It provides specific examples of policy whiplash (climate, healthcare, immigration) to argue that U.S. politics is deeply divided. This can support a point about the challenges of long-term planning in a polarized democracy or the importance of institutional safeguards that outlast individual administrations.
                     </p>
                   </div>
@@ -274,9 +261,9 @@ const PoliticsPage = () => {
                   <p className="text-justify leading-relaxed">
                     At the same time, fights over redistricting (redrawing electoral maps) have intensified. The Supreme Court in 2019 declined to set limits on partisan gerrymandering, effectively permitting state legislatures to draw districts favoring the party in power. Some progress emerged in 2022 as several states implemented independent redistricting commissions, leading to fairer maps and more competitive races. The stakes are enormous: these structural rules can tilt election outcomes and policy for years. The ongoing tug-of-war in the U.S. over voting rights and electoral rules reflects a democracy grappling with questions of fairness, representation, and the legacy of past disenfranchisement.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       Deploy this paragraph for topics concerning democratic systems, civil rights, or comparisons between countries' electoral practices. It provides concrete legislative examples and the historical analogy to Jim Crow, which is powerful for arguing how current events echo past injustices. It can support points about how democracies must constantly work to ensure free and fair elections, or how partisan interests can conflict with democratic principles.
                     </p>
                   </div>
@@ -538,7 +525,7 @@ const PoliticsPage = () => {
             <AccordionItem value="vocabulary" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-blue-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Building2 className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -550,11 +537,11 @@ const PoliticsPage = () => {
               <AccordionContent className="px-6 pb-6">
                 <div className="grid gap-3">
                   {essentialVocabulary.map((item, index) => (
-                    <Card key={index} className="border-l-4 border-l-blue-600">
+                    <Card key={index} className="border-l-4 border-l-orange-600">
                       <CardContent className="p-4">
                         <div className="flex flex-col sm:flex-row sm:items-start gap-2">
                           <div className="sm:w-1/3">
-                            <Badge className="bg-blue-500">{item.term}</Badge>
+                            <Badge className="bg-orange-600">{item.term}</Badge>
                           </div>
                           <div className="sm:w-2/3">
                             <p className="text-sm text-muted-foreground">{item.definition}</p>
@@ -571,7 +558,7 @@ const PoliticsPage = () => {
             <AccordionItem value="essay-questions" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-blue-600 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Building2 className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -641,13 +628,13 @@ const PoliticsPage = () => {
           {/* Navigation */}
           <div className="flex justify-between items-center mt-8">
             <Link to="/formation/anglais/civilisation">
-              <Button variant="outline" className="flex items-center gap-2">
+              <Button variant="outline" className="flex items-center gap-2 border-orange-500 text-black hover:bg-orange-50">
                 <ArrowLeft className="h-4 w-4" />
                 Back to Civilization Overview
               </Button>
             </Link>
             <Link to="/formation/anglais/civilisation/geopolitics">
-              <Button className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600">
+              <Button className="flex items-center gap-2 bg-orange-600 hover:bg-orange-700">
                 Next: Geopolitics and International Relations
                 <ArrowRight className="h-4 w-4" />
               </Button>

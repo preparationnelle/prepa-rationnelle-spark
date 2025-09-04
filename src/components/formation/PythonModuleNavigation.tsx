@@ -72,9 +72,9 @@ const PythonModuleNavigation: React.FC = () => {
   const getColorClasses = (color: string) => {
     const colorMap = {
       orange: 'bg-orange-500 hover:bg-orange-600 text-white',
-      green: 'bg-blue-50 hover:bg-blue-50 text-white',
-      blue: 'bg-blue-500 hover:bg-blue-600 text-white',
-      purple: 'bg-blue-50 hover:bg-blue-50 text-white'
+      green: 'bg-blue-50 hover:bg-orange-50 text-white',
+      blue: 'bg-blue-500 hover:bg-orange-600 text-white',
+      purple: 'bg-blue-50 hover:bg-orange-50 text-white'
     };
     return colorMap[color as keyof typeof colorMap] || 'bg-gray-500 hover:bg-gray-600 text-white';
   };

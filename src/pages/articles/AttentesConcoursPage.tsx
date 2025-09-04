@@ -7,43 +7,55 @@ import { Home, ChevronRight, Target, ArrowLeft, BookOpen } from 'lucide-react';
 
 const AttentesConcoursPage = () => {
   return (
-    <div className="min-h-screen bg-[#F0F8FF]">
+    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
+      {/* Floating elements - Blue bubbles */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
+      <div className="absolute top-40 right-20 w-48 h-48 bg-blue-100 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-8 animate-pulse"></div>
+      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-blue-50 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
+      <div className="absolute top-10 right-1/3 w-24 h-24 bg-blue-300 rounded-full opacity-12 animate-pulse-slow"></div>
+      <div className="absolute bottom-10 left-1/4 w-36 h-36 bg-blue-100 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute top-1/2 right-10 w-20 h-20 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
+      <div className="absolute top-1/3 left-10 w-28 h-28 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
+
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-[#2D5BFF]">
-            <Link to="/" className="flex items-center gap-1 hover:text-[#1e3a8a] transition-colors">
-              <Home className="h-3 w-3" />
+          <div className="flex items-center text-xs text-muted-foreground">
+            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              <div className="h-3 w-3">🏠</div>
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formations" className="hover:text-[#1e3a8a] transition-colors">
+            <span className="mx-1 text-muted-foreground/50">›</span>
+            <Link to="/formations" className="hover:text-foreground transition-colors">
               Toutes les formations
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formation/maths-choix" className="hover:text-[#1e3a8a] transition-colors">
+            <span className="mx-1 text-muted-foreground/50">›</span>
+            <Link to="/formation/maths-choix" className="hover:text-foreground transition-colors">
               Choix option Maths
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formation/maths-methodologie" className="hover:text-[#1e3a8a] transition-colors">
+            <span className="mx-1 text-muted-foreground/50">›</span>
+            <Link to="/formation/maths-methodologie" className="hover:text-foreground transition-colors">
               Méthodologie
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <span className="text-[#2D5BFF] font-bold">Les attentes du concours</span>
+            <span className="mx-1 text-muted-foreground/50">›</span>
+            <span className="text-foreground font-medium">Les attentes du concours</span>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 relative z-10">
         {/* Article */}
         <Card className="max-w-4xl mx-auto shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-orange-50 to-orange-100 rounded-t-lg">
+          <CardHeader className="bg-white border-b border-blue-100 rounded-t-lg">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                <Target className="h-6 w-6 text-orange-600" />
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <Target className="h-6 w-6 text-blue-600" />
               </div>
               <div>
-                <Badge className="bg-orange-500 text-white mb-2">Méthodologie</Badge>
+                <Badge className="bg-blue-600 text-white mb-2">Méthodologie</Badge>
                 <CardTitle className="text-3xl font-bold text-gray-800">
                   Prépa ECG : Les secrets des Jurys Révélés – Décoder les attentes des concours
                 </CardTitle>
@@ -76,42 +88,42 @@ const AttentesConcoursPage = () => {
               {/* Cinq Intentions Clés */}
               <div>
                 <h3 className="text-2xl font-bold text-gray-800 mb-6">Cinq Intentions Clés pour Réussir</h3>
-                
+
                 <div className="space-y-6">
-                  <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-                    <h4 className="text-lg font-bold text-orange-600 mb-3">1. Comprendre les Attentes des Concours</h4>
+                  <div className="bg-white p-6 rounded-lg border border-blue-100 shadow-sm">
+                    <h4 className="text-lg font-bold text-blue-600 mb-3">1. Comprendre les Attentes des Concours</h4>
                     <p className="text-gray-700 mb-3">
                       Vous n'avez pas besoin de tout traiter pour avoir 15 ou 20. En 2024, 40% du sujet HEC/ESSEC suffisaient pour 20/20. Ciblez intelligemment : Quelles questions sont les plus rentables ?
                     </p>
-                    <div className="bg-orange-50 p-4 rounded-lg">
-                      <p className="text-orange-800 font-semibold">Action :</p>
-                      <p className="text-orange-700">Lisez les rapports (disponibles sur concours-bce.com) et repérez 3 exigences récurrentes par école.</p>
+                    <div className="bg-blue-50 p-4 rounded-lg">
+                      <p className="text-blue-800 font-semibold">Action :</p>
+                      <p className="text-blue-700">Lisez les rapports (disponibles sur concours-bce.com) et repérez 3 exigences récurrentes par école.</p>
                     </div>
                   </div>
 
-                  <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-                    <h4 className="text-lg font-bold text-orange-600 mb-3">2. Présentez une Copie Impeccable</h4>
+                  <div className="bg-white p-6 rounded-lg border border-blue-100 shadow-sm">
+                    <h4 className="text-lg font-bold text-blue-600 mb-3">2. Présentez une Copie Impeccable</h4>
                     <p className="text-gray-700 mb-3">
                       Votre copie doit être claire dès le premier coup d'œil : en‑tête soigné, encre foncée, marges aérées. Organisez chaque solution en blocs distincts : énoncé, démarche, résultat. Laissez de l'espace pour respirer ; un correcteur qui n'a pas à plisser les yeux est déjà mieux disposé.
                     </p>
                   </div>
 
-                  <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-                    <h4 className="text-lg font-bold text-orange-600 mb-3">3. Valorisez vos Résultats</h4>
+                  <div className="bg-white p-6 rounded-lg border border-blue-100 shadow-sm">
+                    <h4 className="text-lg font-bold text-blue-600 mb-3">3. Valorisez vos Résultats</h4>
                     <p className="text-gray-700 mb-3">
                       Encadrez chaque conclusion importante, soulignez ou surlignez le nombre clef, bannissez les ratures. Avant de rendre, consacrez trois minutes à une relecture de fond : orthographe des symboles, cohérence des notations, unité des variables.
                     </p>
                   </div>
 
-                  <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-                    <h4 className="text-lg font-bold text-orange-600 mb-3">4. Rigueur Mathématique et Honnêteté</h4>
+                  <div className="bg-white p-6 rounded-lg border border-blue-100 shadow-sm">
+                    <h4 className="text-lg font-bold text-blue-600 mb-3">4. Rigueur Mathématique et Honnêteté</h4>
                     <p className="text-gray-700 mb-3">
                       Annoncez toujours le théorème que vous appliquez, vérifiez ses hypothèses et justifiez chaque transition. Si vous bloquez, laissez la question de côté au lieu d'inventer ; un raisonnement partiel mais correct vaut mieux qu'un baratin. Les jurys le répètent dans leurs rapports : la méthode compte au moins autant que le résultat.
                     </p>
                   </div>
 
-                  <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-                    <h4 className="text-lg font-bold text-orange-600 mb-3">5. Gérer son Temps comme un Stratège</h4>
+                  <div className="bg-white p-6 rounded-lg border border-blue-100 shadow-sm">
+                    <h4 className="text-lg font-bold text-blue-600 mb-3">5. Gérer son Temps comme un Stratège</h4>
                     <p className="text-gray-700 mb-3">
                       Ne passez pas 10 minutes sur une question bloquante. Identifiez les questions indépendantes. Passez rapidement à ce qui peut rapporter. Objectif : points faciles d'abord.
                     </p>
@@ -120,23 +132,23 @@ const AttentesConcoursPage = () => {
               </div>
 
               {/* Ce qu'il faut retenir */}
-              <div className="bg-green-50 p-6 rounded-lg border-l-4 border-green-400">
-                <h3 className="text-xl font-bold text-green-800 mb-4">Ce qu'il faut retenir :</h3>
-                <ul className="space-y-2 text-green-700">
+              <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400">
+                <h3 className="text-xl font-bold text-blue-800 mb-4">Ce qu'il faut retenir :</h3>
+                <ul className="space-y-2 text-blue-700">
                   <li className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold">•</span>
+                    <span className="text-blue-600 font-bold">•</span>
                     <span><strong>Rigueur du raisonnement</strong> : annoncez clairement les théorèmes utilisés, vérifiez les hypothèses, justifiez chaque étape, ne bluffez pas.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold">•</span>
+                    <span className="text-blue-600 font-bold">•</span>
                     <span><strong>Gestion du temps</strong> : commencez par les questions les plus accessibles, ne vous bloquez pas plus de 4-5 minutes sur une difficulté, lisez d'abord tout le sujet.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold">•</span>
+                    <span className="text-blue-600 font-bold">•</span>
                     <span><strong>Propreté et lisibilité de la copie</strong> : structure claire, résultats encadrés, pas de rature, relecture systématique à la fin (« copie propre » = 3 minutes de vérification).</span>
                   </li>
                 </ul>
-                <p className="text-green-700 mt-4 font-semibold">
+                <p className="text-blue-700 mt-4 font-semibold">
                   Appliquez cette stratégie dès votre prochain devoir surveillé ou en travaillant une annale. Les bonnes habitudes se prennent maintenant, pas le jour du concours.
                 </p>
               </div>

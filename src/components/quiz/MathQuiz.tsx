@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { CheckCircle, XCircle, RotateCcw, Brain, Target, Trophy } from 'lucide-react';
+import { CheckCircle, XCircle, RotateCcw, Brain, Target, Trophy, ChevronDown } from 'lucide-react';
 import { LatexRenderer } from '@/components/LatexRenderer';
 
 export interface MathQuizQuestion {
@@ -32,6 +32,7 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
   const [answers, setAnswers] = useState<boolean[]>([]);
   const [showResult, setShowResult] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
+  const [showQuestionMenu, setShowQuestionMenu] = useState(false);
 
   const checkAnswer = () => {
     if (selectedAnswer === null) return;
@@ -59,35 +60,43 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
     setAnswers([]);
     setShowResult(false);
     setIsCompleted(false);
+    setShowQuestionMenu(false);
+  };
+
+  const goToQuestion = (questionIndex: number) => {
+    setCurrentQuestion(questionIndex);
+    setSelectedAnswer(null);
+    setShowResult(false);
+    setShowQuestionMenu(false);
   };
 
   const score = answers.filter(Boolean).length;
 
   if (isCompleted) {
     return (
-      <Card className="mt-8 border-0 shadow-xl bg-gradient-to-br from-purple-50 to-blue-50">
+      <Card className="mt-8 border-0 shadow-xl bg-blue-50">
         <CardHeader className="text-center">
-          <div className="mx-auto w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-600 rounded-full flex items-center justify-center mb-4">
+          <div className="mx-auto w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-4">
             <Trophy className="h-8 w-8 text-white" />
           </div>
-          <CardTitle className="text-2xl text-purple-800">🎉 Quiz terminé !</CardTitle>
+          <CardTitle className="text-2xl text-black">🎉 Quiz terminé !</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-center space-y-4">
-            <div className="text-4xl font-bold text-purple-700">
+            <div className="text-4xl font-bold text-black">
               {score} / {questions.length}
             </div>
-            <Badge variant="secondary" className="text-lg px-6 py-3 bg-gradient-to-r from-purple-500 to-blue-600 text-white">
+            <Badge variant="secondary" className="text-lg px-6 py-3 bg-blue-600 text-white">
               Score: {Math.round((score / questions.length) * 100)}%
             </Badge>
-            <p className="text-gray-700 text-lg">
+            <p className="text-black text-lg">
               {score === questions.length 
                 ? "Parfait ! Vous maîtrisez parfaitement ce chapitre." 
                 : score >= questions.length * 0.7
                 ? "Très bien ! Quelques révisions et ce sera parfait."
                 : "Continuez à vous entraîner, vous y arriverez !"}
             </p>
-            <Button onClick={resetQuiz} className="mt-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700">
+            <Button onClick={resetQuiz} className="mt-4 bg-blue-600 hover:bg-blue-700 text-white">
               <RotateCcw className="h-4 w-4 mr-2" />
               Recommencer
             </Button>
@@ -98,30 +107,69 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
   }
 
   return (
-    <Card className="mt-8 border-0 shadow-xl bg-gradient-to-br from-purple-50 to-blue-50">
-      <CardHeader className="bg-gradient-to-r from-purple-500 to-blue-600 text-white">
+    <Card className="mt-8 border-0 shadow-xl bg-blue-50">
+      <CardHeader className="bg-blue-600 text-white">
         <div className="flex justify-between items-center">
           <div>
             <CardTitle className="text-xl">{title}</CardTitle>
             <p className="text-sm opacity-90">Chapitre {chapterNumber} : {chapterTitle}</p>
           </div>
-          <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
-            {currentQuestion + 1} / {questions.length}
-          </Badge>
+          <div className="flex items-center gap-3">
+            <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+              {currentQuestion + 1} / {questions.length}
+            </Badge>
+            {/* Menu déroulant pour navigation rapide */}
+            <div className="relative">
+              <Button
+                onClick={() => setShowQuestionMenu(!showQuestionMenu)}
+                variant="ghost"
+                size="sm"
+                className="text-white hover:bg-white/20"
+              >
+                <ChevronDown className="h-4 w-4" />
+              </Button>
+              {showQuestionMenu && (
+                <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-md shadow-lg border z-50">
+                  <div className="py-1 max-h-60 overflow-y-auto">
+                    {questions.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => goToQuestion(index)}
+                        className={`w-full px-4 py-2 text-left hover:bg-blue-50 flex items-center justify-between ${
+                          index === currentQuestion ? 'bg-blue-100 text-blue-600' : 'text-black'
+                        }`}
+                      >
+                        <span>Question {index + 1}</span>
+                        {answers[index] !== undefined && (
+                          <div className="flex items-center">
+                            {answers[index] ? (
+                              <CheckCircle className="h-4 w-4 text-green-500" />
+                            ) : (
+                              <XCircle className="h-4 w-4 text-red-500" />
+                            )}
+                          </div>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </CardHeader>
       <CardContent className="p-6">
         <div className="space-y-6">
           <div>
-            <h3 className="font-semibold mb-3 text-lg text-gray-800">
+            <h3 className="font-semibold mb-3 text-lg text-black">
               Question {currentQuestion + 1}
             </h3>
-            <div className="bg-white p-4 rounded-lg border border-purple-100">
-              <p className="text-gray-700 mb-3">
+            <div className="bg-white p-4 rounded-lg border border-blue-200">
+              <p className="text-black mb-3">
                 {questions[currentQuestion].question}
               </p>
               {questions[currentQuestion].latex && (
-                <div className="bg-gray-50 p-3 rounded border">
+                <div className="bg-blue-50 p-3 rounded border border-blue-200">
                   <LatexRenderer latex={questions[currentQuestion].latex} />
                 </div>
               )}
@@ -140,8 +188,8 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
                       ? index === questions[currentQuestion].correctAnswer
                         ? 'border-green-500 bg-green-50'
                         : 'border-red-500 bg-red-50'
-                      : 'border-purple-500 bg-purple-50'
-                    : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                      : 'border-blue-500 bg-blue-50'
+                    : 'border-gray-200 bg-white hover:border-blue-300 hover:bg-blue-50'
                 } ${showResult && index === questions[currentQuestion].correctAnswer ? 'border-green-500 bg-green-50' : ''}`}
               >
                 <div className="flex items-center gap-3">
@@ -151,7 +199,7 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
                         ? index === questions[currentQuestion].correctAnswer
                           ? 'border-green-500 bg-green-500 text-white'
                           : 'border-red-500 bg-red-500 text-white'
-                        : 'border-purple-500 bg-purple-500 text-white'
+                        : 'border-blue-500 bg-blue-500 text-white'
                       : 'border-gray-300 bg-white'
                   }`}>
                     {selectedAnswer === index && showResult && (
@@ -165,7 +213,21 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
                       <div className="w-2 h-2 bg-white rounded-full" />
                     )}
                   </div>
-                  <span className="font-medium text-gray-700">{option}</span>
+                  <span className="font-medium text-black">
+                    {option.startsWith('$') && option.includes('$', 1) ? (
+                      // Gestion des options avec LaTeX
+                      option.split(/(\$[^$]+\$)/).map((part, idx) => {
+                        if (part.startsWith('$') && part.endsWith('$')) {
+                          return <LatexRenderer key={idx} latex={part.slice(1, -1)} />;
+                        } else if (part.trim()) {
+                          return <span key={idx}>{part}</span>;
+                        }
+                        return null;
+                      })
+                    ) : (
+                      option
+                    )}
+                  </span>
                 </div>
               </button>
             ))}
@@ -175,7 +237,7 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
             <Button 
               onClick={checkAnswer} 
               disabled={selectedAnswer === null}
-              className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white"
             >
               <Target className="h-4 w-4 mr-2" />
               Vérifier la réponse
@@ -208,7 +270,7 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
                 )}
               </div>
 
-              <Button onClick={nextQuestion} className="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700">
+              <Button onClick={nextQuestion} className="w-full bg-blue-600 hover:bg-blue-700 text-white">
                 {currentQuestion < questions.length - 1 ? 'Question suivante' : 'Voir les résultats'}
               </Button>
             </div>

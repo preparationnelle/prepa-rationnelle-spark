@@ -48,12 +48,12 @@ const CivilisationOverviewPage = () => {
       route: '/formation/anglais/civilisation/economy'
     },
     {
-      id: 'health',
-      title: 'Health and Healthcare Systems',
-      description: 'Healthcare policies, public health crises, and medical innovations',
+      id: 'health-systems',
+      title: 'Health and Healthcare Systems: US and UK Policy Challenges and Crises',
+      description: 'Comparative analysis of healthcare systems, policy reforms, and crisis management',
       icon: Heart,
       color: 'bg-orange-600',
-      route: '/formation/anglais/civilisation/health'
+      route: '/formation/anglais/civilisation/health-systems'
     },
     {
       id: 'education',

@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Code, Languages, Globe, Users, BookOpen, TrendingUp, CheckCircle, Calculator } from 'lucide-react';
+import { Code, Languages, Globe, Users, BookOpen, TrendingUp, CheckCircle, Calculator, GraduationCap } from 'lucide-react';
 
 export const FormationsSection = () => {
   return (
@@ -12,11 +12,11 @@ export const FormationsSection = () => {
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4">
           Nos <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">formations spécialisées</span>
         </h2>
-        <p className="text-center text-gray-600 mb-8 sm:mb-12 max-w-2xl mx-auto text-base sm:text-lg whitespace-nowrap">
+        <p className="text-center text-gray-600 mb-8 sm:mb-12 max-w-3xl mx-auto text-base sm:text-lg leading-relaxed">
           Formations conçues spécifiquement pour les étudiants en prépa ECG, avec méthodes éprouvées et accompagnement personnalisé.
         </p>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto">
           {/* Formation Maths */}
           <Link to="/formation/maths" className="group">
             <Card className="h-full bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-yellow-200 relative overflow-hidden">
@@ -91,7 +91,7 @@ export const FormationsSection = () => {
                     +3 à 5 points garantis
                   </div>
                 </div>
-                <Button variant="ghost" className="text-blue-600 group-hover:bg-blue-50 w-full group-hover:scale-105 transition-all duration-300">
+                <Button variant="ghost" className="text-blue-600 group-hover:bg-orange-50 w-full group-hover:scale-105 transition-all duration-300">
                   <span className="flex items-center gap-2">
                     Commencer le module
                     <TrendingUp className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -260,6 +260,48 @@ export const FormationsSection = () => {
                   </div>
                 </div>
                 <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full group-hover:scale-105 transition-all duration-300">
+                  <span className="flex items-center gap-2">
+                    Voir la formation
+                    <TrendingUp className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Button>
+              </CardContent>
+            </Card>
+          </Link>
+
+          {/* Formation ESH */}
+          <Link to="/formation/esh" className="group">
+            <Card className="h-full bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-blue-200 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <CardHeader className="relative z-10">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
+                    <GraduationCap className="h-6 w-6 text-blue-600" />
+                  </div>
+                  <CardTitle className="text-xl group-hover:text-blue-600 transition-colors">
+                    ESH ECG
+                  </CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent className="relative z-10">
+                <p className="text-gray-600 mb-4">
+                  Maîtrisez l'économie et les sciences humaines avec méthodes ciblées et études de cas pratiques.
+                </p>
+                <div className="space-y-2 mb-4">
+                  <div className="text-sm text-blue-600 flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4" />
+                    Première et deuxième année
+                  </div>
+                  <div className="text-sm text-blue-600 flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4" />
+                    Méthodologie spécialisée
+                  </div>
+                  <div className="text-sm text-blue-600 flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4" />
+                    Études de cas concrètes
+                  </div>
+                </div>
+                <Button variant="ghost" className="text-blue-600 group-hover:bg-blue-50 w-full group-hover:scale-105 transition-all duration-300">
                   <span className="flex items-center gap-2">
                     Voir la formation
                     <TrendingUp className="h-4 w-4 group-hover:translate-x-1 transition-transform" />

@@ -37,10 +37,13 @@ const PourquoiPythonPrepaECGPage = () => {
       <div className="container mx-auto py-8 px-4">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-[#FF6B00] to-[#FF7A1C] bg-clip-text text-transparent">
-            Pourquoi travailler Python en prépa ECG
-          </h1>
-          <p className="text-xl text-muted-foreground mb-6">
+          <div className="inline-flex items-center gap-3 mb-4 p-3 rounded-lg bg-blue-100 text-blue-700 border border-blue-300">
+            <Brain className="h-8 w-8" />
+            <h1 className="text-4xl font-bold text-blue-800">
+              Pourquoi travailler Python en prépa ECG
+            </h1>
+          </div>
+          <p className="text-xl text-blue-600 mb-6">
             (et pourquoi mon coaching est ta meilleure option)
           </p>
         </div>
@@ -160,7 +163,7 @@ const PourquoiPythonPrepaECGPage = () => {
 
             <div className="text-center mt-8">
               <Link to="/formation">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg">
+                <Button size="lg" className="bg-blue-600 hover:bg-orange-600 text-white px-8 py-4 text-lg">
                   <BookOpen className="h-5 w-5 mr-2" />
                   Voir toute la formation
                 </Button>
@@ -281,7 +284,7 @@ const PourquoiPythonPrepaECGPage = () => {
               Rejoins les centaines d'étudiants qui ont déjà pris de l'avance grâce à cette formation.
             </p>
             <Link to="/formation/python-fondamentaux">
-              <Button size="lg" className="bg-blue-50 hover:bg-blue-50 text-white px-8 py-4 text-lg">
+              <Button size="lg" className="bg-blue-600 hover:bg-orange-600 text-white px-8 py-4 text-lg">
                 <Code className="h-5 w-5 mr-2" />
                 Commencer maintenant
               </Button>

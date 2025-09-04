@@ -8,25 +8,36 @@ import { mathsApprofondies1ereAnneeData } from '@/data/maths-approfondies-1ere-a
 
 const MathsApprofondiesPage = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
+      {/* Floating elements - Blue bubbles */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
+      <div className="absolute top-40 right-20 w-48 h-48 bg-blue-100 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-8 animate-pulse"></div>
+      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-blue-50 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
+      <div className="absolute top-10 right-1/3 w-24 h-24 bg-blue-300 rounded-full opacity-12 animate-pulse-slow"></div>
+      <div className="absolute bottom-10 left-1/4 w-36 h-36 bg-blue-100 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute top-1/2 right-10 w-20 h-20 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
+      <div className="absolute top-1/3 left-10 w-28 h-28 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-blue-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-blue-700 transition-colors">
-              <Home className="h-3 w-3" />
+          <div className="flex items-center text-xs text-muted-foreground">
+            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              <div className="h-3 w-3">🏠</div>
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-            <Link to="/formations" className="hover:text-blue-700 transition-colors">
+            <span className="mx-1 text-muted-foreground/50">›</span>
+            <Link to="/formations" className="hover:text-foreground transition-colors">
               Toutes les formations
             </Link>
-            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-            <Link to="/formation/maths-choix" className="hover:text-blue-700 transition-colors">
+            <span className="mx-1 text-muted-foreground/50">›</span>
+            <Link to="/formation/maths-choix" className="hover:text-foreground transition-colors">
               Choix parcours Maths
             </Link>
-            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-            <span className="text-orange-600 font-medium">Maths Approfondies - 1ère année</span>
+            <span className="mx-1 text-muted-foreground/50">›</span>
+            <span className="text-foreground font-medium">Maths Approfondies - 1ère année</span>
           </div>
         </div>
       </nav>
@@ -46,14 +57,16 @@ const MathsApprofondiesPage = () => {
 
         {/* Semestre 1 */}
         <div className="mb-8">
-          <div className="bg-orange-50 rounded-lg p-4 mb-4 text-center border border-orange-200">
-            <h2 className="text-xl font-bold mb-2 text-orange-900 flex items-center justify-center gap-2">
-              <div className="p-2 rounded-lg bg-orange-600 text-white">
-                <Award className="h-5 w-5" />
+          <div className="bg-white rounded-xl p-8 shadow-md border border-blue-100 mb-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center">
+                <Award className="h-6 w-6 text-blue-600" />
               </div>
-              {mathsApprofondies1ereAnneeData.semestre1.title}
-            </h2>
-            <p className="text-sm text-orange-700">
+              <h2 className="text-2xl font-bold text-blue-700">
+                {mathsApprofondies1ereAnneeData.semestre1.title}
+              </h2>
+            </div>
+            <p className="text-gray-700 mb-4">
               {mathsApprofondies1ereAnneeData.semestre1.description}
             </p>
           </div>
@@ -66,7 +79,7 @@ const MathsApprofondiesPage = () => {
                 slug={chapter.slug}
                 title={chapter.title}
                 icon={chapter.icon}
-                color={chapter.color}
+                color="blue"
                 description={chapter.description}
               />
             ))}
@@ -75,14 +88,16 @@ const MathsApprofondiesPage = () => {
 
         {/* Semestre 2 */}
         <div className="mb-8">
-          <div className="bg-orange-50 rounded-lg p-4 mb-4 text-center border border-orange-200">
-            <h2 className="text-xl font-bold mb-2 text-orange-900 flex items-center justify-center gap-2">
-              <div className="p-2 rounded-lg bg-orange-600 text-white">
-                <Award className="h-5 w-5" />
+          <div className="bg-white rounded-xl p-8 shadow-md border border-blue-100 mb-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center">
+                <Award className="h-6 w-6 text-blue-600" />
               </div>
-              {mathsApprofondies1ereAnneeData.semestre2.title}
-            </h2>
-            <p className="text-sm text-orange-700">
+              <h2 className="text-2xl font-bold text-blue-700">
+                {mathsApprofondies1ereAnneeData.semestre2.title}
+              </h2>
+            </div>
+            <p className="text-gray-700 mb-4">
               {mathsApprofondies1ereAnneeData.semestre2.description}
             </p>
           </div>
@@ -95,7 +110,7 @@ const MathsApprofondiesPage = () => {
                 slug={chapter.slug}
                 title={chapter.title}
                 icon={chapter.icon}
-                color={chapter.color}
+                color="blue"
                 description={chapter.description}
               />
             ))}

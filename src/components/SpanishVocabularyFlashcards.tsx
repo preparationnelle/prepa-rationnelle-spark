@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ChevronLeft, ChevronRight, RotateCcw, BookOpen, Eye, EyeOff, Filter, Shuffle, RotateBackward, Star } from 'lucide-react';
+import { ChevronLeft, ChevronRight, RotateCcw, BookOpen, Eye, EyeOff, Filter, Shuffle, RotateCcw as RotateBackward, Star } from 'lucide-react';
 import { spanishVocabularyData, getCategorizedSpanishVocabulary, type SpanishVocabularyItem } from '@/data/spanishVocabularyData';
 import { useUserData } from '@/context/UserDataContext';
 

@@ -40,63 +40,51 @@ const ImmigrationPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+    <div className="min-h-screen bg-white text-black">
+      <nav className="sticky top-0 z-50 bg-white border-b border-orange-200">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <Home className="h-3 w-3" />
+          <div className="flex items-center text-xs text-black/70">
+            <Link to="/" className="flex items-center gap-1 hover:text-black transition-colors">
+              <Home className="h-3 w-3 text-orange-600" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formation/anglais" className="hover:text-foreground transition-colors">
+            <ChevronRight className="h-3 w-3 text-black/40 mx-1" />
+            <Link to="/formation/anglais" className="hover:text-black transition-colors">
               Formation <span className="text-orange-600">Anglais</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Immigration and Border Control</span>
+            <ChevronRight className="h-3 w-3 text-black/40 mx-1" />
+            <span className="font-medium">Immigration and Border Control</span>
           </div>
         </div>
       </nav>
 
       <div className="container mx-auto py-8 px-4">
         <div className="max-w-4xl mx-auto">
-          <Card className="border-2 border-orange-500/30 mb-8">
-            <CardHeader className="bg-gradient-to-r from-orange-50 to-red-50">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-orange-500 text-white">
-                  <MapPin className="h-5 w-5" />
-                </div>
-                <Badge className="bg-orange-500">Civilization</Badge>
-                <span className="text-sm text-muted-foreground">Updated 2025</span>
-              </div>
-              <CardTitle className="text-2xl">Immigration and Border Control</CardTitle>
-              <p className="text-muted-foreground">
-                Border management, migration policies, and humanitarian challenges in the US and UK
-              </p>
-            </CardHeader>
-          </Card>
-
-          <Card className="mb-8 bg-gradient-to-r from-orange-600 to-red-600 text-white">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-center">Key Immigration Facts 2025</CardTitle>
+          <div className="mb-6">
+            <h1 className="text-3xl font-bold">Immigration and Border Control</h1>
+            <p className="text-sm text-black/70 mt-1">Minimal design • Orange accents only</p>
+          </div>
+          <Card className="mb-8 border border-orange-200">
+            <CardHeader className="py-3">
+              <CardTitle className="text-xl">Key Immigration Facts 2025</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">2.4M</div>
-                  <div className="text-sm text-orange-100">US border encounters 2023</div>
+                  <div className="text-sm text-black/70">US border encounters 2023</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">606K</div>
-                  <div className="text-sm text-orange-100">UK net migration 2022</div>
+                  <div className="text-sm text-black/70">UK net migration 2022</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">1.5M</div>
-                  <div className="text-sm text-orange-100">US asylum backlog cases</div>
+                  <div className="text-sm text-black/70">US asylum backlog cases</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">45K</div>
-                  <div className="text-sm text-orange-100">Channel crossings 2022</div>
+                  <div className="text-sm text-black/70">Channel crossings 2022</div>
                 </div>
               </div>
             </CardContent>
@@ -157,9 +145,9 @@ const ImmigrationPage = () => {
                   <p className="text-justify leading-relaxed">
                     The Biden administration, which took office in 2021, initially struck a more compassionate tone than the hardline Trump era, ending practices like family separation. However, record crossings quickly posed practical and political challenges. By late 2022, Republican governors in Texas and Arizona, accusing the federal government of inaction, started busing thousands of migrants to Democratic-run cities like New York, Washington D.C., and Chicago – a move critics called a stunt using human beings as pawns. Those destination cities then also struggled with shelter space and social services, leading even liberal mayors to plead for federal help. A major inflection point came in May 2023, when the U.S. ended the "Title 42" public health order that for two years had allowed rapid expulsion of migrants without normal asylum processing (purportedly due to COVID-19).
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This paragraph is excellent for discussions on immigration policy, border management, or the challenges of humanitarian border control. It provides concrete data on migration flows and can support arguments about the complexity of immigration policy or the need for comprehensive reform. It's also useful for analyzing the relationship between political rhetoric and practical challenges.
                     </p>
                   </div>
@@ -193,9 +181,9 @@ const ImmigrationPage = () => {
                   <p className="text-justify leading-relaxed">
                     The Conservative government found itself in a dilemma – needing immigrants to staff industries and the NHS, but politically beholden to an anti-immigration base. Prime Minister Rishi Sunak acknowledged the numbers are "too high" and vowed to reduce them, introducing measures like restricting foreign students from bringing families. Yet simultaneously, they had to ease rules in critical sectors (issuing more visas for care workers, seasonal farm laborers, even fishermen) because Brexit and an aging workforce created shortages. The situation underlines that Britain's economy, like many, actually needs migrants – even as public sentiment, stoked by tabloids, often perceives immigration as out of control.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This paragraph is valuable for discussions on Brexit consequences, immigration policy, or the relationship between political promises and economic reality. It provides concrete examples of policy contradictions and can support arguments about the complexity of immigration control or the economic necessity of migration. It's also useful for analyzing the relationship between political rhetoric and practical needs.
                     </p>
                   </div>
@@ -229,9 +217,9 @@ const ImmigrationPage = () => {
                   <p className="text-justify leading-relaxed">
                     In response, the government under Boris Johnson and then Sunak took a hardline turn. In 2022 they announced the highly controversial Rwanda deal: a policy to deport certain asylum seekers 4,000 miles away to Rwanda, where they would either seek asylum there or potentially be sent elsewhere, with the idea that this deterrent would stop the small boats. The plan faced immediate legal challenges and outcry from human rights groups and the UN. In June 2023, the Court of Appeal ruled the Rwanda scheme unlawful, finding that Rwanda's asylum system did not meet proper safety standards. The government appealed, but in November 2023 the UK Supreme Court unanimously struck down the Rwanda plan as unlawful, upholding that Rwanda is not a reliably "safe" destination for refugees. This was a severe blow to the government's flagship immigration policy.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This paragraph is excellent for discussions on asylum policy, international law, or the challenges of deterring irregular migration. It provides concrete examples of controversial policies and can support arguments about the importance of international cooperation or the limitations of deterrence strategies. It's also useful for analyzing the relationship between political promises and legal reality.
                     </p>
                   </div>
@@ -320,7 +308,7 @@ const ImmigrationPage = () => {
             <AccordionItem value="vocabulary" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-cyan-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Building2 className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -332,11 +320,11 @@ const ImmigrationPage = () => {
               <AccordionContent className="px-6 pb-6">
                 <div className="grid gap-3">
                   {essentialVocabulary.map((item, index) => (
-                    <Card key={index} className="border-l-4 border-l-cyan-500">
+                    <Card key={index} className="border-l-4 border-l-orange-600">
                       <CardContent className="p-4">
                         <div className="flex flex-col sm:flex-row sm:items-start gap-2">
                           <div className="sm:w-1/3">
-                            <Badge className="bg-cyan-500">{item.term}</Badge>
+                            <Badge className="bg-orange-600">{item.term}</Badge>
                           </div>
                           <div className="sm:w-2/3">
                             <p className="text-sm text-muted-foreground">{item.definition}</p>
@@ -421,13 +409,13 @@ const ImmigrationPage = () => {
 
           <div className="flex justify-between items-center mt-8">
             <Link to="/formation/anglais/civilisation">
-              <Button variant="outline" className="flex items-center gap-2">
+              <Button variant="outline" className="flex items-center gap-2 border-orange-500 text-black hover:bg-orange-50">
                 <ArrowLeft className="h-4 w-4" />
                 Back to Civilization Overview
               </Button>
             </Link>
-                            <Link to="/formation/anglais/civilisation/crises">
-              <Button className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600">
+            <Link to="/formation/anglais/civilisation/crises">
+              <Button className="flex items-center gap-2 bg-orange-600 hover:bg-orange-700">
                 Next: Major Contemporary Crises
                 <ArrowRight className="h-4 w-4" />
               </Button>

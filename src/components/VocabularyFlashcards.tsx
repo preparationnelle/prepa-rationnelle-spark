@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ChevronLeft, ChevronRight, RotateCcw, BookOpen, Eye, EyeOff } from 'lucide-react';
+import { ChevronLeft, ChevronRight, RotateCcw, BookOpen, Eye, EyeOff, Shuffle } from 'lucide-react';
 import { vocabularyData, type VocabularyItem } from '@/data/vocabularyData';
 
 interface VocabularyFlashcardsProps {
@@ -14,9 +14,10 @@ export const VocabularyFlashcards: React.FC<VocabularyFlashcardsProps> = ({ lang
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [studiedCards, setStudiedCards] = useState<Set<number>>(new Set());
+  const [shuffledData, setShuffledData] = useState<VocabularyItem[]>(vocabularyData);
 
-  const currentCard = vocabularyData[currentIndex];
-  const totalCards = vocabularyData.length;
+  const currentCard = shuffledData[currentIndex];
+  const totalCards = shuffledData.length;
 
   const nextCard = () => {
     if (currentIndex < totalCards - 1) {
@@ -39,9 +40,40 @@ export const VocabularyFlashcards: React.FC<VocabularyFlashcardsProps> = ({ lang
     setStudiedCards(new Set());
   };
 
+  const shuffleCards = () => {
+    const shuffled = [...vocabularyData].sort(() => Math.random() - 0.5);
+    setShuffledData(shuffled);
+    setCurrentIndex(0);
+    setShowAnswer(false);
+    setStudiedCards(new Set());
+  };
+
   const toggleAnswer = () => {
     setShowAnswer(!showAnswer);
   };
+
+  // Navigation au clavier: ← → pour naviguer, Espace pour révéler
+  React.useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      switch (event.key) {
+        case 'ArrowRight':
+          event.preventDefault();
+          nextCard();
+          break;
+        case 'ArrowLeft':
+          event.preventDefault();
+          prevCard();
+          break;
+        case ' ':
+          event.preventDefault();
+          toggleAnswer();
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [currentIndex, totalCards, showAnswer]);
 
   const progressPercentage = ((studiedCards.size + (showAnswer ? 1 : 0)) / totalCards) * 100;
 
@@ -53,10 +85,16 @@ export const VocabularyFlashcards: React.FC<VocabularyFlashcardsProps> = ({ lang
             <BookOpen className="h-6 w-6 text-primary" />
             Vocabulaire utile pour les concours
           </h2>
-          <Button onClick={resetProgress} variant="outline" size="sm">
-            <RotateCcw className="h-4 w-4 mr-2" />
-            {language === 'fr' ? 'Recommencer' : 'Reset'}
-          </Button>
+          <div className="flex gap-2">
+            <Button onClick={shuffleCards} variant="outline" size="sm">
+              <Shuffle className="h-4 w-4 mr-2" />
+              {language === 'fr' ? 'Mélanger' : 'Shuffle'}
+            </Button>
+            <Button onClick={resetProgress} variant="outline" size="sm">
+              <RotateCcw className="h-4 w-4 mr-2" />
+              {language === 'fr' ? 'Recommencer' : 'Reset'}
+            </Button>
+          </div>
         </div>
         
         <div className="flex items-center gap-4 mb-4">
@@ -139,15 +177,20 @@ export const VocabularyFlashcards: React.FC<VocabularyFlashcardsProps> = ({ lang
           className="px-6 py-2 transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:hover:scale-100"
         >
           <ChevronLeft className="h-4 w-4 mr-2" />
-          {language === 'fr' ? 'Précédent' : 'Previous'}
+          {language === 'fr' ? 'Précédent (←)' : 'Previous (←)'}
         </Button>
 
         <div className="text-center">
-          <div className="text-sm font-medium text-muted-foreground">
+          <div className="text-sm font-medium text-muted-foreground mb-1">
             {language === 'fr' 
               ? `${studiedCards.size} carte${studiedCards.size > 1 ? 's' : ''} étudiée${studiedCards.size > 1 ? 's' : ''}`
               : `${studiedCards.size} card${studiedCards.size > 1 ? 's' : ''} studied`
             }
+          </div>
+          <div className="text-xs text-gray-500 mt-2">
+            {language === 'fr' 
+              ? 'Raccourcis: ← → (navigation) | Espace (révéler)'
+              : 'Shortcuts: ← → (navigate) | Space (reveal)'}
           </div>
         </div>
 
@@ -157,7 +200,7 @@ export const VocabularyFlashcards: React.FC<VocabularyFlashcardsProps> = ({ lang
           variant="outline"
           className="px-6 py-2 transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:hover:scale-100"
         >
-          {language === 'fr' ? 'Suivant' : 'Next'}
+          {language === 'fr' ? 'Suivant (→)' : 'Next (→)'}
           <ChevronRight className="h-4 w-4 ml-2" />
         </Button>
       </div>

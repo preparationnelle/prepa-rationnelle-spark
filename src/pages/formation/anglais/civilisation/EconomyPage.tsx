@@ -40,66 +40,53 @@ const EconomyPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+    <div className="min-h-screen bg-white text-black">
+      {/* Minimal Breadcrumb */}
+      <nav className="sticky top-0 z-50 bg-white border-b border-orange-200">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <Home className="h-3 w-3" />
+          <div className="flex items-center text-xs text-black/70">
+            <Link to="/" className="flex items-center gap-1 hover:text-black transition-colors">
+              <Home className="h-3 w-3 text-orange-600" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formation/anglais" className="hover:text-foreground transition-colors">
+            <ChevronRight className="h-3 w-3 text-black/40 mx-1" />
+            <Link to="/formation/anglais" className="hover:text-black transition-colors">
               Formation <span className="text-orange-600">Anglais</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Economy and Globalization</span>
+            <ChevronRight className="h-3 w-3 text-black/40 mx-1" />
+            <span className="font-medium">Economy and Globalization</span>
           </div>
         </div>
       </nav>
 
       <div className="container mx-auto py-8 px-4">
-        {/* Header */}
+        {/* Header minimaliste + stats sobres */}
         <div className="max-w-4xl mx-auto">
-          <Card className="border border-gray-200 mb-8">
-            <CardHeader className="bg-gray-50/50">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-orange-600 text-white">
-                  <TrendingUp className="h-5 w-5" />
-                </div>
-                <Badge className="bg-orange-600">Civilization</Badge>
-                <span className="text-sm text-muted-foreground">Updated 2025</span>
-              </div>
-              <CardTitle className="text-2xl">Economy and Globalization</CardTitle>
-              <p className="text-muted-foreground">
-                Global economic challenges, trade dynamics, and the future of international cooperation
-              </p>
-            </CardHeader>
-          </Card>
-
-          {/* Statistics */}
-          <Card className="mb-8 bg-gradient-to-r from-blue-600 to-orange-600 text-white">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-center">Key Economic Facts 2025</CardTitle>
+          <div className="mb-6">
+            <h1 className="text-3xl font-bold">Economy and Globalization</h1>
+            <p className="text-sm text-black/70 mt-1">Minimal design • Orange accents only</p>
+          </div>
+          <Card className="mb-8 border border-orange-200">
+            <CardHeader className="py-3">
+              <CardTitle className="text-xl">Key Economic Facts 2025</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">9.1%</div>
-                  <div className="text-sm text-blue-100">US inflation peak 2022</div>
+                  <div className="text-sm text-black/70">US inflation peak 2022</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">$369B</div>
-                  <div className="text-sm text-blue-100">US Inflation Reduction Act</div>
+                  <div className="text-sm text-black/70">US Inflation Reduction Act</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">15%</div>
-                  <div className="text-sm text-blue-100">Global minimum tax rate</div>
+                  <div className="text-sm text-black/70">Global minimum tax rate</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">$245B</div>
-                  <div className="text-sm text-blue-100">Annual tax avoidance</div>
+                  <div className="text-sm text-black/70">Annual tax avoidance</div>
                 </div>
               </div>
             </CardContent>
@@ -146,7 +133,7 @@ const EconomyPage = () => {
             <AccordionItem value="inflation-cost-living" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-blue-600 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <DollarSign className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -163,9 +150,9 @@ const EconomyPage = () => {
                   <p className="text-justify leading-relaxed">
                     Europe felt it even more acutely; the Eurozone hit double-digit inflation (10.6% in Oct 2022) and the UK reached 11.1%, a 41-year high. Central banks, once worried about deflation, scrambled to tighten monetary policy, even at risk of inducing recessions. The human impact has been profound. Families faced soaring bills for essentials: fuel, electricity, and food (with staples like cooking oil and bread up 30–50% in some countries). Real wages lagged behind, effectively amounting to pay cuts for many. This fueled labor unrest, such as strikes in the UK and protests in countries from Chile to Egypt. Politically, the cost-of-living crisis dented incumbent governments' popularity worldwide. While inflation has started to ease by 2024 as supply shocks resolved and demand cooled, it remains above pre-pandemic norms. The episode has served as a reminder that price stability—often taken for granted—can unravel quickly, and that inequality worsens when inflation bites since the poorest struggle the most with pricier basics.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       Employ this paragraph to underscore the socio-economic impact of inflation or to discuss economic policy. It provides data on inflation rates and responses, useful for arguing about the effectiveness of central banks or the causes of public discontent. It can also bolster a point on how global crises (pandemic, war) directly affect domestic economics and politics.
                     </p>
                   </div>
@@ -183,7 +170,7 @@ const EconomyPage = () => {
             <AccordionItem value="us-inflation-reduction-act" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-blue-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Building2 className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -200,9 +187,9 @@ const EconomyPage = () => {
                   <p className="text-justify leading-relaxed">
                     This would effectively exclude European-made electric cars from the U.S. subsidy, putting firms like Volkswagen or Renault at a disadvantage in the huge American market. EU leaders complained this "Buy American" tilt violates World Trade Organization rules and threatens their own green industries. Some likened it to a new trade war in green clothing. In response, Europe scrambled to formulate its own subsidies and loosen state-aid limits—unveiling plans like the EU Green Deal Industrial Plan—to keep investment from fleeing across the Atlantic. The IRA episode highlights how the climate fight is intersecting with geoeconomics: countries want to build domestic clean-energy industries, but that risks conflict with free trade principles. It also reflects a shift in U.S. policy toward economic nationalism and industrial strategy, even under a relatively pro-alliance administration like Biden's. Finding a cooperative approach that addresses climate change without triggering tit-for-tat protectionism remains an unresolved challenge between Western partners.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This paragraph can bolster discussions on international trade, climate policy, or US-EU relations. It offers a concrete example of how good intentions (climate action) can cause diplomatic friction. Use it to illustrate the complexity of balancing domestic interests with global cooperation, or as evidence in arguments about rising protectionism and the future of globalization.
                     </p>
                   </div>
@@ -220,7 +207,7 @@ const EconomyPage = () => {
             <AccordionItem value="global-minimum-tax" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-blue-600 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Globe className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -237,9 +224,9 @@ const EconomyPage = () => {
                   <p className="text-justify leading-relaxed">
                     U.S. officials have argued that America must adopt the global minimum too, or else U.S.-based multinationals (think Apple, Google) will simply end up paying that difference to European treasuries. However, as of 2024, the U.S. Congress has yet to align fully with the plan, due to partisan gridlock. Supporters say a minimum tax will raise billions in revenue that can fund public services and level the playing field for domestic businesses and workers. They also contend it restores a sense of fairness—making global capitalism work for average citizens, not just for footloose capital. Skeptics worry it could dull countries' competitive edge or that loopholes will undermine it in practice. Nonetheless, the momentum behind the agreement marks a turning point in global tax cooperation. If broadly enacted, it will be one of the biggest reforms to international tax rules in a century, signalling that the world's major economies can coordinate for greater equity in globalization.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       Use this paragraph for topics on globalization, inequality, or international cooperation. It provides a positive example of collective action and can support arguments about curbing corporate power or ensuring fairness. It's useful for economic justice discussions or when highlighting contrasts between unilateral and multilateral approaches.
                     </p>
                   </div>
@@ -257,7 +244,7 @@ const EconomyPage = () => {
             <AccordionItem value="tax-havens-uk" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-orange-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Shield className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -274,9 +261,9 @@ const EconomyPage = () => {
                   <p className="text-justify leading-relaxed">
                     For example, a tech giant might register its intellectual property in a Bermuda shell company to funnel royalties there tax-free, eroding tax bases of higher-tax countries. Successive British governments have faced criticism for this arrangement: while the UK enforces taxes at home, it simultaneously provides international shelters for avoidance. In recent years, international efforts—like the G20/OECD minimum tax and EU blacklists—have increased pressure on havens. The UK has sometimes taken steps (such as a public register of offshore companies owning UK property to curb dirty money), but critics say these measures are half-hearted. London's powerful financial lobby and concerns about sovereignty over territories make reform politically delicate. The situation highlights a moral quandary: Britain preaches fairness and austere budgets at home, yet its own network fuels a system where global elites and corporations sidestep paying their due. Meaningful change may require both domestic political will in the UK and sustained international coordination to shut down the escape routes in the "second empire" of tax havens.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This paragraph provides a case study of hypocrisy in policy and the complexity of global finance. It's great for arguments about inequality, explaining why developing countries lose revenue, or critiquing powerful nations' double standards. It supplies hard data (one-third of avoidance, $245b lost) useful for highlighting scale. It can also support a point on the challenges of reforming entrenched systems due to vested interests.
                     </p>
                   </div>
@@ -368,7 +355,7 @@ const EconomyPage = () => {
             <AccordionItem value="greenwashing" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-blue-600 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Leaf className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -385,9 +372,9 @@ const EconomyPage = () => {
                   <p className="text-justify leading-relaxed">
                     These ads conveyed a "clean, green" image while BP simultaneously scaled back its emission reduction targets and enjoyed windfall profits from spiking fossil fuel prices. Such dissonance is not unique to BP: carmakers have advertised bogus "clean diesel," and plastic producers have run campaigns about recycling while lobbying against plastic waste regulations. However, the backlash is growing. Watchdogs file complaints about greenwashing with consumer protection agencies, and some jurisdictions (like the EU) are moving to ban generic environmental claims ("eco-friendly," "carbon neutral") unless backed by detailed proof. The reputational risk for companies is rising, too—getting labeled as a greenwasher can damage brand value in an era when consumers, especially younger ones, prize authenticity. Ultimately, the greenwashing phenomenon underscores the importance of independently verified action over slick PR. As the climate crisis intensifies, businesses will be expected to put real money and effort where their mouth is, or face public ire and legal consequences.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       Use this in essays on corporate social responsibility, marketing ethics, or climate change. It provides a critical perspective that can support arguments about needing regulation or skepticism of corporate motives. The BP example with numbers makes the point tangible. It's also a nice counterpoint if discussing positive corporate efforts, to show not all that glitters is green.
                     </p>
                   </div>
@@ -405,7 +392,7 @@ const EconomyPage = () => {
             <AccordionItem value="vocabulary" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-cyan-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Factory className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -417,11 +404,11 @@ const EconomyPage = () => {
               <AccordionContent className="px-6 pb-6">
                 <div className="grid gap-3">
                   {essentialVocabulary.map((item, index) => (
-                    <Card key={index} className="border-l-4 border-l-cyan-500">
+                    <Card key={index} className="border-l-4 border-l-orange-600">
                       <CardContent className="p-4">
                         <div className="flex flex-col sm:flex-row sm:items-start gap-2">
                           <div className="sm:w-1/3">
-                            <Badge className="bg-cyan-500">{item.term}</Badge>
+                            <Badge className="bg-orange-600">{item.term}</Badge>
                           </div>
                           <div className="sm:w-2/3">
                             <p className="text-sm text-muted-foreground">{item.definition}</p>
@@ -508,13 +495,13 @@ const EconomyPage = () => {
           {/* Navigation */}
           <div className="flex justify-between items-center mt-8">
             <Link to="/formation/anglais/civilisation">
-              <Button variant="outline" className="flex items-center gap-2">
+              <Button variant="outline" className="flex items-center gap-2 border-orange-500 text-black hover:bg-orange-50">
                 <ArrowLeft className="h-4 w-4" />
                 Back to Civilization Overview
               </Button>
             </Link>
             <Link to="/formation/anglais/civilisation/health">
-              <Button className="flex items-center gap-2 bg-orange-600 hover:bg-green-600">
+              <Button className="flex items-center gap-2 bg-orange-600 hover:bg-orange-700">
                 Next: Health and Healthcare Systems
                 <ArrowRight className="h-4 w-4" />
               </Button>

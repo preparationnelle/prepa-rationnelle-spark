@@ -116,15 +116,15 @@ const GeneratorPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
-      {/* Floating elements - Blue bubbles only */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
-      <div className="absolute top-40 right-20 w-48 h-48 bg-blue-100 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-8 animate-pulse"></div>
-      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-blue-50 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
-      <div className="absolute top-10 right-1/3 w-24 h-24 bg-blue-300 rounded-full opacity-12 animate-pulse-slow"></div>
-      <div className="absolute bottom-10 left-1/4 w-36 h-36 bg-blue-100 rounded-full opacity-10 animate-pulse"></div>
+      {/* Floating elements - Orange bubbles */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-28 h-28 bg-orange-200 rounded-full opacity-15 animate-pulse-slow"></div>
+      <div className="absolute top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute bottom-40 left-20 w-56 h-56 bg-orange-200 rounded-full opacity-8 animate-pulse"></div>
+      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-orange-100 rounded-full opacity-8 animate-pulse"></div>
+      <div className="absolute top-10 right-1/3 w-24 h-24 bg-orange-300 rounded-full opacity-12 animate-pulse-slow"></div>
+      <div className="absolute bottom-10 left-1/4 w-36 h-36 bg-orange-100 rounded-full opacity-10 animate-pulse"></div>
 
       {/* Section Générateurs IA */}
       <section className="py-20 px-4 sm:px-6 relative z-10">
@@ -133,7 +133,7 @@ const GeneratorPage: React.FC = () => {
           <div className="text-center mb-16">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
               <span className="text-black">Générateurs </span>
-              <span className="text-blue-600">IA</span>
+              <span className="text-orange-600">IA</span>
             </h1>
             
             <p className="text-xl sm:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
@@ -147,18 +147,18 @@ const GeneratorPage: React.FC = () => {
                 <Link
                   key={generator.id}
                   to={generator.link}
-                  className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl hover:scale-110 hover:-translate-y-2 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 border border-blue-100 flex flex-col items-center text-center group"
+                  className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-orange-200 hover:bg-orange-50 flex flex-col items-center text-center group"
                 >
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 group-hover:from-orange-500 group-hover:to-orange-600 rounded-full flex items-center justify-center mb-6 transition-all duration-300">
-                    <div className="text-white">
+                  <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mb-6 transition-all duration-300">
+                    <div className="text-orange-600">
                       {generator.icon}
                     </div>
                   </div>
-                  <h3 className="font-bold text-2xl mb-3 text-blue-700 group-hover:text-orange-800 transition-colors duration-300">{generator.title}</h3>
-                  <p className="text-lg text-gray-600 group-hover:text-orange-700 transition-colors duration-300 mb-6 leading-relaxed">{generator.description}</p>
+                  <h3 className="font-bold text-2xl mb-3 text-orange-800 transition-colors duration-300">{generator.title}</h3>
+                  <p className="text-lg text-gray-600 mb-6 leading-relaxed">{generator.description}</p>
                   <div className="space-y-2 text-sm w-full">
                     {generator.features.map((feature, index) => (
-                      <div key={index} className="flex items-center text-blue-600 group-hover:text-orange-600 transition-colors duration-300">
+                      <div key={index} className="flex items-center text-orange-600">
                         <span className="mr-3 text-lg">✓</span>
                         <span className="font-medium">{feature}</span>
                       </div>

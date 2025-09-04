@@ -253,6 +253,38 @@ const FormationGeopolitiquePage = () => {
 
         {/* Outils et Ressources */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mb-16">
+          {/* Annales */}
+          <Link
+            to="/formation/geopolitique/annales"
+            className="bg-white rounded-xl p-8 shadow-md hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 group flex flex-col items-center text-center min-h-[420px] justify-between border border-transparent hover:border-orange-300 hover:bg-orange-50 transform"
+          >
+            <div className="flex flex-col items-center">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mb-8 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
+                <BookOpen className="h-10 w-10 text-blue-600" />
+              </div>
+              <h3 className="font-bold text-2xl mb-4 text-center text-blue-700 group-hover:text-orange-800 transition-colors">Annales</h3>
+              <p className="text-sm text-blue-700 mb-8 text-center leading-relaxed font-medium">25 ans de sujets<br/>ESSEC HGG et ESCP HGGMC</p>
+              <div className="space-y-2 text-sm mb-6 w-full">
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
+                  <span className="mr-2 text-xs">✓</span>
+                  <span className="font-medium">2000-2025</span>
+                </div>
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
+                  <span className="mr-2 text-xs">✓</span>
+                  <span className="font-medium">ESSEC & ESCP</span>
+                </div>
+                <div className="flex items-center text-blue-600 bg-blue-50 rounded-lg py-2 px-3">
+                  <span className="mr-2 text-xs">✓</span>
+                  <span className="font-medium">Analyses complètes</span>
+                </div>
+              </div>
+            </div>
+            <Button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium transition-all duration-300 group-hover:scale-105 shadow-lg rounded-lg">
+              <BookOpen className="mr-2 h-4 w-4" />
+              Consulter les annales
+            </Button>
+          </Link>
+
           {/* Flashcards */}
           <Link
             to="/formation/geopolitique/flashcards"

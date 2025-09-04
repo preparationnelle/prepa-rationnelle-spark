@@ -454,6 +454,314 @@ export const chapitre12QuizQuestions: MathQuizQuestion[] = [
   }
 ];
 
+// Chapitre 46: Variables aléatoires à densité
+export const chapitre46QuizQuestions: MathQuizQuestion[] = [
+  {
+    id: 1,
+    question: "Une variable aléatoire X est dite à densité lorsque :",
+    options: [
+      "Sa fonction de répartition est continue sur ℝ",
+      "Sa fonction de répartition est dérivable partout",
+      "Sa fonction de répartition est continue sur ℝ et admet une dérivée continue sauf en un nombre fini de points",
+      "Elle prend un nombre fini de valeurs"
+    ],
+    correctAnswer: 2,
+    explanation: "Une variable aléatoire X est à densité si sa fonction de répartition F_X est continue sur ℝ et admet, sauf peut-être en un nombre fini de points, une dérivée continue.",
+    latex: "F_X(x) = \\int_{-\\infty}^{x} f_X(t) \\, dt"
+  },
+  {
+    id: 2,
+    question: "Pour qu'une fonction g soit une densité de probabilité, elle doit vérifier :",
+    options: [
+      "g ≥ 0 seulement",
+      "∫g(t)dt = 1 seulement", 
+      "g ≥ 0 et ∫g(t)dt = 1",
+      "g ≥ 0, ∫g(t)dt = 1 et g continue partout"
+    ],
+    correctAnswer: 2,
+    explanation: "Une fonction g est une densité si et seulement si : g ≥ 0 sur ℝ, l'intégrale de g sur ℝ vaut 1, et g n'a qu'un nombre fini de discontinuités.",
+    latex: "\\int_{-\\infty}^{+\\infty} g(t) \\, dt = 1"
+  },
+  {
+    id: 3,
+    question: "Pour une variable aléatoire continue X, P(X = x) vaut :",
+    options: ["1", "0", "$f_X(x)$", "$F_X(x)$"],
+    correctAnswer: 1,
+    explanation: "Pour une variable aléatoire continue, la probabilité qu'elle prenne exactement une valeur donnée est toujours nulle.",
+    latex: "\\mathbb{P}(X = x) = 0 \\quad \\forall x \\in \\mathbb{R}"
+  },
+  {
+    id: 4,
+    question: "L'espérance d'une variable aléatoire à densité X est donnée par :",
+    options: [
+      "$\\mathbb{E}(X) = \\int f_X(t) \\, dt$",
+      "$\\mathbb{E}(X) = \\int t \\, f_X(t) \\, dt$", 
+      "$\\mathbb{E}(X) = \\int t^2 \\, f_X(t) \\, dt$",
+      "$\\mathbb{E}(X) = \\int F_X(t) \\, dt$"
+    ],
+    correctAnswer: 1,
+    explanation: "L'espérance d'une variable aléatoire à densité est l'intégrale de t multiplié par la densité.",
+    latex: "\\mathbb{E}(X) = \\int_{-\\infty}^{+\\infty} t \\, f_X(t) \\, dt"
+  },
+  {
+    id: 5,
+    question: "La formule de Koenig-Huygens s'écrit :",
+    options: [
+      "$\\operatorname{Var}(X) = \\mathbb{E}(X^2) + (\\mathbb{E}(X))^2$",
+      "$\\operatorname{Var}(X) = \\mathbb{E}(X^2) - (\\mathbb{E}(X))^2$",
+      "$\\operatorname{Var}(X) = (\\mathbb{E}(X))^2 - \\mathbb{E}(X^2)$", 
+      "$\\operatorname{Var}(X) = \\mathbb{E}(X^2)$"
+    ],
+    correctAnswer: 1,
+    explanation: "La formule de Koenig-Huygens exprime la variance comme la différence entre le moment d'ordre 2 et le carré de l'espérance.",
+    latex: "\\operatorname{Var}(X) = \\mathbb{E}(X^2) - (\\mathbb{E}(X))^2"
+  },
+  {
+    id: 6,
+    question: "Pour la loi uniforme sur [a,b], l'espérance vaut :",
+    options: ["$\\frac{a+b}{2}$", "$b-a$", "$\\frac{b-a}{2}$", "$a+b$"],
+    correctAnswer: 0,
+    explanation: "Pour une loi uniforme sur [a,b], l'espérance est le milieu de l'intervalle.",
+    latex: "X \\sim \\mathcal{U}([a,b]) \\Rightarrow \\mathbb{E}(X) = \\frac{a+b}{2}"
+  },
+  {
+    id: 7,
+    question: "La densité de la loi exponentielle E(λ) pour t ≥ 0 est :",
+    options: [
+      "$\\lambda e^{-\\lambda t}$",
+      "$e^{-\\lambda t}$",
+      "$\\lambda e^{\\lambda t}$",
+      "$\\lambda^2 e^{-\\lambda t}$"
+    ],
+    correctAnswer: 0,
+    explanation: "La densité de la loi exponentielle de paramètre λ est λe^(-λt) pour t ≥ 0.",
+    latex: "f(t) = \\lambda e^{-\\lambda t} \\quad \\text{pour } t \\geq 0"
+  },
+  {
+    id: 8,
+    question: "La propriété sans mémoire de la loi exponentielle s'écrit :",
+    options: [
+      "$\\mathbb{P}(X > t+h \\mid X > h) = \\mathbb{P}(X > h)$",
+      "$\\mathbb{P}(X > t+h \\mid X > h) = \\mathbb{P}(X > t)$",
+      "$\\mathbb{P}(X > t+h \\mid X > h) = \\mathbb{P}(X > t+h)$",
+      "$\\mathbb{P}(X > t+h \\mid X > h) = 0$"
+    ],
+    correctAnswer: 1,
+    explanation: "La propriété sans mémoire signifie que la probabilité de survie après un temps h ne dépend pas du temps déjà écoulé.",
+    latex: "\\mathbb{P}(X > t+h \\mid X > h) = \\mathbb{P}(X > t)"
+  },
+  {
+    id: 9,
+    question: "Pour la loi normale N(m,σ²), la variable centrée réduite est :",
+    options: [
+      "$\\frac{X-m}{\\sigma^2}$",
+      "$\\frac{X-m}{\\sigma}$", 
+      "$\\frac{X}{\\sigma}$",
+      "$\\frac{X-\\sigma}{m}$"
+    ],
+    correctAnswer: 1,
+    explanation: "La variable centrée réduite associée à X~N(m,σ²) est (X-m)/σ qui suit une loi N(0,1).",
+    latex: "X \\sim \\mathcal{N}(m,\\sigma^2) \\Rightarrow Z = \\frac{X-m}{\\sigma} \\sim \\mathcal{N}(0,1)"
+  },
+  {
+    id: 10,
+    question: "Pour la loi gamma γ(k), on a :",
+    options: [
+      "$\\mathbb{E}(X) = k \\text{ et } \\operatorname{Var}(X) = k^2$",
+      "$\\mathbb{E}(X) = k^2 \\text{ et } \\operatorname{Var}(X) = k$",
+      "$\\mathbb{E}(X) = k \\text{ et } \\operatorname{Var}(X) = k$",
+      "$\\mathbb{E}(X) = \\frac{1}{k} \\text{ et } \\operatorname{Var}(X) = \\frac{1}{k^2}$"
+    ],
+    correctAnswer: 2,
+    explanation: "Pour la loi gamma γ(k), l'espérance et la variance sont toutes deux égales au paramètre k.",
+    latex: "X \\sim \\gamma(k) \\Rightarrow \\mathbb{E}(X) = k \\text{ et } \\operatorname{Var}(X) = k"
+  },
+  {
+    id: 11,
+    question: "La densité de la loi normale centrée réduite N(0,1) est :",
+    options: [
+      "$\\varphi(t) = e^{-t^2/2}$",
+      "$\\varphi(t) = \\frac{1}{\\sqrt{2\\pi}} e^{-t^2/2}$",
+      "$\\varphi(t) = \\frac{1}{\\sqrt{\\pi}} e^{-t^2}$",
+      "$\\varphi(t) = \\frac{1}{2\\pi} e^{-t^2/2}$"
+    ],
+    correctAnswer: 1,
+    explanation: "La densité de la loi normale centrée réduite inclut le facteur de normalisation 1/√(2π).",
+    latex: "\\varphi(t) = \\frac{1}{\\sqrt{2\\pi}} e^{-t^2/2}"
+  },
+  {
+    id: 12,
+    question: "Pour une transformation affine Y = aX + b avec a ≠ 0, on a :",
+    options: [
+      "$\\mathbb{E}(Y) = \\mathbb{E}(X) + b \\text{ et } \\operatorname{Var}(Y) = \\operatorname{Var}(X)$",
+      "$\\mathbb{E}(Y) = a\\mathbb{E}(X) + b \\text{ et } \\operatorname{Var}(Y) = a^2\\operatorname{Var}(X)$",
+      "$\\mathbb{E}(Y) = a\\mathbb{E}(X) \\text{ et } \\operatorname{Var}(Y) = a\\operatorname{Var}(X)$",
+      "$\\mathbb{E}(Y) = \\mathbb{E}(X) \\text{ et } \\operatorname{Var}(Y) = a^2\\operatorname{Var}(X) + b^2$"
+    ],
+    correctAnswer: 1,
+    explanation: "Pour une transformation affine, l'espérance se transforme linéairement et la variance par le carré du coefficient.",
+    latex: "Y = aX + b \\Rightarrow \\mathbb{E}(Y) = a\\mathbb{E}(X) + b \\text{ et } \\operatorname{Var}(Y) = a^2\\operatorname{Var}(X)"
+  },
+  {
+    id: 13,
+    question: "Le théorème de transfert pour une variable continue s'écrit :",
+    options: [
+      "$\\mathbb{E}(g(X)) = \\int g(t) \\, dt$",
+      "$\\mathbb{E}(g(X)) = \\int g(t) f_X(t) \\, dt$",
+      "$\\mathbb{E}(g(X)) = \\int g(F_X(t)) \\, dt$", 
+      "$\\mathbb{E}(g(X)) = g(\\mathbb{E}(X))$"
+    ],
+    correctAnswer: 1,
+    explanation: "Le théorème de transfert permet de calculer l'espérance de g(X) sans connaître la loi de g(X).",
+    latex: "\\mathbb{E}(g(X)) = \\int_{I} g(t) f_X(t) \\, dt \\quad \\text{où } I = \\operatorname{Supp}(X)"
+  },
+  {
+    id: 14,
+    question: "Pour la loi uniforme sur [0,1], la variance vaut :",
+    options: ["$\\frac{1}{12}$", "$\\frac{1}{6}$", "$\\frac{1}{4}$", "$\\frac{1}{3}$"],
+    correctAnswer: 0,
+    explanation: "Pour une loi uniforme sur [0,1], la variance est (1-0)²/12 = 1/12.",
+    latex: "X \\sim \\mathcal{U}([0,1]) \\Rightarrow \\operatorname{Var}(X) = \\frac{1}{12}"
+  },
+  {
+    id: 15,
+    question: "Une variable X est centrée réduite si :",
+    options: [
+      "$\\mathbb{E}(X) = 0$ seulement",
+      "$\\operatorname{Var}(X) = 1$ seulement",
+      "$\\mathbb{E}(X) = 0 \\text{ et } \\operatorname{Var}(X) = 1$",
+      "$\\mathbb{E}(X) = 1 \\text{ et } \\operatorname{Var}(X) = 0$"
+    ],
+    correctAnswer: 2,
+    explanation: "Une variable est centrée réduite si son espérance est nulle et sa variance égale à 1.",
+    latex: "X \\text{ centrée réduite} \\Leftrightarrow \\mathbb{E}(X) = 0 \\text{ et } \\operatorname{Var}(X) = 1"
+  }
+];
+
+// Chapitre 11: Optimisation multivariée avancée
+export const chapitre11QuizQuestions: MathQuizQuestion[] = [
+  {
+    id: 1,
+    question: "Quelle est la condition nécessaire pour qu'un point critique soit un minimum local pour une fonction de classe C² ?",
+    options: [
+      "Le gradient s'annule seulement",
+      "La Hessienne est définie positive",
+      "La Hessienne est définie négative",
+      "Le déterminant de la Hessienne est positif"
+    ],
+    correctAnswer: 1,
+    explanation: "Pour qu'un point critique soit un minimum local, la Hessienne doit être définie positive en ce point."
+  },
+  {
+    id: 2,
+    question: "Le théorème de Schwarz affirme que :",
+    options: [
+      "Les dérivées partielles d'ordre 2 sont continues",
+      "Les dérivées partielles croisées sont égales pour les fonctions de classe C²",
+      "Le gradient s'annule aux points critiques",
+      "La Hessienne est symétrique"
+    ],
+    correctAnswer: 1,
+    explanation: "Le théorème de Schwarz stipule que pour f de classe C², ∂²f/∂i∂j = ∂²f/∂j∂i."
+  },
+  {
+    id: 3,
+    question: "Quelle est la forme du développement limité d'ordre 2 de f autour de a ?",
+    options: [
+      "f(a+h) = f(a) + ⟨∇f(a),h⟩ + (1/2)q_a(h) + o(||h||²)",
+      "f(a+h) = f(a) + ⟨∇f(a),h⟩ + q_a(h)",
+      "f(a+h) = f(a) + (1/2)⟨∇²f(a)h,h⟩",
+      "f(a+h) = f(a) + ∇f(a) · h"
+    ],
+    correctAnswer: 0,
+    explanation: "Le développement limité d'ordre 2 inclut le terme quadratique (1/2)q_a(h) où q_a est la forme quadratique associée à la Hessienne."
+  },
+  {
+    id: 4,
+    question: "Dans la méthode des multiplicateurs de Lagrange, que représente le multiplicateur λ ?",
+    options: [
+      "Le gradient de la fonction objectif",
+      "Le taux marginal de substitution",
+      "La valeur de la fonction objectif",
+      "Le déterminant de la matrice Hessienne"
+    ],
+    correctAnswer: 1,
+    explanation: "Le multiplicateur de Lagrange λ représente le taux marginal de substitution entre la fonction objectif et la contrainte."
+  },
+  {
+    id: 5,
+    question: "Pour qu'un point critique soit un point-selle, il faut que :",
+    options: [
+      "La Hessienne soit définie positive",
+      "La Hessienne soit définie négative",
+      "La Hessienne ait des valeurs propres de signes différents",
+      "La Hessienne soit nulle"
+    ],
+    correctAnswer: 2,
+    explanation: "Un point-selle correspond à une Hessienne indéfinie, c'est-à-dire ayant des valeurs propres de signes opposés."
+  },
+  {
+    id: 6,
+    question: "Quelle condition est nécessaire mais pas suffisante pour qu'un point soit un extrémum local ?",
+    options: [
+      "∇f(a) = 0 seulement",
+      "H_f(a) définie positive seulement",
+      "∇f(a) = 0 et H_f(a) définie positive",
+      "f de classe C² seulement"
+    ],
+    correctAnswer: 0,
+    explanation: "La condition ∇f(a) = 0 est nécessaire pour qu'un point soit un extrémum local, mais pas suffisante (il pourrait être un point-selle)."
+  },
+  {
+    id: 7,
+    question: "La matrice Hessienne d'une fonction f : ℝ² → ℝ est :",
+    options: [
+      "Le gradient de f",
+      "La matrice des dérivées partielles d'ordre 2",
+      "Le jacobien de f",
+      "La matrice des dérivées partielles d'ordre 1"
+    ],
+    correctAnswer: 1,
+    explanation: "La matrice Hessienne contient toutes les dérivées partielles d'ordre 2 de f."
+  },
+  {
+    id: 8,
+    question: "Pour une fonction convexe de classe C², quelle propriété a sa Hessienne ?",
+    options: [
+      "Elle est définie négative",
+      "Elle est semi-définie positive",
+      "Elle est indéfinie",
+      "Elle est antisymétrique"
+    ],
+    correctAnswer: 1,
+    explanation: "Pour une fonction convexe de classe C², la Hessienne est semi-définie positive en tout point."
+  },
+  {
+    id: 9,
+    question: "Dans les conditions KKT pour l'optimisation sous contraintes d'inégalité, que signifie μᵢ ≥ 0 ?",
+    options: [
+      "Les contraintes sont actives",
+      "Les multiplicateurs sont positifs ou nuls",
+      "Le gradient s'annule",
+      "La fonction objectif atteint son minimum"
+    ],
+    correctAnswer: 1,
+    explanation: "Dans les conditions KKT, les multiplicateurs associés aux contraintes d'inégalité doivent être positifs ou nuls."
+  },
+  {
+    id: 10,
+    question: "Quelle est la dimension de la matrice Hessienne d'une fonction f : ℝⁿ → ℝ ?",
+    options: [
+      "n × 1",
+      "1 × n",
+      "n × n",
+      "2n × 2n"
+    ],
+    correctAnswer: 2,
+    explanation: "La matrice Hessienne d'une fonction de ℝⁿ dans ℝ est de dimension n × n."
+  }
+];
+
 // Export de toutes les questions par chapitre
 export const mathQuizQuestions = {
   chapitre1: chapitre1QuizQuestions,
@@ -466,5 +774,7 @@ export const mathQuizQuestions = {
   chapitre8: chapitre8QuizQuestions,
   chapitre9: chapitre9QuizQuestions,
   chapitre10: chapitre10QuizQuestions,
+  chapitre11: chapitre11QuizQuestions,
   chapitre12: chapitre12QuizQuestions,
+  chapitre46: chapitre46QuizQuestions,
 }; 

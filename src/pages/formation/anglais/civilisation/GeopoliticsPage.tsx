@@ -40,66 +40,53 @@ const GeopoliticsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+    <div className="min-h-screen bg-white text-black">
+      {/* Minimal Breadcrumb */}
+      <nav className="sticky top-0 z-50 bg-white border-b border-orange-200">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <Home className="h-3 w-3" />
+          <div className="flex items-center text-xs text-black/70">
+            <Link to="/" className="flex items-center gap-1 hover:text-black transition-colors">
+              <Home className="h-3 w-3 text-orange-600" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formation/anglais" className="hover:text-foreground transition-colors">
+            <ChevronRight className="h-3 w-3 text-black/40 mx-1" />
+            <Link to="/formation/anglais" className="hover:text-black transition-colors">
               Formation <span className="text-orange-600">Anglais</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Geopolitics and International Relations</span>
+            <ChevronRight className="h-3 w-3 text-black/40 mx-1" />
+            <span className="font-medium">Geopolitics and International Relations</span>
           </div>
         </div>
       </nav>
 
       <div className="container mx-auto py-8 px-4">
-        {/* Header */}
+        {/* Header minimaliste + stats sobres */}
         <div className="max-w-4xl mx-auto">
-          <Card className="border-2 border-purple-500/30 mb-8">
-            <CardHeader className="bg-gradient-to-r from-purple-50 to-indigo-50">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-purple-500 text-white">
-                  <Globe className="h-5 w-5" />
-                </div>
-                <Badge className="bg-purple-500">Civilization</Badge>
-                <span className="text-sm text-muted-foreground">Updated 2025</span>
-              </div>
-              <CardTitle className="text-2xl">Geopolitics and International Relations</CardTitle>
-              <p className="text-muted-foreground">
-                Global power dynamics, international alliances, and contemporary geopolitical challenges
-              </p>
-            </CardHeader>
-          </Card>
-
-          {/* Statistics */}
-          <Card className="mb-8 bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-center">Key Geopolitical Facts 2025</CardTitle>
+          <div className="mb-6">
+            <h1 className="text-3xl font-bold">Geopolitics and International Relations</h1>
+            <p className="text-sm text-black/70 mt-1">Minimal design • Orange accents only</p>
+          </div>
+          <Card className="mb-8 border border-orange-200">
+            <CardHeader className="py-3">
+              <CardTitle className="text-xl">Key Geopolitical Facts 2025</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">2022</div>
-                  <div className="text-sm text-purple-100">Russian invasion of Ukraine</div>
+                  <div className="text-sm text-black/70">Russian invasion of Ukraine</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">2023</div>
-                  <div className="text-sm text-purple-100">Finland joins NATO</div>
+                  <div className="text-sm text-black/70">Finland joins NATO</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">2018</div>
-                  <div className="text-sm text-purple-100">US-China trade war begins</div>
+                  <div className="text-sm text-black/70">US-China trade war begins</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">2020</div>
-                  <div className="text-sm text-purple-100">Abraham Accords signed</div>
+                  <div className="text-sm text-black/70">Abraham Accords signed</div>
                 </div>
               </div>
             </CardContent>
@@ -112,7 +99,7 @@ const GeopoliticsPage = () => {
             <AccordionItem value="key-topics" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-purple-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Globe className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -124,7 +111,7 @@ const GeopoliticsPage = () => {
               <AccordionContent className="px-6 pb-6">
                 <div className="grid gap-4">
                   {keyTopics.map((topic, index) => (
-                    <Card key={index} className="border-l-4 border-l-purple-500">
+                    <Card key={index} className="border-l-4 border-l-orange-600">
                       <CardContent className="p-4">
                         <h4 className="font-semibold mb-2">{topic.title}</h4>
                         <p className="text-sm text-muted-foreground mb-3">{topic.content}</p>
@@ -163,15 +150,15 @@ const GeopoliticsPage = () => {
                   <p className="text-justify leading-relaxed">
                     Yet the war also laid bare divergent strategic interests. European nations, heavily reliant on Russian energy, scrambled to find new gas sources; Germany reversed decades of pacifist policy to boost defense spending, while Hungary under Viktor Orbán proved a semi-ally for the Kremlin by obstructing some EU measures. The conflict has had paradoxical economic effects: Russia's cut-off from Europe spurred it to deepen ties with China, India, and others, selling oil at discounts and forging a "no limits" partnership with Beijing. Meanwhile, the U.S.—though firmly backing Ukraine—benefited in one aspect: as Europe weaned off Russian gas, it pivoted to importing American LNG, giving U.S. energy producers a lucrative new market. The war's progression (a grinding attritional fight with no clear end by 2025) continues to shape the world order. It has strengthened the Western bloc but also accelerated a budding East-West bifurcation, with democracies on one side and authoritarian regimes on the other testing the resolve of the post-Cold War international system.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This paragraph is versatile for discussions on international security, alliance politics, or energy geopolitics. It shows how a single conflict can influence many domains: NATO expansion, energy markets, global alignments. Use it to argue about the resilience or strains of Western unity, the emergence of a new Cold War-like division, or the unintended consequences of war in a globalized economy.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       invasion; shockwaves; sweeping sanctions; oligarchs; rejuvenated; deterrence; pacifist policy; semi-ally; obstructing; paradoxical; weaned off; LNG (liquefied natural gas); lucrative; attritional; world order; bifurcation; resolve
                     </p>
                   </div>
@@ -200,15 +187,15 @@ const GeopoliticsPage = () => {
                   <p className="text-justify leading-relaxed">
                     The U.S., which views Taiwan's security as vital, has responded by strengthening Indo-Pacific alliances: revitalizing the "Quad" partnership with Japan, India, and Australia, and in 2021 forming AUKUS (a security pact to help Australia acquire nuclear-powered submarines). Economically, a tit-for-tat trade war that began in 2018 has evolved into broader competition over technology and supply chains. Washington has banned cutting-edge semiconductor exports to China, aiming to cripple Chinese advancements in AI and supercomputing, while China has sought to reduce dependence on American tech by developing its own chip industry. Many countries feel caught in between—benefiting from Chinese investment and trade, but wary of its growing influence and authoritarian model. This dynamic has sparked talk of a "new Cold War," though it differs from the 20th-century U.S.–Soviet rivalry: today's U.S.–China competition is as much about technological supremacy and economic power as it is about military might or ideology. How this relationship unfolds will likely be the central strategic question of the 21st century.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       Use this paragraph to illustrate contemporary great power rivalry, especially in questions about U.S. foreign policy or global stability. It covers concrete actions (island-building, trade war, alliances) that provide evidence in arguments about whether conflict with China is inevitable or how countries should navigate Sino-American tensions. It's also good for technology-related international issues or comparisons between old and new Cold Wars.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       ascent; adversarial; assertive; territorial claims; militarized; air defense zone; blockade; Indo-Pacific; tit-for-tat; supply chains; semiconductor; cripple; dependence; authoritarian model; supremacy; rivalry
                     </p>
                   </div>
@@ -237,15 +224,15 @@ const GeopoliticsPage = () => {
                   <p className="text-justify leading-relaxed">
                     For instance, Japan set up incentives for firms to relocate factories out of China after pandemic disruptions. The European Union launched its "CHIPS Act" to boost domestic semiconductor manufacturing, aiming to double its global market share by 2030. The United States, through the 2022 CHIPS and Science Act, similarly poured subsidies into American chip plants and restricted exports of advanced chips to rival nations. This pullback from unfettered free trade is also evident in the proliferation of regional trade blocs and tariff walls. While globalization is far from dead, its nature is changing: efficiency at all costs is yielding to a calculus that weighs resilience and national security. Emerging economies worry this shift could leave them sidelined, while consumers in wealthy countries may face higher prices. The big question is whether the world can strike a new balance—maintaining the gains of global integration while safeguarding against its downsides.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This paragraph is useful in economic globalization debates or discussions on how recent events are reshaping world trade. It shows concrete policy responses to supply chain issues, giving weight to arguments about the end of an era of globalization or the transition to something new. It would support points about protectionism, the impact of COVID-19 on global systems, or the future of trade.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       hyper-globalization; interdependence; shocks; far-flung; over-reliance; decoupling; friend-shoring; diversify; incentives; relocate; manufacturing; subsidies; unfettered; proliferation; tariff walls; resilience; sidelined; integration; downsides
                     </p>
                   </div>
@@ -434,13 +421,13 @@ const GeopoliticsPage = () => {
           {/* Navigation */}
           <div className="flex justify-between items-center mt-8">
             <Link to="/formation/anglais/civilisation">
-              <Button variant="outline" className="flex items-center gap-2">
+              <Button variant="outline" className="flex items-center gap-2 border-orange-500 text-black hover:bg-orange-50">
                 <ArrowLeft className="h-4 w-4" />
                 Back to Civilization Overview
               </Button>
             </Link>
-                            <Link to="/formation/anglais/civilisation/technology">
-              <Button className="flex items-center gap-2 bg-purple-500 hover:bg-purple-600">
+            <Link to="/formation/anglais/civilisation/technology">
+              <Button className="flex items-center gap-2 bg-orange-600 hover:bg-orange-700">
                 Next: AI and Technology
                 <ArrowRight className="h-4 w-4" />
               </Button>

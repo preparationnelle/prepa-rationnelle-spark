@@ -384,43 +384,18 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
                         Vocabulary
                       </Button>
                     </Link>
-                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Sample Essays
-                    </Button>
+                    <Link to="/formation/anglais/civilisation/brexit/sample-essays">
+                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Sample Essays
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Module 10 - Financial Systems */}
-            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                  <span className="font-bold text-orange-600 text-lg">10</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Financial Systems and Innovation</h3>
-                  <p className="text-gray-600 mb-4">Banking, fintech, cryptocurrencies, and financial regulation</p>
-                  <div className="flex gap-3">
-                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
-                      <Calendar className="mr-2 h-4 w-4" />
-                      Coming Soon
-                    </Button>
-                    <Link to="/formation/anglais/civilisation/inequalities/vocabulary">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <Briefcase className="mr-2 h-4 w-4" />
-                        Vocabulary
-                      </Button>
-                    </Link>
-                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Sample Essays
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
 
             {/* Module 11 - Labor and Employment */}
             <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
@@ -432,61 +407,34 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Labor Markets and Future of Work</h3>
                   <p className="text-gray-600 mb-4">Employment trends, gig economy, and workplace transformation</p>
                   <div className="flex gap-3">
-                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
-                      <Calendar className="mr-2 h-4 w-4" />
-                      Coming Soon
-                    </Button>
-                    <Link to="/formation/anglais/civilisation/inequalities/vocabulary">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <Briefcase className="mr-2 h-4 w-4" />
-                        Vocabulary
-                      </Button>
-                    </Link>
-                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Sample Essays
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Module 12 - Health and Healthcare */}
-            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                  <span className="font-bold text-orange-600 text-lg">12</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Health and Healthcare Systems</h3>
-                  <p className="text-gray-600 mb-4">Healthcare policies, public health crises, and medical innovations</p>
-                  <div className="flex gap-3">
-                    <Link to="/formation/anglais/civilisation/health">
+                    <Link to="/formation/anglais/civilisation/labor">
                       <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Explore Chapter
                       </Button>
                     </Link>
-                    <Link to="/formation/anglais/civilisation/health/vocabulary">
+                    <Link to="/formation/anglais/civilisation/labor/vocabulary">
                       <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
                         <Briefcase className="mr-2 h-4 w-4" />
                         Vocabulary
                       </Button>
                     </Link>
-                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Sample Essays
-                    </Button>
+                    <Link to="/formation/anglais/civilisation/labor/sample-essays">
+                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Sample Essays
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Module 13 - Media and Communication */}
+            {/* Module 12 - Media and Communication */}
             <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
               <div className="flex items-start gap-4">
                 <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                  <span className="font-bold text-orange-600 text-lg">13</span>
+                  <span className="font-bold text-orange-600 text-lg">12</span>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Media and Digital Communication</h3>
@@ -504,88 +452,67 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
                         Vocabulary
                       </Button>
                     </Link>
-                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Sample Essays
-                    </Button>
+                    <Link to="/formation/anglais/civilisation/media/sample-essays">
+                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Sample Essays
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Module 14 - Arts and Literature */}
+            {/* Module 13 - Polarization */}
+            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
+              <div className="flex items-start gap-4">
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
+                  <span className="font-bold text-orange-600 text-lg">13</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Polarization</h3>
+                  <p className="text-gray-600 mb-4">Causes, consequences, and remedies for political and cultural divides</p>
+                  <div className="flex gap-3">
+                    <Link to="/formation/anglais/civilisation/polarization">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Explore Chapter
+                      </Button>
+                    </Link>
+                    <Link to="/formation/anglais/civilisation/polarization/vocabulary">
+                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                        <Briefcase className="mr-2 h-4 w-4" />
+                        Vocabulary
+                      </Button>
+                    </Link>
+                    <Link to="/formation/anglais/civilisation/polarization/sample-essays">
+                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Sample Essays
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 14 - Health and Healthcare Systems: US and UK Policy Challenges and Crises */}
             <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
               <div className="flex items-start gap-4">
                 <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
                   <span className="font-bold text-orange-600 text-lg">14</span>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Contemporary Arts and Literature</h3>
-                  <p className="text-gray-600 mb-4">Modern cultural movements, digital arts, and literary trends</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Health and Healthcare Systems: US and UK Policy Challenges and Crises</h3>
+                  <p className="text-gray-600 mb-4">Comparative analysis of healthcare systems, policy reforms, workforce crises, and crisis management in 2025</p>
                   <div className="flex gap-3">
-                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
-                      <Calendar className="mr-2 h-4 w-4" />
-                      Coming Soon
-                    </Button>
-                    <Link to="/formation/anglais/civilisation/inequalities/vocabulary">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <Briefcase className="mr-2 h-4 w-4" />
-                        Vocabulary
+                    <Link to="/formation/anglais/civilisation/health-systems">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Explore Chapter
                       </Button>
                     </Link>
-                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Sample Essays
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Module 15 - Sports and Entertainment */}
-            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                  <span className="font-bold text-orange-600 text-lg">15</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Sports and Entertainment Industry</h3>
-                  <p className="text-gray-600 mb-4">Cultural influence of sports, entertainment business, and social impact</p>
-                  <div className="flex gap-3">
-                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
-                      <Calendar className="mr-2 h-4 w-4" />
-                      Coming Soon
-                    </Button>
-                    <Link to="/formation/anglais/civilisation/inequalities/vocabulary">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <Briefcase className="mr-2 h-4 w-4" />
-                        Vocabulary
-                      </Button>
-                    </Link>
-                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Sample Essays
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Module 16 - Religion and Spirituality */}
-            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                  <span className="font-bold text-orange-600 text-lg">16</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Religion and Secular Society</h3>
-                  <p className="text-gray-600 mb-4">Religious diversity, secularization, and faith in modern society</p>
-                  <div className="flex gap-3">
-                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
-                      <Calendar className="mr-2 h-4 w-4" />
-                      Coming Soon
-                    </Button>
-                    <Link to="/formation/anglais/civilisation/inequalities/vocabulary">
+                    <Link to="/formation/anglais/civilisation/health/vocabulary">
                       <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
                         <Briefcase className="mr-2 h-4 w-4" />
                         Vocabulary

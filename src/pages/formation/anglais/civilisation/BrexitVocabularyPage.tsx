@@ -1,9 +1,7 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, ArrowRight, RotateCcw, Shuffle, HelpCircle, Keyboard, BookOpen, Flag } from 'lucide-react';
+import React from 'react';
+import { UnifiedFlashcards } from '@/components/ui/UnifiedFlashcards';
 import { Link } from 'react-router-dom';
+import { Home, ChevronRight } from 'lucide-react';
 
 interface VocabularyCard {
   id: number;
@@ -133,245 +131,78 @@ const BrexitVocabularyPage = () => {
     { id: 98, french: "Environnement", english: "Environment", category: "Conséquences et héritage" },
     { id: 99, french: "Réglementations environnementales", english: "Environmental regulations", category: "Conséquences et héritage" },
     { id: 100, french: "Changement climatique", english: "Climate change", category: "Conséquences et héritage" },
+
+    // 11. Souveraineté économique / Economic Sovereignty
+    { id: 101, french: "Souveraineté économique", english: "Economic sovereignty", category: "Souveraineté économique" },
+    { id: 102, french: "Indépendance commerciale", english: "Trade independence", category: "Souveraineté économique" },
+    { id: 103, french: "Contrôle des frontières", english: "Border control", category: "Souveraineté économique" },
+    { id: 104, french: "Politique monétaire", english: "Monetary policy", category: "Souveraineté économique" },
+    { id: 105, french: "Politique fiscale", english: "Fiscal policy", category: "Souveraineté économique" },
+    { id: 106, french: "Autonomie réglementaire", english: "Regulatory autonomy", category: "Souveraineté économique" },
+    { id: 107, french: "Compétitivité", english: "Competitiveness", category: "Souveraineté économique" },
+    { id: 108, french: "Protectionnisme", english: "Protectionism", category: "Souveraineté économique" },
+    { id: 109, french: "Libre-échange", english: "Free trade", category: "Souveraineté économique" },
+    { id: 110, french: "Accords bilatéraux", english: "Bilateral agreements", category: "Souveraineté économique" },
+
+    // 12. Commerce international / International Trade
+    { id: 111, french: "Commerce international", english: "International trade", category: "Commerce international" },
+    { id: 112, french: "Chaînes d'approvisionnement", english: "Supply chains", category: "Commerce international" },
+    { id: 113, french: "Logistique", english: "Logistics", category: "Commerce international" },
+    { id: 114, french: "Formalités douanières", english: "Customs procedures", category: "Commerce international" },
+    { id: 115, french: "Contrôles frontaliers", english: "Border checks", category: "Commerce international" },
+    { id: 116, french: "Certificats d'origine", english: "Certificates of origin", category: "Commerce international" },
+    { id: 117, french: "Normes techniques", english: "Technical standards", category: "Commerce international" },
+    { id: 118, french: "Barrières non tarifaires", english: "Non-tariff barriers", category: "Commerce international" },
+    { id: 119, french: "Quotas d'importation", english: "Import quotas", category: "Commerce international" },
+    { id: 120, french: "Partenariats commerciaux", english: "Trade partnerships", category: "Commerce international" }
   ];
 
-  const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [showHelp, setShowHelp] = useState(false);
-
-  const currentCard = vocabularyData[currentCardIndex];
-
-  const nextCard = useCallback(() => {
-    setCurrentCardIndex((prev) => (prev + 1) % vocabularyData.length);
-    setIsFlipped(false);
-  }, [vocabularyData.length]);
-
-  const previousCard = useCallback(() => {
-    setCurrentCardIndex((prev) => (prev - 1 + vocabularyData.length) % vocabularyData.length);
-    setIsFlipped(false);
-  }, [vocabularyData.length]);
-
-  const shuffleCards = useCallback(() => {
-    const shuffled = [...vocabularyData].sort(() => Math.random() - 0.5);
-    vocabularyData.splice(0, vocabularyData.length, ...shuffled);
-    setCurrentCardIndex(0);
-    setIsFlipped(false);
-  }, []);
-
-  const resetCards = useCallback(() => {
-    setCurrentCardIndex(0);
-    setIsFlipped(false);
-    setProgress(0);
-  }, []);
-
-  useEffect(() => {
-    setProgress(((currentCardIndex + 1) / vocabularyData.length) * 100);
-  }, [currentCardIndex, vocabularyData.length]);
-
-  useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
-      switch (event.key) {
-        case 'ArrowLeft':
-          previousCard();
-          break;
-        case 'ArrowRight':
-          nextCard();
-          break;
-        case ' ':
-          event.preventDefault();
-          setIsFlipped(!isFlipped);
-          break;
-        case 'r':
-        case 'R':
-          resetCards();
-          break;
-        case 's':
-        case 'S':
-          shuffleCards();
-          break;
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [previousCard, nextCard, isFlipped, resetCards, shuffleCards]);
-
-  const getCategoryColor = (category: string) => {
-    const colors: { [key: string]: string } = {
-      'Brexit et référendum': 'bg-red-500',
-      'Négociations et accords': 'bg-orange-500',
-      'Union européenne et relations': 'bg-blue-500',
-      'Commerce et économie': 'bg-green-500',
-      'Impact économique': 'bg-purple-500',
-      'Secteurs économiques': 'bg-pink-500',
-      'Frontières et territoires': 'bg-indigo-500',
-      'Immigration et citoyenneté': 'bg-teal-500',
-      'Politique et institutions': 'bg-cyan-500',
-      'Conséquences et héritage': 'bg-yellow-500',
-    };
-    return colors[category] || 'bg-gray-500';
-  };
+  const mappedData = vocabularyData.map(({ category, french, english }) => ({ 
+    category, 
+    front: french, 
+    back: english 
+  }));
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <div className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <Link to="/formation/anglais/civilisation" className="text-gray-600 hover:text-gray-900">
-                <ArrowLeft className="h-5 w-5 mr-2" />
-                Retour à la civilisation anglaise
-              </Link>
-            </div>
-            <div className="flex items-center gap-4">
-              <Badge variant="outline" className="bg-red-50 text-red-700 border-red-200">
-                Brexit et ses conséquences
-              </Badge>
-              <span className="text-sm text-gray-600">
-                {currentCardIndex + 1} / {vocabularyData.length}
-              </span>
-            </div>
+      {/* Sticky Breadcrumb */}
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40 relative z-10">
+        <div className="container mx-auto px-4 py-2">
+          <div className="flex items-center text-xs text-muted-foreground">
+            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              <Home className="h-3 w-3" />
+              <span>Accueil</span>
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formations" className="hover:text-foreground transition-colors">
+              Toutes les formations
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formation/anglais" className="hover:text-foreground transition-colors">
+              Formation Anglais ECG
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formation/anglais/civilisation" className="hover:text-foreground transition-colors">
+              Civilisation Anglaise
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <span className="text-foreground font-medium">Brexit et Commerce International</span>
           </div>
         </div>
-      </div>
+      </nav>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Barre de progression */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-700">Progression</span>
-            <span className="text-sm text-gray-500">{Math.round(progress)}%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div
-              className="bg-red-600 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-        </div>
-
-        {/* Carte principale */}
-        <Card className="mb-8 border-2 border-red-200">
-            <CardHeader className="bg-gradient-to-r from-yellow-50 to-orange-50">
-              <CardTitle className="flex items-center gap-2">
-                <HelpCircle className="h-5 w-5 text-yellow-600" />
-                <span>Actions disponibles</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span className="font-medium">R:</span>
-                  <span className="text-gray-600">Recommencer</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-medium">S:</span>
-                  <span className="text-gray-600">Mélanger</span>
-                </div>
-              </div>
-            </CardContent>        </Card>
-
-        {/* Contrôles */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-          <Button
-            variant="outline"
-            onClick={previousCard}
-            disabled={currentCardIndex === 0}
-            className="flex items-center gap-2"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Précédent
-          </Button>
-
-          <Button
-            variant="outline"
-            onClick={() => setIsFlipped(!isFlipped)}
-            className="flex items-center gap-2"
-          >
-            <RotateCcw className="h-4 w-4" />
-            Retourner
-          </Button>
-
-          <Button
-            variant="outline"
-            onClick={nextCard}
-            disabled={currentCardIndex === vocabularyData.length - 1}
-            className="flex items-center gap-2"
-          >
-            Suivant
-            <ArrowRight className="h-4 w-4" />
-          </Button>
-        </div>
-
-        {/* Actions supplémentaires */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-          <Button
-            variant="outline"
-            onClick={shuffleCards}
-            className="flex items-center gap-2 bg-green-50 border-green-200 text-green-700 hover:bg-green-100"
-          >
-            <Shuffle className="h-4 w-4" />
-            Mélanger
-          </Button>
-
-          <Button
-            variant="outline"
-            onClick={resetCards}
-            className="flex items-center gap-2 bg-red-50 border-red-200 text-red-700 hover:bg-red-100"
-          >
-            <RotateCcw className="h-4 w-4" />
-            Recommencer
-          </Button>
-        </div>
-
-        {/* Aide */}
-        {showHelp && (
-          <Card className="mb-8 border-2 border-yellow-200">
-            <CardHeader className="bg-gradient-to-r from-yellow-50 to-orange-50">
-              <CardTitle className="flex items-center gap-2">
-                <HelpCircle className="h-5 w-5 text-yellow-600" />
-                <span>Actions disponibles</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span className="font-medium">R:</span>
-                  <span className="text-gray-600">Recommencer</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-medium">S:</span>
-                  <span className="text-gray-600">Mélanger</span>
-                </div>
-              </div>
-            </CardContent>          </Card>
-        )}
-
-        {/* Statistiques */}
-        <Card className="border-2 border-gray-200">
-            <CardHeader className="bg-gradient-to-r from-yellow-50 to-orange-50">
-              <CardTitle className="flex items-center gap-2">
-                <HelpCircle className="h-5 w-5 text-yellow-600" />
-                <span>Actions disponibles</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span className="font-medium">R:</span>
-                  <span className="text-gray-600">Recommencer</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-medium">S:</span>
-                  <span className="text-gray-600">Mélanger</span>
-                </div>
-              </div>
-            </CardContent>        </Card>
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        <UnifiedFlashcards
+          data={mappedData}
+          title="Vocabulaire Brexit et Commerce International (FR → EN)"
+          frontKey="front"
+          backKey="back"
+          frontLabel="Français"
+          backLabel="Anglais"
+        />
       </div>
     </div>
   );
 };
 
-export default BrexitVocabularyPage; 
+export default BrexitVocabularyPage;

@@ -1,9 +1,5 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, ArrowRight, RotateCcw, Shuffle, HelpCircle, Keyboard, BookOpen } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { UnifiedFlashcards } from '@/components/ui/UnifiedFlashcards';
 
 interface VocabularyCard {
   id: number;
@@ -14,7 +10,6 @@ interface VocabularyCard {
 
 const GeopoliticsVocabularyPage = () => {
   const vocabularyData: VocabularyCard[] = [
-    // 1. Diplomatie et Coopération / Diplomacy and Cooperation
     { id: 1, french: "Diplomatie climatique", english: "Climate diplomacy", category: "Diplomatie et Coopération" },
     { id: 2, french: "Coopération internationale", english: "International cooperation", category: "Diplomatie et Coopération" },
     { id: 3, french: "Accord multilatéral", english: "Multilateral agreement", category: "Diplomatie et Coopération" },
@@ -26,7 +21,6 @@ const GeopoliticsVocabularyPage = () => {
     { id: 9, french: "Coopération multilatérale", english: "Multilateral cooperation", category: "Diplomatie et Coopération" },
     { id: 10, french: "Coopération humanitaire", english: "Humanitarian cooperation", category: "Diplomatie et Coopération" },
 
-    // 2. Souveraineté et Conflits / Sovereignty and Conflicts
     { id: 11, french: "Souveraineté", english: "Sovereignty", category: "Souveraineté et Conflits" },
     { id: 12, french: "Conflit environnemental", english: "Environmental conflict", category: "Souveraineté et Conflits" },
     { id: 13, french: "Conflit hydrique", english: "Water conflict", category: "Souveraineté et Conflits" },
@@ -38,7 +32,6 @@ const GeopoliticsVocabularyPage = () => {
     { id: 19, french: "Crise migratoire", english: "Migration crisis", category: "Souveraineté et Conflits" },
     { id: 20, french: "Crise alimentaire", english: "Food crisis", category: "Souveraineté et Conflits" },
 
-    // 3. Énergie et Ressources / Energy and Resources
     { id: 21, french: "Géopolitique de l'énergie", english: "Energy geopolitics", category: "Énergie et Ressources" },
     { id: 22, french: "Ressources stratégiques", english: "Strategic resources", category: "Énergie et Ressources" },
     { id: 23, french: "Accès à l'eau", english: "Water access", category: "Énergie et Ressources" },
@@ -50,7 +43,6 @@ const GeopoliticsVocabularyPage = () => {
     { id: 29, french: "Accès aux ressources", english: "Resource access", category: "Énergie et Ressources" },
     { id: 30, french: "Sécurité hydrique", english: "Water security", category: "Énergie et Ressources" },
 
-    // 4. Sécurité et Gouvernance / Security and Governance
     { id: 31, french: "Sécurité alimentaire", english: "Food security", category: "Sécurité et Gouvernance" },
     { id: 32, french: "Sécurité environnementale", english: "Environmental security", category: "Sécurité et Gouvernance" },
     { id: 33, french: "Sécurité climatique", english: "Climate security", category: "Sécurité et Gouvernance" },
@@ -62,7 +54,6 @@ const GeopoliticsVocabularyPage = () => {
     { id: 39, french: "Régimes internationaux", english: "International regimes", category: "Sécurité et Gouvernance" },
     { id: 40, french: "Gestion des crises", english: "Crisis management", category: "Sécurité et Gouvernance" },
 
-    // 5. Influence et Pouvoir / Influence and Power
     { id: 41, french: "Soft power", english: "Soft power", category: "Influence et Pouvoir" },
     { id: 42, french: "Hard power", english: "Hard power", category: "Influence et Pouvoir" },
     { id: 43, french: "Influence géopolitique", english: "Geopolitical influence", category: "Influence et Pouvoir" },
@@ -74,7 +65,6 @@ const GeopoliticsVocabularyPage = () => {
     { id: 49, french: "Compétition économique", english: "Economic competition", category: "Influence et Pouvoir" },
     { id: 50, french: "Compétition technologique", english: "Technological competition", category: "Influence et Pouvoir" },
 
-    // 6. Organisations et Accords / Organizations and Agreements
     { id: 51, french: "Organisations internationales", english: "International organizations", category: "Organisations et Accords" },
     { id: 52, french: "Sommet climatique", english: "Climate summit", category: "Organisations et Accords" },
     { id: 53, french: "Traité international", english: "International treaty", category: "Organisations et Accords" },
@@ -86,7 +76,6 @@ const GeopoliticsVocabularyPage = () => {
     { id: 59, french: "Accord de coopération", english: "Cooperation agreement", category: "Organisations et Accords" },
     { id: 60, french: "Pacte environnemental", english: "Environmental pact", category: "Organisations et Accords" },
 
-    // 7. Développement et Objectifs / Development and Goals
     { id: 61, french: "Agenda 2030", english: "Agenda 2030", category: "Développement et Objectifs" },
     { id: 62, french: "Objectifs de développement durable", english: "Sustainable Development Goals (SDGs)", category: "Développement et Objectifs" },
     { id: 63, french: "Développement durable", english: "Sustainable development", category: "Développement et Objectifs" },
@@ -98,7 +87,6 @@ const GeopoliticsVocabularyPage = () => {
     { id: 69, french: "Gestion des tensions", english: "Tension management", category: "Développement et Objectifs" },
     { id: 70, french: "Planification écologique", english: "Ecological planning", category: "Développement et Objectifs" },
 
-    // 8. Solidarité et Équité / Solidarity and Equity
     { id: 71, french: "Solidarité internationale", english: "International solidarity", category: "Solidarité et Équité" },
     { id: 72, french: "Solidarité climatique", english: "Climate solidarity", category: "Solidarité et Équité" },
     { id: 73, french: "Solidarité régionale", english: "Regional solidarity", category: "Solidarité et Équité" },
@@ -110,7 +98,6 @@ const GeopoliticsVocabularyPage = () => {
     { id: 79, french: "Dialogue Nord-Sud", english: "North-South dialogue", category: "Solidarité et Équité" },
     { id: 80, french: "Résilience géopolitique", english: "Geopolitical resilience", category: "Solidarité et Équité" },
 
-    // 9. Diplomatie et Dialogue / Diplomacy and Dialogue
     { id: 81, french: "Diplomatie économique", english: "Economic diplomacy", category: "Diplomatie et Dialogue" },
     { id: 82, french: "Diplomatie multilatérale", english: "Multilateral diplomacy", category: "Diplomatie et Dialogue" },
     { id: 83, french: "Diplomatie verte", english: "Green diplomacy", category: "Diplomatie et Dialogue" },
@@ -122,7 +109,6 @@ const GeopoliticsVocabularyPage = () => {
     { id: 89, french: "Dialogue international", english: "International dialogue", category: "Diplomatie et Dialogue" },
     { id: 90, french: "Dialogue climatique", english: "Climate dialogue", category: "Diplomatie et Dialogue" },
 
-    // 10. Crise et Résolution / Crisis and Resolution
     { id: 91, french: "Crise écologique", english: "Ecological crisis", category: "Crise et Résolution" },
     { id: 92, french: "Crise humanitaire", english: "Humanitarian crisis", category: "Crise et Résolution" },
     { id: 93, french: "Sécurité alimentaire mondiale", english: "Global food security", category: "Crise et Résolution" },
@@ -132,243 +118,22 @@ const GeopoliticsVocabularyPage = () => {
     { id: 97, french: "Résolution de conflits", english: "Conflict resolution", category: "Crise et Résolution" },
     { id: 98, french: "Fonds climatique", english: "Climate fund", category: "Crise et Résolution" },
     { id: 99, french: "Sanctions environnementales", english: "Environmental sanctions", category: "Crise et Résolution" },
-    { id: 100, french: "Plan d'urgence", english: "Emergency plan", category: "Crise et Résolution" },
+    { id: 100, french: "Plan d'urgence", english: "Emergency plan", category: "Crise et Résolution" }
   ];
 
-  const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [showHelp, setShowHelp] = useState(false);
-
-  const currentCard = vocabularyData[currentCardIndex];
-
-  const nextCard = useCallback(() => {
-    setCurrentCardIndex((prev) => (prev + 1) % vocabularyData.length);
-    setIsFlipped(false);
-  }, [vocabularyData.length]);
-
-  const previousCard = useCallback(() => {
-    setCurrentCardIndex((prev) => (prev - 1 + vocabularyData.length) % vocabularyData.length);
-    setIsFlipped(false);
-  }, [vocabularyData.length]);
-
-  const shuffleCards = useCallback(() => {
-    const shuffled = [...vocabularyData].sort(() => Math.random() - 0.5);
-    vocabularyData.splice(0, vocabularyData.length, ...shuffled);
-    setCurrentCardIndex(0);
-    setIsFlipped(false);
-  }, []);
-
-  const resetCards = useCallback(() => {
-    setCurrentCardIndex(0);
-    setIsFlipped(false);
-    setProgress(0);
-  }, []);
-
-  useEffect(() => {
-    setProgress(((currentCardIndex + 1) / vocabularyData.length) * 100);
-  }, [currentCardIndex, vocabularyData.length]);
-
-  useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
-      switch (event.key) {
-        case 'ArrowLeft':
-          previousCard();
-          break;
-        case 'ArrowRight':
-          nextCard();
-          break;
-        case ' ':
-          event.preventDefault();
-          setIsFlipped(!isFlipped);
-          break;
-        case 'r':
-        case 'R':
-          resetCards();
-          break;
-        case 's':
-        case 'S':
-          shuffleCards();
-          break;
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [previousCard, nextCard, isFlipped, resetCards, shuffleCards]);
-
-  const getCategoryColor = (category: string) => {
-    const colors: { [key: string]: string } = {
-      'Diplomatie et Coopération': 'bg-blue-500',
-      'Souveraineté et Conflits': 'bg-red-500',
-      'Énergie et Ressources': 'bg-green-500',
-      'Sécurité et Gouvernance': 'bg-purple-500',
-      'Influence et Pouvoir': 'bg-orange-500',
-      'Organisations et Accords': 'bg-indigo-500',
-      'Développement et Objectifs': 'bg-teal-500',
-      'Solidarité et Équité': 'bg-pink-500',
-      'Diplomatie et Dialogue': 'bg-cyan-500',
-      'Crise et Résolution': 'bg-amber-500',
-    };
-    return colors[category] || 'bg-gray-500';
-  };
+  const mapped = vocabularyData.map(({ category, french, english }) => ({ category, front: french, back: english }));
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <div className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <Link to="/formation/anglais/civilisation" className="text-gray-600 hover:text-gray-900">
-                <ArrowLeft className="h-5 w-5 mr-2" />
-                Retour à la civilisation anglaise
-              </Link>
-            </div>
-            <div className="flex items-center gap-4">
-              <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200">
-                Géopolitique et Relations internationales
-              </Badge>
-              <span className="text-sm text-gray-600">
-                {currentCardIndex + 1} / {vocabularyData.length}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Barre de progression */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-700">Progression</span>
-            <span className="text-sm text-gray-500">{Math.round(progress)}%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div
-              className="bg-blue-600 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-        </div>
-
-        {/* Carte principale */}
-        <Card className="mb-8 border-2 border-blue-200">
-            <CardHeader className="bg-gradient-to-r from-yellow-50 to-orange-50">
-              <CardTitle className="flex items-center gap-2">
-                <HelpCircle className="h-5 w-5 text-yellow-600" />
-                <span>Actions disponibles</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span className="font-medium">R:</span>
-                  <span className="text-gray-600">Recommencer</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-medium">S:</span>
-                  <span className="text-gray-600">Mélanger</span>
-                </div>
-              </div>
-            </CardContent>        </Card>
-
-        {/* Contrôles */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-          <Button
-            variant="outline"
-            onClick={previousCard}
-            disabled={currentCardIndex === 0}
-            className="flex items-center gap-2"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Précédent
-          </Button>
-
-          <Button
-            variant="outline"
-            onClick={() => setIsFlipped(!isFlipped)}
-            className="flex items-center gap-2"
-          >
-            <RotateCcw className="h-4 w-4" />
-            Retourner
-          </Button>
-
-          <Button
-            variant="outline"
-            onClick={nextCard}
-            disabled={currentCardIndex === vocabularyData.length - 1}
-            className="flex items-center gap-2"
-          >
-            Suivant
-            <ArrowRight className="h-4 w-4" />
-          </Button>
-        </div>
-
-        {/* Actions supplémentaires */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-          <Button
-            variant="outline"
-            onClick={shuffleCards}
-            className="flex items-center gap-2 bg-green-50 border-green-200 text-green-700 hover:bg-green-100"
-          >
-            <Shuffle className="h-4 w-4" />
-            Mélanger
-          </Button>
-
-          <Button
-            variant="outline"
-            onClick={resetCards}
-            className="flex items-center gap-2 bg-red-50 border-red-200 text-red-700 hover:bg-red-100"
-          >
-            <RotateCcw className="h-4 w-4" />
-            Recommencer
-          </Button>
-        </div>
-
-        {/* Aide */}
-        {showHelp && (
-          <Card className="mb-8 border-2 border-yellow-200">
-            <CardHeader className="bg-gradient-to-r from-yellow-50 to-orange-50">
-              <CardTitle className="flex items-center gap-2">
-                <HelpCircle className="h-5 w-5 text-yellow-600" />
-                <span>Actions disponibles</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span className="font-medium">R:</span>
-                  <span className="text-gray-600">Recommencer</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-medium">S:</span>
-                  <span className="text-gray-600">Mélanger</span>
-                </div>
-              </div>
-            </CardContent>          </Card>
-        )}
-
-        {/* Statistiques */}
-        <Card className="border-2 border-gray-200">
-            <CardHeader className="bg-gradient-to-r from-yellow-50 to-orange-50">
-              <CardTitle className="flex items-center gap-2">
-                <HelpCircle className="h-5 w-5 text-yellow-600" />
-                <span>Actions disponibles</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span className="font-medium">R:</span>
-                  <span className="text-gray-600">Recommencer</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-medium">S:</span>
-                  <span className="text-gray-600">Mélanger</span>
-                </div>
-              </div>
-            </CardContent>        </Card>
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        <UnifiedFlashcards
+          data={mapped as any}
+          title="Géopolitique et Relations internationales (FR → EN)"
+          frontKey="front"
+          backKey="back"
+          frontLabel="Français"
+          backLabel="Anglais"
+        />
       </div>
     </div>
   );

@@ -409,15 +409,15 @@ print(n)
             {exercises[selectedExercise - 1].content.exercices.map((exercice, index) => (
               <div key={index} className="space-y-4">
                 {/* Énoncé */}
-                <Card className="border-2 border-gray-200 bg-gray-50 shadow-lg">
+                <Card className="border-2 border-blue-300 bg-blue-50/50 shadow-lg">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-3 text-gray-700">
-                      <BookOpen className="h-6 w-6" />
+                    <CardTitle className="flex items-center gap-3 text-blue-800">
+                      <BookOpen className="h-6 w-6 text-blue-700" />
                       {exercice.titre}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-700 whitespace-pre-line">{exercice.enonce}</p>
+                    <p className="text-blue-800 whitespace-pre-line">{exercice.enonce}</p>
                   </CardContent>
                 </Card>
 
@@ -426,7 +426,7 @@ print(n)
                   <Button
                     variant="outline"
                     onClick={() => toggleCorrection(index)}
-                    className="flex items-center gap-2 border-gray-200 text-gray-600 hover:bg-gray-50"
+                    className="flex items-center gap-2 border-blue-300 text-blue-700 hover:bg-orange-100 hover:text-orange-800 hover:border-orange-400"
                   >
                     {showCorrections.has(index) ? (
                       <>
@@ -444,16 +444,16 @@ print(n)
 
                 {/* Correction (affichée conditionnellement) */}
                 {showCorrections.has(index) && (
-                  <Card className="border-2 border-gray-200 bg-gray-50 shadow-lg">
+                  <Card className="border-2 border-orange-300 bg-orange-50/50 shadow-lg">
                     <CardHeader>
-                      <CardTitle className="flex items-center gap-3 text-gray-700">
-                        <Code className="h-6 w-6" />
+                      <CardTitle className="flex items-center gap-3 text-orange-800">
+                        <Code className="h-6 w-6 text-orange-700" />
                         Correction
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                        <pre className="text-gray-600 text-sm font-mono">
+                        <pre className="text-orange-200 text-sm font-mono">
                           <code>{exercice.correction}</code>
                         </pre>
                       </div>
@@ -501,31 +501,34 @@ print(n)
   return (
     <PythonModuleLayout>
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">
-          Module 0 : Exercices - Fondamentaux
-        </h1>
-        <p className="text-xl text-muted-foreground">
+        <div className="inline-flex items-center gap-3 mb-4 p-3 rounded-lg bg-blue-100 text-blue-700 border border-blue-300">
+          <Calculator className="h-8 w-8" />
+          <h1 className="text-4xl font-bold text-blue-800">
+            Module 0 : Exercices - Fondamentaux
+          </h1>
+        </div>
+        <p className="text-xl text-blue-600">
           Exercices pratiques sur les bases de Python
         </p>
       </div>
 
-      <div className="mb-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+      <div className="mb-6 p-4 bg-blue-50/50 rounded-lg border-2 border-blue-300">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="space-y-2">
-            <Badge variant="outline" className="bg-gray-100 text-gray-700 border-gray-300">Types de base</Badge>
-            <p className="text-sm text-gray-600">
+            <Badge variant="outline" className="bg-blue-100 text-blue-800 border-blue-300">Types de base</Badge>
+            <p className="text-sm text-blue-700">
               Maîtriser les types fondamentaux de Python
             </p>
           </div>
           <div className="space-y-2">
-            <Badge variant="outline" className="bg-gray-100 text-gray-700 border-gray-300">Structures de contrôle</Badge>
-            <p className="text-sm text-gray-600">
+            <Badge variant="outline" className="bg-blue-100 text-blue-800 border-blue-300">Structures de contrôle</Badge>
+            <p className="text-sm text-blue-700">
               Comprendre les conditions et les boucles
             </p>
           </div>
           <div className="space-y-2">
-            <Badge variant="outline" className="bg-gray-100 text-gray-700 border-gray-300">Fonctions</Badge>
-            <p className="text-sm text-gray-600">
+            <Badge variant="outline" className="bg-blue-100 text-blue-800 border-blue-300">Fonctions</Badge>
+            <p className="text-sm text-blue-700">
               Créer et utiliser des fonctions Python
             </p>
           </div>
@@ -536,29 +539,29 @@ print(n)
         {exercises.map(exercise => (
             <Card
               key={exercise.id}
-              className="hover:shadow-lg transition-shadow cursor-pointer border-2 border-gray-200 hover:border-gray-300 h-full flex flex-col"
+              className="hover:shadow-lg transition-shadow cursor-pointer border-2 border-blue-300 bg-blue-50/50 hover:border-blue-400 h-full flex flex-col"
               onClick={() => setSelectedExercise(exercise.id)}
             >
               <CardHeader className="flex-shrink-0">
                 <div className="flex items-center gap-3">
-                  <Calculator className="h-6 w-6 text-gray-600" />
+                  <Calculator className="h-6 w-6 text-blue-700" />
                   <div>
                     <CardTitle className="text-lg">Exercice {exercise.id}</CardTitle>
-                    <Badge variant="secondary" className="mt-1 bg-gray-100 text-gray-700">
+                    <Badge variant="secondary" className="mt-1 bg-blue-100 text-blue-800 border border-blue-300">
                       {exercise.difficulty}
                     </Badge>
                   </div>
                 </div>
               </CardHeader>
               <CardContent className="flex-grow flex flex-col">
-                <h3 className="font-semibold mb-2 text-gray-700 flex-grow">
+                <h3 className="font-semibold mb-2 text-blue-800 flex-grow">
                   {exercise.title.replace(`Exercice ${exercise.id} - `, '')}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4 flex-grow">
+                <p className="text-sm text-blue-700 mb-4 flex-grow">
                   {exercise.description}
                 </p>
                 <div className="mt-auto">
-                  <Button className="w-full bg-gray-600 hover:bg-gray-700">
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700">
                     <Play className="h-4 w-4 mr-2" />
                     Commencer l'exercice
                   </Button>

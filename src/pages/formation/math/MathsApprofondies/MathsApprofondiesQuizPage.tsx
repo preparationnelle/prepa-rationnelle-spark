@@ -24,6 +24,7 @@ const CHAPTERS: Record<string, { number: number; title: string }> = {
   'espaces-probabilises-conditionnement': { number: 16, title: 'Espaces probabilisés & conditionnement' },
   'variables-aleatoires-discretes-lois': { number: 17, title: 'Variables aléatoires discrètes & lois' },
   'convergences-theoremes-limites': { number: 18, title: 'Convergences & théorèmes limites' },
+  'variables-aleatoires-densite': { number: 46, title: 'Variables aléatoires à densité' },
 };
 
 const keyFromNumber = (n: number) => `chapitre${n}` as const;

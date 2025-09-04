@@ -1,21 +1,26 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Home, ChevronRight } from 'lucide-react';
+import { Home, ChevronRight, BookOpen, Target, Brain, PenTool } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 interface MathChapterTemplateProps {
   chapterNumber: number;
   chapterTitle: string;
   description: string;
   children?: React.ReactNode;
+  slug?: string; // slug pour générer les liens automatiquement
+  showNavigation?: boolean; // afficher ou non la navigation vers les ressources
 }
 
 export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
   chapterNumber,
   chapterTitle,
   description,
-  children
+  children,
+  slug,
+  showNavigation = false
 }) => {
   return (
     <div className="min-h-screen bg-[#EEF3FC]">
@@ -50,6 +55,36 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
               {description}
             </p>
           </CardHeader>
+          {showNavigation && slug && (
+            <CardContent className="pt-0">
+              <div className="flex flex-wrap justify-center gap-3 bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <Link to={`/formation/maths-${slug}`}>
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                    <BookOpen className="mr-2 h-4 w-4" />
+                    Cours
+                  </Button>
+                </Link>
+                <Link to={`/formation/maths-${slug}-exercices`}>
+                  <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+                    <PenTool className="mr-2 h-4 w-4" />
+                    Exercices
+                  </Button>
+                </Link>
+                <Link to={`/formation/maths-${slug}-flashcards`}>
+                  <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+                    <Brain className="mr-2 h-4 w-4" />
+                    Flashcards
+                  </Button>
+                </Link>
+                <Link to={`/formation/maths-${slug}-quiz`}>
+                  <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+                    <Target className="mr-2 h-4 w-4" />
+                    Quiz
+                  </Button>
+                </Link>
+              </div>
+            </CardContent>
+          )}
         </Card>
 
         {children || (

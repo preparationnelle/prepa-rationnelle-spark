@@ -40,66 +40,54 @@ const BrexitPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+    <div className="min-h-screen bg-white text-black">
+      {/* Minimal Breadcrumb */}
+      <nav className="sticky top-0 z-50 bg-white border-b border-orange-200">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <Home className="h-3 w-3" />
+          <div className="flex items-center text-xs text-black/70">
+            <Link to="/" className="flex items-center gap-1 hover:text-black transition-colors">
+              <Home className="h-3 w-3 text-orange-600" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formation/anglais" className="hover:text-foreground transition-colors">
+            <ChevronRight className="h-3 w-3 text-black/40 mx-1" />
+            <Link to="/formation/anglais" className="hover:text-black transition-colors">
               Formation <span className="text-orange-600">Anglais</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Brexit and its Aftermath</span>
+            <ChevronRight className="h-3 w-3 text-black/40 mx-1" />
+            <span className="font-medium">Brexit and International Trade</span>
           </div>
         </div>
       </nav>
 
       <div className="container mx-auto py-8 px-4">
-        {/* Header */}
+        {/* Header minimaliste + stats sobres */}
         <div className="max-w-4xl mx-auto">
-          <Card className="border-2 border-blue-500/30 mb-8">
-            <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-blue-500 text-white">
-                  <Flag className="h-5 w-5" />
-                </div>
-                <Badge className="bg-blue-500">Civilization</Badge>
-                <span className="text-sm text-muted-foreground">Updated 2025</span>
-              </div>
-              <CardTitle className="text-2xl">Brexit and its Aftermath</CardTitle>
-              <p className="text-muted-foreground">
-                Britain's EU withdrawal and its ongoing impact on politics, economy, and society
-              </p>
-            </CardHeader>
-          </Card>
+          <div className="mb-6">
+            <h1 className="text-3xl font-bold">Brexit and International Trade</h1>
+            <p className="text-sm text-black/70 mt-1">Post-Brexit Britain, trade deals, and economic sovereignty</p>
+          </div>
 
-          {/* Statistics */}
-          <Card className="mb-8 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-center">Key Brexit Facts 2025</CardTitle>
+          <Card className="mb-8 border border-orange-200">
+            <CardHeader className="py-3">
+              <CardTitle className="text-xl">Key Brexit Facts 2025</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">2020</div>
-                  <div className="text-sm text-blue-100">Brexit completed</div>
+                  <div className="text-sm text-black/70">Brexit completed</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">3-4%</div>
-                  <div className="text-sm text-blue-100">GDP smaller than if remained in EU</div>
+                  <div className="text-sm text-black/70">GDP smaller than if remained in EU</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">15%</div>
-                  <div className="text-sm text-blue-100">Lower trade volumes long-term</div>
+                  <div className="text-sm text-black/70">Lower trade volumes long-term</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">57%</div>
-                  <div className="text-sm text-blue-100">Britons believe Brexit was mistake</div>
+                  <div className="text-sm text-black/70">Britons believe Brexit was mistake</div>
                 </div>
               </div>
             </CardContent>
@@ -112,7 +100,7 @@ const BrexitPage = () => {
             <AccordionItem value="key-topics" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-blue-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Flag className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -146,7 +134,7 @@ const BrexitPage = () => {
             <AccordionItem value="economic-impact" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-red-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <TrendingDown className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -163,9 +151,9 @@ const BrexitPage = () => {
                   <p className="text-justify leading-relaxed">
                     Trade data back this: UK exports to the EU fell sharply after new customs checks kicked in. The OBR estimated that total UK trade volumes will be 15% lower in the long run due to Brexit's new frictions. By 2022, goods exports to the EU were still 18% below their 2019 (pre-Brexit) level. While Britain has signed new trade deals around the world, most either copy pre-existing EU deals or are too small to offset lost EU commerce. The much-touted UK-Australia free trade agreement, for example, is forecast to add only a 0.1% boost to GDP over 15 years. In short, the promised "Global Britain" boom has yet to materialize. Instead, many businesses (especially small exporters) have struggled with added paperwork, and some have ceased exporting to Europe entirely. Sectors like farming and fishing, which expected gains, have voiced disappointment or harm from new barriers. Even Britain's inflation woes have been aggravated by Brexit: economists note Brexit added to supply chain costs and labor shortages, making the UK's recent inflation spike worse than other G7 countries.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This paragraph is excellent for discussions on Brexit's economic consequences, trade policy, or the impact of political decisions on economic performance. It provides concrete data on GDP reduction and can support arguments about the costs of economic nationalism or the importance of trade relationships. It's also useful for analyzing the relationship between political choices and economic outcomes.
                     </p>
                   </div>
@@ -183,7 +171,7 @@ const BrexitPage = () => {
             <AccordionItem value="political-aftermath" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-green-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Crown className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -200,9 +188,9 @@ const BrexitPage = () => {
                   <p className="text-justify leading-relaxed">
                     The deal introduced a "green lane" to reduce checks on goods moving from Great Britain to Northern Ireland (if they are staying in NI) and a "Stormont Brake" giving Northern Irish lawmakers some say over new EU rules. This compromise was aimed at reconciling the need to avoid a hard border on the island of Ireland with unionist concerns about NI's place in the UK internal market. The Windsor Framework largely succeeded in EU-UK diplomacy terms – the EU dropped legal actions, and relations thawed – and by early 2024 it helped facilitate the restoration of Northern Ireland's devolved government. After a two-year paralysis of the NI Assembly (caused by the Democratic Unionist Party's protest over the Protocol), the UK government reached an agreement with the DUP in Jan 2024 that addressed their remaining concerns and included a £3.3 billion support package for Northern Ireland. This paved the way for power-sharing to resume, with Sinn Féin's Michelle O'Neill poised to become First Minister – a historic first for an Irish nationalist in that role.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This paragraph is valuable for discussions on post-Brexit politics, diplomatic relations, or the resolution of complex political conflicts. It provides concrete examples of political agreements and can support arguments about the importance of compromise in politics or the challenges of maintaining political stability. It's also useful for analyzing the relationship between political leadership and conflict resolution.
                     </p>
                   </div>
@@ -220,7 +208,7 @@ const BrexitPage = () => {
             <AccordionItem value="uk-unity" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-orange-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <AlertTriangle className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -237,9 +225,9 @@ const BrexitPage = () => {
                   <p className="text-justify leading-relaxed">
                     The constitutional implications of Brexit extend beyond immediate economic concerns. The Scottish National Party (SNP) has argued that Brexit represents a "material change of circumstances" that justifies a new independence referendum, as Scotland voted overwhelmingly to remain in the EU. While the UK Supreme Court ruled in 2022 that Scotland cannot unilaterally hold such a referendum, the political pressure continues to build. Similarly, in Northern Ireland, the Good Friday Agreement's delicate balance has been tested by Brexit's border arrangements. The prospect of Irish reunification, while still distant, has gained new relevance as Brexit has highlighted the complex relationship between the UK, Ireland, and the EU. These developments suggest that Brexit's impact on UK constitutional stability may be as significant as its economic consequences.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This paragraph is excellent for discussions on constitutional challenges, national identity, or the long-term political consequences of major policy decisions. It provides concrete examples of political developments and can support arguments about the importance of constitutional stability or the challenges of maintaining political unity. It's also useful for analyzing the relationship between political decisions and constitutional change.
                     </p>
                   </div>
@@ -257,7 +245,7 @@ const BrexitPage = () => {
             <AccordionItem value="public-opinion" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-purple-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Users className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -274,9 +262,9 @@ const BrexitPage = () => {
                   <p className="text-justify leading-relaxed">
                     The shift in public sentiment has been particularly pronounced among younger voters and those who initially supported Brexit. Many who voted Leave in 2016 have since changed their minds as the economic realities of Brexit became apparent. The government's attempts to promote "Global Britain" and new trade opportunities have largely failed to convince the public, as the promised benefits have not materialized. Instead, the focus has shifted to managing the practical challenges of Brexit, such as border controls, customs procedures, and regulatory divergence. This pragmatic approach reflects a broader recognition that Brexit is not a one-time event but an ongoing process that requires continuous management and adjustment.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This paragraph is valuable for discussions on public opinion, political accountability, or the relationship between political promises and public expectations. It provides concrete data on changing attitudes and can support arguments about the importance of delivering on political promises or the challenges of managing public expectations. It's also useful for analyzing the relationship between policy outcomes and public opinion.
                     </p>
                   </div>
@@ -294,7 +282,7 @@ const BrexitPage = () => {
             <AccordionItem value="long-term-legacy" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-emerald-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Globe className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -311,9 +299,9 @@ const BrexitPage = () => {
                   <p className="text-justify leading-relaxed">
                     The long-term legacy of Brexit will depend on whether the UK can carve out a productive new role in Europe and globally, or whether it remains overshadowed by the choice to leave. The challenge for future British governments will be to balance the desire for sovereignty with the practical need for cooperation. This may involve developing new forms of partnership with the EU, strengthening relationships with other global powers, and finding ways to maintain influence in international institutions. The success of this balancing act will determine whether Brexit is remembered as a bold assertion of independence or a costly mistake that weakened Britain's global position.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This paragraph is excellent for discussions on Brexit's long-term implications, international relations, or the challenges of post-Brexit governance. It provides insights into future prospects and can support arguments about the importance of pragmatic policymaking or the challenges of maintaining international influence. It's also useful for analyzing the relationship between political decisions and long-term consequences.
                     </p>
                   </div>
@@ -331,7 +319,7 @@ const BrexitPage = () => {
             <AccordionItem value="vocabulary" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-cyan-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Building2 className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -343,11 +331,11 @@ const BrexitPage = () => {
               <AccordionContent className="px-6 pb-6">
                 <div className="grid gap-3">
                   {essentialVocabulary.map((item, index) => (
-                    <Card key={index} className="border-l-4 border-l-cyan-500">
+                    <Card key={index} className="border-l-4 border-l-orange-600">
                       <CardContent className="p-4">
                         <div className="flex flex-col sm:flex-row sm:items-start gap-2">
                           <div className="sm:w-1/3">
-                            <Badge className="bg-cyan-500">{item.term}</Badge>
+                            <Badge className="bg-orange-600">{item.term}</Badge>
                           </div>
                           <div className="sm:w-2/3">
                             <p className="text-sm text-muted-foreground">{item.definition}</p>
@@ -364,7 +352,7 @@ const BrexitPage = () => {
             <AccordionItem value="essay-questions" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-blue-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Building2 className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -434,13 +422,13 @@ const BrexitPage = () => {
           {/* Navigation */}
           <div className="flex justify-between items-center mt-8">
             <Link to="/formation/anglais/civilisation">
-              <Button variant="outline" className="flex items-center gap-2">
+              <Button variant="outline" className="flex items-center gap-2 border-orange-500 text-black hover:bg-orange-50">
                 <ArrowLeft className="h-4 w-4" />
                 Back to Civilization Overview
               </Button>
             </Link>
             <Link to="/formation/anglais/civilisation/commonwealth">
-              <Button className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600">
+              <Button className="flex items-center gap-2 bg-orange-600 hover:bg-orange-700">
                 Next: The Commonwealth and Post-Colonial Legacy
                 <ArrowRight className="h-4 w-4" />
               </Button>

@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Home, ChevronRight, Heart, Shield, Users, Building2, ArrowLeft, ArrowRight, AlertTriangle, Brain, Pill, Stethoscope } from 'lucide-react';
+import { Home, ChevronRight, Heart, Shield, Users, Building2, ArrowLeft, ArrowRight, AlertTriangle, Brain, Pill, Stethoscope, Virus } from 'lucide-react';
 
 const HealthPage = () => {
   const keyTopics = [
@@ -40,66 +40,53 @@ const HealthPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+    <div className="min-h-screen bg-white text-black">
+      {/* Minimal Breadcrumb */}
+      <nav className="sticky top-0 z-50 bg-white border-b border-orange-200">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <Home className="h-3 w-3" />
+          <div className="flex items-center text-xs text-black/70">
+            <Link to="/" className="flex items-center gap-1 hover:text-black transition-colors">
+              <Home className="h-3 w-3 text-orange-600" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formation/anglais" className="hover:text-foreground transition-colors">
+            <ChevronRight className="h-3 w-3 text-black/40 mx-1" />
+            <Link to="/formation/anglais" className="hover:text-black transition-colors">
               Formation <span className="text-orange-600">Anglais</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Health and Healthcare Systems</span>
+            <ChevronRight className="h-3 w-3 text-black/40 mx-1" />
+            <span className="font-medium">Health and Healthcare Systems</span>
           </div>
         </div>
       </nav>
 
       <div className="container mx-auto py-8 px-4">
-        {/* Header */}
+        {/* Header minimaliste + stats sobres */}
         <div className="max-w-4xl mx-auto">
-          <Card className="border-2 border-red-500/30 mb-8">
-            <CardHeader className="bg-gradient-to-r from-red-50 to-pink-50">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-red-500 text-white">
-                  <Heart className="h-5 w-5" />
-                </div>
-                <Badge className="bg-red-500">Civilization</Badge>
-                <span className="text-sm text-muted-foreground">Updated 2025</span>
-              </div>
-              <CardTitle className="text-2xl">Health and Healthcare Systems</CardTitle>
-              <p className="text-muted-foreground">
-                Healthcare challenges, mental health crisis, and the future of public health
-              </p>
-            </CardHeader>
-          </Card>
-
-          {/* Statistics */}
-          <Card className="mb-8 bg-gradient-to-r from-red-600 to-pink-600 text-white">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-center">Key Health Facts 2025</CardTitle>
+          <div className="mb-6">
+            <h1 className="text-3xl font-bold">Health and Healthcare Systems</h1>
+            <p className="text-sm text-black/70 mt-1">Minimal design • Orange accents only</p>
+          </div>
+          <Card className="mb-8 border border-orange-200">
+            <CardHeader className="py-3">
+              <CardTitle className="text-xl">Key Health Facts 2025</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">7M+</div>
-                  <div className="text-sm text-red-100">NHS waiting list UK</div>
+                  <div className="text-sm text-black/70">NHS waiting list UK</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">1.2M</div>
-                  <div className="text-sm text-red-100">Youth mental health referrals</div>
+                  <div className="text-sm text-black/70">Youth mental health referrals</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">500K</div>
-                  <div className="text-sm text-red-100">Opioid deaths US (20 years)</div>
+                  <div className="text-sm text-black/70">Opioid deaths US (20 years)</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-3">
+                <div className="border border-orange-200 rounded-lg p-3">
                   <div className="text-2xl font-bold">17%</div>
-                  <div className="text-sm text-red-100">US healthcare GDP share</div>
+                  <div className="text-sm text-black/70">US healthcare GDP share</div>
                 </div>
               </div>
             </CardContent>
@@ -107,12 +94,12 @@ const HealthPage = () => {
 
           {/* Main Content */}
           <Accordion type="multiple" className="w-full space-y-4">
-            
+
             {/* Key Topics */}
             <AccordionItem value="key-topics" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-red-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Heart className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -124,7 +111,7 @@ const HealthPage = () => {
               <AccordionContent className="px-6 pb-6">
                 <div className="grid gap-4">
                   {keyTopics.map((topic, index) => (
-                    <Card key={index} className="border-l-4 border-l-red-500">
+                    <Card key={index} className="border-l-4 border-l-orange-600">
                       <CardContent className="p-4">
                         <h4 className="font-semibold mb-2">{topic.title}</h4>
                         <p className="text-sm text-muted-foreground mb-3">{topic.content}</p>
@@ -146,7 +133,7 @@ const HealthPage = () => {
             <AccordionItem value="nhs-crisis" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-blue-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Shield className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -163,15 +150,15 @@ const HealthPage = () => {
                   <p className="text-justify leading-relaxed">
                     These strains have spurred many who can afford it to seek private alternatives or even "medical tourism" trips abroad for faster treatment—some Britons fly to countries like Estonia or India for surgeries to escape the wait. Scandalously, doctors and nurses warn that avoidable patient deaths are occurring due to delays. The situation has sparked a national debate: remain loyal to the tax-funded, free-at-point-of-use NHS model and fix it, or consider radical change. Solutions under discussion include boosting preventive care ("prevention is better than cure" as the mantra goes) to keep people healthier and out of hospitals, embracing technology (for instance, using AI to handle administrative tasks—since doctors reportedly spend 60% of their time on paperwork), and restructuring funding. Politically, all parties pledge to "save the NHS," but consensus is elusive on how. What's clear is that without bold action to add capacity, retain staff (after waves of strikes over pay), and modernize services, the NHS's proud promise of cradle-to-grave care risks slipping away. The next few years may well decide whether the NHS can sustain its founding principles in the 21st century or if a different path will be forced by sheer necessity.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This is prime material for healthcare or social policy essays, especially those asking about challenges in public services. It provides data and vivid detail about NHS problems to illustrate issues in a welfare state. It can support arguments about the importance of investment in public goods, or be contrasted against private healthcare models. Also useful for discussing how COVID has long-term effects on systems.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       beloved; breaking point; aftershocks; elective treatments; languishing; discharge; spurred; medical tourism; scandalously; radical change; preventive care; mantra; embrace technology; administrative tasks; capacity; retain staff; cradle-to-grave; founding principles; sheer necessity
                     </p>
                   </div>
@@ -183,7 +170,7 @@ const HealthPage = () => {
             <AccordionItem value="public-vs-private" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-green-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Stethoscope className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -200,15 +187,15 @@ const HealthPage = () => {
                   <p className="text-justify leading-relaxed">
                     By 2025, as discussed, it's not unusual for non-urgent surgeries to be delayed for months due to backlogs. In the U.S., by contrast, healthcare is largely a market-driven patchwork of private insurers, employer plans, and government programs like Medicare/Medicaid. The upside is innovation and choice: top U.S. hospitals offer cutting-edge treatments with minimal waiting times for those who can pay, and competition can spur efficiencies. But the downsides are severe: 27.5 million Americans (about 8.5% of the population) had no health insurance as of 2018, and many more are underinsured, meaning a serious illness could lead to bankruptcy. The U.S. spends a staggering 17% of GDP on healthcare—far more than the UK's ~10%—yet achieves worse overall health outcomes like life expectancy, in part because access is so uneven. Essentially, the UK prioritizes coverage at the expense of convenience, whereas the U.S. prioritizes innovation and speed at the expense of universal access. Policymakers in both countries debate hybrids: Should the NHS allow more private sector involvement to ease burden? Should the U.S. expand public options or even adopt "Medicare for All"? The comparison highlights that healthcare involves trade-offs, and societies must choose which values to emphasize in designing their systems.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This comparative paragraph is handy for questions on health systems, or more broadly on public vs private provision of services. It draws a direct comparison that can be used to argue for or against either model, depending on the angle—just pick the parts that support your thesis. It's also useful evidence in discussions of how cultural values shape policy (equity vs individualism, etc.).
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       study in contrasts; single-payer; universal coverage; equity; solidarity; rationed care; outstrips supply; backlogs; patchwork; upside; spur efficiencies; downside; underinsured; bankruptcy; staggering; life expectancy; uneven; convenience; burden; trade-offs; emphasize
                     </p>
                   </div>
@@ -220,7 +207,7 @@ const HealthPage = () => {
             <AccordionItem value="mental-health-crisis" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-purple-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Brain className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -237,15 +224,15 @@ const HealthPage = () => {
                   <p className="text-justify leading-relaxed">
                     The system is overwhelmed: it's not uncommon for teens in crisis to wait months for an initial appointment with a psychologist or psychiatrist. Many schools lack the counselors to address problems early, and specialist clinics are forced to triage only the most severe cases (often those involving risk of suicide). The economic and human toll of inaction is huge—a study by the London School of Economics estimated the lifetime cost of one cohort's childhood mental issues could reach into the trillions in lost productivity and health expenses if untreated. Other countries echo similar patterns: in the U.S., emergency visits for suspected teen suicide attempts jumped nearly 40% in 2021 compared to pre-pandemic times. Policymakers are starting to respond. Some call for embedding mental health education and screenings in schools, training more clinicians, and using digital tools (like therapy apps or text support lines) to expand reach. There's also a push to view mental health as equal to physical health, ending the stigma that often prevents discussion or early help. The crisis serves as a wake-up call that the well-being of the next generation needs urgent, sustained attention—because today's anxious 15-year-old could become tomorrow's struggling adult if nothing changes.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This paragraph is useful for social issues, public health, or education topics. It provides statistics and cross-national context. It can support arguments about the impact of modern life on youth or the need for policy intervention. It could also be used to critique government spending priorities (like "we spend on X but neglect youth mental health"). It's emotive but backed by data.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       alarming; silent epidemic; long-term societal costs; referred; exceeding; self-harm; spiked; disruptions; overwhelmed; psychologist/psychiatrist; triage; cohort; productivity; echo; embed; clinicians; stigma; well-being; sustained attention; wake-up call
                     </p>
                   </div>
@@ -257,7 +244,7 @@ const HealthPage = () => {
             <AccordionItem value="opioid-epidemic" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-orange-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Pill className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -274,15 +261,15 @@ const HealthPage = () => {
                   <p className="text-justify leading-relaxed">
                     Fentanyl, often illicitly manufactured and mixed into other drugs, has driven overdose deaths to record highs; in 2021, over 100,000 Americans died of drug overdoses in a single year, two-thirds from synthetic opioids. Some cities report more fatalities from opioid overdoses than from the COVID-19 pandemic over similar periods. The crisis has laid bare the imbalance in healthcare: corporate interests were able to exploit vulnerable patients for profit, as seen in revelations that companies incentivized sales reps to flood communities with pills even as overdose rates climbed. Litigation has led to multibillion-dollar settlements against drug makers and distributors, but critics note much of the money is delayed or tied up in legal battles. Meanwhile, public health authorities have shifted to treating addiction as a medical issue rather than a moral failing. Harm reduction strategies—like making the antidote naloxone widely available, opening supervised injection sites, and providing medication-assisted treatment (e.g., methadone)—are expanding, though not without controversy. The opioid saga is a cautionary tale for other countries now facing increased painkiller use. It underscores the need for vigilant drug regulation, better mental health and pain management services, and the imperative of prioritizing patients' welfare over corporate profit.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This paragraph is rich for any essay on public health, ethics in business, or regulatory oversight. It gives the chronology and scope of a major social issue, plus policy responses. You can use it to argue about the consequences of weak regulation or to emphasize treating social issues with compassion vs punishment. Also, it can serve as a case study of how multiple systems (healthcare, legal, corporate) intersect.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       reel from; nexus; greed; regulatory failure; marketed; downplaying; gave way to; potent; illicitly; fatalities; exploit; incentivized; flood (with pills); litigation; settlements; moral failing; harm reduction; antidote; supervised injection sites; methadone; saga; cautionary tale; vigilant; imperative; welfare; profit
                     </p>
                   </div>
@@ -294,7 +281,7 @@ const HealthPage = () => {
             <AccordionItem value="pandemic-preparedness" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-emerald-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Virus className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -311,15 +298,15 @@ const HealthPage = () => {
                   <p className="text-justify leading-relaxed">
                     Wealthy nations bought up early vaccine supplies and administered boosters while poorer countries waited—an outcome that World Health Organization officials decried as "vaccine apartheid." This wasn't just a moral failing but a strategic one, as low vaccination rates in parts of Africa and Asia allowed the virus to keep circulating and mutating, spawning new variants that threatened everyone. Economically, the pandemic's disruption of supply chains and labor markets contributed to the inflation and workforce shifts we see in 2023–2025 (e.g., the "Great Resignation" where workers re-evaluated jobs). Education suffered a setback too: school closures widened learning gaps, which some studies estimate could reduce future earnings for this generation. Now, countries are applying lessons learned. Many have set up domestic vaccine manufacturing to avoid reliance on imports. There's renewed investment in public health infrastructure: stockpiling protective gear, funding genomic surveillance to detect new pathogens, and formalizing plans for rapid lockdowns or travel screens if needed. Internationally, proposals circulate for a pandemic treaty to ensure data sharing and equitable access to tools when the next big one hits. COVID-19, in effect, served as a stress test. Whether the world truly heeds its warnings—"never again" to being caught unprepared—remains to be seen, but the experiences of 2020–2022 will undoubtedly inform how we confront public health threats going forward.
                   </p>
-                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <h4 className="font-semibold text-blue-800 mb-2">Use in essays:</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
+                    <h4 className="font-semibold text-orange-800 mb-2">Use in essays:</h4>
+                    <p className="text-sm text-orange-700">
                       This is useful for topics on global cooperation, lessons from crises, or science and society. It shows both positive and negative outcomes from a major event. You could use it to argue for more funding of global institutions, or to highlight how crises accelerate innovation. Also good for discussing inequality. It's broad, so it can be trimmed or focused on depending on the angle.
                     </p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-800 mb-2">Key Vocabulary:</h4>
-                    <p className="text-sm text-green-700">
+                  <div className="bg-orange-50/50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">Key Vocabulary:</h4>
+                    <p className="text-sm text-orange-700">
                       legacy; preparedness; feat; collaboration; glaring inequities; boosters; decried; apartheid; circulating; mutating; variants; disruption; workforce shifts; Great Resignation; widened learning gaps; stockpiling; genomic surveillance; pathogens; treaty; stress test; heeds; warnings; unprepared; public health threats
                     </p>
                   </div>
@@ -331,7 +318,7 @@ const HealthPage = () => {
             <AccordionItem value="vocabulary" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-cyan-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Building2 className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -343,11 +330,11 @@ const HealthPage = () => {
               <AccordionContent className="px-6 pb-6">
                 <div className="grid gap-3">
                   {essentialVocabulary.map((item, index) => (
-                    <Card key={index} className="border-l-4 border-l-cyan-500">
+                    <Card key={index} className="border-l-4 border-l-orange-600">
                       <CardContent className="p-4">
                         <div className="flex flex-col sm:flex-row sm:items-start gap-2">
                           <div className="sm:w-1/3">
-                            <Badge className="bg-cyan-500">{item.term}</Badge>
+                            <Badge className="bg-orange-600">{item.term}</Badge>
                           </div>
                           <div className="sm:w-2/3">
                             <p className="text-sm text-muted-foreground">{item.definition}</p>
@@ -364,7 +351,7 @@ const HealthPage = () => {
             <AccordionItem value="essay-questions" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-red-500 text-white">
+                  <div className="p-2 rounded-lg bg-orange-600 text-white">
                     <Building2 className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -434,13 +421,13 @@ const HealthPage = () => {
           {/* Navigation */}
           <div className="flex justify-between items-center mt-8">
             <Link to="/formation/anglais/civilisation">
-              <Button variant="outline" className="flex items-center gap-2">
+              <Button variant="outline" className="flex items-center gap-2 border-orange-500 text-black hover:bg-orange-50">
                 <ArrowLeft className="h-4 w-4" />
                 Back to Civilization Overview
               </Button>
             </Link>
             <Link to="/formation/anglais/civilisation/education">
-              <Button className="flex items-center gap-2 bg-red-500 hover:bg-red-600">
+              <Button className="flex items-center gap-2 bg-orange-600 hover:bg-orange-700">
                 Next: Education and Culture Wars
                 <ArrowRight className="h-4 w-4" />
               </Button>
@@ -452,4 +439,4 @@ const HealthPage = () => {
   );
 };
 
-export default HealthPage; 
+export default HealthPage;

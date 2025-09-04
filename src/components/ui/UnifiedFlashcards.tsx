@@ -4,21 +4,28 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, BookOpen } from 'lucide-react';
 
 interface VocabularyItem {
-  spanish: string;
-  french: string;
   category: string;
+  [key: string]: string;
 }
 
 interface UnifiedFlashcardsProps {
   data: VocabularyItem[];
   title: string;
   language?: 'fr' | 'en';
+  frontKey?: string;
+  backKey?: string;
+  frontLabel?: string;
+  backLabel?: string;
 }
 
 export const UnifiedFlashcards: React.FC<UnifiedFlashcardsProps> = ({
   data,
   title,
-  language = 'fr'
+  language = 'fr',
+  frontKey = 'spanish',
+  backKey = 'french',
+  frontLabel = 'Espagnol',
+  backLabel = 'Français'
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
@@ -260,15 +267,15 @@ export const UnifiedFlashcards: React.FC<UnifiedFlashcardsProps> = ({
             <h2 className={`text-4xl font-bold mb-6 transition-colors ${
               showAnswer ? 'text-orange-700' : 'text-blue-700'
             }`}>
-              {showAnswer ? currentCard.french : currentCard.spanish}
+              {showAnswer ? currentCard[backKey] : currentCard[frontKey]}
             </h2>
 
             <p className="text-gray-600 mb-6 text-lg">
-              {showAnswer ? 'Français' : 'Espagnol'}
+              {showAnswer ? backLabel : frontLabel}
             </p>
 
             <p className="text-sm text-gray-500">
-              {showAnswer ? 'Cliquez pour retourner la carte' : 'Cliquez pour voir la traduction française'}
+              {showAnswer ? 'Cliquez pour retourner la carte' : 'Cliquez pour voir la traduction'}
             </p>
           </CardContent>
         </Card>
