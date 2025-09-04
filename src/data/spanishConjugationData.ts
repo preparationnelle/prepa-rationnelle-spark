@@ -24,7 +24,7 @@ export interface ConjugationExercise {
   title: string;
   instruction: string;
   level: string;
-  type: 'conjugation' | 'sequence' | 'choice' | 'transformation';
+  type: 'conjugation' | 'sequence' | 'choice' | 'transformation' | 'qcm' | 'choix' | 'completion';
   content: {
     question: string;
     hints: string[];

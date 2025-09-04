@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Home, ChevronRight, Heart, Shield, Users, Building2, ArrowLeft, ArrowRight, AlertTriangle, Brain, Pill, Stethoscope, Virus } from 'lucide-react';
+import { Home, ChevronRight, Heart, Shield, Users, Building2, ArrowLeft, ArrowRight, AlertTriangle, Brain, Pill, Stethoscope, Activity } from 'lucide-react';
 
 const HealthPage = () => {
   const keyTopics = [
@@ -282,7 +282,7 @@ const HealthPage = () => {
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-orange-600 text-white">
-                    <Virus className="h-5 w-5" />
+                    <Activity className="h-5 w-5" />
                   </div>
                   <div className="text-left">
                     <h3 className="text-lg font-semibold">Pandemic Preparedness and the Legacy of COVID-19</h3>

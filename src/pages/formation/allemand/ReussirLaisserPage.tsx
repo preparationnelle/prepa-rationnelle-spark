@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, BookOpen, Clock, CheckCircle, AlertTriangle, Lightbulb } from 'lucide-react';
+import { ArrowLeft, BookOpen, Clock, CheckCircle, AlertTriangle, Lightbulb, FileText } from 'lucide-react';
 
 const ReussirLaisserPage: React.FC = () => {
   const conseilsLaisser = [

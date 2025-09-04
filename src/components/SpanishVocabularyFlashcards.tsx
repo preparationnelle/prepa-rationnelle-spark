@@ -88,13 +88,14 @@ export const SpanishVocabularyFlashcards: React.FC<SpanishVocabularyFlashcardsPr
   };
 
   const markForReview = () => {
-    const isMarked = isFlashcardMarkedForReview(currentCard.id, 'spanish');
+    const cardId = parseInt(currentCard.id.replace('vocab_', '')) || 0;
+    const isMarked = isFlashcardMarkedForReview(cardId, 'spanish');
     
     if (isMarked) {
-      removeFlashcardFromReview(currentCard.id, 'spanish');
+      removeFlashcardFromReview(cardId, 'spanish');
     } else {
       addFlashcardForReview({
-        id: currentCard.id,
+        id: cardId,
         language: 'spanish',
         category: currentCard.category,
         french: currentCard.french,
@@ -237,7 +238,7 @@ export const SpanishVocabularyFlashcards: React.FC<SpanishVocabularyFlashcardsPr
               <Badge variant="outline" className="px-3 py-1 text-xs text-blue-600 border-blue-300">
                 {currentCard.category}
               </Badge>
-              {isFlashcardMarkedForReview(currentCard.id, 'spanish') && (
+              {isFlashcardMarkedForReview(parseInt(currentCard.id.replace('vocab_', '')) || 0, 'spanish') && (
                 <div className="mt-2">
                   <Badge variant="secondary" className="bg-yellow-100 text-yellow-800 border-yellow-300">
                     <Star className="h-3 w-3 mr-1" />
@@ -280,16 +281,16 @@ export const SpanishVocabularyFlashcards: React.FC<SpanishVocabularyFlashcardsPr
             
             <Button 
               onClick={markForReview}
-              variant={isFlashcardMarkedForReview(currentCard.id, 'spanish') ? "default" : "outline"}
+              variant={isFlashcardMarkedForReview(parseInt(currentCard.id.replace('vocab_', '')) || 0, 'spanish') ? "default" : "outline"}
               className={`px-6 py-3 text-lg font-medium transition-all duration-200 hover:scale-105 ${
-                isFlashcardMarkedForReview(currentCard.id, 'spanish') 
+                isFlashcardMarkedForReview(parseInt(currentCard.id.replace('vocab_', '')) || 0, 'spanish') 
                   ? 'bg-yellow-500 hover:bg-yellow-600 text-white' 
                   : 'border-yellow-500 text-yellow-600 hover:bg-yellow-50'
               }`}
               size="lg"
             >
               <Star className="mr-2 h-5 w-5" />
-              {isFlashcardMarkedForReview(currentCard.id, 'spanish') ? 'Retiré' : 'À revoir'} (R)
+              {isFlashcardMarkedForReview(parseInt(currentCard.id.replace('vocab_', '')) || 0, 'spanish') ? 'Retiré' : 'À revoir'} (R)
             </Button>
           </div>
         </CardContent>

@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Calculator, Target, Play, Code, BookOpen, ChevronDown, ChevronUp } from 'lucide-react';
+import { Calculator, Target, Play, Code, BookOpen, ChevronDown, ChevronUp, ChevronLeft, HelpCircle, CheckCircle, Star } from 'lucide-react';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 

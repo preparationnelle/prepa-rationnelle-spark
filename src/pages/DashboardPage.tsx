@@ -86,7 +86,7 @@ const DashboardPage = () => {
             <span className="text-blue-600">Dashboard</span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Bienvenue {currentUser.displayName || currentUser.email} ! 
+            Bienvenue {currentUser?.email} ! 
             Retrouvez ici toutes vos activités et contenus personnalisés.
           </p>
         </div>

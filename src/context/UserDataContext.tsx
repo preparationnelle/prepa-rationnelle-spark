@@ -75,7 +75,7 @@ export const UserDataProvider: React.FC<{ children: ReactNode }> = ({ children }
   const [userData, setUserData] = useState<UserData>(defaultUserData);
 
   // Clé de stockage basée sur l'utilisateur
-  const getStorageKey = () => currentUser ? `userData_${currentUser.uid}` : 'userData_guest';
+  const getStorageKey = () => currentUser ? `userData_${currentUser.id}` : 'userData_guest';
 
   // Charger les données depuis localStorage
   useEffect(() => {

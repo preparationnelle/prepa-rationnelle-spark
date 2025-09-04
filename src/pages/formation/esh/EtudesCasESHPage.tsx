@@ -3,7 +3,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { MessageSquare, Home, ChevronRight, Building, TrendingUp, Globe, Users, Factory, Heart, Leaf } from 'lucide-react';
+import { MessageSquare, Home, ChevronRight, Building, TrendingUp, Globe, Users, Factory, Heart, Leaf, Brain } from 'lucide-react';
 import ESHModuleNavigation from '@/components/formation/ESHModuleNavigation';
 
 const EtudesCasESHPage = () => {

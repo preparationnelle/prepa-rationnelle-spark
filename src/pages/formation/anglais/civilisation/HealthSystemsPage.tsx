@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Home, ChevronRight, Heart, Shield, Users, Building2, ArrowLeft, ArrowRight, AlertTriangle, Brain, Pill, Stethoscope, Virus, TrendingUp, Globe, Activity } from 'lucide-react';
+import { Home, ChevronRight, Heart, Shield, Users, Building2, ArrowLeft, ArrowRight, AlertTriangle, Brain, Pill, Stethoscope, Activity, TrendingUp, Globe } from 'lucide-react';
 
 const HealthSystemsPage = () => {
   const keyTopics = [
