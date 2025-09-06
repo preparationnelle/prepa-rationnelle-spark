@@ -907,7 +907,9 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-python', component: FormationPage, title: 'Formation Python ECG' },
   { path: '/formation/maths-elements-de-logique-exercices', component: Chapitre1LogiqueExercicesPage, title: 'Exercices - Chapitre 1 : Logique & raisonnement fondamentaux' },
   { path: '/formation/maths-ensembles-et-applications-exercices', component: Chapitre2EnsemblesExercicesPage, title: 'Exercices - Chapitre 2 : Ensembles et applications' },
-  // { path: '/formation/maths-endomorphismes-matrices-avancees-exercices', component: Chapitre2EndomorphismesExercicesPage, title: 'Exercices - Chapitre 2 : Éléments propres et réduction des endomorphismes et matrices carrées' }, // Moved to 2nd year
+  // 2ème année — endomorphismes et matrices avancées
+  { path: '/formation/maths-endomorphismes-matrices-avancees', component: Chapitre2EndomorphismesCoursPage, title: 'Cours - Chapitre 2 : Éléments propres et réduction des endomorphismes', protected: true },
+  { path: '/formation/maths-endomorphismes-matrices-avancees-exercices', component: Chapitre2EndomorphismesExercicesPage, title: 'Exercices - Chapitre 2 : Éléments propres et réduction des endomorphismes et matrices carrées', protected: true },
   { path: '/formation/maths-sommes-produits-coefficients-binomiaux-exercices', component: Chapitre3SommesProduitsExercicesPage, title: 'Exercices - Chapitre 3 : Sommes, produits & coefficients binomiaux' },
   { path: '/formation/maths-suites-numeriques-exercices', component: Chapitre4SuitesExercicesPage, title: 'Exercices - Chapitre 4 : Suites numériques' },
   { path: '/formation/maths-fonctions-d-une-variable-reelle-exercices', component: Chapitre5FonctionsExercicesPage, title: 'Exercices - Chapitre 5 : Fonctions d\'une variable réelle' },
@@ -918,7 +920,8 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-variables-aleatoires-densite-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Variables aléatoires à densité', protected: true },
   { path: '/formation/maths-integration-sur-un-segment-exercices', component: Chapitre7IntegrationExercicesPage, title: 'Exercices - Chapitre 7 : Intégration sur un segment' },
   { path: '/formation/maths-polynomes-exercices', component: Chapitre8PolynomesExercicesPage, title: 'Exercices - Chapitre 8 : Polynômes' },
-  // { path: '/formation/maths-complements-algebre-lineaire-exercices', component: Chapitre1ComplementsAlgebreLineaireExercicesPage, title: 'Exercices - Chapitre 1 : Compléments d\'algèbre linéaire' }, // Moved to 2nd year
+  // 2ème année — compléments d'algèbre linéaire (exercices disponibles)
+  { path: '/formation/maths-complements-algebre-lineaire-exercices', component: Chapitre1ComplementsAlgebreLineaireExercicesPage, title: 'Exercices - Chapitre 1 : Compléments d\'algèbre linéaire', protected: true },
   { path: '/formation/maths-matrices-espaces-vectoriels-exercices', component: Chapitre9MatricesExercicesPage, title: 'Exercices - Chapitre 9 : Matrices & espaces vectoriels' },
   { path: '/formation/maths-algebre-bilineaire-exercices', component: Chapitre3AlgebreBilineaireExercicesPage, title: 'Exercices - Chapitre 3 : Algèbre bilinéaire' },
   { path: '/formation/maths-algebre-bilineaire-espaces-euclidiens-exercices', component: Chapitre9AlgebreBilineaireEspacesEuclidiensExercicesPage, title: 'Exercices - Chapitre 9 : Algèbre bilinéaire et espaces euclidiens' },
@@ -942,6 +945,8 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-convergences-approximations-exercices', component: Chapitre12ConvergencesApproximationsExercicesPage, title: 'Exercices - Chapitre 12 : Convergences et approximations', protected: true },
   { path: '/formation/maths-estimation-statistique-avancee', component: Chapitre13EstimationStatistiqueAvanceeCoursPage, title: 'Chapitre 13 : Estimation statistique avancée', protected: true },
   { path: '/formation/maths-intervalles-confiance-exercices', component: Chapitre18EstimationStatistiqueAvanceeExercicesPage, title: 'Exercices - Chapitre 18 : Intervalles de confiance', protected: true },
+  // Alias cohérent avec le slug utilisé dans les cartes pour éviter les 404
+  { path: '/formation/maths-estimation-statistique-avancee-exercices', component: Chapitre18EstimationStatistiqueAvanceeExercicesPage, title: 'Exercices - Chapitre 18 : Estimation statistique avancée', protected: true },
   { path: '/formation/maths-theorie-estimation-statistique-exercices', component: Chapitre14TheorieEstimationStatistiqueExercicesPage, title: 'Exercices - Chapitre 14 : Théorie de l\'estimation statistique', protected: true },
   { path: '/formation/maths-complements-variables-aleatoires-exercices', component: Chapitre5ComplementsVariablesAleatoiresExercicesPage, title: 'Exercices - Chapitre 5 : Compléments sur les variables aléatoires', protected: true },
 

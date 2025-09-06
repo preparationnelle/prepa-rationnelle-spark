@@ -1,7 +1,28 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Globe, Home, ChevronRight } from 'lucide-react';
+import { Globe, Calendar, Briefcase, Home, ChevronRight } from 'lucide-react';
+
+type ModuleItem = {
+  number: number;
+  title: string;
+  description: string;
+  modulePath: string;
+  vocabPath: string;
+};
+
+const modules: ModuleItem[] = [
+  { number: 1, title: 'Politik', description: 'Système politique, élections, partis et gouvernements', modulePath: '/formation/allemand/politik', vocabPath: '/formation/allemand/vocabulaire-politique' },
+  { number: 2, title: 'Démographie', description: 'Évolution, vieillissement, migrations et société', modulePath: '/formation/allemand/demographie', vocabPath: '/formation/allemand/vocabulaire-demographie' },
+  { number: 3, title: 'Éducation', description: 'Système éducatif et formation professionnelle', modulePath: '/formation/allemand/education', vocabPath: '/formation/allemand/vocabulaire-bildung' },
+  { number: 4, title: 'Culture', description: 'Identité, société moderne et enjeux sociaux', modulePath: '/formation/allemand/culture', vocabPath: '/formation/allemand/vocabulaire-kultur' },
+  { number: 5, title: 'Géopolitique', description: 'UE, relations internationales et sécurité', modulePath: '/formation/allemand/geopolitique', vocabPath: '/formation/allemand/vocabulaire-geopolitique' },
+  { number: 6, title: 'Technologie & Innovation', description: 'Industrie 4.0, IA et recherche', modulePath: '/formation/allemand/technologie', vocabPath: '/formation/allemand/vocabulaire-innovation' },
+  { number: 7, title: 'Écologie', description: 'Transition énergétique et environnement', modulePath: '/formation/allemand/ecologie', vocabPath: '/formation/allemand/vocabulaire-ecologie' },
+  { number: 8, title: 'Économie', description: 'Wirtschaft, commerce extérieur, innovation', modulePath: '/formation/allemand/industrie', vocabPath: '/formation/allemand/vocabulaire-wirtschaft' },
+  { number: 9, title: 'Femmes et Égalité', description: 'Droits, politiques publiques et société', modulePath: '/formation/allemand/femmes', vocabPath: '/formation/allemand/vocabulaire-frauen' },
+  { number: 10, title: 'Histoire et Mémoire', description: 'Mémoire collective et histoire contemporaine', modulePath: '/formation/allemand/geschichte', vocabPath: '/formation/allemand/vocabulaire-geschichte' },
+];
 
 const FormationAllemandCivilisationPage = () => {
   return (
@@ -36,27 +57,23 @@ const FormationAllemandCivilisationPage = () => {
         </div>
       </nav>
 
-      {/* Section Héro moderne */}
-      <section className="bg-gradient-to-br from-orange-50 via-white to-blue-50 py-8 px-4 sm:px-6 relative z-10">
+      {/* En-tête sobre (aligné avec l'espagnol) */}
+      <section className="py-8 px-4 sm:px-6 bg-white relative z-10">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
-            <div className="flex justify-center mb-6">
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-orange-500 to-blue-500 text-white shadow-lg">
-                <Globe className="h-12 w-12" />
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center border border-orange-200">
+                <Globe className="h-6 w-6 text-orange-600" />
               </div>
+              <h1 className="text-4xl font-bold text-gray-900">Civilisation Allemande</h1>
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-orange-600 via-blue-600 to-orange-600 bg-clip-text text-transparent font-bold">
-                Civilisation Allemande
-              </span>
-          </h1>
-            <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-5xl mx-auto whitespace-nowrap">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Découvrez l'Allemagne contemporaine et ses enjeux sociétaux
             </p>
-            <div className="flex flex-wrap justify-center gap-3 mb-8">
-              <span className="px-4 py-2 text-sm font-medium bg-orange-100 text-orange-700 rounded-full">Institutions allemandes</span>
-              <span className="px-4 py-2 text-sm font-medium bg-blue-100 text-blue-700 rounded-full">Société moderne</span>
-              <span className="px-4 py-2 text-sm font-medium bg-orange-100 text-orange-700 rounded-full">Enjeux européens</span>
+            <div className="flex justify-center gap-3 mt-6">
+              <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">10 thématiques essentielles</span>
+              <span className="px-4 py-2 border border-gray-200 text-gray-700 rounded-full text-sm font-medium">Actualisé 2024</span>
+              <span className="px-4 py-2 bg-orange-600 text-white rounded-full text-sm font-medium">Niveau Prépa</span>
             </div>
           </div>
         </div>
@@ -66,14 +83,50 @@ const FormationAllemandCivilisationPage = () => {
       <section className="py-8 px-4 sm:px-6 bg-gray-50 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-6">Thèmes de Civilisation Allemande</h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Découvrez l'Allemagne contemporaine à travers ses différents aspects sociétaux, politiques et culturels
-            </p>
+            <h2 className="text-3xl font-bold mb-6">Tous les Chapitres</h2>
+            <p className="text-lg text-gray-600">Découvrez notre programme complet de civilisation allemande</p>
           </div>
 
-          {/* Modules principaux */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {/* Liste verticale sobre */}
+          <div className="max-w-4xl mx-auto space-y-4">
+            {modules.map((m) => (
+              <div key={m.number} className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
+                    <span className="font-bold text-orange-600 text-lg">{m.number}</span>
+                  </div>
+                  <div className="flex-1">
+                    <Link to={m.modulePath} className="hover:underline underline-offset-4">
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">{m.title}</h3>
+                    </Link>
+                    <Link to={m.modulePath} className="block text-gray-600 mb-4 hover:text-gray-800">
+                      {m.description}
+                    </Link>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Link to={m.modulePath}>
+                        <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium w-full sm:w-auto">
+                          <Calendar className="mr-2 h-4 w-4" />
+                          Accéder au module
+                        </Button>
+                      </Link>
+                      <Link to={m.vocabPath}>
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md w-full sm:w-auto">
+                          <Briefcase className="mr-2 h-4 w-4" />
+                          Vocabulaire
+                        </Button>
+                      </Link>
+                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md w-full sm:w-auto" disabled>
+                        Sujets rédigés
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Ancien grid masqué */}
+          <div className="hidden">
             {/* Politique */}
             <Link
               to="/formation/allemand/politik"

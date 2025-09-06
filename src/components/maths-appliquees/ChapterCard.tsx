@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { BookOpen, Play, Target, LucideIcon, Brain } from 'lucide-react';
+import { getAllRoutePaths } from '@/config/routes';
 
 interface ChapterCardProps {
   id: number;
@@ -22,6 +23,22 @@ const ChapterCard: React.FC<ChapterCardProps> = ({
   color,
   description = "Théorie approfondie et applications pratiques"
 }) => {
+  const allPaths = getAllRoutePaths();
+
+  const coursePath = `/formation/maths-${slug}`;
+  const exercisesPath = `/formation/maths-${slug}-exercices`;
+  const flashcardsPath = `/formation/maths-${slug}-flashcards`;
+  const quizPath = `/formation/maths-${slug}-quiz`;
+
+  const hasCourse = allPaths.includes(coursePath);
+  const hasExercises = allPaths.includes(exercisesPath);
+  const hasFlashcards = allPaths.includes(flashcardsPath);
+  // Quiz is handled via explicit routes or a generic '/formation/maths-:slug-quiz' pattern
+  const hasGenericQuiz = allPaths.includes('/formation/maths-:slug-quiz');
+  const hasQuiz = hasGenericQuiz || allPaths.includes(quizPath);
+
+  const resolvedCourseHref = hasCourse ? coursePath : (hasExercises ? exercisesPath : undefined);
+
   return (
     <Card className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-2 border-gray-100 hover:border-blue-200 h-full flex flex-col">
       <CardHeader className="text-center pb-4">
@@ -40,30 +57,41 @@ const ChapterCard: React.FC<ChapterCardProps> = ({
           {description}
         </p>
         <div className="space-y-3 mt-auto">
-          <Link to={`/formation/maths-${slug}`} className="w-full">
-            <Button variant="default" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
-              <BookOpen className="mr-2 h-4 w-4" />
-              Cours
-            </Button>
-          </Link>
-          <Link to={`/formation/maths-${slug}-exercices`} className="w-full">
-            <Button variant="outline" className="w-full border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300 hover:scale-105">
-              <Play className="mr-2 h-4 w-4" />
-              Exercices
-            </Button>
-          </Link>
-          <Link to={`/formation/maths-${slug}-flashcards`} className="w-full">
-            <Button variant="outline" className="w-full border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300 hover:scale-105">
-              <Brain className="mr-2 h-4 w-4" />
-              Flashcards
-            </Button>
-          </Link>
-          <Link to={`/formation/maths-${slug}-quiz`} className="w-full">
-            <Button variant="outline" className="w-full border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300 hover:scale-105">
-              <Target className="mr-2 h-4 w-4" />
-              Quiz
-            </Button>
-          </Link>
+          {resolvedCourseHref && (
+            <Link to={resolvedCourseHref} className="w-full">
+              <Button variant="default" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
+                <BookOpen className="mr-2 h-4 w-4" />
+                Cours
+              </Button>
+            </Link>
+          )}
+
+          {hasExercises && (
+            <Link to={exercisesPath} className="w-full">
+              <Button variant="outline" className="w-full border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300 hover:scale-105">
+                <Play className="mr-2 h-4 w-4" />
+                Exercices
+              </Button>
+            </Link>
+          )}
+
+          {hasFlashcards && (
+            <Link to={flashcardsPath} className="w-full">
+              <Button variant="outline" className="w-full border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300 hover:scale-105">
+                <Brain className="mr-2 h-4 w-4" />
+                Flashcards
+              </Button>
+            </Link>
+          )}
+
+          {hasQuiz && (
+            <Link to={quizPath} className="w-full">
+              <Button variant="outline" className="w-full border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300 hover:scale-105">
+                <Target className="mr-2 h-4 w-4" />
+                Quiz
+              </Button>
+            </Link>
+          )}
         </div>
       </CardContent>
     </Card>

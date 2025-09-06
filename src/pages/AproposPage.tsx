@@ -59,7 +59,7 @@ const AproposPage = () => {
       <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
 
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-16 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40 relative z-10">
+      <nav className="sticky top-16 z-30 bg-[#F8FAFF] border-b border-border/40 relative">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -72,7 +72,7 @@ const AproposPage = () => {
         </div>
       </nav>
 
-      <div className="container mx-auto py-8 px-4 relative z-10">
+      <div className="container mx-auto py-8 px-4 relative z-10 mt-8 sm:mt-10">
         {/* Hero Section */}
         <div className="text-center mb-16">
           <div className="flex justify-center mb-6">
@@ -172,7 +172,7 @@ const AproposPage = () => {
                 <strong className="text-blue-600 group-hover:text-orange-600 transition-colors duration-300">Prépa Rationnelle</strong> est né de cette expérience. De cette conviction qu'un accompagnement efficace peut transformer une trajectoire.
               </p>
               <p>
-                Pendant deux ans, j'ai donné plus de <strong className="text-blue-600 group-hover:text-orange-600 transition-colors duration-300">500 heures de cours particuliers</strong>, accompagné plus de 20 étudiants, certains allant jusqu'à dépasser mes propres scores aux concours.
+                Pendant deux ans, j'ai donné plus de <strong className="text-blue-600 group-hover:text-orange-600 transition-colors duration-300">1000 heures de cours particuliers</strong>, accompagné plus de 50 étudiants, certains allant jusqu'à dépasser mes propres scores aux concours.
               </p>
             </CardContent>
           </Card>

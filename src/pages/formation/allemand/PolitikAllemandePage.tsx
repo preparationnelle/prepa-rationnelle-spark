@@ -6,6 +6,14 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Home, ChevronRight, Flag, Building2, ArrowLeft, ArrowRight, Users, Shield, Globe, Target, Zap, Crown, Lock, Heart, Star, AlertTriangle, TrendingUp, TrendingDown, Clock, Award, BookOpen, Lightbulb, Gavel, MapPin, Scale, Vote, Users2, Globe2, RotateCcw } from 'lucide-react';
 
+const SectionTitle: React.FC<{ children: React.ReactNode }>=({ children }) => (
+  <h2 className="text-xl font-semibold text-black mt-8 mb-3 pb-2 border-b-2 border-orange-500">{children}</h2>
+);
+
+const SubTitle: React.FC<{ children: React.ReactNode }>=({ children }) => (
+  <h3 className="text-lg font-semibold text-black mt-6 mb-2">{children}</h3>
+);
+
 const PolitikAllemandePage = () => {
   // Debug: Vérifier si le composant se charge
   console.log('PolitikAllemandePage: Composant chargé');
@@ -161,7 +169,7 @@ const PolitikAllemandePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
+    <div className="min-h-screen bg-white text-black">
       {/* Floating elements - Orange and blue bubbles */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
       <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
@@ -170,110 +178,81 @@ const PolitikAllemandePage = () => {
       <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
       <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
 
-      {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40 relative z-10">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <Home className="h-3 w-3" />
-              <span>Accueil</span>
+      {/* Minimal breadcrumb */}
+      <nav className="sticky top-0 z-40 bg-white border-b border-orange-200">
+        <div className="container mx-auto px-4 py-2 text-xs">
+          <div className="flex items-center gap-1 text-black/70">
+            <Link to="/" className="hover:text-black">
+              <span className="inline-flex items-center gap-1"><Home className="h-3 w-3 text-orange-600"/>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formation/allemand" className="hover:text-foreground transition-colors">
-              Formation Allemand
-            </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Politik in Deutschland</span>
+            <ChevronRight className="h-3 w-3 text-black/40" />
+            <Link to="/formation/allemand" className="hover:text-black">Formation <span className="text-orange-600">Allemand</span></Link>
+            <ChevronRight className="h-3 w-3 text-black/40" />
+            <span className="font-medium">Politik</span>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto py-8 px-4 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <Card className="border-2 border-orange-500/30 mb-8">
-            <CardHeader className="bg-gradient-to-r from-orange-50 to-blue-50">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-gradient-to-r from-orange-500 to-blue-500 text-white">
-                  <Flag className="h-5 w-5" />
-                </div>
-                <Badge className="bg-gradient-to-r from-orange-500 to-blue-500 text-white">Civilisation</Badge>
-                <span className="text-sm text-muted-foreground">Updated 2025</span>
-              </div>
-              <CardTitle className="text-3xl">Politik in Deutschland</CardTitle>
-              <p className="text-muted-foreground text-lg mb-6">
-                Das politische System, aktuelle Entwicklungen und historische Perspektiven
-              </p>
-              
-              {/* Bouton principal d'accès aux contenus */}
-              <div className="flex justify-center gap-4">
-                <Button 
-                  onClick={() => document.getElementById('current-issues')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 text-lg font-semibold rounded-lg"
-                >
-                  <BookOpen className="mr-2 h-5 w-5" />
-                  Accéder au module
-                </Button>
-                <Link to="/formation/allemand/vocabulaire-politique">
-                  <Button variant="outline" className="border-blue-500 text-blue-500 hover:bg-blue-50 px-6 py-3 text-lg font-semibold rounded-lg">
-                    <RotateCcw className="mr-2 h-5 w-5" />
-                    Flashcards Politique
-                  </Button>
-                </Link>
-              </div>
-            </CardHeader>
-          </Card>
+      <div className="container mx-auto px-4 py-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-6">
+            <h1 className="text-3xl font-bold text-black">Politik in Deutschland</h1>
+            <p className="text-sm text-black/70 mt-1">Présentation sobre • Mise à jour 2025</p>
+          </div>
 
-          {/* Aktuelle politische Themen */}
-          <Card id="current-issues" className="mb-8 border-2 border-green-200">
-            <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50">
-              <CardTitle className="flex items-center gap-3 text-green-800">
-                <TrendingUp className="h-6 w-6" />
-                Aktuelle politische Themen 2025
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Accordion type="multiple" className="w-full space-y-4">
-                {currentPoliticalIssues.map((issue, index) => (
-                  <AccordionItem key={index} value={`issue-${index}`} className="border rounded-lg">
-                    <AccordionTrigger className="px-6 py-4 hover:no-underline">
-                      <div className="flex items-center gap-3">
-                        <div className="p-2 rounded-lg bg-green-500 text-white">
-                          <AlertTriangle className="h-5 w-5" />
-                        </div>
-                        <div className="text-left">
-                          <h3 className="text-lg font-semibold">{issue.title}</h3>
-                          <p className="text-sm text-muted-foreground">{issue.content}</p>
-                        </div>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="px-6 pb-6">
-                      <div className="space-y-4">
-                        <p className="text-justify leading-relaxed">{issue.details}</p>
-                        <p className="text-justify leading-relaxed font-medium">{issue.conclusion}</p>
-                        
-                        <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                          <h4 className="font-semibold text-blue-800 mb-2">Vokabeln:</h4>
-                          <div className="flex flex-wrap gap-2">
-                            {issue.vocabulary.map((vocab, idx) => (
-                              <Badge key={idx} variant="outline" className="bg-blue-100 text-blue-800">
-                                {vocab}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
+          {/* Article sobre */}
+          <article id="current-issues" className="prose prose-orange max-w-none">
+            <h2>Die deutsche Politik seit 2020: Aktueller Überblick und wichtige Entwicklungen</h2>
+            <p>Deutschland befindet sich seit 2020 in einer turbulenten politischen Phase, geprägt von zahlreichen Krisen und strukturellen Wandlungsprozessen. Nach der Ära Angela Merkel hat sich das politische Spektrum grundlegend verschoben, und neue Herausforderungen bestimmen die politische Agenda.</p>
 
-                        <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
-                          <h4 className="font-semibold text-green-800 mb-2">Essai-Nutzung:</h4>
-                          <p className="text-green-700">{issue.essayUsage}</p>
-                        </div>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </CardContent>
-          </Card>
+            <SectionTitle>Die neue Regierungskoalition unter Friedrich Merz</SectionTitle>
+            <p>Nach der vorgezogenen Bundestagswahl im Februar 2025 übernahm <strong>Friedrich Merz (CDU) als zehnter deutscher Bundeskanzler</strong> die Regierungsgeschäfte. Die neue schwarz-rote Koalition aus CDU/CSU und SPD markiert eine deutliche politische Wende nach dem Ende der Ampel-Koalition. Bei der Bundestagswahl erreichte die Union 28,5% der Stimmen und konnte ihr historisch schlechtes Ergebnis von 2021 um gut vier Prozentpunkte verbessern.<sup>[1][2]</sup></p>
+            <p>Die ersten hundert Tage der neuen Regierung waren von erheblichen Spannungen geprägt. Besonders kontrovers diskutiert wurden <strong>Sozialstaatsreformen, insbesondere die geplante Bürgergeld-Reform</strong>. Bundeskanzler Merz kündigte bis Ende 2025 Eckpunkte für eine Reform an, die das Bürgergeld zur "neuen Grundsicherung" umgestalten soll. Die Koalitionspartner mussten nach heftigen öffentlichen Auseinandersetzungen ihre Zusammenarbeit neu justieren.<sup>[3][4]</sup></p>
+
+            <SectionTitle>Der dramatische Aufstieg der AfD</SectionTitle>
+            <p>Die <strong>Alternative für Deutschland (AfD) verzeichnet einen beispiellosen Wahlerfolg</strong> und stieg zur zweitstärksten politischen Kraft auf. Mit 20,8% der Zweitstimmen bundesweit und dominanten Ergebnissen in Ostdeutschland hat sich die Partei als zentrale politische Macht etabliert. In Brandenburg (36,2%), Mecklenburg-Vorpommern (38%), Sachsen (45,2%), Sachsen-Anhalt (39%) und Thüringen (41%) liegt die AfD deutlich vor allen anderen Parteien.<sup>[5][6][1]</sup></p>
+            <p>Besonders bemerkenswert ist, dass die AfD <strong>46 Direktmandate gewinnen konnte</strong> und mit Ausnahme von drei Wahlkreisen um Erfurt, Leipzig und Potsdam alle ostdeutschen Wahlkreise eroberte. Dieser Erfolg reflektiert tieferliegende gesellschaftliche Spannungen, die sich besonders in den strukturschwächeren Regionen manifestieren.<sup>[7][8][1]</sup></p>
+
+            <SectionTitle>Wirtschaftskrise und strukturelle Herausforderungen</SectionTitle>
+            <p>Deutschland durchlebt <strong>die längste Wirtschaftskrise seit Gründung der Bundesrepublik</strong>. Seit 2020 hat die deutsche Wirtschaft den langfristigen Wachstumstrend verlassen und verharrt 6% unter dem historischen Wachstumspfad. Dies entspricht einem jährlichen Verlust von über 270 Milliarden Euro oder 3.200 Euro pro Einwohner.<sup>[9][10]</sup></p>
+            <p>Für 2025 erwarten Wirtschaftsexperten bestenfalls eine <strong>Stagnation mit 0,1% Wachstum</strong>. Die Gründe für diese Dauerkrise sind vielfältig: hohe Energiekosten, bürokratische Belastungen, Fachkräftemangel und internationale Unsicherheiten. Besonders energieintensive Industrien leiden unter den gestiegenen Strompreisen nach dem Atomausstieg.<sup>[11][9]</sup></p>
+
+            <SectionTitle>Außenpolitische Herausforderungen: Ukraine und Europa</SectionTitle>
+            <p>Deutschlands Außenpolitik wird maßgeblich vom <strong>russischen Angriffskrieg gegen die Ukraine</strong> geprägt. Deutschland ist nach den USA der zweitgrößte militärische und finanzielle Unterstützer der Ukraine und zusammen mit Polen das wichtigste Aufnahmeland für ukrainische Geflüchtete. Die bilaterale "Vereinbarung über Sicherheitszusammenarbeit und langfristige Unterstützung" vom Februar 2024 unterstreicht Deutschlands langfristige Unterstützung.<sup>[12]</sup></p>
+            <p>Die deutsche Ukraine-Politik steht jedoch vor erheblichen Herausforderungen. Viele Ukrainer kritisieren Deutschland für seine frühere Appeasement-Politik gegenüber Russland, insbesondere die Blockade einer NATO-Mitgliedschaft 2008 und das Festhalten an Nord Stream 2.<sup>[13]</sup></p>
+
+            <SectionTitle>Migrationspolitik im Wandel</SectionTitle>
+            <p>Die <strong>Migrationspolitik hat eine deutliche Verschärfung erfahren</strong>. Bundesinnenminister Dobrindt führte verstärkte Grenzkontrollen an allen deutschen Binnengrenzen ein und erhöhte die Zurückweisungen. Zentrale Maßnahmen der "Migrationswende" umfassen:</p>
+            <ul className="list-disc pl-6">
+              <li>Aussetzung des Familiennachzugs für bestimmte Gruppen</li>
+              <li>Abschaffung der "Turboeinbürgerung" nach drei Jahren</li>
+              <li>Benennung weiterer sicherer Herkunftsstaaten</li>
+              <li>Konsequente Abschiebung von Straftätern</li>
+            </ul>
+            <p>Die Zahl der Schutzsuchenden blieb 2024 mit rund 3,3 Millionen Menschen hoch, während gleichzeitig die Nettozuwanderung zurückging.<sup>[15][16]</sup></p>
+
+            <SectionTitle>Klimapolitik zwischen Ambition und Realität</SectionTitle>
+            <p>Die deutsche <strong>Klimapolitik</strong> steht vor großen Herausforderungen. Während der Klimaschutzbericht 2025 Fortschritte bei der Emissionsminderung verzeichnet, sind zusätzliche Maßnahmen insbesondere in den Sektoren Verkehr und Gebäude erforderlich.<sup>[17]</sup></p>
+            <p>Der <strong>vollständige Atomausstieg am 15. April 2023</strong> markierte einen historischen Wendepunkt. Kritiker argumentieren, dass dies die Klimaziele erschwert und Deutschland teurer zu stehen kommt als eine kernkraftbasierte Energiepolitik.<sup>[18][19][20]</sup></p>
+
+            <SectionTitle>Haushaltspolitik und finanzielle Herausforderungen</SectionTitle>
+            <p>Der <strong>Bundeshaushalt 2025</strong> mit einem Volumen von 500 Milliarden Euro und 140 Milliarden Euro neuen Schulden steht im Zentrum politischer Kontroversen. Besonders umstritten ist die massive Erhöhung der Verteidigungsausgaben von 90 auf 150 Milliarden Euro, während gleichzeitig bei humanitärer Hilfe gekürzt wird.<sup>[21][22][23]</sup></p>
+
+            <SectionTitle>Gesellschaftliche Polarisierung und demokratische Herausforderungen</SectionTitle>
+            <p>Deutschland erlebt eine zunehmende <strong>gesellschaftliche Polarisierung</strong>. Die hohe Wahlbeteiligung von 82,5% bei der Bundestagswahl 2025 zeigt das gesteigerte politische Interesse, aber auch die Spannungen in der Gesellschaft. Besonders in Ostdeutschland manifestiert sich eine tiefe Unzufriedenheit mit der etablierten Politik.<sup>[8][1]</sup></p>
+            <p>Die neue Regierung unter Friedrich Merz steht vor der Aufgabe, das Vertrauen der Bürger zurückzugewinnen und Deutschland durch eine komplexe Transformationsphase zu führen.</p>
+
+            <SectionTitle>Quellen (Auswahl)</SectionTitle>
+            <ol className="list-decimal pl-6 text-sm">
+              <li><a className="text-orange-600 hover:underline" href="https://de.wikipedia.org/wiki/Bundestagswahl_2025" target="_blank" rel="noreferrer">Bundestagswahl 2025</a></li>
+              <li><a className="text-orange-600 hover:underline" href="https://www.deutschlandfunk.de/bundesregierung-100.html" target="_blank" rel="noreferrer">Deutschlandfunk – Bundesregierung</a></li>
+              <li><a className="text-orange-600 hover:underline" href="https://www.faz.net/aktuell/politik/bundestagswahl/liveblog-bundespolitik-merz-klingbeil-und-co-demonstrieren-einigkeit-nach-koalitionsgipfel-faz-110093143.html" target="_blank" rel="noreferrer">FAZ Liveblog</a></li>
+              <li><a className="text-orange-600 hover:underline" href="https://www.bundestag.de/dokumente/textarchiv/2025/kw11-bundeswahlausschuss-1056272" target="_blank" rel="noreferrer">Bundestag – Bundeswahlausschuss</a></li>
+              <li><a className="text-orange-600 hover:underline" href="https://www.spiegel.de/politik/deutschland/bundestagswahl-2025-afd-in-ostdeutschen-flaechenlaendern-weit-vorn-a-475be7b0-6408-4997-a5b1-8c9ef266ffb2" target="_blank" rel="noreferrer">Spiegel – AfD Ergebnisse</a></li>
+              <li><a className="text-orange-600 hover:underline" href="https://www.dihk.de/de/aktuelles-und-presse/aktuelle-informationen/dihk-konjunkturumfrage-2025-droht-drittes-krisenjahr-in-folge-128508" target="_blank" rel="noreferrer">DIHK Konjunktur</a></li>
+              <li><a className="text-orange-600 hover:underline" href="https://www.auswaertiges-amt.de/de/service/laender/ukraine-node/bilaterale-beziehungen-202760" target="_blank" rel="noreferrer">AA – Ukraine</a></li>
+            </ol>
+          </article>
 
           {/* Bundeskanzler */}
           <Card className="mb-8 border-2 border-purple-200">
