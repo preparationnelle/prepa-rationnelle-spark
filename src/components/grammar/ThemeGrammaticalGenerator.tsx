@@ -12,7 +12,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';
 import { GrammarErrorMemory } from './GrammarErrorMemory';
 import { SimilarSentencesGenerator } from './SimilarSentencesGenerator';
-import { ProgressionTracker } from './ProgressionTracker';
+// import { ProgressionTracker } from './ProgressionTracker';
 
 interface ThemeSentence {
   french: string;
@@ -455,7 +455,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto p-6 space-y-8">
       {/* Header moderne avec navigation et stats */}
-      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200">
+      <div className="bg-gradient-to-r from-blue-50 via-blue-50 to-blue-50 rounded-xl p-6 border border-blue-200">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
           {/* Navigation des langues */}
           <div className="flex flex-col sm:flex-row gap-4">
@@ -539,26 +539,25 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
         )}
       </div>
 
-      {/* Progression tracker */}
-      <ProgressionTracker 
-        language={language}
-        currentScore={evaluation?.score}
-        completedSentence={completedSentence}
-      />
+      {/* Progression tracker supprimé selon demande */}
 
       {/* Zone principale : Interface refaite et plus logique */}
       <div className="grid lg:grid-cols-2 gap-8">
         
         {/* Colonne 1 : Génération et phrase source */}
         <div className="space-y-6">
-          {/* Bouton de génération */}
-          <Card className="border-2 border-orange-200 bg-gradient-to-br from-orange-50 to-amber-50 shadow-lg">
+          {/* Zone de génération améliorée */}
+          <Card className="border-2 border-blue-300 bg-gradient-to-br from-blue-50 to-blue-100 shadow-xl hover:shadow-2xl transition-all duration-300">
             <CardHeader className="pb-4">
-              <CardTitle className="flex items-center gap-2 text-orange-800">
-                <Target className="h-5 w-5" />
-                Génération
+              <CardTitle className="flex items-center gap-3 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700">
+                <div className="relative">
+                  <Sparkles className="h-6 w-6 animate-pulse" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full blur-sm opacity-30 animate-ping"></div>
+                </div>
+                <span className="text-xl font-bold">Créer une phrase</span>
                 {language === 'de' && (
-                  <Badge className="bg-purple-100 text-purple-800 border-purple-200">
+                  <Badge className="bg-blue-100 text-blue-800 border-blue-300 shadow-sm">
+                    <Brain className="h-3 w-3 mr-1" />
                     Spécialisé
                   </Badge>
                 )}
@@ -569,17 +568,25 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                 onClick={generateNewSentence}
                 disabled={isGenerating}
                 size="lg"
-                className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-xl transition-all"
+                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 disabled:hover:scale-100"
               >
                 {isGenerating ? (
                   <>
-                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                    Génération...
+                    <div className="relative">
+                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                      <div className="absolute inset-0 bg-white rounded-full blur opacity-20 animate-pulse"></div>
+                    </div>
+                    <span className="font-medium">
+                      {currentSentence ? "Phrase prête !" : "Création en cours..."}
+                    </span>
                   </>
                 ) : (
                   <>
-                    <Plus className="mr-2 h-5 w-5" />
-                    Nouvelle phrase
+                    <div className="relative">
+                      <Plus className="mr-2 h-5 w-5" />
+                      <div className="absolute inset-0 bg-white rounded-full blur opacity-20"></div>
+                    </div>
+                    <span className="font-semibold">✨ Nouvelle phrase</span>
                   </>
                 )}
               </Button>
@@ -588,7 +595,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
 
           {/* Phrase source */}
           {currentSentence && (
-            <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50 shadow-lg">
+            <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-blue-100 shadow-lg">
               <CardHeader className="pb-4">
                 <CardTitle className="flex items-center gap-2 text-blue-800">
                   <Languages className="h-5 w-5" />
@@ -599,7 +606,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                     </Badge>
                   )}
                   {currentSentence.specialized && (
-                    <Badge className="bg-purple-100 text-purple-800">
+                    <Badge className="bg-blue-100 text-blue-800">
                       Spécialisé
                     </Badge>
                   )}
@@ -677,9 +684,9 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
           {currentSentence && (
             <>
               {/* Zone de réponse améliorée */}
-              <Card className="border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg">
+              <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-blue-100 shadow-lg">
                 <CardHeader className="pb-4">
-                  <CardTitle className="flex items-center gap-2 text-green-800">
+                  <CardTitle className="flex items-center gap-2 text-blue-800">
                     <MessageSquare className="h-5 w-5" />
                     Votre traduction
                     {examMode && (
@@ -709,7 +716,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                     <Button
                       onClick={evaluateAnswer}
                       disabled={!studentAnswer.trim() || isEvaluating}
-                      className="flex-1 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white shadow-lg"
+                      className="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-lg"
                     >
                       {isEvaluating ? (
                         <>
@@ -727,7 +734,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                     <Button
                       variant="outline"
                       onClick={resetExercise}
-                      className="border-green-300 text-green-700 hover:bg-green-100"
+                      className="border-blue-300 text-blue-700 hover:bg-blue-100"
                     >
                       <RefreshCw className="mr-2 h-4 w-4" />
                       Reset
@@ -738,18 +745,18 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
 
               {/* CORRECTION PARFAITE IMMÉDIATEMENT DISPONIBLE */}
               {showPerfectAnswer && (
-                <Card className="border-2 border-emerald-200 bg-gradient-to-br from-emerald-50 to-green-50 shadow-lg">
+                <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-blue-100 shadow-lg">
                   <CardHeader className="pb-4">
-                    <CardTitle className="flex items-center gap-2 text-emerald-800">
+                    <CardTitle className="flex items-center gap-2 text-blue-800">
                       <Award className="h-5 w-5" />
                       Correction parfaite
-                      <Badge className="bg-emerald-100 text-emerald-800 border-emerald-200">
+                      <Badge className="bg-blue-100 text-blue-800 border-blue-200">
                         Disponible immédiatement
                       </Badge>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <div className="p-4 bg-white rounded-lg border border-emerald-200 shadow-sm">
+                    <div className="p-4 bg-white rounded-lg border border-blue-200 shadow-sm">
                       <p className="text-lg font-medium text-gray-800 leading-relaxed">
                         {currentSentence.reference}
                       </p>
@@ -785,9 +792,9 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
       {evaluation && feedbackLoaded && (
         <div className="space-y-6">
           {/* Score et évaluation générale */}
-          <Card className="border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50 shadow-lg">
+          <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-blue-100 shadow-lg">
             <CardHeader className="pb-4">
-              <CardTitle className="flex items-center gap-2 text-purple-800">
+              <CardTitle className="flex items-center gap-2 text-blue-800">
                 <Trophy className="h-5 w-5" />
                 Résultats détaillés
                 <Badge className={`${getScoreColor(evaluation.score)} bg-white border`}>

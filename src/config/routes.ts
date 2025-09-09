@@ -21,6 +21,16 @@ const PythonQuizPage = lazy(() => import('../pages/formation/Python/PythonQuizPa
 const FormationAnglaisPage = lazy(() => import('../pages/FormationAnglaisPage'));
 const FormationAnglaisVocabulairePage = lazy(() => import('../pages/formation/anglais/FormationAnglaisVocabulairePage'));
 const FormationAnglaisGrammairePage = lazy(() => import('../pages/formation/anglais/FormationAnglaisGrammairePage'));
+const AnglaisTempsVerbauxPage = lazy(() => import('../pages/formation/anglais/grammaire/TempsVerbauxPage'));
+const AnglaisConditionnelsPage = lazy(() => import('../pages/formation/anglais/grammaire/ConditionnelsPage'));
+const AnglaisVoixPassivesPage = lazy(() => import('../pages/formation/anglais/grammaire/VoixPassivesPage'));
+const AnglaisDiscoursIndirectPage = lazy(() => import('../pages/formation/anglais/grammaire/DiscoursIndirectPage'));
+const AnglaisPrepositionsPhrasalVerbsPage = lazy(() => import('../pages/formation/anglais/grammaire/PrepositionsPhrasalVerbsPage'));
+const AnglaisArticlesDeterminantsPage = lazy(() => import('../pages/formation/anglais/grammaire/ArticlesDeterminantsPage'));
+const AnglaisRelativesPage = lazy(() => import('../pages/formation/anglais/grammaire/RelativesPage'));
+const AnglaisGerondifInfinitifPage = lazy(() => import('../pages/formation/anglais/grammaire/GerondifInfinitifPage'));
+const AnglaisComparatifsSuperlatifsPage = lazy(() => import('../pages/formation/anglais/grammaire/ComparatifsSuperlatifsPage'));
+const AnglaisQuestionsInterrogatifsPage = lazy(() => import('../pages/formation/anglais/grammaire/QuestionsInterrogatifsPage'));
 const FormationAnglaisCivilisationPage = lazy(() => import('../pages/formation/anglais/FormationAnglaisCivilisationPage'));
 const AnglaisCivilisationOverviewPage = lazy(() => import('../pages/formation/anglais/CivilisationOverviewPage'));
 const AnglaisEnvironmentPage = lazy(() => import('../pages/formation/anglais/civilisation/EnvironmentPage'));
@@ -537,6 +547,16 @@ export const routes: RouteConfig[] = [
   { path: '/formation/anglais', component: FormationAnglaisPage, title: 'Formation Anglais' },
   { path: '/formation/anglais/vocabulaire', component: FormationAnglaisVocabulairePage, title: 'Vocabulaire Anglais' },
   { path: '/formation/anglais/grammaire', component: FormationAnglaisGrammairePage, title: 'Grammaire Anglaise' },
+  { path: '/formation/anglais/grammaire/conditionnels', component: AnglaisConditionnelsPage, title: 'Structures Conditionnelles' },
+  { path: '/formation/anglais/grammaire/temps-verbaux', component: AnglaisTempsVerbauxPage, title: 'Temps verbaux' },
+  { path: '/formation/anglais/grammaire/voix-passives', component: AnglaisVoixPassivesPage, title: 'Voix passive' },
+  { path: '/formation/anglais/grammaire/discours-indirect', component: AnglaisDiscoursIndirectPage, title: 'Discours indirect' },
+  { path: '/formation/anglais/grammaire/prepositions', component: AnglaisPrepositionsPhrasalVerbsPage, title: 'Prépositions & Phrasal Verbs' },
+  { path: '/formation/anglais/grammaire/articles', component: AnglaisArticlesDeterminantsPage, title: 'Articles & Déterminants' },
+  { path: '/formation/anglais/grammaire/relatives', component: AnglaisRelativesPage, title: 'Subordonnées relatives' },
+  { path: '/formation/anglais/grammaire/gerondif-infinitif', component: AnglaisGerondifInfinitifPage, title: 'Gérondif & Infinitif' },
+  { path: '/formation/anglais/grammaire/comparatifs', component: AnglaisComparatifsSuperlatifsPage, title: 'Comparatifs & Superlatifs' },
+  { path: '/formation/anglais/grammaire/questions', component: AnglaisQuestionsInterrogatifsPage, title: 'Questions & Interrogatifs' },
   { path: '/formation/anglais/civilisation', component: FormationAnglaisCivilisationPage, title: 'Civilisation Anglaise' },
   { path: '/formation/anglais/civilisation/environment', component: AnglaisEnvironmentPage, title: 'Environment and Ecology' },
   { path: '/formation/anglais/civilisation/environment/vocabulary', component: AnglaisEnvironmentVocabularyPage, title: 'Environment Vocabulary - Flashcards' },

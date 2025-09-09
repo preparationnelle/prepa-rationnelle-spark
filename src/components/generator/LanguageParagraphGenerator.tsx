@@ -141,9 +141,9 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
   return (
     <div className="space-y-6">
       {/* Bloc Entrée */}
-      <Card className="bg-white rounded-2xl shadow-sm border border-[#E6EEF9]">
+      <Card className="bg-white rounded-xl shadow-md border border-blue-200 hover:shadow-xl transition-all duration-300">
         <CardHeader className="pb-4">
-          <CardTitle className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+          <CardTitle className="text-lg font-semibold text-blue-700 flex items-center gap-2">
             <FileText className="w-5 h-5 text-blue-500" />
             Déposez l'article
           </CardTitle>
@@ -183,10 +183,10 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
 
           {/* Boutons d'action */}
           <div className="flex gap-2 pt-2">
-            <Button 
+            <Button
               onClick={handleGenerate}
               disabled={loading || !article.trim()}
-              className="bg-orange-500 hover:bg-orange-600 text-white flex-1"
+              className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white flex-1"
             >
               {loading ? (
                 <>
@@ -200,18 +200,18 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
                 </>
               )}
             </Button>
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               onClick={loadExample}
-              className="text-gray-600 hover:text-gray-900"
+              className="text-blue-600 hover:text-blue-800 hover:bg-blue-50"
             >
               <Lightbulb className="w-4 h-4 mr-2" />
               Exemple
             </Button>
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               onClick={clearAll}
-              className="text-gray-600 hover:text-gray-900"
+              className="text-blue-600 hover:text-blue-800 hover:bg-blue-50"
             >
               Effacer
             </Button>
@@ -221,10 +221,10 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
 
       {/* Bloc Sortie */}
       {result && (
-        <Card className="bg-white rounded-2xl shadow-sm border border-[#E6EEF9]">
+        <Card className="bg-white rounded-xl shadow-md border border-blue-200 hover:shadow-xl transition-all duration-300">
           <CardHeader className="pb-4">
-            <CardTitle className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-              <Target className="w-5 h-5 text-green-500" />
+            <CardTitle className="text-lg font-semibold text-blue-700 flex items-center gap-2">
+              <Target className="w-5 h-5 text-blue-500" />
               Paragraphe généré
             </CardTitle>
           </CardHeader>
@@ -260,10 +260,10 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
 
             {/* Actions */}
             <div className="flex gap-2 pt-2">
-              <Button 
+              <Button
                 onClick={handleCopy}
                 variant="ghost"
-                className="text-gray-600 hover:text-gray-900"
+                className="text-blue-600 hover:text-blue-800 hover:bg-blue-50"
               >
                 {copied ? (
                   <>
@@ -277,18 +277,18 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
                   </>
                 )}
               </Button>
-              <Button 
+              <Button
                 onClick={handleDownloadText}
                 variant="ghost"
-                className="text-gray-600 hover:text-gray-900"
+                className="text-blue-600 hover:text-blue-800 hover:bg-blue-50"
               >
                 <Download className="w-4 h-4 mr-2" />
                 Télécharger
               </Button>
-              <Button 
+              <Button
                 onClick={handleDownloadPDF}
                 variant="ghost"
-                className="text-gray-600 hover:text-gray-900"
+                className="text-blue-600 hover:text-blue-800 hover:bg-blue-50"
               >
                 <FileText className="w-4 h-4 mr-2" />
                 PDF
