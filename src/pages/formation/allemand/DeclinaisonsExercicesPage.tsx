@@ -510,14 +510,14 @@ const DeclinaisonsExercicesPage = () => {
 
   // New state for single question display
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState<number>(0);
-  const [selectedExerciseType, setSelectedExerciseType] = useState<'qcm' | 'complet'>('qcm');
+  const [selectedExerciseType, setSelectedExerciseType] = useState<'qcm' | 'complet' | 'toutes'>('qcm');
 
   // Filtrer les exercices selon les sélections
   const filterExercises = (exercises: any[]) => {
     return exercises.filter(exercise => {
       const categoryMatch = selectedCategory === 'toutes' || exercise.category === selectedCategory;
       const levelMatch = selectedLevel === 'tous' || exercise.level === selectedLevel;
-      const typeMatch = selectedExerciseType === exercise.type || selectedExerciseType === 'toutes';
+      const typeMatch = selectedExerciseType === 'toutes' || selectedExerciseType === exercise.type;
       return categoryMatch && levelMatch && typeMatch;
     });
   };

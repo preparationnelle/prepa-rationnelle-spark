@@ -34,11 +34,9 @@ import {
 } from 'lucide-react';
 import AdjectiveAdverbSectionComponent from '@/components/grammar/AdjectiveAdverbSection';
 import ConjugationTable from '@/components/grammar/ConjugationTable';
-// import { 
-//   adjectiveAdverbSections, 
-//   adjectiveAdverbExercises, 
-//   adjectiveAdverbTables 
-// } from '@/data/spanishAdjectivesAdverbsData';
+import { 
+  adjectiveAdverbSections
+} from '@/data/spanishAdjectivesAdverbsData';
 
 const AdjectivesAdverbsPage = () => {
   const [showHints, setShowHints] = useState<{ [key: string]: boolean }>({});
@@ -147,29 +145,10 @@ const AdjectivesAdverbsPage = () => {
           </h2>
           
           <div className="grid gap-6">
-            <ConjugationTable 
-              title={adjectiveAdverbTables.possessifs.title}
-              headers={adjectiveAdverbTables.possessifs.headers}
-              rows={adjectiveAdverbTables.possessifs.rows}
-            />
-            
-            <ConjugationTable 
-              title={adjectiveAdverbTables.demonstratifs.title}
-              headers={adjectiveAdverbTables.demonstratifs.headers}
-              rows={adjectiveAdverbTables.demonstratifs.rows}
-            />
-            
-            <ConjugationTable 
-              title={adjectiveAdverbTables.apocope.title}
-              headers={adjectiveAdverbTables.apocope.headers}
-              rows={adjectiveAdverbTables.apocope.rows}
-            />
-            
-            <ConjugationTable 
-              title={adjectiveAdverbTables.adverbes.title}
-              headers={adjectiveAdverbTables.adverbes.headers}
-              rows={adjectiveAdverbTables.adverbes.rows}
-            />
+            {/* Mock tables - replace with actual data when available */}
+            <div className="text-center text-gray-600 py-8">
+              <p>Tables de conjugaison à venir...</p>
+            </div>
           </div>
         </div>
 
@@ -195,87 +174,10 @@ const AdjectivesAdverbsPage = () => {
           </h2>
           
           <div className="space-y-6">
-            {adjectiveAdverbExercises.map((exercise) => (
-              <Card key={exercise.id} className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50">
-                <CardHeader>
-                  <CardTitle className="text-xl flex items-center gap-2 text-orange-800">
-                    <FileText className="h-5 w-5" />
-                    {exercise.title}
-                  </CardTitle>
-                  <div className="flex gap-2">
-                    <Badge variant="outline" className="text-orange-600">
-                      {exercise.level}
-                    </Badge>
-                    <Badge variant="secondary">
-                      {exercise.type}
-                    </Badge>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {/* Instruction */}
-                  <div className="bg-white/70 rounded-lg p-4 border border-orange-200">
-                    <h4 className="font-semibold text-orange-900 mb-2">📝 Instruction :</h4>
-                    <p className="text-lg text-gray-800">{exercise.instruction}</p>
-                  </div>
-
-                  {/* Question */}
-                  <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-                    <h4 className="font-semibold text-blue-900 mb-2">🎯 Question :</h4>
-                    <p className="text-lg text-gray-800 font-mono">{exercise.content.question}</p>
-                  </div>
-
-                  {/* Boutons d'action */}
-                  <div className="flex gap-3">
-                    <Button 
-                      variant="outline" 
-                      onClick={() => toggleHints(exercise.id)}
-                      className="flex items-center gap-2"
-                    >
-                      <Eye className="h-4 w-4" />
-                      {showHints[exercise.id] ? 'Masquer les indices' : 'Voir les indices'}
-                    </Button>
-                    <Button 
-                      variant="outline" 
-                      onClick={() => toggleCorrections(exercise.id)}
-                      className="flex items-center gap-2"
-                    >
-                      <CheckCircle className="h-4 w-4" />
-                      {showCorrections[exercise.id] ? 'Masquer la correction' : 'Voir la correction'}
-                    </Button>
-                  </div>
-
-                  {/* Indices */}
-                  {showHints[exercise.id] && (
-                    <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-                      <h4 className="font-semibold text-blue-900 mb-3 flex items-center gap-2">
-                        <Lightbulb className="h-4 w-4" />
-                        💡 Indices et règles :
-                      </h4>
-                      <ul className="space-y-2">
-                        {exercise.content.hints.map((hint, index) => (
-                          <li key={index} className="flex items-start gap-2 text-blue-800">
-                            <span className="w-2 h-2 rounded-full bg-blue-500 mt-2 flex-shrink-0"></span>
-                            <span className="text-sm">{hint}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Correction */}
-                  {showCorrections[exercise.id] && (
-                    <div className="bg-green-50 rounded-lg p-4 border border-green-200">
-                      <h4 className="font-semibold text-green-900 mb-3 flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4" />
-                        ✅ Correction et explication :
-                      </h4>
-                      <p className="text-lg text-green-800 font-medium mb-2">{exercise.content.correction}</p>
-                      <p className="text-sm text-green-700">{exercise.content.explanation}</p>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            ))}
+            {/* Mock exercises - replace with actual data when available */}
+            <div className="text-center text-gray-600 py-8">
+              <p>Exercices pratiques à venir...</p>
+            </div>
           </div>
         </div>
 

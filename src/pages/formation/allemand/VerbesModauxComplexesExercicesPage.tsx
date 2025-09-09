@@ -467,7 +467,7 @@ const VerbesModauxComplexesExercicesPage = () => {
   const [examTime, setExamTime] = useState<number>(0);
   const [examTimer, setExamTimer] = useState<NodeJS.Timeout | null>(null);
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState<number>(0);
-  const [selectedExerciseType, setSelectedExerciseType] = useState<'qcm' | 'complet'>('qcm');
+  const [selectedExerciseType, setSelectedExerciseType] = useState<'qcm' | 'complet' | 'toutes'>('qcm');
   const [showCorrections, setShowCorrections] = useState<{ [key: string]: boolean }>({});
 
   // Filtrer les exercices selon les sélections
@@ -475,7 +475,7 @@ const VerbesModauxComplexesExercicesPage = () => {
     return exercises.filter(exercise => {
       const categoryMatch = selectedCategory === 'toutes' || exercise.category === selectedCategory;
       const levelMatch = selectedLevel === 'tous' || exercise.level === selectedLevel;
-      const typeMatch = selectedExerciseType === exercise.type || selectedExerciseType === 'toutes';
+      const typeMatch = selectedExerciseType === 'toutes' || selectedExerciseType === exercise.type;
       return categoryMatch && levelMatch && typeMatch;
     });
   };
@@ -488,7 +488,7 @@ const VerbesModauxComplexesExercicesPage = () => {
   };
 
   const validateAnswer = (exerciseId: string) => {
-    const exercise = exercises.find(ex => ex.id === exerciseId);
+    const exercise = filteredExercises.find(ex => ex.id === exerciseId);
     if (!exercise) return;
 
     const userAnswer = userAnswers[exerciseId];

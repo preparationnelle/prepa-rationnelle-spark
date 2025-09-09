@@ -506,7 +506,7 @@ const NegationExercicesPage = () => {
   const [examTime, setExamTime] = useState<number>(0);
   const [examTimer, setExamTimer] = useState<NodeJS.Timeout | null>(null);
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState<number>(0);
-  const [selectedExerciseType, setSelectedExerciseType] = useState<'qcm' | 'complet'>('qcm');
+  const [selectedExerciseType, setSelectedExerciseType] = useState<'qcm' | 'complet' | 'toutes'>('qcm');
   const [showCorrections, setShowCorrections] = useState<{ [key: string]: boolean }>({});
 
   // Filtrer les exercices selon les sélections
@@ -514,7 +514,7 @@ const NegationExercicesPage = () => {
     return exercises.filter(exercise => {
       const categoryMatch = selectedCategory === 'toutes' || exercise.category === selectedCategory;
       const levelMatch = selectedLevel === 'tous' || exercise.level === selectedLevel;
-      const typeMatch = selectedExerciseType === exercise.type || selectedExerciseType === 'toutes';
+      const typeMatch = selectedExerciseType === 'toutes' || selectedExerciseType === exercise.type;
       return categoryMatch && levelMatch && typeMatch;
     });
   };

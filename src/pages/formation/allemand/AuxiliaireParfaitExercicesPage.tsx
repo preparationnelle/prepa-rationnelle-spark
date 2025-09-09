@@ -403,14 +403,14 @@ const AuxiliaireParfaitExercicesPage = () => {
 
   // New state for single question display
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState<number>(0);
-  const [selectedExerciseType, setSelectedExerciseType] = useState<'qcm' | 'complet'>('qcm');
+  const [selectedExerciseType, setSelectedExerciseType] = useState<'qcm' | 'complet' | 'toutes'>('qcm');
 
   // Filtrer les exercices selon les sélections
   const filterExercises = (exercises: any[]) => {
     return exercises.filter(exercise => {
       const categoryMatch = selectedCategory === 'toutes' || exercise.category === selectedCategory;
       const levelMatch = selectedLevel === 'tous' || exercise.level === selectedLevel;
-      const typeMatch = selectedExerciseType === exercise.type || selectedExerciseType === 'toutes';
+      const typeMatch = selectedExerciseType === 'toutes' || selectedExerciseType === exercise.type;
       return categoryMatch && levelMatch && typeMatch;
     });
   };
@@ -752,7 +752,7 @@ const AuxiliaireParfaitExercicesPage = () => {
                 </label>
                 <select
                   value={selectedExerciseType}
-                  onChange={(e) => setSelectedExerciseType(e.target.value as 'qcm' | 'complet')}
+                  onChange={(e) => setSelectedExerciseType(e.target.value as 'qcm' | 'complet' | 'toutes')}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                   disabled={examStarted}
                 >
