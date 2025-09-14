@@ -19,7 +19,8 @@ export const isWhitelisted = (email: string | null | undefined): boolean => {
 };
 
 // Sections Python (accès libre après connexion)
-const PYTHON_SECTIONS = ['/formation'];
+// Ne pas protéger la page d'overview `/formation` pour éviter un sas inutile
+const PYTHON_SECTIONS: string[] = [];
 const PYTHON_PREFIXES = ['/formation/python-'];
 
 // Sections Maths (protection par liste blanche)

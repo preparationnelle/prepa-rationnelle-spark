@@ -108,11 +108,11 @@ const DeuxiemeAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module3/ouverture-economies">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
+                        Accéder au module
                       </Button>
                     </div>
                   </div>
@@ -131,11 +131,11 @@ const DeuxiemeAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module3/analyse-echanges">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
+                        Accéder au module
                       </Button>
                     </div>
                   </div>
@@ -154,11 +154,11 @@ const DeuxiemeAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module3/regionalisation-gouvernance">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
+                        Accéder au module
                       </Button>
                     </div>
                   </div>
@@ -190,11 +190,11 @@ const DeuxiemeAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module3/balance-paiements">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
+                        Accéder au module
                       </Button>
                     </div>
                   </div>
@@ -213,11 +213,11 @@ const DeuxiemeAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module3/evolution-systeme-monetaires">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
+                        Accéder au module
                       </Button>
                     </div>
                   </div>
@@ -236,11 +236,11 @@ const DeuxiemeAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module3/marche-capitaux">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
+                        Accéder au module
                       </Button>
                     </div>
                   </div>
@@ -272,11 +272,11 @@ const DeuxiemeAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module3/construction-europeenne">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
+                        Accéder au module
                       </Button>
                     </div>
                   </div>
@@ -295,11 +295,11 @@ const DeuxiemeAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module3/europe-economique-monetaires">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
+                        Accéder au module
                       </Button>
                     </div>
                   </div>
@@ -318,11 +318,11 @@ const DeuxiemeAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module3/europe-sociale">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
+                        Accéder au module
                       </Button>
                     </div>
                   </div>
@@ -374,11 +374,11 @@ const DeuxiemeAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module4/inflation-chomage">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
+                        Accéder au module
                       </Button>
                     </div>
                   </div>
@@ -397,11 +397,11 @@ const DeuxiemeAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module4/equilibre-macro">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
+                        Accéder au module
                       </Button>
                     </div>
                   </div>
@@ -433,11 +433,11 @@ const DeuxiemeAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module4/fluctuations-economiques">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
+                        Accéder au module
                       </Button>
                     </div>
                   </div>
@@ -456,11 +456,11 @@ const DeuxiemeAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module4/politiques-structurelles">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
+                        Accéder au module
                       </Button>
                     </div>
                   </div>
@@ -479,11 +479,11 @@ const DeuxiemeAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module4/contraintes-politiques">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
+                        Accéder au module
                       </Button>
                     </div>
                   </div>
@@ -515,11 +515,11 @@ const DeuxiemeAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module4/justice-sociale">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
+                        Accéder au module
                       </Button>
                     </div>
                   </div>
@@ -538,11 +538,11 @@ const DeuxiemeAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module4/lutte-inegalites">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
+                        Accéder au module
                       </Button>
                     </div>
                   </div>
@@ -561,11 +561,11 @@ const DeuxiemeAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module4/etat-providence">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
+                        Accéder au module
                       </Button>
                     </div>
                   </div>

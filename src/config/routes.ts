@@ -31,6 +31,15 @@ const AnglaisRelativesPage = lazy(() => import('../pages/formation/anglais/gramm
 const AnglaisGerondifInfinitifPage = lazy(() => import('../pages/formation/anglais/grammaire/GerondifInfinitifPage'));
 const AnglaisComparatifsSuperlatifsPage = lazy(() => import('../pages/formation/anglais/grammaire/ComparatifsSuperlatifsPage'));
 const AnglaisQuestionsInterrogatifsPage = lazy(() => import('../pages/formation/anglais/grammaire/QuestionsInterrogatifsPage'));
+const AnglaisExpressionsTempsPage = lazy(() => import('../pages/formation/anglais/grammaire/ExpressionsTempsPage'));
+const AnglaisConcordanceTempsPage = lazy(() => import('../pages/formation/anglais/grammaire/ConcordanceTempsPage'));
+const AnglaisQuantifieursPage = lazy(() => import('../pages/formation/anglais/grammaire/QuantifieursPage'));
+const AnglaisSubjunctifPage = lazy(() => import('../pages/formation/anglais/grammaire/SubjunctifPage'));
+const AnglaisInversionsEmphasePage = lazy(() => import('../pages/formation/anglais/grammaire/InversionsEmphasePage'));
+const AnglaisConnecteursLogiquesPage = lazy(() => import('../pages/formation/anglais/grammaire/ConnecteursLogiquesPage'));
+const AnglaisVerbesIrreguliersPage = lazy(() => import('../pages/formation/anglais/grammaire/VerbesIrreguliersPage'));
+const AnglaisCausativesPage = lazy(() => import('../pages/formation/anglais/grammaire/CausativesPage'));
+const AnglaisNuancesLexicalesPage = lazy(() => import('../pages/formation/anglais/grammaire/NuancesLexicalesPage'));
 const FormationAnglaisCivilisationPage = lazy(() => import('../pages/formation/anglais/FormationAnglaisCivilisationPage'));
 const AnglaisCivilisationOverviewPage = lazy(() => import('../pages/formation/anglais/CivilisationOverviewPage'));
 const AnglaisEnvironmentPage = lazy(() => import('../pages/formation/anglais/civilisation/EnvironmentPage'));
@@ -240,6 +249,19 @@ const CivilReligionPage = lazy(() => import('../pages/formation/anglais/civilisa
 const ImmigrationPage = lazy(() => import('../pages/formation/anglais/civilisation/ImmigrationPage'));
 const ContemporaryCrisesPage = lazy(() => import('../pages/formation/anglais/civilisation/ContemporaryCrisesPage'));
 const FormationCultureGeneralePage = lazy(() => import('../pages/FormationCultureGeneralePage'));
+const JugerTermesConnexesPage = lazy(() => import('../pages/formation/culture-generale/JugerTermesConnexesPage'));
+const ArticlesCultureGeneralePage = lazy(() => import('../pages/formation/culture-generale/ArticlesCultureGeneralePage'));
+const AnalyseSujetJugerPage = lazy(() => import('../pages/formation/culture-generale/articles/AnalyseSujetJugerPage'));
+const ParadoxeProblematiquePage = lazy(() => import('../pages/formation/culture-generale/articles/ParadoxeProblematiquePage'));
+const PlanJugerPage = lazy(() => import('../pages/formation/culture-generale/articles/PlanJugerPage'));
+const MethodesCultureGeneralePage = lazy(() => import('../pages/formation/culture-generale/MethodesCultureGeneralePage'));
+const ProgrammeCultureGeneralePage = lazy(() => import('../pages/formation/culture-generale/ProgrammeCultureGeneralePage'));
+const TroisMethodesDissertationPage = lazy(() => import('../pages/formation/culture-generale/methodes/TroisMethodesDissertationPage'));
+const MethodesParagraphesJugerPage = lazy(() => import('../pages/formation/culture-generale/methodes/MethodesParagraphesJugerPage'));
+const IntroductionJugerPage = lazy(() => import('../pages/formation/culture-generale/methodes/IntroductionJugerPage'));
+const SousPartiesJugerPage = lazy(() => import('../pages/formation/culture-generale/methodes/SousPartiesJugerPage'));
+const TransitionsJugerPage = lazy(() => import('../pages/formation/culture-generale/methodes/TransitionsJugerPage'));
+const ConclusionJugerPage = lazy(() => import('../pages/formation/culture-generale/methodes/ConclusionJugerPage'));
 const NosOffresPage = lazy(() => import('../pages/NosOffresPage'));
 const AproposPage = lazy(() => import('../pages/AproposPage'));
 const CoachingPage = lazy(() => import('../pages/CoachingPage'));
@@ -404,6 +426,7 @@ const GeopoliticsGeneratorPage = lazy(() => import('../pages/generator/Geopoliti
 const GeopoliticsUnifiedGeneratorPage = lazy(() => import('../pages/generator/GeopoliticsUnifiedGeneratorPage'));
 const LanguagesGeneratorPage = lazy(() => import('../pages/generator/LanguagesGeneratorPage'));
 const PrepaChatbotGeneratorPage = lazy(() => import('../pages/generator/PrepaChatbotGeneratorPage'));
+const CultureGeneraleGeneratorPage = lazy(() => import('../pages/generator/CultureGeneraleGeneratorPage'));
 
 const ThemeGrammarGeneratorPage = lazy(() => import('../pages/generator/ThemeGrammarGeneratorPage'));
 const UnifiedLanguagesGeneratorPage = lazy(() => import('../pages/generator/UnifiedLanguagesGeneratorPage'));
@@ -436,8 +459,11 @@ const RessourcesESHPage = lazy(() => import('../pages/formation/esh/RessourcesES
 // Module 1 ESH chapters
 
 const ActeursFonctionsEconomiePage = lazy(() => import('../pages/formation/esh/module1/ActeursFonctionsEconomiePage'));
+const ActeursFonctionsEconomieModulePage = lazy(() => import('../pages/formation/esh/module1/ActeursFonctionsEconomieModulePage'));
 const MonnaieFinancementEconomiePage = lazy(() => import('../pages/formation/esh/module1/MonnaieFinancementEconomiePage'));
+const MonnaieFinancementEconomieModulePage = lazy(() => import('../pages/formation/esh/module1/MonnaieFinancementEconomieModulePage'));
 const CourantsEconomiquesPage = lazy(() => import('../pages/formation/esh/module1/CourantsEconomiquesPage'));
+const CourantsEconomiquesModulePage = lazy(() => import('../pages/formation/esh/module1/CourantsEconomiquesModulePage'));
 
 // Module 3 ESH chapters
 const OuvertureEconomiesPage = lazy(() => import('../pages/formation/esh/module3/OuvertureEconomiesPage'));
@@ -461,21 +487,29 @@ const LutteInegalitesPage = lazy(() => import('../pages/formation/esh/module4/Lu
 const EtatProvidencePage = lazy(() => import('../pages/formation/esh/module4/EtatProvidencePage'));
 
 const EquilibreMicroPage = lazy(() => import('../pages/formation/esh/module1/EquilibreMicroPage'));
+const EquilibreMicroModulePage = lazy(() => import('../pages/formation/esh/module1/EquilibreMicroModulePage'));
 const OffreDemandePage = lazy(() => import('../pages/formation/esh/module1/OffreDemandePage'));
+const OffreDemandeModulePage = lazy(() => import('../pages/formation/esh/module1/OffreDemandeModulePage'));
 const DefaillancesMarchePage = lazy(() => import('../pages/formation/esh/module1/DefaillancesMarchePage'));
+const DefaillancesMarcheModulePage = lazy(() => import('../pages/formation/esh/module1/DefaillancesMarcheModulePage'));
 
 const CourantsSociologiquesPage = lazy(() => import('../pages/formation/esh/module1/CourantsSociologiquesPage'));
 const MethodesSociologiquesPage = lazy(() => import('../pages/formation/esh/module1/MethodesSociologiquesPage'));
 
 // Module 2 ESH chapters
 const CroissanceEconomiquePage = lazy(() => import('../pages/formation/esh/module2/CroissanceEconomiquePage'));
+const CroissanceEconomiqueModulePage = lazy(() => import('../pages/formation/esh/module2/CroissanceEconomiqueModulePage'));
 const InegalitesDeveloppementPage = lazy(() => import('../pages/formation/esh/module2/InegalitesDeveloppementPage'));
 const SoutenabiliteCroissancePage = lazy(() => import('../pages/formation/esh/module2/SoutenabiliteCroissancePage'));
+const SoutenabiliteCroissanceModulePage = lazy(() => import('../pages/formation/esh/module2/SoutenabiliteCroissanceModulePage'));
 const TransformationsEconomiquesFinancieresPage = lazy(() => import('../pages/formation/esh/module2/TransformationsEconomiquesFinancieresPage'));
+const TransformationsEconomiquesFinancieresModulePage = lazy(() => import('../pages/formation/esh/module2/TransformationsEconomiquesFinancieresModulePage'));
 const MobiliteSocialePage = lazy(() => import('../pages/formation/esh/module2/MobiliteSocialePage'));
 const TransformationsDemographiquesPage = lazy(() => import('../pages/formation/esh/module2/TransformationsDemographiquesPage'));
 const TransformationsEntreprisePage = lazy(() => import('../pages/formation/esh/module2/TransformationsEntreprisePage'));
+const TransformationsEntrepriseModulePage = lazy(() => import('../pages/formation/esh/module2/TransformationsEntrepriseModulePage'));
 const ConcurrenceImparfaitePage = lazy(() => import('../pages/formation/esh/module2/ConcurrenceImparfaitePage'));
+const ConcurrenceImparfaiteModulePage = lazy(() => import('../pages/formation/esh/module2/ConcurrenceImparfaiteModulePage'));
 const SociologieTravailPage = lazy(() => import('../pages/formation/esh/module2/SociologieTravailPage'));
 
 export interface RouteConfig {
@@ -557,6 +591,15 @@ export const routes: RouteConfig[] = [
   { path: '/formation/anglais/grammaire/gerondif-infinitif', component: AnglaisGerondifInfinitifPage, title: 'Gérondif & Infinitif' },
   { path: '/formation/anglais/grammaire/comparatifs', component: AnglaisComparatifsSuperlatifsPage, title: 'Comparatifs & Superlatifs' },
   { path: '/formation/anglais/grammaire/questions', component: AnglaisQuestionsInterrogatifsPage, title: 'Questions & Interrogatifs' },
+  { path: '/formation/anglais/grammaire/expressions-temps', component: AnglaisExpressionsTempsPage, title: 'Expressions de temps' },
+  { path: '/formation/anglais/grammaire/concordance', component: AnglaisConcordanceTempsPage, title: 'Concordance des temps' },
+  { path: '/formation/anglais/grammaire/quantifieurs', component: AnglaisQuantifieursPage, title: 'Quantifieurs' },
+  { path: '/formation/anglais/grammaire/subjunctif', component: AnglaisSubjunctifPage, title: 'Subjunctif & Structures Subjectives' },
+  { path: '/formation/anglais/grammaire/inversions', component: AnglaisInversionsEmphasePage, title: 'Inversions & Emphase' },
+  { path: '/formation/anglais/grammaire/connecteurs', component: AnglaisConnecteursLogiquesPage, title: 'Connecteurs logiques' },
+  { path: '/formation/anglais/grammaire/verbes-irreguliers', component: AnglaisVerbesIrreguliersPage, title: 'Verbes irréguliers' },
+  { path: '/formation/anglais/grammaire/causatives', component: AnglaisCausativesPage, title: 'Structures causatives' },
+  { path: '/formation/anglais/grammaire/nuances-lexicales', component: AnglaisNuancesLexicalesPage, title: 'Nuances lexicales' },
   { path: '/formation/anglais/civilisation', component: FormationAnglaisCivilisationPage, title: 'Civilisation Anglaise' },
   { path: '/formation/anglais/civilisation/environment', component: AnglaisEnvironmentPage, title: 'Environment and Ecology' },
   { path: '/formation/anglais/civilisation/environment/vocabulary', component: AnglaisEnvironmentVocabularyPage, title: 'Environment Vocabulary - Flashcards' },
@@ -712,6 +755,19 @@ export const routes: RouteConfig[] = [
   { path: '/formation/synthese-texte/travail-annuel', component: TravailAnnuelPage, title: 'Travail Annuel Synthèse de Texte' },
   { path: '/formation/synthese-texte/ressources', component: RessourcesPage, title: 'Ressources & Exercices Synthèse' },
   { path: '/formation/culture-generale', component: FormationCultureGeneralePage, title: 'Formation Culture Générale' },
+  { path: '/formation/culture-generale/articles', component: ArticlesCultureGeneralePage, title: 'CG — Articles' },
+  { path: '/formation/culture-generale/articles/analyse-sujet-juger', component: AnalyseSujetJugerPage, title: 'CG — Analyse d\'un sujet (Juger)' },
+  { path: '/formation/culture-generale/articles/paradoxe-problematique', component: ParadoxeProblematiquePage, title: 'CG — Paradoxe & Problématique' },
+  { path: '/formation/culture-generale/articles/plan-juger', component: PlanJugerPage, title: 'CG — Construire le plan (Juger)' },
+  { path: '/formation/culture-generale/methodes', component: MethodesCultureGeneralePage, title: 'CG — Méthodes' },
+  { path: '/formation/culture-generale/methodes/trois-approches-dissertation', component: TroisMethodesDissertationPage, title: 'CG — 3 Méthodes de Dissertation' },
+  { path: '/formation/culture-generale/methodes/paragraphes-juger', component: MethodesParagraphesJugerPage, title: 'CG — Paragraphes (Juger)' },
+  { path: '/formation/culture-generale/methodes/introduction-juger', component: IntroductionJugerPage, title: 'CG — Introduction (Juger)' },
+  { path: '/formation/culture-generale/methodes/sous-parties-juger', component: SousPartiesJugerPage, title: 'CG — Sous-parties (Juger)' },
+  { path: '/formation/culture-generale/methodes/transitions', component: TransitionsJugerPage, title: 'CG — Transitions' },
+  { path: '/formation/culture-generale/methodes/conclusion', component: ConclusionJugerPage, title: 'CG — Conclusion' },
+  { path: '/formation/culture-generale/programme', component: ProgrammeCultureGeneralePage, title: 'CG — Programme' },
+  { path: '/formation/culture-generale/juger', component: JugerTermesConnexesPage, title: 'Juger — termes et définitions' },
   { path: '/formation/geopolitique', component: FormationGeopolitiquePage, title: 'Formation Géopolitique' },
   { path: '/formation/geopolitique/premiere-annee', component: GeopolitiquePremiereAnneePage, title: 'Géopolitique - Première Année' },
   { path: '/formation/geopolitique/deuxieme-annee', component: GeopolitiqueDeuxiemeAnneePage, title: 'Géopolitique - Deuxième Année' },
@@ -763,12 +819,18 @@ export const routes: RouteConfig[] = [
 
 // Module 1 ESH chapters
 { path: '/formation/esh/module1/acteurs-fonctions-economie', component: ActeursFonctionsEconomiePage, title: 'Les acteurs et les grandes fonctions de l\'économie' },
+{ path: '/formation/esh/module1/acteurs-fonctions-economie/module', component: ActeursFonctionsEconomieModulePage, title: 'Module – Acteurs et fonctions de l\'économie' },
 { path: '/formation/esh/module1/monnaie-financement-economie', component: MonnaieFinancementEconomiePage, title: 'La monnaie et le financement de l\'économie' },
+{ path: '/formation/esh/module1/monnaie-financement-economie/module', component: MonnaieFinancementEconomieModulePage, title: 'Module – Monnaie et financement' },
 { path: '/formation/esh/module1/courants-economiques', component: CourantsEconomiquesPage, title: 'Les grands courants de la pensée économique depuis le XVIe siècle' },
+{ path: '/formation/esh/module1/courants-economiques/module', component: CourantsEconomiquesModulePage, title: 'Module – Courants de la pensée économique' },
 
 { path: '/formation/esh/module1/equilibre-micro', component: EquilibreMicroPage, title: 'L\'équilibre micro-économique du producteur et du consommateur' },
+{ path: '/formation/esh/module1/equilibre-micro/module', component: EquilibreMicroModulePage, title: 'Module – Équilibre micro-économique' },
 { path: '/formation/esh/module1/offre-demande', component: OffreDemandePage, title: 'L\'offre, la demande et l\'équilibre du marché en concurrence parfaite' },
+{ path: '/formation/esh/module1/offre-demande/module', component: OffreDemandeModulePage, title: 'Module – Offre, demande et équilibre' },
 { path: '/formation/esh/module1/defaillances-marche', component: DefaillancesMarchePage, title: 'Les défaillances de marché' },
+{ path: '/formation/esh/module1/defaillances-marche/module', component: DefaillancesMarcheModulePage, title: 'Module – Défaillances du marché' },
 
 { path: '/formation/esh/module1/courants-sociologiques', component: CourantsSociologiquesPage, title: 'Les grands courants de la pensée sociologique depuis le XIXe siècle' },
 { path: '/formation/esh/module1/methodes-sociologiques', component: MethodesSociologiquesPage, title: 'La pluralité des méthodes sociologiques' },
@@ -796,13 +858,18 @@ export const routes: RouteConfig[] = [
 
 // Module 2 ESH chapters
 { path: '/formation/esh/module2/croissance-economique', component: CroissanceEconomiquePage, title: 'La croissance économique' },
+{ path: '/formation/esh/module2/croissance-economique/module', component: CroissanceEconomiqueModulePage, title: 'Module – Croissance économique' },
 { path: '/formation/esh/module2/inegalites-developpement', component: InegalitesDeveloppementPage, title: 'Inégalités et stratégies de développement' },
 { path: '/formation/esh/module2/soutenabilite-croissance', component: SoutenabiliteCroissancePage, title: 'La soutenabilité de la croissance et du développement' },
+{ path: '/formation/esh/module2/soutenabilite-croissance/module', component: SoutenabiliteCroissanceModulePage, title: 'Module – Soutenabilité de la croissance' },
 { path: '/formation/esh/module2/transformations-economiques-financieres', component: TransformationsEconomiquesFinancieresPage, title: 'Les transformations des structures économiques et financières' },
+{ path: '/formation/esh/module2/transformations-economiques-financieres/module', component: TransformationsEconomiquesFinancieresModulePage, title: 'Module – Transformations économiques et financières' },
 { path: '/formation/esh/module2/mobilite-sociale', component: MobiliteSocialePage, title: 'Mobilité sociale et transformations des structures sociales' },
 { path: '/formation/esh/module2/transformations-demographiques', component: TransformationsDemographiquesPage, title: 'Transformations démographiques et évolution des modes de vie' },
 { path: '/formation/esh/module2/transformations-entreprise', component: TransformationsEntreprisePage, title: 'Les transformations de l\'entreprise et de sa gouvernance depuis le XIXe siècle' },
+{ path: '/formation/esh/module2/transformations-entreprise/module', component: TransformationsEntrepriseModulePage, title: 'Module – Transformations de l\'entreprise' },
 { path: '/formation/esh/module2/concurrence-imparfaite', component: ConcurrenceImparfaitePage, title: 'Concurrence imparfaite et stratégies des firmes' },
+{ path: '/formation/esh/module2/concurrence-imparfaite/module', component: ConcurrenceImparfaiteModulePage, title: 'Module – Concurrence imparfaite' },
 { path: '/formation/esh/module2/sociologie-travail', component: SociologieTravailPage, title: 'Éléments de sociologie du travail et des organisations' },
   { path: '/formation/anglais/civilisation', component: CivilisationOverviewPage, title: 'English Civilization - Current Affairs' },
   { path: '/formation/anglais/civilisation/environment', component: EnvironmentPage, title: 'Environment and Ecology - English Civilization' },
@@ -1032,6 +1099,7 @@ export const routes: RouteConfig[] = [
   { path: '/generator/languages-unified', component: UnifiedLanguagesGeneratorPage, title: 'Générateur Langues Unifié' },
   { path: '/generator/orals-unified', component: UnifiedOralGeneratorPage, title: 'Générateur Oraux Unifié' },
   { path: '/generator/prepa-chatbot', component: PrepaChatbotGeneratorPage, title: 'Chatbot Prépa' },
+  { path: '/generator/culture-generale', component: CultureGeneraleGeneratorPage, title: 'Générateur Culture Générale' },
 
   { path: '/generator/theme-grammar', component: ThemeGrammarGeneratorPage, title: 'Grammaire Thématique' },
   

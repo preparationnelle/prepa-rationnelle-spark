@@ -202,46 +202,46 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                 onMouseLeave={handleMenuLeave}
               >
                 {/* Maths - visible, redirigé si non whitelist */}
-                <Link to={mathsHref} onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                  <span className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center"><Calculator className="h-4 w-4 text-yellow-600" /></span>
+                <Link to={mathsHref} onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Calculator className="h-4 w-4 text-orange-600" /></span>
                   <span>Maths</span>
                 </Link>
                 
                 {/* Python - visible, redirigé si non whitelist */}
-                <Link to={pythonHref} onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                  <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center"><Code className="h-4 w-4 text-blue-600" /></span>
+                <Link to={pythonHref} onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Code className="h-4 w-4 text-orange-600" /></span>
                   <span>Python</span>
                 </Link>
                 
                 {/* Formations publiques - toujours visibles */}
-                <Link to="/formation/anglais" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                  <span className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center"><Languages className="h-4 w-4 text-green-600" /></span>
+                <Link to="/formation/anglais" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Languages className="h-4 w-4 text-orange-600" /></span>
                   <span>Anglais</span>
                 </Link>
-                <Link to="/formation/espagnol" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                  <span className="w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center"><Languages className="h-4 w-4 text-pink-600" /></span>
+                <Link to="/formation/espagnol" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Languages className="h-4 w-4 text-orange-600" /></span>
                   <span>Espagnol</span>
                 </Link>
-                <Link to="/formation/allemand" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                  <span className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center"><Languages className="h-4 w-4 text-red-600" /></span>
+                <Link to="/formation/allemand" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Languages className="h-4 w-4 text-orange-600" /></span>
                   <span>Allemand</span>
                 </Link>
-                <Link to="/formation/geopolitique" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                  <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center"><Globe className="h-4 w-4 text-orange-600" /></span>
+                <Link to="/formation/geopolitique" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Globe className="h-4 w-4 text-orange-600" /></span>
                   <span>Géopolitique</span>
                 </Link>
-                <Link to="/formation/esh" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                  <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center"><GraduationCap className="h-4 w-4 text-blue-600" /></span>
+                <Link to="/formation/esh" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><GraduationCap className="h-4 w-4 text-orange-600" /></span>
                   <span>ESH</span>
                 </Link>
-                <Link to="/methodologie/entretiens-personnalite" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                  <span className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center"><Users className="h-4 w-4 text-orange-600" /></span>
+                <Link to="/methodologie/entretiens-personnalite" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Users className="h-4 w-4 text-orange-600" /></span>
                   <span>Entretiens de Personnalité</span>
                 </Link>
                 
                 <div className="border-t border-gray-200 my-2"></div>
-                <Link to="/formations" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-primary/10 rounded-md px-3 py-2 transition-colors">
-                  <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center"><BookOpen className="h-4 w-4 text-primary" /></span>
+                <Link to="/formations" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><BookOpen className="h-4 w-4 text-orange-600" /></span>
                   <span>Toutes nos formations</span>
                 </Link>
               </div>

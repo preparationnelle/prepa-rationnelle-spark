@@ -12,48 +12,48 @@ export const Footer = () => {
             {/* Formations */}
             <div>
               <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                <BookOpen className="h-5 w-5 text-blue-400" />
+                <BookOpen className="h-5 w-5 text-orange-400" />
                 Nos Formations
               </h3>
               <ul className="space-y-3">
                 <li>
-                  <Link to="/pourquoi-python-prepa-ecg" className="text-gray-300 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
+                  <Link to="/pourquoi-python-prepa-ecg" className="text-orange-400 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
                     <Code className="h-4 w-4" />
                     Python ECG
                   </Link>
                 </li>
                 <li>
-                  <Link to="/formation/anglais" className="text-gray-300 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
+                  <Link to="/formation/anglais" className="text-orange-400 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
                     <GraduationCap className="h-4 w-4" />
                     Anglais ECG
                   </Link>
                 </li>
                 <li>
-                  <Link to="/formation/espagnol" className="text-gray-300 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
+                  <Link to="/formation/espagnol" className="text-orange-400 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
                     <TrendingUp className="h-4 w-4" />
                     Espagnol ECG
                   </Link>
                 </li>
                 <li>
-                  <Link to="/formation/allemand" className="text-gray-300 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
+                  <Link to="/formation/allemand" className="text-orange-400 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
                     <Users className="h-4 w-4" />
                     Allemand ECG
                   </Link>
                 </li>
                 <li>
-                  <Link to="/formation/geopolitique" className="text-gray-300 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
+                  <Link to="/formation/geopolitique" className="text-orange-400 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
                     <TrendingUp className="h-4 w-4" />
                     Géopolitique
                   </Link>
                 </li>
                 <li>
-                  <Link to="/formation/esh" className="text-gray-300 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
-                    <GraduationCap className="h-4 w-4 text-blue-600" />
+                  <Link to="/formation/esh" className="text-orange-400 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
+                    <GraduationCap className="h-4 w-4" />
                     ESH ECG
                   </Link>
                 </li>
                 <li>
-                  <Link to="/formation/maths-choix" className="text-gray-300 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
+                  <Link to="/formation/maths-choix" className="text-orange-400 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
                     <Calculator className="h-4 w-4" />
                     Mathématiques
                   </Link>

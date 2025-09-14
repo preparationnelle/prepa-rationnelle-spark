@@ -302,7 +302,7 @@ export const SuperprofReviewsSection = () => {
               >
                 <Button 
                   size="lg" 
-                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-4 px-8 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-4 px-6 sm:px-8 text-base sm:text-lg leading-snug shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center break-words whitespace-normal sm:whitespace-nowrap"
                 >
                   Découvrir tous les avis sur Superprof
                   <ExternalLink className="ml-2 h-5 w-5" />
@@ -313,7 +313,7 @@ export const SuperprofReviewsSection = () => {
                 <Button 
                   variant="outline"
                   size="lg" 
-                  className="border-2 border-blue-500 text-blue-600 hover:bg-blue-50 font-semibold py-4 px-8 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  className="border-2 border-blue-500 text-blue-600 hover:bg-blue-50 font-semibold py-4 px-6 sm:px-8 text-base sm:text-lg leading-snug shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center break-words whitespace-normal sm:whitespace-nowrap"
                 >
                   Voir tous les avis
                   <Star className="ml-2 h-5 w-5" />

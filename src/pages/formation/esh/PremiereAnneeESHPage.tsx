@@ -89,12 +89,14 @@ const PremiereAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module1/acteurs-fonctions-economie">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                         </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
-                      </Button>
+                      <Link to="/formation/esh/module1/acteurs-fonctions-economie/module">
+                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
+                          Accéder au module
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -112,12 +114,14 @@ const PremiereAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module1/monnaie-financement-economie">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                         </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
-                      </Button>
+                      <Link to="/formation/esh/module1/monnaie-financement-economie/module">
+                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
+                          Accéder au module
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -135,12 +139,14 @@ const PremiereAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module1/courants-economiques">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                         </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
-                      </Button>
+                      <Link to="/formation/esh/module1/courants-economiques/module">
+                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
+                          Accéder au module
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -168,12 +174,14 @@ const PremiereAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module1/equilibre-micro">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
+                          Introduction
+                        </Button>
+                      </Link>
+                      <Link to="/formation/esh/module1/equilibre-micro/module">
+                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
                           Accéder au module
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
-                      </Button>
                     </div>
                   </div>
                 </div>
@@ -191,12 +199,14 @@ const PremiereAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module1/offre-demande">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
+                          Introduction
+                        </Button>
+                      </Link>
+                      <Link to="/formation/esh/module1/offre-demande/module">
+                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
                           Accéder au module
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
-                      </Button>
                     </div>
                   </div>
                 </div>
@@ -214,12 +224,14 @@ const PremiereAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module1/defaillances-marche">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
+                          Introduction
+                        </Button>
+                      </Link>
+                      <Link to="/formation/esh/module1/defaillances-marche/module">
+                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
                           Accéder au module
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
-                      </Button>
                     </div>
                   </div>
                 </div>
@@ -247,12 +259,14 @@ const PremiereAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module1/courants-sociologiques">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
+                          Introduction
+                        </Button>
+                      </Link>
+                      <Link to="/formation/esh/module1/courants-sociologiques">
+                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
                           Accéder au module
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
-                      </Button>
                     </div>
                   </div>
                 </div>
@@ -270,11 +284,11 @@ const PremiereAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module1/methodes-sociologiques">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                      Accéder au module
+                      Introduction
                     </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                      Exercices
+                      Accéder au module
                     </Button>
                     </div>
                   </div>
@@ -323,11 +337,11 @@ const PremiereAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module2/croissance-economique">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                         </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
+                        Accéder au module
                       </Button>
                     </div>
                   </div>
@@ -346,11 +360,11 @@ const PremiereAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module2/inegalites-developpement">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
+                        Accéder au module
                       </Button>
                     </div>
                   </div>
@@ -369,12 +383,14 @@ const PremiereAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module2/soutenabilite-croissance">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
+                          Introduction
+                        </Button>
+                      </Link>
+                      <Link to="/formation/esh/module2/soutenabilite-croissance/module">
+                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
                           Accéder au module
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
-                      </Button>
                     </div>
                   </div>
                 </div>
@@ -405,12 +421,14 @@ const PremiereAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module2/transformations-economiques-financieres">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
+                          Introduction
+                        </Button>
+                      </Link>
+                      <Link to="/formation/esh/module2/transformations-economiques-financieres/module">
+                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
                           Accéder au module
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
-                      </Button>
                     </div>
                   </div>
                 </div>
@@ -428,11 +446,11 @@ const PremiereAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module2/mobilite-sociale">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
+                        Accéder au module
                       </Button>
                     </div>
                   </div>
@@ -451,11 +469,11 @@ const PremiereAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module2/transformations-demographiques">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                          Accéder au module
+                          Introduction
                         </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
+                        Accéder au module
                       </Button>
                     </div>
                   </div>
@@ -487,12 +505,14 @@ const PremiereAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module2/transformations-entreprise">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
+                          Introduction
+                        </Button>
+                      </Link>
+                      <Link to="/formation/esh/module2/transformations-entreprise/module">
+                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
                           Accéder au module
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
-                      </Button>
                     </div>
                   </div>
                 </div>
@@ -510,12 +530,14 @@ const PremiereAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module2/concurrence-imparfaite">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
+                          Introduction
+                        </Button>
+                      </Link>
+                      <Link to="/formation/esh/module2/concurrence-imparfaite/module">
+                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
                           Accéder au module
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Exercices
-                      </Button>
                     </div>
                   </div>
                 </div>
@@ -533,11 +555,11 @@ const PremiereAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module2/sociologie-travail">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                      Accéder au module
+                      Introduction
                     </Button>
                       </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                      Exercices
+                      Accéder au module
                     </Button>
                     </div>
                   </div>

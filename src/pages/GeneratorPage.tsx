@@ -7,7 +7,8 @@ import {
   BookOpen,
   Globe,
   Heart,
-  Mic
+  Mic,
+  Library
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
@@ -63,6 +64,21 @@ const GeneratorPage: React.FC = () => {
         'Analyse stratégique'
       ],
       link: '/generator/geopolitics-unified'
+    },
+    {
+      id: 'culture-generale',
+      title: 'Générateur Culture Générale',
+      description: 'Thèmes, problématiques, plans et rédaction de paragraphes',
+      icon: <Library className="h-8 w-8" />,
+      iconBg: 'bg-amber-100',
+      iconColor: 'text-amber-600',
+      hoverBorder: 'hover:border-amber-200',
+      features: [
+        'Définition de thèmes',
+        'Problématiques rapides',
+        'Plans détaillés'
+      ],
+      link: '/generator/culture-generale'
     },
     {
       id: 'orals-unified',

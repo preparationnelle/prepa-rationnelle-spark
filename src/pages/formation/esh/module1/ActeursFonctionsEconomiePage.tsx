@@ -47,14 +47,14 @@ const ActeursFonctionsEconomiePage = () => {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center border border-blue-300">
-                <Users className="h-8 w-8 text-blue-700" />
+              <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center border border-gray-300">
+                <Users className="h-8 w-8 text-gray-700" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">
                   Les acteurs et les grandes fonctions de l'économie
                 </h1>
-                <div className="text-sm text-blue-700 font-medium mt-1">Chapitre 1.1 - Module 1</div>
+                <div className="text-sm text-gray-600 font-medium mt-1">Chapitre 1.1 - Module 1</div>
               </div>
             </div>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -65,10 +65,10 @@ const ActeursFonctionsEconomiePage = () => {
           {/* Contenu principal */}
           <div className="space-y-8">
             {/* Section 1: Les acteurs économiques */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">1</span>
+                <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                  <span className="text-gray-800 font-bold text-sm">1</span>
                 </div>
                 Les acteurs économiques
               </h2>
@@ -78,15 +78,15 @@ const ActeursFonctionsEconomiePage = () => {
                   <h3 className="font-semibold text-gray-800">Acteurs privés :</h3>
                   <ul className="space-y-2 text-sm text-gray-700">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-gray-500 mt-0.5 flex-shrink-0" />
                       <span>Les ménages (consommateurs, épargnants)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-gray-500 mt-0.5 flex-shrink-0" />
                       <span>Les entreprises (producteurs, investisseurs)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-gray-500 mt-0.5 flex-shrink-0" />
                       <span>Les banques (intermédiaires financiers)</span>
                     </li>
                   </ul>
@@ -96,15 +96,15 @@ const ActeursFonctionsEconomiePage = () => {
                   <h3 className="font-semibold text-gray-800">Acteurs publics :</h3>
                   <ul className="space-y-2 text-sm text-gray-700">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-gray-500 mt-0.5 flex-shrink-0" />
                       <span>L'État (collecte d'impôts, dépenses publiques)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-gray-500 mt-0.5 flex-shrink-0" />
                       <span>Les administrations publiques</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-gray-500 mt-0.5 flex-shrink-0" />
                       <span>Les institutions internationales</span>
                     </li>
                   </ul>
@@ -113,36 +113,36 @@ const ActeursFonctionsEconomiePage = () => {
             </div>
 
             {/* Section 2: Les grandes fonctions économiques */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">2</span>
+                <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                  <span className="text-gray-800 font-bold text-sm">2</span>
                 </div>
                 Les grandes fonctions économiques
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l border-gray-300 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Production</h3>
                   <p className="text-sm text-gray-600">Création de biens et services par les entreprises utilisant facteurs de production (travail, capital, matières premières)</p>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l border-gray-300 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Répartition</h3>
                   <p className="text-sm text-gray-600">Distribution des revenus entre les différents acteurs économiques (salaires, profits, intérêts, loyers)</p>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l border-gray-300 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Échange</h3>
                   <p className="text-sm text-gray-600">Circulation des biens et services sur les marchés via les mécanismes d'offre et de demande</p>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l border-gray-300 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Consommation</h3>
                   <p className="text-sm text-gray-600">Utilisation finale des biens et services par les ménages pour satisfaire leurs besoins</p>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l border-gray-300 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Épargne et investissement</h3>
                   <p className="text-sm text-gray-600">Report de la consommation pour financer les investissements futurs et la croissance économique</p>
                 </div>
@@ -150,15 +150,15 @@ const ActeursFonctionsEconomiePage = () => {
             </div>
 
             {/* Section 3: Interactions entre acteurs */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">3</span>
+                <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                  <span className="text-gray-800 font-bold text-sm">3</span>
                 </div>
                 Interactions entre acteurs économiques
               </h2>
 
-              <div className="bg-blue-50 rounded-lg p-4 mb-4">
+              <div className="bg-gray-50 rounded-lg p-4 mb-4">
                 <h3 className="font-semibold text-gray-800 mb-2">Circuit économique</h3>
                 <p className="text-sm text-gray-600">
                   Les acteurs économiques sont interconnectés : les ménages fournissent du travail aux entreprises et consomment leurs productions,
@@ -167,11 +167,11 @@ const ActeursFonctionsEconomiePage = () => {
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-blue-50 rounded-lg p-3">
+                <div className="bg-gray-50 rounded-lg p-3">
                   <h4 className="font-semibold text-gray-800 text-sm mb-1">Flux réels</h4>
                   <p className="text-xs text-gray-600">Biens, services, travail</p>
                 </div>
-                <div className="bg-blue-50 rounded-lg p-3">
+                <div className="bg-gray-50 rounded-lg p-3">
                   <h4 className="font-semibold text-gray-800 text-sm mb-1">Flux financiers</h4>
                   <p className="text-xs text-gray-600">Revenus, salaires, impôts</p>
                 </div>
