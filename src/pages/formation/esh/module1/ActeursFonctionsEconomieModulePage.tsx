@@ -111,7 +111,7 @@ const ActeursFonctionsEconomieModulePage = () => {
                     <p>Y → production → vente. 50 % des entreprises ne sont pas des sociétés mais des entreprises individuelles classées avec les ménages.</p>
                     <p>Part des SNF dans la production totale en 2019 : 71 %.</p>
                     <p>
-                      Pour l’INSEE : -10 salariés = microentreprises (96 %), -250 = PME, -5000 = ETI, +5000 et CA > 1500 millions = grandes entreprises (287).
+                      Pour l’INSEE : -10 salariés = microentreprises (96 %), -250 = PME, -5000 = ETI, +5000 et CA &gt; 1500 millions = grandes entreprises (287).
                     </p>
                     <h6 className="font-medium text-gray-900">3 - APU : production de services non marchands</h6>
                     <p>Poids des APU → dépenses publiques : 55,6 % du PIB en 2019.</p>

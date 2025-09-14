@@ -143,6 +143,7 @@ export default function CroissanceEconomiqueModulePage() {
                 <div>
                   <h3 className="font-semibold text-gray-900">C) Stagnation séculaire</h3>
                   <p>Hansen (1938) ; Gordon (2016) : potentiel US ≤ 1 % (ralentissement des gains des TIC). Mokyr : effets d’apprentissage et décalages ; questionne l’idée d’une croissance auto‑entretenue ; cycles d’endettement/boom ont artificiellement soutenu la croissance (Grande Modération).</p>
+                </div>
               </div>
             </div>
           </div>
@@ -151,5 +152,3 @@ export default function CroissanceEconomiqueModulePage() {
     </div>
   );
 }
-
-
