@@ -38,8 +38,8 @@ const ContinentAfricainPage = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
-              <MapPin className="w-8 h-8 text-green-600" />
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+              <MapPin className="w-8 h-8 text-blue-600" />
             </div>
             <h1 className="text-4xl font-bold text-gray-900">L'Afrique et la mondialisation</h1>
           </div>
@@ -47,13 +47,13 @@ const ContinentAfricainPage = () => {
             Entre dépendance et émancipation : enjeux géopolitiques et perspectives d'avenir
           </p>
           <div className="flex justify-center gap-2 mt-4">
-            <Badge variant="outline" className="text-blue-700 border-green-300">
+            <Badge variant="outline" className="text-blue-700 border-blue-200">
               États et territoires africains
             </Badge>
-            <Badge variant="outline" className="text-blue-700 border-green-300">
+            <Badge variant="outline" className="text-blue-700 border-blue-200">
               Cultures et sociétés
             </Badge>
-            <Badge variant="outline" className="text-blue-700 border-green-300">
+            <Badge variant="outline" className="text-blue-700 border-blue-200">
               Développement et enjeux
             </Badge>
           </div>
@@ -63,10 +63,10 @@ const ContinentAfricainPage = () => {
         <div className="max-w-6xl mx-auto space-y-8">
 
           {/* Introduction */}
-          <Card className="border-2 border-blue-200 bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg">
+          <Card className="border border-gray-200 bg-white shadow-none">
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-3">
-                <Lightbulb className="h-6 w-6 text-green-600" />
+                <Lightbulb className="h-6 w-6 text-blue-600" />
                 Introduction
               </CardTitle>
             </CardHeader>
@@ -77,32 +77,32 @@ const ContinentAfricainPage = () => {
                   <AccordionContent>
                     <div className="space-y-6">
                       
-                      <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-slate-400">
-                        <h4 className="font-semibold text-slate-800 mb-2">Accroche historique</h4>
+                      <div className="bg-white p-4 rounded-lg border border-gray-200">
+                        <h4 className="font-semibold text-gray-800 mb-2">Accroche historique</h4>
                         <p className="text-gray-700">
                           The Economist titrait en 2013 "The New Scramble for Africa", faisant écho au partage colonial du continent à la fin du XIXᵉ siècle. Cette nouvelle ruée vers l'Afrique traduit une reconfiguration des influences internationales, où les anciennes puissances coloniales doivent composer avec des acteurs émergents comme la Chine, la Russie ou la Turquie.
                         </p>
                       </div>
 
-                      <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
-                        <h4 className="font-semibold text-blue-800 mb-2">Accroche géopolitique</h4>
+                      <div className="bg-white p-4 rounded-lg border border-gray-200">
+                        <h4 className="font-semibold text-gray-800 mb-2">Accroche géopolitique</h4>
                         <p className="text-gray-700">
                           Lors du Forum Russie-Afrique de Sotchi en 2019, Vladimir Poutine déclarait : "La Russie et l'Afrique sont liées par des liens traditionnellement amicaux. Notre pays a constamment soutenu les mouvements de libération nationale des peuples d'Afrique". Cet exemple illustre le regain d'intérêt des puissances étrangères pour le continent, devenu un enjeu stratégique majeur dans un monde multipolaire.
                         </p>
                       </div>
 
-                      <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-slate-400">
-                        <h4 className="font-semibold text-slate-800 mb-2">Accroche économique</h4>
+                      <div className="bg-white p-4 rounded-lg border border-gray-200">
+                        <h4 className="font-semibold text-gray-800 mb-2">Accroche économique</h4>
                         <div className="flex items-start gap-3">
-                          <Quote className="h-5 w-5 text-slate-600 mt-1 flex-shrink-0" />
+                          <Quote className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
                           <p className="text-gray-700 italic">
                             "L'Afrique est un continent riche, mais peuplé de pauvres", constatait l'ancien Premier ministre togolais Kodjo. Cette contradiction résume bien le paradoxe africain : un continent aux ressources abondantes, mais où le développement économique reste limité par des dépendances structurelles et une faible intégration régionale.
                           </p>
                         </div>
                       </div>
 
-                      <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
-                        <h4 className="font-semibold text-blue-800 mb-2">Accroche démographique</h4>
+                      <div className="bg-white p-4 rounded-lg border border-gray-200">
+                        <h4 className="font-semibold text-gray-800 mb-2">Accroche démographique</h4>
                         <p className="text-gray-700">
                           Le Nigeria devrait devenir le troisième pays le plus peuplé du monde d'ici 2050, avec plus de 400 millions d'habitants. Cette explosion démographique constitue à la fois un défi et une opportunité pour l'Afrique : un dividende démographique à exploiter ou une bombe sociale en gestation ?
                         </p>
@@ -115,36 +115,36 @@ const ContinentAfricainPage = () => {
                   <AccordionTrigger className="text-lg font-semibold">2. Définition des termes</AccordionTrigger>
                   <AccordionContent>
                     <div className="space-y-4">
-                      <div className="bg-slate-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-slate-800 mb-2">Afrique</h4>
+                      <div className="bg-white p-4 rounded-lg border border-gray-200">
+                        <h4 className="font-semibold text-gray-800 mb-2">Afrique</h4>
                         <p className="text-gray-700">
                           Il s'agit ici principalement de l'Afrique subsaharienne, qui partage des défis communs en matière de développement, de gouvernance et d'intégration à la mondialisation. Toutefois, il est essentiel de ne pas homogénéiser le continent, qui se caractérise par une grande diversité économique, politique et culturelle.
                         </p>
                       </div>
 
-                      <div className="bg-blue-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-blue-800 mb-2">Dépendance</h4>
+                      <div className="bg-white p-4 rounded-lg border border-gray-200">
+                        <h4 className="font-semibold text-gray-800 mb-2">Dépendance</h4>
                         <p className="text-gray-700">
                           Situation où un acteur (pays ou région) est fortement influencé par des forces extérieures, que ce soit sur le plan économique (matières premières, commerce), politique (ingérences, relations internationales) ou sécuritaire (interventions militaires étrangères).
                         </p>
                       </div>
 
-                      <div className="bg-slate-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-slate-800 mb-2">Mondialisation</h4>
+                      <div className="bg-white p-4 rounded-lg border border-gray-200">
+                        <h4 className="font-semibold text-gray-800 mb-2">Mondialisation</h4>
                         <p className="text-gray-700">
                           Processus d'interconnexion croissante entre les économies, les cultures et les institutions politiques à l'échelle mondiale. L'Afrique y est intégrée de manière asymétrique, souvent en tant que fournisseur de ressources brutes et marché de consommation, mais sans poids réel dans la gouvernance économique globale.
                         </p>
                       </div>
 
-                      <div className="bg-blue-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-blue-800 mb-2">Ingérence</h4>
+                      <div className="bg-white p-4 rounded-lg border border-gray-200">
+                        <h4 className="font-semibold text-gray-800 mb-2">Ingérence</h4>
                         <p className="text-gray-700">
                           Intervention d'une puissance étrangère dans les affaires internes d'un État, souvent perçue comme une atteinte à la souveraineté nationale. Elle peut être économique (imposition de politiques libérales via le FMI), militaire (interventions directes ou soutien à des régimes) ou diplomatique (influence sur les décisions politiques des États africains).
                         </p>
                       </div>
 
-                      <div className="bg-slate-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-slate-800 mb-2">Leapfrog</h4>
+                      <div className="bg-white p-4 rounded-lg border border-gray-200">
+                        <h4 className="font-semibold text-gray-800 mb-2">Leapfrog</h4>
                         <p className="text-gray-700">
                           Concept de "saut de grenouille", où un pays contourne certaines étapes du développement classique pour adopter directement des technologies avancées. L'Afrique illustre ce phénomène dans les télécommunications (adoption massive du mobile sans passage par le téléphone fixe) ou les énergies renouvelables.
                         </p>
@@ -162,25 +162,25 @@ const ContinentAfricainPage = () => {
                           <h5 className="font-semibold text-gray-800">Bertrand Badie, L'État importé (1992)</h5>
                           <p className="text-sm text-gray-600">Montre comment les structures politiques africaines ont été calquées sur des modèles occidentaux, souvent inadaptés aux réalités locales.</p>
                         </div>
-                        <div className="bg-white p-3 rounded border-l-4 border-green-400">
+                        <div className="bg-white p-3 rounded border-l-4 border-blue-400">
                           <h5 className="font-semibold text-gray-800">Sylvie Brunel, L'Afrique est-elle si bien partie ? (2014)</h5>
                           <p className="text-sm text-gray-600">Analyse des inégalités de développement sur le continent, illustrées par la métaphore de la "peau de léopard".</p>
                         </div>
-                        <div className="bg-white p-3 rounded border-l-4 border-purple-400">
+                        <div className="bg-white p-3 rounded border-l-4 border-blue-400/70">
                           <h5 className="font-semibold text-gray-800">Pierre Jacquemot, L'Afrique des possibles (2014)</h5>
                           <p className="text-sm text-gray-600">Réflexion sur les trajectoires possibles pour le continent, entre émergence et marginalisation.</p>
                         </div>
                       </div>
                       <div className="space-y-3">
-                        <div className="bg-white p-3 rounded border-l-4 border-slate-400">
+                        <div className="bg-white p-3 rounded border-l-4 border-blue-300">
                           <h5 className="font-semibold text-gray-800">Philippe Hugon, La Géopolitique de l'Afrique (2006)</h5>
                           <p className="text-sm text-gray-600">Propose trois scénarios d'évolution du continent (largage, rattrapage, éclatement en archipels).</p>
                         </div>
-                        <div className="bg-white p-3 rounded border-l-4 border-red-400">
+                        <div className="bg-white p-3 rounded border-l-4 border-blue-300/80">
                           <h5 className="font-semibold text-gray-800">Pierre-Noël Giraud, La mondialisation, émergences et fragmentations (2012)</h5>
                           <p className="text-sm text-gray-600">Prédit que l'Afrique pourrait devenir une terre de délocalisation grâce à sa transition démographique.</p>
                         </div>
-                        <div className="bg-white p-3 rounded border-l-4 border-teal-400">
+                        <div className="bg-white p-3 rounded border-l-4 border-blue-400/60">
                           <h5 className="font-semibold text-gray-800">Antoine Glaser, AfricaFrance (2014)</h5>
                           <p className="text-sm text-gray-600">Analyse comment les élites africaines ont progressivement inversé le rapport de dépendance avec la France.</p>
                         </div>
@@ -193,27 +193,27 @@ const ContinentAfricainPage = () => {
                   <AccordionTrigger className="text-lg font-semibold">4. Citations clés</AccordionTrigger>
                   <AccordionContent>
                     <div className="space-y-3">
-                      <div className="bg-gray-50 p-4 rounded-lg italic border-l-4 border-gray-400">
+                      <div className="bg-white p-4 rounded-lg italic border-l-4 border-blue-200">
                         <Quote className="h-4 w-4 text-gray-500 mb-2" />
                         <p>"L'Afrique est un continent riche, mais peuplé de pauvres" – Edem Kodjo.</p>
                       </div>
-                      <div className="bg-gray-50 p-4 rounded-lg italic border-l-4 border-gray-400">
+                      <div className="bg-white p-4 rounded-lg italic border-l-4 border-blue-200">
                         <Quote className="h-4 w-4 text-gray-500 mb-2" />
                         <p>"L'État en Afrique est une greffe qui n'a pas pris" – Bertrand Badie, L'État importé (1992).</p>
                       </div>
-                      <div className="bg-gray-50 p-4 rounded-lg italic border-l-4 border-gray-400">
+                      <div className="bg-white p-4 rounded-lg italic border-l-4 border-blue-200">
                         <Quote className="h-4 w-4 text-gray-500 mb-2" />
                         <p>"Les lumières de la nuit ne scintillent pas pour tout le monde en Afrique" – Émilie Aubry, Le Dessous des Cartes.</p>
                       </div>
-                      <div className="bg-gray-50 p-4 rounded-lg italic border-l-4 border-gray-400">
+                      <div className="bg-white p-4 rounded-lg italic border-l-4 border-blue-200">
                         <Quote className="h-4 w-4 text-gray-500 mb-2" />
                         <p>"Ce qui est bon pour la France est bon pour l'Afrique" – Jacques Foccart, architecte de la "Françafrique".</p>
                       </div>
-                      <div className="bg-gray-50 p-4 rounded-lg italic border-l-4 border-gray-400">
+                      <div className="bg-white p-4 rounded-lg italic border-l-4 border-blue-200">
                         <Quote className="h-4 w-4 text-gray-500 mb-2" />
                         <p>"L'Afrique est en train de devenir un laboratoire du futur" – Pierre Jacquemot.</p>
                       </div>
-                      <div className="bg-gray-50 p-4 rounded-lg italic border-l-4 border-gray-400">
+                      <div className="bg-white p-4 rounded-lg italic border-l-4 border-blue-200">
                         <Quote className="h-4 w-4 text-gray-500 mb-2" />
                         <p>"L'Afrique n'a jamais été un angle mort géopolitique" – Philippe Hugon.</p>
                       </div>
@@ -226,60 +226,60 @@ const ContinentAfricainPage = () => {
                   <AccordionContent>
                     <div className="space-y-6">
                       
-                      <div className="bg-slate-50 p-5 rounded-lg border-l-4 border-yellow-400">
+                      <div className="bg-white p-5 rounded-lg border-l-4 border-blue-300">
                         <div className="flex items-start gap-3 mb-3">
-                          <AlertTriangle className="h-5 w-5 text-yellow-600 mt-1 flex-shrink-0" />
-                          <h4 className="font-semibold text-yellow-800">1. Richesse naturelle vs pauvreté humaine</h4>
+                          <AlertTriangle className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
+                          <h4 className="font-semibold text-blue-900">1. Richesse naturelle vs pauvreté humaine</h4>
                         </div>
                         <p className="text-gray-700 mb-2"><strong>Constat :</strong> L'Afrique possède 40 % des réserves mondiales de métaux rares, 60 % des terres arables non exploitées, et de vastes ressources énergétiques (pétrole, gaz, uranium). Pourtant, elle reste le continent le plus pauvre et le moins industrialisé.</p>
                         <p className="text-gray-700 mb-2"><strong>Paradoxe :</strong> Ces richesses, au lieu d'être un moteur de développement, deviennent une source de dépendance et de conflits (économie de rente, corruption, exploitation étrangère).</p>
                         <p className="text-gray-700"><strong>Problématique :</strong> Comment transformer ces atouts en véritable levier de croissance et non en facteur de stagnation ?</p>
                       </div>
 
-                      <div className="bg-slate-50 p-5 rounded-lg border-l-4 border-red-400">
+                      <div className="bg-white p-5 rounded-lg border-l-4 border-blue-300">
                         <div className="flex items-start gap-3 mb-3">
-                          <AlertTriangle className="h-5 w-5 text-red-600 mt-1 flex-shrink-0" />
-                          <h4 className="font-semibold text-red-800">2. Croissance démographique vs sous-développement économique</h4>
+                          <AlertTriangle className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
+                          <h4 className="font-semibold text-blue-900">2. Croissance démographique vs sous-développement économique</h4>
                         </div>
                         <p className="text-gray-700 mb-2"><strong>Constat :</strong> L'Afrique connaît une explosion démographique (âge médian de 23 ans, taux de fécondité record au Niger : 7,4 enfants par femme), et devrait représenter 40 % de la population mondiale d'ici 2100. Pourtant, le marché du travail ne suit pas et les infrastructures sont insuffisantes pour absorber cette jeunesse.</p>
                         <p className="text-gray-700 mb-2"><strong>Paradoxe :</strong> Une main-d'œuvre abondante, mais sans qualification ni débouchés → chômage massif, migrations, instabilité sociale.</p>
                         <p className="text-gray-700"><strong>Problématique :</strong> La démographie africaine sera-t-elle un atout pour le développement ou une bombe sociale ?</p>
                       </div>
 
-                      <div className="bg-blue-50 p-5 rounded-lg border-l-4 border-blue-400">
+                      <div className="bg-white p-5 rounded-lg border-l-4 border-blue-300">
                         <div className="flex items-start gap-3 mb-3">
                           <AlertTriangle className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
-                          <h4 className="font-semibold text-blue-800">3. Mégapoles globalisées vs enclavement rural</h4>
+                          <h4 className="font-semibold text-blue-900">3. Mégapoles globalisées vs enclavement rural</h4>
                         </div>
                         <p className="text-gray-700 mb-2"><strong>Constat :</strong> Des villes comme Johannesburg, Lagos, Nairobi, Le Caire sont pleinement intégrées à la mondialisation, accueillant des sièges de multinationales et des hubs financiers. Mais 63 % des Subsahariens vivent encore en milieu rural, sans accès aux services essentiels (eau, électricité, éducation).</p>
                         <p className="text-gray-700 mb-2"><strong>Paradoxe :</strong> Une urbanisation rapide, mais sans développement structuré → bidonvilles, précarité, congestion urbaine (ex. Kibera à Nairobi, plus grand bidonville d'Afrique de l'Est).</p>
                         <p className="text-gray-700"><strong>Problématique :</strong> L'urbanisation africaine peut-elle être un facteur de croissance ou aggravera-t-elle les inégalités internes ?</p>
                       </div>
 
-                      <div className="bg-blue-50 p-5 rounded-lg border-l-4 border-purple-400">
+                      <div className="bg-white p-5 rounded-lg border-l-4 border-blue-300">
                         <div className="flex items-start gap-3 mb-3">
-                          <AlertTriangle className="h-5 w-5 text-purple-600 mt-1 flex-shrink-0" />
-                          <h4 className="font-semibold text-purple-800">4. Dépendance extérieure vs volonté d'autonomie</h4>
+                          <AlertTriangle className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
+                          <h4 className="font-semibold text-blue-900">4. Dépendance extérieure vs volonté d'autonomie</h4>
                         </div>
                         <p className="text-gray-700 mb-2"><strong>Constat :</strong> L'Afrique revendique une émancipation des puissances occidentales, dénonçant le néocolonialisme et cherchant à diversifier ses partenaires (Chine, Russie, Turquie). Mais elle reste dépendante des aides internationales, des investissements étrangers et des cours des matières premières.</p>
                         <p className="text-gray-700 mb-2"><strong>Paradoxe :</strong> Un discours d'indépendance politique et économique, mais des choix stratégiques qui renforcent la dépendance (endettement massif envers la Chine, contrats léonins sur les ressources naturelles).</p>
                         <p className="text-gray-700"><strong>Problématique :</strong> L'Afrique peut-elle réellement s'émanciper des influences extérieures ou est-elle condamnée à une dépendance renouvelée sous d'autres formes ?</p>
                       </div>
 
-                      <div className="bg-slate-50 p-5 rounded-lg border-l-4 border-green-400">
+                      <div className="bg-white p-5 rounded-lg border-l-4 border-blue-300">
                         <div className="flex items-start gap-3 mb-3">
-                          <AlertTriangle className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
-                          <h4 className="font-semibold text-green-800">5. Leapfrog technologique vs fracture numérique</h4>
+                          <AlertTriangle className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
+                          <h4 className="font-semibold text-blue-900">5. Leapfrog technologique vs fracture numérique</h4>
                         </div>
                         <p className="text-gray-700 mb-2"><strong>Constat :</strong> L'Afrique a sauté certaines étapes du développement classique (ex. adoption massive du mobile sans téléphone fixe, services bancaires via M-Pesa au Kenya). Mais elle reste le continent le moins électrifié, avec une fracture numérique profonde entre les zones urbaines et rurales.</p>
                         <p className="text-gray-700 mb-2"><strong>Paradoxe :</strong> Un progrès technologique rapide, mais incapable de compenser les inégalités structurelles → innovation sans infrastructure.</p>
                         <p className="text-gray-700"><strong>Problématique :</strong> Le leapfrog peut-il être une solution viable pour le développement de l'Afrique ou restera-t-il un phénomène limité aux élites et aux grandes villes ?</p>
                       </div>
 
-                      <div className="bg-slate-50 p-5 rounded-lg border-l-4 border-slate-400">
+                      <div className="bg-white p-5 rounded-lg border-l-4 border-blue-300">
                         <div className="flex items-start gap-3 mb-3">
-                          <AlertTriangle className="h-5 w-5 text-orange-600 mt-1 flex-shrink-0" />
-                          <h4 className="font-semibold text-orange-800">6. L'intervention étrangère : stabilisation ou chaos ?</h4>
+                          <AlertTriangle className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
+                          <h4 className="font-semibold text-blue-900">6. L'intervention étrangère : stabilisation ou chaos ?</h4>
                         </div>
                         <p className="text-gray-700 mb-2"><strong>Constat :</strong> Les interventions étrangères sont souvent perçues comme facteurs de déstabilisation, comme en Libye (2011) où la chute de Kadhafi a plongé le pays et le Sahel dans l'instabilité. À l'inverse, l'absence d'intervention en Centrafrique a laissé place à une guerre civile incontrôlée.</p>
                         <p className="text-gray-700 mb-2"><strong>Paradoxe :</strong> Intervenir ou ne pas intervenir, dans les deux cas, la région plonge dans le chaos.</p>
@@ -293,8 +293,8 @@ const ContinentAfricainPage = () => {
                   <AccordionTrigger className="text-lg font-semibold">6. Problématiques et enjeux principaux</AccordionTrigger>
                   <AccordionContent>
                     <div className="space-y-6">
-                      <div className="bg-blue-50 p-5 rounded-lg">
-                        <h4 className="font-semibold text-blue-800 mb-3">Problématiques</h4>
+                      <div className="bg-white p-5 rounded-lg border border-gray-200">
+                        <h4 className="font-semibold text-blue-900 mb-3">Problématiques</h4>
                         <ul className="space-y-2 text-gray-700">
                           <li className="flex items-start gap-2">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
@@ -311,11 +311,11 @@ const ContinentAfricainPage = () => {
                         </ul>
                       </div>
 
-                      <div className="bg-slate-50 p-5 rounded-lg">
-                        <h4 className="font-semibold text-green-800 mb-3">Enjeux</h4>
+                      <div className="bg-white p-5 rounded-lg border border-gray-200">
+                        <h4 className="font-semibold text-blue-900 mb-3">Enjeux</h4>
                         <div className="grid md:grid-cols-2 gap-4">
                           <div className="space-y-3">
-                            <div className="bg-white p-3 rounded border-l-4 border-red-400">
+                            <div className="bg-white p-3 rounded border-l-4 border-blue-300/80">
                               <h5 className="font-semibold text-gray-800">Géopolitique</h5>
                               <p className="text-sm text-gray-600">Reconfiguration des alliances, influence croissante des puissances émergentes (Chine, Russie, Turquie).</p>
                             </div>
@@ -325,11 +325,11 @@ const ContinentAfricainPage = () => {
                             </div>
                           </div>
                           <div className="space-y-3">
-                            <div className="bg-white p-3 rounded border-l-4 border-purple-400">
+                            <div className="bg-white p-3 rounded border-l-4 border-blue-300/80">
                               <h5 className="font-semibold text-gray-800">Démographique et social</h5>
                               <p className="text-sm text-gray-600">Explosion démographique à maîtriser, nécessité de créer des millions d'emplois par an.</p>
                             </div>
-                            <div className="bg-white p-3 rounded border-l-4 border-green-400">
+                            <div className="bg-white p-3 rounded border-l-4 border-blue-300/80">
                               <h5 className="font-semibold text-gray-800">Environnemental</h5>
                               <p className="text-sm text-gray-600">L'Afrique sera l'un des continents les plus touchés par le réchauffement climatique.</p>
                             </div>
@@ -355,10 +355,10 @@ const ContinentAfricainPage = () => {
           </Card>
 
           {/* Partie I */}
-          <Card className="border-2 border-orange-200 bg-gradient-to-br from-orange-50 to-red-50 shadow-lg">
+          <Card className="border border-gray-200 bg-white shadow-none">
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-3">
-                <Globe className="h-6 w-6 text-orange-600" />
+                <Globe className="h-6 w-6 text-blue-600" />
                 I. L'Afrique, un espace marqué par des ingérences historiques et contemporaines
               </CardTitle>
             </CardHeader>
@@ -561,8 +561,8 @@ const ContinentAfricainPage = () => {
                       </div>
 
                       {/* Conclusion */}
-                      <div className="bg-gradient-to-r from-purple-50 to-orange-50 p-4 rounded-lg border-l-4 border-purple-500">
-                        <h4 className="font-semibold text-purple-800 mb-2">Bilan</h4>
+                      <div className="bg-white p-4 rounded-lg border-l-4 border-blue-300">
+                        <h4 className="font-semibold text-blue-900 mb-2">Bilan</h4>
                         <p className="text-gray-700 text-sm">
                           Confrontation anciens acteurs occidentaux vs nouvelles puissances. Recul France-USA face à Chine-Russie. 
                           Défi africain : sortir des logiques de dépendance et renforcer l'autonomie stratégique.
@@ -581,8 +581,8 @@ const ContinentAfricainPage = () => {
                     <div className="space-y-6">
                       
                       {/* Introduction */}
-                      <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-green-400">
-                        <h4 className="font-semibold text-green-800 mb-2">Au-delà des ingérences : coopération et opportunités pour l'Afrique</h4>
+                      <div className="bg-white p-4 rounded-lg border-l-4 border-blue-300">
+                        <h4 className="font-semibold text-blue-900 mb-2">Au-delà des ingérences : coopération et opportunités pour l'Afrique</h4>
                         <p className="text-gray-700 text-sm">
                           L'Afrique n'est pas qu'une victime passive des ingérences : elle bénéficie aussi de coopérations essentielles et apprend à tirer parti des rivalités entre puissances.
                         </p>
@@ -673,8 +673,8 @@ const ContinentAfricainPage = () => {
                       </div>
 
                       {/* Transition vers partie II */}
-                      <div className="bg-gradient-to-r from-green-50 to-blue-50 p-5 rounded-lg border-l-4 border-green-500">
-                        <h4 className="font-semibold text-green-800 mb-3">Transition vers la deuxième partie</h4>
+                      <div className="bg-white p-5 rounded-lg border-l-4 border-blue-300">
+                        <h4 className="font-semibold text-blue-900 mb-3">Transition vers la deuxième partie</h4>
                         <div className="space-y-2 text-sm text-gray-700">
                           <p><strong>• Bilan du I :</strong> L'Afrique au centre des relations internationales, à la fois cible d'ingérences et bénéficiaire de coopération essentielle</p>
                           <p><strong>• Évolution récente :</strong> Les dirigeants africains ont désormais plus d'options et savent tirer parti des rivalités entre puissances pour maximiser leurs intérêts</p>
@@ -690,10 +690,10 @@ const ContinentAfricainPage = () => {
           </Card>
 
           {/* Partie II */}
-          <Card className="border-2 border-slate-200 bg-gradient-to-br from-red-50 to-pink-50 shadow-lg">
+          <Card className="border border-gray-200 bg-white shadow-none">
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-3">
-                <AlertTriangle className="h-6 w-6 text-red-600" />
+                <AlertTriangle className="h-6 w-6 text-blue-600" />
                 II. L'Afrique face à ses propres défis : une vulnérabilité structurelle
               </CardTitle>
             </CardHeader>
@@ -707,8 +707,8 @@ const ContinentAfricainPage = () => {
                     <div className="space-y-6">
                       
                       {/* Introduction */}
-                      <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-red-400">
-                        <h4 className="font-semibold text-red-800 mb-2">L'Afrique, un continent sous multiples dépendances</h4>
+                      <div className="bg-white p-4 rounded-lg border-l-4 border-blue-300">
+                        <h4 className="font-semibold text-blue-900 mb-2">L'Afrique, un continent sous multiples dépendances</h4>
                         <p className="text-gray-700 text-sm">
                           Malgré ses richesses, l'Afrique reste structurellement dépendante des fluctuations économiques mondiales et des tensions géopolitiques, héritant d'un modèle extractif colonial.
                         </p>
@@ -1155,7 +1155,7 @@ const ContinentAfricainPage = () => {
           </Card>
 
           {/* Partie III */}
-          <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50 shadow-lg">
+          <Card className="border border-gray-200 bg-white shadow-none">
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-3">
                 <BookOpen className="h-6 w-6 text-blue-600" />
@@ -1172,8 +1172,8 @@ const ContinentAfricainPage = () => {
                     <div className="space-y-6">
                       
                       {/* Introduction */}
-                      <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-green-400">
-                        <h4 className="font-semibold text-green-800 mb-2">Une Afrique plurielle : diversité, inégalités et intégration différenciée</h4>
+                      <div className="bg-white p-4 rounded-lg border-l-4 border-blue-300">
+                        <h4 className="font-semibold text-blue-900 mb-2">Une Afrique plurielle : diversité, inégalités et intégration différenciée</h4>
                         <p className="text-gray-700 text-sm">
                           Refuser une vision homogène de l'Afrique : le continent se caractérise par une diversité géographique, culturelle et socio-économique remarquable, avec une intégration inégale à la mondialisation.
                         </p>
@@ -1187,24 +1187,24 @@ const ContinentAfricainPage = () => {
                         </h4>
                         
                         <div className="space-y-4 text-sm text-gray-700">
-                          <div className="bg-blue-50 p-3 rounded border-l-4 border-blue-400">
+                          <div className="bg-white p-3 rounded border border-blue-200">
                             <strong>Sylvie Brunel, "L'Afrique est-elle si bien partie ?" (2014) :</strong>
                             <p className="mt-1">Métaphore de la "peau de léopard" → développement en taches, inégalement réparti</p>
                             <p className="mt-1">Inégalités territoriales : grandes villes globalisées vs espaces ruraux marginalisés</p>
                           </div>
 
-                          <div className="bg-blue-50 p-3 rounded">
+                          <div className="bg-white p-3 rounded border border-gray-200">
                             <strong>Pôles urbains dynamiques, interfaces avec le monde :</strong>
                             <ul className="mt-1 space-y-1">
                               <li>• Concentration infrastructures, services, réseaux numériques/financiers</li>
                               <li>• 63% Subsahariens ruraux, mais &gt;50% citadins vivent en bidonvilles</li>
                             </ul>
-                            <div className="bg-blue-50 p-2 rounded mt-2">
+                            <div className="bg-blue-50 p-2 rounded mt-2 border border-blue-200">
                               <strong>Exemple :</strong> Johannesburg → 1ère bourse financière Afrique, ville connectée flux mondiaux
                             </div>
                           </div>
 
-                          <div className="border-l-4 border-slate-400 bg-slate-50 p-3">
+                          <div className="border border-blue-200 bg-white p-3">
                             <h6 className="font-semibold text-slate-800 mb-2">Étude de cas : Nairobi et Kibera</h6>
                             <div className="grid md:grid-cols-2 gap-3">
                               <div className="bg-white p-2 rounded border border-blue-200">
@@ -1219,7 +1219,7 @@ const ContinentAfricainPage = () => {
                             <p className="text-xs mt-2 text-gray-600">Plus grand bidonville Afrique Est → pauvreté extrême, absence services de base</p>
                           </div>
 
-                          <div className="bg-gray-50 p-3 rounded">
+                          <div className="bg-white p-3 rounded border border-gray-200">
                             <strong>Autres études de cas urbaines :</strong>
                             <div className="grid md:grid-cols-3 gap-2 mt-2">
                               <div className="bg-white p-2 rounded text-center border border-gray-200">
@@ -1562,10 +1562,10 @@ const ContinentAfricainPage = () => {
           </Card>
 
           {/* Études de cas */}
-          <Card className="border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-indigo-50 shadow-lg">
+          <Card className="border border-gray-200 bg-white shadow-none">
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-3">
-                <Globe className="h-6 w-6 text-purple-600" />
+                <Globe className="h-6 w-6 text-blue-600" />
                 Études de cas
               </CardTitle>
             </CardHeader>
@@ -1574,20 +1574,20 @@ const ContinentAfricainPage = () => {
                 
                 {/* Étude de cas 1 : La démocratie en Afrique */}
                 <AccordionItem value="democratie-afrique">
-                  <AccordionTrigger className="text-lg font-semibold text-purple-800">
+                  <AccordionTrigger className="text-lg font-semibold text-blue-900">
                     La démocratie en Afrique : progrès et défis
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className="space-y-6">
                       
                       {/* 1. Instabilité politique vs alternances démocratiques */}
-                      <div className="bg-white p-6 rounded-lg border border-purple-200">
-                        <h4 className="text-lg font-semibold text-purple-800 mb-4 flex items-center gap-2">
+                      <div className="bg-white p-6 rounded-lg border border-blue-200">
+                        <h4 className="text-lg font-semibold text-blue-900 mb-4 flex items-center gap-2">
                           <AlertTriangle className="h-5 w-5" />
                           1. Instabilité politique vs alternances démocratiques
                         </h4>
                         <div className="space-y-4">
-                          <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-400">
+                          <div className="bg-white p-4 rounded-lg border-l-4 border-blue-300">
                             <p className="text-gray-800 font-semibold">Données alarmantes (1960-2005) :</p>
                             <ul className="mt-2 text-gray-700 space-y-1">
                               <li><strong>107 chefs d'État africains</strong> renversés par des coups d'État</li>
@@ -1595,7 +1595,7 @@ const ContinentAfricainPage = () => {
                             </ul>
                           </div>
                           
-                          <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-400">
+                          <div className="bg-white p-4 rounded-lg border-l-4 border-blue-300">
                             <p className="text-gray-800 font-semibold">Évolution récente (depuis 2000) :</p>
                             <p className="mt-2 text-gray-700">
                               Une dynamique démocratique s'amorce dans certaines régions, mais reste fragile et inégale selon les pays.
@@ -1605,13 +1605,13 @@ const ContinentAfricainPage = () => {
                       </div>
 
                       {/* 2. L'indice Mo Ibrahim */}
-                      <div className="bg-white p-6 rounded-lg border border-purple-200">
-                        <h4 className="text-lg font-semibold text-purple-800 mb-4 flex items-center gap-2">
+                      <div className="bg-white p-6 rounded-lg border border-blue-200">
+                        <h4 className="text-lg font-semibold text-blue-900 mb-4 flex items-center gap-2">
                           <BookOpen className="h-5 w-5" />
                           2. L'indice Mo Ibrahim : un baromètre de la gouvernance en Afrique
                         </h4>
                         <div className="space-y-4">
-                          <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                          <div className="bg-white p-4 rounded-lg border border-blue-200">
                             <p className="text-gray-800 font-semibold mb-2">Créé en 2007, évalue 4 composantes :</p>
                             <ul className="text-gray-700 space-y-1">
                               <li>• Sécurité et État de droit</li>
@@ -1622,7 +1622,7 @@ const ContinentAfricainPage = () => {
                           </div>
                           
                           <div className="grid md:grid-cols-2 gap-4">
-                            <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                            <div className="bg-white p-4 rounded-lg border border-blue-200">
                               <p className="text-green-800 font-semibold mb-2">5 pays les plus démocratiques :</p>
                               <ol className="text-gray-700 space-y-1">
                                 <li>1. Île Maurice</li>
@@ -1633,7 +1633,7 @@ const ContinentAfricainPage = () => {
                               </ol>
                             </div>
                             
-                            <div className="bg-red-50 p-4 rounded-lg border border-red-200">
+                            <div className="bg-white p-4 rounded-lg border border-blue-200">
                               <p className="text-red-800 font-semibold mb-2">5 pays les moins démocratiques :</p>
                               <ol className="text-gray-700 space-y-1">
                                 <li>1. Somalie</li>
@@ -1648,20 +1648,20 @@ const ContinentAfricainPage = () => {
                       </div>
 
                       {/* 3. Ingérences extérieures : Burundi */}
-                      <div className="bg-white p-6 rounded-lg border border-purple-200">
-                        <h4 className="text-lg font-semibold text-purple-800 mb-4 flex items-center gap-2">
+                      <div className="bg-white p-6 rounded-lg border border-blue-200">
+                        <h4 className="text-lg font-semibold text-blue-900 mb-4 flex items-center gap-2">
                           <Globe className="h-5 w-5" />
                           3. Démocratie et ingérences extérieures : le consensus de Washington vs le modèle chinois
                         </h4>
                         <div className="space-y-4">
-                          <div className="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400">
+                          <div className="bg-white p-4 rounded-lg border-l-4 border-blue-300">
                             <p className="text-gray-800 font-semibold">Cas du Burundi (2015-présent)</p>
                             <p className="mt-2 text-gray-700">
                               Opposition entre vision occidentale et modèle autoritaire.
                             </p>
                           </div>
                           
-                          <div className="bg-slate-50 p-4 rounded-lg">
+                          <div className="bg-white p-4 rounded-lg border border-gray-200">
                             <p className="text-gray-800 font-semibold mb-2">Chronologie de la crise :</p>
                             <ul className="text-gray-700 space-y-2">
                               <li><strong>Pierre Nkurunziza</strong> : élu en 2005, 2010 et 2015</li>
@@ -1676,7 +1676,7 @@ const ContinentAfricainPage = () => {
                             </ul>
                           </div>
                           
-                          <div className="bg-red-50 p-4 rounded-lg border border-red-200">
+                          <div className="bg-white p-4 rounded-lg border border-blue-200">
                             <p className="text-red-800 font-semibold">Conséquences dramatiques :</p>
                             <ul className="mt-2 text-gray-700 space-y-1">
                               <li>• <strong>500 000 Burundais</strong> fuient le pays depuis 2015</li>
@@ -1688,8 +1688,8 @@ const ContinentAfricainPage = () => {
                       </div>
 
                       {/* 4. Cas du Libéria */}
-                      <div className="bg-white p-6 rounded-lg border border-purple-200">
-                        <h4 className="text-lg font-semibold text-purple-800 mb-4 flex items-center gap-2">
+                      <div className="bg-white p-6 rounded-lg border border-blue-200">
+                        <h4 className="text-lg font-semibold text-blue-900 mb-4 flex items-center gap-2">
                           <Lightbulb className="h-5 w-5" />
                           4. Cas du Libéria : un exemple de résilience démocratique
                         </h4>

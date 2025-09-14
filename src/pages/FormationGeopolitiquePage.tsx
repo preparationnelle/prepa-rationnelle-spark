@@ -319,7 +319,7 @@ const FormationGeopolitiquePage = () => {
 
           {/* Générateur IA */}
           <Link
-            to="/generator/geopolitics-unified"
+            to="/formation/geopolitique/generateur"
             className="bg-white rounded-xl p-8 shadow-md hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 group flex flex-col items-center text-center min-h-[420px] justify-between border border-transparent hover:border-orange-300 hover:bg-orange-50 transform"
           >
             <div className="flex flex-col items-center">

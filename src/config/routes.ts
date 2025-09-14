@@ -804,6 +804,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/geopolitique/etudes-de-cas/criminalite', component: CriminalitePage, title: 'Criminalité organisée mondiale' },
   { path: '/formation/geopolitique/chronologies', component: ChronologiesPage, title: 'Chronologies géopolitiques' },
   { path: '/formation/geopolitique/flashcards', component: GeopolitiquesFlashcardsPage, title: 'Flashcards Géopolitiques' },
+  { path: '/formation/geopolitique/generateur', component: GeopoliticsUnifiedGeneratorPage, title: 'Générateur Géopolitique' },
   { path: '/formation/geopolitique/references', component: GeopolitiquesReferencesPage, title: 'Références Géopolitiques' },
   { path: '/formation/geopolitique/methodologie', component: GeopolitiquesMethodologiePage, title: 'Méthodologie Géopolitique' },
   { path: '/formation/geopolitique/methodologie/dissertation', component: MethodologieDissertationPage, title: 'Méthodologie Dissertation' },

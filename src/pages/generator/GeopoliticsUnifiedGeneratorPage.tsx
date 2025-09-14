@@ -5,15 +5,16 @@ import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Globe, TrendingUp, Loader2, Sparkles, AlertCircle, FileText, Info } from 'lucide-react';
+import { Globe, TrendingUp, Loader2, Sparkles, AlertCircle, FileText, Info, BookOpenCheck } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CaseStudyDisplay } from '@/components/generator/CaseStudyDisplay';
+import { DefinitionTraining } from '@/components/generator/DefinitionTraining';
 
 const GeopoliticsUnifiedGeneratorPage = () => {
-  const [selectedTool, setSelectedTool] = useState<'geopolitics' | 'case-study'>('geopolitics');
+  const [selectedTool, setSelectedTool] = useState<'geopolitics' | 'case-study' | 'definitions'>('geopolitics');
   const [article, setArticle] = useState('');
   const [notion, setNotion] = useState('');
   const [courseContent, setCourseContent] = useState('');
@@ -117,8 +118,8 @@ const GeopoliticsUnifiedGeneratorPage = () => {
         <div className="mb-8">
           <Card className="max-w-2xl mx-auto bg-white shadow-sm border border-gray-200">
             <CardContent className="p-4">
-              <Tabs value={selectedTool} onValueChange={(value: 'geopolitics' | 'case-study') => setSelectedTool(value)} className="w-full">
-                <TabsList className="grid w-full grid-cols-2 bg-gray-100 p-1">
+              <Tabs value={selectedTool} onValueChange={(value: 'geopolitics' | 'case-study' | 'definitions') => setSelectedTool(value)} className="w-full">
+                <TabsList className="grid w-full grid-cols-3 bg-gray-100 p-1">
                   <TabsTrigger 
                     value="geopolitics" 
                     className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-[#111111] data-[state=active]:shadow-sm"
@@ -135,6 +136,14 @@ const GeopoliticsUnifiedGeneratorPage = () => {
                     <span className="hidden sm:inline">Études de cas d'actualité</span>
                     <span className="sm:hidden">Études de cas</span>
                   </TabsTrigger>
+                  <TabsTrigger 
+                    value="definitions" 
+                    className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-[#111111] data-[state=active]:shadow-sm"
+                  >
+                    <BookOpenCheck className="h-4 w-4" />
+                    <span className="hidden sm:inline">Définitions</span>
+                    <span className="sm:hidden">Defs</span>
+                  </TabsTrigger>
                 </TabsList>
               </Tabs>
             </CardContent>
@@ -143,7 +152,7 @@ const GeopoliticsUnifiedGeneratorPage = () => {
 
         {/* Interface conditionnelle */}
         <div className="space-y-8">
-          <Tabs value={selectedTool} onValueChange={(value: 'geopolitics' | 'case-study') => setSelectedTool(value)} className="w-full">
+          <Tabs value={selectedTool} onValueChange={(value: 'geopolitics' | 'case-study' | 'definitions') => setSelectedTool(value)} className="w-full">
             
             {/* Études de cas d'actualité */}
             <TabsContent value="case-study" className="space-y-6">
@@ -296,6 +305,11 @@ const GeopoliticsUnifiedGeneratorPage = () => {
                   </Alert>
                 </CardContent>
               </Card>
+            </TabsContent>
+
+            {/* Entraînement aux définitions */}
+            <TabsContent value="definitions" className="space-y-6">
+              <DefinitionTraining language="fr" />
             </TabsContent>
           </Tabs>
 

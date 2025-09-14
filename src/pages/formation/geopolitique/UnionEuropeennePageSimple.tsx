@@ -42,55 +42,62 @@ const UnionEuropeennePageSimple = () => {
 
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <div className="flex justify-center items-center gap-4 mb-6">
-            <div className="p-4 bg-blue-600 rounded-full">
-              <Flag className="h-12 w-12 text-white" />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
-              Union européenne
-            </h1>
-          </div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+        <div className="text-center mb-10">
+          <h1 className="text-3xl md:text-4xl font-semibold text-gray-900">
+            Union européenne
+          </h1>
+          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto mt-3">
             Intégrations, fragmentations et géopolitique européenne face aux défis contemporains.
           </p>
 
-          {/* Plan de la dissertation */}
-          <Card className="bg-white/80 backdrop-blur border-2 border-blue-300 shadow-xl">
+          {/* Plan de la dissertation (sobre avec menus déroulants) */}
+          <Card className="mt-8 bg-white border border-gray-200 shadow-none">
             <CardHeader>
-              <CardTitle className="text-xl text-blue-800 flex items-center justify-center gap-2">
-                <BookOpen className="h-5 w-5" />
+              <CardTitle className="text-base font-semibold text-gray-900">
                 Plan de la dissertation
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-left max-w-2xl mx-auto">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2">
-                    <Badge variant="outline" className="bg-amber-100 text-amber-800">I</Badge>
-                    <span className="font-semibold">Historique de la construction européenne</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Badge variant="outline" className="bg-orange-100 text-orange-800">II</Badge>
-                    <span className="font-semibold">Les défis contemporains de l'Union européenne</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Badge variant="outline" className="bg-green-100 text-green-800">III</Badge>
-                    <span className="font-semibold">Les voies de l'avenir et la réinvention de l'Europe</span>
-                  </div>
-                </div>
-                <div className="ml-6 space-y-2 text-sm text-gray-600 mt-4">
-                  <div><strong>I.1</strong> - L'idée de la construction européenne</div>
-                  <div><strong>I.2</strong> - Coopération, rivalités et ingérences</div>
-                  <div><strong>I.3</strong> - Modèle et puissance de l'Europe</div>
-                  <div><strong>II.1</strong> - Les dépendances de l'Europe</div>
-                  <div><strong>II.2</strong> - Une polycrise : typologie des défis</div>
-                  <div><strong>II.3</strong> - Désillusions européennes</div>
-                  <div><strong>III.1</strong> - Une Europe plurielle : confrontée aux crises de différentes dans une ampleur différente</div>
-                  <div><strong>III.2</strong> - La stratégie de l'UE : le tournant actuel</div>
-                  <div><strong>III.3</strong> - L'Union Européenne est un groupement supranational formé de 27 pays</div>
-                </div>
-              </div>
+              <Accordion type="multiple" className="w-full">
+                <AccordionItem value="plan-i">
+                  <AccordionTrigger className="text-sm font-medium">
+                    I. Historique de la construction européenne
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                      <li>I.1 - L'idée de la construction européenne</li>
+                      <li>I.2 - Coopération, rivalités et ingérences</li>
+                      <li>I.3 - Modèle et puissance de l'Europe</li>
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="plan-ii">
+                  <AccordionTrigger className="text-sm font-medium">
+                    II. Les défis contemporains de l'Union européenne
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                      <li>II.1 - Les dépendances de l'Europe</li>
+                      <li>II.2 - Une polycrise : typologie des défis</li>
+                      <li>II.3 - Désillusions européennes</li>
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="plan-iii">
+                  <AccordionTrigger className="text-sm font-medium">
+                    III. Les voies de l'avenir et la réinvention de l'Europe
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                      <li>III.1 - Une Europe plurielle : confrontée aux crises</li>
+                      <li>III.2 - La stratégie de l'UE : le tournant actuel</li>
+                      <li>III.3 - L'UE, groupement supranational de 27 pays</li>
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </CardContent>
           </Card>
         </div>
@@ -131,7 +138,7 @@ const UnionEuropeennePageSimple = () => {
         </div>
 
         {/* Partie I */}
-        <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50 shadow-lg">
+        <Card className="border border-gray-200 bg-white shadow-none">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-3">
               <Globe className="h-6 w-6 text-blue-600" />
@@ -768,7 +775,7 @@ const UnionEuropeennePageSimple = () => {
         </Card>
 
         {/* Partie II */}
-        <Card className="mt-8 border-2 border-orange-200 bg-gradient-to-br from-orange-50 to-red-50 shadow-lg">
+        <Card className="mt-8 border border-gray-200 bg-white shadow-none">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-3">
               <AlertTriangle className="h-6 w-6 text-orange-600" />
@@ -1364,7 +1371,7 @@ const UnionEuropeennePageSimple = () => {
         </Card>
 
         {/* Partie III */}
-        <Card className="mt-8 border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg">
+        <Card className="mt-8 border border-gray-200 bg-white shadow-none">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-3">
               <Flag className="h-6 w-6 text-green-600" />
