@@ -7,6 +7,7 @@ import { TrendingUp, Target, CheckCircle, Play, ChevronLeft, ChevronRight, Calcu
 import { Link } from 'react-router-dom';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
+import { LatexRenderer } from '@/components/LatexRenderer';
 import {
   Accordion,
   AccordionContent,
@@ -189,8 +190,10 @@ const PythonAnalyseExercicesPage = () => {
       description: "En une seule ligne de commande, créer le vecteur x = (1, 1/4, 1/9, 1/16, ..., 1/100) sans saisir un à un les éléments.",
       color: "green",
       content: {
-        objective: "Créer un vecteur avec des fractions de carrés",
+        objective: "\\text{Créer un vecteur avec des fractions de carrés}",
+        isLatex: true,
         enonce: "En une seule ligne de commande, créer le vecteur x = (1, 1/4, 1/9, 1/16, ..., 1/100) sans saisir un à un les éléments.",
+        enonce_latex: "\\text{En une seule ligne de commande, créer le vecteur } x = \\left(1, \\frac{1}{4}, \\frac{1}{9}, \\frac{1}{16}, \\ldots, \\frac{1}{100}\\right) \\text{ sans saisir un à un les éléments.}",
         correction: `import numpy as np
 x = 1 / np.arange(1, 11)**2
 print(x)`
@@ -203,8 +206,10 @@ print(x)`
       description: "En une seule ligne de commande, calculer la somme ∑(n=0 à 10) 1/2ⁿ",
       color: "green",
       content: {
-        objective: "Calculer une somme géométrique",
+        objective: "\\text{Calculer une somme géométrique}",
+        isLatex: true,
         enonce: "En une seule ligne de commande, calculer la somme ∑(n=0 à 10) 1/2ⁿ",
+        enonce_latex: "\\text{En une seule ligne de commande, calculer la somme : } \\sum_{n=0}^{10} \\frac{1}{2^n}",
         correction: `import numpy as np
 S = np.sum(1 / 2**np.arange(11))
 print(S)`
@@ -222,63 +227,259 @@ print(S)`
       title: "Exercice 4 - Somme harmonique",
       difficulty: "Moyen",
       description: "Compléter la fonction Python pour calculer la somme harmonique définie par Sₙ = ∑(k=1 à n) 1/k",
-      color: "orange"
+      color: "orange",
+      content: {
+        objective: "\\text{Calculer la somme harmonique}",
+        isLatex: true,
+        enonce: "Compléter la fonction Python pour calculer la somme harmonique définie par Sₙ = ∑(k=1 à n) 1/k",
+        enonce_latex: "\\text{Compléter la fonction Python pour calculer la somme harmonique définie par } S_n = \\sum_{k=1}^{n} \\frac{1}{k}",
+        correction: `def somme_harmonique(n):
+    """Calcule la somme harmonique S_n = sum(1/k) pour k de 1 à n"""
+    S = 0
+    for k in range(1, n + 1):
+        S += 1 / k
+    return S
+
+# Exemple d'utilisation
+n = int(input("Entrer n : "))
+resultat = somme_harmonique(n)
+print(f"S_{n} = {resultat}")`
+      }
     },
     {
       id: 5,
       title: "Exercice 5 - Condition d'arrêt",
       difficulty: "Moyen",
       description: "Compléter le script Python pour afficher le premier entier naturel non nul n vérifiant n²e⁻ⁿ < 10⁻⁴",
-      color: "orange"
+      color: "orange",
+      content: {
+        objective: "\\text{Trouver le premier entier vérifiant une condition}",
+        isLatex: true,
+        enonce: "Compléter le script Python pour afficher le premier entier naturel non nul n vérifiant n²e⁻ⁿ < 10⁻⁴",
+        enonce_latex: "\\text{Compléter le script Python pour afficher le premier entier naturel non nul } n \\text{ vérifiant } n^2 e^{-n} < 10^{-4}",
+        correction: `import math
+
+n = 1
+while n**2 * math.exp(-n) >= 1e-4:
+    n += 1
+
+print(f"Le premier entier n vérifiant n²e^(-n) < 10^(-4) est : {n}")
+print(f"Vérification : {n}² × e^(-{n}) = {n**2 * math.exp(-n):.2e}")`
+      }
     },
     {
       id: 6,
       title: "Exercice 6 - Convergence de suite",
       difficulty: "Moyen",
       description: "Compléter la fonction Python pour trouver un entier naturel n vérifiant |uₙ - α| ≤ eps",
-      color: "orange"
+      color: "orange",
+      content: {
+        objective: "\\text{Trouver la convergence d'une suite}",
+        isLatex: true,
+        enonce: "Compléter la fonction Python pour trouver un entier naturel n vérifiant |uₙ - α| ≤ eps",
+        enonce_latex: "\\text{Compléter la fonction Python pour trouver un entier naturel } n \\text{ vérifiant } |u_n - \\alpha| \\leq \\varepsilon",
+        correction: `def convergence_suite(u_fonction, alpha, eps):
+    """Trouve le premier n tel que |u_n - alpha| <= eps"""
+    n = 1
+    while abs(u_fonction(n) - alpha) > eps:
+        n += 1
+    return n
+
+# Exemple avec u_n = 1/n convergeant vers 0
+def u(n):
+    return 1/n
+
+n_conv = convergence_suite(u, 0, 0.01)
+print(f"Convergence atteinte pour n = {n_conv}")`
+      }
     },
     {
       id: 7,
       title: "Exercice 7 - Approximation par récurrence",
       difficulty: "Moyen",
       description: "Compléter la fonction Python pour renvoyer une valeur approchée de α à eps près en utilisant une suite récurrente.",
-      color: "orange"
+      color: "orange",
+      content: {
+        objective: "\\text{Approximation par récurrence}",
+        isLatex: true,
+        enonce: "Compléter la fonction Python pour renvoyer une valeur approchée de α à eps près en utilisant une suite récurrente.",
+        enonce_latex: "\\text{Compléter la fonction Python pour renvoyer une valeur approchée de } \\alpha \\text{ à } \\varepsilon \\text{ près en utilisant une suite récurrente.}",
+        correction: `def approximation_recurrence(f, u0, alpha, eps, max_iter=1000):
+    """Approximation de alpha par récurrence u_{n+1} = f(u_n)"""
+    u = u0
+    for n in range(max_iter):
+        u_next = f(u)
+        if abs(u_next - alpha) <= eps:
+            return u_next, n+1
+        u = u_next
+    return u, max_iter
+
+# Exemple : approximation de sqrt(2) avec f(x) = (x + 2/x)/2
+def f(x):
+    return (x + 2/x) / 2
+
+resultat, iterations = approximation_recurrence(f, 1.0, 1.414213562, 1e-6)
+print(f"Approximation : {resultat}, iterations : {iterations}")`
+      }
     },
     {
       id: 8,
       title: "Exercice 8 - Suite définie par récurrence",
       difficulty: "Moyen",
       description: "Compléter la fonction Python pour calculer le terme uₙ d'une suite définie par récurrence avec f(t) = 1/(1+e^t)",
-      color: "orange"
+      color: "orange",
+      content: {
+        objective: "\\text{Calculer un terme d'une suite récurrente}",
+        isLatex: true,
+        enonce: "Compléter la fonction Python pour calculer le terme uₙ d'une suite définie par récurrence avec f(t) = 1/(1+e^t)",
+        enonce_latex: "\\text{Compléter la fonction Python pour calculer le terme } u_n \\text{ d'une suite définie par récurrence avec } f(t) = \\frac{1}{1+e^t}",
+        correction: `import math
+
+def f(t):
+    """Fonction f(t) = 1/(1+e^t)"""
+    return 1 / (1 + math.exp(t))
+
+def terme_suite_recurrence(u0, n):
+    """Calcule u_n avec u_{k+1} = f(u_k)"""
+    u = u0
+    for _ in range(n):
+        u = f(u)
+    return u
+
+# Exemple d'utilisation
+u0 = 0.5
+n = 10
+resultat = terme_suite_recurrence(u0, n)
+print(f"u_{n} = {resultat}")`
+      }
     },
     {
       id: 9,
       title: "Exercice 9 - Tableau de suite",
       difficulty: "Moyen",
       description: "Compléter la fonction Python pour renvoyer un tableau contenant les m premiers termes de la suite (uₙ).",
-      color: "orange"
+      color: "orange",
+      content: {
+        objective: "\\text{Créer un tableau des termes d'une suite}",
+        isLatex: true,
+        enonce: "Compléter la fonction Python pour renvoyer un tableau contenant les m premiers termes de la suite (uₙ).",
+        enonce_latex: "\\text{Compléter la fonction Python pour renvoyer un tableau contenant les } m \\text{ premiers termes de la suite } (u_n).",
+        correction: `def tableau_suite(u_fonction, m):
+    """Renvoie un tableau des m premiers termes de la suite u_n"""
+    return [u_fonction(n) for n in range(1, m + 1)]
+
+# Exemple avec u_n = n²
+def u(n):
+    return n**2
+
+termes = tableau_suite(u, 10)
+print(f"Les 10 premiers termes : {termes}")`
+      }
     },
     {
       id: 10,
       title: "Exercice 10 - Approximation de série",
       difficulty: "Moyen",
       description: "Écrire un programme Python qui calcule une valeur approchée de la somme S = ∑(k=1 à ∞) 1/k² à ε près.",
-      color: "orange"
+      color: "orange",
+      content: {
+        objective: "\\text{Approximation d'une série infinie}",
+        isLatex: true,
+        enonce: "Écrire un programme Python qui calcule une valeur approchée de la somme S = ∑(k=1 à ∞) 1/k² à ε près.",
+        enonce_latex: "\\text{Écrire un programme Python qui calcule une valeur approchée de la somme } S = \\sum_{k=1}^{\\infty} \\frac{1}{k^2} \\text{ à } \\varepsilon \\text{ près.}",
+        correction: `def approximation_serie_carres(epsilon):
+    """Approxime la somme de 1/k² avec précision epsilon"""
+    S = 0
+    k = 1
+    terme = 1  # Premier terme 1/1²
+    
+    while terme >= epsilon:
+        S += terme
+        k += 1
+        terme = 1 / (k**2)
+    
+    return S, k-1  # Retourne somme et nombre de termes
+
+# Approximation à 10^-6 près
+somme, nb_termes = approximation_serie_carres(1e-6)
+print(f"Somme ≈ {somme}")
+print(f"Nombre de termes : {nb_termes}")
+print(f"Valeur théorique π²/6 ≈ {3.14159**2/6}")`
+      }
     },
     {
       id: 11,
       title: "Exercice 11 - Somme exponentielle",
       difficulty: "Moyen",
       description: "Écrire une fonction Python qui calcule la somme ∑(k=1 à n) 2ᵏ/k pour un entier n donné.",
-      color: "orange"
+      color: "orange",
+      content: {
+        objective: "\\text{Calculer une somme exponentielle}",
+        isLatex: true,
+        enonce: "Écrire une fonction Python qui calcule la somme ∑(k=1 à n) 2ᵏ/k pour un entier n donné.",
+        enonce_latex: "\\text{Écrire une fonction Python qui calcule la somme } \\sum_{k=1}^{n} \\frac{2^k}{k} \\text{ pour un entier } n \\text{ donné.}",
+        correction: `def somme_exponentielle(n):
+    """Calcule la somme de 2^k/k pour k de 1 à n"""
+    S = 0
+    for k in range(1, n + 1):
+        S += (2**k) / k
+    return S
+
+# Version optimisée avec NumPy
+import numpy as np
+
+def somme_exponentielle_numpy(n):
+    """Version NumPy plus efficace"""
+    k = np.arange(1, n + 1)
+    return np.sum((2**k) / k)
+
+# Exemple d'utilisation
+n = 10
+resultat = somme_exponentielle(n)
+print(f"Somme pour n={n} : {resultat}")`
+      }
     },
     {
       id: 12,
       title: "Exercice 12 - Coefficient binomial",
       difficulty: "Moyen",
       description: "Définir une fonction binomiale(n, k) qui renvoie la valeur du coefficient binomial (n k).",
-      color: "orange"
+      color: "orange",
+      content: {
+        objective: "\\text{Calculer un coefficient binomial}",
+        isLatex: true,
+        enonce: "Définir une fonction binomiale(n, k) qui renvoie la valeur du coefficient binomial (n k).",
+        enonce_latex: "\\text{Définir une fonction binomiale(n, k) qui renvoie la valeur du coefficient binomial } \\binom{n}{k}.",
+        correction: `import math
+
+def binomiale(n, k):
+    """Calcule le coefficient binomial C(n,k) = n!/(k!(n-k)!)"""
+    if k > n or k < 0:
+        return 0
+    if k == 0 or k == n:
+        return 1
+    
+    # Utilisation de la formule avec factorielles
+    return math.factorial(n) // (math.factorial(k) * math.factorial(n - k))
+
+# Version optimisée évitant les grandes factorielles
+def binomiale_optimisee(n, k):
+    """Version optimisée pour éviter les débordements"""
+    if k > n or k < 0:
+        return 0
+    if k == 0 or k == n:
+        return 1
+    
+    k = min(k, n - k)  # Utilise la symétrie
+    resultat = 1
+    for i in range(k):
+        resultat = resultat * (n - i) // (i + 1)
+    return resultat
+
+# Exemples
+print(f"C(10,3) = {binomiale(10, 3)}")
+print(f"C(20,10) = {binomiale_optimisee(20, 10)}")`
+      }
     },
     {
       id: 13,
@@ -299,7 +500,33 @@ print(S)`
       title: "Exercice 15 - Sommes doubles",
       difficulty: "Moyen",
       description: "Calculer des sommes doubles avec boucles imbriquées : ∑∑ 1/(k+i) et ∑∑ k×i.",
-      color: "orange"
+      color: "orange",
+      content: {
+        objective: "\\text{Calculer des sommes doubles avec boucles imbriquées}",
+        isLatex: true,
+        enonce: "Calculer des sommes doubles avec boucles imbriquées : ∑∑ 1/(k+i) et ∑∑ k×i.",
+        enonce_latex: "\\text{Calculer des sommes doubles avec boucles imbriquées : } \\sum_{k} \\sum_{i} \\frac{1}{k+i} \\text{ et } \\sum_{k} \\sum_{i} k \\times i.",
+        correction: `# Première somme double : ∑∑ 1/(k+i)
+def somme_double_1(n, p):
+    S = 0
+    for k in range(1, n + 1):
+        for i in range(1, p + 1):
+            S += 1 / (k + i)
+    return S
+
+# Deuxième somme double : ∑∑ k×i  
+def somme_double_2(n, p):
+    S = 0
+    for k in range(1, n + 1):
+        for i in range(1, p + 1):
+            S += k * i
+    return S
+
+# Exemples
+n, p = 5, 3
+print(f"Somme 1 : {somme_double_1(n, p)}")
+print(f"Somme 2 : {somme_double_2(n, p)}")`
+      }
     },
     {
       id: 16,
@@ -308,7 +535,8 @@ print(S)`
       description: "Implémenter la méthode de Babylone (ou méthode de Héron) pour approcher la racine carrée d'un nombre positif.",
       color: "orange",
       content: {
-        objective: "Comprendre et implémenter une méthode itérative d'approximation de racine carrée",
+        objective: "\\text{Comprendre et implémenter une méthode itérative d'approximation de racine carrée}",
+        isLatex: true,
         enonce: `On considère la suite définie pour a > 0 par :
 
 u₀ = 1
@@ -319,6 +547,7 @@ uₙ₊₁ = (uₙ + a/uₙ)/2
 2. Écrire une fonction Python qui, pour un réel a > 0 et un seuil ε > 0, renvoie une valeur approchée de √a, obtenue en arrêtant l'itération dès que |uₙ₊₁ - uₙ| ≤ ε.
 
 3. Tester cette fonction avec a = 2 et ε = 10⁻⁵. Comparer avec la valeur exacte de √2.`,
+        enonce_latex: "\\text{On considère la suite définie pour } a > 0 \\text{ par :} \\\\ u_0 = 1 \\\\ u_{n+1} = \\frac{u_n + \\frac{a}{u_n}}{2} \\\\ \\text{1. Cette suite converge vers } \\sqrt{a}. \\text{ En effet, si } u_n \\text{ est proche de } \\sqrt{a}, \\text{ alors } \\frac{a}{u_n} \\text{ l'est aussi, et leur moyenne l'est encore plus.} \\\\ \\text{2. Écrire une fonction Python qui, pour un réel } a > 0 \\text{ et un seuil } \\varepsilon > 0, \\text{ renvoie une valeur approchée de } \\sqrt{a}, \\text{ obtenue en arrêtant l'itération dès que } |u_{n+1} - u_n| \\leq \\varepsilon. \\\\ \\text{3. Tester cette fonction avec } a = 2 \\text{ et } \\varepsilon = 10^{-5}. \\text{ Comparer avec la valeur exacte de } \\sqrt{2}.",
         correction: `import numpy as np
 
 def racine(a, eps):
@@ -709,9 +938,13 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-700 font-medium mb-4">
-                    {exercises[selectedExercise - 1].content.objective}
-                  </p>
+                  <div className="text-gray-700 font-medium mb-4">
+                    {exercises[selectedExercise - 1].content.isLatex ? (
+                      <LatexRenderer latex={exercises[selectedExercise - 1].content.objective} />
+                    ) : (
+                      <p>{exercises[selectedExercise - 1].content.objective}</p>
+                    )}
+                  </div>
                 </CardContent>
               </Card>
 
@@ -724,7 +957,13 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-700 whitespace-pre-line">{exercises[selectedExercise - 1].content.enonce}</p>
+                  <div className="text-gray-700">
+                    {exercises[selectedExercise - 1].content.enonce_latex ? (
+                      <LatexRenderer latex={exercises[selectedExercise - 1].content.enonce_latex} />
+                    ) : (
+                      <p className="whitespace-pre-line">{exercises[selectedExercise - 1].content.enonce}</p>
+                    )}
+                  </div>
                 </CardContent>
               </Card>
 
@@ -759,8 +998,8 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                      <pre className="text-gray-600 text-sm font-mono">
+                      <div className="bg-blue-900 text-blue-100 rounded-lg p-4 overflow-x-auto border border-blue-300">
+                      <pre className="text-blue-100 text-sm font-mono">
                         <code>{exercises[selectedExercise - 1].content.correction}</code>
                       </pre>
                     </div>
@@ -889,8 +1128,8 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                       <h3 className="text-lg font-semibold mb-3">Calcul de somme géométrique</h3>
                       <div className="p-4 bg-slate-50 rounded-lg mb-4">
                         <p className="text-sm mb-2">En une seule ligne de commande, calculer la somme :</p>
-                        <div className="text-center text-lg font-mono bg-white p-3 rounded border">
-                          ∑(n=0 à 10) 1/2ⁿ
+                        <div className="text-center text-lg bg-white p-3 rounded border">
+                          <LatexRenderer latex="\\sum_{n=0}^{10} \\frac{1}{2^n}" />
                         </div>
                       </div>
 

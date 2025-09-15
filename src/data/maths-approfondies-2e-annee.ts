@@ -46,14 +46,6 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
       },
       {
         id: 5,
-        slug: 'complements-variables-aleatoires',
-        title: 'Compléments sur les variables aléatoires',
-        icon: Variable,
-        color: 'bg-orange-600',
-        description: 'Séries de variables aléatoires, convergence et calculs d\'espérance et variance'
-      },
-      {
-        id: 6,
         slug: 'variables-aleatoires-densite',
         title: 'Variables aléatoires à densité',
         icon: BarChart3,
@@ -61,7 +53,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         description: 'Densité, fonction de répartition, espérance et variance'
       },
       {
-        id: 7,
+        id: 6,
         slug: 'n-uplets-variables-aleatoires',
         title: 'n-uplets de variables aléatoires réelles',
         icon: Variable,
@@ -69,7 +61,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         description: 'Propriétés de l\'espérance, variance et indépendance'
       },
       {
-        id: 8,
+        id: 7,
         slug: 'couple-variables-aleatoires',
         title: 'Cas particulier du couple',
         icon: Move,
@@ -83,7 +75,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
     description: 'Endomorphismes symétriques, fonctions multivariées et estimation statistique',
     chapters: [
       {
-        id: 9,
+        id: 8,
         slug: 'algebre-bilineaire-espaces-euclidiens',
         title: 'Algèbre bilinéaire et espaces euclidiens',
         icon: Grid,
@@ -91,7 +83,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         description: 'Endomorphismes symétriques d\'un espace euclidien, matrices symétriques et propriétés de la projection orthogonale'
       },
       {
-        id: 10,
+        id: 9,
         slug: 'reduction-matrices-symetriques',
         title: 'Réduction des endomorphismes et des matrices symétriques',
         icon: Shapes,
@@ -99,7 +91,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         description: 'Méthodes de diagonalisation et réduction complète'
       },
       {
-        id: 11,
+        id: 10,
         slug: 'optimisation-multivariee-avancee',
         title: 'Optimisation multivariée avancée',
         icon: FunctionSquare,
@@ -107,7 +99,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         description: 'Fonctions de plusieurs variables, propriétés différentielles, recherche d\'extrema, conditions d\'ordre 1 et 2, contraintes linéaires et multiplicateurs de Lagrange'
       },
       {
-        id: 12,
+        id: 11,
         slug: 'convergences-approximations',
         title: 'Convergences et approximations',
         icon: TrendingUp,
@@ -115,7 +107,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         description: 'Convergence en probabilité et convergence en loi'
       },
       {
-        id: 13,
+        id: 12,
         slug: 'estimation-statistique-avancee',
         title: 'Estimation statistique avancée',
         icon: BarChart3,

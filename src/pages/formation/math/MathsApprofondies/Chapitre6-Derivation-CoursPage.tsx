@@ -1,8 +1,11 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from "@/components/ui/button";
 import { LatexRenderer } from '@/components/LatexRenderer';
+import { BookOpen, Target, Brain, PenTool } from 'lucide-react';
 
 const orangeBox = (children: React.ReactNode) => (
   <div style={{ background: '#fff7eb', border: '2px solid #ffa94d', borderRadius: '10px', padding: '18px 20px', marginBottom: '16px' }}>{children}</div>
@@ -14,7 +17,38 @@ const MathsDerivationPage = () => {
       chapterNumber={6}
       chapterTitle="Chapitre 6 : Dérivation"
       description="Dérivabilité, calcul différentiel, règles de dérivation, théorèmes de Rolle et des accroissements finis, extremums et convexité"
+      showNavigation={true}
     >
+      {/* Navigation vers les ressources */}
+      <Card className="border-0 shadow-lg bg-blue-50 mb-8">
+        <CardContent className="p-6">
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+              <BookOpen className="mr-2 h-4 w-4" />
+              Cours
+            </Button>
+            <Link to="/formation/maths-derivation-exercices">
+              <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+                <PenTool className="mr-2 h-4 w-4" />
+                Exercices
+              </Button>
+            </Link>
+            <Link to="/formation/maths-derivation-flashcards">
+              <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+                <Brain className="mr-2 h-4 w-4" />
+                Flashcards
+              </Button>
+            </Link>
+            <Link to="/formation/maths-derivation-quiz">
+              <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+                <Target className="mr-2 h-4 w-4" />
+                Quiz
+              </Button>
+            </Link>
+          </div>
+        </CardContent>
+      </Card>
+
       <div className="space-y-8 py-8">
         <Card className="border-0 shadow-xl hover:shadow-2xl transition-shadow duration-300">
           <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">

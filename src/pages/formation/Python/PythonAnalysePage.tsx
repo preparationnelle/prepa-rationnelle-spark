@@ -8,6 +8,7 @@ import { PythonModuleQuiz } from '@/components/python/PythonModuleQuiz';
 import { analyseQuizQuestions } from '@/data/pythonQuizQuestions';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
+import { LatexRenderer } from '@/components/LatexRenderer';
 const PythonAnalysePage = () => {
   return <PythonModuleLayout>
       {/* Header */}
@@ -56,7 +57,11 @@ const PythonAnalysePage = () => {
           <CardContent>
             <div className="mb-4">
               <h3 className="font-semibold text-gray-600 mb-2">Objectif</h3>
-              <p className="text-gray-700 mb-4">Savoir calculer une somme de la forme S = ∑expression(k) en utilisant trois méthodes : boucle, liste, NumPy.</p>
+              <div className="text-gray-700 mb-4">
+                <span>Savoir calculer une somme de la forme </span>
+                <LatexRenderer latex="S = \sum \text{expression}(k)" />
+                <span> en utilisant trois méthodes : boucle, liste, NumPy.</span>
+              </div>
             </div>
 
             <Accordion type="single" collapsible className="w-full">
@@ -158,11 +163,20 @@ const PythonAnalysePage = () => {
                   <div className="space-y-4">
                     <div>
                       <h4 className="font-semibold mb-2">Sommes à calculer</h4>
-                      <ul className="space-y-1 text-sm">
-                        <li>• S₁ = ∑(k=1 à n) k²</li>
-                        <li>• S₂ = ∑(k=1 à n) (k³ - 2k)</li>
-                        <li>• S₃ = ∑(i=1 à n) ∑(j=1 à m) (i² + j³)</li>
-                      </ul>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-center gap-2">
+                          <span>•</span>
+                          <LatexRenderer latex="S_1 = \sum_{k=1}^{n} k^2" />
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span>•</span>
+                          <LatexRenderer latex="S_2 = \sum_{k=1}^{n} (k^3 - 2k)" />
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span>•</span>
+                          <LatexRenderer latex="S_3 = \sum_{i=1}^{n} \sum_{j=1}^{m} (i^2 + j^3)" />
+                        </div>
+                      </div>
                     </div>
 
                     <div>
@@ -221,9 +235,11 @@ const PythonAnalysePage = () => {
           <CardContent>
             <div className="mb-4">
               <h3 className="font-semibold text-gray-600 mb-2">Objectif</h3>
-              <p className="text-gray-700 mb-4">
-                Savoir calculer un produit de la forme P = ∏(k=1 à n) expression(k) en utilisant une méthode par boucle, et éventuellement une version vectorisée.
-              </p>
+              <div className="text-gray-700 mb-4">
+                <span>Savoir calculer un produit de la forme </span>
+                <LatexRenderer latex="P = \prod_{k=1}^{n} \text{expression}(k)" />
+                <span> en utilisant une méthode par boucle, et éventuellement une version vectorisée.</span>
+              </div>
             </div>
 
             <Accordion type="single" collapsible className="w-full">
@@ -317,7 +333,10 @@ const PythonAnalysePage = () => {
                     </div>
 
                     <div>
-                      <h4 className="font-semibold mb-2">➤ Produit ∏(k=0 à 14) (2k+1)</h4>
+                      <div className="font-semibold mb-2 flex items-center gap-2">
+                        <span>➤ Produit</span>
+                        <LatexRenderer latex="\prod_{k=0}^{14} (2k+1)" />
+                      </div>
                       <div className="bg-gray-50 p-4 rounded font-mono text-sm">
                         <div>P = 1</div>
                         <div>for k in range(0, 15):</div>
@@ -644,7 +663,7 @@ const PythonAnalysePage = () => {
                       <TableBody>
                         <TableRow>
                           <TableCell className="font-mono bg-gray-50">np.pi</TableCell>
-                          <TableCell>π (pi)</TableCell>
+                          <TableCell><LatexRenderer latex="\pi \text{ (pi)}" /></TableCell>
                           <TableCell className="font-mono">3.141592653...</TableCell>
                         </TableRow>
                         <TableRow>
@@ -918,7 +937,11 @@ const PythonAnalysePage = () => {
                   <div className="space-y-3">
                     <div>
                       <h4 className="font-semibold mb-2">Problème</h4>
-                      <p>Résoudre f(x) = x³ - 2x - 1 = 0 sur l'intervalle [1,2]</p>
+                      <div className="flex items-center gap-2">
+                        <span>Résoudre </span>
+                        <LatexRenderer latex="f(x) = x^3 - 2x - 1 = 0" />
+                        <span> sur l'intervalle [1,2]</span>
+                      </div>
                     </div>
                     <div className="bg-gray-50 p-4 rounded font-mono text-sm">
                       <div>def f(x):</div>

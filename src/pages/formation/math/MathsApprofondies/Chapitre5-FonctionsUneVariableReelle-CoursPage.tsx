@@ -1,8 +1,11 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from "@/components/ui/button";
 import { LatexRenderer } from '@/components/LatexRenderer';
 import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
+import { BookOpen, Target, Brain, PenTool } from 'lucide-react';
 
 // Boîte colorée générique
 const Box = ({ color, title, children }: { color: string, title: string, children: React.ReactNode }) => (
@@ -24,7 +27,38 @@ const MathsFonctionsPage = () => (
     chapterNumber={5}
     chapterTitle="Chapitre 5 : Fonctions d’une variable réelle"
     description="Généralités (parité, périodicité, bornes, variations) ; limites et opérations sur les limites ; continuité et théorèmes fondamentaux (valeurs intermédiaires, Weierstrass, bijection continue) ; fonctions usuelles et trigonométriques"
+    showNavigation={true}
   >
+    {/* Navigation vers les ressources */}
+    <Card className="border-0 shadow-lg bg-blue-50 mb-8">
+      <CardContent className="p-6">
+        <div className="flex flex-wrap gap-4 justify-center">
+          <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+            <BookOpen className="mr-2 h-4 w-4" />
+            Cours
+          </Button>
+          <Link to="/formation/maths-fonctions-une-variable-reelle-exercices">
+            <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+              <PenTool className="mr-2 h-4 w-4" />
+              Exercices
+            </Button>
+          </Link>
+          <Link to="/formation/maths-fonctions-une-variable-reelle-flashcards">
+            <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+              <Brain className="mr-2 h-4 w-4" />
+              Flashcards
+            </Button>
+          </Link>
+          <Link to="/formation/maths-fonctions-une-variable-reelle-quiz">
+            <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+              <Target className="mr-2 h-4 w-4" />
+              Quiz
+            </Button>
+          </Link>
+        </div>
+      </CardContent>
+    </Card>
+
     <div className="space-y-8 py-8 max-w-4xl mx-auto px-6 md:px-10">
       {/* 1. Fonctions d'une variable réelle */}
       <Card className="border-0 shadow-xl hover:shadow-2xl transition-shadow duration-300">

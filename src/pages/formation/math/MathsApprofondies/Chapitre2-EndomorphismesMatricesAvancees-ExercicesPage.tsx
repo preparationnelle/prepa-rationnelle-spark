@@ -679,64 +679,6 @@ const Chapitre2EndomorphismesMatricesAvanceesExercicesPage = () => {
 
         <ExerciseCard
           id="concours-4"
-          title="D'après EDHEC 2013 - Calcul de valeurs propres"
-          difficulty="Concours"
-          content={
-            <div>
-              <p>Soit <LatexRenderer latex="A = \begin{pmatrix} a & b & c \\ c & a & b \\ b & c & a \end{pmatrix}" /> où <LatexRenderer latex="a, b, c \in \mathbb{R}" />.</p>
-              <ol className="list-decimal list-inside space-y-2 pl-4 mt-3">
-                <li>Calculer <LatexRenderer latex="A \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}" />, puis <LatexRenderer latex="A \begin{pmatrix} 1 \\ j \\ j^2 \end{pmatrix}" /> et <LatexRenderer latex="A \begin{pmatrix} 1 \\ j^2 \\ j \end{pmatrix}" /> où <LatexRenderer latex="j = e^{2i\pi/3}" />.</li>
-                <li>En déduire les valeurs propres de <LatexRenderer latex="A" /> sur <LatexRenderer latex="\mathbb{C}" />.</li>
-                <li>À quelle condition sur <LatexRenderer latex="a, b, c" /> la matrice <LatexRenderer latex="A" /> est-elle diagonalisable sur <LatexRenderer latex="\mathbb{R}" /> ?</li>
-              </ol>
-            </div>
-          }
-          correction={
-            <div className="space-y-4">
-              <div>
-                <h5 className="font-semibold mb-2">1) Calculs des produits :</h5>
-                <div className="space-y-3">
-                  <LatexRenderer latex="A \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} = \begin{pmatrix} a+b+c \\ a+b+c \\ a+b+c \end{pmatrix} = (a+b+c) \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}" />
-                  
-                  <p>Pour le second vecteur (avec <LatexRenderer latex="j^3 = 1" /> et <LatexRenderer latex="1 + j + j^2 = 0" />) :</p>
-                  <LatexRenderer latex="A \begin{pmatrix} 1 \\ j \\ j^2 \end{pmatrix} = \begin{pmatrix} a + bj + cj^2 \\ c + aj + bj^2 \\ b + cj + aj^2 \end{pmatrix}" />
-                  <p>En utilisant <LatexRenderer latex="j^3 = 1" />, on obtient :</p>
-                  <LatexRenderer latex="= (a + bj + cj^2) \begin{pmatrix} 1 \\ j \\ j^2 \end{pmatrix}" />
-                  
-                  <p>De même :</p>
-                  <LatexRenderer latex="A \begin{pmatrix} 1 \\ j^2 \\ j \end{pmatrix} = (a + bj^2 + cj) \begin{pmatrix} 1 \\ j^2 \\ j \end{pmatrix}" />
-                </div>
-              </div>
-
-              <div>
-                <h5 className="font-semibold mb-2">2) Valeurs propres complexes :</h5>
-                <div className="space-y-3">
-                  <p>Les valeurs propres de <LatexRenderer latex="A" /> sont :</p>
-                  <ul className="list-disc list-inside ml-4 space-y-1">
-                    <li><LatexRenderer latex="\lambda_1 = a + b + c" /></li>
-                    <li><LatexRenderer latex="\lambda_2 = a + bj + cj^2" /></li>
-                    <li><LatexRenderer latex="\lambda_3 = a + bj^2 + cj" /></li>
-                  </ul>
-                  <p>Avec les vecteurs propres correspondants.</p>
-                </div>
-              </div>
-
-              <div>
-                <h5 className="font-semibold mb-2">3) Diagonalisabilité sur ℝ :</h5>
-                <div className="space-y-3">
-                  <p>Pour que <LatexRenderer latex="A" /> soit diagonalisable sur <LatexRenderer latex="\mathbb{R}" />, il faut que toutes ses valeurs propres soient réelles.</p>
-                  <p><LatexRenderer latex="\lambda_1" /> est toujours réelle.</p>
-                  <p>Pour <LatexRenderer latex="\lambda_2" /> et <LatexRenderer latex="\lambda_3" />, remarquons que <LatexRenderer latex="\lambda_3 = \overline{\lambda_2}" />.</p>
-                  <p>Elles sont réelles si et seulement si <LatexRenderer latex="\lambda_2 = \lambda_3" />, c'est-à-dire <LatexRenderer latex="b = c" />.</p>
-                  <p><strong>Condition :</strong> <LatexRenderer latex="A" /> est diagonalisable sur <LatexRenderer latex="\mathbb{R}" /> ⟺ <LatexRenderer latex="b = c" />.</p>
-                </div>
-              </div>
-            </div>
-          }
-        />
-
-        <ExerciseCard
-          id="concours-5"
           title="Exercice théorique - Polynômes annulateurs et valeurs propres"
           difficulty="Concours"
           content={
@@ -795,7 +737,7 @@ const Chapitre2EndomorphismesMatricesAvanceesExercicesPage = () => {
         />
 
         <ExerciseCard
-          id="concours-6"
+          id="concours-5"
           title="Exercice 7.8 - D'après EDHEC 2009"
           difficulty="Concours"
           content={
@@ -865,7 +807,7 @@ const Chapitre2EndomorphismesMatricesAvanceesExercicesPage = () => {
         />
 
         <ExerciseCard
-          id="concours-7"
+          id="concours-6"
           title="Exercice 7.12 - Des matrices non semblables"
           difficulty="Concours"
           content={
@@ -964,7 +906,7 @@ const Chapitre2EndomorphismesMatricesAvanceesExercicesPage = () => {
         />
 
         <ExerciseCard
-          id="concours-8"
+          id="concours-7"
           title="Exercice 7.13 - Polynômes d'Hermite (D'après ESSEC 2002)"
           difficulty="Concours"
           content={

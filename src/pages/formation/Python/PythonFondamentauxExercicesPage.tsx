@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Calculator, Target, Play, Code, BookOpen, ChevronDown, ChevronUp, ChevronLeft, HelpCircle, CheckCircle, Star } from 'lucide-react';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
+import { LatexRenderer } from '@/components/LatexRenderer';
 
 const PythonFondamentauxExercicesPage = () => {
   const [searchParams] = useSearchParams();
@@ -202,7 +203,8 @@ const PythonFondamentauxExercicesPage = () => {
     description: "Calculer une double somme avec division. Maîtriser les boucles imbriquées.",
     color: "gray",
     content: {
-      objective: "Calculer la somme : ∑(k=1 à n) ∑(i=1 à k) 1/(k+i)",
+      objective: "\\text{Calculer la somme : } \\sum_{k=1}^{n} \\sum_{i=1}^{k} \\frac{1}{k+i}",
+      isLatex: true,
       code: `n = int(input("Entrer n : "))
 S = 0
 for k in range(1, n + 1):
@@ -217,7 +219,8 @@ print("Somme :", S)`
     description: "Calculer une somme de produits. Manipulation des boucles et variables.",
     color: "gray",
     content: {
-      objective: "Calculer la somme : ∑(k=1 à n) ∑(i=1 à p) k·i",
+      objective: "\\text{Calculer la somme : } \\sum_{k=1}^{n} \\sum_{i=1}^{p} k \\cdot i",
+      isLatex: true,
       code: `n = int(input("Entrer n : "))
 p = int(input("Entrer p : "))
 S = 0
@@ -233,7 +236,8 @@ print("Somme :", S)`
     description: "Créer une fonction pour calculer une somme exponentielle.",
     color: "orange",
     content: {
-      objective: "Calculer la somme : ∑(k=1 à n) 2^k/k",
+      objective: "\\text{Calculer la somme : } \\sum_{k=1}^{n} \\frac{2^k}{k}",
+      isLatex: true,
       code: `def somme_exponentielle(n):
     S = 0
     for k in range(1, n + 1):
@@ -251,39 +255,113 @@ print("Somme =", resultat)`
     description: "Création et manipulation de matrices avec NumPy. Accès aux lignes et colonnes.",
     color: "orange",
     content: {
-      objective: "Créer des matrices spécifiques et accéder à leurs éléments",
-      exercices: [
-        {
-          titre: "1. Matrice avec colonnes remplies par leur indice",
-          enonce: "Créer une matrice carrée B ∈ Mₙ(ℝ) telle que la colonne j soit remplie de j. Par exemple, pour n=3, B doit être :\n[[1 2 3]\n [1 2 3]\n [1 2 3]]",
-          correction: `n = int(input("Entrer n : "))
+      objective: "\\text{Maîtriser la création et manipulation de matrices avec NumPy}",
+      isLatex: true,
+      enonce_complet: {
+        titre: "Énoncé complet - Matrices avec NumPy",
+        introduction: "Dans cet exercice, nous allons créer différents types de matrices avec NumPy et apprendre à les manipuler.",
+        parties: [
+          {
+            numero: 1,
+            titre: "Matrice avec colonnes remplies par leur indice",
+            enonce_latex: "\\text{Créer une matrice carrée } B \\in M_n(\\mathbb{R}) \\text{ telle que la colonne } j \\text{ soit remplie de } j.",
+            exemple_latex: "\\text{Pour } n=3, \\text{ on doit obtenir } B = \\begin{pmatrix} 1 & 2 & 3 \\\\ 1 & 2 & 3 \\\\ 1 & 2 & 3 \\end{pmatrix}"
+          },
+          {
+            numero: 2,
+            titre: "Matrice colonne contenant les carrés",
+            enonce_latex: "\\text{Créer une matrice colonne } A \\in M_{n,1}(\\mathbb{R}) \\text{ contenant les carrés } 1^2, 2^2, \\ldots, n^2.",
+            exemple_latex: "\\text{Pour } n=4, \\text{ on doit obtenir } A = \\begin{pmatrix} 1 \\\\ 4 \\\\ 9 \\\\ 16 \\end{pmatrix}"
+          },
+          {
+            numero: 3,
+            titre: "Matrice explicite donnée",
+            enonce_latex: "\\text{Créer et afficher la matrice } M = \\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{pmatrix}"
+          },
+          {
+            numero: 4,
+            titre: "Matrice 3×3 et accès aux éléments",
+            enonce_latex: "\\text{Créer une matrice } C \\in M_3(\\mathbb{R}) \\text{ contenant les entiers de 1 à 9, puis afficher la première ligne et la deuxième colonne.}",
+            exemple_latex: "C = \\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\end{pmatrix}"
+          }
+        ]
+      },
+      corrections: {
+        partie1: {
+          titre: "Correction Partie 1 - Matrice avec colonnes par indice",
+          explication: "Pour créer une matrice où chaque colonne j est remplie de la valeur j, on utilise la diffusion (broadcasting) de NumPy.",
+          code: `import numpy as np
+
+n = int(input("Entrer n : "))
+# Méthode 1 : avec ones et broadcasting
 L = np.ones((n, n), dtype=int)
 indices = np.arange(1, n + 1)
 B = L * indices
-print(B)`
+print("Matrice B :")
+print(B)
+
+# Méthode 2 : plus directe avec tile
+B2 = np.tile(np.arange(1, n + 1), (n, 1))
+print("\\nVérification avec méthode 2 :")
+print(B2)`,
+          resultat_latex: "\\text{Résultat pour } n=3 : \\quad B = \\begin{pmatrix} 1 & 2 & 3 \\\\ 1 & 2 & 3 \\\\ 1 & 2 & 3 \\end{pmatrix}"
         },
-        {
-          titre: "2. Matrice colonne contenant 1², 2², ..., n²",
-          enonce: "Créer une matrice colonne A ∈ Mₙ,₁(ℝ) contenant les carrés des entiers de 1 à n.",
-          correction: `n = int(input("Entrer n : "))
+        partie2: {
+          titre: "Correction Partie 2 - Matrice colonne des carrés",
+          explication: "On génère les carrés avec np.arange puis on redimensionne en matrice colonne avec reshape.",
+          code: `import numpy as np
+
+n = int(input("Entrer n : "))
+# Génération des carrés de 1 à n
 A = np.arange(1, n + 1)**2
+# Transformation en matrice colonne
 A = A.reshape(n, 1)
-print(A)`
+print("Matrice colonne A :")
+print(A)
+
+# Méthode alternative
+A2 = np.array([[i**2] for i in range(1, n + 1)])
+print("\\nVérification :")
+print(A2)`,
+          resultat_latex: "\\text{Résultat pour } n=4 : \\quad A = \\begin{pmatrix} 1 \\\\ 4 \\\\ 9 \\\\ 16 \\end{pmatrix}"
         },
-        {
-          titre: "3. Matrice explicite à afficher",
-          enonce: "Créer et afficher la matrice :\n[[1 2 3]\n [4 5 6]]",
-          correction: `A = np.array([[1, 2, 3], [4, 5, 6]])
-print(A)`
+        partie3: {
+          titre: "Correction Partie 3 - Matrice explicite",
+          explication: "Création directe d'une matrice avec np.array en spécifiant tous les éléments.",
+          code: `import numpy as np
+
+# Création directe de la matrice
+M = np.array([[1, 2, 3], [4, 5, 6]])
+print("Matrice M :")
+print(M)
+
+# Informations sur la matrice
+print(f"\\nDimensions : {M.shape}")
+print(f"Nombre d'éléments : {M.size}")
+print(f"Type des éléments : {M.dtype}")`,
+          resultat_latex: "\\text{Résultat : } \\quad M = \\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{pmatrix}"
         },
-        {
-          titre: "4. Matrice 3×3 et accès aux lignes/colonnes",
-          enonce: "Créer une matrice 3×3 contenant les entiers de 1 à 9. Afficher :\n- la première ligne\n- la deuxième colonne",
-          correction: `A = np.arange(1, 10).reshape(3, 3)
-print("Première ligne :", A[0])
-print("Deuxième colonne :", A[:, 1])`
+        partie4: {
+          titre: "Correction Partie 4 - Accès aux lignes et colonnes",
+          explication: "Création d'une matrice 3×3 et utilisation de l'indexation pour accéder aux lignes et colonnes.",
+          code: `import numpy as np
+
+# Création de la matrice 3×3
+C = np.arange(1, 10).reshape(3, 3)
+print("Matrice C :")
+print(C)
+
+# Accès à la première ligne (index 0)
+print("\\nPremière ligne :", C[0])
+
+# Accès à la deuxième colonne (index 1)
+print("Deuxième colonne :", C[:, 1])
+
+# Informations supplémentaires
+print("\\nÉlément C[1,2] :", C[1, 2])  # Élément ligne 2, colonne 3`,
+          resultat_latex: "\\text{Matrice } C = \\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\end{pmatrix}, \\quad \\text{Première ligne : } (1, 2, 3), \\quad \\text{Deuxième colonne : } \\begin{pmatrix} 2 \\\\ 5 \\\\ 8 \\end{pmatrix}"
         }
-      ]
+      }
     }
   }, {
     id: 5,
@@ -292,7 +370,8 @@ print("Deuxième colonne :", A[:, 1])`
     description: "Implémenter le calcul du coefficient binomial.",
     color: "orange",
     content: {
-      objective: "Calculer le coefficient binomial C(n,k)",
+      objective: "\\text{Calculer le coefficient binomial } \\binom{n}{k}",
+      isLatex: true,
       code: `def binomiale(n, k):
     if k > n:
         return 0
@@ -308,7 +387,8 @@ print("Deuxième colonne :", A[:, 1])`
     description: "Calculer la puissance d'un nombre réel.",
     color: "gray",
     content: {
-      objective: "Calculer a^p pour un réel a et un entier p",
+      objective: "\\text{Calculer } a^p \\text{ pour un réel } a \\text{ et un entier } p",
+      isLatex: true,
       code: `a = float(input("Valeur de a : "))
 p = int(input("Valeur de p : "))
 résultat = a ** p
@@ -321,7 +401,8 @@ print("a élevé à la puissance p =", résultat)`
     description: "Trouver le plus petit k tel que k! > 10^6.",
     color: "orange",
     content: {
-      objective: "Trouver le plus petit k tel que k! > 10^6",
+      objective: "\\text{Trouver le plus petit } k \\text{ tel que } k! > 10^6",
+      isLatex: true,
       code: `k = 1
 fact = 1
 while fact <= 10**6:
@@ -336,7 +417,8 @@ print(k)`
     description: "Implémenter une fonction définie par morceaux.",
     color: "gray",
     content: {
-      objective: "Définir la fonction g(x) par morceaux",
+      objective: "\\text{Définir la fonction } g(x) \\text{ par morceaux}",
+      isLatex: true,
       code: `x = float(input("Entrer un réel x : "))
 if x < -1:
     print("g(x) =", 2)
@@ -398,11 +480,112 @@ print(n)
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-gray-700 font-medium mb-4">
-              {exercises[selectedExercise - 1].content.objective}
-            </p>
+            <div className="text-gray-700 font-medium mb-4">
+              {exercises[selectedExercise - 1].content.isLatex ? (
+                <LatexRenderer latex={exercises[selectedExercise - 1].content.objective} />
+              ) : (
+                <p>{exercises[selectedExercise - 1].content.objective}</p>
+              )}
+            </div>
           </CardContent>
         </Card>
+
+        {exercises[selectedExercise - 1].content.enonce_complet && (
+          <div className="space-y-6">
+            {/* Énoncé complet */}
+            <Card className="border-0 shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-2xl font-bold text-blue-600 flex items-center gap-2">
+                  <BookOpen className="h-6 w-6" />
+                  {exercises[selectedExercise - 1].content.enonce_complet.titre}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-700 mb-6">{exercises[selectedExercise - 1].content.enonce_complet.introduction}</p>
+                
+                <div className="space-y-6">
+                  {exercises[selectedExercise - 1].content.enonce_complet.parties.map((partie, index) => (
+                    <div key={index} className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                      <h4 className="text-lg font-semibold text-blue-800 mb-3">
+                        Partie {partie.numero} - {partie.titre}
+                      </h4>
+                      <div className="mb-4">
+                        <LatexRenderer latex={partie.enonce_latex} />
+                      </div>
+                      {partie.exemple_latex && (
+                        <div className="mt-4 p-3 bg-blue-100 rounded">
+                          <p className="text-sm text-blue-700 font-semibold mb-2">Exemple :</p>
+                          <LatexRenderer latex={partie.exemple_latex} />
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Bouton pour afficher/masquer les corrections */}
+            <div className="flex justify-center">
+              <Button
+                onClick={() => toggleCorrection(selectedExercise)}
+                variant="outline"
+                className="border-blue-300 text-blue-600 hover:bg-blue-50"
+              >
+                {showCorrections.has(selectedExercise) ? (
+                  <>
+                    <ChevronUp className="h-4 w-4 mr-2" />
+                    Masquer les corrections
+                  </>
+                ) : (
+                  <>
+                    <ChevronDown className="h-4 w-4 mr-2" />
+                    Voir les corrections détaillées
+                  </>
+                )}
+              </Button>
+            </div>
+
+            {/* Corrections (conditionnelles) */}
+            {showCorrections.has(selectedExercise) && (
+              <Card className="border-0 shadow-lg">
+                <CardHeader>
+                  <CardTitle className="text-2xl font-bold text-blue-600 flex items-center gap-2">
+                    <Code className="h-6 w-6" />
+                    Corrections détaillées
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-8">
+                    {Object.entries(exercises[selectedExercise - 1].content.corrections).map(([key, correction], index) => (
+                      <div key={key} className="space-y-4">
+                        <h4 className="text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2">
+                          {correction.titre}
+                        </h4>
+                        
+                        <p className="text-gray-700">{correction.explication}</p>
+                        
+                        <div className="bg-blue-900 text-blue-100 rounded-lg p-4 overflow-x-auto border border-blue-300">
+                          <pre className="text-blue-100 text-sm font-mono">
+                            <code>{correction.code}</code>
+                          </pre>
+                        </div>
+                        
+                        <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                          <p className="text-sm text-green-700 font-semibold mb-2">Résultat attendu :</p>
+                          <LatexRenderer latex={correction.resultat_latex} />
+                        </div>
+                        
+                        {index < Object.keys(exercises[selectedExercise - 1].content.corrections).length - 1 && (
+                          <hr className="my-6 border-gray-200" />
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+          </div>
+        )}
 
         {exercises[selectedExercise - 1].content.exercices && (
           <div className="space-y-6">
@@ -417,7 +600,18 @@ print(n)
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-blue-800 whitespace-pre-line">{exercice.enonce}</p>
+                    <div className="text-blue-800">
+                      {exercice.enonce_latex ? (
+                        <div>
+                          <LatexRenderer latex={exercice.enonce_latex} />
+                          {exercice.exemple && (
+                            <p className="mt-3 text-sm whitespace-pre-line">{exercice.exemple}</p>
+                          )}
+                        </div>
+                      ) : (
+                        <p className="whitespace-pre-line">{exercice.enonce}</p>
+                      )}
+                    </div>
                   </CardContent>
                 </Card>
 
@@ -425,10 +619,10 @@ print(n)
                 <div className="flex justify-center">
                   <Button
                     variant="outline"
-                    onClick={() => toggleCorrection(index)}
-                    className="flex items-center gap-2 border-blue-300 text-blue-700 hover:bg-orange-100 hover:text-orange-800 hover:border-orange-400"
+                    onClick={() => toggleCorrection(index + 100)} // Offset pour éviter les conflits avec les exercices principaux
+                    className="flex items-center gap-2 border-blue-300 text-blue-600 hover:bg-blue-50"
                   >
-                    {showCorrections.has(index) ? (
+                    {showCorrections.has(index + 100) ? (
                       <>
                         <ChevronUp className="h-4 w-4" />
                         Masquer la correction
@@ -443,17 +637,17 @@ print(n)
                 </div>
 
                 {/* Correction (affichée conditionnellement) */}
-                {showCorrections.has(index) && (
-                  <Card className="border-2 border-orange-300 bg-orange-50/50 shadow-lg">
+                {showCorrections.has(index + 100) && (
+                  <Card className="border-0 shadow-lg">
                     <CardHeader>
-                      <CardTitle className="flex items-center gap-3 text-orange-800">
-                        <Code className="h-6 w-6 text-orange-700" />
+                      <CardTitle className="flex items-center gap-3 text-blue-600">
+                        <Code className="h-6 w-6" />
                         Correction
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                        <pre className="text-orange-200 text-sm font-mono">
+                      <div className="bg-blue-900 text-blue-100 rounded-lg p-4 overflow-x-auto border border-blue-300">
+                        <pre className="text-blue-100 text-sm font-mono">
                           <code>{exercice.correction}</code>
                         </pre>
                       </div>
@@ -465,22 +659,48 @@ print(n)
           </div>
         )}
 
-        {!exercises[selectedExercise - 1].content.exercices && (
-          <Card className="mb-8 border-2 border-gray-200 bg-gray-50 shadow-lg">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-gray-700">
-                <Code className="h-6 w-6" />
-                Code Python - Correction
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                <pre className="text-gray-600 text-sm font-mono">
-                  <code>{exercises[selectedExercise - 1].content.code}</code>
-                </pre>
-              </div>
-            </CardContent>
-          </Card>
+        {!exercises[selectedExercise - 1].content.exercices && !exercises[selectedExercise - 1].content.enonce_complet && (
+          <div className="space-y-4">
+            {/* Bouton pour afficher/masquer la correction */}
+            <div className="flex justify-center">
+              <Button
+                onClick={() => toggleCorrection(selectedExercise)}
+                variant="outline"
+                className="border-blue-300 text-blue-600 hover:bg-blue-50"
+              >
+                {showCorrections.has(selectedExercise) ? (
+                  <>
+                    <ChevronUp className="h-4 w-4 mr-2" />
+                    Masquer la correction
+                  </>
+                ) : (
+                  <>
+                    <ChevronDown className="h-4 w-4 mr-2" />
+                    Voir la correction
+                  </>
+                )}
+              </Button>
+            </div>
+
+            {/* Correction (conditionnelle) */}
+            {showCorrections.has(selectedExercise) && (
+              <Card className="mb-8 border-0 shadow-lg">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3 text-blue-600">
+                    <Code className="h-6 w-6" />
+                    Code Python - Correction
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="bg-blue-900 text-blue-100 rounded-lg p-4 overflow-x-auto border border-blue-300">
+                    <pre className="text-blue-100 text-sm font-mono">
+                      <code>{exercises[selectedExercise - 1].content.code}</code>
+                    </pre>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+          </div>
         )}
 
       <ModuleNavigationCards 
@@ -512,28 +732,6 @@ print(n)
         </p>
       </div>
 
-      <div className="mb-6 p-4 bg-blue-50/50 rounded-lg border-2 border-blue-300">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="space-y-2">
-            <Badge variant="outline" className="bg-blue-100 text-blue-800 border-blue-300">Types de base</Badge>
-            <p className="text-sm text-blue-700">
-              Maîtriser les types fondamentaux de Python
-            </p>
-          </div>
-          <div className="space-y-2">
-            <Badge variant="outline" className="bg-blue-100 text-blue-800 border-blue-300">Structures de contrôle</Badge>
-            <p className="text-sm text-blue-700">
-              Comprendre les conditions et les boucles
-            </p>
-          </div>
-          <div className="space-y-2">
-            <Badge variant="outline" className="bg-blue-100 text-blue-800 border-blue-300">Fonctions</Badge>
-            <p className="text-sm text-blue-700">
-              Créer et utiliser des fonctions Python
-            </p>
-          </div>
-        </div>
-      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {exercises.map(exercise => (

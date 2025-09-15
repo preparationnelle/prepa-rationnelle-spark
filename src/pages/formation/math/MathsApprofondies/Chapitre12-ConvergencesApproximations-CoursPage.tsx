@@ -25,6 +25,12 @@ const Chapitre12ConvergencesApproximationsCoursPage = () => {
                 Exercices
               </Button>
             </Link>
+            <Link to="/formation/maths-convergences-approximations-flashcards">
+              <Button variant="outline" className="border-blue-200 text-blue-600 hover:bg-blue-50">
+                <Brain className="mr-2 h-4 w-4" />
+                Flashcards
+              </Button>
+            </Link>
             <Link to="/formation/maths-convergences-approximations-quiz">
               <Button variant="outline" className="border-blue-200 text-blue-600 hover:bg-blue-50">
                 <Target className="mr-2 h-4 w-4" />

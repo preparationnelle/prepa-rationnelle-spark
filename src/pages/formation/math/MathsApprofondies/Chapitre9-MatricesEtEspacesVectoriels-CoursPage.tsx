@@ -1,8 +1,11 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { LatexRenderer } from '@/components/LatexRenderer';
+import { BookOpen, Target, Brain, PenTool } from 'lucide-react';
 
 const MathsEspacesVectorielsPage = () => {
   return (
@@ -10,7 +13,38 @@ const MathsEspacesVectorielsPage = () => {
       chapterNumber={9}
       chapterTitle="Matrices, systèmes linéaires & espaces vectoriels"
       description="Structures vectorielles (combinaisons, base, dimension, rang) ; opérations sur les matrices (somme, produit, transposée, inverse, déterminant) ; résolution de systèmes linéaires (pivot de Gauss, Gauss-Jordan)"
+      showNavigation={true}
     >
+      {/* Navigation vers les ressources */}
+      <Card className="border-0 shadow-lg bg-blue-50 mb-8">
+        <CardContent className="p-6">
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+              <BookOpen className="mr-2 h-4 w-4" />
+              Cours
+            </Button>
+            <Link to="/formation/maths-matrices-espaces-vectoriels-exercices">
+              <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+                <PenTool className="mr-2 h-4 w-4" />
+                Exercices
+              </Button>
+            </Link>
+            <Link to="/formation/maths-matrices-espaces-vectoriels-flashcards">
+              <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+                <Brain className="mr-2 h-4 w-4" />
+                Flashcards
+              </Button>
+            </Link>
+            <Link to="/formation/maths-matrices-espaces-vectoriels-quiz">
+              <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+                <Target className="mr-2 h-4 w-4" />
+                Quiz
+              </Button>
+            </Link>
+          </div>
+        </CardContent>
+      </Card>
+
       {/* Section 1: Matrices */}
       <Card className="border-0 shadow-lg">
         <CardHeader>

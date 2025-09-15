@@ -115,7 +115,7 @@ const Chapitre1ComplementsAlgebreLineaireExercicesPage = () => {
                 <h3 className="text-xl font-bold mb-4 text-slate-800 border-b border-slate-200 pb-2">Énoncé :</h3>
                 <div className="bg-blue-50/70 p-6 rounded-xl border border-blue-200/50 shadow-sm">
                   <div className="space-y-4">
-                    <LatexRenderer latex={"\\text{Soient } n \\geq 1 \\text{ et } x_0, x_1, \\ldots, x_n \\text{ des réels deux à deux distincts."} />
+                    <LatexRenderer latex={"\\text{Soient } n \\geq 1 \\text{ et } x_0, x_1, \\ldots, x_n \\text{ des réels deux à deux distincts.}"} />
                     <LatexRenderer latex={"\\text{On note } \\mathcal{C} \\text{ la base canonique de } \\mathbb{R}_n[X]."} />
                     <br />
                                             <LatexRenderer latex={"\\text{Pour } i \\in \\llbracket 0,n \\rrbracket, \\text{ on note}"} />

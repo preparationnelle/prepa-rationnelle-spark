@@ -36,7 +36,7 @@ export const PythonModuleQuiz: React.FC<PythonModuleQuizProps> = ({
     return (
       <Card className="mt-8 border-red-200 bg-red-50">
         <CardContent className="p-6">
-          <p className="text-red-600">❌ Erreur: Aucune question de quiz trouvée.</p>
+          <p className="text-red-600">Erreur: Aucune question de quiz trouvée.</p>
         </CardContent>
       </Card>
     );
@@ -88,7 +88,7 @@ export const PythonModuleQuiz: React.FC<PythonModuleQuizProps> = ({
     return (
       <Card className={`mt-8 ${colorClasses[moduleColor as keyof typeof colorClasses]}`}>
         <CardHeader>
-          <CardTitle className="text-xl">🎉 Quiz terminé !</CardTitle>
+          <CardTitle className="text-xl">Quiz terminé !</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-center space-y-4">
@@ -198,7 +198,7 @@ export const PythonModuleQuiz: React.FC<PythonModuleQuizProps> = ({
           {questions[currentQuestion].hint && !showResult && (
             <div className="p-3 bg-orange-50 border border-orange-200 rounded">
               <p className="text-orange-600 text-sm">
-                💡 <strong>Indice :</strong> {questions[currentQuestion].hint}
+                <strong>Indice :</strong> {questions[currentQuestion].hint}
               </p>
             </div>
           )}

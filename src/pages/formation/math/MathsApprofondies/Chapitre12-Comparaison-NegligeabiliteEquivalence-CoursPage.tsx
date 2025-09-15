@@ -1,8 +1,11 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { LatexRenderer } from '@/components/LatexRenderer';
+import { BookOpen, Target, Brain, PenTool } from 'lucide-react';
 
 const MathsComparaisonsPage = () => {
   return (
@@ -10,7 +13,38 @@ const MathsComparaisonsPage = () => {
       chapterNumber={12}
       chapterTitle="Comparaison — négligeabilité & équivalence"
       description="Définitions et notations : f=o(g), u_n=o(v_n), f\sim g, u_n\sim v_n ; propriétés : transitivité, compatibilité avec produit, quotient et composition par une puissance entière (mise en garde pour l'addition et pour \ln, \exp,\dots) ; croissances comparées des suites usuelles ((n^{a}),((\ln n)^{b}),(q^{n})) ; équivalents usuels et limites"
+      showNavigation={true}
     >
+      {/* Navigation vers les ressources */}
+      <Card className="border-0 shadow-lg bg-blue-50 mb-8">
+        <CardContent className="p-6">
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+              <BookOpen className="mr-2 h-4 w-4" />
+              Cours
+            </Button>
+            <Link to="/formation/maths-comparaison-negligeabilite-equivalence-exercices">
+              <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+                <PenTool className="mr-2 h-4 w-4" />
+                Exercices
+              </Button>
+            </Link>
+            <Link to="/formation/maths-comparaison-negligeabilite-equivalence-flashcards">
+              <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+                <Brain className="mr-2 h-4 w-4" />
+                Flashcards
+              </Button>
+            </Link>
+            <Link to="/formation/maths-comparaison-negligeabilite-equivalence-quiz">
+              <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+                <Target className="mr-2 h-4 w-4" />
+                Quiz
+              </Button>
+            </Link>
+          </div>
+        </CardContent>
+      </Card>
+
       {/* Section 1: Négligeabilité */}
       <Card className="border-0 shadow-lg">
         <CardHeader>

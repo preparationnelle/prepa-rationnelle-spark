@@ -11,6 +11,7 @@ import { Badge } from '@/components/ui/badge';
 import { BarChart3, Target, Book, CheckCircle, Play, Code, Calculator, ChevronDown, ChevronUp, Trophy, Star, ArrowLeft } from 'lucide-react';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
+import { LatexRenderer } from '@/components/LatexRenderer';
 
 const PythonProbabilitesExercicesPage = () => {
   const [selectedExercise, setSelectedExercise] = useState<number | null>(null);
@@ -340,8 +341,10 @@ for n in [5, 10, 15]:
       difficulty: "Intermédiaire",
       badge: "Monte-Carlo",
       content: {
-        objective: "Estimer une probabilité par méthode de Monte-Carlo",
+        objective: "\\text{Estimer une probabilité par méthode de Monte-Carlo}",
+        isLatex: true,
         enonce: "X et Y suivent des lois géométriques de paramètres respectifs p1 et p2.\n\nEstimer P(X = 2Y) par méthode de Monte-Carlo pour p1 = 0.3 et p2 = 0.5.",
+        enonce_latex: "X \\text{ et } Y \\text{ suivent des lois géométriques de paramètres respectifs } p_1 \\text{ et } p_2. \\\\ \\text{Estimer } P(X = 2Y) \\text{ par méthode de Monte-Carlo pour } p_1 = 0.3 \\text{ et } p_2 = 0.5.",
         correction: `import random
 import numpy as np
 
@@ -629,9 +632,13 @@ print(f"Nombre de sauts pour 20 marches : {saut_escalier(20)}")`
                 </CardTitle>
               </CardHeader>
               <CardContent className="pt-0">
-                <p className="text-slate-600 text-sm leading-relaxed bg-gray-50 p-3 rounded-lg border border-gray-200">
-                  {exercise.content.objective}
-                </p>
+                <div className="text-slate-600 text-sm leading-relaxed bg-gray-50 p-3 rounded-lg border border-gray-200">
+                  {exercise.content.isLatex ? (
+                    <LatexRenderer latex={exercise.content.objective} />
+                  ) : (
+                    <p>{exercise.content.objective}</p>
+                  )}
+                </div>
               </CardContent>
             </Card>
 
@@ -644,7 +651,13 @@ print(f"Nombre de sauts pour 20 marches : {saut_escalier(20)}")`
               </CardHeader>
               <CardContent className="pt-0">
                 <div className="prose prose-sm max-w-none">
-                  <pre className="text-slate-700 whitespace-pre-line text-sm leading-relaxed bg-slate-50 p-4 rounded-lg border">{exercise.content.enonce}</pre>
+                  {exercise.content.enonce_latex ? (
+                    <div className="text-slate-700 text-sm leading-relaxed bg-slate-50 p-4 rounded-lg border">
+                      <LatexRenderer latex={exercise.content.enonce_latex} />
+                    </div>
+                  ) : (
+                    <pre className="text-slate-700 whitespace-pre-line text-sm leading-relaxed bg-slate-50 p-4 rounded-lg border">{exercise.content.enonce}</pre>
+                  )}
                 </div>
               </CardContent>
             </Card>

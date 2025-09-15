@@ -9,7 +9,7 @@ import { BookOpen, Target, Brain, PenTool } from 'lucide-react';
 const Chapitre11OptimisationMultivarieeAvanceeCoursPage = () => {
   return (
     <MathChapterTemplate
-      chapterNumber={11}
+      chapterNumber={10}
       chapterTitle="Optimisation multivariée avancée"
       description="Fonctions de plusieurs variables, propriétés différentielles, recherche d'extrema, conditions d'ordre 1 et 2, contraintes linéaires et multiplicateurs de Lagrange"
       slug="optimisation-multivariee-avancee"
@@ -23,6 +23,12 @@ const Chapitre11OptimisationMultivarieeAvanceeCoursPage = () => {
               <Button variant="outline" className="border-blue-200 text-blue-600 hover:bg-blue-50">
                 <PenTool className="mr-2 h-4 w-4" />
                 Exercices
+              </Button>
+            </Link>
+            <Link to="/formation/maths-optimisation-multivariee-avancee-flashcards">
+              <Button variant="outline" className="border-blue-200 text-blue-600 hover:bg-blue-50">
+                <Brain className="mr-2 h-4 w-4" />
+                Flashcards
               </Button>
             </Link>
             <Link to="/formation/maths-optimisation-multivariee-avancee-quiz">

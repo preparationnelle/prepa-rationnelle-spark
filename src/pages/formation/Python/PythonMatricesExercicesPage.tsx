@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Calculator, Target, Play, CheckCircle, Eye, EyeOff, Code, BookOpen, ChevronDown, ChevronUp, Trophy, Star, ArrowLeft, HelpCircle, ChevronLeft } from 'lucide-react';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
+import { LatexRenderer } from '@/components/LatexRenderer';
 
 const PythonMatricesExercicesPage = () => {
   const [searchParams] = useSearchParams();
@@ -28,6 +29,7 @@ const PythonMatricesExercicesPage = () => {
       setShowQCM(true);
     }
   }, [searchParams]);
+
   
   const toggleSolution = (exerciseId: string) => {
     setShowSolution(prev => ({
@@ -80,6 +82,7 @@ const PythonMatricesExercicesPage = () => {
       window.scrollTo(0, 0); // Scroll to top on navigation
     }
   };
+
 
   const qcmQuestions = [{
     id: 1,
@@ -187,32 +190,34 @@ const PythonMatricesExercicesPage = () => {
     title: "Application directe (Niveau 1)",
     difficulty: "Facile",
     description: "Création de matrices et extraction d'éléments.",
-    color: "green",
+    color: "blue",
     type: "exercise"
   }, {
     id: 3,
     title: "Manipulation des données (Niveau 2)",
     difficulty: "Moyen",
     description: "Manipulation et calculs sur les matrices.",
-    color: "orange",
+    color: "blue",
     type: "exercise"
   }, {
     id: 4,
     title: "Opérations matricielles (Niveau 3)",
     difficulty: "Moyen",
     description: "Opérations complexes entre matrices.",
-    color: "orange",
+    color: "blue",
     type: "exercise"
   }, {
     id: 5,
     title: "Puissance d'une matrice",
     difficulty: "Avancé",
     description: "Implémenter une fonction pour calculer la puissance d'une matrice.",
-    color: "red",
+    color: "blue",
     type: "exercise",
     content: {
-      objective: "Écrire une fonction puissance qui prend en argument une matrice A et un entier n et qui renvoie A^n en utilisant uniquement np.dot",
-      enonce: "Écrire une fonction puissance qui prend en argument une matrice A et un entier n et qui renvoie A^n. On n'utilisera que la fonction np.dot.\n\nRemarque : on initialise P à la matrice identité afin de gérer correctement le cas n=0.",
+      objective: "\\text{Écrire une fonction puissance qui calcule } A^n \\text{ en utilisant uniquement np.dot}",
+      isLatex: true,
+      enonce: "Écrire une fonction puissance(A, n) qui calcule A^n en utilisant uniquement np.dot. Remarque : initialiser P = I pour gérer le cas n=0.",
+      enonce_latex: "\\text{Écrire une fonction puissance(A, n) qui calcule } A^n \\text{ en utilisant uniquement np.dot.} \\\\ \\text{Remarque : initialiser } P = I \\text{ pour gérer le cas } n=0.",
       correction: `import numpy as np
 
 def puissance(A: np.ndarray, n: int) -> np.ndarray:
@@ -232,11 +237,13 @@ print("A^3 =\\n", puissance(A, 3))`
     title: "Création de matrices avec fromfunction",
     difficulty: "Moyen",
     description: "Utiliser np.fromfunction pour créer des matrices selon des formules.",
-    color: "orange",
+    color: "blue",
     type: "exercise",
     content: {
-      objective: "Créer des matrices en utilisant np.fromfunction avec des formules mathématiques",
-      enonce: "1. Créer la matrice C = (i-j) pour 0≤i≤2 et 0≤j≤3, c'est-à-dire :\n[[ 0 -1 -2 -3]\n [ 1  0 -1 -2]\n [ 2  1  0 -1]]\n\n2. Créer la matrice D = (ij) pour 1≤i≤4 et 1≤j≤3, c'est-à-dire :\n[[ 1  2  3]\n [ 2  4  6]\n [ 3  6  9]\n [ 4  8 12]]",
+      objective: "\\text{Créer des matrices en utilisant np.fromfunction avec des formules mathématiques}",
+      isLatex: true,
+      enonce: "1. Créer la matrice C = (i-j) pour 0≤i≤2 et 0≤j≤3. 2. Créer la matrice D = (ij) pour 1≤i≤4 et 1≤j≤3.",
+      enonce_latex: "\\text{1. Créer la matrice } C_{ij} = i-j \\text{ pour } 0 \\leq i \\leq 2, \\; 0 \\leq j \\leq 3 : \\\\ C = \\begin{pmatrix} 0 & -1 & -2 & -3 \\\\ 1 & 0 & -1 & -2 \\\\ 2 & 1 & 0 & -1 \\end{pmatrix} \\\\ \\text{2. Créer la matrice } D_{ij} = ij \\text{ pour } 1 \\leq i \\leq 4, \\; 1 \\leq j \\leq 3 : \\\\ D = \\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 4 & 6 \\\\ 3 & 6 & 9 \\\\ 4 & 8 & 12 \\end{pmatrix}",
       correction: `import numpy as np
 
 # 1. Matrice C : C[i, j] = i - j
@@ -252,11 +259,13 @@ print("Matrice D =\\n", D)`
     title: "Construction de matrices symétriques",
     difficulty: "Moyen",
     description: "Créer des matrices symétriques sans saisir chaque coefficient.",
-    color: "orange",
+    color: "blue",
     type: "exercise",
     content: {
-      objective: "Sans saisir chaque coefficient, définir en Python la matrice symétrique demandée",
-      enonce: "Sans saisir chaque coefficient, définir en Python la matrice :\n[[5 3 3]\n [3 5 3]\n [3 3 5]]\n\nIndice : penser à utiliser np.ones et np.eye",
+      objective: "\\text{Définir en Python la matrice symétrique : } \\begin{pmatrix} 5 & 3 & 3 \\\\ 3 & 5 & 3 \\\\ 3 & 3 & 5 \\end{pmatrix}",
+      isLatex: true,
+      enonce: "Construire sans saisir chaque coefficient la matrice symétrique A. Indice : utiliser np.ones et np.eye.",
+      enonce_latex: "\\text{Construire sans saisir chaque coefficient la matrice symétrique :} \\\\ A = \\begin{pmatrix} 5 & 3 & 3 \\\\ 3 & 5 & 3 \\\\ 3 & 3 & 5 \\end{pmatrix} \\\\ \\text{Indice : utiliser np.ones et np.eye}",
       correction: `import numpy as np
 
 # Solution : A = 3 * matrice de uns + 2 * matrice identité
@@ -272,11 +281,13 @@ print("A est symétrique :", np.array_equal(A, A.T))`
     title: "Matrices à diagonale strictement dominante",
     difficulty: "Avancé",
     description: "Implémenter une fonction pour tester la dominance diagonale stricte.",
-    color: "red",
+    color: "blue",
     type: "exercise",
     content: {
-      objective: "Implémenter une fonction qui teste si une matrice est à diagonale strictement dominante",
-      enonce: "Une matrice A∈M_n(ℝ) est à diagonale strictement dominante si ∀i∈{1,…,n}, |a_ii| > ∑_{j≠i} |a_ij|.\n\nImplémenter une fonction diagdom(A) qui teste cette propriété.",
+      objective: "\\text{Implémenter une fonction qui teste si une matrice est à diagonale strictement dominante}",
+      isLatex: true,
+      enonce: "Une matrice A est à diagonale strictement dominante si |a_ii| > somme des |a_ij| pour j≠i. Implémenter une fonction diagdom(A).",
+      enonce_latex: "\\text{Une matrice } A \\in M_n(\\mathbb{R}) \\text{ est à diagonale strictement dominante si :} \\\\ \\forall i \\in \\{1, \\ldots, n\\}, \\quad |a_{ii}| > \\sum_{j \\neq i} |a_{ij}| \\\\ \\text{Implémenter une fonction diagdom(A) qui teste cette propriété.}",
       correction: `import numpy as np
 
 def diagdom(A: np.ndarray) -> bool:
@@ -302,11 +313,13 @@ print("M2 est à diagonale dominante :", diagdom(M2))  # True`
     title: "Matrices stochastiques",
     difficulty: "Avancé",
     description: "Implémenter une fonction pour tester si une matrice est stochastique.",
-    color: "red",
+    color: "blue",
     type: "exercise",
     content: {
-      objective: "Implémenter une fonction qui teste si une matrice est stochastique",
-      enonce: "Une matrice est stochastique si ses coefficients sont positifs et si chaque ligne somme à 1.\n\nImplémenter une fonction stoch(A) qui teste cette propriété.",
+      objective: "\\text{Implémenter une fonction qui teste si une matrice est stochastique}",
+      isLatex: true,
+      enonce: "Une matrice est stochastique si tous les coefficients sont positifs et chaque ligne somme à 1. Implémenter une fonction stoch(A).",
+      enonce_latex: "\\text{Une matrice est stochastique si :} \\\\ \\text{• Tous les coefficients sont positifs : } a_{ij} \\geq 0 \\\\ \\text{• Chaque ligne somme à 1 : } \\sum_{j=1}^{m} a_{ij} = 1 \\text{ pour tout } i \\\\ \\text{Implémenter une fonction stoch(A) qui teste cette propriété.}",
       correction: `import numpy as np
 
 def stoch(A):
@@ -336,18 +349,20 @@ print("M3 est stochastique :", stoch(M3))  # True`
     title: "Matrices nilpotentes",
     difficulty: "Avancé",
     description: "Étude des matrices nilpotentes et de leur indice.",
-    color: "red",
+    color: "blue",
     type: "exercise"
   }, {
     id: 11,
     title: "Produit matriciel et somme",
     difficulty: "Facile",
     description: "Prévoir le résultat d'un produit matriciel simple.",
-    color: "green",
+    color: "blue",
     type: "exercise",
     content: {
-      objective: "Comprendre le produit matriciel et son lien avec la somme",
-      enonce: "Prévoir la réponse de la machine.\n\nn = 10\nA = np.arange(1, n+1)\nB = np.ones((n, 1))\nprint(np.dot(A, B))",
+      objective: "\\text{Calculer : } \\begin{pmatrix} 1 & 2 & \\cdots & 10 \\end{pmatrix} \\times \\begin{pmatrix} 1 \\\\ 1 \\\\ \\vdots \\\\ 1 \\end{pmatrix}",
+      isLatex: true,
+      enonce: "Prévoir le résultat du produit matriciel entre le vecteur [1,2,...,10] et un vecteur colonne de 1.",
+      enonce_latex: "\\text{Prévoir le résultat du code suivant :} \\\\ \\text{n = 10} \\\\ \\text{A = np.arange(1, n+1)} \\\\ \\text{B = np.ones((n, 1))} \\\\ \\text{print(np.dot(A, B))} \\\\ \\text{Calculer : } \\begin{pmatrix} 1 & 2 & \\cdots & 10 \\end{pmatrix} \\times \\begin{pmatrix} 1 \\\\ 1 \\\\ \\vdots \\\\ 1 \\end{pmatrix}",
       correction: `La machine renvoie 55, il s'agit de la somme des 10 premiers entiers.
 
 ∑(k=1 à 10) k = (10 × (10 + 1))/2 = 55
@@ -365,18 +380,10 @@ Le produit d'un vecteur ligne par un vecteur colonne de 1 donne la somme des él
     color: "blue",
     type: "exercise",
     content: {
-      objective: "Créer une matrice Z en utilisant np.ones, np.zeros et des boucles for.",
-      enonce: `Créer la matrice Z suivante de trois manières différentes :
-Z = 
-[[1 1 1 1 1]
- [1 0 0 0 0]
- [1 0 0 0 0]
- [1 0 0 0 0]
- [1 1 1 1 1]]
-
-a) Avec np.ones et des boucles for.
-b) Avec np.zeros et des boucles for.
-c) Avec np.ones et une modification avec np.zeros.`,
+      objective: "\\text{Créer la matrice } Z = \\begin{pmatrix} 1 & 1 & 1 & 1 & 1 \\\\ 1 & 0 & 0 & 0 & 0 \\\\ 1 & 0 & 0 & 0 & 0 \\\\ 1 & 0 & 0 & 0 & 0 \\\\ 1 & 1 & 1 & 1 & 1 \\end{pmatrix}",
+      isLatex: true,
+      enonce: "Créer la matrice Z de trois manières différentes : a) Avec np.ones et des boucles for b) Avec np.zeros et des boucles for c) Avec np.ones et une modification avec np.zeros",
+      enonce_latex: "\\text{Créer la matrice } Z \\text{ de trois manières différentes :} \\\\ Z = \\begin{pmatrix} 1 & 1 & 1 & 1 & 1 \\\\ 1 & 0 & 0 & 0 & 0 \\\\ 1 & 0 & 0 & 0 & 0 \\\\ 1 & 0 & 0 & 0 & 0 \\\\ 1 & 1 & 1 & 1 & 1 \\end{pmatrix} \\\\ \\text{a) Avec np.ones et des boucles for} \\\\ \\text{b) Avec np.zeros et des boucles for} \\\\ \\text{c) Avec np.ones et une modification avec np.zeros}",
       correction: `a) Avec np.ones et des boucles for :
 import numpy as np
 Z = np.ones((5,5))
@@ -404,16 +411,13 @@ print(Z)`
     title: "Fonction croix (diagonales à 1)",
     difficulty: "Avancé",
     description: "Construire une matrice avec des 1 sur les deux diagonales.",
-    color: "red",
+    color: "blue",
     type: "exercise",
     content: {
-      objective: "Écrire une fonction qui crée une matrice carrée avec des 1 sur la diagonale principale et l'anti-diagonale.",
-      enonce: `Écrire une fonction croix(n) qui construit une matrice carrée de taille n x n avec des zéros partout, sauf sur les deux diagonales où les coefficients valent 1.
-
-Par exemple, pour n = 3, la matrice résultante est :
-[[1 0 1]
- [0 1 0]
- [1 0 1]]`,
+      objective: "\\text{Écrire une fonction croix(n) créant : } \\begin{pmatrix} 1 & 0 & 1 \\\\ 0 & 1 & 0 \\\\ 1 & 0 & 1 \\end{pmatrix} \\text{ pour } n=3",
+      isLatex: true,
+      enonce: "Écrire une fonction croix(n) qui construit une matrice carrée n×n avec des zéros partout, sauf des 1 sur les deux diagonales.",
+      enonce_latex: "\\text{Écrire une fonction croix(n) qui construit une matrice carrée } n \\times n \\text{ avec :} \\\\ \\text{• Des zéros partout} \\\\ \\text{• Des 1 sur la diagonale principale et l'anti-diagonale} \\\\ \\text{Exemple pour } n = 3 : \\quad \\begin{pmatrix} 1 & 0 & 1 \\\\ 0 & 1 & 0 \\\\ 1 & 0 & 1 \\end{pmatrix}",
       correction: `import numpy as np
 
 def croix(n):
@@ -430,14 +434,13 @@ print(croix(3))`
     title: "Fonction puissance d'une matrice",
     difficulty: "Moyen",
     description: "Écrire une fonction pour calculer la puissance n-ième d'une matrice.",
-    color: "orange",
+    color: "blue",
     type: "exercise",
     content: {
-      objective: "Implémenter une fonction qui calcule M^n pour une matrice M donnée.",
-      enonce: `Soit la matrice M suivante :
-M = np.array([[1, -5, 6], [2, -3, 0], [-1, 5, 4]])
-
-Écrire une fonction puissance(n) qui renvoie la matrice M^n.`,
+      objective: "\\text{Calculer } M^n \\text{ pour } M = \\begin{pmatrix} 1 & -5 & 6 \\\\ 2 & -3 & 0 \\\\ -1 & 5 & 4 \\end{pmatrix}",
+      isLatex: true,
+      enonce: "Soit la matrice M donnée. Écrire une fonction puissance(n) qui renvoie M^n.",
+      enonce_latex: "\\text{Soit la matrice } M = \\begin{pmatrix} 1 & -5 & 6 \\\\ 2 & -3 & 0 \\\\ -1 & 5 & 4 \\end{pmatrix} \\\\ \\text{Écrire une fonction puissance(n) qui renvoie } M^n",
       correction: `import numpy as np
 
 M = np.array([[1, -5, 6], [2, -3, 0], [-1, 5, 4]])
@@ -458,13 +461,10 @@ print(puissance(4))`
     color: "blue",
     type: "exercise",
     content: {
-      objective: "Utiliser np.ones et np.eye pour construire une matrice en une seule ligne.",
-      enonce: `Construire la matrice suivante en une seule ligne de code, à l’aide de np.ones et np.eye :
-[[-8  4  4]
- [ 4 -8  4]
- [ 4  4 -8]]
-
-Indice : commencez par une matrice remplie de 4, puis corrigez la diagonale.`,
+      objective: "\\text{Construire } \\begin{pmatrix} -8 & 4 & 4 \\\\ 4 & -8 & 4 \\\\ 4 & 4 & -8 \\end{pmatrix} \\text{ en une ligne}",
+      isLatex: true,
+      enonce: "Construire la matrice donnée en une seule ligne de code avec np.ones et np.eye. Indice : commencer par une matrice remplie de 4.",
+      enonce_latex: "\\text{Construire en une seule ligne avec np.ones et np.eye :} \\\\ A = \\begin{pmatrix} -8 & 4 & 4 \\\\ 4 & -8 & 4 \\\\ 4 & 4 & -8 \\end{pmatrix} \\\\ \\text{Indice : commencer par une matrice remplie de 4, puis corriger la diagonale}",
       correction: `import numpy as np
 
 A = 4 * np.ones((3, 3)) - 12 * np.eye(3, 3)
@@ -475,30 +475,13 @@ print(A)`
     title: "Tester si une matrice est antisymétrique",
     difficulty: "Avancé",
     description: "Vérifier si une matrice est antisymétrique en implémentant une fonction.",
-    color: "red",
+    color: "blue",
     type: "exercise",
     content: {
-      objective: "Implémenter une fonction qui teste si une matrice carrée est antisymétrique.",
-      enonce: `On appelle matrice antisymétrique une matrice carrée M telle que :
-- Tous les éléments diagonaux sont nuls.
-- Pour tout i ≠ j, on a : M[i][j] = –M[j][i].
-
-Compléter la fonction suivante pour qu’elle teste si une matrice est antisymétrique :
-def est_antisymetrique(M):
-    n = len(M)
-
-    # Vérifier que la matrice est carrée
-    for ligne in M:
-        if len(ligne) != n:
-            return False
-    
-    # Vérifier que la diagonale est nulle
-    # ... à compléter
-    
-    # Vérifier la condition M[j][i] = -M[i][j]
-    # ... à compléter
-
-    return True`,
+      objective: "\\text{Tester si } M^T = -M \\text{ (matrice antisymétrique)}",
+      isLatex: true,
+      enonce: "Une matrice antisymétrique M vérifie : diagonale nulle et M^T = -M. Compléter la fonction est_antisymetrique(M).",
+      enonce_latex: "\\text{Une matrice antisymétrique } M \\text{ vérifie :} \\\\ \\text{• Diagonale nulle : } m_{ii} = 0 \\text{ pour tout } i \\\\ \\text{• Antisymétrie : } m_{ij} = -m_{ji} \\text{ pour tout } i \\neq j \\\\ \\text{Équivalent à : } M^T = -M \\\\ \\text{Compléter la fonction est\\_antisymetrique(M) qui teste cette propriété.}",
       correction: `import numpy as np
 
 def est_antisymetrique(M):
@@ -535,11 +518,13 @@ print(f"M3 est antisymétrique : {est_antisymetrique(M3)}")`
     title: "Triangle de Pascal",
     description: "Générer le triangle de Pascal jusqu'à l'ordre n.",
     difficulty: "Avancé",
-    color: "red",
+    color: "blue",
     type: "exercise",
     content: {
-      objective: "Écrire une fonction qui génère le triangle de Pascal sous forme de liste de listes.",
-      enonce: "Écrire en langage Python une fonction pascal(n) qui prend en argument un entier naturel n et qui renvoie en sortie la liste de listes représentant le triangle de Pascal à l’ordre n.",
+      objective: "\\text{Générer le triangle de Pascal : } \\begin{pmatrix} 1 \\\\ 1 \\; 1 \\\\ 1 \\; 2 \\; 1 \\\\ 1 \\; 3 \\; 3 \\; 1 \\\\ \\vdots \\end{pmatrix}",
+      isLatex: true,
+      enonce: "Écrire une fonction pascal(n) qui renvoie le triangle de Pascal à l'ordre n sous forme de liste de listes.",
+      enonce_latex: "\\text{Écrire une fonction pascal(n) qui renvoie le triangle de Pascal à l'ordre } n : \\\\ \\text{Ligne 0 : } (1) \\\\ \\text{Ligne 1 : } (1, 1) \\\\ \\text{Ligne 2 : } (1, 2, 1) \\\\ \\text{Ligne 3 : } (1, 3, 3, 1) \\\\ \\text{avec } C_n^k = \\frac{n!}{k!(n-k)!} \\text{ et } C_n^k = C_{n-1}^{k-1} + C_{n-1}^k",
       correction: `def pascal(n):
     triangle = []
     for i in range(n):
@@ -556,6 +541,55 @@ for row in triangle_result:
     print(row)`
     }
   }];
+
+  // Navigation au clavier
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Ne pas intercepter les touches si on est dans un input ou textarea
+      if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) {
+        return;
+      }
+
+      // Navigation uniquement si un exercice est sélectionné
+      if (selectedExercise !== null) {
+        switch (event.key) {
+          case 'ArrowLeft':
+            event.preventDefault();
+            // Aller à l'exercice précédent
+            const prevExerciseId = selectedExercise - 1;
+            if (prevExerciseId >= 2) {
+              handleNavigate(prevExerciseId);
+            }
+            break;
+          case 'ArrowRight':
+            event.preventDefault();
+            // Aller à l'exercice suivant
+            const nextExerciseId = selectedExercise + 1;
+            const maxExerciseId = Math.max(...exercises.map(ex => ex.id));
+            if (nextExerciseId <= maxExerciseId) {
+              handleNavigate(nextExerciseId);
+            }
+            break;
+          case 'ArrowDown':
+            event.preventDefault();
+            // Révéler/masquer la correction
+            toggleCorrection(selectedExercise);
+            break;
+          case 'Escape':
+            event.preventDefault();
+            // Retourner à la liste des exercices
+            setSelectedExercise(null);
+            break;
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedExercise, exercises, handleNavigate, toggleCorrection]);
+
   const renderQCMContent = () => <div className="space-y-6">
       {qcmQuestions.map((q, index) => <Card key={q.id} className="border-gray-200">
           <CardContent className="pt-6">
@@ -864,32 +898,64 @@ def Nilp(A):
           </div>
         </div>
 
+        {/* Raccourcis clavier */}
+        <div className="mb-6 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+          <div className="flex flex-wrap gap-4 text-sm text-blue-700">
+            <div className="flex items-center gap-2">
+              <kbd className="px-2 py-1 bg-white border border-blue-300 rounded text-xs">←</kbd>
+              <span>Exercice précédent</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <kbd className="px-2 py-1 bg-white border border-blue-300 rounded text-xs">→</kbd>
+              <span>Exercice suivant</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <kbd className="px-2 py-1 bg-white border border-blue-300 rounded text-xs">↓</kbd>
+              <span>Révéler/masquer correction</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <kbd className="px-2 py-1 bg-white border border-blue-300 rounded text-xs">Esc</kbd>
+              <span>Retour à la liste</span>
+            </div>
+          </div>
+        </div>
+
         {exercise.content ? (
           <>
-            <Card className="mb-8 border-2 border-gray-200 bg-gray-50 shadow-lg">
+            <Card className="mb-8 border-0 shadow-lg">
               <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-gray-700">
+                <CardTitle className="flex items-center gap-3 text-blue-600">
                   <Calculator className="h-6 w-6" />
                   Objectif de l'exercice
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700 font-medium mb-4">
-                  {exercise.content.objective}
-                </p>
+                <div className="text-gray-700 font-medium mb-4">
+                  {exercise.content.isLatex ? (
+                    <LatexRenderer latex={exercise.content.objective} />
+                  ) : (
+                    <p>{exercise.content.objective}</p>
+                  )}
+                </div>
               </CardContent>
             </Card>
 
             {/* Énoncé */}
-            <Card className="border-2 border-gray-200 bg-gray-50 shadow-lg mb-4">
+            <Card className="border-0 shadow-lg mb-4">
               <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-gray-700">
+                <CardTitle className="flex items-center gap-3 text-blue-600">
                   <BookOpen className="h-6 w-6" />
                   Énoncé
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700 whitespace-pre-line">{exercise.content.enonce}</p>
+                <div className="text-gray-700">
+                  {exercise.content.enonce_latex ? (
+                    <LatexRenderer latex={exercise.content.enonce_latex} />
+                  ) : (
+                    <p className="whitespace-pre-line">{exercise.content.enonce}</p>
+                  )}
+                </div>
               </CardContent>
             </Card>
 
@@ -897,10 +963,10 @@ def Nilp(A):
             <div className="flex justify-center mb-4">
               <Button
                 variant="outline"
-                onClick={() => toggleCorrection(0)}
-                className="flex items-center gap-2 border-gray-200 text-gray-600 hover:bg-gray-50"
+                onClick={() => toggleCorrection(selectedExercise)}
+                className="flex items-center gap-2 border-blue-300 text-blue-600 hover:bg-blue-50"
               >
-                {showCorrections.has(0) ? (
+                {showCorrections.has(selectedExercise) ? (
                   <>
                     <ChevronUp className="h-4 w-4" />
                     Masquer la correction
@@ -915,17 +981,17 @@ def Nilp(A):
             </div>
 
             {/* Correction (affichée conditionnellement) */}
-            {showCorrections.has(0) && (
-              <Card className="border-2 border-gray-200 bg-gray-50 shadow-lg">
+            {showCorrections.has(selectedExercise) && (
+              <Card className="border-0 shadow-lg">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-gray-700">
+                  <CardTitle className="flex items-center gap-3 text-blue-600">
                     <Code className="h-6 w-6" />
                     Correction
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                    <pre className="text-gray-600 text-sm font-mono">
+                      <div className="bg-blue-900 text-blue-100 rounded-lg p-4 overflow-x-auto border border-blue-300">
+                    <pre className="text-blue-100 text-sm font-mono">
                       <code>{exercise.content.correction}</code>
                     </pre>
                   </div>
@@ -940,7 +1006,7 @@ def Nilp(A):
             id: 1,
             title: "Matrices",
             slug: "matrices",
-            color: "green"
+            color: "blue"
           }}
           isExercisePage={true}
           totalExercises={exercises.length}
@@ -957,7 +1023,7 @@ def Nilp(A):
         <h1 className="text-4xl font-bold text-gray-800 mb-4">
           Module 1 : Exercices - Matrices NumPy
         </h1>
-        <p className="text-xl text-muted-foreground">
+        <p className="text-xl text-blue-600">
           Exercices pratiques sur les matrices et NumPy
         </p>
       </div>
@@ -965,20 +1031,20 @@ def Nilp(A):
       {!showQCM && !selectedExercise && (
         <>
           {/* Section QCM */}
-          <Card className="mb-8 hover:shadow-lg transition-shadow cursor-pointer border-2 border-gray-200 hover:border-gray-300" onClick={() => setShowQCM(true)}>
-            <CardHeader className="bg-gray-50">
+          <Card className="mb-8 hover:shadow-lg transition-shadow cursor-pointer border-2 border-blue-300 bg-blue-50/50 hover:border-blue-400" onClick={() => setShowQCM(true)}>
+            <CardHeader>
               <CardTitle className="flex items-center gap-3">
-                <Trophy className="h-8 w-8 text-gray-600" />
+                <Trophy className="h-8 w-8 text-blue-600" />
                 <div>
-                  <h2 className="text-2xl text-gray-700">QCM d'évaluation</h2>
-                  <p className="text-sm text-gray-600 mt-1">Testez vos connaissances sur les matrices NumPy</p>
+                  <h2 className="text-2xl text-blue-700">QCM d'évaluation</h2>
+                  <p className="text-sm text-blue-600 mt-1">Testez vos connaissances sur les matrices NumPy</p>
                 </div>
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-4">
               <div className="flex items-center justify-between">
-                <p className="text-gray-600">20 questions pour évaluer votre niveau</p>
-                <Button variant="outline" className="flex items-center gap-2 border-gray-200 text-gray-600 hover:bg-gray-50">
+                <p className="text-blue-600">20 questions pour évaluer votre niveau</p>
+                <Button variant="outline" className="flex items-center gap-2 border-blue-300 text-blue-600 hover:bg-blue-50">
                   <Play className="h-4 w-4" />
                   Commencer le QCM
                 </Button>
@@ -986,54 +1052,32 @@ def Nilp(A):
             </CardContent>
           </Card>
 
-          <div className="mb-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="space-y-2">
-                <Badge variant="outline" className="bg-gray-100 text-gray-700 border-gray-300">Création de matrices</Badge>
-                <p className="text-sm text-gray-600">
-                  Maîtriser les différentes méthodes de création
-                </p>
-              </div>
-              <div className="space-y-2">
-                <Badge variant="outline" className="bg-gray-100 text-gray-700 border-gray-300">Opérations matricielles</Badge>
-                <p className="text-sm text-gray-600">
-                  Effectuer des calculs sur les matrices
-                </p>
-              </div>
-              <div className="space-y-2">
-                <Badge variant="outline" className="bg-gray-100 text-gray-700 border-gray-300">Indexation</Badge>
-                <p className="text-sm text-gray-600">
-                  Accéder et modifier les éléments des matrices
-                </p>
-              </div>
-            </div>
-          </div>
 
           {/* Grille d'exercices */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {exercises.map(exercise => (
               <Card
                 key={exercise.id}
-                className="hover:shadow-lg transition-shadow cursor-pointer border-2 border-gray-200 hover:border-gray-300 h-full flex flex-col"
+                className="hover:shadow-lg transition-shadow cursor-pointer border-2 border-blue-300 bg-blue-50/50 hover:border-blue-400 h-full flex flex-col"
                 onClick={() => setSelectedExercise(exercise.id)}
               >
                 <CardHeader className="flex-shrink-0">
                   <div className="flex items-center gap-3">
-                    <Calculator className="h-6 w-6 text-gray-600" />
+                    <Calculator className="h-6 w-6 text-blue-600" />
                     <div>
                       <CardTitle className="text-lg">{exercise.title}</CardTitle>
-                      <Badge variant="secondary" className="mt-1 bg-gray-100 text-gray-700">
+                      <Badge variant="secondary" className="mt-1 bg-blue-100 text-blue-700">
                         {exercise.difficulty}
                       </Badge>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent className="flex-grow flex flex-col">
-                  <p className="text-sm text-muted-foreground mb-4 flex-grow">
+                  <p className="text-sm text-blue-600 mb-4 flex-grow">
                     {exercise.description}
                   </p>
                   <div className="mt-auto">
-                    <Button className="w-full bg-gray-600 hover:bg-gray-700">
+                    <Button className="w-full bg-blue-600 hover:bg-blue-700">
                       <Play className="h-4 w-4 mr-2" />
                       Commencer l'exercice
                     </Button>

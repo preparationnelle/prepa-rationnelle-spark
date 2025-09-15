@@ -5,7 +5,7 @@ import { MathQuiz } from '@/components/quiz/MathQuiz';
 import { mathQuizQuestions } from '@/data/mathQuizQuestions';
 
 // Mapping slug -> meta
-const CHAPTERS: Record<string, { number: number; title: string }> = {
+const CHAPTERS: Record<string, { number: number; title: string; key?: string }> = {
   'elements-de-logique': { number: 1, title: 'Logique & raisonnement fondamentaux' },
   'ensembles-et-applications': { number: 2, title: 'Ensembles et applications' },
   'sommes-produits-coefficients-binomiaux': { number: 3, title: 'Sommes, produits & coefficients binomiaux' },
@@ -25,6 +25,18 @@ const CHAPTERS: Record<string, { number: number; title: string }> = {
   'variables-aleatoires-discretes-lois': { number: 17, title: 'Variables aléatoires discrètes & lois' },
   'convergences-theoremes-limites': { number: 18, title: 'Convergences & théorèmes limites' },
   'variables-aleatoires-densite': { number: 46, title: 'Variables aléatoires à densité' },
+  // Chapitres 2e année
+  'complements-algebre-lineaire': { number: 1, title: 'Compléments d\'algèbre linéaire', key: 'chapitre1Complements2e' },
+  'endomorphismes-matrices-avancees': { number: 2, title: 'Éléments propres et réduction des endomorphismes', key: 'chapitre2Endomorphismes2e' },
+  'algebre-bilineaire': { number: 3, title: 'Algèbre bilinéaire', key: 'chapitre3AlgebreBilineaire2e' },
+  'algebre-bilineaire-espaces-euclidiens': { number: 8, title: 'Algèbre bilinéaire et espaces euclidiens', key: 'chapitre3AlgebreBilineaire2e' },
+  'n-uplets-variables-aleatoires': { number: 6, title: 'n-uplets de variables aléatoires réelles', key: 'chapitre6NupletsVariables' },
+  'couple-variables-aleatoires': { number: 7, title: 'Probabilités (Variables aléatoires)', key: 'chapitre7CoupleVariables' },
+  'fonctions-multivariees-calcul-differentiel': { number: 4, title: 'Fonctions multivariées et calcul différentiel' },
+  'optimisation-multivariee-avancee': { number: 10, title: 'Optimisation multivariée avancée' },
+  'reduction-matrices-symetriques': { number: 9, title: 'Réduction des matrices symétriques' },
+  'convergences-approximations': { number: 11, title: 'Convergences et approximations' },
+  'estimation-statistique-avancee': { number: 12, title: 'Estimation statistique avancée' },
 };
 
 const keyFromNumber = (n: number) => `chapitre${n}` as const;
@@ -48,7 +60,8 @@ const MathsApprofondiesQuizPage: React.FC = () => {
     );
   }
 
-  const questions = (mathQuizQuestions as any)[keyFromNumber(meta.number)] as any[] | undefined;
+  const questionsKey = meta.key || keyFromNumber(meta.number);
+  const questions = (mathQuizQuestions as any)[questionsKey] as any[] | undefined;
 
   if (!questions || questions.length === 0) {
     return (

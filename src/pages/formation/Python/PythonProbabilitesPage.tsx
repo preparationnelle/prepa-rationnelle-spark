@@ -83,7 +83,7 @@ const PythonProbabilitesPage = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="bg-gray-900 rounded-lg p-4 mb-4">
+            <div className="bg-blue-900 text-blue-100 rounded-lg p-4 mb-4 border border-blue-300">
               <pre className="text-gray-600 text-sm">
 {`import numpy as np
 import numpy.random as rd

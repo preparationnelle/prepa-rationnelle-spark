@@ -29,9 +29,19 @@ const GeopolitiquesMethodologiePage = () => {
       featured: true,
       route: "/formation/geopolitique/methodologie/dissertation"
     },
-    // Espace pour futurs articles
     {
       id: 3,
+      title: "Dissertation de géopolitique de A à Z",
+      description: "Étapes détaillées, du brouillon à la rédaction – sans rien oublier",
+      readTime: "",
+      category: "Méthodologie",
+      published: "2025",
+      featured: false,
+      route: "/formation/geopolitique/methodologie/dissertation-a-z"
+    },
+    // Espace pour futurs articles
+    {
+      id: 4,
       title: "À venir...",
       description: "Prochains articles de méthodologie",
       readTime: "",
@@ -51,22 +61,22 @@ const GeopolitiquesMethodologiePage = () => {
     {
       nom: "Canal de Suez et Panama",
       utilisation: "Routes stratégiques, mondialisation, conflits géopolitiques",
-      color: "bg-green-100 text-green-700"
+      color: "bg-blue-100 text-blue-700"
     },
     {
       nom: "Taïwan",
       utilisation: "Tensions sino-américaines, espaces maritimes, dépendance technologique",
-      color: "bg-red-100 text-red-700"
+      color: "bg-blue-100 text-blue-700"
     },
     {
       nom: "Le Sahel",
       utilisation: "Sécurité, démographie, interventions militaires internationales",
-      color: "bg-yellow-100 text-yellow-700"
+      color: "bg-blue-100 text-blue-700"
     },
     {
       nom: "L'Arctique",
       utilisation: "Nouvelles routes maritimes, réchauffement climatique, rivalités entre puissances",
-      color: "bg-purple-100 text-purple-700"
+      color: "bg-blue-100 text-blue-700"
     }
   ];
 
@@ -135,99 +145,72 @@ const GeopolitiquesMethodologiePage = () => {
           </p>
         </div>
 
-        {/* Articles Grid */}
-        <div className="grid gap-6 max-w-4xl mx-auto mb-12">
-          {articles.map((article) => {
-            const ArticleCard = (
-              <Card 
-                key={article.id} 
-                className={`border-2 transition-colors ${
-                  article.disabled 
-                    ? 'opacity-50 cursor-not-allowed' 
-                    : article.featured 
-                      ? article.id === 1 ? 'border-emerald-500/50 hover:border-emerald-500 cursor-pointer' : 'border-blue-500/50 hover:border-blue-500 cursor-pointer'
-                      : 'hover:border-gray-500/50 cursor-pointer'
-                }`}
-              >
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className={`p-3 rounded-lg ${
-                        article.featured 
-                          ? article.id === 1 ? 'bg-emerald-500' : 'bg-blue-500'
-                          : 'bg-gray-500'
-                      } text-white`}>
-                        <FileText className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <div className="flex items-center gap-2 mb-2">
-                          <Badge 
-                            variant={article.featured ? "default" : "secondary"} 
-                            className={
-                              article.featured 
-                                ? article.id === 1 ? "bg-emerald-500" : "bg-blue-500"
-                                : ""
-                            }
-                          >
-                            {article.category}
-                          </Badge>
-                          {article.readTime && (
-                            <span className="text-sm text-muted-foreground">{article.readTime} de lecture</span>
-                          )}
-                        </div>
-                        <CardTitle className="text-xl">{article.title}</CardTitle>
-                        <p className="text-muted-foreground mt-1">{article.description}</p>
-                      </div>
-                    </div>
-                    {!article.disabled && (
-                      <ArrowRight className="h-5 w-5 text-muted-foreground" />
+        {/* Articles - style ESH */}
+        <div className="max-w-4xl mx-auto mb-12 space-y-4">
+          {articles.map((article, idx) => (
+            <div
+              key={article.id}
+              className={`bg-white rounded-xl p-6 shadow-md transition-all duration-300 border group ${
+                article.disabled
+                  ? 'opacity-60 cursor-not-allowed'
+                  : 'hover:shadow-2xl hover:scale-105 hover:-translate-y-1 hover:border-blue-200 border-transparent'
+              }`}
+            >
+              <div className="flex items-start gap-4">
+                <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 flex-shrink-0 ${
+                  article.disabled ? 'bg-gray-200 text-gray-500' : 'bg-blue-100 text-blue-600'
+                }`}>
+                  <span className="font-bold text-lg">{idx + 1}</span>
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Badge variant="secondary">{article.category}</Badge>
+                    {article.readTime && (
+                      <span className="text-sm text-muted-foreground">{article.readTime} de lecture</span>
                     )}
                   </div>
-                </CardHeader>
-                {article.featured && (
-                  <CardContent>
-                    <Button 
-                      variant="outline" 
-                      className="w-full"
-                      onClick={() => {
-                        if (article.route) {
-                          window.location.href = article.route;
-                        } else {
-                          // Scroll vers l'article sur cette page
-                          document.getElementById('article-principal')?.scrollIntoView({ behavior: 'smooth' });
-                        }
-                      }}
-                    >
-                      <FileText className="mr-2 h-4 w-4" />
-                      Lire l'article
-                    </Button>
-                  </CardContent>
-                )}
-              </Card>
-            );
-
-            // Si l'article a une route, l'envelopper dans un Link
-            if (article.route && !article.disabled) {
-              return (
-                <Link key={article.id} to={article.route}>
-                  {ArticleCard}
-                </Link>
-              );
-            }
-
-            return ArticleCard;
-          })}
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{article.title}</h3>
+                  <p className="text-gray-600 mb-4">{article.description}</p>
+                  <div className="flex gap-3">
+                    {article.route && !article.disabled ? (
+                      <Link to={article.route}>
+                        <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
+                          <FileText className="mr-2 h-4 w-4" />
+                          Lire l'article
+                        </Button>
+                      </Link>
+                    ) : (
+                      <Button
+                        disabled={article.disabled}
+                        className={`px-4 py-2 rounded-md font-medium ${
+                          article.disabled ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 text-white'
+                        }`}
+                        onClick={() => {
+                          if (!article.disabled && !article.route) {
+                            document.getElementById('article-principal')?.scrollIntoView({ behavior: 'smooth' });
+                          }
+                        }}
+                      >
+                        <FileText className="mr-2 h-4 w-4" />
+                        {article.disabled ? 'Bientôt' : "Lire l'article"}
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Article principal */}
         <div id="article-principal" className="max-w-4xl mx-auto">
-          <Card className="border-2 border-emerald-500/30 mb-8">
-            <CardHeader className="bg-gradient-to-r from-emerald-50 to-green-50">
+          <Card className="border-2 border-blue-200 mb-8">
+            <CardHeader className="bg-blue-50">
               <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-emerald-500 text-white">
+                <div className="p-2 rounded-lg bg-blue-600 text-white">
                   <PenTool className="h-5 w-5" />
                 </div>
-                <Badge className="bg-emerald-500">Méthode de travail</Badge>
+                <Badge className="bg-blue-600">Méthode de travail</Badge>
                 <span className="text-sm text-muted-foreground">12 min de lecture</span>
               </div>
               <CardTitle className="text-2xl">Comment travailler la géopolitique au quotidien</CardTitle>
@@ -238,7 +221,7 @@ const GeopolitiquesMethodologiePage = () => {
           </Card>
 
           {/* Programme d'entraînement hebdomadaire */}
-          <Card className="mb-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+          <Card className="mb-8 bg-blue-600 text-white">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-center">Programme d'entraînement hebdomadaire</CardTitle>
             </CardHeader>
@@ -286,7 +269,7 @@ const GeopolitiquesMethodologiePage = () => {
                           <CardContent className="p-4">
                             <div className="flex items-start justify-between gap-4">
                               <div className="flex-1">
-                                <Badge className={`${etude.color} mb-2`}>{etude.nom}</Badge>
+                                <Badge className={`bg-blue-100 text-blue-700 mb-2`}>{etude.nom}</Badge>
                                 <p className="text-sm text-muted-foreground">{etude.utilisation}</p>
                               </div>
                             </div>
@@ -320,7 +303,7 @@ const GeopolitiquesMethodologiePage = () => {
             <AccordionItem value="dissertations" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-green-500 text-white">
+                  <div className="p-2 rounded-lg bg-blue-500 text-white">
                     <PenTool className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -341,14 +324,14 @@ const GeopolitiquesMethodologiePage = () => {
                     <div className="grid gap-2">
                       {sujetsIncontournables.map((sujet, index) => (
                         <div key={index} className="flex items-center gap-2 p-2 bg-gray-50 rounded">
-                          <Target className="h-4 w-4 text-green-600" />
+                          <Target className="h-4 w-4 text-blue-600" />
                           <span className="text-sm">{sujet}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="bg-green-50 p-4 rounded-lg">
+                  <div className="bg-blue-50 p-4 rounded-lg">
                     <h4 className="font-semibold mb-4">Méthode pour préparer une dissertation type :</h4>
                     
                     <div className="space-y-4">
@@ -363,7 +346,7 @@ const GeopolitiquesMethodologiePage = () => {
                         <h5 className="font-medium mb-3">2. Construire un plan en trois parties systématiquement réutilisable</h5>
                         <div className="space-y-3">
                           {methodePlanType.map((partie, index) => (
-                            <Card key={index} className="border-l-4 border-l-green-500">
+                            <Card key={index} className="border-l-4 border-l-blue-500">
                               <CardContent className="p-3">
                                 <h6 className="font-medium">{partie.partie}</h6>
                                 <p className="text-sm text-muted-foreground">{partie.description}</p>
@@ -376,7 +359,7 @@ const GeopolitiquesMethodologiePage = () => {
 
                       <div>
                         <h5 className="font-medium mb-2">3. Apprendre les accroches et citations par cœur</h5>
-                        <div className="bg-white p-3 rounded border-l-4 border-l-orange-500">
+                        <div className="bg-white p-3 rounded border-l-4 border-l-blue-500">
                           <p className="text-sm italic">
                             « Les frontières sont le mariage du droit et de la force » – Michel Foucher
                           </p>
@@ -396,7 +379,7 @@ const GeopolitiquesMethodologiePage = () => {
             <AccordionItem value="entrainement" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-orange-500 text-white">
+                  <div className="p-2 rounded-lg bg-blue-500 text-white">
                     <Clock className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -412,26 +395,26 @@ const GeopolitiquesMethodologiePage = () => {
                     il faut savoir les mobiliser rapidement.
                   </p>
 
-                  <div className="bg-orange-50 p-4 rounded-lg">
+                  <div className="bg-blue-50 p-4 rounded-lg">
                     <h4 className="font-semibold mb-3 flex items-center gap-2">
                       <CheckCircle className="h-4 w-4" />
                       Comment s'entraîner efficacement ?
                     </h4>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-orange-500 rounded-full mt-2"></div>
+                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
                         <span>Prendre un sujet précis et proposer un plan en 15 minutes</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-orange-500 rounded-full mt-2"></div>
+                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
                         <span>Faire des mises en situation régulières : imaginer que l'on passe un oral et expliquer un sujet sans notes</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-orange-500 rounded-full mt-2"></div>
+                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
                         <span>S'entraîner avec des croquis et des cartes en temps limité</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-orange-500 rounded-full mt-2"></div>
+                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
                         <span>Corriger ses propres copies et les comparer avec des corrections de concours</span>
                       </li>
                     </ul>
@@ -442,7 +425,7 @@ const GeopolitiquesMethodologiePage = () => {
                     <div className="grid gap-2">
                       {sujetsEntrainement.map((sujet, index) => (
                         <div key={index} className="flex items-center gap-2 p-2 bg-gray-50 rounded">
-                          <Clock className="h-4 w-4 text-orange-600" />
+                          <Clock className="h-4 w-4 text-blue-600" />
                           <span className="text-sm">{sujet}</span>
                         </div>
                       ))}

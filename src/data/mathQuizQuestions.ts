@@ -762,6 +762,201 @@ export const chapitre11QuizQuestions: MathQuizQuestion[] = [
   }
 ];
 
+// Questions pour les chapitres de 2e année - Compléments d'algèbre linéaire
+export const chapitre1Complements2eQuizQuestions: MathQuizQuestion[] = [
+  {
+    id: 1,
+    question: "Que signifie F ⊕ G pour deux sous-espaces F et G ?",
+    options: ["F + G", "F ∩ G = {0} et F + G", "F ∪ G", "F × G"],
+    correctAnswer: 1,
+    explanation: "F ⊕ G signifie somme directe : F ∩ G = {0} et tout élément de F + G s'écrit uniquement comme somme d'un élément de F et d'un élément de G."
+  },
+  {
+    id: 2,
+    question: "Quelle est la formule de Grassmann ?",
+    options: ["dim(F + G) = dim F + dim G", "dim(F + G) = dim F + dim G - dim(F ∩ G)", "dim(F ⊕ G) = dim F × dim G", "dim(F + G) = max(dim F, dim G)"],
+    correctAnswer: 1,
+    explanation: "La formule de Grassmann : dim(F + G) = dim F + dim G - dim(F ∩ G)."
+  },
+  {
+    id: 3,
+    question: "Si F et G sont supplémentaires dans E, alors :",
+    options: ["F ∩ G = E", "F + G = {0}", "F ⊕ G = E", "F = G"],
+    correctAnswer: 2,
+    explanation: "F et G sont supplémentaires si et seulement si F ⊕ G = E."
+  },
+  {
+    id: 4,
+    question: "Pour une somme directe de p sous-espaces F₁ ⊕ ... ⊕ Fₚ, on a :",
+    options: ["dim(⊕Fᵢ) ≤ ∑dim(Fᵢ)", "dim(⊕Fᵢ) = ∑dim(Fᵢ)", "dim(⊕Fᵢ) = ∏dim(Fᵢ)", "dim(⊕Fᵢ) = max dim(Fᵢ)"],
+    correctAnswer: 1,
+    explanation: "Pour une somme directe, dim(F₁ ⊕ ... ⊕ Fₚ) = dim F₁ + ... + dim Fₚ."
+  },
+  {
+    id: 5,
+    question: "Tout sous-espace d'un espace vectoriel de dimension finie :",
+    options: ["N'admet pas de supplémentaire", "Admet un unique supplémentaire", "Admet au moins un supplémentaire", "Est égal à l'espace entier"],
+    correctAnswer: 2,
+    explanation: "Tout sous-espace d'un espace vectoriel de dimension finie admet au moins un supplémentaire (mais pas nécessairement unique)."
+  }
+];
+
+// Questions pour Chapitre 2 - Endomorphismes matrices avancées
+export const chapitre2Endomorphismes2eQuizQuestions: MathQuizQuestion[] = [
+  {
+    id: 1,
+    question: "Que représente la matrice de passage P_{B←C} ?",
+    options: ["La matrice de C dans B", "La matrice pour passer de la base B à la base C", "La matrice pour passer de la base C à la base B", "L'inverse de la matrice C"],
+    correctAnswer: 2,
+    explanation: "P_{B←C} est la matrice de passage de la base C vers la base B."
+  },
+  {
+    id: 2,
+    question: "Si A et B sont des matrices semblables, alors :",
+    options: ["A = B", "Il existe P inversible telle que B = P⁻¹AP", "A + B = 0", "AB = BA"],
+    correctAnswer: 1,
+    explanation: "Deux matrices A et B sont semblables s'il existe une matrice inversible P telle que B = P⁻¹AP."
+  },
+  {
+    id: 3,
+    question: "La trace d'une matrice A ∈ Mₙ(ℝ) est :",
+    options: ["Le produit des éléments diagonaux", "La somme des éléments diagonaux", "Le déterminant de A", "La norme de A"],
+    correctAnswer: 1,
+    explanation: "Tr(A) = ∑ᵢ₌₁ⁿ aᵢᵢ est la somme des éléments diagonaux."
+  },
+  {
+    id: 4,
+    question: "Pour toutes matrices A, B ∈ Mₙ(ℝ), on a :",
+    options: ["Tr(AB) = Tr(A)Tr(B)", "Tr(AB) = Tr(BA)", "Tr(A + B) = Tr(A)Tr(B)", "Tr(A⁻¹) = 1/Tr(A)"],
+    correctAnswer: 1,
+    explanation: "Propriété fondamentale : Tr(AB) = Tr(BA) pour toutes matrices compatibles."
+  },
+  {
+    id: 5,
+    question: "Un sous-espace F est stable par φ ∈ L(E) si :",
+    options: ["φ(F) ⊂ F", "φ(F) = F", "φ(F) = E", "φ⁻¹(F) = F"],
+    correctAnswer: 0,
+    explanation: "F est stable par φ si φ(F) ⊂ F, c'est-à-dire si l'image de F par φ est incluse dans F."
+  }
+];
+
+// Questions pour Chapitre 3 - Algèbre bilinéaire
+export const chapitre3AlgebreBilineaire2eQuizQuestions: MathQuizQuestion[] = [
+  {
+    id: 1,
+    question: "Un produit scalaire sur E est une application :",
+    options: ["Linéaire", "Bilinéaire, symétrique et définie positive", "Quadratique", "Multilinéaire"],
+    correctAnswer: 1,
+    explanation: "Un produit scalaire est bilinéaire (linéaire en chaque variable), symétrique et définie positive."
+  },
+  {
+    id: 2,
+    question: "L'inégalité de Cauchy-Schwarz s'écrit :",
+    options: ["⟨x,y⟩ ≤ ‖x‖ + ‖y‖", "|⟨x,y⟩| ≤ ‖x‖ · ‖y‖", "‖x + y‖ ≤ ‖x‖ + ‖y‖", "⟨x,y⟩² ≤ ‖x‖²‖y‖²"],
+    correctAnswer: 1,
+    explanation: "L'inégalité de Cauchy-Schwarz : |⟨x,y⟩| ≤ ‖x‖ · ‖y‖ avec égalité ssi x et y sont colinéaires."
+  },
+  {
+    id: 3,
+    question: "Le théorème de Pythagore s'énonce :",
+    options: ["‖x + y‖² = ‖x‖² + ‖y‖²", "x ⊥ y ⟺ ‖x + y‖² = ‖x‖² + ‖y‖²", "⟨x,y⟩ = 0", "‖x‖ = ‖y‖"],
+    correctAnswer: 1,
+    explanation: "Théorème de Pythagore : x ⊥ y si et seulement si ‖x + y‖² = ‖x‖² + ‖y‖²."
+  },
+  {
+    id: 4,
+    question: "Une famille orthogonale de vecteurs non nuls est :",
+    options: ["Toujours liée", "Toujours libre", "Parfois libre", "Jamais libre"],
+    correctAnswer: 1,
+    explanation: "Une famille orthogonale de vecteurs non nuls est toujours libre."
+  },
+  {
+    id: 5,
+    question: "Le procédé d'orthonormalisation de Gram-Schmidt permet de :",
+    options: ["Calculer des produits scalaires", "Construire une base orthonormée à partir d'une base quelconque", "Diagonaliser des matrices", "Calculer des déterminants"],
+    correctAnswer: 1,
+    explanation: "Gram-Schmidt transforme toute base en une base orthonormée en préservant les espaces engendrés."
+  }
+];
+
+// Questions pour Chapitre 6 - n-uplets de variables aléatoires réelles
+export const chapitre6NupletsVariablesQuizQuestions: MathQuizQuestion[] = [
+  {
+    id: 1,
+    question: "Un vecteur aléatoire X = (X₁,...,Xₙ) est :",
+    options: ["Une application Ω → ℝ", "Une application Ω → ℝⁿ", "Un nombre réel", "Une matrice"],
+    correctAnswer: 1,
+    explanation: "Un vecteur aléatoire est une application de Ω vers ℝⁿ."
+  },
+  {
+    id: 2,
+    question: "Si X₁,...,Xₙ sont mutuellement indépendantes, alors :",
+    options: ["F_{X₁,...,Xₙ}(x₁,...,xₙ) = ∑F_{Xᵢ}(xᵢ)", "F_{X₁,...,Xₙ}(x₁,...,xₙ) = ∏F_{Xᵢ}(xᵢ)", "F_{X₁,...,Xₙ}(x₁,...,xₙ) = max F_{Xᵢ}(xᵢ)", "F_{X₁,...,Xₙ}(x₁,...,xₙ) = 0"],
+    correctAnswer: 1,
+    explanation: "Pour des variables indépendantes, la fonction de répartition conjointe est le produit des fonctions de répartition marginales."
+  },
+  {
+    id: 3,
+    question: "La linéarité de l'espérance s'écrit :",
+    options: ["E(XY) = E(X)E(Y)", "E(∑Xᵢ) = ∑E(Xᵢ)", "E(X²) = E(X)²", "E(X + Y) = E(X) × E(Y)"],
+    correctAnswer: 1,
+    explanation: "L'espérance est linéaire : E(∑Xᵢ) = ∑E(Xᵢ), même si les variables ne sont pas indépendantes."
+  },
+  {
+    id: 4,
+    question: "Si X₁,...,Xₙ sont indépendantes, alors V(∑Xᵢ) = :",
+    options: ["∑V(Xᵢ)", "∏V(Xᵢ)", "(∑V(Xᵢ))²", "max V(Xᵢ)"],
+    correctAnswer: 0,
+    explanation: "Pour des variables indépendantes, V(∑Xᵢ) = ∑V(Xᵢ)."
+  },
+  {
+    id: 5,
+    question: "Si Xᵢ ~ B(p) indépendantes, alors ∑Xᵢ ~ :",
+    options: ["B(np)", "B(n,p)", "P(np)", "N(np,np(1-p))"],
+    correctAnswer: 1,
+    explanation: "La somme de n variables de Bernoulli indépendantes de paramètre p suit une loi binomiale B(n,p)."
+  }
+];
+
+// Questions pour Chapitre 7 - Probabilités (Variables aléatoires)
+export const chapitre7CoupleVariablesQuizQuestions: MathQuizQuestion[] = [
+  {
+    id: 1,
+    question: "X et Y sont indépendantes si et seulement si :",
+    options: ["P(X=x, Y=y) = P(X=x) + P(Y=y)", "P(X=x, Y=y) = P(X=x) × P(Y=y)", "P(X=x, Y=y) = 0", "Cov(X,Y) = 1"],
+    correctAnswer: 1,
+    explanation: "Deux variables discrètes X et Y sont indépendantes ssi P(X=x, Y=y) = P(X=x) × P(Y=y) pour tout (x,y)."
+  },
+  {
+    id: 2,
+    question: "La formule de Huygens pour la covariance est :",
+    options: ["Cov(X,Y) = E(XY)", "Cov(X,Y) = E(X)E(Y)", "Cov(X,Y) = E(XY) - E(X)E(Y)", "Cov(X,Y) = V(X)V(Y)"],
+    correctAnswer: 2,
+    explanation: "Formule de Huygens : Cov(X,Y) = E(XY) - E(X)E(Y)."
+  },
+  {
+    id: 3,
+    question: "Si X et Y sont indépendantes, alors Cov(X,Y) = :",
+    options: ["1", "0", "E(X)E(Y)", "V(X) + V(Y)"],
+    correctAnswer: 1,
+    explanation: "Si X et Y sont indépendantes, alors Cov(X,Y) = 0."
+  },
+  {
+    id: 4,
+    question: "Le coefficient de corrélation linéaire ρ_{X,Y} vérifie :",
+    options: ["0 ≤ ρ_{X,Y} ≤ 1", "-1 ≤ ρ_{X,Y} ≤ 1", "ρ_{X,Y} ≥ 1", "ρ_{X,Y} est quelconque"],
+    correctAnswer: 1,
+    explanation: "Le coefficient de corrélation vérifie toujours -1 ≤ ρ_{X,Y} ≤ 1."
+  },
+  {
+    id: 5,
+    question: "Si X ~ P(λ) et Y ~ P(μ) indépendantes, alors X + Y ~ :",
+    options: ["P(λ + μ)", "P(λμ)", "B(λ + μ)", "N(λ + μ, λ + μ)"],
+    correctAnswer: 0,
+    explanation: "Stabilité des lois de Poisson : si X ~ P(λ) et Y ~ P(μ) indépendantes, alors X + Y ~ P(λ + μ)."
+  }
+];
+
 // Export de toutes les questions par chapitre
 export const mathQuizQuestions = {
   chapitre1: chapitre1QuizQuestions,
@@ -777,4 +972,10 @@ export const mathQuizQuestions = {
   chapitre11: chapitre11QuizQuestions,
   chapitre12: chapitre12QuizQuestions,
   chapitre46: chapitre46QuizQuestions,
+  // Questions 2e année
+  chapitre1Complements2e: chapitre1Complements2eQuizQuestions,
+  chapitre2Endomorphismes2e: chapitre2Endomorphismes2eQuizQuestions,
+  chapitre3AlgebreBilineaire2e: chapitre3AlgebreBilineaire2eQuizQuestions,
+  chapitre6NupletsVariables: chapitre6NupletsVariablesQuizQuestions,
+  chapitre7CoupleVariables: chapitre7CoupleVariablesQuizQuestions,
 }; 

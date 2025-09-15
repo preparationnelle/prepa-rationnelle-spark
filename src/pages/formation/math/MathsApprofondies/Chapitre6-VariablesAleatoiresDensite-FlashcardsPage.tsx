@@ -43,25 +43,6 @@ const Chapitre6VariablesAleatoiresDensiteFlashcardsPage = () => {
               <Brain className="h-8 w-8" />
               Flashcards - Variables aléatoires à densité
             </h1>
-            <p className="text-black text-lg mb-6">
-              Maîtrisez les théorèmes, définitions et formules essentielles grâce à ces flashcards interactives avec notation mathématique LaTeX.
-            </p>
-            
-            {/* Statistiques */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                <div className="text-2xl font-bold text-blue-600">{variablesAleatoiresDensiteFlashcards.length}</div>
-                <div className="text-sm text-black">Flashcards total</div>
-              </div>
-              <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                <div className="text-2xl font-bold text-blue-600">8</div>
-                <div className="text-sm text-black">Catégories</div>
-              </div>
-              <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                <div className="text-2xl font-bold text-blue-600">3</div>
-                <div className="text-sm text-black">Niveaux de difficulté</div>
-              </div>
-            </div>
 
             {/* Navigation vers autres ressources */}
             <div className="flex flex-wrap justify-center gap-4">
@@ -94,32 +75,6 @@ const Chapitre6VariablesAleatoiresDensiteFlashcardsPage = () => {
           chapterNumber={6}
         />
 
-        {/* Instructions */}
-        <Card className="border-0 shadow-lg bg-white mt-8">
-          <div className="p-6">
-            <h3 className="text-lg font-semibold text-black mb-4">💡 Comment utiliser les flashcards ?</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-black">
-              <div>
-                <h4 className="font-semibold mb-2">Navigation</h4>
-                <ul className="text-sm space-y-1">
-                  <li>• Utilisez les flèches ← → pour naviguer</li>
-                  <li>• Cliquez sur "Révéler" pour voir la réponse</li>
-                  <li>• Marquez les cartes difficiles avec ⭐</li>
-                  <li>• Filtrez par catégorie ou difficulté</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-2">Stratégie d'apprentissage</h4>
-                <ul className="text-sm space-y-1">
-                  <li>• Lisez d'abord la question/énoncé</li>
-                  <li>• Essayez de formuler la réponse mentalement</li>
-                  <li>• Révélez pour vérifier vos connaissances</li>
-                  <li>• Répétez les cartes marquées pour révision</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </Card>
       </div>
     </div>
   );

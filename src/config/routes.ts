@@ -83,6 +83,9 @@ const AnglaisImmigrationPage = lazy(() => import('../pages/formation/anglais/civ
 const AnglaisContemporaryCrisesPage = lazy(() => import('../pages/formation/anglais/civilisation/ContemporaryCrisesPage'));
 
 const MethodologieAnglaisPage = lazy(() => import('../pages/formation/anglais/MethodologieAnglaisPage'));
+const AnglaisCollesMethodologiePage = lazy(() => import('../pages/formation/anglais/methodologie/CollesAnglaisPage'));
+const AnglaisSyntheseQuestion1Page = lazy(() => import('../pages/formation/anglais/methodologie/SyntheseQuestion1Page'));
+const AnglaisEssaiQuestion2Page = lazy(() => import('../pages/formation/anglais/methodologie/EssaiQuestion2Page'));
 
 const FormationEspagnolPage = lazy(() => import('../pages/FormationEspagnolPage'));
 const FormationEspagnolGrammairePage = lazy(() => import('../pages/formation/espagnol/FormationEspagnolGrammairePage'));
@@ -324,6 +327,30 @@ const Chapitre6VariablesAleatoiresDensiteFlashcardsPage = lazy(() => import('../
 const Chapitre7IntegrationExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre7-IntegrationSurUnSegment-ExercicesPage'));
 const Chapitre8PolynomesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre8-Polynomes-ExercicesPage'));
 const Chapitre1ComplementsAlgebreLineaireExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre1-ComplementsAlgebreLineaire-ExercicesPage'));
+const Chapitre1ComplementsAlgebreLineaireCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre1-ComplementsAlgebreLineaire-CoursPage'));
+const Chapitre1ComplementsAlgebreLineaireFlashcardsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre1-ComplementsAlgebreLineaire-FlashcardsPage'));
+const Chapitre2EndomorphismesMatricesFlashcardsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre2-EndomorphismesMatrices-FlashcardsPage'));
+const Chapitre3AlgebreBilineaireFlashcardsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre3-AlgebreBilineaire-FlashcardsPage'));
+const Chapitre4FonctionsMultivarieesCalculDifferentielFlashcardsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre4-FonctionsMultivariees-CalculDifferentiel-FlashcardsPage'));
+const Chapitre5FonctionsUneVariableReelleFlashcardsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre5-FonctionsUneVariableReelle-FlashcardsPage'));
+const Chapitre6DerivationFlashcardsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre6-Derivation-FlashcardsPage'));
+const Chapitre7NupletsVariablesAleatoiresFlashcardsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre7-NupletsVariablesAleatoires-FlashcardsPage'));
+const Chapitre7NupletsVariablesAleatoiresExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre7-NupletsVariablesAleatoires-ExercicesPage'));
+const Chapitre8CoupleVariablesAleatoiresFlashcardsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre8-CoupleVariablesAleatoires-FlashcardsPage'));
+const Chapitre8CoupleVariablesAleatoiresExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre8-CoupleVariablesAleatoires-ExercicesPage'));
+const Chapitre10ReductionMatricesSymetriquesFlashcardsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre10-ReductionMatricesSymetriques-FlashcardsPage'));
+const Chapitre11OptimisationMultivarieeAvanceeFlashcardsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre11-OptimisationMultivarieeAvancee-FlashcardsPage'));
+const Chapitre8AlgebreBilineaireEspacesEuclidiensFlashcardsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre8-AlgebreBilineaireEspacesEuclidiens-FlashcardsPage'));
+const Chapitre9MatricesEtEspacesVectorielsFlashcardsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre9-MatricesEtEspacesVectoriels-FlashcardsPage'));
+const Chapitre10ProbabilitesEtConditionnementFlashcardsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre10-ProbabilitesEtConditionnement-FlashcardsPage'));
+const Chapitre12ComparaisonNegligeabiliteEquivalenceFlashcardsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre12-Comparaison-NegligeabiliteEquivalence-FlashcardsPage'));
+const Chapitre12ConvergencesApproximationsFlashcardsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre12-ConvergencesApproximations-FlashcardsPage'));
+const Chapitre13EstimationStatistiqueAvanceeFlashcardsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre13-EstimationStatistiqueAvancee-FlashcardsPage'));
+const Chapitre2EndomorphismesMatricesAvanceesCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre2-EndomorphismesMatricesAvancees-CoursPage'));
+const Chapitre3AlgebreBilineaireCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre3-AlgebreBilineaire-CoursPage'));
+const Chapitre7NupletsVariablesAleatoiresCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre7-NupletsVariablesAleatoires-CoursPage'));
+const Chapitre8AlgebreBilineaireEspacesEuclidiensCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre8-AlgebreBilineaireEspacesEuclidiens-CoursPage'));
+const Chapitre8CoupleVariablesAleatoiresCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre8-CoupleVariablesAleatoires-CoursPage'));
 const Chapitre9MatricesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre9-MatricesEtEspacesVectoriels-ExercicesPage'));
 const Chapitre3AlgebreBilineaireExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre3-AlgebreBilineaire-ExercicesPage'));
 const Chapitre9AlgebreBilineaireEspacesEuclidiensExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre9-AlgebreBilineaireEspacesEuclidiens-ExercicesPage'));
@@ -351,6 +378,9 @@ const Chapitre14TheorieEstimationStatistiqueExercicesPage = lazy(() => import('.
 const Chapitre5ComplementsVariablesAleatoiresExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre5-ComplementsVariablesAleatoires-ExercicesPage'));
 
 // Maths Appliquées - Nouveaux chapitres
+const Chapitre1ElementsDeLogiqueCoursPage = lazy(() => import('../pages/formation/math/MathsAppliquees/Chapitre1-ElementsDeLogique-CoursPage'));
+const Chapitre2EnsemblesEtApplicationsCoursPage = lazy(() => import('../pages/formation/math/MathsAppliquees/Chapitre2-EnsemblesEtApplications-CoursPage'));
+const Chapitre3SommesProduitsCoefficientsCoursPage = lazy(() => import('../pages/formation/math/MathsAppliquees/Chapitre3-SommesProduitsCoefficients-CoursPage'));
 const Chapitre19EquationsDifferentiellesCoursPage = lazy(() => import('../pages/formation/math/MathsAppliquees/Chapitre19-EquationsDifferentiellesApplicationsConcretes-CoursPage'));
 const Chapitre19EquationsDifferentiellesExercicesPage = lazy(() => import('../pages/formation/math/MathsAppliquees/Chapitre19-EquationsDifferentiellesApplicationsConcretes-ExercicesPage'));
 const Chapitre19EquationsDifferentiellesQuizPage = lazy(() => import('../pages/formation/math/MathsAppliquees/Chapitre19-EquationsDifferentiellesApplicationsConcretes-QuizPage'));
@@ -636,6 +666,9 @@ export const routes: RouteConfig[] = [
   { path: '/formation/anglais/civilisation/labor/vocabulary', component: AnglaisLaborVocabularyPage, title: 'Labor Markets and Future of Work Vocabulary - Flashcards' },
 
   { path: '/formation/anglais/methodologie-complete', component: MethodologieAnglaisPage, title: 'Méthodologie Complète Anglais' },
+  { path: '/formation/anglais/methodologie/colles', component: AnglaisCollesMethodologiePage, title: 'Les Colles d’Anglais' },
+  { path: '/formation/anglais/methodologie/synthese-question-1', component: AnglaisSyntheseQuestion1Page, title: 'Synthèse – Question 1' },
+  { path: '/formation/anglais/methodologie/essai-question-2', component: AnglaisEssaiQuestion2Page, title: 'Essai – Question 2' },
 
   { path: '/formation/espagnol', component: FormationEspagnolPage, title: 'Formation Espagnol' },
   { path: '/formation/espagnol/grammaire', component: FormationEspagnolGrammairePage, title: 'Grammaire Espagnole' },
@@ -770,6 +803,14 @@ export const routes: RouteConfig[] = [
   { path: '/formation/culture-generale/juger', component: JugerTermesConnexesPage, title: 'Juger — termes et définitions' },
   { path: '/formation/geopolitique', component: FormationGeopolitiquePage, title: 'Formation Géopolitique' },
   { path: '/formation/geopolitique/premiere-annee', component: GeopolitiquePremiereAnneePage, title: 'Géopolitique - Première Année' },
+  { path: '/formation/geopolitique/premiere-annee/espaces-maritimes', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/EspacesMaritimesPage')), title: 'Espaces maritimes' },
+  { path: '/formation/geopolitique/premiere-annee/espaces-maritimes-tensions', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/EspacesMaritimesTensionsPage')), title: 'Espaces maritimes — tensions et conflits' },
+  { path: '/formation/geopolitique/premiere-annee/energies', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/EnergiesGeopolitiquePage')), title: 'Géopolitique des énergies' },
+  { path: '/formation/geopolitique/premiere-annee/gouvernance-mondiale', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/GouvernanceMondialePage')), title: 'Gouvernance mondiale' },
+  { path: '/formation/geopolitique/premiere-annee/guerres', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/GuerresPage')), title: 'Les guerres' },
+  { path: '/formation/geopolitique/premiere-annee/migrations', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/MigrationsPage')), title: 'Les migrations' },
+  { path: '/formation/geopolitique/premiere-annee/puissance', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/PuissancePage')), title: 'La puissance' },
+  { path: '/formation/geopolitique/premiere-annee/ressources-strategiques', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/RessourcesStrategiquesPage')), title: 'Ressources stratégiques' },
   { path: '/formation/geopolitique/deuxieme-annee', component: GeopolitiqueDeuxiemeAnneePage, title: 'Géopolitique - Deuxième Année' },
   { path: '/formation/geopolitique/sujets-probables', component: GeopolitiqueSujetsProbablesPage, title: 'Pronostics Géopolitiques 2025' },
   { path: '/formation/geopolitique/continent-africain', component: ContinentAfricainPage, title: 'Continent Africain' },
@@ -808,6 +849,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/geopolitique/references', component: GeopolitiquesReferencesPage, title: 'Références Géopolitiques' },
   { path: '/formation/geopolitique/methodologie', component: GeopolitiquesMethodologiePage, title: 'Méthodologie Géopolitique' },
   { path: '/formation/geopolitique/methodologie/dissertation', component: MethodologieDissertationPage, title: 'Méthodologie Dissertation' },
+  { path: '/formation/geopolitique/methodologie/dissertation-a-z', component: lazy(() => import('../pages/formation/geopolitique/DissertationAZPage')), title: 'Dissertation de géopolitique de A à Z' },
   { path: '/formation/geopolitique/annales', component: AnnalesGeopolitiquePage, title: 'Annales Géopolitique' },
 
   // Formation ESH
@@ -815,6 +857,10 @@ export const routes: RouteConfig[] = [
 { path: '/formation/esh/premiere-annee', component: PremiereAnneeESHPage, title: 'Première année ESH' },
 { path: '/formation/esh/deuxieme-annee', component: DeuxiemeAnneeESHPage, title: 'Deuxième année ESH' },
 { path: '/formation/esh/methodologie', component: MethodologieESHPage, title: 'Méthodologie ESH' },
+{ path: '/formation/esh/methodologie/paragraphe-efficace', component: lazy(() => import('../pages/formation/esh/methodologie/ParagrapheEfficacePage')), title: 'Paragraphe efficace en ESH' },
+{ path: '/formation/esh/methodologie/introduction-dissertation', component: lazy(() => import('../pages/formation/esh/methodologie/IntroductionDissertationPage')), title: 'Introduction de dissertation en économie' },
+{ path: '/formation/esh/methodologie/structure-dissertation', component: lazy(() => import('../pages/formation/esh/methodologie/StructureDissertationPage')), title: 'Structure de dissertation en économie' },
+{ path: '/formation/esh/methodologie/fiches-conseils', component: lazy(() => import('../pages/formation/esh/methodologie/ConseilsFichesPage')), title: '10 conseils pour ficher ses cours d’ESH' },
 { path: '/formation/esh/etudes-cas', component: EtudesCasESHPage, title: 'Ressources ESH' },
 { path: '/formation/esh/ressources', component: RessourcesESHPage, title: 'Ressources ESH' },
 
@@ -949,6 +995,19 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-espaces-probabilises-conditionnement-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Espaces probabilisés & conditionnement', protected: true },
   { path: '/formation/maths-variables-aleatoires-discretes-lois-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Variables aléatoires discrètes & lois', protected: true },
   { path: '/formation/maths-convergences-theoremes-limites-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Convergences & théorèmes limites', protected: true },
+  
+  // Quiz routes pour les chapitres de 2ème année
+  { path: '/formation/maths-complements-algebre-lineaire-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Compléments d\'algèbre linéaire', protected: true },
+  { path: '/formation/maths-endomorphismes-matrices-avancees-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Éléments propres et réduction des endomorphismes', protected: true },
+  { path: '/formation/maths-algebre-bilineaire-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Algèbre bilinéaire', protected: true },
+  { path: '/formation/maths-algebre-bilineaire-espaces-euclidiens-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Algèbre bilinéaire et espaces euclidiens', protected: true },
+  { path: '/formation/maths-n-uplets-variables-aleatoires-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - n-uplets de variables aléatoires réelles', protected: true },
+  { path: '/formation/maths-couple-variables-aleatoires-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Probabilités (Variables aléatoires)', protected: true },
+  { path: '/formation/maths-fonctions-multivariees-calcul-differentiel-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Fonctions multivariées et calcul différentiel', protected: true },
+  { path: '/formation/maths-optimisation-multivariee-avancee-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Optimisation multivariée avancée', protected: true },
+  { path: '/formation/maths-reduction-matrices-symetriques-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Réduction des matrices symétriques', protected: true },
+  { path: '/formation/maths-convergences-approximations-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Convergences et approximations', protected: true },
+  { path: '/formation/maths-estimation-statistique-avancee-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Estimation statistique avancée', protected: true },
   { path: '/formation/maths', component: MathsChoixOptionPage, title: 'Choix option Maths ECG' },
   { path: '/formation/math/premiere-vers-deuxieme', component: PremiereVersDeuxiemePage, title: 'Première → Deuxième année', protected: false },
   { path: '/formation/math/premiere-vers-deuxieme/module-1-applications-lineaires-exercices', component: Module1ApplicationsLineairesExercicesPage, title: 'Module 1 - Applications linéaires - Exercices', protected: false },
@@ -975,17 +1034,22 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-suites-numeriques', component: MathsSuitesPage, title: 'Maths - Suites numériques' },
   { path: '/formation/maths-fonctions', component: MathsFonctionsPage, title: 'Maths - Fonctions réelles — continuité' },
   { path: '/formation/maths-fonctions-d-une-variable-reelle', component: MathsFonctionsPage, title: 'Maths - Fonctions d\'une variable réelle' },
+  { path: '/formation/maths-fonctions-une-variable-reelle-flashcards', component: Chapitre5FonctionsUneVariableReelleFlashcardsPage, title: 'Flashcards - Chapitre 5 : Fonctions d\'une variable réelle', protected: true },
   { path: '/formation/maths-derivation', component: MathsDerivationPage, title: 'Maths - Dérivation' },
+  { path: '/formation/maths-derivation-flashcards', component: Chapitre6DerivationFlashcardsPage, title: 'Flashcards - Chapitre 6 : Dérivation', protected: true },
   { path: '/formation/maths-integration', component: MathsIntegrationPage, title: 'Maths - Intégration' },
   { path: '/formation/maths-polynomes', component: MathsPolynomesPage, title: 'Maths - Polynômes' },
   { path: '/formation/maths-matrices-espaces-vectoriels', component: MathsEspacesVectorielsPage, title: 'Maths - Matrices & espaces vectoriels' },
+  { path: '/formation/maths-matrices-espaces-vectoriels-flashcards', component: Chapitre9MatricesEtEspacesVectorielsFlashcardsPage, title: 'Flashcards - Chapitre 9 : Matrices, systèmes linéaires & espaces vectoriels', protected: true },
   { path: '/formation/maths-espaces-vectoriels', component: MathsEspacesVectorielsPage, title: 'Maths - Matrices & espaces vectoriels' },
   { path: '/formation/maths-probabilites-finies', component: MathsProbabilitesFiniesPage, title: 'Maths - Probabilités sur un univers fini' },
   { path: '/formation/maths-probabilites-conditionnement', component: MathsProbabilitesFiniesPage, title: 'Maths - Probabilités & conditionnement' },
+  { path: '/formation/maths-probabilites-conditionnement-flashcards', component: Chapitre10ProbabilitesEtConditionnementFlashcardsPage, title: 'Flashcards - Chapitre 10 : Espaces probabilisés & conditionnement', protected: true },
   // Generic catch-all quiz route for maths approfondies chapters (kept for future)
   { path: '/formation/maths-:slug-quiz', component: MathsApprofondiesQuizPage, title: 'Maths Approfondies - Quiz', protected: true },
   { path: '/formation/maths-applications-lineaires-structures-vectorielles', component: MathsEspacesVectorielsComplementsPage, title: 'Maths - Applications linéaires & structures vectorielles' },
   { path: '/formation/maths-comparaison-negligeabilite-equivalence', component: MathsComparaisonsPage, title: 'Maths - Comparaison — négligeabilité & équivalence' },
+  { path: '/formation/maths-comparaison-negligeabilite-equivalence-flashcards', component: Chapitre12ComparaisonNegligeabiliteEquivalenceFlashcardsPage, title: 'Flashcards - Chapitre 12 : Comparaison — négligeabilité & équivalence', protected: true },
   { path: '/formation/maths-series-numeriques', component: MathsSeriesPage, title: 'Maths - Séries numériques' },
   { path: '/formation/maths-developpements-limites-formule-de-taylor', component: MathsDeveloppementsLimitesPage, title: 'Maths - Développements limités & formule de Taylor' },
   { path: '/formation/maths-integrales-impropres-criteres-de-convergence', component: MathsIntegrationIntervallePage, title: 'Maths - Intégrales impropres & critères de convergence' },
@@ -1008,8 +1072,22 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-variables-aleatoires-densite-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Variables aléatoires à densité', protected: true },
   { path: '/formation/maths-integration-sur-un-segment-exercices', component: Chapitre7IntegrationExercicesPage, title: 'Exercices - Chapitre 7 : Intégration sur un segment' },
   { path: '/formation/maths-polynomes-exercices', component: Chapitre8PolynomesExercicesPage, title: 'Exercices - Chapitre 8 : Polynômes' },
-  // 2ème année — compléments d'algèbre linéaire (exercices disponibles)
+  // 2ème année — compléments d'algèbre linéaire
+  { path: '/formation/maths-complements-algebre-lineaire', component: Chapitre1ComplementsAlgebreLineaireCoursPage, title: 'Cours - Chapitre 1 : Compléments d\'algèbre linéaire', protected: true },
   { path: '/formation/maths-complements-algebre-lineaire-exercices', component: Chapitre1ComplementsAlgebreLineaireExercicesPage, title: 'Exercices - Chapitre 1 : Compléments d\'algèbre linéaire', protected: true },
+  { path: '/formation/maths-complements-algebre-lineaire-flashcards', component: Chapitre1ComplementsAlgebreLineaireFlashcardsPage, title: 'Flashcards - Chapitre 1 : Compléments d\'algèbre linéaire', protected: true },
+  { path: '/formation/maths-endomorphismes-matrices-avancees', component: Chapitre2EndomorphismesMatricesAvanceesCoursPage, title: 'Cours - Chapitre 2 : Éléments propres et réduction des endomorphismes', protected: true },
+  { path: '/formation/maths-endomorphismes-matrices-avancees-flashcards', component: Chapitre2EndomorphismesMatricesFlashcardsPage, title: 'Flashcards - Chapitre 2 : Éléments propres et réduction des endomorphismes', protected: true },
+  { path: '/formation/maths-algebre-bilineaire', component: Chapitre3AlgebreBilineaireCoursPage, title: 'Cours - Chapitre 3 : Algèbre bilinéaire', protected: true },
+  { path: '/formation/maths-algebre-bilineaire-flashcards', component: Chapitre3AlgebreBilineaireFlashcardsPage, title: 'Flashcards - Chapitre 3 : Algèbre bilinéaire', protected: true },
+  { path: '/formation/maths-n-uplets-variables-aleatoires', component: Chapitre7NupletsVariablesAleatoiresCoursPage, title: 'Cours - Chapitre 7 : n-uplets de variables aléatoires réelles', protected: true },
+  { path: '/formation/maths-n-uplets-variables-aleatoires-flashcards', component: Chapitre7NupletsVariablesAleatoiresFlashcardsPage, title: 'Flashcards - Chapitre 7 : n-uplets de variables aléatoires réelles', protected: true },
+  { path: '/formation/maths-n-uplets-variables-aleatoires-exercices', component: Chapitre7NupletsVariablesAleatoiresExercicesPage, title: 'Exercices - Chapitre 6 : n-uplets de variables aléatoires réelles', protected: true },
+  { path: '/formation/maths-algebre-bilineaire-espaces-euclidiens', component: Chapitre8AlgebreBilineaireEspacesEuclidiensCoursPage, title: 'Cours - Chapitre 8 : Algèbre bilinéaire et espaces euclidiens', protected: true },
+  { path: '/formation/maths-algebre-bilineaire-espaces-euclidiens-flashcards', component: Chapitre8AlgebreBilineaireEspacesEuclidiensFlashcardsPage, title: 'Flashcards - Chapitre 8 : Algèbre bilinéaire et espaces euclidiens', protected: true },
+  { path: '/formation/maths-couple-variables-aleatoires', component: Chapitre8CoupleVariablesAleatoiresCoursPage, title: 'Cours - Chapitre 8 : Probabilités (Variables aléatoires)', protected: true },
+  { path: '/formation/maths-couple-variables-aleatoires-flashcards', component: Chapitre8CoupleVariablesAleatoiresFlashcardsPage, title: 'Flashcards - Chapitre 7 : Cas particulier du couple', protected: true },
+  { path: '/formation/maths-couple-variables-aleatoires-exercices', component: Chapitre8CoupleVariablesAleatoiresExercicesPage, title: 'Exercices - Chapitre 7 : Cas particulier du couple', protected: true },
   { path: '/formation/maths-matrices-espaces-vectoriels-exercices', component: Chapitre9MatricesExercicesPage, title: 'Exercices - Chapitre 9 : Matrices & espaces vectoriels' },
   { path: '/formation/maths-algebre-bilineaire-exercices', component: Chapitre3AlgebreBilineaireExercicesPage, title: 'Exercices - Chapitre 3 : Algèbre bilinéaire' },
   { path: '/formation/maths-algebre-bilineaire-espaces-euclidiens-exercices', component: Chapitre9AlgebreBilineaireEspacesEuclidiensExercicesPage, title: 'Exercices - Chapitre 9 : Algèbre bilinéaire et espaces euclidiens' },
@@ -1017,9 +1095,11 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-applications-lineaires-structures-vectorielles-exercices', component: Chapitre11ApplicationsLineairesExercicesPage, title: 'Exercices - Chapitre 11 : Applications linéaires & structures vectorielles' },
   { path: '/formation/maths-optimisation-multivariee-avancee', component: Chapitre11OptimisationMultivarieeAvanceeCoursPage, title: 'Chapitre 11 : Optimisation multivariée avancée', protected: true },
   { path: '/formation/maths-optimisation-multivariee-avancee-exercices', component: Chapitre11OptimisationMultivarieeAvanceeExercicesPage, title: 'Exercices - Chapitre 11 : Optimisation multivariée avancée' },
+  { path: '/formation/maths-optimisation-multivariee-avancee-flashcards', component: Chapitre11OptimisationMultivarieeAvanceeFlashcardsPage, title: 'Flashcards - Chapitre 11 : Optimisation multivariée avancée', protected: true },
   { path: '/formation/maths-optimisation-multivariee-avancee-quiz', component: Chapitre11OptimisationMultivarieeAvanceeQuizPage, title: 'Quiz - Chapitre 11 : Optimisation multivariée avancée', protected: true },
   { path: '/formation/maths-fonctions-multivariees-calcul-differentiel', component: Chapitre4FonctionsMultivariees_CalculDifferentielCoursPage, title: 'Cours - Chapitre 4 : Fonctions multivariées et calcul différentiel' },
   { path: '/formation/maths-fonctions-multivariees-calcul-differentiel-exercices', component: Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage, title: 'Exercices - Chapitre 4 : Fonctions multivariées et calcul différentiel' },
+  { path: '/formation/maths-fonctions-multivariees-calcul-differentiel-flashcards', component: Chapitre4FonctionsMultivarieesCalculDifferentielFlashcardsPage, title: 'Flashcards - Chapitre 4 : Fonctions multivariées et calcul différentiel', protected: true },
   { path: '/formation/maths-comparaison-negligeabilite-equivalence-exercices', component: Chapitre12ComparaisonExercicesPage, title: 'Exercices - Chapitre 12 : Comparaison — négligeabilité & équivalence' },
   { path: '/formation/maths-series-numeriques-exercices', component: Chapitre13SeriesExercicesPage, title: 'Exercices - Chapitre 13 : Séries numériques' },
   { path: '/formation/maths-developpements-limites-formule-de-taylor-exercices', component: Chapitre14DeveloppementsExercicesPage, title: 'Exercices - Chapitre 14 : Développements limités & formule de Taylor' },
@@ -1028,10 +1108,13 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-variables-aleatoires-discretes-lois-exercices', component: Chapitre17VariablesAleatoiresExercicesPage, title: 'Exercices - Chapitre 17 : Variables aléatoires discrètes & lois' },
   { path: '/formation/maths-convergences-theoremes-limites-exercices', component: Chapitre18ConvergencesExercicesPage, title: 'Exercices - Chapitre 18 : Convergences & théorèmes limites' },
   { path: '/formation/maths-reduction-matrices-symetriques', component: Chapitre10ReductionMatricesSymetriquesCoursPage, title: 'Chapitre 10 : Réduction des endomorphismes et matrices symétriques', protected: true },
+  { path: '/formation/maths-reduction-matrices-symetriques-flashcards', component: Chapitre10ReductionMatricesSymetriquesFlashcardsPage, title: 'Flashcards - Chapitre 9 : Réduction des endomorphismes et des matrices symétriques', protected: true },
   { path: '/formation/maths-reduction-matrices-symetriques-exercices', component: Chapitre10ReductionMatricesSymetriquesExercicesPage, title: 'Exercices - Chapitre 10 : Réduction des endomorphismes et matrices symétriques', protected: true },
   { path: '/formation/maths-convergences-approximations', component: Chapitre12ConvergencesApproximationsCoursPage, title: 'Chapitre 12 : Convergences et approximations', protected: true },
+  { path: '/formation/maths-convergences-approximations-flashcards', component: Chapitre12ConvergencesApproximationsFlashcardsPage, title: 'Flashcards - Chapitre 12 : Convergences et approximations', protected: true },
   { path: '/formation/maths-convergences-approximations-exercices', component: Chapitre12ConvergencesApproximationsExercicesPage, title: 'Exercices - Chapitre 12 : Convergences et approximations', protected: true },
   { path: '/formation/maths-estimation-statistique-avancee', component: Chapitre13EstimationStatistiqueAvanceeCoursPage, title: 'Chapitre 13 : Estimation statistique avancée', protected: true },
+  { path: '/formation/maths-estimation-statistique-avancee-flashcards', component: Chapitre13EstimationStatistiqueAvanceeFlashcardsPage, title: 'Flashcards - Chapitre 13 : Estimation statistique avancée', protected: true },
   { path: '/formation/maths-intervalles-confiance-exercices', component: Chapitre18EstimationStatistiqueAvanceeExercicesPage, title: 'Exercices - Chapitre 18 : Intervalles de confiance', protected: true },
   // Alias cohérent avec le slug utilisé dans les cartes pour éviter les 404
   { path: '/formation/maths-estimation-statistique-avancee-exercices', component: Chapitre18EstimationStatistiqueAvanceeExercicesPage, title: 'Exercices - Chapitre 18 : Estimation statistique avancée', protected: true },
@@ -1039,6 +1122,9 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-complements-variables-aleatoires-exercices', component: Chapitre5ComplementsVariablesAleatoiresExercicesPage, title: 'Exercices - Chapitre 5 : Compléments sur les variables aléatoires', protected: true },
 
   // Maths Appliquées - Nouveaux chapitres
+  { path: '/formation/maths-elements-de-logique', component: Chapitre1ElementsDeLogiqueCoursPage, title: 'Chapitre 1 : Éléments de logique', protected: true },
+  { path: '/formation/maths-ensembles-et-applications', component: Chapitre2EnsemblesEtApplicationsCoursPage, title: 'Chapitre 2 : Ensembles et applications', protected: true },
+  { path: '/formation/maths-sommes-produits-coefficients-binomiaux', component: Chapitre3SommesProduitsCoefficientsCoursPage, title: 'Chapitre 3 : Sommes, produits & coefficients binomiaux', protected: true },
   { path: '/formation/maths-equations-differentielles-applications-concretes', component: Chapitre19EquationsDifferentiellesCoursPage, title: 'Chapitre 19 : Équations différentielles avec applications concrètes', protected: true },
   { path: '/formation/maths-equations-differentielles-applications-concretes-exercices', component: Chapitre19EquationsDifferentiellesExercicesPage, title: 'Exercices - Chapitre 19 : Équations différentielles avec applications concrètes', protected: true },
   { path: '/formation/maths-equations-differentielles-applications-concretes-quiz', component: Chapitre19EquationsDifferentiellesQuizPage, title: 'Quiz - Chapitre 19 : Équations différentielles avec applications concrètes', protected: true },
@@ -1231,8 +1317,33 @@ export const routes: RouteConfig[] = [
     protected: false
   },
 
+  // Routes pour les formations mathématiques
+  {
+    path: '/formation/maths-choix',
+    component: lazy(() => import('../pages/formation/math/MathsChoixOptionPage')),
+    title: 'Choix option Maths ECG',
+    protected: false
+  },
+  {
+    path: '/formation/maths-approfondies',
+    component: lazy(() => import('../pages/formation/math/MathsApprofondies/MathsApprofondiesPage')),
+    title: 'Mathématiques Approfondies ECG',
+    protected: false
+  },
+  {
+    path: '/formation/maths-methodologie',
+    component: lazy(() => import('../pages/formation/math/MathsMethodologiePage')),
+    title: 'Méthodologie Maths ECG',
+    protected: true
+  },
+  {
+    path: '/formation/maths-appliquees',
+    component: lazy(() => import('../pages/formation/math/MathsAppliquees/MathsAppliqueesPage')),
+    title: 'Mathématiques Appliquées ECG',
+    protected: false
+  },
 
-  
+
   // 404 - Must be last
   { path: '*', component: NotFound, title: 'Page non trouvée' }
 ];

@@ -1,58 +1,80 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card } from '@/components/ui/card';
-import { ChevronRight, Home, Construction } from 'lucide-react';
+import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { BookOpen, Target, PenTool, Construction } from 'lucide-react';
 
 const Chapitre23StatistiquesDescriptivesCoursPage = () => {
   return (
-    <div className="min-h-screen bg-[#EEF3FC]">
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-[#2D5BFF]">
-            <Link to="/" className="flex items-center gap-1 hover:text-[#1e3a8a] transition-colors">
-              <Home className="h-3 w-3" />
-              <span>Accueil</span>
+    <MathChapterTemplate
+      chapterNumber={23}
+      chapterTitle="Les statistiques descriptives"
+      description="Théorie approfondie et applications pratiques [[memory:6842989]]"
+      slug="statistiques-descriptives"
+      showNavigation={true}
+    >
+      {/* Navigation vers les ressources */}
+      <Card className="border-0 shadow-lg bg-blue-50">
+        <CardContent className="p-6">
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link to="/formation/maths-statistiques-descriptives">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                <BookOpen className="mr-2 h-4 w-4" />
+                Cours
+              </Button>
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formations" className="hover:text-[#1e3a8a] transition-colors">Toutes les formations</Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formation/maths-choix" className="hover:text-[#1e3a8a] transition-colors">Choix option Maths</Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formation/maths-appliquees" className="hover:text-[#1e3a8a] transition-colors">Maths Appliquées</Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <span className="text-green-600 font-bold">Chapitre 23 - Statistiques descriptives</span>
+            <Link to="/formation/maths-statistiques-descriptives-exercices">
+              <Button variant="outline" className="border-blue-300 text-blue-600 hover:bg-blue-50">
+                <PenTool className="mr-2 h-4 w-4" />
+                Exercices
+              </Button>
+            </Link>
+            <Link to="/formation/maths-statistiques-descriptives-quiz">
+              <Button variant="outline" className="border-blue-300 text-blue-600 hover:bg-blue-50">
+                <Target className="mr-2 h-4 w-4" />
+                Quiz
+              </Button>
+            </Link>
           </div>
-        </div>
-      </nav>
+        </CardContent>
+      </Card>
 
-      <div className="container mx-auto px-4 py-8">
-        <Card className="border-0 shadow-lg bg-gradient-to-br from-green-50 to-emerald-50 mb-8">
-          <div className="p-8">
-            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-4">
-              Les statistiques descriptives
-            </h1>
-            <p className="text-slate-600 text-lg">Cours - Chapitre 23 : Théorie approfondie et applications pratiques</p>
+      {/* Message temporaire - En construction */}
+      <Card className="border-0 shadow-lg">
+        <CardContent className="p-12 text-center">
+          <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Construction className="w-10 h-10 text-blue-600" />
           </div>
-        </Card>
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+            Cours en cours de construction
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto mb-8">
+            Le cours sur les statistiques descriptives sera disponible prochainement.
+            Nous travaillons actuellement à la création d'un contenu adapté aux besoins spécifiques de la voie appliquée en prépa ECG.
+          </p>
+        </CardContent>
+      </Card>
 
-        <Card className="border-0 shadow-lg">
-          <div className="p-12 text-center">
-            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Construction className="w-10 h-10 text-green-600" />
-            </div>
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Cours en cours de construction</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-              Le cours sur les statistiques descriptives sera disponible prochainement.
-              Nous travaillons actuellement à la création d'un contenu adapté aux besoins spécifiques de la voie appliquée en prépa ECG.
-            </p>
-            <div className="flex gap-4 justify-center">
-              <Link to="/formation/maths-statistiques-descriptives-exercices" className="inline-flex items-center justify-center px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors">Exercices</Link>
-              <Link to="/formation/maths-statistiques-descriptives-quiz" className="inline-flex items-center justify-center px-6 py-3 border-2 border-green-600 text-green-600 font-semibold rounded-lg hover:bg-green-50 transition-colors">Quiz</Link>
-            </div>
+      {/* Navigation secondaire */}
+      <Card className="border-0 shadow-lg bg-gray-50">
+        <CardContent className="p-6">
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link to="/formation/maths-appliquees">
+              <Button variant="outline" className="border-gray-300 text-gray-600 hover:bg-gray-50">
+                Retour aux chapitres
+              </Button>
+            </Link>
+            <Link to="/formation/maths-statistiques-descriptives-exercices">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                <PenTool className="mr-2 h-4 w-4" />
+                Exercices
+              </Button>
+            </Link>
           </div>
-        </Card>
-      </div>
-    </div>
+        </CardContent>
+      </Card>
+    </MathChapterTemplate>
   );
 };
 

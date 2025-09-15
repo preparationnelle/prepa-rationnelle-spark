@@ -1,8 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Calculator, CheckCircle } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Calculator, CheckCircle, Target, Lightbulb, BookOpen, Code, Database, Grid3X3, BarChart3 } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { PythonModuleQuiz } from '@/components/python/PythonModuleQuiz';
 import { matricesQuizQuestions } from '@/data/pythonQuizQuestions';
@@ -27,687 +26,445 @@ const PythonMatricesPage = () => {
         </div>
       </div>
 
-        {/* Présentation générale */}
-        <Card className="mb-8 border-2 border-blue-300 bg-blue-50/50 shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-xl text-gray-700">1. PRÉSENTATION GÉNÉRALE</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div>
-                <h3 className="font-semibold text-gray-600 mb-2">Définition</h3>
-                <p className="text-gray-700">
-                  NumPy (Numerical Python) est une bibliothèque pour le calcul en Python. Elle fournit un objet tableau multidimensionnel performant ainsi qu'un ensemble d'outils pour travailler avec ces tableaux.
-                </p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-600 mb-2">Importation</h3>
-                <div className="bg-gray-50 p-3 rounded font-mono text-sm">
-                  import numpy as np
-                </div>
-                <p className="text-sm text-gray-600 mt-2">
-                  Cette convention d'importation avec l'alias 'np' est universellement adoptée.
+      {/* Objectifs du module */}
+      <Card className="border-0 shadow-lg mb-8">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold text-blue-600 flex items-center gap-2">
+            <Target className="h-6 w-6" />
+            Objectifs du module
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-3">
+            <div className="flex items-start gap-3">
+              <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+              <p className="text-gray-700">Maîtriser la création et manipulation de matrices avec NumPy.</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+              <p className="text-gray-700">Comprendre l'indexation et le slicing des matrices.</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+              <p className="text-gray-700">Effectuer des opérations matricielles essentielles.</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+              <p className="text-gray-700">Utiliser les fonctions NumPy pour l'analyse de données.</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+              <p className="text-gray-700">Appliquer NumPy dans des contextes pratiques de prépa ECG.</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Notion 1 - Introduction à NumPy */}
+      <Card className="border-0 shadow-lg mb-8">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold text-blue-600 flex items-center gap-2">
+            <Lightbulb className="h-6 w-6" />
+            Notion 1 - Introduction à NumPy pour les matrices
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <h4 className="text-lg font-semibold text-gray-700 mb-3">Découvrir la puissance de NumPy</h4>
+          <div className="space-y-6">
+            <div>
+              <h5 className="font-semibold text-blue-700 mb-2">Qu'est-ce que NumPy ?</h5>
+              <p className="text-gray-700 mb-4">
+                NumPy (Numerical Python) est la bibliothèque fondamentale pour le calcul scientifique en Python. 
+                Elle fournit un objet tableau multidimensionnel performant et un ensemble d'outils pour travailler efficacement avec ces tableaux.
+              </p>
+              <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r">
+                <p className="text-blue-800 font-medium">
+                  <strong>Astuce concours :</strong> NumPy est essentiel pour les épreuves d'informatique ECG. 
+                  Sa maîtrise vous permettra de résoudre rapidement les exercices de calcul matriciel.
                 </p>
               </div>
             </div>
-          </CardContent>
-        </Card>
 
-        {/* Création de matrices */}
-        <Card className="mb-8 border-2 border-gray-200 bg-gradient-to-br from-gray-50 to-gray-50 shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-xl text-gray-700">2. CRÉATION DE MATRICES</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="creation-directe">
-                <AccordionTrigger className="text-gray-600">Création directe avec np.array()</AccordionTrigger>
-                <AccordionContent>
-                  <div className="space-y-3">
-                    <p>La fonction <code className="bg-gray-100 px-1 rounded">np.array()</code> permet de créer une matrice à partir de listes Python.</p>
-                    <div className="bg-gray-50 p-3 rounded">
-                      <p className="font-semibold mb-2">Syntaxe générale :</p>
-                      <code className="font-mono">np.array(liste_de_listes)</code>
-                    </div>
-                    <div>
-                      <p className="font-semibold mb-2">Cas particuliers :</p>
-                      <ul className="space-y-1 text-sm">
-                        <li>• <strong>Matrice rectangulaire :</strong> chaque sous-liste représente une ligne</li>
-                        <li>• <strong>Vecteur ligne :</strong> liste simple d'éléments</li>
-                        <li>• <strong>Vecteur colonne :</strong> liste de listes à un élément chacune</li>
-                      </ul>
-                    </div>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
+            <div>
+              <h5 className="font-semibold text-blue-700 mb-2">Importation standard</h5>
+              <div className="bg-blue-900 text-blue-100 rounded-lg p-4 overflow-x-auto border border-blue-300">
+                <pre className="text-blue-100 text-sm font-mono">
+                  <code>import numpy as np</code>
+                </pre>
+              </div>
+              <p className="text-sm text-gray-600 mt-2">
+                Cette convention d'importation avec l'alias 'np' est universellement adoptée dans la communauté Python.
+              </p>
+            </div>
 
-              <AccordionItem value="matrices-speciales">
-                <AccordionTrigger className="text-gray-600">Matrices spéciales</AccordionTrigger>
-                <AccordionContent>
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Type</TableHead>
-                        <TableHead>Syntaxe</TableHead>
-                        <TableHead>Description</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      <TableRow>
-                        <TableCell className="font-semibold">Matrice nulle</TableCell>
-                        <TableCell className="font-mono bg-gray-50">np.zeros([n, m])</TableCell>
-                        <TableCell>Crée une matrice de dimensions n×m remplie de zéros</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="font-semibold">Matrice de uns</TableCell>
-                        <TableCell className="font-mono bg-gray-50">np.ones([n, m])</TableCell>
-                        <TableCell>Crée une matrice de dimensions n×m remplie de uns</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="font-semibold">Matrice identité</TableCell>
-                        <TableCell className="font-mono bg-gray-50">np.eye(n)</TableCell>
-                        <TableCell>Crée la matrice identité de dimension n×n</TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="creation-vecteurs">
-                <AccordionTrigger className="text-gray-600">Création de vecteurs</AccordionTrigger>
-                <AccordionContent>
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Type</TableHead>
-                        <TableHead>Syntaxe</TableHead>
-                        <TableHead>Description</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      <TableRow>
-                        <TableCell className="font-semibold">Valeurs uniformément réparties</TableCell>
-                        <TableCell className="font-mono bg-gray-50">np.linspace(début, fin, nombre_éléments)</TableCell>
-                        <TableCell>Génère un vecteur de 'nombre_éléments' valeurs uniformément espacées entre 'début' et 'fin' inclus</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="font-semibold">Entiers consécutifs</TableCell>
-                        <TableCell className="font-mono bg-gray-50">np.arange(n)</TableCell>
-                        <TableCell>Génère un vecteur contenant les entiers de 0 à n-1</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="font-semibold">Suite arithmétique</TableCell>
-                        <TableCell className="font-mono bg-gray-50">np.arange(début, fin, pas)</TableCell>
-                        <TableCell>Génère un vecteur selon une progression arithmétique de 'début' (inclus) à 'fin' (exclus) avec le pas spécifié</TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </CardContent>
-        </Card>
-
-        {/* Accès aux éléments */}
-        <Card className="mb-8 border-2 border-blue-300 bg-blue-50/50 shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-xl text-gray-700">3. ACCÈS AUX ÉLÉMENTS</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="indexation">
-                <AccordionTrigger className="text-gray-600">Système d'indexation</AccordionTrigger>
-                <AccordionContent>
-                  <div className="space-y-3">
-                    <p>Les matrices NumPy utilisent un système d'indexation commençant à 0. Pour une matrice A de dimensions n×m :</p>
-                    <ul className="space-y-1">
-                      <li>• Les lignes sont numérotées de 0 à n-1</li>
-                      <li>• Les colonnes sont numérotées de 0 à m-1</li>
-                    </ul>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="acces-elements">
-                <AccordionTrigger className="text-gray-600">Accès aux éléments et lignes/colonnes</AccordionTrigger>
-                <AccordionContent>
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Objectif</TableHead>
-                        <TableHead>Syntaxe</TableHead>
-                        <TableHead>Description</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      <TableRow>
-                        <TableCell className="font-semibold">Élément spécifique</TableCell>
-                        <TableCell className="font-mono bg-gray-50">A[i, j]</TableCell>
-                        <TableCell>Renvoie l'élément à la (i+1)-ème ligne et la (j+1)-ème colonne (indexation Python à partir de 0)</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="font-semibold">Ligne complète</TableCell>
-                        <TableCell className="font-mono bg-gray-50">A[i, :]</TableCell>
-                        <TableCell>Renvoie la (i+1)-ème ligne sous forme de vecteur (indexation Python à partir de 0)</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="font-semibold">Colonne complète</TableCell>
-                        <TableCell className="font-mono bg-gray-50">A[:, j]</TableCell>
-                        <TableCell>Renvoie la (j+1)-ème colonne sous forme de vecteur (indexation Python à partir de 0)</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="font-semibold">Dimensions</TableCell>
-                        <TableCell className="font-mono bg-gray-50">np.shape(A)</TableCell>
-                        <TableCell>Renvoie un tuple (n, m) où n est le nombre de lignes et m le nombre de colonnes</TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </CardContent>
-        </Card>
-
-        {/* Opérations matricielles */}
-        <Card className="mb-8 border-gray-200 bg-gradient-to-br from-gray-50 to-gray-50">
-          <CardHeader>
-            <CardTitle className="text-xl text-gray-700">4. OPÉRATIONS MATRICIELLES</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="operations-elementaires">
-                <AccordionTrigger className="text-gray-600">Opérations arithmétiques élémentaires</AccordionTrigger>
-                <AccordionContent>
-                  <p className="mb-4">Pour deux matrices A et B de mêmes dimensions :</p>
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Opération</TableHead>
-                        <TableHead>Syntaxe</TableHead>
-                        <TableHead>Description</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      <TableRow>
-                        <TableCell className="font-semibold">Addition</TableCell>
-                        <TableCell className="font-mono bg-gray-50">A + B</TableCell>
-                        <TableCell>Addition terme à terme des matrices</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="font-semibold">Soustraction</TableCell>
-                        <TableCell className="font-mono bg-gray-50">A - B</TableCell>
-                        <TableCell>Soustraction terme à terme des matrices</TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="multiplication">
-                <AccordionTrigger className="text-gray-600">Multiplication</AccordionTrigger>
-                <AccordionContent>
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Type</TableHead>
-                        <TableHead>Syntaxe</TableHead>
-                        <TableHead>Description</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      <TableRow>
-                        <TableCell className="font-semibold">Multiplication terme à terme</TableCell>
-                        <TableCell className="font-mono bg-gray-50">A * B</TableCell>
-                        <TableCell>Multiplie chaque élément de A par l'élément correspondant de B</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="font-semibold">Produit matriciel</TableCell>
-                        <TableCell className="font-mono bg-gray-50">np.dot(A, B)</TableCell>
-                        <TableCell>Effectue le produit matriciel classique AB</TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                  <div className="mt-4 p-3 bg-gray-50 border border-gray-200 rounded">
-                    <p className="text-gray-700 font-semibold">⚠️ Attention : Il est crucial de ne pas confondre ces deux types de multiplication.</p>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="autres-operations">
-                <AccordionTrigger className="text-gray-600">Division et transposition</AccordionTrigger>
-                <AccordionContent>
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Opération</TableHead>
-                        <TableHead>Syntaxe</TableHead>
-                        <TableHead>Description</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      <TableRow>
-                        <TableCell className="font-semibold">Division terme à terme</TableCell>
-                        <TableCell className="font-mono bg-gray-50">A / B</TableCell>
-                        <TableCell>Divise chaque élément de A par l'élément correspondant de B</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="font-semibold">Transposition</TableCell>
-                        <TableCell className="font-mono bg-gray-50">np.transpose(A)</TableCell>
-                        <TableCell>Renvoie la matrice transposée de A</TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </CardContent>
-        </Card>
-
-        {/* Fonctions d'analyse */}
-        <Card className="mb-8 border-gray-200 bg-gradient-to-br from-gray-50 to-blue-50">
-          <CardHeader>
-            <CardTitle className="text-xl text-gray-700">5. FONCTIONS D'ANALYSE</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="fonctions-globales">
-                <AccordionTrigger className="text-gray-600">Fonctions globales</AccordionTrigger>
-                <AccordionContent>
-                  <p className="mb-4">Ces fonctions s'appliquent à tous les éléments de la matrice :</p>
-                  <div className="bg-gray-50 p-4 rounded font-mono text-sm space-y-1">
-                    <div>np.sum(A)      # Somme de tous les éléments</div>
-                    <div>np.min(A)      # Élément minimal</div>
-                    <div>np.max(A)      # Élément maximal</div>
-                    <div>np.mean(A)     # Moyenne arithmétique</div>
-                    <div>np.median(A)   # Médiane</div>
-                    <div>np.var(A)      # Variance</div>
-                    <div>np.std(A)      # Écart-type</div>
-                    <div>np.prod(A)     # Produit de tous les éléments</div>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="fonctions-axe">
-                <AccordionTrigger className="text-gray-600">Fonctions par axe</AccordionTrigger>
-                <AccordionContent>
-                  <p className="mb-4">Ces fonctions peuvent être appliquées ligne par ligne ou colonne par colonne :</p>
-                  
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold mb-2">Application par colonne (axis=0)</h4>
-                      <div className="bg-gray-50 p-3 rounded font-mono text-sm space-y-1">
-                        <div>np.sum(A, 0)   # Somme de chaque colonne</div>
-                        <div>np.mean(A, 0)  # Moyenne de chaque colonne</div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h4 className="font-semibold mb-2">Application par ligne (axis=1)</h4>
-                      <div className="bg-gray-50 p-3 rounded font-mono text-sm space-y-1">
-                        <div>np.sum(A, 1)   # Somme de chaque ligne</div>
-                        <div>np.mean(A, 1)  # Moyenne de chaque ligne</div>
-                      </div>
-                    </div>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="fonctions-speciales">
-                <AccordionTrigger className="text-gray-600">Fonctions spéciales</AccordionTrigger>
-                <AccordionContent>
-                  <div>
-                    <h4 className="font-semibold mb-2">Somme cumulée</h4>
-                    <div className="bg-gray-50 p-3 rounded font-mono text-sm mb-2">
-                      np.cumsum(A)
-                    </div>
-                    <p className="text-sm text-gray-600">
-                      Calcule les sommes partielles des éléments parcourus dans l'ordre (ligne par ligne).
-                    </p>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </CardContent>
-        </Card>
-
-        {/* Application de fonctions mathématiques */}
-        <Card className="mb-8 border-gray-200 bg-gradient-to-br from-gray-50 to-gray-50">
-          <CardHeader>
-            <CardTitle className="text-xl text-gray-700">6. APPLICATION DE FONCTIONS MATHÉMATIQUES</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="fonctions-predefinies">
-                <AccordionTrigger className="text-gray-600">Fonctions prédéfinies</AccordionTrigger>
-                <AccordionContent>
-                  <p className="mb-4">Les fonctions mathématiques s'appliquent élément par élément :</p>
-                  <div className="bg-gray-50 p-4 rounded font-mono text-sm space-y-1">
-                    <div>np.exp(A)      # Exponentielle de chaque élément</div>
-                    <div>np.log(A)      # Logarithme de chaque élément</div>
-                    <div>np.abs(A)      # Valeur absolue de chaque élément</div>
-                    <div>np.sqrt(A)     # Racine carrée de chaque élément</div>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="fonctions-personnalisees">
-                <AccordionTrigger className="text-gray-600">Fonctions personnalisées</AccordionTrigger>
-                <AccordionContent>
-                  <p className="mb-4">Pour appliquer une fonction définie par l'utilisateur :</p>
-                  <div className="bg-gray-50 p-4 rounded font-mono text-sm space-y-1">
-                    <div>def fonction_personnelle(x):</div>
-                    <div className="ml-4">return x**2 + 1</div>
-                    <div></div>
-                    <div>fonction_vectorisée = np.vectorize(fonction_personnelle)</div>
-                    <div>résultat = fonction_vectorisée(A)</div>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </CardContent>
-        </Card>
-
-        {/* Opérations de comparaison */}
-        <Card className="mb-8 border-gray-200 bg-gradient-to-br from-gray-50 to-blue-50">
-          <CardHeader>
-            <CardTitle className="text-xl text-gray-700">7. OPÉRATIONS DE COMPARAISON</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="comparaison-valeur">
-                <AccordionTrigger className="text-gray-600">Comparaison avec une valeur</AccordionTrigger>
-                <AccordionContent>
-                  <div className="bg-gray-50 p-4 rounded font-mono text-sm space-y-1">
-                    <div>A &gt; valeur    # Renvoie une matrice de booléens</div>
-                    <div>A == valeur   # Test d'égalité élément par élément</div>
-                    <div>A &gt;= valeur   # Test de supériorité ou égalité</div>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="comparaison-matrices">
-                <AccordionTrigger className="text-gray-600">Comparaison entre matrices</AccordionTrigger>
-                <AccordionContent>
-                  <div className="bg-gray-50 p-4 rounded font-mono text-sm space-y-1">
-                    <div>A == B        # Comparaison élément par élément</div>
-                    <div>A &gt; B         # Test de supériorité élément par élément</div>
-                  </div>
-                  <p className="mt-4 text-sm text-gray-600">
-                    Ces opérations renvoient des matrices de même dimension contenant des valeurs booléennes (True/False).
+            <div>
+              <h5 className="font-semibold text-blue-700 mb-2">Avantages de NumPy</h5>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                  <h6 className="font-semibold text-blue-800 mb-2">Performance</h6>
+                  <p className="text-sm text-blue-700">
+                    Calculs jusqu'à 100x plus rapides que les listes Python natives grâce à l'implémentation en C.
                   </p>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </CardContent>
-        </Card>
-
-        {/* Points essentiels */}
-        <Card className="mb-8 border-gray-200 bg-gradient-to-br from-gray-50 to-gray-50">
-          <CardHeader>
-            <CardTitle className="text-xl text-gray-700">8. POINTS ESSENTIELS À RETENIR</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div className="p-4 bg-gray-50 border border-gray-200 rounded">
-                <h4 className="font-semibold text-gray-700 mb-2">Conventions d'indexation</h4>
-                <ul className="space-y-1 text-gray-700">
-                  <li>• La numérotation commence toujours à 0</li>
-                  <li>• L'ordre des indices est toujours [ligne, colonne]</li>
-                </ul>
-              </div>
-
-              <div className="p-4 bg-gray-50 border border-gray-200 rounded">
-                <h4 className="font-semibold text-gray-700 mb-2">Distinction des opérations</h4>
-                <ul className="space-y-1 text-gray-700">
-                  <li>• L'opérateur * effectue une multiplication terme à terme, pas un produit matriciel</li>
-                  <li>• Le produit matriciel s'obtient exclusivement avec np.dot()</li>
-                </ul>
-              </div>
-
-              <div className="p-4 bg-gray-50 border border-gray-200 rounded">
-                <h4 className="font-semibold text-gray-700 mb-2">Paramètre axis</h4>
-                <ul className="space-y-1 text-gray-700">
-                  <li>• axis=0 : opération par colonne</li>
-                  <li>• axis=1 : opération par ligne</li>
-                </ul>
-              </div>
-
-              <div className="p-4 bg-gray-50 border border-gray-200 rounded">
-                <h4 className="font-semibold text-gray-700 mb-2">Vectorisation</h4>
-                <p className="text-gray-700">
-                  Toute fonction personnalisée doit être vectorisée avec np.vectorize() avant application à une matrice
-                </p>
+                </div>
+                <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                  <h6 className="font-semibold text-blue-800 mb-2">Syntaxe intuitive</h6>
+                  <p className="text-sm text-blue-700">
+                    Operations vectorisées permettant d'écrire du code concis et lisible.
+                  </p>
+                </div>
               </div>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </CardContent>
+      </Card>
 
-        {/* QCM */}
-        <Card className="mb-8 border-gray-200 bg-gradient-to-br from-gray-50 to-gray-50">
-          <CardHeader>
-            <CardTitle className="text-xl text-gray-700">QCM D'ÉVALUATION</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="qcm-questions">
-                <AccordionTrigger className="text-gray-600">Questions du QCM</AccordionTrigger>
-                <AccordionContent>
-                  <div className="space-y-6">
-                    
-                    <div className="p-4 bg-gray-50 rounded border">
-                      <p className="font-semibold mb-2">Question 1</p>
-                      <p className="mb-2">Que renvoie l'instruction <code className="bg-gray-100 px-1 rounded">np.array([[1,2],[3,4]])[1,0]</code> ?</p>
-                      <div className="grid grid-cols-2 gap-2">
-                        <div>A) 1</div>
-                        <div>B) 2</div>
-                        <div>C) 3</div>
-                        <div>D) 4</div>
-                      </div>
+      {/* Notion 2 - Création de matrices */}
+      <Card className="border-0 shadow-lg mb-8">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold text-blue-600 flex items-center gap-2">
+            <Grid3X3 className="h-6 w-6" />
+            Notion 2 - Création de matrices avec NumPy
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <h4 className="text-lg font-semibold text-gray-700 mb-3">Maîtriser les différentes méthodes de création</h4>
+          <div className="space-y-6">
+            <div>
+              <h5 className="font-semibold text-blue-700 mb-2">Création directe avec np.array()</h5>
+              <p className="text-gray-700 mb-4">
+                La fonction <code className="bg-blue-100 px-2 py-1 rounded text-blue-800">np.array()</code> permet de créer une matrice à partir de listes Python.
+              </p>
+              <div className="bg-blue-900 text-blue-100 rounded-lg p-4 overflow-x-auto border border-blue-300 mb-4">
+                <pre className="text-blue-100 text-sm font-mono">
+                  <code>{`# Syntaxe générale
+A = np.array([[1, 2, 3], [4, 5, 6]])  # Matrice 2×3
+
+# Cas particuliers
+vecteur_ligne = np.array([1, 2, 3])           # Vecteur ligne
+vecteur_colonne = np.array([[1], [2], [3]])   # Vecteur colonne`}</code>
+                </pre>
+              </div>
+            </div>
+
+            <div>
+              <h5 className="font-semibold text-blue-700 mb-2">Matrices spéciales</h5>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow className="bg-blue-50">
+                      <TableHead className="text-blue-800">Type</TableHead>
+                      <TableHead className="text-blue-800">Syntaxe</TableHead>
+                      <TableHead className="text-blue-800">Description</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell className="font-semibold">Matrice nulle</TableCell>
+                      <TableCell className="font-mono bg-blue-50">np.zeros([n, m])</TableCell>
+                      <TableCell>Crée une matrice de dimensions n×m remplie de zéros</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-semibold">Matrice unité</TableCell>
+                      <TableCell className="font-mono bg-blue-50">np.ones([n, m])</TableCell>
+                      <TableCell>Crée une matrice de dimensions n×m remplie de uns</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-semibold">Matrice identité</TableCell>
+                      <TableCell className="font-mono bg-blue-50">np.eye(n)</TableCell>
+                      <TableCell>Crée la matrice identité de dimension n×n</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </div>
+            </div>
+
+            <div>
+              <h5 className="font-semibold text-blue-700 mb-2">Création de vecteurs</h5>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow className="bg-blue-50">
+                      <TableHead className="text-blue-800">Fonction</TableHead>
+                      <TableHead className="text-blue-800">Syntaxe</TableHead>
+                      <TableHead className="text-blue-800">Description</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell className="font-semibold">arange</TableCell>
+                      <TableCell className="font-mono bg-blue-50">np.arange(début, fin, pas)</TableCell>
+                      <TableCell>Vecteur de valeurs régulièrement espacées</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-semibold">linspace</TableCell>
+                      <TableCell className="font-mono bg-blue-50">np.linspace(début, fin, nb_points)</TableCell>
+                      <TableCell>Vecteur de nb_points valeurs uniformément réparties</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Notion 3 - Indexation et accès */}
+      <Card className="border-0 shadow-lg mb-8">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold text-blue-600 flex items-center gap-2">
+            <Database className="h-6 w-6" />
+            Notion 3 - Indexation et accès aux éléments
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <h4 className="text-lg font-semibold text-gray-700 mb-3">Comprendre l'indexation des matrices</h4>
+          <div className="space-y-6">
+            <div>
+              <h5 className="font-semibold text-blue-700 mb-2">Système d'indexation</h5>
+              <p className="text-gray-700 mb-4">
+                Les matrices NumPy utilisent un système d'indexation commençant à 0. Pour une matrice A de dimensions n×m :
+              </p>
+              <ul className="space-y-2 text-gray-700 ml-4">
+                <li>• Les lignes sont numérotées de 0 à n-1</li>
+                <li>• Les colonnes sont numérotées de 0 à m-1</li>
+              </ul>
+            </div>
+
+            <div>
+              <h5 className="font-semibold text-blue-700 mb-2">Accès aux éléments et lignes/colonnes</h5>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow className="bg-blue-50">
+                      <TableHead className="text-blue-800">Opération</TableHead>
+                      <TableHead className="text-blue-800">Syntaxe</TableHead>
+                      <TableHead className="text-blue-800">Description</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell className="font-semibold">Élément</TableCell>
+                      <TableCell className="font-mono bg-blue-50">A[i, j]</TableCell>
+                      <TableCell>Accès à l'élément ligne i, colonne j</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-semibold">Ligne</TableCell>
+                      <TableCell className="font-mono bg-blue-50">A[i, :]</TableCell>
+                      <TableCell>Accès à la ligne i complète</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-semibold">Colonne</TableCell>
+                      <TableCell className="font-mono bg-blue-50">A[:, j]</TableCell>
+                      <TableCell>Accès à la colonne j complète</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-semibold">Sous-matrice</TableCell>
+                      <TableCell className="font-mono bg-blue-50">A[i1:i2, j1:j2]</TableCell>
+                      <TableCell>Extraction d'une sous-matrice</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Notion 4 - Opérations matricielles */}
+      <Card className="border-0 shadow-lg mb-8">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold text-blue-600 flex items-center gap-2">
+            <Calculator className="h-6 w-6" />
+            Notion 4 - Opérations matricielles essentielles
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <h4 className="text-lg font-semibold text-gray-700 mb-3">Effectuer des calculs sur les matrices</h4>
+          <div className="space-y-6">
+            <div>
+              <h5 className="font-semibold text-blue-700 mb-2">Opérations arithmétiques élémentaires</h5>
+              <p className="text-gray-700 mb-4">Pour deux matrices A et B de mêmes dimensions :</p>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow className="bg-blue-50">
+                      <TableHead className="text-blue-800">Opération</TableHead>
+                      <TableHead className="text-blue-800">Syntaxe</TableHead>
+                      <TableHead className="text-blue-800">Description</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell className="font-semibold">Addition</TableCell>
+                      <TableCell className="font-mono bg-blue-50">A + B</TableCell>
+                      <TableCell>Addition élément par élément</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-semibold">Soustraction</TableCell>
+                      <TableCell className="font-mono bg-blue-50">A - B</TableCell>
+                      <TableCell>Soustraction élément par élément</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </div>
+            </div>
+
+            <div>
+              <h5 className="font-semibold text-blue-700 mb-2">Multiplication</h5>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow className="bg-blue-50">
+                      <TableHead className="text-blue-800">Type</TableHead>
+                      <TableHead className="text-blue-800">Syntaxe</TableHead>
+                      <TableHead className="text-blue-800">Description</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell className="font-semibold">Terme à terme</TableCell>
+                      <TableCell className="font-mono bg-blue-50">A * B</TableCell>
+                      <TableCell>Multiplication élément par élément</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-semibold">Matricielle</TableCell>
+                      <TableCell className="font-mono bg-blue-50">np.dot(A, B)</TableCell>
+                      <TableCell>Produit matriciel classique</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-semibold">Par scalaire</TableCell>
+                      <TableCell className="font-mono bg-blue-50">k * A</TableCell>
+                      <TableCell>Multiplication par un scalaire k</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </div>
+              <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded">
+                 <p className="text-blue-800 font-semibold">Attention : Il est crucial de ne pas confondre ces deux types de multiplication.</p>
+              </div>
+            </div>
+
+            <div>
+              <h5 className="font-semibold text-blue-700 mb-2">Division et transposition</h5>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow className="bg-blue-50">
+                      <TableHead className="text-blue-800">Opération</TableHead>
+                      <TableHead className="text-blue-800">Syntaxe</TableHead>
+                      <TableHead className="text-blue-800">Description</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell className="font-semibold">Division</TableCell>
+                      <TableCell className="font-mono bg-blue-50">A / B</TableCell>
+                      <TableCell>Division élément par élément</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-semibold">Transposition</TableCell>
+                      <TableCell className="font-mono bg-blue-50">A.T</TableCell>
+                      <TableCell>Transposée de la matrice A</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Notion 5 - Fonctions d'analyse */}
+      <Card className="border-0 shadow-lg mb-8">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold text-blue-600 flex items-center gap-2">
+            <BarChart3 className="h-6 w-6" />
+            Notion 5 - Fonctions d'analyse et statistiques
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <h4 className="text-lg font-semibold text-gray-700 mb-3">Analyser les données matricielles</h4>
+          <div className="space-y-6">
+            <div>
+              <h5 className="font-semibold text-blue-700 mb-2">Fonctions globales</h5>
+              <p className="text-gray-700 mb-4">Ces fonctions s'appliquent à tous les éléments de la matrice :</p>
+              <div className="bg-blue-900 text-blue-100 rounded-lg p-4 overflow-x-auto border border-blue-300">
+                <pre className="text-blue-100 text-sm font-mono">
+                  <code>{`np.sum(A)      # Somme de tous les éléments
+np.min(A)      # Valeur minimale
+np.max(A)      # Valeur maximale
+np.mean(A)     # Moyenne arithmétique
+np.median(A)   # Médiane
+np.std(A)      # Écart-type
+np.prod(A)     # Produit de tous les éléments`}</code>
+                </pre>
+              </div>
+            </div>
+
+            <div>
+              <h5 className="font-semibold text-blue-700 mb-2">Fonctions par axe</h5>
+              <p className="text-gray-700 mb-4">Ces fonctions peuvent être appliquées ligne par ligne ou colonne par colonne :</p>
+              
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <h6 className="font-semibold text-blue-800 mb-2">Par ligne (axis=1)</h6>
+                    <div className="bg-blue-900 text-blue-100 rounded p-2 text-sm font-mono">
+                      <code>np.sum(A, axis=1)</code>
                     </div>
-
-                    <div className="p-4 bg-gray-50 rounded border">
-                      <p className="font-semibold mb-2">Question 2</p>
-                      <p className="mb-2">Quelle est la différence fondamentale entre <code className="bg-gray-100 px-1 rounded">A * B</code> et <code className="bg-gray-100 px-1 rounded">np.dot(A,B)</code> ?</p>
-                      <div className="space-y-1">
-                        <div>A) Aucune différence</div>
-                        <div>B) A * B effectue une multiplication terme à terme, np.dot(A,B) le produit matriciel</div>
-                        <div>C) np.dot() est plus performant</div>
-                        <div>D) A * B ne fonctionne que pour les vecteurs</div>
-                      </div>
-                    </div>
-
-                    <div className="p-4 bg-gray-50 rounded border">
-                      <p className="font-semibold mb-2">Question 3</p>
-                      <p className="mb-2">Pour calculer la somme de chaque ligne d'une matrice A, on utilise :</p>
-                      <div className="grid grid-cols-2 gap-2">
-                        <div>A) np.sum(A, 0)</div>
-                        <div>B) np.sum(A, 1)</div>
-                        <div>C) np.sum(A)</div>
-                        <div>D) np.row_sum(A)</div>
-                      </div>
-                    </div>
-
-                    <div className="p-4 bg-gray-50 rounded border">
-                      <p className="font-semibold mb-2">Question 4</p>
-                      <p className="mb-2">L'instruction <code className="bg-gray-100 px-1 rounded">np.zeros([3,2])</code> crée une matrice de dimensions :</p>
-                      <div className="space-y-1">
-                        <div>A) 2 lignes, 3 colonnes</div>
-                        <div>B) 3 lignes, 2 colonnes</div>
-                        <div>C) 6 éléments au total</div>
-                        <div>D) Dimensions variables</div>
-                      </div>
-                    </div>
-
-                    <div className="p-4 bg-gray-50 rounded border">
-                      <p className="font-semibold mb-2">Question 5</p>
-                      <p className="mb-2">Pour extraire la troisième colonne d'une matrice A :</p>
-                      <div className="grid grid-cols-2 gap-2">
-                        <div>A) A[3,:]</div>
-                        <div>B) A[:,3]</div>
-                        <div>C) A[:,2]</div>
-                        <div>D) A[2,:]</div>
-                      </div>
-                    </div>
-
                   </div>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="qcm-reponses">
-                <AccordionTrigger className="text-gray-600">Réponses du QCM</AccordionTrigger>
-                <AccordionContent>
-                  <div className="bg-gray-50 p-4 rounded border border-gray-200">
-                    <h4 className="font-semibold text-gray-600 mb-3 flex items-center gap-2">
-                      <CheckCircle className="h-5 w-5" />
-                      Réponses correctes
-                    </h4>
-                    <div className="space-y-2 text-gray-700">
-                      <div><strong>1 - C</strong> (l'élément [1,0] vaut 3)</div>
-                      <div><strong>2 - B</strong> (A * B = multiplication terme à terme, np.dot(A,B) = produit matriciel)</div>
-                      <div><strong>3 - B</strong> (axis=1 pour les lignes)</div>
-                      <div><strong>4 - B</strong> (3 lignes, 2 colonnes)</div>
-                      <div><strong>5 - C</strong> (indexation commence à 0, donc colonne 3 = indice 2)</div>
+                  <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <h6 className="font-semibold text-blue-800 mb-2">Par colonne (axis=0)</h6>
+                    <div className="bg-blue-900 text-blue-100 rounded p-2 text-sm font-mono">
+                      <code>np.sum(A, axis=0)</code>
                     </div>
                   </div>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </CardContent>
-        </Card>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h5 className="font-semibold text-blue-700 mb-2">Fonctions mathématiques</h5>
+              <p className="text-gray-700 mb-4">Les fonctions mathématiques s'appliquent élément par élément :</p>
+              <div className="bg-blue-900 text-blue-100 rounded-lg p-4 overflow-x-auto border border-blue-300">
+                <pre className="text-blue-100 text-sm font-mono">
+                  <code>{`np.exp(A)      # Exponentielle de chaque élément
+np.log(A)      # Logarithme de chaque élément
+np.abs(A)      # Valeur absolue de chaque élément
+np.sqrt(A)     # Racine carrée de chaque élément`}</code>
+                </pre>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Quiz Section */}
-      <PythonModuleQuiz 
-          title="🧠 Quiz Pratique - Module 1"
-        questions={matricesQuizQuestions}
-        moduleColor="gray"
+      <Card className="border-0 shadow-lg mb-8">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold text-blue-600 flex items-center gap-2">
+            <CheckCircle className="h-6 w-6" />
+            Quiz d'auto-évaluation
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-gray-700 mb-4">
+            Testez vos connaissances sur les matrices NumPy avec ce quiz interactif.
+          </p>
+          <PythonModuleQuiz questions={matricesQuizQuestions} />
+        </CardContent>
+      </Card>
+
+      {/* Navigation */}
+      <ModuleNavigationCards
+        currentModule={{
+          id: 1,
+          title: "Matrices",
+          slug: "matrices",
+          color: "blue"
+        }}
+        isExercisePage={false}
       />
-
-      {/* Exercices */}
-      <Card className="mb-8 border-gray-200 bg-gradient-to-br from-gray-50 to-gray-50">
-          <CardHeader>
-            <CardTitle className="text-xl text-gray-700">EXERCICES D'APPLICATION</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Accordion type="single" collapsible className="w-full">
-              
-              <AccordionItem value="niveau-1">
-                <AccordionTrigger className="text-gray-600">
-                  <div className="flex items-center gap-2">
-                    <Badge variant="outline" className="bg-gray-50 text-gray-700">Niveau 1</Badge>
-                    Application directe
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent>
-                  <div className="space-y-4">
-                    <div className="p-3 bg-gray-50 rounded">
-                      <p className="font-semibold mb-2">Exercice 1.1</p>
-                      <p>Créer une matrice 3×4 contenant uniquement des zéros, puis une matrice 2×3 contenant uniquement des uns.</p>
-                    </div>
-                    <div className="p-3 bg-gray-50 rounded">
-                      <p className="font-semibold mb-2">Exercice 1.2</p>
-                      <p>Soit A = np.array([[1,2,3],[4,5,6]]). Extraire l'élément de la deuxième ligne et troisième colonne.</p>
-                    </div>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="niveau-2">
-                <AccordionTrigger className="text-gray-600">
-                  <div className="flex items-center gap-2">
-                    <Badge variant="outline" className="bg-gray-100 text-gray-700">Niveau 2</Badge>
-                    Manipulation des données
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent>
-                  <div className="space-y-4">
-                    <div className="p-3 bg-gray-50 rounded">
-                      <p className="font-semibold mb-2">Exercice 2.1</p>
-                      <p>Créer un vecteur contenant 10 valeurs uniformément réparties entre 0 et 1.</p>
-                    </div>
-                    <div className="p-3 bg-gray-50 rounded">
-                      <p className="font-semibold mb-2">Exercice 2.2</p>
-                      <p>Pour la matrice B = np.array([[10,20,30],[40,50,60]]), calculer la somme de chaque ligne et de chaque colonne.</p>
-                    </div>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="niveau-3">
-                <AccordionTrigger className="text-gray-600">
-                  <div className="flex items-center gap-2">
-                    <Badge variant="outline" className="bg-gray-100 text-gray-700">Niveau 3</Badge>
-                    Opérations matricielles
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent>
-                  <div className="space-y-4">
-                    <div className="p-3 bg-gray-50 rounded">
-                      <p className="font-semibold mb-2">Exercice 3.1</p>
-                      <p>Soient A = np.array([[1,2],[3,4]]) et B = np.array([[2,1],[1,2]]). 
-                         Calculer A + B, A * B et np.dot(A,B).</p>
-                    </div>
-                    <div className="p-3 bg-gray-50 rounded">
-                      <p className="font-semibold mb-2">Exercice 3.2</p>
-                      <p>Calculer la transposée de la matrice C = np.array([[1,2,3],[4,5,6],[7,8,9]]).</p>
-                    </div>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="niveau-4">
-                <AccordionTrigger className="text-gray-600">
-                  <div className="flex items-center gap-2">
-                    <Badge variant="outline" className="bg-gray-50 text-gray-700">Niveau 4</Badge>
-                    Analyse statistique
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent>
-                  <div className="p-3 bg-gray-50 rounded">
-                    <p className="font-semibold mb-2">Exercice 4.1</p>
-                    <p className="mb-2">Une matrice représente les notes de 4 étudiants (lignes) dans 3 matières (colonnes).</p>
-                    <div className="bg-gray-100 p-2 rounded font-mono text-sm mb-2">
-                      Notes = np.array([[12,14,16],[15,13,17],[11,18,14],[16,15,13]])
-                    </div>
-                    <p>Calculer la moyenne générale, la moyenne par étudiant et la moyenne par matière.</p>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="niveau-5">
-                <AccordionTrigger className="text-gray-600">
-                  <div className="flex items-center gap-2">
-                    <Badge variant="outline" className="bg-gray-50 text-gray-700">Niveau 5</Badge>
-                    Problèmes de synthèse
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent>
-                  <div className="p-3 bg-gray-50 rounded">
-                    <p className="font-semibold mb-2">Exercice 5.1</p>
-                    <p className="mb-2">Soit la matrice A = np.array([[2,1],[1,2]]).</p>
-                    <ul className="space-y-1 ml-4">
-                      <li>• Calculer A²</li>
-                      <li>• Vérifier que A² = 3A - 2I où I est la matrice identité</li>
-                      <li>• En déduire une expression de A³</li>
-                    </ul>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-
-            </Accordion>
-          </CardContent>
-        </Card>
-
-        {/* Navigation vers les exercices */}
-        <ModuleNavigationCards 
-          currentModule={{
-            id: 1,
-            title: "Matrices",
-            slug: "matrices",
-            color: "gray"
-          }}
-          isExercisePage={false}
-        />
-
     </PythonModuleLayout>
   );
 };
