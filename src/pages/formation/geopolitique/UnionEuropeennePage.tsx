@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { ChevronRight, Home, BookOpen, Globe, MapPin, Quote, AlertTriangle, Lightbulb, Flag, Users, Heart, Shield, Coins, Target, ExternalLink, Sparkles, CheckCircle } from 'lucide-react';
 
@@ -142,13 +141,12 @@ const UnionEuropeennePage = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="i1">
-                <AccordionTrigger className="text-lg">
-                  I.1. L'idée de la construction européenne
-                </AccordionTrigger>
-                <AccordionContent>
-                  <div className="space-y-6">
+            <div className="space-y-8">
+              <h3 className="text-2xl font-bold text-blue-800 mb-6 flex items-center gap-3">
+                <Globe className="h-6 w-6" />
+                I.1. L'idée de la construction européenne
+              </h3>
+              <div className="space-y-6">
                     
                     {/* 1/ La nécessité d'établir la paix */}
                     <div className="bg-white p-6 rounded-lg border border-blue-200">
@@ -360,15 +358,13 @@ const UnionEuropeennePage = () => {
                     </div>
 
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+              </div>
 
-              <AccordionItem value="i2">
-                <AccordionTrigger className="text-lg">
-                  I.2. Coopération, rivalités, ingérences et voisinage
-                </AccordionTrigger>
-                <AccordionContent>
-                  <div className="space-y-6">
+              <h3 className="text-2xl font-bold text-blue-800 mb-6 flex items-center gap-3 mt-8">
+                <Globe className="h-6 w-6" />
+                I.2. Coopération, rivalités, ingérences et voisinage
+              </h3>
+              <div className="space-y-6">
                     
                     {/* 1/ Les échecs de la stabilisation des marges de l'UE */}
                     <div className="bg-white p-6 rounded-lg border border-red-200">
@@ -614,15 +610,13 @@ const UnionEuropeennePage = () => {
                     </div>
 
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+              </div>
 
-              <AccordionItem value="i3">
-                <AccordionTrigger className="text-lg">
-                  I.3. Modèle et puissance de l'Europe : mythe/réalité
-                </AccordionTrigger>
-                <AccordionContent>
-                  <div className="space-y-6">
+              <h3 className="text-2xl font-bold text-blue-800 mb-6 flex items-center gap-3 mt-8">
+                <Globe className="h-6 w-6" />
+                I.3. Modèle et puissance de l'Europe : mythe/réalité
+              </h3>
+              <div className="space-y-6">
                     
                     {/* Référence principale */}
                     <div className="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-400">
@@ -928,9 +922,9 @@ const UnionEuropeennePage = () => {
                     </div>
 
                   </div>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+                </div>
+              </div>
+            </div>
           </CardContent>
         </Card>
 
@@ -943,13 +937,13 @@ const UnionEuropeennePage = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="ii1">
-                <AccordionTrigger className="text-lg">
+            <div className="space-y-8">
+              <div className="space-y-6">
+                <h3 className="text-2xl font-bold text-orange-800 mb-6 flex items-center gap-3">
+                  <AlertTriangle className="h-6 w-6" />
                   II.1. Les dépendances de l'Europe
-                </AccordionTrigger>
-                <AccordionContent>
-                  <div className="space-y-6">
+                </h3>
+                <div className="space-y-6">
                     
                     {/* Structure logique */}
                     <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-400">
@@ -1165,15 +1159,15 @@ const UnionEuropeennePage = () => {
                     </div>
 
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </div>
 
-              <AccordionItem value="ii2">
-                <AccordionTrigger className="text-lg">
+              <div className="space-y-6">
+                <h3 className="text-2xl font-bold text-orange-800 mb-6 flex items-center gap-3 mt-8">
+                  <AlertTriangle className="h-6 w-6" />
                   II.2. Une polycrise : typologie des défis de l'Europe
-                </AccordionTrigger>
-                <AccordionContent>
-                  <div className="space-y-6">
+                </h3>
+                <div className="space-y-6">
                     
                     {/* Référence polycrise */}
                     <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-400">
@@ -1293,15 +1287,15 @@ const UnionEuropeennePage = () => {
                     </div>
 
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </div>
 
-              <AccordionItem value="ii3">
-                <AccordionTrigger className="text-lg">
+              <div className="space-y-6">
+                <h3 className="text-2xl font-bold text-orange-800 mb-6 flex items-center gap-3 mt-8">
+                  <AlertTriangle className="h-6 w-6" />
                   II.3. Désillusions européennes
-                </AccordionTrigger>
-                <AccordionContent>
-                  <div className="space-y-6">
+                </h3>
+                <div className="space-y-6">
                     
                     {/* 1/ Désunion européenne */}
                     <div className="bg-white p-6 rounded-lg border border-red-200">
@@ -1675,15 +1669,15 @@ const UnionEuropeennePage = () => {
                     </div>
 
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </div>
 
-              <AccordionItem value="iii1">
-                <AccordionTrigger className="text-lg">
+              <div className="space-y-6">
+                <h3 className="text-2xl font-bold text-orange-800 mb-6 flex items-center gap-3 mt-8">
+                  <AlertTriangle className="h-6 w-6" />
                   III.1. Une Europe plurielle : confrontée aux crises de manière différente
-                </AccordionTrigger>
-                <AccordionContent>
-                  <div className="space-y-6">
+                </h3>
+                <div className="space-y-6">
                     
                     {/* Introduction : L'Europe diverse */}
                     <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
@@ -1969,15 +1963,15 @@ const UnionEuropeennePage = () => {
                     </div>
 
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </div>
 
-              <AccordionItem value="iii2">
-                <AccordionTrigger className="text-lg">
+              <div className="space-y-6">
+                <h3 className="text-2xl font-bold text-orange-800 mb-6 flex items-center gap-3 mt-8">
+                  <AlertTriangle className="h-6 w-6" />
                   III.2. La stratégie de l'UE : le tournant actuel
-                </AccordionTrigger>
-                <AccordionContent>
-                  <div className="space-y-6">
+                </h3>
+                <div className="space-y-6">
                     
                     {/* 1/ Prise de conscience des élites européennes */}
                     <div className="bg-white p-6 rounded-lg border border-blue-200">
@@ -2333,15 +2327,15 @@ const UnionEuropeennePage = () => {
                     </div>
 
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </div>
 
-              <AccordionItem value="iii3">
-                <AccordionTrigger className="text-lg">
+              <div className="space-y-6">
+                <h3 className="text-2xl font-bold text-orange-800 mb-6 flex items-center gap-3 mt-8">
+                  <AlertTriangle className="h-6 w-6" />
                   III.3. L'Europe à géométrie variable : défis du XXIème siècle
-                </AccordionTrigger>
-                <AccordionContent>
-                  <div className="space-y-6">
+                </h3>
+                <div className="space-y-6">
                     
                     {/* Introduction conceptuelle */}
                     <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
@@ -2664,9 +2658,9 @@ const UnionEuropeennePage = () => {
                     </div>
 
                   </div>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+                </div>
+              </div>
+            </div>
           </CardContent>
         </Card>
 

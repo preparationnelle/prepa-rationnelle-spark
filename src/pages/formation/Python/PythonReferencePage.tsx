@@ -42,8 +42,7 @@ const PythonReferencePage = () => {
       <div className="container mx-auto py-8 px-4">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-3 mb-4 p-3 rounded-lg bg-blue-100 text-blue-700 border border-blue-300">
-            <ArrowLeft className="h-8 w-8" />
+          <div className="text-center mb-4">
             <h1 className="text-4xl font-bold text-blue-800">Références Python ECG</h1>
           </div>
           <p className="text-xl text-blue-600 mb-6">
@@ -86,7 +85,7 @@ const PythonReferencePage = () => {
 
         {/* Call to action */}
         <div className="mt-12 text-center">
-          <div className="bg-gradient-to-r from-blue-50 to-blue-600 p-8 rounded-lg border">
+          <div className="p-8 rounded-lg border">
             <h3 className="text-2xl font-bold mb-4">Prêt à maîtriser Python ?</h3>
             <p className="text-muted-foreground mb-6">
               Transformez ces commandes en +3 à +5 points sûrs aux concours
@@ -94,7 +93,7 @@ const PythonReferencePage = () => {
             <div className="flex gap-4 justify-center flex-wrap">
               <Link to="/python-flashcards">
                 <Button size="lg" className="bg-blue-600 hover:bg-orange-600">
-                  🧠 Tester avec les flashcards
+                  Tester avec les flashcards
                 </Button>
               </Link>
               <Link to="/offre/coaching-python">

@@ -37,17 +37,14 @@ const Chapitre8CoupleVariablesAleatoiresCoursPage = () => {
                 Quiz
               </Button>
             </Link>
+          </div>
 
-              </div>
-            </div>
-
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
-              <p className="font-semibold">Propriété</p>
-              <div className="mt-2 space-y-2">
-                <p>Si <LatexRenderer latex="(X_1,Y_1),(X_2,Y_2)" inline /> ont même loi conjointe et <LatexRenderer latex="g" inline /> est continue, alors</p>
-                <div className="text-center py-2">
-                  <LatexRenderer latex="g(X_1,Y_1) \sim g(X_2,Y_2)" />
-                </div>
+          <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <p className="font-semibold">Propriété</p>
+            <div className="mt-2 space-y-2">
+              <p>Si <LatexRenderer latex="(X_1,Y_1),(X_2,Y_2)" inline /> ont même loi conjointe et <LatexRenderer latex="g" inline /> est continue, alors</p>
+              <div className="text-center py-2">
+                <LatexRenderer latex="g(X_1,Y_1) \sim g(X_2,Y_2)" />
               </div>
             </div>
           </div>

@@ -21,7 +21,7 @@ export const HeroSection = () => {
   };
 
   const joinWhatsAppGroup = () => {
-    window.open('https://chat.whatsapp.com/Lx0UqZQY0607ZeRLGrCY9N?mode=ac_t', '_blank');
+    window.open('https://calendly.com/preparationnelle/30min?month=2025-09&date=2025-09-16', '_blank');
   };
 
   return (
@@ -92,20 +92,16 @@ export const HeroSection = () => {
         <div className="flex flex-col items-center justify-center gap-4 w-full max-w-[1000px] mb-6 sm:mb-8 px-4">
           <Button 
             size="lg" 
-            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold text-base sm:text-lg leading-snug rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border-0 relative overflow-hidden group break-words whitespace-normal sm:whitespace-nowrap text-center z-10"
+            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base sm:text-lg leading-snug rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border-0 relative overflow-hidden group break-words whitespace-normal sm:whitespace-nowrap text-center z-10"
             style={{
-              boxShadow: "0 8px 25px rgba(37, 211, 102, 0.3)"
+              boxShadow: "0 8px 25px rgba(59, 130, 246, 0.3)"
             }}
             onClick={joinWhatsAppGroup}
           >
-            <span className="relative z-10 flex items-center justify-center gap-2 flex-wrap text-center">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-                        <path d="M11.5 0C5.149 0 0 5.148 0 11.5c0 2.532.81 4.863 2.175 6.772L.751 23.25l5.159-1.352A11.468 11.468 0 0011.5 23c6.351 0 11.5-5.149 11.5-11.5C23 5.148 17.851 0 11.5 0zm0 21c-2.173 0-4.193-.626-5.9-1.704L2.75 20.25l.943-2.836A9.439 9.439 0 012 11.5C2 6.262 6.262 2 11.5 2S21 6.262 21 11.5 16.738 21 11.5 21z" fillRule="evenodd" clipRule="evenodd"/>
-                  </svg>
-              Rejoins notre groupe Conseils & Ressources
+            <span className="relative z-10 flex items-center justify-center text-center">
+              Réserve ton cours gratuit
             </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </Button>
         </div>
 
@@ -123,31 +119,30 @@ export const HeroSection = () => {
                          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                <Link to="/avis" className="group hover:scale-105 transition-transform duration-200 cursor-pointer">
                  <div className="flex items-center justify-center mb-3">
-                   <Star className="h-8 w-8 text-orange-500 mr-3 group-hover:text-orange-600 transition-colors" />
+                   <Star className="h-8 w-8 text-black mr-3 group-hover:text-gray-800 transition-colors" />
                    <div className="text-4xl font-bold text-orange-500 group-hover:text-orange-600 transition-colors">5/5</div>
                  </div>
-                 <div className="text-base text-gray-600 font-medium group-hover:text-gray-800 transition-colors">Satisfaction client</div>
+                 <div className="text-base text-black font-medium group-hover:text-gray-800 transition-colors">Satisfaction client</div>
                </Link>
                <Link to="/avis" className="group hover:scale-105 transition-transform duration-200 cursor-pointer">
                  <div className="flex items-center justify-center mb-3">
-                   <TrendingUp className="h-8 w-8 text-orange-500 mr-3 group-hover:text-orange-600 transition-colors" />
+                   <TrendingUp className="h-8 w-8 text-black mr-3 group-hover:text-gray-800 transition-colors" />
                    <div className="text-4xl font-bold text-orange-500 group-hover:text-orange-600 transition-colors">+5pts</div>
                  </div>
-                 <div className="text-base text-gray-600 font-medium group-hover:text-gray-800 transition-colors">Gain en maths</div>
+                 <div className="text-base text-black font-medium group-hover:text-gray-800 transition-colors">Gain en maths</div>
                </Link>
                <Link to="/avis" className="group hover:scale-105 transition-transform duration-200 cursor-pointer">
                  <div className="flex items-center justify-center mb-3">
-                   <Users className="h-8 w-8 text-orange-500 mr-3 group-hover:text-orange-600 transition-colors" />
+                   <Users className="h-8 w-8 text-black mr-3 group-hover:text-gray-800 transition-colors" />
                    <div className="text-4xl font-bold text-orange-500 group-hover:text-orange-600 transition-colors">50+</div>
                  </div>
-                 <div className="text-base text-gray-600 font-medium group-hover:text-gray-800 transition-colors">Étudiants accompagnés</div>
+                 <div className="text-base text-black font-medium group-hover:text-gray-800 transition-colors">Étudiants accompagnés</div>
                </Link>
                <Link to="/avis" className="group hover:scale-105 transition-transform duration-200 cursor-pointer">
                  <div className="flex items-center justify-center mb-3">
-                   <Award className="h-8 w-8 text-orange-500 mr-3 group-hover:text-orange-600 transition-colors" />
-                   <div className="text-4xl font-bold text-orange-500 group-hover:text-orange-600 transition-colors">Top 5</div>
+                   <div className="text-4xl font-bold text-orange-500 group-hover:text-orange-600 transition-colors">TOP 5</div>
                  </div>
-                 <div className="text-base text-gray-600 font-medium group-hover:text-gray-800 transition-colors">Classement national</div>
+                 <div className="text-base text-black font-medium group-hover:text-gray-800 transition-colors">80% des étudiants en 2025</div>
                </Link>
              </div>
             

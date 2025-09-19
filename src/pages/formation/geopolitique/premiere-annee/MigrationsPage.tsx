@@ -40,7 +40,7 @@ const MigrationsPage: React.FC = () => {
               <h2 className="text-2xl font-semibold text-blue-700 mb-2">I. Motivées par des raisons économiques ou géopolitiques, les migrations contemporaines prennent de l’ampleur</h2>
               <h3 className="text-xl font-semibold mb-2">A. Migrations issues d’inégalités ou de crises économiques</h3>
               <ul className="list-disc list-inside space-y-1">
-                <li>Afrique subsaharienne : migrations économiques nombreuses; >80% intra‑africaines (Afrique du Sud, Nigéria, Kenya…).</li>
+                <li>Afrique subsaharienne : migrations économiques nombreuses; &gt;80% intra‑africaines (Afrique du Sud, Nigéria, Kenya…).</li>
                 <li>Contrastes extrêmes : pauvreté (~40%) vs milliardaires (ex : Aliko Dangote).</li>
                 <li className="italic">« Si les richesses ne vont pas là où sont les hommes, les hommes vont là où sont les richesses » — Alfred Sauvy.</li>
               </ul>
@@ -55,7 +55,7 @@ const MigrationsPage: React.FC = () => {
               <h3 className="text-xl font-semibold mt-6 mb-2">C. Une tendance à la hausse des flux</h3>
               <ul className="list-disc list-inside space-y-1">
                 <li>Mondialisation : hausse des mobilités (désactivation relative des frontières).</li>
-                <li>Chine : système <em>Hukou</em> assoupli avec l’ouverture; >200 M de <em>mingongs</em> vers ZES (Shenzhen, Shantou…).</li>
+                <li>Chine : système <em>Hukou</em> assoupli avec l’ouverture; &gt;200 M de <em>mingongs</em> vers ZES (Shenzhen, Shantou…).</li>
               </ul>
             </div>
 
@@ -77,7 +77,7 @@ const MigrationsPage: React.FC = () => {
               <h3 className="text-xl font-semibold mt-6 mb-2">C. Opportunités économiques, démographiques, culturelles</h3>
               <ul className="list-disc list-inside space-y-1">
                 <li>Économie : paradis fiscaux très ouverts (ex : Singapour).</li>
-                <li>Culture/formation : Erasmus depuis 1987 (>12 M de personnes; budget 26 Mds€; >1 M de « bébés Erasmus »).</li>
+                <li>Culture/formation : Erasmus depuis 1987 (&gt;12 M de personnes; budget 26 Mds€; &gt;1 M de « bébés Erasmus »).</li>
                 <li>Innovation : OCDE — +1 à 3% d’immigration aux USA ⇒ +15% de brevets.</li>
                 <li>Démographie : Allemagne vieillissante — apports d’Europe de l’Est pour combler tensions sur l’emploi.</li>
               </ul>
@@ -109,7 +109,7 @@ const MigrationsPage: React.FC = () => {
                 <li>Flux d’info et visibilité — exode rural, métropolisation, littoralisation; nuances conjoncturelles.</li>
                 <li>Passeports inégaux : Afghanistan (26 pays sans visa/à l’arrivée) vs Japon/Singapour (192) — Henley 2022.</li>
                 <li><em>Harraga</em> (Maghreb) et drames : 2010‑2020 ≈20 000 morts en Méditerranée.</li>
-                <li>Bangladesh : >450 000 réfugiés politiques; forte vulnérabilité climatique (moussons, eustasie, fonte himalayenne). Mur indo‑bangladais (3 200 km) — « mur de la peur » (Libération, 2015).</li>
+                <li>Bangladesh : &gt;450 000 réfugiés politiques; forte vulnérabilité climatique (moussons, eustasie, fonte himalayenne). Mur indo‑bangladais (3 200 km) — « mur de la peur » (Libération, 2015).</li>
                 <li>Diogène le Cynique : « citoyen du monde » — origine du terme « cosmopolite ».</li>
               </ul>
 

@@ -231,6 +231,14 @@ const FrontieresPage = lazy(() => import('../pages/formation/geopolitique/etudes
 const CriminalitePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/CriminalitePage'));
 const ChronologiesPage = lazy(() => import('../pages/formation/geopolitique/ChronologiesPage'));
 const GeopolitiquesFlashcardsPage = lazy(() => import('../pages/formation/geopolitique/GeopolitiquesFlashcardsPage'));
+const GeopoliticsMaritimesFlashcardsPage = lazy(() => import('../pages/formation/geopolitique/GeopoliticsMaritimesFlashcardsPage'));
+const GeopoliticsMaritimesTensionsFlashcardsPage = lazy(() => import('../pages/formation/geopolitique/GeopoliticsMaritimesTensionsFlashcardsPage'));
+const GeopoliticsEnergiesFlashcardsPage = lazy(() => import('../pages/formation/geopolitique/GeopoliticsEnergiesFlashcardsPage'));
+const GeopoliticsGouvernanceFlashcardsPage = lazy(() => import('../pages/formation/geopolitique/GeopoliticsGouvernanceFlashcardsPage'));
+const GeopoliticsGuerresFlashcardsPage = lazy(() => import('../pages/formation/geopolitique/GeopoliticsGuerresFlashcardsPage'));
+const GeopoliticsMigrationsFlashcardsPage = lazy(() => import('../pages/formation/geopolitique/GeopoliticsMigrationsFlashcardsPage'));
+const GeopoliticsPuissanceFlashcardsPage = lazy(() => import('../pages/formation/geopolitique/GeopoliticsPuissanceFlashcardsPage'));
+const GeopoliticsRessourcesFlashcardsPage = lazy(() => import('../pages/formation/geopolitique/GeopoliticsRessourcesFlashcardsPage'));
 const GeopolitiquesReferencesPage = lazy(() => import('../pages/formation/geopolitique/GeopolitiquesReferencesPage'));
 const GeopolitiquesMethodologiePage = lazy(() => import('../pages/formation/geopolitique/GeopolitiquesMethodologiePage'));
 const MethodologieDissertationPage = lazy(() => import('../pages/formation/geopolitique/MethodologieDissertationPage'));
@@ -421,6 +429,18 @@ const TendrePerchesPage = lazy(() => import('../pages/methodologie/TendrePerches
 const PitchIntroPage = lazy(() => import('../pages/methodologie/PitchIntroPage'));
 
 // Articles pages
+const ArticlesPrimairePage = lazy(() => import('../pages/ArticlesPrimairePage'));
+const ArticlesCollegePage = lazy(() => import('../pages/ArticlesCollegePage'));
+const ArticlesLyceePage = lazy(() => import('../pages/ArticlesLyceePage'));
+const LyceeSecondePage = lazy(() => import('../pages/LyceeSecondePage'));
+const LyceePremierePage = lazy(() => import('../pages/LyceePremierePage'));
+const LyceeTerminalePage = lazy(() => import('../pages/LyceeTerminalePage'));
+const LyceePhilosophiePage = lazy(() => import('../pages/LyceePhilosophiePage'));
+const LyceeHistoireGeographiePage = lazy(() => import('../pages/LyceeHistoireGeographiePage'));
+const LyceeEspagnolPage = lazy(() => import('../pages/LyceeEspagnolPage'));
+const LyceeEPSPage = lazy(() => import('../pages/LyceeEPSPage'));
+const LyceeAnglaisPage = lazy(() => import('../pages/LyceeAnglaisPage'));
+const LyceeGrandOralPage = lazy(() => import('../pages/LyceeGrandOralPage'));
 const MathsEteControlePage = lazy(() => import('../pages/articles/MathsEteControlePage'));
 const AttentesConcoursPage = lazy(() => import('../pages/articles/AttentesConcoursPage'));
 const CollesDsPage = lazy(() => import('../pages/articles/CollesDsPage'));
@@ -577,6 +597,18 @@ export const routes: RouteConfig[] = [
   { path: '/partners', component: PartnersPage, title: 'Partenaires' },
   { path: '/methodes/personnalite', component: MethodEntretiensPersonnalitePage, title: 'Méthodes Personnalité' },
   { path: '/articles', component: ArticlesPage, title: 'Conseils & Articles' },
+  { path: '/articles/primaire', component: ArticlesPrimairePage, title: 'Articles Primaire' },
+  { path: '/articles/college', component: ArticlesCollegePage, title: 'Articles Collège' },
+  { path: '/articles/lycee', component: ArticlesLyceePage, title: 'Articles Lycée' },
+  { path: '/articles/lycee/seconde', component: LyceeSecondePage, title: 'Classe de Seconde' },
+  { path: '/articles/lycee/premiere', component: LyceePremierePage, title: 'Classe de Première' },
+  { path: '/articles/lycee/terminale', component: LyceeTerminalePage, title: 'Classe de Terminale' },
+  { path: '/articles/lycee/terminale/philosophie', component: LyceePhilosophiePage, title: 'Philosophie Terminale' },
+  { path: '/articles/lycee/terminale/histoire-geographie', component: LyceeHistoireGeographiePage, title: 'Histoire-Géographie Terminale' },
+  { path: '/articles/lycee/terminale/espagnol', component: LyceeEspagnolPage, title: 'Espagnol Terminale' },
+  { path: '/articles/lycee/terminale/eps', component: LyceeEPSPage, title: 'EPS Terminale' },
+  { path: '/articles/lycee/terminale/anglais', component: LyceeAnglaisPage, title: 'Anglais Terminale' },
+  { path: '/articles/lycee/terminale/grand-oral', component: LyceeGrandOralPage, title: 'Grand Oral Terminale' },
   { path: '/avis', component: AvisPage, title: 'Avis Superprof' },
   { path: '/methodologie/storytelling', component: StorytellingMethodePage, title: 'Méthodologie Storytelling' },
 
@@ -845,6 +877,14 @@ export const routes: RouteConfig[] = [
   { path: '/formation/geopolitique/etudes-de-cas/criminalite', component: CriminalitePage, title: 'Criminalité organisée mondiale' },
   { path: '/formation/geopolitique/chronologies', component: ChronologiesPage, title: 'Chronologies géopolitiques' },
   { path: '/formation/geopolitique/flashcards', component: GeopolitiquesFlashcardsPage, title: 'Flashcards Géopolitiques' },
+  { path: '/formation/geopolitique/premiere-annee/espaces-maritimes/flashcards', component: GeopoliticsMaritimesFlashcardsPage, title: 'Flashcards Espaces Maritimes' },
+  { path: '/formation/geopolitique/premiere-annee/espaces-maritimes-tensions/flashcards', component: GeopoliticsMaritimesTensionsFlashcardsPage, title: 'Flashcards Tensions Maritimes' },
+  { path: '/formation/geopolitique/premiere-annee/energies/flashcards', component: GeopoliticsEnergiesFlashcardsPage, title: 'Flashcards Géopolitique Énergies' },
+  { path: '/formation/geopolitique/premiere-annee/gouvernance-mondiale/flashcards', component: GeopoliticsGouvernanceFlashcardsPage, title: 'Flashcards Gouvernance Mondiale' },
+  { path: '/formation/geopolitique/premiere-annee/guerres/flashcards', component: GeopoliticsGuerresFlashcardsPage, title: 'Flashcards Les Guerres' },
+  { path: '/formation/geopolitique/premiere-annee/migrations/flashcards', component: GeopoliticsMigrationsFlashcardsPage, title: 'Flashcards Les Migrations' },
+  { path: '/formation/geopolitique/premiere-annee/puissance/flashcards', component: GeopoliticsPuissanceFlashcardsPage, title: 'Flashcards La Puissance' },
+  { path: '/formation/geopolitique/premiere-annee/ressources-strategiques/flashcards', component: GeopoliticsRessourcesFlashcardsPage, title: 'Flashcards Ressources Stratégiques' },
   { path: '/formation/geopolitique/generateur', component: GeopoliticsUnifiedGeneratorPage, title: 'Générateur Géopolitique' },
   { path: '/formation/geopolitique/references', component: GeopolitiquesReferencesPage, title: 'Références Géopolitiques' },
   { path: '/formation/geopolitique/methodologie', component: GeopolitiquesMethodologiePage, title: 'Méthodologie Géopolitique' },

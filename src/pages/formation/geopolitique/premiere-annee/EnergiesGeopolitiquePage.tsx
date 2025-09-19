@@ -38,12 +38,12 @@ const EnergiesGeopolitiquePage: React.FC = () => {
             <div className="border-l-4 border-blue-600 pl-4">
               <h2 className="text-2xl font-semibold text-blue-700 mb-2">Faits et dynamiques récentes</h2>
               <ul className="list-disc list-inside space-y-2">
-                <li>LKAB (Suède), 12 janv. 2023 : annonce du « plus grand gisement connu » de terres rares (Per Geijer) — minerais essentiels aux technologies bas carbone; dépendance de l’UE à >98% vis‑à‑vis des importations chinoises.</li>
+                <li>LKAB (Suède), 12 janv. 2023 : annonce du « plus grand gisement connu » de terres rares (Per Geijer) — minerais essentiels aux technologies bas carbone; dépendance de l&apos;UE à plus de 98% vis‑à‑vis des importations chinoises.</li>
                 <li>Japon : Fumio Kishida favorable à la relance du nucléaire (post‑Fukushima) pour contribuer à la neutralité carbone — opinion publique toujours traversée par un discours anti‑nucléaire.</li>
                 <li>Mine de Cobre Panamá (Donoso) : plus grande d’Amérique centrale. Le cuivre, stratégique pour les renouvelables, représentait 75% des exportations du Panama jusqu’à la fermeture de 2022.</li>
                 <li>KenGen (Kenya), unité 6 d’Olkaria (juil. 2022) : la géothermie, 2e source d’électricité après l’hydro; Olkaria = 8e centrale géothermique mondiale.</li>
                 <li>Lynas (Australie) accuse en 2019 la Chine d’exploiter sa position dominante sur les terres rares comme une arme économique.</li>
-                <li>Guerre en Ukraine : nouveaux projets pour acheminer hydrocarbures d’Asie centrale vers l’Europe (gazoduc Turkménistan→Turquie→Europe; Kazakhstan prêt à exporter >20 Mt par la voie transcaspienne).</li>
+                <li>Guerre en Ukraine : nouveaux projets pour acheminer hydrocarbures d&apos;Asie centrale vers l&apos;Europe (gazoduc Turkménistan→Turquie→Europe; Kazakhstan prêt à exporter plus de 20 Mt par la voie transcaspienne).</li>
                 <li>Uranium : Kazakhstan = 1er producteur mondial (2019, 42%). Pour la France (≈41% d’électricité nucléaire; +6 EPR2 annoncés), sécurisation stratégique des approvisionnements (FR 2005‑2020 : KAZ 20%, AUS 19%, NIG 18%, UZB 16%). Orano present via KATCO.</li>
               </ul>
             </div>

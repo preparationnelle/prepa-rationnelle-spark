@@ -171,37 +171,24 @@ export const SuperprofReviewsSection = () => {
   };
 
   return (
-    <section className="py-8 px-4 bg-gradient-to-b from-blue-50 to-blue-100/40">
+    <section className="py-12 px-4 bg-gradient-to-b from-blue-50 to-white">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-3">
-            <span className="text-[#252523]">Avis</span>
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">
+            Avis d'élèves
           </h2>
-          <div className="flex items-center justify-center gap-2 mb-6">
-            {renderStars()}
-            <span className="text-lg font-semibold text-gray-700 ml-2">5.0/5</span>
-          </div>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Découvrez ce que disent mes élèves sur Superprof
-          </p>
-        </div>
 
-        {/* Stats Section */}
-        <div className="bg-white rounded-2xl shadow-lg p-8 mb-12 max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">+50</div>
-              <div className="text-gray-600">Étudiants accompagnés</div>
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="flex gap-1">
+              {renderStars()}
             </div>
-            <div>
-              <div className="text-3xl font-bold text-green-600 mb-2">100%</div>
-              <div className="text-gray-600">Satisfaction</div>
-            </div>
-            <div>
-                              <div className="text-3xl font-bold text-orange-600 mb-2">+5</div>
-              <div className="text-gray-600">Points de progression</div>
-            </div>
+            <span className="text-xl font-semibold text-gray-700 ml-2">5.0/5</span>
+            <span className="text-gray-600 ml-2">sur Superprof</span>
           </div>
+
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Découvrez ce que disent mes élèves sur leur progression et leur réussite
+          </p>
         </div>
 
         {/* Carousel Container */}
@@ -209,18 +196,18 @@ export const SuperprofReviewsSection = () => {
           {/* Navigation Buttons */}
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-gray-600 hover:text-gray-800 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white hover:bg-gray-50 text-gray-600 hover:text-gray-800 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200"
             aria-label="Avis précédent"
           >
-            <ChevronLeft className="h-6 w-6" />
+            <ChevronLeft className="h-5 w-5" />
           </button>
 
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-gray-600 hover:text-gray-800 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white hover:bg-gray-50 text-gray-600 hover:text-gray-800 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200"
             aria-label="Avis suivant"
           >
-            <ChevronRight className="h-6 w-6" />
+            <ChevronRight className="h-5 w-5" />
           </button>
 
           {/* Reviews Grid */}
@@ -229,7 +216,7 @@ export const SuperprofReviewsSection = () => {
               const colors = getColorClasses(review.color);
               return (
                 <Link key={index} to="/avis" className="block">
-                  <Card className={`group hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 ${colors.border} bg-white/95 backdrop-blur-sm h-full cursor-pointer`}>
+                  <Card className={`group hover:shadow-xl transition-all duration-300 border-2 ${colors.border} bg-white h-full cursor-pointer`}>
                     <CardContent className="p-6 h-full flex flex-col">
                       <div className="flex items-start gap-4">
                         <div className={`w-12 h-12 ${colors.avatar} rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0`}>
@@ -243,13 +230,12 @@ export const SuperprofReviewsSection = () => {
                           <p className="text-sm text-gray-600 mb-3">{review.subject}</p>
                           <div className="relative flex-1">
                             <Quote className={`h-4 w-4 ${colors.quote} absolute -top-1 -left-1`} />
-                            <p className="text-xs text-gray-700 leading-relaxed pl-4 line-clamp-6">
+                            <p className="text-sm text-gray-700 leading-relaxed pl-5 line-clamp-5">
                               {review.content}
                             </p>
                           </div>
-                          {/* Indicateur visuel pour montrer que c'est cliquable */}
-                          <div className="mt-3 text-xs text-blue-500 group-hover:text-blue-700 transition-colors duration-300 font-medium">
-                            Cliquer pour voir tous les avis →
+                          <div className="mt-3 text-sm text-blue-600 group-hover:text-blue-700 transition-colors duration-300 font-medium">
+                            Voir tous les avis →
                           </div>
                         </div>
                       </div>
@@ -262,7 +248,7 @@ export const SuperprofReviewsSection = () => {
         </div>
 
         {/* Dots Indicators */}
-        <div className="flex justify-center items-center gap-2 mb-8">
+        <div className="flex justify-center items-center gap-2 mb-6">
           {Array.from({ length: totalSlides }, (_, index) => (
             <button
               key={index}
@@ -282,6 +268,7 @@ export const SuperprofReviewsSection = () => {
           {currentSlide + 1} sur {totalSlides} • {reviews.length} témoignages d'élèves
         </div>
 
+        {/* Final CTA Section */}
         <div className="text-center">
           <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl mx-auto">
             <div className="flex items-center justify-center gap-4 mb-6">
@@ -289,34 +276,31 @@ export const SuperprofReviewsSection = () => {
                 {renderStars()}
                 <span className="text-2xl font-bold text-gray-800">5.0</span>
               </div>
-
             </div>
-            
-
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="https://www.superprof.fr/maths-cours-particuliers-maths-colleur-grandes-prepas-parisiennes.html" 
-                target="_blank" 
+              <a
+                href="https://www.superprof.fr/maths-cours-particuliers-maths-colleur-grandes-prepas-parisiennes.html"
+                target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button 
-                  size="lg" 
-                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-4 px-6 sm:px-8 text-base sm:text-lg leading-snug shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center break-words whitespace-normal sm:whitespace-nowrap"
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-3 px-6 text-base shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   Découvrir tous les avis sur Superprof
-                  <ExternalLink className="ml-2 h-5 w-5" />
+                  <ExternalLink className="ml-2 h-4 w-4" />
                 </Button>
               </a>
-              
+
               <Link to="/avis">
-                <Button 
+                <Button
                   variant="outline"
-                  size="lg" 
-                  className="border-2 border-blue-500 text-blue-600 hover:bg-blue-50 font-semibold py-4 px-6 sm:px-8 text-base sm:text-lg leading-snug shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center break-words whitespace-normal sm:whitespace-nowrap"
+                  size="lg"
+                  className="border-2 border-blue-500 text-blue-600 hover:bg-blue-50 font-semibold py-3 px-6 text-base shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   Voir tous les avis
-                  <Star className="ml-2 h-5 w-5" />
+                  <Star className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
             </div>

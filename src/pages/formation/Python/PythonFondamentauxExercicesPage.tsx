@@ -721,12 +721,9 @@ print(n)
   return (
     <PythonModuleLayout>
       <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-3 mb-4 p-3 rounded-lg bg-blue-100 text-blue-700 border border-blue-300">
-          <Calculator className="h-8 w-8" />
-          <h1 className="text-4xl font-bold text-blue-800">
-            Module 0 : Exercices - Fondamentaux
-          </h1>
-        </div>
+        <h1 className="text-4xl font-bold text-blue-800 mb-4">
+          Module 0 : Exercices - Fondamentaux
+        </h1>
         <p className="text-xl text-blue-600">
           Exercices pratiques sur les bases de Python
         </p>

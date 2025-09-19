@@ -8,7 +8,7 @@ import { ThemeToggle } from '@/components/ThemeToggle';
 import { GlobalSearch } from '@/components/search/GlobalSearch';
 import { MobileSearch } from '@/components/search/MobileSearch';
 import { SearchTrigger } from '@/components/search/SearchTrigger';
-import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, BarChart3, Code, Languages, Globe, UserCheck, Calculator, Star, Youtube } from 'lucide-react';
+import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, Code, Languages, Globe, UserCheck, Calculator, Star, Youtube } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from '@/components/ui/dropdown-menu';
@@ -26,9 +26,11 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isFormationsOpen, setIsFormationsOpen] = useState(false);
+  const [isStudyLevelOpen, setIsStudyLevelOpen] = useState(false);
   const { toast } = useToast();
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const formationsRef = useRef<HTMLDivElement>(null);
+  const studyLevelRef = useRef<HTMLDivElement>(null);
 
   // Handle scroll effect
   useEffect(() => {
@@ -125,6 +127,44 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
   const handleMenuLeave = () => {
     hoverTimeoutRef.current = setTimeout(() => {
       setIsFormationsOpen(false);
+    }, 150);
+  };
+
+  // Gestion du hover sur le menu Niveau d'étude
+  const handleStudyLevelHover = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+
+    hoverTimeoutRef.current = setTimeout(() => {
+      setIsStudyLevelOpen(true);
+    }, 300); // Délai de 300ms avant d'ouvrir
+  };
+
+  const handleStudyLevelLeave = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+
+    // Délai avant de fermer pour permettre de naviguer vers le menu
+    hoverTimeoutRef.current = setTimeout(() => {
+      setIsStudyLevelOpen(false);
+    }, 150);
+  };
+
+  const handleStudyLevelMenuHover = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+  };
+
+  const handleStudyLevelMenuLeave = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+
+    hoverTimeoutRef.current = setTimeout(() => {
+      setIsStudyLevelOpen(false);
     }, 150);
   };
 
@@ -244,12 +284,60 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                   <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><BookOpen className="h-4 w-4 text-orange-600" /></span>
                   <span>Toutes nos formations</span>
                 </Link>
+                <Link to="/avis" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Star className="h-4 w-4 text-orange-600" /></span>
+                  <span>Avis</span>
+                </Link>
               </div>
             </div>
             
             <Link to="/generator" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Générateur</Link>
             <Link to="/apropos" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>À propos</Link>
-            <Link to="/articles" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Articles</Link>
+
+            {/* Menu déroulant "Niveau d'étude" avec hover */}
+            <div
+              className="relative"
+              ref={studyLevelRef}
+              onMouseEnter={handleStudyLevelHover}
+              onMouseLeave={handleStudyLevelLeave}
+            >
+              <button className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 flex items-center gap-1 focus:outline-none px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4">
+                Niveau
+                <ChevronDown className={cn("h-3 w-3 transition-transform duration-200", isStudyLevelOpen && "rotate-180")} />
+              </button>
+
+              {/* Menu déroulant */}
+              <div
+                className={cn(
+                  "absolute top-full left-1/2 transform -translate-x-1/2 w-48 bg-white rounded-lg shadow-lg border p-2 transition-all duration-200 z-50",
+                  isStudyLevelOpen
+                    ? "opacity-100 translate-y-0 pointer-events-auto"
+                    : "opacity-0 -translate-y-2 pointer-events-none"
+                )}
+                onMouseEnter={handleStudyLevelMenuHover}
+                onMouseLeave={handleStudyLevelMenuLeave}
+              >
+                {/* Primaire */}
+                <Link to="/articles/primaire" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><GraduationCap className="h-4 w-4 text-orange-600" /></span>
+                  <span>Primaire</span>
+                </Link>
+
+                {/* Collège */}
+                <Link to="/articles/college" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-green-50 rounded-full flex items-center justify-center"><GraduationCap className="h-4 w-4 text-green-600" /></span>
+                  <span>Collège</span>
+                </Link>
+
+                {/* Lycée */}
+                <Link to="/articles/lycee" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center"><GraduationCap className="h-4 w-4 text-blue-600" /></span>
+                  <span>Lycée</span>
+                </Link>
+              </div>
+            </div>
+
+            <Link to="/avis" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Avis</Link>
             <Link to="/contact" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Contact</Link>
             <Link to="/stage-accompagnement" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Offres</Link>
             <SearchTrigger />
@@ -290,7 +378,6 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
             <ThemeToggle variant="icon" />
             {currentUser ? (
               <div className="flex items-center space-x-4 ml-4">
-                <Link to="/dashboard" className="text-sm text-foreground hover:text-primary transition flex items-center gap-1" onClick={closeMenu}><BarChart3 className="h-3 w-3" />Dashboard</Link>
                 {isProfessor && (
                   <Link to="/prof" className="text-sm text-foreground hover:text-primary transition flex items-center gap-1" onClick={closeMenu}><UserCheck className="h-3 w-3" />Prof</Link>
                 )}
@@ -298,7 +385,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               </div>
             ) : (
               <>
-                <Link to="/login" className="text-sm font-medium text-foreground hover:text-primary transition px-3 py-1 rounded-md hover:bg-gray-50" onClick={closeMenu}>Connexion</Link>
+                <Link to="/login" className="text-sm font-medium text-foreground hover:text-primary transition px-3 py-1 rounded-md hover:bg-gray-50" onClick={closeMenu}>Login</Link>
                 {showSignup !== false && (
                   <Link to="/register" onClick={closeMenu}><Button size="sm" className="h-8 px-4 text-xs font-medium">S'inscrire</Button></Link>
                 )}
@@ -351,9 +438,12 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
         {/* Menu principal en deux colonnes */}
         <div className="grid grid-cols-2 gap-4 mb-6">
           <Link to="/" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Accueil</Link>
+          <Link to="/avis" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Avis</Link>
           <Link to="/generator" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Générateur</Link>
           <Link to="/apropos" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>À propos</Link>
-          <Link to="/articles" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Articles</Link>
+          <Link to="/articles/primaire" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Primaire</Link>
+          <Link to="/articles/college" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Collège</Link>
+          <Link to="/articles/lycee" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Lycée</Link>
           <Link to="/contact" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Contact</Link>
           <Link to="/stage-accompagnement" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Offres</Link>
         </div>
@@ -461,10 +551,6 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
         <div className="mt-4">
           {currentUser ? (
             <div className="grid grid-cols-2 gap-4">
-              <Link to="/dashboard" className="text-base py-2 border-b border-gray-200 flex items-center gap-2 bg-white px-3 rounded-md" onClick={closeMenu}>
-                <BarChart3 className="h-5 w-5 text-primary" />
-                Dashboard
-              </Link>
               {isProfessor && (
                 <Link to="/prof" className="text-base py-2 border-b border-gray-200 flex items-center gap-2 bg-white px-3 rounded-md" onClick={closeMenu}>
                   <UserCheck className="h-5 w-5 text-primary" />
@@ -478,7 +564,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-4">
-              <Link to="/login" className="text-base py-2 border-b border-gray-200 bg-white px-3 rounded-md" onClick={closeMenu}>Connexion</Link>
+              <Link to="/login" className="text-base py-2 border-b border-gray-200 bg-white px-3 rounded-md" onClick={closeMenu}>Login</Link>
               {showSignup !== false && (
                 <Link to="/register" onClick={closeMenu} className="mt-0">
                   <Button className="w-full">S'inscrire</Button>

@@ -4,97 +4,117 @@ import { FileText, Shield, FileCheck, CreditCard, Mail, Server, BookOpen, Gradua
 
 export const Footer = () => {
   return (
-    <footer className="bg-gray-900 border-t border-gray-700">
+    <footer className="bg-gray-900 border-t border-gray-700 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Call-to-Action - Boutons */}
+        <div className="py-6">
+          <div className="text-center">
+            <div className="flex justify-center mb-4">
+              <a
+                href="https://calendly.com/preparationnelle/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg transition-colors font-semibold text-sm flex items-center gap-2"
+              >
+                <Calendar className="h-4 w-4" />
+                Réserver mon premier cours gratuit
+              </a>
+            </div>
+            <h3 className="text-lg font-semibold text-white max-w-4xl mx-auto whitespace-nowrap">
+              Nous proposons un cours gratuit à tout étudiant en prépa ECG qui nous fait une suggestion utile pour améliorer le site !
+            </h3>
+          </div>
+        </div>
+
         {/* Section principale avec formations et offres */}
-        <div className="py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="py-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Formations */}
             <div>
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                <BookOpen className="h-5 w-5 text-orange-400" />
+              <h3 className="text-sm font-semibold text-white mb-0 flex items-center gap-2">
+                <BookOpen className="h-4 w-4 text-orange-400" />
                 Nos Formations
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-0">
                 <li>
-                  <Link to="/pourquoi-python-prepa-ecg" className="text-orange-400 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
-                    <Code className="h-4 w-4" />
+                  <a href="/formations" className="text-orange-400 hover:text-blue-400 hover:bg-blue-900/50 transition-all duration-200 text-xs flex items-center gap-1 py-1 px-1 cursor-pointer pointer-events-auto hover:underline rounded block">
+                    <Code className="h-3 w-3" />
                     Python ECG
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link to="/formation/anglais" className="text-orange-400 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
-                    <GraduationCap className="h-4 w-4" />
+                  <a href="/formations" className="text-orange-400 hover:text-blue-400 hover:bg-blue-900/50 transition-all duration-200 text-xs flex items-center gap-1 py-1 px-1 cursor-pointer pointer-events-auto hover:underline rounded block">
+                    <GraduationCap className="h-3 w-3" />
                     Anglais ECG
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link to="/formation/espagnol" className="text-orange-400 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4" />
+                  <a href="/formations" className="text-orange-400 hover:text-blue-400 hover:bg-blue-900/50 transition-all duration-200 text-xs flex items-center gap-1 py-1 px-1 cursor-pointer pointer-events-auto hover:underline rounded block">
+                    <TrendingUp className="h-3 w-3" />
                     Espagnol ECG
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link to="/formation/allemand" className="text-orange-400 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
-                    <Users className="h-4 w-4" />
+                  <a href="/formations" className="text-orange-400 hover:text-blue-400 hover:bg-blue-900/50 transition-all duration-200 text-xs flex items-center gap-1 py-1 px-1 cursor-pointer pointer-events-auto hover:underline rounded block">
+                    <Users className="h-3 w-3" />
                     Allemand ECG
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link to="/formation/geopolitique" className="text-orange-400 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4" />
+                  <a href="/formations" className="text-orange-400 hover:text-blue-400 hover:bg-blue-900/50 transition-all duration-200 text-xs flex items-center gap-1 py-1 px-1 cursor-pointer pointer-events-auto hover:underline rounded block">
+                    <TrendingUp className="h-3 w-3" />
                     Géopolitique
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link to="/formation/esh" className="text-orange-400 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
-                    <GraduationCap className="h-4 w-4" />
+                  <a href="/formations" className="text-orange-400 hover:text-blue-400 hover:bg-blue-900/50 transition-all duration-200 text-xs flex items-center gap-1 py-1 px-1 cursor-pointer pointer-events-auto hover:underline rounded block">
+                    <GraduationCap className="h-3 w-3" />
                     ESH ECG
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link to="/formation/maths-choix" className="text-orange-400 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
-                    <Calculator className="h-4 w-4" />
+                  <a href="/formations" className="text-orange-400 hover:text-blue-400 hover:bg-blue-900/50 transition-all duration-200 text-xs flex items-center gap-1 py-1 px-1 cursor-pointer pointer-events-auto hover:underline rounded block">
+                    <Calculator className="h-3 w-3" />
                     Mathématiques
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>
 
             {/* Offres spéciales */}
             <div>
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                <Gift className="h-5 w-5 text-orange-400" />
+              <h3 className="text-sm font-semibold text-white mb-2 flex items-center gap-2">
+                <Gift className="h-4 w-4 text-orange-400" />
                 Offres Spéciales
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2">
                 <li>
-                  <Link to="/offre/gratuite" className="text-gray-300 hover:text-orange-400 transition-colors text-sm flex items-center gap-2">
-                    <Calendar className="h-4 w-4" />
+                  <Link to="/offre/gratuite" className="text-gray-300 hover:text-orange-400 transition-colors text-xs flex items-center gap-1">
+                    <Calendar className="h-3 w-3" />
                     Cours gratuit
                   </Link>
                 </li>
                 <li>
-                  <Link to="/offre/coaching-maths" className="text-gray-300 hover:text-orange-400 transition-colors text-sm flex items-center gap-2">
-                    <Calculator className="h-4 w-4" />
+                  <Link to="/offre/coaching-maths" className="text-gray-300 hover:text-orange-400 transition-colors text-xs flex items-center gap-1">
+                    <Calculator className="h-3 w-3" />
                     Coaching Maths
                   </Link>
                 </li>
                 <li>
-                  <Link to="/offre/coaching-python" className="text-gray-300 hover:text-orange-400 transition-colors text-sm flex items-center gap-2">
-                    <Code className="h-4 w-4" />
+                  <Link to="/offre/coaching-python" className="text-gray-300 hover:text-orange-400 transition-colors text-xs flex items-center gap-1">
+                    <Code className="h-3 w-3" />
                     Coaching Python
                   </Link>
                 </li>
                 <li>
-                  <Link to="/offre/organisation-ete" className="text-gray-300 hover:text-orange-400 transition-colors text-sm flex items-center gap-2">
-                    <Calendar className="h-4 w-4" />
+                  <Link to="/offre/organisation-ete" className="text-gray-300 hover:text-orange-400 transition-colors text-xs flex items-center gap-1">
+                    <Calendar className="h-3 w-3" />
                     Organisation Été
                   </Link>
                 </li>
                 <li>
-                  <Link to="/offre/preparation-cube" className="text-gray-300 hover:text-orange-400 transition-colors text-sm flex items-center gap-2">
-                    <GraduationCap className="h-4 w-4" />
+                  <Link to="/offre/preparation-cube" className="text-gray-300 hover:text-orange-400 transition-colors text-xs flex items-center gap-1">
+                    <GraduationCap className="h-3 w-3" />
                     Préparation CUBE
                   </Link>
                 </li>
@@ -103,38 +123,38 @@ export const Footer = () => {
 
             {/* Liens utiles */}
             <div>
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                <FileText className="h-5 w-5 text-green-400" />
+              <h3 className="text-sm font-semibold text-white mb-2 flex items-center gap-2">
+                <FileText className="h-4 w-4 text-green-400" />
                 Liens Utiles
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2">
                 <li>
-                  <Link to="/formations" className="text-gray-300 hover:text-green-400 transition-colors text-sm flex items-center gap-2">
-                    <BookOpen className="h-4 w-4" />
+                  <Link to="/formations" className="text-gray-300 hover:text-green-400 transition-colors text-xs flex items-center gap-1">
+                    <BookOpen className="h-3 w-3" />
                     Toutes nos formations
                   </Link>
                 </li>
                 <li>
-                  <Link to="/contact" className="text-gray-300 hover:text-green-400 transition-colors text-sm flex items-center gap-2">
-                    <Mail className="h-4 w-4" />
+                  <Link to="/contact" className="text-gray-300 hover:text-green-400 transition-colors text-xs flex items-center gap-1">
+                    <Mail className="h-3 w-3" />
                     Contact
                   </Link>
                 </li>
                 <li>
-                  <Link to="/apropos" className="text-gray-300 hover:text-green-400 transition-colors text-sm flex items-center gap-2">
-                    <Users className="h-4 w-4" />
+                  <Link to="/apropos" className="text-gray-300 hover:text-green-400 transition-colors text-xs flex items-center gap-1">
+                    <Users className="h-3 w-3" />
                     À propos
                   </Link>
                 </li>
                 <li>
-                  <Link to="/articles" className="text-gray-300 hover:text-green-400 transition-colors text-sm flex items-center gap-2">
-                    <BookOpen className="h-4 w-4" />
+                  <Link to="/articles" className="text-gray-300 hover:text-green-400 transition-colors text-xs flex items-center gap-1">
+                    <BookOpen className="h-3 w-3" />
                     Articles & Conseils
                   </Link>
                 </li>
                 <li>
-                  <Link to="/avis" className="text-gray-300 hover:text-green-400 transition-colors text-sm flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4" />
+                  <Link to="/avis" className="text-gray-300 hover:text-green-400 transition-colors text-xs flex items-center gap-1">
+                    <TrendingUp className="h-3 w-3" />
                     Avis Superprof
                   </Link>
                 </li>
@@ -143,32 +163,32 @@ export const Footer = () => {
 
             {/* Informations légales */}
             <div>
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                <Shield className="h-5 w-5 text-purple-400" />
+              <h3 className="text-sm font-semibold text-white mb-2 flex items-center gap-2">
+                <Shield className="h-4 w-4 text-purple-400" />
                 Informations Légales
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2">
                 <li>
-                  <Link to="/mentions-legales" className="text-gray-300 hover:text-purple-400 transition-colors text-sm flex items-center gap-2">
-                    <FileText className="h-4 w-4" />
+                  <Link to="/mentions-legales" className="text-gray-300 hover:text-purple-400 transition-colors text-xs flex items-center gap-1">
+                    <FileText className="h-3 w-3" />
                     Mentions légales
                   </Link>
                 </li>
                 <li>
-                  <Link to="/politique-confidentialite" className="text-gray-300 hover:text-purple-400 transition-colors text-sm flex items-center gap-2">
-                    <Shield className="h-4 w-4" />
+                  <Link to="/politique-confidentialite" className="text-gray-300 hover:text-purple-400 transition-colors text-xs flex items-center gap-1">
+                    <Shield className="h-3 w-3" />
                     Politique de confidentialité
                   </Link>
                 </li>
                 <li>
-                  <Link to="/cgu" className="text-gray-300 hover:text-purple-400 transition-colors text-sm flex items-center gap-2">
-                    <FileCheck className="h-4 w-4" />
+                  <Link to="/cgu" className="text-gray-300 hover:text-purple-400 transition-colors text-xs flex items-center gap-1">
+                    <FileCheck className="h-3 w-3" />
                     Conditions générales d'utilisation
                   </Link>
                 </li>
                 <li>
-                  <Link to="/cgv" className="text-gray-300 hover:text-purple-400 transition-colors text-sm flex items-center gap-2">
-                    <CreditCard className="h-4 w-4" />
+                  <Link to="/cgv" className="text-gray-300 hover:text-purple-400 transition-colors text-xs flex items-center gap-1">
+                    <CreditCard className="h-3 w-3" />
                     Conditions générales de vente
                   </Link>
                 </li>
@@ -177,33 +197,6 @@ export const Footer = () => {
           </div>
         </div>
 
-        {/* Section Call-to-Action */}
-        <div className="py-8 border-t border-gray-700">
-          <div className="text-center">
-            <h3 className="text-xl font-semibold text-white mb-4">
-              Prêt à booster votre préparation ECG ?
-            </h3>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              Découvrez nos formations complètes et réservez votre cours découverte gratuit pour évaluer votre niveau et nos méthodes pédagogiques.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/offre/gratuite"
-                className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg transition-colors font-semibold flex items-center justify-center gap-2"
-              >
-                <Calendar className="h-5 w-5" />
-                Cours gratuit
-              </Link>
-              <Link
-                to="/formations"
-                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition-colors font-semibold flex items-center justify-center gap-2"
-              >
-                <BookOpen className="h-5 w-5" />
-                Toutes nos formations
-              </Link>
-            </div>
-          </div>
-        </div>
 
         {/* Pied de page avec copyright et hébergeur */}
         <div className="py-6 border-t border-gray-700">

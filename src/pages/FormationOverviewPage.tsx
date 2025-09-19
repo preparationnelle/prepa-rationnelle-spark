@@ -140,21 +140,21 @@ const FormationOverviewPage = () => {
               </CardHeader>
               <CardContent className="text-center">
                 <p className="text-gray-600 mb-6">
-                  Maîtrisez tous les aspects des entretiens de personnalité avec notre méthodologie complète et nos outils de préparation.
+                  Toutes les ressources pour réussir vos entretiens de personnalité : méthodologie, outils de préparation, et fiches écoles détaillées.
                 </p>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
                   <div className="flex items-center gap-2 justify-center">
-                    <Check className="h-4 w-4 text-blue-600" />
-                    <span className="text-sm">Méthodologie complète</span>
+                    <span className="text-lg font-bold text-blue-600">9</span>
+                    <span className="text-sm">Écoles détaillées</span>
                   </div>
                   <div className="flex items-center gap-2 justify-center">
-                    <Check className="h-4 w-4 text-blue-600" />
-                    <span className="text-sm">Outils IA</span>
+                    <span className="text-lg font-bold text-blue-600">8</span>
+                    <span className="text-sm">Modules méthodologie</span>
                   </div>
                   <div className="flex items-center gap-2 justify-center">
-                    <Check className="h-4 w-4 text-blue-600" />
-                    <span className="text-sm">Fiches écoles</span>
+                    <span className="text-lg font-bold text-blue-600">∞</span>
+                    <span className="text-sm">Questions générées IA</span>
                   </div>
                 </div>
                 

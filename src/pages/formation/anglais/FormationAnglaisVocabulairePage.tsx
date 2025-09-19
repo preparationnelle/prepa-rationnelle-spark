@@ -3,7 +3,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { BookOpen, Home, ChevronRight } from 'lucide-react';
+import { BookOpen, Home, ChevronRight, Leaf, Users, DollarSign, Heart, GraduationCap, Newspaper, Globe, UserCheck, Scale, Briefcase, Zap, Split, Cpu, Flag, Shield, Church, Crown, AlertTriangle } from 'lucide-react';
 import { VocabularyFlashcards } from '@/components/VocabularyFlashcards';
 
 const FormationAnglaisVocabulairePage = () => {
@@ -46,64 +46,22 @@ const FormationAnglaisVocabulairePage = () => {
       <div className="container mx-auto py-8 px-4 relative z-10">
         {/* Hero Section */}
         <div className="text-center mb-12">
-          <div className="flex justify-center mb-6">
-            <div className="p-4 rounded-2xl bg-blue-600 text-white shadow-lg">
-              <BookOpen className="h-12 w-12" />
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <div className="p-3 rounded-2xl bg-blue-600 text-white shadow-lg">
+              <BookOpen className="h-10 w-10" />
             </div>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
+              <span className="text-blue-700 font-bold">
+                Vocabulaire Anglais
+              </span>
+            </h1>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8">
-            <span className="text-blue-700 font-bold">
-              Vocabulaire Anglais
-            </span>
-          </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Maîtrisez le lexique essentiel pour vos épreuves de concours avec plus de 200 termes essentiels
+          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            Maîtrisez le lexique essentiel pour vos concours ECG - Plus de 1000 mots
           </p>
 
-          {/* Navigation buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <Link to="/formation/anglais">
-              <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-md hover:shadow-lg">
-                ← Retour à la formation
-              </Button>
-            </Link>
-          </div>
         </div>
 
-        {/* Features Section */}
-        <div className="max-w-4xl mx-auto mb-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="border-2 border-blue-100 shadow-lg">
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <BookOpen className="h-6 w-6 text-blue-600" />
-                </div>
-                <h3 className="font-bold text-lg mb-2 text-blue-700">200+ Termes</h3>
-                <p className="text-sm text-gray-600">Vocabulaire essentiel pour les concours ECG</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="border-2 border-blue-100 shadow-lg">
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <BookOpen className="h-6 w-6 text-blue-600" />
-                </div>
-                <h3 className="font-bold text-lg mb-2 text-blue-700">Flashcards Interactives</h3>
-                <p className="text-sm text-gray-600">Système d'apprentissage adaptatif</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="border-2 border-blue-100 shadow-lg">
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <BookOpen className="h-6 w-6 text-blue-600" />
-                </div>
-                <h3 className="font-bold text-lg mb-2 text-blue-700">Exemples Contextuels</h3>
-                <p className="text-sm text-gray-600">Phrases d'exemple pour chaque terme</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
 
         {/* Main Flashcards Section */}
         <div className="max-w-6xl mx-auto">
@@ -115,49 +73,219 @@ const FormationAnglaisVocabulairePage = () => {
         </div>
 
         {/* Additional Resources */}
-        <div className="max-w-4xl mx-auto mt-12">
-          <Card className="border-2 border-blue-100 shadow-lg">
-            <CardHeader>
-              <CardTitle className="text-center text-blue-700">Vocabulaire par Thème</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-center text-gray-600 mb-6">
-                Explorez le vocabulaire spécialisé par domaine de civilisation
-              </p>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <Link to="/formation/anglais/civilisation/environment/vocabulary">
-                  <Button variant="outline" className="w-full text-sm">
-                    Environnement
-                  </Button>
-                </Link>
-                <Link to="/formation/anglais/civilisation/politics/vocabulary">
-                  <Button variant="outline" className="w-full text-sm">
-                    Politique
-                  </Button>
-                </Link>
-                <Link to="/formation/anglais/civilisation/economy/vocabulary">
-                  <Button variant="outline" className="w-full text-sm">
-                    Économie
-                  </Button>
-                </Link>
-                <Link to="/formation/anglais/civilisation/health/vocabulary">
-                  <Button variant="outline" className="w-full text-sm">
-                    Santé
-                  </Button>
-                </Link>
-                <Link to="/formation/anglais/civilisation/education/vocabulary">
-                  <Button variant="outline" className="w-full text-sm">
-                    Éducation
-                  </Button>
-                </Link>
-                <Link to="/formation/anglais/civilisation/media/vocabulary">
-                  <Button variant="outline" className="w-full text-sm">
-                    Médias
-                  </Button>
-                </Link>
-              </div>
-            </CardContent>
-          </Card>
+        <div className="max-w-6xl mx-auto mt-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">Vocabulaire par Thème</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Explorez le vocabulaire spécialisé par domaine de civilisation
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+            <Link to="/formation/anglais/civilisation/environment/vocabulary" className="group">
+              <Card className="h-full border border-gray-200 hover:border-emerald-300 bg-white hover:bg-emerald-50/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
+                <CardContent className="p-6 text-center">
+                  <div className="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-emerald-200 transition-colors duration-300">
+                    <Leaf className="h-7 w-7 text-emerald-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-emerald-700 transition-colors">Environnement</h3>
+                  <p className="text-xs text-gray-500">Écologie & Climat</p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/formation/anglais/civilisation/politics/vocabulary" className="group">
+              <Card className="h-full border border-gray-200 hover:border-blue-300 bg-white hover:bg-blue-50/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
+                <CardContent className="p-6 text-center">
+                  <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-200 transition-colors duration-300">
+                    <Users className="h-7 w-7 text-blue-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-blue-700 transition-colors">Politique</h3>
+                  <p className="text-xs text-gray-500">Institutions & Pouvoir</p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/formation/anglais/civilisation/economy/vocabulary" className="group">
+              <Card className="h-full border border-gray-200 hover:border-green-300 bg-white hover:bg-green-50/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
+                <CardContent className="p-6 text-center">
+                  <div className="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-green-200 transition-colors duration-300">
+                    <DollarSign className="h-7 w-7 text-green-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-green-700 transition-colors">Économie</h3>
+                  <p className="text-xs text-gray-500">Finance & Commerce</p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/formation/anglais/civilisation/health/vocabulary" className="group">
+              <Card className="h-full border border-gray-200 hover:border-red-300 bg-white hover:bg-red-50/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
+                <CardContent className="p-6 text-center">
+                  <div className="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-red-200 transition-colors duration-300">
+                    <Heart className="h-7 w-7 text-red-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-red-700 transition-colors">Santé</h3>
+                  <p className="text-xs text-gray-500">Médecine & Bien-être</p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/formation/anglais/civilisation/education/vocabulary" className="group">
+              <Card className="h-full border border-gray-200 hover:border-purple-300 bg-white hover:bg-purple-50/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
+                <CardContent className="p-6 text-center">
+                  <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-purple-200 transition-colors duration-300">
+                    <GraduationCap className="h-7 w-7 text-purple-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-purple-700 transition-colors">Éducation</h3>
+                  <p className="text-xs text-gray-500">Apprentissage & Formation</p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/formation/anglais/civilisation/media/vocabulary" className="group">
+              <Card className="h-full border border-gray-200 hover:border-indigo-300 bg-white hover:bg-indigo-50/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
+                <CardContent className="p-6 text-center">
+                  <div className="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-indigo-200 transition-colors duration-300">
+                    <Newspaper className="h-7 w-7 text-indigo-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-indigo-700 transition-colors">Médias</h3>
+                  <p className="text-xs text-gray-500">Information & Communication</p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/formation/anglais/civilisation/geopolitics/vocabulary" className="group">
+              <Card className="h-full border border-gray-200 hover:border-orange-300 bg-white hover:bg-orange-50/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
+                <CardContent className="p-6 text-center">
+                  <div className="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-orange-200 transition-colors duration-300">
+                    <Globe className="h-7 w-7 text-orange-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-orange-700 transition-colors">Géopolitique</h3>
+                  <p className="text-xs text-gray-500">Relations Internationales</p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/formation/anglais/civilisation/immigration/vocabulary" className="group">
+              <Card className="h-full border border-gray-200 hover:border-cyan-300 bg-white hover:bg-cyan-50/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
+                <CardContent className="p-6 text-center">
+                  <div className="w-14 h-14 bg-cyan-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-cyan-200 transition-colors duration-300">
+                    <UserCheck className="h-7 w-7 text-cyan-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-cyan-700 transition-colors">Immigration</h3>
+                  <p className="text-xs text-gray-500">Migration & Intégration</p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/formation/anglais/civilisation/justice/vocabulary" className="group">
+              <Card className="h-full border border-gray-200 hover:border-amber-300 bg-white hover:bg-amber-50/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
+                <CardContent className="p-6 text-center">
+                  <div className="w-14 h-14 bg-amber-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-200 transition-colors duration-300">
+                    <Scale className="h-7 w-7 text-amber-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-amber-700 transition-colors">Justice</h3>
+                  <p className="text-xs text-gray-500">Droit & Équité</p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/formation/anglais/civilisation/labor/vocabulary" className="group">
+              <Card className="h-full border border-gray-200 hover:border-slate-300 bg-white hover:bg-slate-50/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
+                <CardContent className="p-6 text-center">
+                  <div className="w-14 h-14 bg-slate-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-slate-200 transition-colors duration-300">
+                    <Briefcase className="h-7 w-7 text-slate-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-slate-700 transition-colors">Travail</h3>
+                  <p className="text-xs text-gray-500">Emploi & Syndicalisme</p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/formation/anglais/civilisation/polarization/vocabulary" className="group">
+              <Card className="h-full border border-gray-200 hover:border-rose-300 bg-white hover:bg-rose-50/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
+                <CardContent className="p-6 text-center">
+                  <div className="w-14 h-14 bg-rose-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-rose-200 transition-colors duration-300">
+                    <Split className="h-7 w-7 text-rose-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-rose-700 transition-colors">Polarisation</h3>
+                  <p className="text-xs text-gray-500">Division Sociale</p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/formation/anglais/civilisation/ai-technology/vocabulary" className="group">
+              <Card className="h-full border border-gray-200 hover:border-violet-300 bg-white hover:bg-violet-50/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
+                <CardContent className="p-6 text-center">
+                  <div className="w-14 h-14 bg-violet-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-violet-200 transition-colors duration-300">
+                    <Cpu className="h-7 w-7 text-violet-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-violet-700 transition-colors">IA & Tech</h3>
+                  <p className="text-xs text-gray-500">Innovation Numérique</p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/formation/anglais/civilisation/brexit/vocabulary" className="group">
+              <Card className="h-full border border-gray-200 hover:border-teal-300 bg-white hover:bg-teal-50/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
+                <CardContent className="p-6 text-center">
+                  <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-200 transition-colors duration-300">
+                    <Flag className="h-7 w-7 text-teal-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-teal-700 transition-colors">Brexit</h3>
+                  <p className="text-xs text-gray-500">Europe & Royaume-Uni</p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/formation/anglais/civilisation/civil-rights/vocabulary" className="group">
+              <Card className="h-full border border-gray-200 hover:border-lime-300 bg-white hover:bg-lime-50/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
+                <CardContent className="p-6 text-center">
+                  <div className="w-14 h-14 bg-lime-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-lime-200 transition-colors duration-300">
+                    <Shield className="h-7 w-7 text-lime-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-lime-700 transition-colors">Droits Civils</h3>
+                  <p className="text-xs text-gray-500">Libertés & Égalité</p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/formation/anglais/civilisation/civil-religion/vocabulary" className="group">
+              <Card className="h-full border border-gray-200 hover:border-yellow-300 bg-white hover:bg-yellow-50/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
+                <CardContent className="p-6 text-center">
+                  <div className="w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-yellow-200 transition-colors duration-300">
+                    <Church className="h-7 w-7 text-yellow-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-yellow-700 transition-colors">Religion Civile</h3>
+                  <p className="text-xs text-gray-500">Valeurs & Société</p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/formation/anglais/civilisation/commonwealth/vocabulary" className="group">
+              <Card className="h-full border border-gray-200 hover:border-pink-300 bg-white hover:bg-pink-50/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
+                <CardContent className="p-6 text-center">
+                  <div className="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-pink-200 transition-colors duration-300">
+                    <Crown className="h-7 w-7 text-pink-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-pink-700 transition-colors">Commonwealth</h3>
+                  <p className="text-xs text-gray-500">Nations Unies</p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/formation/anglais/civilisation/crises/vocabulary" className="group">
+              <Card className="h-full border border-gray-200 hover:border-stone-300 bg-white hover:bg-stone-50/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
+                <CardContent className="p-6 text-center">
+                  <div className="w-14 h-14 bg-stone-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-stone-200 transition-colors duration-300">
+                    <AlertTriangle className="h-7 w-7 text-stone-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-stone-700 transition-colors">Crises</h3>
+                  <p className="text-xs text-gray-500">Urgences & Défis</p>
+                </CardContent>
+              </Card>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

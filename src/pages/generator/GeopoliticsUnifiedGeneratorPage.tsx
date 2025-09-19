@@ -5,13 +5,14 @@ import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Globe, TrendingUp, Loader2, Sparkles, AlertCircle, FileText, Info, BookOpenCheck } from 'lucide-react';
+import { Globe, TrendingUp, Loader2, Sparkles, AlertCircle, FileText, Info, BookOpenCheck, ChevronRight, Home } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CaseStudyDisplay } from '@/components/generator/CaseStudyDisplay';
 import { DefinitionTraining } from '@/components/generator/DefinitionTraining';
+import { Link } from 'react-router-dom';
 
 const GeopoliticsUnifiedGeneratorPage = () => {
   const [selectedTool, setSelectedTool] = useState<'geopolitics' | 'case-study' | 'definitions'>('geopolitics');
@@ -102,14 +103,50 @@ const GeopoliticsUnifiedGeneratorPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="container mx-auto py-8 px-4 max-w-6xl">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-[#111111] mb-4">
-            Générateur Géopolitique
+    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
+      {/* Floating elements - Blue bubbles only */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
+      <div className="absolute top-40 right-20 w-48 h-48 bg-blue-100 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-8 animate-pulse"></div>
+      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-blue-50 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
+      <div className="absolute top-10 right-1/3 w-24 h-24 bg-blue-300 rounded-full opacity-12 animate-pulse-slow"></div>
+      <div className="absolute bottom-10 left-1/4 w-36 h-36 bg-blue-100 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute top-1/2 right-10 w-20 h-20 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
+      <div className="absolute top-1/3 left-10 w-28 h-28 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
+
+      {/* Sticky Breadcrumb */}
+      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40 relative z-10">
+        <div className="container mx-auto px-4 py-2">
+          <div className="flex items-center text-xs text-muted-foreground">
+            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              <div className="h-3 w-3">🏠</div>
+              <span>Accueil</span>
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/generator" className="hover:text-foreground transition-colors">
+              Générateurs IA
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <span className="text-foreground font-medium">
+              Générateur <span className="text-blue-600">Géopolitique</span>
+            </span>
+          </div>
+        </div>
+      </nav>
+
+      <div className="container mx-auto py-8 px-4 max-w-6xl relative z-10">
+        {/* Header Hero Section */}
+        <div className="text-center mb-16">
+          {/* Main Title */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+            <span className="text-black">Générateur </span>
+            <span className="text-blue-600">Géopolitique</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+
+          {/* Subtitle */}
+          <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-5xl mx-auto whitespace-nowrap">
             Outils d'intelligence artificielle pour créer du contenu géopolitique structuré
           </p>
         </div>
@@ -199,10 +236,10 @@ const GeopoliticsUnifiedGeneratorPage = () => {
                     </div>
 
                     <div className="flex gap-4 pt-4">
-                      <Button 
-                        onClick={handleGenerate} 
+                      <Button
+                        onClick={handleGenerate}
                         disabled={isGenerating || !article.trim() || !notion.trim()}
-                        className="flex-1 bg-gradient-to-r from-[#2BB673] to-[#1A8D5F] hover:from-[#1A8D5F] hover:to-[#2BB673] text-white rounded-xl h-12 transition-all duration-300 shadow-sm"
+                        className="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-xl h-12 transition-all duration-300 shadow-sm"
                       >
                         {isGenerating ? (
                           <>
@@ -242,8 +279,8 @@ const GeopoliticsUnifiedGeneratorPage = () => {
               <Card className="bg-white shadow-sm border border-gray-200">
                 <CardHeader className="pb-6">
                   <CardTitle className="flex items-center gap-3 text-[#111111] text-xl">
-                    <div className="p-2 bg-green-100 rounded-lg">
-                      <Globe className="h-5 w-5 text-green-600" />
+                    <div className="p-2 bg-blue-100 rounded-lg">
+                      <Globe className="h-5 w-5 text-blue-600" />
                     </div>
                     <div>
                       <div className="font-bold">Générateur de Géopolitique</div>
@@ -264,15 +301,15 @@ const GeopoliticsUnifiedGeneratorPage = () => {
                         placeholder="Collez le texte de votre cours de géopolitique..."
                         value={courseContent}
                         onChange={(e) => setCourseContent(e.target.value)}
-                        className="min-h-[200px] resize-none border border-gray-300 focus:border-green-500 focus:ring-green-500 bg-[#FAFAFA] rounded-lg"
+                        className="min-h-[200px] resize-none border border-gray-300 focus:border-blue-500 focus:ring-blue-500 bg-[#FAFAFA] rounded-lg"
                       />
                     </div>
 
                     <div className="flex gap-4 pt-4">
-                      <Button 
-                        onClick={handleGenerate} 
+                      <Button
+                        onClick={handleGenerate}
                         disabled={isGenerating || !courseContent.trim()}
-                        className="flex-1 bg-gradient-to-r from-[#2BB673] to-[#1A8D5F] hover:from-[#1A8D5F] hover:to-[#2BB673] text-white rounded-xl h-12 transition-all duration-300 shadow-sm"
+                        className="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-xl h-12 transition-all duration-300 shadow-sm"
                       >
                         {isGenerating ? (
                           <>
@@ -297,9 +334,9 @@ const GeopoliticsUnifiedGeneratorPage = () => {
                     </div>
                   </div>
 
-                  <Alert className="border border-green-200 bg-green-50 rounded-lg">
-                    <Info className="h-4 w-4 text-green-600" />
-                    <AlertDescription className="text-green-800 text-sm italic">
+                  <Alert className="border border-blue-200 bg-blue-50 rounded-lg">
+                    <Info className="h-4 w-4 text-blue-600" />
+                    <AlertDescription className="text-blue-800 text-sm italic">
                       Entrez le contenu de votre cours de géopolitique. Le système générera automatiquement : fiches structurées, flashcards, sujets de dissertation et actualités connexes.
                     </AlertDescription>
                   </Alert>
@@ -326,7 +363,7 @@ const GeopoliticsUnifiedGeneratorPage = () => {
                 <Card className="bg-white shadow-sm border border-gray-200">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-[#111111]">
-                      <FileText className="h-5 w-5 text-green-600" />
+                      <FileText className="h-5 w-5 text-blue-600" />
                       Contenu Géopolitique Généré
                     </CardTitle>
                   </CardHeader>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { ChevronRight, Home, FileText } from 'lucide-react';
+import { ChevronRight, Home, FileText, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const GeopolitiquePremiereAnneePage = () => {
@@ -94,10 +94,26 @@ const GeopolitiquePremiereAnneePage = () => {
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-gray-900 mb-1">{sujet.title}</h3>
                   <p className="text-gray-600 mb-4">{sujet.description}</p>
-                  <Link to={sujet.to} className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md">
-                    <FileText className="h-4 w-4" />
-                    Accéder au cours
-                  </Link>
+                  <div className="flex gap-3">
+                    <Link to={sujet.to} className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md">
+                      <FileText className="h-4 w-4" />
+                      Accéder au cours
+                    </Link>
+                    <Link to={
+                      sujet.id === 1 ? "/formation/geopolitique/premiere-annee/espaces-maritimes/flashcards" :
+                      sujet.id === 2 ? "/formation/geopolitique/premiere-annee/espaces-maritimes-tensions/flashcards" :
+                      sujet.id === 3 ? "/formation/geopolitique/premiere-annee/energies/flashcards" :
+                      sujet.id === 4 ? "/formation/geopolitique/premiere-annee/gouvernance-mondiale/flashcards" :
+                      sujet.id === 5 ? "/formation/geopolitique/premiere-annee/guerres/flashcards" :
+                      sujet.id === 6 ? "/formation/geopolitique/premiere-annee/migrations/flashcards" :
+                      sujet.id === 7 ? "/formation/geopolitique/premiere-annee/puissance/flashcards" :
+                      sujet.id === 8 ? "/formation/geopolitique/premiere-annee/ressources-strategiques/flashcards" :
+                      "/formation/geopolitique/flashcards"
+                    } className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md">
+                      <BookOpen className="h-4 w-4" />
+                      Accéder aux flashcards
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

@@ -44,23 +44,10 @@ Merci de me recontacter dès que possible !`;
 
   const handleQcmSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    const qcmMessage = `Bonjour ! 👋
 
-J'ai complété le mini-QCM et souhaiterais recevoir des tips personnalisés :
-
-🎯 *Mon objectif principal :* ${objective}
-📚 *Matière à travailler :* ${subject}  
-📊 *Mon niveau actuel :* ${level}
-📧 *Email pour le plan gratuit :* ${qcmEmail}
-
-Merci de m'envoyer une recommandation personnalisée !`;
-
-    const encodedMessage = encodeURIComponent(qcmMessage);
-    const whatsappNumber = "33609164668";
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-    
-    window.open(whatsappUrl, '_blank');
+    // Redirection vers Calendly après avoir rempli le QCM
+    const calendlyUrl = `https://calendly.com/preparationnelle/30min?month=2025-09&date=2025-09-16`;
+    window.open(calendlyUrl, '_blank');
   };
 
   return (
@@ -82,86 +69,40 @@ Merci de m'envoyer une recommandation personnalisée !`;
           {/* Section Contact Principal */}
           <Card className="mb-8">
             <CardHeader>
-              <CardTitle className="text-primary text-3xl">
-                Contactez-nous via WhatsApp
+              <CardTitle className="text-primary text-3xl text-left">
+                Réservez votre cours gratuit
               </CardTitle>
-              <p className="text-muted-foreground mt-2">
-                Remplissez ce formulaire et vous serez redirigé vers WhatsApp pour nous envoyer votre message directement. Nous vous répondrons rapidement !
+              <p className="text-muted-foreground mt-2 text-left">
+                Cliquez sur le bouton ci-dessous pour accéder à notre calendrier et réserver votre premier cours gratuit de 30 minutes !
               </p>
             </CardHeader>
             <CardContent className="grid md:grid-cols-2 gap-10">
-              {/* Formulaire de contact */}
-              <form className="space-y-4" onSubmit={handleContactSubmit}>
-                <div>
-                  <label className="font-medium mb-1 block" htmlFor="name">
-                    Nom
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    placeholder="Votre nom"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                    className="bg-white"
-                  />
+              {/* Bouton Calendly */}
+              <div className="flex flex-col items-center justify-center space-y-6">
+                <div className="text-left">
+                  <h3 className="text-xl font-semibold mb-4">Prêt à commencer ?</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Réservez dès maintenant votre cours d'essai gratuit et découvrez notre méthode unique pour réussir votre prépa ECG.
+                  </p>
                 </div>
-                <div>
-                  <label className="font-medium mb-1 block" htmlFor="email">
-                    E-mail
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="mon@email.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="bg-white"
-                  />
-                </div>
-                <div>
-                  <label className="font-medium mb-1 block" htmlFor="phone">
-                    Téléphone
-                  </label>
-                  <div className="relative">
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      placeholder="06 12 34 56 78"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      className="bg-white pr-10"
-                    />
-                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">
-                      <Phone className="w-5 h-5" />
-                    </span>
-                  </div>
-                </div>
-                <div>
-                  <label className="font-medium mb-1 block" htmlFor="message">
-                    Message
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    required
-                    placeholder="Votre message"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    className="resize-none bg-white"
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  className="w-full mt-2 bg-[#25D366] hover:bg-[#22c55e] text-white text-lg font-bold py-2 flex items-center justify-center gap-2"
+                <a
+                  href="https://calendly.com/preparationnelle/30min?month=2025-09&date=2025-09-16"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full"
                 >
-                  <MessageCircle className="w-5 h-5" />
-                  Envoyer via WhatsApp
-                </Button>
-              </form>
+                  <Button
+                    className="w-full bg-blue-500 hover:bg-blue-600 text-white text-lg font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3"
+                  >
+                    <Calendar className="w-6 h-6" />
+                    Réserver mon cours gratuit
+                  </Button>
+                </a>
+                <p className="text-sm text-muted-foreground text-left">
+                  Durée : 30 minutes<br />
+                  100% gratuit et sans engagement
+                </p>
+              </div>
 
               {/* Informations de contact */}
               <div className="flex flex-col gap-6 justify-center">
@@ -251,7 +192,7 @@ Merci de m'envoyer une recommandation personnalisée !`;
                 Quelle Est Ta Situation Actuelle ? Trouve la Solution Parfaite pour Booster Ta Prépa
               </CardTitle>
               <p className="text-muted-foreground text-center">
-                Réponds à ce Mini‑QCM et reçois des tips personnalisés gratuits.
+                Réponds à ce Mini‑QCM et réserve ton cours personnalisé gratuit de 30 minutes !
               </p>
             </CardHeader>
             <CardContent>
@@ -330,9 +271,9 @@ Merci de m'envoyer une recommandation personnalisée !`;
                 <div className="text-center">
                   <Button
                     type="submit"
-                    className="bg-primary hover:bg-primary/90 text-white px-8 py-3 text-lg font-semibold"
+                    className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                   >
-                    Voir ma recommandation
+                    Réserver mon cours personnalisé
                   </Button>
                 </div>
               </form>
@@ -355,7 +296,7 @@ Merci de m'envoyer une recommandation personnalisée !`;
               </CardHeader>
               <CardContent className="text-center">
                 <div className="text-2xl font-bold text-primary mb-4">GRATUIT</div>
-                <Button className="w-full bg-primary hover:bg-primary/90">
+                <Button className="w-full bg-blue-500 hover:bg-blue-600">
                   <BookOpen className="w-4 h-4 mr-2" />
                   Accéder gratuitement
                 </Button>
@@ -378,7 +319,7 @@ Merci de m'envoyer une recommandation personnalisée !`;
                   <Calendar className="w-5 h-5 inline mr-2" />
                   15 & 16 août 2025
                 </div>
-                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white">
+                <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white">
                   <Users className="w-4 h-4 mr-2" />
                   S'inscrire gratuitement
                 </Button>
@@ -397,7 +338,7 @@ Merci de m'envoyer une recommandation personnalisée !`;
                 <p className="text-sm text-muted-foreground mb-4">
                   Planning personnalisé + méthodes pour une rentrée sans stress.
                 </p>
-                <Button variant="outline" className="w-full">
+                <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white">
                   Découvrir
                 </Button>
               </CardContent>
@@ -415,7 +356,7 @@ Merci de m'envoyer une recommandation personnalisée !`;
                 <p className="text-sm text-muted-foreground mb-4">
                   Suivi personnalisé pour +5 points — progression garantie.
                 </p>
-                <Button variant="outline" className="w-full">
+                <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white">
                   En savoir plus
                 </Button>
               </CardContent>

@@ -66,12 +66,80 @@ const StageAccompagnementPage = () => {
               <span className="text-blue-600">boostera</span>
               <span className="text-black"> ta prépa</span>
             </h1>
-            
-            <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
+
+            <p className="text-xl sm:text-2xl text-gray-600 mb-8 leading-relaxed max-w-4xl mx-auto whitespace-nowrap">
               Accompagnement personnalisé pour maximiser tes performances et atteindre tes objectifs
             </p>
           </div>
-          
+
+          {/* Section programme détaillé */}
+          <div className="bg-white rounded-2xl shadow-xl p-8 mb-16 max-w-5xl mx-auto border border-gray-200">
+            <h2 className="text-3xl font-bold text-blue-800 mb-8">
+              Le programme que chaque étudiant rêve avoir pour intégrer le top 3
+            </h2>
+
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-2xl font-bold text-blue-700 mb-6 flex items-center">
+                  <BookOpen className="w-6 h-6 mr-3" />
+                  NOS COURS
+                </h3>
+                <ul className="space-y-4 text-gray-700">
+                  <li className="flex items-start hover:bg-blue-50 p-4 rounded-lg transition-colors duration-200">
+                    <span className="text-blue-600 font-bold mr-4 text-xl">●</span>
+                    <span className="text-left"><strong>4 à 8 cours de coaching individuel personnalisé par mois</strong> : Des sessions adaptées à tes besoins spécifiques, programmées chaque semaine matière au choix (50 euros/heure)</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-bold text-blue-700 mb-6 flex items-center">
+                  <Star className="w-6 h-6 mr-3" />
+                  NOS RESSOURCES
+                </h3>
+                <ul className="space-y-3 text-gray-700">
+                  <li className="flex items-start hover:bg-blue-50 p-4 rounded-lg transition-colors duration-200">
+                    <span className="text-blue-600 font-bold mr-4 text-xl">●</span>
+                    <span><strong>Live méthodologie</strong> : au moins une fois par mois avec des invités professeur en prépa</span>
+                  </li>
+                  <li className="flex items-start hover:bg-blue-50 p-4 rounded-lg transition-colors duration-200">
+                    <span className="text-blue-600 font-bold mr-4 text-xl">●</span>
+                    <span><strong>Formation Maths</strong> : Flash cards, cours, exercices indispensables corrigé (INCLUS)</span>
+                  </li>
+                  <li className="flex items-start hover:bg-blue-50 p-4 rounded-lg transition-colors duration-200">
+                    <span className="text-blue-600 font-bold mr-4 text-xl">●</span>
+                    <span><strong>Formation Python</strong> : Flash cards, cours, exercices indispensables corrigé (INCLUS)</span>
+                  </li>
+                  <li className="flex items-start hover:bg-blue-50 p-4 rounded-lg transition-colors duration-200">
+                    <span className="text-blue-600 font-bold mr-4 text-xl">●</span>
+                    <span className="text-left"><strong>Conversation WhatsApp Exclusive</strong> : Un suivi quotidien avec réponses à toutes tes questions en temps réel. Partage d'astuces, motivation pour ne jamais te sentir seul dans ton parcours. Tu peux nous poser toutes tes questions on te répond le plus rapidement possible. (INCLUS)</span>
+                  </li>
+                  <li className="flex items-start hover:bg-blue-50 p-4 rounded-lg transition-colors duration-200">
+                    <span className="text-blue-600 font-bold mr-4 text-xl">●</span>
+                    <span className="text-left"><strong>Formation LV1/LV2</strong> : Fiche de civilisation en langues, flash cards, expressions idiomatiques, fiche de vocabulaire, correcteur IA de thème grammatical (INCLUS)</span>
+                  </li>
+                  <li className="flex items-start hover:bg-blue-50 p-4 rounded-lg transition-colors duration-200">
+                    <span className="text-blue-600 font-bold mr-4 text-xl">●</span>
+                    <span><strong>Géopolitique/ESH</strong> : Études de cas, plans, flash cards (INCLUS)</span>
+                  </li>
+                  <li className="flex items-start hover:bg-blue-50 p-4 rounded-lg transition-colors duration-200">
+                    <span className="text-blue-600 font-bold mr-4 text-xl">●</span>
+                    <span><strong>Culture générale</strong> : Méthode (INCLUS)</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-blue-50 rounded-xl p-6 border-2 border-blue-200">
+                <h3 className="text-2xl font-bold text-blue-800 mb-4">
+                  Prix : 50 euros/heure les cours individuels le reste est inclu
+                </h3>
+                <p className="text-blue-700 font-medium">
+                  Tous les outils et ressources mentionnés ci-dessus sont inclus dans ton abonnement !
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Grille des cartes d'offres */}
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
 
@@ -176,23 +244,16 @@ const StageAccompagnementPage = () => {
                   </blockquote>
                   
                   <div className="flex items-center justify-center">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="text-blue-600 group-hover:text-orange-600 hover:bg-blue-50 group-hover:hover:bg-orange-50 transition-colors duration-300"
-                    >
-                      {isExpanded ? (
-                        <>
-                          <ChevronUp className="w-4 h-4 mr-1" />
-                          Réduire
-                        </>
-                      ) : (
-                        <>
-                          <ChevronDown className="w-4 h-4 mr-1" />
-                          Lire plus
-                        </>
-                      )}
-                    </Button>
+                    <Link to="/avis">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="text-blue-600 group-hover:text-orange-600 hover:bg-blue-50 group-hover:hover:bg-orange-50 transition-colors duration-300"
+                      >
+                        <ChevronDown className="w-4 h-4 mr-1" />
+                        Lire plus
+                      </Button>
+                    </Link>
                   </div>
                 </Card>
               );
