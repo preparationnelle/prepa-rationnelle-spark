@@ -8,7 +8,7 @@ import { ThemeToggle } from '@/components/ThemeToggle';
 import { GlobalSearch } from '@/components/search/GlobalSearch';
 import { MobileSearch } from '@/components/search/MobileSearch';
 import { SearchTrigger } from '@/components/search/SearchTrigger';
-import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, Code, Languages, Globe, UserCheck, Calculator, Star, Youtube } from 'lucide-react';
+import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, Code, Languages, Globe, UserCheck, Calculator, Award, Star, Youtube } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from '@/components/ui/dropdown-menu';
@@ -309,7 +309,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               {/* Menu déroulant */}
               <div
                 className={cn(
-                  "absolute top-full left-1/2 transform -translate-x-1/2 w-48 bg-white rounded-lg shadow-lg border p-2 transition-all duration-200 z-50",
+                  "absolute top-full left-1/2 transform -translate-x-1/2 w-64 bg-white rounded-lg shadow-lg border p-2 transition-all duration-200 z-50",
                   isStudyLevelOpen
                     ? "opacity-100 translate-y-0 pointer-events-auto"
                     : "opacity-0 -translate-y-2 pointer-events-none"
@@ -334,6 +334,25 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                   <span className="w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center"><GraduationCap className="h-4 w-4 text-blue-600" /></span>
                   <span>Lycée</span>
                 </Link>
+
+                {/* Prépa ECG */}
+                <Link to="/articles/prepa-ecg" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-purple-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-purple-50 rounded-full flex items-center justify-center"><Calculator className="h-4 w-4 text-purple-600" /></span>
+                  <span>Prépa ECG</span>
+                </Link>
+
+                {/* Concours ACCES/SESAME */}
+                <Link to="/articles/concours-acces-sesame" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-red-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-red-50 rounded-full flex items-center justify-center"><Award className="h-4 w-4 text-red-600" /></span>
+                  <span>Concours ACCES/SESAME</span>
+                </Link>
+
+                {/* OTERIA Cyber School */}
+                <Link to="/articles/oteria-cyber-school" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-teal-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-teal-50 rounded-full flex items-center justify-center"><Code className="h-4 w-4 text-teal-600" /></span>
+                  <span>OTERIA Cyber School</span>
+                </Link>
+
               </div>
             </div>
 
@@ -442,8 +461,11 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
           <Link to="/generator" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Générateur</Link>
           <Link to="/apropos" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>À propos</Link>
           <Link to="/articles/primaire" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Primaire</Link>
-          <Link to="/articles/college" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Collège</Link>
-          <Link to="/articles/lycee" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Lycée</Link>
+      <Link to="/articles/college" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Collège</Link>
+      <Link to="/articles/lycee" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Lycée</Link>
+      <Link to="/articles/prepa-ecg" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Prépa ECG</Link>
+      <Link to="/articles/concours-acces-sesame" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Concours ACCES/SESAME</Link>
+      <Link to="/articles/oteria-cyber-school" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>OTERIA Cyber School</Link>
           <Link to="/contact" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Contact</Link>
           <Link to="/stage-accompagnement" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Offres</Link>
         </div>

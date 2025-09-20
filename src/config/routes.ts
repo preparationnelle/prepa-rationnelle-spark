@@ -441,6 +441,28 @@ const LyceeEspagnolPage = lazy(() => import('../pages/LyceeEspagnolPage'));
 const LyceeEPSPage = lazy(() => import('../pages/LyceeEPSPage'));
 const LyceeAnglaisPage = lazy(() => import('../pages/LyceeAnglaisPage'));
 const LyceeGrandOralPage = lazy(() => import('../pages/LyceeGrandOralPage'));
+const ArticlesPrepaECGPage = lazy(() => import('../pages/ArticlesPrepaECGPage'));
+const ArticlesConcoursAccesSesamePage = lazy(() => import('../pages/ArticlesConcoursAccesSesamePage'));
+const ArticlesOteriaCyberSchoolPage = lazy(() => import('../pages/ArticlesOteriaCyberSchoolPage'));
+const OteriaLogiqueFondamentaleCoursPage = lazy(() => import('../pages/formation/oteria/OteriaLogiqueFondamentaleCoursPage'));
+const OteriaLogiqueFondamentaleExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaLogiqueFondamentaleExercicesPage'));
+const OteriaLogiqueFondamentaleFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaLogiqueFondamentaleFlashcardsPage'));
+const OteriaLogiqueFondamentaleQCMPage = lazy(() => import('../pages/formation/oteria/OteriaLogiqueFondamentaleQCMPage'));
+
+// Chapitre 2 - Bases de Python
+const OteriaPythonBasesCoursPage = lazy(() => import('../pages/formation/oteria/OteriaPythonBasesCoursPage'));
+const OteriaPythonBasesExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaPythonBasesExercicesPage'));
+const OteriaPythonBasesFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaPythonBasesFlashcardsPage'));
+const OteriaPythonBasesQCMPage = lazy(() => import('../pages/formation/oteria/OteriaPythonBasesQCMPage'));
+
+// Chapitre 3 - Récurrence & récursivité – sommes / produits
+const OteriaRecurrenceRecursiviteCoursPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteCoursPage'));
+const OteriaRecurrenceRecursiviteExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteExercicesPage'));
+const OteriaRecurrenceRecursiviteFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteFlashcardsPage'));
+const OteriaRecurrenceRecursiviteQCMPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteQCMPage'));
+
+// Évaluation Finale
+const OteriaEvaluationFinaleQCMPage = lazy(() => import('../pages/formation/oteria/OteriaEvaluationFinaleQCMPage'));
 const MathsEteControlePage = lazy(() => import('../pages/articles/MathsEteControlePage'));
 const AttentesConcoursPage = lazy(() => import('../pages/articles/AttentesConcoursPage'));
 const CollesDsPage = lazy(() => import('../pages/articles/CollesDsPage'));
@@ -609,6 +631,28 @@ export const routes: RouteConfig[] = [
   { path: '/articles/lycee/terminale/eps', component: LyceeEPSPage, title: 'EPS Terminale' },
   { path: '/articles/lycee/terminale/anglais', component: LyceeAnglaisPage, title: 'Anglais Terminale' },
   { path: '/articles/lycee/terminale/grand-oral', component: LyceeGrandOralPage, title: 'Grand Oral Terminale' },
+  { path: '/articles/prepa-ecg', component: ArticlesPrepaECGPage, title: 'Prépa ECG' },
+  { path: '/articles/concours-acces-sesame', component: ArticlesConcoursAccesSesamePage, title: 'Concours ACCES/SESAME' },
+  { path: '/articles/oteria-cyber-school', component: ArticlesOteriaCyberSchoolPage, title: 'OTERIA Cyber School' },
+  { path: '/formation/oteria/logique-fondamentale-cours', component: OteriaLogiqueFondamentaleCoursPage, title: 'Logique Fondamentale - Cours' },
+  { path: '/formation/oteria/logique-fondamentale-exercices', component: OteriaLogiqueFondamentaleExercicesPage, title: 'Logique Fondamentale - Exercices' },
+  { path: '/formation/oteria/logique-fondamentale-flashcards', component: OteriaLogiqueFondamentaleFlashcardsPage, title: 'Logique Fondamentale - Flashcards' },
+  { path: '/formation/oteria/logique-fondamentale-qcm', component: OteriaLogiqueFondamentaleQCMPage, title: 'Logique Fondamentale - QCM' },
+
+  // Chapitre 2 - Bases de Python
+  { path: '/formation/oteria/python-bases-cours', component: OteriaPythonBasesCoursPage, title: 'Bases Python - Cours' },
+  { path: '/formation/oteria/python-bases-exercices', component: OteriaPythonBasesExercicesPage, title: 'Bases Python - Exercices' },
+  { path: '/formation/oteria/python-bases-flashcards', component: OteriaPythonBasesFlashcardsPage, title: 'Bases Python - Flashcards' },
+  { path: '/formation/oteria/python-bases-qcm', component: OteriaPythonBasesQCMPage, title: 'Bases Python - QCM' },
+
+  // Chapitre 3 - Récurrence & récursivité – sommes / produits
+  { path: '/formation/oteria/recurrence-recursivite-cours', component: OteriaRecurrenceRecursiviteCoursPage, title: 'Récurrence & Récursivité - Cours' },
+  { path: '/formation/oteria/recurrence-recursivite-exercices', component: OteriaRecurrenceRecursiviteExercicesPage, title: 'Récurrence & Récursivité - Exercices' },
+  { path: '/formation/oteria/recurrence-recursivite-flashcards', component: OteriaRecurrenceRecursiviteFlashcardsPage, title: 'Récurrence & Récursivité - Flashcards' },
+  { path: '/formation/oteria/recurrence-recursivite-qcm', component: OteriaRecurrenceRecursiviteQCMPage, title: 'Récurrence & Récursivité - QCM' },
+
+  // Évaluation Finale
+  { path: '/formation/oteria/evaluation-finale', component: OteriaEvaluationFinaleQCMPage, title: 'Évaluation Finale - QCM Complet' },
   { path: '/avis', component: AvisPage, title: 'Avis Superprof' },
   { path: '/methodologie/storytelling', component: StorytellingMethodePage, title: 'Méthodologie Storytelling' },
 
