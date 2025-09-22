@@ -26,8 +26,8 @@ const chapters = [
 
 const MethodologieAnglaisPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="sticky top-0 z-40 bg-gray-50/90 backdrop-blur-sm border-b">
+    <div className="min-h-screen bg-white">
+      <div className="sticky top-0 z-40 bg-white/90 backdrop-blur-sm border-b">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-gray-500">
             <Link to="/" className="flex items-center gap-1 hover:text-gray-800 transition-colors">
@@ -56,23 +56,25 @@ const MethodologieAnglaisPage = () => {
         <div className="max-w-4xl mx-auto">
           <div className="space-y-4">
             {chapters.map((c) => (
-              <div key={c.id} className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 border border-gray-200">
-                <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-blue-700 text-lg">{c.id}</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-1">{c.title}</h3>
-                    <p className="text-gray-600 mb-4">{c.description}</p>
-                    <Link to={c.to}>
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Étudier ce chapitre
-                      </Button>
-                    </Link>
+              <Link key={c.id} to={c.to} className="block">
+                <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
+                  <div className="flex items-start gap-4">
+                    <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
+                      <span className="font-bold text-blue-700 text-lg">{c.id}</span>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-1">{c.title}</h3>
+                      <p className="text-gray-600 mb-4">{c.description}</p>
+                      <Link to={c.to} onClick={(e) => e.stopPropagation()}>
+                        <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
+                          <Calendar className="mr-2 h-4 w-4" />
+                          Étudier ce chapitre
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

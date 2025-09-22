@@ -5,7 +5,7 @@
 
 @layer base {
   :root {
-    --background: 57 100% 97%;
+    --background: 0 0% 100%;
     --foreground: 0 0% 5%;
 
     --card: 0 0% 100%;
@@ -90,10 +90,12 @@
     @apply border-border;
   }
 
-  body {
+  html, body, #root {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
     overflow-x: hidden;
+    background-color: #ffffff !important;
+    background-image: none !important;
   }
 
   /* Amélioration du responsive design */

@@ -6,15 +6,7 @@ import { Link } from 'react-router-dom';
 
 const FormationCultureGeneralePage = () => {
   return (
-    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
-      {/* Soft blue bubbles in background */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute top-40 right-20 w-48 h-48 bg-blue-100 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-5 animate-pulse"></div>
-      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-blue-50 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
-
+    <div className="min-h-screen bg-white relative overflow-hidden">
       {/* Header */}
       <section className="py-10 px-4 sm:px-6 bg-transparent relative z-10">
         <div className="container mx-auto max-w-6xl">
@@ -42,7 +34,7 @@ const FormationCultureGeneralePage = () => {
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Link to="/formation/culture-generale/articles" className="block">
-              <Card className="bg-white rounded-2xl p-8 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-blue-200 group">
+              <Card className="bg-white rounded-2xl p-8 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
                 <div className="flex flex-col items-start text-left min-h-[220px]">
                   <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-200 transition-colors">
                     <Layout className="h-8 w-8 text-blue-700" />
@@ -54,7 +46,7 @@ const FormationCultureGeneralePage = () => {
             </Link>
 
             <Link to="/formation/culture-generale/methodes" className="block">
-              <Card className="bg-white rounded-2xl p-8 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-blue-200 group">
+              <Card className="bg-white rounded-2xl p-8 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
                 <div className="flex flex-col items-start text-left min-h-[220px]">
                   <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-200 transition-colors">
                     <Target className="h-8 w-8 text-blue-700" />
@@ -66,7 +58,7 @@ const FormationCultureGeneralePage = () => {
             </Link>
 
             <Link to="/formation/culture-generale/programme" className="block">
-              <Card className="bg-white rounded-2xl p-8 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-blue-200 group">
+              <Card className="bg-white rounded-2xl p-8 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
                 <div className="flex flex-col items-start text-left min-h-[220px]">
                   <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-200 transition-colors">
                     <Lightbulb className="h-8 w-8 text-blue-700" />
@@ -78,7 +70,7 @@ const FormationCultureGeneralePage = () => {
             </Link>
 
             <Link to="/formation/culture-generale/juger" className="block">
-              <Card className="bg-white rounded-2xl p-8 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-blue-200 group">
+              <Card className="bg-white rounded-2xl p-8 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
                 <div className="flex flex-col items-start text-left min-h-[220px]">
                   <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-200 transition-colors">
                     <BookOpen className="h-8 w-8 text-blue-700" />

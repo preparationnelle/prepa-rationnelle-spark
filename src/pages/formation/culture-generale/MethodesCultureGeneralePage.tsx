@@ -75,11 +75,7 @@ const methods: MethodItem[] = [
 
 const MethodesCultureGeneralePage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
-      {/* Soft blue bubbles */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow" />
-      <div className="absolute top-40 right-20 w-48 h-48 bg-blue-100 rounded-full opacity-10 animate-pulse-slow" />
+    <div className="min-h-screen bg-white relative overflow-hidden">
 
       <section className="py-10 px-4 sm:px-6 bg-transparent relative z-10">
         <div className="container mx-auto max-w-6xl">
@@ -94,13 +90,10 @@ const MethodesCultureGeneralePage: React.FC = () => {
           {/* Methods list */}
           <div className="space-y-6">
             {methods.map((m) => (
-              <div
-                key={m.number}
-                className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-transparent hover:border-blue-200"
-              >
-                <div className="flex flex-col md:flex-row md:items-center gap-4">
-                  <div className="flex items-center gap-4 md:w-2/3">
-                    <div className="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+              <Link key={m.number} to={m.route === '#' ? '#' : m.route} className="block">
+                <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-transparent hover:border-blue-200 group cursor-pointer">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-200 transition-colors">
                       <span className="text-blue-700 font-bold text-lg">{m.number}</span>
                     </div>
                     <div>
@@ -108,7 +101,7 @@ const MethodesCultureGeneralePage: React.FC = () => {
                       <p className="text-gray-600">{m.description}</p>
                     </div>
                   </div>
-                  <div className="md:ml-auto md:w-auto">
+                  <div className="flex justify-start" onClick={(e) => e.stopPropagation()}>
                     {m.route === '#' ? (
                       <Button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-md">
                         Découvrir la fiche — GO
@@ -122,7 +115,7 @@ const MethodesCultureGeneralePage: React.FC = () => {
                     )}
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

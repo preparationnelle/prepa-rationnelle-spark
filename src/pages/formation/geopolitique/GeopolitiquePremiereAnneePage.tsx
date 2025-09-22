@@ -57,7 +57,7 @@ const GeopolitiquePremiereAnneePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -88,35 +88,37 @@ const GeopolitiquePremiereAnneePage = () => {
 
         <div className="max-w-5xl mx-auto space-y-4">
           {sujets.map((sujet, idx) => (
-            <div key={sujet.id} className="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all border border-gray-200">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-lg">{idx + 1}</div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">{sujet.title}</h3>
-                  <p className="text-gray-600 mb-4">{sujet.description}</p>
-                  <div className="flex gap-3">
-                    <Link to={sujet.to} className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md">
-                      <FileText className="h-4 w-4" />
-                      Accéder au cours
-                    </Link>
-                    <Link to={
-                      sujet.id === 1 ? "/formation/geopolitique/premiere-annee/espaces-maritimes/flashcards" :
-                      sujet.id === 2 ? "/formation/geopolitique/premiere-annee/espaces-maritimes-tensions/flashcards" :
-                      sujet.id === 3 ? "/formation/geopolitique/premiere-annee/energies/flashcards" :
-                      sujet.id === 4 ? "/formation/geopolitique/premiere-annee/gouvernance-mondiale/flashcards" :
-                      sujet.id === 5 ? "/formation/geopolitique/premiere-annee/guerres/flashcards" :
-                      sujet.id === 6 ? "/formation/geopolitique/premiere-annee/migrations/flashcards" :
-                      sujet.id === 7 ? "/formation/geopolitique/premiere-annee/puissance/flashcards" :
-                      sujet.id === 8 ? "/formation/geopolitique/premiere-annee/ressources-strategiques/flashcards" :
-                      "/formation/geopolitique/flashcards"
-                    } className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md">
-                      <BookOpen className="h-4 w-4" />
-                      Accéder aux flashcards
-                    </Link>
+            <Link key={sujet.id} to={sujet.to} className="block">
+              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-lg group-hover:bg-blue-200 transition-colors">{idx + 1}</div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">{sujet.title}</h3>
+                    <p className="text-gray-600 mb-4">{sujet.description}</p>
+                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
+                      <Link to={sujet.to} className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md">
+                        <FileText className="h-4 w-4" />
+                        Accéder au cours
+                      </Link>
+                      <Link to={
+                        sujet.id === 1 ? "/formation/geopolitique/premiere-annee/espaces-maritimes/flashcards" :
+                        sujet.id === 2 ? "/formation/geopolitique/premiere-annee/espaces-maritimes-tensions/flashcards" :
+                        sujet.id === 3 ? "/formation/geopolitique/premiere-annee/energies/flashcards" :
+                        sujet.id === 4 ? "/formation/geopolitique/premiere-annee/gouvernance-mondiale/flashcards" :
+                        sujet.id === 5 ? "/formation/geopolitique/premiere-annee/guerres/flashcards" :
+                        sujet.id === 6 ? "/formation/geopolitique/premiere-annee/migrations/flashcards" :
+                        sujet.id === 7 ? "/formation/geopolitique/premiere-annee/puissance/flashcards" :
+                        sujet.id === 8 ? "/formation/geopolitique/premiere-annee/ressources-strategiques/flashcards" :
+                        "/formation/geopolitique/flashcards"
+                      } className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md">
+                        <BookOpen className="h-4 w-4" />
+                        Accéder aux flashcards
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

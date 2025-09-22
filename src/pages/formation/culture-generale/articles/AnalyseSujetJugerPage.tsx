@@ -5,11 +5,7 @@ import { Link } from 'react-router-dom';
 
 const AnalyseSujetJugerPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
-      {/* Soft blue bubbles */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow" />
-      <div className="absolute top-40 right-20 w-48 h-48 bg-blue-100 rounded-full opacity-10 animate-pulse-slow" />
+    <div className="min-h-screen bg-white relative overflow-hidden">
 
       <section className="py-10 px-4 sm:px-6 bg-transparent relative z-10">
         <div className="container mx-auto max-w-5xl">
@@ -150,15 +146,17 @@ const AnalyseSujetJugerPage: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="pt-2">
-                <Link to="/formation/culture-generale/articles">
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white">Retour au menu des articles</Button>
-                </Link>
-              </div>
             </CardContent>
           </Card>
         </div>
       </section>
+
+      {/* Bouton retour en bas */}
+      <div className="flex justify-center mt-12 pb-8">
+        <Link to="/formation/culture-generale/articles">
+          <Button className="bg-blue-600 hover:bg-blue-700 text-white">Retour au menu des articles</Button>
+        </Link>
+      </div>
     </div>
   );
 };

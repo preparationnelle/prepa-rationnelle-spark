@@ -16,7 +16,7 @@ import {
 
 const ArticlesDeterminantsPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-blue-50">
+    <div className="min-h-screen bg-white">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -42,14 +42,6 @@ const ArticlesDeterminantsPage = () => {
       <div className="container mx-auto px-4 py-8">
         {/* En-tête */}
         <div className="text-center mb-10">
-          <div className="flex justify-center mb-4">
-            <Link to="/formation/anglais/grammaire">
-              <Button variant="outline" className="flex items-center gap-2">
-                <ArrowLeft className="h-4 w-4" />
-                Retour à la grammaire
-              </Button>
-            </Link>
-          </div>
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
             <div className="p-3 rounded-lg bg-orange-600 text-white">
               <BookOpen className="h-9 w-9" />
@@ -59,11 +51,6 @@ const ArticlesDeterminantsPage = () => {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Les articles (a/an/the) et déterminants (some, any, much, many, a lot of, etc.) sont indispensables pour exprimer quantité et spécificité en anglais.
           </p>
-          <div className="flex justify-center gap-2 mt-4">
-            <Badge variant="secondary">Débutant - Intermédiaire</Badge>
-            <Badge variant="outline">1-2 heures</Badge>
-            <Badge className="bg-orange-600">Module essentiel</Badge>
-          </div>
         </div>
 
         {/* Introduction */}
@@ -236,6 +223,16 @@ const ArticlesDeterminantsPage = () => {
             </Link>
           </CardContent>
         </Card>
+
+        {/* Bouton retour en bas */}
+        <div className="flex justify-center mt-12">
+          <Link to="/formation/anglais/grammaire">
+            <Button variant="outline" className="flex items-center gap-2">
+              <ArrowLeft className="h-4 w-4" />
+              Retour à la grammaire
+            </Button>
+          </Link>
+        </div>
       </div>
     </div>
   );
