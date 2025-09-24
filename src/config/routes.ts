@@ -484,12 +484,18 @@ const OteriaFonctionsVariableReelleCoursPage = lazy(() => import('../pages/forma
 
 // Chapitre 6 - Polynômes et approximation des racines
 const OteriaPolynomesApproximationCoursPage = lazy(() => import('../pages/formation/oteria/OteriaPolynomesApproximationCoursPage'));
+
+// Chapitre 10 - Intégrales & π par Monte-Carlo
+const OteriaIntegralesMonteCarloCoursPage = lazy(() => import('../pages/formation/oteria/OteriaIntegralesMonteCarloCoursPage'));
 const OteriaRecurrenceRecursiviteExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteExercicesPage'));
 const OteriaRecurrenceRecursiviteFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteFlashcardsPage'));
 const OteriaRecurrenceRecursiviteQCMPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteQCMPage'));
 
 // Évaluation Finale
 const OteriaEvaluationFinaleQCMPage = lazy(() => import('../pages/formation/oteria/OteriaEvaluationFinaleQCMPage'));
+
+// Mini Projet
+const OteriaMiniProjetPage = lazy(() => import('../pages/formation/oteria/OteriaMiniProjetPage'));
 const MathsEteControlePage = lazy(() => import('../pages/articles/MathsEteControlePage'));
 const AttentesConcoursPage = lazy(() => import('../pages/articles/AttentesConcoursPage'));
 const CollesDsPage = lazy(() => import('../pages/articles/CollesDsPage'));
@@ -684,6 +690,9 @@ export const routes: RouteConfig[] = [
 
   // Chapitre 6 - Polynômes et approximation des racines
   { path: '/formation/oteria/polynomes-approximation-cours', component: OteriaPolynomesApproximationCoursPage, title: 'Polynômes & Dichotomie - Cours' },
+
+  // Chapitre 10 - Intégrales & π par Monte-Carlo
+  { path: '/formation/oteria/integrales-monte-carlo-cours', component: OteriaIntegralesMonteCarloCoursPage, title: 'Intégrales & π par Monte-Carlo - Cours' },
   
   { path: '/formation/oteria/recurrence-recursivite-exercices', component: OteriaRecurrenceRecursiviteExercicesPage, title: 'Récurrence & Récursivité - Exercices' },
   { path: '/formation/oteria/recurrence-recursivite-flashcards', component: OteriaRecurrenceRecursiviteFlashcardsPage, title: 'Récurrence & Récursivité - Flashcards' },
@@ -691,6 +700,9 @@ export const routes: RouteConfig[] = [
 
   // Évaluation Finale
   { path: '/formation/oteria/evaluation-finale', component: OteriaEvaluationFinaleQCMPage, title: 'Évaluation Finale - QCM Complet' },
+
+  // Mini Projet
+  { path: '/formation/oteria/mini-projet', component: OteriaMiniProjetPage, title: 'Mini Projet - Ateliers & Répétitions' },
   { path: '/avis', component: AvisPage, title: 'Avis Superprof' },
   { path: '/methodologie/storytelling', component: StorytellingMethodePage, title: 'Méthodologie Storytelling' },
 

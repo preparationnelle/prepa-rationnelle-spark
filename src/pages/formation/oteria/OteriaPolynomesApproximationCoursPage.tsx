@@ -93,269 +93,220 @@ const OteriaPolynomesApproximationCoursPage = () => {
 
         {/* Contenu du cours */}
         <div className="max-w-4xl mx-auto">
-
-          {/* Section 1: Introduction */}
+          
+          {/* Introduction */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
-              1. Introduction
+              Introduction
             </h2>
-
             <div className="bg-blue-50 p-4 rounded-lg">
               <p className="text-blue-800 leading-relaxed">
-                Les polynômes sont des outils fondamentaux en algèbre et en analyse. 
-                Ils permettent de représenter des fonctions, d'étudier leurs racines et de développer des méthodes d'approximation (ex. dichotomie, Newton).
+                Les polynômes sont des outils fondamentaux en algèbre, utilisés pour représenter des fonctions polynomiales et analyser leurs propriétés. Ce chapitre couvre les définitions, les opérations, la dérivation, les racines, la factorisation, et les relations entre racines et coefficients.
               </p>
             </div>
           </div>
 
-          {/* Section 2: Définition et opérations */}
+          {/* Définition : Polynôme */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
-              2. Définition et opérations
+            <h2 className="text-xl font-bold mb-4 text-blue-700 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+              Définition : Polynôme
             </h2>
-
-            {/* 2.1 Définition */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Définition</h3>
-              
-              <div className="bg-blue-50 p-4 rounded-lg mb-4">
-                <p className="text-blue-800 mb-3">Un polynôme réel est une fonction de la forme :</p>
-                <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
-                  <LatexRenderer latex="P(x) = a_0 + a_1 x + \\cdots + a_n x^n, \\quad a_i \\in \\mathbb{R}, \\; n \\in \\mathbb{N}" className="text-lg text-blue-900 font-semibold" block={true} />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-3 gap-4">
-                <div className="bg-white p-3 rounded border-l-4 border-blue-500">
-                  <strong>Degré :</strong> n si aₙ ≠ 0
-                </div>
-                <div className="bg-white p-3 rounded border-l-4 border-blue-600">
-                  <strong>Coefficient dominant :</strong> aₙ
-                </div>
-                <div className="bg-white p-3 rounded border-l-4 border-blue-700">
-                  <strong>Unitaire :</strong> si aₙ = 1
-                </div>
-              </div>
+            <div className="space-y-4">
+              <p>Un polynôme réel est une expression de la forme :</p>
+              <div className="my-2 text-center bg-blue-50 p-4 rounded"><LatexRenderer latex={"P(x) = a_0 + a_1 x + \\dots + a_n x^n \\quad (n \\in \\mathbb{N})"} /></div>
+              <p>où <LatexRenderer latex={"a_i \\in \\mathbb{R}"} />.</p>
+              <p>S'il est non nul, son <em>degré</em> est le plus grand indice <LatexRenderer latex={"n"} /> tel que <LatexRenderer latex={"a_n \\neq 0"} />; <LatexRenderer latex={"a_n"} /> est alors le <em>coefficient dominant</em>.</p>
+              <p>Lorsque <LatexRenderer latex={"a_n = 1"} />, on dit que <LatexRenderer latex={"P"} /> est <em>unitaire</em>.</p>
+              <p>Par convention, <LatexRenderer latex={"\\deg 0 = -\\infty"} />.</p>
+              <p>On note <LatexRenderer latex={"\\mathbb{R}[X]"} /> l'ensemble de tous les polynômes réels, et <LatexRenderer latex={"\\mathbb{R}_n[X]"} /> ceux de degré <LatexRenderer latex={"\\leq n"} />.</p>
             </div>
+          </div>
 
-            {/* 2.2 Égalité de polynômes */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Égalité de polynômes</h3>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <p className="text-blue-800">
-                  Deux polynômes sont égaux s'ils ont le même degré et les mêmes coefficients.
-                </p>
-              </div>
-            </div>
+          {/* Définition : Égalité de deux polynômes */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-xl font-bold mb-4 text-blue-700 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+              Définition : Égalité de deux polynômes
+            </h2>
+            <p>Deux polynômes non nuls sont identiques s'ils ont le même degré et des coefficients correspondants égaux.</p>
+          </div>
 
-            {/* 2.3 Somme et produit */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Somme et produit</h3>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
-                    <LatexRenderer latex="\\deg(P+Q) \\leq \\max(\\deg P, \\deg Q)" className="text-blue-900 font-semibold" block={true} />
-                  </div>
-                  <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
-                    <LatexRenderer latex="\\deg(PQ) = \\deg P + \\deg Q" className="text-blue-900 font-semibold" block={true} />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* 2.4 Division euclidienne */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Division euclidienne</h3>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <p className="text-blue-800 mb-3">Pour A,B ∈ ℝ[X] avec B ≠ 0, il existe un unique couple (Q,R) tel que :</p>
-                <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
-                  <LatexRenderer latex="A = BQ + R, \\qquad \\deg R < \\deg B" className="text-lg text-blue-900 font-semibold" block={true} />
-                </div>
+          {/* Opération : Somme et produit */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-xl font-bold mb-4 text-blue-700 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+              Opération : Somme et produit
+            </h2>
+            <div className="space-y-4">
+              <p>Pour <LatexRenderer latex={"P, Q \\in \\mathbb{R}[X]"} /> :</p>
+              <div className="text-center bg-blue-50 p-4 rounded">
+                <LatexRenderer latex={"\\deg(P + Q) \\leq \\max(\\deg P, \\deg Q), \\qquad \\deg(PQ) = \\deg P + \\deg Q"} />
               </div>
             </div>
           </div>
 
-          {/* Section 3: Dérivation et Taylor */}
+          {/* Théorème : Division euclidienne */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
-              3. Dérivation et Taylor
+            <h2 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
+              Théorème : Division euclidienne
             </h2>
-
-            {/* 3.1 Polynôme dérivé */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Polynôme dérivé</h3>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
-                  <LatexRenderer latex="P(x) = \\sum_{i=0}^n a_i x^i \\quad \\Rightarrow \\quad P'(x) = \\sum_{i=1}^n i a_i x^{i-1}" className="text-lg text-blue-900 font-semibold" block={true} />
-                </div>
-              </div>
-            </div>
-
-            {/* 3.2 Formule de Taylor */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Formule de Taylor</h3>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <p className="text-blue-800 mb-3">Pour a ∈ ℝ :</p>
-                <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
-                  <LatexRenderer latex="P(x) = \\sum_{k=0}^n \\frac{P^{(k)}(a)}{k!} (x-a)^k" className="text-lg text-blue-900 font-semibold" block={true} />
-                </div>
+            <div className="space-y-4">
+              <p>Pour <LatexRenderer latex={"A, B \\in \\mathbb{R}[X]"} /> avec <LatexRenderer latex={"B \\neq 0"} />, il existe un unique couple <LatexRenderer latex={"(Q, R)"} /> tel que :</p>
+              <div className="text-center bg-orange-50 p-4 rounded">
+                <LatexRenderer latex={"A = B Q + R, \\qquad \\deg R < \\deg B"} />
               </div>
             </div>
           </div>
 
-          {/* Section 4: Racines et factorisation */}
+          {/* Définition : Polynôme dérivé */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
-              4. Racines et factorisation
+            <h2 className="text-xl font-bold mb-4 text-blue-700 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+              Définition : Polynôme dérivé
             </h2>
-
-            {/* 4.1 Définition */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Définition</h3>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <p className="text-blue-800">
-                  Un réel r est une racine de P si P(r) = 0, équivalemment si (x-r) divise P.
-                </p>
+            <div className="space-y-4">
+              <p>Si <LatexRenderer latex={"P(x) = \\sum\\limits_{i=0}^n a_i x^i"} />, alors :</p>
+              <div className="text-center bg-blue-50 p-4 rounded">
+                <LatexRenderer latex={"P'(x) = \\sum\\limits_{i=1}^n i a_i x^{i-1}"} />
               </div>
+              <p>et <LatexRenderer latex={"P'"} /> est nul lorsque <LatexRenderer latex={"P"} /> est constant.</p>
             </div>
+          </div>
 
-            {/* 4.2 Racine multiple */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Racine multiple</h3>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <p className="text-blue-800">
-                  r est racine d'ordre m si (x-r)ᵐ | P mais (x-r)ᵐ⁺¹ ∤ P.
-                </p>
+          {/* Théorème : Dérivées successives */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
+              Théorème : Dérivées successives
+            </h2>
+            <div className="space-y-4">
+              <p>Définies par <LatexRenderer latex={"P^{(0)} = P"} /> et <LatexRenderer latex={"P^{(k)} = (P^{(k-1)})'"} />.</p>
+              <p>Si <LatexRenderer latex={"P(x) = \\sum\\limits_{i=0}^n a_i x^i"} />, alors pour <LatexRenderer latex={"k \\leq n"} /> :</p>
+              <div className="text-center bg-orange-50 p-4 rounded">
+                <LatexRenderer latex={"P^{(k)}(x) = \\sum\\limits_{i=k}^n \\frac{i!}{(i-k)!} a_i x^{i-k}, \\qquad \\deg P^{(k)} = n - k"} />
               </div>
+              <p>et <LatexRenderer latex={"P^{(k)} \\equiv 0"} /> pour <LatexRenderer latex={"k \\geq n + 1"} />.</p>
             </div>
+          </div>
 
-            {/* 4.3 Théorème fondamental */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Théorème fondamental</h3>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
-                  <strong className="text-blue-900">
-                    Un polynôme de degré n a au plus n racines réelles distinctes
-                  </strong>
-                </div>
-              </div>
-            </div>
-
-            {/* 4.4 Factorisation */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Factorisation</h3>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <p className="text-blue-800">
-                  Tout polynôme réel se factorise en produit de polynômes du 1er degré et de polynômes quadratiques sans racine réelle.
-                </p>
+          {/* Théorème : Formule de Taylor */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
+              Théorème : Formule de Taylor
+            </h2>
+            <div className="space-y-4">
+              <p>Pour <LatexRenderer latex={"a \\in \\mathbb{R}"} /> et tout <LatexRenderer latex={"P \\in \\mathbb{R}[X]"} /> de degré <LatexRenderer latex={"n"} /> :</p>
+              <div className="text-center bg-orange-50 p-4 rounded border-2 border-orange-300">
+                <LatexRenderer latex={"\\boxed{P(x) = \\sum\\limits_{k=0}^n \\frac{P^{(k)}(a)}{k!} (x - a)^k}"} />
               </div>
             </div>
           </div>
 
-          {/* Section 5: Trinôme et discriminant */}
+          {/* Définition : Racines */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
-              5. Trinôme et discriminant
+            <h2 className="text-xl font-bold mb-4 text-blue-700 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+              Définition : Racines
             </h2>
-
-            {/* 5.1 Discriminant */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Discriminant</h3>
-              <div className="bg-blue-50 p-4 rounded-lg mb-4">
-                <p className="text-blue-800 mb-3">Pour P(x) = ax² + bx + c, a ≠ 0, on pose Δ = b² - 4ac :</p>
-                
-                <div className="space-y-3">
-                  <div className="bg-white p-3 rounded border-l-4 border-blue-500">
-                    <strong>Δ &lt; 0 :</strong> aucune racine réelle
-                  </div>
-                  <div className="bg-white p-3 rounded border-l-4 border-blue-600">
-                    <strong>Δ = 0 :</strong> racine double x₀ = -b/(2a)
-                  </div>
-                  <div className="bg-white p-3 rounded border-l-4 border-blue-700">
-                    <strong>Δ &gt; 0 :</strong> deux racines réelles distinctes
-                  </div>
-                </div>
-
-                <div className="bg-white p-4 rounded border-2 border-blue-300 text-center mt-4">
-                  <LatexRenderer latex="x_{1,2} = \\frac{-b \\pm \\sqrt{\\Delta}}{2a}" className="text-lg text-blue-900 font-semibold" block={true} />
-                </div>
-              </div>
+            <div className="space-y-4">
+              <p>Un réel <LatexRenderer latex={"r"} /> est une racine de <LatexRenderer latex={"P"} /> si <LatexRenderer latex={"P(r) = 0"} />, équivalemment si <LatexRenderer latex={"x - r"} /> divise <LatexRenderer latex={"P"} />.</p>
+              <p>Un polynôme non nul de degré <LatexRenderer latex={"n"} /> possède au plus <LatexRenderer latex={"n"} /> racines réelles.</p>
+              <p>S'il en a <LatexRenderer latex={"n"} /> distinctes <LatexRenderer latex={"r_1, \\dots, r_n"} />, alors <LatexRenderer latex={"\\prod\\limits_{i=1}^n (x - r_i)"} /> divise <LatexRenderer latex={"P"} />.</p>
             </div>
+          </div>
 
-            {/* 5.2 Signe du trinôme */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Signe du trinôme</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-white p-4 rounded border-l-4 border-blue-500">
-                  <strong>Si Δ ≤ 0 :</strong><br/>
-                  Signe constant = signe de a
-                </div>
-                <div className="bg-white p-4 rounded border-l-4 border-blue-600">
-                  <strong>Si Δ &gt; 0 :</strong><br/>
-                  Signe de a en dehors de [x₁,x₂], signe de -a à l'intérieur
-                </div>
-              </div>
+          {/* Définition : Racine multiple */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-xl font-bold mb-4 text-blue-700 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+              Définition : Racine multiple
+            </h2>
+            <p>On dit que <LatexRenderer latex={"r"} /> est une racine d'ordre <LatexRenderer latex={"m \\geq 1"} /> de <LatexRenderer latex={"P"} /> si <LatexRenderer latex={"(x - r)^m"} /> divise <LatexRenderer latex={"P"} /> tandis que <LatexRenderer latex={"(x - r)^{m+1}"} /> ne le divise pas.</p>
+          </div>
+
+          {/* Théorème : Factorisation */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
+              Théorème : Factorisation
+            </h2>
+            <p>Tout polynôme réel se factorise en produit de polynômes de degré 1 et de polynômes quadratiques sans racine réelle.</p>
+          </div>
+
+          {/* Définition : Trinôme et discriminant */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-xl font-bold mb-4 text-blue-700 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+              Définition : Trinôme et discriminant
+            </h2>
+            <div className="space-y-4">
+              <p>Pour <LatexRenderer latex={"P(x) = a x^2 + b x + c"} /> (<LatexRenderer latex={"a \\neq 0"} />), on pose <LatexRenderer latex={"\\Delta = b^2 - 4ac"} />.</p>
+              <ul className="list-disc list-inside space-y-2 ml-4">
+                <li><LatexRenderer latex={"\\Delta < 0"} /> : aucune racine réelle.</li>
+                <li><LatexRenderer latex={"\\Delta = 0"} /> : racine double <LatexRenderer latex={"x_0 = -\\frac{b}{2a}"} /> et <LatexRenderer latex={"P(x) = a (x - x_0)^2"} />.</li>
+                <li><LatexRenderer latex={"\\Delta > 0"} /> : racines <LatexRenderer latex={"x_1 = \\frac{-b - \\sqrt{\\Delta}}{2a}"} /> et <LatexRenderer latex={"x_2 = \\frac{-b + \\sqrt{\\Delta}}{2a}"} />, <LatexRenderer latex={"P(x) = a (x - x_1)(x - x_2)"} />.</li>
+              </ul>
             </div>
+          </div>
 
-            {/* 5.3 Relations racines-coefficients */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Relations racines-coefficients</h3>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <p className="text-blue-800 mb-3">Si x₁, x₂ sont racines de ax² + bx + c :</p>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
-                    <strong className="text-blue-900">
-                      x₁ + x₂ = -b/a
-                    </strong>
-                  </div>
-                  <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
-                    <strong className="text-blue-900">
-                      x₁ × x₂ = c/a
-                    </strong>
-                  </div>
-                </div>
+          {/* Théorème : Signe du trinôme */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
+              Théorème : Signe du trinôme
+            </h2>
+            <ul className="list-disc list-inside space-y-2 ml-4">
+              <li>Si <LatexRenderer latex={"\\Delta \\leq 0"} />, le signe de <LatexRenderer latex={"P"} /> est celui de <LatexRenderer latex={"a"} /> pour tout <LatexRenderer latex={"x"} />.</li>
+              <li>Si <LatexRenderer latex={"\\Delta > 0"} />, le signe est celui de <LatexRenderer latex={"a"} /> en dehors de <LatexRenderer latex={"[x_1, x_2]"} /> et celui de <LatexRenderer latex={"-a"} /> entre <LatexRenderer latex={"x_1"} /> et <LatexRenderer latex={"x_2"} />.</li>
+            </ul>
+          </div>
+
+          {/* Théorème : Relations entre racines et coefficients */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
+              Théorème : Relations entre racines et coefficients
+            </h2>
+            <div className="space-y-4">
+              <p>Lorsque <LatexRenderer latex={"\\Delta \\geq 0"} /> et <LatexRenderer latex={"x_1, x_2"} /> sont les racines de <LatexRenderer latex={"a x^2 + b x + c"} /> :</p>
+              <div className="text-center bg-orange-50 p-4 rounded border-2 border-orange-300">
+                <LatexRenderer latex={"\\boxed{x_1 + x_2 = -\\frac{b}{a}, \\qquad x_1 x_2 = \\frac{c}{a}}"} />
               </div>
             </div>
           </div>
 
-          {/* Section 6: Binôme de Newton */}
+          {/* Formule du binôme de Newton */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
-              6. Binôme de Newton
+            <h2 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
+              Formule du binôme de Newton
             </h2>
-
-            <div className="bg-blue-50 p-4 rounded-lg mb-4">
-              <div className="bg-white p-4 rounded border-2 border-blue-300 text-center mb-4">
-                <LatexRenderer latex="(a+b)^n = \\sum_{k=0}^n \\binom{n}{k} a^k b^{n-k}" className="text-lg text-blue-900 font-semibold" block={true} />
-              </div>
-              
-              <div className="bg-white p-4 rounded border-l-4 border-blue-500">
-                <p className="text-blue-800">
-                  <strong>Cas particulier a = b = 1 :</strong>
-                </p>
-                <div className="text-center mt-2">
-                  <LatexRenderer latex="\\sum_{k=0}^n \\binom{n}{k} = 2^n" className="text-blue-900 font-semibold" block={true} />
-                </div>
+            <div className="space-y-4">
+              <p>Pour tous réels <LatexRenderer latex={"(a,b)"} /> et tout entier <LatexRenderer latex={"n \\geq 0"} /> :</p>
+              <div className="text-center bg-orange-50 p-4 rounded">
+                <LatexRenderer latex={"(a+b)^n = \\sum\\limits_{k=0}^n \\binom{n}{k} a^k b^{n-k} = \\sum\\limits_{k=0}^n \\binom{n}{k} a^{n-k} b^k"} />
               </div>
             </div>
           </div>
 
-          {/* Section 7: Algorithme de la dichotomie */}
+          {/* Nombre de parties d'un ensemble */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-xl font-bold mb-4 text-blue-700 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+              Nombre de parties d'un ensemble
+            </h2>
+            <div className="space-y-4">
+              <p>En posant <LatexRenderer latex={"a = b = 1"} /> dans l'identité précédente, on obtient :</p>
+              <div className="text-center bg-blue-50 p-4 rounded">
+                <LatexRenderer latex={"\\sum\\limits_{k=0}^n \\binom{n}{k} = 2^n"} />
+              </div>
+            </div>
+          </div>
+
+          {/* Section : Algorithme de la dichotomie */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
-              7. Algorithme de la dichotomie
+              Algorithme de la dichotomie
             </h2>
 
-            {/* 7.1 Principe */}
+            {/* Principe */}
             <div className="mb-8">
               <h3 className="text-xl font-semibold mb-4 text-blue-900">Principe</h3>
               <div className="bg-blue-50 p-4 rounded-lg">
                 <p className="text-blue-800 mb-3">
-                  Soit f continue sur [a,b] avec f(a)f(b) &lt; 0.
+                  Soit <LatexRenderer latex="f" /> continue sur <LatexRenderer latex="[a, b]" /> avec <LatexRenderer latex="f(a) \\cdot f(b) < 0" />.
                 </p>
                 <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
                   <strong className="text-blue-900">
-                    Alors ∃c ∈ [a,b] tel que f(c) = 0
+                    Alors <LatexRenderer latex="\\exists c \\in [a, b]" /> tel que <LatexRenderer latex="f(c) = 0" />
                   </strong>
                 </div>
                 <p className="text-blue-700 text-sm mt-2">
@@ -364,22 +315,22 @@ const OteriaPolynomesApproximationCoursPage = () => {
               </div>
             </div>
 
-            {/* 7.2 Méthode */}
+            {/* Méthode */}
             <div className="mb-8">
               <h3 className="text-xl font-semibold mb-4 text-blue-900">Méthode</h3>
               <div className="bg-blue-50 p-4 rounded-lg">
                 <div className="space-y-3">
                   <div className="bg-white p-3 rounded border-l-4 border-blue-500">
-                    <strong>1.</strong> On part d'un intervalle [a,b] avec f(a)f(b) &lt; 0
+                    <strong>1.</strong> On part d'un intervalle <LatexRenderer latex="[a, b]" /> avec <LatexRenderer latex="f(a) \\cdot f(b) < 0" />
                   </div>
                   <div className="bg-white p-3 rounded border-l-4 border-blue-600">
-                    <strong>2.</strong> On calcule m = (a+b)/2
+                    <strong>2.</strong> On calcule <LatexRenderer latex="m = \\frac{a + b}{2}" />
                   </div>
                   <div className="bg-white p-3 rounded border-l-4 border-blue-700">
-                    <strong>3.</strong> Si f(m) = 0, la racine est trouvée
+                    <strong>3.</strong> Si <LatexRenderer latex="f(m) = 0" />, la racine est trouvée
                   </div>
                   <div className="bg-white p-3 rounded border-l-4 border-blue-800">
-                    <strong>4.</strong> Sinon, on remplace [a,b] par [a,m] ou [m,b] selon le signe
+                    <strong>4.</strong> Sinon, on remplace <LatexRenderer latex="[a, b]" /> par <LatexRenderer latex="[a, m]" /> ou <LatexRenderer latex="[m, b]" /> selon le signe
                   </div>
                   <div className="bg-white p-3 rounded border-l-4 border-blue-500">
                     <strong>5.</strong> On répète jusqu'à la précision voulue
@@ -387,51 +338,47 @@ const OteriaPolynomesApproximationCoursPage = () => {
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Section 8: Cas pratique */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
-              8. Cas pratique
-            </h2>
-
-            <div className="bg-blue-50 p-4 rounded-lg">
-              <div className="text-center mb-4">
-                <h4 className="font-bold text-blue-900 mb-3">Exemple pratique</h4>
-                <p className="text-blue-800 mb-3">Trouver une racine de :</p>
-                <LatexRenderer latex="P(x) = x^3 - 2 \\text{ dans } [1,2]" className="text-lg text-blue-900 font-semibold" block={true} />
-              </div>
-              
-              <div className="space-y-4">
-                <div className="bg-white p-4 rounded border-2 border-blue-300">
-                  <div className="grid md:grid-cols-2 gap-4 text-center">
-                    <div>
-                      <LatexRenderer latex="P(1) = -1 < 0" className="text-blue-900 font-semibold" />
-                    </div>
-                    <div>
-                      <LatexRenderer latex="P(2) = 6 > 0" className="text-blue-900 font-semibold" />
+            {/* Exemple pratique */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold mb-4 text-blue-900">Exemple pratique</h3>
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <div className="text-center mb-4">
+                  <p className="text-blue-800 mb-3">Trouver une racine de :</p>
+                  <LatexRenderer latex="P(x) = x^3 - 2 \\quad \\text{dans } [1, 2]" className="text-lg text-blue-900 font-semibold" block={true} />
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="bg-white p-4 rounded border-2 border-blue-300">
+                    <div className="grid md:grid-cols-2 gap-4 text-center">
+                      <div>
+                        <LatexRenderer latex="P(1) = -1 < 0" className="text-blue-900 font-semibold" />
+                      </div>
+                      <div>
+                        <LatexRenderer latex="P(2) = 6 > 0" className="text-blue-900 font-semibold" />
+                      </div>
                     </div>
                   </div>
-                </div>
-                
-                <div className="bg-white p-3 rounded border-l-4 border-blue-600">
-                  <strong>Conclusion :</strong> Il existe une racine dans [1,2]
-                </div>
-                
-                <div className="bg-white p-3 rounded border-l-4 border-blue-700">
-                  <p className="text-blue-800">
-                    On applique la méthode en divisant l'intervalle jusqu'à obtenir une approximation de <LatexRenderer latex="\\sqrt[3]{2}" />.
-                  </p>
-                </div>
+                  
+                  <div className="bg-white p-3 rounded border-l-4 border-blue-600">
+                    <strong>Conclusion :</strong> Il existe une racine dans [1,2]
+                  </div>
+                  
+                  <div className="bg-white p-3 rounded border-l-4 border-blue-700">
+                    <p className="text-blue-800">
+                      On applique la méthode en divisant l'intervalle jusqu'à obtenir une approximation de <LatexRenderer latex="\\sqrt[3]{2}" />.
+                    </p>
+                  </div>
 
-                <div className="bg-white p-4 rounded border-2 border-blue-300">
-                  <h5 className="font-semibold text-blue-900 mb-2">Étapes de l'algorithme :</h5>
-                  <div className="space-y-2 text-sm">
-                    <div>m₁ = 1.5, P(1.5) = 1.375 &gt; 0 → [1, 1.5]</div>
-                    <div>m₂ = 1.25, P(1.25) ≈ -0.047 &lt; 0 → [1.25, 1.5]</div>
-                    <div>m₃ = 1.375, P(1.375) ≈ 0.599 &gt; 0 → [1.25, 1.375]</div>
-                    <div>...</div>
-                    <div className="font-semibold">Convergence vers <LatexRenderer latex="\\sqrt[3]{2} \\approx 1.2599" /></div>
+                  <div className="bg-white p-4 rounded border-2 border-blue-300">
+                    <h5 className="font-semibold text-blue-900 mb-2">Étapes de l'algorithme :</h5>
+                    <div className="space-y-2 text-sm">
+                      <div><LatexRenderer latex="m_1 = 1.5, \\quad P(1.5) = 1.375 > 0 \\quad \\Rightarrow [1, 1.5]" /></div>
+                      <div><LatexRenderer latex="m_2 = 1.25, \\quad P(1.25) \\approx -0.047 < 0 \\quad \\Rightarrow [1.25, 1.5]" /></div>
+                      <div><LatexRenderer latex="m_3 = 1.375, \\quad P(1.375) \\approx 0.599 > 0 \\quad \\Rightarrow [1.25, 1.375]" /></div>
+                      <div>...</div>
+                      <div className="font-semibold">Convergence vers <LatexRenderer latex="\\sqrt[3]{2} \\approx 1.2599" /></div>
+                    </div>
                   </div>
                 </div>
               </div>

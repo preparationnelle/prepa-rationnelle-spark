@@ -143,13 +143,14 @@ const oteriaSessions = [
   {
     id: 13,
     title: "Mini-projet – ateliers & répétitions",
-    content: "Travail en groupe : finalisation code, tests, slides",
+    content: "conseils à venir",
     icon: Code2,
     color: "bg-teal-600",
-    hasCourse: true,
-    hasExercises: true,
-    hasQuiz: true,
-    hasFlashcards: true
+    hasCourse: false,
+    hasExercises: false,
+    hasQuiz: false,
+    hasFlashcards: false,
+    hasMiniProjet: true
   },
   {
     id: 14,
@@ -221,6 +222,13 @@ const SessionCard = ({ session }) => {
               </Link>
             ) : session.id === 6 ? (
               <Link to="/formation/oteria/polynomes-approximation-cours" className="w-full">
+                <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Cours
+                </Button>
+              </Link>
+            ) : session.id === 10 ? (
+              <Link to="/formation/oteria/integrales-monte-carlo-cours" className="w-full">
                 <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
                   <BookOpen className="mr-2 h-4 w-4" />
                   Cours
@@ -327,6 +335,22 @@ const SessionCard = ({ session }) => {
               <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
                 <TargetIcon className="mr-2 h-4 w-4" />
                 QCM
+              </Button>
+            )
+          )}
+
+          {session.hasMiniProjet && (
+            session.id === 13 ? (
+              <Link to="/formation/oteria/mini-projet">
+                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
+                  <Code2 className="mr-2 h-4 w-4" />
+                  Mini Projet
+                </Button>
+              </Link>
+            ) : (
+              <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
+                <Code2 className="mr-2 h-4 w-4" />
+                Mini Projet
               </Button>
             )
           )}
