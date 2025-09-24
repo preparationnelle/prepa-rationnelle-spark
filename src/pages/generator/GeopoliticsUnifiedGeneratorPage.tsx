@@ -39,7 +39,7 @@ const GeopoliticsUnifiedGeneratorPage = () => {
       if (!article.trim() || !notion.trim()) {
         toast({
           title: "Erreur",
-          description: "Veuillez remplir tous les champs pour l'étude de cas",
+          description: "Veuillez remplir tous les champs pour le thème central",
           variant: "destructive",
         });
         return;
@@ -121,7 +121,6 @@ const GeopoliticsUnifiedGeneratorPage = () => {
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <div className="h-3 w-3">🏠</div>
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
@@ -249,7 +248,7 @@ const GeopoliticsUnifiedGeneratorPage = () => {
                         ) : (
                           <>
                             <Sparkles className="h-4 w-4 mr-2" />
-                            Générer l'étude de cas
+                            Générer le thème central
                           </>
                         )}
                       </Button>
@@ -267,7 +266,7 @@ const GeopoliticsUnifiedGeneratorPage = () => {
                   <Alert className="border border-blue-200 bg-blue-50 rounded-lg">
                     <Info className="h-4 w-4 text-blue-600" />
                     <AlertDescription className="text-blue-800 text-sm italic">
-                      Entrez l'URL d'un article d'actualité ou collez directement le texte, puis précisez le thème géopolitique à analyser. L'IA générera une étude de cas structurée avec contexte, chiffres clés, sujets de dissertation et analyse des acteurs.
+                      Entrez l'URL d'un article d'actualité ou collez directement le texte, puis précisez le thème géopolitique à analyser. L'IA générera un thème central structuré avec contexte, chiffres clés, sujets de dissertation et analyse des acteurs.
                     </AlertDescription>
                   </Alert>
                 </CardContent>

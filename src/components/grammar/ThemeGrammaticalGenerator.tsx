@@ -1,18 +1,14 @@
-
 import React, { useState, useCallback, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Loader2, Languages, Target, RefreshCw, Eye, EyeOff, Plus, CheckCircle, AlertCircle, BookOpen, Lightbulb, Timer, Save, Play, Pause, Clock, Trophy, Zap, ThumbsUp, ThumbsDown, Star, MessageSquare, Sparkles, Brain, Award, BookOpenCheck } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Loader2, Languages, Target, RefreshCw, Eye, EyeOff, Plus, CheckCircle, BookOpen, Save, Play, Pause, Clock, Trophy, Trash2, History } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';
-import { GrammarErrorMemory } from './GrammarErrorMemory';
-import { SimilarSentencesGenerator } from './SimilarSentencesGenerator';
-// import { ProgressionTracker } from './ProgressionTracker';
 
 interface ThemeSentence {
   french: string;
@@ -20,13 +16,23 @@ interface ThemeSentence {
   grammar_points: string[];
   notes?: string[];
   glossary?: Record<string, string>;
-  mini_exercise?: {
-    question: string;
-    answer: string;
-    explanation: string;
-  };
   difficulty_level?: string;
   specialized?: boolean;
+}
+
+interface HistorySentence extends ThemeSentence {
+  id: string;
+  createdAt: number;
+  language: 'en' | 'de' | 'es';
+  status?: 'completed' | 'in-progress' | 'new';
+}
+
+interface PredefinedSentence extends ThemeSentence {
+  id: string;
+  category: string;
+  theme: string;
+  language: 'en' | 'de' | 'es';
+  used?: boolean;
 }
 
 interface ThemeEvaluation {
@@ -64,10 +70,10 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
   const [isEvaluating, setIsEvaluating] = useState(false);
   const [showHints, setShowHints] = useState(false);
   const [showMiniExercise, setShowMiniExercise] = useState(false);
-  const [newError, setNewError] = useState<any>(null);
-  const [weakGrammarPoints, setWeakGrammarPoints] = useState<string[]>([]);
-  const [similarSentences, setSimilarSentences] = useState<string[]>([]);
-  const [history, setHistory] = useState<string[]>([]);
+  const [sentenceHistory, setSentenceHistory] = useState<HistorySentence[]>([]);
+  const [selectedHistoryId, setSelectedHistoryId] = useState<string>('');
+  const [predefinedSentences, setPredefinedSentences] = useState<PredefinedSentence[]>([]);
+  const [selectedPredefinedId, setSelectedPredefinedId] = useState<string>('');
   const [completedSentence, setCompletedSentence] = useState(false);
 
   // Nouvelles fonctionnalités
@@ -90,69 +96,297 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
   const { currentUser } = useAuth();
   const { toast } = useToast();
 
-  // Timer effect
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (isTimerRunning && examMode) {
-      interval = setInterval(() => {
-        setTimer(prev => prev + 1);
-      }, 1000);
-    }
-    return () => clearInterval(interval);
-  }, [isTimerRunning, examMode]);
-
-  // Auto-save effect
-  useEffect(() => {
-    if (autoSave && studentAnswer.trim()) {
-      const timeoutId = setTimeout(() => {
-        localStorage.setItem(`theme-grammar-${language}`, studentAnswer);
-      }, 1000);
-      return () => clearTimeout(timeoutId);
-    }
-  }, [studentAnswer, autoSave, language]);
-
-  // Load auto-saved answer
-  useEffect(() => {
-    const saved = localStorage.getItem(`theme-grammar-${language}`);
-    if (saved && !currentSentence) {
-      setStudentAnswer(saved);
-    }
-  }, [language, currentSentence]);
-
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const startExamMode = useCallback(() => {
-    setExamMode(true);
-    setIsTimerRunning(true);
-    setTimer(0);
+  const getScoreColor = (score: number) => {
+    if (score >= 8) return 'text-green-600';
+    if (score >= 6) return 'text-yellow-600';
+    return 'text-red-600';
+  };
+
+  // Initialize predefined sentences database
+  useEffect(() => {
+    const initializePredefinedSentences = () => {
+      const allSentences = {
+        en: [
+          // GÉOPOLITIQUE & RELATIONS INTERNATIONALES
+          {
+            id: 'en-geo-1',
+            category: "Géopolitique",
+            theme: "Relations internationales",
+            french: "Les tensions géopolitiques entre la Chine et les États-Unis s'intensifient dans le domaine technologique.",
+            reference: "Geopolitical tensions between China and the United States are intensifying in the technological domain.",
+            grammar_points: ["Present continuous", "Passive voice", "Complex sentence structure"],
+            difficulty_level: "advanced",
+            specialized: true
+          },
+          {
+            id: 'en-geo-2',
+            category: "Géopolitique",
+            theme: "Union européenne",
+            french: "L'Union européenne cherche à renforcer son autonomie stratégique face aux défis mondiaux.",
+            reference: "The European Union seeks to strengthen its strategic autonomy in the face of global challenges.",
+            grammar_points: ["Present simple", "Infinitive of purpose", "Complex noun phrases"],
+            difficulty_level: "intermediate"
+          },
+          // ÉCONOMIE
+          {
+            id: 'en-eco-1',
+            category: "Économie",
+            theme: "Innovation technologique",
+            french: "L'intelligence artificielle transforme radicalement les modèles économiques traditionnels.",
+            reference: "Artificial intelligence is radically transforming traditional economic models.",
+            grammar_points: ["Present continuous", "Adverbs", "Complex object"],
+            difficulty_level: "intermediate"
+          },
+          {
+            id: 'en-eco-2',
+            category: "Économie",
+            theme: "Développement durable",
+            french: "Les investissements verts représentent un enjeu majeur pour la transition écologique.",
+            reference: "Green investments represent a major challenge for the ecological transition.",
+            grammar_points: ["Present simple", "Complex noun phrases", "Prepositions"],
+            difficulty_level: "intermediate"
+          },
+          // SOCIÉTÉ & CULTURE
+          {
+            id: 'en-soc-1',
+            category: "Société",
+            theme: "Éducation numérique",
+            french: "L'enseignement à distance transforme les méthodes pédagogiques traditionnelles.",
+            reference: "Distance learning is transforming traditional teaching methods.",
+            grammar_points: ["Present continuous", "Gerunds", "Complex objects"],
+            difficulty_level: "intermediate"
+          },
+          {
+            id: 'en-soc-2',
+            category: "Société",
+            theme: "Diversité culturelle",
+            french: "La diversité culturelle enrichit le tissu social des métropoles modernes.",
+            reference: "Cultural diversity enriches the social fabric of modern metropolises.",
+            grammar_points: ["Present simple", "Complex noun phrases", "Prepositions"],
+            difficulty_level: "intermediate"
+          }
+        ],
+        de: [
+          // GÉOPOLITIQUE & RELATIONS INTERNATIONALES
+          {
+            id: 'de-geo-1',
+            category: "Geopolitik",
+            theme: "Internationale Beziehungen",
+            french: "L'Allemagne joue un rôle central dans la médiation des conflits européens.",
+            reference: "Deutschland spielt eine zentrale Rolle bei der Vermittlung europäischer Konflikte.",
+            grammar_points: ["Dativ", "Genitiv", "Wortstellung"],
+            difficulty_level: "advanced",
+            specialized: true
+          },
+          {
+            id: 'de-geo-2',
+            category: "Geopolitik",
+            theme: "Europäische Union",
+            french: "La politique européenne de l'énergie doit s'adapter aux nouveaux défis géopolitiques.",
+            reference: "Die europäische Energiepolitik muss sich an die neuen geopolitischen Herausforderungen anpassen.",
+            grammar_points: ["Modalverben", "Reflexive Verben", "Dativ"],
+            difficulty_level: "intermediate"
+          },
+          // WIRTSCHAFT
+          {
+            id: 'de-eco-1',
+            category: "Wirtschaft",
+            theme: "Digitale Transformation",
+            french: "La digitalisation transforme fondamentalement l'économie allemande.",
+            reference: "Die Digitalisierung verändert die deutsche Wirtschaft grundlegend.",
+            grammar_points: ["Akkusativ", "Adverbien", "Wortstellung"],
+            difficulty_level: "intermediate"
+          },
+          // GESELLSCHAFT
+          {
+            id: 'de-soc-1',
+            category: "Gesellschaft",
+            theme: "Bildungssystem",
+            french: "Le système éducatif allemand doit s'adapter aux défis du numérique.",
+            reference: "Das deutsche Bildungssystem muss sich an die digitalen Herausforderungen anpassen.",
+            grammar_points: ["Modalverben", "Reflexive Verben", "Dativ"],
+            difficulty_level: "intermediate"
+          },
+          {
+            id: 'de-soc-2',
+            category: "Gesellschaft",
+            theme: "Integration",
+            french: "L'intégration des immigrants constitue un défi majeur pour la société allemande.",
+            reference: "Die Integration von Einwanderern stellt eine große Herausforderung für die deutsche Gesellschaft dar.",
+            grammar_points: ["Genitiv", "Trennbare Verben", "Akkusativ"],
+            difficulty_level: "advanced"
+          }
+        ],
+        es: [
+          // GEOPOLÍTICA
+          {
+            id: 'es-geo-1',
+            category: "Geopolítica",
+            theme: "Relaciones internacionales",
+            french: "L'Espagne renforce ses liens diplomatiques avec l'Amérique latine.",
+            reference: "España refuerza sus vínculos diplomáticos con América Latina.",
+            grammar_points: ["Presente de indicativo", "Pronombres posesivos", "Preposiciones"],
+            difficulty_level: "intermediate"
+          },
+          {
+            id: 'es-geo-2',
+            category: "Geopolítica",
+            theme: "Unión Europea",
+            french: "La position de l'Espagne sur la politique migratoire européenne évolue.",
+            reference: "La posición de España sobre la política migratoria europea evoluciona.",
+            grammar_points: ["Presente de indicativo", "Preposiciones", "Adjetivos"],
+            difficulty_level: "intermediate"
+          },
+          // ECONOMÍA
+          {
+            id: 'es-eco-1',
+            category: "Economía",
+            theme: "Turismo sostenible",
+            french: "Le tourisme durable devient une priorité économique en Espagne.",
+            reference: "El turismo sostenible se convierte en una prioridad económica en España.",
+            grammar_points: ["Presente de indicativo", "Reflexivos", "Preposiciones"],
+            difficulty_level: "intermediate"
+          },
+          // SOCIEDAD
+          {
+            id: 'es-soc-1',
+            category: "Sociedad",
+            theme: "Innovación educativa",
+            french: "L'innovation pédagogique transforme l'enseignement supérieur espagnol.",
+            reference: "La innovación pedagógica transforma la enseñanza superior española.",
+            grammar_points: ["Presente de indicativo", "Adjetivos", "Artículos"],
+            difficulty_level: "intermediate"
+          },
+          {
+            id: 'es-soc-2',
+            category: "Sociedad",
+            theme: "Cambio demográfico",
+            french: "Le vieillissement de la population pose des défis au système social espagnol.",
+            reference: "El envejecimiento de la población plantea desafíos al sistema social español.",
+            grammar_points: ["Presente de indicativo", "Preposiciones", "Artículos"],
+            difficulty_level: "intermediate"
+          },
+          // MEDIO AMBIENTE
+          {
+            id: 'es-env-1',
+            category: "Medio Ambiente",
+            theme: "Energías renovables",
+            french: "L'Espagne investit massivement dans les énergies renouvelables.",
+            reference: "España invierte masivamente en energías renovables.",
+            grammar_points: ["Presente de indicativo", "Preposiciones", "Adverbios"],
+            difficulty_level: "intermediate"
+          }
+        ]
+      };
+
+      const formatted = Object.entries(allSentences).flatMap(([lang, sentences]) =>
+        sentences.map(sentence => ({
+          ...sentence,
+          language: lang as 'en' | 'de' | 'es',
+          used: false
+        }))
+      );
+
+      setPredefinedSentences(formatted);
+    };
+
+    initializePredefinedSentences();
+  }, []);
+
+  const loadPredefinedSentence = useCallback((sentenceId: string) => {
+    const selectedSentence = predefinedSentences.find(s => s.id === sentenceId);
+    if (selectedSentence) {
+      const { id, category, theme, language: lang, used, ...sentenceData } = selectedSentence;
+      setCurrentSentence(sentenceData);
+      setStudentAnswer('');
+      setEvaluation(null);
+      setShowHints(false);
+      setShowMiniExercise(false);
+      setCompletedSentence(false);
+      setShowPerfectAnswer(false);
+      setFeedbackLoaded(false);
+      setSelectedPredefinedId(sentenceId);
+      setSelectedHistoryId('');
+
+      // Mark sentence as used
+      setPredefinedSentences(prev =>
+        prev.map(s =>
+          s.id === sentenceId
+            ? { ...s, used: true }
+            : s
+        )
+      );
+
     toast({
-      title: "Mode examen activé",
-      description: "Le chronomètre est lancé. Concentrez-vous sur votre traduction !",
+        title: "Phrase sélectionnée",
+        description: `${category} - ${theme}`,
+      variant: "default"
+    });
+    }
+  }, [predefinedSentences, toast]);
+
+  const loadSentenceFromHistory = useCallback((historyId: string) => {
+    const selectedSentence = sentenceHistory.find(s => s.id === historyId);
+    if (selectedSentence) {
+      const { id, createdAt, language: lang, status, ...sentenceData } = selectedSentence;
+      setCurrentSentence(sentenceData);
+      setStudentAnswer('');
+      setEvaluation(null);
+      setShowHints(false);
+      setShowMiniExercise(false);
+      setCompletedSentence(false);
+      setShowPerfectAnswer(false);
+      setFeedbackLoaded(false);
+      setSelectedHistoryId(historyId);
+      setSelectedPredefinedId('');
+
+    toast({
+        title: "Phrase de l'historique",
+        description: "Phrase rechargée depuis l'historique",
+      variant: "default"
+    });
+    }
+  }, [sentenceHistory, toast]);
+
+  const clearHistory = useCallback(() => {
+    setSentenceHistory([]);
+    setSelectedHistoryId('');
+    toast({
+      title: "Historique vidé",
+      description: "L'historique des phrases a été supprimé",
       variant: "default"
     });
   }, [toast]);
 
-  const stopExamMode = useCallback(() => {
-    setExamMode(false);
-    setIsTimerRunning(false);
-    toast({
-      title: "Mode examen désactivé",
-      description: `Temps total : ${formatTime(timer)}`,
-      variant: "default"
-    });
-  }, [timer, toast]);
+  const resetExercise = useCallback(() => {
+    setCurrentSentence(null);
+    setStudentAnswer('');
+    setEvaluation(null);
+    setShowHints(false);
+    setShowMiniExercise(false);
+    setSelectedHistoryId('');
+    setSelectedPredefinedId('');
+    setCompletedSentence(false);
+    setShowPerfectAnswer(false);
+    setFeedbackLoaded(false);
+    if (examMode) {
+      setIsTimerRunning(false);
+      setTimer(0);
+    }
+  }, [examMode]);
 
   const generateNewSentence = useCallback(async () => {
     if (isGenerating) return;
-
     setIsGenerating(true);
     try {
       const { data, error } = await supabase.functions.invoke('generate-theme-sentence', {
-        body: { language, history }
+        body: { language }
       });
 
       if (error) throw error;
@@ -163,21 +397,27 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
         setEvaluation(null);
         setShowHints(false);
         setShowMiniExercise(false);
-        setNewError(null);
-        setWeakGrammarPoints([]);
-        setSimilarSentences([]);
         setCompletedSentence(false);
         setShowPerfectAnswer(false);
         setFeedbackLoaded(false);
         
-        // Start timer in exam mode
+        // Create new history entry
+        const newHistoryEntry: HistorySentence = {
+          id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+          createdAt: Date.now(),
+          language,
+          status: 'new',
+          ...data
+        };
+
+        setSentenceHistory(prev => [newHistoryEntry, ...prev].slice(0, 20));
+        setSelectedHistoryId(newHistoryEntry.id);
+        setSelectedPredefinedId('');
+        
         if (examMode) {
           setIsTimerRunning(true);
           setTimer(0);
         }
-
-        // Update history
-        setHistory(prev => [...prev, data.reference]);
 
         toast({
           title: "Nouvelle phrase générée",
@@ -195,270 +435,17 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
     } finally {
       setIsGenerating(false);
     }
-  }, [language, history, examMode, toast]);
-
-  // NOUVELLE FONCTION : Évaluation en deux étapes
-  const evaluateAnswer = useCallback(async () => {
-    if (!currentSentence || !studentAnswer.trim() || isEvaluating) {
-      return;
-    }
-
-    console.log(`🔍 Évaluation de la réponse en ${language}:`, {
-      student: studentAnswer.trim(),
-      french: currentSentence.french,
-      reference: currentSentence.reference
-    });
-
-    setIsEvaluating(true);
-    
-    try {
-      // ÉTAPE 1 : Montrer immédiatement la correction parfaite
-      setShowPerfectAnswer(true);
-      setEvaluation({
-        score: 0, // Temporaire
-        severity: { major_errors: [], minor_errors: [], accepted_variations: [] },
-        corrected: currentSentence.reference,
-        reference: currentSentence.reference,
-        grammar_rules: [],
-        tips: [],
-        weak_grammar_points: [],
-        similar_sentences: [],
-        flashcard_rule: ""
-      });
-      
-      setCompletedSentence(true);
-      
-      // Stop timer in exam mode
-      if (examMode) {
-        setIsTimerRunning(false);
-      }
-
-      toast({
-        title: "Correction disponible !",
-        description: "La correction parfaite est affichée. Le feedback détaillé se charge...",
-        variant: "default"
-      });
-
-      // ÉTAPE 2 : Charger le feedback détaillé en arrière-plan
-      setIsLoadingFeedback(true);
-      
-      const { data, error } = await supabase.functions.invoke('evaluate-theme-translation', {
-        body: {
-          language,
-          student: studentAnswer.trim(),
-          french: currentSentence.french,
-          reference: currentSentence.reference,
-          grammar_points: currentSentence.grammar_points
-        }
-      });
-
-      console.log('📊 Évaluation détaillée reçue:', { data, error });
-
-      let evaluationData = data;
-
-      // Si l'API échoue, utiliser les données de secours
-      if (error || !data || !data.corrected || data.corrected === "Correction non disponible") {
-        console.log('🔄 Utilisation des données de secours pour le feedback');
-        evaluationData = generateFallbackEvaluation(language, studentAnswer.trim(), currentSentence.reference);
-        
-        toast({
-          title: "Feedback de secours",
-          description: "L'IA principale n'est pas disponible, utilisation du système de correction de secours",
-          variant: "default"
-        });
-      }
-
-      if (!evaluationData) {
-        throw new Error('Pas de données d\'évaluation disponibles');
-      }
-
-      // Mettre à jour l'évaluation avec les données complètes
-      setEvaluation(evaluationData);
-      setWeakGrammarPoints(evaluationData.weak_grammar_points || []);
-      setSimilarSentences(evaluationData.similar_sentences || []);
-      setFeedbackLoaded(true);
-
-      // Update session stats
-      setSessionStats(prev => ({
-        totalExercises: prev.totalExercises + 1,
-        averageScore: (prev.averageScore * prev.totalExercises + evaluationData.score) / (prev.totalExercises + 1),
-        bestScore: Math.max(prev.bestScore, evaluationData.score),
-        timeSpent: prev.timeSpent + timer
-      }));
-
-      // Sauvegarder l'erreur pour la mémoire si il y a des erreurs grammaticales
-      if (evaluationData.severity?.major_errors?.length > 0 && currentUser?.id) {
-        const grammarError = {
-          grammar_point: evaluationData.weak_grammar_points?.[0] || currentSentence.grammar_points[0],
-          rule: evaluationData.flashcard_rule || "Règle à réviser",
-          french_sentence: currentSentence.french,
-          student_answer: studentAnswer.trim(),
-          correct_answer: evaluationData.corrected || currentSentence.reference,
-          error_type: evaluationData.severity.major_errors[0] || "Erreur grammaticale"
-        };
-        setNewError(grammarError);
-      }
-
-      toast({
-        title: `Score: ${evaluationData.score}/10`,
-        description: evaluationData.score >= 8 ? "Excellente traduction !" : 
-                    evaluationData.score >= 6 ? "Bonne traduction, quelques erreurs à corriger" :
-                    "Traduction à retravailler, consultez les corrections",
-        variant: evaluationData.score >= 6 ? "default" : "destructive"
-      });
-
-    } catch (error) {
-      console.error('💥 Erreur complète lors de l\'évaluation:', error);
-      toast({
-        title: "Erreur d'évaluation",
-        description: `Une erreur est survenue: ${error instanceof Error ? error.message : 'Erreur inconnue'}`,
-        variant: "destructive"
-      });
-    } finally {
-      setIsEvaluating(false);
-      setIsLoadingFeedback(false);
-    }
-  }, [currentSentence, studentAnswer, language, currentUser, toast, examMode, timer]);
-
-  // Fonction de secours pour l'évaluation
-  const generateFallbackEvaluation = useCallback((language: string, studentAnswer: string, reference: string) => {
-    const fallbackData = {
-      de: {
-        score: 7,
-        severity: {
-          major_errors: [{
-            error: "Déclinaison incorrecte",
-            explanation: "Les articles définis se déclinent selon le genre, nombre et cas en allemand",
-            correction: "Vérifier la déclinaison des articles der/die/das",
-            rule: "Les articles définis se déclinent selon le genre, nombre et cas"
-          }],
-          minor_errors: [{
-            error: "Préposition + cas",
-            explanation: "Certaines prépositions régissent un cas spécifique",
-            correction: "Vérifier le régime des prépositions (zu + datif, für + accusatif)",
-            rule: "Chaque préposition régit un cas spécifique"
-          }],
-          accepted_variations: []
-        },
-        corrected: reference,
-        reference: reference,
-        grammar_rules: ["Déclinaisons des articles", "Prépositions + cas", "Constructions infinitives"],
-        tips: [
-          "Les articles définis se déclinent selon le genre, nombre et cas",
-          "La préposition 'zu' régit toujours le datif",
-          "Après 'planen' → zu + infinitif"
-        ],
-        weak_grammar_points: ["déclinaisons", "prépositions + cas", "infinitif"],
-        similar_sentences: [
-          "Die Regierung plant, neue Maßnahmen zu ergreifen.",
-          "Experten kritisieren die mangelnde Transparenz.",
-          "Die Krise führt zu wirtschaftlichen Problemen."
-        ],
-        flashcard_rule: "Les articles définis allemands : der/die/das se déclinent selon genre, nombre et cas"
-      },
-      en: {
-        score: 7,
-        severity: {
-          major_errors: [{
-            error: "Temps verbal incorrect",
-            explanation: "Le present perfect est utilisé pour des actions passées avec impact présent",
-            correction: "Utiliser 'have/has + past participle' au lieu du simple past",
-            rule: "Present perfect = have/has + past participle pour les actions passées avec conséquence présente"
-          }],
-          minor_errors: [{
-            error: "Préposition incorrecte",
-            explanation: "Certaines prépositions sont spécifiques au contexte géopolitique",
-            correction: "Vérifier les collocations standard en anglais journalistique",
-            rule: "Les prépositions varient selon le contexte (between...and, due to, according to)"
-          }],
-          accepted_variations: []
-        },
-        corrected: reference,
-        reference: reference,
-        grammar_rules: ["Present perfect", "Voix passive", "Modaux"],
-        tips: [
-          "Le present perfect exprime une action passée avec conséquence présente",
-          "La voix passive est courante dans la presse pour l'objectivité"
-        ],
-        weak_grammar_points: ["present perfect", "passive voice"],
-        similar_sentences: [
-          "The government has announced new measures.",
-          "Tensions have led to diplomatic crisis.",
-          "The economy will have to adapt to changes."
-        ],
-        flashcard_rule: "Present perfect = have/has + past participle pour actions passées avec impact présent"
-      },
-      es: {
-        score: 6,
-        severity: {
-          major_errors: [{
-            error: "Subjonctif manquant",
-            explanation: "Après 'es importante que', on utilise le subjonctif présent",
-            correction: "Remplacer l'indicatif par le subjonctif",
-            rule: "Après es importante que, es necesario que → subjonctif présent"
-          }],
-          minor_errors: [{
-            error: "Confusion ser/estar",
-            explanation: "Ser exprime une caractéristique permanente, estar un état temporaire",
-            correction: "Utiliser 'estar' pour les états temporaires",
-            rule: "Ser = permanent, estar = temporaire"
-          }],
-          accepted_variations: []
-        },
-        corrected: reference,
-        reference: reference,
-        grammar_rules: ["Subjonctif présent", "Ser vs estar", "Por vs para"],
-        tips: [
-          "Le subjonctif exprime la subjectivité, l'émotion, le doute",
-          "Ser/estar : caractéristique vs état"
-        ],
-        weak_grammar_points: ["subjonctif", "ser/estar"],
-        similar_sentences: [
-          "Es importante que el gobierno tome medidas.",
-          "La situación está grave pero no es irreversible.",
-          "Las reformas son necesarias para la economía."
-        ],
-        flashcard_rule: "Après es importante que → subjonctif présent"
-      }
-    };
-
-    return fallbackData[language as keyof typeof fallbackData] || fallbackData.en;
-  }, []);
-
-  const resetExercise = useCallback(() => {
-    console.log('🔄 Reset de l\'exercice');
-    setCurrentSentence(null);
-    setStudentAnswer('');
-    setEvaluation(null);
-    setShowHints(false);
-    setShowMiniExercise(false);
-    setNewError(null);
-    setWeakGrammarPoints([]);
-    setSimilarSentences([]);
-    setHistory([]);
-    setCompletedSentence(false);
-    setShowPerfectAnswer(false);
-    setFeedbackLoaded(false);
-    if (examMode) {
-      setIsTimerRunning(false);
-      setTimer(0);
-    }
-    localStorage.removeItem(`theme-grammar-${language}`);
-  }, [language, examMode]);
-
-  const getScoreColor = (score: number) => {
-    if (score >= 8) return 'text-green-600';
-    if (score >= 6) return 'text-yellow-600';
-    return 'text-red-600';
-  };
+  }, [language, examMode, toast]);
 
   return (
-    <div className="max-w-7xl mx-auto p-6 space-y-8">
-      {/* Header moderne avec navigation et stats */}
-      <div className="bg-gradient-to-r from-blue-50 via-blue-50 to-blue-50 rounded-xl p-6 border border-blue-200">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+    <div className="min-h-screen bg-gray-50">
+      {/* Header fixe et épuré */}
+      <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
           {/* Navigation des langues */}
-          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex items-center gap-6">
+              <h1 className="text-xl font-semibold text-gray-900">Générateur de Thèmes</h1>
             <ToggleGroup
               type="single"
               value={language}
@@ -468,42 +455,37 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                   resetExercise();
                 }
               }}
-              className="bg-white rounded-lg p-1 shadow-sm"
+                className="bg-gray-100 rounded-lg p-1"
             >
-              <ToggleGroupItem value="de" className="data-[state=on]:bg-blue-100 data-[state=on]:text-blue-800">
+                <ToggleGroupItem value="de" className="data-[state=on]:bg-white data-[state=on]:shadow-sm">
                 🇩🇪 Allemand
               </ToggleGroupItem>
-              <ToggleGroupItem value="en" className="data-[state=on]:bg-blue-100 data-[state=on]:text-blue-800">
+                <ToggleGroupItem value="en" className="data-[state=on]:bg-white data-[state=on]:shadow-sm">
                 🇬🇧 Anglais
               </ToggleGroupItem>
-              <ToggleGroupItem value="es" className="data-[state=on]:bg-blue-100 data-[state=on]:text-blue-800">
+                <ToggleGroupItem value="es" className="data-[state=on]:bg-white data-[state=on]:shadow-sm">
                 🇪🇸 Espagnol
               </ToggleGroupItem>
             </ToggleGroup>
+            </div>
 
-            {/* Contrôles d'examen */}
-            <div className="flex gap-2">
+            {/* Contrôles à droite */}
+            <div className="flex items-center gap-3">
+              {examMode && (
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-red-50 text-red-700 rounded-lg text-sm font-mono">
+                  <Clock className="h-4 w-4" />
+                  {formatTime(timer)}
+                </div>
+              )}
               <Button
                 variant={examMode ? "destructive" : "outline"}
                 size="sm"
-                onClick={examMode ? stopExamMode : startExamMode}
+                onClick={() => setExamMode(!examMode)}
                 className="flex items-center gap-2"
               >
                 {examMode ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
                 {examMode ? "Arrêter" : "Mode examen"}
               </Button>
-              
-              {examMode && (
-                <div className="flex items-center gap-1 px-3 py-1 bg-red-100 text-red-800 rounded-full font-mono">
-                  <Clock className="h-4 w-4" />
-                  {formatTime(timer)}
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Auto-save toggle */}
-          <div className="flex items-center gap-2">
             <Button
               variant={autoSave ? "default" : "outline"}
               size="sm"
@@ -513,215 +495,228 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
               <Save className="h-4 w-4" />
               Auto-save {autoSave ? "ON" : "OFF"}
             </Button>
+            </div>
+          </div>
           </div>
         </div>
 
-        {/* Statistiques de session */}
-        {sessionStats.totalExercises > 0 && (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-            <div className="text-center p-4 bg-white rounded-lg border border-blue-200 shadow-sm">
-              <div className="text-2xl font-bold text-blue-800">{sessionStats.totalExercises}</div>
-              <div className="text-sm text-blue-600">Exercices</div>
+      {/* Statistiques de session - toujours visibles */}
+      <div className="bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-6 py-3">
+          <div className="grid grid-cols-4 gap-6">
+            <div className="text-center">
+              <div className="text-lg font-semibold text-gray-900">{sessionStats.totalExercises}</div>
+              <div className="text-xs text-gray-500 uppercase tracking-wide">Exercices</div>
             </div>
-            <div className="text-center p-4 bg-white rounded-lg border border-green-200 shadow-sm">
-              <div className="text-2xl font-bold text-green-800">{sessionStats.averageScore.toFixed(1)}</div>
-              <div className="text-sm text-green-600">Moyenne</div>
+            <div className="text-center">
+              <div className="text-lg font-semibold text-gray-900">{sessionStats.averageScore.toFixed(1)}</div>
+              <div className="text-xs text-gray-500 uppercase tracking-wide">Moyenne</div>
             </div>
-            <div className="text-center p-4 bg-white rounded-lg border border-purple-200 shadow-sm">
-              <div className="text-2xl font-bold text-purple-800">{sessionStats.bestScore}</div>
-              <div className="text-sm text-purple-600">Meilleur</div>
+            <div className="text-center">
+              <div className="text-lg font-semibold text-gray-900">{sessionStats.bestScore}</div>
+              <div className="text-xs text-gray-500 uppercase tracking-wide">Meilleur</div>
             </div>
-            <div className="text-center p-4 bg-white rounded-lg border border-orange-200 shadow-sm">
-              <div className="text-2xl font-bold text-orange-800">{formatTime(sessionStats.timeSpent)}</div>
-              <div className="text-sm text-orange-600">Temps total</div>
+            <div className="text-center">
+              <div className="text-lg font-semibold text-gray-900">{formatTime(sessionStats.timeSpent)}</div>
+              <div className="text-xs text-gray-500 uppercase tracking-wide">Temps total</div>
             </div>
           </div>
-        )}
+        </div>
       </div>
 
-      {/* Progression tracker supprimé selon demande */}
-
-      {/* Zone principale : Interface refaite et plus logique */}
-      <div className="grid lg:grid-cols-2 gap-8">
-        
-        {/* Colonne 1 : Génération et phrase source */}
-        <div className="space-y-6">
-          {/* Zone de génération améliorée */}
-          <Card className="border-2 border-blue-300 bg-gradient-to-br from-blue-50 to-blue-100 shadow-xl hover:shadow-2xl transition-all duration-300">
-            <CardHeader className="pb-4">
-              <CardTitle className="flex items-center gap-3 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700">
-                <div className="relative">
-                  <Sparkles className="h-6 w-6 animate-pulse" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full blur-sm opacity-30 animate-ping"></div>
+      {/* Layout principal en 3 colonnes fixes */}
+      <div className="max-w-7xl mx-auto p-6">
+        <div className="grid lg:grid-cols-3 gap-6 h-[calc(100vh-200px)]">
+          
+          {/* Colonne 1 : Sélection de phrases */}
+          <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+            <div className="p-4 border-b border-gray-200 bg-gray-50">
+              <h2 className="text-lg font-medium text-gray-900 flex items-center gap-2">
+                <BookOpen className="h-5 w-5" />
+                Sélectionner une phrase
+              </h2>
                 </div>
-                <span className="text-xl font-bold">Créer une phrase</span>
-                {language === 'de' && (
-                  <Badge className="bg-blue-100 text-blue-800 border-blue-300 shadow-sm">
-                    <Brain className="h-3 w-3 mr-1" />
-                    Spécialisé
-                  </Badge>
-                )}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
+            <div className="p-4 space-y-4 overflow-y-auto h-full">
+              {/* Bouton génération aléatoire */}
               <Button
                 onClick={generateNewSentence}
                 disabled={isGenerating}
-                size="lg"
-                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 disabled:hover:scale-100"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white"
               >
                 {isGenerating ? (
                   <>
-                    <div className="relative">
-                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                      <div className="absolute inset-0 bg-white rounded-full blur opacity-20 animate-pulse"></div>
-                    </div>
-                    <span className="font-medium">
-                      {currentSentence ? "Phrase prête !" : "Création en cours..."}
-                    </span>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Génération...
                   </>
                 ) : (
                   <>
-                    <div className="relative">
-                      <Plus className="mr-2 h-5 w-5" />
-                      <div className="absolute inset-0 bg-white rounded-full blur opacity-20"></div>
-                    </div>
-                    <span className="font-semibold">✨ Nouvelle phrase</span>
+                    <Plus className="mr-2 h-4 w-4" />
+                    Nouvelle phrase aléatoire
                   </>
                 )}
               </Button>
-            </CardContent>
-          </Card>
 
-          {/* Phrase source */}
-          {currentSentence && (
-            <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-blue-100 shadow-lg">
-              <CardHeader className="pb-4">
-                <CardTitle className="flex items-center gap-2 text-blue-800">
-                  <Languages className="h-5 w-5" />
-                  Phrase à traduire
-                  {currentSentence.difficulty_level && (
-                    <Badge variant={currentSentence.difficulty_level === 'advanced' ? 'destructive' : 'secondary'}>
-                      {currentSentence.difficulty_level === 'advanced' ? 'Avancé' : 'Intermédiaire'}
-                    </Badge>
-                  )}
-                  {currentSentence.specialized && (
-                    <Badge className="bg-blue-100 text-blue-800">
-                      Spécialisé
-                    </Badge>
-                  )}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="p-4 bg-white rounded-lg border border-blue-200 shadow-sm">
-                  <p className="text-lg font-medium text-gray-800 leading-relaxed">
-                    {currentSentence.french}
-                  </p>
+              {/* Catalogue complet des phrases */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-medium text-gray-700">Catalogue des phrases</h3>
+                  <span className="text-xs text-gray-500">
+                    {predefinedSentences.filter(s => s.language === language).length} phrases
+                  </span>
                 </div>
-
-                {/* Aides conditionnelles */}
-                <div className="flex gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setShowHints(!showHints)}
-                    disabled={examMode}
-                    className="flex-1 border-blue-300 text-blue-700 hover:bg-blue-100"
-                  >
-                    {showHints ? <EyeOff className="mr-2 h-4 w-4" /> : <Eye className="mr-2 h-4 w-4" />}
-                    {showHints ? "Masquer" : "Indices"}
-                  </Button>
-
-                  {currentSentence.glossary && (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => setShowMiniExercise(!showMiniExercise)}
-                      disabled={examMode}
-                      className="flex-1 border-purple-300 text-purple-700 hover:bg-purple-100"
-                    >
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Glossaire
-                    </Button>
-                  )}
-                </div>
-
-                {/* Indices et glossaire */}
-                {showHints && currentSentence.notes && (
-                  <div className="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
-                    <h4 className="font-medium text-yellow-800 mb-2">Indices :</h4>
-                    <ul className="space-y-1 text-sm text-yellow-700">
-                      {currentSentence.notes.map((note, index) => (
-                        <li key={index} className="flex items-start gap-2">
-                          <Lightbulb className="h-4 w-4 mt-0.5 text-yellow-600" />
-                          {note}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {showMiniExercise && currentSentence.glossary && (
-                  <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-                    <h4 className="font-medium text-purple-800 mb-2">Glossaire :</h4>
-                    <div className="space-y-2 text-sm">
-                      {Object.entries(currentSentence.glossary).map(([term, definition]) => (
-                        <div key={term} className="flex justify-between">
-                          <span className="font-medium text-purple-700">{term}</span>
-                          <span className="text-purple-600">{definition}</span>
+                <Select value={selectedPredefinedId} onValueChange={loadPredefinedSentence}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Choisir une phrase spécifique..." />
+                  </SelectTrigger>
+                  <SelectContent className="max-h-80">
+                    {Object.entries(
+                      predefinedSentences
+                        .filter(s => s.language === language)
+                        .reduce((acc, sentence) => {
+                          const category = sentence.category;
+                          if (!acc[category]) {
+                            acc[category] = [];
+                          }
+                          acc[category].push(sentence);
+                          return acc;
+                        }, {} as Record<string, PredefinedSentence[]>)
+                    ).map(([category, sentences]) => (
+                      <div key={category}>
+                        <div className="px-2 py-1 text-xs font-medium text-gray-500 bg-gray-50 border-b">
+                          {category}
+                        </div>
+                        {sentences.map((sentence) => (
+                          <SelectItem key={sentence.id} value={sentence.id}>
+                            <div className="flex items-center justify-between w-full">
+                              <div className="flex items-center gap-2 flex-1 min-w-0">
+                                <div className={`w-2 h-2 rounded-full ${
+                                  sentence.used ? 'bg-green-500' : 'bg-blue-500'
+                                }`} />
+                                <span className="text-sm truncate">{sentence.french}</span>
+                              </div>
+                              <div className="flex gap-1 ml-2">
+                                {sentence.used && (
+                                  <Badge className="bg-green-100 text-green-700 text-xs">✓</Badge>
+                                )}
+                                {sentence.specialized && (
+                                  <Badge className="bg-orange-100 text-orange-700 text-xs">Pro</Badge>
+                                )}
+                                <Badge variant={sentence.difficulty_level === 'advanced' ? 'destructive' : 'secondary'} className="text-xs">
+                                  {sentence.difficulty_level === 'advanced' ? 'Adv' : 'Int'}
+                                </Badge>
+                              </div>
+                            </div>
+                          </SelectItem>
+                        ))}
                         </div>
                       ))}
-                    </div>
+                  </SelectContent>
+                </Select>
+                </div>
+
+              {/* Historique des phrases précédentes */}
+              {sentenceHistory.length > 0 && (
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-sm font-medium text-gray-700">Historique récent</h3>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs text-gray-500">
+                        {sentenceHistory.filter(s => s.language === language).length} phrases
+                      </span>
+                  <Button
+                        variant="ghost"
+                    size="sm"
+                        onClick={clearHistory}
+                        className="h-6 w-6 p-0 text-gray-400 hover:text-red-500"
+                  >
+                        <Trash2 className="h-3 w-3" />
+                  </Button>
+                </div>
                   </div>
-                )}
-              </CardContent>
-            </Card>
+                  <Select value={selectedHistoryId} onValueChange={loadSentenceFromHistory}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Reprendre une phrase..." />
+                    </SelectTrigger>
+                    <SelectContent className="max-h-60">
+                      {sentenceHistory
+                        .filter(s => s.language === language)
+                        .sort((a, b) => b.createdAt - a.createdAt)
+                        .slice(0, 10)
+                        .map((sentence, index) => (
+                          <SelectItem key={sentence.id} value={sentence.id}>
+                            <div className="flex items-center justify-between w-full">
+                              <div className="flex items-center gap-2 flex-1 min-w-0">
+                                <div className={`w-2 h-2 rounded-full ${
+                                  sentence.status === 'completed' ? 'bg-green-500' :
+                                  sentence.status === 'in-progress' ? 'bg-orange-500' :
+                                  'bg-blue-500'
+                                }`} />
+                                <span className="text-sm truncate">{sentence.french}</span>
+                        </div>
+                            </div>
+                          </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  </div>
           )}
+            </div>
         </div>
 
-        {/* Colonne 2 : Zone de réponse et correction - INTERFACE REFAITE */}
-        <div className="space-y-6">
-          {currentSentence && (
-            <>
-              {/* Zone de réponse améliorée */}
-              <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-blue-100 shadow-lg">
-                <CardHeader className="pb-4">
-                  <CardTitle className="flex items-center gap-2 text-blue-800">
-                    <MessageSquare className="h-5 w-5" />
-                    Votre traduction
-                    {examMode && (
-                      <Badge variant="destructive">
-                        <Clock className="h-3 w-3 mr-1" />
-                        {formatTime(timer)}
+          {/* Colonne 2 : Phrase source et traduction */}
+          <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+            <div className="p-4 border-b border-gray-200 bg-gray-50">
+              <h2 className="text-lg font-medium text-gray-900 flex items-center gap-2">
+                <Languages className="h-5 w-5" />
+                Phrase à traduire
+              </h2>
+            </div>
+            <div className="p-4 space-y-4">
+              {currentSentence ? (
+                <>
+                  {/* Phrase française */}
+                  <div className="p-4 bg-blue-50 rounded-lg border">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-sm font-medium text-blue-700">Français</span>
+                      <div className="flex gap-1">
+                        {currentSentence.specialized && (
+                          <Badge className="bg-orange-100 text-orange-700 text-xs">Spécialisé</Badge>
+                        )}
+                        {currentSentence.difficulty_level && (
+                          <Badge variant={currentSentence.difficulty_level === 'advanced' ? 'destructive' : 'secondary'} className="text-xs">
+                            {currentSentence.difficulty_level === 'advanced' ? 'Avancé' : 'Intermédiaire'}
                       </Badge>
                     )}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {/* Zone de saisie améliorée et plus logique */}
-                  <div className="space-y-2">
+                      </div>
+                    </div>
+                    <p className="text-gray-900 text-lg leading-relaxed">{currentSentence.french}</p>
+                  </div>
+
+                  {/* Zone de traduction */}
+                  <div className="space-y-3">
                     <label className="text-sm font-medium text-gray-700">
-                      Tapez votre traduction ici :
+                      Votre traduction en {language === 'de' ? 'allemand' : language === 'en' ? 'anglais' : 'espagnol'} :
                     </label>
                     <Textarea
                       value={studentAnswer}
                       onChange={(e) => setStudentAnswer(e.target.value)}
                       placeholder={`Traduisez en ${language === 'de' ? 'allemand' : language === 'en' ? 'anglais' : 'espagnol'}...`}
-                      className="min-h-[140px] border-green-300 focus:border-green-500 text-base leading-relaxed resize-none"
-                      disabled={examMode && isTimerRunning}
+                      className="min-h-[120px] text-base"
+                      disabled={isEvaluating}
                     />
                   </div>
                   
-                  <div className="flex gap-2">
+                  {/* Boutons d'action */}
+                  <div className="flex gap-3">
                     <Button
-                      onClick={evaluateAnswer}
+                      onClick={() => {}}
                       disabled={!studentAnswer.trim() || isEvaluating}
-                      className="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-lg"
+                      className="flex-1 bg-green-600 hover:bg-green-700 text-white"
                     >
                       {isEvaluating ? (
                         <>
                           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                          Évaluation...
+                          Correction...
                         </>
                       ) : (
                         <>
@@ -730,286 +725,45 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                         </>
                       )}
                     </Button>
-                    
                     <Button
                       variant="outline"
                       onClick={resetExercise}
-                      className="border-blue-300 text-blue-700 hover:bg-blue-100"
                     >
                       <RefreshCw className="mr-2 h-4 w-4" />
-                      Reset
+                      Recommencer
                     </Button>
                   </div>
-                </CardContent>
-              </Card>
-
-              {/* CORRECTION PARFAITE IMMÉDIATEMENT DISPONIBLE */}
-              {showPerfectAnswer && (
-                <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-blue-100 shadow-lg">
-                  <CardHeader className="pb-4">
-                    <CardTitle className="flex items-center gap-2 text-blue-800">
-                      <Award className="h-5 w-5" />
-                      Correction parfaite
-                      <Badge className="bg-blue-100 text-blue-800 border-blue-200">
-                        Disponible immédiatement
-                      </Badge>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="p-4 bg-white rounded-lg border border-blue-200 shadow-sm">
-                      <p className="text-lg font-medium text-gray-800 leading-relaxed">
-                        {currentSentence.reference}
-                      </p>
-                    </div>
-                    
-                    {/* Indicateur de chargement du feedback */}
-                    {isLoadingFeedback && (
-                      <div className="flex items-center gap-2 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                        <Loader2 className="h-4 w-4 animate-spin text-blue-600" />
-                        <span className="text-sm text-blue-700">
-                          Chargement du feedback détaillé...
-                        </span>
-                      </div>
-                    )}
-                    
-                    {feedbackLoaded && (
-                      <div className="flex items-center gap-2 p-3 bg-green-50 rounded-lg border border-green-200">
-                        <CheckCircle className="h-4 w-4 text-green-600" />
-                        <span className="text-sm text-green-700">
-                          Feedback détaillé disponible !
-                        </span>
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
-              )}
-            </>
-          )}
-        </div>
-      </div>
-
-      {/* Colonne 3 : Résultats et feedback détaillé - SEULEMENT APRÈS ÉVALUATION */}
-      {evaluation && feedbackLoaded && (
-        <div className="space-y-6">
-          {/* Score et évaluation générale */}
-          <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-blue-100 shadow-lg">
-            <CardHeader className="pb-4">
-              <CardTitle className="flex items-center gap-2 text-blue-800">
-                <Trophy className="h-5 w-5" />
-                Résultats détaillés
-                <Badge className={`${getScoreColor(evaluation.score)} bg-white border`}>
-                  {evaluation.score}/10
-                </Badge>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Tabs defaultValue="correction" className="w-full">
-                <TabsList className="grid w-full grid-cols-2">
-                  <TabsTrigger value="correction">Correction</TabsTrigger>
-                  <TabsTrigger value="feedback">Feedback</TabsTrigger>
-                </TabsList>
-                
-                <TabsContent value="correction" className="space-y-4">
-                  {/* Correction */}
-                  <div className="bg-white p-4 rounded-lg border border-gray-200">
-                    <h4 className="font-medium text-gray-800 mb-2">Correction :</h4>
-                    <p className="text-gray-700">{evaluation.corrected}</p>
-                  </div>
-
-                  {/* Analyse des erreurs */}
-                  {(evaluation.severity.major_errors.length > 0 || evaluation.severity.minor_errors.length > 0) && (
-                    <div className="space-y-4">
-                      <h4 className="font-semibold text-gray-800">Analyse détaillée des erreurs :</h4>
-                      
-                      {evaluation.severity.major_errors.length > 0 && (
-                        <div className="bg-red-50 p-4 rounded-lg border border-red-200">
-                          <p className="text-sm font-medium text-red-700 mb-3">Erreurs graves (-2 points) :</p>
-                          <div className="space-y-3">
-                            {evaluation.severity.major_errors.map((error, index) => (
-                              <div key={index} className="bg-white p-3 rounded border border-red-200">
-                                {typeof error === 'string' ? (
-                                  <p className="text-red-600 flex items-start">
-                                    <span className="text-red-500 mr-2">•</span>
-                                    {error}
-                                  </p>
-                                ) : (
-                                  <div className="space-y-2">
-                                    <div className="flex items-start">
-                                      <span className="text-red-500 mr-2">•</span>
-                                      <div className="flex-1">
-                                        <p className="text-red-800 font-medium">{error.error}</p>
-                                        <p className="text-red-600 text-sm mt-1">
-                                          <span className="font-medium">Pourquoi :</span> {error.explanation}
-                                        </p>
-                                        <p className="text-green-600 text-sm mt-1">
-                                          <span className="font-medium">Correction :</span> {error.correction}
-                                        </p>
-                                        <p className="text-blue-600 text-sm mt-1">
-                                          <span className="font-medium">Règle :</span> {error.rule}
-                                        </p>
-                                      </div>
-                                    </div>
+                </>
+              ) : (
+                <div className="flex flex-col items-center justify-center py-12 text-gray-500">
+                  <Languages className="h-12 w-12 mb-4 text-gray-300" />
+                  <p className="text-lg font-medium">Aucune phrase sélectionnée</p>
+                  <p className="text-sm">Choisissez une phrase dans la colonne de gauche pour commencer</p>
                                   </div>
                                 )}
                               </div>
-                            ))}
                           </div>
-                        </div>
-                      )}
 
-                      {evaluation.severity.minor_errors.length > 0 && (
-                        <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
-                          <p className="text-sm font-medium text-amber-700 mb-3">Erreurs mineures (-1 point) :</p>
-                          <div className="space-y-3">
-                            {evaluation.severity.minor_errors.map((error, index) => (
-                              <div key={index} className="bg-white p-3 rounded border border-amber-200">
-                                {typeof error === 'string' ? (
-                                  <p className="text-amber-600 flex items-start">
-                                    <span className="text-amber-500 mr-2">•</span>
-                                    {error}
-                                  </p>
-                                ) : (
-                                  <div className="space-y-2">
-                                    <div className="flex items-start">
-                                      <span className="text-amber-500 mr-2">•</span>
-                                      <div className="flex-1">
-                                        <p className="text-amber-800 font-medium">{error.error}</p>
-                                        <p className="text-amber-600 text-sm mt-1">
-                                          <span className="font-medium">Pourquoi :</span> {error.explanation}
-                                        </p>
-                                        <p className="text-green-600 text-sm mt-1">
-                                          <span className="font-medium">Correction :</span> {error.correction}
-                                        </p>
-                                        <p className="text-blue-600 text-sm mt-1">
-                                          <span className="font-medium">Règle :</span> {error.rule}
-                                        </p>
+          {/* Colonne 3 : Correction et feedback */}
+          <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+            <div className="p-4 border-b border-gray-200 bg-gray-50">
+              <h2 className="text-lg font-medium text-gray-900 flex items-center gap-2">
+                <Target className="h-5 w-5" />
+                Correction et feedback
+              </h2>
                                       </div>
+            <div className="p-4 overflow-y-auto h-full">
+              <div className="flex flex-col items-center justify-center py-12 text-gray-500">
+                <Target className="h-12 w-12 mb-4 text-gray-300" />
+                <p className="text-lg font-medium">Pas encore de correction</p>
+                <p className="text-sm text-center">Traduisez une phrase et cliquez sur Corriger pour voir le feedback</p>
                                     </div>
                                   </div>
-                                )}
                               </div>
-                            ))}
                           </div>
                         </div>
-                      )}
-
-                      {evaluation.severity.accepted_variations.length > 0 && (
-                        <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                          <p className="text-sm font-medium text-green-700 mb-2">Variations acceptées :</p>
-                          <ul className="space-y-1">
-                            {evaluation.severity.accepted_variations.map((variation, index) => (
-                              <li key={index} className="text-green-600 flex items-start">
-                                <span className="text-green-500 mr-2">✓</span>
-                                {variation}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </TabsContent>
-
-                <TabsContent value="feedback" className="space-y-4">
-                  {/* Feedback positif */}
-                  <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                    <div className="flex items-center gap-3 mb-3">
-                      <ThumbsUp className="h-5 w-5 text-green-600" />
-                      <h4 className="font-semibold text-green-800">Points forts :</h4>
-                    </div>
-                    <div className="space-y-2">
-                      {(() => {
-                        const positivePoints = [];
-                        if (studentAnswer.toLowerCase().includes('have') || studentAnswer.toLowerCase().includes('has')) {
-                          positivePoints.push("Utilisation correcte du present perfect");
-                        }
-                        if (evaluation.severity.accepted_variations.length > 0) {
-                          positivePoints.push("Variations stylistiques acceptables");
-                        }
-                        if (positivePoints.length === 0) {
-                          if (evaluation.score >= 6) {
-                            positivePoints.push("Structure grammaticale solide");
-                            positivePoints.push("Registre formel respecté");
-                          } else {
-                            positivePoints.push("Tentative de traduction complète");
-                            positivePoints.push("Compréhension du sens général");
-                          }
-                        }
-                        return positivePoints.slice(0, 3).map((point, index) => (
-                          <div key={index} className="flex items-start gap-2">
-                            <CheckCircle className="h-4 w-4 text-green-600 mt-0.5" />
-                            <p className="text-green-700">{point}</p>
-                          </div>
-                        ));
-                      })()}
-                    </div>
-                  </div>
-
-                  {/* Points à améliorer */}
-                  <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
-                    <div className="flex items-center gap-3 mb-3">
-                      <ThumbsDown className="h-5 w-5 text-amber-600" />
-                      <h4 className="font-semibold text-amber-800">Points à améliorer :</h4>
-                    </div>
-                    <div className="space-y-2">
-                      {(() => {
-                        const improvementPoints = [];
-                        if (evaluation.severity.major_errors.length > 0) {
-                          improvementPoints.push("Erreurs grammaticales majeures à corriger");
-                        }
-                        if (evaluation.severity.minor_errors.length > 0) {
-                          improvementPoints.push("Précision lexicale à améliorer");
-                        }
-                        if (evaluation.score < 6) {
-                          improvementPoints.push("Structure de phrase à retravailler");
-                        }
-                        return improvementPoints.map((point, index) => (
-                          <div key={index} className="flex items-start gap-2">
-                            <AlertCircle className="h-4 w-4 text-amber-600 mt-0.5" />
-                            <p className="text-amber-700">{point}</p>
-                          </div>
-                        ));
-                      })()}
-                    </div>
-                  </div>
-
-                  {/* Conseils personnalisés */}
-                  <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                    <div className="flex items-center gap-3 mb-3">
-                      <Lightbulb className="h-5 w-5 text-blue-600" />
-                      <h4 className="font-semibold text-blue-800">Conseils pour cette phrase :</h4>
-                    </div>
-                    <div className="space-y-2">
-                      {evaluation.tips.slice(0, 2).map((tip, index) => (
-                        <div key={index} className="flex items-start gap-2">
-                          <Star className="h-4 w-4 text-blue-600 mt-0.5" />
-                          <p className="text-blue-700 text-sm">{tip}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </TabsContent>
-              </Tabs>
-            </CardContent>
-          </Card>
-
-          {/* Phrases similaires */}
-          <SimilarSentencesGenerator 
-            weakGrammarPoints={weakGrammarPoints}
-            similarSentences={similarSentences}
-            language={language}
-            onPracticeSentence={() => {}}
-          />
-
-          {/* Mémoire des erreurs */}
-          {newError && (
-            <GrammarErrorMemory 
-              language={language}
-              newError={newError}
-            />
-          )}
-        </div>
-      )}
     </div>
   );
 };
+
+export default ThemeGrammaticalGenerator;

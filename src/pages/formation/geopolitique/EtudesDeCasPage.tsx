@@ -219,7 +219,7 @@ const EtudesDeCasPage = () => {
             Géopolitique
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
-          <span className="text-gray-900 font-medium">Études de cas</span>
+          <span className="text-gray-900 font-medium">Thèmes centraux</span>
         </nav>
 
         {/* Header */}
@@ -227,7 +227,7 @@ const EtudesDeCasPage = () => {
           <div className="flex items-center gap-3 mb-4">
             <FileText className="h-8 w-8 text-gray-600" />
             <h1 className="text-4xl font-bold text-gray-900">
-              Études de cas essentielles
+              Thèmes centraux essentiels
             </h1>
           </div>
           <p className="text-lg text-gray-600 max-w-4xl">
@@ -298,7 +298,7 @@ const EtudesDeCasPage = () => {
                     Contenu structuré pour les concours
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed">
-                    Chaque étude de cas présente les données essentielles, les enjeux géopolitiques, 
+                    Chaque thème central présente les données essentielles, les enjeux géopolitiques, 
                     et les exemples concrets à maîtriser. Sources actualisées 2024-2025 avec 
                     références d'experts (L. Carroué, M. Stock, H. Védrine, etc.).
                   </p>

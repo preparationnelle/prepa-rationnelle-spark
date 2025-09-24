@@ -23,7 +23,6 @@ const FormationsOverviewPage = () => {
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <div className="h-3 w-3">🏠</div>
               <span>Accueil</span>
             </Link>
             <span className="mx-1 text-muted-foreground/50">›</span>
@@ -236,7 +235,7 @@ const FormationsOverviewPage = () => {
                   <div className="space-y-2 mb-4">
                     <div className="text-sm text-orange-600">✓ Première et deuxième année</div>
                     <div className="text-sm text-orange-600">✓ Méthodologie spécialisée</div>
-                    <div className="text-sm text-orange-600">✓ Études de cas concrètes</div>
+                    <div className="text-sm text-orange-600">✓ Thèmes centraux concrets</div>
                   </div>
                   <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full">
                     Voir la formation →

@@ -48,7 +48,7 @@ const MigrationsPage = () => {
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
           <Link to="/formation/geopolitique/etudes-de-cas" className="text-black hover:text-gray-600">
-            Études de cas
+            Thèmes centraux
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
           <span className="text-black">Migrations</span>
@@ -259,7 +259,7 @@ const MigrationsPage = () => {
 
             {/* Section III */}
             <div>
-              <h3 className="text-lg font-semibold text-black mb-4">III. Études de cas encadrées</h3>
+              <h3 className="text-lg font-semibold text-black mb-4">III. Thèmes centraux encadrées</h3>
               <div className="space-y-6">
                 <div className="border-l-4 border-black bg-white p-4 rounded-r-lg border border-gray-400">
                   <h4 className="font-semibold text-black mb-3">

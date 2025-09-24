@@ -34,7 +34,7 @@ const DiscoursIndirectPage = () => {
               Grammaire
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <span className="text-gray-900 font-bold">Discours Indirect</span>
+            <span className="text-gray-900 font-bold">Reported Speech</span>
           </div>
         </div>
       </nav>
@@ -46,10 +46,10 @@ const DiscoursIndirectPage = () => {
             <div className="p-3 rounded-lg bg-orange-600 text-white">
               <BookOpen className="h-9 w-9" />
             </div>
-            Fiche de Grammaire : Le Discours Indirect en Anglais
+            Grammar Sheet: Reported Speech in English
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Le discours indirect (reported speech) permet de rapporter les paroles de quelqu'un sans les citer exactement. Cette fiche couvre les règles de transformation (pronoms, temps, marqueurs temporels/spatiaux), les questions, les ordres/demandes/conseils, les verbes introducteurs, les exceptions et les erreurs courantes.
+            Reported speech allows you to report someone's words without quoting them exactly. This sheet covers transformation rules (pronouns, tenses, time/space markers), questions, orders/requests/advice, reporting verbs, exceptions, and common errors.
           </p>
         </div>
 
@@ -62,29 +62,29 @@ const DiscoursIndirectPage = () => {
             </CardTitle>
           </CardHeader>
           <CardContent className="text-orange-700 space-y-3">
-            <p>Le discours indirect intègre les paroles prononcées dans notre propre énoncé, contrairement au discours direct qui cite mot à mot entre guillemets.</p>
+            <p>Reported speech integrates the spoken words into our own statement, unlike direct speech which quotes word-for-word between quotation marks.</p>
           </CardContent>
         </Card>
 
         {/* Différence direct vs indirect */}
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle className="text-2xl">Différence entre Discours Direct et Indirect</CardTitle>
+            <CardTitle className="text-2xl">Difference between Direct and Reported Speech</CardTitle>
           </CardHeader>
           <CardContent className="grid md:grid-cols-2 gap-6 text-gray-800">
             <div className="bg-white/70 rounded-lg p-4 border border-orange-200">
-              <h3 className="text-lg font-semibold mb-2">Discours Direct</h3>
-              <p><span className="text-orange-700 font-semibold">Structure</span> : Sujet + verbe introducteur + "paroles exactes"</p>
-              <p className="mt-2">Ex : She said, "I am tired."</p>
+              <h3 className="text-lg font-semibold mb-2">Direct Speech</h3>
+              <p><span className="text-orange-700 font-semibold">Structure</span>: Subject + reporting verb + "exact words"</p>
+              <p className="mt-2">Example: She said, "I am tired."</p>
             </div>
             <div className="bg-white/70 rounded-lg p-4 border border-blue-200">
-              <h3 className="text-lg font-semibold mb-2">Discours Indirect</h3>
-              <p><span className="text-orange-700 font-semibold">Structure</span> : Sujet + verbe introducteur + (that) + proposition transformée</p>
-              <p className="mt-2">Ex : She said (that) she was tired.</p>
+              <h3 className="text-lg font-semibold mb-2">Reported Speech</h3>
+              <p><span className="text-orange-700 font-semibold">Structure</span>: Subject + reporting verb + (that) + transformed clause</p>
+              <p className="mt-2">Example: She said (that) she was tired.</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>Suppression des guillemets</li>
-                <li>Ajout possible de <span className="text-orange-700 font-semibold">that</span></li>
-                <li>Changement des temps, pronoms, marqueurs temporels</li>
+                <li>Removal of quotation marks</li>
+                <li>Possible addition of <span className="text-orange-700 font-semibold">that</span></li>
+                <li>Changes in tenses, pronouns, time markers</li>
               </ul>
             </div>
           </CardContent>
@@ -93,12 +93,12 @@ const DiscoursIndirectPage = () => {
         {/* 1. Règles fondamentales */}
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle className="text-2xl">1. Règles Fondamentales de Transformation</CardTitle>
+            <CardTitle className="text-2xl">1. Basic Transformation Rules</CardTitle>
           </CardHeader>
         	<CardContent className="space-y-6">
             <section>
-              <h3 className="text-xl font-semibold mb-2">Règle 1 : Changement de Pronoms</h3>
-              <p>Les pronoms s'adaptent à la perspective du rapporteur.</p>
+              <h3 className="text-xl font-semibold mb-2">Rule 1: Pronoun Changes</h3>
+              <p>Pronouns adapt to the reporter's perspective.</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
                 <li>He said, "I love my car." → He said (that) <span className="text-orange-700 font-semibold">he</span> loved <span className="text-orange-700 font-semibold">his</span> car.</li>
                 <li>She told me, "You are right." → She told me (that) <span className="text-orange-700 font-semibold">I</span> was right.</li>

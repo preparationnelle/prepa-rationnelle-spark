@@ -199,6 +199,102 @@ moyenne = somme / len(nombres)
 print(f"Nombres générés : {nombres}")
 print(f"Somme : {somme}")
 print(f"Moyenne : {moyenne:.2f}")`
+    },
+    {
+      id: 11,
+      title: "Résolution d'équation du 2ᵉ degré",
+      difficulty: "Moyen",
+      description: "Résoudre ax² + bx + c = 0 en utilisant le discriminant.",
+      solution: `# Exercice 11 : Résolution d'équation du 2ᵉ degré
+import math
+
+a = float(input("a = "))
+b = float(input("b = "))
+c = float(input("c = "))
+
+delta = b**2 - 4*a*c
+
+if delta < 0:
+    print("Pas de solution réelle")
+elif delta == 0:
+    x = -b / (2*a)
+    print("Solution unique :", x)
+else:
+    x1 = (-b - math.sqrt(delta)) / (2*a)
+    x2 = (-b + math.sqrt(delta)) / (2*a)
+    print("Deux solutions :", x1, "et", x2)`
+    },
+    {
+      id: 12,
+      title: "Suite de Fibonacci",
+      difficulty: "Facile",
+      description: "Afficher les n premiers termes de la suite de Fibonacci : 0, 1, 1, 2, 3, 5, 8…",
+      solution: `# Exercice 12 : Suite de Fibonacci
+n = int(input("Combien de termes de Fibonacci ? "))
+
+a, b = 0, 1
+for _ in range(n):
+    print(a, end=" ")
+    a, b = b, a + b`
+    },
+    {
+      id: 13,
+      title: "Pair ou impair",
+      difficulty: "Facile",
+      description: "Demande un entier et affiche s'il est pair ou impair.",
+      solution: `# Exercice 13 : Pair ou impair
+n = int(input("Entrez un nombre : "))
+
+if n % 2 == 0:
+    print("Pair")
+else:
+    print("Impair")`
+    },
+    {
+      id: 14,
+      title: "Jeu du nombre secret",
+      difficulty: "Moyen",
+      description: "L'ordinateur choisit un nombre entre 1 et 20. L'utilisateur doit le deviner.",
+      solution: `# Exercice 14 : Jeu du nombre secret
+import random
+
+secret = random.randint(1, 20)
+trouve = False
+
+while not trouve:
+    guess = int(input("Devine le nombre (1-20) : "))
+    if guess < secret:
+        print("Trop petit !")
+    elif guess > secret:
+        print("Trop grand !")
+    else:
+        print("Bravo, tu as trouvé !")
+        trouve = True`
+    },
+    {
+      id: 15,
+      title: "Table de multiplication",
+      difficulty: "Facile",
+      description: "Demande un nombre n et affiche sa table de 1 à 10.",
+      solution: `# Exercice 15 : Table de multiplication
+n = int(input("Entrez un nombre : "))
+
+for i in range(1, 11):
+    print(n, "x", i, "=", n * i)`
+    },
+    {
+      id: 16,
+      title: "Maximum de deux nombres",
+      difficulty: "Facile",
+      description: "Demande deux entiers et affiche le plus grand.",
+      solution: `# Exercice 16 : Maximum de deux nombres
+x = int(input("Premier nombre : "))
+y = int(input("Deuxième nombre : "))
+
+if x > y:
+    print("Le plus grand est", x)
+else:
+    print("Le plus grand est", y)`
     }
   ];
 
@@ -249,7 +345,7 @@ print(f"Moyenne : {moyenne:.2f}")`
                 </div>
                 <div className="flex flex-col items-center">
                   <span className="text-sm text-blue-600 font-medium mb-1">Nombre d'exercices</span>
-                  <span className="text-2xl font-bold text-blue-900">10</span>
+                  <span className="text-2xl font-bold text-blue-900">16</span>
                 </div>
                 <div className="flex flex-col items-center">
                   <span className="text-sm text-blue-600 font-medium mb-1">Niveau</span>

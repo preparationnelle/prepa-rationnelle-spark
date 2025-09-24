@@ -424,7 +424,7 @@ const AffectiveVerbsExercicesPage = () => {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="bg-white/70 rounded-lg p-4 border border-orange-200">
-                  <h4 className="font-semibold text-orange-900 mb-2">🎯 Question :</h4>
+                  <h4 className="font-semibold text-orange-900 mb-2">Question :</h4>
                   <p className="text-lg text-gray-800 font-mono">{currentExercise.question}</p>
                 </div>
 

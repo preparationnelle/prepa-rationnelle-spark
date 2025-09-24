@@ -205,6 +205,27 @@ const SessionCard = ({ session }) => {
                   Cours
                 </Button>
               </Link>
+            ) : session.id === 4 ? (
+              <Link to="/formation/oteria/suites-numeriques-cours" className="w-full">
+                <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Cours
+                </Button>
+              </Link>
+            ) : session.id === 5 ? (
+              <Link to="/formation/oteria/fonctions-variable-reelle-cours" className="w-full">
+                <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Cours
+                </Button>
+              </Link>
+            ) : session.id === 6 ? (
+              <Link to="/formation/oteria/polynomes-approximation-cours" className="w-full">
+                <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Cours
+                </Button>
+              </Link>
             ) : (
               <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
                 <BookOpen className="mr-2 h-4 w-4" />

@@ -36,7 +36,7 @@ const ForetPage = () => {
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
           <Link to="/formation/geopolitique/etudes-de-cas" className="text-emerald-600 hover:text-emerald-800">
-            Études de cas
+            Thèmes centraux
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
           <span className="text-gray-600">Forêt</span>

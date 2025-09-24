@@ -18,7 +18,7 @@ const RussiePage = () => {
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
           <Link to="/formation/geopolitique/etudes-de-cas" className="text-red-600 hover:text-red-800">
-            Études de cas
+            Thèmes centraux
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
           <span className="text-gray-600">Russie</span>
@@ -61,7 +61,7 @@ const RussiePage = () => {
             <CardTitle>Contenu en développement</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-gray-600">Cette page d'étude de cas est en cours de développement. Le contenu détaillé sera ajouté prochainement.</p>
+            <p className="text-gray-600">Cette page de thème central est en cours de développement. Le contenu détaillé sera ajouté prochainement.</p>
           </CardContent>
         </Card>
       </div>

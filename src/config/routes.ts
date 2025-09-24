@@ -22,11 +22,20 @@ const FormationAnglaisPage = lazy(() => import('../pages/FormationAnglaisPage'))
 const FormationAnglaisVocabulairePage = lazy(() => import('../pages/formation/anglais/FormationAnglaisVocabulairePage'));
 const FormationAnglaisGrammairePage = lazy(() => import('../pages/formation/anglais/FormationAnglaisGrammairePage'));
 const AnglaisTempsVerbauxPage = lazy(() => import('../pages/formation/anglais/grammaire/TempsVerbauxPage'));
+const AnglaisTempsVerbauxExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/TempsVerbauxExercicesPage'));
 const AnglaisConditionnelsPage = lazy(() => import('../pages/formation/anglais/grammaire/ConditionnelsPage'));
+const AnglaisConditionnelsExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/ConditionnelsExercicesPage'));
 const AnglaisVoixPassivesPage = lazy(() => import('../pages/formation/anglais/grammaire/VoixPassivesPage'));
+const AnglaisVoixPassivesExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/VoixPassivesExercicesPage'));
 const AnglaisDiscoursIndirectPage = lazy(() => import('../pages/formation/anglais/grammaire/DiscoursIndirectPage'));
+const AnglaisDiscoursIndirectExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/DiscoursIndirectExercicesPage'));
+const AnglaisModauxPage = lazy(() => import('../pages/formation/anglais/grammaire/ModauxPage'));
+const AnglaisModauxExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/ModauxExercicesPage'));
 const AnglaisPrepositionsPhrasalVerbsPage = lazy(() => import('../pages/formation/anglais/grammaire/PrepositionsPhrasalVerbsPage'));
 const AnglaisArticlesDeterminantsPage = lazy(() => import('../pages/formation/anglais/grammaire/ArticlesDeterminantsPage'));
+const AnglaisArticlesDeterminantsExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/ArticlesDeterminantsExercicesPage'));
+const AnglaisRelativesExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/RelativesExercicesPage'));
+const AnglaisGerondifInfinitifExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/GerondifInfinitifExercicesPage'));
 const AnglaisRelativesPage = lazy(() => import('../pages/formation/anglais/grammaire/RelativesPage'));
 const AnglaisGerondifInfinitifPage = lazy(() => import('../pages/formation/anglais/grammaire/GerondifInfinitifPage'));
 const AnglaisComparatifsSuperlatifsPage = lazy(() => import('../pages/formation/anglais/grammaire/ComparatifsSuperlatifsPage'));
@@ -211,6 +220,14 @@ const AmeriqueLatineChronologiePage = lazy(() => import('../pages/formation/geop
 const AmeriqueNordChronologiePage = lazy(() => import('../pages/formation/geopolitique/AmeriqueNordChronologiePage'));
 const SciencesTechnologiesPage = lazy(() => import('../pages/formation/geopolitique/SciencesTechnologiesPage'));
 const EtudesDeCasPage = lazy(() => import('../pages/formation/geopolitique/EtudesDeCasPage'));
+const ForetAmazoniennePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/ForetAmazoniennePage'));
+const AntarctiquePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/AntarctiquePage'));
+const CanadaPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/CanadaPage'));
+const DubaiPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/DubaiPage'));
+const SuezPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/SuezPage'));
+const NvidiaPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/NvidiaPage'));
+const GuerreEconomiquePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/GuerreEconomiquePage'));
+const BricsPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/BricsPage'));
 const MigrationsPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/MigrationsPage'));
 const TransportsPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/TransportsPage'));
 const EnergiePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/EnergiePage'));
@@ -329,6 +346,7 @@ const Chapitre3SommesProduitsExercicesPage = lazy(() => import('../pages/formati
 const Chapitre4SuitesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre4-SuitesNumeriques-ExercicesPage'));
 const Chapitre5FonctionsExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre5-FonctionsUneVariableReelle-ExercicesPage'));
 const Chapitre6DerivationExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre6-Derivation-ExercicesPage'));
+const Chapitre6DerivationQuizPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre6-Derivation-QuizPage'));
 const Chapitre6VariablesAleatoiresDensiteCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre6-VariablesAleatoiresDensite-CoursPage'));
 const Chapitre6VariablesAleatoiresDensiteExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre6-VariablesAleatoiresDensite-ExercicesPage'));
 const Chapitre6VariablesAleatoiresDensiteFlashcardsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre6-VariablesAleatoiresDensite-FlashcardsPage'));
@@ -457,6 +475,15 @@ const OteriaPythonBasesQCMPage = lazy(() => import('../pages/formation/oteria/Ot
 
 // Chapitre 3 - Récurrence & récursivité – sommes / produits
 const OteriaRecurrenceRecursiviteCoursPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteCoursPage'));
+
+// Chapitre 4 - Suites numériques & modélisation
+const OteriaSuitesNumeriquesCoursPage = lazy(() => import('../pages/formation/oteria/OteriaSuitesNumeriquesCoursPage'));
+
+// Chapitre 5 - Fonctions d'une variable réelle
+const OteriaFonctionsVariableReelleCoursPage = lazy(() => import('../pages/formation/oteria/OteriaFonctionsVariableReelleCoursPage'));
+
+// Chapitre 6 - Polynômes et approximation des racines
+const OteriaPolynomesApproximationCoursPage = lazy(() => import('../pages/formation/oteria/OteriaPolynomesApproximationCoursPage'));
 const OteriaRecurrenceRecursiviteExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteExercicesPage'));
 const OteriaRecurrenceRecursiviteFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteFlashcardsPage'));
 const OteriaRecurrenceRecursiviteQCMPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteQCMPage'));
@@ -633,6 +660,7 @@ export const routes: RouteConfig[] = [
   { path: '/articles/lycee/terminale/grand-oral', component: LyceeGrandOralPage, title: 'Grand Oral Terminale' },
   { path: '/articles/prepa-ecg', component: ArticlesPrepaECGPage, title: 'Prépa ECG' },
   { path: '/articles/concours-acces-sesame', component: ArticlesConcoursAccesSesamePage, title: 'Concours ACCES/SESAME' },
+  { path: '/articles/terminale-prepa', component: lazy(() => import('../pages/ArticlesTerminalePrepaPage')), title: 'Terminale → Prépa' },
   { path: '/articles/oteria-cyber-school', component: ArticlesOteriaCyberSchoolPage, title: 'OTERIA Cyber School' },
   { path: '/formation/oteria/logique-fondamentale-cours', component: OteriaLogiqueFondamentaleCoursPage, title: 'Logique Fondamentale - Cours' },
   { path: '/formation/oteria/logique-fondamentale-exercices', component: OteriaLogiqueFondamentaleExercicesPage, title: 'Logique Fondamentale - Exercices' },
@@ -647,6 +675,16 @@ export const routes: RouteConfig[] = [
 
   // Chapitre 3 - Récurrence & récursivité – sommes / produits
   { path: '/formation/oteria/recurrence-recursivite-cours', component: OteriaRecurrenceRecursiviteCoursPage, title: 'Récurrence & Récursivité - Cours' },
+
+  // Chapitre 4 - Suites numériques & modélisation
+  { path: '/formation/oteria/suites-numeriques-cours', component: OteriaSuitesNumeriquesCoursPage, title: 'Suites Numériques - Cours' },
+
+  // Chapitre 5 - Fonctions d'une variable réelle
+  { path: '/formation/oteria/fonctions-variable-reelle-cours', component: OteriaFonctionsVariableReelleCoursPage, title: 'Fonctions Variable Réelle - Cours' },
+
+  // Chapitre 6 - Polynômes et approximation des racines
+  { path: '/formation/oteria/polynomes-approximation-cours', component: OteriaPolynomesApproximationCoursPage, title: 'Polynômes & Dichotomie - Cours' },
+  
   { path: '/formation/oteria/recurrence-recursivite-exercices', component: OteriaRecurrenceRecursiviteExercicesPage, title: 'Récurrence & Récursivité - Exercices' },
   { path: '/formation/oteria/recurrence-recursivite-flashcards', component: OteriaRecurrenceRecursiviteFlashcardsPage, title: 'Récurrence & Récursivité - Flashcards' },
   { path: '/formation/oteria/recurrence-recursivite-qcm', component: OteriaRecurrenceRecursiviteQCMPage, title: 'Récurrence & Récursivité - QCM' },
@@ -688,11 +726,20 @@ export const routes: RouteConfig[] = [
   { path: '/formation/anglais/vocabulaire', component: FormationAnglaisVocabulairePage, title: 'Vocabulaire Anglais' },
   { path: '/formation/anglais/grammaire', component: FormationAnglaisGrammairePage, title: 'Grammaire Anglaise' },
   { path: '/formation/anglais/grammaire/conditionnels', component: AnglaisConditionnelsPage, title: 'Structures Conditionnelles' },
+  { path: '/formation/anglais/grammaire/conditionnels/exercices', component: AnglaisConditionnelsExercicesPage, title: 'Exercices Structures Conditionnelles' },
   { path: '/formation/anglais/grammaire/temps-verbaux', component: AnglaisTempsVerbauxPage, title: 'Temps verbaux' },
+  { path: '/formation/anglais/grammaire/temps-verbaux/exercices', component: AnglaisTempsVerbauxExercicesPage, title: 'Exercices Temps Verbaux' },
   { path: '/formation/anglais/grammaire/voix-passives', component: AnglaisVoixPassivesPage, title: 'Voix passive' },
+  { path: '/formation/anglais/grammaire/voix-passives/exercices', component: AnglaisVoixPassivesExercicesPage, title: 'Exercices Voix Passive' },
   { path: '/formation/anglais/grammaire/discours-indirect', component: AnglaisDiscoursIndirectPage, title: 'Discours indirect' },
+  { path: '/formation/anglais/grammaire/discours-indirect/exercices', component: AnglaisDiscoursIndirectExercicesPage, title: 'Exercices Discours Indirect' },
+  { path: '/formation/anglais/grammaire/modaux', component: AnglaisModauxPage, title: 'Modaux et Auxiliaires' },
+  { path: '/formation/anglais/grammaire/modaux/exercices', component: AnglaisModauxExercicesPage, title: 'Exercices Modaux' },
   { path: '/formation/anglais/grammaire/prepositions', component: AnglaisPrepositionsPhrasalVerbsPage, title: 'Prépositions & Phrasal Verbs' },
   { path: '/formation/anglais/grammaire/articles', component: AnglaisArticlesDeterminantsPage, title: 'Articles & Déterminants' },
+  { path: '/formation/anglais/grammaire/articles/exercices', component: AnglaisArticlesDeterminantsExercicesPage, title: 'Exercices Articles & Déterminants' },
+  { path: '/formation/anglais/grammaire/relatives/exercices', component: AnglaisRelativesExercicesPage, title: 'Exercices Subordonnées Relatives' },
+  { path: '/formation/anglais/grammaire/gerondif-infinitif/exercices', component: AnglaisGerondifInfinitifExercicesPage, title: 'Exercices Gérondif & Infinitif' },
   { path: '/formation/anglais/grammaire/relatives', component: AnglaisRelativesPage, title: 'Subordonnées relatives' },
   { path: '/formation/anglais/grammaire/gerondif-infinitif', component: AnglaisGerondifInfinitifPage, title: 'Gérondif & Infinitif' },
   { path: '/formation/anglais/grammaire/comparatifs', component: AnglaisComparatifsSuperlatifsPage, title: 'Comparatifs & Superlatifs' },
@@ -900,7 +947,15 @@ export const routes: RouteConfig[] = [
   { path: '/formation/geopolitique/asie/chronologie', component: AsieChronologiePage, title: 'Chronologie - Asie' },
   { path: '/formation/geopolitique/amerique-nord/chronologie', component: AmeriqueNordChronologiePage, title: 'Chronologie - Amérique du Nord' },
   { path: '/formation/geopolitique/sciences-technologies', component: SciencesTechnologiesPage, title: 'Sciences et Technologies dans le Monde Contemporain' },
-  { path: '/formation/geopolitique/etudes-de-cas', component: EtudesDeCasPage, title: 'Études de cas essentielles' },
+  { path: '/formation/geopolitique/etudes-de-cas', component: EtudesDeCasPage, title: 'Thèmes centraux essentiels' },
+  { path: '/formation/geopolitique/etudes-de-cas/foret-amazonienne', component: ForetAmazoniennePage, title: 'Forêt Amazonienne' },
+  { path: '/formation/geopolitique/etudes-de-cas/antarctique', component: AntarctiquePage, title: 'Antarctique' },
+  { path: '/formation/geopolitique/etudes-de-cas/canada-guerre-economique', component: CanadaPage, title: 'Canada - Guerre économique' },
+  { path: '/formation/geopolitique/etudes-de-cas/dubai-the-line', component: DubaiPage, title: 'Dubai / The Line' },
+  { path: '/formation/geopolitique/etudes-de-cas/canal-suez', component: SuezPage, title: 'Canal de Suez' },
+  { path: '/formation/geopolitique/etudes-de-cas/nvidia-ia', component: NvidiaPage, title: 'NVIDIA - IA' },
+  { path: '/formation/geopolitique/etudes-de-cas/guerre-economique', component: GuerreEconomiquePage, title: 'Guerre économique' },
+  { path: '/formation/geopolitique/etudes-de-cas/brics', component: BricsPage, title: 'BRICS' },
   { path: '/formation/geopolitique/etudes-de-cas/migrations', component: MigrationsPage, title: 'Migrations internationales' },
   { path: '/formation/geopolitique/etudes-de-cas/transports', component: TransportsPage, title: 'Réseaux de transport mondiaux' },
   { path: '/formation/geopolitique/etudes-de-cas/energie', component: EnergiePage, title: 'Géopolitique énergétique' },
@@ -1150,6 +1205,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-suites-numeriques-exercices', component: Chapitre4SuitesExercicesPage, title: 'Exercices - Chapitre 4 : Suites numériques' },
   { path: '/formation/maths-fonctions-d-une-variable-reelle-exercices', component: Chapitre5FonctionsExercicesPage, title: 'Exercices - Chapitre 5 : Fonctions d\'une variable réelle' },
   { path: '/formation/maths-derivation-exercices', component: Chapitre6DerivationExercicesPage, title: 'Exercices - Chapitre 6 : Dérivation' },
+  { path: '/formation/maths-derivation-quiz', component: Chapitre6DerivationQuizPage, title: 'Quiz - Chapitre 6 : Dérivation' },
   { path: '/formation/maths-variables-aleatoires-densite', component: Chapitre6VariablesAleatoiresDensiteCoursPage, title: 'Cours - Chapitre 6 : Variables aléatoires à densité' },
   { path: '/formation/maths-variables-aleatoires-densite-exercices', component: Chapitre6VariablesAleatoiresDensiteExercicesPage, title: 'Exercices - Chapitre 6 : Variables aléatoires à densité' },
   { path: '/formation/maths-variables-aleatoires-densite-flashcards', component: Chapitre6VariablesAleatoiresDensiteFlashcardsPage, title: 'Flashcards - Chapitre 6 : Variables aléatoires à densité' },
@@ -1374,6 +1430,30 @@ export const routes: RouteConfig[] = [
     path: '/formation/math/terminale-vers-prepa/integrale-exercices',
     component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre5-Integrale-ExercicesPage')),
     title: 'Exercices - Chapitre 5 : Intégrale',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/limites-cours',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre6-Limites-CoursPage')),
+    title: 'Cours - Chapitre 6 : Limites',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/limites-exercices',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre6-Limites-ExercicesPage')),
+    title: 'Exercices - Chapitre 6 : Limites',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/suites-cours',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre3-Suites-CoursPage')),
+    title: 'Cours - Chapitre 3 : Suites',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/suites-exercices',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre3-Suites-ExercicesPage')),
+    title: 'Exercices - Chapitre 3 : Suites',
     protected: false
   },
   {

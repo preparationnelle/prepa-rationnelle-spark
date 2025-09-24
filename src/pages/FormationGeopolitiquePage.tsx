@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Globe, Target, FileText, Sparkles, BookOpen, Clock, Home, ChevronRight, PenTool, Users, MapPin } from 'lucide-react';
+import { Globe, Target, FileText, Sparkles, BookOpen, Clock, Home, ChevronRight, PenTool, Users, MapPin, TreePine, Snowflake, Building, Ship, Cpu, DollarSign, Shield } from 'lucide-react';
 
 const FormationGeopolitiquePage = () => {
   return (
@@ -12,7 +12,6 @@ const FormationGeopolitiquePage = () => {
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <div className="h-3 w-3">🏠</div>
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
@@ -152,7 +151,7 @@ const FormationGeopolitiquePage = () => {
               <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mb-8 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
                 <FileText className="h-10 w-10 text-blue-600" />
               </div>
-              <h3 className="font-bold text-2xl mb-4 text-center text-blue-600">Études de cas</h3>
+              <h3 className="font-bold text-2xl mb-4 text-center text-blue-600">Thèmes centraux</h3>
               <p className="text-sm text-black mb-8 text-center leading-relaxed font-semibold">19 analyses thématiques<br/>essentielles actualisées</p>
               <div className="space-y-2 text-sm mb-6 w-full">
                 <div className="flex items-center text-gray-600 bg-gray-50 rounded-lg py-2 px-3">
@@ -171,7 +170,7 @@ const FormationGeopolitiquePage = () => {
             </div>
             <Button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium transition-all duration-300 group-hover:scale-105 shadow-lg rounded-lg">
               <FileText className="mr-2 h-4 w-4" />
-              Explorer les études de cas
+              Explorer les thèmes centraux
             </Button>
           </Link>
 
@@ -369,6 +368,164 @@ const FormationGeopolitiquePage = () => {
               Consulter les références
             </Button>
           </Link>
+        </div>
+
+        {/* Études de cas - Section en bas avec style bleu simple */}
+        <div className="mt-16 mb-8">
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-8">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold text-blue-800 mb-4">
+                Études de cas
+              </h2>
+              <p className="text-blue-700 text-lg max-w-3xl mx-auto">
+                Découvrez nos études de cas approfondies sur les enjeux géopolitiques contemporains
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {/* Forêt Amazonienne */}
+              <Link
+                to="/formation/geopolitique/etudes-de-cas/foret-amazonienne"
+                className="bg-blue-50 rounded-lg p-6 shadow-md border border-blue-200 hover:shadow-lg hover:bg-blue-100 transition-all duration-300 cursor-pointer"
+              >
+                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                  <TreePine className="h-6 w-6 text-green-600" />
+                </div>
+                <h3 className="font-semibold text-lg text-gray-900 mb-2">Forêt Amazonienne</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  "Poumon de la planète" face à la déforestation accélérée. 20% de surface déboisée, enjeux climatiques majeurs.
+                </p>
+                <div className="text-xs text-blue-600 font-medium">
+                  Environnement • Climat • Biodiversité
+                </div>
+              </Link>
+
+              {/* Antarctique */}
+              <Link
+                to="/formation/geopolitique/etudes-de-cas/antarctique"
+                className="bg-blue-50 rounded-lg p-6 shadow-md border border-blue-200 hover:shadow-lg hover:bg-blue-100 transition-all duration-300 cursor-pointer"
+              >
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                  <Snowflake className="h-6 w-6 text-blue-600" />
+                </div>
+                <h3 className="font-semibold text-lg text-gray-900 mb-2">Antarctique</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Ressources potentielles et traité de 1959. Tensions croissantes avec expansion chinoise et russe.
+                </p>
+                <div className="text-xs text-blue-600 font-medium">
+                  Droit international • Ressources • Climat
+                </div>
+              </Link>
+
+              {/* Canada (guerre économique) */}
+              <Link
+                to="/formation/geopolitique/etudes-de-cas/canada-guerre-economique"
+                className="bg-blue-50 rounded-lg p-6 shadow-md border border-blue-200 hover:shadow-lg hover:bg-blue-100 transition-all duration-300 cursor-pointer"
+              >
+                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                  <Shield className="h-6 w-6 text-red-600" />
+                </div>
+                <h3 className="font-semibold text-lg text-gray-900 mb-2">Canada - Guerre économique</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Ingérences chinoises et tariffs américains. Sécurité économique exposant 10-20% du PIB.
+                </p>
+                <div className="text-xs text-blue-600 font-medium">
+                  Économie • Sécurité • Commerce
+                </div>
+              </Link>
+
+              {/* Dubai / The Line / Arabie Saoudite */}
+              <Link
+                to="/formation/geopolitique/etudes-de-cas/dubai-the-line"
+                className="bg-blue-50 rounded-lg p-6 shadow-md border border-blue-200 hover:shadow-lg hover:bg-blue-100 transition-all duration-300 cursor-pointer"
+              >
+                <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                  <Building className="h-6 w-6 text-yellow-600" />
+                </div>
+                <h3 className="font-semibold text-lg text-gray-900 mb-2">Dubai / The Line</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Vision 2030 et NEOM. Diversification économique post-pétrole, hubs touristiques et logistiques.
+                </p>
+                <div className="text-xs text-blue-600 font-medium">
+                  Économie • Tourisme • Énergie verte
+                </div>
+              </Link>
+
+              {/* Canal de Suez */}
+              <Link
+                to="/formation/geopolitique/etudes-de-cas/canal-suez"
+                className="bg-blue-50 rounded-lg p-6 shadow-md border border-blue-200 hover:shadow-lg hover:bg-blue-100 transition-all duration-300 cursor-pointer"
+              >
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                  <Ship className="h-6 w-6 text-blue-600" />
+                </div>
+                <h3 className="font-semibold text-lg text-gray-900 mb-2">Canal de Suez</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Chokepoint vital pour 12% du commerce mondial. Sécurité maritime et enjeux historiques.
+                </p>
+                <div className="text-xs text-blue-600 font-medium">
+                  Commerce • Sécurité maritime • Histoire
+                </div>
+              </Link>
+
+              {/* NVIDIA IA (technologie) */}
+              <Link
+                to="/formation/geopolitique/etudes-de-cas/nvidia-ia"
+                className="bg-blue-50 rounded-lg p-6 shadow-md border border-blue-200 hover:shadow-lg hover:bg-blue-100 transition-all duration-300 cursor-pointer"
+              >
+                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                  <Cpu className="h-6 w-6 text-purple-600" />
+                </div>
+                <h3 className="font-semibold text-lg text-gray-900 mb-2">NVIDIA - IA</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Leader en puces IA. Guerre technologique US-Chine, 80% du marché des GPU IA.
+                </p>
+                <div className="text-xs text-blue-600 font-medium">
+                  Technologie • Économie • Sécurité
+                </div>
+              </Link>
+
+              {/* Guerre économique */}
+              <Link
+                to="/formation/geopolitique/etudes-de-cas/guerre-economique"
+                className="bg-blue-50 rounded-lg p-6 shadow-md border border-blue-200 hover:shadow-lg hover:bg-blue-100 transition-all duration-300 cursor-pointer"
+              >
+                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                  <DollarSign className="h-6 w-6 text-red-600" />
+                </div>
+                <h3 className="font-semibold text-lg text-gray-900 mb-2">Guerre économique</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Sanctions, tariffs et chokepoints. Déstabilisation des chaînes d'approvisionnement globales.
+                </p>
+                <div className="text-xs text-blue-600 font-medium">
+                  Économie • Commerce • Sécurité
+                </div>
+              </Link>
+
+              {/* BRICS */}
+              <Link
+                to="/formation/geopolitique/etudes-de-cas/brics"
+                className="bg-blue-50 rounded-lg p-6 shadow-md border border-blue-200 hover:shadow-lg hover:bg-blue-100 transition-all duration-300 cursor-pointer"
+              >
+                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                  <Globe className="h-6 w-6 text-orange-600" />
+                </div>
+                <h3 className="font-semibold text-lg text-gray-900 mb-2">BRICS</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  10 membres, 55% population mondiale. Multipolarité, dé-dollarisation et contrepoids au G7.
+                </p>
+                <div className="text-xs text-blue-600 font-medium">
+                  Gouvernance • Économie émergente • Diplomatie
+                </div>
+              </Link>
+            </div>
+
+            <div className="text-center mt-8">
+              <p className="text-blue-600 text-sm">
+                Plus d'études de cas à venir...
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

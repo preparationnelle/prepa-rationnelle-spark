@@ -212,7 +212,7 @@ const NegationsPage = () => {
 
                   {/* Question */}
                   <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-                    <h4 className="font-semibold text-blue-900 mb-2">🎯 Question :</h4>
+                    <h4 className="font-semibold text-blue-900 mb-2">Question :</h4>
                     <p className="text-lg text-gray-800 font-mono">{exercise.content.question}</p>
                   </div>
 

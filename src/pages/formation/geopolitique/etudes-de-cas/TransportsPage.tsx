@@ -44,7 +44,7 @@ const TransportsPage = () => {
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
           <Link to="/formation/geopolitique/etudes-de-cas" className="text-purple-600 hover:text-purple-800">
-            Études de cas
+            Thèmes centraux
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
           <span className="text-gray-600">Transports</span>

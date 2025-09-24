@@ -8,7 +8,7 @@ import { ThemeToggle } from '@/components/ThemeToggle';
 import { GlobalSearch } from '@/components/search/GlobalSearch';
 import { MobileSearch } from '@/components/search/MobileSearch';
 import { SearchTrigger } from '@/components/search/SearchTrigger';
-import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, Code, Languages, Globe, UserCheck, Calculator, Award, Star, Youtube } from 'lucide-react';
+import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, Code, Languages, Globe, UserCheck, Calculator, Award, Star, Youtube, TrendingUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from '@/components/ui/dropdown-menu';
@@ -339,6 +339,12 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                 <Link to="/articles/prepa-ecg" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-purple-50 rounded-md px-3 py-2 transition-colors">
                   <span className="w-8 h-8 bg-purple-50 rounded-full flex items-center justify-center"><Calculator className="h-4 w-4 text-purple-600" /></span>
                   <span>Prépa ECG</span>
+                </Link>
+
+                {/* Terminale → Prépa */}
+                <Link to="/articles/terminale-prepa" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-indigo-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-indigo-50 rounded-full flex items-center justify-center"><TrendingUp className="h-4 w-4 text-indigo-600" /></span>
+                  <span>Terminale → Prépa</span>
                 </Link>
 
                 {/* Concours ACCES/SESAME */}

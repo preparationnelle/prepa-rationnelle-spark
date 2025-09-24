@@ -34,7 +34,7 @@ const VoixPassivesPage = () => {
               Grammaire
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <span className="text-gray-900 font-bold">Voix Passive</span>
+            <span className="text-gray-900 font-bold">Passive Voice</span>
           </div>
         </div>
       </nav>
@@ -46,10 +46,10 @@ const VoixPassivesPage = () => {
             <div className="p-3 rounded-lg bg-orange-600 text-white">
               <BookOpen className="h-9 w-9" />
             </div>
-            Fiche de Grammaire : La Voix Passive en Anglais
+            Grammar Sheet: Passive Voice in English
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            La voix passive permet de mettre l'accent sur l'action ou l'objet qui la subit plutôt que sur l'agent. Indispensable à l'écrit formel, académique et professionnel.
+            The passive voice allows emphasis on the action or the object that undergoes it rather than on the agent. Essential for formal, academic, and professional writing.
           </p>
         </div>
 
@@ -62,35 +62,35 @@ const VoixPassivesPage = () => {
             </CardTitle>
           </CardHeader>
           <CardContent className="text-orange-700 space-y-3">
-            <p>La voix passive (passive voice) est une construction qui met en avant l'action ou l'objet plutôt que l'agent.</p>
-            <p>Elle est essentielle pour l'anglais formel, académique et professionnel.</p>
+            <p>The passive voice is a construction that emphasizes the action or the object rather than the agent.</p>
+            <p>It is essential for formal, academic, and professional English.</p>
           </CardContent>
         </Card>
 
         {/* Active vs Passive */}
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle className="text-2xl">Différence entre Voix Active et Voix Passive</CardTitle>
+            <CardTitle className="text-2xl">Difference between Active Voice and Passive Voice</CardTitle>
           </CardHeader>
           <CardContent className="grid md:grid-cols-2 gap-6 text-gray-800">
             <div className="bg-white/70 rounded-lg p-4 border border-orange-200">
-              <h3 className="text-lg font-semibold mb-2">Voix Active</h3>
-              <p><span className="text-orange-700 font-semibold">Structure</span> : Sujet + Verbe + Objet</p>
-              <p className="mt-2">Ex : The chef cooks the meal.</p>
+              <h3 className="text-lg font-semibold mb-2">Active Voice</h3>
+              <p><span className="text-orange-700 font-semibold">Structure</span>: Subject + Verb + Object</p>
+              <p className="mt-2">Example: The chef cooks the meal.</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li><span className="text-orange-700 font-semibold">Sujet</span> : The chef</li>
-                <li><span className="text-orange-700 font-semibold">Verbe</span> : cooks</li>
-                <li><span className="text-orange-700 font-semibold">Objet</span> : the meal</li>
+                <li><span className="text-orange-700 font-semibold">Subject</span>: The chef</li>
+                <li><span className="text-orange-700 font-semibold">Verb</span>: cooks</li>
+                <li><span className="text-orange-700 font-semibold">Object</span>: the meal</li>
               </ul>
             </div>
             <div className="bg-white/70 rounded-lg p-4 border border-blue-200">
-              <h3 className="text-lg font-semibold mb-2">Voix Passive</h3>
-              <p><span className="text-orange-700 font-semibold">Structure</span> : Sujet + être + Participe passé + (by + agent)</p>
-              <p className="mt-2">Ex : The meal is cooked by the chef.</p>
+              <h3 className="text-lg font-semibold mb-2">Passive Voice</h3>
+              <p><span className="text-orange-700 font-semibold">Structure</span>: Subject + be + Past Participle + (by + agent)</p>
+              <p className="mt-2">Example: The meal is cooked by the chef.</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li><span className="text-orange-700 font-semibold">Sujet</span> : The meal</li>
-                <li><span className="text-orange-700 font-semibold">Verbe passif</span> : is cooked</li>
-                <li><span className="text-orange-700 font-semibold">Agent</span> : by the chef (optionnel)</li>
+                <li><span className="text-orange-700 font-semibold">Subject</span>: The meal</li>
+                <li><span className="text-orange-700 font-semibold">Passive verb</span>: is cooked</li>
+                <li><span className="text-orange-700 font-semibold">Agent</span>: by the chef (optional)</li>
               </ul>
             </div>
           </CardContent>
@@ -99,19 +99,19 @@ const VoixPassivesPage = () => {
         {/* 1. Formation */}
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle className="text-2xl">1. Formation de la Voix Passive</CardTitle>
+            <CardTitle className="text-2xl">1. Formation of the Passive Voice</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p><span className="text-orange-700 font-semibold">Structure générale</span> : Sujet + être (conjugué) + Participe passé + (by + agent)</p>
+            <p><span className="text-orange-700 font-semibold">General structure</span>: Subject + be (conjugated) + Past Participle + (by + agent)</p>
             <ul className="list-disc pl-6 space-y-1">
-              <li>L'objet de l'active devient le sujet de la passive</li>
-              <li>Le verbe <span className="text-orange-700 font-semibold">être</span> se conjugue au temps de l'active</li>
-              <li>Le verbe principal passe au <span className="text-orange-700 font-semibold">participe passé</span></li>
-              <li>Le sujet actif devient l'<span className="text-orange-700 font-semibold">agent</span> introduit par "by" (optionnel)</li>
+              <li>The object of the active becomes the subject of the passive</li>
+              <li>The verb <span className="text-orange-700 font-semibold">be</span> is conjugated in the same tense as the active</li>
+              <li>The main verb becomes the <span className="text-orange-700 font-semibold">past participle</span></li>
+              <li>The active subject becomes the <span className="text-orange-700 font-semibold">agent</span> introduced by "by" (optional)</li>
             </ul>
             <div className="bg-white/70 rounded-lg p-4 border border-orange-200">
-              <p className="font-semibold text-orange-800">Exemple de transformation</p>
-              <p>Active : Shakespeare wrote Hamlet. → Passive : Hamlet was written by Shakespeare.</p>
+              <p className="font-semibold text-orange-800">Transformation example</p>
+              <p>Active: Shakespeare wrote Hamlet. → Passive: Hamlet was written by Shakespeare.</p>
             </div>
           </CardContent>
         </Card>
@@ -119,11 +119,11 @@ const VoixPassivesPage = () => {
         {/* 2. Tous les temps */}
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle className="text-2xl">2. La Voix Passive dans tous les Temps</CardTitle>
+            <CardTitle className="text-2xl">2. Passive Voice in All Tenses</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             <section>
-              <h3 className="text-xl font-semibold mb-2">Temps du Présent</h3>
+              <h3 className="text-xl font-semibold mb-2">Present Tenses</h3>
               <div className="space-y-4">
                 <div>
                   <p className="font-semibold">Present Simple</p>
@@ -441,17 +441,17 @@ const VoixPassivesPage = () => {
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
               <Target className="h-6 w-6" />
-              Prêt à mettre en pratique ?
+              Ready to practice?
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
             <p className="text-lg text-orange-700 mb-6">
-              Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.
+              After studying the sheet, launch into the exercises to consolidate your knowledge.
             </p>
             <Link to="/formation/anglais/grammaire/voix-passives/exercices">
               <Button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-lg">
                 <Calendar className="h-5 w-5 mr-2" />
-                Étudier ce chapitre
+                Study this chapter
               </Button>
             </Link>
           </CardContent>
@@ -462,7 +462,7 @@ const VoixPassivesPage = () => {
           <Link to="/formation/anglais/grammaire">
             <Button variant="outline" className="flex items-center gap-2">
               <ArrowLeft className="h-4 w-4" />
-              Retour à la grammaire
+              Back to Grammar
             </Button>
           </Link>
         </div>

@@ -18,7 +18,7 @@ const UrbanisationPage = () => {
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
           <Link to="/formation/geopolitique/etudes-de-cas" className="text-slate-600 hover:text-slate-800">
-            Études de cas
+            Thèmes centraux
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
           <span className="text-gray-600">Urbanisation</span>
@@ -61,7 +61,7 @@ const UrbanisationPage = () => {
             <CardTitle>Contenu en développement</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-gray-600">Cette page d'étude de cas est en cours de développement. Le contenu détaillé sera ajouté prochainement.</p>
+            <p className="text-gray-600">Cette page de thème central est en cours de développement. Le contenu détaillé sera ajouté prochainement.</p>
           </CardContent>
         </Card>
       </div>

@@ -345,29 +345,317 @@ print(somme_1_a_n(100))  # 5050`}
             </div>
           </div>
 
-          {/* Méthodologie */}
+          {/* Fiche méthode – Résoudre un exercice en Python */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <h2 className="text-2xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
-              Méthodologie : résoudre un exercice en Python
+              Fiche méthode – Résoudre un exercice en Python
             </h2>
-            <p className="text-blue-800 mb-4 font-semibold">Plan de résolution en 3 étapes :</p>
-            <ul className="list-disc list-inside text-blue-800 space-y-2 mb-6">
-              <li><strong>Initialisation :</strong> variables, compteurs, saisies</li>
-              <li><strong>Traitement :</strong> boucles, conditions, calculs</li>
-              <li><strong>Sortie :</strong> affichage ou valeur retournée</li>
-            </ul>
+            <h3 className="text-xl font-semibold mb-4 text-blue-900">Maîtriser la méthode de résolution</h3>
+
+            {/* Plan de résolution en 3 étapes */}
+            <div className="mb-8">
+              <h4 className="text-lg font-semibold mb-4 text-blue-900">Plan de résolution en 3 étapes</h4>
+              <p className="text-blue-800 mb-4">
+                Décomposer en trois grandes étapes : <strong>Initialisation → Traitement → Sortie</strong>
+              </p>
+              
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse border border-blue-300 text-sm">
+                  <thead>
+                    <tr className="bg-blue-50">
+                      <th className="border border-blue-300 px-4 py-2 font-semibold text-blue-900">Étape</th>
+                      <th className="border border-blue-300 px-4 py-2 font-semibold text-blue-900">Script</th>
+                      <th className="border border-blue-300 px-4 py-2 font-semibold text-blue-900">Fonction</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-blue-300 px-4 py-2 font-medium text-blue-900">Initialisation</td>
+                      <td className="border border-blue-300 px-4 py-2 text-blue-800">Variables et compteurs avant la boucle</td>
+                      <td className="border border-blue-300 px-4 py-2 text-blue-800">Paramètres d'entrée + compteurs locaux</td>
+                    </tr>
+                    <tr className="bg-blue-25">
+                      <td className="border border-blue-300 px-4 py-2 font-medium text-blue-900">Traitement</td>
+                      <td className="border border-blue-300 px-4 py-2 text-blue-800">Calculs, boucles, conditions</td>
+                      <td className="border border-blue-300 px-4 py-2 text-blue-800">Même logique, mais variables locales</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-blue-300 px-4 py-2 font-medium text-blue-900">Sortie</td>
+                      <td className="border border-blue-300 px-4 py-2 text-blue-800">print(...) (affichage à l'utilisateur)</td>
+                      <td className="border border-blue-300 px-4 py-2 text-blue-800">return ... (valeur renvoyée à l'appelant)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Détail des 3 étapes */}
+            <div className="space-y-6">
+              {/* 1. Initialisation */}
+              <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <h5 className="font-semibold text-blue-900 mb-3">1. Initialisation</h5>
+                <p className="text-blue-800 mb-3 font-medium">Préparer les variables, compteurs, listes</p>
+                <ul className="list-disc list-inside text-blue-700 space-y-1 text-sm">
+                  <li>Toujours initialiser les compteurs à 0</li>
+                  <li>Pour une liste : créer la structure vide (L = [])</li>
+                  <li>Bien distinguer : input(), paramètres, variables locales</li>
+                </ul>
+              </div>
+
+              {/* 2. Traitement */}
+              <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <h5 className="font-semibold text-blue-900 mb-3">2. Traitement</h5>
+                <p className="text-blue-800 mb-3 font-medium">Mettre en œuvre l'algorithme</p>
+                <ul className="list-disc list-inside text-blue-700 space-y-1 text-sm">
+                  <li>Boucles (for ou while) pour répéter des calculs</li>
+                  <li>Transformation ou calcul sur des listes</li>
+                  <li>Utilisation de conditions (if) pour ajuster</li>
+                </ul>
+              </div>
+
+              {/* 3. Sortie */}
+              <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <h5 className="font-semibold text-blue-900 mb-3">3. Sortie</h5>
+                <p className="text-blue-800 mb-3 font-medium">Afficher ou retourner le résultat</p>
+                <ul className="list-disc list-inside text-blue-700 space-y-1 text-sm">
+                  <li>Script : utiliser print() pour l'utilisateur</li>
+                  <li>Fonction : utiliser return pour l'appelant</li>
+                  <li>Choisir le bon format : nombre, liste, chaîne...</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Astuce méthode */}
+            <div className="bg-blue-100 p-4 rounded-lg border border-blue-300 mt-6">
+              <h5 className="font-semibold text-blue-900 mb-2">💡 Astuce méthode</h5>
+              <p className="text-blue-800 text-sm">
+                Toujours écrire d'abord le plan sur papier avant de coder : Initialisation → Traitement → Sortie. 
+                Tester avec plusieurs cas (petit, grand, valeurs limites).
+              </p>
+            </div>
           </div>
 
-          {/* Types d'exercices */}
+          {/* Les trois types d'exercices programmation fréquents */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <h2 className="text-2xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
-              Trois types d'exercices fréquents
+              Les trois types d'exercices programmation fréquents
             </h2>
-            <ul className="list-disc list-inside text-blue-800 space-y-3">
-              <li><strong>Créer un script ou une fonction</strong></li>
-              <li><strong>Compléter ou comprendre un script</strong></li>
-              <li><strong>Interpréter une sortie</strong> (tableau, graphique, résultat numérique)</li>
-            </ul>
+            <h3 className="text-xl font-semibold mb-4 text-blue-900">Reconnaître les types d'exercices</h3>
+            
+            <p className="text-blue-800 mb-6">
+              Dans les sujets d'annales ou en contrôle, on retrouve presque toujours trois grandes familles d'exercices. 
+              Les repérer aide à gagner du temps et à adopter la bonne stratégie.
+            </p>
+
+            {/* Tableau récapitulatif */}
+            <div className="overflow-x-auto mb-6">
+              <table className="w-full border-collapse border border-blue-300 text-sm">
+                <thead>
+                  <tr className="bg-blue-50">
+                    <th className="border border-blue-300 px-4 py-2 font-semibold text-blue-900">Type d'exercice</th>
+                    <th className="border border-blue-300 px-4 py-2 font-semibold text-blue-900">Ce qu'on attend</th>
+                    <th className="border border-blue-300 px-4 py-2 font-semibold text-blue-900">Points stratégiques</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-blue-300 px-4 py-2 font-medium text-blue-900">Créer un script ou une fonction</td>
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Structuration, logique</td>
+                    <td className="border border-blue-300 px-4 py-2 text-blue-700">Initialisation → Traitement → Sortie, ne pas oublier les imports</td>
+                  </tr>
+                  <tr className="bg-blue-25">
+                    <td className="border border-blue-300 px-4 py-2 font-medium text-blue-900">Compléter/comprendre un script</td>
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Lecture, rigueur, déduction</td>
+                    <td className="border border-blue-300 px-4 py-2 text-blue-700">Tester à la main, suivre la logique</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-blue-300 px-4 py-2 font-medium text-blue-900">Interpréter une sortie</td>
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Analyse, synthèse, lien au cours</td>
+                    <td className="border border-blue-300 px-4 py-2 text-blue-700">Faire le lien avec le programme, argumenter</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            {/* Détail des types */}
+            <div className="space-y-4">
+              <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <h5 className="font-semibold text-blue-900 mb-2">Type 1 : Créer à partir de rien</h5>
+                <p className="text-blue-800 text-sm mb-2">« Écrire un script qui réalise… », « Créer une fonction qui calcule… »</p>
+                <ul className="list-disc list-inside text-blue-700 space-y-1 text-sm">
+                  <li>Partir d'un énoncé et construire la totalité de la solution</li>
+                  <li>Structurer selon : Initialisation → Traitement → Sortie</li>
+                  <li>Ne pas oublier les imports de librairies</li>
+                </ul>
+              </div>
+
+              <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <h5 className="font-semibold text-blue-900 mb-2">Type 2 : Comprendre/Compléter</h5>
+                <p className="text-blue-800 text-sm mb-2">« Que fait ce script ? », « Compléter la ligne manquante »</p>
+                <ul className="list-disc list-inside text-blue-700 space-y-1 text-sm">
+                  <li>Analyser un code fourni (en entier ou partiellement)</li>
+                  <li>Comprendre la logique des variables</li>
+                  <li>Retracer l'évolution ligne par ligne</li>
+                </ul>
+              </div>
+
+              <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <h5 className="font-semibold text-blue-900 mb-2">Type 3 : Interpréter</h5>
+                <p className="text-blue-800 text-sm mb-2">« Interpréter ce graphique », « Conclure sur la convergence »</p>
+                <ul className="list-disc list-inside text-blue-700 space-y-1 text-sm">
+                  <li>Lire, analyser et expliquer un résultat obtenu</li>
+                  <li>Interpréter courbe, tableau, histogramme</li>
+                  <li>Faire le lien avec les notions du cours</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Récapitulatif des commandes utiles */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-2xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
+              Récapitulatif des commandes utiles
+            </h2>
+            <h3 className="text-xl font-semibold mb-4 text-blue-900">Tableau récapitulatif complet</h3>
+
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse border border-blue-300 text-sm">
+                <thead>
+                  <tr className="bg-blue-50">
+                    <th className="border border-blue-300 px-4 py-2 font-semibold text-blue-900">Action ou test</th>
+                    <th className="border border-blue-300 px-4 py-2 font-semibold text-blue-900">Syntaxe Python</th>
+                    <th className="border border-blue-300 px-4 py-2 font-semibold text-blue-900">Exemple</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Affecter une valeur</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">=</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">A = 5</td>
+                  </tr>
+                  <tr className="bg-blue-25">
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Afficher une valeur</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">print(...)</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">print(A)</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Connaître le type</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">type(...)</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">type(A)</td>
+                  </tr>
+                  <tr className="bg-blue-25">
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Addition</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">+</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">A + B</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Soustraction</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">-</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">A - B</td>
+                  </tr>
+                  <tr className="bg-blue-25">
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Multiplication</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">*</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">A * B</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Division réelle</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">/</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">A / B</td>
+                  </tr>
+                  <tr className="bg-blue-25">
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Division entière</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">//</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">A // B</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Modulo (reste de division)</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">%</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">A % B</td>
+                  </tr>
+                  <tr className="bg-blue-25">
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Puissance</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">**</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">A ** B</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Partie entière</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">int(...)</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">int(6.4)</td>
+                  </tr>
+                  <tr className="bg-blue-25">
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Entrée clavier utilisateur</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">input(...)</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">x = input("Entrer x : ")</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Boucle for</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">for ... in range(...):</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">for i in range(1, 5, 2):</td>
+                  </tr>
+                  <tr className="bg-blue-25">
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Boucle while</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">while ...:</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">while A &lt; 5:</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Condition if</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">if ...:</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">if A == 3:</td>
+                  </tr>
+                  <tr className="bg-blue-25">
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Condition elif</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">elif ...:</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">elif A &lt;= 6:</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Condition else</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">else:</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">else:</td>
+                  </tr>
+                  <tr className="bg-blue-25">
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Inférieur</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">&lt;</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">A &lt; B</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Supérieur</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">&gt;</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">A &gt; B</td>
+                  </tr>
+                  <tr className="bg-blue-25">
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Inférieur ou égal</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">&lt;=</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">A &lt;= B</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Supérieur ou égal</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">&gt;=</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">A &gt;= B</td>
+                  </tr>
+                  <tr className="bg-blue-25">
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Égalité</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">==</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">A == B</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Différence</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">!=</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">A != B</td>
+                  </tr>
+                  <tr className="bg-blue-25">
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Tester si pair</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">% 2 == 0</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">A % 2 == 0</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-blue-300 px-4 py-2 text-blue-800">Tester si impair</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-900">% 2 == 1</td>
+                    <td className="border border-blue-300 px-4 py-2 font-mono text-blue-700">A % 2 == 1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
           {/* Navigation */}

@@ -102,6 +102,106 @@ const OteriaLogiqueFondamentaleCoursPage = () => {
         {/* Contenu du cours */}
         <div className="max-w-4xl mx-auto">
 
+          {/* Introduction - Paradoxe du barbier */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
+              Introduction au cours de logique
+            </h2>
+
+            {/* Énoncé du paradoxe du barbier */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold mb-4 text-blue-900">Le paradoxe du barbier</h3>
+              
+              <div className="bg-blue-50 p-6 rounded-lg mb-6 border border-blue-200">
+                <div className="space-y-4">
+                  <p className="text-blue-800 leading-relaxed">
+                    <strong>Imagine un village.</strong>
+                  </p>
+                  <p className="text-blue-800 leading-relaxed">
+                    Il y a un barbier qui a une règle très stricte :
+                  </p>
+                  <div className="bg-white p-4 rounded-lg border-l-4 border-blue-500">
+                    <p className="text-blue-900 font-semibold">
+                      « Il rase tous les hommes qui ne se rasent pas eux-mêmes, et seulement ceux-là. »
+                    </p>
+                  </div>
+                  <p className="text-blue-800 leading-relaxed">
+                    On peut alors se poser une question toute simple :
+                  </p>
+                  <div className="text-center py-4">
+                    <p className="text-xl font-bold text-blue-700">
+                      👉 Que fait-il avec lui-même ?
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div className="bg-blue-50 p-4 rounded-lg border border-blue-300">
+                  <h5 className="font-semibold text-blue-900 mb-2">S'il se rase lui-même :</h5>
+                  <p className="text-blue-700 text-sm">
+                    Alors il ne devrait pas se raser (puisqu'il ne rase que ceux qui ne se rasent pas).
+                  </p>
+                </div>
+                <div className="bg-blue-50 p-4 rounded-lg border border-blue-300">
+                  <h5 className="font-semibold text-blue-900 mb-2">S'il ne se rase pas lui-même :</h5>
+                  <p className="text-blue-700 text-sm">
+                    Alors il devrait se raser (puisqu'il rase tous ceux qui ne se rasent pas).
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-blue-100 p-4 rounded-lg border border-blue-400 text-center mb-6">
+                <h5 className="font-bold text-blue-900 mb-2">⚠️ Résultat : contradiction.</h5>
+                <p className="text-blue-800 font-medium">
+                  Il est impossible qu'un tel barbier existe.
+                </p>
+              </div>
+            </div>
+
+            {/* Pourquoi commencer par cette histoire */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold mb-4 text-blue-900">Pourquoi commencer par cette histoire ?</h3>
+              
+              <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                <div className="space-y-4">
+                  <p className="text-blue-800 leading-relaxed">
+                    Ce paradoxe a été inventé par le philosophe et mathématicien <strong>Bertrand Russell</strong> pour illustrer les dangers de certaines définitions.
+                  </p>
+                  <p className="text-blue-800 leading-relaxed">
+                    Derrière le barbier se cache un problème beaucoup plus sérieux en mathématiques : le <strong>paradoxe de Russell</strong> dans la théorie des ensembles.
+                  </p>
+                  <div className="bg-white p-4 rounded-lg border-l-4 border-blue-500">
+                    <p className="text-blue-900 font-medium">
+                      <strong>Message clé pour la logique :</strong> toute règle doit être formulée clairement, sans ambiguïté et sans auto-contradiction.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Conclusion de l'introduction */}
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold mb-4 text-blue-900">Conclusion de l'introduction</h3>
+              
+              <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                <div className="space-y-4">
+                  <p className="text-blue-800 leading-relaxed">
+                    Le paradoxe du barbier n'est pas un problème à résoudre, <strong>c'est une alerte.</strong>
+                  </p>
+                  <p className="text-blue-800 leading-relaxed">
+                    La logique, c'est l'art de construire des raisonnements qui évitent ce type de piège.
+                  </p>
+                  <div className="bg-white p-4 rounded-lg border-l-4 border-blue-600">
+                    <p className="text-blue-900 font-medium">
+                      Dans ce cours, nous allons apprendre à utiliser la logique comme un outil rigoureux pour raisonner, prouver et comprendre les mathématiques… <strong>sans tomber dans les paradoxes.</strong>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Section A: Éléments de logique */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
@@ -162,28 +262,160 @@ const OteriaLogiqueFondamentaleCoursPage = () => {
               </div>
             </div>
 
-            {/* A.2 Implication et équivalence */}
+            {/* A.2 Implication logique (détaillée) */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-teal-800">A.2. Implication et équivalence</h3>
+              <h3 className="text-xl font-semibold mb-4 text-teal-800">A.2. L'implication logique P → Q</h3>
 
+              {/* 1. La lecture « si… alors… » */}
+              <div className="mb-6">
+                <h4 className="font-bold text-blue-900 mb-3">1. La lecture « si… alors… »</h4>
               <div className="bg-blue-50 p-4 rounded-lg mb-4">
-                <h4 className="font-bold text-blue-900 mb-3">Définition 1.3 — Implication et équivalence</h4>
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <span className="bg-blue-200 text-blue-800 px-2 py-1 rounded text-sm font-mono">P ⇒ Q</span>
-                    <span className="text-blue-800">: « si P est vraie alors Q l'est ».</span>
+                  <p className="text-blue-800 mb-3">P → Q se lit :</p>
+                  <div className="text-center py-2">
+                    <p className="text-xl font-bold text-blue-700">
+                      👉 « Si P est vrai, alors Q est vrai. »
+                    </p>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <span className="bg-blue-200 text-blue-800 px-2 py-1 rounded text-sm font-mono">P ⇔ Q</span>
-                    <span className="text-blue-800">: équivalence, c'est-à-dire P ⇒ Q et Q ⇒ P.</span>
+                </div>
+                
+                <div className="bg-white p-4 rounded-lg border border-blue-200">
+                  <h5 className="font-semibold text-blue-900 mb-2">Exemple :</h5>
+                  <ul className="space-y-1 text-blue-800">
+                    <li>P = « Il pleut »</li>
+                    <li>Q = « Le sol est mouillé »</li>
+                    <li><strong>P → Q :</strong> « S'il pleut, alors le sol est mouillé. »</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* 2. La table de vérité (clé) */}
+              <div className="mb-6">
+                <h4 className="font-bold text-blue-900 mb-3">2. La table de vérité (clé)</h4>
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <div className="overflow-x-auto">
+                    <table className="min-w-full bg-white border border-blue-300 rounded-lg">
+                      <thead>
+                        <tr className="bg-blue-100">
+                          <th className="border border-blue-300 px-4 py-2 font-bold text-blue-900">P</th>
+                          <th className="border border-blue-300 px-4 py-2 font-bold text-blue-900">Q</th>
+                          <th className="border border-blue-300 px-4 py-2 font-bold text-blue-900">P → Q</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="border border-blue-300 px-4 py-2 text-center">V</td>
+                          <td className="border border-blue-300 px-4 py-2 text-center">V</td>
+                          <td className="border border-blue-300 px-4 py-2 text-center font-bold text-blue-700">V</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-blue-300 px-4 py-2 text-center">V</td>
+                          <td className="border border-blue-300 px-4 py-2 text-center">F</td>
+                          <td className="border border-blue-300 px-4 py-2 text-center font-bold text-blue-700">F</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-blue-300 px-4 py-2 text-center">F</td>
+                          <td className="border border-blue-300 px-4 py-2 text-center">V</td>
+                          <td className="border border-blue-300 px-4 py-2 text-center font-bold text-blue-700">V</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-blue-300 px-4 py-2 text-center">F</td>
+                          <td className="border border-blue-300 px-4 py-2 text-center">F</td>
+                          <td className="border border-blue-300 px-4 py-2 text-center font-bold text-blue-700">V</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div className="text-center mt-4">
+                    <p className="text-blue-700 font-medium">
+                      👉 L'implication est fausse seulement si P est vrai et Q est faux.
+                    </p>
                   </div>
                 </div>
               </div>
 
+              {/* 3. Pourquoi cette définition ? */}
+              <div className="mb-6">
+                <h4 className="font-bold text-blue-900 mb-3">3. Pourquoi cette définition ?</h4>
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <p className="text-blue-800 mb-3">
+                    Si il pleut (P vrai) mais le sol n'est pas mouillé (Q faux), alors la phrase « S'il pleut alors le sol est mouillé » est clairement fausse.
+                  </p>
+                  <p className="text-blue-800">
+                    Dans tous les autres cas, la phrase n'est pas contredite, donc on la considère vraie.
+                  </p>
+                </div>
+              </div>
+
+              {/* 4. Les deux lectures utiles */}
+              <div className="mb-6">
+                <h4 className="font-bold text-blue-900 mb-3">4. Les deux lectures utiles</h4>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <h5 className="font-semibold text-blue-900 mb-2">Condition suffisante :</h5>
+                    <p className="text-blue-800 text-sm mb-2">P est une condition suffisante pour Q.</p>
+                    <p className="text-blue-700 text-sm italic">
+                      Exemple : « Être un carré implique être un rectangle. »
+                    </p>
+                  </div>
+                  <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <h5 className="font-semibold text-blue-900 mb-2">Condition nécessaire :</h5>
+                    <p className="text-blue-800 text-sm mb-2">Q est une condition nécessaire pour P.</p>
+                    <p className="text-blue-700 text-sm italic">
+                      Exemple : « Être rectangle est nécessaire pour être carré. »
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="bg-white p-4 rounded-lg border border-blue-300 text-center mt-4">
+                  <p className="text-blue-900 font-medium">
+                    Donc : <span className="font-mono bg-blue-100 px-2 py-1 rounded">P → Q ≡ ¬P ∨ Q</span>
+                  </p>
+                  <p className="text-blue-700 text-sm mt-2">(soit P est faux, soit Q est vrai)</p>
+                </div>
+              </div>
+
+              {/* 5. Les pièges classiques */}
+              <div className="mb-6">
+                <h4 className="font-bold text-blue-900 mb-3">5. Les pièges classiques</h4>
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <div className="space-y-4">
+                    <div className="bg-white p-3 rounded border-l-4 border-blue-500">
+                      <p className="text-blue-800 mb-2">
+                        <strong>Attention :</strong> P → Q n'est pas équivalent à Q → P.
+                      </p>
+                      <ul className="text-blue-700 text-sm space-y-1">
+                        <li>• « Être carré → être rectangle » est vrai,</li>
+                        <li>• mais « Être rectangle → être carré » est faux.</li>
+                      </ul>
+                    </div>
+                    
+                    <div className="bg-white p-3 rounded border-l-4 border-blue-600">
+                      <p className="text-blue-800 mb-2">
+                        <strong>La vraie équivalence, c'est la contraposée :</strong>
+                      </p>
+                      <p className="text-center font-mono bg-blue-100 px-3 py-2 rounded text-blue-900">
+                        P → Q ≡ ¬Q → ¬P
+                      </p>
+                      <div className="mt-3 text-sm text-blue-700">
+                        <p><strong>Ex. :</strong> « Si ça pleut → sol mouillé »</p>
+                        <p><strong>Contraposée :</strong> « Si le sol n'est pas mouillé → il n'a pas plu. »</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Équivalence */}
+              <div className="mb-6">
+                <h4 className="font-bold text-blue-900 mb-3">Équivalence P ⇔ Q</h4>
               <div className="bg-blue-50 p-4 rounded-lg">
-                <h4 className="font-bold text-blue-900 mb-3">Exemple</h4>
-                <p className="text-blue-800 mb-3">P = « n est multiple de 4 », Q = « n est pair ».</p>
-                <p className="text-blue-800">Alors P ⇒ Q est vrai, mais Q ⇒ P est faux (exemple : n=6).</p>
+                  <p className="text-blue-800 mb-3">
+                    P ⇔ Q signifie P → Q <strong>et</strong> Q → P.
+                  </p>
+                  <p className="text-blue-800">
+                    Autrement dit : P et Q ont toujours la même valeur de vérité.
+                  </p>
+                </div>
               </div>
             </div>
 

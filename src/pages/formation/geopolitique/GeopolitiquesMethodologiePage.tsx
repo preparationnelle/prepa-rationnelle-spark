@@ -233,7 +233,7 @@ const GeopolitiquesMethodologiePage = () => {
                 </div>
                 <div className="bg-white/10 rounded-lg p-4">
                   <div className="text-3xl font-bold">1</div>
-                  <div className="text-sm text-blue-100">Fiche sur une étude de cas</div>
+                  <div className="text-sm text-blue-100">Fiche sur un thème central</div>
                 </div>
               </div>
             </CardContent>
@@ -285,7 +285,7 @@ const GeopolitiquesMethodologiePage = () => {
                       Comment les apprendre efficacement ?
                     </h4>
                     <div className="space-y-2 text-sm">
-                      <p><strong>Faire une fiche par étude de cas avec :</strong></p>
+                      <p><strong>Faire une fiche par thème central avec :</strong></p>
                       <ul className="list-disc list-inside space-y-1 ml-4">
                         <li>Les enjeux principaux</li>
                         <li>Les acteurs impliqués</li>

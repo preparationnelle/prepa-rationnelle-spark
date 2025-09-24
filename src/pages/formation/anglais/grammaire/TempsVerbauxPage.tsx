@@ -513,7 +513,7 @@ const TempsVerbauxPage = () => {
             <Link to="/formation/anglais/grammaire/temps-verbaux/exercices">
               <Button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-lg">
                 <Calendar className="h-5 w-5 mr-2" />
-                Étudier ce chapitre
+                Exercices
               </Button>
             </Link>
           </CardContent>

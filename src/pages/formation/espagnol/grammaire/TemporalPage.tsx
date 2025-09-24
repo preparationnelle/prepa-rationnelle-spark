@@ -215,7 +215,7 @@ const TemporalPage = () => {
 
                   {/* Question */}
                   <div className="bg-indigo-50 rounded-lg p-4 border border-indigo-200">
-                    <h4 className="font-semibold text-indigo-900 mb-2">🎯 Question :</h4>
+                    <h4 className="font-semibold text-indigo-900 mb-2">Question :</h4>
                     <p className="text-lg text-gray-800 font-mono">{exercise.content.question}</p>
                   </div>
 

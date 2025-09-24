@@ -13,7 +13,6 @@ const FormationAnglaisPage = () => {
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <div className="h-3 w-3">🏠</div>
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />

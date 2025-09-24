@@ -1561,12 +1561,12 @@ const ContinentAfricainPage = () => {
             </CardContent>
           </Card>
 
-          {/* Études de cas */}
+          {/* Thèmes centraux */}
           <Card className="border border-gray-200 bg-white shadow-none">
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-3">
                 <Globe className="h-6 w-6 text-blue-600" />
-                Études de cas
+                Thèmes centraux
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -1750,7 +1750,7 @@ const ContinentAfricainPage = () => {
                       
                       {/* Utilisation en copie */}
                       <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                        <h4 className="text-blue-800 font-semibold mb-2">Utilisation de l'étude de cas dans une copie</h4>
+                        <h4 className="text-blue-800 font-semibold mb-2">Utilisation du thème central dans une copie</h4>
                         <ul className="text-gray-700 space-y-1 text-sm">
                           <li>• <strong>Expliquer</strong> le concept de la "malédiction des matières premières" (Richard Auty, 1990)</li>
                           <li>• <strong>Montrer</strong> le rôle des grands groupes pétroliers dans l'exploitation des ressources africaines</li>
@@ -1902,7 +1902,7 @@ const ContinentAfricainPage = () => {
                       
                       {/* Utilisation en copie */}
                       <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                        <h4 className="text-blue-800 font-semibold mb-2">Utilisation de l'étude de cas dans une copie</h4>
+                        <h4 className="text-blue-800 font-semibold mb-2">Utilisation du thème central dans une copie</h4>
                         <ul className="text-gray-700 space-y-1 text-sm">
                           <li>• <strong>Illustrer</strong> la transition urbaine inachevée en Afrique → urbanisation rapide mais non maîtrisée</li>
                           <li>• <strong>Montrer</strong> les inégalités intra-urbaines → coexistence quartiers modernes et bidonvilles</li>

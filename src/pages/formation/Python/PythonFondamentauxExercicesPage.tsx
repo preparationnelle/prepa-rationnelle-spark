@@ -453,6 +453,120 @@ print(n)
 # - Pour x = 2.0, n va jusqu'à 2`
       }]
     }
+  }, {
+    id: 10,
+    title: "Exercice 10 - Résolution d'équation du 2ᵉ degré",
+    difficulty: "Moyen",
+    description: "Résoudre ax² + bx + c = 0 en utilisant le discriminant.",
+    color: "orange",
+    content: {
+      objective: "\\text{Résoudre l'équation } ax^2 + bx + c = 0 \\text{ en calculant le discriminant}",
+      isLatex: true,
+      code: `import math
+
+a = float(input("a = "))
+b = float(input("b = "))
+c = float(input("c = "))
+
+delta = b**2 - 4*a*c
+
+if delta < 0:
+    print("Pas de solution réelle")
+elif delta == 0:
+    x = -b / (2*a)
+    print("Solution unique :", x)
+else:
+    x1 = (-b - math.sqrt(delta)) / (2*a)
+    x2 = (-b + math.sqrt(delta)) / (2*a)
+    print("Deux solutions :", x1, "et", x2)`
+    }
+  }, {
+    id: 11,
+    title: "Exercice 11 - Suite de Fibonacci",
+    difficulty: "Facile",
+    description: "Afficher les n premiers termes de la suite de Fibonacci : 0, 1, 1, 2, 3, 5, 8…",
+    color: "gray",
+    content: {
+      objective: "\\text{Afficher les } n \\text{ premiers termes de la suite de Fibonacci}",
+      isLatex: true,
+      code: `n = int(input("Combien de termes de Fibonacci ? "))
+
+a, b = 0, 1
+for _ in range(n):
+    print(a, end=" ")
+    a, b = b, a + b`
+    }
+  }, {
+    id: 12,
+    title: "Exercice 12 - Pair ou impair",
+    difficulty: "Facile",
+    description: "Demande un entier et affiche s'il est pair ou impair.",
+    color: "gray",
+    content: {
+      objective: "\\text{Déterminer si un nombre entier est pair ou impair}",
+      isLatex: true,
+      code: `n = int(input("Entrez un nombre : "))
+
+if n % 2 == 0:
+    print("Pair")
+else:
+    print("Impair")`
+    }
+  }, {
+    id: 13,
+    title: "Exercice 13 - Jeu du nombre secret",
+    difficulty: "Moyen",
+    description: "L'ordinateur choisit un nombre entre 1 et 20. L'utilisateur doit le deviner.",
+    color: "orange",
+    content: {
+      objective: "\\text{Créer un jeu de devinette avec un nombre aléatoire entre 1 et 20}",
+      isLatex: true,
+      code: `import random
+
+secret = random.randint(1, 20)
+trouve = False
+
+while not trouve:
+    guess = int(input("Devine le nombre (1-20) : "))
+    if guess < secret:
+        print("Trop petit !")
+    elif guess > secret:
+        print("Trop grand !")
+    else:
+        print("Bravo, tu as trouvé !")
+        trouve = True`
+    }
+  }, {
+    id: 14,
+    title: "Exercice 14 - Table de multiplication",
+    difficulty: "Facile",
+    description: "Demande un nombre n et affiche sa table de 1 à 10.",
+    color: "gray",
+    content: {
+      objective: "\\text{Afficher la table de multiplication d'un nombre de 1 à 10}",
+      isLatex: true,
+      code: `n = int(input("Entrez un nombre : "))
+
+for i in range(1, 11):
+    print(n, "x", i, "=", n * i)`
+    }
+  }, {
+    id: 15,
+    title: "Exercice 15 - Maximum de deux nombres",
+    difficulty: "Facile",
+    description: "Demande deux entiers et affiche le plus grand.",
+    color: "gray",
+    content: {
+      objective: "\\text{Trouver le maximum entre deux nombres entiers}",
+      isLatex: true,
+      code: `x = int(input("Premier nombre : "))
+y = int(input("Deuxième nombre : "))
+
+if x > y:
+    print("Le plus grand est", x)
+else:
+    print("Le plus grand est", y)`
+    }
   }];
 
   if (selectedExercise) {

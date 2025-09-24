@@ -141,7 +141,7 @@ export const CaseStudyGenerator = ({ language }: CaseStudyGeneratorProps) => {
                 ) : (
                   <>
                     <Sparkles className="h-5 w-5 mr-3" />
-                    {language === 'fr' ? 'Générer l\'étude de cas' : 'Generate case study'}
+                    {language === 'fr' ? 'Générer le thème central' : 'Generate central theme'}
                   </>
                 )}
               </Button>
@@ -160,7 +160,7 @@ export const CaseStudyGenerator = ({ language }: CaseStudyGeneratorProps) => {
             <AlertCircle className="h-4 w-4 text-blue-600" />
             <AlertDescription className="text-blue-800">
               {language === 'fr' 
-                ? "Entrez l'URL d'un article d'actualité ou collez directement le texte, puis précisez le thème géopolitique à analyser. L'IA générera une étude de cas structurée avec contexte, chiffres clés, sujets de dissertation et analyse des acteurs."
+                ? "Entrez l'URL d'un article d'actualité ou collez directement le texte, puis précisez le thème géopolitique à analyser. L'IA générera un thème central structuré avec contexte, chiffres clés, sujets de dissertation et analyse des acteurs."
                 : "Enter the URL of a news article or paste the text directly, then specify the geopolitical theme to analyze. The AI will generate a structured case study with context, key figures, dissertation topics and actor analysis."
               }
             </AlertDescription>

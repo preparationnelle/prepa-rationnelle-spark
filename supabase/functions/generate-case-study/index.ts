@@ -51,7 +51,7 @@ serve(async (req) => {
 Voici un article d'actualité : "${articleContent}"
 Thème à analyser : "${notion}"
 
-Produis une étude de cas synthétique en 300 mots maximum qui contient exactement ces 4 sections :
+Produis un thème central synthétique en 300 mots maximum qui contient exactement ces 4 sections :
 
 **1. CONTEXTE ET ENJEU PRINCIPAL** (100 mots max)
 Résume l'enjeu principal et le contexte géopolitique

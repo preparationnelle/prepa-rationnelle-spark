@@ -20,7 +20,7 @@ export const CaseStudyDisplay = ({ caseStudy, wordCount, language }: CaseStudyDi
       await navigator.clipboard.writeText(caseStudy);
       toast({
         title: language === 'fr' ? "Copié !" : "Copied!",
-        description: language === 'fr' ? "L'étude de cas a été copiée" : "Case study has been copied",
+        description: language === 'fr' ? "Le thème central a été copié" : "Central theme has been copied",
       });
     } catch (error) {
       toast({
