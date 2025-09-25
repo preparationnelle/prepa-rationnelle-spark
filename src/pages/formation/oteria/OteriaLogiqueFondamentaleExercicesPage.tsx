@@ -84,7 +84,7 @@ const OteriaLogiqueFondamentaleExercicesPage = () => {
           {/* Objectifs */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
-              🎯 Objectifs
+              Objectifs
             </h2>
             <ul className="space-y-3 text-blue-800">
               <li className="flex items-start gap-3">
@@ -110,15 +110,151 @@ const OteriaLogiqueFondamentaleExercicesPage = () => {
             </ul>
           </div>
 
-          {/* Section 1: Propositions */}
+          {/* Exercice 1: Quantificateurs */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <h2 className="text-xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
-              1. Propositions (vrai/faux, reconnaissance)
+              Exercice 1. Écrire avec des quantificateurs les propositions suivantes
             </h2>
 
             <div className="space-y-6">
               <div className="bg-blue-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-blue-900 mb-3">1.1 Dire si les phrases suivantes sont des propositions :</h3>
+                <ol className="space-y-3 text-blue-800 ml-6">
+                  <li className="list-decimal">
+                    <strong>f</strong> est la fonction nulle (où <strong>f</strong> est une fonction de ℝ dans ℝ).
+                  </li>
+                  <li className="list-decimal">
+                    Le dénominateur <strong>D</strong> de <strong>f</strong> s'annule au moins une fois sur ℝ.
+                  </li>
+                  <li className="list-decimal">
+                    <strong>f</strong> est l'identité de ℝ (c'est-à-dire la fonction qui, à chaque réel, associe lui-même).
+                  </li>
+                  <li className="list-decimal">
+                    Le graphe de <strong>f</strong> coupe la droite d'équation y = x.
+                  </li>
+                  <li className="list-decimal">
+                    <strong>f</strong> est croissante sur ℝ (où <strong>f</strong> est une fonction de ℝ dans ℝ).
+                  </li>
+                  <li className="list-decimal">
+                    L'équation sin x = x a une et une seule solution dans ℝ.
+                  </li>
+                  <li className="list-decimal">
+                    Pour tout point <strong>M</strong> du plan 𝒫, <strong>M</strong> est sur le cercle 𝒞 de centre Ω et de rayon R si et seulement si la distance de <strong>M</strong> à Ω vaut R.
+                  </li>
+                </ol>
+              </div>
+
+              <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                <h3 className="font-semibold text-green-900 mb-3">Solution</h3>
+                <ol className="space-y-2 text-green-800 ml-6">
+                  <li className="list-decimal">∀x ∈ ℝ, f(x) = 0.</li>
+                  <li className="list-decimal">∃x ∈ ℝ/ D(x) = 0.</li>
+                  <li className="list-decimal">∀x ∈ ℝ, f(x) = x.</li>
+                  <li className="list-decimal">∃x ∈ ℝ/ f(x) = x.</li>
+                  <li className="list-decimal">∀(a,b) ∈ ℝ², (a ≤ b ⇒ f(a) ≤ f(b)).</li>
+                  <li className="list-decimal">∃!x ∈ ℝ/ sin(x) = x.</li>
+                  <li className="list-decimal">∀M ∈ 𝒫, (M ∈ 𝒞 ⇔ ΩM = R).</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          {/* Exercice 2: Quantificateurs avancés */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
+              Exercice 2. Écrire avec des quantificateurs les propositions suivantes
+            </h2>
+
+            <div className="space-y-6">
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <div className="space-y-4">
+                  <div>
+                    <strong className="text-blue-900">1) a)</strong> <span className="text-blue-800">Tout entier naturel est pair ou impair.</span>
+                  </div>
+                  <div className="ml-4">
+                    <strong className="text-blue-900">b)</strong> <span className="text-blue-800">Tout entier naturel est pair ou tout entier naturel est impair.</span>
+                  </div>
+                  <div className="mt-4">
+                    <strong className="text-blue-900">2) a)</strong> <span className="text-blue-800">f est strictement monotone sur ℝ (où f désigne une fonction de ℝ dans ℝ).</span>
+                  </div>
+                  <div className="ml-4">
+                    <strong className="text-blue-900">b)</strong> <span className="text-blue-800">f n'est pas strictement monotone sur ℝ.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                <h3 className="font-semibold text-green-900 mb-3">Solution</h3>
+                <div className="space-y-3 text-green-800">
+                  <div>
+                    <strong>1) a)</strong> ∀n ∈ ℕ, (n est pair ou n est impair).
+                  </div>
+                  <div className="ml-4">
+                    <strong>b)</strong> (∀n ∈ ℕ, n est pair) ou (∀n ∈ ℕ, n est impair).
+                  </div>
+                  <div className="mt-4">
+                    <strong>2) a)</strong> (∀(a,b) ∈ ℝ², (a &lt; b ⇒ f(a) &lt; f(b))) ou (∀(a,b) ∈ ℝ², (a &lt; b ⇒ f(a) &gt; f(b))).
+                  </div>
+                  <div className="ml-4">
+                    <strong>b)</strong> (∃(a,b) ∈ ℝ²/ (a &lt; b et f(a) ≥ f(b))) et (∃(a,b) ∈ ℝ²/ (a &lt; b et f(a) ≤ f(b))).
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Exercice 3: Quantificateurs - Entiers naturels et fonctions */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
+              Exercice 3. Écrire avec des quantificateurs les propositions suivantes
+            </h2>
+
+            <div className="space-y-6">
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <div className="space-y-4">
+                  <div>
+                    <strong className="text-blue-900">1) a)</strong> <span className="text-blue-800">Tout entier naturel est pair ou impair.</span>
+                  </div>
+                  <div className="ml-4">
+                    <strong className="text-blue-900">b)</strong> <span className="text-blue-800">Tout entier naturel est pair ou tout entier naturel est impair.</span>
+                  </div>
+                  <div className="mt-4">
+                    <strong className="text-blue-900">2) a)</strong> <span className="text-blue-800">f est strictement monotone sur ℝ (où f désigne une fonction de ℝ dans ℝ).</span>
+                  </div>
+                  <div className="ml-4">
+                    <strong className="text-blue-900">b)</strong> <span className="text-blue-800">f n'est pas strictement monotone sur ℝ.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                <h3 className="font-semibold text-green-900 mb-3">Solution</h3>
+                <div className="space-y-3 text-green-800">
+                  <div>
+                    <strong>1) a)</strong> ∀n ∈ ℕ, (n est pair ou n est impair).
+                  </div>
+                  <div className="ml-4">
+                    <strong>b)</strong> (∀n ∈ ℕ, n est pair) ou (∀n ∈ ℕ, n est impair).
+                  </div>
+                  <div className="mt-4">
+                    <strong>2) a)</strong> (∀(a,b) ∈ ℝ², (a &lt; b ⇒ f(a) &lt; f(b))) ou (∀(a,b) ∈ ℝ², (a &lt; b ⇒ f(a) &gt; f(b))).
+                  </div>
+                  <div className="ml-4">
+                    <strong>b)</strong> (∃(a,b) ∈ ℝ²/ (a &lt; b et f(a) ≥ f(b))) et (∃(a,b) ∈ ℝ²/ (a &lt; b et f(a) ≤ f(b))).
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Section 4: Propositions */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
+              4. Propositions (vrai/faux, reconnaissance)
+            </h2>
+
+            <div className="space-y-6">
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <h3 className="font-semibold text-blue-900 mb-3">4.1 Dire si les phrases suivantes sont des propositions :</h3>
                 <ol className="space-y-2 text-blue-800 ml-6">
                   <li className="list-decimal">2+3=5</li>
                   <li className="list-decimal">x+1=3</li>
@@ -126,21 +262,13 @@ const OteriaLogiqueFondamentaleExercicesPage = () => {
                   <li className="list-decimal">Paris est la capitale de l'Italie</li>
                 </ol>
               </div>
-
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-blue-900 mb-3">1.2 Transformer en proposition une phrase ouverte :</h3>
-                <ul className="space-y-2 text-blue-800 ml-6">
-                  <li className="list-disc">x+2=7</li>
-                  <li className="list-disc">n est divisible par 3</li>
-                </ul>
-              </div>
             </div>
           </div>
 
-          {/* Section 2: Négation */}
+          {/* Section 5: Négation */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <h2 className="text-xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
-              2. Négation
+              5. Négation
             </h2>
             <p className="text-blue-800 mb-4">Donner la négation des propositions suivantes (attention aux quantificateurs et aux connecteurs) :</p>
 
@@ -154,10 +282,10 @@ const OteriaLogiqueFondamentaleExercicesPage = () => {
             </div>
           </div>
 
-          {/* Section 3: Tables de vérité */}
+          {/* Section 6: Tables de vérité */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <h2 className="text-xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
-              3. Tables de vérité
+              6. Tables de vérité
             </h2>
             <p className="text-blue-800 mb-4">Compléter les tables de vérité suivantes :</p>
 
@@ -172,10 +300,10 @@ const OteriaLogiqueFondamentaleExercicesPage = () => {
             </div>
           </div>
 
-          {/* Section 4: Quantificateurs */}
+          {/* Section 7: Quantificateurs */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <h2 className="text-xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
-              4. Quantificateurs
+              7. Quantificateurs
             </h2>
             <p className="text-blue-800 mb-4">Traduire, expliquer et dire si elles sont vraies ou fausses :</p>
 
@@ -183,32 +311,17 @@ const OteriaLogiqueFondamentaleExercicesPage = () => {
               <ol className="space-y-3 text-blue-800 ml-6">
                 <li className="list-decimal">∀n ∈ ℕ, n² ≥ 0</li>
                 <li className="list-decimal">∃n ∈ ℕ, n² = 2</li>
-                <li className="list-decimal">∃!n ∈ ℕ, n² = 0</li>
+                <li className="list-decimal">∃n ∈ ℕ, n² = 0</li>
                 <li className="list-decimal">∀x ∈ ℝ, x² + 1 &gt; 0</li>
                 <li className="list-decimal">∃x ∈ ℤ, x² = -1</li>
               </ol>
             </div>
           </div>
 
-          {/* Section 5: Disjonction de cas */}
+          {/* Section 8: Contraposée */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <h2 className="text-xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
-              5. Disjonction de cas
-            </h2>
-
-            <div className="bg-blue-50 p-4 rounded-lg">
-              <ol className="space-y-3 text-blue-800 ml-6">
-                <li className="list-decimal">Montrer que n² est pair si et seulement si n est pair</li>
-                <li className="list-decimal">Montrer que pour tout n ∈ ℤ, n est divisible par 2 ou par 2n+1 est impair</li>
-                <li className="list-decimal">Pour tout n ∈ ℤ, montrer que n est pair ou impair (disjonction exhaustive)</li>
-              </ol>
-            </div>
-          </div>
-
-          {/* Section 6: Contraposée */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
-              6. Contraposée
+              8. Contraposée
             </h2>
 
             <div className="bg-blue-50 p-4 rounded-lg">
@@ -219,25 +332,23 @@ const OteriaLogiqueFondamentaleExercicesPage = () => {
             </div>
           </div>
 
-          {/* Section 7: Raisonnement par l'absurde */}
+          {/* Section 9: Raisonnement par l'absurde */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <h2 className="text-xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
-              7. Raisonnement par l'absurde
+              9. Raisonnement par l'absurde
             </h2>
 
             <div className="bg-blue-50 p-4 rounded-lg">
               <ol className="space-y-3 text-blue-800 ml-6">
                 <li className="list-decimal">Prouver que √2 est irrationnel (détailler toutes les étapes)</li>
-                <li className="list-decimal">Montrer par l'absurde que tout nombre premier supérieur à 2 est impair</li>
-                <li className="list-decimal">Prouver qu'il existe une infinité de nombres premiers (esquisse d'Euclide)</li>
               </ol>
             </div>
           </div>
 
-          {/* Section 8: Récurrence simple */}
+          {/* Section 10: Récurrence simple */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <h2 className="text-xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
-              8. Récurrence simple
+              10. Récurrence simple
             </h2>
 
             <div className="bg-blue-50 p-4 rounded-lg">
@@ -249,24 +360,10 @@ const OteriaLogiqueFondamentaleExercicesPage = () => {
             </div>
           </div>
 
-          {/* Section 9: Récurrence forte */}
+          {/* Section 11: Analyse-Synthèse */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <h2 className="text-xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
-              9. Récurrence forte
-            </h2>
-
-            <div className="bg-blue-50 p-4 rounded-lg">
-              <ol className="space-y-3 text-blue-800 ml-6">
-                <li className="list-decimal">Prouver que tout entier n ≥ 2 peut s'écrire comme un produit de nombres premiers</li>
-                <li className="list-decimal">Montrer que pour tout n ≥ 2, il existe une suite de n entiers consécutifs contenant un nombre divisible par n</li>
-              </ol>
-            </div>
-          </div>
-
-          {/* Section 10: Analyse-Synthèse */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
-              10. Analyse-Synthèse
+              11. Analyse-Synthèse
             </h2>
 
             <div className="bg-blue-50 p-4 rounded-lg">
@@ -278,15 +375,15 @@ const OteriaLogiqueFondamentaleExercicesPage = () => {
             </div>
           </div>
 
-          {/* Section 11: Logique et Python */}
+          {/* Section 12: Logique et Python */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <h2 className="text-xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
-              11. Logique et Python
+              12. Logique et Python
             </h2>
 
             <div className="space-y-6">
               <div className="bg-blue-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-blue-900 mb-3">11.1 Tester dans Python les expressions suivantes :</h3>
+                <h3 className="font-semibold text-blue-900 mb-3">12.1 Tester dans Python les expressions suivantes :</h3>
                 <div className="bg-white p-4 rounded border font-mono text-sm text-blue-800">
                   <div>True and False</div>
                   <div>True or False</div>
@@ -296,7 +393,7 @@ const OteriaLogiqueFondamentaleExercicesPage = () => {
               </div>
 
               <div className="bg-blue-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-blue-900 mb-3">11.2 Écrire un programme qui demande un entier n :</h3>
+                <h3 className="font-semibold text-blue-900 mb-3">12.2 Écrire un programme qui demande un entier n :</h3>
                 <p className="text-blue-800 mb-3">Le programme doit afficher :</p>
                 <ul className="space-y-2 text-blue-800 ml-6">
                   <li className="list-disc">« pair » si n est divisible par 2</li>
@@ -305,7 +402,7 @@ const OteriaLogiqueFondamentaleExercicesPage = () => {
               </div>
 
               <div className="bg-blue-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-blue-900 mb-3">11.3 Compléter le code suivant :</h3>
+                <h3 className="font-semibold text-blue-900 mb-3">12.3 Compléter le code suivant :</h3>
                 <p className="text-blue-800 mb-3">Pour afficher la table de vérité de p et q avec l'opérateur and :</p>
                 <div className="bg-white p-4 rounded border font-mono text-sm text-blue-800">
                   <div>for p in [True, False]:</div>
@@ -314,6 +411,85 @@ const OteriaLogiqueFondamentaleExercicesPage = () => {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Section C: Applications en Python */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
+              C. Applications en Python
+            </h2>
+
+            <div className="space-y-6">
+              <h3 className="text-lg font-semibold text-blue-900 mb-4">Booléens en Python</h3>
+
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-blue-900 mb-3"># Valeurs booléennes</h4>
+                <div className="bg-white p-4 rounded border font-mono text-sm text-blue-800">
+                  <div>True # Vrai</div>
+                  <div>False # Faux</div>
+                </div>
+              </div>
+
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-blue-900 mb-3"># Opérateurs logiques</h4>
+                <div className="bg-white p-4 rounded border font-mono text-sm text-blue-800">
+                  <div>not x # Négation</div>
+                  <div>x and y # Et logique</div>
+                  <div>x or y # Ou logique</div>
+                </div>
+              </div>
+
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-blue-900 mb-3">Exemples pratiques</h4>
+                <div className="space-y-3">
+                  <div>
+                    <p className="font-semibold text-blue-900 mb-2">Test de parité :</p>
+                    <div className="bg-white p-3 rounded border font-mono text-sm text-blue-800">
+                      n % 2 == 0 # True si n pair
+                    </div>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-blue-900 mb-2">Condition composée :</p>
+                    <div className="bg-white p-3 rounded border font-mono text-sm text-blue-800">
+                      x &gt; 0 and x &lt; 10 # x entre 0 et 10
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Erreurs classiques à ne pas commettre */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-red-200">
+            <h2 className="text-2xl font-bold mb-6 text-red-900 border-b border-red-200 pb-3">
+              Erreurs classiques à ne pas commettre
+            </h2>
+            <ul className="space-y-4 text-blue-800">
+              <li className="flex items-start gap-3">
+                <span className="text-red-500 text-xl mt-1">⋄</span>
+                <span>Croire que le contraire de x ≥ 0 est x ≤ 0. Le contraire de x ≥ 0 est x &lt; 0.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-red-500 text-xl mt-1">⋄</span>
+                <span>Confondre ⇒ et ⇔. Une équivalence est constituée de deux implications.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-red-500 text-xl mt-1">⋄</span>
+                <span>Refuser l'usage des quantificateurs ∀ et ∃. Par exemple, la phrase sin(x) ̸= x n'a pas de sens. Signifie-t-elle ∀x ∈ R, sin(x) ̸= x, auquel cas elle est fausse car sin(0) = 0, ou signifie-t-elle que la fonction sinus n'est pas la fonction x → x, auquel cas elle devrait être proprement écrite sous la forme ∃x ∈ R/ sin(x) ̸= x ou aussi sin ̸= Id ? De manière générale, tout résultat contenant une variable doit être précédé du quantificateur adéquat.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-red-500 text-xl mt-1">⋄</span>
+                <span>Placer n'importe où des quantificateurs. Par exemple, la phrase f(x) ̸= 0, ∀x ∈ R n'est pas vraiment correcte car dans cette phrase, la première fois que l'on parle de x (f(x) ̸= 0), on ne sait pas ce que x représente et on doit attendre encore le ∀x ∈ R pour savoir qu'il s'agit d'un réel ou encore, la première fois que l'on parle de x, x n'est pas défini. La bonne phrase est ∀x ∈ R, f(x) ̸= 0 et se lit de manière naturelle : pour tout réel x, f(x) est différent de 0. Une phrase du genre « ∀ point M ∈ au plan, . . . » n'est pas correcte non plus, car elle mélange deux langages. On doit l'écrire ou bien « ∀M ∈ P », ou bien « pour tout point M du plan ».</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-red-500 text-xl mt-1">⋄</span>
+                <span>Penser que les phrases ∀n ∈ N, ∃m ∈ N/ m &gt; n et ∃m ∈ N/ ∀n ∈ N, m &gt; n signifient la même chose et donc, ne prêter aucune attention à l'ordre des quantificateurs.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-red-500 text-xl mt-1">⋄</span>
+                <span>Penser que les phrases ∀x ∈ R, (f(x) = 0 ou g(x) = 0) et ((∀x ∈ R, f(x) = 0) ou (∀x ∈ R, g(x) = 0) signifient la même chose. Encore une fois, on ne peut pas distribuer ∀ sur ou.</span>
+              </li>
+            </ul>
           </div>
 
           {/* Navigation */}

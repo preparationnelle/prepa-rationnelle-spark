@@ -441,9 +441,9 @@ const OteriaLogiqueFondamentaleCoursPage = () => {
               </div>
             </div>
 
-            {/* A.4 Tables de vérité */}
+            {/* A.5 Tables de vérité */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-teal-800">A.4. Tables de vérité</h3>
+              <h3 className="text-xl font-semibold mb-4 text-teal-800">A.5. Tables de vérité</h3>
 
               <div className="bg-blue-50 p-4 rounded-lg mb-4">
                 <p className="text-blue-800 mb-4">
@@ -497,6 +497,145 @@ const OteriaLogiqueFondamentaleCoursPage = () => {
                       </tr>
                     </tbody>
                   </table>
+                </div>
+              </div>
+            </div>
+
+            {/* A.4 Propositions (vrai/faux, reconnaissance) */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold mb-4 text-teal-800">A.4. Propositions (vrai/faux, reconnaissance)</h3>
+
+              <div className="bg-blue-50 p-4 rounded-lg mb-6">
+                <h4 className="font-bold text-blue-900 mb-3">Rappel : Qu'est-ce qu'une proposition ?</h4>
+                <p className="text-blue-800 mb-3">
+                  Une proposition est un énoncé mathématique qui peut être qualifié de <strong>vrai</strong> ou de <strong>faux</strong>, 
+                  mais pas les deux à la fois.
+                </p>
+                <div className="bg-white p-3 rounded border-l-4 border-blue-500">
+                  <p className="text-blue-800 font-medium">
+                    ⚠️ Attention : Un énoncé contenant des variables libres (non précisées) n'est pas une proposition !
+                  </p>
+                </div>
+              </div>
+
+              {/* Exercice de reconnaissance */}
+              <div className="bg-blue-50 p-4 rounded-lg mb-6">
+                <h4 className="font-bold text-blue-900 mb-4">4.1 Dire si les phrases suivantes sont des propositions :</h4>
+                
+                <div className="space-y-4">
+                  {/* Question a */}
+                  <div className="bg-white p-4 rounded-lg border border-blue-200">
+                    <div className="flex items-start gap-3 mb-3">
+                      <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded font-bold text-sm">a)</span>
+                      <span className="text-blue-900 font-medium">« 2+3=5 »</span>
+                    </div>
+                    <div className="ml-8 bg-green-50 p-3 rounded border-l-4 border-green-400">
+                      <p className="text-green-800 font-medium mb-2">✅ C'est une proposition</p>
+                      <p className="text-green-700 text-sm">
+                        Cette égalité mathématique a une valeur de vérité claire et non ambiguë : elle est <strong>vraie</strong>.
+                        On peut décider sans hésitation si elle est vraie ou fausse.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Question b */}
+                  <div className="bg-white p-4 rounded-lg border border-blue-200">
+                    <div className="flex items-start gap-3 mb-3">
+                      <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded font-bold text-sm">b)</span>
+                      <span className="text-blue-900 font-medium">« x+1=3 »</span>
+                    </div>
+                    <div className="ml-8 bg-red-50 p-3 rounded border-l-4 border-red-400">
+                      <p className="text-red-800 font-medium mb-2">❌ Ce n'est PAS une proposition</p>
+                      <p className="text-red-700 text-sm mb-2">
+                        Cette phrase contient une <strong>variable libre</strong> (x) dont la valeur n'est pas précisée.
+                      </p>
+                      <ul className="text-red-700 text-sm space-y-1">
+                        <li>• Si x = 2, alors l'énoncé est <em>vrai</em></li>
+                        <li>• Si x = 5, alors l'énoncé est <em>faux</em></li>
+                        <li>• Impossible de décider sans connaître x !</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Question c */}
+                  <div className="bg-white p-4 rounded-lg border border-blue-200">
+                    <div className="flex items-start gap-3 mb-3">
+                      <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded font-bold text-sm">c)</span>
+                      <span className="text-blue-900 font-medium">« 5 est un nombre premier »</span>
+                    </div>
+                    <div className="ml-8 bg-green-50 p-3 rounded border-l-4 border-green-400">
+                      <p className="text-green-800 font-medium mb-2">✅ C'est une proposition</p>
+                      <p className="text-green-700 text-sm">
+                        Cette affirmation mathématique est <strong>vraie</strong> : le nombre 5 n'a que deux diviseurs (1 et 5), 
+                        donc c'est bien un nombre premier. La valeur de vérité est claire.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Question d */}
+                  <div className="bg-white p-4 rounded-lg border border-blue-200">
+                    <div className="flex items-start gap-3 mb-3">
+                      <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded font-bold text-sm">d)</span>
+                      <span className="text-blue-900 font-medium">« Paris est la capitale de l'Italie »</span>
+                    </div>
+                    <div className="ml-8 bg-green-50 p-3 rounded border-l-4 border-green-400">
+                      <p className="text-green-800 font-medium mb-2">✅ C'est une proposition</p>
+                      <p className="text-green-700 text-sm">
+                        Cette affirmation géographique est <strong>fausse</strong> (la capitale de l'Italie est Rome), 
+                        mais on peut décider clairement de sa valeur de vérité. Même fausse, c'est une proposition !
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Règles de reconnaissance */}
+              <div className="bg-blue-100 p-4 rounded-lg mb-6">
+                <h4 className="font-bold text-blue-900 mb-3">📋 Règles de reconnaissance d'une proposition</h4>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="bg-white p-4 rounded-lg border border-green-300">
+                    <h5 className="font-semibold text-green-800 mb-2">✅ C'est une proposition si :</h5>
+                    <ul className="space-y-1 text-green-700 text-sm">
+                      <li>• L'énoncé est <strong>complet</strong> (pas de variables libres)</li>
+                      <li>• On peut décider s'il est vrai ou faux</li>
+                      <li>• Il n'y a <strong>qu'une seule</strong> valeur de vérité possible</li>
+                      <li>• L'énoncé porte sur des objets mathématiques précis</li>
+                    </ul>
+                  </div>
+                  <div className="bg-white p-4 rounded-lg border border-red-300">
+                    <h5 className="font-semibold text-red-800 mb-2">❌ Ce n'est PAS une proposition si :</h5>
+                    <ul className="space-y-1 text-red-700 text-sm">
+                      <li>• L'énoncé contient des <strong>variables libres</strong></li>
+                      <li>• C'est une question ou un ordre</li>
+                      <li>• La valeur de vérité dépend du contexte</li>
+                      <li>• L'énoncé est ambigu ou incomplet</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Exemples supplémentaires */}
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <h4 className="font-bold text-blue-900 mb-3">Autres exemples à analyser</h4>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <h5 className="font-semibold text-green-800">✅ Propositions :</h5>
+                    <ul className="space-y-1 text-blue-700 text-sm">
+                      <li>• « 7 × 8 = 56 »</li>
+                      <li>• « √2 est irrationnel »</li>
+                      <li>• « Tous les nombres pairs sont divisibles par 2 »</li>
+                      <li>• « La somme des angles d'un triangle vaut 180° »</li>
+                    </ul>
+                  </div>
+                  <div className="space-y-2">
+                    <h5 className="font-semibold text-red-800">❌ Non-propositions :</h5>
+                    <ul className="space-y-1 text-blue-700 text-sm">
+                      <li>• « n est divisible par 3 » (variable libre n)</li>
+                      <li>• « Résolvez cette équation » (ordre)</li>
+                      <li>• « Combien vaut x ? » (question)</li>
+                      <li>• « Cette ville est belle » (subjectif)</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
