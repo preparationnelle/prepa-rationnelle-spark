@@ -39,9 +39,9 @@ age = 25              # int
 taille = 1.75         # float
 nom = "Alice"         # str
 
-print(f"Nom: {nom}")
-print(f"Âge: {age} ans")
-print(f"Taille: {taille} m")`
+print("Nom:", nom)
+print("Âge:", age, "ans")
+print("Taille:", taille, "m")`
     },
     {
       id: 2,
@@ -50,9 +50,7 @@ print(f"Taille: {taille} m")`
       description: "Calculez et affichez le résultat de l'expression : (2 + 3) * 4 - 6 / 2",
       solution: `# Exercice 2 : Opérateurs mathématiques
 resultat = (2 + 3) * 4 - 6 / 2
-print(f"Le résultat est : {resultat}")
-print(f"Vérification : {2+3} * 4 = {5*4} = {20}")
-print(f"20 - 6/2 = 20 - {6/2} = {20-3} = 17")`
+print("Le résultat est :", resultat)`
     },
     {
       id: 3,
@@ -66,10 +64,10 @@ m = 6
 quotient = n // m    # Division entière
 reste = n % m        # Modulo
 
-print(f"n = {n}, m = {m}")
-print(f"Quotient : {quotient}")
-print(f"Reste : {reste}")
-print(f"Vérification : {quotient} * {m} + {reste} = {quotient*m + reste}")`
+print("n =", n, ", m =", m)
+print("Quotient :", quotient)
+print("Reste :", reste)
+print("Vérification :", quotient, "*", m, "+", reste, "=", quotient*m + reste)`
     },
     {
       id: 4,
@@ -90,9 +88,9 @@ impairs = []
 for i in range(1, 11, 2):
     impairs.append(i)
 
-print(f"Nombres pairs : {pairs}")
-print(f"Carrés : {carres}")
-print(f"Nombres impairs : {impairs}")`
+print("Nombres pairs :", pairs)
+print("Carrés :", carres)
+print("Nombres impairs :", impairs)`
     },
     {
       id: 5,
@@ -102,20 +100,20 @@ print(f"Nombres impairs : {impairs}")`
       solution: `# Exercice 5 : Manipulation de listes
 L = [1, 2, 3, 4, 5]
 
-print(f"Liste initiale : {L}")
+print("Liste initiale :", L)
 
 # Ajouter 6 à la fin
 L.append(6)
-print(f"Après ajout de 6 : {L}")
+print("Après ajout de 6 :", L)
 
 # Supprimer 3
 L.remove(3)
-print(f"Après suppression de 3 : {L}")
+print("Après suppression de 3 :", L)
 
 # Afficher premier et dernier
-print(f"Premier élément : {L[0]}")
-print(f"Dernier élément : {L[-1]}")
-print(f"Longueur : {len(L)}")`
+print("Premier élément :", L[0])
+print("Dernier élément :", L[-1])
+print("Longueur :", len(L))`
     },
     {
       id: 6,
@@ -126,7 +124,7 @@ print(f"Longueur : {len(L)}")`
 print("Nombre | Carré")
 print("-" * 15)
 for i in range(1, 11):
-    print(f"{i:6} | {i**2:5}")`
+    print(i, "|", i**2)`
     },
     {
       id: 7,
@@ -137,9 +135,9 @@ for i in range(1, 11):
 n = int(input("Entrez un nombre : "))
 
 if n % 2 == 0:
-    print(f"{n} est pair")
+    print(n, "est pair")
 else:
-    print(f"{n} est impair")`
+    print(n, "est impair")`
     },
     {
       id: 8,
@@ -154,9 +152,9 @@ while somme <= 100:
     n += 1
     somme += n
 
-print(f"Le plus petit n est : {n}")
-print(f"Somme : {somme}")
-print(f"Vérification : somme de 1 à {n} = {n*(n+1)//2}")`
+print("Le plus petit n est :", n)
+print("Somme :", somme)
+print("Vérification : somme de 1 à", n, "=", n*(n+1)//2)`
     },
     {
       id: 9,
@@ -174,9 +172,9 @@ def factorielle(n):
         return resultat
 
 # Test de la fonction
-print(f"Factorielle de 5 : {factorielle(5)}")
-print(f"Factorielle de 7 : {factorielle(7)}")
-print(f"Factorielle de 0 : {factorielle(0)}")`
+print("Factorielle de 5 :", factorielle(5))
+print("Factorielle de 7 :", factorielle(7))
+print("Factorielle de 0 :", factorielle(0))`
     },
     {
       id: 10,
@@ -196,9 +194,9 @@ for i in range(5):
 somme = sum(nombres)
 moyenne = somme / len(nombres)
 
-print(f"Nombres générés : {nombres}")
-print(f"Somme : {somme}")
-print(f"Moyenne : {moyenne:.2f}")`
+print("Nombres générés :", nombres)
+print("Somme :", somme)
+print("Moyenne :", round(moyenne, 2))`
     },
     {
       id: 11,
