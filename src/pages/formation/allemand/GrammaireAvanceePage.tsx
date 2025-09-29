@@ -1,21 +1,41 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { ArrowLeft, BookOpen, Target } from 'lucide-react';
+import { ArrowLeft, BookOpen, Target, Home, ChevronRight } from 'lucide-react';
 
 const GrammaireAvanceePage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 pt-8 pb-16 max-w-4xl">
+    <div className="min-h-screen bg-white">
+
+      {/* Sticky Breadcrumb */}
+      <nav className="sticky top-0 z-50 bg-white border-b border-border/40 relative z-10">
+        <div className="container mx-auto px-4 py-2">
+          <div className="flex items-center text-xs text-muted-foreground">
+            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              <Home className="h-3 w-3" />
+              <span>Accueil</span>
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formations" className="hover:text-foreground transition-colors">
+              Toutes les formations
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formation/allemand" className="hover:text-foreground transition-colors">
+              Formation Allemand ECG
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formation/allemand/epreuves" className="hover:text-foreground transition-colors">
+              Réussir les épreuves allemandes
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <span className="text-foreground font-medium">Grammaire avancée</span>
+          </div>
+        </div>
+      </nav>
+
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
 
         {/* Header */}
         <div className="mb-8">
-          <Link
-            to="/formation/allemand/reussir-epreuves"
-            className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-6 transition-colors"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Retour aux épreuves allemandes
-          </Link>
 
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center border border-orange-200">
@@ -357,24 +377,14 @@ const GrammaireAvanceePage = () => {
           </div>
         </section>
 
-        {/* Navigation */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <div className="flex justify-between items-center">
-            <Link
-              to="/formation/allemand/reussir-epreuvres"
-              className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Retour aux modules
-            </Link>
-
-            <Link
-              to="/formation/allemand/grammaire-avancee/exercices"
-              className="inline-flex items-center px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-md font-medium transition-colors"
-            >
-              Exercices pratiques
-            </Link>
-          </div>
+        {/* Bouton retour en bas de page */}
+        <div className="flex justify-center mt-12 pb-8">
+          <Link to="/formation/allemand/epreuves">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium flex items-center gap-2 transition-colors">
+              <ArrowLeft className="h-4 w-4" />
+              Retour aux épreuves allemandes
+            </button>
+          </Link>
         </div>
 
       </div>

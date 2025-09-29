@@ -6,7 +6,9 @@ import {
   Calendar,
   Briefcase,
   BookOpen,
-  X
+  X,
+  Home,
+  ChevronRight
 } from 'lucide-react';
 
 interface RedactedSubject {
@@ -136,8 +138,31 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 pt-16 pb-8">
+    <div className="min-h-screen bg-white">
+
+      {/* Sticky Breadcrumb */}
+      <nav className="sticky top-0 z-50 bg-white border-b border-border/40 relative z-10">
+        <div className="container mx-auto px-4 py-2">
+          <div className="flex items-center text-xs text-muted-foreground">
+            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              <Home className="h-3 w-3" />
+              <span>Accueil</span>
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formations" className="hover:text-foreground transition-colors">
+              Toutes les formations
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formation/espagnol" className="hover:text-foreground transition-colors">
+              Formation Espagnol ECG
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <span className="text-foreground font-medium">Civilisation Hispanique</span>
+          </div>
+        </div>
+      </nav>
+
+      <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-6">
@@ -153,7 +178,7 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
           </p>
           <div className="flex justify-center gap-3 mt-6">
             <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">10 thématiques essentielles</span>
-            <span className="px-4 py-2 border border-gray-200 text-gray-700 rounded-full text-sm font-medium">Actualisé 2024</span>
+            <span className="px-4 py-2 border border-gray-200 text-gray-700 rounded-full text-sm font-medium">Actualisé 2025</span>
             <span className="px-4 py-2 bg-orange-600 text-white rounded-full text-sm font-medium">Niveau Prépa</span>
           </div>
         </div>
@@ -167,39 +192,39 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
 
               <div className="space-y-4">
             {/* Module 1 - Política y Regímenes */}
-            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                  <span className="font-bold text-orange-600 text-lg">1</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Política y Regímenes</h3>
-                  <p className="text-gray-600 mb-4">Crises démocratiques, extrême droite/gauche, évolution politique</p>
-                  <div className="flex gap-3">
-                    <Link to="/formation/espagnol/civilisation/module1">
+            <Link to="/formation/espagnol/civilisation/module1" className="block">
+              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
+                    <span className="font-bold text-orange-600 text-lg">1</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Política y Regímenes</h3>
+                    <p className="text-gray-600 mb-4">Crises démocratiques, extrême droite/gauche, évolution politique</p>
+                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
                       <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
-                    </Link>
-                    <Link to="/formation/espagnol/civilisation/module1/vocabulaire">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <Briefcase className="mr-2 h-4 w-4" />
-                        Vocabulaire
+                      <Link to="/formation/espagnol/civilisation/module1/vocabulaire">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <Briefcase className="mr-2 h-4 w-4" />
+                          Vocabulaire
+                        </Button>
+                      </Link>
+                      <Button
+                        variant="outline"
+                        className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md"
+                        onClick={() => handleShowSubject(democracySubject)}
+                      >
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Sujets rédigés
                       </Button>
-                    </Link>
-                    <Button
-                      variant="outline"
-                      className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md"
-                      onClick={() => handleShowSubject(democracySubject)}
-                    >
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Sujets rédigés
-                    </Button>
+                    </div>
                   </div>
+                </div>
               </div>
-              </div>
-            </div>
+            </Link>
 
             {/* Module 2 - Mujeres y Violencia de Género */}
             <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
@@ -264,74 +289,74 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
                     </div>
 
                         {/* Module 4 - Migraciones y Desplazamientos */}
-            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                  <span className="font-bold text-orange-600 text-lg">4</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Migraciones y Desplazamientos</h3>
-                  <p className="text-gray-600 mb-4">Flux migratoires, caravanes, politique américaine, transit</p>
-                    <div className="flex gap-3">
-                    <Link to="/formation/espagnol/civilisation/module4">
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
-                          <Calendar className="mr-2 h-4 w-4" />
-                          Accéder au module
-                        </Button>
-                      </Link>
-                    <Link to="/formation/espagnol/civilisation/module4/vocabulaire">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <Briefcase className="mr-2 h-4 w-4" />
-                        Vocabulaire
-                      </Button>
-                    </Link>
-                        <Button 
-                          variant="outline" 
-                      className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md"
-                      onClick={() => handleShowSubject(migrationSubject)}
-                        >
-                        <BookOpen className="mr-2 h-4 w-4" />
-                        Sujets rédigés
-                      </Button>
+            <Link to="/formation/espagnol/civilisation/module4" className="block">
+              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
+                    <span className="font-bold text-orange-600 text-lg">4</span>
                   </div>
-                    </div>
-          </div>
-        </div>
-
-            {/* Module 5 - Violencia y Narcotráfico */}
-            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                  <span className="font-bold text-orange-600 text-lg">5</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Violencia y Narcotráfico</h3>
-                  <p className="text-gray-600 mb-4">Violence chronique, cartels, sécurité, maintien de l'ordre</p>
-                  <div className="flex gap-3">
-                    <Link to="/formation/espagnol/civilisation/module5">
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Migraciones y Desplazamientos</h3>
+                    <p className="text-gray-600 mb-4">Flux migratoires, caravanes, politique américaine, transit</p>
+                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
                       <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
-                    </Link>
-                    <Link to="/formation/espagnol/civilisation/module5/vocabulaire">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <Briefcase className="mr-2 h-4 w-4" />
-                        Vocabulaire
+                      <Link to="/formation/espagnol/civilisation/module4/vocabulaire">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <Briefcase className="mr-2 h-4 w-4" />
+                          Vocabulaire
+                        </Button>
+                      </Link>
+                      <Button 
+                        variant="outline" 
+                        className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md"
+                        onClick={() => handleShowSubject(migrationSubject)}
+                      >
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Sujets rédigés
                       </Button>
-                    </Link>
-                    <Button
-                      variant="outline"
-                      className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md"
-                      onClick={() => handleShowSubject(narcoSubject)}
-                    >
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Sujets rédigés
-                    </Button>
-              </div>
+                    </div>
+                  </div>
                 </div>
-        </div>
-      </div>
+              </div>
+            </Link>
+
+            {/* Module 5 - Violencia y Narcotráfico */}
+            <Link to="/formation/espagnol/civilisation/module5" className="block">
+              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
+                    <span className="font-bold text-orange-600 text-lg">5</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Violencia y Narcotráfico</h3>
+                    <p className="text-gray-600 mb-4">Violence chronique, cartels, sécurité, maintien de l'ordre</p>
+                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
+                      </Button>
+                      <Link to="/formation/espagnol/civilisation/module5/vocabulaire">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <Briefcase className="mr-2 h-4 w-4" />
+                          Vocabulaire
+                        </Button>
+                      </Link>
+                      <Button
+                        variant="outline"
+                        className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md"
+                        onClick={() => handleShowSubject(narcoSubject)}
+                      >
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Sujets rédigés
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
 
             {/* Module 6 - Pobreza y Dependencia Económica */}
             <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
@@ -363,35 +388,35 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
             </div>
             
             {/* Module 7 - Medio Ambiente y Clima */}
-            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                  <span className="font-bold text-orange-600 text-lg">7</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Medio Ambiente y Clima</h3>
-                  <p className="text-gray-600 mb-4">COP 16, Gustavo Petro, fast-fashion, peuples autochtones</p>
-                  <div className="flex gap-3">
-                    <Link to="/formation/espagnol/civilisation/module7">
+            <Link to="/formation/espagnol/civilisation/module7" className="block">
+              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
+                    <span className="font-bold text-orange-600 text-lg">7</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Medio Ambiente y Clima</h3>
+                    <p className="text-gray-600 mb-4">COP 16, Gustavo Petro, fast-fashion, peuples autochtones</p>
+                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
                       <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
-                    </Link>
-                    <Link to="/formation/espagnol/civilisation/module7/vocabulaire">
+                      <Link to="/formation/espagnol/civilisation/module7/vocabulaire">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <Briefcase className="mr-2 h-4 w-4" />
+                          Vocabulaire
+                        </Button>
+                      </Link>
                       <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <Briefcase className="mr-2 h-4 w-4" />
-                        Vocabulaire
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Sujets rédigés
                       </Button>
-                    </Link>
-                    <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Sujets rédigés
-                    </Button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Module 8 - Historia y Memoria */}
             <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
@@ -427,74 +452,74 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
             </div>
 
             {/* Module 10 - China y Geopolítica Global */}
-            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                  <span className="font-bold text-orange-600 text-lg">10</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">China y Geopolítica Global</h3>
-                  <p className="text-gray-600 mb-4">Alianza estratégica vs dependencia 2.0</p>
-                  <div className="flex gap-3">
-                    <Link to="/formation/espagnol/civilisation/module10">
+            <Link to="/formation/espagnol/civilisation/module10" className="block">
+              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
+                    <span className="font-bold text-orange-600 text-lg">10</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">China y Geopolítica Global</h3>
+                    <p className="text-gray-600 mb-4">Alianza estratégica vs dependencia 2.0</p>
+                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
                       <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
-                    </Link>
-                    <Link to="/formation/espagnol/civilisation/module10/vocabulaire">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <Briefcase className="mr-2 h-4 w-4" />
-                        Vocabulaire
+                      <Link to="/formation/espagnol/civilisation/module10/vocabulaire">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <Briefcase className="mr-2 h-4 w-4" />
+                          Vocabulaire
+                        </Button>
+                      </Link>
+                      <Button
+                        variant="outline"
+                        className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md"
+                        onClick={() => handleShowSubject(chinaSubject)}
+                      >
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Sujets rédigés
                       </Button>
-                    </Link>
-                    <Button
-                      variant="outline"
-                      className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md"
-                      onClick={() => handleShowSubject(chinaSubject)}
-                    >
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Sujets rédigés
-                    </Button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Module 9 - Inteligencia Artificial y Transformación Digital */}
-            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                  <span className="font-bold text-orange-600 text-lg">9</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Inteligencia Artificial y Transformación Digital</h3>
-                  <p className="text-gray-600 mb-4">Soberanía tecnológica e inclusión digital</p>
-                  <div className="flex gap-3">
-                    <Link to="/formation/espagnol/civilisation/module9">
+            <Link to="/formation/espagnol/civilisation/module9" className="block">
+              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
+                    <span className="font-bold text-orange-600 text-lg">9</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Inteligencia Artificial y Transformación Digital</h3>
+                    <p className="text-gray-600 mb-4">Soberanía tecnológica e inclusión digital</p>
+                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
                       <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
-                    </Link>
-                    <Link to="/formation/espagnol/civilisation/module9/vocabulaire">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <Briefcase className="mr-2 h-4 w-4" />
-                        Vocabulaire
+                      <Link to="/formation/espagnol/civilisation/module9/vocabulaire">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <Briefcase className="mr-2 h-4 w-4" />
+                          Vocabulaire
+                        </Button>
+                      </Link>
+                      <Button
+                        variant="outline"
+                        className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md"
+                        onClick={() => handleShowSubject(iaSubject)}
+                      >
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Sujets rédigés
                       </Button>
-                    </Link>
-                    <Button
-                      variant="outline"
-                      className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md"
-                      onClick={() => handleShowSubject(iaSubject)}
-                    >
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Sujets rédigés
-                    </Button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Module 11 - Transición Energética Española */}
             <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">

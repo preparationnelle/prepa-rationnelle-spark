@@ -29,25 +29,35 @@ const MetauxPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
+
+      {/* Sticky Breadcrumb */}
+      <nav className="sticky top-0 z-50 bg-white border-b border-border/40 relative z-10">
+        <div className="container mx-auto px-4 py-2">
+          <div className="flex items-center text-xs text-muted-foreground">
+            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              <Home className="h-3 w-3" />
+              <span>Accueil</span>
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formations" className="hover:text-foreground transition-colors">
+              Toutes les formations
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formation/geopolitique" className="hover:text-foreground transition-colors">
+              Formation Géopolitique
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formation/geopolitique/etudes-de-cas" className="hover:text-foreground transition-colors">
+              Thèmes centraux essentiels
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <span className="text-foreground font-medium">Métaux</span>
+          </div>
+        </div>
+      </nav>
+
       <div className="container mx-auto px-4 py-8">
-        {/* Breadcrumb */}
-        <nav className="flex items-center space-x-2 text-sm mb-6">
-          <Link to="/" className="flex items-center text-gray-600 hover:text-gray-800">
-            <Home className="h-4 w-4 mr-1" />
-            Accueil
-          </Link>
-          <ChevronRight className="h-4 w-4 text-gray-400" />
-          <Link to="/formation/geopolitique" className="text-gray-600 hover:text-gray-800">
-            Géopolitique
-          </Link>
-          <ChevronRight className="h-4 w-4 text-gray-400" />
-          <Link to="/formation/geopolitique/etudes-de-cas" className="text-gray-600 hover:text-gray-800">
-            Thèmes centraux
-          </Link>
-          <ChevronRight className="h-4 w-4 text-gray-400" />
-          <span className="text-gray-900 font-medium">Métaux</span>
-        </nav>
 
         {/* Header */}
         <Card className="mb-8 bg-gradient-to-r from-gray-600 to-slate-600 text-white">

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Target, FileText, MessageSquare, Clock, CheckCircle, AlertCircle, BookOpen, TrendingUp, Users, Lightbulb, Zap, Star, Award, Calendar, BarChart3 } from 'lucide-react';
+import { ArrowLeft, Target, FileText, MessageSquare, Clock, CheckCircle, AlertCircle, BookOpen, TrendingUp, Users, Lightbulb, Zap, Star, Award, Calendar, BarChart3, Home, ChevronRight } from 'lucide-react';
 
 const FormationEspagnolMethodologiePage: React.FC = () => {
   const detailedSections = [
@@ -490,17 +490,31 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Sticky Breadcrumb */}
+      <nav className="sticky top-0 z-50 bg-white border-b border-border/40 relative z-10">
+        <div className="container mx-auto px-4 py-2">
+          <div className="flex items-center text-xs text-muted-foreground">
+            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              <Home className="h-3 w-3" />
+              <span>Accueil</span>
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formations" className="hover:text-foreground transition-colors">
+              Toutes les formations
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formation/espagnol" className="hover:text-foreground transition-colors">
+              Formation Espagnol ECG
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <span className="text-foreground font-medium">Méthodologie LV2 Espagnol</span>
+          </div>
+        </div>
+      </nav>
+
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}
         <div className="mb-8">
-          <div className="flex items-center gap-4 mb-6">
-            <Link to="/formation/espagnol">
-              <Button variant="outline" size="sm" className="flex items-center gap-2">
-                <ArrowLeft className="w-4 h-4" />
-                Retour à la formation
-              </Button>
-            </Link>
-          </div>
 
           <div className="text-center">
             <h1 className="text-3xl font-bold text-gray-900 mb-4">
@@ -521,11 +535,12 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
         </div>
 
         {/* Avant-propos détaillé */}
+        <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b-2 border-orange-400 pb-3">
+            Avant-propos : L'importance stratégique de l'espagnol
+          </h2>
         {detailedSections.map((section, index) => (
-          <div key={section.id} className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">
-              {section.title}
-            </h2>
+          <div key={section.id} className="mb-8">
             <div className="space-y-6">
               {section.id === 1 ? (
                 <div className="space-y-6">
@@ -578,10 +593,11 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
             </div>
           </div>
         ))}
+        </div>
 
         {/* Organisation détaillée */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">
+        <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b-2 border-blue-400 pb-3">
             1) L'organisation
           </h2>
 
@@ -690,8 +706,8 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
         </div>
 
                 {/* Travail technique détaillé */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">
+        <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b-2 border-green-400 pb-3">
             2) Le travail technique détaillé
           </h2>
 
@@ -855,8 +871,8 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
         </div>
 
                 {/* Outils avancés */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">
+        <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b-2 border-purple-400 pb-3">
             3) Les outils avancés
           </h2>
 
@@ -983,8 +999,8 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
         </div>
 
                 {/* Conseils finaux détaillés */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">
+        <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b-2 border-red-400 pb-3">
             4) Avant de partir : Conseils finaux pour l'excellence
           </h2>
 
@@ -1040,8 +1056,8 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
         </div>
 
         {/* Anecdote finale */}
-        <div className="mb-12">
-          <h2 className="text-xl font-bold text-gray-900 mb-4 border-b border-gray-200 pb-2">
+        <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 mb-8">
+          <h2 className="text-xl font-bold text-gray-900 mb-4 border-b-2 border-indigo-400 pb-3">
             Anecdote pour finir
           </h2>
           <div className="border-l-4 border-orange-400 pl-4 py-4">
@@ -1057,7 +1073,7 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
         </div>
 
         {/* Call to action */}
-        <div className="border border-orange-200 rounded-lg p-6 mb-8">
+        <div className="bg-white border border-orange-200 rounded-xl p-6 mb-8 shadow-md">
           <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Prêt à appliquer cette méthode ?</h3>
           <p className="text-gray-700 mb-6 text-center">
             Cette méthodologie détaillée vous donne toutes les clés pour réussir brillamment l'épreuve d'espagnol BCE.

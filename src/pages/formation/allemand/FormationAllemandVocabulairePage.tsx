@@ -5,7 +5,7 @@ import { Languages, Home, ChevronRight } from 'lucide-react';
 
 const FormationAllemandVocabulairePage = () => {
   return (
-    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
+    <div className="min-h-screen bg-white relative overflow-hidden">
       {/* Floating elements - Blue and orange bubbles */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
       <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
@@ -15,7 +15,7 @@ const FormationAllemandVocabulairePage = () => {
       <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
 
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40 relative z-10">
+      <nav className="sticky top-0 z-50 bg-white border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -37,7 +37,7 @@ const FormationAllemandVocabulairePage = () => {
       </nav>
 
       {/* Section Héro moderne */}
-      <section className="bg-gradient-to-br from-orange-50 via-white to-blue-50 py-8 px-4 sm:px-6 relative z-10">
+      <section className="bg-white py-8 px-4 sm:px-6 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <div className="flex justify-center mb-6">
@@ -63,7 +63,7 @@ const FormationAllemandVocabulairePage = () => {
       </section>
 
       {/* Section Contenu */}
-      <section className="py-8 px-4 sm:px-6 bg-gray-50 relative z-10">
+      <section className="py-8 px-4 sm:px-6 bg-white relative z-10">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-6">Vocabulaire Allemand - Flashcards</h2>

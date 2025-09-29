@@ -55,14 +55,6 @@ const Module1PoliticaRegimenesPage = () => {
       <div className="container mx-auto px-4 py-8 relative z-10">
         {/* En-tête du module */}
         <div className="text-center mb-10">
-          <div className="flex justify-center mb-4">
-            <Link to="/formation/espagnol/civilisation">
-              <Button variant="outline" className="flex items-center gap-2">
-                <ArrowLeft className="h-4 w-4" />
-                Retour à la civilisation
-              </Button>
-            </Link>
-          </div>
           
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
             <div className="p-3 rounded-lg bg-blue-600 text-white">
@@ -73,11 +65,6 @@ const Module1PoliticaRegimenesPage = () => {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Crises démocratiques, extrême droite/gauche, évolution politique en Espagne et Amérique latine
           </p>
-          <div className="flex justify-center gap-2 mt-4">
-            <Badge variant="secondary">Module 1</Badge>
-            <Badge variant="outline">Actualisé 2024</Badge>
-            <Badge className="bg-blue-600">Niveau Prépa</Badge>
-          </div>
         </div>
 
         {/* Contenu principal */}
@@ -462,6 +449,16 @@ const Module1PoliticaRegimenesPage = () => {
               </CardContent>
             </Card>
           </div>
+        </div>
+
+        {/* Bouton retour en bas de page */}
+        <div className="flex justify-center mt-12 pb-8">
+          <Link to="/formation/espagnol/civilisation">
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Retour à la civilisation
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

@@ -133,7 +133,8 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
 
         <div className="grid lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {/* Union européenne */}
-          <Card className="p-6 hover:shadow-lg transition-all duration-200 bg-white border-t-4 border-blue-500">
+          <Link to="/formation/geopolitique/union-europeenne" className="block">
+            <Card className="p-6 hover:shadow-lg transition-all duration-200 bg-white border-t-4 border-blue-500 hover:scale-105 hover:-translate-y-1">
             <CardHeader className="pb-4">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
@@ -171,10 +172,10 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Link to="/formation/geopolitique/union-europeenne" className="block border border-blue-500 text-blue-700 font-semibold py-2 px-4 rounded-lg text-center hover:bg-blue-50 transition-colors cursor-pointer text-sm">
+              <div className="space-y-2" onClick={(e) => e.stopPropagation()}>
+                <div className="border border-blue-500 text-blue-700 font-semibold py-2 px-4 rounded-lg text-center hover:bg-blue-50 transition-colors cursor-pointer text-sm">
                   Accéder au cours →
-                </Link>
+                </div>
                 <div className="grid grid-cols-3 gap-2">
                   <div className="border border-gray-300 text-gray-600 py-1.5 px-2 rounded text-center hover:bg-gray-50 transition-colors cursor-pointer text-xs font-medium">
                     Flashcards
@@ -188,10 +189,12 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
                 </div>
               </div>
             </CardContent>
-          </Card>
+            </Card>
+          </Link>
 
           {/* Continent africain */}
-          <Card className="p-6 hover:shadow-lg transition-all duration-200 bg-white border-t-4 border-green-500">
+          <Link to="/formation/geopolitique/continent-africain" className="block">
+            <Card className="p-6 hover:shadow-lg transition-all duration-200 bg-white border-t-4 border-green-500 hover:scale-105 hover:-translate-y-1">
             <CardHeader className="pb-4">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
@@ -229,10 +232,10 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Link to="/formation/geopolitique/continent-africain" className="block border border-green-500 text-green-700 font-semibold py-2 px-4 rounded-lg text-center hover:bg-green-50 transition-colors cursor-pointer text-sm">
+              <div className="space-y-2" onClick={(e) => e.stopPropagation()}>
+                <div className="border border-green-500 text-green-700 font-semibold py-2 px-4 rounded-lg text-center hover:bg-green-50 transition-colors cursor-pointer text-sm">
                   Accéder au cours →
-                </Link>
+                </div>
                 <div className="grid grid-cols-3 gap-2">
                   <div className="border border-gray-300 text-gray-600 py-1.5 px-2 rounded text-center hover:bg-gray-50 transition-colors cursor-pointer text-xs font-medium">
                     Flashcards
@@ -246,10 +249,12 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
                 </div>
               </div>
             </CardContent>
-          </Card>
+            </Card>
+          </Link>
 
           {/* Proche et Moyen-Orient */}
-          <Card className="p-6 hover:shadow-lg transition-all duration-200 bg-white border-t-4 border-purple-500">
+          <Link to="/formation/geopolitique/proche-moyen-orient" className="block">
+            <Card className="p-6 hover:shadow-lg transition-all duration-200 bg-white border-t-4 border-purple-500 hover:scale-105 hover:-translate-y-1">
             <CardHeader className="pb-4">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
@@ -287,10 +292,10 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Link to="/formation/geopolitique/proche-moyen-orient" className="block border border-purple-500 text-purple-700 font-semibold py-2 px-4 rounded-lg text-center hover:bg-purple-50 transition-colors cursor-pointer text-sm">
+              <div className="space-y-2" onClick={(e) => e.stopPropagation()}>
+                <div className="border border-purple-500 text-purple-700 font-semibold py-2 px-4 rounded-lg text-center hover:bg-purple-50 transition-colors cursor-pointer text-sm">
                   Accéder au cours →
-                </Link>
+                </div>
                 <div className="grid grid-cols-3 gap-2">
                   <div className="border border-gray-300 text-gray-600 py-1.5 px-2 rounded text-center hover:bg-gray-50 transition-colors cursor-pointer text-xs font-medium">
                     Flashcards
@@ -304,10 +309,12 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
                 </div>
               </div>
             </CardContent>
-          </Card>
+            </Card>
+          </Link>
 
           {/* Amérique du Nord */}
-          <Card className="p-6 hover:shadow-lg transition-all duration-200 bg-white border-t-4 border-red-500">
+          <Link to="/formation/geopolitique/amerique-nord" className="block">
+            <Card className="p-6 hover:shadow-lg transition-all duration-200 bg-white border-t-4 border-red-500 hover:scale-105 hover:-translate-y-1">
             <CardHeader className="pb-4">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
@@ -345,7 +352,7 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
                 </div>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-2" onClick={(e) => e.stopPropagation()}>
                 <div className="border border-red-500 text-red-700 font-semibold py-2 px-4 rounded-lg text-center hover:bg-red-50 transition-colors cursor-pointer text-sm">
                   Accéder au cours →
                 </div>
@@ -362,10 +369,12 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
                 </div>
               </div>
             </CardContent>
-          </Card>
+            </Card>
+          </Link>
 
           {/* Amérique latine */}
-          <Card className="p-6 hover:shadow-lg transition-all duration-200 bg-white border-t-4 border-yellow-500">
+          <Link to="/formation/geopolitique/amerique-latine" className="block">
+            <Card className="p-6 hover:shadow-lg transition-all duration-200 bg-white border-t-4 border-yellow-500 hover:scale-105 hover:-translate-y-1">
             <CardHeader className="pb-4">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
@@ -403,10 +412,10 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Link to="/formation/geopolitique/amerique-latine" className="block border border-yellow-500 text-yellow-700 font-semibold py-2 px-4 rounded-lg text-center hover:bg-yellow-50 transition-colors cursor-pointer text-sm">
+              <div className="space-y-2" onClick={(e) => e.stopPropagation()}>
+                <div className="border border-yellow-500 text-yellow-700 font-semibold py-2 px-4 rounded-lg text-center hover:bg-yellow-50 transition-colors cursor-pointer text-sm">
                   Accéder au cours →
-                </Link>
+                </div>
                 <div className="grid grid-cols-3 gap-2">
                   <div className="border border-gray-300 text-gray-600 py-1.5 px-2 rounded text-center hover:bg-gray-50 transition-colors cursor-pointer text-xs font-medium">
                     Flashcards
@@ -420,10 +429,12 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
                 </div>
               </div>
             </CardContent>
-          </Card>
+            </Card>
+          </Link>
 
           {/* Asie */}
-          <Card className="p-6 hover:shadow-lg transition-all duration-200 bg-white border-t-4 border-orange-500">
+          <Link to="/formation/geopolitique/asie" className="block">
+            <Card className="p-6 hover:shadow-lg transition-all duration-200 bg-white border-t-4 border-orange-500 hover:scale-105 hover:-translate-y-1">
             <CardHeader className="pb-4">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
@@ -461,7 +472,7 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
                 </div>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-2" onClick={(e) => e.stopPropagation()}>
                 <div className="border border-orange-500 text-orange-700 font-semibold py-2 px-4 rounded-lg text-center hover:bg-orange-50 transition-colors cursor-pointer text-sm">
                   Accéder au cours →
                 </div>
@@ -478,63 +489,70 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
                 </div>
               </div>
             </CardContent>
-          </Card>
+            </Card>
+          </Link>
         </div>
 
         {/* Outils avancés */}
         <div className="mt-12 max-w-7xl mx-auto">
           <h2 className="text-2xl font-bold text-center mb-8 text-gray-800">Outils avancés</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <Card className="p-6 hover:shadow-lg transition-all duration-200 bg-white cursor-pointer transform hover:-translate-y-1">
-              <div className="flex flex-col h-full">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                    <Globe className="w-6 h-6 text-blue-600" />
+            <Link to="/generator/geopolitics-unified" className="block">
+              <Card className="p-6 hover:shadow-lg transition-all duration-200 bg-white cursor-pointer transform hover:-translate-y-1 hover:scale-105">
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                      <Globe className="w-6 h-6 text-blue-600" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-800">Générateur Unifié</h3>
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-800">Générateur Unifié</h3>
+                  <p className="text-gray-600 mb-4 flex-grow text-sm">
+                    Pipeline complet pour générer cours, sujets de dissertation et veille géopolitique.
+                  </p>
+                  <div className="border border-blue-500 text-blue-600 font-semibold py-2 px-4 rounded-lg text-center hover:bg-blue-50 transition-colors block">
+                    Utiliser le générateur
+                  </div>
                 </div>
-                <p className="text-gray-600 mb-4 flex-grow text-sm">
-                  Pipeline complet pour générer cours, sujets de dissertation et veille géopolitique.
-                </p>
-                <Link to="/generator/geopolitics-unified" className="border border-blue-500 text-blue-600 font-semibold py-2 px-4 rounded-lg text-center hover:bg-blue-50 transition-colors block">
-                  Utiliser le générateur
-                </Link>
-              </div>
-            </Card>
+              </Card>
+            </Link>
 
-            <Card className="p-6 hover:shadow-lg transition-all duration-200 bg-white cursor-pointer transform hover:-translate-y-1">
-              <div className="flex flex-col h-full">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                    <BookOpen className="w-6 h-6 text-green-600" />
+            <Link to="/formation/geopolitique/dossiers" className="block">
+              <Card className="p-6 hover:shadow-lg transition-all duration-200 bg-white cursor-pointer transform hover:-translate-y-1 hover:scale-105">
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                      <BookOpen className="w-6 h-6 text-green-600" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-800">Dossiers pays/régions</h3>
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-800">Dossiers pays/régions</h3>
+                  <p className="text-gray-600 mb-4 flex-grow text-sm">
+                    Fiches complètes et actualisées sur les principales puissances et régions.
+                  </p>
+                  <div className="border border-green-500 text-green-600 font-semibold py-2 px-4 rounded-lg text-center hover:bg-green-50 transition-colors">
+                    Consulter les dossiers
+                  </div>
                 </div>
-                <p className="text-gray-600 mb-4 flex-grow text-sm">
-                  Fiches complètes et actualisées sur les principales puissances et régions.
-                </p>
-                <div className="border border-green-500 text-green-600 font-semibold py-2 px-4 rounded-lg text-center hover:bg-green-50 transition-colors">
-                  Consulter les dossiers
-                </div>
-              </div>
-            </Card>
+              </Card>
+            </Link>
 
-            <Card className="p-6 hover:shadow-lg transition-all duration-200 bg-white cursor-pointer transform hover:-translate-y-1">
-              <div className="flex flex-col h-full">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                    <CheckCircle className="w-6 h-6 text-purple-600" />
+            <Link to="/formation/geopolitique/simulations" className="block">
+              <Card className="p-6 hover:shadow-lg transition-all duration-200 bg-white cursor-pointer transform hover:-translate-y-1 hover:scale-105">
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                      <CheckCircle className="w-6 h-6 text-purple-600" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-800">Simulations de crises</h3>
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-800">Simulations de crises</h3>
+                  <p className="text-gray-600 mb-4 flex-grow text-sm">
+                    Jeux de rôle géopolitiques pour comprendre les enjeux contemporains.
+                  </p>
+                  <div className="border border-purple-500 text-purple-600 font-semibold py-2 px-4 rounded-lg text-center hover:bg-purple-50 transition-colors">
+                    Participer aux simulations
+                  </div>
                 </div>
-                <p className="text-gray-600 mb-4 flex-grow text-sm">
-                  Jeux de rôle géopolitiques pour comprendre les enjeux contemporains.
-                </p>
-                <div className="border border-purple-500 text-purple-600 font-semibold py-2 px-4 rounded-lg text-center hover:bg-purple-50 transition-colors">
-                  Participer aux simulations
-                </div>
-              </div>
-            </Card>
+              </Card>
+            </Link>
           </div>
         </div>
       </div>
