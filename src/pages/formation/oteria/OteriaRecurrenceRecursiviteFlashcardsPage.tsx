@@ -194,6 +194,139 @@ const flashcards = [
     front: "Relation cubes/carrés",
     back: "\\left(\\sum_{k=1}^{n} k\\right)^2 = \\sum_{k=1}^{n} k^3",
     explanation: "Le carré de la somme des entiers égale la somme des cubes"
+  },
+  {
+    id: 28,
+    category: "Python - Sommes",
+    front: "Calculer une somme avec range()",
+    back: "\\text{sum([k for k in range(1, n+1)])} \\text{ ou } \\text{sum(range(1, n+1))}",
+    explanation: "range(1, n+1) génère les entiers de 1 à n inclus"
+  },
+  {
+    id: 29,
+    category: "Python - Sommes",
+    front: "Somme avec une boucle",
+    back: "\\text{somme = 0}\\\\\\text{for k in range(1, n+1):}\\\\\\quad\\text{somme += k}",
+    explanation: "Méthode classique pour accumuler une somme"
+  },
+  {
+    id: 30,
+    category: "Python - Sommes",
+    front: "Somme avec condition",
+    back: "\\text{sum([k for k in range(1, n+1) if k \\% 2 == 0])}",
+    explanation: "Utiliser une condition dans la liste en compréhension"
+  },
+  {
+    id: 31,
+    category: "Python - Produits",
+    front: "Calculer un produit avec boucle",
+    back: "\\text{produit = 1}\\\\\\text{for k in range(1, n+1):}\\\\\\quad\\text{produit *= k}",
+    explanation: "Initialiser à 1 et multiplier successivement"
+  },
+  {
+    id: 32,
+    category: "Python - Produits",
+    front: "Calculer un produit avec NumPy",
+    back: "\\text{import numpy as np}\\\\\\text{np.prod([k for k in range(1, n+1)])}",
+    explanation: "NumPy fournit une fonction prod() efficace"
+  },
+  {
+    id: 33,
+    category: "Python - Factorielles",
+    front: "Calculer n! avec math",
+    back: "\\text{from math import factorial}\\\\\\text{factorial(n)}",
+    explanation: "La fonction factorial() de math est optimisée"
+  },
+  {
+    id: 34,
+    category: "Python - Factorielles",
+    front: "Simplifier n! / (n-k)!",
+    back: "\\text{from math import perm}\\\\\\text{perm(n, k)} = \\frac{n!}{(n-k)!}",
+    explanation: "perm() calcule les arrangements sans calculer les factorielles complètes"
+  },
+  {
+    id: 35,
+    category: "Python - Coefficients binomiaux",
+    front: "Calculer C(n,k) avec math",
+    back: "\\text{from math import comb}\\\\\\text{comb(n, k)} = \\binom{n}{k}",
+    explanation: "comb() est disponible depuis Python 3.8"
+  },
+  {
+    id: 36,
+    category: "Python - Coefficients binomiaux",
+    front: "Calculer C(n,k) avec factorielles",
+    back: "\\text{from math import factorial}\\\\\\frac{\\text{factorial(n)}}{\\text{factorial(k) * factorial(n-k)}}",
+    explanation: "Utiliser la définition directe des coefficients binomiaux"
+  },
+  {
+    id: 37,
+    category: "Python - Coefficients binomiaux",
+    front: "Générer le triangle de Pascal",
+    back: "\\text{[[comb(n,k) for k in range(n+1)] for n in range(m)]}",
+    explanation: "Double liste en compréhension pour construire le triangle"
+  },
+  {
+    id: 38,
+    category: "Python - Binôme de Newton",
+    front: "Développer (a+b)^n",
+    back: "\\text{sum([comb(n,k) * a**k * b**(n-k) for k in range(n+1)])}",
+    explanation: "Application directe de la formule du binôme"
+  },
+  {
+    id: 39,
+    category: "Python - Binôme de Newton",
+    front: "Vérifier sum(C(n,k)) = 2^n",
+    back: "\\text{sum([comb(n,k) for k in range(n+1)]) == 2**n}",
+    explanation: "Test de la propriété fondamentale"
+  },
+  {
+    id: 40,
+    category: "Python - Puissances",
+    front: "Calculer une puissance",
+    back: "\\text{x**n ou pow(x, n)}",
+    explanation: "** est l'opérateur de puissance en Python"
+  },
+  {
+    id: 41,
+    category: "Python - Séquences",
+    front: "Générer une séquence arithmétique",
+    back: "\\text{[a + k*r for k in range(n)]}",
+    explanation: "a = premier terme, r = raison, n = nombre de termes"
+  },
+  {
+    id: 42,
+    category: "Python - Séquences",
+    front: "Générer une séquence géométrique",
+    back: "\\text{[a * q**k for k in range(n)]}",
+    explanation: "a = premier terme, q = raison, n = nombre de termes"
+  },
+  {
+    id: 43,
+    category: "Python - Affichage",
+    front: "Afficher avec format",
+    back: "\\text{print(f\\\"Résultat : \\{variable\\}\\\")}",
+    explanation: "f-string permet d'insérer des variables dans les chaînes"
+  },
+  {
+    id: 44,
+    category: "Python - Affichage",
+    front: "Afficher avec précision",
+    back: "\\text{print(f\\\"Valeur : \\{x:.4f\\}\\\")}",
+    explanation: ".4f affiche 4 décimales pour un nombre flottant"
+  },
+  {
+    id: 45,
+    category: "Python - Listes",
+    front: "Créer une liste avec compréhension",
+    back: "\\text{[expression for variable in iterable if condition]}",
+    explanation: "Syntaxe compacte pour créer des listes"
+  },
+  {
+    id: 46,
+    category: "Python - Listes",
+    front: "Appliquer une fonction à tous les éléments",
+    back: "\\text{[f(x) for x in liste]} \\text{ ou } \\text{list(map(f, liste))}",
+    explanation: "map() applique une fonction à chaque élément"
   }
 ];
 
@@ -225,6 +358,32 @@ const OteriaRecurrenceRecursiviteFlashcardsPage = () => {
     setCurrentCard(0);
     setIsFlipped(false);
   }, [selectedCategory]);
+
+  // Navigation au clavier
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Empêcher le comportement par défaut pour les flèches
+      if (['ArrowLeft', 'ArrowRight', ' ', 'Enter'].includes(e.key)) {
+        e.preventDefault();
+      }
+
+      switch (e.key) {
+        case 'ArrowLeft':
+          prevCard();
+          break;
+        case 'ArrowRight':
+          nextCard();
+          break;
+        case ' ':
+        case 'Enter':
+          flipCard();
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentCard, isFlipped, filteredCards.length]);
 
   const nextCard = () => {
     if (currentCard < filteredCards.length - 1) {
@@ -286,9 +445,12 @@ const OteriaRecurrenceRecursiviteFlashcardsPage = () => {
             </div>
           </div>
           <h1 className="text-3xl font-bold mb-4 text-teal-900">Chapitre 3 : Flashcards - Sommes, produits et coefficients binomiaux</h1>
-          <p className="text-lg text-blue-800 max-w-3xl mx-auto mb-6">
+          <p className="text-lg text-blue-800 max-w-3xl mx-auto mb-4">
             Mémorisez les formules essentielles avec ces cartes interactives
           </p>
+          <div className="text-sm text-gray-600 mb-6 bg-blue-50 p-3 rounded-lg max-w-2xl mx-auto border border-blue-200">
+            <span className="font-medium">Navigation au clavier :</span> ← Précédent | → Suivant | Espace/Entrée pour retourner la carte
+          </div>
 
           <div className="flex gap-3 justify-center flex-wrap">
             <Link to="/formation/oteria/recurrence-recursivite-cours">

@@ -1180,7 +1180,6 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-elements-de-logique', component: MathsLogiquePage, title: 'Chapitre 1 : Logique & raisonnement fondamentaux' },
   { path: '/formation/maths-ensembles', component: MathsEnsemblesPage, title: 'Maths - Ensembles et applications' },
   { path: '/formation/maths-ensembles-et-applications', component: MathsEnsemblesPage, title: 'Maths - Ensembles et applications' },
-  { path: '/formation/maths-sommes-produits-coefficients-binomiaux', component: MathsEntiersPage, title: 'Maths - Sommes, produits & coefficients binomiaux' },
   { path: '/formation/maths-suites', component: MathsSuitesPage, title: 'Maths - Suites numériques' },
   { path: '/formation/maths-suites-numeriques', component: MathsSuitesPage, title: 'Maths - Suites numériques' },
   { path: '/formation/maths-fonctions', component: MathsFonctionsPage, title: 'Maths - Fonctions réelles — continuité' },

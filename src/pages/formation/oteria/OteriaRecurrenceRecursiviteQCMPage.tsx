@@ -174,6 +174,118 @@ const questions = [
     ],
     correct: "D",
     explanation: "Les deux expressions sont égales : \\left(\\frac{n(n+1)}{2}\\right)^2 = \\sum_{k=1}^{n} k^3"
+  },
+  {
+    id: 13,
+    category: "Python - Sommes",
+    difficulty: "Facile",
+    question: "\\text{Quel code Python calcule correctement } \\sum_{k=1}^{10} k \\text{ ?}",
+    options: [
+      { id: "A", text: "sum(range(10))", latex: "\\text{sum(range(10))}" },
+      { id: "B", text: "sum(range(1, 11))", latex: "\\text{sum(range(1, 11))}" },
+      { id: "C", text: "sum(range(1, 10))", latex: "\\text{sum(range(1, 10))}" },
+      { id: "D", text: "sum([k for k in range(10)])", latex: "\\text{sum([k for k in range(10)])}" }
+    ],
+    correct: "B",
+    explanation: "\\text{range(1, 11) génère les nombres de 1 à 10 inclus (la borne supérieure est exclue en Python)}"
+  },
+  {
+    id: 14,
+    category: "Python - Sommes",
+    difficulty: "Moyen",
+    question: "\\text{Quel code calcule } \\sum_{k=1}^{n} k^2 \\text{ ?}",
+    options: [
+      { id: "A", text: "sum([k**2 for k in range(n)])", latex: "\\text{sum([k**2 for k in range(n)])}" },
+      { id: "B", text: "sum([k**2 for k in range(1, n+1)])", latex: "\\text{sum([k**2 for k in range(1, n+1)])}" },
+      { id: "C", text: "sum([k*2 for k in range(1, n+1)])", latex: "\\text{sum([k*2 for k in range(1, n+1)])}" },
+      { id: "D", text: "sum(range(1, n+1)**2)", latex: "\\text{sum(range(1, n+1)**2)}" }
+    ],
+    correct: "B",
+    explanation: "\\text{Il faut élever chaque k au carré (k**2) et utiliser range(1, n+1) pour aller de 1 à n}"
+  },
+  {
+    id: 15,
+    category: "Python - Coefficients binomiaux",
+    difficulty: "Facile",
+    question: "\\text{Comment calculer } \\binom{5}{2} \\text{ en Python ?}",
+    options: [
+      { id: "A", text: "from math import comb; comb(5, 2)", latex: "\\text{from math import comb; comb(5, 2)}" },
+      { id: "B", text: "import math; math.binom(5, 2)", latex: "\\text{import math; math.binom(5, 2)}" },
+      { id: "C", text: "5! / (2! * 3!)", latex: "\\text{5! / (2! * 3!)}" },
+      { id: "D", text: "factorial(5, 2)", latex: "\\text{factorial(5, 2)}" }
+    ],
+    correct: "A",
+    explanation: "\\text{La fonction comb() du module math (disponible depuis Python 3.8) calcule les coefficients binomiaux}"
+  },
+  {
+    id: 16,
+    category: "Python - Produits",
+    difficulty: "Moyen",
+    question: "\\text{Quel code calcule le produit } \\prod_{k=1}^{n} k \\text{ (factorielle) ?}",
+    options: [
+      { id: "A", text: "from math import factorial; factorial(n)", latex: "\\text{from math import factorial; factorial(n)}" },
+      { id: "B", text: "produit = 1\\nfor k in range(1, n+1):\\n    produit *= k", latex: "\\text{produit = 1; for k in range(1, n+1): produit *= k}" },
+      { id: "C", text: "import numpy as np; np.prod(range(1, n+1))", latex: "\\text{import numpy as np; np.prod(range(1, n+1))}" },
+      { id: "D", text: "Toutes les réponses", latex: "\\text{Toutes les réponses}" }
+    ],
+    correct: "D",
+    explanation: "\\text{Toutes ces méthodes calculent correctement n! : avec factorial(), avec une boucle, ou avec numpy.prod()}"
+  },
+  {
+    id: 17,
+    category: "Python - Sommes",
+    difficulty: "Moyen",
+    question: "\\text{Quel code calcule la somme des nombres pairs de 1 à n ?}",
+    options: [
+      { id: "A", text: "sum([k for k in range(1, n+1) if k % 2 == 0])", latex: "\\text{sum([k for k in range(1, n+1) if k \\% 2 == 0])}" },
+      { id: "B", text: "sum(range(2, n+1, 2))", latex: "\\text{sum(range(2, n+1, 2))}" },
+      { id: "C", text: "sum([k for k in range(0, n+1, 2)])", latex: "\\text{sum([k for k in range(0, n+1, 2)])}" },
+      { id: "D", text: "A et B", latex: "\\text{A et B}" }
+    ],
+    correct: "D",
+    explanation: "\\text{Les deux méthodes A et B calculent correctement la somme des pairs. A utilise un filtre, B utilise le pas de 2}"
+  },
+  {
+    id: 18,
+    category: "Python - Binôme de Newton",
+    difficulty: "Difficile",
+    question: "\\text{Quel code développe } (x+2)^4 \\text{ avec le binôme de Newton ?}",
+    options: [
+      { id: "A", text: "sum([comb(4,k) * x**k * 2**(4-k) for k in range(5)])", latex: "\\text{sum([comb(4,k) * x**k * 2**(4-k) for k in range(5)])}" },
+      { id: "B", text: "sum([comb(4,k) * x**(4-k) * 2**k for k in range(5)])", latex: "\\text{sum([comb(4,k) * x**(4-k) * 2**k for k in range(5)])}" },
+      { id: "C", text: "(x+2)**4", latex: "\\text{(x+2)**4}" },
+      { id: "D", text: "A et C", latex: "\\text{A et C}" }
+    ],
+    correct: "D",
+    explanation: "\\text{A applique la formule du binôme et C calcule directement. B inverse les puissances de x et 2}"
+  },
+  {
+    id: 19,
+    category: "Python - Sommes géométriques",
+    difficulty: "Moyen",
+    question: "\\text{Quel code calcule } \\sum_{k=0}^{n} 2^k \\text{ ?}",
+    options: [
+      { id: "A", text: "sum([2**k for k in range(n+1)])", latex: "\\text{sum([2**k for k in range(n+1)])}" },
+      { id: "B", text: "2**(n+1) - 1", latex: "\\text{2**(n+1) - 1}" },
+      { id: "C", text: "(1 - 2**(n+1)) // (1 - 2)", latex: "\\text{(1 - 2**(n+1)) // (1 - 2)}" },
+      { id: "D", text: "Toutes les réponses", latex: "\\text{Toutes les réponses}" }
+    ],
+    correct: "D",
+    explanation: "\\text{A calcule directement, B et C utilisent la formule de la somme géométrique : } \\frac{1-2^{n+1}}{1-2} = 2^{n+1}-1"
+  },
+  {
+    id: 20,
+    category: "Python - Séquences",
+    difficulty: "Facile",
+    question: "\\text{Quel code génère la suite géométrique } 1, 2, 4, 8, 16 \\text{ ?}",
+    options: [
+      { id: "A", text: "[2**k for k in range(5)]", latex: "\\text{[2**k for k in range(5)]}" },
+      { id: "B", text: "[k*2 for k in range(1, 6)]", latex: "\\text{[k*2 for k in range(1, 6)]}" },
+      { id: "C", text: "[2*k for k in range(5)]", latex: "\\text{[2*k for k in range(5)]}" },
+      { id: "D", text: "range(1, 17, 2)", latex: "\\text{range(1, 17, 2)}" }
+    ],
+    correct: "A",
+    explanation: "\\text{Une suite géométrique de raison 2 se génère avec } 2^k \\text{ pour k de 0 à 4. Les autres options donnent des suites arithmétiques}"
   }
 ];
 
