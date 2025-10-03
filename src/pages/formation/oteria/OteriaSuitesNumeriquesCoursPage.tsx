@@ -1,8 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Home, ChevronRight, ArrowLeft, BookOpen, BarChart3, Calculator, Zap, Target } from 'lucide-react';
+import { Home, ChevronRight, ArrowLeft, BookOpen, BarChart3, Calculator, Zap, Target, Code, Play } from 'lucide-react';
 
 const OteriaSuitesNumeriquesCoursPage = () => {
+  const [expandedCode, setExpandedCode] = useState<string | null>(null);
+
+  const toggleCode = (id: string) => {
+    setExpandedCode(expandedCode === id ? null : id);
+  };
+
+  const CodeBlock = ({ code, title, id }: { code: string; title: string; id: string }) => (
+    <div className="my-4 border border-orange-200 rounded-lg overflow-hidden">
+      <div 
+        className="bg-orange-100 px-4 py-2 flex items-center justify-between cursor-pointer hover:bg-orange-200 transition-colors"
+        onClick={() => toggleCode(id)}
+      >
+        <div className="flex items-center gap-2">
+          <Code className="h-4 w-4 text-orange-600" />
+          <span className="font-semibold text-orange-900">{title}</span>
+        </div>
+        <Play className={`h-4 w-4 text-orange-600 transition-transform ${expandedCode === id ? 'rotate-90' : ''}`} />
+      </div>
+      {expandedCode === id && (
+        <pre className="bg-blue-950 text-gray-100 p-4 overflow-x-auto">
+          <code className="text-sm">{code}</code>
+        </pre>
+      )}
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-white">
       {/* Fil d'Ariane */}
@@ -73,18 +99,24 @@ const OteriaSuitesNumeriquesCoursPage = () => {
                   <BookOpen className="h-5 w-5 mx-auto mb-2" />
                   Cours
                 </button>
-                <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium hover:scale-105 shadow-md hover:shadow-lg">
-                  <Target className="h-5 w-5 mx-auto mb-2" />
-                  Exercices
-                </button>
-                <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium hover:scale-105 shadow-md hover:shadow-lg">
-                  <Calculator className="h-5 w-5 mx-auto mb-2" />
-                  Flashcards
-                </button>
-                <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium hover:scale-105 shadow-md hover:shadow-lg">
-                  <Zap className="h-5 w-5 mx-auto mb-2" />
-                  QCM
-                </button>
+                <Link to="/formation/oteria/suites-numeriques-exercices" className="w-full">
+                  <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium hover:scale-105 shadow-md hover:shadow-lg">
+                    <Target className="h-5 w-5 mx-auto mb-2" />
+                    Exercices
+                  </button>
+                </Link>
+                <Link to="/formation/oteria/suites-numeriques-flashcards" className="w-full">
+                  <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium hover:scale-105 shadow-md hover:shadow-lg">
+                    <Calculator className="h-5 w-5 mx-auto mb-2" />
+                    Flashcards
+                  </button>
+                </Link>
+                <Link to="/formation/oteria/suites-numeriques-qcm" className="w-full">
+                  <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium hover:scale-105 shadow-md hover:shadow-lg">
+                    <Zap className="h-5 w-5 mx-auto mb-2" />
+                    QCM
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -122,6 +154,84 @@ const OteriaSuitesNumeriquesCoursPage = () => {
                   <strong>Exemple :</strong> u₀ donné et u(n+1) = (1/2)uₙ + 1
                 </div>
               </div>
+
+              {/* Application Python */}
+              <div className="mt-6 bg-gradient-to-r from-orange-50 to-orange-100 p-5 rounded-lg border-2 border-orange-300">
+                <h4 className="font-bold text-orange-900 mb-3 flex items-center gap-2">
+                  <Code className="h-5 w-5" />
+                  Application Python : Visualisation de suites
+                </h4>
+                
+                <CodeBlock 
+                  id="code1"
+                  title="Tracer une suite explicite : uₙ = 1/n"
+                  code={`import numpy as np
+import matplotlib.pyplot as plt
+
+# Définir les valeurs de n
+n = np.arange(1, 51)
+
+# Calculer la suite u_n = 1/n
+u_n = 1 / n
+
+# Tracer la suite
+plt.plot(n, u_n, 'o-', color='orange', markersize=4)
+plt.axhline(y=0, color='red', linestyle='--', label='Limite = 0')
+plt.xlabel('n')
+plt.ylabel('u_n')
+plt.title('Suite u_n = 1/n')
+plt.grid(True)
+plt.legend()
+plt.show()
+
+# Afficher quelques valeurs
+print(f"u_1 = {u_n[0]:.4f}")
+print(f"u_10 = {u_n[9]:.4f}")
+print(f"u_50 = {u_n[49]:.4f}")`}
+                />
+
+                <CodeBlock 
+                  id="code2"
+                  title="Tracer une suite récurrente : u₀=0, u(n+1) = (1/2)uₙ + 1"
+                  code={`import numpy as np
+import matplotlib.pyplot as plt
+
+# Calculer les termes de la suite récurrente
+u0 = 0
+n_max = 30
+u = [u0]
+
+for i in range(n_max):
+    u_next = 0.5 * u[-1] + 1  # u(n+1) = (1/2)*u_n + 1
+    u.append(u_next)
+
+# Point fixe : ℓ = (1/2)*ℓ + 1 → ℓ = 2
+point_fixe = 2
+
+# Tracer la suite
+plt.plot(u, 'o-', color='orange', markersize=5, label='u_n')
+plt.axhline(y=point_fixe, color='red', linestyle='--', label='Point fixe = 2')
+plt.xlabel('n')
+plt.ylabel('u_n')
+plt.title('Suite récurrente')
+plt.grid(True)
+plt.legend()
+plt.show()
+
+# Afficher les résultats
+print(f"Premiers termes: {u[:5]}")
+print(f"u_30 = {u[-1]:.6f}")
+print(f"Point fixe théorique: {point_fixe}")`}
+                />
+
+                <div className="mt-4 bg-white p-4 rounded border-l-4 border-orange-500">
+                  <strong className="text-orange-900">Exercice :</strong>
+                  <p className="text-gray-700 mt-2">
+                    Modifiez le code pour étudier la suite u(n+1) = 2uₙ - 1 avec u₀ = 3. 
+                    Cette suite converge-t-elle ? Tracez son évolution.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -143,6 +253,74 @@ const OteriaSuitesNumeriquesCoursPage = () => {
                 </div>
                 <div className="bg-white p-3 rounded border-l-4 border-blue-700">
                   <strong className="text-blue-900">Bornée</strong> s'il existe m,M ∈ ℝ tels que ∀n ∈ ℕ, m ≤ uₙ ≤ M
+                </div>
+              </div>
+
+              {/* Application Python */}
+              <div className="mt-6 bg-gradient-to-r from-orange-50 to-orange-100 p-5 rounded-lg border-2 border-orange-300">
+                <h4 className="font-bold text-orange-900 mb-3 flex items-center gap-2">
+                  <Code className="h-5 w-5" />
+                  Application Python : Visualiser les bornes
+                </h4>
+                
+                <CodeBlock 
+                  id="code3"
+                  title="Suite bornée : uₙ = sin(n)/n"
+                  code={`import numpy as np
+import matplotlib.pyplot as plt
+
+# Calculer la suite u_n = sin(n) / n
+n = np.arange(1, 101)
+u_n = np.sin(n) / n
+
+# Tracer la suite avec ses bornes
+plt.plot(n, u_n, 'o', color='orange', markersize=3, label='u_n = sin(n)/n')
+plt.axhline(y=1, color='red', linestyle='--', label='Majorant = 1')
+plt.axhline(y=-1, color='blue', linestyle='--', label='Minorant = -1')
+plt.axhline(y=0, color='green', linestyle=':', label='Limite = 0')
+plt.fill_between(n, -1, 1, alpha=0.1, color='gray')
+plt.xlabel('n')
+plt.ylabel('u_n')
+plt.title('Suite bornée : -1 ≤ u_n ≤ 1')
+plt.grid(True)
+plt.legend()
+plt.ylim(-1.2, 1.2)
+plt.show()
+
+print(f"La suite est bornée entre -1 et 1")`}
+                />
+
+                <CodeBlock 
+                  id="code4"
+                  title="Suite non bornée : uₙ = n²"
+                  code={`import numpy as np
+import matplotlib.pyplot as plt
+
+# Calculer la suite u_n = n²
+n = np.arange(1, 51)
+u_n = n**2
+
+# Tracer la suite
+plt.plot(n, u_n, 'o-', color='red', markersize=4)
+plt.xlabel('n')
+plt.ylabel('u_n')
+plt.title('Suite non majorée : u_n = n²')
+plt.grid(True)
+plt.show()
+
+# Afficher quelques valeurs
+print(f"u_1 = {u_n[0]}")
+print(f"u_10 = {u_n[9]}")
+print(f"u_50 = {u_n[49]}")
+print("Cette suite tend vers +∞")`}
+                />
+
+                <div className="mt-4 bg-white p-4 rounded border-l-4 border-orange-500">
+                  <strong className="text-orange-900">Exercice :</strong>
+                  <p className="text-gray-700 mt-2">
+                    1. Tracez la suite uₙ = (-1)ⁿ/n. Est-elle bornée ? <br/>
+                    2. Tracez la suite uₙ = n/(n+1). Déterminez graphiquement son majorant et sa limite.
+                  </p>
                 </div>
               </div>
             </div>
@@ -346,6 +524,87 @@ const OteriaSuitesNumeriquesCoursPage = () => {
                 </div>
               </div>
             </div>
+
+            {/* Application Python */}
+            <div className="mt-6 bg-gradient-to-r from-orange-50 to-orange-100 p-5 rounded-lg border-2 border-orange-300">
+              <h4 className="font-bold text-orange-900 mb-3 flex items-center gap-2">
+                <Code className="h-5 w-5" />
+                Application Python : Théorème des gendarmes
+              </h4>
+              
+              <CodeBlock 
+                id="code5"
+                title="Théorème des gendarmes : -1/n ≤ sin(n²)/n ≤ 1/n"
+                code={`import numpy as np
+import matplotlib.pyplot as plt
+
+# Définir les trois suites
+n = np.arange(1, 101)
+u_n = np.sin(n**2) / n  # Suite encadrée
+v_n = -1 / n            # Minorant
+w_n = 1 / n             # Majorant
+
+# Tracer les trois suites
+plt.plot(n, u_n, 'o', color='orange', markersize=3, label='u_n = sin(n²)/n')
+plt.plot(n, v_n, '-', color='blue', linewidth=2, label='v_n = -1/n')
+plt.plot(n, w_n, '-', color='red', linewidth=2, label='w_n = 1/n')
+plt.axhline(y=0, color='green', linestyle='--', label='Limite = 0')
+plt.fill_between(n, v_n, w_n, alpha=0.15, color='gray')
+plt.xlabel('n')
+plt.ylabel('Valeur')
+plt.title('Théorème des gendarmes')
+plt.grid(True)
+plt.legend()
+plt.ylim(-0.3, 0.3)
+plt.show()
+
+# Vérifier l'encadrement
+print("Vérification pour quelques valeurs:")
+for i in [0, 9, 49]:
+    print(f"n={n[i]}: {v_n[i]:.5f} ≤ {u_n[i]:.5f} ≤ {w_n[i]:.5f}")
+print("Toutes les suites convergent vers 0")`}
+              />
+
+              <CodeBlock 
+                id="code6"
+                title="Exercice : Étude de uₙ = cos(n)/√n"
+                code={`import numpy as np
+import matplotlib.pyplot as plt
+
+# Définir les trois suites
+n = np.arange(1, 101)
+u_n = np.cos(n) / np.sqrt(n)    # Suite encadrée
+v_n = -1 / np.sqrt(n)           # Minorant
+w_n = 1 / np.sqrt(n)            # Majorant
+
+# Tracer l'encadrement
+plt.plot(n, u_n, 'o', color='orange', markersize=2, label='u_n = cos(n)/√n')
+plt.plot(n, v_n, '-', color='blue', linewidth=2, label='v_n = -1/√n')
+plt.plot(n, w_n, '-', color='red', linewidth=2, label='w_n = 1/√n')
+plt.fill_between(n, v_n, w_n, alpha=0.1, color='gray')
+plt.axhline(y=0, color='green', linestyle='--', label='Limite = 0')
+plt.xlabel('n')
+plt.ylabel('Valeur')
+plt.title('Encadrement de la suite')
+plt.grid(True)
+plt.legend()
+plt.show()
+
+# Afficher quelques valeurs
+print(f"u_10 = {u_n[9]:.6f}")
+print(f"u_50 = {u_n[49]:.6f}")
+print(f"u_100 = {u_n[99]:.6f}")
+print("Conclusion: La suite converge vers 0")`}
+              />
+
+              <div className="mt-4 bg-white p-4 rounded border-l-4 border-orange-500">
+                <strong className="text-orange-900">Exercice :</strong>
+                <p className="text-gray-700 mt-2">
+                  Montrez graphiquement que la suite uₙ = sin(n³)/(n+1) converge vers 0. 
+                  Trouvez un encadrement et tracez les trois suites.
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Section 8: Convergence et composition */}
@@ -408,6 +667,89 @@ const OteriaSuitesNumeriquesCoursPage = () => {
                 </div>
               </div>
             </div>
+
+            {/* Application Python */}
+            <div className="mt-6 bg-gradient-to-r from-orange-50 to-orange-100 p-5 rounded-lg border-2 border-orange-300">
+              <h4 className="font-bold text-orange-900 mb-3 flex items-center gap-2">
+                <Code className="h-5 w-5" />
+                Application Python : Suites adjacentes
+              </h4>
+              
+              <CodeBlock 
+                id="code7"
+                title="Suites adjacentes : approximation de π (Leibniz)"
+                code={`import numpy as np
+import matplotlib.pyplot as plt
+
+# Calculer les suites adjacentes (formule de Leibniz)
+u = []
+v = []
+for n in range(1, 51):
+    # Somme partielle: 4 * (1 - 1/3 + 1/5 - 1/7 + ...)
+    k = np.arange(0, n+1)
+    u_n = 4 * np.sum((-1)**k / (2*k + 1))
+    v_n = u_n + 2/n
+    u.append(u_n)
+    v.append(v_n)
+
+# Tracer les deux suites
+n = np.arange(1, 51)
+plt.plot(n, u, 'o-', color='blue', markersize=3, label='u_n (croissante)')
+plt.plot(n, v, 'o-', color='red', markersize=3, label='v_n (décroissante)')
+plt.axhline(y=np.pi, color='green', linestyle='--', label=f'π = {np.pi:.4f}')
+plt.xlabel('n')
+plt.ylabel('Valeur')
+plt.title('Suites adjacentes encadrant π')
+plt.grid(True)
+plt.legend()
+plt.ylim(2.8, 3.5)
+plt.show()
+
+# Afficher l'encadrement
+print(f"n=10: {u[9]:.6f} < π < {v[9]:.6f}")
+print(f"n=50: {u[49]:.6f} < π < {v[49]:.6f}")
+print(f"π = {np.pi:.10f}")`}
+              />
+
+              <CodeBlock 
+                id="code8"
+                title="Méthode de Babylone : approximation de √2"
+                code={`import numpy as np
+import matplotlib.pyplot as plt
+
+# Méthode de Babylone : u_{n+1} = (u_n + 2/u_n) / 2
+u = [1.0]  # Valeur initiale
+for i in range(10):
+    u_next = (u[-1] + 2/u[-1]) / 2
+    u.append(u_next)
+
+sqrt2 = np.sqrt(2)
+
+# Tracer la convergence
+plt.plot(u, 'o-', color='orange', markersize=8, label='u_n')
+plt.axhline(y=sqrt2, color='red', linestyle='--', label=f'√2 = {sqrt2:.6f}')
+plt.xlabel('n')
+plt.ylabel('u_n')
+plt.title('Méthode de Babylone')
+plt.grid(True)
+plt.legend()
+plt.show()
+
+# Afficher la convergence
+print(f"Valeur exacte: √2 = {sqrt2:.10f}")
+for i in [0, 2, 5, 10]:
+    erreur = abs(u[i] - sqrt2)
+    print(f"n={i}: u_{i} = {u[i]:.10f}, erreur = {erreur:.2e}")`}
+              />
+
+              <div className="mt-4 bg-white p-4 rounded border-l-4 border-orange-500">
+                <strong className="text-orange-900">Exercice avancé :</strong>
+                <p className="text-gray-700 mt-2">
+                  Implémentez la méthode de Newton pour calculer √3 avec la suite u(n+1) = (uₙ + 3/uₙ)/2. 
+                  Comparez la vitesse de convergence avec la méthode de Babylone pour √2.
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Navigation */}
@@ -416,9 +758,11 @@ const OteriaSuitesNumeriquesCoursPage = () => {
               <div className="text-blue-600">← Séance précédente</div>
             </Link>
             <div className="flex gap-3">
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                Exercices
-              </button>
+              <Link to="/formation/oteria/suites-numeriques-exercices">
+                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
+                  Exercices
+                </button>
+              </Link>
               <Link to="/articles/oteria-cyber-school">
                 <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
                   Retour au programme

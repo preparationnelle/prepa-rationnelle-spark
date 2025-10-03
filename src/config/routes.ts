@@ -478,6 +478,7 @@ const OteriaRecurrenceRecursiviteCoursPage = lazy(() => import('../pages/formati
 
 // Chapitre 4 - Suites numériques & modélisation
 const OteriaSuitesNumeriquesCoursPage = lazy(() => import('../pages/formation/oteria/OteriaSuitesNumeriquesCoursPage'));
+const OteriaSuitesNumeriquesExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaSuitesNumeriquesExercicesPage'));
 
 // Chapitre 5 - Fonctions d'une variable réelle
 const OteriaFonctionsVariableReelleCoursPage = lazy(() => import('../pages/formation/oteria/OteriaFonctionsVariableReelleCoursPage'));
@@ -490,6 +491,8 @@ const OteriaIntegralesMonteCarloCoursPage = lazy(() => import('../pages/formatio
 const OteriaRecurrenceRecursiviteExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteExercicesPage'));
 const OteriaRecurrenceRecursiviteFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteFlashcardsPage'));
 const OteriaRecurrenceRecursiviteQCMPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteQCMPage'));
+const OteriaSuitesNumeriquesQCMPage = lazy(() => import('../pages/formation/oteria/OteriaSuitesNumeriquesQCMPage'));
+const OteriaSuitesNumeriquesFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaSuitesNumeriquesFlashcardsPage'));
 
 // Évaluation Finale
 const OteriaEvaluationFinaleQCMPage = lazy(() => import('../pages/formation/oteria/OteriaEvaluationFinaleQCMPage'));
@@ -684,6 +687,7 @@ export const routes: RouteConfig[] = [
 
   // Chapitre 4 - Suites numériques & modélisation
   { path: '/formation/oteria/suites-numeriques-cours', component: OteriaSuitesNumeriquesCoursPage, title: 'Suites Numériques - Cours' },
+  { path: '/formation/oteria/suites-numeriques-exercices', component: OteriaSuitesNumeriquesExercicesPage, title: 'Suites Numériques - Exercices' },
 
   // Chapitre 5 - Fonctions d'une variable réelle
   { path: '/formation/oteria/fonctions-variable-reelle-cours', component: OteriaFonctionsVariableReelleCoursPage, title: 'Fonctions Variable Réelle - Cours' },
@@ -697,6 +701,8 @@ export const routes: RouteConfig[] = [
   { path: '/formation/oteria/recurrence-recursivite-exercices', component: OteriaRecurrenceRecursiviteExercicesPage, title: 'Récurrence & Récursivité - Exercices' },
   { path: '/formation/oteria/recurrence-recursivite-flashcards', component: OteriaRecurrenceRecursiviteFlashcardsPage, title: 'Récurrence & Récursivité - Flashcards' },
   { path: '/formation/oteria/recurrence-recursivite-qcm', component: OteriaRecurrenceRecursiviteQCMPage, title: 'Récurrence & Récursivité - QCM' },
+  { path: '/formation/oteria/suites-numeriques-qcm', component: OteriaSuitesNumeriquesQCMPage, title: 'Suites Numériques - QCM' },
+  { path: '/formation/oteria/suites-numeriques-flashcards', component: OteriaSuitesNumeriquesFlashcardsPage, title: 'Suites Numériques - Flashcards' },
 
   // Évaluation Finale
   { path: '/formation/oteria/evaluation-finale', component: OteriaEvaluationFinaleQCMPage, title: 'Évaluation Finale - QCM Complet' },
