@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Home, ChevronRight, ArrowLeft, Code2, Users, CheckSquare, Presentation, Target, Calendar, Award } from 'lucide-react';
+import { Home, ChevronRight, ArrowLeft, Code2, Users, CheckSquare, Presentation, Target, Calendar, Award, FileText } from 'lucide-react';
 
 const OteriaMiniProjetPage = () => {
   return (
@@ -278,6 +278,47 @@ const OteriaMiniProjetPage = () => {
             </p>
           </div>
 
+        </div>
+
+        {/* Navigation vers les ressources */}
+        <div className="max-w-4xl mx-auto mb-8">
+          <div className="bg-white border border-blue-200 rounded-lg p-6 shadow-sm">
+            <h3 className="text-lg font-semibold text-blue-900 mb-4 text-center">
+              Ressources pour le Mini Projet - Séance 13
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <button className="w-full bg-orange-600 text-white px-4 py-3 rounded-lg cursor-default font-medium shadow-md">
+                <Target className="h-5 w-5 mx-auto mb-2" />
+                Mini Projet - Ateliers & Répétitions
+              </button>
+              <Link to="/formation/oteria/mini-projet-deroulement" className="group">
+                <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium group-hover:scale-105 shadow-md hover:shadow-lg">
+                  <FileText className="h-5 w-5 mx-auto mb-2" />
+                  Déroulement du projet de groupe
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Navigation */}
+        <div className="flex justify-between items-center bg-blue-50 p-6 rounded-lg">
+          <Link to="/formation/oteria/recurrence-recursivite-qcm">
+            <div className="text-blue-600 hover:text-blue-700">← Séance précédente</div>
+          </Link>
+          <div className="flex gap-3">
+            <Link to="/formation/oteria/mini-projet-deroulement">
+              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                Guide méthodologique
+              </button>
+            </Link>
+            <Link to="/articles/oteria-cyber-school">
+              <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                Retour au programme
+              </button>
+            </Link>
+          </div>
+          <div className="text-blue-600 font-medium">Fin du programme →</div>
         </div>
       </div>
     </div>

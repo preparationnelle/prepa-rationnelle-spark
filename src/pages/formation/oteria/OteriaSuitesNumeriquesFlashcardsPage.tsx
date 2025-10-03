@@ -9,6 +9,7 @@ import { sequencesFlashcards, getSequencesFlashcardsByCategory, getSequencesFlas
 import { LatexRenderer } from '@/components/LatexRenderer';
 
 const OteriaSuitesNumeriquesFlashcardsPage = () => {
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [studiedCards, setStudiedCards] = useState<Set<number>>(new Set());
@@ -312,7 +313,7 @@ const OteriaSuitesNumeriquesFlashcardsPage = () => {
         </div>
 
         {/* Flashcard principale */}
-        {currentCard && (
+        {totalCards > 0 && currentCard ? (
           <div className="max-w-4xl mx-auto mb-8">
             <Card className="min-h-[400px] border-2 border-teal-200 shadow-lg">
               <CardHeader className="text-center bg-teal-50">
@@ -379,7 +380,18 @@ const OteriaSuitesNumeriquesFlashcardsPage = () => {
               </CardContent>
             </Card>
           </div>
-        )}
+        ) : totalCards === 0 ? (
+          <div className="max-w-4xl mx-auto mb-8">
+            <Card className="min-h-[200px] border-2 border-gray-200 shadow-lg">
+              <CardContent className="p-8 flex flex-col justify-center items-center min-h-[200px]">
+                <div className="text-center">
+                  <h3 className="text-xl font-semibold mb-4 text-gray-600">Aucune flashcard trouvée</h3>
+                  <p className="text-gray-500">Vérifiez vos filtres ou rechargez la page.</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        ) : null}
 
         {/* Navigation simplifiée */}
         <div className="max-w-4xl mx-auto mb-8">

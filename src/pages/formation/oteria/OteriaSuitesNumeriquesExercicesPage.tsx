@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Home, ChevronRight, BookOpen, Target, Code, Play, CheckCircle } from 'lucide-react';
+import { Home, ChevronRight, BookOpen, Target, Calculator, Zap, Code, Play, CheckCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const OteriaSuitesNumeriquesExercicesPage = () => {
   const [expandedCode, setExpandedCode] = useState<string | null>(null);
@@ -66,16 +67,56 @@ const OteriaSuitesNumeriquesExercicesPage = () => {
             Mettez en pratique vos connaissances sur les suites avec Python
           </p>
 
-          {/* Navigation vers le cours */}
+          {/* Informations de séance */}
           <div className="max-w-2xl mx-auto mb-6">
-            <Link to="/formation/oteria/suites-numeriques-cours">
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 hover:bg-blue-100 transition-colors cursor-pointer">
-                <div className="flex items-center justify-center gap-2">
-                  <BookOpen className="h-5 w-5 text-blue-600" />
-                  <span className="text-blue-900 font-medium">Retour au cours</span>
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 shadow-sm">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                <div className="flex flex-col items-center">
+                  <span className="text-sm text-blue-600 font-medium mb-1">Numéro de séance</span>
+                  <span className="text-2xl font-bold text-blue-900">4</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <span className="text-sm text-blue-600 font-medium mb-1">Durée estimée</span>
+                  <span className="text-2xl font-bold text-blue-900">3h</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <span className="text-sm text-blue-600 font-medium mb-1">Niveau</span>
+                  <span className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                    🟢 Débutant
+                  </span>
                 </div>
               </div>
-            </Link>
+            </div>
+          </div>
+
+          {/* Ressources pédagogiques */}
+          <div className="max-w-4xl mx-auto mb-6">
+            <div className="bg-white border border-blue-200 rounded-lg p-6 shadow-sm">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <Link to="/formation/oteria/suites-numeriques-cours" className="group">
+                  <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium group-hover:scale-105 shadow-md hover:shadow-lg">
+                    <BookOpen className="h-5 w-5 mx-auto mb-2" />
+                    Cours
+                  </button>
+                </Link>
+                <button className="w-full bg-orange-600 text-white px-4 py-3 rounded-lg cursor-default font-medium shadow-md">
+                  <Target className="h-5 w-5 mx-auto mb-2" />
+                  Exercices
+                </button>
+                <Link to="/formation/oteria/suites-numeriques-flashcards" className="group">
+                  <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium group-hover:scale-105 shadow-md hover:shadow-lg">
+                    <Calculator className="h-5 w-5 mx-auto mb-2" />
+                    Flashcards
+                  </button>
+                </Link>
+                <Link to="/formation/oteria/suites-numeriques-qcm" className="group">
+                  <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium group-hover:scale-105 shadow-md hover:shadow-lg">
+                    <Zap className="h-5 w-5 mx-auto mb-2" />
+                    QCM
+                  </button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -468,18 +509,32 @@ print(f"\\nNombre d'or φ = {phi:.10f}")`}
 
           {/* Navigation */}
           <div className="flex justify-between items-center bg-blue-50 p-6 rounded-lg">
-            <Link to="/formation/oteria/suites-numeriques-cours">
-              <div className="text-blue-600 flex items-center gap-2 hover:text-blue-700 transition-colors">
-                <BookOpen className="h-5 w-5" />
-                <span>Retour au cours</span>
-              </div>
-            </Link>
-            <Link to="/articles/oteria-cyber-school">
-              <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
-                Retour au programme
-              </button>
-            </Link>
-            <div className="text-blue-600 font-medium">Flashcards →</div>
+            <div className="text-blue-600">Séance précédente</div>
+            <div className="flex gap-3">
+              <Link to="/formation/oteria/suites-numeriques-cours">
+                <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
+                  <BookOpen className="h-4 w-4 mr-2" />
+                  Cours
+                </Button>
+              </Link>
+              <Link to="/formation/oteria/suites-numeriques-flashcards">
+                <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
+                  <Calculator className="h-4 w-4 mr-2" />
+                  Flashcards
+                </Button>
+              </Link>
+              <Link to="/formation/oteria/suites-numeriques-qcm">
+                <Button className="bg-blue-600 hover:bg-blue-700">
+                  QCM
+                </Button>
+              </Link>
+              <Link to="/articles/oteria-cyber-school">
+                <Button className="bg-blue-600 hover:bg-blue-700">
+                  Retour au programme
+                </Button>
+              </Link>
+            </div>
+            <div className="text-blue-600 font-medium">Séance suivante →</div>
           </div>
         </div>
       </div>

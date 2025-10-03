@@ -142,8 +142,8 @@ const oteriaSessions = [
   },
   {
     id: 13,
-    title: "Mini-projet – ateliers & répétitions",
-    content: "conseils à venir",
+    title: "Mini-projet – ateliers & méthodologie",
+    content: "Le projet de groupe : articulation et déroulement complet avec guide méthodologique détaillé pour mener à bien votre projet de groupe étape par étape.",
     icon: Code2,
     color: "bg-teal-600",
     hasCourse: false,
@@ -341,12 +341,20 @@ const SessionCard = ({ session }) => {
 
           {session.hasMiniProjet && (
             session.id === 13 ? (
-              <Link to="/formation/oteria/mini-projet">
-                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                  <Code2 className="mr-2 h-4 w-4" />
-                  Mini Projet
-                </Button>
-              </Link>
+              <div className="space-y-2">
+                <Link to="/formation/oteria/mini-projet">
+                  <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
+                    <Code2 className="mr-2 h-4 w-4" />
+                    Mini Projet - Ateliers
+                  </Button>
+                </Link>
+                <Link to="/formation/oteria/mini-projet-deroulement">
+                  <Button variant="outline" className="w-full border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300 hover:scale-105">
+                    <BookOpen className="mr-2 h-4 w-4" />
+                    Déroulement du projet
+                  </Button>
+                </Link>
+              </div>
             ) : (
               <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
                 <Code2 className="mr-2 h-4 w-4" />

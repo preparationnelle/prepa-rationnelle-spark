@@ -499,6 +499,7 @@ const OteriaEvaluationFinaleQCMPage = lazy(() => import('../pages/formation/oter
 
 // Mini Projet
 const OteriaMiniProjetPage = lazy(() => import('../pages/formation/oteria/OteriaMiniProjetPage'));
+const OteriaMiniProjetDeroulementPage = lazy(() => import('../pages/formation/oteria/OteriaMiniProjetDeroulementPage'));
 const MathsEteControlePage = lazy(() => import('../pages/articles/MathsEteControlePage'));
 const AttentesConcoursPage = lazy(() => import('../pages/articles/AttentesConcoursPage'));
 const CollesDsPage = lazy(() => import('../pages/articles/CollesDsPage'));
@@ -709,6 +710,7 @@ export const routes: RouteConfig[] = [
 
   // Mini Projet
   { path: '/formation/oteria/mini-projet', component: OteriaMiniProjetPage, title: 'Mini Projet - Ateliers & Répétitions' },
+  { path: '/formation/oteria/mini-projet-deroulement', component: OteriaMiniProjetDeroulementPage, title: 'Mini Projet - Déroulement du projet de groupe' },
   { path: '/avis', component: AvisPage, title: 'Avis Superprof' },
   { path: '/methodologie/storytelling', component: StorytellingMethodePage, title: 'Méthodologie Storytelling' },
 

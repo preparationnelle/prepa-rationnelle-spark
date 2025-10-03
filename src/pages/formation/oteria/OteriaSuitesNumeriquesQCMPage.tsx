@@ -23,7 +23,7 @@ const qcmData = {
     },
     {
       id: 2,
-      question: "Pour une suite récurrente définie par u(n+1) = 2uₙ + 1 avec u₀ = 0, quel est le terme u₁ ?",
+      question: "Pour une suite récurrente u(n+1) = 2uₙ + 1 avec u₀ = 0, le terme u₁ vaut :",
       choices: [
         { key: "a", text: "0" },
         { key: "b", text: "1" },
@@ -107,7 +107,7 @@ const qcmData = {
     },
     {
       id: 9,
-      question: "Quelle inégalité permet d'encadrer la suite uₙ = sin(n²)/n ?",
+      question: "Pour la suite uₙ = sin(n²)/n, on peut utiliser comme encadrement :",
       choices: [
         { key: "a", text: "-1 ≤ uₙ ≤ 1" },
         { key: "b", text: "-1/n ≤ uₙ ≤ 1/n" },
@@ -131,24 +131,24 @@ const qcmData = {
     },
     {
       id: 11,
-      question: "Quelle est la limite de la suite uₙ = 1/n ?",
+      question: "La suite uₙ = 1/n :",
       choices: [
-        { key: "a", text: "1" },
-        { key: "b", text: "0" },
-        { key: "c", text: "+∞" },
-        { key: "d", text: "-∞" }
+        { key: "a", text: "Converge vers 1" },
+        { key: "b", text: "Converge vers 0" },
+        { key: "c", text: "Diverge vers +∞" },
+        { key: "d", text: "Diverge vers -∞" }
       ],
       answer: "b",
-      explanation: "La suite harmonique uₙ = 1/n tend vers 0 quand n tend vers +∞."
+      explanation: "La suite harmonique converge vers 0."
     },
     {
       id: 12,
-      question: "Quelle est le comportement asymptotique de la suite uₙ = n² ?",
+      question: "La suite uₙ = n² :",
       choices: [
-        { key: "a", text: "Elle converge vers 0" },
-        { key: "b", text: "Elle converge vers 1" },
-        { key: "c", text: "Elle diverge vers +∞" },
-        { key: "d", text: "Elle diverge vers -∞" }
+        { key: "a", text: "Converge vers 0" },
+        { key: "b", text: "Converge vers 1" },
+        { key: "c", text: "Diverge vers +∞" },
+        { key: "d", text: "Diverge vers -∞" }
       ],
       answer: "c",
       explanation: "Une suite polynomiale de degré ≥ 1 diverge vers +∞."
@@ -179,7 +179,7 @@ const qcmData = {
     },
     {
       id: 15,
-      question: "Quelle formule définit la méthode de Babylone (ou méthode de Héron) pour approcher √2 ?",
+      question: "La méthode de Babylone pour calculer √2 utilise la suite :",
       choices: [
         { key: "a", text: "u(n+1) = uₙ² + 2" },
         { key: "b", text: "u(n+1) = (uₙ + 2/uₙ)/2" },
@@ -191,39 +191,39 @@ const qcmData = {
     },
     {
       id: 16,
-      question: "Que peut-on dire de deux suites adjacentes uₙ et vₙ ?",
+      question: "Deux suites adjacentes uₙ et vₙ avec uₙ ≤ vₙ et vₙ - uₙ → 0 :",
       choices: [
-        { key: "a", text: "Elles convergent toutes deux vers 0" },
-        { key: "b", text: "Elles convergent vers la même limite ℓ" },
-        { key: "c", text: "Elles divergent" },
-        { key: "d", text: "Elles ont des limites différentes" }
+        { key: "a", text: "Convergent toutes deux vers 0" },
+        { key: "b", text: "Convergent vers la même limite ℓ" },
+        { key: "c", text: "Divergent" },
+        { key: "d", text: "Ont des limites différentes" }
       ],
       answer: "b",
       explanation: "Les suites adjacentes convergent vers la même limite ℓ."
     },
     {
       id: 17,
-      question: "Quelle propriété peut-on appliquer pour montrer qu'une suite alternée bornée converge ?",
+      question: "Pour la suite uₙ = (-1)ⁿ/n, on peut affirmer que :",
       choices: [
-        { key: "a", text: "Le théorème de la limite monotone" },
-        { key: "b", text: "Le théorème d'encadrement" },
-        { key: "c", text: "La composition des limites" },
-        { key: "d", text: "Le théorème du point fixe" }
+        { key: "a", text: "Elle converge vers 0" },
+        { key: "b", text: "Elle diverge" },
+        { key: "c", text: "Elle converge vers 1" },
+        { key: "d", text: "Elle converge vers -1" }
       ],
-      answer: "b",
-      explanation: "Le théorème d'encadrement permet de montrer la convergence de suites alternées bornées."
+      answer: "a",
+      explanation: "Le théorème d'encadrement : -1/n ≤ uₙ ≤ 1/n et les deux bornes convergent vers 0."
     },
     {
       id: 18,
-      question: "Pour une suite récurrente linéaire u(n+1) = kuₙ + b, quand |k| > 1, la suite :",
+      question: "La suite u(n+1) = 2uₙ - 1 avec u₀ = 3 :",
       choices: [
-        { key: "a", text: "Converge toujours vers le point fixe" },
-        { key: "b", text: "Diverge généralement" },
-        { key: "c", text: "Est toujours périodique" },
-        { key: "d", text: "Converge vers 0" }
+        { key: "a", text: "Converge vers 1" },
+        { key: "b", text: "Diverge vers +∞" },
+        { key: "c", text: "Diverge vers -∞" },
+        { key: "d", text: "Est périodique" }
       ],
       answer: "b",
-      explanation: "Si |k| > 1, la suite diverge car elle s'éloigne du point fixe."
+      explanation: "Point fixe : ℓ = 2ℓ - 1 ⇒ ℓ = 1. Mais |coefficient| = 2 > 1, donc divergence."
     },
     {
       id: 19,
@@ -239,7 +239,7 @@ const qcmData = {
     },
     {
       id: 20,
-      question: "Parmi ces suites, laquelle est strictement décroissante ?",
+      question: "Laquelle de ces suites est décroissante ?",
       choices: [
         { key: "a", text: "uₙ = n" },
         { key: "b", text: "uₙ = -n" },
@@ -247,7 +247,7 @@ const qcmData = {
         { key: "d", text: "uₙ = n²" }
       ],
       answer: "c",
-      explanation: "uₙ = 1/n : u(n+1) = 1/(n+1) < 1/n = uₙ, donc strictement décroissante."
+      explanation: "uₙ = 1/n : u(n+1) = 1/(n+1) < 1/n = uₙ, donc décroissante."
     }
   ]
 };
