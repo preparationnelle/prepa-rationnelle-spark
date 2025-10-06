@@ -496,6 +496,7 @@ const OteriaRecurrenceRecursiviteFlashcardsPage = lazy(() => import('../pages/fo
 const OteriaRecurrenceRecursiviteQCMPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteQCMPage'));
 const OteriaSuitesNumeriquesQCMPage = lazy(() => import('../pages/formation/oteria/OteriaSuitesNumeriquesQCMPage'));
 const OteriaSuitesNumeriquesFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaSuitesNumeriquesFlashcardsPage'));
+const OteriaPolynomesDichotomieFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaPolynomesDichotomieFlashcardsPage'));
 
 // Évaluation Finale
 const OteriaEvaluationFinaleQCMPage = lazy(() => import('../pages/formation/oteria/OteriaEvaluationFinaleQCMPage'));
@@ -707,6 +708,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/oteria/recurrence-recursivite-qcm', component: OteriaRecurrenceRecursiviteQCMPage, title: 'Récurrence & Récursivité - QCM' },
   { path: '/formation/oteria/suites-numeriques-qcm', component: OteriaSuitesNumeriquesQCMPage, title: 'Suites Numériques - QCM' },
   { path: '/formation/oteria/suites-numeriques-flashcards', component: OteriaSuitesNumeriquesFlashcardsPage, title: 'Suites Numériques - Flashcards' },
+  { path: '/formation/oteria/polynomes-dichotomie-flashcards', component: OteriaPolynomesDichotomieFlashcardsPage, title: 'Polynômes & Dichotomie - Flashcards' },
 
   // Évaluation Finale
   { path: '/formation/oteria/evaluation-finale', component: OteriaEvaluationFinaleQCMPage, title: 'Évaluation Finale - QCM Complet' },

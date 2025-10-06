@@ -294,6 +294,13 @@ const SessionCard = ({ session }) => {
                   Flashcards
                 </Button>
               </Link>
+            ) : session.id === 6 ? (
+              <Link to="/formation/oteria/polynomes-dichotomie-flashcards">
+                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
+                  <BrainIcon className="mr-2 h-4 w-4" />
+                  Flashcards
+                </Button>
+              </Link>
             ) : (
               <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
                 <BrainIcon className="mr-2 h-4 w-4" />
