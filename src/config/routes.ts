@@ -121,6 +121,9 @@ const AffectiveVerbsPage = lazy(() => import('../pages/formation/espagnol/gramma
 const AdjectivesAdverbsPage = lazy(() => import('../pages/formation/espagnol/grammaire/AdjectivesAdverbsPage'));
 const FormationEspagnolCivilisationPage = lazy(() => import('../pages/formation/espagnol/FormationEspagnolCivilisationPage'));
 const Module1PoliticaRegimenesPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module1PoliticaRegimenesPage'));
+const Module2MujeresViolenciaGeneroPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module2MujeresViolenciaGeneroPage'));
+const Module4MigracionesFronterasPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module4MigracionesFronterasPage'));
+const Module5NarcotráficoSeguridadPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module5NarcotráficoSeguridadPage'));
 const Module1VocabularyPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module1VocabularyPage'));
 const Module2VocabularyPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module2VocabularyPage'));
 const Module3VocabularyPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module3VocabularyPage'));
@@ -841,6 +844,9 @@ export const routes: RouteConfig[] = [
   { path: '/formation/espagnol/grammaire/adjectives-adverbs', component: AdjectivesAdverbsPage, title: 'Adjectifs et Adverbes' },
   { path: '/formation/espagnol/civilisation', component: FormationEspagnolCivilisationPage, title: 'Civilisation Hispanique' },
   { path: '/formation/espagnol/civilisation/module1', component: Module1PoliticaRegimenesPage, title: 'Política y Regímenes' },
+  { path: '/formation/espagnol/civilisation/module2', component: Module2MujeresViolenciaGeneroPage, title: 'Mujeres y Violencia de Género' },
+  { path: '/formation/espagnol/civilisation/module4', component: Module4MigracionesFronterasPage, title: 'Migraciones y Fronteras' },
+  { path: '/formation/espagnol/civilisation/module5', component: Module5NarcotráficoSeguridadPage, title: 'Narcotráfico y Seguridad' },
   { path: '/formation/espagnol/civilisation/module1/vocabulaire', component: Module1VocabularyPage, title: 'Vocabulaire Démocratique' },
   { path: '/formation/espagnol/civilisation/module2/vocabulaire', component: Module2VocabularyPage, title: 'Vocabulaire Féminin' },
   { path: '/formation/espagnol/civilisation/module3/vocabulaire', component: Module3VocabularyPage, title: 'Vocabulaire Éducatif' },

@@ -43,6 +43,11 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 24 100% 50%;
+
+    /* Homepage sections colors */
+    --page-bg: #FFFFFF;
+    --section-bg-1: #F7F9FC;
+    --section-bg-2: #F8FAFC;
   }
 
   .dark {

@@ -42,7 +42,7 @@ export const PartnersSection = () => {
   ];
 
   return (
-    <section className="py-10 px-4">
+    <section className="py-10 sm:py-14 md:py-16 lg:py-24 px-4 relative overflow-hidden" style={{ backgroundColor: 'var(--section-bg-1)' }}>
       <div className="container mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-8">
           Nos <span className="text-[#F36C00]">partenaires</span>

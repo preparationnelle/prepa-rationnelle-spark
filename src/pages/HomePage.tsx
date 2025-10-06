@@ -6,18 +6,21 @@ import { SuperprofReviewsSection } from '@/components/sections/SuperprofReviewsS
 import { PodcastSection } from '@/components/sections/PodcastSection';
 import { PartnersSection } from '@/components/sections/PartnersSection';
 import { CallToActionSection } from '@/components/sections/CallToActionSection';
-import { BookOpen, Calculator, Code, Languages, Globe, GraduationCap, Zap, Heart, Mic, Library } from 'lucide-react';
+import { BookOpen, Calculator, Code, Languages, Globe, GraduationCap, Zap, Heart, Mic, Library, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
 const HomePage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Section Héro avec appel à l'action principal */}
+    <div className="min-h-screen" style={{ backgroundColor: 'var(--page-bg)' }}>
+      {/* Section 1: Héro */}
       <HeroSection />
 
-      {/* Section Formations avec onglets pour une meilleure organisation */}
-      <section className="pb-16 px-4 sm:px-6 bg-gray-50">
+      {/* Séparateur blanc */}
+      <div className="h-2 sm:h-3 md:h-4" style={{ backgroundColor: 'var(--page-bg)' }}></div>
+
+      {/* Section 2: Formations spécialisées (inclut le bouton "Toutes nos formations") */}
+      <section className="py-10 sm:py-14 md:py-16 lg:py-24 px-4 sm:px-6 relative overflow-hidden" style={{ backgroundColor: 'var(--section-bg-1)' }}>
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6">
             <span className="text-orange-600 font-bold">Nos formations spécialisées</span>
@@ -169,11 +172,23 @@ const HomePage: React.FC = () => {
                 
               </div>
             </div>
+
+          {/* Bouton Toutes nos formations - Inclus dans la même section */}
+          <div className="flex justify-center mt-12">
+            <Link to="/formations">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                Toutes nos formations
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Section Générateurs IA */}
-      <section className="py-16 px-4 sm:px-6 bg-[#F8FAFF] relative overflow-hidden">
+      {/* Séparateur blanc */}
+      <div className="h-2 sm:h-3 md:h-4" style={{ backgroundColor: 'var(--page-bg)' }}></div>
+
+      {/* Section 3: Générateurs IA */}
+      <section className="py-10 sm:py-14 md:py-16 lg:py-24 px-4 sm:px-6 relative overflow-hidden" style={{ backgroundColor: 'var(--section-bg-1)' }}>
         {/* Floating elements - Blue bubbles only */}
         <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
@@ -287,17 +302,34 @@ const HomePage: React.FC = () => {
             </Link>
           </div>
 
+          {/* Bouton CTA vers tous les générateurs */}
+          <div className="flex justify-center mt-12">
+            <Link to="/generator">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                <ChevronRight className="h-5 w-5" />
+                Tous nos générateurs
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 
+      {/* Séparateur blanc */}
+      <div className="h-2 sm:h-3 md:h-4" style={{ backgroundColor: 'var(--page-bg)' }}></div>
       
-      {/* Section Témoignages */}
+      {/* Section 4: Avis d'élèves */}
       <SuperprofReviewsSection />
+
+      {/* Séparateur blanc */}
+      <div className="h-2 sm:h-3 md:h-4" style={{ backgroundColor: 'var(--page-bg)' }}></div>
       
-      {/* Section Podcast */}
+      {/* Section 5: Interview Europe 1 */}
       <PodcastSection />
+
+      {/* Séparateur blanc */}
+      <div className="h-2 sm:h-3 md:h-4" style={{ backgroundColor: 'var(--page-bg)' }}></div>
       
-      {/* Section Partenaires */}
+      {/* Section 6: Partenaires */}
       <PartnersSection />
       
       {/* Section Appel à l'action - Supprimée */}

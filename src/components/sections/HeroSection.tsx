@@ -25,9 +25,9 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-[95vh] w-full flex flex-col justify-center items-center py-2 sm:py-8 px-4 sm:px-6 relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-white"></div>
+    <section className="min-h-[95vh] w-full flex flex-col justify-center items-center pt-16 sm:pt-20 pb-10 sm:pb-16 md:pb-24 px-4 sm:px-6 relative overflow-hidden" style={{ backgroundColor: 'var(--section-bg-1)' }}>
+      {/* Background */}
+      <div className="absolute inset-0" style={{ backgroundColor: 'var(--section-bg-1)' }}></div>
       
       {/* Floating elements - Enhanced with more bubbles */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
@@ -88,25 +88,8 @@ export const HeroSection = () => {
           La Méthode <span className="font-bold text-orange-600">RATIONNELLE</span> pour Gagner <span className="font-bold text-orange-600">+5</span> Points en <span className="font-bold text-orange-600">Maths</span> et <span className="font-bold text-orange-600">Python</span>
         </p>
 
-                {/* Enhanced Buttons */}
-        <div className="flex flex-col items-center justify-center gap-4 w-full max-w-[1000px] mb-6 sm:mb-8 px-4">
-          <Button 
-            size="lg" 
-            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base sm:text-lg leading-snug rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border-0 relative overflow-hidden group break-words whitespace-normal sm:whitespace-nowrap text-center z-10"
-            style={{
-              boxShadow: "0 8px 25px rgba(59, 130, 246, 0.3)"
-            }}
-            onClick={joinWhatsAppGroup}
-          >
-            <span className="relative z-10 flex items-center justify-center text-center">
-              Réserve ton cours gratuit
-            </span>
-            <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </Button>
-        </div>
-
         {/* Enhanced Statistics Section */}
-        <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 sm:p-10 mb-8 sm:mb-10 shadow-2xl border border-orange-100 relative overflow-hidden z-10">
+        <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 sm:p-10 mb-6 sm:mb-8 shadow-2xl border border-orange-100 relative overflow-hidden z-10">
           {/* Background pattern */}
           <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-blue-50/50"></div>
           
@@ -148,6 +131,23 @@ export const HeroSection = () => {
             
 
           </div>
+        </div>
+
+        {/* Enhanced Buttons - Déplacé après les statistiques */}
+        <div className="flex flex-col items-center justify-center gap-4 w-full max-w-[1000px] px-4">
+          <Button 
+            size="lg" 
+            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base sm:text-lg leading-snug rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border-0 relative overflow-hidden group break-words whitespace-normal sm:whitespace-nowrap text-center z-10"
+            style={{
+              boxShadow: "0 8px 25px rgba(59, 130, 246, 0.3)"
+            }}
+            onClick={joinWhatsAppGroup}
+          >
+            <span className="relative z-10 flex items-center justify-center text-center">
+              Réserve ton cours gratuit
+            </span>
+            <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </Button>
         </div>
       </div>
 

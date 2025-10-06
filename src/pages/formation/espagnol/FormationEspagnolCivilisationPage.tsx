@@ -227,37 +227,39 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
             </Link>
 
             {/* Module 2 - Mujeres y Violencia de Género */}
-            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                  <span className="font-bold text-orange-600 text-lg">2</span>
-                </div>
-                      <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Mujeres y Violencia de Género</h3>
-                  <p className="text-gray-600 mb-4">Féminisme et égalité</p>
-                  <div className="flex gap-3">
-                    <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
-                      <Calendar className="mr-2 h-4 w-4" />
-                      Bientôt disponible
-                    </Button>
-                    <Link to="/formation/espagnol/civilisation/module2/vocabulaire">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <Briefcase className="mr-2 h-4 w-4" />
-                        Vocabulaire
+            <Link to="/formation/espagnol/civilisation/module2" className="block">
+              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
+                    <span className="font-bold text-orange-600 text-lg">2</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Mujeres y Violencia de Género</h3>
+                    <p className="text-gray-600 mb-4">Féminisme et égalité</p>
+                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Accéder au module
                       </Button>
-                    </Link>
-                    <Button
-                      variant="outline"
-                      className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md"
-                      onClick={() => handleShowSubject(womenSubject)}
-                    >
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Sujets rédigés
-                    </Button>
-                      </div>
+                      <Link to="/formation/espagnol/civilisation/module2/vocabulaire">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <Briefcase className="mr-2 h-4 w-4" />
+                          Vocabulaire
+                        </Button>
+                      </Link>
+                      <Button
+                        variant="outline"
+                        className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md"
+                        onClick={() => handleShowSubject(womenSubject)}
+                      >
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Sujets rédigés
+                      </Button>
                     </div>
-                        </div>
-                      </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
 
             {/* Module 3 - Educación y Desigualdades */}
             <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">

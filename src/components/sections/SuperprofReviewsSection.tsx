@@ -171,7 +171,7 @@ export const SuperprofReviewsSection = () => {
   };
 
   return (
-    <section className="py-12 px-4 bg-gradient-to-b from-blue-50 to-white">
+    <section className="py-10 sm:py-14 md:py-16 lg:py-24 px-4 relative overflow-hidden" style={{ backgroundColor: 'var(--section-bg-1)' }}>
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-800 mb-4">

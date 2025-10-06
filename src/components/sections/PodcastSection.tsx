@@ -7,9 +7,9 @@ export const PodcastSection = () => {
   const podcastUrl = "https://www.europe1.fr/emissions/la-france-bouge-academie/prepa-rationnelle-concue-pour-revolutionner-le-monde-la-preparation-pour-integrer-les-ecoles-de-commerce-667526";
   
   return (
-    <section className="py-8 px-4 relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-50/30 via-white to-blue-50/30"></div>
+    <section className="py-10 sm:py-14 md:py-16 lg:py-24 px-4 relative overflow-hidden" style={{ backgroundColor: 'var(--section-bg-1)' }}>
+      {/* Background */}
+      <div className="absolute inset-0" style={{ backgroundColor: 'var(--section-bg-1)' }}></div>
       
       {/* Floating elements */}
       <div className="absolute top-10 left-10 w-24 h-24 bg-orange-200 rounded-full opacity-20 animate-pulse"></div>

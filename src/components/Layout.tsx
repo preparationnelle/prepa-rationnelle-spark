@@ -27,7 +27,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, showFooter = true }) =
       )}
       
       <Navigation />
-      <main className="flex-1 w-full relative z-10 pt-20 md:pt-16">
+      <main className={`flex-1 w-full relative z-10 ${isHomePage ? 'pt-0' : 'pt-20 md:pt-16'}`}>
         <div className="w-full max-w-full">
           {children}
         </div>
