@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Home, ChevronRight, ArrowLeft, BookOpen, Database, Calculator, Zap, Target } from 'lucide-react';
+import { Home, ChevronRight, ArrowLeft, BookOpen, Database, Calculator, Zap, Target, Code, Eye, EyeOff } from 'lucide-react';
+import { Button } from "@/components/ui/button";
 
 const OteriaFonctionsVariableReelleCoursPage = () => {
+  const [expandedCode, setExpandedCode] = useState<string | null>(null);
+
+  const toggleCode = (codeId: string) => {
+    setExpandedCode(expandedCode === codeId ? null : codeId);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Fil d'Ariane */}
@@ -69,22 +76,28 @@ const OteriaFonctionsVariableReelleCoursPage = () => {
                 Parité, périodicité, continuité (aperçu), Théorème de croissance comparée
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <button className="w-full bg-orange-600 text-white px-4 py-3 rounded-lg cursor-default font-medium shadow-md">
+                <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg cursor-default font-medium shadow-md">
                   <BookOpen className="h-5 w-5 mx-auto mb-2" />
                   Cours
                 </button>
+                <Link to="/formation/oteria/fonctions-exercices" className="w-full">
                 <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium hover:scale-105 shadow-md hover:shadow-lg">
                   <Target className="h-5 w-5 mx-auto mb-2" />
                   Exercices
                 </button>
+                </Link>
+                <Link to="/formation/oteria/fonctions-flashcards" className="w-full">
                 <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium hover:scale-105 shadow-md hover:shadow-lg">
                   <Calculator className="h-5 w-5 mx-auto mb-2" />
                   Flashcards
                 </button>
-                <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium hover:scale-105 shadow-md hover:shadow-lg">
-                  <Zap className="h-5 w-5 mx-auto mb-2" />
-                  QCM
-                </button>
+                </Link>
+                <Link to="/formation/oteria/fonctions-qcm" className="group">
+                  <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium group-hover:scale-105 shadow-md hover:shadow-lg">
+                    <Zap className="h-5 w-5 mx-auto mb-2" />
+                    QCM
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -107,10 +120,241 @@ const OteriaFonctionsVariableReelleCoursPage = () => {
             </div>
           </div>
 
-          {/* Section 2: Valeur absolue */}
+          {/* Section 2: Opérations sur les ensembles */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
-              2. Valeur absolue
+              2. Opérations sur les ensembles
+            </h2>
+
+            {/* A.1 Comparaison entre ensembles */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold mb-4 text-blue-900">A.1. Comparaison entre ensembles</h3>
+              
+              <div className="space-y-4">
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <div className="bg-white p-4 rounded border-2 border-blue-300">
+                    <p className="text-blue-800 mb-2">
+                      On dit qu'un ensemble A est contenu dans un ensemble B, et l'on écrit <strong>A⊂B</strong>, 
+                      lorsque tout élément de A appartient également à B.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="bg-white p-4 rounded border-l-4 border-blue-500">
+                    <strong className="text-blue-900">Égalité :</strong>
+                    <p className="text-blue-800 mt-2">A=B ⟺ A⊂B et B⊂A</p>
+                  </div>
+                  <div className="bg-white p-4 rounded border-l-4 border-blue-600">
+                    <strong className="text-blue-900">Parties :</strong>
+                    <p className="text-blue-800 mt-2">A⊂E ⇒ A est une partie de E</p>
+                    <p className="text-blue-700 text-sm mt-1">Notation : P(E) = ensemble des parties de E</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* A.2 Intersection et réunion */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold mb-4 text-blue-900">A.2. Intersection et réunion</h3>
+              
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-blue-900 mb-3">Intersection</h4>
+                  <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
+                    <strong className="text-blue-900">x∈A∩B ⟺ x∈A et x∈B</strong>
+                  </div>
+                </div>
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-blue-900 mb-3">Réunion</h4>
+                  <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
+                    <strong className="text-blue-900">x∈A∪B ⟺ x∈A ou x∈B</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* A.3 Propriétés fondamentales */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold mb-4 text-blue-900">A.3. Propriétés fondamentales</h3>
+              
+              <div className="space-y-6">
+                {/* Commutativité */}
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-blue-900 mb-3">Commutativité</h4>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    <div className="bg-white p-3 rounded border-l-4 border-blue-500">
+                      A∩B = B∩A
+                    </div>
+                    <div className="bg-white p-3 rounded border-l-4 border-blue-500">
+                      A∪B = B∪A
+                    </div>
+                  </div>
+                </div>
+
+                {/* Associativité */}
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-blue-900 mb-3">Associativité</h4>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    <div className="bg-white p-3 rounded border-l-4 border-blue-600">
+                      (A∩B)∩C = A∩(B∩C)
+                    </div>
+                    <div className="bg-white p-3 rounded border-l-4 border-blue-600">
+                      (A∪B)∪C = A∪(B∪C)
+                    </div>
+                  </div>
+                </div>
+
+                {/* Distributivité */}
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-blue-900 mb-3">Distributivité</h4>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    <div className="bg-white p-3 rounded border-l-4 border-blue-700">
+                      A∩(B∪C) = (A∩B)∪(A∩C)
+                    </div>
+                    <div className="bg-white p-3 rounded border-l-4 border-blue-700">
+                      A∪(B∩C) = (A∪B)∩(A∪C)
+                    </div>
+                  </div>
+                </div>
+
+                {/* Complémentaire */}
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-blue-900 mb-3">Complémentaire</h4>
+                  <div className="space-y-3">
+                    <div className="bg-white p-3 rounded border-l-4 border-blue-800">
+                      x∈Ā ⟺ x∉A
+                    </div>
+                    <div className="bg-white p-3 rounded border-l-4 border-blue-800">
+                      (Ā) = A, ∅̄ = Ω, Ω̄ = ∅
+                    </div>
+                  </div>
+                </div>
+
+                {/* Lois de Morgan */}
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-blue-900 mb-3">Lois de Morgan</h4>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
+                      <strong className="text-blue-900">(A∩B)̄ = Ā∪B̄</strong>
+                    </div>
+                    <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
+                      <strong className="text-blue-900">(A∪B)̄ = Ā∩B̄</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Section 3: Applications et bijections */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
+              3. Applications et bijections
+            </h2>
+
+            {/* B.1 Fonctions et applications */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold mb-4 text-blue-900">B.1. Fonctions et applications</h3>
+              
+              <div className="space-y-4">
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <p className="text-blue-800 mb-3">
+                    Une <strong>fonction</strong> f de E vers F associe à certains éléments de E des éléments de F.
+                  </p>
+                  <p className="text-blue-800">
+                    Une <strong>application</strong> f:E→F est une fonction pour laquelle chaque x∈E possède exactement une image f(x)∈F.
+                  </p>
+                </div>
+
+                <div className="bg-white p-4 rounded border-l-4 border-blue-500">
+                  <h4 className="font-semibold text-blue-900 mb-2">Identité</h4>
+                  <p className="text-blue-800">Pour tout x∈E, Id<sub>E</sub>(x) = x</p>
+                </div>
+              </div>
+            </div>
+
+            {/* B.2 Types d'applications */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold mb-4 text-blue-900">B.2. Types d'applications</h3>
+              
+              <div className="space-y-4">
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-blue-900 mb-3">Injection</h4>
+                  <div className="bg-white p-4 rounded border-2 border-blue-300">
+                    <p className="text-blue-800">
+                      Pour tout (x₁,x₂)∈E², f(x₁)=f(x₂) ⇒ x₁=x₂
+                    </p>
+                    <p className="text-blue-700 text-sm mt-2">
+                      (Des images égales impliquent des antécédents égaux)
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-blue-900 mb-3">Surjection</h4>
+                  <div className="bg-white p-4 rounded border-2 border-blue-300">
+                    <p className="text-blue-800">
+                      Pour tout y∈F, il existe x∈E tel que y=f(x)
+                    </p>
+                    <p className="text-blue-700 text-sm mt-2">
+                      (Tout élément de F a au moins un antécédent)
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-blue-900 mb-3">Bijection</h4>
+                  <div className="bg-white p-4 rounded border-2 border-blue-300">
+                    <p className="text-blue-800">
+                      Pour tout y∈F, il existe un <strong>unique</strong> x∈E tel que y=f(x)
+                    </p>
+                    <p className="text-blue-700 text-sm mt-2">
+                      (Injection + Surjection)
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-blue-900 mb-3">Bijection réciproque</h4>
+                  <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
+                    <strong className="text-blue-900 text-lg">
+                      y=f(x) ⟺ x=f⁻¹(y)
+                    </strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* B.3 Théorème de la bijection monotone */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold mb-4 text-blue-900">B.3. Théorème de la bijection monotone</h3>
+              
+              <div className="space-y-4">
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <div className="bg-white p-4 rounded border-2 border-blue-300">
+                    <p className="text-blue-800 font-semibold mb-3">Théorème :</p>
+                    <p className="text-blue-800">
+                      Soit f une application continue et strictement monotone sur un intervalle I⊂ℝ. 
+                      Alors f est une bijection de I sur J=f(I).
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-white p-4 rounded border-l-4 border-blue-500">
+                  <p className="text-blue-800">
+                    <strong>Propriété importante :</strong> Lorsque f est continue et strictement monotone sur I, 
+                    les fonctions f et f⁻¹ ont les mêmes variations.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Section 4: Valeur absolue */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
+              4. Valeur absolue
             </h2>
 
             <div className="mb-6">
@@ -149,10 +393,10 @@ const OteriaFonctionsVariableReelleCoursPage = () => {
             </div>
           </div>
 
-          {/* Section 3: Généralités sur les fonctions */}
+          {/* Section 5: Généralités sur les fonctions */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
-              3. Généralités sur les fonctions
+              5. Généralités sur les fonctions
             </h2>
 
             {/* 3.1 Définition */}
@@ -192,7 +436,310 @@ const OteriaFonctionsVariableReelleCoursPage = () => {
               </div>
             </div>
 
-            {/* 3.4 Bornes et extrémums */}
+            {/* 3.4 Visualisation avec Python */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold mb-4 text-blue-900">Visualisation des fonctions avec Python</h3>
+              
+              <div className="bg-blue-50 p-4 rounded-lg mb-4">
+                <p className="text-blue-800 mb-3">
+                  Python et la bibliothèque Matplotlib permettent de visualiser facilement les fonctions mathématiques.
+                </p>
+              </div>
+
+              {/* Exemple 1: Fonction simple */}
+              <div className="mb-6">
+                <h4 className="font-semibold text-blue-900 mb-3">Exemple 1 : Tracer une fonction polynomiale</h4>
+                <div className="border border-blue-200 rounded-lg overflow-hidden">
+                  <div className="bg-blue-50 px-4 py-2 border-b border-blue-200">
+                    <div className="flex items-center justify-between">
+                      <h5 className="font-semibold text-blue-900 flex items-center gap-2">
+                        <Code className="h-4 w-4" />
+                        Code Python - f(x) = x² - 4
+                      </h5>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => toggleCode('python-poly')}
+                        className="text-blue-600 hover:text-blue-700"
+                      >
+                        {expandedCode === 'python-poly' ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                        {expandedCode === 'python-poly' ? 'Masquer' : 'Voir le code'}
+                      </Button>
+                    </div>
+                  </div>
+                  
+                  {expandedCode === 'python-poly' && (
+                    <div className="p-4 bg-gray-50">
+                      <pre className="text-sm overflow-x-auto">
+                        <code>{`import matplotlib.pyplot as plt
+import numpy as np
+
+# Définir l'intervalle
+x = np.linspace(-5, 5, 100)
+y = x**2 - 4
+
+# Tracer la courbe
+plt.plot(x, y)
+plt.axhline(y=0, color='k', linestyle='-', linewidth=0.5)
+plt.axvline(x=0, color='k', linestyle='-', linewidth=0.5)
+plt.title("f(x) = x² - 4")
+plt.xlabel("x")
+plt.ylabel("f(x)")
+plt.grid(True)
+plt.show()`}</code>
+                      </pre>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Exemple 2: Fonction trigonométrique */}
+              <div className="mb-6">
+                <h4 className="font-semibold text-blue-900 mb-3">Exemple 2 : Fonction trigonométrique</h4>
+                <div className="border border-blue-200 rounded-lg overflow-hidden">
+                  <div className="bg-blue-50 px-4 py-2 border-b border-blue-200">
+                    <div className="flex items-center justify-between">
+                      <h5 className="font-semibold text-blue-900 flex items-center gap-2">
+                        <Code className="h-4 w-4" />
+                        Code Python - f(x) = sin(x)
+                      </h5>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => toggleCode('python-trig')}
+                        className="text-blue-600 hover:text-blue-700"
+                      >
+                        {expandedCode === 'python-trig' ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                        {expandedCode === 'python-trig' ? 'Masquer' : 'Voir le code'}
+                      </Button>
+                    </div>
+                  </div>
+                  
+                  {expandedCode === 'python-trig' && (
+                    <div className="p-4 bg-gray-50">
+                      <pre className="text-sm overflow-x-auto">
+                        <code>{`import matplotlib.pyplot as plt
+import numpy as np
+
+# Définir l'intervalle
+x = np.linspace(-2*np.pi, 2*np.pi, 200)
+y = np.sin(x)
+
+# Tracer la courbe
+plt.plot(x, y, label='sin(x)')
+plt.axhline(y=0, color='k', linestyle='-', linewidth=0.5)
+plt.axvline(x=0, color='k', linestyle='-', linewidth=0.5)
+plt.title("Fonction sinus")
+plt.xlabel("x")
+plt.ylabel("sin(x)")
+plt.grid(True)
+plt.legend()
+plt.show()`}</code>
+                      </pre>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Exemple 3: Plusieurs fonctions */}
+              <div className="mb-6">
+                <h4 className="font-semibold text-blue-900 mb-3">Exemple 3 : Comparer plusieurs fonctions</h4>
+                <div className="border border-blue-200 rounded-lg overflow-hidden">
+                  <div className="bg-blue-50 px-4 py-2 border-b border-blue-200">
+                    <div className="flex items-center justify-between">
+                      <h5 className="font-semibold text-blue-900 flex items-center gap-2">
+                        <Code className="h-4 w-4" />
+                        Code Python - Fonctions paire et impaire
+                      </h5>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => toggleCode('python-compare')}
+                        className="text-blue-600 hover:text-blue-700"
+                      >
+                        {expandedCode === 'python-compare' ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                        {expandedCode === 'python-compare' ? 'Masquer' : 'Voir le code'}
+                      </Button>
+                    </div>
+                  </div>
+                  
+                  {expandedCode === 'python-compare' && (
+                    <div className="p-4 bg-gray-50">
+                      <pre className="text-sm overflow-x-auto">
+                        <code>{`import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(-3, 3, 100)
+
+# Fonction paire : f(x) = x²
+y_paire = x**2
+
+# Fonction impaire : g(x) = x³
+y_impaire = x**3
+
+# Tracer les deux courbes
+plt.plot(x, y_paire, label='f(x) = x² (paire)', color='blue')
+plt.plot(x, y_impaire, label='g(x) = x³ (impaire)', color='red')
+plt.axhline(y=0, color='k', linestyle='-', linewidth=0.5)
+plt.axvline(x=0, color='k', linestyle='-', linewidth=0.5)
+plt.title("Fonctions paire et impaire")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.grid(True)
+plt.legend()
+plt.show()`}</code>
+                      </pre>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-blue-900 mb-2">Points clés</h4>
+                <ul className="text-blue-800 space-y-1 list-disc list-inside">
+                  <li><code>np.linspace(a, b, n)</code> : crée n points uniformément répartis entre a et b</li>
+                  <li><code>plt.plot(x, y)</code> : trace la courbe de la fonction</li>
+                  <li><code>plt.axhline()</code> et <code>plt.axvline()</code> : ajoutent les axes</li>
+                  <li><code>plt.legend()</code> : affiche la légende pour identifier les courbes</li>
+                  <li>La visualisation aide à comprendre les propriétés (parité, périodicité, etc.)</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* 3.5 Fonctions mathématiques de base en Python */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold mb-4 text-blue-900">Fonctions mathématiques de base en Python</h3>
+              
+              <div className="space-y-6">
+                {/* Fonctions mathématiques */}
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-blue-900 mb-3">Fonctions NumPy</h4>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    <div className="bg-white p-3 rounded border-l-4 border-blue-500">
+                      <strong className="text-blue-900">np.abs(x)</strong>
+                      <p className="text-blue-700 text-sm">Valeur absolue</p>
+                    </div>
+                    <div className="bg-white p-3 rounded border-l-4 border-blue-500">
+                      <strong className="text-blue-900">np.sqrt(x)</strong>
+                      <p className="text-blue-700 text-sm">Racine carrée</p>
+                    </div>
+                    <div className="bg-white p-3 rounded border-l-4 border-blue-600">
+                      <strong className="text-blue-900">np.exp(x)</strong>
+                      <p className="text-blue-700 text-sm">Exponentielle (e^x)</p>
+                    </div>
+                    <div className="bg-white p-3 rounded border-l-4 border-blue-600">
+                      <strong className="text-blue-900">np.log(x)</strong>
+                      <p className="text-blue-700 text-sm">Logarithme népérien (ln)</p>
+                    </div>
+                    <div className="bg-white p-3 rounded border-l-4 border-blue-700">
+                      <strong className="text-blue-900">np.cos(x)</strong>
+                      <p className="text-blue-700 text-sm">Cosinus</p>
+                    </div>
+                    <div className="bg-white p-3 rounded border-l-4 border-blue-700">
+                      <strong className="text-blue-900">np.sin(x)</strong>
+                      <p className="text-blue-700 text-sm">Sinus</p>
+                    </div>
+                    <div className="bg-white p-3 rounded border-l-4 border-blue-800">
+                      <strong className="text-blue-900">np.floor(x)</strong>
+                      <p className="text-blue-700 text-sm">Partie entière</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Constantes */}
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-blue-900 mb-3">Constantes mathématiques</h4>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
+                      <strong className="text-blue-900 text-lg">np.pi</strong>
+                      <p className="text-blue-700 text-sm mt-1">π (pi) ≈ 3.14159...</p>
+                    </div>
+                    <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
+                      <strong className="text-blue-900 text-lg">np.e</strong>
+                      <p className="text-blue-700 text-sm mt-1">e (nombre d'Euler) ≈ 2.71828...</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Exemple d'utilisation */}
+                <div className="border border-blue-200 rounded-lg overflow-hidden">
+                  <div className="bg-blue-50 px-4 py-2 border-b border-blue-200">
+                    <div className="flex items-center justify-between">
+                      <h5 className="font-semibold text-blue-900 flex items-center gap-2">
+                        <Code className="h-4 w-4" />
+                        Exemple : Utilisation des fonctions mathématiques
+                      </h5>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => toggleCode('python-math-functions')}
+                        className="text-blue-600 hover:text-blue-700"
+                      >
+                        {expandedCode === 'python-math-functions' ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                        {expandedCode === 'python-math-functions' ? 'Masquer' : 'Voir le code'}
+                      </Button>
+                    </div>
+                  </div>
+                  
+                  {expandedCode === 'python-math-functions' && (
+                    <div className="p-4 bg-gray-50">
+                      <pre className="text-sm overflow-x-auto">
+                        <code>{`import matplotlib.pyplot as plt
+import numpy as np
+
+# Fonctions mathématiques
+x = np.linspace(-2*np.pi, 2*np.pi, 200)
+
+# Tracer plusieurs fonctions
+plt.figure(figsize=(12, 8))
+
+# Fonctions trigonométriques
+plt.subplot(2, 2, 1)
+plt.plot(x, np.sin(x), label='sin(x)')
+plt.plot(x, np.cos(x), label='cos(x)')
+plt.title("Fonctions trigonométriques")
+plt.legend()
+plt.grid(True)
+
+# Exponentielle et logarithme
+plt.subplot(2, 2, 2)
+x_pos = np.linspace(0.1, 3, 100)
+plt.plot(x_pos, np.exp(x_pos), label='exp(x)')
+plt.plot(x_pos, np.log(x_pos), label='log(x)')
+plt.title("Exponentielle et logarithme")
+plt.legend()
+plt.grid(True)
+
+# Valeur absolue
+plt.subplot(2, 2, 3)
+x_abs = np.linspace(-5, 5, 100)
+plt.plot(x_abs, np.abs(x_abs), label='|x|')
+plt.title("Valeur absolue")
+plt.legend()
+plt.grid(True)
+
+# Racine carrée
+plt.subplot(2, 2, 4)
+plt.plot(x_pos, np.sqrt(x_pos), label='√x')
+plt.title("Racine carrée")
+plt.legend()
+plt.grid(True)
+
+plt.tight_layout()
+plt.show()
+
+# Utilisation des constantes
+print(f"π = {np.pi}")
+print(f"e = {np.e}")
+print(f"e^π = {np.exp(np.pi)}")`}</code>
+                      </pre>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* 3.5 Bornes et extrémums */}
             <div className="mb-8">
               <h3 className="text-xl font-semibold mb-4 text-blue-900">Bornes et extrémums</h3>
               <div className="grid md:grid-cols-2 gap-4">
@@ -258,172 +805,13 @@ const OteriaFonctionsVariableReelleCoursPage = () => {
             </div>
           </div>
 
-          {/* Section 4: Fonctions trigonométriques */}
+          {/* Section 6: Continuité */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
-              4. Fonctions trigonométriques
+              6. Continuité
             </h2>
 
-            {/* 4.1 Définitions et propriétés */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Définitions et propriétés</h3>
-              
-              <div className="space-y-4">
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <div className="bg-white p-4 rounded border-2 border-blue-300 text-center mb-4">
-                    <strong className="text-blue-900 text-lg">
-                      ∀x ∈ ℝ, cos²x + sin²x = 1
-                    </strong>
-                  </div>
-                  <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
-                    <strong className="text-blue-900">
-                      (sin x)' = cos x, (cos x)' = -sin x
-                    </strong>
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-3">
-                    <div className="bg-white p-3 rounded border-l-4 border-blue-500">
-                      sin est impaire, cos est paire
-                    </div>
-                    <div className="bg-white p-3 rounded border-l-4 border-blue-600">
-                      sin et cos sont 2π-périodiques
-                    </div>
-                  </div>
-                  <div className="space-y-3">
-                    <div className="bg-white p-3 rounded border-l-4 border-blue-700">
-                      sin : [-π/2, π/2] → [-1,1] bijective
-                    </div>
-                    <div className="bg-white p-3 rounded border-l-4 border-blue-800">
-                      cos : [0,π] → [-1,1] bijective
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* 4.2 Formules d'addition */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Formules d'addition</h3>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <div className="space-y-3">
-                  <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
-                    <strong className="text-blue-900">
-                      cos(a+b) = cos a cos b - sin a sin b
-                    </strong>
-                  </div>
-                  <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
-                    <strong className="text-blue-900">
-                      sin(a+b) = sin a cos b + cos a sin b
-                    </strong>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* 4.3 Formules de duplication */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Formules de duplication</h3>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <div className="space-y-3">
-                  <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
-                    <strong className="text-blue-900">
-                      cos(2a) = 2cos²a - 1 = 1 - 2sin²a
-                    </strong>
-                  </div>
-                  <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
-                    <strong className="text-blue-900">
-                      sin(2a) = 2sin a cos a
-                    </strong>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* 4.4 Valeurs remarquables */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Valeurs remarquables</h3>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <div className="overflow-x-auto">
-                  <table className="min-w-full bg-white border border-blue-300 rounded-lg">
-                    <thead>
-                      <tr className="bg-blue-100">
-                        <th className="border border-blue-300 px-4 py-2">x</th>
-                        <th className="border border-blue-300 px-4 py-2">0</th>
-                        <th className="border border-blue-300 px-4 py-2">π/6</th>
-                        <th className="border border-blue-300 px-4 py-2">π/4</th>
-                        <th className="border border-blue-300 px-4 py-2">π/3</th>
-                        <th className="border border-blue-300 px-4 py-2">π/2</th>
-                        <th className="border border-blue-300 px-4 py-2">π</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="border border-blue-300 px-4 py-2 font-semibold bg-blue-50">sin x</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center">0</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center">1/2</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center">√2/2</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center">√3/2</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center">1</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center">0</td>
-                      </tr>
-                      <tr>
-                        <td className="border border-blue-300 px-4 py-2 font-semibold bg-blue-50">cos x</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center">1</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center">√3/2</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center">√2/2</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center">1/2</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center">0</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center">-1</td>
-                      </tr>
-                      <tr>
-                        <td className="border border-blue-300 px-4 py-2 font-semibold bg-blue-50">tan x</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center">0</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center">√3/3</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center">1</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center">√3</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center">-</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center">0</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-
-            {/* 4.5 Tangente et arctangente */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Tangente et arctangente</h3>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <div className="space-y-3">
-                  <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
-                    <strong className="text-blue-900">
-                      tan x = sin x / cos x, D_tan = ℝ \ π/2 + kπ
-                    </strong>
-                  </div>
-                  <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
-                    <strong className="text-blue-900">
-                      1 + tan²x = 1/cos²x, (tan x)' = 1 + tan²x
-                    </strong>
-                  </div>
-                  <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
-                    <strong className="text-blue-900">
-                      arctan : ℝ → ]-π/2, π/2[, (arctan x)' = 1/(1+x²)
-                    </strong>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Section 5: Continuité */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
-              5. Continuité
-            </h2>
-
-            {/* 5.1 Définitions */}
+            {/* 4.1 Définitions */}
             <div className="mb-8">
               <h3 className="text-xl font-semibold mb-4 text-blue-900">Définitions</h3>
               <div className="bg-blue-50 p-4 rounded-lg">
@@ -446,7 +834,7 @@ const OteriaFonctionsVariableReelleCoursPage = () => {
               </div>
             </div>
 
-            {/* 5.2 Théorèmes */}
+            {/* 4.2 Théorèmes */}
             <div className="mb-8">
               <h3 className="text-xl font-semibold mb-4 text-blue-900">Théorèmes</h3>
               <div className="space-y-4">
@@ -472,13 +860,13 @@ const OteriaFonctionsVariableReelleCoursPage = () => {
             </div>
           </div>
 
-          {/* Section 6: Limites */}
+          {/* Section 7: Limites */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
-              6. Limites
+              7. Limites
             </h2>
 
-            {/* 6.1 Définition */}
+            {/* 5.1 Définition */}
             <div className="mb-8">
               <h3 className="text-xl font-semibold mb-4 text-blue-900">Définition</h3>
               <div className="bg-blue-50 p-4 rounded-lg">

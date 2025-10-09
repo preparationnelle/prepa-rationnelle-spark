@@ -7,9 +7,9 @@ const WHITELISTED_EMAILS = [
   'dimitrovdimitar556@gmail.com',
 ];
 
-// 🚨 TEMPORAIRE : Désactiver la protection Maths pour faciliter les modifications
-// À REMETTRE À false APRÈS LES MODIFICATIONS
-const TEMPORARILY_DISABLE_MATHS_PROTECTION = true;
+// 🔓 ACCÈS LIBRE : Toutes les protections sont désactivées
+// Les sections Maths et Python sont désormais accessibles sans compte
+const OPEN_ACCESS_MODE = true;
 
 // Helper public pour vérifier un email (normalisé)
 export const isWhitelisted = (email: string | null | undefined): boolean => {
@@ -18,19 +18,12 @@ export const isWhitelisted = (email: string | null | undefined): boolean => {
   return WHITELISTED_EMAILS.includes(normalized);
 };
 
-// Sections Python (accès libre après connexion)
-// Ne pas protéger la page d'overview `/formation` pour éviter un sas inutile
+// Sections Python - DÉSACTIVÉES (accès libre)
 const PYTHON_SECTIONS: string[] = [];
-const PYTHON_PREFIXES = ['/formation/python-'];
+const PYTHON_PREFIXES: string[] = []; // Désactivé pour accès libre
 
-// Sections Maths (protection par liste blanche)
-const MATHS_WHITELISTED_SECTIONS = [
-  '/formation/maths',
-  '/formation/maths-methodologie',
-  '/formation/maths-approfondies',
-  '/formation/maths-appliquees',
-  '/formation/maths-',
-];
+// Sections Maths - DÉSACTIVÉES (accès libre)
+const MATHS_WHITELISTED_SECTIONS: string[] = []; // Désactivé pour accès libre
 
 export const useWhitelistAccess = () => {
   const { currentUser, loading } = useAuth();
@@ -47,16 +40,18 @@ export const useWhitelistAccess = () => {
         return;
       }
 
-      // Si pas d'utilisateur connecté, pas d'accès
-      if (!currentUser) {
-        setHasAccess(false);
+      // 🔓 MODE ACCÈS LIBRE : Toutes les restrictions sont désactivées
+      // Tout le monde a accès, même sans compte
+      if (OPEN_ACCESS_MODE) {
+        setHasAccess(true);
         setIsLoading(false);
         return;
       }
 
-      // 🚨 TEMPORAIRE : Si la protection Maths est désactivée, accès libre pour tous
-      if (TEMPORARILY_DISABLE_MATHS_PROTECTION) {
-        setHasAccess(true);
+      // Code hérité (désactivé en mode accès libre)
+      // Si pas d'utilisateur connecté, pas d'accès
+      if (!currentUser) {
+        setHasAccess(false);
         setIsLoading(false);
         return;
       }

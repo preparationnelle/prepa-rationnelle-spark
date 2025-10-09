@@ -1,29 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Home, ChevronRight, ArrowLeft, BookOpen, Target, Calculator, Zap } from 'lucide-react';
+import { Home, ChevronRight, ArrowLeft, BookOpen, Target, Calculator, Zap, Code, Eye, EyeOff } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { LatexRenderer } from '@/components/LatexRenderer';
 
 const OteriaPolynomesApproximationCoursPage = () => {
+  const [expandedCode, setExpandedCode] = useState<string | null>(null);
+
+  const toggleCode = (codeId: string) => {
+    setExpandedCode(expandedCode === codeId ? null : codeId);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-teal-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-teal-700 transition-colors">
+          <div className="flex items-center text-xs text-blue-600">
+            <Link to="/" className="flex items-center gap-1 hover:text-blue-700 transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
-            <Link to="/articles" className="hover:text-teal-700 transition-colors">
+            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
+            <Link to="/articles" className="hover:text-blue-700 transition-colors">
               Niveau
             </Link>
-            <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
-            <Link to="/articles/oteria-cyber-school" className="hover:text-teal-700 transition-colors">
+            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
+            <Link to="/articles/oteria-cyber-school" className="hover:text-blue-700 transition-colors">
               OTERIA Cyber School
             </Link>
-            <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
-            <span className="text-teal-600 font-medium">Séance 6 - Cours</span>
+            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
+            <span className="text-blue-600 font-medium">Séance 6 - Cours</span>
           </div>
         </div>
       </nav>
@@ -32,11 +39,11 @@ const OteriaPolynomesApproximationCoursPage = () => {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center">
-              <Target className="h-8 w-8 text-teal-600" />
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+              <Target className="h-8 w-8 text-blue-600" />
             </div>
           </div>
-          <h1 className="text-3xl font-bold mb-4 text-teal-900">Séance 6 : Polynômes & dichotomie (II)</h1>
+          <h1 className="text-3xl font-bold mb-4 text-blue-900">Séance 6 : Polynômes & dichotomie (II)</h1>
           <p className="text-lg text-blue-800 max-w-3xl mx-auto mb-6">
             Degré, racines, division euclidienne, Algorithme de la dichotomie pour f(x)=0
           </p>
@@ -55,7 +62,7 @@ const OteriaPolynomesApproximationCoursPage = () => {
                 </div>
                 <div className="flex flex-col items-center">
                   <span className="text-sm text-blue-600 font-medium mb-1">Niveau</span>
-                  <span className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
                     Débutant
                   </span>
                 </div>
@@ -70,21 +77,26 @@ const OteriaPolynomesApproximationCoursPage = () => {
                 Degré, racines, division euclidienne, Algorithme de la dichotomie pour f(x)=0
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <button className="w-full bg-orange-600 text-white px-4 py-3 rounded-lg cursor-default font-medium shadow-md">
+                <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg cursor-default font-medium shadow-md">
                   <BookOpen className="h-5 w-5 mx-auto mb-2" />
                   Cours
                 </button>
-                <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium hover:scale-105 shadow-md hover:shadow-lg">
-                  <Target className="h-5 w-5 mx-auto mb-2" />
-                  Exercices
-                </button>
-                <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium hover:scale-105 shadow-md hover:shadow-lg">
-                  <Calculator className="h-5 w-5 mx-auto mb-2" />
-                  Flashcards
-                </button>
-                <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium hover:scale-105 shadow-md hover:shadow-lg">
+                <Link to="/formation/oteria/polynomes-exercices" className="group">
+                  <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium group-hover:scale-105 shadow-md hover:shadow-lg">
+                    <Target className="h-5 w-5 mx-auto mb-2" />
+                    Exercices
+                  </button>
+                </Link>
+                <Link to="/formation/oteria/polynomes-flashcards" className="group">
+                  <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium group-hover:scale-105 shadow-md hover:shadow-lg">
+                    <Calculator className="h-5 w-5 mx-auto mb-2" />
+                    Flashcards
+                  </button>
+                </Link>
+                <button className="w-full bg-gray-400 text-white px-4 py-3 rounded-lg cursor-not-allowed font-medium shadow-md" disabled>
                   <Zap className="h-5 w-5 mx-auto mb-2" />
                   QCM
+                  <span className="text-xs block mt-1">Bientôt disponible</span>
                 </button>
               </div>
             </div>
@@ -96,7 +108,7 @@ const OteriaPolynomesApproximationCoursPage = () => {
           
           {/* Introduction */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
+            <h2 className="text-2xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
               Introduction
             </h2>
             <div className="bg-blue-50 p-4 rounded-lg">
@@ -145,12 +157,12 @@ const OteriaPolynomesApproximationCoursPage = () => {
 
           {/* Théorème : Division euclidienne */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
+            <h2 className="text-xl font-bold mb-4 text-blue-700 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
               Théorème : Division euclidienne
             </h2>
             <div className="space-y-4">
               <p>Pour <LatexRenderer latex={"A, B \\in \\mathbb{R}[X]"} /> avec <LatexRenderer latex={"B \\neq 0"} />, il existe un unique couple <LatexRenderer latex={"(Q, R)"} /> tel que :</p>
-              <div className="text-center bg-orange-50 p-4 rounded">
+              <div className="text-center bg-blue-50 p-4 rounded">
                 <LatexRenderer latex={"A = B Q + R, \\qquad \\deg R < \\deg B"} />
               </div>
             </div>
@@ -172,13 +184,13 @@ const OteriaPolynomesApproximationCoursPage = () => {
 
           {/* Théorème : Dérivées successives */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
+            <h2 className="text-xl font-bold mb-4 text-blue-700 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
               Théorème : Dérivées successives
             </h2>
             <div className="space-y-4">
               <p>Définies par <LatexRenderer latex={"P^{(0)} = P"} /> et <LatexRenderer latex={"P^{(k)} = (P^{(k-1)})'"} />.</p>
               <p>Si <LatexRenderer latex={"P(x) = \\sum\\limits_{i=0}^n a_i x^i"} />, alors pour <LatexRenderer latex={"k \\leq n"} /> :</p>
-              <div className="text-center bg-orange-50 p-4 rounded">
+              <div className="text-center bg-blue-50 p-4 rounded">
                 <LatexRenderer latex={"P^{(k)}(x) = \\sum\\limits_{i=k}^n \\frac{i!}{(i-k)!} a_i x^{i-k}, \\qquad \\deg P^{(k)} = n - k"} />
               </div>
               <p>et <LatexRenderer latex={"P^{(k)} \\equiv 0"} /> pour <LatexRenderer latex={"k \\geq n + 1"} />.</p>
@@ -187,12 +199,12 @@ const OteriaPolynomesApproximationCoursPage = () => {
 
           {/* Théorème : Formule de Taylor */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
+            <h2 className="text-xl font-bold mb-4 text-blue-700 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
               Théorème : Formule de Taylor
             </h2>
             <div className="space-y-4">
               <p>Pour <LatexRenderer latex={"a \\in \\mathbb{R}"} /> et tout <LatexRenderer latex={"P \\in \\mathbb{R}[X]"} /> de degré <LatexRenderer latex={"n"} /> :</p>
-              <div className="text-center bg-orange-50 p-4 rounded border-2 border-orange-300">
+              <div className="text-center bg-blue-50 p-4 rounded border-2 border-blue-300">
                 <LatexRenderer latex={"\\boxed{P(x) = \\sum\\limits_{k=0}^n \\frac{P^{(k)}(a)}{k!} (x - a)^k}"} />
               </div>
             </div>
@@ -220,7 +232,7 @@ const OteriaPolynomesApproximationCoursPage = () => {
 
           {/* Théorème : Factorisation */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
+            <h2 className="text-xl font-bold mb-4 text-blue-700 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
               Théorème : Factorisation
             </h2>
             <p>Tout polynôme réel se factorise en produit de polynômes de degré 1 et de polynômes quadratiques sans racine réelle.</p>
@@ -243,7 +255,7 @@ const OteriaPolynomesApproximationCoursPage = () => {
 
           {/* Théorème : Signe du trinôme */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
+            <h2 className="text-xl font-bold mb-4 text-blue-700 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
               Théorème : Signe du trinôme
             </h2>
             <ul className="list-disc list-inside space-y-2 ml-4">
@@ -254,12 +266,12 @@ const OteriaPolynomesApproximationCoursPage = () => {
 
           {/* Théorème : Relations entre racines et coefficients */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
+            <h2 className="text-xl font-bold mb-4 text-blue-700 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
               Théorème : Relations entre racines et coefficients
             </h2>
             <div className="space-y-4">
               <p>Lorsque <LatexRenderer latex={"\\Delta \\geq 0"} /> et <LatexRenderer latex={"x_1, x_2"} /> sont les racines de <LatexRenderer latex={"a x^2 + b x + c"} /> :</p>
-              <div className="text-center bg-orange-50 p-4 rounded border-2 border-orange-300">
+              <div className="text-center bg-blue-50 p-4 rounded border-2 border-blue-300">
                 <LatexRenderer latex={"\\boxed{x_1 + x_2 = -\\frac{b}{a}, \\qquad x_1 x_2 = \\frac{c}{a}}"} />
               </div>
             </div>
@@ -267,12 +279,12 @@ const OteriaPolynomesApproximationCoursPage = () => {
 
           {/* Formule du binôme de Newton */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
+            <h2 className="text-xl font-bold mb-4 text-blue-700 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
               Formule du binôme de Newton
             </h2>
             <div className="space-y-4">
               <p>Pour tous réels <LatexRenderer latex={"(a,b)"} /> et tout entier <LatexRenderer latex={"n \\geq 0"} /> :</p>
-              <div className="text-center bg-orange-50 p-4 rounded">
+              <div className="text-center bg-blue-50 p-4 rounded">
                 <LatexRenderer latex={"(a+b)^n = \\sum\\limits_{k=0}^n \\binom{n}{k} a^k b^{n-k} = \\sum\\limits_{k=0}^n \\binom{n}{k} a^{n-k} b^k"} />
               </div>
             </div>
@@ -291,95 +303,235 @@ const OteriaPolynomesApproximationCoursPage = () => {
             </div>
           </div>
 
-          {/* Section : Algorithme de la dichotomie */}
+          {/* Section : Méthode de dichotomie */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
-              Algorithme de la dichotomie
+            <h2 className="text-2xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
+              Méthode de dichotomie
             </h2>
 
-            {/* Principe */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Principe</h3>
+            {/* Objectif */}
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold mb-3 text-blue-900">Objectif</h3>
               <div className="bg-blue-50 p-4 rounded-lg">
-                <p className="text-blue-800 mb-3">
-                  Soit <LatexRenderer latex="f" /> continue sur <LatexRenderer latex="[a, b]" /> avec <LatexRenderer latex="f(a) \\cdot f(b) < 0" />.
-                </p>
-                <div className="bg-white p-4 rounded border-2 border-blue-300 text-center">
-                  <strong className="text-blue-900">
-                    Alors <LatexRenderer latex="\\exists c \\in [a, b]" /> tel que <LatexRenderer latex="f(c) = 0" />
-                  </strong>
-                </div>
-                <p className="text-blue-700 text-sm mt-2">
-                  (Théorème des valeurs intermédiaires)
+                <p className="text-blue-800">
+                  Savoir implémenter en Python une méthode rapide et rigoureuse pour approximer une racine réelle d'une équation <LatexRenderer latex="f(x) = 0" /> sur un intervalle donné.
                 </p>
               </div>
             </div>
 
-            {/* Méthode */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Méthode</h3>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <div className="space-y-3">
-                  <div className="bg-white p-3 rounded border-l-4 border-blue-500">
-                    <strong>1.</strong> On part d'un intervalle <LatexRenderer latex="[a, b]" /> avec <LatexRenderer latex="f(a) \\cdot f(b) < 0" />
-                  </div>
-                  <div className="bg-white p-3 rounded border-l-4 border-blue-600">
-                    <strong>2.</strong> On calcule <LatexRenderer latex="m = \\frac{a + b}{2}" />
-                  </div>
-                  <div className="bg-white p-3 rounded border-l-4 border-blue-700">
-                    <strong>3.</strong> Si <LatexRenderer latex="f(m) = 0" />, la racine est trouvée
-                  </div>
-                  <div className="bg-white p-3 rounded border-l-4 border-blue-800">
-                    <strong>4.</strong> Sinon, on remplace <LatexRenderer latex="[a, b]" /> par <LatexRenderer latex="[a, m]" /> ou <LatexRenderer latex="[m, b]" /> selon le signe
-                  </div>
-                  <div className="bg-white p-3 rounded border-l-4 border-blue-500">
-                    <strong>5.</strong> On répète jusqu'à la précision voulue
-                  </div>
+            {/* Principe mathématique */}
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold mb-3 text-blue-900">Principe mathématique</h3>
+              <div className="bg-blue-50 p-4 rounded-lg space-y-3">
+                <p className="text-blue-800">La méthode de dichotomie repose sur :</p>
+                <ul className="list-disc list-inside space-y-2 text-blue-800 ml-4">
+                  <li><strong>Le théorème des valeurs intermédiaires :</strong> si <LatexRenderer latex="f(a) \\cdot f(b) < 0" />, alors <LatexRenderer latex="f" /> s'annule entre <LatexRenderer latex="a" /> et <LatexRenderer latex="b" />.</li>
+                  <li><strong>Une recherche par découpage successif :</strong> on remplace <LatexRenderer latex="[a,b]" /> par la moitié où le signe change.</li>
+                </ul>
+                <div className="bg-white p-3 rounded border-l-4 border-blue-500 mt-3">
+                  <strong className="text-blue-700">Condition obligatoire :</strong> <LatexRenderer latex="f(a) \\cdot f(b) < 0" /> (changement de signe)
                 </div>
               </div>
             </div>
 
-            {/* Exemple pratique */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Exemple pratique</h3>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <div className="text-center mb-4">
-                  <p className="text-blue-800 mb-3">Trouver une racine de :</p>
-                  <LatexRenderer latex="P(x) = x^3 - 2 \\quad \\text{dans } [1, 2]" className="text-lg text-blue-900 font-semibold" block={true} />
+            {/* Algorithme Python */}
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold mb-3 text-blue-900">Algorithme Python – version commentée</h3>
+              
+              <div className="border border-blue-200 rounded-lg overflow-hidden">
+                <div className="bg-blue-50 px-4 py-2 border-b border-blue-200">
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-semibold text-blue-900 flex items-center gap-2">
+                      <Code className="h-4 w-4" />
+                      Code Python - Dichotomie
+                    </h4>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => toggleCode('dichotomie')}
+                      className="text-blue-600 hover:text-blue-700"
+                    >
+                      {expandedCode === 'dichotomie' ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                      {expandedCode === 'dichotomie' ? 'Masquer' : 'Voir le code'}
+                    </Button>
+                  </div>
                 </div>
                 
-                <div className="space-y-4">
-                  <div className="bg-white p-4 rounded border-2 border-blue-300">
-                    <div className="grid md:grid-cols-2 gap-4 text-center">
-                      <div>
-                        <LatexRenderer latex="P(1) = -1 < 0" className="text-blue-900 font-semibold" />
-                      </div>
-                      <div>
-                        <LatexRenderer latex="P(2) = 6 > 0" className="text-blue-900 font-semibold" />
-                      </div>
-                    </div>
+                {expandedCode === 'dichotomie' && (
+                  <div className="p-4 bg-gray-50">
+                    <pre className="text-sm overflow-x-auto">
+                      <code>{`def dichotomie(f, a, b, precision=1e-6):
+    assert f(a)*f(b) < 0, "f(a) et f(b) doivent avoir des signes opposés"
+    while b - a > precision:
+        c = (a + b) / 2    # milieu de l'intervalle
+        if f(a) * f(c) <= 0:  # racine dans [a, c]
+            b = c
+        else:                 # racine dans [c, b]
+            a = c
+    return (a + b) / 2     # approximation finale`}</code>
+                    </pre>
                   </div>
-                  
-                  <div className="bg-white p-3 rounded border-l-4 border-blue-600">
-                    <strong>Conclusion :</strong> Il existe une racine dans [1,2]
-                  </div>
-                  
-                  <div className="bg-white p-3 rounded border-l-4 border-blue-700">
-                    <p className="text-blue-800">
-                      On applique la méthode en divisant l'intervalle jusqu'à obtenir une approximation de <LatexRenderer latex="\\sqrt[3]{2}" />.
-                    </p>
-                  </div>
+                )}
+              </div>
 
-                  <div className="bg-white p-4 rounded border-2 border-blue-300">
-                    <h5 className="font-semibold text-blue-900 mb-2">Étapes de l'algorithme :</h5>
-                    <div className="space-y-2 text-sm">
-                      <div><LatexRenderer latex="m_1 = 1.5, \\quad P(1.5) = 1.375 > 0 \\quad \\Rightarrow [1, 1.5]" /></div>
-                      <div><LatexRenderer latex="m_2 = 1.25, \\quad P(1.25) \\approx -0.047 < 0 \\quad \\Rightarrow [1.25, 1.5]" /></div>
-                      <div><LatexRenderer latex="m_3 = 1.375, \\quad P(1.375) \\approx 0.599 > 0 \\quad \\Rightarrow [1.25, 1.375]" /></div>
-                      <div>...</div>
-                      <div className="font-semibold">Convergence vers <LatexRenderer latex="\\sqrt[3]{2} \\approx 1.2599" /></div>
+              {/* Explication ligne par ligne */}
+              <div className="mt-4 bg-blue-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-blue-900 mb-3">Explication ligne par ligne</h4>
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse">
+                    <thead>
+                      <tr className="bg-blue-100">
+                        <th className="border border-blue-300 px-3 py-2 text-left text-blue-900">Ligne</th>
+                        <th className="border border-blue-300 px-3 py-2 text-left text-blue-900">Que fait-on ?</th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white">
+                      <tr>
+                        <td className="border border-blue-200 px-3 py-2"><code className="text-sm">assert f(a)*f(b)&lt;0</code></td>
+                        <td className="border border-blue-200 px-3 py-2">Vérifie le prérequis mathématique</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-blue-200 px-3 py-2"><code className="text-sm">while b - a &gt; precision</code></td>
+                        <td className="border border-blue-200 px-3 py-2">Tant que l'intervalle est trop large</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-blue-200 px-3 py-2"><code className="text-sm">c = (a + b)/2</code></td>
+                        <td className="border border-blue-200 px-3 py-2">On coupe l'intervalle en deux</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-blue-200 px-3 py-2"><code className="text-sm">if f(a)*f(c) &lt;= 0</code></td>
+                        <td className="border border-blue-200 px-3 py-2">Si changement de signe entre a et c</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-blue-200 px-3 py-2"><code className="text-sm">b = c ou a = c</code></td>
+                        <td className="border border-blue-200 px-3 py-2">On garde l'intervalle où la racine se trouve</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-blue-200 px-3 py-2"><code className="text-sm">return</code></td>
+                        <td className="border border-blue-200 px-3 py-2">On retourne le milieu comme approximation finale</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            {/* Exemple d'utilisation */}
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold mb-3 text-blue-900">Exemple d'utilisation</h3>
+              
+              <div className="bg-blue-50 p-4 rounded-lg mb-3">
+                <h4 className="font-semibold text-blue-900 mb-2">Problème</h4>
+                <p className="text-blue-800 mb-3">Résoudre</p>
+                <div className="text-center bg-white p-4 rounded">
+                  <div className="mb-2"><LatexRenderer latex="f(x) = x^3 - 2x - 1 = 0" /></div>
+                  <div className="text-blue-700 italic">sur l'intervalle [1, 2]</div>
+                </div>
+              </div>
+
+              <div className="border border-blue-200 rounded-lg overflow-hidden">
+                <div className="bg-blue-50 px-4 py-2 border-b border-blue-200">
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-semibold text-blue-900 flex items-center gap-2">
+                      <Code className="h-4 w-4" />
+                      Exemple complet
+                    </h4>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => toggleCode('exemple-dichotomie')}
+                      className="text-blue-600 hover:text-blue-700"
+                    >
+                      {expandedCode === 'exemple-dichotomie' ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                      {expandedCode === 'exemple-dichotomie' ? 'Masquer' : 'Voir le code'}
+                    </Button>
+                  </div>
+                </div>
+                
+                {expandedCode === 'exemple-dichotomie' && (
+                  <div className="p-4 bg-gray-50">
+                    <pre className="text-sm overflow-x-auto">
+                      <code>{`def f(x):
+    return x**3 - 2*x - 1
+
+r = dichotomie(f, 1, 2, 1e-6)
+print(r)  # ≈ 1.618`}</code>
+                    </pre>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Exercice : Méthode de Babylone */}
+            <div className="bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-lg border-2 border-blue-300">
+              <h3 className="text-xl font-semibold mb-4 text-blue-900">Approximation de racine carrée</h3>
+              
+              <div className="space-y-4">
+                <p className="text-blue-800">
+                  <strong>Implémenter la méthode de Babylone</strong> (ou méthode de Héron) pour approcher la racine carrée d'un nombre positif.
+                </p>
+
+                <div className="bg-white p-4 rounded-lg">
+                  <p className="text-blue-800 mb-3">On considère la suite définie pour <LatexRenderer latex="a > 0" /> par :</p>
+                  <div className="text-center bg-blue-50 p-4 rounded space-y-3">
+                    <div><LatexRenderer latex="u_0 = 1" /></div>
+                    <div><LatexRenderer latex="u_{n+1} = \frac{u_n + a/u_n}{2}" /></div>
+                  </div>
+                </div>
+
+                <ol className="list-decimal list-inside space-y-3 text-blue-800 ml-4">
+                  <li>Cette suite converge vers <LatexRenderer latex="\sqrt{a}" />. En effet, si <LatexRenderer latex="u_n" /> est proche de <LatexRenderer latex="\sqrt{a}" />, alors <LatexRenderer latex="a/u_n" /> l'est aussi, et leur moyenne l'est encore plus.</li>
+                  <li>Écrire une fonction Python qui, pour un réel <LatexRenderer latex="a > 0" /> et un seuil <LatexRenderer latex="\varepsilon > 0" />, renvoie une valeur approchée de <LatexRenderer latex="\sqrt{a}" />, obtenue en arrêtant l'itération dès que <LatexRenderer latex="|u_{n+1} - u_n| \leq \varepsilon" />.</li>
+                  <li>Tester cette fonction avec <LatexRenderer latex="a = 2" /> et <LatexRenderer latex="\varepsilon = 10^{-5}" />. Comparer avec la valeur exacte de <LatexRenderer latex="\sqrt{2}" />.</li>
+                </ol>
+
+                <div className="border border-blue-200 rounded-lg overflow-hidden mt-4">
+                  <div className="bg-blue-50 px-4 py-2 border-b border-blue-200">
+                    <div className="flex items-center justify-between">
+                      <h4 className="font-semibold text-blue-900 flex items-center gap-2">
+                        <Code className="h-4 w-4" />
+                        Solution - Méthode de Babylone
+                      </h4>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => toggleCode('babylone')}
+                        className="text-blue-600 hover:text-blue-700"
+                      >
+                        {expandedCode === 'babylone' ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                        {expandedCode === 'babylone' ? 'Masquer' : 'Voir le code'}
+                      </Button>
                     </div>
                   </div>
+                  
+                  {expandedCode === 'babylone' && (
+                    <div className="p-4 bg-gray-50">
+                      <pre className="text-sm overflow-x-auto">
+                        <code>{`import numpy as np
+
+def racine(a, eps):
+    assert a > 0, "a doit être strictement positif"
+    
+    u = 1.0
+    x = 0.5 * (u + a/u)
+    
+    while abs(x - u) > eps:
+        u = x
+        x = 0.5 * (u + a/u)
+    
+    return x
+
+# Test avec a = 2 et eps = 1e-5
+a, eps = 2, 1e-5
+approx = racine(a, eps)
+exact = np.sqrt(a)
+
+print(f"Approximation de √{a} : {approx}")
+print(f"Valeur exacte : {exact}")
+print(f"Erreur absolue : {abs(approx - exact)}")`}</code>
+                      </pre>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -391,9 +543,11 @@ const OteriaPolynomesApproximationCoursPage = () => {
               <div className="text-blue-600">← Séance précédente</div>
             </Link>
             <div className="flex gap-3">
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                Exercices
-              </button>
+              <Link to="/formation/oteria/polynomes-exercices">
+                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
+                  Exercices
+                </button>
+              </Link>
               <Link to="/articles/oteria-cyber-school">
                 <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
                   Retour au programme

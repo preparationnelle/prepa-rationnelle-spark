@@ -485,9 +485,14 @@ const OteriaSuitesNumeriquesExercicesPage = lazy(() => import('../pages/formatio
 
 // Chapitre 5 - Fonctions d'une variable réelle
 const OteriaFonctionsVariableReelleCoursPage = lazy(() => import('../pages/formation/oteria/OteriaFonctionsVariableReelleCoursPage'));
+const OteriaFonctionsExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaFonctionsExercicesPage'));
+const OteriaFonctionsFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaFonctionsFlashcardsPage'));
+const OteriaFonctionsQCMPage = lazy(() => import('../pages/formation/oteria/OteriaFonctionsQCMPage'));
 
 // Chapitre 6 - Polynômes et approximation des racines
 const OteriaPolynomesApproximationCoursPage = lazy(() => import('../pages/formation/oteria/OteriaPolynomesApproximationCoursPage'));
+const OteriaPolynomesExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaPolynomesExercicesPage'));
+const OteriaPolynomesDichotomieFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaPolynomesDichotomieFlashcardsPage'));
 
 // Chapitre 10 - Intégrales & π par Monte-Carlo
 const OteriaIntegralesMonteCarloCoursPage = lazy(() => import('../pages/formation/oteria/OteriaIntegralesMonteCarloCoursPage'));
@@ -496,7 +501,6 @@ const OteriaRecurrenceRecursiviteFlashcardsPage = lazy(() => import('../pages/fo
 const OteriaRecurrenceRecursiviteQCMPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteQCMPage'));
 const OteriaSuitesNumeriquesQCMPage = lazy(() => import('../pages/formation/oteria/OteriaSuitesNumeriquesQCMPage'));
 const OteriaSuitesNumeriquesFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaSuitesNumeriquesFlashcardsPage'));
-const OteriaPolynomesDichotomieFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaPolynomesDichotomieFlashcardsPage'));
 
 // Évaluation Finale
 const OteriaEvaluationFinaleQCMPage = lazy(() => import('../pages/formation/oteria/OteriaEvaluationFinaleQCMPage'));
@@ -696,9 +700,14 @@ export const routes: RouteConfig[] = [
 
   // Chapitre 5 - Fonctions d'une variable réelle
   { path: '/formation/oteria/fonctions-variable-reelle-cours', component: OteriaFonctionsVariableReelleCoursPage, title: 'Fonctions Variable Réelle - Cours' },
+  { path: '/formation/oteria/fonctions-exercices', component: OteriaFonctionsExercicesPage, title: 'Fonctions - Exercices' },
+  { path: '/formation/oteria/fonctions-flashcards', component: OteriaFonctionsFlashcardsPage, title: 'Fonctions - Flashcards' },
+  { path: '/formation/oteria/fonctions-qcm', component: OteriaFonctionsQCMPage, title: 'Fonctions - QCM' },
 
   // Chapitre 6 - Polynômes et approximation des racines
   { path: '/formation/oteria/polynomes-approximation-cours', component: OteriaPolynomesApproximationCoursPage, title: 'Polynômes & Dichotomie - Cours' },
+  { path: '/formation/oteria/polynomes-exercices', component: OteriaPolynomesExercicesPage, title: 'Polynômes & Dichotomie - Exercices' },
+  { path: '/formation/oteria/polynomes-flashcards', component: OteriaPolynomesDichotomieFlashcardsPage, title: 'Polynômes & Dichotomie - Flashcards' },
 
   // Chapitre 10 - Intégrales & π par Monte-Carlo
   { path: '/formation/oteria/integrales-monte-carlo-cours', component: OteriaIntegralesMonteCarloCoursPage, title: 'Intégrales & π par Monte-Carlo - Cours' },

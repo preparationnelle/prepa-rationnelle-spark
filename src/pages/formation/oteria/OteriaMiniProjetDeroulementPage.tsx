@@ -54,7 +54,7 @@ const OteriaMiniProjetDeroulementPage = () => {
                 </div>
                 <div className="flex flex-col items-center">
                   <span className="text-sm text-blue-600 font-medium mb-1">Niveau</span>
-                  <span className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
                     🟢 Débutant
                   </span>
                 </div>
@@ -72,7 +72,7 @@ const OteriaMiniProjetDeroulementPage = () => {
                     Mini Projet - Ateliers
                   </button>
                 </Link>
-                <button className="w-full bg-orange-600 text-white px-4 py-3 rounded-lg cursor-default font-medium shadow-md">
+                <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg cursor-default font-medium shadow-md">
                   <FileText className="h-5 w-5 mx-auto mb-2" />
                   Déroulement du projet
                 </button>
@@ -154,63 +154,63 @@ const OteriaMiniProjetDeroulementPage = () => {
           {/* Section 2: Recherche et cadrage */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                <span className="text-green-900 font-bold text-lg">2</span>
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <span className="text-blue-900 font-bold text-lg">2</span>
               </div>
-              <h2 className="text-2xl font-bold text-green-900">Recherche et cadrage</h2>
+              <h2 className="text-2xl font-bold text-blue-900">Recherche et cadrage</h2>
             </div>
 
             <div className="space-y-4">
-              <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
-                <h3 className="font-semibold text-green-900 mb-2 flex items-center gap-2">
+              <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
                   <Search className="h-5 w-5" />
                   Quelles informations devons-nous collecter (sources, données, études) ?
                 </h3>
-                <p className="text-green-800">
+                <p className="text-blue-800">
                   Identifiez les sources fiables : articles scientifiques, rapports officiels, bases de données,
                   enquêtes, interviews d'experts, etc.
                 </p>
               </div>
 
-              <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
-                <h3 className="font-semibold text-green-900 mb-2 flex items-center gap-2">
+              <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
                   <FileText className="h-5 w-5" />
                   Quelles sont les références ou projets similaires déjà existants ?
                 </h3>
-                <p className="text-green-800">
+                <p className="text-blue-800">
                   Effectuez une revue de littérature et d'exemples similaires. Analysez ce qui a fonctionné
                   ou échoué dans des projets comparables.
                 </p>
               </div>
 
-              <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
-                <h3 className="font-semibold text-green-900 mb-2 flex items-center gap-2">
+              <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
                   <Target className="h-5 w-5" />
                   Quel problème voulons-nous résoudre ou quelle question voulons-nous explorer ?
                 </h3>
-                <p className="text-green-800">
+                <p className="text-blue-800">
                   Formulez clairement la problématique centrale. Définissez les objectifs spécifiques
                   et les questions de recherche.
                 </p>
               </div>
 
-              <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
-                <h3 className="font-semibold text-green-900 mb-2 flex items-center gap-2">
+              <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
                   <Cog className="h-5 w-5" />
                   Quels outils allons-nous utiliser (logiciels, bibliographie, enquêtes) ?
                 </h3>
-                <p className="text-green-800">
+                <p className="text-blue-800">
                   Sélectionnez les outils adaptés : logiciels d'analyse, plateformes de collaboration,
                   méthodes de collecte de données, frameworks de développement, etc.
                 </p>
               </div>
 
-              <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
-                <h3 className="font-semibold text-green-900 mb-2 flex items-center gap-2">
+              <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
                   <CheckSquare className="h-5 w-5" />
                   Quels critères permettront de juger la qualité de notre travail ?
                 </h3>
-                <p className="text-green-800">
+                <p className="text-blue-800">
                   Définissez des critères d'évaluation : rigueur scientifique, originalité, faisabilité,
                   impact potentiel, qualité de présentation, etc.
                 </p>
@@ -221,63 +221,63 @@ const OteriaMiniProjetDeroulementPage = () => {
           {/* Section 3: Planification et organisation */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                <span className="text-orange-900 font-bold text-lg">3</span>
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <span className="text-blue-900 font-bold text-lg">3</span>
               </div>
-              <h2 className="text-2xl font-bold text-orange-900">Planification et organisation</h2>
+              <h2 className="text-2xl font-bold text-blue-900">Planification et organisation</h2>
             </div>
 
             <div className="space-y-4">
-              <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
-                <h3 className="font-semibold text-orange-900 mb-2 flex items-center gap-2">
+              <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
                   <Calendar className="h-5 w-5" />
                   Quel est notre calendrier (étapes clés, deadlines intermédiaires) ?
                 </h3>
-                <p className="text-orange-800">
+                <p className="text-blue-800">
                   Établissez un planning réaliste avec des jalons intermédiaires. Prévoyez du temps
                   pour les imprévus et les révisions.
                 </p>
               </div>
 
-              <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
-                <h3 className="font-semibold text-orange-900 mb-2 flex items-center gap-2">
+              <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
                   <Target className="h-5 w-5" />
                   Comment allons-nous suivre l'avancement (tableau Trello, Gantt, réunions) ?
                 </h3>
-                <p className="text-orange-800">
+                <p className="text-blue-800">
                   Choisissez des outils de suivi adaptés : tableaux Kanban, diagrammes de Gantt,
                   points hebdomadaires, rapports d'avancement.
                 </p>
               </div>
 
-              <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
-                <h3 className="font-semibold text-orange-900 mb-2 flex items-center gap-2">
+              <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
                   <Users className="h-5 w-5" />
                   Qui est responsable de quoi (rédaction, recherche, oral, design…) ?
                 </h3>
-                <p className="text-orange-800">
+                <p className="text-blue-800">
                   Attribuez clairement les rôles et responsabilités. Assurez-vous que chaque membre
                   contribue de manière équilibrée au projet.
                 </p>
               </div>
 
-              <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
-                <h3 className="font-semibold text-orange-900 mb-2 flex items-center gap-2">
+              <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
                   <CheckSquare className="h-5 w-5" />
                   Comment valider les étapes avant de passer à la suivante ?
                 </h3>
-                <p className="text-orange-800">
+                <p className="text-blue-800">
                   Définissez des critères de validation pour chaque étape : relecture croisée,
                   validation par l'encadrant, tests de qualité, etc.
                 </p>
               </div>
 
-              <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
-                <h3 className="font-semibold text-orange-900 mb-2 flex items-center gap-2">
+              <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
                   <FileText className="h-5 w-5" />
                   Avons-nous prévu un plan B si un élément bloque ?
                 </h3>
-                <p className="text-orange-800">
+                <p className="text-blue-800">
                   Anticipez les risques et préparez des solutions alternatives : changement de méthode,
                   réduction du périmètre, réaffectation des ressources, etc.
                 </p>
@@ -288,52 +288,52 @@ const OteriaMiniProjetDeroulementPage = () => {
           {/* Section 4: Réalisation */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                <span className="text-purple-900 font-bold text-lg">4</span>
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <span className="text-blue-900 font-bold text-lg">4</span>
               </div>
-              <h2 className="text-2xl font-bold text-purple-900">Réalisation</h2>
+              <h2 className="text-2xl font-bold text-blue-900">Réalisation</h2>
             </div>
 
             <div className="space-y-4">
-              <div className="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
-                <h3 className="font-semibold text-purple-900 mb-2 flex items-center gap-2">
+              <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
                   <CheckSquare className="h-5 w-5" />
                   Le travail respecte-t-il le plan et le cahier des charges ?
                 </h3>
-                <p className="text-purple-800">
+                <p className="text-blue-800">
                   Vérifiez régulièrement l'alignement avec les spécifications initiales.
                   Adaptez le plan si nécessaire tout en maintenant la cohérence globale.
                 </p>
               </div>
 
-              <div className="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
-                <h3 className="font-semibold text-purple-900 mb-2 flex items-center gap-2">
+              <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
                   <FileText className="h-5 w-5" />
                   Nos décisions sont-elles justifiées par des sources ou arguments solides ?
                 </h3>
-                <p className="text-purple-800">
+                <p className="text-blue-800">
                   Chaque choix méthodologique ou décision doit être étayé par des références
                   scientifiques ou des arguments rationnels.
                 </p>
               </div>
 
-              <div className="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
-                <h3 className="font-semibold text-purple-900 mb-2 flex items-center gap-2">
+              <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
                   <Users className="h-5 w-5" />
                   Est-ce que la charge de travail est équitablement répartie ?
                 </h3>
-                <p className="text-purple-800">
+                <p className="text-blue-800">
                   Surveillez la contribution de chaque membre et rééquilibrez si nécessaire.
                   La réussite du groupe dépend de l'engagement de tous.
                 </p>
               </div>
 
-              <div className="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
-                <h3 className="font-semibold text-purple-900 mb-2 flex items-center gap-2">
+              <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
                   <Target className="h-5 w-5" />
                   Comment testons-nous et corrigeons-nous nos livrables ?
                 </h3>
-                <p className="text-purple-800">
+                <p className="text-blue-800">
                   Mettez en place des procédures de test et de relecture : tests fonctionnels,
                   relecture croisée, validation par des pairs, corrections itératives.
                 </p>
@@ -344,63 +344,63 @@ const OteriaMiniProjetDeroulementPage = () => {
           {/* Section 5: Finalisation et présentation */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
-                <span className="text-red-900 font-bold text-lg">5</span>
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <span className="text-blue-900 font-bold text-lg">5</span>
               </div>
-              <h2 className="text-2xl font-bold text-red-900">Finalisation et présentation</h2>
+              <h2 className="text-2xl font-bold text-blue-900">Finalisation et présentation</h2>
             </div>
 
             <div className="space-y-4">
-              <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
-                <h3 className="font-semibold text-red-900 mb-2 flex items-center gap-2">
+              <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
                   <FileText className="h-5 w-5" />
                   Avons-nous respecté le format demandé (longueur, support, délai) ?
                 </h3>
-                <p className="text-red-800">
+                <p className="text-blue-800">
                   Vérifiez la conformité aux spécifications : longueur du rapport, format des slides,
                   délais de remise, normes de présentation.
                 </p>
               </div>
 
-              <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
-                <h3 className="font-semibold text-red-900 mb-2 flex items-center gap-2">
+              <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
                   <Users className="h-5 w-5" />
                   Notre projet est-il clair et compréhensible pour un public extérieur ?
                 </h3>
-                <p className="text-red-800">
+                <p className="text-blue-800">
                   Testez la présentation sur des personnes extérieures au projet. Éliminez le jargon
                   technique non expliqué et clarifiez les concepts complexes.
                 </p>
               </div>
 
-              <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
-                <h3 className="font-semibold text-red-900 mb-2 flex items-center gap-2">
+              <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
                   <CheckSquare className="h-5 w-5" />
                   Avons-nous vérifié la cohérence entre toutes les parties (forme et fond) ?
                 </h3>
-                <p className="text-red-800">
+                <p className="text-blue-800">
                   Assurez-vous de la cohérence interne : terminologie uniforme, style visuel cohérent,
                   arguments logiques, absence de contradictions.
                 </p>
               </div>
 
-              <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
-                <h3 className="font-semibold text-red-900 mb-2 flex items-center gap-2">
+              <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
                   <Presentation className="h-5 w-5" />
                   Qui présente quoi à l'oral, et avec quel support (slides, démo) ?
                 </h3>
-                <p className="text-red-800">
+                <p className="text-blue-800">
                   Préparez la répartition des rôles pour l'oral : qui présente quelle partie,
                   qui gère les questions, qui s'occupe des démonstrations techniques.
                 </p>
               </div>
 
-              <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
-                <h3 className="font-semibold text-red-900 mb-2 flex items-center gap-2">
+              <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
                   <Lightbulb className="h-5 w-5" />
                   Quelles questions anticipons-nous du jury/professeur ?
                 </h3>
-                <p className="text-red-800">
+                <p className="text-blue-800">
                   Préparez-vous aux questions critiques : méthodologie, limites du travail,
                   perspectives d'amélioration, implications pratiques, questions techniques.
                 </p>
@@ -409,47 +409,47 @@ const OteriaMiniProjetDeroulementPage = () => {
           </div>
 
           {/* Checklist finale */}
-          <div className="bg-gradient-to-r from-indigo-50 to-indigo-100 rounded-xl shadow-lg p-8 mb-8 border-2 border-indigo-300">
+          <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl shadow-lg p-8 mb-8 border-2 border-blue-300">
             <div className="flex items-center gap-3 mb-6">
-              <Award className="h-8 w-8 text-indigo-600" />
-              <h2 className="text-2xl font-bold text-indigo-900">Checklist de validation finale</h2>
+              <Award className="h-8 w-8 text-blue-600" />
+              <h2 className="text-2xl font-bold text-blue-900">Checklist de validation finale</h2>
             </div>
 
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
-                  <CheckSquare className="h-5 w-5 text-indigo-600" />
-                  <span className="text-indigo-800">Toutes les sources sont citées</span>
+                  <CheckSquare className="h-5 w-5 text-blue-600" />
+                  <span className="text-blue-800">Toutes les sources sont citées</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckSquare className="h-5 w-5 text-indigo-600" />
-                  <span className="text-indigo-800">Le rapport est relu et corrigé</span>
+                  <CheckSquare className="h-5 w-5 text-blue-600" />
+                  <span className="text-blue-800">Le rapport est relu et corrigé</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckSquare className="h-5 w-5 text-indigo-600" />
-                  <span className="text-indigo-800">Les slides sont préparés</span>
+                  <CheckSquare className="h-5 w-5 text-blue-600" />
+                  <span className="text-blue-800">Les slides sont préparés</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckSquare className="h-5 w-5 text-indigo-600" />
-                  <span className="text-indigo-800">Les démos fonctionnent</span>
+                  <CheckSquare className="h-5 w-5 text-blue-600" />
+                  <span className="text-blue-800">Les démos fonctionnent</span>
                 </div>
               </div>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
-                  <CheckSquare className="h-5 w-5 text-indigo-600" />
-                  <span className="text-indigo-800">L'équipe maîtrise le sujet</span>
+                  <CheckSquare className="h-5 w-5 text-blue-600" />
+                  <span className="text-blue-800">L'équipe maîtrise le sujet</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckSquare className="h-5 w-5 text-indigo-600" />
-                  <span className="text-indigo-800">Le temps de présentation est respecté</span>
+                  <CheckSquare className="h-5 w-5 text-blue-600" />
+                  <span className="text-blue-800">Le temps de présentation est respecté</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckSquare className="h-5 w-5 text-indigo-600" />
-                  <span className="text-indigo-800">Les questions sont anticipées</span>
+                  <CheckSquare className="h-5 w-5 text-blue-600" />
+                  <span className="text-blue-800">Les questions sont anticipées</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckSquare className="h-5 w-5 text-indigo-600" />
-                  <span className="text-indigo-800">L'ambiance du groupe est positive</span>
+                  <CheckSquare className="h-5 w-5 text-blue-600" />
+                  <span className="text-blue-800">L'ambiance du groupe est positive</span>
                 </div>
               </div>
             </div>

@@ -10,77 +10,77 @@ const flashcards = [
     id: 1,
     category: "Définition des polynômes",
     front: "Qu'est-ce qu'un polynôme ?",
-    back: "Un polynôme est une fonction définie sur \\mathbb{R} par une expression de la forme P(x) = a_n x^n + a_{n-1} x^{n-1} + \\dots + a_1 x + a_0 où les a_i sont des réels.",
+    back: "\\text{Un polynôme est une fonction définie sur } \\mathbb{R} \\text{ par une expression de la forme } P(x) = a_n x^n + a_{n-1} x^{n-1} + \\dots + a_1 x + a_0 \\text{ où les } a_i \\text{ sont des réels.}",
     explanation: "Expression algébrique finie avec coefficients réels et puissances entières positives"
   },
   {
     id: 2,
     category: "Définition des polynômes",
     front: "Définition du degré d'un polynôme",
-    back: "Le degré d'un polynôme P est le plus grand entier n tel que le coefficient a_n ≠ 0. Noté deg(P) = n.",
+    back: "\\text{Le degré d'un polynôme } P \\text{ est le plus grand entier } n \\text{ tel que le coefficient } a_n \\neq 0. \\text{ Noté } \\deg(P) = n.",
     explanation: "Le degré correspond à la puissance la plus élevée dont le coefficient n'est pas nul"
   },
   {
     id: 3,
     category: "Définition des polynômes",
     front: "Polynôme constant",
-    back: "Un polynôme constant P(x) = c a pour degré 0 si c ≠ 0, et degré -∞ si c = 0.",
+    back: "\\text{Un polynôme constant } P(x) = c \\text{ a pour degré } 0 \\text{ si } c \\neq 0, \\text{ et degré } -\\infty \\text{ si } c = 0.",
     explanation: "Convention spéciale pour le polynôme nul qui n'a pas de degré défini"
   },
   {
     id: 4,
     category: "Définition des polynômes",
     front: "Polynôme nul",
-    back: "Le polynôme nul est défini par P(x) = 0 pour tout x réel. Il n'a pas de degré (degré -∞).",
+    back: "\\text{Le polynôme nul est défini par } P(x) = 0 \\text{ pour tout } x \\in \\mathbb{R}. \\text{ Il n'a pas de degré (degré } -\\infty\\text{).}",
     explanation: "Tous les coefficients sont nuls, c'est l'élément neutre pour l'addition"
   },
   {
     id: 5,
     category: "Opérations sur les polynômes",
     front: "Somme de deux polynômes",
-    back: "Si P = \\sum_{k=0}^n a_k x^k et Q = \\sum_{k=0}^m b_k x^k, alors P+Q = \\sum_{k=0}^{\\max(n,m)} (a_k + b_k) x^k",
+    back: "\\text{Si } P = \\sum_{k=0}^n a_k x^k \\text{ et } Q = \\sum_{k=0}^m b_k x^k, \\text{ alors } P+Q = \\sum_{k=0}^{\\max(n,m)} (a_k + b_k) x^k",
     explanation: "Addition terme à terme des coefficients de mêmes degrés"
   },
   {
     id: 6,
     category: "Opérations sur les polynômes",
     front: "Produit de deux polynômes",
-    back: "Si P et Q sont de degrés n et m, alors deg(P×Q) = n + m, et le coefficient de x^k est \\sum_{i+j=k} a_i b_j",
+    back: "\\text{Si } P \\text{ et } Q \\text{ sont de degrés } n \\text{ et } m, \\text{ alors } \\deg(P\\times Q) = n + m, \\text{ et le coefficient de } x^k \\text{ est } \\sum_{i+j=k} a_i b_j",
     explanation: "Le degré du produit est la somme des degrés, coefficient de x^k obtenu par convolution"
   },
   {
     id: 7,
     category: "Racines des polynômes",
     front: "Définition d'une racine",
-    back: "Un nombre r est racine de P si P(r) = 0. On dit aussi que r est zéro du polynôme.",
+    back: "\\text{Un nombre } r \\text{ est racine de } P \\text{ si } P(r) = 0. \\text{ On dit aussi que } r \\text{ est zéro du polynôme.}",
     explanation: "Valeur où le polynôme s'annule"
   },
   {
     id: 8,
     category: "Racines des polynômes",
     front: "Multiplicité d'une racine",
-    back: "Si (x - r)^k divise P(x) mais pas (x - r)^{k+1}, alors r est racine de multiplicité k.",
+    back: "\\text{Si } (x - r)^k \\text{ divise } P(x) \\text{ mais pas } (x - r)^{k+1}, \\text{ alors } r \\text{ est racine de multiplicité } k.",
     explanation: "Nombre de fois qu'un facteur linéaire apparaît dans la décomposition"
   },
   {
     id: 9,
     category: "Racines des polynômes",
     front: "Théorème de d'Alembert-Gauss",
-    back: "Tout polynôme de degré n ≥ 1 admet au moins une racine dans \\mathbb{C}.",
+    back: "\\text{Tout polynôme de degré } n \\geq 1 \\text{ admet au moins une racine dans } \\mathbb{C}.",
     explanation: "Fondement algébrique : les polynômes complexes ont toujours des racines"
   },
   {
     id: 10,
     category: "Division euclidienne",
     front: "Division euclidienne de polynômes",
-    back: "Pour P et D ≠ 0, il existe uniques Q et R tels que P = D×Q + R avec deg(R) < deg(D) ou R = 0.",
+    back: "\\text{Pour } P \\text{ et } D \\neq 0, \\text{ il existe uniques } Q \\text{ et } R \\text{ tels que } P = D\\times Q + R \\text{ avec } \\deg(R) < \\deg(D) \\text{ ou } R = 0.",
     explanation: "Analogue de la division euclidienne des entiers"
   },
   {
     id: 11,
     category: "Division euclidienne",
     front: "Condition sur le reste",
-    back: "Dans P = D×Q + R, le reste R vérifie soit R = 0, soit deg(R) < deg(D).",
+    back: "\\text{Dans } P = D\\times Q + R, \\text{ le reste } R \\text{ vérifie soit } R = 0, \\text{ soit } \\deg(R) < \\deg(D).",
     explanation: "Le degré du reste est strictement inférieur à celui du diviseur"
   },
   {
@@ -94,14 +94,14 @@ const flashcards = [
     id: 13,
     category: "Dichotomie - Principe",
     front: "Principe de la dichotomie",
-    back: "Méthode pour trouver une solution en divisant successivement l'intervalle de recherche en deux.",
+    back: "\\text{Méthode pour trouver une solution en divisant successivement l'intervalle de recherche en deux.}",
     explanation: "Stratégie « diviser pour régner » qui réduit l'espace de recherche par deux à chaque étape"
   },
   {
     id: 14,
     category: "Dichotomie - Principe",
     front: "Condition d'application de la dichotomie",
-    back: "f continue sur [a,b], f(a) et f(b) de signes opposés, alors il existe c ∈ ]a,b[ tel que f(c) = 0.",
+    back: "f \\text{ continue sur } [a,b], \\text{ } f(a) \\text{ et } f(b) \\text{ de signes opposés, alors il existe } c \\in ]a,b[ \\text{ tel que } f(c) = 0.",
     explanation: "Théorème des valeurs intermédiaires garantit l'existence d'une racine"
   },
   {
@@ -145,6 +145,146 @@ const flashcards = [
     front: "Limites de la dichotomie",
     back: "\\begin{array}{l} \\text{• Lente convergence (linéaire)} \\\\[0.3em] \\text{• Nécessite la continuité et le changement de signe} \\\\[0.3em] \\text{• Ne trouve qu'une racine à la fois} \\end{array}",
     explanation: "Moins efficace que les méthodes de Newton pour les fonctions dérivables"
+  },
+  {
+    id: 21,
+    category: "Python - Dichotomie",
+    front: "Signature de la fonction dichotomie en Python",
+    back: "\\text{def dichotomie(f, a, b, precision=1e-6):}",
+    explanation: "Fonction qui prend en paramètres : la fonction f, l'intervalle [a,b], et la précision souhaitée"
+  },
+  {
+    id: 22,
+    category: "Python - Dichotomie",
+    front: "Vérification du prérequis en Python",
+    back: "\\text{assert f(a)*f(b) < 0, \"f(a) et f(b) doivent avoir des signes opposés\"}",
+    explanation: "Assert vérifie que f(a) et f(b) sont de signes opposés avant de commencer l'algorithme"
+  },
+  {
+    id: 23,
+    category: "Python - Dichotomie",
+    front: "Condition de la boucle while",
+    back: "\\text{while b - a > precision:}",
+    explanation: "On continue tant que l'intervalle est plus large que la précision souhaitée"
+  },
+  {
+    id: 24,
+    category: "Python - Dichotomie",
+    front: "Calcul du milieu de l'intervalle",
+    back: "\\text{c = (a + b) / 2}",
+    explanation: "Le point milieu c est la moyenne arithmétique de a et b"
+  },
+  {
+    id: 25,
+    category: "Python - Dichotomie",
+    front: "Test pour choisir le nouvel intervalle",
+    back: "\\text{if f(a) * f(c) <= 0: b = c else: a = c}",
+    explanation: "Si f(a) et f(c) ont des signes opposés, la racine est dans [a,c], sinon dans [c,b]"
+  },
+  {
+    id: 26,
+    category: "Python - Dichotomie",
+    front: "Valeur retournée par la fonction",
+    back: "\\text{return (a + b) / 2}",
+    explanation: "On retourne le milieu du dernier intervalle comme approximation de la racine"
+  },
+  {
+    id: 27,
+    category: "Python - Dichotomie",
+    front: "Exemple d'appel de la fonction",
+    back: "\\text{r = dichotomie(f, 1, 2, 1e-6)}",
+    explanation: "Cherche une racine de f dans [1,2] avec une précision de 10^(-6)"
+  },
+  {
+    id: 28,
+    category: "Python - Méthode de Babylone",
+    front: "Formule récurrente de la méthode de Babylone",
+    back: "u_{n+1} = \\frac{u_n + a/u_n}{2} \\text{ avec } u_0 = 1",
+    explanation: "Suite qui converge vers √a en utilisant la moyenne de u_n et a/u_n"
+  },
+  {
+    id: 29,
+    category: "Python - Méthode de Babylone",
+    front: "Initialisation de la méthode de Babylone",
+    back: "\\text{u = 1.0; x = 0.5 * (u + a/u)}",
+    explanation: "On démarre avec u=1 et on calcule la première itération x"
+  },
+  {
+    id: 30,
+    category: "Python - Méthode de Babylone",
+    front: "Condition d'arrêt de la méthode de Babylone",
+    back: "\\text{while abs(x - u) > eps:}",
+    explanation: "On arrête quand la différence entre deux itérations successives est inférieure à epsilon"
+  },
+  {
+    id: 31,
+    category: "Python - Méthode de Babylone",
+    front: "Itération de la méthode de Babylone",
+    back: "\\text{u = x; x = 0.5 * (u + a/u)}",
+    explanation: "À chaque itération, on met à jour u puis on calcule la nouvelle valeur x"
+  },
+  {
+    id: 32,
+    category: "Python - NumPy",
+    front: "Fonction NumPy pour créer un intervalle",
+    back: "\\text{np.linspace(a, b, n)}",
+    explanation: "Crée n points uniformément répartis entre a et b"
+  },
+  {
+    id: 33,
+    category: "Python - NumPy",
+    front: "Fonction NumPy pour la valeur absolue",
+    back: "\\text{np.abs(x)}",
+    explanation: "Calcule |x| pour un nombre ou un tableau"
+  },
+  {
+    id: 34,
+    category: "Python - NumPy",
+    front: "Fonction NumPy pour la racine carrée",
+    back: "\\text{np.sqrt(x)}",
+    explanation: "Calcule √x, peut être utilisé pour vérifier la méthode de Babylone"
+  },
+  {
+    id: 35,
+    category: "Théorème des valeurs intermédiaires",
+    front: "Énoncé du TVI",
+    back: "\\text{Si } f \\text{ est continue sur } [a,b] \\text{ et } f(a) \\cdot f(b) < 0, \\text{ alors } \\exists c \\in ]a,b[ : f(c) = 0",
+    explanation: "Garantit l'existence d'au moins une racine dans l'intervalle"
+  },
+  {
+    id: 36,
+    category: "Théorème des valeurs intermédiaires",
+    front: "Hypothèse de continuité",
+    back: "\\text{La fonction } f \\text{ doit être continue sur } [a,b]",
+    explanation: "Sans continuité, le TVI ne s'applique pas et la dichotomie peut échouer"
+  },
+  {
+    id: 37,
+    category: "Théorème des valeurs intermédiaires",
+    front: "Hypothèse de changement de signe",
+    back: "f(a) \\text{ et } f(b) \\text{ doivent être de signes opposés : } f(a) \\cdot f(b) < 0",
+    explanation: "Condition nécessaire pour garantir qu'une racine existe dans l'intervalle"
+  },
+  {
+    id: 38,
+    category: "Dichotomie - Applications",
+    front: "Cas d'utilisation de la dichotomie",
+    back: "\\begin{array}{l} \\text{• Résolution d'équations transcendantes} \\\\[0.3em] \\text{• Recherche de racines de polynômes} \\\\[0.3em] \\text{• Problèmes d'optimisation} \\\\[0.3em] \\text{• Calculs numériques en général} \\end{array}",
+    explanation: "Méthode universelle applicable à tout type de fonction continue"
+  },
+  {
+    id: 39,
+    category: "Dichotomie - Applications",
+    front: "Nombre d'itérations nécessaires",
+    back: "n = \\lceil \\log_2\\left(\\frac{b-a}{\\epsilon}\\right) \\rceil",
+    explanation: "Pour atteindre une précision ε dans l'intervalle [a,b], il faut environ log₂((b-a)/ε) itérations"
+  },
+  {
+    id: 40,
+    category: "Dichotomie - Applications",
+    front: "Exemple de calcul du nombre d'itérations",
+    back: "\\text{Pour } [a,b] = [1,2] \\text{ et } \\epsilon = 10^{-6} : n \\approx \\log_2(10^6) \\approx 20 \\text{ itérations}",
+    explanation: "Avec un intervalle de longueur 1 et une précision de 10^(-6), environ 20 itérations suffisent"
   }
 ];
 
@@ -235,21 +375,21 @@ const OteriaPolynomesDichotomieFlashcardsPage = () => {
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-teal-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-teal-700 transition-colors">
+          <div className="flex items-center text-xs text-blue-600">
+            <Link to="/" className="flex items-center gap-1 hover:text-blue-700 transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
-            <Link to="/articles" className="hover:text-teal-700 transition-colors">
+            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
+            <Link to="/articles" className="hover:text-blue-700 transition-colors">
               Niveau
             </Link>
-            <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
-            <Link to="/articles/oteria-cyber-school" className="hover:text-teal-700 transition-colors">
+            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
+            <Link to="/articles/oteria-cyber-school" className="hover:text-blue-700 transition-colors">
               OTERIA Cyber School
             </Link>
-            <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
-            <span className="text-teal-600 font-medium">Séance 6 - Flashcards</span>
+            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
+            <span className="text-blue-600 font-medium">Séance 6 - Flashcards</span>
           </div>
         </div>
       </nav>
@@ -258,11 +398,11 @@ const OteriaPolynomesDichotomieFlashcardsPage = () => {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center">
-              <Calculator className="h-8 w-8 text-teal-600" />
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+              <Calculator className="h-8 w-8 text-blue-600" />
             </div>
           </div>
-          <h1 className="text-3xl font-bold mb-4 text-teal-900">Séance 6 : Flashcards - Polynômes & dichotomie</h1>
+          <h1 className="text-3xl font-bold mb-4 text-blue-900">Séance 6 : Flashcards - Polynômes & dichotomie</h1>
           <p className="text-lg text-blue-800 max-w-3xl mx-auto mb-4">
             Degré, racines, division euclidienne, Algorithme de la dichotomie pour f(x)=0
           </p>
@@ -271,26 +411,20 @@ const OteriaPolynomesDichotomieFlashcardsPage = () => {
           </div>
 
           <div className="flex gap-3 justify-center flex-wrap">
-            <Link to="/formation/oteria/polynomes-dichotomie-cours">
+            <Link to="/formation/oteria/polynomes-approximation-cours">
               <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
                 <BookOpen className="h-4 w-4" />
                 Cours
               </button>
             </Link>
-            <Link to="/formation/oteria/polynomes-dichotomie-exercices">
+            <Link to="/formation/oteria/polynomes-exercices">
               <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
                 <Target className="h-4 w-4" />
                 Exercices
               </button>
             </Link>
-            <Link to="/formation/oteria/polynomes-dichotomie-qcm">
-              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                <Zap className="h-4 w-4" />
-                QCM
-              </button>
-            </Link>
             <Link to="/articles/oteria-cyber-school">
-              <button className="inline-flex items-center gap-2 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors">
+              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
                 <ArrowLeft className="h-4 w-4" />
                 Retour au programme
               </button>
@@ -308,7 +442,7 @@ const OteriaPolynomesDichotomieFlashcardsPage = () => {
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                  className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 >
                   <option value="all">Toutes les catégories ({flashcards.length} cartes)</option>
                   {categories.map(category => (
@@ -325,7 +459,7 @@ const OteriaPolynomesDichotomieFlashcardsPage = () => {
                 <select
                   value={studyMode}
                   onChange={(e) => setStudyMode(e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                  className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 >
                   <option value="sequential">Séquentiel</option>
                   <option value="random">Aléatoire</option>
@@ -350,7 +484,7 @@ const OteriaPolynomesDichotomieFlashcardsPage = () => {
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
               <div
-                className="bg-teal-600 h-2 rounded-full transition-all duration-300"
+                className="bg-blue-600 h-2 rounded-full transition-all duration-300"
                 style={{ width: `${((currentCard + 1) / filteredCards.length) * 100}%` }}
               ></div>
             </div>
@@ -358,54 +492,34 @@ const OteriaPolynomesDichotomieFlashcardsPage = () => {
 
           {/* Carte de flashcard */}
           {filteredCards.length > 0 && (
-            <div className="perspective-1000 mb-8">
-              <Card
-                className="relative w-full h-[500px] cursor-pointer transform-style-preserve-3d transition-transform duration-700 overflow-hidden"
-                style={{
-                  transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
-                }}
-                onClick={flipCard}
-              >
-                {/* Face avant */}
-                <div className="absolute inset-0 w-full h-full backface-hidden">
-                  <CardContent className="h-full flex flex-col justify-center items-center p-6 bg-gradient-to-br from-teal-50 to-blue-50 border-2 border-teal-200 overflow-y-auto">
-                    <div className="mb-4 flex-shrink-0">
-                      <span className="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium">
-                        {filteredCards[currentCard].category}
-                      </span>
-                    </div>
-                    <div className="flex-1 flex flex-col justify-center items-center min-h-0">
-                      <h3 className="text-xl font-bold text-center text-teal-900 mb-4 leading-tight">
-                        {filteredCards[currentCard].front}
-                      </h3>
-                      <p className="text-center text-gray-600 text-sm">Cliquez pour voir la réponse</p>
-                    </div>
-                  </CardContent>
+            <Card className="shadow-2xl mb-8">
+              <CardContent className="p-8">
+                <div className="mb-4">
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                    {filteredCards[currentCard].category}
+                  </span>
                 </div>
+                
+                <div className="min-h-[300px] flex flex-col justify-center">
+                  <div className="text-center mb-8">
+                    <h3 className="text-xl font-semibold text-blue-900 mb-4">Question</h3>
+                    <p className="text-lg text-blue-800">{filteredCards[currentCard].front}</p>
+                  </div>
 
-                {/* Face arrière */}
-                <div
-                  className="absolute inset-0 w-full h-full backface-hidden"
-                  style={{ transform: 'rotateY(180deg)' }}
-                >
-                  <CardContent className="h-full flex flex-col justify-center items-center p-6 bg-gradient-to-br from-blue-50 to-teal-50 border-2 border-blue-200 overflow-y-auto">
-                    <div className="mb-4 flex-shrink-0" style={{ transform: 'rotateY(180deg)' }}>
-                      <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-                        Définition/Concept
-                      </span>
-                    </div>
-                    <div className="flex-1 flex flex-col justify-center items-center min-h-0 w-full" style={{ transform: 'rotateY(180deg)' }}>
-                      <div className="text-center mb-4 w-full max-w-full">
+                  {isFlipped && (
+                    <div className="border-t-2 border-green-200 pt-6 mt-6 animate-in fade-in duration-300">
+                      <h3 className="text-xl font-semibold text-green-900 mb-4 text-center">Réponse</h3>
+                      <div className="text-center mb-4">
                         <LatexRenderer latex={filteredCards[currentCard].back} block />
                       </div>
-                      <p className="text-center text-gray-600 text-sm italic leading-relaxed">
+                      <p className="text-center text-gray-600 text-sm italic leading-relaxed mt-4">
                         {filteredCards[currentCard].explanation}
                       </p>
                     </div>
-                  </CardContent>
+                  )}
                 </div>
-              </Card>
-            </div>
+              </CardContent>
+            </Card>
           )}
 
           {/* Contrôles de navigation */}
@@ -424,7 +538,7 @@ const OteriaPolynomesDichotomieFlashcardsPage = () => {
               <Button
                 onClick={flipCard}
                 variant="default"
-                className="bg-teal-600 hover:bg-teal-700"
+                className="bg-blue-600 hover:bg-blue-700"
               >
                 {isFlipped ? 'Voir la question' : 'Voir la réponse'}
               </Button>
@@ -444,41 +558,30 @@ const OteriaPolynomesDichotomieFlashcardsPage = () => {
 
         {/* Navigation */}
         <div className="flex justify-between items-center bg-blue-50 p-6 rounded-lg mt-8 max-w-4xl mx-auto">
-          <Link to="/formation/oteria/polynomes-dichotomie-exercices">
+          <Link to="/formation/oteria/polynomes-exercices">
             <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
               ← Exercices
             </button>
           </Link>
           <div className="flex gap-3">
-            <Link to="/formation/oteria/polynomes-dichotomie-cours">
+            <Link to="/formation/oteria/polynomes-approximation-cours">
               <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
                 <BookOpen className="h-4 w-4" />
                 Cours
               </button>
             </Link>
-            <Link to="/formation/oteria/polynomes-dichotomie-qcm">
+            <Link to="/articles/oteria-cyber-school">
               <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                <Zap className="h-4 w-4" />
-                QCM
+                <ArrowLeft className="h-4 w-4" />
+                Retour au programme
               </button>
             </Link>
           </div>
-          <div className="text-blue-600 font-medium">QCM →</div>
+          <Link to="/formation/oteria/fonctions-variable-reelle-cours">
+            <div className="text-blue-600 hover:text-blue-700 font-medium">Séance suivante →</div>
+          </Link>
         </div>
       </div>
-
-      <style dangerouslySetInnerHTML={{
-        __html: `
-        .perspective-1000 {
-          perspective: 1000px;
-        }
-        .transform-style-preserve-3d {
-          transform-style: preserve-3d;
-        }
-        .backface-hidden {
-          backface-visibility: hidden;
-        }
-      `}} />
     </div>
   );
 };
