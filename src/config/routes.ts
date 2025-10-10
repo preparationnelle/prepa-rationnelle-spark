@@ -493,6 +493,7 @@ const OteriaFonctionsQCMPage = lazy(() => import('../pages/formation/oteria/Oter
 const OteriaPolynomesApproximationCoursPage = lazy(() => import('../pages/formation/oteria/OteriaPolynomesApproximationCoursPage'));
 const OteriaPolynomesExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaPolynomesExercicesPage'));
 const OteriaPolynomesDichotomieFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaPolynomesDichotomieFlashcardsPage'));
+const OteriaPolynomesQCMPage = lazy(() => import('../pages/formation/oteria/OteriaPolynomesQCMPage'));
 
 // Chapitre 10 - Intégrales & π par Monte-Carlo
 const OteriaIntegralesMonteCarloCoursPage = lazy(() => import('../pages/formation/oteria/OteriaIntegralesMonteCarloCoursPage'));
@@ -708,6 +709,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/oteria/polynomes-approximation-cours', component: OteriaPolynomesApproximationCoursPage, title: 'Polynômes & Dichotomie - Cours' },
   { path: '/formation/oteria/polynomes-exercices', component: OteriaPolynomesExercicesPage, title: 'Polynômes & Dichotomie - Exercices' },
   { path: '/formation/oteria/polynomes-flashcards', component: OteriaPolynomesDichotomieFlashcardsPage, title: 'Polynômes & Dichotomie - Flashcards' },
+  { path: '/formation/oteria/polynomes-qcm', component: OteriaPolynomesQCMPage, title: 'Polynômes & Dichotomie - QCM' },
 
   // Chapitre 10 - Intégrales & π par Monte-Carlo
   { path: '/formation/oteria/integrales-monte-carlo-cours', component: OteriaIntegralesMonteCarloCoursPage, title: 'Intégrales & π par Monte-Carlo - Cours' },

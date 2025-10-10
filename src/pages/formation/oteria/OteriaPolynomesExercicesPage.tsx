@@ -96,11 +96,12 @@ const OteriaPolynomesExercicesPage = () => {
                     Flashcards
                   </button>
                 </Link>
-                <button className="w-full bg-gray-400 text-white px-4 py-3 rounded-lg cursor-not-allowed font-medium shadow-md" disabled>
-                  <Zap className="h-5 w-5 mx-auto mb-2" />
-                  QCM
-                  <span className="text-xs block mt-1">Bientôt disponible</span>
-                </button>
+                <Link to="/formation/oteria/polynomes-qcm" className="group">
+                  <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium group-hover:scale-105 shadow-md hover:shadow-lg">
+                    <Zap className="h-5 w-5 mx-auto mb-2" />
+                    QCM
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

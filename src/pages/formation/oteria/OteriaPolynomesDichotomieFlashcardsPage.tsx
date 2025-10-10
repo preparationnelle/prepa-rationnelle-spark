@@ -423,6 +423,12 @@ const OteriaPolynomesDichotomieFlashcardsPage = () => {
                 Exercices
               </button>
             </Link>
+            <Link to="/formation/oteria/polynomes-qcm">
+              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
+                <Zap className="h-4 w-4" />
+                QCM
+              </button>
+            </Link>
             <Link to="/articles/oteria-cyber-school">
               <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
                 <ArrowLeft className="h-4 w-4" />
@@ -568,6 +574,18 @@ const OteriaPolynomesDichotomieFlashcardsPage = () => {
               <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
                 <BookOpen className="h-4 w-4" />
                 Cours
+              </button>
+            </Link>
+            <Link to="/formation/oteria/polynomes-exercices">
+              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
+                <Target className="h-4 w-4" />
+                Exercices
+              </button>
+            </Link>
+            <Link to="/formation/oteria/polynomes-qcm">
+              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
+                <Zap className="h-4 w-4" />
+                QCM
               </button>
             </Link>
             <Link to="/articles/oteria-cyber-school">
