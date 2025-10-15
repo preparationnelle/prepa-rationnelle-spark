@@ -506,7 +506,7 @@ const NegationExercicesPage = () => {
   const [examTime, setExamTime] = useState<number>(0);
   const [examTimer, setExamTimer] = useState<NodeJS.Timeout | null>(null);
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState<number>(0);
-  const [selectedExerciseType, setSelectedExerciseType] = useState<'qcm' | 'complet'>('qcm');
+  const [selectedExerciseType, setSelectedExerciseType] = useState<'qcm' | 'complet' | 'toutes'>('qcm');
   const [showCorrections, setShowCorrections] = useState<{ [key: string]: boolean }>({});
 
   // Filtrer les exercices selon les sélections

@@ -403,7 +403,7 @@ const AuxiliaireParfaitExercicesPage = () => {
 
   // New state for single question display
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState<number>(0);
-  const [selectedExerciseType, setSelectedExerciseType] = useState<'qcm' | 'complet'>('qcm');
+  const [selectedExerciseType, setSelectedExerciseType] = useState<'qcm' | 'complet' | 'toutes'>('qcm');
 
   // Filtrer les exercices selon les sélections
   const filterExercises = (exercises: any[]) => {
@@ -819,7 +819,7 @@ const AuxiliaireParfaitExercicesPage = () => {
                 </div>
               </div>
               <Badge variant="outline" className="border-orange-300 text-orange-700">
-                {selectedExerciseType === 'qcm' ? 'QCM' : 'Mots à compléter'}
+                {selectedExerciseType === 'qcm' ? 'QCM' : selectedExerciseType === 'complet' ? 'Mots à compléter' : 'Tous'}
               </Badge>
             </div>
 

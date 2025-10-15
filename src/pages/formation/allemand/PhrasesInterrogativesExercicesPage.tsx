@@ -482,7 +482,7 @@ const PhrasesInterrogativesExercicesPage = () => {
   const [examTime, setExamTime] = useState<number>(0);
   const [examTimer, setExamTimer] = useState<NodeJS.Timeout | null>(null);
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState<number>(0);
-  const [selectedExerciseType, setSelectedExerciseType] = useState<'qcm' | 'complet'>('qcm');
+  const [selectedExerciseType, setSelectedExerciseType] = useState<'qcm' | 'complet' | 'toutes'>('qcm');
   const [showCorrections, setShowCorrections] = useState<{ [key: string]: boolean }>({});
 
   // Filtrer les exercices selon les sélections
@@ -714,7 +714,7 @@ const PhrasesInterrogativesExercicesPage = () => {
             <div className="grid md:grid-cols-3 gap-4">
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-gray-700">Type</label>
-                <select value={selectedExerciseType} onChange={(e) => setSelectedExerciseType(e.target.value as 'qcm' | 'complet')}
+                <select value={selectedExerciseType} onChange={(e) => setSelectedExerciseType(e.target.value as 'qcm' | 'complet' | 'toutes')}}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500" disabled={examStarted}>
                   <option value="qcm">QCM</option>
                   <option value="complet">Mots à compléter</option>

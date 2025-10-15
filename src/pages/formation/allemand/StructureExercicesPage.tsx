@@ -497,7 +497,7 @@ const StructureExercicesPage = () => {
   const [examTime, setExamTime] = useState<number>(0);
   const [examTimer, setExamTimer] = useState<NodeJS.Timeout | null>(null);
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState<number>(0);
-  const [selectedExerciseType, setSelectedExerciseType] = useState<'qcm' | 'complet'>('qcm');
+  const [selectedExerciseType, setSelectedExerciseType] = useState<'qcm' | 'complet' | 'toutes'>('qcm');
   const [showCorrections, setShowCorrections] = useState<{ [key: string]: boolean }>({});
 
   // Filtrer les exercices selon les sélections
@@ -727,14 +727,14 @@ const StructureExercicesPage = () => {
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500" disabled={examStarted}>
                   <option value="qcm">QCM</option>
                   <option value="complet">Mots à compléter</option>
-                  <option value="toutes">Tous les types</option>
+                <option value="toutes">Tous les types</option>
                 </select>
               </div>
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-gray-700">Catégorie</label>
                 <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500" disabled={examStarted}>
-                  <option value="toutes">Toutes les catégories</option>
+                <option value="toutes">Toutes les catégories</option>
                   <option value="Position du verbe">Position du verbe</option>
                   <option value="Ordre des compléments">Ordre des compléments</option>
                   <option value="Négation">Négation</option>

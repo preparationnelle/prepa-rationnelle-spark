@@ -2,20 +2,20 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { Home, ChevronRight, BookOpen } from 'lucide-react';
 
-const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="text-2xl font-semibold text-gray-900 mt-10 mb-4">{children}</h2>
+const SectionTitle = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
+  <h2 className={`text-2xl font-semibold text-gray-900 mt-10 mb-4 ${className}`}>{children}</h2>
 );
 
-const SubTitle = ({ children }: { children: React.ReactNode }) => (
-  <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">{children}</h3>
+const SubTitle = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
+  <h3 className={`text-xl font-semibold text-gray-800 mt-6 mb-3 ${className}`}>{children}</h3>
 );
 
-const P = ({ children }: { children: React.ReactNode }) => (
-  <p className="text-gray-700 leading-relaxed mb-3">{children}</p>
+const P = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
+  <p className={`text-gray-700 leading-relaxed mb-3 ${className}`}>{children}</p>
 );
 
-const LI = ({ children }: { children: React.ReactNode }) => (
-  <li className="mb-2 text-gray-700 leading-relaxed">{children}</li>
+const LI = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
+  <li className={`mb-2 text-gray-700 leading-relaxed ${className}`}>{children}</li>
 );
 
 const CollesAnglaisPage = () => {

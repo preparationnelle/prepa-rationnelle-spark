@@ -215,14 +215,14 @@ export const GeopoliticsFlashcardsPuissance: React.FC = () => {
     // Empêcher toute interaction à la fin
     if (currentIndex === totalCards - 1 && showAnswer) return;
     const cardId = geopoliticsPuissanceData.findIndex(card => card.term === currentCard.term) + 600; // +600 pour différencier des autres flashcards
-    const isMarked = isFlashcardMarkedForReview(cardId, 'geopolitics-puissance');
+    const isMarked = isFlashcardMarkedForReview(cardId, 'english');
 
     if (isMarked) {
-      removeFlashcardFromReview(cardId, 'geopolitics-puissance');
+      removeFlashcardFromReview(cardId, 'english');
     } else {
       addFlashcardForReview({
         id: cardId,
-        language: 'geopolitics-puissance',
+        language: 'english',
         category: currentCard.category,
         french: currentCard.term,
         translation: currentCard.definition
@@ -401,7 +401,7 @@ export const GeopoliticsFlashcardsPuissance: React.FC = () => {
               <Badge variant="outline" className="px-3 py-1 text-xs text-blue-600 border-blue-300">
                 {currentCard.category}
               </Badge>
-              {isFlashcardMarkedForReview(geopoliticsPuissanceData.findIndex(card => card.term === currentCard.term) + 600, 'geopolitics-puissance') && (
+              {isFlashcardMarkedForReview(geopoliticsPuissanceData.findIndex(card => card.term === currentCard.term) + 600, 'english') && (
                 <div className="mt-2">
                   <Badge variant="secondary" className="bg-yellow-100 text-yellow-800 border-yellow-300">
                     <Star className="h-3 w-3 mr-1" />
@@ -409,51 +409,19 @@ export const GeopoliticsFlashcardsPuissance: React.FC = () => {
                   </Badge>
                 </div>
               )}
-            </div>
-
-            {/* Définition */}
-            {showAnswer && (
-              <div className="animate-in fade-in duration-500 mt-6">
-                <div className="text-xl text-blue-600 leading-relaxed">
-                  {isFlipped ? currentCard.term : currentCard.definition}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Masquer les boutons d'interaction quand on arrive à la fin */}
-          {!isAtEnd && (
-            <div className="flex gap-3">
-              <Button
-                onClick={toggleAnswer}
-                className="px-6 py-3 text-lg font-medium transition-all duration-200 hover:scale-105 bg-blue-600 hover:bg-blue-700"
-                size="lg"
-              >
-                {showAnswer ? (
-                  <>
-                    <EyeOff className="mr-2 h-5 w-5" />
-                    Cacher
-                  </>
-                ) : (
-                  <>
-                    <Eye className="mr-2 h-5 w-5" />
-                    Voir ({isFlipped ? 'terme' : 'définition'})
-                  </>
-                )}
-              </Button>
-
+...
               <Button
                 onClick={markForReview}
-                variant={isFlashcardMarkedForReview(geopoliticsPuissanceData.findIndex(card => card.term === currentCard.term) + 600, 'geopolitics-puissance') ? "default" : "outline"}
+                variant={isFlashcardMarkedForReview(geopoliticsPuissanceData.findIndex(card => card.term === currentCard.term) + 600, 'english') ? "default" : "outline"}
                 className={`px-6 py-3 text-lg font-medium transition-all duration-200 hover:scale-105 ${
-                  isFlashcardMarkedForReview(geopoliticsPuissanceData.findIndex(card => card.term === currentCard.term) + 600, 'geopolitics-puissance')
+                  isFlashcardMarkedForReview(geopoliticsPuissanceData.findIndex(card => card.term === currentCard.term) + 600, 'english')
                     ? 'bg-yellow-500 hover:bg-yellow-600 text-white'
                     : 'border-yellow-500 text-yellow-600 hover:bg-yellow-50'
                 }`}
                 size="lg"
               >
                 <Star className="mr-2 h-5 w-5" />
-                {isFlashcardMarkedForReview(geopoliticsPuissanceData.findIndex(card => card.term === currentCard.term) + 600, 'geopolitics-puissance') ? 'Retiré' : 'À revoir'} (R)
+                {isFlashcardMarkedForReview(geopoliticsPuissanceData.findIndex(card => card.term === currentCard.term) + 600, 'english') ? 'Retiré' : 'À revoir'} (R)
               </Button>
             </div>
           )}
@@ -512,14 +480,7 @@ export const GeopoliticsFlashcardsPuissance: React.FC = () => {
             >
               🔄 Recommencer
             </Button>
-            {reviewCards.size > 0 && (
-              <Button
-                onClick={toggleReviewMode}
-                className="bg-blue-500 hover:bg-blue-600 text-white"
-              >
-                📖 Réviser ({reviewCards.size})
-              </Button>
-            )}
+            {/* Révision désactivée pour cette version simplifiée */}
             {selectedCategory !== 'all' && (
               <Button
                 onClick={() => handleCategoryChange('all')}

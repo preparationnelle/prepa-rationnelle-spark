@@ -200,14 +200,14 @@ export const GeopoliticsFlashcardsMigrations: React.FC = () => {
     // Empêcher toute interaction à la fin
     if (currentIndex === totalCards - 1 && showAnswer) return;
     const cardId = geopoliticsMigrationsData.findIndex(card => card.term === currentCard.term) + 500; // +500 pour différencier des autres flashcards
-    const isMarked = isFlashcardMarkedForReview(cardId, 'geopolitics-migrations');
+    const isMarked = isFlashcardMarkedForReview(cardId, 'english');
 
     if (isMarked) {
-      removeFlashcardFromReview(cardId, 'geopolitics-migrations');
+      removeFlashcardFromReview(cardId, 'english');
     } else {
       addFlashcardForReview({
         id: cardId,
-        language: 'geopolitics-migrations',
+        language: 'english',
         category: currentCard.category,
         french: currentCard.term,
         translation: currentCard.definition
@@ -497,15 +497,7 @@ export const GeopoliticsFlashcardsMigrations: React.FC = () => {
             >
               🔄 Recommencer
             </Button>
-            {reviewCards.size > 0 && (
-              <Button
-                onClick={toggleReviewMode}
-                className="bg-blue-500 hover:bg-blue-600 text-white"
-              >
-                📖 Réviser ({reviewCards.size})
-              </Button>
-            )}
-            {selectedCategory !== 'all' && (
+            {/* Révision désactivée pour cette version simplifiée */}
               <Button
                 onClick={() => handleCategoryChange('all')}
                 variant="outline"

@@ -511,7 +511,7 @@ const RelativeExercicesPage = () => {
 
   // New state for single question display
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState<number>(0);
-  const [selectedExerciseType, setSelectedExerciseType] = useState<'qcm' | 'complet'>('qcm');
+  const [selectedExerciseType, setSelectedExerciseType] = useState<'qcm' | 'complet' | 'toutes'>('qcm');
 
   // Filtrer les exercices selon les sélections
   const filterExercises = (exercises: any[]) => {
