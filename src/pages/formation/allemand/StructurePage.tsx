@@ -443,10 +443,10 @@ const StructurePage = () => {
                         <td className="border border-gray-300 p-3 font-mono text-purple-700">allein</td>
                       </tr>
                       <tr>
-                        <td className="border border-gray-300 p-3 font-mono" colSpan="4">Ich bin gestern im Park allein spaziert.</td>
+                        <td className="border border-gray-300 p-3 font-mono" colSpan={4}>Ich bin gestern im Park allein spaziert.</td>
                       </tr>
                       <tr>
-                        <td className="border border-gray-300 p-3 font-mono" colSpan="4">Sie fährt jeden Morgen mit dem Bus zur Schule.</td>
+                        <td className="border border-gray-300 p-3 font-mono" colSpan={4}>Sie fährt jeden Morgen mit dem Bus zur Schule.</td>
                       </tr>
                     </tbody>
                   </table>

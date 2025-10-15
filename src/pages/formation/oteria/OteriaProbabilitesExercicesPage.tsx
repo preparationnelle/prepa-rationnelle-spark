@@ -171,7 +171,7 @@ const OteriaProbabilitesExercicesPage = () => {
                   </div>
 
                   <div>
-                    <p className="font-semibold mb-2">4. Probabilité d'obtenir un impair > 3</p>
+                    <p className="font-semibold mb-2">4. Probabilité d'obtenir un impair {'>'} 3</p>
                     <div className="bg-white p-3 rounded border border-green-200">
                       <p className="mb-2">Nombres impairs et {'>'}3 : {'{5}'}</p>
                       <LatexRenderer latex="P(\text{impair et} > 3) = \frac{1}{6}" block={true} />
