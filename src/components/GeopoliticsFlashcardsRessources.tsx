@@ -399,7 +399,7 @@ export const GeopoliticsFlashcardsRessources: React.FC = () => {
                 {isFlashcardMarkedForReview(geopoliticsRessourcesData.findIndex(card => card.term === currentCard.term) + 700, 'english') ? 'Retiré' : 'À revoir'} (R)
               </Button>
             </div>
-          )}
+            </div>
         </CardContent>
       </Card>
 

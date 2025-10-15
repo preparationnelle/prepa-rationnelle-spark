@@ -200,7 +200,7 @@ export const GeopoliticsFlashcardsGouvernance: React.FC = () => {
     // Empêcher toute interaction à la fin
     if (currentIndex === totalCards - 1 && showAnswer) return;
     const cardId = geopoliticsGouvernanceData.findIndex(card => card.term === currentCard.term) + 300; // +300 pour différencier des autres flashcards
-    const isMarked = isFlashcardMarkedForReview(cardId, 'geopolitics-gouvernance');
+    const isMarked = isFlashcardMarkedForReview(cardId, 'english');
 
     if (isMarked) {
       removeFlashcardFromReview(cardId, 'geopolitics-gouvernance');
@@ -410,7 +410,6 @@ export const GeopoliticsFlashcardsGouvernance: React.FC = () => {
               </Button>
             </div>
             </div>
-          )}
         </CardContent>
       </Card>
 

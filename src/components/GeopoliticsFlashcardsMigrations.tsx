@@ -505,7 +505,6 @@ export const GeopoliticsFlashcardsMigrations: React.FC = () => {
               >
                 Voir toutes les catégories
               </Button>
-            )}
           </div>
         </div>
       )}
