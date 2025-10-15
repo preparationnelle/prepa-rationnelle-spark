@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -7,7 +7,6 @@ import { Progress } from "@/components/ui/progress";
 import {
   Home,
   ChevronRight,
-  ArrowLeft,
   BookOpen,
   Target,
   Zap,
@@ -27,7 +26,7 @@ interface Question {
   category: string;
 }
 
-const OteriaPolynomesQCMPage = () => {
+const OteriaDenombrementQCMPage = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<{ [key: number]: number }>({});
   const [showResults, setShowResults] = useState(false);
@@ -36,163 +35,163 @@ const OteriaPolynomesQCMPage = () => {
   const questions: Question[] = [
     {
       id: 1,
-      question: "Quel est le degré du polynôme P(x) = 3x⁵ - 2x³ + x² - 7 ?",
-      options: ["3", "5", "7", "2"],
-      correctAnswer: 1,
-      explanation: "Le degré d'un polynôme est la plus grande puissance de x dont le coefficient est non nul. Ici, c'est 5.",
-      category: "Définitions"
+      question: "Quelle est la valeur de 5! ?",
+      options: ["24", "60", "120", "720"],
+      correctAnswer: 2,
+      explanation: "5! = 1 × 2 × 3 × 4 × 5 = 120",
+      category: "Factorielle"
     },
     {
       id: 2,
-      question: "Un nombre r est une racine du polynôme P si :",
-      options: ["P(r) = 1", "P(r) = 0", "P'(r) = 0", "P(r) > 0"],
-      correctAnswer: 1,
-      explanation: "Par définition, r est une racine de P si et seulement si P(r) = 0.",
-      category: "Racines"
+      question: "Combien de permutations peut-on former avec 4 éléments distincts ?",
+      options: ["4", "16", "24", "256"],
+      correctAnswer: 2,
+      explanation: "Le nombre de permutations de n éléments est n!. Pour 4 éléments : 4! = 24",
+      category: "Permutations"
     },
     {
       id: 3,
-      question: "Quel est le degré du polynôme nul ?",
-      options: ["0", "1", "-∞", "Indéfini"],
-      correctAnswer: 2,
-      explanation: "Par convention, le degré du polynôme nul est -∞ car tous ses coefficients sont nuls.",
-      category: "Définitions"
+      question: "Que vaut C(n,0) (coefficient binomial) ?",
+      options: ["0", "1", "n", "n!"],
+      correctAnswer: 1,
+      explanation: "Par définition, C(n,0) = n!/(0!(n-0)!) = 1. Il n'y a qu'une seule façon de choisir 0 élément.",
+      category: "Coefficients binomiaux"
     },
     {
       id: 4,
-      question: "Si P est de degré 3 et Q est de degré 2, quel est le degré de P×Q ?",
-      options: ["5", "6", "3", "2"],
+      question: "Quelle propriété vérifient les coefficients binomiaux C(n,p) ?",
+      options: ["C(n,p) = C(n,n-p)", "C(n,p) = C(p,n)", "C(n,p) = n×p", "C(n,p) = n!"],
       correctAnswer: 0,
-      explanation: "Le degré d'un produit de polynômes est la somme des degrés : deg(P×Q) = 3 + 2 = 5.",
-      category: "Opérations"
+      explanation: "La propriété de symétrie : C(n,p) = C(n,n-p). Choisir p éléments équivaut à laisser de côté n-p éléments.",
+      category: "Coefficients binomiaux"
     },
     {
       id: 5,
-      question: "Dans la division euclidienne P = D×Q + R, quelle condition vérifie le reste R ?",
-      options: ["deg(R) = deg(D)", "deg(R) > deg(D)", "deg(R) < deg(D) ou R = 0", "R = 0 toujours"],
-      correctAnswer: 2,
-      explanation: "Dans la division euclidienne, le reste R vérifie soit R = 0, soit deg(R) < deg(D).",
-      category: "Division euclidienne"
+      question: "Dans le triangle de Pascal, quelle relation permet de calculer C(n,p) ?",
+      options: ["C(n,p) = C(n-1,p) + C(p-1,p)", "C(n,p) = C(n-1,p-1) + C(n-1,p)", "C(n,p) = C(n-1,p-1) × C(n-1,p)", "C(n,p) = C(n,p-1) + C(n,p+1)"],
+      correctAnswer: 1,
+      explanation: "Relation de Pascal : C(n,p) = C(n-1,p-1) + C(n-1,p). Cette formule permet de construire le triangle de Pascal ligne par ligne.",
+      category: "Triangle de Pascal"
     },
     {
       id: 6,
-      question: "Un polynôme de degré 3 peut avoir au maximum combien de racines réelles ?",
-      options: ["1", "2", "3", "Infiniment"],
+      question: "Que vaut la somme Σ C(n,k) pour k de 0 à n ?",
+      options: ["n", "n!", "2ⁿ", "n²"],
       correctAnswer: 2,
-      explanation: "Un polynôme de degré n peut avoir au maximum n racines distinctes dans ℝ. Pour degré 3, c'est 3 racines.",
-      category: "Racines"
+      explanation: "D'après le binôme de Newton avec a=b=1 : (1+1)ⁿ = 2ⁿ = Σ C(n,k). Cela compte tous les sous-ensembles.",
+      category: "Binôme de Newton"
     },
     {
       id: 7,
-      question: "Quelle est la condition nécessaire pour appliquer la dichotomie à f sur [a,b] ?",
-      options: ["f continue et f(a)×f(b) < 0", "f dérivable", "f strictement croissante", "f polynomiale"],
-      correctAnswer: 0,
-      explanation: "La dichotomie nécessite que f soit continue sur [a,b] et que f(a) et f(b) soient de signes opposés.",
-      category: "Dichotomie"
+      question: "Développer (a+b)³ selon le binôme de Newton donne :",
+      options: ["a³ + b³", "a³ + 3a²b + 3ab² + b³", "a³ + 2a²b + 2ab² + b³", "3a³ + 3b³"],
+      correctAnswer: 1,
+      explanation: "(a+b)³ = C(3,0)a³ + C(3,1)a²b + C(3,2)ab² + C(3,3)b³ = a³ + 3a²b + 3ab² + b³",
+      category: "Binôme de Newton"
     },
     {
       id: 8,
-      question: "À chaque itération de la dichotomie, la taille de l'intervalle est :",
-      options: ["Multipliée par 2", "Divisée par 2", "Réduite de 1", "Constante"],
-      correctAnswer: 1,
-      explanation: "À chaque itération, on divise l'intervalle en deux parties égales, donc la taille est divisée par 2.",
-      category: "Dichotomie"
+      question: "Combien de sous-ensembles différents peut-on former à partir d'un ensemble de 5 éléments ?",
+      options: ["5", "10", "25", "32"],
+      correctAnswer: 3,
+      explanation: "Un ensemble de n éléments possède 2ⁿ sous-ensembles. Pour n=5 : 2⁵ = 32",
+      category: "Dénombrement"
     },
     {
       id: 9,
-      question: "Après n itérations de dichotomie sur [a,b], la largeur de l'intervalle est :",
-      options: ["(b-a)/n", "(b-a)/2ⁿ", "(b-a)/2n", "2ⁿ(b-a)"],
+      question: "Dans le paradoxe des anniversaires, quelle est la probabilité qu'au moins 2 personnes aient le même anniversaire dans un groupe de 23 personnes ?",
+      options: ["Environ 25%", "Environ 50%", "Environ 75%", "Environ 90%"],
       correctAnswer: 1,
-      explanation: "Après n itérations, la largeur est divisée par 2ⁿ : |bₙ - aₙ| = (b-a)/2ⁿ.",
-      category: "Dichotomie"
+      explanation: "Avec 23 personnes, la probabilité dépasse 50% (≈50.7%). C'est ce qui rend ce résultat contre-intuitif et « paradoxal ».",
+      category: "Paradoxe des anniversaires"
     },
     {
       id: 10,
-      question: "Si (x-2)² divise P(x), quelle est la multiplicité de la racine 2 ?",
-      options: ["0", "1", "2", "3"],
-      correctAnswer: 2,
-      explanation: "La multiplicité d'une racine r est l'exposant k tel que (x-r)ᵏ divise P. Ici k = 2.",
-      category: "Racines"
+      question: "Quelle est la formule pour calculer la probabilité qu'il n'y ait PAS de collision d'anniversaires pour k personnes ?",
+      options: ["365ᵏ/365!", "365!/(365-k)!×365ᵏ", "k!/365", "C(365,k)/365ᵏ"],
+      correctAnswer: 1,
+      explanation: "P(pas de collision) = 365×364×...×(365-k+1) / 365ᵏ = 365!/(365-k)!×365ᵏ",
+      category: "Paradoxe des anniversaires"
     },
     {
       id: 11,
-      question: "En Python, quelle condition teste si f(a) et f(b) sont de signes opposés ?",
-      options: ["f(a) != f(b)", "f(a) * f(b) < 0", "f(a) + f(b) < 0", "f(a) < 0 and f(b) > 0"],
+      question: "Quel principe de dénombrement s'applique lorsqu'on doit faire plusieurs choix successifs indépendants ?",
+      options: ["Principe additif", "Principe multiplicatif", "Principe de complémentarité", "Principe de symétrie"],
       correctAnswer: 1,
-      explanation: "Le produit f(a) × f(b) est négatif si et seulement si f(a) et f(b) ont des signes opposés.",
-      category: "Python"
+      explanation: "Le principe multiplicatif : si on a n₁ choix pour la première étape, n₂ pour la deuxième, etc., le total est n₁ × n₂ × ...",
+      category: "Principes de dénombrement"
     },
     {
       id: 12,
-      question: "Dans l'algorithme de dichotomie en Python, comment calcule-t-on le milieu c ?",
-      options: ["c = a + b", "c = (a + b) / 2", "c = (a - b) / 2", "c = a * b / 2"],
+      question: "Que vaut C(6,2) ?",
+      options: ["12", "15", "18", "30"],
       correctAnswer: 1,
-      explanation: "Le milieu de l'intervalle [a,b] est la moyenne arithmétique : c = (a + b) / 2.",
-      category: "Python"
+      explanation: "C(6,2) = 6!/(2!×4!) = (6×5)/(2×1) = 15. On peut aussi utiliser la formule n(n-1)/2.",
+      category: "Coefficients binomiaux"
     },
     {
       id: 13,
-      question: "Le théorème des valeurs intermédiaires garantit qu'une fonction continue sur [a,b] avec f(a) < 0 et f(b) > 0 :",
-      options: ["N'a pas de racines", "A exactement une racine", "A au moins une racine", "A plusieurs racines"],
-      correctAnswer: 2,
-      explanation: "Le TVI garantit l'existence d'au moins une racine, mais pas l'unicité.",
-      category: "Théorie"
+      question: "En cryptographie, le paradoxe des anniversaires est important pour évaluer :",
+      options: ["La vitesse d'un algorithme", "La sécurité contre les collisions de hash", "La complexité d'un mot de passe", "Le nombre de clés possibles"],
+      correctAnswer: 1,
+      explanation: "Le paradoxe des anniversaires montre que les collisions dans les fonctions de hachage arrivent plus vite qu'on ne le pense.",
+      category: "Application cryptographique"
     },
     {
       id: 14,
-      question: "Quel est l'avantage principal de la méthode de dichotomie ?",
-      options: ["Convergence rapide", "Convergence garantie", "Ne nécessite pas de continuité", "Trouve toutes les racines"],
+      question: "Pour un hash sur 256 bits, combien de hashes faut-il générer pour avoir environ 50% de chances de collision ?",
+      options: ["2²⁵⁶", "2¹²⁸", "256", "128"],
       correctAnswer: 1,
-      explanation: "La dichotomie garantit la convergence vers une racine si les hypothèses sont vérifiées.",
-      category: "Dichotomie"
+      explanation: "D'après le paradoxe des anniversaires, il faut environ √N hashes, soit √(2²⁵⁶) = 2¹²⁸ pour 50% de chances de collision.",
+      category: "Application cryptographique"
     },
     {
       id: 15,
-      question: "Pour atteindre une précision ε = 10⁻⁶ sur [0,1], combien d'itérations faut-il environ ?",
-      options: ["6", "12", "20", "100"],
-      correctAnswer: 2,
-      explanation: "n ≈ log₂((b-a)/ε) = log₂(10⁶) ≈ 20 itérations.",
-      category: "Dichotomie"
+      question: "Quelle est la valeur de 0! par convention ?",
+      options: ["0", "1", "-∞", "Indéfini"],
+      correctAnswer: 1,
+      explanation: "Par convention, 0! = 1. Cette convention permet que les formules combinatoires restent cohérentes.",
+      category: "Factorielle"
     },
     {
       id: 16,
-      question: "Dans la méthode de Babylone pour calculer √a, quelle est la formule de récurrence ?",
-      options: ["uₙ₊₁ = uₙ + a", "uₙ₊₁ = (uₙ + a/uₙ)/2", "uₙ₊₁ = uₙ²/a", "uₙ₊₁ = a/uₙ"],
-      correctAnswer: 1,
-      explanation: "La méthode de Babylone utilise la formule uₙ₊₁ = (uₙ + a/uₙ)/2 pour converger vers √a.",
-      category: "Applications"
+      question: "Dans une classe de 30 élèves, combien y a-t-il de façons de choisir un binôme (2 élèves) ?",
+      options: ["30", "60", "435", "900"],
+      correctAnswer: 2,
+      explanation: "C(30,2) = 30×29/2 = 435 façons de choisir 2 élèves parmi 30.",
+      category: "Applications pratiques"
     },
     {
       id: 17,
-      question: "Combien de racines réelles a le polynôme P(x) = x² + 1 ?",
-      options: ["0", "1", "2", "Infiniment"],
-      correctAnswer: 0,
-      explanation: "x² + 1 > 0 pour tout x réel, donc ce polynôme n'a pas de racines réelles (mais 2 racines complexes).",
-      category: "Racines"
+      question: "Quelle approximation est souvent utilisée pour n! quand n est grand ?",
+      options: ["Formule de Taylor", "Formule de Stirling", "Formule de Newton", "Formule de Pascal"],
+      correctAnswer: 1,
+      explanation: "La formule de Stirling : n! ≈ √(2πn) × (n/e)ⁿ est utilisée pour approximer les grandes factorielles.",
+      category: "Factorielle"
     },
     {
       id: 18,
-      question: "En Python, quelle boucle utilise-t-on généralement pour la dichotomie ?",
-      options: ["for i in range(n)", "while condition", "do...while", "foreach"],
-      correctAnswer: 1,
-      explanation: "On utilise while (b - a) > precision pour continuer tant que la précision n'est pas atteinte.",
-      category: "Python"
+      question: "Si on doit compter les cas où quelque chose N'arrive PAS, quel principe utilise-t-on ?",
+      options: ["Principe multiplicatif", "Principe additif", "Principe de complémentarité", "Principe de symétrie"],
+      correctAnswer: 2,
+      explanation: "Le principe de complémentarité : calculer le total puis soustraire les cas interdits est souvent plus simple.",
+      category: "Principes de dénombrement"
     },
     {
       id: 19,
-      question: "Si P(x) = (x-1)(x+2)(x-3), quelles sont les racines de P ?",
-      options: ["1, 2, 3", "-1, 2, -3", "1, -2, 3", "-1, -2, -3"],
-      correctAnswer: 2,
-      explanation: "Les racines sont les valeurs qui annulent chaque facteur : x=1, x=-2 et x=3.",
-      category: "Racines"
+      question: "Combien vaut 100! approximativement ?",
+      options: ["9.3 × 10⁵⁷", "9.3 × 10¹⁵⁷", "9.3 × 10²⁵⁷", "9.3 × 10⁵"],
+      correctAnswer: 1,
+      explanation: "100! ≈ 9.3 × 10¹⁵⁷. La factorielle croît extrêmement vite, dépassant rapidement les capacités de calcul standard.",
+      category: "Limites du calcul"
     },
     {
       id: 20,
-      question: "Quel est le principal inconvénient de la dichotomie par rapport à la méthode de Newton ?",
-      options: ["Ne converge pas toujours", "Convergence lente", "Difficile à programmer", "Nécessite la dérivée"],
+      question: "Dans un groupe de combien de personnes la probabilité de collision d'anniversaires dépasse-t-elle 99% ?",
+      options: ["50", "57", "70", "100"],
       correctAnswer: 1,
-      explanation: "La dichotomie converge lentement (linéairement) comparée à Newton (quadratique), mais elle est plus robuste.",
-      category: "Dichotomie"
+      explanation: "Avec 57 personnes, la probabilité de collision dépasse 99%. Cela illustre à quel point les collisions deviennent probables rapidement.",
+      category: "Paradoxe des anniversaires"
     }
   ];
 
@@ -257,7 +256,7 @@ const OteriaPolynomesQCMPage = () => {
                 OTERIA Cyber School
               </Link>
               <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-              <span className="text-blue-600 font-medium">Séance 6 - QCM</span>
+              <span className="text-blue-600 font-medium">Séance 7 - QCM</span>
             </div>
           </div>
         </nav>
@@ -302,7 +301,7 @@ const OteriaPolynomesQCMPage = () => {
                       <RotateCcw className="h-5 w-5 mr-2" />
                       Recommencer le QCM
                     </Button>
-                    <Link to="/formation/oteria/polynomes-approximation-cours" className="w-full">
+                    <Link to="/formation/oteria/denombrement-paradoxes-cours" className="w-full">
                       <Button variant="outline" className="w-full" size="lg">
                         <BookOpen className="h-5 w-5 mr-2" />
                         Retour au cours
@@ -382,7 +381,7 @@ const OteriaPolynomesQCMPage = () => {
               OTERIA Cyber School
             </Link>
             <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-            <span className="text-blue-600 font-medium">Séance 6 - QCM</span>
+            <span className="text-blue-600 font-medium">Séance 7 - QCM</span>
           </div>
         </div>
       </nav>
@@ -395,9 +394,9 @@ const OteriaPolynomesQCMPage = () => {
               <Zap className="h-8 w-8 text-blue-600" />
             </div>
           </div>
-          <h1 className="text-3xl font-bold mb-4 text-blue-900">QCM - Polynômes & dichotomie</h1>
+          <h1 className="text-3xl font-bold mb-4 text-blue-900">QCM - Dénombrement & paradoxe des anniversaires</h1>
           <p className="text-lg text-blue-800 max-w-3xl mx-auto">
-            Testez vos connaissances sur les polynômes, la division euclidienne et l'algorithme de dichotomie
+            Testez vos connaissances sur les coefficients binomiaux, le binôme de Newton et le paradoxe des anniversaires
           </p>
         </div>
 
@@ -499,19 +498,19 @@ const OteriaPolynomesQCMPage = () => {
 
         {/* Navigation finale */}
         <div className="flex justify-between items-center bg-blue-50 p-6 rounded-lg mt-8 max-w-4xl mx-auto">
-          <Link to="/formation/oteria/polynomes-exercices">
+          <Link to="/formation/oteria/denombrement-exercices">
             <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
               ← Exercices
             </button>
           </Link>
           <div className="flex gap-3">
-            <Link to="/formation/oteria/polynomes-approximation-cours">
+            <Link to="/formation/oteria/denombrement-paradoxes-cours">
               <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
                 <BookOpen className="h-4 w-4" />
                 Cours
               </button>
             </Link>
-            <Link to="/formation/oteria/polynomes-flashcards">
+            <Link to="/formation/oteria/denombrement-flashcards">
               <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
                 <Calculator className="h-4 w-4" />
                 Flashcards
@@ -523,7 +522,7 @@ const OteriaPolynomesQCMPage = () => {
               </button>
             </Link>
           </div>
-          <Link to="/formation/oteria/fonctions-variable-reelle-cours">
+          <Link to="/formation/oteria/probabilites-introduction-cours">
             <div className="text-blue-600 hover:text-blue-700 font-medium">Séance suivante →</div>
           </Link>
         </div>
@@ -532,5 +531,5 @@ const OteriaPolynomesQCMPage = () => {
   );
 };
 
-export default OteriaPolynomesQCMPage;
+export default OteriaDenombrementQCMPage;
 

@@ -8,7 +8,9 @@ import {
   Globe,
   Heart,
   Mic,
-  Library
+  Library,
+  FileText,
+  Target
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
@@ -34,16 +36,40 @@ const GeneratorPage: React.FC = () => {
       link: '/generator/flashcards'
     },
     {
-      id: 'languages-unified',
-      title: 'Générateur Langues',
-      description: 'Générez des paragraphes ou corrigez vos thèmes avec IA',
+      id: 'theme-grammar',
+      title: 'Thème Grammatical',
+      description: 'Entraînez-vous au thème grammatical avec correction IA',
       icon: <Languages className="h-10 w-10" />,
       features: [
-        'Correction automatique',
-        'Génération de paragraphes',
-        'Thèmes corrigés'
+        'Correction automatique IA',
+        'Phrases spécialisées',
+        'Feedback détaillé'
       ],
-      link: '/generator/languages-unified'
+      link: '/generator/theme-grammar'
+    },
+    {
+      id: 'paragraph',
+      title: 'Générateur de Paragraphes',
+      description: 'Générez des paragraphes argumentatifs en langues',
+      icon: <FileText className="h-10 w-10" />,
+      features: [
+        'Anglais, Allemand, Espagnol',
+        'Basé sur articles de presse',
+        'Points-clés extraits'
+      ],
+      link: '/generator/paragraph'
+    },
+    {
+      id: 'geopolitics-paradox',
+      title: 'Paradoxes Géopolitiques',
+      description: 'Générez des paradoxes et problématiques ou évaluez les vôtres',
+      icon: <Target className="h-10 w-10" />,
+      features: [
+        'Génération de paradoxes',
+        'Évaluation de problématiques',
+        'Note détaillée sur 25'
+      ],
+      link: '/generator/geopolitics-paradox'
     },
     {
       id: 'geopolitics-unified',

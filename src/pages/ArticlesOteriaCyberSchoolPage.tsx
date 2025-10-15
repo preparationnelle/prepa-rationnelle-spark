@@ -227,8 +227,43 @@ const SessionCard = ({ session }) => {
                   Cours
                 </Button>
               </Link>
+            ) : session.id === 7 ? (
+              <Link to="/formation/oteria/denombrement-paradoxes-cours" className="w-full">
+                <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Cours
+                </Button>
+              </Link>
+            ) : session.id === 8 ? (
+              <Link to="/formation/oteria/probabilites-introduction-cours" className="w-full">
+                <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Cours
+                </Button>
+              </Link>
+            ) : session.id === 9 ? (
+              <Link to="/formation/oteria/variables-aleatoires-cours" className="w-full">
+                <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Cours
+                </Button>
+              </Link>
             ) : session.id === 10 ? (
               <Link to="/formation/oteria/integrales-monte-carlo-cours" className="w-full">
+                <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Cours
+                </Button>
+              </Link>
+            ) : session.id === 11 ? (
+              <Link to="/formation/oteria/matrices-markov-cours" className="w-full">
+                <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Cours
+                </Button>
+              </Link>
+            ) : session.id === 12 ? (
+              <Link to="/formation/oteria/matrices-stochastiques-cours" className="w-full">
                 <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
                   <BookOpen className="mr-2 h-4 w-4" />
                   Cours
@@ -259,6 +294,27 @@ const SessionCard = ({ session }) => {
               </Link>
             ) : session.id === 3 ? (
               <Link to="/formation/oteria/recurrence-recursivite-exercices">
+                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
+                  <Play className="mr-2 h-4 w-4" />
+                  Exercices
+                </Button>
+              </Link>
+            ) : session.id === 7 ? (
+              <Link to="/formation/oteria/denombrement-exercices">
+                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
+                  <Play className="mr-2 h-4 w-4" />
+                  Exercices
+                </Button>
+              </Link>
+            ) : session.id === 8 ? (
+              <Link to="/formation/oteria/probabilites-exercices">
+                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
+                  <Play className="mr-2 h-4 w-4" />
+                  Exercices
+                </Button>
+              </Link>
+            ) : session.id === 9 ? (
+              <Link to="/formation/oteria/variables-aleatoires-exercices">
                 <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
                   <Play className="mr-2 h-4 w-4" />
                   Exercices
@@ -301,6 +357,27 @@ const SessionCard = ({ session }) => {
                   Flashcards
                 </Button>
               </Link>
+            ) : session.id === 7 ? (
+              <Link to="/formation/oteria/denombrement-flashcards">
+                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
+                  <BrainIcon className="mr-2 h-4 w-4" />
+                  Flashcards
+                </Button>
+              </Link>
+            ) : session.id === 8 ? (
+              <Link to="/formation/oteria/probabilites-flashcards">
+                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
+                  <BrainIcon className="mr-2 h-4 w-4" />
+                  Flashcards
+                </Button>
+              </Link>
+            ) : session.id === 9 ? (
+              <Link to="/formation/oteria/variables-aleatoires-flashcards">
+                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
+                  <BrainIcon className="mr-2 h-4 w-4" />
+                  Flashcards
+                </Button>
+              </Link>
             ) : (
               <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
                 <BrainIcon className="mr-2 h-4 w-4" />
@@ -326,6 +403,20 @@ const SessionCard = ({ session }) => {
               </Link>
             ) : session.id === 3 ? (
               <Link to="/formation/oteria/recurrence-recursivite-qcm">
+                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
+                  <TargetIcon className="mr-2 h-4 w-4" />
+                  QCM
+                </Button>
+              </Link>
+            ) : session.id === 7 ? (
+              <Link to="/formation/oteria/denombrement-qcm">
+                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
+                  <TargetIcon className="mr-2 h-4 w-4" />
+                  QCM
+                </Button>
+              </Link>
+            ) : session.id === 9 ? (
+              <Link to="/formation/oteria/variables-aleatoires-qcm">
                 <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
                   <TargetIcon className="mr-2 h-4 w-4" />
                   QCM

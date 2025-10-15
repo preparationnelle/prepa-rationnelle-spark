@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Home, ChevronRight, ArrowLeft, BookOpen, Target, Calculator, Zap } from 'lucide-react';
+import { Home, ChevronRight, ArrowLeft, BookOpen, Target, Zap, Shield, Code, BarChart3, TrendingUp } from 'lucide-react';
 import { LatexRenderer } from '@/components/LatexRenderer';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const OteriaIntegralesMonteCarloCoursPage = () => {
   return (
@@ -28,365 +29,365 @@ const OteriaIntegralesMonteCarloCoursPage = () => {
         </div>
       </nav>
 
-      <div className="container mx-auto py-8 px-4">
+      <div className="container mx-auto py-8 px-4 max-w-6xl">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center">
-              <Zap className="h-8 w-8 text-teal-600" />
-            </div>
-          </div>
-          <h1 className="text-3xl font-bold mb-4 text-teal-900">Séance 10 : Intégrales & π par Monte-Carlo</h1>
+          <h1 className="text-3xl font-bold mb-4 text-teal-900">Chapitre 10 : Analyse de lois</h1>
           <p className="text-lg text-blue-800 max-w-3xl mx-auto mb-6">
-            Primitives, intégrale définie, propriétés (Chasles, positivité, croissance), sommes de Riemann ; techniques d'intégration (par parties, changement de variable)
+            Approximation d'intégrales (aire sous courbe), Monte-Carlo — Histogrammes, théorèmes limites et convergence
           </p>
 
-          {/* Informations de séance */}
+          {/* Informations de chapitre */}
           <div className="max-w-2xl mx-auto mb-6">
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 shadow-sm">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
                 <div className="flex flex-col items-center">
-                  <span className="text-sm text-blue-600 font-medium mb-1">Numéro de séance</span>
+                  <span className="text-sm text-blue-600 font-medium mb-1">Séance</span>
                   <span className="text-2xl font-bold text-blue-900">10</span>
                 </div>
                 <div className="flex flex-col items-center">
                   <span className="text-sm text-blue-600 font-medium mb-1">Durée estimée</span>
-                  <span className="text-2xl font-bold text-blue-900">3h</span>
+                  <span className="text-2xl font-bold text-blue-900">4h</span>
                 </div>
                 <div className="flex flex-col items-center">
                   <span className="text-sm text-blue-600 font-medium mb-1">Niveau</span>
-                  <span className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-                    Intermédiaire
+                  <span className="inline-flex items-center gap-2 bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">
+                    Avancé
                   </span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Ressources pédagogiques */}
-          <div className="max-w-4xl mx-auto mb-6">
-            <div className="bg-white border border-blue-200 rounded-lg p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-blue-900 mb-4 text-center">
-                Primitives, intégrale définie, propriétés et techniques d'intégration
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <button className="w-full bg-orange-600 text-white px-4 py-3 rounded-lg cursor-default font-medium shadow-md">
-                  <BookOpen className="h-5 w-5 mx-auto mb-2" />
-                  Cours
-                </button>
-                <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium hover:scale-105 shadow-md hover:shadow-lg">
-                  <Target className="h-5 w-5 mx-auto mb-2" />
-                  Exercices
-                </button>
-                <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium hover:scale-105 shadow-md hover:shadow-lg">
-                  <Calculator className="h-5 w-5 mx-auto mb-2" />
-                  Flashcards
-                </button>
-                <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium hover:scale-105 shadow-md hover:shadow-lg">
-                  <Zap className="h-5 w-5 mx-auto mb-2" />
-                  QCM
-                </button>
-              </div>
-            </div>
+          <div className="flex gap-3 justify-center flex-wrap">
+            <Link to="/articles/oteria-cyber-school">
+              <button className="inline-flex items-center gap-2 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors">
+                <ArrowLeft className="h-4 w-4" />
+                Retour au programme
+              </button>
+            </Link>
           </div>
         </div>
 
-        {/* Contenu du cours */}
-        <div className="max-w-4xl mx-auto">
-          
-          {/* Introduction */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
-              Introduction
-            </h2>
-            <div className="bg-blue-50 p-4 rounded-lg">
-              <p className="text-blue-800 leading-relaxed">
-                L'intégration sur un segment est une extension naturelle de la notion de primitive, permettant de calculer des aires et de modéliser des variations cumulées. Ce chapitre explore les primitives, les intégrales définies, leurs propriétés, et les techniques associées.
+        {/* Informations de cours */}
+        <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-50 to-blue-100 mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-blue-600 flex items-center gap-2">
+              <BookOpen className="h-6 w-6" />
+              Informations du cours
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="space-y-3 text-lg">
+              <p className="font-semibold text-blue-900">
+                Professeur : Dimitar Dimitrov
+              </p>
+              <p className="text-blue-800">
+                Oteria Cyber School, Bachelor 1 — 2025
               </p>
             </div>
-          </div>
+          </CardContent>
+        </Card>
 
-          {/* Définition : Primitive */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-xl font-bold mb-4 text-blue-700 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-              Définition : Primitive
-            </h2>
-            <div className="space-y-4">
-              <p>Soit <LatexRenderer latex={"f"} /> continue sur un intervalle <LatexRenderer latex={"I"} />.</p>
-              <p>On appelle <em>primitive</em> de <LatexRenderer latex={"f"} /> sur <LatexRenderer latex={"I"} /> toute fonction <LatexRenderer latex={"F"} /> telle que :</p>
-              <div className="my-2 text-center bg-blue-50 p-4 rounded">
-                <LatexRenderer latex={"\\forall x \\in I,\\ F'(x) = f(x)."} />
+        {/* Section 1: Algorithmes sur les listes */}
+        <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-50 to-blue-100 mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-blue-600 flex items-center gap-2">
+              <Code className="h-6 w-6" />
+              1. Algorithmes sur les listes
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="space-y-6 text-lg">
+              <p>
+                En pratique, on manipule souvent des <strong>listes de données simulées</strong> pour analyser des lois de probabilité.
+              </p>
+
+              <div>
+                <p className="font-semibold text-lg mb-3 text-blue-900">Opérations usuelles</p>
+                <div className="space-y-3">
+                  <div className="bg-white border-l-4 border-blue-400 p-4 rounded">
+                    <code className="text-blue-700">min(L)</code>
+                    <p className="text-base mt-1">Valeur minimale.</p>
+                  </div>
+
+                  <div className="bg-white border-l-4 border-blue-400 p-4 rounded">
+                    <code className="text-blue-700">max(L)</code>
+                    <p className="text-base mt-1">Valeur maximale.</p>
+                  </div>
+
+                  <div className="bg-white border-l-4 border-blue-400 p-4 rounded">
+                    <code className="text-blue-700">sorted(L)</code>
+                    <p className="text-base mt-1">Tri croissant.</p>
+                  </div>
+
+                  <div className="bg-white border-l-4 border-blue-400 p-4 rounded">
+                    <code className="text-blue-700">filter</code>
+                    <p className="text-base mt-1">Sélection d'éléments selon un critère.</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
 
-          {/* Théorème : Relation entre intégrale et primitive */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
-              Théorème : Relation entre intégrale et primitive
-            </h2>
-            <div className="space-y-4">
-              <p>Si <LatexRenderer latex={"f"} /> est continue sur <LatexRenderer latex={"I"} /> et <LatexRenderer latex={"F"} /> l'une de ses primitives, alors, pour <LatexRenderer latex={"(a, b) \\in I^2"} /> :</p>
-              <div className="my-2 text-center bg-orange-50 p-4 rounded">
-                <LatexRenderer latex={"\\int_a^b f(x)\\,dx = F(b) - F(a)"} />
-              </div>
-            </div>
-          </div>
-
-          {/* Définition : Primitive à borne supérieure variable */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-xl font-bold mb-4 text-blue-700 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-              Définition : Primitive à borne supérieure variable
-            </h2>
-            <div className="space-y-4">
-              <p>Fixons <LatexRenderer latex={"a \\in I"} /> et définissons :</p>
-              <div className="my-2 text-center bg-blue-50 p-4 rounded">
-                <LatexRenderer latex={"G(x) = \\int_a^x f(t)\\,dt \\quad (x \\in I)."} />
-              </div>
-              <p>La fonction <LatexRenderer latex={"G"} /> est <LatexRenderer latex={"\\mathcal{C}^1"} /> sur <LatexRenderer latex={"I"} />, vérifie <LatexRenderer latex={"G(a) = 0"} /> et <LatexRenderer latex={"G'(x) = f(x)"} /> ; c'est donc <em>la</em> primitive de <LatexRenderer latex={"f"} /> qui s'annule en <LatexRenderer latex={"a"} /> (intégrale à borne supérieure variable).</p>
-            </div>
-          </div>
-
-          {/* Tableaux de primitives */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-xl font-bold mb-4 text-blue-700 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-              Tableaux de primitives
-            </h2>
-            <div className="space-y-6">
-              <div className="overflow-x-auto">
-                <table className="min-w-full text-sm text-center border border-slate-300 bg-white rounded-lg">
-                  <thead>
-                    <tr className="bg-blue-100">
-                      <th className="px-2 py-2">f(x)</th>
-                      <th className="px-2 py-2">F(x)</th>
-                      <th className="px-2 py-2">f(x)</th>
-                      <th className="px-2 py-2">F(x)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="bg-white border-b-2 border-slate-200">
-                      <td className="py-3"><LatexRenderer latex={"a \\ (a \\in \\mathbb{R})"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"ax"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"\\frac{1}{x}"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"\\ln |x|"} /></td>
-                    </tr>
-                    <tr className="bg-[#f9fafb] border-b-2 border-slate-200">
-                      <td className="py-3"><LatexRenderer latex={"x^{\\alpha} \\ (\\alpha \\neq -1)"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"\\frac{x^{\\alpha + 1}}{\\alpha + 1}"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"\\frac{1}{\\sqrt{x}}"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"2 \\sqrt{x}"} /></td>
-                    </tr>
-                    <tr className="bg-white border-b-2 border-slate-200">
-                      <td className="py-3"><LatexRenderer latex={"\\cos x"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"\\sin x"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"\\sin x"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"-\\cos x"} /></td>
-                    </tr>
-                    <tr className="bg-[#f9fafb] border-b-2 border-slate-200">
-                      <td className="py-3"><LatexRenderer latex={"e^x"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"e^x"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"\\frac{1}{1 + x^2}"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"\\arctan x"} /></td>
-                    </tr>
-                    <tr className="bg-white border-b-2 border-slate-200">
-                      <td className="py-3"><LatexRenderer latex={"\\ln x"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"x \\ln x - x"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"a^x \\ (a > 0)"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"\\frac{a^x}{\\ln a}"} /></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              
-              <div className="overflow-x-auto">
-                <table className="min-w-full text-sm text-center border border-slate-300 bg-white rounded-lg">
-                  <thead>
-                    <tr className="bg-blue-100">
-                      <th className="px-2 py-2">f</th>
-                      <th className="px-2 py-2">F</th>
-                      <th className="px-2 py-2">f</th>
-                      <th className="px-2 py-2">F</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="bg-white border-b-2 border-slate-200">
-                      <td className="py-3"><LatexRenderer latex={"a u' + b v'"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"a u + b v"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"\\frac{u'}{u}"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"\\ln |u|"} /></td>
-                    </tr>
-                    <tr className="bg-[#f9fafb] border-b-2 border-slate-200">
-                      <td className="py-3"><LatexRenderer latex={"u^{\\alpha} u' \\ (\\alpha \\neq -1)"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"\\frac{u^{\\alpha + 1}}{\\alpha + 1}"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"\\frac{u'}{\\sqrt{u}}"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"2 \\sqrt{u}"} /></td>
-                    </tr>
-                    <tr className="bg-white border-b-2 border-slate-200">
-                      <td className="py-3"><LatexRenderer latex={"u' \\cos u"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"\\sin u"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"u' \\sin u"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"-\\cos u"} /></td>
-                    </tr>
-                    <tr className="bg-[#f9fafb] border-b-2 border-slate-200">
-                      <td className="py-3"><LatexRenderer latex={"u' e^u"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"e^u"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"\\frac{u'}{1 + u^2}"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"\\arctan u"} /></td>
-                    </tr>
-                    <tr className="bg-white border-b-2 border-slate-200">
-                      <td className="py-3"><LatexRenderer latex={"u^a \\ln u \\ (a > 0)"} /></td>
-                      <td className="py-3"><LatexRenderer latex={"\\frac{u^a}{\\ln a}"} /></td>
-                      <td className="py-3"></td>
-                      <td className="py-3"></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          {/* Propriétés de l'intégrale */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
-              Propriétés de l'intégrale
-            </h2>
-
-            {/* Linéarité */}
-            <div className="mb-8">
-              <h3 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
-                Théorème : Linéarité
-              </h3>
-              <div className="space-y-4">
-                <p>Pour <LatexRenderer latex={"f, g"} /> continues sur <LatexRenderer latex={"[a, b]"} /> et <LatexRenderer latex={"(\\lambda, \\mu) \\in \\mathbb{R}^2"} /> :</p>
-                <div className="text-center bg-orange-50 p-4 rounded">
-                  <LatexRenderer latex={"\\int_a^b (\\lambda f(x) + \\mu g(x))\\,dx = \\lambda \\int_a^b f(x)\\,dx + \\mu \\int_a^b g(x)\\,dx"} />
+              <div>
+                <p className="font-semibold text-lg mb-3 text-blue-900">Applications</p>
+                <div className="space-y-3">
+                  <div className="bg-white border-l-4 border-blue-400 p-4 rounded">
+                    <p>Estimer la loi d'une variable aléatoire en simulant <LatexRenderer latex="n" block={false} /> tirages.</p>
+                  </div>
+                  <div className="bg-white border-l-4 border-blue-400 p-4 rounded">
+                    <p>Calculer les fréquences empiriques et les comparer aux probabilités théoriques.</p>
+                  </div>
                 </div>
               </div>
             </div>
+          </CardContent>
+        </Card>
 
-            {/* Relation de Chasles */}
-            <div className="mb-8">
-              <h3 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
-                Théorème : Relation de Chasles
-              </h3>
-              <div className="space-y-4">
-                <p>Si <LatexRenderer latex={"f"} /> est continue sur un intervalle <LatexRenderer latex={"I"} /> et <LatexRenderer latex={"(a, b, c) \\in I^3"} /> :</p>
-                <div className="text-center bg-orange-50 p-4 rounded">
-                  <LatexRenderer latex={"\\int_a^b f(x)\\,dx = \\int_a^c f(x)\\,dx + \\int_c^b f(x)\\,dx"} />
+        {/* Section 2: Histogrammes et fonctions de répartition */}
+        <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-50 to-blue-100 mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-blue-600 flex items-center gap-2">
+              <BarChart3 className="h-6 w-6" />
+              2. Histogrammes et fonctions de répartition
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="space-y-6 text-lg">
+              <div>
+                <p className="font-semibold text-lg mb-3 text-blue-900">Histogramme</p>
+                <p className="mb-3">
+                  Un histogramme représente la distribution des fréquences observées.
+                </p>
+                <p className="mb-3">
+                  Si <LatexRenderer latex="n" block={false} /> valeurs <LatexRenderer latex="x_1,\dots,x_n" block={false} /> sont observées, la fréquence d'une classe <LatexRenderer latex="C" block={false} /> est :
+                </p>
+                <div className="bg-white border-l-4 border-blue-400 p-4 rounded">
+                  <LatexRenderer latex="f(C) = \frac{\#\{i : x_i \in C\}}{n}" block={true} />
+                </div>
+              </div>
+
+              <div>
+                <p className="font-semibold text-lg mb-3 text-blue-900">Fonction de répartition empirique</p>
+                <div className="bg-white border-l-4 border-blue-400 p-4 rounded mb-3">
+                  <LatexRenderer latex="F_n(x) = \frac{1}{n} \sum_{i=1}^n \mathbf{1}_{\{x_i \leq x\}}" block={true} />
+                </div>
+                <p>
+                  Elle converge vers la fonction de répartition <LatexRenderer latex="F(x)" block={false} /> quand <LatexRenderer latex="n\to\infty" block={false} />.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Section 3: Simulation d'une loi */}
+        <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-50 to-blue-100 mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-blue-600 flex items-center gap-2">
+              <Zap className="h-6 w-6" />
+              3. Simulation d'une loi
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="space-y-6 text-lg">
+              <div>
+                <p className="font-semibold text-lg mb-3 text-blue-900">Méthode d'inversion</p>
+                <p className="mb-3">
+                  Si <LatexRenderer latex="U \sim \mathcal{U}[0,1]" block={false} /> et <LatexRenderer latex="F" block={false} /> est la fonction de répartition d'une variable <LatexRenderer latex="X" block={false} />, alors :
+                </p>
+                <div className="bg-white border-l-4 border-blue-400 p-4 rounded my-4">
+                  <LatexRenderer latex="X = F^{-1}(U)" block={true} />
+                </div>
+                <p className="mb-3">a pour loi <LatexRenderer latex="F" block={false} />.</p>
+              </div>
+
+              <div>
+                <p className="font-semibold text-lg mb-3 text-blue-900">Exemple</p>
+                <p className="mb-3">
+                  Pour une loi géométrique <LatexRenderer latex="G(p)" block={false} /> :
+                </p>
+                <div className="bg-white border-l-4 border-blue-400 p-4 rounded">
+                  <LatexRenderer latex="P(X \leq k) = 1 - (1-p)^k \quad \Rightarrow \quad X = \min\{k : U \leq 1-(1-p)^k\}" block={true} />
                 </div>
               </div>
             </div>
+          </CardContent>
+        </Card>
 
-            {/* Positivité */}
-            <div className="mb-8">
-              <h3 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
-                Théorème : Positivité
-              </h3>
-              <div className="space-y-4">
-                <p>Si <LatexRenderer latex={"f"} /> est continue, <em>positive</em> sur <LatexRenderer latex={"[a, b]"} /> avec <LatexRenderer latex={"a \\leq b"} />, alors :</p>
-                <div className="text-center bg-orange-50 p-4 rounded">
-                  <LatexRenderer latex={"\\int_a^b f(x)\\,dx \\geq 0"} />
-                </div>
-                <p>Si <LatexRenderer latex={"f"} /> est positive, non nulle, et <LatexRenderer latex={"a < b"} />, alors l'intégrale est <LatexRenderer latex={"> 0"} />.</p>
-                <p>Si l'intégrale d'une fonction positive vaut <LatexRenderer latex={"0"} />, cette fonction est identiquement nulle sur <LatexRenderer latex={"[a, b]"} />.</p>
-              </div>
-            </div>
-
-            {/* Croissance de l'intégrale */}
-            <div className="mb-8">
-              <h3 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
-                Théorème : Croissance de l'intégrale
-              </h3>
-              <div className="space-y-4">
-                <p>Si <LatexRenderer latex={"f \\leq g"} /> sur <LatexRenderer latex={"[a, b]"} /> alors :</p>
-                <div className="text-center bg-orange-50 p-4 rounded">
-                  <LatexRenderer latex={"\\int_a^b f(x)\\,dx \\leq \\int_a^b g(x)\\,dx"} />
+        {/* Section 4: Inégalités fondamentales */}
+        <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-50 to-blue-100 mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-blue-600 flex items-center gap-2">
+              <Target className="h-6 w-6" />
+              4. Inégalités fondamentales
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="space-y-6 text-lg">
+              <div>
+                <p className="font-semibold text-lg mb-3 text-blue-900">Inégalité de Markov</p>
+                <p className="mb-3">
+                  Si <LatexRenderer latex="Z \geq 0" block={false} /> et <LatexRenderer latex="a>0" block={false} /> :
+                </p>
+                <div className="bg-white border-l-4 border-blue-400 p-4 rounded">
+                  <LatexRenderer latex="P(Z \geq a) \leq \frac{E(Z)}{a}" block={true} />
                 </div>
               </div>
-            </div>
 
-            {/* Inégalité triangulaire */}
-            <div className="mb-8">
-              <h3 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
-                Théorème : Inégalité triangulaire
-              </h3>
-              <div className="text-center bg-orange-50 p-4 rounded border-2 border-orange-300">
-                <LatexRenderer latex={"\\left|\\int_a^b f(t)\\,dt\\right| \\leq \\int_a^b |f(t)|\\,dt"} />
-              </div>
-            </div>
-          </div>
-
-          {/* Sommes de Riemann */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-xl font-bold mb-4 text-blue-700 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-              Définition : Sommes de Riemann
-            </h2>
-            <div className="space-y-4">
-              <p>Pour <LatexRenderer latex={"f"} /> continue sur <LatexRenderer latex={"[a, b]"} /> et <LatexRenderer latex={"n \\in \\mathbb{N}^*"} />, posons :</p>
-              <div className="text-center bg-blue-50 p-4 rounded">
-                <LatexRenderer latex={"S_n = \\frac{b-a}{n} \\sum_{k=0}^{n-1} f\\left(a + k\\frac{b-a}{n}\\right)"} />
-              </div>
-              <div className="text-center bg-blue-50 p-4 rounded mt-3">
-                <LatexRenderer latex={"T_n = \\frac{b-a}{n} \\sum_{k=1}^n f\\left(a + k\\frac{b-a}{n}\\right)"} />
-              </div>
-              <p>Alors :</p>
-              <div className="text-center bg-blue-50 p-4 rounded border-2 border-blue-300">
-                <LatexRenderer latex={"\\lim_{n \\to +\\infty} S_n = \\lim_{n \\to +\\infty} T_n = \\int_a^b f(t)\\,dt"} />
-              </div>
-            </div>
-          </div>
-
-          {/* Techniques d'intégration */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
-              Techniques d'intégration
-            </h2>
-
-            {/* Intégration par parties */}
-            <div className="mb-8">
-              <h3 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
-                Théorème : Intégration par parties
-              </h3>
-              <div className="space-y-4">
-                <p>Pour <LatexRenderer latex={"u, v \\in \\mathcal{C}^1[a, b]"} /> :</p>
-                <div className="text-center bg-orange-50 p-4 rounded border-2 border-orange-300">
-                  <LatexRenderer latex={"\\int_a^b u'(x)v(x)\\,dx = \\left[u(x)v(x)\\right]_a^b - \\int_a^b u(x)v'(x)\\,dx"} />
+              <div>
+                <p className="font-semibold text-lg mb-3 text-blue-900">Inégalité de Bienaymé-Tchebychev</p>
+                <p className="mb-3">
+                  Si <LatexRenderer latex="\mathrm{Var}(Z)" block={false} /> existe, alors pour <LatexRenderer latex="\varepsilon >0" block={false} /> :
+                </p>
+                <div className="bg-white border-l-4 border-blue-400 p-4 rounded">
+                  <LatexRenderer latex="P(|Z - E(Z)| \geq \varepsilon) \leq \frac{\mathrm{Var}(Z)}{\varepsilon^2}" block={true} />
                 </div>
               </div>
             </div>
+          </CardContent>
+        </Card>
 
-            {/* Changement de variable */}
-            <div className="mb-8">
-              <h3 className="text-xl font-bold mb-4 text-orange-700 bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
-                Théorème : Changement de variable
-              </h3>
-              <div className="space-y-4">
-                <p>Soient <LatexRenderer latex={"f"} /> continue sur un intervalle <LatexRenderer latex={"I"} />, <LatexRenderer latex={"\\varphi"} /> une fonction de classe <LatexRenderer latex={"\\mathcal{C}^1"} /> sur <LatexRenderer latex={"[a, b]"} /> telle que <LatexRenderer latex={"\\varphi([a, b]) \\subset I"} />. Alors :</p>
-                <div className="text-center bg-orange-50 p-4 rounded border-2 border-orange-300">
-                  <LatexRenderer latex={"\\int_a^b f(\\varphi(x))\\varphi'(x)\\,dx = \\int_{\\varphi(a)}^{\\varphi(b)} f(u)\\,du"} />
+        {/* Section 5: Convergence en probabilité */}
+        <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-50 to-blue-100 mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-blue-600 flex items-center gap-2">
+              <TrendingUp className="h-6 w-6" />
+              5. Convergence en probabilité
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="space-y-6 text-lg">
+              <div>
+                <p className="font-semibold text-lg mb-3 text-blue-900">Définition</p>
+                <p className="mb-3">
+                  <LatexRenderer latex="Z_n \xrightarrow{P} Z" block={false} /> si :
+                </p>
+                <div className="bg-white border-l-4 border-blue-400 p-4 rounded">
+                  <LatexRenderer latex="\forall \varepsilon>0, \quad \lim_{n\to\infty} P(|Z_n - Z| \geq \varepsilon) = 0" block={true} />
+                </div>
+              </div>
+
+              <div>
+                <p className="font-semibold text-lg mb-3 text-blue-900">Loi faible des grands nombres</p>
+                <p className="mb-3">
+                  Pour <LatexRenderer latex="(Y_k)" block={false} /> indépendantes, identiquement distribuées d'espérance <LatexRenderer latex="m" block={false} /> :
+                </p>
+                <div className="bg-white border-l-4 border-blue-400 p-4 rounded">
+                  <LatexRenderer latex="\overline{Y}_n = \frac{1}{n} \sum_{k=1}^n Y_k \xrightarrow{P} m" block={true} />
                 </div>
               </div>
             </div>
-          </div>
+          </CardContent>
+        </Card>
 
+        {/* Section 6: Convergence en loi */}
+        <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-50 to-blue-100 mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-blue-600 flex items-center gap-2">
+              <TrendingUp className="h-6 w-6" />
+              6. Convergence en loi
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="space-y-6 text-lg">
+              <div>
+                <p className="font-semibold text-lg mb-3 text-blue-900">Définition</p>
+                <p className="mb-3">
+                  <LatexRenderer latex="Z_n \xrightarrow{\mathcal{L}} Z" block={false} /> si :
+                </p>
+                <div className="bg-white border-l-4 border-blue-400 p-4 rounded">
+                  <LatexRenderer latex="\forall x \; \text{où } F_Z \text{ est continue}, \quad \lim_{n\to\infty} F_{Z_n}(x) = F_Z(x)" block={true} />
+                </div>
+              </div>
 
-          {/* Navigation */}
-          <div className="flex justify-between items-center bg-blue-50 p-6 rounded-lg">
-            <Link to="/articles/oteria-cyber-school">
-              <div className="text-blue-600">← Séance précédente</div>
-            </Link>
-            <div className="flex gap-3">
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                Exercices
-              </button>
-              <Link to="/articles/oteria-cyber-school">
-                <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
-                  Retour au programme
-                </button>
-              </Link>
+              <div>
+                <p className="font-semibold text-lg mb-3 text-blue-900">Théorème central limite (TCL)</p>
+                <p className="mb-3">
+                  Soit <LatexRenderer latex="(Y_k)" block={false} /> une suite de variables i.i.d. d'espérance <LatexRenderer latex="m" block={false} /> et variance <LatexRenderer latex="\sigma^2" block={false} /> :
+                </p>
+                <div className="bg-white border-l-4 border-blue-400 p-4 rounded">
+                  <LatexRenderer latex="Z_n^* = \frac{\overline{Y}_n - m}{\sigma/\sqrt{n}} \xrightarrow{\mathcal{L}} \mathcal{N}(0,1)" block={true} />
+                </div>
+              </div>
+
+              <div>
+                <p className="font-semibold text-lg mb-3 text-blue-900">Approximations classiques</p>
+                <div className="space-y-3">
+                  <div className="bg-white border-l-4 border-blue-400 p-4 rounded">
+                    <p className="font-semibold mb-2 text-blue-700">Binomiale</p>
+                    <LatexRenderer latex="B(n,p) \approx \mathcal{N}(np, np(1-p)) \text{ si } n\geq 20" block={true} />
+                  </div>
+
+                  <div className="bg-white border-l-4 border-blue-400 p-4 rounded">
+                    <p className="font-semibold mb-2 text-blue-700">Poisson</p>
+                    <LatexRenderer latex="P(\lambda) \approx \mathcal{N}(\lambda, \lambda) \text{ si } \lambda \geq 10" block={true} />
+                  </div>
+
+                  <div className="bg-white border-l-4 border-blue-400 p-4 rounded">
+                    <p className="font-semibold mb-2 text-blue-700">Approximation de Poisson</p>
+                    <LatexRenderer latex="B(n,\tfrac{\lambda}{n}) \xrightarrow{\mathcal{L}} P(\lambda) \text{ quand } n \to \infty" block={true} />
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="text-blue-600 font-medium">Séance suivante →</div>
-          </div>
+          </CardContent>
+        </Card>
+
+        {/* Section 7: Cas pratique - Monte Carlo */}
+        <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-50 to-blue-100 mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-blue-600 flex items-center gap-2">
+              <Shield className="h-6 w-6" />
+              7. Cas pratique : Approximation d'intégrales et calcul de π
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="space-y-6 text-lg">
+              <div>
+                <p className="font-semibold text-lg mb-3 text-blue-900">Méthode de Monte Carlo</p>
+                <p className="mb-3">
+                  On peut estimer une intégrale par simulation aléatoire.
+                </p>
+                <p className="mb-3">
+                  <strong>Exemple :</strong> calcul de <LatexRenderer latex="\pi" block={false} /> en utilisant des points aléatoires dans le carré unité.
+                </p>
+              </div>
+
+              <div>
+                <p className="font-semibold text-lg mb-3 text-blue-900">Algorithme</p>
+                <div className="space-y-3">
+                  <div className="bg-white border-l-4 border-blue-400 p-4 rounded">
+                    <p>On tire <LatexRenderer latex="n" block={false} /> couples <LatexRenderer latex="(x_i,y_i)" block={false} /> uniformes dans <LatexRenderer latex="[0,1]^2" block={false} />.</p>
+                  </div>
+
+                  <div className="bg-white border-l-4 border-blue-400 p-4 rounded">
+                    <p>On compte <LatexRenderer latex="N" block={false} /> points tels que <LatexRenderer latex="x_i^2+y_i^2 \leq 1" block={false} />.</p>
+                  </div>
+
+                  <div className="bg-white border-l-4 border-blue-400 p-4 rounded">
+                    <p className="mb-2">Alors :</p>
+                    <LatexRenderer latex="\pi \approx 4 \cdot \frac{N}{n}" block={true} />
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-blue-100 border border-blue-300 rounded p-4">
+                <p className="font-semibold text-blue-900 mb-3">Idée clé</p>
+                <p>
+                  Plus <LatexRenderer latex="n" block={false} /> est grand, plus l'approximation est précise (loi des grands nombres).
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Retour */}
+        <div className="text-center mt-8">
+          <Link to="/articles/oteria-cyber-school">
+            <button className="inline-flex items-center gap-2 bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition-colors text-lg">
+              <ArrowLeft className="h-5 w-5" />
+              Retour au programme OTERIA
+            </button>
+          </Link>
         </div>
       </div>
     </div>

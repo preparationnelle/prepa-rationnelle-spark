@@ -495,8 +495,32 @@ const OteriaPolynomesExercicesPage = lazy(() => import('../pages/formation/oteri
 const OteriaPolynomesDichotomieFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaPolynomesDichotomieFlashcardsPage'));
 const OteriaPolynomesQCMPage = lazy(() => import('../pages/formation/oteria/OteriaPolynomesQCMPage'));
 
+// Chapitre 7 - Dénombrement & probas : paradoxes
+const OteriaDenombrementParadoxesCoursPage = lazy(() => import('../pages/formation/oteria/OteriaDenombrementParadoxesCoursPage'));
+const OteriaDenombrementExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaDenombrementExercicesPage'));
+const OteriaDenombrementFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaDenombrementFlashcardsPage'));
+const OteriaDenombrementQCMPage = lazy(() => import('../pages/formation/oteria/OteriaDenombrementQCMPage'));
+
+// Chapitre 8 - Introduction aux probabilités
+const OteriaProbabilitesIntroductionCoursPage = lazy(() => import('../pages/formation/oteria/OteriaProbabilitesIntroductionCoursPage'));
+const OteriaProbabilitesExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaProbabilitesExercicesPage'));
+const OteriaProbabilitesFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaProbabilitesFlashcardsPage'));
+
+// Chapitre 9 - Variables aléatoires & histogrammes
+const OteriaVariablesAleatoiresCoursPage = lazy(() => import('../pages/formation/oteria/OteriaVariablesAleatoiresCoursPage'));
+const OteriaVariablesAleatoiresExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaVariablesAleatoiresExercicesPage'));
+const OteriaVariablesAleatoiresFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaVariablesAleatoiresFlashcardsPage'));
+const OteriaVariablesAleatoiresQCMPage = lazy(() => import('../pages/formation/oteria/OteriaVariablesAleatoiresQCMPage'));
+
 // Chapitre 10 - Intégrales & π par Monte-Carlo
 const OteriaIntegralesMonteCarloCoursPage = lazy(() => import('../pages/formation/oteria/OteriaIntegralesMonteCarloCoursPage'));
+
+// Chapitre 11 - Matrices & chaînes de Markov
+const OteriaMatricesMarkovCoursPage = lazy(() => import('../pages/formation/oteria/OteriaMatricesMarkovCoursPage'));
+
+// Chapitre 12 - Arithmétique modulaire & crypto affine
+const OteriaMatricesStochastiquesCoursPage = lazy(() => import('../pages/formation/oteria/OteriaMatricesStochastiquesCoursPage'));
+
 const OteriaRecurrenceRecursiviteExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteExercicesPage'));
 const OteriaRecurrenceRecursiviteFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteFlashcardsPage'));
 const OteriaRecurrenceRecursiviteQCMPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteQCMPage'));
@@ -547,6 +571,8 @@ const PrepaChatbotGeneratorPage = lazy(() => import('../pages/generator/PrepaCha
 const CultureGeneraleGeneratorPage = lazy(() => import('../pages/generator/CultureGeneraleGeneratorPage'));
 
 const ThemeGrammarGeneratorPage = lazy(() => import('../pages/generator/ThemeGrammarGeneratorPage'));
+const ParagraphGeneratorPage = lazy(() => import('../pages/generator/ParagraphGeneratorPage'));
+const GeopoliticsParadoxGeneratorPage = lazy(() => import('../pages/generator/GeopoliticsParadoxGeneratorPage'));
 const UnifiedLanguagesGeneratorPage = lazy(() => import('../pages/generator/UnifiedLanguagesGeneratorPage'));
 const UnifiedOralGeneratorPage = lazy(() => import('../pages/generator/UnifiedOralGeneratorPage'));
 
@@ -711,8 +737,31 @@ export const routes: RouteConfig[] = [
   { path: '/formation/oteria/polynomes-flashcards', component: OteriaPolynomesDichotomieFlashcardsPage, title: 'Polynômes & Dichotomie - Flashcards' },
   { path: '/formation/oteria/polynomes-qcm', component: OteriaPolynomesQCMPage, title: 'Polynômes & Dichotomie - QCM' },
 
+  // Chapitre 7 - Dénombrement & probas : paradoxes
+  { path: '/formation/oteria/denombrement-paradoxes-cours', component: OteriaDenombrementParadoxesCoursPage, title: 'Dénombrement & Paradoxes - Cours' },
+  { path: '/formation/oteria/denombrement-exercices', component: OteriaDenombrementExercicesPage, title: 'Dénombrement & Paradoxes - Exercices' },
+  { path: '/formation/oteria/denombrement-flashcards', component: OteriaDenombrementFlashcardsPage, title: 'Dénombrement & Paradoxes - Flashcards' },
+  { path: '/formation/oteria/denombrement-qcm', component: OteriaDenombrementQCMPage, title: 'Dénombrement & Paradoxes - QCM' },
+
+  // Chapitre 8 - Introduction aux probabilités
+  { path: '/formation/oteria/probabilites-introduction-cours', component: OteriaProbabilitesIntroductionCoursPage, title: 'Introduction aux Probabilités - Cours' },
+  { path: '/formation/oteria/probabilites-exercices', component: OteriaProbabilitesExercicesPage, title: 'Introduction aux Probabilités - Exercices' },
+  { path: '/formation/oteria/probabilites-flashcards', component: OteriaProbabilitesFlashcardsPage, title: 'Introduction aux Probabilités - Flashcards' },
+
+  // Chapitre 9 - Variables aléatoires & histogrammes
+  { path: '/formation/oteria/variables-aleatoires-cours', component: OteriaVariablesAleatoiresCoursPage, title: 'Variables Aléatoires & Histogrammes - Cours' },
+  { path: '/formation/oteria/variables-aleatoires-exercices', component: OteriaVariablesAleatoiresExercicesPage, title: 'Variables Aléatoires & Histogrammes - Exercices' },
+  { path: '/formation/oteria/variables-aleatoires-flashcards', component: OteriaVariablesAleatoiresFlashcardsPage, title: 'Variables Aléatoires & Histogrammes - Flashcards' },
+  { path: '/formation/oteria/variables-aleatoires-qcm', component: OteriaVariablesAleatoiresQCMPage, title: 'Variables Aléatoires & Histogrammes - QCM' },
+
   // Chapitre 10 - Intégrales & π par Monte-Carlo
   { path: '/formation/oteria/integrales-monte-carlo-cours', component: OteriaIntegralesMonteCarloCoursPage, title: 'Intégrales & π par Monte-Carlo - Cours' },
+
+  // Chapitre 11 - Matrices & chaînes de Markov
+  { path: '/formation/oteria/matrices-markov-cours', component: OteriaMatricesMarkovCoursPage, title: 'Matrices & Chaînes de Markov - Cours' },
+
+  // Chapitre 12 - Arithmétique modulaire & crypto affine
+  { path: '/formation/oteria/matrices-stochastiques-cours', component: OteriaMatricesStochastiquesCoursPage, title: 'Arithmétique Modulaire & Crypto - Cours' },
   
   { path: '/formation/oteria/recurrence-recursivite-exercices', component: OteriaRecurrenceRecursiviteExercicesPage, title: 'Récurrence & Récursivité - Exercices' },
   { path: '/formation/oteria/recurrence-recursivite-flashcards', component: OteriaRecurrenceRecursiviteFlashcardsPage, title: 'Récurrence & Récursivité - Flashcards' },
@@ -1366,7 +1415,9 @@ export const routes: RouteConfig[] = [
   { path: '/generator/prepa-chatbot', component: PrepaChatbotGeneratorPage, title: 'Chatbot Prépa' },
   { path: '/generator/culture-generale', component: CultureGeneraleGeneratorPage, title: 'Générateur Culture Générale' },
 
-  { path: '/generator/theme-grammar', component: ThemeGrammarGeneratorPage, title: 'Grammaire Thématique' },
+  { path: '/generator/theme-grammar', component: ThemeGrammarGeneratorPage, title: 'Thème Grammatical' },
+  { path: '/generator/paragraph', component: ParagraphGeneratorPage, title: 'Générateur de Paragraphes' },
+  { path: '/generator/geopolitics-paradox', component: GeopoliticsParadoxGeneratorPage, title: 'Paradoxes Géopolitiques' },
   
   // Routes pour les formations mathématiques
   { 
