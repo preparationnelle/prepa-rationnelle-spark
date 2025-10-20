@@ -295,6 +295,11 @@ const TransitionsJugerPage = lazy(() => import('../pages/formation/culture-gener
 const ConclusionJugerPage = lazy(() => import('../pages/formation/culture-generale/methodes/ConclusionJugerPage'));
 const NosOffresPage = lazy(() => import('../pages/NosOffresPage'));
 const AproposPage = lazy(() => import('../pages/AproposPage'));
+const ParentPage = lazy(() => import('../pages/ParentPage'));
+const ParentFormPage = lazy(() => import('../pages/ParentFormPage'));
+const ProfesseurPage = lazy(() => import('../pages/ProfesseurPage'));
+const ProfesseurDashboard = lazy(() => import('../pages/ProfesseurDashboard'));
+const GestionPage = lazy(() => import('../pages/GestionPage'));
 const CoachingPage = lazy(() => import('../pages/CoachingPage'));
 const PartnersPage = lazy(() => import('../pages/PartnersPage'));
 const FormationOverviewPage = lazy(() => import('../pages/FormationOverviewPage'));
@@ -687,6 +692,11 @@ export const routes: RouteConfig[] = [
   { path: '/formation/exercices', component: PythonExercicesPage, title: 'Exercices Python' },
   { path: '/nos-offres', component: NosOffresPage, title: 'Nos Offres' },
   { path: '/apropos', component: AproposPage, title: 'À propos' },
+  { path: '/parent', component: ParentPage, title: 'Parent - Accompagnement' },
+  { path: '/parent-form', component: ParentFormPage, title: 'Réserver un accompagnement' },
+  { path: '/professeur', component: ProfesseurPage, title: 'Professeur - Candidature' },
+  { path: '/professeur-dashboard', component: ProfesseurDashboard, title: 'Espace Professeur', protected: true },
+  { path: '/gestion', component: GestionPage, title: 'Gestion', protected: true },
   { path: '/coaching', component: CoachingPage, title: 'Coaching individuel' },
   { path: '/partners', component: PartnersPage, title: 'Partenaires' },
   { path: '/methodes/personnalite', component: MethodEntretiensPersonnalitePage, title: 'Méthodes Personnalité' },

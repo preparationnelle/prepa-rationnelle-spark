@@ -8,7 +8,7 @@ import { ThemeToggle } from '@/components/ThemeToggle';
 import { GlobalSearch } from '@/components/search/GlobalSearch';
 import { MobileSearch } from '@/components/search/MobileSearch';
 import { SearchTrigger } from '@/components/search/SearchTrigger';
-import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, Code, Languages, Globe, UserCheck, Calculator, Award, Star, Youtube, TrendingUp } from 'lucide-react';
+import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, Code, Languages, Globe, UserCheck, Calculator, Award, Star, Youtube, TrendingUp, Settings, Mail } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from '@/components/ui/dropdown-menu';
@@ -27,10 +27,15 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isFormationsOpen, setIsFormationsOpen] = useState(false);
   const [isStudyLevelOpen, setIsStudyLevelOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
   const { toast } = useToast();
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const formationsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const studyLevelTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const contactTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const formationsRef = useRef<HTMLDivElement>(null);
   const studyLevelRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
 
   // Handle scroll effect
   useEffect(() => {
@@ -98,73 +103,107 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
 
   // Gestion du hover sur le menu Formations
   const handleFormationsHover = () => {
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
+    if (formationsTimeoutRef.current) {
+      clearTimeout(formationsTimeoutRef.current);
     }
     
-    hoverTimeoutRef.current = setTimeout(() => {
+    formationsTimeoutRef.current = setTimeout(() => {
       setIsFormationsOpen(true);
     }, 300); // Délai de 300ms avant d'ouvrir
   };
 
   const handleFormationsLeave = () => {
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
+    if (formationsTimeoutRef.current) {
+      clearTimeout(formationsTimeoutRef.current);
     }
     
     // Délai avant de fermer pour permettre de naviguer vers le menu
-    hoverTimeoutRef.current = setTimeout(() => {
+    formationsTimeoutRef.current = setTimeout(() => {
       setIsFormationsOpen(false);
     }, 150);
   };
 
   const handleMenuHover = () => {
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
+    if (formationsTimeoutRef.current) {
+      clearTimeout(formationsTimeoutRef.current);
     }
   };
 
   const handleMenuLeave = () => {
-    hoverTimeoutRef.current = setTimeout(() => {
+    formationsTimeoutRef.current = setTimeout(() => {
       setIsFormationsOpen(false);
     }, 150);
   };
 
   // Gestion du hover sur le menu Niveau d'étude
   const handleStudyLevelHover = () => {
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
+    if (studyLevelTimeoutRef.current) {
+      clearTimeout(studyLevelTimeoutRef.current);
     }
 
-    hoverTimeoutRef.current = setTimeout(() => {
+    studyLevelTimeoutRef.current = setTimeout(() => {
       setIsStudyLevelOpen(true);
     }, 300); // Délai de 300ms avant d'ouvrir
   };
 
   const handleStudyLevelLeave = () => {
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
+    if (studyLevelTimeoutRef.current) {
+      clearTimeout(studyLevelTimeoutRef.current);
     }
 
     // Délai avant de fermer pour permettre de naviguer vers le menu
-    hoverTimeoutRef.current = setTimeout(() => {
+    studyLevelTimeoutRef.current = setTimeout(() => {
       setIsStudyLevelOpen(false);
     }, 150);
   };
 
   const handleStudyLevelMenuHover = () => {
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
+    if (studyLevelTimeoutRef.current) {
+      clearTimeout(studyLevelTimeoutRef.current);
     }
   };
 
   const handleStudyLevelMenuLeave = () => {
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
+    if (studyLevelTimeoutRef.current) {
+      clearTimeout(studyLevelTimeoutRef.current);
     }
 
-    hoverTimeoutRef.current = setTimeout(() => {
+    studyLevelTimeoutRef.current = setTimeout(() => {
       setIsStudyLevelOpen(false);
+    }, 150);
+  };
+
+  // Gestion du hover sur le menu Contact
+  const handleContactHover = () => {
+    if (contactTimeoutRef.current) {
+      clearTimeout(contactTimeoutRef.current);
+    }
+    
+    contactTimeoutRef.current = setTimeout(() => {
+      setIsContactOpen(true);
+    }, 300); // Délai de 300ms avant d'ouvrir
+  };
+
+  const handleContactLeave = () => {
+    if (contactTimeoutRef.current) {
+      clearTimeout(contactTimeoutRef.current);
+    }
+    
+    // Délai avant de fermer pour permettre de naviguer vers le menu
+    contactTimeoutRef.current = setTimeout(() => {
+      setIsContactOpen(false);
+    }, 150);
+  };
+
+  const handleContactMenuHover = () => {
+    if (contactTimeoutRef.current) {
+      clearTimeout(contactTimeoutRef.current);
+    }
+  };
+
+  const handleContactMenuLeave = () => {
+    contactTimeoutRef.current = setTimeout(() => {
+      setIsContactOpen(false);
     }, 150);
   };
 
@@ -173,6 +212,15 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
     return () => {
       if (hoverTimeoutRef.current) {
         clearTimeout(hoverTimeoutRef.current);
+      }
+      if (formationsTimeoutRef.current) {
+        clearTimeout(formationsTimeoutRef.current);
+      }
+      if (studyLevelTimeoutRef.current) {
+        clearTimeout(studyLevelTimeoutRef.current);
+      }
+      if (contactTimeoutRef.current) {
+        clearTimeout(contactTimeoutRef.current);
       }
     };
   }, []);
@@ -363,7 +411,59 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
             </div>
 
             <Link to="/avis" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Avis</Link>
-            <Link to="/contact" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Contact</Link>
+            
+            {/* Menu déroulant "Contact" avec hover */}
+            <div 
+              className="relative"
+              ref={contactRef}
+              onMouseEnter={handleContactHover}
+              onMouseLeave={handleContactLeave}
+            >
+              <button className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 flex items-center gap-1 focus:outline-none px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4">
+                Contact
+                <ChevronDown className={cn("h-3 w-3 transition-transform duration-200", isContactOpen && "rotate-180")} />
+              </button>
+              
+              {/* Menu déroulant */}
+              <div 
+                className={cn(
+                  "absolute top-full left-1/2 transform -translate-x-1/2 w-64 bg-white rounded-lg shadow-lg border p-2 transition-all duration-200 z-50",
+                  isContactOpen 
+                    ? "opacity-100 translate-y-0 pointer-events-auto" 
+                    : "opacity-0 -translate-y-2 pointer-events-none"
+                )}
+                onMouseEnter={handleContactMenuHover}
+                onMouseLeave={handleContactMenuLeave}
+              >
+                <Link to="/parent" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-orange-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Users className="h-4 w-4 text-orange-600" /></span>
+                  <span>Parent</span>
+                </Link>
+                
+                <Link to="/professeur" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center"><GraduationCap className="h-4 w-4 text-blue-600" /></span>
+                  <span>Devenir Professeur</span>
+                </Link>
+                
+                <Link to="/professeur-dashboard" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-green-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-green-50 rounded-full flex items-center justify-center"><Settings className="h-4 w-4 text-green-600" /></span>
+                  <span>Espace Professeur</span>
+                </Link>
+                
+                <Link to="/gestion" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-gray-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-gray-50 rounded-full flex items-center justify-center"><Settings className="h-4 w-4 text-gray-600" /></span>
+                  <span>Gestion</span>
+                </Link>
+                
+                <div className="border-t border-gray-100 my-1"></div>
+                
+                <Link to="/contact" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-gray-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-gray-50 rounded-full flex items-center justify-center"><Mail className="h-4 w-4 text-gray-600" /></span>
+                  <span>Nous contacter</span>
+                </Link>
+              </div>
+            </div>
+            
             <Link to="/stage-accompagnement" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Offres</Link>
             <SearchTrigger />
             
@@ -472,7 +572,32 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
       <Link to="/articles/prepa-ecg" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Prépa ECG</Link>
       <Link to="/articles/concours-acces-sesame" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Concours ACCES/SESAME</Link>
       <Link to="/articles/oteria-cyber-school" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>OTERIA Cyber School</Link>
-          <Link to="/contact" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Contact</Link>
+      
+      {/* Menu Contact mobile */}
+      <div className="border-b border-gray-200">
+        <div className="text-base py-3 px-4 bg-gray-50 font-medium text-gray-700">Contact</div>
+        <Link to="/parent" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-orange-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
+          <Users className="h-5 w-5 text-orange-600" />
+          Parent
+        </Link>
+        <Link to="/professeur" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-blue-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
+          <GraduationCap className="h-5 w-5 text-blue-600" />
+          Devenir Professeur
+        </Link>
+        <Link to="/professeur-dashboard" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-green-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
+          <Settings className="h-5 w-5 text-green-600" />
+          Espace Professeur
+        </Link>
+        <Link to="/gestion" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
+          <Settings className="h-5 w-5 text-gray-600" />
+          Gestion
+        </Link>
+        <Link to="/contact" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
+          <Mail className="h-5 w-5 text-gray-600" />
+          Nous contacter
+        </Link>
+      </div>
+      
           <Link to="/stage-accompagnement" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Offres</Link>
         </div>
 

@@ -45,7 +45,7 @@ function App() {
                   const Component = route.component;
                   let element;
                   
-                  if (route.path.startsWith('/prof')) {
+                  if (route.path.startsWith('/prof') && !route.path.includes('professeur-dashboard') && !route.path.includes('professeur')) {
                     // Teacher routes require professor role
                     element = (
                       <TeacherProtectedRoute>
