@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -10,13 +10,15 @@ import {
   Mic,
   Library,
   FileText,
-  Target
+  Target,
+  Brain
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from "@/components/ui/button";
 
 const GeneratorPage: React.FC = () => {
+  const observerRef = useRef<IntersectionObserver | null>(null);
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -24,10 +26,23 @@ const GeneratorPage: React.FC = () => {
   // Générateurs principaux
   const mainGenerators = [
     {
+      id: 'languages-unified',
+      title: 'Générateur Langues',
+      description: 'Générez et corrigez vos textes en langues étrangères - Notre automatisation la plus utilisée',
+      icon: <Languages className="h-10 w-10" />,
+      features: [
+        'Correction automatique',
+        'Génération de paragraphes',
+        'Thèmes corrigés'
+      ],
+      link: '/generator/languages-unified',
+      badge: 'Le plus utilisé'
+    },
+    {
       id: 'flashcards',
       title: 'Générateur de Flashcards',
       description: 'Créez des flashcards personnalisées pour réviser efficacement',
-      icon: <BookOpen className="h-10 w-10" />,
+      icon: <Brain className="h-10 w-10" />,
       features: [
         'Flashcards personnalisées',
         'Révision intelligente',
@@ -121,6 +136,31 @@ const GeneratorPage: React.FC = () => {
     },
   ];
 
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      },
+      { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
+    );
+
+    const elements = document.querySelectorAll('.fade-in-up, .fade-in, .scale-in');
+    elements.forEach((el) => {
+      observerRef.current?.observe(el);
+      // Force l'animation pour les éléments déjà visibles
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('animate-in');
+      }
+    });
+
+    return () => observerRef.current?.disconnect();
+  }, []);
+
 
 
 
@@ -141,17 +181,10 @@ const GeneratorPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
-      {/* Floating elements - Blue bubbles only */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
-      <div className="absolute top-40 right-20 w-48 h-48 bg-blue-100 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-8 animate-pulse"></div>
-      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-blue-50 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
-      <div className="absolute top-10 right-1/3 w-24 h-24 bg-blue-300 rounded-full opacity-12 animate-pulse-slow"></div>
-      <div className="absolute bottom-10 left-1/4 w-36 h-36 bg-blue-100 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute top-1/2 right-10 w-20 h-20 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
-      <div className="absolute top-1/3 left-10 w-28 h-28 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
+      {/* Floating elements - Orange bubbles */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-500 rounded-full opacity-5 blur-3xl animate-float"></div>
+      <div className="absolute bottom-20 right-10 w-28 h-28 bg-orange-400 rounded-full opacity-5 blur-3xl animate-float-delayed"></div>
+      <div className="absolute top-40 right-20 w-48 h-48 bg-orange-300 rounded-full opacity-5 blur-3xl animate-float-slow"></div>
 
       <div className="container mx-auto py-8 px-4 relative z-10">
         {/* Header Hero Section */}
@@ -170,134 +203,42 @@ const GeneratorPage: React.FC = () => {
 
         {/* Modules principaux */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
-          {mainGenerators.map((generator) => (
+          {mainGenerators.map((generator, index) => (
             <Link
               key={generator.id}
               to={generator.link}
-              className="bg-white rounded-xl p-8 shadow-md hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 group flex flex-col items-center text-center min-h-[420px] justify-between border border-transparent hover:border-orange-300 hover:bg-orange-50 transform"
+              className="fade-in-up bg-white rounded-xl p-8 shadow-md hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 group flex flex-col items-center text-center min-h-[420px] justify-between border border-transparent hover:border-orange-300 hover:bg-orange-50 transform"
+              style={{ animationDelay: `${0.1 + index * 0.1}s` }}
             >
               <div className="flex flex-col items-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mb-8 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
-                  <div className="text-blue-600 group-hover:text-orange-600 transition-colors">
+                {generator.badge && (
+                  <div className="mb-4">
+                    <span className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
+                      {generator.badge}
+                    </span>
+                  </div>
+                )}
+                <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-all duration-300">
+                  <div className="text-orange-600 transition-colors">
                     {generator.icon}
                   </div>
                 </div>
-                <h3 className="font-bold text-xl mb-3 text-blue-700 group-hover:text-orange-800 transition-colors">
-                  {generator.id === 'flashcards' && 'Flashcards'}
-                  {generator.id === 'languages-unified' && 'Langues'}
-                  {generator.id === 'geopolitics-unified' && 'Géopolitique'}
-                  {generator.id === 'culture-generale' && 'Culture Générale'}
-                  {generator.id === 'orals-unified' && 'Oraux'}
-                  {generator.id === 'prepa-chatbot' && 'Chat-bot'}
+                <h3 className="font-bold text-xl mb-3 text-gray-900 group-hover:text-orange-800 transition-colors">
+                  {generator.title}
                 </h3>
                 <p className="text-sm text-gray-600 mb-4 leading-relaxed group-hover:text-gray-700 transition-colors">
-                  {generator.id === 'flashcards' && 'Créez vos flashcards personnalisées'}
-                  {generator.id === 'languages-unified' && 'Générez et corrigez vos textes'}
-                  {generator.id === 'geopolitics-unified' && 'Études et fiches automatiques'}
-                  {generator.id === 'culture-generale' && 'Thèmes et problématiques'}
-                  {generator.id === 'orals-unified' && 'Questions et réponses orales'}
-                  {generator.id === 'prepa-chatbot' && 'Conseils et motivation'}
+                  {generator.description}
                 </p>
                 <div className="space-y-1 text-xs w-full mb-4">
-                  {generator.id === 'flashcards' && (
-                    <>
-                      <div className="flex items-center text-blue-600 group-hover:text-orange-600 transition-colors">
-                        <span className="mr-2">✓</span>
-                        <span>Flashcards personnalisées</span>
-                      </div>
-                      <div className="flex items-center text-blue-600 group-hover:text-orange-600 transition-colors">
-                        <span className="mr-2">✓</span>
-                        <span>Révision intelligente</span>
-                      </div>
-                      <div className="flex items-center text-blue-600 group-hover:text-orange-600 transition-colors">
-                        <span className="mr-2">✓</span>
-                        <span>Suivi des progrès</span>
-                      </div>
-                    </>
-                  )}
-                  {generator.id === 'languages-unified' && (
-                    <>
-                      <div className="flex items-center text-blue-600 group-hover:text-orange-600 transition-colors">
-                        <span className="mr-2">✓</span>
-                        <span>Correction automatique</span>
-                      </div>
-                      <div className="flex items-center text-blue-600 group-hover:text-orange-600 transition-colors">
-                        <span className="mr-2">✓</span>
-                        <span>Génération de paragraphes</span>
-                      </div>
-                      <div className="flex items-center text-blue-600 group-hover:text-orange-600 transition-colors">
-                        <span className="mr-2">✓</span>
-                        <span>Thèmes corrigés</span>
-                      </div>
-                    </>
-                  )}
-                  {generator.id === 'geopolitics-unified' && (
-                    <>
-                      <div className="flex items-center text-blue-600 group-hover:text-orange-600 transition-colors">
-                        <span className="mr-2">✓</span>
-                        <span>Études géopolitiques</span>
-                      </div>
-                      <div className="flex items-center text-blue-600 group-hover:text-orange-600 transition-colors">
-                        <span className="mr-2">✓</span>
-                        <span>Fiches automatiques</span>
-                      </div>
-                      <div className="flex items-center text-blue-600 group-hover:text-orange-600 transition-colors">
-                        <span className="mr-2">✓</span>
-                        <span>Analyse stratégique</span>
-                      </div>
-                    </>
-                  )}
-                  {generator.id === 'culture-generale' && (
-                    <>
-                      <div className="flex items-center text-blue-600 group-hover:text-orange-600 transition-colors">
-                        <span className="mr-2">✓</span>
-                        <span>Définition de thèmes</span>
-                      </div>
-                      <div className="flex items-center text-blue-600 group-hover:text-orange-600 transition-colors">
-                        <span className="mr-2">✓</span>
-                        <span>Problématiques rapides</span>
-                      </div>
-                      <div className="flex items-center text-blue-600 group-hover:text-orange-600 transition-colors">
-                        <span className="mr-2">✓</span>
-                        <span>Plans détaillés</span>
-                      </div>
-                    </>
-                  )}
-                  {generator.id === 'orals-unified' && (
-                    <>
-                      <div className="flex items-center text-blue-600 group-hover:text-orange-600 transition-colors">
-                        <span className="mr-2">✓</span>
-                        <span>Questions types concours</span>
-                      </div>
-                      <div className="flex items-center text-blue-600 group-hover:text-orange-600 transition-colors">
-                        <span className="mr-2">✓</span>
-                        <span>Réponses générées</span>
-                      </div>
-                      <div className="flex items-center text-blue-600 group-hover:text-orange-600 transition-colors">
-                        <span className="mr-2">✓</span>
-                        <span>Entraînement oral</span>
-                      </div>
-                    </>
-                  )}
-                  {generator.id === 'prepa-chatbot' && (
-                    <>
-                      <div className="flex items-center text-blue-600 group-hover:text-orange-600 transition-colors">
-                        <span className="mr-2">✓</span>
-                        <span>Conseils méthodologiques</span>
-                      </div>
-                      <div className="flex items-center text-blue-600 group-hover:text-orange-600 transition-colors">
-                        <span className="mr-2">✓</span>
-                        <span>Motivation quotidienne</span>
-                      </div>
-                      <div className="flex items-center text-blue-600 group-hover:text-orange-600 transition-colors">
-                        <span className="mr-2">✓</span>
-                        <span>Bien-être prépa</span>
-                      </div>
-                    </>
-                  )}
+                  {generator.features.map((feature, index) => (
+                    <div key={index} className="flex items-center text-orange-600 transition-colors">
+                      <span className="mr-2">✓</span>
+                      <span>{feature}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
-              <Button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium transition-all duration-300 group-hover:scale-105 shadow-lg rounded-lg">
+              <Button className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-medium transition-all duration-300 hover:scale-105 shadow-lg rounded-lg">
                 <Zap className="mr-2 h-4 w-4" />
                 Utiliser le générateur
               </Button>
@@ -305,6 +246,82 @@ const GeneratorPage: React.FC = () => {
           ))}
         </div>
       </div>
+
+      {/* Styles pour les animations */}
+      <style>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px) translateX(0px);
+          }
+          50% {
+            transform: translateY(-20px) translateX(10px);
+          }
+        }
+
+        @keyframes floatDelayed {
+          0%, 100% {
+            transform: translateY(0px) translateX(0px);
+          }
+          50% {
+            transform: translateY(20px) translateX(-10px);
+          }
+        }
+
+        @keyframes floatSlow {
+          0%, 100% {
+            transform: translateY(0px) translateX(0px);
+          }
+          50% {
+            transform: translateY(15px) translateX(15px);
+          }
+        }
+
+        .fade-in-up, .scale-in {
+          opacity: 0;
+        }
+
+        .fade-in-up.animate-in {
+          animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .scale-in.animate-in {
+          animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        .animate-float {
+          animation: float 8s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+          animation: floatDelayed 10s ease-in-out infinite;
+        }
+
+        .animate-float-slow {
+          animation: floatSlow 12s ease-in-out infinite;
+        }
+      `}</style>
     </div>
   );
 };

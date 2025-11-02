@@ -5,11 +5,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { ParentRequestForm, STUDENT_LEVELS, SUBJECTS, RELATIONSHIPS } from '@/types/parent-teacher';
-import { Users, Phone, GraduationCap, CheckCircle, User, UserCheck, BookOpen } from 'lucide-react';
+import { Users, CheckCircle, User, BookOpen } from 'lucide-react';
 
 const ParentPage = () => {
   const { toast } = useToast();
@@ -42,8 +41,8 @@ const ParentPage = () => {
     e.preventDefault();
     
     // Validation
-    if (!formData.requester_first_name || !formData.requester_last_name || 
-        !formData.requester_email || !formData.requester_phone || 
+    if (!formData.requester_first_name || !formData.requester_last_name ||
+        !formData.requester_email ||
         !formData.student_level || !formData.subject || !formData.needs_description) {
       toast({
         title: "Champs manquants",
@@ -51,18 +50,6 @@ const ParentPage = () => {
         variant: "destructive"
       });
       return;
-    }
-
-    // Validation supplémentaire si c'est pour une autre personne
-    if (!formData.is_for_self) {
-      if (!formData.student_first_name || !formData.student_last_name) {
-        toast({
-          title: "Informations manquantes",
-          description: "Veuillez renseigner le prénom et nom de l'élève.",
-          variant: "destructive"
-        });
-        return;
-      }
     }
 
     setIsSubmitting(true);
@@ -141,10 +128,10 @@ const ParentPage = () => {
         <div className="relative z-10 w-full max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-              Accompagnement <span className="text-orange-600">sur-mesure</span> pour votre enfant
+              Aide pour votre enfant en prépa ECG
             </h1>
             <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto">
-              Trouvez la solution parfaite pour aider votre enfant à réussir en prépa ECG
+              Demandez un accompagnement personnalisé
             </p>
           </div>
 
@@ -155,22 +142,22 @@ const ParentPage = () => {
                 <div className="p-3 rounded-lg bg-orange-100 text-orange-600">
                   <Users className="h-8 w-8" />
                 </div>
-                Demande d'accompagnement
+                Formulaire de contact
               </CardTitle>
               <p className="text-gray-600 mt-2">
-                Remplissez ce formulaire et notre équipe vous contactera rapidement
+                Quelques informations pour mieux vous aider
               </p>
             </CardHeader>
             
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Informations du demandeur */}
+                {/* Informations de contact */}
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
                     <User className="h-5 w-5 text-orange-600" />
-                    Vos informations
+                    Informations de contact
                   </h3>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="requester_first_name" className="text-sm font-medium text-gray-700">
@@ -185,10 +172,10 @@ const ParentPage = () => {
                         placeholder="Votre prénom"
                       />
                     </div>
-                    
+
                     <div>
                       <Label htmlFor="requester_last_name" className="text-sm font-medium text-gray-700">
-                        Nom de famille *
+                        Nom *
                       </Label>
                       <Input
                         id="requester_last_name"
@@ -196,7 +183,7 @@ const ParentPage = () => {
                         value={formData.requester_last_name}
                         onChange={(e) => handleInputChange('requester_last_name', e.target.value)}
                         className="mt-1"
-                        placeholder="Votre nom de famille"
+                        placeholder="Votre nom"
                       />
                     </div>
                   </div>
@@ -215,10 +202,10 @@ const ParentPage = () => {
                         placeholder="votre@email.com"
                       />
                     </div>
-                    
+
                     <div>
                       <Label htmlFor="requester_phone" className="text-sm font-medium text-gray-700">
-                        Téléphone *
+                        Téléphone
                       </Label>
                       <Input
                         id="requester_phone"
@@ -232,129 +219,6 @@ const ParentPage = () => {
                   </div>
                 </div>
 
-                {/* Choix pour qui est la demande */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                    <UserCheck className="h-5 w-5 text-blue-600" />
-                    Pour qui est cette demande ?
-                  </h3>
-                  
-                  <RadioGroup 
-                    value={formData.is_for_self ? 'self' : 'other'} 
-                    onValueChange={(value) => handleInputChange('is_for_self', value === 'self')}
-                    className="space-y-3"
-                  >
-                    <div className="flex items-center space-x-3 p-4 border border-gray-200 rounded-lg hover:bg-orange-50 transition-colors">
-                      <RadioGroupItem value="self" id="self" />
-                      <Label htmlFor="self" className="flex items-center gap-3 cursor-pointer flex-1">
-                        <User className="h-5 w-5 text-orange-600" />
-                        <div>
-                          <div className="font-medium">Pour moi-même</div>
-                          <div className="text-sm text-gray-600">Je suis l'élève qui a besoin d'aide</div>
-                        </div>
-                      </Label>
-                    </div>
-                    
-                    <div className="flex items-center space-x-3 p-4 border border-gray-200 rounded-lg hover:bg-blue-50 transition-colors">
-                      <RadioGroupItem value="other" id="other" />
-                      <Label htmlFor="other" className="flex items-center gap-3 cursor-pointer flex-1">
-                        <Users className="h-5 w-5 text-blue-600" />
-                        <div>
-                          <div className="font-medium">Pour une autre personne</div>
-                          <div className="text-sm text-gray-600">Je fais cette demande pour quelqu'un d'autre</div>
-                        </div>
-                      </Label>
-                    </div>
-                  </RadioGroup>
-                </div>
-
-                {/* Informations de l'élève (si ce n'est pas pour soi-même) */}
-                {!formData.is_for_self && (
-                  <div className="space-y-4 p-4 bg-gray-50 rounded-lg">
-                    <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                      <GraduationCap className="h-5 w-5 text-green-600" />
-                      Informations de l'élève
-                    </h3>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="student_first_name" className="text-sm font-medium text-gray-700">
-                          Prénom de l'élève *
-                        </Label>
-                        <Input
-                          id="student_first_name"
-                          type="text"
-                          value={formData.student_first_name}
-                          onChange={(e) => handleInputChange('student_first_name', e.target.value)}
-                          className="mt-1"
-                          placeholder="Prénom de l'élève"
-                        />
-                      </div>
-                      
-                      <div>
-                        <Label htmlFor="student_last_name" className="text-sm font-medium text-gray-700">
-                          Nom de famille de l'élève *
-                        </Label>
-                        <Input
-                          id="student_last_name"
-                          type="text"
-                          value={formData.student_last_name}
-                          onChange={(e) => handleInputChange('student_last_name', e.target.value)}
-                          className="mt-1"
-                          placeholder="Nom de famille de l'élève"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="student_phone" className="text-sm font-medium text-gray-700">
-                          Téléphone de l'élève (facultatif)
-                        </Label>
-                        <Input
-                          id="student_phone"
-                          type="tel"
-                          value={formData.student_phone}
-                          onChange={(e) => handleInputChange('student_phone', e.target.value)}
-                          className="mt-1"
-                          placeholder="06 12 34 56 78"
-                        />
-                      </div>
-                      
-                      <div>
-                        <Label htmlFor="student_email" className="text-sm font-medium text-gray-700">
-                          Email de l'élève (facultatif)
-                        </Label>
-                        <Input
-                          id="student_email"
-                          type="email"
-                          value={formData.student_email}
-                          onChange={(e) => handleInputChange('student_email', e.target.value)}
-                          className="mt-1"
-                          placeholder="eleve@email.com"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="relationship" className="text-sm font-medium text-gray-700">
-                        Votre relation avec l'élève *
-                      </Label>
-                      <Select value={formData.relationship} onValueChange={(value) => handleInputChange('relationship', value)}>
-                        <SelectTrigger className="mt-1">
-                          <SelectValue placeholder="Sélectionnez votre relation" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {RELATIONSHIPS.map((relationship) => (
-                            <SelectItem key={relationship} value={relationship}>
-                              {relationship}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-                )}
 
                 {/* Informations académiques */}
                 <div className="space-y-4">
@@ -411,53 +275,18 @@ const ParentPage = () => {
                   
                   <div>
                     <Label htmlFor="needs_description" className="text-sm font-medium text-gray-700">
-                      Décrivez les difficultés, objectifs et échéances *
+                      Décrivez brièvement vos besoins *
                     </Label>
                     <Textarea
                       id="needs_description"
                       value={formData.needs_description}
                       onChange={(e) => handleInputChange('needs_description', e.target.value)}
-                      className="mt-1 min-h-[120px]"
-                      placeholder="Décrivez les difficultés rencontrées, les objectifs, les échéances importantes..."
+                      className="mt-1 min-h-[80px]"
+                      placeholder="Quelles sont les principales difficultés ? Quels objectifs souhaitez-vous atteindre ?"
                     />
                   </div>
                 </div>
 
-                {/* Choix d'action */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                    <Phone className="h-5 w-5 text-teal-600" />
-                    Que souhaitez-vous faire ?
-                  </h3>
-                  
-                  <RadioGroup 
-                    value={formData.action_choice} 
-                    onValueChange={(value) => handleInputChange('action_choice', value as 'call' | 'choose_teacher')}
-                    className="space-y-3"
-                  >
-                    <div className="flex items-center space-x-3 p-4 border border-gray-200 rounded-lg hover:bg-orange-50 transition-colors">
-                      <RadioGroupItem value="call" id="call" />
-                      <Label htmlFor="call" className="flex items-center gap-3 cursor-pointer flex-1">
-                        <Phone className="h-5 w-5 text-orange-600" />
-                        <div>
-                          <div className="font-medium">Réserver un appel</div>
-                          <div className="text-sm text-gray-600">Échanger sur les besoins et trouver la meilleure solution</div>
-                        </div>
-                      </Label>
-                    </div>
-                    
-                    <div className="flex items-center space-x-3 p-4 border border-gray-200 rounded-lg hover:bg-blue-50 transition-colors">
-                      <RadioGroupItem value="choose_teacher" id="choose_teacher" />
-                      <Label htmlFor="choose_teacher" className="flex items-center gap-3 cursor-pointer flex-1">
-                        <GraduationCap className="h-5 w-5 text-blue-600" />
-                        <div>
-                          <div className="font-medium">Choisir directement un professeur</div>
-                          <div className="text-sm text-gray-600">Accéder à notre base de professeurs disponibles</div>
-                        </div>
-                      </Label>
-                    </div>
-                  </RadioGroup>
-                </div>
 
                 {/* Bouton de soumission */}
                 <div className="flex justify-center pt-4">

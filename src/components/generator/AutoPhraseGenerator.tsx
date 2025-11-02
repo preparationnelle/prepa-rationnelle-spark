@@ -90,8 +90,8 @@ export const AutoPhraseGenerator = ({ language, onPhraseGenerated }: AutoPhraseG
   }, []);
 
   return (
-    <Card className="mb-6 border-orange-200 bg-gradient-to-r from-orange-50 to-red-50">
-      <CardHeader className="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-t-lg">
+    <Card className="mb-6 border-orange-200 bg-gradient-to-r from-orange-50 to-orange-100">
+      <CardHeader className="bg-gradient-to-r from-orange-600 to-orange-500 text-white rounded-t-lg">
         <CardTitle className="flex items-center gap-3">
           <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
             <Target className="h-6 w-6" />
@@ -111,10 +111,10 @@ export const AutoPhraseGenerator = ({ language, onPhraseGenerated }: AutoPhraseG
         {currentPhrase ? (
           <div className="space-y-4">
             {/* Phrase française */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
               <div className="flex justify-between items-start mb-2">
-                <h3 className="text-sm font-semibold text-blue-700 mb-2">
-                  🇫🇷 {language === 'fr' ? 'Phrase à traduire (Français)' : 'Sentence to translate (French)'}
+                <h3 className="text-sm font-semibold text-orange-700 mb-2">
+                  {language === 'fr' ? 'Phrase à traduire (Français)' : 'Sentence to translate (French)'}
                 </h3>
                 <Button
                   variant="ghost"
@@ -125,30 +125,30 @@ export const AutoPhraseGenerator = ({ language, onPhraseGenerated }: AutoPhraseG
                   {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                 </Button>
               </div>
-              <p className="text-lg font-medium text-blue-900 italic">
+              <p className="text-lg font-medium text-orange-900 italic">
                 "{currentPhrase.french}"
               </p>
             </div>
 
             {/* Phrase de référence */}
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-              <h3 className="text-sm font-semibold text-green-700 mb-2">
-                🇬🇧 {language === 'fr' ? 'Traduction de référence (Anglais)' : 'Reference translation (English)'}
+            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+              <h3 className="text-sm font-semibold text-orange-700 mb-2">
+                {language === 'fr' ? 'Traduction de référence (Anglais)' : 'Reference translation (English)'}
               </h3>
-              <p className="text-lg font-medium text-green-900 italic">
+              <p className="text-lg font-medium text-orange-900 italic">
                 "{currentPhrase.reference}"
               </p>
             </div>
 
             {/* Points grammaticaux */}
             {currentPhrase.grammar_points && currentPhrase.grammar_points.length > 0 && (
-              <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-                <h3 className="text-sm font-semibold text-purple-700 mb-2">
-                  📚 {language === 'fr' ? 'Points grammaticaux' : 'Grammar points'}
+              <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                <h3 className="text-sm font-semibold text-orange-700 mb-2">
+                  {language === 'fr' ? 'Points grammaticaux' : 'Grammar points'}
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {currentPhrase.grammar_points.map((point, index) => (
-                    <span key={index} className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm">
+                    <span key={index} className="bg-orange-100 text-orange-800 px-2 py-1 rounded text-sm">
                       {point}
                     </span>
                   ))}
@@ -158,14 +158,14 @@ export const AutoPhraseGenerator = ({ language, onPhraseGenerated }: AutoPhraseG
 
             {/* Notes explicatives */}
             {currentPhrase.notes && currentPhrase.notes.length > 0 && (
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
-                <h3 className="text-sm font-semibold text-amber-700 mb-2">
-                  💡 {language === 'fr' ? 'Notes explicatives' : 'Explanatory notes'}
+              <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                <h3 className="text-sm font-semibold text-orange-700 mb-2">
+                  {language === 'fr' ? 'Notes explicatives' : 'Explanatory notes'}
                 </h3>
                 <ul className="space-y-1">
                   {currentPhrase.notes.map((note, index) => (
-                    <li key={index} className="text-sm text-amber-800 flex items-start gap-2">
-                      <span className="text-amber-600 mt-1">•</span>
+                    <li key={index} className="text-sm text-orange-800 flex items-start gap-2">
+                      <span className="text-orange-600 mt-1">•</span>
                       <span>{note}</span>
                     </li>
                   ))}

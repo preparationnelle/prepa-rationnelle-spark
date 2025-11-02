@@ -55,10 +55,10 @@ export const FlashcardInput = ({
             onValueChange={(value) => value && setInputLanguage(value as 'fr' | 'en')}
           >
             <ToggleGroupItem value="fr" aria-label="Français">
-              🇫🇷 FR
+              FR
             </ToggleGroupItem>
             <ToggleGroupItem value="en" aria-label="English">
-              🇬🇧 EN
+              EN
             </ToggleGroupItem>
           </ToggleGroup>
         </div>

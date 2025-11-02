@@ -450,11 +450,6 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                   <span>Espace Professeur</span>
                 </Link>
                 
-                <Link to="/gestion" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-gray-50 rounded-md px-3 py-2 transition-colors">
-                  <span className="w-8 h-8 bg-gray-50 rounded-full flex items-center justify-center"><Settings className="h-4 w-4 text-gray-600" /></span>
-                  <span>Gestion</span>
-                </Link>
-                
                 <div className="border-t border-gray-100 my-1"></div>
                 
                 <Link to="/contact" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-gray-50 rounded-md px-3 py-2 transition-colors">
@@ -587,10 +582,6 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
         <Link to="/professeur-dashboard" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-green-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
           <Settings className="h-5 w-5 text-green-600" />
           Espace Professeur
-        </Link>
-        <Link to="/gestion" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
-          <Settings className="h-5 w-5 text-gray-600" />
-          Gestion
         </Link>
         <Link to="/contact" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
           <Mail className="h-5 w-5 text-gray-600" />

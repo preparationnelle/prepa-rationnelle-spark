@@ -39,6 +39,7 @@ const AnglaisGerondifInfinitifExercicesPage = lazy(() => import('../pages/format
 const AnglaisRelativesPage = lazy(() => import('../pages/formation/anglais/grammaire/RelativesPage'));
 const AnglaisGerondifInfinitifPage = lazy(() => import('../pages/formation/anglais/grammaire/GerondifInfinitifPage'));
 const AnglaisComparatifsSuperlatifsPage = lazy(() => import('../pages/formation/anglais/grammaire/ComparatifsSuperlatifsPage'));
+const AnglaisComparatifsSuperlatifsExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/ComparatifsSuperlatifsExercicesPage'));
 const AnglaisQuestionsInterrogatifsPage = lazy(() => import('../pages/formation/anglais/grammaire/QuestionsInterrogatifsPage'));
 const AnglaisExpressionsTempsPage = lazy(() => import('../pages/formation/anglais/grammaire/ExpressionsTempsPage'));
 const AnglaisConcordanceTempsPage = lazy(() => import('../pages/formation/anglais/grammaire/ConcordanceTempsPage'));
@@ -295,11 +296,11 @@ const TransitionsJugerPage = lazy(() => import('../pages/formation/culture-gener
 const ConclusionJugerPage = lazy(() => import('../pages/formation/culture-generale/methodes/ConclusionJugerPage'));
 const NosOffresPage = lazy(() => import('../pages/NosOffresPage'));
 const AproposPage = lazy(() => import('../pages/AproposPage'));
+const DesignSystemPage = lazy(() => import('../pages/DesignSystemPage'));
 const ParentPage = lazy(() => import('../pages/ParentPage'));
 const ParentFormPage = lazy(() => import('../pages/ParentFormPage'));
 const ProfesseurPage = lazy(() => import('../pages/ProfesseurPage'));
 const ProfesseurDashboard = lazy(() => import('../pages/ProfesseurDashboard'));
-const GestionPage = lazy(() => import('../pages/GestionPage'));
 const CoachingPage = lazy(() => import('../pages/CoachingPage'));
 const PartnersPage = lazy(() => import('../pages/PartnersPage'));
 const FormationOverviewPage = lazy(() => import('../pages/FormationOverviewPage'));
@@ -692,11 +693,11 @@ export const routes: RouteConfig[] = [
   { path: '/formation/exercices', component: PythonExercicesPage, title: 'Exercices Python' },
   { path: '/nos-offres', component: NosOffresPage, title: 'Nos Offres' },
   { path: '/apropos', component: AproposPage, title: 'À propos' },
+  { path: '/design-system', component: DesignSystemPage, title: 'Design System' },
   { path: '/parent', component: ParentPage, title: 'Parent - Accompagnement' },
   { path: '/parent-form', component: ParentFormPage, title: 'Réserver un accompagnement' },
   { path: '/professeur', component: ProfesseurPage, title: 'Professeur - Candidature' },
   { path: '/professeur-dashboard', component: ProfesseurDashboard, title: 'Espace Professeur', protected: true },
-  { path: '/gestion', component: GestionPage, title: 'Gestion', protected: true },
   { path: '/coaching', component: CoachingPage, title: 'Coaching individuel' },
   { path: '/partners', component: PartnersPage, title: 'Partenaires' },
   { path: '/methodes/personnalite', component: MethodEntretiensPersonnalitePage, title: 'Méthodes Personnalité' },
@@ -838,6 +839,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/anglais/grammaire/relatives', component: AnglaisRelativesPage, title: 'Subordonnées relatives' },
   { path: '/formation/anglais/grammaire/gerondif-infinitif', component: AnglaisGerondifInfinitifPage, title: 'Gérondif & Infinitif' },
   { path: '/formation/anglais/grammaire/comparatifs', component: AnglaisComparatifsSuperlatifsPage, title: 'Comparatifs & Superlatifs' },
+  { path: '/formation/anglais/grammaire/comparatifs/exercices', component: AnglaisComparatifsSuperlatifsExercicesPage, title: 'Exercices Comparatifs & Superlatifs' },
   { path: '/formation/anglais/grammaire/questions', component: AnglaisQuestionsInterrogatifsPage, title: 'Questions & Interrogatifs' },
   { path: '/formation/anglais/grammaire/expressions-temps', component: AnglaisExpressionsTempsPage, title: 'Expressions de temps' },
   { path: '/formation/anglais/grammaire/concordance', component: AnglaisConcordanceTempsPage, title: 'Concordance des temps' },

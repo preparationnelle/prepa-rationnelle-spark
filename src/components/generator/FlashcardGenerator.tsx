@@ -61,8 +61,8 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
       />
 
       {/* Main flashcard generator card */}
-      <Card className="overflow-hidden border-0 shadow-xl bg-gradient-to-br from-white via-purple-50/30 to-indigo-50/30">
-        <CardHeader className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
+      <Card className="overflow-hidden border-0 shadow-xl bg-gradient-to-br from-white to-orange-50/50">
+        <CardHeader className="bg-gradient-to-r from-orange-600 to-orange-500 text-white">
           <CardTitle className="flex items-center gap-3 text-2xl">
             <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
               <Zap className="h-6 w-6" />
@@ -71,7 +71,7 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
               <div className="text-2xl font-bold">
                 {language === 'fr' ? 'Générateur de Flashcards Intelligentes' : 'Smart Flashcard Generator'}
               </div>
-              <div className="text-purple-100 text-sm font-normal mt-1">
+              <div className="text-orange-100 text-sm font-normal mt-1">
                 {language === 'fr' ? 'Créez des flashcards optimisées pour vos révisions' : 'Create optimized flashcards for your reviews'}
               </div>
             </div>
@@ -92,7 +92,7 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
 
       {/* Enhanced tabs system */}
       <Tabs defaultValue="generated" className="w-full">
-        <TabsList className="grid w-full grid-cols-4 mb-6 h-14 bg-gradient-to-r from-purple-50 to-indigo-50">
+        <TabsList className="grid w-full grid-cols-4 mb-6 h-14 bg-gradient-to-r from-orange-50 to-amber-50">
           <TabsTrigger value="generated" className="text-base py-3 data-[state=active]:bg-white data-[state=active]:shadow-md">
             <Brain className="h-4 w-4 mr-2" />
             <div className="flex flex-col items-center">

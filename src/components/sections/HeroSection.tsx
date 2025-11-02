@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -6,6 +6,25 @@ import { CheckCircle, TrendingUp, Users, Award, Star, BookOpen } from 'lucide-re
 
 export const HeroSection = () => {
   const [showWhatsAppModal, setShowWhatsAppModal] = useState(false);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    const elements = document.querySelectorAll('.fade-in-up, .scale-in');
+    elements.forEach((el) => observerRef.current?.observe(el));
+
+    return () => observerRef.current?.disconnect();
+  }, []);
 
   const handleWhatsAppJoin = () => {
     // Lien vers WhatsApp avec message prédéfini
@@ -25,30 +44,30 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-[95vh] w-full flex flex-col justify-center items-center pt-16 sm:pt-20 pb-10 sm:pb-16 md:pb-24 px-4 sm:px-6 relative overflow-hidden" style={{ backgroundColor: 'var(--section-bg-1)' }}>
+    <section className="min-h-[95vh] w-full flex flex-col justify-center items-center pt-16 sm:pt-20 pb-10 sm:pb-16 md:pb-24 px-4 sm:px-6 relative overflow-hidden bg-gradient-to-br from-white via-orange-50/30 to-white">
       {/* Background */}
-      <div className="absolute inset-0" style={{ backgroundColor: 'var(--section-bg-1)' }}></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-orange-50/30 to-white"></div>
       
-      {/* Floating elements - Enhanced with more bubbles */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
+      {/* Floating elements - Enhanced with animated orange bubbles */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-500 rounded-full opacity-5 blur-3xl animate-float"></div>
+      <div className="absolute bottom-20 right-10 w-28 h-28 bg-orange-400 rounded-full opacity-5 blur-3xl animate-float-delayed"></div>
       
       {/* Additional bubbles */}
-      <div className="absolute top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute bottom-40 left-20 w-56 h-56 bg-orange-200 rounded-full opacity-5 animate-pulse"></div>
-      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
-      <div className="absolute top-1/2 left-10 w-24 h-24 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute bottom-1/3 right-5 w-36 h-36 bg-blue-50 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute top-40 right-20 w-48 h-48 bg-orange-300 rounded-full opacity-5 blur-3xl animate-float-slow"></div>
+      <div className="absolute bottom-40 left-20 w-56 h-56 bg-orange-200 rounded-full opacity-5 blur-3xl animate-float"></div>
+      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-orange-100 rounded-full opacity-5 blur-3xl animate-float-delayed"></div>
+      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-orange-400 rounded-full opacity-5 blur-3xl animate-float-slow"></div>
+      <div className="absolute top-1/2 left-10 w-24 h-24 bg-orange-300 rounded-full opacity-5 blur-2xl animate-float"></div>
+      <div className="absolute bottom-1/3 right-5 w-36 h-36 bg-orange-200 rounded-full opacity-5 blur-3xl animate-float-delayed"></div>
       
       <div className="w-full max-w-[1200px] flex flex-col items-center justify-center relative z-10 px-4 sm:px-6">
         {/* Main Heading with improved typography - ZOOMED & SINGLE LINE */}
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-3 sm:mb-4 leading-[1.1] w-full max-w-[1000px] px-4 whitespace-normal md:whitespace-nowrap break-words">
+        <h1 className="fade-in-up text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-3 sm:mb-4 leading-[1.1] w-full max-w-[1000px] px-4 whitespace-normal md:whitespace-nowrap break-words">
           Ta méthode pour intégrer le <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent uppercase">TOP 3</span> en prépa <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent uppercase">ECG</span>
         </h1>
 
         {/* Enhanced Triptyque with icons - Uniform sizing */}
-        <div className="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-6 sm:gap-8 md:gap-12 mb-2 sm:mb-3 md:mb-4 w-full max-w-[1100px] px-2 sm:px-4">
+        <div className="fade-in-up flex flex-col md:flex-row justify-center items-center md:items-stretch gap-6 sm:gap-8 md:gap-12 mb-2 sm:mb-3 md:mb-4 w-full max-w-[1100px] px-2 sm:px-4" style={{ animationDelay: '0.1s' }}>
           <div className="text-center group cursor-pointer relative flex-1 max-w-[300px] min-h-[12rem]" onClick={() => window.location.href = '/formations'}>
             <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300 relative z-10">
               <BookOpen className="h-10 w-10 text-white" />
@@ -84,19 +103,19 @@ export const HeroSection = () => {
         </div>
 
         {/* Enhanced message with selective orange highlighting */}
-        <p className="text-xl sm:text-2xl md:text-3xl text-center font-semibold leading-[1.3] mb-8 sm:mb-10 max-w-[1200px] mx-auto px-4 text-gray-800">
+        <p className="fade-in-up text-xl sm:text-2xl md:text-3xl text-center font-semibold leading-[1.3] mb-8 sm:mb-10 max-w-[1200px] mx-auto px-4 text-gray-800" style={{ animationDelay: '0.2s' }}>
           La Méthode <span className="font-bold text-orange-600">RATIONNELLE</span> pour Gagner <span className="font-bold text-orange-600">+5</span> Points en <span className="font-bold text-orange-600">Maths</span> et <span className="font-bold text-orange-600">Python</span>
         </p>
 
         {/* Enhanced Statistics Section */}
-        <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 sm:p-10 mb-6 sm:mb-8 shadow-2xl border border-orange-100 relative overflow-hidden z-10">
+        <div className="fade-in-up bg-white/95 backdrop-blur-sm rounded-2xl p-8 sm:p-10 mb-6 sm:mb-8 shadow-2xl border border-orange-100 relative overflow-hidden z-10" style={{ animationDelay: '0.3s' }}>
           {/* Background pattern */}
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-blue-50/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-orange-100/30"></div>
           
           {/* Additional decorative bubbles inside the stats section */}
-          <div className="absolute top-5 right-5 w-20 h-20 bg-orange-100 rounded-full opacity-20"></div>
-          <div className="absolute bottom-5 left-5 w-16 h-16 bg-blue-100 rounded-full opacity-15"></div>
-          <div className="absolute top-1/2 left-1/4 w-12 h-12 bg-orange-50 rounded-full opacity-20"></div>
+          <div className="absolute top-5 right-5 w-20 h-20 bg-orange-100 rounded-full opacity-20 blur-2xl"></div>
+          <div className="absolute bottom-5 left-5 w-16 h-16 bg-orange-200 rounded-full opacity-15 blur-2xl"></div>
+          <div className="absolute top-1/2 left-1/4 w-12 h-12 bg-orange-50 rounded-full opacity-20 blur-xl"></div>
           
           <div className="relative z-10">
                          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -134,19 +153,18 @@ export const HeroSection = () => {
         </div>
 
         {/* Enhanced Buttons - Déplacé après les statistiques */}
-        <div className="flex flex-col items-center justify-center gap-4 w-full max-w-[1000px] px-4">
+        <div className="fade-in-up flex flex-col items-center justify-center gap-4 w-full max-w-[1000px] px-4" style={{ animationDelay: '0.4s' }}>
           <Button 
             size="lg" 
-            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base sm:text-lg leading-snug rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border-0 relative overflow-hidden group break-words whitespace-normal sm:whitespace-nowrap text-center z-10"
+            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-bold text-base sm:text-lg leading-snug rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 border-0 relative overflow-hidden group break-words whitespace-normal sm:whitespace-nowrap text-center z-10"
             style={{
-              boxShadow: "0 8px 25px rgba(59, 130, 246, 0.3)"
+              boxShadow: "0 8px 25px rgba(249, 115, 22, 0.3)"
             }}
             onClick={joinWhatsAppGroup}
           >
             <span className="relative z-10 flex items-center justify-center text-center">
               Réserve ton cours gratuit
             </span>
-            <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </Button>
         </div>
       </div>
@@ -184,6 +202,82 @@ export const HeroSection = () => {
           </div>
         </DialogContent>
       </Dialog>
+
+      {/* Styles pour les animations */}
+      <style>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px) translateX(0px);
+          }
+          50% {
+            transform: translateY(-20px) translateX(10px);
+          }
+        }
+
+        @keyframes floatDelayed {
+          0%, 100% {
+            transform: translateY(0px) translateX(0px);
+          }
+          50% {
+            transform: translateY(20px) translateX(-10px);
+          }
+        }
+
+        @keyframes floatSlow {
+          0%, 100% {
+            transform: translateY(0px) translateX(0px);
+          }
+          50% {
+            transform: translateY(15px) translateX(15px);
+          }
+        }
+
+        .fade-in-up, .scale-in {
+          opacity: 0;
+        }
+
+        .fade-in-up.animate-in {
+          animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .scale-in.animate-in {
+          animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        .animate-float {
+          animation: float 8s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+          animation: floatDelayed 10s ease-in-out infinite;
+        }
+
+        .animate-float-slow {
+          animation: floatSlow 12s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   );
 };
