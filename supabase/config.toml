@@ -56,7 +56,7 @@ verify_jwt = true
 verify_jwt = false
 
 [functions.evaluate-definition]
-verify_jwt = false
+verify_jwt = true
 
 [edge-runtime]
 enabled = true
