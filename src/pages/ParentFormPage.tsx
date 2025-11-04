@@ -57,7 +57,7 @@ const ParentPage = () => {
     try {
       // 1. Insérer dans Supabase
       const { data, error } = await supabase
-        .from('parent_requests')
+        .from('parent_requests' as any)
         .insert([formData])
         .select()
         .single();

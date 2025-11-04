@@ -203,11 +203,11 @@ export const GeopoliticsFlashcardsGouvernance: React.FC = () => {
     const isMarked = isFlashcardMarkedForReview(cardId, 'english');
 
     if (isMarked) {
-      removeFlashcardFromReview(cardId, 'geopolitics-gouvernance');
+      removeFlashcardFromReview(cardId, 'geopolitics-gouvernance' as any);
     } else {
       addFlashcardForReview({
         id: cardId,
-        language: 'geopolitics-gouvernance',
+        language: 'geopolitics-gouvernance' as any,
         category: currentCard.category,
         french: currentCard.term,
         translation: currentCard.definition

@@ -715,11 +715,11 @@ else:
                   </CardHeader>
                   <CardContent>
                     <div className="text-blue-800">
-                      {exercice.enonce_latex ? (
+                      {(exercice as any).enonce_latex ? (
                         <div>
-                          <LatexRenderer latex={exercice.enonce_latex} />
-                          {exercice.exemple && (
-                            <p className="mt-3 text-sm whitespace-pre-line">{exercice.exemple}</p>
+                          <LatexRenderer latex={(exercice as any).enonce_latex} />
+                          {(exercice as any).exemple && (
+                            <p className="mt-3 text-sm whitespace-pre-line">{(exercice as any).exemple}</p>
                           )}
                         </div>
                       ) : (

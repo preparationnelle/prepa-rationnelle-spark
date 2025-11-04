@@ -5,7 +5,7 @@ import { ChevronRight, Home, Star, BookOpen, Lightbulb, Target, Crown, Eye, EyeO
 import { Link } from 'react-router-dom';
 import { LatexRenderer } from '@/components/LatexRenderer';
 import html2canvas from 'html2canvas';
-import { jsPDF } from 'jspdf';
+import jsPDF from 'jspdf';
 import { toast } from '@/hooks/use-toast';
 
 

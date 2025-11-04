@@ -83,3 +83,11 @@ export const adjectiveAdverbSections: AdjectiveAdverbSection[] = [
   }
 ];
 
+export const adjectiveAdverbExercises: any[] = [];
+export const adjectiveAdverbTables = {
+  possessifs: { title: "Possessifs", headers: [], rows: [] },
+  demonstratifs: { title: "Démonstratifs", headers: [], rows: [] },
+  apocope: { title: "Apocope", headers: [], rows: [] },
+  adverbes: { title: "Adverbes", headers: [], rows: [] }
+};
+

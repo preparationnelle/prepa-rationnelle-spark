@@ -488,7 +488,7 @@ const VerbesModauxComplexesExercicesPage = () => {
   };
 
   const validateAnswer = (exerciseId: string) => {
-    const exercise = exercises.find(ex => ex.id === exerciseId);
+    const exercise = verbesModauxComplexesExercises.find(ex => ex.id === exerciseId);
     if (!exercise) return;
 
     const userAnswer = userAnswers[exerciseId];

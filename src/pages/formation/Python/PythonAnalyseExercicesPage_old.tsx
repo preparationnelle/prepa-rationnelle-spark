@@ -126,7 +126,7 @@ const PythonAnalyseExercicesPage = () => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [selectedExercise, exercises, handleNavigate, toggleCorrection]);
+  }, [selectedExercise, handleNavigate, toggleCorrection]);
 
   const qcmQuestions = [{
     id: 1,

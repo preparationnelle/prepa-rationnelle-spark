@@ -61,7 +61,7 @@ const ProfesseurPage = () => {
     try {
       // 1. Insérer dans Supabase
       const { data, error } = await supabase
-        .from('teacher_applications')
+        .from('teacher_applications' as any)
         .insert([formData])
         .select()
         .single();

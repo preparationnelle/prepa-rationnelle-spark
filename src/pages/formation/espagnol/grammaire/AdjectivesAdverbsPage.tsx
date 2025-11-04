@@ -34,11 +34,11 @@ import {
 } from 'lucide-react';
 import AdjectiveAdverbSectionComponent from '@/components/grammar/AdjectiveAdverbSection';
 import ConjugationTable from '@/components/grammar/ConjugationTable';
-// import { 
-//   adjectiveAdverbSections, 
-//   adjectiveAdverbExercises, 
-//   adjectiveAdverbTables 
-// } from '@/data/spanishAdjectivesAdverbsData';
+import { 
+  adjectiveAdverbSections, 
+  adjectiveAdverbExercises, 
+  adjectiveAdverbTables 
+} from '@/data/spanishAdjectivesAdverbsData';
 
 const AdjectivesAdverbsPage = () => {
   const [showHints, setShowHints] = useState<{ [key: string]: boolean }>({});

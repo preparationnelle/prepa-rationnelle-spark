@@ -451,7 +451,7 @@ np.sqrt(A)     # Racine carrée de chaque élément`}</code>
           <p className="text-gray-700 mb-4">
             Testez vos connaissances sur les matrices NumPy avec ce quiz interactif.
           </p>
-          <PythonModuleQuiz questions={matricesQuizQuestions} />
+          <PythonModuleQuiz title="Quiz Matrices NumPy" questions={matricesQuizQuestions} />
         </CardContent>
       </Card>
 
