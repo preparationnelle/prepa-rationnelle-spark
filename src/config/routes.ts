@@ -471,6 +471,9 @@ const LyceeGrandOralPage = lazy(() => import('../pages/LyceeGrandOralPage'));
 const ArticlesPrepaECGPage = lazy(() => import('../pages/ArticlesPrepaECGPage'));
 const ArticlesConcoursAccesSesamePage = lazy(() => import('../pages/ArticlesConcoursAccesSesamePage'));
 const ArticlesOteriaCyberSchoolPage = lazy(() => import('../pages/ArticlesOteriaCyberSchoolPage'));
+const OteriaHomepage = lazy(() => import('../pages/OteriaHomepage'));
+const OteriaBachelor1Page = lazy(() => import('../pages/OteriaBachelor1Page'));
+const OteriaBachelor2Page = lazy(() => import('../pages/OteriaBachelor2Page'));
 const OteriaLogiqueFondamentaleCoursPage = lazy(() => import('../pages/formation/oteria/OteriaLogiqueFondamentaleCoursPage'));
 const OteriaLogiqueFondamentaleExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaLogiqueFondamentaleExercicesPage'));
 const OteriaLogiqueFondamentaleFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaLogiqueFondamentaleFlashcardsPage'));
@@ -520,12 +523,19 @@ const OteriaVariablesAleatoiresQCMPage = lazy(() => import('../pages/formation/o
 
 // Chapitre 10 - Intégrales & π par Monte-Carlo
 const OteriaIntegralesMonteCarloCoursPage = lazy(() => import('../pages/formation/oteria/OteriaIntegralesMonteCarloCoursPage'));
+const OteriaIntegralesMonteCarloExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaIntegralesMonteCarloExercicesPage'));
+const OteriaIntegralesMonteCarloFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaIntegralesMonteCarloFlashcardsPage'));
+
+// Références Python
+const OteriaPythonReferencesPage = lazy(() => import('../pages/formation/oteria/OteriaPythonReferencesPage'));
 
 // Chapitre 11 - Matrices & chaînes de Markov
 const OteriaMatricesMarkovCoursPage = lazy(() => import('../pages/formation/oteria/OteriaMatricesMarkovCoursPage'));
+const OteriaMatricesMarkovExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaMatricesMarkovExercicesPage'));
 
 // Chapitre 12 - Arithmétique modulaire & crypto affine
 const OteriaMatricesStochastiquesCoursPage = lazy(() => import('../pages/formation/oteria/OteriaMatricesStochastiquesCoursPage'));
+const OteriaMatricesStochastiquesExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaMatricesStochastiquesExercicesPage'));
 
 const OteriaRecurrenceRecursiviteExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteExercicesPage'));
 const OteriaRecurrenceRecursiviteFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteFlashcardsPage'));
@@ -535,6 +545,7 @@ const OteriaSuitesNumeriquesFlashcardsPage = lazy(() => import('../pages/formati
 
 // Évaluation Finale
 const OteriaEvaluationFinaleQCMPage = lazy(() => import('../pages/formation/oteria/OteriaEvaluationFinaleQCMPage'));
+const OteriaFicheEvaluationFinalePage = lazy(() => import('../pages/formation/oteria/OteriaFicheEvaluationFinalePage'));
 
 // Mini Projet
 const OteriaMiniProjetPage = lazy(() => import('../pages/formation/oteria/OteriaMiniProjetPage'));
@@ -717,7 +728,9 @@ export const routes: RouteConfig[] = [
   { path: '/articles/prepa-ecg', component: ArticlesPrepaECGPage, title: 'Prépa ECG' },
   { path: '/articles/concours-acces-sesame', component: ArticlesConcoursAccesSesamePage, title: 'Concours ACCES/SESAME' },
   { path: '/articles/terminale-prepa', component: lazy(() => import('../pages/ArticlesTerminalePrepaPage')), title: 'Terminale → Prépa' },
-  { path: '/articles/oteria-cyber-school', component: ArticlesOteriaCyberSchoolPage, title: 'OTERIA Cyber School' },
+  { path: '/articles/oteria-cyber-school', component: OteriaHomepage, title: 'OTERIA Cyber School' },
+  { path: '/articles/oteria-cyber-school/bachelor-1', component: OteriaBachelor1Page, title: 'Bachelor 1 - OTERIA Cyber School' },
+  { path: '/articles/oteria-cyber-school/bachelor-2', component: OteriaBachelor2Page, title: 'Bachelor 2 - OTERIA Cyber School' },
   { path: '/formation/oteria/logique-fondamentale-cours', component: OteriaLogiqueFondamentaleCoursPage, title: 'Logique Fondamentale - Cours' },
   { path: '/formation/oteria/logique-fondamentale-exercices', component: OteriaLogiqueFondamentaleExercicesPage, title: 'Logique Fondamentale - Exercices' },
   { path: '/formation/oteria/logique-fondamentale-flashcards', component: OteriaLogiqueFondamentaleFlashcardsPage, title: 'Logique Fondamentale - Flashcards' },
@@ -765,14 +778,21 @@ export const routes: RouteConfig[] = [
   { path: '/formation/oteria/variables-aleatoires-flashcards', component: OteriaVariablesAleatoiresFlashcardsPage, title: 'Variables Aléatoires & Histogrammes - Flashcards' },
   { path: '/formation/oteria/variables-aleatoires-qcm', component: OteriaVariablesAleatoiresQCMPage, title: 'Variables Aléatoires & Histogrammes - QCM' },
 
-  // Chapitre 10 - Intégrales & π par Monte-Carlo
+// Chapitre 10 - Intégrales & π par Monte-Carlo
   { path: '/formation/oteria/integrales-monte-carlo-cours', component: OteriaIntegralesMonteCarloCoursPage, title: 'Intégrales & π par Monte-Carlo - Cours' },
+  { path: '/formation/oteria/integrales-monte-carlo-exercices', component: OteriaIntegralesMonteCarloExercicesPage, title: 'Intégrales & π par Monte-Carlo - Exercices' },
+  { path: '/formation/oteria/integrales-monte-carlo-flashcards', component: OteriaIntegralesMonteCarloFlashcardsPage, title: 'Analyse de lois & Monte Carlo - Flashcards' },
 
-  // Chapitre 11 - Matrices & chaînes de Markov
+// Références Python
+  { path: '/formation/oteria/python-references', component: OteriaPythonReferencesPage, title: 'Références Python - NumPy & Matplotlib' },
+
+// Chapitre 11 - Matrices & chaînes de Markov
   { path: '/formation/oteria/matrices-markov-cours', component: OteriaMatricesMarkovCoursPage, title: 'Matrices & Chaînes de Markov - Cours' },
+  { path: '/formation/oteria/matrices-markov-exercices', component: OteriaMatricesMarkovExercicesPage, title: 'Matrices & Chaînes de Markov - Exercices' },
 
-  // Chapitre 12 - Arithmétique modulaire & crypto affine
+// Chapitre 12 - Arithmétique modulaire & crypto affine
   { path: '/formation/oteria/matrices-stochastiques-cours', component: OteriaMatricesStochastiquesCoursPage, title: 'Arithmétique Modulaire & Crypto - Cours' },
+  { path: '/formation/oteria/matrices-stochastiques-exercices', component: OteriaMatricesStochastiquesExercicesPage, title: 'Arithmétique Modulaire & Crypto - Exercices' },
   
   { path: '/formation/oteria/recurrence-recursivite-exercices', component: OteriaRecurrenceRecursiviteExercicesPage, title: 'Récurrence & Récursivité - Exercices' },
   { path: '/formation/oteria/recurrence-recursivite-flashcards', component: OteriaRecurrenceRecursiviteFlashcardsPage, title: 'Récurrence & Récursivité - Flashcards' },
@@ -783,6 +803,7 @@ export const routes: RouteConfig[] = [
 
   // Évaluation Finale
   { path: '/formation/oteria/evaluation-finale', component: OteriaEvaluationFinaleQCMPage, title: 'Évaluation Finale - QCM Complet' },
+  { path: '/formation/oteria/fiche-evaluation-finale', component: OteriaFicheEvaluationFinalePage, title: 'Fiche Évaluation Finale - Bachelor 1' },
 
   // Mini Projet
   { path: '/formation/oteria/mini-projet', component: OteriaMiniProjetPage, title: 'Mini Projet - Ateliers & Répétitions' },
