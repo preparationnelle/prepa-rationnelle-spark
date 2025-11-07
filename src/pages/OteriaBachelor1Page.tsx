@@ -441,6 +441,13 @@ const SessionCard = ({ session }) => {
                   Flashcards
                 </Button>
               </Link>
+            ) : session.id === 11 ? (
+              <Link to="/formation/oteria/matrices-markov-flashcards">
+                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
+                  <BrainIcon className="mr-2 h-4 w-4" />
+                  Flashcards
+                </Button>
+              </Link>
             ) : (
               <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
                 <BrainIcon className="mr-2 h-4 w-4" />
@@ -522,6 +529,13 @@ const SessionCard = ({ session }) => {
               </Link>
             ) : session.id === 9 ? (
               <Link to="/formation/oteria/variables-aleatoires-qcm">
+                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
+                  <TargetIcon className="mr-2 h-4 w-4" />
+                  QCM
+                </Button>
+              </Link>
+            ) : session.id === 11 ? (
+              <Link to="/formation/oteria/matrices-markov-qcm">
                 <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
                   <TargetIcon className="mr-2 h-4 w-4" />
                   QCM

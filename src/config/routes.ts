@@ -532,6 +532,8 @@ const OteriaPythonReferencesPage = lazy(() => import('../pages/formation/oteria/
 // Chapitre 11 - Matrices & chaînes de Markov
 const OteriaMatricesMarkovCoursPage = lazy(() => import('../pages/formation/oteria/OteriaMatricesMarkovCoursPage'));
 const OteriaMatricesMarkovExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaMatricesMarkovExercicesPage'));
+const OteriaMatricesMarkovFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaMatricesMarkovFlashcardsPage'));
+const OteriaMatricesMarkovQCMPage = lazy(() => import('../pages/formation/oteria/OteriaMatricesMarkovQCMPage'));
 
 // Chapitre 12 - Arithmétique modulaire & crypto affine
 const OteriaMatricesStochastiquesCoursPage = lazy(() => import('../pages/formation/oteria/OteriaMatricesStochastiquesCoursPage'));
@@ -789,6 +791,8 @@ export const routes: RouteConfig[] = [
 // Chapitre 11 - Matrices & chaînes de Markov
   { path: '/formation/oteria/matrices-markov-cours', component: OteriaMatricesMarkovCoursPage, title: 'Matrices & Chaînes de Markov - Cours' },
   { path: '/formation/oteria/matrices-markov-exercices', component: OteriaMatricesMarkovExercicesPage, title: 'Matrices & Chaînes de Markov - Exercices' },
+  { path: '/formation/oteria/matrices-markov-flashcards', component: OteriaMatricesMarkovFlashcardsPage, title: 'Matrices & Chaînes de Markov - Flashcards' },
+  { path: '/formation/oteria/matrices-markov-qcm', component: OteriaMatricesMarkovQCMPage, title: 'Matrices & Chaînes de Markov - QCM' },
 
 // Chapitre 12 - Arithmétique modulaire & crypto affine
   { path: '/formation/oteria/matrices-stochastiques-cours', component: OteriaMatricesStochastiquesCoursPage, title: 'Arithmétique Modulaire & Crypto - Cours' },
