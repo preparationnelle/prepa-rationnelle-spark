@@ -336,6 +336,8 @@ const MathsEspacesVectorielsPage = lazy(() => import('../pages/formation/math/Ma
 const MathsProbabilitesFiniesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre10-ProbabilitesEtConditionnement-CoursPage'));
 // Generic Maths approfondies quiz dispatcher
 const MathsApprofondiesQuizPage = lazy(() => import('../pages/formation/math/MathsApprofondies/MathsApprofondiesQuizPage'));
+// Generic Maths approfondies flashcards dispatcher
+const MathsApprofondiesFlashcardsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/MathsApprofondiesFlashcardsPage'));
 
 // Math chapter pages - Semester 2
 const MathsEspacesVectorielsComplementsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre11-ApplicationsLineairesEtStructuresVectorielles-CoursPage'));
@@ -1259,7 +1261,27 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-espaces-probabilises-conditionnement-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Espaces probabilisés & conditionnement', protected: true },
   { path: '/formation/maths-variables-aleatoires-discretes-lois-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Variables aléatoires discrètes & lois', protected: true },
   { path: '/formation/maths-convergences-theoremes-limites-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Convergences & théorèmes limites', protected: true },
-  
+
+  // Flashcards routes pour les chapitres de 1ère année
+  { path: '/formation/maths-elements-de-logique-flashcards', component: MathsApprofondiesFlashcardsPage, title: 'Flashcards - Éléments de logique', protected: true },
+  { path: '/formation/maths-ensembles-et-applications-flashcards', component: MathsApprofondiesFlashcardsPage, title: 'Flashcards - Ensembles et applications', protected: true },
+  { path: '/formation/maths-sommes-produits-coefficients-binomiaux-flashcards', component: MathsApprofondiesFlashcardsPage, title: 'Flashcards - Sommes, produits & coefficients binomiaux', protected: true },
+  { path: '/formation/maths-suites-numeriques-flashcards', component: MathsApprofondiesFlashcardsPage, title: 'Flashcards - Suites numériques', protected: true },
+  { path: "/formation/maths-fonctions-d-une-variable-reelle-flashcards", component: MathsApprofondiesFlashcardsPage, title: "Flashcards - Fonctions d'une variable réelle", protected: true },
+  { path: '/formation/maths-derivation-flashcards', component: MathsApprofondiesFlashcardsPage, title: 'Flashcards - Dérivation', protected: true },
+  { path: '/formation/maths-integration-sur-un-segment-flashcards', component: MathsApprofondiesFlashcardsPage, title: 'Flashcards - Intégration sur un segment', protected: true },
+  { path: '/formation/maths-polynomes-flashcards', component: MathsApprofondiesFlashcardsPage, title: 'Flashcards - Polynômes', protected: true },
+  { path: '/formation/maths-matrices-espaces-vectoriels-flashcards', component: MathsApprofondiesFlashcardsPage, title: 'Flashcards - Matrices & espaces vectoriels', protected: true },
+  { path: '/formation/maths-probabilites-conditionnement-flashcards', component: MathsApprofondiesFlashcardsPage, title: 'Flashcards - Probabilités & conditionnement', protected: true },
+  { path: '/formation/maths-applications-lineaires-structures-vectorielles-flashcards', component: MathsApprofondiesFlashcardsPage, title: 'Flashcards - Applications linéaires & structures vectorielles', protected: true },
+  { path: '/formation/maths-comparaison-negligeabilite-equivalence-flashcards', component: MathsApprofondiesFlashcardsPage, title: 'Flashcards - Comparaison — négligeabilité & équivalence', protected: true },
+  { path: '/formation/maths-series-numeriques-flashcards', component: MathsApprofondiesFlashcardsPage, title: 'Flashcards - Séries numériques', protected: true },
+  { path: '/formation/maths-developpements-limites-formule-de-taylor-flashcards', component: MathsApprofondiesFlashcardsPage, title: 'Flashcards - Développements limités & formule de Taylor', protected: true },
+  { path: '/formation/maths-integrales-impropres-criteres-de-convergence-flashcards', component: MathsApprofondiesFlashcardsPage, title: 'Flashcards - Intégrales impropres & critères de convergence', protected: true },
+  { path: '/formation/maths-espaces-probabilises-conditionnement-flashcards', component: MathsApprofondiesFlashcardsPage, title: 'Flashcards - Espaces probabilisés & conditionnement', protected: true },
+  { path: '/formation/maths-variables-aleatoires-discretes-lois-flashcards', component: MathsApprofondiesFlashcardsPage, title: 'Flashcards - Variables aléatoires discrètes & lois', protected: true },
+  { path: '/formation/maths-convergences-theoremes-limites-flashcards', component: MathsApprofondiesFlashcardsPage, title: 'Flashcards - Convergences & théorèmes limites', protected: true },
+
   // Quiz routes pour les chapitres de 2ème année
   { path: '/formation/maths-complements-algebre-lineaire-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Compléments d\'algèbre linéaire', protected: true },
   { path: '/formation/maths-endomorphismes-matrices-avancees-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Éléments propres et réduction des endomorphismes', protected: true },

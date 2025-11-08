@@ -12,8 +12,10 @@ const Chapitre2EndomorphismesMatricesAvanceesCoursPage = () => {
       chapterNumber={2}
       chapterTitle="Éléments propres et réduction des endomorphismes et matrices carrées"
       description="Vecteurs propres, espaces propres, recherche d'éléments propres, propriétés générales et méthodes de réduction"
-      slug="endomorphismes-matrices-avancees"
+      slug="
+      endomorphismes-matrices-avancees"
       showNavigation={true}
+      
     >
       {/* Navigation vers les ressources */}
       <Card className="border-0 shadow-lg bg-blue-50">

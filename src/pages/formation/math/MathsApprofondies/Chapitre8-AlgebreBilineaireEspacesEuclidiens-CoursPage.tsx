@@ -12,8 +12,10 @@ const Chapitre8AlgebreBilineaireEspacesEuclidiensCoursPage = () => {
       chapterNumber={8}
       chapterTitle="Algèbre bilinéaire et espaces euclidiens"
       description="Bases orthonormées d'un espace euclidien, formules dans une base orthonormée, matrices orthogonales"
-      slug="algebre-bilineaire-espaces-euclidiens"
+      slug="
+      algebre-bilineaire-espaces-euclidiens"
       showNavigation={true}
+      
     >
       {/* Navigation vers les ressources */}
       <Card className="border-0 shadow-lg bg-blue-50">

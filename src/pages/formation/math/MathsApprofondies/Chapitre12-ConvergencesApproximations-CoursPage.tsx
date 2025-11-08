@@ -12,8 +12,10 @@ const Chapitre12ConvergencesApproximationsCoursPage = () => {
       chapterNumber={12}
       chapterTitle="Convergences et approximations"
       description="Convergence en probabilité et convergence en loi"
-      slug="convergences-approximations"
+      slug="
+      convergences-approximations"
       showNavigation={true}
+      
     >
       {/* Navigation vers les ressources */}
       <Card className="border-0 shadow-lg bg-blue-50">

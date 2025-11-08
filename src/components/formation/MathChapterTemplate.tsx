@@ -14,6 +14,9 @@ interface MathChapterTemplateProps {
   showNavigation?: boolean; // afficher ou non la navigation vers les ressources
   duration?: string; // durée estimée du chapitre
   level?: string; // niveau de difficulté du chapitre
+  previousChapter?: { slug: string; title: string }; // chapitre précédent
+  nextChapter?: { slug: string; title: string }; // chapitre suivant
+  subject?: string; // matière (maths, etc.)
 }
 
 export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
@@ -24,7 +27,10 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
   slug,
   showNavigation = false,
   duration,
-  level
+  level,
+  previousChapter,
+  nextChapter,
+  subject = "maths"
 }) => {
   return (
     <div className="min-h-screen bg-[#EEF3FC]">
@@ -59,28 +65,6 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
               {description}
             </p>
           </CardHeader>
-          <CardContent className="pt-0 pb-3">
-            <div className="max-w-2xl mx-auto">
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 shadow-sm">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-blue-600 font-medium mb-1">Chapitre</span>
-                    <span className="text-2xl font-bold text-blue-900">{chapterNumber}</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-blue-600 font-medium mb-1">Durée estimée</span>
-                    <span className="text-2xl font-bold text-blue-900">{duration || 'N/A'}</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-blue-600 font-medium mb-1">Niveau</span>
-                    <span className="inline-flex items-center gap-2 bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">
-                      {level || 'Non défini'}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </CardContent>
           {showNavigation && slug && (
             <CardContent className="pt-0">
               <div className="flex flex-wrap justify-center gap-3 bg-blue-50 p-4 rounded-lg border border-blue-200">
@@ -140,10 +124,50 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
         {/* Conclusion */}
         <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-50 via-white to-purple-50">
           <CardContent className="pt-6">
-            <div className="text-center">
+            <div className="text-center space-y-4">
               <p className="text-slate-600 italic font-medium">
                 {children ? "Fin du chapitre" : "Contenu à compléter ultérieurement."}
               </p>
+
+              {/* Boutons de navigation entre chapitres */}
+              {children && (
+                <div className="flex justify-center items-center gap-4 pt-4">
+                  {previousChapter ? (
+                    <Link to={`/formation/${subject}-${previousChapter.slug}`}>
+                      <Button variant="outline" className="flex items-center gap-2">
+                        <ChevronRight className="h-4 w-4 rotate-180" />
+                        Chapitre précédent
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Button variant="outline" disabled className="flex items-center gap-2 opacity-50">
+                      <ChevronRight className="h-4 w-4 rotate-180" />
+                      Chapitre précédent
+                    </Button>
+                  )}
+
+                  <Link to={`/formation/${subject}`}>
+                    <Button variant="outline" className="flex items-center gap-2">
+                      <BookOpen className="h-4 w-4" />
+                      Tous les chapitres
+                    </Button>
+                  </Link>
+
+                  {nextChapter ? (
+                    <Link to={`/formation/${subject}-${nextChapter.slug}`}>
+                      <Button variant="outline" className="flex items-center gap-2">
+                        Chapitre suivant
+                        <ChevronRight className="h-4 w-4" />
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Button variant="outline" disabled className="flex items-center gap-2 opacity-50">
+                      Chapitre suivant
+                      <ChevronRight className="h-4 w-4" />
+                    </Button>
+                  )}
+                </div>
+              )}
             </div>
           </CardContent>
         </Card>

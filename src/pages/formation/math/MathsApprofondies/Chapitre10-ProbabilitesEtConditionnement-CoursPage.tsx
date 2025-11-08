@@ -14,6 +14,7 @@ const MathsProbabilitesFiniesPage = () => {
       chapterTitle="Chapitre 10 : Espaces probabilisés & conditionnement"
       description="Fondements (univers, tribu, axiomes de Kolmogorov, continuité croissante/décroissante) ; propriétés et calculs (crible, complémentaire, équiprobabilité, probabilités composées) ; conditionnement et formule de Bayes ; indépendance d'événements et familles indépendantes"
       showNavigation={true}
+      
     >
       {/* Navigation vers les ressources */}
       <Card className="border-0 shadow-lg bg-blue-50 mb-8">

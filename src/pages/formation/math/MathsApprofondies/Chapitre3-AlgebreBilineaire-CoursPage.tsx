@@ -12,8 +12,10 @@ const Chapitre3AlgebreBilineaireCoursPage = () => {
       chapterNumber={3}
       chapterTitle="Algèbre bilinéaire"
       description="Produit scalaire et espaces euclidiens : définitions, norme associée, inégalités classiques, orthogonalité et orthonormalisation"
-      slug="algebre-bilineaire"
+      slug="
+      algebre-bilineaire"
       showNavigation={true}
+      
     >
       {/* Navigation vers les ressources */}
       <Card className="border-0 shadow-lg bg-blue-50">

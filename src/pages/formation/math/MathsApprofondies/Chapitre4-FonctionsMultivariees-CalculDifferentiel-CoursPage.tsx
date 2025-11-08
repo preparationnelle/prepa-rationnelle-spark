@@ -12,8 +12,10 @@ const Chapitre4FonctionsMultivarieesCalculDifferentielCoursPage = () => {
       chapterNumber={4}
       chapterTitle="Fonctions multivariées et calcul différentiel"
       description="Fonctions réelles définies sur ℝⁿ, dérivées partielles, gradient, recherche d'extremum"
-      slug="fonctions-multivariees-calcul-differentiel"
+      slug="
+      fonctions-multivariees-calcul-differentiel"
       showNavigation={true}
+      
     >
       {/* Navigation vers les ressources */}
       <Card className="border-0 shadow-lg bg-blue-50">

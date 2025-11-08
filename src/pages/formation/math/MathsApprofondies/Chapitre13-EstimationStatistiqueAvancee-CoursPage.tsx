@@ -12,8 +12,10 @@ const Chapitre13EstimationStatistiqueAvanceeCoursPage = () => {
       chapterNumber={13}
       chapterTitle="Estimation statistique avancée"
       description="Estimation ponctuelle, intervalles de confiance asymptotiques, critères d'efficacité et comparaison des estimateurs"
-      slug="estimation-statistique-avancee"
+      slug="
+      estimation-statistique-avancee"
       showNavigation={true}
+      
     >
       {/* Navigation vers les ressources */}
       <Card className="border-0 shadow-lg bg-blue-50">

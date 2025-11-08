@@ -18,6 +18,7 @@ const MathsDerivationPage = () => {
       chapterTitle="Chapitre 6 : Dérivation"
       description="Dérivabilité, calcul différentiel, règles de dérivation, théorèmes de Rolle et des accroissements finis, extremums et convexité"
       showNavigation={true}
+      
     >
       {/* Navigation vers les ressources */}
       <Card className="border-0 shadow-lg bg-blue-50 mb-8">

@@ -14,6 +14,7 @@ const MathsComparaisonsPage = () => {
       chapterTitle="Comparaison — négligeabilité & équivalence"
       description="Définitions et notations : f=o(g), u_n=o(v_n), f\sim g, u_n\sim v_n ; propriétés : transitivité, compatibilité avec produit, quotient et composition par une puissance entière (mise en garde pour l'addition et pour \ln, \exp,\dots) ; croissances comparées des suites usuelles ((n^{a}),((\ln n)^{b}),(q^{n})) ; équivalents usuels et limites"
       showNavigation={true}
+      
     >
       {/* Navigation vers les ressources */}
       <Card className="border-0 shadow-lg bg-blue-50 mb-8">

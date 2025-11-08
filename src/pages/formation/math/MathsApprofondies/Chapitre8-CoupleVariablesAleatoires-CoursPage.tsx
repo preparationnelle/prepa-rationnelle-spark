@@ -12,8 +12,10 @@ const Chapitre8CoupleVariablesAleatoiresCoursPage = () => {
       chapterNumber={7}
       chapterTitle="Probabilités (Variables aléatoires)"
       description="Indépendance, couples de variables aléatoires réelles, lois marginales et conditionnelles, fonctions de couples discrets"
-      slug="couple-variables-aleatoires"
+      slug="
+      couple-variables-aleatoires"
       showNavigation={true}
+      
     >
       {/* Navigation vers les ressources */}
       <Card className="border-0 shadow-lg bg-blue-50">

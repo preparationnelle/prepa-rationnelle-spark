@@ -9,8 +9,10 @@ const Chapitre11OptimisationMultivarieeAvanceeQuizPage = () => {
       chapterNumber={11}
       chapterTitle="Optimisation multivariée avancée"
       description="Quiz interactif sur l'optimisation multivariée, les multiplicateurs de Lagrange et la théorie des extrema"
-      slug="optimisation-multivariee-avancee"
+      slug="
+      optimisation-multivariee-avancee"
       showNavigation={true}
+      
     >
       <div className="space-y-6">
         <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-6">

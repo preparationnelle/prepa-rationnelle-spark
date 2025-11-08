@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
-import { MathQuiz } from '@/components/quiz/MathQuiz';
-import { mathQuizQuestions } from '@/data/mathQuizQuestions';
+import { MathFlashcards } from '@/components/MathFlashcards';
+import { mathFlashcardsData } from '@/data/mathFlashcardsData';
 
 // Mapping slug -> meta
 const CHAPTERS: Record<string, { number: number; title: string; key?: string }> = {
@@ -57,10 +57,10 @@ const getAdjacentChapters = (currentSlug: string) => {
   };
 };
 
-const MathsApprofondiesQuizPage: React.FC = () => {
+const MathsApprofondiesFlashcardsPage: React.FC = () => {
   const { pathname } = useLocation();
-  // Expect paths like /formation/maths-<slug>-quiz
-  const match = pathname.match(/\/formation\/maths-(.*)-quiz$/);
+  // Expect paths like /formation/maths-<slug>-flashcards
+  const match = pathname.match(/\/formation\/maths-(.*)-flashcards$/);
   const slug = match?.[1] || '';
   const meta = CHAPTERS[slug];
 
@@ -71,30 +71,44 @@ const MathsApprofondiesQuizPage: React.FC = () => {
     return (
       <MathChapterTemplate
         chapterNumber={0}
-        chapterTitle="Quiz"
-        description="Ce quiz n'existe pas encore."
+        chapterTitle="Flashcards"
+        description="Ces flashcards n'existent pas encore."
         subject="maths"
       >
-        <div className="text-center text-slate-700">Aucun quiz trouvé pour cette adresse.</div>
+        <div className="text-center text-slate-700">Aucune flashcard trouvée pour cette adresse.</div>
       </MathChapterTemplate>
     );
   }
 
-  const questionsKey = meta.key || keyFromNumber(meta.number);
-  const questions = (mathQuizQuestions as any)[questionsKey] as any[] | undefined;
+  const flashcardsKey = meta.key || keyFromNumber(meta.number);
+  const flashcards = (mathFlashcardsData as any)[flashcardsKey] as any[] | undefined;
 
-  if (!questions || questions.length === 0) {
+  if (!flashcards || flashcards.length === 0) {
     return (
       <MathChapterTemplate
         chapterNumber={meta.number}
         chapterTitle={meta.title}
-        description={`Quiz interactif — ${meta.title}`}
+        description={`Flashcards interactives — ${meta.title}`}
         subject="maths"
         previousChapter={previousChapter}
         nextChapter={nextChapter}
       >
-        <div className="bg-yellow-50 border border-yellow-200 text-yellow-800 rounded-lg p-6">
-          Le quiz de ce chapitre est en cours de préparation.
+        <div className="bg-blue-50 border border-blue-200 text-blue-800 rounded-lg p-6">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+              <span className="text-blue-600 font-bold text-sm">📚</span>
+            </div>
+            <h3 className="text-lg font-semibold text-blue-900">Flashcards en préparation</h3>
+          </div>
+          <p className="text-blue-700">
+            Les flashcards pour le chapitre <strong>"{meta.title}"</strong> sont actuellement en cours de développement.
+            Elles seront bientôt disponibles pour vous aider à réviser de manière interactive !
+          </p>
+          <div className="mt-4 p-3 bg-blue-100 rounded-md">
+            <p className="text-sm text-blue-800">
+              💡 <strong>Astuce :</strong> En attendant, consultez les cours et exercices de ce chapitre pour bien assimiler les concepts.
+            </p>
+          </div>
         </div>
       </MathChapterTemplate>
     );
@@ -104,19 +118,18 @@ const MathsApprofondiesQuizPage: React.FC = () => {
     <MathChapterTemplate
       chapterNumber={meta.number}
       chapterTitle={meta.title}
-      description={`Quiz interactif — ${meta.title}`}
+      description={`Flashcards interactives — ${meta.title}`}
       subject="maths"
       previousChapter={previousChapter}
       nextChapter={nextChapter}
     >
-      <MathQuiz
-        title={`Quiz — ${meta.title}`}
-        questions={questions || []}
+      <MathFlashcards
+        flashcards={flashcards || []}
+        title={`Flashcards — ${meta.title}`}
         chapterNumber={meta.number}
-        chapterTitle={meta.title}
       />
     </MathChapterTemplate>
   );
 };
 
-export default MathsApprofondiesQuizPage;
+export default MathsApprofondiesFlashcardsPage;

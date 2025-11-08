@@ -14,6 +14,7 @@ const MathsEspacesVectorielsPage = () => {
       chapterTitle="Matrices, systèmes linéaires & espaces vectoriels"
       description="Structures vectorielles (combinaisons, base, dimension, rang) ; opérations sur les matrices (somme, produit, transposée, inverse, déterminant) ; résolution de systèmes linéaires (pivot de Gauss, Gauss-Jordan)"
       showNavigation={true}
+      
     >
       {/* Navigation vers les ressources */}
       <Card className="border-0 shadow-lg bg-blue-50 mb-8">

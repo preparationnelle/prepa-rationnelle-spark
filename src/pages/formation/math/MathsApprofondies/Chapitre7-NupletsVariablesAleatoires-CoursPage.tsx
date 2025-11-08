@@ -12,8 +12,10 @@ const Chapitre7NupletsVariablesAleatoiresCoursPage = () => {
       chapterNumber={6}
       chapterTitle="n-uplets de variables aléatoires réelles"
       description="Vecteurs aléatoires, lois conjointes discrètes, espérance de sommes, indépendance multiple et sommes de variables indépendantes"
-      slug="n-uplets-variables-aleatoires"
+      slug="
+      n-uplets-variables-aleatoires"
       showNavigation={true}
+      
     >
       {/* Navigation vers les ressources */}
       <Card className="border-0 shadow-lg bg-blue-50">

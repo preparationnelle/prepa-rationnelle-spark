@@ -12,8 +12,10 @@ const Chapitre10ReductionMatricesSymetriquesCoursPage = () => {
       chapterNumber={10}
       chapterTitle="Réduction des endomorphismes et des matrices symétriques"
       description="Méthodes de diagonalisation et réduction complète"
-      slug="reduction-matrices-symetriques"
+      slug="
+      reduction-matrices-symetriques"
       showNavigation={true}
+      
     >
       {/* Navigation vers les ressources */}
       <Card className="border-0 shadow-lg bg-blue-50">

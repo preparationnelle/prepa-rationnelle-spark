@@ -28,6 +28,7 @@ const MathsFonctionsPage = () => (
     chapterTitle="Chapitre 5 : Fonctions d’une variable réelle"
     description="Généralités (parité, périodicité, bornes, variations) ; limites et opérations sur les limites ; continuité et théorèmes fondamentaux (valeurs intermédiaires, Weierstrass, bijection continue) ; fonctions usuelles et trigonométriques"
     showNavigation={true}
+      
   >
     {/* Navigation vers les ressources */}
     <Card className="border-0 shadow-lg bg-blue-50 mb-8">

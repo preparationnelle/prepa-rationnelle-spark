@@ -12,8 +12,10 @@ const Chapitre11OptimisationMultivarieeAvanceeCoursPage = () => {
       chapterNumber={10}
       chapterTitle="Optimisation multivariée avancée"
       description="Fonctions de plusieurs variables, propriétés différentielles, recherche d'extrema, conditions d'ordre 1 et 2, contraintes linéaires et multiplicateurs de Lagrange"
-      slug="optimisation-multivariee-avancee"
+      slug="
+      optimisation-multivariee-avancee"
       showNavigation={true}
+      
     >
       {/* Navigation vers les ressources */}
       <Card className="border-0 shadow-lg bg-blue-50">

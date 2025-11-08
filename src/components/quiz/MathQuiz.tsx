@@ -5,6 +5,20 @@ import { Badge } from '@/components/ui/badge';
 import { CheckCircle, XCircle, RotateCcw, Brain, Target, Trophy, ChevronDown } from 'lucide-react';
 import { LatexRenderer } from '@/components/LatexRenderer';
 
+// Fonction helper pour rendre du texte avec LaTeX
+const renderTextWithLatex = (text: string) => {
+  if (!text) return null;
+
+  return text.split(/(\$[^$]+\$)/).map((part, idx) => {
+    if (part.startsWith('$') && part.endsWith('$')) {
+      return <LatexRenderer key={idx} latex={part.slice(1, -1)} />;
+    } else if (part.trim()) {
+      return <span key={idx}>{part}</span>;
+    }
+    return null;
+  });
+};
+
 export interface MathQuizQuestion {
   id: number;
   question: string;
@@ -79,7 +93,7 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
           <div className="mx-auto w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-4">
             <Trophy className="h-8 w-8 text-white" />
           </div>
-          <CardTitle className="text-2xl text-black">🎉 Quiz terminé !</CardTitle>
+          <CardTitle className="text-2xl text-black">Quiz terminé !</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-center space-y-4">
@@ -166,7 +180,7 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
             </h3>
             <div className="bg-white p-4 rounded-lg border border-blue-200">
               <p className="text-black mb-3">
-                {questions[currentQuestion].question}
+                {renderTextWithLatex(questions[currentQuestion].question)}
               </p>
               {questions[currentQuestion].latex && (
                 <div className="bg-blue-50 p-3 rounded border border-blue-200">
@@ -214,19 +228,7 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
                     )}
                   </div>
                   <span className="font-medium text-black">
-                    {option.startsWith('$') && option.includes('$', 1) ? (
-                      // Gestion des options avec LaTeX
-                      option.split(/(\$[^$]+\$)/).map((part, idx) => {
-                        if (part.startsWith('$') && part.endsWith('$')) {
-                          return <LatexRenderer key={idx} latex={part.slice(1, -1)} />;
-                        } else if (part.trim()) {
-                          return <span key={idx}>{part}</span>;
-                        }
-                        return null;
-                      })
-                    ) : (
-                      option
-                    )}
+{renderTextWithLatex(option)}
                   </span>
                 </div>
               </button>
@@ -265,7 +267,7 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
                 
                 {questions[currentQuestion].explanation && (
                   <p className={`text-sm ${answers[currentQuestion] ? 'text-green-600' : 'text-red-600'}`}>
-                    {questions[currentQuestion].explanation}
+                    {renderTextWithLatex(questions[currentQuestion].explanation)}
                   </p>
                 )}
               </div>
