@@ -10,7 +10,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { ParentRequestForm, STUDENT_LEVELS, SUBJECTS, RELATIONSHIPS } from '@/types/parent-teacher';
 import { Users, CheckCircle, User, BookOpen } from 'lucide-react';
 
-const ParentPage = () => {
+const ParentFormPage = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<ParentRequestForm>({
@@ -347,4 +347,4 @@ const ParentPage = () => {
   );
 };
 
-export default ParentPage;
+export default ParentFormPage;

@@ -320,14 +320,14 @@ const PythonProbabilitesExercicesPage = lazy(() => import('../pages/formation/Py
 const MathsApprofondiesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/MathsApprofondiesPage'));
 const MathsMethodologiePage = lazy(() => import('../pages/formation/math/MathsMethodologiePage'));
 const MathsChoixOptionPage = lazy(() => import('../pages/formation/math/MathsChoixOptionPage'));
-const MathsLogiquePage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre1-LogiqueEtRaisonnementFondamentaux-CoursPage'));
+// TEMPORARILY DISABLED - FILE CORRUPTED: const MathsLogiquePage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre1-LogiqueEtRaisonnementFondamentaux-CoursPage'));
 const PremiereVersDeuxiemePage = lazy(() => import('../pages/formation/math/premiere-vers-deuxieme/index'));
 const Module1ApplicationsLineairesExercicesPage = lazy(() => import('../pages/formation/math/premiere-vers-deuxieme/Module1-ApplicationsLineaires-ExercicesPage'));
 
 // Math chapter pages - Semester 1
-const MathsEnsemblesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre2-EnsemblesEtApplications-CoursPage'));
-const MathsEntiersPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre3-SommesProduitsEtCoefficientsBinomiaux-CoursPage'));
-const MathsSuitesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre4-SuitesNumeriques-CoursPage'));
+// TEMPORARILY DISABLED - FILE CORRUPTED: const MathsEnsemblesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre2-EnsemblesEtApplications-CoursPage'));
+// TEMPORARILY DISABLED - FILE CORRUPTED: const MathsEntiersPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre3-SommesProduitsEtCoefficientsBinomiaux-CoursPage'));
+// TEMPORARILY DISABLED - FILE CORRUPTED: const MathsSuitesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre4-SuitesNumeriques-CoursPage'));
 const MathsFonctionsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre5-FonctionsUneVariableReelle-CoursPage'));
 const MathsDerivationPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre6-Derivation-CoursPage'));
 const MathsIntegrationPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre7-IntegrationSurUnSegment-CoursPage'));
@@ -1302,7 +1302,7 @@ export const routes: RouteConfig[] = [
   { path: '/chapitres-libres', component: ChapitresLibresPage, title: 'Chapitres Libres d\'Accès', protected: false },
   
   // Chapitres libres d'accès issus de Maths Approfondies
-  { path: '/chapitres-libres/suites-cours', component: MathsSuitesPage, title: 'Cours - Suites numériques', protected: false },
+  // TEMPORARILY DISABLED DUE TO FILE CORRUPTION: { path: '/chapitres-libres/suites-cours', component: MathsSuitesPage, title: 'Cours - Suites numériques', protected: false },
   { path: '/chapitres-libres/suites-exercices', component: Chapitre4SuitesExercicesPage, title: 'Exercices - Suites numériques', protected: false },
   { path: '/chapitres-libres/suites-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Suites numériques', protected: false },
   { path: '/chapitres-libres/series-cours', component: MathsSeriesPage, title: 'Cours - Séries numériques', protected: false },
@@ -1312,11 +1312,11 @@ export const routes: RouteConfig[] = [
   { path: '/chapitres-libres/integrales-impropres-exercices', component: Chapitre15IntegralesImpropresExercicesPage, title: 'Exercices - Intégrales impropres', protected: false },
   { path: '/chapitres-libres/integrales-impropres-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Intégrales impropres', protected: false },
 
-  { path: '/formation/maths-elements-de-logique', component: MathsLogiquePage, title: 'Chapitre 1 : Logique & raisonnement fondamentaux' },
-  { path: '/formation/maths-ensembles', component: MathsEnsemblesPage, title: 'Maths - Ensembles et applications' },
-  { path: '/formation/maths-ensembles-et-applications', component: MathsEnsemblesPage, title: 'Maths - Ensembles et applications' },
-  { path: '/formation/maths-suites', component: MathsSuitesPage, title: 'Maths - Suites numériques' },
-  { path: '/formation/maths-suites-numeriques', component: MathsSuitesPage, title: 'Maths - Suites numériques' },
+  // TEMPORARILY DISABLED DUE TO FILE CORRUPTION: { path: '/formation/maths-elements-de-logique', component: MathsLogiquePage, title: 'Chapitre 1 : Logique & raisonnement fondamentaux' },
+  // TEMPORARILY DISABLED DUE TO FILE CORRUPTION: { path: '/formation/maths-ensembles', component: MathsEnsemblesPage, title: 'Maths - Ensembles et applications' },
+  // TEMPORARILY DISABLED DUE TO FILE CORRUPTION: { path: '/formation/maths-ensembles-et-applications', component: MathsEnsemblesPage, title: 'Maths - Ensembles et applications' },
+  // TEMPORARILY DISABLED DUE TO FILE CORRUPTION: { path: '/formation/maths-suites', component: MathsSuitesPage, title: 'Maths - Suites numériques' },
+  // TEMPORARILY DISABLED DUE TO FILE CORRUPTION: { path: '/formation/maths-suites-numeriques', component: MathsSuitesPage, title: 'Maths - Suites numériques' },
   { path: '/formation/maths-fonctions', component: MathsFonctionsPage, title: 'Maths - Fonctions réelles — continuité' },
   { path: '/formation/maths-fonctions-d-une-variable-reelle', component: MathsFonctionsPage, title: 'Maths - Fonctions d\'une variable réelle' },
   { path: '/formation/maths-fonctions-une-variable-reelle-flashcards', component: Chapitre5FonctionsUneVariableReelleFlashcardsPage, title: 'Flashcards - Chapitre 5 : Fonctions d\'une variable réelle', protected: true },
