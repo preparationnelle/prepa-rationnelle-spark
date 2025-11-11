@@ -63,10 +63,10 @@ const MathsChoixOptionPage = () => {
       subtitle: 'Voie pratique',
       description: 'Formation axée sur les applications pratiques des mathématiques, avec un accent sur les méthodes de résolution et les cas concrets.',
       icon: Calculator,
-      color: 'bg-blue-600',
-      bgColor: 'bg-blue-50',
-      borderColor: 'border-blue-200',
-      buttonColor: 'bg-blue-600 hover:bg-blue-700',
+      color: 'bg-orange-600',
+      bgColor: 'bg-orange-50',
+      borderColor: 'border-orange-200',
+      buttonColor: 'bg-orange-600 hover:bg-orange-700',
       features: [
         'Applications pratiques',
         'Méthodes de résolution',
@@ -101,10 +101,10 @@ const MathsChoixOptionPage = () => {
       subtitle: 'Voie appliquée avancée',
       description: 'Deuxième année appliquée avec focus sur les applications industrielles et résolution de problèmes complexes.',
       icon: TrendingUp,
-      color: 'bg-blue-600',
-      bgColor: 'bg-blue-50',
-      borderColor: 'border-blue-200',
-      buttonColor: 'bg-blue-600 hover:bg-blue-700',
+      color: 'bg-orange-600',
+      bgColor: 'bg-orange-50',
+      borderColor: 'border-orange-200',
+      buttonColor: 'bg-orange-600 hover:bg-orange-700',
       features: [
         'Applications industrielles',
         'Problèmes complexes',
@@ -138,7 +138,7 @@ const MathsChoixOptionPage = () => {
       title: 'Terminale → Prépa',
       description: 'Conseils et ressources pour réussir la transition entre la Terminale et la prépa ECG : méthodes de travail, organisation, et points clés à anticiper en mathématiques.',
       icon: Calculator,
-      color: 'bg-blue-600',
+      color: 'bg-orange-600',
       route: '/formation/math/terminale-vers-prepa',
       buttonText: 'Découvrir les conseils',
       badge: 'Transition'
@@ -147,7 +147,7 @@ const MathsChoixOptionPage = () => {
       title: 'Première année → Deuxième année',
       description: 'Transition vers l\'ECG2: révisions d\'été, objectifs de rentrée, planning type et ressources clés pour démarrer fort.',
       icon: BookOpen,
-      color: 'bg-blue-600',
+      color: 'bg-orange-600',
       route: '/formation/math/premiere-vers-deuxieme',
       buttonText: 'Accéder au module',
       badge: 'ECG2'
@@ -164,7 +164,7 @@ const MathsChoixOptionPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-white relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
       {/* Floating bubbles - Thème mathématiques en orange */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse -z-10"></div>
       <div className="absolute bottom-20 right-10 w-28 h-28 bg-orange-300 rounded-full opacity-8 animate-pulse-slow -z-10"></div>
@@ -225,11 +225,20 @@ const MathsChoixOptionPage = () => {
                 to={route}
                 className="block h-full"
               >
-                <div className={`h-full bg-white shadow-lg ${shadowColor} hover:shadow-xl transition-all duration-300 border-2 ${borderColor} ${bgColor} hover:bg-orange-100 rounded-xl p-6 relative overflow-hidden group cursor-pointer hover:scale-105`}>
+                <div className={`h-full bg-white shadow-lg ${shadowColor} hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 ${bgColor} rounded-2xl p-6 relative overflow-hidden group cursor-pointer`}>
                   <div className={`w-16 h-16 ${iconBgColor} rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform relative z-10`}>
                   <module.icon className={`h-8 w-8 ${iconColor}`} />
                 </div>
-                  <h3 className="font-semibold text-xl mb-2 relative z-10">{module.title}</h3>
+                  <h3 className="font-semibold text-xl mb-2 relative z-10">
+                    {module.title.includes(' - ') ? (
+                      <>
+                        {module.title.split(' - ')[0]}<br />
+                        {module.title.split(' - ')[1]}
+                      </>
+                    ) : (
+                      module.title
+                    )}
+                  </h3>
                   <p className="text-sm text-gray-600 mb-3 relative z-10">{module.description}</p>
                   <div className="space-y-1 text-xs text-left w-full mb-4 relative z-10">
                     {module.features.slice(0, 3).map((feature, index) => (
@@ -239,10 +248,12 @@ const MathsChoixOptionPage = () => {
                       </div>
                     ))}
                   </div>
-                  <Button className="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold transition-colors relative z-10 hover:scale-105 transform">
-                    Accéder à la formation
-                    <ChevronRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  <div className="flex justify-center relative z-10">
+                    <Button className="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 transform">
+                      Accéder à la formation
+                      <ChevronRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </div>
                 </div>
               </Link>
             );
@@ -254,13 +265,12 @@ const MathsChoixOptionPage = () => {
           <h2 className="text-2xl font-bold text-center mb-8 text-gray-800">Modules complémentaires</h2>
           <div className="grid gap-6 max-w-4xl mx-auto">
             {additionalModules.map((module, index) => {
-              const isBlue = module.color === 'bg-blue-600';
-              const iconBgColor = isBlue ? 'bg-blue-100' : 'bg-orange-100';
-              const iconColor = isBlue ? 'text-blue-600' : 'text-orange-600';
-              const badgeColor = isBlue ? 'text-blue-700 border-blue-200 bg-blue-50' : 'text-orange-700 border-orange-200 bg-orange-50';
-              const bgColor = isBlue ? 'bg-blue-50' : 'bg-orange-50';
-              const borderColor = isBlue ? 'border-blue-200' : 'border-orange-200';
-              const shadowColor = isBlue ? 'shadow-blue-100/30' : 'shadow-orange-100/30';
+              const iconBgColor = 'bg-orange-100';
+              const iconColor = 'text-orange-600';
+              const badgeColor = 'text-orange-700 border-orange-200 bg-orange-50';
+              const bgColor = 'bg-orange-50';
+              const borderColor = 'border-orange-200';
+              const shadowColor = 'shadow-orange-100/30';
 
               return (
                 <Link
@@ -268,7 +278,7 @@ const MathsChoixOptionPage = () => {
                   to={module.route}
                   className="block"
                 >
-                  <div className={`bg-white shadow-lg ${shadowColor} hover:shadow-xl transition-all duration-300 border-2 ${borderColor} ${bgColor} rounded-xl p-6 relative overflow-hidden group cursor-pointer ${isBlue ? 'hover:bg-blue-100' : 'hover:bg-orange-100'}`}>
+                  <div className={`bg-white shadow-lg ${shadowColor} hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 ${bgColor} rounded-2xl p-6 relative overflow-hidden group cursor-pointer`}>
                     <div className="flex items-center justify-between w-full mb-4 relative z-10">
                       <div className={`w-16 h-16 ${iconBgColor} rounded-full flex items-center justify-center group-hover:scale-110 transition-transform relative z-10`}>
                         <module.icon className={`h-8 w-8 ${iconColor}`} />
@@ -279,10 +289,12 @@ const MathsChoixOptionPage = () => {
                     </div>
                     <h3 className="font-semibold text-xl mb-3 text-center relative z-10">{module.title}</h3>
                     <p className="text-sm text-gray-600 mb-4 text-center relative z-10">{module.description}</p>
-                    <Button className={`w-full ${isBlue ? 'bg-blue-600 hover:bg-blue-700' : 'bg-orange-600 hover:bg-orange-700'} text-white font-bold transition-colors relative z-10`}>
-                      {module.buttonText}
-                      <ChevronRight className="ml-2 h-4 w-4" />
-                    </Button>
+                    <div className="flex justify-center relative z-10">
+                      <Button className="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 transform">
+                        {module.buttonText}
+                        <ChevronRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </div>
                   </div>
                 </Link>
               );

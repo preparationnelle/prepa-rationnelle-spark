@@ -267,11 +267,11 @@ const OteriaProbabilitesFlashcardsPage = () => {
           <div className="w-full max-w-2xl mx-auto mb-6">
             <div className="relative h-4 bg-gray-200 rounded-full overflow-hidden">
               <div
-                className="absolute top-0 left-0 h-full bg-teal-500 transition-all duration-300"
+                className="absolute -z-10 top-0 left-0 h-full bg-teal-500 transition-all duration-300"
                 style={{ width: `${studiedPercentage}%` }}
               />
               <div
-                className="absolute top-0 left-0 h-full border-r-4 border-teal-700 transition-all duration-300"
+                className="absolute -z-10 top-0 left-0 h-full border-r-4 border-teal-700 transition-all duration-300"
                 style={{ width: `${progressPercentage}%` }}
               />
             </div>

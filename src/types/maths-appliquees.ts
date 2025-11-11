@@ -6,6 +6,7 @@ export interface ChapterData {
   title: string;
   icon: LucideIcon;
   color: string;
+  symbol: string;
   description?: string;
 }
 

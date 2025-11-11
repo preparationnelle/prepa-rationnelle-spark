@@ -257,9 +257,9 @@ const VocabulaireEcologieFlashcardsPage = () => {
 
       {/* Arrière-plan animé */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-emerald-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse" style={{animationDelay: '2s'}}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-lime-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{animationDelay: '4s'}}></div>
+        <div className="absolute -z-10 -top-40 -right-40 w-80 h-80 bg-emerald-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+        <div className="absolute -z-10 -bottom-40 -left-40 w-80 h-80 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-lime-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{animationDelay: '4s'}}></div>
       </div>
 
       <div className="container mx-auto px-4 py-8 relative z-10">
@@ -348,14 +348,14 @@ const VocabulaireEcologieFlashcardsPage = () => {
           >
             <CardContent className="h-full flex flex-col justify-center items-center p-8 relative">
               {/* Badge catégorie */}
-              <div className="absolute top-4 right-4">
+              <div className="absolute -z-10 top-4 right-4">
                 <Badge className={getCategoryColor(currentCard.category)} variant="secondary">
                   {currentCard.category}
                 </Badge>
               </div>
 
               {/* Indicateur de face */}
-              <div className="absolute top-4 left-4 flex items-center gap-2">
+              <div className="absolute -z-10 top-4 left-4 flex items-center gap-2">
                 {isFlipped ? (
                   <>
                     <Eye className="h-4 w-4 text-emerald-600" />

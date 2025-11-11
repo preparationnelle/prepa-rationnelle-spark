@@ -7,6 +7,7 @@ interface Chapter {
   description: string;
   icon: any;
   color: string;
+  symbol: string;
 }
 
 interface Semester {
@@ -18,7 +19,7 @@ interface Semester {
 
 const semestre1: Semester = {
   id: 'semestre1',
-  title: 'Fondements Mathématiques',
+  title: 'Semestre 1',
   description: 'Acquisition des bases théoriques essentielles',
   chapters: [
     {
@@ -27,7 +28,8 @@ const semestre1: Semester = {
       title: 'Éléments de logique',
       description: 'Concepts fondamentaux et démonstrations rigoureuses',
       icon: BrainCircuit,
-      color: 'bg-blue-600'
+      color: 'bg-blue-600',
+      symbol: '∧'
     },
     {
       id: 2,
@@ -35,7 +37,8 @@ const semestre1: Semester = {
       title: 'Ensembles et applications',
       description: 'Concepts fondamentaux et démonstrations rigoureuses',
       icon: Shapes,
-      color: 'bg-blue-600'
+      color: 'bg-blue-600',
+      symbol: '∈'
     },
     {
       id: 3,
@@ -43,7 +46,8 @@ const semestre1: Semester = {
       title: 'Sommes, produits & coefficients binomiaux',
       description: 'Techniques de calcul et propriétés combinatoires',
       icon: Sigma,
-      color: 'bg-blue-600'
+      color: 'bg-blue-600',
+      symbol: '∑'
     },
     {
       id: 4,
@@ -51,7 +55,8 @@ const semestre1: Semester = {
       title: 'Suites numériques',
       description: 'Convergence, monotonie et théorèmes fondamentaux',
       icon: TrendingUp,
-      color: 'bg-blue-600'
+      color: 'bg-blue-600',
+      symbol: '→'
     },
     {
       id: 5,
@@ -59,7 +64,8 @@ const semestre1: Semester = {
       title: 'Fonctions d\'une variable réelle',
       description: 'Continuité, limites et propriétés principales',
       icon: FunctionSquare,
-      color: 'bg-blue-600'
+      color: 'bg-blue-600',
+      symbol: 'f'
     },
     {
       id: 6,
@@ -67,7 +73,8 @@ const semestre1: Semester = {
       title: 'Dérivation',
       description: 'Dérivées, théorèmes et applications classiques',
       icon: Spline,
-      color: 'bg-blue-600'
+      color: 'bg-blue-600',
+      symbol: '∂'
     },
     {
       id: 7,
@@ -75,7 +82,8 @@ const semestre1: Semester = {
       title: 'Intégration sur un segment',
       description: 'Intégrales de Riemann et méthodes calculation',
       icon: AreaChart,
-      color: 'bg-blue-600'
+      color: 'bg-blue-600',
+      symbol: '∫'
     },
     {
       id: 8,
@@ -83,7 +91,8 @@ const semestre1: Semester = {
       title: 'Polynômes',
       description: 'Algèbre des polynômes et factorisation',
       icon: Cuboid,
-      color: 'bg-blue-600'
+      color: 'bg-blue-600',
+      symbol: 'P'
     },
     {
       id: 9,
@@ -91,7 +100,8 @@ const semestre1: Semester = {
       title: 'Matrices & espaces vectoriels',
       description: 'Opérations matricielles et espaces vectoriels',
       icon: Grid,
-      color: 'bg-blue-600'
+      color: 'bg-blue-600',
+      symbol: 'M'
     },
     {
       id: '9b',
@@ -99,7 +109,8 @@ const semestre1: Semester = {
       title: 'Algèbre bilinéaire et espaces euclidiens',
       description: 'Formes bilinéaires et espaces euclidiens',
       icon: BrainCircuit,
-      color: 'bg-blue-600'
+      color: 'bg-blue-600',
+      symbol: '⟨⟩'
     },
     {
       id: 10,
@@ -107,14 +118,15 @@ const semestre1: Semester = {
       title: 'Probabilités & conditionnement',
       description: 'Espaces probabilisés et probabilités conditionnelles',
       icon: Dices,
-      color: 'bg-blue-600'
+      color: 'bg-blue-600',
+      symbol: 'P'
     }
   ]
 };
 
 const semestre2: Semester = {
   id: 'semestre2',
-  title: 'Concepts Avancés',
+  title: 'Semestre 2',
   description: 'Exploration des théories mathématiques complexes',
   chapters: [
     {
@@ -123,7 +135,8 @@ const semestre2: Semester = {
       title: 'Applications linéaires & structures vectorielles',
       description: 'Morphismes et propriétés des applications linéaires',
       icon: Move,
-      color: 'bg-blue-600'
+      color: 'bg-blue-600',
+      symbol: 'L'
     },
     {
       id: 12,
@@ -131,7 +144,8 @@ const semestre2: Semester = {
       title: 'Comparaison — négligeabilité & équivalence',
       description: 'Relations asymptotiques et développements',
       icon: Scale,
-      color: 'bg-blue-600'
+      color: 'bg-blue-600',
+      symbol: '≈'
     },
     {
       id: 13,
@@ -139,7 +153,8 @@ const semestre2: Semester = {
       title: 'Séries numériques',
       description: 'Convergence et critères des séries',
       icon: InfinityIcon,
-      color: 'bg-blue-600'
+      color: 'bg-blue-600',
+      symbol: '∞'
     },
     {
       id: 14,
@@ -147,7 +162,8 @@ const semestre2: Semester = {
       title: 'Développements limités & formule de Taylor',
       description: 'Approximations polynomiales et applications',
       icon: UnfoldVertical,
-      color: 'bg-blue-600'
+      color: 'bg-blue-600',
+      symbol: 'T'
     },
     {
       id: 15,
@@ -155,7 +171,8 @@ const semestre2: Semester = {
       title: 'Intégrales impropres & critères de convergence',
       description: 'Extension de l\'intégration et convergence',
       icon: AreaChart,
-      color: 'bg-blue-600'
+      color: 'bg-blue-600',
+      symbol: '∫∞'
     },
     {
       id: 16,
@@ -163,7 +180,8 @@ const semestre2: Semester = {
       title: 'Espaces probabilisés & conditionnement',
       description: 'Modélisation probabiliste et indépendance',
       icon: Dices,
-      color: 'bg-blue-600'
+      color: 'bg-blue-600',
+      symbol: 'Ω'
     },
     {
       id: 17,
@@ -171,7 +189,8 @@ const semestre2: Semester = {
       title: 'Variables aléatoires discrètes & lois',
       description: 'Lois de probabilité et espérance mathématique',
       icon: Variable,
-      color: 'bg-blue-600'
+      color: 'bg-blue-600',
+      symbol: 'X'
     },
     {
       id: 18,
@@ -179,7 +198,8 @@ const semestre2: Semester = {
       title: 'Convergences & théorèmes limites',
       description: 'Théorèmes centraux et convergence en loi',
       icon: LocateFixed,
-      color: 'bg-blue-600'
+      color: 'bg-blue-600',
+      symbol: '⇒'
     },
     {
       id: 20,
@@ -187,7 +207,8 @@ const semestre2: Semester = {
       title: 'Python',
       description: 'Programmation appliquée aux mathématiques',
       icon: Code,
-      color: 'bg-blue-600'
+      color: 'bg-blue-600',
+      symbol: 'Py'
     }
   ]
 };

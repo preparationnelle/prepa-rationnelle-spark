@@ -20,7 +20,7 @@ export const FormationsSection = () => {
           {/* Formation Maths */}
           <Link to="/formation/maths" className="group">
             <Card className="h-full bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-yellow-200 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-yellow-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -z-10 inset-0 bg-gradient-to-br from-yellow-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardHeader className="relative z-10">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
@@ -62,7 +62,7 @@ export const FormationsSection = () => {
           {/* Formation Python */}
           <Link to="/formation" className="group">
             <Card className="h-full bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-blue-200 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -z-10 inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardHeader className="relative z-10">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
@@ -104,7 +104,7 @@ export const FormationsSection = () => {
           {/* Formation Anglais */}
           <Link to="/formation/anglais" className="group">
             <Card className="h-full bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-green-200 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-green-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -z-10 inset-0 bg-gradient-to-br from-green-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardHeader className="relative z-10">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
@@ -146,7 +146,7 @@ export const FormationsSection = () => {
           {/* Formation Allemand */}
           <Link to="/formation/allemand" className="group">
             <Card className="h-full bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-red-200 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-red-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -z-10 inset-0 bg-gradient-to-br from-red-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardHeader className="relative z-10">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
@@ -188,7 +188,7 @@ export const FormationsSection = () => {
           {/* Formation Espagnol */}
           <Link to="/formation/espagnol" className="group">
             <Card className="h-full bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-orange-200 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -z-10 inset-0 bg-gradient-to-br from-orange-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardHeader className="relative z-10">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
@@ -230,7 +230,7 @@ export const FormationsSection = () => {
           {/* Formation Géopolitique */}
           <Link to="/formation/geopolitique" className="group">
             <Card className="h-full bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-orange-200 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -z-10 inset-0 bg-gradient-to-br from-orange-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardHeader className="relative z-10">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
@@ -272,7 +272,7 @@ export const FormationsSection = () => {
           {/* Formation ESH */}
           <Link to="/formation/esh" className="group">
             <Card className="h-full bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-blue-200 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -z-10 inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardHeader className="relative z-10">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
@@ -314,7 +314,7 @@ export const FormationsSection = () => {
           {/* Entretiens de Personnalité */}
           <Link to="/methodologie/entretiens-personnalite" className="group">
             <Card className="h-full bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-orange-200 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -z-10 inset-0 bg-gradient-to-br from-orange-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardHeader className="relative z-10">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">

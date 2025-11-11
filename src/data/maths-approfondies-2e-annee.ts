@@ -18,6 +18,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         title: 'Compléments d\'algèbre linéaire',
         icon: Grid,
         color: 'bg-orange-600',
+        symbol: 'M',
         description: 'Somme directe de sous-espaces vectoriels, changement de base, trace'
       },
       {
@@ -26,6 +27,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         title: 'Éléments propres et réduction des endomorphismes et matrices carrées',
         icon: Network,
         color: 'bg-orange-600',
+        symbol: 'λ',
         description: 'Vecteurs propres, espaces propres, recherche d\'éléments propres, propriétés générales et méthodes de réduction'
       },
       {
@@ -34,6 +36,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         title: 'Algèbre bilinéaire',
         icon: FunctionSquare,
         color: 'bg-orange-600',
+        symbol: '⟨⟩',
         description: 'Produit scalaire et espaces euclidiens'
       },
       {
@@ -42,6 +45,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         title: 'Fonctions multivariées et calcul différentiel',
         icon: TrendingUp,
         color: 'bg-orange-600',
+        symbol: '∇',
         description: 'Fonctions réelles définies sur R^n, dérivées partielles, gradient, recherche d\'extremum'
       },
       {
@@ -50,6 +54,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         title: 'Variables aléatoires à densité',
         icon: BarChart3,
         color: 'bg-orange-600',
+        symbol: 'f',
         description: 'Densité, fonction de répartition, espérance et variance'
       },
       {
@@ -58,6 +63,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         title: 'n-uplets de variables aléatoires réelles',
         icon: Variable,
         color: 'bg-orange-600',
+        symbol: '(X₁,...,Xn)',
         description: 'Propriétés de l\'espérance, variance et indépendance'
       },
       {
@@ -66,6 +72,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         title: 'Cas particulier du couple',
         icon: Move,
         color: 'bg-orange-600',
+        symbol: '(X,Y)',
         description: 'Sommes de variables indépendantes et applications'
       }
     ]
@@ -80,6 +87,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         title: 'Algèbre bilinéaire et espaces euclidiens',
         icon: Grid,
         color: 'bg-orange-600',
+        symbol: '⟨⟩',
         description: 'Endomorphismes symétriques d\'un espace euclidien, matrices symétriques et propriétés de la projection orthogonale'
       },
       {
@@ -88,6 +96,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         title: 'Réduction des endomorphismes et des matrices symétriques',
         icon: Shapes,
         color: 'bg-orange-600',
+        symbol: 'diag',
         description: 'Méthodes de diagonalisation et réduction complète'
       },
       {
@@ -96,6 +105,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         title: 'Optimisation multivariée avancée',
         icon: FunctionSquare,
         color: 'bg-orange-600',
+        symbol: '∇',
         description: 'Fonctions de plusieurs variables, propriétés différentielles, recherche d\'extrema, conditions d\'ordre 1 et 2, contraintes linéaires et multiplicateurs de Lagrange'
       },
       {
@@ -104,6 +114,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         title: 'Convergences et approximations',
         icon: TrendingUp,
         color: 'bg-orange-600',
+        symbol: '→',
         description: 'Convergence en probabilité et convergence en loi'
       },
       {
@@ -112,6 +123,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         title: 'Estimation statistique avancée',
         icon: BarChart3,
         color: 'bg-orange-600',
+        symbol: 'θ̂',
         description: 'Estimation ponctuelle, intervalles de confiance asymptotiques, critères d\'efficacité et comparaison des estimateurs'
       }
     ]

@@ -74,14 +74,14 @@ const FormationPage = () => {
   return (
     <div className="min-h-screen bg-white relative overflow-hidden">
       {/* Floating bubbles - Design décoratif avec accent sky-blue */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-sky-200 rounded-full opacity-5 animate-pulse -z-10"></div>
-      <div className="absolute bottom-20 right-10 w-28 h-28 bg-sky-300 rounded-full opacity-5 animate-pulse-slow -z-10"></div>
-      <div className="absolute top-40 right-20 w-48 h-48 bg-sky-100 rounded-full opacity-3 animate-pulse-slow -z-10"></div>
-      <div className="absolute bottom-40 left-20 w-56 h-56 bg-sky-200 rounded-full opacity-3 animate-pulse -z-10"></div>
-      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-sky-50 rounded-full opacity-5 animate-pulse-slow -z-10"></div>
-      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-sky-200 rounded-full opacity-3 animate-pulse -z-10"></div>
-      <div className="absolute top-1/2 left-10 w-24 h-24 bg-sky-100 rounded-full opacity-5 animate-pulse-slow -z-10"></div>
-      <div className="absolute bottom-1/3 right-5 w-36 h-36 bg-sky-100 rounded-full opacity-3 animate-pulse -z-10"></div>
+      <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-sky-200 rounded-full opacity-5 animate-pulse -z-10"></div>
+      <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-sky-300 rounded-full opacity-5 animate-pulse-slow -z-10"></div>
+      <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-sky-100 rounded-full opacity-3 animate-pulse-slow -z-10"></div>
+      <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-sky-200 rounded-full opacity-3 animate-pulse -z-10"></div>
+      <div className="absolute -z-10 top-1/4 left-1/3 w-64 h-64 bg-sky-50 rounded-full opacity-5 animate-pulse-slow -z-10"></div>
+      <div className="absolute -z-10 top-3/4 right-1/4 w-40 h-40 bg-sky-200 rounded-full opacity-3 animate-pulse -z-10"></div>
+      <div className="absolute -z-10 top-1/2 left-10 w-24 h-24 bg-sky-100 rounded-full opacity-5 animate-pulse-slow -z-10"></div>
+      <div className="absolute -z-10 bottom-1/3 right-5 w-36 h-36 bg-sky-100 rounded-full opacity-3 animate-pulse -z-10"></div>
 
       {/* Sticky Breadcrumb */}
       <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40 relative z-10">
@@ -174,7 +174,7 @@ const FormationPage = () => {
                 {/* Flashcards Python */}
                 <Link to="/python-flashcards" className="block h-full">
                   <Card className="h-full bg-gradient-to-br from-blue-50 to-blue-100 shadow-xl shadow-blue-200/60 hover:shadow-orange-200/50 transition-all duration-500 border-2 border-blue-300 hover:border-orange-300 hover:bg-gradient-to-br hover:from-orange-50 hover:to-orange-100 relative overflow-hidden group cursor-pointer">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent group-hover:from-orange-100/30 group-hover:to-orange-50/20 opacity-100 transition-all duration-500 pointer-events-none"></div>
+                    <div className="absolute -z-10 inset-0 bg-gradient-to-br from-blue-50/20 to-transparent group-hover:from-orange-100/30 group-hover:to-orange-50/20 opacity-100 transition-all duration-500 pointer-events-none"></div>
                     <CardHeader>
                       <div className="flex items-center gap-3 mb-3">
                         <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
@@ -207,7 +207,7 @@ const FormationPage = () => {
                 {/* Référence Python */}
                 <Link to="/python-reference" className="block h-full">
                   <Card className="h-full bg-gradient-to-br from-blue-50 to-blue-100 shadow-xl shadow-blue-200/60 hover:shadow-orange-200/50 transition-all duration-500 border-2 border-blue-300 hover:border-orange-300 hover:bg-gradient-to-br hover:from-orange-50 hover:to-orange-100 relative overflow-hidden group cursor-pointer">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-transparent group-hover:from-orange-100/30 group-hover:to-orange-50/20 opacity-100 transition-all duration-500 pointer-events-none"></div>
+                    <div className="absolute -z-10 inset-0 bg-gradient-to-br from-blue-50/20 to-transparent group-hover:from-orange-100/30 group-hover:to-orange-50/20 opacity-100 transition-all duration-500 pointer-events-none"></div>
                     <CardHeader>
                       <div className="flex items-center gap-3 mb-3">
                         <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">

@@ -146,8 +146,8 @@ const PythonFlashcardsPage = () => {
       <div className="min-h-screen bg-[#F8FAFF] relative flex items-center justify-center">
         {/* Background de chargement moderne */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
+          <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse"></div>
+          <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
         </div>
         
         <div className="relative z-10 text-center">
@@ -164,10 +164,10 @@ const PythonFlashcardsPage = () => {
     <div className={`min-h-screen bg-[#F8FAFF] relative ${isFullscreen ? 'overflow-hidden' : ''}`}>
       {/* Background moderne avec bulles bleues subtiles */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
-        <div className="absolute top-40 right-20 w-48 h-48 bg-blue-100 rounded-full opacity-10 animate-pulse-slow"></div>
-        <div className="absolute bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-8 animate-pulse"></div>
+        <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse"></div>
+        <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
+        <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-blue-100 rounded-full opacity-10 animate-pulse-slow"></div>
+        <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-8 animate-pulse"></div>
       </div>
 
       {/* Fil d'Ariane - masqué en plein écran */}
@@ -267,7 +267,7 @@ const PythonFlashcardsPage = () => {
                   {/* Tooltip raccourcis clavier amélioré */}
                   {showKeyboardHelp && (
                     <div 
-                      className="absolute right-0 top-10 z-50 bg-card border border-border rounded-xl shadow-xl p-4 w-72 backdrop-blur-sm"
+                      className="absolute -z-10 right-0 top-10 z-50 bg-card border border-border rounded-xl shadow-xl p-4 w-72 backdrop-blur-sm"
                       data-keyboard-help
                     >
                       <div className="space-y-3">
@@ -302,7 +302,7 @@ const PythonFlashcardsPage = () => {
                         </div>
                       </div>
                       {/* Flèche pointant vers le bouton */}
-                      <div className="absolute -top-2 right-4 w-4 h-4 bg-card border-l border-t border-border transform rotate-45"></div>
+                      <div className="absolute -z-10 -top-2 right-4 w-4 h-4 bg-card border-l border-t border-border transform rotate-45"></div>
                     </div>
                   )}
                 </div>

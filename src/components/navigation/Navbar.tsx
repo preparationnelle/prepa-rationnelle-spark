@@ -529,13 +529,13 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
         </nav>
         {/* Barre de progression animée alignée bas navbar, sans recouvrir le bouton S'inscrire */}
         <div className="relative w-full">
-          <div className="absolute bottom-0 left-0 w-full pr-32 h-1 bg-gray-100 z-30 pointer-events-none">
+          <div className="absolute -z-10 bottom-0 left-0 w-full pr-32 h-1 bg-gray-100 z-30 pointer-events-none">
             <div 
               className="h-full bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 transition-all duration-300 ease-out relative overflow-hidden"
               style={{ width: `${scrollProgress}%` }}
             >
               {/* Effet de brillance animé */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer" />
+              <div className="absolute -z-10 inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer" />
             </div>
           </div>
         </div>

@@ -17,6 +17,7 @@ export const mathsAppliquees2eAnneeData: MathsAppliqueesData = {
         title: 'Optimisation linéaire avancée',
         icon: Target,
         color: 'bg-blue-600',
+        symbol: 'min',
         description: 'Méthodes avancées d\'optimisation et applications industrielles'
       },
       {
@@ -25,6 +26,7 @@ export const mathsAppliquees2eAnneeData: MathsAppliqueesData = {
         title: 'Équations différentielles partielles',
         icon: FunctionSquare,
         color: 'bg-blue-600',
+        symbol: '∂²',
         description: 'EDP et leurs applications en physique et ingénierie'
       },
       {
@@ -33,6 +35,7 @@ export const mathsAppliquees2eAnneeData: MathsAppliqueesData = {
         title: 'Analyse numérique avancée',
         icon: Zap,
         color: 'bg-blue-600',
+        symbol: 'ε',
         description: 'Méthodes numériques pour la résolution d\'équations'
       },
       {
@@ -41,6 +44,7 @@ export const mathsAppliquees2eAnneeData: MathsAppliqueesData = {
         title: 'Traitement du signal et images',
         icon: BarChart3,
         color: 'bg-blue-600',
+        symbol: 'ℱ',
         description: 'Analyse de Fourier et traitement numérique'
       },
       {
@@ -49,6 +53,7 @@ export const mathsAppliquees2eAnneeData: MathsAppliqueesData = {
         title: 'Modélisation stochastique',
         icon: Dices,
         color: 'bg-blue-600',
+        symbol: 'S',
         description: 'Processus stochastiques et simulations Monte Carlo'
       },
       {
@@ -57,6 +62,7 @@ export const mathsAppliquees2eAnneeData: MathsAppliqueesData = {
         title: 'Algorithmes d\'optimisation',
         icon: Network,
         color: 'bg-blue-600',
+        symbol: '∇',
         description: 'Méthodes heuristiques et méta-heuristiques'
       },
       {
@@ -65,6 +71,7 @@ export const mathsAppliquees2eAnneeData: MathsAppliqueesData = {
         title: 'Calcul parallèle et distribué',
         icon: GitBranch,
         color: 'bg-blue-600',
+        symbol: '||',
         description: 'Programmation parallèle et calcul haute performance'
       },
       {
@@ -73,6 +80,7 @@ export const mathsAppliquees2eAnneeData: MathsAppliqueesData = {
         title: 'Machine Learning : aspects mathématiques',
         icon: BrainCircuit,
         color: 'bg-blue-600',
+        symbol: 'ML',
         description: 'Théorie mathématique derrière l\'apprentissage automatique'
       }
     ]
@@ -87,6 +95,7 @@ export const mathsAppliquees2eAnneeData: MathsAppliqueesData = {
         title: 'Modélisation de systèmes complexes',
         icon: Network,
         color: 'bg-blue-600',
+        symbol: '⊗',
         description: 'Systèmes dynamiques complexes et théorie du chaos'
       },
       {
@@ -95,6 +104,7 @@ export const mathsAppliquees2eAnneeData: MathsAppliqueesData = {
         title: 'Analyse de données massives',
         icon: Database,
         color: 'bg-blue-600',
+        symbol: '∑',
         description: 'Big Data analytics et méthodes statistiques avancées'
       },
       {
@@ -103,6 +113,7 @@ export const mathsAppliquees2eAnneeData: MathsAppliqueesData = {
         title: 'Simulation numérique industrielle',
         icon: Microscope,
         color: 'bg-blue-600',
+        symbol: 'Δt',
         description: 'Méthodes de simulation pour l\'industrie et la recherche'
       },
       {
@@ -111,6 +122,7 @@ export const mathsAppliquees2eAnneeData: MathsAppliqueesData = {
         title: 'Contrôle optimal de systèmes',
         icon: Move,
         color: 'bg-blue-600',
+        symbol: '∫',
         description: 'Théorie du contrôle et applications industrielles'
       },
       {
@@ -119,6 +131,7 @@ export const mathsAppliquees2eAnneeData: MathsAppliqueesData = {
         title: 'Cryptographie et sécurité mathématique',
         icon: Code,
         color: 'bg-blue-600',
+        symbol: '🔒',
         description: 'Algorithmes cryptographiques et sécurité informatique'
       },
       {
@@ -127,6 +140,7 @@ export const mathsAppliquees2eAnneeData: MathsAppliqueesData = {
         title: 'Intelligence artificielle avancée',
         icon: BrainCircuit,
         color: 'bg-blue-600',
+        symbol: 'AI',
         description: 'Réseaux de neurones profonds et apprentissage profond'
       },
       {
@@ -135,6 +149,7 @@ export const mathsAppliquees2eAnneeData: MathsAppliqueesData = {
         title: 'Modélisation financière avancée',
         icon: TrendingUp,
         color: 'bg-blue-600',
+        symbol: '€',
         description: 'Mathématiques financières et produits dérivés'
       },
       {
@@ -143,6 +158,7 @@ export const mathsAppliquees2eAnneeData: MathsAppliqueesData = {
         title: 'Projet appliqué final',
         icon: Target,
         color: 'bg-blue-600',
+        symbol: '✓',
         description: 'Projet de synthèse appliquant l\'ensemble des compétences acquises'
       }
     ]

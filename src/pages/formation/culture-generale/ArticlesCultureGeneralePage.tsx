@@ -35,9 +35,9 @@ const ArticlesCultureGeneralePage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
       {/* Soft blue bubbles */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow" />
-      <div className="absolute top-40 right-20 w-48 h-48 bg-blue-100 rounded-full opacity-10 animate-pulse-slow" />
+      <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse" />
+      <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow" />
+      <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-blue-100 rounded-full opacity-10 animate-pulse-slow" />
 
       <section className="py-10 px-4 sm:px-6 bg-transparent relative z-10">
         <div className="container mx-auto max-w-6xl">

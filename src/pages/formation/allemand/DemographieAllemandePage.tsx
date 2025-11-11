@@ -93,12 +93,12 @@ const DemographieAllemandePage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
       {/* Floating elements - Orange and blue bubbles */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-5 animate-pulse"></div>
-      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute -z-10 top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute -z-10 top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
       <div className="container mx-auto px-4 py-8 max-w-6xl relative z-10">
         {/* Header */}
         <div className="mb-8">
@@ -150,7 +150,7 @@ const DemographieAllemandePage: React.FC = () => {
         <div className="space-y-6">
           {demographieTopics.map((topic, index) => (
             <Card key={topic.id} className="group bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-gray-200 hover:border-orange-200 shadow-lg relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-50/20 to-blue-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -z-10 inset-0 bg-gradient-to-br from-orange-50/20 to-blue-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardHeader className="relative z-10">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-orange-100 rounded-lg text-orange-600">

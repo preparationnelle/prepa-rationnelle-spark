@@ -143,7 +143,7 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
                 <ChevronDown className="h-4 w-4" />
               </Button>
               {showQuestionMenu && (
-                <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-md shadow-lg border z-50">
+                <div className="absolute -z-10 right-0 top-full mt-2 w-48 bg-white rounded-md shadow-lg border z-50">
                   <div className="py-1 max-h-60 overflow-y-auto">
                     {questions.map((_, index) => (
                       <button

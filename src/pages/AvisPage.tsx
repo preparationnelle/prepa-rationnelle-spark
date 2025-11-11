@@ -152,7 +152,7 @@ const AvisPage: React.FC = () => {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-blue-100/40">
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-4 py-8">
           {/* Header */}
           <div className="text-center mb-12">
@@ -178,11 +178,11 @@ const AvisPage: React.FC = () => {
           <div className="bg-white rounded-2xl shadow-lg p-8 mb-12 max-w-4xl mx-auto">
             <div className="grid md:grid-cols-3 gap-8 text-center">
               <div>
-                <div className="text-3xl font-bold text-blue-600 mb-2">+50</div>
+                <div className="text-3xl font-bold text-orange-600 mb-2">+50</div>
                 <div className="text-gray-600">Étudiants accompagnés</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-green-600 mb-2">100%</div>
+                <div className="text-3xl font-bold text-orange-600 mb-2">100%</div>
                 <div className="text-gray-600">Satisfaction</div>
               </div>
               <div>
@@ -197,7 +197,7 @@ const AvisPage: React.FC = () => {
             {reviews.map((review, index) => {
               const colors = getColorClasses(review.color);
               return (
-                <Card key={index} className={`group hover:shadow-xl transition-all duration-300 border-2 ${colors.border} bg-white/95 backdrop-blur-sm h-full`}>
+                <Card key={index} className={`group hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 bg-white rounded-2xl shadow-lg h-full`}>
                   <CardContent className="p-6 h-full flex flex-col">
                     <div className="flex items-start gap-4">
                       <div className={`w-12 h-12 ${colors.avatar} rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0`}>
@@ -225,7 +225,7 @@ const AvisPage: React.FC = () => {
 
           {/* Call to Action */}
           <div className="text-center">
-            <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl mx-auto">
+            <div className="bg-gradient-to-br from-white via-orange-50/30 to-white p-12 rounded-2xl shadow-2xl border border-orange-100 max-w-2xl mx-auto">
               <div className="flex items-center justify-center gap-4 mb-6">
                 <div className="flex items-center gap-2">
                   {renderStars()}

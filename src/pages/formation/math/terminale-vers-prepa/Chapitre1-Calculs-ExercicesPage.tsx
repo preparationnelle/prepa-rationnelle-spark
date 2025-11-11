@@ -15,115 +15,113 @@ const Chapitre1CalculsExercicesPage = () => {
     }));
   };
 
-  const DifficultyHeader = ({ 
-    level, 
-    title, 
-    icon: Icon, 
-  }: { 
-    level: string; 
-    title: string; 
-    icon: any; 
+  const DifficultyHeader = ({
+    level,
+    title,
+    icon: Icon,
+  }: {
+    level: string;
+    title: string;
+    icon: any;
   }) => (
-    <div className="bg-gradient-to-r from-purple-100 to-purple-50 border-l-4 border-purple-500 p-6 mb-6 rounded-r-lg shadow-sm">
+    <div className="bg-gray-100 border-l-4 border-gray-400 p-6 mb-8 rounded-r-lg">
       <div className="flex items-center gap-3">
-        <div className="p-2 bg-purple-500 text-white rounded-lg">
-          <Icon className="w-6 h-6" />
+        <div className="w-10 h-10 bg-gray-200 rounded-lg flex items-center justify-center">
+          <Icon className="w-5 h-5 text-gray-600" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-gray-800">{level} : {title}</h2>
+          <h2 className="text-2xl font-bold text-gray-900">{level} : {title}</h2>
         </div>
       </div>
     </div>
   );
 
-  const ExerciseCard = ({ 
-    id, 
-    title, 
-    content, 
-    correction, 
-    difficulty 
-  }: { 
-    id: string; 
-    title: string; 
-    content: React.ReactNode; 
-    correction: React.ReactNode; 
-    difficulty: string; 
+  const ExerciseCard = ({
+    id,
+    title,
+    content,
+    correction,
+    difficulty
+  }: {
+    id: string;
+    title: string;
+    content: React.ReactNode;
+    correction: React.ReactNode;
+    difficulty: string;
   }) => (
-    <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
+    <div className="bg-white rounded-lg border border-gray-200 shadow-sm mb-6">
       <div className="p-6">
         <div className="flex items-start gap-3 mb-4">
-          <div className="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-semibold">
+          <div className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold">
             {title}
           </div>
-          <div className="text-xs text-purple-500 bg-purple-50 px-2 py-1 rounded">
+          <div className="text-xs text-gray-600 bg-gray-50 px-2 py-1 rounded border border-gray-200">
             {difficulty}
           </div>
         </div>
-        
+
         <div className="mb-4">
           {content}
         </div>
-        
+
         <Button
           onClick={() => toggleCorrection(id)}
-          variant={visibleCorrections[id] ? "secondary" : "default"}
+          variant={visibleCorrections[id] ? "outline" : "default"}
           className="mb-4"
         >
           {visibleCorrections[id] ? "Masquer la correction" : "Afficher la correction"}
         </Button>
-        
+
         {visibleCorrections[id] && (
-          <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-r-lg">
-            <h4 className="font-semibold text-green-800 mb-2">Corrigé détaillé</h4>
-            <div className="text-green-800">
+          <div className="bg-gray-50 border-l-4 border-gray-400 p-4 rounded-r-lg">
+            <h4 className="font-semibold text-gray-900 mb-2">Corrigé détaillé</h4>
+            <div className="text-gray-800">
               {correction}
             </div>
           </div>
         )}
       </div>
-    </Card>
+    </div>
   );
 
   return (
-    <div className="min-h-screen bg-[#EEF3FC]">
+    <div className="min-h-screen bg-gray-50">
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-gray-200">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-[#2D5BFF]">
-            <Link to="/" className="flex items-center gap-1 hover:text-[#1e3a8a] transition-colors">
+          <div className="flex items-center text-xs font-medium text-gray-700">
+            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formations" className="hover:text-[#1e3a8a] transition-colors">
+            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
+            <Link to="/formations" className="hover:text-gray-900 transition-colors">
               Toutes les formations
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formation/maths-choix" className="hover:text-[#1e3a8a] transition-colors">
+            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
+            <Link to="/formation/maths-choix" className="hover:text-gray-900 transition-colors">
               Choix option Maths
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formation/math/terminale-vers-prepa" className="hover:text-[#1e3a8a] transition-colors">
+            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
+            <Link to="/formation/math/terminale-vers-prepa" className="hover:text-gray-900 transition-colors">
               Terminale vers la prépa
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <span className="text-[#2D5BFF] font-bold">Exercices - Chapitre 1</span>
+            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
+            <span className="text-gray-900 font-bold">Exercices - Chapitre 1</span>
           </div>
         </div>
       </nav>
 
       <div className="container mx-auto px-4 py-8">
         {/* En-tête */}
-        <Card className="border-0 shadow-lg bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50 mb-8">
-          <div className="p-8">
-            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4">
-              Exercices - Chapitre 1 : Calculs
-            </h1>
-            <p className="text-slate-600 text-lg">
-              Exercices progressifs pour maîtriser les calculs avec les puissances et les expressions algébriques.
-            </p>
-          </div>
-        </Card>
+        <div className="text-center py-8">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Exercices - Chapitre 1 : Calculs
+          </h1>
+          <p className="text-gray-700 text-lg">
+            Exercices progressifs pour maîtriser les calculs avec les puissances et les expressions algébriques.
+          </p>
+        </div>
 
         <DifficultyHeader
           level="Module 1"
@@ -147,29 +145,29 @@ const Chapitre1CalculsExercicesPage = () => {
           correction={
             <div className="space-y-4">
               <div>
-                <strong className="text-green-600">Méthode :</strong>
+                <strong className="text-gray-900">Méthode :</strong>
                 <p className="mt-2">On commence par supprimer les parenthèses et on finit par faire passer les éléments du dénominateur vers le numérateur.</p>
               </div>
               <div>
-                <strong className="text-green-600">Étape 1 : Simplification de la fraction interne</strong>
+                <strong className="text-gray-900">Étape 1 : Simplification de la fraction interne</strong>
                 <div className="mt-2 text-center">
                   <LatexRenderer latex={"\\frac{b}{a} = b \\times a^{-1}"} />
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Étape 2 : Développement de la puissance</strong>
+                <strong className="text-gray-900">Étape 2 : Développement de la puissance</strong>
                 <div className="mt-2 text-center">
                   <LatexRenderer latex={"\\left( a^7 b^{-5} \\right)^4 = a^{28} b^{-20}"} />
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Étape 3 : Transformation de la division en multiplication</strong>
+                <strong className="text-gray-900">Étape 3 : Transformation de la division en multiplication</strong>
                 <div className="mt-2 text-center">
                   <LatexRenderer latex={"A = \\frac{a^4 \\times b \\times a^{-1}}{a^6 b^3} \\times \\frac{1}{a^{28} b^{-20}} \\times \\frac{a^{-3} b^8}{a^5 b^{10}}"} />
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Étape 4 : Regroupement des puissances</strong>
+                <strong className="text-gray-900">Étape 4 : Regroupement des puissances</strong>
                 <div className="mt-2 space-y-2">
                   <div className="text-center">
                     <LatexRenderer latex={"A = \\frac{a^{4 -1 -6 -28 -3 -5} \\cdot b^{1 -3 +20 +8 -10}}{1}"} />
@@ -180,8 +178,8 @@ const Chapitre1CalculsExercicesPage = () => {
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Résultat final :</strong>
-                <div className="mt-2 text-center bg-green-50 p-3 rounded border">
+                <strong className="text-gray-900">Résultat final :</strong>
+                <div className="mt-2 text-center bg-gray-50 p-3 rounded border">
                   <LatexRenderer latex={"A = a^{-39} b^{16}"} />
                 </div>
               </div>
@@ -201,21 +199,21 @@ const Chapitre1CalculsExercicesPage = () => {
           correction={
             <div className="space-y-4">
               <div>
-                <strong className="text-green-600">Étape 1 : Calcul du discriminant</strong>
+                <strong className="text-gray-900">Étape 1 : Calcul du discriminant</strong>
                 <p className="mt-2">Ici, le trinôme a pour discriminant :</p>
                 <div className="mt-2 text-center">
                   <LatexRenderer latex={"\\Delta = 4^2 - 4 \\times (-2) \\times 6 = 16 + 48 = 64 = 8^2 > 0"} />
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Étape 2 : Calcul des racines</strong>
+                <strong className="text-gray-900">Étape 2 : Calcul des racines</strong>
                 <p className="mt-2">Donc le trinôme admet deux racines distinctes :</p>
                 <div className="mt-2 text-center">
                   <LatexRenderer latex={"x_1 = -1 \\quad \\text{et} \\quad x_2 = 3"} />
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Étape 3 : Factorisation</strong>
+                <strong className="text-gray-900">Étape 3 : Factorisation</strong>
                 <p className="mt-2">Après calculs, on a alors :</p>
                 <div className="mt-2 space-y-2">
                   <div className="text-center">
@@ -227,8 +225,8 @@ const Chapitre1CalculsExercicesPage = () => {
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Résultat final :</strong>
-                <div className="mt-2 text-center bg-green-50 p-3 rounded border">
+                <strong className="text-gray-900">Résultat final :</strong>
+                <div className="mt-2 text-center bg-gray-50 p-3 rounded border">
                   <LatexRenderer latex={"-2x^2 + 4x + 6 = -2(x + 1)(x - 3)"} />
                 </div>
               </div>
@@ -248,14 +246,14 @@ const Chapitre1CalculsExercicesPage = () => {
           correction={
             <div className="space-y-4">
               <div>
-                <strong className="text-green-600">Étape 1 : Rappel du discriminant et des racines</strong>
+                <strong className="text-gray-900">Étape 1 : Rappel du discriminant et des racines</strong>
                 <p className="mt-2">Ici, <span className="inline-block align-middle"><LatexRenderer latex={"\\Delta = 64 = 8^2 > 0"} /></span> donc le trinôme admet deux racines distinctes :</p>
                 <div className="mt-2 text-center">
                   <LatexRenderer latex={"x_1 = -1 \\quad \\text{et} \\quad x_2 = 3"} />
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Étape 2 : Étude du signe</strong>
+                <strong className="text-gray-900">Étape 2 : Étude du signe</strong>
                 <p className="mt-2">Le trinôme est du signe de <span className="inline-block align-middle"><LatexRenderer latex={"-2"} /></span>, c'est-à-dire :</p>
                 <div className="mt-3 space-y-2">
                   <div className="flex items-start gap-2">
@@ -273,9 +271,9 @@ const Chapitre1CalculsExercicesPage = () => {
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Résultat final :</strong>
+                <strong className="text-gray-900">Résultat final :</strong>
                 <p className="mt-2">Ainsi, on a :</p>
-                <div className="mt-2 text-center bg-green-50 p-3 rounded border">
+                <div className="mt-2 text-center bg-gray-50 p-3 rounded border">
                   <LatexRenderer latex={"-2x^2 + 4x + 6 \\geq 0 \\quad \\text{pour } x \\in [-1, 3]"} />
                 </div>
               </div>
@@ -290,15 +288,15 @@ const Chapitre1CalculsExercicesPage = () => {
           content={
             <div>
               <p className="mb-4"><strong>Résoudre l'inéquation <span className="inline-block align-middle"><LatexRenderer latex={"(I_1): \\dfrac{x}{x+1} \\leq \\dfrac{x+1}{x-1}"} /></span></strong></p>
-              <div className="bg-red-50 border-l-4 border-red-400 p-3 mt-4">
-                <p className="text-red-800"><strong>Erreur à éviter :</strong> le produit en croix ici est interdit car on ne connaît pas le signe des expressions en présence.</p>
+              <div className="bg-gray-50 border-l-4 border-gray-400 p-3 mt-4">
+                <p className="text-gray-800"><strong>Erreur à éviter :</strong> le produit en croix ici est interdit car on ne connaît pas le signe des expressions en présence.</p>
               </div>
             </div>
           }
           correction={
             <div className="space-y-4">
               <div>
-                <strong className="text-green-600">Étape 1 : Transformation de l'inéquation</strong>
+                <strong className="text-gray-900">Étape 1 : Transformation de l'inéquation</strong>
                 <p className="mt-2">On a :</p>
                 <div className="mt-2 space-y-2">
                   <div className="text-center">
@@ -313,7 +311,7 @@ const Chapitre1CalculsExercicesPage = () => {
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Étape 2 : Tableau de signes</strong>
+                <strong className="text-gray-900">Étape 2 : Tableau de signes</strong>
                 <p className="mt-2">On obtient le tableau de signes suivant :</p>
                 <div className="mt-4 overflow-x-auto">
                   <div className="flex justify-center">
@@ -363,14 +361,14 @@ const Chapitre1CalculsExercicesPage = () => {
                     </table>
                   </div>
                 </div>
-                <div className="bg-blue-50 border-l-4 border-blue-400 p-3 mt-4">
-                  <p className="text-blue-800"><strong>Remarque :</strong> un dénominateur ne doit pas être nul donc il y a deux double-barres en <span className="inline-block align-middle"><LatexRenderer latex={"x = -1"} /></span> et <span className="inline-block align-middle"><LatexRenderer latex={"x = 1"} /></span>.</p>
+                <div className="bg-gray-50 border-l-4 border-gray-400 p-3 mt-4">
+                  <p className="text-gray-800"><strong>Remarque :</strong> un dénominateur ne doit pas être nul donc il y a deux double-barres en <span className="inline-block align-middle"><LatexRenderer latex={"x = -1"} /></span> et <span className="inline-block align-middle"><LatexRenderer latex={"x = 1"} /></span>.</p>
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Résultat final :</strong>
+                <strong className="text-gray-900">Résultat final :</strong>
                 <p className="mt-2">D'où :</p>
-                <div className="mt-2 text-center bg-green-50 p-3 rounded border">
+                <div className="mt-2 text-center bg-gray-50 p-3 rounded border">
                   <LatexRenderer latex={"S = \\left[ -1, -\\frac{1}{3} \\right] \\cup \\left] 1, +\\infty \\right["} />
                 </div>
               </div>
@@ -390,7 +388,7 @@ const Chapitre1CalculsExercicesPage = () => {
           correction={
             <div className="space-y-4">
               <div>
-                <strong className="text-green-600">Étape 1 : Réorganisation de l'expression</strong>
+                <strong className="text-gray-900">Étape 1 : Réorganisation de l'expression</strong>
                 <div className="mt-2 space-y-2">
                   <div className="text-center">
                     <LatexRenderer latex={"B = \\sqrt{4x^4 - 16yx^2 + 16y^2 - 4x^2}"} />
@@ -401,28 +399,28 @@ const Chapitre1CalculsExercicesPage = () => {
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Étape 2 : Reconnaissance d'une identité remarquable</strong>
+                <strong className="text-gray-900">Étape 2 : Reconnaissance d'une identité remarquable</strong>
                 <p className="mt-2">On reconnaît une identité remarquable usuelle et on obtient :</p>
                 <div className="mt-2 text-center">
                   <LatexRenderer latex={"B = \\sqrt{(2x^2 - 4y)^2} - 4x^2 = |2x^2 - 4y| - 4x^2"} />
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Étape 3 : Distinction de cas</strong>
+                <strong className="text-gray-900">Étape 3 : Distinction de cas</strong>
                 <p className="mt-2 font-semibold">Distinguons alors deux cas :</p>
                 
                 <div className="mt-4 space-y-4">
-                  <div className="bg-blue-50 p-4 rounded-lg">
-                    <p className="font-semibold text-blue-800">1er cas : si <span className="inline-block align-middle"><LatexRenderer latex={"2x^2 - 4y \\leq 0"} /></span></p>
-                    <p className="mt-2 text-blue-800">On a alors :</p>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <p className="font-semibold text-gray-800">1er cas : si <span className="inline-block align-middle"><LatexRenderer latex={"2x^2 - 4y \\leq 0"} /></span></p>
+                    <p className="mt-2 text-gray-800">On a alors :</p>
                     <div className="mt-2 text-center">
                       <LatexRenderer latex={"B = -(2x^2 - 4y) - 4x^2 = 4y - 6x^2"} />
                     </div>
                   </div>
                   
-                  <div className="bg-purple-50 p-4 rounded-lg">
-                    <p className="font-semibold text-purple-800">2ème cas : si <span className="inline-block align-middle"><LatexRenderer latex={"2x^2 - 4y > 0"} /></span></p>
-                    <p className="mt-2 text-purple-800">On obtient alors :</p>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <p className="font-semibold text-gray-800">2ème cas : si <span className="inline-block align-middle"><LatexRenderer latex={"2x^2 - 4y > 0"} /></span></p>
+                    <p className="mt-2 text-gray-800">On obtient alors :</p>
                     <div className="mt-2 text-center">
                       <LatexRenderer latex={"B = (2x^2 - 4y) - 4x^2 = -2x^2 - 4y"} />
                     </div>
@@ -430,14 +428,14 @@ const Chapitre1CalculsExercicesPage = () => {
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Résultat final :</strong>
-                <div className="mt-2 text-center bg-green-50 p-3 rounded border">
+                <strong className="text-gray-900">Résultat final :</strong>
+                <div className="mt-2 text-center bg-gray-50 p-3 rounded border">
                   <LatexRenderer latex={"B = \\begin{cases} 4y - 6x^2 & \\text{si } 2x^2 - 4y \\leq 0 \\\\ -2x^2 - 4y & \\text{si } 2x^2 - 4y > 0 \\end{cases}"} />
                 </div>
               </div>
-              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-yellow-800 mb-3">💡 Commentaires et rappels importants</h4>
-                <div className="space-y-2 text-yellow-800">
+              <div className="bg-gray-50 border-l-4 border-gray-400 p-4 rounded-r-lg">
+                <h4 className="font-semibold text-gray-800 mb-3">💡 Commentaires et rappels importants</h4>
+                <div className="space-y-2 text-gray-800">
                   <div className="flex items-start gap-2">
                     <span className="text-sm">•</span>
                     <span><strong>Astuce :</strong> pour faire disparaître la racine carrée, on a l'idée de faire apparaître un carré à l'intérieur de la racine.</span>
@@ -476,7 +474,7 @@ const Chapitre1CalculsExercicesPage = () => {
           correction={
             <div className="space-y-4">
               <div>
-                <strong className="text-green-600">Étape 1 : Conversion en puissances de 2</strong>
+                <strong className="text-gray-900">Étape 1 : Conversion en puissances de 2</strong>
                 <p className="mt-2">On a :</p>
                 <div className="mt-2 space-y-2">
                   <div className="text-center">
@@ -491,7 +489,7 @@ const Chapitre1CalculsExercicesPage = () => {
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Étape 2 : Simplification des exposants</strong>
+                <strong className="text-gray-900">Étape 2 : Simplification des exposants</strong>
                 <div className="mt-2 space-y-2">
                   <div className="text-center">
                     <LatexRenderer latex={"A = \\frac{2^{21 - 4}}{2^{-6 + 6 + 2}} = \\frac{2^{17}}{2^2} = 2^{15}"} />
@@ -499,14 +497,14 @@ const Chapitre1CalculsExercicesPage = () => {
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Résultat final :</strong>
-                <div className="mt-2 text-center bg-green-50 p-3 rounded border">
+                <strong className="text-gray-900">Résultat final :</strong>
+                <div className="mt-2 text-center bg-gray-50 p-3 rounded border">
                   <LatexRenderer latex={"A = 2^{15}"} />
                 </div>
               </div>
-              <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-blue-800 mb-3">💡 Commentaires et astuces</h4>
-                <div className="space-y-3 text-blue-800">
+              <div className="bg-gray-50 border-l-4 border-gray-400 p-4 rounded-r-lg">
+                <h4 className="font-semibold text-gray-800 mb-3">💡 Commentaires et astuces</h4>
+                <div className="space-y-3 text-gray-800">
                   <div>
                     <strong>Astuce :</strong>
                     <div className="mt-2 text-center">
@@ -545,14 +543,14 @@ const Chapitre1CalculsExercicesPage = () => {
           correction={
             <div className="space-y-4">
               <div>
-                <strong className="text-green-600">Étape 1 : Changement de variable</strong>
+                <strong className="text-gray-900">Étape 1 : Changement de variable</strong>
                 <p className="mt-2">En posant le changement de variable <span className="inline-block align-middle"><LatexRenderer latex={"X = x^2"} /></span>, l'équation devient :</p>
                 <div className="mt-2 text-center">
                   <LatexRenderer latex={"3X^2 + 5X - 2 = 0"} />
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Étape 2 : Résolution du trinôme</strong>
+                <strong className="text-gray-900">Étape 2 : Résolution du trinôme</strong>
                 <p className="mt-2">On reconnaît un trinôme du second degré et on calcule le discriminant :</p>
                 <div className="mt-2 text-center">
                   <LatexRenderer latex={"\\Delta = 5^2 - 4 \\times 3 \\times (-2) = 25 + 24 = 49 > 0"} />
@@ -568,7 +566,7 @@ const Chapitre1CalculsExercicesPage = () => {
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Étape 3 : Retour à la variable x</strong>
+                <strong className="text-gray-900">Étape 3 : Retour à la variable x</strong>
                 <div className="mt-2 space-y-3">
                   <div>
                     <p>L'équation <span className="inline-block align-middle"><LatexRenderer latex={"x^2 = -2"} /></span> n'admet pas de solution réelle.</p>
@@ -582,15 +580,15 @@ const Chapitre1CalculsExercicesPage = () => {
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Résultat final :</strong>
+                <strong className="text-gray-900">Résultat final :</strong>
                 <p className="mt-2">D'où :</p>
-                <div className="mt-2 text-center bg-green-50 p-3 rounded border">
+                <div className="mt-2 text-center bg-gray-50 p-3 rounded border">
                   <LatexRenderer latex={"S = \\left\\{ -\\frac{1}{\\sqrt{3}}, \\frac{1}{\\sqrt{3}} \\right\\}"} />
                 </div>
               </div>
-              <div className="bg-orange-50 border-l-4 border-orange-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-orange-800 mb-3">💡 Commentaires et rappels</h4>
-                <div className="space-y-2 text-orange-800">
+              <div className="bg-gray-50 border-l-4 border-gray-400 p-4 rounded-r-lg">
+                <h4 className="font-semibold text-gray-800 mb-3">💡 Commentaires et rappels</h4>
+                <div className="space-y-2 text-gray-800">
                   <div className="flex items-start gap-2">
                     <span className="text-sm">•</span>
                     <span><strong>Astuce :</strong> poser <span className="inline-block align-middle"><LatexRenderer latex={"X = x^2"} /></span> pour ramener à un trinôme du second degré.</span>
@@ -629,14 +627,14 @@ const Chapitre1CalculsExercicesPage = () => {
           correction={
             <div className="space-y-4">
               <div>
-                <strong className="text-green-600">Étape 1 : Multiplication par la quantité conjuguée</strong>
+                <strong className="text-gray-900">Étape 1 : Multiplication par la quantité conjuguée</strong>
                 <p className="mt-2">En multipliant en haut et en bas par la quantité conjuguée, on a :</p>
                 <div className="mt-2 text-center">
                   <LatexRenderer latex={"C = \\frac{1}{\\sqrt{x^3 - 2} + \\sqrt{x^2 + 1}} \\times \\frac{\\sqrt{x^3 - 2} - \\sqrt{x^2 + 1}}{\\sqrt{x^3 - 2} - \\sqrt{x^2 + 1}}"} />
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Étape 2 : Application de l'identité remarquable</strong>
+                <strong className="text-gray-900">Étape 2 : Application de l'identité remarquable</strong>
                 <p className="mt-2">En reconnaissant une identité remarquable au dénominateur, il vient :</p>
                 <div className="mt-2 space-y-2">
                   <div className="text-center">
@@ -648,20 +646,20 @@ const Chapitre1CalculsExercicesPage = () => {
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Étape 3 : Simplification finale</strong>
+                <strong className="text-gray-900">Étape 3 : Simplification finale</strong>
                 <div className="mt-2 text-center">
                   <LatexRenderer latex={"C = \\frac{\\sqrt{x^3 - 2} - \\sqrt{x^2 + 1}}{x^3 - x^2 - 3}"} />
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Résultat final :</strong>
-                <div className="mt-2 text-center bg-green-50 p-3 rounded border">
+                <strong className="text-gray-900">Résultat final :</strong>
+                <div className="mt-2 text-center bg-gray-50 p-3 rounded border">
                   <LatexRenderer latex={"C = \\frac{\\sqrt{x^3 - 2} - \\sqrt{x^2 + 1}}{x^3 - x^2 - 3}"} />
                 </div>
               </div>
-              <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-purple-800 mb-3">💡 Commentaires et rappels</h4>
-                <div className="space-y-3 text-purple-800">
+              <div className="bg-gray-50 border-l-4 border-gray-400 p-4 rounded-r-lg">
+                <h4 className="font-semibold text-gray-800 mb-3">💡 Commentaires et rappels</h4>
+                <div className="space-y-3 text-gray-800">
                   <div>
                     <p><strong>Astuce :</strong> pour supprimer une somme ou une soustraction de racines carrées, on utilise la <strong>quantité conjuguée</strong>, ce qui permet d'appliquer l'identité remarquable :</p>
                     <div className="mt-2 text-center">
@@ -689,7 +687,7 @@ const Chapitre1CalculsExercicesPage = () => {
           correction={
             <div className="space-y-4">
               <div>
-                <strong className="text-green-600">Étape 1 : Transformation de l'équation</strong>
+                <strong className="text-gray-900">Étape 1 : Transformation de l'équation</strong>
                 <div className="mt-2 space-y-2">
                   <div className="text-center">
                     <LatexRenderer latex={"(E_2) \\Longleftrightarrow e^x + \\frac{1}{e^x} - 2 = 0"} />
@@ -700,7 +698,7 @@ const Chapitre1CalculsExercicesPage = () => {
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Étape 2 : Reconnaissance d'une identité remarquable</strong>
+                <strong className="text-gray-900">Étape 2 : Reconnaissance d'une identité remarquable</strong>
                 <p className="mt-2">On reconnaît une identité remarquable :</p>
                 <div className="mt-2 space-y-2">
                   <div className="text-center">
@@ -718,15 +716,15 @@ const Chapitre1CalculsExercicesPage = () => {
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Résultat final :</strong>
+                <strong className="text-gray-900">Résultat final :</strong>
                 <p className="mt-2">D'où :</p>
-                <div className="mt-2 text-center bg-green-50 p-3 rounded border">
+                <div className="mt-2 text-center bg-gray-50 p-3 rounded border">
                   <LatexRenderer latex={"S = \\{0\\}"} />
                 </div>
               </div>
-              <div className="bg-indigo-50 border-l-4 border-indigo-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-indigo-800 mb-3">💡 Commentaires et rappels</h4>
-                <div className="space-y-3 text-indigo-800">
+              <div className="bg-gray-50 border-l-4 border-gray-400 p-4 rounded-r-lg">
+                <h4 className="font-semibold text-gray-800 mb-3">💡 Commentaires et rappels</h4>
+                <div className="space-y-3 text-gray-800">
                   <div>
                     <p><strong>Astuce :</strong> on remarque que <span className="inline-block align-middle"><LatexRenderer latex={"e^{-x} = \\frac{1}{e^x}"} /></span>, puis on met au même dénominateur.</p>
                   </div>
@@ -761,18 +759,18 @@ const Chapitre1CalculsExercicesPage = () => {
           correction={
             <div className="space-y-4">
               <div>
-                <strong className="text-green-600">Conditions d'existence</strong>
+                <strong className="text-gray-900">Conditions d'existence</strong>
                 <p className="mt-2">Notons tout d'abord que l'équation n'a de sens que pour <span className="inline-block align-middle"><LatexRenderer latex={"x \\geq 0"} /></span>.</p>
               </div>
               <div>
-                <strong className="text-green-600">Changement de variable</strong>
+                <strong className="text-gray-900">Changement de variable</strong>
                 <p className="mt-2">En posant le changement de variable <span className="inline-block align-middle"><LatexRenderer latex={"X = \\sqrt{x}"} /></span>, l'équation devient :</p>
                 <div className="mt-2 text-center">
                   <LatexRenderer latex={"X^2 - X - 2 = 0"} />
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">1ère méthode : Résolution par discriminant</strong>
+                <strong className="text-gray-900">1ère méthode : Résolution par discriminant</strong>
                 <p className="mt-2">On reconnaît un trinôme du second degré, et on calcule le discriminant :</p>
                 <div className="mt-2 text-center">
                   <LatexRenderer latex={"\\Delta = 1^2 - 4 \\times 1 \\times (-2) = 9 > 0"} />
@@ -792,7 +790,7 @@ const Chapitre1CalculsExercicesPage = () => {
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">2ème méthode : Recherche d'une racine évidente</strong>
+                <strong className="text-gray-900">2ème méthode : Recherche d'une racine évidente</strong>
                 <p className="mt-2">En remarquant que <span className="inline-block align-middle"><LatexRenderer latex={"-1"} /></span> est racine évidente de l'équation, on peut effectuer une factorisation :</p>
                 <div className="mt-2 text-center">
                   <LatexRenderer latex={"X^2 - X - 2 = 0 \\Longleftrightarrow (X + 1)(X - 2) = 0"} />
@@ -807,15 +805,15 @@ const Chapitre1CalculsExercicesPage = () => {
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Résultat final :</strong>
+                <strong className="text-gray-900">Résultat final :</strong>
                 <p className="mt-2">D'où :</p>
-                <div className="mt-2 text-center bg-green-50 p-3 rounded border">
+                <div className="mt-2 text-center bg-gray-50 p-3 rounded border">
                   <LatexRenderer latex={"S = \\{4\\}"} />
                 </div>
               </div>
-              <div className="bg-teal-50 border-l-4 border-teal-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-teal-800 mb-3">💡 Commentaires et rappels</h4>
-                <div className="space-y-3 text-teal-800">
+              <div className="bg-gray-50 border-l-4 border-gray-400 p-4 rounded-r-lg">
+                <h4 className="font-semibold text-gray-800 mb-3">💡 Commentaires et rappels</h4>
+                <div className="space-y-3 text-gray-800">
                   <div>
                     <p><strong>Rappel :</strong> la racine carrée d'un nombre négatif n'a pas de sens dans <span className="inline-block align-middle"><LatexRenderer latex={"\\mathbb{R}"} /></span>.</p>
                   </div>
@@ -846,11 +844,11 @@ const Chapitre1CalculsExercicesPage = () => {
           correction={
             <div className="space-y-4">
               <div>
-                <strong className="text-green-600">Conditions d'existence</strong>
+                <strong className="text-gray-900">Conditions d'existence</strong>
                 <p className="mt-2">L'équation n'a de sens que si <span className="inline-block align-middle"><LatexRenderer latex={"x + 3 > 0"} /></span> et <span className="inline-block align-middle"><LatexRenderer latex={"x - 1 > 0"} /></span>, soit <span className="inline-block align-middle"><LatexRenderer latex={"x > 1"} /></span>.</p>
               </div>
               <div>
-                <strong className="text-green-600">Étape 1 : Utilisation des propriétés du logarithme</strong>
+                <strong className="text-gray-900">Étape 1 : Utilisation des propriétés du logarithme</strong>
                 <p className="mt-2">En utilisant les propriétés du logarithme :</p>
                 <div className="mt-2 space-y-2">
                   <div className="text-center">
@@ -862,7 +860,7 @@ const Chapitre1CalculsExercicesPage = () => {
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Étape 2 : Simplification de l'équation</strong>
+                <strong className="text-gray-900">Étape 2 : Simplification de l'équation</strong>
                 <p className="mt-2">L'équation devient :</p>
                 <div className="mt-2 space-y-2">
                   <div className="text-center">
@@ -880,7 +878,7 @@ const Chapitre1CalculsExercicesPage = () => {
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Étape 3 : Résolution du trinôme</strong>
+                <strong className="text-gray-900">Étape 3 : Résolution du trinôme</strong>
                 <p className="mt-2">Calculons le discriminant :</p>
                 <div className="mt-2 text-center">
                   <LatexRenderer latex={"\\Delta = 2^2 - 4 \\times 1 \\times (-7) = 4 + 28 = 32"} />
@@ -896,7 +894,7 @@ const Chapitre1CalculsExercicesPage = () => {
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Étape 4 : Vérification des conditions</strong>
+                <strong className="text-gray-900">Étape 4 : Vérification des conditions</strong>
                 <p className="mt-2">Vérifions que <span className="inline-block align-middle"><LatexRenderer latex={"x > 1"} /></span> :</p>
                 <div className="mt-2 space-y-2">
                   <div>• <span className="inline-block align-middle"><LatexRenderer latex={"x_1 = -1 - 2\\sqrt{2} < 0 < 1"} /></span> : ne convient pas</div>
@@ -904,14 +902,14 @@ const Chapitre1CalculsExercicesPage = () => {
                 </div>
               </div>
               <div>
-                <strong className="text-green-600">Résultat final :</strong>
-                <div className="mt-2 text-center bg-green-50 p-3 rounded border">
+                <strong className="text-gray-900">Résultat final :</strong>
+                <div className="mt-2 text-center bg-gray-50 p-3 rounded border">
                   <LatexRenderer latex={"S = \\{-1 + 2\\sqrt{2}\\}"} />
                 </div>
               </div>
-              <div className="bg-emerald-50 border-l-4 border-emerald-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-emerald-800 mb-3">💡 Commentaires et rappels</h4>
-                <div className="space-y-3 text-emerald-800">
+              <div className="bg-gray-50 border-l-4 border-gray-400 p-4 rounded-r-lg">
+                <h4 className="font-semibold text-gray-800 mb-3">💡 Commentaires et rappels</h4>
+                <div className="space-y-3 text-gray-800">
                   <div>
                     <p><strong>Propriétés utilisées :</strong></p>
                     <div className="ml-4 space-y-1">

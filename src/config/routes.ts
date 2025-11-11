@@ -1533,6 +1533,18 @@ export const routes: RouteConfig[] = [
     protected: false
   },
   {
+    path: '/formation/math/terminale-vers-prepa/calculs-quiz',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/TerminaleVersPrepaQuizPage')),
+    title: 'Quiz - Chapitre 1 : Calculs',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/calculs-flashcards',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/TerminaleVersPrepaFlashcardsPage')),
+    title: 'Flashcards - Chapitre 1 : Calculs',
+    protected: false
+  },
+  {
     path: '/formation/math/terminale-vers-prepa/sommes-suites-cours',
     component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre2-SommesSuites-CoursPage')),
     title: 'Cours - Chapitre 2 : Sommes, suites et produits',
@@ -1542,6 +1554,18 @@ export const routes: RouteConfig[] = [
     path: '/formation/math/terminale-vers-prepa/sommes-suites-exercices',
     component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre2-SommesSuites-ExercicesPage')),
     title: 'Exercices - Chapitre 2 : Sommes, suites et produits',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/sommes-suites-quiz',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/TerminaleVersPrepaQuizPage')),
+    title: 'Quiz - Chapitre 2 : Sommes, suites et produits',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/sommes-suites-flashcards',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/TerminaleVersPrepaFlashcardsPage')),
+    title: 'Flashcards - Chapitre 2 : Sommes, suites et produits',
     protected: false
   },
   {
@@ -1557,6 +1581,18 @@ export const routes: RouteConfig[] = [
     protected: false
   },
   {
+    path: '/formation/math/terminale-vers-prepa/fonctions-quiz',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/TerminaleVersPrepaQuizPage')),
+    title: 'Quiz - Chapitre 3 : Fonctions',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/fonctions-flashcards',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/TerminaleVersPrepaFlashcardsPage')),
+    title: 'Flashcards - Chapitre 3 : Fonctions',
+    protected: false
+  },
+  {
     path: '/formation/math/terminale-vers-prepa/derivees-cours',
     component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre4-Derivees-CoursPage')),
     title: 'Cours - Chapitre 4 : Dérivées',
@@ -1566,6 +1602,18 @@ export const routes: RouteConfig[] = [
     path: '/formation/math/terminale-vers-prepa/derivees-exercices',
     component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre4-Derivees-ExercicesPage')),
     title: 'Exercices - Chapitre 4 : Dérivées',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/derivees-quiz',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/TerminaleVersPrepaQuizPage')),
+    title: 'Quiz - Chapitre 4 : Dérivées',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/derivees-flashcards',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/TerminaleVersPrepaFlashcardsPage')),
+    title: 'Flashcards - Chapitre 4 : Dérivées',
     protected: false
   },
   {
@@ -1581,6 +1629,18 @@ export const routes: RouteConfig[] = [
     protected: false
   },
   {
+    path: '/formation/math/terminale-vers-prepa/integrales-quiz',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/TerminaleVersPrepaQuizPage')),
+    title: 'Quiz - Chapitre 5 : Intégrales',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/integrales-flashcards',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/TerminaleVersPrepaFlashcardsPage')),
+    title: 'Flashcards - Chapitre 5 : Intégrales',
+    protected: false
+  },
+  {
     path: '/formation/math/terminale-vers-prepa/limites-cours',
     component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre6-Limites-CoursPage')),
     title: 'Cours - Chapitre 6 : Limites',
@@ -1593,6 +1653,18 @@ export const routes: RouteConfig[] = [
     protected: false
   },
   {
+    path: '/formation/math/terminale-vers-prepa/limites-quiz',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/TerminaleVersPrepaQuizPage')),
+    title: 'Quiz - Chapitre 6 : Limites',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/limites-flashcards',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/TerminaleVersPrepaFlashcardsPage')),
+    title: 'Flashcards - Chapitre 6 : Limites',
+    protected: false
+  },
+  {
     path: '/formation/math/terminale-vers-prepa/suites-cours',
     component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre3-Suites-CoursPage')),
     title: 'Cours - Chapitre 3 : Suites',
@@ -1602,6 +1674,18 @@ export const routes: RouteConfig[] = [
     path: '/formation/math/terminale-vers-prepa/suites-exercices',
     component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre3-Suites-ExercicesPage')),
     title: 'Exercices - Chapitre 3 : Suites',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/suites-quiz',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/TerminaleVersPrepaQuizPage')),
+    title: 'Quiz - Chapitre 3 : Suites',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/suites-flashcards',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/TerminaleVersPrepaFlashcardsPage')),
+    title: 'Flashcards - Chapitre 3 : Suites',
     protected: false
   },
   {
@@ -1623,9 +1707,33 @@ export const routes: RouteConfig[] = [
     protected: false
   },
   {
+    path: '/formation/math/terminale-vers-prepa/probabilites-quiz',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/TerminaleVersPrepaQuizPage')),
+    title: 'Quiz - Chapitre 6 : Probabilités',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/probabilites-flashcards',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/TerminaleVersPrepaFlashcardsPage')),
+    title: 'Flashcards - Chapitre 6 : Probabilités',
+    protected: false
+  },
+  {
     path: '/formation/math/terminale-vers-prepa/matrice-exercices',
     component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre7-Matrice-ExercicesPage')),
     title: 'Exercices - Chapitre 7 : Matrice',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/matrices-quiz',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/TerminaleVersPrepaQuizPage')),
+    title: 'Quiz - Chapitre 7 : Matrices',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/matrices-flashcards',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/TerminaleVersPrepaFlashcardsPage')),
+    title: 'Flashcards - Chapitre 7 : Matrices',
     protected: false
   },
 

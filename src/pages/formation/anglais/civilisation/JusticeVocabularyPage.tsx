@@ -304,7 +304,7 @@ const JusticeVocabularyPage = () => {
 
               {/* Zone cliquable */}
               <div 
-                className="absolute inset-0 z-10"
+                className="absolute -z-10 inset-0 z-10"
                 onClick={() => setIsFlipped(!isFlipped)}
               />
             </div>

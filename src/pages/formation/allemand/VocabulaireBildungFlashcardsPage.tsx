@@ -275,12 +275,12 @@ const VocabulaireBildungFlashcardsPage = () => {
   return (
     <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
       {/* Floating elements - Orange and blue bubbles */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-5 animate-pulse"></div>
-      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute -z-10 top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute -z-10 top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
 
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40 relative z-10">
@@ -390,14 +390,14 @@ const VocabulaireBildungFlashcardsPage = () => {
           >
             <CardContent className="h-full flex flex-col justify-center items-center p-8 relative">
               {/* Badge catégorie */}
-              <div className="absolute top-4 right-4">
+              <div className="absolute -z-10 top-4 right-4">
                 <Badge className={getCategoryColor(currentCard.category)} variant="secondary">
                   {currentCard.category}
                 </Badge>
               </div>
 
               {/* Indicateur de face */}
-              <div className="absolute top-4 left-4 flex items-center gap-2">
+              <div className="absolute -z-10 top-4 left-4 flex items-center gap-2">
                 {isFlipped ? (
                   <>
                     <Eye className="h-4 w-4 text-orange-600" />

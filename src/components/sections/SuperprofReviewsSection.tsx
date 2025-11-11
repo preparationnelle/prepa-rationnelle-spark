@@ -216,7 +216,7 @@ export const SuperprofReviewsSection = () => {
               const colors = getColorClasses(review.color);
               return (
                 <Link key={index} to="/avis" className="block">
-                  <Card className={`group hover:shadow-xl transition-all duration-300 border-2 ${colors.border} bg-white h-full cursor-pointer`}>
+                  <Card className={`group hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 bg-white rounded-2xl shadow-lg h-full cursor-pointer`}>
                     <CardContent className="p-6 h-full flex flex-col">
                       <div className="flex items-start gap-4">
                         <div className={`w-12 h-12 ${colors.avatar} rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0`}>
@@ -234,7 +234,7 @@ export const SuperprofReviewsSection = () => {
                               {review.content}
                             </p>
                           </div>
-                          <div className="mt-3 text-sm text-blue-600 group-hover:text-blue-700 transition-colors duration-300 font-medium">
+                          <div className="mt-3 text-sm text-orange-600 group-hover:text-orange-700 transition-colors duration-300 font-medium">
                             Voir tous les avis →
                           </div>
                         </div>
@@ -255,7 +255,7 @@ export const SuperprofReviewsSection = () => {
               onClick={() => goToSlide(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 index === currentSlide
-                  ? 'bg-blue-600 scale-125'
+                  ? 'bg-orange-600 scale-125'
                   : 'bg-gray-300 hover:bg-gray-400'
               }`}
               aria-label={`Aller à l'avis ${index + 1}`}
@@ -270,7 +270,7 @@ export const SuperprofReviewsSection = () => {
 
         {/* Final CTA Section */}
         <div className="text-center">
-          <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl mx-auto">
+          <div className="bg-gradient-to-br from-white via-orange-50/30 to-white p-12 rounded-2xl shadow-2xl border border-orange-100 max-w-2xl mx-auto">
             <div className="flex items-center justify-center gap-4 mb-6">
               <div className="flex items-center gap-2">
                 {renderStars()}
@@ -297,7 +297,7 @@ export const SuperprofReviewsSection = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-2 border-blue-500 text-blue-600 hover:bg-blue-50 font-semibold py-3 px-6 text-base shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="border-2 border-orange-600 text-orange-600 hover:bg-orange-50 font-semibold py-3 px-6 text-base shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   Voir tous les avis
                   <Star className="ml-2 h-4 w-4" />

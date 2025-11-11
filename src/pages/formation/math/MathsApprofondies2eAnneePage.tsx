@@ -58,6 +58,7 @@ const MathsApprofondies2eAnneePage = () => {
                 title={chap.title}
                 icon={chap.icon}
                 color={chap.color}
+                symbol={chap.symbol}
                 description={chap.description}
               />
             ))}
@@ -87,6 +88,7 @@ const MathsApprofondies2eAnneePage = () => {
                 title={chap.title}
                 icon={chap.icon}
                 color={chap.color}
+                symbol={chap.symbol}
                 description={chap.description}
               />
             ))}

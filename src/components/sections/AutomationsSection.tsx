@@ -20,7 +20,7 @@ Outils d'intelligence artificielle qui vous font gagner des heures de travail.
           {/* Générateur Langue */}
           <Link to="/generator/languages-unified" className="group">
             <Card className="h-full bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-blue-200 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -z-10 inset-0 bg-gradient-to-br from-orange-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardHeader className="relative z-10">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
@@ -62,7 +62,7 @@ Outils d'intelligence artificielle qui vous font gagner des heures de travail.
           {/* Générateur Géopolitique */}
           <Link to="/generator/geopolitics-unified" className="group">
             <Card className="h-full bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-blue-200 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -z-10 inset-0 bg-gradient-to-br from-orange-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardHeader className="relative z-10">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
@@ -104,7 +104,7 @@ Outils d'intelligence artificielle qui vous font gagner des heures de travail.
           {/* Générateur Oraux */}
           <Link to="/generator/oral-unified" className="group">
             <Card className="h-full bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-blue-200 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -z-10 inset-0 bg-gradient-to-br from-orange-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardHeader className="relative z-10">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">

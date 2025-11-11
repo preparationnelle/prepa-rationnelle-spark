@@ -9,11 +9,11 @@ export const PodcastSection = () => {
   return (
     <section className="py-10 sm:py-14 md:py-16 lg:py-24 px-4 relative overflow-hidden" style={{ backgroundColor: 'var(--section-bg-1)' }}>
       {/* Background */}
-      <div className="absolute inset-0" style={{ backgroundColor: 'var(--section-bg-1)' }}></div>
+      <div className="absolute -z-10 inset-0" style={{ backgroundColor: 'var(--section-bg-1)' }}></div>
       
       {/* Floating elements */}
-      <div className="absolute top-10 left-10 w-24 h-24 bg-orange-200 rounded-full opacity-20 animate-pulse"></div>
-      <div className="absolute bottom-10 right-10 w-20 h-20 bg-blue-200 rounded-full opacity-20 animate-pulse-slow"></div>
+      <div className="absolute -z-10 top-10 left-10 w-24 h-24 bg-orange-200 rounded-full opacity-20 animate-pulse"></div>
+      <div className="absolute -z-10 bottom-10 right-10 w-20 h-20 bg-blue-200 rounded-full opacity-20 animate-pulse-slow"></div>
       
       <div className="container mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
@@ -83,7 +83,7 @@ export const PodcastSection = () => {
             </a>
             
             {/* Europe 1 badge */}
-            <div className="absolute -bottom-4 -right-4 bg-white rounded-lg shadow-lg px-4 py-2 border border-orange-200">
+            <div className="absolute -z-10 -bottom-4 -right-4 bg-white rounded-lg shadow-lg px-4 py-2 border border-orange-200">
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
                 <span className="font-bold text-blue-600">Europe 1</span>

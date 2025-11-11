@@ -16,6 +16,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Éléments de logique',
         icon: BrainCircuit,
         color: 'bg-blue-600',
+        symbol: '∧',
         description: 'Concepts fondamentaux et démonstrations rigoureuses'
       },
       {
@@ -24,6 +25,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Ensembles et applications',
         icon: Shapes,
         color: 'bg-blue-600',
+        symbol: '∈',
         description: 'Concepts fondamentaux et démonstrations rigoureuses'
       },
       {
@@ -32,6 +34,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Sommes, produits & coefficients binomiaux',
         icon: Sigma,
         color: 'bg-blue-600',
+        symbol: '∑',
         description: 'Concepts fondamentaux et démonstrations rigoureuses'
       },
       {
@@ -40,6 +43,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Suites numériques',
         icon: TrendingUp,
         color: 'bg-blue-600',
+        symbol: '→',
         description: 'Concepts fondamentaux et démonstrations rigoureuses'
       },
       {
@@ -48,6 +52,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Fonctions d\'une variable réelle',
         icon: FunctionSquare,
         color: 'bg-blue-600',
+        symbol: 'f',
         description: 'Concepts fondamentaux et démonstrations rigoureuses'
       },
       {
@@ -56,6 +61,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Dérivation',
         icon: Spline,
         color: 'bg-blue-600',
+        symbol: '∂',
         description: 'Concepts fondamentaux et démonstrations rigoureuses'
       },
       {
@@ -64,6 +70,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Intégration sur un segment',
         icon: AreaChart,
         color: 'bg-blue-600',
+        symbol: '∫',
         description: 'Concepts fondamentaux et démonstrations rigoureuses'
       },
       {
@@ -72,6 +79,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Polynômes',
         icon: Cuboid,
         color: 'bg-blue-600',
+        symbol: 'P',
         description: 'Concepts fondamentaux et démonstrations rigoureuses'
       },
       {
@@ -80,6 +88,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Matrices & espaces vectoriels',
         icon: Grid,
         color: 'bg-blue-600',
+        symbol: 'M',
         description: 'Concepts fondamentaux et démonstrations rigoureuses'
       },
       {
@@ -88,6 +97,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Probabilités & conditionnement',
         icon: Dices,
         color: 'bg-blue-600',
+        symbol: 'P',
         description: 'Concepts fondamentaux et démonstrations rigoureuses'
       }
     ]
@@ -102,6 +112,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Applications linéaires & structures vectorielles',
         icon: Move,
         color: 'bg-blue-600',
+        symbol: 'L',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -110,6 +121,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Comparaison — négligeabilité & équivalence',
         icon: Scale,
         color: 'bg-blue-600',
+        symbol: '≈',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -118,6 +130,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Séries numériques',
         icon: InfinityIcon,
         color: 'bg-blue-600',
+        symbol: '∞',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -126,6 +139,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Développements limités & formule de Taylor',
         icon: UnfoldVertical,
         color: 'bg-blue-600',
+        symbol: 'T',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -134,6 +148,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Intégrales impropres & critères de convergence',
         icon: AreaChart,
         color: 'bg-blue-600',
+        symbol: '∫∞',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -142,6 +157,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Espaces probabilisés & conditionnement',
         icon: Dices,
         color: 'bg-blue-600',
+        symbol: 'Ω',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -150,6 +166,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Variables aléatoires discrètes & lois',
         icon: Variable,
         color: 'bg-blue-600',
+        symbol: 'X',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -158,6 +175,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Convergences & théorèmes limites',
         icon: LocateFixed,
         color: 'bg-blue-600',
+        symbol: '⇒',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -166,6 +184,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Équations différentielles avec applications concrètes',
         icon: FunctionSquare,
         color: 'bg-blue-600',
+        symbol: 'dx',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -174,6 +193,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Les chaînes de Markov',
         icon: Move,
         color: 'bg-blue-600',
+        symbol: '→',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -182,6 +202,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'La théorie des graphes approfondie',
         icon: Grid,
         color: 'bg-blue-600',
+        symbol: 'G',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -190,6 +211,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Les statistiques descriptives',
         icon: Cuboid,
         color: 'bg-blue-600',
+        symbol: 'μ',
         description: 'Théorie approfondie et applications pratiques'
       },
       {
@@ -198,6 +220,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         title: 'Python',
         icon: Code,
         color: 'bg-blue-600',
+        symbol: 'Py',
         description: 'Théorie approfondie et applications pratiques'
       }
     ]

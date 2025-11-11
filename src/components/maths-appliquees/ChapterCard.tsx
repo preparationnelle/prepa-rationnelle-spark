@@ -12,6 +12,7 @@ interface ChapterCardProps {
   title: string;
   icon: LucideIcon;
   color: string;
+  symbol: string;
   description?: string;
 }
 
@@ -21,6 +22,7 @@ const ChapterCard: React.FC<ChapterCardProps> = ({
   title,
   icon: Icon,
   color,
+  symbol,
   description = "Théorie approfondie et applications pratiques"
 }) => {
   const allPaths = getAllRoutePaths();
@@ -76,8 +78,9 @@ const ChapterCard: React.FC<ChapterCardProps> = ({
     <Card className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-2 border-gray-100 hover:border-blue-200 h-full flex flex-col">
       <CardHeader className="text-center pb-4">
         <div className={`w-16 h-16 ${color} rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg relative`}>
-          <Icon className="h-8 w-8 text-white" />
-          <div className="absolute -top-1 -right-1 bg-white text-blue-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold border-2 border-blue-600 shadow-sm">
+          <span className="text-2xl font-bold text-white">{symbol}</span>
+          <div className="absolute -top-1 -right-1 bg-white text-blue-600 rounded-full w-8 h-8 flex items-center justify-center text-xs font-bold border-2 border-blue-600 shadow-sm">
+            <Brain className="h-3 w-3 mr-0.5" />
             {id}
           </div>
         </div>

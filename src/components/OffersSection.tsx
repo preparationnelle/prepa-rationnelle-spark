@@ -93,7 +93,7 @@ export const OffersSection = () => {
           <Link to="/chapitres-libres" className="block">
             <Card className="group hover:shadow-xl transition-all duration-300 border-l-4 border-green-500 bg-gradient-to-r from-green-50 to-emerald-50 backdrop-blur-sm hover:bg-white relative overflow-hidden">
               <CardContent className="p-6">
-                <div className="absolute top-2 right-2">
+                <div className="absolute -z-10 top-2 right-2">
                   <span className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">LIBRE</span>
                 </div>
                 <div className="flex items-center gap-4 group-hover:scale-105 transition-transform">
@@ -114,7 +114,7 @@ export const OffersSection = () => {
           <Link to="/offre/gratuite" className="block">
             <Card className="group hover:shadow-xl transition-all duration-300 border-l-4 border-purple-500 bg-gradient-to-r from-purple-50 to-pink-50 backdrop-blur-sm hover:bg-white relative overflow-hidden">
               <CardContent className="p-6">
-                <div className="absolute top-2 right-2">
+                <div className="absolute -z-10 top-2 right-2">
                   <span className="bg-purple-500 text-white text-xs font-bold px-2 py-1 rounded-full">GRATUIT</span>
                 </div>
                 <div className="flex items-center gap-4 group-hover:scale-105 transition-transform">

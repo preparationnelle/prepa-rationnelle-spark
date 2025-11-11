@@ -15,32 +15,6 @@ const Chapitre1ComplementsAlgebreLineaireCoursPage = () => {
       slug="complements-algebre-lineaire"
       showNavigation={true}
     >
-      {/* Navigation vers les ressources */}
-      <Card className="border-0 shadow-lg bg-blue-50">
-        <CardContent className="p-6">
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link to="/formation/maths-complements-algebre-lineaire-exercices">
-              <Button variant="outline" className="border-blue-200 text-blue-600 hover:bg-blue-50">
-                <PenTool className="mr-2 h-4 w-4" />
-                Exercices
-              </Button>
-            </Link>
-            <Link to="/formation/maths-complements-algebre-lineaire-flashcards">
-              <Button variant="outline" className="border-blue-200 text-blue-600 hover:bg-blue-50">
-                <Brain className="mr-2 h-4 w-4" />
-                Flashcards
-              </Button>
-            </Link>
-            <Link to="/formation/maths-complements-algebre-lineaire-quiz">
-              <Button variant="outline" className="border-blue-200 text-blue-600 hover:bg-blue-50">
-                <Target className="mr-2 h-4 w-4" />
-                Quiz
-              </Button>
-            </Link>
-          </div>
-        </CardContent>
-      </Card>
-
       {/* Section 1 — Sommes de deux sous-espaces et supplémentaires */}
       <Card className="border-0 shadow-lg">
         <CardHeader>

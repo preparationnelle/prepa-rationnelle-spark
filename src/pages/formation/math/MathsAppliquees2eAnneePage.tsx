@@ -72,6 +72,7 @@ const MathsAppliquees2eAnneePage = () => {
                 title={chap.title}
                 icon={chap.icon}
                 color={chap.color}
+                symbol={chap.symbol}
                 description={chap.description}
               />
             ))}
@@ -101,6 +102,7 @@ const MathsAppliquees2eAnneePage = () => {
                 title={chap.title}
                 icon={chap.icon}
                 color={chap.color}
+                symbol={chap.symbol}
                 description={chap.description}
               />
             ))}

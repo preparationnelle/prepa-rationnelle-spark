@@ -2,6 +2,8 @@ import React from 'react';
 import 'katex/dist/katex.min.css';
 import katex from 'katex';
 
+// Le rendu utilise \limits pour forcer l'affichage des indices au-dessus et en dessous des symboles
+
 interface LatexRendererProps {
   latex: string;
   inline?: boolean;
@@ -16,7 +18,20 @@ export const LatexRenderer: React.FC<LatexRendererProps> = ({ latex, inline = fa
       throwOnError: false,
       displayMode: block && !inline,
       output: 'html',
-      strict: false,
+      strict: 'ignore',
+      macros: {
+        "\\RR": "\\mathbb{R}",
+        "\\NN": "\\mathbb{N}",
+        "\\ZZ": "\\mathbb{Z}",
+        "\\QQ": "\\mathbb{Q}",
+        "\\CC": "\\mathbb{C}",
+      },
+      trust: false,
+      minRuleThickness: 0.05,
+      maxSize: Infinity,
+      maxExpand: 1000,
+      fleqn: false,
+      leqno: false,
     });
   } catch (e) {
     console.error('Erreur LaTeX:', e, 'pour le contenu:', latex);
