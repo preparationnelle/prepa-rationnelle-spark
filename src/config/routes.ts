@@ -540,6 +540,14 @@ const OteriaMatricesMarkovQCMPage = lazy(() => import('../pages/formation/oteria
 // Chapitre 12 - Arithmétique modulaire & crypto affine
 const OteriaMatricesStochastiquesCoursPage = lazy(() => import('../pages/formation/oteria/OteriaMatricesStochastiquesCoursPage'));
 const OteriaMatricesStochastiquesExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaMatricesStochastiquesExercicesPage'));
+const OteriaMatricesStochastiquesFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaMatricesStochastiquesFlashcardsPage'));
+const OteriaMatricesStochastiquesQCMPage = lazy(() => import('../pages/formation/oteria/OteriaMatricesStochastiquesQCMPage'));
+
+// Extraits de sujets
+const OteriaExtraitsSujetsQCMPage = lazy(() => import('../pages/formation/oteria/OteriaExtraitsSujetsQCMPage'));
+
+// Évaluation finale - Questions ouvertes
+const OteriaEvaluationFinaleQuestionsOuvertesPage = lazy(() => import('../pages/formation/oteria/OteriaEvaluationFinaleQuestionsOuvertesPage'));
 
 const OteriaRecurrenceRecursiviteExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteExercicesPage'));
 const OteriaRecurrenceRecursiviteFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteFlashcardsPage'));
@@ -799,7 +807,15 @@ export const routes: RouteConfig[] = [
 // Chapitre 12 - Arithmétique modulaire & crypto affine
   { path: '/formation/oteria/matrices-stochastiques-cours', component: OteriaMatricesStochastiquesCoursPage, title: 'Arithmétique Modulaire & Crypto - Cours' },
   { path: '/formation/oteria/matrices-stochastiques-exercices', component: OteriaMatricesStochastiquesExercicesPage, title: 'Arithmétique Modulaire & Crypto - Exercices' },
-  
+  { path: '/formation/oteria/matrices-stochastiques-flashcards', component: OteriaMatricesStochastiquesFlashcardsPage, title: 'Arithmétique Modulaire & Crypto - Flashcards' },
+  { path: '/formation/oteria/matrices-stochastiques-qcm', component: OteriaMatricesStochastiquesQCMPage, title: 'Arithmétique Modulaire & Crypto - QCM' },
+
+// Extraits de sujets
+  { path: '/formation/oteria/extraits-sujets-qcm', component: OteriaExtraitsSujetsQCMPage, title: 'Extraits de Sujets - QCM de Révision' },
+
+// Évaluation finale - Questions ouvertes
+  { path: '/formation/oteria/evaluation-finale-questions-ouvertes', component: OteriaEvaluationFinaleQuestionsOuvertesPage, title: 'Évaluation Finale - Questions ouvertes' },
+
   { path: '/formation/oteria/recurrence-recursivite-exercices', component: OteriaRecurrenceRecursiviteExercicesPage, title: 'Récurrence & Récursivité - Exercices' },
   { path: '/formation/oteria/recurrence-recursivite-flashcards', component: OteriaRecurrenceRecursiviteFlashcardsPage, title: 'Récurrence & Récursivité - Flashcards' },
   { path: '/formation/oteria/recurrence-recursivite-qcm', component: OteriaRecurrenceRecursiviteQCMPage, title: 'Récurrence & Récursivité - QCM' },

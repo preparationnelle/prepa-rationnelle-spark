@@ -373,3 +373,6 @@ import html2canvas from 'html2canvas';
 - Conserver la structure des cartes avec les effets de survol
 
 Cette documentation permet de reproduire exactement le même design pour tous les chapitres d'exercices de maths.
+
+
+

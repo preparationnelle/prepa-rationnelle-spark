@@ -448,6 +448,13 @@ const SessionCard = ({ session }) => {
                   Flashcards
                 </Button>
               </Link>
+            ) : session.id === 12 ? (
+              <Link to="/formation/oteria/matrices-stochastiques-flashcards">
+                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
+                  <BrainIcon className="mr-2 h-4 w-4" />
+                  Flashcards
+                </Button>
+              </Link>
             ) : (
               <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
                 <BrainIcon className="mr-2 h-4 w-4" />
@@ -470,6 +477,18 @@ const SessionCard = ({ session }) => {
                   <Button variant="outline" className="w-full border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300 hover:scale-105">
                     <BookOpen className="mr-2 h-4 w-4" />
                     Fiche récapitulative
+                  </Button>
+                </Link>
+                <Link to="/formation/oteria/extraits-sujets-qcm">
+                  <Button variant="outline" className="w-full border-2 border-green-600 text-green-600 hover:bg-green-50 font-medium transition-all duration-300 hover:scale-105">
+                    <TargetIcon className="mr-2 h-4 w-4" />
+                    Extraits de sujets
+                  </Button>
+                </Link>
+                <Link to="/formation/oteria/evaluation-finale-questions-ouvertes">
+                  <Button variant="outline" className="w-full border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-medium transition-all duration-300 hover:scale-105">
+                    <TargetIcon className="mr-2 h-4 w-4" />
+                    Questions ouvertes
                   </Button>
                 </Link>
                 <Link to="/formation/oteria/evaluation-finale">
@@ -536,6 +555,13 @@ const SessionCard = ({ session }) => {
               </Link>
             ) : session.id === 11 ? (
               <Link to="/formation/oteria/matrices-markov-qcm">
+                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
+                  <TargetIcon className="mr-2 h-4 w-4" />
+                  QCM
+                </Button>
+              </Link>
+            ) : session.id === 12 ? (
+              <Link to="/formation/oteria/matrices-stochastiques-qcm">
                 <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
                   <TargetIcon className="mr-2 h-4 w-4" />
                   QCM

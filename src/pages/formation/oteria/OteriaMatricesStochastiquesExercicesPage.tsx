@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Home, ChevronRight, ArrowLeft, Play } from 'lucide-react';
+import { LatexRenderer } from '@/components/LatexRenderer';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -66,97 +67,167 @@ const OteriaMatricesStochastiquesExercicesPage = () => {
                 Exercices d'application
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="bg-white p-6 rounded-lg border border-blue-200">
-                <h3 className="text-lg font-semibold text-blue-800 mb-3">Exercice 1 : Calculs modulaires de base</h3>
-                <p className="text-gray-700 mb-4">
-                  Écrivez des fonctions pour les opérations modulaires de base :
-                  addition, soustraction, multiplication modulo n. Testez avec a=7, b=3, n=5.
-                </p>
-                <div className="bg-gray-50 p-4 rounded mb-4">
-                  <p className="text-sm font-medium text-gray-700 mb-2">Propriétés :</p>
-                  <p className="text-sm text-gray-600">(a + b) mod n = ((a mod n) + (b mod n)) mod n</p>
+            <CardContent className="space-y-8">
+              {/* Exercice 1 */}
+              <div className="space-y-4">
+                <div className="bg-white p-6 rounded-lg border border-blue-200">
+                  <h3 className="text-lg font-semibold text-blue-800 mb-4">Exercice 1 : Suites et divisibilité</h3>
+                  <p className="text-gray-700 mb-4">
+                    On définit, pour tout entier relatif <LatexRenderer latex="n" block={false} />, les suites :
+                  </p>
+                  <div className="bg-blue-50 p-4 rounded mb-4">
+                    <LatexRenderer latex="A_n=(n+3)(2n+5)+17 \quad \text{et} \quad B_n=n+3" block={true} />
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-sm font-medium text-gray-800">a) Développer et réduire <LatexRenderer latex="A_n" block={false} />.</p>
+                    <p className="text-sm font-medium text-gray-800">b) Déterminer tous les entiers <LatexRenderer latex="n\neq -3" block={false} /> tels que <LatexRenderer latex="B_n" block={false} /> divise <LatexRenderer latex="A_n" block={false} />.</p>
+                  </div>
                 </div>
-                <div className="bg-gray-50 p-4 rounded font-mono text-sm">
-                  <p className="text-gray-600"># Votre code ici</p>
-                  <p className="text-gray-600">def mod_add(a, b, n):</p>
-                  <p className="text-gray-600">    return (a + b) % n</p>
-                  <p className="text-gray-600"># ...</p>
+
+                <div className="bg-green-50 p-6 rounded-lg border border-green-200">
+                  <h4 className="text-lg font-semibold text-green-800 mb-4">Corrigé de l'exercice 1</h4>
+                  <div className="space-y-3">
+                    <div>
+                      <p className="font-medium text-green-700">a) Développement :</p>
+                      <div className="bg-white p-3 rounded">
+                        <LatexRenderer latex="(n+3)(2n+5)+17 = 2n^2 + 11n + 32" block={true} />
+                      </div>
+                    </div>
+                    <div>
+                      <p className="font-medium text-green-700">b) Divisibilité :</p>
+                      <p className="text-sm text-gray-700 mb-2">On cherche <LatexRenderer latex="n \neq -3" block={false} /> tel que <LatexRenderer latex="B_n \mid A_n" block={false} /> :</p>
+                      <div className="bg-white p-3 rounded space-y-2">
+                        <LatexRenderer latex="\frac{A_n}{B_n} = \frac{(n+3)(2n+5)+17}{n+3} = 2n+5 + \frac{17}{n+3}" block={true} />
+                        <p className="text-sm">Comme 17 est premier, <LatexRenderer latex="n+3 \in \{1, 17\}" block={false} /></p>
+                        <p className="text-sm">D'où <LatexRenderer latex="n = -2" block={false} /> ou <LatexRenderer latex="n = 14" block={false} /></p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
+              {/* Exercice 2 */}
+              <div className="space-y-4">
               <div className="bg-white p-6 rounded-lg border border-blue-200">
-                <h3 className="text-lg font-semibold text-blue-800 mb-3">Exercice 2 : Algorithme d'Euclide étendu</h3>
+                  <h3 className="text-lg font-semibold text-blue-800 mb-4">Exercice 2 : Divisibilité par 4</h3>
                 <p className="text-gray-700 mb-4">
-                  Implémentez l'algorithme d'Euclide étendu pour calculer le PGCD de deux nombres
-                  et les coefficients de Bézout. Testez avec a=30, b=18.
-                </p>
-                <div className="bg-gray-50 p-4 rounded mb-4">
-                  <p className="text-sm font-medium text-gray-700 mb-2">Rappel :</p>
-                  <p className="text-sm text-gray-600">PGCD(a,b) = d, avec d = a*x + b*y</p>
+                    Montrer que, pour tout <LatexRenderer latex="n\in\mathbb{N}" block={false} />, le nombre <LatexRenderer latex="5^n+19" block={false} /> est divisible par 4.
+                  </p>
+                  <div className="space-y-2">
+                    <p className="text-sm font-medium text-gray-800">a) Exprimer la somme géométrique <LatexRenderer latex="S_n=1+5+5^2+\cdots+5^{n-1}" block={false} /> en fonction de <LatexRenderer latex="n" block={false} />.</p>
+                    <p className="text-sm font-medium text-gray-800">b) En déduire la divisibilité demandée.</p>
+                  </div>
                 </div>
-                <div className="bg-gray-50 p-4 rounded font-mono text-sm">
-                  <p className="text-gray-600"># Votre code ici</p>
-                  <p className="text-gray-600">def extended_gcd(a, b):</p>
-                  <p className="text-gray-600">    # ...</p>
+
+                <div className="bg-green-50 p-6 rounded-lg border border-green-200">
+                  <h4 className="text-lg font-semibold text-green-800 mb-4">Corrigé de l'exercice 2</h4>
+                  <div className="space-y-3">
+                    <div>
+                      <p className="font-medium text-green-700">a) Somme géométrique :</p>
+                      <div className="bg-white p-3 rounded">
+                        <LatexRenderer latex="S_n = \frac{1-5^n}{1-5} = \frac{5^n - 1}{4}" block={true} />
+                      </div>
+                    </div>
+                    <div>
+                      <p className="font-medium text-green-700">b) Divisibilité par 4 :</p>
+                      <div className="bg-white p-3 rounded space-y-2">
+                        <LatexRenderer latex="5^n - 1" block={false} /> est multiple de 4, donc :
+                        <LatexRenderer latex="5^n + 19 = (5^n - 1) + 20" block={true} />
+                        <p className="text-sm">est également multiple de 4 pour tout <LatexRenderer latex="n \in \mathbb{N}" block={false} /></p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
+              {/* Exercice 3 */}
+              <div className="space-y-4">
               <div className="bg-white p-6 rounded-lg border border-blue-200">
-                <h3 className="text-lg font-semibold text-blue-800 mb-3">Exercice 3 : Inverse modulaire</h3>
+                  <h3 className="text-lg font-semibold text-blue-800 mb-4">Exercice 3 : Divisibilité par 2 et 3</h3>
                 <p className="text-gray-700 mb-4">
-                  Calculez l'inverse modulaire de 7 modulo 26 en utilisant l'algorithme d'Euclide étendu.
-                  Vérifiez que 7 × inverse ≡ 1 mod 26.
+                    Démontrer que, pour tout entier relatif <LatexRenderer latex="p" block={false} />, le nombre <LatexRenderer latex="p(p^2-1)" block={false} /> est divisible par 2 et par 3.
                 </p>
-                <div className="bg-gray-50 p-4 rounded mb-4">
-                  <p className="text-sm font-medium text-gray-700 mb-2">Condition :</p>
-                  <p className="text-sm text-gray-600">PGCD(a, n) = 1 pour que l'inverse existe</p>
                 </div>
-                <div className="bg-gray-50 p-4 rounded font-mono text-sm">
-                  <p className="text-gray-600"># Votre code ici</p>
-                  <p className="text-gray-600">def mod_inverse(a, n):</p>
-                  <p className="text-gray-600">    # ...</p>
+
+                <div className="bg-green-50 p-6 rounded-lg border border-green-200">
+                  <h4 className="text-lg font-semibold text-green-800 mb-4">Corrigé de l'exercice 3</h4>
+                  <p className="text-gray-700 mb-3">On factorise :</p>
+                  <div className="bg-white p-3 rounded mb-3">
+                    <LatexRenderer latex="p(p^2-1) = p(p-1)(p+1)" block={true} />
+                  </div>
+                  <div className="space-y-3">
+                    <div>
+                      <p className="font-medium text-green-700">Divisibilité par 2 :</p>
+                      <p className="text-sm text-gray-700">Parmi trois entiers consécutifs p-1, p, p+1, l'un est pair. Le produit est donc divisible par 2.</p>
+                    </div>
+                    <div>
+                      <p className="font-medium text-green-700">Divisibilité par 3 :</p>
+                      <p className="text-sm text-gray-700 mb-2">On discute modulo 3 :</p>
+                      <ul className="text-sm space-y-1 ml-4">
+                        <li>• Si <LatexRenderer latex="p \equiv 0 \pmod{3}" block={false} />, alors <LatexRenderer latex="p(p^2-1) \equiv 0" block={false} /></li>
+                        <li>• Si <LatexRenderer latex="p \equiv 1 \pmod{3}" block={false} />, alors <LatexRenderer latex="p^2-1 \equiv 0" block={false} /></li>
+                        <li>• Si <LatexRenderer latex="p \equiv 2 \pmod{3}" block={false} />, alors <LatexRenderer latex="p^2 \equiv 1" block={false} /> et <LatexRenderer latex="p^2-1 \equiv 0" block={false} /></li>
+                      </ul>
+                      <p className="text-sm mt-2">Dans tous les cas, <LatexRenderer latex="3 \mid p(p^2-1)" block={false} /></p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
+              {/* Exercice 4 */}
+              <div className="space-y-4">
               <div className="bg-white p-6 rounded-lg border border-blue-200">
-                <h3 className="text-lg font-semibold text-blue-800 mb-3">Exercice 4 : Chiffrement affine complet</h3>
+                  <h3 className="text-lg font-semibold text-blue-800 mb-4">Exercice 4 : Divisibilité par 8</h3>
                 <p className="text-gray-700 mb-4">
-                  Implémentez le chiffrement affine complet : E(x) = (a*x + b) mod 26
-                  avec déchiffrement D(y) = a⁻¹*(y - b) mod 26.
-                  Chiffrez le message "HELLO" avec a=5, b=8.
+                    Montrer que, pour tout entier naturel <strong>impair</strong> <LatexRenderer latex="n" block={false} />, le nombre <LatexRenderer latex="n^2-1" block={false} /> est divisible par 8.
                 </p>
-                <div className="bg-gray-50 p-4 rounded mb-4">
-                  <p className="text-sm font-medium text-gray-700 mb-2">Conditions :</p>
-                  <p className="text-sm text-gray-600">PGCD(a, 26) = 1 et a⁻¹ existe modulo 26</p>
                 </div>
-                <div className="bg-gray-50 p-4 rounded font-mono text-sm">
-                  <p className="text-gray-600"># Votre code ici</p>
-                  <p className="text-gray-600">def affine_encrypt(text, a, b):</p>
-                  <p className="text-gray-600">    # ...</p>
-                  <p className="text-gray-600">def affine_decrypt(ciphertext, a, b):</p>
-                  <p className="text-gray-600">    # ...</p>
+
+                <div className="bg-green-50 p-6 rounded-lg border border-green-200">
+                  <h4 className="text-lg font-semibold text-green-800 mb-4">Corrigé de l'exercice 4</h4>
+                  <p className="text-gray-700 mb-3">Si n est impair, il existe <LatexRenderer latex="k \in \mathbb{Z}" block={false} /> tel que <LatexRenderer latex="n = 2k + 1" block={false} />. Alors :</p>
+                  <div className="bg-white p-3 rounded space-y-2">
+                    <LatexRenderer latex="n^2 - 1 = (2k+1)^2 - 1 = 4k^2 + 4k = 4k(k+1)" block={true} />
+                    <p className="text-sm">Or k et k+1 sont deux entiers consécutifs, donc leur produit est pair : <LatexRenderer latex="k(k+1) = 2q" block={false} /></p>
+                    <LatexRenderer latex="n^2 - 1 = 4 \cdot 2q = 8q" block={true} />
+                    <p className="text-sm">Ce qui prouve que <LatexRenderer latex="8 \mid n^2 - 1" block={false} /></p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Exercice 5 */}
+              <div className="space-y-4">
+              <div className="bg-white p-6 rounded-lg border border-blue-200">
+                  <h3 className="text-lg font-semibold text-blue-800 mb-4">Exercice 5 : Congruence et reste</h3>
+                <p className="text-gray-700 mb-4">
+                    Conjecturer puis démontrer le reste de la division euclidienne de <LatexRenderer latex="10^n" block={false} /> par 11 selon la parité de <LatexRenderer latex="n" block={false} />.
+                </p>
+                </div>
+
+                <div className="bg-green-50 p-6 rounded-lg border border-green-200">
+                  <h4 className="text-lg font-semibold text-green-800 mb-4">Corrigé de l'exercice 5</h4>
+                  <p className="text-gray-700 mb-3">Comme <LatexRenderer latex="10 \equiv -1 \pmod{11}" block={false} />, on a :</p>
+                  <div className="bg-white p-3 rounded mb-3">
+                    <LatexRenderer latex="10^n \equiv (-1)^n \pmod{11}" block={true} />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-start gap-2">
+                      <span className="font-medium text-green-700">•</span>
+                      <span>Si n est pair : <LatexRenderer latex="10^n \equiv 1 \pmod{11}" block={false} /> (reste 1)</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="font-medium text-green-700">•</span>
+                      <span>Si n est impair : <LatexRenderer latex="10^n \equiv -1 \equiv 10 \pmod{11}" block={false} /> (reste 10)</span>
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-600 mt-2 italic">
+                    Exemples : <LatexRenderer latex="10^2 = 9 \times 11 + 1" block={false} /> et <LatexRenderer latex="10^3 = 90 \times 11 + 10" block={false} />
+                  </p>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* Solutions */}
-          <Card className="border-0 shadow-lg bg-gradient-to-r from-green-50 to-green-100">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-green-600 flex items-center gap-2">
-                Solutions et corrections
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="bg-white p-4 rounded-lg border border-green-200">
-                <p className="text-green-800">
-                  Les solutions détaillées seront publiées après la séance d'exercices.
-                  N'hésitez pas à poser vos questions pendant la séance !
-                </p>
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </div>
     </div>

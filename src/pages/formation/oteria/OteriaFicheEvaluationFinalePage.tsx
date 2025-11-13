@@ -89,7 +89,7 @@ const OteriaFicheEvaluationFinalePage = () => {
 
                 <div className="bg-white p-4 rounded-lg border border-blue-200 text-center">
                   <div className="font-semibold text-blue-800 mb-2">Durée totale</div>
-                  <div className="text-2xl font-bold text-blue-900">2h</div>
+                  <div className="text-2xl font-bold text-blue-900">2h30</div>
                   <div className="text-sm text-gray-600">Seuil de réussite : 30/50</div>
                 </div>
               </div>
@@ -126,12 +126,12 @@ const OteriaFicheEvaluationFinalePage = () => {
                 <div className="space-y-3">
                   <h4 className="font-semibold text-blue-800">Gestion du temps :</h4>
                   <ul className="text-sm text-gray-700 space-y-1">
-                    <li>• QCM : 25-30 min (questions rapides)</li>
-                    <li>• Questions ouvertes : 25-30 min</li>
-                    <li>• Compréhension code : 15-20 min</li>
-                    <li>• Analyse résultats : 15-20 min</li>
-                    <li>• Écriture programme : 30-35 min</li>
-                    <li>• Laisser 10 min pour relecture</li>
+                    <li>• QCM : 30-35 min (questions rapides)</li>
+                    <li>• Questions ouvertes : 30-35 min</li>
+                    <li>• Compréhension code : 20-25 min</li>
+                    <li>• Analyse résultats : 20-25 min</li>
+                    <li>• Écriture programme : 35-40 min</li>
+                    <li>• Laisser 15 min pour relecture</li>
                   </ul>
 
                   <h4 className="font-semibold text-blue-800">Préparation :</h4>
@@ -195,7 +195,7 @@ const OteriaFicheEvaluationFinalePage = () => {
               <Link to="/formation/oteria/evaluation-finale">
                 <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg">
                   <Target className="mr-2 h-5 w-5" />
-                  Commencer l'évaluation (5 parties - 2h)
+                  Commencer l'évaluation (5 parties - 2h30)
                 </Button>
               </Link>
             </div>
