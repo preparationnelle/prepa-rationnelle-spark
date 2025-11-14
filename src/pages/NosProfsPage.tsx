@@ -51,14 +51,14 @@ const NosProfsPage = () => {
 
   // Composant carte compacte
   const ProfessorCardCompact = ({ professor }: { professor: Professor }) => (
-    <div className={`bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 border ${professor.isFounder ? 'border-orange-200' : 'border-gray-100'} cursor-pointer group`}>
+    <div className={`bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 border ${professor.isFounder ? 'border-orange-300 ring-2 ring-orange-100' : 'border-gray-100'} cursor-pointer group relative overflow-hidden`}>
       {/* Header avec gradient pour le fondateur */}
       {professor.isFounder && (
-        <div className="bg-gradient-to-r from-orange-600 to-orange-500 h-1 rounded-t-2xl"></div>
+        <div className="bg-gradient-to-r from-orange-600 to-orange-500 h-2 rounded-t-2xl absolute top-0 left-0 right-0"></div>
       )}
 
       {/* Photo et infos principales */}
-      <div className="text-center mb-4">
+      <div className={`text-center mb-4 ${professor.isFounder ? 'pt-2' : ''}`}>
         <div className={`w-20 h-20 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 ${professor.isFounder ? 'bg-gradient-to-br from-orange-500 to-orange-600' : 'bg-gradient-to-br from-blue-500 to-blue-600'}`}>
           {professor.name.split(' ').map(n => n[0]).join('')}
         </div>
@@ -390,9 +390,7 @@ const NosProfsPage = () => {
         <div className="sticky top-16 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
           <div className="container mx-auto px-4 py-4">
             <nav className="flex flex-wrap gap-4 justify-center text-sm">
-              <a href="#dimitar" className="hover:text-orange-600 transition-colors font-medium">Dimitar</a>
-              <a href="#juliette" className="hover:text-orange-600 transition-colors font-medium">Juliette</a>
-              <a href="#equipe" className="hover:text-orange-600 transition-colors font-medium">Toute l'équipe</a>
+              <a href="#equipe" className="hover:text-orange-600 transition-colors font-medium">Notre équipe</a>
             </nav>
           </div>
         </div>
@@ -431,41 +429,19 @@ const NosProfsPage = () => {
             </div>
           </div>
 
-          {/* Section Dimitar (Featured) */}
-          <section id="dimitar" className="mb-16 scroll-mt-24">
-            <div className="mb-8 text-center">
-              <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
-                Dimitar Dimitrov
-              </h2>
-              <p className="text-lg text-gray-600">Fondateur & Professeur Principal</p>
-            </div>
-            <ProfessorCardCompact professor={professors[0]} />
-          </section>
-
-          {/* Section Juliette (Featured) */}
-          <section id="juliette" className="mb-16 scroll-mt-24">
-            <div className="mb-8 text-center">
-              <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
-                Juliette Fornas
-              </h2>
-              <p className="text-lg text-gray-600">Professeur de Collège</p>
-            </div>
-            <ProfessorCardCompact professor={professors[1]} />
-          </section>
-
           {/* Section Toute l'équipe */}
           <section id="equipe" className="mb-16 scroll-mt-24">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">
-                Toute l'équipe pédagogique
+              <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
+                Notre équipe pédagogique
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Découvrez tous nos professeurs experts, chacun spécialisé dans son domaine
+                Découvrez tous nos professeurs experts, chacun spécialisé dans son domaine d'excellence
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {professors.slice(2).map((professor) => (
+              {professors.map((professor) => (
                 <ProfessorCardCompact key={professor.id} professor={professor} />
               ))}
             </div>
