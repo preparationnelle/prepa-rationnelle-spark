@@ -58,7 +58,7 @@ const NosProfsPage = () => {
 
   // Composant carte compacte
   const ProfessorCardCompact = ({ professor, index }: { professor: Professor; index: number }) => (
-    <div className={`professor-card bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 border ${professor.isFounder ? 'border-orange-300 ring-2 ring-orange-100' : 'border-gray-100'} cursor-pointer group relative overflow-hidden transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+    <div className={`professor-card bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 border ${professor.isFounder ? 'border-orange-300 ring-2 ring-orange-100' : 'border-gray-100'} cursor-pointer group relative overflow-hidden transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'} flex flex-col h-full`}
          style={{ transitionDelay: `${index * 150}ms` }}>
       {/* Effet shimmer au hover */}
       <div className="card-shimmer absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 transition-opacity duration-500 pointer-events-none"></div>
@@ -67,51 +67,56 @@ const NosProfsPage = () => {
         <div className="bg-gradient-to-r from-orange-600 to-orange-500 h-2 rounded-t-2xl absolute top-0 left-0 right-0 animate-pulse"></div>
       )}
 
-      {/* Photo et infos principales */}
-      <div className={`text-center mb-4 ${professor.isFounder ? 'pt-2' : ''}`}>
-        <div className={`w-20 h-20 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ${professor.isFounder ? 'bg-gradient-to-br from-orange-500 to-orange-600' : 'bg-gradient-to-br from-gray-600 to-gray-800'} group-hover:shadow-2xl`}>
-          {professor.name.split(' ').map(n => n[0]).join('')}
+      {/* Contenu principal - flexible pour pousser le bouton en bas */}
+      <div className="flex-1">
+        {/* Photo et infos principales */}
+        <div className={`text-center mb-4 ${professor.isFounder ? 'pt-2' : ''}`}>
+          <div className={`w-20 h-20 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ${professor.isFounder ? 'bg-gradient-to-br from-orange-500 to-orange-600' : 'bg-gradient-to-br from-gray-600 to-gray-800'} group-hover:shadow-2xl`}>
+            {professor.name.split(' ').map(n => n[0]).join('')}
+          </div>
+
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <h3 className="text-xl font-bold text-gray-900">{professor.name}</h3>
+            {professor.isFounder && (
+              <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                Fondateur
+              </div>
+            )}
+          </div>
+          <p className="text-lg text-orange-600 font-semibold mb-3">{professor.role}</p>
+          <p className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-3">{professor.shortDescription}</p>
         </div>
 
-        <div className="flex items-center justify-center gap-2 mb-2">
-          <h3 className="text-xl font-bold text-gray-900">{professor.name}</h3>
-          {professor.isFounder && (
-            <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
-              Fondateur
-            </div>
-          )}
+        {/* Domaines principaux */}
+        <div className="mb-4">
+          <div className="flex flex-wrap gap-2 justify-center">
+            {professor.mainSubjects.slice(0, 2).map((subject, index) => (
+              <span key={index} className="bg-orange-50 text-orange-600 px-3 py-1 rounded-full text-xs font-medium">
+                {subject}
+              </span>
+            ))}
+            {professor.mainSubjects.length > 2 && (
+              <span className="bg-gray-100 text-gray-500 px-3 py-1 rounded-full text-xs font-medium">
+                +{professor.mainSubjects.length - 2}
+              </span>
+            )}
+          </div>
         </div>
-        <p className="text-lg text-orange-600 font-semibold mb-3">{professor.role}</p>
-        <p className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-3">{professor.shortDescription}</p>
       </div>
 
-      {/* Domaines principaux */}
-      <div className="mb-4">
-        <div className="flex flex-wrap gap-2 justify-center">
-          {professor.mainSubjects.slice(0, 2).map((subject, index) => (
-            <span key={index} className="bg-orange-50 text-orange-600 px-3 py-1 rounded-full text-xs font-medium">
-              {subject}
-            </span>
-          ))}
-          {professor.mainSubjects.length > 2 && (
-            <span className="bg-gray-100 text-gray-500 px-3 py-1 rounded-full text-xs font-medium">
-              +{professor.mainSubjects.length - 2}
-            </span>
-          )}
-        </div>
+      {/* Bouton contacter - aligné en bas */}
+      <div className="mt-auto">
+        <Button
+          onClick={(e) => {
+            e.stopPropagation();
+            openModal(professor);
+          }}
+          className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-medium rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/25 hover:scale-105 active:scale-95"
+        >
+          <MessageCircle className="mr-2 h-4 w-4 group-hover:animate-bounce" />
+          Contacter
+        </Button>
       </div>
-
-      {/* Bouton contacter */}
-      <Button
-        onClick={(e) => {
-          e.stopPropagation();
-          openModal(professor);
-        }}
-        className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-medium rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/25 hover:scale-105 active:scale-95"
-      >
-        <MessageCircle className="mr-2 h-4 w-4 group-hover:animate-bounce" />
-        Contacter
-      </Button>
     </div>
   );
 
