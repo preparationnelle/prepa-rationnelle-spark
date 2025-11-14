@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   GraduationCap,
   Users,
@@ -36,6 +36,13 @@ interface Professor {
 const NosProfsPage = () => {
   const [selectedProfessor, setSelectedProfessor] = useState<Professor | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Trigger animations after component mounts
+    const timer = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   const openModal = (professor: Professor) => {
     setSelectedProfessor(professor);
@@ -50,16 +57,19 @@ const NosProfsPage = () => {
   };
 
   // Composant carte compacte
-  const ProfessorCardCompact = ({ professor }: { professor: Professor }) => (
-    <div className={`bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 border ${professor.isFounder ? 'border-orange-300 ring-2 ring-orange-100' : 'border-gray-100'} cursor-pointer group relative overflow-hidden`}>
+  const ProfessorCardCompact = ({ professor, index }: { professor: Professor; index: number }) => (
+    <div className={`professor-card bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 border ${professor.isFounder ? 'border-orange-300 ring-2 ring-orange-100' : 'border-gray-100'} cursor-pointer group relative overflow-hidden transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+         style={{ transitionDelay: `${index * 150}ms` }}>
+      {/* Effet shimmer au hover */}
+      <div className="card-shimmer absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 transition-opacity duration-500 pointer-events-none"></div>
       {/* Header avec gradient pour le fondateur */}
       {professor.isFounder && (
-        <div className="bg-gradient-to-r from-orange-600 to-orange-500 h-2 rounded-t-2xl absolute top-0 left-0 right-0"></div>
+        <div className="bg-gradient-to-r from-orange-600 to-orange-500 h-2 rounded-t-2xl absolute top-0 left-0 right-0 animate-pulse"></div>
       )}
 
       {/* Photo et infos principales */}
       <div className={`text-center mb-4 ${professor.isFounder ? 'pt-2' : ''}`}>
-        <div className={`w-20 h-20 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 ${professor.isFounder ? 'bg-gradient-to-br from-orange-500 to-orange-600' : 'bg-gradient-to-br from-blue-500 to-blue-600'}`}>
+        <div className={`w-20 h-20 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ${professor.isFounder ? 'bg-gradient-to-br from-orange-500 to-orange-600' : 'bg-gradient-to-br from-blue-500 to-blue-600'} group-hover:shadow-2xl`}>
           {professor.name.split(' ').map(n => n[0]).join('')}
         </div>
 
@@ -97,9 +107,9 @@ const NosProfsPage = () => {
           e.stopPropagation();
           openModal(professor);
         }}
-        className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-medium rounded-xl"
+        className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-medium rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/25 hover:scale-105 active:scale-95"
       >
-        <MessageCircle className="mr-2 h-4 w-4" />
+        <MessageCircle className="mr-2 h-4 w-4 group-hover:animate-bounce" />
         Contacter
       </Button>
     </div>
@@ -385,6 +395,20 @@ const NosProfsPage = () => {
 
   return (
     <>
+      <style>{`
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+
+        .animate-shimmer {
+          animation: shimmer 2s infinite;
+        }
+
+        .professor-card:hover .card-shimmer {
+          opacity: 1;
+        }
+      `}</style>
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
         {/* Header avec navigation sticky */}
         <div className="sticky top-16 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
@@ -398,17 +422,17 @@ const NosProfsPage = () => {
         <div className="container mx-auto px-4 py-12 max-w-6xl">
           {/* Hero Section */}
           <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
+          <h1 className={`text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
             Nos Professeurs
           </h1>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            <p className={`text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
               Découvrez l'équipe pédagogique passionnée qui accompagne vos enfants vers la réussite
             </p>
           </div>
 
           {/* Section Toute l'équipe */}
           <section id="equipe" className="mb-16 scroll-mt-24">
-            <div className="text-center mb-12">
+            <div className={`text-center mb-12 transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
               <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
                 Notre équipe pédagogique
               </h2>
@@ -418,8 +442,8 @@ const NosProfsPage = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {professors.map((professor) => (
-                <ProfessorCardCompact key={professor.id} professor={professor} />
+              {professors.map((professor, index) => (
+                <ProfessorCardCompact key={professor.id} professor={professor} index={index} />
               ))}
             </div>
           </section>
