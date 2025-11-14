@@ -297,6 +297,7 @@ const ConclusionJugerPage = lazy(() => import('../pages/formation/culture-genera
 const NosOffresPage = lazy(() => import('../pages/NosOffresPage'));
 const AproposPage = lazy(() => import('../pages/AproposPage'));
 const DesignSystemPage = lazy(() => import('../pages/DesignSystemPage'));
+const NosProfsPage = lazy(() => import('../pages/NosProfsPage'));
 const ParentPage = lazy(() => import('../pages/ParentPage'));
 const ParentFormPage = lazy(() => import('../pages/ParentFormPage'));
 const ProfesseurPage = lazy(() => import('../pages/ProfesseurPage'));
@@ -717,6 +718,7 @@ export const routes: RouteConfig[] = [
   { path: '/nos-offres', component: NosOffresPage, title: 'Nos Offres' },
   { path: '/apropos', component: AproposPage, title: 'À propos' },
   { path: '/design-system', component: DesignSystemPage, title: 'Design System' },
+  { path: '/nos-profs', component: NosProfsPage, title: 'Nos Professeurs' },
   { path: '/parent', component: ParentPage, title: 'Parent - Accompagnement' },
   { path: '/parent-form', component: ParentFormPage, title: 'Réserver un accompagnement' },
   { path: '/professeur', component: ProfesseurPage, title: 'Professeur - Candidature' },
