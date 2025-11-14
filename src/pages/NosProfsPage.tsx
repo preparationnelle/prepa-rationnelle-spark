@@ -501,9 +501,9 @@ const NosProfsPage = () => {
 
           {/* Footer de la page */}
           <div className="mt-24 text-center pb-12">
-            <p className="text-gray-500 text-sm">
-              Nos Professeurs • Prépa Rationnelle • Excellence pédagogique depuis 2020
-            </p>
+          <p className="text-gray-500 text-sm">
+            Nos Professeurs • Prépa Rationnelle • Excellence pédagogique depuis 2023
+          </p>
           </div>
         </div>
       </div>
