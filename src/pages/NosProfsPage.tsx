@@ -409,26 +409,6 @@ const NosProfsPage = () => {
             </p>
           </div>
 
-          {/* Stats Section */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-            <div className="bg-white rounded-2xl p-6 shadow-lg text-center border border-gray-100">
-              <div className="text-3xl font-bold text-orange-600 mb-2">{professors.length}</div>
-              <div className="text-sm text-gray-600">Professeurs experts</div>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg text-center border border-gray-100">
-              <div className="text-3xl font-bold text-orange-600 mb-2">60+</div>
-              <div className="text-sm text-gray-600">Années d'expérience</div>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg text-center border border-gray-100">
-              <div className="text-3xl font-bold text-orange-600 mb-2">2000+</div>
-              <div className="text-sm text-gray-600">Élèves accompagnés</div>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg text-center border border-gray-100">
-              <div className="text-3xl font-bold text-orange-600 mb-2">98%</div>
-              <div className="text-sm text-gray-600">Taux de satisfaction</div>
-            </div>
-          </div>
-
           {/* Section Toute l'équipe */}
           <section id="equipe" className="mb-16 scroll-mt-24">
             <div className="text-center mb-12">
