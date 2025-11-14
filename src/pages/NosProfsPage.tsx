@@ -260,7 +260,7 @@ const NosProfsPage = () => {
         'Accompagnement personnalisé'
       ],
       achievements: [
-        'Fondateur de Prépa Rationnelle en 2020',
+        'Fondateur de Prépa Rationnelle en 2023',
         '+500 élèves accompagnés vers la réussite',
         'Méthode pédagogique reconnue pour son efficacité',
         'Développement de plateformes éducatives innovantes',
@@ -297,103 +297,428 @@ const NosProfsPage = () => {
       location: 'Paris, France'
     },
     {
-      id: 'marie',
-      name: 'Marie Dubois',
-      role: 'Professeur de Français - Lycée',
-      shortDescription: 'Enseignante de lettres passionnée, Marie aide les élèves à maîtriser l\'expression écrite et orale.',
-      fullDescription: 'Enseignante de lettres passionnée, Marie aide les élèves à maîtriser l\'expression écrite et orale. Spécialiste de la préparation aux épreuves de français du baccalauréat, elle accompagne également les élèves en difficulté.',
-      mainSubjects: ['Français', 'Philosophie', 'Littérature'],
+      id: 'dimitar-maxime',
+      name: 'Dimitar Maxime Parent',
+      role: 'Professeur de Mathématiques',
+      shortDescription: 'Expert en mathématiques appliquées, Maxime excelle dans l\'enseignement des concepts complexes.',
+      fullDescription: 'Mathématicien spécialisé dans les applications pratiques, Maxime Parent maîtrise parfaitement les programmes de mathématiques des classes préparatoires. Il aide les élèves à développer une intuition profonde des concepts mathématiques.',
+      mainSubjects: ['Maths', 'Analyse', 'Algèbre'],
       specialties: [
-        'Français Lycée (Seconde, Première, Terminale)',
-        'Préparation aux épreuves du Bac Français',
-        'Méthodologie de dissertation et commentaire',
-        'Préparation aux concours littéraires',
-        'Accompagnement personnalisé'
+        'Mathématiques MPSI/MP/PC',
+        'Analyse fonctionnelle et complexe',
+        'Algèbre linéaire et géométrie',
+        'Préparation aux concours scientifiques',
+        'Méthodologie de résolution de problèmes'
       ],
       achievements: [
-        '12 ans d\'enseignement en lycée',
-        'Spécialiste des épreuves écrites du bac',
-        'Ancienne correctrice d\'épreuves du baccalauréat',
-        'Méthodes éprouvées pour réussir les dissertations',
-        'Accompagnement de plus de 300 élèves'
+        '5 ans d\'enseignement en classes préparatoires',
+        'Spécialiste des maths appliquées',
+        'Méthodes pédagogiques éprouvées',
+        'Taux de réussite de 88% aux concours',
+        'Auteur d\'exercices originaux'
       ],
-      experience: '12 années d\'enseignement des lettres en lycée',
-      email: 'marie@preparationnelle.fr',
+      experience: '8 années d\'enseignement des mathématiques',
+      email: 'maxime@preparationnelle.fr',
       location: 'Paris, France'
     },
     {
-      id: 'thomas',
-      name: 'Thomas Martin',
-      role: 'Professeur d\'Histoire-Géographie',
-      shortDescription: 'Historien passionné, Thomas rend l\'histoire et la géographie vivantes et accessibles.',
-      fullDescription: 'Historien passionné, Thomas rend l\'histoire et la géographie vivantes et accessibles. Ancien élève de Sciences Po, il maîtrise parfaitement les exigences des épreuves de sciences sociales.',
-      mainSubjects: ['Histoire', 'Géographie', 'SES'],
-      specialties: [
-        'Histoire-Géographie Lycée',
-        'Sciences Économiques et Sociales (SES)',
-        'Préparation aux épreuves du Bac',
-        'Méthodologie de l\'étude de documents',
-        'Préparation aux concours administratifs'
-      ],
-      achievements: [
-        '8 ans d\'enseignement en lycée',
-        'Ancien élève de Sciences Po Paris',
-        'Spécialiste des sciences sociales',
-        'Méthodes innovantes pour mémoriser l\'histoire',
-        'Taux de réussite de 95% aux épreuves'
-      ],
-      experience: '8 années d\'enseignement de l\'histoire-géographie',
-      email: 'thomas@preparationnelle.fr',
-      location: 'Paris, France'
-    },
-    {
-      id: 'sarah',
-      name: 'Sarah Cohen',
-      role: 'Professeur d\'Anglais',
-      shortDescription: 'Native speaker, Sarah enseigne l\'anglais avec authenticité et efficacité.',
-      fullDescription: 'Native speaker originaire de Londres, Sarah enseigne l\'anglais avec authenticité et efficacité. Elle prépare les élèves aux examens Cambridge et au TOEFL avec des méthodes immersives.',
-      mainSubjects: ['Anglais', 'Conversation', 'Examens'],
-      specialties: [
-        'Anglais général et littéraire',
-        'Préparation aux examens Cambridge',
-        'Préparation au TOEFL/TOEIC',
-        'Méthodes d\'apprentissage immersives',
-        'Perfectionnement de la prononciation'
-      ],
-      achievements: [
-        '15 ans d\'expérience en enseignement',
-        'Native speaker britannique',
-        'Certifiée Cambridge English',
-        'Méthodes immersives éprouvées',
-        'Accompagnement de 400+ élèves'
-      ],
-      experience: '15 années d\'enseignement de l\'anglais',
-      email: 'sarah@preparationnelle.fr',
-      location: 'Paris, France'
-    },
-    {
-      id: 'luc',
-      name: 'Luc Bernard',
+      id: 'william',
+      name: 'William Zhou',
       role: 'Professeur de Physique-Chimie',
-      shortDescription: 'Ingénieur physicien, Luc explique les sciences avec clarté et rigueur.',
-      fullDescription: 'Ingénieur physicien diplômé de CentraleSupélec, Luc explique les sciences avec clarté et rigueur. Il aide les élèves à développer une véritable compréhension des phénomènes physiques et chimiques.',
+      shortDescription: 'Physicien passionné, William explique les phénomènes complexes avec une grande pédagogie.',
+      fullDescription: 'Docteur en physique des particules, William Zhou enseigne la physique-chimie avec passion et rigueur. Il aide les élèves à comprendre les concepts fondamentaux et à développer leur esprit scientifique.',
       mainSubjects: ['Physique', 'Chimie', 'Sciences'],
       specialties: [
-        'Physique-Chimie Lycée',
+        'Physique-Chimie Terminale',
+        'Mécanique et thermodynamique',
+        'Chimie organique et inorganique',
         'Préparation aux classes préparatoires',
-        'Méthodologie scientifique',
-        'Résolution de problèmes complexes',
-        'Préparation aux concours scientifiques'
+        'Méthodologie expérimentale'
       ],
       achievements: [
-        '10 ans en enseignement scientifique',
-        'Diplômé de CentraleSupélec',
-        'Ancien ingénieur R&D',
+        'Doctorat en physique des particules',
+        '6 ans d\'enseignement scientifique',
         'Méthodes pédagogiques innovantes',
-        'Taux de réussite de 92% en prépa'
+        'Spécialiste des sciences expérimentales',
+        'Accompagnement personnalisé efficace'
       ],
-      experience: '10 années d\'enseignement des sciences physiques',
-      email: 'luc@preparationnelle.fr',
+      experience: '6 années d\'enseignement des sciences physiques',
+      email: 'william@preparationnelle.fr',
+      location: 'Paris, France'
+    },
+    {
+      id: 'enzo',
+      name: 'Enzo Dubonnet',
+      role: 'Professeur de Français',
+      shortDescription: 'Littéraire passionné, Enzo aide les élèves à maîtriser l\'expression écrite et l\'analyse littéraire.',
+      fullDescription: 'Agrégé de lettres modernes, Enzo Dubonnet est un spécialiste de l\'enseignement du français. Il guide les élèves dans leur compréhension des œuvres littéraires et dans l\'acquisition d\'une expression écrite élégante.',
+      mainSubjects: ['Français', 'Littérature', 'Dissertation'],
+      specialties: [
+        'Français Terminale L/ES/S',
+        'Méthodologie de la dissertation',
+        'Analyse littéraire et stylistique',
+        'Préparation à l\'oral du bac',
+        'Entraînement aux concours'
+      ],
+      achievements: [
+        'Agrégé de lettres modernes',
+        '7 ans d\'enseignement littéraire',
+        'Spécialiste de l\'expression écrite',
+        'Méthodes d\'analyse littéraire éprouvées',
+        'Taux de réussite de 92% aux épreuves'
+      ],
+      experience: '7 années d\'enseignement du français',
+      email: 'enzo@preparationnelle.fr',
+      location: 'Paris, France'
+    },
+    {
+      id: 'raquel',
+      name: 'Raquel Folbaum',
+      role: 'Professeur d\'Espagnol',
+      shortDescription: 'Native speaker espagnole, Raquel enseigne sa langue maternelle avec authenticité.',
+      fullDescription: 'Originaire d\'Espagne, Raquel Folbaum est une native speaker passionnée par l\'enseignement de sa langue. Elle transmet l\'espagnol de manière vivante et culturelle, préparant les élèves aux certifications et aux échanges internationaux.',
+      mainSubjects: ['Espagnol', 'Culture hispanique', 'Conversation'],
+      specialties: [
+        'Espagnol LV1/LV2/LV3',
+        'Préparation au DELF/DALF espagnol',
+        'Grammaire et conjugaison espagnoles',
+        'Civilisation et littérature hispaniques',
+        'Perfectionnement oral et écrit'
+      ],
+      achievements: [
+        'Native speaker espagnole',
+        '9 ans d\'enseignement des langues',
+        'Certifiée DELE',
+        'Méthodes d\'immersion culturelle',
+        'Préparation réussie aux certifications'
+      ],
+      experience: '9 années d\'enseignement de l\'espagnol',
+      email: 'raquel@preparationnelle.fr',
+      location: 'Paris, France'
+    },
+    {
+      id: 'taha',
+      name: 'Taha Dourasse',
+      role: 'Professeur d\'Anglais',
+      shortDescription: 'Spécialiste de l\'anglais académique, Taha prépare les élèves aux examens internationaux.',
+      fullDescription: 'Professeur d\'anglais expérimenté, Taha Dourasse maîtrise parfaitement les exigences des examens Cambridge et TOEFL. Il aide les élèves à développer leurs compétences linguistiques et culturelles.',
+      mainSubjects: ['Anglais', 'Examens', 'Conversation'],
+      specialties: [
+        'Anglais général et littéraire',
+        'Préparation Cambridge FCE/CAE/CPE',
+        'Préparation TOEFL/TOEIC',
+        'Méthodologie d\'examen',
+        'Perfectionnement linguistique'
+      ],
+      achievements: [
+        '8 ans d\'enseignement de l\'anglais',
+        'Spécialiste des examens internationaux',
+        'Méthodes d\'apprentissage efficaces',
+        'Taux de réussite de 95% aux examens',
+        'Accompagnement personnalisé'
+      ],
+      experience: '8 années d\'enseignement de l\'anglais',
+      email: 'taha@preparationnelle.fr',
+      location: 'Paris, France'
+    },
+    {
+      id: 'joana',
+      name: 'Joana Gomes Menezes',
+      role: 'Professeur d\'Histoire-Géographie',
+      shortDescription: 'Historienne passionnée, Joana rend l\'histoire vivante et accessible à tous.',
+      fullDescription: 'Docteure en histoire contemporaine, Joana Gomes Menezes enseigne l\'histoire-géographie avec passion. Elle aide les élèves à comprendre les enjeux contemporains et à développer leur esprit critique.',
+      mainSubjects: ['Histoire', 'Géographie', 'Géopolitique'],
+      specialties: [
+        'Histoire-Géographie Terminale',
+        'Géopolitique internationale',
+        'Histoire contemporaine',
+        'Méthodologie de l\'étude de documents',
+        'Préparation aux épreuves orales'
+      ],
+      achievements: [
+        'Docteure en histoire contemporaine',
+        '6 ans d\'enseignement en lycée',
+        'Spécialiste de la géopolitique',
+        'Méthodes d\'analyse documentaire',
+        'Accompagnement vers l\'excellence'
+      ],
+      experience: '6 années d\'enseignement de l\'histoire-géographie',
+      email: 'joana@preparationnelle.fr',
+      location: 'Paris, France'
+    },
+    {
+      id: 'thomas-y',
+      name: 'Thomas Yilmaz',
+      role: 'Professeur de SES',
+      shortDescription: 'Économiste spécialisé, Thomas enseigne les sciences économiques et sociales.',
+      fullDescription: 'Économiste de formation, Thomas Yilmaz maîtrise parfaitement les programmes de sciences économiques et sociales. Il aide les élèves à comprendre les mécanismes économiques et sociaux contemporains.',
+      mainSubjects: ['SES', 'Économie', 'Sociologie'],
+      specialties: [
+        'Sciences Économiques et Sociales',
+        'Économie et sociologie',
+        'Méthodologie SES',
+        'Préparation aux épreuves terminales',
+        'Analyse de documents économiques'
+      ],
+      achievements: [
+        'Master en économie',
+        '5 ans d\'enseignement des SES',
+        'Spécialiste de l\'économie contemporaine',
+        'Méthodes pédagogiques efficaces',
+        'Résultats excellents aux épreuves'
+      ],
+      experience: '5 années d\'enseignement des sciences économiques',
+      email: 'thomas.y@preparationnelle.fr',
+      location: 'Paris, France'
+    },
+    {
+      id: 'josephine',
+      name: 'Josephine Hall',
+      role: 'Professeur de Philosophie',
+      shortDescription: 'Philosophe engagée, Josephine guide les élèves dans leur réflexion philosophique.',
+      fullDescription: 'Agrégée de philosophie, Josephine Hall accompagne les élèves dans leur découverte de la pensée philosophique. Elle développe leur capacité d\'analyse et d\'argumentation tout en les aidant à construire leur propre réflexion.',
+      mainSubjects: ['Philosophie', 'Pensée critique', 'Éthique'],
+      specialties: [
+        'Philosophie Terminale',
+        'Méthodologie de la dissertation',
+        'Préparation à l\'oral de philosophie',
+        'Histoire de la philosophie',
+        'Développement de la pensée critique'
+      ],
+      achievements: [
+        'Agrégée de philosophie',
+        '8 ans d\'enseignement philosophique',
+        'Spécialiste de la dissertation philosophique',
+        'Méthodes d\'argumentation éprouvées',
+        'Accompagnement personnalisé réussi'
+      ],
+      experience: '8 années d\'enseignement de la philosophie',
+      email: 'josephine@preparationnelle.fr',
+      location: 'Paris, France'
+    },
+    {
+      id: 'audrey',
+      name: 'Audrey Sambot',
+      role: 'Professeur d\'Allemand',
+      shortDescription: 'Native speaker allemande, Audrey enseigne l\'allemand avec méthode et passion.',
+      fullDescription: 'Originaire d\'Allemagne, Audrey Sambot est une native speaker qui enseigne l\'allemand de manière structurée et culturelle. Elle prépare les élèves aux certifications Goethe et aux échanges germanophones.',
+      mainSubjects: ['Allemand', 'Culture germanique', 'Linguistique'],
+      specialties: [
+        'Allemand LV1/LV2/LV3',
+        'Préparation au Goethe-Zertifikat',
+        'Grammaire et conjugaison allemandes',
+        'Civilisation germanophone',
+        'Perfectionnement linguistique'
+      ],
+      achievements: [
+        'Native speaker allemande',
+        '7 ans d\'enseignement des langues',
+        'Certifiée Goethe-Institut',
+        'Méthodes d\'immersion culturelle',
+        'Préparation réussie aux certifications'
+      ],
+      experience: '7 années d\'enseignement de l\'allemand',
+      email: 'audrey@preparationnelle.fr',
+      location: 'Paris, France'
+    },
+    {
+      id: 'guillaume',
+      name: 'Guillaume Grimaud',
+      role: 'Professeur de Mathématiques',
+      shortDescription: 'Mathématicien rigoureux, Guillaume maîtrise tous les aspects des maths prépa.',
+      fullDescription: 'Docteur en mathématiques appliquées, Guillaume Grimaud enseigne les mathématiques avec une rigueur scientifique exceptionnelle. Il aide les élèves à développer une compréhension profonde des concepts mathématiques.',
+      mainSubjects: ['Maths', 'Analyse', 'Probabilités'],
+      specialties: [
+        'Mathématiques MPSI/MP/PC/PT',
+        'Analyse réelle et complexe',
+        'Probabilités et statistiques',
+        'Préparation aux concours',
+        'Méthodologie mathématique'
+      ],
+      achievements: [
+        'Docteur en mathématiques appliquées',
+        '6 ans en classes préparatoires',
+        'Spécialiste des maths avancées',
+        'Méthodes pédagogiques rigoureuses',
+        'Taux de réussite élevé aux concours'
+      ],
+      experience: '6 années d\'enseignement des mathématiques',
+      email: 'guillaume@preparationnelle.fr',
+      location: 'Paris, France'
+    },
+    {
+      id: 'amaury',
+      name: 'Amaury De Balladre',
+      role: 'Professeur de Physique',
+      shortDescription: 'Physicien théoricien, Amaury explique les concepts physiques avec clarté.',
+      fullDescription: 'Physicien spécialisé en physique théorique, Amaury De Balladre enseigne la physique avec une approche conceptuelle approfondie. Il aide les élèves à comprendre les lois fondamentales de la physique.',
+      mainSubjects: ['Physique', 'Mécanique', 'Électromagnétisme'],
+      specialties: [
+        'Physique Terminale et Prépa',
+        'Mécanique classique et relativiste',
+        'Électromagnétisme et optique',
+        'Préparation aux concours scientifiques',
+        'Résolution de problèmes physiques'
+      ],
+      achievements: [
+        'Master en physique théorique',
+        '5 ans d\'enseignement scientifique',
+        'Spécialiste de la physique fondamentale',
+        'Méthodes d\'apprentissage conceptuelles',
+        'Résultats excellents en prépa'
+      ],
+      experience: '5 années d\'enseignement de la physique',
+      email: 'amaury@preparationnelle.fr',
+      location: 'Paris, France'
+    },
+    {
+      id: 'paul',
+      name: 'Paul Syruce',
+      role: 'Professeur de Chimie',
+      shortDescription: 'Chimiste passionné, Paul rend la chimie accessible et fascinante.',
+      fullDescription: 'Docteur en chimie organique, Paul Syruce enseigne la chimie avec enthousiasme et pédagogie. Il aide les élèves à comprendre les réactions chimiques et les mécanismes moléculaires.',
+      mainSubjects: ['Chimie', 'Réactions', 'Molécules'],
+      specialties: [
+        'Chimie Terminale et Prépa',
+        'Chimie organique et inorganique',
+        'Thermodynamique chimique',
+        'Préparation aux TP de chimie',
+        'Méthodologie expérimentale'
+      ],
+      achievements: [
+        'Docteur en chimie organique',
+        '4 ans d\'enseignement scientifique',
+        'Spécialiste des réactions chimiques',
+        'Méthodes pédagogiques innovantes',
+        'Accompagnement réussi en prépa'
+      ],
+      experience: '4 années d\'enseignement de la chimie',
+      email: 'paul@preparationnelle.fr',
+      location: 'Paris, France'
+    },
+    {
+      id: 'charlotte',
+      name: 'Charlotte Princen',
+      role: 'Professeur de SVT',
+      shortDescription: 'Biologiste enthousiaste, Charlotte fait découvrir les sciences de la vie.',
+      fullDescription: 'Docteure en biologie moléculaire, Charlotte Princen enseigne les sciences de la vie avec passion. Elle aide les élèves à comprendre les mécanismes biologiques et l\'évolution du vivant.',
+      mainSubjects: ['SVT', 'Biologie', 'Écologie'],
+      specialties: [
+        'Sciences de la Vie et de la Terre',
+        'Biologie cellulaire et moléculaire',
+        'Écologie et évolution',
+        'Préparation aux épreuves pratiques',
+        'Méthodologie scientifique'
+      ],
+      achievements: [
+        'Docteure en biologie moléculaire',
+        '5 ans d\'enseignement des SVT',
+        'Spécialiste de la biologie moderne',
+        'Méthodes pédagogiques engageantes',
+        'Résultats excellents au bac'
+      ],
+      experience: '5 années d\'enseignement des sciences de la vie',
+      email: 'charlotte@preparationnelle.fr',
+      location: 'Paris, France'
+    },
+    {
+      id: 'leandre',
+      name: 'Léandre Passoire',
+      role: 'Professeur d\'Informatique',
+      shortDescription: 'Informaticien passionné, Léandre enseigne la programmation et l\'algorithmique.',
+      fullDescription: 'Ingénieur en informatique, Léandre Passoire est un expert en programmation et algorithmique. Il initie les élèves aux langages de programmation et à la résolution informatique de problèmes.',
+      mainSubjects: ['Informatique', 'Python', 'Algorithmique'],
+      specialties: [
+        'Informatique pour Prépa ECG',
+        'Programmation Python avancée',
+        'Algorithmique et structures de données',
+        'Résolution de problèmes informatiques',
+        'Préparation aux TP d\'informatique'
+      ],
+      achievements: [
+        'Ingénieur en informatique',
+        '4 ans d\'enseignement de l\'informatique',
+        'Expert en programmation Python',
+        'Méthodes pédagogiques modernes',
+        'Accompagnement réussi des débutants'
+      ],
+      experience: '4 années d\'enseignement de l\'informatique',
+      email: 'leandre@preparationnelle.fr',
+      location: 'Paris, France'
+    },
+    {
+      id: 'pierre-antoine',
+      name: 'Pierre-Antoine Blonsard',
+      role: 'Professeur de Géopolitique',
+      shortDescription: 'Géopolitologue expérimenté, Pierre-Antoine analyse les grands enjeux mondiaux.',
+      fullDescription: 'Docteur en sciences politiques, Pierre-Antoine Blonsard est un spécialiste de la géopolitique internationale. Il aide les élèves à comprendre les dynamiques mondiales et les enjeux contemporains.',
+      mainSubjects: ['Géopolitique', 'Relations internationales', 'Stratégie'],
+      specialties: [
+        'Géopolitique internationale',
+        'Relations internationales',
+        'Stratégies géopolitiques',
+        'Analyse des conflits mondiaux',
+        'Préparation aux épreuves orales'
+      ],
+      achievements: [
+        'Docteur en sciences politiques',
+        '6 ans d\'enseignement supérieur',
+        'Spécialiste de la géopolitique',
+        'Méthodes d\'analyse géopolitique',
+        'Publications académiques'
+      ],
+      experience: '6 années d\'enseignement de la géopolitique',
+      email: 'pierre-antoine@preparationnelle.fr',
+      location: 'Paris, France'
+    },
+    {
+      id: 'valentin',
+      name: 'Valentin Ganne',
+      role: 'Professeur de Mathématiques',
+      shortDescription: 'Mathématicien créatif, Valentin développe l\'intuition mathématique des élèves.',
+      fullDescription: 'Mathématicien spécialisé dans l\'enseignement, Valentin Ganne aide les élèves à développer leur intuition mathématique. Il combine rigueur et créativité pour rendre les maths accessibles.',
+      mainSubjects: ['Maths', 'Géométrie', 'Calcul'],
+      specialties: [
+        'Mathématiques lycée et prépa',
+        'Géométrie et trigonométrie',
+        'Calcul intégral et différentiel',
+        'Méthodologie de résolution',
+        'Préparation aux olympiades'
+      ],
+      achievements: [
+        '7 ans d\'enseignement mathématique',
+        'Spécialiste des maths créatives',
+        'Méthodes d\'intuition mathématique',
+        'Succès aux compétitions mathématiques',
+        'Accompagnement personnalisé'
+      ],
+      experience: '7 années d\'enseignement des mathématiques',
+      email: 'valentin@preparationnelle.fr',
+      location: 'Paris, France'
+    },
+    {
+      id: 'charlie',
+      name: 'Charlie Demule',
+      role: 'Professeur d\'Arts',
+      shortDescription: 'Artiste et pédagogue, Charlie développe la sensibilité artistique des élèves.',
+      fullDescription: 'Artiste plasticien et historien de l\'art, Charlie Demule enseigne les arts avec passion. Il aide les élèves à développer leur sensibilité artistique et leur capacité d\'analyse esthétique.',
+      mainSubjects: ['Arts plastiques', 'Histoire de l\'art', 'Créativité'],
+      specialties: [
+        'Arts plastiques lycée',
+        'Histoire de l\'art',
+        'Analyse d\'œuvres d\'art',
+        'Techniques artistiques',
+        'Préparation à l\'option arts'
+      ],
+      achievements: [
+        'Artiste plasticien reconnu',
+        '8 ans d\'enseignement artistique',
+        'Expositions personnelles',
+        'Méthodes créatives d\'enseignement',
+        'Accompagnement artistique personnalisé'
+      ],
+      experience: '8 années d\'enseignement des arts',
+      email: 'charlie@preparationnelle.fr',
       location: 'Paris, France'
     }
   ];
