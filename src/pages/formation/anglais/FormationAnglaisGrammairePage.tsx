@@ -262,12 +262,6 @@ const FormationAnglaisGrammairePage = () => {
                         <Calendar className="mr-2 h-4 w-4" />
                         Étudier ce chapitre
                       </Button>
-                      <Link to="/formation/anglais/grammaire/gerondif-infinitif/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
                     </div>
                   </div>
                 </div>
@@ -289,12 +283,6 @@ const FormationAnglaisGrammairePage = () => {
                         <Calendar className="mr-2 h-4 w-4" />
                         Étudier ce chapitre
                       </Button>
-                      <Link to="/formation/anglais/grammaire/comparatifs/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
                     </div>
                   </div>
                 </div>
@@ -316,12 +304,6 @@ const FormationAnglaisGrammairePage = () => {
                         <Calendar className="mr-2 h-4 w-4" />
                         Étudier ce chapitre
                       </Button>
-                      <Link to="/formation/anglais/grammaire/questions/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
                     </div>
                   </div>
                 </div>
@@ -343,12 +325,6 @@ const FormationAnglaisGrammairePage = () => {
                         <Calendar className="mr-2 h-4 w-4" />
                         Étudier ce chapitre
                       </Button>
-                      <Link to="/formation/anglais/grammaire/expressions-temps/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
                     </div>
                   </div>
                 </div>
@@ -370,12 +346,6 @@ const FormationAnglaisGrammairePage = () => {
                         <Calendar className="mr-2 h-4 w-4" />
                         Étudier ce chapitre
                       </Button>
-                      <Link to="/formation/anglais/grammaire/concordance/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
                     </div>
                   </div>
                 </div>
@@ -397,12 +367,6 @@ const FormationAnglaisGrammairePage = () => {
                         <Calendar className="mr-2 h-4 w-4" />
                         Étudier ce chapitre
                       </Button>
-                      <Link to="/formation/anglais/grammaire/quantifieurs/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
                     </div>
                   </div>
                 </div>
@@ -424,12 +388,6 @@ const FormationAnglaisGrammairePage = () => {
                         <Calendar className="mr-2 h-4 w-4" />
                         Étudier ce chapitre
                       </Button>
-                      <Link to="/formation/anglais/grammaire/subjunctif/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
                     </div>
                   </div>
                 </div>
@@ -451,12 +409,6 @@ const FormationAnglaisGrammairePage = () => {
                         <Calendar className="mr-2 h-4 w-4" />
                         Étudier ce chapitre
                       </Button>
-                      <Link to="/formation/anglais/grammaire/inversions/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
                     </div>
                   </div>
                 </div>
@@ -478,12 +430,6 @@ const FormationAnglaisGrammairePage = () => {
                         <Calendar className="mr-2 h-4 w-4" />
                         Étudier ce chapitre
                       </Button>
-                      <Link to="/formation/anglais/grammaire/connecteurs/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
                     </div>
                   </div>
                 </div>
@@ -505,12 +451,6 @@ const FormationAnglaisGrammairePage = () => {
                         <Calendar className="mr-2 h-4 w-4" />
                         Étudier ce chapitre
                       </Button>
-                      <Link to="/formation/anglais/grammaire/verbes-irreguliers/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
                     </div>
                   </div>
                 </div>
@@ -532,12 +472,6 @@ const FormationAnglaisGrammairePage = () => {
                         <Calendar className="mr-2 h-4 w-4" />
                         Étudier ce chapitre
                       </Button>
-                      <Link to="/formation/anglais/grammaire/causatives/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
                     </div>
                   </div>
                 </div>
@@ -559,12 +493,6 @@ const FormationAnglaisGrammairePage = () => {
                         <Calendar className="mr-2 h-4 w-4" />
                         Étudier ce chapitre
                       </Button>
-                      <Link to="/formation/anglais/grammaire/nuances-lexicales/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
                     </div>
                   </div>
                 </div>
