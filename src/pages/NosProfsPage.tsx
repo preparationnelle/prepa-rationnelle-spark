@@ -398,12 +398,9 @@ const NosProfsPage = () => {
         <div className="container mx-auto px-4 py-12 max-w-6xl">
           {/* Hero Section */}
           <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-bold mb-4">
-              Nos
-              <span className="block mt-2 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
-                Professeurs
-              </span>
-            </h1>
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
+            Nos Professeurs
+          </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Découvrez l'équipe pédagogique passionnée qui accompagne vos enfants vers la réussite
             </p>
