@@ -69,7 +69,7 @@ const NosProfsPage = () => {
 
       {/* Photo et infos principales */}
       <div className={`text-center mb-4 ${professor.isFounder ? 'pt-2' : ''}`}>
-        <div className={`w-20 h-20 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ${professor.isFounder ? 'bg-gradient-to-br from-orange-500 to-orange-600' : 'bg-gradient-to-br from-blue-500 to-blue-600'} group-hover:shadow-2xl`}>
+        <div className={`w-20 h-20 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ${professor.isFounder ? 'bg-gradient-to-br from-orange-500 to-orange-600' : 'bg-gradient-to-br from-gray-600 to-gray-800'} group-hover:shadow-2xl`}>
           {professor.name.split(' ').map(n => n[0]).join('')}
         </div>
 
