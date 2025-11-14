@@ -341,6 +341,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
             
             <Link to="/generator" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Générateur</Link>
             <Link to="/apropos" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>À propos</Link>
+            <Link to="/nos-profs" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Nos Professeurs</Link>
 
             {/* Menu déroulant "Niveau d'étude" avec hover */}
             <div
@@ -561,6 +562,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
           <Link to="/avis" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Avis</Link>
           <Link to="/generator" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Générateur</Link>
           <Link to="/apropos" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>À propos</Link>
+          <Link to="/nos-profs" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Nos Professeurs</Link>
           <Link to="/articles/primaire" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Primaire</Link>
       <Link to="/articles/college" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Collège</Link>
       <Link to="/articles/lycee" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Lycée</Link>
