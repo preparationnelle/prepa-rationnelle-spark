@@ -675,6 +675,7 @@ export const relativesExercises: RelativesExercise[] = [
 ];
 
 export const relativesCategories = [
+  "toutes",
   "who/which/that",
   "whose",
   "where/when",

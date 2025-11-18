@@ -640,6 +640,7 @@ export const comparativesSuperlatifsExercises: ComparativesSuperlatifsExercise[]
 ];
 
 export const comparativesSuperlatifsCategories = [
+  "toutes",
   "formation comparatifs courts",
   "formation comparatifs longs",
   "formation superlatifs courts",

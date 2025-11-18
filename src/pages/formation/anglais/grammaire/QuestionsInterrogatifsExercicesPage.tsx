@@ -29,9 +29,9 @@ import {
   BarChart3,
   X
 } from 'lucide-react';
-import { relativesExercises, getRelativesExercisesByType, relativesCategories } from '@/data/englishRelativesExercisesData';
+import { questionsInterrogativesExercises, getQuestionsInterrogativesExercisesByType, questionsInterrogativesExerciseCategories } from '@/data/englishQuestionsInterrogativesExercisesData';
 
-const RelativesExercicesPage = () => {
+const QuestionsInterrogatifsExercicesPage = () => {
   const [showHints, setShowHints] = useState<{ [key: string]: boolean }>({});
   const [showCorrections, setShowCorrections] = useState<{ [key: string]: boolean }>({});
   const [userAnswers, setUserAnswers] = useState<{ [key: string]: string }>({});
@@ -59,7 +59,7 @@ const RelativesExercicesPage = () => {
   };
 
   // Filtered exercises based on type and category/level
-  const filteredExercises = filterExercises(getRelativesExercisesByType(selectedExerciseType));
+  const filteredExercises = filterExercises(getQuestionsInterrogativesExercisesByType(selectedExerciseType));
   const currentExercise = filteredExercises[currentExerciseIndex];
 
   // Keyboard navigation for exercises
@@ -93,7 +93,7 @@ const RelativesExercicesPage = () => {
   };
 
   const validateAnswer = (exerciseId: string) => {
-    const exercise = relativesExercises.find(ex => ex.id === exerciseId);
+    const exercise = questionsInterrogativesExercises.find(ex => ex.id === exerciseId);
     if (!exercise) return;
 
     const userAnswer = userAnswers[exerciseId];
@@ -352,8 +352,8 @@ const RelativesExercicesPage = () => {
               Grammaire
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/anglais/grammaire/relatives" className="hover:text-gray-900 transition-colors">
-              Articles & Déterminants
+            <Link to="/formation/anglais/grammaire/questions" className="hover:text-gray-900 transition-colors">
+              Questions and Interrogatives
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
             <span className="text-gray-900 font-bold">Exercises</span>
@@ -368,10 +368,10 @@ const RelativesExercicesPage = () => {
             <div className="p-3 rounded-lg bg-blue-600 text-white">
               <Brain className="h-9 w-9" />
             </div>
-            Relative Clauses - Exercises
+            Questions and Interrogatives - Exercises
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Master English relatives (a/an/the) and determiners (some/any, much/many, little/few) through interactive exercises.
+            Master question formation in English through interactive exercises. Practice with who, what, where, when, why, how, which, whose, how much, and how many.
           </p>
         </div>
 
@@ -407,7 +407,7 @@ const RelativesExercicesPage = () => {
                   onChange={(e) => setSelectedCategory(e.target.value)}
                   className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
-                  {relativesCategories.map(category => (
+                  {questionsInterrogativesExerciseCategories.map(category => (
                     <option key={category} value={category}>
                       {category === 'toutes' ? 'All Categories' : category}
                     </option>
@@ -424,9 +424,9 @@ const RelativesExercicesPage = () => {
                   className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="tous">All Levels</option>
-                  <option value="débutant">Beginner</option>
-                  <option value="intermédiaire">Intermediate</option>
-                  <option value="avancé">Advanced</option>
+                  <option value="beginner">Beginner</option>
+                  <option value="intermediate">Intermediate</option>
+                  <option value="advanced">Advanced</option>
                 </select>
               </div>
             </div>
@@ -551,8 +551,8 @@ const RelativesExercicesPage = () => {
               <CardTitle className={`text-3xl flex items-center justify-center gap-3 ${examMode ? 'text-blue-800' : 'text-blue-800'}`}>
                 <Award className="h-8 w-8" />
                 {examMode ? 'Exam Results' : 'Your Score'} : {score}%
-            </CardTitle>
-          </CardHeader>
+              </CardTitle>
+            </CardHeader>
             <CardContent className="text-center">
               {examMode && examTime > 0 && (
                 <div className="mb-4 p-3 bg-blue-100 rounded-lg border border-blue-200">
@@ -567,7 +567,7 @@ const RelativesExercicesPage = () => {
                 {score >= 80 ? (
                   <div className="flex items-center justify-center gap-2">
                     <Trophy className="h-6 w-6 text-yellow-500" />
-                    {examMode ? 'Congratulations! You passed the exam successfully.' : 'Excellent! You have a good command of relatives and determiners.'}
+                    {examMode ? 'Congratulations! You passed the exam successfully.' : 'Excellent! You have a good command of question formation.'}
                   </div>
                 ) : score >= 50 ? (
                   <div className="flex items-center justify-center gap-2">
@@ -577,25 +577,25 @@ const RelativesExercicesPage = () => {
                 ) : ( // Less than 50%
                   <div className="flex items-center justify-center gap-2">
                     <BarChart3 className="h-6 w-6 text-orange-500" />
-                    {examMode ? 'Keep practicing! Review the material and try again.' : 'Keep practicing! Review relatives and determiners and try again.'}
-              </div>
+                    {examMode ? 'Keep practicing! Review the material and try again.' : 'Keep practicing! Review question words and try again.'}
+                  </div>
                 )}
               </div>
               <div className="mt-6">
                 <p className="text-sm text-gray-600">
-                  {examMode ? 'Exam completed.' : 'Practice more to improve your understanding of relatives and determiners.'}
+                  {examMode ? 'Exam completed.' : 'Practice more to improve your understanding of interrogative structures.'}
                 </p>
-            </div>
-          </CardContent>
-        </Card>
+              </div>
+            </CardContent>
+          </Card>
         )}
 
         {/* Bouton retour */}
         <div className="flex justify-center mt-12">
-          <Link to="/formation/anglais/grammaire/relatives">
+          <Link to="/formation/anglais/grammaire/questions">
             <Button variant="outline" className="flex items-center gap-2">
               <ArrowLeft className="h-4 w-4" />
-              Back to Relative Clauses
+              Back to Questions and Interrogatives
             </Button>
           </Link>
         </div>
@@ -604,4 +604,4 @@ const RelativesExercicesPage = () => {
   );
 };
 
-export default RelativesExercicesPage;
+export default QuestionsInterrogatifsExercicesPage;

@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
 import { MathFlashcards } from '@/components/MathFlashcards';
 import { mathFlashcardsData } from '@/data/mathFlashcardsData';
+import { mathsAppliqueesFlashcards } from '@/data/mathsAppliqueesFlashcards';
 
 // Mapping slug -> meta
 const CHAPTERS: Record<string, { number: number; title: string; key?: string }> = {
@@ -57,12 +58,37 @@ const getAdjacentChapters = (currentSlug: string) => {
   };
 };
 
+// Liste des slugs qui appartiennent aux maths appliquées
+const MATHS_APPLIQUEES_SLUGS = [
+  'elements-de-logique',
+  'ensembles-et-applications',
+  'sommes-produits-coefficients-binomiaux',
+  'suites-numeriques',
+  'fonctions-d-une-variable-reelle',
+  'derivation',
+  'integration-sur-un-segment',
+  'polynomes',
+  'matrices-espaces-vectoriels',
+  'probabilites-conditionnement',
+  'applications-lineaires-structures-vectorielles',
+  'comparaison-negligeabilite-equivalence',
+  'series-numeriques',
+  'developpements-limites-formule-de-taylor',
+  'integrales-impropres-criteres-de-convergence',
+  'espaces-probabilises-conditionnement',
+  'variables-aleatoires-discretes-lois',
+  'convergences-theoremes-limites'
+];
+
 const MathsApprofondiesFlashcardsPage: React.FC = () => {
   const { pathname } = useLocation();
   // Expect paths like /formation/maths-<slug>-flashcards
   const match = pathname.match(/\/formation\/maths-(.*)-flashcards$/);
   const slug = match?.[1] || '';
   const meta = CHAPTERS[slug];
+
+  // Déterminer si c'est un chapitre de maths appliquées
+  const isMathsAppliquees = MATHS_APPLIQUEES_SLUGS.includes(slug);
 
   // Trouver les chapitres adjacents
   const { previous: previousChapter, next: nextChapter } = getAdjacentChapters(slug);
@@ -80,8 +106,10 @@ const MathsApprofondiesFlashcardsPage: React.FC = () => {
     );
   }
 
-  const flashcardsKey = meta.key || keyFromNumber(meta.number);
-  const flashcards = (mathFlashcardsData as any)[flashcardsKey] as any[] | undefined;
+  // Choisir la source de données appropriée
+  const flashcardsDataSource = isMathsAppliquees ? mathsAppliqueesFlashcards : mathFlashcardsData;
+  const flashcardsKey = isMathsAppliquees ? slug : (meta.key || keyFromNumber(meta.number));
+  const flashcards = (flashcardsDataSource as any)[flashcardsKey] as any[] | undefined;
 
   if (!flashcards || flashcards.length === 0) {
     return (

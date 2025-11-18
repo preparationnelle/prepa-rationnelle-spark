@@ -817,6 +817,7 @@ export const gerondifInfinitifExercises: GerondifInfinitifExercise[] = [
 ];
 
 export const gerondifInfinitifCategories = [
+  "toutes",
   "gerund only verbs",
   "infinitive only verbs",
   "verbs with both forms",

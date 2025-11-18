@@ -125,7 +125,7 @@ export const AutoPhraseGenerator = ({ language, onPhraseGenerated }: AutoPhraseG
                   {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                 </Button>
               </div>
-              <p className="text-lg font-medium text-orange-900 italic">
+              <p className="text-lg font-medium text-orange-900 italic break-words whitespace-pre-wrap leading-relaxed">
                 "{currentPhrase.french}"
               </p>
             </div>
@@ -135,7 +135,7 @@ export const AutoPhraseGenerator = ({ language, onPhraseGenerated }: AutoPhraseG
               <h3 className="text-sm font-semibold text-orange-700 mb-2">
                 {language === 'fr' ? 'Traduction de référence (Anglais)' : 'Reference translation (English)'}
               </h3>
-              <p className="text-lg font-medium text-orange-900 italic">
+              <p className="text-lg font-medium text-orange-900 italic break-words whitespace-pre-wrap">
                 "{currentPhrase.reference}"
               </p>
             </div>

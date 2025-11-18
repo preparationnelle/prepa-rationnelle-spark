@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { ChevronRight, Home, FileText, BookOpen } from 'lucide-react';
+import { ChevronRight, Home, FileText, BookOpen, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const GeopolitiquePremiereAnneePage = () => {
@@ -95,10 +95,24 @@ const GeopolitiquePremiereAnneePage = () => {
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">{sujet.title}</h3>
                     <p className="text-gray-600 mb-4">{sujet.description}</p>
-                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
+                    <div className="flex flex-wrap gap-3" onClick={(e) => e.stopPropagation()}>
                       <Link to={sujet.to} className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md">
-                        <FileText className="h-4 w-4" />
+                        <BookOpen className="w-4 h-4" />
                         Accéder au cours
+                      </Link>
+                      <Link to={
+                        sujet.id === 1 ? "/formation/geopolitique/premiere-annee/espaces-maritimes/chronologie" :
+                        sujet.id === 2 ? "/formation/geopolitique/premiere-annee/espaces-maritimes-tensions/chronologie" :
+                        sujet.id === 3 ? "/formation/geopolitique/premiere-annee/energies/chronologie" :
+                        sujet.id === 4 ? "/formation/geopolitique/premiere-annee/gouvernance-mondiale/chronologie" :
+                        sujet.id === 5 ? "/formation/geopolitique/premiere-annee/guerres/chronologie" :
+                        sujet.id === 6 ? "/formation/geopolitique/premiere-annee/migrations/chronologie" :
+                        sujet.id === 7 ? "/formation/geopolitique/premiere-annee/puissance/chronologie" :
+                        sujet.id === 8 ? "/formation/geopolitique/premiere-annee/ressources-strategiques/chronologie" :
+                        "/formation/geopolitique/chronologie"
+                      } className="inline-flex items-center gap-2 bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md">
+                        <Globe className="w-4 h-4" />
+                        Chronologie
                       </Link>
                       <Link to={
                         sujet.id === 1 ? "/formation/geopolitique/premiere-annee/espaces-maritimes/flashcards" :
@@ -111,8 +125,8 @@ const GeopolitiquePremiereAnneePage = () => {
                         sujet.id === 8 ? "/formation/geopolitique/premiere-annee/ressources-strategiques/flashcards" :
                         "/formation/geopolitique/flashcards"
                       } className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md">
-                        <BookOpen className="h-4 w-4" />
-                        Accéder aux flashcards
+                        <FileText className="w-4 h-4" />
+                        Flash cards
                       </Link>
                     </div>
                   </div>

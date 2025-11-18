@@ -23,7 +23,7 @@ const ChapterCard: React.FC<ChapterCardProps> = ({
   icon: Icon,
   color,
   symbol,
-  description = "Théorie approfondie et applications pratiques"
+  description = "Théorie approfondie et applications pratiques Cours Exercices Quiz Flashcards"
 }) => {
   const allPaths = getAllRoutePaths();
 
@@ -34,43 +34,10 @@ const ChapterCard: React.FC<ChapterCardProps> = ({
 
   const hasCourse = allPaths.includes(coursePath);
   const hasExercises = allPaths.includes(exercisesPath);
-  const hasFlashcards = allPaths.includes(flashcardsPath);
+  const hasFlashcards = true; // Always show flashcards button
 
-  // Liste explicite des slugs qui ont des quiz
-  const quizSlugs = [
-    'elements-de-logique',
-    'ensembles-et-applications',
-    'sommes-produits-coefficients-binomiaux',
-    'suites-numeriques',
-    'fonctions-d-une-variable-reelle',
-    'derivation',
-    'integration-sur-un-segment',
-    'polynomes',
-    'matrices-espaces-vectoriels',
-    'algebre-bilineaire-espaces-euclidiens',
-    'probabilites-conditionnement',
-    'applications-lineaires-structures-vectorielles',
-    'comparaison-negligeabilite-equivalence',
-    'series-numeriques',
-    'developpements-limites-formule-de-taylor',
-    'integrales-impropres-criteres-de-convergence',
-    'espaces-probabilises-conditionnement',
-    'variables-aleatoires-discretes-lois',
-    'convergences-theoremes-limites',
-    'complements-algebre-lineaire',
-    'endomorphismes-matrices-avancees',
-    'algebre-bilineaire',
-    'fonctions-multivariees-calcul-differentiel',
-    'variables-aleatoires-densite',
-    'n-uplets-variables-aleatoires',
-    'couple-variables-aleatoires',
-    'reduction-matrices-symetriques',
-    'optimisation-multivariee-avancee',
-    'convergences-approximations',
-    'estimation-statistique-avancee'
-  ];
 
-  const hasQuiz = quizSlugs.includes(slug);
+  const hasQuiz = true; // Always show quiz button
 
   const resolvedCourseHref = hasCourse ? coursePath : (hasExercises ? exercisesPath : undefined);
 

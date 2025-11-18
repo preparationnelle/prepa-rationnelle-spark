@@ -33,39 +33,39 @@ const UnionEuropeennePageSimple = () => {
           {/* Plan de la dissertation */}
           <Card className="mt-8 bg-white border border-gray-200 shadow-none">
             <CardHeader>
-              <CardTitle className="text-base font-semibold text-gray-900 text-center">
+              <CardTitle className="text-base font-semibold text-gray-900">
                 Plan de la dissertation
               </CardTitle>
             </CardHeader>
             <CardContent className="text-center">
-              <div className="inline-block text-left space-y-4 max-w-2xl">
-                <div>
-                  <h4 className="text-sm font-medium text-gray-900 mb-2">
+              <div className="space-y-6 max-w-2xl mx-auto">
+                <div className="text-left">
+                  <h4 className="text-sm font-medium text-gray-900 mb-3">
                     I. Historique de la construction européenne
                   </h4>
-                  <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                  <ul className="list-disc pl-6 text-sm text-gray-700 space-y-2">
                     <li>I.1 - L'idée de la construction européenne</li>
                     <li>I.2 - Coopération, rivalités et ingérences</li>
                     <li>I.3 - Modèle et puissance de l'Europe</li>
                   </ul>
                 </div>
 
-                <div>
-                  <h4 className="text-sm font-medium text-gray-900 mb-2">
+                <div className="text-left">
+                  <h4 className="text-sm font-medium text-gray-900 mb-3">
                     II. Les défis contemporains de l'Union européenne
                   </h4>
-                  <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                  <ul className="list-disc pl-6 text-sm text-gray-700 space-y-2">
                     <li>II.1 - Les dépendances de l'Europe</li>
                     <li>II.2 - Une polycrise : typologie des défis</li>
                     <li>II.3 - Désillusions européennes</li>
                   </ul>
                 </div>
 
-                <div>
-                  <h4 className="text-sm font-medium text-gray-900 mb-2">
+                <div className="text-left">
+                  <h4 className="text-sm font-medium text-gray-900 mb-3">
                     III. Les voies de l'avenir et la réinvention de l'Europe
                   </h4>
-                  <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                  <ul className="list-disc pl-6 text-sm text-gray-700 space-y-2">
                     <li>III.1 - Une Europe plurielle : confrontée aux crises</li>
                     <li>III.2 - La stratégie de l'UE : le tournant actuel</li>
                     <li>III.3 - L'UE, groupement supranational de 27 pays</li>
@@ -1375,18 +1375,43 @@ const UnionEuropeennePageSimple = () => {
             </CardContent>
           </Card>
 
+        {/* Ressources complémentaires */}
+        <Card className="mt-8 border border-gray-200 bg-white">
+          <CardContent className="p-6">
+            <div className="text-center">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                Ressources complémentaires
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
+                <Link to="/formation/geopolitique/union-europeenne-flashcards" className="block">
+                  <div className="border border-gray-300 text-gray-600 py-3 px-4 rounded-lg text-center hover:bg-gray-50 transition-colors cursor-pointer text-sm font-medium">
+                    Flashcards
+                  </div>
+                </Link>
+                <div className="border border-gray-300 text-gray-400 py-3 px-4 rounded-lg text-center text-sm font-medium opacity-50">
+                  Chronologie
+                </div>
+                <div className="border border-gray-300 text-gray-400 py-3 px-4 rounded-lg text-center text-sm font-medium opacity-50">
+                  Dissertations
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Note */}
         <Card className="mt-8 bg-gray-50 border border-gray-200">
           <CardContent className="p-6">
             <p className="text-gray-700 text-sm">
               Cette page présente maintenant tout le contenu détaillé de l'Union européenne de manière linéaire,
               sans menus déroulants mais avec un style monochrome sobre pour une meilleure lisibilité.
+              Utilisez les flashcards pour réviser les concepts clés.
             </p>
           </CardContent>
         </Card>
       </div>
     </div>
-    </div>
   );
 };
+
 export default UnionEuropeennePageSimple;

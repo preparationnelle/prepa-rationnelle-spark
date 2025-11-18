@@ -32,6 +32,7 @@ const AnglaisDiscoursIndirectExercicesPage = lazy(() => import('../pages/formati
 const AnglaisModauxPage = lazy(() => import('../pages/formation/anglais/grammaire/ModauxPage'));
 const AnglaisModauxExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/ModauxExercicesPage'));
 const AnglaisPrepositionsPhrasalVerbsPage = lazy(() => import('../pages/formation/anglais/grammaire/PrepositionsPhrasalVerbsPage'));
+const AnglaisPrepositionsPhrasalVerbsExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/PrepositionsPhrasalVerbsExercicesPage'));
 const AnglaisArticlesDeterminantsPage = lazy(() => import('../pages/formation/anglais/grammaire/ArticlesDeterminantsPage'));
 const AnglaisArticlesDeterminantsExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/ArticlesDeterminantsExercicesPage'));
 const AnglaisRelativesExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/RelativesExercicesPage'));
@@ -41,15 +42,25 @@ const AnglaisGerondifInfinitifPage = lazy(() => import('../pages/formation/angla
 const AnglaisComparatifsSuperlatifsPage = lazy(() => import('../pages/formation/anglais/grammaire/ComparatifsSuperlatifsPage'));
 const AnglaisComparatifsSuperlatifsExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/ComparatifsSuperlatifsExercicesPage'));
 const AnglaisQuestionsInterrogatifsPage = lazy(() => import('../pages/formation/anglais/grammaire/QuestionsInterrogatifsPage'));
+const AnglaisQuestionsInterrogatifsExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/QuestionsInterrogatifsExercicesPage'));
 const AnglaisExpressionsTempsPage = lazy(() => import('../pages/formation/anglais/grammaire/ExpressionsTempsPage'));
+const AnglaisExpressionsTempsExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/ExpressionsTempsExercicesPage'));
 const AnglaisConcordanceTempsPage = lazy(() => import('../pages/formation/anglais/grammaire/ConcordanceTempsPage'));
+const AnglaisConcordanceTempsExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/ConcordanceTempsExercicesPage'));
 const AnglaisQuantifieursPage = lazy(() => import('../pages/formation/anglais/grammaire/QuantifieursPage'));
+const AnglaisQuantifieursExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/QuantifieursExercicesPage'));
 const AnglaisSubjunctifPage = lazy(() => import('../pages/formation/anglais/grammaire/SubjunctifPage'));
+const AnglaisSubjunctifExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/SubjunctifExercicesPage'));
 const AnglaisInversionsEmphasePage = lazy(() => import('../pages/formation/anglais/grammaire/InversionsEmphasePage'));
+const AnglaisInversionsEmphaseExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/InversionsEmphaseExercicesPage'));
 const AnglaisConnecteursLogiquesPage = lazy(() => import('../pages/formation/anglais/grammaire/ConnecteursLogiquesPage'));
+const AnglaisConnecteursLogiquesExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/ConnecteursLogiquesExercicesPage'));
 const AnglaisVerbesIrreguliersPage = lazy(() => import('../pages/formation/anglais/grammaire/VerbesIrreguliersPage'));
+const AnglaisVerbesIrreguliersExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/VerbesIrreguliersExercicesPage'));
 const AnglaisCausativesPage = lazy(() => import('../pages/formation/anglais/grammaire/CausativesPage'));
+const AnglaisCausativesExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/CausativesExercicesPage'));
 const AnglaisNuancesLexicalesPage = lazy(() => import('../pages/formation/anglais/grammaire/NuancesLexicalesPage'));
+const AnglaisNuancesLexicalesExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/NuancesLexicalesExercicesPage'));
 const FormationAnglaisCivilisationPage = lazy(() => import('../pages/formation/anglais/FormationAnglaisCivilisationPage'));
 const AnglaisCivilisationOverviewPage = lazy(() => import('../pages/formation/anglais/CivilisationOverviewPage'));
 const AnglaisEnvironmentPage = lazy(() => import('../pages/formation/anglais/civilisation/EnvironmentPage'));
@@ -214,10 +225,16 @@ const GeopolitiqueDeuxiemeAnneePage = lazy(() => import('../pages/formation/geop
 const GeopolitiqueSujetsProbablesPage = lazy(() => import('../pages/formation/geopolitique/GeopolitiqueSujetsProbablesPage'));
 const ContinentAfricainPage = lazy(() => import('../pages/formation/geopolitique/ContinentAfricainPage'));
 const ContinentAfricainChronologiePage = lazy(() => import('../pages/formation/geopolitique/ContinentAfricainChronologiePage'));
+const ContinentAfricainFlashcardsPage = lazy(() => import('../pages/formation/geopolitique/ContinentAfricainFlashcardsPage'));
 const ProcheMoyenOrientPage = lazy(() => import('../pages/formation/geopolitique/ProcheMoyenOrientPage'));
 const ProcheMoyenOrientChronologiePage = lazy(() => import('../pages/formation/geopolitique/ProcheMoyenOrientChronologiePage'));
+const ProcheMoyenOrientFlashcardsPage = lazy(() => import('../pages/formation/geopolitique/ProcheMoyenOrientFlashcardsPage'));
+const AmeriqueNordFlashcardsPage = lazy(() => import('../pages/formation/geopolitique/AmeriqueNordFlashcardsPage'));
+const AmeriqueLatineFlashcardsPage = lazy(() => import('../pages/formation/geopolitique/AmeriqueLatineFlashcardsPage'));
+const AsieFlashcardsPage = lazy(() => import('../pages/formation/geopolitique/AsieFlashcardsPage'));
 const ChronologieEuropePage = lazy(() => import('../pages/formation/geopolitique/ChronologieEuropePage'));
 const UnionEuropeennePageSimple = lazy(() => import('../pages/formation/geopolitique/UnionEuropeennePageSimple'));
+const UnionEuropeenneFlashcardsPage = lazy(() => import('../pages/formation/geopolitique/UnionEuropeenneFlashcardsPage'));
 const AmeriqueLatinePage = lazy(() => import('../pages/formation/geopolitique/AmeriqueLatinePage'));
 const AsieChronologiePage = lazy(() => import('../pages/formation/geopolitique/AsieChronologiePage'));
 const AmeriqueLatineChronologiePage = lazy(() => import('../pages/formation/geopolitique/AmeriqueLatineChronologiePage'));
@@ -877,6 +894,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/anglais/grammaire/modaux', component: AnglaisModauxPage, title: 'Modaux et Auxiliaires' },
   { path: '/formation/anglais/grammaire/modaux/exercices', component: AnglaisModauxExercicesPage, title: 'Exercices Modaux' },
   { path: '/formation/anglais/grammaire/prepositions', component: AnglaisPrepositionsPhrasalVerbsPage, title: 'Prépositions & Phrasal Verbs' },
+  { path: '/formation/anglais/grammaire/prepositions/exercices', component: AnglaisPrepositionsPhrasalVerbsExercicesPage, title: 'Exercices Prépositions & Phrasal Verbs' },
   { path: '/formation/anglais/grammaire/articles', component: AnglaisArticlesDeterminantsPage, title: 'Articles & Déterminants' },
   { path: '/formation/anglais/grammaire/articles/exercices', component: AnglaisArticlesDeterminantsExercicesPage, title: 'Exercices Articles & Déterminants' },
   { path: '/formation/anglais/grammaire/relatives/exercices', component: AnglaisRelativesExercicesPage, title: 'Exercices Subordonnées Relatives' },
@@ -886,15 +904,25 @@ export const routes: RouteConfig[] = [
   { path: '/formation/anglais/grammaire/comparatifs', component: AnglaisComparatifsSuperlatifsPage, title: 'Comparatifs & Superlatifs' },
   { path: '/formation/anglais/grammaire/comparatifs/exercices', component: AnglaisComparatifsSuperlatifsExercicesPage, title: 'Exercices Comparatifs & Superlatifs' },
   { path: '/formation/anglais/grammaire/questions', component: AnglaisQuestionsInterrogatifsPage, title: 'Questions & Interrogatifs' },
+  { path: '/formation/anglais/grammaire/questions/exercices', component: AnglaisQuestionsInterrogatifsExercicesPage, title: 'Exercices Questions & Interrogatifs' },
   { path: '/formation/anglais/grammaire/expressions-temps', component: AnglaisExpressionsTempsPage, title: 'Expressions de temps' },
+  { path: '/formation/anglais/grammaire/expressions-temps/exercices', component: AnglaisExpressionsTempsExercicesPage, title: 'Exercices Expressions de temps' },
   { path: '/formation/anglais/grammaire/concordance', component: AnglaisConcordanceTempsPage, title: 'Concordance des temps' },
+  { path: '/formation/anglais/grammaire/concordance/exercices', component: AnglaisConcordanceTempsExercicesPage, title: 'Exercices Concordance des temps' },
   { path: '/formation/anglais/grammaire/quantifieurs', component: AnglaisQuantifieursPage, title: 'Quantifieurs' },
+  { path: '/formation/anglais/grammaire/quantifieurs/exercices', component: AnglaisQuantifieursExercicesPage, title: 'Exercices Quantifieurs' },
   { path: '/formation/anglais/grammaire/subjunctif', component: AnglaisSubjunctifPage, title: 'Subjunctif & Structures Subjectives' },
+  { path: '/formation/anglais/grammaire/subjunctif/exercices', component: AnglaisSubjunctifExercicesPage, title: 'Exercices Subjunctif' },
   { path: '/formation/anglais/grammaire/inversions', component: AnglaisInversionsEmphasePage, title: 'Inversions & Emphase' },
+  { path: '/formation/anglais/grammaire/inversions/exercices', component: AnglaisInversionsEmphaseExercicesPage, title: 'Exercices Inversions & Emphase' },
   { path: '/formation/anglais/grammaire/connecteurs', component: AnglaisConnecteursLogiquesPage, title: 'Connecteurs logiques' },
+  { path: '/formation/anglais/grammaire/connecteurs/exercices', component: AnglaisConnecteursLogiquesExercicesPage, title: 'Exercices Connecteurs logiques' },
   { path: '/formation/anglais/grammaire/verbes-irreguliers', component: AnglaisVerbesIrreguliersPage, title: 'Verbes irréguliers' },
+  { path: '/formation/anglais/grammaire/verbes-irreguliers/exercices', component: AnglaisVerbesIrreguliersExercicesPage, title: 'Exercices Verbes irréguliers' },
   { path: '/formation/anglais/grammaire/causatives', component: AnglaisCausativesPage, title: 'Structures causatives' },
+  { path: '/formation/anglais/grammaire/causatives/exercices', component: AnglaisCausativesExercicesPage, title: 'Exercices Structures causatives' },
   { path: '/formation/anglais/grammaire/nuances-lexicales', component: AnglaisNuancesLexicalesPage, title: 'Nuances lexicales' },
+  { path: '/formation/anglais/grammaire/nuances-lexicales/exercices', component: AnglaisNuancesLexicalesExercicesPage, title: 'Exercices Nuances lexicales' },
   { path: '/formation/anglais/civilisation', component: FormationAnglaisCivilisationPage, title: 'Civilisation Anglaise' },
   { path: '/formation/anglais/civilisation/environment', component: AnglaisEnvironmentPage, title: 'Environment and Ecology' },
   { path: '/formation/anglais/civilisation/environment/vocabulary', component: AnglaisEnvironmentVocabularyPage, title: 'Environment Vocabulary - Flashcards' },
@@ -1072,21 +1100,35 @@ export const routes: RouteConfig[] = [
   { path: '/formation/geopolitique', component: FormationGeopolitiquePage, title: 'Formation Géopolitique' },
   { path: '/formation/geopolitique/premiere-annee', component: GeopolitiquePremiereAnneePage, title: 'Géopolitique - Première Année' },
   { path: '/formation/geopolitique/premiere-annee/espaces-maritimes', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/EspacesMaritimesPage')), title: 'Espaces maritimes' },
-  { path: '/formation/geopolitique/premiere-annee/espaces-maritimes-tensions', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/EspacesMaritimesTensionsPage')), title: 'Espaces maritimes — tensions et conflits' },
+  { path: '/formation/geopolitique/premiere-annee/espaces-maritimes/chronologie', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/EspacesMaritimesChronologiePage')), title: 'Chronologie - Espaces maritimes' },
+  { path: '/formation/geopolitique/premiere-annee/espaces-maritimes-tensions', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/EspacesMaritimesTensionsPage')), title: 'Espaces maritimes – tensions et conflits' },
+  { path: '/formation/geopolitique/premiere-annee/espaces-maritimes-tensions/chronologie', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/EspacesMaritimesTensionsChronologiePage')), title: 'Chronologie - Espaces maritimes : tensions et conflits' },
   { path: '/formation/geopolitique/premiere-annee/energies', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/EnergiesGeopolitiquePage')), title: 'Géopolitique des énergies' },
+  { path: '/formation/geopolitique/premiere-annee/energies/chronologie', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/EnergiesChronologiePage')), title: 'Chronologie - Géopolitique des énergies' },
   { path: '/formation/geopolitique/premiere-annee/gouvernance-mondiale', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/GouvernanceMondialePage')), title: 'Gouvernance mondiale' },
+  { path: '/formation/geopolitique/premiere-annee/gouvernance-mondiale/chronologie', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/GouvernanceMondialeChronologiePage')), title: 'Chronologie - Gouvernance mondiale' },
   { path: '/formation/geopolitique/premiere-annee/guerres', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/GuerresPage')), title: 'Les guerres' },
+  { path: '/formation/geopolitique/premiere-annee/guerres/chronologie', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/GuerresChronologiePage')), title: 'Chronologie - Les guerres' },
   { path: '/formation/geopolitique/premiere-annee/migrations', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/MigrationsPage')), title: 'Les migrations' },
+  { path: '/formation/geopolitique/premiere-annee/migrations/chronologie', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/MigrationsChronologiePage')), title: 'Chronologie - Les migrations' },
   { path: '/formation/geopolitique/premiere-annee/puissance', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/PuissancePage')), title: 'La puissance' },
+  { path: '/formation/geopolitique/premiere-annee/puissance/chronologie', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/PuissanceChronologiePage')), title: 'Chronologie - La puissance' },
   { path: '/formation/geopolitique/premiere-annee/ressources-strategiques', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/RessourcesStrategiquesPage')), title: 'Ressources stratégiques' },
+  { path: '/formation/geopolitique/premiere-annee/ressources-strategiques/chronologie', component: lazy(() => import('../pages/formation/geopolitique/premiere-annee/RessourcesStrategiquesChronologiePage')), title: 'Chronologie - Ressources stratégiques' },
   { path: '/formation/geopolitique/deuxieme-annee', component: GeopolitiqueDeuxiemeAnneePage, title: 'Géopolitique - Deuxième Année' },
   { path: '/formation/geopolitique/sujets-probables', component: GeopolitiqueSujetsProbablesPage, title: 'Pronostics Géopolitiques 2025' },
   { path: '/formation/geopolitique/continent-africain', component: ContinentAfricainPage, title: 'Continent Africain' },
   { path: '/formation/geopolitique/continent-africain/chronologie', component: ContinentAfricainChronologiePage, title: 'Chronologie - Continent Africain' },
+  { path: '/formation/geopolitique/continent-africain/flashcards', component: ContinentAfricainFlashcardsPage, title: 'Flashcards - Continent Africain' },
   { path: '/formation/geopolitique/proche-moyen-orient', component: ProcheMoyenOrientPage, title: 'Proche et Moyen-Orient' },
   { path: '/formation/geopolitique/proche-moyen-orient/chronologie', component: ProcheMoyenOrientChronologiePage, title: 'Chronologie - Proche et Moyen-Orient' },
+  { path: '/formation/geopolitique/proche-moyen-orient/flashcards', component: ProcheMoyenOrientFlashcardsPage, title: 'Flashcards - Proche et Moyen-Orient' },
+  { path: '/formation/geopolitique/amerique-nord/flashcards', component: AmeriqueNordFlashcardsPage, title: 'Flashcards - Amérique du Nord' },
+  { path: '/formation/geopolitique/amerique-latine/flashcards', component: AmeriqueLatineFlashcardsPage, title: 'Flashcards - Amérique latine' },
+  { path: '/formation/geopolitique/asie/flashcards', component: AsieFlashcardsPage, title: 'Flashcards - Asie' },
   { path: '/formation/geopolitique/chronologie-europe', component: ChronologieEuropePage, title: 'Chronologie de l\'Europe' },
   { path: '/formation/geopolitique/union-europeenne', component: UnionEuropeennePageSimple, title: 'Union européenne' },
+  { path: '/formation/geopolitique/union-europeenne/flashcards', component: UnionEuropeenneFlashcardsPage, title: 'Flashcards - Union européenne' },
   { path: '/formation/geopolitique/amerique-latine', component: AmeriqueLatinePage, title: 'Amérique latine' },
   { path: '/formation/geopolitique/amerique-latine/chronologie', component: AmeriqueLatineChronologiePage, title: 'Chronologie - Amérique latine' },
   { path: '/formation/geopolitique/asie/chronologie', component: AsieChronologiePage, title: 'Chronologie - Asie' },

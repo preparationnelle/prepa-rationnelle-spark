@@ -742,6 +742,7 @@ export const articlesDeterminantsExercises: ArticlesDeterminantsExercise[] = [
 ];
 
 export const articlesDeterminantsCategories = [
+  "toutes",
   "articles a/an/the",
   "some/any/a lot of",
   "much/many/little/few",
