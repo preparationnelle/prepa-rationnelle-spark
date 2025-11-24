@@ -5,17 +5,19 @@ import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Globe, TrendingUp, Loader2, Sparkles, AlertCircle, FileText, Info, BookOpenCheck, ChevronRight, Home } from 'lucide-react';
+import { Globe, TrendingUp, Loader2, Sparkles, AlertCircle, FileText, Info, BookOpenCheck, ChevronRight, Home, Target, ListChecks } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CaseStudyDisplay } from '@/components/generator/CaseStudyDisplay';
 import { DefinitionTraining } from '@/components/generator/DefinitionTraining';
+import { GeopoliticsParadoxGenerator } from '@/components/generator/GeopoliticsParadoxGenerator';
+import { PlanGenerator } from '@/components/generator/PlanGenerator';
 import { Link } from 'react-router-dom';
 
 const GeopoliticsUnifiedGeneratorPage = () => {
-  const [selectedTool, setSelectedTool] = useState<'geopolitics' | 'case-study' | 'definitions'>('geopolitics');
+  const [selectedTool, setSelectedTool] = useState<'geopolitics' | 'case-study' | 'definitions' | 'paradoxes' | 'plan'>('geopolitics');
   const [article, setArticle] = useState('');
   const [notion, setNotion] = useState('');
   const [courseContent, setCourseContent] = useState('');
@@ -152,33 +154,44 @@ const GeopoliticsUnifiedGeneratorPage = () => {
 
         {/* Sélecteur d'outil avec tabs horizontaux */}
         <div className="mb-8">
-          <Card className="max-w-2xl mx-auto bg-white shadow-sm border border-gray-200">
-            <CardContent className="p-4">
-              <Tabs value={selectedTool} onValueChange={(value: 'geopolitics' | 'case-study' | 'definitions') => setSelectedTool(value)} className="w-full">
-                <TabsList className="grid w-full grid-cols-3 bg-gray-100 p-1">
+          <Card className="max-w-4xl mx-auto bg-white shadow-sm border border-gray-200">
+            <CardContent className="p-6">
+              <Tabs value={selectedTool} onValueChange={(value: 'geopolitics' | 'case-study' | 'definitions' | 'paradoxes' | 'plan') => setSelectedTool(value)} className="w-full">
+                <TabsList className="grid w-full grid-cols-5 bg-gray-100 p-2 h-auto min-h-[60px]">
                   <TabsTrigger 
                     value="geopolitics" 
-                    className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-[#111111] data-[state=active]:shadow-sm"
+                    className="flex items-center justify-center gap-2 data-[state=active]:bg-white data-[state=active]:text-[#111111] data-[state=active]:shadow-sm py-3 px-2 text-sm font-medium whitespace-normal break-words"
                   >
-                    <Globe className="h-4 w-4" />
-                    <span className="hidden sm:inline">Contenu géopolitique complet</span>
-                    <span className="sm:hidden">Géopolitique</span>
+                    <Globe className="h-5 w-5 flex-shrink-0" />
+                    <span className="text-center leading-tight">Contenu géopolitique</span>
                   </TabsTrigger>
                   <TabsTrigger 
                     value="case-study" 
-                    className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-[#111111] data-[state=active]:shadow-sm"
+                    className="flex items-center justify-center gap-2 data-[state=active]:bg-white data-[state=active]:text-[#111111] data-[state=active]:shadow-sm py-3 px-2 text-sm font-medium whitespace-normal break-words"
                   >
-                    <TrendingUp className="h-4 w-4" />
-                    <span className="hidden sm:inline">Études de cas d'actualité</span>
-                    <span className="sm:hidden">Études de cas</span>
+                    <TrendingUp className="h-5 w-5 flex-shrink-0" />
+                    <span className="text-center leading-tight">Études de cas</span>
                   </TabsTrigger>
                   <TabsTrigger 
                     value="definitions" 
-                    className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-[#111111] data-[state=active]:shadow-sm"
+                    className="flex items-center justify-center gap-2 data-[state=active]:bg-white data-[state=active]:text-[#111111] data-[state=active]:shadow-sm py-3 px-2 text-sm font-medium whitespace-normal break-words"
                   >
-                    <BookOpenCheck className="h-4 w-4" />
-                    <span className="hidden sm:inline">Définitions</span>
-                    <span className="sm:hidden">Defs</span>
+                    <BookOpenCheck className="h-5 w-5 flex-shrink-0" />
+                    <span className="text-center leading-tight">Définitions</span>
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="paradoxes" 
+                    className="flex items-center justify-center gap-2 data-[state=active]:bg-white data-[state=active]:text-[#111111] data-[state=active]:shadow-sm py-3 px-2 text-sm font-medium whitespace-normal break-words"
+                  >
+                    <Target className="h-5 w-5 flex-shrink-0" />
+                    <span className="text-center leading-tight">Paradoxes</span>
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="plan" 
+                    className="flex items-center justify-center gap-2 data-[state=active]:bg-white data-[state=active]:text-[#111111] data-[state=active]:shadow-sm py-3 px-2 text-sm font-medium whitespace-normal break-words"
+                  >
+                    <ListChecks className="h-5 w-5 flex-shrink-0" />
+                    <span className="text-center leading-tight">Plan</span>
                   </TabsTrigger>
                 </TabsList>
               </Tabs>
@@ -188,7 +201,7 @@ const GeopoliticsUnifiedGeneratorPage = () => {
 
         {/* Interface conditionnelle */}
         <div className="space-y-8">
-          <Tabs value={selectedTool} onValueChange={(value: 'geopolitics' | 'case-study' | 'definitions') => setSelectedTool(value)} className="w-full">
+          <Tabs value={selectedTool} onValueChange={(value: 'geopolitics' | 'case-study' | 'definitions' | 'paradoxes' | 'plan') => setSelectedTool(value)} className="w-full">
             
             {/* Études de cas d'actualité */}
             <TabsContent value="case-study" className="space-y-6">
@@ -346,6 +359,16 @@ const GeopoliticsUnifiedGeneratorPage = () => {
             {/* Entraînement aux définitions */}
             <TabsContent value="definitions" className="space-y-6">
               <DefinitionTraining language="fr" />
+            </TabsContent>
+
+            {/* Générateur de Paradoxes Géopolitiques */}
+            <TabsContent value="paradoxes" className="space-y-6">
+              <GeopoliticsParadoxGenerator />
+            </TabsContent>
+
+            {/* Générateur de Plan Universel */}
+            <TabsContent value="plan" className="space-y-6">
+              <PlanGenerator />
             </TabsContent>
           </Tabs>
 

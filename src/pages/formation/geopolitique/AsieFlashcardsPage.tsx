@@ -250,3 +250,4 @@ const AsieFlashcardsPage = () => {
 };
 
 export default AsieFlashcardsPage;
+

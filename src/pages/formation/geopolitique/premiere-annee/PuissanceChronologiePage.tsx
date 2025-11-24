@@ -156,3 +156,4 @@ const PuissanceChronologiePage = () => {
 };
 
 export default PuissanceChronologiePage;
+

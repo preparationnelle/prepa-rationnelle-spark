@@ -235,6 +235,18 @@ const AsieFlashcardsPage = lazy(() => import('../pages/formation/geopolitique/As
 const ChronologieEuropePage = lazy(() => import('../pages/formation/geopolitique/ChronologieEuropePage'));
 const UnionEuropeennePageSimple = lazy(() => import('../pages/formation/geopolitique/UnionEuropeennePageSimple'));
 const UnionEuropeenneFlashcardsPage = lazy(() => import('../pages/formation/geopolitique/UnionEuropeenneFlashcardsPage'));
+const UnionEuropeenneSujetsPage = lazy(() => import('../pages/formation/geopolitique/UnionEuropeenneSujetsPage'));
+const ContinentAfricainSujetsPage = lazy(() => import('../pages/formation/geopolitique/ContinentAfricainSujetsPage'));
+const ContinentAfricainAuteursPage = lazy(() => import('../pages/formation/geopolitique/ContinentAfricainAuteursPage'));
+const UnionEuropeenneAuteursPage = lazy(() => import('../pages/formation/geopolitique/UnionEuropeenneAuteursPage'));
+const ProcheMoyenOrientAuteursPage = lazy(() => import('../pages/formation/geopolitique/ProcheMoyenOrientAuteursPage'));
+const AmeriqueNordAuteursPage = lazy(() => import('../pages/formation/geopolitique/AmeriqueNordAuteursPage'));
+const AmeriqueLatineAuteursPage = lazy(() => import('../pages/formation/geopolitique/AmeriqueLatineAuteursPage'));
+const AsieAuteursPage = lazy(() => import('../pages/formation/geopolitique/AsieAuteursPage'));
+const ProcheMoyenOrientSujetsPage = lazy(() => import('../pages/formation/geopolitique/ProcheMoyenOrientSujetsPage'));
+const AmeriqueNordSujetsPage = lazy(() => import('../pages/formation/geopolitique/AmeriqueNordSujetsPage'));
+const AmeriqueLatineSujetsPage = lazy(() => import('../pages/formation/geopolitique/AmeriqueLatineSujetsPage'));
+const AsieSujetsPage = lazy(() => import('../pages/formation/geopolitique/AsieSujetsPage'));
 const AmeriqueLatinePage = lazy(() => import('../pages/formation/geopolitique/AmeriqueLatinePage'));
 const AsieChronologiePage = lazy(() => import('../pages/formation/geopolitique/AsieChronologiePage'));
 const AmeriqueLatineChronologiePage = lazy(() => import('../pages/formation/geopolitique/AmeriqueLatineChronologiePage'));
@@ -622,6 +634,7 @@ const ParagraphGeneratorPage = lazy(() => import('../pages/generator/ParagraphGe
 const GeopoliticsParadoxGeneratorPage = lazy(() => import('../pages/generator/GeopoliticsParadoxGeneratorPage'));
 const UnifiedLanguagesGeneratorPage = lazy(() => import('../pages/generator/UnifiedLanguagesGeneratorPage'));
 const UnifiedOralGeneratorPage = lazy(() => import('../pages/generator/UnifiedOralGeneratorPage'));
+const MathGeneratorPage = lazy(() => import('../pages/generator/MathGeneratorPage'));
 
 // Formation Synthèse de Texte
 const FormationSyntheseTextePage = lazy(() => import('../pages/formation/synthese-texte/FormationSyntheseTextePage'));
@@ -1120,17 +1133,29 @@ export const routes: RouteConfig[] = [
   { path: '/formation/geopolitique/continent-africain', component: ContinentAfricainPage, title: 'Continent Africain' },
   { path: '/formation/geopolitique/continent-africain/chronologie', component: ContinentAfricainChronologiePage, title: 'Chronologie - Continent Africain' },
   { path: '/formation/geopolitique/continent-africain/flashcards', component: ContinentAfricainFlashcardsPage, title: 'Flashcards - Continent Africain' },
+  { path: '/formation/geopolitique/continent-africain/etudes-de-cas', component: ContinentAfricainSujetsPage, title: 'Études de cas - Continent Africain' },
+  { path: '/formation/geopolitique/continent-africain/auteurs', component: ContinentAfricainAuteursPage, title: 'Auteurs et ouvrages - Continent Africain' },
+  { path: '/formation/geopolitique/proche-moyen-orient/auteurs', component: ProcheMoyenOrientAuteursPage, title: 'Auteurs et ouvrages - Proche et Moyen-Orient' },
+  { path: '/formation/geopolitique/amerique-nord/auteurs', component: AmeriqueNordAuteursPage, title: 'Auteurs et ouvrages - Amérique du Nord' },
+  { path: '/formation/geopolitique/amerique-latine/auteurs', component: AmeriqueLatineAuteursPage, title: 'Auteurs et ouvrages - Amérique latine' },
+  { path: '/formation/geopolitique/asie/auteurs', component: AsieAuteursPage, title: 'Auteurs et ouvrages - Asie' },
   { path: '/formation/geopolitique/proche-moyen-orient', component: ProcheMoyenOrientPage, title: 'Proche et Moyen-Orient' },
   { path: '/formation/geopolitique/proche-moyen-orient/chronologie', component: ProcheMoyenOrientChronologiePage, title: 'Chronologie - Proche et Moyen-Orient' },
   { path: '/formation/geopolitique/proche-moyen-orient/flashcards', component: ProcheMoyenOrientFlashcardsPage, title: 'Flashcards - Proche et Moyen-Orient' },
+  { path: '/formation/geopolitique/proche-moyen-orient/etudes-de-cas', component: ProcheMoyenOrientSujetsPage, title: 'Études de cas - Proche et Moyen-Orient' },
   { path: '/formation/geopolitique/amerique-nord/flashcards', component: AmeriqueNordFlashcardsPage, title: 'Flashcards - Amérique du Nord' },
+  { path: '/formation/geopolitique/amerique-nord/etudes-de-cas', component: AmeriqueNordSujetsPage, title: 'Études de cas - Amérique du Nord' },
   { path: '/formation/geopolitique/amerique-latine/flashcards', component: AmeriqueLatineFlashcardsPage, title: 'Flashcards - Amérique latine' },
   { path: '/formation/geopolitique/asie/flashcards', component: AsieFlashcardsPage, title: 'Flashcards - Asie' },
+  { path: '/formation/geopolitique/asie/etudes-de-cas', component: AsieSujetsPage, title: 'Études de cas - Asie' },
   { path: '/formation/geopolitique/chronologie-europe', component: ChronologieEuropePage, title: 'Chronologie de l\'Europe' },
   { path: '/formation/geopolitique/union-europeenne', component: UnionEuropeennePageSimple, title: 'Union européenne' },
   { path: '/formation/geopolitique/union-europeenne/flashcards', component: UnionEuropeenneFlashcardsPage, title: 'Flashcards - Union européenne' },
+  { path: '/formation/geopolitique/union-europeenne/etudes-de-cas', component: UnionEuropeenneSujetsPage, title: 'Études de cas - Union européenne' },
+  { path: '/formation/geopolitique/union-europeenne/auteurs', component: UnionEuropeenneAuteursPage, title: 'Auteurs et ouvrages - Union européenne' },
   { path: '/formation/geopolitique/amerique-latine', component: AmeriqueLatinePage, title: 'Amérique latine' },
   { path: '/formation/geopolitique/amerique-latine/chronologie', component: AmeriqueLatineChronologiePage, title: 'Chronologie - Amérique latine' },
+  { path: '/formation/geopolitique/amerique-latine/etudes-de-cas', component: AmeriqueLatineSujetsPage, title: 'Études de cas - Amérique latine' },
   { path: '/formation/geopolitique/asie/chronologie', component: AsieChronologiePage, title: 'Chronologie - Asie' },
   { path: '/formation/geopolitique/amerique-nord/chronologie', component: AmeriqueNordChronologiePage, title: 'Chronologie - Amérique du Nord' },
   { path: '/formation/geopolitique/sciences-technologies', component: SciencesTechnologiesPage, title: 'Sciences et Technologies dans le Monde Contemporain' },
@@ -1537,6 +1562,7 @@ export const routes: RouteConfig[] = [
   { path: '/generator/theme-grammar', component: ThemeGrammarGeneratorPage, title: 'Thème Grammatical' },
   { path: '/generator/paragraph', component: ParagraphGeneratorPage, title: 'Générateur de Paragraphes' },
   { path: '/generator/geopolitics-paradox', component: GeopoliticsParadoxGeneratorPage, title: 'Paradoxes Géopolitiques' },
+  { path: '/generator/math', component: MathGeneratorPage, title: 'Générateur Maths' },
   
   // Routes pour les formations mathématiques
   { 

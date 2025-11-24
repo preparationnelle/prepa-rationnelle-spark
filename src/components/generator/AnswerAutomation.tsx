@@ -47,7 +47,7 @@ export const AnswerAutomation: React.FC<AnswerAutomationProps> = ({
 }) => (
   <>
     <Card className="bg-white shadow-sm border border-gray-200 rounded-xl overflow-hidden">
-      <CardHeader className="bg-gradient-to-r from-[#5B3FFF] to-[#FF6B9D] text-white">
+      <CardHeader className="bg-gradient-to-r from-orange-600 to-orange-500 text-white">
         <div className="flex justify-between items-start">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">

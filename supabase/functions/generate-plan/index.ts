@@ -38,29 +38,39 @@ serve(async (req) => {
 Tu es un assistant spécialisé dans la création de plans pour des essais de géopolitique et d'actualité.
 Génère un plan détaillé sur le sujet suivant: "${topic}"
 
+IMPORTANT : Le plan doit être TRÈS CONCRET et RICHE EN CHIFFRES. Pour chaque partie, inclure systématiquement :
+- Des statistiques précises (pourcentages, montants en milliards, populations, PIB, etc.)
+- Des dates exactes (années, événements historiques précis)
+- Des exemples concrets (pays, organisations, traités, conflits spécifiques)
+- Des données quantitatives mesurables
+- Des comparaisons chiffrées entre acteurs/territoires
+- Des faits mesurables et vérifiables
+
 Le plan doit suivre cette structure:
 I. Manifestement... (État des lieux, constat, mise en contexte)
-I.1 Historique : origine du phénomène, grandes dates clés.
-I.2 Logiques dominantes : ce qui façonne le sujet aujourd'hui.
-I.3 Paradoxe / Limites : contradictions du constat initial.
+I.1 Historique : origine du phénomène, grandes dates clés. INCLURE des dates précises, des événements historiques concrets avec leurs années.
+I.2 Logiques dominantes : ce qui façonne le sujet aujourd'hui. INCLURE des chiffres actuels, des statistiques récentes, des données quantitatives.
+I.3 Paradoxe / Limites : contradictions du constat initial. INCLURE des exemples chiffrés illustrant ces contradictions.
 
 II. Les facteurs explicatifs... (Comprendre pourquoi cette situation)
-II.1 Facteurs géopolitiques (puissances, conflits, rivalités, power diffusion, power transition).
-II.2 Facteurs économiques (échanges, ressources, dépendances, guerre économique).
-II.3 Facteurs sociaux, environnementaux et démographiques (populations, migrations, inégalités).
+II.1 Facteurs géopolitiques (puissances, conflits, rivalités, power diffusion, power transition). INCLURE des budgets militaires, des zones d'influence chiffrées, des données sur les alliances, des montants d'investissements stratégiques.
+II.2 Facteurs économiques (échanges, ressources, dépendances, guerre économique). INCLURE des montants d'échanges commerciaux, des parts de marché, des réserves de ressources, des données sur les sanctions économiques.
+II.3 Facteurs sociaux, environnementaux et démographiques (populations, migrations, inégalités). INCLURE des chiffres démographiques, des taux de migration, des indices d'inégalité, des données environnementales mesurables.
 
 III. Jusqu'où va-t-on ? (Prospective, évolutions futures)
-III.1 Changement d'échelle : analyse locale, régionale et mondiale.
-III.2 Les stratégies (des acteurs, nouveaux acteurs, repositionnements géopolitiques, gouvernance mondiale)
-III.3 Scénarios d'avenir : tensions émergentes, innovations, défis à venir.
+III.1 Changement d'échelle : analyse locale, régionale et mondiale. INCLURE des projections chiffrées, des comparaisons quantitatives entre échelles.
+III.2 Les stratégies (des acteurs, nouveaux acteurs, repositionnements géopolitiques, gouvernance mondiale). INCLURE des budgets alloués, des investissements prévus, des objectifs chiffrés.
+III.3 Scénarios d'avenir : tensions émergentes, innovations, défis à venir. INCLURE des projections quantitatives, des estimations chiffrées, des données prospectives mesurables.
 
 Fournis:
 - Un titre sous forme de question ou d'affirmation
-- Une introduction détaillée qui pose le contexte (environ 100 mots)
-- Pour chaque partie et sous-partie, un titre explicite et 2-3 lignes détaillant les arguments à développer
-- Une conclusion synthétique (environ 100 mots)
+- Une introduction détaillée qui pose le contexte (environ 100 mots) avec des chiffres clés et des faits concrets
+- Pour chaque partie et sous-partie, un titre explicite et 3-5 lignes détaillant les arguments à développer avec CHIFFRES, DATES, EXEMPLES CONCRETS
+- Une conclusion synthétique (environ 100 mots) avec des données chiffrées récapitulatives
 
 ${wordLimit ? `Le plan complet devrait être d'environ ${wordLimit} mots (±10%).` : 'Le plan devrait être suffisamment développé, mais concis.'}
+
+RÉPÈTE : Chaque sous-partie DOIT contenir au minimum 2-3 chiffres ou données quantitatives concrètes. Privilégie toujours les données mesurables aux généralités.
 
 Réponds uniquement avec un objet JSON contenant les clés: 'title', 'introduction', 'parts' (array avec title et subparts), et 'conclusion'.
 ` :
@@ -68,29 +78,39 @@ Réponds uniquement avec un objet JSON contenant les clés: 'title', 'introducti
 You are an assistant specialized in creating outlines for geopolitical and current affairs essays.
 Generate a detailed outline on the following topic: "${topic}"
 
+IMPORTANT: The outline must be VERY CONCRETE and RICH IN FIGURES. For each part, systematically include:
+- Precise statistics (percentages, amounts in billions, populations, GDP, etc.)
+- Exact dates (years, specific historical events)
+- Concrete examples (countries, organizations, specific treaties, conflicts)
+- Measurable quantitative data
+- Quantified comparisons between actors/territories
+- Measurable and verifiable facts
+
 The outline should follow this structure:
 I. Evidently... (Current state, assessment, context setting)
-I.1 Historical background: origin of the phenomenon, key dates.
-I.2 Dominant logics: what shapes the subject today.
-I.3 Paradoxes / Limitations: contradictions of the initial observation.
+I.1 Historical background: origin of the phenomenon, key dates. INCLUDE precise dates, concrete historical events with their years.
+I.2 Dominant logics: what shapes the subject today. INCLUDE current figures, recent statistics, quantitative data.
+I.3 Paradoxes / Limitations: contradictions of the initial observation. INCLUDE quantified examples illustrating these contradictions.
 
 II. Explanatory factors... (Understanding why this situation exists)
-II.1 Geopolitical factors (powers, conflicts, rivalries, power diffusion, power transition).
-II.2 Economic factors (trade, resources, dependencies, economic warfare).
-II.3 Social, environmental and demographic factors (populations, migrations, inequalities).
+II.1 Geopolitical factors (powers, conflicts, rivalries, power diffusion, power transition). INCLUDE military budgets, quantified zones of influence, data on alliances, strategic investment amounts.
+II.2 Economic factors (trade, resources, dependencies, economic warfare). INCLUDE trade amounts, market shares, resource reserves, data on economic sanctions.
+II.3 Social, environmental and demographic factors (populations, migrations, inequalities). INCLUDE demographic figures, migration rates, inequality indices, measurable environmental data.
 
 III. Where are we heading? (Future prospects, evolutions)
-III.1 Change of scale: local, regional and global analysis.
-III.2 Strategies (of actors, new actors, geopolitical repositioning, global governance)
-III.3 Future scenarios: emerging tensions, innovations, upcoming challenges.
+III.1 Change of scale: local, regional and global analysis. INCLUDE quantified projections, quantitative comparisons between scales.
+III.2 Strategies (of actors, new actors, geopolitical repositioning, global governance). INCLUDE allocated budgets, planned investments, quantified objectives.
+III.3 Future scenarios: emerging tensions, innovations, upcoming challenges. INCLUDE quantitative projections, quantified estimates, measurable prospective data.
 
 Provide:
 - A title in the form of a question or statement
-- A detailed introduction that sets the context (about 100 words)
-- For each part and subpart, an explicit title and 2-3 lines detailing the arguments to be developed
-- A synthetic conclusion (about 100 words)
+- A detailed introduction that sets the context (about 100 words) with key figures and concrete facts
+- For each part and subpart, an explicit title and 3-5 lines detailing the arguments to be developed with FIGURES, DATES, CONCRETE EXAMPLES
+- A synthetic conclusion (about 100 words) with recapitulative quantitative data
 
 ${wordLimit ? `The complete outline should be about ${wordLimit} words (±10%).` : 'The outline should be sufficiently developed, but concise.'}
+
+REPEAT: Each subpart MUST contain at least 2-3 figures or concrete quantitative data. Always prioritize measurable data over generalities.
 
 Respond only with a JSON object containing the keys: 'title', 'introduction', 'parts' (array with title and subparts), and 'conclusion'.
 `;

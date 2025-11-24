@@ -41,10 +41,10 @@ const AnswerGeneratorPage = () => {
   return (
     <div className="space-y-6">
       <div className="text-center mb-6">
-        <h1 className="text-3xl sm:text-4xl font-bold text-[#5B3FFF] mb-4">
+        <h1 className="text-3xl sm:text-4xl font-bold text-orange-600 mb-4">
           Réponse d'entretien
         </h1>
-        <p className="text-lg sm:text-xl text-[#333333] max-w-3xl mx-auto">
+        <p className="text-lg sm:text-xl text-gray-900 max-w-3xl mx-auto">
           Générez des réponses structurées et personnalisées pour vos entretiens de personnalité avec des questions contextuelles adaptées.
         </p>
       </div>

@@ -480,3 +480,4 @@ const OteriaMatricesStochastiquesFlashcardsPage = () => {
 };
 
 export default OteriaMatricesStochastiquesFlashcardsPage;
+

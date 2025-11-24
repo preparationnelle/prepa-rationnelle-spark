@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Puzzle, MessageSquare } from 'lucide-react';
+import { Puzzle, MessageSquare, GraduationCap, User, Lightbulb, Target } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 // Listes de mots pour le générateur aléatoire
@@ -243,35 +243,38 @@ export const RandomWordGenerator: React.FC<RandomWordGeneratorProps> = ({ type =
                 <>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {Object.keys(emlyonQuestions).map((category) => (
-                      <Card key={category} className="bg-accent/50 hover:bg-accent/70 transition-colors cursor-pointer">
-                        <CardHeader className="p-4">
-                          <CardTitle className="text-base">
-                            {categoryTitles[category as keyof typeof categoryTitles]}
-                          </CardTitle>
-                        </CardHeader>
-                        <CardContent className="p-4 pt-0">
-                          <p className="text-sm text-muted-foreground mb-4">
-                            {categoryDescriptions[category as keyof typeof categoryDescriptions]}
-                          </p>
-                          <Button 
-                            variant="outline" 
-                            onClick={() => startQuestionGeneration(category)}
-                            className="w-full"
-                            disabled={isGenerating}
-                          >
-                            Générer une question
-                          </Button>
-                        </CardContent>
+                      <Card key={category} className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group">
+                        <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                          {category === 'experience' && <GraduationCap className="h-5 w-5 text-orange-600" />}
+                          {category === 'personnalite' && <User className="h-5 w-5 text-orange-600" />}
+                          {category === 'creativite' && <Lightbulb className="h-5 w-5 text-orange-600" />}
+                          {category === 'projet' && <Target className="h-5 w-5 text-orange-600" />}
+                        </div>
+                        <CardTitle className="text-base font-semibold text-gray-900 mb-2">
+                          {categoryTitles[category as keyof typeof categoryTitles]}
+                        </CardTitle>
+                        <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                          {categoryDescriptions[category as keyof typeof categoryDescriptions]}
+                        </p>
+                        <Button
+                          variant="outline"
+                          onClick={() => startQuestionGeneration(category)}
+                          className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-medium rounded-xl"
+                          disabled={isGenerating}
+                        >
+                          Générer une question
+                        </Button>
                       </Card>
                     ))}
                   </div>
                   
                   {currentQuestion && (
-                    <div className="bg-primary/10 px-6 py-8 rounded-lg mt-6 w-full">
-                      <p className="text-sm text-primary font-semibold mb-1">
+                    <div className="bg-gradient-to-r from-orange-50 to-orange-100 px-6 py-8 rounded-xl mt-6 w-full border-2 border-orange-200">
+                      <p className="text-sm text-orange-700 font-semibold mb-2 flex items-center gap-2">
+                        <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
                         CATÉGORIE : {currentCategory && categoryTitles[currentCategory as keyof typeof categoryTitles]}
                       </p>
-                      <p className={`text-xl font-semibold ${isGenerating ? 'animate-pulse' : ''}`}>
+                      <p className={`text-xl font-semibold text-orange-900 ${isGenerating ? 'animate-pulse' : ''}`}>
                         {currentQuestion}
                       </p>
                     </div>
@@ -305,35 +308,38 @@ export const RandomWordGenerator: React.FC<RandomWordGeneratorProps> = ({ type =
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {Object.keys(emlyonQuestions).map((category) => (
-                <Card key={category} className="bg-accent/50 hover:bg-accent/70 transition-colors cursor-pointer">
-                  <CardHeader className="p-4">
-                    <CardTitle className="text-base">
-                      {categoryTitles[category as keyof typeof categoryTitles]}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-4 pt-0">
-                    <p className="text-sm text-muted-foreground mb-4">
-                      {categoryDescriptions[category as keyof typeof categoryDescriptions]}
-                    </p>
-                    <Button 
-                      variant="outline" 
-                      onClick={() => startQuestionGeneration(category)}
-                      className="w-full"
-                      disabled={isGenerating}
-                    >
-                      Générer une question
-                    </Button>
-                  </CardContent>
+                      <Card key={category} className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group">
+                        <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                          {category === 'experience' && <GraduationCap className="h-5 w-5 text-orange-600" />}
+                          {category === 'personnalite' && <User className="h-5 w-5 text-orange-600" />}
+                          {category === 'creativite' && <Lightbulb className="h-5 w-5 text-orange-600" />}
+                          {category === 'projet' && <Target className="h-5 w-5 text-orange-600" />}
+                        </div>
+                  <CardTitle className="text-base font-semibold text-gray-900 mb-2">
+                    {categoryTitles[category as keyof typeof categoryTitles]}
+                  </CardTitle>
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                    {categoryDescriptions[category as keyof typeof categoryDescriptions]}
+                  </p>
+                  <Button
+                    variant="outline"
+                    onClick={() => startQuestionGeneration(category)}
+                    className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-medium rounded-xl"
+                    disabled={isGenerating}
+                  >
+                    Générer une question
+                  </Button>
                 </Card>
               ))}
             </div>
             
             {currentQuestion && (
-              <div className="bg-primary/10 px-6 py-8 rounded-lg mt-6 w-full">
-                <p className="text-sm text-primary font-semibold mb-1">
+              <div className="bg-gradient-to-r from-orange-50 to-orange-100 px-6 py-8 rounded-xl mt-6 w-full border-2 border-orange-200">
+                <p className="text-sm text-orange-700 font-semibold mb-2 flex items-center gap-2">
+                  <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
                   CATÉGORIE : {currentCategory && categoryTitles[currentCategory as keyof typeof categoryTitles]}
                 </p>
-                <p className={`text-xl font-semibold ${isGenerating ? 'animate-pulse' : ''}`}>
+                <p className={`text-xl font-semibold text-orange-900 ${isGenerating ? 'animate-pulse' : ''}`}>
                   {currentQuestion}
                 </p>
               </div>

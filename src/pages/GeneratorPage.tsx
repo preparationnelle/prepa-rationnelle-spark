@@ -10,8 +10,8 @@ import {
   Mic,
   Library,
   FileText,
-  Target,
-  Brain
+  Brain,
+  Calculator
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
@@ -75,18 +75,6 @@ const GeneratorPage: React.FC = () => {
       link: '/generator/paragraph'
     },
     {
-      id: 'geopolitics-paradox',
-      title: 'Paradoxes Géopolitiques',
-      description: 'Générez des paradoxes et problématiques ou évaluez les vôtres',
-      icon: <Target className="h-10 w-10" />,
-      features: [
-        'Génération de paradoxes',
-        'Évaluation de problématiques',
-        'Note détaillée sur 25'
-      ],
-      link: '/generator/geopolitics-paradox'
-    },
-    {
       id: 'geopolitics-unified',
       title: 'Générateur Géopo',
       description: 'Générez des études ou des fiches de géopolitique automatiquement',
@@ -94,7 +82,10 @@ const GeneratorPage: React.FC = () => {
       features: [
         'Études géopolitiques',
         'Fiches automatiques',
-        'Analyse stratégique'
+        'Analyse stratégique',
+        'Génération de paradoxes',
+        'Évaluation de problématiques',
+        'Note détaillée sur 25'
       ],
       link: '/generator/geopolitics-unified'
     },
@@ -121,6 +112,19 @@ const GeneratorPage: React.FC = () => {
         'Entraînement oral'
       ],
       link: '/generator/orals-unified'
+    },
+    {
+      id: 'math-generator',
+      title: 'Générateur Maths',
+      description: 'Théorèmes du programme Maths Approfondies avec réponses en LaTeX',
+      icon: <Calculator className="h-10 w-10" />,
+      features: [
+        'Programme Maths Approfondies 1ère/2ème année',
+        'Théorèmes complets avec hypothèses',
+        'Exemples détaillés',
+        'Formules en LaTeX'
+      ],
+      link: '/generator/math'
     },
     {
       id: 'prepa-chatbot',

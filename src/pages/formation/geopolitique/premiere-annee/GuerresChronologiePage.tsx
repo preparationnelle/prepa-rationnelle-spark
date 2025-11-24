@@ -162,3 +162,4 @@ const GuerresChronologiePage = () => {
 };
 
 export default GuerresChronologiePage;
+

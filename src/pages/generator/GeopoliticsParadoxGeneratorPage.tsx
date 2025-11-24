@@ -25,36 +25,6 @@ const GeopoliticsParadoxGeneratorPage = () => {
 
       {/* Content */}
       <div className="max-w-7xl mx-auto p-6">
-        {/* Description */}
-        <Card className="border-2 border-blue-200 bg-white mb-6">
-          <CardContent className="p-6">
-            <div className="flex items-start gap-4">
-              <div className="p-3 bg-blue-100 rounded-lg">
-                <Info className="h-6 w-6 text-blue-700" />
-              </div>
-              <div className="flex-1">
-                <h2 className="text-lg font-semibold text-blue-900 mb-2">À propos de cet outil</h2>
-                <p className="text-gray-700 mb-3">
-                  Cet outil vous aide à construire des problématiques de dissertation en géopolitique en identifiant les paradoxes et tensions sous-jacents à un sujet.
-                </p>
-                <div className="grid md:grid-cols-2 gap-4 mt-4">
-                  <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
-                    <h3 className="font-semibold text-blue-900 mb-1">Mode Génération</h3>
-                    <p className="text-sm text-gray-600">
-                      L'IA identifie les deux tendances opposées d'un sujet et génère un paradoxe puis une problématique pertinente.
-                    </p>
-                  </div>
-                  <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
-                    <h3 className="font-semibold text-blue-900 mb-1">Mode Évaluation</h3>
-                    <p className="text-sm text-gray-600">
-                      Soumettez votre propre problématique et recevez une évaluation détaillée sur 25 points avec des suggestions d'amélioration.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
 
         {/* Generator component */}
         <GeopoliticsParadoxGenerator />
@@ -62,28 +32,33 @@ const GeopoliticsParadoxGeneratorPage = () => {
         {/* Help section */}
         <Card className="border border-blue-200 mt-6">
           <CardContent className="p-6">
-            <h3 className="font-semibold text-blue-900 mb-3">Critères d'évaluation</h3>
+            <h3 className="font-semibold text-blue-900 mb-3">Critères d'évaluation (sur 20 points total)</h3>
             <div className="space-y-2 text-sm text-gray-700">
               <div className="flex gap-3">
-                <span className="font-medium text-blue-700 min-w-[180px]">Clarté (5 pts)</span>
+                <span className="font-medium text-blue-700 min-w-[180px]">Clarté (4 pts max)</span>
                 <span>Question compréhensible et bien posée</span>
               </div>
               <div className="flex gap-3">
-                <span className="font-medium text-blue-700 min-w-[180px]">Paradoxe explicite (5 pts)</span>
+                <span className="font-medium text-blue-700 min-w-[180px]">Paradoxe explicite (4 pts max)</span>
                 <span>Présence d'une contradiction féconde</span>
               </div>
               <div className="flex gap-3">
-                <span className="font-medium text-blue-700 min-w-[180px]">Ancrage géopolitique (5 pts)</span>
+                <span className="font-medium text-blue-700 min-w-[180px]">Ancrage géopolitique (4 pts max)</span>
                 <span>Mention d'acteurs, d'espaces ou de puissances</span>
               </div>
               <div className="flex gap-3">
-                <span className="font-medium text-blue-700 min-w-[180px]">Ouverture analytique (5 pts)</span>
+                <span className="font-medium text-blue-700 min-w-[180px]">Ouverture analytique (4 pts max)</span>
                 <span>Question ouverte, non descriptive</span>
               </div>
               <div className="flex gap-3">
-                <span className="font-medium text-blue-700 min-w-[180px]">Pertinence stratégique (5 pts)</span>
-                <span>Capacité à structurer un plan dialectique</span>
+                <span className="font-medium text-blue-700 min-w-[180px]">Pertinence stratégique (4 pts max)</span>
+                <span>Enjeux stratégiques majeurs et profondeur</span>
               </div>
+            </div>
+            <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <p className="text-sm text-yellow-800">
+                <strong>Note :</strong> L'IA est sévère et honnête. Si votre réponse ne fait pas sens, elle peut noter 0/20.
+              </p>
             </div>
           </CardContent>
         </Card>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronRight, Home, BookOpen, Globe, FileText } from 'lucide-react';
+import { ChevronRight, Home, BookOpen, Globe, FileText, List, Book, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const GeopolitiqueDeuxiemeAnneePage = () => {
@@ -10,7 +10,9 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
       description: "Intégrations, fragmentations et géopolitique européenne face aux défis contemporains.",
       to: "/formation/geopolitique/union-europeenne",
       chronologiePath: "/formation/geopolitique/chronologie-europe",
-      flashcardsPath: "/formation/geopolitique/union-europeenne/flashcards"
+      flashcardsPath: "/formation/geopolitique/union-europeenne/flashcards",
+      etudesCasPath: "/formation/geopolitique/union-europeenne/etudes-de-cas",
+      auteursPath: "/formation/geopolitique/union-europeenne/auteurs"
     },
     {
       id: 2,
@@ -18,7 +20,9 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
       description: "États, territoires, cultures, développement et enjeux géopolitiques de l'Afrique contemporaine.",
       to: "/formation/geopolitique/continent-africain",
       chronologiePath: "/formation/geopolitique/continent-africain/chronologie",
-      flashcardsPath: "/formation/geopolitique/continent-africain/flashcards"
+      flashcardsPath: "/formation/geopolitique/continent-africain/flashcards",
+      etudesCasPath: "/formation/geopolitique/continent-africain/etudes-de-cas",
+      auteursPath: "/formation/geopolitique/continent-africain/auteurs"
     },
     {
       id: 3,
@@ -26,7 +30,9 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
       description: "États, territoires, cultures et géopolitique d'une région au cœur des enjeux mondiaux.",
       to: "/formation/geopolitique/proche-moyen-orient",
       chronologiePath: "/formation/geopolitique/proche-moyen-orient/chronologie",
-      flashcardsPath: "/formation/geopolitique/proche-moyen-orient/flashcards"
+      flashcardsPath: "/formation/geopolitique/proche-moyen-orient/flashcards",
+      etudesCasPath: "/formation/geopolitique/proche-moyen-orient/etudes-de-cas",
+      auteursPath: "/formation/geopolitique/proche-moyen-orient/auteurs"
     },
     {
       id: 4,
@@ -34,7 +40,9 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
       description: "États-Unis, Canada, Mexique : société, politique et puissance dans un espace intégré.",
       to: "/formation/geopolitique/amerique-nord",
       chronologiePath: "/formation/geopolitique/amerique-nord/chronologie",
-      flashcardsPath: "/formation/geopolitique/amerique-nord/flashcards"
+      flashcardsPath: "/formation/geopolitique/amerique-nord/flashcards",
+      etudesCasPath: "/formation/geopolitique/amerique-nord/etudes-de-cas",
+      auteursPath: "/formation/geopolitique/amerique-nord/auteurs"
     },
     {
       id: 5,
@@ -42,7 +50,9 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
       description: "Émergences, crises, intégrations régionales et géopolitique du sous-continent latino-américain.",
       to: "/formation/geopolitique/amerique-latine",
       chronologiePath: "/formation/geopolitique/amerique-latine/chronologie",
-      flashcardsPath: "/formation/geopolitique/amerique-latine/flashcards"
+      flashcardsPath: "/formation/geopolitique/amerique-latine/flashcards",
+      etudesCasPath: "/formation/geopolitique/amerique-latine/etudes-de-cas",
+      auteursPath: "/formation/geopolitique/amerique-latine/auteurs"
     },
     {
       id: 6,
@@ -50,7 +60,9 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
       description: "Géopolitique d'une région multipolaire : Chine, Inde, puissances émergentes et mondialisation asiatique.",
       to: "/formation/geopolitique/asie",
       chronologiePath: "/formation/geopolitique/asie/chronologie",
-      flashcardsPath: "/formation/geopolitique/asie/flashcards"
+      flashcardsPath: "/formation/geopolitique/asie/flashcards",
+      etudesCasPath: "/formation/geopolitique/asie/etudes-de-cas",
+      auteursPath: "/formation/geopolitique/asie/auteurs"
     }
   ];
 
@@ -94,17 +106,25 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
                     <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">{sujet.title}</h3>
                     <p className="text-gray-600 mb-4">{sujet.description}</p>
                     <div className="flex flex-wrap gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Link to={sujet.to} className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md">
-                        <BookOpen className="w-4 h-4" />
+                      <Link to={sujet.to} className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-3 py-1.5 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 text-sm">
+                        <BookOpen className="w-3.5 h-3.5" />
                         Accéder au cours
                       </Link>
-                      <Link to={sujet.chronologiePath} className="inline-flex items-center gap-2 bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md">
+                      <Link to={sujet.chronologiePath} className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-4 py-2 rounded-md shadow-lg hover:shadow-xl transition-all duration-300">
                         <Globe className="w-4 h-4" />
                         Chronologie
                       </Link>
-                      <Link to={sujet.flashcardsPath} className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md">
-                        <FileText className="w-4 h-4" />
+                      <Link to={sujet.flashcardsPath} className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-3 py-1.5 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 text-sm">
+                        <FileText className="w-3.5 h-3.5" />
                         Flash cards
+                      </Link>
+                      <Link to={sujet.etudesCasPath} className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-3 py-1.5 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 text-sm">
+                        <List className="w-3.5 h-3.5" />
+                        Études de cas
+                      </Link>
+                      <Link to={sujet.auteursPath} className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-3 py-1.5 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 text-sm">
+                        <Users className="w-3.5 h-3.5" />
+                        Auteurs
                       </Link>
                     </div>
                   </div>

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ChevronRight, Home, BookOpen, Calculator, BookMarked, Award, TrendingUp } from 'lucide-react';
+import { ChevronRight, Home, BookOpen, Calculator, BookMarked, Award, TrendingUp, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -302,6 +302,53 @@ const MathsChoixOptionPage = () => {
           </div>
         </div>
 
+        {/* Section Générateur Maths IA */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-center mb-8 text-gray-800">Outil IA pour les mathématiques</h2>
+          <div className="max-w-4xl mx-auto">
+            <Link
+              to="/generator/math"
+              className="block"
+            >
+              <div className="bg-white shadow-lg shadow-orange-100/30 hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 bg-orange-50 rounded-2xl p-8 relative overflow-hidden group cursor-pointer">
+                <div className="flex items-center justify-between w-full mb-6 relative z-10">
+                  <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform relative z-10">
+                    <Calculator className="h-10 w-10 text-orange-600" />
+                  </div>
+                  <Badge variant="outline" className="text-orange-700 border-orange-200 bg-orange-50 text-sm px-4 py-2 relative z-10">
+                    IA Générative
+                  </Badge>
+                </div>
+                <h3 className="font-semibold text-2xl mb-4 text-center relative z-10">Générateur Maths IA</h3>
+                <p className="text-base text-gray-600 mb-6 text-center relative z-10 leading-relaxed">
+                  Posez vos questions sur les théorèmes du programme Maths Approfondies 1ère et 2ème année.
+                  Obtenez des réponses complètes avec formules LaTeX, démonstrations et exemples détaillés.
+                </p>
+                <div className="space-y-3 text-sm w-full mb-6 relative z-10">
+                  <div className="flex items-center text-orange-600 justify-center">
+                    <span className="mr-3">✓</span>
+                    <span>Programme Maths Approfondies 1ère/2ème année</span>
+                  </div>
+                  <div className="flex items-center text-orange-600 justify-center">
+                    <span className="mr-3">✓</span>
+                    <span>Théorèmes complets avec hypothèses</span>
+                  </div>
+                  <div className="flex items-center text-orange-600 justify-center">
+                    <span className="mr-3">✓</span>
+                    <span>Formules en LaTeX et exemples détaillés</span>
+                  </div>
+                </div>
+                <div className="flex justify-center relative z-10">
+                  <Button className="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 transform px-8 py-3">
+                    <Zap className="mr-2 h-5 w-5" />
+                    Utiliser le générateur IA
+                    <ChevronRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </div>
 
       </div>
     </div>

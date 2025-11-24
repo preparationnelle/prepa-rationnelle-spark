@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
-import { ChevronRight, Home, BookOpen, Globe, MapPin, Quote, AlertTriangle, Lightbulb } from 'lucide-react';
+import { ChevronRight, Home, BookOpen, Globe, MapPin, Quote, AlertTriangle, Lightbulb, List, Target, Book } from 'lucide-react';
 
 const ContinentAfricainPage = () => {
   return (
@@ -2288,6 +2288,57 @@ const ContinentAfricainPage = () => {
               </Accordion>
             </CardContent>
           </Card>
+
+        {/* Navigation vers ressources */}
+        <div className="grid md:grid-cols-4 gap-6 mb-12">
+          <Link to="/formation/geopolitique/continent-africain/chronologie">
+            <Card className="h-full hover:shadow-lg transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-blue-300">
+              <CardContent className="p-6 text-center">
+                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Globe className="h-6 w-6 text-gray-600" />
+                </div>
+                <h3 className="font-semibold mb-2">Chronologie</h3>
+                <p className="text-sm text-gray-600">Histoire africaine moderne</p>
+              </CardContent>
+            </Card>
+          </Link>
+
+          <Link to="/formation/geopolitique/continent-africain/flashcards">
+            <Card className="h-full hover:shadow-lg transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-orange-300">
+              <CardContent className="p-6 text-center">
+                <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Target className="h-6 w-6 text-orange-600" />
+                </div>
+                <h3 className="font-semibold mb-2">Flashcards</h3>
+                <p className="text-sm text-gray-600">Révision interactive</p>
+              </CardContent>
+            </Card>
+          </Link>
+
+          <Link to="/formation/geopolitique/continent-africain/etudes-de-cas">
+            <Card className="h-full hover:shadow-lg transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-green-300">
+              <CardContent className="p-6 text-center">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <List className="h-6 w-6 text-green-600" />
+                </div>
+                <h3 className="font-semibold mb-2">Études de cas</h3>
+                <p className="text-sm text-gray-600">Sujets de dissertation</p>
+              </CardContent>
+            </Card>
+          </Link>
+
+          <Link to="/formation/geopolitique/continent-africain/auteurs">
+            <Card className="h-full hover:shadow-lg transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-purple-300">
+              <CardContent className="p-6 text-center">
+                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Book className="h-6 w-6 text-purple-600" />
+                </div>
+                <h3 className="font-semibold mb-2">Auteurs</h3>
+                <p className="text-sm text-gray-600">Bibliographie essentielle</p>
+              </CardContent>
+            </Card>
+          </Link>
+        </div>
 
         </div>
       </div>

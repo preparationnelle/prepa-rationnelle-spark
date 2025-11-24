@@ -159,3 +159,4 @@ const MigrationsChronologiePage = () => {
 };
 
 export default MigrationsChronologiePage;
+
