@@ -52,82 +52,19 @@ const UnifiedLanguagesGeneratorPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F0F8FF]">
-      <div className="max-w-6xl mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      <div className="max-w-6xl mx-auto px-4 py-12">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Générateur Langues
+        <div className="text-center mb-12">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            Générateur
+            <span className="block mt-2 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
+              Langues
+            </span>
           </h1>
-          <p className="text-lg text-gray-600">
-            Générez des paragraphes ou corrigez vos thèmes avec IA
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Améliorez vos compétences en thème grammatical grâce à l'IA
           </p>
-        </div>
-
-        {/* Barre de navigation d'outil (sticky) */}
-        <div className="sticky top-0 z-10 bg-white/80 backdrop-blur-sm border-b border-[#E6EEF9] mb-6">
-          <div className="flex items-center justify-between py-4">
-            {/* Tabs d'outils */}
-            <Tabs value={selectedTool} onValueChange={(value) => setSelectedTool(value as 'paragraph' | 'grammar')}>
-              <TabsList className="grid w-auto grid-cols-2 bg-gray-100 p-1 rounded-xl">
-                <TabsTrigger 
-                  value="paragraph" 
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm data-[state=active]:text-gray-900"
-                >
-                  <FileText className="w-4 h-4" />
-                  Paragraphe
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="grammar" 
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm data-[state=active]:text-gray-900"
-                >
-                  <Target className="w-4 h-4" />
-                  Thème grammatical
-                </TabsTrigger>
-              </TabsList>
-            </Tabs>
-
-            {/* Contrôles à droite */}
-            <div className="flex items-center gap-4">
-              {/* Sélecteur de langue */}
-              <div className="flex bg-gray-100 rounded-lg p-1">
-                {(['allemand', 'anglais', 'espagnol'] as const).map((lang) => (
-                  <button
-                    key={lang}
-                    onClick={() => setSelectedLanguage(lang)}
-                    className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
-                      selectedLanguage === lang 
-                        ? 'bg-white shadow-sm text-gray-900' 
-                        : 'text-gray-600 hover:text-gray-900'
-                    }`}
-                  >
-                    <span className="text-base">{getLanguageFlag(lang)}</span>
-                    {lang.charAt(0).toUpperCase() + lang.slice(1)}
-                  </button>
-                ))}
-              </div>
-
-              {/* Mode examen */}
-              <div className="flex items-center gap-2">
-                <Zap className="w-4 h-4 text-gray-500" />
-                <Switch
-                  checked={examMode}
-                  onCheckedChange={setExamMode}
-                  className="data-[state=checked]:bg-orange-500"
-                />
-                <span className="text-sm text-gray-600">Mode examen</span>
-              </div>
-
-              {/* Auto-save */}
-              <Badge 
-                variant={autoSave ? "default" : "secondary"}
-                className={`${autoSave ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'}`}
-              >
-                <Save className="w-3 h-3 mr-1" />
-                Auto-save {autoSave ? 'ON' : 'OFF'}
-              </Badge>
-            </div>
-          </div>
         </div>
 
         {/* Contenu principal */}
