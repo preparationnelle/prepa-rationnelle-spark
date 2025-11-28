@@ -172,8 +172,6 @@ const EconomieSampleEssaysPage = lazy(() => import('../pages/formation/allemand/
 const FemmesSampleEssaysPage = lazy(() => import('../pages/formation/allemand/civilisation/FemmesSampleEssaysPage'));
 const HistoireSampleEssaysPage = lazy(() => import('../pages/formation/allemand/civilisation/HistoireSampleEssaysPage'));
 const PolitikAllemandePage = lazy(() => import('../pages/formation/allemand/PolitikAllemandePage'));
-const PolitikAllemandeTestPage = lazy(() => import('../pages/formation/allemand/PolitikAllemandeTestPage'));
-const PolitikAllemandeMinimalPage = lazy(() => import('../pages/formation/allemand/PolitikAllemandeMinimalPage'));
 const DemographieAllemandePage = lazy(() => import('../pages/formation/allemand/DemographieAllemandePage'));
 const EcologieAllemandePage = lazy(() => import('../pages/formation/allemand/EcologieAllemandePage'));
 const GeopolitiqueEuropeennePage = lazy(() => import('../pages/formation/allemand/GeopolitiqueEuropeennePage'));
