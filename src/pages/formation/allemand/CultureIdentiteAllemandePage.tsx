@@ -1,111 +1,140 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Users, Church, History, Smartphone, Palette } from 'lucide-react';
+import { ArrowLeft, Heart, Users, Globe, Sparkles, BookOpen } from 'lucide-react';
+
+const VocabWord = ({ word, explanation }: { word: string; explanation: string }) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+  const tooltipRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (tooltipRef.current && !tooltipRef.current.contains(event.target as Node)) {
+        setShowTooltip(false);
+      }
+    };
+    if (showTooltip) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showTooltip]);
+
+  return (
+    <span className="relative inline-block" ref={tooltipRef}>
+      <span className="font-bold text-orange-700 cursor-pointer hover:text-orange-900 transition-colors" onClick={() => setShowTooltip(!showTooltip)}>
+        {word}
+      </span>
+      {showTooltip && (
+        <span className="absolute z-50 top-full left-0 mt-2 w-72 p-3 bg-white border-2 border-orange-400 rounded-lg shadow-xl text-sm text-gray-700">
+          <span className="font-semibold text-orange-700 block mb-1">Erklärung:</span>
+          <span className="text-gray-800">{explanation}</span>
+          <span className="absolute bottom-full left-4 border-8 border-transparent border-b-orange-400"></span>
+        </span>
+      )}
+    </span>
+  );
+};
 
 const CultureIdentiteAllemandePage: React.FC = () => {
   const cultureTopics = [
     {
       id: 1,
-      title: "Identität und Multikulturalismus",
-      icon: <Users className="w-5 h-5" />,
+      title: "Multikulturelle Gesellschaft",
+      icon: <Globe className="w-5 h-5" />,
       content: {
-        description: "Deutschland ist heute ein multikulturelles Land. Rund 28% der Bevölkerung haben einen Migrationshintergrund. Viele Menschen kommen aus der Türkei, aus Syrien, aus Polen oder aus der Ukraine.",
-        details: "Diese Vielfalt verändert die deutsche Identität. Einerseits bereichert sie die Kultur: neue Traditionen, Sprachen und Religionen sind Teil des Alltags. Andererseits gibt es auch Konflikte über Integration, Werte und Zusammenleben. Manche fragen: Was ist heute eigentlich 'deutsch'? Für Essays ist dies ein gutes Beispiel, wie Identität nicht statisch ist, sondern sich ständig verändert.",
-        vocabulary: [
-          { german: "Identität", french: "identité" },
-          { german: "Vielfalt", french: "diversité" },
-          { german: "Migrationshintergrund", french: "origine migratoire" },
-          { german: "Integration", french: "intégration" },
-          { german: "Zusammenleben", french: "cohabitation" }
-        ],
-        essayUsage: "Einstieg über Wandel der nationalen Identität."
+        description: (
+          <>
+            Deutschland ist heute ein <VocabWord word="Einwanderungsland" explanation="ein Land, in das viele Menschen aus anderen Ländern kommen" />. Über 20 Millionen Menschen haben einen <VocabWord word="Migrationshintergrund" explanation="Menschen, die selbst oder deren Eltern aus anderen Ländern kommen" /> – das sind etwa 25% der Bevölkerung.
+          </>
+        ),
+        details: (
+          <>
+            Diese <VocabWord word="Vielfalt" explanation="viele verschiedene Kulturen und Hintergründe" /> verändert die deutsche Gesellschaft grundlegend. Die größten Gruppen kommen aus der Türkei, Polen, Russland und Syrien. Deutschland diskutiert intensiv über die Frage: Was bedeutet es, deutsch zu sein? Ist die deutsche <VocabWord word="Identität" explanation="wer man ist, die eigenen Werte und Kultur" /> <VocabWord word="multikulturell" explanation="aus vielen verschiedenen Kulturen zusammengesetzt" />, oder gibt es eine feste deutsche <VocabWord word="Leitkultur" explanation="die Hauptkultur, an der sich alle orientieren sollen" />? Diese Debatte zeigt: Deutschland befindet sich in einem Prozess der kulturellen <VocabWord word="Neudefini tion" explanation="neu festlegen, was etwas bedeutet" />.
+          </>
+        ),
+        essayUsage: "Einstieg über kulturelle Identität und gesellschaftliche Transformation."
       }
     },
     {
       id: 2,
-      title: "Religion und Pluralismus",
-      icon: <Church className="w-5 h-5" />,
+      title: "Integration und Zusammenleben",
+      icon: <Users className="w-5 h-5" />,
       content: {
-        description: "Deutschland ist offiziell ein säkularer Staat, aber Religion spielt eine Rolle. Traditionell sind viele Menschen katholisch oder evangelisch. Doch die Zahl der Kirchenmitglieder sinkt stark: 2023 traten über 500.000 Menschen aus der Kirche aus.",
-        details: "Gleichzeitig wächst der Islam: er ist heute die drittgrößte Religion in Deutschland, mit etwa fünf Millionen Gläubigen. Es gibt Debatten über die Rolle des Islams in der Gesellschaft. Die Kirchensteuer und die Anerkennung muslimischer Organisationen sind aktuelle Themen. Für Essays zeigt dieses Beispiel die Spannung zwischen Tradition und religiösem Pluralismus.",
-        vocabulary: [
-          { german: "säkular", french: "laïque" },
-          { german: "Kirche", french: "église" },
-          { german: "Kirchensteuer", french: "impôt religieux" },
-          { german: "Islam", french: "islam" },
-          { german: "Pluralismus", french: "pluralisme" }
-        ],
-        essayUsage: "Beleg für gesellschaftliche Vielfalt und Herausforderungen."
+        description: (
+          <>
+            <VocabWord word="Integration" explanation="der Prozess, wie Menschen aus anderen Kulturen Teil der Gesellschaft werden" /> ist eine zentrale Herausforderung. Deutschland bietet <VocabWord word="Integrationskurse" explanation="Kurse, wo Einwanderer Deutsch lernen und über Deutschland lernen" /> an, die Sprache und Werte vermitteln.
+          </>
+        ),
+        details: (
+          <>
+            Seit 2005 haben über 1,5 Millionen Menschen diese Kurse besucht. Erfolg reiche Integration zeigt sich im Sport: Die deutsche Fußballnationalmannschaft hat Spieler mit türkischen, polnischen und afrikanischen Wurzeln, die stolz für Deutschland spielen. Aber es gibt auch Probleme: Manche Einwanderer leben in <VocabWord word="Parallelgesellschaften" explanation="separate Gemeinschaften, die wenig Kontakt zur Mehrheitsgesellschaft haben" />, besonders in großen Städten. Die Debatte über <VocabWord word="Assimilation" explanation="wenn man seine eigene Kultur komplett aufgibt" /> versus Integration zeigt: Deutschland sucht nach einem Weg, <VocabWord word="Vielfalt" explanation="Unterschiedlichkeit" /> zu bewahren und gleichzeitig <VocabWord word="Zusammenhalt" explanation="dass Menschen zusammen halten, Solidarität" /> zu schaffen.
+          </>
+        ),
+        essayUsage: "Beispiel für Integrationspolitik und gesellschaftliche Herausforderungen."
       }
     },
     {
       id: 3,
-      title: "Historisches Gedächtnis und Vergangenheitsbewältigung",
-      icon: <History className="w-5 h-5" />,
+      title: "Erinnerungskultur und Geschichte",
+      icon: <BookOpen className="w-5 h-5" />,
       content: {
-        description: "Ein wichtiger Teil der deutschen Identität ist die Auseinandersetzung mit der Vergangenheit, besonders mit dem Nationalsozialismus. Deutschland hat viele Denkmäler und Gedenkstätten für den Holocaust.",
-        details: "Politiker betonen regelmäßig: 'Nie wieder.' Auch heute spielt das historische Gedächtnis eine Rolle in Debatten über Demokratie und Rechtsextremismus. 2025, mit dem Aufstieg der AfD, warnen viele, die Lehren der Geschichte nicht zu vergessen. Für Essays kann man zeigen, dass die Erinnerungskultur zentral für die politische Identität Deutschlands bleibt.",
-        vocabulary: [
-          { german: "Vergangenheit", french: "passé" },
-          { german: "Vergangenheitsbewältigung", french: "travail de mémoire" },
-          { german: "Holocaust", french: "Holocauste" },
-          { german: "Gedenkstätte", french: "lieu de mémoire" },
-          { german: "Rechtsextremismus", french: "extrême droite" }
-        ],
-        essayUsage: "Beispiel für Wertebasis und Demokratiebewusstsein."
+        description: (
+          <>
+            Die deutsche <VocabWord word="Erinnerungskultur" explanation="wie eine Gesellschaft mit ihrer Geschichte umgeht" /> ist weltweit einzigartig. Deutschland stellt sich aktiv seiner dunklen Vergangenheit, besonders dem Holocaust und dem Zweiten Weltkrieg.
+          </>
+        ),
+        details: (
+          <>
+            Der Begriff <VocabWord word="Vergangenheitsbewältigung" explanation="die Aufarbeitung und Auseinandersetzung mit der Vergangenheit" /> beschreibt diesen Prozess. Deutschland hat Gedenkstätten wie das Holocaust-Mahnmal in Berlin gebaut, unterrichtet die NS-Zeit ausführlich in Schulen und zahlt <VocabWord word="Wiedergutmachung" explanation="Entschädigung für vergangenes Unrecht" /> an Überlebende. Diese <VocabWord word="Erinnerungsarbeit" explanation="aktive Auseinandersetzung mit der Geschichte" /> wird auch kritisiert: Manche sagen, Deutschland sei zu fixiert auf die Vergangenheit. Aber die meisten sehen darin eine <VocabWord word="moralische Pflicht" explanation="ethische Verpflichtung" /> und ein Zeichen demokratischer <VocabWord word="Reife" explanation="Erwachsenwerden, Verantwortung übernehmen" />.
+          </>
+        ),
+        essayUsage: "Argumentation über Geschichtsbewusstsein und nationale Identität."
       }
     },
     {
       id: 4,
-      title: "Digitale Kultur und Informationsgesellschaft",
-      icon: <Smartphone className="w-5 h-5" />,
+      title: "Kulturelle Szene und Kreativität",
+      icon: <Sparkles className="w-5 h-5" />,
       content: {
-        description: "Die deutsche Gesellschaft verändert sich auch durch die Digitalisierung. Immer mehr Menschen informieren sich über soziale Medien wie Instagram oder TikTok. Das schafft neue Chancen, aber auch Probleme.",
-        details: "Fake News, Hate Speech und Desinformation sind große Themen. Die Regierung reagiert mit strengen Datenschutzgesetzen wie der DSGVO und mit neuen Regeln für Plattformen. Gleichzeitig gibt es eine 'digitale Kluft': ältere Menschen haben weniger Zugang zur digitalen Welt, während junge Menschen darin aufwachsen. Für Essays eignet sich dieses Beispiel, um zu zeigen, dass kulturelle Identität heute auch durch Technologie geprägt wird.",
-        vocabulary: [
-          { german: "Digitalisierung", french: "numérisation" },
-          { german: "Fake News", french: "fausses nouvelles" },
-          { german: "Datenschutz", french: "protection des données" },
-          { german: "soziale Medien", french: "réseaux sociaux" },
-          { german: "digitale Kluft", french: "fracture numérique" }
-        ],
-        essayUsage: "Argument über moderne Gesellschaft und digitale Identität."
+        description: (
+          <>
+            Deutschland ist ein <VocabWord word="Kulturland" explanation="Land mit reicher kultureller Tradition" /> mit über 300 Theatern, 130 Orchestern und unzähligen Museen. Besonders Berlin gilt als <VocabWord word="Kreativhauptstadt" explanation="Zentrum für kreative und künstlerische Menschen" /> Europas.
+          </>
+        ),
+        details: (
+          <>
+            Die <VocabWord word="Kulturszene" explanation="die Welt der Kunst, Musik, Theater" /> ist vielfältig: klassische Musik (Beethoven, Bach), moderne Kunst, Street Art und elektronische Musik. Berlin zieht Künstler aus der ganzen Welt an – die Stadt ist bekannt für ihre <VocabWord word="alternative Kultur" explanation="nicht-mainstream, experimentell" /> und ihre Clubszene. Deutschland <VocabWord word="fördert" explanation="unterstützt mit Geld" /> Kultur stark: Der Staat gibt jährlich über 10 Milliarden Euro für Kultur aus. Gleichzeitig gibt es Debatten über <VocabWord word="Hochkultur" explanation="klassische, elitäre Kultur" /> versus <VocabWord word="Populärkultur" explanation="Kultur für alle, Mainstream" />. Die Frage: Wessen Kultur wird gefördert?
+          </>
+        ),
+        essayUsage: "Beispiel für kulturelle Vielfalt und staatliche Kulturförderung."
       }
     },
     {
       id: 5,
-      title: "Kultur, Kunst und Erinnerung",
-      icon: <Palette className="w-5 h-5" />,
+      title: "Generationen und Wertewandel",
+      icon: <Heart className="w-5 h-5" />,
       content: {
-        description: "Deutschland hat eine reiche Kultur: Literatur, Philosophie, Musik, Theater und Kino sind Teil der Identität. Städte wie Berlin sind heute Zentren der Kunst und ziehen Kreative aus aller Welt an.",
-        details: "Gleichzeitig ist Kultur ein Ort der Debatte. Viele Künstler setzen sich mit Themen wie Migration, Klimawandel oder Rechtsextremismus auseinander. Festivals wie die Berlinale oder Dokumentationen im Fernsehen prägen das Bild der Gesellschaft. Für Essays zeigt dieser Aspekt, dass Kultur nicht nur Tradition ist, sondern auch ein Spiegel aktueller politischer und sozialer Fragen.",
-        vocabulary: [
-          { german: "Kultur", french: "culture" },
-          { german: "Kunst", french: "art" },
-          { german: "Festival", french: "festival" },
-          { german: "Gesellschaft", french: "société" },
-          { german: "Spiegel", french: "miroir" }
-        ],
-        essayUsage: "Beispiel für Kultur als Ausdruck gesellschaftlicher Debatten."
+        description: (
+          <>
+            Zwischen den Generationen gibt es einen deutlichen <VocabWord word="Wertewandel" explanation="Veränderung der Werte und Prioritäten" />. Junge Menschen haben andere Prioritäten als die Generation ihrer Eltern und Großeltern.
+          </>
+        ),
+        details: (
+          <>
+            Die <VocabWord word="Babyboomer" explanation="Generation, geboren 1946-1964" /> legten Wert auf Sicherheit und materiellen Wohlstand. Die heutige junge Generation (oft "Generation Z" genannt) priorisiert <VocabWord word="Work-Life-Balance" explanation="gutes Gleichgewicht zwischen Arbeit und Privatleben" />, Nachhaltigkeit und soziale Gerechtigkeit. Bewegungen wie "Fridays for Future" zeigen: Junge Menschen sind politisch <VocabWord word="engagiert" explanation="aktiv, sich einsetzen für etwas" /> und <VocabWord word="fordern" explanation="verlangen, erwarten" /> Veränderung. Gleichzeitig gibt es <VocabWord word="Generationenkonflikte" explanation="Streit zwischen alten und jungen Menschen" /> über Themen wie Klimaschutz, Rente und Digitalisierung. Diese Spannungen prägen die deutsche Gesellschaft.
+          </>
+        ),
+        essayUsage: "Argumentation über gesellschaftlichen Wandel und Generationenunterschiede."
       }
     }
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
-      {/* Floating elements - Orange and blue bubbles */}
-      <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-5 animate-pulse"></div>
-      <div className="absolute -z-10 top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
-      <div className="container mx-auto px-4 py-8 max-w-6xl relative z-10">
-        {/* Header */}
+    <div className="min-h-screen bg-white">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-6">
             <Link to="/formation/allemand/civilisation">
@@ -115,121 +144,85 @@ const CultureIdentiteAllemandePage: React.FC = () => {
               </Button>
             </Link>
           </div>
-          
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Deutsche Kultur und Identität
+
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold text-gray-900 mb-3">
+              Kultur und Identität in Deutschland
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Eine Analyse der kulturellen Vielfalt, des historischen Gedächtnisses und der modernen Identitätsbildung in Deutschland
+            <p className="text-base text-gray-600 max-w-3xl mx-auto">
+              Eine Analyse der deutschen Kulturlandschaft, Identitätsfragen und gesellschaftlichen Werte
             </p>
           </div>
         </div>
 
-        {/* Statistiques clés */}
-        <Card className="mb-8 bg-gradient-to-r from-orange-500 to-blue-500 text-white">
+        <Card className="mb-8 border shadow-sm">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-center">
-              Wichtige Kulturkennzahlen (2023-2025)
+            <CardTitle className="text-lg font-semibold text-center text-gray-900">
+              Wichtige Kulturkennzahlen (2025)
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
-              <div>
-                <div className="text-3xl font-bold">28%</div>
-                <div className="text-orange-100">Migrationshintergrund</div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              <div className="p-4 bg-gray-50 rounded-lg border">
+                <div className="text-3xl font-bold text-gray-900">25%</div>
+                <div className="text-sm text-gray-600 mt-1">Bevölkerung mit Migrationshintergrund</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold">500.000</div>
-                <div className="text-orange-100">Kirchenaustritte 2023</div>
+              <div className="p-4 bg-gray-50 rounded-lg border">
+                <div className="text-3xl font-bold text-gray-900">300+</div>
+                <div className="text-sm text-gray-600 mt-1">Theater in Deutschland</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold">5 Mio.</div>
-                <div className="text-orange-100">Muslime in Deutschland</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold">2025</div>
-                <div className="text-orange-100">AfD-Aufstieg</div>
+              <div className="p-4 bg-gray-50 rounded-lg border">
+                <div className="text-3xl font-bold text-gray-900">10Mrd€</div>
+                <div className="text-sm text-gray-600 mt-1">Staatliche Kulturförderung pro Jahr</div>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Contenu principal */}
         <div className="space-y-6">
-          {cultureTopics.map((topic, index) => (
-            <Card key={topic.id} className="shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
+          {cultureTopics.map((topic) => (
+            <Card key={topic.id} className="border shadow-sm">
+              <CardHeader className="border-b bg-gray-50">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-orange-100 rounded-lg text-orange-600">
+                  <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-orange-700">
                     {topic.icon}
                   </div>
-                  <CardTitle className="text-xl text-gray-900">
+                  <CardTitle className="text-lg font-semibold text-gray-900">
                     {topic.title}
                   </CardTitle>
                 </div>
               </CardHeader>
-              <CardContent>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value={`item-${topic.id}`}>
-                    <AccordionTrigger className="text-left">
-                      <span className="font-medium text-gray-700">
-                        Détails et analyse
-                      </span>
-                    </AccordionTrigger>
-                    <AccordionContent className="space-y-4">
-                      <div className="bg-gray-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-gray-800 mb-2">Beschreibung:</h4>
-                        <p className="text-gray-700">{topic.content.description}</p>
-                      </div>
-                      
-                      <div className="bg-orange-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-orange-800 mb-2">Détails:</h4>
-                        <p className="text-orange-700">{topic.content.details}</p>
-                      </div>
-
-                      <div className="bg-blue-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-blue-800 mb-2">Verwendung in Aufsätzen:</h4>
-                        <p className="text-blue-700">{topic.content.essayUsage}</p>
-                      </div>
-
-                      <div className="bg-orange-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-orange-800 mb-2">Wichtige Vokabeln:</h4>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                          {topic.content.vocabulary.map((vocab, vocabIndex) => (
-                            <div key={vocabIndex} className="flex justify-between items-center p-2 bg-white rounded border">
-                              <span className="font-medium text-gray-800">{vocab.german}</span>
-                              <Badge variant="secondary" className="text-xs">
-                                {vocab.french}
-                              </Badge>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
+              <CardContent className="pt-6 space-y-4">
+                <div className="space-y-3">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Beschreibung:</h4>
+                    <p className="text-gray-700 leading-relaxed">{topic.content.description}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Détails:</h4>
+                    <p className="text-gray-700 leading-relaxed">{topic.content.details}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Verwendung in Aufsätzen:</h4>
+                    <p className="text-gray-700 leading-relaxed">{topic.content.essayUsage}</p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Navigation */}
-        <div className="mt-12 flex justify-between items-center">
+        <div className="mt-8 pt-8 border-t">
           <Link to="/formation/allemand/civilisation">
             <Button variant="outline" className="flex items-center gap-2">
               <ArrowLeft className="w-4 h-4" />
               Retour à la civilisation
             </Button>
           </Link>
-          
-          <div className="text-sm text-gray-500">
-            Chapitre 6: Kultur und Gesellschaft
-          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default CultureIdentiteAllemandePage; 
+export default CultureIdentiteAllemandePage;

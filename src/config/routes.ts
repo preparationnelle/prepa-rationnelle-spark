@@ -93,6 +93,12 @@ const AnglaisMediaSampleEssaysPage = lazy(() => import('../pages/formation/angla
 const AnglaisPolarizationSampleEssaysPage = lazy(() => import('../pages/formation/anglais/civilisation/PolarizationSampleEssaysPage'));
 const AnglaisLaborSampleEssaysPage = lazy(() => import('../pages/formation/anglais/civilisation/LaborSampleEssaysPage'));
 const AnglaisBrexitSampleEssaysPage = lazy(() => import('../pages/formation/anglais/civilisation/BrexitSampleEssaysPage'));
+const AnglaisGeopoliticsSampleEssaysPage = lazy(() => import('../pages/formation/anglais/civilisation/GeopoliticsSampleEssaysPage'));
+const AnglaisImmigrationSampleEssaysPage = lazy(() => import('../pages/formation/anglais/civilisation/ImmigrationSampleEssaysPage'));
+const AnglaisEducationSampleEssaysPage = lazy(() => import('../pages/formation/anglais/civilisation/EducationSampleEssaysPage'));
+const AnglaisCivilRightsSampleEssaysPage = lazy(() => import('../pages/formation/anglais/civilisation/CivilRightsSampleEssaysPage'));
+const AnglaisEconomySampleEssaysPage = lazy(() => import('../pages/formation/anglais/civilisation/EconomySampleEssaysPage'));
+const AnglaisHealthSystemsSampleEssaysPage = lazy(() => import('../pages/formation/anglais/civilisation/HealthSystemsSampleEssaysPage'));
 const AnglaisLaborPage = lazy(() => import('../pages/formation/anglais/civilisation/LaborPage'));
 const AnglaisPolarizationPage = lazy(() => import('../pages/formation/anglais/civilisation/PolarizationPage'));
 const AnglaisJusticePage = lazy(() => import('../pages/formation/anglais/civilisation/JusticePage'));
@@ -155,6 +161,16 @@ const FormationEspagnolMethodologiePage = lazy(() => import('../pages/formation/
 const FormationAllemandPage = lazy(() => import('../pages/FormationAllemandPage'));
 const FormationAllemandGrammairePage = lazy(() => import('../pages/formation/allemand/FormationAllemandGrammairePage'));
 const FormationAllemandCivilisationPage = lazy(() => import('../pages/formation/allemand/FormationAllemandCivilisationPage'));
+const EcologieSampleEssaysPage = lazy(() => import('../pages/formation/allemand/civilisation/EcologieSampleEssaysPage'));
+const PolitikSampleEssaysPage = lazy(() => import('../pages/formation/allemand/civilisation/PolitikSampleEssaysPage'));
+const DemographieSampleEssaysPage = lazy(() => import('../pages/formation/allemand/civilisation/DemographieSampleEssaysPage'));
+const EducationSampleEssaysPage = lazy(() => import('../pages/formation/allemand/civilisation/EducationSampleEssaysPage'));
+const CultureSampleEssaysPage = lazy(() => import('../pages/formation/allemand/civilisation/CultureSampleEssaysPage'));
+const GeopolitiqueSampleEssaysPage = lazy(() => import('../pages/formation/allemand/civilisation/GeopolitiqueSampleEssaysPage'));
+const TechnologieSampleEssaysPage = lazy(() => import('../pages/formation/allemand/civilisation/TechnologieSampleEssaysPage'));
+const EconomieSampleEssaysPage = lazy(() => import('../pages/formation/allemand/civilisation/EconomieSampleEssaysPage'));
+const FemmesSampleEssaysPage = lazy(() => import('../pages/formation/allemand/civilisation/FemmesSampleEssaysPage'));
+const HistoireSampleEssaysPage = lazy(() => import('../pages/formation/allemand/civilisation/HistoireSampleEssaysPage'));
 const PolitikAllemandePage = lazy(() => import('../pages/formation/allemand/PolitikAllemandePage'));
 const PolitikAllemandeTestPage = lazy(() => import('../pages/formation/allemand/PolitikAllemandeTestPage'));
 const PolitikAllemandeMinimalPage = lazy(() => import('../pages/formation/allemand/PolitikAllemandeMinimalPage'));
@@ -822,30 +838,30 @@ export const routes: RouteConfig[] = [
   { path: '/formation/oteria/variables-aleatoires-flashcards', component: OteriaVariablesAleatoiresFlashcardsPage, title: 'Variables Aléatoires & Histogrammes - Flashcards' },
   { path: '/formation/oteria/variables-aleatoires-qcm', component: OteriaVariablesAleatoiresQCMPage, title: 'Variables Aléatoires & Histogrammes - QCM' },
 
-// Chapitre 10 - Intégrales & π par Monte-Carlo
+  // Chapitre 10 - Intégrales & π par Monte-Carlo
   { path: '/formation/oteria/integrales-monte-carlo-cours', component: OteriaIntegralesMonteCarloCoursPage, title: 'Intégrales & π par Monte-Carlo - Cours' },
   { path: '/formation/oteria/integrales-monte-carlo-exercices', component: OteriaIntegralesMonteCarloExercicesPage, title: 'Intégrales & π par Monte-Carlo - Exercices' },
   { path: '/formation/oteria/integrales-monte-carlo-flashcards', component: OteriaIntegralesMonteCarloFlashcardsPage, title: 'Analyse de lois & Monte Carlo - Flashcards' },
 
-// Références Python
+  // Références Python
   { path: '/formation/oteria/python-references', component: OteriaPythonReferencesPage, title: 'Références Python - NumPy & Matplotlib' },
 
-// Chapitre 11 - Matrices & chaînes de Markov
+  // Chapitre 11 - Matrices & chaînes de Markov
   { path: '/formation/oteria/matrices-markov-cours', component: OteriaMatricesMarkovCoursPage, title: 'Matrices & Chaînes de Markov - Cours' },
   { path: '/formation/oteria/matrices-markov-exercices', component: OteriaMatricesMarkovExercicesPage, title: 'Matrices & Chaînes de Markov - Exercices' },
   { path: '/formation/oteria/matrices-markov-flashcards', component: OteriaMatricesMarkovFlashcardsPage, title: 'Matrices & Chaînes de Markov - Flashcards' },
   { path: '/formation/oteria/matrices-markov-qcm', component: OteriaMatricesMarkovQCMPage, title: 'Matrices & Chaînes de Markov - QCM' },
 
-// Chapitre 12 - Arithmétique modulaire & crypto affine
+  // Chapitre 12 - Arithmétique modulaire & crypto affine
   { path: '/formation/oteria/matrices-stochastiques-cours', component: OteriaMatricesStochastiquesCoursPage, title: 'Arithmétique Modulaire & Crypto - Cours' },
   { path: '/formation/oteria/matrices-stochastiques-exercices', component: OteriaMatricesStochastiquesExercicesPage, title: 'Arithmétique Modulaire & Crypto - Exercices' },
   { path: '/formation/oteria/matrices-stochastiques-flashcards', component: OteriaMatricesStochastiquesFlashcardsPage, title: 'Arithmétique Modulaire & Crypto - Flashcards' },
   { path: '/formation/oteria/matrices-stochastiques-qcm', component: OteriaMatricesStochastiquesQCMPage, title: 'Arithmétique Modulaire & Crypto - QCM' },
 
-// Extraits de sujets
+  // Extraits de sujets
   { path: '/formation/oteria/extraits-sujets-qcm', component: OteriaExtraitsSujetsQCMPage, title: 'Extraits de Sujets - QCM de Révision' },
 
-// Évaluation finale - Questions ouvertes
+  // Évaluation finale - Questions ouvertes
   { path: '/formation/oteria/evaluation-finale-questions-ouvertes', component: OteriaEvaluationFinaleQuestionsOuvertesPage, title: 'Évaluation Finale - Questions ouvertes' },
 
   { path: '/formation/oteria/recurrence-recursivite-exercices', component: OteriaRecurrenceRecursiviteExercicesPage, title: 'Récurrence & Récursivité - Exercices' },
@@ -880,9 +896,9 @@ export const routes: RouteConfig[] = [
   { path: '/methodologie/tendre-perches', component: TendrePerchesPage, title: 'Tendre des Perches' },
   { path: '/methodologie/pitch-intro', component: PitchIntroPage, title: 'Pitch d\'Introduction' },
   { path: '/dashboard', component: DashboardPage, title: 'Mon Tableau de bord', protected: true },
-  
+
   // Protected pages
-  
+
   // Teacher pages
   { path: '/prof', component: TeacherDashboardPage, title: 'Interface Professeur', protected: true },
   { path: '/prof/dashboard', component: TeacherDashboardPage, title: 'Dashboard Professeur', protected: true },
@@ -891,7 +907,7 @@ export const routes: RouteConfig[] = [
   { path: '/prof/courses/:courseId/students', component: TeacherCourseStudentsPage, title: 'Étudiants du Cours', protected: true },
   { path: '/prof/courses/:courseId/grades', component: TeacherCourseGradesPage, title: 'Notes du Cours', protected: true },
   { path: '/prof/courses/:courseId/assignment/:assignmentId', component: TeacherCourseAssignmentPage, title: 'Gestion Devoir', protected: true },
-  
+
   // Formation pages
   { path: '/formation/anglais', component: FormationAnglaisPage, title: 'Formation Anglais' },
   { path: '/formation/anglais/vocabulaire', component: FormationAnglaisVocabulairePage, title: 'Vocabulaire Anglais' },
@@ -1029,6 +1045,16 @@ export const routes: RouteConfig[] = [
   { path: '/formation/allemand/grammaire', component: FormationAllemandGrammairePage, title: 'Grammaire Allemande' },
   { path: '/formation/allemand/vocabulaire', component: lazy(() => import('../pages/formation/allemand/FormationAllemandVocabulairePage')), title: 'Vocabulaire Allemand' },
   { path: '/formation/allemand/civilisation', component: FormationAllemandCivilisationPage, title: 'Civilisation Allemande' },
+  { path: '/formation/allemand/civilisation/ecologie-essays', component: EcologieSampleEssaysPage, title: 'Écologie - Sujets rédigés' },
+  { path: '/formation/allemand/civilisation/politik-essays', component: PolitikSampleEssaysPage, title: 'Politik - Sujets rédigés' },
+  { path: '/formation/allemand/civilisation/demographie-essays', component: DemographieSampleEssaysPage, title: 'Démographie - Sujets rédigés' },
+  { path: '/formation/allemand/civilisation/education-essays', component: EducationSampleEssaysPage, title: 'Éducation - Sujets rédigés' },
+  { path: '/formation/allemand/civilisation/culture-essays', component: CultureSampleEssaysPage, title: 'Culture - Sujets rédigés' },
+  { path: '/formation/allemand/civilisation/geopolitique-essays', component: GeopolitiqueSampleEssaysPage, title: 'Géopolitique - Sujets rédigés' },
+  { path: '/formation/allemand/civilisation/technologie-essays', component: TechnologieSampleEssaysPage, title: 'Technologie - Sujets rédigés' },
+  { path: '/formation/allemand/civilisation/economie-essays', component: EconomieSampleEssaysPage, title: 'Économie - Sujets rédigés' },
+  { path: '/formation/allemand/civilisation/femmes-essays', component: FemmesSampleEssaysPage, title: 'Femmes et Égalité - Sujets rédigés' },
+  { path: '/formation/allemand/civilisation/histoire-essays', component: HistoireSampleEssaysPage, title: 'Histoire - Sujets rédigés' },
   { path: '/formation/allemand/epreuves', component: ReussirEpreuvesAllemandePage, title: 'Réussir les épreuves d\'allemand - Allemand' },
   { path: '/formation/allemand/epreuves-orales', component: EpreuvesOralesPage, title: 'Épreuves orales d\'allemand - Méthodologie' },
   { path: '/formation/allemand/epreuves-orales/exercices', component: EpreuvesOralesExercicesPage, title: 'Exercices - Épreuves orales d\'allemand' },
@@ -1038,7 +1064,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/allemand/reussir-synthese/exercices', component: ReussirSyntheseExercicesPage, title: 'Exercices - Réussir la synthèse' },
   { path: '/formation/allemand/grammaire-avancee', component: GrammaireAvanceePage, title: 'Grammaire avancée - Thèmes grammaticaux' },
   { path: '/formation/allemand/methodologie', component: MethodologieTravailPage, title: 'Méthodologie - Comment travailler l\'allemand en prépa' },
-  { path: '/formation/allemand/politik', component: PolitikAllemandeMinimalPage, title: 'Politik in Deutschland - Allemand' },
+  { path: '/formation/allemand/politik', component: PolitikAllemandePage, title: 'Politik in Deutschland - Allemand' },
   { path: '/formation/allemand/demographie', component: DemographieAllemandePage, title: 'Demographie in Deutschland - Allemand' },
   { path: '/formation/allemand/ecologie', component: EcologieAllemandePage, title: 'Ökologie und Umwelt in Deutschland - Allemand' },
   { path: '/formation/allemand/geopolitique', component: GeopolitiqueEuropeennePage, title: 'Europäische Geopolitik und Verteidigung - Allemand' },
@@ -1204,71 +1230,71 @@ export const routes: RouteConfig[] = [
   { path: '/formation/geopolitique/annales', component: AnnalesGeopolitiquePage, title: 'Annales Géopolitique' },
 
   // Formation ESH
-{ path: '/formation/esh', component: FormationESHPage, title: 'Formation ESH ECG' },
-{ path: '/formation/esh/premiere-annee', component: PremiereAnneeESHPage, title: 'Première année ESH' },
-{ path: '/formation/esh/deuxieme-annee', component: DeuxiemeAnneeESHPage, title: 'Deuxième année ESH' },
-{ path: '/formation/esh/methodologie', component: MethodologieESHPage, title: 'Méthodologie ESH' },
-{ path: '/formation/esh/methodologie/paragraphe-efficace', component: lazy(() => import('../pages/formation/esh/methodologie/ParagrapheEfficacePage')), title: 'Paragraphe efficace en ESH' },
-{ path: '/formation/esh/methodologie/introduction-dissertation', component: lazy(() => import('../pages/formation/esh/methodologie/IntroductionDissertationPage')), title: 'Introduction de dissertation en économie' },
-{ path: '/formation/esh/methodologie/structure-dissertation', component: lazy(() => import('../pages/formation/esh/methodologie/StructureDissertationPage')), title: 'Structure de dissertation en économie' },
-{ path: '/formation/esh/methodologie/fiches-conseils', component: lazy(() => import('../pages/formation/esh/methodologie/ConseilsFichesPage')), title: '10 conseils pour ficher ses cours d’ESH' },
-{ path: '/formation/esh/etudes-cas', component: EtudesCasESHPage, title: 'Ressources ESH' },
-{ path: '/formation/esh/ressources', component: RessourcesESHPage, title: 'Ressources ESH' },
+  { path: '/formation/esh', component: FormationESHPage, title: 'Formation ESH ECG' },
+  { path: '/formation/esh/premiere-annee', component: PremiereAnneeESHPage, title: 'Première année ESH' },
+  { path: '/formation/esh/deuxieme-annee', component: DeuxiemeAnneeESHPage, title: 'Deuxième année ESH' },
+  { path: '/formation/esh/methodologie', component: MethodologieESHPage, title: 'Méthodologie ESH' },
+  { path: '/formation/esh/methodologie/paragraphe-efficace', component: lazy(() => import('../pages/formation/esh/methodologie/ParagrapheEfficacePage')), title: 'Paragraphe efficace en ESH' },
+  { path: '/formation/esh/methodologie/introduction-dissertation', component: lazy(() => import('../pages/formation/esh/methodologie/IntroductionDissertationPage')), title: 'Introduction de dissertation en économie' },
+  { path: '/formation/esh/methodologie/structure-dissertation', component: lazy(() => import('../pages/formation/esh/methodologie/StructureDissertationPage')), title: 'Structure de dissertation en économie' },
+  { path: '/formation/esh/methodologie/fiches-conseils', component: lazy(() => import('../pages/formation/esh/methodologie/ConseilsFichesPage')), title: '10 conseils pour ficher ses cours d’ESH' },
+  { path: '/formation/esh/etudes-cas', component: EtudesCasESHPage, title: 'Ressources ESH' },
+  { path: '/formation/esh/ressources', component: RessourcesESHPage, title: 'Ressources ESH' },
 
-// Module 1 ESH chapters
-{ path: '/formation/esh/module1/acteurs-fonctions-economie', component: ActeursFonctionsEconomiePage, title: 'Les acteurs et les grandes fonctions de l\'économie' },
-{ path: '/formation/esh/module1/acteurs-fonctions-economie/module', component: ActeursFonctionsEconomieModulePage, title: 'Module – Acteurs et fonctions de l\'économie' },
-{ path: '/formation/esh/module1/monnaie-financement-economie', component: MonnaieFinancementEconomiePage, title: 'La monnaie et le financement de l\'économie' },
-{ path: '/formation/esh/module1/monnaie-financement-economie/module', component: MonnaieFinancementEconomieModulePage, title: 'Module – Monnaie et financement' },
-{ path: '/formation/esh/module1/courants-economiques', component: CourantsEconomiquesPage, title: 'Les grands courants de la pensée économique depuis le XVIe siècle' },
-{ path: '/formation/esh/module1/courants-economiques/module', component: CourantsEconomiquesModulePage, title: 'Module – Courants de la pensée économique' },
+  // Module 1 ESH chapters
+  { path: '/formation/esh/module1/acteurs-fonctions-economie', component: ActeursFonctionsEconomiePage, title: 'Les acteurs et les grandes fonctions de l\'économie' },
+  { path: '/formation/esh/module1/acteurs-fonctions-economie/module', component: ActeursFonctionsEconomieModulePage, title: 'Module – Acteurs et fonctions de l\'économie' },
+  { path: '/formation/esh/module1/monnaie-financement-economie', component: MonnaieFinancementEconomiePage, title: 'La monnaie et le financement de l\'économie' },
+  { path: '/formation/esh/module1/monnaie-financement-economie/module', component: MonnaieFinancementEconomieModulePage, title: 'Module – Monnaie et financement' },
+  { path: '/formation/esh/module1/courants-economiques', component: CourantsEconomiquesPage, title: 'Les grands courants de la pensée économique depuis le XVIe siècle' },
+  { path: '/formation/esh/module1/courants-economiques/module', component: CourantsEconomiquesModulePage, title: 'Module – Courants de la pensée économique' },
 
-{ path: '/formation/esh/module1/equilibre-micro', component: EquilibreMicroPage, title: 'L\'équilibre micro-économique du producteur et du consommateur' },
-{ path: '/formation/esh/module1/equilibre-micro/module', component: EquilibreMicroModulePage, title: 'Module – Équilibre micro-économique' },
-{ path: '/formation/esh/module1/offre-demande', component: OffreDemandePage, title: 'L\'offre, la demande et l\'équilibre du marché en concurrence parfaite' },
-{ path: '/formation/esh/module1/offre-demande/module', component: OffreDemandeModulePage, title: 'Module – Offre, demande et équilibre' },
-{ path: '/formation/esh/module1/defaillances-marche', component: DefaillancesMarchePage, title: 'Les défaillances de marché' },
-{ path: '/formation/esh/module1/defaillances-marche/module', component: DefaillancesMarcheModulePage, title: 'Module – Défaillances du marché' },
+  { path: '/formation/esh/module1/equilibre-micro', component: EquilibreMicroPage, title: 'L\'équilibre micro-économique du producteur et du consommateur' },
+  { path: '/formation/esh/module1/equilibre-micro/module', component: EquilibreMicroModulePage, title: 'Module – Équilibre micro-économique' },
+  { path: '/formation/esh/module1/offre-demande', component: OffreDemandePage, title: 'L\'offre, la demande et l\'équilibre du marché en concurrence parfaite' },
+  { path: '/formation/esh/module1/offre-demande/module', component: OffreDemandeModulePage, title: 'Module – Offre, demande et équilibre' },
+  { path: '/formation/esh/module1/defaillances-marche', component: DefaillancesMarchePage, title: 'Les défaillances de marché' },
+  { path: '/formation/esh/module1/defaillances-marche/module', component: DefaillancesMarcheModulePage, title: 'Module – Défaillances du marché' },
 
-{ path: '/formation/esh/module1/courants-sociologiques', component: CourantsSociologiquesPage, title: 'Les grands courants de la pensée sociologique depuis le XIXe siècle' },
-{ path: '/formation/esh/module1/methodes-sociologiques', component: MethodesSociologiquesPage, title: 'La pluralité des méthodes sociologiques' },
+  { path: '/formation/esh/module1/courants-sociologiques', component: CourantsSociologiquesPage, title: 'Les grands courants de la pensée sociologique depuis le XIXe siècle' },
+  { path: '/formation/esh/module1/methodes-sociologiques', component: MethodesSociologiquesPage, title: 'La pluralité des méthodes sociologiques' },
 
-// Module 3 ESH chapters - La mondialisation économique et financière
-{ path: '/formation/esh/module3/ouverture-economies', component: OuvertureEconomiesPage, title: 'L\'ouverture des économies depuis le XIXe siècle : évolution et acteurs' },
-{ path: '/formation/esh/module3/analyse-echanges', component: AnalyseEchangesInternationauxPage, title: 'L\'analyse économique des échanges internationaux' },
-{ path: '/formation/esh/module3/regionalisation-gouvernance', component: RegionalisationGouvernancePage, title: 'Régionalisation, gouvernance et régulations internationales' },
-{ path: '/formation/esh/module3/balance-paiements', component: BalancePaiementsChangePage, title: 'Balance des paiements, cours de change et systèmes de change' },
-{ path: '/formation/esh/module3/evolution-systeme-monetaires', component: EvolutionSystemeMonetairePage, title: 'L\'évolution du système monétaire international depuis le XIXe siècle' },
-{ path: '/formation/esh/module3/marche-capitaux', component: MarcheCapitauxPage, title: 'Constitution et fonctionnement du marché international des capitaux' },
-{ path: '/formation/esh/module3/construction-europeenne', component: ConstructionEuropeennePage, title: 'La dynamique de la construction européenne' },
-{ path: '/formation/esh/module3/europe-economique-monetaires', component: EuropeEconomiqueMonetairePage, title: 'L\'Europe économique et monétaire' },
-{ path: '/formation/esh/module3/europe-sociale', component: EuropeSocialePage, title: 'L\'Europe sociale' },
+  // Module 3 ESH chapters - La mondialisation économique et financière
+  { path: '/formation/esh/module3/ouverture-economies', component: OuvertureEconomiesPage, title: 'L\'ouverture des économies depuis le XIXe siècle : évolution et acteurs' },
+  { path: '/formation/esh/module3/analyse-echanges', component: AnalyseEchangesInternationauxPage, title: 'L\'analyse économique des échanges internationaux' },
+  { path: '/formation/esh/module3/regionalisation-gouvernance', component: RegionalisationGouvernancePage, title: 'Régionalisation, gouvernance et régulations internationales' },
+  { path: '/formation/esh/module3/balance-paiements', component: BalancePaiementsChangePage, title: 'Balance des paiements, cours de change et systèmes de change' },
+  { path: '/formation/esh/module3/evolution-systeme-monetaires', component: EvolutionSystemeMonetairePage, title: 'L\'évolution du système monétaire international depuis le XIXe siècle' },
+  { path: '/formation/esh/module3/marche-capitaux', component: MarcheCapitauxPage, title: 'Constitution et fonctionnement du marché international des capitaux' },
+  { path: '/formation/esh/module3/construction-europeenne', component: ConstructionEuropeennePage, title: 'La dynamique de la construction européenne' },
+  { path: '/formation/esh/module3/europe-economique-monetaires', component: EuropeEconomiqueMonetairePage, title: 'L\'Europe économique et monétaire' },
+  { path: '/formation/esh/module3/europe-sociale', component: EuropeSocialePage, title: 'L\'Europe sociale' },
 
-// Module 4 ESH chapters - Déséquilibres, régulation et action publique
-{ path: '/formation/esh/module4/inflation-chomage', component: InflationChomagePage, title: 'L\'inflation et le chômage' },
-{ path: '/formation/esh/module4/equilibre-macro', component: EquilibreMacroPage, title: 'L\'équilibre macroéconomique à travers les modèles : IS-LM / IS-LM-BP / OGDG' },
-{ path: '/formation/esh/module4/fluctuations-economiques', component: FluctuationsEconomiquesPage, title: 'Fluctuations économiques et politiques de régulation des cycles' },
-{ path: '/formation/esh/module4/politiques-structurelles', component: PolitiquesStructurellesPage, title: 'Politiques structurelles et interventions de l\'État face aux défaillances de marché' },
-{ path: '/formation/esh/module4/contraintes-politiques', component: ContraintesPolitiquesPage, title: 'Les contraintes auxquelles se heurtent les politiques économiques' },
-{ path: '/formation/esh/module4/justice-sociale', component: JusticeSocialePage, title: 'Justice sociale et légitimation de l\'intervention publique' },
-{ path: '/formation/esh/module4/lutte-inegalites', component: LutteInegalitesPage, title: 'Les politiques de lutte contre les inégalités' },
-{ path: '/formation/esh/module4/etat-providence', component: EtatProvidencePage, title: 'État-providence et protection sociale' },
+  // Module 4 ESH chapters - Déséquilibres, régulation et action publique
+  { path: '/formation/esh/module4/inflation-chomage', component: InflationChomagePage, title: 'L\'inflation et le chômage' },
+  { path: '/formation/esh/module4/equilibre-macro', component: EquilibreMacroPage, title: 'L\'équilibre macroéconomique à travers les modèles : IS-LM / IS-LM-BP / OGDG' },
+  { path: '/formation/esh/module4/fluctuations-economiques', component: FluctuationsEconomiquesPage, title: 'Fluctuations économiques et politiques de régulation des cycles' },
+  { path: '/formation/esh/module4/politiques-structurelles', component: PolitiquesStructurellesPage, title: 'Politiques structurelles et interventions de l\'État face aux défaillances de marché' },
+  { path: '/formation/esh/module4/contraintes-politiques', component: ContraintesPolitiquesPage, title: 'Les contraintes auxquelles se heurtent les politiques économiques' },
+  { path: '/formation/esh/module4/justice-sociale', component: JusticeSocialePage, title: 'Justice sociale et légitimation de l\'intervention publique' },
+  { path: '/formation/esh/module4/lutte-inegalites', component: LutteInegalitesPage, title: 'Les politiques de lutte contre les inégalités' },
+  { path: '/formation/esh/module4/etat-providence', component: EtatProvidencePage, title: 'État-providence et protection sociale' },
 
-// Module 2 ESH chapters
-{ path: '/formation/esh/module2/croissance-economique', component: CroissanceEconomiquePage, title: 'La croissance économique' },
-{ path: '/formation/esh/module2/croissance-economique/module', component: CroissanceEconomiqueModulePage, title: 'Module – Croissance économique' },
-{ path: '/formation/esh/module2/inegalites-developpement', component: InegalitesDeveloppementPage, title: 'Inégalités et stratégies de développement' },
-{ path: '/formation/esh/module2/soutenabilite-croissance', component: SoutenabiliteCroissancePage, title: 'La soutenabilité de la croissance et du développement' },
-{ path: '/formation/esh/module2/soutenabilite-croissance/module', component: SoutenabiliteCroissanceModulePage, title: 'Module – Soutenabilité de la croissance' },
-{ path: '/formation/esh/module2/transformations-economiques-financieres', component: TransformationsEconomiquesFinancieresPage, title: 'Les transformations des structures économiques et financières' },
-{ path: '/formation/esh/module2/transformations-economiques-financieres/module', component: TransformationsEconomiquesFinancieresModulePage, title: 'Module – Transformations économiques et financières' },
-{ path: '/formation/esh/module2/mobilite-sociale', component: MobiliteSocialePage, title: 'Mobilité sociale et transformations des structures sociales' },
-{ path: '/formation/esh/module2/transformations-demographiques', component: TransformationsDemographiquesPage, title: 'Transformations démographiques et évolution des modes de vie' },
-{ path: '/formation/esh/module2/transformations-entreprise', component: TransformationsEntreprisePage, title: 'Les transformations de l\'entreprise et de sa gouvernance depuis le XIXe siècle' },
-{ path: '/formation/esh/module2/transformations-entreprise/module', component: TransformationsEntrepriseModulePage, title: 'Module – Transformations de l\'entreprise' },
-{ path: '/formation/esh/module2/concurrence-imparfaite', component: ConcurrenceImparfaitePage, title: 'Concurrence imparfaite et stratégies des firmes' },
-{ path: '/formation/esh/module2/concurrence-imparfaite/module', component: ConcurrenceImparfaiteModulePage, title: 'Module – Concurrence imparfaite' },
-{ path: '/formation/esh/module2/sociologie-travail', component: SociologieTravailPage, title: 'Éléments de sociologie du travail et des organisations' },
+  // Module 2 ESH chapters
+  { path: '/formation/esh/module2/croissance-economique', component: CroissanceEconomiquePage, title: 'La croissance économique' },
+  { path: '/formation/esh/module2/croissance-economique/module', component: CroissanceEconomiqueModulePage, title: 'Module – Croissance économique' },
+  { path: '/formation/esh/module2/inegalites-developpement', component: InegalitesDeveloppementPage, title: 'Inégalités et stratégies de développement' },
+  { path: '/formation/esh/module2/soutenabilite-croissance', component: SoutenabiliteCroissancePage, title: 'La soutenabilité de la croissance et du développement' },
+  { path: '/formation/esh/module2/soutenabilite-croissance/module', component: SoutenabiliteCroissanceModulePage, title: 'Module – Soutenabilité de la croissance' },
+  { path: '/formation/esh/module2/transformations-economiques-financieres', component: TransformationsEconomiquesFinancieresPage, title: 'Les transformations des structures économiques et financières' },
+  { path: '/formation/esh/module2/transformations-economiques-financieres/module', component: TransformationsEconomiquesFinancieresModulePage, title: 'Module – Transformations économiques et financières' },
+  { path: '/formation/esh/module2/mobilite-sociale', component: MobiliteSocialePage, title: 'Mobilité sociale et transformations des structures sociales' },
+  { path: '/formation/esh/module2/transformations-demographiques', component: TransformationsDemographiquesPage, title: 'Transformations démographiques et évolution des modes de vie' },
+  { path: '/formation/esh/module2/transformations-entreprise', component: TransformationsEntreprisePage, title: 'Les transformations de l\'entreprise et de sa gouvernance depuis le XIXe siècle' },
+  { path: '/formation/esh/module2/transformations-entreprise/module', component: TransformationsEntrepriseModulePage, title: 'Module – Transformations de l\'entreprise' },
+  { path: '/formation/esh/module2/concurrence-imparfaite', component: ConcurrenceImparfaitePage, title: 'Concurrence imparfaite et stratégies des firmes' },
+  { path: '/formation/esh/module2/concurrence-imparfaite/module', component: ConcurrenceImparfaiteModulePage, title: 'Module – Concurrence imparfaite' },
+  { path: '/formation/esh/module2/sociologie-travail', component: SociologieTravailPage, title: 'Éléments de sociologie du travail et des organisations' },
   { path: '/formation/anglais/civilisation', component: CivilisationOverviewPage, title: 'English Civilization - Current Affairs' },
   { path: '/formation/anglais/civilisation/environment', component: EnvironmentPage, title: 'Environment and Ecology - English Civilization' },
   { path: '/formation/anglais/civilisation/politics', component: PoliticsPage, title: 'Politics (US & UK) - English Civilization' },
@@ -1287,6 +1313,12 @@ export const routes: RouteConfig[] = [
   { path: '/formation/anglais/civilisation/civil-rights', component: CivilRightsPage, title: 'Civil Rights and Social Movements - English Civilization' },
   { path: '/formation/anglais/civilisation/brexit', component: BrexitPage, title: 'Brexit and its Aftermath - English Civilization' },
   { path: '/formation/anglais/civilisation/brexit/sample-essays', component: AnglaisBrexitSampleEssaysPage, title: 'Brexit Sample Essays - English Civilization' },
+  { path: '/formation/anglais/civilisation/geopolitics/sample-essays', component: AnglaisGeopoliticsSampleEssaysPage, title: 'Geopolitics Sample Essays - English Civilization' },
+  { path: '/formation/anglais/civilisation/immigration/sample-essays', component: AnglaisImmigrationSampleEssaysPage, title: 'Immigration Sample Essays - English Civilization' },
+  { path: '/formation/anglais/civilisation/education/sample-essays', component: AnglaisEducationSampleEssaysPage, title: 'Education Sample Essays - English Civilization' },
+  { path: '/formation/anglais/civilisation/civil-rights/sample-essays', component: AnglaisCivilRightsSampleEssaysPage, title: 'Civil Rights Sample Essays - English Civilization' },
+  { path: '/formation/anglais/civilisation/economy/sample-essays', component: AnglaisEconomySampleEssaysPage, title: 'Economy Sample Essays - English Civilization' },
+  { path: '/formation/anglais/civilisation/health-systems/sample-essays', component: AnglaisHealthSystemsSampleEssaysPage, title: 'Health Systems Sample Essays - English Civilization' },
   { path: '/formation/anglais/civilisation/commonwealth', component: CommonwealthPage, title: 'The Commonwealth and Post-Colonial Legacy - English Civilization' },
   { path: '/formation/anglais/civilisation/civil-religion', component: CivilReligionPage, title: 'Civil Religion and National Identity - English Civilization' },
   { path: '/formation/anglais/civilisation/immigration', component: ImmigrationPage, title: 'Immigration and Border Control - English Civilization' },
@@ -1382,10 +1414,10 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths', component: MathsChoixOptionPage, title: 'Choix option Maths ECG' },
   { path: '/formation/math/premiere-vers-deuxieme', component: PremiereVersDeuxiemePage, title: 'Première → Deuxième année', protected: false },
   { path: '/formation/math/premiere-vers-deuxieme/module-1-applications-lineaires-exercices', component: Module1ApplicationsLineairesExercicesPage, title: 'Module 1 - Applications linéaires - Exercices', protected: false },
-  
+
   // Page d'accueil des chapitres libres
   { path: '/chapitres-libres', component: ChapitresLibresPage, title: 'Chapitres Libres d\'Accès', protected: false },
-  
+
   // Chapitres libres d'accès issus de Maths Approfondies
   // TEMPORARILY DISABLED DUE TO FILE CORRUPTION: { path: '/chapitres-libres/suites-cours', component: MathsSuitesPage, title: 'Cours - Suites numériques', protected: false },
   { path: '/chapitres-libres/suites-exercices', component: Chapitre4SuitesExercicesPage, title: 'Exercices - Suites numériques', protected: false },
@@ -1515,10 +1547,10 @@ export const routes: RouteConfig[] = [
   { path: '/offre/organisation-ete', component: OrganisationEtePage, title: 'Organisation Été' },
   { path: '/offre/preparation-cube', component: PreparationCubePage, title: 'Préparation Cube' },
   { path: '/offre/gratuite', component: OffreGratuitePage, title: 'Offre Gratuite - Sessions Live' },
-  
+
   // Methodologie pages
   { path: '/methodologie/entretiens-personnalite', component: MethodEntretiensPersonnalitePage, title: 'Méthodologie Entretiens Personnalité' },
-  
+
   // Articles pages
   { path: '/articles/maths-ete-controle', component: MathsEteControlePage, title: 'Un été pour (re)prendre le contrôle en maths' },
   { path: '/articles/attentes-concours', component: AttentesConcoursPage, title: 'Les attentes du concours - Décoder les jurys' },
@@ -1533,7 +1565,7 @@ export const routes: RouteConfig[] = [
   { path: '/articles/annales-strategie', component: AnnalesStrategiePage, title: 'Dompter les annales' },
   { path: '/entretien-inverse-gem', component: EntretienInverseGEMPage, title: 'L\'entretien inversé à GEM' },
   { path: '/cv-projectif', component: CVProjectifPage, title: 'Guide complet pour réaliser son CV projectif' },
-  
+
   // School pages
   { path: '/escp', component: ESCPPage, title: 'ESCP Business School' },
   { path: '/essec', component: ESSECPage, title: 'ESSEC Business School' },
@@ -1544,7 +1576,7 @@ export const routes: RouteConfig[] = [
   { path: '/kedge', component: KEDGEPage, title: 'KEDGE Business School' },
   { path: '/neoma', component: NEOMAPage, title: 'NEOMA Business School' },
   { path: '/skema', component: SKEMAPage, title: 'SKEMA Business School' },
-  
+
   // Generator pages
   { path: '/generator/flashcards', component: FlashcardsGeneratorPage, title: 'Générateur de Flashcards' },
   { path: '/generator/answer', component: AnswerGeneratorPage, title: 'Générateur de Réponses' },
@@ -1563,30 +1595,30 @@ export const routes: RouteConfig[] = [
   { path: '/generator/paragraph', component: ParagraphGeneratorPage, title: 'Générateur de Paragraphes' },
   { path: '/generator/geopolitics-paradox', component: GeopoliticsParadoxGeneratorPage, title: 'Paradoxes Géopolitiques' },
   { path: '/generator/math', component: MathGeneratorPage, title: 'Générateur Maths' },
-  
+
   // Routes pour les formations mathématiques
-  { 
-    path: '/formation/maths-choix', 
+  {
+    path: '/formation/maths-choix',
     component: lazy(() => import('../pages/formation/math/MathsChoixOptionPage')),
     title: 'Choix option Maths ECG'
   },
-  { 
-    path: '/formation/maths-approfondies', 
+  {
+    path: '/formation/maths-approfondies',
     component: lazy(() => import('../pages/formation/math/MathsApprofondies/MathsApprofondiesPage')),
     title: 'Maths Approfondies',
-    protected: true 
+    protected: true
   },
-  { 
-    path: '/formation/maths-methodologie', 
+  {
+    path: '/formation/maths-methodologie',
     component: lazy(() => import('../pages/formation/math/MathsMethodologiePage')),
     title: 'Méthodologie Mathématiques',
-    protected: true 
+    protected: true
   },
-  { 
-    path: '/formation/maths-appliquees', 
+  {
+    path: '/formation/maths-appliquees',
     component: lazy(() => import('../pages/formation/math/MathsAppliquees/MathsAppliqueesPage')),
     title: 'Maths Appliquées',
-    protected: true 
+    protected: true
   },
   {
     path: '/formation/maths-integration-sur-un-segment',

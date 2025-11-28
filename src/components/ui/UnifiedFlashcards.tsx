@@ -188,11 +188,10 @@ export const UnifiedFlashcards: React.FC<UnifiedFlashcardsProps> = ({
             {reviewCards.size > 0 && (
               <button
                 onClick={toggleReviewMode}
-                className={`px-3 py-1 text-sm rounded-md transition-colors ${
-                  isReviewMode
+                className={`px-3 py-1 text-sm rounded-md transition-colors ${isReviewMode
                     ? 'bg-red-100 hover:bg-red-200 text-red-700'
                     : 'bg-orange-100 hover:bg-orange-200 text-orange-700'
-                }`}
+                  }`}
               >
                 {isReviewMode ? 'Quitter révision' : `À revoir (${reviewCards.size})`}
               </button>
@@ -254,9 +253,8 @@ export const UnifiedFlashcards: React.FC<UnifiedFlashcardsProps> = ({
         onTouchEnd={handleTouchEnd}
       >
         <Card
-          className={`w-full max-w-lg h-80 cursor-pointer transition-all duration-300 hover:shadow-xl border-2 ${
-            showAnswer ? 'border-orange-300 bg-orange-50' : 'border-blue-300 bg-blue-50'
-          }`}
+          className={`w-full max-w-lg h-80 cursor-pointer transition-all duration-300 hover:shadow-xl border-2 ${showAnswer ? 'border-orange-300 bg-orange-50' : 'border-blue-300 bg-blue-50'
+            }`}
           onClick={toggleAnswer}
         >
           <CardContent className="p-8 h-full flex flex-col justify-center items-center text-center">
@@ -264,9 +262,8 @@ export const UnifiedFlashcards: React.FC<UnifiedFlashcardsProps> = ({
               {currentCard.category}
             </Badge>
 
-            <h2 className={`text-4xl font-bold mb-6 transition-colors ${
-              showAnswer ? 'text-orange-700' : 'text-blue-700'
-            }`}>
+            <h2 className={`text-4xl font-bold mb-6 transition-colors ${showAnswer ? 'text-orange-700' : 'text-blue-700'
+              }`}>
               {showAnswer ? currentCard[backKey] : currentCard[frontKey]}
             </h2>
 
@@ -311,11 +308,10 @@ export const UnifiedFlashcards: React.FC<UnifiedFlashcardsProps> = ({
       <div className="flex justify-center gap-4">
         <button
           onClick={markAsStudied}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-colors ${
-            studiedCards.has(currentIndex)
+          className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-colors ${studiedCards.has(currentIndex)
               ? 'bg-green-100 border-green-300 text-green-700'
               : 'bg-white border-gray-200 hover:bg-gray-50'
-          }`}
+            }`}
         >
           {studiedCards.has(currentIndex) ? '✓ Étudié' : 'Marquer comme étudié'}
         </button>

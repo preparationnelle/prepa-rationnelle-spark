@@ -1,103 +1,146 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, GraduationCap, Briefcase, University, Users, Zap } from 'lucide-react';
+import { ArrowLeft, GraduationCap, School, Briefcase, Users, Award } from 'lucide-react';
+
+// Component for clickable vocabulary words with German explanations
+const VocabWord = ({ word, explanation }: { word: string; explanation: string }) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+  const tooltipRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (tooltipRef.current && !tooltipRef.current.contains(event.target as Node)) {
+        setShowTooltip(false);
+      }
+    };
+
+    if (showTooltip) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showTooltip]);
+
+  return (
+    <span className="relative inline-block" ref={tooltipRef}>
+      <span
+        className="font-bold text-orange-700 cursor-pointer hover:text-orange-900 transition-colors"
+        onClick={() => setShowTooltip(!showTooltip)}
+      >
+        {word}
+      </span>
+      {showTooltip && (
+        <span className="absolute z-50 top-full left-0 mt-2 w-72 p-3 bg-white border-2 border-orange-400 rounded-lg shadow-xl text-sm text-gray-700">
+          <span className="font-semibold text-orange-700 block mb-1">Erklärung:</span>
+          <span className="text-gray-800">{explanation}</span>
+          <span className="absolute bottom-full left-4 border-8 border-transparent border-b-orange-400"></span>
+        </span>
+      )}
+    </span>
+  );
+};
 
 const EducationAllemandePage: React.FC = () => {
   const educationTopics = [
     {
       id: 1,
-      title: "Das Bildungssystem",
-      icon: <GraduationCap className="w-5 h-5" />,
+      title: "Das dreigliedrige Schulsystem",
+      icon: <School className="w-5 h-5" />,
       content: {
-        description: "Deutschland hat ein föderales Bildungssystem: jedes Bundesland entscheidet selbst über Schulen und Lehrpläne. Es gibt ein dreigliedriges System: Hauptschule, Realschule und Gymnasium.",
-        details: "Nach der 4. Klasse (in Bayern nach der 6.) entscheiden Eltern und Lehrer über den weiteren Weg. Kritiker sagen, dass dieses System soziale Ungleichheiten verstärkt: Kinder aus wohlhabenden Familien haben bessere Chancen aufs Gymnasium. Befürworter finden, dass es Talente besser fördert. In einem Aufsatz kann man dies als Beispiel für Chancenungleichheit und Bildungsdebatten nutzen.",
-        vocabulary: [
-          { german: "föderal", french: "fédéral" },
-          { german: "Lehrplan", french: "programme scolaire" },
-          { german: "Gymnasium", french: "lycée général" },
-          { german: "Chancenungleichheit", french: "inégalité des chances" },
-          { german: "dreigliedriges System", french: "système à trois voies" }
-        ],
-        essayUsage: "Einstieg über Struktur und soziale Folgen des Systems."
+        description: (
+          <>
+            Das deutsche Schulsystem ist <VocabWord word="dreigliedrig" explanation="in drei Haupttypen unterteilt" /> aufgebaut: <VocabWord word="Hauptschule" explanation="Schule für praktische Berufe, 5 Jahre" />, <VocabWord word="Realschule" explanation="mittlere Schule, führt zur mittleren Reife" /> und <VocabWord word="Gymnasium" explanation="höhere Schule, führt zum Abitur" />. Diese Trennung beginnt bereits nach der vierten Klasse.
+          </>
+        ),
+        details: (
+          <>
+            Das System wird oft kritisiert, weil es Kinder sehr früh nach ihrer <VocabWord word="Leistung" explanation="wie gut sie in der Schule sind" /> trennt. Studien zeigen, dass die soziale Herkunft stark beeinflusst, welche Schulform ein Kind besucht. Kinder aus <VocabWord word="bildungsfernen" explanation="Familien mit wenig formaler Bildung" /> Familien haben es schwerer, aufs Gymnasium zu kommen. Viele Bundesländer führen deshalb <VocabWord word="Gesamtschulen" explanation="Schulen, die alle drei Niveaus unter einem Dach vereinen" /> ein, um mehr <VocabWord word="Chancengleichheit" explanation="gleiche Möglichkeiten für alle" /> zu schaffen. Das Gymnasium bleibt aber die begehrteste Schulform – etwa 40% aller Schüler streben das <VocabWord word="Abitur" explanation="der höchste deutsche Schulabschluss" /> an.
+          </>
+        ),
+        essayUsage: "Einstieg über Bildungsungleichheit und soziale Selektion im Schulsystem."
       }
     },
     {
       id: 2,
-      title: "Berufsausbildung und duales System",
+      title: "Das duale Ausbildungssystem",
       icon: <Briefcase className="w-5 h-5" />,
       content: {
-        description: "Deutschland ist bekannt für sein duales Ausbildungssystem. Junge Menschen lernen in Betrieben und besuchen gleichzeitig Berufsschulen. Dieses Modell gilt als Erfolgsrezept, weil es praktische Erfahrung mit Theorie verbindet.",
-        details: "Rund 50% der Jugendlichen machen eine Ausbildung. Doch seit einigen Jahren sinkt die Zahl der Auszubildenden, weil mehr junge Menschen lieber studieren. Gleichzeitig klagen Betriebe über Fachkräftemangel. 2025 suchen viele Unternehmen händeringend Lehrlinge, besonders im Handwerk und in der Pflege. In einem Aufsatz kann man dies als Beispiel für Fachkräftemangel und Arbeitsmarktprobleme nennen.",
-        vocabulary: [
-          { german: "duales System", french: "système dual" },
-          { german: "Ausbildung", french: "formation professionnelle" },
-          { german: "Lehrling", french: "apprenti" },
-          { german: "Fachkräftemangel", french: "pénurie de main-d'œuvre" },
-          { german: "Berufsschule", french: "école professionnelle" }
-        ],
-        essayUsage: "Beispiel für Stärken und Probleme des Arbeitsmarkts."
+        description: (
+          <>
+            Deutschland ist weltbekannt für sein <VocabWord word="duales System" explanation="Ausbildung, die Schule und Betrieb kombiniert" />. Jugendliche lernen gleichzeitig in der <VocabWord word="Berufsschule" explanation="Schule für praktische Berufe" /> und im Betrieb einen <VocabWord word="Ausbildungsberuf" explanation="praktischer Beruf mit Zertifikat" />.
+          </>
+        ),
+        details: (
+          <>
+            Etwa 50% der Jugendlichen wählen nach der Schule eine <VocabWord word="Berufsausbildung" explanation="praktische Ausbildung in einem Beruf, meist 3 Jahre" /> statt eines Studiums. Beliebte Berufe sind <VocabWord word="Industriemechaniker" explanation="jemand, der Maschinen baut und repariert" />, Bankkaufmann oder Krankenpfleger. Das System verbindet Theorie und Praxis und wird international als <VocabWord word="Erfolgsmodell" explanation="etwas, das sehr gut funktioniert" /> angesehen. Allerdings gibt es Herausforderungen: Immer mehr Jugendliche bevorzugen ein Studium, sodass <VocabWord word="Lehrstellen" explanation="Ausbildungsplätze in Firmen" /> in manchen Berufen unbesetzt bleiben.
+          </>
+        ),
+        essayUsage: "Beispiel für praktische Bildung und den deutschen Mittelstand."
       }
     },
     {
       id: 3,
-      title: "Hochschulen und Forschung",
-      icon: <University className="w-5 h-5" />,
+      title: "Hochschulbildung und Studium",
+      icon: <GraduationCap className="w-5 h-5" />,
       content: {
-        description: "Deutschland hat viele renommierte Universitäten, wie die LMU München, die HU Berlin oder Heidelberg. Es gibt keine Studiengebühren (außer in Baden-Württemberg für Ausländer), was den Zugang erleichtert.",
-        details: "Das Land ist attraktiv für internationale Studierende: 2024 gab es über 400.000 ausländische Studenten. Gleichzeitig kämpft das Hochschulsystem mit Problemen: überfüllte Hörsäle, zu wenig Personal, und ein starker Wettbewerb um Forschungsförderung. Die Exzellenzinitiative unterstützt Spitzenuniversitäten, aber viele sehen ein Zwei-Klassen-System entstehen. Für Essays zeigt dieses Beispiel den Spagat zwischen Bildungsgerechtigkeit und Leistungsorientierung.",
-        vocabulary: [
-          { german: "Universität", french: "université" },
-          { german: "Forschung", french: "recherche" },
-          { german: "Exzellenzinitiative", french: "initiative d'excellence" },
-          { german: "Zugang", french: "accès" },
-          { german: "Studiengebühren", french: "frais de scolarité" }
-        ],
-        essayUsage: "Argument über Bildung als Standortfaktor."
+        description: (
+          <>
+            Deutschland hat über 400 <VocabWord word="Hochschulen" explanation="Universitäten und Fachhochschulen" />, die meisten sind staatlich und kostenfrei. Rund 2,9 Millionen Studierende sind an deutschen Unis <VocabWord word="eingeschrieben" explanation="offiziell als Student registriert" />.
+          </>
+        ),
+        details: (
+          <>
+            Ein großer Vorteil: In Deutschland gibt es keine <VocabWord word="Studiengebühren" explanation="Geld, das man fürs Studium zahlen muss" /> an staatlichen Unis, nur einen <VocabWord word="Semesterbeitrag" explanation="kleine Gebühr pro Semester, etwa 300 Euro" /> von etwa 300 Euro. Das macht Bildung für alle zugänglich. Allerdings: Die <VocabWord word="Abbrecherquote" explanation="wie viele Studenten ihr Studium nicht beenden" /> liegt bei 28% – viele brechen ab, weil das Studium zu anspruchsvoll ist oder nicht zu ihnen passt. <VocabWord word="Numerus Clausus" explanation="Zulassungsbeschränkung – man braucht eine gute Abiturnote" /> (NC) macht den Zugang zu beliebten Studiengängen wie Medizin oder Psychologie schwierig.
+          </>
+        ),
+        essayUsage: "Argumentation über Vor- und Nachteile des gebührenfreien Studiums."
       }
     },
     {
       id: 4,
-      title: "Bildungsgerechtigkeit und Integration",
-      icon: <Users className="w-5 h-5" />,
+      title: "Digitalisierung in Schulen",
+      icon: <Award className="w-5 h-5" />,
       content: {
-        description: "Ein großes Thema ist die Chancengleichheit im deutschen Bildungssystem. Kinder aus Migrantenfamilien oder sozial schwachen Haushalten haben es oft schwerer.",
-        details: "Laut einer Studie von 2023 verlassen immer noch viele Jugendliche die Schule ohne Abschluss – besonders in Großstädten. Gleichzeitig gibt es Förderprogramme wie Sprachkurse oder Ganztagsschulen, um Integration zu verbessern. Die Debatte bleibt: Ist das deutsche System gerecht oder verstärkt es Ungleichheit? In einem Aufsatz kann man dies als Beispiel für soziale Probleme und Integrationsfragen nutzen.",
-        vocabulary: [
-          { german: "Chancengleichheit", french: "égalité des chances" },
-          { german: "Abschluss", french: "diplôme" },
-          { german: "Ganztagsschule", french: "école à journée complète" },
-          { german: "Integration", french: "intégration" },
-          { german: "Förderprogramme", french: "programmes de soutien" }
-        ],
-        essayUsage: "Beleg für Zusammenhang Bildung – soziale Herkunft."
+        description: (
+          <>
+            Die <VocabWord word="Digitalisierung" explanation="die Einführung von digitalen Technologien" /> deutscher Schulen hinkt im internationalen Vergleich hinterher. Während der Corona-Pandemie wurden die Schwächen besonders deutlich.
+          </>
+        ),
+        details: (
+          <>
+            Viele Schulen haben keine gute <VocabWord word="digitale Infrastruktur" explanation="Computer, Internet, digitale Geräte" /> – WLAN, Tablets und moderne Software fehlen oft. Der <VocabWord word="DigitalPakt Schule" explanation="Programm der Regierung, um Schulen zu digitalisieren" />, ein 5-Milliarden-Euro-Programm, sollte helfen, doch die <VocabWord word="Umsetzung" explanation="die praktische Durchführung" /> ist langsam. Während Länder wie Estland oder Südkorea digital führend sind, fehlt es in Deutschland oft an <VocabWord word="technischer Ausstattung" explanation="Computer, Beamer, Internet" /> und gut ausgebildeten Lehrern. Die Pandemie hat gezeigt: Deutschland muss beim digitalen Lernen aufholen.
+          </>
+        ),
+        essayUsage: "Kritik an der langsamen Digitalisierung des Bildungssystems."
       }
     },
     {
       id: 5,
-      title: "Zukunft der Bildung",
-      icon: <Zap className="w-5 h-5" />,
+      title: "Bildungsföderalismus und Ungleichheit",
+      icon: <Users className="w-5 h-5" />,
       content: {
-        description: "Die Digitalisierung verändert das Lernen. Immer mehr Schulen nutzen Tablets, Lernplattformen und KI-gestützte Programme. Doch es gibt Unterschiede: manche Schulen sind modern ausgestattet, andere haben nicht einmal stabiles Internet.",
-        details: "Auch die Lehrerfortbildung hinkt oft hinterher. Gleichzeitig diskutiert man über neue Kompetenzen: Programmieren, digitale Medien und Nachhaltigkeit sollen fester Teil des Unterrichts werden. 2025 bleibt die Herausforderung, alle Schüler auf die Zukunft vorzubereiten. Für Essays zeigt dieses Thema die Verbindung von Bildung, Technologie und Gesellschaft.",
-        vocabulary: [
-          { german: "Digitalisierung", french: "numérisation" },
-          { german: "Ausstattung", french: "équipement" },
-          { german: "Lehrerfortbildung", french: "formation des enseignants" },
-          { german: "Nachhaltigkeit", french: "durabilité" },
-          { german: "Lernplattformen", french: "plateformes d'apprentissage" }
-        ],
-        essayUsage: "Beispiel für Modernisierung und ungleiche Chancen."
+        description: (
+          <>
+            In Deutschland ist Bildung <VocabWord word="Ländersache" explanation="jedes Bundesland entscheidet selbst über Bildung" />. Das bedeutet: Jedes der 16 Bundesländer hat sein eigenes Schulsystem, eigene Lehrpläne und Abiturstandards.
+          </>
+        ),
+        details: (
+          <>
+            Diese <VocabWord word="föderale Struktur" explanation="Aufteilung der Macht auf Bundesländer" /> führt zu großen Unterschieden. Ein Abitur aus Bayern gilt oft als schwieriger als eines aus Bremen. <VocabWord word="Umzüge" explanation="wenn Familien in ein anderes Bundesland ziehen" /> zwischen Bundesländern sind für Schüler problematisch, weil die Systeme so unterschiedlich sind. Kritiker fordern mehr <VocabWord word="Vereinheitlichung" explanation="dass alles gleicher wird" />, doch die Länder wollen ihre <VocabWord word="Bildungshoheit" explanation="das Recht, über Bildung zu entscheiden" /> nicht aufgeben. Diese Debatte zeigt die Spannungen zwischen föderaler Vielfalt und nationalen Standards.
+          </>
+        ),
+        essayUsage: "Beispiel für föderale Strukturen und regionale Bildungsungleichheit."
       }
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50">
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+    <div className="min-h-screen bg-white">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-6">
@@ -108,41 +151,37 @@ const EducationAllemandePage: React.FC = () => {
               </Button>
             </Link>
           </div>
-          
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Das deutsche Bildungssystem
+
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold text-gray-900 mb-3">
+              Bildung in Deutschland
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Eine Analyse der Struktur, Herausforderungen und Zukunftsperspektiven des deutschen Bildungswesens
+            <p className="text-base text-gray-600 max-w-3xl mx-auto">
+              Eine Analyse des deutschen Bildungssystems, von der Schule bis zur Hochschule
             </p>
           </div>
         </div>
 
         {/* Statistiques clés */}
-        <Card className="mb-8 bg-gradient-to-r from-blue-600 to-cyan-600 text-white">
+        <Card className="mb-8 border shadow-sm">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-center">
-              Wichtige Bildungszahlen (2024-2025)
+            <CardTitle className="text-lg font-semibold text-center text-gray-900">
+              Wichtige Bildungskennzahlen (2025)
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
-              <div>
-                <div className="text-3xl font-bold">50%</div>
-                <div className="text-blue-100">Jugendliche in Ausbildung</div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              <div className="p-4 bg-gray-50 rounded-lg border">
+                <div className="text-3xl font-bold text-gray-900">40%</div>
+                <div className="text-sm text-gray-600 mt-1">Schüler streben Abitur an</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold">400.000</div>
-                <div className="text-blue-100">Ausländische Studenten</div>
+              <div className="p-4 bg-gray-50 rounded-lg border">
+                <div className="text-3xl font-bold text-gray-900">50%</div>
+                <div className="text-sm text-gray-600 mt-1">Wählen duale Ausbildung</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold">16</div>
-                <div className="text-blue-100">Bundesländer</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold">2025</div>
-                <div className="text-blue-100">Fachkräftemangel</div>
+              <div className="p-4 bg-gray-50 rounded-lg border">
+                <div className="text-3xl font-bold text-gray-900">2,9M</div>
+                <div className="text-sm text-gray-600 mt-1">Studierende an Hochschulen</div>
               </div>
             </div>
           </CardContent>
@@ -150,79 +189,52 @@ const EducationAllemandePage: React.FC = () => {
 
         {/* Contenu principal */}
         <div className="space-y-6">
-          {educationTopics.map((topic, index) => (
-            <Card key={topic.id} className="shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
+          {educationTopics.map((topic) => (
+            <Card key={topic.id} className="border shadow-sm">
+              <CardHeader className="border-b bg-gray-50">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-blue-100 rounded-lg text-blue-600">
+                  <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-orange-700">
                     {topic.icon}
                   </div>
-                  <CardTitle className="text-xl text-gray-900">
+                  <CardTitle className="text-lg font-semibold text-gray-900">
                     {topic.title}
                   </CardTitle>
                 </div>
               </CardHeader>
-              <CardContent>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value={`item-${topic.id}`}>
-                    <AccordionTrigger className="text-left">
-                      <span className="font-medium text-gray-700">
-                        Détails et analyse
-                      </span>
-                    </AccordionTrigger>
-                    <AccordionContent className="space-y-4">
-                      <div className="bg-gray-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-gray-800 mb-2">Beschreibung:</h4>
-                        <p className="text-gray-700">{topic.content.description}</p>
-                      </div>
-                      
-                      <div className="bg-blue-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-blue-800 mb-2">Détails:</h4>
-                        <p className="text-blue-700">{topic.content.details}</p>
-                      </div>
+              <CardContent className="pt-6 space-y-4">
+                <div className="space-y-3">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Beschreibung:</h4>
+                    <p className="text-gray-700 leading-relaxed">{topic.content.description}</p>
+                  </div>
 
-                      <div className="bg-cyan-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-cyan-800 mb-2">Verwendung in Aufsätzen:</h4>
-                        <p className="text-cyan-700">{topic.content.essayUsage}</p>
-                      </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Détails:</h4>
+                    <p className="text-gray-700 leading-relaxed">{topic.content.details}</p>
+                  </div>
 
-                      <div className="bg-indigo-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-indigo-800 mb-2">Wichtige Vokabeln:</h4>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                          {topic.content.vocabulary.map((vocab, vocabIndex) => (
-                            <div key={vocabIndex} className="flex justify-between items-center p-2 bg-white rounded border">
-                              <span className="font-medium text-gray-800">{vocab.german}</span>
-                              <Badge variant="secondary" className="text-xs">
-                                {vocab.french}
-                              </Badge>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Verwendung in Aufsätzen:</h4>
+                    <p className="text-gray-700 leading-relaxed">{topic.content.essayUsage}</p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
         {/* Navigation */}
-        <div className="mt-12 flex justify-between items-center">
+        <div className="mt-8 pt-8 border-t">
           <Link to="/formation/allemand/civilisation">
             <Button variant="outline" className="flex items-center gap-2">
               <ArrowLeft className="w-4 h-4" />
               Retour à la civilisation
             </Button>
           </Link>
-          
-          <div className="text-sm text-gray-500">
-            Chapitre 7: Bildung und Ausbildung
-          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default EducationAllemandePage; 
+export default EducationAllemandePage;

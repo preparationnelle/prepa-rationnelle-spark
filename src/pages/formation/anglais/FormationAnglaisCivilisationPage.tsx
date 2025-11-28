@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { 
+import {
   Globe,
   Calendar,
   Briefcase,
@@ -101,7 +101,7 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
           </div>
 
           <div className="space-y-4">
-            
+
             {/* Module 1 - Environment and Ecology */}
             <Link to="/formation/anglais/civilisation/environment" className="block">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
@@ -205,10 +205,12 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
                           Vocabulary
                         </Button>
                       </Link>
-                      <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
-                        <BookOpen className="mr-2 h-4 w-4" />
-                        Sample Essays
-                      </Button>
+                      <Link to="/formation/anglais/civilisation/geopolitics/sample-essays">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <BookOpen className="mr-2 h-4 w-4" />
+                          Sample Essays
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -238,10 +240,12 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
                           Vocabulary
                         </Button>
                       </Link>
-                      <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
-                        <BookOpen className="mr-2 h-4 w-4" />
-                        Sample Essays
-                      </Button>
+                      <Link to="/formation/anglais/civilisation/immigration/sample-essays">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <BookOpen className="mr-2 h-4 w-4" />
+                          Sample Essays
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -271,10 +275,12 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
                           Vocabulary
                         </Button>
                       </Link>
-                      <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
-                        <BookOpen className="mr-2 h-4 w-4" />
-                        Sample Essays
-                      </Button>
+                      <Link to="/formation/anglais/civilisation/education/sample-essays">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <BookOpen className="mr-2 h-4 w-4" />
+                          Sample Essays
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -284,282 +290,288 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
             {/* Module 6 - Gender and Society */}
             <Link to="/formation/anglais/civilisation/civil-rights" className="block">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
-                  <span className="font-bold text-blue-700 text-lg">6</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Gender Equality and Social Movements</h3>
-                  <p className="text-gray-600 mb-4">Women's rights, LGBTQ+ issues, and contemporary social movements</p>
-                  <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                    <Link to="/formation/anglais/civilisation/civil-rights">
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Explore Chapter
-                      </Button>
-                    </Link>
-                    <Link to="/formation/anglais/civilisation/civil-rights/vocabulary">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <Briefcase className="mr-2 h-4 w-4" />
-                        Vocabulary
-                      </Button>
-                    </Link>
-                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Sample Essays
-                    </Button>
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
+                    <span className="font-bold text-blue-700 text-lg">6</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Gender Equality and Social Movements</h3>
+                    <p className="text-gray-600 mb-4">Women's rights, LGBTQ+ issues, and contemporary social movements</p>
+                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
+                      <Link to="/formation/anglais/civilisation/civil-rights">
+                        <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
+                          <Calendar className="mr-2 h-4 w-4" />
+                          Explore Chapter
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/civilisation/civil-rights/vocabulary">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <Briefcase className="mr-2 h-4 w-4" />
+                          Vocabulary
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/civilisation/civil-rights/sample-essays">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <BookOpen className="mr-2 h-4 w-4" />
+                          Sample Essays
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             </Link>
 
             {/* Module 7 - AI and Technology */}
             <Link to="/formation/anglais/civilisation/ai-technology" className="block">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
-                  <span className="font-bold text-blue-700 text-lg">7</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Artificial Intelligence and Technology</h3>
-                  <p className="text-gray-600 mb-4">Tech revolution, AI ethics, and the digital transformation of society</p>
-                  <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                    <Link to="/formation/anglais/civilisation/ai-technology">
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Explore Chapter
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
+                    <span className="font-bold text-blue-700 text-lg">7</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Artificial Intelligence and Technology</h3>
+                    <p className="text-gray-600 mb-4">Tech revolution, AI ethics, and the digital transformation of society</p>
+                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
+                      <Link to="/formation/anglais/civilisation/ai-technology">
+                        <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
+                          <Calendar className="mr-2 h-4 w-4" />
+                          Explore Chapter
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/civilisation/ai-technology/vocabulary">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <Briefcase className="mr-2 h-4 w-4" />
+                          Vocabulary
+                        </Button>
+                      </Link>
+                      <Button
+                        variant="outline"
+                        className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleShowSubject(techSubject);
+                        }}
+                      >
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Sample Essays
                       </Button>
-                    </Link>
-                    <Link to="/formation/anglais/civilisation/ai-technology/vocabulary">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <Briefcase className="mr-2 h-4 w-4" />
-                        Vocabulary
-                      </Button>
-                    </Link>
-                    <Button
-                      variant="outline"
-                      className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleShowSubject(techSubject);
-                      }}
-                    >
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Sample Essays
-                    </Button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             </Link>
 
             {/* Module 8 - Economy and Globalization */}
             <Link to="/formation/anglais/civilisation/economy" className="block">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
-                  <span className="font-bold text-blue-700 text-lg">8</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Economy and Globalization</h3>
-                  <p className="text-gray-600 mb-4">Economic systems, trade, and the impact of globalization</p>
-                  <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                    <Link to="/formation/anglais/civilisation/economy">
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Explore Chapter
-                      </Button>
-                    </Link>
-                    <Link to="/formation/anglais/civilisation/economy/vocabulary">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <Briefcase className="mr-2 h-4 w-4" />
-                        Vocabulary
-                      </Button>
-                    </Link>
-                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Sample Essays
-                    </Button>
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
+                    <span className="font-bold text-blue-700 text-lg">8</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Economy and Globalization</h3>
+                    <p className="text-gray-600 mb-4">Economic systems, trade, and the impact of globalization</p>
+                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
+                      <Link to="/formation/anglais/civilisation/economy">
+                        <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
+                          <Calendar className="mr-2 h-4 w-4" />
+                          Explore Chapter
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/civilisation/economy/vocabulary">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <Briefcase className="mr-2 h-4 w-4" />
+                          Vocabulary
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/civilisation/economy/sample-essays">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <BookOpen className="mr-2 h-4 w-4" />
+                          Sample Essays
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             </Link>
 
             {/* Module 9 - Brexit and Trade */}
             <Link to="/formation/anglais/civilisation/brexit" className="block">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
-                  <span className="font-bold text-blue-700 text-lg">9</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Brexit and International Trade</h3>
-                  <p className="text-gray-600 mb-4">Post-Brexit Britain, trade deals, and economic sovereignty</p>
-                  <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                    <Link to="/formation/anglais/civilisation/brexit">
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Explore Chapter
-                      </Button>
-                    </Link>
-                    <Link to="/formation/anglais/civilisation/brexit/vocabulary">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <Briefcase className="mr-2 h-4 w-4" />
-                        Vocabulary
-                      </Button>
-                    </Link>
-                    <Link to="/formation/anglais/civilisation/brexit/sample-essays">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <BookOpen className="mr-2 h-4 w-4" />
-                        Sample Essays
-                      </Button>
-                    </Link>
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
+                    <span className="font-bold text-blue-700 text-lg">9</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Brexit and International Trade</h3>
+                    <p className="text-gray-600 mb-4">Post-Brexit Britain, trade deals, and economic sovereignty</p>
+                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
+                      <Link to="/formation/anglais/civilisation/brexit">
+                        <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
+                          <Calendar className="mr-2 h-4 w-4" />
+                          Explore Chapter
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/civilisation/brexit/vocabulary">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <Briefcase className="mr-2 h-4 w-4" />
+                          Vocabulary
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/civilisation/brexit/sample-essays">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <BookOpen className="mr-2 h-4 w-4" />
+                          Sample Essays
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             </Link>
 
-            
+
 
             {/* Module 11 - Labor and Employment */}
             <Link to="/formation/anglais/civilisation/labor" className="block">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
-                  <span className="font-bold text-blue-700 text-lg">11</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Labor Markets and Future of Work</h3>
-                  <p className="text-gray-600 mb-4">Employment trends, gig economy, and workplace transformation</p>
-                  <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                    <Link to="/formation/anglais/civilisation/labor">
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Explore Chapter
-                      </Button>
-                    </Link>
-                    <Link to="/formation/anglais/civilisation/labor/vocabulary">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <Briefcase className="mr-2 h-4 w-4" />
-                        Vocabulary
-                      </Button>
-                    </Link>
-                    <Link to="/formation/anglais/civilisation/labor/sample-essays">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <BookOpen className="mr-2 h-4 w-4" />
-                        Sample Essays
-                      </Button>
-                    </Link>
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
+                    <span className="font-bold text-blue-700 text-lg">11</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Labor Markets and Future of Work</h3>
+                    <p className="text-gray-600 mb-4">Employment trends, gig economy, and workplace transformation</p>
+                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
+                      <Link to="/formation/anglais/civilisation/labor">
+                        <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
+                          <Calendar className="mr-2 h-4 w-4" />
+                          Explore Chapter
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/civilisation/labor/vocabulary">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <Briefcase className="mr-2 h-4 w-4" />
+                          Vocabulary
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/civilisation/labor/sample-essays">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <BookOpen className="mr-2 h-4 w-4" />
+                          Sample Essays
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             </Link>
 
             {/* Module 12 - Media and Communication */}
             <Link to="/formation/anglais/civilisation/media" className="block">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
-                  <span className="font-bold text-blue-700 text-lg">12</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Media and Digital Communication</h3>
-                  <p className="text-gray-600 mb-4">Social media, journalism, fake news, and information democracy</p>
-                  <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                    <Link to="/formation/anglais/civilisation/media">
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Explore Chapter
-                      </Button>
-                    </Link>
-                    <Link to="/formation/anglais/civilisation/media/vocabulary">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <Briefcase className="mr-2 h-4 w-4" />
-                        Vocabulary
-                      </Button>
-                    </Link>
-                    <Link to="/formation/anglais/civilisation/media/sample-essays">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <BookOpen className="mr-2 h-4 w-4" />
-                        Sample Essays
-                      </Button>
-                    </Link>
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
+                    <span className="font-bold text-blue-700 text-lg">12</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Media and Digital Communication</h3>
+                    <p className="text-gray-600 mb-4">Social media, journalism, fake news, and information democracy</p>
+                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
+                      <Link to="/formation/anglais/civilisation/media">
+                        <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
+                          <Calendar className="mr-2 h-4 w-4" />
+                          Explore Chapter
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/civilisation/media/vocabulary">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <Briefcase className="mr-2 h-4 w-4" />
+                          Vocabulary
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/civilisation/media/sample-essays">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <BookOpen className="mr-2 h-4 w-4" />
+                          Sample Essays
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             </Link>
 
             {/* Module 13 - Polarization */}
             <Link to="/formation/anglais/civilisation/polarization" className="block">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
-                  <span className="font-bold text-blue-700 text-lg">13</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Polarization</h3>
-                  <p className="text-gray-600 mb-4">Causes, consequences, and remedies for political and cultural divides</p>
-                  <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                    <Link to="/formation/anglais/civilisation/polarization">
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Explore Chapter
-                      </Button>
-                    </Link>
-                    <Link to="/formation/anglais/civilisation/polarization/vocabulary">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <Briefcase className="mr-2 h-4 w-4" />
-                        Vocabulary
-                      </Button>
-                    </Link>
-                    <Link to="/formation/anglais/civilisation/polarization/sample-essays">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <BookOpen className="mr-2 h-4 w-4" />
-                        Sample Essays
-                      </Button>
-                    </Link>
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
+                    <span className="font-bold text-blue-700 text-lg">13</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Polarization</h3>
+                    <p className="text-gray-600 mb-4">Causes, consequences, and remedies for political and cultural divides</p>
+                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
+                      <Link to="/formation/anglais/civilisation/polarization">
+                        <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
+                          <Calendar className="mr-2 h-4 w-4" />
+                          Explore Chapter
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/civilisation/polarization/vocabulary">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <Briefcase className="mr-2 h-4 w-4" />
+                          Vocabulary
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/civilisation/polarization/sample-essays">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <BookOpen className="mr-2 h-4 w-4" />
+                          Sample Essays
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             </Link>
 
             {/* Module 14 - Health and Healthcare Systems: US and UK Policy Challenges and Crises */}
             <Link to="/formation/anglais/civilisation/health-systems" className="block">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
-                  <span className="font-bold text-blue-700 text-lg">14</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Health and Healthcare Systems: US and UK Policy Challenges and Crises</h3>
-                  <p className="text-gray-600 mb-4">Comparative analysis of healthcare systems, policy reforms, workforce crises, and crisis management in 2025</p>
-                  <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                    <Link to="/formation/anglais/civilisation/health-systems">
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Explore Chapter
-                      </Button>
-                    </Link>
-                    <Link to="/formation/anglais/civilisation/health/vocabulary">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                        <Briefcase className="mr-2 h-4 w-4" />
-                        Vocabulary
-                      </Button>
-                    </Link>
-                    <Button variant="outline" className="border-gray-300 text-gray-400 cursor-not-allowed px-4 py-2 rounded-md" disabled>
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Sample Essays
-                    </Button>
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
+                    <span className="font-bold text-blue-700 text-lg">14</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Health and Healthcare Systems: US and UK Policy Challenges and Crises</h3>
+                    <p className="text-gray-600 mb-4">Comparative analysis of healthcare systems, policy reforms, workforce crises, and crisis management in 2025</p>
+                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
+                      <Link to="/formation/anglais/civilisation/health-systems">
+                        <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
+                          <Calendar className="mr-2 h-4 w-4" />
+                          Explore Chapter
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/civilisation/health/vocabulary">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <Briefcase className="mr-2 h-4 w-4" />
+                          Vocabulary
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/civilisation/health-systems/sample-essays">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <BookOpen className="mr-2 h-4 w-4" />
+                          Sample Essays
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             </Link>
 
           </div>

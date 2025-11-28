@@ -2359,11 +2359,11 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
         )
       );
 
-    toast({
+      toast({
         title: "Phrase sélectionnée",
         description: `${category} - ${theme}`,
-      variant: "default"
-    });
+        variant: "default"
+      });
     }
   }, [predefinedSentences, toast]);
 
@@ -2383,11 +2383,11 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
       setSelectedHistoryId(historyId);
       setSelectedPredefinedId('');
 
-    toast({
+      toast({
         title: "Phrase de l'historique",
         description: "Phrase rechargée depuis l'historique",
-      variant: "default"
-    });
+        variant: "default"
+      });
     }
   }, [sentenceHistory, toast]);
 
@@ -2465,7 +2465,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
         setShowPerfectAnswer(false);
         setFeedbackLoaded(false);
         setIsLoadingFeedback(false);
-        
+
         // Create new history entry
         const newHistoryEntry: HistorySentence = {
           id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
@@ -2478,7 +2478,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
         setSentenceHistory(prev => [newHistoryEntry, ...prev].slice(0, 20));
         setSelectedHistoryId(newHistoryEntry.id);
         setSelectedPredefinedId('');
-        
+
         if (examMode) {
           setIsTimerRunning(true);
           setTimer(0);
@@ -2504,18 +2504,18 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
 
   const evaluateAnswer = useCallback(async () => {
     if (!currentSentence || !studentAnswer.trim() || isEvaluating) return;
-    
+
     // Afficher immédiatement la réponse de référence
     setShowPerfectAnswer(true);
     setIsEvaluating(true);
     setFeedbackLoaded(false);
     setIsLoadingFeedback(true);
-    
+
     // Arrêter le timer en mode examen
     if (examMode) {
       setIsTimerRunning(false);
     }
-    
+
     try {
       const { data, error } = await supabase.functions.invoke('evaluate-theme-translation', {
         body: {
@@ -2543,7 +2543,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
           const newAverage = (prev.averageScore * prev.totalExercises + data.score) / newTotal;
           const newBest = Math.max(prev.bestScore, data.score);
           const newTimeSpent = prev.timeSpent + timer;
-          
+
           return {
             totalExercises: newTotal,
             averageScore: newAverage,
@@ -2615,7 +2615,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
       <div className="bg-white border-b border-gray-200 sticky top-0 z-10 shadow-sm">
         <div className="max-w-5xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-          {/* Navigation des langues */}
+            {/* Navigation des langues */}
             <div className="flex items-center gap-6">
               <h1 className="text-xl font-semibold text-gray-900">Thème Grammatical</h1>
               <ToggleGroup
@@ -2625,7 +2625,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                   if (value) {
                     const newLang = value as 'en' | 'de' | 'es';
                     setLanguage(newLang);
-                    
+
                     // Automatically load the first sentence of the new language
                     const firstSentence = predefinedSentences.find(s => s.language === newLang);
                     if (firstSentence) {
@@ -2665,21 +2665,21 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
               >
                 {examMode ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
                 {examMode ? "Arrêter" : "Mode examen"}
-            </Button>
+              </Button>
             </div>
           </div>
-          </div>
         </div>
+      </div>
 
       {/* Layout principal vertical */}
       <div className="max-w-5xl mx-auto p-6 space-y-6">
-        
+
         {/* Section de sélection de phrase */}
         <Card className="bg-white rounded-2xl shadow-lg border border-gray-100 hover:border-orange-200 hover:shadow-xl transition-all duration-300">
           <CardContent className="p-6">
             <div className="flex items-center gap-4">
               {/* Catalogue complet des phrases */}
-                <Select value={selectedPredefinedId} onValueChange={loadPredefinedSentence}>
+              <Select value={selectedPredefinedId} onValueChange={loadPredefinedSentence}>
                 <SelectTrigger className="flex-1 h-14 bg-white border-2 border-gray-100 hover:border-orange-300 hover:shadow-md transition-all duration-300 rounded-xl px-4 text-lg">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
@@ -2688,86 +2688,86 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                     <SelectValue placeholder="Choisir une phrase du catalogue..." />
                   </div>
                 </SelectTrigger>
-                  <SelectContent className="max-h-[500px] min-w-[600px] bg-white border-2 border-gray-200 shadow-2xl">
-                    {Object.entries(
-                      predefinedSentences
-                        .filter(s => s.language === language)
-                        .reduce((acc, sentence) => {
-                          const category = sentence.category;
-                          if (!acc[category]) {
-                            acc[category] = [];
-                          }
-                          acc[category].push(sentence);
-                          return acc;
-                        }, {} as Record<string, PredefinedSentence[]>)
-                    ).map(([category, sentences]) => (
-                      <div key={category} className="mb-2">
-                        <div className={`px-4 py-3 font-semibold text-sm border-l-4 border-b ${getCategoryColor(category)} flex items-center gap-2 shadow-sm`}>
-                          {getCategoryIcon(category)}
-                          <span>{category}</span>
-                          <Badge variant="secondary" className="ml-auto text-xs">
-                            {sentences.length}
-                          </Badge>
-                        </div>
-                        <div className="space-y-1">
-                          {sentences.map((sentence) => (
-                            <SelectItem
-                              key={sentence.id}
-                              value={sentence.id}
-                              className="mx-2 px-4 py-3 cursor-pointer hover:bg-orange-50 focus:bg-orange-50 transition-colors duration-150 rounded-lg border-l-4 border-transparent hover:border-orange-300"
-                            >
-                              <div className="flex items-start gap-3 w-full">
-                                <div className="flex-shrink-0 mt-0.5">
-                                  {sentence.specialized ? (
-                                    <Star className="h-4 w-4 text-amber-500" />
-                                  ) : (
-                                    <BookOpen className="h-4 w-4 text-gray-400" />
-                                  )}
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                  <p className="text-sm font-medium text-gray-900 leading-tight">
-                                    {sentence.french.length > 80
-                                      ? `${sentence.french.substring(0, 80)}...`
-                                      : sentence.french
-                                    }
-                                  </p>
-                                </div>
-                              </div>
-                            </SelectItem>
-                          ))}
-                        </div>
+                <SelectContent className="max-h-[500px] min-w-[600px] bg-white border-2 border-gray-200 shadow-2xl">
+                  {Object.entries(
+                    predefinedSentences
+                      .filter(s => s.language === language)
+                      .reduce((acc, sentence) => {
+                        const category = sentence.category;
+                        if (!acc[category]) {
+                          acc[category] = [];
+                        }
+                        acc[category].push(sentence);
+                        return acc;
+                      }, {} as Record<string, PredefinedSentence[]>)
+                  ).map(([category, sentences]) => (
+                    <div key={category} className="mb-2">
+                      <div className={`px-4 py-3 font-semibold text-sm border-l-4 border-b ${getCategoryColor(category)} flex items-center gap-2 shadow-sm`}>
+                        {getCategoryIcon(category)}
+                        <span>{category}</span>
+                        <Badge variant="secondary" className="ml-auto text-xs">
+                          {sentences.length}
+                        </Badge>
                       </div>
-                    ))}
-                  </SelectContent>
-                </Select>
+                      <div className="space-y-1">
+                        {sentences.map((sentence) => (
+                          <SelectItem
+                            key={sentence.id}
+                            value={sentence.id}
+                            className="mx-2 px-4 py-3 cursor-pointer hover:bg-orange-50 focus:bg-orange-50 transition-colors duration-150 rounded-lg border-l-4 border-transparent hover:border-orange-300"
+                          >
+                            <div className="flex items-start gap-3 w-full">
+                              <div className="flex-shrink-0 mt-0.5">
+                                {sentence.specialized ? (
+                                  <Star className="h-4 w-4 text-amber-500" />
+                                ) : (
+                                  <BookOpen className="h-4 w-4 text-gray-400" />
+                                )}
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <p className="text-sm font-medium text-gray-900 leading-tight">
+                                  {sentence.french.length > 80
+                                    ? `${sentence.french.substring(0, 80)}...`
+                                    : sentence.french
+                                  }
+                                </p>
+                              </div>
+                            </div>
+                          </SelectItem>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </SelectContent>
+              </Select>
 
               {/* Bouton historique */}
               {sentenceHistory.length > 0 && (
-                  <Select value={selectedHistoryId} onValueChange={loadSentenceFromHistory}>
+                <Select value={selectedHistoryId} onValueChange={loadSentenceFromHistory}>
                   <SelectTrigger className="w-[180px]">
                     <SelectValue placeholder="Historique" />
-                    </SelectTrigger>
+                  </SelectTrigger>
                   <SelectContent>
-                      {sentenceHistory
-                        .filter(s => s.language === language)
-                        .sort((a, b) => b.createdAt - a.createdAt)
-                        .slice(0, 10)
+                    {sentenceHistory
+                      .filter(s => s.language === language)
+                      .sort((a, b) => b.createdAt - a.createdAt)
+                      .slice(0, 10)
                       .map((sentence) => (
-                          <SelectItem key={sentence.id} value={sentence.id}>
+                        <SelectItem key={sentence.id} value={sentence.id}>
                           <span className="text-sm truncate">{sentence.french.substring(0, 40)}...</span>
-                          </SelectItem>
+                        </SelectItem>
                       ))}
-                    </SelectContent>
-                  </Select>
+                  </SelectContent>
+                </Select>
               )}
             </div>
           </CardContent>
         </Card>
 
         {/* Section principale : Phrase française en GRAND */}
-              {currentSentence ? (
-                <>
-            <Card 
+        {currentSentence ? (
+          <>
+            <Card
               className="bg-gradient-to-br from-white via-orange-50/30 to-white rounded-2xl shadow-lg border border-orange-100 hover:shadow-xl transition-all duration-500 overflow-hidden group cursor-pointer"
               onClick={() => {
                 if (!isEvaluating) {
@@ -2872,7 +2872,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                     disabled={isEvaluating}
                   />
                 </div>
-                
+
                 {/* Bouton corriger - STYLE DESIGN SYSTEM */}
                 <Button
                   onClick={evaluateAnswer}
@@ -2894,15 +2894,15 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                 </Button>
               </CardContent>
             </Card>
-                </>
-              ) : (
+          </>
+        ) : (
           <Card className="border-2 border-dashed border-gray-300 bg-gray-50">
             <CardContent className="p-12">
               <div className="flex flex-col items-center justify-center text-gray-400">
                 <Languages className="h-20 w-20 mb-4" />
                 <p className="text-xl font-medium mb-2">Aucune phrase sélectionnée</p>
                 <p className="text-gray-500">Cliquez sur "Nouvelle phrase" ou choisissez dans le catalogue ci-dessus</p>
-                                  </div>
+              </div>
             </CardContent>
           </Card>
         )}
@@ -3006,129 +3006,129 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                 </div>
               </div>
 
-                  {/* Réponse corrigée */}
-                  <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                    <h3 className="font-semibold text-orange-900 mb-2 flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4" />
-                      Traduction correcte
-                    </h3>
-                    <p className="text-orange-800">{evaluation.corrected}</p>
-                                      </div>
+              {/* Réponse corrigée */}
+              <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
+                <h3 className="font-semibold text-orange-900 mb-2 flex items-center gap-2">
+                  <CheckCircle className="h-4 w-4" />
+                  Traduction correcte
+                </h3>
+                <p className="text-orange-800">{evaluation.corrected}</p>
+              </div>
 
-                  {/* Réponse de référence */}
-                  <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                    <h3 className="font-semibold text-orange-900 mb-2 flex items-center gap-2">
-                      <BookOpen className="h-4 w-4" />
-                      Réponse de référence
-                    </h3>
-                    <p className="text-orange-800">{evaluation.reference}</p>
+              {/* Réponse de référence */}
+              <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
+                <h3 className="font-semibold text-orange-900 mb-2 flex items-center gap-2">
+                  <BookOpen className="h-4 w-4" />
+                  Réponse de référence
+                </h3>
+                <p className="text-orange-800">{evaluation.reference}</p>
+              </div>
+
+              {/* Erreurs majeures */}
+              {evaluation.severity.major_errors.length > 0 && (
+                <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
+                  <h3 className="font-semibold text-orange-900 mb-3">Erreurs majeures</h3>
+                  <div className="space-y-2">
+                    {evaluation.severity.major_errors.map((error, index) => (
+                      <div key={index} className="text-sm text-orange-800">
+                        {typeof error === 'string' ? (
+                          <p>• {error}</p>
+                        ) : (
+                          <div className="space-y-1">
+                            <p className="font-medium">• {error.error}</p>
+                            <p className="ml-4 text-orange-700">→ {error.explanation}</p>
+                            <p className="ml-4 text-orange-900">Correction : {error.correction}</p>
+                            <p className="ml-4 italic text-orange-600">Règle : {error.rule}</p>
+                          </div>
+                        )}
+                      </div>
+                    ))}
                   </div>
+                </div>
+              )}
 
-                  {/* Erreurs majeures */}
-                  {evaluation.severity.major_errors.length > 0 && (
-                    <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                      <h3 className="font-semibold text-orange-900 mb-3">Erreurs majeures</h3>
-                      <div className="space-y-2">
-                        {evaluation.severity.major_errors.map((error, index) => (
-                          <div key={index} className="text-sm text-orange-800">
-                            {typeof error === 'string' ? (
-                              <p>• {error}</p>
-                            ) : (
-                              <div className="space-y-1">
-                                <p className="font-medium">• {error.error}</p>
-                                <p className="ml-4 text-orange-700">→ {error.explanation}</p>
-                                <p className="ml-4 text-orange-900">Correction : {error.correction}</p>
-                                <p className="ml-4 italic text-orange-600">Règle : {error.rule}</p>
-                              </div>
-                            )}
+              {/* Erreurs mineures */}
+              {evaluation.severity.minor_errors.length > 0 && (
+                <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
+                  <h3 className="font-semibold text-orange-900 mb-3">Erreurs mineures</h3>
+                  <div className="space-y-2">
+                    {evaluation.severity.minor_errors.map((error, index) => (
+                      <div key={index} className="text-sm text-orange-800">
+                        {typeof error === 'string' ? (
+                          <p>• {error}</p>
+                        ) : (
+                          <div className="space-y-1">
+                            <p className="font-medium">• {error.error}</p>
+                            <p className="ml-4 text-orange-700">→ {error.explanation}</p>
+                            <p className="ml-4 text-orange-900">Correction : {error.correction}</p>
                           </div>
-                        ))}
+                        )}
                       </div>
-                    </div>
-                  )}
+                    ))}
+                  </div>
+                </div>
+              )}
 
-                  {/* Erreurs mineures */}
-                  {evaluation.severity.minor_errors.length > 0 && (
-                    <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                      <h3 className="font-semibold text-orange-900 mb-3">Erreurs mineures</h3>
-                      <div className="space-y-2">
-                        {evaluation.severity.minor_errors.map((error, index) => (
-                          <div key={index} className="text-sm text-orange-800">
-                            {typeof error === 'string' ? (
-                              <p>• {error}</p>
-                            ) : (
-                              <div className="space-y-1">
-                                <p className="font-medium">• {error.error}</p>
-                                <p className="ml-4 text-orange-700">→ {error.explanation}</p>
-                                <p className="ml-4 text-orange-900">Correction : {error.correction}</p>
-                              </div>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+              {/* Variations acceptées */}
+              {evaluation.severity.accepted_variations?.length > 0 && (
+                <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
+                  <h3 className="font-semibold text-orange-900 mb-2">Variations acceptées</h3>
+                  <ul className="space-y-1 text-sm text-orange-800">
+                    {evaluation.severity.accepted_variations.map((variation, index) => (
+                      <li key={index}>• {variation}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
-                  {/* Variations acceptées */}
-                  {evaluation.severity.accepted_variations?.length > 0 && (
-                    <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                      <h3 className="font-semibold text-orange-900 mb-2">Variations acceptées</h3>
-                      <ul className="space-y-1 text-sm text-orange-800">
-                        {evaluation.severity.accepted_variations.map((variation, index) => (
-                          <li key={index}>• {variation}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+              {/* Règles de grammaire */}
+              {evaluation.grammar_rules?.length > 0 && (
+                <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
+                  <h3 className="font-semibold text-orange-900 mb-2">Règles à retenir</h3>
+                  <ul className="space-y-1 text-sm text-orange-800">
+                    {evaluation.grammar_rules.map((rule, index) => (
+                      <li key={index}>• {rule}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
-                  {/* Règles de grammaire */}
-                  {evaluation.grammar_rules?.length > 0 && (
-                    <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                      <h3 className="font-semibold text-orange-900 mb-2">Règles à retenir</h3>
-                      <ul className="space-y-1 text-sm text-orange-800">
-                        {evaluation.grammar_rules.map((rule, index) => (
-                          <li key={index}>• {rule}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+              {/* Conseils */}
+              {evaluation.tips?.length > 0 && (
+                <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
+                  <h3 className="font-semibold text-orange-900 mb-2">Conseils</h3>
+                  <ul className="space-y-1 text-sm text-orange-800">
+                    {evaluation.tips.map((tip, index) => (
+                      <li key={index}>• {tip}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
-                  {/* Conseils */}
-                  {evaluation.tips?.length > 0 && (
-                    <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                      <h3 className="font-semibold text-orange-900 mb-2">Conseils</h3>
-                      <ul className="space-y-1 text-sm text-orange-800">
-                        {evaluation.tips.map((tip, index) => (
-                          <li key={index}>• {tip}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+              {/* Phrases similaires */}
+              {evaluation.similar_sentences?.length > 0 && (
+                <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
+                  <h3 className="font-semibold text-orange-900 mb-2">Phrases similaires à pratiquer</h3>
+                  <ul className="space-y-1 text-sm text-orange-800">
+                    {evaluation.similar_sentences.map((sentence, index) => (
+                      <li key={index}>• {sentence}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
-                  {/* Phrases similaires */}
-                  {evaluation.similar_sentences?.length > 0 && (
-                    <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                      <h3 className="font-semibold text-orange-900 mb-2">Phrases similaires à pratiquer</h3>
-                      <ul className="space-y-1 text-sm text-orange-800">
-                        {evaluation.similar_sentences.map((sentence, index) => (
-                          <li key={index}>• {sentence}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Règle pour flashcard */}
-                  {evaluation.flashcard_rule && (
-                    <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                      <h3 className="font-semibold text-orange-900 mb-2">Flashcard recommandée</h3>
-                      <p className="text-sm text-orange-800">{evaluation.flashcard_rule}</p>
-                    </div>
-                  )}
+              {/* Règle pour flashcard */}
+              {evaluation.flashcard_rule && (
+                <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
+                  <h3 className="font-semibold text-orange-900 mb-2">Flashcard recommandée</h3>
+                  <p className="text-sm text-orange-800">{evaluation.flashcard_rule}</p>
+                </div>
+              )}
 
             </CardContent>
           </Card>
         )}
-                        </div>
+      </div>
     </div>
   );
 };

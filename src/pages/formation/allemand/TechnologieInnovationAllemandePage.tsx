@@ -1,104 +1,140 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Cpu, Shield, TrendingDown, Scale, Rocket } from 'lucide-react';
+import { ArrowLeft, Cpu, Rocket, Factory, Zap, Brain } from 'lucide-react';
+
+const VocabWord = ({ word, explanation }: { word: string; explanation: string }) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+  const tooltipRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (tooltipRef.current && !tooltipRef.current.contains(event.target as Node)) {
+        setShowTooltip(false);
+      }
+    };
+    if (showTooltip) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showTooltip]);
+
+  return (
+    <span className="relative inline-block" ref={tooltipRef}>
+      <span className="font-bold text-orange-700 cursor-pointer hover:text-orange-900 transition-colors" onClick={() => setShowTooltip(!showTooltip)}>
+        {word}
+      </span>
+      {showTooltip && (
+        <span className="absolute z-50 top-full left-0 mt-2 w-72 p-3 bg-white border-2 border-orange-400 rounded-lg shadow-xl text-sm text-gray-700">
+          <span className="font-semibold text-orange-700 block mb-1">Erklärung:</span>
+          <span className="text-gray-800">{explanation}</span>
+          <span className="absolute bottom-full left-4 border-8 border-transparent border-b-orange-400"></span>
+        </span>
+      )}
+    </span>
+  );
+};
 
 const TechnologieInnovationAllemandePage: React.FC = () => {
   const technologieTopics = [
     {
       id: 1,
-      title: "Künstliche Intelligenz und technologische Souveränität",
-      icon: <Cpu className="w-5 h-5" />,
+      title: "Industrie 4.0 und Digitalisierung",
+      icon: <Factory className="w-5 h-5" />,
       content: {
-        description: "Deutschland will in Zukunft bei künstlicher Intelligenz (KI) eine führende Rolle spielen. 2025 investiert die Bundesregierung Milliarden in KI-Forschung und Start-ups.",
-        details: "Trotzdem liegen die USA und China weit vorne, sowohl in Patenten als auch in Unternehmen. Deutschland setzt stärker auf ethische Regeln und Datenschutz, während andere Länder mehr Risiko eingehen. Ziel ist es, technologische Souveränität zu behalten, also nicht abhängig von ausländischen Technologien zu sein. Für Essays eignet sich das Beispiel KI gut, weil es zeigt, wie Wissenschaft, Ethik und geopolitische Macht verbunden sind.",
-        vocabulary: [
-          { german: "künstliche Intelligenz", french: "intelligence artificielle" },
-          { german: "Forschung", french: "recherche" },
-          { german: "Datenschutz", french: "protection des données" },
-          { german: "Souveränität", french: "souveraineté" },
-          { german: "Start-ups", french: "start-ups" }
-        ],
-        essayUsage: "Beispiel für Balance zwischen Innovation und Sicherheit."
+        description: (
+          <>
+            Deutschland ist <VocabWord word="Vorreiter" explanation="führend, an erster Stelle" /> bei <VocabWord word="Industrie 4.0" explanation="die vierte industrielle Revolution mit digitalen Technologien" />. Das bedeutet: Fabriken werden digital vernetzt, Maschinen kommunizieren miteinander.
+          </>
+        ),
+        details: (
+          <>
+            Deutsche Firmen wie Siemens und Bosch investieren Milliarden in die <VocabWord word="Digitalisierung" explanation="die Umstellung auf digitale Technologien" /> ihrer Produktion. <VocabWord word="Smart Factories" explanation="intelligente Fabriken mit vernetzten Maschinen" /> nutzen künstliche Intelligenz und <VocabWord word="Robotik" explanation="Einsatz von Robotern" />, um effizienter zu produzieren. Deutschland hat aber auch Probleme: Die <VocabWord word="Breitbandversorgung" explanation="schnelles Internet für alle" /> ist schlechter als in vielen anderen Ländern. Viele ländliche Regionen haben kein schnelles Internet. Die deutsche <VocabWord word="Bürokratie" explanation="komplizierte Verwaltungsabläufe" /> bremst Innovation. Trotzdem: Deutschland bleibt ein wichtiger <VocabWord word="Standort" explanation="Ort, wo Firmen sich ansiedeln" /> für industrielle Innovation.
+          </>
+        ),
+        essayUsage: "Einstieg über technologische Transformation der deutschen Industrie."
       }
     },
     {
       id: 2,
-      title: "Cybersicherheit und Schutz kritischer Infrastrukturen",
-      icon: <Shield className="w-5 h-5" />,
+      title: "Start-up-Szene und Innovation",
+      icon: <Rocket className="w-5 h-5" />,
       content: {
-        description: "Mit der Digitalisierung wächst die Gefahr von Cyberangriffen. 2024 gab es mehrere Attacken auf deutsche Krankenhäuser und Verwaltungen.",
-        details: "Die Regierung reagierte mit neuen Sicherheitszentren und strengeren Gesetzen. 2025 gilt Cybersicherheit als Teil der nationalen Verteidigung. Besonders wichtig ist der Schutz von Energie, Kommunikation und Transport. Für Essays kann man dieses Thema als Beispiel für die Verwundbarkeit moderner Gesellschaften nutzen.",
-        vocabulary: [
-          { german: "Cybersicherheit", french: "cybersécurité" },
-          { german: "Angriff", french: "attaque" },
-          { german: "Infrastruktur", french: "infrastructure" },
-          { german: "Verteidigung", french: "défense" },
-          { german: "Schutz", french: "protection" }
-        ],
-        essayUsage: "Argument über neue Dimensionen von Sicherheit."
+        description: (
+          <>
+            Berlin hat sich zu einem europäischen <VocabWord word="Start-up-Hub" explanation="Zentrum für junge, innovative Firmen" /> entwickelt. Die Stadt zieht <VocabWord word="Gründer" explanation="Menschen, die neue Firmen starten" /> und Investoren aus der ganzen Welt an.
+          </>
+        ),
+        details: (
+          <>
+            Deutschland hat mehrere <VocabWord word="Einhörner" explanation="Start-ups mit einer Bewertung über 1 Milliarde Dollar" />, darunter N26 (Fintech) und Celonis (Software). Der Staat fördert Innovation durch Programme wie den <VocabWord word="High-Tech Gründerfonds" explanation="staatlicher Fonds, der Start-ups finanziert" />. Trotzdem bleibt Deutschland hinter den USA und China zurück: Es fehlt an <VocabWord word="Risikokapital" explanation="Geld für riskante, innovative Projekte" /> und einer <VocabWord word="Fehlerkultur" explanation="Akzeptanz, dass Scheitern okay ist" />. Deutsche Gründer sind oft zu vorsichtig, während Silicon Valley <VocabWord word="Disruption" explanation="radikale Veränderung etablierter Märkte" /> feiert.
+          </>
+        ),
+        essayUsage: "Beispiel für Innovationskultur und unternehmerisches Ökosystem."
       }
     },
     {
       id: 3,
-      title: "Digitaler Rückstand und DESI-Index",
-      icon: <TrendingDown className="w-5 h-5" />,
+      title: "Künstliche Intelligenz und Forschung",
+      icon: <Brain className="w-5 h-5" />,
       content: {
-        description: "Obwohl Deutschland eine starke Industrie hat, ist es bei der Digitalisierung oft langsam. Im DESI-Index der EU 2024 liegt Deutschland nur im Mittelfeld.",
-        details: "Gründe sind Bürokratie, langsames Internet und fehlende Investitionen. Viele Schulen und Behörden arbeiten noch mit Papier statt digital. Im Alltag ist Deutschland weniger digital als Länder wie Estland oder Finnland. Für Essays zeigt dieser Punkt, dass technologische Innovation nicht nur von Industrie abhängt, sondern auch von Politik und Verwaltung.",
-        vocabulary: [
-          { german: "Rückstand", french: "retard" },
-          { german: "Bürokratie", french: "bureaucratie" },
-          { german: "Internetanschluss", french: "connexion internet" },
-          { german: "Verwaltung", french: "administration" },
-          { german: "DESI-Index", french: "indice DESI" }
-        ],
-        essayUsage: "Beleg für strukturelle Schwächen im digitalen Bereich."
+        description: (
+          <>
+            Deutschland investiert massiv in <VocabWord word="Künstliche Intelligenz" explanation="KI, Computer, die denken und lernen können" /> (KI). Die Regierung hat eine KI-Strategie mit einem Budget von 5 Milliarden Euro <VocabWord word="verabschiedet" explanation="offiziell beschlossen" />.
+          </>
+        ),
+        details: (
+          <>
+            Deutschland hat <VocabWord word="Forschungszentren" explanation="Institute, die Forschung machen" /> wie das DFKI (Deutsches Forschungszentrum für Künstliche Intelligenz), die weltweit anerkannt sind. Deutsche Forscher sind stark in <VocabWord word="anwendungsorientierter Forschung" explanation="Forschung, die praktische Probleme löst" />, besonders in Bereichen wie autonomes Fahren und Industrie-KI. Aber: Deutschland fehlt es an großen Tech-Konzernen wie Google oder Microsoft, die KI-Entwicklung <VocabWord word="vorantreiben" explanation="nach vorne bringen, beschleunigen" />. Die Debatte über <VocabWord word="ethische Richtlinien" explanation="moralische Regeln für den Einsatz von Technologie" /> für KI ist in Deutschland besonders intensiv.
+          </>
+        ),
+        essayUsage: "Argumentation über Forschung, ethische Fragen und technologische Souveränität."
       }
     },
     {
       id: 4,
-      title: "Ethik der Technologie",
-      icon: <Scale className="w-5 h-5" />,
+      title: "Elektromobilität und Autoindustrie",
+      icon: <Zap className="w-5 h-5" />,
       content: {
-        description: "In Deutschland gibt es viele Debatten über die Ethik neuer Technologien. Sollten Roboter Menschen pflegen dürfen? Darf KI in Gerichten oder in der Polizei eingesetzt werden?",
-        details: "Darf man Gesichtserkennung nutzen? Deutschland ist hier vorsichtig und setzt auf Regeln, die die Würde des Menschen schützen. Die DSGVO ist ein Beispiel für diesen Ansatz. Viele sehen darin einen Vorteil: Vertrauen und Sicherheit. Andere kritisieren, dass Deutschland dadurch zu langsam ist und Chancen verpasst. Für Essays eignet sich dieses Beispiel für den Konflikt zwischen Fortschritt und Werten.",
-        vocabulary: [
-          { german: "Ethik", french: "éthique" },
-          { german: "Gesichtserkennung", french: "reconnaissance faciale" },
-          { german: "Würde", french: "dignité" },
-          { german: "Vertrauen", french: "confiance" },
-          { german: "Regeln", french: "règles" }
-        ],
-        essayUsage: "Argument über Werteorientierung in der Technikpolitik."
+        description: (
+          <>
+            Die deutsche Autoindustrie steht vor einem <VocabWord word="Umbruch" explanation="radikale Veränderung" />. Der Wechsel zu <VocabWord word="Elektromobilität" explanation="elektrische Fahrzeuge statt Benzin/Diesel" /> ist die größte Herausforderung seit Jahrzehnten.
+          </>
+        ),
+        details: (
+          <>
+            Firmen wie VW, BMW und Mercedes investieren Milliarden in <VocabWord word="E-Mobilität" explanation="elektrische Autos und Infrastruktur" />. Deutschland fördert den Umstieg mit <VocabWord word="Kaufprämien" explanation="Geld vom Staat beim Kauf eines E-Autos" /> und dem Ausbau der <VocabWord word="Ladeinfrastruktur" explanation="Netz von Ladestationen für E-Autos" />. Aber die Transformation ist riskant: China dominiert die Batterieproduktion, und Tesla ist technologisch führend. Deutsche Hersteller müssen aufholen. Gleichzeitig gibt es Sorgen um <VocabWord word="Arbeitsplätze" explanation="Jobs, die verloren gehen können" /> – E-Autos brauchen weniger Teile und Arbeitskräfte. Die Frage: Kann Deutschland die <VocabWord word="Wettbewerbsfähigkeit" explanation="die Fähigkeit, mit anderen zu konkurrieren" /> seiner Schlüsselindustrie erhalten?
+          </>
+        ),
+        essayUsage: "Beispiel für industrielle Transformation und wirtschaftliche Risiken."
       }
     },
     {
       id: 5,
-      title: "Innovation und Start-ups",
-      icon: <Rocket className="w-5 h-5" />,
+      title: "Cybersicherheit und digitale Souveränität",
+      icon: <Cpu className="w-5 h-5" />,
       content: {
-        description: "Deutschland fördert immer mehr Start-ups im Bereich Technologie, besonders in Berlin, München und Hamburg. Themen sind KI, Biotech, grüne Energie oder Mobilität.",
-        details: "2025 gibt es große Investitionsprogramme für junge Firmen. Trotzdem wandern viele Start-ups in die USA, weil dort mehr Kapital und weniger Bürokratie vorhanden sind. Deutschland will diese 'Abwanderung der Talente' stoppen und die eigene Innovationskraft stärken. Für Essays zeigt das Beispiel, wie ein Land versucht, im globalen Wettbewerb attraktiv zu bleiben.",
-        vocabulary: [
-          { german: "Start-up", french: "start-up" },
-          { german: "Investition", french: "investissement" },
-          { german: "Biotechnologie", french: "biotechnologie" },
-          { german: "Bürokratie", french: "bureaucratie" },
-          { german: "Talente", french: "talents" }
-        ],
-        essayUsage: "Beleg für Konkurrenzfähigkeit im globalen Innovationswettlauf."
+        description: (
+          <>
+            <VocabWord word="Cybersicherheit" explanation="Schutz vor digitalen Angriffen" /> ist für Deutschland eine wachsende Priorität. Das Bundesamt für Sicherheit in der Informationstechnik (BSI) warnt regelmäßig vor <VocabWord word="Cyberangriffen" explanation="Attacken auf Computer und Netzwerke" />.
+          </>
+        ),
+        details: (
+          <>
+            Deutsche Firmen und Behörden sind Ziele von Hackern, oft aus Russland oder China. Der Angriff auf den Bundestag 2015 zeigte die <VocabWord word="Verwundbarkeit" explanation="Schwäche, Anfälligkeit" /> kritischer Infrastruktur. Deutschland diskutiert über <VocabWord word="digitale Souveränität" explanation="Unabhängigkeit in der digitalen Welt" /> – soll Europa eigene Cloud-Dienste und Tech-Plattformen haben, statt auf US-Firmen zu setzen? Projekte wie "Gaia-X" sollen eine europäische Cloud-Infrastruktur schaffen. Die <VocabWord word="Abhängigkeit" explanation="wenn man auf andere angewiesen ist" /> von US-amerikanischen und chinesischen Technologien bleibt ein großes Problem.
+          </>
+        ),
+        essayUsage: "Argumentation über digitale Unabhängigkeit und Sicherheitsrisiken."
       }
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-sky-50">
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
-        {/* Header */}
+    <div className="min-h-screen bg-white">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-6">
             <Link to="/formation/allemand/civilisation">
@@ -108,121 +144,85 @@ const TechnologieInnovationAllemandePage: React.FC = () => {
               </Button>
             </Link>
           </div>
-          
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Technologie und Innovation in Deutschland
+
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold text-gray-900 mb-3">
+              Technologie und Innovation
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Eine Analyse der technologischen Entwicklung, der Cybersicherheit und der Innovationspolitik im digitalen Zeitalter
+            <p className="text-base text-gray-600 max-w-3xl mx-auto">
+              Eine Analyse der deutschen Technologielandschaft, von Industrie 4.0 bis KI
             </p>
           </div>
         </div>
 
-        {/* Statistiques clés */}
-        <Card className="mb-8 bg-gradient-to-r from-slate-600 to-sky-600 text-white">
+        <Card className="mb-8 border shadow-sm">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-center">
-              Wichtige Technologiekennzahlen (2024-2025)
+            <CardTitle className="text-lg font-semibold text-center text-gray-900">
+              Wichtige Technologie-Kennzahlen (2025)
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
-              <div>
-                <div className="text-3xl font-bold">2025</div>
-                <div className="text-slate-100">KI-Investitionen</div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              <div className="p-4 bg-gray-50 rounded-lg border">
+                <div className="text-3xl font-bold text-gray-900">5Mrd€</div>
+                <div className="text-sm text-gray-600 mt-1">KI-Strategie Budget</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold">Mittelfeld</div>
-                <div className="text-slate-100">DESI-Index 2024</div>
+              <div className="p-4 bg-gray-50 rounded-lg border">
+                <div className="text-3xl font-bold text-gray-900">800K</div>
+                <div className="text-sm text-gray-600 mt-1">Jobs in der Autoindustrie</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold">3</div>
-                <div className="text-slate-100">Hauptstädte</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold">DSGVO</div>
-                <div className="text-slate-100">Datenschutz</div>
+              <div className="p-4 bg-gray-50 rounded-lg border">
+                <div className="text-3xl font-bold text-gray-900">3,5%</div>
+                <div className="text-sm text-gray-600 mt-1">F&E-Ausgaben (% des BIP)</div>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Contenu principal */}
         <div className="space-y-6">
-          {technologieTopics.map((topic, index) => (
-            <Card key={topic.id} className="shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
+          {technologieTopics.map((topic) => (
+            <Card key={topic.id} className="border shadow-sm">
+              <CardHeader className="border-b bg-gray-50">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-slate-100 rounded-lg text-slate-600">
+                  <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-orange-700">
                     {topic.icon}
                   </div>
-                  <CardTitle className="text-xl text-gray-900">
+                  <CardTitle className="text-lg font-semibold text-gray-900">
                     {topic.title}
                   </CardTitle>
                 </div>
               </CardHeader>
-              <CardContent>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value={`item-${topic.id}`}>
-                    <AccordionTrigger className="text-left">
-                      <span className="font-medium text-gray-700">
-                        Détails et analyse
-                      </span>
-                    </AccordionTrigger>
-                    <AccordionContent className="space-y-4">
-                      <div className="bg-gray-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-gray-800 mb-2">Beschreibung:</h4>
-                        <p className="text-gray-700">{topic.content.description}</p>
-                      </div>
-                      
-                      <div className="bg-slate-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-slate-800 mb-2">Détails:</h4>
-                        <p className="text-slate-700">{topic.content.details}</p>
-                      </div>
-
-                      <div className="bg-sky-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-sky-800 mb-2">Verwendung in Aufsätzen:</h4>
-                        <p className="text-sky-700">{topic.content.essayUsage}</p>
-                      </div>
-
-                      <div className="bg-indigo-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-indigo-800 mb-2">Wichtige Vokabeln:</h4>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                          {topic.content.vocabulary.map((vocab, vocabIndex) => (
-                            <div key={vocabIndex} className="flex justify-between items-center p-2 bg-white rounded border">
-                              <span className="font-medium text-gray-800">{vocab.german}</span>
-                              <Badge variant="secondary" className="text-xs">
-                                {vocab.french}
-                              </Badge>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
+              <CardContent className="pt-6 space-y-4">
+                <div className="space-y-3">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Beschreibung:</h4>
+                    <p className="text-gray-700 leading-relaxed">{topic.content.description}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Détails:</h4>
+                    <p className="text-gray-700 leading-relaxed">{topic.content.details}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Verwendung in Aufsätzen:</h4>
+                    <p className="text-gray-700 leading-relaxed">{topic.content.essayUsage}</p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Navigation */}
-        <div className="mt-12 flex justify-between items-center">
+        <div className="mt-8 pt-8 border-t">
           <Link to="/formation/allemand/civilisation">
             <Button variant="outline" className="flex items-center gap-2">
               <ArrowLeft className="w-4 h-4" />
               Retour à la civilisation
             </Button>
           </Link>
-          
-          <div className="text-sm text-gray-500">
-            Chapitre 8: Technologie und Digitalisierung
-          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default TechnologieInnovationAllemandePage; 
+export default TechnologieInnovationAllemandePage;

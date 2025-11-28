@@ -1,112 +1,140 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Factory, Cpu, Car, Zap, Globe } from 'lucide-react';
+import { ArrowLeft, TrendingUp, Factory, Euro, Globe, Briefcase } from 'lucide-react';
+
+const VocabWord = ({ word, explanation }: { word: string; explanation: string }) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+  const tooltipRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (tooltipRef.current && !tooltipRef.current.contains(event.target as Node)) {
+        setShowTooltip(false);
+      }
+    };
+    if (showTooltip) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showTooltip]);
+
+  return (
+    <span className="relative inline-block" ref={tooltipRef}>
+      <span className="font-bold text-orange-700 cursor-pointer hover:text-orange-900 transition-colors" onClick={() => setShowTooltip(!showTooltip)}>
+        {word}
+      </span>
+      {showTooltip && (
+        <span className="absolute z-50 top-full left-0 mt-2 w-72 p-3 bg-white border-2 border-orange-400 rounded-lg shadow-xl text-sm text-gray-700">
+          <span className="font-semibold text-orange-700 block mb-1">Erklärung:</span>
+          <span className="text-gray-800">{explanation}</span>
+          <span className="absolute bottom-full left-4 border-8 border-transparent border-b-orange-400"></span>
+        </span>
+      )}
+    </span>
+  );
+};
 
 const IndustrieAllemandePage: React.FC = () => {
-  const industrieTopics = [
+  const wirtschaftTopics = [
     {
       id: 1,
-      title: "Krise des deutschen Wirtschaftsmodells",
-      icon: <Factory className="w-5 h-5" />,
+      title: "Exportweltmeister und Außenhandel",
+      icon: <Globe className="w-5 h-5" />,
       content: {
-        description: "Das deutsche Wirtschaftsmodell war lange ein Erfolg: starke Industrie, viele Exporte, niedrige Arbeitslosigkeit. Seit 2019 gibt es aber Probleme. 2025 erwartet man fast kein Wachstum.",
-        details: "Die Industrie hat Schwierigkeiten wegen hoher Energiepreise, Konkurrenz aus China und USA und schwacher Nachfrage. Früher sprach man vom 'kranken Mann Europas', und viele Ökonomen benutzen diesen Begriff wieder. Besonders die Auto- und Chemieindustrie leiden, weil sie stark vom Export abhängig sind. Gleichzeitig geben die Menschen weniger Geld aus, weil alles teurer wird. Diese Mischung führt zu Stagnation und Unsicherheit. Für einen Aufsatz kann man zeigen, dass ein Modell, das nur auf Exporte und billige Energie gebaut ist, in einer globalen Krise sehr verletzlich wird.",
-        vocabulary: [
-          { german: "Wachstum", french: "croissance" },
-          { german: "Export", french: "exportation" },
-          { german: "Nachfrage", french: "demande" },
-          { german: "Stagnation", french: "stagnation" },
-          { german: "verletzlich", french: "vulnérable" }
-        ],
-        essayUsage: "Einstieg über die Schwächen des deutschen Modells."
+        description: (
+          <>
+            Deutschland ist <VocabWord word="Exportweltmeister" explanation="Land mit den meisten Exporten weltweit" /> – oder war es lange. Die deutsche Wirtschaft ist stark vom <VocabWord word="Außenhandel" explanation="Handel mit anderen Ländern" /> abhängig. Über 50% des BIP kommen aus Exporten.
+          </>
+        ),
+        details: (
+          <>
+            Die wichtigsten <VocabWord word="Handelspartner" explanation="Länder, mit denen Deutschland viel Handel treibt" /> sind die USA, China und andere EU-Länder. Deutsche Firmen exportieren vor allem Autos, Maschinen und Chemie. Aber: Die Abhängigkeit von Exporten macht Deutschland <VocabWord word="anfällig" explanation="leicht von Problemen betroffen" /> für globale Krisen. Der Handelskrieg zwischen USA und China, der Ukraine-Krieg und <VocabWord word="Lieferkettenprobleme" explanation="Schwierigkeiten, Waren zu transportieren" /> trafen die deutsche Wirtschaft hart. Deutschland muss seine Märkte <VocabWord word="diversifizieren" explanation="Vielfalt schaffen, nicht nur auf wenige setzen" /> und weniger abhängig von einzelnen Ländern werden.
+          </>
+        ),
+        essayUsage: "Einstieg über die exportorientierte deutsche Wirtschaft."
       }
     },
     {
       id: 2,
-      title: "Industrie 4.0 und Digitalisierung",
-      icon: <Cpu className="w-5 h-5" />,
+      title: "Der Mittelstand als Rückgrat",
+      icon: <Briefcase className="w-5 h-5" />,
       content: {
-        description: "Deutschland spricht oft von 'Industrie 4.0'. Das bedeutet: Maschinen, Roboter und Computer arbeiten zusammen in der Produktion. Heute gibt es mehr als 260.000 Roboter in deutschen Fabriken.",
-        details: "Viele Unternehmen benutzen auch künstliche Intelligenz und Cloud-Systeme. Aber im Vergleich mit anderen Ländern ist Deutschland nicht so weit vorne. Laut EU-Berichten liegt es nur im Mittelfeld bei der Digitalisierung. Kleine Firmen haben oft nicht genug Geld und Personal, um digital zu arbeiten. Es fehlen auch Fachkräfte im IT-Bereich. Deutschland hat also viele Chancen, aber die Umsetzung ist langsam. Für einen Aufsatz kann man zeigen, dass Digitalisierung wichtig für die Zukunft ist, aber Deutschland Probleme mit Geschwindigkeit und Bürokratie hat.",
-        vocabulary: [
-          { german: "Digitalisierung", french: "numérisation" },
-          { german: "Roboter", french: "robot" },
-          { german: "künstliche Intelligenz", french: "intelligence artificielle" },
-          { german: "Fachkräfte", french: "main-d'œuvre qualifiée" },
-          { german: "Bürokratie", french: "bureaucratie" }
-        ],
-        essayUsage: "Beispiel für Chancen und Hindernisse moderner Industrie."
+        description: (
+          <>
+            Der deutsche <VocabWord word="Mittelstand" explanation="kleine und mittlere Unternehmen" /> ist das <VocabWord word="Rückgrat" explanation="die tragende Säule" /> der Wirtschaft. Über 99% aller Firmen sind kleine oder mittlere Unternehmen, sie beschäftigen 60% aller Arbeitnehmer.
+          </>
+        ),
+        details: (
+          <>
+            Viele Mittelständler sind <VocabWord word="Hidden Champions" explanation="weltmarktführende Firmen, die kaum jemand kennt" /> – kaum bekannt, aber Weltmarktführer in Nischenmärkten. Beispiele: Firmen wie Kärcher (Reinigungsgeräte) oder Trumpf (Lasertechnik). Diese Firmen sind oft <VocabWord word="familiengeführt" explanation="gehören einer Familie und werden von ihr geleitet" /> und investieren stark in Forschung. Aber: Der Mittelstand kämpft mit <VocabWord word="Fachkräftemangel" explanation="nicht genug qualifizierte Arbeiter" />, hohen <VocabWord word="Energiekosten" explanation="was Energie kostet" /> und <VocabWord word="Bürokratie" explanation="komplizierte Regeln und Verwaltung" />. Die Digitalisierung ist eine große Herausforderung.
+          </>
+        ),
+        essayUsage: "Beispiel für die Stärke und Herausforderungen des Mittelstands."
       }
     },
     {
       id: 3,
-      title: "Automobilindustrie unter Druck",
-      icon: <Car className="w-5 h-5" />,
+      title: "Wirtschaftskrise und Stagnation",
+      icon: <TrendingUp className="w-5 h-5" />,
       content: {
-        description: "Autos sind ein Symbol für Deutschland. Marken wie VW, BMW, Mercedes oder Audi sind weltweit bekannt. Aber 2025 steht die Branche unter Druck.",
-        details: "Immer mehr Menschen kaufen Elektroautos, und China ist in diesem Bereich sehr stark. Firmen wie BYD verkaufen billigere Modelle, und deutsche Firmen verlieren Marktanteile. Außerdem gibt es strenge EU-Regeln für CO₂, die Diesel- und Benzinautos unattraktiv machen. VW musste Milliarden wegen des 'Diesel-Skandals' zahlen und setzt jetzt alles auf Elektro. Aber niemand weiß, ob Deutschland seine Spitzenposition behalten kann. Für einen Aufsatz zeigt dieses Beispiel sehr gut, wie Klimapolitik, internationale Konkurrenz und Industrieinteressen in Konflikt kommen.",
-        vocabulary: [
-          { german: "Automobilindustrie", french: "industrie automobile" },
-          { german: "Elektroauto", french: "voiture électrique" },
-          { german: "Konkurrenz", french: "concurrence" },
-          { german: "Marktanteil", french: "part de marché" },
-          { german: "Regeln", french: "règles" }
-        ],
-        essayUsage: "Beispiel für Transformation einer Schlüsselindustrie."
+        description: (
+          <>
+            Deutschland durchlebt die längste Wirtschaftskrise seit Gründung der Bundesrepublik. Seit 2020 <VocabWord word="stagniert" explanation="wächst nicht mehr" /> die Wirtschaft. Für 2025 erwarten Experten bestenfalls 0,1% <VocabWord word="Wachstum" explanation="Zunahme der Wirtschaftsleistung" />.
+          </>
+        ),
+        details: (
+          <>
+            Die Gründe sind vielfältig: hohe Energiepreise nach dem <VocabWord word="Atomausstieg" explanation="Abschalten aller Atomkraftwerke" />, <VocabWord word="Strukturwandel" explanation="grundlegende Veränderung der Wirtschaft" /> in der Autoindustrie, internationale Unsicherheiten. Die <VocabWord word="Industrie" explanation="produzierende Unternehmen, Fabriken" /> schrumpft – besonders energieintensive Sektoren wie Chemie und Stahl leiden. Deutschland verliert an <VocabWord word="Wettbewerbsfähigkeit" explanation="die Fähigkeit, mit anderen Ländern zu konkurrieren" />. Die <VocabWord word="Schuldenbremse" explanation="Regel, die hohe Staatsschulden verhindern soll" /> begrenzt Investitionen, obwohl die Infrastruktur <VocabWord word="marode" explanation="kaputt, in schlechtem Zustand" /> ist.
+          </>
+        ),
+        essayUsage: "Argumentation über strukturelle Probleme und Reformbedarf."
       }
     },
     {
       id: 4,
-      title: "Energiepreise und Deindustrialisierung",
-      icon: <Zap className="w-5 h-5" />,
+      title: "Soziale Marktwirtschaft",
+      icon: <Factory className="w-5 h-5" />,
       content: {
-        description: "Die Energiekrise nach 2022 hat viele Probleme gebracht. Gas und Strom sind viel teurer geworden. Besonders die Chemie- und Metallindustrie leiden darunter.",
-        details: "Große Firmen wie BASF haben Teile der Produktion ins Ausland verlagert, wo Energie billiger ist, zum Beispiel in die USA. Kleine Firmen können das nicht, und viele fürchten eine 'Deindustrialisierung' in Deutschland. Die Regierung reagiert mit Subventionen für Betriebe und mit Investitionen in erneuerbare Energien. Es gibt neue LNG-Terminals, und Wind- und Solarkraft werden stärker gefördert. Aber die Lage bleibt unsicher. Für einen Aufsatz zeigt dieser Punkt, wie stark Energiepolitik und Wirtschaft zusammenhängen.",
-        vocabulary: [
-          { german: "Energiepreise", french: "prix de l'énergie" },
-          { german: "Produktion", french: "production" },
-          { german: "Ausland", french: "étranger" },
-          { german: "Deindustrialisierung", french: "désindustrialisation" },
-          { german: "Subventionen", french: "subventions" }
-        ],
-        essayUsage: "Beleg für Zusammenhang zwischen Energie und Wirtschaftskraft."
+        description: (
+          <>
+            Das deutsche Wirtschaftsmodell heißt <VocabWord word="Soziale Marktwirtschaft" explanation="Marktwirtschaft mit sozialem Ausgleich" />. Es kombiniert freien Markt mit sozialem <VocabWord word="Schutz" explanation="Absicherung für Menschen" />. Der Staat greift ein, um soziale <VocabWord word="Härten" explanation="Probleme, Not" /> abzufedern.
+          </>
+        ),
+        details: (
+          <>
+            Ludwig Erhard führte dieses Modell nach dem Zweiten Weltkrieg ein. Es brachte den <VocabWord word="Wirtschaftswunder" explanation="sehr starkes Wirtschaftswachstum in den 1950er Jahren" />. Heute gibt es starke <VocabWord word="Gewerkschaften" explanation="Organisationen, die Arbeiterrechte verteidigen" />, <VocabWord word="Tarifverträge" explanation="Verträge über Löhne und Arbeitsbedingungen" /> und ein umfassendes Sozialsystem. Aber: Das Modell steht unter Druck. Die Bevölkerung altert, die <VocabWord word="Sozialsysteme" explanation="Rente, Krankenversicherung etc." /> sind <VocabWord word="unterfinanziert" explanation="haben zu wenig Geld" />. Die Debatte: Braucht Deutschland eine Reform des Sozialstaats?
+          </>
+        ),
+        essayUsage: "Beispiel für das deutsche Wirtschaftsmodell und soziale Absicherung."
       }
     },
     {
       id: 5,
-      title: "Globalisierung und neue Partner",
-      icon: <Globe className="w-5 h-5" />,
+      title: "Digitalisierung der Wirtschaft",
+      icon: <Euro className="w-5 h-5" />,
       content: {
-        description: "Deutschland war lange sehr abhängig von globalen Lieferketten. China ist seit Jahren der wichtigste Handelspartner. 2023 betrug das Handelsvolumen fast 300 Milliarden Euro.",
-        details: "Aber diese Abhängigkeit wird gefährlich, besonders wegen der Spannungen um Taiwan. Deshalb sucht Deutschland neue Partner. Scholz war in Kanada, um eine Energie-Partnerschaft für LNG und Wasserstoff zu unterschreiben. Auch Chile liefert Lithium für Batterien, und Senegal oder Katar liefern Flüssiggas. Ziel ist: weniger Abhängigkeit von autoritären Staaten, mehr Zusammenarbeit mit Demokratien. Für einen Aufsatz zeigt dieses Beispiel, dass Außenpolitik und Wirtschaftspolitik heute eng verbunden sind.",
-        vocabulary: [
-          { german: "Handelspartner", french: "partenaire commercial" },
-          { german: "Lieferketten", french: "chaînes de production" },
-          { german: "Abhängigkeit", french: "dépendance" },
-          { german: "Partnerschaft", french: "partenariat" },
-          { german: "Rohstoffe", french: "matières premières" }
-        ],
-        essayUsage: "Argument über neue Balance zwischen Globalisierung und Sicherheit."
+        description: (
+          <>
+            Die <VocabWord word="Digitalisierung" explanation="Umstellung auf digitale Technologien" /> der deutschen Wirtschaft hinkt hinterher. Deutschland hat keine großen Tech-Konzerne wie die USA oder China.
+          </>
+        ),
+        details: (
+          <>
+            Während Silicon Valley dominiert, fehlen in Deutschland digitale <VocabWord word="Plattformen" explanation="große Online-Dienste wie Amazon oder Google" />. Deutsche Firmen sind stark in traditioneller Industrie, aber schwach in digitalen Geschäftsmodellen. Die Regierung fördert Digitalisierung, aber die <VocabWord word="Umsetzung" explanation="praktische Durchführung" /> ist langsam. Probleme: schlechte <VocabWord word="Breitbandversorgung" explanation="schnelles Internet" />, <VocabWord word="Datenschutzbedenken" explanation="Sorgen um Privatsphäre" />, die Innovation <VocabWord word="bremsen" explanation="verlangsamen" />, und <VocabWord word="Risikoaversion" explanation="Angst vor Risiken" />. Deutschland muss aufholen, um im digitalen Zeitalter <VocabWord word="konkurrenzfähig" explanation="in der Lage, zu konkurrieren" /> zu bleiben.
+          </>
+        ),
+        essayUsage: "Argumentation über digitale Transformation und Innovationsdefizite."
       }
     }
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
-      {/* Floating elements - Orange and blue bubbles */}
-      <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-5 animate-pulse"></div>
-      <div className="absolute -z-10 top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
-
-      <div className="container mx-auto px-4 py-8 max-w-6xl relative z-10">
-        {/* Header */}
+    <div className="min-h-screen bg-white">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-6">
             <Link to="/formation/allemand/civilisation">
@@ -116,121 +144,85 @@ const IndustrieAllemandePage: React.FC = () => {
               </Button>
             </Link>
           </div>
-          
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Deutsche Industrie und Wirtschaft
+
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold text-gray-900 mb-3">
+              Wirtschaft und Industrie
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Eine Analyse der Herausforderungen, Transformationen und Zukunftsperspektiven der deutschen Industrie im 21. Jahrhundert
+            <p className="text-base text-gray-600 max-w-3xl mx-auto">
+              Eine Analyse der deutschen Wirtschaft, vom Mittelstand bis zur Exportstärke
             </p>
           </div>
         </div>
 
-        {/* Statistiques clés */}
-        <Card className="mb-8 bg-gradient-to-r from-orange-500 to-blue-500 text-white">
+        <Card className="mb-8 border shadow-sm">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-center">
-              Wichtige Wirtschaftskennzahlen (2023-2025)
+            <CardTitle className="text-lg font-semibold text-center text-gray-900">
+              Wichtige Wirtschaftskennzahlen (2025)
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
-              <div>
-                <div className="text-3xl font-bold">0%</div>
-                <div className="text-orange-100">Wachstum 2025</div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              <div className="p-4 bg-gray-50 rounded-lg border">
+                <div className="text-3xl font-bold text-gray-900">50%</div>
+                <div className="text-sm text-gray-600 mt-1">BIP aus Exporten</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold">260.000</div>
-                <div className="text-orange-100">Roboter in Fabriken</div>
+              <div className="p-4 bg-gray-50 rounded-lg border">
+                <div className="text-3xl font-bold text-gray-900">99%</div>
+                <div className="text-sm text-gray-600 mt-1">KMU (Mittelstand)</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold">300 Mrd. €</div>
-                <div className="text-orange-100">Handel mit China</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold">2019</div>
-                <div className="text-orange-100">Beginn der Krise</div>
+              <div className="p-4 bg-gray-50 rounded-lg border">
+                <div className="text-3xl font-bold text-gray-900">0,1%</div>
+                <div className="text-sm text-gray-600 mt-1">Erwartetes Wachstum 2025</div>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Contenu principal */}
         <div className="space-y-6">
-          {industrieTopics.map((topic, index) => (
-            <Card key={topic.id} className="shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
+          {wirtschaftTopics.map((topic) => (
+            <Card key={topic.id} className="border shadow-sm">
+              <CardHeader className="border-b bg-gray-50">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-orange-100 rounded-lg text-orange-600">
+                  <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-orange-700">
                     {topic.icon}
                   </div>
-                  <CardTitle className="text-xl text-gray-900">
+                  <CardTitle className="text-lg font-semibold text-gray-900">
                     {topic.title}
                   </CardTitle>
                 </div>
               </CardHeader>
-              <CardContent>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value={`item-${topic.id}`}>
-                    <AccordionTrigger className="text-left">
-                      <span className="font-medium text-gray-700">
-                        Détails et analyse
-                      </span>
-                    </AccordionTrigger>
-                    <AccordionContent className="space-y-4">
-                      <div className="bg-gray-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-gray-800 mb-2">Beschreibung:</h4>
-                        <p className="text-gray-700">{topic.content.description}</p>
-                      </div>
-                      
-                      <div className="bg-purple-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-purple-800 mb-2">Détails:</h4>
-                        <p className="text-purple-700">{topic.content.details}</p>
-                      </div>
-
-                      <div className="bg-blue-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-blue-800 mb-2">Verwendung in Aufsätzen:</h4>
-                        <p className="text-blue-700">{topic.content.essayUsage}</p>
-                      </div>
-
-                      <div className="bg-indigo-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-indigo-800 mb-2">Wichtige Vokabeln:</h4>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                          {topic.content.vocabulary.map((vocab, vocabIndex) => (
-                            <div key={vocabIndex} className="flex justify-between items-center p-2 bg-white rounded border">
-                              <span className="font-medium text-gray-800">{vocab.german}</span>
-                              <Badge variant="secondary" className="text-xs">
-                                {vocab.french}
-                              </Badge>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
+              <CardContent className="pt-6 space-y-4">
+                <div className="space-y-3">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Beschreibung:</h4>
+                    <p className="text-gray-700 leading-relaxed">{topic.content.description}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Détails:</h4>
+                    <p className="text-gray-700 leading-relaxed">{topic.content.details}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Verwendung in Aufsätzen:</h4>
+                    <p className="text-gray-700 leading-relaxed">{topic.content.essayUsage}</p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Navigation */}
-        <div className="mt-12 flex justify-between items-center">
+        <div className="mt-8 pt-8 border-t">
           <Link to="/formation/allemand/civilisation">
             <Button variant="outline" className="flex items-center gap-2">
               <ArrowLeft className="w-4 h-4" />
               Retour à la civilisation
             </Button>
           </Link>
-          
-          <div className="text-sm text-gray-500">
-            Chapitre 5: Wirtschaft und Industrie
-          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default IndustrieAllemandePage; 
+export default IndustrieAllemandePage;

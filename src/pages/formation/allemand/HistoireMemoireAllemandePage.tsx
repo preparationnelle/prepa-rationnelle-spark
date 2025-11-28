@@ -1,104 +1,140 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Split, Shield, Building, Calendar, Eye } from 'lucide-react';
+import { ArrowLeft, BookOpen, Flag, Users, Heart, RotateCcw } from 'lucide-react';
+
+const VocabWord = ({ word, explanation }: { word: string; explanation: string }) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+  const tooltipRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (tooltipRef.current && !tooltipRef.current.contains(event.target as Node)) {
+        setShowTooltip(false);
+      }
+    };
+    if (showTooltip) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showTooltip]);
+
+  return (
+    <span className="relative inline-block" ref={tooltipRef}>
+      <span className="font-bold text-orange-700 cursor-pointer hover:text-orange-900 transition-colors" onClick={() => setShowTooltip(!showTooltip)}>
+        {word}
+      </span>
+      {showTooltip && (
+        <span className="absolute z-50 top-full left-0 mt-2 w-72 p-3 bg-white border-2 border-orange-400 rounded-lg shadow-xl text-sm text-gray-700">
+          <span className="font-semibold text-orange-700 block mb-1">Erklärung:</span>
+          <span className="text-gray-800">{explanation}</span>
+          <span className="absolute bottom-full left-4 border-8 border-transparent border-b-orange-400"></span>
+        </span>
+      )}
+    </span>
+  );
+};
 
 const HistoireMemoireAllemandePage: React.FC = () => {
-  const histoireTopics = [
+  const geschichteTopics = [
     {
       id: 1,
-      title: "Teilung und Wiedervereinigung",
-      icon: <Split className="w-5 h-5" />,
+      title: "Vergangenheitsbewältigung und NS-Zeit",
+      icon: <BookOpen className="w-5 h-5" />,
       content: {
-        description: "Deutschland war von 1949 bis 1990 geteilt: BRD im Westen und DDR im Osten. Die Mauer in Berlin war das wichtigste Symbol dieser Teilung.",
-        details: "Am 3. Oktober 1990 kam die Wiedervereinigung. Viele Menschen sahen das als 'Glücksfall der Geschichte'. Doch bis heute gibt es Unterschiede: im Osten sind die Löhne niedriger und die AfD ist stärker, im Westen sind die Grünen erfolgreicher. 2025 feiert Deutschland 35 Jahre Einheit. Für Essays zeigt dies, dass die deutsche Geschichte bis heute Spuren im politischen und sozialen Leben hinterlässt.",
-        vocabulary: [
-          { german: "Teilung", french: "division" },
-          { german: "Wiedervereinigung", french: "réunification" },
-          { german: "Mauer", french: "mur" },
-          { german: "Unterschiede", french: "différences" },
-          { german: "Einheit", french: "unité" }
-        ],
-        essayUsage: "Einstieg über Ost-West-Spaltung als Folge der Geschichte."
+        description: (
+          <>
+            <VocabWord word="Vergangenheitsbewältigung" explanation="die Aufarbeitung und Auseinandersetzung mit der Vergangenheit" /> ist ein zentraler Begriff der deutschen Identität. Deutschland stellt sich seiner dunklen Vergangenheit, besonders dem <VocabWord word="Nationalsozialismus" explanation="Nazi-Regime von 1933-1945" /> und dem Holocaust.
+          </>
+        ),
+        details: (
+          <>
+            Nach 1945 begann ein langer Prozess der <VocabWord word="Aufarbeitung" explanation="sich mit etwas schwierigem auseinandersetzen" />. In Schulen wird die NS-Zeit ausführlich unterrichtet, Deutschland hat <VocabWord word="Gedenkstätten" explanation="Orte des Erinnerns an historische Ereignisse" /> wie das Holocaust-Mahnmal in Berlin gebaut. Deutschland zahlt <VocabWord word="Wiedergutmachung" explanation="Entschädigung für vergangenes Unrecht" /> an Überlebende. Diese <VocabWord word="Erinnerungskultur" explanation="wie eine Gesellschaft mit ihrer Geschichte umgeht" /> ist weltweit einzigartig. Bundespräsident Richard von Weizsäcker sagte 1985: "Der 8. Mai war ein Tag der <VocabWord word="Befreiung" explanation="Freiheit erlangen, nicht mehr unterdrückt sein" />." Diese Haltung zeigt: Deutschland übernimmt <VocabWord word="Verantwortung" explanation="die Pflicht, für etwas einzustehen" /> für seine Geschichte.
+          </>
+        ),
+        essayUsage: "Einstieg über Geschichtsbewusstsein und moralische Verantwortung."
       }
     },
     {
       id: 2,
-      title: "Zweiter Weltkrieg und Holocaust",
-      icon: <Shield className="w-5 h-5" />,
+      title: "Die deutsche Wiedervereinigung",
+      icon: <Flag className="w-5 h-5" />,
       content: {
-        description: "Ein zentraler Teil der Erinnerungskultur ist der Holocaust. Deutschland hat Denkmäler wie das Holocaust-Mahnmal in Berlin und Gedenkstätten in ehemaligen Lagern.",
-        details: "In Schulen gehört der Holocaust fest zum Unterricht. Politiker wiederholen: 'Nie wieder.' Trotzdem gibt es heute Debatten, besonders mit dem Aufstieg der AfD. Manche wollen die Erinnerung relativieren. 2025 warnte Bundespräsident Steinmeier erneut, dass das Vergessen gefährlich sei. Für Essays kann man dies als Beispiel nutzen, wie Vergangenheit die Gegenwart prägt und die Demokratie schützt.",
-        vocabulary: [
-          { german: "Holocaust", french: "Holocauste" },
-          { german: "Gedenkstätte", french: "lieu de mémoire" },
-          { german: "Mahnmal", french: "mémorial" },
-          { german: "Erinnerung", french: "mémoire" },
-          { german: "Demokratie", french: "démocratie" }
-        ],
-        essayUsage: "Beispiel für Wertebasis der Bundesrepublik."
+        description: (
+          <>
+            Die <VocabWord word="Wiedervereinigung" explanation="als Ost- und Westdeutschland wieder ein Land wurden" /> am 3. Oktober 1990 war ein historischer Moment. Nach 40 Jahren Teilung wurde Deutschland wieder ein Land.
+          </>
+        ),
+        details: (
+          <>
+            Der Fall der <VocabWord word="Berliner Mauer" explanation="Mauer, die Ost-Berlin von West-Berlin trennte" /> am 9. November 1989 war der Anfang. Bundeskanzler Helmut Kohl trieb die <VocabWord word="Einheit" explanation="das Zusammenkommen zu einem Land" /> voran. Die Wiedervereinigung war aber schwierig: Ostdeutschland musste einen radikalen <VocabWord word="Systemwechsel" explanation="Veränderung des ökonomischen und politischen Systems" /> von Planwirtschaft zu Marktwirtschaft durchmachen. Viele Ostdeutsche verloren ihre Jobs, die <VocabWord word="Arbeitslosigkeit" explanation="wenn Menschen keine Arbeit haben" /> stieg. Bis heute gibt es ein <VocabWord word="Ost-West-Gefälle" explanation="Unterschiede zwischen Ost und West" />: Der Osten ist ärmer, jünger und politisch anders. Die <VocabWord word="Aufbau Ost" explanation="Programm zum Wiederaufbau Ostdeutschlands" /> kostete Billionen.
+          </>
+        ),
+        essayUsage: "Beispiel für politische Transformation und gesellschaftliche Integration."
       }
     },
     {
       id: 3,
-      title: "Leben in der DDR",
-      icon: <Building className="w-5 h-5" />,
+      title: "Erinnerung an die DDR",
+      icon: <RotateCcw className="w-5 h-5" />,
       content: {
-        description: "Die DDR war eine Diktatur: es gab keine freien Wahlen, und die Stasi überwachte die Bürger. Viele Menschen hatten Angst, ihre Meinung zu sagen.",
-        details: "Gleichzeitig gab es auch soziale Vorteile wie günstige Mieten und Arbeitsplätze für alle. Nach der Einheit mussten sich die Ostdeutschen an ein neues System gewöhnen. Manche fühlten sich benachteiligt, was noch heute im Wahlverhalten sichtbar ist. 2025 gibt es viele Dokumentarfilme und Ausstellungen über das Leben in der DDR, besonders für junge Generationen. Für Essays kann man zeigen, dass Erinnerung nicht nur den Nationalsozialismus betrifft, sondern auch die DDR-Vergangenheit.",
-        vocabulary: [
-          { german: "Diktatur", french: "dictature" },
-          { german: "Überwachung", french: "surveillance" },
-          { german: "Stasi", french: "police politique" },
-          { german: "Einheit", french: "unité" },
-          { german: "Erinnerungskultur", french: "culture de mémoire" }
-        ],
-        essayUsage: "Beispiel für Aufarbeitung verschiedener Vergangenheiten."
+        description: (
+          <>
+            Die <VocabWord word="DDR" explanation="Deutsche Demokratische Republik, Ostdeutschland 1949-1990" /> (Deutsche Demokratische Republik) war ein sozialistischer Staat. Heute gibt es zwei Arten, sich an die DDR zu erinnern:  <VocabWord word="Ostalgie" explanation="Nostalgie für das Leben in der DDR" /> und kritische Aufarbeitung.
+          </>
+        ),
+        details: (
+          <>
+            Die DDR war eine <VocabWord word="Diktatur" explanation="undemokratisches System mit einem Machthaber" /> mit der <VocabWord word="Stasi" explanation="Staatssicherheit, Geheimpolizei der DDR" /> als Geheimpolizei. Viele Menschen litten unter <VocabWord word="Überwachung" explanation="konstante Kontrolle und Beobachtung" /> und <VocabWord word="Unterdrückung" explanation="wenn Freiheit eingeschränkt wird" />. Aber: Manche Ostdeutsche erinnern sich positiv an soziale <VocabWord word="Sicherheit" explanation="Schutz, Absicherung" /> und <VocabWord word="Solidarität" explanation="Zusammenhalt, gegenseitige Unterstützung" /> in der DDR. Diese "Ostalgie" ist umstritten. Museen wie die Gedenkstätte Hohenschönhausen (ehemaliges Stasi-Gefängnis) zeigen die dunkle Seite. Deutschland muss beide <VocabWord word="Perspektiven" explanation="Sichtweisen, Blickwinkel" /> integrieren.
+          </>
+        ),
+        essayUsage: "Argumentation über Erinnerungspolitik und geteilte Geschichte."
       }
     },
     {
       id: 4,
-      title: "Erinnerungspolitik und Gedenktage",
-      icon: <Calendar className="w-5 h-5" />,
+      title: "Multidirektionale Erinnerung",
+      icon: <Users className="w-5 h-5" />,
       content: {
-        description: "Deutschland hat viele offizielle Gedenktage: der 8. Mai erinnert an das Ende des Zweiten Weltkriegs, der 9. November an den Mauerfall und der 3. Oktober ist der Tag der Deutschen Einheit.",
-        details: "2025 fanden große Feierlichkeiten zum 35. Jubiläum der Einheit statt, mit Reden von Politikern aus Ost und West. Diese Tage sind wichtig, weil sie die gemeinsame Identität stärken. Für Essays zeigt das Beispiel, wie nationale Geschichte durch Rituale und Feste lebendig bleibt.",
-        vocabulary: [
-          { german: "Gedenktag", french: "journée commémorative" },
-          { german: "Feier", french: "fête" },
-          { german: "Jubiläum", french: "anniversaire" },
-          { german: "Einheit", french: "unité" },
-          { german: "Identität", french: "identité" }
-        ],
-        essayUsage: "Beispiel für die Bedeutung kollektiver Erinnerung."
+        description: (
+          <>
+            Deutschland muss heute nicht nur die NS-Zeit erinnern, sondern auch <VocabWord word="koloniale Verbrechen" explanation="Unrecht während der deutschen Kolonialzeit" />. Die Debatte nennt sich "<VocabWord word="multidirektionale Erinnerung" explanation="verschiedene historische Unrechtstaten gleichzeitig erinnern" />".
+          </>
+        ),
+        details: (
+          <>
+            Deutschland hatte Kolonien in Afrika (Namibia, Tansania, Kamerun) und beging dort <VocabWord word="Völkermord" explanation="systematische Tötung eines Volkes" />, besonders an den Herero und Nama in Namibia (1904-1908). Lange wurde das <VocabWord word="verdrängt" explanation="ignoriert, vergessen gemacht" />. Erst 2021 erkannte Deutschland den Völkermord offiziell an und zahlte <VocabWord word="Entschädigung" explanation="Geld als Ausgleich für erlittenes Unrecht" />. Gleichzeitig gibt es Debatten über die <VocabWord word="Rückgabe" explanation="zurückgeben" /> von Kunstwerken aus Museen, die während der Kolonialzeit <VocabWord word="geraubt" explanation="gestohlen" /> wurden. Deutschland lernt: Erinnerung muss vielfältig sein.
+          </>
+        ),
+        essayUsage: "Beispiel für erweiterte Erinnerungskultur und Post kolonialismus."
       }
     },
     {
       id: 5,
-      title: "Erinnerungskultur heute",
-      icon: <Eye className="w-5 h-5" />,
+      title: "Geschichtspolitik heute",
+      icon: <Heart className="w-5 h-5" />,
       content: {
-        description: "Die Erinnerungskultur verändert sich. Zeitzeugen des Zweiten Weltkriegs sterben, und neue Generationen übernehmen die Verantwortung.",
-        details: "Digitale Projekte, wie virtuelle Rundgänge durch KZs oder Online-Archive, machen Geschichte für junge Menschen greifbar. Gleichzeitig gibt es Konflikte: Wie geht man mit Kolonialgeschichte um? Soll Deutschland auch an Verbrechen in Afrika erinnern? 2025 wurden in Berlin neue Ausstellungen zur Kolonialzeit eröffnet. Das zeigt, dass Erinnerungskultur nicht nur Vergangenheit, sondern auch Zukunft bedeutet. Für Essays ist das ein gutes Beispiel für eine Gesellschaft, die sich ständig neu mit ihrer Geschichte auseinandersetzt.",
-        vocabulary: [
-          { german: "Zeitzeugen", french: "témoins" },
-          { german: "virtuelle Rundgänge", french: "visites virtuelles" },
-          { german: "Kolonialgeschichte", french: "histoire coloniale" },
-          { german: "Verantwortung", french: "responsabilité" },
-          { german: "Zukunft", french: "avenir" }
-        ],
-        essayUsage: "Argument über Erinnerung als dynamischer Prozess."
+        description: (
+          <>
+            <VocabWord word="Geschichtspolitik" explanation="wie Politik Geschichte nutzt und interpretiert" /> ist ein aktuelles Thema. Rechte Parteien wie die AfD fordern eine "andere" Erinne rungskultur und kritisieren die <VocabWord word="Schuldkultur" explanation="zu starke Fokussierung auf deutsche Schuld" />.
+          </>
+        ),
+        details: (
+          <>
+            AfD-Politiker sagen, Deutschland solle stolz auf seine Geschichte sein und nicht nur die NS-Zeit erinnern. Diese <VocabWord word="Relativierung" explanation="etwas weniger wichtig machen" /> des Holocaust ist gefährlich. Andererseits gibt es Stimmen, die sagen: Jüngere Generationen sollten nicht <VocabWord word="belastet" explanation="mit Schuld beschwert" /> werden mit Schuld. Die Debatte zeigt: Erinnerungskultur ist politisch <VocabWord word="umkämpft" explanation="verschiedene Gruppen kämpfen darum" />. Bildungsminister und Historiker betonen: Erinnern heißt nicht Schuld, sondern <VocabWord word="Verantwortung" explanation="Pflicht, daraus zu lernen" /> für die Zukunft. Deutschland sucht einen Weg: Erinnern ohne zu <VocabWord word="instrumentalisieren" explanation="für politische Zwecke missbrauchen" />.
+          </>
+        ),
+        essayUsage: "Argumentation über kontroverse Erinnerungspolitik und Identität."
       }
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-stone-50 via-white to-neutral-50">
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
-        {/* Header */}
+    <div className="min-h-screen bg-white">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-6">
             <Link to="/formation/allemand/civilisation">
@@ -108,121 +144,85 @@ const HistoireMemoireAllemandePage: React.FC = () => {
               </Button>
             </Link>
           </div>
-          
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Geschichte und Erinnerungskultur in Deutschland
+
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold text-gray-900 mb-3">
+              Geschichte und Erinnerungskultur
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Eine Analyse der historischen Entwicklung, der Teilung, der Wiedervereinigung und der Kultur mémorielle
+            <p className="text-base text-gray-600 max-w-3xl mx-auto">
+              Eine Analyse der deutschen Geschichtspolitik, von der NS-Zeit bis zur Wiedervereinigung
             </p>
           </div>
         </div>
 
-        {/* Statistiques clés */}
-        <Card className="mb-8 bg-gradient-to-r from-stone-600 to-neutral-600 text-white">
+        <Card className="mb-8 border shadow-sm">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-center">
-              Wichtige historische Daten und Jubiläen (2025)
+            <CardTitle className="text-lg font-semibold text-center text-gray-900">
+              Wichtige historische Daten
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
-              <div>
-                <div className="text-3xl font-bold">35</div>
-                <div className="text-stone-100">Jahre Einheit</div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              <div className="p-4 bg-gray-50 rounded-lg border">
+                <div className="text-3xl font-bold text-gray-900">1945</div>
+                <div className="text-sm text-gray-600 mt-1">Ende des Zweiten Weltkriegs</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold">1949-1990</div>
-                <div className="text-stone-100">Zeit der Teilung</div>
+              <div className="p-4 bg-gray-50 rounded-lg border">
+                <div className="text-3xl font-bold text-gray-900">1989</div>
+                <div className="text-sm text-gray-600 mt-1">Fall der Berliner Mauer</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold">3. Oktober</div>
-                <div className="text-stone-100">Tag der Einheit</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold">2025</div>
-                <div className="text-stone-100">Neue Ausstellungen</div>
+              <div className="p-4 bg-gray-50 rounded-lg border">
+                <div className="text-3xl font-bold text-gray-900">1990</div>
+                <div className="text-sm text-gray-600 mt-1">Deutsche Wiedervereinigung</div>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Contenu principal */}
         <div className="space-y-6">
-          {histoireTopics.map((topic, index) => (
-            <Card key={topic.id} className="shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
+          {geschichteTopics.map((topic) => (
+            <Card key={topic.id} className="border shadow-sm">
+              <CardHeader className="border-b bg-gray-50">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-stone-100 rounded-lg text-stone-600">
+                  <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-orange-700">
                     {topic.icon}
                   </div>
-                  <CardTitle className="text-xl text-gray-900">
+                  <CardTitle className="text-lg font-semibold text-gray-900">
                     {topic.title}
                   </CardTitle>
                 </div>
               </CardHeader>
-              <CardContent>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value={`item-${topic.id}`}>
-                    <AccordionTrigger className="text-left">
-                      <span className="font-medium text-gray-700">
-                        Détails et analyse
-                      </span>
-                    </AccordionTrigger>
-                    <AccordionContent className="space-y-4">
-                      <div className="bg-gray-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-gray-800 mb-2">Beschreibung:</h4>
-                        <p className="text-gray-700">{topic.content.description}</p>
-                      </div>
-                      
-                      <div className="bg-stone-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-stone-800 mb-2">Détails:</h4>
-                        <p className="text-stone-700">{topic.content.details}</p>
-                      </div>
-
-                      <div className="bg-neutral-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-neutral-800 mb-2">Verwendung in Aufsätzen:</h4>
-                        <p className="text-neutral-700">{topic.content.essayUsage}</p>
-                      </div>
-
-                      <div className="bg-indigo-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-indigo-800 mb-2">Wichtige Vokabeln:</h4>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                          {topic.content.vocabulary.map((vocab, vocabIndex) => (
-                            <div key={vocabIndex} className="flex justify-between items-center p-2 bg-white rounded border">
-                              <span className="font-medium text-gray-800">{vocab.german}</span>
-                              <Badge variant="secondary" className="text-xs">
-                                {vocab.french}
-                              </Badge>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
+              <CardContent className="pt-6 space-y-4">
+                <div className="space-y-3">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Beschreibung:</h4>
+                    <p className="text-gray-700 leading-relaxed">{topic.content.description}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Détails:</h4>
+                    <p className="text-gray-700 leading-relaxed">{topic.content.details}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Verwendung in Aufsätzen:</h4>
+                    <p className="text-gray-700 leading-relaxed">{topic.content.essayUsage}</p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Navigation */}
-        <div className="mt-12 flex justify-between items-center">
+        <div className="mt-8 pt-8 border-t">
           <Link to="/formation/allemand/civilisation">
             <Button variant="outline" className="flex items-center gap-2">
               <ArrowLeft className="w-4 h-4" />
               Retour à la civilisation
             </Button>
           </Link>
-          
-          <div className="text-sm text-gray-500">
-            Chapitre 10: Geschichte und Erinnerung
-          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default HistoireMemoireAllemandePage; 
+export default HistoireMemoireAllemandePage;

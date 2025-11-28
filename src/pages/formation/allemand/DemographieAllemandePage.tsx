@@ -1,10 +1,48 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Users, Baby, TrendingDown, MapPin, Heart } from 'lucide-react';
+
+// Component for clickable vocabulary words with German explanations
+const VocabWord = ({ word, explanation }: { word: string; explanation: string }) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+  const tooltipRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (tooltipRef.current && !tooltipRef.current.contains(event.target as Node)) {
+        setShowTooltip(false);
+      }
+    };
+
+    if (showTooltip) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showTooltip]);
+
+  return (
+    <span className="relative inline-block" ref={tooltipRef}>
+      <span
+        className="font-bold text-orange-700 cursor-pointer hover:text-orange-900 transition-colors"
+        onClick={() => setShowTooltip(!showTooltip)}
+      >
+        {word}
+      </span>
+      {showTooltip && (
+        <span className="absolute z-50 top-full left-0 mt-2 w-72 p-3 bg-white border-2 border-orange-400 rounded-lg shadow-xl text-sm text-gray-700">
+          <span className="font-semibold text-orange-700 block mb-1">Erklärung:</span>
+          <span className="text-gray-800">{explanation}</span>
+          <span className="absolute bottom-full left-4 border-8 border-transparent border-b-orange-400"></span>
+        </span>
+      )}
+    </span>
+  );
+};
 
 const DemographieAllemandePage: React.FC = () => {
   const demographieTopics = [
@@ -13,14 +51,16 @@ const DemographieAllemandePage: React.FC = () => {
       title: "Alterung der Bevölkerung",
       icon: <Users className="w-5 h-5" />,
       content: {
-        description: "Deutschland gilt 2025 als eines der ältesten Länder der Welt: Das Durchschnittsalter liegt bei 46 Jahren. Die Generation der 'Babyboomer' geht in Rente, und bis 2035 werden über 12 Millionen Arbeitskräfte fehlen.",
-        details: "Diese Alterung bedroht nicht nur das Rentensystem, sondern auch das Gesundheitssystem. Die Politik reagiert mit einer schrittweisen Anhebung des Renteneintrittsalters und Investitionen in Pflegekräfte. Laut einer Prognose des Statistischen Bundesamts (Januar 2025) könnte die Bevölkerung ohne Migration bis 2040 um fast 10 Millionen schrumpfen. Demografische Alterung ist daher die größte langfristige Herausforderung für Deutschland.",
-        vocabulary: [
-          { german: "Alterung", french: "vieillissement" },
-          { german: "Babyboomer", french: "baby-boomers" },
-          { german: "Rentensystem", french: "système de retraite" },
-          { german: "schrumpfen", french: "rétrécir" }
-        ],
+        description: (
+          <>
+            Deutschland gilt 2025 als eines der ältesten Länder der Welt: Das <VocabWord word="Durchschnittsalter" explanation="das mittlere Alter aller Menschen in einem Land" /> liegt bei 46 Jahren. Die Generation der '<VocabWord word="Babyboomer" explanation="Menschen, die zwischen 1946 und 1964 geboren wurden" />' geht in Rente, und bis 2035 werden über 12 Millionen <VocabWord word="Arbeitskräfte" explanation="Menschen, die arbeiten können" /> fehlen.
+          </>
+        ),
+        details: (
+          <>
+            Diese <VocabWord word="Alterung" explanation="der Prozess, wenn eine Gesellschaft immer älter wird" /> bedroht nicht nur das <VocabWord word="Rentensystem" explanation="das System, das Geld an alte Menschen zahlt" />, sondern auch das Gesundheitssystem. Die Politik reagiert mit einer schrittweisen Anhebung des Renteneintrittsalters und Investitionen in <VocabWord word="Pflegekräfte" explanation="Menschen, die alte oder kranke Menschen pflegen" />. Laut einer Prognose des Statistischen Bundesamts (Januar 2025) könnte die Bevölkerung ohne Migration bis 2040 um fast 10 Millionen <VocabWord word="schrumpfen" explanation="kleiner werden, weniger werden" />. Demografische Alterung ist daher die größte langfristige Herausforderung für Deutschland.
+          </>
+        ),
         essayUsage: "Einstieg über die demografische Krise und ihre systemischen Folgen."
       }
     },
@@ -29,14 +69,16 @@ const DemographieAllemandePage: React.FC = () => {
       title: "Geburtenrate und Familienpolitik",
       icon: <Baby className="w-5 h-5" />,
       content: {
-        description: "Die Geburtenrate in Deutschland liegt seit Jahren bei etwa 1,4 Kindern pro Frau, deutlich unter dem EU-Durchschnitt. Auch 2024 hat sich dieser Wert nicht verbessert.",
-        details: "Das bedeutet, dass die Bevölkerung ohne Zuwanderung immer weiter schrumpfen würde. Um gegenzusteuern, setzt die Politik auf Familienförderung: Ausbau von Kita-Plätzen, längere Elternzeit und finanzielle Hilfen wie das Elterngeld Plus. Trotzdem ist die Wirkung begrenzt, da steigende Wohnkosten und unsichere Arbeitsverhältnisse junge Familien belasten. Ein Bericht des DIW Berlin (April 2025) zeigt, dass 35 % der jungen Paare den Kinderwunsch wegen ökonomischer Unsicherheit verschieben. Die niedrige Geburtenrate bleibt also ein strukturelles Problem.",
-        vocabulary: [
-          { german: "Geburtenrate", french: "taux de natalité" },
-          { german: "Elterngeld", french: "allocation parentale" },
-          { german: "Kita", french: "crèche" },
-          { german: "verschieben", french: "reporter" }
-        ],
+        description: (
+          <>
+            Die <VocabWord word="Geburtenrate" explanation="wie viele Babys pro Jahr geboren werden" /> in Deutschland liegt seit Jahren bei etwa 1,4 Kindern pro Frau, deutlich unter dem EU-Durchschnitt. Auch 2024 hat sich dieser Wert nicht verbessert.
+          </>
+        ),
+        details: (
+          <>
+            Das bedeutet, dass die Bevölkerung ohne <VocabWord word="Zuwanderung" explanation="wenn Menschen aus anderen Ländern nach Deutschland kommen" /> immer weiter schrumpfen würde. Um gegenzusteuern, setzt die Politik auf <VocabWord word="Familienförderung" explanation="politische Maßnahmen, um Familien zu unterstützen" />: Ausbau von Kita-Plätzen, längere <VocabWord word="Elternzeit" explanation="Zeit, in der Eltern zu Hause bei ihren Kindern bleiben können" /> und finanzielle Hilfen wie das <VocabWord word="Elterngeld Plus" explanation="Geld, das der Staat an Eltern zahlt" />. Trotzdem ist die Wirkung begrenzt, da steigende Wohnkosten und unsichere Arbeitsverhältnisse junge Familien belasten. Ein Bericht des DIW Berlin (April 2025) zeigt, dass 35 % der jungen Paare den Kinderwunsch wegen ökonomischer Unsicherheit <VocabWord word="verschieben" explanation="etwas später machen, nicht jetzt" />. Die niedrige Geburtenrate bleibt also ein strukturelles Problem.
+          </>
+        ),
         essayUsage: "Beleg für strukturelle Schwäche trotz Familienpolitik."
       }
     },
@@ -45,14 +87,16 @@ const DemographieAllemandePage: React.FC = () => {
       title: "Migration als demografische Lösung",
       icon: <TrendingDown className="w-5 h-5" />,
       content: {
-        description: "Um den Fachkräftemangel und die Alterung abzufedern, setzt Deutschland auf Migration. Schon heute haben 28 % der Einwohner einen Migrationshintergrund (Stand 2024).",
-        details: "Besonders seit dem Ukraine-Krieg stieg die Zuwanderung stark: Allein 2023 kamen über eine Million Menschen nach Deutschland. Das neue Fachkräfteeinwanderungsgesetz (2023/2024) soll qualifizierte Arbeitskräfte aus Indien, den Philippinen oder Nordafrika anziehen. Doch Integration bleibt eine Herausforderung: Laut einer Studie der Bundesagentur für Arbeit (Februar 2025) arbeiten viele Migranten in Jobs unterhalb ihrer Qualifikation. Migration ist also unverzichtbar, aber nicht ohne soziale Spannungen.",
-        vocabulary: [
-          { german: "Zuwanderung", french: "immigration" },
-          { german: "Fachkräfte", french: "main-d'œuvre qualifiée" },
-          { german: "Migrationshintergrund", french: "origine migratoire" },
-          { german: "Integration", french: "intégration" }
-        ],
+        description: (
+          <>
+            Um den <VocabWord word="Fachkräftemangel" explanation="wenn nicht genug qualifizierte Arbeiter da sind" /> und die Alterung abzufedern, setzt Deutschland auf Migration. Schon heute haben 28 % der Einwohner einen <VocabWord word="Migrationshintergrund" explanation="Menschen, deren Familien aus anderen Ländern kommen" /> (Stand 2024).
+          </>
+        ),
+        details: (
+          <>
+            Besonders seit dem Ukraine-Krieg stieg die Zuwanderung stark: Allein 2023 kamen über eine Million Menschen nach Deutschland. Das neue <VocabWord word="Fachkräfteeinwanderungsgesetz" explanation="Gesetz, das qualifizierte Arbeiter leichter nach Deutschland kommen lässt" /> (2023/2024) soll qualifizierte Arbeitskräfte aus Indien, den Philippinen oder Nordafrika anziehen. Doch <VocabWord word="Integration" explanation="der Prozess, wie Einwanderer Teil der Gesellschaft werden" /> bleibt eine Herausforderung: Laut einer Studie der Bundesagentur für Arbeit (Februar 2025) arbeiten viele Migranten in Jobs unterhalb ihrer Qualifikation. Migration ist also unverzichtbar, aber nicht ohne soziale Spannungen.
+          </>
+        ),
         essayUsage: "Beispiel für die Rolle von Migration in der Sicherung der Zukunft."
       }
     },
@@ -61,14 +105,16 @@ const DemographieAllemandePage: React.FC = () => {
       title: "Ost-West-Differenzen und Abwanderung",
       icon: <MapPin className="w-5 h-5" />,
       content: {
-        description: "Die demografische Entwicklung ist regional sehr ungleich. Besonders in Ostdeutschland sinkt die Bevölkerung seit Jahren: Laut Statistischem Bundesamt (März 2025) hat Sachsen-Anhalt seit 2000 fast 20 % seiner Einwohner verloren.",
-        details: "Viele junge Menschen ziehen in westdeutsche Städte, zurück bleiben ältere Menschen. Diese Landflucht erklärt, warum die AfD im Osten so stark ist, während urbane Zentren im Westen eher grün wählen. Die Politik reagiert mit Förderprogrammen, z. B. dem Zukunftszentrum für Deutsche Einheit in Halle (Eröffnung 2028), um Perspektiven zu schaffen. Ohne Zuwanderung wird die Abwanderung im Osten die Spaltung weiter verstärken.",
-        vocabulary: [
-          { german: "Abwanderung", french: "exode" },
-          { german: "Landflucht", french: "exode rural" },
-          { german: "demografische Spaltung", french: "fracture démographique" },
-          { german: "Perspektiven", french: "perspectives" }
-        ],
+        description: (
+          <>
+            Die demografische Entwicklung ist regional sehr ungleich. Besonders in Ostdeutschland sinkt die Bevölkerung seit Jahren: Laut Statistischem Bundesamt (März 2025) hat Sachsen-Anhalt seit 2000 fast 20 % seiner Einwohner verloren.
+          </>
+        ),
+        details: (
+          <>
+            Viele junge Menschen ziehen in westdeutsche Städte, zurück bleiben ältere Menschen. Diese <VocabWord word="Landflucht" explanation="wenn Menschen vom Land in die Stadt ziehen" /> erklärt, warum die AfD im Osten so stark ist, während urbane Zentren im Westen eher grün wählen. Die Politik reagiert mit Förderprogrammen, z. B. dem Zukunftszentrum für Deutsche Einheit in Halle (Eröffnung 2028), um <VocabWord word="Perspektiven" explanation="Zukunftschancen, Hoffnungen" /> zu schaffen. Ohne Zuwanderung wird die <VocabWord word="Abwanderung" explanation="wenn Menschen ein Gebiet verlassen" /> im Osten die Spaltung weiter verstärken.
+          </>
+        ),
         essayUsage: "Argument über Zusammenhänge zwischen Demografie und Politik (AfD-Erfolg)."
       }
     },
@@ -77,29 +123,24 @@ const DemographieAllemandePage: React.FC = () => {
       title: "Soziale Folgen der Demografie",
       icon: <Heart className="w-5 h-5" />,
       content: {
-        description: "Die Alterung und Schrumpfung der Bevölkerung hat direkte soziale Folgen. Der Arbeitsmarkt verändert sich: Fachkräfte fehlen, während prekäre Jobs zunehmen.",
-        details: "Frauen, Migranten und junge Menschen sind besonders betroffen. Laut DIW (April 2025) arbeiten 22 % der Beschäftigten im Niedriglohnsektor. Dazu kommen steigende Gesundheitskosten: Bis 2030 werden die Ausgaben für Pflege um fast 40 % steigen. Diese Probleme verstärken die soziale Ungleichheit. Die Debatte um das Bürgergeld (2023 eingeführt, 2025 reformiert) zeigt, wie stark demografische Faktoren die Sozialpolitik prägen. Deutschland muss also nicht nur die Bevölkerung stabilisieren, sondern auch den sozialen Zusammenhalt sichern.",
-        vocabulary: [
-          { german: "Niedriglohnsektor", french: "secteur bas-salaire" },
-          { german: "Pflegekosten", french: "coûts de soins" },
-          { german: "Ungleichheit", french: "inégalité" },
-          { german: "Bürgergeld", french: "revenu citoyen" }
-        ],
+        description: (
+          <>
+            Die Alterung und Schrumpfung der Bevölkerung hat direkte soziale Folgen. Der Arbeitsmarkt verändert sich: Fachkräfte fehlen, während <VocabWord word="prekäre Jobs" explanation="unsichere Arbeit mit schlechten Bedingungen" /> zunehmen.
+          </>
+        ),
+        details: (
+          <>
+            Frauen, Migranten und junge Menschen sind besonders betroffen. Laut DIW (April 2025) arbeiten 22 % der Beschäftigten im <VocabWord word="Niedriglohnsektor" explanation="Bereich mit sehr niedrigen Löhnen" />. Dazu kommen steigende Gesundheitskosten: Bis 2030 werden die Ausgaben für <VocabWord word="Pflege" explanation="die Betreuung von alten oder kranken Menschen" /> um fast 40 % steigen. Diese Probleme verstärken die soziale <VocabWord word="Ungleichheit" explanation="wenn einige Menschen viel mehr haben als andere" />. Die Debatte um das <VocabWord word="Bürgergeld" explanation="Sozialhilfe für Menschen ohne Arbeit" /> (2023 eingeführt, 2025 reformiert) zeigt, wie stark demografische Faktoren die Sozialpolitik prägen. Deutschland muss also nicht nur die Bevölkerung stabilisieren, sondern auch den sozialen Zusammenhalt sichern.
+          </>
+        ),
         essayUsage: "Argumentation über direkte soziale Effekte des demografischen Wandels."
       }
     }
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
-      {/* Floating elements - Orange and blue bubbles */}
-      <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-5 animate-pulse"></div>
-      <div className="absolute -z-10 top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
-      <div className="container mx-auto px-4 py-8 max-w-6xl relative z-10">
+    <div className="min-h-screen bg-white">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-6">
@@ -110,37 +151,37 @@ const DemographieAllemandePage: React.FC = () => {
               </Button>
             </Link>
           </div>
-          
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold text-gray-900 mb-3">
               Demographie in Deutschland
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base text-gray-600 max-w-3xl mx-auto">
               Eine Analyse der demografischen Herausforderungen und ihrer politischen, sozialen und wirtschaftlichen Auswirkungen auf die deutsche Gesellschaft
             </p>
           </div>
         </div>
 
         {/* Statistiques clés */}
-        <Card className="mb-8 bg-gradient-to-r from-orange-500 to-blue-500 text-white shadow-lg">
+        <Card className="mb-8 border shadow-sm">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-center">
+            <CardTitle className="text-lg font-semibold text-center text-gray-900">
               Wichtige demografische Kennzahlen (2025)
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-              <div>
-                <div className="text-3xl font-bold">46</div>
-                <div className="text-orange-100">Durchschnittsalter (Jahre)</div>
+              <div className="p-4 bg-gray-50 rounded-lg border">
+                <div className="text-3xl font-bold text-gray-900">46</div>
+                <div className="text-sm text-gray-600 mt-1">Durchschnittsalter (Jahre)</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold">1,4</div>
-                <div className="text-orange-100">Geburtenrate (Kinder pro Frau)</div>
+              <div className="p-4 bg-gray-50 rounded-lg border">
+                <div className="text-3xl font-bold text-gray-900">1,4</div>
+                <div className="text-sm text-gray-600 mt-1">Geburtenrate (Kinder pro Frau)</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold">28%</div>
-                <div className="text-orange-100">Migrationshintergrund</div>
+              <div className="p-4 bg-gray-50 rounded-lg border">
+                <div className="text-3xl font-bold text-gray-900">28%</div>
+                <div className="text-sm text-gray-600 mt-1">Migrationshintergrund</div>
               </div>
             </div>
           </CardContent>
@@ -148,76 +189,48 @@ const DemographieAllemandePage: React.FC = () => {
 
         {/* Contenu principal */}
         <div className="space-y-6">
-          {demographieTopics.map((topic, index) => (
-            <Card key={topic.id} className="group bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border-2 border-gray-200 hover:border-orange-200 shadow-lg relative overflow-hidden">
-              <div className="absolute -z-10 inset-0 bg-gradient-to-br from-orange-50/20 to-blue-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <CardHeader className="relative z-10">
+          {demographieTopics.map((topic) => (
+            <Card key={topic.id} className="border shadow-sm">
+              <CardHeader className="border-b bg-gray-50">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-orange-100 rounded-lg text-orange-600">
+                  <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-orange-700">
                     {topic.icon}
                   </div>
-                  <CardTitle className="text-xl text-gray-900 relative z-10">
+                  <CardTitle className="text-lg font-semibold text-gray-900">
                     {topic.title}
                   </CardTitle>
                 </div>
               </CardHeader>
-              <CardContent className="relative z-10">
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value={`item-${topic.id}`}>
-                    <AccordionTrigger className="text-left">
-                      <span className="font-medium text-gray-700">
-                        Détails et analyse
-                      </span>
-                    </AccordionTrigger>
-                    <AccordionContent className="space-y-4">
-                      <div className="bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-colors duration-200 p-4 rounded-lg">
-                        <h4 className="font-semibold text-gray-800 mb-2">Beschreibung:</h4>
-                        <p className="text-gray-700">{topic.content.description}</p>
-                      </div>
-                      
-                      <div className="bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-colors duration-200 p-4 rounded-lg">
-                        <h4 className="font-semibold text-gray-900 mb-2">Détails:</h4>
-                        <p className="text-gray-600">{topic.content.details}</p>
-                      </div>
+              <CardContent className="pt-6 space-y-4">
+                <div className="space-y-3">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Beschreibung:</h4>
+                    <p className="text-gray-700 leading-relaxed">{topic.content.description}</p>
+                  </div>
 
-                      <div className="bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-colors duration-200 p-4 rounded-lg">
-                        <h4 className="font-semibold text-gray-900 mb-2">Verwendung in Aufsätzen:</h4>
-                        <p className="text-gray-600">{topic.content.essayUsage}</p>
-                      </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Détails:</h4>
+                    <p className="text-gray-700 leading-relaxed">{topic.content.details}</p>
+                  </div>
 
-                      <div className="bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-colors duration-200 p-4 rounded-lg">
-                        <h4 className="font-semibold text-gray-900 mb-2">Wichtige Vokabeln:</h4>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                          {topic.content.vocabulary.map((vocab, vocabIndex) => (
-                            <div key={vocabIndex} className="flex justify-between items-center p-2 bg-white rounded border">
-                              <span className="font-medium text-gray-800">{vocab.german}</span>
-                              <Badge variant="secondary" className="text-xs">
-                                {vocab.french}
-                              </Badge>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Verwendung in Aufsätzen:</h4>
+                    <p className="text-gray-700 leading-relaxed">{topic.content.essayUsage}</p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
         {/* Navigation */}
-        <div className="mt-12 flex justify-between items-center">
+        <div className="mt-8 pt-8 border-t">
           <Link to="/formation/allemand/civilisation">
             <Button variant="outline" className="flex items-center gap-2">
               <ArrowLeft className="w-4 h-4" />
               Retour à la civilisation
             </Button>
           </Link>
-          
-          <div className="text-sm text-gray-500">
-            Chapitre 2: Demographie
-          </div>
         </div>
       </div>
     </div>

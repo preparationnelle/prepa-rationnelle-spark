@@ -1,104 +1,140 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Users, Building, Heart, DollarSign, TrendingUp } from 'lucide-react';
+import { ArrowLeft, Users2, Briefcase, Heart, Award, Scale } from 'lucide-react';
+
+const VocabWord = ({ word, explanation }: { word: string; explanation: string }) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+  const tooltipRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (tooltipRef.current && !tooltipRef.current.contains(event.target as Node)) {
+        setShowTooltip(false);
+      }
+    };
+    if (showTooltip) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showTooltip]);
+
+  return (
+    <span className="relative inline-block" ref={tooltipRef}>
+      <span className="font-bold text-orange-700 cursor-pointer hover:text-orange-900 transition-colors" onClick={() => setShowTooltip(!showTooltip)}>
+        {word}
+      </span>
+      {showTooltip && (
+        <span className="absolute z-50 top-full left-0 mt-2 w-72 p-3 bg-white border-2 border-orange-400 rounded-lg shadow-xl text-sm text-gray-700">
+          <span className="font-semibold text-orange-700 block mb-1">Erklärung:</span>
+          <span className="text-gray-800">{explanation}</span>
+          <span className="absolute bottom-full left-4 border-8 border-transparent border-b-orange-400"></span>
+        </span>
+      )}
+    </span>
+  );
+};
 
 const FemmesEgaliteAllemandePage: React.FC = () => {
-  const femmesTopics = [
+  const frauenTopics = [
     {
       id: 1,
-      title: "Politische Partizipation",
-      icon: <Users className="w-5 h-5" />,
+      title: "Gleichberechtigung und Frauenrechte",
+      icon: <Scale className="w-5 h-5" />,
       content: {
-        description: "Frauen haben in Deutschland in den letzten Jahren wichtige politische Rollen übernommen. Das beste Beispiel ist Angela Merkel, die 16 Jahre lang Kanzlerin war und internationale Politik geprägt hat.",
-        details: "Heute sind Frauen in vielen Parteien in Führungspositionen: Annalena Baerbock ist Außenministerin, Saskia Esken ist SPD-Vorsitzende. Trotzdem gibt es noch keine Parität im Bundestag: 2025 sind nur etwa 35% der Abgeordneten Frauen. In Essays kann man dies als Beispiel für Fortschritte, aber auch für bestehende Ungleichheit nutzen.",
-        vocabulary: [
-          { german: "Kanzlerin", french: "chancelière" },
-          { german: "Vorsitzende", french: "présidente" },
-          { german: "Abgeordnete", french: "députée" },
-          { german: "Parität", french: "parité" },
-          { german: "Führungspositionen", french: "postes de direction" }
-        ],
-        essayUsage: "Beispiel für Fortschritt und Grenzen in der Politik."
+        description: (
+          <>
+            <VocabWord word="Gleichberechtigung" explanation="gleiche Rechte für Männer und Frauen" /> ist im deutschen Grundgesetz verankert. Artikel 3 besagt: "Männer und Frauen sind <VocabWord word="gleichberechtigt" explanation="haben die gleichen Rechte" />."
+          </>
+        ),
+        details: (
+          <>
+            Trotzdem gibt es nach wie vor Ungleichheiten. Frauen verdienen im Durchschnitt 18% weniger als Männer – die sogenannte <VocabWord word="Lohnlücke" explanation="Gender Pay Gap, Unterschied im Gehalt" />. Gründe sind: Frauen arbeiten öfter in schlechter bezahlten Berufen, sie arbeiten häufiger <VocabWord word="Teilzeit" explanation="nur ein paar Stunden pro Woche, nicht Vollzeit" /> wegen Kinderbetreuung, und sie erreichen seltener <VocabWord word="Führungspositionen" explanation="wichtige, gut bezahlte Jobs als Chef" />. Die <VocabWord word="Frauenquote" explanation="Regel, dass ein bestimmter Prozentsatz von Frauen in Führung sein muss" /> soll helfen: Große Firmen müssen mindestens 30% Frauen in Aufsichtsräten haben. Aber: Es ist ein langsamer Prozess.
+          </>
+        ),
+        essayUsage: "Einstieg über Geschlechtergerechtigkeit und strukturelle Ungleichheit."
       }
     },
     {
       id: 2,
-      title: "Frauen in der Wirtschaft",
-      icon: <Building className="w-5 h-5" />,
+      title: "Vereinbarkeit von Familie und Beruf",
+      icon: <Heart className="w-5 h-5" />,
       content: {
-        description: "In der Wirtschaft sind Frauen oft unterrepräsentiert. In Vorständen der großen DAX-Unternehmen beträgt ihr Anteil 2025 rund 22%.",
-        details: "Die gesetzliche Frauenquote von 2021 hat Fortschritte gebracht, aber Männer dominieren weiterhin. Viele Frauen schaffen es nicht in Führungspositionen, weil Familie und Karriere schwer vereinbar sind. Gleichzeitig gibt es erfolgreiche Beispiele, wie Belén Garijo, die Chefin von Merck. Für Essays zeigt dieses Thema die Spannung zwischen Gleichstellung und wirtschaftlicher Realität.",
-        vocabulary: [
-          { german: "Vorstand", french: "conseil d'administration" },
-          { german: "Quote", french: "quota" },
-          { german: "Karriere", french: "carrière" },
-          { german: "Vereinbarkeit", french: "conciliation" },
-          { german: "Gleichstellung", french: "égalité" }
-        ],
-        essayUsage: "Beispiel für strukturelle Barrieren in der Wirtschaft."
+        description: (
+          <>
+            Die <VocabWord word="Vereinbarkeit" explanation="die Möglichkeit, beides zu machen" /> von Familie und Beruf ist eine große Herausforderung. Besonders Mütter kämpfen mit diesem <VocabWord word="Spagat" explanation="schwierige Balance zwischen zwei Dingen" />.
+          </>
+        ),
+        details: (
+          <>
+            Deutschland hat <VocabWord word="Elternzeit" explanation="Zeit, die Eltern zu Hause bei Kindern bleiben können" /> eingeführt – Eltern können bis zu 3 Jahre Pause machen und bekommen <VocabWord word="Elterngeld" explanation="Geld vom Staat während der Elternzeit" />. Seit 2007 gibt es das Elterngeld, das auch Väter motivieren soll, Elternzeit zu nehmen. Trotzdem sind es meist Frauen, die ihre Karriere <VocabWord word="unterbrechen" explanation="pausieren, stoppen" />. Der Ausbau von <VocabWord word="Kita-Plätzen" explanation="Kindergartenplätzen für kleine Kinder" /> ist langsam, besonders in ländlichen Regionen fehlen Plätze. Viele Frauen können nicht Vollzeit arbeiten, weil die <VocabWord word="Kinderbetreuung" explanation="jemand, der auf Kinder aufpasst" /> fehlt.
+          </>
+        ),
+        essayUsage: "Beispiel für Familienpolitik und gesellschaftliche Rollenbilder."
       }
     },
     {
       id: 3,
-      title: "Familie und Beruf",
-      icon: <Heart className="w-5 h-5" />,
+      title: "Frauen in Führungspositionen",
+      icon: <Award className="w-5 h-5" />,
       content: {
-        description: "Die Vereinbarkeit von Familie und Beruf ist ein wichtiges Thema. Deutschland hat in den letzten Jahren die Elternzeit verlängert und den Kita-Ausbau gefördert.",
-        details: "Trotzdem übernehmen Frauen oft den Großteil der Familienarbeit. Viele arbeiten in Teilzeit, was ihre Karrieren bremst. 2025 liegt die Teilzeitquote von Frauen bei etwa 47%, bei Männern nur bei 11%. Für Essays kann man zeigen, dass Gleichstellung nicht nur eine Frage von Politik, sondern auch von gesellschaftlichen Rollenbildern ist.",
-        vocabulary: [
-          { german: "Elternzeit", french: "congé parental" },
-          { german: "Kita", french: "crèche" },
-          { german: "Teilzeit", french: "temps partiel" },
-          { german: "Rollenbild", french: "stéréotype de rôle" },
-          { german: "Familienarbeit", french: "travail domestique" }
-        ],
-        essayUsage: "Beleg für Zusammenhang zwischen Kultur und Arbeitsmarkt."
+        description: (
+          <>
+            Frauen sind in <VocabWord word="Führungspositionen" explanation="Chef-Jobs, Entscheidungspositionen" /> stark unterrepräsentiert. Nur 12% der Vorstandsmitglieder in großen deutschen Firmen sind Frauen.
+          </>
+        ),
+        details: (
+          <>
+            Das <VocabWord word="Phänomen" explanation="beobachtbare Tatsache" /> heißt "<VocabWord word="gläserne Decke" explanation="unsichtbare Barriere, die Frauen am Aufstieg hindert" />" – Frauen stoßen an eine unsichtbare Barriere. Die Gründe: traditionelle <VocabWord word="Rollenbilder" explanation="Vorstellungen, wie Männer und Frauen sein sollen" />, fehlende Netzwerke und <VocabWord word="unbewusste Vorurteile" explanation="Stereotypen, die wir nicht aktiv denken, aber haben" />. Die <VocabWord word="Frauenquote" explanation="gesetzliche Regel für Frauenanteil" /> von 2015 zwingt große Firmen, mehr Frauen in Aufsichtsräte zu holen. Das Gesetz zeigt Wirkung, aber langsam. Kritiker sagen: Quote ist <VocabWord word="Bevormundung" explanation="wenn man anderen sagt, was sie tun sollen" />, Befürworter sagen: ohne Quote passiert nichts.
+          </>
+        ),
+        essayUsage: "Argumentation über Quote und Chancengleichheit in der Arbeitswelt."
       }
     },
     {
       id: 4,
-      title: "Gender Pay Gap",
-      icon: <DollarSign className="w-5 h-5" />,
+      title: "Gewalt gegen Frauen",
+      icon: <Users2 className="w-5 h-5" />,
       content: {
-        description: "Der Gender Pay Gap ist in Deutschland immer noch hoch. 2024 verdienten Frauen im Durchschnitt 18% weniger als Männer.",
-        details: "Gründe sind Teilzeitarbeit, geringere Chancen auf Führungspositionen und Unterschiede in der Berufswahl. Die Politik versucht gegenzusteuern, etwa mit Transparenzgesetzen und Quoten. Trotzdem bleibt Deutschland im europäischen Vergleich hinten. Für Essays ist dies ein klares Beispiel für strukturelle Ungleichheit trotz moderner Gesetze.",
-        vocabulary: [
-          { german: "Lohnunterschied", french: "écart salarial" },
-          { german: "Gender Pay Gap", french: "écart de rémunération" },
-          { german: "Transparenz", french: "transparence" },
-          { german: "Berufswahl", french: "choix de carrière" },
-          { german: "Transparenzgesetze", french: "lois de transparence" }
-        ],
-        essayUsage: "Beleg für unvollendete Gleichstellung."
+        description: (
+          <>
+            <VocabWord word="Häusliche Gewalt" explanation="Gewalt in der Familie, zu Hause" /> gegen Frauen ist ein ernstes Problem in Deutschland. Jede dritte Frau erlebt im Laufe ihres Lebens physische oder sexuelle Gewalt.
+          </>
+        ),
+        details: (
+          <>
+            Deutschland hat die <VocabWord word="Istanbul-Konvention" explanation="internationales Abkommen zum Schutz von Frauen vor Gewalt" /> ratifiziert, die Frauen vor Gewalt schützen soll. Es gibt <VocabWord word="Frauenhäuser" explanation="Notunterkünfte für Frauen, die vor Gewalt fliehen" />, aber es fehlen Plätze – viele Frauen finden keinen sicheren <VocabWord word="Zufluchtsort" explanation="Ort, wo man sicher ist" />. Die Regierung hat Programme zur <VocabWord word="Prävention" explanation="Vorbeugung, Verhin derung" /> gestartet, aber <VocabWord word="Feminizide" explanation="Morde an Frauen wegen ihres Geschlechts" /> – also Morde an Frauen aufgrund ihres Geschlechts – bleiben ein Problem. Jährlich werden etwa 140 Frauen von ihrem Partner oder Ex-Partner getötet. Die Debatte: Deutschland muss mehr tun.
+          </>
+        ),
+        essayUsage: "Beispiel für Gewaltschutz und gesellschaftliche Herausforderungen."
       }
     },
     {
       id: 5,
-      title: "Gesellschaftlicher Wandel",
-      icon: <TrendingUp className="w-5 h-5" />,
+      title: "Feminismus und gesellschaftlicher Wandel",
+      icon: <Briefcase className="w-5 h-5" />,
       content: {
-        description: "Die Rolle der Frau in der Gesellschaft verändert sich. Immer mehr Frauen studieren: 2024 waren 52% aller Studierenden Frauen.",
-        details: "In vielen Bereichen, wie Medizin oder Rechtswissenschaft, stellen sie die Mehrheit. Gleichzeitig gibt es neue Debatten über Feminismus, Diversität und die Rechte von LGBTQ-Personen. Frauenbewegungen sind in sozialen Medien sehr aktiv und beeinflussen die öffentliche Meinung. Für Essays zeigt dieses Thema, dass Deutschland sich kulturell wandelt: Gleichstellung wird nicht nur gesetzlich, sondern auch gesellschaftlich verhandelt.",
-        vocabulary: [
-          { german: "Feminismus", french: "féminisme" },
-          { german: "Diversität", french: "diversité" },
-          { german: "Studierende", french: "étudiants" },
-          { german: "Wandel", french: "changement" },
-          { german: "Öffentlichkeit", french: "opinion publique" }
-        ],
-        essayUsage: "Beispiel für kulturellen und sozialen Fortschritt."
+        description: (
+          <>
+            Der <VocabWord word="Feminismus" explanation="Bewegung für Gleichberechtigung der Geschlechter" /> hat in Deutschland eine lange Geschichte. Heute gibt es eine neue, junge feministische Bewegung, die für <VocabWord word="Geschlechtergerechtigkeit" explanation="Gleichheit zwischen allen Geschlechtern" /> kämpft.
+          </>
+        ),
+        details: (
+          <>
+            Bewegungen wie #MeToo haben auch in Deutschland zu Debatten über <VocabWord word="Sexismus" explanation="Diskriminierung aufgrund des Geschlechts" /> und <VocabWord word="sexuelle Belästigung" explanation="unerwünschtes sexuelles Verhalten" /> geführt. Junge Feministinnen fordern: gleiche Bezahlung, mehr Frauen in Politik und Wirtschaft, bessere Maßnahmen gegen Gewalt. Die Debatte ist <VocabWord word="polarisiert" explanation="stark geteilt, zwei gegensätzliche Meinungen" />: Manche sehen Feminismus als notwendig, andere als <VocabWord word="übertrieben" explanation="zu weit gehend, zu viel" />. Fakt ist: Deutschland hat Fortschritte gemacht, aber es bleibt viel zu tun.
+          </>
+        ),
+        essayUsage: "Argumentation über feministische Bewegungen und gesellschaftliche Debatten."
       }
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-rose-50">
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
-        {/* Header */}
+    <div className="min-h-screen bg-white">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-6">
             <Link to="/formation/allemand/civilisation">
@@ -108,121 +144,85 @@ const FemmesEgaliteAllemandePage: React.FC = () => {
               </Button>
             </Link>
           </div>
-          
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Frauen und Gleichstellung in Deutschland
+
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold text-gray-900 mb-3">
+              Frauen und Gleichberechtigung
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Eine Analyse der politischen Partizipation, der wirtschaftlichen Stellung und des gesellschaftlichen Wandels der Frauen
+            <p className="text-base text-gray-600 max-w-3xl mx-auto">
+              Eine Analyse von Frauenrechten, Gleichberechtigung und gesellschaftlichem Wandel
             </p>
           </div>
         </div>
 
-        {/* Statistiques clés */}
-        <Card className="mb-8 bg-gradient-to-r from-pink-600 to-rose-600 text-white">
+        <Card className="mb-8 border shadow-sm">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-center">
-              Wichtige Gleichstellungszahlen (2024-2025)
+            <CardTitle className="text-lg font-semibold text-center text-gray-900">
+              Wichtige Kennzahlen zu Frauen und Gleichheit (2025)
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
-              <div>
-                <div className="text-3xl font-bold">35%</div>
-                <div className="text-pink-100">Frauen im Bundestag</div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              <div className="p-4 bg-gray-50 rounded-lg border">
+                <div className="text-3xl font-bold text-gray-900">18%</div>
+                <div className="text-sm text-gray-600 mt-1">Lohnlücke (Gender Pay Gap)</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold">22%</div>
-                <div className="text-pink-100">Frauen in DAX-Vorständen</div>
+              <div className="p-4 bg-gray-50 rounded-lg border">
+                <div className="text-3xl font-bold text-gray-900">30%</div>
+                <div className="text-sm text-gray-600 mt-1">Frauenquote in Aufsichtsräten</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold">18%</div>
-                <div className="text-pink-100">Gender Pay Gap</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold">52%</div>
-                <div className="text-pink-100">Studentinnen</div>
+              <div className="p-4 bg-gray-50 rounded-lg border">
+                <div className="text-3xl font-bold text-gray-900">12%</div>
+                <div className="text-sm text-gray-600 mt-1">Frauen in Vorständen</div>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Contenu principal */}
         <div className="space-y-6">
-          {femmesTopics.map((topic, index) => (
-            <Card key={topic.id} className="shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
+          {frauenTopics.map((topic) => (
+            <Card key={topic.id} className="border shadow-sm">
+              <CardHeader className="border-b bg-gray-50">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-pink-100 rounded-lg text-pink-600">
+                  <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-orange-700">
                     {topic.icon}
                   </div>
-                  <CardTitle className="text-xl text-gray-900">
+                  <CardTitle className="text-lg font-semibold text-gray-900">
                     {topic.title}
                   </CardTitle>
                 </div>
               </CardHeader>
-              <CardContent>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value={`item-${topic.id}`}>
-                    <AccordionTrigger className="text-left">
-                      <span className="font-medium text-gray-700">
-                        Détails et analyse
-                      </span>
-                    </AccordionTrigger>
-                    <AccordionContent className="space-y-4">
-                      <div className="bg-gray-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-gray-800 mb-2">Beschreibung:</h4>
-                        <p className="text-gray-700">{topic.content.description}</p>
-                      </div>
-                      
-                      <div className="bg-pink-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-pink-800 mb-2">Détails:</h4>
-                        <p className="text-pink-700">{topic.content.details}</p>
-                      </div>
-
-                      <div className="bg-rose-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-rose-800 mb-2">Verwendung in Aufsätzen:</h4>
-                        <p className="text-rose-700">{topic.content.essayUsage}</p>
-                      </div>
-
-                      <div className="bg-indigo-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-indigo-800 mb-2">Wichtige Vokabeln:</h4>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                          {topic.content.vocabulary.map((vocab, vocabIndex) => (
-                            <div key={vocabIndex} className="flex justify-between items-center p-2 bg-white rounded border">
-                              <span className="font-medium text-gray-800">{vocab.german}</span>
-                              <Badge variant="secondary" className="text-xs">
-                                {vocab.french}
-                              </Badge>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
+              <CardContent className="pt-6 space-y-4">
+                <div className="space-y-3">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Beschreibung:</h4>
+                    <p className="text-gray-700 leading-relaxed">{topic.content.description}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Détails:</h4>
+                    <p className="text-gray-700 leading-relaxed">{topic.content.details}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Verwendung in Aufsätzen:</h4>
+                    <p className="text-gray-700 leading-relaxed">{topic.content.essayUsage}</p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Navigation */}
-        <div className="mt-12 flex justify-between items-center">
+        <div className="mt-8 pt-8 border-t">
           <Link to="/formation/allemand/civilisation">
             <Button variant="outline" className="flex items-center gap-2">
               <ArrowLeft className="w-4 h-4" />
               Retour à la civilisation
             </Button>
           </Link>
-          
-          <div className="text-sm text-gray-500">
-            Chapitre 9: Frauen und Gesellschaft
-          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default FemmesEgaliteAllemandePage; 
+export default FemmesEgaliteAllemandePage;
