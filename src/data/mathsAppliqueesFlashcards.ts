@@ -3,7 +3,7 @@ import type { MathFlashcard } from '@/data/mathFlashcardsData';
 // Chapitre 1: Éléments de logique
 export const elementsDeLogiqueFlashcards: MathFlashcard[] = [
   {
-    id: 'logique-1',
+    id: 1001,
     front: 'Qu\'est-ce qu\'une proposition ?',
     back: 'Une proposition est une affirmation concernant des objets mathématiques dont on peut décider sans ambiguïté si elle est vraie ou fausse.',
     frontLatex: '\\text{Qu\'est-ce qu\'une proposition ?}',
@@ -13,7 +13,7 @@ export const elementsDeLogiqueFlashcards: MathFlashcard[] = [
     difficulty: 'facile'
   },
   {
-    id: 'logique-2',
+    id: 1002,
     front: 'Qu\'est-ce que la négation d\'une proposition P ?',
     back: 'La négation de P, notée ¬P, est vraie quand P est fausse, et fausse quand P est vraie.',
     frontLatex: '\\text{Qu\'est-ce que la négation d\'une proposition P ?}',
@@ -23,7 +23,7 @@ export const elementsDeLogiqueFlashcards: MathFlashcard[] = [
     difficulty: 'facile'
   },
   {
-    id: 'logique-3',
+    id: 1003,
     front: 'Quelle est la conjonction de deux propositions P et Q ?',
     back: 'La conjonction P ∧ Q ("P et Q") est vraie seulement si P et Q sont toutes deux vraies.',
     frontLatex: '\\text{Quelle est la conjonction de deux propositions P et Q ?}',
@@ -33,7 +33,7 @@ export const elementsDeLogiqueFlashcards: MathFlashcard[] = [
     difficulty: 'facile'
   },
   {
-    id: 'logique-4',
+    id: 1004,
     front: 'Quelle est la disjonction de deux propositions P et Q ?',
     back: 'La disjonction P ∨ Q ("P ou Q") est vraie si au moins l\'une des propositions P ou Q est vraie.',
     frontLatex: '\\text{Quelle est la disjonction de deux propositions P et Q ?}',
@@ -43,7 +43,7 @@ export const elementsDeLogiqueFlashcards: MathFlashcard[] = [
     difficulty: 'facile'
   },
   {
-    id: 'logique-5',
+    id: 1005,
     front: 'Quelle est l\'implication P ⇒ Q ?',
     back: 'L\'implication P ⇒ Q ("P implique Q") est fausse seulement si P est vraie et Q est fausse.',
     frontLatex: '\\text{Quelle est l\'implication } P \\Rightarrow Q\\text{ ?}',
@@ -53,7 +53,7 @@ export const elementsDeLogiqueFlashcards: MathFlashcard[] = [
     difficulty: 'moyen'
   },
   {
-    id: 'logique-6',
+    id: 1006,
     front: 'Quelle est l\'équivalence P ⇔ Q ?',
     back: 'L\'équivalence P ⇔ Q ("P équivaut à Q") est vraie si P et Q ont la même valeur de vérité.',
     frontLatex: '\\text{Quelle est l\'équivalence } P \\Leftrightarrow Q\\text{ ?}',
@@ -63,7 +63,7 @@ export const elementsDeLogiqueFlashcards: MathFlashcard[] = [
     difficulty: 'moyen'
   },
   {
-    id: 'logique-7',
+    id: 1007,
     front: 'Quelle est la contraposée de P ⇒ Q ?',
     back: 'La contraposée de P ⇒ Q est ¬Q ⇒ ¬P.',
     frontLatex: '\\text{Quelle est la contraposée de } P \\Rightarrow Q\\text{ ?}',
@@ -73,7 +73,7 @@ export const elementsDeLogiqueFlashcards: MathFlashcard[] = [
     difficulty: 'moyen'
   },
   {
-    id: 'logique-8',
+    id: 1008,
     front: 'Qu\'est-ce qu\'une proposition quantifiée universellement ?',
     back: 'Une proposition de la forme "∀x ∈ E, P(x)" signifie "pour tout x dans E, P(x) est vraie".',
     frontLatex: '\\text{Qu\'est-ce qu\'une proposition quantifiée universellement ?}',
@@ -83,7 +83,7 @@ export const elementsDeLogiqueFlashcards: MathFlashcard[] = [
     difficulty: 'moyen'
   },
   {
-    id: 'logique-9',
+    id: 1009,
     front: 'Qu\'est-ce qu\'une proposition quantifiée existentiellement ?',
     back: 'Une proposition de la forme "∃x ∈ E, P(x)" signifie "il existe au moins un x dans E tel que P(x) est vraie".',
     frontLatex: '\\text{Qu\'est-ce qu\'une proposition quantifiée existentiellement ?}',
@@ -93,7 +93,7 @@ export const elementsDeLogiqueFlashcards: MathFlashcard[] = [
     difficulty: 'moyen'
   },
   {
-    id: 'logique-10',
+    id: 1010,
     front: 'Qu\'est-ce qu\'une démonstration par l\'absurde ?',
     back: 'Une démonstration par l\'absurde consiste à supposer que la proposition à démontrer est fausse, puis à aboutir à une contradiction.',
     frontLatex: '\\text{Qu\'est-ce qu\'une démonstration par l\'absurde ?}',

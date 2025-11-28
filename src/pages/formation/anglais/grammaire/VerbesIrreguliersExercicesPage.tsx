@@ -59,7 +59,7 @@ const VerbesIrreguliersExercicesPage = () => {
   };
 
   // Filtered exercises based on type and category/level
-  const filteredExercises = filterExercises(getverbesirreguliersExercisesByType(selectedExerciseType));
+  const filteredExercises = filterExercises(getVerbesIrreguliersExercisesByType(selectedExerciseType));
   const currentExercise = filteredExercises[currentExerciseIndex];
 
   // Keyboard navigation for exercises

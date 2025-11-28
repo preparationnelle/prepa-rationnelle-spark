@@ -59,7 +59,7 @@ const ConnecteursLogiquesExercicesPage = () => {
   };
 
   // Filtered exercises based on type and category/level
-  const filteredExercises = filterExercises(getconnecteurslogiquesExercisesByType(selectedExerciseType));
+  const filteredExercises = filterExercises(getConnecteursLogiquesExercisesByType(selectedExerciseType));
   const currentExercise = filteredExercises[currentExerciseIndex];
 
   // Keyboard navigation for exercises
@@ -93,7 +93,7 @@ const ConnecteursLogiquesExercicesPage = () => {
   };
 
   const validateAnswer = (exerciseId: string) => {
-    const exercise = connecteurslogiquesExercises.find(ex => ex.id === exerciseId);
+    const exercise = connecteursLogiquesExercises.find(ex => ex.id === exerciseId);
     if (!exercise) return;
 
     const userAnswer = userAnswers[exerciseId];
@@ -407,7 +407,7 @@ const ConnecteursLogiquesExercicesPage = () => {
                   onChange={(e) => setSelectedCategory(e.target.value)}
                   className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
-                  {connecteurslogiquesExerciseCategories.map(category => (
+                  {connecteursLogiquesExerciseCategories.map(category => (
                     <option key={category} value={category}>
                       {category === 'toutes' ? 'All Categories' : category}
                     </option>

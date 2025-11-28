@@ -59,7 +59,7 @@ const ExpressionsTempsExercicesPage = () => {
   };
 
   // Filtered exercises based on type and category/level
-  const filteredExercises = filterExercises(getexpressionstempsExercisesByType(selectedExerciseType));
+  const filteredExercises = filterExercises(getExpressionsTempsExercisesByType(selectedExerciseType));
   const currentExercise = filteredExercises[currentExerciseIndex];
 
   // Keyboard navigation for exercises

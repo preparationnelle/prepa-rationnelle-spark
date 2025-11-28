@@ -171,245 +171,277 @@ export const sommesSuitesProduitsFlashcards: MathFlashcard[] = [
 // Chapitre 3: Suites
 export const suitesFlashcards: MathFlashcard[] = [
   {
-    id: 'suites-1',
+    id: 17,
     front: 'Définition d\'une suite',
     back: 'Une suite est une fonction définie sur $\\mathbb{N}$ (ou un sous-ensemble de $\\mathbb{N}$) à valeurs dans $\\mathbb{R}$.',
-    difficulty: 'easy',
-    category: 'Suites'
+    difficulty: 'facile',
+    category: 'Suites',
+    chapter: 3
   },
   {
-    id: 'suites-2',
+    id: 18,
     front: 'Suite arithmétique',
     back: 'Suite où la différence entre deux termes consécutifs est constante (raison r).',
-    difficulty: 'easy',
-    category: 'Suites'
+    difficulty: 'facile',
+    category: 'Suites',
+    chapter: 3
   },
   {
-    id: 'suites-3',
+    id: 19,
     front: 'Suite géométrique',
     back: 'Suite où le quotient entre deux termes consécutifs est constant (raison q).',
-    difficulty: 'easy',
-    category: 'Suites'
+    difficulty: 'facile',
+    category: 'Suites',
+    chapter: 3
   },
   {
-    id: 'suites-4',
+    id: 20,
     front: 'Limite d\'une suite',
     back: '$\\lim_{n \\to +\\infty} u_n = L$ si pour tout $\\epsilon > 0$, il existe N tel que $|u_n - L| < \\epsilon$ pour n > N.',
-    difficulty: 'hard',
-    category: 'Suites'
+    difficulty: 'difficile',
+    category: 'Suites',
+    chapter: 3
   },
   {
-    id: 'suites-5',
+    id: 21,
     front: 'Suite convergente',
     back: 'Une suite qui admet une limite finie.',
-    difficulty: 'medium',
-    category: 'Suites'
+    difficulty: 'moyen',
+    category: 'Suites',
+    chapter: 3
   },
   {
-    id: 'suites-6',
+    id: 22,
     front: 'Suite divergente',
     back: 'Une suite qui tend vers +∞, -∞ ou qui n\'admet pas de limite.',
-    difficulty: 'medium',
-    category: 'Suites'
+    difficulty: 'moyen',
+    category: 'Suites',
+    chapter: 3
   },
   {
-    id: 'suites-7',
+    id: 23,
     front: 'Théorème des gendarmes',
     back: 'Si $u_n \\leq v_n \\leq w_n$ et $\\lim u_n = \\lim w_n = L$, alors $\\lim v_n = L$.',
-    difficulty: 'hard',
-    category: 'Suites'
+    difficulty: 'difficile',
+    category: 'Suites',
+    chapter: 3
   },
   {
-    id: 'suites-8',
+    id: 24,
     front: 'Opérations sur les limites',
     back: '$\\lim (u_n + v_n) = \\lim u_n + \\lim v_n$<br>$\\lim (u_n \\times v_n) = \\lim u_n \\times \\lim v_n$<br>$\\lim (\\frac{u_n}{v_n}) = \\frac{\\lim u_n}{\\lim v_n}$ si $\\lim v_n \\neq 0$',
-    difficulty: 'hard',
-    category: 'Suites'
+    difficulty: 'difficile',
+    category: 'Suites',
+    chapter: 3
   }
 ];
 
 // Chapitre 4: Fonctions
 export const fonctionsFlashcards: MathFlashcard[] = [
   {
-    id: 'fonctions-1',
+    id: 25,
     front: 'Dérivée de $x^n$',
     back: '$(x^n)\' = n x^{n-1}$',
-    difficulty: 'easy',
-    category: 'Dérivation'
+    difficulty: 'facile',
+    category: 'Dérivation',
+    chapter: 4
   },
   {
-    id: 'fonctions-2',
+    id: 26,
     front: 'Dérivée de $\\sin(x)$',
     back: '$(\\sin(x))\' = \\cos(x)$',
-    difficulty: 'easy',
-    category: 'Dérivation'
+    difficulty: 'facile',
+    category: 'Dérivation',
+    chapter: 4
   },
   {
-    id: 'fonctions-3',
+    id: 27,
     front: 'Dérivée de $\\cos(x)$',
     back: '$(\\cos(x))\' = -\\sin(x)$',
-    difficulty: 'easy',
-    category: 'Dérivation'
+    difficulty: 'facile',
+    category: 'Dérivation',
+    chapter: 4
   },
   {
-    id: 'fonctions-4',
+    id: 28,
     front: 'Dérivée de $e^x$',
     back: '$(e^x)\' = e^x$',
-    difficulty: 'easy',
-    category: 'Dérivation'
+    difficulty: 'facile',
+    category: 'Dérivation',
+    chapter: 4
   },
   {
-    id: 'fonctions-5',
+    id: 29,
     front: 'Dérivée de $\\ln(x)$',
     back: '$(\\ln(x))\' = \\frac{1}{x}$ pour $x > 0$',
-    difficulty: 'easy',
-    category: 'Dérivation'
+    difficulty: 'facile',
+    category: 'Dérivation',
+    chapter: 4
   },
   {
-    id: 'fonctions-6',
+    id: 30,
     front: 'Condition nécessaire d\'extremum',
     back: 'Si f admet un extremum local en a, alors f\'(a) = 0.',
-    difficulty: 'medium',
-    category: 'Extremums'
+    difficulty: 'moyen',
+    category: 'Extremums',
+    chapter: 4
   },
   {
-    id: 'fonctions-7',
+    id: 31,
     front: 'Condition suffisante d\'extremum (test de la dérivée seconde)',
     back: 'Si f\'(a) = 0 et f\'\'(a) > 0, alors minimum local.<br>Si f\'(a) = 0 et f\'\'(a) < 0, alors maximum local.',
-    difficulty: 'hard',
-    category: 'Extremums'
+    difficulty: 'difficile',
+    category: 'Extremums',
+    chapter: 4
   },
   {
-    id: 'fonctions-8',
+    id: 32,
     front: 'Primitive d\'une fonction',
     back: 'Une primitive de f est une fonction F telle que F\' = f.',
-    difficulty: 'medium',
-    category: 'Primitives'
+    difficulty: 'moyen',
+    category: 'Primitives',
+    chapter: 4
   }
 ];
 
 // Chapitre 5: Dérivées
 export const deriveesFlashcards: MathFlashcard[] = [
   {
-    id: 'deriv-1',
+    id: 33,
     front: 'Règle de dérivation en chaîne',
     back: '$(f \\circ g)\'(x) = f\'(g(x)) \\times g\'(x)$',
-    difficulty: 'hard',
-    category: 'Règles'
+    difficulty: 'difficile',
+    category: 'Règles',
+    chapter: 5
   },
   {
-    id: 'deriv-2',
+    id: 34,
     front: 'Dérivée d\'un produit',
     back: '$(u \\times v)\' = u\'v + uv\'$',
-    difficulty: 'medium',
-    category: 'Règles'
+    difficulty: 'moyen',
+    category: 'Règles',
+    chapter: 5
   },
   {
-    id: 'deriv-3',
+    id: 35,
     front: 'Dérivée d\'un quotient',
     back: '$\\left(\\frac{u}{v}\\right)\' = \\frac{u\'v - uv\'}{v^2}$ si $v \\neq 0$',
-    difficulty: 'hard',
-    category: 'Règles'
+    difficulty: 'difficile',
+    category: 'Règles',
+    chapter: 5
   },
   {
-    id: 'deriv-4',
+    id: 36,
     front: 'Dérivée de $\\tan(x)$',
     back: '$(\\tan(x))\' = \\frac{1}{\\cos^2(x)} = 1 + \\tan^2(x)$',
-    difficulty: 'medium',
-    category: 'Trigonométrie'
+    difficulty: 'moyen',
+    category: 'Trigonométrie',
+    chapter: 5
   },
   {
-    id: 'deriv-5',
+    id: 37,
     front: 'Dérivée de fonctions composées',
     back: '$(\\ln(u))\' = \\frac{u\'}{u}$<br>$(e^u)\' = e^u u\'$<br>$(u^v)\' = u^v (v\' \\ln u + \\frac{v u\'}{u})$',
-    difficulty: 'hard',
-    category: 'Fonctions composées'
+    difficulty: 'difficile',
+    category: 'Fonctions composées',
+    chapter: 5
   },
   {
-    id: 'deriv-6',
+    id: 38,
     front: 'Dérivée de fonctions réciproques',
     back: '$(\\arcsin(x))\' = \\frac{1}{\\sqrt{1-x^2}}$<br>$(\\arccos(x))\' = -\\frac{1}{\\sqrt{1-x^2}}$<br>$(\\arctan(x))\' = \\frac{1}{1+x^2}$',
-    difficulty: 'hard',
-    category: 'Trigonométrie inverse'
+    difficulty: 'difficile',
+    category: 'Trigonométrie inverse',
+    chapter: 5
   },
   {
-    id: 'deriv-7',
+    id: 39,
     front: 'Règle de l\'hospital',
     back: 'Pour des formes indéterminées $\\frac{0}{0}$ ou $\\frac{\\infty}{\\infty}$ : $\\lim \\frac{f(x)}{g(x)} = \\lim \\frac{f\'(x)}{g\'(x)}$',
-    difficulty: 'hard',
-    category: 'Limites'
+    difficulty: 'difficile',
+    category: 'Limites',
+    chapter: 5
   },
   {
-    id: 'deriv-8',
+    id: 40,
     front: 'Équation différentielle',
     back: 'Équation de la forme $y\' = f(x,y)$ ou plus généralement $F(x,y,y\') = 0$',
-    difficulty: 'medium',
-    category: 'Équations différentielles'
+    difficulty: 'moyen',
+    category: 'Équations différentielles',
+    chapter: 5
   }
 ];
 
 // Chapitre 6: Intégrale
 export const integraleFlashcards: MathFlashcard[] = [
   {
-    id: 'int-1',
+    id: 41,
     front: 'Théorème fondamental de l\'analyse',
     back: 'Si F est une primitive de f sur [a,b], alors $\\int_a^b f(x) \\, dx = F(b) - F(a)$',
-    difficulty: 'hard',
-    category: 'Théorie'
+    difficulty: 'difficile',
+    category: 'Théorie',
+    chapter: 6
   },
   {
-    id: 'int-2',
+    id: 42,
     front: 'Primitives usuelles',
     back: '$\\int x^n \\, dx = \\frac{x^{n+1}}{n+1} + C$ (n ≠ -1)<br>$\\int \\frac{1}{x} \\, dx = \\ln|x| + C$<br>$\\int e^x \\, dx = e^x + C$',
-    difficulty: 'medium',
-    category: 'Primitives'
+    difficulty: 'moyen',
+    category: 'Primitives',
+    chapter: 6
   },
   {
-    id: 'int-3',
+    id: 43,
     front: 'Primitives trigonométriques',
     back: '$\\int \\sin(x) \\, dx = -\\cos(x) + C$<br>$\\int \\cos(x) \\, dx = \\sin(x) + C$<br>$\\int \\sec^2(x) \\, dx = \\tan(x) + C$',
-    difficulty: 'medium',
-    category: 'Primitives'
+    difficulty: 'moyen',
+    category: 'Primitives',
+    chapter: 6
   },
   {
-    id: 'int-4',
+    id: 44,
     front: 'Intégration par parties',
     back: '$\\int u \\, dv = uv - \\int v \\, du$',
-    difficulty: 'hard',
-    category: 'Méthodes'
+    difficulty: 'difficile',
+    category: 'Méthodes',
+    chapter: 6
   },
   {
-    id: 'int-5',
+    id: 45,
     front: 'Changement de variable',
     back: 'Si $x = g(t)$, alors $\\int f(g(t)) g\'(t) \\, dt = \\int f(x) \\, dx$',
-    difficulty: 'hard',
-    category: 'Méthodes'
+    difficulty: 'difficile',
+    category: 'Méthodes',
+    chapter: 6
   },
   {
-    id: 'int-6',
+    id: 46,
     front: 'Intégrales définies',
     back: 'Aire algébrique sous la courbe f entre a et b : $\\int_a^b f(x) \\, dx$',
-    difficulty: 'medium',
-    category: 'Définies'
+    difficulty: 'moyen',
+    category: 'Définies',
+    chapter: 6
   },
   {
-    id: 'int-7',
+    id: 47,
     front: 'Propriétés des intégrales',
     back: '$\\int_a^b f(x) \\, dx = -\\int_b^a f(x) \\, dx$<br>$\\int_a^b f(x) \\, dx = \\int_a^c f(x) \\, dx + \\int_c^b f(x) \\, dx$<br>$\\int_a^b (f+g)(x) \\, dx = \\int_a^b f(x) \\, dx + \\int_a^b g(x) \\, dx$',
-    difficulty: 'medium',
-    category: 'Propriétés'
+    difficulty: 'moyen',
+    category: 'Propriétés',
+    chapter: 6
   },
   {
-    id: 'int-8',
+    id: 48,
     front: 'Valeur moyenne',
     back: 'Il existe c ∈ [a,b] tel que $\\int_a^b f(x) \\, dx = f(c)(b-a)$',
-    difficulty: 'hard',
-    category: 'Théorèmes'
+    difficulty: 'difficile',
+    category: 'Théorèmes',
+    chapter: 6
   }
 ];
 
 // Mapping pour tous les chapitres
-export const terminaleVersPrepaFlashcards: Record<string, Flashcard[]> = {
+export const terminaleVersPrepaFlashcards: Record<string, MathFlashcard[]> = {
   'calculs': calculsFlashcards,
   'sommes-suites-produits': sommesSuitesProduitsFlashcards,
   'suites': suitesFlashcards,
