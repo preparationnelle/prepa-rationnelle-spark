@@ -59,7 +59,7 @@ const GerondifInfinitifExercicesPage = () => {
   };
 
   // Filtered exercises based on type and category/level
-  const filteredExercises = filterExercises(getgerondifinfinitifExercisesByType(selectedExerciseType));
+  const filteredExercises = filterExercises(getGerondifInfinitifExercisesByType(selectedExerciseType));
   const currentExercise = filteredExercises[currentExerciseIndex];
 
   // Keyboard navigation for exercises

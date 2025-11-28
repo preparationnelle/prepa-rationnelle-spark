@@ -59,7 +59,7 @@ const SubjunctifExercicesPage = () => {
   };
 
   // Filtered exercises based on type and category/level
-  const filteredExercises = filterExercises(getsubjunctifExercisesByType(selectedExerciseType));
+  const filteredExercises = filterExercises(getSubjunctifExercisesByType(selectedExerciseType));
   const currentExercise = filteredExercises[currentExerciseIndex];
 
   // Keyboard navigation for exercises

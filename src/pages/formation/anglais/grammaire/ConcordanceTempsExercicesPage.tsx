@@ -59,7 +59,7 @@ const ConcordanceTempsExercicesPage = () => {
   };
 
   // Filtered exercises based on type and category/level
-  const filteredExercises = filterExercises(getconcordancetempsExercisesByType(selectedExerciseType));
+  const filteredExercises = filterExercises(getConcordanceTempsExercisesByType(selectedExerciseType));
   const currentExercise = filteredExercises[currentExerciseIndex];
 
   // Keyboard navigation for exercises

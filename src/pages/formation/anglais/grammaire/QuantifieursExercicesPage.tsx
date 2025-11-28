@@ -59,7 +59,7 @@ const QuantifieursExercicesPage = () => {
   };
 
   // Filtered exercises based on type and category/level
-  const filteredExercises = filterExercises(getquantifieursExercisesByType(selectedExerciseType));
+  const filteredExercises = filterExercises(getQuantifieursExercisesByType(selectedExerciseType));
   const currentExercise = filteredExercises[currentExerciseIndex];
 
   // Keyboard navigation for exercises

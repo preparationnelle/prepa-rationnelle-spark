@@ -26,7 +26,7 @@ export const getNuancesLexicalesExercisesByType = (type: 'qcm' | 'choix' | 'comp
   return nuancesLexicalesExercises.filter(exercise => exercise.type === type);
 };
 
-export const inversionsEmphaseExerciseCategories = [
+export const nuancesLexicalesExerciseCategories = [
   'toutes',
   'general'
 ];
