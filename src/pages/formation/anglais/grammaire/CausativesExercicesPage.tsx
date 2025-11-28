@@ -59,7 +59,7 @@ const CausativesExercicesPage = () => {
   };
 
   // Filtered exercises based on type and category/level
-  const filteredExercises = filterExercises(getcausativesExercisesByType(selectedExerciseType));
+  const filteredExercises = filterExercises(getCausativesExercisesByType(selectedExerciseType));
   const currentExercise = filteredExercises[currentExerciseIndex];
 
   // Keyboard navigation for exercises

@@ -23,7 +23,7 @@ export const nuancesLexicalesExercises: NuancesLexicalesExercise[] = [
 ];
 
 export const getNuancesLexicalesExercisesByType = (type: 'qcm' | 'choix' | 'complet') => {
-  return inversionsEmphaseExercises.filter(exercise => exercise.type === type);
+  return nuancesLexicalesExercises.filter(exercise => exercise.type === type);
 };
 
 export const inversionsEmphaseExerciseCategories = [

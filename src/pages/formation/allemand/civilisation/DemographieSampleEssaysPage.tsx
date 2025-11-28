@@ -194,7 +194,7 @@ const DemographieSampleEssaysPage = () => {
                                 <div className="space-y-3 text-sm text-gray-800">
                                     <div>
                                         <p className="font-semibold text-gray-900">1. Le défi démographique allemand</p>
-                                        <p className="ml-4">Faible taux de natalité (1,5) + vieillissement rapide (22% > 65 ans) = menace pour le système de retraite et l'économie.</p>
+                                        <p className="ml-4">Faible taux de natalité (1,5) + vieillissement rapide (22% {'>'}65 ans) = menace pour le système de retraite et l'économie.</p>
                                     </div>
                                     <div>
                                         <p className="font-semibold text-gray-900">2. L'immigration comme solution partielle</p>

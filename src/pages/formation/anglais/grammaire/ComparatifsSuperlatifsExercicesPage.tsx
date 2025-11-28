@@ -59,7 +59,7 @@ const ComparatifsSuperlatifsExercicesPage = () => {
   };
 
   // Filtered exercises based on type and category/level
-  const filteredExercises = filterExercises(getComparatifsSuperlatifsExercisesByType(selectedExerciseType));
+  const filteredExercises = filterExercises(getComparativesSuperlatifsExercisesByType(selectedExerciseType));
   const currentExercise = filteredExercises[currentExerciseIndex];
 
   // Keyboard navigation for exercises
