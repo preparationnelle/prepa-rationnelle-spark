@@ -63,13 +63,13 @@ const PourquoiPythonPrepaECGPage = () => {
       <div className="container mx-auto py-8 px-4">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-3 mb-4 p-6 rounded-2xl bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-200 shadow-lg fade-in-up">
-            <Brain className="h-8 w-8 text-orange-600" />
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
+          <div className="inline-flex items-center gap-3 mb-4 p-6 rounded-2xl bg-white border border-gray-200 shadow-sm fade-in-up">
+            <Brain className="h-8 w-8 text-blue-600" />
+            <h1 className="text-4xl font-bold text-gray-900">
               Pourquoi travailler Python en prépa ECG
             </h1>
           </div>
-          <p className="text-xl text-orange-600 mb-6 font-medium fade-in-up" style={{ animationDelay: '0.1s' }}>
+          <p className="text-lg text-gray-600 mb-6 fade-in-up" style={{ animationDelay: '0.1s' }}>
             (et pourquoi notre formation est ta meilleure option)
           </p>
         </div>
@@ -79,10 +79,10 @@ const PourquoiPythonPrepaECGPage = () => {
 
         {/* Vidéo Loom - L'importance de Python aux concours */}
         <div className="max-w-4xl mx-auto mb-10 fade-in-up" style={{ animationDelay: '0.2s' }}>
-          <div className="bg-gradient-to-r from-orange-50 to-amber-50 p-8 rounded-2xl border border-orange-200 shadow-lg">
+          <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <Youtube className="h-7 w-7 text-orange-600" />
-              <h2 className="text-2xl font-semibold text-orange-800">
+              <Youtube className="h-7 w-7 text-blue-600" />
+              <h2 className="text-2xl font-semibold text-gray-900">
                 L'importance de Python aux concours
               </h2>
             </div>
@@ -182,15 +182,15 @@ const PourquoiPythonPrepaECGPage = () => {
               </Link>
             </div>
 
-            <div className="space-y-2 mt-6 bg-gradient-to-r from-orange-50 to-amber-50 p-6 rounded-xl border border-orange-200 shadow-md">
-              <div className="text-sm text-orange-700 font-medium">✓ 54 commandes essentielles</div>
-              <div className="text-sm text-orange-700 font-medium">✓ Exercices type concours</div>
-              <div className="text-sm text-orange-700 font-medium">✓ +3 à 5 points garantis</div>
+            <div className="space-y-2 mt-6 bg-gray-50 p-6 rounded-xl border border-gray-200">
+              <div className="text-sm text-gray-700 font-medium">✓ 54 commandes essentielles</div>
+              <div className="text-sm text-gray-700 font-medium">✓ Exercices type concours</div>
+              <div className="text-sm text-gray-700 font-medium">✓ +3 à 5 points garantis</div>
             </div>
 
             <div className="text-center mt-8">
               <Link to="/formation">
-                <Button size="lg" className="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
                   <BookOpen className="h-5 w-5 mr-2" />
                   Voir toute la formation
                 </Button>
@@ -200,14 +200,14 @@ const PourquoiPythonPrepaECGPage = () => {
         </Card>
 
         {/* Témoignage en vedette (déplacé ici) */}
-        <Card className="mb-8 bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-200 shadow-lg fade-in-up" style={{ animationDelay: '0.4s' }}>
+        <Card className="mb-8 bg-gray-50 border border-gray-200 shadow-sm fade-in-up" style={{ animationDelay: '0.4s' }}>
           <CardContent className="p-6">
-            <blockquote className="text-lg italic text-orange-800 mb-4 font-medium">
+            <blockquote className="text-lg italic text-gray-700 mb-4">
               « Dimitar est très pédagogue, à l'écoute et s'assure que tout soit parfaitement compris avant la fin
               du cours. Il m'a aidée à démystifier Python, qui était au départ un gros point faible. Grâce à lui, je
               suis plus confiante pour traiter les questions Python ! »
             </blockquote>
-            <cite className="text-orange-600 font-semibold">— Léa, 2ᵉ année ECG</cite>
+            <cite className="text-gray-600 font-semibold">— Léa, 2ᵉ année ECG</cite>
           </CardContent>
         </Card>
 
@@ -235,9 +235,9 @@ const PourquoiPythonPrepaECGPage = () => {
                 <span><strong>Questions souvent "cadeaux" :</strong> analyser un script, compléter une fonction, traduire une somme ou un raisonnement en code</span>
               </li>
             </ul>
-            <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
-              <p className="text-orange-800">
-                <strong>Moralité :</strong> même si tu n'es « pas fan d'info », ignorer Python revient à laisser jusqu'à 5 points sur la table. 
+            <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+              <p className="text-gray-700">
+                <strong>Moralité :</strong> même si tu n'es « pas fan d'info », ignorer Python revient à laisser jusqu'à 5 points sur la table.
                 Dans une filière où chaque demi-point se paie d'heures de calcul intégral, c\'est un luxe que tu ne peux pas te permettre.
               </p>
             </div>
@@ -267,8 +267,8 @@ const PourquoiPythonPrepaECGPage = () => {
                 <span><strong>Abandon trop rapide :</strong> dès qu'on bloque 5 minutes, on passe à autre chose sans creuser</span>
               </li>
             </ul>
-            <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-200">
-              <p className="text-orange-600">
+            <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
+              <p className="text-gray-700">
                 <strong>Résultat :</strong> l'immense majorité arrive aux concours avec une compréhension superficielle qui s'effondre dès la première difficulté.
               </p>
             </div>
@@ -302,16 +302,16 @@ const PourquoiPythonPrepaECGPage = () => {
         </Card>
 
         {/* Call to action final */}
-        <Card className="bg-gradient-to-r from-orange-500 to-orange-50 border-orange-200 shadow-xl fade-in-up" style={{ animationDelay: '0.8s' }}>
+        <Card className="bg-white border-gray-200 shadow-sm fade-in-up" style={{ animationDelay: '0.8s' }}>
           <CardContent className="p-8 text-center">
-            <h3 className="text-2xl font-bold mb-4 text-orange-800">
+            <h3 className="text-2xl font-bold mb-4 text-gray-900">
               Prêt à transformer ta relation avec Python ?
             </h3>
-            <p className="text-orange-700 mb-6 text-lg font-medium">
+            <p className="text-gray-600 mb-6 text-lg">
               Rejoins les centaines d'étudiants qui ont déjà pris de l'avance grâce à cette formation.
             </p>
             <Link to="/formation/python-fondamentaux">
-              <Button size="lg" className="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
                 <Code className="h-5 w-5 mr-2" />
                 Commencer maintenant
               </Button>

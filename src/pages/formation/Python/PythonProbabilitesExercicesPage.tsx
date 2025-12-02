@@ -17,12 +17,12 @@ const PythonProbabilitesExercicesPage = () => {
   const [selectedExercise, setSelectedExercise] = useState<number | null>(null);
   const [showCorrections, setShowCorrections] = useState<Set<number>>(new Set());
   const [showQCM, setShowQCM] = useState(false);
-  
+
   // États pour le QCM d'évaluation
-  const [qcmAnswers, setQcmAnswers] = useState<{[key: number]: string}>({});
+  const [qcmAnswers, setQcmAnswers] = useState<{ [key: number]: string }>({});
   const [qcmSubmitted, setQcmSubmitted] = useState(false);
   const [qcmScore, setQcmScore] = useState<number | null>(null);
-  
+
   const toggleCorrection = (index: number) => {
     const newShowCorrections = new Set(showCorrections);
     if (newShowCorrections.has(index)) {
@@ -212,7 +212,7 @@ for _ in range(10):
       id: 2,
       title: "Processus de renforcement",
       description: "Simuler le processus de renforcement dans une urne avec règles spécifiques.",
-      difficulty: "Intermédiaire", 
+      difficulty: "Intermédiaire",
       badge: "Algorithme",
       content: {
         objective: "Simuler un processus de renforcement dans une urne",
@@ -588,16 +588,16 @@ print(f"Nombre de sauts pour 20 marches : {saut_escalier(20)}")`
     return (
       <PythonModuleLayout>
         <div className="mb-6">
-          <Button 
-            variant="outline" 
-            size="sm" 
-            className="flex items-center gap-2 mb-4" 
+          <Button
+            variant="outline"
+            size="sm"
+            className="flex items-center gap-2 mb-4"
             onClick={handleBackToList}
           >
             <ArrowLeft className="h-4 w-4" />
             Retour aux exercices
           </Button>
-          
+
           <Card className="border-0 shadow-lg bg-gray-50">
             <div className="p-4">
               <div className="flex items-center gap-3">
@@ -663,8 +663,8 @@ print(f"Nombre de sauts pour 20 marches : {saut_escalier(20)}")`
             </Card>
 
             <div className="flex justify-center mb-4">
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 onClick={() => toggleCorrection(selectedExercise)}
                 className="flex items-center gap-2 border-gray-200 text-gray-700 hover:bg-gray-50"
                 size="sm"
@@ -686,21 +686,21 @@ print(f"Nombre de sauts pour 20 marches : {saut_escalier(20)}")`
             {showCorrections.has(selectedExercise) && (
               <>
                 {exercise.content.correction && (
-              <Card className="mb-6 border border-gray-200 bg-gray-50">
-                <CardHeader className="pb-3">
-                  <CardTitle className="flex items-center gap-2 text-gray-700 text-lg">
-                    <CheckCircle className="h-5 w-5" />
-                    Correction
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <div className="bg-slate-900 rounded-lg p-4 overflow-x-auto">
-                    <pre className="text-gray-700 text-sm font-mono leading-relaxed">
-                      <code>{exercise.content.correction}</code>
-                    </pre>
-                  </div>
-                </CardContent>
-              </Card>
+                  <Card className="mb-6 border border-gray-200 bg-gray-50">
+                    <CardHeader className="pb-3">
+                      <CardTitle className="flex items-center gap-2 text-gray-700 text-lg">
+                        <CheckCircle className="h-5 w-5" />
+                        Correction
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <div className="bg-slate-900 rounded-lg p-4 overflow-x-auto">
+                        <pre className="text-gray-700 text-sm font-mono leading-relaxed">
+                          <code>{exercise.content.correction}</code>
+                        </pre>
+                      </div>
+                    </CardContent>
+                  </Card>
                 )}
                 {exercise.content.corrections &&
                   exercise.content.corrections.map((corr, index) => (
@@ -735,18 +735,18 @@ print(f"Nombre de sauts pour 20 marches : {saut_escalier(20)}")`
           </div>
         )}
 
-      <ModuleNavigationCards 
-        currentModule={{
-          id: 3,
-          title: "Probabilités",
-          slug: "probabilites",
-          color: "purple"
-        }}
-        isExercisePage={true}
-        totalExercises={exercices.length}
-        currentExerciseId={selectedExercise}
-        onNavigate={handleNavigate}
-      />
+        <ModuleNavigationCards
+          currentModule={{
+            id: 3,
+            title: "Probabilités",
+            slug: "probabilites",
+            color: "purple"
+          }}
+          isExercisePage={true}
+          totalExercises={exercices.length}
+          currentExerciseId={selectedExercise}
+          onNavigate={handleNavigate}
+        />
       </PythonModuleLayout>
     );
   }
@@ -814,29 +814,31 @@ print(f"Nombre de sauts pour 20 marches : {saut_escalier(20)}")`
             {exercices.map((exercice) => (
               <Card
                 key={exercice.id}
-                className="hover:shadow-lg transition-shadow cursor-pointer border-2 border-gray-200 hover:border-gray-300 h-full flex flex-col"
+                className="group cursor-pointer bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-2 border-gray-100 hover:border-orange-300 h-full flex flex-col"
                 onClick={() => handleStartExercise(exercice.id)}
               >
                 <CardHeader className="flex-shrink-0">
                   <div className="flex items-center gap-3">
-                    <BarChart3 className="h-6 w-6 text-gray-600" />
+                    <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center border border-gray-200 group-hover:bg-orange-50 group-hover:border-orange-200 transition-colors duration-300">
+                      <BarChart3 className="h-6 w-6 text-gray-600 group-hover:text-orange-600 transition-colors duration-300" />
+                    </div>
                     <div>
-                      <CardTitle className="text-lg">Exercice {exercice.id}</CardTitle>
-                      <Badge variant="secondary" className="mt-1 bg-gray-100 text-gray-700">
+                      <CardTitle className="text-lg text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Exercice {exercice.id}</CardTitle>
+                      <Badge variant="secondary" className="mt-1 bg-gray-100 text-gray-700 border border-gray-200">
                         {exercice.difficulty}
                       </Badge>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent className="flex-grow flex flex-col">
-                  <h3 className="font-semibold mb-2 text-gray-700 flex-grow">
+                  <h3 className="font-semibold mb-2 text-gray-800 flex-grow">
                     {exercice.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground mb-4 flex-grow">
+                  <p className="text-sm text-gray-600 mb-4 flex-grow">
                     {exercice.description}
                   </p>
                   <div className="mt-auto">
-                    <Button className="w-full bg-gray-600 hover:bg-gray-700">
+                    <Button className="w-full bg-gray-600 hover:bg-orange-600 text-white font-medium transition-colors duration-300">
                       <Play className="h-4 w-4 mr-2" />
                       Commencer l'exercice
                     </Button>
@@ -865,115 +867,115 @@ print(f"Nombre de sauts pour 20 marches : {saut_escalier(20)}")`
             Retour aux exercices
           </Button>
 
-      <Card className="mb-8 border-2 border-gray-200 bg-gray-50 shadow-lg">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-gray-700">
-            <Trophy className="h-6 w-6" />
-            QCM d'évaluation - Testez vos connaissances
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          {!qcmSubmitted ? (
-            <div className="space-y-6">
-              <div className="flex items-center justify-between mb-4">
-                <p className="text-gray-700 font-medium">
-                  Répondez aux 20 questions pour évaluer votre niveau sur les probabilités et statistiques
-                </p>
-                <Badge variant="outline" className="bg-gray-100 text-gray-700 border-gray-300">
-                  {Object.keys(qcmAnswers).length}/20 répondues
-                </Badge>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    {qcmQuestions.map((question) => (
-                  <Card key={question.id} className="border border-gray-200 hover:border-gray-300 transition-colors">
-                    <CardContent className="pt-4">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Badge variant="outline" className="bg-gray-100 text-gray-700 text-xs border-gray-300">
-                          Q{question.id}
-                        </Badge>
-                        {qcmAnswers[question.id] && (
-                          <CheckCircle className="h-3 w-3 text-gray-600" />
-                        )}
-                      </div>
-                      <p className="mb-3 text-xs line-clamp-3">{question.question}</p>
-                      <div className="space-y-1">
-                        {question.options.map((option, optIndex) => (
-                          <label key={optIndex} className="flex items-center gap-1 p-1 rounded hover:bg-gray-50 cursor-pointer">
-                            <input
-                              type="radio"
-                              name={`question-${question.id}`}
-                              value={option}
-                              checked={qcmAnswers[question.id] === option}
-                              onChange={(e) => handleQCMAnswer(question.id, e.target.value)}
-                              className="text-gray-600 text-xs"
-                            />
-                            <span className="text-xs">{option.split(') ')[1] || option}</span>
-                          </label>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-              
-              <div className="flex justify-center">
-                <Button
-                  onClick={submitQCM}
-                  disabled={Object.keys(qcmAnswers).length < 20}
-                  className="bg-gray-600 hover:bg-gray-700 text-white px-8 py-3"
-                >
-                  <Trophy className="h-4 w-4 mr-2" />
-                  Valider le QCM
-                </Button>
-              </div>
-            </div>
-          ) : (
-            <div className="space-y-4">
-              <div className="text-center space-y-4">
-                <div className="flex items-center justify-center gap-3">
-                  <Trophy className="h-8 w-8 text-gray-600" />
-                  <h3 className="text-2xl font-bold text-gray-700">Résultats du QCM</h3>
-                </div>
-
-                <div className="bg-gray-50 rounded-lg p-6 border-2 border-gray-200">
-                  <div className="text-4xl font-bold text-gray-700 mb-2">
-                    {qcmScore?.toFixed(1)}/20
+          <Card className="mb-8 border-2 border-gray-200 bg-gray-50 shadow-lg">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3 text-gray-700">
+                <Trophy className="h-6 w-6" />
+                QCM d'évaluation - Testez vos connaissances
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {!qcmSubmitted ? (
+                <div className="space-y-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <p className="text-gray-700 font-medium">
+                      Répondez aux 20 questions pour évaluer votre niveau sur les probabilités et statistiques
+                    </p>
+                    <Badge variant="outline" className="bg-gray-100 text-gray-700 border-gray-300">
+                      {Object.keys(qcmAnswers).length}/20 répondues
+                    </Badge>
                   </div>
-                  <div className="flex items-center justify-center gap-2 mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`h-6 w-6 ${i < Math.floor((qcmScore || 0) / 4) ? 'text-gray-600 fill-current' : 'text-gray-300'}`}
-                      />
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {qcmQuestions.map((question) => (
+                      <Card key={question.id} className="border border-gray-200 hover:border-gray-300 transition-colors">
+                        <CardContent className="pt-4">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Badge variant="outline" className="bg-gray-100 text-gray-700 text-xs border-gray-300">
+                              Q{question.id}
+                            </Badge>
+                            {qcmAnswers[question.id] && (
+                              <CheckCircle className="h-3 w-3 text-gray-600" />
+                            )}
+                          </div>
+                          <p className="mb-3 text-xs line-clamp-3">{question.question}</p>
+                          <div className="space-y-1">
+                            {question.options.map((option, optIndex) => (
+                              <label key={optIndex} className="flex items-center gap-1 p-1 rounded hover:bg-gray-50 cursor-pointer">
+                                <input
+                                  type="radio"
+                                  name={`question-${question.id}`}
+                                  value={option}
+                                  checked={qcmAnswers[question.id] === option}
+                                  onChange={(e) => handleQCMAnswer(question.id, e.target.value)}
+                                  className="text-gray-600 text-xs"
+                                />
+                                <span className="text-xs">{option.split(') ')[1] || option}</span>
+                              </label>
+                            ))}
+                          </div>
+                        </CardContent>
+                      </Card>
                     ))}
                   </div>
-                  <p className="text-gray-700 font-medium">
-                    {qcmScore && qcmScore >= 16 ? "Excellent ! Vous maîtrisez parfaitement les probabilités et statistiques." :
-                     qcmScore && qcmScore >= 12 ? "Bon niveau ! Quelques révisions pour perfectionner." :
-                     qcmScore && qcmScore >= 8 ? "Niveau correct. Continuez à vous entraîner." :
-                     "Niveau à améliorer. Revenez sur les bases des probabilités."}
-                  </p>
+
+                  <div className="flex justify-center">
+                    <Button
+                      onClick={submitQCM}
+                      disabled={Object.keys(qcmAnswers).length < 20}
+                      className="bg-gray-600 hover:bg-gray-700 text-white px-8 py-3"
+                    >
+                      <Trophy className="h-4 w-4 mr-2" />
+                      Valider le QCM
+                    </Button>
+                  </div>
                 </div>
-              </div>
-              
-              <div className="flex gap-2 justify-center">
-                <Button
-                  variant="outline"
-                  onClick={restartQCM}
-                  className="border-gray-300 text-gray-700 hover:bg-gray-50"
-                >
-                  Recommencer le QCM
-                </Button>
-              </div>
-            </div>
-          )}
-        </CardContent>
-      </Card>
+              ) : (
+                <div className="space-y-4">
+                  <div className="text-center space-y-4">
+                    <div className="flex items-center justify-center gap-3">
+                      <Trophy className="h-8 w-8 text-gray-600" />
+                      <h3 className="text-2xl font-bold text-gray-700">Résultats du QCM</h3>
+                    </div>
+
+                    <div className="bg-gray-50 rounded-lg p-6 border-2 border-gray-200">
+                      <div className="text-4xl font-bold text-gray-700 mb-2">
+                        {qcmScore?.toFixed(1)}/20
+                      </div>
+                      <div className="flex items-center justify-center gap-2 mb-4">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`h-6 w-6 ${i < Math.floor((qcmScore || 0) / 4) ? 'text-gray-600 fill-current' : 'text-gray-300'}`}
+                          />
+                        ))}
+                      </div>
+                      <p className="text-gray-700 font-medium">
+                        {qcmScore && qcmScore >= 16 ? "Excellent ! Vous maîtrisez parfaitement les probabilités et statistiques." :
+                          qcmScore && qcmScore >= 12 ? "Bon niveau ! Quelques révisions pour perfectionner." :
+                            qcmScore && qcmScore >= 8 ? "Niveau correct. Continuez à vous entraîner." :
+                              "Niveau à améliorer. Revenez sur les bases des probabilités."}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-2 justify-center">
+                    <Button
+                      variant="outline"
+                      onClick={restartQCM}
+                      className="border-gray-300 text-gray-700 hover:bg-gray-50"
+                    >
+                      Recommencer le QCM
+                    </Button>
+                  </div>
+                </div>
+              )}
+            </CardContent>
+          </Card>
         </>
       )}
 
-      <ModuleNavigationCards 
+      <ModuleNavigationCards
         currentModule={{
           id: 3,
           title: "Probabilités",
