@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { BookOpen, Globe, Target, ChevronRight, Languages } from 'lucide-react';
+import { BookOpen, Globe, Target, ChevronRight, Languages, Award } from 'lucide-react';
 
 const FormationAllemandPage = () => {
   return (
@@ -53,18 +53,18 @@ const FormationAllemandPage = () => {
         </div>
 
         {/* Modules principaux */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto mb-12">
           {/* Vocabulaire Allemand */}
           <Link
             to="/formation/allemand/vocabulaire"
             className="bg-[#F7F9FC] rounded-xl p-8 shadow-md hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 group flex flex-col items-center text-center min-h-[420px] justify-between border border-transparent hover:border-orange-300 hover:bg-orange-50 transform"
           >
             <div className="flex flex-col items-center">
-                          <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-blue-200 transition-all duration-300">
-              <Languages className="h-10 w-10 text-blue-600" />
-            </div>
-            <h3 className="font-bold text-2xl mb-4 text-center text-blue-600 group-hover:text-orange-800 transition-colors">Vocabulaire</h3>
-            <p className="text-sm text-black mb-8 text-center leading-relaxed font-semibold">Lexique thématique et<br/>expressions idiomatiques</p>
+              <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-blue-200 transition-all duration-300">
+                <Languages className="h-10 w-10 text-blue-600" />
+              </div>
+              <h3 className="font-bold text-2xl mb-4 text-center text-blue-600 group-hover:text-orange-800 transition-colors">Vocabulaire</h3>
+              <p className="text-sm text-black mb-8 text-center leading-relaxed font-semibold">Lexique thématique et<br />expressions idiomatiques</p>
               <div className="space-y-2 text-sm mb-6 w-full">
                 <div className="flex items-center text-gray-600 bg-gray-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
@@ -92,11 +92,11 @@ const FormationAllemandPage = () => {
             className="bg-[#F7F9FC] rounded-xl p-8 shadow-md hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 group flex flex-col items-center text-center min-h-[420px] justify-between border border-transparent hover:border-orange-300 hover:bg-orange-50 transform"
           >
             <div className="flex flex-col items-center">
-                          <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
-              <BookOpen className="h-10 w-10 text-blue-600" />
-            </div>
-            <h3 className="font-bold text-2xl mb-4 text-center text-blue-600 group-hover:text-orange-800 transition-colors">Grammaire</h3>
-            <p className="text-sm text-black mb-8 text-center leading-relaxed font-semibold">Déclinaisons et<br/>structures avancées</p>
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
+                <BookOpen className="h-10 w-10 text-blue-600" />
+              </div>
+              <h3 className="font-bold text-2xl mb-4 text-center text-blue-600 group-hover:text-orange-800 transition-colors">Grammaire</h3>
+              <p className="text-sm text-black mb-8 text-center leading-relaxed font-semibold">Déclinaisons et<br />structures avancées</p>
               <div className="space-y-2 text-sm mb-6 w-full">
                 <div className="flex items-center text-gray-600 bg-gray-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
@@ -124,11 +124,11 @@ const FormationAllemandPage = () => {
             className="bg-[#F7F9FC] rounded-xl p-8 shadow-md hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 group flex flex-col items-center text-center min-h-[420px] justify-between border border-transparent hover:border-orange-300 hover:bg-orange-50 transform"
           >
             <div className="flex flex-col items-center">
-                          <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
-              <Globe className="h-10 w-10 text-blue-600" />
-            </div>
-            <h3 className="font-bold text-2xl mb-4 text-center text-blue-600 group-hover:text-orange-800 transition-colors">Civilisation</h3>
-            <p className="text-sm text-black mb-8 text-center leading-relaxed font-semibold">Politique et<br/>géopolitique européennes</p>
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
+                <Globe className="h-10 w-10 text-blue-600" />
+              </div>
+              <h3 className="font-bold text-2xl mb-4 text-center text-blue-600 group-hover:text-orange-800 transition-colors">Civilisation</h3>
+              <p className="text-sm text-black mb-8 text-center leading-relaxed font-semibold">Politique et<br />géopolitique européennes</p>
               <div className="space-y-2 text-sm mb-6 w-full">
                 <div className="flex items-center text-gray-600 bg-gray-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
@@ -156,11 +156,11 @@ const FormationAllemandPage = () => {
             className="bg-[#F7F9FC] rounded-xl p-8 shadow-md hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 group flex flex-col items-center text-center min-h-[420px] justify-between border border-transparent hover:border-orange-300 hover:bg-orange-50 transform"
           >
             <div className="flex flex-col items-center">
-                          <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
-              <Target className="h-10 w-10 text-blue-600" />
-            </div>
-            <h3 className="font-bold text-2xl mb-4 text-center text-blue-600 group-hover:text-orange-800 transition-colors">Méthodologie</h3>
-            <p className="text-sm text-black mb-8 text-center leading-relaxed font-semibold">Techniques et<br/>stratégies d'examen</p>
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
+                <Target className="h-10 w-10 text-blue-600" />
+              </div>
+              <h3 className="font-bold text-2xl mb-4 text-center text-blue-600 group-hover:text-orange-800 transition-colors">Méthodologie</h3>
+              <p className="text-sm text-black mb-8 text-center leading-relaxed font-semibold">Techniques et<br />stratégies d'examen</p>
               <div className="space-y-2 text-sm mb-8 w-full">
                 <div className="flex items-center text-gray-600 bg-gray-50 rounded-lg py-2 px-3">
                   <span className="mr-2 text-xs">✓</span>
@@ -179,6 +179,38 @@ const FormationAllemandPage = () => {
             <Button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium transition-all duration-300 group-hover:scale-105 shadow-lg rounded-lg">
               <Target className="mr-2 h-4 w-4" />
               Réussir les épreuves
+            </Button>
+          </Link>
+
+          {/* SESAME */}
+          <Link
+            to="/formation/allemand/sesame"
+            className="bg-[#F7F9FC] rounded-xl p-8 shadow-md hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-300 group flex flex-col items-center text-center min-h-[420px] justify-between border border-transparent hover:border-orange-300 hover:bg-orange-50 transform"
+          >
+            <div className="flex flex-col items-center">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
+                <Award className="h-10 w-10 text-blue-600" />
+              </div>
+              <h3 className="font-bold text-2xl mb-4 text-center text-blue-600 group-hover:text-orange-800 transition-colors">SESAME</h3>
+              <p className="text-sm text-black mb-8 text-center leading-relaxed font-semibold">Exercices types<br />du concours</p>
+              <div className="space-y-2 text-sm mb-8 w-full">
+                <div className="flex items-center text-gray-600 bg-gray-50 rounded-lg py-2 px-3">
+                  <span className="mr-2 text-xs">✓</span>
+                  <span className="font-medium">50 questions</span>
+                </div>
+                <div className="flex items-center text-gray-600 bg-gray-50 rounded-lg py-2 px-3">
+                  <span className="mr-2 text-xs">✓</span>
+                  <span className="font-medium">Traduction & grammaire</span>
+                </div>
+                <div className="flex items-center text-gray-600 bg-gray-50 rounded-lg py-2 px-3">
+                  <span className="mr-2 text-xs">✓</span>
+                  <span className="font-medium">Explications détaillées</span>
+                </div>
+              </div>
+            </div>
+            <Button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium transition-all duration-300 group-hover:scale-105 shadow-lg rounded-lg">
+              <Award className="mr-2 h-4 w-4" />
+              S'entraîner au SESAME
             </Button>
           </Link>
         </div>

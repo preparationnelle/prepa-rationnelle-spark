@@ -5,7 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Globe, TrendingUp, Loader2, Sparkles, AlertCircle, FileText, Info, BookOpenCheck, ChevronRight, Home, Target, ListChecks } from 'lucide-react';
+import { Globe, TrendingUp, Loader2, Sparkles, FileText, Info, BookOpenCheck, ChevronRight, Target, ListChecks } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';
@@ -14,10 +14,11 @@ import { CaseStudyDisplay } from '@/components/generator/CaseStudyDisplay';
 import { DefinitionTraining } from '@/components/generator/DefinitionTraining';
 import { GeopoliticsParadoxGenerator } from '@/components/generator/GeopoliticsParadoxGenerator';
 import { PlanGenerator } from '@/components/generator/PlanGenerator';
+import { HookEvaluator } from '@/components/generator/HookEvaluator';
 import { Link } from 'react-router-dom';
 
 const GeopoliticsUnifiedGeneratorPage = () => {
-  const [selectedTool, setSelectedTool] = useState<'geopolitics' | 'case-study' | 'definitions' | 'paradoxes' | 'plan'>('geopolitics');
+  const [selectedTool, setSelectedTool] = useState<'hook' | 'geopolitics' | 'case-study' | 'definitions' | 'paradoxes' | 'plan'>('geopolitics');
   const [article, setArticle] = useState('');
   const [notion, setNotion] = useState('');
   const [courseContent, setCourseContent] = useState('');
@@ -49,7 +50,7 @@ const GeopoliticsUnifiedGeneratorPage = () => {
     } else {
       if (!courseContent.trim()) {
         toast({
-          title: "Erreur", 
+          title: "Erreur",
           description: "Veuillez saisir le contenu du cours",
           variant: "destructive",
         });
@@ -61,17 +62,17 @@ const GeopoliticsUnifiedGeneratorPage = () => {
 
     try {
       const functionName = selectedTool === 'case-study' ? 'generate-case-study' : 'process-geopolitics-pdf';
-      const body = selectedTool === 'case-study' 
+      const body = selectedTool === 'case-study'
         ? {
-            article: article.trim(),
-            notion: notion.trim(),
-            userId: currentUser?.id || null,
-            language: 'fr',
-          }
+          article: article.trim(),
+          notion: notion.trim(),
+          userId: currentUser?.id || null,
+          language: 'fr',
+        }
         : {
-            pdfContent: courseContent.trim(),
-            userId: currentUser?.id || null,
-          };
+          pdfContent: courseContent.trim(),
+          userId: currentUser?.id || null,
+        };
 
       const { data, error } = await supabase.functions.invoke(functionName, { body });
 
@@ -104,125 +105,150 @@ const GeopoliticsUnifiedGeneratorPage = () => {
     }
   };
 
+  const toolsConfig = [
+    {
+      id: 'hook',
+      label: 'Accroche',
+      icon: Target,
+      gradient: 'from-orange-400 to-orange-500'
+    },
+    {
+      id: 'geopolitics',
+      label: 'Contenu géopolitique',
+      icon: Globe,
+      gradient: 'from-orange-500 to-orange-600'
+    },
+    {
+      id: 'case-study',
+      label: 'Études de cas',
+      icon: TrendingUp,
+      gradient: 'from-orange-600 to-orange-700'
+    },
+    {
+      id: 'definitions',
+      label: 'Définitions',
+      icon: BookOpenCheck,
+      gradient: 'from-orange-400 to-orange-500'
+    },
+    {
+      id: 'paradoxes',
+      label: 'Paradoxes',
+      icon: ListChecks,
+      gradient: 'from-orange-500 to-orange-600'
+    },
+    {
+      id: 'plan',
+      label: 'Plan',
+      icon: ListChecks,
+      gradient: 'from-orange-600 to-orange-700'
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
-      {/* Floating elements - Blue bubbles only */}
-      <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-blue-100 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-8 animate-pulse"></div>
-      <div className="absolute -z-10 top-1/4 left-1/3 w-64 h-64 bg-blue-50 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
-      <div className="absolute -z-10 top-10 right-1/3 w-24 h-24 bg-blue-300 rounded-full opacity-12 animate-pulse-slow"></div>
-      <div className="absolute -z-10 bottom-10 left-1/4 w-36 h-36 bg-blue-100 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute -z-10 top-1/2 right-10 w-20 h-20 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-1/3 left-10 w-28 h-28 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-blue-50/30 relative overflow-hidden">
+      {/* Animated Orbs Background - Orange theme */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-20 left-10 w-96 h-96 bg-orange-400/20 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-orange-500/15 rounded-full blur-3xl animate-float-delayed" />
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-orange-300/10 rounded-full blur-3xl animate-pulse" />
+      </div>
 
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40 relative z-10">
+      <nav className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-200">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <span>Accueil</span>
+          <div className="flex items-center text-xs text-gray-600">
+            <Link to="/" className="hover:text-orange-600 transition-colors">
+              Accueil
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/generator" className="hover:text-foreground transition-colors">
+            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
+            <Link to="/generator" className="hover:text-orange-600 transition-colors">
               Générateurs IA
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">
-              Générateur <span className="text-blue-600">Géopolitique</span>
+            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
+            <span className="text-gray-900 font-medium">
+              Générateur <span className="text-orange-600">Géopolitique</span>
             </span>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto py-8 px-4 max-w-6xl relative z-10">
-        {/* Header Hero Section */}
-        <div className="text-center mb-16">
-          {/* Main Title */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            <span className="text-black">Générateur </span>
-            <span className="text-blue-600">Géopolitique</span>
+      <div className="container mx-auto py-12 px-4 max-w-7xl relative z-10">
+        {/* Hero Section */}
+        <div className="text-center mb-16 relative">
+          <div className="inline-block mb-6">
+            <div className="flex items-center gap-3 bg-gradient-to-r from-blue-50 to-blue-100 px-6 py-3 rounded-full border border-blue-200">
+              <Sparkles className="h-5 w-5 text-blue-600 animate-pulse" />
+              <span className="text-blue-700 font-semibold">Outils IA Avancés</span>
+            </div>
+          </div>
+
+          <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight">
+            <span className="block text-gray-900">Générateur</span>
+            <span className="block bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 bg-clip-text text-transparent animate-gradient">
+              Géopolitique
+            </span>
           </h1>
 
-          {/* Subtitle */}
-          <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-5xl mx-auto whitespace-nowrap">
-            Outils d'intelligence artificielle pour créer du contenu géopolitique structuré
+          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            Outils d'intelligence artificielle pour créer du contenu géopolitique
+            <span className="font-bold text-blue-600"> structuré</span>
           </p>
         </div>
 
-        {/* Sélecteur d'outil avec tabs horizontaux */}
-        <div className="mb-8">
-          <Card className="max-w-4xl mx-auto bg-white shadow-sm border border-gray-200">
-            <CardContent className="p-6">
-              <Tabs value={selectedTool} onValueChange={(value: 'geopolitics' | 'case-study' | 'definitions' | 'paradoxes' | 'plan') => setSelectedTool(value)} className="w-full">
-                <TabsList className="grid w-full grid-cols-5 bg-gray-100 p-2 h-auto min-h-[60px]">
-                  <TabsTrigger 
-                    value="geopolitics" 
-                    className="flex items-center justify-center gap-2 data-[state=active]:bg-white data-[state=active]:text-[#111111] data-[state=active]:shadow-sm py-3 px-2 text-sm font-medium whitespace-normal break-words"
+        {/* Tool Selector - Modern Pills */}
+        <div className="mb-12">
+          <div className="bg-white/70 backdrop-blur-xl rounded-3xl p-3 border border-orange-100 shadow-2xl max-w-5xl mx-auto">
+            <div className="flex flex-wrap gap-3 justify-center">
+              {toolsConfig.map((tool) => {
+                const Icon = tool.icon;
+                const isActive = selectedTool === tool.id;
+                return (
+                  <button
+                    key={tool.id}
+                    onClick={() => setSelectedTool(tool.id as any)}
+                    className={`flex items-center gap-3 px-6 py-4 rounded-2xl font-semibold transition-all duration-300 ${isActive
+                      ? `bg-gradient-to-r ${tool.gradient} text-white shadow-xl scale-105`
+                      : 'bg-white text-gray-700 hover:bg-blue-50 hover:text-blue-600 shadow-md hover:shadow-lg hover:scale-105'
+                      }`}
                   >
-                    <Globe className="h-5 w-5 flex-shrink-0" />
-                    <span className="text-center leading-tight">Contenu géopolitique</span>
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="case-study" 
-                    className="flex items-center justify-center gap-2 data-[state=active]:bg-white data-[state=active]:text-[#111111] data-[state=active]:shadow-sm py-3 px-2 text-sm font-medium whitespace-normal break-words"
-                  >
-                    <TrendingUp className="h-5 w-5 flex-shrink-0" />
-                    <span className="text-center leading-tight">Études de cas</span>
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="definitions" 
-                    className="flex items-center justify-center gap-2 data-[state=active]:bg-white data-[state=active]:text-[#111111] data-[state=active]:shadow-sm py-3 px-2 text-sm font-medium whitespace-normal break-words"
-                  >
-                    <BookOpenCheck className="h-5 w-5 flex-shrink-0" />
-                    <span className="text-center leading-tight">Définitions</span>
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="paradoxes" 
-                    className="flex items-center justify-center gap-2 data-[state=active]:bg-white data-[state=active]:text-[#111111] data-[state=active]:shadow-sm py-3 px-2 text-sm font-medium whitespace-normal break-words"
-                  >
-                    <Target className="h-5 w-5 flex-shrink-0" />
-                    <span className="text-center leading-tight">Paradoxes</span>
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="plan" 
-                    className="flex items-center justify-center gap-2 data-[state=active]:bg-white data-[state=active]:text-[#111111] data-[state=active]:shadow-sm py-3 px-2 text-sm font-medium whitespace-normal break-words"
-                  >
-                    <ListChecks className="h-5 w-5 flex-shrink-0" />
-                    <span className="text-center leading-tight">Plan</span>
-                  </TabsTrigger>
-                </TabsList>
-              </Tabs>
-            </CardContent>
-          </Card>
+                    <Icon className="h-5 w-5" />
+                    <span className="whitespace-nowrap">{tool.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
-        {/* Interface conditionnelle */}
+        {/* Content Area */}
         <div className="space-y-8">
-          <Tabs value={selectedTool} onValueChange={(value: 'geopolitics' | 'case-study' | 'definitions' | 'paradoxes' | 'plan') => setSelectedTool(value)} className="w-full">
-            
-            {/* Études de cas d'actualité */}
+          <Tabs value={selectedTool} onValueChange={(value: any) => setSelectedTool(value)} className="w-full">
+
+            {/* Hook Evaluator Tab */}
+            <TabsContent value="hook" className="space-y-6">
+              <HookEvaluator />
+            </TabsContent>
+
+            {/* Case Study Tab */}
             <TabsContent value="case-study" className="space-y-6">
-              <Card className="bg-white shadow-sm border border-gray-200">
-                <CardHeader className="pb-6">
-                  <CardTitle className="flex items-center gap-3 text-[#111111] text-xl">
-                    <div className="p-2 bg-blue-100 rounded-lg">
-                      <TrendingUp className="h-5 w-5 text-blue-600" />
+              <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-orange-100 shadow-2xl overflow-hidden">
+                <CardHeader className="pb-6 bg-gradient-to-r from-orange-50/50 to-transparent">
+                  <CardTitle className="flex items-center gap-4 text-2xl">
+                    <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg">
+                      <TrendingUp className="h-7 w-7 text-white" />
                     </div>
                     <div>
-                      <div className="font-bold">Générateur d'Études de Cas</div>
-                      <div className="text-gray-600 text-sm font-normal mt-1">
+                      <div className="font-bold text-gray-900">Générateur d'Études de Cas</div>
+                      <div className="text-gray-600 text-base font-normal mt-1">
                         Transformez vos articles d'actualité en études de cas géopolitiques
                       </div>
                     </div>
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="space-y-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="article" className="text-sm font-medium text-[#111111] flex items-center gap-2">
+                <CardContent className="space-y-6 p-8">
+                  <div className="space-y-5">
+                    <div className="space-y-3">
+                      <Label htmlFor="article" className="text-base font-semibold text-gray-900 flex items-center gap-2">
                         📄 Article (URL ou texte)
                       </Label>
                       <Textarea
@@ -230,12 +256,12 @@ const GeopoliticsUnifiedGeneratorPage = () => {
                         placeholder="Collez une URL d'article ou le texte complet..."
                         value={article}
                         onChange={(e) => setArticle(e.target.value)}
-                        className="min-h-[120px] resize-none border border-gray-300 focus:border-blue-500 focus:ring-blue-500 bg-[#FAFAFA] rounded-lg"
+                        className="min-h-[140px] resize-none border-2 border-orange-200 focus:border-orange-500 focus:ring-orange-500 bg-white rounded-2xl text-base"
                       />
                     </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="notion" className="text-sm font-medium text-[#111111]">
+                    <div className="space-y-3">
+                      <Label htmlFor="notion" className="text-base font-semibold text-gray-900">
                         Notion/Thème géopolitique
                       </Label>
                       <Input
@@ -243,7 +269,7 @@ const GeopoliticsUnifiedGeneratorPage = () => {
                         placeholder="Ex: Rivalités de puissances, Frontières, Ressources énergétiques..."
                         value={notion}
                         onChange={(e) => setNotion(e.target.value)}
-                        className="border border-gray-300 focus:border-blue-500 focus:ring-blue-500 bg-[#FAFAFA] rounded-lg"
+                        className="border-2 border-orange-200 focus:border-orange-500 focus:ring-orange-500 bg-white rounded-2xl h-12 text-base"
                       />
                     </div>
 
@@ -251,61 +277,61 @@ const GeopoliticsUnifiedGeneratorPage = () => {
                       <Button
                         onClick={handleGenerate}
                         disabled={isGenerating || !article.trim() || !notion.trim()}
-                        className="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-xl h-12 transition-all duration-300 shadow-sm"
+                        className="flex-1 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-bold rounded-full h-14 text-lg shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105"
                       >
                         {isGenerating ? (
                           <>
-                            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                            <Loader2 className="h-5 w-5 mr-2 animate-spin" />
                             Génération en cours...
                           </>
                         ) : (
                           <>
-                            <Sparkles className="h-4 w-4 mr-2" />
+                            <Sparkles className="h-5 w-5 mr-2" />
                             Générer le thème central
                           </>
                         )}
                       </Button>
-                      
-                      <Button 
-                        onClick={loadCaseStudyExample} 
+
+                      <Button
+                        onClick={loadCaseStudyExample}
                         variant="outline"
-                        className="px-6 border border-gray-300 bg-[#F5F5F5] text-[#111111] hover:bg-gray-100 rounded-xl h-12 transition-all duration-300"
+                        className="px-8 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 rounded-full h-14 font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                       >
                         Exemple
                       </Button>
                     </div>
                   </div>
 
-                  <Alert className="border border-blue-200 bg-blue-50 rounded-lg">
-                    <Info className="h-4 w-4 text-blue-600" />
-                    <AlertDescription className="text-blue-800 text-sm italic">
-                      Entrez l'URL d'un article d'actualité ou collez directement le texte, puis précisez le thème géopolitique à analyser. L'IA générera un thème central structuré avec contexte, chiffres clés, sujets de dissertation et analyse des acteurs.
+                  <Alert className="border-2 border-orange-200 bg-orange-50/50 rounded-2xl backdrop-blur-sm">
+                    <Info className="h-5 w-5 text-orange-600" />
+                    <AlertDescription className="text-orange-800 text-base">
+                      <span className="font-semibold">💡 Astuce :</span> Entrez l'URL d'un article d'actualité ou collez directement le texte, puis précisez le thème géopolitique à analyser. L'IA générera un thème central structuré avec contexte, chiffres clés, sujets de dissertation et analyse des acteurs.
                     </AlertDescription>
                   </Alert>
                 </CardContent>
               </Card>
             </TabsContent>
 
-            {/* Contenu géopolitique complet */}
+            {/* Geopolitics Content Tab */}
             <TabsContent value="geopolitics" className="space-y-6">
-              <Card className="bg-white shadow-sm border border-gray-200">
-                <CardHeader className="pb-6">
-                  <CardTitle className="flex items-center gap-3 text-[#111111] text-xl">
-                    <div className="p-2 bg-blue-100 rounded-lg">
-                      <Globe className="h-5 w-5 text-blue-600" />
+              <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-orange-100 shadow-2xl overflow-hidden">
+                <CardHeader className="pb-6 bg-gradient-to-r from-orange-50/50 to-transparent">
+                  <CardTitle className="flex items-center gap-4 text-2xl">
+                    <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg">
+                      <Globe className="h-7 w-7 text-white" />
                     </div>
                     <div>
-                      <div className="font-bold">Générateur de Géopolitique</div>
-                      <div className="text-gray-600 text-sm font-normal mt-1">
+                      <div className="font-bold text-gray-900">Générateur de Géopolitique</div>
+                      <div className="text-gray-600 text-base font-normal mt-1">
                         Transformez vos cours en contenu pédagogique structuré
                       </div>
                     </div>
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="space-y-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="courseContent" className="text-sm font-medium text-[#111111] flex items-center gap-2">
+                <CardContent className="space-y-6 p-8">
+                  <div className="space-y-5">
+                    <div className="space-y-3">
+                      <Label htmlFor="courseContent" className="text-base font-semibold text-gray-900 flex items-center gap-2">
                         🌍 Déposez le contenu (Texte, PDF ou lien d'article)
                       </Label>
                       <Textarea
@@ -313,7 +339,7 @@ const GeopoliticsUnifiedGeneratorPage = () => {
                         placeholder="Collez le texte de votre cours de géopolitique..."
                         value={courseContent}
                         onChange={(e) => setCourseContent(e.target.value)}
-                        className="min-h-[200px] resize-none border border-gray-300 focus:border-blue-500 focus:ring-blue-500 bg-[#FAFAFA] rounded-lg"
+                        className="min-h-[220px] resize-none border-2 border-orange-200 focus:border-orange-500 focus:ring-orange-500 bg-white rounded-2xl text-base"
                       />
                     </div>
 
@@ -321,60 +347,60 @@ const GeopoliticsUnifiedGeneratorPage = () => {
                       <Button
                         onClick={handleGenerate}
                         disabled={isGenerating || !courseContent.trim()}
-                        className="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-xl h-12 transition-all duration-300 shadow-sm"
+                        className="flex-1 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-bold rounded-full h-14 text-lg shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105"
                       >
                         {isGenerating ? (
                           <>
-                            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                            <Loader2 className="h-5 w-5 mr-2 animate-spin" />
                             Génération en cours...
                           </>
                         ) : (
                           <>
-                            <Sparkles className="h-4 w-4 mr-2" />
+                            <Sparkles className="h-5 w-5 mr-2" />
                             Analyser et générer
                           </>
                         )}
                       </Button>
-                      
-                      <Button 
-                        onClick={loadGeopoliticsExample} 
+
+                      <Button
+                        onClick={loadGeopoliticsExample}
                         variant="outline"
-                        className="px-6 border border-gray-300 bg-[#F5F5F5] text-[#111111] hover:bg-gray-100 rounded-xl h-12 transition-all duration-300"
+                        className="px-8 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 rounded-full h-14 font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                       >
                         Exemple
                       </Button>
                     </div>
                   </div>
 
-                  <Alert className="border border-blue-200 bg-blue-50 rounded-lg">
-                    <Info className="h-4 w-4 text-blue-600" />
-                    <AlertDescription className="text-blue-800 text-sm italic">
-                      Entrez le contenu de votre cours de géopolitique. Le système générera automatiquement : fiches structurées, flashcards, sujets de dissertation et actualités connexes.
+                  <Alert className="border-2 border-orange-200 bg-orange-50/50 rounded-2xl backdrop-blur-sm">
+                    <Info className="h-5 w-5 text-orange-600" />
+                    <AlertDescription className="text-orange-800 text-base">
+                      <span className="font-semibold">💡 Astuce :</span> Entrez le contenu de votre cours de géopolitique. Le système générera automatiquement : fiches structurées, flashcards, sujets de dissertation et actualités connexes.
                     </AlertDescription>
                   </Alert>
                 </CardContent>
               </Card>
             </TabsContent>
 
-            {/* Entraînement aux définitions */}
+            {/* Definitions Tab */}
             <TabsContent value="definitions" className="space-y-6">
               <DefinitionTraining language="fr" />
             </TabsContent>
 
-            {/* Générateur de Paradoxes Géopolitiques */}
+            {/* Paradoxes Tab */}
             <TabsContent value="paradoxes" className="space-y-6">
               <GeopoliticsParadoxGenerator />
             </TabsContent>
 
-            {/* Générateur de Plan Universel */}
+            {/* Plan Tab */}
             <TabsContent value="plan" className="space-y-6">
               <PlanGenerator />
             </TabsContent>
           </Tabs>
 
-          {/* Affichage du contenu généré */}
+          {/* Generated Content Display */}
           {generatedContent && (
-            <div className="space-y-6">
+            <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
               {selectedTool === 'case-study' ? (
                 <CaseStudyDisplay
                   caseStudy={generatedContent}
@@ -382,15 +408,17 @@ const GeopoliticsUnifiedGeneratorPage = () => {
                   language="fr"
                 />
               ) : (
-                <Card className="bg-white shadow-sm border border-gray-200">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-[#111111]">
-                      <FileText className="h-5 w-5 text-blue-600" />
+                <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-orange-100 shadow-2xl">
+                  <CardHeader className="bg-gradient-to-r from-orange-50/50 to-transparent">
+                    <CardTitle className="flex items-center gap-3 text-2xl text-gray-900">
+                      <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center">
+                        <FileText className="h-6 w-6 text-white" />
+                      </div>
                       Contenu Géopolitique Généré
                     </CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: generatedContent }} />
+                  <CardContent className="p-8">
+                    <div className="prose max-w-none prose-orange" dangerouslySetInnerHTML={{ __html: generatedContent }} />
                   </CardContent>
                 </Card>
               )}
@@ -398,8 +426,38 @@ const GeopoliticsUnifiedGeneratorPage = () => {
           )}
         </div>
       </div>
+
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) translateX(0px); }
+          50% { transform: translateY(-30px) translateX(20px); }
+        }
+        
+        @keyframes float-delayed {
+          0%, 100% { transform: translateY(0px) translateX(0px); }
+          50% { transform: translateY(-40px) translateX(-20px); }
+        }
+        
+        @keyframes gradient {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+
+        .animate-float {
+          animation: float 10s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+          animation: float-delayed 12s ease-in-out infinite;
+        }
+
+        .animate-gradient {
+          background-size: 200% auto;
+          animation: gradient 3s ease infinite;
+        }
+      `}</style>
     </div>
   );
 };
 
-export default GeopoliticsUnifiedGeneratorPage; 
+export default GeopoliticsUnifiedGeneratorPage;

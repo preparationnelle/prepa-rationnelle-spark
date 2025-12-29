@@ -32,288 +32,370 @@ const FormationsOverviewPage = () => {
       </nav>
 
       <div className="py-8 relative z-10">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-3xl md:text-4xl font-bold text-center mb-4">
-            Toutes nos <span className="text-blue-600">formations</span>
-          </h1>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto text-lg">
-            Formations conçues spécifiquement pour les étudiants en prépa ECG, avec méthodes éprouvées et accompagnement personnalisé.
-          </p>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {/* Formation Maths */}
-            <Link to="/formation/maths" className="group">
-              <Card className="h-full bg-white hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-orange-200 hover:bg-orange-50">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center group-hover:bg-blue-100 transition-colors duration-300">
-                      <Calculator className="h-6 w-6 text-blue-700" />
-                    </div>
-                    <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
-                      Maths ECG
-                    </CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    Maîtrisez tout le programme de maths ECG : logique, analyse, probabilités, algèbre, exercices corrigés et méthodes efficaces.
-                  </p>
-                  <div className="space-y-2 mb-4">
-                    <div className="text-sm text-blue-600">✓ 20 chapitres progressifs</div>
-                    <div className="text-sm text-blue-600">✓ Exercices type concours</div>
-                    <div className="text-sm text-blue-600">✓ Méthodes et astuces de prépa</div>
-                  </div>
-                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full">
-                    Découvrir la formation →
-                  </Button>
-                </CardContent>
-              </Card>
-            </Link>
-            {/* Formation Python */}
-            <Link to="/formation" className="group">
-              <Card className="h-full bg-white hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-orange-200 hover:bg-orange-50">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center group-hover:bg-blue-100 transition-colors duration-300">
-                      <Code className="h-6 w-6 text-blue-700" />
-                    </div>
-                    <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
-                      Python ECG
-                    </CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    Maîtrisez Python pour les concours : 4 modules progressifs avec exercices pratiques et coaching personnalisé.
-                  </p>
-                  <div className="space-y-2 mb-4">
-                    <div className="text-sm text-blue-600">✓ 54 commandes essentielles</div>
-                    <div className="text-sm text-blue-600">✓ Exercices type concours</div>
-                    <div className="text-sm text-blue-600">✓ +3 à 5 points garantis</div>
-                  </div>
-                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full">
-                    Commencer le module →
-                  </Button>
-                </CardContent>
-              </Card>
-            </Link>
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h1 className="text-3xl md:text-4xl font-bold text-center mb-4">
+              Nos 9 <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">formations</span>
+            </h1>
+            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto text-lg">
+              Formations conçues spécifiquement pour les étudiants en prépa ECG, avec méthodes éprouvées et accompagnement personnalisé.
+            </p>
 
-            {/* Formation Anglais */}
-            <Link to="/formation/anglais" className="group">
-              <Card className="h-full bg-white hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-orange-200 hover:bg-orange-50">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center group-hover:bg-blue-100 transition-colors duration-300">
-                      <Languages className="h-6 w-6 text-blue-700" />
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {/* Formation Maths */}
+              <Link to="/formation/maths" className="group">
+                <Card className="h-full bg-white hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border-2 border-gray-100 hover:border-orange-300 rounded-2xl overflow-hidden">
+                  <CardHeader className="pb-3">
+                    <div className="flex flex-col items-center text-center mb-2">
+                      <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-orange-100 transition-colors duration-300">
+                        <Calculator className="h-8 w-8 text-orange-600" />
+                      </div>
+                      <CardTitle className="text-xl font-bold text-gray-800">
+                        Maths ECG
+                      </CardTitle>
                     </div>
-                    <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
-                      Anglais ECG
-                    </CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    Perfectionnez votre anglais avec méthodes ciblées, grammaire avancée et préparation aux épreuves.
-                  </p>
-                  <div className="space-y-2 mb-4">
-                    <div className="text-sm text-blue-600">✓ Grammaire systématique</div>
-                    <div className="text-sm text-blue-600">✓ Thèmes et versions</div>
-                    <div className="text-sm text-blue-600">✓ Essais et synthèses</div>
-                  </div>
-                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full">
-                    Voir la formation →
-                  </Button>
-                </CardContent>
-              </Card>
-            </Link>
-
-            {/* Formation Espagnol */}
-            <Link to="/formation/espagnol" className="group">
-              <Card className="h-full bg-white hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-orange-200 hover:bg-orange-50">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center group-hover:bg-blue-100 transition-colors duration-300">
-                      <Languages className="h-6 w-6 text-blue-700" />
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <p className="text-gray-600 mb-4 text-sm leading-relaxed text-center">
+                      Maîtrisez tout le programme de maths ECG : logique, analyse, probabilités, algèbre, exercices corrigés et méthodes efficaces.
+                    </p>
+                    <div className="space-y-2 mb-6">
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>20 chapitres progressifs</span>
+                      </div>
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Exercices type concours</span>
+                      </div>
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Méthodes et astuces de prépa</span>
+                      </div>
                     </div>
-                    <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
-                      Espagnol ECG
-                    </CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    Perfectionnez votre espagnol avec méthodes ciblées, grammaire avancée et préparation intensive aux concours.
-                  </p>
-                  <div className="space-y-2 mb-4">
-                    <div className="text-sm text-blue-600">✓ Grammaire et conjugaison</div>
-                    <div className="text-sm text-blue-600">✓ Thèmes et versions</div>
-                    <div className="text-sm text-blue-600">✓ Expression écrite et orale</div>
-                  </div>
-                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full">
-                    Voir la formation →
-                  </Button>
-                </CardContent>
-              </Card>
-            </Link>
+                    <Button variant="ghost" className="text-orange-600 hover:bg-orange-50 w-full font-semibold">
+                      Découvrir la formation →
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Link>
 
-            {/* Formation Allemand */}
-            <Link to="/formation/allemand" className="group">
-              <Card className="h-full bg-white hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-orange-200 hover:bg-orange-50">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center group-hover:bg-blue-100 transition-colors duration-300">
-                      <Languages className="h-6 w-6 text-blue-700" />
+              {/* Formation Python */}
+              <Link to="/formation" className="group">
+                <Card className="h-full bg-white hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border-2 border-orange-300 hover:border-orange-400 rounded-2xl overflow-hidden bg-gradient-to-br from-white to-orange-50/30">
+                  <CardHeader className="pb-3">
+                    <div className="flex flex-col items-center text-center mb-2">
+                      <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-orange-100 transition-colors duration-300">
+                        <Code className="h-8 w-8 text-orange-600" />
+                      </div>
+                      <CardTitle className="text-xl font-bold text-gray-800">
+                        Python ECG
+                      </CardTitle>
                     </div>
-                    <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
-                      Allemand ECG
-                    </CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    Maîtrisez les déclinaisons, la grammaire complexe et les techniques d'expression écrite et orale.
-                  </p>
-                  <div className="space-y-2 mb-4">
-                    <div className="text-sm text-blue-600">✓ Déclinaisons et cas</div>
-                    <div className="text-sm text-blue-600">✓ Structures complexes</div>
-                    <div className="text-sm text-blue-600">✓ Essais méthodiques</div>
-                  </div>
-                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full">
-                    Voir la formation →
-                  </Button>
-                </CardContent>
-              </Card>
-            </Link>
-
-            {/* Formation Géopolitique */}
-            <Link to="/formation/geopolitique" className="group">
-              <Card className="h-full bg-white hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-orange-200 hover:bg-orange-50">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center group-hover:bg-blue-100 transition-colors duration-300">
-                      <Globe className="h-6 w-6 text-blue-700" />
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <p className="text-gray-600 mb-4 text-sm leading-relaxed text-center">
+                      Maîtrisez Python pour les concours : 4 modules progressifs avec exercices pratiques et coaching personnalisé.
+                    </p>
+                    <div className="space-y-2 mb-6">
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>54 commandes essentielles</span>
+                      </div>
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Exercices type concours</span>
+                      </div>
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>+3 à 5 points garantis</span>
+                      </div>
                     </div>
-                    <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
-                      Géopolitique
-                    </CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    Analysez les enjeux mondiaux contemporains avec méthodes et outils pour briller aux concours.
-                  </p>
-                  <div className="space-y-2 mb-4">
-                    <div className="text-sm text-blue-600">✓ Enjeux contemporains</div>
-                    <div className="text-sm text-blue-600">✓ Méthodes d'analyse</div>
-                    <div className="text-sm text-blue-600">✓ Actualité stratégique</div>
-                  </div>
-                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full">
-                    Voir la formation →
-                  </Button>
-                </CardContent>
-              </Card>
-            </Link>
+                    <Button variant="ghost" className="text-orange-600 hover:bg-orange-50 w-full font-semibold">
+                      Commencer le module →
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Link>
 
-            {/* Formation ESH */}
-            <Link to="/formation/esh" className="group">
-              <Card className="h-full bg-white hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-orange-200 hover:bg-orange-50">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center group-hover:bg-blue-100 transition-colors duration-300">
-                      <GraduationCap className="h-6 w-6 text-blue-700" />
+              {/* Formation Anglais */}
+              <Link to="/formation/anglais" className="group">
+                <Card className="h-full bg-white hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border-2 border-gray-100 hover:border-orange-300 rounded-2xl overflow-hidden">
+                  <CardHeader className="pb-3">
+                    <div className="flex flex-col items-center text-center mb-2">
+                      <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-orange-100 transition-colors duration-300">
+                        <Languages className="h-8 w-8 text-orange-600" />
+                      </div>
+                      <CardTitle className="text-xl font-bold text-gray-800">
+                        Anglais ECG
+                      </CardTitle>
                     </div>
-                    <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
-                      ESH ECG
-                    </CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    Maîtrisez l'économie et les sciences humaines avec méthodes ciblées et études de cas pratiques.
-                  </p>
-                  <div className="space-y-2 mb-4">
-                    <div className="text-sm text-blue-600">✓ Première et deuxième année</div>
-                    <div className="text-sm text-blue-600">✓ Méthodologie spécialisée</div>
-                    <div className="text-sm text-blue-600">✓ Thèmes centraux concrets</div>
-                  </div>
-                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full">
-                    Voir la formation →
-                  </Button>
-                </CardContent>
-              </Card>
-            </Link>
-
-            {/* Formation Culture Générale */}
-            <Link to="/formation/culture-generale" className="group">
-              <Card className="h-full bg-white hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-orange-200 hover:bg-orange-50">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center group-hover:bg-blue-100 transition-colors duration-300">
-                      <BookOpen className="h-6 w-6 text-blue-700" />
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <p className="text-gray-600 mb-4 text-sm leading-relaxed text-center">
+                      Perfectionnez votre anglais avec méthodes ciblées, grammaire avancée et préparation aux épreuves.
+                    </p>
+                    <div className="space-y-2 mb-6">
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Grammaire systématique</span>
+                      </div>
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Thèmes et versions</span>
+                      </div>
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Essais et synthèses</span>
+                      </div>
                     </div>
-                    <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
-                      Culture générale
-                    </CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    Méthodes et articles pour analyser finement les sujets, de la grammaire du libellé aux références clés.
-                  </p>
-                  <div className="space-y-2 mb-4">
-                    <div className="text-sm text-blue-600">✓ Types de sujets et pièges</div>
-                    <div className="text-sm text-blue-600">✓ Analyses conceptuelles</div>
-                    <div className="text-sm text-blue-600">✓ Exemples argumentés</div>
-                  </div>
-                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full">
-                    Voir la formation →
-                  </Button>
-                </CardContent>
-              </Card>
-            </Link>
+                    <Button variant="ghost" className="text-orange-600 hover:bg-orange-50 w-full font-semibold">
+                      Voir la formation →
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Link>
 
-            {/* Formation Synthèse de Texte */}
-            <Link to="/formation/synthese-texte" className="group">
-              <Card className="h-full bg-white hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-orange-200 hover:bg-orange-50">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center group-hover:bg-blue-100 transition-colors duration-300">
-                      <FileText className="h-6 w-6 text-blue-700" />
+              {/* Formation Culture Générale */}
+              <Link to="/formation/culture-generale" className="group">
+                <Card className="h-full bg-white hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border-2 border-gray-100 hover:border-orange-300 rounded-2xl overflow-hidden">
+                  <CardHeader className="pb-3">
+                    <div className="flex flex-col items-center text-center mb-2">
+                      <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-orange-100 transition-colors duration-300">
+                        <BookOpen className="h-8 w-8 text-orange-600" />
+                      </div>
+                      <CardTitle className="text-xl font-bold text-gray-800">
+                        Culture Générale
+                      </CardTitle>
                     </div>
-                    <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
-                      Synthèse de Texte ECG
-                    </CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    Maîtrisez l'épreuve de synthèse de texte avec méthodes éprouvées, analyse de sujets et organisation annuelle complète.
-                  </p>
-                  <div className="space-y-2 mb-4">
-                    <div className="text-sm text-blue-600">✓ Méthodologie détaillée 4h</div>
-                    <div className="text-sm text-blue-600">✓ Types de sujets économiques</div>
-                    <div className="text-sm text-blue-600">✓ Travail annuel structuré</div>
-                  </div>
-                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full">
-                    Voir la formation →
-                  </Button>
-                </CardContent>
-              </Card>
-            </Link>
-          </div>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <p className="text-gray-600 mb-4 text-sm leading-relaxed text-center">
+                      Développez votre culture générale avec méthodes et outils pour réussir les épreuves de synthèse et d'essai.
+                    </p>
+                    <div className="space-y-2 mb-6">
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Méthodes de synthèse</span>
+                      </div>
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Analyse de textes</span>
+                      </div>
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Épreuves d'essai</span>
+                      </div>
+                    </div>
+                    <Button variant="ghost" className="text-orange-600 hover:bg-orange-50 w-full font-semibold">
+                      Voir la formation →
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Link>
 
-          <div className="flex justify-center mt-12 pb-8">
-            <Link to="/contact">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium">
-                <BookOpen className="h-4 w-4 mr-2" />
-                Nous contacter pour plus d'informations
-              </Button>
-            </Link>
+              {/* Formation Géopolitique */}
+              <Link to="/formation/geopolitique" className="group">
+                <Card className="h-full bg-white hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border-2 border-gray-100 hover:border-orange-300 rounded-2xl overflow-hidden">
+                  <CardHeader className="pb-3">
+                    <div className="flex flex-col items-center text-center mb-2">
+                      <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-orange-100 transition-colors duration-300">
+                        <Globe className="h-8 w-8 text-orange-600" />
+                      </div>
+                      <CardTitle className="text-xl font-bold text-gray-800">
+                        Géopolitique
+                      </CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <p className="text-gray-600 mb-4 text-sm leading-relaxed text-center">
+                      Analysez les enjeux mondiaux contemporains avec méthodes et outils pour briller aux concours.
+                    </p>
+                    <div className="space-y-2 mb-6">
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Enjeux contemporains</span>
+                      </div>
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Méthodes d'analyse</span>
+                      </div>
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Actualité stratégique</span>
+                      </div>
+                    </div>
+                    <Button variant="ghost" className="text-orange-600 hover:bg-orange-50 w-full font-semibold">
+                      Voir la formation →
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              {/* Formation ESH */}
+              <Link to="/formation/esh" className="group">
+                <Card className="h-full bg-white hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border-2 border-gray-100 hover:border-orange-300 rounded-2xl overflow-hidden">
+                  <CardHeader className="pb-3">
+                    <div className="flex flex-col items-center text-center mb-2">
+                      <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-orange-100 transition-colors duration-300">
+                        <GraduationCap className="h-8 w-8 text-orange-600" />
+                      </div>
+                      <CardTitle className="text-xl font-bold text-gray-800">
+                        ESH ECG
+                      </CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <p className="text-gray-600 mb-4 text-sm leading-relaxed text-center">
+                      Maîtrisez l'économie et les sciences humaines avec méthodes ciblées et études de cas pratiques.
+                    </p>
+                    <div className="space-y-2 mb-6">
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Première et deuxième année</span>
+                      </div>
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Méthodologie spécialisée</span>
+                      </div>
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Études de cas concrètes</span>
+                      </div>
+                    </div>
+                    <Button variant="ghost" className="text-orange-600 hover:bg-orange-50 w-full font-semibold">
+                      Voir la formation →
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              {/* Formation Espagnol */}
+              <Link to="/formation/espagnol" className="group">
+                <Card className="h-full bg-white hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border-2 border-gray-100 hover:border-orange-300 rounded-2xl overflow-hidden">
+                  <CardHeader className="pb-3">
+                    <div className="flex flex-col items-center text-center mb-2">
+                      <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-orange-100 transition-colors duration-300">
+                        <Languages className="h-8 w-8 text-orange-600" />
+                      </div>
+                      <CardTitle className="text-xl font-bold text-gray-800">
+                        Espagnol ECG
+                      </CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <p className="text-gray-600 mb-4 text-sm leading-relaxed text-center">
+                      Perfectionnez votre espagnol avec méthodes ciblées, grammaire avancée et préparation intensive aux concours.
+                    </p>
+                    <div className="space-y-2 mb-6">
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Grammaire et conjugaison</span>
+                      </div>
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Thèmes et versions</span>
+                      </div>
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Expression écrite et orale</span>
+                      </div>
+                    </div>
+                    <Button variant="ghost" className="text-orange-600 hover:bg-orange-50 w-full font-semibold">
+                      Voir la formation →
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              {/* Formation Allemand */}
+              <Link to="/formation/allemand" className="group">
+                <Card className="h-full bg-white hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border-2 border-gray-100 hover:border-orange-300 rounded-2xl overflow-hidden">
+                  <CardHeader className="pb-3">
+                    <div className="flex flex-col items-center text-center mb-2">
+                      <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-orange-100 transition-colors duration-300">
+                        <Languages className="h-8 w-8 text-orange-600" />
+                      </div>
+                      <CardTitle className="text-xl font-bold text-gray-800">
+                        Allemand ECG
+                      </CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <p className="text-gray-600 mb-4 text-sm leading-relaxed text-center">
+                      Maîtrisez les déclinaisons, la grammaire complexe et les techniques d'expression écrite et orale.
+                    </p>
+                    <div className="space-y-2 mb-6">
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Déclinaisons et cas</span>
+                      </div>
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Structures complexes</span>
+                      </div>
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Essais méthodiques</span>
+                      </div>
+                    </div>
+                    <Button variant="ghost" className="text-orange-600 hover:bg-orange-50 w-full font-semibold">
+                      Voir la formation →
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              {/* Formation Synthèse de Texte */}
+              <Link to="/formation/synthese-texte" className="group">
+                <Card className="h-full bg-white hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border-2 border-gray-100 hover:border-orange-300 rounded-2xl overflow-hidden">
+                  <CardHeader className="pb-3">
+                    <div className="flex flex-col items-center text-center mb-2">
+                      <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-orange-100 transition-colors duration-300">
+                        <FileText className="h-8 w-8 text-orange-600" />
+                      </div>
+                      <CardTitle className="text-xl font-bold text-gray-800">
+                        Synthèse de Texte ECG
+                      </CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <p className="text-gray-600 mb-4 text-sm leading-relaxed text-center">
+                      Maîtrisez l'épreuve de synthèse de texte avec méthodes éprouvées, analyse de sujets et organisation annuelle complète.
+                    </p>
+                    <div className="space-y-2 mb-6">
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Méthodologie détaillée 4h</span>
+                      </div>
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Types de sujets économiques</span>
+                      </div>
+                      <div className="text-sm text-orange-600 font-medium flex items-start">
+                        <span className="mr-2">✓</span>
+                        <span>Travail annuel structuré</span>
+                      </div>
+                    </div>
+                    <Button variant="ghost" className="text-orange-600 hover:bg-orange-50 w-full font-semibold">
+                      Voir la formation →
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
+
+            <div className="flex justify-center mt-12 pb-8">
+              <Link to="/contact">
+                <Button className="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                  <BookOpen className="h-5 w-5 mr-2" />
+                  Nous contacter pour plus d'informations
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };

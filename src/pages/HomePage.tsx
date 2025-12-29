@@ -47,7 +47,7 @@ const HomePage: React.FC = () => {
       <section className="py-10 sm:py-14 md:py-16 lg:py-24 px-4 sm:px-6 relative overflow-hidden bg-white">
         <div className="absolute top-20 right-10 w-40 h-40 bg-orange-500 rounded-full opacity-5 blur-3xl animate-float"></div>
         <div className="absolute bottom-40 left-10 w-32 h-32 bg-orange-400 rounded-full opacity-5 blur-3xl animate-float-delayed"></div>
-        
+
         <div className="container mx-auto max-w-6xl">
           <h2 className="fade-in-up text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6">
             <span className="bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent font-bold">Nos formations spécialisées</span>
@@ -57,154 +57,154 @@ const HomePage: React.FC = () => {
           </p>
 
           <div className="w-full max-w-6xl mx-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {/* Maths ECG */}
-                <Link to="/formation/maths" className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group" style={{ animationDelay: '0.2s' }}>
-                  <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <Calculator className="h-8 w-8 text-orange-600 transition-colors duration-300" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Maths ECG */}
+              <Link to="/formation/maths" className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group" style={{ animationDelay: '0.2s' }}>
+                <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Calculator className="h-8 w-8 text-orange-600 transition-colors duration-300" />
+                </div>
+                <h3 className="font-semibold text-xl mb-2 text-gray-900 transition-colors duration-300">Maths ECG</h3>
+                <p className="text-sm text-gray-600 mb-3 transition-colors duration-300">Maîtrisez tout le programme de maths ECG : logique, analyse, probabilités, algèbre, exercices corrigés et méthodes efficaces.</p>
+                <div className="space-y-1 text-xs text-left w-full">
+                  <div className="flex items-center text-orange-600 transition-colors duration-300">
+                    <span className="mr-2">✓</span>
+                    <span>20 chapitres progressifs</span>
                   </div>
-                  <h3 className="font-semibold text-xl mb-2 text-gray-900 transition-colors duration-300">Maths ECG</h3>
-                  <p className="text-sm text-gray-600 mb-3 transition-colors duration-300">Maîtrisez tout le programme de maths ECG : logique, analyse, probabilités, algèbre, exercices corrigés et méthodes efficaces.</p>
-                  <div className="space-y-1 text-xs text-left w-full">
-                    <div className="flex items-center text-orange-600 transition-colors duration-300">
-                      <span className="mr-2">✓</span>
-                      <span>20 chapitres progressifs</span>
-                    </div>
-                    <div className="flex items-center text-orange-600 transition-colors duration-300">
-                      <span className="mr-2">✓</span>
-                      <span>Exercices type concours</span>
-                    </div>
-                    <div className="flex items-center text-orange-600 transition-colors duration-300">
-                      <span className="mr-2">✓</span>
-                      <span>Méthodes et astuces de prépa</span>
-                    </div>
+                  <div className="flex items-center text-orange-600 transition-colors duration-300">
+                    <span className="mr-2">✓</span>
+                    <span>Exercices type concours</span>
                   </div>
-                </Link>
+                  <div className="flex items-center text-orange-600 transition-colors duration-300">
+                    <span className="mr-2">✓</span>
+                    <span>Méthodes et astuces de prépa</span>
+                  </div>
+                </div>
+              </Link>
 
-                {/* Python ECG */}
-                <Link to="/pourquoi-python-prepa-ecg" className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group" style={{ animationDelay: '0.3s' }}>
-                  <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <Code className="h-8 w-8 text-orange-600 transition-colors duration-300" />
+              {/* Python ECG */}
+              <Link to="/pourquoi-python-prepa-ecg" className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group" style={{ animationDelay: '0.3s' }}>
+                <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Code className="h-8 w-8 text-orange-600 transition-colors duration-300" />
+                </div>
+                <h3 className="font-semibold text-xl mb-2 text-gray-900 transition-colors duration-300">Python ECG</h3>
+                <p className="text-sm text-gray-600 mb-3 transition-colors duration-300">Maîtrisez Python pour les concours : 4 modules progressifs avec exercices pratiques et coaching personnalisé.</p>
+                <div className="space-y-1 text-xs text-left w-full">
+                  <div className="flex items-center text-orange-600 transition-colors duration-300">
+                    <span className="mr-2">✓</span>
+                    <span>54 commandes essentielles</span>
                   </div>
-                  <h3 className="font-semibold text-xl mb-2 text-gray-900 transition-colors duration-300">Python ECG</h3>
-                  <p className="text-sm text-gray-600 mb-3 transition-colors duration-300">Maîtrisez Python pour les concours : 4 modules progressifs avec exercices pratiques et coaching personnalisé.</p>
-                  <div className="space-y-1 text-xs text-left w-full">
-                    <div className="flex items-center text-orange-600 transition-colors duration-300">
-                      <span className="mr-2">✓</span>
-                      <span>54 commandes essentielles</span>
-                    </div>
-                    <div className="flex items-center text-orange-600 transition-colors duration-300">
-                      <span className="mr-2">✓</span>
-                      <span>Exercices type concours</span>
-                    </div>
-                    <div className="flex items-center text-orange-600 transition-colors duration-300">
-                      <span className="mr-2">✓</span>
-                      <span>+3 à 5 points garantis</span>
-                    </div>
+                  <div className="flex items-center text-orange-600 transition-colors duration-300">
+                    <span className="mr-2">✓</span>
+                    <span>Exercices type concours</span>
                   </div>
-                </Link>
+                  <div className="flex items-center text-orange-600 transition-colors duration-300">
+                    <span className="mr-2">✓</span>
+                    <span>+3 à 5 points garantis</span>
+                  </div>
+                </div>
+              </Link>
 
-                {/* Anglais ECG */}
-                <Link to="/formation/anglais" className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group" style={{ animationDelay: '0.4s' }}>
-                  <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <Languages className="h-8 w-8 text-orange-600 transition-colors duration-300" />
+              {/* Anglais ECG */}
+              <Link to="/formation/anglais" className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group" style={{ animationDelay: '0.4s' }}>
+                <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Languages className="h-8 w-8 text-orange-600 transition-colors duration-300" />
+                </div>
+                <h3 className="font-semibold text-xl mb-2 text-gray-900 transition-colors duration-300">Anglais ECG</h3>
+                <p className="text-sm text-gray-600 mb-3 transition-colors duration-300">Perfectionnez votre anglais avec méthodes ciblées, grammaire avancée et préparation aux épreuves.</p>
+                <div className="space-y-1 text-xs text-left w-full">
+                  <div className="flex items-center text-orange-600 transition-colors duration-300">
+                    <span className="mr-2">✓</span>
+                    <span>Grammaire systématique</span>
                   </div>
-                  <h3 className="font-semibold text-xl mb-2 text-gray-900 transition-colors duration-300">Anglais ECG</h3>
-                  <p className="text-sm text-gray-600 mb-3 transition-colors duration-300">Perfectionnez votre anglais avec méthodes ciblées, grammaire avancée et préparation aux épreuves.</p>
-                  <div className="space-y-1 text-xs text-left w-full">
-                    <div className="flex items-center text-orange-600 transition-colors duration-300">
-                      <span className="mr-2">✓</span>
-                      <span>Grammaire systématique</span>
-                    </div>
-                    <div className="flex items-center text-orange-600 transition-colors duration-300">
-                      <span className="mr-2">✓</span>
-                      <span>Thèmes et versions</span>
-                    </div>
-                    <div className="flex items-center text-orange-600 transition-colors duration-300">
-                      <span className="mr-2">✓</span>
-                      <span>Essais et synthèses</span>
-                    </div>
+                  <div className="flex items-center text-orange-600 transition-colors duration-300">
+                    <span className="mr-2">✓</span>
+                    <span>Thèmes et versions</span>
                   </div>
-                </Link>
+                  <div className="flex items-center text-orange-600 transition-colors duration-300">
+                    <span className="mr-2">✓</span>
+                    <span>Essais et synthèses</span>
+                  </div>
+                </div>
+              </Link>
 
-                {/* Culture Générale (remplace l'Espagnol) */}
-                <Link to="/formation/culture-generale" className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group" style={{ animationDelay: '0.5s' }}>
-                  <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <BookOpen className="h-8 w-8 text-orange-600 transition-colors duration-300" />
+              {/* Culture Générale (remplace l'Espagnol) */}
+              <Link to="/formation/culture-generale" className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group" style={{ animationDelay: '0.5s' }}>
+                <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <BookOpen className="h-8 w-8 text-orange-600 transition-colors duration-300" />
+                </div>
+                <h3 className="font-semibold text-xl mb-2 text-gray-900 transition-colors duration-300">Culture Générale</h3>
+                <p className="text-sm text-gray-600 mb-3 transition-colors duration-300">Développez votre culture générale avec méthodes et outils pour réussir les épreuves de synthèse et d'essai.</p>
+                <div className="space-y-1 text-xs text-left w-full">
+                  <div className="flex items-center text-orange-600 transition-colors duration-300">
+                    <span className="mr-2">✓</span>
+                    <span>Méthodes de synthèse</span>
                   </div>
-                  <h3 className="font-semibold text-xl mb-2 text-gray-900 transition-colors duration-300">Culture Générale</h3>
-                  <p className="text-sm text-gray-600 mb-3 transition-colors duration-300">Développez votre culture générale avec méthodes et outils pour réussir les épreuves de synthèse et d'essai.</p>
-                  <div className="space-y-1 text-xs text-left w-full">
-                    <div className="flex items-center text-orange-600 transition-colors duration-300">
-                      <span className="mr-2">✓</span>
-                      <span>Méthodes de synthèse</span>
-                    </div>
-                    <div className="flex items-center text-orange-600 transition-colors duration-300">
-                      <span className="mr-2">✓</span>
-                      <span>Analyse de textes</span>
-                    </div>
-                    <div className="flex items-center text-orange-600 transition-colors duration-300">
-                      <span className="mr-2">✓</span>
-                      <span>Épreuves d'essai</span>
-                    </div>
+                  <div className="flex items-center text-orange-600 transition-colors duration-300">
+                    <span className="mr-2">✓</span>
+                    <span>Analyse de textes</span>
                   </div>
-                </Link>
+                  <div className="flex items-center text-orange-600 transition-colors duration-300">
+                    <span className="mr-2">✓</span>
+                    <span>Épreuves d'essai</span>
+                  </div>
+                </div>
+              </Link>
 
-                {/* Géopolitique */}
-                <Link to="/formation/geopolitique" className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group" style={{ animationDelay: '0.6s' }}>
-                  <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <Globe className="h-8 w-8 text-orange-600 transition-colors duration-300" />
+              {/* Géopolitique */}
+              <Link to="/formation/geopolitique" className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group" style={{ animationDelay: '0.6s' }}>
+                <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Globe className="h-8 w-8 text-orange-600 transition-colors duration-300" />
+                </div>
+                <h3 className="font-semibold text-xl mb-2 text-gray-900 transition-colors duration-300">Géopolitique</h3>
+                <p className="text-sm text-gray-600 mb-3 transition-colors duration-300">Analysez les enjeux mondiaux contemporains avec méthodes et outils pour briller aux concours.</p>
+                <div className="space-y-1 text-xs text-left w-full">
+                  <div className="flex items-center text-orange-600 transition-colors duration-300">
+                    <span className="mr-2">✓</span>
+                    <span>Enjeux contemporains</span>
                   </div>
-                  <h3 className="font-semibold text-xl mb-2 text-gray-900 transition-colors duration-300">Géopolitique</h3>
-                  <p className="text-sm text-gray-600 mb-3 transition-colors duration-300">Analysez les enjeux mondiaux contemporains avec méthodes et outils pour briller aux concours.</p>
-                  <div className="space-y-1 text-xs text-left w-full">
-                    <div className="flex items-center text-orange-600 transition-colors duration-300">
-                      <span className="mr-2">✓</span>
-                      <span>Enjeux contemporains</span>
-                    </div>
-                    <div className="flex items-center text-orange-600 transition-colors duration-300">
-                      <span className="mr-2">✓</span>
-                      <span>Méthodes d'analyse</span>
-                    </div>
-                    <div className="flex items-center text-orange-600 transition-colors duration-300">
-                      <span className="mr-2">✓</span>
-                      <span>Actualité stratégique</span>
-                    </div>
+                  <div className="flex items-center text-orange-600 transition-colors duration-300">
+                    <span className="mr-2">✓</span>
+                    <span>Méthodes d'analyse</span>
                   </div>
-                </Link>
+                  <div className="flex items-center text-orange-600 transition-colors duration-300">
+                    <span className="mr-2">✓</span>
+                    <span>Actualité stratégique</span>
+                  </div>
+                </div>
+              </Link>
 
-                {/* ESH ECG */}
-                <Link to="/formation/esh" className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group" style={{ animationDelay: '0.7s' }}>
-                  <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <GraduationCap className="h-8 w-8 text-orange-600 transition-colors duration-300" />
+              {/* ESH ECG */}
+              <Link to="/formation/esh" className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group" style={{ animationDelay: '0.7s' }}>
+                <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <GraduationCap className="h-8 w-8 text-orange-600 transition-colors duration-300" />
+                </div>
+                <h3 className="font-semibold text-xl mb-2 text-gray-900 transition-colors duration-300">ESH ECG</h3>
+                <p className="text-sm text-gray-600 mb-3 transition-colors duration-300">Maîtrisez l'économie et les sciences humaines avec méthodes ciblées et études de cas pratiques.</p>
+                <div className="space-y-1 text-xs text-left w-full">
+                  <div className="flex items-center text-orange-600 transition-colors duration-300">
+                    <span className="mr-2">✓</span>
+                    <span>Première et deuxième année</span>
                   </div>
-                  <h3 className="font-semibold text-xl mb-2 text-gray-900 transition-colors duration-300">ESH ECG</h3>
-                  <p className="text-sm text-gray-600 mb-3 transition-colors duration-300">Maîtrisez l'économie et les sciences humaines avec méthodes ciblées et études de cas pratiques.</p>
-                  <div className="space-y-1 text-xs text-left w-full">
-                    <div className="flex items-center text-orange-600 transition-colors duration-300">
-                      <span className="mr-2">✓</span>
-                      <span>Première et deuxième année</span>
-                    </div>
-                    <div className="flex items-center text-orange-600 transition-colors duration-300">
-                      <span className="mr-2">✓</span>
-                      <span>Méthodologie spécialisée</span>
-                    </div>
-                    <div className="flex items-center text-orange-600 transition-colors duration-300">
-                      <span className="mr-2">✓</span>
-                      <span>Études de cas concrètes</span>
-                    </div>
+                  <div className="flex items-center text-orange-600 transition-colors duration-300">
+                    <span className="mr-2">✓</span>
+                    <span>Méthodologie spécialisée</span>
                   </div>
-                </Link>
+                  <div className="flex items-center text-orange-600 transition-colors duration-300">
+                    <span className="mr-2">✓</span>
+                    <span>Études de cas concrètes</span>
+                  </div>
+                </div>
+              </Link>
 
-                
-              </div>
+
             </div>
+          </div>
 
           {/* Bouton Toutes nos formations - Inclus dans la même section */}
           <div className="fade-in-up flex justify-center mt-12" style={{ animationDelay: '0.8s' }}>
             <Link to="/formations">
               <Button className="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1">
-                Toutes nos formations
+                Découvre nos 9 formations
               </Button>
             </Link>
           </div>
@@ -431,22 +431,22 @@ const HomePage: React.FC = () => {
 
       {/* Séparateur blanc */}
       <div className="h-2 sm:h-3 md:h-4" style={{ backgroundColor: 'var(--page-bg)' }}></div>
-      
+
       {/* Section 4: Avis d'élèves */}
       <SuperprofReviewsSection />
 
       {/* Séparateur blanc */}
       <div className="h-2 sm:h-3 md:h-4" style={{ backgroundColor: 'var(--page-bg)' }}></div>
-      
+
       {/* Section 5: Interview Europe 1 */}
       <PodcastSection />
 
       {/* Séparateur blanc */}
       <div className="h-2 sm:h-3 md:h-4" style={{ backgroundColor: 'var(--page-bg)' }}></div>
-      
+
       {/* Section 6: Partenaires */}
       <PartnersSection />
-      
+
       {/* Section Appel à l'action - Supprimée */}
       {/* <CallToActionSection /> */}
 

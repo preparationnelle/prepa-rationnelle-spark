@@ -42,16 +42,16 @@ const ChapterCard: React.FC<ChapterCardProps> = ({
   const resolvedCourseHref = hasCourse ? coursePath : (hasExercises ? exercisesPath : undefined);
 
   return (
-    <Card className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-2 border-gray-100 hover:border-blue-200 h-full flex flex-col">
+    <Card className="bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 border-2 border-orange-200 hover:border-orange-300 h-full flex flex-col">
       <CardHeader className="text-center pb-4">
-        <div className={`w-16 h-16 ${color} rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg relative`}>
-          <span className="text-2xl font-bold text-white">{symbol}</span>
-          <div className="absolute -top-1 -right-1 bg-white text-blue-600 rounded-full w-8 h-8 flex items-center justify-center text-xs font-bold border-2 border-blue-600 shadow-sm">
-            <Brain className="h-3 w-3 mr-0.5" />
+        <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-xl relative">
+          <span className="text-3xl font-bold text-white">{symbol}</span>
+          <div className="absolute -top-1 -right-1 bg-white text-orange-600 rounded-full w-9 h-9 flex items-center justify-center text-xs font-bold border-2 border-orange-500 shadow-md">
+            <Brain className="h-3.5 w-3.5 mr-0.5" />
             {id}
           </div>
         </div>
-        <Badge variant="outline" className="text-blue-600 border-blue-200 bg-blue-50/50 text-center px-3 py-2 text-sm font-medium w-full flex items-center justify-center">
+        <Badge variant="outline" className="text-orange-600 border-orange-300 bg-orange-50 text-center px-4 py-2.5 text-sm font-semibold w-full flex items-center justify-center rounded-xl">
           Chapitre {id} : {title}
         </Badge>
       </CardHeader>
@@ -62,7 +62,7 @@ const ChapterCard: React.FC<ChapterCardProps> = ({
         <div className="space-y-3 mt-auto">
           {resolvedCourseHref && (
             <Link to={resolvedCourseHref} className="w-full">
-              <Button variant="default" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
+              <Button variant="default" className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-semibold transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg rounded-xl">
                 <BookOpen className="mr-2 h-4 w-4" />
                 Cours
               </Button>
@@ -71,7 +71,7 @@ const ChapterCard: React.FC<ChapterCardProps> = ({
 
           {hasExercises && (
             <Link to={exercisesPath} className="w-full">
-              <Button variant="outline" className="w-full border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300 hover:scale-105">
+              <Button variant="outline" className="w-full border-2 border-orange-600 text-orange-600 hover:bg-orange-50 font-semibold transition-all duration-300 hover:scale-105 rounded-xl">
                 <Play className="mr-2 h-4 w-4" />
                 Exercices
               </Button>
@@ -80,7 +80,7 @@ const ChapterCard: React.FC<ChapterCardProps> = ({
 
           {hasFlashcards && (
             <Link to={flashcardsPath} className="w-full">
-              <Button variant="outline" className="w-full border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300 hover:scale-105">
+              <Button variant="outline" className="w-full border-2 border-orange-600 text-orange-600 hover:bg-orange-50 font-semibold transition-all duration-300 hover:scale-105 rounded-xl">
                 <Brain className="mr-2 h-4 w-4" />
                 Flashcards
               </Button>
@@ -89,7 +89,7 @@ const ChapterCard: React.FC<ChapterCardProps> = ({
 
           {hasQuiz && (
             <Link to={quizPath} className="w-full">
-              <Button variant="outline" className="w-full border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300 hover:scale-105">
+              <Button variant="outline" className="w-full border-2 border-orange-600 text-orange-600 hover:bg-orange-50 font-semibold transition-all duration-300 hover:scale-105 rounded-xl">
                 <Target className="mr-2 h-4 w-4" />
                 Quiz
               </Button>

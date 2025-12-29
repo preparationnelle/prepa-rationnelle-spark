@@ -233,6 +233,7 @@ const TempsComposesExercicesPage = lazy(() => import('../pages/formation/alleman
 const VerbesModauxComplexesExercicesPage = lazy(() => import('../pages/formation/allemand/VerbesModauxComplexesExercicesPage'));
 const PositionV2ExercicesPage = lazy(() => import('../pages/formation/allemand/PositionV2ExercicesPage'));
 const AuxiliaireParfaitExercicesPage = lazy(() => import('../pages/formation/allemand/AuxiliaireParfaitExercicesPage'));
+const SESAMEAllemandPage = lazy(() => import('../pages/formation/allemand/SESAMEAllemandPage'));
 const FormationGeopolitiquePage = lazy(() => import('../pages/FormationGeopolitiquePage'));
 const GeopolitiquePremiereAnneePage = lazy(() => import('../pages/formation/geopolitique/GeopolitiquePremiereAnneePage'));
 const GeopolitiqueDeuxiemeAnneePage = lazy(() => import('../pages/formation/geopolitique/GeopolitiqueDeuxiemeAnneePage'));
@@ -1113,6 +1114,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/allemand-negation', component: NegationPage, title: 'La Négation et les Particules de Négation' },
   { path: '/formation/allemand-phrases-interrogatives', component: PhrasesInterrogativesPage, title: 'Les Phrases Interrogatives' },
   { path: '/formation/allemand-comparatif-superlatif', component: ComparatifSuperlatifPage, title: 'Comparatif et Superlatif' },
+  { path: '/formation/allemand/sesame', component: SESAMEAllemandPage, title: 'SESAME Allemand - Exercices' },
 
   // Formation Synthèse de Texte
   { path: '/formation/synthese-texte', component: FormationSyntheseTextePage, title: 'Formation Synthèse de Texte ECG' },
