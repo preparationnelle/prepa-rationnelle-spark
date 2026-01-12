@@ -69,7 +69,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
   const toggleMenu = () => {
     console.log('Toggle menu clicked, current state:', isMenuOpen);
     setIsMenuOpen(!isMenuOpen);
-    
+
     if (!isMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -77,7 +77,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
     }
   };
 
-  const closeMenu = () => { 
+  const closeMenu = () => {
     if (isMenuOpen) {
       setIsMenuOpen(false);
       document.body.style.overflow = 'unset';
@@ -106,7 +106,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
     if (formationsTimeoutRef.current) {
       clearTimeout(formationsTimeoutRef.current);
     }
-    
+
     formationsTimeoutRef.current = setTimeout(() => {
       setIsFormationsOpen(true);
     }, 300); // Délai de 300ms avant d'ouvrir
@@ -116,7 +116,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
     if (formationsTimeoutRef.current) {
       clearTimeout(formationsTimeoutRef.current);
     }
-    
+
     // Délai avant de fermer pour permettre de naviguer vers le menu
     formationsTimeoutRef.current = setTimeout(() => {
       setIsFormationsOpen(false);
@@ -178,7 +178,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
     if (contactTimeoutRef.current) {
       clearTimeout(contactTimeoutRef.current);
     }
-    
+
     contactTimeoutRef.current = setTimeout(() => {
       setIsContactOpen(true);
     }, 300); // Délai de 300ms avant d'ouvrir
@@ -188,7 +188,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
     if (contactTimeoutRef.current) {
       clearTimeout(contactTimeoutRef.current);
     }
-    
+
     // Délai avant de fermer pour permettre de naviguer vers le menu
     contactTimeoutRef.current = setTimeout(() => {
       setIsContactOpen(false);
@@ -253,21 +253,21 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
     <>
       <header className={cn(
         "fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 bg-white border-b border-gray-200",
-        isScrolled 
-          ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200" 
+        isScrolled
+          ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200"
           : "bg-white/90 backdrop-blur-sm shadow-sm border-b border-blue-100/30"
       )}>
         <nav className="container mx-auto px-4 sm:px-6 py-2 flex items-center justify-between min-h-[48px] bg-white">
           <Link to="/" className="flex items-center" onClick={closeMenu}>
             <Logo size="sm" />
           </Link>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             <Link to="/" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Accueil</Link>
-            
+
             {/* Menu déroulant "Formations" avec hover */}
-            <div 
+            <div
               className="relative"
               ref={formationsRef}
               onMouseEnter={handleFormationsHover}
@@ -277,13 +277,13 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                 Formations
                 <ChevronDown className={cn("h-3 w-3 transition-transform duration-200", isFormationsOpen && "rotate-180")} />
               </button>
-              
+
               {/* Menu déroulant */}
-              <div 
+              <div
                 className={cn(
                   "absolute top-full left-1/2 transform -translate-x-1/2 w-64 bg-white rounded-lg shadow-lg border p-2 transition-all duration-200 z-50",
-                  isFormationsOpen 
-                    ? "opacity-100 translate-y-0 pointer-events-auto" 
+                  isFormationsOpen
+                    ? "opacity-100 translate-y-0 pointer-events-auto"
                     : "opacity-0 -translate-y-2 pointer-events-none"
                 )}
                 onMouseEnter={handleMenuHover}
@@ -294,13 +294,13 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                   <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Calculator className="h-4 w-4 text-orange-600" /></span>
                   <span>Maths</span>
                 </Link>
-                
+
                 {/* Python - visible, redirigé si non whitelist */}
                 <Link to={pythonHref} onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
                   <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Code className="h-4 w-4 text-orange-600" /></span>
                   <span>Python</span>
                 </Link>
-                
+
                 {/* Formations publiques - toujours visibles */}
                 <Link to="/formation/anglais" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
                   <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Languages className="h-4 w-4 text-orange-600" /></span>
@@ -326,7 +326,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                   <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Users className="h-4 w-4 text-orange-600" /></span>
                   <span>Entretiens de Personnalité</span>
                 </Link>
-                
+
                 <div className="border-t border-gray-200 my-2"></div>
                 <Link to="/formations" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
                   <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><BookOpen className="h-4 w-4 text-orange-600" /></span>
@@ -338,8 +338,9 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                 </Link>
               </div>
             </div>
-            
+
             <Link to="/generator" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Générateur</Link>
+            <Link to="/design-system" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Design System</Link>
             <Link to="/nos-profs" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Nos Professeurs</Link>
 
             {/* Menu déroulant "Niveau d'étude" avec hover */}
@@ -411,9 +412,9 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
             </div>
 
             <Link to="/avis" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Avis</Link>
-            
+
             {/* Menu déroulant "Contact" avec hover */}
-            <div 
+            <div
               className="relative"
               ref={contactRef}
               onMouseEnter={handleContactHover}
@@ -423,13 +424,13 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                 Contact
                 <ChevronDown className={cn("h-3 w-3 transition-transform duration-200", isContactOpen && "rotate-180")} />
               </button>
-              
+
               {/* Menu déroulant */}
-              <div 
+              <div
                 className={cn(
                   "absolute top-full left-1/2 transform -translate-x-1/2 w-64 bg-white rounded-lg shadow-lg border p-2 transition-all duration-200 z-50",
-                  isContactOpen 
-                    ? "opacity-100 translate-y-0 pointer-events-auto" 
+                  isContactOpen
+                    ? "opacity-100 translate-y-0 pointer-events-auto"
                     : "opacity-0 -translate-y-2 pointer-events-none"
                 )}
                 onMouseEnter={handleContactMenuHover}
@@ -439,34 +440,34 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                   <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Users className="h-4 w-4 text-orange-600" /></span>
                   <span>Parent</span>
                 </Link>
-                
+
                 <Link to="/professeur" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
                   <span className="w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center"><GraduationCap className="h-4 w-4 text-blue-600" /></span>
                   <span>Devenir Professeur</span>
                 </Link>
-                
+
                 <Link to="/professeur-dashboard" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-green-50 rounded-md px-3 py-2 transition-colors">
                   <span className="w-8 h-8 bg-green-50 rounded-full flex items-center justify-center"><Settings className="h-4 w-4 text-green-600" /></span>
                   <span>Espace Professeur</span>
                 </Link>
-                
+
                 <div className="border-t border-gray-100 my-1"></div>
-                
+
                 <Link to="/contact" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-gray-50 rounded-md px-3 py-2 transition-colors">
                   <span className="w-8 h-8 bg-gray-50 rounded-full flex items-center justify-center"><Mail className="h-4 w-4 text-gray-600" /></span>
                   <span>Nous contacter</span>
                 </Link>
               </div>
             </div>
-            
+
             <Link to="/stage-accompagnement" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Offres</Link>
             <SearchTrigger />
-            
+
             {/* Liens réseaux sociaux */}
             <div className="flex items-center space-x-3 ml-4">
-              <a 
-                href="https://www.instagram.com/prepa_rationnelle" 
-                target="_blank" 
+              <a
+                href="https://www.instagram.com/prepa_rationnelle"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 text-foreground hover:text-pink-500 transition-colors"
                 aria-label="Instagram"
@@ -481,7 +482,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                 aria-label="TikTok"
               >
                 <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
                 </svg>
               </a>
               <a
@@ -494,7 +495,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                 <Youtube className="h-4 w-4" />
               </a>
             </div>
-            
+
             <ThemeToggle variant="icon" />
             {currentUser ? (
               <div className="flex items-center space-x-4 ml-4">
@@ -512,15 +513,15 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               </>
             )}
           </div>
-          
+
           {/* Mobile Navigation Toggle */}
           <div className="md:hidden flex items-center gap-2">
             <MobileSearch />
             <ThemeToggle variant="icon" />
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              onClick={toggleMenu} 
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleMenu}
               aria-label="Toggle Menu"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -530,7 +531,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
         {/* Barre de progression animée alignée bas navbar, sans recouvrir le bouton S'inscrire */}
         <div className="relative w-full">
           <div className="absolute -z-10 bottom-0 left-0 w-full pr-32 h-1 bg-gray-100 z-30 pointer-events-none">
-            <div 
+            <div
               className="h-full bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 transition-all duration-300 ease-out relative overflow-hidden"
               style={{ width: `${scrollProgress}%` }}
             >
@@ -540,55 +541,56 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
           </div>
         </div>
       </header>
-      
+
       {/* Menu mobile simplifié avec style inline pour éviter les erreurs */}
       <div style={mobileMenuStyle}>
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-xl font-bold">Menu</h2>
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={closeMenu} 
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={closeMenu}
             aria-label="Fermer le menu"
           >
             <X className="h-6 w-6" />
           </Button>
         </div>
-        
+
         {/* Menu principal en deux colonnes */}
         <div className="grid grid-cols-2 gap-4 mb-6">
           <Link to="/" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Accueil</Link>
           <Link to="/avis" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Avis</Link>
           <Link to="/generator" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Générateur</Link>
+          <Link to="/design-system" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Design System</Link>
           <Link to="/nos-profs" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Nos Professeurs</Link>
           <Link to="/articles/primaire" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Primaire</Link>
-      <Link to="/articles/college" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Collège</Link>
-      <Link to="/articles/lycee" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Lycée</Link>
-      <Link to="/articles/prepa-ecg" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Prépa ECG</Link>
-      <Link to="/articles/concours-acces-sesame" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Concours ACCES/SESAME</Link>
-      <Link to="/articles/oteria-cyber-school" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>OTERIA Cyber School</Link>
-      
-      {/* Menu Contact mobile */}
-      <div className="border-b border-gray-200">
-        <div className="text-base py-3 px-4 bg-gray-50 font-medium text-gray-700">Contact</div>
-        <Link to="/parent" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-orange-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
-          <Users className="h-5 w-5 text-orange-600" />
-          Parent
-        </Link>
-        <Link to="/professeur" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-blue-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
-          <GraduationCap className="h-5 w-5 text-blue-600" />
-          Devenir Professeur
-        </Link>
-        <Link to="/professeur-dashboard" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-green-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
-          <Settings className="h-5 w-5 text-green-600" />
-          Espace Professeur
-        </Link>
-        <Link to="/contact" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
-          <Mail className="h-5 w-5 text-gray-600" />
-          Nous contacter
-        </Link>
-      </div>
-      
+          <Link to="/articles/college" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Collège</Link>
+          <Link to="/articles/lycee" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Lycée</Link>
+          <Link to="/articles/prepa-ecg" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Prépa ECG</Link>
+          <Link to="/articles/concours-acces-sesame" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Concours ACCES/SESAME</Link>
+          <Link to="/articles/oteria-cyber-school" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>OTERIA Cyber School</Link>
+
+          {/* Menu Contact mobile */}
+          <div className="border-b border-gray-200">
+            <div className="text-base py-3 px-4 bg-gray-50 font-medium text-gray-700">Contact</div>
+            <Link to="/parent" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-orange-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
+              <Users className="h-5 w-5 text-orange-600" />
+              Parent
+            </Link>
+            <Link to="/professeur" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-blue-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
+              <GraduationCap className="h-5 w-5 text-blue-600" />
+              Devenir Professeur
+            </Link>
+            <Link to="/professeur-dashboard" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-green-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
+              <Settings className="h-5 w-5 text-green-600" />
+              Espace Professeur
+            </Link>
+            <Link to="/contact" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
+              <Mail className="h-5 w-5 text-gray-600" />
+              Nous contacter
+            </Link>
+          </div>
+
           <Link to="/stage-accompagnement" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Offres</Link>
         </div>
 
@@ -611,7 +613,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
             aria-label="TikTok"
           >
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
             </svg>
           </a>
           <a
@@ -627,7 +629,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
 
         {/* Titre formations */}
         <h3 className="text-lg font-medium text-primary px-3 mb-3">Formations</h3>
-        
+
         {/* Formations en deux colonnes */}
         <div className="grid grid-cols-2 gap-3 mb-6">
           <Link to={mathsHref} onClick={closeMenu} className="flex flex-col items-center gap-2 bg-white p-2 rounded-md shadow-sm">
@@ -691,7 +693,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
             <span className="text-sm text-center">CV Projectif</span>
           </Link>
         </div>
-        
+
         <div className="mt-4">
           {currentUser ? (
             <div className="grid grid-cols-2 gap-4">

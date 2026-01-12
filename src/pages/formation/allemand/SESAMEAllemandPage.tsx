@@ -129,7 +129,7 @@ const SESAMEAllemandPage = () => {
                             Allemand ECG
                         </Link>
                         <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-                        <span className="text-foreground font-medium">SESAME Allemand</span>
+                        <span className="text-foreground font-medium">Exercices Allemand</span>
                     </div>
                 </div>
             </nav>
@@ -141,12 +141,11 @@ const SESAMEAllemandPage = () => {
                         <Award className="h-10 w-10 text-blue-600" />
                     </div>
                     <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-                        <span className="text-black">Concours </span>
-                        <span className="text-blue-600">SESAME</span>
+                        <span className="text-blue-600">EXERCICES</span>
                         <span className="text-black"> - Allemand</span>
                     </h1>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                        Entraînez-vous avec des exercices types du concours SESAME : Traduction, Ordre des mots, Modaux et Déclinaisons
+                        Entraînez-vous avec des exercices types du concours : Traduction, Ordre des mots, Modaux et Déclinaisons
                     </p>
                 </div>
 

@@ -191,7 +191,7 @@ const FormationAllemandPage = () => {
               <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
                 <Award className="h-10 w-10 text-blue-600" />
               </div>
-              <h3 className="font-bold text-2xl mb-4 text-center text-blue-600 group-hover:text-orange-800 transition-colors">SESAME</h3>
+              <h3 className="font-bold text-2xl mb-4 text-center text-blue-600 group-hover:text-orange-800 transition-colors">EXERCICES</h3>
               <p className="text-sm text-black mb-8 text-center leading-relaxed font-semibold">Exercices types<br />du concours</p>
               <div className="space-y-2 text-sm mb-8 w-full">
                 <div className="flex items-center text-gray-600 bg-gray-50 rounded-lg py-2 px-3">
@@ -210,7 +210,7 @@ const FormationAllemandPage = () => {
             </div>
             <Button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium transition-all duration-300 group-hover:scale-105 shadow-lg rounded-lg">
               <Award className="mr-2 h-4 w-4" />
-              S'entraîner au SESAME
+              S'entraîner aux EXERCICES
             </Button>
           </Link>
         </div>

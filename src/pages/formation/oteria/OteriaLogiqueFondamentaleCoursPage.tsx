@@ -55,7 +55,7 @@ const OteriaLogiqueFondamentaleCoursPage = () => {
                 <div className="flex flex-col items-center">
                   <span className="text-sm text-blue-600 font-medium mb-1">Niveau</span>
                   <span className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-                    🟢 Débutant
+                    Débutant
                   </span>
                 </div>
               </div>
@@ -111,7 +111,7 @@ const OteriaLogiqueFondamentaleCoursPage = () => {
             {/* Énoncé du paradoxe du barbier */}
             <div className="mb-8">
               <h3 className="text-xl font-semibold mb-4 text-blue-900">Le paradoxe du barbier</h3>
-              
+
               <div className="bg-blue-50 p-6 rounded-lg mb-6 border border-blue-200">
                 <div className="space-y-4">
                   <p className="text-blue-800 leading-relaxed">
@@ -129,9 +129,7 @@ const OteriaLogiqueFondamentaleCoursPage = () => {
                     On peut alors se poser une question toute simple :
                   </p>
                   <div className="text-center py-4">
-                    <p className="text-xl font-bold text-blue-700">
-                      👉 Que fait-il avec lui-même ?
-                    </p>
+                    Que fait-il avec lui-même ?
                   </div>
                 </div>
               </div>
@@ -152,7 +150,7 @@ const OteriaLogiqueFondamentaleCoursPage = () => {
               </div>
 
               <div className="bg-blue-100 p-4 rounded-lg border border-blue-400 text-center mb-6">
-                <h5 className="font-bold text-blue-900 mb-2">⚠️ Résultat : contradiction.</h5>
+                <h5 className="font-bold text-blue-900 mb-2">Résultat : contradiction.</h5>
                 <p className="text-blue-800 font-medium">
                   Il est impossible qu'un tel barbier existe.
                 </p>
@@ -162,7 +160,7 @@ const OteriaLogiqueFondamentaleCoursPage = () => {
             {/* Pourquoi commencer par cette histoire */}
             <div className="mb-8">
               <h3 className="text-xl font-semibold mb-4 text-blue-900">Pourquoi commencer par cette histoire ?</h3>
-              
+
               <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
                 <div className="space-y-4">
                   <p className="text-blue-800 leading-relaxed">
@@ -183,7 +181,7 @@ const OteriaLogiqueFondamentaleCoursPage = () => {
             {/* Conclusion de l'introduction */}
             <div className="mb-6">
               <h3 className="text-xl font-semibold mb-4 text-blue-900">Conclusion de l'introduction</h3>
-              
+
               <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
                 <div className="space-y-4">
                   <p className="text-blue-800 leading-relaxed">
@@ -269,15 +267,15 @@ const OteriaLogiqueFondamentaleCoursPage = () => {
               {/* 1. La lecture « si… alors… » */}
               <div className="mb-6">
                 <h4 className="font-bold text-blue-900 mb-3">1. La lecture « si… alors… »</h4>
-              <div className="bg-blue-50 p-4 rounded-lg mb-4">
+                <div className="bg-blue-50 p-4 rounded-lg mb-4">
                   <p className="text-blue-800 mb-3">P → Q se lit :</p>
                   <div className="text-center py-2">
                     <p className="text-xl font-bold text-blue-700">
-                      👉 « Si P est vrai, alors Q est vrai. »
+                      « Si P est vrai, alors Q est vrai. »
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="bg-white p-4 rounded-lg border border-blue-200">
                   <h5 className="font-semibold text-blue-900 mb-2">Exemple :</h5>
                   <ul className="space-y-1 text-blue-800">
@@ -327,7 +325,7 @@ const OteriaLogiqueFondamentaleCoursPage = () => {
                   </div>
                   <div className="text-center mt-4">
                     <p className="text-blue-700 font-medium">
-                      👉 L'implication est fausse seulement si P est vrai et Q est faux.
+                      L'implication est fausse seulement si P est vrai et Q est faux.
                     </p>
                   </div>
                 </div>
@@ -365,7 +363,7 @@ const OteriaLogiqueFondamentaleCoursPage = () => {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="bg-white p-4 rounded-lg border border-blue-300 text-center mt-4">
                   <p className="text-blue-900 font-medium">
                     Donc : <span className="font-mono bg-blue-100 px-2 py-1 rounded">P → Q ≡ ¬P ∨ Q</span>
@@ -388,7 +386,7 @@ const OteriaLogiqueFondamentaleCoursPage = () => {
                         <li>• mais « Être rectangle → être carré » est faux.</li>
                       </ul>
                     </div>
-                    
+
                     <div className="bg-white p-3 rounded border-l-4 border-blue-600">
                       <p className="text-blue-800 mb-2">
                         <strong>La vraie équivalence, c'est la contraposée :</strong>
@@ -408,7 +406,7 @@ const OteriaLogiqueFondamentaleCoursPage = () => {
               {/* Équivalence */}
               <div className="mb-6">
                 <h4 className="font-bold text-blue-900 mb-3">Équivalence P ⇔ Q</h4>
-              <div className="bg-blue-50 p-4 rounded-lg">
+                <div className="bg-blue-50 p-4 rounded-lg">
                   <p className="text-blue-800 mb-3">
                     P ⇔ Q signifie P → Q <strong>et</strong> Q → P.
                   </p>
@@ -616,7 +614,7 @@ const OteriaLogiqueFondamentaleCoursPage = () => {
                 <div className="text-blue-600"># Valeurs booléennes</div>
                 <div>True  # Vrai</div>
                 <div>False # Faux</div>
-                <br/>
+                <br />
                 <div className="text-blue-600"># Opérateurs logiques</div>
                 <div>not x    # Négation</div>
                 <div>x and y  # Et logique</div>
@@ -631,10 +629,10 @@ const OteriaLogiqueFondamentaleCoursPage = () => {
                   <strong>Test de parité :</strong>
                   <div className="font-mono text-sm mt-1">n % 2 == 0  # True si n pair</div>
                 </div>
-                  <div className="bg-white p-3 rounded">
-                    <strong>Condition composée :</strong>
-                    <div className="font-mono text-sm mt-1">x &gt; 0 and x &lt; 10  # x entre 0 et 10</div>
-                  </div>
+                <div className="bg-white p-3 rounded">
+                  <strong>Condition composée :</strong>
+                  <div className="font-mono text-sm mt-1">x &gt; 0 and x &lt; 10  # x entre 0 et 10</div>
+                </div>
               </div>
             </div>
           </div>

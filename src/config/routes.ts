@@ -520,7 +520,7 @@ const ArticlesConcoursAccesSesamePage = lazy(() => import('../pages/ArticlesConc
 const ArticlesOteriaCyberSchoolPage = lazy(() => import('../pages/ArticlesOteriaCyberSchoolPage'));
 const OteriaHomepage = lazy(() => import('../pages/OteriaHomepage'));
 const OteriaBachelor1Page = lazy(() => import('../pages/OteriaBachelor1Page'));
-const OteriaBachelor2Page = lazy(() => import('../pages/OteriaBachelor2Page'));
+
 const OteriaLogiqueFondamentaleCoursPage = lazy(() => import('../pages/formation/oteria/OteriaLogiqueFondamentaleCoursPage'));
 const OteriaLogiqueFondamentaleExercicesPage = lazy(() => import('../pages/formation/oteria/OteriaLogiqueFondamentaleExercicesPage'));
 const OteriaLogiqueFondamentaleFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaLogiqueFondamentaleFlashcardsPage'));
@@ -789,7 +789,7 @@ export const routes: RouteConfig[] = [
   { path: '/articles/terminale-prepa', component: lazy(() => import('../pages/ArticlesTerminalePrepaPage')), title: 'Terminale → Prépa' },
   { path: '/articles/oteria-cyber-school', component: OteriaHomepage, title: 'OTERIA Cyber School' },
   { path: '/articles/oteria-cyber-school/bachelor-1', component: OteriaBachelor1Page, title: 'Bachelor 1 - OTERIA Cyber School' },
-  { path: '/articles/oteria-cyber-school/bachelor-2', component: OteriaBachelor2Page, title: 'Bachelor 2 - OTERIA Cyber School' },
+
   { path: '/formation/oteria/logique-fondamentale-cours', component: OteriaLogiqueFondamentaleCoursPage, title: 'Logique Fondamentale - Cours' },
   { path: '/formation/oteria/logique-fondamentale-exercices', component: OteriaLogiqueFondamentaleExercicesPage, title: 'Logique Fondamentale - Exercices' },
   { path: '/formation/oteria/logique-fondamentale-flashcards', component: OteriaLogiqueFondamentaleFlashcardsPage, title: 'Logique Fondamentale - Flashcards' },
@@ -1114,7 +1114,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/allemand-negation', component: NegationPage, title: 'La Négation et les Particules de Négation' },
   { path: '/formation/allemand-phrases-interrogatives', component: PhrasesInterrogativesPage, title: 'Les Phrases Interrogatives' },
   { path: '/formation/allemand-comparatif-superlatif', component: ComparatifSuperlatifPage, title: 'Comparatif et Superlatif' },
-  { path: '/formation/allemand/sesame', component: SESAMEAllemandPage, title: 'SESAME Allemand - Exercices' },
+  { path: '/formation/allemand/sesame', component: SESAMEAllemandPage, title: 'Exercices Allemand' },
 
   // Formation Synthèse de Texte
   { path: '/formation/synthese-texte', component: FormationSyntheseTextePage, title: 'Formation Synthèse de Texte ECG' },
