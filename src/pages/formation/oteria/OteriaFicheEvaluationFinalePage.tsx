@@ -22,7 +22,7 @@ const OteriaFicheEvaluationFinalePage = () => {
             </Link>
             <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
             <Link to="/articles/oteria-cyber-school" className="hover:text-teal-700 transition-colors">
-              Bachelor 1
+              Bachelor 2
             </Link>
             <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
             <span className="text-teal-600 font-medium">Fiche Évaluation Finale</span>
@@ -40,7 +40,7 @@ const OteriaFicheEvaluationFinalePage = () => {
           </div>
           <h1 className="text-3xl font-bold mb-4 text-teal-900">Fiche Récapitulative</h1>
           <p className="text-lg text-blue-800 max-w-3xl mx-auto mb-6">
-            Évaluation Finale - Bachelor 1 : Mathématiques et Informatique
+            Évaluation Finale - Bachelor 2 : Mathématiques et Informatique
           </p>
 
           {/* Informations générales */}
@@ -202,7 +202,7 @@ const OteriaFicheEvaluationFinalePage = () => {
 
             <Link to="/articles/oteria-cyber-school">
               <Button variant="outline" className="border-2 border-teal-600 text-teal-600 hover:bg-teal-50">
-                ← Retour au programme Bachelor 1
+                ← Retour au programme Bachelor 2
               </Button>
             </Link>
           </div>

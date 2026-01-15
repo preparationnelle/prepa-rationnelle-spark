@@ -206,23 +206,39 @@ const OteriaLogiqueFondamentaleExercicesPage = () => {
                 </div>
               </div>
 
-              <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                <h3 className="font-semibold text-green-900 mb-3">Solution</h3>
-                <div className="space-y-3 text-green-800">
-                  <div>
-                    <strong>1) a)</strong> ∀n ∈ ℕ, (n est pair ou n est impair).
-                  </div>
-                  <div className="ml-4">
-                    <strong>b)</strong> (∀n ∈ ℕ, n est pair) ou (∀n ∈ ℕ, n est impair).
-                  </div>
-                  <div className="mt-4">
-                    <strong>2) a)</strong> (∀(a,b) ∈ ℝ², (a &lt; b ⇒ f(a) &lt; f(b))) ou (∀(a,b) ∈ ℝ², (a &lt; b ⇒ f(a) &gt; f(b))).
-                  </div>
-                  <div className="ml-4">
-                    <strong>b)</strong> (∃(a,b) ∈ ℝ²/ (a &lt; b et f(a) ≥ f(b))) et (∃(a,b) ∈ ℝ²/ (a &lt; b et f(a) ≤ f(b))).
+              <button
+                onClick={() => toggleSolution('ex2')}
+                className="w-full flex items-center justify-between bg-green-100 hover:bg-green-200 p-4 rounded-lg border border-green-300 transition-colors"
+              >
+                <span className="font-semibold text-green-900">
+                  {openSolutions['ex2'] ? 'Masquer la solution' : 'Afficher la solution'}
+                </span>
+                {openSolutions['ex2'] ? (
+                  <ChevronUp className="h-5 w-5 text-green-900" />
+                ) : (
+                  <ChevronDown className="h-5 w-5 text-green-900" />
+                )}
+              </button>
+
+              {openSolutions['ex2'] && (
+                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                  <h3 className="font-semibold text-green-900 mb-3">Solution</h3>
+                  <div className="space-y-3 text-green-800">
+                    <div>
+                      <strong>1) a)</strong> ∀n ∈ ℕ, (n est pair ou n est impair).
+                    </div>
+                    <div className="ml-4">
+                      <strong>b)</strong> (∀n ∈ ℕ, n est pair) ou (∀n ∈ ℕ, n est impair).
+                    </div>
+                    <div className="mt-4">
+                      <strong>2) a)</strong> (∀(a,b) ∈ ℝ², (a &lt; b ⇒ f(a) &lt; f(b))) ou (∀(a,b) ∈ ℝ², (a &lt; b ⇒ f(a) &gt; f(b))).
+                    </div>
+                    <div className="ml-4">
+                      <strong>b)</strong> (∃(a,b) ∈ ℝ²/ (a &lt; b et f(a) ≥ f(b))) et (∃(a,b) ∈ ℝ²/ (a &lt; b et f(a) ≤ f(b))).
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
 
@@ -434,6 +450,431 @@ const OteriaLogiqueFondamentaleExercicesPage = () => {
                   <div className="ml-8">print(p, q, ??? )</div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Section 13: Implication et équivalence */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
+              13. Implication et équivalence
+            </h2>
+
+            <div className="space-y-6">
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <h3 className="font-semibold text-blue-900 mb-3">13.1 Déterminer si les implications suivantes sont vraies ou fausses :</h3>
+                <ol className="space-y-2 text-blue-800 ml-6">
+                  <li className="list-decimal">Si n est divisible par 4, alors n est divisible par 2</li>
+                  <li className="list-decimal">Si n est divisible par 2, alors n est divisible par 4</li>
+                  <li className="list-decimal">Si x² = 4, alors x = 2</li>
+                  <li className="list-decimal">Si x = 2, alors x² = 4</li>
+                </ol>
+              </div>
+
+              <button
+                onClick={() => toggleSolution('ex4')}
+                className="w-full flex items-center justify-between bg-green-100 hover:bg-green-200 p-4 rounded-lg border border-green-300 transition-colors"
+              >
+                <span className="font-semibold text-green-900">
+                  {openSolutions['ex4'] ? 'Masquer la solution' : 'Afficher la solution'}
+                </span>
+                {openSolutions['ex4'] ? (
+                  <ChevronUp className="h-5 w-5 text-green-900" />
+                ) : (
+                  <ChevronDown className="h-5 w-5 text-green-900" />
+                )}
+              </button>
+
+              {openSolutions['ex4'] && (
+                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                <h3 className="font-semibold text-green-900 mb-3">Solution</h3>
+                <ol className="space-y-2 text-green-800 ml-6">
+                  <li className="list-decimal"><strong>Vrai</strong> : Si n = 4k, alors n = 2(2k), donc n est divisible par 2.</li>
+                  <li className="list-decimal"><strong>Faux</strong> : Contre-exemple : n = 6 est divisible par 2 mais pas par 4.</li>
+                  <li className="list-decimal"><strong>Faux</strong> : Contre-exemple : x = -2 vérifie x² = 4 mais x ≠ 2.</li>
+                  <li className="list-decimal"><strong>Vrai</strong> : 2² = 4.</li>
+                </ol>
+              </div>
+
+              <div className="bg-blue-50 p-4 rounded-lg mt-4">
+                <h3 className="font-semibold text-blue-900 mb-3">13.2 Pour chaque implication vraie ci-dessus, donner la contraposée :</h3>
+              </div>
+
+              <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                <h3 className="font-semibold text-green-900 mb-3">Solution</h3>
+                <ol className="space-y-2 text-green-800 ml-6">
+                  <li className="list-decimal">Contraposée de 1 : Si n n'est pas divisible par 2, alors n n'est pas divisible par 4.</li>
+                  <li className="list-decimal">Contraposée de 4 : Si x² ≠ 4, alors x ≠ 2.</li>
+                </ol>
+              </div>
+            </div>
+              )}
+          </div>
+
+          {/* Section 14: Tables de vérité avancées */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
+              14. Tables de vérité avancées
+            </h2>
+
+            <div className="space-y-6">
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <h3 className="font-semibold text-blue-900 mb-3">14.1 Construire la table de vérité de (P ⇒ Q) ⇔ (¬P ∨ Q)</h3>
+                <p className="text-blue-800 mb-3">Que constatez-vous ?</p>
+              </div>
+
+              <button
+                onClick={() => toggleSolution('ex5')}
+                className="w-full flex items-center justify-between bg-green-100 hover:bg-green-200 p-4 rounded-lg border border-green-300 transition-colors"
+              >
+                <span className="font-semibold text-green-900">
+                  {openSolutions['ex5'] ? 'Masquer la solution' : 'Afficher la solution'}
+                </span>
+                {openSolutions['ex5'] ? (
+                  <ChevronUp className="h-5 w-5 text-green-900" />
+                ) : (
+                  <ChevronDown className="h-5 w-5 text-green-900" />
+                )}
+              </button>
+
+              {openSolutions['ex5'] && (
+                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                <h3 className="font-semibold text-green-900 mb-3">Solution</h3>
+                <div className="overflow-x-auto mb-3">
+                  <table className="min-w-full bg-white border border-green-300 rounded-lg text-sm">
+                    <thead>
+                      <tr className="bg-green-100">
+                        <th className="border border-green-300 px-3 py-2">P</th>
+                        <th className="border border-green-300 px-3 py-2">Q</th>
+                        <th className="border border-green-300 px-3 py-2">P ⇒ Q</th>
+                        <th className="border border-green-300 px-3 py-2">¬P</th>
+                        <th className="border border-green-300 px-3 py-2">¬P ∨ Q</th>
+                        <th className="border border-green-300 px-3 py-2">(P ⇒ Q) ⇔ (¬P ∨ Q)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-green-300 px-3 py-2 text-center">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">F</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center font-bold">V</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-green-300 px-3 py-2 text-center">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">F</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">F</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">F</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">F</td>
+                        <td className="border border-green-300 px-3 py-2 text-center font-bold">V</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-green-300 px-3 py-2 text-center">F</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center font-bold">V</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-green-300 px-3 py-2 text-center">F</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">F</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center font-bold">V</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="text-green-800"><strong>Constat :</strong> La dernière colonne est toujours vraie. Donc (P ⇒ Q) et (¬P ∨ Q) sont équivalentes (tautologie).</p>
+              </div>
+
+              <div className="bg-blue-50 p-4 rounded-lg mt-4">
+                <h3 className="font-semibold text-blue-900 mb-3">14.2 Montrer que ¬(P ∧ Q) ⇔ (¬P ∨ ¬Q) (Loi de De Morgan)</h3>
+              </div>
+
+              <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                <h3 className="font-semibold text-green-900 mb-3">Solution</h3>
+                <div className="overflow-x-auto mb-3">
+                  <table className="min-w-full bg-white border border-green-300 rounded-lg text-sm">
+                    <thead>
+                      <tr className="bg-green-100">
+                        <th className="border border-green-300 px-3 py-2">P</th>
+                        <th className="border border-green-300 px-3 py-2">Q</th>
+                        <th className="border border-green-300 px-3 py-2">P ∧ Q</th>
+                        <th className="border border-green-300 px-3 py-2">¬(P ∧ Q)</th>
+                        <th className="border border-green-300 px-3 py-2">¬P</th>
+                        <th className="border border-green-300 px-3 py-2">¬Q</th>
+                        <th className="border border-green-300 px-3 py-2">¬P ∨ ¬Q</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-green-300 px-3 py-2 text-center">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center font-bold">F</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">F</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">F</td>
+                        <td className="border border-green-300 px-3 py-2 text-center font-bold">F</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-green-300 px-3 py-2 text-center">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">F</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">F</td>
+                        <td className="border border-green-300 px-3 py-2 text-center font-bold">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">F</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center font-bold">V</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-green-300 px-3 py-2 text-center">F</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">F</td>
+                        <td className="border border-green-300 px-3 py-2 text-center font-bold">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">F</td>
+                        <td className="border border-green-300 px-3 py-2 text-center font-bold">V</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-green-300 px-3 py-2 text-center">F</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">F</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">F</td>
+                        <td className="border border-green-300 px-3 py-2 text-center font-bold">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center">V</td>
+                        <td className="border border-green-300 px-3 py-2 text-center font-bold">V</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="text-green-800"><strong>Conclusion :</strong> Les colonnes ¬(P ∧ Q) et (¬P ∨ ¬Q) sont identiques, donc l'équivalence est vérifiée.</p>
+              </div>
+            </div>
+              )}
+          </div>
+
+          {/* Section 15: Raisonnement pratique */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
+              15. Raisonnement pratique
+            </h2>
+
+            <div className="space-y-6">
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <h3 className="font-semibold text-blue-900 mb-3">15.1 Démontrer que si n² est impair, alors n est impair</h3>
+                <p className="text-blue-700 text-sm italic">Indication : Utiliser la contraposée</p>
+              </div>
+
+              <button
+                onClick={() => toggleSolution('ex6')}
+                className="w-full flex items-center justify-between bg-green-100 hover:bg-green-200 p-4 rounded-lg border border-green-300 transition-colors"
+              >
+                <span className="font-semibold text-green-900">
+                  {openSolutions['ex6'] ? 'Masquer la solution' : 'Afficher la solution'}
+                </span>
+                {openSolutions['ex6'] ? (
+                  <ChevronUp className="h-5 w-5 text-green-900" />
+                ) : (
+                  <ChevronDown className="h-5 w-5 text-green-900" />
+                )}
+              </button>
+
+              {openSolutions['ex6'] && (
+                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                  <h3 className="font-semibold text-green-900 mb-3">Solution</h3>
+                  <div className="space-y-2 text-green-800">
+                    <p><strong>Contraposée :</strong> Si n est pair, alors n² est pair.</p>
+                    <p><strong>Démonstration :</strong></p>
+                    <ol className="ml-6 space-y-1">
+                      <li className="list-decimal">Supposons que n est pair.</li>
+                      <li className="list-decimal">Alors il existe k ∈ ℤ tel que n = 2k.</li>
+                      <li className="list-decimal">Donc n² = (2k)² = 4k² = 2(2k²).</li>
+                      <li className="list-decimal">Donc n² est pair (car n² = 2m avec m = 2k²).</li>
+                      <li className="list-decimal">La contraposée est vraie, donc l'implication originale est vraie.</li>
+                    </ol>
+                  </div>
+                </div>
+              )}
+
+              <div className="bg-blue-50 p-4 rounded-lg mt-4">
+                <h3 className="font-semibold text-blue-900 mb-3">15.2 Montrer que pour tout n ∈ ℕ, si n² + n est pair, alors n est pair ou n est impair</h3>
+                <p className="text-blue-700 text-sm italic">Indication : Cette proposition est toujours vraie !</p>
+              </div>
+
+              <button
+                onClick={() => toggleSolution('ex7')}
+                className="w-full flex items-center justify-between bg-green-100 hover:bg-green-200 p-4 rounded-lg border border-green-300 transition-colors"
+              >
+                <span className="font-semibold text-green-900">
+                  {openSolutions['ex7'] ? 'Masquer la solution' : 'Afficher la solution'}
+                </span>
+                {openSolutions['ex7'] ? (
+                  <ChevronUp className="h-5 w-5 text-green-900" />
+                ) : (
+                  <ChevronDown className="h-5 w-5 text-green-900" />
+                )}
+              </button>
+
+              {openSolutions['ex7'] && (
+                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                <h3 className="font-semibold text-green-900 mb-3">Solution</h3>
+                <p className="text-green-800">
+                  <strong>Démonstration :</strong> Pour tout entier naturel n, n est soit pair soit impair (principe du tiers exclu).
+                  Donc la conclusion "n est pair ou n est impair" est toujours vraie, quelle que soit l'hypothèse.
+                  L'implication est donc vraie (une implication avec une conclusion vraie est toujours vraie).
+                </p>
+              </div>
+
+              <div className="bg-blue-50 p-4 rounded-lg mt-4">
+                <h3 className="font-semibold text-blue-900 mb-3">15.3 Démontrer par récurrence : ∀n ∈ ℕ*, 1 + 3 + 5 + ... + (2n-1) = n²</h3>
+              </div>
+
+              <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                <h3 className="font-semibold text-green-900 mb-3">Solution</h3>
+                <div className="space-y-3 text-green-800">
+                  <div>
+                    <p className="font-semibold">Initialisation (n=1) :</p>
+                    <p className="ml-4">2(1) - 1 = 1 et 1² = 1. ✓</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold">Hérédité :</p>
+                    <p className="ml-4">Supposons que pour un certain n ≥ 1 : 1 + 3 + 5 + ... + (2n-1) = n²</p>
+                    <p className="ml-4">Montrons que : 1 + 3 + 5 + ... + (2n-1) + (2(n+1)-1) = (n+1)²</p>
+                    <p className="ml-4">En effet :</p>
+                    <p className="ml-8">1 + 3 + 5 + ... + (2n-1) + (2n+1)</p>
+                    <p className="ml-8">= n² + (2n+1) <span className="text-green-600">(par hypothèse de récurrence)</span></p>
+                    <p className="ml-8">= n² + 2n + 1</p>
+                    <p className="ml-8">= (n+1)² ✓</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold">Conclusion :</p>
+                    <p className="ml-4">Par le principe de récurrence, la propriété est vraie pour tout n ∈ ℕ*.</p>
+                  </div>
+                </div>
+              )}
+              </div>
+            </div>
+          </div>
+
+          {/* Section 16: Exercices de synthèse */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
+            <h2 className="text-xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
+              16. Exercices de synthèse
+            </h2>
+
+            <div className="space-y-6">
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <h3 className="font-semibold text-blue-900 mb-3">16.1 Montrer que √3 est irrationnel</h3>
+                <p className="text-blue-700 text-sm italic">Indication : Procéder par l'absurde, comme pour √2</p>
+              </div>
+
+              <button
+                onClick={() => toggleSolution('ex8')}
+                className="w-full flex items-center justify-between bg-green-100 hover:bg-green-200 p-4 rounded-lg border border-green-300 transition-colors"
+              >
+                <span className="font-semibold text-green-900">
+                  {openSolutions['ex8'] ? 'Masquer la solution' : 'Afficher la solution'}
+                </span>
+                {openSolutions['ex8'] ? (
+                  <ChevronUp className="h-5 w-5 text-green-900" />
+                ) : (
+                  <ChevronDown className="h-5 w-5 text-green-900" />
+                )}
+              </button>
+
+              {openSolutions['ex8'] && (
+                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                  <h3 className="font-semibold text-green-900 mb-3">Solution</h3>
+                  <div className="space-y-2 text-green-800">
+                    <p><strong>Démonstration par l'absurde :</strong></p>
+                    <ol className="ml-6 space-y-1">
+                      <li className="list-decimal">Supposons par l'absurde que √3 est rationnel.</li>
+                      <li className="list-decimal">Alors √3 = p/q avec p, q ∈ ℤ, q ≠ 0, et p/q irréductible.</li>
+                      <li className="list-decimal">En élevant au carré : 3 = p²/q² ⇒ p² = 3q².</li>
+                      <li className="list-decimal">Donc p² est divisible par 3, donc p est divisible par 3 (car 3 est premier).</li>
+                      <li className="list-decimal">Écrivons p = 3k. Alors p² = 9k² = 3q² ⇒ q² = 3k².</li>
+                      <li className="list-decimal">Donc q² est divisible par 3, donc q est divisible par 3.</li>
+                      <li className="list-decimal">Contradiction : p et q sont tous deux divisibles par 3, ce qui contredit l'irréductibilité.</li>
+                      <li className="list-decimal">Donc √3 est irrationnel.</li>
+                    </ol>
+                  </div>
+                </div>
+              )}
+
+              <div className="bg-blue-50 p-4 rounded-lg mt-4">
+                <h3 className="font-semibold text-blue-900 mb-3">16.2 Soit n ∈ ℕ. Montrer que n(n+1)(n+2) est divisible par 6</h3>
+                <p className="text-blue-700 text-sm italic">Indication : Utiliser la disjonction de cas</p>
+              </div>
+
+              <button
+                onClick={() => toggleSolution('ex9')}
+                className="w-full flex items-center justify-between bg-green-100 hover:bg-green-200 p-4 rounded-lg border border-green-300 transition-colors"
+              >
+                <span className="font-semibold text-green-900">
+                  {openSolutions['ex9'] ? 'Masquer la solution' : 'Afficher la solution'}
+                </span>
+                {openSolutions['ex9'] ? (
+                  <ChevronUp className="h-5 w-5 text-green-900" />
+                ) : (
+                  <ChevronDown className="h-5 w-5 text-green-900" />
+                )}
+              </button>
+
+              {openSolutions['ex9'] && (
+                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                  <h3 className="font-semibold text-green-900 mb-3">Solution</h3>
+                  <div className="space-y-2 text-green-800">
+                    <p><strong>Démonstration par disjonction de cas :</strong></p>
+                    <p>Parmi trois entiers consécutifs n, n+1, n+2 :</p>
+                    <ul className="ml-6 space-y-1">
+                      <li className="list-disc">Au moins un est divisible par 2 (car ils sont consécutifs)</li>
+                      <li className="list-disc">Au moins un est divisible par 3 (car parmi 3 consécutifs, l'un est multiple de 3)</li>
+                    </ul>
+                    <p className="mt-2">Donc n(n+1)(n+2) est divisible par 2 et par 3.</p>
+                    <p>Comme 2 et 3 sont premiers entre eux, n(n+1)(n+2) est divisible par 2×3 = 6.</p>
+                  </div>
+                </div>
+              )}
+
+              <div className="bg-blue-50 p-4 rounded-lg mt-4">
+                <h3 className="font-semibold text-blue-900 mb-3">16.3 Écrire un programme Python qui vérifie si un nombre est premier</h3>
+              </div>
+
+              <button
+                onClick={() => toggleSolution('ex10')}
+                className="w-full flex items-center justify-between bg-green-100 hover:bg-green-200 p-4 rounded-lg border border-green-300 transition-colors"
+              >
+                <span className="font-semibold text-green-900">
+                  {openSolutions['ex10'] ? 'Masquer la solution' : 'Afficher la solution'}
+                </span>
+                {openSolutions['ex10'] ? (
+                  <ChevronUp className="h-5 w-5 text-green-900" />
+                ) : (
+                  <ChevronDown className="h-5 w-5 text-green-900" />
+                )}
+              </button>
+
+              {openSolutions['ex10'] && (
+                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                  <h3 className="font-semibold text-green-900 mb-3">Solution</h3>
+                  <div className="bg-white p-4 rounded border font-mono text-sm text-green-800">
+                    <div className="text-green-600"># Fonction pour tester si n est premier</div>
+                    <div>def est_premier(n):</div>
+                    <div className="ml-4">if n &lt; 2:</div>
+                    <div className="ml-8">return False</div>
+                    <div className="ml-4">for i in range(2, int(n**0.5) + 1):</div>
+                    <div className="ml-8">if n % i == 0:</div>
+                    <div className="ml-12">return False</div>
+                    <div className="ml-4">return True</div>
+                    <br />
+                    <div className="text-green-600"># Test</div>
+                    <div>print(est_premier(17))  # True</div>
+                    <div>print(est_premier(18))  # False</div>
+                  </div>
+              )}
+                </div>
             </div>
           </div>
 

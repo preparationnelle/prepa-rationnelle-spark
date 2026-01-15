@@ -83,7 +83,7 @@ const OteriaIntegralesMonteCarloCoursPage = () => {
                 Professeur : Dimitar Dimitrov
               </p>
               <p className="text-blue-800">
-                Oteria Cyber School, Bachelor 1 — 2025
+                Oteria Cyber School, Bachelor 2 — 2025
               </p>
             </div>
           </CardContent>
@@ -604,10 +604,10 @@ plt.show()`}</pre>
         {/* Section 7: Cas pratique - Monte Carlo */}
         <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-50 to-blue-100 mb-8">
           <CardHeader>
-              <CardTitle className="text-2xl font-bold text-blue-600 flex items-center gap-2">
-                <Shield className="h-6 w-6" />
-                7. Cas pratique : Approximation d'intégrales et calcul de π
-              </CardTitle>
+            <CardTitle className="text-2xl font-bold text-blue-600 flex items-center gap-2">
+              <Shield className="h-6 w-6" />
+              7. Cas pratique : Approximation d'intégrales et calcul de π
+            </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="space-y-6 text-lg">

@@ -83,7 +83,7 @@ const OteriaMatricesMarkovCoursPage = () => {
                 Professeur : Dimitar Dimitrov
               </p>
               <p className="text-blue-800">
-                Oteria Cyber School, Bachelor 1 — 2025
+                Oteria Cyber School, Bachelor 2 — 2025
               </p>
             </div>
           </CardContent>

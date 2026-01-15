@@ -340,7 +340,6 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
             </div>
 
             <Link to="/generator" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Générateur</Link>
-            <Link to="/design-system" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Design System</Link>
             <Link to="/nos-profs" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Nos Professeurs</Link>
 
             {/* Menu déroulant "Niveau d'étude" avec hover */}
@@ -453,6 +452,11 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
 
                 <div className="border-t border-gray-100 my-1"></div>
 
+                <Link to="/design-system" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-purple-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-purple-50 rounded-full flex items-center justify-center"><Package className="h-4 w-4 text-purple-600" /></span>
+                  <span>Design System</span>
+                </Link>
+
                 <Link to="/contact" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-gray-50 rounded-md px-3 py-2 transition-colors">
                   <span className="w-8 h-8 bg-gray-50 rounded-full flex items-center justify-center"><Mail className="h-4 w-4 text-gray-600" /></span>
                   <span>Nous contacter</span>
@@ -561,7 +565,6 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
           <Link to="/" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Accueil</Link>
           <Link to="/avis" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Avis</Link>
           <Link to="/generator" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Générateur</Link>
-          <Link to="/design-system" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Design System</Link>
           <Link to="/nos-profs" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Nos Professeurs</Link>
           <Link to="/articles/primaire" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Primaire</Link>
           <Link to="/articles/college" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Collège</Link>
@@ -584,6 +587,10 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
             <Link to="/professeur-dashboard" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-green-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
               <Settings className="h-5 w-5 text-green-600" />
               Espace Professeur
+            </Link>
+            <Link to="/design-system" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-purple-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
+              <Package className="h-5 w-5 text-purple-600" />
+              Design System
             </Link>
             <Link to="/contact" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
               <Mail className="h-5 w-5 text-gray-600" />

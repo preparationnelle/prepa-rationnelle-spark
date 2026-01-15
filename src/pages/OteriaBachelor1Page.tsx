@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { BookOpen, Play, Target as TargetIcon, Brain as BrainIcon } from 'lucide-react';
 
-// Données des séances Bachelor 1
+// Données des séances Bachelor 2
 const bachelor1Sessions = [
   {
     id: 1,
@@ -155,7 +155,7 @@ const bachelor1Sessions = [
   {
     id: 14,
     title: "Évaluation Finale - QCM Complet",
-    content: "Évaluation finale du programme Bachelor 1 : QCM complet sur logique, Python, algorithmes et structures de données. 50 questions couvrant tous les chapitres du programme.",
+    content: "Évaluation finale du programme Bachelor 2 : QCM complet sur logique, Python, algorithmes et structures de données. 50 questions couvrant tous les chapitres du programme.",
     icon: TargetIcon,
     color: "bg-teal-600",
     hasCourse: false,
@@ -627,7 +627,7 @@ const OteriaBachelor1Page = () => {
               OTERIA Cyber School
             </Link>
             <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
-            <span className="text-teal-600 font-medium">Bachelor 1</span>
+            <span className="text-teal-600 font-medium">Bachelor 2</span>
           </div>
         </div>
       </nav>
@@ -640,7 +640,7 @@ const OteriaBachelor1Page = () => {
               <Award className="h-8 w-8 text-teal-600" />
             </div>
           </div>
-          <h1 className="text-4xl font-bold mb-8 text-teal-900">Programme Bachelor 1</h1>
+          <h1 className="text-4xl font-bold mb-8 text-teal-900">Programme Bachelor 2</h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
             MATHÉMATIQUES, LOGIQUE ET ALGORITHMIQUE POUR L'INFORMATIQUE
           </p>
@@ -656,7 +656,7 @@ const OteriaBachelor1Page = () => {
               <div className="p-2 rounded-lg bg-teal-600 text-white">
                 <Award className="h-5 w-5" />
               </div>
-              Programme Bachelor 1 - Mathématiques et Informatique
+              Programme Bachelor 2 - Mathématiques et Informatique
             </h2>
             <p className="text-sm text-teal-700">
               Mathématiques, logique et algorithmique pour l'informatique - 14 séances intensives

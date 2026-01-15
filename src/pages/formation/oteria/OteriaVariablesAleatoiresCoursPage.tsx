@@ -116,7 +116,7 @@ const OteriaVariablesAleatoiresCoursPage = () => {
                 Professeur : Dimitar Dimitrov
               </p>
               <p className="text-blue-800">
-                Oteria Cyber School, Bachelor 1 — 2025
+                Oteria Cyber School, Bachelor 2 — 2025
               </p>
             </div>
           </CardContent>
@@ -351,7 +351,7 @@ const OteriaVariablesAleatoiresCoursPage = () => {
                 <p className="font-semibold text-lg mb-3 text-blue-900">Application Python : Générateur robuste</p>
                 <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
                   <pre className="text-sm">
-{`import random, string
+                    {`import random, string
 
 def generate_password(length=12):
     chars = string.ascii_letters + string.digits + string.punctuation
@@ -464,7 +464,7 @@ print(generate_password())`}
             {/* Fonctions "maison" alternatives */}
             <div>
               <h3 className="text-xl font-semibold text-blue-900 mb-4">Fonctions "maison" alternatives</h3>
-              
+
               <div className="space-y-4">
                 <div>
                   <h4 className="font-semibold text-gray-800 mb-2">Fonction Bernoulli</h4>
@@ -578,7 +578,7 @@ print(generate_password())`}
                   </tbody>
                 </table>
               </div>
-              
+
               <div className="mt-4 bg-blue-50 border-l-4 border-blue-400 p-4 rounded">
                 <p className="text-blue-800">
                   <strong>Conseil :</strong> Utiliser <code className="bg-blue-100 px-2 py-1 rounded">density=True</code> dans <code className="bg-blue-100 px-2 py-1 rounded">plt.hist</code> pour comparer directement à la densité théorique.

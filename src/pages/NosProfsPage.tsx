@@ -59,7 +59,7 @@ const NosProfsPage = () => {
   // Composant carte compacte
   const ProfessorCardCompact = ({ professor, index }: { professor: Professor; index: number }) => (
     <div className={`professor-card bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 border ${professor.isFounder ? 'border-orange-300 ring-2 ring-orange-100' : 'border-gray-100'} cursor-pointer group relative overflow-hidden transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'} flex flex-col h-full`}
-         style={{ transitionDelay: `${index * 150}ms` }}>
+      style={{ transitionDelay: `${index * 150}ms` }}>
       {/* Effet shimmer au hover */}
       <div className="card-shimmer absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 transition-opacity duration-500 pointer-events-none"></div>
       {/* Header avec gradient pour le fondateur */}
@@ -296,31 +296,7 @@ const NosProfsPage = () => {
       email: 'juliette@preparationnelle.fr',
       location: 'Paris, France'
     },
-    {
-      id: 'dimitar-maxime',
-      name: 'Dimitar Maxime Parent',
-      role: 'Professeur de Mathématiques',
-      shortDescription: 'Expert en mathématiques appliquées, Maxime excelle dans l\'enseignement des concepts complexes.',
-      fullDescription: 'Mathématicien spécialisé dans les applications pratiques, Maxime Parent maîtrise parfaitement les programmes de mathématiques des classes préparatoires. Il aide les élèves à développer une intuition profonde des concepts mathématiques.',
-      mainSubjects: ['Maths', 'Analyse', 'Algèbre'],
-      specialties: [
-        'Mathématiques MPSI/MP/PC',
-        'Analyse fonctionnelle et complexe',
-        'Algèbre linéaire et géométrie',
-        'Préparation aux concours scientifiques',
-        'Méthodologie de résolution de problèmes'
-      ],
-      achievements: [
-        '5 ans d\'enseignement en classes préparatoires',
-        'Spécialiste des maths appliquées',
-        'Méthodes pédagogiques éprouvées',
-        'Taux de réussite de 88% aux concours',
-        'Auteur d\'exercices originaux'
-      ],
-      experience: '8 années d\'enseignement des mathématiques',
-      email: 'maxime@preparationnelle.fr',
-      location: 'Paris, France'
-    },
+
     {
       id: 'william',
       name: 'William Zhou',
@@ -752,9 +728,9 @@ const NosProfsPage = () => {
         <div className="container mx-auto px-4 py-12 max-w-6xl">
           {/* Hero Section */}
           <div className="text-center mb-16">
-          <h1 className={`text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            Nos Professeurs
-          </h1>
+            <h1 className={`text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+              Nos Professeurs
+            </h1>
             <p className={`text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
               Découvrez l'équipe pédagogique passionnée qui accompagne vos enfants vers la réussite
             </p>
@@ -832,9 +808,9 @@ const NosProfsPage = () => {
 
           {/* Footer de la page */}
           <div className="mt-24 text-center pb-12">
-          <p className="text-gray-500 text-sm">
-            Nos Professeurs • Prépa Rationnelle • Excellence pédagogique depuis 2023
-          </p>
+            <p className="text-gray-500 text-sm">
+              Nos Professeurs • Prépa Rationnelle • Excellence pédagogique depuis 2023
+            </p>
           </div>
         </div>
       </div>

@@ -155,7 +155,7 @@ const oteriaSessions = [
   {
     id: 14,
     title: "Évaluation Finale - QCM Complet",
-    content: "Évaluation finale du programme Bachelor 1 : QCM complet sur logique, Python, algorithmes et structures de données. 50 questions couvrant tous les chapitres du programme.",
+    content: "Évaluation finale du programme Bachelor 2 : QCM complet sur logique, Python, algorithmes et structures de données. 50 questions couvrant tous les chapitres du programme.",
     icon: TargetIcon,
     color: "bg-teal-600",
     hasCourse: false,
@@ -508,7 +508,7 @@ const ArticlesOteriaCyberSchoolPage = () => {
               <div className="p-2 rounded-lg bg-teal-600 text-white">
                 <Award className="h-5 w-5" />
               </div>
-              Programme Bachelor 1 - Mathématiques et Informatique
+              Programme Bachelor 2 - Mathématiques et Informatique
             </h2>
             <p className="text-sm text-teal-700">
               Mathématiques, logique et algorithmique pour l'informatique - 14 séances intensives

@@ -52,7 +52,7 @@ const OteriaHomepage = () => {
 
         {/* Programmes */}
         <div className="flex justify-center mb-12">
-          {/* Bachelor 1 */}
+          {/* Bachelor 2 */}
           <div className="w-full max-w-xl">
             <Card className="bg-gradient-to-br from-teal-50 to-teal-100 border-2 border-teal-200 hover:border-teal-300 transition-all duration-300 hover:shadow-xl">
               <CardHeader className="text-center pb-4">
@@ -62,7 +62,7 @@ const OteriaHomepage = () => {
                   </div>
                 </div>
                 <CardTitle className="text-2xl font-bold text-teal-900 mb-2">
-                  Bachelor 1
+                  Bachelor 2
                 </CardTitle>
                 <Badge variant="outline" className="text-teal-600 border-teal-300 bg-teal-50">
                   Niveau Fondamental
@@ -95,7 +95,7 @@ const OteriaHomepage = () => {
                 <Link to="/articles/oteria-cyber-school/bachelor-1">
                   <Button className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
                     <BookOpen className="mr-2 h-4 w-4" />
-                    Accéder au Programme Bachelor 1
+                    Accéder au Programme Bachelor 2
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>

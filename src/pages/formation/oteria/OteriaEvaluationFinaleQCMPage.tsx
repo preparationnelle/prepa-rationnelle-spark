@@ -562,7 +562,7 @@ const OteriaEvaluationFinaleQCMPage = () => {
               <div className="mb-6">
                 <Trophy className="h-16 w-16 text-yellow-500 mx-auto mb-4" />
                 <h2 className="text-3xl font-bold text-gray-900 mb-2">Résultats de l'Évaluation Finale</h2>
-                <p className="text-lg text-gray-600">Bachelor 1 - Mathématiques et Informatique</p>
+                <p className="text-lg text-gray-600">Bachelor 2 - Mathématiques et Informatique</p>
               </div>
 
               <div className="mb-8">
@@ -678,7 +678,7 @@ const OteriaEvaluationFinaleQCMPage = () => {
           </div>
           <h1 className="text-3xl font-bold mb-4 text-teal-900">Évaluation Finale - QCM Complet</h1>
           <p className="text-lg text-blue-800 max-w-3xl mx-auto mb-6">
-            Testez vos connaissances acquises tout au long du programme Bachelor 1
+            Testez vos connaissances acquises tout au long du programme Bachelor 2
           </p>
 
           {/* Informations d'évaluation */}
@@ -745,26 +745,24 @@ const OteriaEvaluationFinaleQCMPage = () => {
                       key={index}
                       onClick={() => handleAnswerSelect(currentQ.id, index)}
                       disabled={showExplanation}
-                      className={`w-full p-4 text-left rounded-lg border transition-all ${
-                        showCorrect
+                      className={`w-full p-4 text-left rounded-lg border transition-all ${showCorrect
                           ? 'border-green-500 bg-green-50 text-green-800'
                           : showIncorrect
-                          ? 'border-red-500 bg-red-50 text-red-800'
-                          : isSelected
-                          ? 'border-blue-500 bg-blue-50 text-blue-800'
-                          : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-                      }`}
+                            ? 'border-red-500 bg-red-50 text-red-800'
+                            : isSelected
+                              ? 'border-blue-500 bg-blue-50 text-blue-800'
+                              : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                        }`}
                     >
                       <div className="flex items-center gap-3">
-                        <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
-                          showCorrect
+                        <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${showCorrect
                             ? 'border-green-500 bg-green-500'
                             : showIncorrect
-                            ? 'border-red-500 bg-red-500'
-                            : isSelected
-                            ? 'border-blue-500 bg-blue-500'
-                            : 'border-gray-400'
-                        }`}>
+                              ? 'border-red-500 bg-red-500'
+                              : isSelected
+                                ? 'border-blue-500 bg-blue-500'
+                                : 'border-gray-400'
+                          }`}>
                           {(showCorrect || (isSelected && !showIncorrect)) && (
                             <div className="w-2 h-2 bg-white rounded-full"></div>
                           )}

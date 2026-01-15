@@ -788,7 +788,7 @@ export const routes: RouteConfig[] = [
   { path: '/articles/concours-acces-sesame', component: ArticlesConcoursAccesSesamePage, title: 'Concours ACCES/SESAME' },
   { path: '/articles/terminale-prepa', component: lazy(() => import('../pages/ArticlesTerminalePrepaPage')), title: 'Terminale → Prépa' },
   { path: '/articles/oteria-cyber-school', component: OteriaHomepage, title: 'OTERIA Cyber School' },
-  { path: '/articles/oteria-cyber-school/bachelor-1', component: OteriaBachelor1Page, title: 'Bachelor 1 - OTERIA Cyber School' },
+  { path: '/articles/oteria-cyber-school/bachelor-1', component: OteriaBachelor1Page, title: 'Bachelor 2 - OTERIA Cyber School' },
 
   { path: '/formation/oteria/logique-fondamentale-cours', component: OteriaLogiqueFondamentaleCoursPage, title: 'Logique Fondamentale - Cours' },
   { path: '/formation/oteria/logique-fondamentale-exercices', component: OteriaLogiqueFondamentaleExercicesPage, title: 'Logique Fondamentale - Exercices' },
@@ -872,7 +872,7 @@ export const routes: RouteConfig[] = [
 
   // Évaluation Finale
   { path: '/formation/oteria/evaluation-finale', component: OteriaEvaluationFinaleQCMPage, title: 'Évaluation Finale - QCM Complet' },
-  { path: '/formation/oteria/fiche-evaluation-finale', component: OteriaFicheEvaluationFinalePage, title: 'Fiche Évaluation Finale - Bachelor 1' },
+  { path: '/formation/oteria/fiche-evaluation-finale', component: OteriaFicheEvaluationFinalePage, title: 'Fiche Évaluation Finale - Bachelor 2' },
 
   // Mini Projet
   { path: '/formation/oteria/mini-projet', component: OteriaMiniProjetPage, title: 'Mini Projet - Ateliers & Répétitions' },

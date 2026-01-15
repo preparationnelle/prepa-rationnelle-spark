@@ -21,7 +21,7 @@ const OteriaIntegralesMonteCarloExercicesPage = () => {
             </Link>
             <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
             <Link to="/articles/oteria-cyber-school" className="hover:text-teal-700 transition-colors">
-              Bachelor 1
+              Bachelor 2
             </Link>
             <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
             <span className="text-teal-600 font-medium">Chapitre 10 - Exercices</span>

@@ -83,7 +83,7 @@ const OteriaMatricesStochastiquesCoursPage = () => {
                 Professeur : Dimitar Dimitrov
               </p>
               <p className="text-blue-800">
-                Oteria Cyber School, Bachelor 1 — 2025
+                Oteria Cyber School, Bachelor 2 — 2025
               </p>
             </div>
           </CardContent>
@@ -637,7 +637,7 @@ const OteriaMatricesStochastiquesCoursPage = () => {
                   <div className="bg-white p-3 rounded text-sm">
                     <p className="font-medium mb-2">• PGCD :</p>
                     <div className="bg-gray-900 text-gray-100 p-2 rounded font-mono text-xs">
-                      from math import gcd<br/>
+                      from math import gcd<br />
                       gcd(a, b)
                     </div>
                   </div>
@@ -651,7 +651,7 @@ const OteriaMatricesStochastiquesCoursPage = () => {
                     <p className="font-semibold mb-3">1. Calcul du PGCD</p>
                     <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
                       <pre className="text-sm">
-{`from math import gcd
+                        {`from math import gcd
 
 # Exemple
 print(gcd(12, 18))  # 6
@@ -664,7 +664,7 @@ print(gcd(15, 28))  # 1`}
                     <p className="font-semibold mb-3">2. Algorithme d'Euclide étendu</p>
                     <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
                       <pre className="text-sm">
-{`def extended_gcd(a, b):
+                        {`def extended_gcd(a, b):
     """Retourne (pgcd, x, y) tel que a*x + b*y = pgcd"""
     if a == 0:
         return b, 0, 1

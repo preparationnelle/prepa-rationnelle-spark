@@ -22,7 +22,7 @@ const OteriaMatricesStochastiquesExercicesPage = () => {
             </Link>
             <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
             <Link to="/articles/oteria-cyber-school" className="hover:text-teal-700 transition-colors">
-              Bachelor 1
+              Bachelor 2
             </Link>
             <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
             <span className="text-teal-600 font-medium">Chapitre 12 - Exercices</span>
@@ -108,9 +108,9 @@ const OteriaMatricesStochastiquesExercicesPage = () => {
 
               {/* Exercice 2 */}
               <div className="space-y-4">
-              <div className="bg-white p-6 rounded-lg border border-blue-200">
+                <div className="bg-white p-6 rounded-lg border border-blue-200">
                   <h3 className="text-lg font-semibold text-blue-800 mb-4">Exercice 2 : Divisibilité par 4</h3>
-                <p className="text-gray-700 mb-4">
+                  <p className="text-gray-700 mb-4">
                     Montrer que, pour tout <LatexRenderer latex="n\in\mathbb{N}" block={false} />, le nombre <LatexRenderer latex="5^n+19" block={false} /> est divisible par 4.
                   </p>
                   <div className="space-y-2">
@@ -142,11 +142,11 @@ const OteriaMatricesStochastiquesExercicesPage = () => {
 
               {/* Exercice 3 */}
               <div className="space-y-4">
-              <div className="bg-white p-6 rounded-lg border border-blue-200">
+                <div className="bg-white p-6 rounded-lg border border-blue-200">
                   <h3 className="text-lg font-semibold text-blue-800 mb-4">Exercice 3 : Divisibilité par 2 et 3</h3>
-                <p className="text-gray-700 mb-4">
+                  <p className="text-gray-700 mb-4">
                     Démontrer que, pour tout entier relatif <LatexRenderer latex="p" block={false} />, le nombre <LatexRenderer latex="p(p^2-1)" block={false} /> est divisible par 2 et par 3.
-                </p>
+                  </p>
                 </div>
 
                 <div className="bg-green-50 p-6 rounded-lg border border-green-200">
@@ -176,11 +176,11 @@ const OteriaMatricesStochastiquesExercicesPage = () => {
 
               {/* Exercice 4 */}
               <div className="space-y-4">
-              <div className="bg-white p-6 rounded-lg border border-blue-200">
+                <div className="bg-white p-6 rounded-lg border border-blue-200">
                   <h3 className="text-lg font-semibold text-blue-800 mb-4">Exercice 4 : Divisibilité par 8</h3>
-                <p className="text-gray-700 mb-4">
+                  <p className="text-gray-700 mb-4">
                     Montrer que, pour tout entier naturel <strong>impair</strong> <LatexRenderer latex="n" block={false} />, le nombre <LatexRenderer latex="n^2-1" block={false} /> est divisible par 8.
-                </p>
+                  </p>
                 </div>
 
                 <div className="bg-green-50 p-6 rounded-lg border border-green-200">
@@ -197,11 +197,11 @@ const OteriaMatricesStochastiquesExercicesPage = () => {
 
               {/* Exercice 5 */}
               <div className="space-y-4">
-              <div className="bg-white p-6 rounded-lg border border-blue-200">
+                <div className="bg-white p-6 rounded-lg border border-blue-200">
                   <h3 className="text-lg font-semibold text-blue-800 mb-4">Exercice 5 : Congruence et reste</h3>
-                <p className="text-gray-700 mb-4">
+                  <p className="text-gray-700 mb-4">
                     Conjecturer puis démontrer le reste de la division euclidienne de <LatexRenderer latex="10^n" block={false} /> par 11 selon la parité de <LatexRenderer latex="n" block={false} />.
-                </p>
+                  </p>
                 </div>
 
                 <div className="bg-green-50 p-6 rounded-lg border border-green-200">

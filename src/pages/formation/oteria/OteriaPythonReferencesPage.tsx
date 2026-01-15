@@ -34,7 +34,7 @@ const OteriaPythonReferencesPage = () => {
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold mb-4 text-teal-900">Références Python</h1>
           <p className="text-lg text-blue-800 max-w-3xl mx-auto mb-6">
-            Guide complet des fonctions et modules NumPy, Matplotlib essentiels pour le programme Bachelor 1
+            Guide complet des fonctions et modules NumPy, Matplotlib essentiels pour le programme Bachelor 2
           </p>
 
           {/* Informations de référence */}

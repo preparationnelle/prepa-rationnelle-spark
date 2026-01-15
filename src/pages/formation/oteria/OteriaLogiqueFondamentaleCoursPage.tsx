@@ -200,6 +200,43 @@ const OteriaLogiqueFondamentaleCoursPage = () => {
             </div>
           </div>
 
+          {/* Ce que ce cours va vous permettre de faire */}
+          <div className="bg-white rounded-lg border border-gray-200 p-8 mb-8">
+            <h2 className="text-xl font-semibold mb-6 text-gray-900 border-b border-gray-200 pb-3">
+              Ce que ce cours va vous permettre de faire
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="border-l-2 border-gray-300 pl-4 py-2">
+                <h3 className="font-medium text-gray-900 mb-1">Lire un énoncé sans ambiguïté</h3>
+                <p className="text-gray-600 text-sm">
+                  Comprendre précisément ce qui est demandé et identifier les hypothèses et conclusions.
+                </p>
+              </div>
+
+              <div className="border-l-2 border-gray-300 pl-4 py-2">
+                <h3 className="font-medium text-gray-900 mb-1">Écrire des démonstrations propres</h3>
+                <p className="text-gray-600 text-sm">
+                  Structurer vos raisonnements de manière rigoureuse et convaincante.
+                </p>
+              </div>
+
+              <div className="border-l-2 border-gray-300 pl-4 py-2">
+                <h3 className="font-medium text-gray-900 mb-1">Éviter les contresens classiques aux concours / examens</h3>
+                <p className="text-gray-600 text-sm">
+                  Reconnaître et éviter les pièges logiques fréquents dans les épreuves.
+                </p>
+              </div>
+
+              <div className="border-l-2 border-gray-300 pl-4 py-2">
+                <h3 className="font-medium text-gray-900 mb-1">Traduire un raisonnement mathématique en code (Python)</h3>
+                <p className="text-gray-600 text-sm">
+                  Implémenter des concepts logiques dans vos programmes informatiques.
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Section A: Éléments de logique */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
             <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
