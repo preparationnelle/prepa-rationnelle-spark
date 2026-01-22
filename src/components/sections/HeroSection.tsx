@@ -2,11 +2,38 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { CheckCircle, TrendingUp, Users, Award, Star, BookOpen } from 'lucide-react';
+import { CheckCircle, TrendingUp, Users, Award, Star, BookOpen, ChevronRight, Sparkles, Calendar, ArrowRight, Flame } from 'lucide-react';
 
 export const HeroSection = () => {
   const [showWhatsAppModal, setShowWhatsAppModal] = useState(false);
+  const [selectedLevel, setSelectedLevel] = useState<string | null>(null);
+  const [selectedRole, setSelectedRole] = useState<string | null>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
+
+  // Animation states for sequential reveal
+  const [showTitle, setShowTitle] = useState(false);
+  const [showSubtitle, setShowSubtitle] = useState(false);
+  const [showTagline, setShowTagline] = useState(false);
+  const [showContent, setShowContent] = useState(false);
+
+  // Sequential animation on mount
+  useEffect(() => {
+    // Show "Prepa Rationnelle" first
+    const timer1 = setTimeout(() => setShowTitle(true), 200);
+    // Show "Ta méthode pour réussir en maths" after
+    const timer2 = setTimeout(() => setShowSubtitle(true), 1000);
+    // Show "Une bonne méthode rend la progression inévitable" last
+    const timer3 = setTimeout(() => setShowTagline(true), 1800);
+    // Show the rest of the content
+    const timer4 = setTimeout(() => setShowContent(true), 2400);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+      clearTimeout(timer4);
+    };
+  }, []);
 
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
@@ -27,147 +54,333 @@ export const HeroSection = () => {
   }, []);
 
   const handleWhatsAppJoin = () => {
-    // Lien vers WhatsApp avec message prédéfini
     const message = encodeURIComponent("Bonjour Prepa Rationnelle, je veux mon premier coaching gratuit !");
     window.open(`https://wa.me/33609164668?text=${message}`, '_blank');
     setShowWhatsAppModal(false);
-  };
-
-  const handleReservationClick = () => {
-    // Lien vers WhatsApp pour réserver le premier cours gratuit
-    const message = encodeURIComponent("Bonjour, je souhaite réserver mon premier cours gratuit !");
-    window.open(`https://wa.me/33609164668?text=${message}`, '_blank');
   };
 
   const joinWhatsAppGroup = () => {
     window.open('https://calendly.com/preparationnelle/30min?month=2025-09&date=2025-09-16', '_blank');
   };
 
+  const handleFormSubmit = () => {
+    const message = encodeURIComponent(`Bonjour ! Je suis ${selectedRole === 'parent' ? 'parent d\'un élève' : 'un élève'} en ${selectedLevel}. Je souhaite avoir plus d'informations sur vos formations.`);
+    window.open(`https://wa.me/33609164668?text=${message}`, '_blank');
+  };
+
   return (
-    <section className="min-h-[95vh] w-full flex flex-col justify-center items-center pt-16 sm:pt-20 pb-10 sm:pb-16 md:pb-24 px-4 sm:px-6 relative overflow-hidden bg-gradient-to-br from-white via-orange-50/30 to-white">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-orange-50/30 to-white"></div>
+    <>
+      {/* Dark Hero Section - Premium & Impactful */}
+      <section className="hero-dark-section relative overflow-hidden">
+        {/* Deep gradient background with more contrast */}
+        <div className="absolute inset-0 bg-[#0a0f1a]">
+          {/* Vibrant animated glow effects */}
+          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-orange-500/20 rounded-full blur-[120px] animate-pulse-slow"></div>
+          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-orange-600/15 rounded-full blur-[100px] animate-pulse-slow-delayed"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-orange-500/10 via-orange-600/5 to-transparent rounded-full"></div>
+          {/* Extra ambient glow */}
+          <div className="absolute top-20 right-20 w-32 h-32 bg-orange-400/30 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-40 left-20 w-24 h-24 bg-orange-500/25 rounded-full blur-2xl"></div>
+        </div>
 
-      {/* Floating elements - Enhanced with animated orange bubbles */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-500 rounded-full opacity-5 blur-3xl animate-float"></div>
-      <div className="absolute bottom-20 right-10 w-28 h-28 bg-orange-400 rounded-full opacity-5 blur-3xl animate-float-delayed"></div>
-
-      {/* Additional bubbles */}
-      <div className="absolute top-40 right-20 w-48 h-48 bg-orange-300 rounded-full opacity-5 blur-3xl animate-float-slow"></div>
-      <div className="absolute bottom-40 left-20 w-56 h-56 bg-orange-200 rounded-full opacity-5 blur-3xl animate-float"></div>
-      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-orange-100 rounded-full opacity-5 blur-3xl animate-float-delayed"></div>
-      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-orange-400 rounded-full opacity-5 blur-3xl animate-float-slow"></div>
-      <div className="absolute top-1/2 left-10 w-24 h-24 bg-orange-300 rounded-full opacity-5 blur-2xl animate-float"></div>
-      <div className="absolute bottom-1/3 right-5 w-36 h-36 bg-orange-200 rounded-full opacity-5 blur-3xl animate-float-delayed"></div>
-
-      <div className="w-full max-w-[1200px] flex flex-col items-center justify-center relative z-10 px-4 sm:px-6">
-        {/* Main Heading with improved typography - ZOOMED & SINGLE LINE */}
-        <h1 className="fade-in-up text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center pt-6 sm:pt-8 md:pt-10 mb-8 sm:mb-10 md:mb-12 leading-[1.1] w-full max-w-[1000px] px-4 whitespace-normal md:whitespace-nowrap break-words">
-          Ta méthode pour intégrer le <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent uppercase">TOP 3</span> en prépa <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent uppercase">ECG</span>
-        </h1>
-
-        {/* Enhanced Triptyque with icons - Uniform sizing */}
-        <div className="fade-in-up flex flex-col md:flex-row justify-center items-center md:items-stretch gap-6 sm:gap-8 md:gap-12 mb-2 sm:mb-3 md:mb-4 w-full max-w-[1100px] px-2 sm:px-4" style={{ animationDelay: '0.1s' }}>
-          <div className="text-center group cursor-pointer relative flex-1 max-w-[300px] min-h-[12rem]" onClick={() => window.location.href = '/formations'}>
-            <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300 relative z-10">
-              <BookOpen className="h-10 w-10 text-white" />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-orange-600 transition-colors relative z-10 text-center leading-tight">Exercices<br />incontournables</h3>
-            <p className="text-gray-600 text-lg leading-relaxed relative z-10 px-2 flex items-center justify-center h-16">On s'entraîne avec ce qui a de plus classique.</p>
-            <div className="mt-0.5 px-4 sm:px-6 py-2 sm:py-3 bg-orange-100 text-orange-700 rounded-lg text-sm sm:text-base font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 relative z-10 shadow-md whitespace-nowrap">
-              Découvre nos formations →
-            </div>
-          </div>
-          <div className="hidden md:block w-px h-32 bg-gradient-to-b from-orange-200 to-transparent self-center"></div>
-          <div className="text-center group cursor-pointer relative flex-1 max-w-[300px] min-h-[12rem]" onClick={() => window.open('https://calendly.com/preparationnelle/30min', '_blank')}>
-            <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300 relative z-10">
-              <Users className="h-10 w-10 text-white" />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-orange-600 transition-colors relative z-10 text-center">Cours particuliers</h3>
-            <p className="text-gray-600 text-lg leading-relaxed relative z-10 px-2 flex items-center justify-center h-16">Réserve ta première séance gratuitement.</p>
-            <div className="mt-4 px-4 sm:px-6 py-2 sm:py-3 bg-orange-100 text-orange-700 rounded-lg text-sm sm:text-base font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 relative z-10 shadow-md whitespace-nowrap">
-              Réserve un cours gratuit →
-            </div>
-          </div>
-          <div className="hidden md:block w-px h-32 bg-gradient-to-b from-orange-200 to-transparent self-center"></div>
-          <div className="text-center group cursor-pointer relative flex-1 max-w-[300px] min-h-[12rem]" onClick={() => window.location.href = '/avis'}>
-            <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300 relative z-10">
-              <TrendingUp className="h-10 w-10 text-white" />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-orange-600 transition-colors relative z-10 text-center leading-tight">Résultats<br />Concrets</h3>
-            <p className="text-gray-600 text-lg leading-relaxed relative z-10 px-2 flex items-center justify-center h-16">Une progression mesurable et objectifs atteints dès 1 mois.</p>
-            <div className="mt-0.5 px-4 sm:px-6 py-2 sm:py-3 bg-orange-100 text-orange-700 rounded-lg text-sm sm:text-base font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 relative z-10 shadow-md whitespace-nowrap">
-              Les avis →
-            </div>
+        {/* Top Banner - Urgency with vibrant orange */}
+        <div className="relative z-20 bg-gradient-to-r from-orange-500 via-orange-400 to-orange-500 py-3 px-4 shadow-lg">
+          <div className="container mx-auto flex items-center justify-center gap-2 text-white">
+            <Flame className="h-4 w-4 animate-pulse" />
+            <span className="text-sm font-bold tracking-wide">Dernières places ! Stages intensifs de Février</span>
+            <Link to="/stages" className="font-bold underline hover:no-underline ml-1 flex items-center gap-1 bg-white/20 px-3 py-1 rounded-full text-xs">
+              S'inscrire <ChevronRight className="h-3 w-3" />
+            </Link>
           </div>
         </div>
 
-        {/* Enhanced message with selective orange highlighting */}
-        <p className="fade-in-up text-xl sm:text-2xl md:text-3xl text-center font-semibold leading-[1.3] mb-8 sm:mb-10 max-w-[1200px] mx-auto px-4 text-gray-800" style={{ animationDelay: '0.2s' }}>
-          La Méthode <span className="font-bold text-orange-600">RATIONNELLE</span> pour Gagner <span className="font-bold text-orange-600">+5</span> Points en <span className="font-bold text-orange-600">Maths</span> et <span className="font-bold text-orange-600">Python</span>
-        </p>
-
-        {/* Enhanced Statistics Section */}
-        <div className="fade-in-up bg-white/95 backdrop-blur-sm rounded-2xl p-8 sm:p-10 mb-6 sm:mb-8 shadow-2xl border border-orange-100 relative overflow-hidden z-10" style={{ animationDelay: '0.3s' }}>
-          {/* Background pattern */}
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-orange-100/30"></div>
-
-          {/* Additional decorative bubbles inside the stats section */}
-          <div className="absolute top-5 right-5 w-20 h-20 bg-orange-100 rounded-full opacity-20 blur-2xl"></div>
-          <div className="absolute bottom-5 left-5 w-16 h-16 bg-orange-200 rounded-full opacity-15 blur-2xl"></div>
-          <div className="absolute top-1/2 left-1/4 w-12 h-12 bg-orange-50 rounded-full opacity-20 blur-xl"></div>
-
-          <div className="relative z-10">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              <Link to="/avis" className="group hover:scale-105 transition-transform duration-200 cursor-pointer">
-                <div className="flex items-center justify-center mb-3">
-                  <Star className="h-8 w-8 text-black mr-3 group-hover:text-gray-800 transition-colors" />
-                  <div className="text-4xl font-bold text-orange-500 group-hover:text-orange-600 transition-colors">5/5</div>
-                </div>
-                <div className="text-base text-black font-medium group-hover:text-gray-800 transition-colors">Satisfaction client</div>
-              </Link>
-              <Link to="/avis" className="group hover:scale-105 transition-transform duration-200 cursor-pointer">
-                <div className="flex items-center justify-center mb-3">
-                  <TrendingUp className="h-8 w-8 text-black mr-3 group-hover:text-gray-800 transition-colors" />
-                  <div className="text-4xl font-bold text-orange-500 group-hover:text-orange-600 transition-colors">+5pts</div>
-                </div>
-                <div className="text-base text-black font-medium group-hover:text-gray-800 transition-colors">Gain en maths</div>
-              </Link>
-              <Link to="/avis" className="group hover:scale-105 transition-transform duration-200 cursor-pointer">
-                <div className="flex items-center justify-center mb-3">
-                  <Users className="h-8 w-8 text-black mr-3 group-hover:text-gray-800 transition-colors" />
-                  <div className="text-4xl font-bold text-orange-500 group-hover:text-orange-600 transition-colors">50+</div>
-                </div>
-                <div className="text-base text-black font-medium group-hover:text-gray-800 transition-colors">Étudiants accompagnés</div>
-              </Link>
-              <Link to="/avis" className="group hover:scale-105 transition-transform duration-200 cursor-pointer">
-                <div className="flex items-center justify-center mb-3">
-                  <div className="text-4xl font-bold text-orange-500 group-hover:text-orange-600 transition-colors">TOP 5</div>
-                </div>
-                <div className="text-base text-black font-medium group-hover:text-gray-800 transition-colors">80% des étudiants en 2025</div>
-              </Link>
+        {/* Main Hero Content */}
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-20 sm:pb-28">
+          {/* Google Rating Badge - More prominent */}
+          <div className={`flex justify-end mb-8 transition-all duration-700 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-full border border-orange-400/30 shadow-lg shadow-orange-500/10">
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-4 w-4 text-orange-400 fill-orange-400" />
+                ))}
+              </div>
+              <span className="text-white text-sm font-semibold">5.0 sur Google</span>
             </div>
+          </div>
 
+          {/* Scarcity Badge - Brighter green */}
+          <div className={`flex justify-center mb-10 transition-all duration-700 delay-100 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <div className="inline-flex items-center gap-2.5 bg-gradient-to-r from-emerald-500/25 to-green-500/25 backdrop-blur-md px-6 py-3 rounded-full border border-emerald-400/40 shadow-lg shadow-emerald-500/20">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-400"></span>
+              </span>
+              <span className="text-emerald-300 text-sm font-bold tracking-wide">3 créneaux restants cette semaine</span>
+            </div>
+          </div>
 
+          {/* Main Title - ANIMATED SEQUENTIAL REVEAL */}
+          <div className="text-center max-w-5xl mx-auto mb-10">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.1] mb-8 tracking-tight">
+              {/* Prepa Rationnelle - Appears first */}
+              <span
+                className={`inline-block text-orange-400 drop-shadow-[0_0_30px_rgba(251,146,60,0.5)] transition-all duration-1000 ease-out ${showTitle ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
+                  }`}
+              >
+                Prepa Rationnelle
+              </span>
+              <br />
+              {/* Ta méthode pour réussir - Appears second */}
+              <span
+                className={`inline-block text-white transition-all duration-1000 ease-out ${showSubtitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  }`}
+              >
+                Ta méthode pour réussir
+              </span>
+              <br />
+              {/* en maths - Part of second phrase */}
+              <span
+                className={`inline-block text-orange-400 drop-shadow-[0_0_30px_rgba(251,146,60,0.5)] transition-all duration-1000 ease-out delay-200 ${showSubtitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  }`}
+              >
+                en maths
+              </span>
+            </h1>
+
+            {/* Tagline - Appears third */}
+            <p
+              className={`text-lg sm:text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed font-medium transition-all duration-1000 ease-out ${showTagline ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+                }`}
+            >
+              Une <span className="text-orange-400 font-bold">bonne méthode</span> rend la <span className="text-white font-bold">progression inévitable</span>.
+            </p>
+          </div>
+
+          {/* Form Card - Enhanced with glow */}
+          <div className={`max-w-lg mx-auto transition-all duration-700 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="relative">
+              {/* Intense glow effect behind card */}
+              <div className="absolute -inset-2 bg-gradient-to-r from-orange-500/40 via-orange-400/30 to-orange-500/40 rounded-3xl blur-2xl animate-pulse-subtle"></div>
+
+              {/* Card with enhanced shadow */}
+              <div className="relative bg-white rounded-2xl shadow-2xl shadow-black/30 p-7 sm:p-8 border border-orange-100">
+                {/* Progress bar - More vibrant */}
+                <div className="mb-6">
+                  <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-gradient-to-r from-orange-500 to-orange-400 rounded-full transition-all duration-500 shadow-sm shadow-orange-400/50"
+                      style={{ width: selectedLevel && selectedRole ? '100%' : selectedLevel || selectedRole ? '50%' : '0%' }}
+                    ></div>
+                  </div>
+                </div>
+
+                <h3 className="text-xl font-bold text-center text-gray-900 mb-6">
+                  Complétez le formulaire et bénéficiez de nos conseils
+                </h3>
+
+                {/* Level Selection - Enhanced buttons */}
+                <div className="mb-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-7 h-7 bg-gradient-to-br from-orange-500 to-orange-400 rounded-lg flex items-center justify-center shadow-md shadow-orange-500/30">
+                      <BookOpen className="h-4 w-4 text-white" />
+                    </div>
+                    <span className="text-sm font-semibold text-gray-800">Niveau de l'élève</span>
+                  </div>
+                  <div className="grid grid-cols-3 gap-3">
+                    {['Prépa', 'Lycée', 'Collège'].map((level) => (
+                      <button
+                        key={level}
+                        onClick={() => setSelectedLevel(level)}
+                        className={`py-3.5 px-4 rounded-xl text-sm font-bold transition-all duration-300 ${selectedLevel === level
+                          ? 'bg-gradient-to-r from-orange-500 to-orange-400 text-white shadow-lg shadow-orange-500/40 scale-105 border-2 border-orange-400'
+                          : 'bg-gray-50 text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-2 border-gray-100 hover:border-orange-200'
+                          }`}
+                      >
+                        {level}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Role Selection - Enhanced buttons */}
+                <div className="mb-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-7 h-7 bg-gradient-to-br from-orange-500 to-orange-400 rounded-lg flex items-center justify-center shadow-md shadow-orange-500/30">
+                      <Users className="h-4 w-4 text-white" />
+                    </div>
+                    <span className="text-sm font-semibold text-gray-800">Je suis...</span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    {[
+                      { id: 'student', label: 'Un élève' },
+                      { id: 'parent', label: 'Un parent' }
+                    ].map((role) => (
+                      <button
+                        key={role.id}
+                        onClick={() => setSelectedRole(role.id)}
+                        className={`py-3.5 px-4 rounded-xl text-sm font-bold transition-all duration-300 ${selectedRole === role.id
+                          ? 'bg-gradient-to-r from-orange-500 to-orange-400 text-white shadow-lg shadow-orange-500/40 scale-105 border-2 border-orange-400'
+                          : 'bg-gray-50 text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-2 border-gray-100 hover:border-orange-200'
+                          }`}
+                      >
+                        {role.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* CTA Button - Super vibrant */}
+                <Button
+                  onClick={selectedLevel && selectedRole ? handleFormSubmit : joinWhatsAppGroup}
+                  className="w-full py-7 text-lg font-bold bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white rounded-xl shadow-xl shadow-orange-500/40 hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 group border-0 hover:scale-[1.02]"
+                >
+                  <span className="flex items-center justify-center gap-3">
+                    <Calendar className="h-5 w-5" />
+                    Réserver mon cours gratuit
+                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Button>
+
+                {/* Trust indicators */}
+                <div className="mt-5 flex items-center justify-center gap-5 text-xs text-gray-500 font-medium">
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle className="h-4 w-4 text-emerald-500" />
+                    <span>Sans engagement</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle className="h-4 w-4 text-emerald-500" />
+                    <span>Réponse sous 24h</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* Enhanced Buttons - Déplacé après les statistiques */}
-        <div className="fade-in-up flex flex-col items-center justify-center gap-4 w-full max-w-[1000px] px-4" style={{ animationDelay: '0.4s' }}>
-          <Button
-            size="lg"
-            className="animate-pulse-subtle w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-bold text-base sm:text-lg leading-snug rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-110 hover:-translate-y-2 border-0 relative overflow-hidden group break-words whitespace-normal sm:whitespace-nowrap text-center z-10"
-            style={{
-              boxShadow: "0 8px 25px rgba(249, 115, 22, 0.3)"
-            }}
-            onClick={joinWhatsAppGroup}
-          >
-            <span className="relative z-10 flex items-center justify-center text-center">
-              Réserve ton cours gratuit
-            </span>
-          </Button>
+      {/* Statistics Section - Enhanced with gradient background */}
+      <section className="relative bg-gradient-to-b from-gray-50 to-white py-14 sm:py-20 overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-1/4 w-64 h-64 bg-orange-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-orange-500/10 rounded-full blur-3xl"></div>
+
+        <div className="relative z-10 container mx-auto px-4 sm:px-6">
+          <div className="fade-in-up max-w-5xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+              {/* Stat 1 */}
+              <Link to="/avis" className="group text-center p-5 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-orange-200">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <Star className="h-7 w-7 text-orange-500 fill-orange-500 group-hover:scale-110 transition-transform" />
+                  <span className="text-4xl sm:text-5xl font-bold text-orange-500">5/5</span>
+                </div>
+                <p className="text-sm text-gray-700 font-semibold">Satisfaction client</p>
+              </Link>
+
+              {/* Stat 2 */}
+              <Link to="/avis" className="group text-center p-5 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-orange-200">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <TrendingUp className="h-7 w-7 text-orange-500 group-hover:scale-110 transition-transform" />
+                  <span className="text-4xl sm:text-5xl font-bold text-orange-500">+5pts</span>
+                </div>
+                <p className="text-sm text-gray-700 font-semibold">Gain moyen en maths</p>
+              </Link>
+
+              {/* Stat 3 */}
+              <Link to="/avis" className="group text-center p-5 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-orange-200">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <Users className="h-7 w-7 text-orange-500 group-hover:scale-110 transition-transform" />
+                  <span className="text-4xl sm:text-5xl font-bold text-orange-500">50+</span>
+                </div>
+                <p className="text-sm text-gray-700 font-semibold">Étudiants accompagnés</p>
+              </Link>
+
+              {/* Stat 4 */}
+              <Link to="/avis" className="group text-center p-5 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-orange-200">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <Award className="h-7 w-7 text-orange-500 group-hover:scale-110 transition-transform" />
+                  <span className="text-4xl sm:text-5xl font-bold text-orange-500">80%</span>
+                </div>
+                <p className="text-sm text-gray-700 font-semibold">En TOP 5 en 2025</p>
+              </Link>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* Value Proposition Cards - Premium design */}
+      <section className="relative bg-white py-14 sm:py-20 overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="fade-in-up max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+              {/* Card 1 */}
+              <Link
+                to="/formations"
+                className="group relative bg-gradient-to-br from-white to-orange-50/50 rounded-2xl p-7 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-gray-100 hover:border-orange-300 overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-orange-400/20 to-orange-500/10 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500"></div>
+                <div className="relative z-10">
+                  <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-400 rounded-2xl flex items-center justify-center mb-6 shadow-xl shadow-orange-500/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                    <BookOpen className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors">
+                    Exercices incontournables
+                  </h3>
+                  <p className="text-gray-600 mb-5 leading-relaxed font-medium">
+                    On s'entraîne avec ce qu'il y a de plus classique. +250 exercices ultra-classiques disponibles.
+                  </p>
+                  <div className="flex items-center text-orange-500 font-bold text-sm">
+                    Découvrir nos formations <ChevronRight className="h-4 w-4 ml-1 group-hover:translate-x-2 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+
+              {/* Card 2 */}
+              <div
+                onClick={joinWhatsAppGroup}
+                className="group relative bg-gradient-to-br from-white to-orange-50/50 rounded-2xl p-7 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-gray-100 hover:border-orange-300 overflow-hidden cursor-pointer"
+              >
+                <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-orange-400/20 to-orange-500/10 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500"></div>
+                <div className="relative z-10">
+                  <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-400 rounded-2xl flex items-center justify-center mb-6 shadow-xl shadow-orange-500/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                    <Users className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors">
+                    Cours particuliers
+                  </h3>
+                  <p className="text-gray-600 mb-5 leading-relaxed font-medium">
+                    Réserve ta première séance gratuitement. Accompagnement sur-mesure avec des professeurs d'excellence.
+                  </p>
+                  <div className="flex items-center text-orange-500 font-bold text-sm">
+                    Réserver un cours gratuit <ChevronRight className="h-4 w-4 ml-1 group-hover:translate-x-2 transition-transform" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 3 */}
+              <Link
+                to="/avis"
+                className="group relative bg-gradient-to-br from-white to-orange-50/50 rounded-2xl p-7 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-gray-100 hover:border-orange-300 overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-orange-400/20 to-orange-500/10 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500"></div>
+                <div className="relative z-10">
+                  <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-400 rounded-2xl flex items-center justify-center mb-6 shadow-xl shadow-orange-500/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                    <TrendingUp className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors">
+                    Résultats concrets
+                  </h3>
+                  <p className="text-gray-600 mb-5 leading-relaxed font-medium">
+                    Une progression mesurable et objectifs atteints dès 1 mois. Nos élèves intègrent le TOP 5.
+                  </p>
+                  <div className="flex items-center text-orange-500 font-bold text-sm">
+                    Voir les témoignages <ChevronRight className="h-4 w-4 ml-1 group-hover:translate-x-2 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Enhanced Modal WhatsApp */}
       <Dialog open={showWhatsAppModal} onOpenChange={setShowWhatsAppModal}>
@@ -203,8 +416,12 @@ export const HeroSection = () => {
         </DialogContent>
       </Dialog>
 
-      {/* Styles pour les animations */}
+      {/* Enhanced Styles */}
       <style>{`
+        .hero-dark-section {
+          min-height: 100vh;
+        }
+
         @keyframes fadeInUp {
           from {
             opacity: 0;
@@ -227,41 +444,34 @@ export const HeroSection = () => {
           }
         }
 
-        @keyframes float {
+        @keyframes pulseSlow {
           0%, 100% {
-            transform: translateY(0px) translateX(0px);
+            opacity: 0.15;
+            transform: scale(1);
           }
           50% {
-            transform: translateY(-20px) translateX(10px);
+            opacity: 0.25;
+            transform: scale(1.1);
           }
         }
 
-        @keyframes floatDelayed {
+        @keyframes pulseSlowDelayed {
           0%, 100% {
-            transform: translateY(0px) translateX(0px);
+            opacity: 0.1;
+            transform: scale(1);
           }
           50% {
-            transform: translateY(20px) translateX(-10px);
-          }
-        }
-
-        @keyframes floatSlow {
-          0%, 100% {
-            transform: translateY(0px) translateX(0px);
-          }
-          50% {
-            transform: translateY(15px) translateX(15px);
+            opacity: 0.2;
+            transform: scale(1.05);
           }
         }
 
         @keyframes pulseSubtle {
           0%, 100% {
-            transform: scale(1);
-            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.3);
+            opacity: 0.3;
           }
           50% {
-            transform: scale(1.03);
-            box-shadow: 0 12px 35px rgba(249, 115, 22, 0.5);
+            opacity: 0.5;
           }
         }
 
@@ -277,22 +487,22 @@ export const HeroSection = () => {
           animation: scaleIn 0.6s ease-out forwards;
         }
 
-        .animate-float {
-          animation: float 8s ease-in-out infinite;
+        .animate-pulse-slow {
+          animation: pulseSlow 4s ease-in-out infinite;
         }
 
-        .animate-float-delayed {
-          animation: floatDelayed 10s ease-in-out infinite;
-        }
-
-        .animate-float-slow {
-          animation: floatSlow 12s ease-in-out infinite;
+        .animate-pulse-slow-delayed {
+          animation: pulseSlowDelayed 5s ease-in-out infinite 1s;
         }
 
         .animate-pulse-subtle {
-          animation: pulseSubtle 2.5s ease-in-out infinite;
+          animation: pulseSubtle 3s ease-in-out infinite;
+        }
+
+        .bg-gradient-radial {
+          background: radial-gradient(circle, var(--tw-gradient-from) 0%, var(--tw-gradient-via) 40%, var(--tw-gradient-to) 70%);
         }
       `}</style>
-    </section>
+    </>
   );
 };

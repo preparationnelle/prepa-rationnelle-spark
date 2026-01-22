@@ -5,8 +5,7 @@ import { HeroSection } from '@/components/sections/HeroSection';
 import { SuperprofReviewsSection } from '@/components/sections/SuperprofReviewsSection';
 import { PodcastSection } from '@/components/sections/PodcastSection';
 import { PartnersSection } from '@/components/sections/PartnersSection';
-import { CallToActionSection } from '@/components/sections/CallToActionSection';
-import { BookOpen, Calculator, Code, Languages, Globe, GraduationCap, Zap, Heart, Mic, Library, ChevronRight, Brain } from 'lucide-react';
+import { BookOpen, Calculator, Code, Languages, Globe, GraduationCap, Zap, Heart, Mic, Brain, ChevronRight, ArrowRight, Sparkles, Flame } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
@@ -28,7 +27,6 @@ const HomePage: React.FC = () => {
     const elements = document.querySelectorAll('.fade-in-up, .fade-in, .scale-in');
     elements.forEach((el) => {
       observerRef.current?.observe(el);
-      // Force l'animation pour les éléments déjà visibles
       const rect = el.getBoundingClientRect();
       if (rect.top < window.innerHeight && rect.bottom > 0) {
         el.classList.add('animate-in');
@@ -38,417 +36,276 @@ const HomePage: React.FC = () => {
     return () => observerRef.current?.disconnect();
   }, []);
 
+  const formations = [
+    {
+      title: 'Maths ECG',
+      icon: Calculator,
+      description: 'Maîtrisez tout le programme de maths ECG : logique, analyse, probabilités, algèbre.',
+      features: ['20 chapitres progressifs', 'Exercices type concours', 'Méthodes de prépa'],
+      link: '/formation/maths',
+      delay: '0.1s'
+    },
+    {
+      title: 'Python ECG',
+      icon: Code,
+      description: 'Maîtrisez Python pour les concours : 4 modules progressifs avec exercices pratiques.',
+      features: ['54 commandes essentielles', 'Exercices type concours', '+3 à 5 points garantis'],
+      link: '/pourquoi-python-prepa-ecg',
+      delay: '0.15s'
+    },
+    {
+      title: 'Anglais ECG',
+      icon: Languages,
+      description: 'Perfectionnez votre anglais avec méthodes ciblées et grammaire avancée.',
+      features: ['Grammaire systématique', 'Thèmes et versions', 'Essais et synthèses'],
+      link: '/formation/anglais',
+      delay: '0.2s'
+    },
+    {
+      title: 'Culture Générale',
+      icon: BookOpen,
+      description: 'Développez votre culture générale avec méthodes et outils pour réussir.',
+      features: ['Méthodes de synthèse', 'Analyse de textes', "Épreuves d'essai"],
+      link: '/formation/culture-generale',
+      delay: '0.25s'
+    },
+    {
+      title: 'Géopolitique',
+      icon: Globe,
+      description: 'Analysez les enjeux mondiaux contemporains avec méthodes et outils.',
+      features: ['Enjeux contemporains', "Méthodes d'analyse", 'Actualité stratégique'],
+      link: '/formation/geopolitique',
+      delay: '0.3s'
+    },
+    {
+      title: 'ESH ECG',
+      icon: GraduationCap,
+      description: "Maîtrisez l'économie et les sciences humaines avec méthodes ciblées.",
+      features: ['Première et deuxième année', 'Méthodologie spécialisée', 'Études de cas concrètes'],
+      link: '/formation/esh',
+      delay: '0.35s'
+    }
+  ];
+
+  const generators = [
+    {
+      title: 'Flashcards',
+      icon: Brain,
+      description: 'Créez vos flashcards personnalisées',
+      features: ['Flashcards personnalisées', 'Révision intelligente', 'Suivi des progrès'],
+      link: '/generator/flashcards',
+      delay: '0.1s'
+    },
+    {
+      title: 'Langues',
+      icon: Languages,
+      description: 'Générez et corrigez vos textes',
+      features: ['Correction automatique', 'Génération de paragraphes', 'Thèmes corrigés'],
+      link: '/generator/languages-unified',
+      delay: '0.15s'
+    },
+    {
+      title: 'Géopolitique',
+      icon: Globe,
+      description: 'Études et fiches automatiques',
+      features: ['Études géopolitiques', 'Fiches automatiques', 'Analyse stratégique'],
+      link: '/generator/geopolitics-unified',
+      delay: '0.2s'
+    },
+    {
+      title: 'Culture Générale',
+      icon: BookOpen,
+      description: 'Thèmes et problématiques',
+      features: ['Définition de thèmes', 'Problématiques rapides', 'Plans détaillés'],
+      link: '/generator/culture-generale',
+      delay: '0.25s'
+    },
+    {
+      title: 'Oraux',
+      icon: Mic,
+      description: 'Questions et réponses orales',
+      features: ['Questions types concours', 'Réponses générées', 'Entraînement oral'],
+      link: '/generator/orals-unified',
+      delay: '0.3s'
+    },
+    {
+      title: 'Chat-bot',
+      icon: Heart,
+      description: 'Conseils et motivation',
+      features: ['Conseils méthodologiques', 'Motivation quotidienne', 'Bien-être prépa'],
+      link: '/generator/prepa-chatbot',
+      delay: '0.35s'
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Section 1: Héro */}
+    <div className="min-h-screen bg-white">
+      {/* Section 1: Héro (Dark + Form + Stats + Value Props) */}
       <HeroSection />
 
-      {/* Section 2: Formations spécialisées (inclut le bouton "Toutes nos formations") */}
-      <section className="py-10 sm:py-14 md:py-16 lg:py-24 px-4 sm:px-6 relative overflow-hidden bg-white">
-        <div className="absolute top-20 right-10 w-40 h-40 bg-orange-500 rounded-full opacity-5 blur-3xl animate-float"></div>
-        <div className="absolute bottom-40 left-10 w-32 h-32 bg-orange-400 rounded-full opacity-5 blur-3xl animate-float-delayed"></div>
+      {/* Section 2: Formations spécialisées */}
+      <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 relative overflow-hidden bg-gradient-to-b from-white to-gray-50">
+        {/* Decorative elements */}
+        <div className="absolute top-20 right-10 w-80 h-80 bg-orange-400 rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute bottom-40 left-10 w-64 h-64 bg-orange-500 rounded-full opacity-10 blur-3xl"></div>
 
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="fade-in-up text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6">
-            <span className="bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent font-bold">Nos formations spécialisées</span>
-          </h2>
-          <p className="fade-in-up text-center text-gray-600 mb-10 max-w-2xl mx-auto text-base sm:text-lg" style={{ animationDelay: '0.1s' }}>
-            Méthodes éprouvées, +250 exercices ultra classiques, flashcards, quizz
-          </p>
-
-          <div className="w-full max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Maths ECG */}
-              <Link to="/formation/maths" className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group" style={{ animationDelay: '0.2s' }}>
-                <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Calculator className="h-8 w-8 text-orange-600 transition-colors duration-300" />
-                </div>
-                <h3 className="font-semibold text-xl mb-2 text-gray-900 transition-colors duration-300">Maths ECG</h3>
-                <p className="text-sm text-gray-600 mb-3 transition-colors duration-300">Maîtrisez tout le programme de maths ECG : logique, analyse, probabilités, algèbre, exercices corrigés et méthodes efficaces.</p>
-                <div className="space-y-1 text-xs text-left w-full">
-                  <div className="flex items-center text-orange-600 transition-colors duration-300">
-                    <span className="mr-2">✓</span>
-                    <span>20 chapitres progressifs</span>
-                  </div>
-                  <div className="flex items-center text-orange-600 transition-colors duration-300">
-                    <span className="mr-2">✓</span>
-                    <span>Exercices type concours</span>
-                  </div>
-                  <div className="flex items-center text-orange-600 transition-colors duration-300">
-                    <span className="mr-2">✓</span>
-                    <span>Méthodes et astuces de prépa</span>
-                  </div>
-                </div>
-              </Link>
-
-              {/* Python ECG */}
-              <Link to="/pourquoi-python-prepa-ecg" className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group" style={{ animationDelay: '0.3s' }}>
-                <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Code className="h-8 w-8 text-orange-600 transition-colors duration-300" />
-                </div>
-                <h3 className="font-semibold text-xl mb-2 text-gray-900 transition-colors duration-300">Python ECG</h3>
-                <p className="text-sm text-gray-600 mb-3 transition-colors duration-300">Maîtrisez Python pour les concours : 4 modules progressifs avec exercices pratiques et coaching personnalisé.</p>
-                <div className="space-y-1 text-xs text-left w-full">
-                  <div className="flex items-center text-orange-600 transition-colors duration-300">
-                    <span className="mr-2">✓</span>
-                    <span>54 commandes essentielles</span>
-                  </div>
-                  <div className="flex items-center text-orange-600 transition-colors duration-300">
-                    <span className="mr-2">✓</span>
-                    <span>Exercices type concours</span>
-                  </div>
-                  <div className="flex items-center text-orange-600 transition-colors duration-300">
-                    <span className="mr-2">✓</span>
-                    <span>+3 à 5 points garantis</span>
-                  </div>
-                </div>
-              </Link>
-
-              {/* Anglais ECG */}
-              <Link to="/formation/anglais" className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group" style={{ animationDelay: '0.4s' }}>
-                <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Languages className="h-8 w-8 text-orange-600 transition-colors duration-300" />
-                </div>
-                <h3 className="font-semibold text-xl mb-2 text-gray-900 transition-colors duration-300">Anglais ECG</h3>
-                <p className="text-sm text-gray-600 mb-3 transition-colors duration-300">Perfectionnez votre anglais avec méthodes ciblées, grammaire avancée et préparation aux épreuves.</p>
-                <div className="space-y-1 text-xs text-left w-full">
-                  <div className="flex items-center text-orange-600 transition-colors duration-300">
-                    <span className="mr-2">✓</span>
-                    <span>Grammaire systématique</span>
-                  </div>
-                  <div className="flex items-center text-orange-600 transition-colors duration-300">
-                    <span className="mr-2">✓</span>
-                    <span>Thèmes et versions</span>
-                  </div>
-                  <div className="flex items-center text-orange-600 transition-colors duration-300">
-                    <span className="mr-2">✓</span>
-                    <span>Essais et synthèses</span>
-                  </div>
-                </div>
-              </Link>
-
-              {/* Culture Générale (remplace l'Espagnol) */}
-              <Link to="/formation/culture-generale" className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group" style={{ animationDelay: '0.5s' }}>
-                <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <BookOpen className="h-8 w-8 text-orange-600 transition-colors duration-300" />
-                </div>
-                <h3 className="font-semibold text-xl mb-2 text-gray-900 transition-colors duration-300">Culture Générale</h3>
-                <p className="text-sm text-gray-600 mb-3 transition-colors duration-300">Développez votre culture générale avec méthodes et outils pour réussir les épreuves de synthèse et d'essai.</p>
-                <div className="space-y-1 text-xs text-left w-full">
-                  <div className="flex items-center text-orange-600 transition-colors duration-300">
-                    <span className="mr-2">✓</span>
-                    <span>Méthodes de synthèse</span>
-                  </div>
-                  <div className="flex items-center text-orange-600 transition-colors duration-300">
-                    <span className="mr-2">✓</span>
-                    <span>Analyse de textes</span>
-                  </div>
-                  <div className="flex items-center text-orange-600 transition-colors duration-300">
-                    <span className="mr-2">✓</span>
-                    <span>Épreuves d'essai</span>
-                  </div>
-                </div>
-              </Link>
-
-              {/* Géopolitique */}
-              <Link to="/formation/geopolitique" className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group" style={{ animationDelay: '0.6s' }}>
-                <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Globe className="h-8 w-8 text-orange-600 transition-colors duration-300" />
-                </div>
-                <h3 className="font-semibold text-xl mb-2 text-gray-900 transition-colors duration-300">Géopolitique</h3>
-                <p className="text-sm text-gray-600 mb-3 transition-colors duration-300">Analysez les enjeux mondiaux contemporains avec méthodes et outils pour briller aux concours.</p>
-                <div className="space-y-1 text-xs text-left w-full">
-                  <div className="flex items-center text-orange-600 transition-colors duration-300">
-                    <span className="mr-2">✓</span>
-                    <span>Enjeux contemporains</span>
-                  </div>
-                  <div className="flex items-center text-orange-600 transition-colors duration-300">
-                    <span className="mr-2">✓</span>
-                    <span>Méthodes d'analyse</span>
-                  </div>
-                  <div className="flex items-center text-orange-600 transition-colors duration-300">
-                    <span className="mr-2">✓</span>
-                    <span>Actualité stratégique</span>
-                  </div>
-                </div>
-              </Link>
-
-              {/* ESH ECG */}
-              <Link to="/formation/esh" className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group" style={{ animationDelay: '0.7s' }}>
-                <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <GraduationCap className="h-8 w-8 text-orange-600 transition-colors duration-300" />
-                </div>
-                <h3 className="font-semibold text-xl mb-2 text-gray-900 transition-colors duration-300">ESH ECG</h3>
-                <p className="text-sm text-gray-600 mb-3 transition-colors duration-300">Maîtrisez l'économie et les sciences humaines avec méthodes ciblées et études de cas pratiques.</p>
-                <div className="space-y-1 text-xs text-left w-full">
-                  <div className="flex items-center text-orange-600 transition-colors duration-300">
-                    <span className="mr-2">✓</span>
-                    <span>Première et deuxième année</span>
-                  </div>
-                  <div className="flex items-center text-orange-600 transition-colors duration-300">
-                    <span className="mr-2">✓</span>
-                    <span>Méthodologie spécialisée</span>
-                  </div>
-                  <div className="flex items-center text-orange-600 transition-colors duration-300">
-                    <span className="mr-2">✓</span>
-                    <span>Études de cas concrètes</span>
-                  </div>
-                </div>
-              </Link>
-
-
+        <div className="container mx-auto max-w-6xl relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-14 sm:mb-16">
+            <div className="fade-in-up inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-400 text-white px-5 py-2.5 rounded-full text-sm font-bold mb-5 shadow-lg shadow-orange-500/30">
+              <Flame className="h-4 w-4" />
+              9 formations disponibles
             </div>
+            <h2 className="fade-in-up text-3xl sm:text-4xl lg:text-5xl font-bold mb-5" style={{ animationDelay: '0.05s' }}>
+              Nos <span className="text-orange-500">formations spécialisées</span>
+            </h2>
+            <p className="fade-in-up text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-medium" style={{ animationDelay: '0.1s' }}>
+              Méthodes éprouvées, +250 exercices ultra classiques, flashcards, quizz
+            </p>
           </div>
 
-          {/* Bouton Toutes nos formations - Inclus dans la même section */}
-          <div className="fade-in-up flex justify-center mt-12" style={{ animationDelay: '0.8s' }}>
+          {/* Formations Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {formations.map((formation) => (
+              <Link
+                key={formation.title}
+                to={formation.link}
+                className="fade-in-up group relative bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-gray-100 hover:border-orange-300 overflow-hidden"
+                style={{ animationDelay: formation.delay }}
+              >
+                {/* Background glow on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-50 to-orange-100/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                <div className="relative z-10">
+                  <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-400 rounded-2xl flex items-center justify-center mb-5 shadow-xl shadow-orange-500/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                    <formation.icon className="h-7 w-7 text-white" />
+                  </div>
+
+                  <h3 className="font-bold text-xl mb-3 text-gray-900 group-hover:text-orange-600 transition-colors">
+                    {formation.title}
+                  </h3>
+
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed font-medium">
+                    {formation.description}
+                  </p>
+
+                  <div className="space-y-2">
+                    {formation.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center text-sm text-orange-600 font-semibold">
+                        <span className="mr-2 text-orange-500">✓</span>
+                        <span>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-5 flex items-center text-orange-500 font-bold text-sm">
+                    Découvrir <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-2 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* CTA Button */}
+          <div className="fade-in-up flex justify-center" style={{ animationDelay: '0.4s' }}>
             <Link to="/formations">
-              <Button className="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1">
-                Découvre nos 9 formations
+              <Button className="px-10 py-7 text-lg font-bold bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white rounded-xl shadow-xl shadow-orange-500/30 hover:shadow-2xl hover:shadow-orange-500/40 transition-all duration-300 hover:scale-105 group">
+                <span className="flex items-center gap-2">
+                  Découvre nos 9 formations
+                  <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </span>
               </Button>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Section 3: Générateurs IA */}
-      <section className="py-10 sm:py-14 md:py-16 lg:py-24 px-4 sm:px-6 relative overflow-hidden bg-gradient-to-br from-gray-50 to-white">
-        {/* Floating elements - Orange bubbles */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-orange-500 rounded-full opacity-5 blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-28 h-28 bg-orange-400 rounded-full opacity-5 blur-3xl animate-float-delayed"></div>
-        <div className="absolute top-40 right-20 w-48 h-48 bg-orange-300 rounded-full opacity-5 blur-3xl animate-float-slow"></div>
+      {/* Section 3: Générateurs IA - Dark themed for contrast */}
+      <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 relative overflow-hidden bg-[#0a0f1a]">
+        {/* Decorative glows */}
+        <div className="absolute top-20 left-10 w-64 h-64 bg-orange-500/20 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-orange-400/15 rounded-full blur-[120px]"></div>
 
         <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="fade-in-up text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-gray-900">Générateurs </span>
-              <span className="bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">IA</span>
+          {/* Section Header */}
+          <div className="text-center mb-14 sm:mb-16">
+            <div className="fade-in-up inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-400 text-white px-5 py-2.5 rounded-full text-sm font-bold mb-5 shadow-lg shadow-orange-500/30">
+              <Zap className="h-4 w-4" />
+              Powered by AI
+            </div>
+            <h2 className="fade-in-up text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 text-white" style={{ animationDelay: '0.05s' }}>
+              Générateurs <span className="text-orange-400">IA</span>
             </h2>
-            <p className="fade-in-up text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto" style={{ animationDelay: '0.1s' }}>
+            <p className="fade-in-up text-lg sm:text-xl text-white/70 max-w-2xl mx-auto font-medium" style={{ animationDelay: '0.1s' }}>
               Découvrez nos outils IA pour gagner du temps en prépa
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {/* Générateur Flashcards */}
-            <Link
-              to="/generator/flashcards"
-              className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 group flex flex-col items-center text-center border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50"
-              style={{ animationDelay: '0.2s' }}
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Brain className="h-8 w-8 text-orange-600 transition-colors" />
-              </div>
-              <h3 className="font-bold text-xl mb-3 text-gray-900 transition-colors">Flashcards</h3>
-              <p className="text-sm text-gray-600 mb-4 leading-relaxed transition-colors">Créez vos flashcards personnalisées</p>
-              <div className="space-y-1 text-xs w-full mb-4">
-                <div className="flex items-center text-orange-600 transition-colors">
-                  <span className="mr-2">✓</span>
-                  <span>Flashcards personnalisées</span>
-                </div>
-                <div className="flex items-center text-orange-600 transition-colors">
-                  <span className="mr-2">✓</span>
-                  <span>Révision intelligente</span>
-                </div>
-                <div className="flex items-center text-orange-600 transition-colors">
-                  <span className="mr-2">✓</span>
-                  <span>Suivi des progrès</span>
-                </div>
-              </div>
-              <Button className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-medium transition-all duration-300 hover:scale-105 shadow-lg rounded-xl">
-                <Zap className="mr-2 h-4 w-4" />
-                Utiliser le générateur
-              </Button>
-            </Link>
+          {/* Generators Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {generators.map((generator) => (
+              <Link
+                key={generator.title}
+                to={generator.link}
+                className="fade-in-up group relative bg-white/5 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/10 transition-all duration-500 border-2 border-white/10 hover:border-orange-400/50 overflow-hidden"
+                style={{ animationDelay: generator.delay }}
+              >
+                {/* Background glow on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-orange-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-            {/* Générateur Langues */}
-            <Link
-              to="/generator/languages-unified"
-              className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 group flex flex-col items-center text-center border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50"
-              style={{ animationDelay: '0.3s' }}
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Languages className="h-8 w-8 text-orange-600 transition-colors" />
-              </div>
-              <h3 className="font-bold text-xl mb-3 text-gray-900 transition-colors">Langues</h3>
-              <p className="text-sm text-gray-600 mb-4 leading-relaxed transition-colors">Générez et corrigez vos textes</p>
-              <div className="space-y-1 text-xs w-full mb-4">
-                <div className="flex items-center text-orange-600 transition-colors">
-                  <span className="mr-2">✓</span>
-                  <span>Correction automatique</span>
-                </div>
-                <div className="flex items-center text-orange-600 transition-colors">
-                  <span className="mr-2">✓</span>
-                  <span>Génération de paragraphes</span>
-                </div>
-                <div className="flex items-center text-orange-600 transition-colors">
-                  <span className="mr-2">✓</span>
-                  <span>Thèmes corrigés</span>
-                </div>
-              </div>
-              <Button className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-medium transition-all duration-300 hover:scale-105 shadow-lg rounded-xl">
-                <Zap className="mr-2 h-4 w-4" />
-                Utiliser le générateur
-              </Button>
-            </Link>
+                <div className="relative z-10">
+                  <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-400 rounded-2xl flex items-center justify-center mb-5 shadow-xl shadow-orange-500/40 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                    <generator.icon className="h-7 w-7 text-white" />
+                  </div>
 
-            {/* Générateur Géopolitique */}
-            <Link
-              to="/generator/geopolitics-unified"
-              className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 group flex flex-col items-center text-center border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50"
-              style={{ animationDelay: '0.4s' }}
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Globe className="h-8 w-8 text-orange-600 transition-colors" />
-              </div>
-              <h3 className="font-bold text-xl mb-3 text-gray-900 transition-colors">Géopolitique</h3>
-              <p className="text-sm text-gray-600 mb-4 leading-relaxed transition-colors">Études et fiches automatiques</p>
-              <div className="space-y-1 text-xs w-full mb-4">
-                <div className="flex items-center text-orange-600 transition-colors">
-                  <span className="mr-2">✓</span>
-                  <span>Études géopolitiques</span>
-                </div>
-                <div className="flex items-center text-orange-600 transition-colors">
-                  <span className="mr-2">✓</span>
-                  <span>Fiches automatiques</span>
-                </div>
-                <div className="flex items-center text-orange-600 transition-colors">
-                  <span className="mr-2">✓</span>
-                  <span>Analyse stratégique</span>
-                </div>
-              </div>
-              <Button className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-medium transition-all duration-300 hover:scale-105 shadow-lg rounded-xl">
-                <Zap className="mr-2 h-4 w-4" />
-                Utiliser le générateur
-              </Button>
-            </Link>
+                  <h3 className="font-bold text-xl mb-3 text-white group-hover:text-orange-400 transition-colors">
+                    {generator.title}
+                  </h3>
 
-            {/* Générateur Culture Générale */}
-            <Link
-              to="/generator/culture-generale"
-              className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 group flex flex-col items-center text-center border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50"
-              style={{ animationDelay: '0.5s' }}
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <BookOpen className="h-8 w-8 text-orange-600 transition-colors" />
-              </div>
-              <h3 className="font-bold text-xl mb-3 text-gray-900 transition-colors">Culture Générale</h3>
-              <p className="text-sm text-gray-600 mb-4 leading-relaxed transition-colors">Thèmes et problématiques</p>
-              <div className="space-y-1 text-xs w-full mb-4">
-                <div className="flex items-center text-orange-600 transition-colors">
-                  <span className="mr-2">✓</span>
-                  <span>Définition de thèmes</span>
-                </div>
-                <div className="flex items-center text-orange-600 transition-colors">
-                  <span className="mr-2">✓</span>
-                  <span>Problématiques rapides</span>
-                </div>
-                <div className="flex items-center text-orange-600 transition-colors">
-                  <span className="mr-2">✓</span>
-                  <span>Plans détaillés</span>
-                </div>
-              </div>
-              <Button className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-medium transition-all duration-300 hover:scale-105 shadow-lg rounded-xl">
-                <Zap className="mr-2 h-4 w-4" />
-                Utiliser le générateur
-              </Button>
-            </Link>
+                  <p className="text-sm text-white/70 mb-4 leading-relaxed font-medium">
+                    {generator.description}
+                  </p>
 
-            {/* Générateur Oraux */}
-            <Link
-              to="/generator/orals-unified"
-              className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 group flex flex-col items-center text-center border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50"
-              style={{ animationDelay: '0.6s' }}
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Mic className="h-8 w-8 text-orange-600 transition-colors" />
-              </div>
-              <h3 className="font-bold text-xl mb-3 text-gray-900 transition-colors">Oraux</h3>
-              <p className="text-sm text-gray-600 mb-4 leading-relaxed transition-colors">Questions et réponses orales</p>
-              <div className="space-y-1 text-xs w-full mb-4">
-                <div className="flex items-center text-orange-600 transition-colors">
-                  <span className="mr-2">✓</span>
-                  <span>Questions types concours</span>
-                </div>
-                <div className="flex items-center text-orange-600 transition-colors">
-                  <span className="mr-2">✓</span>
-                  <span>Réponses générées</span>
-                </div>
-                <div className="flex items-center text-orange-600 transition-colors">
-                  <span className="mr-2">✓</span>
-                  <span>Entraînement oral</span>
-                </div>
-              </div>
-              <Button className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-medium transition-all duration-300 hover:scale-105 shadow-lg rounded-xl">
-                <Zap className="mr-2 h-4 w-4" />
-                Utiliser le générateur
-              </Button>
-            </Link>
+                  <div className="space-y-2 mb-5">
+                    {generator.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center text-sm text-orange-400 font-semibold">
+                        <span className="mr-2">✓</span>
+                        <span>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
 
-            {/* Chat-bot prépa */}
-            <Link
-              to="/generator/prepa-chatbot"
-              className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 group flex flex-col items-center text-center border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50"
-              style={{ animationDelay: '0.7s' }}
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Heart className="h-8 w-8 text-orange-600 transition-colors" />
-              </div>
-              <h3 className="font-bold text-xl mb-3 text-gray-900 transition-colors">Chat-bot</h3>
-              <p className="text-sm text-gray-600 mb-4 leading-relaxed transition-colors">Conseils et motivation</p>
-              <div className="space-y-1 text-xs w-full mb-4">
-                <div className="flex items-center text-orange-600 transition-colors">
-                  <span className="mr-2">✓</span>
-                  <span>Conseils méthodologiques</span>
+                  <Button className="w-full bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white font-bold rounded-xl shadow-lg shadow-orange-500/30 group-hover:shadow-xl transition-all duration-300">
+                    <Zap className="mr-2 h-4 w-4" />
+                    Utiliser le générateur
+                  </Button>
                 </div>
-                <div className="flex items-center text-orange-600 transition-colors">
-                  <span className="mr-2">✓</span>
-                  <span>Motivation quotidienne</span>
-                </div>
-                <div className="flex items-center text-orange-600 transition-colors">
-                  <span className="mr-2">✓</span>
-                  <span>Bien-être prépa</span>
-                </div>
-              </div>
-              <Button className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-medium transition-all duration-300 hover:scale-105 shadow-lg rounded-xl">
-                <Zap className="mr-2 h-4 w-4" />
-                Utiliser le générateur
-              </Button>
-            </Link>
+              </Link>
+            ))}
           </div>
 
-          {/* Bouton CTA vers tous les générateurs */}
-          <div className="fade-in-up flex justify-center mt-12" style={{ animationDelay: '0.8s' }}>
+          {/* CTA Button */}
+          <div className="fade-in-up flex justify-center" style={{ animationDelay: '0.4s' }}>
             <Link to="/generator">
-              <Button className="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 flex items-center gap-2">
-                <ChevronRight className="h-5 w-5" />
-                Tous nos générateurs
+              <Button className="px-10 py-7 text-lg font-bold bg-white hover:bg-gray-100 text-gray-900 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
+                <span className="flex items-center gap-2">
+                  Tous nos générateurs
+                  <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </span>
               </Button>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Séparateur blanc */}
-      <div className="h-2 sm:h-3 md:h-4" style={{ backgroundColor: 'var(--page-bg)' }}></div>
-
       {/* Section 4: Avis d'élèves */}
       <SuperprofReviewsSection />
-
-      {/* Séparateur blanc */}
-      <div className="h-2 sm:h-3 md:h-4" style={{ backgroundColor: 'var(--page-bg)' }}></div>
 
       {/* Section 5: Interview Europe 1 */}
       <PodcastSection />
 
-      {/* Séparateur blanc */}
-      <div className="h-2 sm:h-3 md:h-4" style={{ backgroundColor: 'var(--page-bg)' }}></div>
-
       {/* Section 6: Partenaires */}
       <PartnersSection />
-
-      {/* Section Appel à l'action - Supprimée */}
-      {/* <CallToActionSection /> */}
 
       {/* Styles pour les animations */}
       <style>{`
@@ -474,33 +331,6 @@ const HomePage: React.FC = () => {
           }
         }
 
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0px) translateX(0px);
-          }
-          50% {
-            transform: translateY(-20px) translateX(10px);
-          }
-        }
-
-        @keyframes floatDelayed {
-          0%, 100% {
-            transform: translateY(0px) translateX(0px);
-          }
-          50% {
-            transform: translateY(20px) translateX(-10px);
-          }
-        }
-
-        @keyframes floatSlow {
-          0%, 100% {
-            transform: translateY(0px) translateX(0px);
-          }
-          50% {
-            transform: translateY(15px) translateX(15px);
-          }
-        }
-
         .fade-in-up, .scale-in {
           opacity: 0;
         }
@@ -511,18 +341,6 @@ const HomePage: React.FC = () => {
 
         .scale-in.animate-in {
           animation: scaleIn 0.6s ease-out forwards;
-        }
-
-        .animate-float {
-          animation: float 8s ease-in-out infinite;
-        }
-
-        .animate-float-delayed {
-          animation: floatDelayed 10s ease-in-out infinite;
-        }
-
-        .animate-float-slow {
-          animation: floatSlow 12s ease-in-out infinite;
         }
       `}</style>
     </div>
