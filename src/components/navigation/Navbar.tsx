@@ -8,7 +8,7 @@ import { ThemeToggle } from '@/components/ThemeToggle';
 import { GlobalSearch } from '@/components/search/GlobalSearch';
 import { MobileSearch } from '@/components/search/MobileSearch';
 import { SearchTrigger } from '@/components/search/SearchTrigger';
-import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, Code, Languages, Globe, UserCheck, Calculator, Award, Star, Youtube, TrendingUp, Settings, Mail } from 'lucide-react';
+import { LogOut, Menu, X, ChevronDown, FileText, Users, User, BookOpen, Package, Radio, Instagram, Linkedin, GraduationCap, Handshake, Code, Languages, Globe, UserCheck, Calculator, Award, Star, Youtube, TrendingUp, Settings, Mail, LayoutDashboard } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from '@/components/ui/dropdown-menu';
@@ -503,6 +503,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
             <ThemeToggle variant="icon" />
             {currentUser ? (
               <div className="flex items-center space-x-4 ml-4">
+                <Link to="/dashboard" className="text-sm text-foreground hover:text-primary transition flex items-center gap-1" onClick={closeMenu}><LayoutDashboard className="h-3 w-3" />Dashboard</Link>
                 {isProfessor && (
                   <Link to="/prof" className="text-sm text-foreground hover:text-primary transition flex items-center gap-1" onClick={closeMenu}><UserCheck className="h-3 w-3" />Prof</Link>
                 )}
@@ -704,6 +705,10 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
         <div className="mt-4">
           {currentUser ? (
             <div className="grid grid-cols-2 gap-4">
+              <Link to="/dashboard" className="text-base py-2 border-b border-gray-200 flex items-center gap-2 bg-white px-3 rounded-md" onClick={closeMenu}>
+                <LayoutDashboard className="h-5 w-5 text-blue-600" />
+                Dashboard
+              </Link>
               {isProfessor && (
                 <Link to="/prof" className="text-base py-2 border-b border-gray-200 flex items-center gap-2 bg-white px-3 rounded-md" onClick={closeMenu}>
                   <UserCheck className="h-5 w-5 text-primary" />
