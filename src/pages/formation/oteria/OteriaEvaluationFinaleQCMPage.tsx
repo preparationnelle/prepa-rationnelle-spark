@@ -608,299 +608,298 @@ const OteriaEvaluationFinaleQCMPage = () => {
                   {gradeInfo.grade}
                 </div>
               </div>
-            </div>
-            {saveMessage && (
-              <div className={`text-center mb-8 font-medium ${saveMessage.includes('Erreur') ? 'text-red-600' : 'text-green-600'}`}>
-                {saveMessage}
-              </div>
-            )}
+              {saveMessage && (
+                <div className={`text-center mb-8 font-medium ${saveMessage.includes('Erreur') ? 'text-red-600' : 'text-green-600'}`}>
+                  {saveMessage}
+                </div>
+              )}
 
-            <div className="mb-8">
-              <h3 className="text-lg font-semibold mb-4">Répartition par chapitre :</h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
-                {Array.from({ length: 13 }, (_, i) => i + 1).map(chapter => {
-                  const chapterQuestions = questions.filter(q => q.chapter === chapter);
-                  const chapterCorrect = chapterQuestions.filter(q =>
-                    selectedAnswers[q.id] === q.correctAnswer
-                  ).length;
+              <div className="mb-8">
+                <h3 className="text-lg font-semibold mb-4">Répartition par chapitre :</h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+                  {Array.from({ length: 13 }, (_, i) => i + 1).map(chapter => {
+                    const chapterQuestions = questions.filter(q => q.chapter === chapter);
+                    const chapterCorrect = chapterQuestions.filter(q =>
+                      selectedAnswers[q.id] === q.correctAnswer
+                    ).length;
+                    return (
+                      <div key={chapter} className="bg-gray-50 p-3 rounded-lg">
+                        <div className="font-medium">Chapitre {chapter}</div>
+                        <div className="text-gray-600">{chapterCorrect}/{chapterQuestions.length}</div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="space-y-4 mb-8">
+                <h3 className="text-lg font-semibold">Questions incorrectes :</h3>
+                {questions.map((question, index) => {
+                  const userAnswer = selectedAnswers[question.id];
+                  const isCorrect = userAnswer === question.correctAnswer;
+
+                  if (isCorrect) return null;
+
                   return (
-                    <div key={chapter} className="bg-gray-50 p-3 rounded-lg">
-                      <div className="font-medium">Chapitre {chapter}</div>
-                      <div className="text-gray-600">{chapterCorrect}/{chapterQuestions.length}</div>
+                    <div key={question.id} className="p-4 rounded-lg border-l-4 border-red-500 bg-red-50">
+                      <div className="flex items-center gap-3 mb-2">
+                        <XCircle className="h-5 w-5 text-red-600" />
+                        <span className="font-medium">Question {index + 1} - Chapitre {question.chapter}</span>
+                        <Badge variant="outline" className="text-xs">
+                          {question.category}
+                        </Badge>
+                      </div>
+                      <div className="text-sm text-gray-600 mb-2">
+                        <strong>Question :</strong> {question.question}
+                      </div>
+                      <div className="text-sm text-gray-600 mb-2">
+                        <strong>Votre réponse :</strong> {question.options[userAnswer]}
+                      </div>
+                      <div className="text-sm text-green-600">
+                        <strong>Bonne réponse :</strong> {question.options[question.correctAnswer]}
+                      </div>
+                      <div className="text-sm text-blue-600 mt-2">
+                        <strong>Explication :</strong> {question.explanation}
+                      </div>
                     </div>
                   );
                 })}
               </div>
-            </div>
 
-            <div className="space-y-4 mb-8">
-              <h3 className="text-lg font-semibold">Questions incorrectes :</h3>
-              {questions.map((question, index) => {
-                const userAnswer = selectedAnswers[question.id];
-                const isCorrect = userAnswer === question.correctAnswer;
-
-                if (isCorrect) return null;
-
-                return (
-                  <div key={question.id} className="p-4 rounded-lg border-l-4 border-red-500 bg-red-50">
-                    <div className="flex items-center gap-3 mb-2">
-                      <XCircle className="h-5 w-5 text-red-600" />
-                      <span className="font-medium">Question {index + 1} - Chapitre {question.chapter}</span>
-                      <Badge variant="outline" className="text-xs">
-                        {question.category}
-                      </Badge>
-                    </div>
-                    <div className="text-sm text-gray-600 mb-2">
-                      <strong>Question :</strong> {question.question}
-                    </div>
-                    <div className="text-sm text-gray-600 mb-2">
-                      <strong>Votre réponse :</strong> {question.options[userAnswer]}
-                    </div>
-                    <div className="text-sm text-green-600">
-                      <strong>Bonne réponse :</strong> {question.options[question.correctAnswer]}
-                    </div>
-                    <div className="text-sm text-blue-600 mt-2">
-                      <strong>Explication :</strong> {question.explanation}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="flex gap-4 justify-center">
-              <Button onClick={resetQuiz} className="flex items-center gap-2">
-                <Target className="h-4 w-4" />
-                Refaire l'évaluation
-              </Button>
-              <Link to="/articles/oteria-cyber-school">
-                <Button variant="outline" className="flex items-center gap-2">
-                  <Home className="h-4 w-4" />
-                  Retour au programme
+              <div className="flex gap-4 justify-center">
+                <Button onClick={resetQuiz} className="flex items-center gap-2">
+                  <Target className="h-4 w-4" />
+                  Refaire l'évaluation
                 </Button>
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+                <Link to="/articles/oteria-cyber-school">
+                  <Button variant="outline" className="flex items-center gap-2">
+                    <Home className="h-4 w-4" />
+                    Retour au programme
+                  </Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div >
     );
   }
 
-return (
-  <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-teal-50">
-    {/* Fil d'Ariane */}
-    <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
-      <div className="container mx-auto px-4 py-2">
-        <div className="flex items-center text-xs text-teal-600">
-          <Link to="/" className="flex items-center gap-1 hover:text-teal-700 transition-colors">
-            <Home className="h-3 w-3" />
-            <span>Accueil</span>
-          </Link>
-          <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
-          <Link to="/articles" className="hover:text-teal-700 transition-colors">
-            Niveau
-          </Link>
-          <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
-          <Link to="/articles/oteria-cyber-school" className="hover:text-teal-700 transition-colors">
-            MATHÉMATIQUES, LOGIQUE ET ALGORITHMIQUE
-          </Link>
-          <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
-          <span className="text-teal-600 font-medium">Évaluation Finale</span>
-        </div>
-      </div>
-    </nav>
-
-    <div className="container mx-auto py-8 px-4 relative z-10">
-      {/* Header */}
-      <div className="text-center mb-8">
-        <div className="flex justify-center mb-4">
-          <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center">
-            <Award className="h-8 w-8 text-teal-600" />
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-teal-50">
+      {/* Fil d'Ariane */}
+      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+        <div className="container mx-auto px-4 py-2">
+          <div className="flex items-center text-xs text-teal-600">
+            <Link to="/" className="flex items-center gap-1 hover:text-teal-700 transition-colors">
+              <Home className="h-3 w-3" />
+              <span>Accueil</span>
+            </Link>
+            <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
+            <Link to="/articles" className="hover:text-teal-700 transition-colors">
+              Niveau
+            </Link>
+            <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
+            <Link to="/articles/oteria-cyber-school" className="hover:text-teal-700 transition-colors">
+              MATHÉMATIQUES, LOGIQUE ET ALGORITHMIQUE
+            </Link>
+            <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
+            <span className="text-teal-600 font-medium">Évaluation Finale</span>
           </div>
         </div>
-        <h1 className="text-3xl font-bold mb-4 text-teal-900">Évaluation Finale - QCM Complet</h1>
-        <p className="text-lg text-blue-800 max-w-3xl mx-auto mb-6">
-          Testez vos connaissances acquises tout au long du programme Bachelor 2
-        </p>
+      </nav>
 
-        {/* Informations d'évaluation */}
-        <div className="max-w-2xl mx-auto mb-6">
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 shadow-sm">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
-              <div className="flex flex-col items-center">
-                <span className="text-sm text-blue-600 font-medium mb-1">Questions</span>
-                <span className="text-2xl font-bold text-blue-900">50</span>
+      <div className="container mx-auto py-8 px-4 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <div className="flex justify-center mb-4">
+            <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center">
+              <Award className="h-8 w-8 text-teal-600" />
+            </div>
+          </div>
+          <h1 className="text-3xl font-bold mb-4 text-teal-900">Évaluation Finale - QCM Complet</h1>
+          <p className="text-lg text-blue-800 max-w-3xl mx-auto mb-6">
+            Testez vos connaissances acquises tout au long du programme Bachelor 2
+          </p>
+
+          {/* Informations d'évaluation */}
+          <div className="max-w-2xl mx-auto mb-6">
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 shadow-sm">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
+                <div className="flex flex-col items-center">
+                  <span className="text-sm text-blue-600 font-medium mb-1">Questions</span>
+                  <span className="text-2xl font-bold text-blue-900">50</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <span className="text-sm text-blue-600 font-medium mb-1">Durée</span>
+                  <span className="text-2xl font-bold text-blue-900">90 min</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <span className="text-sm text-blue-600 font-medium mb-1">Progression</span>
+                  <span className="text-2xl font-bold text-blue-900">{currentQuestion + 1}/50</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <span className="text-sm text-blue-600 font-medium mb-1">Temps restant</span>
+                  <span className="text-2xl font-bold text-blue-900 flex items-center gap-2">
+                    <Clock className="h-5 w-5" />
+                    {formatTime(timeLeft)}
+                  </span>
+                </div>
               </div>
-              <div className="flex flex-col items-center">
-                <span className="text-sm text-blue-600 font-medium mb-1">Durée</span>
-                <span className="text-2xl font-bold text-blue-900">90 min</span>
-              </div>
-              <div className="flex flex-col items-center">
-                <span className="text-sm text-blue-600 font-medium mb-1">Progression</span>
-                <span className="text-2xl font-bold text-blue-900">{currentQuestion + 1}/50</span>
-              </div>
-              <div className="flex flex-col items-center">
-                <span className="text-sm text-blue-600 font-medium mb-1">Temps restant</span>
-                <span className="text-2xl font-bold text-blue-900 flex items-center gap-2">
-                  <Clock className="h-5 w-5" />
-                  {formatTime(timeLeft)}
-                </span>
-              </div>
+            </div>
+          </div>
+
+          {/* Barre de progression */}
+          <div className="max-w-2xl mx-auto mb-6">
+            <Progress value={progress} className="h-2" />
+            <div className="text-center mt-2 text-sm text-gray-600">
+              {currentQuestion + 1} sur {questions.length} questions
             </div>
           </div>
         </div>
 
-        {/* Barre de progression */}
-        <div className="max-w-2xl mx-auto mb-6">
-          <Progress value={progress} className="h-2" />
-          <div className="text-center mt-2 text-sm text-gray-600">
-            {currentQuestion + 1} sur {questions.length} questions
-          </div>
-        </div>
-      </div>
+        {/* Question */}
+        <div className="max-w-2xl mx-auto mb-8">
+          <Card className="shadow-lg border border-blue-200">
+            <CardContent className="p-6">
+              <div className="mb-4">
+                <Badge className="mb-3 mr-2" variant="outline">
+                  Chapitre {currentQ.chapter}
+                </Badge>
+                <Badge className="mb-3" variant="secondary">
+                  {currentQ.category}
+                </Badge>
+                <h3 className="text-xl font-bold text-gray-900 leading-relaxed mt-3">
+                  {currentQ.question}
+                </h3>
+              </div>
 
-      {/* Question */}
-      <div className="max-w-2xl mx-auto mb-8">
-        <Card className="shadow-lg border border-blue-200">
-          <CardContent className="p-6">
-            <div className="mb-4">
-              <Badge className="mb-3 mr-2" variant="outline">
-                Chapitre {currentQ.chapter}
-              </Badge>
-              <Badge className="mb-3" variant="secondary">
-                {currentQ.category}
-              </Badge>
-              <h3 className="text-xl font-bold text-gray-900 leading-relaxed mt-3">
-                {currentQ.question}
-              </h3>
-            </div>
+              <div className="space-y-3">
+                {currentQ.options.map((option, index) => {
+                  const isSelected = selectedAnswers[currentQ.id] === index;
+                  const isCorrect = index === currentQ.correctAnswer;
+                  const showCorrect = showExplanation && isCorrect;
+                  const showIncorrect = showExplanation && isSelected && !isCorrect;
 
-            <div className="space-y-3">
-              {currentQ.options.map((option, index) => {
-                const isSelected = selectedAnswers[currentQ.id] === index;
-                const isCorrect = index === currentQ.correctAnswer;
-                const showCorrect = showExplanation && isCorrect;
-                const showIncorrect = showExplanation && isSelected && !isCorrect;
-
-                return (
-                  <button
-                    key={index}
-                    onClick={() => handleAnswerSelect(currentQ.id, index)}
-                    disabled={showExplanation}
-                    className={`w-full p-4 text-left rounded-lg border transition-all ${showCorrect
-                      ? 'border-green-500 bg-green-50 text-green-800'
-                      : showIncorrect
-                        ? 'border-red-500 bg-red-50 text-red-800'
-                        : isSelected
-                          ? 'border-blue-500 bg-blue-50 text-blue-800'
-                          : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-                      }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${showCorrect
-                        ? 'border-green-500 bg-green-500'
+                  return (
+                    <button
+                      key={index}
+                      onClick={() => handleAnswerSelect(currentQ.id, index)}
+                      disabled={showExplanation}
+                      className={`w-full p-4 text-left rounded-lg border transition-all ${showCorrect
+                        ? 'border-green-500 bg-green-50 text-green-800'
                         : showIncorrect
-                          ? 'border-red-500 bg-red-500'
+                          ? 'border-red-500 bg-red-50 text-red-800'
                           : isSelected
-                            ? 'border-blue-500 bg-blue-500'
-                            : 'border-gray-400'
-                        }`}>
-                        {(showCorrect || (isSelected && !showIncorrect)) && (
-                          <div className="w-2 h-2 bg-white rounded-full"></div>
-                        )}
+                            ? 'border-blue-500 bg-blue-50 text-blue-800'
+                            : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                        }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${showCorrect
+                          ? 'border-green-500 bg-green-500'
+                          : showIncorrect
+                            ? 'border-red-500 bg-red-500'
+                            : isSelected
+                              ? 'border-blue-500 bg-blue-500'
+                              : 'border-gray-400'
+                          }`}>
+                          {(showCorrect || (isSelected && !showIncorrect)) && (
+                            <div className="w-2 h-2 bg-white rounded-full"></div>
+                          )}
+                        </div>
+                        <span className="font-medium">{option}</span>
                       </div>
-                      <span className="font-medium">{option}</span>
-                    </div>
-                  </button>
-                );
-              })}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {showExplanation && (
+                <div className="mt-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                  <h4 className="font-semibold text-blue-900 mb-2">Explication :</h4>
+                  <p className="text-blue-800">{currentQ.explanation}</p>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Navigation */}
+        <div className="max-w-2xl mx-auto">
+          <div className="flex justify-between items-center">
+            <Button
+              onClick={() => setCurrentQuestion(prev => Math.max(0, prev - 1))}
+              disabled={currentQuestion === 0}
+              variant="outline"
+            >
+              ← Précédent
+            </Button>
+
+            <div className="flex gap-3">
+              {!showExplanation && isAnswered && (
+                <Button
+                  onClick={() => setShowExplanation(true)}
+                  variant="outline"
+                  className="flex items-center gap-2"
+                >
+                  <CheckCircle className="h-4 w-4" />
+                  Vérifier
+                </Button>
+              )}
+
+              {showExplanation && currentQuestion < questions.length - 1 && (
+                <Button
+                  onClick={() => {
+                    setCurrentQuestion(prev => prev + 1);
+                    setShowExplanation(false);
+                  }}
+                  className="flex items-center gap-2"
+                >
+                  Suivant
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+              )}
+
+              {showExplanation && currentQuestion === questions.length - 1 && (
+                <Button
+                  onClick={handleFinish}
+                  className="flex items-center gap-2 bg-green-600 hover:bg-green-700"
+                >
+                  <Trophy className="h-4 w-4" />
+                  Terminer l'évaluation
+                </Button>
+              )}
             </div>
 
-            {showExplanation && (
-              <div className="mt-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
-                <h4 className="font-semibold text-blue-900 mb-2">Explication :</h4>
-                <p className="text-blue-800">{currentQ.explanation}</p>
-              </div>
-            )}
-          </CardContent>
-        </Card>
-      </div>
+            <Button
+              onClick={() => setCurrentQuestion(prev => Math.min(questions.length - 1, prev + 1))}
+              disabled={currentQuestion === questions.length - 1}
+              variant="outline"
+            >
+              Suivant →
+            </Button>
+          </div>
+        </div>
 
-      {/* Navigation */}
-      <div className="max-w-2xl mx-auto">
-        <div className="flex justify-between items-center">
-          <Button
-            onClick={() => setCurrentQuestion(prev => Math.max(0, prev - 1))}
-            disabled={currentQuestion === 0}
-            variant="outline"
-          >
-            ← Précédent
-          </Button>
-
+        {/* Navigation finale */}
+        <div className="flex justify-between items-center bg-blue-50 p-6 rounded-lg mt-8">
+          <Link to="/articles/oteria-cyber-school">
+            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+              ← Programme principal
+            </button>
+          </Link>
           <div className="flex gap-3">
-            {!showExplanation && isAnswered && (
-              <Button
-                onClick={() => setShowExplanation(true)}
-                variant="outline"
-                className="flex items-center gap-2"
-              >
-                <CheckCircle className="h-4 w-4" />
-                Vérifier
-              </Button>
-            )}
-
-            {showExplanation && currentQuestion < questions.length - 1 && (
-              <Button
-                onClick={() => {
-                  setCurrentQuestion(prev => prev + 1);
-                  setShowExplanation(false);
-                }}
-                className="flex items-center gap-2"
-              >
-                Suivant
-                <ChevronRight className="h-4 w-4" />
-              </Button>
-            )}
-
-            {showExplanation && currentQuestion === questions.length - 1 && (
-              <Button
-                onClick={handleFinish}
-                className="flex items-center gap-2 bg-green-600 hover:bg-green-700"
-              >
-                <Trophy className="h-4 w-4" />
-                Terminer l'évaluation
-              </Button>
-            )}
+            <div className="text-center">
+              <div className="text-sm text-gray-600">Temps restant</div>
+              <div className="text-lg font-bold text-teal-600">{formatTime(timeLeft)}</div>
+            </div>
           </div>
-
-          <Button
-            onClick={() => setCurrentQuestion(prev => Math.min(questions.length - 1, prev + 1))}
-            disabled={currentQuestion === questions.length - 1}
-            variant="outline"
-          >
-            Suivant →
-          </Button>
+          <div className="text-blue-600 font-medium">Évaluation finale →</div>
         </div>
-      </div>
-
-      {/* Navigation finale */}
-      <div className="flex justify-between items-center bg-blue-50 p-6 rounded-lg mt-8">
-        <Link to="/articles/oteria-cyber-school">
-          <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
-            ← Programme principal
-          </button>
-        </Link>
-        <div className="flex gap-3">
-          <div className="text-center">
-            <div className="text-sm text-gray-600">Temps restant</div>
-            <div className="text-lg font-bold text-teal-600">{formatTime(timeLeft)}</div>
-          </div>
-        </div>
-        <div className="text-blue-600 font-medium">Évaluation finale →</div>
       </div>
     </div>
-  </div>
-);
+  );
 };
 
 export default OteriaEvaluationFinaleQCMPage;

@@ -356,7 +356,7 @@ const OteriaPolynomesQCMPage = () => {
 
                     return (
                       <div key={q.id} className={`p-4 rounded-lg border-2 ${!hasAnswered ? 'border-gray-300 bg-gray-50' :
-                          isCorrect ? 'border-green-500 bg-green-50' : 'border-red-500 bg-red-50'
+                        isCorrect ? 'border-green-500 bg-green-50' : 'border-red-500 bg-red-50'
                         }`}>
                         <div className="flex items-start gap-3 mb-3">
                           {!hasAnswered ? (
@@ -389,180 +389,179 @@ const OteriaPolynomesQCMPage = () => {
                     );
                   })}
                 </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Fil d'Ariane */}
+      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+        <div className="container mx-auto px-4 py-2">
+          <div className="flex items-center text-xs text-blue-600">
+            <Link to="/" className="flex items-center gap-1 hover:text-blue-700 transition-colors">
+              <Home className="h-3 w-3" />
+              <span>Accueil</span>
+            </Link>
+            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
+            <Link to="/articles" className="hover:text-blue-700 transition-colors">
+              Niveau
+            </Link>
+            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
+            <Link to="/articles/oteria-cyber-school" className="hover:text-blue-700 transition-colors">
+              OTERIA Cyber School
+            </Link>
+            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
+            <span className="text-blue-600 font-medium">Séance 6 - QCM</span>
+          </div>
+        </div>
+      </nav>
+
+      <div className="container mx-auto py-8 px-4">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <div className="flex justify-center mb-4">
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+              <Zap className="h-8 w-8 text-blue-600" />
+            </div>
+          </div>
+          <h1 className="text-3xl font-bold mb-4 text-blue-900">QCM - Polynômes & dichotomie</h1>
+          <p className="text-lg text-blue-800 max-w-3xl mx-auto">
+            Testez vos connaissances sur les polynômes, la division euclidienne et l'algorithme de dichotomie
+          </p>
+        </div>
+
+        {/* Progress Bar */}
+        <div className="max-w-2xl mx-auto mb-8">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-sm font-medium text-blue-900">
+              Question {currentQuestion + 1} sur {questions.length}
+            </span>
+            <span className="text-sm font-medium text-blue-900">
+              {Object.keys(selectedAnswers).length}/{questions.length} réponses
+            </span>
+          </div>
+          <Progress value={progressPercentage} className="h-2" />
+        </div>
+
+        {/* Question Card */}
+        <div className="max-w-2xl mx-auto mb-8">
+          <Card className="shadow-2xl">
+            <CardContent className="p-8">
+              <div className="mb-6">
+                <Badge className="mb-4">{currentQ.category}</Badge>
+                <h3 className="text-xl font-semibold text-blue-900 mb-6">
+                  {currentQ.question}
+                </h3>
+              </div>
+
+              <div className="space-y-3">
+                {currentQ.options.map((option, index) => {
+                  const isSelected = selectedAnswers[currentQ.id] === index;
+
+                  return (
+                    <button
+                      key={index}
+                      onClick={() => handleAnswerSelect(currentQ.id, index)}
+                      className={`w-full p-4 text-left rounded-lg border transition-all ${isSelected
+                        ? 'border-blue-500 bg-blue-50 text-blue-800'
+                        : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                        }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${isSelected
+                          ? 'border-blue-500 bg-blue-500'
+                          : 'border-gray-400'
+                          }`}>
+                          {isSelected && (
+                            <div className="w-2 h-2 bg-white rounded-full"></div>
+                          )}
+                        </div>
+                        <span className="font-medium">{option}</span>
+                      </div>
+                    </button>
+                  );
+                })}
               </div>
             </CardContent>
           </Card>
         </div>
-      </div>
-      </div >
-    );
-  }
 
-return (
-  <div className="min-h-screen bg-white">
-    {/* Fil d'Ariane */}
-    <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
-      <div className="container mx-auto px-4 py-2">
-        <div className="flex items-center text-xs text-blue-600">
-          <Link to="/" className="flex items-center gap-1 hover:text-blue-700 transition-colors">
-            <Home className="h-3 w-3" />
-            <span>Accueil</span>
-          </Link>
-          <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-          <Link to="/articles" className="hover:text-blue-700 transition-colors">
-            Niveau
-          </Link>
-          <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-          <Link to="/articles/oteria-cyber-school" className="hover:text-blue-700 transition-colors">
-            OTERIA Cyber School
-          </Link>
-          <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-          <span className="text-blue-600 font-medium">Séance 6 - QCM</span>
-        </div>
-      </div>
-    </nav>
-
-    <div className="container mx-auto py-8 px-4">
-      {/* Header */}
-      <div className="text-center mb-8">
-        <div className="flex justify-center mb-4">
-          <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
-            <Zap className="h-8 w-8 text-blue-600" />
-          </div>
-        </div>
-        <h1 className="text-3xl font-bold mb-4 text-blue-900">QCM - Polynômes & dichotomie</h1>
-        <p className="text-lg text-blue-800 max-w-3xl mx-auto">
-          Testez vos connaissances sur les polynômes, la division euclidienne et l'algorithme de dichotomie
-        </p>
-      </div>
-
-      {/* Progress Bar */}
-      <div className="max-w-2xl mx-auto mb-8">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-sm font-medium text-blue-900">
-            Question {currentQuestion + 1} sur {questions.length}
-          </span>
-          <span className="text-sm font-medium text-blue-900">
-            {Object.keys(selectedAnswers).length}/{questions.length} réponses
-          </span>
-        </div>
-        <Progress value={progressPercentage} className="h-2" />
-      </div>
-
-      {/* Question Card */}
-      <div className="max-w-2xl mx-auto mb-8">
-        <Card className="shadow-2xl">
-          <CardContent className="p-8">
-            <div className="mb-6">
-              <Badge className="mb-4">{currentQ.category}</Badge>
-              <h3 className="text-xl font-semibold text-blue-900 mb-6">
-                {currentQ.question}
-              </h3>
-            </div>
-
-            <div className="space-y-3">
-              {currentQ.options.map((option, index) => {
-                const isSelected = selectedAnswers[currentQ.id] === index;
-
-                return (
-                  <button
-                    key={index}
-                    onClick={() => handleAnswerSelect(currentQ.id, index)}
-                    className={`w-full p-4 text-left rounded-lg border transition-all ${isSelected
-                        ? 'border-blue-500 bg-blue-50 text-blue-800'
-                        : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-                      }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${isSelected
-                          ? 'border-blue-500 bg-blue-500'
-                          : 'border-gray-400'
-                        }`}>
-                        {isSelected && (
-                          <div className="w-2 h-2 bg-white rounded-full"></div>
-                        )}
-                      </div>
-                      <span className="font-medium">{option}</span>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Navigation */}
-      <div className="max-w-2xl mx-auto">
-        <div className="flex justify-between items-center gap-4">
-          <Button
-            onClick={() => setCurrentQuestion(prev => Math.max(0, prev - 1))}
-            disabled={currentQuestion === 0}
-            variant="outline"
-          >
-            ← Précédent
-          </Button>
-
-          <div className="flex flex-col items-center gap-2">
-            <div className="text-sm font-medium text-gray-600">
-              Question {currentQuestion + 1} / {questions.length}
-            </div>
+        {/* Navigation */}
+        <div className="max-w-2xl mx-auto">
+          <div className="flex justify-between items-center gap-4">
             <Button
-              onClick={handleFinish}
-              className="flex items-center gap-2 bg-green-600 hover:bg-green-700"
-              size="lg"
+              onClick={() => setCurrentQuestion(prev => Math.max(0, prev - 1))}
+              disabled={currentQuestion === 0}
+              variant="outline"
             >
-              <Trophy className="h-5 w-5" />
-              Voir le corrigé
-              <span className="text-xs">
-                ({Object.keys(selectedAnswers).length}/{questions.length} réponses)
-              </span>
+              ← Précédent
+            </Button>
+
+            <div className="flex flex-col items-center gap-2">
+              <div className="text-sm font-medium text-gray-600">
+                Question {currentQuestion + 1} / {questions.length}
+              </div>
+              <Button
+                onClick={handleFinish}
+                className="flex items-center gap-2 bg-green-600 hover:bg-green-700"
+                size="lg"
+              >
+                <Trophy className="h-5 w-5" />
+                Voir le corrigé
+                <span className="text-xs">
+                  ({Object.keys(selectedAnswers).length}/{questions.length} réponses)
+                </span>
+              </Button>
+            </div>
+
+            <Button
+              onClick={() => setCurrentQuestion(prev => Math.min(questions.length - 1, prev + 1))}
+              disabled={currentQuestion === questions.length - 1}
+              variant="outline"
+            >
+              Suivant →
             </Button>
           </div>
-
-          <Button
-            onClick={() => setCurrentQuestion(prev => Math.min(questions.length - 1, prev + 1))}
-            disabled={currentQuestion === questions.length - 1}
-            variant="outline"
-          >
-            Suivant →
-          </Button>
         </div>
-      </div>
 
-      {/* Navigation finale */}
-      <div className="flex justify-between items-center bg-blue-50 p-6 rounded-lg mt-8 max-w-4xl mx-auto">
-        <Link to="/formation/oteria/polynomes-exercices">
-          <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
-            ← Exercices
-          </button>
-        </Link>
-        <div className="flex gap-3">
-          <Link to="/formation/oteria/polynomes-approximation-cours">
-            <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-              <BookOpen className="h-4 w-4" />
-              Cours
+        {/* Navigation finale */}
+        <div className="flex justify-between items-center bg-blue-50 p-6 rounded-lg mt-8 max-w-4xl mx-auto">
+          <Link to="/formation/oteria/polynomes-exercices">
+            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+              ← Exercices
             </button>
           </Link>
-          <Link to="/formation/oteria/polynomes-flashcards">
-            <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-              <Calculator className="h-4 w-4" />
-              Flashcards
-            </button>
-          </Link>
-          <Link to="/articles/oteria-cyber-school">
-            <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
-              Retour au programme
-            </button>
+          <div className="flex gap-3">
+            <Link to="/formation/oteria/polynomes-approximation-cours">
+              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
+                <BookOpen className="h-4 w-4" />
+                Cours
+              </button>
+            </Link>
+            <Link to="/formation/oteria/polynomes-flashcards">
+              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
+                <Calculator className="h-4 w-4" />
+                Flashcards
+              </button>
+            </Link>
+            <Link to="/articles/oteria-cyber-school">
+              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                Retour au programme
+              </button>
+            </Link>
+          </div>
+          <Link to="/formation/oteria/fonctions-variable-reelle-cours">
+            <div className="text-blue-600 hover:text-blue-700 font-medium">Séance suivante →</div>
           </Link>
         </div>
-        <Link to="/formation/oteria/fonctions-variable-reelle-cours">
-          <div className="text-blue-600 hover:text-blue-700 font-medium">Séance suivante →</div>
-        </Link>
       </div>
     </div>
-  </div>
-);
+  );
 };
 
 export default OteriaPolynomesQCMPage;

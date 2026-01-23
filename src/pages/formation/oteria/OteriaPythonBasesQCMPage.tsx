@@ -343,7 +343,7 @@ const OteriaPythonBasesQCMPage = () => {
             </CardContent>
           </Card>
         </div>
-      </div >
+      </div>
     );
   }
 

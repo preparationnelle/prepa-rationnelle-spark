@@ -504,6 +504,9 @@ const PitchIntroPage = lazy(() => import('../pages/methodologie/PitchIntroPage')
 
 // Articles pages
 const ArticlesPrimairePage = lazy(() => import('../pages/ArticlesPrimairePage'));
+const AutonomiePrimairePage = lazy(() => import('../pages/articles/primaire/AutonomiePrimairePage'));
+const LectureEfficacePage = lazy(() => import('../pages/articles/primaire/LectureEfficacePage'));
+const MathsLudiquesPage = lazy(() => import('../pages/articles/primaire/MathsLudiquesPage'));
 const ArticlesCollegePage = lazy(() => import('../pages/ArticlesCollegePage'));
 const ArticlesLyceePage = lazy(() => import('../pages/ArticlesLyceePage'));
 const LyceeSecondePage = lazy(() => import('../pages/LyceeSecondePage'));
@@ -773,6 +776,9 @@ export const routes: RouteConfig[] = [
   { path: '/methodes/personnalite', component: MethodEntretiensPersonnalitePage, title: 'Méthodes Personnalité' },
   { path: '/articles', component: ArticlesPage, title: 'Conseils & Articles' },
   { path: '/articles/primaire', component: ArticlesPrimairePage, title: 'Articles Primaire' },
+  { path: '/articles/primaire/autonomie', component: AutonomiePrimairePage, title: 'Développer l\'autonomie en primaire' },
+  { path: '/articles/primaire/lecture', component: LectureEfficacePage, title: 'Méthodes de lecture efficace' },
+  { path: '/articles/primaire/maths-ludiques', component: MathsLudiquesPage, title: 'Mathématiques ludiques au primaire' },
   { path: '/articles/college', component: ArticlesCollegePage, title: 'Articles Collège' },
   { path: '/articles/lycee', component: ArticlesLyceePage, title: 'Articles Lycée' },
   { path: '/articles/lycee/seconde', component: LyceeSecondePage, title: 'Classe de Seconde' },
