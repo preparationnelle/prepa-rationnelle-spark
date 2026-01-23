@@ -4,6 +4,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { useAuth } from '@/context/AuthContext';
+import { supabase } from '@/integrations/supabase/client';
 import {
   Home,
   ChevronRight,
@@ -33,6 +35,9 @@ const OteriaPythonBasesQCMPage = () => {
   const [showResults, setShowResults] = useState(false);
   const [showExplanation, setShowExplanation] = useState(false);
   const [score, setScore] = useState(0);
+  const { currentUser } = useAuth();
+  const [saveMessage, setSaveMessage] = useState('');
+  const [isSaving, setIsSaving] = useState(false);
 
   const questions: Question[] = [
     {
@@ -214,10 +219,35 @@ const OteriaPythonBasesQCMPage = () => {
     return correct;
   };
 
-  const handleFinish = () => {
+  const handleFinish = async () => {
     const finalScore = calculateScore();
     setScore(finalScore);
     setShowResults(true);
+
+    if (currentUser) {
+      setIsSaving(true);
+      try {
+        const percentage = Math.round((finalScore / questions.length) * 100);
+        const { error } = await supabase
+          .from('qcm_results')
+          .insert({
+            user_id: currentUser.id,
+            qcm_id: 'oteria-python-bases',
+            title: 'Bases Python - QCM',
+            score: percentage,
+            total_questions: questions.length,
+            correct_answers: finalScore
+          });
+
+        if (error) throw error;
+        setSaveMessage('Résultat enregistré dans votre dashboard !');
+      } catch (error) {
+        console.error('Erreur sauvegarde:', error);
+        setSaveMessage('Erreur lors de la sauvegarde.');
+      } finally {
+        setIsSaving(false);
+      }
+    }
   };
 
   const resetQuiz = () => {
@@ -262,6 +292,11 @@ const OteriaPythonBasesQCMPage = () => {
                   {gradeInfo.grade}
                 </div>
               </div>
+              {saveMessage && (
+                <div className={`text-lg font-medium mb-6 ${saveMessage.includes('Erreur') ? 'text-red-600' : 'text-green-600'}`}>
+                  {saveMessage}
+                </div>
+              )}
 
               <div className="space-y-4 mb-8">
                 {questions.map((question, index) => {
@@ -308,7 +343,7 @@ const OteriaPythonBasesQCMPage = () => {
             </CardContent>
           </Card>
         </div>
-      </div>
+      </div >
     );
   }
 
@@ -409,26 +444,24 @@ const OteriaPythonBasesQCMPage = () => {
                       key={index}
                       onClick={() => handleAnswerSelect(currentQ.id, index)}
                       disabled={showExplanation}
-                      className={`w-full p-4 text-left rounded-lg border transition-all ${
-                        showCorrect
-                          ? 'border-green-500 bg-green-50 text-green-800'
-                          : showIncorrect
+                      className={`w-full p-4 text-left rounded-lg border transition-all ${showCorrect
+                        ? 'border-green-500 bg-green-50 text-green-800'
+                        : showIncorrect
                           ? 'border-red-500 bg-red-50 text-red-800'
                           : isSelected
-                          ? 'border-blue-500 bg-blue-50 text-blue-800'
-                          : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-                      }`}
+                            ? 'border-blue-500 bg-blue-50 text-blue-800'
+                            : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                        }`}
                     >
                       <div className="flex items-center gap-3">
-                        <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
-                          showCorrect
-                            ? 'border-green-500 bg-green-500'
-                            : showIncorrect
+                        <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${showCorrect
+                          ? 'border-green-500 bg-green-500'
+                          : showIncorrect
                             ? 'border-red-500 bg-red-500'
                             : isSelected
-                            ? 'border-blue-500 bg-blue-500'
-                            : 'border-gray-400'
-                        }`}>
+                              ? 'border-blue-500 bg-blue-500'
+                              : 'border-gray-400'
+                          }`}>
                           {(showCorrect || (isSelected && !showIncorrect)) && (
                             <div className="w-2 h-2 bg-white rounded-full"></div>
                           )}

@@ -7,9 +7,23 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Eye, EyeOff } from 'lucide-react';
 
+// Types de profils disponibles
+type ProfileType = 'prepa-ecg' | 'prepa-autre' | 'lycee' | 'parent' | 'oteria' | 'autre' | '';
+
+const PROFILE_OPTIONS = [
+  { value: 'prepa-ecg', label: 'Prépa ECG' },
+  { value: 'prepa-autre', label: 'Prépa autre' },
+  { value: 'lycee', label: 'Lycée' },
+  { value: 'parent', label: 'Parent' },
+  { value: 'oteria', label: 'OTERIA' },
+  { value: 'autre', label: 'Autre' },
+];
+
 const RegisterPage = () => {
+  const [profileType, setProfileType] = useState<ProfileType>('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
@@ -23,12 +37,29 @@ const RegisterPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Les étudiants OTERIA n'ont pas besoin de fournir leur téléphone
+  const isOteria = profileType === 'oteria';
+  const requiresPhone = !isOteria;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    
-    if (!name || !email || !password || !confirmPassword || !phone) {
-      setError('Veuillez remplir tous les champs.');
+
+    // Validation: profil requis
+    if (!profileType) {
+      setError('Veuillez sélectionner votre profil.');
+      return;
+    }
+
+    // Validation: champs requis (téléphone optionnel pour OTERIA)
+    if (!name || !email || !password || !confirmPassword) {
+      setError('Veuillez remplir tous les champs obligatoires.');
+      return;
+    }
+
+    // Téléphone requis seulement pour les non-OTERIA
+    if (requiresPhone && !phone) {
+      setError('Veuillez renseigner votre numéro de téléphone.');
       return;
     }
 
@@ -44,8 +75,9 @@ const RegisterPage = () => {
 
     try {
       setLoading(true);
-      await register(email, password, name, phone);
-      
+      // Pour OTERIA, on passe une chaîne vide pour le téléphone
+      await register(email, password, name, isOteria ? '' : phone);
+
       // Récupérer ?next= depuis l'URL pour rediriger vers la page d'origine
       const params = new URLSearchParams(location.search);
       const next = params.get('next');
@@ -59,7 +91,7 @@ const RegisterPage = () => {
           // Pour Maths : vérifier la liste blanche
           const normalizedEmail = email.trim().toLowerCase();
           const hasAccess = isWhitelisted(normalizedEmail);
-          
+
           if (hasAccess) {
             navigate(next, { replace: true });
           } else {
@@ -95,8 +127,29 @@ const RegisterPage = () => {
               {error}
             </div>
           )}
-          
+
+
           <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Sélecteur de profil en premier */}
+            <div className="space-y-2">
+              <Label htmlFor="profile">Je suis...</Label>
+              <Select
+                value={profileType}
+                onValueChange={(value: ProfileType) => setProfileType(value)}
+              >
+                <SelectTrigger id="profile">
+                  <SelectValue placeholder="Sélectionnez votre profil" />
+                </SelectTrigger>
+                <SelectContent>
+                  {PROFILE_OPTIONS.map((option) => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
             <div className="space-y-2">
               <Label htmlFor="name">Nom complet</Label>
               <Input
@@ -108,19 +161,22 @@ const RegisterPage = () => {
                 required
               />
             </div>
-            {/* Champ téléphone requis */}
-            <div className="space-y-2">
-              <Label htmlFor="phone">Numéro de téléphone</Label>
-              <Input
-                id="phone"
-                type="tel"
-                pattern="^[0-9+\s().-]{6,}$"
-                placeholder="06 12 34 56 78"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                required
-              />
-            </div>
+
+            {/* Champ téléphone conditionnel - caché pour OTERIA */}
+            {requiresPhone && (
+              <div className="space-y-2">
+                <Label htmlFor="phone">Numéro de téléphone</Label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  pattern="^[0-9+\s().-]{6,}$"
+                  placeholder="06 12 34 56 78"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  required={requiresPhone}
+                />
+              </div>
+            )}
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input

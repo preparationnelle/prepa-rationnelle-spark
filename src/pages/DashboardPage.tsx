@@ -138,12 +138,8 @@ const dailySession = {
 };
 
 // Évaluations récentes (mock)
-const recentEvaluations = [
-  { id: 1, subject: 'Mathématiques', title: 'Chapitre 9 - Probabilités', score: 85, date: 'Aujourd\'hui', icon: Calculator },
-  { id: 2, subject: 'Anglais', title: 'Thème grammatical', score: 78, date: 'Hier', icon: Languages },
-  { id: 3, subject: 'Géopolitique', title: 'Quiz Europe', score: 92, date: 'Il y a 2 jours', icon: Globe },
-  { id: 4, subject: 'Python', title: 'Exercices NumPy', score: 95, date: 'Il y a 3 jours', icon: Code },
-];
+// Données récupérées dynamiquement
+import { supabase } from '@/integrations/supabase/client';
 
 const DashboardPage = () => {
   const { currentUser } = useAuth();
@@ -151,6 +147,34 @@ const DashboardPage = () => {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
   const [completedTodos, setCompletedTodos] = useState<number[]>([]);
+
+  // État pour les résultats QCM
+  const [oteriaResults, setOteriaResults] = useState<any[]>([]);
+  const [isLoadingResults, setIsLoadingResults] = useState(true);
+
+  useEffect(() => {
+    const fetchResults = async () => {
+      if (!currentUser) return;
+
+      try {
+        const { data, error } = await supabase
+          .from('qcm_results')
+          .select('*')
+          .eq('user_id', currentUser.id)
+          .order('created_at', { ascending: false })
+          .limit(5);
+
+        if (error) throw error;
+        setOteriaResults(data || []);
+      } catch (err) {
+        console.error('Erreur chargement résultats:', err);
+      } finally {
+        setIsLoadingResults(false);
+      }
+    };
+
+    fetchResults();
+  }, [currentUser]);
 
   const toggleStep = (stepId: number) => {
     setCompletedSteps(prev =>
@@ -233,8 +257,8 @@ const DashboardPage = () => {
                 <span className="text-xs text-white/40 font-medium">{day.dayName}</span>
                 <div
                   className={`w-8 h-8 rounded-full border-2 flex items-center justify-center transition-all ${day.isActive
-                      ? 'bg-gradient-to-br from-orange-500 to-orange-400 border-orange-400 shadow-lg shadow-orange-500/40'
-                      : 'bg-white/5 border-white/20'
+                    ? 'bg-gradient-to-br from-orange-500 to-orange-400 border-orange-400 shadow-lg shadow-orange-500/40'
+                    : 'bg-white/5 border-white/20'
                     }`}
                 >
                   {day.isActive && <Flame className="h-4 w-4 text-white" />}
@@ -463,9 +487,14 @@ const DashboardPage = () => {
                 <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-400 rounded-xl flex items-center justify-center shadow-lg shadow-orange-500/30">
                   <BarChart3 className="h-6 w-6 text-white" />
                 </div>
-                <span className="text-3xl font-bold text-white">{globalStats.averageScore}%</span>
+                <span className="text-3xl font-bold text-white">
+                  {oteriaResults.length > 0
+                    ? Math.round(oteriaResults.reduce((acc, curr) => acc + curr.score, 0) / oteriaResults.length)
+                    : '-'
+                  }%
+                </span>
               </div>
-              <p className="text-sm font-semibold text-white/60">Moyenne générale</p>
+              <p className="text-sm font-semibold text-white/60">Moyenne QCM</p>
             </CardContent>
           </Card>
 
@@ -566,26 +595,43 @@ const DashboardPage = () => {
           <Card className="fade-in-up bg-white/5 border border-white/10 backdrop-blur-sm overflow-hidden">
             <CardContent className="p-0">
               <div className="divide-y divide-white/5">
-                {recentEvaluations.map((evaluation) => {
-                  const IconComponent = evaluation.icon;
-                  return (
-                    <div key={evaluation.id} className="p-4 sm:p-6 hover:bg-white/5 transition-colors flex items-center justify-between gap-4">
+                {oteriaResults.length > 0 ? (
+                  oteriaResults.map((result) => (
+                    <div key={result.id} className="p-4 sm:p-6 hover:bg-white/5 transition-colors flex items-center justify-between gap-4">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-400 rounded-xl flex items-center justify-center shadow-lg shadow-orange-500/30 flex-shrink-0">
-                          <IconComponent className="h-6 w-6 text-white" />
+                          <Target className="h-6 w-6 text-white" />
                         </div>
                         <div>
-                          <h4 className="font-bold text-white">{evaluation.title}</h4>
-                          <p className="text-sm text-white/40">{evaluation.subject} • {evaluation.date}</p>
+                          <h4 className="font-bold text-white">{result.title}</h4>
+                          <p className="text-sm text-white/40">
+                            {new Date(result.created_at).toLocaleDateString('fr-FR', {
+                              day: 'numeric',
+                              month: 'long',
+                              hour: '2-digit',
+                              minute: '2-digit'
+                            })}
+                          </p>
                         </div>
                       </div>
                       <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-xl">
                         <Award className="h-5 w-5 text-orange-400" />
-                        <span className="text-xl font-bold text-orange-400">{evaluation.score}%</span>
+                        <span className={`text-xl font-bold ${result.score >= 80 ? 'text-green-400' :
+                            result.score >= 50 ? 'text-orange-400' : 'text-red-400'
+                          }`}>
+                          {result.score}%
+                        </span>
                       </div>
                     </div>
-                  );
-                })}
+                  ))
+                ) : (
+                  <div className="p-8 text-center text-white/40">
+                    <p>Aucune évaluation pour le moment.</p>
+                    <Link to="/formation/oteria/logique-fondamentale-qcm" className="text-orange-400 hover:underline mt-2 inline-block">
+                      Commencer un QCM
+                    </Link>
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>

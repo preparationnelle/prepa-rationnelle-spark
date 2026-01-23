@@ -4,6 +4,8 @@ import { Home, ChevronRight, ArrowLeft, BookOpen, Target, Database, Calculator, 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { useAuth } from '@/context/AuthContext';
+import { supabase } from '@/integrations/supabase/client';
 
 // Données du QCM
 const qcmData = {
@@ -257,6 +259,9 @@ const OteriaMatricesStochastiquesQCMPage: React.FC = () => {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [showResults, setShowResults] = useState(false);
   const [showExplanations, setShowExplanations] = useState<Record<number, boolean>>({});
+  const { currentUser } = useAuth();
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveMessage, setSaveMessage] = useState('');
 
   const handleAnswer = (questionId: number, answer: string) => {
     setAnswers(prev => ({ ...prev, [questionId]: answer }));
@@ -272,11 +277,38 @@ const OteriaMatricesStochastiquesQCMPage: React.FC = () => {
     return { correct: correctAnswers, total: totalQuestions };
   };
 
-  const nextQuestion = () => {
+  const nextQuestion = async () => {
     if (currentQuestion < qcmData.questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       setShowResults(true);
+
+      if (currentUser) {
+        setIsSaving(true);
+        const { correct, total } = calculateScore();
+        const percentage = Math.round((correct / total) * 100);
+
+        try {
+          const { error } = await supabase
+            .from('qcm_results')
+            .insert({
+              user_id: currentUser.id,
+              qcm_id: 'oteria-matrices-stochastiques',
+              title: qcmData.title,
+              score: percentage,
+              total_questions: total,
+              correct_answers: correct
+            });
+
+          if (error) throw error;
+          setSaveMessage('Résultat enregistré dans votre dashboard !');
+        } catch (error) {
+          console.error('Erreur sauvegarde:', error);
+          setSaveMessage('Erreur lors de la sauvegarde.');
+        } finally {
+          setIsSaving(false);
+        }
+      }
     }
   };
 
@@ -291,6 +323,7 @@ const OteriaMatricesStochastiquesQCMPage: React.FC = () => {
     setAnswers({});
     setShowResults(false);
     setShowExplanations({});
+    setSaveMessage('');
   };
 
   const question = qcmData.questions[currentQuestion];
@@ -338,6 +371,11 @@ const OteriaMatricesStochastiquesQCMPage: React.FC = () => {
               <p className="text-xl text-blue-700 mb-6">
                 Score : {Math.round((correct / total) * 100)}%
               </p>
+              {saveMessage && (
+                <div className={`text-center mb-6 font-medium ${saveMessage.includes('Erreur') ? 'text-red-600' : 'text-green-600'}`}>
+                  {saveMessage}
+                </div>
+              )}
               <div className="flex justify-center gap-4">
                 <Button onClick={resetQuiz} className="bg-blue-600 hover:bg-blue-700">
                   Refaire le QCM
@@ -365,11 +403,10 @@ const OteriaMatricesStochastiquesQCMPage: React.FC = () => {
                   <button
                     key={choice.key}
                     onClick={() => handleAnswer(question.id, choice.key)}
-                    className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-200 ${
-                      answers[question.id] === choice.key
+                    className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-200 ${answers[question.id] === choice.key
                         ? 'border-blue-500 bg-blue-50 text-blue-900'
                         : 'border-gray-200 hover:border-blue-300 hover:bg-blue-25'
-                    }`}
+                      }`}
                   >
                     <span className="font-medium mr-3">{choice.key.toUpperCase()}.</span>
                     {choice.text}
@@ -436,13 +473,12 @@ const OteriaMatricesStochastiquesQCMPage: React.FC = () => {
                 <button
                   key={index}
                   onClick={() => setCurrentQuestion(index)}
-                  className={`w-3 h-3 rounded-full transition-all ${
-                    index === currentQuestion
+                  className={`w-3 h-3 rounded-full transition-all ${index === currentQuestion
                       ? 'bg-blue-600'
                       : answers[qcmData.questions[index].id]
-                      ? 'bg-blue-300'
-                      : 'bg-gray-300'
-                  }`}
+                        ? 'bg-blue-300'
+                        : 'bg-gray-300'
+                    }`}
                 />
               ))}
             </div>

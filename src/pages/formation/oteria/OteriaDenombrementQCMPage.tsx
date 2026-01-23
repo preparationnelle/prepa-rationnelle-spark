@@ -4,6 +4,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { useAuth } from '@/context/AuthContext';
+import { supabase } from '@/integrations/supabase/client';
 import {
   Home,
   ChevronRight,
@@ -31,6 +33,9 @@ const OteriaDenombrementQCMPage = () => {
   const [selectedAnswers, setSelectedAnswers] = useState<{ [key: number]: number }>({});
   const [showResults, setShowResults] = useState(false);
   const [score, setScore] = useState(0);
+  const { currentUser } = useAuth();
+  const [saveMessage, setSaveMessage] = useState('');
+  const [isSaving, setIsSaving] = useState(false);
 
   const questions: Question[] = [
     {
@@ -212,10 +217,36 @@ const OteriaDenombrementQCMPage = () => {
     return correct;
   };
 
-  const handleFinish = () => {
+  const handleFinish = async () => {
     const finalScore = calculateScore();
     setScore(finalScore);
     setShowResults(true);
+
+    if (currentUser) {
+      setIsSaving(true);
+      const percentage = Math.round((finalScore / questions.length) * 100);
+
+      try {
+        const { error } = await supabase
+          .from('qcm_results')
+          .insert({
+            user_id: currentUser.id,
+            qcm_id: 'oteria-denombrement',
+            title: 'Dénombrement & Paradoxe - QCM',
+            score: percentage,
+            total_questions: questions.length,
+            correct_answers: finalScore
+          });
+
+        if (error) throw error;
+        setSaveMessage('Résultat enregistré dans votre dashboard !');
+      } catch (error) {
+        console.error('Erreur sauvegarde:', error);
+        setSaveMessage('Erreur lors de la sauvegarde.');
+      } finally {
+        setIsSaving(false);
+      }
+    }
   };
 
   const resetQCM = () => {
@@ -267,15 +298,14 @@ const OteriaDenombrementQCMPage = () => {
               <CardContent className="p-8">
                 <div className="text-center">
                   <div className="flex justify-center mb-6">
-                    <div className={`w-24 h-24 rounded-full flex items-center justify-center ${
-                      percentage >= 80 ? 'bg-green-100' : percentage >= 60 ? 'bg-blue-100' : percentage >= 40 ? 'bg-orange-100' : 'bg-red-100'
-                    }`}>
+                    <div className={`w-24 h-24 rounded-full flex items-center justify-center ${percentage >= 80 ? 'bg-green-100' : percentage >= 60 ? 'bg-blue-100' : percentage >= 40 ? 'bg-orange-100' : 'bg-red-100'
+                      }`}>
                       <Trophy className={`h-12 w-12 ${getScoreColor()}`} />
                     </div>
                   </div>
 
                   <h2 className="text-3xl font-bold text-blue-900 mb-4">QCM Terminé !</h2>
-                  
+
                   <div className="mb-8">
                     <div className={`text-6xl font-bold ${getScoreColor()} mb-2`}>
                       {score}/{questions.length}
@@ -284,251 +314,254 @@ const OteriaDenombrementQCMPage = () => {
                       {percentage}%
                     </div>
                   </div>
-
-                  <div className="space-y-4 text-left mb-8">
-                    <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg">
-                      <span className="text-green-800 font-medium">Réponses correctes</span>
-                      <span className="text-green-900 font-bold">{score}</span>
+                  {saveMessage && (
+                    <div className={`text-center mt-4 font-medium ${saveMessage.includes('Erreur') ? 'text-red-600' : 'text-green-600'}`}>
+                      {saveMessage}
                     </div>
-                    <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg">
-                      <span className="text-red-800 font-medium">Réponses incorrectes</span>
-                      <span className="text-red-900 font-bold">{questions.length - score}</span>
-                    </div>
-                  </div>
+                  )}
+                </div>
 
-                  <div className="flex flex-col gap-3 mb-8">
-                    <Button onClick={resetQCM} className="w-full" size="lg">
-                      <RotateCcw className="h-5 w-5 mr-2" />
-                      Recommencer le QCM
-                    </Button>
-                    <Link to="/formation/oteria/denombrement-paradoxes-cours" className="w-full">
-                      <Button variant="outline" className="w-full" size="lg">
-                        <BookOpen className="h-5 w-5 mr-2" />
-                        Retour au cours
-                      </Button>
-                    </Link>
+                <div className="space-y-4 text-left mb-8">
+                  <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg">
+                    <span className="text-green-800 font-medium">Réponses correctes</span>
+                    <span className="text-green-900 font-bold">{score}</span>
                   </div>
-
-                  {/* Détails des réponses */}
-                  <div className="space-y-4 text-left">
-                    <h3 className="text-xl font-bold text-blue-900 mb-4">Détails de vos réponses :</h3>
-                    {questions.map((q, idx) => {
-                      const userAnswer = selectedAnswers[q.id];
-                      const hasAnswered = userAnswer !== undefined;
-                      const isCorrect = hasAnswered && userAnswer === q.correctAnswer;
-                      
-                      return (
-                        <div key={q.id} className={`p-4 rounded-lg border-2 ${
-                          !hasAnswered ? 'border-gray-300 bg-gray-50' :
-                          isCorrect ? 'border-green-500 bg-green-50' : 'border-red-500 bg-red-50'
-                        }`}>
-                          <div className="flex items-start gap-3 mb-3">
-                            {!hasAnswered ? (
-                              <XCircle className="h-5 w-5 text-gray-400 flex-shrink-0 mt-1" />
-                            ) : isCorrect ? (
-                              <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-1" />
-                            ) : (
-                              <XCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-1" />
-                            )}
-                            <div className="flex-1">
-                              <p className="font-semibold text-gray-900 mb-2">Question {idx + 1} : {q.question}</p>
-                              {hasAnswered ? (
-                                <p className={`text-sm mb-1 ${isCorrect ? 'text-green-800' : 'text-red-800'}`}>
-                                  <strong>Votre réponse :</strong> {q.options[userAnswer]}
-                                </p>
-                              ) : (
-                                <p className="text-sm text-gray-600 mb-2">
-                                  <strong>❌ Non répondue</strong>
-                                </p>
-                              )}
-                              <p className="text-sm text-blue-800 mb-2">
-                                <strong>Bonne réponse :</strong> {q.options[q.correctAnswer]}
-                              </p>
-                              <p className="text-sm text-gray-700 mt-2">
-                                <strong>Explication :</strong> {q.explanation}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
+                  <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg">
+                    <span className="text-red-800 font-medium">Réponses incorrectes</span>
+                    <span className="text-red-900 font-bold">{questions.length - score}</span>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
-  return (
-    <div className="min-h-screen bg-white">
-      {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-blue-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-blue-700 transition-colors">
-              <Home className="h-3 w-3" />
-              <span>Accueil</span>
-            </Link>
-            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-            <Link to="/articles" className="hover:text-blue-700 transition-colors">
-              Niveau
-            </Link>
-            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-            <Link to="/articles/oteria-cyber-school" className="hover:text-blue-700 transition-colors">
-              OTERIA Cyber School
-            </Link>
-            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-            <span className="text-blue-600 font-medium">Séance 7 - QCM</span>
-          </div>
-        </div>
-      </nav>
+                <div className="flex flex-col gap-3 mb-8">
+                  <Button onClick={resetQCM} className="w-full" size="lg">
+                    <RotateCcw className="h-5 w-5 mr-2" />
+                    Recommencer le QCM
+                  </Button>
+                  <Link to="/formation/oteria/denombrement-paradoxes-cours" className="w-full">
+                    <Button variant="outline" className="w-full" size="lg">
+                      <BookOpen className="h-5 w-5 mr-2" />
+                      Retour au cours
+                    </Button>
+                  </Link>
+                </div>
 
-      <div className="container mx-auto py-8 px-4">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
-              <Zap className="h-8 w-8 text-blue-600" />
-            </div>
-          </div>
-          <h1 className="text-3xl font-bold mb-4 text-blue-900">QCM - Dénombrement & paradoxe des anniversaires</h1>
-          <p className="text-lg text-blue-800 max-w-3xl mx-auto">
-            Testez vos connaissances sur les coefficients binomiaux, le binôme de Newton et le paradoxe des anniversaires
-          </p>
-        </div>
+                {/* Détails des réponses */}
+                <div className="space-y-4 text-left">
+                  <h3 className="text-xl font-bold text-blue-900 mb-4">Détails de vos réponses :</h3>
+                  {questions.map((q, idx) => {
+                    const userAnswer = selectedAnswers[q.id];
+                    const hasAnswered = userAnswer !== undefined;
+                    const isCorrect = hasAnswered && userAnswer === q.correctAnswer;
 
-        {/* Progress Bar */}
-        <div className="max-w-2xl mx-auto mb-8">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-blue-900">
-              Question {currentQuestion + 1} sur {questions.length}
-            </span>
-            <span className="text-sm font-medium text-blue-900">
-              {Object.keys(selectedAnswers).length}/{questions.length} réponses
-            </span>
-          </div>
-          <Progress value={progressPercentage} className="h-2" />
-        </div>
-
-        {/* Question Card */}
-        <div className="max-w-2xl mx-auto mb-8">
-          <Card className="shadow-2xl">
-            <CardContent className="p-8">
-              <div className="mb-6">
-                <Badge className="mb-4">{currentQ.category}</Badge>
-                <h3 className="text-xl font-semibold text-blue-900 mb-6">
-                  {currentQ.question}
-                </h3>
-              </div>
-
-              <div className="space-y-3">
-                {currentQ.options.map((option, index) => {
-                  const isSelected = selectedAnswers[currentQ.id] === index;
-
-                  return (
-                    <button
-                      key={index}
-                      onClick={() => handleAnswerSelect(currentQ.id, index)}
-                      className={`w-full p-4 text-left rounded-lg border transition-all ${
-                        isSelected
-                          ? 'border-blue-500 bg-blue-50 text-blue-800'
-                          : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
-                          isSelected
-                            ? 'border-blue-500 bg-blue-500'
-                            : 'border-gray-400'
+                    return (
+                      <div key={q.id} className={`p-4 rounded-lg border-2 ${!hasAnswered ? 'border-gray-300 bg-gray-50' :
+                          isCorrect ? 'border-green-500 bg-green-50' : 'border-red-500 bg-red-50'
                         }`}>
-                          {isSelected && (
-                            <div className="w-2 h-2 bg-white rounded-full"></div>
+                        <div className="flex items-start gap-3 mb-3">
+                          {!hasAnswered ? (
+                            <XCircle className="h-5 w-5 text-gray-400 flex-shrink-0 mt-1" />
+                          ) : isCorrect ? (
+                            <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-1" />
+                          ) : (
+                            <XCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-1" />
                           )}
+                          <div className="flex-1">
+                            <p className="font-semibold text-gray-900 mb-2">Question {idx + 1} : {q.question}</p>
+                            {hasAnswered ? (
+                              <p className={`text-sm mb-1 ${isCorrect ? 'text-green-800' : 'text-red-800'}`}>
+                                <strong>Votre réponse :</strong> {q.options[userAnswer]}
+                              </p>
+                            ) : (
+                              <p className="text-sm text-gray-600 mb-2">
+                                <strong>❌ Non répondue</strong>
+                              </p>
+                            )}
+                            <p className="text-sm text-blue-800 mb-2">
+                              <strong>Bonne réponse :</strong> {q.options[q.correctAnswer]}
+                            </p>
+                            <p className="text-sm text-gray-700 mt-2">
+                              <strong>Explication :</strong> {q.explanation}
+                            </p>
+                          </div>
                         </div>
-                        <span className="font-medium">{option}</span>
                       </div>
-                    </button>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
             </CardContent>
           </Card>
         </div>
+      </div>
+      </div >
+    );
+  }
 
-        {/* Navigation */}
-        <div className="max-w-2xl mx-auto">
-          <div className="flex justify-between items-center gap-4">
-            <Button
-              onClick={() => setCurrentQuestion(prev => Math.max(0, prev - 1))}
-              disabled={currentQuestion === 0}
-              variant="outline"
-            >
-              ← Précédent
-            </Button>
-
-            <div className="flex flex-col items-center gap-2">
-              <div className="text-sm font-medium text-gray-600">
-                Question {currentQuestion + 1} / {questions.length}
-              </div>
-              <Button
-                onClick={handleFinish}
-                className="flex items-center gap-2 bg-green-600 hover:bg-green-700"
-                size="lg"
-              >
-                <Trophy className="h-5 w-5" />
-                Voir le corrigé
-                <span className="text-xs">
-                  ({Object.keys(selectedAnswers).length}/{questions.length} réponses)
-                </span>
-              </Button>
-            </div>
-
-            <Button
-              onClick={() => setCurrentQuestion(prev => Math.min(questions.length - 1, prev + 1))}
-              disabled={currentQuestion === questions.length - 1}
-              variant="outline"
-            >
-              Suivant →
-            </Button>
-          </div>
-        </div>
-
-        {/* Navigation finale */}
-        <div className="flex justify-between items-center bg-blue-50 p-6 rounded-lg mt-8 max-w-4xl mx-auto">
-          <Link to="/formation/oteria/denombrement-exercices">
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
-              ← Exercices
-            </button>
+return (
+  <div className="min-h-screen bg-white">
+    {/* Fil d'Ariane */}
+    <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <div className="container mx-auto px-4 py-2">
+        <div className="flex items-center text-xs text-blue-600">
+          <Link to="/" className="flex items-center gap-1 hover:text-blue-700 transition-colors">
+            <Home className="h-3 w-3" />
+            <span>Accueil</span>
           </Link>
-          <div className="flex gap-3">
-            <Link to="/formation/oteria/denombrement-paradoxes-cours">
-              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                <BookOpen className="h-4 w-4" />
-                Cours
-              </button>
-            </Link>
-            <Link to="/formation/oteria/denombrement-flashcards">
-              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                <Calculator className="h-4 w-4" />
-                Flashcards
-              </button>
-            </Link>
-            <Link to="/articles/oteria-cyber-school">
-              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
-                Retour au programme
-              </button>
-            </Link>
-          </div>
-          <Link to="/formation/oteria/probabilites-introduction-cours">
-            <div className="text-blue-600 hover:text-blue-700 font-medium">Séance suivante →</div>
+          <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
+          <Link to="/articles" className="hover:text-blue-700 transition-colors">
+            Niveau
           </Link>
+          <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
+          <Link to="/articles/oteria-cyber-school" className="hover:text-blue-700 transition-colors">
+            OTERIA Cyber School
+          </Link>
+          <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
+          <span className="text-blue-600 font-medium">Séance 7 - QCM</span>
         </div>
       </div>
+    </nav>
+
+    <div className="container mx-auto py-8 px-4">
+      {/* Header */}
+      <div className="text-center mb-8">
+        <div className="flex justify-center mb-4">
+          <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+            <Zap className="h-8 w-8 text-blue-600" />
+          </div>
+        </div>
+        <h1 className="text-3xl font-bold mb-4 text-blue-900">QCM - Dénombrement & paradoxe des anniversaires</h1>
+        <p className="text-lg text-blue-800 max-w-3xl mx-auto">
+          Testez vos connaissances sur les coefficients binomiaux, le binôme de Newton et le paradoxe des anniversaires
+        </p>
+      </div>
+
+      {/* Progress Bar */}
+      <div className="max-w-2xl mx-auto mb-8">
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-sm font-medium text-blue-900">
+            Question {currentQuestion + 1} sur {questions.length}
+          </span>
+          <span className="text-sm font-medium text-blue-900">
+            {Object.keys(selectedAnswers).length}/{questions.length} réponses
+          </span>
+        </div>
+        <Progress value={progressPercentage} className="h-2" />
+      </div>
+
+      {/* Question Card */}
+      <div className="max-w-2xl mx-auto mb-8">
+        <Card className="shadow-2xl">
+          <CardContent className="p-8">
+            <div className="mb-6">
+              <Badge className="mb-4">{currentQ.category}</Badge>
+              <h3 className="text-xl font-semibold text-blue-900 mb-6">
+                {currentQ.question}
+              </h3>
+            </div>
+
+            <div className="space-y-3">
+              {currentQ.options.map((option, index) => {
+                const isSelected = selectedAnswers[currentQ.id] === index;
+
+                return (
+                  <button
+                    key={index}
+                    onClick={() => handleAnswerSelect(currentQ.id, index)}
+                    className={`w-full p-4 text-left rounded-lg border transition-all ${isSelected
+                        ? 'border-blue-500 bg-blue-50 text-blue-800'
+                        : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                      }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${isSelected
+                          ? 'border-blue-500 bg-blue-500'
+                          : 'border-gray-400'
+                        }`}>
+                        {isSelected && (
+                          <div className="w-2 h-2 bg-white rounded-full"></div>
+                        )}
+                      </div>
+                      <span className="font-medium">{option}</span>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Navigation */}
+      <div className="max-w-2xl mx-auto">
+        <div className="flex justify-between items-center gap-4">
+          <Button
+            onClick={() => setCurrentQuestion(prev => Math.max(0, prev - 1))}
+            disabled={currentQuestion === 0}
+            variant="outline"
+          >
+            ← Précédent
+          </Button>
+
+          <div className="flex flex-col items-center gap-2">
+            <div className="text-sm font-medium text-gray-600">
+              Question {currentQuestion + 1} / {questions.length}
+            </div>
+            <Button
+              onClick={handleFinish}
+              className="flex items-center gap-2 bg-green-600 hover:bg-green-700"
+              size="lg"
+            >
+              <Trophy className="h-5 w-5" />
+              Voir le corrigé
+              <span className="text-xs">
+                ({Object.keys(selectedAnswers).length}/{questions.length} réponses)
+              </span>
+            </Button>
+          </div>
+
+          <Button
+            onClick={() => setCurrentQuestion(prev => Math.min(questions.length - 1, prev + 1))}
+            disabled={currentQuestion === questions.length - 1}
+            variant="outline"
+          >
+            Suivant →
+          </Button>
+        </div>
+      </div>
+
+      {/* Navigation finale */}
+      <div className="flex justify-between items-center bg-blue-50 p-6 rounded-lg mt-8 max-w-4xl mx-auto">
+        <Link to="/formation/oteria/denombrement-exercices">
+          <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+            ← Exercices
+          </button>
+        </Link>
+        <div className="flex gap-3">
+          <Link to="/formation/oteria/denombrement-paradoxes-cours">
+            <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
+              <BookOpen className="h-4 w-4" />
+              Cours
+            </button>
+          </Link>
+          <Link to="/formation/oteria/denombrement-flashcards">
+            <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
+              <Calculator className="h-4 w-4" />
+              Flashcards
+            </button>
+          </Link>
+          <Link to="/articles/oteria-cyber-school">
+            <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+              Retour au programme
+            </button>
+          </Link>
+        </div>
+        <Link to="/formation/oteria/probabilites-introduction-cours">
+          <div className="text-blue-600 hover:text-blue-700 font-medium">Séance suivante →</div>
+        </Link>
+      </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default OteriaDenombrementQCMPage;

@@ -4,6 +4,8 @@ import { Home, ChevronRight, ArrowLeft, BookOpen, Target, Database, Calculator, 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { useAuth } from '@/context/AuthContext';
+import { supabase } from '@/integrations/supabase/client';
 
 // Données du QCM
 const qcmData = {
@@ -256,6 +258,9 @@ const OteriaMatricesMarkovQCMPage = () => {
   const [answers, setAnswers] = useState({});
   const [showResults, setShowResults] = useState(false);
   const [showExplanations, setShowExplanations] = useState({});
+  const { currentUser } = useAuth();
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveMessage, setSaveMessage] = useState('');
 
   const handleAnswerSelect = (questionId, choiceKey) => {
     setAnswers(prev => ({
@@ -279,6 +284,37 @@ const OteriaMatricesMarkovQCMPage = () => {
       }
     });
     return correct;
+  };
+
+  const handleValidation = async () => {
+    setShowResults(true);
+
+    if (currentUser) {
+      setIsSaving(true);
+      const score = calculateScore();
+      const percentage = Math.round((score / qcmData.questions.length) * 100);
+
+      try {
+        const { error } = await supabase
+          .from('qcm_results')
+          .insert({
+            user_id: currentUser.id,
+            qcm_id: 'oteria-matrices-markov',
+            title: qcmData.title,
+            score: percentage,
+            total_questions: qcmData.questions.length,
+            correct_answers: score
+          });
+
+        if (error) throw error;
+        setSaveMessage('Résultat enregistré dans votre dashboard !');
+      } catch (error) {
+        console.error('Erreur sauvegarde:', error);
+        setSaveMessage('Erreur lors de la sauvegarde.');
+      } finally {
+        setIsSaving(false);
+      }
+    }
   };
 
   const getScoreColor = (score) => {
@@ -381,31 +417,29 @@ const OteriaMatricesMarkovQCMPage = () => {
                     return (
                       <div
                         key={choice.key}
-                        className={`p-3 rounded-lg border cursor-pointer transition-all ${
-                          showResults
+                        className={`p-3 rounded-lg border cursor-pointer transition-all ${showResults
                             ? isCorrect
                               ? 'bg-green-100 border-green-300 text-green-800'
                               : isIncorrectSelection
-                              ? 'bg-red-100 border-red-300 text-red-800'
-                              : 'bg-white border-gray-200 text-gray-700'
+                                ? 'bg-red-100 border-red-300 text-red-800'
+                                : 'bg-white border-gray-200 text-gray-700'
                             : isSelected
-                            ? 'bg-blue-100 border-blue-300 text-blue-800'
-                            : 'bg-white border-gray-200 hover:bg-gray-50 text-gray-700'
-                        }`}
+                              ? 'bg-blue-100 border-blue-300 text-blue-800'
+                              : 'bg-white border-gray-200 hover:bg-gray-50 text-gray-700'
+                          }`}
                         onClick={() => !showResults && handleAnswerSelect(question.id, choice.key)}
                       >
                         <div className="flex items-center gap-3">
-                          <span className={`w-6 h-6 rounded-full border-2 flex items-center justify-center text-sm font-bold ${
-                            showResults
+                          <span className={`w-6 h-6 rounded-full border-2 flex items-center justify-center text-sm font-bold ${showResults
                               ? isCorrect
                                 ? 'bg-green-500 border-green-500 text-white'
                                 : isIncorrectSelection
-                                ? 'bg-red-500 border-red-500 text-white'
-                                : 'border-gray-300'
+                                  ? 'bg-red-500 border-red-500 text-white'
+                                  : 'border-gray-300'
                               : isSelected
-                              ? 'bg-blue-500 border-blue-500 text-white'
-                              : 'border-gray-300'
-                          }`}>
+                                ? 'bg-blue-500 border-blue-500 text-white'
+                                : 'border-gray-300'
+                            }`}>
                             {choice.key.toUpperCase()}
                           </span>
                           <span className="flex-1">{choice.text}</span>
@@ -452,12 +486,12 @@ const OteriaMatricesMarkovQCMPage = () => {
         <div className="text-center mt-8 space-y-4">
           {!showResults ? (
             <Button
-              onClick={() => setShowResults(true)}
+              onClick={handleValidation}
               className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 text-lg"
-              disabled={Object.keys(answers).length !== qcmData.questions.length}
+              disabled={Object.keys(answers).length !== qcmData.questions.length || isSaving}
             >
               <Target className="mr-2 h-5 w-5" />
-              Voir les résultats
+              {isSaving ? 'Enregistrement...' : 'Voir les résultats'}
             </Button>
           ) : (
             <div className="space-y-4">
@@ -474,17 +508,25 @@ const OteriaMatricesMarkovQCMPage = () => {
                 </div>
                 <p className="text-gray-600">
                   {calculateScore() >= 16 ? 'Excellent travail ! 🎉' :
-                   calculateScore() >= 12 ? 'Bon résultat, continuez ! 👏' :
-                   'À retravailler. Revoyez le cours et réessayez. 📚'}
+                    calculateScore() >= 12 ? 'Bon résultat, continuez ! 👏' :
+                      'À retravailler. Revoyez le cours et réessayez. 📚'}
                 </p>
               </div>
+              {saveMessage && (
+                <div className={`text-center mt-4 font-medium ${saveMessage.includes('Erreur') ? 'text-red-600' : 'text-green-600'}`}>
+                  {saveMessage}
+                </div>
+              )}
 
               <div className="flex gap-3 justify-center flex-wrap">
                 <Button
                   onClick={() => {
                     setAnswers({});
                     setShowResults(false);
+                    setAnswers({});
+                    setShowResults(false);
                     setShowExplanations({});
+                    setSaveMessage('');
                   }}
                   variant="outline"
                   className="border-teal-600 text-teal-600 hover:bg-teal-50"

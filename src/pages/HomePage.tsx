@@ -152,10 +152,10 @@ const HomePage: React.FC = () => {
         <div className="container mx-auto max-w-6xl relative z-10">
           {/* Section Header */}
           <div className="text-center mb-14 sm:mb-16">
-            <div className="fade-in-up inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-400 text-white px-5 py-2.5 rounded-full text-sm font-bold mb-5 shadow-lg shadow-orange-500/30">
+            <Link to="/formations" className="fade-in-up inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-400 text-white px-5 py-2.5 rounded-full text-sm font-bold mb-5 shadow-lg shadow-orange-500/30 hover:scale-105 transition-transform duration-300">
               <Flame className="h-4 w-4" />
               9 formations disponibles
-            </div>
+            </Link>
             <h2 className="fade-in-up text-3xl sm:text-4xl lg:text-5xl font-bold mb-5" style={{ animationDelay: '0.05s' }}>
               Nos <span className="text-orange-500">formations spécialisées</span>
             </h2>
@@ -207,16 +207,7 @@ const HomePage: React.FC = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="fade-in-up flex justify-center" style={{ animationDelay: '0.4s' }}>
-            <Link to="/formations">
-              <Button className="px-10 py-7 text-lg font-bold bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white rounded-xl shadow-xl shadow-orange-500/30 hover:shadow-2xl hover:shadow-orange-500/40 transition-all duration-300 hover:scale-105 group">
-                <span className="flex items-center gap-2">
-                  Découvre nos 9 formations
-                  <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Button>
-            </Link>
-          </div>
+
         </div>
       </section>
 
@@ -229,10 +220,10 @@ const HomePage: React.FC = () => {
         <div className="container mx-auto max-w-6xl relative z-10">
           {/* Section Header */}
           <div className="text-center mb-14 sm:mb-16">
-            <div className="fade-in-up inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-400 text-white px-5 py-2.5 rounded-full text-sm font-bold mb-5 shadow-lg shadow-orange-500/30">
+            <Link to="/generator" className="fade-in-up inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-400 text-white px-5 py-2.5 rounded-full text-sm font-bold mb-5 shadow-lg shadow-orange-500/30 hover:scale-105 transition-transform duration-300">
               <Zap className="h-4 w-4" />
               Powered by AI
-            </div>
+            </Link>
             <h2 className="fade-in-up text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 text-white" style={{ animationDelay: '0.05s' }}>
               Générateurs <span className="text-orange-400">IA</span>
             </h2>
@@ -284,28 +275,18 @@ const HomePage: React.FC = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="fade-in-up flex justify-center" style={{ animationDelay: '0.4s' }}>
-            <Link to="/generator">
-              <Button className="px-10 py-7 text-lg font-bold bg-white hover:bg-gray-100 text-gray-900 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
-                <span className="flex items-center gap-2">
-                  Tous nos générateurs
-                  <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Button>
-            </Link>
-          </div>
+
         </div>
       </section>
 
-      {/* Section 4: Avis d'élèves */}
-      <SuperprofReviewsSection />
-
-      {/* Section 5: Interview Europe 1 */}
+      {/* Section 4: Interview Europe 1 */}
       <PodcastSection />
 
-      {/* Section 6: Partenaires */}
+      {/* Section 5: Partenaires */}
       <PartnersSection />
+
+      {/* Section 6: Avis d'élèves */}
+      <SuperprofReviewsSection />
 
       {/* Styles pour les animations */}
       <style>{`

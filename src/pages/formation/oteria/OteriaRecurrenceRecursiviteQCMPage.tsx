@@ -5,6 +5,8 @@ import { LatexRenderer } from '@/components/LatexRenderer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
+import { useAuth } from '@/context/AuthContext';
+import { supabase } from '@/integrations/supabase/client';
 
 const questions = [
   {
@@ -296,10 +298,13 @@ const OteriaRecurrenceRecursiviteQCMPage = () => {
   const [timeLeft, setTimeLeft] = useState(1800); // 30 minutes
   const [quizStarted, setQuizStarted] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const { currentUser } = useAuth();
+  const [hasSaved, setHasSaved] = useState(false);
+  const [saveMessage, setSaveMessage] = useState('');
 
   const categories = [...new Set(questions.map(q => q.category))];
-  
-  const filteredQuestions = selectedCategory === "all" 
+
+  const filteredQuestions = selectedCategory === "all"
     ? questions
     : questions.filter(q => q.category === selectedCategory);
 
@@ -318,6 +323,45 @@ const OteriaRecurrenceRecursiviteQCMPage = () => {
     }
     return () => clearInterval(timer);
   }, [quizStarted, timeLeft, showResults]);
+
+  // Déplacement de calculateScore pour le useEffect
+  const calculateScore = () => {
+    const answered = Object.keys(selectedAnswers).length;
+    const correct = filteredQuestions.filter(q => selectedAnswers[q.id] === q.correct).length;
+    return { answered, correct, total: filteredQuestions.length };
+  };
+
+  // Sauvegarde automatique à la fin du quiz
+  useEffect(() => {
+    const saveResults = async () => {
+      if (showResults && currentUser && !hasSaved) {
+        setHasSaved(true);
+        const { correct, total } = calculateScore();
+        const percentage = Math.round((correct / total) * 100);
+
+        try {
+          const { error } = await supabase
+            .from('qcm_results')
+            .insert({
+              user_id: currentUser.id,
+              qcm_id: 'oteria-recurrence-recursivite',
+              title: 'Récurrence & Récursivité - QCM',
+              score: percentage,
+              total_questions: total,
+              correct_answers: correct
+            });
+
+          if (error) throw error;
+          setSaveMessage('Résultat enregistré dans votre dashboard !');
+        } catch (error) {
+          console.error('Erreur sauvegarde:', error);
+          setSaveMessage('Erreur lors de la sauvegarde.');
+        }
+      }
+    };
+
+    saveResults();
+  }, [showResults, currentUser, hasSaved]);
 
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
@@ -364,11 +408,7 @@ const OteriaRecurrenceRecursiviteQCMPage = () => {
     setTimeLeft(1800);
   };
 
-  const calculateScore = () => {
-    const answered = Object.keys(selectedAnswers).length;
-    const correct = filteredQuestions.filter(q => selectedAnswers[q.id] === q.correct).length;
-    return { answered, correct, total: filteredQuestions.length };
-  };
+
 
   const getScoreColor = (percentage) => {
     if (percentage >= 80) return "text-green-600";
@@ -408,7 +448,7 @@ const OteriaRecurrenceRecursiviteQCMPage = () => {
                 <Trophy className="h-10 w-10 text-teal-600" />
               </div>
             </div>
-            
+
             <h1 className="text-3xl font-bold mb-4 text-teal-900">QCM - Sommes, produits et coefficients binomiaux</h1>
             <p className="text-lg text-gray-600 mb-8">Testez vos connaissances avec ce quiz interactif</p>
 
@@ -501,7 +541,7 @@ const OteriaRecurrenceRecursiviteQCMPage = () => {
                 </div>
               </div>
               <h1 className="text-3xl font-bold mb-4 text-teal-900">Résultats du QCM</h1>
-              
+
               <Card className="bg-white shadow-lg border border-blue-200 mb-8">
                 <CardContent className="p-8">
                   <div className="text-center mb-6">
@@ -514,6 +554,11 @@ const OteriaRecurrenceRecursiviteQCMPage = () => {
                     <p className="text-sm text-gray-500">
                       Questions répondues : {answered}/{total}
                     </p>
+                    {saveMessage && (
+                      <p className={`mt-2 font-medium ${saveMessage.includes('Erreur') ? 'text-red-600' : 'text-green-600'}`}>
+                        {saveMessage}
+                      </p>
+                    )}
                   </div>
 
                   <div className="grid md:grid-cols-3 gap-4 mb-6">
@@ -556,10 +601,9 @@ const OteriaRecurrenceRecursiviteQCMPage = () => {
                 const wasAnswered = userAnswer !== undefined;
 
                 return (
-                  <Card key={question.id} className={`border-2 ${
-                    !wasAnswered ? 'border-gray-300' : 
+                  <Card key={question.id} className={`border-2 ${!wasAnswered ? 'border-gray-300' :
                     isCorrect ? 'border-green-300 bg-green-50' : 'border-red-300 bg-red-50'
-                  }`}>
+                    }`}>
                     <CardHeader>
                       <div className="flex items-center justify-between">
                         <CardTitle className="text-lg">Question {index + 1}</CardTitle>
@@ -578,18 +622,17 @@ const OteriaRecurrenceRecursiviteQCMPage = () => {
                       <div className="mb-4">
                         <LatexRenderer latex={question.question} />
                       </div>
-                      
+
                       <div className="space-y-2 mb-4">
                         {question.options.map((option) => {
                           const isUserChoice = userAnswer === option.id;
                           const isCorrectChoice = option.id === question.correct;
-                          
+
                           return (
-                            <div key={option.id} className={`p-3 rounded-lg border ${
-                              isCorrectChoice ? 'bg-green-100 border-green-300' :
+                            <div key={option.id} className={`p-3 rounded-lg border ${isCorrectChoice ? 'bg-green-100 border-green-300' :
                               isUserChoice && !isCorrectChoice ? 'bg-red-100 border-red-300' :
-                              'bg-gray-50 border-gray-200'
-                            }`}>
+                                'bg-gray-50 border-gray-200'
+                              }`}>
                               <div className="flex items-center gap-2">
                                 <span className="font-bold">{option.id}.</span>
                                 <LatexRenderer latex={option.latex} />
@@ -675,11 +718,10 @@ const OteriaRecurrenceRecursiviteQCMPage = () => {
                   <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
                     {currentQ.category}
                   </span>
-                  <span className={`px-3 py-1 rounded-full text-sm ${
-                    currentQ.difficulty === 'Facile' ? 'bg-green-100 text-green-800' :
+                  <span className={`px-3 py-1 rounded-full text-sm ${currentQ.difficulty === 'Facile' ? 'bg-green-100 text-green-800' :
                     currentQ.difficulty === 'Moyen' ? 'bg-orange-100 text-orange-800' :
-                    'bg-red-100 text-red-800'
-                  }`}>
+                      'bg-red-100 text-red-800'
+                    }`}>
                     {currentQ.difficulty}
                   </span>
                 </div>
@@ -695,11 +737,10 @@ const OteriaRecurrenceRecursiviteQCMPage = () => {
                   <button
                     key={option.id}
                     onClick={() => selectAnswer(currentQ.id, option.id)}
-                    className={`w-full p-4 text-left rounded-lg border-2 transition-colors ${
-                      selectedAnswers[currentQ.id] === option.id
-                        ? 'border-teal-500 bg-teal-50'
-                        : 'border-gray-200 hover:border-teal-300 hover:bg-teal-50'
-                    }`}
+                    className={`w-full p-4 text-left rounded-lg border-2 transition-colors ${selectedAnswers[currentQ.id] === option.id
+                      ? 'border-teal-500 bg-teal-50'
+                      : 'border-gray-200 hover:border-teal-300 hover:bg-teal-50'
+                      }`}
                   >
                     <div className="flex items-center gap-3">
                       <span className="font-bold text-teal-900">{option.id}.</span>

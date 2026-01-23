@@ -793,13 +793,13 @@ export const routes: RouteConfig[] = [
   { path: '/formation/oteria/logique-fondamentale-cours', component: OteriaLogiqueFondamentaleCoursPage, title: 'Logique Fondamentale - Cours' },
   { path: '/formation/oteria/logique-fondamentale-exercices', component: OteriaLogiqueFondamentaleExercicesPage, title: 'Logique Fondamentale - Exercices' },
   { path: '/formation/oteria/logique-fondamentale-flashcards', component: OteriaLogiqueFondamentaleFlashcardsPage, title: 'Logique Fondamentale - Flashcards' },
-  { path: '/formation/oteria/logique-fondamentale-qcm', component: OteriaLogiqueFondamentaleQCMPage, title: 'Logique Fondamentale - QCM' },
+  { path: '/formation/oteria/logique-fondamentale-qcm', component: OteriaLogiqueFondamentaleQCMPage, title: 'Logique Fondamentale - QCM', protected: true },
 
   // Chapitre 2 - Bases de Python
   { path: '/formation/oteria/python-bases-cours', component: OteriaPythonBasesCoursPage, title: 'Bases Python - Cours' },
   { path: '/formation/oteria/python-bases-exercices', component: OteriaPythonBasesExercicesPage, title: 'Bases Python - Exercices' },
   { path: '/formation/oteria/python-bases-flashcards', component: OteriaPythonBasesFlashcardsPage, title: 'Bases Python - Flashcards' },
-  { path: '/formation/oteria/python-bases-qcm', component: OteriaPythonBasesQCMPage, title: 'Bases Python - QCM' },
+  { path: '/formation/oteria/python-bases-qcm', component: OteriaPythonBasesQCMPage, title: 'Bases Python - QCM', protected: true },
 
   // Chapitre 3 - Récurrence & récursivité – sommes / produits
   { path: '/formation/oteria/recurrence-recursivite-cours', component: OteriaRecurrenceRecursiviteCoursPage, title: 'Récurrence & Récursivité - Cours' },
@@ -812,19 +812,19 @@ export const routes: RouteConfig[] = [
   { path: '/formation/oteria/fonctions-variable-reelle-cours', component: OteriaFonctionsVariableReelleCoursPage, title: 'Fonctions Variable Réelle - Cours' },
   { path: '/formation/oteria/fonctions-exercices', component: OteriaFonctionsExercicesPage, title: 'Fonctions - Exercices' },
   { path: '/formation/oteria/fonctions-flashcards', component: OteriaFonctionsFlashcardsPage, title: 'Fonctions - Flashcards' },
-  { path: '/formation/oteria/fonctions-qcm', component: OteriaFonctionsQCMPage, title: 'Fonctions - QCM' },
+  { path: '/formation/oteria/fonctions-qcm', component: OteriaFonctionsQCMPage, title: 'Fonctions - QCM', protected: true },
 
   // Chapitre 6 - Polynômes et approximation des racines
   { path: '/formation/oteria/polynomes-approximation-cours', component: OteriaPolynomesApproximationCoursPage, title: 'Polynômes & Dichotomie - Cours' },
   { path: '/formation/oteria/polynomes-exercices', component: OteriaPolynomesExercicesPage, title: 'Polynômes & Dichotomie - Exercices' },
   { path: '/formation/oteria/polynomes-flashcards', component: OteriaPolynomesDichotomieFlashcardsPage, title: 'Polynômes & Dichotomie - Flashcards' },
-  { path: '/formation/oteria/polynomes-qcm', component: OteriaPolynomesQCMPage, title: 'Polynômes & Dichotomie - QCM' },
+  { path: '/formation/oteria/polynomes-qcm', component: OteriaPolynomesQCMPage, title: 'Polynômes & Dichotomie - QCM', protected: true },
 
   // Chapitre 7 - Dénombrement & probas : paradoxes
   { path: '/formation/oteria/denombrement-paradoxes-cours', component: OteriaDenombrementParadoxesCoursPage, title: 'Dénombrement & Paradoxes - Cours' },
   { path: '/formation/oteria/denombrement-exercices', component: OteriaDenombrementExercicesPage, title: 'Dénombrement & Paradoxes - Exercices' },
   { path: '/formation/oteria/denombrement-flashcards', component: OteriaDenombrementFlashcardsPage, title: 'Dénombrement & Paradoxes - Flashcards' },
-  { path: '/formation/oteria/denombrement-qcm', component: OteriaDenombrementQCMPage, title: 'Dénombrement & Paradoxes - QCM' },
+  { path: '/formation/oteria/denombrement-qcm', component: OteriaDenombrementQCMPage, title: 'Dénombrement & Paradoxes - QCM', protected: true },
 
   // Chapitre 8 - Introduction aux probabilités
   { path: '/formation/oteria/probabilites-introduction-cours', component: OteriaProbabilitesIntroductionCoursPage, title: 'Introduction aux Probabilités - Cours' },
@@ -835,7 +835,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/oteria/variables-aleatoires-cours', component: OteriaVariablesAleatoiresCoursPage, title: 'Variables Aléatoires & Histogrammes - Cours' },
   { path: '/formation/oteria/variables-aleatoires-exercices', component: OteriaVariablesAleatoiresExercicesPage, title: 'Variables Aléatoires & Histogrammes - Exercices' },
   { path: '/formation/oteria/variables-aleatoires-flashcards', component: OteriaVariablesAleatoiresFlashcardsPage, title: 'Variables Aléatoires & Histogrammes - Flashcards' },
-  { path: '/formation/oteria/variables-aleatoires-qcm', component: OteriaVariablesAleatoiresQCMPage, title: 'Variables Aléatoires & Histogrammes - QCM' },
+  { path: '/formation/oteria/variables-aleatoires-qcm', component: OteriaVariablesAleatoiresQCMPage, title: 'Variables Aléatoires & Histogrammes - QCM', protected: true },
 
   // Chapitre 10 - Intégrales & π par Monte-Carlo
   { path: '/formation/oteria/integrales-monte-carlo-cours', component: OteriaIntegralesMonteCarloCoursPage, title: 'Intégrales & π par Monte-Carlo - Cours' },
@@ -849,29 +849,29 @@ export const routes: RouteConfig[] = [
   { path: '/formation/oteria/matrices-markov-cours', component: OteriaMatricesMarkovCoursPage, title: 'Matrices & Chaînes de Markov - Cours' },
   { path: '/formation/oteria/matrices-markov-exercices', component: OteriaMatricesMarkovExercicesPage, title: 'Matrices & Chaînes de Markov - Exercices' },
   { path: '/formation/oteria/matrices-markov-flashcards', component: OteriaMatricesMarkovFlashcardsPage, title: 'Matrices & Chaînes de Markov - Flashcards' },
-  { path: '/formation/oteria/matrices-markov-qcm', component: OteriaMatricesMarkovQCMPage, title: 'Matrices & Chaînes de Markov - QCM' },
+  { path: '/formation/oteria/matrices-markov-qcm', component: OteriaMatricesMarkovQCMPage, title: 'Matrices & Chaînes de Markov - QCM', protected: true },
 
   // Chapitre 12 - Arithmétique modulaire & crypto affine
   { path: '/formation/oteria/matrices-stochastiques-cours', component: OteriaMatricesStochastiquesCoursPage, title: 'Arithmétique Modulaire & Crypto - Cours' },
   { path: '/formation/oteria/matrices-stochastiques-exercices', component: OteriaMatricesStochastiquesExercicesPage, title: 'Arithmétique Modulaire & Crypto - Exercices' },
   { path: '/formation/oteria/matrices-stochastiques-flashcards', component: OteriaMatricesStochastiquesFlashcardsPage, title: 'Arithmétique Modulaire & Crypto - Flashcards' },
-  { path: '/formation/oteria/matrices-stochastiques-qcm', component: OteriaMatricesStochastiquesQCMPage, title: 'Arithmétique Modulaire & Crypto - QCM' },
+  { path: '/formation/oteria/matrices-stochastiques-qcm', component: OteriaMatricesStochastiquesQCMPage, title: 'Arithmétique Modulaire & Crypto - QCM', protected: true },
 
   // Extraits de sujets
-  { path: '/formation/oteria/extraits-sujets-qcm', component: OteriaExtraitsSujetsQCMPage, title: 'Extraits de Sujets - QCM de Révision' },
+  { path: '/formation/oteria/extraits-sujets-qcm', component: OteriaExtraitsSujetsQCMPage, title: 'Extraits de Sujets - QCM de Révision', protected: true },
 
   // Évaluation finale - Questions ouvertes
   { path: '/formation/oteria/evaluation-finale-questions-ouvertes', component: OteriaEvaluationFinaleQuestionsOuvertesPage, title: 'Évaluation Finale - Questions ouvertes' },
 
   { path: '/formation/oteria/recurrence-recursivite-exercices', component: OteriaRecurrenceRecursiviteExercicesPage, title: 'Récurrence & Récursivité - Exercices' },
   { path: '/formation/oteria/recurrence-recursivite-flashcards', component: OteriaRecurrenceRecursiviteFlashcardsPage, title: 'Récurrence & Récursivité - Flashcards' },
-  { path: '/formation/oteria/recurrence-recursivite-qcm', component: OteriaRecurrenceRecursiviteQCMPage, title: 'Récurrence & Récursivité - QCM' },
-  { path: '/formation/oteria/suites-numeriques-qcm', component: OteriaSuitesNumeriquesQCMPage, title: 'Suites Numériques - QCM' },
+  { path: '/formation/oteria/recurrence-recursivite-qcm', component: OteriaRecurrenceRecursiviteQCMPage, title: 'Récurrence & Récursivité - QCM', protected: true },
+  { path: '/formation/oteria/suites-numeriques-qcm', component: OteriaSuitesNumeriquesQCMPage, title: 'Suites Numériques - QCM', protected: true },
   { path: '/formation/oteria/suites-numeriques-flashcards', component: OteriaSuitesNumeriquesFlashcardsPage, title: 'Suites Numériques - Flashcards' },
   { path: '/formation/oteria/polynomes-dichotomie-flashcards', component: OteriaPolynomesDichotomieFlashcardsPage, title: 'Polynômes & Dichotomie - Flashcards' },
 
   // Évaluation Finale
-  { path: '/formation/oteria/evaluation-finale', component: OteriaEvaluationFinaleQCMPage, title: 'Évaluation Finale - QCM Complet' },
+  { path: '/formation/oteria/evaluation-finale', component: OteriaEvaluationFinaleQCMPage, title: 'Évaluation Finale - QCM Complet', protected: true },
   { path: '/formation/oteria/fiche-evaluation-finale', component: OteriaFicheEvaluationFinalePage, title: 'Fiche Évaluation Finale - Bachelor 2' },
 
   // Mini Projet

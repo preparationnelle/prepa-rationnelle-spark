@@ -145,14 +145,14 @@ export const SuperprofReviewsSection = () => {
       };
     }
     return {
-              avatar: "bg-gradient-to-br from-orange-400 to-orange-600",
+      avatar: "bg-gradient-to-br from-orange-400 to-orange-600",
       border: "border-blue-200 hover:border-blue-300",
       quote: "text-blue-400"
     };
   };
 
   const totalSlides = Math.ceil(reviews.length / 3);
-  
+
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % totalSlides);
   };
@@ -171,140 +171,114 @@ export const SuperprofReviewsSection = () => {
   };
 
   return (
-    <section className="py-10 sm:py-14 md:py-16 lg:py-24 px-4 relative overflow-hidden" style={{ backgroundColor: 'var(--section-bg-1)' }}>
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">
-            Avis d'élèves
-          </h2>
+    <section className="py-12 sm:py-16 px-4 relative overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+      {/* Decorative elements - subtle */}
+      <div className="absolute top-10 left-1/4 w-64 h-64 bg-orange-400/5 rounded-full blur-[100px]"></div>
+      <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-orange-500/5 rounded-full blur-[120px]"></div>
 
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="flex gap-1">
-              {renderStars()}
-            </div>
-            <span className="text-xl font-semibold text-gray-700 ml-2">5.0/5</span>
-            <span className="text-gray-600 ml-2">sur Superprof</span>
-          </div>
-
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Découvrez ce que disent mes élèves sur leur progression et leur réussite
-          </p>
-        </div>
-
-        {/* Carousel Container */}
-        <div className="relative mb-12">
-          {/* Navigation Buttons */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white hover:bg-gray-50 text-gray-600 hover:text-gray-800 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200"
-            aria-label="Avis précédent"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white hover:bg-gray-50 text-gray-600 hover:text-gray-800 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200"
-            aria-label="Avis suivant"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
-
-          {/* Reviews Grid */}
-          <div className="grid md:grid-cols-3 gap-8 px-12 justify-center max-w-6xl mx-auto">
-            {getCurrentReviews().map((review, index) => {
-              const colors = getColorClasses(review.color);
-              return (
-                <Link key={index} to="/avis" className="block">
-                  <Card className={`group hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 bg-white rounded-2xl shadow-lg h-full cursor-pointer`}>
-                    <CardContent className="p-6 h-full flex flex-col">
-                      <div className="flex items-start gap-4">
-                        <div className={`w-12 h-12 ${colors.avatar} rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0`}>
-                          {review.name.charAt(0)}
-                        </div>
-                        <div className="flex-1 flex flex-col">
-                          <h3 className="font-semibold text-gray-800 mb-2">{review.name}</h3>
-                          <div className="flex items-center gap-1 mb-3">
-                            {renderStars()}
-                          </div>
-                          <p className="text-sm text-gray-600 mb-3">{review.subject}</p>
-                          <div className="relative flex-1">
-                            <Quote className={`h-4 w-4 ${colors.quote} absolute -top-1 -left-1`} />
-                            <p className="text-sm text-gray-700 leading-relaxed pl-5 line-clamp-5">
-                              {review.content}
-                            </p>
-                          </div>
-                          <div className="mt-3 text-sm text-orange-600 group-hover:text-orange-700 transition-colors duration-300 font-medium">
-                            Voir tous les avis →
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Dots Indicators */}
-        <div className="flex justify-center items-center gap-2 mb-6">
-          {Array.from({ length: totalSlides }, (_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentSlide
-                  ? 'bg-orange-600 scale-125'
-                  : 'bg-gray-300 hover:bg-gray-400'
-              }`}
-              aria-label={`Aller à l'avis ${index + 1}`}
-            />
-          ))}
-        </div>
-
-        {/* Slide Counter */}
-        <div className="text-center text-sm text-gray-600 mb-8">
-          {currentSlide + 1} sur {totalSlides} • {reviews.length} témoignages d'élèves
-        </div>
-
-        {/* Final CTA Section */}
-        <div className="text-center">
-          <div className="bg-gradient-to-br from-white via-orange-50/30 to-white p-12 rounded-2xl shadow-2xl border border-orange-100 max-w-2xl mx-auto">
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <div className="flex items-center gap-2">
-                {renderStars()}
-                <span className="text-2xl font-bold text-gray-800">5.0</span>
+      <div className="container mx-auto max-w-6xl relative z-10">
+        {/* Compact Header */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+          <div className="flex items-center gap-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
+              Avis d'élèves
+            </h2>
+            <div className="flex items-center gap-2 bg-orange-50 px-3 py-1.5 rounded-full border border-orange-200">
+              <div className="flex gap-0.5">
+                {Array.from({ length: 5 }, (_, i) => (
+                  <Star key={i} className="h-3.5 w-3.5 fill-orange-400 text-orange-400" />
+                ))}
               </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://www.superprof.fr/maths-cours-particuliers-maths-colleur-grandes-prepas-parisiennes.html"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-3 px-6 text-base shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  Découvrir tous les avis sur Superprof
-                  <ExternalLink className="ml-2 h-4 w-4" />
-                </Button>
-              </a>
-
-              <Link to="/avis">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-2 border-orange-600 text-orange-600 hover:bg-orange-50 font-semibold py-3 px-6 text-base shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  Voir tous les avis
-                  <Star className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
+              <span className="text-sm font-bold text-gray-800">5.0</span>
+              <span className="text-xs text-gray-600">Superprof</span>
             </div>
           </div>
+
+          {/* Navigation + CTA */}
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+              <button
+                onClick={prevSlide}
+                className="bg-white hover:bg-gray-50 text-gray-600 rounded-full p-2 transition-all duration-300 border border-gray-200 shadow-sm"
+                aria-label="Avis précédent"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <span className="text-sm text-gray-600 min-w-[60px] text-center">
+                {currentSlide + 1}/{totalSlides}
+              </span>
+              <button
+                onClick={nextSlide}
+                className="bg-white hover:bg-gray-50 text-gray-600 rounded-full p-2 transition-all duration-300 border border-gray-200 shadow-sm"
+                aria-label="Avis suivant"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+            </div>
+            <Link to="/avis" className="hidden sm:block">
+              <Button size="sm" className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white font-bold rounded-lg shadow-lg shadow-orange-500/30">
+                Voir +20 avis
+                <ChevronRight className="h-4 w-4 ml-1" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+
+        {/* Reviews Grid - Light theme cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          {getCurrentReviews().map((review, index) => {
+            const colors = getColorClasses(review.color);
+            return (
+              <Link key={index} to="/avis" className="block group">
+                <div className="bg-white rounded-xl p-4 border border-gray-200 hover:border-orange-300 hover:shadow-xl transition-all duration-300 h-full">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className={`w-10 h-10 ${colors.avatar} rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}>
+                      {review.name.charAt(0)}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-semibold text-gray-800 text-sm truncate">{review.name}</h3>
+                      <div className="flex items-center gap-2">
+                        <div className="flex gap-0.5">
+                          {Array.from({ length: 5 }, (_, i) => (
+                            <Star key={i} className="h-3 w-3 fill-orange-400 text-orange-400" />
+                          ))}
+                        </div>
+                        <span className="text-xs text-orange-600 font-medium">{review.subject}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">
+                    "{review.content}"
+                  </p>
+                  <div className="mt-3 text-xs text-orange-500 font-medium group-hover:text-orange-600 transition-colors flex items-center gap-1">
+                    Lire la suite <ChevronRight className="h-3 w-3" />
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Dots + Mobile CTA */}
+        <div className="flex items-center justify-center gap-4">
+          <div className="flex gap-1.5">
+            {Array.from({ length: totalSlides }, (_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentSlide
+                    ? 'bg-orange-500 w-6'
+                    : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                aria-label={`Aller à l'avis ${index + 1}`}
+              />
+            ))}
+          </div>
+          <Link to="/avis" className="sm:hidden">
+            <Button size="sm" className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white font-bold rounded-lg text-xs">
+              Tous les avis
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

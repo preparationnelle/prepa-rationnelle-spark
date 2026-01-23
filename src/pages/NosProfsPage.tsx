@@ -716,7 +716,8 @@ const NosProfsPage = () => {
         }
       `}</style>
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-        {/* Header avec navigation sticky */}
+        {/* Header avec navigation sticky - TEMPORAIREMENT MASQUÉ */}
+        {/*
         <div className="sticky top-16 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
           <div className="container mx-auto px-4 py-4">
             <nav className="flex flex-wrap gap-4 justify-center text-sm">
@@ -724,6 +725,7 @@ const NosProfsPage = () => {
             </nav>
           </div>
         </div>
+        */}
 
         <div className="container mx-auto px-4 py-12 max-w-6xl">
           {/* Hero Section */}
@@ -736,7 +738,158 @@ const NosProfsPage = () => {
             </p>
           </div>
 
-          {/* Section Toute l'équipe */}
+          {/* Introduction Section */}
+          <section className="mb-16">
+            <div className={`bg-gradient-to-br from-orange-50 via-white to-orange-50 rounded-3xl p-8 md:p-12 shadow-xl border border-orange-100 transition-all duration-1000 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+              <div className="max-w-4xl mx-auto">
+                {/* Titre principal */}
+                <div className="text-center mb-10">
+                  <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
+                    Une équipe d'excellence à votre service
+                  </h2>
+                  <div className="flex items-center justify-center gap-3 mb-6">
+                    <div className="h-1 w-16 bg-gradient-to-r from-orange-600 to-orange-500 rounded-full"></div>
+                    <GraduationCap className="h-8 w-8 text-orange-600" />
+                    <div className="h-1 w-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full"></div>
+                  </div>
+                  <p className="text-2xl md:text-3xl font-semibold text-gray-800 mb-2">
+                    40 professeurs d'élite
+                  </p>
+                  <p className="text-lg text-gray-600">
+                    Diplômés d'<span className="font-semibold text-orange-600">HEC, ESCP, ESSEC, Centrale</span> et des meilleures écoles
+                  </p>
+                </div>
+
+                {/* Notre approche */}
+                <div className="mb-10">
+                  <h3 className="text-2xl font-bold mb-6 text-gray-900 flex items-center gap-3">
+                    <div className="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center">
+                      <Heart className="h-6 w-6 text-orange-600" />
+                    </div>
+                    Notre approche
+                  </h3>
+                  <div className="space-y-4 text-gray-700 text-lg leading-relaxed">
+                    <p>
+                      Nos professeurs ne se contentent pas de "faire des heures de cours".
+                      <span className="font-semibold text-orange-600"> Ils construisent avec chaque élève un véritable plan de progression personnalisé.</span>
+                    </p>
+                    <div className="grid md:grid-cols-2 gap-4 my-6">
+                      <div className="bg-white p-5 rounded-xl shadow-md border border-orange-100">
+                        <div className="flex items-start gap-3">
+                          <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-1">Maîtrise des bases</h4>
+                            <p className="text-base text-gray-600">Structuration du raisonnement et de la rédaction</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="bg-white p-5 rounded-xl shadow-md border border-orange-100">
+                        <div className="flex items-start gap-3">
+                          <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-1">Rigueur et rapidité</h4>
+                            <p className="text-base text-gray-600">Développement de la logique et de l'efficacité</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="bg-white p-5 rounded-xl shadow-md border border-orange-100">
+                        <div className="flex items-start gap-3">
+                          <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-1">Confiance retrouvée</h4>
+                            <p className="text-base text-gray-600">Plaisir de réussir et progression durable</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="bg-white p-5 rounded-xl shadow-md border border-orange-100">
+                        <div className="flex items-start gap-3">
+                          <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-1">Suivi continu</h4>
+                            <p className="text-base text-gray-600">Disponibilité entre les séances pour questions</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Résultats concrets */}
+                <div className="mb-10">
+                  <h3 className="text-2xl font-bold mb-6 text-gray-900 flex items-center gap-3">
+                    <div className="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center">
+                      <Award className="h-6 w-6 text-orange-600" />
+                    </div>
+                    Des résultats concrets
+                  </h3>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="bg-gradient-to-br from-orange-600 to-orange-500 p-6 rounded-2xl shadow-lg text-white">
+                      <div className="text-5xl font-bold mb-2">+4 points</div>
+                      <div className="text-lg font-medium opacity-90">de moyenne dès le premier trimestre</div>
+                      <div className="text-sm opacity-75 mt-2">Collège & Lycée</div>
+                    </div>
+                    <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-6 rounded-2xl shadow-lg text-white">
+                      <div className="text-5xl font-bold mb-2">+5 à +7</div>
+                      <div className="text-lg font-medium opacity-90">points aux concours</div>
+                      <div className="text-sm opacity-75 mt-2">Prépa ECG - Mathématiques</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Ce qui les distingue */}
+                <div className="bg-white p-8 rounded-2xl shadow-lg border border-orange-100">
+                  <h3 className="text-2xl font-bold mb-6 text-gray-900 flex items-center gap-3">
+                    <div className="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center">
+                      <Star className="h-6 w-6 text-orange-600" />
+                    </div>
+                    Ce qui distingue nos professeurs
+                  </h3>
+                  <div className="grid md:grid-cols-3 gap-6">
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-gradient-to-br from-orange-600 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <BookOpen className="h-8 w-8 text-white" />
+                      </div>
+                      <h4 className="font-bold text-gray-900 mb-2">Les bonnes méthodes</h4>
+                      <p className="text-gray-600 text-sm">Issus des meilleures écoles, ils maîtrisent les techniques qui fonctionnent</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <Heart className="h-8 w-8 text-white" />
+                      </div>
+                      <h4 className="font-bold text-gray-900 mb-2">La passion de transmettre</h4>
+                      <p className="text-gray-600 text-sm">Un enseignement passionné qui donne envie de progresser</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-gradient-to-br from-orange-600 to-orange-400 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <Users className="h-8 w-8 text-white" />
+                      </div>
+                      <h4 className="font-bold text-gray-900 mb-2">L'expérience du terrain</h4>
+                      <p className="text-gray-600 text-sm">Plus de 2 000 heures d'enseignement individuel cumulées</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Premier cours gratuit */}
+                <div className="mt-8 bg-gradient-to-r from-orange-600 to-orange-500 p-8 rounded-2xl shadow-xl text-white text-center">
+                  <h3 className="text-3xl font-bold mb-3">✨ Premier cours gratuit</h3>
+                  <p className="text-lg mb-6 opacity-90">
+                    Avant de commencer, nous offrons toujours une première séance gratuite pour faire connaissance,
+                    comprendre les besoins réels et établir un plan d'action 100% personnalisé.
+                  </p>
+                  <Button
+                    size="lg"
+                    className="bg-white text-orange-600 hover:bg-gray-100 font-bold text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
+                  >
+                    <Mail className="mr-2 h-5 w-5" />
+                    Réserver mon cours gratuit
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Section Toute l'équipe - TEMPORAIREMENT MASQUÉE */}
+          {/* 
           <section id="equipe" className="mb-16 scroll-mt-24">
             <div className={`text-center mb-12 transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
               <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
@@ -753,6 +906,7 @@ const NosProfsPage = () => {
               ))}
             </div>
           </section>
+          */}
 
           {/* Section Valeurs */}
           <section className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 mb-16">

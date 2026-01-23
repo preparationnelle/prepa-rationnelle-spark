@@ -4,6 +4,8 @@ import { Home, ChevronRight, ArrowLeft, BookOpen, Target, Calculator, BarChart3,
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { useAuth } from '@/context/AuthContext';
+import { supabase } from '@/integrations/supabase/client';
 
 // Données du QCM
 const qcmData = {
@@ -256,6 +258,9 @@ const OteriaSuitesNumeriquesQCMPage = () => {
   const [answers, setAnswers] = useState({});
   const [showResults, setShowResults] = useState(false);
   const [showExplanations, setShowExplanations] = useState(false);
+  const { currentUser } = useAuth();
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveMessage, setSaveMessage] = useState('');
 
   const handleAnswerSelect = (questionId, choiceKey) => {
     setAnswers(prev => ({
@@ -263,6 +268,8 @@ const OteriaSuitesNumeriquesQCMPage = () => {
       [questionId]: choiceKey
     }));
   };
+
+
 
   const calculateScore = () => {
     let correct = 0;
@@ -274,10 +281,43 @@ const OteriaSuitesNumeriquesQCMPage = () => {
     return { correct, total: qcmData.questions.length };
   };
 
+  const handleValidation = async () => {
+    setShowResults(true);
+
+    if (currentUser) {
+      setIsSaving(true);
+      const { correct, total } = calculateScore();
+      const percentage = Math.round((correct / total) * 100);
+
+      try {
+        const { error } = await supabase
+          .from('qcm_results')
+          .insert({
+            user_id: currentUser.id,
+            qcm_id: 'oteria-suites-numeriques',
+            title: 'Suites Numériques - QCM',
+            score: percentage,
+            total_questions: total,
+            correct_answers: correct
+          });
+
+        if (error) throw error;
+        setSaveMessage('Résultat enregistré dans votre dashboard !');
+      } catch (error) {
+        console.error('Erreur sauvegarde:', error);
+        setSaveMessage('Erreur lors de la sauvegarde.');
+      } finally {
+        setIsSaving(false);
+      }
+    }
+  };
+
   const resetQCM = () => {
     setAnswers({});
     setShowResults(false);
+
     setShowExplanations(false);
+    setSaveMessage('');
   };
 
   const { correct, total } = calculateScore();
@@ -381,11 +421,10 @@ const OteriaSuitesNumeriquesQCMPage = () => {
                   {qcmData.title}
                 </CardTitle>
                 {showResults && (
-                  <Badge variant="outline" className={`text-lg px-4 py-2 ${
-                    scorePercentage >= 80 ? 'border-green-500 text-green-700 bg-green-50' :
+                  <Badge variant="outline" className={`text-lg px-4 py-2 ${scorePercentage >= 80 ? 'border-green-500 text-green-700 bg-green-50' :
                     scorePercentage >= 60 ? 'border-yellow-500 text-yellow-700 bg-yellow-50' :
-                    'border-red-500 text-red-700 bg-red-50'
-                  }`}>
+                      'border-red-500 text-red-700 bg-red-50'
+                    }`}>
                     {correct}/{total} ({scorePercentage}%)
                   </Badge>
                 )}
@@ -394,13 +433,14 @@ const OteriaSuitesNumeriquesQCMPage = () => {
             <CardContent className="pt-4">
               <div className="flex gap-4 justify-center">
                 {!showResults ? (
+
                   <Button
-                    onClick={() => setShowResults(true)}
-                    disabled={Object.keys(answers).length < qcmData.questions.length}
+                    onClick={handleValidation}
+                    disabled={Object.keys(answers).length < qcmData.questions.length || isSaving}
                     className="bg-blue-600 hover:bg-blue-700"
                   >
                     <CheckCircle className="h-4 w-4 mr-2" />
-                    Valider les réponses ({Object.keys(answers).length}/{qcmData.questions.length})
+                    {isSaving ? 'Enregistrement...' : `Valider les réponses (${Object.keys(answers).length}/${qcmData.questions.length})`}
                   </Button>
                 ) : (
                   <>
@@ -421,7 +461,13 @@ const OteriaSuitesNumeriquesQCMPage = () => {
                     </Button>
                   </>
                 )}
+
               </div>
+              {saveMessage && (
+                <div className={`text-center mt-4 font-medium ${saveMessage.includes('Erreur') ? 'text-red-600' : 'text-green-600'}`}>
+                  {saveMessage}
+                </div>
+              )}
             </CardContent>
           </Card>
 
@@ -448,37 +494,34 @@ const OteriaSuitesNumeriquesQCMPage = () => {
                       <div
                         key={choice.key}
                         onClick={() => !showResults && handleAnswerSelect(question.id, choice.key)}
-                        className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 ${
-                          showResults ? (
-                            showCorrectAnswer ? 'border-green-500 bg-green-50' :
+                        className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 ${showResults ? (
+                          showCorrectAnswer ? 'border-green-500 bg-green-50' :
                             showWrongAnswer ? 'border-red-500 bg-red-50' :
-                            isSelected ? 'border-blue-500 bg-blue-50' : 'border-gray-200 bg-white'
-                          ) : (
-                            isSelected ? 'border-blue-500 bg-blue-50' : 'border-gray-200 bg-white hover:border-blue-300'
-                          )
-                        }`}
+                              isSelected ? 'border-blue-500 bg-blue-50' : 'border-gray-200 bg-white'
+                        ) : (
+                          isSelected ? 'border-blue-500 bg-blue-50' : 'border-gray-200 bg-white hover:border-blue-300'
+                        )
+                          }`}
                       >
                         <div className="flex items-center gap-3">
-                          <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
-                            showResults ? (
-                              showCorrectAnswer ? 'border-green-500 bg-green-500' :
+                          <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${showResults ? (
+                            showCorrectAnswer ? 'border-green-500 bg-green-500' :
                               showWrongAnswer ? 'border-red-500 bg-red-500' :
-                              isSelected ? 'border-blue-500 bg-blue-500' : 'border-gray-400'
-                            ) : (
-                              isSelected ? 'border-blue-500 bg-blue-500' : 'border-gray-400'
-                            )
-                          }`}>
+                                isSelected ? 'border-blue-500 bg-blue-500' : 'border-gray-400'
+                          ) : (
+                            isSelected ? 'border-blue-500 bg-blue-500' : 'border-gray-400'
+                          )
+                            }`}>
                             {(isSelected || showCorrectAnswer) && (
                               <div className="w-2 h-2 bg-white rounded-full"></div>
                             )}
                           </div>
-                          <span className={`font-medium ${
-                            showResults ? (
-                              showCorrectAnswer ? 'text-green-800' :
+                          <span className={`font-medium ${showResults ? (
+                            showCorrectAnswer ? 'text-green-800' :
                               showWrongAnswer ? 'text-red-800' :
-                              'text-gray-700'
-                            ) : 'text-gray-700'
-                          }`}>
+                                'text-gray-700'
+                          ) : 'text-gray-700'
+                            }`}>
                             {choice.key.toUpperCase()}) {choice.text}
                           </span>
                           {showResults && isCorrect && (

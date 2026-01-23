@@ -4,6 +4,8 @@ import { Home, ChevronRight, ArrowLeft, BookOpen, Target, Calculator, BarChart3,
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { useAuth } from '@/context/AuthContext';
+import { supabase } from '@/integrations/supabase/client';
 
 // Données du QCM
 const qcmData = {
@@ -256,6 +258,9 @@ const OteriaFonctionsQCMPage = () => {
   const [userAnswers, setUserAnswers] = useState<{ [key: number]: string }>({});
   const [showResults, setShowResults] = useState(false);
   const [showExplanations, setShowExplanations] = useState<{ [key: number]: boolean }>({});
+  const { currentUser } = useAuth();
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveMessage, setSaveMessage] = useState('');
 
   const handleAnswer = (questionId: number, answer: string) => {
     setUserAnswers({ ...userAnswers, [questionId]: answer });
@@ -274,6 +279,37 @@ const OteriaFonctionsQCMPage = () => {
       if (userAnswers[q.id] === q.answer) correct++;
     });
     return correct;
+  };
+
+  const handleValidation = async () => {
+    setShowResults(true);
+
+    if (currentUser) {
+      setIsSaving(true);
+      const score = calculateScore();
+      const percentage = Math.round((score / qcmData.questions.length) * 100);
+
+      try {
+        const { error } = await supabase
+          .from('qcm_results')
+          .insert({
+            user_id: currentUser.id,
+            qcm_id: 'oteria-fonctions',
+            title: 'Fonctions et Python - QCM',
+            score: percentage,
+            total_questions: qcmData.questions.length,
+            correct_answers: score
+          });
+
+        if (error) throw error;
+        setSaveMessage('Résultat enregistré dans votre dashboard !');
+      } catch (error) {
+        console.error('Erreur sauvegarde:', error);
+        setSaveMessage('Erreur lors de la sauvegarde.');
+      } finally {
+        setIsSaving(false);
+      }
+    }
   };
 
   const getScoreColor = (score: number) => {
@@ -338,6 +374,11 @@ const OteriaFonctionsQCMPage = () => {
                   </div>
                 </CardContent>
               </Card>
+              {saveMessage && (
+                <div className={`text-center mt-4 font-medium ${saveMessage.includes('Erreur') ? 'text-red-600' : 'text-green-600'}`}>
+                  {saveMessage}
+                </div>
+              )}
             </div>
           )}
 
@@ -380,47 +421,45 @@ const OteriaFonctionsQCMPage = () => {
             const isWrong = showResults && isAnswered && !isCorrect;
 
             return (
-              <Card key={q.id} className={`${
-                showResults 
-                  ? isCorrect ? 'border-green-300 bg-green-50' 
-                  : isWrong ? 'border-red-300 bg-red-50' 
-                  : 'border-gray-300'
+              <Card key={q.id} className={`${showResults
+                  ? isCorrect ? 'border-green-300 bg-green-50'
+                    : isWrong ? 'border-red-300 bg-red-50'
+                      : 'border-gray-300'
                   : 'border-blue-200'
-              }`}>
+                }`}>
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between">
                     <span className="text-blue-900">
                       Question {index + 1}
                       {showResults && (
-                        isCorrect 
+                        isCorrect
                           ? <CheckCircle className="inline ml-2 h-6 w-6 text-green-600" />
-                          : isWrong 
-                          ? <XCircle className="inline ml-2 h-6 w-6 text-red-600" />
-                          : null
+                          : isWrong
+                            ? <XCircle className="inline ml-2 h-6 w-6 text-red-600" />
+                            : null
                       )}
                     </span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-lg font-medium text-blue-800 mb-4">{q.question}</p>
-                  
+
                   <div className="space-y-2">
                     {q.choices.map(choice => (
                       <button
                         key={choice.key}
                         onClick={() => !showResults && handleAnswer(q.id, choice.key)}
                         disabled={showResults}
-                        className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
-                          userAnswers[q.id] === choice.key
+                        className={`w-full text-left p-4 rounded-lg border-2 transition-all ${userAnswers[q.id] === choice.key
                             ? showResults
                               ? choice.key === q.answer
                                 ? 'border-green-500 bg-green-100'
                                 : 'border-red-500 bg-red-100'
                               : 'border-blue-500 bg-blue-100'
                             : showResults && choice.key === q.answer
-                            ? 'border-green-500 bg-green-50'
-                            : 'border-gray-300 hover:border-blue-400 hover:bg-blue-50'
-                        } ${showResults ? 'cursor-default' : 'cursor-pointer'}`}
+                              ? 'border-green-500 bg-green-50'
+                              : 'border-gray-300 hover:border-blue-400 hover:bg-blue-50'
+                          } ${showResults ? 'cursor-default' : 'cursor-pointer'}`}
                       >
                         <span className="font-semibold text-blue-900">{choice.key}.</span> {choice.text}
                       </button>
@@ -456,18 +495,19 @@ const OteriaFonctionsQCMPage = () => {
           <div className="flex justify-center gap-4">
             {!showResults ? (
               <Button
-                onClick={() => setShowResults(true)}
+                onClick={handleValidation}
                 size="lg"
                 className="bg-blue-600 hover:bg-blue-700"
-                disabled={Object.keys(userAnswers).length !== qcmData.questions.length}
+                disabled={Object.keys(userAnswers).length !== qcmData.questions.length || isSaving}
               >
-                Valider mes réponses ({Object.keys(userAnswers).length}/{qcmData.questions.length})
+                {isSaving ? 'Enregistrement...' : `Valider mes réponses (${Object.keys(userAnswers).length}/${qcmData.questions.length})`}
               </Button>
             ) : (
               <Button
                 onClick={() => {
                   setUserAnswers({});
                   setShowResults(false);
+                  setSaveMessage('');
                   setShowExplanations({});
                   window.scrollTo(0, 0);
                 }}

@@ -4,6 +4,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { useAuth } from '@/context/AuthContext';
+import { supabase } from '@/integrations/supabase/client';
 import {
   Home,
   ChevronRight,
@@ -31,6 +33,9 @@ const OteriaVariablesAleatoiresQCMPage = () => {
   const [selectedAnswers, setSelectedAnswers] = useState<{ [key: number]: number }>({});
   const [showResults, setShowResults] = useState(false);
   const [score, setScore] = useState(0);
+  const { currentUser } = useAuth();
+  const [saveMessage, setSaveMessage] = useState('');
+  const [isSaving, setIsSaving] = useState(false);
 
   const questions: Question[] = [
     {
@@ -267,10 +272,36 @@ const OteriaVariablesAleatoiresQCMPage = () => {
     return correctCount;
   };
 
-  const handleFinish = () => {
+  const handleFinish = async () => {
     const finalScore = calculateScore();
     setScore(finalScore);
     setShowResults(true);
+
+    if (currentUser) {
+      setIsSaving(true);
+      const percentage = Math.round((finalScore / questions.length) * 100);
+
+      try {
+        const { error } = await supabase
+          .from('qcm_results')
+          .insert({
+            user_id: currentUser.id,
+            qcm_id: 'oteria-variables-aleatoires',
+            title: 'Variables Aléatoires & Histogrammes - QCM',
+            score: percentage,
+            total_questions: questions.length,
+            correct_answers: finalScore
+          });
+
+        if (error) throw error;
+        setSaveMessage('Résultat enregistré dans votre dashboard !');
+      } catch (error) {
+        console.error('Erreur sauvegarde:', error);
+        setSaveMessage('Erreur lors de la sauvegarde.');
+      } finally {
+        setIsSaving(false);
+      }
+    }
   };
 
   const resetQCM = () => {
@@ -278,6 +309,7 @@ const OteriaVariablesAleatoiresQCMPage = () => {
     setSelectedAnswers({});
     setShowResults(false);
     setScore(0);
+    setSaveMessage('');
   };
 
   const currentQ = questions[currentQuestion];
@@ -378,18 +410,16 @@ const OteriaVariablesAleatoiresQCMPage = () => {
                     <button
                       key={index}
                       onClick={() => handleAnswerSelect(currentQ.id, index)}
-                      className={`w-full p-4 text-left rounded-lg border-2 transition-all duration-200 ${
-                        selectedAnswers[currentQ.id] === index
+                      className={`w-full p-4 text-left rounded-lg border-2 transition-all duration-200 ${selectedAnswers[currentQ.id] === index
                           ? 'border-teal-600 bg-teal-50 font-medium'
                           : 'border-gray-200 hover:border-teal-300 hover:bg-teal-50/50'
-                      }`}
+                        }`}
                     >
                       <div className="flex items-center gap-3">
-                        <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
-                          selectedAnswers[currentQ.id] === index
+                        <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${selectedAnswers[currentQ.id] === index
                             ? 'border-teal-600 bg-teal-600'
                             : 'border-gray-300'
-                        }`}>
+                          }`}>
                           {selectedAnswers[currentQ.id] === index && (
                             <div className="w-3 h-3 bg-white rounded-full" />
                           )}
@@ -455,10 +485,15 @@ const OteriaVariablesAleatoiresQCMPage = () => {
                   </div>
                   <p className="mt-4 text-lg font-medium text-gray-700">
                     {score >= 18 ? "🎉 Excellent ! Vous maîtrisez parfaitement les variables aléatoires !" :
-                     score >= 15 ? "👏 Très bien ! Vous avez une bonne compréhension du sujet." :
-                     score >= 12 ? "👍 Bien ! Continuez vos efforts." :
-                     "📚 Révisez le cours et réessayez."}
+                      score >= 15 ? "👏 Très bien ! Vous avez une bonne compréhension du sujet." :
+                        score >= 12 ? "👍 Bien ! Continuez vos efforts." :
+                          "📚 Révisez le cours et réessayez."}
                   </p>
+                  {saveMessage && (
+                    <div className={`mt-4 font-medium ${saveMessage.includes('Erreur') ? 'text-red-600' : 'text-green-600'}`}>
+                      {saveMessage}
+                    </div>
+                  )}
                 </div>
 
                 {/* Detailed Results */}
@@ -467,9 +502,8 @@ const OteriaVariablesAleatoiresQCMPage = () => {
                   {questions.map((q, qIndex) => {
                     const isCorrect = selectedAnswers[q.id] === q.correctAnswer;
                     return (
-                      <div key={q.id} className={`p-4 rounded-lg border-2 ${
-                        isCorrect ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'
-                      }`}>
+                      <div key={q.id} className={`p-4 rounded-lg border-2 ${isCorrect ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'
+                        }`}>
                         <div className="flex items-start gap-3 mb-3">
                           {isCorrect ? (
                             <CheckCircle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />

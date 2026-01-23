@@ -257,14 +257,14 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
           ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200"
           : "bg-white/90 backdrop-blur-sm shadow-sm border-b border-blue-100/30"
       )}>
-        <nav className="container mx-auto px-4 sm:px-6 py-2 flex items-center justify-between min-h-[48px] bg-white">
+        <nav className="container mx-auto px-4 sm:px-6 py-1.5 flex items-center justify-between min-h-[40px] bg-white">
           <Link to="/" className="flex items-center" onClick={closeMenu}>
             <Logo size="sm" />
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link to="/" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Accueil</Link>
+            <Link to="/" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-2 py-1.5 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Accueil</Link>
 
             {/* Menu déroulant "Formations" avec hover */}
             <div
@@ -273,7 +273,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               onMouseEnter={handleFormationsHover}
               onMouseLeave={handleFormationsLeave}
             >
-              <button className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 flex items-center gap-1 focus:outline-none px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4">
+              <button className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 flex items-center gap-1 focus:outline-none px-2 py-1.5 rounded-md hover:bg-gray-50 hover:underline underline-offset-4">
                 Formations
                 <ChevronDown className={cn("h-3 w-3 transition-transform duration-200", isFormationsOpen && "rotate-180")} />
               </button>
@@ -339,8 +339,8 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               </div>
             </div>
 
-            <Link to="/generator" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Générateur</Link>
-            <Link to="/nos-profs" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Nos Professeurs</Link>
+            <Link to="/generator" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-2 py-1.5 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Générateur</Link>
+            <Link to="/nos-profs" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-2 py-1.5 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Professeurs</Link>
 
             {/* Menu déroulant "Niveau d'étude" avec hover */}
             <div
@@ -349,7 +349,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               onMouseEnter={handleStudyLevelHover}
               onMouseLeave={handleStudyLevelLeave}
             >
-              <button className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 flex items-center gap-1 focus:outline-none px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4">
+              <button className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 flex items-center gap-1 focus:outline-none px-2 py-1.5 rounded-md hover:bg-gray-50 hover:underline underline-offset-4">
                 Niveau
                 <ChevronDown className={cn("h-3 w-3 transition-transform duration-200", isStudyLevelOpen && "rotate-180")} />
               </button>
@@ -410,7 +410,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               </div>
             </div>
 
-            <Link to="/avis" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Avis</Link>
+            <Link to="/avis" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-2 py-1.5 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Avis</Link>
 
             {/* Menu déroulant "Contact" avec hover */}
             <div
@@ -419,7 +419,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               onMouseEnter={handleContactHover}
               onMouseLeave={handleContactLeave}
             >
-              <button className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 flex items-center gap-1 focus:outline-none px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4">
+              <button className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 flex items-center gap-1 focus:outline-none px-2 py-1.5 rounded-md hover:bg-gray-50 hover:underline underline-offset-4">
                 Contact
                 <ChevronDown className={cn("h-3 w-3 transition-transform duration-200", isContactOpen && "rotate-180")} />
               </button>
@@ -464,7 +464,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               </div>
             </div>
 
-            <Link to="/stage-accompagnement" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Offres</Link>
+            <Link to="/stage-accompagnement" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-2 py-1.5 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Offres</Link>
             <SearchTrigger />
 
             {/* Liens réseaux sociaux */}
@@ -511,7 +511,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               </div>
             ) : (
               <>
-                <Link to="/login" className="text-sm font-medium text-foreground hover:text-primary transition px-3 py-1 rounded-md hover:bg-gray-50" onClick={closeMenu}>Login</Link>
+                <Link to="/login" className="text-sm font-medium text-foreground hover:text-primary transition px-2 py-1 rounded-md hover:bg-gray-50" onClick={closeMenu}>Login</Link>
                 {showSignup !== false && (
                   <Link to="/register" onClick={closeMenu}><Button size="sm" className="h-8 px-4 text-xs font-medium">S'inscrire</Button></Link>
                 )}
@@ -566,7 +566,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
           <Link to="/" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Accueil</Link>
           <Link to="/avis" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Avis</Link>
           <Link to="/generator" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Générateur</Link>
-          <Link to="/nos-profs" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Nos Professeurs</Link>
+          <Link to="/nos-profs" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Professeurs</Link>
           <Link to="/articles/primaire" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Primaire</Link>
           <Link to="/articles/college" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Collège</Link>
           <Link to="/articles/lycee" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Lycée</Link>

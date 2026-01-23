@@ -98,14 +98,14 @@ export const HeroSection = () => {
         <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-20 sm:pb-28">
           {/* Google Rating Badge - More prominent */}
           <div className={`flex justify-end mb-8 transition-all duration-700 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-full border border-orange-400/30 shadow-lg shadow-orange-500/10">
+            <Link to="/avis" className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-full border border-orange-400/30 shadow-lg shadow-orange-500/10 hover:scale-105 hover:bg-white/20 transition-all duration-300">
               <div className="flex">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-4 w-4 text-orange-400 fill-orange-400" />
                 ))}
               </div>
               <span className="text-white text-sm font-semibold">5.0 sur Google</span>
-            </div>
+            </Link>
           </div>
 
           {/* Scarcity Badge - Brighter green */}
@@ -156,44 +156,44 @@ export const HeroSection = () => {
             </p>
           </div>
 
-          {/* Form Card - Enhanced with glow */}
+          {/* Form Card - Refined design */}
           <div className={`max-w-lg mx-auto transition-all duration-700 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="relative">
-              {/* Intense glow effect behind card */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-orange-500/40 via-orange-400/30 to-orange-500/40 rounded-3xl blur-2xl animate-pulse-subtle"></div>
+              {/* Subtle glow effect behind card */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-orange-500/20 via-orange-400/15 to-orange-500/20 rounded-2xl blur-xl"></div>
 
-              {/* Card with enhanced shadow */}
-              <div className="relative bg-white rounded-2xl shadow-2xl shadow-black/30 p-7 sm:p-8 border border-orange-100">
-                {/* Progress bar - More vibrant */}
-                <div className="mb-6">
-                  <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+              {/* Card with glassmorphism touch */}
+              <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl shadow-black/20 p-6 sm:p-7 border border-white/50">
+                {/* Progress bar - Subtle */}
+                <div className="mb-5">
+                  <div className="h-1 bg-gray-100 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-orange-500 to-orange-400 rounded-full transition-all duration-500 shadow-sm shadow-orange-400/50"
+                      className="h-full bg-gradient-to-r from-orange-500 to-orange-400 rounded-full transition-all duration-500"
                       style={{ width: selectedLevel && selectedRole ? '100%' : selectedLevel || selectedRole ? '50%' : '0%' }}
                     ></div>
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-center text-gray-900 mb-6">
+                <h3 className="text-lg font-bold text-center text-gray-800 mb-5">
                   Complétez le formulaire et bénéficiez de nos conseils
                 </h3>
 
-                {/* Level Selection - Enhanced buttons */}
-                <div className="mb-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-7 h-7 bg-gradient-to-br from-orange-500 to-orange-400 rounded-lg flex items-center justify-center shadow-md shadow-orange-500/30">
-                      <BookOpen className="h-4 w-4 text-white" />
+                {/* Level Selection - Refined buttons */}
+                <div className="mb-5">
+                  <div className="flex items-center gap-2 mb-2.5">
+                    <div className="w-6 h-6 bg-gradient-to-br from-orange-500 to-orange-400 rounded-md flex items-center justify-center">
+                      <BookOpen className="h-3.5 w-3.5 text-white" />
                     </div>
-                    <span className="text-sm font-semibold text-gray-800">Niveau de l'élève</span>
+                    <span className="text-sm font-semibold text-gray-700">Niveau de l'élève</span>
                   </div>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-3 gap-2">
                     {['Prépa', 'Lycée', 'Collège'].map((level) => (
                       <button
                         key={level}
                         onClick={() => setSelectedLevel(level)}
-                        className={`py-3.5 px-4 rounded-xl text-sm font-bold transition-all duration-300 ${selectedLevel === level
-                          ? 'bg-gradient-to-r from-orange-500 to-orange-400 text-white shadow-lg shadow-orange-500/40 scale-105 border-2 border-orange-400'
-                          : 'bg-gray-50 text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-2 border-gray-100 hover:border-orange-200'
+                        className={`py-3 px-3 rounded-lg text-sm font-semibold transition-all duration-200 ${selectedLevel === level
+                          ? 'bg-gradient-to-r from-orange-500 to-orange-400 text-white shadow-md shadow-orange-500/25'
+                          : 'bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-gray-300'
                           }`}
                       >
                         {level}
@@ -202,15 +202,15 @@ export const HeroSection = () => {
                   </div>
                 </div>
 
-                {/* Role Selection - Enhanced buttons */}
-                <div className="mb-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-7 h-7 bg-gradient-to-br from-orange-500 to-orange-400 rounded-lg flex items-center justify-center shadow-md shadow-orange-500/30">
-                      <Users className="h-4 w-4 text-white" />
+                {/* Role Selection - Refined buttons */}
+                <div className="mb-5">
+                  <div className="flex items-center gap-2 mb-2.5">
+                    <div className="w-6 h-6 bg-gradient-to-br from-orange-500 to-orange-400 rounded-md flex items-center justify-center">
+                      <Users className="h-3.5 w-3.5 text-white" />
                     </div>
-                    <span className="text-sm font-semibold text-gray-800">Je suis...</span>
+                    <span className="text-sm font-semibold text-gray-700">Je suis...</span>
                   </div>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-2 gap-2">
                     {[
                       { id: 'student', label: 'Un élève' },
                       { id: 'parent', label: 'Un parent' }
@@ -218,9 +218,9 @@ export const HeroSection = () => {
                       <button
                         key={role.id}
                         onClick={() => setSelectedRole(role.id)}
-                        className={`py-3.5 px-4 rounded-xl text-sm font-bold transition-all duration-300 ${selectedRole === role.id
-                          ? 'bg-gradient-to-r from-orange-500 to-orange-400 text-white shadow-lg shadow-orange-500/40 scale-105 border-2 border-orange-400'
-                          : 'bg-gray-50 text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-2 border-gray-100 hover:border-orange-200'
+                        className={`py-3 px-3 rounded-lg text-sm font-semibold transition-all duration-200 ${selectedRole === role.id
+                          ? 'bg-gradient-to-r from-orange-500 to-orange-400 text-white shadow-md shadow-orange-500/25'
+                          : 'bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-gray-300'
                           }`}
                       >
                         {role.label}
@@ -229,26 +229,26 @@ export const HeroSection = () => {
                   </div>
                 </div>
 
-                {/* CTA Button - Super vibrant */}
+                {/* CTA Button - Clean and bold */}
                 <Button
                   onClick={selectedLevel && selectedRole ? handleFormSubmit : joinWhatsAppGroup}
-                  className="w-full py-7 text-lg font-bold bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white rounded-xl shadow-xl shadow-orange-500/40 hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 group border-0 hover:scale-[1.02]"
+                  className="w-full py-6 text-base font-bold bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white rounded-xl shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 transition-all duration-300 group border-0"
                 >
-                  <span className="flex items-center justify-center gap-3">
+                  <span className="flex items-center justify-center gap-2">
                     <Calendar className="h-5 w-5" />
                     Réserver mon cours gratuit
                     <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </Button>
 
-                {/* Trust indicators */}
-                <div className="mt-5 flex items-center justify-center gap-5 text-xs text-gray-500 font-medium">
+                {/* Trust indicators - Subtle */}
+                <div className="mt-4 flex items-center justify-center gap-4 text-xs text-gray-500">
                   <div className="flex items-center gap-1.5">
-                    <CheckCircle className="h-4 w-4 text-emerald-500" />
+                    <CheckCircle className="h-3.5 w-3.5 text-emerald-500" />
                     <span>Sans engagement</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <CheckCircle className="h-4 w-4 text-emerald-500" />
+                    <CheckCircle className="h-3.5 w-3.5 text-emerald-500" />
                     <span>Réponse sous 24h</span>
                   </div>
                 </div>
@@ -258,54 +258,6 @@ export const HeroSection = () => {
         </div>
       </section>
 
-      {/* Statistics Section - Enhanced with gradient background */}
-      <section className="relative bg-gradient-to-b from-gray-50 to-white py-14 sm:py-20 overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-1/4 w-64 h-64 bg-orange-400/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-orange-500/10 rounded-full blur-3xl"></div>
-
-        <div className="relative z-10 container mx-auto px-4 sm:px-6">
-          <div className="fade-in-up max-w-5xl mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
-              {/* Stat 1 */}
-              <Link to="/avis" className="group text-center p-5 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-orange-200">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <Star className="h-7 w-7 text-orange-500 fill-orange-500 group-hover:scale-110 transition-transform" />
-                  <span className="text-4xl sm:text-5xl font-bold text-orange-500">5/5</span>
-                </div>
-                <p className="text-sm text-gray-700 font-semibold">Satisfaction client</p>
-              </Link>
-
-              {/* Stat 2 */}
-              <Link to="/avis" className="group text-center p-5 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-orange-200">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <TrendingUp className="h-7 w-7 text-orange-500 group-hover:scale-110 transition-transform" />
-                  <span className="text-4xl sm:text-5xl font-bold text-orange-500">+5pts</span>
-                </div>
-                <p className="text-sm text-gray-700 font-semibold">Gain moyen en maths</p>
-              </Link>
-
-              {/* Stat 3 */}
-              <Link to="/avis" className="group text-center p-5 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-orange-200">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <Users className="h-7 w-7 text-orange-500 group-hover:scale-110 transition-transform" />
-                  <span className="text-4xl sm:text-5xl font-bold text-orange-500">50+</span>
-                </div>
-                <p className="text-sm text-gray-700 font-semibold">Étudiants accompagnés</p>
-              </Link>
-
-              {/* Stat 4 */}
-              <Link to="/avis" className="group text-center p-5 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-orange-200">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <Award className="h-7 w-7 text-orange-500 group-hover:scale-110 transition-transform" />
-                  <span className="text-4xl sm:text-5xl font-bold text-orange-500">80%</span>
-                </div>
-                <p className="text-sm text-gray-700 font-semibold">En TOP 5 en 2025</p>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Value Proposition Cards - Premium design */}
       <section className="relative bg-white py-14 sm:py-20 overflow-hidden">
