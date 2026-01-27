@@ -511,6 +511,9 @@ const AutonomiePrimairePage = lazy(() => import('../pages/articles/primaire/Auto
 const LectureEfficacePage = lazy(() => import('../pages/articles/primaire/LectureEfficacePage'));
 const MathsLudiquesPage = lazy(() => import('../pages/articles/primaire/MathsLudiquesPage'));
 const ArticlesCollegePage = lazy(() => import('../pages/ArticlesCollegePage'));
+const TransitionCollegePage = lazy(() => import('../pages/articles/college/TransitionCollegePage'));
+const OrganisationCollegePage = lazy(() => import('../pages/articles/college/OrganisationCollegePage'));
+const ExamensCollegePage = lazy(() => import('../pages/articles/college/ExamensCollegePage'));
 const ArticlesLyceePage = lazy(() => import('../pages/ArticlesLyceePage'));
 const LyceeSecondePage = lazy(() => import('../pages/LyceeSecondePage'));
 const LyceePremierePage = lazy(() => import('../pages/LyceePremierePage'));
@@ -783,6 +786,9 @@ export const routes: RouteConfig[] = [
   { path: '/articles/primaire/lecture', component: LectureEfficacePage, title: 'Méthodes de lecture efficace' },
   { path: '/articles/primaire/maths-ludiques', component: MathsLudiquesPage, title: 'Mathématiques ludiques au primaire' },
   { path: '/articles/college', component: ArticlesCollegePage, title: 'Articles Collège' },
+  { path: '/articles/college/transition', component: TransitionCollegePage, title: 'Transition primaire-collège' },
+  { path: '/articles/college/organisation', component: OrganisationCollegePage, title: 'Organisation au collège' },
+  { path: '/articles/college/examens', component: ExamensCollegePage, title: 'Préparation aux examens' },
   { path: '/articles/lycee', component: ArticlesLyceePage, title: 'Articles Lycée' },
   { path: '/articles/lycee/seconde', component: LyceeSecondePage, title: 'Classe de Seconde' },
   { path: '/articles/lycee/premiere', component: LyceePremierePage, title: 'Classe de Première' },

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- ============ PAGES PRINCIPALES ============ -->
+  <url><loc>https://www.preparationnelle.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.preparationnelle.com/formations</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.preparationnelle.com/nos-offres</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/apropos</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/nos-profs</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/contact</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/generator</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/stage-accompagnement</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/coaching</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/parent</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/professeur</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/partners</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.preparationnelle.com/avis</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/chapitres-libres</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- ============ OFFRES ============ -->
+  <url><loc>https://www.preparationnelle.com/offres/pre-rentree</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/offre/coaching-python</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/offre/coaching-maths</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/offre/organisation-ete</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/offre/preparation-cube</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/offre/gratuite</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- ============ PAGES LÉGALES ============ -->
+  <url><loc>https://www.preparationnelle.com/mentions-legales</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.preparationnelle.com/politique-confidentialite</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.preparationnelle.com/cgu</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.preparationnelle.com/cgv</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
+  <!-- ============ ARTICLES PRIMAIRE ============ -->
+  <url><loc>https://www.preparationnelle.com/articles/primaire</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/primaire/autonomie</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/primaire/lecture</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/primaire/maths-ludiques</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ============ ARTICLES COLLEGE ============ -->
+  <url><loc>https://www.preparationnelle.com/articles/college</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/college/transition</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/college/organisation</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/college/examens</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ============ ARTICLES LYCÉE ============ -->
+  <url><loc>https://www.preparationnelle.com/articles/lycee</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/lycee/seconde</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/lycee/premiere</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/lycee/terminale</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/lycee/terminale/philosophie</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/lycee/terminale/histoire-geographie</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/lycee/terminale/espagnol</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/lycee/terminale/eps</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/lycee/terminale/anglais</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/lycee/terminale/grand-oral</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <!-- ============ ARTICLES PRÉPA ECG ============ -->
+  <url><loc>https://www.preparationnelle.com/articles/prepa-ecg</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/concours-acces-sesame</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/maths-ete-controle</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/attentes-concours</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/colles-ds</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/carnet-erreurs</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/routine-maths-beton</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/planning-360</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/plan-anti-decouragement</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/participation-active</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/cours-maths-maitrise</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/exos-classiques</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/annales-strategie</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ============ PAGES ÉCOLES ============ -->
+  <url><loc>https://www.preparationnelle.com/escp</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/essec</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/edhec</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/emlyon</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/audencia</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/gem</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/kedge</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/neoma</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/skema</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/entretien-inverse-gem</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/cv-projectif</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ============ MÉTHODOLOGIE ENTRETIENS ============ -->
+  <url><loc>https://www.preparationnelle.com/methodes/personnalite</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/methodologie/motivation-ecole</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/methodologie/projet-professionnel</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/methodologie/personnalite</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/methodologie/finir-entretien</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/methodologie/erreur-entretien</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/methodologie/tendre-perches</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/methodologie/pitch-intro</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/methodologie/storytelling</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ============ FORMATION PYTHON ============ -->
+  <url><loc>https://www.preparationnelle.com/formation</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.preparationnelle.com/python-article</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/pourquoi-python-prepa-ecg</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/python-reference</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/python-flashcards</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/exercices</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/python-fondamentaux</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/python-matrices</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/python-analyse</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/python-probabilites</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/python-fondamentaux-exercices</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/python-matrices-exercices</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/python-analyse-exercices</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/python-probabilites-exercices</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/python-quiz</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ============ FORMATION MATHS ============ -->
+  <url><loc>https://www.preparationnelle.com/formation/maths</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/maths-choix</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/maths-approfondies</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/maths-appliquees</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/math/terminale-vers-prepa</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/math/premiere-vers-deuxieme</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- ============ FORMATION ANGLAIS ============ -->
+  <url><loc>https://www.preparationnelle.com/formation/anglais</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/vocabulaire</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/grammaire</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/grammaire/temps-verbaux</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/grammaire/conditionnels</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/grammaire/voix-passives</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/grammaire/discours-indirect</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/grammaire/modaux</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/grammaire/prepositions</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/grammaire/articles</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/grammaire/relatives</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/grammaire/gerondif-infinitif</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/grammaire/comparatifs</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/grammaire/questions</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/grammaire/expressions-temps</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/grammaire/concordance</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/grammaire/quantifieurs</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/grammaire/subjunctif</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/grammaire/inversions</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/grammaire/connecteurs</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/grammaire/verbes-irreguliers</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/grammaire/causatives</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/grammaire/nuances-lexicales</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/civilisation</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/civilisation/environment</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/civilisation/politics</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/civilisation/geopolitics</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/civilisation/ai-technology</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/civilisation/economy</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/civilisation/health</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/civilisation/education</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/civilisation/media</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/civilisation/justice</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/civilisation/civil-rights</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/civilisation/brexit</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/civilisation/commonwealth</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/civilisation/civil-religion</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/civilisation/immigration</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/civilisation/crises</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/civilisation/polarization</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/civilisation/labor-markets</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/civilisation/gender-equality</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/civilisation/culture-wars</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/methodologie-complete</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/methodologie/colles</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/methodologie/synthese-question-1</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/anglais/methodologie/essai-question-2</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ============ FORMATION ESPAGNOL ============ -->
+  <url><loc>https://www.preparationnelle.com/formation/espagnol</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/espagnol/grammaire</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/espagnol/grammaire/conjugaison</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/espagnol/grammaire/ser-estar</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/espagnol/grammaire/syntaxe-structures-complexes</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/espagnol/grammaire/prepositions</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/espagnol/grammaire/questions</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/espagnol/grammaire/negations</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/espagnol/grammaire/temporal</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/espagnol/grammaire/pronouns</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/espagnol/grammaire/affective-verbs</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/espagnol/grammaire/adjectives-adverbs</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/espagnol/civilisation</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/espagnol/methodologie</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- ============ FORMATION ALLEMAND ============ -->
+  <url><loc>https://www.preparationnelle.com/formation/allemand</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/allemand/grammaire</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/allemand/civilisation</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/allemand/politik</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/allemand/demographie</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/allemand/ecologie</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/allemand/geopolitique</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/allemand/industrie</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/allemand/culture</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/allemand/education</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/allemand/technologie</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/allemand/femmes</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/allemand/geschichte</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/allemand/epreuves</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/allemand/methodologie</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- ============ FORMATION GÉOPOLITIQUE ============ -->
+  <url><loc>https://www.preparationnelle.com/formation/geopolitique</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/geopolitique/premiere-annee</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/geopolitique/deuxieme-annee</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/geopolitique/sujets-probables</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/geopolitique/continent-africain</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/geopolitique/proche-moyen-orient</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/geopolitique/union-europeenne</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/geopolitique/amerique-latine</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/geopolitique/sciences-technologies</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/geopolitique/etudes-de-cas</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/geopolitique/chronologies</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/geopolitique/flashcards</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/geopolitique/references</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/geopolitique/methodologie</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/geopolitique/methodologie/dissertation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/geopolitique/annales</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- ============ FORMATION ESH ============ -->
+  <url><loc>https://www.preparationnelle.com/formation/esh</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/esh/premiere-annee</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/esh/deuxieme-annee</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/esh/methodologie</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/esh/etudes-cas</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/esh/ressources</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- ============ FORMATION CULTURE GÉNÉRALE ============ -->
+  <url><loc>https://www.preparationnelle.com/formation/culture-generale</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/culture-generale/articles</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/culture-generale/methodes</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/culture-generale/programme</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/culture-generale/juger</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- ============ FORMATION SYNTHÈSE DE TEXTE ============ -->
+  <url><loc>https://www.preparationnelle.com/formation/synthese-texte</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/synthese-texte/overview</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/synthese-texte/methode</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/synthese-texte/travail-annuel</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/synthese-texte/ressources</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- ============ OTERIA CYBER SCHOOL ============ -->
+  <url><loc>https://www.preparationnelle.com/articles/oteria-cyber-school</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.preparationnelle.com/articles/oteria-cyber-school/bachelor-1</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/oteria/logique-fondamentale-cours</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/oteria/logique-fondamentale-exercices</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/oteria/logique-fondamentale-flashcards</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/oteria/python-bases-cours</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/oteria/python-bases-exercices</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/oteria/python-bases-flashcards</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/oteria/recurrence-recursivite-cours</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/oteria/suites-numeriques-cours</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/oteria/fonctions-variable-reelle-cours</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/oteria/polynomes-approximation-cours</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/oteria/denombrement-paradoxes-cours</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/oteria/probabilites-introduction-cours</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/oteria/variables-aleatoires-cours</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/oteria/integrales-monte-carlo-cours</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/oteria/matrices-markov-cours</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/oteria/matrices-stochastiques-cours</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/oteria/python-references</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/oteria/fiche-evaluation-finale</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.preparationnelle.com/formation/oteria/mini-projet</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ============ GÉNÉRATEURS IA ============ -->
+  <url><loc>https://www.preparationnelle.com/generator/flashcards</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/generator/answer</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/generator/case-study</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/generator/edhec</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/generator/emlyon</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/generator/geopolitics</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/generator/geopolitics-unified</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/generator/languages</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/generator/languages-unified</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/generator/orals-unified</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/generator/prepa-chatbot</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/generator/culture-generale</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/generator/theme-grammar</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/generator/paragraph</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/generator/geopolitics-paradox</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.preparationnelle.com/generator/math</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+</urlset>

@@ -203,8 +203,7 @@ const InversionsEmphaseExercicesPage = () => {
                     key={index}
                     onClick={() => handleAnswerChange(exercise.id, option)}
                     disabled={examStarted && !examMode}
-                    className={`w-full text-left p-3 rounded-lg border transition-all ${
-                      isValidated
+                    className={`w-full text-left p-3 rounded-lg border transition-all ${isValidated
                         ? isCorrectOption
                           ? 'border-green-300 bg-green-50 text-green-800'
                           : isSelected && !isCorrect
@@ -213,7 +212,7 @@ const InversionsEmphaseExercicesPage = () => {
                         : isSelected
                           ? 'border-blue-300 bg-blue-50 text-blue-800'
                           : 'border-gray-200 bg-white hover:border-gray-300'
-                    }`}
+                      }`}
                   >
                     {option}
                   </button>
@@ -231,13 +230,12 @@ const InversionsEmphaseExercicesPage = () => {
                 onChange={(e) => handleAnswerChange(exercise.id, e.target.value)}
                 disabled={examStarted && !examMode}
                 placeholder="Your answer..."
-                className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 ${
-                  isValidated
+                className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 ${isValidated
                     ? isCorrect
                       ? 'border-green-300 focus:ring-green-200 bg-green-50'
                       : 'border-red-300 focus:ring-red-200 bg-red-50'
                     : 'border-gray-300 focus:ring-blue-200'
-                }`}
+                  }`}
               />
             </div>
           )}
@@ -253,8 +251,7 @@ const InversionsEmphaseExercicesPage = () => {
                     key={index}
                     onClick={() => handleAnswerChange(exercise.id, option)}
                     disabled={examStarted && !examMode}
-                    className={`w-full text-left p-3 rounded-lg border transition-all ${
-                      isValidated
+                    className={`w-full text-left p-3 rounded-lg border transition-all ${isValidated
                         ? isCorrectOption
                           ? 'border-green-300 bg-green-50 text-green-800'
                           : isSelected && !isCorrect
@@ -263,7 +260,7 @@ const InversionsEmphaseExercicesPage = () => {
                         : isSelected
                           ? 'border-blue-300 bg-blue-50 text-blue-800'
                           : 'border-gray-200 bg-white hover:border-gray-300'
-                    }`}
+                      }`}
                   >
                     {option}
                   </button>
@@ -352,8 +349,8 @@ const InversionsEmphaseExercicesPage = () => {
               Grammaire
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/anglais/grammaire/expressions-temps" className="hover:text-gray-900 transition-colors">
-              Sequence of Tenses
+            <Link to="/formation/anglais/grammaire/inversions" className="hover:text-gray-900 transition-colors">
+              Inversions & Emphase
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
             <span className="text-gray-900 font-bold">Exercises</span>
@@ -368,10 +365,10 @@ const InversionsEmphaseExercicesPage = () => {
             <div className="p-3 rounded-lg bg-blue-600 text-white">
               <Brain className="h-9 w-9" />
             </div>
-            Sequence of Tenses - Exercises
+            Inversions & Emphase - Exercises
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Master English time expressions through interactive exercises. Practice with tense sequences and time relationships.
+            Master English inversions and emphatic structures. Practice with negative inversions, cleft sentences, and emphatic 'do'.
           </p>
         </div>
 
@@ -561,9 +558,8 @@ const InversionsEmphaseExercicesPage = () => {
                   </p>
                 </div>
               )}
-              <div className={`text-lg ${
-                examMode ? 'text-blue-700' : 'text-blue-700'
-              }`}>
+              <div className={`text-lg ${examMode ? 'text-blue-700' : 'text-blue-700'
+                }`}>
                 {score >= 80 ? (
                   <div className="flex items-center justify-center gap-2">
                     <Trophy className="h-6 w-6 text-yellow-500" />
@@ -592,10 +588,10 @@ const InversionsEmphaseExercicesPage = () => {
 
         {/* Bouton retour */}
         <div className="flex justify-center mt-12">
-          <Link to="/formation/anglais/grammaire/expressions-temps">
+          <Link to="/formation/anglais/grammaire/inversions">
             <Button variant="outline" className="flex items-center gap-2">
               <ArrowLeft className="h-4 w-4" />
-              Back to Sequence of Tenses
+              Back to Inversions & Emphase
             </Button>
           </Link>
         </div>
