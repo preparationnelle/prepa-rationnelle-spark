@@ -366,44 +366,44 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                 onMouseLeave={handleStudyLevelMenuLeave}
               >
                 {/* Primaire */}
-                <Link to="/articles/primaire" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
+                <Link to="/articles/primaire" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-orange-50 rounded-md px-3 py-2 transition-colors">
                   <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><GraduationCap className="h-4 w-4 text-orange-600" /></span>
                   <span>Primaire</span>
                 </Link>
 
                 {/* Collège */}
-                <Link to="/articles/college" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
-                  <span className="w-8 h-8 bg-green-50 rounded-full flex items-center justify-center"><GraduationCap className="h-4 w-4 text-green-600" /></span>
+                <Link to="/articles/college" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-orange-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><GraduationCap className="h-4 w-4 text-orange-600" /></span>
                   <span>Collège</span>
                 </Link>
 
                 {/* Lycée */}
-                <Link to="/articles/lycee" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
-                  <span className="w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center"><GraduationCap className="h-4 w-4 text-blue-600" /></span>
+                <Link to="/articles/lycee" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-orange-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><GraduationCap className="h-4 w-4 text-orange-600" /></span>
                   <span>Lycée</span>
                 </Link>
 
                 {/* Prépa ECG */}
-                <Link to="/articles/prepa-ecg" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-purple-50 rounded-md px-3 py-2 transition-colors">
-                  <span className="w-8 h-8 bg-purple-50 rounded-full flex items-center justify-center"><Calculator className="h-4 w-4 text-purple-600" /></span>
+                <Link to="/articles/prepa-ecg" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-orange-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Calculator className="h-4 w-4 text-orange-600" /></span>
                   <span>Prépa ECG</span>
                 </Link>
 
                 {/* Terminale → Prépa */}
-                <Link to="/articles/terminale-prepa" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-indigo-50 rounded-md px-3 py-2 transition-colors">
-                  <span className="w-8 h-8 bg-indigo-50 rounded-full flex items-center justify-center"><TrendingUp className="h-4 w-4 text-indigo-600" /></span>
+                <Link to="/articles/terminale-prepa" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-orange-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><TrendingUp className="h-4 w-4 text-orange-600" /></span>
                   <span>Terminale → Prépa</span>
                 </Link>
 
                 {/* Concours ACCES/SESAME */}
-                <Link to="/articles/concours-acces-sesame" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-red-50 rounded-md px-3 py-2 transition-colors">
-                  <span className="w-8 h-8 bg-red-50 rounded-full flex items-center justify-center"><Award className="h-4 w-4 text-red-600" /></span>
+                <Link to="/articles/concours-acces-sesame" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-orange-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Award className="h-4 w-4 text-orange-600" /></span>
                   <span>Concours ACCES/SESAME</span>
                 </Link>
 
                 {/* OTERIA Cyber School */}
-                <Link to="/articles/oteria-cyber-school" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-teal-50 rounded-md px-3 py-2 transition-colors">
-                  <span className="w-8 h-8 bg-teal-50 rounded-full flex items-center justify-center"><Code className="h-4 w-4 text-teal-600" /></span>
+                <Link to="/articles/oteria-cyber-school" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-orange-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Code className="h-4 w-4 text-orange-600" /></span>
                   <span>OTERIA Cyber School</span>
                 </Link>
 
@@ -440,25 +440,25 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                   <span>Parent</span>
                 </Link>
 
-                <Link to="/professeur" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
-                  <span className="w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center"><GraduationCap className="h-4 w-4 text-blue-600" /></span>
+                <Link to="/professeur" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-orange-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><GraduationCap className="h-4 w-4 text-orange-600" /></span>
                   <span>Devenir Professeur</span>
                 </Link>
 
-                <Link to="/professeur-dashboard" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-green-50 rounded-md px-3 py-2 transition-colors">
-                  <span className="w-8 h-8 bg-green-50 rounded-full flex items-center justify-center"><Settings className="h-4 w-4 text-green-600" /></span>
+                <Link to="/professeur-dashboard" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-orange-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Settings className="h-4 w-4 text-orange-600" /></span>
                   <span>Espace Professeur</span>
                 </Link>
 
                 <div className="border-t border-gray-100 my-1"></div>
 
-                <Link to="/design-system" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-purple-50 rounded-md px-3 py-2 transition-colors">
-                  <span className="w-8 h-8 bg-purple-50 rounded-full flex items-center justify-center"><Package className="h-4 w-4 text-purple-600" /></span>
+                <Link to="/design-system" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-orange-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Package className="h-4 w-4 text-orange-600" /></span>
                   <span>Design System</span>
                 </Link>
 
-                <Link to="/contact" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-gray-50 rounded-md px-3 py-2 transition-colors">
-                  <span className="w-8 h-8 bg-gray-50 rounded-full flex items-center justify-center"><Mail className="h-4 w-4 text-gray-600" /></span>
+                <Link to="/contact" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-orange-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Mail className="h-4 w-4 text-orange-600" /></span>
                   <span>Nous contacter</span>
                 </Link>
               </div>
@@ -581,20 +581,20 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               <Users className="h-5 w-5 text-orange-600" />
               Parent
             </Link>
-            <Link to="/professeur" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-blue-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
-              <GraduationCap className="h-5 w-5 text-blue-600" />
+            <Link to="/professeur" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-orange-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
+              <GraduationCap className="h-5 w-5 text-orange-600" />
               Devenir Professeur
             </Link>
-            <Link to="/professeur-dashboard" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-green-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
-              <Settings className="h-5 w-5 text-green-600" />
+            <Link to="/professeur-dashboard" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-orange-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
+              <Settings className="h-5 w-5 text-orange-600" />
               Espace Professeur
             </Link>
-            <Link to="/design-system" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-purple-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
-              <Package className="h-5 w-5 text-purple-600" />
+            <Link to="/design-system" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-orange-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
+              <Package className="h-5 w-5 text-orange-600" />
               Design System
             </Link>
-            <Link to="/contact" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
-              <Mail className="h-5 w-5 text-gray-600" />
+            <Link to="/contact" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-orange-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
+              <Mail className="h-5 w-5 text-orange-600" />
               Nous contacter
             </Link>
           </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { 
+import {
   Globe,
   Calendar,
   Briefcase
@@ -19,8 +19,8 @@ const FormationAnglaisGrammairePage = () => {
               <Globe className="h-6 w-6 text-blue-600" />
             </div>
             <h1 className="text-4xl font-bold text-gray-900">
-            Grammaire Anglaise
-          </h1>
+              Grammaire Anglaise
+            </h1>
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Formation complète de grammaire anglaise pour maîtriser les épreuves des concours des Grandes Écoles de Commerce
@@ -30,7 +30,7 @@ const FormationAnglaisGrammairePage = () => {
         {/* SOMMAIRE DES CHAPITRES */}
         <div className="max-w-4xl mx-auto">
           <div className="space-y-4">
-            
+
             {/* Module 1 - Temps Verbaux */}
             <Link to="/formation/anglais/grammaire/temps-verbaux" className="block">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
@@ -289,6 +289,12 @@ const FormationAnglaisGrammairePage = () => {
                         <Calendar className="mr-2 h-4 w-4" />
                         Étudier ce chapitre
                       </Button>
+                      <Link to="/formation/anglais/grammaire/comparatifs/exercices">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <Briefcase className="mr-2 h-4 w-4" />
+                          Exercices
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -310,6 +316,12 @@ const FormationAnglaisGrammairePage = () => {
                         <Calendar className="mr-2 h-4 w-4" />
                         Étudier ce chapitre
                       </Button>
+                      <Link to="/formation/anglais/grammaire/questions/exercices">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <Briefcase className="mr-2 h-4 w-4" />
+                          Exercices
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -331,6 +343,12 @@ const FormationAnglaisGrammairePage = () => {
                         <Calendar className="mr-2 h-4 w-4" />
                         Étudier ce chapitre
                       </Button>
+                      <Link to="/formation/anglais/grammaire/expressions-temps/exercices">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <Briefcase className="mr-2 h-4 w-4" />
+                          Exercices
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -352,6 +370,12 @@ const FormationAnglaisGrammairePage = () => {
                         <Calendar className="mr-2 h-4 w-4" />
                         Étudier ce chapitre
                       </Button>
+                      <Link to="/formation/anglais/grammaire/concordance/exercices">
+                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                          <Briefcase className="mr-2 h-4 w-4" />
+                          Exercices
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>

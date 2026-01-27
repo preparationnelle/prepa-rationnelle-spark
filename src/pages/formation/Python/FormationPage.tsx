@@ -1,44 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Code, Calculator, TrendingUp, BarChart3, Home, ChevronRight, BookOpen, HelpCircle } from 'lucide-react';
+import { Code, Calculator, TrendingUp, BarChart3, Home, ChevronRight, BookOpen, HelpCircle, Lock } from 'lucide-react';
+import { useAuth } from '@/context/AuthContext';
+import { usePythonProgress } from '@/hooks/usePythonProgress';
+import { Progress } from '@/components/ui/progress';
+import { pythonFormationStructure } from '@/data/python-formation-structure';
+import { toast } from 'sonner';
 
 const FormationPage = () => {
-  const pythonModules = [
-    {
-      id: 0,
-      title: "Les Fondamentaux",
-      description: "Bases essentielles : variables, types, opérateurs, fonctions et structures de contrôle.",
-      icon: Code,
-      courseLink: "/formation/python-fondamentaux",
-      exercisesLink: "/formation/python-fondamentaux-exercices",
-    },
-    {
-      id: 1,
-      title: "Les Matrices NumPy",
-      description: "Calcul scientifique avec NumPy : création, manipulation et analyse de matrices.",
-      icon: Calculator,
-      courseLink: "/formation/python-matrices",
-      exercisesLink: "/formation/python-matrices-exercices",
-    },
-    {
-      id: 2,
-      title: "Analyse Numérique",
-      description: "Méthodes numériques : suites, approximation et visualisation des données.",
-      icon: TrendingUp,
-      courseLink: "/formation/python-analyse",
-      exercisesLink: "/formation/python-analyse-exercices",
-    },
-    {
-      id: 3,
-      title: "Probabilités & Simulation",
-      description: "Simulation Monte-Carlo et statistiques avec NumPy & Matplotlib.",
-      icon: BarChart3,
-      courseLink: "/formation/python-probabilites",
-      exercisesLink: "/formation/python-probabilites-exercices",
+  const { currentUser } = useAuth();
+  const navigate = useNavigate();
+  const { globalProgress, getModuleProgress, loading } = usePythonProgress();
+
+  const handleModuleClick = (e: React.MouseEvent, link: string) => {
+    if (!currentUser) {
+      e.preventDefault();
+      toast.error("Vous devez être connecté pour accéder à la formation");
+      navigate('/login?next=/formation');
     }
-  ];
+  };
 
   return (
     <div className="min-h-screen">
@@ -67,47 +49,107 @@ const FormationPage = () => {
               Formation Python ECG
             </h1>
           </div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-6">
             Maîtrisez Python pour les concours : 4 modules progressifs avec exercices pratiques et coaching personnalisé
           </p>
+
+          {currentUser && (
+            <div className="max-w-md mx-auto bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+              <div className="flex justify-between text-sm font-medium mb-2 text-gray-700">
+                <span>Progression globale</span>
+                <span className="text-blue-600">{globalProgress}%</span>
+              </div>
+              <Progress value={globalProgress} className="h-2" />
+            </div>
+          )}
         </div>
 
         {/* Modules Python - Design System */}
         <div className="max-w-4xl mx-auto">
           <div className="space-y-4">
-            {pythonModules.map((module, index) => (
-              <Link key={module.id} to={module.courseLink} className="block">
-                <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-                  <div className="flex items-start gap-4">
-                    <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
-                      <span className="font-bold text-blue-700 text-lg">{index}</span>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">{module.title}</h3>
-                      <p className="text-gray-600 mb-4">{module.description}</p>
-                      <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                        <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
-                          <BookOpen className="mr-2 h-4 w-4" />
-                          Étudier ce module
-                        </Button>
-                        <Link to={`${module.exercisesLink}?quiz=true`}>
-                          <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                            <HelpCircle className="mr-2 h-4 w-4" />
-                            Quiz
-                          </Button>
-                        </Link>
-                        <Link to={module.exercisesLink}>
-                          <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                            <Calculator className="mr-2 h-4 w-4" />
-                            Exercices
-                          </Button>
-                        </Link>
+            {pythonFormationStructure.map((module, index) => {
+              const moduleProgress = getModuleProgress(module.id);
+              // Define icons based on index to match original design (or use module.icon if consistent)
+              const Icons = [Code, Calculator, TrendingUp, BarChart3];
+              const Icon = Icons[index] || Code;
+
+              // Original links mapping (since structure uses generic links, preserving original specific links if needed, 
+              // but better to use what's in the structure or consistent mapping)
+              // Using structure links which were populated from original file analysis:
+              // Oh wait, structure defined above matches: 
+              // 0 -> /formation/python-fondamentaux
+              // 1 -> /formation/python-matrices
+              // etc.
+              // But in structure I defined chapters. Let's assume the module "course" link is the first chapter of type 'cours'
+              // Or just keep the hardcoded links from original file if they differ? 
+              // Original file had: 
+              // 0: /formation/python-fondamentaux, /formation/python-fondamentaux-exercices
+              // 1: /formation/python-matrices, ...
+              // Let's rely on the structure I created or just mapp manually again to be safe and use structure for progress.
+
+              // Correction: Use the links from the original file for the main card click
+              const courseLink = module.chapters.find(c => c.type === 'cours')?.link || '#';
+              const exercisesLink = module.chapters.find(c => c.type === 'exercice')?.link || '#';
+
+              return (
+                <div key={module.id} onClick={(e) => handleModuleClick(e, courseLink)} className="block cursor-pointer">
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
+                    <div className="flex items-start gap-4">
+                      <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0 relative">
+                        <span className="font-bold text-blue-700 text-lg">{index}</span>
+                        {currentUser && moduleProgress === 100 && (
+                          <div className="absolute -top-1 -right-1 bg-green-500 text-white rounded-full p-0.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                        )}
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex justify-between items-start">
+                          <h3 className="text-xl font-bold text-gray-900 mb-2">{module.title}</h3>
+                          {currentUser && (
+                            <div className="text-xs font-semibold px-2 py-1 rounded bg-blue-50 text-blue-700">
+                              {moduleProgress}% complété
+                            </div>
+                          )}
+                        </div>
+
+                        <p className="text-gray-600 mb-4">{module.description}</p>
+
+                        {currentUser && (
+                          <div className="mb-4">
+                            <Progress value={moduleProgress} className="h-1.5" />
+                          </div>
+                        )}
+
+                        <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
+                          <Link to={courseLink} onClick={(e) => handleModuleClick(e, courseLink)}>
+                            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
+                              <BookOpen className="mr-2 h-4 w-4" />
+                              Étudier ce module
+                            </Button>
+                          </Link>
+
+                          <Link to={`${exercisesLink}?quiz=true`} onClick={(e) => handleModuleClick(e, `${exercisesLink}?quiz=true`)}>
+                            <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                              <HelpCircle className="mr-2 h-4 w-4" />
+                              Quiz
+                            </Button>
+                          </Link>
+                          <Link to={exercisesLink} onClick={(e) => handleModuleClick(e, exercisesLink)}>
+                            <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                              <Calculator className="mr-2 h-4 w-4" />
+                              Exercices
+                            </Button>
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </Link>
-            ))}
+              );
+            })}
           </div>
         </div>
 

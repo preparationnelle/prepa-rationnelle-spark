@@ -1,139 +1,170 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Home, ChevronRight, Globe, Users, Briefcase, Cpu, Heart, GraduationCap, Newspaper, Scale, Ship, Crown, MapPin, Shield, TrendingUp, AlertTriangle, BookOpen } from 'lucide-react';
+import { Home, ChevronRight, Globe, Users, Briefcase, Cpu, Heart, GraduationCap, Newspaper, Scale, Ship, Crown, MapPin, Shield, TrendingUp, AlertTriangle, BookOpen, Zap, Palette, ArrowRight } from 'lucide-react';
 
 const CivilisationOverviewPage = () => {
   const civilizationChapters = [
     {
       id: 'environment',
       title: 'Environment and Ecology',
-      description: 'Climate change, green policies, and environmental challenges in the English-speaking world',
+      description: 'Climate change, green policies, and environmental challenges',
       icon: Globe,
-      color: 'bg-orange-600',
+      color: 'text-green-600',
       route: '/formation/anglais/civilisation/environment'
     },
     {
       id: 'politics-us-uk',
-      title: 'Politics (United States & United Kingdom)',
-      description: 'Political systems, elections, and contemporary political developments',
+      title: 'Politics (US & UK)',
+      description: 'Political systems, elections, and contemporary developments',
       icon: Crown,
-      color: 'bg-blue-600',
+      color: 'text-blue-600',
       route: '/formation/anglais/civilisation/politics'
     },
     {
       id: 'geopolitics',
-      title: 'Geopolitics and International Relations',
-      description: 'Anglo-American foreign policy, international alliances, and global influence',
+      title: 'Geopolitics & International Relations',
+      description: 'Foreign policy, alliances, and global influence',
       icon: MapPin,
-      color: 'bg-orange-600',
+      color: 'text-indigo-600',
       route: '/formation/anglais/civilisation/geopolitics'
     },
     {
+      id: 'immigration',
+      title: 'Immigration & Integration',
+      description: 'Migration policies, multiculturalism, and social cohesion',
+      icon: Globe,
+      color: 'text-orange-600',
+      route: '/formation/anglais/civilisation/immigration'
+    },
+    {
+      id: 'education',
+      title: 'Education Systems',
+      description: 'Policies, university access, and social mobility',
+      icon: GraduationCap,
+      color: 'text-blue-600',
+      route: '/formation/anglais/civilisation/education'
+    },
+    {
+      id: 'gender-equality',
+      title: 'Gender Equality',
+      description: "Women's rights, LGBTQ+ issues, and social movements",
+      icon: Heart,
+      color: 'text-pink-600',
+      route: '/formation/anglais/civilisation/gender-equality'
+    },
+    {
       id: 'ai-technology',
-      title: 'Artificial Intelligence and Technology',
-      description: 'Tech revolution, AI ethics, and the digital transformation of society',
+      title: 'AI and Technology',
+      description: 'Tech revolution, AI ethics, and digital transformation',
       icon: Cpu,
-      color: 'bg-orange-500',
+      color: 'text-violet-600',
       route: '/formation/anglais/civilisation/technology'
     },
     {
       id: 'economy',
-      title: 'Economy and Globalization',
-      description: 'Economic systems, trade, and the impact of globalization',
+      title: 'Economy & Globalization',
+      description: 'Economic systems, trade, and globalization impacts',
       icon: TrendingUp,
-      color: 'bg-blue-600',
+      color: 'text-emerald-600',
       route: '/formation/anglais/civilisation/economy'
     },
     {
-      id: 'health-systems',
-      title: 'Health and Healthcare Systems: US and UK Policy Challenges and Crises',
-      description: 'Comparative analysis of healthcare systems, policy reforms, and crisis management',
-      icon: Heart,
-      color: 'bg-orange-600',
-      route: '/formation/anglais/civilisation/health-systems'
+      id: 'brexit',
+      title: 'Brexit & Trade',
+      description: 'Post-Brexit Britain, trade deals, and sovereignty',
+      icon: Ship,
+      color: 'text-blue-700',
+      route: '/formation/anglais/civilisation/brexit'
     },
     {
-      id: 'education',
-      title: 'Education and Culture Wars',
-      description: 'Education systems, cultural debates, and academic controversies',
-      icon: GraduationCap,
-      color: 'bg-blue-600',
-      route: '/formation/anglais/civilisation/education'
+      id: 'labor-markets',
+      title: 'Labor Markets',
+      description: 'Employment trends, gig economy, and future of work',
+      icon: Briefcase,
+      color: 'text-slate-600',
+      route: '/formation/anglais/civilisation/labor-markets'
     },
     {
       id: 'media',
-      title: 'Media and Social Networks',
-      description: 'Digital media, social platforms, and the information age',
+      title: 'Media & Communication',
+      description: 'Social media, journalism, fake news, and democracy',
       icon: Newspaper,
-      color: 'bg-orange-600',
+      color: 'text-orange-500',
       route: '/formation/anglais/civilisation/media'
     },
     {
+      id: 'polarization',
+      title: 'Polarization',
+      description: 'Political and cultural divides, causes and remedies',
+      icon: Zap,
+      color: 'text-red-600',
+      route: '/formation/anglais/civilisation/polarization'
+    },
+    {
+      id: 'health-systems',
+      title: 'Healthcare Systems',
+      description: 'Comparative analysis, policy reforms, and crises',
+      icon: Heart,
+      color: 'text-cyan-600',
+      route: '/formation/anglais/civilisation/health-systems'
+    },
+    {
       id: 'justice',
-      title: 'Justice and the Rule of Law',
-      description: 'Legal systems, criminal justice, and constitutional law',
+      title: 'Justice & Rule of Law',
+      description: 'Legal systems, criminal justice, and constitution',
       icon: Scale,
-      color: 'bg-blue-600',
+      color: 'text-slate-700',
       route: '/formation/anglais/civilisation/justice'
     },
     {
       id: 'inequalities',
-      title: 'Social and Racial Inequalities',
-      description: 'Social stratification, racial issues, and economic disparities',
+      title: 'Social Inequalities',
+      description: 'Stratification, racial issues, and economic disparities',
       icon: Users,
-      color: 'bg-orange-600',
+      color: 'text-amber-600',
       route: '/formation/anglais/civilisation/inequalities'
     },
     {
       id: 'civil-rights',
-      title: 'Civil Rights and Social Movements',
-      description: 'Historical and contemporary social movements and civil rights',
+      title: 'Civil Rights',
+      description: 'Historical and contemporary social movements',
       icon: Shield,
-      color: 'bg-blue-600',
+      color: 'text-teal-600',
       route: '/formation/anglais/civilisation/civil-rights'
     },
     {
-      id: 'brexit',
-      title: 'Brexit and its Aftermath',
-      description: 'Brexit process, consequences, and UK-EU relations',
-      icon: Ship,
-      color: 'bg-orange-600',
-      route: '/formation/anglais/civilisation/brexit'
-    },
-    {
       id: 'commonwealth',
-      title: 'The Commonwealth and Post-Colonial Legacy',
-      description: 'Commonwealth relations and post-colonial developments',
+      title: 'The Commonwealth',
+      description: 'Relations, history, and post-colonial legacy',
       icon: Crown,
-      color: 'bg-blue-600',
+      color: 'text-purple-600',
       route: '/formation/anglais/civilisation/commonwealth'
     },
     {
       id: 'civil-religion',
-      title: 'Civil Religion and National Identity',
+      title: 'Civil Religion',
       description: 'National identity, patriotism, and civic culture',
       icon: Home,
-      color: 'bg-orange-600',
+      color: 'text-rose-600',
       route: '/formation/anglais/civilisation/civil-religion'
     },
     {
-      id: 'immigration',
-      title: 'Immigration and Border Control',
-      description: 'Immigration policies, border security, and demographic changes',
-      icon: MapPin,
-      color: 'bg-blue-600',
-      route: '/formation/anglais/civilisation/immigration'
+      id: 'contemporary-crises',
+      title: 'Contemporary Crises',
+      description: 'Pandemic, inflation, and major global challenges',
+      icon: AlertTriangle,
+      color: 'text-red-500',
+      route: '/formation/anglais/civilisation/crises'
     },
     {
-      id: 'contemporary-crises',
-      title: 'Major Contemporary Crises',
-      description: 'Pandemic response, inflation, and other major contemporary challenges',
-      icon: AlertTriangle,
-      color: 'bg-orange-600',
-      route: '/formation/anglais/civilisation/crises'
+      id: 'culture-wars',
+      title: 'Culture Wars',
+      description: 'Cultural debates, identity politics, and shifts',
+      icon: Palette,
+      color: 'text-fuchsia-600',
+      route: '/formation/anglais/civilisation/culture-wars'
     }
   ];
 
@@ -157,214 +188,76 @@ const CivilisationOverviewPage = () => {
         </div>
       </nav>
 
-      <div className="container mx-auto py-8 px-4">
+      <div className="container mx-auto py-12 px-4 max-w-6xl">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4">Current Affairs and Civilization Topics</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
-            Explore key contemporary issues and civilization topics essential for understanding the English-speaking world. 
-            Updated with the latest developments and current affairs for 2025.
+        <div className="text-center mb-16">
+          <h1 className="text-4xl font-bold mb-4 tracking-tight text-gray-900">Current Affairs & Civilization</h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Essential topics for understanding the English-speaking world. Updated for 2025.
           </p>
-          <div className="flex justify-center gap-2 mt-4">
-            <Badge variant="secondary">16 Chapitres</Badge>
-            <Badge variant="outline">2025 Update</Badge>
-            <Badge className="bg-blue-600">Comprehensive</Badge>
-          </div>
         </div>
 
         {/* Chapters Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 mb-20">
           {civilizationChapters.map((chapter) => (
-            <Link key={chapter.id} to={chapter.route} className="block">
-              <Card className="h-full hover:shadow-lg transition-all duration-200 cursor-pointer border-l-4 border-l-transparent hover:border-l-primary">
-                <CardHeader>
-                  <div className="flex items-start gap-3">
-                    <div className={`p-3 rounded-lg ${chapter.color} text-white`}>
-                      <chapter.icon className="h-6 w-6" />
-                    </div>
-                    <div className="flex-1">
-                      <CardTitle className="text-lg mb-2">{chapter.title}</CardTitle>
-                      <p className="text-sm text-muted-foreground">{chapter.description}</p>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <Button variant="outline" className="w-full">
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Explore Chapter
-                    </Button>
-                    {chapter.id === 'environment' && (
-                      <Link to="/formation/anglais/civilisation/environment/vocabulary">
-                        <Button variant="outline" className="w-full bg-green-50 border-green-200 text-green-700 hover:bg-green-100">
-                          <BookOpen className="mr-2 h-4 w-4" />
-                          Vocabulary
-                        </Button>
-                      </Link>
-                    )}
-                               {chapter.id === 'politics-us-uk' && (
-             <Link to="/formation/anglais/civilisation/politics/vocabulary">
-               <Button variant="outline" className="w-full bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-100">
-                 <BookOpen className="mr-2 h-4 w-4" />
-                 Vocabulary
-               </Button>
-             </Link>
-           )}
-           {chapter.id === 'geopolitics' && (
-             <Link to="/formation/anglais/civilisation/geopolitics/vocabulary">
-               <Button variant="outline" className="w-full bg-purple-50 border-purple-200 text-purple-700 hover:bg-purple-100">
-                 <BookOpen className="mr-2 h-4 w-4" />
-                 Vocabulary
-               </Button>
-             </Link>
-           )}
-           {chapter.id === 'technology' && (
-             <Link to="/formation/anglais/civilisation/technology/vocabulary">
-               <Button variant="outline" className="w-full bg-indigo-50 border-indigo-200 text-indigo-700 hover:bg-indigo-100">
-                 <BookOpen className="mr-2 h-4 w-4" />
-                 Vocabulary
-               </Button>
-             </Link>
-           )}
-           {chapter.id === 'economy' && (
-             <Link to="/formation/anglais/civilisation/economy/vocabulary">
-               <Button variant="outline" className="w-full bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100">
-                 <BookOpen className="mr-2 h-4 w-4" />
-                 Vocabulary
-               </Button>
-             </Link>
-           )}
-           {chapter.id === 'health' && (
-             <Link to="/formation/anglais/civilisation/health/vocabulary">
-               <Button variant="outline" className="w-full bg-teal-50 border-teal-200 text-teal-700 hover:bg-teal-100">
-                 <BookOpen className="mr-2 h-4 w-4" />
-                 Vocabulary
-               </Button>
-             </Link>
-           )}
-           {chapter.id === 'education' && (
-             <Link to="/formation/anglais/civilisation/education/vocabulary">
-               <Button variant="outline" className="w-full bg-indigo-50 border-indigo-200 text-indigo-700 hover:bg-indigo-100">
-                 <BookOpen className="mr-2 h-4 w-4" />
-                 Vocabulary
-               </Button>
-             </Link>
-           )}
-           {chapter.id === 'media' && (
-             <Link to="/formation/anglais/civilisation/media/vocabulary">
-               <Button variant="outline" className="w-full bg-pink-50 border-pink-200 text-pink-700 hover:bg-pink-100">
-                 <BookOpen className="mr-2 h-4 w-4" />
-                 Vocabulary
-               </Button>
-             </Link>
-           )}
-           {chapter.id === 'justice' && (
-             <Link to="/formation/anglais/civilisation/justice/vocabulary">
-               <Button variant="outline" className="w-full bg-purple-50 border-purple-200 text-purple-700 hover:bg-purple-100">
-                 <BookOpen className="mr-2 h-4 w-4" />
-                 Vocabulary
-               </Button>
-             </Link>
-           )}
-           {chapter.id === 'inequalities' && (
-             <Link to="/formation/anglais/civilisation/inequalities/vocabulary">
-               <Button variant="outline" className="w-full bg-red-50 border-red-200 text-red-700 hover:bg-red-100">
-                 <BookOpen className="mr-2 h-4 w-4" />
-                 Vocabulary
-               </Button>
-             </Link>
-           )}
-           {chapter.id === 'civil-rights' && (
-             <Link to="/formation/anglais/civilisation/civil-rights/vocabulary">
-               <Button variant="outline" className="w-full bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-100">
-                 <BookOpen className="mr-2 h-4 w-4" />
-                 Vocabulary
-               </Button>
-             </Link>
-           )}
-           {chapter.id === 'brexit' && (
-             <Link to="/formation/anglais/civilisation/brexit/vocabulary">
-               <Button variant="outline" className="w-full bg-red-50 border-red-200 text-red-700 hover:bg-red-100">
-                 <BookOpen className="mr-2 h-4 w-4" />
-                 Vocabulary
-               </Button>
-             </Link>
-           )}
-           {chapter.id === 'commonwealth' && (
-             <Link to="/formation/anglais/civilisation/commonwealth/vocabulary">
-               <Button variant="outline" className="w-full bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-100">
-                 <BookOpen className="mr-2 h-4 w-4" />
-                 Vocabulary
-               </Button>
-             </Link>
-           )}
-           {chapter.id === 'civil-religion' && (
-             <Link to="/formation/anglais/civilisation/civil-religion/vocabulary">
-               <Button variant="outline" className="w-full bg-purple-50 border-purple-200 text-purple-700 hover:bg-purple-100">
-                 <BookOpen className="mr-2 h-4 w-4" />
-                 Vocabulary
-               </Button>
-             </Link>
-           )}
-           {chapter.id === 'immigration' && (
-             <Link to="/formation/anglais/civilisation/immigration/vocabulary">
-               <Button variant="outline" className="w-full bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-100">
-                 <BookOpen className="mr-2 h-4 w-4" />
-                 Vocabulary
-               </Button>
-             </Link>
-           )}
-           {chapter.id === 'contemporary-crises' && (
-             <Link to="/formation/anglais/civilisation/crises/vocabulary">
-               <Button variant="outline" className="w-full bg-red-50 border-red-200 text-red-700 hover:bg-red-100">
-                 <BookOpen className="mr-2 h-4 w-4" />
-                 Vocabulary
-               </Button>
-             </Link>
-           )}
-           {chapter.id === 'ai-technology' && (
-             <Link to="/formation/anglais/civilisation/ai-technology/vocabulary">
-               <Button variant="outline" className="w-full bg-orange-50 border-orange-200 text-orange-700 hover:bg-orange-100">
-                 <BookOpen className="mr-2 h-4 w-4" />
-                 Vocabulary
-               </Button>
-             </Link>
-           )}
-                  </div>
-                </CardContent>
-              </Card>
+            <Link key={chapter.id} to={chapter.route} className="group block h-full">
+              <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors duration-200 h-full border border-transparent hover:border-gray-100">
+                <div className={`mt-1 p-2 rounded-lg bg-gray-50 group-hover:bg-white transition-colors ${chapter.color}`}>
+                  <chapter.icon className="h-6 w-6" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-1 flex items-center gap-2">
+                    {chapter.title}
+                    <ArrowRight className="h-4 w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-gray-400" />
+                  </h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">
+                    {chapter.description}
+                  </p>
+                </div>
+              </div>
             </Link>
           ))}
         </div>
 
-        {/* Information Card */}
-        <Card className="max-w-4xl mx-auto bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200">
-          <CardHeader>
-            <CardTitle className="text-xl text-blue-800">Why Study Civilization?</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-2 gap-6 text-sm">
-              <div>
-                <h4 className="font-semibold mb-2 text-blue-700">Essential for Success:</h4>
-                <ul className="space-y-1 text-blue-600">
-                  <li>• Current affairs knowledge for oral examinations</li>
-                  <li>• Cultural context for text analysis</li>
-                  <li>• Argumentative essay topics and examples</li>
-                  <li>• Professional vocabulary and concepts</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-2 text-blue-700">2025 Focus Areas:</h4>
-                <ul className="space-y-1 text-blue-600">
-                  <li>• Post-pandemic society and economics</li>
-                  <li>• AI revolution and ethical challenges</li>
-                  <li>• Climate action and green transition</li>
-                  <li>• Political polarization and democracy</li>
-                </ul>
-              </div>
+        {/* Simple Info Section */}
+        <div className="border-t border-gray-100 pt-12">
+          <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+            <div>
+              <h4 className="font-bold text-gray-900 mb-4">Why Study Civilization?</h4>
+              <ul className="space-y-3 text-sm text-gray-600">
+                <li className="flex gap-2">
+                  <span className="text-gray-400">•</span>
+                  Crucial context for oral examinations and interviews
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-gray-400">•</span>
+                  Cultural background for text analysis
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-gray-400">•</span>
+                  Argumentative essay examples and evidence
+                </li>
+              </ul>
             </div>
-          </CardContent>
-        </Card>
+            <div>
+              <h4 className="font-bold text-gray-900 mb-4">2025 Focus Areas</h4>
+              <ul className="space-y-3 text-sm text-gray-600">
+                <li className="flex gap-2">
+                  <span className="text-gray-400">•</span>
+                  Post-pandemic economic and social shifts
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-gray-400">•</span>
+                  The impact of AI and technological revolution
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-gray-400">•</span>
+                  Political polarization in Western democracies
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

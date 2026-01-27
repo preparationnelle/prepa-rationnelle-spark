@@ -19,19 +19,14 @@ import {
   Award,
   Clock,
   CheckCircle2,
-  Zap,
-  Sparkles,
-  ListTodo,
-  Play,
-  Circle,
-  CheckCircle,
-  Brain,
-  Timer,
-  Lightbulb
+  Zap
 } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { usePythonProgress } from '@/hooks/usePythonProgress';
+import { getTotalPythonChapters } from '@/data/python-formation-structure';
 
 // Données des matières avec progression (mock data pour le design)
-const subjectsData = [
+const initialSubjectsData = [
   {
     id: 'maths',
     name: 'Mathématiques',
@@ -96,13 +91,13 @@ const subjectsData = [
     id: 'python',
     name: 'Python',
     icon: Code,
-    progress: 85,
-    chaptersCompleted: 4,
-    totalChapters: 5,
-    exercisesDone: 95,
-    averageScore: 88,
-    lastActivity: '4 heures',
-    link: '/formation/python'
+    progress: 0, // Placeholder, will be updated
+    chaptersCompleted: 0,
+    totalChapters: 0,
+    exercisesDone: 0,
+    averageScore: 0,
+    lastActivity: '-',
+    link: '/formation' // Directed to main formation page
   }
 ];
 
@@ -113,44 +108,42 @@ const globalStats = {
   totalHours: 48
 };
 
-// Session IA du jour (mock - générée par l'IA)
-const dailySession = {
-  greeting: "Bonjour ! Voici ta session personnalisée de 30 min",
-  focusSubject: "ESH",
-  focusReason: "Tu n'as pas révisé cette matière depuis 1 semaine",
-  estimatedTime: "30 min",
-  steps: [
-    { id: 1, title: "Réviser le chapitre 5 - Croissance économique", duration: "10 min", completed: false, link: "/formation/esh/chapitre-5" },
-    { id: 2, title: "Faire 5 exercices sur les théories de la croissance", duration: "12 min", completed: false, link: "/formation/esh/exercices" },
-    { id: 3, title: "Générer une fiche de révision avec l'IA", duration: "5 min", completed: false, link: "/generator/flashcards" },
-    { id: 4, title: "Quiz rapide pour valider tes acquis", duration: "3 min", completed: false, link: "/formation/esh/quiz" },
-  ],
-  todoList: [
-    { id: 1, text: "Terminer le chapitre Maths sur les probabilités", priority: "high", completed: false },
-    { id: 2, text: "Revoir les erreurs du thème d'anglais d'hier", priority: "medium", completed: false },
-    { id: 3, text: "Préparer l'oral de géopolitique pour vendredi", priority: "high", completed: false },
-  ],
-  suggestions: [
-    { title: "Espagnol - Vocabulaire commerce", reason: "Pas révisé depuis 3 jours", duration: "15 min", link: "/formation/espagnol/vocabulaire", icon: Languages },
-    { title: "Maths - Exercices probabilités", reason: "Score de 78% à améliorer", duration: "20 min", link: "/formation/maths/probabilites", icon: Calculator },
-    { title: "Géopolitique - Fiche Chine", reason: "Complète ta connaissance", duration: "10 min", link: "/formation/geopolitique/chine", icon: Globe },
-  ]
-};
-
-// Évaluations récentes (mock)
-// Données récupérées dynamiquement
-import { supabase } from '@/integrations/supabase/client';
-
 const DashboardPage = () => {
   const { currentUser } = useAuth();
   const { streak, isLoading: isStreakLoading, last7Days } = useStreak();
   const observerRef = useRef<IntersectionObserver | null>(null);
-  const [completedSteps, setCompletedSteps] = useState<number[]>([]);
-  const [completedTodos, setCompletedTodos] = useState<number[]>([]);
+
+  // Python Progress Hook
+  const { globalProgress: pythonProgress, progressData: pythonData } = usePythonProgress();
+
+  const [subjectsData, setSubjectsData] = useState(initialSubjectsData);
 
   // État pour les résultats QCM
   const [oteriaResults, setOteriaResults] = useState<any[]>([]);
   const [isLoadingResults, setIsLoadingResults] = useState(true);
+
+  useEffect(() => {
+    // Update Python data in subjects list
+    if (currentUser) {
+      const totalPythonChapters = getTotalPythonChapters();
+      const completedPythonChapters = Object.values(pythonData).filter((v: any) => v.status === 'completed').length;
+
+      setSubjectsData(prev => prev.map(sub => {
+        if (sub.id === 'python') {
+          return {
+            ...sub,
+            progress: pythonProgress,
+            chaptersCompleted: completedPythonChapters,
+            totalChapters: totalPythonChapters,
+            exercisesDone: completedPythonChapters, // Using same count for now
+            averageScore: 85, // Placeholder or calculate from scores
+            lastActivity: 'Aujourd\'hui'
+          };
+        }
+        return sub;
+      }));
+    }
+  }, [pythonProgress, pythonData, currentUser]);
 
   useEffect(() => {
     const fetchResults = async () => {
@@ -176,17 +169,7 @@ const DashboardPage = () => {
     fetchResults();
   }, [currentUser]);
 
-  const toggleStep = (stepId: number) => {
-    setCompletedSteps(prev =>
-      prev.includes(stepId) ? prev.filter(id => id !== stepId) : [...prev, stepId]
-    );
-  };
 
-  const toggleTodo = (todoId: number) => {
-    setCompletedTodos(prev =>
-      prev.includes(todoId) ? prev.filter(id => id !== todoId) : [...prev, todoId]
-    );
-  };
 
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
@@ -232,8 +215,6 @@ const DashboardPage = () => {
   }
 
   const overallProgress = Math.round(subjectsData.reduce((acc, s) => acc + s.progress, 0) / subjectsData.length);
-  const completedStepsCount = completedSteps.length;
-  const totalSteps = dailySession.steps.length;
 
   return (
     <div className="min-h-screen bg-[#0a0f1a] relative overflow-hidden">
@@ -280,176 +261,6 @@ const DashboardPage = () => {
           <p className="fade-in-up text-lg sm:text-xl text-white/60 max-w-2xl mx-auto font-medium" style={{ animationDelay: '0.1s' }}>
             Suivez votre progression et atteignez vos objectifs.
           </p>
-        </div>
-
-        {/* ============================================ */}
-        {/* 🤖 AI DAILY SESSION - NOUVELLE SECTION */}
-        {/* ============================================ */}
-        <div className="mb-12">
-          <Card className="fade-in-up bg-white/5 border-2 border-orange-500/30 backdrop-blur-sm overflow-hidden" style={{ animationDelay: '0.12s' }}>
-            <CardContent className="p-6 sm:p-8">
-              {/* Header */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-400 rounded-2xl flex items-center justify-center shadow-xl shadow-orange-500/40 animate-pulse">
-                    <Sparkles className="h-7 w-7 text-white" />
-                  </div>
-                  <div>
-                    <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
-                      <span>Session du jour</span>
-                      <span className="text-xs bg-orange-500/20 text-orange-400 px-2 py-1 rounded-full font-semibold">IA</span>
-                    </h2>
-                    <p className="text-white/60 text-sm">{dailySession.greeting}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-2 flex items-center gap-2">
-                    <Timer className="h-4 w-4 text-orange-400" />
-                    <span className="text-white font-semibold">{dailySession.estimatedTime}</span>
-                  </div>
-                  <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-2">
-                    <span className="text-orange-400 font-bold">{completedStepsCount}/{totalSteps}</span>
-                    <span className="text-white/40 ml-1">étapes</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Focus Alert */}
-              <div className="bg-[#1a1f2e] border border-orange-500/30 rounded-xl p-4 mb-6">
-                <div className="flex items-start gap-3">
-                  <Lightbulb className="h-5 w-5 text-orange-400 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="text-white font-semibold">Focus recommandé : <span className="text-orange-400">{dailySession.focusSubject}</span></p>
-                    <p className="text-white/70 text-sm">{dailySession.focusReason}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Steps */}
-              <div className="mb-6">
-                <h3 className="text-white font-bold mb-4 flex items-center gap-2">
-                  <Play className="h-4 w-4 text-orange-400" />
-                  Étapes de ta session
-                </h3>
-                <div className="space-y-3">
-                  {dailySession.steps.map((step, index) => {
-                    const isCompleted = completedSteps.includes(step.id);
-                    return (
-                      <div
-                        key={step.id}
-                        className={`flex items-center gap-4 bg-[#1a1f2e] border rounded-xl p-4 transition-all duration-300 cursor-pointer group hover:bg-[#252b3d] ${isCompleted ? 'border-orange-500/50' : 'border-white/10'}`}
-                        onClick={() => toggleStep(step.id)}
-                      >
-                        <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${isCompleted ? 'bg-gradient-to-br from-orange-500 to-orange-400' : 'bg-white/10 border border-white/30'}`}>
-                          {isCompleted ? (
-                            <CheckCircle className="h-5 w-5 text-white" />
-                          ) : (
-                            <span className="text-white font-bold text-sm">{index + 1}</span>
-                          )}
-                        </div>
-                        <div className="flex-1">
-                          <p className={`font-semibold transition-all ${isCompleted ? 'text-white/50 line-through' : 'text-white'}`}>
-                            {step.title}
-                          </p>
-                          <p className="text-white/60 text-sm">{step.duration}</p>
-                        </div>
-                        <Link
-                          to={step.link}
-                          onClick={(e) => e.stopPropagation()}
-                          className="opacity-0 group-hover:opacity-100 transition-opacity"
-                        >
-                          <Button size="sm" className="bg-orange-500 hover:bg-orange-600 text-white text-xs">
-                            Commencer
-                          </Button>
-                        </Link>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Progress bar */}
-              <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-gradient-to-r from-orange-500 to-orange-400 rounded-full transition-all duration-500"
-                  style={{ width: `${(completedStepsCount / totalSteps) * 100}%` }}
-                ></div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Two Column Layout: To-Do + Suggestions */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
-          {/* To-Do List */}
-          <Card className="fade-in-up bg-white/5 border border-white/10 backdrop-blur-sm overflow-hidden" style={{ animationDelay: '0.15s' }}>
-            <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                <ListTodo className="h-5 w-5 text-orange-400" />
-                Ma to-do list
-              </h3>
-              <div className="space-y-3">
-                {dailySession.todoList.map((todo) => {
-                  const isCompleted = completedTodos.includes(todo.id);
-                  return (
-                    <div
-                      key={todo.id}
-                      className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all hover:bg-white/5 ${isCompleted ? 'opacity-50' : ''}`}
-                      onClick={() => toggleTodo(todo.id)}
-                    >
-                      <div className={`w-6 h-6 rounded-full flex items-center justify-center border-2 transition-all ${isCompleted ? 'bg-orange-500 border-orange-500' : 'border-white/30'}`}>
-                        {isCompleted && <CheckCircle2 className="h-4 w-4 text-white" />}
-                      </div>
-                      <span className={`flex-1 ${isCompleted ? 'text-white/40 line-through' : 'text-white'}`}>
-                        {todo.text}
-                      </span>
-                      {todo.priority === 'high' && !isCompleted && (
-                        <span className="text-xs bg-orange-500/20 text-orange-400 px-2 py-1 rounded-full">Priorité</span>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-              <Button className="w-full mt-4 bg-white/5 hover:bg-white/10 text-white border border-white/10">
-                + Ajouter une tâche
-              </Button>
-            </CardContent>
-          </Card>
-
-          {/* AI Suggestions */}
-          <Card className="fade-in-up bg-white/5 border border-white/10 backdrop-blur-sm overflow-hidden" style={{ animationDelay: '0.2s' }}>
-            <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                <Brain className="h-5 w-5 text-orange-400" />
-                Suggestions IA
-                <span className="text-xs text-white/40 font-normal ml-2">pour 30 min de révision</span>
-              </h3>
-              <div className="space-y-3">
-                {dailySession.suggestions.map((suggestion, index) => {
-                  const IconComponent = suggestion.icon;
-                  return (
-                    <Link
-                      key={index}
-                      to={suggestion.link}
-                      className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-orange-500/30 hover:bg-white/10 transition-all group"
-                    >
-                      <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-400 rounded-xl flex items-center justify-center shadow-lg shadow-orange-500/20 group-hover:scale-110 transition-transform">
-                        <IconComponent className="h-5 w-5 text-white" />
-                      </div>
-                      <div className="flex-1">
-                        <p className="font-semibold text-white group-hover:text-orange-400 transition-colors">{suggestion.title}</p>
-                        <p className="text-white/40 text-sm">{suggestion.reason}</p>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-orange-400 font-semibold">{suggestion.duration}</span>
-                        <ArrowRight className="h-4 w-4 text-white/40 group-hover:text-orange-400 group-hover:translate-x-1 transition-all ml-auto mt-1" />
-                      </div>
-                    </Link>
-                  );
-                })}
-              </div>
-            </CardContent>
-          </Card>
         </div>
 
         {/* Stats Overview Cards */}
@@ -617,7 +428,7 @@ const DashboardPage = () => {
                       <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-xl">
                         <Award className="h-5 w-5 text-orange-400" />
                         <span className={`text-xl font-bold ${result.score >= 80 ? 'text-green-400' :
-                            result.score >= 50 ? 'text-orange-400' : 'text-red-400'
+                          result.score >= 50 ? 'text-orange-400' : 'text-red-400'
                           }`}>
                           {result.score}%
                         </span>
@@ -670,10 +481,10 @@ const DashboardPage = () => {
             </CardContent>
           </Card>
         </div>
-      </div>
+      </div >
 
       {/* Animations CSS */}
-      <style>{`
+      < style > {`
         @keyframes fadeInUp {
           from {
             opacity: 0;
@@ -692,8 +503,8 @@ const DashboardPage = () => {
         .fade-in-up.animate-in {
           animation: fadeInUp 0.8s ease-out forwards;
         }
-      `}</style>
-    </div>
+      `}</style >
+    </div >
   );
 };
 

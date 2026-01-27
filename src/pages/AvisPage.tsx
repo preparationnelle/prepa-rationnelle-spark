@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Star, Quote, ArrowLeft, ExternalLink, Sparkles } from 'lucide-react';
-import { Layout } from '@/components/Layout';
+
 
 const AvisPage: React.FC = () => {
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -175,140 +175,140 @@ const AvisPage: React.FC = () => {
   };
 
   return (
-    <Layout>
-      <div className="min-h-screen bg-[#0a0f1a] relative overflow-hidden">
-        {/* Decorative glows */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-[150px]"></div>
-        <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-orange-400/10 rounded-full blur-[180px]"></div>
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-orange-600/10 rounded-full blur-[160px]"></div>
 
-        <div className="container mx-auto px-4 py-12 sm:py-16 relative z-10">
-          {/* Back Button */}
-          <div className="fade-in-up mb-8">
-            <Link to="/" className="inline-flex items-center gap-2 text-white/70 hover:text-orange-400 transition-colors duration-300 group">
-              <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
-              Retour à l'accueil
-            </Link>
+    <div className="min-h-screen bg-[#0a0f1a] relative overflow-hidden">
+      {/* Decorative glows */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-[150px]"></div>
+      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-orange-400/10 rounded-full blur-[180px]"></div>
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-orange-600/10 rounded-full blur-[160px]"></div>
+
+      <div className="container mx-auto px-4 py-12 sm:py-16 relative z-10">
+        {/* Back Button */}
+        <div className="fade-in-up mb-8">
+          <Link to="/" className="inline-flex items-center gap-2 text-white/70 hover:text-orange-400 transition-colors duration-300 group">
+            <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
+            Retour à l'accueil
+          </Link>
+        </div>
+
+        {/* Header */}
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="fade-in-up inline-flex items-center gap-2 bg-orange-500/10 backdrop-blur-sm border border-orange-500/20 text-orange-400 px-4 py-2 rounded-full text-sm font-bold mb-6">
+            <Sparkles className="h-4 w-4" />
+            5.0/5 sur Superprof
           </div>
-
-          {/* Header */}
-          <div className="text-center mb-12 sm:mb-16">
-            <div className="fade-in-up inline-flex items-center gap-2 bg-orange-500/10 backdrop-blur-sm border border-orange-500/20 text-orange-400 px-4 py-2 rounded-full text-sm font-bold mb-6">
-              <Sparkles className="h-4 w-4" />
-              5.0/5 sur Superprof
-            </div>
-            <h1 className="fade-in-up text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-white" style={{ animationDelay: '0.05s' }}>
-              Tous les <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">avis</span>
-            </h1>
-            <div className="fade-in-up flex items-center justify-center gap-2 mb-6" style={{ animationDelay: '0.1s' }}>
-              {renderStars()}
-              <span className="text-lg font-semibold text-white/90 ml-2">5.0/5</span>
-            </div>
-            <p className="fade-in-up text-lg sm:text-xl text-white/60 max-w-2xl mx-auto font-medium" style={{ animationDelay: '0.15s' }}>
-              Découvrez tous les témoignages de mes élèves satisfaits
-            </p>
+          <h1 className="fade-in-up text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-white" style={{ animationDelay: '0.05s' }}>
+            Tous les <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">avis</span>
+          </h1>
+          <div className="fade-in-up flex items-center justify-center gap-2 mb-6" style={{ animationDelay: '0.1s' }}>
+            {renderStars()}
+            <span className="text-lg font-semibold text-white/90 ml-2">5.0/5</span>
           </div>
+          <p className="fade-in-up text-lg sm:text-xl text-white/60 max-w-2xl mx-auto font-medium" style={{ animationDelay: '0.15s' }}>
+            Découvrez tous les témoignages de mes élèves satisfaits
+          </p>
+        </div>
 
-          {/* Stats Section */}
-          <div className="fade-in-up max-w-4xl mx-auto mb-16" style={{ animationDelay: '0.2s' }}>
-            <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 sm:p-10 border-2 border-white/10 hover:border-orange-400/30 transition-all duration-500 shadow-2xl">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-                <div className="group">
-                  <div className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600 mb-3 group-hover:scale-110 transition-transform duration-300">
-                    +50
-                  </div>
-                  <div className="text-white/70 font-medium">Étudiants accompagnés</div>
+        {/* Stats Section */}
+        <div className="fade-in-up max-w-4xl mx-auto mb-16" style={{ animationDelay: '0.2s' }}>
+          <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 sm:p-10 border-2 border-white/10 hover:border-orange-400/30 transition-all duration-500 shadow-2xl">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+              <div className="group">
+                <div className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600 mb-3 group-hover:scale-110 transition-transform duration-300">
+                  +50
                 </div>
-                <div className="group">
-                  <div className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600 mb-3 group-hover:scale-110 transition-transform duration-300">
-                    100%
-                  </div>
-                  <div className="text-white/70 font-medium">Satisfaction</div>
-                </div>
-                <div className="group">
-                  <div className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600 mb-3 group-hover:scale-110 transition-transform duration-300">
-                    +5
-                  </div>
-                  <div className="text-white/70 font-medium">Points de progression</div>
-                </div>
+                <div className="text-white/70 font-medium">Étudiants accompagnés</div>
               </div>
-            </div>
-          </div>
-
-          {/* Reviews Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16">
-            {reviews.map((review, index) => {
-              const colors = getColorClasses(review.color);
-              return (
-                <div
-                  key={index}
-                  className="scale-in group bg-white/5 backdrop-blur-sm rounded-2xl p-6 border-2 border-white/10 hover:border-orange-400/50 hover:bg-white/10 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-orange-500/20 hover:-translate-y-2"
-                  style={{ animationDelay: `${0.05 * (index % 9)}s` }}
-                >
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className={`w-12 h-12 ${colors.avatar} rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0 shadow-lg ${colors.glow} group-hover:scale-110 transition-transform duration-300`}>
-                      {review.name.charAt(0)}
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white mb-2">{review.name}</h3>
-                      <div className="flex items-center gap-1 mb-2">
-                        {renderStars()}
-                      </div>
-                      <p className="text-sm text-orange-400 font-medium">{review.subject}</p>
-                    </div>
-                  </div>
-                  <div className="relative">
-                    <Quote className="h-4 w-4 text-orange-400/40 absolute -top-1 -left-1" />
-                    <p className="text-sm text-white/70 leading-relaxed pl-4">
-                      {review.content}
-                    </p>
-                  </div>
+              <div className="group">
+                <div className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600 mb-3 group-hover:scale-110 transition-transform duration-300">
+                  100%
                 </div>
-              );
-            })}
-          </div>
-
-          {/* Call to Action */}
-          <div className="fade-in-up text-center" style={{ animationDelay: '0.3s' }}>
-            <div className="bg-white/5 backdrop-blur-sm p-10 sm:p-12 rounded-3xl border-2 border-white/10 hover:border-orange-400/30 transition-all duration-500 max-w-2xl mx-auto shadow-2xl">
-              <div className="flex items-center justify-center gap-4 mb-8">
-                <div className="flex items-center gap-3 bg-orange-500/10 px-5 py-3 rounded-full border border-orange-500/20">
-                  {renderStars()}
-                  <span className="text-2xl font-bold text-white">5.0</span>
-                </div>
+                <div className="text-white/70 font-medium">Satisfaction</div>
               </div>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="https://www.superprof.fr/maths-cours-particuliers-maths-colleur-grandes-prepas-parisiennes.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button
-                    size="lg"
-                    className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-6 px-8 text-lg shadow-xl shadow-orange-500/30 hover:shadow-2xl hover:shadow-orange-500/40 transition-all duration-300 hover:scale-105 rounded-xl"
-                  >
-                    Voir sur Superprof
-                    <ExternalLink className="ml-2 h-5 w-5" />
-                  </Button>
-                </a>
-
-                <Link to="/contact">
-                  <Button
-                    size="lg"
-                    className="w-full sm:w-auto bg-white/10 backdrop-blur-sm border-2 border-white/20 hover:border-orange-400/50 text-white hover:bg-white/20 font-bold py-6 px-8 text-lg shadow-xl transition-all duration-300 hover:scale-105 rounded-xl"
-                  >
-                    Me contacter
-                    <Star className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
+              <div className="group">
+                <div className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600 mb-3 group-hover:scale-110 transition-transform duration-300">
+                  +5
+                </div>
+                <div className="text-white/70 font-medium">Points de progression</div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Animation styles */}
-        <style>{`
+        {/* Reviews Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16">
+          {reviews.map((review, index) => {
+            const colors = getColorClasses(review.color);
+            return (
+              <div
+                key={index}
+                className="scale-in group bg-white/5 backdrop-blur-sm rounded-2xl p-6 border-2 border-white/10 hover:border-orange-400/50 hover:bg-white/10 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-orange-500/20 hover:-translate-y-2"
+                style={{ animationDelay: `${0.05 * (index % 9)}s` }}
+              >
+                <div className="flex items-start gap-4 mb-4">
+                  <div className={`w-12 h-12 ${colors.avatar} rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0 shadow-lg ${colors.glow} group-hover:scale-110 transition-transform duration-300`}>
+                    {review.name.charAt(0)}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-white mb-2">{review.name}</h3>
+                    <div className="flex items-center gap-1 mb-2">
+                      {renderStars()}
+                    </div>
+                    <p className="text-sm text-orange-400 font-medium">{review.subject}</p>
+                  </div>
+                </div>
+                <div className="relative">
+                  <Quote className="h-4 w-4 text-orange-400/40 absolute -top-1 -left-1" />
+                  <p className="text-sm text-white/70 leading-relaxed pl-4">
+                    {review.content}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Call to Action */}
+        <div className="fade-in-up text-center" style={{ animationDelay: '0.3s' }}>
+          <div className="bg-white/5 backdrop-blur-sm p-10 sm:p-12 rounded-3xl border-2 border-white/10 hover:border-orange-400/30 transition-all duration-500 max-w-2xl mx-auto shadow-2xl">
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <div className="flex items-center gap-3 bg-orange-500/10 px-5 py-3 rounded-full border border-orange-500/20">
+                {renderStars()}
+                <span className="text-2xl font-bold text-white">5.0</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://www.superprof.fr/maths-cours-particuliers-maths-colleur-grandes-prepas-parisiennes.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  size="lg"
+                  className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-6 px-8 text-lg shadow-xl shadow-orange-500/30 hover:shadow-2xl hover:shadow-orange-500/40 transition-all duration-300 hover:scale-105 rounded-xl"
+                >
+                  Voir sur Superprof
+                  <ExternalLink className="ml-2 h-5 w-5" />
+                </Button>
+              </a>
+
+              <Link to="/contact">
+                <Button
+                  size="lg"
+                  className="w-full sm:w-auto bg-white/10 backdrop-blur-sm border-2 border-white/20 hover:border-orange-400/50 text-white hover:bg-white/20 font-bold py-6 px-8 text-lg shadow-xl transition-all duration-300 hover:scale-105 rounded-xl"
+                >
+                  Me contacter
+                  <Star className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Animation styles */}
+      <style>{`
           @keyframes fadeInUp {
             from {
               opacity: 0;
@@ -343,8 +343,8 @@ const AvisPage: React.FC = () => {
             animation: scaleIn 0.6s ease-out forwards;
           }
         `}</style>
-      </div>
-    </Layout>
+    </div>
+
   );
 };
 

@@ -324,6 +324,9 @@ const CommonwealthPage = lazy(() => import('../pages/formation/anglais/civilisat
 const CivilReligionPage = lazy(() => import('../pages/formation/anglais/civilisation/CivilReligionPage'));
 const ImmigrationPage = lazy(() => import('../pages/formation/anglais/civilisation/ImmigrationPage'));
 const ContemporaryCrisesPage = lazy(() => import('../pages/formation/anglais/civilisation/ContemporaryCrisesPage'));
+const AnglaisGenderEqualityPage = lazy(() => import('../pages/formation/anglais/civilisation/GenderEqualityPage'));
+const AnglaisLaborMarketsPage = lazy(() => import('../pages/formation/anglais/civilisation/LaborMarketsPage'));
+const AnglaisCultureWarsPage = lazy(() => import('../pages/formation/anglais/civilisation/CultureWarsPage'));
 const FormationCultureGeneralePage = lazy(() => import('../pages/FormationCultureGeneralePage'));
 const JugerTermesConnexesPage = lazy(() => import('../pages/formation/culture-generale/JugerTermesConnexesPage'));
 const ArticlesCultureGeneralePage = lazy(() => import('../pages/formation/culture-generale/ArticlesCultureGeneralePage'));
@@ -991,6 +994,10 @@ export const routes: RouteConfig[] = [
   { path: '/formation/anglais/civilisation/crises', component: AnglaisContemporaryCrisesPage, title: 'Contemporary Crises' },
   { path: '/formation/anglais/civilisation/ai-technology/vocabulary', component: AnglaisAITechnologyVocabularyPage, title: 'Artificial Intelligence and Technology Vocabulary - Flashcards' },
   { path: '/formation/anglais/civilisation/labor/vocabulary', component: AnglaisLaborVocabularyPage, title: 'Labor Markets and Future of Work Vocabulary - Flashcards' },
+  { path: '/formation/anglais/civilisation/gender-equality', component: AnglaisGenderEqualityPage, title: 'Gender Equality' },
+  { path: '/formation/anglais/civilisation/labor-markets', component: AnglaisLaborMarketsPage, title: 'Labor Markets' },
+  { path: '/formation/anglais/civilisation/culture-wars', component: AnglaisCultureWarsPage, title: 'Culture Wars' },
+  { path: '/formation/anglais/civilisation/polarization', component: AnglaisPolarizationPage, title: 'Polarization' },
 
   { path: '/formation/anglais/methodologie-complete', component: MethodologieAnglaisPage, title: 'Méthodologie Complète Anglais' },
   { path: '/formation/anglais/methodologie/colles', component: AnglaisCollesMethodologiePage, title: 'Les Colles d’Anglais' },

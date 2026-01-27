@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Globe,
   Calendar,
@@ -15,6 +15,7 @@ interface RedactedSubject {
 }
 
 const FormationAnglaisCivilisationPage = () => {
+  const navigate = useNavigate();
   const [selectedSubject, setSelectedSubject] = useState<RedactedSubject | null>(null);
 
   const climateSubject: RedactedSubject = {
@@ -103,7 +104,7 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
           <div className="space-y-4">
 
             {/* Module 1 - Environment and Ecology */}
-            <Link to="/formation/anglais/civilisation/environment" className="block">
+            <div onClick={() => navigate("/formation/anglais/civilisation/environment")} className="block cursor-pointer">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
@@ -140,10 +141,10 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
 
             {/* Module 2 - Politics */}
-            <Link to="/formation/anglais/civilisation/politics" className="block">
+            <div onClick={() => navigate("/formation/anglais/civilisation/politics")} className="block cursor-pointer">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
@@ -180,10 +181,10 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
 
             {/* Module 3 - Geopolitics */}
-            <Link to="/formation/anglais/civilisation/geopolitics" className="block">
+            <div onClick={() => navigate("/formation/anglais/civilisation/geopolitics")} className="block cursor-pointer">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
@@ -215,10 +216,10 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
 
             {/* Module 4 - Immigration and Social Issues */}
-            <Link to="/formation/anglais/civilisation/immigration" className="block">
+            <div onClick={() => navigate("/formation/anglais/civilisation/immigration")} className="block cursor-pointer">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
@@ -250,10 +251,10 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
 
             {/* Module 5 - Education Systems */}
-            <Link to="/formation/anglais/civilisation/education" className="block">
+            <div onClick={() => navigate("/formation/anglais/civilisation/education")} className="block cursor-pointer">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
@@ -285,10 +286,10 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
 
             {/* Module 6 - Gender and Society */}
-            <Link to="/formation/anglais/civilisation/civil-rights" className="block">
+            <div onClick={() => navigate("/formation/anglais/civilisation/civil-rights")} className="block cursor-pointer">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
@@ -320,10 +321,10 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
 
             {/* Module 7 - AI and Technology */}
-            <Link to="/formation/anglais/civilisation/ai-technology" className="block">
+            <div onClick={() => navigate("/formation/anglais/civilisation/ai-technology")} className="block cursor-pointer">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
@@ -360,10 +361,10 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
 
             {/* Module 8 - Economy and Globalization */}
-            <Link to="/formation/anglais/civilisation/economy" className="block">
+            <div onClick={() => navigate("/formation/anglais/civilisation/economy")} className="block cursor-pointer">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
@@ -395,10 +396,10 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
 
             {/* Module 9 - Brexit and Trade */}
-            <Link to="/formation/anglais/civilisation/brexit" className="block">
+            <div onClick={() => navigate("/formation/anglais/civilisation/brexit")} className="block cursor-pointer">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
@@ -430,12 +431,12 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
 
 
 
             {/* Module 11 - Labor and Employment */}
-            <Link to="/formation/anglais/civilisation/labor" className="block">
+            <div onClick={() => navigate("/formation/anglais/civilisation/labor")} className="block cursor-pointer">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
@@ -467,10 +468,10 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
 
             {/* Module 12 - Media and Communication */}
-            <Link to="/formation/anglais/civilisation/media" className="block">
+            <div onClick={() => navigate("/formation/anglais/civilisation/media")} className="block cursor-pointer">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
@@ -502,10 +503,10 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
 
             {/* Module 13 - Polarization */}
-            <Link to="/formation/anglais/civilisation/polarization" className="block">
+            <div onClick={() => navigate("/formation/anglais/civilisation/polarization")} className="block cursor-pointer">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
@@ -537,10 +538,10 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
 
             {/* Module 14 - Health and Healthcare Systems: US and UK Policy Challenges and Crises */}
-            <Link to="/formation/anglais/civilisation/health-systems" className="block">
+            <div onClick={() => navigate("/formation/anglais/civilisation/health-systems")} className="block cursor-pointer">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors flex-shrink-0">
@@ -572,7 +573,7 @@ The AI revolution presents English-speaking nations with both unprecedented oppo
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
 
           </div>
         </div>
