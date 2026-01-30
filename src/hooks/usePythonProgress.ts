@@ -2,7 +2,12 @@ import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
-import { pythonFormationStructure, getTotalPythonChapters } from '@/data/python-formation-structure';
+import { pythonFormationStructure, getTotalPythonChapters, getModuleExerciseCount } from '@/data/python-formation-structure';
+
+// Weight constants for progress calculation
+const COURSE_WEIGHT = 0.25;
+const QUIZ_WEIGHT = 0.25;
+const EXERCISES_WEIGHT = 0.50;
 
 export const usePythonProgress = () => {
     const { currentUser } = useAuth();
@@ -52,13 +57,52 @@ export const usePythonProgress = () => {
         }
     }, [currentUser]);
 
-    const updateDB = async (newActivities: Record<string, any>) => {
+    // Calculate weighted global progress
+    const calculateGlobalProgress = (activities: Record<string, any>) => {
+        let totalModuleProgress = 0;
+        const moduleCount = pythonFormationStructure.length;
+
+        for (const module of pythonFormationStructure) {
+            totalModuleProgress += calculateModuleProgress(module.id, activities);
+        }
+
+        return moduleCount > 0 ? Math.round(totalModuleProgress / moduleCount) : 0;
+    };
+
+    // Calculate weighted progress for a single module
+    const calculateModuleProgress = (moduleId: number, activities: Record<string, any>) => {
+        const coursId = `python-${moduleId}-cours`;
+        const qcmId = `python-${moduleId}-qcm`;
+        const exerciseCount = getModuleExerciseCount(moduleId);
+
+        // Course: 25%
+        const courseComplete = activities[coursId]?.status === 'completed' ? 1 : 0;
+        const courseProgress = courseComplete * COURSE_WEIGHT * 100;
+
+        // Quiz: 25%
+        const quizComplete = activities[qcmId]?.status === 'completed' ? 1 : 0;
+        const quizProgress = quizComplete * QUIZ_WEIGHT * 100;
+
+        // Exercises: 50% (split among all exercises)
+        let exercisesCompleted = 0;
+        for (let i = 1; i <= exerciseCount; i++) {
+            const exoId = `python-${moduleId}-exo-${i}`;
+            if (activities[exoId]?.status === 'completed') {
+                exercisesCompleted++;
+            }
+        }
+        const exerciseProgress = exerciseCount > 0
+            ? (exercisesCompleted / exerciseCount) * EXERCISES_WEIGHT * 100
+            : 0;
+
+        return Math.round(courseProgress + quizProgress + exerciseProgress);
+    };
+
+    const updateDB = async (newActivities: Record<string, any>, showToast = true) => {
         if (!currentUser) return;
 
-        // Calculate new global progress
-        const completedCount = Object.keys(newActivities).filter(k => newActivities[k]?.status === 'completed').length;
-        const totalItems = getTotalPythonChapters();
-        const newPercentage = totalItems > 0 ? Math.round((completedCount / totalItems) * 100) : 0;
+        // Calculate new global progress using weighted formula
+        const newPercentage = calculateGlobalProgress(newActivities);
 
         console.log("Saving progress...", { newActivities, newPercentage, progressRecordId });
 
@@ -123,12 +167,12 @@ export const usePythonProgress = () => {
             console.log("Saved successfully");
             setProgressData(newActivities);
             setGlobalProgress(newPercentage);
-            // Toast handled by calling function or here? Original code had it here logic.
-            // Let's keep it clean
 
         } catch (err) {
             console.error('Error updating progress:', err);
-            toast.error("Erreur lors de la sauvegarde de la progression");
+            if (showToast) {
+                toast.error("Erreur lors de la sauvegarde de la progression");
+            }
         }
     };
 
@@ -152,23 +196,36 @@ export const usePythonProgress = () => {
         toast.success("Progression sauvegardée !");
     };
 
+    // Mark an exercise as seen (when viewing correction)
+    const markExerciseAsSeen = async (exerciseId: string) => {
+        if (!currentUser) return;
+
+        // Skip if already completed
+        if (progressData[exerciseId]?.status === 'completed') return;
+
+        const newActivities = {
+            ...progressData,
+            [exerciseId]: {
+                status: 'completed',
+                completed_at: new Date().toISOString()
+            }
+        };
+
+        await updateDB(newActivities, false); // silent save for exercises
+    };
+
+    // Get module progress using weighted calculation
     const getModuleProgress = (moduleId: number) => {
-        const module = pythonFormationStructure.find(m => m.id === moduleId);
-        if (!module) return 0;
-
-        const total = module.chapters.length;
-        if (total === 0) return 0;
-
-        const completed = module.chapters.filter(chapter =>
-            progressData[chapter.id]?.status === 'completed'
-        ).length;
-
-        return Math.round((completed / total) * 100);
+        return calculateModuleProgress(moduleId, progressData);
     };
 
     const isChapterComplete = (chapterId: string) => {
         return progressData[chapterId]?.status === 'completed';
-    }
+    };
+
+    const isExerciseSeen = (exerciseId: string) => {
+        return progressData[exerciseId]?.status === 'completed';
+    };
 
     useEffect(() => {
         fetchProgress();
@@ -179,8 +236,10 @@ export const usePythonProgress = () => {
         progressData,
         globalProgress,
         markAsComplete,
+        markExerciseAsSeen,
         getModuleProgress,
         isChapterComplete,
+        isExerciseSeen,
         refresh: fetchProgress
     };
 };

@@ -327,6 +327,11 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                   <span>Entretiens de Personnalité</span>
                 </Link>
 
+                <Link to="/generator" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Code className="h-4 w-4 text-orange-600" /></span>
+                  <span>Générateur</span>
+                </Link>
+
                 <div className="border-t border-gray-200 my-2"></div>
                 <Link to="/formations" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
                   <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><BookOpen className="h-4 w-4 text-orange-600" /></span>
@@ -339,7 +344,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               </div>
             </div>
 
-            <Link to="/generator" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-2 py-1.5 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Générateur</Link>
+            <Link to="/parent" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-2 py-1.5 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Espace Parents</Link>
             <Link to="/nos-profs" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-2 py-1.5 rounded-md hover:bg-gray-50 hover:underline underline-offset-4" onClick={closeMenu}>Professeurs</Link>
 
             {/* Menu déroulant "Niveau d'étude" avec hover */}
@@ -565,7 +570,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
         <div className="grid grid-cols-2 gap-4 mb-6">
           <Link to="/" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Accueil</Link>
           <Link to="/avis" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Avis</Link>
-          <Link to="/generator" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Générateur</Link>
+          <Link to="/parent" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Espace Parents</Link>
           <Link to="/nos-profs" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Professeurs</Link>
           <Link to="/articles/primaire" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Primaire</Link>
           <Link to="/articles/college" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Collège</Link>
@@ -699,6 +704,12 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               <FileText className="h-4 w-4 text-primary" />
             </span>
             <span className="text-sm text-center">CV Projectif</span>
+          </Link>
+          <Link to="/generator" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-white p-2 rounded-md shadow-sm">
+            <span className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+              <Code className="h-4 w-4 text-primary" />
+            </span>
+            <span className="text-sm text-center">Générateur</span>
           </Link>
         </div>
 

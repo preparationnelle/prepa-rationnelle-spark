@@ -29,6 +29,7 @@ import {
   BarChart3,
   X
 } from 'lucide-react';
+import SEO from '@/components/SEO';
 import { inversionsEmphaseExercises, getInversionsEmphaseExercisesByType, inversionsEmphaseExerciseCategories } from '@/data/englishInversionsEmphaseExercisesData';
 
 const InversionsEmphaseExercicesPage = () => {
@@ -44,6 +45,26 @@ const InversionsEmphaseExercicesPage = () => {
   const [examStarted, setExamStarted] = useState<boolean>(false);
   const [examTime, setExamTime] = useState<number>(0);
   const [examTimer, setExamTimer] = useState<NodeJS.Timeout | null>(null);
+
+  // Structured Data for GEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Quiz",
+    "name": "English Inversions & Emphase Exercises",
+    "description": "Practice English inversions and emphatic structures with these exercises.",
+    "hasPart": inversionsEmphaseExercises.slice(0, 10).map(exercise => ({ // Limit to 10 for SEO payload
+      "@type": "Question",
+      "name": exercise.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": exercise.correctAnswer
+      },
+      "suggestedAnswer": exercise.options ? exercise.options.map(option => ({
+        "@type": "Answer",
+        "text": option
+      })) : []
+    }))
+  };
 
   // New state for single question display
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState<number>(0);
@@ -204,14 +225,14 @@ const InversionsEmphaseExercicesPage = () => {
                     onClick={() => handleAnswerChange(exercise.id, option)}
                     disabled={examStarted && !examMode}
                     className={`w-full text-left p-3 rounded-lg border transition-all ${isValidated
-                        ? isCorrectOption
-                          ? 'border-green-300 bg-green-50 text-green-800'
-                          : isSelected && !isCorrect
-                            ? 'border-red-300 bg-red-50 text-red-800'
-                            : 'border-gray-200 bg-white'
-                        : isSelected
-                          ? 'border-blue-300 bg-blue-50 text-blue-800'
-                          : 'border-gray-200 bg-white hover:border-gray-300'
+                      ? isCorrectOption
+                        ? 'border-green-300 bg-green-50 text-green-800'
+                        : isSelected && !isCorrect
+                          ? 'border-red-300 bg-red-50 text-red-800'
+                          : 'border-gray-200 bg-white'
+                      : isSelected
+                        ? 'border-blue-300 bg-blue-50 text-blue-800'
+                        : 'border-gray-200 bg-white hover:border-gray-300'
                       }`}
                   >
                     {option}
@@ -231,10 +252,10 @@ const InversionsEmphaseExercicesPage = () => {
                 disabled={examStarted && !examMode}
                 placeholder="Your answer..."
                 className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 ${isValidated
-                    ? isCorrect
-                      ? 'border-green-300 focus:ring-green-200 bg-green-50'
-                      : 'border-red-300 focus:ring-red-200 bg-red-50'
-                    : 'border-gray-300 focus:ring-blue-200'
+                  ? isCorrect
+                    ? 'border-green-300 focus:ring-green-200 bg-green-50'
+                    : 'border-red-300 focus:ring-red-200 bg-red-50'
+                  : 'border-gray-300 focus:ring-blue-200'
                   }`}
               />
             </div>
@@ -252,14 +273,14 @@ const InversionsEmphaseExercicesPage = () => {
                     onClick={() => handleAnswerChange(exercise.id, option)}
                     disabled={examStarted && !examMode}
                     className={`w-full text-left p-3 rounded-lg border transition-all ${isValidated
-                        ? isCorrectOption
-                          ? 'border-green-300 bg-green-50 text-green-800'
-                          : isSelected && !isCorrect
-                            ? 'border-red-300 bg-red-50 text-red-800'
-                            : 'border-gray-200 bg-white'
-                        : isSelected
-                          ? 'border-blue-300 bg-blue-50 text-blue-800'
-                          : 'border-gray-200 bg-white hover:border-gray-300'
+                      ? isCorrectOption
+                        ? 'border-green-300 bg-green-50 text-green-800'
+                        : isSelected && !isCorrect
+                          ? 'border-red-300 bg-red-50 text-red-800'
+                          : 'border-gray-200 bg-white'
+                      : isSelected
+                        ? 'border-blue-300 bg-blue-50 text-blue-800'
+                        : 'border-gray-200 bg-white hover:border-gray-300'
                       }`}
                   >
                     {option}
@@ -332,6 +353,11 @@ const InversionsEmphaseExercicesPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEO
+        title="Inversions & Emphase Exercises | English Grammar"
+        description="Master English inversions and emphatic structures. Practice with negative inversions, cleft sentences, and emphatic 'do'."
+        structuredData={structuredData}
+      />
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">

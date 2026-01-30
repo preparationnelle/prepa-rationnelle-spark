@@ -8,11 +8,21 @@ import { Mail, Phone, MapPin, Instagram, Linkedin, Globe, MessageCircle, Target,
 import Navigation from '@/components/Navigation';
 
 export default function ContactPage() {
+  // Init gTag function safely
+  const trackEvent = (action: string, category: string, label?: string) => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', action, {
+        event_category: category,
+        event_label: label
+      });
+    }
+  };
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
-  
+
   // QCM states
   const [objective, setObjective] = useState('');
   const [subject, setSubject] = useState('');
@@ -21,7 +31,7 @@ export default function ContactPage() {
 
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     const whatsappMessage = `Bonjour ! 👋
 
 Voici mes informations de contact :
@@ -38,7 +48,8 @@ Merci de me recontacter dès que possible !`;
     const encodedMessage = encodeURIComponent(whatsappMessage);
     const whatsappNumber = "33609164668";
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-    
+
+    trackEvent('contact', 'whatsapp', 'form_submit');
     window.open(whatsappUrl, '_blank');
   };
 
@@ -46,6 +57,7 @@ Merci de me recontacter dès que possible !`;
     e.preventDefault();
 
     // Redirection vers Calendly après avoir rempli le QCM
+    trackEvent('generate_lead', 'qcm', 'booking_redirect');
     const calendlyUrl = `https://calendly.com/preparationnelle/30min?month=2025-09&date=2025-09-16`;
     window.open(calendlyUrl, '_blank');
   };
@@ -63,9 +75,9 @@ Merci de me recontacter dès que possible !`;
         <div className="absolute -z-10 top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
         <div className="absolute -z-10 top-1/2 left-10 w-24 h-24 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
         <div className="absolute -z-10 bottom-1/3 right-5 w-36 h-36 bg-blue-50 rounded-full opacity-5 animate-pulse"></div>
-        
+
         <div className="max-w-4xl mx-auto relative z-10">
-          
+
           {/* Section Contact Principal */}
           <Card className="mb-8">
             <CardHeader>
@@ -90,6 +102,7 @@ Merci de me recontacter dès que possible !`;
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full"
+                  onClick={() => trackEvent('schedule', 'calendly', 'main_button')}
                 >
                   <Button
                     className="w-full bg-blue-500 hover:bg-blue-600 text-white text-lg font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3"
@@ -109,7 +122,11 @@ Merci de me recontacter dès que possible !`;
                 <div className="flex items-center gap-3">
                   <MessageCircle className="text-[#25D366]" />
                   <span>
-                    <a href="https://wa.me/33609164668" className="underline text-[#25D366]">
+                    <a
+                      href="https://wa.me/33609164668"
+                      className="underline text-[#25D366]"
+                      onClick={() => trackEvent('contact', 'whatsapp', 'direct_link')}
+                    >
                       WhatsApp : 06 09 16 46 68
                     </a>
                   </span>
@@ -117,7 +134,11 @@ Merci de me recontacter dès que possible !`;
                 <div className="flex items-center gap-3">
                   <Mail className="text-primary" />
                   <span>
-                    <a href="mailto:preparationnelle@gmail.com" className="underline text-primary">
+                    <a
+                      href="mailto:preparationnelle@gmail.com"
+                      className="underline text-primary"
+                      onClick={() => trackEvent('contact', 'email', 'direct_link')}
+                    >
                       preparationnelle@gmail.com
                     </a>
                   </span>
@@ -125,7 +146,11 @@ Merci de me recontacter dès que possible !`;
                 <div className="flex items-center gap-3">
                   <Phone className="text-primary" />
                   <span>
-                    <a href="tel:+33609164668" className="underline text-primary">
+                    <a
+                      href="tel:+33609164668"
+                      className="underline text-primary"
+                      onClick={() => trackEvent('contact', 'phone', 'direct_link')}
+                    >
                       06 09 16 46 68
                     </a>
                   </span>
@@ -282,7 +307,7 @@ Merci de me recontacter dès que possible !`;
 
           {/* Offres Section */}
           <div className="grid md:grid-cols-2 gap-6">
-            
+
             {/* Offre LIBRE */}
             <Card className="border-2 border-primary">
               <CardHeader className="text-center">

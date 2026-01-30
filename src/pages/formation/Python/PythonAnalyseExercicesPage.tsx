@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { TrendingUp, Target, CheckCircle, Play, ChevronLeft, ChevronRight, Calculator, ArrowLeft, Code, BookOpen, ChevronDown, ChevronUp, Trophy, Star, HelpCircle } from 'lucide-react';
+import { TrendingUp, Target, CheckCircle, Play, ChevronLeft, ChevronRight, Calculator, ArrowLeft, Code, BookOpen, ChevronDown, ChevronUp, Trophy, Star, HelpCircle, Eye, EyeOff } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
@@ -15,8 +15,11 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 
+import { usePythonProgress } from '@/hooks/usePythonProgress';
+
 const PythonAnalyseExercicesPage = () => {
   const [searchParams] = useSearchParams();
+  const { markExerciseAsSeen, markAsComplete } = usePythonProgress();
   const [selectedExercise, setSelectedExercise] = useState<number | null>(null);
   const [showCorrections, setShowCorrections] = useState<Set<number>>(new Set());
   const [showQCM, setShowQCM] = useState(false);
@@ -40,6 +43,7 @@ const PythonAnalyseExercicesPage = () => {
       newShowCorrections.delete(index);
     } else {
       newShowCorrections.add(index);
+      markExerciseAsSeen(`python-analyse-exo-${index}`);
     }
     setShowCorrections(newShowCorrections);
   };
@@ -63,6 +67,7 @@ const PythonAnalyseExercicesPage = () => {
     const score = (correctAnswers / qcmQuestions.length) * 20;
     setQcmScore(score);
     setQcmSubmitted(true);
+    markAsComplete('python-analyse-qcm', score);
   };
 
   // Fonction pour recommencer le QCM
@@ -590,7 +595,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
   return (
     <PythonModuleLayout>
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-700 to-indigo-700 bg-clip-text text-transparent mb-4">
           Module 2 : Exercices - Analyse
         </h1>
         <p className="text-xl text-muted-foreground">
@@ -650,33 +655,36 @@ print(f"Erreur absolue : {abs(approx - exact)}")
             {exercises.map((exercise) => (
               <Card
                 key={exercise.id}
-                className="group cursor-pointer bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-2 border-gray-100 hover:border-orange-300 h-full flex flex-col"
+                className="group relative cursor-pointer bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 border border-gray-100 hover:border-blue-100 hover:-translate-y-1 h-full flex flex-col overflow-hidden"
                 onClick={() => setSelectedExercise(exercise.id)}
               >
-                <CardHeader className="flex-shrink-0">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center border border-gray-200 group-hover:bg-orange-50 group-hover:border-orange-200 transition-colors duration-300">
-                      <Calculator className="h-6 w-6 text-gray-600 group-hover:text-orange-600 transition-colors duration-300" />
+                <CardHeader className="flex-shrink-0 pb-2">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 text-gray-400">
+                      <Calculator className="h-6 w-6" />
                     </div>
-                    <div>
-                      <CardTitle className="text-lg text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Exercice {exercise.id}</CardTitle>
-                      <Badge variant="secondary" className="mt-1 bg-gray-100 text-gray-700 border border-gray-200">
-                        {exercise.difficulty}
-                      </Badge>
+                    <Badge variant="secondary" className="bg-gray-50 text-gray-600 border border-gray-100 font-medium px-3 py-1 rounded-full">
+                      {exercise.difficulty}
+                    </Badge>
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold tracking-wider text-blue-600 uppercase mb-1 opacity-80">
+                      Exercice {exercise.id}
                     </div>
+                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors leading-tight">
+                      {exercise.title.includes(' - ') ? exercise.title.split(' - ').slice(1).join(' - ') : exercise.title}
+                    </h3>
                   </div>
                 </CardHeader>
-                <CardContent className="flex-grow flex flex-col">
-                  <h3 className="font-semibold mb-2 text-gray-800 flex-grow">
-                    {exercise.title.replace(`Exercice ${exercise.id} - `, '')}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-4 flex-grow">
+
+                <CardContent className="flex-grow flex flex-col pt-0">
+                  <p className="text-gray-500 text-sm leading-relaxed mb-6 mt-2 flex-grow line-clamp-3">
                     {exercise.description}
                   </p>
                   <div className="mt-auto">
-                    <Button className="w-full bg-gray-600 hover:bg-orange-600 text-white font-medium transition-colors duration-300">
-                      <Play className="h-4 w-4 mr-2" />
-                      Commencer l'exercice
+                    <Button className="w-full h-11 bg-gray-50 text-gray-900 border border-gray-200 hover:bg-blue-600 hover:text-white hover:border-transparent rounded-xl font-semibold transition-all duration-300 flex items-center justify-between px-4 group-hover:shadow-lg group-hover:shadow-blue-500/20">
+                      <span>Commencer</span>
+                      <Play className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                     </Button>
                   </div>
                 </CardContent>
@@ -810,8 +818,8 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                           <Card
                             key={question.id}
                             className={`border-2 transition-colors ${isCorrect
-                                ? 'border-gray-200 bg-gray-50'
-                                : 'border-gray-200 bg-gray-100'
+                              ? 'border-gray-200 bg-gray-50'
+                              : 'border-gray-200 bg-gray-100'
                               }`}
                           >
                             <CardContent className="pt-6">
@@ -910,7 +918,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
               <Button
                 variant="outline"
                 size="sm"
-                className="flex items-center gap-2 mb-6"
+                className="flex items-center gap-2 mb-6 hover:bg-white hover:text-blue-600 transition-colors"
                 onClick={() => setSelectedExercise(null)}
               >
                 <ArrowLeft className="h-4 w-4" />
@@ -918,27 +926,27 @@ print(f"Erreur absolue : {abs(approx - exact)}")
               </Button>
 
               <div className="text-center mb-8">
-                <h1 className="text-4xl font-bold text-gray-800 mb-4">
+                <h1 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">
                   {exercises[selectedExercise - 1].title}
                 </h1>
-                <Badge variant="secondary" className="bg-gray-100 text-gray-700">
+                <Badge variant="secondary" className="bg-blue-50 text-blue-700 border border-blue-100 px-4 py-1 text-base">
                   {exercises[selectedExercise - 1].difficulty}
                 </Badge>
               </div>
             </div>
 
-            {/* Exercices avec contenu structuré */}
-            {(selectedExercise <= 2 || selectedExercise === 17) && exercises[selectedExercise - 1].content && (
+            {/* GENERIC RENDERER (For all exercises with content) */}
+            {exercises[selectedExercise - 1].content && (
               <>
-                <Card className="mb-8 border-2 border-gray-200 bg-gray-50 shadow-lg">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-3 text-gray-700">
-                      <Calculator className="h-6 w-6" />
+                <Card className="mb-8 border-2 border-gray-200 bg-white shadow-md hover:shadow-lg transition-all duration-300">
+                  <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-100">
+                    <CardTitle className="flex items-center gap-3 text-blue-900">
+                      <Target className="h-6 w-6 text-blue-600" />
                       Objectif de l'exercice
                     </CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <div className="text-gray-700 font-medium mb-4">
+                  <CardContent className="pt-6">
+                    <div className="text-gray-700 font-medium">
                       {exercises[selectedExercise - 1].content.isLatex ? (
                         <LatexRenderer latex={exercises[selectedExercise - 1].content.objective} />
                       ) : (
@@ -949,15 +957,15 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                 </Card>
 
                 {/* Énoncé */}
-                <Card className="mb-8 border-2 border-gray-200 bg-gray-50 shadow-lg">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-3 text-gray-700">
-                      <BookOpen className="h-6 w-6" />
+                <Card className="mb-8 border-2 border-gray-200 bg-white shadow-md hover:shadow-lg transition-all duration-300">
+                  <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-100">
+                    <CardTitle className="flex items-center gap-3 text-blue-900">
+                      <BookOpen className="h-6 w-6 text-blue-600" />
                       Énoncé
                     </CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <div className="text-gray-700">
+                  <CardContent className="pt-6">
+                    <div className="text-gray-700 leading-relaxed">
                       {exercises[selectedExercise - 1].content.enonce_latex ? (
                         <LatexRenderer latex={exercises[selectedExercise - 1].content.enonce_latex} />
                       ) : (
@@ -967,207 +975,53 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                   </CardContent>
                 </Card>
 
-                {/* Bouton pour afficher/masquer la correction */}
-                <div className="flex justify-center mb-6">
+                {/* Bouton Correction */}
+                <div className="flex justify-center mb-8">
                   <Button
-                    variant="outline"
                     onClick={() => toggleCorrection(selectedExercise)}
-                    className="flex items-center gap-2 border-gray-200 text-gray-600 hover:bg-gray-50"
+                    className={`
+                      relative overflow-hidden group px-8 py-6 rounded-xl transition-all duration-500
+                      ${showCorrections.has(selectedExercise)
+                        ? 'bg-gradient-to-br from-gray-800 to-gray-900 shadow-inner'
+                        : 'bg-gradient-to-br from-blue-600 to-indigo-700 shadow-xl hover:shadow-2xl hover:-translate-y-1'
+                      }
+                    `}
                   >
-                    {showCorrections.has(selectedExercise) ? (
-                      <>
-                        <ChevronUp className="h-4 w-4" />
-                        Masquer la correction
-                      </>
-                    ) : (
-                      <>
-                        <ChevronDown className="h-4 w-4" />
-                        Voir la correction
-                      </>
-                    )}
+                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 rounded-xl" />
+                    <div className="relative flex items-center gap-3 text-lg font-semibold text-white">
+                      {showCorrections.has(selectedExercise) ? (
+                        <>
+                          <EyeOff className="h-5 w-5" />
+                          Masquer la correction
+                        </>
+                      ) : (
+                        <>
+                          <Eye className="h-5 w-5 animate-pulse" />
+                          Voir la correction & Explications
+                        </>
+                      )}
+                    </div>
                   </Button>
                 </div>
 
-                {/* Correction (affichée conditionnellement) */}
+                {/* Correction */}
                 {showCorrections.has(selectedExercise) && (
-                  <Card className="mb-8 border-2 border-gray-200 bg-gray-50 shadow-lg">
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-3 text-gray-700">
-                        <Code className="h-6 w-6" />
-                        Correction
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="bg-blue-900 text-blue-100 rounded-lg p-4 overflow-x-auto border border-blue-300">
-                        <pre className="text-blue-100 text-sm font-mono">
+                  <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out">
+                    <Card className="border-0 shadow-2xl bg-gray-900 overflow-hidden rounded-2xl ring-1 ring-white/10">
+                      <CardHeader className="bg-gray-800/50 border-b border-gray-700/50 pb-4">
+                        <CardTitle className="flex items-center gap-3 text-emerald-400">
+                          <CheckCircle className="h-6 w-6" />
+                          Correction & Solution détaillée
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="p-6 overflow-x-auto custom-scrollbar">
+                        <pre className="font-mono text-sm leading-relaxed text-blue-100/90 whitespace-pre-wrap">
                           <code>{exercises[selectedExercise - 1].content.correction}</code>
                         </pre>
-                      </div>
-                    </CardContent>
-                  </Card>
+                      </CardContent>
+                    </Card>
+                  </div>
                 )}
-              </>
-            )}
-
-            {/* Exercices existants - Niveau Facile */}
-            {selectedExercise === 1 && !exercises[selectedExercise - 1].content && (
-              <>
-                {/* Exercice 1 */}
-                <Card className="mb-8">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-3 text-gray-700">
-                      <Calculator className="h-6 w-6" />
-                      Exercice 1
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-6">
-                      {/* Énoncé 1a */}
-                      <div>
-                        <h3 className="text-lg font-semibold mb-3">(a) Création de vecteur</h3>
-                        <div className="p-4 bg-slate-50 rounded-lg mb-4">
-                          <p className="text-sm mb-2">En une seule ligne de commande, créer le vecteur :</p>
-                          <div className="text-center text-lg font-mono bg-white p-3 rounded border">
-                            x = (1, 1/4, 1/9, 1/16, ..., 1/100)
-                          </div>
-                          <p className="text-sm mt-2 text-muted-foreground">sans saisir un à un les éléments.</p>
-                        </div>
-
-                        <Accordion type="single" collapsible>
-                          <AccordionItem value="correction-1a">
-                            <AccordionTrigger className="text-gray-700 font-semibold">
-                              <CheckCircle className="h-4 w-4 mr-2" />
-                              Voir la correction 1(a)
-                            </AccordionTrigger>
-                            <AccordionContent>
-                              <div className="space-y-4">
-                                <p className="text-sm">
-                                  On pourrait proposer l'instruction suivante, en faisant des opérations coefficient par coefficient :
-                                </p>
-                                <div className="bg-slate-900 rounded-lg p-4">
-                                  <pre className="text-gray-600 text-sm">
-                                    <code>x = np.arange(1,11)**(-2)</code>
-                                  </pre>
-                                </div>
-                                <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                  <p className="text-sm text-gray-700">
-                                    <strong>⚠️ Attention :</strong> Python renvoie un message d'erreur, car on part d'un vecteur
-                                    <code className="bg-white px-1 rounded">np.arange(1,11)</code> d'entiers pour obtenir un vecteur
-                                    contenant a priori des flottants, ce que Python ne permet pas.
-                                  </p>
-                                </div>
-                                <p className="text-sm">
-                                  <strong>Solution :</strong> On va donc modifier le vecteur de départ pour qu'il contienne dès le début des flottants :
-                                </p>
-                                <div className="bg-slate-900 rounded-lg p-4">
-                                  <pre className="text-gray-600 text-sm">
-                                    <code>x = np.arange(1.,11.)**(-2)</code>
-                                  </pre>
-                                </div>
-                              </div>
-                            </AccordionContent>
-                          </AccordionItem>
-                        </Accordion>
-                      </div>
-
-                      {/* Énoncé 1b */}
-                      <div>
-                        <h3 className="text-lg font-semibold mb-3">(b) Calcul de somme</h3>
-                        <div className="p-4 bg-slate-50 rounded-lg mb-4">
-                          <p className="text-sm mb-2">Compléter la commande précédente pour qu'elle renvoie :</p>
-                          <div className="text-center text-lg font-mono bg-white p-3 rounded border">
-                            ∑(k=1 à 10) 1/k²
-                          </div>
-                        </div>
-
-                        <Accordion type="single" collapsible>
-                          <AccordionItem value="correction-1b">
-                            <AccordionTrigger className="text-gray-700 font-semibold">
-                              <CheckCircle className="h-4 w-4 mr-2" />
-                              Voir la correction 1(b)
-                            </AccordionTrigger>
-                            <AccordionContent>
-                              <div className="space-y-4">
-                                <p className="text-sm">
-                                  Il suffit d'ajouter la fonction <code className="bg-slate-100 px-1 rounded">np.sum()</code> :
-                                </p>
-                                <div className="bg-slate-900 rounded-lg p-4">
-                                  <pre className="text-gray-600 text-sm">
-                                    <code>np.sum(np.arange(1.,11.)**(-2))</code>
-                                  </pre>
-                                </div>
-                                <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                  <p className="text-sm text-gray-700">
-                                    Cette commande calcule la somme des 10 premiers termes de la série harmonique d'ordre 2.
-                                  </p>
-                                </div>
-                              </div>
-                            </AccordionContent>
-                          </AccordionItem>
-                        </Accordion>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </>
-            )}
-
-            {selectedExercise === 2 && (
-              <>
-                {/* Exercice 2 */}
-                <Card className="mb-8">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-3 text-gray-700">
-                      <Calculator className="h-6 w-6" />
-                      Exercice 2
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-6">
-                      <div>
-                        <h3 className="text-lg font-semibold mb-3">Calcul de somme géométrique</h3>
-                        <div className="p-4 bg-slate-50 rounded-lg mb-4">
-                          <p className="text-sm mb-2">En une seule ligne de commande, calculer la somme :</p>
-                          <div className="text-center text-lg bg-white p-3 rounded border">
-                            <LatexRenderer latex="\\sum_{n=0}^{10} \\frac{1}{2^n}" />
-                          </div>
-                        </div>
-
-                        <Accordion type="single" collapsible>
-                          <AccordionItem value="correction-2">
-                            <AccordionTrigger className="text-gray-700 font-semibold">
-                              <CheckCircle className="h-4 w-4 mr-2" />
-                              Voir la correction 2
-                            </AccordionTrigger>
-                            <AccordionContent>
-                              <div className="space-y-4">
-                                <p className="text-sm">
-                                  La solution utilise les puissances de 2 avec NumPy :
-                                </p>
-                                <div className="bg-slate-900 rounded-lg p-4">
-                                  <pre className="text-gray-600 text-sm">
-                                    <code>np.sum(1 / 2**np.arange(11))</code>
-                                  </pre>
-                                </div>
-                                <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                  <p className="text-sm text-gray-700">
-                                    <strong>Explication :</strong>
-                                  </p>
-                                  <ul className="text-sm text-gray-700 mt-2 space-y-1">
-                                    <li>• <code>np.arange(11)</code> crée [0, 1, 2, ..., 10]</li>
-                                    <li>• <code>2**np.arange(11)</code> donne [1, 2, 4, 8, ..., 1024]</li>
-                                    <li>• <code>1 / 2**np.arange(11)</code> produit [1, 1/2, 1/4, 1/8, ..., 1/1024]</li>
-                                    <li>• <code>np.sum()</code> calcule la somme totale</li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </AccordionContent>
-                          </AccordionItem>
-                        </Accordion>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
               </>
             )}
 
@@ -1275,399 +1129,6 @@ print(f"Erreur absolue : {abs(approx - exact)}")
               </>
             )}
 
-            {/* Exercices 4-9 - Niveau Moyen */}
-            {selectedExercise === 4 && (
-              <Card className="mb-8">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-gray-700">
-                    <Calculator className="h-6 w-6" />
-                    Exercice 4
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-lg font-semibold mb-3">Somme harmonique</h3>
-                      <div className="p-4 bg-slate-50 rounded-lg mb-4">
-                        <p className="text-sm mb-2">Compléter la fonction Python suivante pour qu'elle :</p>
-                        <ul className="text-sm space-y-1 mb-3">
-                          <li>• prenne en argument un entier naturel non nul n ;</li>
-                          <li>• renvoie la somme harmonique définie par :</li>
-                        </ul>
-                        <div className="text-center text-lg font-mono bg-white p-3 rounded border">
-                          Sₙ = ∑(k=1 à n) 1/k
-                        </div>
-                      </div>
-
-                      <Accordion type="single" collapsible>
-                        <AccordionItem value="correction-4">
-                          <AccordionTrigger className="text-gray-700 font-semibold">
-                            <CheckCircle className="h-4 w-4 mr-2" />
-                            Voir la correction 4
-                          </AccordionTrigger>
-                          <AccordionContent>
-                            <div className="space-y-4">
-                              <p className="text-sm">
-                                Voici la fonction complète pour calculer la somme harmonique :
-                              </p>
-                              <div className="bg-slate-900 rounded-lg p-4">
-                                <pre className="text-gray-600 text-sm">
-                                  <code>{`def sommeHarmonique(n):
-    S = 0
-    for k in range(1, n+1):
-        S += 1 / k
-    return S`}</code>
-                                </pre>
-                              </div>
-                              <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                <p className="text-sm text-gray-700">
-                                  <strong>Explication :</strong>
-                                </p>
-                                <ul className="text-sm text-gray-700 mt-2 space-y-1">
-                                  <li>• On initialise S à 0</li>
-                                  <li>• On parcourt k de 1 à n inclus avec <code>range(1, n+1)</code></li>
-                                  <li>• On ajoute 1/k à S à chaque itération</li>
-                                  <li>• On retourne la somme totale S</li>
-                                </ul>
-                              </div>
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {selectedExercise === 5 && (
-              <Card className="mb-8">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-gray-700">
-                    <Calculator className="h-6 w-6" />
-                    Exercice 5
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-lg font-semibold mb-3">Condition d'arrêt</h3>
-                      <div className="p-4 bg-slate-50 rounded-lg mb-4">
-                        <p className="text-sm mb-2">Compléter le script Python suivant pour qu'il affiche le premier entier naturel non nul n vérifiant :</p>
-                        <div className="text-center text-lg font-mono bg-white p-3 rounded border">
-                          n²e⁻ⁿ &lt; 10⁻⁴
-                        </div>
-                      </div>
-
-                      <Accordion type="single" collapsible>
-                        <AccordionItem value="correction-5">
-                          <AccordionTrigger className="text-gray-700 font-semibold">
-                            <CheckCircle className="h-4 w-4 mr-2" />
-                            Voir la correction 5
-                          </AccordionTrigger>
-                          <AccordionContent>
-                            <div className="space-y-4">
-                              <p className="text-sm">
-                                Voici le script complet utilisant une boucle while :
-                              </p>
-                              <div className="bg-slate-900 rounded-lg p-4">
-                                <pre className="text-gray-600 text-sm">
-                                  <code>{`import numpy as np
-
-n = 1
-while (n**2) * np.exp(-n) >= 10**(-4):
-    n += 1
-print(n)`}</code>
-                                </pre>
-                              </div>
-                              <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                <p className="text-sm text-gray-700">
-                                  <strong>Explication :</strong>
-                                </p>
-                                <ul className="text-sm text-gray-700 mt-2 space-y-1">
-                                  <li>• On initialise n à 1</li>
-                                  <li>• Tant que n²e⁻ⁿ ≥ 10⁻⁴, on incrémente n</li>
-                                  <li>• On s'arrête dès que la condition n²e⁻ⁿ &lt; 10⁻⁴ est vérifiée</li>
-                                  <li>• On affiche la valeur de n trouvée</li>
-                                </ul>
-                              </div>
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {selectedExercise === 6 && (
-              <Card className="mb-8">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-gray-700">
-                    <Calculator className="h-6 w-6" />
-                    Exercice 6
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-lg font-semibold mb-3">Convergence de suite</h3>
-                      <div className="p-4 bg-slate-50 rounded-lg mb-4">
-                        <p className="text-sm mb-2">On considère une suite (uₙ) et un réel α tels que :</p>
-                        <div className="text-center text-lg font-mono bg-white p-3 rounded border mb-3">
-                          |uₙ - α| ≤ 1/2ⁿ
-                        </div>
-                        <p className="text-sm mb-2">Compléter la fonction Python suivante pour qu'elle :</p>
-                        <ul className="text-sm space-y-1">
-                          <li>• prenne en argument un réel strictement positif eps</li>
-                          <li>• renvoie un entier naturel n vérifiant : |uₙ - α| ≤ eps</li>
-                        </ul>
-                      </div>
-
-                      <Accordion type="single" collapsible>
-                        <AccordionItem value="correction-6">
-                          <AccordionTrigger className="text-gray-700 font-semibold">
-                            <CheckCircle className="h-4 w-4 mr-2" />
-                            Voir la correction 6
-                          </AccordionTrigger>
-                          <AccordionContent>
-                            <div className="space-y-4">
-                              <p className="text-sm">
-                                Voici la fonction complète :
-                              </p>
-                              <div className="bg-slate-900 rounded-lg p-4">
-                                <pre className="text-gray-600 text-sm">
-                                  <code>{`def entier(eps):
-    n = 0
-    while 1 / (2**n) > eps:
-        n += 1
-    return n`}</code>
-                                </pre>
-                              </div>
-                              <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                <p className="text-sm text-gray-700">
-                                  <strong>Explication :</strong>
-                                </p>
-                                <ul className="text-sm text-gray-700 mt-2 space-y-1">
-                                  <li>• On initialise n à 0</li>
-                                  <li>• Tant que 1/2ⁿ &gt; eps, on incrémente n</li>
-                                  <li>• On s'arrête dès que 1/2ⁿ ≤ eps</li>
-                                  <li>• Comme |uₙ - α| ≤ 1/2ⁿ, on a alors |uₙ - α| ≤ eps</li>
-                                </ul>
-                              </div>
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {selectedExercise === 7 && (
-              <Card className="mb-8">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-gray-700">
-                    <Calculator className="h-6 w-6" />
-                    Exercice 7
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-lg font-semibold mb-3">Approximation par récurrence</h3>
-                      <div className="p-4 bg-slate-50 rounded-lg mb-4">
-                        <p className="text-sm mb-2">On suppose maintenant que (uₙ) est définie par récurrence par :</p>
-                        <p className="text-sm mb-2">On suppose aussi que la fonction f est déjà codée en Python.</p>
-                        <p className="text-sm mb-2">Compléter la fonction Python suivante pour qu'elle :</p>
-                        <ul className="text-sm space-y-1">
-                          <li>• prenne en argument un réel strictement positif eps</li>
-                          <li>• renvoie une valeur approchée de α à eps près.</li>
-                        </ul>
-                      </div>
-
-                      <Accordion type="single" collapsible>
-                        <AccordionItem value="correction-7">
-                          <AccordionTrigger className="text-gray-700 font-semibold">
-                            <CheckCircle className="h-4 w-4 mr-2" />
-                            Voir la correction 7
-                          </AccordionTrigger>
-                          <AccordionContent>
-                            <div className="space-y-4">
-                              <p className="text-sm">
-                                Voici la fonction complète :
-                              </p>
-                              <div className="bg-slate-900 rounded-lg p-4">
-                                <pre className="text-gray-600 text-sm">
-                                  <code>{`def valApprox(eps):
-    n, u = 0, 2
-    while 1 / (2**n) > eps:
-        n += 1
-        u = f(u)
-    return u`}</code>
-                                </pre>
-                              </div>
-                              <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                <p className="text-sm text-gray-700">
-                                  <strong>Explication :</strong>
-                                </p>
-                                <ul className="text-sm text-gray-700 mt-2 space-y-1">
-                                  <li>• On initialise n à 0 et u à 2 (valeur initiale supposée)</li>
-                                  <li>• Tant que 1/2ⁿ &gt; eps, on incrémente n et on calcule u = f(u)</li>
-                                  <li>• On s'arrête dès que la précision eps est atteinte</li>
-                                  <li>• On retourne la valeur u qui est une approximation de α</li>
-                                </ul>
-                              </div>
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {selectedExercise === 8 && (
-              <Card className="mb-8">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-gray-700">
-                    <Calculator className="h-6 w-6" />
-                    Exercice 8
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-lg font-semibold mb-3">Suite définie par récurrence</h3>
-                      <div className="p-4 bg-slate-50 rounded-lg mb-4">
-                        <p className="text-sm mb-2">Soit la fonction f : t ↦ 1/(1+eᵗ).</p>
-                        <p className="text-sm mb-2">On considère la suite (uₙ) définie par :</p>
-                        <div className="bg-white p-3 rounded border mb-3">
-                          <p className="text-sm font-mono">u₀ = 0</p>
-                          <p className="text-sm font-mono">uₙ₊₁ = f(uₙ)</p>
-                        </div>
-                        <p className="text-sm mb-2">Compléter la fonction Python suivante pour qu'elle :</p>
-                        <ul className="text-sm space-y-1">
-                          <li>• prenne en argument un entier naturel n ;</li>
-                          <li>• renvoie le terme uₙ de la suite.</li>
-                        </ul>
-                      </div>
-
-                      <Accordion type="single" collapsible>
-                        <AccordionItem value="correction-8">
-                          <AccordionTrigger className="text-gray-700 font-semibold">
-                            <CheckCircle className="h-4 w-4 mr-2" />
-                            Voir la correction 8
-                          </AccordionTrigger>
-                          <AccordionContent>
-                            <div className="space-y-4">
-                              <p className="text-sm">
-                                Voici la fonction complète :
-                              </p>
-                              <div className="bg-slate-900 rounded-lg p-4">
-                                <pre className="text-gray-600 text-sm">
-                                  <code>{`import numpy as np
-
-def suite(n):
-    u = 0
-    for k in range(n):
-        u = 1 / (1 + np.exp(u))
-    return u`}</code>
-                                </pre>
-                              </div>
-                              <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                <p className="text-sm text-gray-700">
-                                  <strong>Explication :</strong>
-                                </p>
-                                <ul className="text-sm text-gray-700 mt-2 space-y-1">
-                                  <li>• On initialise u à 0 (terme initial u₀)</li>
-                                  <li>• On itère n fois en appliquant la relation de récurrence</li>
-                                  <li>• À chaque étape, u devient f(u) = 1/(1+e^u)</li>
-                                  <li>• On retourne le terme uₙ calculé</li>
-                                </ul>
-                              </div>
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {selectedExercise === 9 && (
-              <Card className="mb-8">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-gray-700">
-                    <Calculator className="h-6 w-6" />
-                    Exercice 9
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-lg font-semibold mb-3">Tableau de suite</h3>
-                      <div className="p-4 bg-slate-50 rounded-lg mb-4">
-                        <p className="text-sm mb-2">On considère la suite (uₙ) définie par :</p>
-                        <div className="bg-white p-3 rounded border mb-3">
-                          <p className="text-sm font-mono">u₀ = 3/2</p>
-                          <p className="text-sm font-mono">uₙ₊₁ = ln(1 + uₙ) + uₙ²</p>
-                        </div>
-                        <p className="text-sm mb-2">Compléter la fonction Python suivante pour qu'elle :</p>
-                        <ul className="text-sm space-y-1">
-                          <li>• prenne en argument un entier naturel m ;</li>
-                          <li>• renvoie un tableau contenant les m premiers termes de la suite (uₙ).</li>
-                        </ul>
-                      </div>
-
-                      <Accordion type="single" collapsible>
-                        <AccordionItem value="correction-9">
-                          <AccordionTrigger className="text-gray-700 font-semibold">
-                            <CheckCircle className="h-4 w-4 mr-2" />
-                            Voir la correction 9
-                          </AccordionTrigger>
-                          <AccordionContent>
-                            <div className="space-y-4">
-                              <p className="text-sm">
-                                Voici la fonction complète :
-                              </p>
-                              <div className="bg-slate-900 rounded-lg p-4">
-                                <pre className="text-gray-600 text-sm">
-                                  <code>{`import numpy as np
-
-def premSuiteUTab(m):
-    T = np.zeros(m)
-    T[0] = 3/2
-    for i in range(1, m):
-        T[i] = np.log(1 + T[i - 1]) + T[i - 1] ** 2
-    return T`}</code>
-                                </pre>
-                              </div>
-                              <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                <p className="text-sm text-gray-700">
-                                  <strong>Explication :</strong>
-                                </p>
-                                <ul className="text-sm text-gray-700 mt-2 space-y-1">
-                                  <li>• On crée un tableau T de m zéros avec <code>np.zeros(m)</code></li>
-                                  <li>• On initialise T[0] = 3/2 (terme initial)</li>
-                                  <li>• On calcule chaque terme suivant avec la relation de récurrence</li>
-                                  <li>• On utilise <code>np.log()</code> pour le logarithme naturel</li>
-                                </ul>
-                              </div>
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
             {/* Nouveaux exercices 10-15 */}
             {selectedExercise === 10 && (
               <Card className="mb-8">
@@ -1761,135 +1222,6 @@ print("Valeur approchée de S :", S_approx)`}</code>
               </Card>
             )}
 
-            {selectedExercise === 11 && (
-              <Card className="mb-8">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-gray-700">
-                    <Calculator className="h-6 w-6" />
-                    Exercice 11
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-lg font-semibold mb-3">Somme exponentielle</h3>
-                      <div className="p-4 bg-slate-50 rounded-lg mb-4">
-                        <p className="text-sm mb-2">Écrire une fonction Python <code>somme_exponentielle(n)</code> qui prend en paramètre un entier naturel n et retourne la valeur de la somme suivante :</p>
-                        <div className="text-center text-lg font-mono bg-white p-3 rounded border mb-3">
-                          ∑(k=1 à n) 2ᵏ/k
-                        </div>
-                        <p className="text-sm">Puis écrire un script principal qui demande à l'utilisateur de saisir un entier n, et affiche la valeur de cette somme.</p>
-                      </div>
-
-                      <Accordion type="single" collapsible>
-                        <AccordionItem value="correction-11">
-                          <AccordionTrigger className="text-gray-700 font-semibold">
-                            <CheckCircle className="h-4 w-4 mr-2" />
-                            Voir la correction 11
-                          </AccordionTrigger>
-                          <AccordionContent>
-                            <div className="space-y-4">
-                              <p className="text-sm">
-                                Voici la fonction et le script principal :
-                              </p>
-                              <div className="bg-slate-900 rounded-lg p-4">
-                                <pre className="text-gray-600 text-sm">
-                                  <code>{`def somme_exponentielle(n):
-    S = 0
-    for k in range(1, n + 1):
-        S += (2 ** k) / k
-    return S
-
-# Script principal
-n = int(input("Entrer un entier n : "))
-resultat = somme_exponentielle(n)
-print("Somme =", resultat)`}</code>
-                                </pre>
-                              </div>
-                              <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                <p className="text-sm text-gray-700">
-                                  <strong>Explication :</strong>
-                                </p>
-                                <ul className="text-sm text-gray-700 mt-2 space-y-1">
-                                  <li>• La fonction parcourt k de 1 à n</li>
-                                  <li>• À chaque étape, on calcule 2ᵏ/k et on l'ajoute à S</li>
-                                  <li>• <code>2 ** k</code> calcule 2 puissance k</li>
-                                  <li>• Le script principal appelle la fonction et affiche le résultat</li>
-                                </ul>
-                              </div>
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {selectedExercise === 12 && (
-              <Card className="mb-8">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-gray-700">
-                    <Calculator className="h-6 w-6" />
-                    Exercice 12
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-lg font-semibold mb-3">Coefficient binomial</h3>
-                      <div className="p-4 bg-slate-50 rounded-lg mb-4">
-                        <p className="text-sm mb-2">Définir une fonction <code>binomiale(n, k)</code> qui renvoie la valeur du coefficient binomial (n k), défini par :</p>
-                        <div className="bg-white p-3 rounded border mb-3">
-                          <p className="text-sm font-mono">• 0 si k &gt; n</p>
-                          <p className="text-sm font-mono">• 1 si k = 0</p>
-                          <p className="text-sm font-mono">• n(n-1)...(n-k+1) / (1×2×...×k) si 1 ≤ k ≤ n</p>
-                        </div>
-                      </div>
-
-                      <Accordion type="single" collapsible>
-                        <AccordionItem value="correction-12">
-                          <AccordionTrigger className="text-gray-700 font-semibold">
-                            <CheckCircle className="h-4 w-4 mr-2" />
-                            Voir la correction 12
-                          </AccordionTrigger>
-                          <AccordionContent>
-                            <div className="space-y-4">
-                              <p className="text-sm">
-                                Voici la fonction complète :
-                              </p>
-                              <div className="bg-slate-900 rounded-lg p-4">
-                                <pre className="text-gray-600 text-sm">
-                                  <code>{`def binomiale(n, k):
-    if k > n:
-        return 0
-    result = 1
-    for i in range(1, k + 1):
-        result = result * (n - i + 1) / i
-    return int(result)`}</code>
-                                </pre>
-                              </div>
-                              <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                <p className="text-sm text-gray-700">
-                                  <strong>Explication :</strong>
-                                </p>
-                                <ul className="text-sm text-gray-700 mt-2 space-y-1">
-                                  <li>• Si k &gt; n, on retourne 0 directement</li>
-                                  <li>• On initialise result à 1</li>
-                                  <li>• On multiplie par (n-i+1) et divise par i pour chaque i de 1 à k</li>
-                                  <li>• Cette méthode évite les calculs de factorielles qui peuvent être très grandes</li>
-                                </ul>
-                              </div>
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
 
             {selectedExercise === 13 && (
               <Card className="mb-8">
@@ -2190,6 +1522,15 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                       </Accordion>
                     </div>
                   </div>
+                </CardContent>
+              </Card>
+            )}
+            {/* Fallback */}
+            {!exercises[selectedExercise - 1].content && ![3, 10, 13, 14, 15, 16].includes(selectedExercise) && (
+              <Card className="mb-8 border-2 border-gray-100 shadow-sm">
+                <CardContent className="p-12 text-center text-gray-500">
+                  <HelpCircle className="h-12 w-12 mx-auto mb-4 text-gray-300" />
+                  <p className="text-lg font-medium">Le contenu de cet exercice sera bientôt disponible.</p>
                 </CardContent>
               </Card>
             )}

@@ -268,6 +268,7 @@ const AmeriqueLatineChronologiePage = lazy(() => import('../pages/formation/geop
 const AmeriqueNordChronologiePage = lazy(() => import('../pages/formation/geopolitique/AmeriqueNordChronologiePage'));
 const SciencesTechnologiesPage = lazy(() => import('../pages/formation/geopolitique/SciencesTechnologiesPage'));
 const EtudesDeCasPage = lazy(() => import('../pages/formation/geopolitique/EtudesDeCasPage'));
+const GeopolitiqueCasPratiquesPage = lazy(() => import('../pages/formation/geopolitique/GeopolitiqueCasPratiquesPage'));
 const ForetAmazoniennePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/ForetAmazoniennePage'));
 const AntarctiquePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/AntarctiquePage'));
 const CanadaPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/CanadaPage'));
@@ -281,6 +282,7 @@ const TransportsPage = lazy(() => import('../pages/formation/geopolitique/etudes
 const EnergiePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/EnergiePage'));
 const TourismePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/TourismePage'));
 const MetauxPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/MetauxPage'));
+const TsmcPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/TsmcPage'));
 const ForetPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/ForetPage'));
 const AgroalimentairePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/AgroalimentairePage'));
 const EauPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/EauPage'));
@@ -785,6 +787,10 @@ export const routes: RouteConfig[] = [
   { path: '/articles/primaire/autonomie', component: AutonomiePrimairePage, title: 'Développer l\'autonomie en primaire' },
   { path: '/articles/primaire/lecture', component: LectureEfficacePage, title: 'Méthodes de lecture efficace' },
   { path: '/articles/primaire/maths-ludiques', component: MathsLudiquesPage, title: 'Mathématiques ludiques au primaire' },
+  { path: '/articles/primaire/anxiete-scolaire', component: lazy(() => import('../pages/articles/primaire/AnxieteScolairePage')), title: 'Anxiété Scolaire en Primaire' },
+  { path: '/articles/primaire/harcelement', component: lazy(() => import('../pages/articles/primaire/HarcelementPrimairePage')), title: 'Harcèlement en Primaire' },
+  { path: '/articles/primaire/accompagnement-lecture', component: lazy(() => import('../pages/articles/primaire/AccompagnementLecturePage')), title: 'Accompagner la Lecture' },
+  { path: '/articles/primaire/gestion-ent', component: lazy(() => import('../pages/articles/primaire/GestionEntPage')), title: 'Gestion de l\'ENT' },
   { path: '/articles/college', component: ArticlesCollegePage, title: 'Articles Collège' },
   { path: '/articles/college/transition', component: TransitionCollegePage, title: 'Transition primaire-collège' },
   { path: '/articles/college/organisation', component: OrganisationCollegePage, title: 'Organisation au collège' },
@@ -1205,6 +1211,8 @@ export const routes: RouteConfig[] = [
   { path: '/formation/geopolitique/amerique-nord/chronologie', component: AmeriqueNordChronologiePage, title: 'Chronologie - Amérique du Nord' },
   { path: '/formation/geopolitique/sciences-technologies', component: SciencesTechnologiesPage, title: 'Sciences et Technologies dans le Monde Contemporain' },
   { path: '/formation/geopolitique/etudes-de-cas', component: EtudesDeCasPage, title: 'Thèmes centraux essentiels' },
+  { path: '/formation/geopolitique/cas-pratiques', component: GeopolitiqueCasPratiquesPage, title: 'Cas Pratiques Géopolitique' },
+  { path: '/formation/geopolitique/etudes-de-cas/tsmc', component: TsmcPage, title: 'TSMC - Bouclier de Silicium' },
   { path: '/formation/geopolitique/etudes-de-cas/foret-amazonienne', component: ForetAmazoniennePage, title: 'Forêt Amazonienne' },
   { path: '/formation/geopolitique/etudes-de-cas/antarctique', component: AntarctiquePage, title: 'Antarctique' },
   { path: '/formation/geopolitique/etudes-de-cas/canada-guerre-economique', component: CanadaPage, title: 'Canada - Guerre économique' },

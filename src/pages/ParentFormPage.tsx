@@ -39,11 +39,11 @@ const ParentFormPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Validation
     if (!formData.requester_first_name || !formData.requester_last_name ||
-        !formData.requester_email ||
-        !formData.student_level || !formData.subject || !formData.needs_description) {
+      !formData.requester_email ||
+      !formData.student_level || !formData.subject || !formData.needs_description) {
       toast({
         title: "Champs manquants",
         description: "Veuillez remplir tous les champs obligatoires.",
@@ -78,6 +78,13 @@ const ParentFormPage = () => {
       }
 
       // 3. Toast de succès
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('event', 'generate_lead', {
+          event_category: 'parent_form',
+          event_label: 'submission_success'
+        });
+      }
+
       toast({
         title: "Demande envoyée !",
         description: "Votre demande a été transmise à notre équipe. Nous vous contacterons dans les plus brefs délais.",
@@ -118,13 +125,13 @@ const ParentFormPage = () => {
       {/* Section Hero */}
       <section className="min-h-[95vh] w-full flex flex-col justify-center items-center pt-16 sm:pt-20 pb-10 sm:pb-16 md:pb-24 px-4 sm:px-6 relative overflow-hidden" style={{ backgroundColor: 'var(--section-bg-1)' }}>
         <div className="absolute -z-10 inset-0" style={{ backgroundColor: 'var(--section-bg-1)' }}></div>
-        
+
         {/* Bulles décoratives */}
         <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
         <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
         <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
         <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-orange-200 rounded-full opacity-5 animate-pulse"></div>
-        
+
         <div className="relative z-10 w-full max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
@@ -148,7 +155,7 @@ const ParentFormPage = () => {
                 Quelques informations pour mieux vous aider
               </p>
             </CardHeader>
-            
+
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Informations de contact */}
@@ -226,7 +233,7 @@ const ParentFormPage = () => {
                     <BookOpen className="h-5 w-5 text-purple-600" />
                     Informations académiques
                   </h3>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="student_level" className="text-sm font-medium text-gray-700">
@@ -245,7 +252,7 @@ const ParentFormPage = () => {
                         </SelectContent>
                       </Select>
                     </div>
-                    
+
                     <div>
                       <Label htmlFor="subject" className="text-sm font-medium text-gray-700">
                         Matière d'aide *
@@ -272,7 +279,7 @@ const ParentFormPage = () => {
                     <CheckCircle className="h-5 w-5 text-indigo-600" />
                     Description des besoins
                   </h3>
-                  
+
                   <div>
                     <Label htmlFor="needs_description" className="text-sm font-medium text-gray-700">
                       Décrivez brièvement vos besoins *
@@ -290,8 +297,8 @@ const ParentFormPage = () => {
 
                 {/* Bouton de soumission */}
                 <div className="flex justify-center pt-4">
-                  <Button 
-                    type="submit" 
+                  <Button
+                    type="submit"
                     disabled={isSubmitting}
                     className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
                   >
@@ -327,13 +334,13 @@ const ParentFormPage = () => {
             Notre équipe d'experts est là pour vous accompagner dans cette démarche importante.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
+            <Button
               onClick={() => document.querySelector('form')?.scrollIntoView({ behavior: 'smooth' })}
               className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
               Faire une demande
             </Button>
-            <Button 
+            <Button
               variant="outline"
               onClick={() => window.location.href = '/contact'}
               className="px-8 py-4 text-lg font-semibold rounded-lg border-2 border-orange-600 text-orange-600 hover:bg-orange-50 transition-all duration-300"

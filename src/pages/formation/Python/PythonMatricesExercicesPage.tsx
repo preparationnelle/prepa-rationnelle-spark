@@ -7,9 +7,11 @@ import { Calculator, Target, Play, CheckCircle, Eye, EyeOff, Code, BookOpen, Che
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 import { LatexRenderer } from '@/components/LatexRenderer';
+import { usePythonProgress } from '@/hooks/usePythonProgress';
 
 const PythonMatricesExercicesPage = () => {
   const [searchParams] = useSearchParams();
+  const { markExerciseAsSeen, markAsComplete } = usePythonProgress();
   const [selectedExercise, setSelectedExercise] = useState<number | null>(null);
   const [showSolution, setShowSolution] = useState<{
     [key: string]: boolean;
@@ -32,10 +34,16 @@ const PythonMatricesExercicesPage = () => {
 
 
   const toggleSolution = (exerciseId: string) => {
-    setShowSolution(prev => ({
-      ...prev,
-      [exerciseId]: !prev[exerciseId]
-    }));
+    setShowSolution(prev => {
+      const isShowing = !prev[exerciseId];
+      if (isShowing) {
+        markExerciseAsSeen(`python-matrices-exo-${exerciseId}`);
+      }
+      return {
+        ...prev,
+        [exerciseId]: isShowing
+      };
+    });
   };
 
   const toggleCorrection = (index: number) => {
@@ -44,6 +52,7 @@ const PythonMatricesExercicesPage = () => {
       newShowCorrections.delete(index);
     } else {
       newShowCorrections.add(index);
+      markExerciseAsSeen(`python-matrices-exo-${index}`);
     }
     setShowCorrections(newShowCorrections);
   };
@@ -67,6 +76,7 @@ const PythonMatricesExercicesPage = () => {
     const score = (correctAnswers / qcmQuestions.length) * 20;
     setQcmScore(score);
     setQcmSubmitted(true);
+    markAsComplete('python-matrices-quiz', score);
   };
 
   // Fonction pour recommencer le QCM
@@ -637,18 +647,26 @@ for row in triangle_result:
     const exercise = exercises[selectedExercise! - 1];
     if (exercise.id === 2) {
       return <div className="space-y-6">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-gray-700">Exercice 1.1</CardTitle>
+        <Card className="border border-gray-200 bg-white shadow-sm">
+          <CardHeader className="border-b border-gray-100 bg-gray-50/50 px-6 py-4">
+            <CardTitle className="text-gray-800 text-lg flex items-center gap-2">
+              <BookOpen className="h-5 w-5 text-blue-600" />
+              Exercice 1.1
+            </CardTitle>
           </CardHeader>
-          <CardContent>
-            <p className="mb-4">Créer une matrice 3×4 contenant uniquement des zéros, puis une matrice 2×3 contenant uniquement des uns.</p>
-            <Button variant="outline" size="sm" onClick={() => toggleSolution('ex1-1')} className="flex items-center gap-2 mb-4">
+          <CardContent className="p-6">
+            <p className="mb-6 text-gray-700">Créer une matrice 3×4 contenant uniquement des zéros, puis une matrice 2×3 contenant uniquement des uns.</p>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => toggleSolution('ex1-1')}
+              className="flex items-center gap-2 mb-4 text-blue-600 border-blue-200 hover:bg-blue-50"
+            >
               {showSolution['ex1-1'] ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               {showSolution['ex1-1'] ? 'Masquer' : 'Voir'} la solution
             </Button>
-            {showSolution['ex1-1'] && <div className="mt-4 p-4 bg-gray-50 border rounded">
-              <pre className="text-sm font-mono mb-2">
+            {showSolution['ex1-1'] && <div className="mt-4 p-4 bg-gray-50 border border-gray-200 rounded-lg animate-in fade-in slide-in-from-top-2">
+              <pre className="text-sm font-mono mb-2 text-gray-800">
                 {`import numpy as np
 
 M1 = np.zeros((3, 4))   # matrice 3×4 de zéros
@@ -656,44 +674,58 @@ M2 = np.ones((2, 3))    # matrice 2×3 de uns
 print(M1)
 print(M2)`}
               </pre>
-              <div className="mt-2">
-                <p className="font-semibold">M1 :</p>
-                <pre className="text-sm bg-white p-2 border rounded">
-                  {`[[0. 0. 0. 0.]
+              <div className="mt-4 space-y-3">
+                <div>
+                  <p className="font-semibold text-xs text-gray-500 uppercase mb-1">M1</p>
+                  <pre className="text-sm bg-white p-3 border rounded shadow-sm">
+                    {`[[0. 0. 0. 0.]
  [0. 0. 0. 0.]
  [0. 0. 0. 0.]]`}
-                </pre>
-                <p className="font-semibold mt-2">M2 :</p>
-                <pre className="text-sm bg-white p-2 border rounded">
-                  {`[[1. 1. 1.]
+                  </pre>
+                </div>
+                <div>
+                  <p className="font-semibold text-xs text-gray-500 uppercase mb-1">M2</p>
+                  <pre className="text-sm bg-white p-3 border rounded shadow-sm">
+                    {`[[1. 1. 1.]
  [1. 1. 1.]]`}
-                </pre>
+                  </pre>
+                </div>
               </div>
             </div>}
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-gray-700">Exercice 1.2</CardTitle>
+        <Card className="border border-gray-200 bg-white shadow-sm">
+          <CardHeader className="border-b border-gray-100 bg-gray-50/50 px-6 py-4">
+            <CardTitle className="text-gray-800 text-lg flex items-center gap-2">
+              <BookOpen className="h-5 w-5 text-blue-600" />
+              Exercice 1.2
+            </CardTitle>
           </CardHeader>
-          <CardContent>
-            <p className="mb-4">Soit A = np.array([[1,2,3],[4,5,6]]). Extraire l'élément de la deuxième ligne et troisième colonne.</p>
-            <Button variant="outline" size="sm" onClick={() => toggleSolution('ex1-2')} className="flex items-center gap-2 mb-4">
+          <CardContent className="p-6">
+            <p className="mb-6 text-gray-700">Soit A = np.array([[1,2,3],[4,5,6]]). Extraire l'élément de la deuxième ligne et troisième colonne.</p>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => toggleSolution('ex1-2')}
+              className="flex items-center gap-2 mb-4 text-blue-600 border-blue-200 hover:bg-blue-50"
+            >
               {showSolution['ex1-2'] ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               {showSolution['ex1-2'] ? 'Masquer' : 'Voir'} la solution
             </Button>
-            {showSolution['ex1-2'] && <div className="mt-4 p-4 bg-gray-50 border rounded">
-              <pre className="text-sm font-mono mb-2">
+            {showSolution['ex1-2'] && <div className="mt-4 p-4 bg-gray-50 border border-gray-200 rounded-lg animate-in fade-in slide-in-from-top-2">
+              <pre className="text-sm font-mono mb-2 text-gray-800">
                 {`A = np.array([[1, 2, 3],
               [4, 5, 6]])
 element = A[1, 2]       # deuxième ligne, troisième colonne
 print(element)`}
               </pre>
               <div className="mt-2">
-                <p className="font-semibold">Affichage :</p>
-                <pre className="text-sm bg-white p-2 border rounded">6</pre>
-                <p className="mt-2">Donc l'élément demandé est <strong>6</strong>.</p>
+                <p className="font-semibold text-xs text-gray-500 uppercase mb-1">Affichage</p>
+                <div className="bg-white p-3 border rounded shadow-sm flex items-center gap-2">
+                  <span className="font-mono text-sm">6</span>
+                  <span className="text-sm text-gray-500 ml-auto">L'élément demandé est 6</span>
+                </div>
               </div>
             </div>}
           </CardContent>
@@ -897,62 +929,44 @@ def Nilp(A):
       <PythonModuleLayout>
         <div className="mb-8">
           <Button
-            variant="outline"
+            variant="ghost"
             size="sm"
-            className="flex items-center gap-2 mb-6"
+            className="flex items-center gap-2 mb-6 hover:bg-gray-100"
             onClick={() => setSelectedExercise(null)}
           >
-            ← Retour aux exercices
+            <ChevronLeft className="h-4 w-4" /> Retour aux exercices
           </Button>
 
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-gray-800 mb-4">
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <Badge
+              variant="outline"
+              className="mb-4 bg-blue-50 text-blue-700 border-blue-200 px-3 py-1"
+            >
+              Niveau : {exercise.difficulty}
+            </Badge>
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
               {exercise.title}
             </h1>
-            <Badge
-              variant="secondary"
-              className="bg-gray-100 text-gray-700"
-            >
-              {exercise.difficulty}
-            </Badge>
           </div>
         </div>
 
-        {/* Raccourcis clavier */}
-        <div className="mb-6 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-          <div className="flex flex-wrap gap-4 text-sm text-blue-700">
-            <div className="flex items-center gap-2">
-              <kbd className="px-2 py-1 bg-white border border-blue-300 rounded text-xs">←</kbd>
-              <span>Exercice précédent</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <kbd className="px-2 py-1 bg-white border border-blue-300 rounded text-xs">→</kbd>
-              <span>Exercice suivant</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <kbd className="px-2 py-1 bg-white border border-blue-300 rounded text-xs">↓</kbd>
-              <span>Révéler/masquer correction</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <kbd className="px-2 py-1 bg-white border border-blue-300 rounded text-xs">Esc</kbd>
-              <span>Retour à la liste</span>
-            </div>
-          </div>
-        </div>
+        {/* Shortcuts removed to clean up UI, or could be kept if really needed but simpler */}
 
         {exercise.content ? (
-          <>
-            <Card className="mb-8 border-0 shadow-lg">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-blue-600">
-                  <Calculator className="h-6 w-6" />
+          <div className="max-w-4xl mx-auto space-y-8">
+            <Card className="border border-gray-200 bg-white shadow-sm overflow-hidden">
+              <div className="border-b border-gray-100 bg-gray-50/50 px-6 py-4">
+                <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                  <Target className="h-5 w-5 text-blue-600" />
                   Objectif de l'exercice
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-gray-700 font-medium mb-4">
+                </h2>
+              </div>
+              <CardContent className="p-6 md:p-8">
+                <div className="text-gray-700 text-lg leading-relaxed">
                   {exercise.content.isLatex ? (
-                    <LatexRenderer latex={exercise.content.objective} />
+                    <div className="flex justify-center my-2">
+                      <LatexRenderer latex={exercise.content.objective} />
+                    </div>
                   ) : (
                     <p>{exercise.content.objective}</p>
                   )}
@@ -961,66 +975,83 @@ def Nilp(A):
             </Card>
 
             {/* Énoncé */}
-            <Card className="border-0 shadow-lg mb-4">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-blue-600">
-                  <BookOpen className="h-6 w-6" />
+            <Card className="border border-gray-200 bg-white shadow-sm">
+              <div className="border-b border-gray-100 bg-gray-50/50 px-6 py-4">
+                <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                  <BookOpen className="h-5 w-5 text-blue-600" />
                   Énoncé
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-gray-700">
+                </h2>
+              </div>
+              <CardContent className="p-6 md:p-8">
+                <div className="text-gray-700 text-lg">
                   {exercise.content.enonce_latex ? (
                     <LatexRenderer latex={exercise.content.enonce_latex} />
                   ) : (
-                    <p className="whitespace-pre-line">{exercise.content.enonce}</p>
+                    <p className="whitespace-pre-line leading-relaxed">{exercise.content.enonce}</p>
                   )}
                 </div>
               </CardContent>
             </Card>
 
             {/* Bouton pour afficher/masquer la correction */}
-            <div className="flex justify-center mb-4">
+            <div className="flex justify-center pt-6">
               <Button
-                variant="outline"
                 onClick={() => toggleCorrection(selectedExercise)}
-                className="flex items-center gap-2 border-blue-300 text-blue-600 hover:bg-blue-50"
+                className={`
+                  relative overflow-hidden transition-all duration-300 px-8 py-6 h-auto text-lg rounded-xl shadow-md
+                  ${showCorrections.has(selectedExercise)
+                    ? 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200'
+                    : 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg hover:scale-105'
+                  }
+                `}
               >
                 {showCorrections.has(selectedExercise) ? (
-                  <>
-                    <ChevronUp className="h-4 w-4" />
+                  <span className="flex items-center gap-2">
+                    <ChevronUp className="h-5 w-5" />
                     Masquer la correction
-                  </>
+                  </span>
                 ) : (
-                  <>
-                    <ChevronDown className="h-4 w-4" />
-                    Voir la correction
-                  </>
+                  <span className="flex items-center gap-2 font-semibold">
+                    <span className="flex items-center justify-center p-1 bg-white/20 rounded-full">
+                      <ChevronDown className="h-4 w-4" />
+                    </span>
+                    Voir la correction & Explications
+                  </span>
                 )}
               </Button>
             </div>
 
-            {/* Correction (affichée conditionnellement) */}
+
+            {/* Correction (conditionnelle) */}
             {showCorrections.has(selectedExercise) && (
-              <Card className="border-0 shadow-lg">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-blue-600">
-                    <Code className="h-6 w-6" />
-                    Correction
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="bg-blue-900 text-blue-100 rounded-lg p-4 overflow-x-auto border border-blue-300">
-                    <pre className="text-blue-100 text-sm font-mono">
+              <div className="animate-in fade-in slide-in-from-top-6 duration-500 mt-8">
+                <div className="bg-white rounded-2xl border border-gray-200 shadow-xl overflow-hidden">
+                  <div className="bg-gray-50/50 p-4 border-b border-gray-100 flex items-center gap-3">
+                    <div className="p-2 bg-green-100 text-green-700 rounded-lg">
+                      <Code className="h-5 w-5" />
+                    </div>
+                    <h3 className="font-bold text-gray-800">Solution & Explications</h3>
+                  </div>
+
+                  <div className="bg-[#1e293b] text-blue-50 p-6 md:p-8 overflow-x-auto">
+                    <pre className="font-mono text-sm leading-relaxed">
                       <code>{exercise.content.correction}</code>
                     </pre>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             )}
-          </>
-        ) : renderExerciseContent()}
-
+          </div>
+        ) : (
+          <Card className="border-gray-200">
+            <CardContent className="pt-6">
+              <div className="text-center py-10 text-gray-500">
+                <p>Le contenu de cet exercice sera bientôt disponible.</p>
+              </div>
+            </CardContent>
+          </Card>
+        )
+        }
         <ModuleNavigationCards
           currentModule={{
             id: 1,
@@ -1033,14 +1064,14 @@ def Nilp(A):
           currentExerciseId={selectedExercise}
           onNavigate={handleNavigate}
         />
-      </PythonModuleLayout>
+      </PythonModuleLayout >
     );
   }
 
   return (
     <PythonModuleLayout>
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-700 to-indigo-700 bg-clip-text text-transparent mb-4">
           Module 1 : Exercices - Matrices NumPy
         </h1>
         <p className="text-xl text-blue-600">
@@ -1080,30 +1111,36 @@ def Nilp(A):
             {exercises.map(exercise => (
               <Card
                 key={exercise.id}
-                className="group cursor-pointer bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-2 border-gray-100 hover:border-orange-300 h-full flex flex-col"
+                className="group relative cursor-pointer bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 border border-gray-100 hover:border-blue-100 hover:-translate-y-1 h-full flex flex-col overflow-hidden"
                 onClick={() => setSelectedExercise(exercise.id)}
               >
-                <CardHeader className="flex-shrink-0">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center border border-gray-200 group-hover:bg-orange-50 group-hover:border-orange-200 transition-colors duration-300">
-                      <Calculator className="h-6 w-6 text-gray-600 group-hover:text-orange-600 transition-colors duration-300" />
+                <CardHeader className="flex-shrink-0 pb-2">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 text-gray-400">
+                      <Calculator className="h-6 w-6" />
                     </div>
-                    <div>
-                      <CardTitle className="text-lg text-gray-800 group-hover:text-orange-600 transition-colors duration-300">{exercise.title}</CardTitle>
-                      <Badge variant="secondary" className="mt-1 bg-gray-100 text-gray-700 border border-gray-200">
-                        {exercise.difficulty}
-                      </Badge>
+                    <Badge variant="secondary" className="bg-gray-50 text-gray-600 border border-gray-100 font-medium px-3 py-1 rounded-full">
+                      {exercise.difficulty}
+                    </Badge>
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold tracking-wider text-blue-600 uppercase mb-1 opacity-80">
+                      Exercice {exercise.id}
                     </div>
+                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors leading-tight">
+                      {exercise.title.includes(' - ') ? exercise.title.split(' - ').slice(1).join(' - ') : exercise.title}
+                    </h3>
                   </div>
                 </CardHeader>
-                <CardContent className="flex-grow flex flex-col">
-                  <p className="text-sm text-gray-600 mb-4 flex-grow">
+
+                <CardContent className="flex-grow flex flex-col pt-0">
+                  <p className="text-gray-500 text-sm leading-relaxed mb-6 mt-2 flex-grow line-clamp-3">
                     {exercise.description}
                   </p>
                   <div className="mt-auto">
-                    <Button className="w-full bg-gray-600 hover:bg-orange-600 text-white font-medium transition-colors duration-300">
-                      <Play className="h-4 w-4 mr-2" />
-                      Commencer l'exercice
+                    <Button className="w-full h-11 bg-gray-50 text-gray-900 border border-gray-200 hover:bg-blue-600 hover:text-white hover:border-transparent rounded-xl font-semibold transition-all duration-300 flex items-center justify-between px-4 group-hover:shadow-lg group-hover:shadow-blue-500/20">
+                      <span>Commencer</span>
+                      <Play className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                     </Button>
                   </div>
                 </CardContent>

@@ -3,10 +3,16 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Code, Languages, Globe, BookOpen, Home, ChevronRight, Calculator, FileText, GraduationCap } from 'lucide-react';
+import { SEOHead } from '@/components/SEOHead';
 
 const FormationsOverviewPage = () => {
   return (
     <div className="min-h-screen bg-white relative overflow-hidden">
+      <SEOHead
+        title="9 Formations Prépa ECG : Maths, Python, Langues, Géopolitique"
+        description="Découvrez nos 9 formations spécialisées pour prépa ECG : Maths, Python, Anglais, Espagnol, Allemand, Géopolitique, ESH, Culture Générale, Synthèse de Texte. Méthodes éprouvées et exercices type concours."
+        canonical="/formations"
+      />
       {/* Floating elements - Orange bubbles */}
       <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
       <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-orange-200 rounded-full opacity-15 animate-pulse-slow"></div>

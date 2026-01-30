@@ -8,6 +8,7 @@ import { PartnersSection } from '@/components/sections/PartnersSection';
 import { BookOpen, Calculator, Code, Languages, Globe, GraduationCap, Zap, Heart, Mic, Brain, ChevronRight, ArrowRight, Sparkles, Flame } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { SEOHead } from '@/components/SEOHead';
 
 const HomePage: React.FC = () => {
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -140,6 +141,10 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEOHead
+        canonical="/"
+        description="Prepa Rationnelle : Formations maths, Python, langues et méthodologie pour prépa ECG. +250 exercices, cours particuliers et coaching pour intégrer HEC, ESSEC, ESCP. Noté 5/5 sur Google."
+      />
       {/* Section 1: Héro (Dark + Form + Stats + Value Props) */}
       <HeroSection />
 

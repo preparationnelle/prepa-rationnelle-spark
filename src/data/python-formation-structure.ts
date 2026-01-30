@@ -15,6 +15,7 @@ export interface PythonModule {
     icon: LucideIcon;
     slug: string; // e.g. "fondamentaux"
     chapters: PythonChapter[];
+    exerciseCount: number; // Number of exercises for weighted progress
 }
 
 export const pythonFormationStructure: PythonModule[] = [
@@ -24,6 +25,7 @@ export const pythonFormationStructure: PythonModule[] = [
         description: "Bases essentielles : variables, types, opérateurs, fonctions et structures de contrôle.",
         icon: Code,
         slug: "fondamentaux",
+        exerciseCount: 15, // 15 exercises in PythonFondamentauxExercicesPage
         chapters: [
             { id: "python-0-cours", title: "Cours Complet", type: 'cours', link: "/formation/python-fondamentaux" },
             { id: "python-0-qcm", title: "Quiz de validation", type: 'qcm', link: "/formation/python-fondamentaux-exercices?quiz=true" },
@@ -37,6 +39,7 @@ export const pythonFormationStructure: PythonModule[] = [
         description: "Calcul scientifique avec NumPy : création, manipulation et analyse de matrices.",
         icon: Calculator,
         slug: "numpy",
+        exerciseCount: 10, // Exercises in PythonMatricesExercicesPage
         chapters: [
             { id: "python-1-cours", title: "Cours Complet", type: 'cours', link: "/formation/python-matrices" },
             { id: "python-1-qcm", title: "Quiz de validation", type: 'qcm', link: "/formation/python-matrices-exercices?quiz=true" },
@@ -49,6 +52,7 @@ export const pythonFormationStructure: PythonModule[] = [
         description: "Méthodes numériques : suites, approximation et visualisation des données.",
         icon: TrendingUp,
         slug: "analyse",
+        exerciseCount: 10, // Exercises in PythonAnalyseExercicesPage
         chapters: [
             { id: "python-2-cours", title: "Cours Complet", type: 'cours', link: "/formation/python-analyse" },
             { id: "python-2-qcm", title: "Quiz de validation", type: 'qcm', link: "/formation/python-analyse-exercices?quiz=true" },
@@ -61,6 +65,7 @@ export const pythonFormationStructure: PythonModule[] = [
         description: "Simulation Monte-Carlo et statistiques avec NumPy & Matplotlib.",
         icon: BarChart3,
         slug: "probas",
+        exerciseCount: 10, // Exercises in PythonProbabilitesExercicesPage
         chapters: [
             { id: "python-3-cours", title: "Cours Complet", type: 'cours', link: "/formation/python-probabilites" },
             { id: "python-3-qcm", title: "Quiz de validation", type: 'qcm', link: "/formation/python-probabilites-exercices?quiz=true" },
@@ -80,3 +85,9 @@ export const getChapterById = (id: string) => {
     }
     return null;
 };
+
+export const getModuleExerciseCount = (moduleId: number): number => {
+    const module = pythonFormationStructure.find(m => m.id === moduleId);
+    return module?.exerciseCount ?? 0;
+};
+

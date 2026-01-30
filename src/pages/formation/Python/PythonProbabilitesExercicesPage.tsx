@@ -12,6 +12,7 @@ import { BarChart3, Target, Book, CheckCircle, Play, Code, Calculator, ChevronDo
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 import { LatexRenderer } from '@/components/LatexRenderer';
+import { usePythonProgress } from '@/hooks/usePythonProgress';
 
 const PythonProbabilitesExercicesPage = () => {
   const [selectedExercise, setSelectedExercise] = useState<number | null>(null);
@@ -23,12 +24,15 @@ const PythonProbabilitesExercicesPage = () => {
   const [qcmSubmitted, setQcmSubmitted] = useState(false);
   const [qcmScore, setQcmScore] = useState<number | null>(null);
 
+  const { markExerciseAsSeen, markAsComplete } = usePythonProgress();
+
   const toggleCorrection = (index: number) => {
     const newShowCorrections = new Set(showCorrections);
     if (newShowCorrections.has(index)) {
       newShowCorrections.delete(index);
     } else {
       newShowCorrections.add(index);
+      markExerciseAsSeen(`python-proba-exo-${index}`);
     }
     setShowCorrections(newShowCorrections);
   };
@@ -52,6 +56,7 @@ const PythonProbabilitesExercicesPage = () => {
     const score = (correctAnswers / qcmQuestions.length) * 20;
     setQcmScore(score);
     setQcmSubmitted(true);
+    markAsComplete('python-proba-qcm', score);
   };
 
   // Fonction pour recommencer le QCM
@@ -605,7 +610,7 @@ print(f"Nombre de sauts pour 20 marches : {saut_escalier(20)}")`
                   <BarChart3 className="h-5 w-5" />
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold bg-gradient-to-r text-gray-800 bg-clip-text text-transparent">
+                  <h1 className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
                     Exercice {selectedExercise} - {exercise.title}
                   </h1>
                   <div className="flex items-center gap-2 mt-1">
@@ -754,7 +759,7 @@ print(f"Nombre de sauts pour 20 marches : {saut_escalier(20)}")`
   return (
     <PythonModuleLayout>
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-700 to-violet-700 bg-clip-text text-transparent mb-4">
           Module 3 : Exercices - Probabilités
         </h1>
         <p className="text-xl text-muted-foreground">
@@ -814,33 +819,36 @@ print(f"Nombre de sauts pour 20 marches : {saut_escalier(20)}")`
             {exercices.map((exercice) => (
               <Card
                 key={exercice.id}
-                className="group cursor-pointer bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-2 border-gray-100 hover:border-orange-300 h-full flex flex-col"
+                className="group relative cursor-pointer bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 border border-gray-100 hover:border-purple-100 hover:-translate-y-1 h-full flex flex-col overflow-hidden"
                 onClick={() => handleStartExercise(exercice.id)}
               >
-                <CardHeader className="flex-shrink-0">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center border border-gray-200 group-hover:bg-orange-50 group-hover:border-orange-200 transition-colors duration-300">
-                      <BarChart3 className="h-6 w-6 text-gray-600 group-hover:text-orange-600 transition-colors duration-300" />
+                <CardHeader className="flex-shrink-0 pb-2">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 text-gray-400">
+                      <BarChart3 className="h-6 w-6" />
                     </div>
-                    <div>
-                      <CardTitle className="text-lg text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Exercice {exercice.id}</CardTitle>
-                      <Badge variant="secondary" className="mt-1 bg-gray-100 text-gray-700 border border-gray-200">
-                        {exercice.difficulty}
-                      </Badge>
+                    <Badge variant="secondary" className="bg-gray-50 text-gray-600 border border-gray-100 font-medium px-3 py-1 rounded-full">
+                      {exercice.difficulty}
+                    </Badge>
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold tracking-wider text-purple-600 uppercase mb-1 opacity-80">
+                      Exercice {exercice.id}
                     </div>
+                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors leading-tight">
+                      {exercice.title}
+                    </h3>
                   </div>
                 </CardHeader>
-                <CardContent className="flex-grow flex flex-col">
-                  <h3 className="font-semibold mb-2 text-gray-800 flex-grow">
-                    {exercice.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-4 flex-grow">
+
+                <CardContent className="flex-grow flex flex-col pt-0">
+                  <p className="text-gray-500 text-sm leading-relaxed mb-6 mt-2 flex-grow line-clamp-3">
                     {exercice.description}
                   </p>
                   <div className="mt-auto">
-                    <Button className="w-full bg-gray-600 hover:bg-orange-600 text-white font-medium transition-colors duration-300">
-                      <Play className="h-4 w-4 mr-2" />
-                      Commencer l'exercice
+                    <Button className="w-full h-11 bg-gray-50 text-gray-900 border border-gray-200 hover:bg-purple-600 hover:text-white hover:border-transparent rounded-xl font-semibold transition-all duration-300 flex items-center justify-between px-4 group-hover:shadow-lg group-hover:shadow-purple-500/20">
+                      <span>Commencer</span>
+                      <Play className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                     </Button>
                   </div>
                 </CardContent>

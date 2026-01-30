@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { FileText, Calendar, User, ArrowRight } from 'lucide-react';
 import Navigation from '@/components/Navigation';
+import { SEOHead } from '@/components/SEOHead';
 
 const ArticlesPage = () => {
   const articles = [
@@ -44,6 +45,12 @@ const ArticlesPage = () => {
 
   return (
     <>
+      <SEOHead
+        title="Conseils & Articles pour réussir en Prépa ECG"
+        description="Découvrez nos conseils d'experts et articles pratiques pour réussir votre prépa ECG et vos concours. Méthodologie, révisions, entretiens et études de cas."
+        canonical="/articles"
+        ogType="article"
+      />
       <Navigation />
       <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden py-8 sm:py-8">
         {/* Floating elements - Blue bubbles only */}
@@ -94,7 +101,7 @@ const ArticlesPage = () => {
                         <p className="text-gray-600 group-hover:text-orange-700 transition-colors duration-300 mb-4">
                           {article.description}
                         </p>
-                        
+
                         {/* Meta information */}
                         <div className="flex items-center gap-4 text-sm text-blue-500 group-hover:text-orange-600 transition-colors duration-300 mb-4">
                           <div className="flex items-center gap-1">

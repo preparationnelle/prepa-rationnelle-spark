@@ -7,8 +7,18 @@ import { PythonModuleQuiz } from '@/components/python/PythonModuleQuiz';
 import { matricesQuizQuestions } from '@/data/pythonQuizQuestions';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
+import { usePythonProgress } from '@/hooks/usePythonProgress';
+import { Button } from '@/components/ui/button';
 
 const PythonMatricesPage = () => {
+  const { markAsComplete, isChapterComplete } = usePythonProgress();
+  const chapterId = 'python-1-cours';
+  const isComplete = isChapterComplete(chapterId);
+
+  const handleComplete = () => {
+    markAsComplete(chapterId);
+  };
+
   return (
     <PythonModuleLayout>
       {/* Header */}
@@ -74,12 +84,12 @@ const PythonMatricesPage = () => {
             <div>
               <h5 className="font-semibold text-blue-700 mb-2">Qu'est-ce que NumPy ?</h5>
               <p className="text-gray-700 mb-4">
-                NumPy (Numerical Python) est la bibliothèque fondamentale pour le calcul scientifique en Python. 
+                NumPy (Numerical Python) est la bibliothèque fondamentale pour le calcul scientifique en Python.
                 Elle fournit un objet tableau multidimensionnel performant et un ensemble d'outils pour travailler efficacement avec ces tableaux.
               </p>
               <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r">
                 <p className="text-blue-800 font-medium">
-                  <strong>Astuce concours :</strong> NumPy est essentiel pour les épreuves d'informatique ECG. 
+                  <strong>Astuce concours :</strong> NumPy est essentiel pour les épreuves d'informatique ECG.
                   Sa maîtrise vous permettra de résoudre rapidement les exercices de calcul matriciel.
                 </p>
               </div>
@@ -340,7 +350,7 @@ vecteur_colonne = np.array([[1], [2], [3]])   # Vecteur colonne`}</code>
                 </Table>
               </div>
               <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded">
-                 <p className="text-blue-800 font-semibold">Attention : Il est crucial de ne pas confondre ces deux types de multiplication.</p>
+                <p className="text-blue-800 font-semibold">Attention : Il est crucial de ne pas confondre ces deux types de multiplication.</p>
               </div>
             </div>
 
@@ -404,7 +414,7 @@ np.prod(A)     # Produit de tous les éléments`}</code>
             <div>
               <h5 className="font-semibold text-blue-700 mb-2">Fonctions par axe</h5>
               <p className="text-gray-700 mb-4">Ces fonctions peuvent être appliquées ligne par ligne ou colonne par colonne :</p>
-              
+
               <div className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
@@ -438,6 +448,28 @@ np.sqrt(A)     # Racine carrée de chaque élément`}</code>
           </div>
         </CardContent>
       </Card>
+
+      {/* Complete Chapter Button */}
+      <div className="flex justify-center my-8">
+        <Button
+          onClick={handleComplete}
+          size="lg"
+          className={`text-lg px-8 py-6 rounded-xl transition-all ${isComplete ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'}`}
+          disabled={isComplete}
+        >
+          {isComplete ? (
+            <>
+              <CheckCircle className="mr-2 h-6 w-6" />
+              Chapitre terminé
+            </>
+          ) : (
+            <>
+              <CheckCircle className="mr-2 h-6 w-6" />
+              Terminer ce chapitre
+            </>
+          )}
+        </Button>
+      </div>
 
       {/* Quiz Section */}
       <Card className="border-0 shadow-lg mb-8">

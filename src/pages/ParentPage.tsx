@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { GraduationCap, Users, BookOpen, Target, Heart, CheckCircle, ArrowRight, Phone, Calendar, Award } from 'lucide-react';
+import { GraduationCap, Users, BookOpen, Target, Heart, CheckCircle, ArrowRight, Phone, Calendar, School } from 'lucide-react';
 
 const ParentPage = () => {
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -71,7 +71,7 @@ const ParentPage = () => {
                 Réserver un accompagnement
                 <ArrowRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
-              
+
               <Link to="/contact">
                 <Button size="lg" variant="outline" className="border-2 border-gray-300 hover:border-orange-600 px-8 py-6 text-lg rounded-xl hover:bg-orange-50 transition-all duration-300 hover:scale-105 hover:-translate-y-1">
                   <Phone className="h-5 w-5 mr-2" />
@@ -106,7 +106,7 @@ const ParentPage = () => {
       {/* Section: Niveaux */}
       <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative overflow-hidden bg-white">
         <div className="absolute top-20 right-10 w-40 h-40 bg-orange-500 rounded-full opacity-5 blur-3xl animate-float"></div>
-        
+
         <div className="container mx-auto max-w-6xl relative z-10">
           <h2 className="fade-in-up text-3xl sm:text-4xl font-bold text-center mb-4">
             <span className="text-gray-900">Tous les niveaux</span>
@@ -115,9 +115,29 @@ const ParentPage = () => {
             Un accompagnement adapté à chaque étape du parcours scolaire
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Primaire */}
+            <Link to="/articles/primaire" className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 hover:border-orange-400 group block" style={{ animationDelay: '0.1s' }}>
+              <div className="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <School className="h-7 w-7 text-orange-600" />
+              </div>
+              <h3 className="font-semibold text-xl mb-2 text-gray-900">Primaire</h3>
+              <p className="text-sm text-gray-600 mb-4">
+                Acquérir les fondamentaux
+              </p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-orange-600 mr-2" />
+                  Lecture & Écriture
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-orange-600 mr-2" />
+                  Calcul & Logique
+                </li>
+              </ul>
+            </Link>
             {/* Collège */}
-            <div className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 hover:border-orange-400 group" style={{ animationDelay: '0.2s' }}>
+            <Link to="/articles/college" className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 hover:border-orange-400 group block" style={{ animationDelay: '0.2s' }}>
               <div className="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                 <BookOpen className="h-7 w-7 text-orange-600" />
               </div>
@@ -135,10 +155,10 @@ const ParentPage = () => {
                   Méthodologie
                 </li>
               </ul>
-            </div>
+            </Link>
 
             {/* Lycée */}
-            <div className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 hover:border-orange-400 group" style={{ animationDelay: '0.3s' }}>
+            <Link to="/articles/lycee" className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 hover:border-orange-400 group block" style={{ animationDelay: '0.3s' }}>
               <div className="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                 <GraduationCap className="h-7 w-7 text-orange-600" />
               </div>
@@ -156,49 +176,9 @@ const ParentPage = () => {
                   Spécialités
                 </li>
               </ul>
-            </div>
+            </Link>
 
-            {/* Prépa ECG */}
-            <div className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 hover:border-orange-400 group" style={{ animationDelay: '0.4s' }}>
-              <div className="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Target className="h-7 w-7 text-orange-600" />
-              </div>
-              <h3 className="font-semibold text-xl mb-2 text-gray-900">Prépa ECG</h3>
-              <p className="text-sm text-gray-600 mb-4">
-                Intégrer les meilleures écoles
-              </p>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li className="flex items-center">
-                  <CheckCircle className="h-4 w-4 text-orange-600 mr-2" />
-                  Maths & Python
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="h-4 w-4 text-orange-600 mr-2" />
-                  Concours blancs
-                </li>
-              </ul>
-            </div>
 
-            {/* Cube */}
-            <div className="fade-in-up bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 hover:border-orange-400 group" style={{ animationDelay: '0.5s' }}>
-              <div className="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Award className="h-7 w-7 text-orange-600" />
-              </div>
-              <h3 className="font-semibold text-xl mb-2 text-gray-900">Cube</h3>
-              <p className="text-sm text-gray-600 mb-4">
-                Atteindre le top 3
-              </p>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li className="flex items-center">
-                  <CheckCircle className="h-4 w-4 text-orange-600 mr-2" />
-                  Suivi intensif
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="h-4 w-4 text-orange-600 mr-2" />
-                  Stratégie
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
       </section>
@@ -206,7 +186,7 @@ const ParentPage = () => {
       {/* Section: Pourquoi nous choisir */}
       <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative overflow-hidden bg-gradient-to-br from-gray-50 to-white">
         <div className="absolute bottom-20 left-10 w-36 h-36 bg-orange-500 rounded-full opacity-5 blur-3xl animate-float-slow"></div>
-        
+
         <div className="container mx-auto max-w-6xl relative z-10">
           <h2 className="fade-in-up text-3xl sm:text-4xl font-bold text-center mb-4">
             <span className="text-gray-900">Pourquoi choisir Prépa Rationnelle ?</span>
@@ -256,7 +236,7 @@ const ParentPage = () => {
       <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative overflow-hidden bg-white">
         <div className="absolute top-10 left-1/4 w-48 h-48 bg-orange-500 rounded-full opacity-5 blur-3xl animate-float"></div>
         <div className="absolute bottom-10 right-1/4 w-48 h-48 bg-orange-400 rounded-full opacity-5 blur-3xl animate-float-delayed"></div>
-        
+
         <div className="container mx-auto max-w-4xl text-center relative z-10">
           <h2 className="fade-in-up text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
             <span className="bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
@@ -265,7 +245,7 @@ const ParentPage = () => {
             <br />
             <span className="text-gray-900">vers la réussite ?</span>
           </h2>
-          
+
           <p className="fade-in-up text-lg sm:text-xl text-gray-600 mb-10 max-w-2xl mx-auto" style={{ animationDelay: '0.1s' }}>
             Réservez dès maintenant un accompagnement personnalisé ou contactez-nous pour en savoir plus sur nos offres.
           </p>
