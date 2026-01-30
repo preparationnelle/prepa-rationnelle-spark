@@ -954,50 +954,56 @@ else:
             Retour aux exercices
           </Button>
 
-          <Card className="mb-8 border-2 border-gray-200 bg-gray-50 shadow-lg">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-gray-700">
-                <HelpCircle className="h-6 w-6" />
+          <Card className="mb-8 border-none bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[24px] overflow-hidden">
+            <CardHeader className="bg-gradient-to-r from-blue-50/50 to-white px-8 py-6 border-b border-blue-50">
+              <CardTitle className="flex items-center gap-3 text-blue-900 text-xl">
+                <div className="p-2 bg-blue-100 rounded-lg text-blue-600">
+                  <HelpCircle className="h-6 w-6" />
+                </div>
                 QCM d'évaluation - Testez vos connaissances
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-8">
               {!qcmSubmitted ? (
-                <div className="space-y-6">
+                <div className="space-y-8">
                   <div className="flex items-center justify-between mb-4">
-                    <p className="text-gray-700 font-medium">
+                    <p className="text-gray-600 font-medium text-lg">
                       Répondez aux 20 questions pour évaluer votre niveau sur les fondamentaux Python
                     </p>
-                    <Badge variant="outline" className="bg-gray-100 text-gray-700 border-gray-300">
+                    <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 px-3 py-1 font-semibold">
                       {Object.keys(qcmAnswers).length}/20 répondues
                     </Badge>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {qcmQuestions.map((question) => (
-                      <Card key={question.id} className="border border-gray-200 hover:border-gray-300 transition-colors">
-                        <CardContent className="pt-4">
-                          <div className="flex items-center gap-2 mb-2">
-                            <Badge variant="outline" className="bg-gray-100 text-gray-700 text-xs border-gray-300">
+                      <Card key={question.id} className="border border-blue-100 bg-blue-50/30 hover:bg-blue-50/60 hover:border-blue-300 hover:shadow-md transition-all duration-300 rounded-xl group">
+                        <CardContent className="pt-5 pb-5 px-6">
+                          <div className="flex items-center gap-2 mb-3">
+                            <Badge variant="outline" className="bg-white text-blue-600 text-xs font-bold border-blue-200 shadow-sm group-hover:border-blue-300 transition-colors">
                               Q{question.id}
                             </Badge>
                             {qcmAnswers[question.id] && (
-                              <CheckCircle className="h-3 w-3 text-gray-600" />
+                              <CheckCircle className="h-4 w-4 text-blue-500 animate-in zoom-in duration-300" />
                             )}
                           </div>
-                          <p className="mb-3 text-sm">{question.question}</p>
-                          <div className="space-y-2">
+                          <p className="mb-4 text-gray-800 font-medium leading-relaxed">{question.question}</p>
+                          <div className="space-y-2.5">
                             {question.options.map((option, optIndex) => (
-                              <label key={optIndex} className="flex items-center gap-2 p-2 rounded hover:bg-gray-50 cursor-pointer">
-                                <input
-                                  type="radio"
-                                  name={`question-${question.id}`}
-                                  value={option}
-                                  checked={qcmAnswers[question.id] === option}
-                                  onChange={(e) => handleQCMAnswer(question.id, e.target.value)}
-                                  className="text-gray-600"
-                                />
-                                <span className="text-sm">{option}</span>
+                              <label key={optIndex} className="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-100/50 cursor-pointer border border-transparent hover:border-blue-200 transition-all duration-200">
+                                <div className="relative flex items-center justify-center">
+                                  <input
+                                    type="radio"
+                                    name={`question-${question.id}`}
+                                    value={option}
+                                    checked={qcmAnswers[question.id] === option}
+                                    onChange={(e) => handleQCMAnswer(question.id, e.target.value)}
+                                    className="peer h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-500"
+                                  />
+                                </div>
+                                <span className={`text-sm ${qcmAnswers[question.id] === option ? 'text-blue-700 font-semibold' : 'text-gray-600'}`}>
+                                  {option}
+                                </span>
                               </label>
                             ))}
                           </div>
@@ -1010,7 +1016,7 @@ else:
                     <Button
                       onClick={submitQCM}
                       disabled={Object.keys(qcmAnswers).length < 20}
-                      className="bg-gray-600 hover:bg-gray-700 text-white px-8 py-3"
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-blue-500/20 transition-all transform hover:-translate-y-0.5"
                     >
                       <HelpCircle className="h-4 w-4 mr-2" />
                       Valider le QCM
@@ -1158,6 +1164,12 @@ else:
         totalExercises={exercises.length}
         currentExerciseId={selectedExercise}
         onNavigate={handleNavigate}
+        isQuizMode={showQCM}
+        nextModule={{
+          id: 1,
+          title: "Matrices",
+          slug: "matrices"
+        }}
       />
     </PythonModuleLayout>
   );

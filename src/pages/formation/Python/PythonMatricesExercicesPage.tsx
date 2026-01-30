@@ -1082,14 +1082,14 @@ def Nilp(A):
       {!showQCM && !selectedExercise && (
         <>
           {/* Section QCM */}
-          <Card className="group mb-8 bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border-2 border-gray-100 hover:border-orange-300" onClick={() => setShowQCM(true)}>
+          <Card className="group mb-8 bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border-2 border-gray-100 hover:border-blue-300" onClick={() => setShowQCM(true)}>
             <CardHeader>
               <CardTitle className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center border border-gray-200 group-hover:bg-orange-50 group-hover:border-orange-200 transition-colors duration-300">
-                  <Trophy className="h-8 w-8 text-gray-600 group-hover:text-orange-600 transition-colors duration-300" />
+                <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center border border-gray-200 group-hover:bg-blue-50 group-hover:border-blue-200 transition-colors duration-300">
+                  <Trophy className="h-8 w-8 text-gray-600 group-hover:text-blue-600 transition-colors duration-300" />
                 </div>
                 <div>
-                  <h2 className="text-2xl text-gray-800 group-hover:text-orange-600 transition-colors duration-300">QCM d'évaluation</h2>
+                  <h2 className="text-2xl text-gray-800 group-hover:text-blue-600 transition-colors duration-300">QCM d'évaluation</h2>
                   <p className="text-sm text-gray-600 mt-1">Testez vos connaissances sur les matrices NumPy</p>
                 </div>
               </CardTitle>
@@ -1097,7 +1097,7 @@ def Nilp(A):
             <CardContent className="pt-4">
               <div className="flex items-center justify-between">
                 <p className="text-gray-600">20 questions pour évaluer votre niveau</p>
-                <Button variant="outline" className="flex items-center gap-2 border-gray-300 text-gray-700 hover:bg-orange-50 hover:text-orange-600 hover:border-orange-300 transition-colors duration-300">
+                <Button variant="outline" className="flex items-center gap-2 border-gray-300 text-gray-700 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-300 transition-colors duration-300">
                   <Play className="h-4 w-4" />
                   Commencer le QCM
                 </Button>
@@ -1167,50 +1167,57 @@ def Nilp(A):
             Retour aux exercices
           </Button>
 
-          <Card className="mb-8 border-2 border-gray-200 bg-gray-50 shadow-lg">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-gray-700">
-                <Trophy className="h-6 w-6" />
-                QCM d'évaluation - Testez vos connaissances
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
+          <Card className="mb-8 border-none bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[24px] overflow-hidden">
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50/50 p-6 border-b border-blue-100/50">
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-white rounded-xl shadow-sm border border-blue-100">
+                  <HelpCircle className="h-6 w-6 text-blue-600" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold text-gray-900">QCM d'évaluation - Testez vos connaissances</h2>
+                  <p className="text-sm text-blue-600/80 font-medium mt-1">Répondez aux 20 questions pour évaluer votre niveau</p>
+                </div>
+              </div>
+            </div>
+            <CardContent className="p-8">
               {!qcmSubmitted ? (
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <p className="text-gray-700 font-medium">
-                      Répondez aux 20 questions pour évaluer votre niveau sur les matrices NumPy
-                    </p>
-                    <Badge variant="outline" className="bg-gray-100 text-gray-700">
+                <div className="space-y-8">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center gap-2 text-sm text-gray-500">
+                      <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                      En cours - Questions à choix multiples
+                    </div>
+                    <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 px-4 py-1.5 rounded-full font-semibold">
                       {Object.keys(qcmAnswers).length}/20 répondues
                     </Badge>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {qcmQuestions.map((question, index) => (
-                      <Card key={question.id} className="border border-gray-200 hover:border-gray-300 transition-colors">
+                      <Card key={question.id} className="border border-blue-100 bg-blue-50/30 hover:bg-blue-50/60 hover:border-blue-300 hover:shadow-md transition-all duration-300 rounded-xl group">
                         <CardContent className="pt-6">
-                          <div className="flex items-center gap-2 mb-3">
-                            <Badge variant="outline" className="bg-gray-100 text-gray-700">
-                              Question {question.id}
+                          <div className="flex items-center justify-between mb-4">
+                            <Badge variant="outline" className="bg-white text-blue-600 text-xs font-bold border-blue-200 shadow-sm group-hover:border-blue-300 transition-colors">
+                              Q{question.id}
                             </Badge>
-                            {qcmAnswers[question.id] && (
-                              <CheckCircle className="h-4 w-4 text-gray-600" />
-                            )}
                           </div>
-                          <p className="mb-4 text-sm">{question.question}</p>
-                          <div className="space-y-2">
+                          <p className="mb-6 text-gray-800 font-medium leading-relaxed min-h-[3rem]">{question.question}</p>
+                          <div className="space-y-3">
                             {question.options.map((option, optIndex) => (
-                              <label key={optIndex} className="flex items-center gap-2 p-2 rounded hover:bg-gray-50 cursor-pointer">
-                                <input
-                                  type="radio"
-                                  name={`question-${question.id}`}
-                                  value={option}
-                                  checked={qcmAnswers[question.id] === option}
-                                  onChange={(e) => handleQCMAnswer(question.id, e.target.value)}
-                                  className="text-gray-600"
-                                />
-                                <span className="text-sm">{option}</span>
+                              <label key={optIndex} className="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-100/50 cursor-pointer border border-transparent hover:border-blue-200 transition-all duration-200">
+                                <div className="relative flex items-center justify-center w-5 h-5">
+                                  <input
+                                    type="radio"
+                                    name={`question-${question.id}`}
+                                    value={option}
+                                    checked={qcmAnswers[question.id] === option}
+                                    onChange={(e) => handleQCMAnswer(question.id, e.target.value)}
+                                    className="peer appearance-none w-5 h-5 border-2 border-gray-300 rounded-full checked:border-blue-500 checked:border-[5px] transition-all cursor-pointer"
+                                  />
+                                </div>
+                                <span className={`text-sm transition-colors ${qcmAnswers[question.id] === option ? 'text-blue-700 font-medium' : 'text-gray-600'}`}>
+                                  {option}
+                                </span>
                               </label>
                             ))}
                           </div>
@@ -1223,7 +1230,7 @@ def Nilp(A):
                     <Button
                       onClick={submitQCM}
                       disabled={Object.keys(qcmAnswers).length < 20}
-                      className="bg-gray-600 hover:bg-gray-700 text-white px-8 py-3"
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-blue-500/20 transition-all transform hover:-translate-y-0.5"
                     >
                       <Trophy className="h-4 w-4 mr-2" />
                       Valider le QCM
@@ -1380,131 +1387,7 @@ def Nilp(A):
         </>
       )}
 
-      {/* Section QCM */}
-      {showQCM && (
-        <>
-          <Button
-            variant="outline"
-            size="sm"
-            className="flex items-center gap-2 mb-6"
-            onClick={() => {
-              setShowQCM(false);
-              setQcmSubmitted(false);
-              setQcmAnswers({});
-              setQcmScore(null);
-            }}
-          >
-            <ChevronLeft className="h-4 w-4" />
-            Retour aux exercices
-          </Button>
 
-          <Card className="mb-8 border-2 border-gray-200 bg-gray-50 shadow-lg">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-gray-700">
-                <HelpCircle className="h-6 w-6" />
-                QCM d'évaluation - Testez vos connaissances
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              {!qcmSubmitted ? (
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <p className="text-gray-700 font-medium">
-                      Répondez aux 20 questions pour évaluer votre niveau sur les matrices NumPy
-                    </p>
-                    <Badge variant="outline" className="bg-gray-100 text-gray-700 border-gray-300">
-                      {Object.keys(qcmAnswers).length}/20 répondues
-                    </Badge>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {qcmQuestions.map((question) => (
-                      <Card key={question.id} className="border border-gray-200 hover:border-gray-300 transition-colors">
-                        <CardContent className="pt-4">
-                          <div className="flex items-center gap-2 mb-2">
-                            <Badge variant="outline" className="bg-gray-100 text-gray-700 text-xs border-gray-300">
-                              Q{question.id}
-                            </Badge>
-                            {qcmAnswers[question.id] && (
-                              <CheckCircle className="h-3 w-3 text-gray-600" />
-                            )}
-                          </div>
-                          <p className="mb-3 text-sm">{question.question}</p>
-                          <div className="space-y-2">
-                            {question.options.map((option, optIndex) => (
-                              <label key={optIndex} className="flex items-center gap-2 p-2 rounded hover:bg-gray-50 cursor-pointer">
-                                <input
-                                  type="radio"
-                                  name={`question-${question.id}`}
-                                  value={option}
-                                  checked={qcmAnswers[question.id] === option}
-                                  onChange={(e) => handleQCMAnswer(question.id, e.target.value)}
-                                  className="text-gray-600"
-                                />
-                                <span className="text-sm">{option}</span>
-                              </label>
-                            ))}
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-
-                  <div className="flex justify-center">
-                    <Button
-                      onClick={submitQCM}
-                      disabled={Object.keys(qcmAnswers).length < 20}
-                      className="bg-gray-600 hover:bg-gray-700 text-white px-8 py-3"
-                    >
-                      <HelpCircle className="h-4 w-4 mr-2" />
-                      Valider le QCM
-                    </Button>
-                  </div>
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  <div className="text-center space-y-4">
-                    <div className="flex items-center justify-center gap-3">
-                      <HelpCircle className="h-8 w-8 text-gray-600" />
-                      <h3 className="text-2xl font-bold text-gray-700">Résultats du QCM</h3>
-                    </div>
-
-                    <div className="bg-gray-50 rounded-lg p-6 border-2 border-gray-200">
-                      <div className="text-4xl font-bold text-gray-700 mb-2">
-                        {qcmScore?.toFixed(1)}/20
-                      </div>
-                      <div className="flex items-center justify-center gap-2 mb-4">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`h-6 w-6 ${i < Math.floor((qcmScore || 0) / 4) ? 'text-gray-600 fill-current' : 'text-gray-300'}`}
-                          />
-                        ))}
-                      </div>
-                      <p className="text-gray-700 font-medium">
-                        {qcmScore && qcmScore >= 16 ? "Excellent ! Vous maîtrisez parfaitement les matrices NumPy." :
-                          qcmScore && qcmScore >= 12 ? "Bon niveau ! Quelques révisions pour perfectionner." :
-                            qcmScore && qcmScore >= 8 ? "Niveau correct. Continuez à vous entraîner." :
-                              "Niveau à améliorer. Revenez sur les bases des matrices NumPy."}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 justify-center">
-                    <Button
-                      variant="outline"
-                      onClick={restartQCM}
-                      className="border-gray-300 text-gray-700 hover:bg-gray-50"
-                    >
-                      Recommencer le QCM
-                    </Button>
-                  </div>
-                </div>
-              )}
-            </CardContent>
-          </Card>
-        </>
-      )}
 
       {/* Navigation retour au cours */}
       <ModuleNavigationCards
@@ -1518,6 +1401,12 @@ def Nilp(A):
         totalExercises={exercises.length}
         currentExerciseId={selectedExercise}
         onNavigate={handleNavigate}
+        isQuizMode={showQCM}
+        nextModule={{
+          id: 2,
+          title: "Analyse",
+          slug: "analyse"
+        }}
       />
     </PythonModuleLayout>
   );
