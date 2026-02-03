@@ -6,8 +6,7 @@ export const elementsDeLogiqueFlashcards: MathFlashcard[] = [
     id: 1001,
     front: 'Qu\'est-ce qu\'une proposition ?',
     back: 'Une proposition est une affirmation concernant des objets mathématiques dont on peut décider sans ambiguïté si elle est vraie ou fausse.',
-    frontLatex: '\\text{Qu\'est-ce qu\'une proposition ?}',
-    backLatex: '\\text{Une proposition est une affirmation concernant des objets mathématiques dont on peut décider sans ambiguïté si elle est vraie ou fausse.}',
+
     category: 'Définitions',
     chapter: 1,
     difficulty: 'facile'
@@ -16,8 +15,8 @@ export const elementsDeLogiqueFlashcards: MathFlashcard[] = [
     id: 1002,
     front: 'Qu\'est-ce que la négation d\'une proposition P ?',
     back: 'La négation de P, notée ¬P, est vraie quand P est fausse, et fausse quand P est vraie.',
-    frontLatex: '\\text{Qu\'est-ce que la négation d\'une proposition P ?}',
-    backLatex: '\\text{La négation de P, notée } \\neg P\\text{, est vraie quand P est fausse, et fausse quand P est vraie.}',
+
+    backLatex: 'P \\text{ fausse} \\Rightarrow \\neg P \\text{ vraie, } P \\text{ vraie} \\Rightarrow \\neg P \\text{ fausse}',
     category: 'Opérations logiques',
     chapter: 1,
     difficulty: 'facile'
@@ -26,8 +25,8 @@ export const elementsDeLogiqueFlashcards: MathFlashcard[] = [
     id: 1003,
     front: 'Quelle est la conjonction de deux propositions P et Q ?',
     back: 'La conjonction P ∧ Q ("P et Q") est vraie seulement si P et Q sont toutes deux vraies.',
-    frontLatex: '\\text{Quelle est la conjonction de deux propositions P et Q ?}',
-    backLatex: '\\text{La conjonction } P \\wedge Q \\text{ ("P et Q") est vraie seulement si P et Q sont toutes deux vraies.}',
+
+    backLatex: 'P \\wedge Q \\text{ vraie} \\Leftrightarrow P \\text{ vraie et } Q \\text{ vraie}',
     category: 'Opérations logiques',
     chapter: 1,
     difficulty: 'facile'
@@ -36,8 +35,8 @@ export const elementsDeLogiqueFlashcards: MathFlashcard[] = [
     id: 1004,
     front: 'Quelle est la disjonction de deux propositions P et Q ?',
     back: 'La disjonction P ∨ Q ("P ou Q") est vraie si au moins l\'une des propositions P ou Q est vraie.',
-    frontLatex: '\\text{Quelle est la disjonction de deux propositions P et Q ?}',
-    backLatex: '\\text{La disjonction } P \\vee Q \\text{ ("P ou Q") est vraie si au moins l\'une des propositions P ou Q est vraie.}',
+
+    backLatex: 'P \\vee Q \\text{ vraie} \\Leftrightarrow P \\text{ vraie ou } Q \\text{ vraie}',
     category: 'Opérations logiques',
     chapter: 1,
     difficulty: 'facile'
@@ -46,8 +45,8 @@ export const elementsDeLogiqueFlashcards: MathFlashcard[] = [
     id: 1005,
     front: 'Quelle est l\'implication P ⇒ Q ?',
     back: 'L\'implication P ⇒ Q ("P implique Q") est fausse seulement si P est vraie et Q est fausse.',
-    frontLatex: '\\text{Quelle est l\'implication } P \\Rightarrow Q\\text{ ?}',
-    backLatex: '\\text{L\'implication } P \\Rightarrow Q \\text{ ("P implique Q") est fausse seulement si P est vraie et Q est fausse.}',
+
+    backLatex: '(P \\Rightarrow Q) \\text{ fausse} \\Leftrightarrow P \\text{ vraie et } Q \\text{ fausse}',
     category: 'Opérations logiques',
     chapter: 1,
     difficulty: 'moyen'
@@ -56,8 +55,8 @@ export const elementsDeLogiqueFlashcards: MathFlashcard[] = [
     id: 1006,
     front: 'Quelle est l\'équivalence P ⇔ Q ?',
     back: 'L\'équivalence P ⇔ Q ("P équivaut à Q") est vraie si P et Q ont la même valeur de vérité.',
-    frontLatex: '\\text{Quelle est l\'équivalence } P \\Leftrightarrow Q\\text{ ?}',
-    backLatex: '\\text{L\'équivalence } P \\Leftrightarrow Q \\text{ ("P équivaut à Q") est vraie si P et Q ont la même valeur de vérité.}',
+
+    backLatex: 'P \\Leftrightarrow Q \\text{ vraie} \\Leftrightarrow (P \\text{ et } Q \\text{ vraies}) \\text{ ou } (P \\text{ et } Q \\text{ fausses})',
     category: 'Opérations logiques',
     chapter: 1,
     difficulty: 'moyen'
@@ -66,8 +65,8 @@ export const elementsDeLogiqueFlashcards: MathFlashcard[] = [
     id: 1007,
     front: 'Quelle est la contraposée de P ⇒ Q ?',
     back: 'La contraposée de P ⇒ Q est ¬Q ⇒ ¬P.',
-    frontLatex: '\\text{Quelle est la contraposée de } P \\Rightarrow Q\\text{ ?}',
-    backLatex: '\\text{La contraposée de } P \\Rightarrow Q \\text{ est } \\neg Q \\Rightarrow \\neg P\\text{.}',
+
+    backLatex: 'P \\Rightarrow Q \\equiv \\neg Q \\Rightarrow \\neg P',
     category: 'Propriétés des connecteurs',
     chapter: 1,
     difficulty: 'moyen'
@@ -76,8 +75,8 @@ export const elementsDeLogiqueFlashcards: MathFlashcard[] = [
     id: 1008,
     front: 'Qu\'est-ce qu\'une proposition quantifiée universellement ?',
     back: 'Une proposition de la forme "∀x ∈ E, P(x)" signifie "pour tout x dans E, P(x) est vraie".',
-    frontLatex: '\\text{Qu\'est-ce qu\'une proposition quantifiée universellement ?}',
-    backLatex: '\\text{Une proposition de la forme } \\forall x \\in E, P(x) \\text{ signifie "pour tout x dans E, P(x) est vraie".}',
+
+    backLatex: '\\forall x \\in E, P(x)',
     category: 'Quantificateurs',
     chapter: 1,
     difficulty: 'moyen'
@@ -86,8 +85,8 @@ export const elementsDeLogiqueFlashcards: MathFlashcard[] = [
     id: 1009,
     front: 'Qu\'est-ce qu\'une proposition quantifiée existentiellement ?',
     back: 'Une proposition de la forme "∃x ∈ E, P(x)" signifie "il existe au moins un x dans E tel que P(x) est vraie".',
-    frontLatex: '\\text{Qu\'est-ce qu\'une proposition quantifiée existentiellement ?}',
-    backLatex: '\\text{Une proposition de la forme } \\exists x \\in E, P(x) \\text{ signifie "il existe au moins un x dans E tel que P(x) est vraie".}',
+
+    backLatex: '\\exists x \\in E, P(x)',
     category: 'Quantificateurs',
     chapter: 1,
     difficulty: 'moyen'
@@ -96,8 +95,8 @@ export const elementsDeLogiqueFlashcards: MathFlashcard[] = [
     id: 1010,
     front: 'Qu\'est-ce qu\'une démonstration par l\'absurde ?',
     back: 'Une démonstration par l\'absurde consiste à supposer que la proposition à démontrer est fausse, puis à aboutir à une contradiction.',
-    frontLatex: '\\text{Qu\'est-ce qu\'une démonstration par l\'absurde ?}',
-    backLatex: '\\text{Une démonstration par l\'absurde consiste à supposer que la proposition à démontrer est fausse, puis à aboutir à une contradiction.}',
+
+
     category: 'Méthodes de démonstration',
     chapter: 1,
     difficulty: 'difficile'
@@ -110,7 +109,7 @@ export const ensemblesEtApplicationsFlashcards: MathFlashcard[] = [
     id: 2001,
     front: 'Qu\'est-ce qu\'un ensemble ?',
     back: 'Un ensemble est une collection d\'objets appelés éléments. On note x ∈ E pour dire que x est un élément de E.',
-    frontLatex: '\\text{Qu\'est-ce qu\'un ensemble ?}',
+
     backLatex: '\\text{Une collection d\'objets (éléments). Notation : } x \\in E',
     category: 'Définitions',
     chapter: 2,

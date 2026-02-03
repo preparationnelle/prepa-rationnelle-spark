@@ -127,6 +127,29 @@ const DashboardPage = () => {
   const [isLoadingResults, setIsLoadingResults] = useState(true);
   const [averageQcm, setAverageQcm] = useState<number | null>(null);
 
+  // État pour les thèmes grammaticaux
+  const [grammarStats, setGrammarStats] = useState<{
+    en: { count: number; average: number; best: number };
+    de: { count: number; average: number; best: number };
+    es: { count: number; average: number; best: number };
+  }>({
+    en: { count: 0, average: 0, best: 0 },
+    de: { count: 0, average: 0, best: 0 },
+    es: { count: 0, average: 0, best: 0 }
+  });
+  const [commonErrors, setCommonErrors] = useState<Array<{
+    error: string;
+    count: number;
+    language: string;
+  }>>([]);
+  const [weakPoints, setWeakPoints] = useState<Array<{
+    point: string;
+    count: number;
+    language: string;
+  }>>([]);
+  const [isLoadingGrammar, setIsLoadingGrammar] = useState(true);
+
+
   // État pour le leaderboard
   const [leaderboard, setLeaderboard] = useState<any[]>([]);
   const [isLoadingLeaderboard, setIsLoadingLeaderboard] = useState(true);
@@ -191,6 +214,116 @@ const DashboardPage = () => {
 
     fetchResults();
   }, [currentUser]);
+
+  // Fetch grammar theme statistics
+  useEffect(() => {
+    const fetchGrammarStats = async () => {
+      if (!currentUser) return;
+
+      try {
+        // @ts-ignore - Type will be available after TypeScript reload
+        const { data, error } = await supabase
+          .from('language_grammar_results')
+          .select('*')
+          .eq('user_id', currentUser.id)
+          .order('created_at', { ascending: false });
+
+        if (error) throw error;
+
+        const allGrammarResults = data || [];
+
+        // Calculate statistics per language
+        const stats = {
+          en: { count: 0, total: 0, best: 0 },
+          de: { count: 0, total: 0, best: 0 },
+          es: { count: 0, total: 0, best: 0 }
+        };
+
+        const errorMap: Record<string, { error: string; count: number; language: string }> = {};
+        const weakPointsMap: Record<string, { point: string; count: number; language: string }> = {};
+
+        allGrammarResults.forEach((result: any) => {
+          const lang = result.language as 'en' | 'de' | 'es';
+          if (stats[lang]) {
+            stats[lang].count++;
+            stats[lang].total += result.score || 0;
+            stats[lang].best = Math.max(stats[lang].best, result.score || 0);
+          }
+
+          // Process major errors
+          if (result.major_errors && Array.isArray(result.major_errors)) {
+            result.major_errors.forEach((err: any) => {
+              const errorKey = `${lang}-${err.error || err}`;
+              if (errorMap[errorKey]) {
+                errorMap[errorKey].count++;
+              } else {
+                errorMap[errorKey] = {
+                  error: err.error || err,
+                  count: 1,
+                  language: lang
+                };
+              }
+            });
+          }
+
+          // Process weak grammar points
+          if (result.weak_grammar_points && Array.isArray(result.weak_grammar_points)) {
+            result.weak_grammar_points.forEach((point: string) => {
+              const pointKey = `${lang}-${point}`;
+              if (weakPointsMap[pointKey]) {
+                weakPointsMap[pointKey].count++;
+              } else {
+                weakPointsMap[pointKey] = {
+                  point,
+                  count: 1,
+                  language: lang
+                };
+              }
+            });
+          }
+        });
+
+        // Finalize stats
+        setGrammarStats({
+          en: {
+            count: stats.en.count,
+            average: stats.en.count > 0 ? Math.round(stats.en.total / stats.en.count) : 0,
+            best: stats.en.best
+          },
+          de: {
+            count: stats.de.count,
+            average: stats.de.count > 0 ? Math.round(stats.de.total / stats.de.count) : 0,
+            best: stats.de.best
+          },
+          es: {
+            count: stats.es.count,
+            average: stats.es.count > 0 ? Math.round(stats.es.total / stats.es.count) : 0,
+            best: stats.es.best
+          }
+        });
+
+        // Sort and set common errors (top 5)
+        const sortedErrors = Object.values(errorMap)
+          .sort((a, b) => b.count - a.count)
+          .slice(0, 5);
+        setCommonErrors(sortedErrors);
+
+        // Sort and set weak points (top 5)
+        const sortedWeakPoints = Object.values(weakPointsMap)
+          .sort((a, b) => b.count - a.count)
+          .slice(0, 5);
+        setWeakPoints(sortedWeakPoints);
+
+      } catch (err) {
+        console.error('Erreur chargement thèmes grammaticaux:', err);
+      } finally {
+        setIsLoadingGrammar(false);
+      }
+    };
+
+    fetchGrammarStats();
+  }, [currentUser]);
+
 
   // Fetch weekly leaderboard
   useEffect(() => {

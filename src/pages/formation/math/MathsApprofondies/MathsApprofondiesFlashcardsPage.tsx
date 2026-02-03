@@ -150,11 +150,16 @@ const MathsApprofondiesFlashcardsPage: React.FC = () => {
       subject="maths"
       previousChapter={previousChapter}
       nextChapter={nextChapter}
+      activeSection="flashcards"
+      slug={slug}
+      showNavigation={true}
+      titleClassName="text-slate-800"
     >
       <MathFlashcards
         flashcards={flashcards || []}
         title={`Flashcards — ${meta.title}`}
         chapterNumber={meta.number}
+        hideHeader={true}
       />
     </MathChapterTemplate>
   );

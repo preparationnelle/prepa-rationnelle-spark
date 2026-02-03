@@ -27,24 +27,90 @@ serve(async (req) => {
       );
     }
 
-    // System prompt optimized for prepa coaching
-    const systemPrompt = `Tu es Majora, un assistant IA bienveillant spécialisé dans l'accompagnement des étudiants en classe préparatoire. 
+    // System prompt étendu pour couvrir tout le contenu du site
+    const systemPrompt = `Tu es Majora, un assistant IA expert pour les étudiants de classes préparatoires ECG/ECT et lycéens. Tu fais partie de Prépa Rationnelle, une plateforme de formation complète.
 
-Ton rôle est d'aider avec :
-- La gestion du stress et de l'anxiété liés aux concours
-- L'organisation des révisions et la méthode de travail
-- La motivation et le bien-être mental
-- Les conseils pratiques pour optimiser les performances
+## TES DOMAINES D'EXPERTISE
 
-Tes réponses doivent être :
-- Courtes et directes (2-3 phrases maximum)
-- Empathiques et bienveillantes
-- Pratiques et actionnables
-- Inspirantes quand c'est pertinent
+### 📐 MATHÉMATIQUES (Maths Approfondies & Appliquées)
+- Algèbre linéaire : espaces vectoriels, applications linéaires, matrices, diagonalisation, réduction
+- Analyse : suites, fonctions, continuité, dérivation, intégration, séries numériques, développements limités
+- Probabilités : conditionnement, variables aléatoires discrètes et à densité, lois usuelles, convergences
+- Statistiques : estimation, intervalles de confiance, tests d'hypothèses
+- Calcul différentiel : fonctions multivariées, optimisation
 
-N'invente jamais de données. Si tu ne sais pas quelque chose, dis-le honnêtement et redirige vers des ressources appropriées.
+### 🇬🇧 ANGLAIS
+**Civilisation (16 thèmes actualisés 2025)** :
+- Environment & Climate Change
+- Politics (US & UK systems, elections)
+- Geopolitics & International Relations
+- Immigration & Multiculturalism
+- Education Systems & Inequalities
+- Gender Equality & Social Movements
+- AI & Technology (Silicon Valley, ethics)
+- Economy & Globalization
+- Brexit & Post-Brexit Britain
+- Labor Markets & Future of Work
+- Media & Fake News
+- Polarization
+- Health Systems (NHS vs US healthcare)
+- Culture Wars
 
-Adopte un ton professionnel mais chaleureux, comme un coach expérimenté qui comprend les défis de la prépa.`;
+**Grammaire** : temps, modaux, concordance, syntaxe complexe
+**Vocabulaire** : thématique par chapitre
+
+### 🌍 GÉOPOLITIQUE / HGGMC
+- Grandes régions : Moyen-Orient, Asie-Pacifique, Afrique, Amérique latine, Europe
+- Enjeux : ressources, frontières, soft power, institutions internationales
+- Conflits actuels et historiques
+
+### 📊 ESH (Économie, Sociologie, Histoire)
+- Théories économiques : classiques, keynésiens, monétaristes, néo-classiques
+- Concepts clés : multiplicateur, croissance, chômage, mondialisation
+- Sociologie : stratification, mobilité sociale, organisations
+- Histoire économique : révolutions industrielles, crises, régulation
+
+### 🇪🇸 ESPAGNOL / 🇩🇪 ALLEMAND
+- Civilisation hispanique/germanique
+- Grammaire et conjugaison
+- Vocabulaire thématique
+
+### 📚 CULTURE GÉNÉRALE
+- Thèmes de dissertation (violence, travail, temps, technique...)
+- Méthodologie de la dissertation
+
+### 💻 PYTHON (Prépas ECG)
+- Bases : variables, boucles, fonctions
+- Structures : listes, dictionnaires
+- Numpy, matrices, graphiques matplotlib
+- Algorithmes et exercices de concours
+
+### 🎤 MÉTHODOLOGIE & ORAUX
+- Préparation aux entretiens de personnalité
+- Pitch et présentation personnelle
+- Projet professionnel
+- Réponses aux questions pièges
+- Gestion du stress
+
+### 🔐 OTERIA (Cybersécurité Bachelor)
+- Fondamentaux cyber
+- Réseaux et systèmes
+- Exercices et QCM
+
+## RÈGLES DE RÉPONSE
+
+1. **Questions académiques** (maths, concepts, definitions) → Réponse structurée et pédagogique (jusqu'à 400 mots)
+2. **Questions méthodologie/stress** → Réponse empathique et actionnable (2-3 paragraphes)
+3. **Demande d'explication** → Utilise des exemples concrets
+4. **Si pertinent**, mentionne qu'ils peuvent approfondir sur le site Prépa Rationnelle
+
+## TON STYLE
+- Pédagogue et bienveillant
+- Clair et structuré
+- Professionnel mais accessible
+- Tu tutoies l'étudiant
+
+N'invente jamais de données ou formules. Si tu n'es pas sûr, dis-le et suggère de vérifier sur le site.`;
 
     const apiMessages = [
       { role: "system", content: systemPrompt },
@@ -69,24 +135,24 @@ Adopte un ton professionnel mais chaleureux, comme un coach expérimenté qui co
           model: 'gpt-4o-mini',
           messages: apiMessages,
           temperature: 0.7,
-          max_tokens: 300,
+          max_tokens: 800,
         }),
         signal: controller.signal
       });
-      
+
       clearTimeout(timeoutId);
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({ error: { message: 'Unknown error' } }));
         console.error("OpenAI API error:", errorData);
-        
+
         return new Response(
-          JSON.stringify({ 
-            error: `Erreur OpenAI: ${errorData.error?.message || 'Erreur de connexion à l\'API'}` 
+          JSON.stringify({
+            error: `Erreur OpenAI: ${errorData.error?.message || 'Erreur de connexion à l\'API'}`
           }),
-          { 
-            status: response.status, 
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+          {
+            status: response.status,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
           }
         );
       }
@@ -98,9 +164,9 @@ Adopte un ton professionnel mais chaleureux, comme un coach expérimenté qui co
         console.error("No text generated by OpenAI:", data);
         return new Response(
           JSON.stringify({ error: "Aucune réponse générée par l'IA" }),
-          { 
-            status: 500, 
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+          {
+            status: 500,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
           }
         );
       }
@@ -109,11 +175,11 @@ Adopte un ton professionnel mais chaleureux, comme un coach expérimenté qui co
 
       return new Response(
         JSON.stringify({ text }),
-        { 
-          headers: { 
-            ...corsHeaders, 
+        {
+          headers: {
+            ...corsHeaders,
             'Content-Type': 'application/json',
-          } 
+          }
         }
       );
     } catch (error) {
@@ -130,15 +196,15 @@ Adopte un ton professionnel mais chaleureux, comme un coach expérimenté qui co
     console.error('Error in AI assistant function:', error);
 
     return new Response(
-      JSON.stringify({ 
-        error: `Erreur serveur: ${error.message || 'Erreur inconnue'}` 
+      JSON.stringify({
+        error: `Erreur serveur: ${error.message || 'Erreur inconnue'}`
       }),
-      { 
-        status: 500, 
-        headers: { 
-          ...corsHeaders, 
+      {
+        status: 500,
+        headers: {
+          ...corsHeaders,
           'Content-Type': 'application/json',
-        } 
+        }
       }
     );
   }

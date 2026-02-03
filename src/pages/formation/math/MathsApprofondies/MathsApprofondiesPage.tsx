@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Home, ChevronRight, Award } from 'lucide-react';
-import ChapterCard from '@/components/maths-appliquees/ChapterCard';
+import { Award } from 'lucide-react';
+import MathsChapterListRow from '@/components/maths-appliquees/MathsChapterListRow';
 import { mathsApprofondies1ereAnneeData } from '@/data/maths-approfondies-1ere-annee';
-
-
 
 const MathsApprofondiesPage = () => {
   return (
@@ -55,64 +53,52 @@ const MathsApprofondiesPage = () => {
         </div>
 
         {/* Semestre 1 */}
-        <div className="mb-8">
-          <div className="bg-white rounded-xl p-8 shadow-md border border-blue-100 mb-6">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center">
-                <Award className="h-6 w-6 text-blue-600" />
-              </div>
-              <h2 className="text-2xl font-bold text-blue-700">
+        <div className="mb-8 max-w-4xl mx-auto">
+          <div className="flex items-center gap-3 mb-4 px-2">
+            <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+              <Award className="h-4 w-4 text-blue-600" />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold text-gray-900">
                 {mathsApprofondies1ereAnneeData.semestre1.title}
               </h2>
+              <p className="text-sm text-gray-500">
+                {mathsApprofondies1ereAnneeData.semestre1.description}
+              </p>
             </div>
-            <p className="text-gray-700 mb-4">
-              {mathsApprofondies1ereAnneeData.semestre1.description}
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="space-y-2">
             {mathsApprofondies1ereAnneeData.semestre1.chapters.map((chapter) => (
-              <ChapterCard
+              <MathsChapterListRow
                 key={chapter.id}
-                id={chapter.id}
-                slug={chapter.slug}
-                title={chapter.title}
-                icon={chapter.icon}
-                color={chapter.color}
-                symbol={chapter.symbol}
-                description={chapter.description}
+                chapter={chapter}
               />
             ))}
           </div>
         </div>
 
         {/* Semestre 2 */}
-        <div className="mb-8">
-          <div className="bg-white rounded-xl p-8 shadow-md border border-blue-100 mb-6">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center">
-                <Award className="h-6 w-6 text-blue-600" />
-              </div>
-              <h2 className="text-2xl font-bold text-blue-700">
+        <div className="mb-12 max-w-4xl mx-auto">
+          <div className="flex items-center gap-3 mb-4 px-2">
+            <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+              <Award className="h-4 w-4 text-blue-600" />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold text-gray-900">
                 {mathsApprofondies1ereAnneeData.semestre2.title}
               </h2>
+              <p className="text-sm text-gray-500">
+                {mathsApprofondies1ereAnneeData.semestre2.description}
+              </p>
             </div>
-            <p className="text-gray-700 mb-4">
-              {mathsApprofondies1ereAnneeData.semestre2.description}
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="space-y-2">
             {mathsApprofondies1ereAnneeData.semestre2.chapters.map((chapter) => (
-              <ChapterCard
+              <MathsChapterListRow
                 key={chapter.id}
-                id={chapter.id}
-                slug={chapter.slug}
-                title={chapter.title}
-                icon={chapter.icon}
-                color={chapter.color}
-                symbol={chapter.symbol}
-                description={chapter.description}
+                chapter={chapter}
               />
             ))}
           </div>

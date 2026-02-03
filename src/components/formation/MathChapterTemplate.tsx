@@ -17,6 +17,8 @@ interface MathChapterTemplateProps {
   previousChapter?: { slug: string; title: string }; // chapitre précédent
   nextChapter?: { slug: string; title: string }; // chapitre suivant
   subject?: string; // matière (maths, etc.)
+  activeSection?: 'course' | 'exercises' | 'flashcards' | 'quiz';
+  titleClassName?: string;
 }
 
 export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
@@ -30,7 +32,9 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
   level,
   previousChapter,
   nextChapter,
-  subject = "maths"
+  subject = "maths",
+  activeSection = 'course',
+  titleClassName = "text-[#2D5BFF]"
 }) => {
   return (
     <div className="min-h-screen bg-[#EEF3FC]">
@@ -56,44 +60,75 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
         </div>
       </nav>
 
-      <div className="space-y-8 max-w-5xl mx-auto px-4 py-8">
-        {/* Introduction */}
-        <Card className="border-0 shadow-lg bg-white">
-          <CardHeader className="pb-3">
-            <CardTitle className="text-3xl font-bold text-[#2D5BFF]">Chapitre {chapterNumber} : {chapterTitle}</CardTitle>
-            <p className="text-sm text-slate-600 mt-2 font-medium">
+      <div className="space-y-6 max-w-5xl mx-auto px-4 py-6">
+        {/* Introduction & Navigation Compacte */}
+        <Card className="border-0 shadow-sm bg-white overflow-hidden">
+          <div className="p-6 pb-2">
+            <CardTitle className={`text-2xl md:text-3xl font-bold ${titleClassName} mb-2`}>
+              Chapitre {chapterNumber} : {chapterTitle}
+            </CardTitle>
+            <p className="text-sm text-slate-600 font-medium leading-relaxed max-w-3xl">
               {description}
             </p>
-          </CardHeader>
+          </div>
+
           {showNavigation && slug && (
-            <CardContent className="pt-0">
-              <div className="flex flex-wrap justify-center gap-3 bg-blue-50 p-4 rounded-lg border border-blue-200">
+            <div className="px-6 pb-4 pt-2">
+              <div className="flex flex-wrap items-center gap-1 border-t border-slate-100 pt-3">
                 <Link to={`/formation/maths-${slug}`}>
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                    <BookOpen className="mr-2 h-4 w-4" />
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className={`h-8 rounded-full px-4 text-sm transition-all ${activeSection === 'course'
+                        ? "bg-slate-100 text-slate-900 font-semibold shadow-sm ring-1 ring-slate-200"
+                        : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
+                      }`}
+                  >
+                    <BookOpen className="mr-2 h-3.5 w-3.5" />
                     Cours
                   </Button>
                 </Link>
                 <Link to={`/formation/maths-${slug}-exercices`}>
-                  <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
-                    <PenTool className="mr-2 h-4 w-4" />
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className={`h-8 rounded-full px-4 text-sm transition-all ${activeSection === 'exercises'
+                        ? "bg-slate-100 text-slate-900 font-semibold shadow-sm ring-1 ring-slate-200"
+                        : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
+                      }`}
+                  >
+                    <PenTool className="mr-2 h-3.5 w-3.5" />
                     Exercices
                   </Button>
                 </Link>
                 <Link to={`/formation/maths-${slug}-flashcards`}>
-                  <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
-                    <Brain className="mr-2 h-4 w-4" />
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className={`h-8 rounded-full px-4 text-sm transition-all ${activeSection === 'flashcards'
+                        ? "bg-slate-100 text-slate-900 font-semibold shadow-sm ring-1 ring-slate-200"
+                        : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
+                      }`}
+                  >
+                    <Brain className="mr-2 h-3.5 w-3.5" />
                     Flashcards
                   </Button>
                 </Link>
                 <Link to={`/formation/maths-${slug}-quiz`}>
-                  <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
-                    <Target className="mr-2 h-4 w-4" />
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className={`h-8 rounded-full px-4 text-sm transition-all ${activeSection === 'quiz'
+                        ? "bg-slate-100 text-slate-900 font-semibold shadow-sm ring-1 ring-slate-200"
+                        : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
+                      }`}
+                  >
+                    <Target className="mr-2 h-3.5 w-3.5" />
                     Quiz
                   </Button>
                 </Link>
               </div>
-            </CardContent>
+            </div>
           )}
         </Card>
 

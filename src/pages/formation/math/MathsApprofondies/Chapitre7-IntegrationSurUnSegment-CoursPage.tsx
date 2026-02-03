@@ -1,525 +1,226 @@
-
 import React from 'react';
 import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LatexRenderer } from '@/components/LatexRenderer';
+import { Separator } from '@/components/ui/separator';
 
-const Box = ({ color, title, children }: { color: string, title: string, children: React.ReactNode }) => (
-  <div style={{
-    background: color === 'orange' ? '#fff7eb' : color === 'blue' ? '#e6f0ff' : '#f5f5f5',
-    border: `2px solid ${color === 'orange' ? '#ffa94d' : color === 'blue' ? '#90bfff' : '#e0e0e0'}`,
-    borderRadius: 16,
-    margin: '24px 0',
-    padding: 20,
-    boxShadow: '0 2px 8px 0 rgba(0,0,0,0.03)'
-  }}
-      
-    >
-    <div className={`font-bold mb-2 ${color === 'orange' ? 'text-orange-700' : color === 'blue' ? 'text-blue-700' : 'text-gray-700'}`}>{title}</div
-      
-    >
-    <div>{children}</div
-      
-    >
-  </div
-      
-    >
+const FormulaBox = ({ children, title }: { children: React.ReactNode, title?: string }) => (
+        <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
+                {title && <p className="font-semibold text-slate-800 mb-2">{title}</p>}
+                <div className="text-center">
+                        {children}
+                </div>
+        </div>
 );
 
 const MathsIntegrationPage = () => {
-  return (
-    <MathChapterTemplate
-      chapterNumber={7}
-      chapterTitle="Chapitre 7 : Intégration sur un segment"
-      description="Primitives, intégrale définie, propriétés (Chasles, positivité, croissance), sommes de Riemann ; techniques d’intégration (par parties, changement de variable)"
-    
-      
-    >
-      <div className="space-y-8 py-8"
-      
-    >
-        <Card className="border-0 shadow-xl hover:shadow-2xl transition-shadow duration-300"
-      
-    >
-          <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white"
-      
-    >
-            <CardTitle className="text-xl flex items-center gap-3"
-      
-    >
-              <span className="bg-white/20 backdrop-blur-sm text-white w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-lg">7</span
-      
-    >
-              <span className="font-semibold">Intégration sur un segment</span
-      
-    >
-            </CardTitle
-      
-    >
-          </CardHeader
-      
-    >
-          <CardContent className="space-y-8 pt-6"
-      
-    >
-            {/* Introduction */}
-            <div
-      
-    >
-              <div className="text-lg font-semibold mb-2">Introduction</div
-      
-    >
-              <p>L’intégration sur un segment est une extension naturelle de la notion de primitive, permettant de calculer des aires et de modéliser des variations cumulées. Ce chapitre explore les primitives, les intégrales définies, leurs propriétés, et les techniques associées.</p
-      
-    >
-            </div
-      
-    >
-            {/* Définition : Primitive */}
-            <Box color="blue" title="Définition : Primitive"
-      
-    >
-              <p>Soit <LatexRenderer latex={"f"} /> continue sur un intervalle <LatexRenderer latex={"I"} />.<br />On appelle <em>primitive</em> de <LatexRenderer latex={"f"} /> sur <LatexRenderer latex={"I"} /> toute fonction <LatexRenderer latex={"F"} /> telle que :</p
-      
-    >
-              <div className="my-2"><LatexRenderer latex={"\\forall x \\in I,\ F'(x) = f(x)."} /></div
-      
-    >
-            </Box
-      
-    >
-            {/* Théorème : Relation entre intégrale et primitive */}
-            <Box color="orange" title="Théorème : Relation entre intégrale et primitive"
-      
-    >
-              <p>Si <LatexRenderer latex={"f"} /> est continue sur <LatexRenderer latex={"I"} /> et <LatexRenderer latex={"F"} /> l'une de ses primitives, alors, pour <LatexRenderer latex={"(a, b) \\in I^2"} /> :</p
-      
-    >
-              <div className="my-2"><LatexRenderer latex={"\\int_a^b f(x)\\,dx = F(b) - F(a)"} /></div
-      
-    >
-            </Box
-      
-    >
-            {/* Définition : Primitive à borne supérieure variable */}
-            <Box color="blue" title="Définition : Primitive à borne supérieure variable"
-      
-    >
-              <p>Fixons <LatexRenderer latex={"a \\in I"} /> et définissons :</p
-      
-    >
-              <div className="my-2"><LatexRenderer latex={"G(x) = \\int_a^x f(t)\\,dt \\quad (x \\in I)."} /></div
-      
-    >
-              <p>La fonction <LatexRenderer latex={"G"} /> est <LatexRenderer latex={"\\mathcal{C}^1"} /> sur <LatexRenderer latex={"I"} />, vérifie <LatexRenderer latex={"G(a) = 0"} /> et <LatexRenderer latex={"G'(x) = f(x)"} /> ; c'est donc <em>la</em> primitive de <LatexRenderer latex={"f"} /> qui s'annule en <LatexRenderer latex={"a"} /> (intégrale à borne supérieure variable).</p
-      
-    >
-            </Box
-      
-    >
-            {/* Méthode : Tableaux de primitives */}
-            <Box color="blue" title="Méthode : Tableaux de primitives"
-      
-    >
-              <div className="overflow-x-auto mb-4"
-      
-    >
-                <table className="min-w-full text-sm text-center border border-slate-300 bg-white rounded-lg"
-      
-    >
-                  <thead
-      
-    >
-                    <tr className="bg-blue-100"
-      
-    >
-                      <th className="px-2 py-2">f(x)</th
-      
-    >
-                      <th className="px-2 py-2">F(x)</th
-      
-    >
-                      <th className="px-2 py-2">f(x)</th
-      
-    >
-                      <th className="px-2 py-2">F(x)</th
-      
-    >
-                    </tr
-      
-    >
-                  </thead
-      
-    >
-                  <tbody
-      
-    >
-                    <tr className="bg-white border-b-2 border-slate-200"
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"a \\ (a \\in \\mathbb{R})"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"ax"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"\\frac{1}{x}"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"\\ln |x|"} /></td
-      
-    >
-                    </tr
-      
-    >
-                    <tr className="bg-[#f9fafb] border-b-2 border-slate-200"
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"x^{\\alpha} \ (\\alpha \neq -1)"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"\\frac{x^{\\alpha + 1}}{\\alpha + 1}"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"\\frac{1}{\\sqrt{x}}"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"2 \\sqrt{x}"} /></td
-      
-    >
-                    </tr
-      
-    >
-                    <tr className="bg-white border-b-2 border-slate-200"
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"\\cos x"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"\\sin x"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"\\sin x"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"-\\cos x"} /></td
-      
-    >
-                    </tr
-      
-    >
-                    <tr className="bg-[#f9fafb] border-b-2 border-slate-200"
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"e^x"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"e^x"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"\\frac{1}{1 + x^2}"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"\\arctan x"} /></td
-      
-    >
-                    </tr
-      
-    >
-                    <tr className="bg-white border-b-2 border-slate-200"
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"\\ln x"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"x \\ln x - x"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"a^x \ (a > 0)"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"\\frac{a^x}{\\ln a}"} /></td
-      
-    >
-                    </tr
-      
-    >
-                  </tbody
-      
-    >
-                </table
-      
-    >
-              </div
-      
-    >
-              <div className="overflow-x-auto"
-      
-    >
-                <table className="min-w-full text-sm text-center border border-slate-300 bg-white rounded-lg"
-      
-    >
-                  <thead
-      
-    >
-                    <tr className="bg-blue-100"
-      
-    >
-                      <th className="px-2 py-2">f</th
-      
-    >
-                      <th className="px-2 py-2">F</th
-      
-    >
-                      <th className="px-2 py-2">f</th
-      
-    >
-                      <th className="px-2 py-2">F</th
-      
-    >
-                    </tr
-      
-    >
-                  </thead
-      
-    >
-                  <tbody
-      
-    >
-                    <tr className="bg-white border-b-2 border-slate-200"
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"a u' + b v'"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"a u + b v"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"\\frac{u'}{u}"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"\\ln |u|"} /></td
-      
-    >
-                    </tr
-      
-    >
-                    <tr className="bg-[#f9fafb] border-b-2 border-slate-200"
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"u^{\\alpha} u' \ (\\alpha \neq -1)"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"\\frac{u^{\\alpha + 1}}{\\alpha + 1}"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"\\frac{u'}{\\sqrt{u}}"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"2 \\sqrt{u}"} /></td
-      
-    >
-                    </tr
-      
-    >
-                    <tr className="bg-white border-b-2 border-slate-200"
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"u' \\cos u"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"\\sin u"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"u' \\sin u"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"-\\cos u"} /></td
-      
-    >
-                    </tr
-      
-    >
-                    <tr className="bg-[#f9fafb] border-b-2 border-slate-200"
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"u' e^u"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"e^u"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"\\frac{u'}{1 + u^2}"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"\\arctan u"} /></td
-      
-    >
-                    </tr
-      
-    >
-                    <tr className="bg-white border-b-2 border-slate-200"
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"u^a \\ln u \ (a > 0)"} /></td
-      
-    >
-                      <td className="py-3"><LatexRenderer latex={"\\frac{u^a}{\\ln a}"} /></td
-      
-    >
-                      <td className="py-3"></td
-      
-    >
-                      <td className="py-3"></td
-      
-    >
-                    </tr
-      
-    >
-                  </tbody
-      
-    >
-                </table
-      
-    >
-              </div
-      
-    >
-            </Box
-      
-    >
-            {/* Propriétés de l’intégrale */}
-            {/* Théorème : Linéarité */}
-            <Box color="orange" title="Théorème : Linéarité"
-      
-    >
-              <p>Pour <LatexRenderer latex={"f, g"} /> continues sur <LatexRenderer latex={"[a, b]"} /> et <LatexRenderer latex={"(\\lambda, \\mu) \\in \\mathbb{R}^2"} /> :</p
-      
-    >
-              <LatexRenderer latex={"\\int_a^b (\\lambda f(x) + \\mu g(x))\\,dx = \\lambda \\int_a^b f(x)\\,dx + \\mu \\int_a^b g(x)\\,dx"} /
-      
-    >
-            </Box
-      
-    >
+        return (
+                <MathChapterTemplate
+                        chapterNumber={7}
+                        chapterTitle="Intégration sur un segment"
+                        description="Primitives, intégrale définie, propriétés (Chasles, positivité, croissance), sommes de Riemann et techniques d’intégration."
+                        slug="integration-sur-un-segment"
+                        activeSection="course"
+                        titleClassName="text-slate-800"
+                        showNavigation={true}
+                        previousChapter={{
+                                slug: "derivation",
+                                title: "Dérivation"
+                        }}
+                        nextChapter={{
+                                slug: "polynomes",
+                                title: "Polynômes"
+                        }}
+                >
+                        <div className="space-y-8">
 
-            {/* Théorème : Relation de Chasles */}
-            <Box color="orange" title="Théorème : Relation de Chasles"
-      
-    >
-              <p>Si <LatexRenderer latex={"f"} /> est continue sur un intervalle <LatexRenderer latex={"I"} /> et <LatexRenderer latex={"(a, b, c) \\in I^3"} /> :</p
-      
-    >
-              <LatexRenderer latex={"\\int_a^b f(x)\\,dx = \\int_a^c f(x)\\,dx + \\int_c^b f(x)\\,dx"} /
-      
-    >
-            </Box
-      
-    >
+                                {/* Section 1 - Définitions et Primitives */}
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
+                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                                <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
+                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
+                                                        <span className="font-semibold">Primitives & Intégrale définie</span>
+                                                </CardTitle>
+                                        </CardHeader>
+                                        <CardContent className="space-y-8 pt-6">
 
-            {/* Théorème : Positivité */}
-            <Box color="orange" title="Théorème : Positivité"
-      
-    >
-              <p>Si <LatexRenderer latex={"f"} /> est continue, <em>positive</em> sur <LatexRenderer latex={"[a, b]"} /> avec <LatexRenderer latex={"a \\leq b"} />, alors :</p
-      
-    >
-              <LatexRenderer latex={"\\int_a^b f(x)\\,dx \\geq 0"} /
-      
-    >
-              <p>Si <LatexRenderer latex={"f"} /> est positive, non nulle, et <LatexRenderer latex={"a < b"} />, alors l'intégrale est <LatexRenderer latex={"> 0"} />.<br />Si l'intégrale d'une fonction positive vaut <LatexRenderer latex={"0"} />, cette fonction est identiquement nulle sur <LatexRenderer latex={"[a, b]"} />.</p
-      
-    >
-            </Box
-      
-    >
+                                                {/* Primitive */}
+                                                <div>
+                                                        <h3 className="text-xl font-bold mb-2 text-slate-900">Définition</h3>
+                                                        <p className="mb-4 text-slate-700">Soit <LatexRenderer latex={"f"} /> continue sur un intervalle <LatexRenderer latex={"I"} />. Une <em>primitive</em> de <LatexRenderer latex={"f"} /> est une fonction <LatexRenderer latex={"F"} /> dérivable telle que :</p>
+                                                        <FormulaBox>
+                                                                <LatexRenderer latex={"\\forall x \\in I, \\quad F'(x) = f(x)"} />
+                                                        </FormulaBox>
+                                                </div>
 
-            {/* Théorème : Croissance de l'intégrale */}
-            <Box color="orange" title="Théorème : Croissance de l'intégrale"
-      
-    >
-              <p>Si <LatexRenderer latex={"f \\leq g"} /> sur <LatexRenderer latex={"[a, b]"} /> alors :</p
-      
-    >
-              <LatexRenderer latex={"\\int_a^b f(x)\\,dx \\leq \\int_a^b g(x)\\,dx"} /
-      
-    >
-            </Box
-      
-    >
+                                                <Separator />
 
-            {/* Théorème : Inégalité triangulaire */}
-            <Box color="orange" title="Théorème : Inégalité triangulaire"
-      
-    >
-              <LatexRenderer latex={"\\left|\\int_a^b f(t)\\,dt\\right| \\leq \\int_a^b |f(t)|\\,dt"} /
-      
-    >
-            </Box
-      
-    >
+                                                {/* Lien Intégrale - Primitive */}
+                                                <div>
+                                                        <h3 className="text-xl font-bold mb-2 text-slate-900">Lien Intégrale - Primitive</h3>
+                                                        <FormulaBox>
+                                                                <LatexRenderer latex={"\\int_a^b f(x)\\,dx = F(b) - F(a)"} />
+                                                        </FormulaBox>
+                                                        <div className="bg-slate-50 p-4 rounded border border-slate-100 mt-4">
+                                                                <span className="font-semibold text-slate-800 mb-2 block">Fonction définie par une intégrale</span>
+                                                                <p className="text-sm text-slate-600 mb-2">
+                                                                        La fonction <LatexRenderer latex={"x \\mapsto \\int_a^x f(t)\\,dt"} /> est l'unique primitive de <LatexRenderer latex={"f"} /> qui s'annule en <LatexRenderer latex={"a"} />.
+                                                                </p>
+                                                        </div>
+                                                </div>
 
-            {/* Définition : Sommes de Riemann */}
-            <Box color="blue" title="Définition : Sommes de Riemann"
-      
-    >
-              <p>Pour <LatexRenderer latex={"f"} /> continue sur <LatexRenderer latex={"[a, b]"} /> et <LatexRenderer latex={"n \\in \\mathbb{N}^*"} />, posons :</p
-      
-    >
-              <LatexRenderer latex={"S_n = \\frac{b-a}{n} \\sum_{k=0}^{n-1} f\\left(a + k\\frac{b-a}{n}\\right), \\quad T_n = \\frac{b-a}{n} \\sum_{k=1}^n f\\left(a + k\\frac{b-a}{n}\\right)"} /
-      
-    >
-              <p>Alors :</p
-      
-    >
-              <LatexRenderer latex={"\\lim_{n \\to +\\infty} S_n = \\lim_{n \\to +\\infty} T_n = \\int_a^b f(t)\\,dt"} /
-      
-    >
-            </Box
-      
-    >
+                                                <Separator />
 
-            {/* Théorème : Intégration par parties */}
-            <Box color="orange" title="Théorème : Intégration par parties"
-      
-    >
-              <p>Pour <LatexRenderer latex={"u, v \\in \\mathcal{C}^1[a, b]"} /> :</p
-      
-    >
-              <LatexRenderer latex={"\\int_a^b u'(x)v(x)\\,dx = \\left[u(x)v(x)\\right]_a^b - \\int_a^b u(x)v'(x)\\,dx"} /
-      
-    >
-            </Box
-      
-    >
+                                                {/* Primitives usuelles */}
+                                                <div>
+                                                        <h3 className="text-xl font-bold mb-4 text-slate-900">Primitives usuelles</h3>
+                                                        <div className="overflow-x-auto border border-slate-200 rounded-lg">
+                                                                <table className="w-full text-sm">
+                                                                        <thead className="bg-slate-50 text-slate-700 border-b border-slate-200">
+                                                                                <tr>
+                                                                                        <th className="py-2 px-4 text-left">Fonction <LatexRenderer latex={"f(x)"} /></th>
+                                                                                        <th className="py-2 px-4 text-left">Primitive <LatexRenderer latex={"F(x)"} /></th>
+                                                                                        <th className="py-2 px-4 text-left">Intervalle</th>
+                                                                                </tr>
+                                                                        </thead>
+                                                                        <tbody className="divide-y divide-slate-100">
+                                                                                <tr>
+                                                                                        <td className="py-2 px-4"><LatexRenderer latex={"x^\\alpha \\ (\\alpha \\neq -1)"} /></td>
+                                                                                        <td className="py-2 px-4"><LatexRenderer latex={"\\frac{x^{\\alpha+1}}{\\alpha+1}"} /></td>
+                                                                                        <td className="py-2 px-4 text-slate-500"><LatexRenderer latex={"\\mathbb{R}"} /> ou <LatexRenderer latex={"\\mathbb{R}^*_+"} /></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                        <td className="py-2 px-4"><LatexRenderer latex={"1/x"} /></td>
+                                                                                        <td className="py-2 px-4"><LatexRenderer latex={"\\ln|x|"} /></td>
+                                                                                        <td className="py-2 px-4 text-slate-500"><LatexRenderer latex={"\\mathbb{R}^*"} /></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                        <td className="py-2 px-4"><LatexRenderer latex={"e^x"} /></td>
+                                                                                        <td className="py-2 px-4"><LatexRenderer latex={"e^x"} /></td>
+                                                                                        <td className="py-2 px-4 text-slate-500"><LatexRenderer latex={"\\mathbb{R}"} /></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                        <td className="py-2 px-4"><LatexRenderer latex={"\\cos x"} /></td>
+                                                                                        <td className="py-2 px-4"><LatexRenderer latex={"\\sin x"} /></td>
+                                                                                        <td className="py-2 px-4 text-slate-500"><LatexRenderer latex={"\\mathbb{R}"} /></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                        <td className="py-2 px-4"><LatexRenderer latex={"\\sin x"} /></td>
+                                                                                        <td className="py-2 px-4"><LatexRenderer latex={"-\\cos x"} /></td>
+                                                                                        <td className="py-2 px-4 text-slate-500"><LatexRenderer latex={"\\mathbb{R}"} /></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                        <td className="py-2 px-4"><LatexRenderer latex={"\\frac{1}{1+x^2}"} /></td>
+                                                                                        <td className="py-2 px-4"><LatexRenderer latex={"\\arctan x"} /></td>
+                                                                                        <td className="py-2 px-4 text-slate-500"><LatexRenderer latex={"\\mathbb{R}"} /></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                        <td className="py-2 px-4"><LatexRenderer latex={"\\frac{u'}{u}"} /></td>
+                                                                                        <td className="py-2 px-4"><LatexRenderer latex={"\\ln|u|"} /></td>
+                                                                                        <td className="py-2 px-4 text-slate-500"><LatexRenderer latex={"I"} /></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                        <td className="py-2 px-4"><LatexRenderer latex={"u'e^u"} /></td>
+                                                                                        <td className="py-2 px-4"><LatexRenderer latex={"e^u"} /></td>
+                                                                                        <td className="py-2 px-4 text-slate-500"><LatexRenderer latex={"I"} /></td>
+                                                                                </tr>
+                                                                        </tbody>
+                                                                </table>
+                                                        </div>
+                                                </div>
 
-            {/* Théorème : Changement de variable */}
-            <Box color="orange" title="Théorème : Changement de variable"
-      
-    >
-              <p>Soient <LatexRenderer latex={"f"} /> continue sur un intervalle <LatexRenderer latex={"I"} />, <LatexRenderer latex={"\\varphi"} /> une fonction de classe <LatexRenderer latex={"\\mathcal{C}^1"} /> sur <LatexRenderer latex={"[a, b]"} /> telle que <LatexRenderer latex={"\\varphi([a, b]) \\subset I"} />. Alors :</p
-      
-    >
-              <LatexRenderer latex={"\\int_a^b f(\\varphi(x))\\varphi'(x)\\,dx = \\int_{\\varphi(a)}^{\\varphi(b)} f(u)\\,du"} /
-      
-    >
-            </Box
-      
-    >
+                                        </CardContent>
+                                </Card>
 
-          </CardContent
-      
-    >
-        </Card
-      
-    >
-      </div
-      
-    >
-    </MathChapterTemplate
-      
-    >
-  );
+                                {/* Section 2 - Propriétés */}
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
+                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                                <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
+                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
+                                                        <span className="font-semibold">Propriétés fondamentales</span>
+                                                </CardTitle>
+                                        </CardHeader>
+                                        <CardContent className="space-y-8 pt-6">
+
+                                                <div className="grid md:grid-cols-2 gap-8">
+                                                        <div>
+                                                                <h3 className="text-lg font-bold mb-2 text-slate-900">Linéarité & Chasles</h3>
+                                                                <div className="space-y-4">
+                                                                        <div className="bg-slate-50 p-3 rounded border border-slate-100">
+                                                                                <LatexRenderer latex={"\\int_a^b (\\lambda f + \\mu g) = \\lambda \\int f + \\mu \\int g"} />
+                                                                        </div>
+                                                                        <div className="bg-slate-50 p-3 rounded border border-slate-100">
+                                                                                <LatexRenderer latex={"\\int_a^b f = \\int_a^c f + \\int_c^b f"} />
+                                                                        </div>
+                                                                </div>
+                                                        </div>
+                                                        <div>
+                                                                <h3 className="text-lg font-bold mb-2 text-slate-900">Ordre & Inégalités</h3>
+                                                                <div className="space-y-4">
+                                                                        <div className="bg-slate-50 p-3 rounded border border-slate-100">
+                                                                                <span className="text-sm font-semibold text-slate-700 block mb-1">Croissance</span>
+                                                                                <LatexRenderer latex={"f \\leq g \\implies \\int_a^b f \\leq \\int_a^b g \\quad (a \\leq b)"} />
+                                                                        </div>
+                                                                        <div className="bg-slate-50 p-3 rounded border border-slate-100">
+                                                                                <span className="text-sm font-semibold text-slate-700 block mb-1">Inégalité triangulaire</span>
+                                                                                <LatexRenderer latex={"|\\int_a^b f| \\leq \\int_a^b |f| \\quad (a \\leq b)"} />
+                                                                        </div>
+                                                                </div>
+                                                        </div>
+                                                </div>
+
+                                                <Separator />
+
+                                                <div>
+                                                        <h3 className="text-xl font-bold mb-2 text-slate-900">Sommes de Riemann</h3>
+                                                        <p className="text-slate-700 mb-4">Approximation de l'intégrale par des rectangles :</p>
+                                                        <FormulaBox>
+                                                                <LatexRenderer latex={"\\lim_{n \\to +\\infty} \\frac{b-a}{n} \\sum_{k=0}^{n-1} f\\left(a + k\\frac{b-a}{n}\\right) = \\int_a^b f(t)\\,dt"} />
+                                                        </FormulaBox>
+                                                </div>
+
+                                        </CardContent>
+                                </Card>
+
+                                {/* Section 3 - Techniques de calcul */}
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
+                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                                <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
+                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
+                                                        <span className="font-semibold">Techniques d'intégration</span>
+                                                </CardTitle>
+                                        </CardHeader>
+                                        <CardContent className="space-y-8 pt-6">
+
+                                                {/* IPP */}
+                                                <div>
+                                                        <h3 className="text-xl font-bold mb-2 text-slate-900">Intégration par parties (IPP)</h3>
+                                                        <p className="text-slate-700 mb-2">Pour <LatexRenderer latex={"u, v"} /> de classe <LatexRenderer latex={"\\mathcal{C}^1"} /> :</p>
+                                                        <FormulaBox>
+                                                                <LatexRenderer latex={"\\int_a^b u'(x)v(x)\\,dx = [u(x)v(x)]_a^b - \\int_a^b u(x)v'(x)\\,dx"} />
+                                                        </FormulaBox>
+                                                </div>
+
+                                                <Separator />
+
+                                                {/* Changement de variable */}
+                                                <div>
+                                                        <h3 className="text-xl font-bold mb-2 text-slate-900">Changement de variable</h3>
+                                                        <p className="text-slate-700 mb-2">Soit <LatexRenderer latex={"\\varphi"} /> de classe <LatexRenderer latex={"\\mathcal{C}^1"} /> :</p>
+                                                        <FormulaBox>
+                                                                <LatexRenderer latex={"\\int_{\\varphi(a)}^{\\varphi(b)} f(t)\\,dt = \\int_a^b f(\\varphi(x))\\varphi'(x)\\,dx"} />
+                                                        </FormulaBox>
+                                                        <div className="bg-blue-50 border border-blue-100 p-4 rounded text-blue-900 text-sm mt-4">
+                                                                <strong>Conseil pour la rédaction :</strong> Toujours préciser l'intervalle de définition, la bijectivité (si nécessaire pour les bornes inverses) et la régularité <LatexRenderer latex={"\\mathcal{C}^1"} /> du changement de variable.
+                                                        </div>
+                                                </div>
+
+                                        </CardContent>
+                                </Card>
+
+                        </div>
+                </MathChapterTemplate>
+        );
 };
 
 export default MathsIntegrationPage;

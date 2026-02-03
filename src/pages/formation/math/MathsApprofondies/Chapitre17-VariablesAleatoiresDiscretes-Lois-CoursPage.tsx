@@ -1,486 +1,131 @@
-
 import React from 'react';
 import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LatexRenderer } from '@/components/LatexRenderer';
 
+const FormulaBox = ({ children, title }: { children: React.ReactNode, title?: string }) => (
+        <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
+                {title && <p className="font-semibold text-slate-800 mb-2">{title}</p>}
+                <div className="text-center">
+                        {children}
+                </div>
+        </div>
+);
+
 const MathsVariablesAleatoiresPage = () => {
-  return (
-    <MathChapterTemplate
-      chapterNumber={17}
-      chapterTitle="Variables aléatoires discrètes & lois de probabilité"
-      description="Variables aléatoires, fonction de répartition ; lois discrètes, masses de probabilité ; caractéristiques : espérance, variance, variable centrée-réduite ; lois usuelles (Bernoulli, binomiale, géométrique, Poisson) et formules de base"
-    
-      
-    >
-      {/* Section 1: Généralités */}
-      <Card className="border-0 shadow-lg"
-      
-    >
-        <CardHeader
-      
-    >
-          <CardTitle className="text-2xl font-bold text-blue-600"
-      
-    >
-            1. Généralités sur les variables aléatoires
-          </CardTitle
-      
-    >
-        </CardHeader
-      
-    >
-        <CardContent className="space-y-6"
-      
-    >
-          <div
-      
-    >
-            <h3 className="text-lg font-semibold mb-3">Définitions fondamentales</h3
-      
-    >
-            <ul className="list-disc list-inside space-y-4 text-slate-700"
-      
-    >
-              <li
-      
-    >
-                Une <em>variable aléatoire réelle</em> <span className="inline-block align-middle"><LatexRenderer latex="X: \Omega \to \mathbb{R}" /></span> sur <span className="inline-block align-middle"><LatexRenderer latex="(\Omega, \mathcal{A}, \mathbb{P})" /></span> satisfait :
-                <div className="ml-6 mt-2"
-      
-    >
-                  <LatexRenderer latex="\{\omega \mid X(\omega) \le x\} \in \mathcal{A} \text{ pour tout } x \in \mathbb{R}" /
-      
-    >
-                </div
-      
-    >
-              </li
-      
-    >
-              <li
-      
-    >
-                Le <em>support</em> <span className="inline-block align-middle"><LatexRenderer latex="\operatorname{Supp}(X) = X(\Omega)" /></span> est l'ensemble des valeurs atteintes
-              </li
-      
-    >
-              <li
-      
-    >
-                Une variable est <em>discrète</em> si son support est fini ou dénombrable
-              </li
-      
-    >
-            </ul
-      
-    >
-          </div
-      
-    >
+        return (
+                <MathChapterTemplate
+                        chapterNumber={17}
+                        chapterTitle="Variables aléatoires discrètes"
+                        description="Variables aléatoires réelles, fonction de répartition, moments (espérance, variance) et lois usuelles discrètes (Bernoulli, Binomiale, Poissons, etc.)."
+                        slug="variables-aleatoires-discretes-lois"
+                        activeSection="course"
+                        showNavigation={true}
+                        previousChapter={{
+                                slug: "espaces-probabilises-et-conditionnement",
+                                title: "Espaces Probabilisés"
+                        }}
+                        nextChapter={{
+                                slug: "convergences-theoremes-limites", // Guessing next based on task.md list
+                                title: "Convergences & Théorèmes Limites"
+                        }}
+                >
+                        <div className="space-y-8">
+                                {/* Section 1: Généralités */}
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
+                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                                <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
+                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
+                                                        <span className="font-semibold">Variables Aléatoires Discrètes</span>
+                                                </CardTitle>
+                                        </CardHeader>
+                                        <CardContent className="space-y-6 pt-6">
+                                                <div>
+                                                        <p className="text-slate-700 mb-4">
+                                                                Une <strong>variable aléatoire réelle</strong> <LatexRenderer latex="X" /> est une application mesurable <LatexRenderer latex="X: \Omega \to \mathbb{R}" />.
+                                                                Elle est dite <strong>discrète</strong> si son support <LatexRenderer latex="X(\Omega)" /> est fini ou dénombrable.
+                                                        </p>
+                                                        <FormulaBox title="Fonction de répartition">
+                                                                <LatexRenderer latex="F_X(x) = \mathbb{P}(X \le x)" />
+                                                                <div className="h-4" />
+                                                                <LatexRenderer latex="\mathbb{P}(a < X \le b) = F_X(b) - F_X(a)" />
+                                                        </FormulaBox>
 
-          <div
-      
-    >
-            <h3 className="text-lg font-semibold mb-3">Fonction de répartition</h3
-      
-    >
-            <div className="space-y-4"
-      
-    >
-              <div
-      
-    >
-                <p className="text-slate-700 mb-2">Définition :</p
-      
-    >
-                <div className="ml-6"
-      
-    >
-                  <LatexRenderer latex="F(x) = \mathbb{P}(X \le x), \quad x \in \mathbb{R}" /
-      
-    >
-                </div
-      
-    >
-              </div
-      
-    >
-              <div
-      
-    >
-                <p className="text-slate-700 mb-2">Probabilité d'un intervalle :</p
-      
-    >
-                <div className="ml-6"
-      
-    >
-                  <LatexRenderer latex="\mathbb{P}(a < X \le b) = F(b) - F(a), \quad a < b" /
-      
-    >
-                </div
-      
-    >
-              </div
-      
-    >
-            </div
-      
-    >
-          </div
-      
-    >
-        </CardContent
-      
-    >
-      </Card
-      
-    >
+                                                        <div className="mt-4 bg-slate-50 p-4 rounded-lg border-l-4 border-slate-400">
+                                                                <h4 className="font-semibold text-slate-800 mb-2">Loi de probabilité</h4>
+                                                                <p className="text-slate-700 text-sm">
+                                                                        La loi est entièrement déterminée par les probabilités <LatexRenderer latex="\mathbb{P}(X = x_k)" /> pour tout <LatexRenderer latex="x_k \in X(\Omega)" />.
+                                                                </p>
+                                                        </div>
+                                                </div>
+                                        </CardContent>
+                                </Card>
 
-      {/* Section 2: Lois et fonctions de répartition */}
-      <Card className="border-0 shadow-lg"
-      
-    >
-        <CardHeader
-      
-    >
-          <CardTitle className="text-2xl font-bold text-blue-600"
-      
-    >
-            2. Lois et fonctions de répartition
-          </CardTitle
-      
-    >
-        </CardHeader
-      
-    >
-        <CardContent className="space-y-6"
-      
-    >
-          <div
-      
-    >
-            <h3 className="text-lg font-semibold mb-3">Définitions et propriétés</h3
-      
-    >
-            <ul className="list-disc list-inside space-y-4 text-slate-700"
-      
-    >
-              <li
-      
-    >
-                La <em>loi</em> de <span className="inline-block align-middle"><LatexRenderer latex="Y" /></span> discrète est donnée par <span className="inline-block align-middle"><LatexRenderer latex="\mathbb{P}(Y = x)" /></span> pour <span className="inline-block align-middle"><LatexRenderer latex="x \in Y(\Omega)" /></span>, avec :
-                <div className="ml-6 mt-2"
-      
-    >
-                  <LatexRenderer latex="\sum_{x \in Y(\Omega)} \mathbb{P}(Y = x) = 1" /
-      
-    >
-                </div
-      
-    >
-              </li
-      
-    >
-              <li
-      
-    >
-                Pour <span className="inline-block align-middle"><LatexRenderer latex="Y" /></span> à valeurs dans <span className="inline-block align-middle"><LatexRenderer latex="\mathbb{N}" /></span> :
-                <div className="ml-6 mt-2"
-      
-    >
-                  <LatexRenderer latex="F(m) = \sum_{k=0}^{m} \mathbb{P}(Y = k)" /
-      
-    >
-                </div
-      
-    >
-              </li
-      
-    >
-            </ul
-      
-    >
-          </div
-      
-    >
+                                {/* Section 2: Espérance et Variance */}
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
+                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                                <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
+                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
+                                                        <span className="font-semibold">Moments</span>
+                                                </CardTitle>
+                                        </CardHeader>
+                                        <CardContent className="space-y-6 pt-6">
+                                                <div className="space-y-4">
+                                                        <FormulaBox title="Espérance (si convergence absolue)">
+                                                                <LatexRenderer latex="\mathbb{E}(X) = \sum_{x \in X(\Omega)} x \mathbb{P}(X = x)" />
+                                                        </FormulaBox>
 
-          <div
-      
-    >
-            <h3 className="text-lg font-semibold mb-3">Formule importante</h3
-      
-    >
-            <p className="text-slate-700 mb-2">Pour tout <span className="inline-block align-middle"><LatexRenderer latex="m \ge 1" /></span> :</p
-      
-    >
-            <div className="ml-6"
-      
-    >
-              <LatexRenderer latex="\mathbb{P}(Y = m) = F(m) - F(m - 1)" /
-      
-    >
-            </div
-      
-    >
-          </div
-      
-    >
-        </CardContent
-      
-    >
-      </Card
-      
-    >
+                                                        <FormulaBox title="Variance & Koenig-Huygens">
+                                                                <LatexRenderer latex="\mathbb{V}(X) = \mathbb{E}\left( (X - \mathbb{E}(X))^2 \right) = \mathbb{E}(X^2) - (\mathbb{E}(X))^2" />
+                                                        </FormulaBox>
 
-      {/* Section 3: Espérance et variance */}
-      <Card className="border-0 shadow-lg"
-      
-    >
-        <CardHeader
-      
-    >
-          <CardTitle className="text-2xl font-bold text-blue-600"
-      
-    >
-            3. Espérance et variance
-          </CardTitle
-      
-    >
-        </CardHeader
-      
-    >
-        <CardContent className="space-y-6"
-      
-    >
-          <div
-      
-    >
-            <h3 className="text-lg font-semibold mb-3">Définitions</h3
-      
-    >
-            <ul className="list-disc list-inside space-y-4 text-slate-700"
-      
-    >
-              <li
-      
-    >
-                <strong>Espérance</strong> :
-                <div className="ml-6 mt-2"
-      
-    >
-                  <LatexRenderer latex="\mathbb{E}(X) = \sum_{x \in X(\Omega)} x \mathbb{P}(X = x)" /
-      
-    >
-                </div
-      
-    >
-                si la série converge absolument
-              </li
-      
-    >
-              <li
-      
-    >
-                <strong>Variance</strong> :
-                <div className="ml-6 mt-2"
-      
-    >
-                  <LatexRenderer latex="\operatorname{Var}(X) = \mathbb{E}((X - \mathbb{E}(X))^2)" /
-      
-    >
-                </div
-      
-    >
-              </li
-      
-    >
-              <li
-      
-    >
-                <strong>Variable réduite</strong> :
-                <div className="ml-6 mt-2"
-      
-    >
-                  <LatexRenderer latex="X^* = \frac{X - \mathbb{E}(X)}{\sqrt{\operatorname{Var}(X)}}" /
-      
-    >
-                </div
-      
-    >
-              </li
-      
-    >
-            </ul
-      
-    >
-          </div
-      
-    >
+                                                        <div className="border border-slate-200 rounded p-4 mt-4">
+                                                                <p className="font-semibold text-slate-800 mb-2">Propriétés</p>
+                                                                <ul className="list-disc list-inside text-slate-700 text-sm space-y-1">
+                                                                        <li>Lineiarité de l'espérance : <LatexRenderer latex="\mathbb{E}(aX+b) = a\mathbb{E}(X) + b" /></li>
+                                                                        <li>Quadraticité de la variance : <LatexRenderer latex="\mathbb{V}(aX+b) = a^2\mathbb{V}(X)" /></li>
+                                                                </ul>
+                                                        </div>
+                                                </div>
+                                        </CardContent>
+                                </Card>
 
-          <div
-      
-    >
-            <h3 className="text-lg font-semibold mb-3">Formules essentielles</h3
-      
-    >
-            <ul className="list-disc list-inside space-y-4 text-slate-700"
-      
-    >
-              <li
-      
-    >
-                <strong>Koenig-Huygens</strong> :
-                <div className="ml-6 mt-2"
-      
-    >
-                  <LatexRenderer latex="\operatorname{Var}(X) = \mathbb{E}(X^2) - (\mathbb{E}(X))^2" /
-      
-    >
-                </div
-      
-    >
-              </li
-      
-    >
-              <li
-      
-    >
-                <strong>Transformation affine</strong> :
-                <div className="ml-6 mt-2"
-      
-    >
-                  <LatexRenderer latex="\operatorname{Var}(aX + b) = a^2 \operatorname{Var}(X)" /
-      
-    >
-                </div
-      
-    >
-              </li
-      
-    >
-            </ul
-      
-    >
-          </div
-      
-    >
-        </CardContent
-      
-    >
-      </Card
-      
-    >
-
-      {/* Section 4: Lois discrètes classiques */}
-      <Card className="border-0 shadow-lg"
-      
-    >
-        <CardHeader
-      
-    >
-          <CardTitle className="text-2xl font-bold text-blue-600"
-      
-    >
-            4. Lois discrètes classiques
-          </CardTitle
-      
-    >
-        </CardHeader
-      
-    >
-        <CardContent className="space-y-6"
-      
-    >
-          <div
-      
-    >
-            <h3 className="text-lg font-semibold mb-3">Lois usuelles</h3
-      
-    >
-            <ul className="list-disc list-inside space-y-4 text-slate-700"
-      
-    >
-              <li
-      
-    >
-                <strong>Bernoulli</strong> <span className="inline-block align-middle"><LatexRenderer latex="\mathcal{B}(p)" /></span> :
-                <div className="ml-6 mt-2"
-      
-    >
-                  <LatexRenderer latex="\mathbb{P}(X = 1) = p, \quad \mathbb{E}(X) = p, \quad \operatorname{Var}(X) = p(1-p)" /
-      
-    >
-                </div
-      
-    >
-              </li
-      
-    >
-              <li
-      
-    >
-                <strong>Binomiale</strong> <span className="inline-block align-middle"><LatexRenderer latex="\mathcal{B}(n,p)" /></span> :
-                <div className="ml-6 mt-2"
-      
-    >
-                  <LatexRenderer latex="\mathbb{P}(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad \mathbb{E}(X) = np, \quad \operatorname{Var}(X) = np(1-p)" /
-      
-    >
-                </div
-      
-    >
-              </li
-      
-    >
-              <li
-      
-    >
-                <strong>Géométrique</strong> <span className="inline-block align-middle"><LatexRenderer latex="\mathcal{G}(p)" /></span> :
-                <div className="ml-6 mt-2"
-      
-    >
-                  <LatexRenderer latex="\mathbb{P}(X = k) = (1-p)^{k-1}p, \quad \mathbb{E}(X) = \frac{1}{p}, \quad \operatorname{Var}(X) = \frac{1-p}{p^2}" /
-      
-    >
-                </div
-      
-    >
-              </li
-      
-    >
-              <li
-      
-    >
-                <strong>Poisson</strong> <span className="inline-block align-middle"><LatexRenderer latex="\mathcal{P}(\lambda)" /></span> :
-                <div className="ml-6 mt-2"
-      
-    >
-                  <LatexRenderer latex="\mathbb{P}(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad \mathbb{E}(X) = \lambda, \quad \operatorname{Var}(X) = \lambda" /
-      
-    >
-                </div
-      
-    >
-              </li
-      
-    >
-            </ul
-      
-    >
-          </div
-      
-    >
-        </CardContent
-      
-    >
-      </Card
-      
-    >
-    </MathChapterTemplate
-      
-    >
-  );
+                                {/* Section 3: Lois usuelles */}
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
+                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                                <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
+                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
+                                                        <span className="font-semibold">Lois Usuelles</span>
+                                                </CardTitle>
+                                        </CardHeader>
+                                        <CardContent className="space-y-6 pt-6">
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                        <div className="border border-slate-200 rounded p-4">
+                                                                <p className="font-bold text-slate-800 mb-2">Bernoulli <LatexRenderer latex="\mathcal{B}(p)" /></p>
+                                                                <p className="text-sm text-slate-600 mb-2">Succès/Echec. Support <LatexRenderer latex="\{0,1\}" />.</p>
+                                                                <p className="text-sm text-slate-600"><LatexRenderer latex="\mathbb{E}=p, \mathbb{V}=p(1-p)" /></p>
+                                                        </div>
+                                                        <div className="border border-slate-200 rounded p-4">
+                                                                <p className="font-bold text-slate-800 mb-2">Binomiale <LatexRenderer latex="\mathcal{B}(n,p)" /></p>
+                                                                <p className="text-sm text-slate-600 mb-2">Somme de <LatexRenderer latex="n" /> Bernoulli indép.</p>
+                                                                <p className="text-sm text-slate-600"><LatexRenderer latex="\mathbb{E}=np, \mathbb{V}=np(1-p)" /></p>
+                                                        </div>
+                                                        <div className="border border-slate-200 rounded p-4">
+                                                                <p className="font-bold text-slate-800 mb-2">Géométrique <LatexRenderer latex="\mathcal{G}(p)" /></p>
+                                                                <p className="text-sm text-slate-600 mb-2">Rang du 1er succès. Support <LatexRenderer latex="\mathbb{N}^*" />.</p>
+                                                                <p className="text-sm text-slate-600"><LatexRenderer latex="\mathbb{E}=1/p, \mathbb{V}=(1-p)/p^2" /></p>
+                                                        </div>
+                                                        <div className="border border-slate-200 rounded p-4">
+                                                                <p className="font-bold text-slate-800 mb-2">Poisson <LatexRenderer latex="\mathcal{P}(\lambda)" /></p>
+                                                                <p className="text-sm text-slate-600 mb-2">Evénements rares. Support <LatexRenderer latex="\mathbb{N}" />.</p>
+                                                                <p className="text-sm text-slate-600"><LatexRenderer latex="\mathbb{E}=\lambda, \mathbb{V}=\lambda" /></p>
+                                                        </div>
+                                                </div>
+                                        </CardContent>
+                                </Card>
+                        </div>
+                </MathChapterTemplate>
+        );
 };
 
 export default MathsVariablesAleatoiresPage;

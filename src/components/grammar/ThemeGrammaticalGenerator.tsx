@@ -5,10 +5,11 @@ import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Loader2, Languages, Target, RefreshCw, Eye, EyeOff, Plus, CheckCircle, BookOpen, Save, Play, Pause, Clock, Trophy, Trash2, History, ChevronLeft, ChevronRight, BookMarked, Star, Zap, Users, Globe, Building, Code } from 'lucide-react';
+import { Loader2, Languages, Target, RefreshCw, Eye, EyeOff, Plus, CheckCircle, BookOpen, Save, Play, Pause, Clock, Trophy, Trash2, History, ChevronLeft, ChevronRight, BookMarked, Star, Zap, Users, Globe, Building, Code, Keyboard, PenTool, AlertCircle } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';
+import VoiceRecorder from '@/components/voice/VoiceRecorder';
 
 interface ThemeSentence {
   french: string;
@@ -92,6 +93,9 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
   const [showPerfectAnswer, setShowPerfectAnswer] = useState(false);
   const [isLoadingFeedback, setIsLoadingFeedback] = useState(false);
   const [feedbackLoaded, setFeedbackLoaded] = useState(false);
+
+  // État pour le mode de saisie (écrit ou vocal)
+  const [inputMode, setInputMode] = useState<'text' | 'voice'>('text');
 
   const { currentUser } = useAuth();
   const { toast } = useToast();
@@ -2552,6 +2556,34 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
           };
         });
 
+        // Sauvegarder les résultats dans la base de données
+        if (currentUser) {
+          try {
+            const { error: saveError } = await supabase
+              .from('language_grammar_results')
+              .insert({
+                user_id: currentUser.id,
+                language: language,
+                sentence_id: (currentSentence as any).id || null,
+                french_sentence: currentSentence.french,
+                reference_answer: currentSentence.reference,
+                student_answer: studentAnswer.trim(),
+                score: data.score,
+                major_errors: data.severity.major_errors,
+                minor_errors: data.severity.minor_errors,
+                weak_grammar_points: data.weak_grammar_points || [],
+                time_spent: timer
+              });
+
+            if (saveError) {
+              console.error('Error saving grammar result:', saveError);
+            }
+          } catch (saveErr) {
+            console.error('Exception saving grammar result:', saveErr);
+          }
+        }
+
+
         // Mettre à jour le statut dans l'historique
         if (selectedHistoryId) {
           setSentenceHistory(prev =>
@@ -2857,20 +2889,88 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
             {/* Section traduction */}
             <Card className="bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
               <CardContent className="p-8">
-                <label className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                  <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                    <Code className="h-4 w-4 text-orange-600" />
+                <div className="flex items-center justify-between mb-6">
+                  <label className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                    <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
+                      <Code className="h-4 w-4 text-orange-600" />
+                    </div>
+                    Votre traduction en {language === 'de' ? 'allemand' : language === 'en' ? 'anglais' : 'espagnol'} :
+                  </label>
+
+                  {/* Toggle écrit / oral */}
+                  <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-lg">
+                    <Button
+                      variant={inputMode === 'text' ? 'default' : 'ghost'}
+                      size="sm"
+                      onClick={() => setInputMode('text')}
+                      className={`flex items-center gap-2 transition-all ${inputMode === 'text'
+                        ? 'bg-white shadow-sm'
+                        : 'hover:bg-gray-200'
+                        }`}
+                    >
+                      <Keyboard className="h-4 w-4" />
+                      <span className="hidden sm:inline">Écrit</span>
+                    </Button>
+                    <Button
+                      variant={inputMode === 'voice' ? 'default' : 'ghost'}
+                      size="sm"
+                      onClick={() => setInputMode('voice')}
+                      className={`flex items-center gap-2 transition-all ${inputMode === 'voice'
+                        ? 'bg-white shadow-sm'
+                        : 'hover:bg-gray-200'
+                        }`}
+                    >
+                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                      </svg>
+                      <span className="hidden sm:inline">Oral</span>
+                    </Button>
                   </div>
-                  Votre traduction en {language === 'de' ? 'allemand' : language === 'en' ? 'anglais' : 'espagnol'} :
-                </label>
+                </div>
+
                 <div className="relative">
-                  <Textarea
-                    value={studentAnswer}
-                    onChange={(e) => setStudentAnswer(e.target.value)}
-                    placeholder={`Écrivez votre traduction en ${language === 'de' ? 'allemand' : language === 'en' ? 'anglais' : 'espagnol'}...`}
-                    className="min-h-[150px] text-xl resize-none p-6 rounded-xl border-2 border-gray-100 focus:border-orange-400 focus:ring-4 focus:ring-orange-50 transition-all duration-300 bg-gray-50/50"
-                    disabled={isEvaluating}
-                  />
+                  {inputMode === 'text' ? (
+                    <Textarea
+                      value={studentAnswer}
+                      onChange={(e) => setStudentAnswer(e.target.value)}
+                      placeholder={`Écrivez votre traduction en ${language === 'de' ? 'allemand' : language === 'en' ? 'anglais' : 'espagnol'}...`}
+                      className="min-h-[150px] text-xl resize-none p-6 rounded-xl border-2 border-gray-100 focus:border-orange-400 focus:ring-4 focus:ring-orange-50 transition-all duration-300 bg-gray-50/50"
+                      disabled={isEvaluating}
+                    />
+                  ) : (
+                    <div className="space-y-4">
+                      <VoiceRecorder
+                        language={language}
+                        onTranscriptionComplete={(text) => setStudentAnswer(text)}
+                        disabled={isEvaluating}
+                      />
+
+                      {/* Afficher le texte transcrit - ÉDITABLE */}
+                      {studentAnswer && (
+                        <div className="mt-6">
+                          <div className="flex items-center justify-between mb-2">
+                            <label className="text-sm font-medium text-gray-700">
+                              Texte transcrit :
+                            </label>
+                            <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
+                              ✏️ Éditable
+                            </span>
+                          </div>
+                          <Textarea
+                            value={studentAnswer}
+                            onChange={(e) => setStudentAnswer(e.target.value)}
+                            placeholder="Le texte transcrit apparaîtra ici et sera modifiable..."
+                            className="min-h-[80px] text-base resize-none p-3 rounded-xl border-2 border-gray-200 focus:border-orange-400 focus:ring-4 focus:ring-orange-50 transition-all duration-300 bg-white"
+                            disabled={isEvaluating}
+                          />
+                          <p className="text-xs text-gray-500 mt-2 flex items-center gap-1">
+                            <span>💡</span>
+                            <span>Vous pouvez modifier le texte avant de corriger</span>
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 {/* Bouton corriger - STYLE DESIGN SYSTEM */}
@@ -2909,76 +3009,98 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
 
         {/* Section correction - Affichage immédiat de la réponse */}
         {showPerfectAnswer && currentSentence && (
-          <Card className="border-2 border-orange-200 bg-white">
-            <CardHeader className="bg-gradient-to-r from-orange-50 to-orange-100 border-b">
-              <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
-                <CheckCircle className="h-6 w-6" />
-                Réponse correcte
-              </CardTitle>
+          <Card className="border border-gray-200 bg-white shadow-sm mt-8 overflow-hidden rounded-xl">
+            <CardHeader className="bg-white border-b border-gray-100 pb-4">
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-xl flex items-center gap-2 text-gray-900 font-semibold">
+                  <BookOpen className="h-5 w-5 text-gray-500" />
+                  Correction et Analyse
+                </CardTitle>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded-full uppercase tracking-wider">
+                    Référence
+                  </span>
+                </div>
+              </div>
             </CardHeader>
-            <CardContent className="p-6 space-y-4">
-              {/* Réponse de référence - AFFICHAGE IMMÉDIAT */}
-              <div className="p-6 bg-gradient-to-r from-orange-50 to-orange-100 rounded-lg border-2 border-orange-300">
-                <h3 className="font-bold text-orange-900 mb-3 text-lg flex items-center gap-2">
-                  <BookOpen className="h-5 w-5" />
-                  Traduction correcte
-                </h3>
-                <p className="text-2xl text-orange-900 font-medium leading-relaxed">
-                  {currentSentence.reference}
-                </p>
+            <CardContent className="p-0">
+              <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-100">
+                {/* Colonne Gauche : La Phrase Correcte */}
+                <div className="p-6 md:p-8 bg-gray-50/50">
+                  <h3 className="text-sm font-medium text-gray-500 mb-3 uppercase tracking-wide">Traduction Correcte</h3>
+                  <div className="relative">
+                    <div className="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-orange-400 to-orange-500 rounded-full"></div>
+                    <p className="text-2xl text-gray-900 font-medium leading-relaxed font-serif pl-2">
+                      {currentSentence.reference}
+                    </p>
+                  </div>
+
+                  {currentSentence.glossary && Object.keys(currentSentence.glossary).length > 0 && (
+                    <div className="mt-8 pt-6 border-t border-gray-200">
+                      <h4 className="flex items-center gap-2 text-sm font-semibold text-gray-900 mb-3">
+                        <BookMarked className="h-4 w-4 text-orange-500" />
+                        Vocabulaire clé
+                      </h4>
+                      <div className="grid gap-2">
+                        {Object.entries(currentSentence.glossary).map(([fr, de], index) => (
+                          <div key={index} className="flex items-center justify-between text-sm group hover:bg-white p-2 rounded-lg transition-colors">
+                            <span className="text-gray-600">{fr}</span>
+                            <span className="w-px h-3 bg-gray-300 mx-2"></span>
+                            <span className="font-medium text-gray-900">{de}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Colonne Droite : Points techniques */}
+                <div className="p-6 md:p-8 bg-white">
+                  {currentSentence.grammar_points && currentSentence.grammar_points.length > 0 && (
+                    <div className="mb-8">
+                      <h3 className="text-sm font-medium text-gray-500 mb-4 uppercase tracking-wide flex items-center gap-2">
+                        <Target className="h-4 w-4" />
+                        Points de grammaire
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {currentSentence.grammar_points.map((point, index) => (
+                          <span key={index} className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 border border-gray-200">
+                            {point}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {currentSentence.notes && currentSentence.notes.length > 0 && (
+                    <div>
+                      <h3 className="text-sm font-medium text-gray-500 mb-4 uppercase tracking-wide flex items-center gap-2">
+                        <AlertCircle className="h-4 w-4" />
+                        Points de vigilance
+                      </h3>
+                      <ul className="space-y-3">
+                        {currentSentence.notes.map((note, index) => (
+                          <li key={index} className="flex items-start gap-3 text-sm text-gray-700 bg-orange-50/50 p-3 rounded-lg border border-orange-100/50">
+                            <span className="mt-0.5 w-1.5 h-1.5 rounded-full bg-orange-500 flex-shrink-0"></span>
+                            <span className="leading-relaxed">{note}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
               </div>
 
-              {/* Points de grammaire - AFFICHAGE IMMÉDIAT */}
-              {currentSentence.grammar_points && currentSentence.grammar_points.length > 0 && (
-                <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                  <h3 className="font-semibold text-orange-900 mb-3 text-lg">Points de grammaire travaillés</h3>
-                  <ul className="space-y-2">
-                    {currentSentence.grammar_points.map((point, index) => (
-                      <li key={index} className="flex items-start gap-2 text-orange-800">
-                        <span className="w-2 h-2 rounded-full bg-orange-500 mt-2 flex-shrink-0"></span>
-                        <span className="font-medium">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Notes et règles - AFFICHAGE IMMÉDIAT */}
-              {currentSentence.notes && currentSentence.notes.length > 0 && (
-                <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                  <h3 className="font-semibold text-orange-900 mb-3 text-lg">Règles et erreurs fréquentes</h3>
-                  <ul className="space-y-3">
-                    {currentSentence.notes.map((note, index) => (
-                      <li key={index} className="flex items-start gap-2 text-orange-800">
-                        <span className="text-orange-600 font-bold flex-shrink-0">→</span>
-                        <span>{note}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Glossaire si disponible */}
-              {currentSentence.glossary && Object.keys(currentSentence.glossary).length > 0 && (
-                <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                  <h3 className="font-semibold text-orange-900 mb-3 text-lg">Vocabulaire clé</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    {Object.entries(currentSentence.glossary).map(([fr, de], index) => (
-                      <div key={index} className="text-sm text-orange-800">
-                        <span className="font-medium">{fr}</span> = <span className="italic">{de}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Loader pour le feedback personnalisé */}
+              {/* Loader feedback élégant */}
               {isLoadingFeedback && (
-                <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                  <div className="flex items-center gap-3">
-                    <Loader2 className="h-5 w-5 animate-spin text-orange-600" />
-                    <span className="text-orange-700">Analyse détaillée en cours avec l'IA...</span>
+                <div className="p-4 border-t border-gray-100 bg-gray-50 flex items-center justify-center gap-3">
+                  <div className="relative">
+                    <div className="h-3 w-3 rounded-full bg-orange-500 animate-ping absolute"></div>
+                    <div className="h-3 w-3 rounded-full bg-orange-500 relative"></div>
                   </div>
+                  <span className="text-sm font-medium text-gray-600 animate-pulse">
+                    L'IA analyse votre réponse en détail...
+                  </span>
                 </div>
               )}
             </CardContent>
@@ -2987,146 +3109,178 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
 
         {/* Section correction OpenAI - Affichage après chargement */}
         {evaluation && feedbackLoaded && (
-          <Card className="border-2 border-orange-200 bg-white">
-            <CardHeader className="bg-gradient-to-r from-orange-50 to-orange-100 border-b">
-              <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
-                <Trophy className="h-6 w-6" />
-                Feedback Personnalisé IA
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-6 space-y-4">
-              {/* Score */}
-              <div className="p-4 rounded-lg border-2 bg-orange-50 border-orange-200">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-orange-900">Note</span>
-                  <Trophy className="h-5 w-5 text-orange-600" />
-                </div>
-                <div className="text-3xl font-bold text-orange-700">
-                  {evaluation.score}/10
-                </div>
-              </div>
-
-              {/* Réponse corrigée */}
-              <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                <h3 className="font-semibold text-orange-900 mb-2 flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4" />
-                  Traduction correcte
-                </h3>
-                <p className="text-orange-800">{evaluation.corrected}</p>
-              </div>
-
-              {/* Réponse de référence */}
-              <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                <h3 className="font-semibold text-orange-900 mb-2 flex items-center gap-2">
-                  <BookOpen className="h-4 w-4" />
-                  Réponse de référence
-                </h3>
-                <p className="text-orange-800">{evaluation.reference}</p>
-              </div>
-
-              {/* Erreurs majeures */}
-              {evaluation.severity.major_errors.length > 0 && (
-                <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                  <h3 className="font-semibold text-orange-900 mb-3">Erreurs majeures</h3>
-                  <div className="space-y-2">
-                    {evaluation.severity.major_errors.map((error, index) => (
-                      <div key={index} className="text-sm text-orange-800">
-                        {typeof error === 'string' ? (
-                          <p>• {error}</p>
-                        ) : (
-                          <div className="space-y-1">
-                            <p className="font-medium">• {error.error}</p>
-                            <p className="ml-4 text-orange-700">→ {error.explanation}</p>
-                            <p className="ml-4 text-orange-900">Correction : {error.correction}</p>
-                            <p className="ml-4 italic text-orange-600">Règle : {error.rule}</p>
-                          </div>
-                        )}
-                      </div>
-                    ))}
+          <div className="mt-8 space-y-6 animate-in slide-in-from-bottom-4 duration-700">
+            {/* Résumé du score */}
+            <Card className="border border-gray-200 shadow-sm bg-white overflow-hidden rounded-xl">
+              <div className="flex flex-col md:flex-row">
+                {/* Score Panel */}
+                <div className={`p-8 flex flex-col items-center justify-center min-w-[200px] border-b md:border-b-0 md:border-r border-gray-100 ${evaluation.score >= 8 ? 'bg-green-50/50' : evaluation.score >= 5 ? 'bg-orange-50/50' : 'bg-red-50/50'
+                  }`}>
+                  <div className="relative mb-2">
+                    <svg className="w-24 h-24 transform -rotate-90">
+                      <circle
+                        cx="48"
+                        cy="48"
+                        r="40"
+                        stroke="currentColor"
+                        strokeWidth="8"
+                        fill="transparent"
+                        className={`${evaluation.score >= 8 ? 'text-green-200' : evaluation.score >= 5 ? 'text-orange-200' : 'text-red-200'
+                          }`}
+                      />
+                      <circle
+                        cx="48"
+                        cy="48"
+                        r="40"
+                        stroke="currentColor"
+                        strokeWidth="8"
+                        fill="transparent"
+                        strokeDasharray={251.2}
+                        strokeDashoffset={251.2 - (251.2 * evaluation.score) / 10}
+                        className={`${evaluation.score >= 8 ? 'text-green-500' : evaluation.score >= 5 ? 'text-orange-500' : 'text-red-500'
+                          } transition-all duration-1000 ease-out`}
+                      />
+                    </svg>
+                    <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
+                      <span className={`text-3xl font-bold ${evaluation.score >= 8 ? 'text-green-700' : evaluation.score >= 5 ? 'text-orange-700' : 'text-red-700'
+                        }`}>
+                        {evaluation.score}
+                      </span>
+                      <span className="text-xs font-medium text-gray-400">/ 10</span>
+                    </div>
+                  </div>
+                  <div className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${evaluation.score >= 8
+                    ? 'bg-green-100 text-green-700'
+                    : evaluation.score >= 5
+                      ? 'bg-orange-100 text-orange-700'
+                      : 'bg-red-100 text-red-700'
+                    }`}>
+                    {evaluation.score >= 9 ? 'Excellent' : evaluation.score >= 7 ? 'Très bien' : evaluation.score >= 5 ? 'Correct' : 'À travailler'}
                   </div>
                 </div>
-              )}
 
-              {/* Erreurs mineures */}
-              {evaluation.severity.minor_errors.length > 0 && (
-                <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                  <h3 className="font-semibold text-orange-900 mb-3">Erreurs mineures</h3>
-                  <div className="space-y-2">
-                    {evaluation.severity.minor_errors.map((error, index) => (
-                      <div key={index} className="text-sm text-orange-800">
-                        {typeof error === 'string' ? (
-                          <p>• {error}</p>
-                        ) : (
-                          <div className="space-y-1">
-                            <p className="font-medium">• {error.error}</p>
-                            <p className="ml-4 text-orange-700">→ {error.explanation}</p>
-                            <p className="ml-4 text-orange-900">Correction : {error.correction}</p>
+                {/* Feedback Content */}
+                <div className="flex-1 p-8">
+                  <div className="grid md:grid-cols-2 gap-8">
+                    {/* Correction */}
+                    <div>
+                      <h3 className="text-sm font-medium text-gray-500 mb-3 uppercase tracking-wide flex items-center gap-2">
+                        <PenTool className="h-4 w-4" />
+                        Votre correction
+                      </h3>
+                      <div className="bg-gray-50 rounded-lg p-4 border border-gray-100 text-gray-800 italic leading-relaxed">
+                        "{evaluation.corrected}"
+                      </div>
+                    </div>
+
+                    {/* Analyse */}
+                    <div>
+                      <h3 className="text-sm font-medium text-gray-500 mb-3 uppercase tracking-wide flex items-center gap-2">
+                        <Star className="h-4 w-4" />
+                        Analyse rapide
+                      </h3>
+                      <div className="space-y-3">
+                        {evaluation.severity.major_errors.length === 0 && evaluation.severity.minor_errors.length === 0 ? (
+                          <div className="flex items-start gap-3 text-green-700 bg-green-50 p-3 rounded-lg text-sm">
+                            <CheckCircle className="h-5 w-5 flex-shrink-0" />
+                            <p>Aucune erreur détectée. Bravo pour cette performance !</p>
                           </div>
+                        ) : (
+                          <>
+                            {evaluation.severity.major_errors.length > 0 && (
+                              <div className="flex items-center gap-2 text-red-600 bg-red-50 px-3 py-2 rounded-lg text-sm font-medium">
+                                <AlertCircle className="h-4 w-4" />
+                                {evaluation.severity.major_errors.length} erreur(s) majeure(s)
+                              </div>
+                            )}
+                            {evaluation.severity.minor_errors.length > 0 && (
+                              <div className="flex items-center gap-2 text-orange-600 bg-orange-50 px-3 py-2 rounded-lg text-sm font-medium">
+                                <AlertCircle className="h-4 w-4" />
+                                {evaluation.severity.minor_errors.length} erreur(s) mineure(s)
+                              </div>
+                            )}
+                          </>
                         )}
                       </div>
-                    ))}
+                    </div>
                   </div>
+
+                  {/* Detailed Errors */}
+                  {(evaluation.severity.major_errors.length > 0 || evaluation.severity.minor_errors.length > 0) && (
+                    <div className="mt-8 pt-6 border-t border-gray-100">
+                      <h3 className="text-sm font-medium text-gray-500 mb-4 uppercase tracking-wide">Détail des erreurs</h3>
+                      <div className="space-y-4">
+                        {[
+                          ...evaluation.severity.major_errors.map(e => typeof e === 'string' ? { error: e, type: 'major' } : { ...e, type: 'major' }),
+                          ...evaluation.severity.minor_errors.map(e => typeof e === 'string' ? { error: e, type: 'minor' } : { ...e, type: 'minor' })
+                        ].map((error: any, index) => (
+                          <div key={index} className="flex gap-4 group">
+                            <div className={`mt-1 h-2 w-2 rounded-full flex-shrink-0 ${error.type === 'major' ? 'bg-red-500' : 'bg-orange-400'}`}></div>
+                            <div className="flex-1">
+                              {typeof error === 'string' ? (
+                                <p className="text-gray-800 text-sm">{error}</p>
+                              ) : (
+                                <div className="text-sm space-y-1.5">
+                                  <div className="flex items-baseline justify-between">
+                                    <p className="font-medium text-gray-900 border-b border-red-200 inline-block pb-0.5 decoration-red-400 decoration-wavy">
+                                      {error.error}
+                                    </p>
+                                    {error.rule && (
+                                      <span className="text-xs text-gray-400 font-mono bg-gray-50 px-2 py-0.5 rounded border border-gray-100">{error.rule}</span>
+                                    )}
+                                  </div>
+                                  <p className="text-gray-600">
+                                    <span className="text-gray-400 mr-2">Why?</span>
+                                    {error.explanation}
+                                  </p>
+                                  <p className="text-green-700 font-medium bg-green-50 inline-block px-2 py-1 rounded text-xs mt-1">
+                                    Correct: {error.correction}
+                                  </p>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Conseils & Next Steps Footer */}
+              {(evaluation.tips?.length > 0 || evaluation.grammar_rules?.length > 0) && (
+                <div className="bg-gray-50 p-6 border-t border-gray-100 flex flex-col md:flex-row gap-8">
+                  {evaluation.grammar_rules?.length > 0 && (
+                    <div className="flex-1">
+                      <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Règles à retenir</h4>
+                      <ul className="space-y-2">
+                        {evaluation.grammar_rules.map((rule, idx) => (
+                          <li key={idx} className="text-sm text-gray-600 flex items-start gap-2">
+                            <div className="h-1.5 w-1.5 rounded-full bg-blue-400 mt-1.5 flex-shrink-0"></div>
+                            {rule}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {evaluation.tips?.length > 0 && (
+                    <div className="flex-1">
+                      <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Conseil du coach</h4>
+                      <ul className="space-y-2">
+                        {evaluation.tips.map((tip, idx) => (
+                          <li key={idx} className="text-sm text-gray-600 flex items-start gap-2">
+                            <div className="h-1.5 w-1.5 rounded-full bg-purple-400 mt-1.5 flex-shrink-0"></div>
+                            {tip}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               )}
-
-              {/* Variations acceptées */}
-              {evaluation.severity.accepted_variations?.length > 0 && (
-                <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                  <h3 className="font-semibold text-orange-900 mb-2">Variations acceptées</h3>
-                  <ul className="space-y-1 text-sm text-orange-800">
-                    {evaluation.severity.accepted_variations.map((variation, index) => (
-                      <li key={index}>• {variation}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Règles de grammaire */}
-              {evaluation.grammar_rules?.length > 0 && (
-                <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                  <h3 className="font-semibold text-orange-900 mb-2">Règles à retenir</h3>
-                  <ul className="space-y-1 text-sm text-orange-800">
-                    {evaluation.grammar_rules.map((rule, index) => (
-                      <li key={index}>• {rule}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Conseils */}
-              {evaluation.tips?.length > 0 && (
-                <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                  <h3 className="font-semibold text-orange-900 mb-2">Conseils</h3>
-                  <ul className="space-y-1 text-sm text-orange-800">
-                    {evaluation.tips.map((tip, index) => (
-                      <li key={index}>• {tip}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Phrases similaires */}
-              {evaluation.similar_sentences?.length > 0 && (
-                <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                  <h3 className="font-semibold text-orange-900 mb-2">Phrases similaires à pratiquer</h3>
-                  <ul className="space-y-1 text-sm text-orange-800">
-                    {evaluation.similar_sentences.map((sentence, index) => (
-                      <li key={index}>• {sentence}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Règle pour flashcard */}
-              {evaluation.flashcard_rule && (
-                <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-                  <h3 className="font-semibold text-orange-900 mb-2">Flashcard recommandée</h3>
-                  <p className="text-sm text-orange-800">{evaluation.flashcard_rule}</p>
-                </div>
-              )}
-
-            </CardContent>
-          </Card>
+            </Card>
+          </div>
         )}
       </div>
     </div>

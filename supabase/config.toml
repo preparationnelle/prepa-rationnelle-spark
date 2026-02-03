@@ -20,8 +20,7 @@ max_client_conn = 100
 
 [realtime]
 enabled = true
-ip_version = "ipv6"
-port = 54323
+ip_version = "IPv6"
 
 [studio]
 enabled = true
@@ -36,18 +35,15 @@ pop3_port = 54327
 
 [storage]
 enabled = true
-port = 54328
 file_size_limit = "50MiB"
 
 [auth]
 enabled = true
-port = 54329
 site_url = "http://127.0.0.1:3000"
 additional_redirect_urls = ["https://127.0.0.1:3000"]
 jwt_expiry = 3600
 enable_anonymous_sign_ins = false
 enable_signup = true
-enable_confirmations = false
 
 [functions.create-python-course-checkout]
 verify_jwt = true
@@ -58,9 +54,7 @@ verify_jwt = false
 [functions.evaluate-definition]
 verify_jwt = true
 
-[edge-runtime]
-enabled = true
-port = 54330
+
 
 [analytics]
 enabled = false

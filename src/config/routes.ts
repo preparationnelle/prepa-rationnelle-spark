@@ -377,7 +377,8 @@ const Module1ApplicationsLineairesExercicesPage = lazy(() => import('../pages/fo
 // Math chapter pages - Semester 1
 // TEMPORARILY DISABLED - FILE CORRUPTED: const MathsEnsemblesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre2-EnsemblesEtApplications-CoursPage'));
 // TEMPORARILY DISABLED - FILE CORRUPTED: const MathsEntiersPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre3-SommesProduitsEtCoefficientsBinomiaux-CoursPage'));
-// TEMPORARILY DISABLED - FILE CORRUPTED: const MathsSuitesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre4-SuitesNumeriques-CoursPage'));
+
+const MathsSuitesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre4-SuitesNumeriques-CoursPage'));
 const MathsFonctionsPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre5-FonctionsUneVariableReelle-CoursPage'));
 const MathsDerivationPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre6-Derivation-CoursPage'));
 const MathsIntegrationPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre7-IntegrationSurUnSegment-CoursPage'));
@@ -436,7 +437,7 @@ const Chapitre13EstimationStatistiqueAvanceeFlashcardsPage = lazy(() => import('
 const Chapitre2EndomorphismesMatricesAvanceesCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre2-EndomorphismesMatricesAvancees-CoursPage'));
 const Chapitre3AlgebreBilineaireCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre3-AlgebreBilineaire-CoursPage'));
 const Chapitre7NupletsVariablesAleatoiresCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre7-NupletsVariablesAleatoires-CoursPage'));
-const Chapitre8AlgebreBilineaireEspacesEuclidiensCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre8-AlgebreBilineaireEspacesEuclidiens-CoursPage'));
+const Chapitre9AlgebreBilineaireEspacesEuclidiensCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre9-AlgebreBilineaireEspacesEuclidiens-CoursPage'));
 const Chapitre8CoupleVariablesAleatoiresCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre8-CoupleVariablesAleatoires-CoursPage'));
 const Chapitre9MatricesExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre9-MatricesEtEspacesVectoriels-ExercicesPage'));
 const Chapitre3AlgebreBilineaireExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre3-AlgebreBilineaire-ExercicesPage'));
@@ -460,8 +461,8 @@ const Chapitre10ReductionMatricesSymetriquesCoursPage = lazy(() => import('../pa
 const Chapitre12ConvergencesApproximationsExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre12-ConvergencesApproximations-ExercicesPage'));
 const Chapitre12ConvergencesApproximationsCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre12-ConvergencesApproximations-CoursPage'));
 const Chapitre13EstimationStatistiqueAvanceeCoursPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre13-EstimationStatistiqueAvancee-CoursPage'));
-const Chapitre18EstimationStatistiqueAvanceeExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre18-EstimationStatistiqueAvancee-ExercicesPage'));
-const Chapitre14TheorieEstimationStatistiqueExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre14-TheorieEstimationStatistique-ExercicesPage'));
+const Chapitre13EstimationStatistiqueAvanceeExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre13-EstimationStatistiqueAvancee-ExercicesPage'));
+const Chapitre31TheorieEstimationStatistiqueExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre31-TheorieEstimationStatistique-ExercicesPage'));
 const Chapitre5ComplementsVariablesAleatoiresExercicesPage = lazy(() => import('../pages/formation/math/MathsApprofondies/Chapitre5-ComplementsVariablesAleatoires-ExercicesPage'));
 
 // Maths Appliquées - Nouveaux chapitres
@@ -1446,7 +1447,7 @@ export const routes: RouteConfig[] = [
   { path: '/chapitres-libres', component: ChapitresLibresPage, title: 'Chapitres Libres d\'Accès', protected: false },
 
   // Chapitres libres d'accès issus de Maths Approfondies
-  // TEMPORARILY DISABLED DUE TO FILE CORRUPTION: { path: '/chapitres-libres/suites-cours', component: MathsSuitesPage, title: 'Cours - Suites numériques', protected: false },
+  { path: '/chapitres-libres/suites-cours', component: MathsSuitesPage, title: 'Cours - Suites numériques', protected: false },
   { path: '/chapitres-libres/suites-exercices', component: Chapitre4SuitesExercicesPage, title: 'Exercices - Suites numériques', protected: false },
   { path: '/chapitres-libres/suites-quiz', component: MathsApprofondiesQuizPage, title: 'Quiz - Suites numériques', protected: false },
   { path: '/chapitres-libres/series-cours', component: MathsSeriesPage, title: 'Cours - Séries numériques', protected: false },
@@ -1459,8 +1460,8 @@ export const routes: RouteConfig[] = [
   // TEMPORARILY DISABLED DUE TO FILE CORRUPTION: { path: '/formation/maths-elements-de-logique', component: MathsLogiquePage, title: 'Chapitre 1 : Logique & raisonnement fondamentaux' },
   // TEMPORARILY DISABLED DUE TO FILE CORRUPTION: { path: '/formation/maths-ensembles', component: MathsEnsemblesPage, title: 'Maths - Ensembles et applications' },
   // TEMPORARILY DISABLED DUE TO FILE CORRUPTION: { path: '/formation/maths-ensembles-et-applications', component: MathsEnsemblesPage, title: 'Maths - Ensembles et applications' },
-  // TEMPORARILY DISABLED DUE TO FILE CORRUPTION: { path: '/formation/maths-suites', component: MathsSuitesPage, title: 'Maths - Suites numériques' },
-  // TEMPORARILY DISABLED DUE TO FILE CORRUPTION: { path: '/formation/maths-suites-numeriques', component: MathsSuitesPage, title: 'Maths - Suites numériques' },
+  /* { path: '/formation/maths-suites', component: MathsSuitesPage, title: 'Maths - Suites numériques' }, */
+  { path: '/formation/maths-suites-numeriques', component: MathsSuitesPage, title: 'Maths - Suites numériques' },
   { path: '/formation/maths-fonctions', component: MathsFonctionsPage, title: 'Maths - Fonctions réelles — continuité' },
   { path: '/formation/maths-fonctions-d-une-variable-reelle', component: MathsFonctionsPage, title: 'Maths - Fonctions d\'une variable réelle' },
   { path: '/formation/maths-fonctions-une-variable-reelle-flashcards', component: Chapitre5FonctionsUneVariableReelleFlashcardsPage, title: 'Flashcards - Chapitre 5 : Fonctions d\'une variable réelle', protected: true },
@@ -1513,7 +1514,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-n-uplets-variables-aleatoires', component: Chapitre7NupletsVariablesAleatoiresCoursPage, title: 'Cours - Chapitre 7 : n-uplets de variables aléatoires réelles', protected: true },
   { path: '/formation/maths-n-uplets-variables-aleatoires-flashcards', component: Chapitre7NupletsVariablesAleatoiresFlashcardsPage, title: 'Flashcards - Chapitre 7 : n-uplets de variables aléatoires réelles', protected: true },
   { path: '/formation/maths-n-uplets-variables-aleatoires-exercices', component: Chapitre7NupletsVariablesAleatoiresExercicesPage, title: 'Exercices - Chapitre 6 : n-uplets de variables aléatoires réelles', protected: true },
-  { path: '/formation/maths-algebre-bilineaire-espaces-euclidiens', component: Chapitre8AlgebreBilineaireEspacesEuclidiensCoursPage, title: 'Cours - Chapitre 8 : Algèbre bilinéaire et espaces euclidiens', protected: true },
+  { path: '/formation/maths-algebre-bilineaire-espaces-euclidiens', component: Chapitre9AlgebreBilineaireEspacesEuclidiensCoursPage, title: 'Cours - Chapitre 25 : Algèbre bilinéaire et espaces euclidiens', protected: true },
   { path: '/formation/maths-algebre-bilineaire-espaces-euclidiens-flashcards', component: Chapitre8AlgebreBilineaireEspacesEuclidiensFlashcardsPage, title: 'Flashcards - Chapitre 8 : Algèbre bilinéaire et espaces euclidiens', protected: true },
   { path: '/formation/maths-couple-variables-aleatoires', component: Chapitre8CoupleVariablesAleatoiresCoursPage, title: 'Cours - Chapitre 8 : Probabilités (Variables aléatoires)', protected: true },
   { path: '/formation/maths-couple-variables-aleatoires-flashcards', component: Chapitre8CoupleVariablesAleatoiresFlashcardsPage, title: 'Flashcards - Chapitre 7 : Cas particulier du couple', protected: true },
@@ -1545,10 +1546,10 @@ export const routes: RouteConfig[] = [
   { path: '/formation/maths-convergences-approximations-exercices', component: Chapitre12ConvergencesApproximationsExercicesPage, title: 'Exercices - Chapitre 12 : Convergences et approximations', protected: true },
   { path: '/formation/maths-estimation-statistique-avancee', component: Chapitre13EstimationStatistiqueAvanceeCoursPage, title: 'Chapitre 13 : Estimation statistique avancée', protected: true },
   { path: '/formation/maths-estimation-statistique-avancee-flashcards', component: Chapitre13EstimationStatistiqueAvanceeFlashcardsPage, title: 'Flashcards - Chapitre 13 : Estimation statistique avancée', protected: true },
-  { path: '/formation/maths-intervalles-confiance-exercices', component: Chapitre18EstimationStatistiqueAvanceeExercicesPage, title: 'Exercices - Chapitre 18 : Intervalles de confiance', protected: true },
+  { path: '/formation/maths-intervalles-confiance-exercices', component: Chapitre13EstimationStatistiqueAvanceeExercicesPage, title: 'Exercices - Chapitre 28 : Intervalles de confiance', protected: true },
   // Alias cohérent avec le slug utilisé dans les cartes pour éviter les 404
-  { path: '/formation/maths-estimation-statistique-avancee-exercices', component: Chapitre18EstimationStatistiqueAvanceeExercicesPage, title: 'Exercices - Chapitre 18 : Estimation statistique avancée', protected: true },
-  { path: '/formation/maths-theorie-estimation-statistique-exercices', component: Chapitre14TheorieEstimationStatistiqueExercicesPage, title: 'Exercices - Chapitre 14 : Théorie de l\'estimation statistique', protected: true },
+  { path: '/formation/maths-estimation-statistique-avancee-exercices', component: Chapitre13EstimationStatistiqueAvanceeExercicesPage, title: 'Exercices - Chapitre 28 : Estimation statistique avancée', protected: true },
+  { path: '/formation/maths-theorie-estimation-statistique-exercices', component: Chapitre31TheorieEstimationStatistiqueExercicesPage, title: 'Exercices - Chapitre 31 : Théorie de l\'estimation statistique', protected: true },
   { path: '/formation/maths-complements-variables-aleatoires-exercices', component: Chapitre5ComplementsVariablesAleatoiresExercicesPage, title: 'Exercices - Chapitre 5 : Compléments sur les variables aléatoires', protected: true },
 
   // Maths Appliquées - Nouveaux chapitres

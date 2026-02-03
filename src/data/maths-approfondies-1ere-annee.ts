@@ -8,6 +8,7 @@ interface Chapter {
   icon: any;
   color: string;
   symbol: string;
+  customLink?: string;
 }
 
 interface Semester {
@@ -103,15 +104,7 @@ const semestre1: Semester = {
       color: 'bg-blue-600',
       symbol: 'M'
     },
-    {
-      id: '9b',
-      slug: 'algebre-bilineaire-espaces-euclidiens',
-      title: 'Algèbre bilinéaire et espaces euclidiens',
-      description: 'Formes bilinéaires et espaces euclidiens',
-      icon: BrainCircuit,
-      color: 'bg-blue-600',
-      symbol: '⟨⟩'
-    },
+
     {
       id: 10,
       slug: 'probabilites-conditionnement',
@@ -208,7 +201,8 @@ const semestre2: Semester = {
       description: 'Programmation appliquée aux mathématiques',
       icon: Code,
       color: 'bg-blue-600',
-      symbol: 'Py'
+      symbol: 'Py',
+      customLink: '/formation/maths-python'
     }
   ]
 };

@@ -1,348 +1,100 @@
-
 import React from 'react';
 import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LatexRenderer } from '@/components/LatexRenderer';
 
+const FormulaBox = ({ children, title }: { children: React.ReactNode, title?: string }) => (
+        <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
+                {title && <p className="font-semibold text-slate-800 mb-2">{title}</p>}
+                <div className="text-center">
+                        {children}
+                </div>
+        </div>
+);
+
 const MathsInegalitesPage = () => {
-  return (
-    <MathChapterTemplate
-      chapterNumber={18}
-      chapterTitle="Convergences & théorèmes limites"
-      description="Inégalités de base (Markov, Bienaymé-Tchebychev) ; convergence en probabilité (LFGN, stabilité par composition et somme) ; convergence en loi ; théorème central limite ; approximations usuelles des lois (binomiale→normale, Poisson→normale, binomiale→Poisson)"
-    
-      
-    >
-      {/* Section 1: Inégalités fondamentales */}
-      <Card className="border-0 shadow-lg"
-      
-    >
-        <CardHeader
-      
-    >
-          <CardTitle className="text-2xl font-bold text-blue-600"
-      
-    >
-            1. Inégalités fondamentales
-          </CardTitle
-      
-    >
-        </CardHeader
-      
-    >
-        <CardContent className="space-y-6"
-      
-    >
-          <div
-      
-    >
-            <h3 className="text-lg font-semibold mb-3">Inégalités classiques</h3
-      
-    >
-            <ul className="list-disc list-inside space-y-4 text-slate-700"
-      
-    >
-              <li
-      
-    >
-                <strong>Inégalité de Markov</strong> : Pour <span className="inline-block align-middle"><LatexRenderer latex="Z" /></span> variable aléatoire positive et <span className="inline-block align-middle"><LatexRenderer latex="a > 0" /></span> :
-                <div className="ml-6 mt-2"
-      
-    >
-                  <LatexRenderer latex="\mathbb{P}(Z \ge a) \le \frac{\mathbb{E}(Z)}{a}" /
-      
-    >
-                </div
-      
-    >
-              </li
-      
-    >
-              <li
-      
-    >
-                <strong>Inégalité de Bienaymé-Tchebychev</strong> : Pour <span className="inline-block align-middle"><LatexRenderer latex="\varepsilon > 0" /></span> :
-                <div className="ml-6 mt-2"
-      
-    >
-                  <LatexRenderer latex="\mathbb{P}(|Z - \mathbb{E}(Z)| \ge \varepsilon) \le \frac{\mathrm{V}(Z)}{\varepsilon^2}" /
-      
-    >
-                </div
-      
-    >
-                si <span className="inline-block align-middle"><LatexRenderer latex="\mathrm{V}(Z)" /></span> existe
-              </li
-      
-    >
-            </ul
-      
-    >
-          </div
-      
-    >
-        </CardContent
-      
-    >
-      </Card
-      
-    >
+        return (
+                <MathChapterTemplate
+                        chapterNumber={18}
+                        chapterTitle="Convergences & théorèmes limites"
+                        description="Inégalités (Markov, Bienaymé-Tchebychev) ; convergence en probabilité (LFGN) ; convergence en loi (TCL) ; approximations usuelles."
+                        slug="convergences-et-theoremes-limites"
+                        activeSection="course"
+                        showNavigation={true}
+                        previousChapter={{
+                                slug: "variables-aleatoires-discretes-lois",
+                                title: "Variables Aléatoires"
+                        }}
+                        nextChapter={{
+                                slug: "statistiques-estimation", // Guessing next based on task.md
+                                title: "Statistiques"
+                        }}
+                >
+                        <div className="space-y-8">
+                                {/* Section 1: Inégalités fondamentales */}
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
+                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                                <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
+                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
+                                                        <span className="font-semibold">Inégalités fondamentales</span>
+                                                </CardTitle>
+                                        </CardHeader>
+                                        <CardContent className="space-y-6 pt-6">
+                                                <div className="space-y-4">
+                                                        <FormulaBox title="Inégalité de Markov">
+                                                                Pour <LatexRenderer latex="Z \ge 0" /> et <LatexRenderer latex="a > 0" /> :
+                                                                <div className="my-2" />
+                                                                <LatexRenderer latex="\mathbb{P}(Z \ge a) \le \frac{\mathbb{E}(Z)}{a}" />
+                                                        </FormulaBox>
 
-      {/* Section 2: Convergence en probabilité */}
-      <Card className="border-0 shadow-lg"
-      
-    >
-        <CardHeader
-      
-    >
-          <CardTitle className="text-2xl font-bold text-blue-600"
-      
-    >
-            2. Convergence en probabilité
-          </CardTitle
-      
-    >
-        </CardHeader
-      
-    >
-        <CardContent className="space-y-6"
-      
-    >
-          <div
-      
-    >
-            <h3 className="text-lg font-semibold mb-3">Définition</h3
-      
-    >
-            <p className="text-slate-700 mb-4"
-      
-    >
-              Une suite <span className="inline-block align-middle"><LatexRenderer latex="(Z_n)_{n \ge 1}" /></span> converge en probabilité vers <span className="inline-block align-middle"><LatexRenderer latex="Z" /></span>, notée <span className="inline-block align-middle"><LatexRenderer latex="Z_n \xrightarrow{\mathbb{P}} Z" /></span>, si :
-            </p
-      
-    >
-            <div className="ml-6"
-      
-    >
-              <LatexRenderer latex="\forall \varepsilon > 0, \quad \lim_{n \to \infty} \mathbb{P}(|Z_n - Z| \ge \varepsilon) = 0" /
-      
-    >
-            </div
-      
-    >
-          </div
-      
-    >
+                                                        <FormulaBox title="Inégalité de Bienaymé-Tchebychev">
+                                                                Pour tout <LatexRenderer latex="\varepsilon > 0" /> :
+                                                                <div className="my-2" />
+                                                                <LatexRenderer latex="\mathbb{P}(|Z - \mathbb{E}(Z)| \ge \varepsilon) \le \frac{\mathbb{V}(Z)}{\varepsilon^2}" />
+                                                        </FormulaBox>
+                                                </div>
+                                        </CardContent>
+                                </Card>
 
-          <div
-      
-    >
-            <h3 className="text-lg font-semibold mb-3">Théorèmes fondamentaux</h3
-      
-    >
-            <ul className="list-disc list-inside space-y-4 text-slate-700"
-      
-    >
-              <li
-      
-    >
-                <strong>Loi faible des grands nombres (LFGN)</strong> : Pour <span className="inline-block align-middle"><LatexRenderer latex="(Y_k)_{k \ge 1}" /></span> indépendantes, équiprobables :
-                <div className="ml-6 mt-2"
-      
-    >
-                  <LatexRenderer latex="\forall \varepsilon > 0, \quad \lim_{n \to \infty} \mathbb{P}(|\overline{Y}_n - m| \ge \varepsilon) = 0" /
-      
-    >
-                </div
-      
-    >
-                où <span className="inline-block align-middle"><LatexRenderer latex="\overline{Y}_n = \frac{1}{n} \sum_{k=1}^{n} Y_k" /></span
-      
-    >
-              </li
-      
-    >
-              <li
-      
-    >
-                <strong>Composition</strong> : Si <span className="inline-block align-middle"><LatexRenderer latex="Z_n \xrightarrow{\mathbb{P}} Z" /></span> et <span className="inline-block align-middle"><LatexRenderer latex="g" /></span> continue, alors <span className="inline-block align-middle"><LatexRenderer latex="g(Z_n) \xrightarrow{\mathbb{P}} g(Z)" /></span
-      
-    >
-              </li
-      
-    >
-              <li
-      
-    >
-                <strong>Addition</strong> : Si <span className="inline-block align-middle"><LatexRenderer latex="Z_n \xrightarrow{\mathbb{P}} Z" /></span> et <span className="inline-block align-middle"><LatexRenderer latex="T_n \xrightarrow{\mathbb{P}} T" /></span>, alors <span className="inline-block align-middle"><LatexRenderer latex="Z_n + T_n \xrightarrow{\mathbb{P}} Z + T" /></span
-      
-    >
-              </li
-      
-    >
-            </ul
-      
-    >
-          </div
-      
-    >
-        </CardContent
-      
-    >
-      </Card
-      
-    >
+                                {/* Section 2: Convergences */}
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
+                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                                <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
+                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
+                                                        <span className="font-semibold">Types de convergence</span>
+                                                </CardTitle>
+                                        </CardHeader>
+                                        <CardContent className="space-y-6 pt-6">
+                                                <div>
+                                                        <div className="mb-6">
+                                                                <h4 className="font-semibold text-slate-800 mb-2">Convergence en Probabilité (<LatexRenderer latex="\xrightarrow{\mathbb{P}}" />)</h4>
+                                                                <p className="text-slate-700 mb-2">
+                                                                        <LatexRenderer latex="\forall \varepsilon > 0, \lim_{n \to \infty} \mathbb{P}(|Z_n - Z| \ge \varepsilon) = 0" />.
+                                                                </p>
+                                                                <FormulaBox title="Loi Faible des Grands Nombres (LFGN)">
+                                                                        Si <LatexRenderer latex="(Y_k)" /> i.i.d intégrables :
+                                                                        <div className="my-1" />
+                                                                        <LatexRenderer latex="\overline{Y}_n = \frac{1}{n}\sum Y_k \xrightarrow{\mathbb{P}} \mathbb{E}(Y_1)" />
+                                                                </FormulaBox>
+                                                        </div>
 
-      {/* Section 3: Convergence en loi */}
-      <Card className="border-0 shadow-lg"
-      
-    >
-        <CardHeader
-      
-    >
-          <CardTitle className="text-2xl font-bold text-blue-600"
-      
-    >
-            3. Convergence en loi
-          </CardTitle
-      
-    >
-        </CardHeader
-      
-    >
-        <CardContent className="space-y-6"
-      
-    >
-          <div
-      
-    >
-            <h3 className="text-lg font-semibold mb-3">Définitions</h3
-      
-    >
-            <ul className="list-disc list-inside space-y-4 text-slate-700"
-      
-    >
-              <li
-      
-    >
-                <span className="inline-block align-middle"><LatexRenderer latex="Z_n \xrightarrow{\mathcal{L}} Z" /></span> si, pour tout <span className="inline-block align-middle"><LatexRenderer latex="x" /></span> continu de <span className="inline-block align-middle"><LatexRenderer latex="F_Z" /></span> :
-                <div className="ml-6 mt-2"
-      
-    >
-                  <LatexRenderer latex="\lim_{n \to \infty} F_{Z_n}(x) = F_Z(x)" /
-      
-    >
-                </div
-      
-    >
-              </li
-      
-    >
-              <li
-      
-    >
-                Pour variables à valeurs dans <span className="inline-block align-middle"><LatexRenderer latex="\mathbb{N}" /></span> :
-                <div className="ml-6 mt-2"
-      
-    >
-                  <LatexRenderer latex="\lim_{n \to \infty} \mathbb{P}(Z_n = k) = \mathbb{P}(Z = k)" /
-      
-    >
-                </div
-      
-    >
-                pour tout <span className="inline-block align-middle"><LatexRenderer latex="k \in \mathbb{N}" /></span
-      
-    >
-              </li
-      
-    >
-            </ul
-      
-    >
-          </div
-      
-    >
-
-          <div
-      
-    >
-            <h3 className="text-lg font-semibold mb-3">Théorèmes limites</h3
-      
-    >
-            <ul className="list-disc list-inside space-y-4 text-slate-700"
-      
-    >
-              <li
-      
-    >
-                <strong>Théorème central limite (TCL)</strong> : Pour <span className="inline-block align-middle"><LatexRenderer latex="(Y_k)_{k \ge 1}" /></span> indépendantes :
-                <div className="ml-6 mt-2"
-      
-    >
-                  <LatexRenderer latex="Z_n^* = \sqrt{n} \frac{\overline{Y}_n - m}{\sigma} \xrightarrow{\mathcal{L}} \mathcal{N}(0, 1)" /
-      
-    >
-                </div
-      
-    >
-              </li
-      
-    >
-              <li
-      
-    >
-                <strong>Approximations</strong> :
-                <ul className="list-disc list-inside ml-6 mt-2"
-      
-    >
-                  <li><span className="inline-block align-middle"><LatexRenderer latex="\mathcal{B}(n, p) \approx \mathcal{N}(np, np(1 - p))" /></span> pour <span className="inline-block align-middle"><LatexRenderer latex="n \ge 20" /></span></li
-      
-    >
-                  <li><span className="inline-block align-middle"><LatexRenderer latex="\mathcal{P}(\lambda) \approx \mathcal{N}(\lambda, \lambda)" /></span> pour <span className="inline-block align-middle"><LatexRenderer latex="\lambda \ge 10" /></span></li
-      
-    >
-                </ul
-      
-    >
-              </li
-      
-    >
-              <li
-      
-    >
-                <strong>Binomiale vers Poisson</strong> :
-                <div className="ml-6 mt-2"
-      
-    >
-                  <LatexRenderer latex="B_n \sim \mathcal{B}(n, \frac{\lambda}{n}) \xrightarrow{\mathcal{L}} \mathcal{P}(\lambda)" /
-      
-    >
-                </div
-      
-    >
-                pour <span className="inline-block align-middle"><LatexRenderer latex="\lambda > 0" /></span
-      
-    >
-              </li
-      
-    >
-            </ul
-      
-    >
-          </div
-      
-    >
-        </CardContent
-      
-    >
-      </Card
-      
-    >
-    </MathChapterTemplate
-      
-    >
-  );
+                                                        <div>
+                                                                <h4 className="font-semibold text-slate-800 mb-2">Convergence en Loi (<LatexRenderer latex="\xrightarrow{\mathcal{L}}" />)</h4>
+                                                                <p className="text-slate-700 mb-2">
+                                                                        Convergence des fonctions de répartition en tout point de continuité de la limite.
+                                                                </p>
+                                                                <FormulaBox title="Théorème Central Limite (TCL)">
+                                                                        Si <LatexRenderer latex="(Y_k)" /> i.i.d (<LatexRenderer latex="\mu, \sigma^2" />) :
+                                                                        <div className="my-1" />
+                                                                        <LatexRenderer latex="\frac{\sqrt{n}(\overline{Y}_n - \mu)}{\sigma} \xrightarrow{\mathcal{L}} \mathcal{N}(0,1)" />
+                                                                </FormulaBox>
+                                                        </div>
+                                                </div>
+                                        </CardContent>
+                                </Card>
+                        </div>
+                </MathChapterTemplate>
+        );
 };
 
 export default MathsInegalitesPage;

@@ -1,181 +1,129 @@
-
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LatexRenderer } from '@/components/LatexRenderer';
-import { BookOpen, Target, Brain, PenTool } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
+
+const FormulaBox = ({ children, title }: { children: React.ReactNode, title?: string }) => (
+  <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
+    {title && <p className="font-semibold text-slate-800 mb-2">{title}</p>}
+    <div className="text-center">
+      {children}
+    </div>
+  </div>
+);
 
 const MathsProbabilitesFiniesPage = () => {
   return (
     <MathChapterTemplate
       chapterNumber={10}
-      chapterTitle="Chapitre 10 : Espaces probabilisés & conditionnement"
-      description="Fondements (univers, tribu, axiomes de Kolmogorov, continuité croissante/décroissante) ; propriétés et calculs (crible, complémentaire, équiprobabilité, probabilités composées) ; conditionnement et formule de Bayes ; indépendance d'événements et familles indépendantes"
+      chapterTitle="Probabilités et Conditionnement"
+      description="Espaces probabilisés, conditionnement, indépendance, et théorèmes limites."
+      slug="probabilites-conditionnement"
+      activeSection="course"
+      titleClassName="text-slate-800"
       showNavigation={true}
-      
+      previousChapter={{
+        slug: "reduction-matrices-symetriques",
+        title: "Réduction des matrices symétriques"
+      }}
+      nextChapter={{
+        slug: "applications-lineaires-structures-vectorielles",
+        title: "Applications Linéaires & Structures"
+      }}
     >
-      {/* Navigation vers les ressources */}
-      <Card className="border-0 shadow-lg bg-blue-50 mb-8">
-        <CardContent className="p-6">
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-              <BookOpen className="mr-2 h-4 w-4" />
-              Cours
-            </Button>
-            <Link to="/formation/maths-probabilites-conditionnement-exercices">
-              <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
-                <PenTool className="mr-2 h-4 w-4" />
-                Exercices
-              </Button>
-            </Link>
-            <Link to="/formation/maths-probabilites-conditionnement-flashcards">
-              <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
-                <Brain className="mr-2 h-4 w-4" />
-                Flashcards
-              </Button>
-            </Link>
-            <Link to="/formation/maths-probabilites-conditionnement-quiz">
-              <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
-                <Target className="mr-2 h-4 w-4" />
-                Quiz
-              </Button>
-            </Link>
-          </div>
-        </CardContent>
-      </Card>
+      <div className="space-y-8">
 
-      {/* Section 1: Fondements */}
-      <Card className="border-0 shadow-lg">
-        <CardHeader>
-          <CardTitle className="text-2xl font-bold text-blue-600">
-            1. Espaces probabilisés : Fondements
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div>
-            <h3 className="text-lg font-semibold mb-3">Définitions</h3>
-            <ul className="list-disc list-inside space-y-2 text-slate-700">
-              <li>Une <em>épreuve aléatoire</em> a un univers <span className="inline-block align-middle"><LatexRenderer latex="\Omega" /></span> d'issues possibles.</li>
-              <li>Un <em>système d'événements</em> <span className="inline-block align-middle"><LatexRenderer latex="\mathcal{A} \subset \mathcal{P}(\Omega)" /></span> satisfait :
-                <ul className="list-disc list-inside ml-6 mt-2">
-                  <li><span className="inline-block align-middle"><LatexRenderer latex="\Omega \in \mathcal{A}" /></span></li>
-                  <li><span className="inline-block align-middle"><LatexRenderer latex="A \in \mathcal{A} \implies A^{\complement} \in \mathcal{A}" /></span></li>
-                  <li><span className="inline-block align-middle"><LatexRenderer latex="\bigcup_{k \in I} A_k \in \mathcal{A}" /></span> pour <span className="inline-block align-middle"><LatexRenderer latex="(A_k) \subset \mathcal{A}" /></span></li>
-                </ul>
-              </li>
-              <li>Événements notables : <span className="inline-block align-middle"><LatexRenderer latex="\Omega" /></span> (certain), <span className="inline-block align-middle"><LatexRenderer latex="\varnothing" /></span> (impossible), <span className="inline-block align-middle"><LatexRenderer latex="\{\omega\}" /></span> (élémentaire)</li>
-            </ul>
-          </div>
+        {/* Section 1 - Espaces Probabilisés */}
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
+          <CardHeader className="bg-slate-50 border-b border-slate-100">
+            <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
+              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
+              <span className="font-semibold">Espaces Probabilisés</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-8 pt-6">
+            <div>
+              <h3 className="text-xl font-bold mb-2 text-slate-900">Définitions</h3>
+              <ul className="list-disc list-inside space-y-2 text-slate-700 ml-2">
+                <li><span className="font-semibold">Univers</span> <LatexRenderer latex="\Omega" /> : ensemble des issues possibles.</li>
+                <li><span className="font-semibold">Tribu</span> <LatexRenderer latex="\mathcal{A}" /> : ensemble des événements (stable par complémentaire et union dénombrable).</li>
+                <li><span className="font-semibold">Probabilité</span> <LatexRenderer latex="\mathbb{P}" /> : mesure normalisée (<LatexRenderer latex="\mathbb{P}(\Omega)=1" />) et <LatexRenderer latex="\sigma" />-additive.</li>
+              </ul>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-3">Théorèmes importants</h3>
-            <div className="space-y-4">
-              <div>
-                <p className="font-medium mb-2">Théorème de limite monotone (croissante)</p>
-                <p className="text-slate-700">Si <span className="inline-block align-middle"><LatexRenderer latex="A_n \uparrow" /></span>, alors :</p>
-                <div className="my-4 flex justify-center">
-                  <LatexRenderer latex="\mathbb{P}\!\bigl(\bigcup_{k=0}^{\infty} A_k\bigr) = \lim_{n \to \infty} \mathbb{P}(A_n)" />
+              <FormulaBox title="Propriété de continuité">
+                <LatexRenderer latex="A_n \uparrow A \implies \mathbb{P}(A_n) \to \mathbb{P}(A)" />
+                <br />
+                <LatexRenderer latex="A_n \downarrow A \implies \mathbb{P}(A_n) \to \mathbb{P}(A)" />
+              </FormulaBox>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Section 2 - Conditionnement */}
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
+          <CardHeader className="bg-slate-50 border-b border-slate-100">
+            <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
+              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
+              <span className="font-semibold">Conditionnement & Indépendance</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-8 pt-6">
+            <div>
+              <p className="mb-4 text-slate-700">Pour <LatexRenderer latex="\mathbb{P}(B) > 0" />, la probabilité conditionnelle est :</p>
+              <FormulaBox>
+                <LatexRenderer latex="\mathbb{P}_B(A) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}" />
+              </FormulaBox>
+
+              <Separator className="my-6" />
+
+              <h3 className="text-xl font-bold mb-4 text-slate-900">Formules Fondamentales</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-semibold text-slate-800 mb-2">Formule des Probabilités Totales</h4>
+                  <p className="text-sm text-slate-600 mb-2">Si <LatexRenderer latex="(B_n)" /> est un système complet d'événements :</p>
+                  <FormulaBox>
+                    <LatexRenderer latex="\mathbb{P}(A) = \sum_n \mathbb{P}(A \cap B_n) = \sum_n \mathbb{P}(B_n)\mathbb{P}_{B_n}(A)" />
+                  </FormulaBox>
                 </div>
-              </div>
-              <div>
-                <p className="font-medium mb-2">Théorème de limite monotone (décroissante)</p>
-                <p className="text-slate-700">Si <span className="inline-block align-middle"><LatexRenderer latex="A_n \downarrow" /></span>, alors :</p>
-                <div className="my-4 flex justify-center">
-                  <LatexRenderer latex="\mathbb{P}\!\bigl(\bigcap_{k=0}^{\infty} A_k\bigr) = \lim_{n \to \infty} \mathbb{P}(A_n)" />
+                <div>
+                  <h4 className="font-semibold text-slate-800 mb-2">Formule de Bayes</h4>
+                  <p className="text-sm text-slate-600 mb-2">Pour inverser le conditionnement :</p>
+                  <FormulaBox>
+                    <LatexRenderer latex="\mathbb{P}_A(B_k) = \frac{\mathbb{P}(B_k)\mathbb{P}_{B_k}(A)}{\sum_n \mathbb{P}(B_n)\mathbb{P}_{B_n}(A)}" />
+                  </FormulaBox>
                 </div>
               </div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
 
-      {/* Section 2: Probabilités et propriétés */}
-      <Card className="border-0 shadow-lg">
-        <CardHeader>
-          <CardTitle className="text-2xl font-bold text-blue-600">
-            2. Probabilités et propriétés
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div>
-            <h3 className="text-lg font-semibold mb-3">Définitions</h3>
-            <ul className="list-disc list-inside space-y-2 text-slate-700">
-              <li>Une <em>probabilité</em> <span className="inline-block align-middle"><LatexRenderer latex="\mathbb{P}: \mathcal{A} \to [0, 1]" /></span> vérifie :
-                <ul className="list-disc list-inside ml-6 mt-2">
-                  <li><span className="inline-block align-middle"><LatexRenderer latex="\mathbb{P}(\Omega) = 1" /></span></li>
-                  <li><span className="inline-block align-middle"><LatexRenderer latex="\mathbb{P}(\bigcup_{i \in I} A_i) = \sum_{i \in I} \mathbb{P}(A_i)" /></span> pour <span className="inline-block align-middle"><LatexRenderer latex="(A_i)" /></span> incompatibles</li>
-                </ul>
-              </li>
-              <li>Le triplet <span className="inline-block align-middle"><LatexRenderer latex="(\Omega, \mathcal{A}, \mathbb{P})" /></span> est un espace probabilisé</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold mb-3">Formules essentielles</h3>
-            <div className="space-y-4">
-              <div>
-                <p className="font-medium mb-2">Formule du crible (2 événements)</p>
-                <div className="my-4 flex justify-center">
-                  <LatexRenderer latex="\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)" />
-                </div>
-              </div>
-              <div>
-                <p className="font-medium mb-2">Équiprobabilité</p>
-                <p className="text-slate-700">Si <span className="inline-block align-middle"><LatexRenderer latex="\mathbb{P}(\{\omega\}) = 1/|\Omega|" /></span>, alors :</p>
-                <div className="my-4 flex justify-center">
-                  <LatexRenderer latex="\mathbb{P}(A) = \frac{|A|}{|\Omega|}" />
-                </div>
-              </div>
+        {/* Section 3 - Indépendance */}
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
+          <CardHeader className="bg-slate-50 border-b border-slate-100">
+            <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
+              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
+              <span className="font-semibold">Indépendance</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-8 pt-6">
+            <div>
+              <ul className="list-disc list-inside space-y-4 text-slate-700 ml-2">
+                <li>
+                  <strong>Deux événements :</strong> <LatexRenderer latex="A \text{ et } B" /> indépendants si <LatexRenderer latex="\mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B)" />.
+                </li>
+                <li>
+                  <strong>Famille d'événements :</strong> Mutuellement indépendants si pour tout sous-ensemble d'indices <LatexRenderer latex="J" />, <LatexRenderer latex="\mathbb{P}(\bigcap_{j \in J} A_j) = \prod_{j \in J} \mathbb{P}(A_j)" />.
+                </li>
+                <li>
+                  <strong>Attention :</strong> L'indépendance deux à deux n'implique pas l'indépendance mutuelle.
+                </li>
+              </ul>
             </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
 
-      {/* Section 3: Conditionnement et indépendance */}
-      <Card className="border-0 shadow-lg">
-        <CardHeader>
-          <CardTitle className="text-2xl font-bold text-blue-600">
-            3. Conditionnement et indépendance
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div>
-            <h3 className="text-lg font-semibold mb-3">Définitions</h3>
-            <ul className="list-disc list-inside space-y-2 text-slate-700">
-              <li>Probabilité conditionnelle : Si <span className="inline-block align-middle"><LatexRenderer latex="\mathbb{P}(B) > 0" /></span>, alors <span className="inline-block align-middle"><LatexRenderer latex="\mathbb{P}_B(A) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}" /></span></li>
-              <li>Indépendance : <span className="inline-block align-middle"><LatexRenderer latex="A" /></span> et <span className="inline-block align-middle"><LatexRenderer latex="B" /></span> sont indépendants si <span className="inline-block align-middle"><LatexRenderer latex="\mathbb{P}(A \cap B) = \mathbb{P}(A) \mathbb{P}(B)" /></span></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold mb-3">Formules clés</h3>
-            <div className="space-y-4">
-              <div>
-                <p className="font-medium mb-2">Probabilités composées</p>
-                <div className="my-4 flex justify-center">
-                  <LatexRenderer latex="\mathbb{P}\!\Bigl(\bigcap_{k=1}^n A_k\Bigr) = \mathbb{P}(A_1) \mathbb{P}_{A_1}(A_2) \cdots \mathbb{P}_{A_1 \cap \dots \cap A_{n-1}}(A_n)" />
-                </div>
-              </div>
-              <div>
-                <p className="font-medium mb-2">Formule de Bayes</p>
-                <div className="my-4 flex justify-center">
-                  <LatexRenderer latex="\mathbb{P}_B(A) = \frac{\mathbb{P}(A) \mathbb{P}_A(B)}{\mathbb{P}(B)}" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold mb-3">Théorèmes importants</h3>
-            <ul className="list-disc list-inside space-y-2 text-slate-700">
-              <li><strong>Propriété conditionnelle</strong> : <span className="inline-block align-middle"><LatexRenderer latex="\mathbb{P}_B(\Omega) = 1" /></span>, <span className="inline-block align-middle"><LatexRenderer latex="\mathbb{P}_B(A^{\complement}) = 1 - \mathbb{P}_B(A)" /></span></li>
-              <li><strong>Indépendance complémentaire</strong> : Si <span className="inline-block align-middle"><LatexRenderer latex="A" /></span> et <span className="inline-block align-middle"><LatexRenderer latex="B" /></span> sont indépendants, <span className="inline-block align-middle"><LatexRenderer latex="A" /></span> l'est de <span className="inline-block align-middle"><LatexRenderer latex="B^{\complement}" /></span></li>
-            </ul>
-          </div>
-        </CardContent>
-      </Card>
+      </div>
     </MathChapterTemplate>
   );
 };

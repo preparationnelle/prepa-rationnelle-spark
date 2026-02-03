@@ -108,6 +108,10 @@ const MathsApprofondiesQuizPage: React.FC = () => {
       subject="maths"
       previousChapter={previousChapter}
       nextChapter={nextChapter}
+      activeSection="quiz"
+      slug={slug}
+      showNavigation={true}
+      titleClassName="text-slate-800"
     >
       <MathQuiz
         title={`Quiz — ${meta.title}`}

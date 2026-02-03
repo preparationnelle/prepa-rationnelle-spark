@@ -10,8 +10,15 @@ interface FlashcardData {
   word_fr: string;
   sentence_en: string;
   sentence_fr: string;
+  front?: string | null;
+  back?: string | null;
+  hint?: string | null;
+  category?: string | null;
+  tags?: string[] | null;
+  source?: string | null;
   created_at: string;
 }
+
 
 interface ReviewData {
   id?: string;
@@ -36,7 +43,7 @@ export const useFlashcardReview = (language: 'fr' | 'en', refreshTrigger?: numbe
   // Algorithme de répétition espacée amélioré
   const calculateNextReviewDate = (difficulty: number, correct: boolean, reviewCount: number): Date => {
     let intervalHours: number;
-    
+
     if (correct) {
       // Si correct, augmenter l'intervalle basé sur la facilité (inverse de la difficulté)
       const easeFactor = Math.max(1.3, 2.5 - (difficulty * 0.3));
@@ -84,7 +91,7 @@ export const useFlashcardReview = (language: 'fr' | 'en', refreshTrigger?: numbe
 
     try {
       setIsLoading(true);
-      
+
       // Load flashcards
       const { data: flashcardsData, error: flashcardsError } = await supabase
         .from('flashcards')
@@ -109,14 +116,14 @@ export const useFlashcardReview = (language: 'fr' | 'en', refreshTrigger?: numbe
       }
 
       setFlashcards(flashcardsData || []);
-      
+
       const reviewMap = new Map<string, ReviewData>();
       reviewsData?.forEach(review => {
         const validStatuses = ['new', 'learning', 'review', 'mastered'] as const;
-        const status = validStatuses.includes(review.status as any) 
+        const status = validStatuses.includes(review.status as any)
           ? (review.status as 'new' | 'learning' | 'review' | 'mastered')
           : 'new';
-          
+
         reviewMap.set(review.flashcard_id, {
           id: review.id,
           status,
@@ -161,7 +168,7 @@ export const useFlashcardReview = (language: 'fr' | 'en', refreshTrigger?: numbe
 
     // Déterminer le statut
     let status: 'new' | 'learning' | 'review' | 'mastered' = 'learning';
-    
+
     // Une carte est maîtrisée si elle a été vue plusieurs fois avec succès et a une faible difficulté
     if (newDifficulty === 0 && correctCount >= 3 && reviewCount >= 3) {
       status = 'mastered';
@@ -212,13 +219,13 @@ export const useFlashcardReview = (language: 'fr' | 'en', refreshTrigger?: numbe
       nextCard();
 
       // Messages d'encouragement plus détaillés
-      const nextReviewText = nextReviewDate.getTime() - Date.now() < 24 * 60 * 60 * 1000 
+      const nextReviewText = nextReviewDate.getTime() - Date.now() < 24 * 60 * 60 * 1000
         ? language === 'fr' ? 'bientôt' : 'soon'
         : language === 'fr' ? `dans ${Math.ceil((nextReviewDate.getTime() - Date.now()) / (24 * 60 * 60 * 1000))} jour(s)` : `in ${Math.ceil((nextReviewDate.getTime() - Date.now()) / (24 * 60 * 60 * 1000))} day(s)`;
 
       toast({
         title: correct ? "✅ Acquis !" : "❌ À revoir",
-        description: correct 
+        description: correct
           ? (language === 'fr' ? `Parfait ! Prochaine révision ${nextReviewText}` : `Perfect! Next review ${nextReviewText}`)
           : (language === 'fr' ? `Cette carte reviendra ${nextReviewText}` : `This card will return ${nextReviewText}`),
       });

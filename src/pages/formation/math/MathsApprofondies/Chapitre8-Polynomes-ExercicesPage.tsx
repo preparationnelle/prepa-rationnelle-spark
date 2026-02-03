@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ChevronRight, Home, BookOpen } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ChevronDown, ChevronUp, Star, BookOpen, Lightbulb, Crown } from 'lucide-react';
 import { LatexRenderer } from '@/components/LatexRenderer';
+import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
 
 const Chapitre8PolynomesExercicesPage = () => {
-  const [visibleCorrections, setVisibleCorrections] = useState<{[key: string]: boolean}>({});
+  const [visibleCorrections, setVisibleCorrections] = useState<{ [key: string]: boolean }>({});
 
   const toggleCorrection = (exerciseId: string) => {
     setVisibleCorrections(prev => ({
@@ -15,553 +15,275 @@ const Chapitre8PolynomesExercicesPage = () => {
     }));
   };
 
-  const DifficultyHeader = ({ 
-    level, 
-    title, 
-    icon: Icon, 
-  }: { 
-    level: string; 
-    title: string; 
-    icon: any; 
+  const DifficultyHeader = ({
+    level,
+    title,
+    icon: Icon,
+    stars,
+    color = "slate"
+  }: {
+    level: string;
+    title: string;
+    icon: any;
+    stars: number;
+    color?: string;
   }) => (
-    <div className="bg-gradient-to-r from-blue-100 to-blue-50 border-l-4 border-blue-500 p-6 mb-6 rounded-r-lg shadow-sm">
-      <div className="flex items-center gap-3">
-        <div className="p-2 bg-blue-500 text-white rounded-lg">
-          <Icon className="w-6 h-6" />
-        </div>
-        <div>
-          <h2 className="text-2xl font-bold text-gray-800">{level} : {title}</h2>
+    <div className="flex items-center gap-4 mb-6 mt-8 pb-4 border-b border-slate-200">
+      <div className={`p-2 bg-slate-50 text-slate-700 rounded-lg border border-slate-200`}>
+        <Icon className="w-5 h-5" />
+      </div>
+      <div>
+        <h2 className="text-xl font-bold text-slate-800">{level} : {title}</h2>
+        <div className="flex gap-1 mt-1">
+          {[...Array(stars)].map((_, i) => (
+            <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+          ))}
+          {[...Array(4 - stars)].map((_, i) => (
+            <Star key={i} className="w-4 h-4 text-slate-200" />
+          ))}
         </div>
       </div>
     </div>
   );
 
-  const ExerciseCard = ({ 
-    id, 
-    title, 
-    content, 
-    correction, 
-    difficulty 
-  }: { 
-    id: string; 
-    title: string; 
-    content: React.ReactNode; 
-    correction: React.ReactNode; 
-    difficulty: string; 
+  const ExerciseCard = ({
+    id,
+    title,
+    content,
+    correction,
+    difficulty
+  }: {
+    id: string;
+    title: string;
+    content: React.ReactNode;
+    correction: React.ReactNode;
+    difficulty: string;
   }) => (
-    <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
+    <Card className="mb-6 border border-slate-200 shadow-sm hover:shadow-md transition-all duration-200 bg-white">
       <div className="p-6">
-        <div className="flex items-start gap-3 mb-4">
-          <div className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">
-            {title}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+          <div className="flex items-center gap-3">
+            <div className="h-8 w-8 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 font-semibold text-sm">
+              {id.replace(/[^0-9]/g, '')}
+            </div>
+            <h3 className="font-semibold text-slate-900 text-lg">{title}</h3>
           </div>
-          <div className="text-xs text-blue-500 bg-blue-50 px-2 py-1 rounded">
+          <span className="text-xs font-medium text-slate-500 bg-slate-50 px-3 py-1 rounded-full border border-slate-100">
             {difficulty}
-          </div>
+          </span>
         </div>
-        
-        <div className="mb-4">
+
+        <div className="mb-6 text-slate-700 leading-relaxed pl-1">
           {content}
         </div>
-        
-        <Button
-          onClick={() => toggleCorrection(id)}
-          variant={visibleCorrections[id] ? "secondary" : "default"}
-          className="mb-4"
-        >
-          {visibleCorrections[id] ? "Masquer la correction" : "Afficher la correction"}
-        </Button>
-        
-        {visibleCorrections[id] && (
-          <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-r-lg">
-            <h4 className="font-semibold text-green-800 mb-2">Corrigé détaillé</h4>
-            <div className="text-green-800">
-              {correction}
+
+        <div className="flex flex-col gap-4">
+          <Button
+            onClick={() => toggleCorrection(id)}
+            variant="ghost"
+            size="sm"
+            className="w-fit text-slate-500 hover:text-slate-900 hover:bg-slate-50 self-start -ml-2"
+          >
+            {visibleCorrections[id] ? (
+              <>
+                <ChevronUp className="mr-2 h-4 w-4" />
+                Masquer la correction
+              </>
+            ) : (
+              <>
+                <ChevronDown className="mr-2 h-4 w-4" />
+                Afficher la correction
+              </>
+            )}
+          </Button>
+
+          {visibleCorrections[id] && (
+            <div className="bg-slate-50 border-l-2 border-emerald-500 p-6 rounded-r-lg animate-in fade-in slide-in-from-top-2 duration-300">
+              <h4 className="font-semibold text-emerald-800 mb-3 text-sm uppercase tracking-wider">Solution détaillée</h4>
+              <div className="text-slate-700 leading-relaxed space-y-2">
+                {correction}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </Card>
   );
 
   return (
-    <div className="min-h-screen bg-[#EEF3FC]">
-      {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-[#2D5BFF]">
-            <Link to="/" className="flex items-center gap-1 hover:text-[#1e3a8a] transition-colors">
-              <Home className="h-3 w-3" />
-              <span>Accueil</span>
-            </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formations" className="hover:text-[#1e3a8a] transition-colors">
-              Toutes les formations
-            </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formation/maths-choix" className="hover:text-[#1e3a8a] transition-colors">
-              Choix option Maths
-            </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formation/maths-approfondies" className="hover:text-[#1e3a8a] transition-colors">
-              Maths Approfondies
-            </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <span className="text-[#2D5BFF] font-bold">Exercices - Chapitre 8</span>
-          </div>
+    <MathChapterTemplate
+      chapterNumber={8}
+      chapterTitle="Polynômes"
+      description="Exercices sur les racines, factorisations, et suites de polynômes."
+      slug="polynomes"
+      activeSection="exercises"
+      titleClassName="text-slate-800"
+      showNavigation={true}
+      previousChapter={{
+        slug: "nuplets-variables-aleatoires",
+        title: "n-uplets de variables aléatoires"
+      }}
+      nextChapter={{
+        slug: "couple-variables-aleatoires",
+        title: "Couple de variables aléatoires"
+      }}
+    >
+      <div className="space-y-8">
+
+        {/* Module 1 */}
+        <div>
+          <DifficultyHeader
+            level="Module 1"
+            title="Racines & Factorisation"
+            icon={BookOpen}
+            stars={1}
+          />
+
+          <ExerciseCard
+            id="ex1"
+            title="Exercice 1"
+            difficulty="Moyen"
+            content={
+              <div>
+                <p>Déterminer les racines réelles et factoriser les polynômes suivants :</p>
+                <div className="list-decimal pl-6 mt-4 space-y-2">
+                  <p>1. <LatexRenderer latex="P(x) = x^3 - 8" /></p>
+                  <p>2. <LatexRenderer latex="P(x) = x^3 - 3x^2 + 3x - 2" /></p>
+                  <p>3. <LatexRenderer latex="P(x) = 2x^3 - x^2 - 2x + 1" /></p>
+                  <p>4. <LatexRenderer latex="P(x) = x^3 - 2x^2 - 5x + 6" /></p>
+                  <p>5. <LatexRenderer latex="P(x) = x^4 - 5x^3 + 7x^2 - 3x" /></p>
+                  <p>6. <LatexRenderer latex="P(x) = x^4 - 2x^2 + 1" /></p>
+                </div>
+              </div>
+            }
+            correction={
+              <div className="space-y-4">
+                <p>1. <LatexRenderer latex="x^3-8 = (x-2)(x^2+2x+4)" />. Racine : 2. (Discriminant second facteur négatif).</p>
+                <p>2. <LatexRenderer latex="x=2" /> racine évidente. <LatexRenderer latex="(x-2)(x^2-x+1)" />. Racine : 2.</p>
+                <p>3. Racines évidentes 1, -1. <LatexRenderer latex="(x-1)(x+1)(2x-1)" />. Racines : -1, 1/2, 1.</p>
+                <p>4. Racine 1. <LatexRenderer latex="(x-1)(x^2-x-6) = (x-1)(x-3)(x+2)" />. Racines : -2, 1, 3.</p>
+                <p>5. <LatexRenderer latex="x(x-1)^2(x-3)" />. Racines : 0, 1 (double), 3.</p>
+                <p>6. Identité remarquable (bicarrée) : <LatexRenderer latex="(x^2-1)^2 = (x-1)^2(x+1)^2" />. Racines : 1 (double), -1 (double).</p>
+              </div>
+            }
+          />
         </div>
-      </nav>
 
-      <div className="container mx-auto px-4 py-8">
-        {/* En-tête */}
-        <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-indigo-50 mb-8">
-          <div className="p-8">
-            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4">
-              Exercices - Chapitre 8 : Polynômes
-            </h1>
-            <p className="text-slate-600 text-lg">
-              Exercices progressifs pour maîtriser la recherche de racines et la factorisation de polynômes.
-            </p>
-          </div>
-        </Card>
+        {/* Module 2 */}
+        <div>
+          <DifficultyHeader
+            level="Module 2"
+            title="Suites de Polynômes"
+            icon={Lightbulb}
+            stars={2}
+          />
 
-        <DifficultyHeader
-          level="Module 1"
-          title="Recherche de racines & factorisation"
-          icon={BookOpen}
-        />
-
-        <ExerciseCard
-          id="ex1"
-          title="Exercice 1"
-          difficulty="Moyen"
-          content={
-            <div>
-              <p>Dans chaque cas, déterminer toutes les racines réelles du polynôme <LatexRenderer latex={"P"} /> et donner la forme factorisée de <LatexRenderer latex={"P(x)"} /> en produit de polynômes de plus petits degrés possibles.</p>
-              <div className="mt-4 space-y-3">
-                <div><strong>1.</strong> <LatexRenderer latex={"P:x\\longmapsto x^{3}-8"} /></div>
-                <div><strong>2.</strong> <LatexRenderer latex={"P:x\\longmapsto x^{3}-3x^{2}+3x-2"} /></div>
-                <div><strong>3.</strong> <LatexRenderer latex={"P:x\\longmapsto 2x^{3}-x^{2}-2x+1"} /></div>
-                <div><strong>4.</strong> <LatexRenderer latex={"P:x\\longmapsto x^{3}-2x^{2}-5x+6"} /></div>
-                <div><strong>5.</strong> <LatexRenderer latex={"P:x\\longmapsto x^{4}-5x^{3}+7x^{2}-3x"} /></div>
-                <div><strong>6.</strong> <LatexRenderer latex={"P:x\\longmapsto x^{4}-2x^{2}+1"} /></div>
-              </div>
-            </div>
-          }
-          correction={
-            <div className="space-y-6">
+          <ExerciseCard
+            id="ex2"
+            title="Exercice 2"
+            difficulty="Difficile"
+            content={
               <div>
-                <strong className="text-blue-600">1. P(x) = x³ - 8 :</strong>
-                <div className="mt-2 space-y-2">
-                  <div><LatexRenderer latex={"x = 2"} /> est racine (théorème de la factorisation immédiate).</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"P(x) = (x-2)(x^{2}+2x+4)"} />
-                  </div>
-                  <div><LatexRenderer latex={"x^{2}+2x+4"} /> n'a pas de racines réelles (discriminant <LatexRenderer latex={"\\Delta = 4-16 < 0"} />).</div>
-                  <div className="text-center bg-blue-50 p-2 rounded">
-                    <strong>Racines réelles :</strong> <LatexRenderer latex={"2"} /><br/>
-                    <LatexRenderer latex={"P(x) = (x-2)(x^{2}+2x+4)"} />
-                  </div>
-                </div>
+                <p>Soit <LatexRenderer latex="P" /> tel que <LatexRenderer latex="P(x+1)=P(x)" /> pour tout <LatexRenderer latex="x" />.</p>
+                <p>Montrer que si <LatexRenderer latex="P" /> a une racine réelle, alors <LatexRenderer latex="P=0" />.</p>
               </div>
+            }
+            correction={
+              <div className="space-y-4">
+                <p>Si <LatexRenderer latex="P(\alpha)=0" />, alors <LatexRenderer latex="P(\alpha+1)=P(\alpha)=0" /> etc.</p>
+                <p>Donc <LatexRenderer latex="\alpha, \alpha+1, \alpha+2, \dots" /> sont toutes racines.</p>
+                <p>Un polynôme non nul ne peut avoir une infinité de racines. Donc <LatexRenderer latex="P=0" />.</p>
+              </div>
+            }
+          />
 
+          <ExerciseCard
+            id="ex3"
+            title="Exercice 3"
+            difficulty="Moyen"
+            content={
               <div>
-                <strong className="text-blue-600">2. P(x) = x³ - 3x² + 3x - 2 :</strong>
-                <div className="mt-2 space-y-2">
-                  <div><LatexRenderer latex={"x = 2"} /> est racine.</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"P(x) = (x-2)(x^{2}-x+1)"} />
-                  </div>
-                  <div><LatexRenderer latex={"x^{2}-x+1"} /> est sans racines réelles (<LatexRenderer latex={"\\Delta = -3 < 0"} />).</div>
-                  <div className="text-center bg-blue-50 p-2 rounded">
-                    <strong>Racines réelles :</strong> <LatexRenderer latex={"2"} /><br/>
-                    <LatexRenderer latex={"P(x) = (x-2)(x^{2}-x+1)"} />
-                  </div>
-                </div>
+                <p>Soit <LatexRenderer latex="P_0=1" /> et <LatexRenderer latex="P_{n+1}(x) = xP_n(x) + 1" />.</p>
+                <p>Déterminer l'expression de <LatexRenderer latex="P_n(x)" />.</p>
               </div>
+            }
+            correction={
+              <div className="space-y-4">
+                <p>Calculons les premiers termes : <LatexRenderer latex="P_1=x+1" />, <LatexRenderer latex="P_2=x^2+x+1" />.</p>
+                <p>Conjecture : <LatexRenderer latex="P_n(x) = \sum_{k=0}^n x^k = \frac{x^{n+1}-1}{x-1}" />.</p>
+                <p>Récurrence facile.</p>
+              </div>
+            }
+          />
 
+          <ExerciseCard
+            id="ex4"
+            title="Exercice 4"
+            difficulty="Moyen"
+            content={
               <div>
-                <strong className="text-blue-600">3. P(x) = 2x³ - x² - 2x + 1 :</strong>
-                <div className="mt-2 space-y-2">
-                  <div><LatexRenderer latex={"x = 1"} /> est racine. Division donne :</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"P(x) = (x-1)(2x^{2}+x-1)"} />
-                  </div>
-                  <div>Résolution de <LatexRenderer latex={"2x^{2}+x-1=0"} /> : <LatexRenderer latex={"\\Delta = 1+8 = 9"} /> ⇒ <LatexRenderer latex={"x = \\frac{-1\\pm3}{4}"} /> soit <LatexRenderer latex={"x = \\frac{1}{2}"} /> et <LatexRenderer latex={"x = -1"} />.</div>
-                  <div className="text-center bg-blue-50 p-2 rounded">
-                    <strong>Racines réelles :</strong> <LatexRenderer latex={"-1, \\frac{1}{2}, 1"} /><br/>
-                    <LatexRenderer latex={"P(x) = (x-1)(2x+1)(x-\\frac{1}{2})"} />
-                  </div>
-                </div>
+                <p>Soit <LatexRenderer latex="P_0=1" /> et <LatexRenderer latex="P_{n+1}(x) = (2x-1)P_n(x)" />.</p>
+                <p>Déterminer l'expression, le degré et le coefficient dominant de <LatexRenderer latex="P_n" />.</p>
               </div>
+            }
+            correction={
+              <div className="space-y-4">
+                <p>Suite géométrique de raison <LatexRenderer latex="(2x-1)" />.</p>
+                <p><LatexRenderer latex="P_n(x) = (2x-1)^n" />.</p>
+                <p>Degré : <LatexRenderer latex="n" />. Coefficient dominant : <LatexRenderer latex="2^n" />.</p>
+              </div>
+            }
+          />
+        </div>
 
+        {/* Module 3 */}
+        <div>
+          <DifficultyHeader
+            level="Module 3"
+            title="Problèmes avancés"
+            icon={Crown}
+            stars={3}
+          />
+
+          <ExerciseCard
+            id="ex5"
+            title="Exercice 5"
+            difficulty="Difficile"
+            content={
               <div>
-                <strong className="text-blue-600">4. P(x) = x³ - 2x² - 5x + 6 :</strong>
-                <div className="mt-2 space-y-2">
-                  <div><LatexRenderer latex={"x = 3"} /> est racine. Division : <LatexRenderer latex={"(x-3)(x^{2}+x-2)"} />.</div>
-                  <div><LatexRenderer latex={"x^{2}+x-2 = (x-1)(x+2)"} /> ⇒ racines <LatexRenderer latex={"-2"} /> et <LatexRenderer latex={"1"} />.</div>
-                  <div className="text-center bg-blue-50 p-2 rounded">
-                    <strong>Racines réelles :</strong> <LatexRenderer latex={"-2, 1, 3"} /><br/>
-                    <LatexRenderer latex={"P(x) = (x-3)(x-1)(x+2)"} />
-                  </div>
-                </div>
+                <p>Trouver <LatexRenderer latex="P \in \mathbb{R}_3[X]" /> tel que <LatexRenderer latex="P(x+1)-P(x)=x^2" />. En déduire la somme des carrés.</p>
               </div>
+            }
+            correction={
+              <div className="space-y-4">
+                <p>On pose <LatexRenderer latex="P(x)=ax^3+bx^2+cx+d" />. Identification donne <LatexRenderer latex="a=1/3, b=-1/2, c=1/6" />.</p>
+                <p><LatexRenderer latex="\sum k^2 = \sum (P(k+1)-P(k)) = P(n+1)-P(0)" /> (Télescopage).</p>
+                <p>Résultat : <LatexRenderer latex="\frac{n(n+1)(2n+1)}{6}" />.</p>
+              </div>
+            }
+          />
 
+          <ExerciseCard
+            id="ex6"
+            title="Exercice 6"
+            difficulty="Difficile"
+            content={
               <div>
-                <strong className="text-blue-600">5. P(x) = x⁴ - 5x³ + 7x² - 3x :</strong>
-                <div className="mt-2 space-y-2">
-                  <div>Factorisation par <LatexRenderer latex={"x"} /> : <LatexRenderer latex={"x(x^{3}-5x^{2}+7x-3)"} />.</div>
-                  <div>Dans le cube, <LatexRenderer latex={"x = 1"} /> est racine : <LatexRenderer latex={"(x-1)(x^{2}-4x+3)"} />.</div>
-                  <div><LatexRenderer latex={"x^{2}-4x+3 = (x-1)(x-3)"} />.</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"P(x) = x(x-1)^{2}(x-3)"} />
-                  </div>
-                  <div className="text-center bg-blue-50 p-2 rounded">
-                    <strong>Racines réelles :</strong> <LatexRenderer latex={"0, 1"} /> (multiplicité 2), <LatexRenderer latex={"3"} />
-                  </div>
-                </div>
+                <p>Calculer <LatexRenderer latex="\sum_{k=0}^n k \binom{n}{k}" /> en dérivant <LatexRenderer latex="(x+1)^n" />.</p>
               </div>
-
-              <div>
-                <strong className="text-blue-600">6. P(x) = x⁴ - 2x² + 1 :</strong>
-                <div className="mt-2 space-y-2">
-                  <div>Écriture en carré : <LatexRenderer latex={"x^{4}-2x^{2}+1 = (x^{2}-1)^{2}"} />.</div>
-                  <div>Puis <LatexRenderer latex={"x^{2}-1 = (x-1)(x+1)"} />.</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"P(x) = (x-1)^{2}(x+1)^{2}"} />
-                  </div>
-                  <div className="text-center bg-blue-50 p-2 rounded">
-                    <strong>Racines réelles :</strong> <LatexRenderer latex={"-1"} /> (multiplicité 2), <LatexRenderer latex={"1"} /> (multiplicité 2)
-                  </div>
-                </div>
+            }
+            correction={
+              <div className="space-y-4">
+                <p>Dérivée de <LatexRenderer latex="(x+1)^n" /> est <LatexRenderer latex="n(x+1)^{n-1}" />.</p>
+                <p>Dérivée de <LatexRenderer latex="\sum \binom{n}{k} x^k" /> est <LatexRenderer latex="\sum k \binom{n}{k} x^{k-1}" />.</p>
+                <p>En <LatexRenderer latex="x=1" /> : <LatexRenderer latex="n 2^{n-1} = \sum k \binom{n}{k}" />.</p>
               </div>
-            </div>
-          }
-        />
-
-        <ExerciseCard
-          id="ex2"
-          title="Exercice 2"
-          difficulty="Difficile"
-          content={
-            <div>
-              <p>Soit <LatexRenderer latex={"P"} /> un polynôme réel tel que pour tout <LatexRenderer latex={"x \\in \\mathbb{R}"} /> on ait :</p>
-              <div className="text-center my-4">
-                <LatexRenderer latex={"P(x+1) = P(x)"} />
-              </div>
-              <p>Montrer que si <LatexRenderer latex={"P"} /> admet (au moins) une racine réelle, alors <LatexRenderer latex={"P"} /> est le polynôme nul.</p>
-            </div>
-          }
-          correction={
-            <div className="space-y-4">
-              <div>
-                <strong className="text-blue-600">1. Le décalage d'une racine est encore racine :</strong>
-                <div className="mt-2 space-y-2">
-                  <div>Soit <LatexRenderer latex={"\\alpha \\in \\mathbb{R}"} /> tel que <LatexRenderer latex={"P(\\alpha) = 0"} />. Alors, en utilisant la périodicité :</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"P(\\alpha+1) = P(\\alpha) = 0"} />
-                  </div>
-                  <div>Par récurrence immédiate, on obtient :</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"\\forall n \\in \\mathbb{N}, \\quad P(\\alpha+n) = 0"} />
-                  </div>
-                  <div>Ainsi <LatexRenderer latex={"P"} /> possède une infinité de racines distinctes (la suite <LatexRenderer latex={"(\\alpha+n)_{n \\in \\mathbb{N}}"} /> est strictement croissante).</div>
-                </div>
-              </div>
-
-              <div>
-                <strong className="text-blue-600">2. Un polynôme non nul ne peut avoir qu'un nombre fini de racines :</strong>
-                <div className="mt-2 space-y-2">
-                  <div>Un polynôme réel (non nul) de degré <LatexRenderer latex={"d"} /> ne peut admettre plus de <LatexRenderer latex={"d"} /> racines réelles distinctes (théorème fondamental de l'algèbre).</div>
-                  <div>Comme <LatexRenderer latex={"P"} /> possède une infinité de racines, la seule possibilité est que son degré soit <LatexRenderer latex={"-\\infty"} />, c'est-à-dire que le polynôme soit identiquement nul.</div>
-                </div>
-              </div>
-
-              <div className="text-center bg-blue-50 p-2 rounded">
-                <strong>Conclusion :</strong><br/>
-                <LatexRenderer latex={"P \\text{ périodique de période } 1 \\wedge \\exists \\alpha, P(\\alpha) = 0 \\Longrightarrow P \\equiv 0"} />
-              </div>
-
-              <div className="mt-4 p-3 bg-gray-50 rounded">
-                <p className="text-gray-700 italic"><strong>Remarque :</strong> Plus généralement, tout polynôme périodique (de période non nulle) est constant ; s'il possède une racine, il est donc nul.</p>
-              </div>
-            </div>
-          }
-        />
-
-        <ExerciseCard
-          id="ex3"
-          title="Exercice 3"
-          difficulty="Moyen"
-          content={
-            <div>
-              <p>On considère la suite <LatexRenderer latex={"(P_n)"} /> de polynômes de <LatexRenderer latex={"\\mathbb{R}[x]"} /> définie par :</p>
-              <div className="text-center my-4">
-                <LatexRenderer latex={"\\begin{cases} P_0(x) = 1 \\\\ \\forall n \\in \\mathbb{N}, \\forall x \\in \\mathbb{R}, P_{n+1}(x) = x P_n(x) + 1 \\end{cases}"} />
-              </div>
-              <div className="mt-4 space-y-2">
-                <div><strong>1.</strong> Déterminer les polynômes <LatexRenderer latex={"P_1, P_2"} /> et <LatexRenderer latex={"P_3"} />.</div>
-                <div><strong>2.</strong> Déterminer, pour tout <LatexRenderer latex={"n \\in \\mathbb{N}"} />, l'expression de <LatexRenderer latex={"P_n"} />.</div>
-              </div>
-            </div>
-          }
-          correction={
-            <div className="space-y-4">
-              <div>
-                <strong className="text-blue-600">1. Calcul des premiers termes :</strong>
-                <div className="mt-2 space-y-2">
-                  <div className="text-center space-y-1">
-                    <div><LatexRenderer latex={"P_1(x) = x P_0(x) + 1 = x + 1"} /></div>
-                    <div><LatexRenderer latex={"P_2(x) = x P_1(x) + 1 = x(x+1) + 1 = x^2 + x + 1"} /></div>
-                    <div><LatexRenderer latex={"P_3(x) = x P_2(x) + 1 = x(x^2+x+1) + 1 = x^3 + x^2 + x + 1"} /></div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <strong className="text-blue-600">2. Expression générale de P_n :</strong>
-                <div className="mt-2 space-y-2">
-                  <div>Les premiers calculs suggèrent :</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"P_n(x) = \\sum_{k=0}^{n} x^k \\quad (n \\in \\mathbb{N})"} />
-                  </div>
-                  
-                  <div className="mt-3">
-                    <strong>Preuve par récurrence :</strong>
-                  </div>
-                  <div><strong>Initialisation :</strong> pour <LatexRenderer latex={"n = 0"} />, on a bien <LatexRenderer latex={"P_0(x) = 1 = \\sum_{k=0}^{0} x^k"} />.</div>
-                  <div><strong>Hérédité :</strong> supposons la formule vraie pour un certain <LatexRenderer latex={"n"} /> ; alors</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"P_{n+1}(x) = x P_n(x) + 1 = x \\sum_{k=0}^{n} x^k + 1 = \\sum_{k=0}^{n} x^{k+1} + 1"} />
-                  </div>
-                  <div>En posant <LatexRenderer latex={"i = k+1"} /> dans la somme :</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"\\sum_{k=0}^{n} x^{k+1} = \\sum_{i=1}^{n+1} x^i"} />
-                  </div>
-                  <div>Si bien que :</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"P_{n+1}(x) = \\sum_{i=1}^{n+1} x^i + 1 = \\sum_{i=0}^{n+1} x^i"} />
-                  </div>
-                  
-                  <div className="text-center bg-blue-50 p-2 rounded mt-4">
-                    <strong>Conclusion :</strong><br/>
-                    <LatexRenderer latex={"P_n(x) = \\sum_{k=0}^{n} x^k = \\frac{x^{n+1}-1}{x-1} \\quad (\\text{si } x \\neq 1) ; \\quad P_n(1) = n+1"} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-        />
-
-        <ExerciseCard
-          id="ex4"
-          title="Exercice 4"
-          difficulty="Moyen"
-          content={
-            <div>
-              <p>On considère la suite <LatexRenderer latex={"(P_n)"} /> de polynômes de <LatexRenderer latex={"\\mathbb{R}[x]"} /> définie par :</p>
-              <div className="text-center my-4">
-                <LatexRenderer latex={"\\begin{cases} P_0(x) = 1 \\\\ \\forall n \\in \\mathbb{N}, \\forall x \\in \\mathbb{R}, P_{n+1}(x) = (2x-1) P_n(x) \\end{cases}"} />
-              </div>
-              <div className="mt-4 space-y-2">
-                <div><strong>1.</strong> Déterminer les polynômes <LatexRenderer latex={"P_1, P_2"} /> et <LatexRenderer latex={"P_3"} />.</div>
-                <div><strong>2.</strong> Déterminer, pour tout <LatexRenderer latex={"n \\in \\mathbb{N}"} />, l'expression de <LatexRenderer latex={"P_n"} />.</div>
-                <div><strong>3.</strong> En déduire que, pour tout <LatexRenderer latex={"n \\in \\mathbb{N}"} />, <LatexRenderer latex={"P_n"} /> est un polynôme ; préciser son degré et son coefficient dominant.</div>
-              </div>
-            </div>
-          }
-          correction={
-            <div className="space-y-4">
-              <div>
-                <strong className="text-blue-600">1. Calcul des premiers termes :</strong>
-                <div className="mt-2 space-y-2">
-                  <div className="text-center space-y-1">
-                    <div><LatexRenderer latex={"P_1(x) = (2x-1) P_0(x) = 2x-1"} /></div>
-                    <div><LatexRenderer latex={"P_2(x) = (2x-1) P_1(x) = (2x-1)^2"} /></div>
-                    <div><LatexRenderer latex={"P_3(x) = (2x-1) P_2(x) = (2x-1)^3"} /></div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <strong className="text-blue-600">2. Expression générale :</strong>
-                <div className="mt-2 space-y-2">
-                  <div>Les premiers termes suggèrent :</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"P_n(x) = (2x-1)^n \\quad (n \\in \\mathbb{N})"} />
-                  </div>
-                  
-                  <div className="mt-3">
-                    <strong>Preuve par récurrence :</strong>
-                  </div>
-                  <div><strong>Initialisation :</strong> pour <LatexRenderer latex={"n = 0"} />, <LatexRenderer latex={"P_0(x) = 1 = (2x-1)^0"} /> (vrai).</div>
-                  <div><strong>Hérédité :</strong> supposons <LatexRenderer latex={"P_n(x) = (2x-1)^n"} />. Alors</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"P_{n+1}(x) = (2x-1) P_n(x) = (2x-1) \\cdot (2x-1)^n = (2x-1)^{n+1}"} />
-                  </div>
-                  <div>La propriété est donc vraie pour <LatexRenderer latex={"n+1"} /> ; par récurrence, la formule est établie pour tout <LatexRenderer latex={"n \\in \\mathbb{N}"} />.</div>
-                </div>
-              </div>
-
-              <div>
-                <strong className="text-blue-600">3. Degré et coefficient dominant :</strong>
-                <div className="mt-2 space-y-2">
-                  <div>D'après <LatexRenderer latex={"P_n(x) = (2x-1)^n"} /> :</div>
-                  <div>• <LatexRenderer latex={"\\deg P_n = n \\cdot \\deg(2x-1) = n \\times 1 = n"} /></div>
-                  <div>• Le terme dominant est <LatexRenderer latex={"(2x)^n = 2^n x^n"} />, donc le coefficient dominant vaut <LatexRenderer latex={"2^n"} /></div>
-                </div>
-              </div>
-
-              <div className="text-center bg-blue-50 p-2 rounded">
-                <strong>Réponse synthétique :</strong><br/>
-                <LatexRenderer latex={"P_n(x) = (2x-1)^n, \\quad \\deg P_n = n, \\quad a_n = 2^n"} />
-              </div>
-            </div>
-          }
-        />
-
-        <ExerciseCard
-          id="ex5"
-          title="Exercice 5"
-          difficulty="Difficile"
-          content={
-            <div>
-              <p>Déterminer un polynôme de degré 3 tel que :</p>
-              <div className="text-center my-4">
-                <LatexRenderer latex={"\\forall x \\in \\mathbb{R}, \\quad P(x+1) - P(x) = x^2"} />
-              </div>
-              <p>En déduire une nouvelle méthode pour démontrer la formule :</p>
-              <div className="text-center my-4">
-                <LatexRenderer latex={"\\sum_{k=0}^n k^2 = \\frac{n(n+1)(2n+1)}{6}"} />
-              </div>
-              <p><strong>Bonus :</strong> En utilisant une méthode similaire mettant en scène un polynôme <LatexRenderer latex={"Q"} /> de degré 5, déterminer une formule pour <LatexRenderer latex={"\\sum_{k=0}^n k^4"} />.</p>
-            </div>
-          }
-          correction={
-            <div className="space-y-6">
-              <div>
-                <strong className="text-blue-600">Recherche du polynôme P :</strong>
-                <div className="mt-2 space-y-2">
-                  <div>On cherche un polynôme <LatexRenderer latex={"P \\in \\mathbb{R}_3[X]"} />, donc :</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"P(x) = ax^3 + bx^2 + cx + d"} />
-                  </div>
-                  <div>Calculons <LatexRenderer latex={"P(x+1) - P(x)"} /> :</div>
-                  <div className="text-center space-y-1">
-                    <div><LatexRenderer latex={"P(x+1) = a(x+1)^3 + b(x+1)^2 + c(x+1) + d"} /></div>
-                    <div><LatexRenderer latex={"= a(x^3 + 3x^2 + 3x + 1) + b(x^2 + 2x + 1) + c(x+1) + d"} /></div>
-                    <div><LatexRenderer latex={"= ax^3 + (3a + b)x^2 + (3a + 2b + c)x + (a + b + c + d)"} /></div>
-                  </div>
-                  <div>Donc :</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"P(x+1) - P(x) = 3a x^2 + (3a + 2b)x + (a + b + c)"} />
-                  </div>
-                  <div>Par identification avec <LatexRenderer latex={"x^2"} />, on obtient :</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"\\begin{cases} 3a = 1 \\\\ 3a + 2b = 0 \\\\ a + b + c = 0 \\end{cases} \\Rightarrow a = \\frac{1}{3}, \\quad b = -\\frac{1}{2}, \\quad c = \\frac{1}{6}"} />
-                  </div>
-                  <div>Donc :</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"P(x) = \\frac{1}{3}x^3 - \\frac{1}{2}x^2 + \\frac{1}{6}x + d"} />
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <strong className="text-blue-600">Calcul de la somme :</strong>
-                <div className="mt-2 space-y-2">
-                  <div>Calculons maintenant <LatexRenderer latex={"\\sum_{k=0}^n k^2"} /> :</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"\\sum_{k=0}^n k^2 = \\sum_{k=0}^n (P(k+1) - P(k)) = P(n+1) - P(0)"} />
-                  </div>
-                  <div>Or :</div>
-                  <div className="text-center space-y-1">
-                    <div><LatexRenderer latex={"P(n+1) = \\frac{1}{3}(n+1)^3 - \\frac{1}{2}(n+1)^2 + \\frac{1}{6}(n+1) + d"} /></div>
-                    <div><LatexRenderer latex={"P(0) = d"} /></div>
-                  </div>
-                  <div>Donc :</div>
-                  <div className="text-center bg-blue-50 p-2 rounded">
-                    <LatexRenderer latex={"P(n+1) - P(0) = \\frac{1}{3}(n+1)^3 - \\frac{1}{2}(n+1)^2 + \\frac{1}{6}(n+1) = \\frac{n(n+1)(2n+1)}{6}"} />
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <strong className="text-blue-600">Bonus - Formule pour ∑k⁴ :</strong>
-                <div className="mt-2 space-y-2">
-                  <div>On cherche un polynôme <LatexRenderer latex={"Q \\in \\mathbb{R}_5[X]"} /> tel que <LatexRenderer latex={"Q(x+1) - Q(x) = x^4"} />.</div>
-                  <div>Par identification, on trouve :</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"Q(x) = \\frac{1}{5}x^5 - \\frac{1}{2}x^4 + \\frac{1}{3}x^3 - \\frac{1}{30}x + f"} />
-                  </div>
-                  <div>Alors :</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"\\sum_{k=0}^n k^4 = Q(n+1) - Q(0)"} />
-                  </div>
-                  <div className="text-center bg-blue-50 p-2 rounded">
-                    <strong>Résultat final :</strong><br/>
-                    <LatexRenderer latex={"\\sum_{k=0}^n k^4 = \\frac{n(n+1)(2n+1)(3n^2 + 3n - 1)}{30}"} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-        />
-
-        <ExerciseCard
-          id="ex6"
-          title="Exercice 6"
-          difficulty="Moyen"
-          content={
-            <div>
-              <p>Soit <LatexRenderer latex={"n \\in \\mathbb{N}^*"} />. On pose <LatexRenderer latex={"P"} /> le polynôme défini sur <LatexRenderer latex={"\\mathbb{R}"} /> par <LatexRenderer latex={"P : x \\mapsto (x + 1)^n"} />. Calculer de deux manières différentes la dérivée <LatexRenderer latex={"P'"} /> de <LatexRenderer latex={"P"} />. En déduire la somme <LatexRenderer latex={"\\sum_{k=0}^{n} k \\binom{n}{k}"} />.</p>
-            </div>
-          }
-          correction={
-            <div className="space-y-4">
-              <div>
-                <strong className="text-blue-600">Première méthode : Dérivation directe :</strong>
-                <div className="mt-2 space-y-2">
-                  <div>La fonction <LatexRenderer latex={"P"} /> est dérivable car polynomiale. On a d'une part :</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"\\forall x \\in \\mathbb{R}, \\quad P'(x) = n (x + 1)^{n-1}"} />
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <strong className="text-blue-600">Deuxième méthode : Développement par le binôme de Newton :</strong>
-                <div className="mt-2 space-y-2">
-                  <div>D'autre part, on peut développer <LatexRenderer latex={"P"} /> à l'aide du binôme de Newton et on obtient :</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"P(x) = \\sum_{k=0}^{n} \\binom{n}{k} x^k \\times (1)^{n-k} = \\sum_{k=0}^{n} \\binom{n}{k} x^k"} />
-                  </div>
-                  <div>Dérivons <LatexRenderer latex={"P"} /> sous sa forme développée, on obtient :</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"\\forall x \\in \\mathbb{R}, \\quad P'(x) = \\sum_{k=0}^{n} \\binom{n}{k} k x^{k-1}"} />
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <strong className="text-blue-600">Égalité des deux expressions :</strong>
-                <div className="mt-2 space-y-2">
-                  <div>On peut alors affirmer que pour tout réel <LatexRenderer latex={"x"} /> :</div>
-                  <div className="text-center">
-                    <LatexRenderer latex={"n (x + 1)^{n-1} = \\sum_{k=0}^{n} \\binom{n}{k} k x^{k-1}"} />
-                  </div>
-                  <div>Évaluons cette égalité pour <LatexRenderer latex={"x = 1"} />, on obtient :</div>
-                  <div className="text-center bg-blue-50 p-2 rounded">
-                    <LatexRenderer latex={"\\sum_{k=0}^{n} k \\binom{n}{k} = n 2^{n-1}"} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-        />
+            }
+          />
+        </div>
 
       </div>
-    </div>
+    </MathChapterTemplate>
   );
 };
 

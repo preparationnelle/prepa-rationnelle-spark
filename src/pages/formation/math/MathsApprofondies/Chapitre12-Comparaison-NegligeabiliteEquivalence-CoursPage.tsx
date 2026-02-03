@@ -1,200 +1,167 @@
-
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { LatexRenderer } from '@/components/LatexRenderer';
-import { BookOpen, Target, Brain, PenTool } from 'lucide-react';
+
+const FormulaBox = ({ children, title }: { children: React.ReactNode, title?: string }) => (
+  <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
+    {title && <p className="font-semibold text-slate-800 mb-2">{title}</p>}
+    <div className="text-center">
+      {children}
+    </div>
+  </div>
+);
 
 const MathsComparaisonsPage = () => {
   return (
     <MathChapterTemplate
       chapterNumber={12}
       chapterTitle="Comparaison — négligeabilité & équivalence"
-      description="Définitions et notations : f=o(g), u_n=o(v_n), f\sim g, u_n\sim v_n ; propriétés : transitivité, compatibilité avec produit, quotient et composition par une puissance entière (mise en garde pour l'addition et pour \ln, \exp,\dots) ; croissances comparées des suites usuelles ((n^{a}),((\ln n)^{b}),(q^{n})) ; équivalents usuels et limites"
+      description="Définitions et notations : f=o(g), u_n=o(v_n), équivalences, croissances comparées et limites."
+      slug="comparaison-negligeabilite-equivalence"
+      activeSection="course"
       showNavigation={true}
-      
+      previousChapter={{
+        slug: "optimisation-multivariee-avancee",
+        title: "Optimisation Multivariée"
+      }}
+      nextChapter={{
+        slug: "convergences-approximations",
+        title: "Convergences & Approximations"
+      }}
     >
-      {/* Navigation vers les ressources */}
-      <Card className="border-0 shadow-lg bg-blue-50 mb-8">
-        <CardContent className="p-6">
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-              <BookOpen className="mr-2 h-4 w-4" />
-              Cours
-            </Button>
-            <Link to="/formation/maths-comparaison-negligeabilite-equivalence-exercices">
-              <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
-                <PenTool className="mr-2 h-4 w-4" />
-                Exercices
-              </Button>
-            </Link>
-            <Link to="/formation/maths-comparaison-negligeabilite-equivalence-flashcards">
-              <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
-                <Brain className="mr-2 h-4 w-4" />
-                Flashcards
-              </Button>
-            </Link>
-            <Link to="/formation/maths-comparaison-negligeabilite-equivalence-quiz">
-              <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
-                <Target className="mr-2 h-4 w-4" />
-                Quiz
-              </Button>
-            </Link>
-          </div>
-        </CardContent>
-      </Card>
+      <div className="space-y-8">
+        {/* Section 1: Négligeabilité */}
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
+          <CardHeader className="bg-slate-50 border-b border-slate-100">
+            <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
+              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
+              <span className="font-semibold">Négligeabilité</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6 pt-6">
+            <div>
+              <p className="text-slate-700 mb-4">
+                Une fonction <LatexRenderer latex="f" /> est négligeable devant <LatexRenderer latex="g" /> au voisinage de <LatexRenderer latex="a" /> si <LatexRenderer latex="f" /> est "beaucoup plus petite" que <LatexRenderer latex="g" />.
+              </p>
 
-      {/* Section 1: Négligeabilité */}
-      <Card className="border-0 shadow-lg">
-        <CardHeader>
-          <CardTitle className="text-2xl font-bold text-blue-600">
-            1. Négligeabilité : fonctions et suites
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div>
-            <h3 className="text-lg font-semibold mb-3">Définitions</h3>
-            <ul className="list-disc list-inside space-y-2 text-slate-700">
-              <li>
-                Une fonction <span className="inline-block align-middle"><LatexRenderer latex="f" /></span> est <em>négligeable</em> devant <span className="inline-block align-middle"><LatexRenderer latex="g" /></span> près de <span className="inline-block align-middle"><LatexRenderer latex="a \in \mathbb{R} \cup \{\pm \infty\}" /></span> si :
-                <div className="ml-6 mt-2">
-                  <span className="inline-block align-middle"><LatexRenderer latex="\exists \varepsilon(x) \to 0 \text{ tel que } f(x) = \varepsilon(x) g(x)" /></span>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-semibold text-slate-800 mb-2">Pour les fonctions</h4>
+                  <FormulaBox>
+                    <LatexRenderer latex="f(x) = o(g(x)) \iff f(x) = g(x)\varepsilon(x) \quad \text{avec } \lim_{x \to a} \varepsilon(x) = 0" />
+                    <div className="mt-2 pt-2 border-t border-slate-200">
+                      <LatexRenderer latex="\iff \lim_{x \to a} \frac{f(x)}{g(x)} = 0 \quad (g \neq 0)" />
+                    </div>
+                  </FormulaBox>
                 </div>
-                <p className="ml-6 mt-1">Notation : <span className="inline-block align-middle"><LatexRenderer latex="f(x) = o(g(x)) (x \to a)" /></span></p>
-              </li>
-              <li>
-                Une suite <span className="inline-block align-middle"><LatexRenderer latex="(u_n)" /></span> est <em>négligeable</em> devant <span className="inline-block align-middle"><LatexRenderer latex="(v_n)" /></span> si :
-                <div className="ml-6 mt-2">
-                  <span className="inline-block align-middle"><LatexRenderer latex="\exists (\varepsilon_n) \to 0 \text{ tel que } u_n = \varepsilon_n v_n" /></span>
+                <div>
+                  <h4 className="font-semibold text-slate-800 mb-2">Pour les suites</h4>
+                  <FormulaBox>
+                    <LatexRenderer latex="u_n = o(v_n) \iff u_n = v_n\varepsilon_n \quad \text{avec } \lim_{n \to \infty} \varepsilon_n = 0" />
+                    <div className="mt-2 pt-2 border-t border-slate-200">
+                      <LatexRenderer latex="\iff \lim_{n \to \infty} \frac{u_n}{v_n} = 0 \quad (v_n \neq 0)" />
+                    </div>
+                  </FormulaBox>
                 </div>
-                <p className="ml-6 mt-1">Notation : <span className="inline-block align-middle"><LatexRenderer latex="u_n = o(v_n) (n \to +\infty)" /></span></p>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold mb-3">Formules essentielles</h3>
-            <ul className="list-disc list-inside space-y-4 text-slate-700">
-              <li>
-                Pour les fonctions : Si <span className="inline-block align-middle"><LatexRenderer latex="g \neq 0" /></span> près de <span className="inline-block align-middle"><LatexRenderer latex="a" /></span>
-                <div className="ml-6 mt-2">
-                  <LatexRenderer latex="f(x) = o(g(x)) \iff \lim_{x \to a} \frac{f(x)}{g(x)} = 0" />
-                </div>
-              </li>
-              <li>
-                Pour les suites : Si <span className="inline-block align-middle"><LatexRenderer latex="v_n \neq 0" /></span> pour <span className="inline-block align-middle"><LatexRenderer latex="n" /></span> assez grand
-                <div className="ml-6 mt-2">
-                  <LatexRenderer latex="u_n = o(v_n) \iff \lim_{n \to \infty} \frac{u_n}{v_n} = 0" />
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold mb-3">Théorèmes importants</h3>
-            <ul className="list-disc list-inside space-y-2 text-slate-700">
-              <li>
-                <strong>Opérations (fonctions)</strong> : Si <span className="inline-block align-middle"><LatexRenderer latex="f = o(h)" /></span> et <span className="inline-block align-middle"><LatexRenderer latex="g = o(h)" /></span>, alors <span className="inline-block align-middle"><LatexRenderer latex="\alpha f + \beta g = o(h)" /></span>
-              </li>
-              <li>
-                <strong>Transitivité</strong> : Si <span className="inline-block align-middle"><LatexRenderer latex="f = o(g)" /></span> et <span className="inline-block align-middle"><LatexRenderer latex="g = o(h)" /></span>, alors <span className="inline-block align-middle"><LatexRenderer latex="f = o(h)" /></span>
-              </li>
-            </ul>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Section 2: Équivalence */}
-      <Card className="border-0 shadow-lg">
-        <CardHeader>
-          <CardTitle className="text-2xl font-bold text-blue-600">
-            2. Équivalence : fonctions et suites
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div>
-            <h3 className="text-lg font-semibold mb-3">Définitions</h3>
-            <ul className="list-disc list-inside space-y-4 text-slate-700">
-              <li>
-                Deux fonctions sont <em>équivalentes</em> près de <span className="inline-block align-middle"><LatexRenderer latex="a" /></span> si :
-                <div className="ml-6 mt-2">
-                  <span className="inline-block align-middle"><LatexRenderer latex="\exists \alpha(x) \to 1 \text{ tel que } f(x) = \alpha(x) g(x)" /></span>
-                </div>
-                <p className="ml-6 mt-1">Notation : <span className="inline-block align-middle"><LatexRenderer latex="f(x) \sim g(x) (x \to a)" /></span></p>
-              </li>
-              <li>
-                Deux suites sont <em>équivalentes</em> si :
-                <div className="ml-6 mt-2">
-                  <span className="inline-block align-middle"><LatexRenderer latex="\exists (\alpha_n) \to 1 \text{ tel que } u_n = \alpha_n v_n" /></span>
-                </div>
-                <p className="ml-6 mt-1">Notation : <span className="inline-block align-middle"><LatexRenderer latex="u_n \sim v_n (n \to +\infty)" /></span></p>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold mb-3">Théorèmes fondamentaux</h3>
-            <ul className="list-disc list-inside space-y-2 text-slate-700">
-              <li>
-                <strong>Lien avec négligeabilité</strong> : <span className="inline-block align-middle"><LatexRenderer latex="f(x) \sim g(x) \iff f(x) = g(x) + o(g(x))" /></span>
-              </li>
-              <li>
-                <strong>Transitivité</strong> : Si <span className="inline-block align-middle"><LatexRenderer latex="f \sim g" /></span> et <span className="inline-block align-middle"><LatexRenderer latex="g \sim h" /></span>, alors <span className="inline-block align-middle"><LatexRenderer latex="f \sim h" /></span>
-              </li>
-              <li>
-                <strong>Opérations</strong> : Si <span className="inline-block align-middle"><LatexRenderer latex="f \sim g" /></span> et <span className="inline-block align-middle"><LatexRenderer latex="h \sim k" /></span>, alors <span className="inline-block align-middle"><LatexRenderer latex="f h \sim g k" /></span>
-              </li>
-            </ul>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Section 3: Équivalents usuels */}
-      <Card className="border-0 shadow-lg">
-        <CardHeader>
-          <CardTitle className="text-2xl font-bold text-blue-600">
-            3. Équivalents usuels et limites
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div>
-            <h3 className="text-lg font-semibold mb-3">Équivalents usuels</h3>
-            <div className="space-y-4">
-              <div>
-                <p className="font-medium mb-2">Pour <span className="inline-block align-middle"><LatexRenderer latex="x \to 0" /></span> :</p>
-                <ul className="list-disc list-inside space-y-2 ml-6 text-slate-700">
-                  <li><span className="inline-block align-middle"><LatexRenderer latex="e^x - 1 \sim x" /></span></li>
-                  <li><span className="inline-block align-middle"><LatexRenderer latex="\ln(1 + x) \sim x" /></span></li>
-                  <li><span className="inline-block align-middle"><LatexRenderer latex="(1 + x)^\alpha - 1 \sim \alpha x" /></span></li>
-                  <li><span className="inline-block align-middle"><LatexRenderer latex="\sin x \sim x" /></span></li>
-                  <li><span className="inline-block align-middle"><LatexRenderer latex="1 - \cos x \sim \frac{x^2}{2}" /></span></li>
-                </ul>
-              </div>
-              <div>
-                <p className="font-medium mb-2">Pour <span className="inline-block align-middle"><LatexRenderer latex="n \to +\infty" /></span> :</p>
-                <ul className="list-disc list-inside space-y-2 ml-6 text-slate-700">
-                  <li><span className="inline-block align-middle"><LatexRenderer latex="\ln n \sim n" /></span></li>
-                  <li><span className="inline-block align-middle"><LatexRenderer latex="n^\alpha \sim q^n" /></span> pour <span className="inline-block align-middle"><LatexRenderer latex="q > 1" /></span></li>
-                </ul>
               </div>
             </div>
-          </div>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-3">Théorèmes sur les limites</h3>
-            <ul className="list-disc list-inside space-y-2 text-slate-700">
-              <li>
-                Si <span className="inline-block align-middle"><LatexRenderer latex="f \sim g" /></span> et <span className="inline-block align-middle"><LatexRenderer latex="\lim_{x \to a} f(x) = \ell" /></span>, alors <span className="inline-block align-middle"><LatexRenderer latex="\lim_{x \to a} g(x) = \ell" /></span>
-              </li>
-              <li>
-                <strong>Réciproque</strong> : Si <span className="inline-block align-middle"><LatexRenderer latex="\lim_{x \to a} f(x) = \ell \neq 0" /></span>, alors <span className="inline-block align-middle"><LatexRenderer latex="f(x) \sim \ell" /></span>
-              </li>
-            </ul>
-          </div>
-        </CardContent>
-      </Card>
+            <div>
+              <h4 className="font-semibold text-slate-800 mb-2">Opérations sur les petits o</h4>
+              <ul className="list-disc list-inside space-y-2 text-slate-700 ml-2">
+                <li><LatexRenderer latex="o(f) + o(f) = o(f)" /></li>
+                <li><LatexRenderer latex="o(f) \times o(g) = o(fg)" /></li>
+                <li><LatexRenderer latex="f \times o(g) = o(fg)" /></li>
+              </ul>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Section 2: Équivalence */}
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
+          <CardHeader className="bg-slate-50 border-b border-slate-100">
+            <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
+              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
+              <span className="font-semibold">Équivalence</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6 pt-6">
+            <div>
+              <p className="text-slate-700 mb-4">
+                Deux fonctions (ou suites) sont équivalentes si elles ont le même comportement asymptotique.
+              </p>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-semibold text-slate-800 mb-2">Définition</h4>
+                  <FormulaBox>
+                    <LatexRenderer latex="f \sim_a g \iff f(x) = g(x)(1 + \varepsilon(x))" />
+                    <div className="mt-2 pt-2 border-t border-slate-200">
+                      <LatexRenderer latex="\iff \lim_{x \to a} \frac{f(x)}{g(x)} = 1" />
+                    </div>
+                  </FormulaBox>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-slate-800 mb-2">Lien avec les petits o</h4>
+                  <FormulaBox>
+                    <LatexRenderer latex="f \sim_a g \iff f = g + o(g)" />
+                  </FormulaBox>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-semibold text-slate-800 mb-2">Propriétés fondamentales</h4>
+              <ul className="list-disc list-inside space-y-2 text-slate-700 ml-2">
+                <li>Compatibilité avec le produit, le quotient, et les puissances fixes.</li>
+                <li><strong className="text-red-600">ATTENTION :</strong> Pas de compatibilité avec l'addition (somme) ni la composition (ex: exponentielle) en général.</li>
+                <li>Si <LatexRenderer latex="f \sim g" /> et <LatexRenderer latex="\lim g = \ell" />, alors <LatexRenderer latex="\lim f = \ell" />.</li>
+              </ul>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Section 3: Équivalents usuels */}
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
+          <CardHeader className="bg-slate-50 border-b border-slate-100">
+            <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
+              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
+              <span className="font-semibold">Équivalents usuels (en 0)</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6 pt-6">
+            <div className="grid md:grid-cols-3 gap-4">
+              <FormulaBox>
+                <LatexRenderer latex="e^x - 1 \sim_0 x" />
+              </FormulaBox>
+              <FormulaBox>
+                <LatexRenderer latex="\ln(1+x) \sim_0 x" />
+              </FormulaBox>
+              <FormulaBox>
+                <LatexRenderer latex="\sin(x) \sim_0 x" />
+              </FormulaBox>
+              <FormulaBox>
+                <LatexRenderer latex="\tan(x) \sim_0 x" />
+              </FormulaBox>
+              <FormulaBox>
+                <LatexRenderer latex="1 - \cos(x) \sim_0 \frac{x^2}{2}" />
+              </FormulaBox>
+              <FormulaBox>
+                <LatexRenderer latex="(1+x)^\alpha - 1 \sim_0 \alpha x" />
+              </FormulaBox>
+            </div>
+
+            <div className="mt-6">
+              <h4 className="font-semibold text-slate-800 mb-2">Croissances comparées (en <LatexRenderer latex="+\infty" />)</h4>
+              <FormulaBox>
+                <LatexRenderer latex="\ln(x) \ll x^\alpha \ll e^{\beta x} \quad (\alpha > 0, \beta > 0)" />
+                <br />
+                <span className="text-sm text-slate-600">Le logarithme est négligeable devant la puissance, qui est négligeable devant l'exponentielle.</span>
+              </FormulaBox>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </MathChapterTemplate>
   );
 };

@@ -50,7 +50,7 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
 
   const checkAnswer = () => {
     if (selectedAnswer === null) return;
-    
+
     const isCorrect = selectedAnswer === questions[currentQuestion].correctAnswer;
     const newAnswers = [...answers];
     newAnswers[currentQuestion] = isCorrect;
@@ -104,11 +104,11 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
               Score: {Math.round((score / questions.length) * 100)}%
             </Badge>
             <p className="text-black text-lg">
-              {score === questions.length 
-                ? "Parfait ! Vous maîtrisez parfaitement ce chapitre." 
+              {score === questions.length
+                ? "Parfait ! Vous maîtrisez parfaitement ce chapitre."
                 : score >= questions.length * 0.7
-                ? "Très bien ! Quelques révisions et ce sera parfait."
-                : "Continuez à vous entraîner, vous y arriverez !"}
+                  ? "Très bien ! Quelques révisions et ce sera parfait."
+                  : "Continuez à vous entraîner, vous y arriverez !"}
             </p>
             <Button onClick={resetQuiz} className="mt-4 bg-blue-600 hover:bg-blue-700 text-white">
               <RotateCcw className="h-4 w-4 mr-2" />
@@ -121,15 +121,15 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
   }
 
   return (
-    <Card className="mt-8 border-0 shadow-xl bg-blue-50">
-      <CardHeader className="bg-blue-600 text-white">
+    <Card className="mt-8 border border-slate-200 shadow-sm bg-white">
+      <CardHeader className="bg-white border-b border-slate-100 pb-6">
         <div className="flex justify-between items-center">
           <div>
-            <CardTitle className="text-xl">{title}</CardTitle>
-            <p className="text-sm opacity-90">Chapitre {chapterNumber} : {chapterTitle}</p>
+            <CardTitle className="text-xl text-slate-800">{title}</CardTitle>
+            <p className="text-sm text-slate-500 mt-1">Chapitre {chapterNumber} : {chapterTitle}</p>
           </div>
           <div className="flex items-center gap-3">
-            <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+            <Badge variant="outline" className="bg-slate-50 text-slate-700 border-slate-200">
               {currentQuestion + 1} / {questions.length}
             </Badge>
             {/* Menu déroulant pour navigation rapide */}
@@ -138,26 +138,25 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
                 onClick={() => setShowQuestionMenu(!showQuestionMenu)}
                 variant="ghost"
                 size="sm"
-                className="text-white hover:bg-white/20"
+                className="text-slate-500 hover:bg-slate-100 hover:text-slate-700"
               >
                 <ChevronDown className="h-4 w-4" />
               </Button>
               {showQuestionMenu && (
-                <div className="absolute -z-10 right-0 top-full mt-2 w-48 bg-white rounded-md shadow-lg border z-50">
+                <div className="absolute -z-10 right-0 top-full mt-2 w-48 bg-white rounded-md shadow-lg border border-slate-200 z-50">
                   <div className="py-1 max-h-60 overflow-y-auto">
                     {questions.map((_, index) => (
                       <button
                         key={index}
                         onClick={() => goToQuestion(index)}
-                        className={`w-full px-4 py-2 text-left hover:bg-blue-50 flex items-center justify-between ${
-                          index === currentQuestion ? 'bg-blue-100 text-blue-600' : 'text-black'
-                        }`}
+                        className={`w-full px-4 py-2 text-left hover:bg-slate-50 flex items-center justify-between ${index === currentQuestion ? 'bg-slate-100 text-slate-900 font-medium' : 'text-slate-600'
+                          }`}
                       >
                         <span>Question {index + 1}</span>
                         {answers[index] !== undefined && (
                           <div className="flex items-center">
                             {answers[index] ? (
-                              <CheckCircle className="h-4 w-4 text-green-500" />
+                              <CheckCircle className="h-4 w-4 text-emerald-500" />
                             ) : (
                               <XCircle className="h-4 w-4 text-red-500" />
                             )}
@@ -196,26 +195,24 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
                 key={index}
                 onClick={() => !showResult && setSelectedAnswer(index)}
                 disabled={showResult}
-                className={`w-full p-4 text-left rounded-lg border-2 transition-all duration-200 ${
-                  selectedAnswer === index
-                    ? showResult
-                      ? index === questions[currentQuestion].correctAnswer
-                        ? 'border-green-500 bg-green-50'
-                        : 'border-red-500 bg-red-50'
-                      : 'border-blue-500 bg-blue-50'
-                    : 'border-gray-200 bg-white hover:border-blue-300 hover:bg-blue-50'
-                } ${showResult && index === questions[currentQuestion].correctAnswer ? 'border-green-500 bg-green-50' : ''}`}
+                className={`w-full p-4 text-left rounded-lg border-2 transition-all duration-200 ${selectedAnswer === index
+                  ? showResult
+                    ? index === questions[currentQuestion].correctAnswer
+                      ? 'border-green-500 bg-green-50'
+                      : 'border-red-500 bg-red-50'
+                    : 'border-blue-500 bg-blue-50'
+                  : 'border-gray-200 bg-white hover:border-blue-300 hover:bg-blue-50'
+                  } ${showResult && index === questions[currentQuestion].correctAnswer ? 'border-green-500 bg-green-50' : ''}`}
               >
                 <div className="flex items-center gap-3">
-                  <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
-                    selectedAnswer === index
-                      ? showResult
-                        ? index === questions[currentQuestion].correctAnswer
-                          ? 'border-green-500 bg-green-500 text-white'
-                          : 'border-red-500 bg-red-500 text-white'
-                        : 'border-blue-500 bg-blue-500 text-white'
-                      : 'border-gray-300 bg-white'
-                  }`}>
+                  <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${selectedAnswer === index
+                    ? showResult
+                      ? index === questions[currentQuestion].correctAnswer
+                        ? 'border-green-500 bg-green-500 text-white'
+                        : 'border-red-500 bg-red-500 text-white'
+                      : 'border-blue-500 bg-blue-500 text-white'
+                    : 'border-gray-300 bg-white'
+                    }`}>
                     {selectedAnswer === index && showResult && (
                       index === questions[currentQuestion].correctAnswer ? (
                         <CheckCircle className="h-4 w-4" />
@@ -228,7 +225,7 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
                     )}
                   </div>
                   <span className="font-medium text-black">
-{renderTextWithLatex(option)}
+                    {renderTextWithLatex(option)}
                   </span>
                 </div>
               </button>
@@ -236,8 +233,8 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
           </div>
 
           {!showResult ? (
-            <Button 
-              onClick={checkAnswer} 
+            <Button
+              onClick={checkAnswer}
               disabled={selectedAnswer === null}
               className="w-full bg-blue-600 hover:bg-blue-700 text-white"
             >
@@ -246,11 +243,10 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
             </Button>
           ) : (
             <div className="space-y-4">
-              <div className={`p-4 rounded-lg border-l-4 ${
-                answers[currentQuestion] 
-                  ? 'bg-green-50 border-green-400' 
-                  : 'bg-red-50 border-red-400'
-              }`}>
+              <div className={`p-4 rounded-lg border-l-4 ${answers[currentQuestion]
+                ? 'bg-green-50 border-green-400'
+                : 'bg-red-50 border-red-400'
+                }`}>
                 <div className="flex items-center gap-2 mb-2">
                   {answers[currentQuestion] ? (
                     <>
@@ -264,7 +260,7 @@ export const MathQuiz: React.FC<MathQuizProps> = ({
                     </>
                   )}
                 </div>
-                
+
                 {questions[currentQuestion].explanation && (
                   <p className={`text-sm ${answers[currentQuestion] ? 'text-green-600' : 'text-red-600'}`}>
                     {renderTextWithLatex(questions[currentQuestion].explanation)}
