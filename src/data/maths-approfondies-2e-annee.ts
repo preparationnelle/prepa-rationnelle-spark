@@ -17,7 +17,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         slug: 'complements-algebre-lineaire',
         title: 'Compléments d\'algèbre linéaire',
         icon: Grid,
-        color: 'bg-orange-600',
+        color: 'bg-blue-600',
         symbol: 'M',
         description: 'Somme directe de sous-espaces vectoriels, changement de base, trace'
       },
@@ -26,7 +26,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         slug: 'endomorphismes-matrices-avancees',
         title: 'Éléments propres et réduction des endomorphismes et matrices carrées',
         icon: Network,
-        color: 'bg-orange-600',
+        color: 'bg-blue-600',
         symbol: 'λ',
         description: 'Vecteurs propres, espaces propres, recherche d\'éléments propres, propriétés générales et méthodes de réduction'
       },
@@ -35,7 +35,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         slug: 'algebre-bilineaire',
         title: 'Algèbre bilinéaire',
         icon: FunctionSquare,
-        color: 'bg-orange-600',
+        color: 'bg-blue-600',
         symbol: '⟨⟩',
         description: 'Produit scalaire et espaces euclidiens'
       },
@@ -44,7 +44,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         slug: 'fonctions-multivariees-calcul-differentiel',
         title: 'Fonctions multivariées et calcul différentiel',
         icon: TrendingUp,
-        color: 'bg-orange-600',
+        color: 'bg-blue-600',
         symbol: '∇',
         description: 'Fonctions réelles définies sur R^n, dérivées partielles, gradient, recherche d\'extremum'
       },
@@ -53,7 +53,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         slug: 'variables-aleatoires-densite',
         title: 'Variables aléatoires à densité',
         icon: BarChart3,
-        color: 'bg-orange-600',
+        color: 'bg-blue-600',
         symbol: 'f',
         description: 'Densité, fonction de répartition, espérance et variance'
       },
@@ -62,7 +62,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         slug: 'n-uplets-variables-aleatoires',
         title: 'n-uplets de variables aléatoires réelles',
         icon: Variable,
-        color: 'bg-orange-600',
+        color: 'bg-blue-600',
         symbol: '(X₁,...,Xn)',
         description: 'Propriétés de l\'espérance, variance et indépendance'
       },
@@ -71,7 +71,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         slug: 'couple-variables-aleatoires',
         title: 'Cas particulier du couple',
         icon: Move,
-        color: 'bg-orange-600',
+        color: 'bg-blue-600',
         symbol: '(X,Y)',
         description: 'Sommes de variables indépendantes et applications'
       }
@@ -86,7 +86,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         slug: 'algebre-bilineaire-espaces-euclidiens',
         title: 'Algèbre bilinéaire et espaces euclidiens',
         icon: Grid,
-        color: 'bg-orange-600',
+        color: 'bg-blue-600',
         symbol: '⟨⟩',
         description: 'Endomorphismes symétriques d\'un espace euclidien, matrices symétriques et propriétés de la projection orthogonale'
       },
@@ -95,7 +95,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         slug: 'reduction-matrices-symetriques',
         title: 'Réduction des endomorphismes et des matrices symétriques',
         icon: Shapes,
-        color: 'bg-orange-600',
+        color: 'bg-blue-600',
         symbol: 'diag',
         description: 'Méthodes de diagonalisation et réduction complète'
       },
@@ -104,7 +104,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         slug: 'optimisation-multivariee-avancee',
         title: 'Optimisation multivariée avancée',
         icon: FunctionSquare,
-        color: 'bg-orange-600',
+        color: 'bg-blue-600',
         symbol: '∇',
         description: 'Fonctions de plusieurs variables, propriétés différentielles, recherche d\'extrema, conditions d\'ordre 1 et 2, contraintes linéaires et multiplicateurs de Lagrange'
       },
@@ -113,7 +113,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         slug: 'convergences-approximations',
         title: 'Convergences et approximations',
         icon: TrendingUp,
-        color: 'bg-orange-600',
+        color: 'bg-blue-600',
         symbol: '→',
         description: 'Convergence en probabilité et convergence en loi'
       },
@@ -122,7 +122,7 @@ export const mathsApprofondies2eAnneeData: MathsAppliqueesData = {
         slug: 'estimation-statistique-avancee',
         title: 'Estimation statistique avancée',
         icon: BarChart3,
-        color: 'bg-orange-600',
+        color: 'bg-blue-600',
         symbol: 'θ̂',
         description: 'Estimation ponctuelle, intervalles de confiance asymptotiques, critères d\'efficacité et comparaison des estimateurs'
       }
@@ -149,5 +149,5 @@ export const getChapterBySlugApprofondies2eAnnee = (slug: string) => {
 
 export const getTotalChaptersCountApprofondies2eAnnee = () => {
   return mathsApprofondies2eAnneeData.semestre1.chapters.length +
-         mathsApprofondies2eAnneeData.semestre2.chapters.length;
+    mathsApprofondies2eAnneeData.semestre2.chapters.length;
 }; // Total: 13 chapitres (8 + 5)

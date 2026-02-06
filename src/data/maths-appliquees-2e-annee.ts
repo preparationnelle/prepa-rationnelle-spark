@@ -1,165 +1,173 @@
 import {
-  BrainCircuit, Shapes, Sigma, TrendingUp, FunctionSquare, Spline,
-  AreaChart, Cuboid, Grid, Dices, Move, Scale, Infinity as InfinityIcon,
-  UnfoldVertical, Variable, LocateFixed, Code, Zap, Network, BarChart3,
-  GitBranch, Target, Microscope, Database
+  Grid, TrendingUp, Dices, Move, Scale, AreaChart,
+  Variable, BarChart3, UnfoldVertical, Shapes, FunctionSquare,
+  LocateFixed, Spline, Target, Network
 } from 'lucide-react';
 import { MathsAppliqueesData } from '@/types/maths-appliquees';
 
 export const mathsAppliquees2eAnneeData: MathsAppliqueesData = {
   semestre1: {
-    title: 'Semestre 1 - Concepts Avancés Appliqués',
-    description: 'Approfondissement des concepts mathématiques avec applications industrielles et recherche',
+    title: 'Semestre 3 - Approfondissements',
+    description: 'Approfondissement des concepts mathématiques fondamentaux pour la 2ème année ECG',
     chapters: [
       {
-        id: 101,
-        slug: 'optimisation-lineaire-avancee',
-        title: 'Optimisation linéaire avancée',
-        icon: Target,
+        id: 1,
+        slug: 'espaces-vectoriels',
+        title: 'Espaces vectoriels',
+        icon: Grid,
         color: 'bg-blue-600',
-        symbol: 'min',
-        description: 'Méthodes avancées d\'optimisation et applications industrielles'
+        symbol: 'V',
+        description: 'Structures vectorielles et propriétés fondamentales'
       },
       {
-        id: 102,
-        slug: 'equations-differentielles-partielles',
-        title: 'Équations différentielles partielles',
-        icon: FunctionSquare,
+        id: 2,
+        slug: 'complements-suites-series',
+        title: 'Compléments sur les suites et les séries',
+        icon: TrendingUp,
         color: 'bg-blue-600',
-        symbol: '∂²',
-        description: 'EDP et leurs applications en physique et ingénierie'
+        symbol: '∑',
+        description: 'Approfondissement des suites et séries numériques'
       },
       {
-        id: 103,
-        slug: 'analyse-numerique-avancee',
-        title: 'Analyse numérique avancée',
-        icon: Zap,
-        color: 'bg-blue-600',
-        symbol: 'ε',
-        description: 'Méthodes numériques pour la résolution d\'équations'
-      },
-      {
-        id: 104,
-        slug: 'traitement-signal-images',
-        title: 'Traitement du signal et images',
-        icon: BarChart3,
-        color: 'bg-blue-600',
-        symbol: 'ℱ',
-        description: 'Analyse de Fourier et traitement numérique'
-      },
-      {
-        id: 105,
-        slug: 'modelisation-stochastique',
-        title: 'Modélisation stochastique',
+        id: 3,
+        slug: 'couples-variables-aleatoires-discretes',
+        title: 'Couples de variables aléatoires discrètes',
         icon: Dices,
         color: 'bg-blue-600',
-        symbol: 'S',
-        description: 'Processus stochastiques et simulations Monte Carlo'
+        symbol: '(X,Y)',
+        description: 'Étude des couples de variables aléatoires'
       },
       {
-        id: 106,
-        slug: 'algorithmes-optimisation',
-        title: 'Algorithmes d\'optimisation',
-        icon: Network,
+        id: 4,
+        slug: 'applications-lineaires',
+        title: 'Applications linéaires',
+        icon: Move,
         color: 'bg-blue-600',
-        symbol: '∇',
-        description: 'Méthodes heuristiques et méta-heuristiques'
+        symbol: 'L',
+        description: 'Théorie des applications linéaires entre espaces vectoriels'
       },
       {
-        id: 107,
-        slug: 'calcul-parallele-distribue',
-        title: 'Calcul parallèle et distribué',
-        icon: GitBranch,
+        id: 5,
+        slug: 'comparaison-fonctions',
+        title: 'Comparaison de fonctions',
+        icon: Scale,
         color: 'bg-blue-600',
-        symbol: '||',
-        description: 'Programmation parallèle et calcul haute performance'
+        symbol: '≈',
+        description: 'Négligeabilité, équivalence et comparaison asymptotique'
       },
       {
-        id: 108,
-        slug: 'machine-learning-mathematique',
-        title: 'Machine Learning : aspects mathématiques',
-        icon: BrainCircuit,
+        id: 6,
+        slug: 'integrales-impropres',
+        title: 'Intégrales impropres',
+        icon: AreaChart,
         color: 'bg-blue-600',
-        symbol: 'ML',
-        description: 'Théorie mathématique derrière l\'apprentissage automatique'
+        symbol: '∫∞',
+        description: 'Intégrales sur des intervalles non bornés'
+      },
+      {
+        id: 7,
+        slug: 'representation-matricielle-applications-lineaires',
+        title: 'Représentation matricielle des applications linéaires',
+        icon: Grid,
+        color: 'bg-blue-600',
+        symbol: 'M',
+        description: 'Matrices et représentation des applications linéaires'
+      },
+      {
+        id: 8,
+        slug: 'variables-aleatoires-densite',
+        title: 'Variables aléatoires à densité',
+        icon: Variable,
+        color: 'bg-blue-600',
+        symbol: 'f',
+        description: 'Variables aléatoires continues et lois à densité'
+      },
+      {
+        id: 9,
+        slug: 'statistiques-descriptives-univariees-bivariees',
+        title: 'Statistiques descriptives univariées et bivariées',
+        icon: BarChart3,
+        color: 'bg-blue-600',
+        symbol: 'μ',
+        description: 'Analyse statistique descriptive à une et deux variables'
       }
     ]
   },
   semestre2: {
-    title: 'Semestre 2 - Applications Industrielles Avancées',
-    description: 'Applications concrètes et projets industriels utilisant les concepts mathématiques avancés',
+    title: 'Semestre 4 - Concepts Avancés',
+    description: 'Maîtrise des concepts mathématiques avancés pour les concours ECG',
     chapters: [
       {
-        id: 109,
-        slug: 'modelisation-systemes-complexes',
-        title: 'Modélisation de systèmes complexes',
-        icon: Network,
+        id: 10,
+        slug: 'developpements-limites',
+        title: 'Développements limités',
+        icon: UnfoldVertical,
         color: 'bg-blue-600',
-        symbol: '⊗',
-        description: 'Systèmes dynamiques complexes et théorie du chaos'
+        symbol: 'T',
+        description: 'Développements limités et formules de Taylor'
       },
       {
-        id: 110,
-        slug: 'analyse-donnees-massives',
-        title: 'Analyse de données massives',
-        icon: Database,
+        id: 11,
+        slug: 'diagonalisation-matrices',
+        title: 'Diagonalisation des matrices',
+        icon: Shapes,
         color: 'bg-blue-600',
-        symbol: '∑',
-        description: 'Big Data analytics et méthodes statistiques avancées'
+        symbol: 'diag',
+        description: 'Diagonalisation et réduction des matrices'
       },
       {
-        id: 111,
-        slug: 'simulation-numerique-industrielle',
-        title: 'Simulation numérique industrielle',
-        icon: Microscope,
+        id: 12,
+        slug: 'lois-densite-usuelles',
+        title: 'Lois à densité usuelles',
+        icon: Variable,
         color: 'bg-blue-600',
-        symbol: 'Δt',
-        description: 'Méthodes de simulation pour l\'industrie et la recherche'
+        symbol: 'N',
+        description: 'Lois continues usuelles : normale, exponentielle, uniforme'
       },
       {
-        id: 112,
-        slug: 'controle-optimal-systemes',
-        title: 'Contrôle optimal de systèmes',
-        icon: Move,
+        id: 13,
+        slug: 'fonctions-deux-variables',
+        title: 'Fonctions de deux variables',
+        icon: FunctionSquare,
         color: 'bg-blue-600',
-        symbol: '∫',
-        description: 'Théorie du contrôle et applications industrielles'
+        symbol: '∇',
+        description: 'Calcul différentiel et fonctions de plusieurs variables'
       },
       {
-        id: 113,
-        slug: 'cryptographie-mathematique',
-        title: 'Cryptographie et sécurité mathématique',
-        icon: Code,
+        id: 14,
+        slug: 'convergence-suites-variables-aleatoires',
+        title: 'Convergence de suites de variables aléatoires',
+        icon: LocateFixed,
         color: 'bg-blue-600',
-        symbol: '🔒',
-        description: 'Algorithmes cryptographiques et sécurité informatique'
+        symbol: '⇒',
+        description: 'Convergences en probabilité et en loi'
       },
       {
-        id: 114,
-        slug: 'intelligence-artificielle-avancee',
-        title: 'Intelligence artificielle avancée',
-        icon: BrainCircuit,
+        id: 15,
+        slug: 'equations-differentielles-systemes',
+        title: 'Équations différentielles et systèmes différentiels',
+        icon: Spline,
         color: 'bg-blue-600',
-        symbol: 'AI',
-        description: 'Réseaux de neurones profonds et apprentissage profond'
+        symbol: 'dx',
+        description: 'Équations et systèmes différentiels linéaires'
       },
       {
-        id: 115,
-        slug: 'modelisation-financiere',
-        title: 'Modélisation financière avancée',
-        icon: TrendingUp,
-        color: 'bg-blue-600',
-        symbol: '€',
-        description: 'Mathématiques financières et produits dérivés'
-      },
-      {
-        id: 116,
-        slug: 'projet-applique-final',
-        title: 'Projet appliqué final',
+        id: 16,
+        slug: 'estimateurs-intervalles-confiance',
+        title: 'Estimateurs et intervalles de confiance',
         icon: Target,
         color: 'bg-blue-600',
-        symbol: '✓',
-        description: 'Projet de synthèse appliquant l\'ensemble des compétences acquises'
+        symbol: 'θ̂',
+        description: 'Estimation statistique et intervalles de confiance'
+      },
+      {
+        id: 17,
+        slug: 'chaines-de-markov',
+        title: 'Chaînes de Markov',
+        icon: Network,
+        color: 'bg-blue-600',
+        symbol: 'π',
+        description: 'Processus stochastiques et chaînes de Markov'
       }
     ]
   }
@@ -184,5 +192,5 @@ export const getChapterBySlug2eAnnee = (slug: string) => {
 
 export const getTotalChaptersCount2eAnnee = () => {
   return mathsAppliquees2eAnneeData.semestre1.chapters.length +
-         mathsAppliquees2eAnneeData.semestre2.chapters.length;
+    mathsAppliquees2eAnneeData.semestre2.chapters.length;
 };
