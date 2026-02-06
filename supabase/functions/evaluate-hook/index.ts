@@ -93,6 +93,7 @@ Identifie le type parmi : "Actualité récente", "Citation d'auteur/acteur", "Hi
     "<suggestion concrète 2>",
     "<suggestion concrète 3>"
   ],
+  "improvedProposal": "<Proposition d'une version améliorée de l'accroche qui intègre les corrections suggérées. Doit être excellente, pertinente et percutante.>",
   "fatalErrors": [
     "<erreur fatale si détectée, sinon tableau vide>"
   ]
@@ -105,6 +106,7 @@ Identifie le type parmi : "Actualité récente", "Citation d'auteur/acteur", "Hi
 - Les suggestions doivent être concrètes et applicables immédiatement
 - Si le score est <10/20, identifie clairement les problèmes majeurs
 - Si le score est >15/20, l'accroche est excellente, mentionne-le
+- Propose une version améliorée de l'accroche ("improvedProposal") qui corrige les défauts identifiés et vise le 20/20.
 
 Réponds UNIQUEMENT avec le JSON, sans texte avant ou après.`;
 

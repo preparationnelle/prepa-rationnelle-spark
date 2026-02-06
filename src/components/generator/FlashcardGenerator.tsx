@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from '@/components/ui/badge';
-import { Layers, BookOpen, Play, History, Sparkles, BarChart3 } from 'lucide-react';
+import { BookOpen, Play, History, Sparkles, BarChart3 } from 'lucide-react';
 import { FlashcardInput } from './FlashcardInput';
 import { GeneratedFlashcardsList } from './GeneratedFlashcardsList';
 import { FlashcardReviewSystem } from '@/components/flashcards/FlashcardReviewSystem';
@@ -66,17 +66,13 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
   };
 
   return (
-    <div className="max-w-6xl mx-auto space-y-12 pb-20">
+    <div className="max-w-6xl mx-auto space-y-6 pb-20">
 
       {/* Header Section */}
-      <div className="relative text-center pb-8 border-b border-gray-100 dark:border-gray-800">
+      <div className="relative text-center pb-4 border-b border-gray-100 dark:border-gray-800">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 -mt-10 w-64 h-64 bg-orange-200/20 rounded-full blur-[80px] pointer-events-none" />
 
-        <div className="relative inline-flex items-center justify-center p-3 mb-6 bg-orange-100 dark:bg-orange-900/30 rounded-2xl shadow-inner">
-          <Layers className="w-8 h-8 text-orange-600 dark:text-orange-400" />
-        </div>
-
-        <h1 className="relative text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-800 to-gray-600 dark:from-white dark:via-gray-200 dark:to-gray-400 mb-4 tracking-tight">
+        <h1 className="relative text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-800 to-gray-600 dark:from-white dark:via-gray-200 dark:to-gray-400 mb-2 tracking-tight">
           {language === 'fr' ? 'Flashcards Universelles' : 'Universal Flashcards'}
         </h1>
 
@@ -90,7 +86,7 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
       {/* Main Input Area */}
       <div className="max-w-3xl mx-auto">
         <div className="bg-white dark:bg-gray-900 rounded-3xl p-1 shadow-2xl shadow-orange-500/10 border border-gray-100 dark:border-gray-800">
-          <div className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800/50 rounded-[22px] px-6 py-8 md:px-10 md:py-10">
+          <div className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800/50 rounded-[22px] px-6 py-6 md:px-8 md:py-8">
             <FlashcardInput
               language={language}
               isAiMode={isAiMode}
@@ -117,7 +113,7 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
       {/* Content Tabs */}
       <div className="max-w-5xl mx-auto">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <div className="flex justify-center mb-10">
+          <div className="flex justify-center mb-6">
             <TabsList className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-1.5 h-auto rounded-full shadow-lg shadow-gray-200/50 dark:shadow-none inline-flex gap-1">
               {[
                 { id: 'generated', icon: Sparkles, label: language === 'fr' ? 'Générées' : 'Generated', count: generatedFlashcards.length, countColor: 'bg-orange-100 text-orange-700' },

@@ -71,6 +71,78 @@ export type Database = {
         }
         Relationships: []
       }
+      contact_leads: {
+        Row: {
+          city: string | null
+          created_at: string
+          email: string
+          first_name: string
+          id: string
+          last_contacted_at: string | null
+          last_name: string
+          notes: string | null
+          phone_parent: string | null
+          phone_student: string
+          priority: string | null
+          scheduled_callback_at: string | null
+          service_type: string
+          source: string | null
+          status: string
+          student_level: string
+          student_type: string
+          updated_at: string
+          utm_campaign: string | null
+          utm_medium: string | null
+          utm_source: string | null
+        }
+        Insert: {
+          city?: string | null
+          created_at?: string
+          email: string
+          first_name: string
+          id?: string
+          last_contacted_at?: string | null
+          last_name: string
+          notes?: string | null
+          phone_parent?: string | null
+          phone_student: string
+          priority?: string | null
+          scheduled_callback_at?: string | null
+          service_type: string
+          source?: string | null
+          status?: string
+          student_level: string
+          student_type: string
+          updated_at?: string
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Update: {
+          city?: string | null
+          created_at?: string
+          email?: string
+          first_name?: string
+          id?: string
+          last_contacted_at?: string | null
+          last_name?: string
+          notes?: string | null
+          phone_parent?: string | null
+          phone_student?: string
+          priority?: string | null
+          scheduled_callback_at?: string | null
+          service_type?: string
+          source?: string | null
+          status?: string
+          student_level?: string
+          student_type?: string
+          updated_at?: string
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Relationships: []
+      }
       content: {
         Row: {
           corps: string
@@ -374,27 +446,15 @@ export type Database = {
           user_id: string
           word_en: string
           word_fr: string
-          front: string | null
-          back: string | null
-          hint: string | null
-          category: string | null
-          tags: string[] | null
-          source: string | null
         }
         Insert: {
           created_at?: string
           id?: string
-          sentence_en?: string
-          sentence_fr?: string
+          sentence_en: string
+          sentence_fr: string
           user_id: string
-          word_en?: string
-          word_fr?: string
-          front?: string
-          back?: string
-          hint?: string
-          category?: string
-          tags?: string[]
-          source?: string
+          word_en: string
+          word_fr: string
         }
         Update: {
           created_at?: string
@@ -404,12 +464,6 @@ export type Database = {
           user_id?: string
           word_en?: string
           word_fr?: string
-          front?: string
-          back?: string
-          hint?: string
-          category?: string
-          tags?: string[]
-          source?: string
         }
         Relationships: []
       }
@@ -460,49 +514,49 @@ export type Database = {
       }
       language_grammar_results: {
         Row: {
-          id: string
-          user_id: string | null
-          language: string
-          sentence_id: string | null
+          created_at: string | null
           french_sentence: string
+          id: string
+          language: string
+          major_errors: Json | null
+          minor_errors: Json | null
           reference_answer: string
-          student_answer: string
           score: number
-          major_errors: Json
-          minor_errors: Json
-          weak_grammar_points: string[]
-          time_spent: number
-          created_at: string
+          sentence_id: string | null
+          student_answer: string
+          time_spent: number | null
+          user_id: string | null
+          weak_grammar_points: string[] | null
         }
         Insert: {
-          id?: string
-          user_id?: string | null
-          language: string
-          sentence_id?: string | null
+          created_at?: string | null
           french_sentence: string
+          id?: string
+          language: string
+          major_errors?: Json | null
+          minor_errors?: Json | null
           reference_answer: string
-          student_answer: string
           score: number
-          major_errors?: Json
-          minor_errors?: Json
-          weak_grammar_points?: string[]
-          time_spent?: number
-          created_at?: string
+          sentence_id?: string | null
+          student_answer: string
+          time_spent?: number | null
+          user_id?: string | null
+          weak_grammar_points?: string[] | null
         }
         Update: {
-          id?: string
-          user_id?: string | null
-          language?: string
-          sentence_id?: string | null
+          created_at?: string | null
           french_sentence?: string
+          id?: string
+          language?: string
+          major_errors?: Json | null
+          minor_errors?: Json | null
           reference_answer?: string
-          student_answer?: string
           score?: number
-          major_errors?: Json
-          minor_errors?: Json
-          weak_grammar_points?: string[]
-          time_spent?: number
-          created_at?: string
+          sentence_id?: string | null
+          student_answer?: string
+          time_spent?: number | null
+          user_id?: string | null
+          weak_grammar_points?: string[] | null
         }
         Relationships: []
       }
@@ -691,6 +745,39 @@ export type Database = {
         }
         Relationships: []
       }
+      qcm_results: {
+        Row: {
+          correct_answers: number
+          created_at: string | null
+          id: string
+          qcm_id: string
+          score: number
+          title: string
+          total_questions: number
+          user_id: string
+        }
+        Insert: {
+          correct_answers: number
+          created_at?: string | null
+          id?: string
+          qcm_id: string
+          score: number
+          title: string
+          total_questions: number
+          user_id: string
+        }
+        Update: {
+          correct_answers?: number
+          created_at?: string | null
+          id?: string
+          qcm_id?: string
+          score?: number
+          title?: string
+          total_questions?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
       school_profiles: {
         Row: {
           created_at: string
@@ -715,6 +802,39 @@ export type Database = {
           requested_by?: string
           school_slug?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      study_sessions: {
+        Row: {
+          created_at: string | null
+          duration_seconds: number | null
+          ended_at: string | null
+          id: string
+          started_at: string
+          user_id: string
+          week_number: number
+          year: number
+        }
+        Insert: {
+          created_at?: string | null
+          duration_seconds?: number | null
+          ended_at?: string | null
+          id?: string
+          started_at?: string
+          user_id: string
+          week_number: number
+          year: number
+        }
+        Update: {
+          created_at?: string | null
+          duration_seconds?: number | null
+          ended_at?: string | null
+          id?: string
+          started_at?: string
+          user_id?: string
+          week_number?: number
+          year?: number
         }
         Relationships: []
       }
@@ -801,6 +921,27 @@ export type Database = {
           granted_at?: string | null
           id?: string
           module_name?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_activity: {
+        Row: {
+          activity_date: string
+          created_at: string | null
+          id: string
+          user_id: string
+        }
+        Insert: {
+          activity_date?: string
+          created_at?: string | null
+          id?: string
+          user_id: string
+        }
+        Update: {
+          activity_date?: string
+          created_at?: string | null
+          id?: string
           user_id?: string
         }
         Relationships: []
@@ -903,116 +1044,116 @@ type DefaultSchema = DatabaseWithoutInternals[Extract<keyof Database, "public">]
 
 export type Tables<
   DefaultSchemaTableNameOrOptions extends
-  | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
-  | { schema: keyof DatabaseWithoutInternals },
+    | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
+    | { schema: keyof DatabaseWithoutInternals },
   TableName extends DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
-  ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
-    DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
-  : never = never,
+    ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+        DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
+    : never = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
   ? (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
-    DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
+      DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
       Row: infer R
     }
-  ? R
-  : never
+    ? R
+    : never
   : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema["Tables"] &
-    DefaultSchema["Views"])
-  ? (DefaultSchema["Tables"] &
-    DefaultSchema["Views"])[DefaultSchemaTableNameOrOptions] extends {
-      Row: infer R
-    }
-  ? R
-  : never
-  : never
+        DefaultSchema["Views"])
+    ? (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])[DefaultSchemaTableNameOrOptions] extends {
+        Row: infer R
+      }
+      ? R
+      : never
+    : never
 
 export type TablesInsert<
   DefaultSchemaTableNameOrOptions extends
-  | keyof DefaultSchema["Tables"]
-  | { schema: keyof DatabaseWithoutInternals },
+    | keyof DefaultSchema["Tables"]
+    | { schema: keyof DatabaseWithoutInternals },
   TableName extends DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
-  ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
-  : never = never,
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    : never = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
   ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
-    Insert: infer I
-  }
-  ? I
-  : never
+      Insert: infer I
+    }
+    ? I
+    : never
   : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
-  ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
-    Insert: infer I
-  }
-  ? I
-  : never
-  : never
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
+        Insert: infer I
+      }
+      ? I
+      : never
+    : never
 
 export type TablesUpdate<
   DefaultSchemaTableNameOrOptions extends
-  | keyof DefaultSchema["Tables"]
-  | { schema: keyof DatabaseWithoutInternals },
+    | keyof DefaultSchema["Tables"]
+    | { schema: keyof DatabaseWithoutInternals },
   TableName extends DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
-  ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
-  : never = never,
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    : never = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
   ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
-    Update: infer U
-  }
-  ? U
-  : never
+      Update: infer U
+    }
+    ? U
+    : never
   : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
-  ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
-    Update: infer U
-  }
-  ? U
-  : never
-  : never
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
+        Update: infer U
+      }
+      ? U
+      : never
+    : never
 
 export type Enums<
   DefaultSchemaEnumNameOrOptions extends
-  | keyof DefaultSchema["Enums"]
-  | { schema: keyof DatabaseWithoutInternals },
+    | keyof DefaultSchema["Enums"]
+    | { schema: keyof DatabaseWithoutInternals },
   EnumName extends DefaultSchemaEnumNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
-  ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
-  : never = never,
+    ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
+    : never = never,
 > = DefaultSchemaEnumNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
   ? DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
   : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema["Enums"]
-  ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
-  : never
+    ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
+    : never
 
 export type CompositeTypes<
   PublicCompositeTypeNameOrOptions extends
-  | keyof DefaultSchema["CompositeTypes"]
-  | { schema: keyof DatabaseWithoutInternals },
+    | keyof DefaultSchema["CompositeTypes"]
+    | { schema: keyof DatabaseWithoutInternals },
   CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
-  ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
-  : never = never,
+    ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never = never,
 > = PublicCompositeTypeNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
   ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
   : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
-  ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
-  : never
+    ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
+    : never
 
 export const Constants = {
   public: {

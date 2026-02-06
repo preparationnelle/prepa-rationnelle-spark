@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { CheckCircle, TrendingUp, Users, Award, Star, BookOpen, ChevronRight, Sparkles, Calendar, ArrowRight, Flame } from 'lucide-react';
+import { HeroContactForm } from '@/components/HeroContactForm';
 
 export const HeroSection = () => {
   const [showWhatsAppModal, setShowWhatsAppModal] = useState(false);
-  const [selectedLevel, setSelectedLevel] = useState<string | null>(null);
-  const [selectedRole, setSelectedRole] = useState<string | null>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   // Animation states for sequential reveal
@@ -61,11 +60,6 @@ export const HeroSection = () => {
 
   const joinWhatsAppGroup = () => {
     window.open('https://calendly.com/preparationnelle/30min?month=2025-09&date=2025-09-16', '_blank');
-  };
-
-  const handleFormSubmit = () => {
-    const message = encodeURIComponent(`Bonjour ! Je suis ${selectedRole === 'parent' ? 'parent d\'un élève' : 'un élève'} en ${selectedLevel}. Je souhaite avoir plus d'informations sur vos formations.`);
-    window.open(`https://wa.me/33609164668?text=${message}`, '_blank');
   };
 
   return (
@@ -156,105 +150,8 @@ export const HeroSection = () => {
             </p>
           </div>
 
-          {/* Form Card - Refined design */}
-          <div className={`max-w-lg mx-auto transition-all duration-700 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="relative">
-              {/* Subtle glow effect behind card */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-orange-500/20 via-orange-400/15 to-orange-500/20 rounded-2xl blur-xl"></div>
-
-              {/* Card with glassmorphism touch */}
-              <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl shadow-black/20 p-6 sm:p-7 border border-white/50">
-                {/* Progress bar - Subtle */}
-                <div className="mb-5">
-                  <div className="h-1 bg-gray-100 rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-gradient-to-r from-orange-500 to-orange-400 rounded-full transition-all duration-500"
-                      style={{ width: selectedLevel && selectedRole ? '100%' : selectedLevel || selectedRole ? '50%' : '0%' }}
-                    ></div>
-                  </div>
-                </div>
-
-                <h3 className="text-lg font-bold text-center text-gray-800 mb-5">
-                  Complétez le formulaire et bénéficiez de nos conseils
-                </h3>
-
-                {/* Level Selection - Refined buttons */}
-                <div className="mb-5">
-                  <div className="flex items-center gap-2 mb-2.5">
-                    <div className="w-6 h-6 bg-gradient-to-br from-orange-500 to-orange-400 rounded-md flex items-center justify-center">
-                      <BookOpen className="h-3.5 w-3.5 text-white" />
-                    </div>
-                    <span className="text-sm font-semibold text-gray-700">Niveau de l'élève</span>
-                  </div>
-                  <div className="grid grid-cols-3 gap-2">
-                    {['Prépa', 'Lycée', 'Collège'].map((level) => (
-                      <button
-                        key={level}
-                        onClick={() => setSelectedLevel(level)}
-                        className={`py-3 px-3 rounded-lg text-sm font-semibold transition-all duration-200 ${selectedLevel === level
-                          ? 'bg-gradient-to-r from-orange-500 to-orange-400 text-white shadow-md shadow-orange-500/25'
-                          : 'bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-gray-300'
-                          }`}
-                      >
-                        {level}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Role Selection - Refined buttons */}
-                <div className="mb-5">
-                  <div className="flex items-center gap-2 mb-2.5">
-                    <div className="w-6 h-6 bg-gradient-to-br from-orange-500 to-orange-400 rounded-md flex items-center justify-center">
-                      <Users className="h-3.5 w-3.5 text-white" />
-                    </div>
-                    <span className="text-sm font-semibold text-gray-700">Je suis...</span>
-                  </div>
-                  <div className="grid grid-cols-2 gap-2">
-                    {[
-                      { id: 'student', label: 'Un élève' },
-                      { id: 'parent', label: 'Un parent' }
-                    ].map((role) => (
-                      <button
-                        key={role.id}
-                        onClick={() => setSelectedRole(role.id)}
-                        className={`py-3 px-3 rounded-lg text-sm font-semibold transition-all duration-200 ${selectedRole === role.id
-                          ? 'bg-gradient-to-r from-orange-500 to-orange-400 text-white shadow-md shadow-orange-500/25'
-                          : 'bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-gray-300'
-                          }`}
-                      >
-                        {role.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* CTA Button - Clean and bold */}
-                <Button
-                  onClick={selectedLevel && selectedRole ? handleFormSubmit : joinWhatsAppGroup}
-                  className="w-full py-6 text-base font-bold bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white rounded-xl shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 transition-all duration-300 group border-0"
-                >
-                  <span className="flex items-center justify-center gap-2">
-                    <Calendar className="h-5 w-5" />
-                    Réserver mon cours gratuit
-                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </Button>
-
-                {/* Trust indicators - Subtle */}
-                <div className="mt-4 flex items-center justify-center gap-4 text-xs text-gray-500">
-                  <div className="flex items-center gap-1.5">
-                    <CheckCircle className="h-3.5 w-3.5 text-emerald-500" />
-                    <span>Sans engagement</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <CheckCircle className="h-3.5 w-3.5 text-emerald-500" />
-                    <span>Réponse sous 24h</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* Form Card - New component with Supabase integration */}
+          <HeroContactForm showContent={showContent} />
         </div>
       </section>
 

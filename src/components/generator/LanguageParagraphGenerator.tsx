@@ -155,8 +155,8 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
             placeholder="Collez ici l'article de presse à analyser..."
             value={article}
             onChange={(e) => setArticle(e.target.value)}
-            rows={8}
-            className="min-h-[200px] border-gray-200 focus:border-orange-500 focus:ring-orange-500 resize-y text-base leading-relaxed p-4 rounded-xl shadow-sm"
+            rows={3}
+            className="min-h-[100px] border-gray-200 focus:border-orange-500 focus:ring-orange-500 resize-y text-base leading-relaxed p-4 rounded-xl shadow-sm"
           />
         </div>
 

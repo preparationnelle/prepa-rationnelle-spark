@@ -7,6 +7,7 @@ const LoginPage = lazy(() => import('../pages/LoginPage'));
 const AccesRestreintPage = lazy(() => import('../pages/AccesRestreintPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 const ContactPage = lazy(() => import('../pages/ContactPage'));
+const AdminLeadsPage = lazy(() => import('../pages/AdminLeadsPage'));
 const GeneratorPage = lazy(() => import('../pages/GeneratorPage'));
 const StageAccompagnementPage = lazy(() => import('../pages/StageAccompagnementPage'));
 const PreRentreePage = lazy(() => import('../pages/offres/PreRentreePage'));
@@ -757,6 +758,7 @@ export const routes: RouteConfig[] = [
   // Main pages
   { path: '/', component: HomePage, title: 'Accueil' },
   { path: '/dashboard', component: DashboardPage, title: 'Mon Dashboard', protected: true },
+  { path: '/admin/leads', component: AdminLeadsPage, title: 'Gestion des Leads', protected: true },
   { path: '/login', component: LoginPage, title: 'Connexion' },
   { path: '/acces-restreint', component: AccesRestreintPage, title: 'Accès restreint' },
   { path: '/register', component: RegisterPage, title: 'Inscription' },

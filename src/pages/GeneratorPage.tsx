@@ -53,18 +53,7 @@ const GeneratorPage: React.FC = () => {
       ],
       link: '/generator/flashcards'
     },
-    {
-      id: 'theme-grammar',
-      title: 'Thème Grammatical',
-      description: 'Correction immédiate pour identifier et corriger vos erreurs',
-      icon: <Languages className="h-10 w-10" />,
-      features: [
-        'Correction en temps réel',
-        'Erreurs détectées instantanément',
-        'Feedback personnalisé'
-      ],
-      link: '/generator/theme-grammar'
-    },
+
     {
       id: 'paragraph',
       title: 'Générateur de Paragraphes',

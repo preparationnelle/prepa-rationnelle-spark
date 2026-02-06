@@ -1,276 +1,398 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Label } from '@/components/ui/label';
+import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { CheckCircle2, AlertCircle, Loader2, BookOpen, Sparkles } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { findCanonicalDefinition, GEOPOLITICS_DEFINITIONS } from '@/data/geopoliticsDefinitions';
 import { supabase } from '@/integrations/supabase/client';
 
 interface Props {
-  language?: 'fr' | 'en';
+  subjectFromParent?: string;
 }
 
-export const DefinitionTraining: React.FC<Props> = ({ language = 'fr' }) => {
-  const [term, setTerm] = useState('Mondialisation');
-  const [userDefinition, setUserDefinition] = useState('');
+interface TermDefinition {
+  term: string;
+  userDefinition: string;
+  score?: number;
+  recommendations?: string[];
+  formalDefinition?: string;
+}
+
+export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent }) => {
+  const [isExtractingTerms, setIsExtractingTerms] = useState(false);
+  const [terms, setTerms] = useState<string[]>([]);
+  const [definitions, setDefinitions] = useState<Map<string, TermDefinition>>(new Map());
   const [isEvaluating, setIsEvaluating] = useState(false);
-  const [feedback, setFeedback] = useState<string | null>(null);
-  const [score, setScore] = useState<number | null>(null);
-  const [covered, setCovered] = useState<string[]>([]);
-  const [missing, setMissing] = useState<string[]>([]);
-  const [showReference, setShowReference] = useState(false);
+  const [finalFeedback, setFinalFeedback] = useState<string | null>(null);
+  const [globalScore, setGlobalScore] = useState<number | null>(null);
   const { toast } = useToast();
 
-  const canonical = useMemo(() => findCanonicalDefinition(term), [term]);
-
+  // Extract key terms from subject when it changes
   useEffect(() => {
-    // Reset the evaluation panel when the term changes
-    setFeedback(null);
-    setScore(null);
-    setCovered([]);
-    setMissing([]);
-    setUserDefinition('');
-    setShowReference(false);
-  }, [term]);
-
-  const normalize = (s: string) =>
-    s
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/[^a-z0-9\s-]/g, ' ')
-      .replace(/\s+/g, ' ') // collapse spaces
-      .trim();
-
-  const frenchStopWords = new Set([
-    'de','la','le','les','du','des','un','une','et','en','dans','sur','par','pour','que','qui','au','aux','avec','ou','d\'','l\'','à','est','aupres','plus','moins','dont','ainsi','vers','entre','ses','son','sa','leurs','leur','the','of','to','in','on'
-  ]);
-
-  const extractKeywords = (text: string): string[] => {
-    const tokens = normalize(text).split(' ');
-    const freq = new Map<string, number>();
-    for (const t of tokens) {
-      if (t.length < 4) continue;
-      if (frenchStopWords.has(t)) continue;
-      freq.set(t, (freq.get(t) || 0) + 1);
+    if (subjectFromParent) {
+      extractTermsFromSubject(subjectFromParent);
     }
-    return Array.from(freq.entries())
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 12)
-      .map(([t]) => t);
+  }, [subjectFromParent]);
+
+  const extractTermsFromSubject = async (subject: string) => {
+    setIsExtractingTerms(true);
+    setTerms([]);
+    setDefinitions(new Map());
+    setFinalFeedback(null);
+    setGlobalScore(null);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('extract-terms', {
+        body: { subject },
+      });
+
+      if (error) {
+        console.error('Supabase error:', error);
+        throw error;
+      }
+
+      if (data && data.terms && Array.isArray(data.terms)) {
+        setTerms(data.terms);
+        // Initialize definitions map
+        const initMap = new Map<string, TermDefinition>();
+        data.terms.forEach((term: string) => {
+          initMap.set(term, { term, userDefinition: '' });
+        });
+        setDefinitions(initMap);
+        toast({
+          title: 'Termes extraits',
+          description: `${data.terms.length} terme(s) à définir`,
+        });
+      } else {
+        throw new Error('Invalid response format');
+      }
+    } catch (error) {
+      console.error('Error extracting terms:', error);
+      toast({
+        title: 'Extraction locale',
+        description: 'Utilisation de l\'extraction locale des termes',
+      });
+      // Fallback: simple local extraction
+      fallbackExtractTerms(subject);
+    } finally {
+      setIsExtractingTerms(false);
+    }
   };
 
-  const handleEvaluate = async () => {
-    setFeedback(null);
-    setScore(null);
-    setCovered([]);
-    setMissing([]);
+  const fallbackExtractTerms = (subject: string) => {
+    // Simple local extraction: split on spaces and filter out pronouns, articles, etc.
+    const stopWords = new Set([
+      'le', 'la', 'les', 'un', 'une', 'des', 'du', 'de', 'et', 'ou', 'dans', 'sur', 'pour',
+      'par', 'avec', 'en', 'au', 'aux', 'à', 'que', 'qui', 'dont', 'où', 'il', 'elle', 'ils',
+      'elles', 'ce', 'ces', 'son', 'sa', 'ses', 'leur', 'leurs', 'depuis', 'vers', 'l', 'd',
+      'cette', 'cet'
+    ]);
 
-    if (!userDefinition.trim()) {
-      toast({ title: 'Erreur', description: 'Veuillez proposer une définition.', variant: 'destructive' });
+    // Split by whitespace and common punctuation, preserving accented characters
+    const words = subject
+      .split(/[\s,;.!?'"()\[\]{}]+/)
+      .map(w => w.trim())
+      .filter(w => {
+        const lowerWord = w.toLowerCase();
+        return w.length >= 4 && !stopWords.has(lowerWord);
+      });
+
+    // Capitalize first letter, lowercase the rest, and remove duplicates
+    const extractedTerms = Array.from(new Set(words)).map(
+      w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()
+    );
+
+    setTerms(extractedTerms);
+    const initMap = new Map<string, TermDefinition>();
+    extractedTerms.forEach(term => {
+      initMap.set(term, { term, userDefinition: '' });
+    });
+    setDefinitions(initMap);
+  };
+
+  const handleDefinitionChange = (term: string, value: string) => {
+    const updated = new Map(definitions);
+    const existing = updated.get(term);
+    if (existing) {
+      updated.set(term, {
+        ...existing,
+        userDefinition: value,
+      });
+      setDefinitions(updated);
+    }
+  };
+
+  const handleValidateAll = async () => {
+    console.log('Validate button clicked');
+
+    // Immediate visual feedback to confirm button is working
+    toast({
+      title: '🔍 Clic détecté',
+      description: 'Vérification des définitions en cours...',
+    });
+
+    // Check if all terms have definitions
+    const allDefined = Array.from(definitions.values()).every(
+      def => def.userDefinition.trim().length > 0
+    );
+
+    if (!allDefined) {
+      toast({
+        title: 'Définitions incomplètes',
+        description: 'Veuillez définir tous les termes avant de valider.',
+        variant: 'destructive',
+      });
       return;
     }
 
     setIsEvaluating(true);
+    setFinalFeedback(null);
+    setGlobalScore(null);
 
-    const ref = canonical?.definition ?? '';
-    const refKeys = extractKeywords(ref);
-    const userNorm = normalize(userDefinition);
-
-    const coveredNow: string[] = [];
-    const missingNow: string[] = [];
-    let hits = 0;
-    for (const k of refKeys) {
-      if (userNorm.includes(k)) {
-        coveredNow.push(k);
-        hits += 1;
-      } else {
-        missingNow.push(k);
-      }
-    }
-
-    // simple length/clarity heuristic
-    const words = userNorm.split(' ').filter(Boolean).length;
-    let base = Math.round((hits / Math.max(refKeys.length, 1)) * 80); // 80 pts coverage
-    if (words >= 20 && words <= 80) base += 20; // 20 pts concision
-    const finalScore = Math.max(0, Math.min(100, base));
-
-    const fb = [
-      `Couverture des points clés: ${hits}/${refKeys.length}.`,
-      words < 15
-        ? 'Définition trop courte: ajoute le contexte et la portée.'
-        : words > 100
-        ? 'Définition trop longue: vise 30-60 mots.'
-        : 'Longueur appropriée.',
-      coveredNow.length
-        ? `Bien vu: ${coveredNow.slice(0, 6).join(', ')}${coveredNow.length > 6 ? '…' : ''}`
-        : 'Commence par poser la nature du concept puis ses effets/portée.',
-      missingNow.length
-        ? `À intégrer: ${missingNow.slice(0, 6).join(', ')}${missingNow.length > 6 ? '…' : ''}`
-        : 'Tu couvres l’essentiel des mots-clés attendus.',
-    ].join('\n');
-
-    // Tentative API d'abord, sinon fallback local
     try {
-      const { data, error } = await supabase.functions.invoke('evaluate-definition', {
+      const definitionsArray = Array.from(definitions.values()).map(def => ({
+        term: def.term,
+        definition: def.userDefinition,
+      }));
+
+      console.log('Calling evaluate-all-definitions with:', { subject: subjectFromParent, definitionsArray });
+
+      const { data, error } = await supabase.functions.invoke('evaluate-all-definitions', {
         body: {
-          term,
-          userDefinition: userDefinition.trim(),
-          referenceDefinition: ref,
-          language,
+          subject: subjectFromParent,
+          definitions: definitionsArray,
         },
       });
 
-      if (!error && data && (typeof data.score === 'number' || typeof data.feedback === 'string')) {
-        setCovered(coveredNow);
-        setMissing(missingNow);
-        setScore(typeof data.score === 'number' ? data.score : finalScore);
-        setFeedback(data.feedback || fb);
-        setShowReference(true);
-      } else {
-        setCovered(coveredNow);
-        setMissing(missingNow);
-        setScore(finalScore);
-        setFeedback(fb);
-        setShowReference(true);
+      if (error) {
+        console.error('Supabase function error:', error);
+        throw error;
       }
-    } catch (_) {
-      setCovered(coveredNow);
-      setMissing(missingNow);
-      setScore(finalScore);
-      setFeedback(fb);
-      setShowReference(true);
+
+      console.log('Received evaluation data:', data);
+
+      if (data) {
+        setGlobalScore(data.globalScore || null);
+        setFinalFeedback(data.globalFeedback || 'Évaluation terminée.');
+
+        // Update individual feedback
+        if (data.individualFeedback && Array.isArray(data.individualFeedback)) {
+          const updated = new Map(definitions);
+          data.individualFeedback.forEach((fb: any) => {
+            const existing = updated.get(fb.term);
+            if (existing) {
+              updated.set(fb.term, {
+                ...existing,
+                score: fb.score || 0,
+                recommendations: fb.recommendations || [],
+                formalDefinition: fb.formalDefinition || '',
+              });
+            }
+          });
+          setDefinitions(updated);
+        }
+
+        toast({
+          title: 'Évaluation terminée',
+          description: `Score global: ${data.globalScore}/100`,
+        });
+      }
+    } catch (error) {
+      console.error('Error evaluating definitions:', error);
+      toast({
+        title: 'Erreur',
+        description: 'Impossible d\'évaluer les définitions. Vérifiez la console pour plus de détails.',
+        variant: 'destructive',
+      });
     } finally {
       setIsEvaluating(false);
     }
   };
 
+  if (!subjectFromParent) {
+    return (
+      <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-orange-100 shadow-2xl">
+        <CardContent className="p-12 text-center">
+          <BookOpen className="h-16 w-16 mx-auto mb-4 text-orange-400" />
+          <h3 className="text-xl font-bold text-gray-900 mb-2">Définissez d'abord un sujet</h3>
+          <p className="text-gray-600">
+            Sélectionnez un sujet dans la zone principale pour commencer à définir ses termes clés.
+          </p>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  if (isExtractingTerms) {
+    return (
+      <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-orange-100 shadow-2xl">
+        <CardContent className="p-12 text-center">
+          <Loader2 className="h-16 w-16 mx-auto mb-4 text-orange-500 animate-spin" />
+          <h3 className="text-xl font-bold text-gray-900 mb-2">Extraction des termes...</h3>
+          <p className="text-gray-600">Analyse du sujet en cours</p>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  if (terms.length === 0) {
+    return (
+      <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-orange-100 shadow-2xl">
+        <CardContent className="p-12 text-center">
+          <AlertCircle className="h-16 w-16 mx-auto mb-4 text-orange-400" />
+          <h3 className="text-xl font-bold text-gray-900 mb-2">Aucun terme extrait</h3>
+          <p className="text-gray-600 mb-4">
+            Impossible d'extraire les termes de ce sujet.
+          </p>
+          <Button
+            onClick={() => extractTermsFromSubject(subjectFromParent)}
+            className="bg-orange-500 hover:bg-orange-600 text-white rounded-full"
+          >
+            Réessayer
+          </Button>
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
-    <Card className="bg-white shadow-sm border border-blue-200">
-      <CardHeader className="pb-6 border-b border-blue-100 bg-gradient-to-r from-blue-50 to-blue-100/40">
-        <CardTitle className="text-xl text-[#0F172A]">S'entraîner à définir les termes</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="term">Terme</Label>
-              <Select value={term} onValueChange={setTerm}>
-                <SelectTrigger className="bg-white border-blue-200 focus:border-blue-500 focus:ring-blue-500">
-                  <SelectValue placeholder="Choisir un terme" />
-                </SelectTrigger>
-                <SelectContent>
-                  {GEOPOLITICS_DEFINITIONS.map((d) => (
-                    <SelectItem key={d.term} value={d.term}>{d.term}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <div className="flex items-center gap-2 text-xs text-blue-800">
-                <Button type="button" variant="outline" className="h-7 px-2 border-blue-200" onClick={() => {
-                  const idx = GEOPOLITICS_DEFINITIONS.findIndex(x => x.term === term);
-                  const prev = (idx - 1 + GEOPOLITICS_DEFINITIONS.length) % GEOPOLITICS_DEFINITIONS.length;
-                  setTerm(GEOPOLITICS_DEFINITIONS[prev].term);
-                }}>Précédent</Button>
-                <Button type="button" variant="outline" className="h-7 px-2 border-blue-200" onClick={() => {
-                  const idx = GEOPOLITICS_DEFINITIONS.findIndex(x => x.term === term);
-                  const next = (idx + 1) % GEOPOLITICS_DEFINITIONS.length;
-                  setTerm(GEOPOLITICS_DEFINITIONS[next].term);
-                }}>Suivant</Button>
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="user-definition">Votre définition</Label>
-              <Textarea
-                id="user-definition"
-                value={userDefinition}
-                onChange={(e) => setUserDefinition(e.target.value)}
-                placeholder="Proposez une définition claire, précise et sourcée si possible."
-                className="min-h-[160px] bg-white border-blue-200 focus:border-blue-500 focus:ring-blue-500"
-              />
-            </div>
-
-            <div className="flex gap-3">
-              <Button onClick={handleEvaluate} disabled={isEvaluating || !userDefinition.trim()} className="rounded-xl bg-blue-600 hover:bg-blue-700">
-                {isEvaluating ? (
-                  <>
-                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                    Correction…
-                  </>
-                ) : (
-                  <>
-                    <CheckCircle2 className="h-4 w-4 mr-2" />
-                    Corriger immédiatement
-                  </>
-                )}
-              </Button>
-            </div>
+    <div className="space-y-6">
+      {/* Header Card - Subject and Progress */}
+      <Card className="bg-gradient-to-r from-orange-50 to-transparent border-orange-200 shadow-lg rounded-3xl overflow-hidden">
+        <CardHeader className="pb-4">
+          <CardTitle className="flex items-center gap-3 text-xl text-gray-900">
+            <BookOpen className="h-6 w-6 text-orange-600" />
+            Définir les termes du sujet
+          </CardTitle>
+          <div className="mt-2 text-sm text-gray-600">
+            {terms.length} terme{terms.length > 1 ? 's' : ''} à définir
           </div>
+        </CardHeader>
+      </Card>
 
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <Label>Référence attendue</Label>
-              {showReference ? (
-                <div className="p-4 rounded-lg border border-blue-200 bg-blue-50 text-sm text-slate-800">
-                  {canonical?.definition ?? '—'}
-                  {canonical?.source && (
-                    <div className="text-xs text-blue-700 mt-2">Source: {canonical.source}</div>
+      {/* All Terms - Ultra Compact Layout */}
+      <div className="grid grid-cols-1 gap-2">
+        {terms.map((term, index) => {
+          const def = definitions.get(term);
+          return (
+            <Card key={term} className="bg-white/90 backdrop-blur-sm rounded-lg border border-orange-100 shadow-sm">
+              <div className="flex flex-col sm:flex-row sm:items-start p-3 gap-3">
+                <div className="flex items-center gap-2 sm:w-48 shrink-0 pt-1">
+                  <Badge className="bg-slate-50 text-slate-500 border-0 text-[10px] px-1.5 h-5 flex items-center justify-center min-w-[30px]">
+                    {index + 1}/{terms.length}
+                  </Badge>
+                  <span className="text-sm font-bold text-gray-900 leading-tight">
+                    {term}
+                  </span>
+                </div>
+
+                <div className="flex-1 space-y-2 w-full">
+                  <div className="relative">
+                    <Textarea
+                      value={def?.userDefinition || ''}
+                      onChange={(e) => handleDefinitionChange(term, e.target.value)}
+                      placeholder={`Définition...`}
+                      className="min-h-[60px] resize-none border border-orange-200 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 bg-white rounded-md text-sm p-2 pr-12 leading-snug"
+                    />
+                    <div className="absolute bottom-1 right-2 text-[9px] text-gray-400 pointer-events-none">
+                      {def?.userDefinition.length || 0}
+                    </div>
+                  </div>
+
+                  {/* Individual Feedback (if available) */}
+                  {(def?.score !== undefined || def?.recommendations || def?.formalDefinition) && (
+                    <div className="space-y-2">
+                      {/* Score Badge */}
+                      {def?.score !== undefined && (
+                        <div className="flex items-center gap-2">
+                          <div className={`px-3 py-1 rounded-full text-xs font-bold ${def.score >= 80 ? 'bg-green-100 text-green-700' :
+                            def.score >= 60 ? 'bg-orange-100 text-orange-700' :
+                              'bg-red-100 text-red-700'
+                            }`}>
+                            Note: {def.score}/100
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Recommendations */}
+                      {def?.recommendations && def.recommendations.length > 0 && (
+                        <div className="bg-blue-50/50 rounded-md p-2 border border-blue-100">
+                          <div className="text-xs font-semibold text-blue-900 mb-1">💡 Recommandations:</div>
+                          <ul className="text-xs text-blue-800 space-y-1 ml-3">
+                            {def.recommendations.map((rec, idx) => (
+                              <li key={idx} className="list-disc leading-tight">{rec}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {/* Formal Definition */}
+                      {def?.formalDefinition && (
+                        <div className="bg-green-50/50 rounded-md p-2 border border-green-100">
+                          <div className="text-xs font-semibold text-green-900 mb-1">✓ Définition formelle attendue:</div>
+                          <p className="text-xs text-green-800 leading-tight">{def.formalDefinition}</p>
+                        </div>
+                      )}
+                    </div>
                   )}
                 </div>
-              ) : (
-                <Alert className="border border-blue-200 bg-blue-50">
-                  <AlertDescription className="text-slate-800 text-sm">
-                    La référence est masquée. Proposez d’abord votre définition puis cliquez sur « Corriger immédiatement » pour l’afficher.
-                  </AlertDescription>
-                </Alert>
-              )}
-            </div>
+              </div>
+            </Card>
+          );
+        })}
+      </div>
 
-            {feedback && (
-              <div className="space-y-4">
-                <Alert className="border border-blue-200 bg-blue-50">
-                  <AlertDescription className="whitespace-pre-line text-slate-900">
-                    {typeof score === 'number' ? `Score: ${score}/100\n` : ''}
-                    {feedback}
-                  </AlertDescription>
-                </Alert>
-                <div className="grid md:grid-cols-2 gap-4 text-sm">
-                  <div className="p-3 rounded-lg border border-blue-200 bg-blue-50">
-                    <div className="font-semibold text-blue-900 mb-1">Points couverts</div>
-                    <div className="text-blue-900">{covered.length ? covered.join(', ') : '—'}</div>
-                  </div>
-                  <div className="p-3 rounded-lg border border-blue-200 bg-white">
-                    <div className="font-semibold text-blue-900 mb-1">Points manquants</div>
-                    <div className="text-blue-900/80">{missing.length ? missing.join(', ') : '—'}</div>
-                  </div>
+      {/* Validate Button */}
+      <div className="flex justify-center pt-4">
+        <Button
+          onClick={handleValidateAll}
+          disabled={isEvaluating}
+          className="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-bold rounded-full px-8 h-14 text-lg shadow-2xl hover:shadow-orange-500/50 transition-all duration-300"
+        >
+          {isEvaluating ? (
+            <>
+              <Loader2 className="h-5 w-5 mr-2 animate-spin" />
+              Évaluation en cours...
+            </>
+          ) : (
+            <>
+              <Sparkles className="h-5 w-5 mr-2" />
+              Valider et voir le feedback
+            </>
+          )}
+        </Button>
+      </div>
+
+      {/* Global Feedback Card */}
+      {finalFeedback && (
+        <Card className="bg-gradient-to-r from-orange-100 to-orange-50 border-2 border-orange-200 shadow-lg rounded-3xl overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3 text-xl text-orange-800">
+              <CheckCircle2 className="h-6 w-6 text-orange-600" />
+              Feedback Global
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {globalScore !== null && (
+              <div className="text-center p-6 bg-white/80 rounded-2xl border border-orange-100">
+                <div className="text-6xl font-black text-orange-600 mb-2">
+                  {globalScore}<span className="text-3xl text-orange-400">/100</span>
                 </div>
-                <div className="p-4 rounded-lg border border-blue-200 bg-blue-50">
-                  <div className="font-semibold text-blue-900 mb-1">Exemple de définition attendue</div>
-                  <div className="text-slate-800">{canonical?.definition ?? '—'}</div>
-                </div>
+                <div className="text-gray-700 font-semibold">Score Global</div>
               </div>
             )}
-
-            {!feedback && (
-              <Alert className="border border-blue-200 bg-blue-50">
-                <AlertCircle className="h-4 w-4" />
-                <AlertDescription className="text-slate-800 text-sm">
-                  Saisissez votre définition puis cliquez sur « Corriger immédiatement ». Une correction locale est fournie (sans appel API), avec score indicatif, points couverts/manquants et un exemple attendu.
-                </AlertDescription>
-              </Alert>
-            )}
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+            <div className="bg-white/80 p-6 rounded-2xl border border-orange-100">
+              <div className="whitespace-pre-line text-gray-800 leading-relaxed">
+                {finalFeedback}
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+    </div>
   );
 };
 
 export default DefinitionTraining;
-
-

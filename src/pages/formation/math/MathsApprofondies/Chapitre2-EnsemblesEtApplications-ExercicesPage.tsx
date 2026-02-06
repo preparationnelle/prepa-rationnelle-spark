@@ -432,7 +432,7 @@ const Chapitre2EnsemblesEtApplicationsExercicesPage = () => {
             }
             correction={
               <div>
-                <p className="mb-2"><strong>Injectivité :</strong> Supposons <LatexRenderer latex="f(x) = f(y)" /> avec <LatexRenderer latex="x \neq y" />. Si <LatexRenderer latex="x < y" /> (par exemple), la stricte monotonie impose <LatexRenderer latex="f(x) < f(y)" /> (ou >), ce qui contredit l'égalité. Donc <LatexRenderer latex="x = y" />.</p>
+                <p className="mb-2"><strong>Injectivité :</strong> Supposons <LatexRenderer latex="f(x) = f(y)" /> avec <LatexRenderer latex="x \neq y" />. Si <LatexRenderer latex="x < y" /> (par exemple), la stricte monotonie impose <LatexRenderer latex="f(x) < f(y)" /> (ou l'inverse), ce qui contredit l'égalité. Donc <LatexRenderer latex="x = y" />.</p>
                 <p className="mb-2"><strong>Surjectivité sur <LatexRenderer latex="f(I)" /> :</strong> Par définition de l'image <LatexRenderer latex="f(I)" />, tout élément <LatexRenderer latex="z \in f(I)" /> possède un antécédent dans I.</p>
                 <p className="text-sm italic text-slate-500">Note: Le théorème des valeurs intermédiaires assure que l'image est bien un intervalle.</p>
               </div>

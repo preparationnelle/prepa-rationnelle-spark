@@ -48,13 +48,11 @@ const ParagraphGeneratorPage = () => {
       {/* Content */}
       <div className="container mx-auto py-12 px-4 relative z-10">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center p-3 bg-orange-100 rounded-2xl mb-6 shadow-sm">
-            <FileText className="h-10 w-10 text-orange-600" />
-          </div>
+
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Générateur de <span className="bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">Paragraphes</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-4">
             Collez un article de presse et générez automatiquement un paragraphe argumentatif structuré dans la langue de votre choix.
           </p>
 
@@ -110,43 +108,7 @@ const ParagraphGeneratorPage = () => {
         </div>
 
         {/* Info cards */}
-        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          <Card className="border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 bg-white group">
-            <CardContent className="p-6">
-              <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <BookOpen className="h-6 w-6 text-blue-600" />
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Comment utiliser</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Collez simplement un article de presse, ajoutez quelques mots-clés optionnels pour guider l'IA, et obtenez un paragraphe structuré instantanément.
-              </p>
-            </CardContent>
-          </Card>
 
-          <Card className="border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 bg-white group">
-            <CardContent className="p-6">
-              <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Languages className="h-6 w-6 text-purple-600" />
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Multi-langues</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Compatible avec l'Anglais, l'Allemand et l'Espagnol. L'IA utilise le vocabulaire spécifique et les connecteurs logiques adaptés à chaque langue.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 bg-white group">
-            <CardContent className="p-6">
-              <div className="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <FileText className="h-6 w-6 text-green-600" />
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Résultat optimisé</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Obtenez un paragraphe argumentatif clair et concis (100-150 mots) ainsi que les points clés extraits pour faciliter votre apprentissage.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
       </div>
     </div>
   );

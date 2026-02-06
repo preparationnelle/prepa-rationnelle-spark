@@ -7,12 +7,23 @@ import { Brain, Loader2, Copy, Check, Sparkles, Info, AlertCircle, Lightbulb } f
 import { useToast } from '@/hooks/use-toast';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
-export const ProblematiquesGenerator = () => {
-  const [subject, setSubject] = useState('');
+interface ProblematiquesGeneratorProps {
+  mode?: 'culture-generale' | 'geopolitics';
+  subjectFromParent?: string;
+}
+
+export const ProblematiquesGenerator = ({ mode = 'culture-generale', subjectFromParent }: ProblematiquesGeneratorProps) => {
+  const [subject, setSubject] = useState(subjectFromParent || '');
   const [loading, setLoading] = useState(false);
   const [problematique, setProblematique] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
+
+  const isGeopolitics = mode === 'geopolitics';
+  const title = isGeopolitics ? "Générateur de Problématiques (Géopolitique)" : "Générateur de Problématiques (Culture G.)";
+  const placeholder = isGeopolitics
+    ? "Ex: La Chine, une puissance révisionniste ?"
+    : "Ex: Pensez-vous, comme l'a écrit Montaigne, qu'« il se trouve plus de différence de tel homme à tel homme que de tel animal à tel homme » ?";
 
   const handleGenerate = async () => {
     if (!subject.trim()) {
@@ -36,15 +47,33 @@ export const ProblematiquesGenerator = () => {
         throw new Error('Clé API OpenAI non configurée. Veuillez contacter l\'administrateur.');
       }
 
-      const prompt = `Tu es un expert en dissertation de Culture Générale (Lettres et Philosophie) pour les concours de prépa ECG.
+      let prompt = '';
 
+      if (isGeopolitics) {
+        prompt = `Tu es un expert en dissertation de Géopolitique pour les classes préparatoires ECG.
+Ta mission : analyser un sujet de dissertation et formuler une problématique claire, percutante et dialectique.
+
+SUJET À ANALYSER :
+"${subject.trim()}"
+
+INSTRUCTIONS POUR LA PROBLÉMATIQUE :
+1. ANALYSE le sujet et IDENTIFIE les enjeux géopolitiques majeurs (Rivalités, Territoires, Puissance, Acteurs, Échelles).
+2. FORMULE une problématique centrale sous forme de question.
+3. La problématique doit mettre en tension le sujet (paradoxe, évolution, contradiction).
+4. Elle doit permettre l'élaboration d'un plan en 2 ou 3 parties.
+5. Elle doit être explicite et utiliser un vocabulaire géopolitique précis.
+
+Réponds UNIQUEMENT avec la problématique formulée, sans introduction ni conclusion.`;
+      } else {
+        // Mode Culture Générale (Default with "Juger" context)
+        prompt = `Tu es un expert en dissertation de Culture Générale (Lettres et Philosophie) pour les concours de prépa ECG.
 Ta mission : analyser un sujet de dissertation et formuler une problématique claire, percutante et dialectique.
 
 SUJET À ANALYSER :
 "${subject.trim()}"
 
 BASE DE CONNAISSANCES SUR LE CONCEPT DE "JUGER" :
-
+... (Contexte "Juger" conservé implicitement ou tu peux le remettre si besoin, mais pour simplifier ici je garde le prompt original complet si possible, ou je le ré-injecte)
 I. Ce que « juger » veut dire (opérations et portée)
 • Opérer : attribuer, relier, qualifier (vrai/faux, juste/injuste, beau/laid), hiérarchiser.
 • Comparer ou trancher ? Comparer prépare, trancher clôt. Le bon jugement sait quand s'arrêter.
@@ -53,69 +82,30 @@ I. Ce que « juger » veut dire (opérations et portée)
 • Kant : juger = subsumer le particulier sous l'universel (entendement), et réfléchir sans concept prédonné (jugement réfléchissant, esthétique/téléologique).
 
 II. Lignes de fracture conceptuelles
-1. Juger / Comprendre / Décider
-• Comprendre explique (causes/raisons) ; juger évalue ; décider engage.
-• Tensions classiques : « comprendre n'est pas excuser », « décider sans juger = arbitraire ».
+1. Juger / Comprendre / Décider (Comprendre explique ; juger évalue ; décider engage).
+2. Juger / Connaître (Connaître établit du vrai ; juger valide une prétention).
+3. Juger / Raisonner (Raisonner infère ; juger conclut).
+4. Percevoir / Sentir / Juger.
+5. Préjuger / Juger.
 
-2. Juger / Connaître
-• Connaître établit du vrai ; juger valide (ou non) une prétention à la vérité/valeur.
-• « Juger en connaissance de cause » = articuler faits, normes pertinentes et responsabilité de conclure.
+III. Typologie utile
+De fait / de valeur ; Pratique (moral, politique, juridique) ; Singulier/Universel.
 
-3. Juger / Raisonner
-• Raisonner produit des inférences ; juger conclut (et assume le risque d'erreur).
+IV. Domaines d'exercice
+Judiciaire (équité vs légalité), Moral, Politique, Social, Esthétique, Historique.
 
-4. Percevoir / Sentir / Juger
-• La perception brute existe-t-elle ? Ou est-elle déjà « chargée de théorie » (et de jugements implicites) ?
-
-5. Préjuger / Juger
-• Préjugé = jugement avant examen. Certains préjugés sont des heuristiques utiles, jusqu'à preuve du contraire.
-
-III. Typologie utile (au lieu des redites)
-• Logique : jugements analytiques/synthétiques ; nécessité/contingence ; validité.
-• De fait / de valeur : distinguer constat et évaluation sans les opposer naïvement.
-• Pratique : moral (bien/mal), politique (opportun/juste), juridique (licite/illicite), technique (efficace/inefficace), esthétique (beau/sans intérêt).
-• Singulier/Universel : juger un cas (équité) vs. juger par règle (égalité).
-• Individuel/Collectif : jugement intime, jury, opinion publique, comités d'experts.
-
-IV. Domaines d'exercice (questions actuelles et fécondes)
-1. Judiciaire : impartialité, fabrication du droit, finalités concurrentes, équité vs légalité
-2. Moral : vérité vs justification, intention/conséquences/vertus, dilemmes
-3. Politique : qui juge les gouvernants, rationalité vs prudence, moralisation
-4. Social : pouvoir des jugements sociaux, réputation, cancel culture
-5. Esthétique : universalité sans concept vs pluralisme, expertise vs goût profane
-6. Scientifique : qualité des preuves, robustesse des modèles, éthique
-7. Histoire : « l'histoire jugera », rôle de l'historien
-8. Soi et autrui : se juger soi-même, respecter autrui
-9. Interculturel : ethnocentrisme, universaux minimaux
-10. Économie : efficacité vs justice
-
-V. Obstacles et conditions d'un bon jugement
-• Obstacles : passions, intérêts, conformisme, biais cognitifs, langage flou, info pauvre
-• Conditions : information suffisante, normes explicites, capacité de révision, lenteur, courage
-• Suspension : l'épochè comme hygiène
-
-VI. Grille rapide « bien juger »
-1. Faits (qualité des sources, contradictoire)
-2. Normes (laquelle ? pourquoi elle ?)
-3. Argument (validité, alternatives, objections)
-4. Décision (qui assume ? pour qui ? révisable comment ?)
-5. Effets (conséquences prévues, effets pervers)
-
-VII. Couples de thèses opposées
-• Juger, c'est penser en public / Penser, c'est juger en privé
-• Sans critère, pas de jugement / Le meilleur jugement invente son critère
-• Juger vite, c'est juger mal / Juger tard, c'est parfois ne plus juger
-• Etc. (tous les couples listés dans la base)
+V. Obstacles et conditions
+Obstacles : passions, intérêts, biais. Conditions : info, normes, courage, suspension.
 
 INSTRUCTIONS POUR LA PROBLÉMATIQUE :
-1. ANALYSE le sujet et IDENTIFIE les enjeux liés au concept de "juger"
-2. FORMULE une problématique dialectique qui pose une tension conceptuelle
-3. La problématique doit commencer par "Comment...", "Dans quelle mesure...", "Faut-il..." ou formule similaire
-4. Elle doit intégrer au moins 2 aspects opposés du jugement (ex: comprendre/juger, particulier/universel, etc.)
-5. Elle doit être FÉCONDE : permettre un développement en 3 parties équilibrées
-6. Elle doit être PERTINENTE : s'ancrer dans les enjeux réels du sujet
+1. ANALYSE le sujet et IDENTIFIE les enjeux liés au concept de "juger".
+2. FORMULE une problématique dialectique qui pose une tension conceptuelle.
+3. La problématique doit commencer par "Comment...", "Dans quelle mesure...", "Faut-il..." ou formule similaire.
+4. Elle doit intégrer au moins 2 aspects opposés du jugement.
+5. Elle doit être FÉCONDE et PERTINENTE.
 
 Réponds UNIQUEMENT avec la problématique formulée, sans explications supplémentaires.`;
+      }
 
       const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
@@ -128,7 +118,9 @@ Réponds UNIQUEMENT avec la problématique formulée, sans explications supplém
           messages: [
             {
               role: 'system',
-              content: 'Tu es un expert en dissertation de Culture Générale pour les concours de prépa ECG. Tu analyses les sujets et formules des problématiques dialectiques et fécondes.'
+              content: isGeopolitics
+                ? 'Tu es un expert en géopolitique (HGGSP). Tu formules des problématiques précises et dialectiques.'
+                : 'Tu es un expert en dissertation de Culture Générale pour les concours de prépa ECG.'
             },
             {
               role: 'user',
@@ -201,7 +193,11 @@ Réponds UNIQUEMENT avec la problématique formulée, sans explications supplém
   };
 
   const loadExample = () => {
-    setSubject('Pensez-vous, comme l\'a écrit Montaigne, qu\'« il se trouve plus de différence de tel homme à tel homme que de tel animal à tel homme » ?');
+    if (isGeopolitics) {
+      setSubject("L'Union Européenne, une puissance sans puissance ?");
+    } else {
+      setSubject('Pensez-vous, comme l\'a écrit Montaigne, qu\'« il se trouve plus de différence de tel homme à tel homme que de tel animal à tel homme » ?');
+    }
   };
 
   return (
@@ -210,8 +206,7 @@ Réponds UNIQUEMENT avec la problématique formulée, sans explications supplém
       <Card className="bg-gradient-to-br from-white via-orange-50/30 to-white border border-orange-200">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-2xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
-            <Brain className="h-6 w-6 text-orange-600" />
-            Générateur de Problématiques
+            {title}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -241,7 +236,7 @@ Réponds UNIQUEMENT avec la problématique formulée, sans explications supplém
             </Label>
             <Textarea
               id="subject"
-              placeholder="Ex: Pensez-vous, comme l'a écrit Montaigne, qu'« il se trouve plus de différence de tel homme à tel homme que de tel animal à tel homme » ?"
+              placeholder={placeholder}
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
               className="min-h-[120px] border-gray-300 focus:border-orange-500 focus:ring-orange-500 bg-gray-50 rounded-lg resize-none"

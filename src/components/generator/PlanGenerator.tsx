@@ -24,15 +24,21 @@ interface PlanData {
   conclusion: string;
 }
 
-export const PlanGenerator = () => {
-  const [topic, setTopic] = useState('');
+interface PlanGeneratorProps {
+  subjectFromParent?: string;
+}
+
+export const PlanGenerator = ({ subjectFromParent }: PlanGeneratorProps) => {
+  const [topic, setTopic] = useState(subjectFromParent || '');
   const [isGenerating, setIsGenerating] = useState(false);
   const [plan, setPlan] = useState<PlanData | null>(null);
   const [wordCount, setWordCount] = useState(0);
   const { toast } = useToast();
 
   const loadExample = () => {
-    setTopic("La puissance américaine aujourd'hui");
+    if (!subjectFromParent) {
+      setTopic("La puissance américaine aujourd'hui");
+    }
   };
 
   const handleGenerate = async () => {
@@ -143,9 +149,9 @@ export const PlanGenerator = () => {
                   </>
                 )}
               </Button>
-              
-              <Button 
-                onClick={loadExample} 
+
+              <Button
+                onClick={loadExample}
                 variant="outline"
                 className="px-6 border border-gray-300 bg-[#F5F5F5] text-[#111111] hover:bg-gray-100 rounded-xl h-12 transition-all duration-300"
               >
@@ -201,7 +207,7 @@ export const PlanGenerator = () => {
                         {part.title}
                       </h3>
                     </div>
-                    
+
                     {part.subparts && part.subparts.length > 0 && (
                       <div className="ml-4 space-y-3">
                         {part.subparts.map((subpart, subpartIndex) => (

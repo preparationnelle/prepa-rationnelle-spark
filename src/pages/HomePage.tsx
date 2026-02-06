@@ -1,7 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
 import { HeroSection } from '@/components/sections/HeroSection';
-
 import { SuperprofReviewsSection } from '@/components/sections/SuperprofReviewsSection';
 import { PodcastSection } from '@/components/sections/PodcastSection';
 import { PartnersSection } from '@/components/sections/PartnersSection';

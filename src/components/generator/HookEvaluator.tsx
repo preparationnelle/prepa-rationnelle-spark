@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import {
     Select,
@@ -22,7 +23,8 @@ import {
     CheckCircle2,
     AlertTriangle,
     TrendingUp,
-    Lightbulb
+    Lightbulb,
+    BookOpenCheck
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
@@ -39,18 +41,25 @@ interface EvaluationResult {
     improvements: string[];
     suggestions: string[];
     fatalErrors: string[];
+    improvedProposal?: string;
 }
 
-export const HookEvaluator = () => {
+interface HookEvaluatorProps {
+    subjectFromParent?: string;
+}
+
+export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
     const [hook, setHook] = useState('');
-    const [subject, setSubject] = useState('');
+    const [subject, setSubject] = useState(subjectFromParent || '');
     const [isEvaluating, setIsEvaluating] = useState(false);
     const [evaluation, setEvaluation] = useState<EvaluationResult | null>(null);
     const { toast } = useToast();
     const { currentUser } = useAuth();
 
     const loadExample = () => {
-        setSubject("L'Afrique dans la mondialisation depuis 1990");
+        if (!subjectFromParent) {
+            setSubject("L'Afrique dans la mondialisation depuis 1990");
+        }
         setHook('The Economist titrait en 2013 "The New Scramble for Africa", faisant écho au partage colonial du continent à la fin du XIXᵉ siècle. Cette nouvelle ruée vers l\'Afrique traduit une reconfiguration des influences internationales, où les anciennes puissances coloniales doivent composer avec des acteurs émergents comme la Chine, la Russie ou la Turquie.');
     };
 
@@ -134,41 +143,50 @@ export const HookEvaluator = () => {
                 </CardHeader>
                 <CardContent className="space-y-6 p-8">
                     <div className="space-y-5">
-                        <div className="space-y-3">
-                            <Label htmlFor="subject" className="text-base font-semibold text-gray-900 flex items-center gap-2">
-                                📋 Sujet de dissertation
-                            </Label>
-                            <Select onValueChange={(value) => setSubject(value)} value={subject}>
-                                <SelectTrigger className="border-2 border-orange-200 focus:border-orange-500 focus:ring-orange-500 bg-white rounded-2xl h-12 text-base">
-                                    <SelectValue placeholder="Sélectionnez un sujet ou saisissez le vôtre ci-dessous" />
-                                </SelectTrigger>
-                                <SelectContent className="max-h-[400px]">
-                                    {Object.entries(subjectsByCategory).map(([category, subjects]) => (
-                                        <SelectGroup key={category}>
-                                            <SelectLabel className="font-bold text-orange-600">
-                                                {getCategoryName(category as keyof typeof subjectsByCategory)}
-                                            </SelectLabel>
-                                            {subjects.map((subjectText, idx) => (
-                                                <SelectItem key={`${category}-${idx}`} value={subjectText}>
-                                                    {subjectText}
-                                                </SelectItem>
-                                            ))}
-                                        </SelectGroup>
-                                    ))}
-                                </SelectContent>
-                            </Select>
+                        <Label htmlFor="subject" className="text-base font-semibold text-gray-900 flex items-center gap-2">
+                            Sujet de dissertation
+                        </Label>
+                        <div className="relative">
                             <Input
-                                id="subject-custom"
-                                placeholder="Ou saisissez votre propre sujet ici..."
+                                id="subject"
+                                placeholder="Saisissez votre sujet ou choisissez dans la liste..."
                                 value={subject}
                                 onChange={(e) => setSubject(e.target.value)}
-                                className="border-2 border-orange-200 focus:border-orange-500 focus:ring-orange-500 bg-white rounded-2xl h-12 text-base"
+                                readOnly={!!subjectFromParent}
+                                className={`flex-1 border-2 text-base h-12 rounded-2xl ${subjectFromParent ? 'bg-orange-50/50 border-orange-200 text-gray-700' : 'bg-white border-orange-200 focus:border-orange-500 focus:ring-orange-500'}`}
                             />
+                            {subjectFromParent ? (
+                                <div className="absolute top-3 right-3">
+                                    <Badge variant="secondary" className="bg-orange-100 text-orange-700 hover:bg-orange-100 border-0 font-medium">Sujet Imposé</Badge>
+                                </div>
+                            ) : (
+                                <div className="absolute top-1 right-1">
+                                    <Select onValueChange={(value) => setSubject(value)} value={Object.values(subjectsByCategory).flat().includes(subject) ? subject : undefined}>
+                                        <SelectTrigger className="w-10 h-10 p-0 flex justify-center items-center bg-transparent border-0 hover:bg-orange-50 rounded-xl transition-all duration-200" title="Choisir un sujet prédéfini">
+                                            <BookOpenCheck className="h-5 w-5 text-orange-400" />
+                                        </SelectTrigger>
+                                        <SelectContent className="max-h-[400px]">
+                                            {Object.entries(subjectsByCategory).map(([category, subjects]) => (
+                                                <SelectGroup key={category}>
+                                                    <SelectLabel className="font-bold text-orange-600 sticky top-0 bg-white z-10 py-2">
+                                                        {getCategoryName(category as keyof typeof subjectsByCategory)}
+                                                    </SelectLabel>
+                                                    {subjects.map((subjectText, idx) => (
+                                                        <SelectItem key={`${category}-${idx}`} value={subjectText} className="cursor-pointer">
+                                                            {subjectText}
+                                                        </SelectItem>
+                                                    ))}
+                                                </SelectGroup>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                            )}
                         </div>
 
                         <div className="space-y-3">
                             <Label htmlFor="hook" className="text-base font-semibold text-gray-900 flex items-center gap-2">
-                                ✍️ Votre accroche
+                                Votre accroche
                             </Label>
                             <Textarea
                                 id="hook"
@@ -224,7 +242,7 @@ export const HookEvaluator = () => {
                             <Alert className="border-2 border-orange-600 bg-orange-50 rounded-2xl">
                                 <AlertTriangle className="h-5 w-5 text-orange-600" />
                                 <AlertDescription className="text-gray-900">
-                                    <div className="font-semibold mb-2 text-orange-600">⚠️ Erreurs critiques détectées :</div>
+                                    <div className="font-semibold mb-2 text-orange-600">Erreurs critiques détectées :</div>
                                     <ul className="list-disc list-inside space-y-1">
                                         {evaluation.fatalErrors.map((error, idx) => (
                                             <li key={idx}>{error}</li>
@@ -303,7 +321,7 @@ export const HookEvaluator = () => {
                                     <ul className="space-y-2">
                                         {evaluation.strengths.map((strength, idx) => (
                                             <li key={idx} className="flex items-start gap-2 text-gray-800">
-                                                <span className="text-orange-600 mt-1">✓</span>
+                                                <CheckCircle2 className="h-4 w-4 text-orange-600 mt-1 shrink-0" />
                                                 <span>{strength}</span>
                                             </li>
                                         ))}
@@ -325,7 +343,7 @@ export const HookEvaluator = () => {
                                     <ul className="space-y-2">
                                         {evaluation.improvements.map((improvement, idx) => (
                                             <li key={idx} className="flex items-start gap-2 text-gray-800">
-                                                <span className="text-gray-600 mt-1">→</span>
+                                                <TrendingUp className="h-4 w-4 text-gray-600 mt-1 shrink-0" />
                                                 <span>{improvement}</span>
                                             </li>
                                         ))}
@@ -347,11 +365,33 @@ export const HookEvaluator = () => {
                                     <ul className="space-y-2">
                                         {evaluation.suggestions.map((suggestion, idx) => (
                                             <li key={idx} className="flex items-start gap-2 text-gray-800">
-                                                <span className="text-orange-600 mt-1">💡</span>
+                                                <Lightbulb className="h-4 w-4 text-orange-600 mt-1 shrink-0" />
                                                 <span>{suggestion}</span>
                                             </li>
                                         ))}
                                     </ul>
+                                </CardContent>
+                            </Card>
+                        )}
+
+                        {/* Improved Proposal */}
+                        {evaluation.improvedProposal && (
+                            <Card className="bg-gradient-to-r from-orange-100 to-orange-50 border-2 border-orange-200 shadow-lg relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-orange-300/20 rounded-full blur-2xl -mr-16 -mt-16"></div>
+                                <CardHeader>
+                                    <CardTitle className="flex items-center gap-3 text-xl text-orange-800">
+                                        <Sparkles className="h-6 w-6 text-orange-600 animate-pulse" />
+                                        Proposition d'Accroche Améliorée
+                                    </CardTitle>
+                                </CardHeader>
+                                <CardContent className="relative z-10">
+                                    <div className="bg-white/80 p-6 rounded-2xl border border-orange-100 italic text-lg leading-relaxed text-gray-800 shadow-sm">
+                                        "{evaluation.improvedProposal}"
+                                    </div>
+                                    <div className="mt-4 text-sm text-orange-700 flex items-center gap-2 font-medium">
+                                        <CheckCircle2 className="h-4 w-4" />
+                                        Version corrigée et optimisée
+                                    </div>
                                 </CardContent>
                             </Card>
                         )}
