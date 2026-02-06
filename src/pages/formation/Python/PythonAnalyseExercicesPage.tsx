@@ -16,6 +16,8 @@ import {
 } from '@/components/ui/accordion';
 
 import { usePythonProgress } from '@/hooks/usePythonProgress';
+import PythonCodeEditor, { EvaluationResult } from '@/components/python/PythonCodeEditor';
+import CodeEvaluationResult from '@/components/python/CodeEvaluationResult';
 
 const PythonAnalyseExercicesPage = () => {
   const [searchParams] = useSearchParams();
@@ -28,6 +30,10 @@ const PythonAnalyseExercicesPage = () => {
   const [qcmAnswers, setQcmAnswers] = useState<{ [key: number]: string }>({});
   const [qcmSubmitted, setQcmSubmitted] = useState(false);
   const [qcmScore, setQcmScore] = useState<number | null>(null);
+
+  // Evaluation state for code submissions
+  const [evaluationResults, setEvaluationResults] = useState<{ [key: number]: EvaluationResult }>({});
+  const moduleId = 'analyse';
 
   // Détecter le paramètre quiz dans l'URL
   useEffect(() => {
@@ -981,6 +987,23 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                     </div>
                   </CardContent>
                 </Card>
+
+                {/* Code Editor Section */}
+                <PythonCodeEditor
+                  exerciseStatement={exercises[selectedExercise - 1].content.enonce_latex || exercises[selectedExercise - 1].content.enonce || exercises[selectedExercise - 1].content.objective}
+                  expectedSolution={exercises[selectedExercise - 1].content.correction || ''}
+                  moduleId={moduleId}
+                  exerciseId={String(selectedExercise)}
+                  onEvaluationComplete={(result) => {
+                    setEvaluationResults(prev => ({ ...prev, [selectedExercise]: result }));
+                    markExerciseAsSeen(`python-${moduleId}-exo-${selectedExercise}`);
+                  }}
+                />
+
+                {/* Evaluation Result */}
+                {evaluationResults[selectedExercise] && (
+                  <CodeEvaluationResult result={evaluationResults[selectedExercise]} />
+                )}
 
                 {/* Bouton Correction */}
                 <div className="flex justify-center mb-8">

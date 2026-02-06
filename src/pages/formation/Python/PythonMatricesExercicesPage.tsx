@@ -8,6 +8,8 @@ import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 import { LatexRenderer } from '@/components/LatexRenderer';
 import { usePythonProgress } from '@/hooks/usePythonProgress';
+import PythonCodeEditor, { EvaluationResult } from '@/components/python/PythonCodeEditor';
+import CodeEvaluationResult from '@/components/python/CodeEvaluationResult';
 
 const PythonMatricesExercicesPage = () => {
   const [searchParams] = useSearchParams();
@@ -23,6 +25,10 @@ const PythonMatricesExercicesPage = () => {
   const [qcmAnswers, setQcmAnswers] = useState<{ [key: number]: string }>({});
   const [qcmSubmitted, setQcmSubmitted] = useState(false);
   const [qcmScore, setQcmScore] = useState<number | null>(null);
+
+  // Evaluation state for code submissions
+  const [evaluationResults, setEvaluationResults] = useState<{ [key: number]: EvaluationResult }>({});
+  const moduleId = 'matrices';
 
   // Détecter le paramètre quiz dans l'URL
   useEffect(() => {
@@ -993,6 +999,23 @@ def Nilp(A):
               </CardContent>
             </Card>
 
+            {/* Code Editor Section */}
+            <PythonCodeEditor
+              exerciseStatement={exercise.content.enonce_latex || exercise.content.enonce || exercise.content.objective}
+              expectedSolution={exercise.content.correction || ''}
+              moduleId={moduleId}
+              exerciseId={String(selectedExercise)}
+              onEvaluationComplete={(result) => {
+                setEvaluationResults(prev => ({ ...prev, [selectedExercise]: result }));
+                markExerciseAsSeen(`python-${moduleId}-exo-${selectedExercise}`);
+              }}
+            />
+
+            {/* Evaluation Result */}
+            {evaluationResults[selectedExercise] && (
+              <CodeEvaluationResult result={evaluationResults[selectedExercise]} />
+            )}
+
             {/* Bouton pour afficher/masquer la correction */}
             <div className="flex justify-center pt-6">
               <Button
@@ -1034,7 +1057,7 @@ def Nilp(A):
                   </div>
 
                   <div className="bg-[#1e293b] text-blue-50 p-6 md:p-8 overflow-x-auto">
-                    <pre className="font-mono text-sm leading-relaxed">
+                    <pre className="font-mono text-sm leading-relaxed text-blue-50">
                       <code>{exercise.content.correction}</code>
                     </pre>
                   </div>

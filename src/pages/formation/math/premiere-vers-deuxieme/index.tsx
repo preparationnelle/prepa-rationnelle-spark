@@ -11,7 +11,6 @@ type ChapitreLibre = {
   title: string;
   description: string;
   icon: React.ComponentType<{ className?: string }>;
-  color: string;
   paths: {
     cours: string;
     exercices: string;
@@ -25,7 +24,6 @@ const CHAPITRES_LIBRES: ChapitreLibre[] = [
     title: 'Suites numériques',
     description: 'Convergence, récurrence, et propriétés fondamentales des suites',
     icon: Calculator,
-    color: 'blue',
     paths: {
       cours: '/chapitres-libres/suites-cours',
       exercices: '/chapitres-libres/suites-exercices',
@@ -37,7 +35,6 @@ const CHAPITRES_LIBRES: ChapitreLibre[] = [
     title: 'Séries numériques',
     description: 'Critères de convergence et étude des séries infinies',
     icon: Target,
-    color: 'green',
     paths: {
       cours: '/chapitres-libres/series-cours',
       exercices: '/chapitres-libres/series-exercices',
@@ -49,7 +46,6 @@ const CHAPITRES_LIBRES: ChapitreLibre[] = [
     title: 'Intégrales impropres',
     description: 'Convergence et calculs d\'intégrales sur intervalles non bornés',
     icon: BookOpen,
-    color: 'purple',
     paths: {
       cours: '/chapitres-libres/integrales-impropres-cours',
       exercices: '/chapitres-libres/integrales-impropres-exercices',
@@ -61,7 +57,6 @@ const CHAPITRES_LIBRES: ChapitreLibre[] = [
     title: 'Applications linéaires',
     description: 'Transformations linéaires, noyau, image et propriétés essentielles',
     icon: Move,
-    color: 'orange',
     paths: {
       cours: '#',
       exercices: '/formation/math/premiere-vers-deuxieme/module-1-applications-lineaires-exercices',
@@ -82,146 +77,113 @@ const PremiereVersDeuxiemePage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F0F8FF]">
+    <div className="min-h-screen bg-[#F8FAFF]">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-[#2D5BFF]">
-            <Link to="/" className="flex items-center gap-1 hover:text-[#1e3a8a] transition-colors">
+          <div className="flex items-center text-xs text-muted-foreground">
+            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formations" className="hover:text-[#1e3a8a] transition-colors">Toutes les formations</Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formation/maths-choix" className="hover:text-[#1e3a8a] transition-colors">Choix option Maths</Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <span className="text-[#2D5BFF] font-bold">Première → Deuxième année</span>
+            <span className="mx-1 text-muted-foreground/50">›</span>
+            <Link to="/formations" className="hover:text-foreground transition-colors">Toutes les formations</Link>
+            <span className="mx-1 text-muted-foreground/50">›</span>
+            <Link to="/formation/maths-choix" className="hover:text-foreground transition-colors">Choix option Maths</Link>
+            <span className="mx-1 text-muted-foreground/50">›</span>
+            <span className="text-blue-600 font-medium">Première → Deuxième année</span>
           </div>
         </div>
       </nav>
 
       <div className="container mx-auto px-4 py-8">
         {/* En-tête */}
-        <Card className="border-0 shadow-lg bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50 mb-8">
-          <div className="p-8">
-            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4">
-              Première année → Deuxième année (Maths)
-            </h1>
-            <p className="text-slate-600 text-lg">
-              Modules d’exercices incontournables à maîtriser pour aborder l’ECG2 sereinement.
-            </p>
-          </div>
-        </Card>
+        <div className="text-center mb-12">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Première année → Deuxième année (Maths)
+          </h1>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            Modules d’exercices incontournables à maîtriser pour aborder l’ECG2 sereinement.
+          </p>
+        </div>
 
 
 
         {/* Chapitres libres d'accès */}
-        <div className="container mx-auto px-4 pb-16">
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-8 border border-green-200">
-            <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent text-center">
+        <div className="max-w-4xl mx-auto pb-16">
+          <div className="bg-white rounded-2xl p-8 border border-blue-100 shadow-sm">
+            <h2 className="text-2xl font-bold mb-4 text-blue-900 text-center">
               Autres chapitres essentiels (accès libre)
             </h2>
             <p className="text-gray-600 text-center mb-8 max-w-3xl mx-auto">
-              Pour compléter votre préparation, découvrez ces chapitres fondamentaux issus de la formation Maths Approfondies, 
+              Pour compléter votre préparation, découvrez ces chapitres fondamentaux issus de la formation Maths Approfondies,
               maintenant <strong>gratuits et accessibles à tous</strong> !
             </p>
-            
-            <div className="space-y-6 mb-8">
+
+            <div className="space-y-4 mb-8">
               {CHAPITRES_LIBRES.map((chapitre) => {
-                const getColorClasses = () => {
-                  switch(chapitre.color) {
-                    case 'blue': return {
-                      bg: 'bg-blue-50',
-                      border: 'border-blue-200',
-                      icon: 'bg-blue-500',
-                      badge: 'bg-blue-500',
-                      title: 'text-blue-900'
-                    };
-                    case 'green': return {
-                      bg: 'bg-green-50',
-                      border: 'border-green-200',
-                      icon: 'bg-green-500',
-                      badge: 'bg-green-500',
-                      title: 'text-green-900'
-                    };
-                    case 'purple': return {
-                      bg: 'bg-purple-50',
-                      border: 'border-purple-200',
-                      icon: 'bg-purple-500',
-                      badge: 'bg-purple-500',
-                      title: 'text-purple-900'
-                    };
-                    case 'orange': return {
-                      bg: 'bg-orange-50',
-                      border: 'border-orange-200',
-                      icon: 'bg-orange-500',
-                      badge: 'bg-orange-500',
-                      title: 'text-orange-900'
-                    };
-                    default: return {
-                      bg: 'bg-gray-50',
-                      border: 'border-gray-200',
-                      icon: 'bg-gray-500',
-                      badge: 'bg-gray-500',
-                      title: 'text-gray-900'
-                    };
-                  }
-                };
-                
-                const colors = getColorClasses();
-                
                 return (
-                  <Card key={chapitre.id} className={`${colors.bg} ${colors.border} hover:shadow-lg transition-all duration-200`}>
-                    <CardContent className="p-6">
-                      <div className="flex flex-col lg:flex-row lg:items-center gap-6">
-                        {/* Header avec icône et titre */}
-                        <div className="flex items-center gap-4">
-                          <div className={`w-16 h-16 ${colors.icon} rounded-full flex items-center justify-center shadow-lg`}>
-                            <chapitre.icon className="h-8 w-8 text-white" />
-                          </div>
-                          <div>
-                            <Badge className={`mb-2 ${colors.badge} text-white border-0 shadow-sm`}>
-                              Chapitre {chapitre.id}
-                            </Badge>
-                            <h3 className={`text-xl font-bold ${colors.title} leading-tight`}>
-                              {chapitre.title}
-                            </h3>
-                            <p className="text-gray-600 text-sm mt-1">
-                              {chapitre.description}
-                            </p>
-                          </div>
+                  <Card key={chapitre.id} className="bg-white border-gray-100 hover:border-blue-200 hover:shadow-md transition-all duration-200 group">
+                    <CardContent className="p-4 sm:p-5">
+                      <div className="flex flex-col sm:flex-row items-center gap-5">
+                        {/* Icon */}
+                        <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-200">
+                          <chapitre.icon className="h-6 w-6" />
                         </div>
-                        
-                        {/* Boutons Cours, Quiz, Exercices */}
-                        <div className="flex flex-col sm:flex-row gap-3 lg:ml-auto">
+
+                        {/* Text Content */}
+                        <div className="flex-1 text-center sm:text-left">
+                          <div className="flex items-center justify-center sm:justify-start gap-2 mb-1">
+                            <span className="text-xs font-semibold text-blue-600 uppercase tracking-wider">Chapitre {chapitre.id}</span>
+                          </div>
+                          <h3 className="text-lg font-bold text-gray-900 mb-1">
+                            {chapitre.title}
+                          </h3>
+                          <p className="text-gray-500 text-sm">
+                            {chapitre.description}
+                          </p>
+                        </div>
+
+                        {/* Buttons */}
+                        <div className="flex flex-wrap justify-center sm:justify-end gap-2 w-full sm:w-auto mt-2 sm:mt-0">
                           {chapitre.id === 4 ? (
-                            <Button 
+                            <Button
                               onClick={handleCoursApplicationsClick}
-                              className="w-full sm:w-auto bg-gray-800 hover:bg-gray-900 text-white px-6 py-2 rounded-lg shadow flex items-center justify-center gap-2"
+                              size="sm"
+                              className="bg-blue-600 hover:bg-blue-700 text-white shadow-sm"
                             >
-                              <BookOpen className="w-4 h-4" />
+                              <BookOpen className="w-4 h-4 mr-2" />
                               Cours
                             </Button>
                           ) : (
                             <Link to={chapitre.paths.cours}>
-                              <Button className="w-full sm:w-auto bg-gray-800 hover:bg-gray-900 text-white px-6 py-2 rounded-lg shadow flex items-center justify-center gap-2">
-                                <BookOpen className="w-4 h-4" />
+                              <Button
+                                size="sm"
+                                className="bg-blue-600 hover:bg-blue-700 text-white shadow-sm"
+                              >
+                                <BookOpen className="w-4 h-4 mr-2" />
                                 Cours
                               </Button>
                             </Link>
                           )}
-                          <Button 
+
+                          <Button
                             onClick={handleQuizClick}
-                            variant="outline" 
-                            className="w-full sm:w-auto border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-2 rounded-lg shadow flex items-center justify-center gap-2"
+                            variant="outline"
+                            size="sm"
+                            className="border-gray-200 text-gray-600 hover:text-blue-600 hover:border-blue-200 hover:bg-blue-50"
                           >
-                            <Target className="w-4 h-4" />
+                            <Target className="w-4 h-4 mr-2" />
                             Quiz
                           </Button>
+
                           <Link to={chapitre.paths.exercices}>
-                            <Button className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-6 py-2 rounded-lg shadow flex items-center justify-center gap-2">
-                              <Play className="w-4 h-4" />
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="border-gray-200 text-gray-600 hover:text-blue-600 hover:border-blue-200 hover:bg-blue-50"
+                            >
+                              <Play className="w-4 h-4 mr-2" />
                               Exercices
                             </Button>
                           </Link>
@@ -235,7 +197,7 @@ const PremiereVersDeuxiemePage: React.FC = () => {
 
             <div className="text-center">
               <Link to="/chapitres-libres">
-                <Button variant="outline" className="border-green-500 text-green-600 hover:bg-green-50">
+                <Button variant="ghost" className="text-blue-600 hover:text-blue-700 hover:bg-blue-50">
                   Voir tous les chapitres libres
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
@@ -244,10 +206,10 @@ const PremiereVersDeuxiemePage: React.FC = () => {
           </div>
         </div>
       </div>
-      
-      <BookingPopup 
-        isOpen={isBookingPopupOpen} 
-        onClose={() => setIsBookingPopupOpen(false)} 
+
+      <BookingPopup
+        isOpen={isBookingPopupOpen}
+        onClose={() => setIsBookingPopupOpen(false)}
       />
     </div>
   );

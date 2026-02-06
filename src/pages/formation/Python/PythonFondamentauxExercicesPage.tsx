@@ -8,6 +8,8 @@ import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 import { LatexRenderer } from '@/components/LatexRenderer';
 import { usePythonProgress } from '@/hooks/usePythonProgress';
+import PythonCodeEditor, { EvaluationResult } from '@/components/python/PythonCodeEditor';
+import CodeEvaluationResult from '@/components/python/CodeEvaluationResult';
 
 const PythonFondamentauxExercicesPage = () => {
   const [searchParams] = useSearchParams();
@@ -23,6 +25,9 @@ const PythonFondamentauxExercicesPage = () => {
   const [qcmAnswers, setQcmAnswers] = useState<{ [key: number]: string }>({});
   const [qcmSubmitted, setQcmSubmitted] = useState(false);
   const [qcmScore, setQcmScore] = useState<number | null>(null);
+
+  // Evaluation state for code submissions
+  const [evaluationResults, setEvaluationResults] = useState<{ [key: number]: EvaluationResult }>({});
 
   // Détecter le paramètre quiz dans l'URL
   useEffect(() => {
@@ -641,6 +646,24 @@ else:
           </CardContent>
         </Card>
 
+        {/* Code Editor Section */}
+        <PythonCodeEditor
+          exerciseStatement={exercises[selectedExercise - 1].content.objective}
+          expectedSolution={exercises[selectedExercise - 1].content.code || ''}
+          moduleId={String(moduleId)}
+          exerciseId={String(selectedExercise)}
+          onEvaluationComplete={(result) => {
+            setEvaluationResults(prev => ({ ...prev, [selectedExercise]: result }));
+            // Mark exercise as seen when evaluated
+            markExerciseAsSeen(`python-${moduleId}-exo-${selectedExercise}`);
+          }}
+        />
+
+        {/* Evaluation Result */}
+        {evaluationResults[selectedExercise] && (
+          <CodeEvaluationResult result={evaluationResults[selectedExercise]} />
+        )}
+
         {exercises[selectedExercise - 1].content.enonce_complet && (
           <div className="space-y-6">
             {/* Énoncé complet */}
@@ -854,7 +877,7 @@ else:
 
                   <div className="p-0">
                     <div className="bg-[#1e293b] text-blue-50 p-6 md:p-8 overflow-x-auto">
-                      <pre className="font-mono text-sm leading-relaxed">
+                      <pre className="font-mono text-sm leading-relaxed text-blue-50">
                         <code>{exercises[selectedExercise - 1].content.code}</code>
                       </pre>
                     </div>

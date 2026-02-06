@@ -13,6 +13,8 @@ import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 import { LatexRenderer } from '@/components/LatexRenderer';
 import { usePythonProgress } from '@/hooks/usePythonProgress';
+import PythonCodeEditor, { EvaluationResult } from '@/components/python/PythonCodeEditor';
+import CodeEvaluationResult from '@/components/python/CodeEvaluationResult';
 
 const PythonProbabilitesExercicesPage = () => {
   const [selectedExercise, setSelectedExercise] = useState<number | null>(null);
@@ -25,6 +27,10 @@ const PythonProbabilitesExercicesPage = () => {
   const [qcmScore, setQcmScore] = useState<number | null>(null);
 
   const { markExerciseAsSeen, markAsComplete } = usePythonProgress();
+
+  // Evaluation state for code submissions
+  const [evaluationResults, setEvaluationResults] = useState<{ [key: number]: EvaluationResult }>({});
+  const moduleId = 'proba';
 
   const toggleCorrection = (index: number) => {
     const newShowCorrections = new Set(showCorrections);
@@ -667,6 +673,23 @@ print(f"Nombre de sauts pour 20 marches : {saut_escalier(20)}")`
               </CardContent>
             </Card>
 
+            {/* Code Editor Section */}
+            <PythonCodeEditor
+              exerciseStatement={exercise.content.enonce_latex || exercise.content.enonce || exercise.content.objective}
+              expectedSolution={exercise.content.correction || ''}
+              moduleId={moduleId}
+              exerciseId={String(selectedExercise)}
+              onEvaluationComplete={(result) => {
+                setEvaluationResults(prev => ({ ...prev, [selectedExercise]: result }));
+                markExerciseAsSeen(`python-${moduleId}-exo-${selectedExercise}`);
+              }}
+            />
+
+            {/* Evaluation Result */}
+            {evaluationResults[selectedExercise] && (
+              <CodeEvaluationResult result={evaluationResults[selectedExercise]} />
+            )}
+
             <div className="flex justify-center mb-4">
               <Button
                 variant="outline"
@@ -700,7 +723,7 @@ print(f"Nombre de sauts pour 20 marches : {saut_escalier(20)}")`
                     </CardHeader>
                     <CardContent className="pt-0">
                       <div className="bg-slate-900 rounded-lg p-4 overflow-x-auto">
-                        <pre className="text-gray-700 text-sm font-mono leading-relaxed">
+                        <pre className="text-gray-100 text-sm font-mono leading-relaxed">
                           <code>{exercise.content.correction}</code>
                         </pre>
                       </div>
@@ -718,7 +741,7 @@ print(f"Nombre de sauts pour 20 marches : {saut_escalier(20)}")`
                       </CardHeader>
                       <CardContent className="pt-0">
                         <div className="bg-slate-900 rounded-lg p-4 overflow-x-auto">
-                          <pre className="text-gray-700 text-sm font-mono leading-relaxed">
+                          <pre className="text-gray-100 text-sm font-mono leading-relaxed">
                             <code>{corr.code}</code>
                           </pre>
                         </div>
