@@ -17,11 +17,37 @@ interface FormData {
 
 interface HeroContactFormProps {
     showContent?: boolean; // For animation control from parent
+    theme?: 'orange' | 'blue';
 }
 
-export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = true }) => {
+export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = true, theme = 'orange' }) => {
     const { toast } = useToast();
     const [step, setStep] = useState(1);
+
+    const themeStyles = {
+        orange: {
+            gradient: 'from-orange-500 to-orange-400',
+            gradientHover: 'hover:from-orange-600 hover:to-orange-500',
+            text: 'text-orange-900',
+            textLight: 'text-orange-500',
+            bg: 'bg-orange-50',
+            border: 'border-orange-200',
+            shadow: 'shadow-orange-500/30',
+            iconBg: 'bg-gradient-to-br from-orange-500 to-orange-400',
+        },
+        blue: {
+            gradient: 'from-blue-600 to-indigo-600',
+            gradientHover: 'hover:from-blue-700 hover:to-indigo-700',
+            text: 'text-blue-900',
+            textLight: 'text-blue-600',
+            bg: 'bg-blue-50',
+            border: 'border-blue-200',
+            shadow: 'shadow-blue-500/30',
+            iconBg: 'bg-gradient-to-br from-blue-600 to-indigo-600',
+        }
+    };
+
+    const currentTheme = themeStyles[theme];
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [formData, setFormData] = useState<FormData>({
@@ -90,7 +116,8 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
         <div className={`max-w-lg mx-auto transition-all duration-700 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="relative">
                 {/* Subtle glow effect behind card */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-orange-500/20 via-orange-400/15 to-orange-500/20 rounded-2xl blur-xl"></div>
+                {/* Subtle glow effect behind card */}
+                <div className={`absolute -inset-1 bg-gradient-to-r ${theme === 'orange' ? 'from-orange-500/20 via-orange-400/15 to-orange-500/20' : 'from-blue-500/20 via-indigo-400/15 to-blue-500/20'} rounded-2xl blur-xl`}></div>
 
                 {/* Card with glassmorphism touch */}
                 <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl shadow-black/20 p-6 sm:p-7 border border-white/50">
@@ -126,8 +153,8 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
                             </div>
 
                             {/* Next Steps */}
-                            <div className="bg-orange-50 rounded-xl p-4 text-left border border-orange-200">
-                                <h4 className="font-bold text-sm mb-2 text-orange-900">📞 Prochaines étapes</h4>
+                            <div className={`${currentTheme.bg} rounded-xl p-4 text-left border ${currentTheme.border}`}>
+                                <h4 className={`font-bold text-sm mb-2 ${currentTheme.text}`}>📞 Prochaines étapes</h4>
                                 <div className="space-y-1 text-sm text-gray-700">
                                     <p>1. Nous vous appelons <strong>sous 24h</strong></p>
                                     <p>2. Nous discutons de vos besoins</p>
@@ -154,7 +181,7 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
                             <div className="mb-5">
                                 <div className="h-1 bg-gray-100 rounded-full overflow-hidden">
                                     <div
-                                        className="h-full bg-gradient-to-r from-orange-500 to-orange-400 rounded-full transition-all duration-500"
+                                        className={`h-full bg-gradient-to-r ${currentTheme.gradient} rounded-full transition-all duration-500`}
                                         style={{ width: progressWidth }}
                                     ></div>
                                 </div>
@@ -178,14 +205,13 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
                                             value={formData.firstName}
                                             onChange={(e) => updateFormData('firstName', e.target.value)}
                                             className="bg-white border-gray-200 text-base"
-                                            autoFocus
                                         />
                                     </div>
 
                                     {/* Level Selection */}
                                     <div>
                                         <div className="flex items-center gap-2 mb-2.5">
-                                            <div className="w-6 h-6 bg-gradient-to-br from-orange-500 to-orange-400 rounded-md flex items-center justify-center">
+                                            <div className={`w-6 h-6 ${currentTheme.iconBg} rounded-md flex items-center justify-center`}>
                                                 <BookOpen className="h-3.5 w-3.5 text-white" />
                                             </div>
                                             <span className="text-sm font-semibold text-gray-700">Niveau de l'élève</span>
@@ -197,7 +223,7 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
                                                     type="button"
                                                     onClick={() => updateFormData('studentLevel', level)}
                                                     className={`py-3 px-3 rounded-lg text-sm font-semibold transition-all duration-200 ${formData.studentLevel === level
-                                                        ? 'bg-gradient-to-r from-orange-500 to-orange-400 text-white shadow-md shadow-orange-500/25'
+                                                        ? `bg-gradient-to-r ${currentTheme.gradient} text-white shadow-md ${theme === 'orange' ? 'shadow-orange-500/25' : 'shadow-blue-500/25'}`
                                                         : 'bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-gray-300'
                                                         }`}
                                                 >
@@ -210,7 +236,7 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
                                     {/* Role Selection */}
                                     <div>
                                         <div className="flex items-center gap-2 mb-2.5">
-                                            <div className="w-6 h-6 bg-gradient-to-br from-orange-500 to-orange-400 rounded-md flex items-center justify-center">
+                                            <div className={`w-6 h-6 ${currentTheme.iconBg} rounded-md flex items-center justify-center`}>
                                                 <Users className="h-3.5 w-3.5 text-white" />
                                             </div>
                                             <span className="text-sm font-semibold text-gray-700">Je suis...</span>
@@ -222,7 +248,7 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
                                                     type="button"
                                                     onClick={() => updateFormData('studentType', type)}
                                                     className={`py-3 px-3 rounded-lg text-sm font-semibold transition-all duration-200 ${formData.studentType === type
-                                                        ? 'bg-gradient-to-r from-orange-500 to-orange-400 text-white shadow-md shadow-orange-500/25'
+                                                        ? `bg-gradient-to-r ${currentTheme.gradient} text-white shadow-md ${theme === 'orange' ? 'shadow-orange-500/25' : 'shadow-blue-500/25'}`
                                                         : 'bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-gray-300'
                                                         }`}
                                                 >
@@ -236,7 +262,7 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
                                     <Button
                                         onClick={() => setStep(2)}
                                         disabled={!canProceedStep1}
-                                        className="w-full py-6 text-base font-bold bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white rounded-xl shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 transition-all duration-300 group border-0"
+                                        className={`w-full py-6 text-base font-bold bg-gradient-to-r ${currentTheme.gradient} ${currentTheme.gradientHover} text-white rounded-xl shadow-lg ${currentTheme.shadow} hover:shadow-xl transition-all duration-300 group border-0`}
                                     >
                                         <span className="flex items-center justify-center gap-2">
                                             Continuer
@@ -252,7 +278,7 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
                                     {/* Phone */}
                                     <div>
                                         <div className="flex items-center gap-2 mb-2.5 justify-center">
-                                            <Phone className="w-5 h-5 text-orange-500" />
+                                            <Phone className={`w-5 h-5 ${currentTheme.textLight}`} />
                                             <label className="text-base font-bold text-gray-700">Votre numéro de téléphone *</label>
                                         </div>
                                         <Input
@@ -261,7 +287,6 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
                                             value={formData.phone}
                                             onChange={(e) => updateFormData('phone', e.target.value)}
                                             className="bg-white border-gray-200 text-lg p-6 text-center font-bold"
-                                            autoFocus
                                         />
                                         <p className="text-xs text-gray-500 mt-2 text-center">
                                             Nous vous rappelons sous 24h pour vous proposer un cours d'essai gratuit
@@ -269,8 +294,8 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
                                     </div>
 
                                     {/* Summary */}
-                                    <div className="p-4 bg-orange-50 rounded-xl border border-orange-200">
-                                        <h4 className="font-bold text-sm mb-2 text-orange-900">📋 Récapitulatif</h4>
+                                    <div className={`p-4 ${currentTheme.bg} rounded-xl border ${currentTheme.border}`}>
+                                        <h4 className={`font-bold text-sm mb-2 ${currentTheme.text}`}>📋 Récapitulatif</h4>
                                         <div className="space-y-1 text-sm text-gray-700">
                                             <p><strong>Prénom :</strong> {formData.firstName}</p>
                                             <p><strong>Niveau :</strong> {formData.studentLevel === 'prepa' ? 'Prépa' : formData.studentLevel === 'lycee' ? 'Lycée' : 'Collège'}</p>
@@ -294,7 +319,7 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
                                             type="button"
                                             onClick={handleSubmit}
                                             disabled={!canSubmit || isSubmitting}
-                                            className="flex-1 py-6 text-base font-bold bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white rounded-xl shadow-lg shadow-orange-500/30 hover:shadow-xl transition-all duration-300 group border-0"
+                                            className={`flex-1 py-6 text-base font-bold bg-gradient-to-r ${currentTheme.gradient} ${currentTheme.gradientHover} text-white rounded-xl shadow-lg ${currentTheme.shadow} hover:shadow-xl transition-all duration-300 group border-0`}
                                         >
                                             {isSubmitting ? (
                                                 <span className="flex items-center justify-center gap-2">

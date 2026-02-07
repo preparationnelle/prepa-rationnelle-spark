@@ -26,9 +26,10 @@ interface PlanData {
 
 interface PlanGeneratorProps {
   subjectFromParent?: string;
+  mode?: 'geopolitics' | 'culture-generale';
 }
 
-export const PlanGenerator = ({ subjectFromParent }: PlanGeneratorProps) => {
+export const PlanGenerator = ({ subjectFromParent, mode = 'geopolitics' }: PlanGeneratorProps) => {
   const [topic, setTopic] = useState(subjectFromParent || '');
   const [isGenerating, setIsGenerating] = useState(false);
   const [plan, setPlan] = useState<PlanData | null>(null);
@@ -59,6 +60,7 @@ export const PlanGenerator = ({ subjectFromParent }: PlanGeneratorProps) => {
         body: {
           topic: topic.trim(),
           language: 'fr',
+          mode: mode,
         },
       });
 

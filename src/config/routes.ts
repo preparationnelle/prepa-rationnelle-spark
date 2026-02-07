@@ -656,6 +656,7 @@ const GeopoliticsUnifiedGeneratorPage = lazy(() => import('../pages/generator/Ge
 const LanguagesGeneratorPage = lazy(() => import('../pages/generator/LanguagesGeneratorPage'));
 const PrepaChatbotGeneratorPage = lazy(() => import('../pages/generator/PrepaChatbotGeneratorPage'));
 const CultureGeneraleGeneratorPage = lazy(() => import('../pages/generator/CultureGeneraleGeneratorPage'));
+const CultureGeneraleUnifiedGeneratorPage = lazy(() => import('../pages/generator/CultureGeneraleUnifiedGeneratorPage'));
 
 const ThemeGrammarGeneratorPage = lazy(() => import('../pages/generator/ThemeGrammarGeneratorPage'));
 const ParagraphGeneratorPage = lazy(() => import('../pages/generator/ParagraphGeneratorPage'));
@@ -1619,7 +1620,8 @@ export const routes: RouteConfig[] = [
   { path: '/generator/languages-unified', component: UnifiedLanguagesGeneratorPage, title: 'Générateur Langues Unifié' },
   { path: '/generator/orals-unified', component: UnifiedOralGeneratorPage, title: 'Générateur Oraux Unifié' },
   { path: '/generator/prepa-chatbot', component: PrepaChatbotGeneratorPage, title: 'Chatbot Prépa' },
-  { path: '/generator/culture-generale', component: CultureGeneraleGeneratorPage, title: 'Générateur Culture Générale' },
+  { path: '/generator/culture-generale', component: CultureGeneraleUnifiedGeneratorPage, title: 'Générateur Culture Générale' },
+  // { path: '/generator/culture-generale-old', component: CultureGeneraleGeneratorPage, title: 'Générateur Culture Générale (Ancien)' },
 
   { path: '/generator/theme-grammar', component: ThemeGrammarGeneratorPage, title: 'Thème Grammatical' },
   { path: '/generator/paragraph', component: ParagraphGeneratorPage, title: 'Générateur de Paragraphes' },

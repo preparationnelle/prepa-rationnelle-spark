@@ -43,7 +43,7 @@ Deno.serve(async (req) => {
         }
 
         // Valider la langue
-        const validLanguages = ['en', 'de', 'es'];
+        const validLanguages = ['en', 'de', 'es', 'fr'];
         if (!validLanguages.includes(language as string)) {
             return new Response(
                 JSON.stringify({ error: 'Langue non supportée' }),

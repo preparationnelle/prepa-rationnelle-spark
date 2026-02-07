@@ -15,16 +15,12 @@ export const HeroSection = () => {
   const [showTagline, setShowTagline] = useState(false);
   const [showContent, setShowContent] = useState(false);
 
-  // Sequential animation on mount
+  // Sequential animation on mount - Smoother & Faster
   useEffect(() => {
-    // Show "Prepa Rationnelle" first
-    const timer1 = setTimeout(() => setShowTitle(true), 200);
-    // Show "Ta méthode pour réussir en maths" after
-    const timer2 = setTimeout(() => setShowSubtitle(true), 1000);
-    // Show "Une bonne méthode rend la progression inévitable" last
-    const timer3 = setTimeout(() => setShowTagline(true), 1800);
-    // Show the rest of the content
-    const timer4 = setTimeout(() => setShowContent(true), 2400);
+    const timer1 = setTimeout(() => setShowTitle(true), 100);
+    const timer2 = setTimeout(() => setShowSubtitle(true), 600);
+    const timer3 = setTimeout(() => setShowTagline(true), 1200);
+    const timer4 = setTimeout(() => setShowContent(true), 1600);
 
     return () => {
       clearTimeout(timer1);
@@ -32,24 +28,6 @@ export const HeroSection = () => {
       clearTimeout(timer3);
       clearTimeout(timer4);
     };
-  }, []);
-
-  useEffect(() => {
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    );
-
-    const elements = document.querySelectorAll('.fade-in-up, .scale-in');
-    elements.forEach((el) => observerRef.current?.observe(el));
-
-    return () => observerRef.current?.disconnect();
   }, []);
 
   const handleWhatsAppJoin = () => {
@@ -126,18 +104,18 @@ export const HeroSection = () => {
               <br />
               {/* Ta méthode pour réussir - Appears second */}
               <span
-                className={`inline-block text-white transition-all duration-1000 ease-out ${showSubtitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                className={`inline-block text-white transition-all duration-700 ease-out ${showSubtitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}
               >
-                Ta méthode pour réussir
+                L'app qui va révolutionner
               </span>
               <br />
-              {/* en maths - Part of second phrase */}
+              {/* ta prépa - Part of second phrase */}
               <span
-                className={`inline-block text-orange-400 drop-shadow-[0_0_30px_rgba(251,146,60,0.5)] transition-all duration-1000 ease-out delay-200 ${showSubtitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                className={`inline-block text-orange-400 drop-shadow-[0_0_30px_rgba(251,146,60,0.5)] transition-all duration-700 ease-out delay-150 ${showSubtitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}
               >
-                en maths
+                ta prépa
               </span>
             </h1>
 
@@ -148,82 +126,72 @@ export const HeroSection = () => {
             >
               Une <span className="text-orange-400 font-bold">bonne méthode</span> rend la <span className="text-white font-bold">progression inévitable</span>.
             </p>
+            <div className={`mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-1000 ease-out delay-500 ${showTagline ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+              <Button
+                asChild
+                className="bg-orange-500 hover:bg-orange-600 text-white text-lg font-bold py-8 px-10 rounded-full shadow-[0_0_20px_rgba(249,115,22,0.4)] hover:shadow-[0_0_30px_rgba(249,115,22,0.6)] transition-all transform hover:scale-105 cursor-pointer border-none"
+              >
+                <Link to="/dashboard">
+                  Commencer maintenant <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+            </div>
           </div>
 
-          {/* Form Card - New component with Supabase integration */}
-          <HeroContactForm showContent={showContent} />
-        </div>
-      </section>
-
-
-      {/* Value Proposition Cards - Premium design */}
-      <section className="relative bg-white py-14 sm:py-20 overflow-hidden">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="fade-in-up max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {/* Value Props - Integrated in dark theme */}
+          <div className={`mt-16 max-w-4xl mx-auto transition-all duration-1000 delay-700 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {/* Card 1 */}
               <Link
                 to="/formations"
-                className="group relative bg-gradient-to-br from-white to-orange-50/50 rounded-2xl p-7 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-gray-100 hover:border-orange-300 overflow-hidden"
+                className="group relative bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-orange-400/50 hover:bg-white/10 transition-all duration-300"
               >
-                <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-orange-400/20 to-orange-500/10 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500"></div>
                 <div className="relative z-10">
-                  <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-400 rounded-2xl flex items-center justify-center mb-6 shadow-xl shadow-orange-500/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                    <BookOpen className="h-8 w-8 text-white" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-400 rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-orange-500/30 group-hover:scale-110 transition-transform">
+                    <BookOpen className="h-6 w-6 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors">
-                    Exercices incontournables
+                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-orange-400 transition-colors">
+                    +250 exercices
                   </h3>
-                  <p className="text-gray-600 mb-5 leading-relaxed font-medium">
-                    On s'entraîne avec ce qu'il y a de plus classique. +250 exercices ultra-classiques disponibles.
+                  <p className="text-sm text-white/60 leading-relaxed">
+                    Exercices ultra-classiques type concours
                   </p>
-                  <div className="flex items-center text-orange-500 font-bold text-sm">
-                    Découvrir nos formations <ChevronRight className="h-4 w-4 ml-1 group-hover:translate-x-2 transition-transform" />
-                  </div>
                 </div>
               </Link>
 
               {/* Card 2 */}
               <div
                 onClick={joinWhatsAppGroup}
-                className="group relative bg-gradient-to-br from-white to-orange-50/50 rounded-2xl p-7 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-gray-100 hover:border-orange-300 overflow-hidden cursor-pointer"
+                className="group relative bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-orange-400/50 hover:bg-white/10 transition-all duration-300 cursor-pointer"
               >
-                <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-orange-400/20 to-orange-500/10 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500"></div>
                 <div className="relative z-10">
-                  <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-400 rounded-2xl flex items-center justify-center mb-6 shadow-xl shadow-orange-500/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                    <Users className="h-8 w-8 text-white" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-400 rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-orange-500/30 group-hover:scale-110 transition-transform">
+                    <Users className="h-6 w-6 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors">
-                    Cours particuliers
+                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-orange-400 transition-colors">
+                    1er cours offert
                   </h3>
-                  <p className="text-gray-600 mb-5 leading-relaxed font-medium">
-                    Réserve ta première séance gratuitement. Accompagnement sur-mesure avec des professeurs d'excellence.
+                  <p className="text-sm text-white/60 leading-relaxed">
+                    Accompagnement sur-mesure avec des profs d'excellence
                   </p>
-                  <div className="flex items-center text-orange-500 font-bold text-sm">
-                    Réserver un cours gratuit <ChevronRight className="h-4 w-4 ml-1 group-hover:translate-x-2 transition-transform" />
-                  </div>
                 </div>
               </div>
 
               {/* Card 3 */}
               <Link
                 to="/avis"
-                className="group relative bg-gradient-to-br from-white to-orange-50/50 rounded-2xl p-7 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-gray-100 hover:border-orange-300 overflow-hidden"
+                className="group relative bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-orange-400/50 hover:bg-white/10 transition-all duration-300"
               >
-                <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-orange-400/20 to-orange-500/10 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500"></div>
                 <div className="relative z-10">
-                  <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-400 rounded-2xl flex items-center justify-center mb-6 shadow-xl shadow-orange-500/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                    <TrendingUp className="h-8 w-8 text-white" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-400 rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-orange-500/30 group-hover:scale-110 transition-transform">
+                    <TrendingUp className="h-6 w-6 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors">
-                    Résultats concrets
+                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-orange-400 transition-colors">
+                    100% TOP 5
                   </h3>
-                  <p className="text-gray-600 mb-5 leading-relaxed font-medium">
-                    Une progression mesurable et objectifs atteints dès 1 mois. Nos élèves intègrent le TOP 5.
+                  <p className="text-sm text-white/60 leading-relaxed">
+                    Nos élèves intègrent HEC, ESSEC, ESCP
                   </p>
-                  <div className="flex items-center text-orange-500 font-bold text-sm">
-                    Voir les témoignages <ChevronRight className="h-4 w-4 ml-1 group-hover:translate-x-2 transition-transform" />
-                  </div>
                 </div>
               </Link>
             </div>
@@ -233,14 +201,14 @@ export const HeroSection = () => {
 
       {/* Enhanced Modal WhatsApp */}
       <Dialog open={showWhatsAppModal} onOpenChange={setShowWhatsAppModal}>
-        <DialogContent className="sm:max-w-md bg-gradient-to-br from-white to-green-50">
+        <DialogContent className="sm:max-w-md bg-[#0a0f1a] border border-white/10">
           <DialogHeader>
-            <DialogTitle className="text-center text-xl font-bold bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent">
+            <DialogTitle className="text-center text-xl font-bold text-orange-400">
               Demander mon coaching gratuit
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
-            <p className="text-center text-gray-600">
+            <p className="text-center text-white/70">
               Je suis en prépa ECG et je veux mon premier coaching gratuit.
             </p>
             <div className="flex gap-3">
@@ -256,7 +224,7 @@ export const HeroSection = () => {
               <Button
                 variant="outline"
                 onClick={() => setShowWhatsAppModal(false)}
-                className="flex-1 border-gray-300 text-gray-600 hover:bg-gray-50"
+                className="flex-1 border-white/20 text-white/70 hover:bg-white/10"
               >
                 Annuler
               </Button>

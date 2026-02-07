@@ -10,23 +10,33 @@ import { supabase } from '@/integrations/supabase/client';
 
 interface Props {
   subjectFromParent?: string;
+  mode?: 'geopolitics' | 'culture-generale';
 }
 
 interface TermDefinition {
   term: string;
   userDefinition: string;
   score?: number;
+  // For geopolitics mode
   recommendations?: string[];
   formalDefinition?: string;
+  // For culture-generale mode (enriched feedback)
+  strengths?: string[];
+  improvements?: string[];
+  missingElements?: string[];
+  referenceDefinition?: string;
+  alternativeAngles?: string[];
+  suggestedReferences?: string[];
 }
 
-export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent }) => {
+export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent, mode = 'geopolitics' }) => {
   const [isExtractingTerms, setIsExtractingTerms] = useState(false);
   const [terms, setTerms] = useState<string[]>([]);
   const [definitions, setDefinitions] = useState<Map<string, TermDefinition>>(new Map());
   const [isEvaluating, setIsEvaluating] = useState(false);
   const [finalFeedback, setFinalFeedback] = useState<string | null>(null);
   const [globalScore, setGlobalScore] = useState<number | null>(null);
+  const [transversalSuggestions, setTransversalSuggestions] = useState<string[]>([]);
   const { toast } = useToast();
 
   // Extract key terms from subject when it changes
@@ -163,6 +173,7 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent }) => {
         body: {
           subject: subjectFromParent,
           definitions: definitionsArray,
+          mode: mode,
         },
       });
 
@@ -176,6 +187,7 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent }) => {
       if (data) {
         setGlobalScore(data.globalScore || null);
         setFinalFeedback(data.globalFeedback || 'Évaluation terminée.');
+        setTransversalSuggestions(data.transversalSuggestions || []);
 
         // Update individual feedback
         if (data.individualFeedback && Array.isArray(data.individualFeedback)) {
@@ -186,8 +198,16 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent }) => {
               updated.set(fb.term, {
                 ...existing,
                 score: fb.score || 0,
+                // Geopolitics mode fields
                 recommendations: fb.recommendations || [],
                 formalDefinition: fb.formalDefinition || '',
+                // Culture Générale mode fields
+                strengths: fb.strengths || [],
+                improvements: fb.improvements || [],
+                missingElements: fb.missingElements || [],
+                referenceDefinition: fb.referenceDefinition || '',
+                alternativeAngles: fb.alternativeAngles || [],
+                suggestedReferences: fb.suggestedReferences || [],
               });
             }
           });
@@ -302,7 +322,7 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent }) => {
                   </div>
 
                   {/* Individual Feedback (if available) */}
-                  {(def?.score !== undefined || def?.recommendations || def?.formalDefinition) && (
+                  {(def?.score !== undefined || def?.recommendations || def?.formalDefinition || def?.strengths) && (
                     <div className="space-y-2">
                       {/* Score Badge */}
                       {def?.score !== undefined && (
@@ -316,24 +336,117 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent }) => {
                         </div>
                       )}
 
-                      {/* Recommendations */}
-                      {def?.recommendations && def.recommendations.length > 0 && (
-                        <div className="bg-blue-50/50 rounded-md p-2 border border-blue-100">
-                          <div className="text-xs font-semibold text-blue-900 mb-1">💡 Recommandations:</div>
-                          <ul className="text-xs text-blue-800 space-y-1 ml-3">
-                            {def.recommendations.map((rec, idx) => (
-                              <li key={idx} className="list-disc leading-tight">{rec}</li>
-                            ))}
-                          </ul>
-                        </div>
+                      {/* Culture Générale Mode - Rich Feedback */}
+                      {mode === 'culture-generale' && (
+                        <>
+                          {/* Strengths */}
+                          {def?.strengths && def.strengths.length > 0 && (
+                            <div className="bg-green-50/50 rounded-md p-2 border border-green-100">
+                              <div className="text-xs font-semibold text-green-900 mb-1 flex items-center gap-1">
+                                <CheckCircle2 className="h-3 w-3" />
+                                Points forts:
+                              </div>
+                              <ul className="text-xs text-green-800 space-y-1 ml-3">
+                                {def.strengths.map((strength, idx) => (
+                                  <li key={idx} className="list-disc leading-tight">{strength}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+
+                          {/* Improvements */}
+                          {def?.improvements && def.improvements.length > 0 && (
+                            <div className="bg-blue-50/50 rounded-md p-2 border border-blue-100">
+                              <div className="text-xs font-semibold text-blue-900 mb-1 flex items-center gap-1">
+                                💡 Axes d'amélioration:
+                              </div>
+                              <ul className="text-xs text-blue-800 space-y-1 ml-3">
+                                {def.improvements.map((imp, idx) => (
+                                  <li key={idx} className="list-disc leading-tight">{imp}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+
+                          {/* Missing Elements */}
+                          {def?.missingElements && def.missingElements.length > 0 && (
+                            <div className="bg-orange-50/50 rounded-md p-2 border border-orange-100">
+                              <div className="text-xs font-semibold text-orange-900 mb-1 flex items-center gap-1">
+                                <AlertCircle className="h-3 w-3" />
+                                Éléments manquants:
+                              </div>
+                              <ul className="text-xs text-orange-800 space-y-1 ml-3">
+                                {def.missingElements.map((missing, idx) => (
+                                  <li key={idx} className="list-disc leading-tight">{missing}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+
+                          {/* Reference Definition */}
+                          {def?.referenceDefinition && (
+                            <div className="bg-purple-50/50 rounded-md p-2 border border-purple-100">
+                              <div className="text-xs font-semibold text-purple-900 mb-1 flex items-center gap-1">
+                                <BookOpen className="h-3 w-3" />
+                                Définition de référence:
+                              </div>
+                              <p className="text-xs text-purple-800 leading-tight italic">{def.referenceDefinition}</p>
+                            </div>
+                          )}
+
+                          {/* Alternative Angles */}
+                          {def?.alternativeAngles && def.alternativeAngles.length > 0 && (
+                            <div className="bg-teal-50/50 rounded-md p-2 border border-teal-100">
+                              <div className="text-xs font-semibold text-teal-900 mb-1 flex items-center gap-1">
+                                🔍 Pistes alternatives à explorer:
+                              </div>
+                              <ul className="text-xs text-teal-800 space-y-1 ml-3">
+                                {def.alternativeAngles.map((angle, idx) => (
+                                  <li key={idx} className="list-disc leading-tight">{angle}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+
+                          {/* Suggested References */}
+                          {def?.suggestedReferences && def.suggestedReferences.length > 0 && (
+                            <div className="bg-indigo-50/50 rounded-md p-2 border border-indigo-100">
+                              <div className="text-xs font-semibold text-indigo-900 mb-1 flex items-center gap-1">
+                                📚 Références suggérées:
+                              </div>
+                              <ul className="text-xs text-indigo-800 space-y-1 ml-3">
+                                {def.suggestedReferences.map((ref, idx) => (
+                                  <li key={idx} className="list-disc leading-tight">{ref}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                        </>
                       )}
 
-                      {/* Formal Definition */}
-                      {def?.formalDefinition && (
-                        <div className="bg-green-50/50 rounded-md p-2 border border-green-100">
-                          <div className="text-xs font-semibold text-green-900 mb-1">✓ Définition formelle attendue:</div>
-                          <p className="text-xs text-green-800 leading-tight">{def.formalDefinition}</p>
-                        </div>
+                      {/* Geopolitics Mode - Simple Feedback */}
+                      {mode === 'geopolitics' && (
+                        <>
+                          {/* Recommendations */}
+                          {def?.recommendations && def.recommendations.length > 0 && (
+                            <div className="bg-blue-50/50 rounded-md p-2 border border-blue-100">
+                              <div className="text-xs font-semibold text-blue-900 mb-1">💡 Recommandations:</div>
+                              <ul className="text-xs text-blue-800 space-y-1 ml-3">
+                                {def.recommendations.map((rec, idx) => (
+                                  <li key={idx} className="list-disc leading-tight">{rec}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+
+                          {/* Formal Definition */}
+                          {def?.formalDefinition && (
+                            <div className="bg-green-50/50 rounded-md p-2 border border-green-100">
+                              <div className="text-xs font-semibold text-green-900 mb-1">✓ Définition formelle attendue:</div>
+                              <p className="text-xs text-green-800 leading-tight">{def.formalDefinition}</p>
+                            </div>
+                          )}
+                        </>
                       )}
                     </div>
                   )}
@@ -388,6 +501,24 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent }) => {
                 {finalFeedback}
               </div>
             </div>
+
+            {/* Transversal Suggestions (Culture Générale mode only) */}
+            {mode === 'culture-generale' && transversalSuggestions && transversalSuggestions.length > 0 && (
+              <div className="bg-gradient-to-r from-orange-50 to-yellow-50 p-6 rounded-2xl border border-orange-200">
+                <div className="text-sm font-bold text-orange-900 mb-3 flex items-center gap-2">
+                  <Sparkles className="h-4 w-4" />
+                  Suggestions transversales pour améliorer l'ensemble
+                </div>
+                <ul className="space-y-2">
+                  {transversalSuggestions.map((suggestion, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-sm text-orange-800">
+                      <span className="text-orange-600 font-bold mt-0.5">→</span>
+                      <span className="leading-relaxed">{suggestion}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </CardContent>
         </Card>
       )}

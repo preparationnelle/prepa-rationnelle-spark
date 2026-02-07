@@ -3,10 +3,11 @@ import { useSearchParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { TrendingUp, Target, CheckCircle, Play, ChevronLeft, ChevronRight, Calculator, ArrowLeft, Code, BookOpen, ChevronDown, ChevronUp, Trophy, Star, HelpCircle, Eye, EyeOff } from 'lucide-react';
+import { TrendingUp, Target, CheckCircle, Play, ChevronLeft, ChevronRight, Calculator, ArrowLeft, Code, BookOpen, ChevronDown, ChevronUp, Trophy, Star, HelpCircle, Eye, EyeOff, Sparkles, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
+import { HeroContactForm } from '@/components/HeroContactForm';
 import { LatexRenderer } from '@/components/LatexRenderer';
 import {
   Accordion,
@@ -1565,6 +1566,51 @@ print(f"Erreur absolue : {abs(approx - exact)}")
               </Card>
             )}
           </div>
+
+          <div className="mt-20 mb-12 relative overflow-hidden rounded-3xl bg-[#0F172A] py-12 px-6 sm:px-12 md:py-20 shadow-2xl border border-blue-900/30">
+            {/* Background Effects */}
+            <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] animate-pulse"></div>
+            <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-indigo-600/20 rounded-full blur-[100px] animate-pulse delay-1000"></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
+
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="text-left space-y-8">
+                <div>
+                  <Badge variant="outline" className="mb-4 bg-blue-900/50 text-blue-200 border-blue-700/50 px-3 py-1 text-sm font-medium">
+                    <Sparkles className="w-3.5 h-3.5 mr-2 text-blue-400 fill-blue-400" />
+                    Offre spéciale Étudiants
+                  </Badge>
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
+                    Une <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">bonne méthode</span> rend la <span className="text-white">progression inévitable</span>.
+                  </h2>
+                  <p className="text-lg text-gray-300/90 max-w-xl leading-relaxed">
+                    Ne laissez pas les lacunes s'accumuler en Python. Remplissez ce formulaire pour obtenir votre programme personnalisé et un <span className="text-blue-200 font-semibold border-b border-blue-500/50">premier cours offert</span>.
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  {[
+                    { text: '3 créneaux restants cette semaine', icon: Calendar },
+                    { text: 'Réponse rapide sous 24h', icon: CheckCircle },
+                    { text: 'Cours 100% offert sans engagement', icon: Star }
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-4 text-gray-200 group">
+                      <div className="h-10 w-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 group-hover:bg-blue-500/20 group-hover:text-blue-300 transition-all duration-300">
+                        <item.icon className="h-5 w-5" />
+                      </div>
+                      <span className="font-medium">{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="relative">
+                <div className="absolute inset-0 bg-blue-500/10 blur-3xl rounded-full transform rotate-3"></div>
+                <HeroContactForm showContent={true} theme="blue" />
+              </div>
+            </div>
+          </div>
+
           <ModuleNavigationCards
             currentModule={{
               id: 2,

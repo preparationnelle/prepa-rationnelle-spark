@@ -6,7 +6,7 @@ import { supabase } from '@/integrations/supabase/client';
 
 interface VoiceRecorderProps {
     onTranscriptionComplete: (text: string) => void;
-    language: 'en' | 'de' | 'es';
+    language: 'en' | 'de' | 'es' | 'fr';
     disabled?: boolean;
 }
 
@@ -263,7 +263,8 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
                         <span className="text-[10px] font-medium text-gray-400 uppercase tracking-wide">
                             Whisper AI • {
                                 language === 'en' ? 'Anglais' :
-                                    language === 'de' ? 'Allemand' : 'Espagnol'
+                                    language === 'de' ? 'Allemand' :
+                                        language === 'es' ? 'Espagnol' : 'Français'
                             }
                         </span>
                     </div>
