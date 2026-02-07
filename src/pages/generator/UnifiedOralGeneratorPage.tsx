@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Textarea } from '@/components/ui/textarea';
@@ -9,7 +9,8 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import AnswerGeneratorPage from './AnswerGeneratorPage';
 import EMLyonGeneratorPage from './EMLyonGeneratorPage';
 import EDHECGeneratorPage from './EDHECGeneratorPage';
-import { Mic, MessageSquare, Target, ExternalLink, HelpCircle, PenTool, Shuffle, CheckCircle, Clock, RotateCcw, Play, Pause, MicOff, Square, Volume2, ChevronDown } from 'lucide-react';
+import { Mic, MessageSquare, Target, ExternalLink, HelpCircle, PenTool, Shuffle, CheckCircle, Clock, RotateCcw, Play, Pause, Square, Volume2, ChevronDown, Loader2, VolumeX, Send, Award, AlertCircle, Lightbulb, TrendingUp } from 'lucide-react';
+import { toast } from 'sonner';
 
 // Composant pour l'entraînement direct aux questions d'entretien
 const QuestionPracticePage = () => {
@@ -28,6 +29,17 @@ const QuestionPracticePage = () => {
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [recordingTime, setRecordingTime] = useState(0);
   const [isTranscribing, setIsTranscribing] = useState(false);
+
+  // États pour text-to-speech et évaluation
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [isEvaluating, setIsEvaluating] = useState(false);
+  const [evaluation, setEvaluation] = useState<{
+    score: number;
+    strengths: string[];
+    weaknesses: string[];
+    suggestions: string[];
+    overall: string;
+  } | null>(null);
 
   // Questions d'entretien classiques
   const interviewQuestions = [
@@ -84,6 +96,114 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
     setAudioUrl(null);
     setAudioChunks([]);
     setRecordingTime(0);
+    // Reset evaluation
+    setEvaluation(null);
+  };
+
+  // Fonction Text-to-Speech pour lire la question
+  const speakQuestion = () => {
+    if ('speechSynthesis' in window) {
+      if (isSpeaking) {
+        window.speechSynthesis.cancel();
+        setIsSpeaking(false);
+      } else {
+        const utterance = new SpeechSynthesisUtterance(currentQuestion);
+        utterance.lang = 'fr-FR';
+        utterance.rate = 0.9;
+        utterance.pitch = 1.0;
+
+        utterance.onend = () => setIsSpeaking(false);
+        utterance.onerror = () => {
+          setIsSpeaking(false);
+          toast.error('Erreur lors de la lecture audio');
+        };
+
+        window.speechSynthesis.speak(utterance);
+        setIsSpeaking(true);
+      }
+    } else {
+      toast.error('La synthèse vocale n\'est pas supportée par votre navigateur');
+    }
+  };
+
+  // Fonction d'évaluation de la réponse par IA
+  const evaluateAnswer = async () => {
+    if (!userAnswer.trim()) {
+      toast.error('Veuillez d\'abord rédiger une réponse');
+      return;
+    }
+
+    setIsEvaluating(true);
+    try {
+      const openaiApiKey = import.meta.env.VITE_OPENAI_API_KEY;
+
+      if (!openaiApiKey) {
+        throw new Error('Clé API OpenAI non configurée');
+      }
+
+      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${openaiApiKey}`,
+        },
+        body: JSON.stringify({
+          model: 'gpt-4-turbo',
+          messages: [
+            {
+              role: 'system',
+              content: `Tu es un coach professionnel spécialisé dans la préparation aux entretiens de personnalité pour les grandes écoles de commerce françaises.
+
+Ton rôle est d'évaluer les réponses des candidats avec bienveillance mais exigence, en donnant un feedback constructif et actionnable.
+
+Évalue la réponse selon ces critères:
+- Structure et clarté (introduction, développement, conclusion)
+- Pertinence et cohérence avec la question
+- Authenticité et personnalisation
+- Exemples concrets et storytelling
+- Longueur appropriée (2-3 minutes à l'oral)
+
+Tu dois retourner une évaluation JSON avec:
+{
+  "score": <note sur 20>,
+  "strengths": [<3-4 points forts>],
+  "weaknesses": [<2-3 points à améliorer>],
+  "suggestions": [<3-4 suggestions concrètes d'amélioration>],
+  "overall": "<commentaire général bienveillant et motivant>"
+}`
+            },
+            {
+              role: 'user',
+              content: `Question posée: "${currentQuestion}"
+
+Réponse du candidat:
+"${userAnswer}"
+
+Évalue cette réponse en retournant uniquement un objet JSON valide.`
+            }
+          ],
+          temperature: 0.7,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Erreur API: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const evaluationText = data.choices[0].message.content;
+
+      // Parse le JSON de l'évaluation
+      const evaluationData = JSON.parse(evaluationText);
+      setEvaluation(evaluationData);
+
+      toast.success('Évaluation terminée !');
+    } catch (error) {
+      console.error('Erreur lors de l\'évaluation:', error);
+      toast.error('Erreur lors de l\'évaluation de votre réponse');
+    } finally {
+      setIsEvaluating(false);
+    }
   };
 
   // Fonctions pour l'enregistrement audio
@@ -155,6 +275,7 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
         throw new Error(`Erreur API Whisper: ${response.status}`);
       }
 
+      const data = await response.json();
       const transcribedText = data.text;
 
       // Remplir automatiquement le champ de réponse textuelle avec la retranscription
@@ -256,9 +377,31 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
         </CardHeader>
         <CardContent>
           <div className="p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border-2 border-blue-200">
-            <p className="text-xl font-semibold text-gray-800 text-center">
+            <p className="text-xl font-semibold text-gray-800 text-center mb-4">
               {currentQuestion || "Cliquez sur 'Nouvelle question' pour commencer"}
             </p>
+            {currentQuestion && (
+              <div className="flex justify-center">
+                <Button
+                  onClick={speakQuestion}
+                  variant="outline"
+                  size="sm"
+                  className={`border-blue-500 ${isSpeaking ? 'bg-blue-500 text-white' : 'text-blue-600 hover:bg-blue-500 hover:text-white'} transition-colors`}
+                >
+                  {isSpeaking ? (
+                    <>
+                      <VolumeX className="h-4 w-4 mr-2" />
+                      Arrêter la lecture
+                    </>
+                  ) : (
+                    <>
+                      <Volume2 className="h-4 w-4 mr-2" />
+                      Écouter la question
+                    </>
+                  )}
+                </Button>
+              </div>
+            )}
           </div>
         </CardContent>
       </Card>
@@ -368,77 +511,124 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
             </div>
           </div>
 
-          {/* Recording Controls */}
-          <div className="mt-6 pt-4 border-t border-orange-200">
-            <div className="flex items-center justify-between mb-3">
-              <h4 className="font-semibold text-orange-800 flex items-center gap-2">
-                <Mic className="h-4 w-4" />
-                Enregistrement audio
-              </h4>
-              {isRecording && (
-                <div className="flex items-center gap-2 text-red-600">
-                  <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                  <span className="text-sm font-medium">{formatRecordingTime(recordingTime)}</span>
-                </div>
-              )}
-            </div>
-
-            <div className="flex gap-2">
-              {!isRecording && !audioUrl && (
-                <Button
-                  onClick={startRecording}
-                  className="bg-red-600 hover:bg-red-700 text-white"
-                >
-                  <Mic className="h-4 w-4 mr-2" />
-                  Commencer l'enregistrement
-                </Button>
-              )}
-
-              {isRecording && (
-                <Button
-                  onClick={stopRecording}
-                  variant="destructive"
-                  className="bg-red-600 hover:bg-red-700"
-                >
-                  <Square className="h-4 w-4 mr-2" />
-                  Arrêter l'enregistrement
-                </Button>
-              )}
-
-              {audioUrl && (
-                <div className="flex items-center gap-2">
-                  <audio controls className="h-10">
-                    <source src={audioUrl} type="audio/wav" />
-                    Votre navigateur ne supporte pas l'audio.
-                  </audio>
-                  <Button
-                    onClick={() => {
-                      setAudioUrl(null);
-                      setRecordingTime(0);
-                    }}
-                    variant="outline"
-                    size="sm"
-                  >
-                    <RotateCcw className="h-4 w-4" />
-                  </Button>
-                </div>
-              )}
-
-              {/* Transcription Status */}
-              {isTranscribing && (
-                <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                  <div className="flex items-center gap-2">
-                    <Loader2 className="h-4 w-4 animate-spin text-blue-600" />
-                    <span className="text-sm font-medium text-blue-800">Retranscription en cours...</span>
-                    <span className="text-xs text-blue-600">Le texte apparaîtra automatiquement dans le champ ci-dessous</span>
+          {/* Recording Controls - Modern Design */}
+          <div className="mt-8 pt-6 border-t-2 border-orange-100">
+            <div className="bg-gradient-to-br from-slate-50 to-indigo-50 rounded-2xl p-6 border border-indigo-100 shadow-sm">
+              {/* Recording Header */}
+              <div className="flex items-center justify-between mb-6">
+                <h4 className="text-lg font-bold text-slate-800 flex items-center gap-3">
+                  <div className="p-2 bg-indigo-100 rounded-xl">
+                    <Mic className="h-5 w-5 text-indigo-600" />
                   </div>
-                </div>
-              )}
-            </div>
+                  Enregistrement audio
+                </h4>
+                {isRecording && (
+                  <div className="flex items-center gap-2 bg-red-50 border border-red-200 rounded-full px-4 py-1.5">
+                    <div className="w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse"></div>
+                    <span className="text-sm font-semibold text-red-700 tabular-nums">{formatRecordingTime(recordingTime)}</span>
+                  </div>
+                )}
+              </div>
 
-            <p className="text-xs text-gray-600 mt-2">
-              Enregistrez votre réponse orale - La retranscription automatique en texte se lance automatiquement
-            </p>
+              {/* Main Recording Area */}
+              <div className="flex flex-col items-center gap-6">
+                {/* Record Button - Idle State */}
+                {!isRecording && !audioUrl && (
+                  <div className="flex flex-col items-center gap-4">
+                    <button
+                      onClick={startRecording}
+                      className="group relative w-24 h-24 rounded-full bg-gradient-to-br from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-red-200"
+                    >
+                      <Mic className="h-10 w-10 mx-auto transition-transform group-hover:scale-110" />
+                      <div className="absolute inset-0 rounded-full border-4 border-red-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </button>
+                    <span className="text-sm font-medium text-slate-600">Cliquez pour enregistrer</span>
+                  </div>
+                )}
+
+                {/* Recording Active State */}
+                {isRecording && (
+                  <div className="flex flex-col items-center gap-4">
+                    {/* Animated Waveform */}
+                    <div className="flex items-center gap-1 h-12">
+                      {[...Array(12)].map((_, i) => (
+                        <div
+                          key={i}
+                          className="w-1.5 bg-red-400 rounded-full animate-pulse"
+                          style={{
+                            height: `${Math.random() * 100}%`,
+                            minHeight: '8px',
+                            animationDelay: `${i * 0.1}s`,
+                            animationDuration: `${0.5 + Math.random() * 0.5}s`
+                          }}
+                        ></div>
+                      ))}
+                    </div>
+
+                    <button
+                      onClick={stopRecording}
+                      className="group relative w-24 h-24 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 hover:from-slate-800 hover:to-slate-900 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-slate-300"
+                    >
+                      <Square className="h-8 w-8 mx-auto fill-white" />
+                      <div className="absolute -inset-2 rounded-full border-2 border-red-400 animate-ping opacity-20"></div>
+                    </button>
+                    <span className="text-sm font-medium text-red-600">Cliquez pour arrêter</span>
+                  </div>
+                )}
+
+                {/* Audio Playback State */}
+                {audioUrl && !isRecording && (
+                  <div className="w-full space-y-4">
+                    <div className="bg-white rounded-xl p-4 border border-indigo-100 shadow-sm">
+                      <div className="flex items-center gap-4">
+                        <div className="p-2 bg-indigo-50 rounded-lg flex-shrink-0">
+                          <Volume2 className="h-5 w-5 text-indigo-600" />
+                        </div>
+                        <audio controls className="flex-1 h-10">
+                          <source src={audioUrl} type="audio/wav" />
+                          Votre navigateur ne supporte pas l'audio.
+                        </audio>
+                        <Button
+                          onClick={() => {
+                            setAudioUrl(null);
+                            setRecordingTime(0);
+                          }}
+                          variant="outline"
+                          size="sm"
+                          className="border-slate-300 hover:bg-red-50 hover:border-red-300 hover:text-red-600 transition-colors"
+                        >
+                          <RotateCcw className="h-4 w-4 mr-1" />
+                          Refaire
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Transcription Status */}
+                {isTranscribing && (
+                  <div className="w-full bg-white border border-blue-200 rounded-xl p-4 shadow-sm">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="p-1.5 bg-blue-100 rounded-lg">
+                        <Loader2 className="h-4 w-4 animate-spin text-blue-600" />
+                      </div>
+                      <div>
+                        <span className="text-sm font-semibold text-blue-800">Retranscription en cours...</span>
+                        <p className="text-xs text-blue-500 mt-0.5">Le texte apparaîtra automatiquement dans le champ ci-dessous</p>
+                      </div>
+                    </div>
+                    <div className="w-full bg-blue-100 rounded-full h-1.5 overflow-hidden">
+                      <div className="bg-gradient-to-r from-blue-400 to-indigo-500 h-full rounded-full animate-pulse" style={{ width: '60%' }}></div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Helper Text */}
+              <p className="text-xs text-slate-500 mt-4 text-center">
+                Enregistrez votre réponse orale — la retranscription automatique se lance dès l'arrêt
+              </p>
+            </div>
           </div>
 
           <div className="mt-4 p-3 bg-orange-50 rounded-lg">
@@ -479,8 +669,120 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
             <span>{userAnswer.length} caractères</span>
             <span>~{Math.ceil(userAnswer.length / 150)} minutes de parole estimées</span>
           </div>
+
+          {/* Bouton de validation */}
+          <div className="mt-6 flex justify-center">
+            <Button
+              onClick={evaluateAnswer}
+              disabled={isEvaluating || !userAnswer.trim()}
+              size="lg"
+              className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              {isEvaluating ? (
+                <>
+                  <Loader2 className="h-5 w-5 mr-2 animate-spin" />
+                  Évaluation en cours...
+                </>
+              ) : (
+                <>
+                  <Send className="h-5 w-5 mr-2" />
+                  Valider et obtenir une correction
+                </>
+              )}
+            </Button>
+          </div>
         </CardContent>
       </Card>
+
+      {/* Evaluation Results Section */}
+      {evaluation && (
+        <Card className="border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-purple-700">
+              <Award className="h-6 w-6" />
+              Évaluation de votre réponse
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {/* Score */}
+            <div className="flex items-center justify-center p-6 bg-white rounded-xl border-2 border-purple-200 shadow-sm">
+              <div className="text-center">
+                <div className="text-6xl font-bold text-purple-600 mb-2">
+                  {evaluation.score}/20
+                </div>
+                <p className="text-sm text-gray-600">Note globale</p>
+              </div>
+            </div>
+
+            {/* Overall Comment */}
+            <div className="p-4 bg-white rounded-xl border border-purple-100 shadow-sm">
+              <p className="text-gray-800 leading-relaxed">
+                {evaluation.overall}
+              </p>
+            </div>
+
+            {/* Strengths */}
+            <div className="bg-white rounded-xl p-4 border border-green-100 shadow-sm">
+              <h4 className="font-semibold text-green-700 flex items-center gap-2 mb-3">
+                <CheckCircle className="h-5 w-5" />
+                Points forts
+              </h4>
+              <ul className="space-y-2">
+                {evaluation.strengths.map((strength, index) => (
+                  <li key={index} className="flex items-start gap-2 text-sm text-gray-700">
+                    <span className="text-green-500 mt-0.5">✓</span>
+                    <span>{strength}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Weaknesses */}
+            <div className="bg-white rounded-xl p-4 border border-orange-100 shadow-sm">
+              <h4 className="font-semibold text-orange-700 flex items-center gap-2 mb-3">
+                <AlertCircle className="h-5 w-5" />
+                Points à améliorer
+              </h4>
+              <ul className="space-y-2">
+                {evaluation.weaknesses.map((weakness, index) => (
+                  <li key={index} className="flex items-start gap-2 text-sm text-gray-700">
+                    <span className="text-orange-500 mt-0.5">⚠</span>
+                    <span>{weakness}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Suggestions */}
+            <div className="bg-white rounded-xl p-4 border border-blue-100 shadow-sm">
+              <h4 className="font-semibold text-blue-700 flex items-center gap-2 mb-3">
+                <Lightbulb className="h-5 w-5" />
+                Suggestions d'amélioration
+              </h4>
+              <ul className="space-y-2">
+                {evaluation.suggestions.map((suggestion, index) => (
+                  <li key={index} className="flex items-start gap-2 text-sm text-gray-700">
+                    <span className="text-blue-500 mt-0.5">💡</span>
+                    <span>{suggestion}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Action Button */}
+            <div className="flex justify-center pt-2">
+              <Button
+                onClick={generateRandomQuestion}
+                variant="outline"
+                className="border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white"
+              >
+                <TrendingUp className="h-4 w-4 mr-2" />
+                Nouvelle question pour progresser
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
     </div>
   );
