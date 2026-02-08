@@ -15,6 +15,7 @@ import { useRouteValidation } from './hooks/useRouteValidation';
 import ChatWidget from './components/chat/ChatWidget';
 import { Layout } from './components/Layout';
 import { initPostHog } from './integrations/posthog/client';
+import { usePageTracking } from './hooks/usePageTracking';
 
 // Loading component for lazy-loaded pages
 const PageLoader = () => (
@@ -103,6 +104,9 @@ function App() {
 
 function ScrollToTop() {
   const { pathname } = useLocation();
+
+  // Track page visits in Supabase + PostHog
+  usePageTracking();
 
   useEffect(() => {
     window.scrollTo(0, 0);

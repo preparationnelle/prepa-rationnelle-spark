@@ -508,9 +508,14 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
             <ThemeToggle variant="icon" />
             {currentUser ? (
               <div className="flex items-center space-x-4 ml-4">
-                <Link to="/dashboard" className="text-sm text-foreground hover:text-primary transition flex items-center gap-1" onClick={closeMenu}><LayoutDashboard className="h-3 w-3" />Dashboard</Link>
+                <Link to="/dashboard" className="text-sm text-foreground hover:text-primary transition flex items-center gap-1" onClick={closeMenu}>
+                  <LayoutDashboard className="h-3 w-3" />Dashboard
+                  {isProfessor && (
+                    <span className="ml-1 text-[10px] bg-orange-500 text-white px-1.5 py-0.5 rounded-full font-bold leading-none">Prof</span>
+                  )}
+                </Link>
                 {isProfessor && (
-                  <Link to="/prof" className="text-sm text-foreground hover:text-primary transition flex items-center gap-1" onClick={closeMenu}><UserCheck className="h-3 w-3" />Prof</Link>
+                  <Link to="/prof" className="text-sm text-foreground hover:text-primary transition flex items-center gap-1" onClick={closeMenu}><UserCheck className="h-3 w-3" />Espace Prof</Link>
                 )}
                 <Button variant="outline" size="sm" onClick={() => { handleLogout(); closeMenu(); }} className="flex items-center h-8 px-3 text-xs" disabled={isLoggingOut}><LogOut className="mr-1 h-3 w-3" />{isLoggingOut ? 'Déconnexion...' : 'Déconnexion'}</Button>
               </div>
@@ -719,6 +724,9 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               <Link to="/dashboard" className="text-base py-2 border-b border-gray-200 flex items-center gap-2 bg-white px-3 rounded-md" onClick={closeMenu}>
                 <LayoutDashboard className="h-5 w-5 text-blue-600" />
                 Dashboard
+                {isProfessor && (
+                  <span className="ml-1 text-[10px] bg-orange-500 text-white px-1.5 py-0.5 rounded-full font-bold leading-none">Prof</span>
+                )}
               </Link>
               {isProfessor && (
                 <Link to="/prof" className="text-base py-2 border-b border-gray-200 flex items-center gap-2 bg-white px-3 rounded-md" onClick={closeMenu}>

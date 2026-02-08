@@ -98,47 +98,58 @@ def suite_z(n):
     """Calcule les n premiers termes de z_{n+1} = z_n^2 + 0.5"""
     z = 0
     termes = [z]
-    
     for i in range(1, n):
         z = z**2 + 0.5
         termes.append(z)
+    return termes
+
+termes = suite_z(20)
+plt.plot(range(20), termes, 'bo-')
+plt.xlabel('n')
+plt.ylabel('z_n')
+plt.title('Suite z_{n+1} = z_n^2 + 0.5')
+plt.grid(True)
+plt.show()`
+  },
+  {
+    id: 5,
     title: "Suite de Syracuse",
     difficulty: "Moyen",
-    statement: "On définit la suite $(u_n)$ par un premier terme $u_0 \\in \\mathbb{N}^*$ et :\n- Si $u_n$ est pair, $u_{n+1} = u_n / 2$\n- Si $u_n$ est impair, $u_{n+1} = 3u_n + 1$\n\nÉcrire une fonction `temps_vol(u0)` qui renvoie le plus petit $n$ tel que $u_n = 1$.",
+    statement: "On d\u00e9finit la suite $(u_n)$ par un premier terme $u_0 \\in \\mathbb{N}^*$ et :\\n- Si $u_n$ est pair, $u_{n+1} = u_n / 2$\\n- Si $u_n$ est impair, $u_{n+1} = 3u_n + 1$\\n\\n\u00c9crire une fonction temps_vol(u0) qui renvoie le plus petit $n$ tel que $u_n = 1$.",
     hint: "Utilisez une boucle while tant que u != 1.",
     correction: `def temps_vol(u0):
-  u = u0
+    u = u0
     n = 0
     while u != 1:
-  if u % 2 == 0:
-    u = u // 2
-  else:
-  u = 3 * u + 1
-n += 1
-return n
+        if u % 2 == 0:
+            u = u // 2
+        else:
+            u = 3 * u + 1
+        n += 1
+    return n
 
 # Test
 print(f"Temps de vol pour 15 : {temps_vol(15)}")`
   },
   {
-    id: 5,
-    title: "Suite récurrente double",
+    id: 6,
+    title: "Suite r\u00e9currente double",
     difficulty: "Difficile",
-    statement: "Soit la suite définie par $u_0=1, u_1=1$ et $u_{n+2} = \\sqrt{u_{n+1} + u_n}$.\n\nÉcrire une fonction qui calcule $u_{100}$. Que constatez-vous sur la convergence ?",
+    statement: "Soit la suite d\u00e9finie par $u_0=1, u_1=1$ et $u_{n+2} = \\sqrt{u_{n+1} + u_n}$.\\n\\n\u00c9crire une fonction qui calcule $u_{100}$. Que constatez-vous sur la convergence ?",
     hint: "La suite semble converger vers le nombre d'or ?",
     correction: `import math
 
 def suite_double(n):
-u_prev = 1
-u_curr = 1
-for _ in range(2, n + 1):
-  u_next = math.sqrt(u_curr + u_prev)
-u_prev, u_curr = u_curr, u_next
-return u_curr
+    u_prev = 1
+    u_curr = 1
+    for _ in range(2, n + 1):
+        u_next = math.sqrt(u_curr + u_prev)
+        u_prev, u_curr = u_curr, u_next
+    return u_curr
 
 u100 = suite_double(100)
-print(f"u_100 ≈ {u100}")
-# Devrait converger vers une valeur proche de 1.618...`
+print(f"u_100 = {u100}")
+# Converge vers une valeur proche de 1.618...`
   }
 ];
 

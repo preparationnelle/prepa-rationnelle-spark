@@ -2,8 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useStreak } from '@/hooks/useStreak';
 import { useStudyTimeContext } from '@/context/StudyTimeContext';
+import { useRoleAccess } from '@/hooks/useRoleAccess';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Switch } from '@/components/ui/switch';
 import { Link } from 'react-router-dom';
 import {
   BookOpen,
@@ -21,11 +23,14 @@ import {
   Clock,
   CheckCircle2,
   Zap,
-  Trophy
+  Trophy,
+  GraduationCap as ProfIcon
 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { usePythonProgress } from '@/hooks/usePythonProgress';
 import { getTotalPythonChapters } from '@/data/python-formation-structure';
+
+const TeacherDashboardView = React.lazy(() => import('@/components/teacher/dashboard/TeacherDashboardView'));
 
 // Données des matières avec progression (mock data pour le design)
 const initialSubjectsData = [
@@ -114,6 +119,8 @@ const DashboardPage = () => {
   const { currentUser } = useAuth();
   const { streak, isLoading: isStreakLoading, last7Days } = useStreak();
   const { totalWeekSeconds, weeklyRank, formatTime, isTracking } = useStudyTimeContext();
+  const { isProfessor, loading: roleLoading } = useRoleAccess();
+  const [isTeacherView, setIsTeacherView] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   // Python Progress Hook
@@ -489,6 +496,29 @@ const DashboardPage = () => {
           </p>
         </div>
 
+        {/* Toggle Prof/Étudiant */}
+        {isProfessor && !roleLoading && (
+          <div className="fade-in-up flex items-center justify-center gap-3 mb-8 bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-3" style={{ animationDelay: '0.15s' }}>
+            <span className={`text-sm font-medium transition-colors ${!isTeacherView ? 'text-orange-400' : 'text-white/50'}`}>
+              Interface Étudiant
+            </span>
+            <Switch
+              checked={isTeacherView}
+              onCheckedChange={setIsTeacherView}
+              className="data-[state=checked]:bg-orange-500"
+            />
+            <span className={`text-sm font-medium transition-colors ${isTeacherView ? 'text-orange-400' : 'text-white/50'}`}>
+              Interface Professeur
+            </span>
+          </div>
+        )}
+
+        {isTeacherView ? (
+          <React.Suspense fallback={<div className="flex justify-center py-20"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-400"></div></div>}>
+            <TeacherDashboardView />
+          </React.Suspense>
+        ) : (
+        <>
         {/* Stats Overview Cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
           <Card className="fade-in-up bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 overflow-hidden group" style={{ animationDelay: '0.25s' }}>
@@ -784,6 +814,8 @@ const DashboardPage = () => {
             </CardContent>
           </Card>
         </div>
+        </>
+        )}
       </div >
 
       {/* Animations CSS */}
