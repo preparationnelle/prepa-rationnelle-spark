@@ -14,7 +14,8 @@ import {
   Calculator,
   Sparkles,
   Target,
-  TrendingUp
+  TrendingUp,
+  MessageCircle
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
@@ -101,6 +102,19 @@ const GeneratorPage: React.FC = () => {
         'Progression rapide'
       ],
       link: '/generator/orals-unified'
+    },
+    {
+      id: 'colle-langues',
+      title: 'Colle de Langues',
+      description: 'Simulez une vraie colle avec questions générées et feedback détaillé',
+      icon: <MessageCircle className="h-10 w-10" />,
+      features: [
+        'Questions IA personnalisées',
+        'Enregistrement et évaluation',
+        'Feedback langue + civilisation'
+      ],
+      link: '/colle',
+      badge: 'Nouveau'
     },
     {
       id: 'math-generator',

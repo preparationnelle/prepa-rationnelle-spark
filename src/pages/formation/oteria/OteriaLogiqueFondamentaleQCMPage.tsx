@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Home, ChevronRight, ArrowLeft, BookOpen, Target, Binary, Calculator, CheckCircle, XCircle, Eye, EyeOff } from 'lucide-react';
+import { CheckCircle, XCircle, Eye, EyeOff, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
+import { OteriaChapterTemplate } from '@/components/formation/OteriaChapterTemplate';
+import { cn } from '@/lib/utils';
 
 // Données du QCM
 const qcmData = {
@@ -250,13 +249,12 @@ const qcmData = {
 
 const OteriaLogiqueFondamentaleQCMPage = () => {
   const { currentUser } = useAuth();
-  const [answers, setAnswers] = useState({});
+  const [answers, setAnswers] = useState<Record<number, string>>({});
   const [showResults, setShowResults] = useState(false);
   const [showExplanations, setShowExplanations] = useState(false);
-  const [isSaving, setIsSaving] = useState(false);
   const [saveMessage, setSaveMessage] = useState('');
 
-  const handleAnswerSelect = (questionId, choiceKey) => {
+  const handleAnswerSelect = (questionId: number, choiceKey: string) => {
     setAnswers(prev => ({
       ...prev,
       [questionId]: choiceKey
@@ -279,7 +277,6 @@ const OteriaLogiqueFondamentaleQCMPage = () => {
     const scorePercentage = Math.round((correct / total) * 100);
 
     if (currentUser) {
-      setIsSaving(true);
       try {
         const { error } = await supabase
           .from('qcm_results')
@@ -293,12 +290,10 @@ const OteriaLogiqueFondamentaleQCMPage = () => {
           });
 
         if (error) throw error;
-        setSaveMessage('Résultat enregistré dans votre dashboard !');
+        setSaveMessage('✓ Résultat enregistré dans votre dashboard');
       } catch (error) {
         console.error('Erreur sauvegarde:', error);
         setSaveMessage('Erreur lors de la sauvegarde du résultat.');
-      } finally {
-        setIsSaving(false);
       }
     }
   };
@@ -312,262 +307,168 @@ const OteriaLogiqueFondamentaleQCMPage = () => {
 
   const { correct, total } = calculateScore();
   const scorePercentage = total > 0 ? Math.round((correct / total) * 100) : 0;
+  const answeredCount = Object.keys(answers).length;
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-teal-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-teal-700 transition-colors">
-              <Home className="h-3 w-3" />
-              <span>Accueil</span>
-            </Link>
-            <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
-            <Link to="/articles" className="hover:text-teal-700 transition-colors">
-              Niveau
-            </Link>
-            <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
-            <Link to="/articles/oteria-cyber-school" className="hover:text-teal-700 transition-colors">
-              OTERIA Cyber School
-            </Link>
-            <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
-            <span className="text-teal-600 font-medium">Séance 1 - QCM</span>
-          </div>
-        </div>
-      </nav>
+    <OteriaChapterTemplate
+      sessionNumber={1}
+      sessionTitle="Logique fondamentale & booléens"
+      description="Testez vos connaissances avec 20 questions à choix multiples sur la logique et le raisonnement mathématique."
+      slug="logique-fondamentale"
+      duration="3h"
+      level="Débutant"
+      activeSection="quiz"
+    >
+      <div className="max-w-4xl mx-auto space-y-8">
 
-      <div className="container mx-auto py-8 px-4">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center">
-              <Binary className="h-8 w-8 text-teal-600" />
-            </div>
-          </div>
-          <h1 className="text-3xl font-bold mb-4 text-teal-900">Séance 1 : QCM - Logique fondamentale</h1>
-          <p className="text-lg text-blue-800 max-w-3xl mx-auto mb-6">
-            Testez vos connaissances avec des questionnaires à choix multiples
-          </p>
-
-          {/* Informations de séance */}
-          <div className="max-w-2xl mx-auto mb-6">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 shadow-sm">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                <div className="flex flex-col items-center">
-                  <span className="text-sm text-blue-600 font-medium mb-1">Numéro de séance</span>
-                  <span className="text-2xl font-bold text-blue-900">1</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <span className="text-sm text-blue-600 font-medium mb-1">Durée estimée</span>
-                  <span className="text-2xl font-bold text-blue-900">3h</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <span className="text-sm text-blue-600 font-medium mb-1">Niveau</span>
-                  <span className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-                    🟢 Débutant
-                  </span>
-                </div>
+        {/* Header du QCM */}
+        <div className="border border-slate-200 rounded-lg p-6 bg-white shadow-sm">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-bold text-slate-900">
+              {qcmData.title}
+            </h2>
+            {showResults && (
+              <div className={cn(
+                "px-4 py-2 rounded-full text-sm font-bold",
+                scorePercentage >= 80 && "bg-emerald-100 text-emerald-800",
+                scorePercentage >= 60 && scorePercentage < 80 && "bg-amber-100 text-amber-800",
+                scorePercentage < 60 && "bg-red-100 text-red-800"
+              )}>
+                {correct}/{total} ({scorePercentage}%)
               </div>
-            </div>
+            )}
           </div>
 
-          <div className="flex gap-3 justify-center mb-8">
-            <Link to="/formation/oteria/logique-fondamentale-cours">
-              <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-                <BookOpen className="h-4 w-4 mr-2" />
-                Cours
+          <div className="flex flex-wrap gap-3">
+            {!showResults ? (
+              <Button
+                onClick={handleValidation}
+                disabled={answeredCount < qcmData.questions.length}
+                className="bg-slate-900 hover:bg-slate-800 text-white"
+              >
+                <CheckCircle className="h-4 w-4 mr-2" />
+                Valider ({answeredCount}/{qcmData.questions.length})
               </Button>
-            </Link>
-            <Link to="/formation/oteria/logique-fondamentale-exercices">
-              <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-                <Target className="h-4 w-4 mr-2" />
-                Exercices
-              </Button>
-            </Link>
-            <Link to="/formation/oteria/logique-fondamentale-flashcards">
-              <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-                <Calculator className="h-4 w-4 mr-2" />
-                Flashcards
-              </Button>
-            </Link>
-            <Link to="/articles/oteria-cyber-school">
-              <Button variant="default" className="bg-teal-600 hover:bg-teal-700">
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Retour au programme
-              </Button>
-            </Link>
+            ) : (
+              <>
+                <Button
+                  onClick={() => setShowExplanations(!showExplanations)}
+                  variant="outline"
+                  className="border-slate-300 text-slate-700 hover:bg-slate-50"
+                >
+                  {showExplanations ? <EyeOff className="h-4 w-4 mr-2" /> : <Eye className="h-4 w-4 mr-2" />}
+                  {showExplanations ? 'Masquer' : 'Afficher'} les explications
+                </Button>
+                <Button
+                  onClick={resetQCM}
+                  variant="outline"
+                  className="border-slate-300 text-slate-700 hover:bg-slate-50"
+                >
+                  <RotateCcw className="h-4 w-4 mr-2" />
+                  Recommencer
+                </Button>
+              </>
+            )}
           </div>
+
+          {saveMessage && (
+            <div className={cn(
+              "mt-4 text-sm font-medium",
+              saveMessage.includes('Erreur') ? 'text-red-600' : 'text-emerald-600'
+            )}>
+              {saveMessage}
+            </div>
+          )}
         </div>
 
-        {/* Contenu du QCM */}
-        <div className="max-w-4xl mx-auto">
-          {/* En-tête du QCM */}
-          <Card className="mb-8 border-blue-200">
-            <CardHeader className="bg-blue-50 border-b border-blue-200">
-              <div className="flex justify-between items-center">
-                <CardTitle className="text-blue-900 flex items-center gap-2">
-                  <Target className="h-5 w-5" />
-                  {qcmData.title}
-                </CardTitle>
-                {showResults && (
-                  <Badge variant="outline" className={`text-lg px-4 py-2 ${scorePercentage >= 80 ? 'border-green-500 text-green-700 bg-green-50' :
-                    scorePercentage >= 60 ? 'border-yellow-500 text-yellow-700 bg-yellow-50' :
-                      'border-red-500 text-red-700 bg-red-50'
-                    }`}>
-                    {correct}/{total} ({scorePercentage}%)
-                  </Badge>
-                )}
-              </div>
-            </CardHeader>
-            <CardContent className="pt-4">
-              <div className="flex gap-4 justify-center">
-                {!showResults ? (
-                  <Button
-                    onClick={handleValidation}
-                    disabled={Object.keys(answers).length < qcmData.questions.length}
-                    className="bg-blue-600 hover:bg-blue-700"
-                  >
-                    <CheckCircle className="h-4 w-4 mr-2" />
-                    Valider les réponses ({Object.keys(answers).length}/{qcmData.questions.length})
-                  </Button>
-                ) : (
-                  <>
-                    <Button
-                      onClick={() => setShowExplanations(!showExplanations)}
-                      variant="outline"
-                      className="border-blue-600 text-blue-600 hover:bg-blue-50"
-                    >
-                      {showExplanations ? <EyeOff className="h-4 w-4 mr-2" /> : <Eye className="h-4 w-4 mr-2" />}
-                      {showExplanations ? 'Masquer' : 'Afficher'} les explications
-                    </Button>
-                    <Button
-                      onClick={resetQCM}
-                      variant="outline"
-                      className="border-gray-600 text-gray-600 hover:bg-gray-50"
-                    >
-                      Recommencer
-                    </Button>
-                  </>
-                )}
-              </div>
-              {saveMessage && (
-                <div className={`mt-4 text-center text-sm font-medium ${saveMessage.includes('Erreur') ? 'text-red-600' : 'text-green-600'}`}>
-                  {saveMessage}
-                </div>
-              )}
-            </CardContent>
-          </Card>
+        {/* Questions */}
+        {qcmData.questions.map((question) => {
+          const userAnswer = answers[question.id];
+          const isAnswered = userAnswer !== undefined;
 
-          {/* Questions */}
-          {qcmData.questions.map((question, index) => (
-            <Card key={question.id} className="mb-6 border-blue-200">
-              <CardHeader className="bg-blue-50 border-b border-blue-200">
-                <CardTitle className="text-blue-900 flex items-center gap-2">
-                  <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
+          return (
+            <div key={question.id} className="border border-slate-200 rounded-lg overflow-hidden bg-white shadow-sm">
+              {/* Question header */}
+              <div className="bg-slate-50 border-b border-slate-200 px-6 py-4">
+                <div className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-7 h-7 bg-slate-900 text-white rounded-full flex items-center justify-center text-sm font-bold">
                     {question.id}
                   </span>
-                  {question.question}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="pt-4">
-                <div className="space-y-3">
-                  {question.choices.map((choice) => {
-                    const isSelected = answers[question.id] === choice.key;
-                    const isCorrect = choice.key === question.answer;
-                    const showCorrectAnswer = showResults && isCorrect;
-                    const showWrongAnswer = showResults && isSelected && !isCorrect;
+                  <h3 className="text-slate-900 font-medium leading-relaxed">
+                    {question.question}
+                  </h3>
+                </div>
+              </div>
 
-                    return (
-                      <div
-                        key={choice.key}
-                        onClick={() => !showResults && handleAnswerSelect(question.id, choice.key)}
-                        className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 ${showResults ? (
-                          showCorrectAnswer ? 'border-green-500 bg-green-50' :
-                            showWrongAnswer ? 'border-red-500 bg-red-50' :
-                              isSelected ? 'border-blue-500 bg-blue-50' : 'border-gray-200 bg-white'
-                        ) : (
-                          isSelected ? 'border-blue-500 bg-blue-50' : 'border-gray-200 bg-white hover:border-blue-300'
-                        )
-                          }`}
-                      >
-                        <div className="flex items-center gap-3">
-                          <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${showResults ? (
-                            showCorrectAnswer ? 'border-green-500 bg-green-500' :
-                              showWrongAnswer ? 'border-red-500 bg-red-500' :
-                                isSelected ? 'border-blue-500 bg-blue-500' : 'border-gray-400'
-                          ) : (
-                            isSelected ? 'border-blue-500 bg-blue-500' : 'border-gray-400'
-                          )
-                            }`}>
-                            {(isSelected || showCorrectAnswer) && (
-                              <div className="w-2 h-2 bg-white rounded-full"></div>
-                            )}
-                          </div>
-                          <span className={`font-medium ${showResults ? (
-                            showCorrectAnswer ? 'text-green-800' :
-                              showWrongAnswer ? 'text-red-800' :
-                                'text-gray-700'
-                          ) : 'text-gray-700'
-                            }`}>
-                            {choice.key.toUpperCase()}) {choice.text}
-                          </span>
-                          {showResults && isCorrect && (
-                            <CheckCircle className="h-5 w-5 text-green-600 ml-auto" />
-                          )}
-                          {showResults && showWrongAnswer && (
-                            <XCircle className="h-5 w-5 text-red-600 ml-auto" />
+              {/* Choices */}
+              <div className="p-6 space-y-3">
+                {question.choices.map((choice) => {
+                  const isSelected = userAnswer === choice.key;
+                  const isCorrect = choice.key === question.answer;
+                  const showCorrectAnswer = showResults && isCorrect;
+                  const showWrongAnswer = showResults && isSelected && !isCorrect;
+
+                  return (
+                    <div
+                      key={choice.key}
+                      onClick={() => !showResults && handleAnswerSelect(question.id, choice.key)}
+                      className={cn(
+                        "p-4 rounded-lg border-2 transition-all duration-200",
+                        !showResults && "cursor-pointer hover:border-slate-400",
+                        showResults && "cursor-default",
+                        showCorrectAnswer && "border-emerald-500 bg-emerald-50",
+                        showWrongAnswer && "border-red-500 bg-red-50",
+                        !showCorrectAnswer && !showWrongAnswer && isSelected && "border-slate-400 bg-slate-50",
+                        !showCorrectAnswer && !showWrongAnswer && !isSelected && "border-slate-200 bg-white"
+                      )}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className={cn(
+                          "w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0",
+                          showCorrectAnswer && "border-emerald-600 bg-emerald-600",
+                          showWrongAnswer && "border-red-600 bg-red-600",
+                          !showCorrectAnswer && !showWrongAnswer && isSelected && "border-slate-600 bg-slate-600",
+                          !showCorrectAnswer && !showWrongAnswer && !isSelected && "border-slate-300"
+                        )}>
+                          {(isSelected || showCorrectAnswer) && (
+                            <div className="w-2 h-2 bg-white rounded-full"></div>
                           )}
                         </div>
+                        <span className={cn(
+                          "text-sm font-medium flex-1",
+                          showCorrectAnswer && "text-emerald-900",
+                          showWrongAnswer && "text-red-900",
+                          !showCorrectAnswer && !showWrongAnswer && "text-slate-700"
+                        )}>
+                          <span className="font-bold">{choice.key.toUpperCase()})</span> {choice.text}
+                        </span>
+                        {showCorrectAnswer && <CheckCircle className="h-5 w-5 text-emerald-600 flex-shrink-0" />}
+                        {showWrongAnswer && <XCircle className="h-5 w-5 text-red-600 flex-shrink-0" />}
                       </div>
-                    );
-                  })}
-                </div>
+                    </div>
+                  );
+                })}
+              </div>
 
-                {/* Explication */}
-                {showResults && showExplanations && (
-                  <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                    <h4 className="font-semibold text-blue-900 mb-2">💡 Explication :</h4>
-                    <p className="text-blue-800">{question.explanation}</p>
+              {/* Explication */}
+              {showResults && showExplanations && (
+                <div className="px-6 pb-6">
+                  <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
+                    <h4 className="text-sm font-bold text-slate-900 mb-2 uppercase tracking-wide">
+                      💡 Explication
+                    </h4>
+                    <p className="text-sm text-slate-700 leading-relaxed">
+                      {question.explanation}
+                    </p>
                   </div>
-                )}
-              </CardContent>
-            </Card>
-          ))}
-
-          {/* Navigation */}
-          <div className="flex justify-between items-center bg-blue-50 p-6 rounded-lg">
-            <div className="text-blue-600">Séance précédente</div>
-            <div className="flex gap-3">
-              <Link to="/formation/oteria/logique-fondamentale-cours">
-                <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-                  <BookOpen className="h-4 w-4 mr-2" />
-                  Cours
-                </Button>
-              </Link>
-              <Link to="/formation/oteria/logique-fondamentale-exercices">
-                <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-                  <Target className="h-4 w-4 mr-2" />
-                  Exercices
-                </Button>
-              </Link>
-              <Link to="/formation/oteria/logique-fondamentale-flashcards">
-                <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-                  <Calculator className="h-4 w-4 mr-2" />
-                  Flashcards
-                </Button>
-              </Link>
-              <Link to="/articles/oteria-cyber-school">
-                <Button className="bg-blue-600 hover:bg-blue-700">
-                  Retour au programme
-                </Button>
-              </Link>
+                </div>
+              )}
             </div>
-            <div className="text-blue-600 font-medium">Séance suivante →</div>
-          </div>
-        </div>
+          );
+        })}
+
       </div>
-    </div>
+    </OteriaChapterTemplate>
   );
 };
 

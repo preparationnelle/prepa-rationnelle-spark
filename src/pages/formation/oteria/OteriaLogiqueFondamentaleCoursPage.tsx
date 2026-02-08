@@ -1,699 +1,386 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Home, ChevronRight, ArrowLeft, BookOpen, Binary, Calculator, Zap, BarChart3, Target } from 'lucide-react';
+import { OteriaChapterTemplate } from '@/components/formation/OteriaChapterTemplate';
+import { LatexRenderer } from '@/components/LatexRenderer';
+import {
+  DefinitionBlock,
+  TheoremBlock,
+  ExampleBlock,
+  ProofBlock,
+  RemarkBlock,
+  WarningBlock,
+  CodeBlock,
+  TruthTable,
+} from '@/components/formation/AcademicBlocks';
 
-const OteriaLogiqueFondamentaleCoursPage = () => {
+const OteriaLogiqueFondamentaleCoursPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-teal-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-teal-700 transition-colors">
-              <Home className="h-3 w-3" />
-              <span>Accueil</span>
-            </Link>
-            <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
-            <Link to="/articles" className="hover:text-teal-700 transition-colors">
-              Niveau
-            </Link>
-            <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
-            <Link to="/articles/oteria-cyber-school" className="hover:text-teal-700 transition-colors">
-              OTERIA Cyber School
-            </Link>
-            <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
-            <span className="text-teal-600 font-medium">Séance 1 - Cours</span>
-          </div>
-        </div>
-      </nav>
-
-      <div className="container mx-auto py-8 px-4">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center">
-              <Binary className="h-8 w-8 text-teal-600" />
-            </div>
-          </div>
-          <h1 className="text-3xl font-bold mb-4 text-teal-900">Séance 1 : Logique fondamentale & booléens en Python</h1>
-          <p className="text-lg text-blue-800 max-w-3xl mx-auto mb-6">
-            Éléments de logique, méthodes de raisonnement et applications en programmation
+    <OteriaChapterTemplate
+      sessionNumber={1}
+      sessionTitle="Logique fondamentale & booléens"
+      description="Les bases du raisonnement mathématique : connecteurs logiques, quantificateurs et méthodes de démonstration, avec application directe en Python."
+      slug="logique-fondamentale"
+      duration="3h"
+      level="Débutant"
+    >
+      <div className="space-y-12 text-slate-700 leading-relaxed max-w-none">
+        {/* ─── INTRODUCTION ────────────────────────────────────────── */}
+        <section>
+          <h2 className="text-2xl font-bold text-slate-900 border-b border-slate-200 pb-2 mb-6">
+            Introduction
+          </h2>
+          <p className="mb-4">
+            La logique est la grammaire des mathématiques. Elle permet de construire des phrases (assertions) précises et de valider des raisonnements. En informatique, elle est le fondement du fonctionnement des processeurs et des conditions dans les programmes.
           </p>
 
-          {/* Informations de séance */}
-          <div className="max-w-2xl mx-auto mb-6">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 shadow-sm">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                <div className="flex flex-col items-center">
-                  <span className="text-sm text-blue-600 font-medium mb-1">Numéro de séance</span>
-                  <span className="text-2xl font-bold text-blue-900">1</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <span className="text-sm text-blue-600 font-medium mb-1">Durée estimée</span>
-                  <span className="text-2xl font-bold text-blue-900">3h</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <span className="text-sm text-blue-600 font-medium mb-1">Niveau</span>
-                  <span className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-                    Débutant
-                  </span>
-                </div>
-              </div>
-            </div>
+          <RemarkBlock title="Le Paradoxe du Barbier (Russell, 1901)">
+            <p className="mb-2">
+              Imaginez un village avec une règle stricte : <br />
+              <em>« Le barbier rase tous les hommes du village qui ne se rasent pas eux-mêmes, et seulement ceux-là. »</em>
+            </p>
+            <p>
+              <strong>Question :</strong> Qui rase le barbier ?
+            </p>
+            <ul className="list-disc list-inside mt-2 ml-2 space-y-1">
+              <li>S'il se rase lui-même, il ne doit pas se raser (car il ne rase que ceux qui ne se rasent pas eux-mêmes).</li>
+              <li>S'il ne se rase pas lui-même, il doit se raser (car il rase tous ceux qui ne se rasent pas eux-mêmes).</li>
+            </ul>
+            <p className="mt-2 text-sm italic">
+              Ce paradoxe montre que le langage naturel est ambigu. La logique formelle sert à lever ces ambiguïtés.
+            </p>
+          </RemarkBlock>
+        </section>
+
+        {/* ─── PARTIE A : ÉLÉMENTS DE LOGIQUE ────────────────────────── */}
+        <section>
+          <h2 className="text-2xl font-bold text-slate-900 border-b border-slate-200 pb-2 mb-6">
+            A. Éléments de logique
+          </h2>
+
+          {/* A.1 Assertions */}
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold text-slate-800 flex items-center gap-2 mb-4">
+              <span className="w-1 h-6 bg-slate-300 rounded-full"></span>
+              A.1. Assertions (ou Propositions)
+            </h3>
+
+            <DefinitionBlock title="Assertion">
+              Une <strong>assertion</strong> (ou proposition) est une phrase mathématique qui est soit <strong className="text-emerald-700">VRAIE</strong>, soit <strong className="text-red-700">FAUSSE</strong>, mais jamais les deux en même temps.
+            </DefinitionBlock>
+
+            <ExampleBlock>
+              <ul className="list-disc list-inside space-y-1">
+                <li><LatexRenderer latex="2 + 2 = 4" /> (Vrai)</li>
+                <li><LatexRenderer latex="3 \times 6 = 10" /> (Faux)</li>
+                <li><LatexRenderer latex="\text{Pour tout } x \in \mathbb{R}, x^2 \geq 0" /> (Vrai)</li>
+              </ul>
+              <p className="mt-2 text-slate-500 text-sm">
+                Contre-exemple (ce n'est pas une assertion) : « Cette phrase est fausse » (Paradoxe).
+              </p>
+            </ExampleBlock>
           </div>
 
-          {/* Ressources pédagogiques */}
-          <div className="max-w-4xl mx-auto mb-6">
-            <div className="bg-white border border-blue-200 rounded-lg p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-blue-900 mb-4 text-center">
-                Tables de vérité, connecteurs (¬ ∧ ∨ ⇒), Quantificateurs ∀ / ∃ & rôle en preuve, Traduction : not, and, or ; booléens True/False
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <Link to="/formation/oteria/logique-fondamentale-cours" className="group">
-                  <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium group-hover:scale-105 shadow-md hover:shadow-lg">
-                    <BookOpen className="h-5 w-5 mx-auto mb-2" />
-                    Cours
-                  </button>
-                </Link>
-                <Link to="/formation/oteria/logique-fondamentale-exercices" className="group">
-                  <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium group-hover:scale-105 shadow-md hover:shadow-lg">
-                    <Target className="h-5 w-5 mx-auto mb-2" />
-                    Exercices
-                  </button>
-                </Link>
-                <Link to="/formation/oteria/logique-fondamentale-flashcards" className="group">
-                  <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium group-hover:scale-105 shadow-md hover:shadow-lg">
-                    <Calculator className="h-5 w-5 mx-auto mb-2" />
-                    Flashcards
-                  </button>
-                </Link>
-                <Link to="/formation/oteria/logique-fondamentale-qcm" className="group">
-                  <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-medium group-hover:scale-105 shadow-md hover:shadow-lg">
-                    <Zap className="h-5 w-5 mx-auto mb-2" />
-                    QCM
-                  </button>
-                </Link>
-              </div>
-            </div>
+          {/* A.2 Négation */}
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold text-slate-800 flex items-center gap-2 mb-4">
+              <span className="w-1 h-6 bg-slate-300 rounded-full"></span>
+              A.2. La Négation (NON)
+            </h3>
+
+            <DefinitionBlock title="Négation">
+              La négation d'une assertion <LatexRenderer latex="P" />, notée <LatexRenderer latex="\neg P" /> (ou <LatexRenderer latex="\text{non} P" />), est l'assertion qui est vraie si <LatexRenderer latex="P" /> est fausse, et fausse si <LatexRenderer latex="P" /> est vraie.
+            </DefinitionBlock>
+
+            <TruthTable
+              headers={[<LatexRenderer latex="P" />, <LatexRenderer latex="\neg P" />]}
+              rows={[
+                ['V', 'F'],
+                ['F', 'V']
+              ]}
+              className="max-w-xs"
+            />
+
+            <WarningBlock title="Piège classique">
+              La négation de <em>« Tout le monde aime les maths »</em> n'est pas <em>« Personne n'aime les maths »</em>.<br />
+              C'est : <em>« <strong>Au moins une</strong> personne n'aime pas les maths »</em>.
+            </WarningBlock>
           </div>
 
-        </div>
+          {/* A.3 ET / OU */}
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold text-slate-800 flex items-center gap-2 mb-4">
+              <span className="w-1 h-6 bg-slate-300 rounded-full"></span>
+              A.3. Conjonction (ET) et Disjonction (OU)
+            </h3>
 
-        {/* Contenu du cours */}
-        <div className="max-w-4xl mx-auto">
-
-          {/* Introduction - Paradoxe du barbier */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
-              Introduction au cours de logique
-            </h2>
-
-            {/* Énoncé du paradoxe du barbier */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Le paradoxe du barbier</h3>
-
-              <div className="bg-blue-50 p-6 rounded-lg mb-6 border border-blue-200">
-                <div className="space-y-4">
-                  <p className="text-blue-800 leading-relaxed">
-                    <strong>Imagine un village.</strong>
-                  </p>
-                  <p className="text-blue-800 leading-relaxed">
-                    Il y a un barbier qui a une règle très stricte :
-                  </p>
-                  <div className="bg-white p-4 rounded-lg border-l-4 border-blue-500">
-                    <p className="text-blue-900 font-semibold">
-                      « Il rase tous les hommes qui ne se rasent pas eux-mêmes, et seulement ceux-là. »
-                    </p>
-                  </div>
-                  <p className="text-blue-800 leading-relaxed">
-                    On peut alors se poser une question toute simple :
-                  </p>
-                  <div className="text-center py-4">
-                    Que fait-il avec lui-même ?
-                  </div>
-                </div>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <DefinitionBlock title="Conjonction (ET)">
+                  L'assertion <LatexRenderer latex="P \wedge Q" /> est vraie si <strong>P et Q sont VRAIES en même temps.</strong>
+                </DefinitionBlock>
+                <TruthTable
+                  headers={[<LatexRenderer latex="P" />, <LatexRenderer latex="Q" />, <LatexRenderer latex="P \wedge Q" />]}
+                  rows={[
+                    ['V', 'V', 'V'],
+                    ['V', 'F', 'F'],
+                    ['F', 'V', 'F'],
+                    ['F', 'F', 'F']
+                  ]}
+                  caption="Table de vérité du ET"
+                />
               </div>
-
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div className="bg-blue-50 p-4 rounded-lg border border-blue-300">
-                  <h5 className="font-semibold text-blue-900 mb-2">S'il se rase lui-même :</h5>
-                  <p className="text-blue-700 text-sm">
-                    Alors il ne devrait pas se raser (puisqu'il ne rase que ceux qui ne se rasent pas).
-                  </p>
-                </div>
-                <div className="bg-blue-50 p-4 rounded-lg border border-blue-300">
-                  <h5 className="font-semibold text-blue-900 mb-2">S'il ne se rase pas lui-même :</h5>
-                  <p className="text-blue-700 text-sm">
-                    Alors il devrait se raser (puisqu'il rase tous ceux qui ne se rasent pas).
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-blue-100 p-4 rounded-lg border border-blue-400 text-center mb-6">
-                <h5 className="font-bold text-blue-900 mb-2">Résultat : contradiction.</h5>
-                <p className="text-blue-800 font-medium">
-                  Il est impossible qu'un tel barbier existe.
-                </p>
+              <div>
+                <DefinitionBlock title="Disjonction (OU)">
+                  L'assertion <LatexRenderer latex="P \vee Q" /> est vraie si <strong>au moins l'une</strong> des deux est VRAIE.
+                </DefinitionBlock>
+                <TruthTable
+                  headers={[<LatexRenderer latex="P" />, <LatexRenderer latex="Q" />, <LatexRenderer latex="P \vee Q" />]}
+                  rows={[
+                    ['V', 'V', 'V'],
+                    ['V', 'F', 'V'],
+                    ['F', 'V', 'V'],
+                    ['F', 'F', 'F']
+                  ]}
+                  caption="Table de vérité du OU (inclusif)"
+                />
               </div>
             </div>
 
-            {/* Pourquoi commencer par cette histoire */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Pourquoi commencer par cette histoire ?</h3>
-
-              <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
-                <div className="space-y-4">
-                  <p className="text-blue-800 leading-relaxed">
-                    Ce paradoxe a été inventé par le philosophe et mathématicien <strong>Bertrand Russell</strong> pour illustrer les dangers de certaines définitions.
-                  </p>
-                  <p className="text-blue-800 leading-relaxed">
-                    Derrière le barbier se cache un problème beaucoup plus sérieux en mathématiques : le <strong>paradoxe de Russell</strong> dans la théorie des ensembles.
-                  </p>
-                  <div className="bg-white p-4 rounded-lg border-l-4 border-blue-500">
-                    <p className="text-blue-900 font-medium">
-                      <strong>Message clé pour la logique :</strong> toute règle doit être formulée clairement, sans ambiguïté et sans auto-contradiction.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Conclusion de l'introduction */}
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">Conclusion de l'introduction</h3>
-
-              <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
-                <div className="space-y-4">
-                  <p className="text-blue-800 leading-relaxed">
-                    Le paradoxe du barbier n'est pas un problème à résoudre, <strong>c'est une alerte.</strong>
-                  </p>
-                  <p className="text-blue-800 leading-relaxed">
-                    La logique, c'est l'art de construire des raisonnements qui évitent ce type de piège.
-                  </p>
-                  <div className="bg-white p-4 rounded-lg border-l-4 border-blue-600">
-                    <p className="text-blue-900 font-medium">
-                      Dans ce cours, nous allons apprendre à utiliser la logique comme un outil rigoureux pour raisonner, prouver et comprendre les mathématiques… <strong>sans tomber dans les paradoxes.</strong>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <WarningBlock title="Attention au 'OU' français">
+              En maths, le « ou » est <strong>inclusif</strong>. « fromage ou dessert » signifie qu'on peut prendre les deux.<br />
+              Le « ou exclusif » (l'un ou l'autre mais pas les deux) existe mais est plus rare.
+            </WarningBlock>
           </div>
 
-          {/* Ce que ce cours va vous permettre de faire */}
-          <div className="bg-white rounded-lg border border-gray-200 p-8 mb-8">
-            <h2 className="text-xl font-semibold mb-6 text-gray-900 border-b border-gray-200 pb-3">
-              Ce que ce cours va vous permettre de faire
-            </h2>
+          {/* A.4 Implication */}
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold text-slate-800 flex items-center gap-2 mb-4">
+              <span className="w-1 h-6 bg-slate-300 rounded-full"></span>
+              A.4. L'Implication (Si... Alors...)
+            </h3>
 
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="border-l-2 border-gray-300 pl-4 py-2">
-                <h3 className="font-medium text-gray-900 mb-1">Lire un énoncé sans ambiguïté</h3>
-                <p className="text-gray-600 text-sm">
-                  Comprendre précisément ce qui est demandé et identifier les hypothèses et conclusions.
-                </p>
-              </div>
+            <DefinitionBlock title="Implication">
+              L'assertion <LatexRenderer latex="P \Rightarrow Q" /> est fausse <strong>uniquement</strong> si <LatexRenderer latex="P" /> est Vraie et <LatexRenderer latex="Q" /> est Fausse.
+              Dans tous les autres cas, elle est vraie.
+            </DefinitionBlock>
 
-              <div className="border-l-2 border-gray-300 pl-4 py-2">
-                <h3 className="font-medium text-gray-900 mb-1">Écrire des démonstrations propres</h3>
-                <p className="text-gray-600 text-sm">
-                  Structurer vos raisonnements de manière rigoureuse et convaincante.
-                </p>
-              </div>
+            <TruthTable
+              headers={[<LatexRenderer latex="P" />, <LatexRenderer latex="Q" />, <LatexRenderer latex="P \Rightarrow Q" />]}
+              rows={[
+                ['V', 'V', 'V'],
+                ['V', 'F', 'F'],
+                ['F', 'V', 'V'],
+                ['F', 'F', 'V']
+              ]}
+              caption="Notez les deux dernières lignes : le Faux implique n'importe quoi !"
+            />
 
-              <div className="border-l-2 border-gray-300 pl-4 py-2">
-                <h3 className="font-medium text-gray-900 mb-1">Éviter les contresens classiques aux concours / examens</h3>
-                <p className="text-gray-600 text-sm">
-                  Reconnaître et éviter les pièges logiques fréquents dans les épreuves.
-                </p>
-              </div>
+            <ExampleBlock title="Exemple contre-intuitif">
+              L'assertion : <br />
+              <em>« Si 1+1=3, alors je suis le Pape »</em> <br />
+              est mathématiquement <strong>VRAIE</strong>. Pourquoi ? Car l'hypothèse « 1+1=3 » est fausse.
+            </ExampleBlock>
 
-              <div className="border-l-2 border-gray-300 pl-4 py-2">
-                <h3 className="font-medium text-gray-900 mb-1">Traduire un raisonnement mathématique en code (Python)</h3>
-                <p className="text-gray-600 text-sm">
-                  Implémenter des concepts logiques dans vos programmes informatiques.
-                </p>
+            <TheoremBlock title="Contraposée" variant="theorem">
+              L'implication <LatexRenderer latex="P \Rightarrow Q" /> est logiquement équivalente à sa <strong>contraposée</strong> :
+              <div className="text-center my-2 text-lg">
+                <LatexRenderer latex="\neg Q \Rightarrow \neg P" />
               </div>
-            </div>
+            </TheoremBlock>
+
+            <WarningBlock title="Ne pas confondre !">
+              <ul className="list-disc list-inside space-y-1">
+                <li><strong>Implication : </strong> <LatexRenderer latex="P \Rightarrow Q" /> (S'il pleut, le sol est mouillé)</li>
+                <li><strong>Réciproque : </strong> <LatexRenderer latex="Q \Rightarrow P" /> (Si le sol est mouillé, il pleut — FAUX, on a pu arroser)</li>
+                <li><strong>Contraposée : </strong> <LatexRenderer latex="\neg Q \Rightarrow \neg P" /> (Si le sol n'est pas mouillé, il ne pleut pas — VRAI)</li>
+              </ul>
+            </WarningBlock>
           </div>
 
-          {/* Section A: Éléments de logique */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
-              A. Éléments de logique
-            </h2>
+          {/* A.5 Quantificateurs */}
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold text-slate-800 flex items-center gap-2 mb-4">
+              <span className="w-1 h-6 bg-slate-300 rounded-full"></span>
+              A.5. Les Quantificateurs
+            </h3>
 
-            {/* A.1 Propositions et opérations logiques */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-teal-800">A.1. Propositions et opérations logiques</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <DefinitionBlock title="Quantificateur UNIVERSEL (∀)">
+                <LatexRenderer latex="\forall x \in E, P(x)" /><br />
+                « Pour tout x appartenant à E... »<br />
+                Vrai si P(x) est vrai pour <strong>tous</strong> les éléments.
+              </DefinitionBlock>
 
-              <div className="bg-blue-50 p-4 rounded-lg mb-4">
-                <h4 className="font-bold text-blue-900 mb-2">Définition 1.1 — Proposition</h4>
-                <p className="text-blue-800">
-                  Une <strong>proposition</strong> est une affirmation concernant des objets mathématiques dont on peut décider sans ambiguïté si elle est vraie ou fausse.
-                </p>
-              </div>
-
-              <div className="bg-blue-50 p-4 rounded-lg mb-4">
-                <h5 className="font-semibold text-blue-900 mb-2">Exemples :</h5>
-                <ul className="list-disc list-inside space-y-1 text-blue-700">
-                  <li>« 2+2=4 » est une proposition vraie.</li>
-                  <li>« 5 est pair » est une proposition fausse.</li>
-                  <li>« x+1=3 » n'est pas une proposition tant qu'on ne connaît pas la valeur de x.</li>
-                </ul>
-              </div>
-
-              <div className="bg-blue-50 p-4 rounded-lg mb-4">
-                <h4 className="font-bold text-blue-900 mb-2">Définition 1.2 — Négation</h4>
-                <p className="text-blue-800 mb-3">
-                  Pour une proposition P, on note ¬P la <strong>négation</strong> de P, c'est-à-dire la proposition qui est vraie quand P est fausse, et fausse quand P est vraie.
-                </p>
-                <div className="bg-white p-3 rounded border-l-4 border-blue-500">
-                  <strong>Exemple :</strong> Si P = « 7 est premier », alors ¬P = « 7 n'est pas premier ».
-                </div>
-              </div>
-
-              <div className="bg-blue-50 p-4 rounded-lg mb-4">
-                <h4 className="font-bold text-blue-900 mb-3">Opérations logiques</h4>
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <span className="bg-blue-200 text-blue-800 px-2 py-1 rounded text-sm font-mono">P ∧ Q</span>
-                    <span className="text-blue-800">: P <strong>et</strong> Q sont vraies.</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="bg-blue-200 text-blue-800 px-2 py-1 rounded text-sm font-mono">P ∨ Q</span>
-                    <span className="text-blue-800">: au moins l'une des deux est vraie.</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h4 className="font-bold text-blue-900 mb-3">Exemple pratique</h4>
-                <p className="text-blue-800 mb-3">Soit P = « n est pair », Q = « n est multiple de 3 ».</p>
-                <ul className="space-y-2 text-blue-800">
-                  <li><strong>P ∧ Q :</strong> « n est pair et multiple de 3 » (exemple n=6).</li>
-                  <li><strong>P ∨ Q :</strong> « n est pair ou multiple de 3 » (exemple n=4, n=9).</li>
-                </ul>
-              </div>
+              <DefinitionBlock title="Quantificateur EXISTENTIEL (∃)">
+                <LatexRenderer latex="\exists x \in E, P(x)" /><br />
+                « Il existe au moins un x appartenant à E... »<br />
+                Vrai si P(x) est vrai pour <strong>au moins un</strong> élément.
+              </DefinitionBlock>
             </div>
 
-            {/* A.2 Implication logique (détaillée) */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-teal-800">A.2. L'implication logique P → Q</h3>
+            <ExampleBlock title="Ordre des quantificateurs (CRUCIAL)">
+              L'ordre change le sens !
+              <ul className="mt-2 space-y-2">
+                <li>
+                  1. <LatexRenderer latex="\forall x \in \mathbb{R}, \exists y \in \mathbb{R}, x + y = 0" /> <br />
+                  <em>« Pour chaque nombre x, on peut trouver un y qui l'annule. »</em> (Vrai, y = -x)
+                </li>
+                <li>
+                  2. <LatexRenderer latex="\exists y \in \mathbb{R}, \forall x \in \mathbb{R}, x + y = 0" /> <br />
+                  <em>« Il existe un nombre magique y qui annule tous les x possibles en même temps. »</em> (Faux)
+                </li>
+              </ul>
+            </ExampleBlock>
 
-              {/* 1. La lecture « si… alors… » */}
-              <div className="mb-6">
-                <h4 className="font-bold text-blue-900 mb-3">1. La lecture « si… alors… »</h4>
-                <div className="bg-blue-50 p-4 rounded-lg mb-4">
-                  <p className="text-blue-800 mb-3">P → Q se lit :</p>
-                  <div className="text-center py-2">
-                    <p className="text-xl font-bold text-blue-700">
-                      « Si P est vrai, alors Q est vrai. »
-                    </p>
-                  </div>
-                </div>
+            <TheoremBlock title="Négation des quantificateurs">
+              La négation inverse le quantificateur :
+              <ul className="mt-2 space-y-2 text-center">
+                <li><LatexRenderer latex="\neg (\forall x, P(x)) \iff \exists x, \neg P(x)" /></li>
+                <li><LatexRenderer latex="\neg (\exists x, P(x)) \iff \forall x, \neg P(x)" /></li>
+              </ul>
+            </TheoremBlock>
+          </div>
+        </section>
 
-                <div className="bg-white p-4 rounded-lg border border-blue-200">
-                  <h5 className="font-semibold text-blue-900 mb-2">Exemple :</h5>
-                  <ul className="space-y-1 text-blue-800">
-                    <li>P = « Il pleut »</li>
-                    <li>Q = « Le sol est mouillé »</li>
-                    <li><strong>P → Q :</strong> « S'il pleut, alors le sol est mouillé. »</li>
+        {/* ─── PARTIE B : MÉTHODES DE RAISONNEMENT ───────────────────── */}
+        <section>
+          <h2 className="text-2xl font-bold text-slate-900 border-b border-slate-200 pb-2 mb-6">
+            B. Méthodes de raisonnement
+          </h2>
+
+          <p className="mb-6">Voici les structures de base pour démontrer des théorèmes.</p>
+
+          <div className="grid gap-6">
+            {/* B.1 Raisonnement direct */}
+            <div>
+              <h3 className="font-semibold text-slate-800 mb-2">B.1. Raisonnement direct (Modus Ponens)</h3>
+              <p className="text-sm mb-2">Pour montrer <LatexRenderer latex="P \Rightarrow Q" />, on suppose <LatexRenderer latex="P" /> vrai, et on en déduit <LatexRenderer latex="Q" />.</p>
+            </div>
+
+            {/* B.2 Cas par cas */}
+            <div>
+              <h3 className="font-semibold text-slate-800 mb-2">B.2. Disjonction de cas</h3>
+              <ExampleBlock title="Exemple">
+                Montrer que pour tout entier <LatexRenderer latex="n" />, <LatexRenderer latex="n(n+1)" /> est pair.
+                <ProofBlock title="Preuve par disjonction de cas">
+                  <ul className="list-disc list-inside space-y-1">
+                    <li><strong>Cas 1 : n est pair.</strong> Alors <LatexRenderer latex="n = 2k" />. Donc <LatexRenderer latex="n(n+1) = 2k(2k+1) = 2[k(2k+1)]" />, ce qui est pair.</li>
+                    <li><strong>Cas 2 : n est impair.</strong> Alors <LatexRenderer latex="n = 2k+1" />. Donc <LatexRenderer latex="n+1 = 2k+2" /> est pair. Le produit d'un pair et d'un impair est pair.</li>
                   </ul>
-                </div>
-              </div>
-
-              {/* 2. La table de vérité (clé) */}
-              <div className="mb-6">
-                <h4 className="font-bold text-blue-900 mb-3">2. La table de vérité (clé)</h4>
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <div className="overflow-x-auto">
-                    <table className="min-w-full bg-white border border-blue-300 rounded-lg">
-                      <thead>
-                        <tr className="bg-blue-100">
-                          <th className="border border-blue-300 px-4 py-2 font-bold text-blue-900">P</th>
-                          <th className="border border-blue-300 px-4 py-2 font-bold text-blue-900">Q</th>
-                          <th className="border border-blue-300 px-4 py-2 font-bold text-blue-900">P → Q</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td className="border border-blue-300 px-4 py-2 text-center">V</td>
-                          <td className="border border-blue-300 px-4 py-2 text-center">V</td>
-                          <td className="border border-blue-300 px-4 py-2 text-center font-bold text-blue-700">V</td>
-                        </tr>
-                        <tr>
-                          <td className="border border-blue-300 px-4 py-2 text-center">V</td>
-                          <td className="border border-blue-300 px-4 py-2 text-center">F</td>
-                          <td className="border border-blue-300 px-4 py-2 text-center font-bold text-blue-700">F</td>
-                        </tr>
-                        <tr>
-                          <td className="border border-blue-300 px-4 py-2 text-center">F</td>
-                          <td className="border border-blue-300 px-4 py-2 text-center">V</td>
-                          <td className="border border-blue-300 px-4 py-2 text-center font-bold text-blue-700">V</td>
-                        </tr>
-                        <tr>
-                          <td className="border border-blue-300 px-4 py-2 text-center">F</td>
-                          <td className="border border-blue-300 px-4 py-2 text-center">F</td>
-                          <td className="border border-blue-300 px-4 py-2 text-center font-bold text-blue-700">V</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div className="text-center mt-4">
-                    <p className="text-blue-700 font-medium">
-                      L'implication est fausse seulement si P est vrai et Q est faux.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* 3. Pourquoi cette définition ? */}
-              <div className="mb-6">
-                <h4 className="font-bold text-blue-900 mb-3">3. Pourquoi cette définition ?</h4>
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <p className="text-blue-800 mb-3">
-                    Si il pleut (P vrai) mais le sol n'est pas mouillé (Q faux), alors la phrase « S'il pleut alors le sol est mouillé » est clairement fausse.
-                  </p>
-                  <p className="text-blue-800">
-                    Dans tous les autres cas, la phrase n'est pas contredite, donc on la considère vraie.
-                  </p>
-                </div>
-              </div>
-
-              {/* 4. Les deux lectures utiles */}
-              <div className="mb-6">
-                <h4 className="font-bold text-blue-900 mb-3">4. Les deux lectures utiles</h4>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                    <h5 className="font-semibold text-blue-900 mb-2">Condition suffisante :</h5>
-                    <p className="text-blue-800 text-sm mb-2">P est une condition suffisante pour Q.</p>
-                    <p className="text-blue-700 text-sm italic">
-                      Exemple : « Être un carré implique être un rectangle. »
-                    </p>
-                  </div>
-                  <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                    <h5 className="font-semibold text-blue-900 mb-2">Condition nécessaire :</h5>
-                    <p className="text-blue-800 text-sm mb-2">Q est une condition nécessaire pour P.</p>
-                    <p className="text-blue-700 text-sm italic">
-                      Exemple : « Être rectangle est nécessaire pour être carré. »
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-white p-4 rounded-lg border border-blue-300 text-center mt-4">
-                  <p className="text-blue-900 font-medium">
-                    Donc : <span className="font-mono bg-blue-100 px-2 py-1 rounded">P → Q ≡ ¬P ∨ Q</span>
-                  </p>
-                  <p className="text-blue-700 text-sm mt-2">(soit P est faux, soit Q est vrai)</p>
-                </div>
-              </div>
-
-              {/* 5. Les pièges classiques */}
-              <div className="mb-6">
-                <h4 className="font-bold text-blue-900 mb-3">5. Les pièges classiques</h4>
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <div className="space-y-4">
-                    <div className="bg-white p-3 rounded border-l-4 border-blue-500">
-                      <p className="text-blue-800 mb-2">
-                        <strong>Attention :</strong> P → Q n'est pas équivalent à Q → P.
-                      </p>
-                      <ul className="text-blue-700 text-sm space-y-1">
-                        <li>• « Être carré → être rectangle » est vrai,</li>
-                        <li>• mais « Être rectangle → être carré » est faux.</li>
-                      </ul>
-                    </div>
-
-                    <div className="bg-white p-3 rounded border-l-4 border-blue-600">
-                      <p className="text-blue-800 mb-2">
-                        <strong>La vraie équivalence, c'est la contraposée :</strong>
-                      </p>
-                      <p className="text-center font-mono bg-blue-100 px-3 py-2 rounded text-blue-900">
-                        P → Q ≡ ¬Q → ¬P
-                      </p>
-                      <div className="mt-3 text-sm text-blue-700">
-                        <p><strong>Ex. :</strong> « Si ça pleut → sol mouillé »</p>
-                        <p><strong>Contraposée :</strong> « Si le sol n'est pas mouillé → il n'a pas plu. »</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Équivalence */}
-              <div className="mb-6">
-                <h4 className="font-bold text-blue-900 mb-3">Équivalence P ⇔ Q</h4>
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <p className="text-blue-800 mb-3">
-                    P ⇔ Q signifie P → Q <strong>et</strong> Q → P.
-                  </p>
-                  <p className="text-blue-800">
-                    Autrement dit : P et Q ont toujours la même valeur de vérité.
-                  </p>
-                </div>
-              </div>
+                  Dans tous les cas, le résultat est pair.
+                </ProofBlock>
+              </ExampleBlock>
             </div>
 
-            {/* A.3 Quantificateurs */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-teal-800">A.3. Quantificateurs</h3>
-
-              <div className="bg-blue-100 p-4 rounded-lg mb-4">
-                <div className="text-center text-2xl mb-3">
-                  <span className="font-mono">∀x</span> : pour tout x
-                  <span className="mx-4">∃x</span> : il existe un x
-                  <span className="ml-4">∃!x</span> : il existe un unique x
-                </div>
-              </div>
-
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h4 className="font-bold text-blue-900 mb-3">Exemples</h4>
-                <ul className="space-y-2 text-blue-800">
-                  <li><strong>∀n ∈ ℕ, n² ≥ 0</strong> (toujours vrai).</li>
-                  <li><strong>∃x ∈ ℝ, x² = 2</strong> (exemple x=√2).</li>
-                  <li><strong>∃!x ∈ ℝ, x² = 0</strong> (solution unique x=0).</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* A.4 Tables de vérité */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-teal-800">A.4. Tables de vérité</h3>
-
-              <div className="bg-blue-50 p-4 rounded-lg mb-4">
-                <p className="text-blue-800 mb-4">
-                  Une table de vérité donne les valeurs de propositions composées en fonction des valeurs de P et Q.
-                </p>
-
-                <div className="overflow-x-auto">
-                  <table className="min-w-full bg-white border border-blue-300 rounded-lg">
-                    <thead>
-                      <tr className="bg-blue-100">
-                        <th className="border border-blue-300 px-4 py-2">P</th>
-                        <th className="border border-blue-300 px-4 py-2">Q</th>
-                        <th className="border border-blue-300 px-4 py-2">¬P</th>
-                        <th className="border border-blue-300 px-4 py-2">P ∧ Q</th>
-                        <th className="border border-blue-300 px-4 py-2">P ∨ Q</th>
-                        <th className="border border-blue-300 px-4 py-2">P ⇒ Q</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-green-100">V</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-green-100">V</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-red-100">F</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-green-100">V</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-green-100">V</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-green-100">V</td>
-                      </tr>
-                      <tr>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-green-100">V</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-red-100">F</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-red-100">F</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-red-100">F</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-green-100">V</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-red-100">F</td>
-                      </tr>
-                      <tr>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-red-100">F</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-green-100">V</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-green-100">V</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-red-100">F</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-green-100">V</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-green-100">V</td>
-                      </tr>
-                      <tr>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-red-100">F</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-red-100">F</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-green-100">V</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-red-100">F</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-red-100">F</td>
-                        <td className="border border-blue-300 px-4 py-2 text-center bg-green-100">V</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Section B: Méthodes de raisonnement */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-2xl font-bold mb-6 text-teal-900 border-b border-teal-200 pb-3">
-              B. Méthodes de raisonnement
-            </h2>
-
-            {/* B.1 Disjonction de cas */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">B.1. Disjonction de cas</h3>
-
-              <div className="bg-blue-50 p-4 rounded-lg mb-4">
-                <h4 className="font-bold text-blue-900 mb-2">Principe</h4>
-                <p className="text-blue-800">On divise le problème en plusieurs cas couvrant toutes les possibilités.</p>
-              </div>
-
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h4 className="font-bold text-blue-900 mb-3">Exemple</h4>
-                <p className="text-blue-800 mb-3">Montrer que n² est pair si et seulement si n est pair.</p>
-                <ul className="space-y-1 text-blue-800">
-                  <li><strong>Cas 1 :</strong> n est pair ⇒ n² pair.</li>
-                  <li><strong>Cas 2 :</strong> n est impair ⇒ n² impair.</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* B.2 Contraposée */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">B.2. Contraposée</h3>
-
-              <div className="bg-blue-50 p-4 rounded-lg mb-4">
-                <h4 className="font-bold text-blue-900 mb-2">Définition</h4>
-                <p className="text-blue-800">La contraposée de P ⇒ Q est ¬Q ⇒ ¬P.</p>
-              </div>
-
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h4 className="font-bold text-blue-900 mb-3">Exemple</h4>
-                <p className="text-blue-800 mb-2"><strong>Proposition :</strong> « si n² est pair, alors n est pair ».</p>
-                <p className="text-blue-800"><strong>Contraposée :</strong> « si n est impair, alors n² est impair ».</p>
-              </div>
-            </div>
-
-            {/* B.3 Raisonnement par l'absurde */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">B.3. Raisonnement par l'absurde</h3>
-
-              <div className="bg-blue-50 p-4 rounded-lg mb-4">
-                <h4 className="font-bold text-blue-900 mb-2">Idée</h4>
-                <p className="text-blue-800">Supposer le contraire de ce que l'on veut prouver, et arriver à une contradiction.</p>
-              </div>
-
-              <div className="bg-blue-50 p-4 rounded-lg mb-4">
-                <h4 className="font-bold text-blue-900 mb-3">Exemple détaillé : Irrationalité de √2</h4>
-                <p className="text-blue-800 mb-3">On veut montrer que √2 n'est pas rationnel.</p>
-                <ol className="space-y-2 text-blue-800 list-decimal list-inside">
-                  <li><em>Supposons par l'absurde</em> que √2 = p/q avec p, q ∈ ℤ, q ≠ 0, et la fraction irréductible.</li>
-                  <li>Alors 2 = p²/q² ⇒ p² = 2q².</li>
-                  <li>Donc p² est pair ⇒ p est pair. Écrivons p = 2k.</li>
-                  <li>Substituons : p² = 4k² = 2q² ⇒ q² = 2k².</li>
-                  <li>Donc q² est pair ⇒ q est pair.</li>
-                  <li>On conclut que p et q sont tous deux pairs, ce qui contredit l'hypothèse d'irréductibilité.</li>
-                </ol>
-                <div className="mt-3 p-3 bg-white rounded border-l-4 border-blue-500">
-                  <strong>Conclusion :</strong> L'hypothèse est impossible, donc √2 est irrationnel.
-                </div>
-              </div>
-            </div>
-
-            {/* B.4 Récurrence */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">B.4. Récurrence</h3>
-
-              <div className="bg-blue-50 p-4 rounded-lg mb-4">
-                <h4 className="font-bold text-blue-900 mb-3">Exemple</h4>
-                <p className="text-blue-800 mb-3">∀n ∈ ℕ, 1+2+⋯+n = n(n+1)/2.</p>
-                <div className="bg-white p-3 rounded border-l-4 border-blue-500 mb-3">
-                  <strong>Initialisation :</strong> n=1, 1 = 1×2/2.
-                </div>
-                <div className="bg-white p-3 rounded border-l-4 border-blue-500">
-                  <strong>Hérédité :</strong> Supposons la formule vraie pour n. Alors 1+2+⋯+n+(n+1) = n(n+1)/2 + (n+1) = (n+1)(n+2)/2.
-                </div>
-              </div>
-            </div>
-
-            {/* B.5 Analyse-Synthèse */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">B.5. Analyse–Synthèse</h3>
-
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h4 className="font-bold text-blue-900 mb-3">Exemple</h4>
-                <p className="text-blue-800 mb-3">Résoudre x² = 4.</p>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-white p-3 rounded border-l-4 border-blue-500">
-                    <strong>Analyse :</strong> Si x²=4, alors x=±2.
-                  </div>
-                  <div className="bg-white p-3 rounded border-l-4 border-blue-500">
-                    <strong>Synthèse :</strong> 2²=4 et (-2)²=4. Donc solutions x=2 ou x=-2.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Applications en Python */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-blue-200">
-            <h2 className="text-2xl font-bold mb-6 text-blue-900 border-b border-blue-200 pb-3">
-              C. Applications en Python
-            </h2>
-
-            <div className="bg-blue-50 p-4 rounded-lg mb-4">
-              <h3 className="text-lg font-semibold mb-3 text-blue-900">Booléens en Python</h3>
-              <div className="bg-white p-4 rounded border font-mono text-sm">
-                <div className="text-blue-600"># Valeurs booléennes</div>
-                <div>True  # Vrai</div>
-                <div>False # Faux</div>
+            {/* B.3 Contraposée */}
+            <div>
+              <h3 className="font-semibold text-slate-800 mb-2">B.3. Par contraposée</h3>
+              <p className="text-sm mb-2">Au lieu de montrer <LatexRenderer latex="P \Rightarrow Q" />, on montre <LatexRenderer latex="\neg Q \Rightarrow \neg P" />.</p>
+              <ExampleBlock>
+                Montrer : Si <LatexRenderer latex="n^2" /> est impair, alors <LatexRenderer latex="n" /> est impair.
                 <br />
-                <div className="text-blue-600"># Opérateurs logiques</div>
-                <div>not x    # Négation</div>
-                <div>x and y  # Et logique</div>
-                <div>x or y   # Ou logique</div>
-              </div>
+                <strong>Par contraposée :</strong> Montrons que si <LatexRenderer latex="n" /> est pair, alors <LatexRenderer latex="n^2" /> est pair.
+                <br />
+                Si <LatexRenderer latex="n=2k" />, alors <LatexRenderer latex="n^2 = (2k)^2 = 4k^2 = 2(2k^2)" />, qui est bien pair.
+              </ExampleBlock>
             </div>
 
-            <div className="bg-blue-50 p-4 rounded-lg">
-              <h3 className="text-lg font-semibold mb-3 text-blue-900">Exemples pratiques</h3>
-              <div className="space-y-3">
-                <div className="bg-white p-3 rounded">
-                  <strong>Test de parité :</strong>
-                  <div className="font-mono text-sm mt-1">n % 2 == 0  # True si n pair</div>
-                </div>
-                <div className="bg-white p-3 rounded">
-                  <strong>Condition composée :</strong>
-                  <div className="font-mono text-sm mt-1">x &gt; 0 and x &lt; 10  # x entre 0 et 10</div>
-                </div>
-              </div>
-            </div>
-          </div>
+            {/* B.4 Absurde */}
+            <div>
+              <h3 className="font-semibold text-slate-800 mb-2">B.4. Raisonnement par l'absurde</h3>
+              <p className="text-sm mb-2">Pour montrer <LatexRenderer latex="P" />, on suppose <LatexRenderer latex="\neg P" /> et on cherche une contradiction.</p>
 
-          {/* Navigation */}
-          <div className="flex justify-between items-center bg-blue-50 p-6 rounded-lg">
-            <div className="text-blue-600">Séance précédente</div>
-            <div className="flex gap-3">
-              <Link to="/formation/oteria/logique-fondamentale-exercices">
-                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                  Exercices
-                </button>
-              </Link>
-              <Link to="/articles/oteria-cyber-school">
-                <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
-                  Retour au programme
-                </button>
-              </Link>
+              <TheoremBlock title="Irrationalité de √2" variant="theorem">
+                <LatexRenderer latex="\sqrt{2}" /> n'est pas un nombre rationnel (<LatexRenderer latex="\sqrt{2} \notin \mathbb{Q}" />).
+              </TheoremBlock>
+
+              <ProofBlock title="Preuve classique par l'absurde">
+                Supposons par l'absurde que <LatexRenderer latex="\sqrt{2} \in \mathbb{Q}" />.
+                On peut donc écrire <LatexRenderer latex="\sqrt{2} = \frac{p}{q}" /> avec <LatexRenderer latex="p, q" /> entiers premiers entre eux (fraction irréductible).
+                <br /><br />
+                1. Élevons au carré : <LatexRenderer latex="2 = \frac{p ^ 2}{q ^ 2} \implies p^2 = 2q^2" />.
+                <br />
+                2. Donc <LatexRenderer latex="p^2" /> est pair, ce qui implique que <LatexRenderer latex="p" /> est pair (voir plus haut).
+                <br />
+                3. Écrivons <LatexRenderer latex="p = 2k" />. L'équation devient <LatexRenderer latex="(2k)^2 = 2q^2 \implies 4k^2 = 2q^2 \implies 2k^2 = q^2" />.
+                <br />
+                4. Donc <LatexRenderer latex="q^2" /> est pair, ce qui implique que <LatexRenderer latex="q" /> est pair.
+                <br /><br />
+                <strong>Contradiction :</strong> Si <LatexRenderer latex="p" /> et <LatexRenderer latex="q" /> sont tous deux pairs, la fraction n'était pas irréductible (on peut diviser par 2).
+                L'hypothèse de départ est donc fausse.
+              </ProofBlock>
             </div>
-            <div className="text-blue-600 font-medium">Séance suivante →</div>
           </div>
-        </div>
+        </section>
+
+        {/* ─── PARTIE C : APPLICATIONS PYTHON ────────────────────────── */}
+        <section>
+          <h2 className="text-2xl font-bold text-slate-900 border-b border-slate-200 pb-2 mb-6">
+            C. Applications en Python
+          </h2>
+
+          <p className="mb-4">
+            En programmation, la logique booléenne est omniprésente. Python utilise les mots-clés anglais : <code>and</code>, <code>or</code>, <code>not</code>.
+          </p>
+
+          <CodeBlock
+            title="Bases booléennes"
+            code={`# Les booléens en Python (True / False)
+x = True
+y = False
+
+# Négation
+print(not x)        # False
+
+# Conjonction (ET)
+print(x and y)      # False (car y est faux)
+
+# Disjonction (OU)
+print(x or y)       # True (car x est vrai)
+
+# Assertions complexes
+age = 20
+has_permis = True
+can_drive = (age >= 18) and has_permis 
+print(can_drive)    # True`}
+          />
+
+          <WarningBlock title="Pièces à éviter">
+            En Python, <code>1</code> vaut <code>True</code> et <code>0</code> vaut <code>False</code> dans un contexte booléen, mais il vaut mieux être explicite.
+            <br />
+            Attention : <code>bool("Faux")</code> renvoie <strong>True</strong> car la chaîne n'est pas vide !
+          </WarningBlock>
+
+          <h3 className="text-lg font-semibold mt-8 mb-4">Exercice d'application</h3>
+          <p className="mb-2">Écrire une fonction qui vérifie si une année est bissextile.</p>
+          <DefinitionBlock title="Règle bissextile">
+            Une année est bissextile si :
+            <ul className="list-disc list-inside mt-1">
+              <li>Elle est divisible par 4</li>
+              <li>ET (elle n'est pas divisible par 100 OU elle est divisible par 400).</li>
+            </ul>
+          </DefinitionBlock>
+
+          <CodeBlock
+            title="Solution : Année bissextile"
+            code={`def est_bissextile(annee):
+    """
+    Renvoie True si l'année est bissextile, False sinon.
+    Logique : (Divisible par 4) ET ((Pas divisible par 100) OU (Divisible par 400))
+    """
+    div_4 = (annee % 4 == 0)
+    div_100 = (annee % 100 == 0)
+    div_400 = (annee % 400 == 0)
+    
+    return div_4 and (not div_100 or div_400)
+
+# Tests
+print(est_bissextile(2024)) # True (div 4, pas 100)
+print(est_bissextile(1900)) # False (div 4, div 100 mais pas 400)
+print(est_bissextile(2000)) # True (div 400)`}
+          />
+        </section>
       </div>
-    </div>
+    </OteriaChapterTemplate>
   );
 };
 

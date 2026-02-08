@@ -307,7 +307,7 @@ const SessionCard = ({ session }) => {
                 </Button>
               </Link>
             ) : session.id === 5 ? (
-              <Link to="/formation/oteria/fonctions-exercices">
+              <Link to="/formation/oteria/fonctions-variable-reelle-exercices">
                 <Button variant="outline" className="w-full border-2 border-pink-500 text-pink-400 hover:bg-pink-500/20 font-medium transition-all duration-300 hover:scale-105">
                   <Play className="mr-2 h-4 w-4" />
                   Exercices
@@ -400,7 +400,7 @@ const SessionCard = ({ session }) => {
                 </Button>
               </Link>
             ) : session.id === 5 ? (
-              <Link to="/formation/oteria/fonctions-flashcards">
+              <Link to="/formation/oteria/fonctions-variable-reelle-flashcards">
                 <Button variant="outline" className="w-full border-2 border-pink-500 text-pink-400 hover:bg-pink-500/20 font-medium transition-all duration-300 hover:scale-105">
                   <BrainIcon className="mr-2 h-4 w-4" />
                   Flashcards
@@ -526,7 +526,7 @@ const SessionCard = ({ session }) => {
                 </Button>
               </Link>
             ) : session.id === 5 ? (
-              <Link to="/formation/oteria/fonctions-qcm">
+              <Link to="/formation/oteria/fonctions-variable-reelle-qcm">
                 <Button variant="outline" className="w-full border-2 border-pink-500 text-pink-400 hover:bg-pink-500/20 font-medium transition-all duration-300 hover:scale-105">
                   <TargetIcon className="mr-2 h-4 w-4" />
                   QCM

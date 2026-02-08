@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Home, ChevronRight, ArrowLeft, BookOpen, Target, Zap, Calculator, RotateCcw, ChevronLeft, ChevronRight as ChevronRightIcon } from 'lucide-react';
-import { LatexRenderer } from '@/components/LatexRenderer';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import React from 'react';
+import { OteriaMinimalistChapterTemplate } from '@/components/formation/OteriaMinimalistChapterTemplate';
+import { MathFlashcards } from '@/components/MathFlashcards';
+import { MathFlashcard } from '@/data/mathFlashcardsData';
 
 const flashcards = [
   {
@@ -288,319 +286,39 @@ const flashcards = [
   }
 ];
 
-const categories = [...new Set(flashcards.map(card => card.category))];
-
-const OteriaPolynomesDichotomieFlashcardsPage = () => {
-  const [currentCard, setCurrentCard] = useState(0);
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [studyMode, setStudyMode] = useState("sequential"); // sequential, random
-  const [shuffledCards, setShuffledCards] = useState(flashcards);
-
-  const filteredCards = selectedCategory === "all"
-    ? shuffledCards
-    : shuffledCards.filter(card => card.category === selectedCategory);
-
-  useEffect(() => {
-    if (studyMode === "random") {
-      const shuffled = [...flashcards].sort(() => Math.random() - 0.5);
-      setShuffledCards(shuffled);
-    } else {
-      setShuffledCards(flashcards);
-    }
-    setCurrentCard(0);
-    setIsFlipped(false);
-  }, [studyMode]);
-
-  useEffect(() => {
-    setCurrentCard(0);
-    setIsFlipped(false);
-  }, [selectedCategory]);
-
-  // Navigation au clavier
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // Empêcher le comportement par défaut pour les flèches
-      if (['ArrowLeft', 'ArrowRight', ' ', 'Enter'].includes(e.key)) {
-        e.preventDefault();
-      }
-
-      switch (e.key) {
-        case 'ArrowLeft':
-          prevCard();
-          break;
-        case 'ArrowRight':
-          nextCard();
-          break;
-        case ' ':
-        case 'Enter':
-          flipCard();
-          break;
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentCard, isFlipped, filteredCards.length]);
-
-  const nextCard = () => {
-    if (currentCard < filteredCards.length - 1) {
-      setCurrentCard(currentCard + 1);
-      setIsFlipped(false);
-    }
-  };
-
-  const prevCard = () => {
-    if (currentCard > 0) {
-      setCurrentCard(currentCard - 1);
-      setIsFlipped(false);
-    }
-  };
-
-  const flipCard = () => {
-    setIsFlipped(!isFlipped);
-  };
-
-  const resetCards = () => {
-    setCurrentCard(0);
-    setIsFlipped(false);
-    if (studyMode === "random") {
-      const shuffled = [...flashcards].sort(() => Math.random() - 0.5);
-      setShuffledCards(shuffled);
-    }
-  };
+const OteriaPolynomesDichotomieFlashcardsPage: React.FC = () => {
+  const adaptedFlashcards: MathFlashcard[] = flashcards.map(card => ({
+    id: card.id,
+    front: card.front,
+    back: card.explanation, // Put explanation in back text
+    frontLatex: undefined,
+    backLatex: card.back, // Put regex/latex answer in backLatex
+    category: card.category,
+    chapter: 6,
+    difficulty: 'moyen',
+  }));
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-blue-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-blue-700 transition-colors">
-              <Home className="h-3 w-3" />
-              <span>Accueil</span>
-            </Link>
-            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-            <Link to="/articles" className="hover:text-blue-700 transition-colors">
-              Niveau
-            </Link>
-            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-            <Link to="/articles/oteria-cyber-school" className="hover:text-blue-700 transition-colors">
-              OTERIA Cyber School
-            </Link>
-            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-            <span className="text-blue-600 font-medium">Séance 6 - Flashcards</span>
-          </div>
-        </div>
-      </nav>
-
-      <div className="container mx-auto py-8 px-4">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
-              <Calculator className="h-8 w-8 text-blue-600" />
-            </div>
-          </div>
-          <h1 className="text-3xl font-bold mb-4 text-blue-900">Séance 6 : Flashcards - Polynômes & dichotomie</h1>
-          <p className="text-lg text-blue-800 max-w-3xl mx-auto mb-4">
-            Degré, racines, division euclidienne, Algorithme de la dichotomie pour f(x)=0
-          </p>
-          <div className="text-sm text-gray-600 mb-6 bg-blue-50 p-3 rounded-lg max-w-2xl mx-auto border border-blue-200">
-            <span className="font-medium">Navigation au clavier :</span> ← Précédent | → Suivant | Espace/Entrée pour retourner la carte
-          </div>
-
-          <div className="flex gap-3 justify-center flex-wrap">
-            <Link to="/formation/oteria/polynomes-approximation-cours">
-              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                <BookOpen className="h-4 w-4" />
-                Cours
-              </button>
-            </Link>
-            <Link to="/formation/oteria/polynomes-exercices">
-              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                <Target className="h-4 w-4" />
-                Exercices
-              </button>
-            </Link>
-            <Link to="/formation/oteria/polynomes-qcm">
-              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                <Zap className="h-4 w-4" />
-                QCM
-              </button>
-            </Link>
-            <Link to="/articles/oteria-cyber-school">
-              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                <ArrowLeft className="h-4 w-4" />
-                Retour au programme
-              </button>
-            </Link>
-          </div>
-        </div>
-
-        <div className="max-w-4xl mx-auto">
-          {/* Contrôles */}
-          <div className="bg-white rounded-xl shadow-lg p-6 mb-8 border border-blue-200">
-            <div className="grid md:grid-cols-3 gap-4">
-              {/* Sélection de catégorie */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Catégorie</label>
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                >
-                  <option value="all">Toutes les catégories ({flashcards.length} cartes)</option>
-                  {categories.map(category => (
-                    <option key={category} value={category}>
-                      {category} ({flashcards.filter(card => card.category === category).length} cartes)
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Mode d'étude */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Mode d'étude</label>
-                <select
-                  value={studyMode}
-                  onChange={(e) => setStudyMode(e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                >
-                  <option value="sequential">Séquentiel</option>
-                  <option value="random">Aléatoire</option>
-                </select>
-              </div>
-
-              {/* Boutons d'action */}
-              <div className="flex items-end gap-2">
-                <Button onClick={resetCards} variant="outline" className="flex-1">
-                  <RotateCcw className="h-4 w-4 mr-2" />
-                  Recommencer
-                </Button>
-              </div>
-            </div>
-          </div>
-
-          {/* Indicateur de progression */}
-          <div className="bg-white rounded-xl shadow-lg p-4 mb-8 border border-blue-200">
-            <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
-              <span>Carte {currentCard + 1} sur {filteredCards.length}</span>
-              <span>{Math.round(((currentCard + 1) / filteredCards.length) * 100)}% complété</span>
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-2">
-              <div
-                className="bg-blue-600 h-2 rounded-full transition-all duration-300"
-                style={{ width: `${((currentCard + 1) / filteredCards.length) * 100}%` }}
-              ></div>
-            </div>
-          </div>
-
-          {/* Carte de flashcard */}
-          {filteredCards.length > 0 && (
-            <Card className="shadow-2xl mb-8">
-              <CardContent className="p-8">
-                <div className="mb-4">
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-                    {filteredCards[currentCard].category}
-                  </span>
-                </div>
-                
-                <div className="min-h-[300px] flex flex-col justify-center">
-                  <div className="text-center mb-8">
-                    <h3 className="text-xl font-semibold text-blue-900 mb-4">Question</h3>
-                    <p className="text-lg text-blue-800">{filteredCards[currentCard].front}</p>
-                  </div>
-
-                  {isFlipped && (
-                    <div className="border-t-2 border-green-200 pt-6 mt-6 animate-in fade-in duration-300">
-                      <h3 className="text-xl font-semibold text-green-900 mb-4 text-center">Réponse</h3>
-                      <div className="text-center mb-4">
-                        <LatexRenderer latex={filteredCards[currentCard].back} block />
-                      </div>
-                      <p className="text-center text-gray-600 text-sm italic leading-relaxed mt-4">
-                        {filteredCards[currentCard].explanation}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-          )}
-
-          {/* Contrôles de navigation */}
-          <div className="flex items-center justify-between bg-white rounded-xl shadow-lg p-6 border border-blue-200">
-            <Button
-              onClick={prevCard}
-              disabled={currentCard === 0}
-              variant="outline"
-              className="flex items-center gap-2"
-            >
-              <ChevronLeft className="h-4 w-4" />
-              Précédent
-            </Button>
-
-            <div className="flex items-center gap-4">
-              <Button
-                onClick={flipCard}
-                variant="default"
-                className="bg-blue-600 hover:bg-blue-700"
-              >
-                {isFlipped ? 'Voir la question' : 'Voir la réponse'}
-              </Button>
-            </div>
-
-            <Button
-              onClick={nextCard}
-              disabled={currentCard === filteredCards.length - 1}
-              variant="outline"
-              className="flex items-center gap-2"
-            >
-              Suivant
-              <ChevronRightIcon className="h-4 w-4" />
-            </Button>
-          </div>
-        </div>
-
-        {/* Navigation */}
-        <div className="flex justify-between items-center bg-blue-50 p-6 rounded-lg mt-8 max-w-4xl mx-auto">
-          <Link to="/formation/oteria/polynomes-exercices">
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
-              ← Exercices
-            </button>
-          </Link>
-          <div className="flex gap-3">
-            <Link to="/formation/oteria/polynomes-approximation-cours">
-              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                <BookOpen className="h-4 w-4" />
-                Cours
-              </button>
-            </Link>
-            <Link to="/formation/oteria/polynomes-exercices">
-              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                <Target className="h-4 w-4" />
-                Exercices
-              </button>
-            </Link>
-            <Link to="/formation/oteria/polynomes-qcm">
-              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                <Zap className="h-4 w-4" />
-                QCM
-              </button>
-            </Link>
-            <Link to="/articles/oteria-cyber-school">
-              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                <ArrowLeft className="h-4 w-4" />
-                Retour au programme
-              </button>
-            </Link>
-          </div>
-          <Link to="/formation/oteria/fonctions-variable-reelle-cours">
-            <div className="text-blue-600 hover:text-blue-700 font-medium">Séance suivante →</div>
-          </Link>
-        </div>
-      </div>
-    </div>
+    <OteriaMinimalistChapterTemplate
+      sessionNumber={6}
+      sessionTitle="Polynômes & Dichotomie"
+      description="Degré, racines, division euclidienne, Algorithme de la dichotomie pour f(x)=0"
+      slug="polynomes"
+      courseSlug="polynomes-approximation-cours"
+      flashcardsSlug="polynomes-dichotomie-flashcards"
+      duration="4h"
+      level="Intermédiaire"
+      activeSection="flashcards"
+      previousSession={{ slug: 'fonctions-variable-reelle', title: 'Fonctions' }}
+      nextSession={{ slug: 'denombrement', title: 'Dénombrement' }}
+    >
+      <MathFlashcards
+        flashcards={adaptedFlashcards}
+        title="Flashcards — Polynômes & Dichotomie"
+        chapterNumber={6}
+        hideHeader={false}
+      />
+    </OteriaMinimalistChapterTemplate>
   );
 };
 

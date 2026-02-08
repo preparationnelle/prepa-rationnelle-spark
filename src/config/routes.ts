@@ -9,6 +9,11 @@ const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 const ContactPage = lazy(() => import('../pages/ContactPage'));
 const AdminLeadsPage = lazy(() => import('../pages/AdminLeadsPage'));
 const GeneratorPage = lazy(() => import('../pages/GeneratorPage'));
+const ColleAccueilPage = lazy(() => import('../pages/colle/ColleAccueilPage'));
+const ColleSessionPage = lazy(() => import('../pages/colle/ColleSessionPage'));
+const ColleFeedbackPage = lazy(() => import('../pages/colle/ColleFeedbackPage'));
+const ColleHistoriquePage = lazy(() => import('../pages/colle/ColleHistoriquePage'));
+const ColleDetailPage = lazy(() => import('../pages/colle/ColleDetailPage'));
 const StageAccompagnementPage = lazy(() => import('../pages/StageAccompagnementPage'));
 const PreRentreePage = lazy(() => import('../pages/offres/PreRentreePage'));
 const PythonArticlePage = lazy(() => import('../pages/formation/Python/PythonArticlePage'));
@@ -612,6 +617,8 @@ const OteriaRecurrenceRecursiviteFlashcardsPage = lazy(() => import('../pages/fo
 const OteriaRecurrenceRecursiviteQCMPage = lazy(() => import('../pages/formation/oteria/OteriaRecurrenceRecursiviteQCMPage'));
 const OteriaSuitesNumeriquesQCMPage = lazy(() => import('../pages/formation/oteria/OteriaSuitesNumeriquesQCMPage'));
 const OteriaSuitesNumeriquesFlashcardsPage = lazy(() => import('../pages/formation/oteria/OteriaSuitesNumeriquesFlashcardsPage'));
+const OteriaProbabilitesQCMPage = lazy(() => import('../pages/formation/oteria/OteriaProbabilitesQCMPage'));
+const OteriaIntegralesMonteCarloQCMPage = lazy(() => import('../pages/formation/oteria/OteriaIntegralesMonteCarloQCMPage'));
 
 // Évaluation Finale
 const OteriaEvaluationFinaleQCMPage = lazy(() => import('../pages/formation/oteria/OteriaEvaluationFinaleQCMPage'));
@@ -765,6 +772,11 @@ export const routes: RouteConfig[] = [
   { path: '/register', component: RegisterPage, title: 'Inscription' },
   { path: '/contact', component: ContactPage, title: 'Contact' },
   { path: '/generator', component: GeneratorPage, title: 'Générateurs IA' },
+  { path: '/colle', component: ColleAccueilPage, title: 'Colle de Langues', protected: true },
+  { path: '/colle/session/:sessionId', component: ColleSessionPage, title: 'Session de Colle', protected: true },
+  { path: '/colle/feedback/:sessionId', component: ColleFeedbackPage, title: 'Feedback Colle', protected: true },
+  { path: '/colle/historique', component: ColleHistoriquePage, title: 'Historique des Colles', protected: true },
+  { path: '/colle/detail/:sessionId', component: ColleDetailPage, title: 'Détail Colle', protected: true },
   { path: '/stage-accompagnement', component: StageAccompagnementPage, title: 'Stage & Accompagnement' },
   { path: '/offres/pre-rentree', component: PreRentreePage, title: 'Stage de Pré-entrée' },
   { path: '/python-article', component: PythonArticlePage, title: 'Article Python' },
@@ -813,7 +825,7 @@ export const routes: RouteConfig[] = [
   { path: '/articles/concours-acces-sesame', component: ArticlesConcoursAccesSesamePage, title: 'Concours ACCES/SESAME' },
   { path: '/articles/terminale-prepa', component: lazy(() => import('../pages/ArticlesTerminalePrepaPage')), title: 'Terminale → Prépa' },
   { path: '/articles/oteria-cyber-school', component: OteriaHomepage, title: 'OTERIA Cyber School' },
-  { path: '/articles/oteria-cyber-school/bachelor-1', component: OteriaBachelor1Page, title: 'Bachelor 2 - OTERIA Cyber School' },
+  { path: '/articles/oteria-cyber-school/bachelor-1', component: ArticlesOteriaCyberSchoolPage, title: 'Bachelor 2 - OTERIA Cyber School' },
 
   { path: '/formation/oteria/logique-fondamentale-cours', component: OteriaLogiqueFondamentaleCoursPage, title: 'Logique Fondamentale - Cours' },
   { path: '/formation/oteria/logique-fondamentale-exercices', component: OteriaLogiqueFondamentaleExercicesPage, title: 'Logique Fondamentale - Exercices' },
@@ -835,15 +847,15 @@ export const routes: RouteConfig[] = [
 
   // Chapitre 5 - Fonctions d'une variable réelle
   { path: '/formation/oteria/fonctions-variable-reelle-cours', component: OteriaFonctionsVariableReelleCoursPage, title: 'Fonctions Variable Réelle - Cours' },
-  { path: '/formation/oteria/fonctions-exercices', component: OteriaFonctionsExercicesPage, title: 'Fonctions - Exercices' },
-  { path: '/formation/oteria/fonctions-flashcards', component: OteriaFonctionsFlashcardsPage, title: 'Fonctions - Flashcards' },
-  { path: '/formation/oteria/fonctions-qcm', component: OteriaFonctionsQCMPage, title: 'Fonctions - QCM', protected: true },
+  { path: '/formation/oteria/fonctions-variable-reelle-exercices', component: OteriaFonctionsExercicesPage, title: 'Fonctions - Exercices' },
+  { path: '/formation/oteria/fonctions-variable-reelle-flashcards', component: OteriaFonctionsFlashcardsPage, title: 'Fonctions - Flashcards' },
+  { path: '/formation/oteria/fonctions-variable-reelle-qcm', component: OteriaFonctionsQCMPage, title: 'Fonctions - QCM', protected: true },
 
   // Chapitre 6 - Polynômes et approximation des racines
   { path: '/formation/oteria/polynomes-approximation-cours', component: OteriaPolynomesApproximationCoursPage, title: 'Polynômes & Dichotomie - Cours' },
-  { path: '/formation/oteria/polynomes-exercices', component: OteriaPolynomesExercicesPage, title: 'Polynômes & Dichotomie - Exercices' },
-  { path: '/formation/oteria/polynomes-flashcards', component: OteriaPolynomesDichotomieFlashcardsPage, title: 'Polynômes & Dichotomie - Flashcards' },
-  { path: '/formation/oteria/polynomes-qcm', component: OteriaPolynomesQCMPage, title: 'Polynômes & Dichotomie - QCM', protected: true },
+  { path: '/formation/oteria/polynomes-approximation-exercices', component: OteriaPolynomesExercicesPage, title: 'Polynômes & Dichotomie - Exercices' },
+  { path: '/formation/oteria/polynomes-approximation-flashcards', component: OteriaPolynomesDichotomieFlashcardsPage, title: 'Polynômes & Dichotomie - Flashcards' },
+  { path: '/formation/oteria/polynomes-approximation-qcm', component: OteriaPolynomesQCMPage, title: 'Polynômes & Dichotomie - QCM', protected: true },
 
   // Chapitre 7 - Dénombrement & probas : paradoxes
   { path: '/formation/oteria/denombrement-paradoxes-cours', component: OteriaDenombrementParadoxesCoursPage, title: 'Dénombrement & Paradoxes - Cours' },
@@ -855,6 +867,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/oteria/probabilites-introduction-cours', component: OteriaProbabilitesIntroductionCoursPage, title: 'Introduction aux Probabilités - Cours' },
   { path: '/formation/oteria/probabilites-exercices', component: OteriaProbabilitesExercicesPage, title: 'Introduction aux Probabilités - Exercices' },
   { path: '/formation/oteria/probabilites-flashcards', component: OteriaProbabilitesFlashcardsPage, title: 'Introduction aux Probabilités - Flashcards' },
+  { path: '/formation/oteria/probabilites-qcm', component: OteriaProbabilitesQCMPage, title: 'Introduction aux Probabilités - QCM', protected: true },
 
   // Chapitre 9 - Variables aléatoires & histogrammes
   { path: '/formation/oteria/variables-aleatoires-cours', component: OteriaVariablesAleatoiresCoursPage, title: 'Variables Aléatoires & Histogrammes - Cours' },
@@ -866,6 +879,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/oteria/integrales-monte-carlo-cours', component: OteriaIntegralesMonteCarloCoursPage, title: 'Intégrales & π par Monte-Carlo - Cours' },
   { path: '/formation/oteria/integrales-monte-carlo-exercices', component: OteriaIntegralesMonteCarloExercicesPage, title: 'Intégrales & π par Monte-Carlo - Exercices' },
   { path: '/formation/oteria/integrales-monte-carlo-flashcards', component: OteriaIntegralesMonteCarloFlashcardsPage, title: 'Analyse de lois & Monte Carlo - Flashcards' },
+  { path: '/formation/oteria/integrales-monte-carlo-qcm', component: OteriaIntegralesMonteCarloQCMPage, title: 'Intégrales & π par Monte-Carlo - QCM', protected: true },
 
   // Références Python
   { path: '/formation/oteria/python-references', component: OteriaPythonReferencesPage, title: 'Références Python - NumPy & Matplotlib' },

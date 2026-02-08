@@ -1,33 +1,13 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import React from 'react';
+import { OteriaChapterTemplate } from '@/components/formation/OteriaChapterTemplate';
 import {
-  Home,
-  ChevronRight,
-  ArrowLeft,
-  BookOpen,
-  Target,
-  Zap,
-  Code,
-  Calculator,
-  CheckCircle,
-  XCircle,
-  Eye,
-  EyeOff
-} from 'lucide-react';
+  ExerciseBlock,
+  CodeBlock,
+  WarningBlock
+} from '@/components/formation/AcademicBlocks';
+import { Badge } from "@/components/ui/badge";
 
 const OteriaPythonBasesExercicesPage = () => {
-  const [showSolutions, setShowSolutions] = useState<{ [key: number]: boolean }>({});
-
-  const toggleSolution = (exerciseId: number) => {
-    setShowSolutions(prev => ({
-      ...prev,
-      [exerciseId]: !prev[exerciseId]
-    }));
-  };
-
   const exercises = [
     {
       id: 1,
@@ -297,218 +277,90 @@ else:
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-teal-50">
-      {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-teal-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-teal-700 transition-colors">
-              <Home className="h-3 w-3" />
-              <span>Accueil</span>
-            </Link>
-            <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
-            <Link to="/articles" className="hover:text-teal-700 transition-colors">
-              Niveau
-            </Link>
-            <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
-            <Link to="/articles/oteria-cyber-school" className="hover:text-teal-700 transition-colors">
-              OTERIA Cyber School
-            </Link>
-            <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
-            <span className="text-teal-600 font-medium">Chapitre 2 - Exercices</span>
-          </div>
-        </div>
-      </nav>
+    <OteriaChapterTemplate
+      sessionNumber={2}
+      sessionTitle="Bases de Python & Algorithmique"
+      description="Mettez en pratique les concepts Python avec ces exercices progressifs"
+      slug="python-bases"
+      activeSection="exercises"
+      duration="4h"
+      level="Débutant"
+    >
+      <div className="space-y-8 max-w-none text-slate-700">
 
-      <div className="container mx-auto py-8 px-4 relative z-10">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center">
-              <Calculator className="h-8 w-8 text-teal-600" />
+        {/* ─── OBJECTIFS ────────────────────────────────────────────── */}
+        <div className="bg-slate-50 border border-slate-100 rounded-lg p-6 mb-8">
+          <h2 className="text-lg font-bold text-slate-900 mb-4">Objectifs de la séance</h2>
+          <ul className="list-disc list-inside space-y-2 text-sm text-slate-700">
+            <li>Manipuler les variables et les types (int, float, bool, str)</li>
+            <li>Utiliser les structures de contrôle (if/else, boucles for/while)</li>
+            <li>Manipuler les listes et leurs méthodes principales</li>
+            <li>Définir et utiliser des fonctions simples</li>
+            <li>Importer et utiliser des modules (math, random)</li>
+          </ul>
+        </div>
+
+        {/* ─── LISTE DES EXERCICES ──────────────────────────────────── */}
+        {exercises.map((exercise) => (
+          <ExerciseBlock
+            key={exercise.id}
+            number={exercise.id.toString()}
+            title={exercise.title}
+            solution={
+              <CodeBlock
+                code={exercise.solution}
+                title={`Solution : ${exercise.title}`}
+                language="python"
+              />
+            }
+          >
+            <div className="mb-4">
+              <Badge
+                className={`${exercise.difficulty === 'Facile' ? 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200' :
+                  exercise.difficulty === 'Moyen' ? 'bg-amber-100 text-amber-800 hover:bg-amber-200' :
+                    'bg-rose-100 text-rose-800 hover:bg-rose-200'
+                  } mb-2`}
+                variant="secondary"
+              >
+                {exercise.difficulty}
+              </Badge>
+              <p className="text-slate-700 leading-relaxed">{exercise.description}</p>
             </div>
-          </div>
-          <h1 className="text-3xl font-bold mb-4 text-teal-900">Chapitre 2 : Exercices - Bases de Python</h1>
-          <p className="text-lg text-blue-800 max-w-3xl mx-auto mb-6">
-            Mettez en pratique les concepts Python avec ces exercices progressifs
-          </p>
+          </ExerciseBlock>
+        ))}
 
-          {/* Informations de chapitre */}
-          <div className="max-w-2xl mx-auto mb-6">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 shadow-sm">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                <div className="flex flex-col items-center">
-                  <span className="text-sm text-blue-600 font-medium mb-1">Chapitre</span>
-                  <span className="text-2xl font-bold text-blue-900">2</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <span className="text-sm text-blue-600 font-medium mb-1">Nombre d'exercices</span>
-                  <span className="text-2xl font-bold text-blue-900">16</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <span className="text-sm text-blue-600 font-medium mb-1">Niveau</span>
-                  <span className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-                    🟢 Débutant
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* ─── WARNINGS ─────────────────────────────────────────────── */}
+        <WarningBlock title="Erreurs fréquentes à éviter">
+          <ul className="list-none space-y-3">
+            <li className="flex gap-2">
+              <span className="text-red-500 font-bold">×</span>
+              <span>
+                Oublier l'indentation (4 espaces) qui définit les blocs de code en Python.
+              </span>
+            </li>
+            <li className="flex gap-2">
+              <span className="text-red-500 font-bold">×</span>
+              <span>
+                Confondre l'opérateur d'affectation <code>=</code> avec l'opérateur de comparaison <code>==</code>.
+              </span>
+            </li>
+            <li className="flex gap-2">
+              <span className="text-red-500 font-bold">×</span>
+              <span>
+                Oublier que les indices de liste commencent à 0 (le premier élément est <code>L[0]</code>).
+              </span>
+            </li>
+            <li className="flex gap-2">
+              <span className="text-red-500 font-bold">×</span>
+              <span>
+                Tenter d'additionner des types incompatibles (ex: <code>"Age: " + 18</code> donne une erreur, il faut convertir : <code>"Age: " + str(18)</code>).
+              </span>
+            </li>
+          </ul>
+        </WarningBlock>
 
-          <div className="flex gap-3 justify-center flex-wrap">
-            <Link to="/formation/oteria/python-bases-cours">
-              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                <BookOpen className="h-4 w-4" />
-                Cours
-              </button>
-            </Link>
-            <Link to="/formation/oteria/python-bases-flashcards">
-              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                <Target className="h-4 w-4" />
-                Flashcards
-              </button>
-            </Link>
-            <Link to="/formation/oteria/python-bases-qcm">
-              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                <Zap className="h-4 w-4" />
-                QCM
-              </button>
-            </Link>
-            <Link to="/articles/oteria-cyber-school">
-              <button className="inline-flex items-center gap-2 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors">
-                <ArrowLeft className="h-4 w-4" />
-                Retour au programme
-              </button>
-            </Link>
-          </div>
-        </div>
-
-        {/* Liste des exercices */}
-        <div className="max-w-4xl mx-auto">
-          {exercises.map((exercise) => (
-            <Card key={exercise.id} className="mb-6 border border-blue-200 shadow-lg">
-              <CardContent className="p-6">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h3 className="text-xl font-bold text-blue-900 mb-2">
-                      Exercice {exercise.id} : {exercise.title}
-                    </h3>
-                    <Badge
-                      className={`${
-                        exercise.difficulty === 'Facile' ? 'bg-green-100 text-green-800' :
-                        exercise.difficulty === 'Moyen' ? 'bg-yellow-100 text-yellow-800' :
-                        'bg-red-100 text-red-800'
-                      }`}
-                    >
-                      {exercise.difficulty}
-                    </Badge>
-                  </div>
-                  <Button
-                    onClick={() => toggleSolution(exercise.id)}
-                    variant="outline"
-                    className="flex items-center gap-2"
-                  >
-                    {showSolutions[exercise.id] ? (
-                      <>
-                        <EyeOff className="h-4 w-4" />
-                        Masquer
-                      </>
-                    ) : (
-                      <>
-                        <Eye className="h-4 w-4" />
-                        Solution
-                      </>
-                    )}
-                  </Button>
-                </div>
-
-                <div className="mb-4">
-                  <p className="text-gray-800 leading-relaxed">{exercise.description}</p>
-                </div>
-
-                {showSolutions[exercise.id] && (
-                  <div className="mt-4 pt-4 border-t border-gray-200">
-                    <h4 className="font-semibold text-green-800 mb-3 flex items-center gap-2">
-                      <CheckCircle className="h-5 w-5" />
-                      Solution proposée :
-                    </h4>
-                    <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-green-500">
-                      <pre className="text-sm text-gray-800 overflow-x-auto whitespace-pre-wrap">
-                        {exercise.solution}
-                      </pre>
-                    </div>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Section méthodologie */}
-        <div className="max-w-4xl mx-auto mt-12">
-          <Card className="border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-teal-50 shadow-lg">
-            <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-blue-900 mb-4">Méthodologie de résolution</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-3">
-                  <h4 className="font-semibold text-blue-800">Plan de résolution :</h4>
-                  <ul className="text-sm text-blue-700 space-y-1">
-                    <li>• <strong>Lire attentivement</strong> l'énoncé</li>
-                    <li>• <strong>Identifier</strong> les variables nécessaires</li>
-                    <li>• <strong>Choisir</strong> la structure appropriée (boucle, condition)</li>
-                    <li>• <strong>Tester</strong> avec des valeurs simples</li>
-                  </ul>
-                </div>
-                <div className="space-y-3">
-                  <h4 className="font-semibold text-blue-800">Erreurs fréquentes :</h4>
-                  <ul className="text-sm text-blue-700 space-y-1">
-                    <li>• Oublier l'indentation (4 espaces)</li>
-                    <li>• Confusion entre = et ==</li>
-                    <li>• Indices de listes commençant à 0</li>
-                    <li>• Types incompatibles dans les opérations</li>
-                  </ul>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Navigation finale */}
-        <div className="flex justify-between items-center bg-blue-50 p-6 rounded-lg mt-8">
-          <Link to="/formation/oteria/logique-fondamentale-exercices">
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
-              ← Chapitre 1
-            </button>
-          </Link>
-          <div className="flex gap-3">
-            <Link to="/formation/oteria/python-bases-cours">
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                <BookOpen className="h-4 w-4" />
-                Cours
-              </button>
-            </Link>
-            <Link to="/formation/oteria/python-bases-flashcards">
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                <Target className="h-4 w-4" />
-                Flashcards
-              </button>
-            </Link>
-            <Link to="/formation/oteria/python-bases-qcm">
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-                <Zap className="h-4 w-4" />
-                QCM
-              </button>
-            </Link>
-            <Link to="/articles/oteria-cyber-school">
-              <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
-                Retour au programme
-              </button>
-            </Link>
-          </div>
-          <div className="text-blue-600 font-medium">Chapitre suivant →</div>
-        </div>
       </div>
-    </div>
+    </OteriaChapterTemplate>
   );
 };
 

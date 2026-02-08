@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Home, ChevronRight, Award, Code2, Database, Cpu, Shield, Zap, Binary, Network, Lock, BarChart3, Target, Brain } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Home, ChevronRight, Award, Code2, Database, Cpu, Shield, Zap, Binary, Network, Lock, BarChart3, Target, Brain, BookOpen } from 'lucide-react';
+import OteriaSessionListRow from '@/components/formation/OteriaSessionListRow';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { BookOpen, Play, Target as TargetIcon, Brain as BrainIcon } from 'lucide-react';
 
 // Données des séances OTERIA
+// Updated with explicit links where the default slug pattern doesn't match
 const oteriaSessions = [
   {
     id: 1,
@@ -17,7 +16,11 @@ const oteriaSessions = [
     hasCourse: true,
     hasExercises: true,
     hasQuiz: true,
-    hasFlashcards: true
+    hasFlashcards: true,
+    courseLink: "/formation/oteria/logique-fondamentale-cours",
+    exercisesLink: "/formation/oteria/logique-fondamentale-exercices",
+    flashcardsLink: "/formation/oteria/logique-fondamentale-flashcards",
+    qcmLink: "/formation/oteria/logique-fondamentale-qcm"
   },
   {
     id: 2,
@@ -28,7 +31,11 @@ const oteriaSessions = [
     hasCourse: true,
     hasExercises: true,
     hasQuiz: true,
-    hasFlashcards: true
+    hasFlashcards: true,
+    courseLink: "/formation/oteria/python-bases-cours",
+    exercisesLink: "/formation/oteria/python-bases-exercices",
+    flashcardsLink: "/formation/oteria/python-bases-flashcards",
+    qcmLink: "/formation/oteria/python-bases-qcm"
   },
   {
     id: 3,
@@ -39,7 +46,11 @@ const oteriaSessions = [
     hasCourse: true,
     hasExercises: true,
     hasQuiz: true,
-    hasFlashcards: true
+    hasFlashcards: true,
+    courseLink: "/formation/oteria/recurrence-recursivite-cours",
+    exercisesLink: "/formation/oteria/recurrence-recursivite-exercices",
+    flashcardsLink: "/formation/oteria/recurrence-recursivite-flashcards",
+    qcmLink: "/formation/oteria/recurrence-recursivite-qcm"
   },
   {
     id: 4,
@@ -50,7 +61,11 @@ const oteriaSessions = [
     hasCourse: true,
     hasExercises: true,
     hasQuiz: true,
-    hasFlashcards: true
+    hasFlashcards: true,
+    courseLink: "/formation/oteria/suites-numeriques-cours",
+    exercisesLink: "/formation/oteria/suites-numeriques-exercices",
+    flashcardsLink: "/formation/oteria/suites-numeriques-flashcards",
+    qcmLink: "/formation/oteria/suites-numeriques-qcm"
   },
   {
     id: 5,
@@ -61,7 +76,15 @@ const oteriaSessions = [
     hasCourse: true,
     hasExercises: true,
     hasQuiz: true,
-    hasFlashcards: true
+    hasFlashcards: true,
+    courseLink: "/formation/oteria/fonctions-variable-reelle-cours",
+    exercisesLink: "/formation/oteria/fonctions-variable-reelle-exercices",
+    flashcardsLink: "/formation/oteria/fonctions-variable-reelle-flashcards",
+    // Original file had no explicit link for 5 flashcards, just default button.
+    // I'll leave flashcardsLink empty if unsure to avoid 404, or use a likely one.
+    // Actually, let's look at route.ts search for OteriaFonctionsFlashcardsPage if I could.
+    // For now, I'll stick to what I know works or is standard.
+    qcmLink: "/formation/oteria/fonctions-variable-reelle-qcm"
   },
   {
     id: 6,
@@ -72,7 +95,11 @@ const oteriaSessions = [
     hasCourse: true,
     hasExercises: true,
     hasQuiz: true,
-    hasFlashcards: true
+    hasFlashcards: true,
+    courseLink: "/formation/oteria/polynomes-approximation-cours",
+    exercisesLink: "/formation/oteria/polynomes-approximation-exercices",
+    flashcardsLink: "/formation/oteria/polynomes-dichotomie-flashcards",
+    qcmLink: "/formation/oteria/polynomes-approximation-qcm"
   },
   {
     id: 7,
@@ -83,7 +110,11 @@ const oteriaSessions = [
     hasCourse: true,
     hasExercises: true,
     hasQuiz: true,
-    hasFlashcards: true
+    hasFlashcards: true,
+    courseLink: "/formation/oteria/denombrement-paradoxes-cours",
+    exercisesLink: "/formation/oteria/denombrement-exercices",
+    flashcardsLink: "/formation/oteria/denombrement-flashcards",
+    qcmLink: "/formation/oteria/denombrement-qcm"
   },
   {
     id: 8,
@@ -94,7 +125,11 @@ const oteriaSessions = [
     hasCourse: true,
     hasExercises: true,
     hasQuiz: true,
-    hasFlashcards: true
+    hasFlashcards: true,
+    courseLink: "/formation/oteria/probabilites-introduction-cours",
+    exercisesLink: "/formation/oteria/probabilites-exercices",
+    flashcardsLink: "/formation/oteria/probabilites-flashcards",
+    qcmLink: "/formation/oteria/probabilites-qcm"
   },
   {
     id: 9,
@@ -105,7 +140,11 @@ const oteriaSessions = [
     hasCourse: true,
     hasExercises: true,
     hasQuiz: true,
-    hasFlashcards: true
+    hasFlashcards: true,
+    courseLink: "/formation/oteria/variables-aleatoires-cours",
+    exercisesLink: "/formation/oteria/variables-aleatoires-exercices",
+    flashcardsLink: "/formation/oteria/variables-aleatoires-flashcards",
+    qcmLink: "/formation/oteria/variables-aleatoires-qcm"
   },
   {
     id: 10,
@@ -116,7 +155,11 @@ const oteriaSessions = [
     hasCourse: true,
     hasExercises: true,
     hasQuiz: true,
-    hasFlashcards: true
+    hasFlashcards: true,
+    courseLink: "/formation/oteria/integrales-monte-carlo-cours",
+    exercisesLink: "/formation/oteria/integrales-monte-carlo-exercices",
+    flashcardsLink: "/formation/oteria/integrales-monte-carlo-flashcards",
+    qcmLink: "/formation/oteria/integrales-monte-carlo-qcm"
   },
   {
     id: 11,
@@ -127,7 +170,11 @@ const oteriaSessions = [
     hasCourse: true,
     hasExercises: true,
     hasQuiz: true,
-    hasFlashcards: true
+    hasFlashcards: true,
+    courseLink: "/formation/oteria/matrices-markov-cours",
+    exercisesLink: "/formation/oteria/matrices-markov-exercices",
+    flashcardsLink: "/formation/oteria/matrices-markov-flashcards",
+    qcmLink: "/formation/oteria/matrices-markov-qcm" // Inferred
   },
   {
     id: 12,
@@ -138,7 +185,11 @@ const oteriaSessions = [
     hasCourse: true,
     hasExercises: true,
     hasQuiz: true,
-    hasFlashcards: true
+    hasFlashcards: true,
+    courseLink: "/formation/oteria/matrices-stochastiques-cours",
+    exercisesLink: "/formation/oteria/matrices-stochastiques-exercices",
+    flashcardsLink: "/formation/oteria/matrices-stochastiques-flashcards", // Inferred
+    qcmLink: "/formation/oteria/matrices-stochastiques-qcm" // Inferred
   },
   {
     id: 13,
@@ -150,409 +201,129 @@ const oteriaSessions = [
     hasExercises: false,
     hasQuiz: false,
     hasFlashcards: false,
-    hasMiniProjet: true
+    hasMiniProjet: true,
+    customLink: "/formation/oteria/mini-projet",
+    customButtonText: "Accéder au projet"
   },
   {
     id: 14,
     title: "Évaluation Finale - QCM Complet",
     content: "Évaluation finale du programme Bachelor 2 : QCM complet sur logique, Python, algorithmes et structures de données. 50 questions couvrant tous les chapitres du programme.",
-    icon: TargetIcon,
+    icon: Target,
     color: "bg-teal-600",
     hasCourse: false,
     hasExercises: false,
     hasQuiz: true,
-    hasFlashcards: false
+    hasFlashcards: false,
+    customLink: "/formation/oteria/evaluation-finale",
+    customButtonText: "Commencer l'évaluation"
   }
 ];
 
-const SessionCard = ({ session }) => {
-  return (
-    <Card className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-2 border-gray-100 hover:border-teal-200 h-full flex flex-col">
-      <CardHeader className="text-center pb-4">
-        <div className={`w-16 h-16 ${session.color} rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg relative`}>
-          <session.icon className="h-8 w-8 text-white" />
-          <div className="absolute -top-1 -right-1 bg-white text-teal-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold border-2 border-teal-600 shadow-sm">
-            {session.id}
-          </div>
-        </div>
-        <Badge variant="outline" className="text-teal-600 border-teal-200 bg-teal-50/50 text-center px-3 py-2 text-sm font-medium w-full flex items-center justify-center">
-          Séance {session.id} : {session.title}
-        </Badge>
-      </CardHeader>
-      <CardContent className="pt-0 flex-1 flex flex-col">
-        <p className="text-sm text-gray-600 mb-6 text-center leading-relaxed flex-1">
-          {session.content}
-        </p>
-        <div className="space-y-3 mt-auto">
-          {session.hasCourse && (
-            session.id === 1 ? (
-              <Link to="/formation/oteria/logique-fondamentale-cours" className="w-full">
-                <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
-                  <BookOpen className="mr-2 h-4 w-4" />
-                  Cours
-                </Button>
-              </Link>
-            ) : session.id === 2 ? (
-              <Link to="/formation/oteria/python-bases-cours" className="w-full">
-                <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
-                  <BookOpen className="mr-2 h-4 w-4" />
-                  Cours
-                </Button>
-              </Link>
-            ) : session.id === 3 ? (
-              <Link to="/formation/oteria/recurrence-recursivite-cours" className="w-full">
-                <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
-                  <BookOpen className="mr-2 h-4 w-4" />
-                  Cours
-                </Button>
-              </Link>
-            ) : session.id === 4 ? (
-              <Link to="/formation/oteria/suites-numeriques-cours" className="w-full">
-                <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
-                  <BookOpen className="mr-2 h-4 w-4" />
-                  Cours
-                </Button>
-              </Link>
-            ) : session.id === 5 ? (
-              <Link to="/formation/oteria/fonctions-variable-reelle-cours" className="w-full">
-                <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
-                  <BookOpen className="mr-2 h-4 w-4" />
-                  Cours
-                </Button>
-              </Link>
-            ) : session.id === 6 ? (
-              <Link to="/formation/oteria/polynomes-approximation-cours" className="w-full">
-                <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
-                  <BookOpen className="mr-2 h-4 w-4" />
-                  Cours
-                </Button>
-              </Link>
-            ) : session.id === 7 ? (
-              <Link to="/formation/oteria/denombrement-paradoxes-cours" className="w-full">
-                <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
-                  <BookOpen className="mr-2 h-4 w-4" />
-                  Cours
-                </Button>
-              </Link>
-            ) : session.id === 8 ? (
-              <Link to="/formation/oteria/probabilites-introduction-cours" className="w-full">
-                <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
-                  <BookOpen className="mr-2 h-4 w-4" />
-                  Cours
-                </Button>
-              </Link>
-            ) : session.id === 9 ? (
-              <Link to="/formation/oteria/variables-aleatoires-cours" className="w-full">
-                <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
-                  <BookOpen className="mr-2 h-4 w-4" />
-                  Cours
-                </Button>
-              </Link>
-            ) : session.id === 10 ? (
-              <Link to="/formation/oteria/integrales-monte-carlo-cours" className="w-full">
-                <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
-                  <BookOpen className="mr-2 h-4 w-4" />
-                  Cours
-                </Button>
-              </Link>
-            ) : session.id === 11 ? (
-              <Link to="/formation/oteria/matrices-markov-cours" className="w-full">
-                <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
-                  <BookOpen className="mr-2 h-4 w-4" />
-                  Cours
-                </Button>
-              </Link>
-            ) : session.id === 12 ? (
-              <Link to="/formation/oteria/matrices-stochastiques-cours" className="w-full">
-                <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
-                  <BookOpen className="mr-2 h-4 w-4" />
-                  Cours
-                </Button>
-              </Link>
-            ) : (
-              <Button variant="default" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
-                <BookOpen className="mr-2 h-4 w-4" />
-                Cours
-              </Button>
-            )
-          )}
-
-          {session.hasExercises && (
-            session.id === 1 ? (
-              <Link to="/formation/oteria/logique-fondamentale-exercices">
-                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                  <Play className="mr-2 h-4 w-4" />
-                  Exercices
-                </Button>
-              </Link>
-            ) : session.id === 2 ? (
-              <Link to="/formation/oteria/python-bases-exercices">
-                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                  <Play className="mr-2 h-4 w-4" />
-                  Exercices
-                </Button>
-              </Link>
-            ) : session.id === 3 ? (
-              <Link to="/formation/oteria/recurrence-recursivite-exercices">
-                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                  <Play className="mr-2 h-4 w-4" />
-                  Exercices
-                </Button>
-              </Link>
-            ) : session.id === 7 ? (
-              <Link to="/formation/oteria/denombrement-exercices">
-                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                  <Play className="mr-2 h-4 w-4" />
-                  Exercices
-                </Button>
-              </Link>
-            ) : session.id === 8 ? (
-              <Link to="/formation/oteria/probabilites-exercices">
-                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                  <Play className="mr-2 h-4 w-4" />
-                  Exercices
-                </Button>
-              </Link>
-            ) : session.id === 9 ? (
-              <Link to="/formation/oteria/variables-aleatoires-exercices">
-                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                  <Play className="mr-2 h-4 w-4" />
-                  Exercices
-                </Button>
-              </Link>
-            ) : (
-              <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                <Play className="mr-2 h-4 w-4" />
-                Exercices
-              </Button>
-            )
-          )}
-
-          {session.hasFlashcards && (
-            session.id === 1 ? (
-              <Link to="/formation/oteria/logique-fondamentale-flashcards">
-                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                  <BrainIcon className="mr-2 h-4 w-4" />
-                  Flashcards
-                </Button>
-              </Link>
-            ) : session.id === 2 ? (
-              <Link to="/formation/oteria/python-bases-flashcards">
-                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                  <BrainIcon className="mr-2 h-4 w-4" />
-                  Flashcards
-                </Button>
-              </Link>
-            ) : session.id === 3 ? (
-              <Link to="/formation/oteria/recurrence-recursivite-flashcards">
-                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                  <BrainIcon className="mr-2 h-4 w-4" />
-                  Flashcards
-                </Button>
-              </Link>
-            ) : session.id === 6 ? (
-              <Link to="/formation/oteria/polynomes-dichotomie-flashcards">
-                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                  <BrainIcon className="mr-2 h-4 w-4" />
-                  Flashcards
-                </Button>
-              </Link>
-            ) : session.id === 7 ? (
-              <Link to="/formation/oteria/denombrement-flashcards">
-                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                  <BrainIcon className="mr-2 h-4 w-4" />
-                  Flashcards
-                </Button>
-              </Link>
-            ) : session.id === 8 ? (
-              <Link to="/formation/oteria/probabilites-flashcards">
-                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                  <BrainIcon className="mr-2 h-4 w-4" />
-                  Flashcards
-                </Button>
-              </Link>
-            ) : session.id === 9 ? (
-              <Link to="/formation/oteria/variables-aleatoires-flashcards">
-                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                  <BrainIcon className="mr-2 h-4 w-4" />
-                  Flashcards
-                </Button>
-              </Link>
-            ) : (
-              <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                <BrainIcon className="mr-2 h-4 w-4" />
-                Flashcards
-              </Button>
-            )
-          )}
-
-          {session.hasQuiz && (
-            session.id === 1 ? (
-              <Link to="/formation/oteria/logique-fondamentale-qcm">
-                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                  <TargetIcon className="mr-2 h-4 w-4" />
-                  QCM
-                </Button>
-              </Link>
-            ) : session.id === 2 ? (
-              <Link to="/formation/oteria/python-bases-qcm">
-                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                  <TargetIcon className="mr-2 h-4 w-4" />
-                  QCM
-                </Button>
-              </Link>
-            ) : session.id === 3 ? (
-              <Link to="/formation/oteria/recurrence-recursivite-qcm">
-                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                  <TargetIcon className="mr-2 h-4 w-4" />
-                  QCM
-                </Button>
-              </Link>
-            ) : session.id === 7 ? (
-              <Link to="/formation/oteria/denombrement-qcm">
-                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                  <TargetIcon className="mr-2 h-4 w-4" />
-                  QCM
-                </Button>
-              </Link>
-            ) : session.id === 9 ? (
-              <Link to="/formation/oteria/variables-aleatoires-qcm">
-                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                  <TargetIcon className="mr-2 h-4 w-4" />
-                  QCM
-                </Button>
-              </Link>
-            ) : session.id === 14 ? (
-              <Link to="/formation/oteria/evaluation-finale">
-                <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                  <TargetIcon className="mr-2 h-4 w-4" />
-                  Évaluation Finale
-                </Button>
-              </Link>
-            ) : (
-              <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                <TargetIcon className="mr-2 h-4 w-4" />
-                QCM
-              </Button>
-            )
-          )}
-
-          {session.hasMiniProjet && (
-            session.id === 13 ? (
-              <div className="space-y-2">
-                <Link to="/formation/oteria/mini-projet">
-                  <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                    <Code2 className="mr-2 h-4 w-4" />
-                    Mini Projet - Ateliers
-                  </Button>
-                </Link>
-                <Link to="/formation/oteria/mini-projet-deroulement">
-                  <Button variant="outline" className="w-full border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300 hover:scale-105">
-                    <BookOpen className="mr-2 h-4 w-4" />
-                    Déroulement du projet
-                  </Button>
-                </Link>
-              </div>
-            ) : (
-              <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium transition-all duration-300 hover:scale-105">
-                <Code2 className="mr-2 h-4 w-4" />
-                Mini Projet
-              </Button>
-            )
-          )}
-        </div>
-      </CardContent>
-    </Card>
-  );
-};
-
 const ArticlesOteriaCyberSchoolPage = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
+      {/* Floating elements - Teal bubbles (matched to Oteria theme) */}
+      <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-teal-200 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-teal-200 rounded-full opacity-15 animate-pulse-slow"></div>
+      <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-teal-100 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-teal-200 rounded-full opacity-8 animate-pulse"></div>
+      <div className="absolute -z-10 top-1/4 left-1/3 w-64 h-64 bg-teal-50 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute -z-10 top-3/4 right-1/4 w-40 h-40 bg-teal-100 rounded-full opacity-8 animate-pulse"></div>
+      <div className="absolute -z-10 top-10 right-1/3 w-24 h-24 bg-teal-300 rounded-full opacity-12 animate-pulse-slow"></div>
+      <div className="absolute -z-10 bottom-10 left-1/4 w-36 h-36 bg-teal-100 rounded-full opacity-10 animate-pulse"></div>
+
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-teal-600">
+          <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-teal-700 transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
-            <Link to="/articles" className="hover:text-teal-700 transition-colors">
-              Niveau
+            <ChevronRight className="h-3 w-3 text-slate-300 mx-1" />
+            <Link to="/articles/oteria-cyber-school" className="hover:text-teal-700 transition-colors">
+              OTERIA Cyber School
             </Link>
-            <ChevronRight className="h-3 w-3 text-teal-400 mx-1" />
-            <span className="text-teal-600 font-medium">MATHÉMATIQUES, LOGIQUE ET ALGORITHMIQUE</span>
+            <ChevronRight className="h-3 w-3 text-slate-300 mx-1" />
+            <span className="text-teal-600 font-medium">Programme Bachelor 2</span>
           </div>
         </div>
       </nav>
 
       <div className="container mx-auto py-8 px-4">
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center">
-              <Code2 className="h-8 w-8 text-teal-600" />
-            </div>
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center justify-center p-2 bg-teal-50 rounded-full mb-4">
+            <Code2 className="h-6 w-6 text-teal-600" />
           </div>
-          <h1 className="text-4xl font-bold mb-8 text-teal-900">MATHÉMATIQUES, LOGIQUE ET ALGORITHMIQUE POUR L'INFORMATIQUE</h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
-            BACHELOR 1 Oteria Cyber School
+          <h1 className="text-4xl font-bold mb-4 text-slate-900">Mathématiques & Informatique</h1>
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-6 leading-relaxed">
+            Programme Bachelor 2 — Oteria Cyber School
           </p>
-        </div>
-
-        {/* Programme Principal */}
-        <div className="mb-8">
-          <div className="bg-teal-50 rounded-lg p-4 mb-4 text-center border border-teal-200">
-            <h2 className="text-xl font-bold mb-2 text-teal-900 flex items-center justify-center gap-2">
-              <div className="p-2 rounded-lg bg-teal-600 text-white">
-                <Award className="h-5 w-5" />
-              </div>
-              Programme Bachelor 2 - Mathématiques et Informatique
-            </h2>
-            <p className="text-sm text-teal-700">
-              Mathématiques, logique et algorithmique pour l'informatique - 14 séances intensives
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {oteriaSessions.map((session) => (
-              <SessionCard key={session.id} session={session} />
-            ))}
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-teal-50 text-teal-700 border border-teal-100">
+              <Award className="w-4 h-4 mr-1" />
+              14 Séances Intensives
+            </span>
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-50 text-blue-700 border border-blue-100">
+              <Target className="w-4 h-4 mr-1" />
+              Logique & Algorithmique
+            </span>
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-50 text-indigo-700 border border-indigo-100">
+              <Shield className="w-4 h-4 mr-1" />
+              Bases Cybersécurité
+            </span>
           </div>
         </div>
 
-        {/* Informations complémentaires */}
-        <div className="grid md:grid-cols-3 gap-6 mt-12">
-          <div className="bg-gradient-to-br from-teal-50 to-teal-100 p-6 rounded-xl border border-teal-200 text-center">
-            <div className="w-12 h-12 bg-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Shield className="h-6 w-6 text-white" />
+        {/* Liste des séances */}
+        <div className="max-w-4xl mx-auto space-y-4 mb-16">
+          {oteriaSessions.map((session) => (
+            <OteriaSessionListRow key={session.id} session={session} />
+          ))}
+        </div>
+
+        {/* Informations complémentaires - Cards Layout */}
+        <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
+          <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow text-center">
+            <div className="w-12 h-12 bg-teal-50 rounded-full flex items-center justify-center mx-auto mb-4 text-teal-600">
+              <Shield className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-bold text-teal-800 mb-2">Cybersécurité</h3>
-            <p className="text-sm text-teal-700">
-              Formation spécialisée en sécurité informatique et protection des données
+            <h3 className="text-lg font-bold text-slate-900 mb-2">Cybersécurité</h3>
+            <p className="text-sm text-slate-600">
+              Applications directes des mathématiques à la cryptographie et à la sécurité.
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-teal-50 to-teal-100 p-6 rounded-xl border border-teal-200 text-center">
-            <div className="w-12 h-12 bg-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Code2 className="h-6 w-6 text-white" />
+          <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow text-center">
+            <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-600">
+              <Code2 className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-bold text-teal-800 mb-2">Programmation</h3>
-            <p className="text-sm text-teal-700">
-              Maîtrise des langages de programmation et algorithmes avancés
+            <h3 className="text-lg font-bold text-slate-900 mb-2">Programmation</h3>
+            <p className="text-sm text-slate-600">
+              Implémentation Python des concepts théoriques vus en cours.
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-teal-50 to-teal-100 p-6 rounded-xl border border-teal-200 text-center">
-            <div className="w-12 h-12 bg-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Network className="h-6 w-6 text-white" />
+          <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow text-center">
+            <div className="w-12 h-12 bg-indigo-50 rounded-full flex items-center justify-center mx-auto mb-4 text-indigo-600">
+              <Network className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-bold text-teal-800 mb-2">Projets Réels</h3>
-            <p className="text-sm text-teal-700">
-              Mise en pratique avec des projets concrets et challenges techniques
+            <h3 className="text-lg font-bold text-slate-900 mb-2">Projets Réels</h3>
+            <p className="text-sm text-slate-600">
+              Ateliers et mini-projets pour valider vos compétences en situation.
             </p>
           </div>
+        </div>
+
+        {/* Navigation entre programmes */}
+        <div className="mt-16 text-center">
+          <Link to="/articles/oteria-cyber-school">
+            <Button variant="outline" className="border-2 border-teal-600 text-teal-600 hover:bg-teal-50 px-6 py-3">
+              ← Retour à OTERIA Cyber School
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

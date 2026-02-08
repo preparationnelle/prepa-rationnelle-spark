@@ -36,11 +36,23 @@ export const useStudyTime = (): StudyTimeData => {
 
     // Create a new session
     const createSession = useCallback(async () => {
-        if (!currentUser?.id) return;
+        console.log('🔍 createSession called, currentUser:', currentUser);
+        console.log('🔍 currentUser.id:', currentUser?.id);
+
+        if (!currentUser?.id) {
+            console.warn('⚠️ Cannot create session: currentUser.id is null/undefined');
+            return;
+        }
 
         const now = new Date();
         const weekNumber = getWeekNumber(now);
         const year = now.getFullYear();
+
+        console.log('📝 Attempting to INSERT session:', {
+            user_id: currentUser.id,
+            week_number: weekNumber,
+            year
+        });
 
         try {
             const { data, error } = await (supabase as any)
@@ -56,15 +68,17 @@ export const useStudyTime = (): StudyTimeData => {
                 .single();
 
             if (error) {
-                console.error('Error creating session:', error);
+                console.error('❌ Error creating session:', error);
+                console.error('❌ Error details:', JSON.stringify(error, null, 2));
                 return;
             }
 
+            console.log('✅ Session created successfully:', data);
             sessionIdRef.current = data.id;
             setIsTracking(true);
             setCurrentSessionSeconds(0);
         } catch (err) {
-            console.error('Failed to create session:', err);
+            console.error('❌ Failed to create session:', err);
         }
     }, [currentUser?.id]);
 
