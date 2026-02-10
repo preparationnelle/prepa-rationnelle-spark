@@ -1,361 +1,179 @@
-import React, { useEffect, useRef } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import React, { useEffect } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { Link } from 'react-router-dom';
-import { Youtube, Target, TrendingUp, Brain, Code, Star, Users, Calendar, CheckCircle, BookOpen, Play, Home, ChevronRight } from 'lucide-react';
+import { ChevronRight, Home, Terminal, BookOpen, Clock, TrendingUp, Award, ArrowRight } from 'lucide-react';
 import { useProgress } from '@/context/ProgressContext';
 import PythonNavigationTabs from '@/components/formation/PythonNavigationTabs';
 
 const PourquoiPythonPrepaECGPage = () => {
   const { trackPageVisit } = useProgress();
-  const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
     trackPageVisit('python-article');
   }, [trackPageVisit]);
 
-  useEffect(() => {
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
-          }
-        });
-      },
-      { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
-    );
-
-    const elements = document.querySelectorAll('.fade-in-up, .fade-in, .scale-in');
-    elements.forEach((el) => {
-      observerRef.current?.observe(el);
-      // Force l'animation pour les éléments déjà visibles
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        el.classList.add('animate-in');
-      }
-    });
-
-    return () => observerRef.current?.disconnect();
-  }, []);
-
   return (
-    <div className="min-h-screen bg-[#F8FAFF]">
+    <div className="min-h-screen bg-white">
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <Home className="h-3 w-3" />
+      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex items-center text-sm text-gray-500">
+            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+              <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formations" className="hover:text-foreground transition-colors">
-              Toutes les formations
+            <ChevronRight className="h-3.5 w-3.5 mx-1" />
+            <Link to="/formations" className="hover:text-gray-900 transition-colors">
+              Formations
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Formation <span className="text-orange-600">Python</span> ECG</span>
+            <ChevronRight className="h-3.5 w-3.5 mx-1" />
+            <span className="text-gray-900 font-medium">Python</span>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto py-8 px-4">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-3 mb-4 p-6 rounded-2xl bg-white border border-gray-200 shadow-sm fade-in-up">
-            <Brain className="h-8 w-8 text-blue-600" />
-            <h1 className="text-4xl font-bold text-gray-900">
-              Pourquoi travailler Python en prépa ECG
-            </h1>
-          </div>
-          <p className="text-lg text-gray-600 mb-6 fade-in-up" style={{ animationDelay: '0.1s' }}>
-            (et pourquoi notre formation est ta meilleure option)
+      <div className="container mx-auto py-12 px-4 max-w-5xl">
+
+        {/* Header - Minimalist */}
+        <div className="mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">
+            Pourquoi travailler Python en prépa ECG ?
+          </h1>
+          <p className="text-xl text-gray-500 font-light">
+            Analyse stratégique d'une matière souvent sous-estimée.
           </p>
         </div>
 
         {/* Navigation Tabs */}
-        <PythonNavigationTabs className="mb-8" />
-
-        {/* Vidéo Loom - L'importance de Python aux concours */}
-        <div className="max-w-4xl mx-auto mb-10 fade-in-up" style={{ animationDelay: '0.2s' }}>
-          <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <Youtube className="h-7 w-7 text-blue-600" />
-              <h2 className="text-2xl font-semibold text-gray-900">
-                L'importance de Python aux concours
-              </h2>
-            </div>
-            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-              <iframe
-                src="https://www.loom.com/embed/bb87a1911d4a494ba229aaca00ee88cb"
-                frameBorder="0"
-                allowFullScreen
-                className="absolute top-0 left-0 w-full h-full rounded-xl shadow-lg"
-                title="Importance de Python aux concours"
-              />
-            </div>
-          </div>
+        <div className="mb-12">
+          <PythonNavigationTabs />
         </div>
 
-        {/* Accès direct à la formation - Plus visible */}
-        <Card className="mb-10 bg-white border border-gray-100 shadow-xl fade-in-up" style={{ animationDelay: '0.3s' }}>
-          <CardHeader>
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center">
-                <Code className="h-6 w-6 text-orange-600" />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+          {/* Main Article Content */}
+          <div className="lg:col-span-8 space-y-12">
+
+            {/* Introduction */}
+            <div className="prose prose-lg text-gray-600 leading-relaxed">
+              <p>
+                Python est souvent perçu par les étudiants de prépa ECG comme une contrainte secondaire,
+                loin derrière les mathématiques ou l'ESH/HGG. C'est une erreur stratégique majeure.
+                Dans un concours où chaque décimale compte, l'informatique est l'un des leviers les plus
+                efficaces pour sécuriser son admissibilité et faire la différence aux oraux.
+              </p>
+            </div>
+
+            {/* Point 1 */}
+            <section>
+              <div className="flex items-start gap-4 mb-4">
+                <div className="p-2 bg-gray-50 rounded-lg">
+                  <TrendingUp className="h-6 w-6 text-gray-700" />
+                </div>
+                <h2 className="text-2xl font-semibold text-gray-900 mt-1">Un rapport temps/points imbattable</h2>
               </div>
-              <CardTitle className="text-2xl">Formation <span className="bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">Python</span> ECG</CardTitle>
-            </div>
-            <p className="text-gray-600 text-lg">
-              Découvrez notre formation complète Python structurée en 4 modules progressifs avec exercices pratiques
-            </p>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Module 1 */}
-              <Link to="/formation/python-fondamentaux" className="group">
-                <div className="h-full bg-white hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-transparent hover:border-orange-200 rounded-xl p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-orange-100 to-orange-200 rounded-full flex items-center justify-center">
-                      <span className="text-orange-600 font-semibold">01</span>
-                    </div>
-                    <h3 className="text-xl font-semibold group-hover:text-orange-600 transition-colors">Fondamentaux</h3>
-                  </div>
-                  <p className="text-gray-600 mb-4">Variables, boucles, conditions, fonctions</p>
-                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full justify-start">
-                    <Play className="h-4 w-4 mr-2" />
-                    Commencer le module
-                  </Button>
-                </div>
-              </Link>
-
-              {/* Module 2 */}
-              <Link to="/formation/python-matrices" className="group">
-                <div className="h-full bg-white hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-transparent hover:border-orange-200 rounded-xl p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-orange-100 to-orange-200 rounded-full flex items-center justify-center">
-                      <span className="text-orange-600 font-semibold">02</span>
-                    </div>
-                    <h3 className="text-xl font-semibold group-hover:text-orange-600 transition-colors">Matrices & Numpy</h3>
-                  </div>
-                  <p className="text-gray-600 mb-4">Algèbre linéaire, résolution de systèmes</p>
-                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full justify-start">
-                    <Play className="h-4 w-4 mr-2" />
-                    Commencer le module
-                  </Button>
-                </div>
-              </Link>
-
-              {/* Module 3 */}
-              <Link to="/formation/python-analyse" className="group">
-                <div className="h-full bg-white hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-transparent hover:border-orange-200 rounded-xl p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-orange-100 to-orange-200 rounded-full flex items-center justify-center">
-                      <span className="text-orange-600 font-semibold">03</span>
-                    </div>
-                    <h3 className="text-xl font-semibold group-hover:text-orange-600 transition-colors">Analyse & Graphiques</h3>
-                  </div>
-                  <p className="text-gray-600 mb-4">Matplotlib, tracer des fonctions, suites</p>
-                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full justify-start">
-                    <Play className="h-4 w-4 mr-2" />
-                    Commencer le module
-                  </Button>
-                </div>
-              </Link>
-
-              {/* Module 4 */}
-              <Link to="/formation/python-probabilites" className="group">
-                <div className="h-full bg-white hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-transparent hover:border-orange-200 rounded-xl p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-orange-100 to-orange-200 rounded-full flex items-center justify-center">
-                      <span className="text-orange-600 font-semibold">04</span>
-                    </div>
-                    <h3 className="text-xl font-semibold group-hover:text-orange-600 transition-colors">Probabilités</h3>
-                  </div>
-                  <p className="text-gray-600 mb-4">Simulations, lois, statistiques</p>
-                  <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full justify-start">
-                    <Play className="h-4 w-4 mr-2" />
-                    Commencer le module
-                  </Button>
-                </div>
-              </Link>
-            </div>
-
-            <div className="space-y-2 mt-6 bg-gray-50 p-6 rounded-xl border border-gray-200">
-              <div className="text-sm text-gray-700 font-medium">✓ 54 commandes essentielles</div>
-              <div className="text-sm text-gray-700 font-medium">✓ Exercices type concours</div>
-              <div className="text-sm text-gray-700 font-medium">✓ +3 à 5 points garantis</div>
-            </div>
-
-            <div className="text-center mt-8">
-              <Link to="/formation">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
-                  <BookOpen className="h-5 w-5 mr-2" />
-                  Voir toute la formation
-                </Button>
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Témoignage en vedette (déplacé ici) */}
-        <Card className="mb-8 bg-gray-50 border border-gray-200 shadow-sm fade-in-up" style={{ animationDelay: '0.4s' }}>
-          <CardContent className="p-6">
-            <blockquote className="text-lg italic text-gray-700 mb-4">
-              « Dimitar est très pédagogue, à l'écoute et s'assure que tout soit parfaitement compris avant la fin
-              du cours. Il m'a aidée à démystifier Python, qui était au départ un gros point faible. Grâce à lui, je
-              suis plus confiante pour traiter les questions Python ! »
-            </blockquote>
-            <cite className="text-gray-600 font-semibold">— Léa, 2ᵉ année ECG</cite>
-          </CardContent>
-        </Card>
-
-        {/* Section 1 - Le vrai poids de Python */}
-        <Card className="mb-8 fade-in-up" style={{ animationDelay: '0.5s' }}>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-3">
-              <Target className="h-6 w-6 text-orange-600" />
-              1. Le vrai poids de Python aux concours : un gisement de points sous-estimé
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <p>Depuis la réforme, Python remplace Scilab dans les épreuves de mathématiques appliquées comme approfondies. Résultat :</p>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-orange-600 mt-0.5 flex-shrink-0" />
-                <span><strong>10 à 20 %</strong> selon les écoles (BCE, Ecricome, EDHEC, EM Lyon, HEC, etc.)</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-orange-600 mt-0.5 flex-shrink-0" />
-                <span><strong>Présence systématique à l'oral :</strong> impossible de poursuivre l'entretien HEC sans répondre correctement à la question Python</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-orange-600 mt-0.5 flex-shrink-0" />
-                <span><strong>Questions souvent "cadeaux" :</strong> analyser un script, compléter une fonction, traduire une somme ou un raisonnement en code</span>
-              </li>
-            </ul>
-            <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-              <p className="text-gray-700">
-                <strong>Moralité :</strong> même si tu n'es « pas fan d'info », ignorer Python revient à laisser jusqu'à 5 points sur la table.
-                Dans une filière où chaque demi-point se paie d'heures de calcul intégral, c\'est un luxe que tu ne peux pas te permettre.
+              <p className="text-gray-600 leading-relaxed pl-14">
+                Aux écrits (EDHEC, EM Lyon, Parisiennes), les questions d'informatique représentent une part
+                non négligeable du barème. Contrairement aux questions de fin de problème en mathématiques,
+                souvent très abstraites et discriminantes, les questions Python sont techniques mais <strong>prévisibles</strong>.
+                <br /><br />
+                Maîtriser la syntaxe de base et les algorithmes classiques (boucles, listes, matrices) permet
+                de glaner des points précieux rapidement, là où d'autres candidats laisseront copie blanche.
               </p>
-            </div>
-          </CardContent>
-        </Card>
+            </section>
 
-        {/* Section 2 - Pourquoi la plupart passent à côté */}
-        <Card className="mb-8 fade-in-up" style={{ animationDelay: '0.6s' }}>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-3">
-              <TrendingUp className="h-6 w-6 text-orange-600" />
-              2. Pourquoi la plupart des préparationnaires passent à côté
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <span className="text-orange-600 font-bold">•</span>
-                <span><strong>Effet de mode inversé :</strong> « tout le monde dit que Python, c'est facile » → donc personne ne l'approfondit vraiment</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-orange-600 font-bold">•</span>
-                <span><strong>Absence de méthodo :</strong> on survole les commandes en TP, sans vraie feuille de route</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-orange-600 font-bold">•</span>
-                <span><strong>Abandon trop rapide :</strong> dès qu'on bloque 5 minutes, on passe à autre chose sans creuser</span>
-              </li>
-            </ul>
-            <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-              <p className="text-gray-700">
-                <strong>Résultat :</strong> l'immense majorité arrive aux concours avec une compréhension superficielle qui s'effondre dès la première difficulté.
+            {/* Point 2 */}
+            <section>
+              <div className="flex items-start gap-4 mb-4">
+                <div className="p-2 bg-gray-50 rounded-lg">
+                  <Award className="h-6 w-6 text-gray-700" />
+                </div>
+                <h2 className="text-2xl font-semibold text-gray-900 mt-1">L'exigence des oraux</h2>
+              </div>
+              <p className="text-gray-600 leading-relaxed pl-14">
+                Si l'écrit permet parfois de "limiter la casse" sans Python, l'oral ne pardonne pas.
+                Dans les épreuves de mathématiques des meilleures écoles (HEC, ESCP), une question d'informatique
+                est quasi-systématique.
+                <br /><br />
+                Être à l'aise avec le code face au jury démontre une rigueur et une complétude de profil qui
+                rassurent et valorisent votre candidature. À l'inverse, un blocage total sur une fonction simple
+                peut gâcher une excellente prestation mathématique.
               </p>
+            </section>
+
+            {/* Point 3 */}
+            <section>
+              <div className="flex items-start gap-4 mb-4">
+                <div className="p-2 bg-gray-50 rounded-lg">
+                  <Terminal className="h-6 w-6 text-gray-700" />
+                </div>
+                <h2 className="text-2xl font-semibold text-gray-900 mt-1">Une compétence clé pour l'École</h2>
+              </div>
+              <p className="text-gray-600 leading-relaxed pl-14">
+                La prépa n'est qu'une étape. En école de commerce, Python est devenu le standard pour la Finance,
+                la Data Science et le Marketing Digital. Arriver avec des bases solides, c'est se faciliter grandement
+                la vie pour les cours de statistiques et d'analyse de données qui vous attendent dès la première année.
+              </p>
+            </section>
+
+            <div className="pt-8 border-t border-gray-100">
+              <h3 className="text-xl font-medium text-gray-900 mb-6">Comment s'y mettre concrètement ?</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Link to="/formation/python-fondamentaux" className="group block p-6 bg-gray-50 hover:bg-gray-100 rounded-xl transition-all">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-semibold text-gray-900">Les Fondamentaux</span>
+                    <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-gray-900 transition-colors" />
+                  </div>
+                  <p className="text-sm text-gray-500">Syntaxe, boucles et fonctions de base.</p>
+                </Link>
+                <Link to="/formation/python-matrices" className="group block p-6 bg-gray-50 hover:bg-gray-100 rounded-xl transition-all">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-semibold text-gray-900">Matrices & Numpy</span>
+                    <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-gray-900 transition-colors" />
+                  </div>
+                  <p className="text-sm text-gray-500">Manipulation de tableaux et algèbre linéaire.</p>
+                </Link>
+              </div>
             </div>
-          </CardContent>
-        </Card>
 
-        {/* Section 3 - Pourquoi notre formation fait la différence */}
-        <Card className="mb-8 border border-gray-100 shadow-xl fade-in-up" style={{ animationDelay: '0.7s' }}>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-3">
-              <Brain className="h-6 w-6 text-orange-600" />
-              3. Pourquoi notre formation Python fait la différence
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-orange-600 mt-0.5 flex-shrink-0" />
-                <span><strong>Méthodo progressive :</strong> de zéro à l'autonomie complète en 4 modules structurés</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-orange-600 mt-0.5 flex-shrink-0" />
-                <span><strong>Exercices calibrés :</strong> chaque exercice a été testé sur des centaines d'étudiants pour maximiser l'apprentissage</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-orange-600 mt-0.5 flex-shrink-0" />
-                <span><strong>Suivi personnalisé :</strong> tracking de progression + feedback instantané sur tes erreurs</span>
-              </li>
-            </ul>
-          </CardContent>
-        </Card>
+          </div>
 
-        {/* Call to action final */}
-        <Card className="bg-white border-gray-200 shadow-sm fade-in-up" style={{ animationDelay: '0.8s' }}>
-          <CardContent className="p-8 text-center">
-            <h3 className="text-2xl font-bold mb-4 text-gray-900">
-              Prêt à transformer ta relation avec Python ?
-            </h3>
-            <p className="text-gray-600 mb-6 text-lg">
-              Rejoins les centaines d'étudiants qui ont déjà pris de l'avance grâce à cette formation.
-            </p>
-            <Link to="/formation/python-fondamentaux">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
-                <Code className="h-5 w-5 mr-2" />
-                Commencer maintenant
-              </Button>
-            </Link>
-          </CardContent>
-        </Card>
+          {/* Sidebar / Context */}
+          <div className="lg:col-span-4 space-y-8">
+            <Card className="bg-gray-50 border-none shadow-sm">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <Clock className="h-5 w-5 text-gray-400" />
+                  <span className="text-sm font-medium text-gray-600">Temps de lecture</span>
+                </div>
+                <p className="text-gray-900 font-semibold">3 minutes</p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white border border-gray-100 shadow-sm">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Ressources associées</h3>
+                <ul className="space-y-3">
+                  <li>
+                    <Link to="/formation/python-reference" className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors text-sm">
+                      <BookOpen className="h-4 w-4" />
+                      <span>Fiche de référence Python</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/flashcards" className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors text-sm">
+                      <Award className="h-4 w-4" />
+                      <span>Flashcards de révision</span>
+                    </Link>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+        </div>
       </div>
-
-      {/* Styles pour les animations */}
-      <style>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes scaleIn {
-          from {
-            opacity: 0;
-            transform: scale(0.9);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-
-        .fade-in-up, .scale-in {
-          opacity: 0;
-        }
-
-        .fade-in-up.animate-in {
-          animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .scale-in.animate-in {
-          animation: scaleIn 0.6s ease-out forwards;
-        }
-      `}</style>
     </div>
   );
 };

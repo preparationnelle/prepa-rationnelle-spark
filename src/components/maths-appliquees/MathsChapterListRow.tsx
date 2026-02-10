@@ -8,7 +8,7 @@ interface Chapter {
     id: number | string;
     slug: string;
     title: string;
-    description: string;
+    description?: string;
     icon: any;
     color: string;
     symbol: string;
@@ -43,20 +43,20 @@ const MathsChapterListRow: React.FC<MathsChapterListRowProps> = ({ chapter }) =>
                 onClick={() => navigate(chapter.customLink!)}
                 className="block cursor-pointer"
             >
-                <div className="bg-white rounded-xl p-4 shadow-sm hover:shadow-md hover:scale-[1.005] transition-all duration-200 border border-transparent hover:border-blue-200 group">
-                    <div className="flex items-center gap-4">
-                        <div className={`w-12 h-12 ${chapter.color.replace('bg-', 'bg-').replace('600', '100')} rounded-full flex items-center justify-center group-hover:bg-opacity-80 transition-colors flex-shrink-0`}>
+                <div className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 border border-gray-100/50 hover:border-blue-100 group">
+                    <div className="flex items-center gap-5">
+                        <div className={`w-12 h-12 ${chapter.color.replace('bg-', 'bg-').replace('600', '50')} rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300 flex-shrink-0 border border-blue-50`}>
                             <span className={`font-bold text-lg ${chapter.color.replace('bg-', 'text-')}`}>{chapter.id}</span>
                         </div>
                         <div className="flex-1 flex items-center justify-between gap-4">
                             <div>
-                                <h3 className="text-lg font-bold text-gray-900 mb-1">{chapter.title}</h3>
-                                <p className="text-sm text-gray-600 line-clamp-1">{chapter.description}</p>
+                                <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-blue-700 transition-colors">{chapter.title}</h3>
+                                <p className="text-sm text-gray-500 font-medium line-clamp-1">{chapter.description}</p>
                             </div>
                             <div className="flex gap-2 flex-shrink-0" onClick={(e) => e.stopPropagation()}>
                                 <Link to={chapter.customLink!}>
-                                    <Button size="sm" className={`${chapter.color} hover:opacity-90 text-white rounded-full font-medium shadow-sm h-8 px-4`}>
-                                        <BookOpen className="mr-2 h-3.5 w-3.5" />
+                                    <Button size="sm" className={`${chapter.color} hover:opacity-90 text-white rounded-lg font-medium shadow-sm h-9 px-5`}>
+                                        <BookOpen className="mr-2 h-4 w-4" />
                                         Accéder
                                     </Button>
                                 </Link>
@@ -73,21 +73,21 @@ const MathsChapterListRow: React.FC<MathsChapterListRowProps> = ({ chapter }) =>
             onClick={() => resolvedCourseHref && navigate(resolvedCourseHref)}
             className="block cursor-pointer"
         >
-            <div className="bg-white rounded-xl p-4 shadow-sm hover:shadow-md hover:scale-[1.005] transition-all duration-200 border border-transparent hover:border-blue-200 group">
-                <div className="flex items-center gap-4">
-                    <div className={`w-12 h-12 ${chapter.color.replace('bg-', 'bg-').replace('600', '50')} rounded-full flex items-center justify-center group-hover:bg-opacity-80 transition-colors flex-shrink-0 border border-blue-100`}>
+            <div className="bg-white rounded-2xl p-4 md:p-5 shadow-[0_2px_8px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgb(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300 border border-transparent hover:border-blue-100 group">
+                <div className="flex items-center gap-5">
+                    <div className={`w-12 h-12 ${chapter.color.replace('bg-', 'bg-').replace('600', '50')} rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300 flex-shrink-0 border border-blue-50`}>
                         <span className={`font-bold text-lg ${chapter.color.replace('bg-', 'text-')}`}>{chapter.id}</span>
                     </div>
                     <div className="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div>
-                            <h3 className="text-lg font-bold text-gray-900 mb-1">{chapter.title}</h3>
-                            <p className="text-sm text-gray-600 line-clamp-1">{chapter.description}</p>
+                            <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-blue-700 transition-colors">{chapter.title}</h3>
+                            <p className="text-sm text-gray-500 font-medium line-clamp-1">{chapter.description}</p>
                         </div>
 
                         <div className="flex gap-2 flex-wrap md:flex-nowrap flex-shrink-0" onClick={(e) => e.stopPropagation()}>
                             {resolvedCourseHref && (
                                 <Link to={resolvedCourseHref}>
-                                    <Button size="sm" className={`${chapter.color} hover:opacity-90 text-white rounded-md font-medium shadow-sm transition-all duration-200 h-8 px-3 text-xs`}>
+                                    <Button size="sm" className={`${chapter.color} hover:opacity-90 text-white rounded-lg font-medium shadow-sm transition-all duration-200 h-9 px-4 text-xs`}>
                                         <BookOpen className="mr-2 h-3.5 w-3.5" />
                                         Cours
                                     </Button>
@@ -96,7 +96,7 @@ const MathsChapterListRow: React.FC<MathsChapterListRowProps> = ({ chapter }) =>
 
                             {hasExercises && (
                                 <Link to={exercisesPath}>
-                                    <Button size="sm" variant="outline" className="border-gray-200 text-gray-700 hover:bg-orange-50 hover:text-orange-600 hover:border-orange-200 rounded-md transition-all duration-200 h-8 px-3 text-xs">
+                                    <Button size="sm" variant="outline" className="border-gray-200 text-gray-600 hover:bg-white hover:text-blue-700 hover:border-blue-200 rounded-lg transition-all duration-200 h-9 px-4 text-xs bg-transparent">
                                         <Play className="mr-2 h-3.5 w-3.5" />
                                         Exercices
                                     </Button>
@@ -105,7 +105,7 @@ const MathsChapterListRow: React.FC<MathsChapterListRowProps> = ({ chapter }) =>
 
                             {hasFlashcards && (
                                 <Link to={flashcardsPath}>
-                                    <Button size="sm" variant="outline" className="border-gray-200 text-gray-700 hover:bg-orange-50 hover:text-orange-600 hover:border-orange-200 rounded-md transition-all duration-200 h-8 px-3 text-xs">
+                                    <Button size="sm" variant="outline" className="border-gray-200 text-gray-600 hover:bg-white hover:text-blue-700 hover:border-blue-200 rounded-lg transition-all duration-200 h-9 px-4 text-xs bg-transparent">
                                         <Brain className="mr-2 h-3.5 w-3.5" />
                                         Flashcards
                                     </Button>
@@ -114,7 +114,7 @@ const MathsChapterListRow: React.FC<MathsChapterListRowProps> = ({ chapter }) =>
 
                             {hasQuiz && (
                                 <Link to={quizPath}>
-                                    <Button size="sm" variant="outline" className="border-gray-200 text-gray-700 hover:bg-orange-50 hover:text-orange-600 hover:border-orange-200 rounded-md transition-all duration-200 h-8 px-3 text-xs">
+                                    <Button size="sm" variant="outline" className="border-gray-200 text-gray-600 hover:bg-white hover:text-blue-700 hover:border-blue-200 rounded-lg transition-all duration-200 h-9 px-4 text-xs bg-transparent">
                                         <Target className="mr-2 h-3.5 w-3.5" />
                                         Quiz
                                     </Button>

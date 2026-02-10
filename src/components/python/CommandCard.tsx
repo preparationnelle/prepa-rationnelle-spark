@@ -11,24 +11,30 @@ interface CommandCardProps {
 }
 
 const CommandCard = ({ command, description, copiedCommand, onCopy }: CommandCardProps) => (
-  <div className="bg-slate-50 p-4 rounded-lg border hover:border-blue-300 transition-colors group">
-    <div className="flex items-start justify-between">
-      <div className="flex-1">
-        <code className="text-sm font-mono text-blue-600 font-semibold">{command}</code>
-        <p className="text-sm text-gray-600 mt-1">{description}</p>
+  <div className="bg-white rounded-xl border border-slate-200 p-4 hover:shadow-md hover:border-emerald-200/50 transition-all duration-300 group flex flex-col h-full">
+    <div className="flex justify-between items-start gap-4 mb-3">
+      <div className="relative flex-1 group/code">
+        <code className="block bg-[#1e1e1e] text-emerald-400 px-3 py-2.5 rounded-lg text-sm font-mono border border-slate-800 shadow-inner overflow-x-auto">
+          {command}
+        </code>
       </div>
       <Button
         variant="ghost"
-        size="sm"
+        size="icon"
+        className="h-8 w-8 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 opacity-0 group-hover:opacity-100 transition-all duration-200"
         onClick={() => onCopy(command)}
-        className="opacity-0 group-hover:opacity-100 transition-opacity"
       >
         {copiedCommand === command ? (
-          <span className="text-blue-600 text-xs">✓</span>
+          <span className="text-emerald-600 text-xs font-bold">✓</span>
         ) : (
           <Copy className="h-4 w-4" />
         )}
       </Button>
+    </div>
+    <div className="flex-1">
+      <p className="text-sm text-slate-600 leading-relaxed font-medium">
+        {description}
+      </p>
     </div>
   </div>
 );

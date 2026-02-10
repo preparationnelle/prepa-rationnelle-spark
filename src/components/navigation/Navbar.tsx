@@ -344,8 +344,10 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               </div>
             </div>
 
-            <Link to="/parent" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-2 py-1.5 rounded-md hover:bg-gray-50/50 whitespace-nowrap" onClick={closeMenu}>Espace Parents</Link>
-            <Link to="/nos-profs" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-2 py-1.5 rounded-md hover:bg-gray-50/50 whitespace-nowrap" onClick={closeMenu}>Professeurs</Link>
+
+
+
+            <Link to="/generator" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 px-2 py-1.5 rounded-md hover:bg-gray-50/50 whitespace-nowrap" onClick={closeMenu}>Générateur</Link>
 
             {/* Menu déroulant "Niveau d'étude" avec hover */}
             <div
@@ -442,7 +444,12 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               >
                 <Link to="/parent" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-orange-50 rounded-md px-3 py-2 transition-colors">
                   <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Users className="h-4 w-4 text-orange-600" /></span>
-                  <span>Parent</span>
+                  <span>Espace Parents</span>
+                </Link>
+
+                <Link to="/nos-profs" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-orange-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><GraduationCap className="h-4 w-4 text-orange-600" /></span>
+                  <span>Professeurs</span>
                 </Link>
 
                 <Link to="/professeur" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-orange-50 rounded-md px-3 py-2 transition-colors">
@@ -575,8 +582,9 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
         <div className="grid grid-cols-2 gap-4 mb-6">
           <Link to="/" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Accueil</Link>
           <Link to="/avis" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Avis</Link>
-          <Link to="/parent" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Espace Parents</Link>
-          <Link to="/nos-profs" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Professeurs</Link>
+          <Link to="/generator" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Générateur</Link>
+
+
           <Link to="/articles/primaire" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Primaire</Link>
           <Link to="/articles/college" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Collège</Link>
           <Link to="/articles/lycee" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Lycée</Link>
@@ -589,7 +597,11 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
             <div className="text-base py-3 px-4 bg-gray-50 font-medium text-gray-700">Contact</div>
             <Link to="/parent" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-orange-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
               <Users className="h-5 w-5 text-orange-600" />
-              Parent
+              Espace Parents
+            </Link>
+            <Link to="/nos-profs" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-orange-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
+              <GraduationCap className="h-5 w-5 text-orange-600" />
+              Professeurs
             </Link>
             <Link to="/professeur" className="text-base py-3 border-b border-gray-200 bg-white px-6 rounded-md transition-colors duration-200 hover:bg-orange-50 min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
               <GraduationCap className="h-5 w-5 text-orange-600" />

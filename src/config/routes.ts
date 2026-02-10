@@ -1667,6 +1667,12 @@ export const routes: RouteConfig[] = [
     protected: true
   },
   {
+    path: '/formation/maths-espaces-vectoriels-exercices',
+    component: lazy(() => import('../pages/formation/math/MathsAppliquees/Chapitre1-EspacesVectoriels-ExercicesPage')),
+    title: 'Exercices - Espaces vectoriels',
+    protected: false
+  },
+  {
     path: '/formation/maths-integration-sur-un-segment',
     component: MathsIntegrationPage,
     title: 'Maths - Intégration sur un segment',
@@ -1926,6 +1932,8 @@ export const routes: RouteConfig[] = [
     title: 'Mathématiques Appliquées ECG',
     protected: false
   },
+
+
 
 
   // 404 - Must be last

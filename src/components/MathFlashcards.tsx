@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ChevronLeft, ChevronRight, RotateCcw, Eye, EyeOff, Star, Trophy, CheckCircle, XCircle, Zap } from 'lucide-react';
+import { ChevronLeft, ChevronRight, RotateCcw, Check, X, Bookmark } from 'lucide-react';
 import { LatexRenderer } from '@/components/LatexRenderer';
 import { type MathFlashcard } from '@/data/mathFlashcardsData';
 
@@ -27,23 +27,22 @@ export const MathFlashcards: React.FC<MathFlashcardsProps> = ({
 
   const currentCard = flashcards[currentIndex];
   const totalCards = flashcards.length;
-  const progressPercentage = ((currentIndex + 1) / totalCards) * 100;
 
-  const nextCard = () => {
+  const nextCard = useCallback(() => {
     if (currentIndex < totalCards - 1) {
-      setCurrentIndex(currentIndex + 1);
+      setCurrentIndex(prev => prev + 1);
       setShowAnswer(false);
       setIsFlipped(false);
     }
-  };
+  }, [currentIndex, totalCards]);
 
-  const prevCard = () => {
+  const prevCard = useCallback(() => {
     if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
+      setCurrentIndex(prev => prev - 1);
       setShowAnswer(false);
       setIsFlipped(false);
     }
-  };
+  }, [currentIndex]);
 
   const resetProgress = () => {
     setCurrentIndex(0);
@@ -53,10 +52,10 @@ export const MathFlashcards: React.FC<MathFlashcardsProps> = ({
     setIsFlipped(false);
   };
 
-  const toggleAnswer = () => {
-    setShowAnswer(!showAnswer);
-    setIsFlipped(!isFlipped);
-  };
+  const toggleAnswer = useCallback(() => {
+    setShowAnswer(prev => !prev);
+    setIsFlipped(prev => !prev);
+  }, []);
 
   const markResponse = (response: 'correct' | 'incorrect' | 'skip') => {
     setUserResponses(prev => ({
@@ -64,12 +63,12 @@ export const MathFlashcards: React.FC<MathFlashcardsProps> = ({
       [currentIndex]: response
     }));
 
-    // Auto-advance after marking response
+    // Auto-advance
     setTimeout(() => {
       if (currentIndex < totalCards - 1) {
         nextCard();
       }
-    }, 800);
+    }, 400);
   };
 
   const toggleReview = () => {
@@ -84,12 +83,6 @@ export const MathFlashcards: React.FC<MathFlashcardsProps> = ({
     });
   };
 
-  // Calculate statistics
-  const correctCount = Object.values(userResponses).filter(r => r === 'correct').length;
-  const incorrectCount = Object.values(userResponses).filter(r => r === 'incorrect').length;
-  const skipCount = Object.values(userResponses).filter(r => r === 'skip').length;
-
-  // Navigation clavier améliorée
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     const target = e.target as HTMLElement | null;
     if (target && (target.tagName === 'INPUT' || target.tagName === 'SELECT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
@@ -98,7 +91,7 @@ export const MathFlashcards: React.FC<MathFlashcardsProps> = ({
 
     switch (e.key) {
       case 'ArrowRight':
-      case ' ': // Espace
+      case ' ':
         e.preventDefault();
         if (showAnswer) {
           markResponse('correct');
@@ -123,19 +116,16 @@ export const MathFlashcards: React.FC<MathFlashcardsProps> = ({
       case 'r':
       case 'R':
         e.preventDefault();
-        if (showAnswer) {
-          toggleReview();
-        }
+        toggleReview();
         break;
     }
-  }, [showAnswer, toggleAnswer, markResponse, toggleReview, prevCard]);
+  }, [showAnswer, toggleAnswer, prevCard, toggleReview]); // Removed markResponse from deps to avoid loop, it relies on state setter anyway
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [handleKeyDown]);
 
-  // Fonction helper pour rendre du texte avec LaTeX
   const renderTextWithLatex = (text: string) => {
     if (!text) return null;
     return text.split(/(\$[^$]+\$)/).map((part, idx) => {
@@ -150,268 +140,168 @@ export const MathFlashcards: React.FC<MathFlashcardsProps> = ({
 
   if (!currentCard) {
     return (
-      <div className="max-w-4xl mx-auto p-4">
-        <Card className="text-center p-8">
-          <CardContent>
-            <h3 className="text-lg font-semibold mb-2">Aucune flashcard trouvée</h3>
-            <p className="text-slate-600">Les flashcards de ce chapitre ne sont pas encore disponibles.</p>
-          </CardContent>
-        </Card>
+      <div className="max-w-3xl mx-auto p-4 text-center text-slate-500">
+        Aucune flashcard disponible.
       </div>
     );
   }
 
-  // Page de fin avec statistiques
-  const isCompleted = currentIndex === totalCards - 1 && showAnswer;
-  if (isCompleted) {
-    const accuracy = totalCards > 0 ? Math.round((correctCount / totalCards) * 100) : 0;
+  // Completion view
+  if (currentIndex === totalCards - 1 && userResponses[currentIndex]) {
+    const correctCount = Object.values(userResponses).filter(r => r === 'correct').length;
     return (
-      <div className="max-w-4xl mx-auto p-4">
-        <Card className="mt-8 border-0 shadow-xl bg-gradient-to-br from-blue-50 to-purple-50">
-          <CardContent className="text-center p-8">
-            <div className="mb-6">
-              <Trophy className="h-16 w-16 text-yellow-500 mx-auto mb-4" />
-              <h2 className="text-3xl font-bold text-slate-800 mb-2">Session terminée !</h2>
-              <p className="text-lg text-slate-600">Vous avez terminé toutes les flashcards.</p>
+      <div className="max-w-2xl mx-auto px-4 py-12">
+        <Card className="border-0 shadow-sm bg-white text-center p-8">
+          <h2 className="text-2xl font-serif text-slate-900 mb-4">Session terminée</h2>
+          <div className="flex justify-center items-center gap-8 mb-8">
+            <div className="text-center">
+              <div className="text-3xl font-semibold text-emerald-600">{correctCount}</div>
+              <div className="text-xs text-slate-500 uppercase tracking-wider mt-1">Maîtrisées</div>
             </div>
-
-            {/* Statistiques */}
-            <div className="grid grid-cols-3 gap-6 mb-8">
-              <div className="bg-white rounded-lg p-4 shadow-sm">
-                <div className="text-3xl font-bold text-green-600 mb-1">{correctCount}</div>
-                <div className="text-sm text-slate-600">Correct</div>
-                <CheckCircle className="h-5 w-5 text-green-600 mx-auto mt-2" />
-              </div>
-              <div className="bg-white rounded-lg p-4 shadow-sm">
-                <div className="text-3xl font-bold text-red-600 mb-1">{incorrectCount}</div>
-                <div className="text-sm text-slate-600">Incorrect</div>
-                <XCircle className="h-5 w-5 text-red-600 mx-auto mt-2" />
-              </div>
-              <div className="bg-white rounded-lg p-4 shadow-sm">
-                <div className="text-3xl font-bold text-blue-600 mb-1">{accuracy}%</div>
-                <div className="text-sm text-slate-600">Précision</div>
-                <Zap className="h-5 w-5 text-blue-600 mx-auto mt-2" />
-              </div>
+            <div className="text-center">
+              <div className="text-3xl font-semibold text-slate-900">{totalCards}</div>
+              <div className="text-xs text-slate-500 uppercase tracking-wider mt-1">Total</div>
             </div>
-
-
-            <div className="flex gap-4 justify-center">
-              <Button onClick={resetProgress} className="bg-blue-600 hover:bg-blue-700 text-white">
-                <RotateCcw className="h-4 w-4 mr-2" />
-                Recommencer
-              </Button>
-            </div>
-          </CardContent>
+          </div>
+          <Button onClick={resetProgress} variant="outline" className="border-slate-200 hover:bg-slate-50">
+            <RotateCcw className="h-4 w-4 mr-2" />
+            Recommencer
+          </Button>
         </Card>
       </div>
     );
   }
+
+  const progress = ((currentIndex + 1) / totalCards) * 100;
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
-      {/* En-tête avec statistiques */}
+    <div className="max-w-3xl mx-auto px-4 py-8">
+      {/* Header */}
       {!hideHeader && (
-        <div className="mb-8">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold text-slate-800">{title}</h2>
-            <div className="flex items-center gap-2 text-sm text-slate-600">
-              <span className="font-medium">Chapitre {chapterNumber}</span>
-            </div>
-          </div>
-
-          {/* Barre de progression interactive */}
-          <div className="relative mb-6">
-            <div className="w-full bg-slate-200 rounded-full h-3 overflow-hidden">
-              <div
-                className="bg-blue-600 h-3 rounded-full transition-all duration-700 ease-out"
-                style={{ width: `${progressPercentage}%` }}
-              />
-            </div>
-            <div className="flex justify-between text-xs text-slate-500 mt-2">
-              <span>Carte {currentIndex + 1} sur {totalCards}</span>
-              <span>{Math.round(progressPercentage)}% terminé</span>
-            </div>
-          </div>
-
-          {/* Statistiques rapides */}
-          <div className="flex justify-center gap-6 mb-6">
-            <div className="flex items-center gap-2 text-green-600">
-              <CheckCircle className="h-4 w-4" />
-              <span className="text-sm font-medium">{correctCount}</span>
-            </div>
-            <div className="flex items-center gap-2 text-red-600">
-              <XCircle className="h-4 w-4" />
-              <span className="text-sm font-medium">{incorrectCount}</span>
-            </div>
-            <div className="flex items-center gap-2 text-orange-600">
-              <Star className="h-4 w-4" />
-              <span className="text-sm font-medium">{markedForReview.size}</span>
-            </div>
-          </div>
+        <div className="mb-8 text-center sm:text-left">
+          <Badge variant="outline" className="mb-3 px-3 py-1 border-slate-200 text-slate-500 font-normal">
+            Chapitre {chapterNumber}
+          </Badge>
+          <h2 className="text-3xl font-serif text-slate-900 tracking-tight">{title}</h2>
         </div>
       )}
 
-      {hideHeader && (
-        <div className="mb-6">
-          {/* Barre de progression simplifiée pour mode compact */}
-          <div className="flex items-center justify-between text-sm text-slate-600 mb-2">
-            <span className="font-medium">Progression</span>
-            <span>{Math.round(progressPercentage)}%</span>
-          </div>
-          <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden mb-6 border border-slate-200">
-            <div
-              className="bg-slate-800 h-full rounded-full transition-all duration-500 ease-out"
-              style={{ width: `${Math.max(5, progressPercentage)}%` }}
-            />
-          </div>
+      {/* Progress Line */}
+      <div className="flex items-center gap-4 mb-6">
+        <span className="text-xs font-medium text-slate-400 font-mono">
+          {currentIndex + 1} / {totalCards}
+        </span>
+        <div className="h-[2px] w-full flex-1 bg-slate-100 rounded-full overflow-hidden">
+          <div
+            className="h-full bg-slate-900 transition-all duration-500 ease-out"
+            style={{ width: `${progress}%` }}
+          />
         </div>
-      )}
+      </div>
 
-      {/* Flashcard principale avec effet 3D */}
-      <div className="relative mb-6">
+      {/* Card */}
+      <div className="perspective-1000">
         <Card
-          className={`min-h-[350px] bg-white border border-slate-200 shadow-md transition-all duration-500 hover:shadow-lg ${isFlipped ? '' : ''
-            }`}
+          className="min-h-[400px] bg-white border-slate-200 shadow-sm transition-all duration-300 relative overflow-hidden group"
         >
-          <CardContent className="p-6 flex flex-col justify-center h-full relative">
+          <CardContent className="h-full p-8 sm:p-12 flex flex-col items-center justify-center text-center">
 
-            {/* Contenu principal */}
-            <div className="text-center flex-1 flex flex-col justify-center">
+            {/* Review bookmark */}
+            <button
+              onClick={toggleReview}
+              className={`absolute top-6 right-6 transition-colors ${markedForReview.has(currentCard.id) ? 'text-amber-500' : 'text-slate-200 hover:text-slate-300'}`}
+            >
+              <Bookmark className="h-5 w-5" fill={markedForReview.has(currentCard.id) ? "currentColor" : "none"} />
+            </button>
+
+            <div className="flex-1 flex flex-col justify-center items-center w-full max-w-2xl">
               {!showAnswer ? (
-                /* Recto - Question */
-                <div className="animate-in fade-in duration-300">
-                  <div className="mb-6">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-6 leading-relaxed">
-                      {renderTextWithLatex(currentCard.front)}
-                    </h3>
-                    {currentCard.frontLatex && (
-                      <div className="bg-slate-50 border border-slate-100 rounded-xl p-6 shadow-inner overflow-x-auto max-w-full">
-                        <LatexRenderer latex={currentCard.frontLatex} />
-                      </div>
-                    )}
+                <div className="animate-in fade-in zoom-in-95 duration-300">
+                  <h3 className="text-2xl sm:text-3xl font-serif text-slate-900 leading-relaxed mb-6">
+                    {renderTextWithLatex(currentCard.front)}
+                  </h3>
+                  {currentCard.frontLatex && (
+                    <div className="mt-4 p-4 rounded-lg bg-slate-50">
+                      <LatexRenderer latex={currentCard.frontLatex} />
+                    </div>
+                  )}
+                  <div className="mt-12">
+                    <Button
+                      onClick={toggleAnswer}
+                      className="bg-slate-900 hover:bg-slate-800 text-white rounded-full px-8 shadow-none transition-transform active:scale-95"
+                    >
+                      Révéler la réponse
+                    </Button>
                   </div>
-
-                  {/* Bouton révéler avec effet */}
-                  <Button
-                    onClick={toggleAnswer}
-                    className="bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-lg shadow-md transform transition-all duration-200 hover:scale-105"
-                  >
-                    <Eye className="h-5 w-5 mr-3" />
-                    Révéler la réponse
-                  </Button>
                 </div>
               ) : (
-                /* Verso - Réponse */
-                <div className="animate-in slide-in-from-bottom duration-500">
-                  <div className="mb-6">
-                    <div className="text-xl font-medium text-slate-800 mb-6 leading-relaxed">
+                <div className="animate-in fade-in slide-in-from-bottom-2 duration-300 w-full">
+                  <div className="prose prose-slate max-w-none mb-8">
+                    <div className="text-xl text-slate-700 leading-relaxed">
                       {renderTextWithLatex(currentCard.back)}
                     </div>
                     {currentCard.backLatex && (
-                      <div className="bg-slate-50 border border-slate-100 rounded-xl p-6 shadow-inner overflow-x-auto max-w-full">
+                      <div className="mt-4 p-6 rounded-lg bg-slate-900 text-slate-50 overflow-x-auto text-left shadow-inner">
                         <LatexRenderer latex={currentCard.backLatex} />
                       </div>
                     )}
                   </div>
 
-                  {/* Boutons d'évaluation interactive */}
-                  <div className="space-y-3">
-                    <p className="text-slate-600 mb-3 text-sm">Ai-je bien assimilé cette notion d'algèbre linéaire ?</p>
-                    <div className="flex gap-2 justify-center">
-                      <Button
-                        onClick={() => markResponse('correct')}
-                        className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md transform transition-all duration-200 hover:scale-105 flex-1 text-sm"
-                      >
-                        <CheckCircle className="h-4 w-4 mr-1" />
-                        Correct
-                      </Button>
-                      <Button
-                        onClick={() => markResponse('incorrect')}
-                        className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transform transition-all duration-200 hover:scale-105 flex-1 text-sm"
-                      >
-                        <XCircle className="h-4 w-4 mr-1" />
-                        Incorrect
-                      </Button>
-                      <Button
-                        onClick={() => markResponse('skip')}
-                        variant="outline"
-                        className="px-4 py-2 rounded-md border-2 transform transition-all duration-200 hover:scale-105 flex-1 text-sm"
-                      >
-                        Passer
-                      </Button>
-                    </div>
-
-                    {/* Bouton à revoir */}
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8">
                     <Button
-                      onClick={toggleReview}
-                      variant="ghost"
-                      className={`w-full mt-4 ${markedForReview.has(currentCard.id) ? 'text-orange-600 bg-orange-50 border-orange-200' : 'text-slate-600'}`}
+                      onClick={() => markResponse('incorrect')}
+                      variant="outline"
+                      className="w-full sm:w-auto border-red-100 text-red-600 hover:bg-red-50 hover:text-red-700 hover:border-red-200"
                     >
-                      <Star className={`h-4 w-4 mr-2 ${markedForReview.has(currentCard.id) ? 'text-orange-500' : ''}`} />
-                      {markedForReview.has(currentCard.id) ? 'Retiré des révisions' : 'À revoir plus tard'}
+                      <X className="h-4 w-4 mr-2" />
+                      À revoir
+                    </Button>
+                    <Button
+                      onClick={() => markResponse('correct')}
+                      variant="outline"
+                      className="w-full sm:w-auto border-emerald-100 text-emerald-600 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200"
+                    >
+                      <Check className="h-4 w-4 mr-2" />
+                      Maîtrisée
                     </Button>
                   </div>
                 </div>
               )}
             </div>
+
           </CardContent>
         </Card>
       </div>
 
-      {/* Navigation en bas */}
-      <div className="flex justify-between items-center">
+      {/* Navigation Controls */}
+      <div className="flex justify-between items-center mt-8">
         <Button
           onClick={prevCard}
           disabled={currentIndex === 0}
-          variant="outline"
-          className="flex items-center gap-2"
+          variant="ghost"
+          className="text-slate-400 hover:text-slate-900"
         >
-          <ChevronLeft className="h-4 w-4" />
-          Précédent
+          <ChevronLeft className="h-5 w-5" />
         </Button>
 
-        <Button
-          onClick={resetProgress}
-          variant="ghost"
-          className="text-slate-600"
-        >
-          <RotateCcw className="h-4 w-4 mr-2" />
-          Recommencer
-        </Button>
+        <div />
 
         <Button
           onClick={nextCard}
           disabled={currentIndex === totalCards - 1}
-          variant="outline"
-          className="flex items-center gap-2"
+          variant="ghost"
+          className="text-slate-400 hover:text-slate-900"
         >
-          Suivant
-          <ChevronRight className="h-4 w-4" />
+          <ChevronRight className="h-5 w-5" />
         </Button>
       </div>
 
-      {/* Raccourcis clavier améliorés */}
-      <div className="mt-8 bg-slate-50 rounded-lg p-4">
-        <h4 className="text-sm font-semibold text-slate-700 mb-3 text-center">Raccourcis clavier</h4>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
-          <div>
-            <kbd className="px-2 py-1 bg-white border rounded text-xs font-mono">→</kbd>
-            <div className="text-xs text-slate-600 mt-1">Suivant/Correct</div>
-          </div>
-          <div>
-            <kbd className="px-2 py-1 bg-white border rounded text-xs font-mono">←</kbd>
-            <div className="text-xs text-slate-600 mt-1">Précédent/Incorrect</div>
-          </div>
-          <div>
-            <kbd className="px-2 py-1 bg-white border rounded text-xs font-mono">↵</kbd>
-            <div className="text-xs text-slate-600 mt-1">Passer</div>
-          </div>
-          <div>
-            <kbd className="px-2 py-1 bg-white border rounded text-xs font-mono">R</kbd>
-            <div className="text-xs text-slate-600 mt-1">À revoir</div>
-          </div>
-        </div>
+      <div className="mt-12 text-center">
+        <p className="text-xs text-slate-300 font-medium">
+          ESPACE · FLIP &nbsp;|&nbsp; ← → · NAVIGUER &nbsp;|&nbsp; R · REVOIR
+        </p>
       </div>
     </div>
   );
 };
+

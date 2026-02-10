@@ -37,7 +37,7 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
   titleClassName = "text-[#2D5BFF]"
 }) => {
   return (
-    <div className="min-h-screen bg-[#EEF3FC]">
+    <div className="min-h-screen bg-white">
       {/* Breadcrumb moderne */}
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-0 py-0">
@@ -80,8 +80,8 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
                     variant="ghost"
                     size="sm"
                     className={`h-8 rounded-full px-4 text-sm transition-all ${activeSection === 'course'
-                        ? "bg-slate-100 text-slate-900 font-semibold shadow-sm ring-1 ring-slate-200"
-                        : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
+                      ? "bg-slate-100 text-slate-900 font-semibold shadow-sm ring-1 ring-slate-200"
+                      : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
                       }`}
                   >
                     <BookOpen className="mr-2 h-3.5 w-3.5" />
@@ -93,8 +93,8 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
                     variant="ghost"
                     size="sm"
                     className={`h-8 rounded-full px-4 text-sm transition-all ${activeSection === 'exercises'
-                        ? "bg-slate-100 text-slate-900 font-semibold shadow-sm ring-1 ring-slate-200"
-                        : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
+                      ? "bg-slate-100 text-slate-900 font-semibold shadow-sm ring-1 ring-slate-200"
+                      : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
                       }`}
                   >
                     <PenTool className="mr-2 h-3.5 w-3.5" />
@@ -106,8 +106,8 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
                     variant="ghost"
                     size="sm"
                     className={`h-8 rounded-full px-4 text-sm transition-all ${activeSection === 'flashcards'
-                        ? "bg-slate-100 text-slate-900 font-semibold shadow-sm ring-1 ring-slate-200"
-                        : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
+                      ? "bg-slate-100 text-slate-900 font-semibold shadow-sm ring-1 ring-slate-200"
+                      : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
                       }`}
                   >
                     <Brain className="mr-2 h-3.5 w-3.5" />
@@ -119,8 +119,8 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
                     variant="ghost"
                     size="sm"
                     className={`h-8 rounded-full px-4 text-sm transition-all ${activeSection === 'quiz'
-                        ? "bg-slate-100 text-slate-900 font-semibold shadow-sm ring-1 ring-slate-200"
-                        : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
+                      ? "bg-slate-100 text-slate-900 font-semibold shadow-sm ring-1 ring-slate-200"
+                      : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
                       }`}
                   >
                     <Target className="mr-2 h-3.5 w-3.5" />
@@ -135,7 +135,7 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
         {children || (
           /* Default placeholder content */
           <Card className="border-0 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-            <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+            <CardHeader className="bg-slate-900 text-white">
               <CardTitle className="text-xl flex items-center gap-3">
                 <span className="bg-white/20 backdrop-blur-sm text-white w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-lg">
                   📝
@@ -157,7 +157,7 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
         )}
 
         {/* Conclusion */}
-        <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-50 via-white to-purple-50">
+        <Card className="border-0 shadow-sm bg-slate-50">
           <CardContent className="pt-6">
             <div className="text-center space-y-4">
               <p className="text-slate-600 italic font-medium">
