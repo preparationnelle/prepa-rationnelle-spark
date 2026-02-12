@@ -46,7 +46,7 @@ const OteriaMatricesMarkovCoursPage: React.FC = () => {
               Une matrice <LatexRenderer latex="A \in \mathcal{M}_{n,p}(\mathbb{R})" /> est un tableau de nombres à <LatexRenderer latex="n" /> lignes et <LatexRenderer latex="p" /> colonnes.
             </p>
             <div className="text-center font-semibold mb-2">
-              <LatexRenderer latex="A = (a_{i,j})_{\substack{1 \le i \le n \\ 1 \le j \le p}}" />
+              <LatexRenderer block latex="A = (a_{i,j})_{\substack{1 \le i \le n \\ 1 \le j \le p}}" />
             </div>
           </DefinitionBlock>
 
@@ -56,7 +56,7 @@ const OteriaMatricesMarkovCoursPage: React.FC = () => {
                 Si <LatexRenderer latex="A \in \mathcal{M}_{n,p}" /> et <LatexRenderer latex="B \in \mathcal{M}_{p,q}" />, alors <LatexRenderer latex="C = AB \in \mathcal{M}_{n,q}" /> avec :
               </p>
               <div className="text-center">
-                <LatexRenderer latex="c_{i,j} = \sum_{k=1}^p a_{i,k} b_{k,j}" />
+                <LatexRenderer block latex="c_{i,j} = \sum_{k=1}^p a_{i,k} b_{k,j}" />
               </div>
             </DefinitionBlock>
 
@@ -67,23 +67,251 @@ const OteriaMatricesMarkovCoursPage: React.FC = () => {
             </DefinitionBlock>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            <DefinitionBlock title="Matrices particulières">
-              <ul className="list-disc list-inside space-y-1 text-sm">
-                <li><strong>Diagonale :</strong> <LatexRenderer latex="a_{i,j} = 0" /> si <LatexRenderer latex="i \neq j" />.</li>
-                <li><strong>Triangulaire Sup :</strong> <LatexRenderer latex="a_{i,j} = 0" /> si <LatexRenderer latex="i > j" />.</li>
-                <li><strong>Symétrique :</strong> <LatexRenderer latex="A^T = A" />.</li>
-                <li><strong>Orthogonale :</strong> <LatexRenderer latex="A^T A = I_n" />.</li>
-              </ul>
-            </DefinitionBlock>
+          {/* ─── TRACE ─────────────────────────────────────────────── */}
+          <DefinitionBlock title="Trace d'une matrice">
+            <p className="mb-2">
+              Soit <LatexRenderer latex="A \in \mathcal{M}_n(\mathbb{R})" /> une matrice <strong>carrée</strong> d'ordre <LatexRenderer latex="n" />.
+              La <strong>trace</strong> de <LatexRenderer latex="A" />, notée <LatexRenderer latex="\text{Tr}(A)" />, est la somme de ses éléments diagonaux :
+            </p>
+            <div className="text-center font-semibold mb-3">
+              <LatexRenderer block latex="\text{Tr}(A) = \sum_{i=1}^{n} a_{i,i} = a_{1,1} + a_{2,2} + \cdots + a_{n,n}" />
+            </div>
+            <p className="text-sm mb-2"><strong>Propriétés :</strong></p>
+            <ul className="list-disc list-inside space-y-1 text-sm">
+              <li><LatexRenderer latex="\text{Tr}(A + B) = \text{Tr}(A) + \text{Tr}(B)" /></li>
+              <li><LatexRenderer latex="\text{Tr}(\lambda A) = \lambda \, \text{Tr}(A)" /></li>
+              <li><LatexRenderer latex="\text{Tr}(AB) = \text{Tr}(BA)" /> (même si <LatexRenderer latex="AB \neq BA" />)</li>
+              <li><LatexRenderer latex="\text{Tr}(I_n) = n" /></li>
+            </ul>
+          </DefinitionBlock>
 
-            <DefinitionBlock title="Trace et Déterminant">
-              <ul className="list-disc list-inside space-y-1 text-sm">
-                <li><strong>Trace :</strong> Somme des éléments diagonaux. <LatexRenderer latex="\text{Tr}(AB) = \text{Tr}(BA)" />.</li>
-                <li><strong>Déterminant :</strong> <LatexRenderer latex="\det(AB) = \det(A)\det(B)" />. <LatexRenderer latex="A" /> inversible ssi <LatexRenderer latex="\det(A) \neq 0" />.</li>
-              </ul>
-            </DefinitionBlock>
-          </div>
+          <ExampleBlock title="Exemple — Calcul de trace">
+            <p className="mb-2">
+              Soit <LatexRenderer latex="A = \begin{pmatrix} 3 & 1 & 4 \\ 1 & 5 & 9 \\ 2 & 6 & 2 \end{pmatrix}" />.
+              Alors :
+            </p>
+            <div className="text-center font-semibold">
+              <LatexRenderer block latex="\text{Tr}(A) = 3 + 5 + 2 = 10" />
+            </div>
+          </ExampleBlock>
+
+          <CodeBlock
+            language="python"
+            title="Calcul de la trace avec une boucle for"
+            code={`def calcul_trace(A):
+    n = len(A)
+    trace = 0
+    # On parcourt les éléments diagonaux (indices i, i)
+    for i in range(n):
+        trace += A[i][i]
+    return trace
+
+# Exemple
+M = [[3, 1, 4],
+     [1, 5, 9],
+     [2, 6, 2]]
+
+print("Trace =", calcul_trace(M))  # 10`}
+          />
+
+          {/* ─── MATRICE SYMÉTRIQUE ──────────────────────────────────── */}
+          <DefinitionBlock title="Matrice symétrique">
+            <p className="mb-2">
+              Une matrice carrée <LatexRenderer latex="A \in \mathcal{M}_n(\mathbb{R})" /> est <strong>symétrique</strong> si elle est égale à sa transposée :
+            </p>
+            <div className="text-center font-semibold mb-3">
+              <LatexRenderer block latex="A^T = A \quad \Longleftrightarrow \quad \forall\, (i,j), \;\; a_{i,j} = a_{j,i}" />
+            </div>
+            <p className="text-sm">
+              Autrement dit, les coefficients sont « symétriques » par rapport à la diagonale principale.
+            </p>
+          </DefinitionBlock>
+
+          <ExampleBlock title="Exemple — Matrice symétrique">
+            <p className="mb-2">
+              <LatexRenderer latex="A = \begin{pmatrix} 1 & 2 & 3 \\ 2 & 5 & 7 \\ 3 & 7 & 4 \end{pmatrix}" /> est symétrique car <LatexRenderer latex="a_{1,2} = a_{2,1} = 2" />, <LatexRenderer latex="a_{1,3} = a_{3,1} = 3" />, <LatexRenderer latex="a_{2,3} = a_{3,2} = 7" />.
+            </p>
+          </ExampleBlock>
+
+          <CodeBlock
+            language="python"
+            title="Vérifier si une matrice est symétrique"
+            code={`def est_symetrique(A):
+    n = len(A)
+    for i in range(n):
+        for j in range(n):
+            if A[i][j] != A[j][i]:
+                return False
+    return True
+
+A = [[1, 2, 3],
+     [2, 5, 7],
+     [3, 7, 4]]
+
+print("Symétrique ?", est_symetrique(A))  # True`}
+          />
+
+          {/* ─── MATRICE ANTISYMÉTRIQUE ──────────────────────────────── */}
+          <DefinitionBlock title="Matrice antisymétrique">
+            <p className="mb-2">
+              Une matrice carrée <LatexRenderer latex="A" /> est <strong>antisymétrique</strong> si :
+            </p>
+            <div className="text-center font-semibold mb-3">
+              <LatexRenderer block latex="A^T = -A \quad \Longleftrightarrow \quad \forall\, (i,j), \;\; a_{i,j} = -a_{j,i}" />
+            </div>
+            <p className="text-sm mb-2">
+              En particulier, les éléments diagonaux sont forcément nuls : <LatexRenderer latex="a_{i,i} = -a_{i,i} \implies a_{i,i} = 0" />.
+            </p>
+            <RemarkBlock title="Décomposition symétrique / antisymétrique">
+              <p className="text-sm">
+                Toute matrice carrée peut se décomposer de façon unique en somme d'une matrice symétrique et d'une matrice antisymétrique :
+              </p>
+              <div className="text-center mt-2">
+                <LatexRenderer block latex="A = \underbrace{\frac{A + A^T}{2}}_{\text{sym.}} + \underbrace{\frac{A - A^T}{2}}_{\text{antisym.}}" />
+              </div>
+            </RemarkBlock>
+          </DefinitionBlock>
+
+          <ExampleBlock title="Exemple — Matrice antisymétrique">
+            <p className="mb-2">
+              <LatexRenderer latex="A = \begin{pmatrix} 0 & 2 & -3 \\ -2 & 0 & 5 \\ 3 & -5 & 0 \end{pmatrix}" /> est antisymétrique : chaque <LatexRenderer latex="a_{i,j} = -a_{j,i}" /> et la diagonale est nulle.
+            </p>
+          </ExampleBlock>
+
+          <CodeBlock
+            language="python"
+            title="Vérifier si une matrice est antisymétrique"
+            code={`def est_antisymetrique(A):
+    n = len(A)
+    for i in range(n):
+        for j in range(n):
+            if A[i][j] != -A[j][i]:
+                return False
+    return True
+
+A = [[ 0,  2, -3],
+     [-2,  0,  5],
+     [ 3, -5,  0]]
+
+print("Antisymétrique ?", est_antisymetrique(A))  # True`}
+          />
+
+          {/* ─── MATRICE DIAGONALE ───────────────────────────────────── */}
+          <DefinitionBlock title="Matrice diagonale">
+            <p className="mb-2">
+              Une matrice carrée <LatexRenderer latex="A" /> est <strong>diagonale</strong> si tous les coefficients en dehors de la diagonale principale sont nuls :
+            </p>
+            <div className="text-center font-semibold mb-3">
+              <LatexRenderer block latex="a_{i,j} = 0 \quad \text{pour tout } i \neq j" />
+            </div>
+            <p className="text-sm mb-2">On la note souvent :</p>
+            <div className="text-center mb-2">
+              <LatexRenderer block latex="D = \text{diag}(d_1, d_2, \ldots, d_n) = \begin{pmatrix} d_1 & 0 & \cdots & 0 \\ 0 & d_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & d_n \end{pmatrix}" />
+            </div>
+            <p className="text-sm">
+              <strong>Propriété clé :</strong> Le produit de deux matrices diagonales est diagonal, et <LatexRenderer latex="D^k = \text{diag}(d_1^k, \ldots, d_n^k)" />.
+            </p>
+          </DefinitionBlock>
+
+          <CodeBlock
+            language="python"
+            title="Vérifier si une matrice est diagonale"
+            code={`def est_diagonale(A):
+    n = len(A)
+    for i in range(n):
+        for j in range(n):
+            if i != j and A[i][j] != 0:
+                return False
+    return True
+
+A = [[4, 0, 0],
+     [0, 7, 0],
+     [0, 0, 2]]
+
+print("Diagonale ?", est_diagonale(A))  # True`}
+          />
+
+          {/* ─── MATRICE TRIANGULAIRE SUPÉRIEURE ─────────────────────── */}
+          <DefinitionBlock title="Matrice triangulaire supérieure">
+            <p className="mb-2">
+              Une matrice carrée <LatexRenderer latex="A" /> est <strong>triangulaire supérieure</strong> si tous les coefficients <strong>en dessous</strong> de la diagonale sont nuls :
+            </p>
+            <div className="text-center font-semibold mb-3">
+              <LatexRenderer block latex="a_{i,j} = 0 \quad \text{pour tout } i > j" />
+            </div>
+            <div className="text-center mb-2">
+              <LatexRenderer block latex="U = \begin{pmatrix} u_{1,1} & u_{1,2} & \cdots & u_{1,n} \\ 0 & u_{2,2} & \cdots & u_{2,n} \\ \vdots & \ddots & \ddots & \vdots \\ 0 & \cdots & 0 & u_{n,n} \end{pmatrix}" />
+            </div>
+            <p className="text-sm mb-1">
+              <strong>Propriété :</strong> Le déterminant d'une matrice triangulaire est le produit de ses éléments diagonaux :
+            </p>
+            <div className="text-center font-semibold mb-2">
+              <LatexRenderer block latex="\det(U) = \prod_{i=1}^n u_{i,i}" />
+            </div>
+          </DefinitionBlock>
+
+          <CodeBlock
+            language="python"
+            title="Vérifier si une matrice est triangulaire supérieure"
+            code={`def est_triangulaire_sup(A):
+    n = len(A)
+    for i in range(n):
+        for j in range(n):
+            if i > j and A[i][j] != 0:
+                return False
+    return True
+
+A = [[1, 3, 5],
+     [0, 2, 4],
+     [0, 0, 6]]
+
+print("Triangulaire Sup ?", est_triangulaire_sup(A))  # True`}
+          />
+
+          {/* ─── MATRICE TRIANGULAIRE INFÉRIEURE ─────────────────────── */}
+          <DefinitionBlock title="Matrice triangulaire inférieure">
+            <p className="mb-2">
+              Une matrice carrée <LatexRenderer latex="A" /> est <strong>triangulaire inférieure</strong> si tous les coefficients <strong>au-dessus</strong> de la diagonale sont nuls :
+            </p>
+            <div className="text-center font-semibold mb-3">
+              <LatexRenderer block latex="a_{i,j} = 0 \quad \text{pour tout } i < j" />
+            </div>
+            <div className="text-center mb-2">
+              <LatexRenderer block latex="L = \begin{pmatrix} l_{1,1} & 0 & \cdots & 0 \\ l_{2,1} & l_{2,2} & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ l_{n,1} & l_{n,2} & \cdots & l_{n,n} \end{pmatrix}" />
+            </div>
+            <p className="text-sm mb-1">
+              <strong>Propriété :</strong> Comme pour la triangulaire supérieure, le déterminant est le produit des éléments diagonaux :
+            </p>
+            <div className="text-center font-semibold mb-2">
+              <LatexRenderer block latex="\det(L) = \prod_{i=1}^n l_{i,i}" />
+            </div>
+          </DefinitionBlock>
+
+          <CodeBlock
+            language="python"
+            title="Vérifier si une matrice est triangulaire inférieure"
+            code={`def est_triangulaire_inf(A):
+    n = len(A)
+    for i in range(n):
+        for j in range(n):
+            if i < j and A[i][j] != 0:
+                return False
+    return True
+
+A = [[1, 0, 0],
+     [3, 2, 0],
+     [5, 4, 6]]
+
+print("Triangulaire Inf ?", est_triangulaire_inf(A))  # True`}
+          />
+
+          {/* ─── DÉTERMINANT ─────────────────────────────────────────── */}
+          <DefinitionBlock title="Déterminant">
+            <ul className="list-disc list-inside space-y-1 text-sm">
+              <li><LatexRenderer latex="\det(AB) = \det(A)\det(B)" /></li>
+              <li><LatexRenderer latex="A" /> est inversible si et seulement si <LatexRenderer latex="\det(A) \neq 0" />.</li>
+            </ul>
+          </DefinitionBlock>
         </section>
 
         {/* ─── INVERSION ───────────────────────────────────────────── */}
@@ -97,7 +325,7 @@ const OteriaMatricesMarkovCoursPage: React.FC = () => {
               Si <LatexRenderer latex="A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}" /> et <LatexRenderer latex="ad-bc \neq 0" /> :
             </p>
             <div className="text-center font-semibold">
-              <LatexRenderer latex="A^{-1} = \frac{1}{ad-bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}" />
+              <LatexRenderer block latex="A^{-1} = \frac{1}{ad-bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}" />
             </div>
           </TheoremBlock>
 
@@ -126,7 +354,7 @@ except np.linalg.LinAlgError:
               Un processus <LatexRenderer latex="(X_n)" /> sur un espace d'états fini <LatexRenderer latex="E" /> est une chaîne de Markov si l'avenir ne dépend que du présent (pas du passé).
             </p>
             <div className="text-center font-semibold">
-              <LatexRenderer latex="P(X_{n+1}=j \mid X_n=i, X_{n-1}, \dots) = P(X_{n+1}=j \mid X_n=i)" />
+              <LatexRenderer block latex="P(X_{n+1}=j \mid X_n=i, X_{n-1}, \dots) = P(X_{n+1}=j \mid X_n=i)" />
             </div>
           </DefinitionBlock>
 
@@ -144,7 +372,7 @@ except np.linalg.LinAlgError:
               Si <LatexRenderer latex="\pi_n" /> est la distribution (vecteur ligne) à l'instant <LatexRenderer latex="n" /> :
             </p>
             <div className="text-center font-semibold mb-2">
-              <LatexRenderer latex="\pi_{n+1} = \pi_n P \implies \pi_n = \pi_0 P^n" />
+              <LatexRenderer block latex="\pi_{n+1} = \pi_n P \implies \pi_n = \pi_0 P^n" />
             </div>
             <p className="text-sm">
               <strong>État stationnaire :</strong> <LatexRenderer latex="\pi" /> tel que <LatexRenderer latex="\pi P = \pi" />.
@@ -164,7 +392,7 @@ except np.linalg.LinAlgError:
               Matrice de transition :
             </p>
             <div className="text-center mb-2">
-              <LatexRenderer latex="P = \begin{pmatrix} 0.8 & 0.2 \\ 0.4 & 0.6 \end{pmatrix}" />
+              <LatexRenderer block latex="P = \begin{pmatrix} 0.8 & 0.2 \\ 0.4 & 0.6 \end{pmatrix}" />
             </div>
             <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
               <li>S'il fait beau, 80% de chance qu'il fasse beau demain.</li>

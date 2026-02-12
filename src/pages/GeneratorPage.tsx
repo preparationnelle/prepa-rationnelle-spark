@@ -30,6 +30,19 @@ const GeneratorPage: React.FC = () => {
   // Générateurs principaux
   const mainGenerators = [
     {
+      id: 'ai-chat-hub',
+      title: 'AI Chat Hub',
+      description: 'Accédez à tous nos assistants IA spécialisés (Prépa, Maths, Géopo) en un seul endroit',
+      icon: <Target className="h-10 w-10" />,
+      features: [
+        'Tous les assistants réunis',
+        'Chat fluide et rapide',
+        'Support multi-matières'
+      ],
+      link: '/generator/hub',
+      badge: 'Nouveau'
+    },
+    {
       id: 'languages-unified',
       title: 'Générateur Langues',
       description: 'Feedback instantané sur vos erreurs pour progresser rapidement',

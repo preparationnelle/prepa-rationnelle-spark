@@ -22,7 +22,12 @@ const SUGGESTIONS = [
   "Quelles sont les propriétés des espaces vectoriels ?",
 ];
 
-export const MathGenerator: React.FC = () => {
+interface MathGeneratorProps {
+  variant?: 'default' | 'embedded';
+}
+
+export const MathGenerator: React.FC<MathGeneratorProps> = ({ variant = 'default' }) => {
+  const isEmbedded = variant === 'embedded';
   const [messages, setMessages] = useState<MathMessage[]>([
     {
       role: "assistant",
@@ -38,7 +43,9 @@ export const MathGenerator: React.FC = () => {
 
   // Auto scroll to bottom on new message
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messages.length > 1) {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
   }, [messages]);
 
   // Function to render content with LaTeX
@@ -290,25 +297,36 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
   };
 
   return (
-    <div className="w-full flex justify-center">
-      <Card className="w-full max-w-4xl rounded-2xl shadow-2xl border border-gray-100 bg-white">
-        <CardHeader className="rounded-t-2xl px-6 py-6 bg-gradient-to-r from-orange-600 to-orange-500 border-b-0">
-          <div className="flex items-center gap-4">
-            <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
-              <Calculator className="h-7 w-7 text-white" />
+    <div className={cn("w-full", isEmbedded ? "h-full" : "flex justify-center py-8")}>
+      <Card className={cn(
+        "w-full flex flex-col",
+        isEmbedded ? "h-full border-0 shadow-none rounded-none" : "max-w-4xl rounded-2xl shadow-2xl border border-gray-100 bg-white"
+      )}>
+        <CardHeader className={cn(
+          "bg-gradient-to-r from-orange-600 to-orange-500 border-b-0",
+          isEmbedded ? "px-5 py-3 rounded-none" : "px-6 py-6 rounded-t-2xl"
+        )}>
+          <div className="flex items-center gap-3">
+            <div className={cn(
+              "bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm",
+              isEmbedded ? "w-10 h-10" : "w-14 h-14 rounded-2xl"
+            )}>
+              <Calculator className={cn("text-white", isEmbedded ? "h-5 w-5" : "h-7 w-7")} />
             </div>
             <div className="flex-1">
-              <CardTitle className="text-2xl font-bold text-white">Assistant Maths IA</CardTitle>
-              <CardDescription className="text-white/90 mt-1 font-medium">
-                Théorèmes, démonstrations & exemples avec LaTeX
-              </CardDescription>
+              <CardTitle className={cn("font-bold text-white", isEmbedded ? "text-lg" : "text-2xl")}>Assistant Maths IA</CardTitle>
+              {!isEmbedded && (
+                <CardDescription className="text-white/90 mt-1 font-medium">
+                  Théorèmes, démonstrations & exemples avec LaTeX
+                </CardDescription>
+              )}
             </div>
           </div>
         </CardHeader>
 
-        <CardContent className="p-6 bg-gray-50/50">
+        <CardContent className={cn("bg-gray-50/50 flex flex-col flex-1 overflow-hidden", isEmbedded ? "p-4" : "p-6")}>
           {/* Messages Area */}
-          <div className="space-y-4 mb-6 max-h-96 overflow-y-auto">
+          <div className="space-y-4 mb-6 flex-1 overflow-y-auto pr-2">
             {messages.map((message, index) => (
               <div
                 key={index}
@@ -393,14 +411,14 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
           {!loading && messages.length <= 1 && (
             <div className="mb-6">
               <p className="text-sm font-medium text-gray-700 mb-3">Suggestions de questions :</p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide mask-fade-right">
                 {SUGGESTIONS.map((suggestion, index) => (
                   <Button
                     key={index}
                     variant="outline"
                     size="sm"
                     onClick={() => handleSuggestion(suggestion)}
-                    className="text-xs bg-white hover:bg-orange-50 border-orange-200 text-orange-700 hover:border-orange-400 rounded-xl transition-all duration-200"
+                    className="whitespace-nowrap text-xs bg-white hover:bg-orange-50 border-orange-200 text-orange-700 hover:border-orange-400 rounded-xl transition-all duration-200"
                   >
                     {suggestion}
                   </Button>
@@ -410,7 +428,7 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
           )}
 
           {/* Input Area */}
-          <form onSubmit={handleSend} className="flex gap-3">
+          <form onSubmit={handleSend} className="flex gap-3 mt-auto">
             <Input
               value={input}
               onChange={(e) => setInput(e.target.value)}

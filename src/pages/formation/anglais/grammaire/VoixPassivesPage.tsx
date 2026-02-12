@@ -12,6 +12,8 @@ import {
   HelpCircle,
   Target,
   Calendar
+}   Brain,
+  Layers
 } from 'lucide-react';
 
 const VoixPassivesPage = () => {
@@ -448,12 +450,26 @@ const VoixPassivesPage = () => {
             <p className="text-lg text-orange-700 mb-6">
               After studying the sheet, launch into the exercises to consolidate your knowledge.
             </p>
-            <Link to="/formation/anglais/grammaire/voix-passives/exercices">
-              <Button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-lg">
-                <Calendar className="h-5 w-5 mr-2" />
-                Study this chapter
-              </Button>
-            </Link>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Link to="/formation/anglais/grammaire/voix-passives/exercices">
+                <Button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-lg w-full sm:w-auto">
+                  <Target className="h-5 w-5 mr-2" />
+                  Exercices
+                </Button>
+              </Link>
+              <Link to="/formation/anglais/grammaire/voix-passives/quiz">
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg w-full sm:w-auto">
+                  <Brain className="h-5 w-5 mr-2" />
+                  Quiz
+                </Button>
+              </Link>
+              <Link to="/formation/anglais/grammaire/voix-passives/flashcards">
+                <Button className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 text-lg w-full sm:w-auto">
+                  <Layers className="h-5 w-5 mr-2" />
+                  Flashcards
+                </Button>
+              </Link>
+            </div>
           </CardContent>
         </Card>
 

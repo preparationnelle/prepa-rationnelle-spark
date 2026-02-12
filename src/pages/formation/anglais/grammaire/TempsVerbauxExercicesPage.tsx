@@ -3,9 +3,9 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { 
-  Home, 
-  ChevronRight, 
+import {
+  Home,
+  ChevronRight,
   BookOpen,
   ArrowLeft,
   Clock,
@@ -27,7 +27,8 @@ import {
   Trophy,
   Star,
   BarChart3,
-  X
+  X,
+  Layers
 } from 'lucide-react';
 import { tensesExercises, getTensesExercisesByType, tensesExerciseCategories } from '@/data/englishTensesExercisesData';
 
@@ -95,12 +96,12 @@ const TempsVerbauxExercicesPage = () => {
   const validateAnswer = (exerciseId: string) => {
     const exercise = tensesExercises.find(ex => ex.id === exerciseId);
     if (!exercise) return;
-    
+
     const userAnswer = userAnswers[exerciseId];
     if (!userAnswer) return;
-    
+
     let isCorrect = false;
-    
+
     if (exercise.type === 'qcm' || exercise.type === 'choix') {
       // Pour QCM et choix multiples, extraire la lettre de la réponse
       const userLetter = userAnswer.split(')')[0];
@@ -110,7 +111,7 @@ const TempsVerbauxExercicesPage = () => {
       // Pour les mots à compléter, comparer directement
       isCorrect = userAnswer.toLowerCase().trim() === exercise.correctAnswer.toLowerCase().trim();
     }
-    
+
     setValidatedAnswers(prev => ({ ...prev, [exerciseId]: isCorrect }));
   };
 
@@ -138,7 +139,7 @@ const TempsVerbauxExercicesPage = () => {
     const percentage = Math.round((correctAnswers / totalQuestions) * 100);
     setScore(percentage);
     setShowScore(true);
-    
+
     // Si c'est le mode examen, arrêter le timer
     if (examMode && examTimer) {
       clearInterval(examTimer);
@@ -200,7 +201,7 @@ const TempsVerbauxExercicesPage = () => {
       <>
         {/* Boutons d'action */}
         <div className="flex gap-3">
-          <Button 
+          <Button
             onClick={() => validateAnswer(exerciseId)}
             disabled={!userAnswers[exerciseId]}
             className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2"
@@ -208,8 +209,8 @@ const TempsVerbauxExercicesPage = () => {
             <CheckCircle className="h-4 w-4" />
             Valider ma réponse
           </Button>
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             onClick={() => toggleCorrections(exerciseId)}
             className="flex items-center gap-2"
           >
@@ -220,20 +221,18 @@ const TempsVerbauxExercicesPage = () => {
 
         {/* Feedback immédiat */}
         {validatedAnswers[exerciseId] !== undefined && (
-          <div className={`rounded-lg p-4 border-2 ${
-            validatedAnswers[exerciseId] 
-              ? 'bg-green-50 border-green-200' 
+          <div className={`rounded-lg p-4 border-2 ${validatedAnswers[exerciseId]
+              ? 'bg-green-50 border-green-200'
               : 'bg-red-50 border-red-200'
-          }`}>
+            }`}>
             <div className="flex items-center gap-2">
               {validatedAnswers[exerciseId] ? (
                 <CheckCircle className="h-5 w-5 text-green-600" />
               ) : (
                 <X className="h-5 w-5 text-red-600" />
               )}
-              <span className={`font-semibold ${
-                validatedAnswers[exerciseId] ? 'text-green-800' : 'text-red-800'
-              }`}>
+              <span className={`font-semibold ${validatedAnswers[exerciseId] ? 'text-green-800' : 'text-red-800'
+                }`}>
                 {validatedAnswers[exerciseId] ? '✅ Correct!' : '❌ Incorrect'}
               </span>
             </div>
@@ -293,15 +292,27 @@ const TempsVerbauxExercicesPage = () => {
       <div className="container mx-auto px-4 py-8">
         {/* En-tête */}
         <div className="text-center mb-10">
-          <div className="flex justify-center mb-4">
+          <div className="flex justify-center mb-4 gap-4">
             <Link to="/formation/anglais/grammaire/temps-verbaux">
               <Button variant="outline" className="flex items-center gap-2">
                 <ArrowLeft className="h-4 w-4" />
-                Retour aux Temps Verbaux
+                Retour au Cours
+              </Button>
+            </Link>
+            <Link to="/formation/anglais/grammaire/temps-verbaux/quiz">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2">
+                <Brain className="h-4 w-4" />
+                Aller au Quiz
+              </Button>
+            </Link>
+            <Link to="/formation/anglais/grammaire/temps-verbaux/flashcards">
+              <Button className="bg-emerald-600 hover:bg-emerald-700 text-white flex items-center gap-2">
+                <Layers className="h-4 w-4" />
+                Flashcards
               </Button>
             </Link>
           </div>
-          
+
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
             <div className="p-3 rounded-lg bg-blue-600 text-white">
               <Target className="h-9 w-9" />
@@ -421,22 +432,22 @@ const TempsVerbauxExercicesPage = () => {
             </CardHeader>
             <CardContent>
               <div className="flex flex-wrap gap-4">
-                <Button 
-                  variant={selectedExerciseType === 'qcm' ? 'default' : 'outline'} 
+                <Button
+                  variant={selectedExerciseType === 'qcm' ? 'default' : 'outline'}
                   onClick={() => setSelectedExerciseType('qcm')}
                   className={selectedExerciseType === 'qcm' ? 'bg-blue-600 hover:bg-blue-700 text-white' : 'border-blue-600 text-blue-600 hover:bg-blue-50'}
                 >
                   QCM ({getTensesExercisesByType('qcm').length})
                 </Button>
-                <Button 
-                  variant={selectedExerciseType === 'choix' ? 'default' : 'outline'} 
+                <Button
+                  variant={selectedExerciseType === 'choix' ? 'default' : 'outline'}
                   onClick={() => setSelectedExerciseType('choix')}
                   className={selectedExerciseType === 'choix' ? 'bg-blue-600 hover:bg-blue-700 text-white' : 'border-blue-600 text-blue-600 hover:bg-blue-50'}
                 >
                   Choix multiples ({getTensesExercisesByType('choix').length})
                 </Button>
-                <Button 
-                  variant={selectedExerciseType === 'complet' ? 'default' : 'outline'} 
+                <Button
+                  variant={selectedExerciseType === 'complet' ? 'default' : 'outline'}
                   onClick={() => setSelectedExerciseType('complet')}
                   className={selectedExerciseType === 'complet' ? 'bg-blue-600 hover:bg-blue-700 text-white' : 'border-blue-600 text-blue-600 hover:bg-blue-50'}
                 >
@@ -522,7 +533,7 @@ const TempsVerbauxExercicesPage = () => {
 
             {/* Boutons de navigation */}
             <div className="flex justify-between items-center mt-6">
-              <Button 
+              <Button
                 onClick={() => setCurrentExerciseIndex(prev => Math.max(0, prev - 1))}
                 disabled={currentExerciseIndex === 0 || examStarted} // Disable in exam mode
                 variant="outline"
@@ -532,7 +543,7 @@ const TempsVerbauxExercicesPage = () => {
                 Question précédente
               </Button>
               <span className="text-sm text-gray-500 hidden md:block">Utilisez les flèches ← → pour naviguer</span>
-              <Button 
+              <Button
                 onClick={() => setCurrentExerciseIndex(prev => Math.min(filteredExercises.length - 1, prev + 1))}
                 disabled={currentExerciseIndex === filteredExercises.length - 1 || examStarted} // Disable in exam mode
                 variant="outline"
@@ -558,16 +569,16 @@ const TempsVerbauxExercicesPage = () => {
         {/* Boutons de contrôle (globaux si pas en mode examen) */}
         {!examMode && (
           <div className="flex justify-center gap-4 mt-10">
-            <Button 
-              onClick={calculateScore} 
+            <Button
+              onClick={calculateScore}
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg flex items-center gap-2"
             >
               <CheckCircle className="h-5 w-5" />
               Terminer et voir le score
             </Button>
-            <Button 
-              onClick={resetQuiz} 
-              variant="outline" 
+            <Button
+              onClick={resetQuiz}
+              variant="outline"
               className="px-8 py-3 text-lg flex items-center gap-2 border-blue-600 text-blue-600 hover:bg-blue-50"
             >
               <RotateCcw className="h-5 w-5" />
@@ -593,9 +604,8 @@ const TempsVerbauxExercicesPage = () => {
                   </p>
                 </div>
               )}
-              <div className={`text-lg ${
-                examMode ? 'text-blue-700' : 'text-blue-700'
-              }`}>
+              <div className={`text-lg ${examMode ? 'text-blue-700' : 'text-blue-700'
+                }`}>
                 {score >= 80 ? (
                   <div className="flex items-center justify-center gap-2">
                     <Trophy className="h-6 w-6 text-yellow-500" />

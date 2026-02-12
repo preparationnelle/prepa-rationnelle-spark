@@ -12,6 +12,8 @@ import {
   HelpCircle,
   Target,
   Calendar
+}   Brain,
+  Layers
 } from 'lucide-react';
 
 const pairs: Array<[string, string, string]> = [
@@ -149,12 +151,26 @@ const NuancesLexicalesPage = () => {
           </CardHeader>
           <CardContent className="text-center">
             <p className="text-lg text-orange-700 mb-6">Choisissez la bonne forme selon le contexte.</p>
-            <Link to="/formation/anglais/grammaire/nuances-lexicales/exercices">
-              <Button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-lg">
-                <Calendar className="h-5 w-5 mr-2" />
-                Étudier ce chapitre
-              </Button>
-            </Link>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Link to="/formation/anglais/grammaire/nuances-lexicales/exercices">
+                <Button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-lg w-full sm:w-auto">
+                  <Target className="h-5 w-5 mr-2" />
+                  Exercices
+                </Button>
+              </Link>
+              <Link to="/formation/anglais/grammaire/nuances-lexicales/quiz">
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg w-full sm:w-auto">
+                  <Brain className="h-5 w-5 mr-2" />
+                  Quiz
+                </Button>
+              </Link>
+              <Link to="/formation/anglais/grammaire/nuances-lexicales/flashcards">
+                <Button className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 text-lg w-full sm:w-auto">
+                  <Layers className="h-5 w-5 mr-2" />
+                  Flashcards
+                </Button>
+              </Link>
+            </div>
           </CardContent>
         </Card>
 

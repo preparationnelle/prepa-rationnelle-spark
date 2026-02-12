@@ -91,7 +91,7 @@ const PremiereAnneeESHPage = () => {
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
                           Introduction
                         </Button>
-                        </Link>
+                      </Link>
                       <Link to="/formation/esh/module1/acteurs-fonctions-economie/module">
                         <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
                           Accéder au module
@@ -116,7 +116,7 @@ const PremiereAnneeESHPage = () => {
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
                           Introduction
                         </Button>
-                        </Link>
+                      </Link>
                       <Link to="/formation/esh/module1/monnaie-financement-economie/module">
                         <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
                           Accéder au module
@@ -125,7 +125,7 @@ const PremiereAnneeESHPage = () => {
                     </div>
                   </div>
                 </div>
-                  </div>
+              </div>
 
               {/* 1.3 Les grands courants de la pensée économique */}
               <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-blue-100">
@@ -141,7 +141,7 @@ const PremiereAnneeESHPage = () => {
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
                           Introduction
                         </Button>
-                        </Link>
+                      </Link>
                       <Link to="/formation/esh/module1/courants-economiques/module">
                         <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
                           Accéder au module
@@ -150,9 +150,9 @@ const PremiereAnneeESHPage = () => {
                     </div>
                   </div>
                 </div>
-                  </div>
+              </div>
 
-                            {/* Section principale - Le comportement des agents et le fonctionnement du marché */}
+              {/* Section principale - Le comportement des agents et le fonctionnement du marché */}
               <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-blue-200">
                 <div className="flex items-start gap-4">
                   <div className="flex-1">
@@ -263,10 +263,13 @@ const PremiereAnneeESHPage = () => {
                         </Button>
                       </Link>
                       <Link to="/formation/esh/module1/courants-sociologiques">
-                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                          Accéder au module
+                        <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
+                          Introduction
                         </Button>
                       </Link>
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -284,12 +287,12 @@ const PremiereAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module1/methodes-sociologiques">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                      Introduction
-                    </Button>
+                          Introduction
+                        </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                      Accéder au module
-                    </Button>
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -339,14 +342,14 @@ const PremiereAnneeESHPage = () => {
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
                           Introduction
                         </Button>
-                        </Link>
+                      </Link>
                       <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
                         Accéder au module
                       </Button>
                     </div>
                   </div>
                 </div>
-                  </div>
+              </div>
 
               {/* 2.2 Inégalités et stratégies de développement */}
               <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-blue-100">
@@ -363,15 +366,15 @@ const PremiereAnneeESHPage = () => {
                           Introduction
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Accéder au module
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
                       </Button>
                     </div>
                   </div>
                 </div>
-                  </div>
+              </div>
 
-                            {/* 2.3 La soutenabilité de la croissance et du développement */}
+              {/* 2.3 La soutenabilité de la croissance et du développement */}
               <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-blue-100">
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center flex-shrink-0">
@@ -449,8 +452,8 @@ const PremiereAnneeESHPage = () => {
                           Introduction
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Accéder au module
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
                       </Button>
                     </div>
                   </div>
@@ -472,8 +475,8 @@ const PremiereAnneeESHPage = () => {
                           Introduction
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Accéder au module
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
                       </Button>
                     </div>
                   </div>
@@ -541,7 +544,7 @@ const PremiereAnneeESHPage = () => {
                     </div>
                   </div>
                 </div>
-                  </div>
+              </div>
 
               {/* 2.9 Éléments de sociologie du travail et des organisations */}
               <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-blue-100">
@@ -555,29 +558,29 @@ const PremiereAnneeESHPage = () => {
                     <div className="flex gap-2">
                       <Link to="/formation/esh/module2/sociologie-travail">
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 px-3 h-7">
-                      Introduction
-                    </Button>
+                          Introduction
+                        </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                      Accéder au module
-                    </Button>
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
+                      </Button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            </div>
           </div>
+        </div>
 
-          {/* Call to action */}
-          <div className="text-center mt-12">
-            <Link to="/formation/esh/deuxieme-annee">
-              <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-lg">
-                Passer à la deuxième année
-                <ChevronRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
+        {/* Call to action */}
+        <div className="text-center mt-12">
+          <Link to="/formation/esh/deuxieme-annee">
+            <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-lg">
+              Passer à la deuxième année
+              <ChevronRight className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

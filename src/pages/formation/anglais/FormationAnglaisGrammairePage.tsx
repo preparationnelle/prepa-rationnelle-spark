@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import {
   Globe,
   Calendar,
-  Briefcase
+  Briefcase,
+  Brain,
+  Layers
 } from 'lucide-react';
 
 const FormationAnglaisGrammairePage = () => {
@@ -52,6 +54,18 @@ const FormationAnglaisGrammairePage = () => {
                           Exercices
                         </Button>
                       </Link>
+                      <Link to="/formation/anglais/grammaire/temps-verbaux/quiz">
+                        <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-md">
+                          <Brain className="mr-2 h-4 w-4" />
+                          Quiz
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/temps-verbaux/flashcards">
+                        <Button variant="outline" className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-md">
+                          <Layers className="mr-2 h-4 w-4" />
+                          Flashcards
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -77,6 +91,18 @@ const FormationAnglaisGrammairePage = () => {
                         <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
                           <Briefcase className="mr-2 h-4 w-4" />
                           Exercices
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/conditionnels/quiz">
+                        <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-md">
+                          <Brain className="mr-2 h-4 w-4" />
+                          Quiz
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/conditionnels/flashcards">
+                        <Button variant="outline" className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-md">
+                          <Layers className="mr-2 h-4 w-4" />
+                          Flashcards
                         </Button>
                       </Link>
                     </div>
@@ -106,6 +132,18 @@ const FormationAnglaisGrammairePage = () => {
                           Exercices
                         </Button>
                       </Link>
+                      <Link to="/formation/anglais/grammaire/voix-passives/quiz">
+                        <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-md">
+                          <Brain className="mr-2 h-4 w-4" />
+                          Quiz
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/voix-passives/flashcards">
+                        <Button variant="outline" className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-md">
+                          <Layers className="mr-2 h-4 w-4" />
+                          Flashcards
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -131,6 +169,18 @@ const FormationAnglaisGrammairePage = () => {
                         <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
                           <Briefcase className="mr-2 h-4 w-4" />
                           Exercices
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/discours-indirect/quiz">
+                        <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-md">
+                          <Brain className="mr-2 h-4 w-4" />
+                          Quiz
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/discours-indirect/flashcards">
+                        <Button variant="outline" className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-md">
+                          <Layers className="mr-2 h-4 w-4" />
+                          Flashcards
                         </Button>
                       </Link>
                     </div>
@@ -160,6 +210,18 @@ const FormationAnglaisGrammairePage = () => {
                           Exercices
                         </Button>
                       </Link>
+                      <Link to="/formation/anglais/grammaire/modaux/quiz">
+                        <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-md">
+                          <Brain className="mr-2 h-4 w-4" />
+                          Quiz
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/modaux/flashcards">
+                        <Button variant="outline" className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-md">
+                          <Layers className="mr-2 h-4 w-4" />
+                          Flashcards
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -185,6 +247,18 @@ const FormationAnglaisGrammairePage = () => {
                         <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
                           <Briefcase className="mr-2 h-4 w-4" />
                           Exercices
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/prepositions/quiz">
+                        <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-md">
+                          <Brain className="mr-2 h-4 w-4" />
+                          Quiz
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/prepositions/flashcards">
+                        <Button variant="outline" className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-md">
+                          <Layers className="mr-2 h-4 w-4" />
+                          Flashcards
                         </Button>
                       </Link>
                     </div>
@@ -214,6 +288,18 @@ const FormationAnglaisGrammairePage = () => {
                           Exercices
                         </Button>
                       </Link>
+                      <Link to="/formation/anglais/grammaire/articles/quiz">
+                        <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-md">
+                          <Brain className="mr-2 h-4 w-4" />
+                          Quiz
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/articles/flashcards">
+                        <Button variant="outline" className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-md">
+                          <Layers className="mr-2 h-4 w-4" />
+                          Flashcards
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -239,6 +325,18 @@ const FormationAnglaisGrammairePage = () => {
                         <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
                           <Briefcase className="mr-2 h-4 w-4" />
                           Exercices
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/relatives/quiz">
+                        <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-md">
+                          <Brain className="mr-2 h-4 w-4" />
+                          Quiz
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/relatives/flashcards">
+                        <Button variant="outline" className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-md">
+                          <Layers className="mr-2 h-4 w-4" />
+                          Flashcards
                         </Button>
                       </Link>
                     </div>
@@ -268,6 +366,18 @@ const FormationAnglaisGrammairePage = () => {
                           Exercices
                         </Button>
                       </Link>
+                      <Link to="/formation/anglais/grammaire/gerondif-infinitif/quiz">
+                        <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-md">
+                          <Brain className="mr-2 h-4 w-4" />
+                          Quiz
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/gerondif-infinitif/flashcards">
+                        <Button variant="outline" className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-md">
+                          <Layers className="mr-2 h-4 w-4" />
+                          Flashcards
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -293,6 +403,18 @@ const FormationAnglaisGrammairePage = () => {
                         <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
                           <Briefcase className="mr-2 h-4 w-4" />
                           Exercices
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/comparatifs/quiz">
+                        <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-md">
+                          <Brain className="mr-2 h-4 w-4" />
+                          Quiz
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/comparatifs/flashcards">
+                        <Button variant="outline" className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-md">
+                          <Layers className="mr-2 h-4 w-4" />
+                          Flashcards
                         </Button>
                       </Link>
                     </div>
@@ -322,6 +444,18 @@ const FormationAnglaisGrammairePage = () => {
                           Exercices
                         </Button>
                       </Link>
+                      <Link to="/formation/anglais/grammaire/questions/quiz">
+                        <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-md">
+                          <Brain className="mr-2 h-4 w-4" />
+                          Quiz
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/questions/flashcards">
+                        <Button variant="outline" className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-md">
+                          <Layers className="mr-2 h-4 w-4" />
+                          Flashcards
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -347,6 +481,18 @@ const FormationAnglaisGrammairePage = () => {
                         <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
                           <Briefcase className="mr-2 h-4 w-4" />
                           Exercices
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/expressions-temps/quiz">
+                        <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-md">
+                          <Brain className="mr-2 h-4 w-4" />
+                          Quiz
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/expressions-temps/flashcards">
+                        <Button variant="outline" className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-md">
+                          <Layers className="mr-2 h-4 w-4" />
+                          Flashcards
                         </Button>
                       </Link>
                     </div>
@@ -376,6 +522,18 @@ const FormationAnglaisGrammairePage = () => {
                           Exercices
                         </Button>
                       </Link>
+                      <Link to="/formation/anglais/grammaire/concordance/quiz">
+                        <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-md">
+                          <Brain className="mr-2 h-4 w-4" />
+                          Quiz
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/concordance/flashcards">
+                        <Button variant="outline" className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-md">
+                          <Layers className="mr-2 h-4 w-4" />
+                          Flashcards
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -401,6 +559,18 @@ const FormationAnglaisGrammairePage = () => {
                         <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
                           <Briefcase className="mr-2 h-4 w-4" />
                           Exercices
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/quantifieurs/quiz">
+                        <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-md">
+                          <Brain className="mr-2 h-4 w-4" />
+                          Quiz
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/quantifieurs/flashcards">
+                        <Button variant="outline" className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-md">
+                          <Layers className="mr-2 h-4 w-4" />
+                          Flashcards
                         </Button>
                       </Link>
                     </div>
@@ -430,6 +600,18 @@ const FormationAnglaisGrammairePage = () => {
                           Exercices
                         </Button>
                       </Link>
+                      <Link to="/formation/anglais/grammaire/subjunctif/quiz">
+                        <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-md">
+                          <Brain className="mr-2 h-4 w-4" />
+                          Quiz
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/subjunctif/flashcards">
+                        <Button variant="outline" className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-md">
+                          <Layers className="mr-2 h-4 w-4" />
+                          Flashcards
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -455,6 +637,18 @@ const FormationAnglaisGrammairePage = () => {
                         <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
                           <Briefcase className="mr-2 h-4 w-4" />
                           Exercices
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/inversions/quiz">
+                        <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-md">
+                          <Brain className="mr-2 h-4 w-4" />
+                          Quiz
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/inversions/flashcards">
+                        <Button variant="outline" className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-md">
+                          <Layers className="mr-2 h-4 w-4" />
+                          Flashcards
                         </Button>
                       </Link>
                     </div>
@@ -484,6 +678,18 @@ const FormationAnglaisGrammairePage = () => {
                           Exercices
                         </Button>
                       </Link>
+                      <Link to="/formation/anglais/grammaire/connecteurs/quiz">
+                        <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-md">
+                          <Brain className="mr-2 h-4 w-4" />
+                          Quiz
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/connecteurs/flashcards">
+                        <Button variant="outline" className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-md">
+                          <Layers className="mr-2 h-4 w-4" />
+                          Flashcards
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -509,6 +715,18 @@ const FormationAnglaisGrammairePage = () => {
                         <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
                           <Briefcase className="mr-2 h-4 w-4" />
                           Exercices
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/verbes-irreguliers/quiz">
+                        <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-md">
+                          <Brain className="mr-2 h-4 w-4" />
+                          Quiz
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/verbes-irreguliers/flashcards">
+                        <Button variant="outline" className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-md">
+                          <Layers className="mr-2 h-4 w-4" />
+                          Flashcards
                         </Button>
                       </Link>
                     </div>
@@ -538,6 +756,18 @@ const FormationAnglaisGrammairePage = () => {
                           Exercices
                         </Button>
                       </Link>
+                      <Link to="/formation/anglais/grammaire/causatives/quiz">
+                        <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-md">
+                          <Brain className="mr-2 h-4 w-4" />
+                          Quiz
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/causatives/flashcards">
+                        <Button variant="outline" className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-md">
+                          <Layers className="mr-2 h-4 w-4" />
+                          Flashcards
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -563,6 +793,18 @@ const FormationAnglaisGrammairePage = () => {
                         <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
                           <Briefcase className="mr-2 h-4 w-4" />
                           Exercices
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/nuances-lexicales/quiz">
+                        <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-md">
+                          <Brain className="mr-2 h-4 w-4" />
+                          Quiz
+                        </Button>
+                      </Link>
+                      <Link to="/formation/anglais/grammaire/nuances-lexicales/flashcards">
+                        <Button variant="outline" className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-md">
+                          <Layers className="mr-2 h-4 w-4" />
+                          Flashcards
                         </Button>
                       </Link>
                     </div>

@@ -2,8 +2,14 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { MessageCircle } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 
 const ChatWidget = () => {
+  const location = useLocation();
+
+  // Hide on geopolitique pages where AtlasECGFloatingWidget is shown instead
+  if (location.pathname.startsWith('/formation/geopolitique')) return null;
+
   const handleWhatsAppRedirect = () => {
     const message = "Bonjour, j'ai une question sur la prépa et j'aimerais échanger avec l'équipe Prépa Rationnelle !";
     const encodedMessage = encodeURIComponent(message);

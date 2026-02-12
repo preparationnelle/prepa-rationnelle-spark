@@ -27,8 +27,10 @@ const PythonQuizPage = lazy(() => import('../pages/formation/Python/PythonQuizPa
 const FormationAnglaisPage = lazy(() => import('../pages/FormationAnglaisPage'));
 const FormationAnglaisVocabulairePage = lazy(() => import('../pages/formation/anglais/FormationAnglaisVocabulairePage'));
 const FormationAnglaisGrammairePage = lazy(() => import('../pages/formation/anglais/FormationAnglaisGrammairePage'));
+const EnglishQuizPage = lazy(() => import('../pages/formation/anglais/grammaire/EnglishQuizPage'));
 const AnglaisTempsVerbauxPage = lazy(() => import('../pages/formation/anglais/grammaire/TempsVerbauxPage'));
 const AnglaisTempsVerbauxExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/TempsVerbauxExercicesPage'));
+const AnglaisTempsVerbauxQuizPage = lazy(() => import('../pages/formation/anglais/grammaire/TempsVerbauxQuizPage'));
 const AnglaisConditionnelsPage = lazy(() => import('../pages/formation/anglais/grammaire/ConditionnelsPage'));
 const AnglaisConditionnelsExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/ConditionnelsExercicesPage'));
 const AnglaisVoixPassivesPage = lazy(() => import('../pages/formation/anglais/grammaire/VoixPassivesPage'));
@@ -662,8 +664,10 @@ const GeopoliticsGeneratorPage = lazy(() => import('../pages/generator/Geopoliti
 const GeopoliticsUnifiedGeneratorPage = lazy(() => import('../pages/generator/GeopoliticsUnifiedGeneratorPage'));
 const LanguagesGeneratorPage = lazy(() => import('../pages/generator/LanguagesGeneratorPage'));
 const PrepaChatbotGeneratorPage = lazy(() => import('../pages/generator/PrepaChatbotGeneratorPage'));
+const AtlasECGChatbotPage = lazy(() => import('../pages/generator/AtlasECGChatbotPage'));
 const CultureGeneraleGeneratorPage = lazy(() => import('../pages/generator/CultureGeneraleGeneratorPage'));
 const CultureGeneraleUnifiedGeneratorPage = lazy(() => import('../pages/generator/CultureGeneraleUnifiedGeneratorPage'));
+const AIChatHubPage = lazy(() => import('../pages/generator/AIChatHubPage'));
 
 const ThemeGrammarGeneratorPage = lazy(() => import('../pages/generator/ThemeGrammarGeneratorPage'));
 const ParagraphGeneratorPage = lazy(() => import('../pages/generator/ParagraphGeneratorPage'));
@@ -772,6 +776,7 @@ export const routes: RouteConfig[] = [
   { path: '/register', component: RegisterPage, title: 'Inscription' },
   { path: '/contact', component: ContactPage, title: 'Contact' },
   { path: '/generator', component: GeneratorPage, title: 'Générateurs IA' },
+  { path: '/generator/hub', component: AIChatHubPage, title: 'AI Chat Hub' },
   { path: '/colle', component: ColleAccueilPage, title: 'Colle de Langues', protected: true },
   { path: '/colle/session/:sessionId', component: ColleSessionPage, title: 'Session de Colle', protected: true },
   { path: '/colle/feedback/:sessionId', component: ColleFeedbackPage, title: 'Feedback Colle', protected: true },
@@ -952,44 +957,64 @@ export const routes: RouteConfig[] = [
   { path: '/formation/anglais/grammaire', component: FormationAnglaisGrammairePage, title: 'Grammaire Anglaise' },
   { path: '/formation/anglais/grammaire/conditionnels', component: AnglaisConditionnelsPage, title: 'Structures Conditionnelles' },
   { path: '/formation/anglais/grammaire/conditionnels/exercices', component: AnglaisConditionnelsExercicesPage, title: 'Exercices Structures Conditionnelles' },
+  { path: '/formation/anglais/grammaire/conditionnels/quiz', component: EnglishQuizPage, title: 'Quiz Structures Conditionnelles' },
   { path: '/formation/anglais/grammaire/temps-verbaux', component: AnglaisTempsVerbauxPage, title: 'Temps verbaux' },
   { path: '/formation/anglais/grammaire/temps-verbaux/exercices', component: AnglaisTempsVerbauxExercicesPage, title: 'Exercices Temps Verbaux' },
+  { path: '/formation/anglais/grammaire/temps-verbaux/quiz', component: EnglishQuizPage, title: 'Quiz Temps Verbaux' },
   { path: '/formation/anglais/grammaire/voix-passives', component: AnglaisVoixPassivesPage, title: 'Voix passive' },
   { path: '/formation/anglais/grammaire/voix-passives/exercices', component: AnglaisVoixPassivesExercicesPage, title: 'Exercices Voix Passive' },
+  { path: '/formation/anglais/grammaire/voix-passives/quiz', component: EnglishQuizPage, title: 'Quiz Voix Passive' },
   { path: '/formation/anglais/grammaire/discours-indirect', component: AnglaisDiscoursIndirectPage, title: 'Discours indirect' },
   { path: '/formation/anglais/grammaire/discours-indirect/exercices', component: AnglaisDiscoursIndirectExercicesPage, title: 'Exercices Discours Indirect' },
+  { path: '/formation/anglais/grammaire/discours-indirect/quiz', component: EnglishQuizPage, title: 'Quiz Discours Indirect' },
   { path: '/formation/anglais/grammaire/modaux', component: AnglaisModauxPage, title: 'Modaux et Auxiliaires' },
   { path: '/formation/anglais/grammaire/modaux/exercices', component: AnglaisModauxExercicesPage, title: 'Exercices Modaux' },
+  { path: '/formation/anglais/grammaire/modaux/quiz', component: EnglishQuizPage, title: 'Quiz Modaux' },
   { path: '/formation/anglais/grammaire/prepositions', component: AnglaisPrepositionsPhrasalVerbsPage, title: 'Prépositions & Phrasal Verbs' },
   { path: '/formation/anglais/grammaire/prepositions/exercices', component: AnglaisPrepositionsPhrasalVerbsExercicesPage, title: 'Exercices Prépositions & Phrasal Verbs' },
+  { path: '/formation/anglais/grammaire/prepositions/quiz', component: EnglishQuizPage, title: 'Quiz Prépositions & Phrasal Verbs' },
   { path: '/formation/anglais/grammaire/articles', component: AnglaisArticlesDeterminantsPage, title: 'Articles & Déterminants' },
   { path: '/formation/anglais/grammaire/articles/exercices', component: AnglaisArticlesDeterminantsExercicesPage, title: 'Exercices Articles & Déterminants' },
-  { path: '/formation/anglais/grammaire/relatives/exercices', component: AnglaisRelativesExercicesPage, title: 'Exercices Subordonnées Relatives' },
-  { path: '/formation/anglais/grammaire/gerondif-infinitif/exercices', component: AnglaisGerondifInfinitifExercicesPage, title: 'Exercices Gérondif & Infinitif' },
+  { path: '/formation/anglais/grammaire/articles/quiz', component: EnglishQuizPage, title: 'Quiz Articles & Déterminants' },
   { path: '/formation/anglais/grammaire/relatives', component: AnglaisRelativesPage, title: 'Subordonnées relatives' },
+  { path: '/formation/anglais/grammaire/relatives/exercices', component: AnglaisRelativesExercicesPage, title: 'Exercices Subordonnées Relatives' },
+  { path: '/formation/anglais/grammaire/relatives/quiz', component: EnglishQuizPage, title: 'Quiz Subordonnées Relatives' },
   { path: '/formation/anglais/grammaire/gerondif-infinitif', component: AnglaisGerondifInfinitifPage, title: 'Gérondif & Infinitif' },
+  { path: '/formation/anglais/grammaire/gerondif-infinitif/exercices', component: AnglaisGerondifInfinitifExercicesPage, title: 'Exercices Gérondif & Infinitif' },
+  { path: '/formation/anglais/grammaire/gerondif-infinitif/quiz', component: EnglishQuizPage, title: 'Quiz Gérondif & Infinitif' },
   { path: '/formation/anglais/grammaire/comparatifs', component: AnglaisComparatifsSuperlatifsPage, title: 'Comparatifs & Superlatifs' },
   { path: '/formation/anglais/grammaire/comparatifs/exercices', component: AnglaisComparatifsSuperlatifsExercicesPage, title: 'Exercices Comparatifs & Superlatifs' },
+  { path: '/formation/anglais/grammaire/comparatifs/quiz', component: EnglishQuizPage, title: 'Quiz Comparatifs & Superlatifs' },
   { path: '/formation/anglais/grammaire/questions', component: AnglaisQuestionsInterrogatifsPage, title: 'Questions & Interrogatifs' },
   { path: '/formation/anglais/grammaire/questions/exercices', component: AnglaisQuestionsInterrogatifsExercicesPage, title: 'Exercices Questions & Interrogatifs' },
+  { path: '/formation/anglais/grammaire/questions/quiz', component: EnglishQuizPage, title: 'Quiz Questions & Interrogatifs' },
   { path: '/formation/anglais/grammaire/expressions-temps', component: AnglaisExpressionsTempsPage, title: 'Expressions de temps' },
   { path: '/formation/anglais/grammaire/expressions-temps/exercices', component: AnglaisExpressionsTempsExercicesPage, title: 'Exercices Expressions de temps' },
+  { path: '/formation/anglais/grammaire/expressions-temps/quiz', component: EnglishQuizPage, title: 'Quiz Expressions de Temps' },
   { path: '/formation/anglais/grammaire/concordance', component: AnglaisConcordanceTempsPage, title: 'Concordance des temps' },
   { path: '/formation/anglais/grammaire/concordance/exercices', component: AnglaisConcordanceTempsExercicesPage, title: 'Exercices Concordance des temps' },
+  { path: '/formation/anglais/grammaire/concordance/quiz', component: EnglishQuizPage, title: 'Quiz Concordance des Temps' },
   { path: '/formation/anglais/grammaire/quantifieurs', component: AnglaisQuantifieursPage, title: 'Quantifieurs' },
   { path: '/formation/anglais/grammaire/quantifieurs/exercices', component: AnglaisQuantifieursExercicesPage, title: 'Exercices Quantifieurs' },
+  { path: '/formation/anglais/grammaire/quantifieurs/quiz', component: EnglishQuizPage, title: 'Quiz Quantifieurs' },
   { path: '/formation/anglais/grammaire/subjunctif', component: AnglaisSubjunctifPage, title: 'Subjunctif & Structures Subjectives' },
   { path: '/formation/anglais/grammaire/subjunctif/exercices', component: AnglaisSubjunctifExercicesPage, title: 'Exercices Subjunctif' },
+  { path: '/formation/anglais/grammaire/subjunctif/quiz', component: EnglishQuizPage, title: 'Quiz Subjunctif & Structures Subjectives' },
   { path: '/formation/anglais/grammaire/inversions', component: AnglaisInversionsEmphasePage, title: 'Inversions & Emphase' },
   { path: '/formation/anglais/grammaire/inversions/exercices', component: AnglaisInversionsEmphaseExercicesPage, title: 'Exercices Inversions & Emphase' },
+  { path: '/formation/anglais/grammaire/inversions/quiz', component: EnglishQuizPage, title: 'Quiz Inversions & Emphase' },
   { path: '/formation/anglais/grammaire/connecteurs', component: AnglaisConnecteursLogiquesPage, title: 'Connecteurs logiques' },
   { path: '/formation/anglais/grammaire/connecteurs/exercices', component: AnglaisConnecteursLogiquesExercicesPage, title: 'Exercices Connecteurs logiques' },
+  { path: '/formation/anglais/grammaire/connecteurs/quiz', component: EnglishQuizPage, title: 'Quiz Connecteurs Logiques' },
   { path: '/formation/anglais/grammaire/verbes-irreguliers', component: AnglaisVerbesIrreguliersPage, title: 'Verbes irréguliers' },
   { path: '/formation/anglais/grammaire/verbes-irreguliers/exercices', component: AnglaisVerbesIrreguliersExercicesPage, title: 'Exercices Verbes irréguliers' },
+  { path: '/formation/anglais/grammaire/verbes-irreguliers/quiz', component: EnglishQuizPage, title: 'Quiz Verbes Irréguliers' },
   { path: '/formation/anglais/grammaire/causatives', component: AnglaisCausativesPage, title: 'Structures causatives' },
   { path: '/formation/anglais/grammaire/causatives/exercices', component: AnglaisCausativesExercicesPage, title: 'Exercices Structures causatives' },
+  { path: '/formation/anglais/grammaire/causatives/quiz', component: EnglishQuizPage, title: 'Quiz Structures Causatives' },
   { path: '/formation/anglais/grammaire/nuances-lexicales', component: AnglaisNuancesLexicalesPage, title: 'Nuances lexicales' },
   { path: '/formation/anglais/grammaire/nuances-lexicales/exercices', component: AnglaisNuancesLexicalesExercicesPage, title: 'Exercices Nuances lexicales' },
+  { path: '/formation/anglais/grammaire/nuances-lexicales/quiz', component: EnglishQuizPage, title: 'Quiz Nuances Lexicales' },
   { path: '/formation/anglais/civilisation', component: FormationAnglaisCivilisationPage, title: 'Civilisation Anglaise' },
   { path: '/formation/anglais/civilisation/environment', component: AnglaisEnvironmentPage, title: 'Environment and Ecology' },
   { path: '/formation/anglais/civilisation/environment/vocabulary', component: AnglaisEnvironmentVocabularyPage, title: 'Environment Vocabulary - Flashcards' },
@@ -1268,6 +1293,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/geopolitique/premiere-annee/puissance/flashcards', component: GeopoliticsPuissanceFlashcardsPage, title: 'Flashcards La Puissance' },
   { path: '/formation/geopolitique/premiere-annee/ressources-strategiques/flashcards', component: GeopoliticsRessourcesFlashcardsPage, title: 'Flashcards Ressources Stratégiques' },
   { path: '/formation/geopolitique/generateur', component: GeopoliticsUnifiedGeneratorPage, title: 'Générateur Géopolitique' },
+  { path: '/formation/geopolitique/atlas-ecg', component: AtlasECGChatbotPage, title: 'Atlas ECG - Chatbot Géopolitique' },
   { path: '/formation/geopolitique/references', component: GeopolitiquesReferencesPage, title: 'Références Géopolitiques' },
   { path: '/formation/geopolitique/methodologie', component: GeopolitiquesMethodologiePage, title: 'Méthodologie Géopolitique' },
   { path: '/formation/geopolitique/methodologie/dissertation', component: MethodologieDissertationPage, title: 'Méthodologie Dissertation' },
@@ -1634,6 +1660,7 @@ export const routes: RouteConfig[] = [
   { path: '/generator/languages-unified', component: UnifiedLanguagesGeneratorPage, title: 'Générateur Langues Unifié' },
   { path: '/generator/orals-unified', component: UnifiedOralGeneratorPage, title: 'Générateur Oraux Unifié' },
   { path: '/generator/prepa-chatbot', component: PrepaChatbotGeneratorPage, title: 'Chatbot Prépa' },
+  { path: '/generator/atlas-ecg', component: AtlasECGChatbotPage, title: 'Atlas ECG - Chatbot Géopolitique' },
   { path: '/generator/culture-generale', component: CultureGeneraleUnifiedGeneratorPage, title: 'Générateur Culture Générale' },
   // { path: '/generator/culture-generale-old', component: CultureGeneraleGeneratorPage, title: 'Générateur Culture Générale (Ancien)' },
 
@@ -1936,6 +1963,14 @@ export const routes: RouteConfig[] = [
 
 
 
+  // English Grammar Flashcards
+  {
+    path: '/formation/anglais/grammaire/:slug/flashcards',
+    component: lazy(() => import('../pages/formation/anglais/grammaire/EnglishFlashcardsPage')),
+    title: 'Flashcards - Anglais Grammaire',
+    protected: true,
+  },
+
   // 404 - Must be last
   { path: '*', component: NotFound, title: 'Page non trouvée' }
 ];
@@ -1961,6 +1996,13 @@ export const MATHS_ROUTES = [
     path: '/formation/maths-appliquees',
     component: lazy(() => import('@/pages/formation/math/MathsAppliquees/MathsAppliqueesPage')),
     protected: false
+  },
+  // English Grammar Flashcards
+  {
+    path: '/formation/anglais/grammaire/:slug/flashcards',
+    component: lazy(() => import('../pages/formation/anglais/grammaire/EnglishFlashcardsPage')),
+    title: 'Flashcards - Anglais Grammaire',
+    protected: true,
   },
 ];
 

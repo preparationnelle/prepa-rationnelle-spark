@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Globe, Target, FileText, Sparkles, BookOpen, Clock, Home, ChevronRight, PenTool, Users, MapPin, TreePine, Snowflake, Building, Ship, Cpu, DollarSign, Shield } from 'lucide-react';
+import { Globe, Target, FileText, Sparkles, BookOpen, Clock, Home, ChevronRight, PenTool, Users, MapPin, TreePine, Snowflake, Building, Ship, Cpu, DollarSign, Shield, MessageCircle } from 'lucide-react';
 
 const FormationGeopolitiquePage = () => {
   return (
@@ -175,6 +175,18 @@ const FormationGeopolitiquePage = () => {
             </div>
             <h3 className="font-bold text-sm text-gray-900 mb-1">Générateur IA</h3>
             <p className="text-xs text-gray-500 leading-snug">Contenu & Sujets</p>
+          </Link>
+
+          {/* Atlas ECG Chatbot */}
+          <Link
+            to="/formation/geopolitique/atlas-ecg"
+            className="bg-white rounded-lg p-4 shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all duration-200 flex flex-col items-center text-center group"
+          >
+            <div className="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+              <MessageCircle className="h-5 w-5 text-indigo-600" />
+            </div>
+            <h3 className="font-bold text-sm text-gray-900 mb-1">Atlas ECG</h3>
+            <p className="text-xs text-gray-500 leading-snug">Chatbot Géopolitique</p>
           </Link>
 
           {/* Références */}

@@ -111,8 +111,8 @@ const DeuxiemeAnneeESHPage = () => {
                           Introduction
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Accéder au module
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
                       </Button>
                     </div>
                   </div>
@@ -134,8 +134,8 @@ const DeuxiemeAnneeESHPage = () => {
                           Introduction
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Accéder au module
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
                       </Button>
                     </div>
                   </div>
@@ -157,8 +157,8 @@ const DeuxiemeAnneeESHPage = () => {
                           Introduction
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Accéder au module
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
                       </Button>
                     </div>
                   </div>
@@ -193,8 +193,8 @@ const DeuxiemeAnneeESHPage = () => {
                           Introduction
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Accéder au module
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
                       </Button>
                     </div>
                   </div>
@@ -216,8 +216,8 @@ const DeuxiemeAnneeESHPage = () => {
                           Introduction
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Accéder au module
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
                       </Button>
                     </div>
                   </div>
@@ -239,8 +239,8 @@ const DeuxiemeAnneeESHPage = () => {
                           Introduction
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Accéder au module
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
                       </Button>
                     </div>
                   </div>
@@ -275,8 +275,8 @@ const DeuxiemeAnneeESHPage = () => {
                           Introduction
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Accéder au module
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
                       </Button>
                     </div>
                   </div>
@@ -298,8 +298,8 @@ const DeuxiemeAnneeESHPage = () => {
                           Introduction
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Accéder au module
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
                       </Button>
                     </div>
                   </div>
@@ -321,8 +321,8 @@ const DeuxiemeAnneeESHPage = () => {
                           Introduction
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Accéder au module
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
                       </Button>
                     </div>
                   </div>
@@ -377,8 +377,8 @@ const DeuxiemeAnneeESHPage = () => {
                           Introduction
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Accéder au module
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
                       </Button>
                     </div>
                   </div>
@@ -400,8 +400,8 @@ const DeuxiemeAnneeESHPage = () => {
                           Introduction
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Accéder au module
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
                       </Button>
                     </div>
                   </div>
@@ -436,8 +436,8 @@ const DeuxiemeAnneeESHPage = () => {
                           Introduction
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Accéder au module
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
                       </Button>
                     </div>
                   </div>
@@ -459,8 +459,8 @@ const DeuxiemeAnneeESHPage = () => {
                           Introduction
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Accéder au module
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
                       </Button>
                     </div>
                   </div>
@@ -482,8 +482,8 @@ const DeuxiemeAnneeESHPage = () => {
                           Introduction
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Accéder au module
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
                       </Button>
                     </div>
                   </div>
@@ -518,8 +518,8 @@ const DeuxiemeAnneeESHPage = () => {
                           Introduction
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Accéder au module
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
                       </Button>
                     </div>
                   </div>
@@ -541,8 +541,8 @@ const DeuxiemeAnneeESHPage = () => {
                           Introduction
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Accéder au module
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
                       </Button>
                     </div>
                   </div>
@@ -564,8 +564,8 @@ const DeuxiemeAnneeESHPage = () => {
                           Introduction
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Accéder au module
+                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
+                        Bientôt disponible
                       </Button>
                     </div>
                   </div>

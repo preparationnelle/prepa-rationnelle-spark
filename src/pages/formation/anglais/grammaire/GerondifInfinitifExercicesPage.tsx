@@ -27,7 +27,8 @@ import {
   Trophy,
   Star,
   BarChart3,
-  X
+  X,
+  Layers
 } from 'lucide-react';
 import { gerondifInfinitifExercises, getGerondifInfinitifExercisesByType, gerondifInfinitifCategories } from '@/data/englishGerondifInfinitifExercisesData';
 
@@ -362,6 +363,26 @@ const GerondifInfinitifExercicesPage = () => {
       </nav>
 
       <div className="container mx-auto px-4 py-8">
+        <div className="flex justify-center mb-4 gap-4">
+            <Link to="/formation/anglais/grammaire/gerondif-infinitif">
+              <Button variant="outline" className="flex items-center gap-2">
+                <ArrowLeft className="h-4 w-4" />
+                Retour au Cours
+              </Button>
+            </Link>
+            <Link to="/formation/anglais/grammaire/gerondif-infinitif/quiz">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2">
+                <Brain className="h-4 w-4" />
+                Aller au Quiz
+              </Button>
+            </Link>
+            <Link to="/formation/anglais/grammaire/gerondif-infinitif/flashcards">
+              <Button className="bg-emerald-600 hover:bg-emerald-700 text-white flex items-center gap-2">
+                <Layers className="h-4 w-4" />
+                Flashcards
+              </Button>
+            </Link>
+          </div>
         {/* En-tête */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">

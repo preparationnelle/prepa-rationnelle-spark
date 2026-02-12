@@ -19,7 +19,12 @@ const SUGGESTIONS = [
   "Comment gérer le stress avant les concours ?",
 ];
 
-export const PrepaChatbotGenerator: React.FC = () => {
+interface PrepaChatbotGeneratorProps {
+  variant?: 'default' | 'embedded';
+}
+
+export const PrepaChatbotGenerator: React.FC<PrepaChatbotGeneratorProps> = ({ variant = 'default' }) => {
+  const isEmbedded = variant === 'embedded';
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
@@ -35,7 +40,9 @@ export const PrepaChatbotGenerator: React.FC = () => {
 
   // Auto scroll to bottom on new message
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messages.length > 1) {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
   }, [messages]);
 
   const handleWhatsAppContact = () => {
@@ -129,8 +136,11 @@ export const PrepaChatbotGenerator: React.FC = () => {
   };
 
   return (
-    <div className="w-full flex justify-center py-6">
-      <div className="w-full max-w-4xl bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/50 overflow-hidden flex flex-col h-[700px]">
+    <div className={cn("w-full", isEmbedded ? "h-full" : "flex justify-center py-6")}>
+      <div className={cn(
+        "w-full bg-white/80 backdrop-blur-xl border-white/50 overflow-hidden flex flex-col",
+        isEmbedded ? "h-full rounded-none shadow-none border-0" : "max-w-4xl rounded-3xl shadow-2xl border h-[700px]"
+      )}>
         {/* Header */}
         <div className="px-6 py-4 bg-white/50 border-b border-gray-100 flex items-center justify-between backdrop-blur-md sticky top-0 z-10">
           <div className="flex items-center gap-3">
@@ -148,28 +158,11 @@ export const PrepaChatbotGenerator: React.FC = () => {
               </p>
             </div>
           </div>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-gray-500 hover:text-green-600 hover:bg-green-50 rounded-full px-4"
-            onClick={handleWhatsAppContact}
-          >
-            <MessageCircle className="h-5 w-5 mr-2" />
-            <span className="hidden sm:inline">WhatsApp</span>
-          </Button>
         </div>
 
         {/* Chat Area */}
         <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 bg-gradient-to-b from-gray-50/50 to-white">
-          <div className="mx-auto max-w-2xl bg-blue-50/50 border border-blue-100 rounded-2xl p-4 text-sm text-blue-800 mb-6 flex items-start gap-3">
-            <AlertCircle className="h-5 w-5 text-blue-500 shrink-0 mt-0.5" />
-            <div className="flex-1">
-              <p className="font-medium mb-1">Besoin d'aide personnalisée ?</p>
-              <p className="text-blue-700/80">
-                L'IA répond instantanément aux questions de cours. Pour un coaching personnalisé, contactez-nous sur WhatsApp !
-              </p>
-            </div>
-          </div>
+
 
           {messages.map((msg, idx) => (
             <div

@@ -13,6 +13,7 @@ import { ProgressProvider } from './context/ProgressContext';
 import { routes } from './config/routes';
 import { useRouteValidation } from './hooks/useRouteValidation';
 import ChatWidget from './components/chat/ChatWidget';
+import AtlasECGFloatingWidget from './components/chat/AtlasECGFloatingWidget';
 import { Layout } from './components/Layout';
 import { initPostHog } from './integrations/posthog/client';
 import { usePageTracking } from './hooks/usePageTracking';
@@ -93,6 +94,7 @@ function App() {
                   </Routes>
                 </Suspense>
                 <ChatWidget />
+                <AtlasECGFloatingWidget />
               </div>
             </Router>
           </ProgressProvider>

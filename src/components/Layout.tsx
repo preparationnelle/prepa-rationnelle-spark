@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from './Navigation';
 import { Footer } from './Footer';
 import { useLocation } from 'react-router-dom';
+import CourseContentWrapper from '@/components/ai-explain/CourseContentWrapper';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -25,11 +26,13 @@ export const Layout: React.FC<LayoutProps> = ({ children, showFooter = true }) =
           <div className="fixed top-1/2 left-1/4 w-56 h-56 bg-orange-50 rounded-full opacity-5 animate-pulse"></div>
         </>
       )}
-      
+
       <Navigation />
       <main className={`flex-1 w-full relative z-10 ${isHomePage ? 'pt-0' : 'pt-20 md:pt-16'}`}>
         <div className="w-full max-w-full">
-          {children}
+          <CourseContentWrapper>
+            {children}
+          </CourseContentWrapper>
         </div>
       </main>
       {showFooter && <Footer />}

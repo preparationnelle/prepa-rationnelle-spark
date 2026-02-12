@@ -19,6 +19,11 @@ interface MathChapterTemplateProps {
   subject?: string; // matière (maths, etc.)
   activeSection?: 'course' | 'exercises' | 'flashcards' | 'quiz';
   titleClassName?: string;
+  // Custom paths for navigation
+  coursePath?: string;
+  exercisesPath?: string;
+  flashcardsPath?: string;
+  quizPath?: string;
 }
 
 export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
@@ -34,7 +39,11 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
   nextChapter,
   subject = "maths",
   activeSection = 'course',
-  titleClassName = "text-[#2D5BFF]"
+  titleClassName = "text-[#2D5BFF]",
+  coursePath,
+  exercisesPath,
+  flashcardsPath,
+  quizPath
 }) => {
   return (
     <div className="min-h-screen bg-white">
@@ -75,7 +84,7 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
           {showNavigation && slug && (
             <div className="px-6 pb-4 pt-2">
               <div className="flex flex-wrap items-center gap-1 border-t border-slate-100 pt-3">
-                <Link to={`/formation/maths-${slug}`}>
+                <Link to={coursePath || `/formation/maths-${slug}`}>
                   <Button
                     variant="ghost"
                     size="sm"
@@ -88,7 +97,7 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
                     Cours
                   </Button>
                 </Link>
-                <Link to={`/formation/maths-${slug}-exercices`}>
+                <Link to={exercisesPath || `/formation/maths-${slug}-exercices`}>
                   <Button
                     variant="ghost"
                     size="sm"
@@ -101,7 +110,7 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
                     Exercices
                   </Button>
                 </Link>
-                <Link to={`/formation/maths-${slug}-flashcards`}>
+                <Link to={flashcardsPath || `/formation/maths-${slug}-flashcards`}>
                   <Button
                     variant="ghost"
                     size="sm"
@@ -114,7 +123,7 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
                     Flashcards
                   </Button>
                 </Link>
-                <Link to={`/formation/maths-${slug}-quiz`}>
+                <Link to={quizPath || `/formation/maths-${slug}-quiz`}>
                   <Button
                     variant="ghost"
                     size="sm"
