@@ -71,6 +71,142 @@ export type Database = {
         }
         Relationships: []
       }
+      colle_questions: {
+        Row: {
+          created_at: string
+          id: string
+          ordre: number
+          question_audio_url: string | null
+          question_texte: string
+          session_id: string
+          type_question: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          ordre: number
+          question_audio_url?: string | null
+          question_texte: string
+          session_id: string
+          type_question?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          ordre?: number
+          question_audio_url?: string | null
+          question_texte?: string
+          session_id?: string
+          type_question?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "colle_questions_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "colle_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      colle_reponses: {
+        Row: {
+          commentaire_ai: string | null
+          created_at: string
+          id: string
+          question_id: string
+          reponse_audio_url: string | null
+          reponse_transcription: string | null
+          score_fluency: number | null
+          score_grammar: number | null
+          score_pronunciation: number | null
+          score_vocabulary: number | null
+          updated_at: string
+        }
+        Insert: {
+          commentaire_ai?: string | null
+          created_at?: string
+          id?: string
+          question_id: string
+          reponse_audio_url?: string | null
+          reponse_transcription?: string | null
+          score_fluency?: number | null
+          score_grammar?: number | null
+          score_pronunciation?: number | null
+          score_vocabulary?: number | null
+          updated_at?: string
+        }
+        Update: {
+          commentaire_ai?: string | null
+          created_at?: string
+          id?: string
+          question_id?: string
+          reponse_audio_url?: string | null
+          reponse_transcription?: string | null
+          score_fluency?: number | null
+          score_grammar?: number | null
+          score_pronunciation?: number | null
+          score_vocabulary?: number | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "colle_reponses_question_id_fkey"
+            columns: ["question_id"]
+            isOneToOne: false
+            referencedRelation: "colle_questions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      colle_sessions: {
+        Row: {
+          article_texte: string | null
+          created_at: string
+          duree_cible: number | null
+          ended_at: string | null
+          feedback_civilisation: Json | null
+          feedback_langue: Json | null
+          id: string
+          langue: string
+          mode: string
+          note_globale: number | null
+          status: string
+          theme: string
+          user_id: string
+        }
+        Insert: {
+          article_texte?: string | null
+          created_at?: string
+          duree_cible?: number | null
+          ended_at?: string | null
+          feedback_civilisation?: Json | null
+          feedback_langue?: Json | null
+          id?: string
+          langue: string
+          mode: string
+          note_globale?: number | null
+          status?: string
+          theme: string
+          user_id: string
+        }
+        Update: {
+          article_texte?: string | null
+          created_at?: string
+          duree_cible?: number | null
+          ended_at?: string | null
+          feedback_civilisation?: Json | null
+          feedback_langue?: Json | null
+          id?: string
+          langue?: string
+          mode?: string
+          note_globale?: number | null
+          status?: string
+          theme?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       contact_leads: {
         Row: {
           city: string | null
@@ -79,7 +215,7 @@ export type Database = {
           first_name: string
           id: string
           last_contacted_at: string | null
-          last_name: string
+          last_name: string | null
           notes: string | null
           phone_parent: string | null
           phone_student: string
@@ -102,7 +238,7 @@ export type Database = {
           first_name: string
           id?: string
           last_contacted_at?: string | null
-          last_name: string
+          last_name?: string | null
           notes?: string | null
           phone_parent?: string | null
           phone_student: string
@@ -125,7 +261,7 @@ export type Database = {
           first_name?: string
           id?: string
           last_contacted_at?: string | null
-          last_name?: string
+          last_name?: string | null
           notes?: string | null
           phone_parent?: string | null
           phone_student?: string
@@ -661,6 +797,30 @@ export type Database = {
         }
         Relationships: []
       }
+      page_visits: {
+        Row: {
+          id: string
+          page_path: string
+          page_title: string | null
+          user_id: string | null
+          visited_at: string | null
+        }
+        Insert: {
+          id?: string
+          page_path: string
+          page_title?: string | null
+          user_id?: string | null
+          visited_at?: string | null
+        }
+        Update: {
+          id?: string
+          page_path?: string
+          page_title?: string | null
+          user_id?: string | null
+          visited_at?: string | null
+        }
+        Relationships: []
+      }
       pricing: {
         Row: {
           description: string
@@ -741,6 +901,48 @@ export type Database = {
           module?: string
           progression?: number | null
           updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      python_exercise_submissions: {
+        Row: {
+          created_at: string | null
+          exercise_id: string
+          feedback: string | null
+          id: string
+          is_functional: boolean | null
+          module_id: string
+          score: number | null
+          suggested_correction: string | null
+          updated_at: string | null
+          user_code: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          exercise_id: string
+          feedback?: string | null
+          id?: string
+          is_functional?: boolean | null
+          module_id: string
+          score?: number | null
+          suggested_correction?: string | null
+          updated_at?: string | null
+          user_code: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          exercise_id?: string
+          feedback?: string | null
+          id?: string
+          is_functional?: boolean | null
+          module_id?: string
+          score?: number | null
+          suggested_correction?: string | null
+          updated_at?: string | null
+          user_code?: string
           user_id?: string
         }
         Relationships: []
@@ -978,6 +1180,48 @@ export type Database = {
           metadata?: Json | null
           output_data?: Json | null
           updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_notes: {
+        Row: {
+          ai_explanation: string | null
+          color: string | null
+          created_at: string | null
+          id: string
+          note_content: string
+          page_path: string
+          position_data: Json | null
+          selected_text: string | null
+          subject: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          ai_explanation?: string | null
+          color?: string | null
+          created_at?: string | null
+          id?: string
+          note_content?: string
+          page_path: string
+          position_data?: Json | null
+          selected_text?: string | null
+          subject?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          ai_explanation?: string | null
+          color?: string | null
+          created_at?: string | null
+          id?: string
+          note_content?: string
+          page_path?: string
+          position_data?: Json | null
+          selected_text?: string | null
+          subject?: string | null
+          updated_at?: string | null
           user_id?: string
         }
         Relationships: []
