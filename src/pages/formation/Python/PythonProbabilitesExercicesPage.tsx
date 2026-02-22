@@ -574,6 +574,696 @@ def saut_escalier(n):
 # Test pour un escalier de 20 marches
 print(f"Nombre de sauts pour 20 marches : {saut_escalier(20)}")`
       }
+    },
+    {
+      id: 11,
+      title: "Problème du collectionneur",
+      description: "Simuler le nombre d'achats nécessaires pour compléter une collection de n vignettes différentes.",
+      difficulty: "Intermédiaire",
+      badge: "Simulation",
+      content: {
+        objective: "Simuler le problème classique du collectionneur de coupons et estimer le nombre moyen d'achats.",
+        enonce: `On souhaite compléter une collection de n vignettes différentes. À chaque achat, on obtient une vignette choisie uniformément au hasard parmi les n possibles (tirages indépendants avec remise).
+
+1.  Écrire une fonction \`collection(n)\` qui simule le processus et retourne le nombre d'achats nécessaires pour obtenir les n vignettes distinctes.
+2.  Écrire une fonction \`moyenne_achats(n, essais)\` qui estime par Monte-Carlo le nombre moyen d'achats sur un grand nombre d'essais.
+3.  Écrire une fonction \`compare_theorique(n)\` qui compare l'estimation Monte-Carlo avec la valeur théorique n × H_n (où H_n = 1 + 1/2 + ... + 1/n est le n-ième nombre harmonique).
+4.  Écrire une fonction \`histogramme_achats(n, essais)\` qui trace l'histogramme du nombre d'achats sur un grand nombre d'essais.`,
+        corrections: [
+          {
+            title: "Correction 1 : Simulation d'une collection",
+            code: `import random as rd
+
+def collection(n):
+    """Retourne le nombre d'achats pour compléter une collection de n vignettes"""
+    obtenues = set()
+    achats = 0
+    while len(obtenues) < n:
+        vignette = rd.randint(1, n)
+        obtenues.add(vignette)
+        achats += 1
+    return achats
+
+# Test
+print(f"Achats pour 10 vignettes : {collection(10)}")`
+          },
+          {
+            title: "Correction 2 : Estimation Monte-Carlo",
+            code: `import random as rd
+
+def collection(n):
+    obtenues = set()
+    achats = 0
+    while len(obtenues) < n:
+        vignette = rd.randint(1, n)
+        obtenues.add(vignette)
+        achats += 1
+    return achats
+
+def moyenne_achats(n, essais=10000):
+    """Estime le nombre moyen d'achats par Monte-Carlo"""
+    total = sum(collection(n) for _ in range(essais))
+    return total / essais
+
+# Test
+print(f"Moyenne pour 10 vignettes : {moyenne_achats(10, 10000):.1f}")`
+          },
+          {
+            title: "Correction 3 : Comparaison avec la valeur théorique",
+            code: `import random as rd
+
+def collection(n):
+    obtenues = set()
+    achats = 0
+    while len(obtenues) < n:
+        vignette = rd.randint(1, n)
+        obtenues.add(vignette)
+        achats += 1
+    return achats
+
+def compare_theorique(n, essais=10000):
+    """Compare estimation MC avec la valeur theorique n*H_n"""
+    # Nombre harmonique H_n
+    H_n = sum(1/k for k in range(1, n+1))
+    theorique = n * H_n
+    
+    estime = sum(collection(n) for _ in range(essais)) / essais
+    
+    print(f"n = {n}")
+    print(f"Estimation MC : {estime:.2f}")
+    print(f"Valeur theorique n*H_n : {theorique:.2f}")
+    print(f"Erreur relative : {abs(estime - theorique)/theorique*100:.2f}%")
+
+compare_theorique(20)`
+          },
+          {
+            title: "Correction 4 : Histogramme",
+            code: `import random as rd
+import matplotlib.pyplot as plt
+
+def collection(n):
+    obtenues = set()
+    achats = 0
+    while len(obtenues) < n:
+        vignette = rd.randint(1, n)
+        obtenues.add(vignette)
+        achats += 1
+    return achats
+
+def histogramme_achats(n, essais=5000):
+    """Trace l'histogramme du nombre d'achats"""
+    resultats = [collection(n) for _ in range(essais)]
+    
+    plt.hist(resultats, bins=30, density=True, alpha=0.7, color='steelblue')
+    plt.axvline(sum(resultats)/len(resultats), color='red', linestyle='--', label='Moyenne')
+    plt.xlabel("Nombre d'achats")
+    plt.ylabel("Frequence")
+    plt.title(f"Distribution du nombre d'achats (n={n})")
+    plt.legend()
+    plt.show()
+
+histogramme_achats(20)`
+          }
+        ]
+      }
+    },
+    {
+      id: 12,
+      title: "Estimation de pi par Monte-Carlo",
+      description: "Utiliser la methode de Monte-Carlo pour estimer la valeur de pi avec des points aleatoires.",
+      difficulty: "Facile",
+      badge: "Monte-Carlo",
+      content: {
+        objective: "Estimer pi par la methode de Monte-Carlo en simulant des points uniformes dans un carre.",
+        enonce: `On considere un carre de cote 2 centre a l'origine [-1,1] x [-1,1] et le disque unite inscrit (de rayon 1).
+
+On tire N points uniformement dans le carre. La proportion de points tombant dans le disque est une estimation de l'aire du disque divisee par l'aire du carre, soit pi/4.
+
+1.  Ecrire une fonction \`estimer_pi(N)\` qui tire N points uniformes dans le carre et retourne une estimation de pi.
+2.  Ecrire une fonction \`convergence_pi(N_max, pas)\` qui trace l'evolution de l'estimation de pi en fonction du nombre de points tires.
+3.  Ecrire une fonction \`intervalle_confiance(N, essais)\` qui estime pi plusieurs fois et calcule un intervalle de confiance a 95%.
+4.  Ecrire une fonction \`visualiser_points(N)\` qui affiche les points dans le carre (en bleu ceux dans le disque, en rouge ceux hors du disque).`,
+        corrections: [
+          {
+            title: "Correction 1 : Estimation de pi",
+            code: `import random as rd
+
+def estimer_pi(N):
+    """Estime pi par Monte-Carlo"""
+    dans_disque = 0
+    for _ in range(N):
+        x = 2 * rd.random() - 1  # uniforme sur [-1, 1]
+        y = 2 * rd.random() - 1
+        if x**2 + y**2 <= 1:
+            dans_disque += 1
+    return 4 * dans_disque / N
+
+# Test
+print(f"Estimation avec 10000 points : {estimer_pi(10000):.4f}")`
+          },
+          {
+            title: "Correction 2 : Convergence",
+            code: `import random as rd
+import matplotlib.pyplot as plt
+import math
+
+def convergence_pi(N_max, pas=100):
+    """Trace la convergence de l'estimation de pi"""
+    estimations = []
+    points = []
+    dans_disque = 0
+    
+    for i in range(1, N_max + 1):
+        x = 2 * rd.random() - 1
+        y = 2 * rd.random() - 1
+        if x**2 + y**2 <= 1:
+            dans_disque += 1
+        if i % pas == 0:
+            estimations.append(4 * dans_disque / i)
+            points.append(i)
+    
+    plt.plot(points, estimations, label="Estimation")
+    plt.axhline(y=math.pi, color='r', linestyle='--', label="pi reel")
+    plt.xlabel("Nombre de points")
+    plt.ylabel("Estimation de pi")
+    plt.title("Convergence de l'estimation de pi")
+    plt.legend()
+    plt.show()
+
+convergence_pi(50000)`
+          },
+          {
+            title: "Correction 3 : Intervalle de confiance",
+            code: `import random as rd
+import numpy as np
+
+def estimer_pi(N):
+    dans_disque = 0
+    for _ in range(N):
+        x = 2 * rd.random() - 1
+        y = 2 * rd.random() - 1
+        if x**2 + y**2 <= 1:
+            dans_disque += 1
+    return 4 * dans_disque / N
+
+def intervalle_confiance(N, essais=100):
+    """Calcule un intervalle de confiance a 95% pour pi"""
+    estimations = [estimer_pi(N) for _ in range(essais)]
+    moyenne = np.mean(estimations)
+    ecart_type = np.std(estimations)
+    
+    borne_inf = moyenne - 1.96 * ecart_type
+    borne_sup = moyenne + 1.96 * ecart_type
+    
+    print(f"Moyenne : {moyenne:.4f}")
+    print(f"IC 95% : [{borne_inf:.4f}, {borne_sup:.4f}]")
+    return borne_inf, borne_sup
+
+intervalle_confiance(10000, 200)`
+          },
+          {
+            title: "Correction 4 : Visualisation des points",
+            code: `import random as rd
+import matplotlib.pyplot as plt
+import numpy as np
+
+def visualiser_points(N):
+    """Affiche les points dans le carre et le disque"""
+    x_in, y_in = [], []
+    x_out, y_out = [], []
+    
+    for _ in range(N):
+        x = 2 * rd.random() - 1
+        y = 2 * rd.random() - 1
+        if x**2 + y**2 <= 1:
+            x_in.append(x)
+            y_in.append(y)
+        else:
+            x_out.append(x)
+            y_out.append(y)
+    
+    theta = np.linspace(0, 2*np.pi, 100)
+    plt.plot(np.cos(theta), np.sin(theta), 'k-', linewidth=2)
+    plt.scatter(x_in, y_in, s=1, c='blue', alpha=0.5)
+    plt.scatter(x_out, y_out, s=1, c='red', alpha=0.5)
+    plt.axis('equal')
+    plt.title(f"pi = {4*len(x_in)/N:.4f}  (N={N})")
+    plt.show()
+
+visualiser_points(5000)`
+          }
+        ]
+      }
+    },
+    {
+      id: 13,
+      title: "File d'attente a un guichet",
+      description: "Simuler une file d'attente avec arrivees et services aleatoires pour estimer le temps moyen d'attente.",
+      difficulty: "Avance",
+      badge: "Algorithme",
+      content: {
+        objective: "Modeliser et simuler une file d'attente simple pour estimer les temps d'attente et la longueur de la file.",
+        enonce: `On modelise un guichet unique avec une file d'attente. Les clients arrivent un par un. Le temps entre deux arrivees suit une loi exponentielle de parametre lambda (par exemple lambda = 1). Le temps de service de chaque client suit une loi exponentielle de parametre mu (par exemple mu = 1.5).
+
+1.  Ecrire une fonction \`simuler_file(n_clients, lam, mu)\` qui simule l'arrivee de n_clients et retourne la liste des temps d'attente de chaque client.
+2.  Ecrire une fonction \`temps_moyen_attente(n_clients, lam, mu, essais)\` qui estime le temps moyen d'attente par Monte-Carlo.
+3.  Ecrire une fonction \`longueur_max_file(n_clients, lam, mu)\` qui calcule la longueur maximale de la file d'attente pendant la simulation.
+4.  Ecrire une fonction \`taux_occupation(n_clients, lam, mu)\` qui calcule la proportion du temps pendant laquelle le guichet est occupe.`,
+        corrections: [
+          {
+            title: "Correction 1 : Simulation de la file d'attente",
+            code: `import random as rd
+import math
+
+def expo(param):
+    """Simule une loi exponentielle de parametre param"""
+    return -math.log(1 - rd.random()) / param
+
+def simuler_file(n_clients, lam=1, mu=1.5):
+    """Simule la file et retourne les temps d'attente"""
+    arrivees = []
+    t = 0
+    for _ in range(n_clients):
+        t += expo(lam)     # temps inter-arrivee
+        arrivees.append(t)
+    
+    attentes = []
+    fin_service = 0
+    
+    for arrivee in arrivees:
+        attente = max(0, fin_service - arrivee)
+        attentes.append(attente)
+        debut_service = arrivee + attente
+        fin_service = debut_service + expo(mu)
+    
+    return attentes
+
+# Test
+attentes = simuler_file(20)
+print(f"Temps d'attente moyen : {sum(attentes)/len(attentes):.2f}")`
+          },
+          {
+            title: "Correction 2 : Estimation Monte-Carlo du temps moyen",
+            code: `import random as rd
+import math
+
+def expo(param):
+    return -math.log(1 - rd.random()) / param
+
+def simuler_file(n_clients, lam=1, mu=1.5):
+    arrivees = []
+    t = 0
+    for _ in range(n_clients):
+        t += expo(lam)
+        arrivees.append(t)
+    attentes = []
+    fin_service = 0
+    for arrivee in arrivees:
+        attente = max(0, fin_service - arrivee)
+        attentes.append(attente)
+        debut_service = arrivee + attente
+        fin_service = debut_service + expo(mu)
+    return attentes
+
+def temps_moyen_attente(n_clients, lam=1, mu=1.5, essais=1000):
+    """Estime le temps moyen d'attente par Monte-Carlo"""
+    total = 0
+    for _ in range(essais):
+        attentes = simuler_file(n_clients, lam, mu)
+        total += sum(attentes) / len(attentes)
+    return total / essais
+
+print(f"Temps moyen d'attente : {temps_moyen_attente(50):.3f}")`
+          },
+          {
+            title: "Correction 3 : Longueur maximale de la file",
+            code: `import random as rd
+import math
+
+def expo(param):
+    return -math.log(1 - rd.random()) / param
+
+def longueur_max_file(n_clients, lam=1, mu=1.5):
+    """Calcule la longueur max de la file"""
+    arrivees = []
+    t = 0
+    for _ in range(n_clients):
+        t += expo(lam)
+        arrivees.append(t)
+    
+    fins_service = []
+    fin = 0
+    max_file = 0
+    
+    for i, arrivee in enumerate(arrivees):
+        # On retire les clients deja servis
+        fins_service = [f for f in fins_service if f > arrivee]
+        fins_service.append(max(arrivee, fin) + expo(mu))
+        fin = fins_service[-1]
+        max_file = max(max_file, len(fins_service))
+    
+    return max_file
+
+# Test
+print(f"Longueur max de la file : {longueur_max_file(100)}")`
+          },
+          {
+            title: "Correction 4 : Taux d'occupation du guichet",
+            code: `import random as rd
+import math
+
+def expo(param):
+    return -math.log(1 - rd.random()) / param
+
+def taux_occupation(n_clients, lam=1, mu=1.5):
+    """Calcule la proportion du temps ou le guichet est occupe"""
+    arrivees = []
+    t = 0
+    for _ in range(n_clients):
+        t += expo(lam)
+        arrivees.append(t)
+    
+    temps_occupe = 0
+    fin_service = 0
+    
+    for arrivee in arrivees:
+        debut = max(arrivee, fin_service)
+        service = expo(mu)
+        temps_occupe += service
+        fin_service = debut + service
+    
+    temps_total = fin_service
+    taux = temps_occupe / temps_total if temps_total > 0 else 0
+    
+    print(f"Taux d'occupation : {taux*100:.1f}%")
+    print(f"Taux theorique (lambda/mu) : {lam/mu*100:.1f}%")
+    return taux
+
+taux_occupation(500)`
+          }
+        ]
+      }
+    },
+    {
+      id: 14,
+      title: "Simulation d'un match de tennis",
+      description: "Simuler un set de tennis et estimer la probabilite de victoire en fonction de la probabilite de gagner un point.",
+      difficulty: "Intermediaire",
+      badge: "Simulation",
+      content: {
+        objective: "Simuler un jeu et un set de tennis pour etudier l'amplification des probabilites.",
+        enonce: `Au tennis, un joueur A a une probabilite p de gagner chaque point contre le joueur B (et B gagne avec probabilite 1-p). Un jeu se gagne quand un joueur atteint 4 points avec 2 points d'ecart minimum (40-40 puis avantage puis jeu). Un set se gagne quand un joueur atteint 6 jeux avec 2 jeux d'ecart, ou 7-6 apres un tie-break.
+
+1.  Ecrire une fonction \`simuler_jeu(p)\` qui simule un jeu et retourne True si le joueur A gagne.
+2.  Ecrire une fonction \`simuler_set(p)\` qui simule un set complet et retourne True si A gagne.
+3.  Ecrire une fonction \`proba_victoire_set(p, essais)\` qui estime par Monte-Carlo la probabilite que A gagne le set.
+4.  Ecrire une fonction \`courbe_amplification(essais)\` qui trace la probabilite de gagner un set en fonction de p dans [0, 1].`,
+        corrections: [
+          {
+            title: "Correction 1 : Simulation d'un jeu",
+            code: `import random as rd
+
+def simuler_jeu(p):
+    """Simule un jeu de tennis, retourne True si A gagne"""
+    points_A = 0
+    points_B = 0
+    
+    while True:
+        if rd.random() < p:
+            points_A += 1
+        else:
+            points_B += 1
+        
+        # Verifier si le jeu est termine
+        if points_A >= 4 and points_A - points_B >= 2:
+            return True
+        if points_B >= 4 and points_B - points_A >= 2:
+            return False
+
+# Test
+victoires = sum(simuler_jeu(0.6) for _ in range(1000))
+print(f"A gagne le jeu {victoires/10:.1f}% du temps (p=0.6)")`
+          },
+          {
+            title: "Correction 2 : Simulation d'un set",
+            code: `import random as rd
+
+def simuler_jeu(p):
+    points_A, points_B = 0, 0
+    while True:
+        if rd.random() < p:
+            points_A += 1
+        else:
+            points_B += 1
+        if points_A >= 4 and points_A - points_B >= 2:
+            return True
+        if points_B >= 4 and points_B - points_A >= 2:
+            return False
+
+def simuler_set(p):
+    """Simule un set complet, retourne True si A gagne"""
+    jeux_A = 0
+    jeux_B = 0
+    
+    while True:
+        if simuler_jeu(p):
+            jeux_A += 1
+        else:
+            jeux_B += 1
+        
+        # Set classique
+        if jeux_A >= 6 and jeux_A - jeux_B >= 2:
+            return True
+        if jeux_B >= 6 and jeux_B - jeux_A >= 2:
+            return False
+        
+        # Tie-break a 6-6
+        if jeux_A == 6 and jeux_B == 6:
+            return simuler_jeu(p)  # simplifie
+
+# Test
+print(f"A gagne le set : {simuler_set(0.55)}")`
+          },
+          {
+            title: "Correction 3 : Estimation Monte-Carlo",
+            code: `import random as rd
+
+def simuler_jeu(p):
+    points_A, points_B = 0, 0
+    while True:
+        if rd.random() < p:
+            points_A += 1
+        else:
+            points_B += 1
+        if points_A >= 4 and points_A - points_B >= 2:
+            return True
+        if points_B >= 4 and points_B - points_A >= 2:
+            return False
+
+def simuler_set(p):
+    jeux_A, jeux_B = 0, 0
+    while True:
+        if simuler_jeu(p):
+            jeux_A += 1
+        else:
+            jeux_B += 1
+        if jeux_A >= 6 and jeux_A - jeux_B >= 2:
+            return True
+        if jeux_B >= 6 and jeux_B - jeux_A >= 2:
+            return False
+        if jeux_A == 6 and jeux_B == 6:
+            return simuler_jeu(p)
+
+def proba_victoire_set(p, essais=5000):
+    """Estime P(A gagne le set) par Monte-Carlo"""
+    victoires = sum(simuler_set(p) for _ in range(essais))
+    return victoires / essais
+
+# Tests pour differentes valeurs de p
+for p in [0.4, 0.45, 0.5, 0.55, 0.6]:
+    prob = proba_victoire_set(p)
+    print(f"p = {p} -> P(gagner set) = {prob:.3f}")`
+          },
+          {
+            title: "Correction 4 : Courbe d'amplification",
+            code: `import random as rd
+import matplotlib.pyplot as plt
+import numpy as np
+
+def simuler_jeu(p):
+    pa, pb = 0, 0
+    while True:
+        if rd.random() < p: pa += 1
+        else: pb += 1
+        if pa >= 4 and pa - pb >= 2: return True
+        if pb >= 4 and pb - pa >= 2: return False
+
+def simuler_set(p):
+    ja, jb = 0, 0
+    while True:
+        if simuler_jeu(p): ja += 1
+        else: jb += 1
+        if ja >= 6 and ja - jb >= 2: return True
+        if jb >= 6 and jb - ja >= 2: return False
+        if ja == 6 and jb == 6: return simuler_jeu(p)
+
+def courbe_amplification(essais=2000):
+    """Trace P(gagner set) en fonction de p"""
+    valeurs_p = np.linspace(0.1, 0.9, 30)
+    probas_set = []
+    
+    for p in valeurs_p:
+        v = sum(simuler_set(p) for _ in range(essais))
+        probas_set.append(v / essais)
+    
+    plt.plot(valeurs_p, probas_set, 'b-o', markersize=4, label="P(gagner set)")
+    plt.plot(valeurs_p, valeurs_p, 'r--', label="P(gagner point) = p")
+    plt.xlabel("Probabilite de gagner un point (p)")
+    plt.ylabel("Probabilite de gagner le set")
+    plt.title("Amplification des probabilites au tennis")
+    plt.legend()
+    plt.grid(True, alpha=0.3)
+    plt.show()
+
+courbe_amplification()`
+          }
+        ]
+      }
+    },
+    {
+      id: 15,
+      title: "Ruine du joueur",
+      description: "Simuler le probleme classique de la ruine du joueur et estimer la probabilite de ruine.",
+      difficulty: "Avance",
+      badge: "Probabilites",
+      content: {
+        objective: "Simuler le probleme de la ruine du joueur et etudier la probabilite de ruine en fonction de la fortune initiale.",
+        enonce: `Un joueur dispose d'une fortune initiale a. A chaque tour, il mise 1 euro. Il gagne (fortune +1) avec probabilite p et perd (fortune -1) avec probabilite 1-p. Le jeu s'arrete quand sa fortune atteint 0 (ruine) ou N (objectif atteint).
+
+1.  Ecrire une fonction \`ruine(a, N, p)\` qui simule une partie et retourne True si le joueur est ruine (fortune = 0).
+2.  Ecrire une fonction \`proba_ruine(a, N, p, essais)\` qui estime la probabilite de ruine par Monte-Carlo.
+3.  Ecrire une fonction \`duree_partie(a, N, p, essais)\` qui estime la duree moyenne d'une partie (nombre de tours).
+4.  Ecrire une fonction \`trajectoire(a, N, p)\` qui trace l'evolution de la fortune du joueur au cours d'une partie.`,
+        corrections: [
+          {
+            title: "Correction 1 : Simulation d'une partie",
+            code: `import random as rd
+
+def ruine(a, N, p):
+    """Simule une partie, retourne True si le joueur est ruine"""
+    fortune = a
+    while 0 < fortune < N:
+        if rd.random() < p:
+            fortune += 1
+        else:
+            fortune -= 1
+    return fortune == 0
+
+# Test
+a, N, p = 10, 20, 0.5
+print(f"Ruine : {ruine(a, N, p)}")`
+          },
+          {
+            title: "Correction 2 : Estimation de la probabilite de ruine",
+            code: `import random as rd
+
+def ruine(a, N, p):
+    fortune = a
+    while 0 < fortune < N:
+        if rd.random() < p:
+            fortune += 1
+        else:
+            fortune -= 1
+    return fortune == 0
+
+def proba_ruine(a, N, p, essais=10000):
+    """Estime la probabilite de ruine par Monte-Carlo"""
+    ruines = sum(ruine(a, N, p) for _ in range(essais))
+    estimation = ruines / essais
+    
+    # Formule theorique (p != 0.5)
+    if abs(p - 0.5) > 1e-10:
+        q = 1 - p
+        theorique = (1 - (q/p)**a) / (1 - (q/p)**N)
+        # P(ruine) = 1 - P(atteindre N)
+        theorique = 1 - theorique
+    else:
+        theorique = 1 - a / N
+    
+    print(f"P(ruine) estimee : {estimation:.4f}")
+    print(f"P(ruine) theorique : {theorique:.4f}")
+    return estimation
+
+proba_ruine(10, 30, 0.5)
+proba_ruine(10, 30, 0.45)`
+          },
+          {
+            title: "Correction 3 : Duree moyenne d'une partie",
+            code: `import random as rd
+
+def duree_partie_sim(a, N, p):
+    """Simule une partie et retourne le nombre de tours"""
+    fortune = a
+    tours = 0
+    while 0 < fortune < N:
+        if rd.random() < p:
+            fortune += 1
+        else:
+            fortune -= 1
+        tours += 1
+    return tours
+
+def duree_partie(a, N, p, essais=5000):
+    """Estime la duree moyenne d'une partie"""
+    durees = [duree_partie_sim(a, N, p) for _ in range(essais)]
+    moyenne = sum(durees) / len(durees)
+    maximum = max(durees)
+    
+    print(f"a={a}, N={N}, p={p}")
+    print(f"Duree moyenne : {moyenne:.1f} tours")
+    print(f"Duree maximale : {maximum} tours")
+    return moyenne
+
+# Tests
+duree_partie(5, 20, 0.5)
+duree_partie(10, 20, 0.5)`
+          },
+          {
+            title: "Correction 4 : Trajectoire de la fortune",
+            code: `import random as rd
+import matplotlib.pyplot as plt
+
+def trajectoire(a, N, p):
+    """Trace l'evolution de la fortune du joueur"""
+    fortune = a
+    fortunes = [fortune]
+    
+    while 0 < fortune < N:
+        if rd.random() < p:
+            fortune += 1
+        else:
+            fortune -= 1
+        fortunes.append(fortune)
+    
+    plt.figure(figsize=(10, 5))
+    plt.plot(fortunes, linewidth=1)
+    plt.axhline(y=0, color='red', linestyle='--', label='Ruine')
+    plt.axhline(y=N, color='green', linestyle='--', label=f'Objectif (N={N})')
+    plt.axhline(y=a, color='gray', linestyle=':', alpha=0.5, label=f'Fortune initiale (a={a})')
+    plt.xlabel("Nombre de tours")
+    plt.ylabel("Fortune")
+    resultat = "Ruine" if fortunes[-1] == 0 else "Objectif atteint"
+    plt.title(f"Ruine du joueur (p={p}) - {resultat} en {len(fortunes)-1} tours")
+    plt.legend()
+    plt.grid(True, alpha=0.3)
+    plt.show()
+
+# Tracer 3 trajectoires
+for _ in range(3):
+    trajectoire(10, 30, 0.48)`
+          }
+        ]
+      }
     }
   ];
 

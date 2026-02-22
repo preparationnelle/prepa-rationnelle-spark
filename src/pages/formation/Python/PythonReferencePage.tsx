@@ -68,22 +68,23 @@ const PythonReferencePage = () => {
       {/* Tabs pour les catégories */}
       <Tabs defaultValue="all" className="w-full">
         <div className="flex justify-center mb-10 overflow-x-auto pb-2 scrollbar-hide">
-          <TabsList className="flex h-auto p-1 bg-slate-100/50 backdrop-blur rounded-full border border-slate-200 gap-1">
+          <TabsList className="flex h-auto p-1 bg-slate-100/50 backdrop-blur rounded-full border border-slate-200 gap-1 flex-wrap justify-center">
             <TabsTrigger
               value="all"
               className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-sm transition-all"
             >
               Toutes
             </TabsTrigger>
+            <TabsTrigger value="lists" className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-sm transition-all">Listes</TabsTrigger>
             <TabsTrigger value="imports" className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-sm transition-all">Imports</TabsTrigger>
-            <TabsTrigger value="functions" className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-sm transition-all">Fonctions</TabsTrigger>
-            <TabsTrigger value="constants" className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-sm transition-all">Constantes</TabsTrigger>
-            <TabsTrigger value="vectors" className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-sm transition-all">Vecteurs</TabsTrigger>
-            <TabsTrigger value="matrices" className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-sm transition-all">Matrices</TabsTrigger>
+            <TabsTrigger value="arrays_matrices" className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-sm transition-all">Vecteurs/Matrices</TabsTrigger>
             <TabsTrigger value="operations" className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-sm transition-all">Opérations</TabsTrigger>
+            <TabsTrigger value="math_functions" className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-sm transition-all">Fonctions Math</TabsTrigger>
             <TabsTrigger value="linalg" className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-sm transition-all">Algèbre</TabsTrigger>
-            <TabsTrigger value="random" className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-sm transition-all">Aléatoire</TabsTrigger>
-            <TabsTrigger value="graphics" className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-sm transition-all">Graphiques</TabsTrigger>
+            <TabsTrigger value="random" className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-sm transition-all">Probabilités</TabsTrigger>
+            <TabsTrigger value="plotting" className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-sm transition-all">Graphiques</TabsTrigger>
+            <TabsTrigger value="pandas" className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-sm transition-all">Pandas</TabsTrigger>
+            <TabsTrigger value="sql" className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-sm transition-all">SQL</TabsTrigger>
           </TabsList>
         </div>
 
@@ -113,6 +114,19 @@ const PythonReferencePage = () => {
               <CommandSection title={section.title} commands={section.commands} copiedCommand={copiedCommand} onCopy={copyToClipboard} />
             </TabsContent>
           ))}
+
+          <TabsContent value="sql" className="mt-0 space-y-10">
+            {['sql_queries', 'sql_commands', 'sql_aggregation'].map(key => {
+              // @ts-ignore
+              const section = pythonCommands[key];
+              if (!section) return null;
+              return (
+                <div key={key}>
+                  <CommandSection title={section.title} commands={section.commands} copiedCommand={copiedCommand} onCopy={copyToClipboard} />
+                </div>
+              );
+            })}
+          </TabsContent>
         </div>
       </Tabs>
 

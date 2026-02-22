@@ -29,14 +29,14 @@ const PythonProbabilitesPage = () => {
     <PythonModuleLayout>
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
-          <div className="p-3 rounded-lg bg-blue-100 text-blue-600 border border-blue-200">
+          <div className="p-3 rounded-lg bg-slate-100 text-slate-700 border border-slate-200">
             <BarChart3 className="h-8 w-8" />
           </div>
           <div>
-            <h1 className="text-4xl font-bold text-blue-800">
+            <h1 className="text-4xl font-bold text-slate-800">
               Module 3 - Probabilités
             </h1>
-            <Badge variant="secondary" className="mt-3 bg-blue-100 text-blue-700 border border-blue-200 font-semibold px-4 py-2">Module 3</Badge>
+            <Badge variant="secondary" className="mt-3 bg-slate-100 text-slate-700 border border-slate-200 font-semibold px-4 py-2">Module 3</Badge>
           </div>
         </div>
       </div>
@@ -45,9 +45,9 @@ const PythonProbabilitesPage = () => {
       <PythonNavigationTabs className="mb-8" />
 
       {/* Objectifs du module */}
-      <Card className="mb-8 border-0 shadow-lg">
+      <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-blue-600">
+          <CardTitle className="flex items-center gap-3 text-slate-700">
             <Target className="h-6 w-6" />
             Objectifs du module
           </CardTitle>
@@ -83,31 +83,31 @@ const PythonProbabilitesPage = () => {
       </Card>
 
       {/* Imports et principes généraux */}
-      <Card className="mb-8 border-0 shadow-lg">
+      <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-blue-600">
+          <CardTitle className="flex items-center gap-3 text-slate-700">
             <Code className="h-6 w-6" />
             Imports et principes généraux
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="bg-blue-900 rounded-lg p-4 mb-4">
-            <pre className="text-blue-100 text-sm">
+          <div className="bg-slate-900 rounded-lg p-4 mb-4">
+            <pre className="text-slate-100 text-sm">
               {`import numpy as np
 import numpy.random as rd
 import matplotlib.pyplot as plt`}
             </pre>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h4 className="font-semibold text-blue-700 mb-2">Simulation</h4>
-              <p className="text-sm text-blue-600">
+            <div className="p-4 bg-slate-50/80 rounded-lg border border-slate-200">
+              <h4 className="font-semibold text-slate-700 mb-2">Simulation</h4>
+              <p className="text-sm text-slate-700">
                 Quand le nombre de tirages devient grand, la fréquence observée se rapproche de la probabilité théorique
               </p>
             </div>
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h4 className="font-semibold text-blue-700 mb-2">Monte-Carlo</h4>
-              <p className="text-sm text-blue-600">
+            <div className="p-4 bg-slate-50/80 rounded-lg border border-slate-200">
+              <h4 className="font-semibold text-slate-700 mb-2">Monte-Carlo</h4>
+              <p className="text-sm text-slate-700">
                 Pour estimer une espérance, on simule un grand nombre de valeurs et on prend la moyenne
               </p>
             </div>
@@ -116,9 +116,9 @@ import matplotlib.pyplot as plt`}
       </Card>
 
       {/* Génération aléatoire de base */}
-      <Card className="mb-8 border-0 shadow-lg">
+      <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-blue-600">
+          <CardTitle className="flex items-center gap-3 text-slate-700">
             <Calculator className="h-6 w-6" />
             Génération aléatoire de base
           </CardTitle>
@@ -158,9 +158,9 @@ import matplotlib.pyplot as plt`}
       </Card>
 
       {/* Lois discrètes courantes */}
-      <Card className="mb-8 border-0 shadow-lg">
+      <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-blue-600">
+          <CardTitle className="flex items-center gap-3 text-slate-700">
             <BarChart className="h-6 w-6" />
             Lois discrètes courantes
           </CardTitle>
@@ -207,9 +207,9 @@ import matplotlib.pyplot as plt`}
       </Card>
 
       {/* Fonctions "maison" alternatives */}
-      <Card className="mb-8 border-0 shadow-lg">
+      <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-blue-600">
+          <CardTitle className="flex items-center gap-3 text-slate-700">
             <Code className="h-6 w-6" />
             Fonctions "maison" alternatives
           </CardTitle>
@@ -217,9 +217,9 @@ import matplotlib.pyplot as plt`}
         <CardContent>
           <div className="space-y-6">
             <div>
-              <h4 className="font-semibold mb-3 text-blue-600">Fonction Bernoulli</h4>
-              <div className="bg-blue-900 rounded-lg p-4">
-                <pre className="text-blue-100 text-sm">
+              <h4 className="font-semibold mb-3 text-slate-700">Fonction Bernoulli</h4>
+              <div className="bg-slate-900 rounded-lg p-4">
+                <pre className="text-slate-100 text-sm">
                   {`def bernoulli(p):
     """Retourne 1 avec une probabilité p, 0 sinon."""
     return 1 if rd.random() <= p else 0`}
@@ -227,9 +227,9 @@ import matplotlib.pyplot as plt`}
               </div>
             </div>
             <div>
-              <h4 className="font-semibold mb-3 text-blue-600">Fonction Géométrique</h4>
-              <div className="bg-blue-900 rounded-lg p-4">
-                <pre className="text-blue-100 text-sm">
+              <h4 className="font-semibold mb-3 text-slate-700">Fonction Géométrique</h4>
+              <div className="bg-slate-900 rounded-lg p-4">
+                <pre className="text-slate-100 text-sm">
                   {`def geometrique(p):
     """Retourne le rang de la première réussite (>= 1)."""
     n = 1
@@ -240,9 +240,9 @@ import matplotlib.pyplot as plt`}
               </div>
             </div>
             <div>
-              <h4 className="font-semibold mb-3 text-blue-600">Fonction Binomiale</h4>
-              <div className="bg-blue-900 rounded-lg p-4">
-                <pre className="text-blue-100 text-sm">
+              <h4 className="font-semibold mb-3 text-slate-700">Fonction Binomiale</h4>
+              <div className="bg-slate-900 rounded-lg p-4">
+                <pre className="text-slate-100 text-sm">
                   {`def binomiale(n, p):
     """Retourne le nombre de succès sur n essais."""
     S = 0
@@ -258,9 +258,9 @@ import matplotlib.pyplot as plt`}
       </Card>
 
       {/* Statistiques descriptives */}
-      <Card className="mb-8 border-0 shadow-lg">
+      <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-blue-600">
+          <CardTitle className="flex items-center gap-3 text-slate-700">
             <TrendingUp className="h-6 w-6" />
             Statistiques descriptives (NumPy)
           </CardTitle>
@@ -304,9 +304,9 @@ import matplotlib.pyplot as plt`}
       </Card>
 
       {/* Graphiques Matplotlib */}
-      <Card className="mb-8 border-0 shadow-lg">
+      <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-blue-600">
+          <CardTitle className="flex items-center gap-3 text-slate-700">
             <BarChart className="h-6 w-6" />
             Graphiques de base (Matplotlib)
           </CardTitle>
@@ -342,8 +342,8 @@ import matplotlib.pyplot as plt`}
               </TableRow>
             </TableBody>
           </Table>
-          <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <p className="text-sm text-blue-700">
+          <div className="mt-4 p-4 bg-slate-50/80 rounded-lg border border-slate-200">
+            <p className="text-sm text-slate-700">
               <strong>Conseil :</strong> Utiliser <code>density=True</code> dans <code>plt.hist</code> pour comparer directement à la densité théorique.
             </p>
           </div>
@@ -351,9 +351,9 @@ import matplotlib.pyplot as plt`}
       </Card>
 
       {/* Méthode de Monte-Carlo et estimation */}
-      <Card className="mb-8 border-0 shadow-lg">
+      <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-blue-600">
+          <CardTitle className="flex items-center gap-3 text-slate-700">
             <Calculator className="h-6 w-6" />
             Méthode de Monte-Carlo et estimation
           </CardTitle>
@@ -361,20 +361,20 @@ import matplotlib.pyplot as plt`}
         <CardContent>
           <div className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                <h4 className="font-semibold text-blue-700 mb-2">Estimer une espérance</h4>
-                <code className="text-sm bg-blue-100 px-2 py-1 rounded text-blue-800">np.mean(rd.&lt;loi&gt;(..., size=N))</code>
-                <p className="text-sm text-blue-600 mt-2">avec un grand N</p>
+              <div className="p-4 bg-slate-50/80 rounded-lg border border-slate-200">
+                <h4 className="font-semibold text-slate-700 mb-2">Estimer une espérance</h4>
+                <code className="text-sm bg-slate-100 px-2 py-1 rounded text-slate-800">np.mean(rd.&lt;loi&gt;(..., size=N))</code>
+                <p className="text-sm text-slate-700 mt-2">avec un grand N</p>
               </div>
-              <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                <h4 className="font-semibold text-blue-700 mb-2">Estimer une probabilité</h4>
-                <code className="text-sm bg-blue-100 px-2 py-1 rounded text-blue-800">freq = np.mean(condition_bool)</code>
+              <div className="p-4 bg-slate-50/80 rounded-lg border border-slate-200">
+                <h4 className="font-semibold text-slate-700 mb-2">Estimer une probabilité</h4>
+                <code className="text-sm bg-slate-100 px-2 py-1 rounded text-slate-800">freq = np.mean(condition_bool)</code>
               </div>
             </div>
             <div>
-              <h4 className="font-semibold mb-3 text-blue-600">Exemple d'intégrale</h4>
-              <div className="bg-blue-900 rounded-lg p-4">
-                <pre className="text-blue-100 text-sm">
+              <h4 className="font-semibold mb-3 text-slate-700">Exemple d'intégrale</h4>
+              <div className="bg-slate-900 rounded-lg p-4">
+                <pre className="text-slate-100 text-sm">
                   {`def approx_Jn(n, m=5000):
     x = rd.exponential(1, m)
     y = -x / (1 + np.exp(-n * x))
@@ -387,9 +387,9 @@ import matplotlib.pyplot as plt`}
       </Card>
 
       {/* Exercices types */}
-      <Card className="mb-8 border-0 shadow-lg">
+      <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-blue-600">
+          <CardTitle className="flex items-center gap-3 text-slate-700">
             <Code className="h-6 w-6" />
             Exercices types
           </CardTitle>
@@ -397,9 +397,9 @@ import matplotlib.pyplot as plt`}
         <CardContent>
           <div className="space-y-6">
             <div>
-              <h4 className="font-semibold mb-3 text-blue-600">1. Deux faces "Pile" consécutives au pile ou face</h4>
-              <div className="bg-blue-900 rounded-lg p-4">
-                <pre className="text-blue-100 text-sm">
+              <h4 className="font-semibold mb-3 text-slate-700">1. Deux faces "Pile" consécutives au pile ou face</h4>
+              <div className="bg-slate-900 rounded-lg p-4">
+                <pre className="text-slate-100 text-sm">
                   {`def simul_X():
     tirs, pile = 0, 0
     while pile < 2:
@@ -410,9 +410,9 @@ import matplotlib.pyplot as plt`}
               </div>
             </div>
             <div>
-              <h4 className="font-semibold mb-3 text-blue-600">2. Jeu de dés : le joueur A gagne s'il obtient 6 avant B</h4>
-              <div className="bg-blue-900 rounded-lg p-4">
-                <pre className="text-blue-100 text-sm">
+              <h4 className="font-semibold mb-3 text-slate-700">2. Jeu de dés : le joueur A gagne s'il obtient 6 avant B</h4>
+              <div className="bg-slate-900 rounded-lg p-4">
+                <pre className="text-slate-100 text-sm">
                   {`def partie():
     while True:
         if rd.randint(1, 7) == 6:  # A
@@ -425,9 +425,9 @@ proba_A = np.mean([partie() for _ in range(10000)])`}
               </div>
             </div>
             <div>
-              <h4 className="font-semibold mb-3 text-blue-600">3. Géométrique(p=0.2) : comparaison simulation / théorie</h4>
-              <div className="bg-blue-900 rounded-lg p-4">
-                <pre className="text-blue-100 text-sm">
+              <h4 className="font-semibold mb-3 text-slate-700">3. Géométrique(p=0.2) : comparaison simulation / théorie</h4>
+              <div className="bg-slate-900 rounded-lg p-4">
+                <pre className="text-slate-100 text-sm">
                   {`ech = rd.geometric(0.2, 10000)
 c = np.arange(0.5, 21)
 plt.hist(ech, c, density=True, label="Simulation")
@@ -444,16 +444,16 @@ plt.legend(); plt.show()`}
       </Card>
 
       {/* Mémo-commandes rapides */}
-      <Card className="mb-8 border-0 shadow-lg">
+      <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-blue-600">
+          <CardTitle className="flex items-center gap-3 text-slate-700">
             <Code className="h-6 w-6" />
             Mémo-commandes rapides
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="bg-blue-900 rounded-lg p-4">
-            <pre className="text-blue-100 text-sm">
+          <div className="bg-slate-900 rounded-lg p-4">
+            <pre className="text-slate-100 text-sm">
               {`rd.random()              # uniforme 0–1
 rd.randint(a, b)         # uniforme discrète a … b-1
 rd.binomial(n, p)        # binomiale
@@ -467,33 +467,33 @@ rd.normal(mean, sigma)   # normale`}
       </Card>
 
       {/* Quiz express */}
-      <Card className="mb-8 border-0 shadow-lg">
+      <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-blue-600">
+          <CardTitle className="flex items-center gap-3 text-slate-700">
             <Target className="h-6 w-6" />
             Quiz express
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
-            <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
-              <p className="text-sm font-medium text-blue-800">1. <code>rd.random((3,4))</code> produit-il bien 12 réels indépendants entre 0 et 1 ?</p>
+            <div className="p-3 bg-slate-50/80 rounded-lg border border-slate-200">
+              <p className="text-sm font-medium text-slate-800">1. <code>rd.random((3,4))</code> produit-il bien 12 réels indépendants entre 0 et 1 ?</p>
             </div>
-            <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
-              <p className="text-sm font-medium text-blue-800">2. Quelle commande simule une valeur de loi de Poisson avec paramètre 2 ?</p>
+            <div className="p-3 bg-slate-50/80 rounded-lg border border-slate-200">
+              <p className="text-sm font-medium text-slate-800">2. Quelle commande simule une valeur de loi de Poisson avec paramètre 2 ?</p>
             </div>
-            <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
-              <p className="text-sm font-medium text-blue-800">3. Pour estimer une espérance, quelle syntaxe est la plus simple ?</p>
+            <div className="p-3 bg-slate-50/80 rounded-lg border border-slate-200">
+              <p className="text-sm font-medium text-slate-800">3. Pour estimer une espérance, quelle syntaxe est la plus simple ?</p>
             </div>
-            <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
-              <p className="text-sm font-medium text-blue-800">4. Pourquoi ajouter <code>density=True</code> dans un histogramme ?</p>
+            <div className="p-3 bg-slate-50/80 rounded-lg border border-slate-200">
+              <p className="text-sm font-medium text-slate-800">4. Pourquoi ajouter <code>density=True</code> dans un histogramme ?</p>
             </div>
-            <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
-              <p className="text-sm font-medium text-blue-800">5. Une ligne pour simuler dix mille valeurs de la loi géométrique avec paramètre 0.25 ?</p>
+            <div className="p-3 bg-slate-50/80 rounded-lg border border-slate-200">
+              <p className="text-sm font-medium text-slate-800">5. Une ligne pour simuler dix mille valeurs de la loi géométrique avec paramètre 0.25 ?</p>
             </div>
           </div>
-          <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <p className="text-sm text-blue-600">
+          <div className="mt-4 p-4 bg-slate-50/80 rounded-lg border border-slate-200">
+            <p className="text-sm text-slate-700">
               <strong>Les réponses se déduisent des sections précédentes.</strong>
             </p>
           </div>
@@ -505,7 +505,7 @@ rd.normal(mean, sigma)   # normale`}
         <Button
           onClick={handleComplete}
           size="lg"
-          className={`text-lg px-8 py-6 rounded-xl transition-all ${isComplete ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'}`}
+          className={`text-lg px-8 py-6 rounded-xl transition-all ${isComplete ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-slate-900 hover:bg-slate-800'}`}
           disabled={isComplete}
         >
           {isComplete ? (

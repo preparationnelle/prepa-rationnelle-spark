@@ -195,29 +195,39 @@ const DashboardPage = () => {
       if (!currentUser) return;
 
       try {
-        // Récupérer TOUS les résultats QCM pour calculer la moyenne générale
-        const { data, error } = await (supabase as any)
+        // 1. Récupérer SEULEMENT les scores pour la moyenne (léger)
+        const { data: scoresData, error: scoresError } = await (supabase as any)
           .from('qcm_results')
-          .select('*')
-          .eq('user_id', currentUser.id)
-          .order('created_at', { ascending: false });
+          .select('score')
+          .eq('user_id', currentUser.id);
 
-        if (error) throw error;
+        if (scoresError) throw scoresError;
 
-        const allResults = data || [];
-        setAllQcmResults(allResults);
+        const allScores = scoresData || [];
 
-        // Garder seulement les 5 derniers pour l'affichage
-        setOteriaResults(allResults.slice(0, 5));
-
-        // Calculer la moyenne générale de tous les QCM
-        if (allResults.length > 0) {
-          const totalScore = allResults.reduce((acc: number, curr: any) => acc + (curr.score || 0), 0);
-          const avg = Math.round(totalScore / allResults.length);
+        // Calculer la moyenne
+        if (allScores.length > 0) {
+          const totalScore = allScores.reduce((acc: number, curr: any) => acc + (curr.score || 0), 0);
+          const avg = Math.round(totalScore / allScores.length);
           setAverageQcm(avg);
+          // On garde le length pour l'affichage du nombre de QCMs
+          setAllQcmResults(new Array(allScores.length).fill({}));
         } else {
           setAverageQcm(null);
+          setAllQcmResults([]);
         }
+
+        // 2. Récupérer les 5 derniers résultats COMPLETS pour l'affichage (plus lourd mais limité à 5)
+        const { data: recentData, error: recentError } = await (supabase as any)
+          .from('qcm_results')
+          .select('id, title, score, created_at, max_score')
+          .eq('user_id', currentUser.id)
+          .order('created_at', { ascending: false })
+          .limit(5);
+
+        if (recentError) throw recentError;
+        setOteriaResults(recentData || []);
+
       } catch (err) {
         console.error('Erreur chargement résultats:', err);
       } finally {
@@ -235,9 +245,11 @@ const DashboardPage = () => {
 
       try {
         // @ts-ignore - Type will be available after TypeScript reload
+        // @ts-ignore - Type will be available after TypeScript reload
         const { data, error } = await supabase
           .from('language_grammar_results')
-          .select('*')
+          // Optimisation : On ne sélectionne que ce qui est utilisé pour les stats
+          .select('language, score, major_errors, weak_grammar_points')
           .eq('user_id', currentUser.id)
           .order('created_at', { ascending: false });
 
@@ -415,10 +427,12 @@ const DashboardPage = () => {
       try {
         const { data, error } = await (supabase as any)
           .from('user_notes')
-          .select('*')
+          .from('user_notes')
+          // Optimisation : Pas besoin du contenu de la note ici list
+          .select('id, title, created_at, tags')
           .eq('user_id', currentUser.id)
           .order('created_at', { ascending: false })
-          .limit(20);
+          .limit(10);
         if (error) throw error;
         setUserNotes(data || []);
       } catch (err) {

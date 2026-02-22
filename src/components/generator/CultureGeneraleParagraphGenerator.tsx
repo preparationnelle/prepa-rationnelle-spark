@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label';
 import { BookOpen, Loader2, Copy, Check, Sparkles, Info, AlertCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { supabase } from '@/integrations/supabase/client';
 
 export const CultureGeneraleParagraphGenerator = () => {
   const [details, setDetails] = useState('');
@@ -29,97 +30,23 @@ export const CultureGeneraleParagraphGenerator = () => {
     setParagraph(null);
 
     try {
-      console.log('Calling OpenAI API directly with details:', details.trim());
+      console.log('Calling generate-culture-paragraph edge function with details:', details.trim());
 
-      const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
-
-      if (!OPENAI_API_KEY) {
-        throw new Error('Clé API OpenAI non configurée. Veuillez contacter l\'administrateur.');
-      }
-
-      const prompt = `Tu es un expert en dissertation de Culture Générale (Lettres et Philosophie) pour les concours de prépa ECG.
-
-Ta mission : rédiger un paragraphe de dissertation de culture générale parfait, méthodique et conforme aux attentes des correcteurs.
-
-Voici les détails fournis par l'utilisateur pour générer le paragraphe :
-"${details.trim()}"
-
-RÈGLES STRICTES POUR UN BON PARAGRAPHE :
-
-1. STRUCTURE DU PARAGRAPHE :
-   - Commence par une phrase de transition qui fait le bilan de la sous-partie précédente et montre ses limites
-   - Développe ensuite ton nouvel argument de manière claire et structurée
-   - Appuie cet argument avec une référence d'auteur (si fournie) ou une analyse approfondie
-   - Conclus le paragraphe en préparant la transition vers le suivant
-
-2. RÉFÉRENCES :
-   - Une référence par paragraphe maximum (1-2 maximum)
-   - La référence doit être parfaitement maîtrisée : auteur, titre de l'œuvre, explication du lien avec l'argument
-   - Ne commence JAMAIS le paragraphe par une référence ("Descartes dit que...")
-   - La référence vient APRÈS l'argument pour le renforcer
-   - Multiplie les types de références (philosophiques, littéraires, musicales, picturales, architecturales)
-   - Souligne les titres d'œuvres dans ta réponse
-
-3. STYLE ET MÉTHODE :
-   - Soigne l'écriture, évite les ratures
-   - N'hésite pas à soulever des questionnements : cela montre que tu réfléchis
-   - Fais toujours un lien avec ce qui a été fait avant pour montrer l'enchaînement logique
-
-4. LONGUEUR ET QUALITÉ :
-   - Un paragraphe = une idée développée
-   - Environ 150-250 mots
-   - Cohérent, méthodique, qui répond aux attentes
-   - Évite les fautes d'orthographe
-
-Analyse les détails fournis et génère un paragraphe de qualité basé sur ces informations. Réponds UNIQUEMENT avec le paragraphe, sans commentaires supplémentaires.`;
-
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${OPENAI_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model: 'gpt-4o',
-          messages: [
-            {
-              role: 'system',
-              content: 'Tu es un expert en dissertation de Culture Générale pour les concours de prépa ECG. Tu rédiges des paragraphes parfaits, méthodiques et conformes aux attentes des correcteurs.'
-            },
-            {
-              role: 'user',
-              content: prompt,
-            },
-          ],
-          temperature: 0.7,
-          max_tokens: 1000,
-        }),
+      const { data, error } = await supabase.functions.invoke('generate-culture-paragraph', {
+        body: { details: details.trim() },
       });
 
-      console.log('OpenAI API response status:', response.status);
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        console.error('OpenAI API error response:', response.status, errorData);
-        throw new Error(`Erreur OpenAI: ${response.status} - ${errorData.error?.message || 'Erreur inconnue'}`);
+      if (error) {
+        throw new Error(error.message || "Erreur lors de l'appel à la fonction");
       }
-
-      const data = await response.json();
 
       if (data.error) {
-        console.error('OpenAI API error:', data.error);
-        throw new Error(data.error.message || "Erreur OpenAI");
+        throw new Error(data.error);
       }
 
-      if (!data.choices || !data.choices[0] || !data.choices[0].message) {
-        console.error('Invalid OpenAI response structure:', data);
-        throw new Error("Format de réponse OpenAI invalide");
-      }
-
-      const generatedParagraph = data.choices[0].message.content.trim();
+      const generatedParagraph = data.paragraph;
 
       if (!generatedParagraph) {
-        console.error('Empty paragraph in response');
         throw new Error("Le paragraphe généré est vide");
       }
 

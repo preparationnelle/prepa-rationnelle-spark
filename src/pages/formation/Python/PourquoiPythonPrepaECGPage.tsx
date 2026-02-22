@@ -14,21 +14,21 @@ const PourquoiPythonPrepaECGPage = () => {
   }, [trackPageVisit]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#F8FAFF]">
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center text-sm text-gray-500">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+          <div className="flex items-center text-xs text-muted-foreground">
+            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
               <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3.5 w-3.5 mx-1" />
-            <Link to="/formations" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formations" className="hover:text-foreground transition-colors">
               Formations
             </Link>
-            <ChevronRight className="h-3.5 w-3.5 mx-1" />
-            <span className="text-gray-900 font-medium">Python</span>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <span className="text-foreground font-medium">Formation <span className="text-orange-600">Python</span> ECG</span>
           </div>
         </div>
       </nav>
@@ -37,10 +37,10 @@ const PourquoiPythonPrepaECGPage = () => {
 
         {/* Header - Minimalist */}
         <div className="mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">
+          <h1 className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">
             Pourquoi travailler Python en prépa ECG ?
           </h1>
-          <p className="text-xl text-gray-500 font-light">
+          <p className="text-xl text-slate-500 font-light">
             Analyse stratégique d'une matière souvent sous-estimée.
           </p>
         </div>
@@ -68,12 +68,12 @@ const PourquoiPythonPrepaECGPage = () => {
             {/* Point 1 */}
             <section>
               <div className="flex items-start gap-4 mb-4">
-                <div className="p-2 bg-gray-50 rounded-lg">
-                  <TrendingUp className="h-6 w-6 text-gray-700" />
+                <div className="p-2 bg-slate-50 rounded-lg">
+                  <TrendingUp className="h-6 w-6 text-slate-700" />
                 </div>
-                <h2 className="text-2xl font-semibold text-gray-900 mt-1">Un rapport temps/points imbattable</h2>
+                <h2 className="text-2xl font-semibold text-slate-900 mt-1">Un rapport temps/points imbattable</h2>
               </div>
-              <p className="text-gray-600 leading-relaxed pl-14">
+              <p className="text-slate-600 leading-relaxed pl-14">
                 Aux écrits (EDHEC, EM Lyon, Parisiennes), les questions d'informatique représentent une part
                 non négligeable du barème. Contrairement aux questions de fin de problème en mathématiques,
                 souvent très abstraites et discriminantes, les questions Python sont techniques mais <strong>prévisibles</strong>.
@@ -86,12 +86,12 @@ const PourquoiPythonPrepaECGPage = () => {
             {/* Point 2 */}
             <section>
               <div className="flex items-start gap-4 mb-4">
-                <div className="p-2 bg-gray-50 rounded-lg">
-                  <Award className="h-6 w-6 text-gray-700" />
+                <div className="p-2 bg-slate-50 rounded-lg">
+                  <Award className="h-6 w-6 text-slate-700" />
                 </div>
-                <h2 className="text-2xl font-semibold text-gray-900 mt-1">L'exigence des oraux</h2>
+                <h2 className="text-2xl font-semibold text-slate-900 mt-1">L'exigence des oraux</h2>
               </div>
-              <p className="text-gray-600 leading-relaxed pl-14">
+              <p className="text-slate-600 leading-relaxed pl-14">
                 Si l'écrit permet parfois de "limiter la casse" sans Python, l'oral ne pardonne pas.
                 Dans les épreuves de mathématiques des meilleures écoles (HEC, ESCP), une question d'informatique
                 est quasi-systématique.
@@ -105,12 +105,12 @@ const PourquoiPythonPrepaECGPage = () => {
             {/* Point 3 */}
             <section>
               <div className="flex items-start gap-4 mb-4">
-                <div className="p-2 bg-gray-50 rounded-lg">
-                  <Terminal className="h-6 w-6 text-gray-700" />
+                <div className="p-2 bg-slate-50 rounded-lg">
+                  <Terminal className="h-6 w-6 text-slate-700" />
                 </div>
-                <h2 className="text-2xl font-semibold text-gray-900 mt-1">Une compétence clé pour l'École</h2>
+                <h2 className="text-2xl font-semibold text-slate-900 mt-1">Une compétence clé pour l'École</h2>
               </div>
-              <p className="text-gray-600 leading-relaxed pl-14">
+              <p className="text-slate-600 leading-relaxed pl-14">
                 La prépa n'est qu'une étape. En école de commerce, Python est devenu le standard pour la Finance,
                 la Data Science et le Marketing Digital. Arriver avec des bases solides, c'est se faciliter grandement
                 la vie pour les cours de statistiques et d'analyse de données qui vous attendent dès la première année.
@@ -118,21 +118,21 @@ const PourquoiPythonPrepaECGPage = () => {
             </section>
 
             <div className="pt-8 border-t border-gray-100">
-              <h3 className="text-xl font-medium text-gray-900 mb-6">Comment s'y mettre concrètement ?</h3>
+              <h3 className="text-xl font-medium text-slate-900 mb-6">Comment s'y mettre concrètement ?</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Link to="/formation/python-fondamentaux" className="group block p-6 bg-gray-50 hover:bg-gray-100 rounded-xl transition-all">
+                <Link to="/formation/python-fondamentaux" className="group block p-6 bg-white/70 hover:bg-slate-50 border border-slate-200/60 rounded-2xl transition-all">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-semibold text-gray-900">Les Fondamentaux</span>
-                    <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-gray-900 transition-colors" />
+                    <span className="font-semibold text-slate-900">Les Fondamentaux</span>
+                    <ArrowRight className="h-4 w-4 text-slate-400 group-hover:text-slate-900 transition-colors" />
                   </div>
-                  <p className="text-sm text-gray-500">Syntaxe, boucles et fonctions de base.</p>
+                  <p className="text-sm text-slate-500">Syntaxe, boucles et fonctions de base.</p>
                 </Link>
-                <Link to="/formation/python-matrices" className="group block p-6 bg-gray-50 hover:bg-gray-100 rounded-xl transition-all">
+                <Link to="/formation/python-matrices" className="group block p-6 bg-white/70 hover:bg-slate-50 border border-slate-200/60 rounded-2xl transition-all">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-semibold text-gray-900">Matrices & Numpy</span>
-                    <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-gray-900 transition-colors" />
+                    <span className="font-semibold text-slate-900">Matrices & Numpy</span>
+                    <ArrowRight className="h-4 w-4 text-slate-400 group-hover:text-slate-900 transition-colors" />
                   </div>
-                  <p className="text-sm text-gray-500">Manipulation de tableaux et algèbre linéaire.</p>
+                  <p className="text-sm text-slate-500">Manipulation de tableaux et algèbre linéaire.</p>
                 </Link>
               </div>
             </div>
@@ -141,28 +141,28 @@ const PourquoiPythonPrepaECGPage = () => {
 
           {/* Sidebar / Context */}
           <div className="lg:col-span-4 space-y-8">
-            <Card className="bg-gray-50 border-none shadow-sm">
+            <Card className="bg-slate-50/80 border border-slate-200/60 shadow-sm rounded-2xl">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <Clock className="h-5 w-5 text-gray-400" />
-                  <span className="text-sm font-medium text-gray-600">Temps de lecture</span>
+                  <Clock className="h-5 w-5 text-slate-400" />
+                  <span className="text-sm font-medium text-slate-600">Temps de lecture</span>
                 </div>
-                <p className="text-gray-900 font-semibold">3 minutes</p>
+                <p className="text-slate-900 font-semibold">3 minutes</p>
               </CardContent>
             </Card>
 
-            <Card className="bg-white border border-gray-100 shadow-sm">
+            <Card className="bg-white/70 border border-slate-200/60 shadow-sm rounded-2xl">
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Ressources associées</h3>
+                <h3 className="text-lg font-semibold text-slate-900 mb-4">Ressources associées</h3>
                 <ul className="space-y-3">
                   <li>
-                    <Link to="/formation/python-reference" className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors text-sm">
+                    <Link to="/formation/python-reference" className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors text-sm">
                       <BookOpen className="h-4 w-4" />
                       <span>Fiche de référence Python</span>
                     </Link>
                   </li>
                   <li>
-                    <Link to="/flashcards" className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors text-sm">
+                    <Link to="/flashcards" className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors text-sm">
                       <Award className="h-4 w-4" />
                       <span>Flashcards de révision</span>
                     </Link>

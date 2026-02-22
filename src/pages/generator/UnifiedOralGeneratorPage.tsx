@@ -11,6 +11,7 @@ import EMLyonGeneratorPage from './EMLyonGeneratorPage';
 import EDHECGeneratorPage from './EDHECGeneratorPage';
 import { Mic, MessageSquare, Target, ExternalLink, HelpCircle, PenTool, Shuffle, CheckCircle, Clock, RotateCcw, Play, Pause, Square, Volume2, ChevronDown, Loader2, VolumeX, Send, Award, AlertCircle, Lightbulb, TrendingUp } from 'lucide-react';
 import { toast } from 'sonner';
+import { supabase } from '@/integrations/supabase/client';
 
 // Composant pour l'entraînement direct aux questions d'entretien
 const QuestionPracticePage = () => {
@@ -135,67 +136,19 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
 
     setIsEvaluating(true);
     try {
-      const openaiApiKey = import.meta.env.VITE_OPENAI_API_KEY;
-
-      if (!openaiApiKey) {
-        throw new Error('Clé API OpenAI non configurée');
-      }
-
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${openaiApiKey}`,
-        },
-        body: JSON.stringify({
-          model: 'gpt-4-turbo',
-          messages: [
-            {
-              role: 'system',
-              content: `Tu es un coach professionnel spécialisé dans la préparation aux entretiens de personnalité pour les grandes écoles de commerce françaises.
-
-Ton rôle est d'évaluer les réponses des candidats avec bienveillance mais exigence, en donnant un feedback constructif et actionnable.
-
-Évalue la réponse selon ces critères:
-- Structure et clarté (introduction, développement, conclusion)
-- Pertinence et cohérence avec la question
-- Authenticité et personnalisation
-- Exemples concrets et storytelling
-- Longueur appropriée (2-3 minutes à l'oral)
-
-Tu dois retourner une évaluation JSON avec:
-{
-  "score": <note sur 20>,
-  "strengths": [<3-4 points forts>],
-  "weaknesses": [<2-3 points à améliorer>],
-  "suggestions": [<3-4 suggestions concrètes d'amélioration>],
-  "overall": "<commentaire général bienveillant et motivant>"
-}`
-            },
-            {
-              role: 'user',
-              content: `Question posée: "${currentQuestion}"
-
-Réponse du candidat:
-"${userAnswer}"
-
-Évalue cette réponse en retournant uniquement un objet JSON valide.`
-            }
-          ],
-          temperature: 0.7,
-        }),
+      const { data, error } = await supabase.functions.invoke('evaluate-oral-answer', {
+        body: { question: currentQuestion, answer: userAnswer.trim() },
       });
 
-      if (!response.ok) {
-        throw new Error(`Erreur API: ${response.status}`);
+      if (error) {
+        throw new Error(error.message || "Erreur lors de l'appel à la fonction");
       }
 
-      const data = await response.json();
-      const evaluationText = data.choices[0].message.content;
+      if (data.error) {
+        throw new Error(data.error);
+      }
 
-      // Parse le JSON de l'évaluation
-      const evaluationData = JSON.parse(evaluationText);
-      setEvaluation(evaluationData);
+      setEvaluation(data.evaluation);
 
       toast.success('Évaluation terminée !');
     } catch (error) {
@@ -252,33 +205,24 @@ Réponse du candidat:
   const transcribeAudio = async (audioBlob: Blob) => {
     setIsTranscribing(true);
     try {
-      const openaiApiKey = import.meta.env.VITE_OPENAI_API_KEY;
-
-      if (!openaiApiKey) {
-        throw new Error('Clé API OpenAI non configurée');
-      }
-
       const formData = new FormData();
       formData.append('file', audioBlob, 'recording.wav');
-      formData.append('model', 'whisper-1');
-      formData.append('language', 'fr'); // Langue française pour les entretiens
+      formData.append('language', 'fr');
 
-      const response = await fetch('https://api.openai.com/v1/audio/transcriptions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${openaiApiKey}`,
-        },
+      const { data, error } = await supabase.functions.invoke('transcribe-audio', {
         body: formData,
       });
 
-      if (!response.ok) {
-        throw new Error(`Erreur API Whisper: ${response.status}`);
+      if (error) {
+        throw new Error(error.message || "Erreur lors de la retranscription");
       }
 
-      const data = await response.json();
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
       const transcribedText = data.text;
 
-      // Remplir automatiquement le champ de réponse textuelle avec la retranscription
       setUserAnswer(transcribedText);
 
       toast.success('Retranscription terminée - Texte ajouté au champ de réponse !');

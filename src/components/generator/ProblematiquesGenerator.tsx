@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Brain, Loader2, Copy, Check, Sparkles, Info, AlertCircle, Lightbulb } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { supabase } from '@/integrations/supabase/client';
 
 interface ProblematiquesGeneratorProps {
   mode?: 'culture-generale' | 'geopolitics';
@@ -41,121 +42,21 @@ export const ProblematiquesGenerator = ({ mode = 'culture-generale', subjectFrom
     try {
       console.log('Generating problematique for subject:', subject.trim());
 
-      const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
-
-      if (!OPENAI_API_KEY) {
-        throw new Error('Clé API OpenAI non configurée. Veuillez contacter l\'administrateur.');
-      }
-
-      let prompt = '';
-
-      if (isGeopolitics) {
-        prompt = `Tu es un expert en dissertation de Géopolitique pour les classes préparatoires ECG.
-Ta mission : analyser un sujet de dissertation et formuler une problématique claire, percutante et dialectique.
-
-SUJET À ANALYSER :
-"${subject.trim()}"
-
-INSTRUCTIONS POUR LA PROBLÉMATIQUE :
-1. ANALYSE le sujet et IDENTIFIE les enjeux géopolitiques majeurs (Rivalités, Territoires, Puissance, Acteurs, Échelles).
-2. FORMULE une problématique centrale sous forme de question.
-3. La problématique doit mettre en tension le sujet (paradoxe, évolution, contradiction).
-4. Elle doit permettre l'élaboration d'un plan en 2 ou 3 parties.
-5. Elle doit être explicite et utiliser un vocabulaire géopolitique précis.
-
-Réponds UNIQUEMENT avec la problématique formulée, sans introduction ni conclusion.`;
-      } else {
-        // Mode Culture Générale (Default with "Juger" context)
-        prompt = `Tu es un expert en dissertation de Culture Générale (Lettres et Philosophie) pour les concours de prépa ECG.
-Ta mission : analyser un sujet de dissertation et formuler une problématique claire, percutante et dialectique.
-
-SUJET À ANALYSER :
-"${subject.trim()}"
-
-BASE DE CONNAISSANCES SUR LE CONCEPT DE "JUGER" :
-... (Contexte "Juger" conservé implicitement ou tu peux le remettre si besoin, mais pour simplifier ici je garde le prompt original complet si possible, ou je le ré-injecte)
-I. Ce que « juger » veut dire (opérations et portée)
-• Opérer : attribuer, relier, qualifier (vrai/faux, juste/injuste, beau/laid), hiérarchiser.
-• Comparer ou trancher ? Comparer prépare, trancher clôt. Le bon jugement sait quand s'arrêter.
-• Juger ≠ condamner : sanctionner est un usage possible du jugement, pas son essence.
-• Descartes : jugement = acte de la volonté appliquée à des idées plus ou moins claires. Risque majeur : l'assentiment précipité.
-• Kant : juger = subsumer le particulier sous l'universel (entendement), et réfléchir sans concept prédonné (jugement réfléchissant, esthétique/téléologique).
-
-II. Lignes de fracture conceptuelles
-1. Juger / Comprendre / Décider (Comprendre explique ; juger évalue ; décider engage).
-2. Juger / Connaître (Connaître établit du vrai ; juger valide une prétention).
-3. Juger / Raisonner (Raisonner infère ; juger conclut).
-4. Percevoir / Sentir / Juger.
-5. Préjuger / Juger.
-
-III. Typologie utile
-De fait / de valeur ; Pratique (moral, politique, juridique) ; Singulier/Universel.
-
-IV. Domaines d'exercice
-Judiciaire (équité vs légalité), Moral, Politique, Social, Esthétique, Historique.
-
-V. Obstacles et conditions
-Obstacles : passions, intérêts, biais. Conditions : info, normes, courage, suspension.
-
-INSTRUCTIONS POUR LA PROBLÉMATIQUE :
-1. ANALYSE le sujet et IDENTIFIE les enjeux liés au concept de "juger".
-2. FORMULE une problématique dialectique qui pose une tension conceptuelle.
-3. La problématique doit commencer par "Comment...", "Dans quelle mesure...", "Faut-il..." ou formule similaire.
-4. Elle doit intégrer au moins 2 aspects opposés du jugement.
-5. Elle doit être FÉCONDE et PERTINENTE.
-
-Réponds UNIQUEMENT avec la problématique formulée, sans explications supplémentaires.`;
-      }
-
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${OPENAI_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model: 'gpt-4o',
-          messages: [
-            {
-              role: 'system',
-              content: isGeopolitics
-                ? 'Tu es un expert en géopolitique (HGGSP). Tu formules des problématiques précises et dialectiques.'
-                : 'Tu es un expert en dissertation de Culture Générale pour les concours de prépa ECG.'
-            },
-            {
-              role: 'user',
-              content: prompt,
-            },
-          ],
-          temperature: 0.6,
-          max_tokens: 800,
-        }),
+      const { data, error } = await supabase.functions.invoke('generate-problematique', {
+        body: { subject: subject.trim(), mode: isGeopolitics ? 'geopolitics' : 'culture_generale' },
       });
 
-      console.log('OpenAI API response status:', response.status);
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        console.error('OpenAI API error response:', response.status, errorData);
-        throw new Error(`Erreur OpenAI: ${response.status} - ${errorData.error?.message || 'Erreur inconnue'}`);
+      if (error) {
+        throw new Error(error.message || "Erreur lors de l'appel à la fonction");
       }
-
-      const data = await response.json();
 
       if (data.error) {
-        console.error('OpenAI API error:', data.error);
-        throw new Error(data.error.message || "Erreur OpenAI");
+        throw new Error(data.error);
       }
 
-      if (!data.choices || !data.choices[0] || !data.choices[0].message) {
-        console.error('Invalid OpenAI response structure:', data);
-        throw new Error("Format de réponse OpenAI invalide");
-      }
-
-      const generatedProblematique = data.choices[0].message.content.trim();
+      const generatedProblematique = data.problematique;
 
       if (!generatedProblematique) {
-        console.error('Empty problematique in response');
         throw new Error("La problématique générée est vide");
       }
 

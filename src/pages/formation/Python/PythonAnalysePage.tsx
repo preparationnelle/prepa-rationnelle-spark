@@ -26,12 +26,12 @@ const PythonAnalysePage = () => {
     {/* Header */}
     <div className="mb-8">
       <div className="flex items-center gap-3 mb-4">
-        <div className="p-3 rounded-lg bg-blue-100 text-blue-600 border border-blue-200">
+        <div className="p-3 rounded-lg bg-slate-100 text-slate-700 border border-slate-200">
           <TrendingUp className="h-8 w-8" />
         </div>
         <div>
-          <h1 className="text-4xl font-bold text-blue-800">Module 2 - Analyse</h1>
-          <Badge variant="secondary" className="mt-3 bg-blue-100 text-blue-700 border border-blue-200 font-semibold px-4 py-2">Module 2</Badge>
+          <h1 className="text-4xl font-bold text-slate-800">Module 2 - Analyse</h1>
+          <Badge variant="secondary" className="mt-3 bg-slate-100 text-slate-700 border border-slate-200 font-semibold px-4 py-2">Module 2</Badge>
         </div>
       </div>
     </div>
@@ -40,21 +40,21 @@ const PythonAnalysePage = () => {
     <PythonNavigationTabs className="mb-8" />
 
     {/* Présentation générale */}
-    <Card className="mb-8 border-0 shadow-lg">
+    <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
       <CardHeader>
-        <CardTitle className="text-xl text-blue-600">PRÉSENTATION GÉNÉRALE</CardTitle>
+        <CardTitle className="text-xl text-slate-800">PRÉSENTATION GÉNÉRALE</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           <div>
-            <h3 className="font-semibold text-blue-600 mb-2">Objectifs du module</h3>
+            <h3 className="font-semibold text-slate-700 mb-2">Objectifs du module</h3>
             <p className="text-gray-700">
               Ce module couvre les méthodes d'analyse numérique essentielles en Python : calcul de sommes et produits finis,
               étude des suites par récurrence, et méthodes d'approximation comme la dichotomie.
             </p>
           </div>
           <div>
-            <h3 className="font-semibold text-blue-600 mb-2">Prérequis</h3>
+            <h3 className="font-semibold text-slate-700 mb-2">Prérequis</h3>
             <p className="text-gray-700">
               Maîtrise des modules 1 et 2 (fondamentaux Python et matrices NumPy).
               Connaissances de base en analyse mathématique.
@@ -65,13 +65,13 @@ const PythonAnalysePage = () => {
     </Card>
 
     {/* Calcul de sommes */}
-    <Card className="mb-8 border-0 shadow-lg">
+    <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
       <CardHeader>
-        <CardTitle className="text-xl text-blue-600">1. CALCUL DE SOMMES EN PYTHON</CardTitle>
+        <CardTitle className="text-xl text-slate-800">1. CALCUL DE SOMMES EN PYTHON</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="mb-6">
-          <h3 className="font-semibold text-blue-600 mb-2">Objectif</h3>
+          <h3 className="font-semibold text-slate-700 mb-2">Objectif</h3>
           <div className="text-gray-700 mb-4">
             <span>Savoir calculer une somme de la forme </span>
             <LatexRenderer latex="S = \sum \text{expression}(k)" />
@@ -82,18 +82,18 @@ const PythonAnalysePage = () => {
         {/* Méthodes de calcul de sommes */}
         <div className="space-y-6">
           {/* Méthode 1 - Boucle */}
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <h4 className="font-semibold text-blue-700 mb-3">Méthode 1 – Boucle avec variable initialisée</h4>
+          <div className="p-4 bg-slate-50/80 rounded-lg border border-slate-200">
+            <h4 className="font-semibold text-slate-700 mb-3">Méthode 1 – Boucle avec variable initialisée</h4>
             <div className="space-y-3">
-              <div className="bg-blue-900 p-4 rounded font-mono text-sm">
-                <div className="text-blue-100">n = 5</div>
-                <div className="text-blue-100">S = 0</div>
-                <div className="text-blue-100">for k in range(1, n+1):</div>
-                <div className="ml-4 text-blue-100">S += k**2 # pour ∑k^2</div>
-                <div className="text-blue-100">print(S)</div>
+              <div className="bg-slate-900 p-4 rounded font-mono text-sm text-slate-100">
+                <div className="text-slate-100">n = 5</div>
+                <div className="text-slate-100">S = 0</div>
+                <div className="text-slate-100">for k in range(1, n+1):</div>
+                <div className="ml-4 text-slate-100">S += k**2 # pour ∑k^2</div>
+                <div className="text-slate-100">print(S)</div>
               </div>
-              <div className="p-3 bg-blue-100 border border-blue-300 rounded">
-                <p className="text-blue-700">
+              <div className="p-3 bg-slate-100 border border-slate-200 rounded">
+                <p className="text-slate-700">
                   ✔️ Méthode simple et lisible. Fonctionne dans tous les cas, même avec des doubles sommes.
                 </p>
               </div>
@@ -101,17 +101,17 @@ const PythonAnalysePage = () => {
           </div>
 
           {/* Méthode 2 - Liste */}
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <h4 className="font-semibold text-blue-700 mb-3">Méthode 2 – Liste &amp; np.sum()</h4>
+          <div className="p-4 bg-slate-50/80 rounded-lg border border-slate-200">
+            <h4 className="font-semibold text-slate-700 mb-3">Méthode 2 – Liste &amp; np.sum()</h4>
             <div className="space-y-3">
-              <div className="bg-blue-900 p-4 rounded font-mono text-sm">
-                <div className="text-blue-100">n = 5</div>
-                <div className="text-blue-100">L = [k**2 for k in range(1, n+1)]</div>
-                <div className="text-blue-100">S = np.sum(L)</div>
-                <div className="text-blue-100">print(S)</div>
+              <div className="bg-slate-900 p-4 rounded font-mono text-sm text-slate-100">
+                <div className="text-slate-100">n = 5</div>
+                <div className="text-slate-100">L = [k**2 for k in range(1, n+1)]</div>
+                <div className="text-slate-100">S = np.sum(L)</div>
+                <div className="text-slate-100">print(S)</div>
               </div>
-              <div className="p-3 bg-blue-100 border border-blue-300 rounded">
-                <p className="text-blue-700">
+              <div className="p-3 bg-slate-100 border border-slate-200 rounded">
+                <p className="text-slate-700">
                   ✔️ Permet de manipuler la liste des termes si besoin (affichage, tracé).
                 </p>
               </div>
@@ -119,19 +119,19 @@ const PythonAnalysePage = () => {
           </div>
 
           {/* Méthode 3 - NumPy */}
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <h4 className="font-semibold text-blue-700 mb-3">Méthode 3 – Vectorisation avec NumPy</h4>
+          <div className="p-4 bg-slate-50/80 rounded-lg border border-slate-200">
+            <h4 className="font-semibold text-slate-700 mb-3">Méthode 3 – Vectorisation avec NumPy</h4>
             <div className="space-y-3">
-              <div className="bg-blue-900 p-4 rounded font-mono text-sm">
-                <div className="text-blue-100">import numpy as np</div>
-                <div className="text-blue-100"></div>
-                <div className="text-blue-100">n = 5</div>
-                <div className="text-blue-100">k = np.arange(1, n+1)</div>
-                <div className="text-blue-100">S = np.sum(k**2)</div>
-                <div className="text-blue-100">print(S)</div>
+              <div className="bg-slate-900 p-4 rounded font-mono text-sm text-slate-100">
+                <div className="text-slate-100">import numpy as np</div>
+                <div className="text-slate-100"></div>
+                <div className="text-slate-100">n = 5</div>
+                <div className="text-slate-100">k = np.arange(1, n+1)</div>
+                <div className="text-slate-100">S = np.sum(k**2)</div>
+                <div className="text-slate-100">print(S)</div>
               </div>
-              <div className="p-3 bg-blue-100 border border-blue-300 rounded">
-                <p className="text-blue-700">
+              <div className="p-3 bg-slate-100 border border-slate-200 rounded">
+                <p className="text-slate-700">
                   ✔️ Très rapide pour de grandes tailles. ⚠️ Moins intuitif pour débutants.
                 </p>
               </div>
@@ -140,8 +140,8 @@ const PythonAnalysePage = () => {
         </div>
 
         {/* Comparatif synthétique */}
-        <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
-          <h4 className="font-semibold text-blue-700 mb-3">Comparatif synthétique</h4>
+        <div className="mt-6 p-4 bg-slate-50/80 rounded-lg border border-slate-200">
+          <h4 className="font-semibold text-slate-700 mb-3">Comparatif synthétique</h4>
           <Table>
             <TableHeader>
               <TableRow>
@@ -171,11 +171,11 @@ const PythonAnalysePage = () => {
         </div>
 
         {/* Exemples guidés */}
-        <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
-          <h4 className="font-semibold text-blue-700 mb-3">Exemples guidés</h4>
+        <div className="mt-6 p-4 bg-slate-50/80 rounded-lg border border-slate-200">
+          <h4 className="font-semibold text-slate-700 mb-3">Exemples guidés</h4>
           <div className="space-y-6">
             <div>
-              <h5 className="font-semibold mb-3 text-blue-600">Sommes à calculer</h5>
+              <h5 className="font-semibold mb-3 text-slate-700">Sommes à calculer</h5>
               <div className="space-y-2 text-sm">
                 <div className="flex items-center gap-2">
                   <span>•</span>
@@ -193,44 +193,44 @@ const PythonAnalysePage = () => {
             </div>
 
             <div>
-              <h5 className="font-semibold mb-3 text-blue-600">Méthode 1 – Boucles imbriquées</h5>
-              <div className="bg-blue-900 p-4 rounded font-mono text-sm space-y-1">
-                <div className="text-blue-100">n = 5</div>
-                <div className="text-blue-100">m = 4</div>
-                <div className="text-blue-100"></div>
-                <div className="text-blue-100">S1 = 0</div>
-                <div className="text-blue-100">for k in range(1, n+1):</div>
-                <div className="ml-4 text-blue-100">S1 += k**2</div>
-                <div className="text-blue-100"></div>
-                <div className="text-blue-100">S2 = 0</div>
-                <div className="text-blue-100">for k in range(1, n+1):</div>
-                <div className="ml-4 text-blue-100">S2 += k**3 - 2*k</div>
-                <div className="text-blue-100"></div>
-                <div className="text-blue-100">S3 = 0</div>
-                <div className="text-blue-100">for i in range(1, n+1):</div>
-                <div className="ml-4 text-blue-100">for j in range(1, m+1):</div>
-                <div className="ml-8 text-blue-100">S3 += i**2 + j**3</div>
+              <h5 className="font-semibold mb-3 text-slate-700">Méthode 1 – Boucles imbriquées</h5>
+              <div className="bg-slate-900 p-4 rounded font-mono text-sm space-y-1 text-slate-100">
+                <div className="text-slate-100">n = 5</div>
+                <div className="text-slate-100">m = 4</div>
+                <div className="text-slate-100"></div>
+                <div className="text-slate-100">S1 = 0</div>
+                <div className="text-slate-100">for k in range(1, n+1):</div>
+                <div className="ml-4 text-slate-100">S1 += k**2</div>
+                <div className="text-slate-100"></div>
+                <div className="text-slate-100">S2 = 0</div>
+                <div className="text-slate-100">for k in range(1, n+1):</div>
+                <div className="ml-4 text-slate-100">S2 += k**3 - 2*k</div>
+                <div className="text-slate-100"></div>
+                <div className="text-slate-100">S3 = 0</div>
+                <div className="text-slate-100">for i in range(1, n+1):</div>
+                <div className="ml-4 text-slate-100">for j in range(1, m+1):</div>
+                <div className="ml-8 text-slate-100">S3 += i**2 + j**3</div>
               </div>
             </div>
 
             <div>
-              <h5 className="font-semibold mb-3 text-blue-600">Méthode 2 – Listes + compréhension</h5>
-              <div className="bg-blue-900 p-4 rounded font-mono text-sm space-y-1">
-                <div className="text-blue-100">S1 = sum([k**2 for k in range(1, n+1)])</div>
-                <div className="text-blue-100">S2 = sum([k**3 - 2*k for k in range(1, n+1)])</div>
-                <div className="text-blue-100">S3 = sum([i**2 + j**3 for i in range(1, n+1) for j in range(1, m+1)])</div>
+              <h5 className="font-semibold mb-3 text-slate-700">Méthode 2 – Listes + compréhension</h5>
+              <div className="bg-slate-900 p-4 rounded font-mono text-sm space-y-1 text-slate-100">
+                <div className="text-slate-100">S1 = sum([k**2 for k in range(1, n+1)])</div>
+                <div className="text-slate-100">S2 = sum([k**3 - 2*k for k in range(1, n+1)])</div>
+                <div className="text-slate-100">S3 = sum([i**2 + j**3 for i in range(1, n+1) for j in range(1, m+1)])</div>
               </div>
             </div>
 
             <div>
-              <h5 className="font-semibold mb-3 text-blue-600">Méthode 3 – NumPy</h5>
-              <div className="bg-blue-900 p-4 rounded font-mono text-sm space-y-1">
-                <div className="text-blue-100">import numpy as np</div>
-                <div className="text-blue-100"></div>
-                <div className="text-blue-100">k = np.arange(1, n+1)</div>
-                <div className="text-blue-100">S1 = np.sum(k**2)</div>
-                <div className="text-blue-100">S2 = np.sum(k**3 - 2*k)</div>
-                <div className="text-blue-100">S3 = np.sum([i**2 + j**3 for i in range(1, n+1) for j in range(1, m+1)])</div>
+              <h5 className="font-semibold mb-3 text-slate-700">Méthode 3 – NumPy</h5>
+              <div className="bg-slate-900 p-4 rounded font-mono text-sm space-y-1 text-slate-100">
+                <div className="text-slate-100">import numpy as np</div>
+                <div className="text-slate-100"></div>
+                <div className="text-slate-100">k = np.arange(1, n+1)</div>
+                <div className="text-slate-100">S1 = np.sum(k**2)</div>
+                <div className="text-slate-100">S2 = np.sum(k**3 - 2*k)</div>
+                <div className="text-slate-100">S3 = np.sum([i**2 + j**3 for i in range(1, n+1) for j in range(1, m+1)])</div>
               </div>
             </div>
           </div>
@@ -239,13 +239,13 @@ const PythonAnalysePage = () => {
     </Card>
 
     {/* Calcul de produits */}
-    <Card className="mb-8 border-0 shadow-lg">
+    <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
       <CardHeader>
-        <CardTitle className="text-xl text-blue-600">2. CALCUL DE PRODUITS EN PYTHON</CardTitle>
+        <CardTitle className="text-xl text-slate-800">2. CALCUL DE PRODUITS EN PYTHON</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="mb-6">
-          <h3 className="font-semibold text-blue-600 mb-2">Objectif</h3>
+          <h3 className="font-semibold text-slate-700 mb-2">Objectif</h3>
           <div className="text-gray-700 mb-4">
             <span>Savoir calculer un produit de la forme </span>
             <LatexRenderer latex="P = \prod_{k=1}^{n} \text{expression}(k)" />
@@ -292,7 +292,7 @@ const PythonAnalysePage = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-2">Exemple d'appel :</h4>
-                  <div className="bg-gray-50 p-3 rounded font-mono text-sm">
+                  <div className="bg-slate-900 p-3 rounded font-mono text-sm text-slate-100">
                     <div>produit_fini(1, 5, lambda k: k**2)</div>
                     <div># Renvoie 1² × 2² × 3² × 4² × 5² = 14400</div>
                   </div>
@@ -973,7 +973,7 @@ const PythonAnalysePage = () => {
       <Button
         onClick={handleComplete}
         size="lg"
-        className={`text-lg px-8 py-6 rounded-xl transition-all ${isComplete ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'}`}
+        className={`text-lg px-8 py-6 rounded-xl transition-all ${isComplete ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-slate-900 hover:bg-slate-800'}`}
         disabled={isComplete}
       >
         {isComplete ? (

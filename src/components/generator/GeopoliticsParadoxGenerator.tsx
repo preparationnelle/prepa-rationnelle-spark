@@ -7,6 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Loader2, Sparkles, CheckCircle, Globe, BookOpen, Target, AlertTriangle } from 'lucide-react';
 import { toast } from 'sonner';
+import { supabase } from '@/integrations/supabase/client';
 
 interface Evaluation {
   sujet: string;
@@ -67,86 +68,19 @@ export const GeopoliticsParadoxGenerator = ({ subjectFromParent }: GeopoliticsPa
     setEvaluation(null);
 
     try {
-      const openaiApiKey = import.meta.env.VITE_OPENAI_API_KEY;
-
-      if (!openaiApiKey) {
-        throw new Error('Clé API OpenAI non configurée');
-      }
-
-      const evaluationPrompt = `
-Vous êtes un expert en géopolitique SEVÈRE et exigeant. Évaluez ce paradoxe de dissertation avec HONNÊTETE et RIGUEUR.
-
-IMPORTANT : Si la réponse ne fait pas sens, n'hésitez pas à noter 0/20. Soyez intransigeant sur la qualité.
-
-SUJET : ${subject.trim()}
-PARADOXE : ${userParadox.trim()}
-
-CRITÈRES D'ÉVALUATION (sur 5 points chacun, maximum) :
-
-1. CLARTÉ : Le paradoxe est-il clairement formulé ? Les termes sont-ils précis ?
-2. TENSION : Le paradoxe montre-t-il une réelle tension contradictoire et évite-t-il les truismes ?
-3. ANCRAGE : Le paradoxe est-il ancré dans des réalités géopolitiques actuelles ?
-4. OUVERTURE : Le paradoxe permet-il d'ouvrir une réflexion analytique approfondie ?
-5. PERTINENCE : Le paradoxe aborde-t-il les enjeux stratégiques majeurs du sujet ?
-
-NOTE TOTALE = Somme des 5 critères (maximum 20 points)
-
-Répondez UNIQUEMENT avec un objet JSON valide au format suivant :
-{
-  "sujet": "${subject.trim()}",
-  "diagnostic": "Analyse critique détaillée du paradoxe (3 phrases max)",
-  "notes": {
-    "clarte": 0-4,
-    "paradoxe": 0-4,
-    "ancrage": 0-4,
-    "ouverture": 0-4,
-    "pertinence": 0-4,
-    "total": 0-20
-  },
-  "points_forts": ["Point fort 1", "Point fort 2"],
-  "limites": ["Limite 1", "Limite 2"],
-  "suggestion": "Une suggestion de reformulation plus percutante du paradoxe"
-}
-`;
-
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${openaiApiKey}`,
-        },
-        body: JSON.stringify({
-          model: 'gpt-4o-mini',
-          messages: [
-            {
-              role: 'system',
-              content: 'Vous êtes un expert en géopolitique chargé d\'évaluer des problématiques de dissertation. Répondez uniquement avec du JSON valide.'
-            },
-            {
-              role: 'user',
-              content: evaluationPrompt
-            }
-          ],
-          temperature: 0.3,
-          max_tokens: 2000
-        }),
+      const { data, error } = await supabase.functions.invoke('evaluate-geopolitics-paradox', {
+        body: { action: 'evaluate', subject: subject.trim(), userParadox: userParadox.trim() },
       });
 
-      if (!response.ok) {
-        throw new Error(`Erreur API OpenAI: ${response.status}`);
+      if (error) {
+        throw new Error(error.message || "Erreur lors de l'appel à la fonction");
       }
 
-      const data = await response.json();
-      const content = data.choices[0]?.message?.content;
-
-      if (!content) {
-        throw new Error('Réponse vide de l\'API OpenAI');
+      if (data.error) {
+        throw new Error(data.error);
       }
 
-      // Parser la réponse JSON
-      const evaluationData = JSON.parse(content.trim());
-
-      setEvaluation(evaluationData);
+      setEvaluation(data.evaluation);
       toast.success('Problématique évaluée !');
     } catch (error) {
       console.error('Error evaluating problematic:', error);
@@ -161,66 +95,19 @@ Répondez UNIQUEMENT avec un objet JSON valide au format suivant :
 
     setGeneratingSuggestion(true);
     try {
-      const openaiApiKey = import.meta.env.VITE_OPENAI_API_KEY;
-
-      if (!openaiApiKey) {
-        throw new Error('Clé API OpenAI non configurée');
-      }
-
-      const suggestionPrompt = `
-Sujet géopolitique : "${selectedSubject}"
-
-Générez un exemple pédagogique de paradoxe pour ce sujet.
-
-CRITÈRES :
-- Paradoxe : Doit révéler une tension contradictoire réelle dans le sujet
-- Pertinent : Doit aborder des enjeux stratégiques contemporains
-- Accessible : Compréhensible pour un étudiant en géopolitique
-
-Répondez UNIQUEMENT avec un objet JSON valide :
-{
-  "paradoxe": "Formulation concise du paradoxe (1 phrase)",
-  "justification": "Brève explication pédagogique (2-3 phrases)"
-}
-`;
-
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${openaiApiKey}`,
-        },
-        body: JSON.stringify({
-          model: 'gpt-4o-mini',
-          messages: [
-            {
-              role: 'system',
-              content: 'Vous êtes un expert en géopolitique. Générez des exemples pédagogiques de paradoxes.'
-            },
-            {
-              role: 'user',
-              content: suggestionPrompt
-            }
-          ],
-          temperature: 0.7,
-          max_tokens: 500
-        }),
+      const { data, error } = await supabase.functions.invoke('evaluate-geopolitics-paradox', {
+        body: { action: 'suggest', subject: selectedSubject.trim() },
       });
 
-      if (!response.ok) {
-        throw new Error(`Erreur API OpenAI: ${response.status}`);
+      if (error) {
+        throw new Error(error.message || "Erreur lors de l'appel à la fonction");
       }
 
-      const data = await response.json();
-      const content = data.choices[0]?.message?.content;
-
-      if (!content) {
-        throw new Error('Réponse vide de l\'API OpenAI');
+      if (data.error) {
+        throw new Error(data.error);
       }
 
-      const suggestionData = JSON.parse(content.trim());
-      setSuggestedParadox(suggestionData.paradoxe);
-
+      setSuggestedParadox(data.suggestion.paradoxe);
 
       toast.success('Suggestion générée automatiquement !');
     } catch (error) {
