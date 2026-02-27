@@ -47,36 +47,48 @@ const PythonProbabilitesPage = () => {
       {/* Objectifs du module */}
       <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-slate-700">
+          <CardTitle className="text-2xl font-bold text-slate-800 flex items-center gap-2">
             <Target className="h-6 w-6" />
             Objectifs du module
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Badge variant="outline" className="mb-2">Simulation</Badge>
-              <p className="text-sm text-muted-foreground">
-                Maîtriser la génération de nombres aléatoires et la simulation de lois de probabilité
-              </p>
+          <div className="space-y-3">
+            <div className="flex items-start gap-3">
+              <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+              <div>
+                <p className="font-semibold text-slate-700">Simulation</p>
+                <p className="text-sm text-gray-700">
+                  Maîtriser la génération de nombres aléatoires et la simulation de lois de probabilité
+                </p>
+              </div>
             </div>
-            <div className="space-y-2">
-              <Badge variant="outline" className="mb-2">Statistiques</Badge>
-              <p className="text-sm text-muted-foreground">
-                Calculer des statistiques descriptives et analyser des échantillons
-              </p>
+            <div className="flex items-start gap-3">
+              <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+              <div>
+                <p className="font-semibold text-slate-700">Statistiques</p>
+                <p className="text-sm text-gray-700">
+                  Calculer des statistiques descriptives et analyser des échantillons
+                </p>
+              </div>
             </div>
-            <div className="space-y-2">
-              <Badge variant="outline" className="mb-2">Monte-Carlo</Badge>
-              <p className="text-sm text-muted-foreground">
-                Appliquer la méthode de Monte-Carlo pour estimer des probabilités et espérances
-              </p>
+            <div className="flex items-start gap-3">
+              <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+              <div>
+                <p className="font-semibold text-slate-700">Monte-Carlo</p>
+                <p className="text-sm text-gray-700">
+                  Appliquer la méthode de Monte-Carlo pour estimer des probabilités et espérances
+                </p>
+              </div>
             </div>
-            <div className="space-y-2">
-              <Badge variant="outline" className="mb-2">Visualisation</Badge>
-              <p className="text-sm text-muted-foreground">
-                Créer des graphiques statistiques avec Matplotlib
-              </p>
+            <div className="flex items-start gap-3">
+              <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+              <div>
+                <p className="font-semibold text-slate-700">Visualisation</p>
+                <p className="text-sm text-gray-700">
+                  Créer des graphiques statistiques avec Matplotlib
+                </p>
+              </div>
             </div>
           </div>
         </CardContent>
@@ -85,7 +97,7 @@ const PythonProbabilitesPage = () => {
       {/* Imports et principes généraux */}
       <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-slate-700">
+          <CardTitle className="text-2xl font-bold text-slate-800 flex items-center gap-2">
             <Code className="h-6 w-6" />
             Imports et principes généraux
           </CardTitle>
@@ -118,7 +130,7 @@ import matplotlib.pyplot as plt`}
       {/* Génération aléatoire de base */}
       <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-slate-700">
+          <CardTitle className="text-2xl font-bold text-slate-800 flex items-center gap-2">
             <Calculator className="h-6 w-6" />
             Génération aléatoire de base
           </CardTitle>
@@ -160,7 +172,7 @@ import matplotlib.pyplot as plt`}
       {/* Lois discrètes courantes */}
       <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-slate-700">
+          <CardTitle className="text-2xl font-bold text-slate-800 flex items-center gap-2">
             <BarChart className="h-6 w-6" />
             Lois discrètes courantes
           </CardTitle>
@@ -209,7 +221,7 @@ import matplotlib.pyplot as plt`}
       {/* Fonctions "maison" alternatives */}
       <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-slate-700">
+          <CardTitle className="text-2xl font-bold text-slate-800 flex items-center gap-2">
             <Code className="h-6 w-6" />
             Fonctions "maison" alternatives
           </CardTitle>
@@ -260,7 +272,7 @@ import matplotlib.pyplot as plt`}
       {/* Statistiques descriptives */}
       <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-slate-700">
+          <CardTitle className="text-2xl font-bold text-slate-800 flex items-center gap-2">
             <TrendingUp className="h-6 w-6" />
             Statistiques descriptives (NumPy)
           </CardTitle>
@@ -306,7 +318,7 @@ import matplotlib.pyplot as plt`}
       {/* Graphiques Matplotlib */}
       <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-slate-700">
+          <CardTitle className="text-2xl font-bold text-slate-800 flex items-center gap-2">
             <BarChart className="h-6 w-6" />
             Graphiques de base (Matplotlib)
           </CardTitle>
@@ -353,7 +365,7 @@ import matplotlib.pyplot as plt`}
       {/* Méthode de Monte-Carlo et estimation */}
       <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-slate-700">
+          <CardTitle className="text-2xl font-bold text-slate-800 flex items-center gap-2">
             <Calculator className="h-6 w-6" />
             Méthode de Monte-Carlo et estimation
           </CardTitle>
@@ -389,7 +401,7 @@ import matplotlib.pyplot as plt`}
       {/* Exercices types */}
       <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-slate-700">
+          <CardTitle className="text-2xl font-bold text-slate-800 flex items-center gap-2">
             <Code className="h-6 w-6" />
             Exercices types
           </CardTitle>
@@ -446,7 +458,7 @@ plt.legend(); plt.show()`}
       {/* Mémo-commandes rapides */}
       <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-slate-700">
+          <CardTitle className="text-2xl font-bold text-slate-800 flex items-center gap-2">
             <Code className="h-6 w-6" />
             Mémo-commandes rapides
           </CardTitle>
@@ -469,7 +481,7 @@ rd.normal(mean, sigma)   # normale`}
       {/* Quiz express */}
       <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-slate-700">
+          <CardTitle className="text-2xl font-bold text-slate-800 flex items-center gap-2">
             <Target className="h-6 w-6" />
             Quiz express
           </CardTitle>

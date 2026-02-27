@@ -158,6 +158,12 @@ export const Footer = () => {
                     Avis Superprof
                   </Link>
                 </li>
+                <li>
+                  <Link to="/conseils-videos" className="text-gray-300 hover:text-green-400 transition-colors text-xs flex items-center gap-1">
+                    <BookOpen className="h-3 w-3" />
+                    Conseils en vidéo
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -209,9 +215,9 @@ export const Footer = () => {
             {/* Hébergeur avec icône */}
             <div className="text-xs text-gray-500 text-center md:text-right flex items-center gap-1">
               <Server className="h-3 w-3" />
-              Hébergeur : Vercel Inc. - <a 
-                href="https://vercel.com" 
-                target="_blank" 
+              Hébergeur : Vercel Inc. - <a
+                href="https://vercel.com"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-orange-500 transition-colors"
               >

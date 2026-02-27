@@ -12,7 +12,7 @@ import {
   HelpCircle,
   Target,
   Calendar
-}   Brain,
+, Brain,
   Layers
 } from 'lucide-react';
 

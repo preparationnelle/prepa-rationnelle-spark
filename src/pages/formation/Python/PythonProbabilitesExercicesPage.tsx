@@ -8,7 +8,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
-import { BarChart3, Target, Book, CheckCircle, Play, Code, Calculator, ChevronDown, ChevronUp, Trophy, Star, ArrowLeft, HelpCircle } from 'lucide-react';
+import { BarChart3, CheckCircle, Play, Code, ChevronDown, ChevronUp, Trophy, ArrowLeft, Target, HelpCircle, Star } from 'lucide-react';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 import { LatexRenderer } from '@/components/LatexRenderer';
@@ -31,6 +31,26 @@ const PythonProbabilitesExercicesPage = () => {
   // Evaluation state for code submissions
   const [evaluationResults, setEvaluationResults] = useState<{ [key: number]: EvaluationResult }>({});
   const moduleId = 'proba';
+
+  // Navigation clavier
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!selectedExercise) return;
+
+      if (e.key === 'ArrowLeft' && selectedExercise > 1) {
+        setSelectedExercise(selectedExercise - 1);
+        window.scrollTo(0, 0);
+      } else if (e.key === 'ArrowRight' && selectedExercise < exercices.length) {
+        setSelectedExercise(selectedExercise + 1);
+        window.scrollTo(0, 0);
+      } else if (e.key === 'Escape') {
+        setSelectedExercise(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedExercise]);
 
   const toggleCorrection = (index: number) => {
     const newShowCorrections = new Set(showCorrections);
@@ -195,7 +215,8 @@ const PythonProbabilitesExercicesPage = () => {
       badge: "Simulation",
       content: {
         objective: "Simuler une variable aléatoire d'arrêt",
-        enonce: "Simuler X = rang d'obtention de deux Pile consécutifs au pile ou face.\n\nOn lance une pièce de monnaie jusqu'à obtenir deux Pile consécutifs. On note X le rang d'obtention de ce deuxième Pile consécutif.",
+        isLatex: true,
+        enonce_latex: "\\text{Simuler } X = \\text{ rang d'obtention de deux Pile consécutifs au pile ou face.}\n\n\\text{On lance une pièce de monnaie jusqu'à obtenir deux Pile consécutifs. On note } X \\text{ le rang d'obtention de ce deuxième Pile consécutif.}",
         correction: `import random
 
 def simulation_arret():
@@ -227,7 +248,8 @@ for _ in range(10):
       badge: "Algorithme",
       content: {
         objective: "Simuler un processus de renforcement dans une urne",
-        enonce: "On dispose d'une urne contenant initialement une boule rouge et une boule verte. À chaque étape, on tire une boule au hasard, on la remet dans l'urne et on ajoute une boule de la même couleur.\n\nSimuler ce processus sur n étapes et analyser l'évolution de la composition de l'urne.",
+        isLatex: true,
+        enonce_latex: "\\text{On dispose d'une urne contenant initialement une boule rouge et une boule verte. À chaque étape, on tire une boule au hasard, on la remet dans l'urne et on ajoute une boule de la même couleur.}\n\n\\text{Simuler ce processus sur } n \\text{ étapes et analyser l'évolution de la composition de l'urne.}",
         correction: `import random
 
 def processus_renforcement(n):
@@ -261,7 +283,8 @@ resultat = processus_renforcement(10)`
       badge: "Probabilités",
       content: {
         objective: "Simuler des variables aléatoires liées aux tirages dans une urne",
-        enonce: "Une urne contient 3 boules rouges et 7 boules vertes. On tire sans remise jusqu'à obtenir la première boule rouge.\n\n- Z = rang d'apparition de la première boule rouge\n- Y_n = nombre de boules vertes tirées avant la première rouge",
+        isLatex: true,
+        enonce_latex: "\\text{Une urne contient } 3 \\text{ boules rouges et } 7 \\text{ boules vertes. On tire sans remise jusqu'à obtenir la première boule rouge.}\n\n\\bullet \\, Z = \\text{ rang d'apparition de la première boule rouge}\n\n\\bullet \\, Y_n = \\text{ nombre de boules vertes tirées avant la première rouge}",
         correction: `import random
 
 def simulation_urne():
@@ -295,7 +318,8 @@ for _ in range(5):
       badge: "Fondamental",
       content: {
         objective: "Simuler un événement de probabilité donnée",
-        enonce: "Écrire une fonction qui simule la réalisation d'un événement A de probabilité p.\n\nLa fonction doit retourner True si l'événement se réalise, False sinon.",
+        isLatex: true,
+        enonce_latex: "\\text{Écrire une fonction qui simule la réalisation d'un événement } A \\text{ de probabilité } p.\n\n\\text{La fonction doit retourner True si l'événement se réalise, False sinon.}",
         correction: `import random
 
 def simulation_evenement(p):
@@ -320,7 +344,8 @@ for p in probabilites:
       badge: "Simulation",
       content: {
         objective: "Simuler un processus de sauts aléatoires dans un escalier",
-        enonce: "Un animal gravit un escalier de n marches. À chaque bond, il monte soit 1 marche, soit 2 marches (avec probabilité 1/2 pour chaque).\n\nSimuler ce processus et déterminer le nombre de bonds nécessaires pour atteindre la n-ième marche.",
+        isLatex: true,
+        enonce_latex: "\\text{Un animal gravit un escalier de } n \\text{ marches. À chaque bond, il monte soit } 1 \\text{ marche, soit } 2 \\text{ marches (avec probabilité } \\frac{1}{2} \\text{ pour chaque).}\n\n\\text{Simuler ce processus et déterminer le nombre de bonds nécessaires pour atteindre la } n\\text{-ième marche.}",
         correction: `import random
 
 def sauts_escalier(n):
@@ -393,12 +418,16 @@ print(f"P(X = 2Y) ≈ {prob_estimee:.4f}")`
       badge: "Simulation",
       content: {
         objective: "Simuler une marche aléatoire simple et analyser ses propriétés.",
-        enonce: `On considère un mobile qui, à chaque unité de temps, avance d'une unité avec une probabilité égale à 1/2 ou recule d'une unité avec la même probabilité. Au départ, le mobile se situe en position 0.
+        isLatex: true,
+        enonce_latex: `\\text{On considère un mobile qui, à chaque unité de temps, avance d'une unité avec une probabilité égale à } \\frac{1}{2} \\text{ ou recule d'une unité avec la même probabilité. Au départ, le mobile se situe en position } 0.
 
-1.  Écrire une fonction Python \`position_finale(n)\` qui simule ce déplacement et retourne la position finale.
-2.  Écrire une variante \`passages_origine(n)\` qui compte le nombre de fois où le mobile repasse par l'origine.
-3.  Écrire une fonction \`temps_sortie(borne)\` qui simule la marche jusqu’à ce que le mobile sorte de l’intervalle [-borne, borne] et renvoie le nombre de pas.
-4.  Écrire une fonction \`moyenne_position(n, essais)\` qui calcule la moyenne des positions finales sur un grand nombre d'essais.`,
+\\textbf{1.} \\text{ Écrire une fonction Python } \\texttt{position\\_finale(n)} \\text{ qui simule ce déplacement et retourne la position finale.}
+
+\\textbf{2.} \\text{ Écrire une variante } \\texttt{passages\\_origine(n)} \\text{ qui compte le nombre de fois où le mobile repasse par l'origine.}
+
+\\textbf{3.} \\text{ Écrire une fonction } \\texttt{temps\\_sortie(borne)} \\text{ qui simule la marche jusqu'à ce que le mobile sorte de l'intervalle } [-\\text{borne}, \\text{borne}] \\text{ et renvoie le nombre de pas.}
+
+\\textbf{4.} \\text{ Écrire une fonction } \\texttt{moyenne\\_position(n, essais)} \\text{ qui calcule la moyenne des positions finales sur un grand nombre d'essais.}`,
         corrections: [
           {
             title: "Correction 1 : Position Finale",
@@ -481,11 +510,12 @@ print(moyenne_position(10, 10000))`
       badge: "Simulation",
       content: {
         objective: "Simuler une variable aléatoire d'arrêt pour obtenir deux Piles consécutifs.",
-        enonce: `On lance indéfiniment une pièce équilibrée (Pile ou Face). On note X la variable aléatoire égale au rang du lancer où, pour la première fois, on obtient deux Pile consécutifs.
+        isLatex: true,
+        enonce_latex: `\\text{On lance indéfiniment une pièce équilibrée (Pile ou Face). On note } X \\text{ la variable aléatoire égale au rang du lancer où, pour la première fois, on obtient deux Pile consécutifs.}
 
-Par exemple, si la suite des résultats est : Pile, Face, Face, Pile, Pile, ..., alors on a X = 5.
+\\text{Par exemple, si la suite des résultats est : Pile, Face, Face, Pile, Pile, ..., alors on a } X = 5.
 
-Compléter la fonction Python \`simulX()\` pour qu'elle simule les lancers et renvoie le nombre de lancers effectués (la valeur de X).`,
+\\text{Compléter la fonction Python } \\texttt{simulX()} \\text{ pour qu'elle simule les lancers et renvoie le nombre de lancers effectués (la valeur de } X\\text{).}`,
         correction: `import random as rd
 
 def simulX():
@@ -511,15 +541,18 @@ print(f"Nombre de lancers pour obtenir deux Piles consécutifs : {simulX()}")`
       badge: "Simulation",
       content: {
         objective: "Simuler une variable d'arrêt dans un processus d'urne de Polya modifié.",
-        enonce: `On considère une urne contenant au départ : 1 boule rouge et 1 boule verte.
+        isLatex: true,
+        enonce_latex: `\\text{On considère une urne contenant au départ : } 1 \\text{ boule rouge et } 1 \\text{ boule verte.}
 
-On effectue une série de tirages avec remise, selon le protocole suivant :
-- Si on tire une boule rouge, on la remet et on ajoute 2 boules rouges dans l'urne.
-- Si on tire une boule verte, on la remet et on ajoute 1 rouge et 2 vertes.
+\\text{On effectue une série de tirages avec remise, selon le protocole suivant :}
 
-On note Y_n la variable aléatoire égale au rang du tirage à l'issue duquel le nombre de boules vertes devient supérieur ou égal à n (pour un entier n ≥ 2).
+\\bullet \\text{ Si on tire une boule rouge, on la remet et on ajoute } 2 \\text{ boules rouges dans l'urne.}
 
-Compléter la fonction Python \`simulY(n)\` pour qu'elle simule ce processus et renvoie la valeur de Y_n.`,
+\\bullet \\text{ Si on tire une boule verte, on la remet et on ajoute } 1 \\text{ rouge et } 2 \\text{ vertes.}
+
+\\text{On note } Y_n \\text{ la variable aléatoire égale au rang du tirage à l'issue duquel le nombre de boules vertes devient supérieur ou égal à } n \\text{ (pour un entier } n \\geq 2\\text{).}
+
+\\text{Compléter la fonction Python } \\texttt{simulY(n)} \\text{ pour qu'elle simule ce processus et renvoie la valeur de } Y_n.`,
         correction: `import random as rd
 
 def simulY(n):
@@ -549,12 +582,16 @@ print(f"Nombre de tirages pour atteindre 10 boules vertes : {simulY(10)}")`
       badge: "Simulation",
       content: {
         objective: "Simuler le comportement d'un animal qui monte un escalier par bonds de 1 ou 2 marches.",
-        enonce: `Un animal doit gravir un escalier comportant n marches. À chaque bond, il choisit au hasard de monter soit 1 marche, soit 2 marches, avec une probabilité égale.
+        isLatex: true,
+        enonce_latex: `\\text{Un animal doit gravir un escalier comportant } n \\text{ marches. À chaque bond, il choisit au hasard de monter soit } 1 \\text{ marche, soit } 2 \\text{ marches, avec une probabilité égale.}
 
-Écrire une fonction Python \`saut_escalier(n)\` qui :
-- Prend en argument un entier n (le nombre de marches).
-- Simule le comportement de l’animal.
-- Retourne le nombre de bonds effectués pour atteindre (ou dépasser) la dernière marche.`,
+\\text{Écrire une fonction Python } \\texttt{saut\\_escalier(n)} \\text{ qui :}
+
+\\bullet \\text{ Prend en argument un entier } n \\text{ (le nombre de marches).}
+
+\\bullet \\text{ Simule le comportement de l'animal.}
+
+\\bullet \\text{ Retourne le nombre de bonds effectués pour atteindre (ou dépasser) la dernière marche.}`,
         correction: `import numpy.random as rd
 
 def saut_escalier(n):
@@ -583,12 +620,16 @@ print(f"Nombre de sauts pour 20 marches : {saut_escalier(20)}")`
       badge: "Simulation",
       content: {
         objective: "Simuler le problème classique du collectionneur de coupons et estimer le nombre moyen d'achats.",
-        enonce: `On souhaite compléter une collection de n vignettes différentes. À chaque achat, on obtient une vignette choisie uniformément au hasard parmi les n possibles (tirages indépendants avec remise).
+        isLatex: true,
+        enonce_latex: `\\text{On souhaite compléter une collection de } n \\text{ vignettes différentes. À chaque achat, on obtient une vignette choisie uniformément au hasard parmi les } n \\text{ possibles (tirages indépendants avec remise).}
 
-1.  Écrire une fonction \`collection(n)\` qui simule le processus et retourne le nombre d'achats nécessaires pour obtenir les n vignettes distinctes.
-2.  Écrire une fonction \`moyenne_achats(n, essais)\` qui estime par Monte-Carlo le nombre moyen d'achats sur un grand nombre d'essais.
-3.  Écrire une fonction \`compare_theorique(n)\` qui compare l'estimation Monte-Carlo avec la valeur théorique n × H_n (où H_n = 1 + 1/2 + ... + 1/n est le n-ième nombre harmonique).
-4.  Écrire une fonction \`histogramme_achats(n, essais)\` qui trace l'histogramme du nombre d'achats sur un grand nombre d'essais.`,
+\\textbf{1.} \\text{ Écrire une fonction } \\texttt{collection(n)} \\text{ qui simule le processus et retourne le nombre d'achats nécessaires pour obtenir les } n \\text{ vignettes distinctes.}
+
+\\textbf{2.} \\text{ Écrire une fonction } \\texttt{moyenne\\_achats(n, essais)} \\text{ qui estime par Monte-Carlo le nombre moyen d'achats sur un grand nombre d'essais.}
+
+\\textbf{3.} \\text{ Écrire une fonction } \\texttt{compare\\_theorique(n)} \\text{ qui compare l'estimation Monte-Carlo avec la valeur théorique } n \\times H_n \\text{ (où } H_n = 1 + \\frac{1}{2} + \\ldots + \\frac{1}{n} \\text{ est le } n\\text{-ième nombre harmonique).}
+
+\\textbf{4.} \\text{ Écrire une fonction } \\texttt{histogramme\\_achats(n, essais)} \\text{ qui trace l'histogramme du nombre d'achats sur un grand nombre d'essais.}`,
         corrections: [
           {
             title: "Correction 1 : Simulation d'une collection",
@@ -690,19 +731,23 @@ histogramme_achats(20)`
     {
       id: 12,
       title: "Estimation de pi par Monte-Carlo",
-      description: "Utiliser la methode de Monte-Carlo pour estimer la valeur de pi avec des points aleatoires.",
+      description: "Utiliser la méthode de Monte-Carlo pour estimer la valeur de π avec des points aléatoires.",
       difficulty: "Facile",
       badge: "Monte-Carlo",
       content: {
-        objective: "Estimer pi par la methode de Monte-Carlo en simulant des points uniformes dans un carre.",
-        enonce: `On considere un carre de cote 2 centre a l'origine [-1,1] x [-1,1] et le disque unite inscrit (de rayon 1).
+        objective: "Estimer π par la méthode de Monte-Carlo en simulant des points uniformes dans un carré.",
+        isLatex: true,
+        enonce_latex: `\\text{On considère un carré de côté } 2 \\text{ centré à l'origine } [-1,1] \\times [-1,1] \\text{ et le disque unité inscrit (de rayon } 1\\text{).}
 
-On tire N points uniformement dans le carre. La proportion de points tombant dans le disque est une estimation de l'aire du disque divisee par l'aire du carre, soit pi/4.
+\\text{On tire } N \\text{ points uniformément dans le carré. La proportion de points tombant dans le disque est une estimation de l'aire du disque divisée par l'aire du carré, soit } \\frac{\\pi}{4}.
 
-1.  Ecrire une fonction \`estimer_pi(N)\` qui tire N points uniformes dans le carre et retourne une estimation de pi.
-2.  Ecrire une fonction \`convergence_pi(N_max, pas)\` qui trace l'evolution de l'estimation de pi en fonction du nombre de points tires.
-3.  Ecrire une fonction \`intervalle_confiance(N, essais)\` qui estime pi plusieurs fois et calcule un intervalle de confiance a 95%.
-4.  Ecrire une fonction \`visualiser_points(N)\` qui affiche les points dans le carre (en bleu ceux dans le disque, en rouge ceux hors du disque).`,
+\\textbf{1.} \\text{ Écrire une fonction } \\texttt{estimer\\_pi(N)} \\text{ qui tire } N \\text{ points uniformes dans le carré et retourne une estimation de } \\pi.
+
+\\textbf{2.} \\text{ Écrire une fonction } \\texttt{convergence\\_pi(N\\_max, pas)} \\text{ qui trace l'évolution de l'estimation de } \\pi \\text{ en fonction du nombre de points tirés.}
+
+\\textbf{3.} \\text{ Écrire une fonction } \\texttt{intervalle\\_confiance(N, essais)} \\text{ qui estime } \\pi \\text{ plusieurs fois et calcule un intervalle de confiance à } 95\\%.
+
+\\textbf{4.} \\text{ Écrire une fonction } \\texttt{visualiser\\_points(N)} \\text{ qui affiche les points dans le carré (en bleu ceux dans le disque, en rouge ceux hors du disque).}`,
         corrections: [
           {
             title: "Correction 1 : Estimation de pi",
@@ -817,18 +862,22 @@ visualiser_points(5000)`
     },
     {
       id: 13,
-      title: "File d'attente a un guichet",
-      description: "Simuler une file d'attente avec arrivees et services aleatoires pour estimer le temps moyen d'attente.",
-      difficulty: "Avance",
+      title: "File d'attente à un guichet",
+      description: "Simuler une file d'attente avec arrivées et services aléatoires pour estimer le temps moyen d'attente.",
+      difficulty: "Avancé",
       badge: "Algorithme",
       content: {
-        objective: "Modeliser et simuler une file d'attente simple pour estimer les temps d'attente et la longueur de la file.",
-        enonce: `On modelise un guichet unique avec une file d'attente. Les clients arrivent un par un. Le temps entre deux arrivees suit une loi exponentielle de parametre lambda (par exemple lambda = 1). Le temps de service de chaque client suit une loi exponentielle de parametre mu (par exemple mu = 1.5).
+        objective: "Modéliser et simuler une file d'attente simple pour estimer les temps d'attente et la longueur de la file.",
+        isLatex: true,
+        enonce_latex: `\\text{On modélise un guichet unique avec une file d'attente. Les clients arrivent un par un. Le temps entre deux arrivées suit une loi exponentielle de paramètre } \\lambda \\text{ (par exemple } \\lambda = 1\\text{). Le temps de service de chaque client suit une loi exponentielle de paramètre } \\mu \\text{ (par exemple } \\mu = 1.5\\text{).}
 
-1.  Ecrire une fonction \`simuler_file(n_clients, lam, mu)\` qui simule l'arrivee de n_clients et retourne la liste des temps d'attente de chaque client.
-2.  Ecrire une fonction \`temps_moyen_attente(n_clients, lam, mu, essais)\` qui estime le temps moyen d'attente par Monte-Carlo.
-3.  Ecrire une fonction \`longueur_max_file(n_clients, lam, mu)\` qui calcule la longueur maximale de la file d'attente pendant la simulation.
-4.  Ecrire une fonction \`taux_occupation(n_clients, lam, mu)\` qui calcule la proportion du temps pendant laquelle le guichet est occupe.`,
+\\textbf{1.} \\text{ Écrire une fonction } \\texttt{simuler\\_file(n\\_clients, lam, mu)} \\text{ qui simule l'arrivée de } n \\text{ clients et retourne la liste des temps d'attente de chaque client.}
+
+\\textbf{2.} \\text{ Écrire une fonction } \\texttt{temps\\_moyen\\_attente(n\\_clients, lam, mu, essais)} \\text{ qui estime le temps moyen d'attente par Monte-Carlo.}
+
+\\textbf{3.} \\text{ Écrire une fonction } \\texttt{longueur\\_max\\_file(n\\_clients, lam, mu)} \\text{ qui calcule la longueur maximale de la file d'attente pendant la simulation.}
+
+\\textbf{4.} \\text{ Écrire une fonction } \\texttt{taux\\_occupation(n\\_clients, lam, mu)} \\text{ qui calcule la proportion du temps pendant laquelle le guichet est occupé.}`,
         corrections: [
           {
             title: "Correction 1 : Simulation de la file d'attente",
@@ -967,17 +1016,21 @@ taux_occupation(500)`
     {
       id: 14,
       title: "Simulation d'un match de tennis",
-      description: "Simuler un set de tennis et estimer la probabilite de victoire en fonction de la probabilite de gagner un point.",
-      difficulty: "Intermediaire",
+      description: "Simuler un set de tennis et estimer la probabilité de victoire en fonction de la probabilité de gagner un point.",
+      difficulty: "Intermédiaire",
       badge: "Simulation",
       content: {
-        objective: "Simuler un jeu et un set de tennis pour etudier l'amplification des probabilites.",
-        enonce: `Au tennis, un joueur A a une probabilite p de gagner chaque point contre le joueur B (et B gagne avec probabilite 1-p). Un jeu se gagne quand un joueur atteint 4 points avec 2 points d'ecart minimum (40-40 puis avantage puis jeu). Un set se gagne quand un joueur atteint 6 jeux avec 2 jeux d'ecart, ou 7-6 apres un tie-break.
+        objective: "Simuler un jeu et un set de tennis pour étudier l'amplification des probabilités.",
+        isLatex: true,
+        enonce_latex: `\\text{Au tennis, un joueur A a une probabilité } p \\text{ de gagner chaque point contre le joueur B (et B gagne avec probabilité } 1-p\\text{). Un jeu se gagne quand un joueur atteint } 4 \\text{ points avec } 2 \\text{ points d'écart minimum (40-40 puis avantage puis jeu). Un set se gagne quand un joueur atteint } 6 \\text{ jeux avec } 2 \\text{ jeux d'écart, ou } 7\\text{-}6 \\text{ après un tie-break.}
 
-1.  Ecrire une fonction \`simuler_jeu(p)\` qui simule un jeu et retourne True si le joueur A gagne.
-2.  Ecrire une fonction \`simuler_set(p)\` qui simule un set complet et retourne True si A gagne.
-3.  Ecrire une fonction \`proba_victoire_set(p, essais)\` qui estime par Monte-Carlo la probabilite que A gagne le set.
-4.  Ecrire une fonction \`courbe_amplification(essais)\` qui trace la probabilite de gagner un set en fonction de p dans [0, 1].`,
+\\textbf{1.} \\text{ Écrire une fonction } \\texttt{simuler\\_jeu(p)} \\text{ qui simule un jeu et retourne True si le joueur A gagne.}
+
+\\textbf{2.} \\text{ Écrire une fonction } \\texttt{simuler\\_set(p)} \\text{ qui simule un set complet et retourne True si A gagne.}
+
+\\textbf{3.} \\text{ Écrire une fonction } \\texttt{proba\\_victoire\\_set(p, essais)} \\text{ qui estime par Monte-Carlo la probabilité que A gagne le set.}
+
+\\textbf{4.} \\text{ Écrire une fonction } \\texttt{courbe\\_amplification(essais)} \\text{ qui trace la probabilité de gagner un set en fonction de } p \\text{ dans } [0, 1].`,
         corrections: [
           {
             title: "Correction 1 : Simulation d'un jeu",
@@ -1133,17 +1186,21 @@ courbe_amplification()`
     {
       id: 15,
       title: "Ruine du joueur",
-      description: "Simuler le probleme classique de la ruine du joueur et estimer la probabilite de ruine.",
-      difficulty: "Avance",
-      badge: "Probabilites",
+      description: "Simuler le problème classique de la ruine du joueur et estimer la probabilité de ruine.",
+      difficulty: "Avancé",
+      badge: "Probabilités",
       content: {
-        objective: "Simuler le probleme de la ruine du joueur et etudier la probabilite de ruine en fonction de la fortune initiale.",
-        enonce: `Un joueur dispose d'une fortune initiale a. A chaque tour, il mise 1 euro. Il gagne (fortune +1) avec probabilite p et perd (fortune -1) avec probabilite 1-p. Le jeu s'arrete quand sa fortune atteint 0 (ruine) ou N (objectif atteint).
+        objective: "Simuler le problème de la ruine du joueur et étudier la probabilité de ruine en fonction de la fortune initiale.",
+        isLatex: true,
+        enonce_latex: `\\text{Un joueur dispose d'une fortune initiale } a. \\text{ À chaque tour, il mise } 1 \\text{ euro. Il gagne (fortune } +1\\text{) avec probabilité } p \\text{ et perd (fortune } -1\\text{) avec probabilité } 1-p. \\text{ Le jeu s'arrête quand sa fortune atteint } 0 \\text{ (ruine) ou } N \\text{ (objectif atteint).}
 
-1.  Ecrire une fonction \`ruine(a, N, p)\` qui simule une partie et retourne True si le joueur est ruine (fortune = 0).
-2.  Ecrire une fonction \`proba_ruine(a, N, p, essais)\` qui estime la probabilite de ruine par Monte-Carlo.
-3.  Ecrire une fonction \`duree_partie(a, N, p, essais)\` qui estime la duree moyenne d'une partie (nombre de tours).
-4.  Ecrire une fonction \`trajectoire(a, N, p)\` qui trace l'evolution de la fortune du joueur au cours d'une partie.`,
+\\textbf{1.} \\text{ Écrire une fonction } \\texttt{ruine(a, N, p)} \\text{ qui simule une partie et retourne True si le joueur est ruiné (fortune } = 0\\text{).}
+
+\\textbf{2.} \\text{ Écrire une fonction } \\texttt{proba\\_ruine(a, N, p, essais)} \\text{ qui estime la probabilité de ruine par Monte-Carlo.}
+
+\\textbf{3.} \\text{ Écrire une fonction } \\texttt{duree\\_partie(a, N, p, essais)} \\text{ qui estime la durée moyenne d'une partie (nombre de tours).}
+
+\\textbf{4.} \\text{ Écrire une fonction } \\texttt{trajectoire(a, N, p)} \\text{ qui trace l'évolution de la fortune du joueur au cours d'une partie.}`,
         corrections: [
           {
             title: "Correction 1 : Simulation d'une partie",
@@ -1286,78 +1343,132 @@ for _ in range(3):
     const exercise = exercices.find(ex => ex.id === selectedExercise);
     if (!exercise) return null;
 
+    const hasPrevious = selectedExercise > 1;
+    const hasNext = selectedExercise < exercices.length;
+
     return (
       <PythonModuleLayout>
-        <div className="mb-6">
-          <Button
-            variant="outline"
-            size="sm"
-            className="flex items-center gap-2 mb-4"
-            onClick={handleBackToList}
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Retour aux exercices
-          </Button>
+        {/* Barre de navigation supérieure */}
+        <div className="mb-6 sticky top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-slate-200 -mx-8 px-8 py-4">
+          <div className="flex items-center justify-between">
+            <Button
+              variant="outline"
+              size="sm"
+              className="flex items-center gap-2"
+              onClick={handleBackToList}
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Retour aux exercices
+            </Button>
 
-          <Card className="border-0 shadow-lg bg-gray-50">
-            <div className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-gray-600 text-white">
-                  <BarChart3 className="h-5 w-5" />
-                </div>
-                <div>
-                  <h1 className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
-                    Exercice {selectedExercise} - {exercise.title}
-                  </h1>
-                  <div className="flex items-center gap-2 mt-1">
-                    <Badge variant="secondary" className="bg-gray-100 text-gray-700 text-xs">
-                      {exercise.difficulty}
-                    </Badge>
-                    <Badge variant="secondary" className="bg-slate-100 text-slate-700 text-xs">
-                      {exercise.badge}
-                    </Badge>
-                  </div>
+            <div className="flex items-center gap-4">
+              {/* Indicateur de progression */}
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-semibold text-slate-700">
+                  Exercice {selectedExercise} / {exercices.length}
+                </span>
+                <div className="w-32 h-2 bg-slate-200 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-300"
+                    style={{ width: `${(selectedExercise / exercices.length) * 100}%` }}
+                  />
                 </div>
               </div>
+
+              {/* Boutons de navigation */}
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    if (hasPrevious) {
+                      setSelectedExercise(selectedExercise - 1);
+                      window.scrollTo(0, 0);
+                    }
+                  }}
+                  disabled={!hasPrevious}
+                  className="flex items-center gap-1"
+                >
+                  <ChevronDown className="h-4 w-4 rotate-90" />
+                  Précédent
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    if (hasNext) {
+                      setSelectedExercise(selectedExercise + 1);
+                      window.scrollTo(0, 0);
+                    }
+                  }}
+                  disabled={!hasNext}
+                  className="flex items-center gap-1"
+                >
+                  Suivant
+                  <ChevronDown className="h-4 w-4 -rotate-90" />
+                </Button>
+              </div>
             </div>
-          </Card>
+          </div>
+        </div>
+
+        {/* Header simplifié */}
+        <div className="mb-6 pb-4 border-b border-slate-200">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-2xl font-bold text-slate-900 mb-2">
+                Exercice {selectedExercise} - {exercise.title}
+              </h1>
+              <div className="flex items-center gap-2">
+                <Badge variant="secondary" className="bg-slate-100 text-slate-600 text-xs">
+                  {exercise.difficulty}
+                </Badge>
+                <Badge variant="secondary" className="bg-slate-100 text-slate-600 text-xs">
+                  {exercise.badge}
+                </Badge>
+              </div>
+            </div>
+
+            {/* Raccourcis clavier - plus discrets */}
+            <div className="text-xs text-slate-400 flex items-center gap-3">
+              <div className="flex items-center gap-1">
+                <kbd className="px-1.5 py-0.5 bg-slate-50 rounded text-slate-500 text-xs">←</kbd>
+                <kbd className="px-1.5 py-0.5 bg-slate-50 rounded text-slate-500 text-xs">→</kbd>
+              </div>
+              <kbd className="px-1.5 py-0.5 bg-slate-50 rounded text-slate-500 text-xs">Esc</kbd>
+            </div>
+          </div>
         </div>
 
         {exercise.content ? (
           <>
-            <Card className="mb-6">
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center gap-2 text-gray-700 text-lg">
-                  <Target className="h-5 w-5" />
-                  Objectif
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <div className="text-slate-600 text-sm leading-relaxed bg-gray-50 p-3 rounded-lg border border-gray-200">
-                  {exercise.content.isLatex ? (
-                    <LatexRenderer latex={exercise.content.objective} />
-                  ) : (
-                    <p>{exercise.content.objective}</p>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="mb-6">
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center gap-2 text-slate-700 text-lg">
-                  <Book className="h-5 w-5" />
-                  Énoncé
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <div className="prose prose-sm max-w-none">
+            {/* Énoncé simplifié */}
+            <Card className="mb-6 bg-white border border-slate-200 shadow-sm">
+              <CardContent className="pt-6 pb-6">
+                <div className="w-full">
                   {exercise.content.enonce_latex ? (
-                    <div className="text-slate-700 text-sm leading-relaxed bg-slate-50 p-4 rounded-lg border">
+                    <div
+                      className="text-slate-700 text-base leading-[1.8]"
+                      style={{
+                        wordWrap: 'break-word',
+                        overflowWrap: 'break-word',
+                        hyphens: 'auto',
+                        whiteSpace: 'normal'
+                      }}
+                    >
                       <LatexRenderer latex={exercise.content.enonce_latex} />
                     </div>
                   ) : (
-                    <pre className="text-slate-700 whitespace-pre-line text-sm leading-relaxed bg-slate-50 p-4 rounded-lg border">{exercise.content.enonce}</pre>
+                    <div
+                      className="text-slate-700 text-base leading-[1.8]"
+                      style={{
+                        wordWrap: 'break-word',
+                        overflowWrap: 'break-word',
+                        whiteSpace: 'pre-wrap'
+                      }}
+                    >
+                      {exercise.content.enonce}
+                    </div>
                   )}
                 </div>
               </CardContent>
@@ -1440,6 +1551,55 @@ for _ in range(3):
                   ))}
               </>
             )}
+
+            {/* Barre de navigation inférieure */}
+            <div className="mt-8 pt-6 border-t border-slate-200">
+              <div className="flex items-center justify-between">
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    if (hasPrevious) {
+                      setSelectedExercise(selectedExercise - 1);
+                      window.scrollTo(0, 0);
+                    }
+                  }}
+                  disabled={!hasPrevious}
+                  className="flex items-center gap-2"
+                >
+                  <ChevronDown className="h-4 w-4 rotate-90" />
+                  Exercice précédent
+                </Button>
+
+                <div className="text-sm text-slate-600">
+                  Exercice {selectedExercise} / {exercices.length}
+                </div>
+
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    if (hasNext) {
+                      setSelectedExercise(selectedExercise + 1);
+                      window.scrollTo(0, 0);
+                    } else {
+                      setSelectedExercise(null);
+                    }
+                  }}
+                  className="flex items-center gap-2"
+                >
+                  {hasNext ? (
+                    <>
+                      Exercice suivant
+                      <ChevronDown className="h-4 w-4 -rotate-90" />
+                    </>
+                  ) : (
+                    <>
+                      Retour aux exercices
+                      <ArrowLeft className="h-4 w-4 rotate-180" />
+                    </>
+                  )}
+                </Button>
+              </div>
+            </div>
           </>
         ) : (
           <div className="space-y-6">
@@ -1471,61 +1631,84 @@ for _ in range(3):
 
   return (
     <PythonModuleLayout>
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-700 to-indigo-700 bg-clip-text text-transparent mb-4">
-          Module 3 : Exercices - Probabilités
-        </h1>
-        <p className="text-xl text-muted-foreground">
-          Exercices pratiques sur les probabilités et statistiques
+      <div className="mb-8">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="p-3 rounded-lg bg-slate-100 text-slate-700 border border-slate-200">
+            <BarChart3 className="h-8 w-8" />
+          </div>
+          <div>
+            <h1 className="text-4xl font-bold text-slate-800">Module 3 - Probabilités : Exercices</h1>
+            <Badge variant="secondary" className="mt-3 bg-slate-100 text-slate-700 border border-slate-200 font-semibold px-4 py-2">Exercices</Badge>
+          </div>
+        </div>
+        <p className="text-gray-700 mt-4">
+          Exercices pratiques sur les probabilités et statistiques avec Python
         </p>
       </div>
 
       {!showQCM && !selectedExercise && (
         <>
           {/* Section QCM */}
-          <Card className="mb-8 hover:shadow-lg transition-shadow cursor-pointer border-2 border-blue-200 hover:border-blue-300" onClick={() => setShowQCM(true)}>
-            <CardHeader className="bg-blue-50">
-              <CardTitle className="flex items-center gap-3">
-                <Trophy className="h-8 w-8 text-blue-600" />
-                <div>
-                  <h2 className="text-2xl text-blue-700">QCM d'évaluation</h2>
-                  <p className="text-sm text-blue-600 mt-1">Testez vos connaissances en probabilités</p>
-                </div>
+          <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl hover:shadow-lg transition-shadow cursor-pointer" onClick={() => setShowQCM(true)}>
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                <Trophy className="h-6 w-6" />
+                QCM d'évaluation
               </CardTitle>
             </CardHeader>
-            <CardContent className="pt-4">
+            <CardContent>
               <div className="flex items-center justify-between">
-                <p className="text-blue-600">20 questions pour évaluer votre niveau</p>
-                <Button variant="outline" className="flex items-center gap-2 border-blue-200 text-blue-600 hover:bg-blue-50">
+                <div>
+                  <p className="text-slate-700 font-semibold mb-1">Testez vos connaissances en probabilités</p>
+                  <p className="text-gray-600 text-sm">20 questions pour évaluer votre niveau</p>
+                </div>
+                <Button className="flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white">
                   <Play className="h-4 w-4" />
-                  Commencer le QCM
+                  Commencer
                 </Button>
               </div>
             </CardContent>
           </Card>
 
-          <div className="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="space-y-2">
-                <Badge variant="outline" className="bg-blue-100 text-blue-700 border-blue-200">Simulation Monte-Carlo</Badge>
-                <p className="text-sm text-blue-600">
-                  Implémenter des méthodes de simulation probabiliste
-                </p>
+          <Card className="mb-8 bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm rounded-2xl">
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                <Target className="h-6 w-6" />
+                Objectifs des exercices
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-slate-700">Simulation Monte-Carlo</p>
+                    <p className="text-sm text-gray-700">
+                      Implémenter des méthodes de simulation probabiliste
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-slate-700">Processus stochastiques</p>
+                    <p className="text-sm text-gray-700">
+                      Étudier les chaînes et processus aléatoires
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-slate-700">Loi d'arrêt</p>
+                    <p className="text-sm text-gray-700">
+                      Comprendre et appliquer les théorèmes d'arrêt
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="space-y-2">
-                <Badge variant="outline" className="bg-blue-100 text-blue-700 border-blue-200">Processus stochastiques</Badge>
-                <p className="text-sm text-blue-600">
-                  Étudier les chaînes et processus aléatoires
-                </p>
-              </div>
-              <div className="space-y-2">
-                <Badge variant="outline" className="bg-blue-100 text-blue-700 border-blue-200">Loi d'arrêt</Badge>
-                <p className="text-sm text-blue-600">
-                  Comprendre et appliquer les théorèmes d'arrêt
-                </p>
-              </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
 
           {/* Grille d'exercices */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

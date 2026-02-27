@@ -38,6 +38,26 @@ const PythonMatricesExercicesPage = () => {
     }
   }, [searchParams]);
 
+  // Navigation clavier
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!selectedExercise) return;
+
+      if (e.key === 'ArrowLeft' && selectedExercise > 1) {
+        setSelectedExercise(selectedExercise - 1);
+        window.scrollTo(0, 0);
+      } else if (e.key === 'ArrowRight' && selectedExercise < exercices.length) {
+        setSelectedExercise(selectedExercise + 1);
+        window.scrollTo(0, 0);
+      } else if (e.key === 'Escape') {
+        setSelectedExercise(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedExercise]);
+
 
   const toggleSolution = (exerciseId: string) => {
     setShowSolution(prev => {
@@ -931,69 +951,130 @@ def Nilp(A):
   if (selectedExercise) {
     const exercise = exercises.find(ex => ex.id === selectedExercise);
     if (!exercise) return null;
+
+    const hasPrevious = selectedExercise > 1;
+    const hasNext = selectedExercise < exercises.length;
+
     return (
       <PythonModuleLayout>
-        <div className="mb-8">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="flex items-center gap-2 mb-6 hover:bg-gray-100"
-            onClick={() => setSelectedExercise(null)}
-          >
-            <ChevronLeft className="h-4 w-4" /> Retour aux exercices
-          </Button>
-
-          <div className="text-center max-w-3xl mx-auto mb-10">
-            <Badge
+        {/* Barre de navigation supérieure */}
+        <div className="mb-6 sticky top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-slate-200 -mx-8 px-8 py-4">
+          <div className="flex items-center justify-between">
+            <Button
               variant="outline"
-              className="mb-4 bg-blue-50 text-blue-700 border-blue-200 px-3 py-1"
+              size="sm"
+              className="flex items-center gap-2"
+              onClick={() => setSelectedExercise(null)}
             >
-              Niveau : {exercise.difficulty}
-            </Badge>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
-              {exercise.title}
-            </h1>
+              <ArrowLeft className="h-4 w-4" />
+              Retour aux exercices
+            </Button>
+
+            <div className="flex items-center gap-4">
+              {/* Indicateur de progression */}
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-semibold text-slate-700">
+                  Exercice {selectedExercise} / {exercises.length}
+                </span>
+                <div className="w-32 h-2 bg-slate-200 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-300"
+                    style={{ width: `${(selectedExercise / exercises.length) * 100}%` }}
+                  />
+                </div>
+              </div>
+
+              {/* Boutons de navigation */}
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    if (hasPrevious) {
+                      setSelectedExercise(selectedExercise - 1);
+                      window.scrollTo(0, 0);
+                    }
+                  }}
+                  disabled={!hasPrevious}
+                  className="flex items-center gap-1"
+                >
+                  <ChevronDown className="h-4 w-4 rotate-90" />
+                  Précédent
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    if (hasNext) {
+                      setSelectedExercise(selectedExercise + 1);
+                      window.scrollTo(0, 0);
+                    }
+                  }}
+                  disabled={!hasNext}
+                  className="flex items-center gap-1"
+                >
+                  Suivant
+                  <ChevronDown className="h-4 w-4 -rotate-90" />
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Shortcuts removed to clean up UI, or could be kept if really needed but simpler */}
+        {/* Header simplifié */}
+        <div className="mb-6 pb-4 border-b border-slate-200">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-2xl font-bold text-slate-900 mb-2">
+                Exercice {selectedExercise} - {exercise.title}
+              </h1>
+              <div className="flex items-center gap-2">
+                <Badge variant="secondary" className="bg-slate-100 text-slate-600 text-xs">
+                  {exercise.difficulty}
+                </Badge>
+              </div>
+            </div>
+
+            {/* Raccourcis clavier - plus discrets */}
+            <div className="text-xs text-slate-400 flex items-center gap-3">
+              <div className="flex items-center gap-1">
+                <kbd className="px-1.5 py-0.5 bg-slate-50 rounded text-slate-500 text-xs">←</kbd>
+                <kbd className="px-1.5 py-0.5 bg-slate-50 rounded text-slate-500 text-xs">→</kbd>
+              </div>
+              <kbd className="px-1.5 py-0.5 bg-slate-50 rounded text-slate-500 text-xs">Esc</kbd>
+            </div>
+          </div>
+        </div>
 
         {exercise.content ? (
-          <div className="max-w-4xl mx-auto space-y-8">
-            <Card className="border border-gray-200 bg-white shadow-sm overflow-hidden">
-              <div className="border-b border-gray-100 bg-gray-50/50 px-6 py-4">
-                <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
-                  <Target className="h-5 w-5 text-blue-600" />
-                  Objectif de l'exercice
-                </h2>
-              </div>
-              <CardContent className="p-6 md:p-8">
-                <div className="text-gray-700 text-lg leading-relaxed">
-                  {exercise.content.isLatex ? (
-                    <div className="flex justify-center my-2">
-                      <LatexRenderer latex={exercise.content.objective} />
+          <>
+            {/* Énoncé simplifié */}
+            <Card className="mb-6 bg-white border border-slate-200 shadow-sm">
+              <CardContent className="pt-6 pb-6">
+                <div className="w-full">
+                  {exercise.content.enonce_latex ? (
+                    <div
+                      className="text-slate-700 text-base leading-[1.8]"
+                      style={{
+                        wordWrap: 'break-word',
+                        overflowWrap: 'break-word',
+                        hyphens: 'auto',
+                        whiteSpace: 'normal'
+                      }}
+                    >
+                      <LatexRenderer latex={exercise.content.enonce_latex} />
                     </div>
                   ) : (
-                    <p>{exercise.content.objective}</p>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Énoncé */}
-            <Card className="border border-gray-200 bg-white shadow-sm">
-              <div className="border-b border-gray-100 bg-gray-50/50 px-6 py-4">
-                <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                  <BookOpen className="h-5 w-5 text-blue-600" />
-                  Énoncé
-                </h2>
-              </div>
-              <CardContent className="p-6 md:p-8">
-                <div className="text-gray-700 text-lg">
-                  {exercise.content.enonce_latex ? (
-                    <LatexRenderer latex={exercise.content.enonce_latex} />
-                  ) : (
-                    <p className="whitespace-pre-line leading-relaxed">{exercise.content.enonce}</p>
+                    <div
+                      className="text-slate-700 text-base leading-[1.8]"
+                      style={{
+                        wordWrap: 'break-word',
+                        overflowWrap: 'break-word',
+                        whiteSpace: 'pre-wrap'
+                      }}
+                    >
+                      {exercise.content.enonce}
+                    </div>
                   )}
                 </div>
               </CardContent>
@@ -1064,7 +1145,56 @@ def Nilp(A):
                 </div>
               </div>
             )}
-          </div>
+
+            {/* Barre de navigation inférieure */}
+            <div className="mt-8 pt-6 border-t border-slate-200">
+              <div className="flex items-center justify-between">
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    if (hasPrevious) {
+                      setSelectedExercise(selectedExercise - 1);
+                      window.scrollTo(0, 0);
+                    }
+                  }}
+                  disabled={!hasPrevious}
+                  className="flex items-center gap-2"
+                >
+                  <ChevronDown className="h-4 w-4 rotate-90" />
+                  Exercice précédent
+                </Button>
+
+                <div className="text-sm text-slate-600">
+                  Exercice {selectedExercise} / {exercises.length}
+                </div>
+
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    if (hasNext) {
+                      setSelectedExercise(selectedExercise + 1);
+                      window.scrollTo(0, 0);
+                    } else {
+                      setSelectedExercise(null);
+                    }
+                  }}
+                  className="flex items-center gap-2"
+                >
+                  {hasNext ? (
+                    <>
+                      Exercice suivant
+                      <ChevronDown className="h-4 w-4 -rotate-90" />
+                    </>
+                  ) : (
+                    <>
+                      Retour aux exercices
+                      <ArrowLeft className="h-4 w-4 rotate-180" />
+                    </>
+                  )}
+                </Button>
+              </div>
+            </div>
+          </>
         ) : (
           <Card className="border-gray-200">
             <CardContent className="pt-6">

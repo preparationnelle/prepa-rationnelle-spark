@@ -364,6 +364,7 @@ const PartnersPage = lazy(() => import('../pages/PartnersPage'));
 const FormationOverviewPage = lazy(() => import('../pages/FormationOverviewPage'));
 const ArticlesPage = lazy(() => import('../pages/ArticlesPage'));
 const AvisPage = lazy(() => import('../pages/AvisPage'));
+const ConseilsVideosPage = lazy(() => import('../pages/ConseilsVideosPage'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 
 // Formation pages
@@ -803,6 +804,7 @@ export const routes: RouteConfig[] = [
   { path: '/coaching', component: CoachingPage, title: 'Coaching individuel' },
   { path: '/partners', component: PartnersPage, title: 'Partenaires' },
   { path: '/methodes/personnalite', component: MethodEntretiensPersonnalitePage, title: 'Méthodes Personnalité' },
+  { path: '/conseils-videos', component: ConseilsVideosPage, title: 'Conseils en vidéo' },
   { path: '/articles', component: ArticlesPage, title: 'Conseils & Articles' },
   { path: '/articles/primaire', component: ArticlesPrimairePage, title: 'Articles Primaire' },
   { path: '/articles/primaire/autonomie', component: AutonomiePrimairePage, title: 'Développer l\'autonomie en primaire' },

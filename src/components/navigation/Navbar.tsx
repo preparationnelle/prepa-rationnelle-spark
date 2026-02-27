@@ -341,6 +341,10 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                   <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Star className="h-4 w-4 text-orange-600" /></span>
                   <span>Avis</span>
                 </Link>
+                <Link to="/conseils-videos" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-blue-50 rounded-md px-3 py-2 transition-colors">
+                  <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center"><Youtube className="h-4 w-4 text-orange-600" /></span>
+                  <span>Conseils en vidéo</span>
+                </Link>
               </div>
             </div>
 
@@ -583,6 +587,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
           <Link to="/" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Accueil</Link>
           <Link to="/avis" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Avis</Link>
           <Link to="/generator" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Générateur</Link>
+          <Link to="/conseils-videos" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>📹 Vidéos</Link>
 
 
           <Link to="/articles/primaire" className="text-base py-3 border-b border-gray-200 bg-white px-4 rounded-md transition-colors duration-200 hover:bg-gray-50 min-h-[44px] flex items-center" onClick={closeMenu}>Primaire</Link>

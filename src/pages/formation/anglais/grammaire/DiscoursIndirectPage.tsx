@@ -11,8 +11,8 @@ import {
   Table,
   HelpCircle,
   Target,
-  Calendar
-}   Brain,
+  Calendar,
+  Brain,
   Layers
 } from 'lucide-react';
 
