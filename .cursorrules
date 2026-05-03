@@ -1,0 +1,23 @@
+# Project Rules & SEO Guidelines
+
+You are working on a high-performance web application. Always adhere to these rules:
+
+## GEO & SEO Optimization (CRITICAL)
+
+### Quick Wins (Apply constantly)
+- **Metadata**: Ensure every page has a `SEOHead` component with `title` and `description`.
+- **Headings**: Use hierarchical headings (H1, H2, H3). H1 is for the main title only.
+- **Images**: All `<img>` tags must have descriptive `alt` text.
+- **URLs**: Keep URLs readable and descriptive (e.g., `/articles/culture-wars` not `/p=123`).
+- **Performance**: Use lazy loading for images and avoid heavy blocking scripts.
+
+### Long Term Strategy
+- **Answer-First**: Start articles with a direct answer/definition for AI parsing.
+- **FAQ**: Include a structured FAQ section (using `<Accordion>`) in every informational page.
+- **Schema**: Always implement JSON-LD schema (Article, FAQPage, Course) via `SEOHead`.
+
+## Code Style
+- Use **React + TypeScript**.
+- Use **Tailwind CSS** for styling.
+- Use **shadcn/ui** components for UI elements.
+- Prefer functional components and hooks.

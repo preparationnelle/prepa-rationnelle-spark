@@ -1,0 +1,930 @@
+import React, { useState, useEffect } from 'react';
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
+import { Home, ChevronRight, ArrowLeft, BookOpen } from 'lucide-react';
+
+const Module6VocabularyPage = () => {
+  const [language] = useState<'fr' | 'en'>('fr');
+
+  return (
+    <div className="min-h-screen bg-white relative overflow-hidden">
+      {/* Floating elements - Subtle bubbles */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute bottom-40 left-20 w-56 h-56 bg-orange-200 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-blue-50 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
+
+      {/* Sticky Breadcrumb */}
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40 relative z-10">
+        <div className="container mx-auto px-4 py-2">
+          <div className="flex items-center text-xs text-muted-foreground">
+            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              <Home className="h-3 w-3" />
+              <span>Accueil</span>
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formations" className="hover:text-foreground transition-colors">
+              Toutes les formations
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formation/espagnol" className="hover:text-foreground transition-colors">
+              Formation Espagnol ECG
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formation/espagnol/civilisation" className="hover:text-foreground transition-colors">
+              Civilisation Hispanique
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formation/espagnol/civilisation/module6" className="hover:text-foreground transition-colors">
+              Pobreza y Dependencia Económica
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <span className="text-foreground font-medium">Vocabulaire Économique et Social</span>
+          </div>
+        </div>
+      </nav>
+
+      <div className="container mx-auto py-8 px-4 relative z-10">
+        {/* Header Section */}
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <div className="p-4 rounded-2xl bg-blue-600 text-white shadow-lg">
+              <BookOpen className="h-12 w-12" />
+            </div>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
+              <span className="text-blue-700 font-bold">
+                Vocabulaire Économique et Social
+              </span>
+            </h1>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div className="max-w-6xl mx-auto">
+          {/* Custom flashcards component for poverty vocabulary */}
+          <PovertyVocabularyFlashcards />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Custom flashcards component specifically for poverty vocabulary
+const PovertyVocabularyFlashcards: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [showAnswer, setShowAnswer] = useState(false);
+  const [studiedCards, setStudiedCards] = useState<Set<number>>(new Set());
+  const [selectedCategory, setSelectedCategory] = useState<string | 'all'>('all');
+  const [reviewCards, setReviewCards] = useState<Set<number>>(new Set());
+  const [isReviewMode, setIsReviewMode] = useState(false);
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
+
+  // Référence pour le focus automatique
+  const flashcardsRef = React.useRef<HTMLDivElement>(null);
+
+  const povertyVocabularyData = [
+    // 1. Concepts de pauvreté et exclusion sociale
+    {
+      spanish: "Pobreza",
+      french: "Pauvreté",
+      category: "Concepts de pauvreté et exclusion sociale"
+    },
+    {
+      spanish: "Indigencia",
+      french: "Indigence",
+      category: "Concepts de pauvreté et exclusion sociale"
+    },
+    {
+      spanish: "Marginación",
+      french: "Marginalisation",
+      category: "Concepts de pauvreté et exclusion sociale"
+    },
+    {
+      spanish: "Exclusión social",
+      french: "Exclusion sociale",
+      category: "Concepts de pauvreté et exclusion sociale"
+    },
+    {
+      spanish: "Vulnerabilidad",
+      french: "Vulnérabilité",
+      category: "Concepts de pauvreté et exclusion sociale"
+    },
+    {
+      spanish: "Desigualdad",
+      french: "Inégalité",
+      category: "Concepts de pauvreté et exclusion sociale"
+    },
+    {
+      spanish: "Bajo nivel de vida",
+      french: "Niveau de vie bas",
+      category: "Concepts de pauvreté et exclusion sociale"
+    },
+    {
+      spanish: "Precariedad",
+      french: "Précarité",
+      category: "Concepts de pauvreté et exclusion sociale"
+    },
+    {
+      spanish: "Subdesarrollo",
+      french: "Sous-développement",
+      category: "Concepts de pauvreté et exclusion sociale"
+    },
+    {
+      spanish: "Inseguridad alimentaria",
+      french: "Insécurité alimentaire",
+      category: "Concepts de pauvreté et exclusion sociale"
+    },
+
+    // 2. Dépendance économique et vulnérabilité
+    {
+      spanish: "Dependencia económica",
+      french: "Dépendance économique",
+      category: "Dépendance économique et vulnérabilité"
+    },
+    {
+      spanish: "Dependencia externa",
+      french: "Dépendance extérieure",
+      category: "Dépendance économique et vulnérabilité"
+    },
+    {
+      spanish: "Deuda externa",
+      french: "Dette extérieure",
+      category: "Dépendance économique et vulnérabilité"
+    },
+    {
+      spanish: "Vulnerabilidad financiera",
+      french: "Vulnérabilité financière",
+      category: "Dépendance économique et vulnérabilité"
+    },
+    {
+      spanish: "Endeudamiento",
+      french: "Endettement",
+      category: "Dépendance économique et vulnérabilité"
+    },
+    {
+      spanish: "Esclavitud económica",
+      french: "Esclavage économique",
+      category: "Dépendance économique et vulnérabilité"
+    },
+    {
+      spanish: "Explotación",
+      french: "Exploitation",
+      category: "Dépendance économique et vulnérabilité"
+    },
+    {
+      spanish: "Sumisión",
+      french: "Soumission",
+      category: "Dépendance économique et vulnérabilité"
+    },
+    {
+      spanish: "Servidumbre",
+      french: "Servitude",
+      category: "Dépendance économique et vulnérabilité"
+    },
+    {
+      spanish: "Yugo financiero",
+      french: "Joug financier",
+      category: "Dépendance économique et vulnérabilité"
+    },
+
+    // 3. Politiques sociales et aides
+    {
+      spanish: "Políticas sociales",
+      french: "Politiques sociales",
+      category: "Politiques sociales et aides"
+    },
+    {
+      spanish: "Asistencia social",
+      french: "Assistance sociale",
+      category: "Politiques sociales et aides"
+    },
+    {
+      spanish: "Ayudas públicas",
+      french: "Aides publiques",
+      category: "Politiques sociales et aides"
+    },
+    {
+      spanish: "Subvenciones",
+      french: "Subventions",
+      category: "Politiques sociales et aides"
+    },
+    {
+      spanish: "Prestaciones",
+      french: "Prestations",
+      category: "Politiques sociales et aides"
+    },
+    {
+      spanish: "Protección social",
+      french: "Protection sociale",
+      category: "Politiques sociales et aides"
+    },
+    {
+      spanish: "Seguridad social",
+      french: "Sécurité sociale",
+      category: "Politiques sociales et aides"
+    },
+    {
+      spanish: "Redistribución",
+      french: "Redistribution",
+      category: "Politiques sociales et aides"
+    },
+    {
+      spanish: "Solidaridad",
+      french: "Solidarité",
+      category: "Politiques sociales et aides"
+    },
+    {
+      spanish: "Equidad",
+      french: "Équité",
+      category: "Politiques sociales et aides"
+    },
+
+    // 4. Développement économique et inclusion
+    {
+      spanish: "Desarrollo sostenible",
+      french: "Développement durable",
+      category: "Développement économique et inclusion"
+    },
+    {
+      spanish: "Crecimiento económico",
+      french: "Croissance économique",
+      category: "Développement économique et inclusion"
+    },
+    {
+      spanish: "Inclusión financiera",
+      french: "Inclusion financière",
+      category: "Développement économique et inclusion"
+    },
+    {
+      spanish: "Empoderamiento",
+      french: "Autonomisation",
+      category: "Développement économique et inclusion"
+    },
+    {
+      spanish: "Capacitación",
+      french: "Formation professionnelle",
+      category: "Développement économique et inclusion"
+    },
+    {
+      spanish: "Emprendimiento",
+      french: "Entrepreneuriat",
+      category: "Développement économique et inclusion"
+    },
+    {
+      spanish: "Microcréditos",
+      french: "Microcrédits",
+      category: "Développement économique et inclusion"
+    },
+    {
+      spanish: "Inversión social",
+      french: "Investissement social",
+      category: "Développement économique et inclusion"
+    },
+    {
+      spanish: "Desarrollo local",
+      french: "Développement local",
+      category: "Développement économique et inclusion"
+    },
+    {
+      spanish: "Cooperativismo",
+      french: "Coopérativisme",
+      category: "Développement économique et inclusion"
+    },
+
+    // 5. Travail des enfants et exploitation
+    {
+      spanish: "Trabajo infantil",
+      french: "Travail des enfants",
+      category: "Travail des enfants et exploitation"
+    },
+    {
+      spanish: "Explotación laboral",
+      french: "Exploitation du travail",
+      category: "Travail des enfants et exploitation"
+    },
+    {
+      spanish: "Trabajo forzoso",
+      french: "Travail forcé",
+      category: "Travail des enfants et exploitation"
+    },
+    {
+      spanish: "Esclavitud moderna",
+      french: "Esclavage moderne",
+      category: "Travail des enfants et exploitation"
+    },
+    {
+      spanish: "Niños trabajadores",
+      french: "Enfants travailleurs",
+      category: "Travail des enfants et exploitation"
+    },
+    {
+      spanish: "Derechos laborales",
+      french: "Droits du travail",
+      category: "Travail des enfants et exploitation"
+    },
+    {
+      spanish: "Protección infantil",
+      french: "Protection de l'enfance",
+      category: "Travail des enfants et exploitation"
+    },
+    {
+      spanish: "Educación obligatoria",
+      french: "Éducation obligatoire",
+      category: "Travail des enfants et exploitation"
+    },
+    {
+      spanish: "Salud laboral",
+      french: "Santé au travail",
+      category: "Travail des enfants et exploitation"
+    },
+    {
+      spanish: "Convención OIT",
+      french: "Convention OIT",
+      category: "Travail des enfants et exploitation"
+    },
+
+    // 6. Migration et précarité économique
+    {
+      spanish: "Migración económica",
+      french: "Migration économique",
+      category: "Migration et précarité économique"
+    },
+    {
+      spanish: "Emigración forzada",
+      french: "Émigration forcée",
+      category: "Migration et précarité économique"
+    },
+    {
+      spanish: "Refugiados económicos",
+      french: "Réfugiés économiques",
+      category: "Migration et précarité économique"
+    },
+    {
+      spanish: "Trabajadores temporeros",
+      french: "Travailleurs saisonniers",
+      category: "Migration et précarité économique"
+    },
+    {
+      spanish: "Remesas",
+      french: "Remises (transferts d'argent)",
+      category: "Migration et précarité économique"
+    },
+    {
+      spanish: "Diáspora",
+      french: "Diaspora",
+      category: "Migration et précarité économique"
+    },
+    {
+      spanish: "Integración social",
+      french: "Intégration sociale",
+      category: "Migration et précarité économique"
+    },
+    {
+      spanish: "Discriminación laboral",
+      french: "Discrimination au travail",
+      category: "Migration et précarité économique"
+    },
+    {
+      spanish: "Precarización",
+      french: "Précarisation",
+      category: "Migration et précarité économique"
+    },
+    {
+      spanish: "Movilidad laboral",
+      french: "Mobilité du travail",
+      category: "Migration et précarité économique"
+    },
+
+    // 7. Inégalités de genre et pauvreté
+    {
+      spanish: "Brecha salarial",
+      french: "Écart salarial",
+      category: "Inégalités de genre et pauvreté"
+    },
+    {
+      spanish: "Violencia económica",
+      french: "Violence économique",
+      category: "Inégalités de genre et pauvreté"
+    },
+    {
+      spanish: "Dependencia financiera",
+      french: "Dépendance financière",
+      category: "Inégalités de genre et pauvreté"
+    },
+    {
+      spanish: "Empoderamiento femenino",
+      french: "Autonomisation féminine",
+      category: "Inégalités de genre et pauvreté"
+    },
+    {
+      spanish: "Igualdad de género",
+      french: "Égalité de genre",
+      category: "Inégalités de genre et pauvreté"
+    },
+    {
+      spanish: "Discriminación de género",
+      french: "Discrimination de genre",
+      category: "Inégalités de genre et pauvreté"
+    },
+    {
+      spanish: "Trabajo doméstico",
+      french: "Travail domestique",
+      category: "Inégalités de genre et pauvreté"
+    },
+    {
+      spanish: "Carga mental",
+      french: "Charge mentale",
+      category: "Inégalités de genre et pauvreté"
+    },
+    {
+      spanish: "Matriarcado inverso",
+      french: "Matriarcat inversé",
+      category: "Inégalités de genre et pauvreté"
+    },
+    {
+      spanish: "Feminización de la pobreza",
+      french: "Féminisation de la pauvreté",
+      category: "Inégalités de genre et pauvreté"
+    },
+
+    // 8. Environnement et pauvreté rurale
+    {
+      spanish: "Pobreza rural",
+      french: "Pauvreté rurale",
+      category: "Environnement et pauvreté rurale"
+    },
+    {
+      spanish: "Desertificación",
+      french: "Désertification",
+      category: "Environnement et pauvreté rurale"
+    },
+    {
+      spanish: "Cambio climático",
+      french: "Changement climatique",
+      category: "Environnement et pauvreté rurale"
+    },
+    {
+      spanish: "Deforestación",
+      french: "Déforestation",
+      category: "Environnement et pauvreté rurale"
+    },
+    {
+      spanish: "Agua potable",
+      french: "Eau potable",
+      category: "Environnement et pauvreté rurale"
+    },
+    {
+      spanish: "Agroecología",
+      french: "Agroécologie",
+      category: "Environnement et pauvreté rurale"
+    },
+    {
+      spanish: "Sostenibilidad",
+      french: "Durabilité",
+      category: "Environnement et pauvreté rurale"
+    },
+    {
+      spanish: "Biodiversidad",
+      french: "Biodiversité",
+      category: "Environnement et pauvreté rurale"
+    },
+    {
+      spanish: "Recursos naturales",
+      french: "Ressources naturelles",
+      category: "Environnement et pauvreté rurale"
+    },
+    {
+      spanish: "Economía circular",
+      french: "Économie circulaire",
+      category: "Environnement et pauvreté rurale"
+    }
+  ];
+
+  const categorizedData = [
+    {
+      category: "Concepts de pauvreté et exclusion sociale",
+      items: povertyVocabularyData.filter(item => item.category === "Concepts de pauvreté et exclusion sociale")
+    },
+    {
+      category: "Dépendance économique et vulnérabilité",
+      items: povertyVocabularyData.filter(item => item.category === "Dépendance économique et vulnérabilité")
+    },
+    {
+      category: "Politiques sociales et aides",
+      items: povertyVocabularyData.filter(item => item.category === "Politiques sociales et aides")
+    },
+    {
+      category: "Développement économique et inclusion",
+      items: povertyVocabularyData.filter(item => item.category === "Développement économique et inclusion")
+    },
+    {
+      category: "Travail des enfants et exploitation",
+      items: povertyVocabularyData.filter(item => item.category === "Travail des enfants et exploitation")
+    },
+    {
+      category: "Migration et précarité économique",
+      items: povertyVocabularyData.filter(item => item.category === "Migration et précarité économique")
+    },
+    {
+      category: "Inégalités de genre et pauvreté",
+      items: povertyVocabularyData.filter(item => item.category === "Inégalités de genre et pauvreté")
+    },
+    {
+      category: "Environnement et pauvreté rurale",
+      items: povertyVocabularyData.filter(item => item.category === "Environnement et pauvreté rurale")
+    }
+  ];
+
+  const filteredData = selectedCategory === 'all'
+    ? povertyVocabularyData
+    : povertyVocabularyData.filter(item => item.category === selectedCategory);
+
+  const reviewData = isReviewMode
+    ? filteredData.filter((_, index) => reviewCards.has(index))
+    : filteredData;
+
+  const currentCard = reviewData[currentIndex];
+  const totalCards = reviewData.length;
+
+  const nextCard = () => {
+    if (currentIndex < totalCards - 1) {
+      setCurrentIndex(currentIndex + 1);
+      setShowAnswer(false);
+      setStudiedCards(prev => new Set([...prev, currentIndex]));
+    }
+  };
+
+  const prevCard = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+      setShowAnswer(false);
+    }
+  };
+
+  const resetProgress = () => {
+    setCurrentIndex(0);
+    setShowAnswer(false);
+    setStudiedCards(new Set());
+    setReviewCards(new Set());
+    setIsReviewMode(false);
+  };
+
+  const toggleAnswer = () => {
+    setShowAnswer(!showAnswer);
+  };
+
+  const markForReview = () => {
+    if (currentCard) {
+      const originalIndex = filteredData.findIndex(card => card === currentCard);
+      setReviewCards(prev => new Set([...prev, originalIndex]));
+    }
+  };
+
+  const toggleReviewMode = () => {
+    setIsReviewMode(!isReviewMode);
+    setCurrentIndex(0);
+    setShowAnswer(false);
+  };
+
+  // Gestion du swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX || !touchEndX) return;
+
+    const distance = touchStartX - touchEndX;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe && currentIndex < totalCards - 1) {
+      nextCard();
+    }
+    if (isRightSwipe && currentIndex > 0) {
+      prevCard();
+    }
+
+    setTouchStartX(0);
+    setTouchEndX(0);
+  };
+
+  const handleCategoryChange = (category: string | 'all') => {
+    setSelectedCategory(category);
+    setCurrentIndex(0);
+    setShowAnswer(false);
+    setStudiedCards(new Set());
+  };
+
+  // Gestionnaire d'événements clavier
+  const handleKeyPress = (event: KeyboardEvent) => {
+    switch (event.key) {
+      case 'ArrowLeft':
+        event.preventDefault();
+        prevCard();
+        break;
+      case 'ArrowRight':
+        event.preventDefault();
+        nextCard();
+        break;
+      case 'ArrowUp':
+        event.preventDefault();
+        nextCard();
+        break;
+      case 'ArrowDown':
+        event.preventDefault();
+        prevCard();
+        break;
+      case 'Enter':
+        event.preventDefault();
+        toggleAnswer();
+        break;
+      case ' ': // Espace aussi pour retourner la carte
+        event.preventDefault();
+        toggleAnswer();
+        break;
+      case 'r':
+      case 'R':
+        event.preventDefault();
+        markForReview();
+        break;
+      default:
+        break;
+    }
+  };
+
+  // Configuration des event listeners du clavier et focus automatique
+  useEffect(() => {
+    // Donner le focus au composant au montage
+    if (flashcardsRef.current) {
+      flashcardsRef.current.focus();
+    }
+
+    // Ajouter l'event listener
+    document.addEventListener('keydown', handleKeyPress);
+
+    // Nettoyer l'event listener lors du démontage du composant
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [currentIndex, showAnswer, totalCards]); // Dépendances pour que les fonctions soient à jour
+
+  const progressPercentage = ((studiedCards.size + (showAnswer ? 1 : 0)) / totalCards) * 100;
+
+  if (!currentCard) {
+    return (
+      <div className="max-w-4xl mx-auto p-4 text-center">
+        <p className="text-gray-600">Aucune carte disponible pour cette catégorie.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      ref={flashcardsRef}
+      className="max-w-4xl mx-auto p-4"
+      tabIndex={-1}
+    >
+      <div className="mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-2xl font-bold flex items-center gap-2">
+            <BookOpen className="h-6 w-6 text-blue-600" />
+            Vocabulaire économique et social espagnol-français
+            {isReviewMode && <span className="text-red-600 text-lg">🔄 Mode révision</span>}
+          </h2>
+          <div className="flex gap-2">
+            {reviewCards.size > 0 && (
+              <button
+                onClick={toggleReviewMode}
+                className={`px-3 py-1 text-sm rounded-md transition-colors ${
+                  isReviewMode
+                    ? 'bg-red-100 hover:bg-red-200 text-red-700'
+                    : 'bg-orange-100 hover:bg-orange-200 text-orange-700'
+                }`}
+              >
+                {isReviewMode ? 'Quitter révision' : `À revoir (${reviewCards.size})`}
+              </button>
+            )}
+            <button onClick={resetProgress} className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded-md transition-colors">
+              Recommencer
+            </button>
+          </div>
+        </div>
+
+        {/* Filtres par catégorie */}
+        <div className="mb-4">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-sm font-medium text-gray-700">Filtrer par catégorie :</span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <Badge
+              variant={selectedCategory === 'all' ? 'default' : 'secondary'}
+              className={`cursor-pointer hover:bg-blue-100 ${selectedCategory === 'all' ? 'bg-blue-600 text-white' : ''}`}
+              onClick={() => handleCategoryChange('all')}
+            >
+              Toutes ({povertyVocabularyData.length})
+            </Badge>
+            {categorizedData.map(cat => (
+              <Badge
+                key={cat.category}
+                variant={selectedCategory === cat.category ? 'default' : 'secondary'}
+                className={`cursor-pointer hover:bg-blue-100 ${selectedCategory === cat.category ? 'bg-blue-600 text-white' : ''}`}
+                onClick={() => handleCategoryChange(cat.category)}
+              >
+                {cat.category} ({cat.items.length})
+              </Badge>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex items-center gap-4 mb-4">
+          <Badge variant="secondary" className="px-3 py-1 text-sm font-medium">
+            {currentIndex + 1} / {totalCards}
+          </Badge>
+          {selectedCategory !== 'all' && (
+            <Badge variant="outline" className="px-3 py-1 text-sm font-medium text-blue-600 border-blue-300">
+              {selectedCategory}
+            </Badge>
+          )}
+          <div className="flex-1 bg-gray-200 rounded-full h-3 overflow-hidden">
+            <div
+              className="bg-gradient-to-r from-blue-500 to-orange-600 h-3 rounded-full transition-all duration-500 ease-out"
+              style={{ width: `${progressPercentage}%` }}
+            />
+          </div>
+          <span className="text-sm font-medium text-muted-foreground min-w-[3rem] text-right">
+            {Math.round(progressPercentage)}%
+          </span>
+        </div>
+      </div>
+
+      <Card
+        className="min-h-[320px] max-h-[380px] shadow-sm border border-gray-100 bg-white"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <CardContent className="flex flex-col items-center justify-between p-3 h-full">
+          <div className="text-center flex-1 flex flex-col justify-center w-full">
+            {/* Recto - Mot français */}
+            <div className="mb-4">
+              <div className="text-5xl font-bold text-blue-600 leading-tight mb-1">
+                {currentCard.french}
+              </div>
+              <div className="text-xs text-gray-400 uppercase tracking-wide">
+                {currentCard.category}
+              </div>
+            </div>
+
+            {/* Verso - Traduction espagnole */}
+            {showAnswer && (
+              <div className="animate-in fade-in duration-300 w-full">
+                <div className="bg-orange-50 rounded-lg p-3 border border-orange-200 w-full">
+                  <div className="text-3xl font-bold text-orange-800 leading-tight">
+                    {currentCard.spanish}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="flex flex-col gap-2 w-full">
+            <button
+              onClick={toggleAnswer}
+              className="px-8 py-2 text-base font-medium bg-orange-200 hover:bg-orange-300 text-gray-800 rounded-lg transition-colors"
+            >
+              {showAnswer ? 'Cacher' : 'Voir la traduction'}
+            </button>
+
+            {showAnswer && (
+              <button
+                onClick={markForReview}
+                className="px-6 py-1.5 text-sm font-medium bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors"
+              >
+                À revoir (R)
+              </button>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+
+      <div className="flex justify-between items-center mt-8">
+        <button
+          onClick={prevCard}
+          disabled={currentIndex === 0}
+          className="px-6 py-2 bg-gray-100 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed rounded-md transition-colors flex items-center gap-2"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Précédent
+        </button>
+
+        <div className="text-center">
+          <div className="text-sm font-medium text-muted-foreground">
+            {studiedCards.size} carte{studiedCards.size > 1 ? 's' : ''} étudiée{studiedCards.size > 1 ? 's' : ''}
+          </div>
+        </div>
+
+        <button
+          onClick={nextCard}
+          disabled={currentIndex === totalCards - 1}
+          className="px-6 py-2 bg-gray-100 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed rounded-md transition-colors flex items-center gap-2"
+        >
+          Suivant
+          <ArrowLeft className="h-4 w-4 rotate-180" />
+        </button>
+      </div>
+
+      {currentIndex === totalCards - 1 && (
+        <div className="text-center mt-8 p-6 bg-gradient-to-r from-orange-50 to-blue-50 rounded-lg border-2 border-orange-200">
+          <h3 className="text-xl font-bold mb-3 text-orange-700">
+            🎉 Félicitations !
+          </h3>
+          <p className="text-gray-600 mb-4">
+            Vous avez terminé toutes les cartes de vocabulaire économique et social{selectedCategory !== 'all' ? ` de la catégorie "${selectedCategory}"` : ''} !
+          </p>
+
+          {reviewCards.size > 0 && (
+            <div className="bg-orange-100 border border-orange-300 rounded-lg p-4 mb-4">
+              <p className="text-orange-800 font-semibold">
+                📚 Vous avez {reviewCards.size} carte{reviewCards.size > 1 ? 's' : ''} à réviser
+              </p>
+              <p className="text-orange-700 text-sm mt-1">
+                Concentrez-vous sur les mots que vous voulez maîtriser parfaitement
+              </p>
+            </div>
+          )}
+
+          <div className="mt-4 flex flex-col sm:flex-row justify-center gap-3">
+            <button
+              onClick={resetProgress}
+              className="bg-orange-200 hover:bg-orange-300 text-gray-800 px-6 py-2 rounded-md font-medium"
+            >
+              🔄 Recommencer cette série
+            </button>
+
+            {reviewCards.size > 0 && (
+              <button
+                onClick={toggleReviewMode}
+                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md font-medium"
+              >
+                📖 Mode révision ({reviewCards.size})
+              </button>
+            )}
+
+            {selectedCategory !== 'all' && (
+              <button
+                onClick={() => handleCategoryChange('all')}
+                className="border-orange-600 text-orange-600 hover:bg-orange-50 px-4 py-2 rounded-md border font-medium"
+              >
+                Voir toutes les catégories
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Raccourcis clavier - Format compact */}
+      <div className="mt-6 p-2 bg-gray-50 rounded-lg border border-gray-200">
+        <div className="text-center mb-1">
+          <h4 className="text-sm font-semibold text-gray-700">Raccourcis</h4>
+        </div>
+        <div className="flex flex-wrap justify-center gap-3 text-xs text-gray-600">
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">←</kbd>
+            <span>Précédent</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">→</kbd>
+            <span>Suivant</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">↵</kbd>
+            <span>Retourner</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">␣</kbd>
+            <span>Retourner</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">R</kbd>
+            <span>À revoir</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">S</kbd>
+            <span>Révision</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Module6VocabularyPage;

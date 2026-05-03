@@ -1,0 +1,166 @@
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { ArrowLeft, Home, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { pythonCommands } from '@/data/pythonCommands';
+import SearchBar from '@/components/python/SearchBar';
+import CommandSection from '@/components/python/CommandSection';
+import PythonNavigationTabs from '@/components/formation/PythonNavigationTabs';
+const PythonReferencePage = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [copiedCommand, setCopiedCommand] = useState<string | null>(null);
+  const copyToClipboard = (command: string) => {
+    navigator.clipboard.writeText(command);
+    setCopiedCommand(command);
+    setTimeout(() => setCopiedCommand(null), 2000);
+  };
+  const filteredCommands = Object.entries(pythonCommands).map(([key, section]) => ({
+    ...section,
+    key,
+    commands: section.commands.filter(cmd => cmd.command.toLowerCase().includes(searchTerm.toLowerCase()) || cmd.description.toLowerCase().includes(searchTerm.toLowerCase()))
+  })).filter(section => section.commands.length > 0);
+  return <div className="min-h-screen bg-pr-gray-bg font-dm-sans text-pr-gray-dark">
+    {/* Sticky Breadcrumb */}
+    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-pr-gray-light/60">
+      <div className="h-[2px] w-full bg-pr-orange" />
+      <div className="container mx-auto px-4 py-2.5">
+        <div className="flex items-center text-[11px] uppercase tracking-wider text-pr-gray-mid">
+          <Link to="/" className="flex items-center gap-1.5 hover:text-pr-orange-dark transition-colors">
+            <Home className="h-3 w-3" />
+            <span>Accueil</span>
+          </Link>
+          <ChevronRight className="h-3 w-3 text-pr-gray-light mx-1.5" />
+          <Link to="/formations" className="hover:text-pr-orange-dark transition-colors">
+            Toutes les formations
+          </Link>
+          <ChevronRight className="h-3 w-3 text-pr-gray-light mx-1.5" />
+          <span className="text-pr-black font-semibold normal-case tracking-normal">
+            Formation <span className="text-pr-orange">Python</span> ECG
+          </span>
+        </div>
+      </div>
+    </nav>
+
+    <div className="container mx-auto py-16 px-4 max-w-7xl">
+      {/* Header */}
+      <div className="text-center mb-12">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pr-orange-pale border border-pr-orange-soft/60 mb-5">
+          <span className="w-1.5 h-1.5 rounded-full bg-pr-orange" />
+          <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark">
+            Référence officielle
+          </span>
+        </div>
+
+        <h1 className="font-dm-serif text-4xl md:text-5xl text-pr-black mb-5 tracking-tight leading-tight">
+          Références <span className="text-pr-orange">Python</span> ECG
+        </h1>
+        <div className="flex justify-center mb-5">
+          <div className="h-[2px] w-14 bg-pr-orange" />
+        </div>
+        <p className="text-lg text-pr-gray-dark/85 max-w-2xl mx-auto leading-relaxed">
+          Toutes les 54 commandes essentielles pour le programme,<br className="hidden md:inline" />
+          optimisées pour la mémorisation et l'usage en concours.
+        </p>
+      </div>
+
+      {/* Navigation Tabs */}
+      <PythonNavigationTabs className="mb-12" />
+
+      <div className="mb-10 max-w-xl mx-auto">
+        <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+      </div>
+
+      {/* Tabs pour les catégories */}
+      <Tabs defaultValue="all" className="w-full">
+        <div className="flex justify-center mb-10 overflow-x-auto pb-2 scrollbar-hide">
+          <TabsList className="flex h-auto p-1 bg-pr-gray-bg/50 backdrop-blur rounded-full border border-pr-gray-light gap-1 flex-wrap justify-center">
+            <TabsTrigger
+              value="all"
+              className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all"
+            >
+              Toutes
+            </TabsTrigger>
+            <TabsTrigger value="lists" className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all">Listes</TabsTrigger>
+            <TabsTrigger value="imports" className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all">Imports</TabsTrigger>
+            <TabsTrigger value="arrays_matrices" className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all">Vecteurs/Matrices</TabsTrigger>
+            <TabsTrigger value="operations" className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all">Opérations</TabsTrigger>
+            <TabsTrigger value="math_functions" className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all">Fonctions Math</TabsTrigger>
+            <TabsTrigger value="linalg" className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all">Algèbre</TabsTrigger>
+            <TabsTrigger value="random" className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all">Probabilités</TabsTrigger>
+            <TabsTrigger value="plotting" className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all">Graphiques</TabsTrigger>
+            <TabsTrigger value="pandas" className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all">Pandas</TabsTrigger>
+            <TabsTrigger value="sql" className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all">SQL</TabsTrigger>
+          </TabsList>
+        </div>
+
+        <div className="bg-white/50 backdrop-blur-sm rounded-3xl p-6 md:p-8 border border-white shadow-xl shadow-slate-200/50 min-h-[600px]">
+          <TabsContent value="all" className="mt-0">
+            <div className="space-y-12">
+              {filteredCommands.length > 0 ? (
+                filteredCommands.map(section => (
+                  <div key={section.key} className="border-b border-pr-gray-light last:border-0 pb-10 last:pb-0">
+                    <CommandSection title={section.title} commands={section.commands} copiedCommand={copiedCommand} onCopy={copyToClipboard} />
+                  </div>
+                ))
+              ) : (
+                <div className="flex flex-col items-center justify-center py-20 text-center">
+                  <div className="w-16 h-16 bg-pr-gray-bg rounded-full flex items-center justify-center mb-4">
+                    <Home className="h-8 w-8 text-pr-gray-mid" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-pr-black">Aucun résultat trouvé</h3>
+                  <p className="text-pr-gray-mid max-w-xs mt-2">Essayez de modifier votre recherche pour trouver la commande souhaitée.</p>
+                </div>
+              )}
+            </div>
+          </TabsContent>
+
+          {Object.entries(pythonCommands).map(([key, section]) => (
+            <TabsContent key={key} value={key} className="mt-0">
+              <CommandSection title={section.title} commands={section.commands} copiedCommand={copiedCommand} onCopy={copyToClipboard} />
+            </TabsContent>
+          ))}
+
+          <TabsContent value="sql" className="mt-0 space-y-10">
+            {['sql_queries', 'sql_commands', 'sql_aggregation'].map(key => {
+              // @ts-ignore
+              const section = pythonCommands[key];
+              if (!section) return null;
+              return (
+                <div key={key}>
+                  <CommandSection title={section.title} commands={section.commands} copiedCommand={copiedCommand} onCopy={copyToClipboard} />
+                </div>
+              );
+            })}
+          </TabsContent>
+        </div>
+      </Tabs>
+
+      {/* Call to action */}
+      <div className="mt-20 text-center max-w-3xl mx-auto">
+        <div className="bg-gradient-to-b from-pr-black to-pr-black rounded-2xl p-10 md:p-12 shadow-2xl relative overflow-hidden group">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-white/10 transition-colors duration-700" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 group-hover:bg-emerald-500/20 transition-colors duration-700" />
+
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 relative z-10">Prêt à tester vos connaissances ?</h3>
+          <p className="text-pr-gray-light mb-8 max-w-lg mx-auto leading-relaxed relative z-10">
+            La maîtrise de ces commandes est indispensable. Entraînez-vous avec nos flashcards interactives pour maximiser votre score aux concours.
+          </p>
+          <div className="flex gap-4 justify-center flex-wrap relative z-10">
+            <Link to="/python-flashcards">
+              <Button size="lg" className="bg-emerald-500 hover:bg-emerald-400 text-pr-black font-semibold h-12 px-8 rounded-full shadow-lg shadow-emerald-500/20 transition-all hover:scale-105">
+                Lancer les Flashcards
+              </Button>
+            </Link>
+            <Link to="/offre/coaching-python">
+              <Button size="lg" variant="outline" className="bg-transparent border-pr-gray-dark text-pr-gray-light hover:bg-white/5 hover:text-white h-12 px-8 rounded-full">
+                Coaching Individuel
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>;
+};
+export default PythonReferencePage;

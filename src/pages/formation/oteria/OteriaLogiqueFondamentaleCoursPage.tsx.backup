@@ -1,0 +1,387 @@
+import React from 'react';
+import { OteriaChapterTemplate } from '@/components/formation/OteriaChapterTemplate';
+import { LatexRenderer } from '@/components/LatexRenderer';
+import {
+  DefinitionBlock,
+  TheoremBlock,
+  ExampleBlock,
+  ProofBlock,
+  RemarkBlock,
+  WarningBlock,
+  CodeBlock,
+  TruthTable,
+} from '@/components/formation/AcademicBlocks';
+
+const OteriaLogiqueFondamentaleCoursPage: React.FC = () => {
+  return (
+    <OteriaChapterTemplate
+      sessionNumber={1}
+      sessionTitle="Logique fondamentale & booléens"
+      description="Les bases du raisonnement mathématique : connecteurs logiques, quantificateurs et méthodes de démonstration, avec application directe en Python."
+      slug="logique-fondamentale"
+      duration="3h"
+      level="Débutant"
+    >
+      <div className="space-y-12 text-slate-700 leading-relaxed max-w-none">
+        {/* ─── INTRODUCTION ────────────────────────────────────────── */}
+        <section>
+          <h2 className="text-2xl font-bold text-slate-900 border-b border-slate-200 pb-2 mb-6">
+            Introduction
+          </h2>
+          <p className="mb-4">
+            La logique est la grammaire des mathématiques. Elle permet de construire des phrases (assertions) précises et de valider des raisonnements. En informatique, elle est le fondement du fonctionnement des processeurs et des conditions dans les programmes.
+          </p>
+
+          <RemarkBlock title="Le Paradoxe du Barbier (Russell, 1901)">
+            <p className="mb-2">
+              Imaginez un village avec une règle stricte : <br />
+              <em>« Le barbier rase tous les hommes du village qui ne se rasent pas eux-mêmes, et seulement ceux-là. »</em>
+            </p>
+            <p>
+              <strong>Question :</strong> Qui rase le barbier ?
+            </p>
+            <ul className="list-disc list-inside mt-2 ml-2 space-y-1">
+              <li>S'il se rase lui-même, il ne doit pas se raser (car il ne rase que ceux qui ne se rasent pas eux-mêmes).</li>
+              <li>S'il ne se rase pas lui-même, il doit se raser (car il rase tous ceux qui ne se rasent pas eux-mêmes).</li>
+            </ul>
+            <p className="mt-2 text-sm italic">
+              Ce paradoxe montre que le langage naturel est ambigu. La logique formelle sert à lever ces ambiguïtés.
+            </p>
+          </RemarkBlock>
+        </section>
+
+        {/* ─── PARTIE A : ÉLÉMENTS DE LOGIQUE ────────────────────────── */}
+        <section>
+          <h2 className="text-2xl font-bold text-slate-900 border-b border-slate-200 pb-2 mb-6">
+            A. Éléments de logique
+          </h2>
+
+          {/* A.1 Assertions */}
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold text-slate-800 flex items-center gap-2 mb-4">
+              <span className="w-1 h-6 bg-slate-300 rounded-full"></span>
+              A.1. Assertions (ou Propositions)
+            </h3>
+
+            <DefinitionBlock title="Assertion">
+              Une <strong>assertion</strong> (ou proposition) est une phrase mathématique qui est soit <strong className="text-emerald-700">VRAIE</strong>, soit <strong className="text-red-700">FAUSSE</strong>, mais jamais les deux en même temps.
+            </DefinitionBlock>
+
+            <ExampleBlock>
+              <ul className="list-disc list-inside space-y-1">
+                <li><LatexRenderer>2 + 2 = 4</LatexRenderer> (Vrai)</li>
+                <li><LatexRenderer>3 \times 6 = 10</LatexRenderer> (Faux)</li>
+                <li><LatexRenderer>\text{Pour tout } x \in \mathbb{R}, x^2 \geq 0</LatexRenderer> (Vrai)</li>
+              </ul>
+              <p className="mt-2 text-slate-500 text-sm">
+                Contre-exemple (ce n'est pas une assertion) : « Cette phrase est fausse » (Paradoxe).
+              </p>
+            </ExampleBlock>
+          </div>
+
+          {/* A.2 Négation */}
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold text-slate-800 flex items-center gap-2 mb-4">
+              <span className="w-1 h-6 bg-slate-300 rounded-full"></span>
+              A.2. La Négation (NON)
+            </h3>
+
+            <DefinitionBlock title="Négation">
+              La négation d'une assertion <LatexRenderer>P</LatexRenderer>, notée <LatexRenderer>\neg P</LatexRenderer> (ou <LatexRenderer>\text{non} P</LatexRenderer>), est l'assertion qui est vraie si <LatexRenderer>P</LatexRenderer> est fausse, et fausse si <LatexRenderer>P</LatexRenderer> est vraie.
+            </DefinitionBlock>
+
+            <TruthTable
+              headers={[<LatexRenderer>P</LatexRenderer>, <LatexRenderer>\neg P</LatexRenderer>]}
+              rows={[
+                ['V', 'F'],
+                ['F', 'V']
+              ]}
+              className="max-w-xs"
+            />
+
+            <WarningBlock title="Piège classique">
+              La négation de <em>« Tout le monde aime les maths »</em> n'est pas <em>« Personne n'aime les maths »</em>.<br />
+              C'est : <em>« <strong>Au moins une</strong> personne n'aime pas les maths »</em>.
+            </WarningBlock>
+          </div>
+
+          {/* A.3 ET / OU */}
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold text-slate-800 flex items-center gap-2 mb-4">
+              <span className="w-1 h-6 bg-slate-300 rounded-full"></span>
+              A.3. Conjonction (ET) et Disjonction (OU)
+            </h3>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <DefinitionBlock title="Conjonction (ET)">
+                  L'assertion <LatexRenderer>P \wedge Q</LatexRenderer> est vraie si <strong>P et Q sont VRAIES en même temps.</strong>
+                </DefinitionBlock>
+                <TruthTable
+                  headers={[<LatexRenderer>P</LatexRenderer>, <LatexRenderer>Q</LatexRenderer>, <LatexRenderer>P \wedge Q</LatexRenderer>]}
+                  rows={[
+                    ['V', 'V', 'V'],
+                    ['V', 'F', 'F'],
+                    ['F', 'V', 'F'],
+                    ['F', 'F', 'F']
+                  ]}
+                  caption="Table de vérité du ET"
+                />
+              </div>
+              <div>
+                <DefinitionBlock title="Disjonction (OU)">
+                  L'assertion <LatexRenderer>P \vee Q</LatexRenderer> est vraie si <strong>au moins l'une</strong> des deux est VRAIE.
+                </DefinitionBlock>
+                <TruthTable
+                  headers={[<LatexRenderer>P</LatexRenderer>, <LatexRenderer>Q</LatexRenderer>, <LatexRenderer>P \vee Q</LatexRenderer>]}
+                  rows={[
+                    ['V', 'V', 'V'],
+                    ['V', 'F', 'V'],
+                    ['F', 'V', 'V'],
+                    ['F', 'F', 'F']
+                  ]}
+                  caption="Table de vérité du OU (inclusif)"
+                />
+              </div>
+            </div>
+
+            <WarningBlock title="Attention au 'OU' français">
+              En maths, le « ou » est <strong>inclusif</strong>. « fromage ou dessert » signifie qu'on peut prendre les deux.<br />
+              Le « ou exclusif » (l'un ou l'autre mais pas les deux) existe mais est plus rare.
+            </WarningBlock>
+          </div>
+
+          {/* A.4 Implication */}
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold text-slate-800 flex items-center gap-2 mb-4">
+              <span className="w-1 h-6 bg-slate-300 rounded-full"></span>
+              A.4. L'Implication (Si... Alors...)
+            </h3>
+
+            <DefinitionBlock title="Implication">
+              L'assertion <LatexRenderer>P \Rightarrow Q</LatexRenderer> est fausse <strong>uniquement</strong> si <LatexRenderer>P</LatexRenderer> est Vraie et <LatexRenderer>Q</LatexRenderer> est Fausse.
+              Dans tous les autres cas, elle est vraie.
+            </DefinitionBlock>
+
+            <TruthTable
+              headers={[<LatexRenderer>P</LatexRenderer>, <LatexRenderer>Q</LatexRenderer>, <LatexRenderer>P \Rightarrow Q</LatexRenderer>]}
+              rows={[
+                ['V', 'V', 'V'],
+                ['V', 'F', 'F'],
+                ['F', 'V', 'V'],
+                ['F', 'F', 'V']
+              ]}
+              caption="Notez les deux dernières lignes : le Faux implique n'importe quoi !"
+            />
+
+            <ExampleBlock title="Exemple contre-intuitif">
+              L'assertion : <br />
+              <em>« Si 1+1=3, alors je suis le Pape »</em> <br />
+              est mathématiquement <strong>VRAIE</strong>. Pourquoi ? Car l'hypothèse « 1+1=3 » est fausse.
+            </ExampleBlock>
+
+            <TheoremBlock title="Contraposée" variant="theorem">
+              L'implication <LatexRenderer>P \Rightarrow Q</LatexRenderer> est logiquement équivalente à sa <strong>contraposée</strong> :
+              <div className="text-center my-2 text-lg">
+                <LatexRenderer>\neg Q \Rightarrow \neg P</LatexRenderer>
+              </div>
+            </TheoremBlock>
+
+            <WarningBlock title="Ne pas confondre !">
+              <ul className="list-disc list-inside space-y-1">
+                <li><strong>Implication : </strong> <LatexRenderer>P \Rightarrow Q</LatexRenderer> (S'il pleut, le sol est mouillé)</li>
+                <li><strong>Réciproque : </strong> <LatexRenderer>Q \Rightarrow P</LatexRenderer> (Si le sol est mouillé, il pleut — FAUX, on a pu arroser)</li>
+                <li><strong>Contraposée : </strong> <LatexRenderer>\neg Q \Rightarrow \neg P</LatexRenderer> (Si le sol n'est pas mouillé, il ne pleut pas — VRAI)</li>
+              </ul>
+            </WarningBlock>
+          </div>
+
+          {/* A.5 Quantificateurs */}
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold text-slate-800 flex items-center gap-2 mb-4">
+              <span className="w-1 h-6 bg-slate-300 rounded-full"></span>
+              A.5. Les Quantificateurs
+            </h3>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <DefinitionBlock title="Quantificateur UNIVERSEL (∀)">
+                <LatexRenderer>\forall x \in E, P(x)</LatexRenderer><br />
+                « Pour tout x appartenant à E... »<br />
+                Vrai si P(x) est vrai pour <strong>tous</strong> les éléments.
+              </DefinitionBlock>
+
+              <DefinitionBlock title="Quantificateur EXISTENTIEL (∃)">
+                <LatexRenderer>\exists x \in E, P(x)</LatexRenderer><br />
+                « Il existe au moins un x appartenant à E... »<br />
+                Vrai si P(x) est vrai pour <strong>au moins un</strong> élément.
+              </DefinitionBlock>
+            </div>
+
+            <ExampleBlock title="Ordre des quantificateurs (CRUCIAL)">
+              L'ordre change le sens !
+              <ul className="mt-2 space-y-2">
+                <li>
+                  1. <LatexRenderer>\forall x \in \mathbb{R}, \exists y \in \mathbb{R}, x + y = 0</LatexRenderer> <br />
+                  <em>« Pour chaque nombre x, on peut trouver un y qui l'annule. »</em> (Vrai, y = -x)
+                </li>
+                <li>
+                  2. <LatexRenderer>\exists y \in \mathbb{R}, \forall x \in \mathbb{R}, x + y = 0</LatexRenderer> <br />
+                  <em>« Il existe un nombre magique y qui annule tous les x possibles en même temps. »</em> (Faux)
+                </li>
+              </ul>
+            </ExampleBlock>
+
+            <TheoremBlock title="Négation des quantificateurs">
+              La négation inverse le quantificateur :
+              <ul className="mt-2 space-y-2 text-center">
+                <li><LatexRenderer>\neg (\forall x, P(x)) \iff \exists x, \neg P(x)</LatexRenderer></li>
+                <li><LatexRenderer>\neg (\exists x, P(x)) \iff \forall x, \neg P(x)</LatexRenderer></li>
+              </ul>
+            </TheoremBlock>
+          </div>
+        </section>
+
+        {/* ─── PARTIE B : MÉTHODES DE RAISONNEMENT ───────────────────── */}
+        <section>
+          <h2 className="text-2xl font-bold text-slate-900 border-b border-slate-200 pb-2 mb-6">
+            B. Méthodes de raisonnement
+          </h2>
+
+          <p className="mb-6">Voici les structures de base pour démontrer des théorèmes.</p>
+
+          <div className="grid gap-6">
+            {/* B.1 Raisonnement direct */}
+            <div>
+              <h3 className="font-semibold text-slate-800 mb-2">B.1. Raisonnement direct (Modus Ponens)</h3>
+              <p className="text-sm mb-2">Pour montrer <LatexRenderer>P \Rightarrow Q</LatexRenderer>, on suppose <LatexRenderer>P</LatexRenderer> vrai, et on en déduit <LatexRenderer>Q</LatexRenderer>.</p>
+            </div>
+
+            {/* B.2 Cas par cas */}
+            <div>
+              <h3 className="font-semibold text-slate-800 mb-2">B.2. Disjonction de cas</h3>
+              <ExampleBlock title="Exemple">
+                Montrer que pour tout entier <LatexRenderer>n</LatexRenderer>, <LatexRenderer>n(n+1)</LatexRenderer> est pair.
+                <ProofBlock title="Preuve par disjonction de cas">
+                  <ul className="list-disc list-inside space-y-1">
+                    <li><strong>Cas 1 : n est pair.</strong> Alors <LatexRenderer>n = 2k</LatexRenderer>. Donc <LatexRenderer>n(n+1) = 2k(2k+1) = 2[k(2k+1)]</LatexRenderer>, ce qui est pair.</li>
+                    <li><strong>Cas 2 : n est impair.</strong> Alors <LatexRenderer>n = 2k+1</LatexRenderer>. Donc <LatexRenderer>n+1 = 2k+2</LatexRenderer> est pair. Le produit d'un pair et d'un impair est pair.</li>
+                  </ul>
+                  Dans tous les cas, le résultat est pair.
+                </ProofBlock>
+              </ExampleBlock>
+            </div>
+
+            {/* B.3 Contraposée */}
+            <div>
+              <h3 className="font-semibold text-slate-800 mb-2">B.3. Par contraposée</h3>
+              <p className="text-sm mb-2">Au lieu de montrer <LatexRenderer>P \Rightarrow Q</LatexRenderer>, on montre <LatexRenderer>\neg Q \Rightarrow \neg P</LatexRenderer>.</p>
+              <ExampleBlock>
+                Montrer : Si <LatexRenderer>n^2</LatexRenderer> est impair, alors <LatexRenderer>n</LatexRenderer> est impair.
+                <br />
+                <strong>Par contraposée :</strong> Montrons que si <LatexRenderer>n</LatexRenderer> est pair, alors <LatexRenderer>n^2</LatexRenderer> est pair.
+                <br />
+                Si <LatexRenderer>n=2k</LatexRenderer>, alors <LatexRenderer>n^2 = (2k)^2 = 4k^2 = 2(2k^2)</LatexRenderer>, qui est bien pair.
+              </ExampleBlock>
+            </div>
+
+            {/* B.4 Absurde */}
+            <div>
+              <h3 className="font-semibold text-slate-800 mb-2">B.4. Raisonnement par l'absurde</h3>
+              <p className="text-sm mb-2">Pour montrer <LatexRenderer>P</LatexRenderer>, on suppose <LatexRenderer>\neg P</LatexRenderer> et on cherche une contradiction.</p>
+
+              <TheoremBlock title="Irrationalité de √2" variant="theorem">
+                <LatexRenderer>\sqrt{2}</LatexRenderer> n'est pas un nombre rationnel (<LatexRenderer>\sqrt{2} \notin \mathbb{Q}</LatexRenderer>).
+              </TheoremBlock>
+
+              <ProofBlock title="Preuve classique par l'absurde">
+                Supposons par l'absurde que <LatexRenderer>\sqrt{2} \in \mathbb{Q}</LatexRenderer>.
+                On peut donc écrire <LatexRenderer>\sqrt{2} = \frac{p}{q}</LatexRenderer> avec <LatexRenderer>p, q</LatexRenderer> entiers premiers entre eux (fraction irréductible).
+                <br /><br />
+                1. Élevons au carré : <LatexRenderer>2 = \frac{p ^ 2}{q ^ 2} \implies p^2 = 2q^2</LatexRenderer>.
+                <br />
+                2. Donc <LatexRenderer>p^2</LatexRenderer> est pair, ce qui implique que <LatexRenderer>p</LatexRenderer> est pair (voir plus haut).
+                <br />
+                3. Écrivons <LatexRenderer>p = 2k</LatexRenderer>. L'équation devient <LatexRenderer>(2k)^2 = 2q^2 \implies 4k^2 = 2q^2 \implies 2k^2 = q^2</LatexRenderer>.
+                <br />
+                4. Donc <LatexRenderer>q^2</LatexRenderer> est pair, ce qui implique que <LatexRenderer>q</LatexRenderer> est pair.
+                <br /><br />
+                <strong>Contradiction :</strong> Si <LatexRenderer>p</LatexRenderer> et <LatexRenderer>q</LatexRenderer> sont tous deux pairs, la fraction n'était pas irréductible (on peut diviser par 2).
+                L'hypothèse de départ est donc fausse.
+              </ProofBlock>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── PARTIE C : APPLICATIONS PYTHON ────────────────────────── */}
+        <section>
+          <h2 className="text-2xl font-bold text-slate-900 border-b border-slate-200 pb-2 mb-6">
+            C. Applications en Python
+          </h2>
+
+          <p className="mb-4">
+            En programmation, la logique booléenne est omniprésente. Python utilise les mots-clés anglais : <code>and</code>, <code>or</code>, <code>not</code>.
+          </p>
+
+          <CodeBlock
+            title="Bases booléennes"
+            code={`# Les booléens en Python (True / False)
+x = True
+y = False
+
+# Négation
+print(not x)        # False
+
+# Conjonction (ET)
+print(x and y)      # False (car y est faux)
+
+# Disjonction (OU)
+print(x or y)       # True (car x est vrai)
+
+# Assertions complexes
+age = 20
+has_permis = True
+can_drive = (age >= 18) and has_permis 
+print(can_drive)    # True`}
+          />
+
+          <WarningBlock title="Pièces à éviter">
+            En Python, <code>1</code> vaut <code>True</code> et <code>0</code> vaut <code>False</code> dans un contexte booléen, mais il vaut mieux être explicite.
+            <br />
+            Attention : <code>bool("Faux")</code> renvoie <strong>True</strong> car la chaîne n'est pas vide !
+          </WarningBlock>
+
+          <h3 className="text-lg font-semibold mt-8 mb-4">Exercice d'application</h3>
+          <p className="mb-2">Écrire une fonction qui vérifie si une année est bissextile.</p>
+          <DefinitionBlock title="Règle bissextile">
+            Une année est bissextile si :
+            <ul className="list-disc list-inside mt-1">
+              <li>Elle est divisible par 4</li>
+              <li>ET (elle n'est pas divisible par 100 OU elle est divisible par 400).</li>
+            </ul>
+          </DefinitionBlock>
+
+          <CodeBlock
+            title="Solution : Année bissextile"
+            code={`def est_bissextile(annee):
+    """
+    Renvoie True si l'année est bissextile, False sinon.
+    Logique : (Divisible par 4) ET ((Pas divisible par 100) OU (Divisible par 400))
+    """
+    div_4 = (annee % 4 == 0)
+    div_100 = (annee % 100 == 0)
+    div_400 = (annee % 400 == 0)
+    
+    return div_4 and (not div_100 or div_400)
+
+# Tests
+print(est_bissextile(2024)) # True (div 4, pas 100)
+print(est_bissextile(1900)) # False (div 4, div 100 mais pas 400)
+print(est_bissextile(2000)) # True (div 400)`}
+          />
+        </section>
+      </div>
+    </OteriaChapterTemplate>
+  );
+};
+
+export default OteriaLogiqueFondamentaleCoursPage;

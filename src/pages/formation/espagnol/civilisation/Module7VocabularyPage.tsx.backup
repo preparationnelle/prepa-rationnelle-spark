@@ -1,0 +1,930 @@
+import React, { useState, useEffect } from 'react';
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
+import { Home, ChevronRight, ArrowLeft, BookOpen } from 'lucide-react';
+
+const Module7VocabularyPage = () => {
+  const [language] = useState<'fr' | 'en'>('fr');
+
+  return (
+    <div className="min-h-screen bg-white relative overflow-hidden">
+      {/* Floating elements - Subtle bubbles */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute bottom-40 left-20 w-56 h-56 bg-orange-200 rounded-full opacity-5 animate-pulse"></div>
+      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-blue-50 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div className="absolute top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
+
+      {/* Sticky Breadcrumb */}
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40 relative z-10">
+        <div className="container mx-auto px-4 py-2">
+          <div className="flex items-center text-xs text-muted-foreground">
+            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              <Home className="h-3 w-3" />
+              <span>Accueil</span>
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formations" className="hover:text-foreground transition-colors">
+              Toutes les formations
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formation/espagnol" className="hover:text-foreground transition-colors">
+              Formation Espagnol ECG
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formation/espagnol/civilisation" className="hover:text-foreground transition-colors">
+              Civilisation Hispanique
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <Link to="/formation/espagnol/civilisation/module7" className="hover:text-foreground transition-colors">
+              Medio Ambiente y Clima
+            </Link>
+            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <span className="text-foreground font-medium">Vocabulaire Environnemental</span>
+          </div>
+        </div>
+      </nav>
+
+      <div className="container mx-auto py-8 px-4 relative z-10">
+        {/* Header Section */}
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <div className="p-4 rounded-2xl bg-blue-600 text-white shadow-lg">
+              <BookOpen className="h-12 w-12" />
+            </div>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
+              <span className="text-blue-700 font-bold">
+                Vocabulaire Environnemental
+              </span>
+            </h1>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div className="max-w-6xl mx-auto">
+          {/* Custom flashcards component for environment vocabulary */}
+          <EnvironmentVocabularyFlashcards />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Custom flashcards component specifically for environment vocabulary
+const EnvironmentVocabularyFlashcards: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [showAnswer, setShowAnswer] = useState(false);
+  const [studiedCards, setStudiedCards] = useState<Set<number>>(new Set());
+  const [selectedCategory, setSelectedCategory] = useState<string | 'all'>('all');
+  const [reviewCards, setReviewCards] = useState<Set<number>>(new Set());
+  const [isReviewMode, setIsReviewMode] = useState(false);
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
+
+  // Référence pour le focus automatique
+  const flashcardsRef = React.useRef<HTMLDivElement>(null);
+
+  const environmentVocabularyData = [
+    // 1. Changement climatique et réchauffement
+    {
+      spanish: "Cambio climático",
+      french: "Changement climatique",
+      category: "Changement climatique et réchauffement"
+    },
+    {
+      spanish: "Calentamiento global",
+      french: "Réchauffement global",
+      category: "Changement climatique et réchauffement"
+    },
+    {
+      spanish: "Efecto invernadero",
+      french: "Effet de serre",
+      category: "Changement climatique et réchauffement"
+    },
+    {
+      spanish: "Gases de efecto invernadero",
+      french: "Gaz à effet de serre",
+      category: "Changement climatique et réchauffement"
+    },
+    {
+      spanish: "Emisiones de carbono",
+      french: "Émissions de carbone",
+      category: "Changement climatique et réchauffement"
+    },
+    {
+      spanish: "Huella de carbono",
+      french: "Empreinte carbone",
+      category: "Changement climatique et réchauffement"
+    },
+    {
+      spanish: "Aumento del nivel del mar",
+      french: "Élévation du niveau de la mer",
+      category: "Changement climatique et réchauffement"
+    },
+    {
+      spanish: "Sequía",
+      french: "Sécheresse",
+      category: "Changement climatique et réchauffement"
+    },
+    {
+      spanish: "Olas de calor",
+      french: "Vagues de chaleur",
+      category: "Changement climatique et réchauffement"
+    },
+    {
+      spanish: "Derretimiento de glaciares",
+      french: "Fonte des glaciers",
+      category: "Changement climatique et réchauffement"
+    },
+
+    // 2. Biodiversité et conservation
+    {
+      spanish: "Biodiversidad",
+      french: "Biodiversité",
+      category: "Biodiversité et conservation"
+    },
+    {
+      spanish: "Especies en peligro",
+      french: "Espèces en danger",
+      category: "Biodiversité et conservation"
+    },
+    {
+      spanish: "Extinción",
+      french: "Extinction",
+      category: "Biodiversité et conservation"
+    },
+    {
+      spanish: "Hábitat natural",
+      french: "Habitat naturel",
+      category: "Biodiversité et conservation"
+    },
+    {
+      spanish: "Reserva natural",
+      french: "Réserve naturelle",
+      category: "Biodiversité et conservation"
+    },
+    {
+      spanish: "Parque nacional",
+      french: "Parc national",
+      category: "Biodiversité et conservation"
+    },
+    {
+      spanish: "Especies invasoras",
+      french: "Espèces invasives",
+      category: "Biodiversité et conservation"
+    },
+    {
+      spanish: "Deforestación",
+      french: "Déforestation",
+      category: "Biodiversité et conservation"
+    },
+    {
+      spanish: "Reforestación",
+      french: "Reboisement",
+      category: "Biodiversité et conservation"
+    },
+    {
+      spanish: "Corredor biológico",
+      french: "Couloir biologique",
+      category: "Biodiversité et conservation"
+    },
+
+    // 3. Pollution et environnement urbain
+    {
+      spanish: "Contaminación",
+      french: "Pollution",
+      category: "Pollution et environnement urbain"
+    },
+    {
+      spanish: "Contaminación del aire",
+      french: "Pollution de l'air",
+      category: "Pollution et environnement urbain"
+    },
+    {
+      spanish: "Contaminación del agua",
+      french: "Pollution de l'eau",
+      category: "Pollution et environnement urbain"
+    },
+    {
+      spanish: "Residuos tóxicos",
+      french: "Déchets toxiques",
+      category: "Pollution et environnement urbain"
+    },
+    {
+      spanish: "Plásticos",
+      french: "Plastiques",
+      category: "Pollution et environnement urbain"
+    },
+    {
+      spanish: "Microplásticos",
+      french: "Microplastiques",
+      category: "Pollution et environnement urbain"
+    },
+    {
+      spanish: "Reciclaje",
+      french: "Recyclage",
+      category: "Pollution et environnement urbain"
+    },
+    {
+      spanish: "Economía circular",
+      french: "Économie circulaire",
+      category: "Pollution et environnement urbain"
+    },
+    {
+      spanish: "Vertedero",
+      french: "Décharge",
+      category: "Pollution et environnement urbain"
+    },
+    {
+      spanish: "Tratamiento de aguas",
+      french: "Traitement des eaux",
+      category: "Pollution et environnement urbain"
+    },
+
+    // 4. Énergie renouvelable et transition
+    {
+      spanish: "Energías renovables",
+      french: "Énergies renouvelables",
+      category: "Énergie renouvelable et transition"
+    },
+    {
+      spanish: "Energía solar",
+      french: "Énergie solaire",
+      category: "Énergie renouvelable et transition"
+    },
+    {
+      spanish: "Energía eólica",
+      french: "Énergie éolienne",
+      category: "Énergie renouvelable et transition"
+    },
+    {
+      spanish: "Energía hidroeléctrica",
+      french: "Énergie hydroélectrique",
+      category: "Énergie renouvelable et transition"
+    },
+    {
+      spanish: "Paneles solares",
+      french: "Panneaux solaires",
+      category: "Énergie renouvelable et transition"
+    },
+    {
+      spanish: "Turbinas eólicas",
+      french: "Éoliennes",
+      category: "Énergie renouvelable et transition"
+    },
+    {
+      spanish: "Transición energética",
+      french: "Transition énergétique",
+      category: "Énergie renouvelable et transition"
+    },
+    {
+      spanish: "Eficiencia energética",
+      french: "Efficacité énergétique",
+      category: "Énergie renouvelable et transition"
+    },
+    {
+      spanish: "Almacenamiento de energía",
+      french: "Stockage d'énergie",
+      category: "Énergie renouvelable et transition"
+    },
+    {
+      spanish: "Red eléctrica inteligente",
+      french: "Réseau électrique intelligent",
+      category: "Énergie renouvelable et transition"
+    },
+
+    // 5. Agriculture durable et alimentation
+    {
+      spanish: "Agroecología",
+      french: "Agroécologie",
+      category: "Agriculture durable et alimentation"
+    },
+    {
+      spanish: "Agricultura sostenible",
+      french: "Agriculture durable",
+      category: "Agriculture durable et alimentation"
+    },
+    {
+      spanish: "Alimentos orgánicos",
+      french: "Aliments biologiques",
+      category: "Agriculture durable et alimentation"
+    },
+    {
+      spanish: "Seguridad alimentaria",
+      french: "Sécurité alimentaire",
+      category: "Agriculture durable et alimentation"
+    },
+    {
+      spanish: "Huerta urbana",
+      french: "Jardin urbain",
+      category: "Agriculture durable et alimentation"
+    },
+    {
+      spanish: "Permacultura",
+      french: "Permaculture",
+      category: "Agriculture durable et alimentation"
+    },
+    {
+      spanish: "Pesticidas",
+      french: "Pesticides",
+      category: "Agriculture durable et alimentation"
+    },
+    {
+      spanish: "Fertilizantes",
+      french: "Engrais",
+      category: "Agriculture durable et alimentation"
+    },
+    {
+      spanish: "Cadena alimentaria",
+      french: "Chaîne alimentaire",
+      category: "Agriculture durable et alimentation"
+    },
+    {
+      spanish: "Malnutrición",
+      french: "Malnutrition",
+      category: "Agriculture durable et alimentation"
+    },
+
+    // 6. Peuples autochtones et droits environnementaux
+    {
+      spanish: "Pueblos indígenas",
+      french: "Peuples autochtones",
+      category: "Peuples autochtones et droits environnementaux"
+    },
+    {
+      spanish: "Derechos territoriales",
+      french: "Droits territoriaux",
+      category: "Peuples autochtones et droits environnementaux"
+    },
+    {
+      spanish: "Saberes ancestrales",
+      french: "Savoirs ancestraux",
+      category: "Peuples autochtones et droits environnementaux"
+    },
+    {
+      spanish: "Cosmovisión",
+      french: "Cosmovision",
+      category: "Peuples autochtones et droits environnementaux"
+    },
+    {
+      spanish: "Conservación comunitaria",
+      french: "Conservation communautaire",
+      category: "Peuples autochtones et droits environnementaux"
+    },
+    {
+      spanish: "Gestión sostenible",
+      french: "Gestion durable",
+      category: "Peuples autochtones et droits environnementaux"
+    },
+    {
+      spanish: "Minería ilegal",
+      french: "Exploitation minière illégale",
+      category: "Peuples autochtones et droits environnementaux"
+    },
+    {
+      spanish: "Desplazamiento forzado",
+      french: "Déplacement forcé",
+      category: "Peuples autochtones et droits environnementaux"
+    },
+    {
+      spanish: "Autonomía territorial",
+      french: "Autonomie territoriale",
+      category: "Peuples autochtones et droits environnementaux"
+    },
+    {
+      spanish: "Convención 169 OIT",
+      french: "Convention 169 OIT",
+      category: "Peuples autochtones et droits environnementaux"
+    },
+
+    // 7. Politique environnementale et accords
+    {
+      spanish: "Acuerdo de París",
+      french: "Accord de Paris",
+      category: "Politique environnementale et accords"
+    },
+    {
+      spanish: "COP",
+      french: "COP (Conférence des Parties)",
+      category: "Politique environnementale et accords"
+    },
+    {
+      spanish: "Protocolo de Kioto",
+      french: "Protocole de Kyoto",
+      category: "Politique environnementale et accords"
+    },
+    {
+      spanish: "Objetivos de Desarrollo Sostenible",
+      french: "Objectifs de Développement Durable",
+      category: "Politique environnementale et accords"
+    },
+    {
+      spanish: "Agenda 2030",
+      french: "Agenda 2030",
+      category: "Politique environnementale et accords"
+    },
+    {
+      spanish: "Política ambiental",
+      french: "Politique environnementale",
+      category: "Politique environnementale et accords"
+    },
+    {
+      spanish: "Regulación climática",
+      french: "Régulation climatique",
+      category: "Politique environnementale et accords"
+    },
+    {
+      spanish: "Impuestos verdes",
+      french: "Taxes vertes",
+      category: "Politique environnementale et accords"
+    },
+    {
+      spanish: "Subvenciones ambientales",
+      french: "Subventions environnementales",
+      category: "Politique environnementale et accords"
+    },
+    {
+      spanish: "Cumplimiento internacional",
+      french: "Conformité internationale",
+      category: "Politique environnementale et accords"
+    },
+
+    // 8. Mode et fast fashion
+    {
+      spanish: "Fast fashion",
+      french: "Fast fashion",
+      category: "Mode et fast fashion"
+    },
+    {
+      spanish: "Industria textil",
+      french: "Industrie textile",
+      category: "Mode et fast fashion"
+    },
+    {
+      spanish: "Consumo excesivo",
+      french: "Consommation excessive",
+      category: "Mode et fast fashion"
+    },
+    {
+      spanish: "Residuos textiles",
+      french: "Déchets textiles",
+      category: "Mode et fast fashion"
+    },
+    {
+      spanish: "Microfibras",
+      french: "Microfibres",
+      category: "Mode et fast fashion"
+    },
+    {
+      spanish: "Producción sostenible",
+      french: "Production durable",
+      category: "Mode et fast fashion"
+    },
+    {
+      spanish: "Moda ética",
+      french: "Mode éthique",
+      category: "Mode et fast fashion"
+    },
+    {
+      spanish: "Trazabilidad",
+      french: "Traçabilité",
+      category: "Mode et fast fashion"
+    },
+    {
+      spanish: "Economía colaborativa",
+      french: "Économie collaborative",
+      category: "Mode et fast fashion"
+    },
+    {
+      spanish: "Upcycling",
+      french: "Upcycling",
+      category: "Mode et fast fashion"
+    }
+  ];
+
+  const categorizedData = [
+    {
+      category: "Changement climatique et réchauffement",
+      items: environmentVocabularyData.filter(item => item.category === "Changement climatique et réchauffement")
+    },
+    {
+      category: "Biodiversité et conservation",
+      items: environmentVocabularyData.filter(item => item.category === "Biodiversité et conservation")
+    },
+    {
+      category: "Pollution et environnement urbain",
+      items: environmentVocabularyData.filter(item => item.category === "Pollution et environnement urbain")
+    },
+    {
+      category: "Énergie renouvelable et transition",
+      items: environmentVocabularyData.filter(item => item.category === "Énergie renouvelable et transition")
+    },
+    {
+      category: "Agriculture durable et alimentation",
+      items: environmentVocabularyData.filter(item => item.category === "Agriculture durable et alimentation")
+    },
+    {
+      category: "Peuples autochtones et droits environnementaux",
+      items: environmentVocabularyData.filter(item => item.category === "Peuples autochtones et droits environnementaux")
+    },
+    {
+      category: "Politique environnementale et accords",
+      items: environmentVocabularyData.filter(item => item.category === "Politique environnementale et accords")
+    },
+    {
+      category: "Mode et fast fashion",
+      items: environmentVocabularyData.filter(item => item.category === "Mode et fast fashion")
+    }
+  ];
+
+  const filteredData = selectedCategory === 'all'
+    ? environmentVocabularyData
+    : environmentVocabularyData.filter(item => item.category === selectedCategory);
+
+  const reviewData = isReviewMode
+    ? filteredData.filter((_, index) => reviewCards.has(index))
+    : filteredData;
+
+  const currentCard = reviewData[currentIndex];
+  const totalCards = reviewData.length;
+
+  const nextCard = () => {
+    if (currentIndex < totalCards - 1) {
+      setCurrentIndex(currentIndex + 1);
+      setShowAnswer(false);
+      setStudiedCards(prev => new Set([...prev, currentIndex]));
+    }
+  };
+
+  const prevCard = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+      setShowAnswer(false);
+    }
+  };
+
+  const resetProgress = () => {
+    setCurrentIndex(0);
+    setShowAnswer(false);
+    setStudiedCards(new Set());
+    setReviewCards(new Set());
+    setIsReviewMode(false);
+  };
+
+  const toggleAnswer = () => {
+    setShowAnswer(!showAnswer);
+  };
+
+  const markForReview = () => {
+    if (currentCard) {
+      const originalIndex = filteredData.findIndex(card => card === currentCard);
+      setReviewCards(prev => new Set([...prev, originalIndex]));
+    }
+  };
+
+  const toggleReviewMode = () => {
+    setIsReviewMode(!isReviewMode);
+    setCurrentIndex(0);
+    setShowAnswer(false);
+  };
+
+  // Gestion du swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX || !touchEndX) return;
+
+    const distance = touchStartX - touchEndX;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe && currentIndex < totalCards - 1) {
+      nextCard();
+    }
+    if (isRightSwipe && currentIndex > 0) {
+      prevCard();
+    }
+
+    setTouchStartX(0);
+    setTouchEndX(0);
+  };
+
+  const handleCategoryChange = (category: string | 'all') => {
+    setSelectedCategory(category);
+    setCurrentIndex(0);
+    setShowAnswer(false);
+    setStudiedCards(new Set());
+  };
+
+  // Gestionnaire d'événements clavier
+  const handleKeyPress = (event: KeyboardEvent) => {
+    switch (event.key) {
+      case 'ArrowLeft':
+        event.preventDefault();
+        prevCard();
+        break;
+      case 'ArrowRight':
+        event.preventDefault();
+        nextCard();
+        break;
+      case 'ArrowUp':
+        event.preventDefault();
+        nextCard();
+        break;
+      case 'ArrowDown':
+        event.preventDefault();
+        prevCard();
+        break;
+      case 'Enter':
+        event.preventDefault();
+        toggleAnswer();
+        break;
+      case ' ': // Espace aussi pour retourner la carte
+        event.preventDefault();
+        toggleAnswer();
+        break;
+      case 'r':
+      case 'R':
+        event.preventDefault();
+        markForReview();
+        break;
+      default:
+        break;
+    }
+  };
+
+  // Configuration des event listeners du clavier et focus automatique
+  useEffect(() => {
+    // Donner le focus au composant au montage
+    if (flashcardsRef.current) {
+      flashcardsRef.current.focus();
+    }
+
+    // Ajouter l'event listener
+    document.addEventListener('keydown', handleKeyPress);
+
+    // Nettoyer l'event listener lors du démontage du composant
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [currentIndex, showAnswer, totalCards]); // Dépendances pour que les fonctions soient à jour
+
+  const progressPercentage = ((studiedCards.size + (showAnswer ? 1 : 0)) / totalCards) * 100;
+
+  if (!currentCard) {
+    return (
+      <div className="max-w-4xl mx-auto p-4 text-center">
+        <p className="text-gray-600">Aucune carte disponible pour cette catégorie.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      ref={flashcardsRef}
+      className="max-w-4xl mx-auto p-4"
+      tabIndex={-1}
+    >
+      <div className="mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-2xl font-bold flex items-center gap-2">
+            <BookOpen className="h-6 w-6 text-blue-600" />
+            Vocabulaire environnemental espagnol-français
+            {isReviewMode && <span className="text-red-600 text-lg">🔄 Mode révision</span>}
+          </h2>
+          <div className="flex gap-2">
+            {reviewCards.size > 0 && (
+              <button
+                onClick={toggleReviewMode}
+                className={`px-3 py-1 text-sm rounded-md transition-colors ${
+                  isReviewMode
+                    ? 'bg-red-100 hover:bg-red-200 text-red-700'
+                    : 'bg-orange-100 hover:bg-orange-200 text-orange-700'
+                }`}
+              >
+                {isReviewMode ? 'Quitter révision' : `À revoir (${reviewCards.size})`}
+              </button>
+            )}
+            <button onClick={resetProgress} className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded-md transition-colors">
+              Recommencer
+            </button>
+          </div>
+        </div>
+
+        {/* Filtres par catégorie */}
+        <div className="mb-4">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-sm font-medium text-gray-700">Filtrer par catégorie :</span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <Badge
+              variant={selectedCategory === 'all' ? 'default' : 'secondary'}
+              className={`cursor-pointer hover:bg-blue-100 ${selectedCategory === 'all' ? 'bg-blue-600 text-white' : ''}`}
+              onClick={() => handleCategoryChange('all')}
+            >
+              Toutes ({environmentVocabularyData.length})
+            </Badge>
+            {categorizedData.map(cat => (
+              <Badge
+                key={cat.category}
+                variant={selectedCategory === cat.category ? 'default' : 'secondary'}
+                className={`cursor-pointer hover:bg-blue-100 ${selectedCategory === cat.category ? 'bg-blue-600 text-white' : ''}`}
+                onClick={() => handleCategoryChange(cat.category)}
+              >
+                {cat.category} ({cat.items.length})
+              </Badge>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex items-center gap-4 mb-4">
+          <Badge variant="secondary" className="px-3 py-1 text-sm font-medium">
+            {currentIndex + 1} / {totalCards}
+          </Badge>
+          {selectedCategory !== 'all' && (
+            <Badge variant="outline" className="px-3 py-1 text-sm font-medium text-blue-600 border-blue-300">
+              {selectedCategory}
+            </Badge>
+          )}
+          <div className="flex-1 bg-gray-200 rounded-full h-3 overflow-hidden">
+            <div
+              className="bg-gradient-to-r from-blue-500 to-orange-600 h-3 rounded-full transition-all duration-500 ease-out"
+              style={{ width: `${progressPercentage}%` }}
+            />
+          </div>
+          <span className="text-sm font-medium text-muted-foreground min-w-[3rem] text-right">
+            {Math.round(progressPercentage)}%
+          </span>
+        </div>
+      </div>
+
+      <Card
+        className="min-h-[320px] max-h-[380px] shadow-sm border border-gray-100 bg-white"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <CardContent className="flex flex-col items-center justify-between p-3 h-full">
+          <div className="text-center flex-1 flex flex-col justify-center w-full">
+            {/* Recto - Mot français */}
+            <div className="mb-4">
+              <div className="text-5xl font-bold text-blue-600 leading-tight mb-1">
+                {currentCard.french}
+              </div>
+              <div className="text-xs text-gray-400 uppercase tracking-wide">
+                {currentCard.category}
+              </div>
+            </div>
+
+            {/* Verso - Traduction espagnole */}
+            {showAnswer && (
+              <div className="animate-in fade-in duration-300 w-full">
+                <div className="bg-orange-50 rounded-lg p-3 border border-orange-200 w-full">
+                  <div className="text-3xl font-bold text-orange-800 leading-tight">
+                    {currentCard.spanish}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="flex flex-col gap-2 w-full">
+            <button
+              onClick={toggleAnswer}
+              className="px-8 py-2 text-base font-medium bg-orange-200 hover:bg-orange-300 text-gray-800 rounded-lg transition-colors"
+            >
+              {showAnswer ? 'Cacher' : 'Voir la traduction'}
+            </button>
+
+            {showAnswer && (
+              <button
+                onClick={markForReview}
+                className="px-6 py-1.5 text-sm font-medium bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors"
+              >
+                À revoir (R)
+              </button>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+
+      <div className="flex justify-between items-center mt-8">
+        <button
+          onClick={prevCard}
+          disabled={currentIndex === 0}
+          className="px-6 py-2 bg-gray-100 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed rounded-md transition-colors flex items-center gap-2"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Précédent
+        </button>
+
+        <div className="text-center">
+          <div className="text-sm font-medium text-muted-foreground">
+            {studiedCards.size} carte{studiedCards.size > 1 ? 's' : ''} étudiée{studiedCards.size > 1 ? 's' : ''}
+          </div>
+        </div>
+
+        <button
+          onClick={nextCard}
+          disabled={currentIndex === totalCards - 1}
+          className="px-6 py-2 bg-gray-100 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed rounded-md transition-colors flex items-center gap-2"
+        >
+          Suivant
+          <ArrowLeft className="h-4 w-4 rotate-180" />
+        </button>
+      </div>
+
+      {currentIndex === totalCards - 1 && (
+        <div className="text-center mt-8 p-6 bg-gradient-to-r from-orange-50 to-blue-50 rounded-lg border-2 border-orange-200">
+          <h3 className="text-xl font-bold mb-3 text-orange-700">
+            🎉 Félicitations !
+          </h3>
+          <p className="text-gray-600 mb-4">
+            Vous avez terminé toutes les cartes de vocabulaire environnemental{selectedCategory !== 'all' ? ` de la catégorie "${selectedCategory}"` : ''} !
+          </p>
+
+          {reviewCards.size > 0 && (
+            <div className="bg-orange-100 border border-orange-300 rounded-lg p-4 mb-4">
+              <p className="text-orange-800 font-semibold">
+                📚 Vous avez {reviewCards.size} carte{reviewCards.size > 1 ? 's' : ''} à réviser
+              </p>
+              <p className="text-orange-700 text-sm mt-1">
+                Concentrez-vous sur les mots que vous voulez maîtriser parfaitement
+              </p>
+            </div>
+          )}
+
+          <div className="mt-4 flex flex-col sm:flex-row justify-center gap-3">
+            <button
+              onClick={resetProgress}
+              className="bg-orange-200 hover:bg-orange-300 text-gray-800 px-6 py-2 rounded-md font-medium"
+            >
+              🔄 Recommencer cette série
+            </button>
+
+            {reviewCards.size > 0 && (
+              <button
+                onClick={toggleReviewMode}
+                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md font-medium"
+              >
+                📖 Mode révision ({reviewCards.size})
+              </button>
+            )}
+
+            {selectedCategory !== 'all' && (
+              <button
+                onClick={() => handleCategoryChange('all')}
+                className="border-orange-600 text-orange-600 hover:bg-orange-50 px-4 py-2 rounded-md border font-medium"
+              >
+                Voir toutes les catégories
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Raccourcis clavier - Format compact */}
+      <div className="mt-6 p-2 bg-gray-50 rounded-lg border border-gray-200">
+        <div className="text-center mb-1">
+          <h4 className="text-sm font-semibold text-gray-700">Raccourcis</h4>
+        </div>
+        <div className="flex flex-wrap justify-center gap-3 text-xs text-gray-600">
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">←</kbd>
+            <span>Précédent</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">→</kbd>
+            <span>Suivant</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">↵</kbd>
+            <span>Retourner</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">␣</kbd>
+            <span>Retourner</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">R</kbd>
+            <span>À revoir</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <kbd className="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">S</kbd>
+            <span>Révision</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Module7VocabularyPage;
