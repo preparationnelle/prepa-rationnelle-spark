@@ -299,24 +299,30 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
   return (
     <div className={cn("w-full", isEmbedded ? "h-full" : "flex justify-center py-8")}>
       <Card className={cn(
-        "w-full flex flex-col",
-        isEmbedded ? "h-full border-0 shadow-none rounded-none" : "max-w-4xl rounded-2xl shadow-2xl border border-gray-100 bg-white"
+        "w-full flex flex-col overflow-hidden",
+        isEmbedded ? "h-full border-0 shadow-none rounded-none" : "max-w-4xl rounded-2xl shadow-[0_2px_12px_rgba(26,26,24,0.04)] border border-pr-gray-light bg-white"
       )}>
+        {!isEmbedded && <div className="h-[3px] w-full bg-pr-orange" />}
         <CardHeader className={cn(
-          "bg-gradient-to-r from-orange-600 to-orange-500 border-b-0",
-          isEmbedded ? "px-5 py-3 rounded-none" : "px-6 py-6 rounded-t-2xl"
+          "bg-pr-gray-bg border-b border-pr-gray-light",
+          isEmbedded ? "px-5 py-3" : "px-6 py-5"
         )}>
           <div className="flex items-center gap-3">
             <div className={cn(
-              "bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm",
-              isEmbedded ? "w-10 h-10" : "w-14 h-14 rounded-2xl"
+              "bg-white border border-pr-orange-soft rounded-xl flex items-center justify-center",
+              isEmbedded ? "w-10 h-10" : "w-12 h-12"
             )}>
-              <Calculator className={cn("text-white", isEmbedded ? "h-5 w-5" : "h-7 w-7")} />
+              <Calculator className={cn("text-pr-orange-dark", isEmbedded ? "h-5 w-5" : "h-6 w-6")} />
             </div>
             <div className="flex-1">
-              <CardTitle className={cn("font-bold text-white", isEmbedded ? "text-lg" : "text-2xl")}>Assistant Maths IA</CardTitle>
+              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-0.5">
+                Assistant IA
+              </div>
+              <CardTitle className={cn("font-dm-serif text-pr-black leading-none", isEmbedded ? "text-lg" : "text-2xl")}>
+                Maths approfondies
+              </CardTitle>
               {!isEmbedded && (
-                <CardDescription className="text-white/90 mt-1 font-medium">
+                <CardDescription className="text-pr-gray-mid mt-1 text-[13px]">
                   Théorèmes, démonstrations & exemples avec LaTeX
                 </CardDescription>
               )}
@@ -324,7 +330,7 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
           </div>
         </CardHeader>
 
-        <CardContent className={cn("bg-gray-50/50 flex flex-col flex-1 overflow-hidden", isEmbedded ? "p-4" : "p-6")}>
+        <CardContent className={cn("bg-white flex flex-col flex-1 overflow-hidden", isEmbedded ? "p-4" : "p-6")}>
           {/* Messages Area */}
           <div className="space-y-4 mb-6 flex-1 overflow-y-auto pr-2">
             {messages.map((message, index) => (
@@ -336,29 +342,29 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
                 )}
               >
                 <div className={cn(
-                  "flex-shrink-0 w-10 h-10 rounded-2xl flex items-center justify-center shadow-md",
+                  "flex-shrink-0 w-9 h-9 rounded-xl flex items-center justify-center",
                   message.role === "user"
-                    ? "bg-gradient-to-r from-orange-600 to-orange-500"
-                    : "bg-orange-100"
+                    ? "bg-pr-orange"
+                    : "bg-pr-orange-pale border border-pr-orange-soft"
                 )}>
                   {message.role === "user" ? (
-                    <span className="text-white text-sm font-bold">U</span>
+                    <span className="text-white text-sm font-semibold">U</span>
                   ) : (
-                    <Calculator className="h-5 w-5 text-orange-600" />
+                    <Calculator className="h-4 w-4 text-pr-orange-dark" />
                   )}
                 </div>
                 <div className={cn(
-                  "rounded-2xl px-5 py-4 max-w-2xl break-words shadow-lg",
+                  "rounded-2xl px-5 py-4 max-w-2xl break-words",
                   message.role === "user"
-                    ? "bg-gradient-to-r from-orange-600 to-orange-500 text-white"
-                    : "bg-white border border-gray-200 hover:border-orange-200 transition-colors"
+                    ? "bg-pr-orange text-white shadow-[0_4px_14px_rgba(244,132,95,0.25)]"
+                    : "bg-pr-gray-bg border border-pr-gray-light"
                 )}>
-                  <div className="text-sm leading-relaxed">
+                  <div className={cn("text-[14px] leading-relaxed", message.role === "user" ? "text-white" : "text-pr-black")}>
                     {renderContent(message.content)}
                   </div>
                   <div className={cn(
-                    "text-xs mt-3",
-                    message.role === "user" ? "text-white/80" : "text-gray-500"
+                    "text-[11px] mt-3 font-medium tabular-nums",
+                    message.role === "user" ? "text-white/80" : "text-pr-gray-mid"
                   )}>
                     {message.timestamp.toLocaleTimeString('fr-FR', {
                       hour: '2-digit',
@@ -372,13 +378,13 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
             {/* Loading indicator */}
             {loading && (
               <div className="flex gap-3 max-w-3xl">
-                <div className="flex-shrink-0 w-10 h-10 rounded-2xl bg-orange-100 flex items-center justify-center shadow-md">
-                  <Calculator className="h-5 w-5 text-orange-600" />
+                <div className="flex-shrink-0 w-9 h-9 rounded-xl bg-pr-orange-pale border border-pr-orange-soft flex items-center justify-center">
+                  <Calculator className="h-4 w-4 text-pr-orange-dark" />
                 </div>
-                <div className="bg-white border border-gray-200 shadow-lg rounded-2xl px-5 py-4">
+                <div className="bg-pr-gray-bg border border-pr-gray-light rounded-2xl px-5 py-4">
                   <div className="flex items-center gap-3">
-                    <Loader2 className="h-4 w-4 animate-spin text-orange-600" />
-                    <span className="text-sm text-gray-600">Génération de la réponse mathématique...</span>
+                    <Loader2 className="h-4 w-4 animate-spin text-pr-orange" />
+                    <span className="text-[14px] text-pr-gray-dark">Génération de la réponse mathématique…</span>
                   </div>
                 </div>
               </div>
@@ -387,16 +393,15 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
             {/* Error message */}
             {error && (
               <div className="flex gap-3 max-w-3xl">
-                <div className="flex-shrink-0 w-10 h-10 rounded-2xl bg-red-100 flex items-center justify-center shadow-md">
-                  <AlertCircle className="h-5 w-5 text-red-600" />
+                <div className="flex-shrink-0 w-9 h-9 rounded-xl bg-pr-black flex items-center justify-center">
+                  <AlertCircle className="h-4 w-4 text-white" />
                 </div>
-                <div className="bg-red-50 border border-red-200 rounded-2xl px-5 py-4 shadow-lg">
-                  <div className="text-sm text-red-800 mb-3 font-medium">{error}</div>
+                <div className="bg-white border border-pr-gray-light rounded-2xl px-5 py-4">
+                  <div className="text-[14px] text-pr-black mb-3 font-medium">{error}</div>
                   <Button
                     onClick={retryLastMessage}
                     size="sm"
-                    variant="outline"
-                    className="text-red-600 border-red-300 hover:bg-red-100 hover:border-red-400 rounded-xl"
+                    className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft rounded-lg"
                   >
                     Réessayer
                   </Button>
@@ -410,15 +415,14 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
           {/* Suggestions */}
           {!loading && messages.length <= 1 && (
             <div className="mb-6">
-              <p className="text-sm font-medium text-gray-700 mb-3">Suggestions de questions :</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-pr-gray-mid mb-3">Suggestions de questions</p>
               <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide mask-fade-right">
                 {SUGGESTIONS.map((suggestion, index) => (
                   <Button
                     key={index}
-                    variant="outline"
                     size="sm"
                     onClick={() => handleSuggestion(suggestion)}
-                    className="whitespace-nowrap text-xs bg-white hover:bg-orange-50 border-orange-200 text-orange-700 hover:border-orange-400 rounded-xl transition-all duration-200"
+                    className="whitespace-nowrap text-[12px] bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft rounded-lg font-medium transition-colors"
                   >
                     {suggestion}
                   </Button>
@@ -428,18 +432,18 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
           )}
 
           {/* Input Area */}
-          <form onSubmit={handleSend} className="flex gap-3 mt-auto">
+          <form onSubmit={handleSend} className="flex gap-2 mt-auto">
             <Input
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Posez votre question mathématique..."
+              placeholder="Posez votre question mathématique…"
               disabled={loading}
-              className="flex-1 bg-white border-gray-300 focus:border-orange-500 focus:ring-orange-500 rounded-xl shadow-sm"
+              className="flex-1 bg-white border-pr-gray-light text-pr-black placeholder:text-pr-gray-mid focus:border-pr-orange focus:ring-2 focus:ring-pr-orange/20 rounded-xl h-12"
             />
             <Button
               type="submit"
               disabled={!input.trim() || loading}
-              className="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 font-semibold"
+              className="bg-pr-orange hover:bg-pr-orange-dark text-white px-5 rounded-xl shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 font-semibold h-12 disabled:opacity-50 disabled:shadow-none"
             >
               {loading ? (
                 <Loader2 className="h-4 w-4 animate-spin" />

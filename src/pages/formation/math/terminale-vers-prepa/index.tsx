@@ -1,7 +1,28 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { BookOpen, Sigma, TrendingUp, FunctionSquare, Spline, AreaChart, Dices, Grid, Play, Infinity, Repeat, Target, Brain, Home, ChevronRight, GraduationCap } from 'lucide-react';
+import {
+  BookOpen,
+  Sigma,
+  TrendingUp,
+  FunctionSquare,
+  Spline,
+  AreaChart,
+  Dices,
+  Grid,
+  Play,
+  Infinity as InfinityIcon,
+  Repeat,
+  Target,
+  Brain,
+  Home,
+  ChevronRight,
+  GraduationCap,
+  ArrowLeft,
+  Sparkles,
+} from 'lucide-react';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import { SEOHead } from '@/components/SEOHead';
 
 const CHAPITRES = [
   { id: 1, slug: 'calculs', title: 'Calculs', icon: BookOpen, description: 'Maîtriser les bases du calcul algébrique et numérique pour la prépa.' },
@@ -10,159 +31,254 @@ const CHAPITRES = [
   { id: 4, slug: 'fonctions', title: 'Fonctions', icon: FunctionSquare, description: 'Généralités, parité, périodicité et variations des fonctions usuelles.' },
   { id: 5, slug: 'derivées', title: 'Dérivées', icon: Spline, description: 'Calcul de dérivées, tangentes et étude complète de fonctions.' },
   { id: 6, slug: 'integrale', title: 'Intégrale', icon: AreaChart, description: 'Calcul intégral, primitives, IPP et calcul d\'aires.' },
-  { id: 7, slug: 'limites', title: 'Limites', icon: Infinity, description: 'Limites de fonctions et de suites, formes indéterminées et asymptotes.' },
+  { id: 7, slug: 'limites', title: 'Limites', icon: InfinityIcon, description: 'Limites de fonctions et de suites, formes indéterminées et asymptotes.' },
   { id: 8, slug: 'probabilites', title: 'Probabilités', icon: Dices, description: 'Probabilités conditionnelles, indépendance et variables aléatoires.' },
   { id: 9, slug: 'recurrence', title: 'Récurrence', icon: Repeat, description: 'Le raisonnement par récurrence : principes, méthodes et rédaction.' },
   { id: 10, slug: 'matrice', title: 'Matrice', icon: Grid, description: 'Calcul matriciel : opérations, inverse et puissances de matrices.' },
 ];
 
 const getLinks = (slug: string) => {
-  const base = "/formation/math/terminale-vers-prepa";
-
-  // Mapping specifics for irregular slugs
+  const base = '/formation/math/terminale-vers-prepa';
   let slugBase = slug;
   if (slug === 'sommes-suites-produits') slugBase = 'sommes-suites';
   if (slug === 'derivées') slugBase = 'derivees';
-  if (slug === 'integrale') slugBase = 'integrales'; // plural
-  if (slug === 'matrice') slugBase = 'matrices'; // plural
-  // 'calculs', 'suites', 'fonctions', 'limites', 'probabilites', 'recurrence' are regular or already match mapping
-
-  // Correction specific overrides based on previous file logic:
-  // integrale -> integrales (-cours, -exercices...)
-  // matrice -> matrices
-  // derivées -> derivees
-  // sommes-suites-produits -> sommes-suites
+  if (slug === 'integrale') slugBase = 'integrales';
+  if (slug === 'matrice') slugBase = 'matrices';
 
   return {
     cours: `${base}/${slugBase}-cours`,
     exercices: `${base}/${slugBase}-exercices`,
     quiz: `${base}/${slugBase}-quiz`,
-    flashcards: `${base}/${slugBase}-flashcards`
+    flashcards: `${base}/${slugBase}-flashcards`,
   };
 };
 
-const TerminaleVersPrepaPage = () => {
+const TerminaleVersPrepaPage: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gray-50/50 relative overflow-hidden">
-      {/* Floating elements - Refined & Sober */}
-      <div className="absolute -z-10 top-20 left-10 w-64 h-64 bg-blue-100/40 rounded-full blur-3xl"></div>
-      <div className="absolute -z-10 bottom-20 right-10 w-96 h-96 bg-indigo-100/30 rounded-full blur-3xl"></div>
-      <div className="absolute -z-10 top-40 right-1/4 w-72 h-72 bg-blue-50/80 rounded-full blur-2xl"></div>
+    <div className="carnet-paper min-h-screen">
+      <SEOHead
+        canonical="/formation/math/terminale-vers-prepa"
+        title="Module Maths — Terminale vers la prépa ECG"
+        description="10 chapitres clés pour réussir la transition Terminale → prépa ECG : calculs, fonctions, dérivées, intégrales, probabilités, matrices. Cours, exercices, quiz et flashcards."
+      />
 
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-        <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center text-xs font-medium text-gray-500">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
               <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 mx-2 text-gray-300" />
-            <Link to="/formations" className="hover:text-gray-900 transition-colors">
-              Formations
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/articles/terminale-prepa" className="hover:text-carnet-red transition-colors">
+              Terminale → Prépa
             </Link>
-            <ChevronRight className="h-3 w-3 mx-2 text-gray-300" />
-            <Link to="/formation/maths-choix" className="hover:text-gray-900 transition-colors">
-              Parcours Maths
-            </Link>
-            <ChevronRight className="h-3 w-3 mx-2 text-gray-300" />
-            <span className="text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">Terminale vers Prépa</span>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">Module Maths</span>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto py-12 px-4">
-        {/* Header */}
-        <div className="text-center mb-16 max-w-4xl mx-auto">
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100 rotate-3">
-              <GraduationCap className="h-8 w-8 text-blue-600" />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-600 bg-clip-text text-transparent tracking-tight">
-              Terminale <span className="text-blue-600 mx-2">→</span> Prépa
+      {/* Hero */}
+      <section className="relative py-20 lg:py-24">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-[820px]"
+          >
+            <div className="carnet-eyebrow mb-6">Module Mathématiques · Transition lycée → prépa</div>
+
+            <h1 className="font-lora text-[44px] sm:text-[56px] lg:text-[68px] leading-[1.05] text-carnet-ink tracking-tight mb-6">
+              Terminale{' '}
+              <em className="font-lora italic text-carnet-red">→ Prépa</em>.
             </h1>
-          </div>
 
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
-            La transition essentielle pour réussir. Méthodes de travail, organisation
-            et consolidation des bases mathématiques avant la rentrée.
-          </p>
+            <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.65] text-carnet-ink-soft max-w-[640px] mb-8">
+              La transition essentielle pour réussir. <span className="carnet-hl font-lora italic">Méthodes de travail, organisation et consolidation des bases mathématiques</span> avant la rentrée en prépa ECG.
+            </p>
 
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-gray-200 shadow-sm text-sm font-medium text-gray-700">
-            <TrendingUp className="h-4 w-4 text-green-600" />
-            <span>Objectif : Rentrée réussie</span>
-          </div>
+            <div className="flex flex-wrap items-center gap-4 mb-2">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(193,68,58,0.06)] border border-[rgba(193,68,58,0.25)]">
+                <Target className="h-4 w-4 text-carnet-red" />
+                <span className="font-instrument text-[13px] font-semibold text-carnet-ink">Objectif : rentrée réussie</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)]">
+                <GraduationCap className="h-4 w-4 text-carnet-ink-soft" />
+                <span className="font-instrument text-[13px] text-carnet-ink-soft">10 chapitres clés</span>
+              </div>
+            </div>
+
+            <div className="carnet-hand text-[24px] mt-6 hidden md:block" style={{ transform: 'rotate(-2deg)' }}>
+              ↓ commence par le 01 et avance dans l'ordre
+            </div>
+          </motion.div>
         </div>
+      </section>
 
-        {/* Liste des chapitres */}
-        <div className="max-w-5xl mx-auto space-y-4">
-          {CHAPITRES.map((chap) => {
-            const links = getLinks(chap.slug);
+      {/* Liste des chapitres */}
+      <section className="relative pb-24 lg:pb-28">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <div className="space-y-4">
+            {CHAPITRES.map((chap, idx) => {
+              const links = getLinks(chap.slug);
+              const tilt = idx % 4 === 1 ? 'carnet-tilt-r' : idx % 4 === 3 ? 'carnet-tilt-l' : '';
 
-            return (
-              <div
-                key={chap.id}
-                onClick={() => navigate(links.cours)}
-                className="group block cursor-pointer"
-              >
-                <div className="bg-white rounded-2xl p-4 md:p-5 shadow-[0_2px_8px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgb(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300 border border-transparent hover:border-blue-100">
-                  <div className="flex items-center gap-5">
-                    {/* Icon */}
-                    <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300 flex-shrink-0 border border-blue-100/50">
-                      <chap.icon className="h-5 w-5 text-blue-600" />
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                      <div>
-                        <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-blue-700 transition-colors">
-                          {chap.title}
-                        </h3>
-                        <p className="text-sm text-gray-500 font-medium line-clamp-1">
-                          {chap.description}
-                        </p>
+              return (
+                <motion.div
+                  key={chap.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.4, delay: Math.min(idx * 0.04, 0.3) }}
+                  className={tilt}
+                >
+                  <div
+                    onClick={() => navigate(links.cours)}
+                    className="carnet-card group cursor-pointer p-5 sm:p-6 hover:shadow-[0_12px_32px_rgba(78,55,30,0.10)] transition-shadow"
+                  >
+                    <div className="flex items-start sm:items-center gap-5">
+                      {/* Numéro façon cahier */}
+                      <div className="flex-shrink-0 flex flex-col items-center">
+                        <span className="carnet-hand text-[40px] sm:text-[48px] text-carnet-red leading-none font-semibold">
+                          {String(chap.id).padStart(2, '0')}
+                        </span>
+                        <hr className="w-8 h-0.5 bg-carnet-ink border-0 mt-1" />
                       </div>
 
-                      {/* Actions */}
-                      <div className="flex gap-2 flex-wrap md:flex-nowrap flex-shrink-0" onClick={(e) => e.stopPropagation()}>
-                        <Link to={links.cours}>
-                          <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow-sm transition-all duration-200 h-9 px-4 text-xs">
-                            <BookOpen className="mr-2 h-3.5 w-3.5" />
-                            Cours
-                          </Button>
-                        </Link>
+                      {/* Icône */}
+                      <div className="hidden sm:flex w-11 h-11 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] items-center justify-center flex-shrink-0">
+                        <chap.icon className="h-5 w-5 text-carnet-red" />
+                      </div>
 
-                        <Link to={links.exercices}>
-                          <Button size="sm" variant="outline" className="border-gray-200 text-gray-600 hover:bg-white hover:text-blue-700 hover:border-blue-200 rounded-lg transition-all duration-200 h-9 px-4 text-xs bg-transparent">
-                            <Play className="mr-2 h-3.5 w-3.5" />
-                            Exercices
-                          </Button>
-                        </Link>
+                      {/* Contenu */}
+                      <div className="flex-1 flex flex-col lg:flex-row lg:items-center justify-between gap-4 min-w-0">
+                        <div className="min-w-0">
+                          <h3 className="font-lora text-[20px] sm:text-[22px] leading-[1.25] text-carnet-ink mb-1 group-hover:text-carnet-red transition-colors">
+                            {chap.title}
+                          </h3>
+                          <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.55] line-clamp-2">
+                            {chap.description}
+                          </p>
+                        </div>
 
-                        <Link to={links.flashcards}>
-                          <Button size="sm" variant="outline" className="border-gray-200 text-gray-600 hover:bg-white hover:text-blue-700 hover:border-blue-200 rounded-lg transition-all duration-200 h-9 px-4 text-xs bg-transparent">
-                            <Brain className="mr-2 h-3.5 w-3.5" />
-                            Flashcards
-                          </Button>
-                        </Link>
-
-                        <Link to={links.quiz}>
-                          <Button size="sm" variant="outline" className="border-gray-200 text-gray-600 hover:bg-white hover:text-blue-700 hover:border-blue-200 rounded-lg transition-all duration-200 h-9 px-4 text-xs bg-transparent">
-                            <Target className="mr-2 h-3.5 w-3.5" />
-                            Quiz
-                          </Button>
-                        </Link>
+                        {/* Actions */}
+                        <div
+                          className="flex flex-wrap gap-2 lg:flex-nowrap flex-shrink-0"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <Link to={links.cours}>
+                            <Button
+                              size="sm"
+                              className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold rounded-full h-9 px-4 text-xs border-0"
+                            >
+                              <BookOpen className="mr-2 h-3.5 w-3.5" />
+                              Cours
+                            </Button>
+                          </Link>
+                          <Link to={links.exercices}>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="border-[rgba(78,55,30,0.18)] text-carnet-ink-soft hover:bg-[rgba(193,68,58,0.06)] hover:text-carnet-red hover:border-carnet-red font-instrument rounded-full h-9 px-4 text-xs bg-transparent"
+                            >
+                              <Play className="mr-2 h-3.5 w-3.5" />
+                              Exercices
+                            </Button>
+                          </Link>
+                          <Link to={links.flashcards}>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="border-[rgba(78,55,30,0.18)] text-carnet-ink-soft hover:bg-[rgba(193,68,58,0.06)] hover:text-carnet-red hover:border-carnet-red font-instrument rounded-full h-9 px-4 text-xs bg-transparent"
+                            >
+                              <Brain className="mr-2 h-3.5 w-3.5" />
+                              Flashcards
+                            </Button>
+                          </Link>
+                          <Link to={links.quiz}>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="border-[rgba(78,55,30,0.18)] text-carnet-ink-soft hover:bg-[rgba(193,68,58,0.06)] hover:text-carnet-red hover:border-carnet-red font-instrument rounded-full h-9 px-4 text-xs bg-transparent"
+                            >
+                              <Target className="mr-2 h-3.5 w-3.5" />
+                              Quiz
+                            </Button>
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* CTA bas de page */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.5 }}
+            className="mt-14 relative bg-carnet-ink rounded-lg p-8 sm:p-10 overflow-hidden"
+          >
+            <div className="absolute -top-24 -right-24 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(193,68,58,0.18)_0%,transparent_60%)] pointer-events-none"></div>
+
+            <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+              <div className="max-w-2xl">
+                <div className="inline-flex items-center gap-2 mb-4">
+                  <Sparkles className="h-4 w-4 text-carnet-red" />
+                  <span className="carnet-eyebrow text-carnet-red">Offre dédiée bientôt disponible</span>
                 </div>
+                <h3 className="font-lora text-[26px] sm:text-[32px] text-carnet-paper leading-[1.15] mb-3">
+                  Tu veux aller plus loin que les fiches ?
+                </h3>
+                <p className="font-instrument text-[15px] text-[rgba(251,246,234,0.75)] leading-[1.65]">
+                  Un programme estival "Du bac à la prépa" avec coaching méthode, cours collectifs en visio et suivi individuel arrive bientôt. Inscris-toi pour être prévenu·e du lancement.
+                </p>
               </div>
-            );
-          })}
+              <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+                <Link to="/contact">
+                  <Button className="bg-carnet-red hover:bg-carnet-red-deep text-carnet-paper font-instrument font-semibold py-6 px-8 rounded-full border-0">
+                    Être prévenu
+                  </Button>
+                </Link>
+                <Link to="/articles/terminale-prepa">
+                  <Button
+                    variant="outline"
+                    className="border-[rgba(251,246,234,0.3)] bg-transparent text-carnet-paper hover:bg-[rgba(251,246,234,0.08)] hover:text-carnet-paper hover:border-[rgba(251,246,234,0.6)] font-instrument font-semibold py-6 px-8 rounded-full"
+                  >
+                    Voir la rubrique
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Retour */}
+          <div className="mt-10 flex items-center gap-4">
+            <Link
+              to="/articles/terminale-prepa"
+              className="inline-flex items-center gap-1.5 font-instrument text-[14px] text-carnet-ink-soft hover:text-carnet-red transition-colors"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+              Retour à la rubrique Terminale → Prépa
+            </Link>
+            <span className="text-carnet-ink-mute">·</span>
+            <Link
+              to="/"
+              className="inline-flex items-center gap-1.5 font-instrument text-[14px] text-carnet-ink-soft hover:text-carnet-red transition-colors"
+            >
+              Accueil
+            </Link>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

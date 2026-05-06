@@ -1,422 +1,328 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Heart, CheckCircle, AlertCircle, Lightbulb, Users, Star, Brain } from 'lucide-react';
+import { ArrowLeft, Heart, CheckCircle, AlertCircle, Lightbulb, Users, Star, Brain, type LucideIcon } from 'lucide-react';
 
 const PersonnalitePage = () => {
   return (
-    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
-      {/* Floating elements */}
-      <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-blue-100 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-8 animate-pulse"></div>
-
-      <div className="container mx-auto py-8 px-4 relative z-10">
-        {/* Navigation */}
+    <div className="min-h-screen bg-pr-gray-bg font-dm-sans">
+      <div className="container mx-auto py-12 px-4">
+        {/* Retour */}
         <div className="mb-8">
-          <Link to="/methodologie/entretiens-personnalite" className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors">
+          <Link
+            to="/methodologie/entretiens-personnalite"
+            className="inline-flex items-center text-sm text-pr-gray-mid hover:text-pr-orange-dark transition-colors"
+          >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Retour aux entretiens de personnalité
           </Link>
         </div>
 
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full mx-auto mb-6 flex items-center justify-center">
-            <Heart className="w-10 h-10 text-white" />
+        <div className="max-w-5xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 mb-6">
+              <span className="h-px w-8 bg-pr-orange" />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-orange-dark">
+                Méthodologie · Module 04
+              </span>
+              <span className="h-px w-8 bg-pr-orange" />
+            </div>
+            <div className="w-16 h-16 bg-pr-orange-pale rounded-full mx-auto mb-6 flex items-center justify-center">
+              <Heart className="w-8 h-8 text-pr-orange-dark" strokeWidth={1.6} />
+            </div>
+            <h1 className="font-dm-serif text-4xl sm:text-5xl text-pr-black mb-5 leading-tight">
+              Questions <span className="text-pr-orange">Personnalité</span>
+            </h1>
+            <p className="text-lg text-pr-gray-dark max-w-3xl mx-auto leading-relaxed">
+              Maîtrisez l'art de répondre aux questions personnelles en révélant vos qualités
+              et votre authenticité de manière stratégique.
+            </p>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="text-black">Questions </span>
-            <span className="text-blue-600">Personnalité</span>
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Maîtrisez l'art de répondre aux questions personnelles en révélant vos qualités et votre authenticité de manière stratégique.
-          </p>
-        </div>
 
-        {/* Introduction */}
-        <Card className="mb-12 bg-gradient-to-r from-blue-50 to-blue-100 border-2 border-blue-200">
-          <CardContent className="p-8">
-            <div className="flex items-start gap-4">
-              <Lightbulb className="w-8 h-8 text-blue-600 mt-1 flex-shrink-0" />
-              <div>
-                <h3 className="text-xl font-bold text-blue-800 mb-3">Pourquoi les questions de personnalité ?</h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Les questions de personnalité permettent au jury d'évaluer votre maturité, votre capacité d'introspection 
-                  et votre adéquation avec les valeurs de l'école. Elles révèlent votre intelligence émotionnelle et votre 
-                  potentiel de leadership.
-                </p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Types de questions */}
-        <Card className="mb-12">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-3 text-2xl text-blue-800">
-              <Brain className="w-8 h-8" />
-              Catégories de questions personnelles
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h4 className="font-bold text-blue-800 mb-3 flex items-center gap-2">
-                  <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm">1</span>
-                  Qualités et défauts
-                </h4>
-                <p className="text-gray-700 mb-3">Questions sur vos forces et faiblesses personnelles.</p>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• "Quelles sont vos 3 principales qualités ?"</li>
-                  <li>• "Quel est votre principal défaut ?"</li>
-                  <li>• "Comment vos amis vous décriraient-ils ?"</li>
-                </ul>
-              </div>
-              
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h4 className="font-bold text-blue-800 mb-3 flex items-center gap-2">
-                  <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm">2</span>
-                  Expériences marquantes
-                </h4>
-                <p className="text-gray-700 mb-3">Questions sur vos réussites et échecs personnels.</p>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• "Racontez-moi un échec dont vous êtes fier"</li>
-                  <li>• "Quelle est votre plus grande réussite ?"</li>
-                  <li>• "Décrivez un moment de leadership"</li>
-                </ul>
-              </div>
-              
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h4 className="font-bold text-blue-800 mb-3 flex items-center gap-2">
-                  <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm">3</span>
-                  Valeurs et motivations
-                </h4>
-                <p className="text-gray-700 mb-3">Questions sur ce qui vous anime profondément.</p>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• "Quelles sont vos valeurs essentielles ?"</li>
-                  <li>• "Qu'est-ce qui vous motive au quotidien ?"</li>
-                  <li>• "Quel est votre modèle de réussite ?"</li>
-                </ul>
-              </div>
-              
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h4 className="font-bold text-blue-800 mb-3 flex items-center gap-2">
-                  <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm">4</span>
-                  Situations hypothétiques
-                </h4>
-                <p className="text-gray-700 mb-3">Questions sur votre réaction face à des dilemmes.</p>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• "Comment gérez-vous le stress ?"</li>
-                  <li>• "Que feriez-vous face à un conflit ?"</li>
-                  <li>• "Comment prenez-vous vos décisions ?"</li>
-                </ul>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Méthode STAR */}
-        <Card className="mb-12">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-3 text-2xl text-blue-800">
-              <Star className="w-8 h-8" />
-              Méthode STAR pour structurer vos réponses
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-              <div className="bg-gradient-to-b from-blue-50 to-blue-100 p-4 rounded-lg text-center">
-                <h4 className="font-bold text-blue-800 text-lg mb-2">S</h4>
-                <h5 className="font-semibold text-blue-700 mb-1">Situation</h5>
-                <p className="text-sm text-gray-600">Contexte précis de l'expérience</p>
-              </div>
-              
-              <div className="bg-gradient-to-b from-blue-50 to-blue-100 p-4 rounded-lg text-center">
-                <h4 className="font-bold text-blue-800 text-lg mb-2">T</h4>
-                <h5 className="font-semibold text-blue-700 mb-1">Tâche</h5>
-                <p className="text-sm text-gray-600">Votre rôle et responsabilités</p>
-              </div>
-              
-              <div className="bg-gradient-to-b from-blue-50 to-blue-100 p-4 rounded-lg text-center">
-                <h4 className="font-bold text-blue-800 text-lg mb-2">A</h4>
-                <h5 className="font-semibold text-blue-700 mb-1">Action</h5>
-                <p className="text-sm text-gray-600">Ce que vous avez fait concrètement</p>
-              </div>
-              
-              <div className="bg-gradient-to-b from-blue-50 to-blue-100 p-4 rounded-lg text-center">
-                <h4 className="font-bold text-blue-800 text-lg mb-2">R</h4>
-                <h5 className="font-semibold text-blue-700 mb-1">Résultat</h5>
-                <p className="text-sm text-gray-600">Impact et apprentissages</p>
-              </div>
-            </div>
-            
-            <div className="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
-              <h4 className="font-bold text-green-800 mb-3">✅ Exemple avec STAR : "Parlez-moi d'un échec"</h4>
-              <div className="space-y-2 text-gray-700">
-                <p><strong>S:</strong> "Lors de ma première année associative, j'étais responsable communication pour un événement de 200 personnes."</p>
-                <p><strong>T:</strong> "Je devais gérer la promotion sur les réseaux sociaux et attirer un maximum d'étudiants."</p>
-                <p><strong>A:</strong> "J'ai sous-estimé l'importance du timing et lancé la communication trop tard, seulement 1 semaine avant."</p>
-                <p><strong>R:</strong> "Résultat : seulement 80 participants. Cet échec m'a appris l'importance de la planification et depuis, je prépare toujours mes projets avec 3 semaines d'avance minimum."</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Qualités les plus recherchées */}
-        <Card className="mb-12">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-3 text-2xl text-blue-800">
-              <Users className="w-8 h-8" />
-              Qualités les plus valorisées en école de commerce
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="space-y-4">
-                <h4 className="font-bold text-blue-700 text-lg">🎯 Leadership</h4>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
-                    Capacité à fédérer
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
-                    Prise d'initiative
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
-                    Vision stratégique
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
-                    Charisme
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="space-y-4">
-                <h4 className="font-bold text-blue-700 text-lg">🤝 Relations humaines</h4>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
-                    Intelligence émotionnelle
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
-                    Empathie
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
-                    Travail en équipe
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
-                    Communication
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="space-y-4">
-                <h4 className="font-bold text-blue-700 text-lg">⚡ Adaptabilité</h4>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
-                    Résilience
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
-                    Créativité
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
-                    Curiosité intellectuelle
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
-                    Ouverture d'esprit
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Gestion des défauts */}
-        <Card className="mb-12">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-3 text-2xl text-blue-800">
-              <AlertCircle className="w-8 h-8" />
-              Comment parler de vos défauts intelligemment
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="space-y-4">
-                <h4 className="font-bold text-green-700">✅ Défauts "acceptables"</h4>
-                <ul className="space-y-3 text-gray-700">
-                  <li className="bg-green-50 p-3 rounded">
-                    <strong>Perfectionnisme :</strong> "Je peux parfois être trop perfectionniste, ce qui me fait perdre du temps sur des détails."
-                  </li>
-                  <li className="bg-green-50 p-3 rounded">
-                    <strong>Impatience :</strong> "Je suis parfois impatient quand les projets n'avancent pas assez vite à mon goût."
-                  </li>
-                  <li className="bg-green-50 p-3 rounded">
-                    <strong>Autonomie excessive :</strong> "J'ai tendance à vouloir tout faire moi-même plutôt que de déléguer."
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="space-y-4">
-                <h4 className="font-bold text-red-700">❌ Défauts à éviter</h4>
-                <ul className="space-y-3 text-gray-700">
-                  <li className="bg-red-50 p-3 rounded">
-                    <strong>Paresse :</strong> Incompatible avec l'exigence des études
-                  </li>
-                  <li className="bg-red-50 p-3 rounded">
-                    <strong>Malhonnêteté :</strong> Valeur fondamentale en business
-                  </li>
-                  <li className="bg-red-50 p-3 rounded">
-                    <strong>Mauvaise communication :</strong> Essentiel en management
-                  </li>
-                  <li className="bg-red-50 p-3 rounded">
-                    <strong>Manque d'ambition :</strong> Contraire aux attentes
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div className="bg-blue-50 p-6 rounded-lg">
-              <h4 className="font-bold text-blue-800 mb-3">💡 Structure pour parler d'un défaut</h4>
-              <ol className="space-y-2 text-gray-700">
-                <li><strong>1. Reconnaître le défaut</strong> avec sincérité</li>
-                <li><strong>2. Donner un exemple concret</strong> de situation</li>
-                <li><strong>3. Expliquer les conséquences</strong> que cela a eues</li>
-                <li><strong>4. Présenter vos actions</strong> pour vous améliorer</li>
-                <li><strong>5. Montrer les progrès</strong> déjà réalisés</li>
-              </ol>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Questions pièges */}
-        <Card className="mb-12 border-2 border-orange-200 bg-orange-50">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-3 text-2xl text-orange-800">
-              <AlertCircle className="w-8 h-8" />
-              Questions pièges fréquentes
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid md:grid-cols-1 gap-6">
-              <div className="space-y-4">
-                <div className="bg-white p-4 rounded-lg border-l-4 border-orange-500">
-                  <h4 className="font-bold text-orange-800 mb-2">"Êtes-vous plutôt chef ou exécutant ?"</h4>
-                  <p className="text-gray-700"><strong>Piège :</strong> Répondre "chef" paraît prétentieux, "exécutant" manque d'ambition.</p>
-                  <p className="text-green-700"><strong>Réponse :</strong> "Je suis à l'aise dans les deux rôles selon le contexte. Quand j'ai l'expérience, j'aime prendre des responsabilités de leadership. Quand je découvre un domaine, je préfère d'abord bien comprendre en tant qu'exécutant."</p>
+          {/* Introduction */}
+          <Card className="mb-12 bg-pr-orange-pale border-l-4 border-l-pr-orange border-y-0 border-r-0 rounded-l-none rounded-r-lg">
+            <CardContent className="p-7">
+              <div className="flex items-start gap-4">
+                <Lightbulb className="w-7 h-7 text-pr-orange-dark mt-1 flex-shrink-0" strokeWidth={1.6} />
+                <div>
+                  <h3 className="font-dm-serif text-xl text-pr-black mb-3">Pourquoi les questions de personnalité ?</h3>
+                  <p className="text-pr-gray-dark leading-relaxed">
+                    Les questions de personnalité permettent au jury d'évaluer votre maturité, votre capacité
+                    d'introspection et votre adéquation avec les valeurs de l'école. Elles révèlent votre intelligence
+                    émotionnelle et votre potentiel de leadership.
+                  </p>
                 </div>
-                
-                <div className="bg-white p-4 rounded-lg border-l-4 border-orange-500">
-                  <h4 className="font-bold text-orange-800 mb-2">"Que pensez-vous de l'argent ?"</h4>
-                  <p className="text-gray-700"><strong>Piège :</strong> Dire que c'est important paraît vénale, dire que ce n'est pas important paraît naïf.</p>
-                  <p className="text-green-700"><strong>Réponse :</strong> "L'argent est un moyen, pas une fin. Il représente la reconnaissance du travail accompli et permet la liberté de choix. Mais ce qui me motive vraiment, c'est l'impact de mon travail et l'épanouissement personnel."</p>
-                </div>
-                
-                <div className="bg-white p-4 rounded-lg border-l-4 border-orange-500">
-                  <h4 className="font-bold text-orange-800 mb-2">"Pourquoi vous et pas un autre ?"</h4>
-                  <p className="text-gray-700"><strong>Piège :</strong> Dénigrer les autres ou paraître arrogant.</p>
-                  <p className="text-green-700"><strong>Réponse :</strong> "Je ne connais pas les autres candidats et je respecte leurs qualités. Ce que je peux vous dire, c'est que j'apporte une combinaison unique d'expériences [préciser], une motivation authentique pour [votre projet], et une capacité démontrée à [exemple concret]."</p>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Conseils pratiques */}
-        <Card className="mb-12">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-3 text-2xl text-blue-800">
-              <Lightbulb className="w-8 h-8" />
-              Conseils pratiques pour exceller
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <h4 className="font-bold text-blue-700 text-lg">🎯 Préparation</h4>
-                <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start gap-3">
-                    <span className="bg-blue-100 text-blue-600 rounded-full px-2 py-1 text-xs font-bold mt-1">1</span>
-                    Listez 5-6 expériences marquantes variées
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="bg-blue-100 text-blue-600 rounded-full px-2 py-1 text-xs font-bold mt-1">2</span>
-                    Préparez des exemples pour chaque qualité
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="bg-blue-100 text-blue-600 rounded-full px-2 py-1 text-xs font-bold mt-1">3</span>
-                    Identifiez vos valeurs fondamentales
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="bg-blue-100 text-blue-600 rounded-full px-2 py-1 text-xs font-bold mt-1">4</span>
-                    Travaillez votre introspection
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="space-y-4">
-                <h4 className="font-bold text-blue-700 text-lg">💬 Communication</h4>
-                <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start gap-3">
-                    <span className="bg-orange-100 text-orange-600 rounded-full px-2 py-1 text-xs font-bold mt-1">1</span>
-                    Soyez authentique et sincère
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="bg-orange-100 text-orange-600 rounded-full px-2 py-1 text-xs font-bold mt-1">2</span>
-                    Utilisez des exemples concrets
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="bg-orange-100 text-orange-600 rounded-full px-2 py-1 text-xs font-bold mt-1">3</span>
-                    Montrez votre évolution personnelle
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="bg-orange-100 text-orange-600 rounded-full px-2 py-1 text-xs font-bold mt-1">4</span>
-                    Gardez un ton positif
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Call to action */}
-        <div className="text-center">
-          <Card className="bg-gradient-to-r from-blue-50 to-orange-50 border-2 border-blue-200 inline-block">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-4 text-blue-800">Prêt à révéler votre personnalité ?</h3>
-              <p className="text-gray-600 mb-6 max-w-2xl">
-                Travaillez vos réponses aux questions personnelles avec nos coachs expérimentés.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/methodologie/entretiens-personnalite">
-                  <Button className="bg-blue-600 hover:bg-blue-700">
-                    Voir toutes les méthodologies
-                  </Button>
-                </Link>
-                <Link to="/contact">
-                  <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-                    Coaching personnalisé
-                  </Button>
-                </Link>
               </div>
             </CardContent>
           </Card>
+
+          {/* Catégories */}
+          <Section
+            label="Section 01"
+            title="Catégories de questions personnelles"
+            icon={Brain}
+          >
+            <div className="grid md:grid-cols-2 gap-5">
+              {[
+                { n: "01", t: "Qualités et défauts", d: "Questions sur vos forces et faiblesses personnelles.", l: ['"Quelles sont vos 3 principales qualités ?"', '"Quel est votre principal défaut ?"', '"Comment vos amis vous décriraient-ils ?"'] },
+                { n: "02", t: "Expériences marquantes", d: "Questions sur vos réussites et échecs personnels.", l: ['"Racontez-moi un échec dont vous êtes fier"', '"Quelle est votre plus grande réussite ?"', '"Décrivez un moment de leadership"'] },
+                { n: "03", t: "Valeurs et motivations", d: "Questions sur ce qui vous anime profondément.", l: ['"Quelles sont vos valeurs essentielles ?"', '"Qu\'est-ce qui vous motive au quotidien ?"', '"Quel est votre modèle de réussite ?"'] },
+                { n: "04", t: "Situations hypothétiques", d: "Questions sur votre réaction face à des dilemmes.", l: ['"Comment gérez-vous le stress ?"', '"Que feriez-vous face à un conflit ?"', '"Comment prenez-vous vos décisions ?"'] },
+              ].map((cat) => (
+                <div key={cat.n} className="bg-white border border-pr-gray-light rounded-lg p-6 hover:border-pr-orange transition-colors">
+                  <div className="flex items-baseline gap-3 mb-2">
+                    <span className="font-dm-serif text-3xl text-pr-orange">{cat.n}</span>
+                    <h4 className="font-dm-serif text-lg text-pr-black">{cat.t}</h4>
+                  </div>
+                  <div className="h-px w-8 bg-pr-orange mb-3" />
+                  <p className="text-sm text-pr-gray-dark mb-3">{cat.d}</p>
+                  <ul className="text-sm text-pr-gray-mid space-y-1">
+                    {cat.l.map((q) => <li key={q}>— {q}</li>)}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </Section>
+
+          {/* STAR */}
+          <Section
+            label="Section 02"
+            title="Méthode STAR pour structurer vos réponses"
+            icon={Star}
+          >
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+              {[
+                { l: "S", t: "Situation", d: "Contexte précis de l'expérience" },
+                { l: "T", t: "Tâche", d: "Votre rôle et responsabilités" },
+                { l: "A", t: "Action", d: "Ce que vous avez fait concrètement" },
+                { l: "R", t: "Résultat", d: "Impact et apprentissages" },
+              ].map((s) => (
+                <div key={s.l} className="bg-white border border-pr-gray-light rounded-lg p-5 text-center">
+                  <div className="font-dm-serif text-4xl text-pr-orange mb-1">{s.l}</div>
+                  <div className="h-px w-6 bg-pr-orange mx-auto mb-3" />
+                  <div className="font-medium text-pr-black mb-1">{s.t}</div>
+                  <p className="text-xs text-pr-gray-mid">{s.d}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-pr-orange-pale border-l-4 border-pr-orange rounded-r-lg p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark bg-white px-2 py-1 rounded">
+                  Exemple
+                </span>
+                <h4 className="font-dm-serif text-lg text-pr-black">"Parlez-moi d'un échec"</h4>
+              </div>
+              <div className="space-y-2 text-sm text-pr-gray-dark leading-relaxed">
+                <p><span className="font-semibold text-pr-orange-dark">S :</span> Lors de ma première année associative, j'étais responsable communication pour un événement de 200 personnes.</p>
+                <p><span className="font-semibold text-pr-orange-dark">T :</span> Je devais gérer la promotion sur les réseaux sociaux et attirer un maximum d'étudiants.</p>
+                <p><span className="font-semibold text-pr-orange-dark">A :</span> J'ai sous-estimé l'importance du timing et lancé la communication trop tard, seulement 1 semaine avant.</p>
+                <p><span className="font-semibold text-pr-orange-dark">R :</span> Résultat : seulement 80 participants. Cet échec m'a appris l'importance de la planification — depuis, je prépare toujours mes projets avec 3 semaines d'avance minimum.</p>
+              </div>
+            </div>
+          </Section>
+
+          {/* Qualités */}
+          <Section
+            label="Section 03"
+            title="Qualités les plus valorisées en école de commerce"
+            icon={Users}
+          >
+            <div className="grid md:grid-cols-3 gap-5">
+              {[
+                { t: "Leadership", l: ["Capacité à fédérer", "Prise d'initiative", "Vision stratégique", "Charisme"] },
+                { t: "Relations humaines", l: ["Intelligence émotionnelle", "Empathie", "Travail en équipe", "Communication"] },
+                { t: "Adaptabilité", l: ["Résilience", "Créativité", "Curiosité intellectuelle", "Ouverture d'esprit"] },
+              ].map((g) => (
+                <div key={g.t} className="bg-white border border-pr-gray-light rounded-lg p-6">
+                  <h4 className="font-dm-serif text-lg text-pr-black mb-2">{g.t}</h4>
+                  <div className="h-px w-8 bg-pr-orange mb-4" />
+                  <ul className="space-y-2.5">
+                    {g.l.map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-pr-gray-dark">
+                        <CheckCircle className="w-4 h-4 text-pr-orange mt-0.5 flex-shrink-0" strokeWidth={1.8} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </Section>
+
+          {/* Défauts */}
+          <Section
+            label="Section 04"
+            title="Comment parler de vos défauts intelligemment"
+            icon={AlertCircle}
+          >
+            <div className="grid md:grid-cols-2 gap-5 mb-8">
+              <div className="bg-white border border-pr-gray-light rounded-lg p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <CheckCircle className="w-5 h-5 text-pr-orange" strokeWidth={1.8} />
+                  <h4 className="font-dm-serif text-lg text-pr-black">Défauts acceptables</h4>
+                </div>
+                <ul className="space-y-3 text-sm text-pr-gray-dark">
+                  <li className="bg-pr-gray-bg p-3 rounded">
+                    <strong className="text-pr-black">Perfectionnisme :</strong> "Je peux parfois être trop perfectionniste, ce qui me fait perdre du temps sur des détails."
+                  </li>
+                  <li className="bg-pr-gray-bg p-3 rounded">
+                    <strong className="text-pr-black">Impatience :</strong> "Je suis parfois impatient quand les projets n'avancent pas assez vite."
+                  </li>
+                  <li className="bg-pr-gray-bg p-3 rounded">
+                    <strong className="text-pr-black">Autonomie excessive :</strong> "J'ai tendance à vouloir tout faire moi-même plutôt que de déléguer."
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-white border border-pr-gray-light rounded-lg p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <AlertCircle className="w-5 h-5 text-pr-orange-dark" strokeWidth={1.8} />
+                  <h4 className="font-dm-serif text-lg text-pr-black">Défauts à éviter</h4>
+                </div>
+                <ul className="space-y-3 text-sm text-pr-gray-dark">
+                  <li className="bg-pr-gray-bg p-3 rounded"><strong className="text-pr-black">Paresse :</strong> incompatible avec l'exigence des études.</li>
+                  <li className="bg-pr-gray-bg p-3 rounded"><strong className="text-pr-black">Malhonnêteté :</strong> valeur fondamentale en business.</li>
+                  <li className="bg-pr-gray-bg p-3 rounded"><strong className="text-pr-black">Mauvaise communication :</strong> essentiel en management.</li>
+                  <li className="bg-pr-gray-bg p-3 rounded"><strong className="text-pr-black">Manque d'ambition :</strong> contraire aux attentes.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="bg-pr-orange-pale border-l-4 border-pr-orange rounded-r-lg p-6">
+              <h4 className="font-dm-serif text-lg text-pr-black mb-3">Structure pour parler d'un défaut</h4>
+              <ol className="space-y-2 text-sm text-pr-gray-dark">
+                <li><span className="font-semibold text-pr-orange-dark">1.</span> Reconnaître le défaut avec sincérité</li>
+                <li><span className="font-semibold text-pr-orange-dark">2.</span> Donner un exemple concret de situation</li>
+                <li><span className="font-semibold text-pr-orange-dark">3.</span> Expliquer les conséquences que cela a eues</li>
+                <li><span className="font-semibold text-pr-orange-dark">4.</span> Présenter vos actions pour vous améliorer</li>
+                <li><span className="font-semibold text-pr-orange-dark">5.</span> Montrer les progrès déjà réalisés</li>
+              </ol>
+            </div>
+          </Section>
+
+          {/* Questions pièges */}
+          <Section
+            label="Section 05"
+            title="Questions pièges fréquentes"
+            icon={AlertCircle}
+          >
+            <div className="space-y-4">
+              {[
+                {
+                  q: "Êtes-vous plutôt chef ou exécutant ?",
+                  p: "Répondre \"chef\" paraît prétentieux, \"exécutant\" manque d'ambition.",
+                  r: "Je suis à l'aise dans les deux rôles selon le contexte. Quand j'ai l'expérience, j'aime prendre des responsabilités de leadership. Quand je découvre un domaine, je préfère d'abord bien comprendre en tant qu'exécutant.",
+                },
+                {
+                  q: "Que pensez-vous de l'argent ?",
+                  p: "Dire que c'est important paraît vénal, dire que ce n'est pas important paraît naïf.",
+                  r: "L'argent est un moyen, pas une fin. Il représente la reconnaissance du travail accompli et permet la liberté de choix. Mais ce qui me motive vraiment, c'est l'impact de mon travail et l'épanouissement personnel.",
+                },
+                {
+                  q: "Pourquoi vous et pas un autre ?",
+                  p: "Dénigrer les autres ou paraître arrogant.",
+                  r: "Je ne connais pas les autres candidats et je respecte leurs qualités. Ce que je peux vous dire, c'est que j'apporte une combinaison unique d'expériences, une motivation authentique pour mon projet, et une capacité démontrée à passer à l'action.",
+                },
+              ].map((item) => (
+                <div key={item.q} className="bg-white border border-pr-gray-light border-l-4 border-l-pr-orange rounded-r-lg p-5">
+                  <h4 className="font-dm-serif text-lg text-pr-black mb-3">"{item.q}"</h4>
+                  <p className="text-sm text-pr-gray-mid mb-2">
+                    <span className="font-semibold text-pr-orange-dark uppercase text-[10px] tracking-wider">Piège · </span>
+                    {item.p}
+                  </p>
+                  <p className="text-sm text-pr-gray-dark">
+                    <span className="font-semibold text-pr-orange-dark uppercase text-[10px] tracking-wider">Réponse · </span>
+                    {item.r}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Section>
+
+          {/* Conseils */}
+          <Section
+            label="Section 06"
+            title="Conseils pratiques pour exceller"
+            icon={Lightbulb}
+          >
+            <div className="grid md:grid-cols-2 gap-5">
+              {[
+                { t: "Préparation", l: ["Listez 5-6 expériences marquantes variées", "Préparez des exemples pour chaque qualité", "Identifiez vos valeurs fondamentales", "Travaillez votre introspection"] },
+                { t: "Communication", l: ["Soyez authentique et sincère", "Utilisez des exemples concrets", "Montrez votre évolution personnelle", "Gardez un ton positif"] },
+              ].map((g) => (
+                <div key={g.t} className="bg-white border border-pr-gray-light rounded-lg p-6">
+                  <h4 className="font-dm-serif text-lg text-pr-black mb-2">{g.t}</h4>
+                  <div className="h-px w-8 bg-pr-orange mb-4" />
+                  <ul className="space-y-3">
+                    {g.l.map((item, i) => (
+                      <li key={item} className="flex items-start gap-3 text-sm text-pr-gray-dark">
+                        <span className="font-dm-serif text-pr-orange text-lg leading-none mt-0.5">{i + 1}</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </Section>
+
+          {/* CTA */}
+          <div className="mt-16 text-center bg-white border border-pr-gray-light rounded-xl px-8 py-12">
+            <div className="h-1 w-12 bg-pr-orange mx-auto mb-6 rounded-full" />
+            <h3 className="font-dm-serif text-2xl sm:text-3xl text-pr-black mb-3">
+              Prêt à révéler votre personnalité ?
+            </h3>
+            <p className="text-base text-pr-gray-mid max-w-xl mx-auto mb-8">
+              Travaillez vos réponses aux questions personnelles avec nos coachs expérimentés.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link to="/methodologie/entretiens-personnalite">
+                <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white px-6">
+                  Voir toutes les méthodologies
+                </Button>
+              </Link>
+              <Link to="/contact">
+                <Button variant="outline" className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange">
+                  Coaching personnalisé
+                </Button>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 };
+
+const Section = ({
+  label,
+  title,
+  icon: Icon,
+  children,
+}: {
+  label: string;
+  title: string;
+  icon: LucideIcon;
+  children: React.ReactNode;
+}) => (
+  <section className="mb-16">
+    <div className="mb-8">
+      <div className="flex items-center gap-3 mb-3">
+        <span className="h-7 w-1 bg-pr-orange rounded-full" />
+        <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-orange-dark">
+          {label}
+        </span>
+      </div>
+      <div className="flex items-center gap-3">
+        <Icon className="w-7 h-7 text-pr-gray-dark" strokeWidth={1.5} />
+        <h2 className="font-dm-serif text-2xl sm:text-3xl text-pr-black">{title}</h2>
+      </div>
+    </div>
+    {children}
+  </section>
+);
 
 export default PersonnalitePage;

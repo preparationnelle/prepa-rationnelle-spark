@@ -136,37 +136,30 @@ export const GeopoliticsParadoxGenerator = ({ subjectFromParent }: GeopoliticsPa
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* Introduction */}
-      <Card className="bg-orange-50/50 border border-orange-100 shadow-sm">
+      <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+        <div className="h-[3px] w-full bg-pr-orange" />
         <CardContent className="p-6">
           <div className="flex items-start gap-4">
-            <div className="p-3 bg-white rounded-xl shadow-sm border border-orange-100">
-              <Sparkles className="h-6 w-6 text-orange-600" />
+            <div className="p-2.5 bg-pr-orange-pale rounded-xl border border-pr-orange-soft flex-shrink-0">
+              <Sparkles className="h-5 w-5 text-pr-orange-dark" />
             </div>
-            <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Méthode du Paradoxe</h3>
-              <p className="text-gray-600 mb-4 leading-relaxed">
-                Une excellente problématique repose <strong>toujours</strong> sur un paradoxe.
+            <div className="flex-1">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-1">
+                Géopolitique
+              </div>
+              <h3 className="font-dm-serif text-xl text-pr-black mb-2 leading-none">Méthode du paradoxe</h3>
+              <p className="text-pr-gray-dark text-[14px] leading-relaxed mb-4">
+                Une excellente problématique repose <strong className="text-pr-black">toujours</strong> sur un paradoxe.
                 Il ne s'agit pas de poser une question simple, mais de mettre en tension deux réalités contradictoires.
                 L'IA analysera votre proposition selon 5 critères d'excellence (Clarté, Paradoxe, Ancrage, Ouverture, Pertinence).
               </p>
 
               {!loading && !evaluation && (
-                <div className="bg-white rounded-xl border border-orange-200/60 p-5 shadow-sm">
-                  <div className="flex items-center justify-between cursor-pointer group" onClick={() => setSuggestedParadox(suggestedParadox ? '' : 'demo')}>
-                    <span className="font-semibold text-orange-700 text-sm group-hover:text-orange-800 transition-colors">Voir un exemple d'excellence</span>
-                    <Sparkles className="h-4 w-4 text-orange-400 group-hover:scale-110 transition-transform" />
-                  </div>
-                  {/* Hardcoded example for demo state when toggled or if we want to show it by default */}
-                  <div className="mt-4 pt-4 border-t border-orange-50 space-y-4">
-                    <div className="grid md:grid-cols-1 gap-4">
-                      <div>
-                        <span className="text-[10px] font-bold text-orange-400 uppercase tracking-wider bg-orange-50 px-2 py-1 rounded-full">Paradoxe</span>
-                        <p className="text-sm font-medium text-gray-800 italic mt-1">"Continent d'avenir économique mais champ de rivalités exacerbées"</p>
-                      </div>
-                    </div>
-                  </div>
+                <div className="bg-pr-gray-bg rounded-xl border border-pr-gray-light p-4">
+                  <div className="text-[10px] font-bold text-pr-orange-dark uppercase tracking-[0.12em] mb-1.5">Exemple d'excellence — Paradoxe</div>
+                  <p className="font-lora italic text-[15px] text-pr-black leading-snug">« Continent d'avenir économique mais champ de rivalités exacerbées »</p>
                 </div>
               )}
             </div>
@@ -175,67 +168,70 @@ export const GeopoliticsParadoxGenerator = ({ subjectFromParent }: GeopoliticsPa
       </Card>
 
       {/* Input form */}
-      <Card className="border-0 shadow-xl shadow-slate-200/40 ring-1 ring-slate-200 bg-white">
-        <CardHeader className="border-b border-slate-100 pb-6">
-          <CardTitle className="text-xl font-bold text-slate-900 flex items-center gap-3">
-            <Target className="h-5 w-5 text-orange-600" />
+      <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+        <CardHeader className="px-6 pt-5 pb-4">
+          <CardTitle className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
+            <Target className="h-4 w-4 text-pr-orange" />
             Votre analyse
           </CardTitle>
         </CardHeader>
-        <CardContent className="p-6 space-y-6">
+        <CardContent className="px-6 pb-6 space-y-6">
+          {/* Sujet */}
           <div className="space-y-3">
-            <Label className="text-base font-semibold text-slate-900 flex items-center gap-2">
-              <Globe className="h-4 w-4 text-slate-400" />
-              Sujet géopolitique
-            </Label>
-            <div className={`relative rounded-xl border transition-colors duration-200 ${subjectFromParent ? 'bg-slate-50 border-slate-200' : 'bg-white border-slate-200 focus-within:border-orange-500 focus-within:ring-4 focus-within:ring-orange-500/10'}`}>
-              <Textarea
-                value={subject}
-                onChange={(e) => setSubject(e.target.value)}
-                readOnly={!!subjectFromParent}
-                placeholder="Ex : La puissance américaine aujourd'hui"
-                className="min-h-[60px] text-base border-0 focus-visible:ring-0 bg-transparent resize-none p-4"
-              />
+            <div className="flex items-center justify-between gap-3">
+              <Label className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-pr-orange-pale text-pr-orange-dark text-[11px] font-bold">
+                  1
+                </span>
+                Sujet géopolitique
+              </Label>
               {subjectFromParent && (
-                <div className="absolute top-3 right-3">
-                  <Badge variant="secondary" className="bg-orange-100 text-orange-700 hover:bg-orange-100 border-0 font-medium">Sujet Imposé</Badge>
-                </div>
+                <Badge className="bg-pr-orange-pale text-pr-orange-dark border border-pr-orange-soft hover:bg-pr-orange-pale rounded-full font-semibold text-[11px] uppercase tracking-wider">
+                  Sujet imposé
+                </Badge>
               )}
             </div>
+            <Textarea
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+              readOnly={!!subjectFromParent}
+              placeholder="Ex : La puissance américaine aujourd'hui"
+              className={`min-h-[60px] text-[15px] resize-y rounded-xl p-4 transition-colors text-pr-black placeholder:text-pr-gray-mid ${subjectFromParent ? 'bg-pr-orange-pale/40 border-pr-orange-pale' : 'bg-white border-pr-gray-light focus:border-pr-orange focus:ring-2 focus:ring-pr-orange/20'}`}
+            />
             {!subjectFromParent && (
-              <p className="text-xs text-slate-500 pl-1">Saisissez le sujet sur lequel vous travaillez.</p>
+              <p className="text-[13px] text-pr-gray-mid">Saisissez le sujet sur lequel vous travaillez.</p>
             )}
           </div>
 
-          <div>
-            <div className="space-y-3">
-              <Label className="text-base font-semibold text-slate-900">
-                Votre paradoxe
-              </Label>
-              <Textarea
-                value={userParadox}
-                onChange={(e) => setUserParadox(e.target.value)}
-                placeholder="Ex : Les États-Unis sont simultanément la puissance dominante et une puissance en déclin relatif..."
-                className="min-h-[160px] text-base border-slate-200 focus:border-orange-500 focus:ring-orange-500/20 rounded-xl resize-none p-4 shadow-sm"
-              />
-            </div>
-
-
+          {/* Paradoxe */}
+          <div className="space-y-3">
+            <Label className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
+              <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-pr-orange-pale text-pr-orange-dark text-[11px] font-bold">
+                2
+              </span>
+              Votre paradoxe
+            </Label>
+            <Textarea
+              value={userParadox}
+              onChange={(e) => setUserParadox(e.target.value)}
+              placeholder="Ex : Les États-Unis sont simultanément la puissance dominante et une puissance en déclin relatif…"
+              className="min-h-[160px] text-[15px] border-pr-gray-light focus:border-pr-orange focus:ring-2 focus:ring-pr-orange/20 rounded-xl resize-y p-4 transition-colors text-pr-black placeholder:text-pr-gray-mid bg-white"
+            />
           </div>
 
           <Button
             onClick={handleEvaluate}
             disabled={loading || !subject.trim() || !userParadox.trim()}
-            className="w-full bg-slate-900 hover:bg-slate-800 text-white h-14 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+            className="w-full bg-pr-orange hover:bg-pr-orange-dark text-white h-12 rounded-xl font-semibold text-[15px] shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 disabled:opacity-50 disabled:shadow-none"
           >
             {loading ? (
               <>
-                <Loader2 className="mr-2 h-5 w-5 animate-spin text-orange-500" />
-                Analyse de votre problématique...
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Analyse de votre problématique…
               </>
             ) : (
               <>
-                <CheckCircle className="mr-2 h-5 w-5 text-orange-500" />
+                <CheckCircle className="mr-2 h-4 w-4" />
                 Lancer l'audit de la problématique
               </>
             )}
@@ -245,27 +241,36 @@ export const GeopoliticsParadoxGenerator = ({ subjectFromParent }: GeopoliticsPa
 
       {/* Evaluation result */}
       {evaluation && (
-        <div className="animate-in fade-in slide-in-from-bottom-8 duration-700">
-          <Card className="border-0 shadow-2xl shadow-orange-900/10 ring-1 ring-slate-200 bg-white overflow-hidden">
-            <CardHeader className="bg-slate-900 text-white border-b border-orange-500/30 pb-8 pt-8 px-8">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <CardTitle className="text-2xl font-bold flex items-center gap-3">
-                  <div className="p-2.5 bg-white/10 rounded-xl backdrop-blur-md border border-white/10">
-                    <CheckCircle className="h-6 w-6 text-orange-400" />
+        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)] overflow-hidden">
+            <div className="h-[3px] w-full bg-pr-orange" />
+            <CardHeader className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-white border border-pr-orange-soft flex items-center justify-center">
+                    <CheckCircle className="h-5 w-5 text-pr-orange-dark" />
                   </div>
-                  Audit de votre problématique
-                </CardTitle>
-                <div className="flex items-center gap-3 bg-white/10 px-5 py-2 rounded-full border border-white/10 backdrop-blur-sm">
-                  <span className="text-sm font-medium text-slate-300 uppercase tracking-wider">Note Globale</span>
-                  <div className="h-6 w-px bg-white/20"></div>
-                  <span className="text-2xl font-bold text-orange-400">{evaluation.notes.total}/20</span>
+                  <div>
+                    <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-0.5">
+                      Audit de votre problématique
+                    </div>
+                    <CardTitle className="font-dm-serif text-xl text-pr-black leading-none">
+                      Note globale
+                    </CardTitle>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 bg-white px-4 py-2 rounded-xl border border-pr-orange-soft">
+                  <span className="text-[10px] font-semibold text-pr-gray-mid uppercase tracking-[0.12em]">Total</span>
+                  <span className="font-dm-serif text-2xl text-pr-black leading-none">
+                    {evaluation.notes.total}<span className="text-pr-gray-mid text-base">/20</span>
+                  </span>
                 </div>
               </div>
             </CardHeader>
-            <CardContent className="p-8 space-y-10">
+            <CardContent className="p-6 sm:p-7 space-y-7">
 
               {/* Score Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
                 {[
                   { label: 'Clarté', score: evaluation.notes.clarte },
                   { label: 'Paradoxe', score: evaluation.notes.paradoxe },
@@ -273,39 +278,36 @@ export const GeopoliticsParadoxGenerator = ({ subjectFromParent }: GeopoliticsPa
                   { label: 'Ouverture', score: evaluation.notes.ouverture },
                   { label: 'Pertinence', score: evaluation.notes.pertinence },
                 ].map((crit, idx) => (
-                  <div key={idx} className="bg-slate-50 rounded-2xl p-4 border border-slate-100 text-center transition-all hover:shadow-md hover:border-orange-100 group">
-                    <div className="text-xs uppercase tracking-wider text-slate-400 font-bold mb-2 group-hover:text-slate-600 transition-colors">{crit.label}</div>
-                    <div className={`text-2xl font-black ${crit.score >= 3 ? 'text-green-500' : crit.score >= 2 ? 'text-orange-500' : 'text-red-500'}`}>
-                      {crit.score}/4
+                  <div key={idx} className="bg-pr-gray-bg rounded-xl p-4 border border-pr-gray-light text-center">
+                    <div className="text-[10px] uppercase tracking-[0.12em] text-pr-gray-mid font-semibold mb-2">{crit.label}</div>
+                    <div className="font-dm-serif text-2xl text-pr-black leading-none">
+                      {crit.score}<span className="text-pr-gray-mid text-base">/4</span>
                     </div>
                   </div>
                 ))}
               </div>
 
               {/* Diagnostic */}
-              <div className="bg-orange-50/50 rounded-2xl p-6 border border-orange-100/50 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-orange-100/50 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
-                <h3 className="font-bold text-orange-900 mb-3 flex items-center gap-2 relative z-10">
-                  <Target className="h-5 w-5 text-orange-600" /> Diagnostic Expert
+              <div className="bg-pr-orange-pale/60 rounded-xl p-5 border border-pr-orange-pale">
+                <h3 className="text-[11px] font-semibold text-pr-orange-dark uppercase tracking-[0.14em] mb-2 flex items-center gap-2">
+                  <Target className="h-3.5 w-3.5" /> Diagnostic expert
                 </h3>
-                <p className="text-slate-700 leading-relaxed font-medium relative z-10">{evaluation.diagnostic}</p>
+                <p className="text-pr-gray-dark text-[15px] leading-relaxed">{evaluation.diagnostic}</p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid md:grid-cols-2 gap-6">
                 {/* Points forts */}
                 {evaluation.points_forts && evaluation.points_forts.length > 0 && (
-                  <div className="space-y-4">
-                    <h3 className="font-bold text-slate-900 flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
-                        <CheckCircle className="h-4 w-4 text-green-600" />
-                      </div>
+                  <div className="space-y-3">
+                    <h3 className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2">
+                      <CheckCircle className="h-3.5 w-3.5 text-pr-orange" />
                       Points forts
                     </h3>
-                    <ul className="space-y-3">
+                    <ul className="space-y-2">
                       {evaluation.points_forts.map((point, index) => (
-                        <li key={index} className="flex items-start gap-3 bg-green-50/50 p-3 rounded-xl border border-green-100 text-slate-700 text-sm">
-                          <span className="mt-0.5 block w-1.5 h-1.5 rounded-full bg-green-500 flex-shrink-0"></span>
-                          <span>{point}</span>
+                        <li key={index} className="flex items-start gap-3 bg-pr-gray-bg p-3 rounded-lg border border-pr-gray-light text-pr-gray-dark text-[14px]">
+                          <span className="mt-2 w-1.5 h-1.5 rounded-full bg-pr-orange flex-shrink-0"></span>
+                          <span className="leading-relaxed">{point}</span>
                         </li>
                       ))}
                     </ul>
@@ -314,18 +316,16 @@ export const GeopoliticsParadoxGenerator = ({ subjectFromParent }: GeopoliticsPa
 
                 {/* Limites */}
                 {evaluation.limites && evaluation.limites.length > 0 && (
-                  <div className="space-y-4">
-                    <h3 className="font-bold text-slate-900 flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center">
-                        <AlertTriangle className="h-4 w-4 text-red-600" />
-                      </div>
+                  <div className="space-y-3">
+                    <h3 className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2">
+                      <AlertTriangle className="h-3.5 w-3.5 text-pr-black" />
                       Points à améliorer
                     </h3>
-                    <ul className="space-y-3">
+                    <ul className="space-y-2">
                       {evaluation.limites.map((limite, index) => (
-                        <li key={index} className="flex items-start gap-3 bg-red-50/50 p-3 rounded-xl border border-red-100 text-slate-700 text-sm">
-                          <span className="mt-0.5 block w-1.5 h-1.5 rounded-full bg-red-500 flex-shrink-0"></span>
-                          <span>{limite}</span>
+                        <li key={index} className="flex items-start gap-3 bg-pr-gray-bg p-3 rounded-lg border border-pr-gray-light text-pr-gray-dark text-[14px]">
+                          <span className="mt-2 w-1.5 h-1.5 rounded-full bg-pr-black flex-shrink-0"></span>
+                          <span className="leading-relaxed">{limite}</span>
                         </li>
                       ))}
                     </ul>
@@ -334,22 +334,19 @@ export const GeopoliticsParadoxGenerator = ({ subjectFromParent }: GeopoliticsPa
               </div>
 
               {/* Suggestion */}
-              <div className="relative overflow-hidden rounded-2xl bg-slate-900 p-8 text-white shadow-xl ring-1 ring-white/10">
-                <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-orange-500 rounded-full opacity-20 blur-3xl"></div>
-                <div className="relative z-10">
-                  <h3 className="text-lg font-bold text-orange-400 mb-6 flex items-center gap-2">
-                    <Sparkles className="h-5 w-5" />
-                    Proposition de reformulation "Haut Niveau"
-                  </h3>
-                  <div className="space-y-6">
-                    <div className="bg-white/5 rounded-xl p-4 border border-white/5">
-                      <div className="text-xs uppercase tracking-wider text-slate-400 font-bold mb-2">Paradoxe Suggéré</div>
-                      <p className="text-slate-200 italic border-l-2 border-orange-500 pl-4">{userParadox}</p>
-                    </div>
-                    <div>
-                      <div className="text-xs uppercase tracking-wider text-slate-400 font-bold mb-2">Problématique Suggérée</div>
-                      <p className="text-white text-xl font-medium leading-relaxed font-serif">"{evaluation.suggestion}"</p>
-                    </div>
+              <div className="rounded-2xl bg-pr-black p-7 text-white">
+                <h3 className="text-[11px] font-semibold text-pr-orange-soft uppercase tracking-[0.14em] mb-5 flex items-center gap-2">
+                  <Sparkles className="h-3.5 w-3.5" />
+                  Proposition de reformulation « haut niveau »
+                </h3>
+                <div className="space-y-5">
+                  <div className="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div className="text-[10px] uppercase tracking-[0.12em] text-white/60 font-semibold mb-1.5">Paradoxe suggéré</div>
+                    <p className="text-white/90 italic border-l-2 border-pr-orange pl-4">{userParadox}</p>
+                  </div>
+                  <div>
+                    <div className="text-[10px] uppercase tracking-[0.12em] text-white/60 font-semibold mb-2">Problématique suggérée</div>
+                    <p className="font-lora text-white text-xl font-medium leading-relaxed">« {evaluation.suggestion} »</p>
                   </div>
                 </div>
               </div>

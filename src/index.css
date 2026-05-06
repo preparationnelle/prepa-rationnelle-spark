@@ -208,3 +208,661 @@
     transform: translateX(100%);
   }
 }
+
+/* Glassmorphism & Modern UI utilities */
+@layer utilities {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300;
+  }
+  
+  .glass-card-hover {
+    @apply hover:bg-white/90 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 hover:border-pr-orange/30;
+  }
+  
+  .glass-panel {
+    @apply bg-white/40 backdrop-blur-2xl border border-white/50 shadow-sm;
+  }
+  
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-pr-orange via-pr-orange-dark to-[#D94A00];
+  }
+  
+  .text-gradient-subtle {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-pr-black to-pr-gray-dark;
+  }
+  
+  .blob-bg {
+    @apply absolute rounded-full mix-blend-multiply filter blur-3xl opacity-20 pointer-events-none;
+  }
+  
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+  
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+/* ============================================================
+   CARNET DE PRÉPA — Design system
+   Cahier de classe : papier crème, lignes, marge rouge,
+   annotations manuscrites, italiques en rouge.
+   ============================================================ */
+@layer utilities {
+  /* Papier ligné — tile vertical de 32px */
+  .carnet-paper {
+    background-color: #FBF6EA;
+    background-image: repeating-linear-gradient(transparent 0, transparent 31px, rgba(78,55,30,0.07) 32px);
+  }
+  .carnet-paper-plain { background-color: #FBF6EA; }
+  .carnet-paper-2     { background-color: #FFFEF8; }
+
+  /* Marge rouge fixe + perforations (desktop only) */
+  .carnet-margin-line {
+    position: fixed; left: 110px; top: 0; bottom: 0; width: 2px;
+    background: rgba(193,68,58,0.35); z-index: 1; pointer-events: none;
+  }
+  .carnet-hole {
+    position: absolute; left: 36px; width: 22px; height: 22px; border-radius: 50%;
+    background: #FFFFFF; box-shadow: inset 0 2px 4px rgba(0,0,0,0.16); pointer-events: none;
+    z-index: 1;
+  }
+  @media (max-width: 900px) {
+    .carnet-margin-line, .carnet-hole { display: none; }
+  }
+
+  /* Annotation manuscrite — Caveat rouge */
+  .carnet-hand {
+    font-family: 'Caveat', 'Bradley Hand', cursive;
+    color: #C1443A; line-height: 1.1;
+  }
+
+  /* Surlignage jaune fluo (style stabilo) */
+  .carnet-hl {
+    background: rgba(255,225,120,0.55);
+    padding: 0 4px;
+  }
+
+  /* Filet en pointillés couleur carnet */
+  .carnet-divider {
+    border: 0;
+    border-top: 1px dashed rgba(78,55,30,0.18);
+  }
+
+  /* Cards inclinées comme posées sur le bureau */
+  .carnet-tilt-l { transform: rotate(-0.4deg); }
+  .carnet-tilt-r { transform: rotate(0.5deg); }
+  .carnet-tilt-l-strong { transform: rotate(-0.8deg); }
+  .carnet-tilt-r-strong { transform: rotate(0.8deg); }
+
+  /* Card style cahier */
+  .carnet-card {
+    background: #FFFEF8;
+    border: 1px solid rgba(78,55,30,0.18);
+    border-radius: 4px;
+    box-shadow: 0 1px 0 rgba(78,55,30,0.08), 0 8px 16px rgba(78,55,30,0.04);
+  }
+
+  /* Eyebrow rouge */
+  .carnet-eyebrow {
+    font-family: 'Instrument Sans', -apple-system, sans-serif;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: #C1443A;
+  }
+}
+
+/* ============================================================
+   CARNET COURS SKIN
+   Re-stylise les pages de cours legacy (Terminale → Prépa)
+   au design carnet sans réécrire chaque card.
+   ============================================================ */
+.carnet-cours-skin {
+  font-family: 'Instrument Sans', -apple-system, sans-serif;
+  color: #1F1714;
+}
+
+/* --- Breadcrumb sticky --- */
+.carnet-cours-skin nav.sticky {
+  background: rgba(251, 246, 234, 0.92) !important;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px dashed rgba(78,55,30,0.18) !important;
+  border-color: rgba(78,55,30,0.18) !important;
+}
+.carnet-cours-skin nav.sticky a {
+  color: rgba(74, 61, 48, 0.8) !important;
+  font-family: 'Instrument Sans', sans-serif;
+}
+.carnet-cours-skin nav.sticky a:hover {
+  color: #C1443A !important;
+}
+.carnet-cours-skin nav.sticky svg {
+  color: rgba(78,55,30,0.4) !important;
+}
+.carnet-cours-skin nav.sticky .text-gray-900,
+.carnet-cours-skin nav.sticky .text-\[\#2D5BFF\] {
+  color: #C1443A !important;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+/* --- Typographie titres --- */
+.carnet-cours-skin h1,
+.carnet-cours-skin h2,
+.carnet-cours-skin h3,
+.carnet-cours-skin h4,
+.carnet-cours-skin h5,
+.carnet-cours-skin .CardTitle,
+.carnet-cours-skin [class*="font-bold"]:where(h1, h2, h3, h4, h5) {
+  font-family: 'Lora', Georgia, serif !important;
+  color: #1F1714 !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em;
+  background: none !important;
+  -webkit-text-fill-color: #1F1714 !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+.carnet-cours-skin h1 { font-weight: 700 !important; }
+
+/* --- En-tête (Card gradient blue/orange) → flat carnet --- */
+.carnet-cours-skin [class*="bg-gradient-to-br"][class*="from-blue"],
+.carnet-cours-skin [class*="bg-gradient-to-br"][class*="via-blue"],
+.carnet-cours-skin [class*="bg-gradient-to-br"][class*="from-orange"] {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
+/* --- Card headers gradient (blue or orange) → carnet ink bar --- */
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-amber"] {
+  background: #1F1714 !important;
+  color: #FBF6EA !important;
+}
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue"] *,
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange"] *,
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-amber"] * {
+  color: #FBF6EA !important;
+}
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue"] [class*="bg-white"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange"] [class*="bg-white"] {
+  background: rgba(193,68,58,0.25) !important;
+  color: #FBF6EA !important;
+}
+
+/* --- Cards "section" --- */
+.carnet-cours-skin .bg-white:not(nav .bg-white) {
+  background: #FFFEF8 !important;
+  border: 1px solid rgba(78,55,30,0.18) !important;
+  box-shadow: 0 1px 0 rgba(78,55,30,0.08), 0 8px 16px rgba(78,55,30,0.04) !important;
+  border-radius: 4px !important;
+}
+
+/* --- Section divider line --- */
+.carnet-cours-skin .border-gray-200,
+.carnet-cours-skin .border-b.border-gray-200 {
+  border-color: rgba(78,55,30,0.18) !important;
+  border-style: dashed !important;
+}
+
+/* --- Numbered icon circles (gray-100) --- */
+.carnet-cours-skin .bg-gray-100 {
+  background: rgba(193,68,58,0.10) !important;
+  color: #C1443A !important;
+}
+.carnet-cours-skin .bg-gray-100 svg {
+  color: #C1443A !important;
+}
+.carnet-cours-skin .text-gray-700:where(.bg-gray-100 *, .w-8 *, .w-10 *) {
+  color: #C1443A !important;
+}
+
+/* --- Formula boxes (bg-gray-50 + border-l-4) --- */
+.carnet-cours-skin .bg-gray-50 {
+  background: rgba(255, 254, 248, 0.6) !important;
+  border-color: rgba(78,55,30,0.10) !important;
+}
+.carnet-cours-skin .bg-gray-50.border-l-4,
+.carnet-cours-skin [class*="border-l-4"] {
+  border-left-color: #C1443A !important;
+  background: rgba(251, 246, 234, 0.7) !important;
+}
+
+/* Variante pour les border-l-4 colorés (blue, green, purple, yellow, etc.) */
+.carnet-cours-skin [class*="border-l-4"][class*="border-blue"],
+.carnet-cours-skin [class*="border-l-4"][class*="border-green"],
+.carnet-cours-skin [class*="border-l-4"][class*="border-purple"],
+.carnet-cours-skin [class*="border-l-4"][class*="border-yellow"],
+.carnet-cours-skin [class*="border-l-4"][class*="border-red"],
+.carnet-cours-skin [class*="border-l-4"][class*="border-indigo"],
+.carnet-cours-skin [class*="border-l-4"][class*="border-orange"],
+.carnet-cours-skin [class*="border-l-4"][class*="border-gray"] {
+  border-left-color: #C1443A !important;
+}
+
+/* --- Remarques amber/yellow --- */
+.carnet-cours-skin .bg-amber-50,
+.carnet-cours-skin [class*="bg-amber"]:not([class*="bg-amber-500"]),
+.carnet-cours-skin [class*="bg-yellow-50"] {
+  background: rgba(255, 225, 120, 0.22) !important;
+  border-left-color: #C1443A !important;
+  border-color: rgba(193,68,58,0.4) !important;
+}
+.carnet-cours-skin .text-amber-800,
+.carnet-cours-skin .text-amber-700,
+.carnet-cours-skin .text-amber-900 {
+  color: #1F1714 !important;
+}
+
+/* --- Buttons blue → carnet --- */
+.carnet-cours-skin .bg-blue-600,
+.carnet-cours-skin [class*="bg-blue-600"] {
+  background-color: #1F1714 !important;
+  color: #FBF6EA !important;
+}
+.carnet-cours-skin .bg-blue-600:hover,
+.carnet-cours-skin [class*="hover\\:bg-blue-700"]:hover {
+  background-color: #C1443A !important;
+}
+
+/* Pills/badges blue */
+.carnet-cours-skin [class*="bg-blue-100"],
+.carnet-cours-skin [class*="bg-blue-50"] {
+  background: rgba(193,68,58,0.08) !important;
+}
+.carnet-cours-skin [class*="text-blue-700"],
+.carnet-cours-skin [class*="text-blue-600"],
+.carnet-cours-skin [class*="text-blue-800"],
+.carnet-cours-skin [class*="text-\\[\\#2D5BFF\\]"] {
+  color: #C1443A !important;
+}
+
+/* --- Text colors map --- */
+.carnet-cours-skin .text-gray-900 { color: #1F1714 !important; }
+.carnet-cours-skin .text-gray-800 { color: #1F1714 !important; }
+.carnet-cours-skin .text-gray-700 { color: #4A3D30 !important; }
+.carnet-cours-skin .text-gray-600 { color: #4A3D30 !important; }
+.carnet-cours-skin .text-gray-500 { color: #8A7864 !important; }
+.carnet-cours-skin .text-gray-400 { color: #8A7864 !important; }
+.carnet-cours-skin .text-slate-900 { color: #1F1714 !important; }
+.carnet-cours-skin .text-slate-800 { color: #1F1714 !important; }
+.carnet-cours-skin .text-slate-700 { color: #4A3D30 !important; }
+.carnet-cours-skin .text-slate-600 { color: #4A3D30 !important; }
+.carnet-cours-skin .text-slate-500 { color: #8A7864 !important; }
+
+/* --- Bg page legacy --- */
+.carnet-cours-skin .bg-\[\#EEF3FC\] {
+  background: transparent !important;
+}
+
+/* ============================================================
+   CARNET EXERCISES SKIN EXTENSION
+   Règles supplémentaires spécifiques aux pages d'exercices.
+   ============================================================ */
+
+/* --- Icônes pleines (bg-X-500/600 text-white) → carnet ink --- */
+.carnet-cours-skin [class*="bg-blue-500"]:not([class*="bg-blue-50"]):not([class*="bg-blue-500/"]),
+.carnet-cours-skin [class*="bg-purple-500"]:not([class*="bg-purple-50"]),
+.carnet-cours-skin [class*="bg-indigo-500"],
+.carnet-cours-skin [class*="bg-cyan-500"],
+.carnet-cours-skin [class*="bg-teal-500"],
+.carnet-cours-skin [class*="bg-emerald-500"],
+.carnet-cours-skin [class*="bg-orange-500"]:not([class*="bg-orange-500/"]),
+.carnet-cours-skin [class*="bg-yellow-500"],
+.carnet-cours-skin [class*="bg-red-500"]:not([class*="bg-red-500/"]),
+.carnet-cours-skin [class*="bg-rose-500"],
+.carnet-cours-skin [class*="bg-pink-500"],
+.carnet-cours-skin [class*="bg-violet-500"],
+.carnet-cours-skin [class*="bg-sky-500"],
+.carnet-cours-skin [class*="bg-fuchsia-500"] {
+  background-color: #1F1714 !important;
+  color: #FBF6EA !important;
+}
+.carnet-cours-skin [class*="bg-blue-500"] svg,
+.carnet-cours-skin [class*="bg-purple-500"] svg,
+.carnet-cours-skin [class*="bg-indigo-500"] svg,
+.carnet-cours-skin [class*="bg-cyan-500"] svg,
+.carnet-cours-skin [class*="bg-teal-500"] svg,
+.carnet-cours-skin [class*="bg-emerald-500"] svg,
+.carnet-cours-skin [class*="bg-orange-500"] svg,
+.carnet-cours-skin [class*="bg-yellow-500"] svg,
+.carnet-cours-skin [class*="bg-red-500"] svg,
+.carnet-cours-skin [class*="bg-rose-500"] svg,
+.carnet-cours-skin [class*="bg-pink-500"] svg,
+.carnet-cours-skin [class*="bg-violet-500"] svg,
+.carnet-cours-skin [class*="bg-sky-500"] svg,
+.carnet-cours-skin [class*="bg-fuchsia-500"] svg {
+  color: #FBF6EA !important;
+}
+
+/* --- Pills colorés (bg-X-100 text-X-600 rounded-full) - badges Exercice N --- */
+.carnet-cours-skin [class*="bg-purple-100"],
+.carnet-cours-skin [class*="bg-indigo-100"],
+.carnet-cours-skin [class*="bg-cyan-100"],
+.carnet-cours-skin [class*="bg-teal-100"],
+.carnet-cours-skin [class*="bg-emerald-100"],
+.carnet-cours-skin [class*="bg-orange-100"],
+.carnet-cours-skin [class*="bg-yellow-100"],
+.carnet-cours-skin [class*="bg-red-100"],
+.carnet-cours-skin [class*="bg-rose-100"],
+.carnet-cours-skin [class*="bg-pink-100"],
+.carnet-cours-skin [class*="bg-violet-100"],
+.carnet-cours-skin [class*="bg-sky-100"],
+.carnet-cours-skin [class*="bg-green-100"] {
+  background: rgba(193,68,58,0.10) !important;
+}
+
+/* --- Texte coloré sur pills/badges → carnet red --- */
+.carnet-cours-skin [class*="text-purple-600"],
+.carnet-cours-skin [class*="text-purple-700"],
+.carnet-cours-skin [class*="text-purple-500"],
+.carnet-cours-skin [class*="text-indigo-600"],
+.carnet-cours-skin [class*="text-indigo-700"],
+.carnet-cours-skin [class*="text-cyan-600"],
+.carnet-cours-skin [class*="text-cyan-700"],
+.carnet-cours-skin [class*="text-teal-600"],
+.carnet-cours-skin [class*="text-teal-700"],
+.carnet-cours-skin [class*="text-emerald-600"],
+.carnet-cours-skin [class*="text-emerald-700"],
+.carnet-cours-skin [class*="text-orange-600"],
+.carnet-cours-skin [class*="text-orange-700"],
+.carnet-cours-skin [class*="text-orange-500"],
+.carnet-cours-skin [class*="text-yellow-600"],
+.carnet-cours-skin [class*="text-yellow-700"],
+.carnet-cours-skin [class*="text-red-600"],
+.carnet-cours-skin [class*="text-red-700"],
+.carnet-cours-skin [class*="text-rose-600"],
+.carnet-cours-skin [class*="text-rose-700"],
+.carnet-cours-skin [class*="text-pink-600"],
+.carnet-cours-skin [class*="text-violet-600"],
+.carnet-cours-skin [class*="text-sky-600"],
+.carnet-cours-skin [class*="text-green-600"],
+.carnet-cours-skin [class*="text-green-700"],
+.carnet-cours-skin [class*="text-green-800"] {
+  color: #C1443A !important;
+}
+
+/* --- Cellules de tableau / encarts inline (bg-X-50) - sans border-l-4 --- */
+.carnet-cours-skin [class*="bg-blue-50"]:not([class*="border-l-4"]),
+.carnet-cours-skin [class*="bg-green-50"]:not([class*="border-l-4"]),
+.carnet-cours-skin [class*="bg-purple-50"]:not([class*="border-l-4"]),
+.carnet-cours-skin [class*="bg-indigo-50"]:not([class*="border-l-4"]),
+.carnet-cours-skin [class*="bg-cyan-50"]:not([class*="border-l-4"]),
+.carnet-cours-skin [class*="bg-teal-50"]:not([class*="border-l-4"]),
+.carnet-cours-skin [class*="bg-emerald-50"]:not([class*="border-l-4"]),
+.carnet-cours-skin [class*="bg-orange-50"]:not([class*="border-l-4"]),
+.carnet-cours-skin [class*="bg-red-50"]:not([class*="border-l-4"]),
+.carnet-cours-skin [class*="bg-rose-50"]:not([class*="border-l-4"]),
+.carnet-cours-skin [class*="bg-pink-50"]:not([class*="border-l-4"]),
+.carnet-cours-skin [class*="bg-violet-50"]:not([class*="border-l-4"]),
+.carnet-cours-skin [class*="bg-sky-50"]:not([class*="border-l-4"]) {
+  background: rgba(193,68,58,0.05) !important;
+}
+
+/* --- Encadrés résultats (border-2 border-X-200) - "Réponse finale" --- */
+.carnet-cours-skin [class*="border-2"][class*="border-green-200"],
+.carnet-cours-skin [class*="border-2"][class*="border-blue-200"],
+.carnet-cours-skin [class*="border-2"][class*="border-purple-200"],
+.carnet-cours-skin [class*="border-2"][class*="border-indigo-200"],
+.carnet-cours-skin [class*="border-2"][class*="border-orange-200"],
+.carnet-cours-skin [class*="border-2"][class*="border-red-200"],
+.carnet-cours-skin [class*="border-2"][class*="border-emerald-200"],
+.carnet-cours-skin [class*="border-2"][class*="border-teal-200"] {
+  border-color: rgba(193,68,58,0.35) !important;
+  background: rgba(193,68,58,0.05) !important;
+}
+
+/* --- Boutons solides bg-blue-600 (cas générique déjà couvert + variantes) --- */
+.carnet-cours-skin [class*="bg-blue-700"],
+.carnet-cours-skin [class*="hover\\:bg-blue-200"]:hover,
+.carnet-cours-skin [class*="hover\\:bg-blue-100"]:hover {
+  background-color: #C1443A !important;
+  color: #FBF6EA !important;
+}
+
+/* --- Hero gradient (bg-gradient-to-br from-blue-50 to-indigo-50) Card en-tête de page --- */
+.carnet-cours-skin [class*="bg-gradient-to-br"][class*="from-blue-50"],
+.carnet-cours-skin [class*="bg-gradient-to-br"][class*="from-indigo-50"],
+.carnet-cours-skin [class*="bg-gradient-to-br"][class*="from-purple-50"] {
+  background: #FFFEF8 !important;
+  border: 1px solid rgba(78,55,30,0.18) !important;
+  box-shadow: 0 1px 0 rgba(78,55,30,0.08), 0 8px 16px rgba(78,55,30,0.04) !important;
+  border-radius: 4px !important;
+}
+
+/* --- Titres bg-clip-text gradient → couleur carnet plate --- */
+.carnet-cours-skin [class*="bg-clip-text"][class*="text-transparent"] {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: #1F1714 !important;
+  color: #1F1714 !important;
+}
+
+/* --- LaTeX rendering keeps native colors --- */
+.carnet-cours-skin .katex,
+.carnet-cours-skin .katex * {
+  color: #1F1714 !important;
+}
+.carnet-cours-skin .bg-amber-50 .katex,
+.carnet-cours-skin .bg-amber-50 .katex *,
+.carnet-cours-skin [class*="bg-yellow"] .katex,
+.carnet-cours-skin [class*="bg-yellow"] .katex * {
+  color: #1F1714 !important;
+}
+
+/* --- Slate backgrounds (conclusion card, pill nav active state) --- */
+.carnet-cours-skin .bg-slate-50:not(nav .bg-slate-50) {
+  background: rgba(251, 246, 234, 0.7) !important;
+  border: 1px dashed rgba(78,55,30,0.18) !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+}
+.carnet-cours-skin .bg-slate-100 {
+  background: rgba(193,68,58,0.10) !important;
+}
+.carnet-cours-skin [class*="ring-slate-200"] {
+  --tw-ring-color: rgba(193,68,58,0.25) !important;
+}
+.carnet-cours-skin [class*="hover\\:bg-slate-50"]:hover {
+  background: rgba(193,68,58,0.06) !important;
+}
+
+/* ============================================================
+   CARNET MATH EXERCISES — design system polish
+   Renforce le rendu "cahier" des pages d'exercices de maths :
+   - DifficultyHeader : Lora serif + filet pointillé carnet
+   - ExerciseCard : badge numéro carnet, pill difficulté rouge
+   - Bloc correction : filet rouge, eyebrow majuscule
+   - Étoiles de difficulté : palette carnet (rouge ↔ jaune stabilo)
+   ============================================================ */
+
+/* --- Slate borders → carnet dashed --- */
+.carnet-cours-skin [class*="border-slate-100"],
+.carnet-cours-skin [class*="border-slate-200"],
+.carnet-cours-skin [class*="border-slate-300"],
+.carnet-cours-skin [class*="border-b"][class*="border-slate"],
+.carnet-cours-skin [class*="border-t"][class*="border-slate"] {
+  border-color: rgba(78,55,30,0.18) !important;
+}
+
+/* DifficultyHeader : la barre du bas devient pointillée rouge atténuée */
+.carnet-cours-skin [class*="border-b"][class*="border-slate-200"] {
+  border-bottom-style: dashed !important;
+  border-bottom-color: rgba(193,68,58,0.30) !important;
+}
+
+/* --- Slate text colors → carnet ink palette --- */
+.carnet-cours-skin .text-slate-400 { color: #8A7864 !important; }
+.carnet-cours-skin .text-slate-500 { color: #8A7864 !important; }
+.carnet-cours-skin .text-slate-600 { color: #4A3D30 !important; }
+.carnet-cours-skin .text-slate-700 { color: #4A3D30 !important; }
+.carnet-cours-skin .text-slate-800 { color: #1F1714 !important; }
+.carnet-cours-skin .text-slate-900 { color: #1F1714 !important; }
+
+/* --- Bloc de correction (border-l-2 + emerald/green) → filet rouge --- */
+.carnet-cours-skin [class*="border-l-2"][class*="border-emerald"],
+.carnet-cours-skin [class*="border-l-2"][class*="border-green"],
+.carnet-cours-skin [class*="border-l-4"][class*="border-emerald"],
+.carnet-cours-skin [class*="border-l-4"][class*="border-green"] {
+  border-left-width: 3px !important;
+  border-left-color: #C1443A !important;
+  background: rgba(255, 254, 248, 0.7) !important;
+}
+
+/* Titre "Solution détaillée" / "Corrigé détaillé" → eyebrow rouge */
+.carnet-cours-skin .text-emerald-800,
+.carnet-cours-skin .text-emerald-700,
+.carnet-cours-skin .text-green-800,
+.carnet-cours-skin .text-green-700 {
+  color: #C1443A !important;
+}
+
+/* --- Étoiles de difficulté (amber-400) → couleurs carnet --- */
+.carnet-cours-skin [class*="fill-amber-400"] {
+  fill: #C1443A !important;
+}
+.carnet-cours-skin [class*="text-amber-400"]:not(.bg-amber-50 *) {
+  color: #C1443A !important;
+}
+/* Étoiles vides (slate-200) restent grises atténuées */
+.carnet-cours-skin [class*="text-slate-200"] {
+  color: rgba(78,55,30,0.20) !important;
+}
+
+/* --- Lora serif sur les titres dans les ExerciseCards --- */
+.carnet-cours-skin h3,
+.carnet-cours-skin h4 {
+  font-family: 'Lora', Georgia, serif !important;
+  letter-spacing: -0.005em;
+}
+
+/* DifficultyHeader h2 plus typé carnet */
+.carnet-cours-skin h2 {
+  font-family: 'Lora', Georgia, serif !important;
+  letter-spacing: -0.01em;
+}
+
+/* --- Badge numéro de l'exercice (rounded-full bg-slate-50) --- */
+.carnet-cours-skin .rounded-full.bg-slate-50,
+.carnet-cours-skin [class*="rounded-full"][class*="bg-slate-50"] {
+  background: rgba(193,68,58,0.10) !important;
+  border-color: rgba(193,68,58,0.25) !important;
+  color: #C1443A !important;
+  font-family: 'Caveat', 'Bradley Hand', cursive !important;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+/* Pill difficulté (bg-slate-50 rounded-full) → eyebrow carnet rouge */
+.carnet-cours-skin span[class*="rounded-full"][class*="bg-slate-50"] {
+  background: transparent !important;
+  border: 1px dashed rgba(193,68,58,0.40) !important;
+  color: #C1443A !important;
+  font-family: 'Instrument Sans', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 10px !important;
+}
+
+/* --- Cards d'exercice : ring/hover/shadow plus carnet --- */
+.carnet-cours-skin .border-slate-200.shadow-sm,
+.carnet-cours-skin [class*="hover\\:shadow-md"] {
+  transition: all 0.25s ease !important;
+}
+.carnet-cours-skin [class*="hover\\:shadow-md"]:hover {
+  box-shadow: 0 1px 0 rgba(78,55,30,0.12), 0 12px 28px rgba(78,55,30,0.10) !important;
+  transform: translateY(-1px);
+}
+
+/* --- Texte de description (text-slate-700 leading-relaxed) → encre douce --- */
+.carnet-cours-skin .text-slate-700.leading-relaxed {
+  color: #4A3D30 !important;
+}
+
+/* --- DifficultyHeader: icône à gauche → encre + halo rouge --- */
+.carnet-cours-skin .bg-slate-50.rounded-lg.border.border-slate-200 {
+  background: rgba(193,68,58,0.08) !important;
+  border-color: rgba(193,68,58,0.25) !important;
+  color: #C1443A !important;
+}
+.carnet-cours-skin .bg-slate-50.rounded-lg.border.border-slate-200 svg {
+  color: #C1443A !important;
+}
+
+/* --- Conclusion card "Fin du chapitre" - italic en encre douce --- */
+.carnet-cours-skin .italic.font-medium.text-slate-600 {
+  font-family: 'Lora', Georgia, serif !important;
+  color: #4A3D30 !important;
+  font-style: italic !important;
+}
+
+/* --- Boutons "Afficher la correction" → carnet ink ghost --- */
+.carnet-cours-skin button[class*="text-slate-500"][class*="hover\\:text-slate-900"] {
+  color: #4A3D30 !important;
+  font-family: 'Instrument Sans', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em;
+}
+.carnet-cours-skin button[class*="text-slate-500"][class*="hover\\:text-slate-900"]:hover {
+  color: #C1443A !important;
+  background: rgba(193,68,58,0.06) !important;
+}
+
+/* --- Liens / boutons rouge sur fond clair (variante CTA) --- */
+.carnet-cours-skin .text-\[\#2D5BFF\],
+.carnet-cours-skin [class*="text-\\[\\#2D5BFF\\]"] {
+  color: #C1443A !important;
+}
+
+/* --- Fil d'ariane (breadcrumb) du template : style carnet eyebrow --- */
+.carnet-cours-skin nav.sticky .text-gray-900.font-bold {
+  color: #C1443A !important;
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+/* --- Pills de navigation cours/exercices/flashcards/quiz : actif --- */
+.carnet-cours-skin button[class*="bg-slate-100"][class*="text-slate-900"] {
+  background: #1F1714 !important;
+  color: #FBF6EA !important;
+  --tw-ring-color: rgba(78,55,30,0.18) !important;
+}
+.carnet-cours-skin button[class*="bg-slate-100"][class*="text-slate-900"] svg {
+  color: #FBF6EA !important;
+}
+
+/* --- Marges autour de la zone exercices (cohérence de respiration) --- */
+.carnet-cours-skin .container.mx-auto {
+  position: relative;
+}
+

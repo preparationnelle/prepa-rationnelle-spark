@@ -1,126 +1,135 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Target, FileText, MessageSquare, Clock, CheckCircle, AlertCircle, BookOpen, TrendingUp, Users, Lightbulb, Zap, Star, Award, Calendar, BarChart3, Brain, PenTool, Timer } from 'lucide-react';
+import {
+  ArrowLeft,
+  Target,
+  BookOpen,
+  TrendingUp,
+  Award,
+  Calendar,
+  Timer,
+} from 'lucide-react';
 
 const TravailAnnuelPage: React.FC = () => {
   const travailAnnuel = [
     {
-      title: "Septembre - Novembre : Acquisition des bases",
-      icon: <Calendar className="w-5 h-5" />,
-      color: "orange",
+      title: "Septembre — Novembre · Acquisition des bases",
+      icon: Calendar,
       objectifs: [
         "Maîtriser la méthodologie de base",
         "Développer les automatismes de lecture analytique",
-        "Apprendre à identifier les idées principales"
+        "Apprendre à identifier les idées principales",
       ],
       activites: [
         "2 synthèses par semaine sur des sujets simples",
         "Étude des corrigés types et analyse des erreurs",
-        "Mémorisation du vocabulaire spécifique de la synthèse"
+        "Mémorisation du vocabulaire spécifique de la synthèse",
       ],
       evaluation: "Test de validation : réussir 3 synthèses sur 5 avec méthode correcte",
       outils: [
         "Annales de l'année précédente (niveau lycée)",
         "Sujets d'entraînement progressifs",
-        "Chronomètre pour respecter le timing"
-      ]
+        "Chronomètre pour respecter le timing",
+      ],
     },
     {
-      title: "Décembre - Janvier : Perfectionnement technique",
-      icon: <TrendingUp className="w-5 h-5" />,
-      color: "blue",
+      title: "Décembre — Janvier · Perfectionnement technique",
+      icon: TrendingUp,
       objectifs: [
         "Améliorer la qualité de l'expression écrite",
         "Maîtriser la gestion du temps",
-        "Développer la capacité de synthèse"
+        "Développer la capacité de synthèse",
       ],
       activites: [
         "3 synthèses par semaine avec chronométrage",
         "Travail sur la reformulation précise",
-        "Entraînement aux différents types de sujets"
+        "Entraînement aux différents types de sujets",
       ],
       evaluation: "Test intermédiaire : synthèse complète en 4h avec corrigé détaillé",
       outils: [
         "Sujets de concours passés",
         "Grille d'auto-évaluation",
-        "Enregistrement audio des phases"
-      ]
+        "Enregistrement audio des phases",
+      ],
     },
     {
-      title: "Février - Mars : Préparation intensive",
-      icon: <Timer className="w-5 h-5" />,
-      color: "green",
+      title: "Février — Mars · Préparation intensive",
+      icon: Timer,
       objectifs: [
         "Simuler les conditions réelles d'examen",
         "Maîtriser tous les types de sujets",
-        "Optimiser la gestion du stress"
+        "Optimiser la gestion du stress",
       ],
       activites: [
-        "1 DS blanc par semaine complet",
+        "1 DS blanc complet par semaine",
         "Analyse comparative des performances",
-        "Travail sur les points faibles identifiés"
+        "Travail sur les points faibles identifiés",
       ],
       evaluation: "Évaluation finale : moyenne ≥ 14/20 sur 3 DS blancs consécutifs",
       outils: [
         "Sujets de concours récents",
         "Caméra pour analyser les gestes",
-        "Journal de progression détaillé"
-      ]
+        "Journal de progression détaillé",
+      ],
     },
     {
-      title: "Avril - Concours : Maintien du niveau",
-      icon: <Award className="w-5 h-5" />,
-      color: "purple",
+      title: "Avril — Concours · Maintien du niveau",
+      icon: Award,
       objectifs: [
         "Préserver les acquis",
         "Gérer le stress des concours",
-        "Maintenir la confiance"
+        "Maintenir la confiance",
       ],
       activites: [
         "Révision des méthodes et automatismes",
         "Entraînement léger pour maintenir le rythme",
-        "Préparation mentale et gestion du stress"
+        "Préparation mentale et gestion du stress",
       ],
       evaluation: "Objectif : maintenir le niveau acquis lors des épreuves",
       outils: [
         "Fiches de révision synthétiques",
         "Exercices de respiration",
-        "Visualisation mentale positive"
-      ]
-    }
+        "Visualisation mentale positive",
+      ],
+    },
   ];
 
   const planningHebdomadaire = [
     {
-      periode: "Septembre-Novembre",
-      lundi: "Lecture analytique (1h)",
-      mardi: "Vocabulaire synthèse (45min)",
-      mercredi: "Synthèse courte (2h)",
-      jeudi: "Correction & analyse (1h)",
-      vendredi: "Révision méthodes (30min)",
-      weekend: "Synthèse complète (3h)"
+      periode: "Septembre — Novembre",
+      jours: [
+        { jour: "Lundi", task: "Lecture analytique (1h)" },
+        { jour: "Mardi", task: "Vocabulaire synthèse (45 min)" },
+        { jour: "Mercredi", task: "Synthèse courte (2h)" },
+        { jour: "Jeudi", task: "Correction & analyse (1h)" },
+        { jour: "Vendredi", task: "Révision méthodes (30 min)" },
+        { jour: "Week-end", task: "Synthèse complète (3h)" },
+      ],
     },
     {
-      periode: "Décembre-Janvier",
-      lundi: "Lecture rapide (45min)",
-      mardi: "Expression écrite (1h)",
-      mercredi: "Synthèse chronométrée (3h)",
-      jeudi: "Auto-correction (1h30)",
-      vendredi: "Types de sujets (1h)",
-      weekend: "DS blanc partiel (4h)"
+      periode: "Décembre — Janvier",
+      jours: [
+        { jour: "Lundi", task: "Lecture rapide (45 min)" },
+        { jour: "Mardi", task: "Expression écrite (1h)" },
+        { jour: "Mercredi", task: "Synthèse chronométrée (3h)" },
+        { jour: "Jeudi", task: "Auto-correction (1h30)" },
+        { jour: "Vendredi", task: "Types de sujets (1h)" },
+        { jour: "Week-end", task: "DS blanc partiel (4h)" },
+      ],
     },
     {
-      periode: "Février-Mars",
-      lundi: "Simulation conditions (2h)",
-      mardi: "Analyse erreurs (1h)",
-      mercredi: "DS blanc complet (4h)",
-      jeudi: "Débriefing détaillé (2h)",
-      vendredi: "Travail points faibles (1h30)",
-      weekend: "Révision & détente (3h)"
-    }
+      periode: "Février — Mars",
+      jours: [
+        { jour: "Lundi", task: "Simulation conditions (2h)" },
+        { jour: "Mardi", task: "Analyse erreurs (1h)" },
+        { jour: "Mercredi", task: "DS blanc complet (4h)" },
+        { jour: "Jeudi", task: "Débriefing détaillé (2h)" },
+        { jour: "Vendredi", task: "Travail points faibles (1h30)" },
+        { jour: "Week-end", task: "Révision & détente (3h)" },
+      ],
+    },
   ];
 
   const ressourcesRecommandees = [
@@ -130,8 +139,8 @@ const TravailAnnuelPage: React.FC = () => {
         "Annales BCE des 5 dernières années",
         "Sujets ECRICOME corrigés",
         "Banque de sujets thématiques",
-        "Sujets d'entraînement progressifs"
-      ]
+        "Sujets d'entraînement progressifs",
+      ],
     },
     {
       categorie: "Outils pédagogiques",
@@ -139,8 +148,8 @@ const TravailAnnuelPage: React.FC = () => {
         "Chronomètre précis pour les phases",
         "Grilles d'évaluation détaillées",
         "Modèles de synthèses excellentes",
-        "Fiches de vocabulaire spécialisé"
-      ]
+        "Fiches de vocabulaire spécialisé",
+      ],
     },
     {
       categorie: "Matériel technique",
@@ -148,253 +157,354 @@ const TravailAnnuelPage: React.FC = () => {
         "Copies doubles pour brouillon",
         "Stylo rouge pour annotations",
         "Marqueurs pour soulignements",
-        "Classeur d'organisation"
-      ]
-    }
+        "Classeur d'organisation",
+      ],
+    },
+  ];
+
+  const motivation = [
+    {
+      titre: "Célébrer les progrès",
+      items: [
+        "Noter chaque amélioration",
+        "Comparer avec les premières synthèses",
+        "Valoriser les efforts fournis",
+        "Se récompenser régulièrement",
+      ],
+    },
+    {
+      titre: "Fixer des objectifs réalistes",
+      items: [
+        "Objectifs quotidiens atteignables",
+        "Progression par paliers",
+        "Ajustement selon les résultats",
+        "Focus sur le processus",
+      ],
+    },
   ];
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
-        {/* Header */}
-        <div className="mb-8">
-          <div className="flex items-center gap-4 mb-6">
-            <Link to="/formation/synthese-texte">
-              <Button variant="outline" size="sm" className="flex items-center gap-2">
-                <ArrowLeft className="w-4 h-4" />
-                Retour à la formation
-              </Button>
+      {/* Sticky Breadcrumb */}
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-pr-gray-light">
+        <div className="container mx-auto px-4 py-2.5">
+          <div className="flex items-center text-xs text-pr-gray-mid font-dm-sans">
+            <Link to="/" className="hover:text-pr-black transition-colors">
+              Accueil
             </Link>
+            <span className="mx-2 text-pr-gray-light">›</span>
+            <Link to="/formation/synthese-texte" className="hover:text-pr-black transition-colors">
+              Synthèse de Texte
+            </Link>
+            <span className="mx-2 text-pr-gray-light">›</span>
+            <span className="text-pr-black font-medium">Travail annuel</span>
           </div>
+        </div>
+      </nav>
 
-          <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">
-              Organisation du Travail Annuel
-            </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-4">
-              Planning complet sur 9 mois pour maîtriser l'épreuve de synthèse de texte
-            </p>
-            <div className="text-center">
-              <p className="text-sm font-medium text-gray-700">
-                Durée : Septembre → Avril (9 mois)
-              </p>
-              <p className="text-sm text-gray-600">
-                Fréquence : 8-12h/semaine selon la période
-              </p>
-            </div>
+      <div className="container mx-auto px-4 py-12 max-w-4xl">
+        {/* Back link */}
+        <div className="mb-8">
+          <Link to="/formation/synthese-texte">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="font-dm-sans text-pr-gray-dark hover:text-pr-black hover:bg-pr-gray-bg gap-2 px-2"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Retour à la formation
+            </Button>
+          </Link>
+        </div>
+
+        {/* Header */}
+        <div className="text-center mb-14">
+          <span className="text-[10px] font-dm-sans font-semibold uppercase tracking-[0.18em] text-pr-orange-dark bg-pr-orange-pale px-3 py-1.5 rounded-full">
+            Planning · 9 mois
+          </span>
+          <h1 className="font-dm-serif text-4xl md:text-5xl text-pr-black mt-6 mb-5 leading-tight">
+            Organisation du travail annuel
+          </h1>
+          <div className="w-16 h-[3px] bg-pr-orange mx-auto mb-6" />
+          <p className="font-dm-sans text-lg text-pr-gray-dark max-w-2xl mx-auto leading-relaxed">
+            Planning complet sur 9 mois pour maîtriser l'épreuve de synthèse de texte.
+          </p>
+          <div className="mt-6 flex justify-center gap-6 text-sm font-dm-sans text-pr-gray-mid">
+            <span>Septembre → Avril</span>
+            <span className="text-pr-gray-light">·</span>
+            <span>8 à 12 h / semaine</span>
           </div>
         </div>
 
-        {/* Périodes de l'année */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">
-            📅 Planning annuel détaillé
-          </h2>
+        {/* Périodes */}
+        <section className="mb-14">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-1 h-7 bg-pr-orange rounded-full" />
+            <h2 className="font-dm-serif text-2xl text-pr-black">
+              Planning annuel détaillé
+            </h2>
+          </div>
 
-          <div className="space-y-8">
-            {travailAnnuel.map((periode, index) => (
-              <div key={index} className="border border-gray-200 rounded-lg p-6 space-y-4">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xl font-semibold text-gray-900">
-                    {periode.title}
-                  </h3>
-                  <Badge variant="outline" className="text-gray-600">
-                    {periode.objectifs.length} objectifs
-                  </Badge>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-2">🎯 Objectifs :</h4>
-                    <div className="space-y-1">
-                      {periode.objectifs.map((objectif, idx) => (
-                        <div key={idx} className="flex items-center gap-3">
-                          <div className="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></div>
-                          <span className="text-sm text-gray-700">{objectif}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-2">📝 Activités :</h4>
-                    <div className="space-y-1">
-                      {periode.activites.map((activite, idx) => (
-                        <div key={idx} className="flex items-center gap-3">
-                          <div className="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></div>
-                          <span className="text-sm text-gray-700">{activite}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">🛠️ Outils recommandés :</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-                    {periode.outils.map((outil, idx) => (
-                      <div key={idx} className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-purple-400 flex-shrink-0"></div>
-                        <span className="text-sm text-gray-700">{outil}</span>
+          <div className="space-y-5">
+            {travailAnnuel.map((periode, index) => {
+              const Icon = periode.icon;
+              return (
+                <article
+                  key={index}
+                  className="border border-pr-gray-light rounded-lg p-7"
+                >
+                  <header className="flex items-center justify-between mb-6 gap-4 flex-wrap">
+                    <div className="flex items-center gap-4">
+                      <div className="w-11 h-11 bg-pr-orange-pale rounded-lg flex items-center justify-center">
+                        <Icon className="w-5 h-5 text-pr-orange-dark" strokeWidth={1.5} />
                       </div>
-                    ))}
+                      <h3 className="font-dm-serif text-xl text-pr-black leading-tight">
+                        {periode.title}
+                      </h3>
+                    </div>
+                    <Badge className="bg-pr-orange-pale text-pr-orange-dark hover:bg-pr-orange-pale font-dm-sans text-[10px] uppercase tracking-wider">
+                      {periode.objectifs.length} objectifs
+                    </Badge>
+                  </header>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-5">
+                    <div>
+                      <h4 className="font-dm-sans text-[10px] uppercase tracking-wider font-semibold text-pr-orange-dark mb-3">
+                        Objectifs
+                      </h4>
+                      <ul className="space-y-2">
+                        {periode.objectifs.map((objectif, idx) => (
+                          <li
+                            key={idx}
+                            className="flex items-start gap-2.5 font-dm-sans text-sm text-pr-gray-dark"
+                          >
+                            <span className="text-pr-orange mt-0.5">→</span>
+                            <span>{objectif}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 className="font-dm-sans text-[10px] uppercase tracking-wider font-semibold text-pr-orange-dark mb-3">
+                        Activités
+                      </h4>
+                      <ul className="space-y-2">
+                        {periode.activites.map((activite, idx) => (
+                          <li
+                            key={idx}
+                            className="flex items-start gap-2.5 font-dm-sans text-sm text-pr-gray-dark"
+                          >
+                            <span className="text-pr-orange mt-0.5">→</span>
+                            <span>{activite}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                </div>
 
-                <div className="border-l-4 border-orange-400 pl-4 py-2">
-                  <p className="text-gray-800 font-medium text-sm">
-                    📊 Évaluation : {periode.evaluation}
-                  </p>
-                </div>
-              </div>
-            ))}
+                  <div className="mb-5">
+                    <h4 className="font-dm-sans text-[10px] uppercase tracking-wider font-semibold text-pr-orange-dark mb-3">
+                      Outils recommandés
+                    </h4>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+                      {periode.outils.map((outil, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-start gap-2.5 font-dm-sans text-sm text-pr-gray-dark"
+                        >
+                          <span className="text-pr-orange mt-0.5">→</span>
+                          <span>{outil}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="border-l-[3px] border-pr-orange bg-pr-orange-pale/40 rounded-r px-4 py-3">
+                    <p className="font-dm-sans text-sm text-pr-gray-dark">
+                      <strong className="text-pr-orange-dark">Évaluation —</strong> {periode.evaluation}
+                    </p>
+                  </div>
+                </article>
+              );
+            })}
           </div>
-        </div>
+        </section>
 
-        {/* Planning hebdomadaire */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">
-            📋 Planning hebdomadaire par période
-          </h2>
+        {/* Planning hebdo */}
+        <section className="mb-14">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-1 h-7 bg-pr-orange rounded-full" />
+            <h2 className="font-dm-serif text-2xl text-pr-black">
+              Planning hebdomadaire par période
+            </h2>
+          </div>
 
-          <div className="space-y-6">
+          <div className="space-y-5">
             {planningHebdomadaire.map((periode, index) => (
-              <div key={index} className="border border-gray-200 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">{periode.periode}</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  <div className="space-y-2">
-                    <div className="font-medium text-gray-800">Lundi</div>
-                    <div className="text-sm text-gray-600">{periode.lundi}</div>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="font-medium text-gray-800">Mardi</div>
-                    <div className="text-sm text-gray-600">{periode.mardi}</div>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="font-medium text-gray-800">Mercredi</div>
-                    <div className="text-sm text-gray-600">{periode.mercredi}</div>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="font-medium text-gray-800">Jeudi</div>
-                    <div className="text-sm text-gray-600">{periode.jeudi}</div>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="font-medium text-gray-800">Vendredi</div>
-                    <div className="text-sm text-gray-600">{periode.vendredi}</div>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="font-medium text-gray-800">Week-end</div>
-                    <div className="text-sm text-gray-600">{periode.weekend}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Ressources recommandées */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">
-            📚 Ressources recommandées
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {ressourcesRecommandees.map((categorie, index) => (
-              <div key={index} className="border border-gray-200 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">{categorie.categorie}</h3>
-                <div className="space-y-2">
-                  {categorie.ressources.map((ressource, idx) => (
-                    <div key={idx} className="flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></div>
-                      <span className="text-sm text-gray-700">{ressource}</span>
+              <div
+                key={index}
+                className="border border-pr-gray-light rounded-lg p-6"
+              >
+                <h3 className="font-dm-serif text-lg text-pr-black mb-5">
+                  {periode.periode}
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {periode.jours.map((jour) => (
+                    <div
+                      key={jour.jour}
+                      className="bg-pr-gray-bg/50 border border-pr-gray-light/60 rounded-md px-4 py-3"
+                    >
+                      <div className="font-dm-sans text-[10px] uppercase tracking-wider font-semibold text-pr-orange-dark mb-1">
+                        {jour.jour}
+                      </div>
+                      <div className="font-dm-sans text-sm text-pr-gray-dark">
+                        {jour.task}
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* Suivi de progression */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">
-            📈 Suivi de progression
-          </h2>
+        {/* Ressources */}
+        <section className="mb-14">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-1 h-7 bg-pr-orange rounded-full" />
+            <h2 className="font-dm-serif text-2xl text-pr-black">
+              Ressources recommandées
+            </h2>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="border border-gray-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">📝 Journal de bord</h3>
-              <div className="space-y-2 text-sm text-gray-600">
-                <p>• Date et durée de chaque séance</p>
-                <p>• Sujets travaillés</p>
-                <p>• Points forts et difficultés rencontrées</p>
-                <p>• Objectifs pour la séance suivante</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {ressourcesRecommandees.map((categorie, index) => (
+              <div
+                key={index}
+                className="border border-pr-gray-light rounded-lg p-6"
+              >
+                <h3 className="font-dm-sans font-semibold text-pr-black mb-4 text-sm uppercase tracking-wider">
+                  {categorie.categorie}
+                </h3>
+                <ul className="space-y-2">
+                  {categorie.ressources.map((ressource, idx) => (
+                    <li
+                      key={idx}
+                      className="flex items-start gap-2.5 font-dm-sans text-sm text-pr-gray-dark"
+                    >
+                      <span className="text-pr-orange mt-0.5">→</span>
+                      <span>{ressource}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Suivi */}
+        <section className="mb-14">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-1 h-7 bg-pr-orange rounded-full" />
+            <h2 className="font-dm-serif text-2xl text-pr-black">
+              Suivi de progression
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="border border-pr-gray-light rounded-lg p-6">
+              <h3 className="font-dm-sans font-semibold text-pr-black mb-4">
+                Journal de bord
+              </h3>
+              <ul className="space-y-2 font-dm-sans text-sm text-pr-gray-dark">
+                <li className="flex items-start gap-2.5"><span className="text-pr-orange mt-0.5">→</span><span>Date et durée de chaque séance</span></li>
+                <li className="flex items-start gap-2.5"><span className="text-pr-orange mt-0.5">→</span><span>Sujets travaillés</span></li>
+                <li className="flex items-start gap-2.5"><span className="text-pr-orange mt-0.5">→</span><span>Points forts et difficultés rencontrées</span></li>
+                <li className="flex items-start gap-2.5"><span className="text-pr-orange mt-0.5">→</span><span>Objectifs pour la séance suivante</span></li>
+              </ul>
             </div>
 
-            <div className="border border-gray-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">📊 Métriques à suivre</h3>
-              <div className="space-y-2 text-sm text-gray-600">
-                <p>• Temps moyen par synthèse</p>
-                <p>• Nombre de mots respecté</p>
-                <p>• Qualité de la structure</p>
-                <p>• Fidélité aux textes sources</p>
-              </div>
+            <div className="border border-pr-gray-light rounded-lg p-6">
+              <h3 className="font-dm-sans font-semibold text-pr-black mb-4">
+                Métriques à suivre
+              </h3>
+              <ul className="space-y-2 font-dm-sans text-sm text-pr-gray-dark">
+                <li className="flex items-start gap-2.5"><span className="text-pr-orange mt-0.5">→</span><span>Temps moyen par synthèse</span></li>
+                <li className="flex items-start gap-2.5"><span className="text-pr-orange mt-0.5">→</span><span>Nombre de mots respecté</span></li>
+                <li className="flex items-start gap-2.5"><span className="text-pr-orange mt-0.5">→</span><span>Qualité de la structure</span></li>
+                <li className="flex items-start gap-2.5"><span className="text-pr-orange mt-0.5">→</span><span>Fidélité aux textes sources</span></li>
+              </ul>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Conseils pour la motivation */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">
-            💪 Maintenir la motivation
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="border border-green-200 bg-green-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-green-800 mb-3">✅ Célébrer les progrès</h3>
-              <div className="space-y-2 text-sm text-green-700">
-                <p>• Noter chaque amélioration</p>
-                <p>• Comparer avec les premières synthèses</p>
-                <p>• Valoriser les efforts fournis</p>
-                <p>• Se récompenser régulièrement</p>
-              </div>
-            </div>
-
-            <div className="border border-blue-200 bg-blue-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-blue-800 mb-3">🎯 Fixer des objectifs réalistes</h3>
-              <div className="space-y-2 text-sm text-blue-700">
-                <p>• Objectifs quotidiens atteignables</p>
-                <p>• Progression par paliers</p>
-                <p>• Ajustement selon les résultats</p>
-                <p>• Focus sur le processus</p>
-              </div>
-            </div>
+        {/* Motivation */}
+        <section className="mb-14">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-1 h-7 bg-pr-orange rounded-full" />
+            <h2 className="font-dm-serif text-2xl text-pr-black">
+              Maintenir la motivation
+            </h2>
           </div>
-        </div>
 
-        {/* Call to action */}
-        <div className="border border-orange-200 rounded-lg p-6 mb-8">
-          <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Prêt à commencer votre planning annuel ?</h3>
-          <p className="text-gray-700 mb-6 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {motivation.map((bloc, index) => (
+              <div
+                key={index}
+                className="border border-pr-gray-light rounded-lg p-6"
+              >
+                <h3 className="font-dm-sans font-semibold text-pr-black mb-4">
+                  {bloc.titre}
+                </h3>
+                <ul className="space-y-2 font-dm-sans text-sm text-pr-gray-dark">
+                  {bloc.items.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5">
+                      <span className="text-pr-orange mt-0.5">→</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* CTA */}
+        <div className="bg-pr-gray-bg border border-pr-gray-light rounded-lg p-10 text-center mb-10">
+          <h3 className="font-dm-serif text-2xl text-pr-black mb-3">
+            Prêt à commencer votre planning&nbsp;?
+          </h3>
+          <div className="w-12 h-[2px] bg-pr-orange mx-auto mb-4" />
+          <p className="font-dm-sans text-pr-gray-dark mb-6 max-w-xl mx-auto leading-relaxed">
             Cette organisation structurée vous garantit une progression régulière et efficace tout au long de l'année.
           </p>
-          <div className="flex justify-center gap-4">
-            <Button variant="outline" className="flex items-center gap-2">
-              <Target className="w-4 h-4" />
-              Voir la méthode détaillée
-            </Button>
-            <Button variant="outline" className="flex items-center gap-2">
-              <BookOpen className="w-4 h-4" />
-              Accéder aux ressources
-            </Button>
+          <div className="flex justify-center gap-3 flex-wrap">
+            <Link to="/formation/synthese-texte/methode">
+              <Button
+                variant="outline"
+                className="font-dm-sans border-pr-gray-light text-pr-gray-dark hover:bg-white hover:border-pr-orange hover:text-pr-orange-dark gap-2"
+              >
+                <Target className="w-4 h-4" />
+                Voir la méthode
+              </Button>
+            </Link>
+            <Link to="/formation/synthese-texte/ressources">
+              <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white font-dm-sans gap-2">
+                <BookOpen className="w-4 h-4" />
+                Accéder aux ressources
+              </Button>
+            </Link>
           </div>
         </div>
 
         {/* Navigation */}
         <div className="flex justify-center">
           <Link to="/formation/synthese-texte">
-            <Button variant="outline" size="lg" className="flex items-center gap-2">
+            <Button
+              variant="ghost"
+              className="font-dm-sans text-pr-gray-dark hover:text-pr-black hover:bg-pr-gray-bg gap-2"
+            >
               <ArrowLeft className="w-4 h-4" />
               Retour à la formation synthèse de texte
             </Button>

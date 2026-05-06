@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Calculator, CheckCircle, Calendar, Star, Sparkles, HelpCircle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { TrendingUp, Target, CheckCircle, Play, ChevronLeft, ChevronRight, Calculator, ArrowLeft, Code, BookOpen, ChevronDown, ChevronUp, Trophy, Star, HelpCircle, Eye, EyeOff, Sparkles, Calendar } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 import { HeroContactForm } from '@/components/HeroContactForm';
@@ -19,6 +17,20 @@ import {
 import { usePythonProgress } from '@/hooks/usePythonProgress';
 import PythonCodeEditor, { EvaluationResult } from '@/components/python/PythonCodeEditor';
 import CodeEvaluationResult from '@/components/python/CodeEvaluationResult';
+import {
+  PythonExerciseHero,
+  PythonExerciseTopBar,
+  PythonExerciseDetailHeader,
+  PythonExerciseFooterNav,
+  PythonStatementCard,
+  PythonCorrectionToggle,
+  PythonCorrectionPanel,
+  PythonCodeBlock,
+  PythonExerciseGrid,
+  PythonQCMLauncher,
+  PythonSectionHeading,
+} from '@/components/formation/python/PythonExercisePage';
+import PythonQCMPanel from '@/components/formation/python/PythonQCMPanel';
 
 const PythonAnalyseExercicesPage = () => {
   const [searchParams] = useSearchParams();
@@ -588,403 +600,105 @@ print(f"Erreur absolue : {abs(approx - exact)}")
 
   return (
     <PythonModuleLayout>
-      <header className="text-center mb-12 max-w-2xl mx-auto">
-        <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-pr-orange-pale border border-pr-orange-soft/60">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark">
-            Module 2 · Exercices
-          </span>
-        </div>
-        <h1 className="font-dm-serif text-4xl md:text-5xl text-pr-black tracking-tight leading-tight mb-4">
-          Exercices · <span className="text-pr-orange">Analyse</span>
-        </h1>
-        <div className="flex justify-center mb-4">
-          <div className="h-[2px] w-14 bg-pr-orange" />
-        </div>
-        <p className="text-lg text-pr-gray-dark/80">
-          Exercices pratiques sur l'analyse numérique avec Python
-        </p>
-      </header>
-
       {!showQCM && !selectedExercise && (
         <>
-          {/* Section QCM */}
-          <Card className="mb-8 hover:shadow-lg transition-shadow cursor-pointer border-2 border-pr-orange-soft hover:border-pr-orange-soft" onClick={() => setShowQCM(true)}>
-            <CardHeader className="bg-pr-orange-pale">
-              <CardTitle className="flex items-center gap-3">
-                <Trophy className="h-8 w-8 text-pr-orange" />
-                <div>
-                  <h2 className="text-2xl text-pr-orange-dark">QCM d'évaluation</h2>
-                  <p className="text-sm text-pr-orange mt-1">Testez vos connaissances en analyse numérique</p>
-                </div>
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="pt-4">
-              <div className="flex items-center justify-between">
-                <p className="text-pr-orange">20 questions pour évaluer votre niveau</p>
-                <Button variant="outline" className="flex items-center gap-2 border-pr-orange-soft text-pr-orange hover:bg-pr-orange-pale">
-                  <Play className="h-4 w-4" />
-                  Commencer le QCM
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          <PythonExerciseHero
+            moduleLabel="Module 2 · Exercices"
+            title={<>Exercices · <span className="text-pr-orange">Analyse numérique</span></>}
+            subtitle="Suites, calcul numérique et fonctions : implémentez des algorithmes d'analyse en Python."
+            annotation={"↗ ici, ça\ndevient sérieux"}
+          />
 
-          <div className="mb-6 p-4 bg-pr-orange-pale rounded-lg border border-pr-orange-soft">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="space-y-2">
-                <Badge variant="outline" className="bg-pr-orange-pale text-pr-orange-dark border-pr-orange-soft">Suites numériques</Badge>
-                <p className="text-sm text-pr-orange">
-                  Étudier la convergence et les propriétés des suites
-                </p>
-              </div>
-              <div className="space-y-2">
-                <Badge variant="outline" className="bg-pr-orange-pale text-pr-orange-dark border-pr-orange-soft">Calcul numérique</Badge>
-                <p className="text-sm text-pr-orange">
-                  Implémenter des algorithmes de calcul numérique
-                </p>
-              </div>
-              <div className="space-y-2">
-                <Badge variant="outline" className="bg-pr-orange-pale text-pr-orange-dark border-pr-orange-soft">Fonctions et limites</Badge>
-                <p className="text-sm text-pr-orange">
-                  Approximations et calculs de fonctions
-                </p>
-              </div>
-            </div>
-          </div>
+          <PythonQCMLauncher
+            description="Testez vos connaissances en analyse numérique"
+            onLaunch={() => setShowQCM(true)}
+          />
 
-          {/* Grille d'exercices */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {exercises.map((exercise) => (
-              <Card
-                key={exercise.id}
-                className="group relative cursor-pointer bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 border border-gray-100 hover:border-pr-orange-pale hover:-translate-y-1 h-full flex flex-col overflow-hidden"
-                onClick={() => setSelectedExercise(exercise.id)}
-              >
-                <CardHeader className="flex-shrink-0 pb-2">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center group-hover:bg-pr-orange group-hover:text-white transition-all duration-300 text-gray-400">
-                      <Calculator className="h-6 w-6" />
-                    </div>
-                    <Badge variant="secondary" className="bg-gray-50 text-gray-600 border border-gray-100 font-medium px-3 py-1 rounded-full">
-                      {exercise.difficulty}
-                    </Badge>
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold tracking-wider text-pr-orange uppercase mb-1 opacity-80">
-                      Exercice {exercise.id}
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-pr-orange transition-colors leading-tight">
-                      {exercise.title.includes(' - ') ? exercise.title.split(' - ').slice(1).join(' - ') : exercise.title}
-                    </h3>
-                  </div>
-                </CardHeader>
+          <PythonSectionHeading
+            label="Liste"
+            title="Exercices du module"
+            className="mt-12"
+          />
 
-                <CardContent className="flex-grow flex flex-col pt-0">
-                  <p className="text-gray-500 text-sm leading-relaxed mb-6 mt-2 flex-grow line-clamp-3">
-                    {exercise.description}
-                  </p>
-                  <div className="mt-auto">
-                    <Button className="w-full h-11 bg-gray-50 text-gray-900 border border-gray-200 hover:bg-pr-orange hover:text-white hover:border-transparent rounded-xl font-semibold transition-all duration-300 flex items-center justify-between px-4 group-hover:shadow-lg group-hover:shadow-blue-500/20">
-                      <span>Commencer</span>
-                      <Play className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <PythonExerciseGrid
+            exercises={exercises.map((ex) => ({
+              id: ex.id,
+              title: ex.title,
+              description: ex.description,
+              difficulty: ex.difficulty,
+            }))}
+            onSelect={setSelectedExercise}
+          />
         </>
       )}
 
       {showQCM && (
-        <>
-          <Button
-            variant="outline"
-            size="sm"
-            className="flex items-center gap-2 mb-6"
-            onClick={() => {
-              setShowQCM(false);
-              setQcmSubmitted(false);
-              setQcmAnswers({});
-              setQcmScore(null);
-            }}
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Retour aux exercices
-          </Button>
-
-          <Card className="mb-8 border-none bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[24px] overflow-hidden">
-            <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-dark/50 p-6 border-b border-pr-orange-pale/50">
-              <div className="flex items-center gap-4">
-                <div className="p-3 bg-white rounded-xl shadow-sm border border-pr-orange-pale">
-                  <HelpCircle className="h-6 w-6 text-pr-orange" />
-                </div>
-                <div>
-                  <h2 className="text-xl font-bold text-gray-900">QCM d'évaluation - Testez vos connaissances</h2>
-                  <p className="text-sm text-pr-orange/80 font-medium mt-1">Répondez aux 20 questions pour évaluer votre niveau</p>
-                </div>
-              </div>
-            </div>
-            <CardContent className="p-8">
-              {!qcmSubmitted ? (
-                <div className="space-y-8">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <span className="w-2 h-2 rounded-full bg-pr-orange animate-pulse" />
-                      En cours - Questions à choix multiples
-                    </div>
-                    <Badge variant="outline" className="bg-pr-orange-pale text-pr-orange-dark border-pr-orange-soft px-4 py-1.5 rounded-full font-semibold">
-                      {Object.keys(qcmAnswers).length}/20 répondues
-                    </Badge>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {qcmQuestions.map((question, index) => (
-                      <Card key={question.id} className="border border-pr-orange-pale bg-pr-orange-pale/30 hover:bg-pr-orange-pale/60 hover:border-pr-orange-soft hover:shadow-md transition-all duration-300 rounded-xl group">
-                        <CardContent className="pt-6">
-                          <div className="flex items-center justify-between mb-4">
-                            <Badge variant="outline" className="bg-white text-pr-orange text-xs font-bold border-pr-orange-soft shadow-sm group-hover:border-pr-orange-soft transition-colors">
-                              Q{question.id}
-                            </Badge>
-                          </div>
-                          <p className="mb-6 text-gray-800 font-medium leading-relaxed min-h-[3rem]">{question.question}</p>
-                          <div className="space-y-3">
-                            {question.options.map((option, optIndex) => (
-                              <label key={optIndex} className="flex items-center gap-3 p-3 rounded-lg hover:bg-pr-orange-pale/50 cursor-pointer border border-transparent hover:border-pr-orange-soft transition-all duration-200">
-                                <div className="relative flex items-center justify-center w-5 h-5">
-                                  <input
-                                    type="radio"
-                                    name={`question-${question.id}`}
-                                    value={option}
-                                    checked={qcmAnswers[question.id] === option}
-                                    onChange={(e) => handleQCMAnswer(question.id, e.target.value)}
-                                    className="peer appearance-none w-5 h-5 border-2 border-gray-300 rounded-full checked:border-pr-orange checked:border-[5px] transition-all cursor-pointer"
-                                  />
-                                </div>
-                                <span className={`text-sm transition-colors ${qcmAnswers[question.id] === option ? 'text-pr-orange-dark font-medium' : 'text-gray-600'}`}>
-                                  {option}
-                                </span>
-                              </label>
-                            ))}
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-
-                  <div className="flex justify-center">
-                    <Button
-                      onClick={submitQCM}
-                      disabled={Object.keys(qcmAnswers).length < 20}
-                      className="bg-pr-orange hover:bg-pr-orange-dark text-white px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-blue-500/20 transition-all transform hover:-translate-y-0.5"
-                    >
-                      <Trophy className="h-4 w-4 mr-2" />
-                      Valider le QCM
-                    </Button>
-                  </div>
-                </div>
-              ) : (
-                <div className="space-y-6">
-                  {/* Résultats en haut */}
-                  <div className="text-center space-y-4">
-                    <div className="flex items-center justify-center gap-3">
-                      <Trophy className="h-8 w-8 text-gray-600" />
-                      <h3 className="text-2xl font-bold text-gray-700">Résultats du QCM</h3>
-                    </div>
-
-                    <div className="bg-gray-50 rounded-lg p-6 border-2 border-gray-200">
-                      <div className="text-4xl font-bold text-gray-700 mb-2">
-                        {qcmScore?.toFixed(1)}/20
-                      </div>
-                      <div className="flex items-center justify-center gap-2 mb-4">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`h-6 w-6 ${i < Math.floor((qcmScore || 0) / 4) ? 'text-gray-600 fill-current' : 'text-gray-300'}`}
-                          />
-                        ))}
-                      </div>
-                      <p className="text-gray-700 font-medium">
-                        {qcmScore && qcmScore >= 16 ? "Excellent ! Vous maîtrisez parfaitement l'analyse numérique." :
-                          qcmScore && qcmScore >= 12 ? "Bon niveau ! Quelques révisions pour perfectionner." :
-                            qcmScore && qcmScore >= 8 ? "Niveau correct. Continuez à vous entraîner." :
-                              "Niveau à améliorer. Revenez sur les bases de l'analyse numérique."}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Détail des réponses */}
-                  <div className="space-y-4">
-                    <h4 className="text-lg font-semibold text-gray-700 text-center">
-                      Détail de vos réponses
-                    </h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      {qcmQuestions.map((question) => {
-                        const userAnswer = qcmAnswers[question.id];
-                        const isCorrect = userAnswer === question.answer;
-
-                        return (
-                          <Card
-                            key={question.id}
-                            className={`border-2 transition-colors ${isCorrect
-                              ? 'border-gray-200 bg-gray-50'
-                              : 'border-gray-200 bg-gray-100'
-                              }`}
-                          >
-                            <CardContent className="pt-6">
-                              <div className="flex items-center gap-2 mb-3">
-                                <Badge variant="outline" className={`${isCorrect ? 'bg-gray-100 text-gray-700' : 'bg-gray-200 text-gray-700'
-                                  }`}>
-                                  Question {question.id}
-                                </Badge>
-                                {isCorrect ? (
-                                  <CheckCircle className="h-4 w-4 text-gray-600" />
-                                ) : (
-                                  <div className="h-4 w-4 text-gray-600">✗</div>
-                                )}
-                              </div>
-
-                              <p className="mb-4 text-sm font-medium">{question.question}</p>
-
-                              <div className="space-y-2">
-                                {question.options.map((option, optIndex) => {
-                                  const isUserAnswer = userAnswer === option;
-                                  const isCorrectAnswer = question.answer === option;
-
-                                  let optionStyle = "flex items-center gap-2 p-2 rounded";
-                                  let textStyle = "text-sm";
-
-                                  if (isCorrectAnswer) {
-                                    // Bonne réponse toujours en gris foncé
-                                    optionStyle += " bg-gray-100 border border-gray-300";
-                                    textStyle += " font-semibold text-gray-700";
-                                  } else if (isUserAnswer && !isCorrect) {
-                                    // Mauvaise réponse de l'utilisateur en gris clair
-                                    optionStyle += " bg-gray-200 border border-gray-300";
-                                    textStyle += " font-semibold text-gray-600";
-                                  } else {
-                                    // Autres options neutres
-                                    optionStyle += " bg-gray-50";
-                                    textStyle += " text-gray-600";
-                                  }
-
-                                  return (
-                                    <div key={optIndex} className={optionStyle}>
-                                      <div className="flex items-center gap-2">
-                                        {isCorrectAnswer && (
-                                          <CheckCircle className="h-4 w-4 text-gray-600" />
-                                        )}
-                                        {isUserAnswer && !isCorrect && (
-                                          <div className="h-4 w-4 text-gray-600">✗</div>
-                                        )}
-                                        {!isCorrectAnswer && !isUserAnswer && (
-                                          <div className="h-4 w-4 text-gray-400">○</div>
-                                        )}
-                                      </div>
-                                      <span className={textStyle}>{option}</span>
-                                    </div>
-                                  );
-                                })}
-                              </div>
-
-                              {!isCorrect && (
-                                <div className="mt-3 p-2 bg-gray-100 border border-gray-200 rounded">
-                                  <p className="text-sm text-gray-700">
-                                    <span className="font-semibold">Votre réponse :</span> {userAnswer}
-                                  </p>
-                                  <p className="text-sm text-gray-700">
-                                    <span className="font-semibold">Bonne réponse :</span> {question.answer}
-                                  </p>
-                                </div>
-                              )}
-                            </CardContent>
-                          </Card>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 justify-center">
-                    <Button
-                      variant="outline"
-                      onClick={restartQCM}
-                      className="border-gray-300 text-gray-700 hover:bg-gray-50"
-                    >
-                      Recommencer le QCM
-                    </Button>
-                  </div>
-                </div>
-              )}
-            </CardContent>
-          </Card>
-        </>
+        <PythonQCMPanel
+          intro="Répondez aux 20 questions pour évaluer votre niveau sur l'analyse numérique."
+          questions={qcmQuestions}
+          answers={qcmAnswers}
+          onAnswer={handleQCMAnswer}
+          onSubmit={submitQCM}
+          onRestart={restartQCM}
+          onBack={() => {
+            setShowQCM(false);
+            setQcmSubmitted(false);
+            setQcmAnswers({});
+            setQcmScore(null);
+          }}
+          submitted={qcmSubmitted}
+          score={qcmScore}
+        />
       )}
 
       {selectedExercise && (
-        <div className="min-h-screen bg-background py-8">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="mb-8">
-              <Button
-                variant="outline"
-                size="sm"
-                className="flex items-center gap-2 mb-6 hover:bg-white hover:text-pr-orange transition-colors"
-                onClick={() => setSelectedExercise(null)}
-              >
-                <ArrowLeft className="h-4 w-4" />
-                Retour aux exercices
-              </Button>
+        <>
+          <PythonExerciseTopBar
+            current={selectedExercise}
+            total={exercises.length}
+            onBack={() => setSelectedExercise(null)}
+            onPrev={() => {
+              if (selectedExercise > 1) {
+                setSelectedExercise(selectedExercise - 1);
+                window.scrollTo(0, 0);
+              }
+            }}
+            onNext={() => {
+              if (selectedExercise < exercises.length) {
+                setSelectedExercise(selectedExercise + 1);
+                window.scrollTo(0, 0);
+              }
+            }}
+            hasPrev={selectedExercise > 1}
+            hasNext={selectedExercise < exercises.length}
+          />
 
-              <div className="text-center mb-8">
-                <h1 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">
-                  {exercises[selectedExercise - 1].title}
-                </h1>
-                <Badge variant="secondary" className="bg-pr-orange-pale text-pr-orange-dark border border-pr-orange-pale px-4 py-1 text-base">
-                  {exercises[selectedExercise - 1].difficulty}
-                </Badge>
-              </div>
-            </div>
+          <PythonExerciseDetailHeader
+            number={selectedExercise}
+            title={exercises[selectedExercise - 1].title}
+            difficulty={exercises[selectedExercise - 1].difficulty}
+          />
 
+          <div>
             {/* GENERIC RENDERER (For all exercises with content) */}
             {exercises[selectedExercise - 1].content && (
               <>
-                <Card className="mb-8 border-2 border-gray-200 bg-white shadow-md hover:shadow-lg transition-all duration-300">
-                  <CardHeader className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-dark border-b border-gray-100">
-                    <CardTitle className="flex items-center gap-3 text-pr-orange-dark">
-                      <Target className="h-6 w-6 text-pr-orange" />
-                      Objectif de l'exercice
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="pt-6">
-                    <div className="text-gray-700 font-medium">
-                      {exercises[selectedExercise - 1].content.isLatex ? (
-                        <LatexRenderer latex={exercises[selectedExercise - 1].content.objective} />
-                      ) : (
-                        <p>{exercises[selectedExercise - 1].content.objective}</p>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
+                <PythonStatementCard label="Objectif" icon="target">
+                  {exercises[selectedExercise - 1].content.isLatex ? (
+                    <LatexRenderer latex={exercises[selectedExercise - 1].content.objective} />
+                  ) : (
+                    <p>{exercises[selectedExercise - 1].content.objective}</p>
+                  )}
+                </PythonStatementCard>
 
-                {/* Énoncé */}
-                <Card className="mb-8 border-2 border-gray-200 bg-white shadow-md hover:shadow-lg transition-all duration-300">
-                  <CardHeader className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-dark border-b border-gray-100">
-                    <CardTitle className="flex items-center gap-3 text-pr-orange-dark">
-                      <BookOpen className="h-6 w-6 text-pr-orange" />
-                      Énoncé
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="pt-6">
-                    <div className="text-gray-700 leading-relaxed">
-                      {exercises[selectedExercise - 1].content.enonce_latex ? (
-                        <LatexRenderer latex={exercises[selectedExercise - 1].content.enonce_latex} />
-                      ) : (
-                        <p className="whitespace-pre-line">{exercises[selectedExercise - 1].content.enonce}</p>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
+                <PythonStatementCard label="Énoncé" icon="book">
+                  {exercises[selectedExercise - 1].content.enonce_latex ? (
+                    <LatexRenderer latex={exercises[selectedExercise - 1].content.enonce_latex} />
+                  ) : (
+                    <p className="whitespace-pre-line">{exercises[selectedExercise - 1].content.enonce}</p>
+                  )}
+                </PythonStatementCard>
 
-                {/* Code Editor Section */}
                 <PythonCodeEditor
                   exerciseStatement={exercises[selectedExercise - 1].content.enonce_latex || exercises[selectedExercise - 1].content.enonce || exercises[selectedExercise - 1].content.objective}
                   expectedSolution={exercises[selectedExercise - 1].content.correction || ''}
@@ -996,57 +710,19 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                   }}
                 />
 
-                {/* Evaluation Result */}
                 {evaluationResults[selectedExercise] && (
                   <CodeEvaluationResult result={evaluationResults[selectedExercise]} />
                 )}
 
-                {/* Bouton Correction */}
-                <div className="flex justify-center mb-8">
-                  <Button
-                    onClick={() => toggleCorrection(selectedExercise)}
-                    className={`
-                      relative overflow-hidden group px-8 py-6 rounded-xl transition-all duration-500
-                      ${showCorrections.has(selectedExercise)
-                        ? 'bg-gradient-to-br from-pr-black to-pr-black shadow-inner'
-                        : 'bg-gradient-to-br from-pr-orange to-pr-orange-dark shadow-xl hover:shadow-2xl hover:-translate-y-1'
-                      }
-                    `}
-                  >
-                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 rounded-xl" />
-                    <div className="relative flex items-center gap-3 text-lg font-semibold text-white">
-                      {showCorrections.has(selectedExercise) ? (
-                        <>
-                          <EyeOff className="h-5 w-5" />
-                          Masquer la correction
-                        </>
-                      ) : (
-                        <>
-                          <Eye className="h-5 w-5 animate-pulse" />
-                          Voir la correction & Explications
-                        </>
-                      )}
-                    </div>
-                  </Button>
-                </div>
+                <PythonCorrectionToggle
+                  isOpen={showCorrections.has(selectedExercise)}
+                  onToggle={() => toggleCorrection(selectedExercise)}
+                />
 
-                {/* Correction */}
-                {showCorrections.has(selectedExercise) && (
-                  <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out">
-                    <Card className="border-0 shadow-2xl bg-gray-900 overflow-hidden rounded-2xl ring-1 ring-white/10">
-                      <CardHeader className="bg-gray-800/50 border-b border-gray-700/50 pb-4">
-                        <CardTitle className="flex items-center gap-3 text-emerald-400">
-                          <CheckCircle className="h-6 w-6" />
-                          Correction & Solution détaillée
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent className="p-6 overflow-x-auto custom-scrollbar">
-                        <pre className="font-mono text-sm leading-relaxed text-pr-orange-pale/90 whitespace-pre-wrap">
-                          <code>{exercises[selectedExercise - 1].content.correction}</code>
-                        </pre>
-                      </CardContent>
-                    </Card>
-                  </div>
+                {showCorrections.has(selectedExercise) && exercises[selectedExercise - 1].content.correction && (
+                  <PythonCorrectionPanel>
+                    <PythonCodeBlock code={exercises[selectedExercise - 1].content.correction} />
+                  </PythonCorrectionPanel>
                 )}
               </>
             )}
@@ -1553,14 +1229,32 @@ print(f"Erreur absolue : {abs(approx - exact)}")
             )}
             {/* Fallback */}
             {!exercises[selectedExercise - 1].content && ![3, 10, 13, 14, 15, 16].includes(selectedExercise) && (
-              <Card className="mb-8 border-2 border-gray-100 shadow-sm">
-                <CardContent className="p-12 text-center text-gray-500">
-                  <HelpCircle className="h-12 w-12 mx-auto mb-4 text-gray-300" />
-                  <p className="text-lg font-medium">Le contenu de cet exercice sera bientôt disponible.</p>
-                </CardContent>
-              </Card>
+              <div className="bg-white border border-pr-gray-light rounded-2xl p-10 text-center text-pr-gray-mid">
+                Le contenu de cet exercice sera bientôt disponible.
+              </div>
             )}
           </div>
+
+          <PythonExerciseFooterNav
+            current={selectedExercise}
+            total={exercises.length}
+            onPrev={() => {
+              if (selectedExercise > 1) {
+                setSelectedExercise(selectedExercise - 1);
+                window.scrollTo(0, 0);
+              }
+            }}
+            onNext={() => {
+              if (selectedExercise < exercises.length) {
+                setSelectedExercise(selectedExercise + 1);
+                window.scrollTo(0, 0);
+              } else {
+                setSelectedExercise(null);
+              }
+            }}
+            hasPrev={selectedExercise > 1}
+            hasNext={selectedExercise < exercises.length}
+          />
 
           <div className="mt-20 mb-12 relative overflow-hidden rounded-3xl bg-[#0F172A] py-12 px-6 sm:px-12 md:py-20 shadow-2xl border border-pr-orange-dark/30">
             {/* Background Effects */}
@@ -1624,7 +1318,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
               slug: "probabilites"
             }}
           />
-        </div>
+        </>
       )}
     </PythonModuleLayout>
   );

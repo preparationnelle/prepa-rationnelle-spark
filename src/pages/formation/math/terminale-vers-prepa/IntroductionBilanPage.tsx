@@ -1,369 +1,371 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { LatexRenderer } from '@/components/LatexRenderer';
-import { Home, ChevronRight, BookOpen, Target, TrendingUp, AlertCircle, Calendar, CheckCircle2, XCircle } from 'lucide-react';
+import { SEOHead } from '@/components/SEOHead';
+import { Button } from '@/components/ui/button';
+import {
+  Home,
+  ChevronRight,
+  BookOpen,
+  Target,
+  TrendingUp,
+  AlertCircle,
+  Calendar,
+  CheckCircle2,
+  ArrowRight,
+  ArrowLeft,
+} from 'lucide-react';
 
 const IntroductionBilanPage = () => {
   return (
-    <div className="min-h-screen bg-[#EEF3FC]">
+    <div className="min-h-screen carnet-paper">
+      <SEOHead
+        canonical="/formation/math/terminale-vers-prepa/introduction-bilan"
+        title="Introduction & Bilan — Révisions maths Terminale → Prépa ECG"
+        description="Guide complet de révisions mathématiques pour une entrée sereine en prépa ECG : analyse, probabilités, raisonnements et plan de travail été/rentrée."
+      />
+
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-[#2D5BFF]">
-            <Link to="/" className="flex items-center gap-1 hover:text-[#1e3a8a] transition-colors">
-              <Home className="h-3 w-3" />
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] px-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+              <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formations" className="hover:text-[#1e3a8a] transition-colors">
-              Toutes les formations
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/formation/math/terminale-vers-prepa" className="hover:text-carnet-red transition-colors">
+              Terminale → Prépa
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formation/maths-choix" className="hover:text-[#1e3a8a] transition-colors">
-              Choix option Maths
-            </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formation/math/terminale-vers-prepa" className="hover:text-[#1e3a8a] transition-colors">
-              Terminale vers la prépa
-            </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <span className="text-[#2D5BFF] font-bold">Introduction & Bilan</span>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">Introduction & Bilan</span>
           </div>
         </div>
       </nav>
 
-      <div className="space-y-8 max-w-6xl mx-auto px-4 py-8">
-        {/* En-tête */}
-        <Card className="border-0 shadow-xl bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50">
-          <CardHeader className="pb-8 text-center">
-            <CardTitle className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-600 bg-clip-text text-transparent mb-4">
-              Révisions mathématiques
-            </CardTitle>
-            <h2 className="text-2xl md:text-3xl font-semibold text-slate-700 mb-4">
-              Pour une entrée sereine en prépa ECG
-            </h2>
-            <Badge variant="outline" className="mx-auto text-lg px-4 py-2 bg-gradient-to-r from-orange-100 to-amber-100">
-              <Calendar className="h-4 w-4 mr-2" />
-              Août 2025 - Guide complet
-            </Badge>
-          </CardHeader>
-        </Card>
+      <div className="mx-auto max-w-[1080px] px-6 lg:pl-[200px] lg:pr-16 py-14 lg:py-16">
 
-        {/* L'essentiel à retenir */}
-        <Card className="border border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-orange-500 to-amber-500 text-white">
-            <CardTitle className="text-2xl flex items-center gap-3">
-              <Target className="h-7 w-7" />
-              L'essentiel à retenir
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="pt-6">
-            <div className="bg-white p-6 rounded-lg border-l-4 border-orange-500">
-              <p className="text-lg text-slate-800 leading-relaxed">
-                <strong className="text-orange-600">Maîtriser parfaitement les suites, fonctions usuelles (ln, exp), probabilités de base, et le calcul algébrique est crucial.</strong> La rigueur de rédaction doit être automatique. Pas besoin de connaître tout le programme de prépa à l'avance : des bases solides suffisent pour démarrer sereinement.
-              </p>
+        {/* Hero */}
+        <header className="mb-16 relative">
+          <div className="carnet-eyebrow mb-5">Guide complet · Été → Rentrée</div>
+          <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[64px] leading-[1.05] tracking-[-0.022em] text-carnet-ink mb-6">
+            Révisions <em className="font-lora italic text-carnet-red">maths</em>.
+          </h1>
+          <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.6] text-carnet-ink-soft max-w-[680px]">
+            Pour une entrée <span className="carnet-hl font-lora italic">sereine en prépa ECG</span>. Tout le programme pour transformer la transition lycée → prépa en avance.
+          </p>
+
+          <div
+            className="carnet-hand hidden lg:block absolute pointer-events-none"
+            style={{ right: 0, top: 8, fontSize: 24, transform: 'rotate(-4deg)', maxWidth: 180, lineHeight: 1.15, textAlign: 'right' }}
+          >
+            ↘ commence{'\n'}par la base
+          </div>
+        </header>
+
+        {/* L'essentiel */}
+        <section className="mb-14">
+          <div className="bg-carnet-ink rounded-lg p-8 sm:p-10 relative overflow-hidden">
+            <div className="absolute -top-3 left-8 bg-carnet-red text-carnet-paper-2 px-3.5 py-1 carnet-hand text-[20px] font-semibold" style={{ transform: 'rotate(-3deg)' }}>
+              à retenir
             </div>
-          </CardContent>
-        </Card>
+            <div className="flex items-start gap-4 mt-2">
+              <Target className="h-6 w-6 text-carnet-red mt-1 flex-shrink-0" />
+              <div>
+                <h2 className="font-lora text-[26px] text-carnet-paper leading-tight mb-3">L'essentiel</h2>
+                <p className="font-instrument text-[16px] text-[rgba(251,246,234,0.85)] leading-[1.65]">
+                  <strong className="text-carnet-paper">Maîtriser parfaitement les suites, les fonctions usuelles (ln, exp), les probabilités de base et le calcul algébrique est crucial.</strong> La rigueur de rédaction doit être automatique. Pas besoin de connaître tout le programme de prépa à l'avance — des bases solides suffisent pour démarrer sereinement.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Partie 1 : Analyse */}
-        <Card className="border border-slate-200 bg-white shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white">
-            <CardTitle className="text-2xl flex items-center gap-3">
-              <span className="bg-white/20 backdrop-blur-sm text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">
-                1
-              </span>
-              Partie 1 : Analyse — Du lycée à la prépa
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-8 pt-6">
-            
-            {/* Suites numériques */}
-            <div className="bg-blue-50 p-6 rounded-lg">
-              <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
-                <TrendingUp className="h-5 w-5 text-blue-600" />
-                Suites numériques
-              </h3>
-              
-              <div className="space-y-4">
-                <div className="bg-white p-4 rounded border-l-4 border-blue-500">
-                  <h4 className="font-semibold text-slate-800 mb-2">Suites arithmétiques et géométriques</h4>
-                  <p className="text-slate-700 mb-3">Base des raisonnements.</p>
-                  <ul className="list-disc list-inside text-slate-700 space-y-1 mb-3">
-                    <li>Formule : <span className="inline-block align-middle"><LatexRenderer latex={"u_n = u_0 + n \\cdot r"} /></span> (arithmétique), <span className="inline-block align-middle"><LatexRenderer latex={"u_n = u_0 \\cdot q^n"} /></span> (géométrique)</li>
-                    <li>Sommes : <span className="inline-block align-middle"><LatexRenderer latex={"\\sum_{k=0}^n u_0 q^k = u_0 \\frac{1-q^{n+1}}{1-q}"} /></span> (géométrique, q ≠ 1)</li>
-                  </ul>
-                  <p className="text-slate-600 italic">Exemple : <span className="inline-block align-middle"><LatexRenderer latex={"u_n = 2^n"} /></span>, <span className="inline-block align-middle"><LatexRenderer latex={"\\sum_{k=0}^3 2^k = 1 + 2 + 4 + 8 = 15"} /></span></p>
-                </div>
+        <section className="mb-14">
+          <div className="flex items-baseline gap-4 mb-6">
+            <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">01</span>
+            <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+            <h2 className="font-lora text-[30px] sm:text-[34px] text-carnet-ink leading-tight">
+              Analyse <em className="font-lora italic text-carnet-red">— du lycée à la prépa</em>
+            </h2>
+          </div>
 
-                <div className="bg-white p-4 rounded">
-                  <h4 className="font-semibold text-slate-800 mb-2">Propriétés importantes</h4>
-                  <ul className="list-disc list-inside text-slate-700 space-y-1">
-                    <li><strong>Monotonie :</strong> Étudier le signe de <span className="inline-block align-middle"><LatexRenderer latex={"u_{n+1} - u_n"} /></span> ou <span className="inline-block align-middle"><LatexRenderer latex={"u_{n+1}/u_n"} /></span></li>
-                    <li><strong>Majorée/Minorée :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"u_n \\leq M"} /></span> (majorée), <span className="inline-block align-middle"><LatexRenderer latex={"u_n \\geq m"} /></span> (minorée)</li>
-                    <li><strong>Théorème des gendarmes :</strong> Si <span className="inline-block align-middle"><LatexRenderer latex={"a_n \\leq u_n \\leq b_n"} /></span> et <span className="inline-block align-middle"><LatexRenderer latex={"a_n, b_n \\to L"} /></span>, alors <span className="inline-block align-middle"><LatexRenderer latex={"u_n \\to L"} /></span></li>
-                    <li><strong>Suites récurrentes :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"u_{n+1} = f(u_n)"} /></span>. Étudier points fixes et convergence</li>
-                  </ul>
-                  <p className="text-slate-600 italic mt-3">Exemple : <span className="inline-block align-middle"><LatexRenderer latex={"u_n = \\frac{\\sin(n)}{n^2}"} /></span>, encadrée par <span className="inline-block align-middle"><LatexRenderer latex={"-\\frac{1}{n^2}"} /></span> et <span className="inline-block align-middle"><LatexRenderer latex={"\\frac{1}{n^2}"} /></span>, donc <span className="inline-block align-middle"><LatexRenderer latex={"u_n \\to 0"} /></span></p>
-                </div>
+          <div className="carnet-card p-8 sm:p-10 carnet-tilt-l space-y-8">
+            <div>
+              <div className="carnet-eyebrow mb-4 flex items-center gap-2">
+                <TrendingUp className="h-3.5 w-3.5" />
+                A · Suites numériques
+              </div>
+              <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5 mb-3">
+                <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-2">Arithmétiques & géométriques</div>
+                <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65] mb-3">Base des raisonnements.</p>
+                <ul className="font-instrument text-[14px] text-carnet-ink-soft space-y-1.5 list-disc list-inside leading-[1.65]">
+                  <li>Formules : <span className="inline-block align-middle"><LatexRenderer latex={'u_n = u_0 + n \\cdot r'} /></span> (arithmétique), <span className="inline-block align-middle"><LatexRenderer latex={'u_n = u_0 \\cdot q^n'} /></span> (géométrique)</li>
+                  <li>Sommes : <span className="inline-block align-middle"><LatexRenderer latex={'\\sum_{k=0}^n u_0 q^k = u_0 \\frac{1-q^{n+1}}{1-q}'} /></span> (q ≠ 1)</li>
+                </ul>
+                <p className="font-instrument text-[13px] text-carnet-ink-mute italic mt-3">
+                  Exemple : <span className="inline-block align-middle"><LatexRenderer latex={'u_n = 2^n'} /></span>,{' '}
+                  <span className="inline-block align-middle"><LatexRenderer latex={'\\sum_{k=0}^3 2^k = 15'} /></span>
+                </p>
+              </div>
+              <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5">
+                <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-3">Propriétés importantes</div>
+                <ul className="font-instrument text-[14px] text-carnet-ink-soft space-y-1.5 list-disc list-inside leading-[1.65]">
+                  <li><strong className="text-carnet-ink">Monotonie :</strong> signe de <span className="inline-block align-middle"><LatexRenderer latex={'u_{n+1} - u_n'} /></span></li>
+                  <li><strong className="text-carnet-ink">Majorée/minorée :</strong> <span className="inline-block align-middle"><LatexRenderer latex={'u_n \\leq M'} /></span> / <span className="inline-block align-middle"><LatexRenderer latex={'u_n \\geq m'} /></span></li>
+                  <li><strong className="text-carnet-ink">Gendarmes :</strong> si <span className="inline-block align-middle"><LatexRenderer latex={'a_n \\leq u_n \\leq b_n'} /></span> et <span className="inline-block align-middle"><LatexRenderer latex={'a_n, b_n \\to L'} /></span>, alors <span className="inline-block align-middle"><LatexRenderer latex={'u_n \\to L'} /></span></li>
+                  <li><strong className="text-carnet-ink">Récurrentes :</strong> <span className="inline-block align-middle"><LatexRenderer latex={'u_{n+1} = f(u_n)'} /></span> — étudier points fixes et convergence</li>
+                </ul>
               </div>
             </div>
 
-            {/* Fonctions essentielles */}
-            <div className="bg-green-50 p-6 rounded-lg">
-              <h3 className="text-xl font-bold text-slate-800 mb-4">Fonctions essentielles</h3>
-              
-              <div className="space-y-4">
-                <div className="bg-white p-4 rounded border-l-4 border-green-500">
-                  <h4 className="font-semibold text-slate-800 mb-2">Logarithme et exponentielle</h4>
-                  <p className="text-slate-700 mb-3">Omniprésentes en prépa ECG. Maîtriser :</p>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <h5 className="font-medium text-slate-800 mb-2">Propriétés algébriques</h5>
-                      <ul className="text-sm text-slate-700 space-y-1">
-                        <li><span className="inline-block align-middle"><LatexRenderer latex={"\\ln(ab) = \\ln(a) + \\ln(b)"} /></span></li>
-                        <li><span className="inline-block align-middle"><LatexRenderer latex={"\\ln(a/b) = \\ln(a) - \\ln(b)"} /></span></li>
-                        <li><span className="inline-block align-middle"><LatexRenderer latex={"\\ln(a^c) = c \\ln(a)"} /></span></li>
-                        <li><span className="inline-block align-middle"><LatexRenderer latex={"e^x = a \\iff x = \\ln(a)"} /></span></li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h5 className="font-medium text-slate-800 mb-2">Dérivées & limites</h5>
-                      <ul className="text-sm text-slate-700 space-y-1">
-                        <li><span className="inline-block align-middle"><LatexRenderer latex={"(\\ln(x))' = \\frac{1}{x}"} /></span></li>
-                        <li><span className="inline-block align-middle"><LatexRenderer latex={"(e^x)' = e^x"} /></span></li>
-                        <li><span className="inline-block align-middle"><LatexRenderer latex={"\\lim_{x \\to +\\infty} e^x = +\\infty"} /></span></li>
-                        <li><span className="inline-block align-middle"><LatexRenderer latex={"\\lim_{x \\to 0^+} \\ln(x) = -\\infty"} /></span></li>
-                      </ul>
-                    </div>
+            <hr className="carnet-divider" />
+
+            <div>
+              <div className="carnet-eyebrow mb-4">B · Fonctions essentielles</div>
+              <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5 mb-3">
+                <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-3">Logarithme & exponentielle</div>
+                <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65] mb-4">Omniprésentes en prépa ECG. Maîtriser :</p>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <p className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-ink-mute font-semibold mb-2">Algébriques</p>
+                    <ul className="font-mono-jb text-[12px] text-carnet-ink-soft space-y-1.5">
+                      <li><span className="inline-block align-middle"><LatexRenderer latex={'\\ln(ab) = \\ln(a) + \\ln(b)'} /></span></li>
+                      <li><span className="inline-block align-middle"><LatexRenderer latex={'\\ln(a/b) = \\ln(a) - \\ln(b)'} /></span></li>
+                      <li><span className="inline-block align-middle"><LatexRenderer latex={'\\ln(a^c) = c \\ln(a)'} /></span></li>
+                      <li><span className="inline-block align-middle"><LatexRenderer latex={'e^x = a \\iff x = \\ln(a)'} /></span></li>
+                    </ul>
                   </div>
-                  <p className="text-slate-600 italic mt-3">Exemple : <span className="inline-block align-middle"><LatexRenderer latex={"\\ln(e^3) = 3"} /></span></p>
+                  <div>
+                    <p className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-ink-mute font-semibold mb-2">Dérivées & limites</p>
+                    <ul className="font-mono-jb text-[12px] text-carnet-ink-soft space-y-1.5">
+                      <li><span className="inline-block align-middle"><LatexRenderer latex={"(\\ln(x))' = 1/x"} /></span></li>
+                      <li><span className="inline-block align-middle"><LatexRenderer latex={"(e^x)' = e^x"} /></span></li>
+                      <li><span className="inline-block align-middle"><LatexRenderer latex={'\\lim_{x \\to +\\infty} e^x = +\\infty'} /></span></li>
+                      <li><span className="inline-block align-middle"><LatexRenderer latex={'\\lim_{x \\to 0^+} \\ln(x) = -\\infty'} /></span></li>
+                    </ul>
+                  </div>
                 </div>
+              </div>
+              <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5">
+                <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-3">Autres fonctions usuelles</div>
+                <ul className="font-instrument text-[14px] text-carnet-ink-soft space-y-1.5 list-disc list-inside leading-[1.65]">
+                  <li><strong className="text-carnet-ink">Valeur absolue :</strong> <span className="inline-block align-middle"><LatexRenderer latex={'|x| = x'} /></span> si x ≥ 0, -x sinon. Non dérivable en 0.</li>
+                  <li><strong className="text-carnet-ink">Partie entière :</strong> <span className="inline-block align-middle"><LatexRenderer latex={'\\lfloor x \\rfloor'} /></span> = max{'{n ∈ ℤ | n ≤ x}'}</li>
+                  <li><strong className="text-carnet-ink">Puissances :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"(x^\\alpha)' = \\alpha x^{\\alpha-1}"} /></span></li>
+                </ul>
+              </div>
+            </div>
 
-                <div className="bg-white p-4 rounded">
-                  <h4 className="font-semibold text-slate-800 mb-2">Autres fonctions usuelles</h4>
-                  <ul className="list-disc list-inside text-slate-700 space-y-1">
-                    <li><strong>Valeur absolue :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"|x| = x"} /></span> si x ≥ 0, -x sinon. Non dérivable en 0</li>
-                    <li><strong>Partie entière :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"\\lfloor x \\rfloor = \\max\\{ n \\in \\mathbb{Z} \\mid n \\leq x \\}"} /></span>. En escalier</li>
-                    <li><strong>Puissances :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"x^\\alpha"} /></span>, α ∈ ℝ. Dérivée : <span className="inline-block align-middle"><LatexRenderer latex={"(x^\\alpha)' = \\alpha x^{\\alpha-1}"} /></span></li>
+            <hr className="carnet-divider" />
+
+            <div>
+              <div className="carnet-eyebrow mb-4">C · Trio dérivées · primitives · limites</div>
+              <div className="grid md:grid-cols-3 gap-3">
+                <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-4">
+                  <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-2">Dérivées</div>
+                  <ul className="font-mono-jb text-[11px] text-carnet-ink-soft space-y-1.5">
+                    <li><span className="inline-block align-middle"><LatexRenderer latex={"(u+v)' = u' + v'"} /></span></li>
+                    <li><span className="inline-block align-middle"><LatexRenderer latex={"(uv)' = u'v + uv'"} /></span></li>
+                    <li><span className="inline-block align-middle"><LatexRenderer latex={"(f(g))' = f'(g)g'"} /></span></li>
                   </ul>
-                  <p className="text-slate-600 italic mt-3">Exemple : <span className="inline-block align-middle"><LatexRenderer latex={"|x - 2| = 3 \\implies x = 5 \\text{ ou } x = -1"} /></span></p>
+                </div>
+                <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-4">
+                  <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-2">Primitives</div>
+                  <ul className="font-mono-jb text-[11px] text-carnet-ink-soft space-y-1.5">
+                    <li><span className="inline-block align-middle"><LatexRenderer latex={'\\int x^n = \\frac{x^{n+1}}{n+1}'} /></span></li>
+                    <li><span className="inline-block align-middle"><LatexRenderer latex={'\\int e^x = e^x'} /></span></li>
+                    <li><span className="inline-block align-middle"><LatexRenderer latex={'\\int 1/x = \\ln|x|'} /></span></li>
+                  </ul>
+                </div>
+                <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-4">
+                  <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-2">Limites</div>
+                  <ul className="font-mono-jb text-[11px] text-carnet-ink-soft space-y-1.5">
+                    <li>FI : 0/0, ∞/∞, ∞-∞</li>
+                    <li><span className="inline-block align-middle"><LatexRenderer latex={'\\lim_{x \\to 0} \\sin(x)/x = 1'} /></span></li>
+                    <li><span className="inline-block align-middle"><LatexRenderer latex={'\\lim_{x \\to +\\infty} \\ln(x) = +\\infty'} /></span></li>
+                  </ul>
                 </div>
               </div>
             </div>
-
-            {/* Dérivées, Primitives, Limites */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-purple-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-slate-800 mb-3">Dérivées</h4>
-                <ul className="text-sm text-slate-700 space-y-2">
-                  <li><strong>Règles :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"(u+v)' = u' + v'"} /></span></li>
-                  <li><strong>Composée :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"(f(g(x)))' = f'(g(x)) \\cdot g'(x)"} /></span></li>
-                  <li><strong>Produit :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"(uv)' = u'v + uv'"} /></span></li>
-                  <li><strong>Quotient :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"\\left(\\frac{u}{v}\\right)' = \\frac{u'v - uv'}{v^2}"} /></span></li>
-                </ul>
-              </div>
-
-              <div className="bg-yellow-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-slate-800 mb-3">Primitives</h4>
-                <ul className="text-sm text-slate-700 space-y-2">
-                  <li><span className="inline-block align-middle"><LatexRenderer latex={"\\int x^n \\, dx = \\frac{x^{n+1}}{n+1}"} /></span> (n ≠ -1)</li>
-                  <li><span className="inline-block align-middle"><LatexRenderer latex={"\\int e^x \\, dx = e^x"} /></span></li>
-                  <li><span className="inline-block align-middle"><LatexRenderer latex={"\\int \\frac{1}{x} \\, dx = \\ln|x|"} /></span></li>
-                  <li><strong>Par parties :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"\\int u v' \\, dx = [u v] - \\int u' v \\, dx"} /></span></li>
-                </ul>
-              </div>
-
-              <div className="bg-red-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-slate-800 mb-3">Limites</h4>
-                <ul className="text-sm text-slate-700 space-y-2">
-                  <li><strong>Formes indéterminées :</strong> 0/0, ∞/∞, ∞ - ∞</li>
-                  <li><span className="inline-block align-middle"><LatexRenderer latex={"\\lim_{x \\to 0} \\frac{\\sin(x)}{x} = 1"} /></span></li>
-                  <li><span className="inline-block align-middle"><LatexRenderer latex={"\\lim_{x \\to +\\infty} \\ln(x) = +\\infty"} /></span></li>
-                  <li>Théorèmes : valeurs intermédiaires, bornes atteintes</li>
-                </ul>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+          </div>
+        </section>
 
         {/* Partie 2 : Probabilités */}
-        <Card className="border border-slate-200 bg-white shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white">
-            <CardTitle className="text-2xl flex items-center gap-3">
-              <span className="bg-white/20 backdrop-blur-sm text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">
-                2
-              </span>
-              Partie 2 : Probabilités — Fondations solides
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6 pt-6">
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-emerald-50 p-6 rounded-lg">
-                <h3 className="text-lg font-bold text-slate-800 mb-4">Loi binomiale B(n,p)</h3>
-                <ul className="text-slate-700 space-y-2">
-                  <li><strong>Définition :</strong> X compte le nombre de succès en n épreuves indépendantes</li>
-                  <li><strong>Probabilité :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k}"} /></span></li>
-                  <li><strong>Espérance :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"E(X) = np"} /></span></li>
-                  <li><strong>Variance :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"V(X) = np(1-p)"} /></span></li>
-                </ul>
-                <p className="text-slate-600 italic mt-3">Exemple : 10 lancers, p = 0.5, <span className="inline-block align-middle"><LatexRenderer latex={"P(X = 5) = \\binom{10}{5} \\cdot 0.5^{10}"} /></span></p>
-              </div>
+        <section className="mb-14">
+          <div className="flex items-baseline gap-4 mb-6">
+            <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">02</span>
+            <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+            <h2 className="font-lora text-[30px] sm:text-[34px] text-carnet-ink leading-tight">
+              Probabilités <em className="font-lora italic text-carnet-red">— fondations</em>
+            </h2>
+          </div>
 
-              <div className="bg-teal-50 p-6 rounded-lg">
-                <h3 className="text-lg font-bold text-slate-800 mb-4">Probabilités conditionnelles</h3>
-                <ul className="text-slate-700 space-y-2">
-                  <li><strong>Formule de Bayes :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"P(A|B) = \\frac{P(B|A) \\cdot P(A)}{P(B)}"} /></span></li>
-                  <li><strong>Probabilités totales :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"P(B) = \\sum_i P(B|A_i) \\cdot P(A_i)"} /></span></li>
-                  <li><strong>Indépendance :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"P(A \\cap B) = P(A) \\cdot P(B)"} /></span></li>
+          <div className="carnet-card p-8 sm:p-10 carnet-tilt-r space-y-6">
+            <div className="grid md:grid-cols-2 gap-3">
+              <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5">
+                <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-3">Loi binomiale B(n, p)</div>
+                <ul className="font-instrument text-[13px] text-carnet-ink-soft space-y-1.5 leading-[1.65]">
+                  <li><strong className="text-carnet-ink">Définition :</strong> X = nb de succès en n épreuves indépendantes</li>
+                  <li><span className="inline-block align-middle"><LatexRenderer latex={'P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k}'} /></span></li>
+                  <li><strong className="text-carnet-ink">Espérance :</strong> <span className="inline-block align-middle"><LatexRenderer latex={'E(X) = np'} /></span></li>
+                  <li><strong className="text-carnet-ink">Variance :</strong> <span className="inline-block align-middle"><LatexRenderer latex={'V(X) = np(1-p)'} /></span></li>
+                </ul>
+              </div>
+              <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5">
+                <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-3">Conditionnelles</div>
+                <ul className="font-instrument text-[13px] text-carnet-ink-soft space-y-1.5 leading-[1.65]">
+                  <li><strong className="text-carnet-ink">Bayes :</strong> <span className="inline-block align-middle"><LatexRenderer latex={'P(A|B) = \\frac{P(B|A) P(A)}{P(B)}'} /></span></li>
+                  <li><strong className="text-carnet-ink">Probas totales :</strong> <span className="inline-block align-middle"><LatexRenderer latex={'P(B) = \\sum_i P(B|A_i) P(A_i)'} /></span></li>
+                  <li><strong className="text-carnet-ink">Indépendance :</strong> <span className="inline-block align-middle"><LatexRenderer latex={'P(A \\cap B) = P(A) P(B)'} /></span></li>
                 </ul>
               </div>
             </div>
 
-            <div className="bg-cyan-50 p-6 rounded-lg">
-              <h3 className="text-lg font-bold text-slate-800 mb-4">Variables aléatoires discrètes</h3>
-              <ul className="text-slate-700 space-y-2">
-                <li><strong>Loi :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"\\sum P(X = x_i) = 1"} /></span></li>
-                <li><strong>Fonction de répartition :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"F(x) = P(X \\leq x)"} /></span></li>
+            <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5">
+              <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-3">Variables aléatoires discrètes</div>
+              <ul className="font-instrument text-[14px] text-carnet-ink-soft space-y-1.5 leading-[1.65] list-disc list-inside">
+                <li><strong className="text-carnet-ink">Loi :</strong> <span className="inline-block align-middle"><LatexRenderer latex={'\\sum P(X = x_i) = 1'} /></span></li>
+                <li><strong className="text-carnet-ink">Fonction de répartition :</strong> <span className="inline-block align-middle"><LatexRenderer latex={'F(x) = P(X \\leq x)'} /></span></li>
               </ul>
-              <p className="text-slate-600 italic mt-3">Exemple : <span className="inline-block align-middle"><LatexRenderer latex={"X \\sim B(3, 0.5)"} /></span>, <span className="inline-block align-middle"><LatexRenderer latex={"F(2) = P(X \\leq 2) = P(X = 0) + P(X = 1) + P(X = 2)"} /></span></p>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </section>
 
         {/* Partie 3 : Raisonnements */}
-        <Card className="border border-slate-200 bg-white shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-violet-500 to-purple-500 text-white">
-            <CardTitle className="text-2xl flex items-center gap-3">
-              <span className="bg-white/20 backdrop-blur-sm text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">
-                3
-              </span>
-              Partie 3 : Raisonnements et calculs
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6 pt-6">
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-violet-50 p-6 rounded-lg">
-                <h3 className="text-lg font-bold text-slate-800 mb-4">Modes de raisonnement</h3>
-                <ul className="text-slate-700 space-y-2">
-                  <li><strong>Récurrence :</strong> Initialisation, hérédité, conclusion</li>
-                  <li><strong>Par l'absurde :</strong> Supposer ¬P, aboutir à une contradiction</li>
-                  <li><strong>Contraposée :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"(P \\Rightarrow Q) \\equiv (\\neg Q \\Rightarrow \\neg P)"} /></span></li>
-                  <li><strong>Analyse-synthèse :</strong> Condition nécessaire, puis suffisante</li>
-                </ul>
-                <p className="text-slate-600 italic mt-3">Exemple : Prouver <span className="inline-block align-middle"><LatexRenderer latex={"\\sum_{k=1}^n k = \\frac{n(n+1)}{2}"} /></span></p>
-              </div>
+        <section className="mb-14">
+          <div className="flex items-baseline gap-4 mb-6">
+            <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">03</span>
+            <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+            <h2 className="font-lora text-[30px] sm:text-[34px] text-carnet-ink leading-tight">Raisonnements & calculs</h2>
+          </div>
 
-              <div className="bg-purple-50 p-6 rounded-lg">
-                <h3 className="text-lg font-bold text-slate-800 mb-4">Calcul algébrique</h3>
-                <ul className="text-slate-700 space-y-2">
-                  <li><strong>Identités remarquables :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"(a+b)^2 = a^2 + 2ab + b^2"} /></span></li>
-                  <li><span className="inline-block align-middle"><LatexRenderer latex={"a^2 - b^2 = (a+b)(a-b)"} /></span></li>
-                  <li><strong>Fractions :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"\\frac{a}{c} + \\frac{b}{c} = \\frac{a+b}{c}"} /></span></li>
-                  <li><strong>Puissances :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"a^m \\cdot a^n = a^{m+n}"} /></span></li>
+          <div className="carnet-card p-8 sm:p-10 carnet-tilt-l">
+            <div className="grid md:grid-cols-2 gap-3">
+              <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5">
+                <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-3">Modes de raisonnement</div>
+                <ul className="font-instrument text-[14px] text-carnet-ink-soft space-y-1.5 list-disc list-inside leading-[1.65]">
+                  <li><strong className="text-carnet-ink">Récurrence :</strong> initialisation, hérédité, conclusion</li>
+                  <li><strong className="text-carnet-ink">Par l'absurde :</strong> supposer ¬P, contradiction</li>
+                  <li><strong className="text-carnet-ink">Contraposée :</strong> <span className="inline-block align-middle"><LatexRenderer latex={'(P \\Rightarrow Q) \\equiv (\\neg Q \\Rightarrow \\neg P)'} /></span></li>
+                  <li><strong className="text-carnet-ink">Analyse-synthèse :</strong> nécessaire puis suffisante</li>
                 </ul>
-                <p className="text-slate-600 italic mt-3">Exemple : Simplifier <span className="inline-block align-middle"><LatexRenderer latex={"\\frac{x^2 - 1}{x - 1} = x + 1"} /></span> (x ≠ 1)</p>
+              </div>
+              <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5">
+                <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-3">Calcul algébrique</div>
+                <ul className="font-instrument text-[13px] text-carnet-ink-soft space-y-1.5 list-disc list-inside leading-[1.65]">
+                  <li><span className="inline-block align-middle"><LatexRenderer latex={'(a+b)^2 = a^2 + 2ab + b^2'} /></span></li>
+                  <li><span className="inline-block align-middle"><LatexRenderer latex={'a^2 - b^2 = (a+b)(a-b)'} /></span></li>
+                  <li><span className="inline-block align-middle"><LatexRenderer latex={'\\frac{a}{c} + \\frac{b}{c} = \\frac{a+b}{c}'} /></span></li>
+                  <li><span className="inline-block align-middle"><LatexRenderer latex={'a^m \\cdot a^n = a^{m+n}'} /></span></li>
+                </ul>
               </div>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </section>
 
         {/* Plan de révisions */}
-        <Card className="border border-slate-200 bg-white shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white">
-            <CardTitle className="text-2xl flex items-center gap-3">
-              <Calendar className="h-7 w-7" />
-              Plan de révisions été/rentrée
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6 pt-6">
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h3 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-blue-600" />
-                  Juillet-Août : Consolidation
-                </h3>
-                <p className="text-slate-700 mb-4"><strong>Rythme :</strong> 1h30 à 2h/jour</p>
-                <ul className="text-slate-700 space-y-2">
-                  <li><strong>Semaine 1-2 :</strong> Calcul algébrique, suites arithmétiques/géométriques</li>
-                  <li><strong>Semaine 3-4 :</strong> Fonctions ln, exp, équations</li>
-                  <li><strong>Semaine 5-6 :</strong> Probabilités conditionnelles, loi binomiale</li>
-                  <li><strong>Semaine 7-8 :</strong> Récurrence, limites</li>
+        <section className="mb-14">
+          <div className="flex items-baseline gap-4 mb-6">
+            <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">04</span>
+            <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+            <h2 className="font-lora text-[30px] sm:text-[34px] text-carnet-ink leading-tight flex items-center gap-3">
+              <Calendar className="h-7 w-7 text-carnet-red" />
+              Plan de révisions
+            </h2>
+          </div>
+
+          <div className="carnet-card p-8 sm:p-10 carnet-tilt-r">
+            <div className="grid md:grid-cols-2 gap-3">
+              <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5">
+                <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-3 flex items-center gap-2">
+                  <CheckCircle2 className="h-3.5 w-3.5" />
+                  Juillet-Août — Consolidation
+                </div>
+                <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65] mb-3">
+                  <strong className="text-carnet-ink">Rythme :</strong> 1h30 à 2h/jour
+                </p>
+                <ul className="font-instrument text-[13px] text-carnet-ink-soft space-y-1.5 leading-[1.65]">
+                  <li><strong className="text-carnet-ink">Sem. 1-2 :</strong> Calcul algébrique, suites</li>
+                  <li><strong className="text-carnet-ink">Sem. 3-4 :</strong> Fonctions ln, exp, équations</li>
+                  <li><strong className="text-carnet-ink">Sem. 5-6 :</strong> Probabilités, loi binomiale</li>
+                  <li><strong className="text-carnet-ink">Sem. 7-8 :</strong> Récurrence, limites</li>
                 </ul>
               </div>
-
-              <div className="bg-indigo-50 p-6 rounded-lg">
-                <h3 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
-                  <TrendingUp className="h-5 w-5 text-indigo-600" />
-                  Septembre : Mise à niveau
-                </h3>
-                <ul className="text-slate-700 space-y-3">
-                  <li><strong>2h/jour</strong> pour suivre le rythme</li>
-                  <li><strong>Priorité</strong> aux TD des professeurs</li>
-                  <li><strong>Révision continue</strong> des automatismes</li>
+              <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5">
+                <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-3 flex items-center gap-2">
+                  <TrendingUp className="h-3.5 w-3.5" />
+                  Septembre — Mise à niveau
+                </div>
+                <ul className="font-instrument text-[14px] text-carnet-ink-soft space-y-2 leading-[1.65] list-disc list-inside">
+                  <li><strong className="text-carnet-ink">2h/jour</strong> pour suivre le rythme</li>
+                  <li><strong className="text-carnet-ink">Priorité</strong> aux TD des professeurs</li>
+                  <li><strong className="text-carnet-ink">Révision continue</strong> des automatismes</li>
                 </ul>
               </div>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </section>
 
         {/* Erreurs à éviter */}
-        <Card className="border border-red-200 bg-gradient-to-r from-red-50 to-pink-50 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-red-500 to-pink-500 text-white">
-            <CardTitle className="text-2xl flex items-center gap-3">
-              <AlertCircle className="h-7 w-7" />
-              Erreurs à éviter
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="pt-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-3">
-                <div className="flex items-center gap-2 text-red-700">
-                  <XCircle className="h-4 w-4" />
-                  <span>Confondre condition nécessaire et suffisante</span>
-                </div>
-                <div className="flex items-center gap-2 text-red-700">
-                  <XCircle className="h-4 w-4" />
-                  <span>Oublier les domaines de définition</span>
-                </div>
-              </div>
-              <div className="space-y-3">
-                <div className="flex items-center gap-2 text-red-700">
-                  <XCircle className="h-4 w-4" />
-                  <span>Rédaction imprécise ou calculs bâclés</span>
-                </div>
-                <div className="flex items-center gap-2 text-red-700">
-                  <XCircle className="h-4 w-4" />
-                  <span><strong>Fausse bonne idée :</strong> Apprendre par cœur les notions avancées avant la rentrée</span>
-                </div>
+        <section className="mb-16">
+          <div className="bg-carnet-ink rounded-lg p-8 sm:p-10 relative overflow-hidden">
+            <div className="absolute -top-3 left-8 bg-carnet-red text-carnet-paper-2 px-3.5 py-1 carnet-hand text-[20px] font-semibold" style={{ transform: 'rotate(-3deg)' }}>
+              à éviter
+            </div>
+            <div className="flex items-start gap-4 mt-2">
+              <AlertCircle className="h-6 w-6 text-carnet-red mt-1 flex-shrink-0" />
+              <div className="flex-1">
+                <h3 className="font-lora text-[24px] text-carnet-paper leading-tight mb-4">Les pièges classiques</h3>
+                <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2 font-instrument text-[14px] text-[rgba(251,246,234,0.85)] leading-[1.65] list-disc list-inside">
+                  <li>Confondre condition nécessaire et suffisante</li>
+                  <li>Oublier les domaines de définition</li>
+                  <li>Rédaction imprécise ou calculs bâclés</li>
+                  <li>Apprendre par cœur les notions avancées avant la rentrée (fausse bonne idée)</li>
+                </ul>
               </div>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </section>
 
-        {/* Navigation vers les chapitres */}
-        <Card className="border-0 shadow-xl bg-gradient-to-r from-orange-50 via-amber-50 to-yellow-50">
-          <CardContent className="pt-6">
-            <div className="text-center">
-              <h3 className="text-2xl font-bold text-slate-800 mb-4">Commencez vos révisions !</h3>
-              <p className="text-slate-600 mb-6 text-lg">
-                Explorez les 7 chapitres détaillés pour maîtriser chaque notion
+        {/* CTA chapitres */}
+        <div className="relative bg-carnet-ink rounded-lg p-8 sm:p-10 mt-4 mb-10 overflow-hidden">
+          <div className="absolute -top-24 -right-24 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(193,68,58,0.18)_0%,transparent_60%)] pointer-events-none"></div>
+          <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="max-w-xl">
+              <div className="carnet-eyebrow text-carnet-red mb-3">Tous les chapitres</div>
+              <h3 className="font-lora text-[24px] sm:text-[28px] text-carnet-paper leading-[1.2] mb-2">
+                Les 7 chapitres détaillés.
+              </h3>
+              <p className="font-instrument text-[15px] text-[rgba(251,246,234,0.75)] leading-[1.6]">
+                Cours, exercices, quiz et flashcards — tout est prêt pour démarrer la prépa avec une longueur d'avance.
               </p>
-              <Link to="/formation/math/terminale-vers-prepa">
-                <div className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-8 py-4 rounded-xl hover:from-orange-600 hover:to-amber-600 transition-all duration-300 transform hover:scale-105 shadow-xl text-lg font-semibold">
-                  <BookOpen className="h-6 w-6" />
-                  <span>Accéder aux chapitres</span>
-                </div>
-              </Link>
             </div>
-          </CardContent>
-        </Card>
+            <Link to="/formation/math/terminale-vers-prepa" className="flex-shrink-0">
+              <Button className="bg-carnet-red hover:bg-[#9E342B] text-carnet-paper font-instrument font-semibold text-[15px] py-6 px-7 rounded-full border-0 h-auto">
+                <BookOpen className="mr-2 h-4 w-4" />
+                Accéder aux chapitres
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+
+        {/* Footer nav */}
+        <div className="mt-10 pt-8 border-t border-dashed border-[rgba(78,55,30,0.18)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <Link
+            to="/formation/math/terminale-vers-prepa"
+            className="inline-flex items-center gap-1.5 font-instrument text-[14px] text-carnet-ink-soft hover:text-carnet-red transition-colors"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            Retour au sommaire
+          </Link>
+          <div className="carnet-hand text-[22px] text-carnet-red" style={{ transform: 'rotate(-2deg)' }}>
+            — bonne révision !
+          </div>
+        </div>
+
       </div>
     </div>
   );

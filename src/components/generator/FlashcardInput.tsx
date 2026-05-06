@@ -1,10 +1,9 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Badge } from '@/components/ui/badge';
 import {
   Select,
   SelectContent,
@@ -12,12 +11,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Loader2, Sparkles, PenLine, X, Plus, Lightbulb } from 'lucide-react';
+import { Loader2, Sparkles, PenLine, X, Plus, Lightbulb, ArrowRight, Eye, EyeOff } from 'lucide-react';
 import { FLASHCARD_CATEGORIES } from '@/hooks/useFlashcardGenerator';
 
 interface FlashcardInputProps {
   language: 'fr' | 'en';
-  // Universal mode
   isAiMode: boolean;
   setIsAiMode: (value: boolean) => void;
   frontInput: string;
@@ -35,6 +33,31 @@ interface FlashcardInputProps {
   isGenerating: boolean;
   onGenerate: () => void;
 }
+
+const fieldClass =
+  "bg-white border-pr-gray-light text-pr-black placeholder:text-pr-gray-mid focus:border-pr-orange focus:ring-2 focus:ring-pr-orange/20 rounded-lg transition-colors";
+
+const labelClass =
+  "text-[11px] font-semibold uppercase tracking-[0.12em] text-pr-gray-mid";
+
+const TOPIC_MAX = 280;
+
+const QUICK_PROMPTS_FR = [
+  { label: 'Dérivées & limites', topic: 'Les dérivées et limites en analyse', category: 'math' },
+  { label: 'Boucles for Python', topic: 'Les boucles for en Python', category: 'python' },
+  { label: 'Vocabulaire éco EN', topic: 'Vocabulaire économique en anglais — inflation, GDP, recession', category: 'vocabulary' },
+  { label: 'Révolution française', topic: 'La Révolution française : causes, étapes, conséquences', category: 'history' },
+  { label: 'Citations humanité', topic: 'Citations clés sur l\'humanité (Anders, Arendt, Sartre)', category: 'general' },
+  { label: 'Probabilités ECG', topic: 'Lois de probabilité usuelles : binomiale, Poisson, normale', category: 'math' },
+];
+
+const QUICK_PROMPTS_EN = [
+  { label: 'Derivatives', topic: 'Derivatives and limits in calculus', category: 'math' },
+  { label: 'Python for-loops', topic: 'For loops in Python', category: 'python' },
+  { label: 'Econ vocabulary', topic: 'Economics vocabulary — inflation, GDP, recession', category: 'vocabulary' },
+  { label: 'French Revolution', topic: 'The French Revolution: causes, stages, consequences', category: 'history' },
+  { label: 'Probability', topic: 'Common probability distributions: binomial, Poisson, normal', category: 'math' },
+];
 
 export const FlashcardInput = ({
   language,
@@ -56,6 +79,42 @@ export const FlashcardInput = ({
   onGenerate
 }: FlashcardInputProps) => {
   const [tagInputValue, setTagInputValue] = useState('');
+  const [showPreview, setShowPreview] = useState(false);
+  const [previewFlipped, setPreviewFlipped] = useState(false);
+
+  const topicRef = useRef<HTMLTextAreaElement>(null);
+  const frontRef = useRef<HTMLTextAreaElement>(null);
+
+  const quickPrompts = language === 'fr' ? QUICK_PROMPTS_FR : QUICK_PROMPTS_EN;
+
+  // Auto-focus quand on (re)entre dans un mode
+  useEffect(() => {
+    const t = setTimeout(() => {
+      if (isAiMode) topicRef.current?.focus();
+      else frontRef.current?.focus();
+    }, 50);
+    return () => clearTimeout(t);
+  }, [isAiMode]);
+
+  const isAiReady = topicInput.trim().length > 0;
+  const isManualReady = frontInput.trim().length > 0 && backInput.trim().length > 0;
+  const canSubmit = isAiMode ? isAiReady : isManualReady;
+
+  const missingMessage = (() => {
+    if (canSubmit) return null;
+    if (isAiMode) {
+      return language === 'fr'
+        ? 'Décris un sujet pour générer la carte.'
+        : 'Describe a topic to generate the card.';
+    }
+    if (!frontInput.trim() && !backInput.trim()) {
+      return language === 'fr' ? 'Remplis le recto et le verso.' : 'Fill in front and back.';
+    }
+    if (!frontInput.trim()) {
+      return language === 'fr' ? 'Ajoute une question (recto).' : 'Add a question (front).';
+    }
+    return language === 'fr' ? 'Ajoute une réponse (verso).' : 'Add an answer (back).';
+  })();
 
   const handleAddTag = () => {
     if (tagInputValue.trim() && !tagsInput.includes(tagInputValue.trim())) {
@@ -68,34 +127,54 @@ export const FlashcardInput = ({
     setTagsInput(tagsInput.filter(tag => tag !== tagToRemove));
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+  // Cmd/Ctrl+Enter dans n'importe quel champ → génère
+  const handleSubmitShortcut = (e: React.KeyboardEvent) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
       e.preventDefault();
-      onGenerate();
+      if (canSubmit && !isGenerating) onGenerate();
     }
   };
 
+  const applyQuickPrompt = (p: { topic: string; category: string }) => {
+    setTopicInput(p.topic);
+    setCategoryInput(p.category);
+    topicRef.current?.focus();
+  };
+
+  const isMac = typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform);
+  const cmdKey = isMac ? '⌘' : 'Ctrl';
+
   return (
-    <div className="space-y-6">
-      {/* Mode Toggle */}
+    <div className="space-y-6 font-dm-sans" onKeyDown={handleSubmitShortcut}>
+      {/* Mode toggle */}
       <div className="flex justify-center">
-        <div className="inline-flex items-center bg-gray-100 dark:bg-gray-800 rounded-full p-1">
+        <div
+          role="tablist"
+          aria-label={language === 'fr' ? 'Mode de saisie' : 'Input mode'}
+          className="inline-flex items-center bg-pr-gray-bg border border-pr-gray-light rounded-full p-1"
+        >
           <button
+            role="tab"
+            aria-selected={isAiMode}
             onClick={() => setIsAiMode(true)}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all ${isAiMode
-                ? 'bg-orange-500 text-white shadow-md'
-                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-              }`}
+            className={`flex items-center gap-2 px-5 py-2 rounded-full text-[13px] font-medium transition-colors ${
+              isAiMode
+                ? 'bg-pr-orange text-white'
+                : 'text-pr-gray-dark hover:text-pr-black'
+            }`}
           >
             <Sparkles className="w-4 h-4" />
             {language === 'fr' ? 'Mode IA' : 'AI Mode'}
           </button>
           <button
+            role="tab"
+            aria-selected={!isAiMode}
             onClick={() => setIsAiMode(false)}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all ${!isAiMode
-                ? 'bg-orange-500 text-white shadow-md'
-                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-              }`}
+            className={`flex items-center gap-2 px-5 py-2 rounded-full text-[13px] font-medium transition-colors ${
+              !isAiMode
+                ? 'bg-pr-orange text-white'
+                : 'text-pr-gray-dark hover:text-pr-black'
+            }`}
           >
             <PenLine className="w-4 h-4" />
             {language === 'fr' ? 'Mode Manuel' : 'Manual Mode'}
@@ -103,37 +182,65 @@ export const FlashcardInput = ({
         </div>
       </div>
 
-      {/* AI Mode */}
       {isAiMode ? (
         <div className="space-y-5">
           <div className="space-y-2">
-            <Label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-              {language === 'fr' ? 'Sujet ou concept' : 'Topic or concept'}
-            </Label>
+            <div className="flex items-center justify-between">
+              <Label className={labelClass}>
+                {language === 'fr' ? 'Sujet ou concept' : 'Topic or concept'}
+              </Label>
+              <span
+                className={`text-[11px] tabular-nums font-semibold ${
+                  topicInput.length > TOPIC_MAX ? 'text-pr-orange-dark' : 'text-pr-gray-mid'
+                }`}
+              >
+                {topicInput.length}/{TOPIC_MAX}
+              </span>
+            </div>
             <div className="relative">
               <Textarea
+                ref={topicRef}
                 placeholder={language === 'fr'
-                  ? 'Ex: "Les dérivées en mathématiques", "La Révolution française", "Les boucles for en Python"...'
+                  ? 'Ex : « Les dérivées en mathématiques », « La Révolution française », « Les boucles for en Python »…'
                   : 'Ex: "Derivatives in calculus", "The French Revolution", "For loops in Python"...'}
                 value={topicInput}
                 onChange={(e) => setTopicInput(e.target.value)}
-                onKeyPress={handleKeyPress}
-                className="min-h-[100px] text-base bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 focus:border-orange-500 focus:ring-orange-500/20 rounded-xl resize-none"
+                maxLength={TOPIC_MAX + 50}
+                className={`min-h-[110px] text-[15px] leading-relaxed resize-none ${fieldClass}`}
               />
-              <div className="absolute bottom-3 right-3 flex items-center gap-1 text-xs text-gray-400">
-                <Lightbulb className="w-3 h-3" />
-                {language === 'fr' ? "L'IA génère une Q/R" : "AI generates a Q&A"}
+              <div className="absolute bottom-3 right-3 flex items-center gap-1.5 text-[11px] text-pr-gray-mid pointer-events-none">
+                <Lightbulb className="w-3 h-3 text-pr-orange" />
+                {language === 'fr' ? "L'IA génère une Q/R" : 'AI generates a Q&A'}
               </div>
             </div>
           </div>
 
-          {/* Category Selection */}
+          {/* Chips de démarrage rapide */}
           <div className="space-y-2">
-            <Label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+            <Label className={labelClass}>
+              {language === 'fr' ? 'Idées rapides' : 'Quick ideas'}
+            </Label>
+            <div className="flex flex-wrap gap-2">
+              {quickPrompts.map((p) => (
+                <button
+                  key={p.label}
+                  type="button"
+                  onClick={() => applyQuickPrompt(p)}
+                  className="group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-pr-gray-bg border border-pr-gray-light text-[12px] font-medium text-pr-gray-dark hover:bg-pr-orange-pale hover:border-pr-orange/40 hover:text-pr-orange-dark transition-colors"
+                >
+                  {p.label}
+                  <ArrowRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <Label className={labelClass}>
               {language === 'fr' ? 'Catégorie' : 'Category'}
             </Label>
             <Select value={categoryInput} onValueChange={setCategoryInput}>
-              <SelectTrigger className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-xl">
+              <SelectTrigger className={fieldClass}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -147,59 +254,55 @@ export const FlashcardInput = ({
           </div>
         </div>
       ) : (
-        /* Manual Mode */
         <div className="space-y-5">
-          {/* Front (Question) */}
           <div className="space-y-2">
-            <Label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-              {language === 'fr' ? 'Question / Terme (Recto)' : 'Question / Term (Front)'}
+            <Label className={labelClass}>
+              {language === 'fr' ? 'Question / terme (recto)' : 'Question / Term (front)'}
             </Label>
             <Textarea
+              ref={frontRef}
               placeholder={language === 'fr'
-                ? 'La question ou le concept à mémoriser...'
+                ? 'La question ou le concept à mémoriser…'
                 : 'The question or concept to memorize...'}
               value={frontInput}
               onChange={(e) => setFrontInput(e.target.value)}
-              className="min-h-[80px] text-base bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 focus:border-orange-500 focus:ring-orange-500/20 rounded-xl resize-none"
+              className={`min-h-[80px] text-[15px] leading-relaxed resize-none ${fieldClass}`}
             />
           </div>
 
-          {/* Back (Answer) */}
           <div className="space-y-2">
-            <Label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-              {language === 'fr' ? 'Réponse / Définition (Verso)' : 'Answer / Definition (Back)'}
+            <Label className={labelClass}>
+              {language === 'fr' ? 'Réponse / définition (verso)' : 'Answer / Definition (back)'}
             </Label>
             <Textarea
               placeholder={language === 'fr'
-                ? 'La réponse ou la définition...'
+                ? 'La réponse ou la définition…'
                 : 'The answer or definition...'}
               value={backInput}
               onChange={(e) => setBackInput(e.target.value)}
-              className="min-h-[80px] text-base bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 focus:border-orange-500 focus:ring-orange-500/20 rounded-xl resize-none"
+              className={`min-h-[80px] text-[15px] leading-relaxed resize-none ${fieldClass}`}
             />
           </div>
 
-          {/* Hint (Optional) */}
           <div className="space-y-2">
-            <Label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+            <Label className={labelClass}>
               {language === 'fr' ? 'Indice (optionnel)' : 'Hint (optional)'}
             </Label>
             <Input
-              placeholder={language === 'fr' ? 'Un indice pour aider...' : 'A hint to help...'}
+              placeholder={language === 'fr' ? 'Un indice pour aider…' : 'A hint to help...'}
               value={hintInput}
               onChange={(e) => setHintInput(e.target.value)}
-              className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 focus:border-orange-500 focus:ring-orange-500/20 rounded-xl"
+              className={fieldClass}
             />
           </div>
 
-          {/* Category */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+              <Label className={labelClass}>
                 {language === 'fr' ? 'Catégorie' : 'Category'}
               </Label>
               <Select value={categoryInput} onValueChange={setCategoryInput}>
-                <SelectTrigger className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-xl">
+                <SelectTrigger className={fieldClass}>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -212,25 +315,27 @@ export const FlashcardInput = ({
               </Select>
             </div>
 
-            {/* Tags */}
             <div className="space-y-2">
-              <Label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-                Tags
-              </Label>
+              <Label className={labelClass}>Tags</Label>
               <div className="flex gap-2">
                 <Input
-                  placeholder={language === 'fr' ? 'Ajouter un tag...' : 'Add a tag...'}
+                  placeholder={language === 'fr' ? 'Ajouter un tag…' : 'Add a tag...'}
                   value={tagInputValue}
                   onChange={(e) => setTagInputValue(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddTag())}
-                  className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 focus:border-orange-500 focus:ring-orange-500/20 rounded-xl"
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && !(e.metaKey || e.ctrlKey)) {
+                      e.preventDefault();
+                      handleAddTag();
+                    }
+                  }}
+                  className={fieldClass}
                 />
                 <Button
                   type="button"
                   variant="outline"
                   size="icon"
                   onClick={handleAddTag}
-                  className="shrink-0 rounded-xl"
+                  className="shrink-0 rounded-lg border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange/40"
                 >
                   <Plus className="w-4 h-4" />
                 </Button>
@@ -238,47 +343,108 @@ export const FlashcardInput = ({
             </div>
           </div>
 
-          {/* Tags Display */}
           {tagsInput.length > 0 && (
             <div className="flex flex-wrap gap-2">
               {tagsInput.map((tag) => (
-                <Badge
+                <span
                   key={tag}
-                  variant="secondary"
-                  className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 px-3 py-1 gap-1"
+                  className="inline-flex items-center gap-1 bg-pr-orange-pale text-pr-orange-dark px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[0.08em]"
                 >
                   {tag}
-                  <button onClick={() => handleRemoveTag(tag)} className="hover:text-orange-900">
+                  <button
+                    onClick={() => handleRemoveTag(tag)}
+                    className="hover:text-pr-black transition-colors"
+                    aria-label={`remove ${tag}`}
+                  >
                     <X className="w-3 h-3" />
                   </button>
-                </Badge>
+                </span>
               ))}
+            </div>
+          )}
+
+          {/* Preview live */}
+          {(frontInput.trim() || backInput.trim()) && (
+            <div className="pt-2">
+              <button
+                type="button"
+                onClick={() => setShowPreview((v) => !v)}
+                className="inline-flex items-center gap-1.5 text-[12px] font-medium text-pr-gray-mid hover:text-pr-orange-dark transition-colors"
+              >
+                {showPreview ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                {showPreview
+                  ? (language === 'fr' ? "Masquer l'aperçu" : 'Hide preview')
+                  : (language === 'fr' ? "Aperçu de la flashcard" : 'Preview flashcard')}
+              </button>
+
+              {showPreview && (
+                <div className="mt-3">
+                  <button
+                    type="button"
+                    onClick={() => setPreviewFlipped((v) => !v)}
+                    className="w-full text-left bg-pr-gray-bg border border-pr-gray-light rounded-xl p-5 hover:border-pr-orange/40 transition-colors group"
+                  >
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark">
+                        {previewFlipped
+                          ? (language === 'fr' ? 'Verso' : 'Back')
+                          : (language === 'fr' ? 'Recto' : 'Front')}
+                      </span>
+                      <span className="text-[10px] uppercase tracking-[0.12em] text-pr-gray-mid group-hover:text-pr-orange-dark">
+                        {language === 'fr' ? 'Cliquer pour retourner' : 'Click to flip'}
+                      </span>
+                    </div>
+                    <div className="font-dm-serif text-lg text-pr-black leading-snug min-h-[2.5em] whitespace-pre-wrap">
+                      {previewFlipped
+                        ? (backInput || (language === 'fr' ? '— verso vide —' : '— empty back —'))
+                        : (frontInput || (language === 'fr' ? '— recto vide —' : '— empty front —'))}
+                    </div>
+                    {!previewFlipped && hintInput.trim() && (
+                      <div className="mt-3 pt-3 border-t border-pr-gray-light text-[12px] text-pr-gray-mid italic">
+                        💡 {hintInput}
+                      </div>
+                    )}
+                  </button>
+                </div>
+              )}
             </div>
           )}
         </div>
       )}
 
-      {/* Generate Button */}
-      <Button
-        onClick={onGenerate}
-        disabled={isGenerating || (isAiMode ? !topicInput.trim() : !frontInput.trim() || !backInput.trim())}
-        className="w-full h-14 text-lg bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white rounded-xl shadow-lg shadow-orange-500/30 transition-all duration-300 transform hover:scale-[1.01] disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        {isGenerating ? (
-          <>
-            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-            {language === 'fr' ? 'Création en cours...' : 'Creating...'}
-          </>
-        ) : (
-          <>
-            {isAiMode ? <Sparkles className="mr-2 h-5 w-5" /> : <PenLine className="mr-2 h-5 w-5" />}
-            {isAiMode
-              ? (language === 'fr' ? 'Générer avec l\'IA' : 'Generate with AI')
-              : (language === 'fr' ? 'Créer la flashcard' : 'Create flashcard')
-            }
-          </>
+      {/* Bouton + raccourci + hint disabled */}
+      <div className="space-y-2">
+        <Button
+          onClick={onGenerate}
+          disabled={isGenerating || !canSubmit}
+          className="w-full h-12 text-[15px] font-semibold bg-pr-orange hover:bg-pr-orange-dark text-white rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {isGenerating ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              {language === 'fr' ? 'Création en cours…' : 'Creating...'}
+            </>
+          ) : (
+            <>
+              {isAiMode ? <Sparkles className="mr-2 h-4 w-4" /> : <PenLine className="mr-2 h-4 w-4" />}
+              {isAiMode
+                ? (language === 'fr' ? "Générer avec l'IA" : 'Generate with AI')
+                : (language === 'fr' ? 'Créer la flashcard' : 'Create flashcard')
+              }
+              <span className="ml-3 hidden sm:inline-flex items-center gap-1 text-[10px] opacity-80">
+                <kbd className="px-1.5 py-0.5 rounded bg-white/20 border border-white/30 font-medium">{cmdKey}</kbd>
+                <kbd className="px-1.5 py-0.5 rounded bg-white/20 border border-white/30 font-medium">↵</kbd>
+              </span>
+            </>
+          )}
+        </Button>
+
+        {missingMessage && !isGenerating && (
+          <p className="text-center text-[12px] text-pr-gray-mid">
+            {missingMessage}
+          </p>
         )}
-      </Button>
+      </div>
     </div>
   );
 };

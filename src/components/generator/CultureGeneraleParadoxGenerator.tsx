@@ -103,18 +103,28 @@ export const CultureGeneraleParadoxGenerator = ({ subjectFromParent, year }: Cul
     return (
         <div className="space-y-6">
             {/* Header Card */}
-            <Card className="bg-gradient-to-br from-white via-amber-50/30 to-white border border-amber-200">
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-2xl font-bold bg-gradient-to-r from-amber-600 to-amber-500 bg-clip-text text-transparent">
-                        <Lightbulb className="h-7 w-7 text-amber-600" />
-                        Générateur de Paradoxe (Culture Générale)
-                    </CardTitle>
+            <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+                <div className="h-[3px] w-full bg-pr-orange" />
+                <CardHeader className="px-6 pt-5 pb-4">
+                    <div className="flex items-center gap-3">
+                        <div className="w-11 h-11 rounded-xl bg-pr-orange-pale border border-pr-orange-soft flex items-center justify-center">
+                            <Lightbulb className="h-5 w-5 text-pr-orange-dark" />
+                        </div>
+                        <div>
+                            <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-0.5">
+                                Culture générale
+                            </div>
+                            <CardTitle className="font-dm-serif text-2xl text-pr-black leading-none">
+                                Générateur de paradoxe
+                            </CardTitle>
+                        </div>
+                    </div>
                 </CardHeader>
-                <CardContent>
-                    <Alert className="bg-amber-50 border-amber-200">
-                        <Info className="h-4 w-4 text-amber-600" />
-                        <AlertDescription className="text-sm text-gray-700">
-                            <strong>Le paradoxe :</strong> C'est une tension apparemment contradictoire au cœur du sujet qui structure votre réflexion.
+                <CardContent className="px-6 pb-6">
+                    <Alert className="bg-pr-orange-pale/60 border-pr-orange-pale rounded-xl">
+                        <Info className="h-4 w-4 text-pr-orange-dark" />
+                        <AlertDescription className="text-[14px] text-pr-gray-dark leading-relaxed">
+                            <strong className="text-pr-black">Le paradoxe :</strong> c'est une tension apparemment contradictoire au cœur du sujet qui structure votre réflexion.
                             Il permet d'articuler les différentes dimensions du problème et de nourrir votre problématique.
                         </AlertDescription>
                     </Alert>
@@ -122,55 +132,52 @@ export const CultureGeneraleParadoxGenerator = ({ subjectFromParent, year }: Cul
             </Card>
 
             {/* Input Form Card */}
-            <Card className="bg-white rounded-xl shadow-lg border border-gray-200">
-                <CardHeader>
-                    <CardTitle className="text-xl font-semibold text-gray-900 flex items-center gap-2">
-                        <Sparkles className="h-5 w-5 text-amber-600" />
+            <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+                <CardHeader className="px-6 pt-5 pb-4">
+                    <CardTitle className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
+                        <Sparkles className="h-4 w-4 text-pr-orange" />
                         Analyser un sujet
                     </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-6">
+                <CardContent className="space-y-6 px-6 pb-6">
                     {/* Subject Input */}
-                    <div className="space-y-2">
-                        <Label htmlFor="subject" className="text-sm font-medium text-gray-900 flex items-center gap-2">
-                            Sujet de dissertation <span className="text-red-500">*</span>
-                        </Label>
+                    <div className="space-y-3">
+                        <div className="flex items-center justify-between gap-3">
+                            <Label htmlFor="subject" className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
+                                <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-pr-orange-pale text-pr-orange-dark text-[11px] font-bold">
+                                    1
+                                </span>
+                                Sujet de dissertation
+                            </Label>
+                            <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark bg-pr-orange-pale px-2.5 py-1 rounded-full">
+                                Requis
+                            </span>
+                        </div>
                         <Textarea
                             id="subject"
-                            placeholder="Ex: La liberté est-elle absence de contraintes ?"
+                            placeholder="Ex : La liberté est-elle absence de contraintes ?"
                             value={subject}
                             onChange={(e) => setSubject(e.target.value)}
                             readOnly={!!subjectFromParent}
-                            className={`min-h-[120px] border-gray-300 focus:border-amber-500 focus:ring-amber-500 rounded-lg resize-none ${subjectFromParent ? 'bg-amber-50/50' : 'bg-gray-50'}`}
+                            className={`min-h-[120px] border-pr-gray-light focus:border-pr-orange focus:ring-2 focus:ring-pr-orange/20 rounded-xl resize-y text-[15px] leading-relaxed p-4 transition-colors text-pr-black placeholder:text-pr-gray-mid ${subjectFromParent ? 'bg-pr-orange-pale/40' : 'bg-white'}`}
                         />
-                        <p className="text-xs text-gray-500">
-                            {subjectFromParent ? 'Sujet imposé depuis la page principale' : 'Entrez le sujet dont vous voulez identifier le paradoxe'}
+                        <p className="text-[13px] text-pr-gray-mid">
+                            {subjectFromParent ? 'Sujet imposé depuis la page principale.' : 'Entrez le sujet dont vous voulez identifier le paradoxe.'}
                         </p>
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-3 pt-4">
-                        <Button
-                            type="button"
-                            onClick={loadExample}
-                            variant="outline"
-                            className="flex items-center gap-2 border border-gray-300 bg-gray-100 text-gray-900 hover:bg-gray-50 hover:border-amber-500 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md"
-                            disabled={isGenerating}
-                        >
-                            <Info className="h-4 w-4" />
-                            Exemple
-                        </Button>
-
+                    <div className="flex flex-col sm:flex-row gap-3 pt-2">
                         <Button
                             type="button"
                             onClick={handleGenerate}
                             disabled={!subject.trim() || isGenerating}
-                            className="flex items-center justify-center gap-2 flex-1 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-700 hover:to-amber-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 min-h-[44px]"
+                            className="flex items-center justify-center gap-2 flex-1 bg-pr-orange hover:bg-pr-orange-dark text-white font-semibold rounded-xl shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 disabled:opacity-50 disabled:shadow-none h-12 text-[15px]"
                         >
                             {isGenerating ? (
                                 <>
                                     <Loader2 className="h-4 w-4 animate-spin" />
-                                    <span>Génération en cours...</span>
+                                    <span>Génération en cours…</span>
                                 </>
                             ) : (
                                 <>
@@ -179,30 +186,49 @@ export const CultureGeneraleParadoxGenerator = ({ subjectFromParent, year }: Cul
                                 </>
                             )}
                         </Button>
+
+                        <Button
+                            type="button"
+                            onClick={loadExample}
+                            className="flex items-center gap-2 bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft rounded-xl h-12 px-4 font-medium transition-colors"
+                            disabled={isGenerating}
+                        >
+                            <Info className="h-4 w-4" />
+                            Exemple
+                        </Button>
                     </div>
                 </CardContent>
             </Card>
 
             {/* Result Card */}
             {paradoxResult && (
-                <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <div className="space-y-5 animate-in fade-in slide-in-from-bottom-4 duration-500">
                     {/* Paradox Statement */}
-                    <Card className="bg-white rounded-xl shadow-lg border border-amber-200">
-                        <CardHeader>
-                            <div className="flex items-center justify-between">
-                                <CardTitle className="text-xl font-semibold text-gray-900 flex items-center gap-2">
-                                    <Lightbulb className="h-5 w-5 text-amber-600" />
-                                    Paradoxe identifié
-                                </CardTitle>
+                    <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+                        <div className="h-[3px] w-full bg-pr-orange" />
+                        <CardHeader className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5">
+                            <div className="flex items-center justify-between gap-3 flex-wrap">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-xl bg-white border border-pr-orange-soft flex items-center justify-center">
+                                        <Lightbulb className="h-5 w-5 text-pr-orange-dark" />
+                                    </div>
+                                    <div>
+                                        <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-0.5">
+                                            Paradoxe identifié
+                                        </div>
+                                        <CardTitle className="font-dm-serif text-xl text-pr-black leading-none">
+                                            Tension structurante
+                                        </CardTitle>
+                                    </div>
+                                </div>
                                 <Button
                                     onClick={handleCopy}
-                                    variant="outline"
                                     size="sm"
-                                    className="flex items-center gap-2"
+                                    className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft rounded-lg flex items-center gap-2"
                                 >
                                     {copied ? (
                                         <>
-                                            <Check className="h-4 w-4 text-green-600" />
+                                            <Check className="h-4 w-4" />
                                             Copié
                                         </>
                                     ) : (
@@ -214,9 +240,9 @@ export const CultureGeneraleParadoxGenerator = ({ subjectFromParent, year }: Cul
                                 </Button>
                             </div>
                         </CardHeader>
-                        <CardContent>
-                            <div className="bg-gradient-to-r from-amber-50 to-amber-100 rounded-lg p-6 border border-amber-200">
-                                <p className="text-lg font-semibold text-gray-900 leading-relaxed">
+                        <CardContent className="p-6 sm:p-7">
+                            <div className="bg-pr-orange-pale/60 rounded-xl p-6 border border-pr-orange-pale">
+                                <p className="font-lora text-[18px] text-pr-black leading-[1.5]">
                                     {paradoxResult.paradox}
                                 </p>
                             </div>
@@ -224,44 +250,40 @@ export const CultureGeneraleParadoxGenerator = ({ subjectFromParent, year }: Cul
                     </Card>
 
                     {/* Explanation */}
-                    <Card className="bg-white rounded-xl shadow-lg border border-gray-200">
-                        <CardHeader>
-                            <CardTitle className="text-xl font-semibold text-gray-900 flex items-center gap-2">
-                                <Info className="h-5 w-5 text-gray-600" />
+                    <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+                        <CardHeader className="px-6 pt-5 pb-3">
+                            <CardTitle className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2">
+                                <Info className="h-3.5 w-3.5 text-pr-orange" />
                                 Explication du paradoxe
                             </CardTitle>
                         </CardHeader>
-                        <CardContent>
-                            <div className="prose max-w-none">
-                                <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                                    {paradoxResult.explanation}
-                                </p>
-                            </div>
+                        <CardContent className="px-6 pb-6">
+                            <p className="text-pr-gray-dark text-[15px] leading-relaxed whitespace-pre-line">
+                                {paradoxResult.explanation}
+                            </p>
                         </CardContent>
                     </Card>
 
                     {/* Exploitation */}
-                    <Card className="bg-blue-50/50 rounded-xl shadow-lg border border-blue-200">
-                        <CardHeader>
-                            <CardTitle className="text-xl font-semibold text-gray-900 flex items-center gap-2">
-                                <ListChecks className="h-5 w-5 text-blue-600" />
-                                Pistes d'exploitation pour votre dissertation
+                    <Card className="bg-white rounded-2xl border border-pr-gray-light border-l-[3px] border-l-pr-orange shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+                        <CardHeader className="px-6 pt-5 pb-3">
+                            <CardTitle className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2">
+                                <ListChecks className="h-3.5 w-3.5 text-pr-orange" />
+                                Pistes d'exploitation
                             </CardTitle>
                         </CardHeader>
-                        <CardContent>
-                            <div className="prose max-w-none">
-                                <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                                    {paradoxResult.exploitation}
-                                </p>
-                            </div>
+                        <CardContent className="px-6 pb-6">
+                            <p className="text-pr-gray-dark text-[15px] leading-relaxed whitespace-pre-line">
+                                {paradoxResult.exploitation}
+                            </p>
                         </CardContent>
                     </Card>
 
                     {/* Advice */}
-                    <Alert className="bg-purple-50 border-purple-200">
-                        <Sparkles className="h-4 w-4 text-purple-600" />
-                        <AlertDescription className="text-sm text-gray-700">
-                            <strong>Conseil méthodologique :</strong> Utilisez ce paradoxe comme fil conducteur de votre dissertation.
+                    <Alert className="bg-pr-gray-bg border-pr-gray-light rounded-xl">
+                        <Sparkles className="h-4 w-4 text-pr-orange" />
+                        <AlertDescription className="text-[14px] text-pr-gray-dark leading-relaxed">
+                            <strong className="text-pr-black">Conseil méthodologique :</strong> utilisez ce paradoxe comme fil conducteur de votre dissertation.
                             Il peut nourrir votre problématique et structurer votre plan dialectique. Pensez à l'exploiter dans votre introduction
                             et à le résoudre progressivement au fil de votre développement.
                         </AlertDescription>

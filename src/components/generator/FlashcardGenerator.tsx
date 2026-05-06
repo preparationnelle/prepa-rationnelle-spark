@@ -1,9 +1,7 @@
 
 import React, { useState } from 'react';
-import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from '@/components/ui/badge';
-import { BookOpen, Play, History, Sparkles, BarChart3 } from 'lucide-react';
+import { Play, History, Sparkles, BarChart3 } from 'lucide-react';
 import { FlashcardInput } from './FlashcardInput';
 import { GeneratedFlashcardsList } from './GeneratedFlashcardsList';
 import { FlashcardReviewSystem } from '@/components/flashcards/FlashcardReviewSystem';
@@ -24,7 +22,6 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
     isGenerating,
     generatedFlashcards,
     clearGeneratedHistory,
-    // Universal mode
     isAiMode,
     setIsAiMode,
     frontInput,
@@ -55,7 +52,6 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
     await generateFlashcardUniversal();
   };
 
-  // Get category breakdown for stats
   const getCategoryStats = () => {
     const stats: Record<string, number> = {};
     allFlashcards.forEach(card => {
@@ -65,28 +61,60 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
     return Object.entries(stats).sort((a, b) => b[1] - a[1]);
   };
 
+  const todayCount = allFlashcards.filter(
+    c => new Date(c.created_at).toDateString() === new Date().toDateString()
+  ).length;
+
+  const weekCount = allFlashcards.filter(card => {
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+    return new Date(card.created_at) >= oneWeekAgo;
+  }).length;
+
+  const summaryStats = [
+    { label: language === 'fr' ? 'Total créées' : 'Total created', value: allFlashcards.length },
+    { label: language === 'fr' ? 'Cette session' : 'This session', value: generatedFlashcards.length },
+    { label: language === 'fr' ? "Aujourd'hui" : 'Today', value: todayCount },
+    { label: language === 'fr' ? 'Cette semaine' : 'This week', value: weekCount },
+  ];
+
+  const tabs = [
+    { id: 'generated', icon: Sparkles, label: language === 'fr' ? 'Générées' : 'Generated', count: generatedFlashcards.length },
+    { id: 'review', icon: Play, label: language === 'fr' ? 'Révision' : 'Review', count: allFlashcards.length },
+    { id: 'history', icon: History, label: language === 'fr' ? 'Ma collection' : 'My collection', count: allFlashcards.length },
+    { id: 'stats', icon: BarChart3, label: 'Stats' },
+  ];
+
   return (
-    <div className="max-w-6xl mx-auto space-y-6 pb-20">
+    <div className="max-w-6xl mx-auto px-4 pb-20 font-dm-sans">
 
-      {/* Header Section */}
-      <div className="relative text-center pb-4 border-b border-gray-100 dark:border-gray-800">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 -mt-10 w-64 h-64 bg-orange-200/20 rounded-full blur-[80px] pointer-events-none" />
+      {/* Header — trait orange signature + titre serif */}
+      <header className="text-center pt-8 pb-10">
+        <div className="inline-flex items-center gap-2 mb-5">
+          <span className="h-px w-8 bg-pr-orange" />
+          <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-orange-dark">
+            {language === 'fr' ? 'Générateur de flashcards' : 'Flashcard generator'}
+          </span>
+          <span className="h-px w-8 bg-pr-orange" />
+        </div>
 
-        <h1 className="relative text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-800 to-gray-600 dark:from-white dark:via-gray-200 dark:to-gray-400 mb-2 tracking-tight">
+        <h1 className="font-dm-serif text-4xl md:text-5xl text-pr-black leading-[1.1] mb-4">
           {language === 'fr' ? 'Flashcards Universelles' : 'Universal Flashcards'}
         </h1>
 
-        <p className="relative text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-[15px] text-pr-gray-dark max-w-xl mx-auto leading-relaxed">
           {language === 'fr'
-            ? 'Créez des cartes de révision pour n\'importe quel sujet : maths, code, histoire, vocabulaire...'
-            : 'Create review cards for any subject: math, code, history, vocabulary...'}
+            ? "Créez vos cartes pour n'importe quel sujet — maths, langues, histoire, code — et révisez avec feedback immédiat."
+            : 'Create cards for any subject — math, languages, history, code — and review with instant feedback.'}
         </p>
-      </div>
+      </header>
 
-      {/* Main Input Area */}
-      <div className="max-w-3xl mx-auto">
-        <div className="bg-white dark:bg-gray-900 rounded-3xl p-1 shadow-2xl shadow-orange-500/10 border border-gray-100 dark:border-gray-800">
-          <div className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800/50 rounded-[22px] px-6 py-6 md:px-8 md:py-8">
+      {/* Carte de saisie */}
+      <section className="max-w-3xl mx-auto mb-12">
+        <div className="relative bg-white border border-pr-gray-light rounded-2xl overflow-hidden">
+          {/* Trait orange signature en haut */}
+          <div className="h-[3px] bg-pr-orange" />
+          <div className="p-6 md:p-8">
             <FlashcardInput
               language={language}
               isAiMode={isAiMode}
@@ -108,39 +136,44 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
             />
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Content Tabs */}
-      <div className="max-w-5xl mx-auto">
+      {/* Tabs + contenu */}
+      <section className="max-w-5xl mx-auto">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <div className="flex justify-center mb-6">
-            <TabsList className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-1.5 h-auto rounded-full shadow-lg shadow-gray-200/50 dark:shadow-none inline-flex gap-1">
-              {[
-                { id: 'generated', icon: Sparkles, label: language === 'fr' ? 'Générées' : 'Generated', count: generatedFlashcards.length, countColor: 'bg-orange-100 text-orange-700' },
-                { id: 'review', icon: Play, label: language === 'fr' ? 'Révision' : 'Review', count: allFlashcards.length, countColor: 'bg-green-100 text-green-700' },
-                { id: 'history', icon: History, label: language === 'fr' ? 'Ma Collection' : 'My Collection', count: allFlashcards.length, countColor: 'bg-blue-100 text-blue-700' },
-                { id: 'stats', icon: BarChart3, label: 'Stats' }
-              ].map((tab) => (
-                <TabsTrigger
-                  key={tab.id}
-                  value={tab.id}
-                  className="rounded-full px-6 py-3 text-sm font-medium transition-all data-[state=active]:bg-gray-900 data-[state=active]:text-white dark:data-[state=active]:bg-white dark:data-[state=active]:text-gray-900"
-                >
-                  <div className="flex items-center gap-2">
-                    <tab.icon className="w-4 h-4" />
-                    <span>{tab.label}</span>
-                    {tab.count !== undefined && tab.count > 0 && (
-                      <span className={`ml-1.5 px-2 py-0.5 text-[10px] font-bold rounded-full ${activeTab === tab.id ? 'bg-white/20 text-current' : tab.countColor}`}>
-                        {tab.count}
-                      </span>
-                    )}
-                  </div>
-                </TabsTrigger>
-              ))}
+          <div className="sticky top-2 z-30 mb-8 flex justify-center">
+            <TabsList className="bg-white/80 backdrop-blur-md border border-pr-gray-light p-1 h-auto rounded-full inline-flex gap-1 shadow-sm overflow-x-auto max-w-full">
+              {tabs.map((tab) => {
+                const Icon = tab.icon;
+                const isActive = activeTab === tab.id;
+                return (
+                  <TabsTrigger
+                    key={tab.id}
+                    value={tab.id}
+                    className="rounded-full px-4 sm:px-5 py-2.5 text-[13px] font-medium text-pr-gray-mid transition-colors data-[state=active]:bg-pr-orange-pale data-[state=active]:text-pr-orange-dark data-[state=active]:shadow-sm whitespace-nowrap"
+                  >
+                    <div className="flex items-center gap-2">
+                      <Icon className="w-4 h-4" />
+                      <span className="hidden sm:inline">{tab.label}</span>
+                      {tab.count !== undefined && tab.count > 0 && (
+                        <span
+                          className={`ml-0 sm:ml-1 px-1.5 min-w-[20px] text-center text-[10px] font-semibold rounded-full ${
+                            isActive
+                              ? 'bg-white text-pr-orange-dark border border-pr-orange/30'
+                              : 'bg-pr-gray-bg text-pr-gray-mid border border-pr-gray-light'
+                          }`}
+                        >
+                          {tab.count}
+                        </span>
+                      )}
+                    </div>
+                  </TabsTrigger>
+                );
+              })}
             </TabsList>
           </div>
 
-          <div className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl rounded-3xl p-6 md:p-8 min-h-[400px] border border-white/50 dark:border-gray-800 shadow-xl shadow-gray-200/40 dark:shadow-none">
+          <div className="bg-white border border-pr-gray-light rounded-2xl p-6 md:p-8 min-h-[400px]">
             <TabsContent value="generated" className="mt-0 focus-visible:outline-none">
               <GeneratedFlashcardsList
                 language={language}
@@ -166,66 +199,88 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
             </TabsContent>
 
             <TabsContent value="stats" className="mt-0 focus-visible:outline-none">
-              <div className="space-y-8">
-                {/* Summary Stats */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                  {[
-                    { label: language === 'fr' ? 'Total créées' : 'Total Created', value: allFlashcards.length, color: 'text-blue-600', bg: 'bg-blue-50 dark:bg-blue-900/20' },
-                    { label: language === 'fr' ? 'Cette session' : 'This Session', value: generatedFlashcards.length, color: 'text-green-600', bg: 'bg-green-50 dark:bg-green-900/20' },
-                    { label: language === 'fr' ? "Aujourd'hui" : 'Today', value: allFlashcards.filter(c => new Date(c.created_at).toDateString() === new Date().toDateString()).length, color: 'text-purple-600', bg: 'bg-purple-50 dark:bg-purple-900/20' },
-                    {
-                      label: language === 'fr' ? 'Cette semaine' : 'This Week', value: allFlashcards.filter(card => {
-                        const oneWeekAgo = new Date();
-                        oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-                        return new Date(card.created_at) >= oneWeekAgo;
-                      }).length, color: 'text-orange-600', bg: 'bg-orange-50 dark:bg-orange-900/20'
-                    }
-                  ].map((stat, idx) => (
-                    <Card key={idx} className="border-0 shadow-none bg-transparent">
-                      <div className={`${stat.bg} rounded-2xl p-6 text-center transition-transform hover:scale-105 duration-300`}>
-                        <div className={`text-4xl font-extrabold mb-2 ${stat.color}`}>{stat.value}</div>
-                        <div className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{stat.label}</div>
-                      </div>
-                    </Card>
-                  ))}
-                </div>
-
-                {/* Category Breakdown */}
-                <div className="bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-6">
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                    <BookOpen className="w-5 h-5 text-orange-500" />
-                    {language === 'fr' ? 'Par catégorie' : 'By Category'}
+              {allFlashcards.length === 0 ? (
+                <div className="flex flex-col items-center text-center py-16">
+                  <div className="w-12 h-12 rounded-full bg-pr-orange-pale flex items-center justify-center mb-4">
+                    <BarChart3 className="w-6 h-6 text-pr-orange-dark" />
+                  </div>
+                  <h3 className="font-dm-serif text-xl text-pr-black mb-2">
+                    {language === 'fr' ? 'Pas encore de statistiques' : 'No stats yet'}
                   </h3>
-                  <div className="space-y-3">
-                    {getCategoryStats().length > 0 ? (
-                      getCategoryStats().map(([cat, count]) => (
-                        <div key={cat} className="flex items-center justify-between">
-                          <span className="font-medium text-gray-700 dark:text-gray-300">{cat}</span>
-                          <div className="flex items-center gap-3">
-                            <div className="w-32 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                              <div
-                                className="h-full bg-orange-500 rounded-full transition-all"
-                                style={{ width: `${(count / allFlashcards.length) * 100}%` }}
-                              />
-                            </div>
-                            <Badge variant="secondary" className="min-w-[40px] justify-center">
-                              {count}
-                            </Badge>
-                          </div>
+                  <p className="text-sm text-pr-gray-mid max-w-sm mb-5">
+                    {language === 'fr'
+                      ? "Crée ta première flashcard pour voir tes progrès — total, cadence, répartition par matière."
+                      : 'Create your first flashcard to see your progress — total, pace, breakdown by subject.'}
+                  </p>
+                  <button
+                    onClick={() => setActiveTab('generated')}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-pr-orange hover:bg-pr-orange-dark text-white text-[13px] font-semibold transition-colors"
+                  >
+                    <Sparkles className="w-4 h-4" />
+                    {language === 'fr' ? 'Créer ma première carte' : 'Create my first card'}
+                  </button>
+                </div>
+              ) : (
+                <div className="space-y-10">
+                  {/* Cartes stats — neutres + numéro orange décoratif */}
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                    {summaryStats.map((stat, idx) => (
+                      <div
+                        key={idx}
+                        className="relative bg-pr-gray-bg border border-pr-gray-light rounded-xl p-5 text-center overflow-hidden"
+                      >
+                        <div className="absolute top-0 left-0 h-[2px] w-10 bg-pr-orange" />
+                        <div className="font-dm-serif text-4xl text-pr-orange leading-none mb-2 tabular-nums">
+                          {stat.value}
                         </div>
-                      ))
-                    ) : (
-                      <p className="text-gray-500 text-center py-4">
-                        {language === 'fr' ? 'Aucune flashcard créée' : 'No flashcards created'}
-                      </p>
-                    )}
+                        <div className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-gray-mid">
+                          {stat.label}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Répartition par catégorie */}
+                  <div>
+                    <div className="flex items-center gap-3 mb-5">
+                      <div className="h-7 w-[3px] bg-pr-orange rounded-full" />
+                      <h3 className="font-dm-serif text-xl text-pr-black">
+                        {language === 'fr' ? 'Répartition par catégorie' : 'By category'}
+                      </h3>
+                    </div>
+
+                    <div className="bg-pr-gray-bg border border-pr-gray-light rounded-xl p-6">
+                      <div className="space-y-4">
+                        {getCategoryStats().map(([cat, count]) => {
+                          const percent = (count / allFlashcards.length) * 100;
+                          return (
+                            <div key={cat} className="space-y-1.5">
+                              <div className="flex items-center justify-between text-[13px]">
+                                <span className="font-medium text-pr-gray-dark">{cat}</span>
+                                <span className="text-pr-gray-mid tabular-nums">
+                                  <span className="text-pr-orange-dark font-semibold">{count}</span>
+                                  <span className="mx-1.5 text-pr-gray-light">·</span>
+                                  {percent.toFixed(0)}%
+                                </span>
+                              </div>
+                              <div className="h-1.5 bg-white rounded-full overflow-hidden border border-pr-gray-light">
+                                <div
+                                  className="h-full bg-pr-orange rounded-full transition-all"
+                                  style={{ width: `${percent}%` }}
+                                />
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </TabsContent>
           </div>
         </Tabs>
-      </div>
+      </section>
     </div>
   );
 };

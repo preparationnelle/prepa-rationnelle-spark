@@ -304,6 +304,16 @@ const DeveloppementDurablePage = lazy(() => import('../pages/formation/geopoliti
 const InegalitesPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/InegalitesPage'));
 const FrontieresPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/FrontieresPage'));
 const CriminalitePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/CriminalitePage'));
+const GroenlandPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/GroenlandPage'));
+const TaiwanPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/TaiwanPage'));
+const SahelPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/SahelPage'));
+const MerRougePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/MerRougePage'));
+const UkrainePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/UkrainePage'));
+const OrmuzPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/OrmuzPage'));
+const ArctiquePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/ArctiquePage'));
+const PanamaPage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/PanamaPage'));
+const IndePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/IndePage'));
+const TurquiePage = lazy(() => import('../pages/formation/geopolitique/etudes-de-cas/TurquiePage'));
 const ChronologiesPage = lazy(() => import('../pages/formation/geopolitique/ChronologiesPage'));
 const GeopolitiquesFlashcardsPage = lazy(() => import('../pages/formation/geopolitique/GeopolitiquesFlashcardsPage'));
 const GeopoliticsMaritimesFlashcardsPage = lazy(() => import('../pages/formation/geopolitique/GeopoliticsMaritimesFlashcardsPage'));
@@ -343,6 +353,9 @@ const ArticlesCultureGeneralePage = lazy(() => import('../pages/formation/cultur
 const AnalyseSujetJugerPage = lazy(() => import('../pages/formation/culture-generale/articles/AnalyseSujetJugerPage'));
 const ParadoxeProblematiquePage = lazy(() => import('../pages/formation/culture-generale/articles/ParadoxeProblematiquePage'));
 const PlanJugerPage = lazy(() => import('../pages/formation/culture-generale/articles/PlanJugerPage'));
+const DefinirHumanitePage = lazy(() => import('../pages/formation/culture-generale/articles/DefinirHumanitePage'));
+const InhumainCoeurHumainPage = lazy(() => import('../pages/formation/culture-generale/articles/InhumainCoeurHumainPage'));
+const HumaniteFaceTechniquePage = lazy(() => import('../pages/formation/culture-generale/articles/HumaniteFaceTechniquePage'));
 const MethodesCultureGeneralePage = lazy(() => import('../pages/formation/culture-generale/MethodesCultureGeneralePage'));
 const ProgrammeCultureGeneralePage = lazy(() => import('../pages/formation/culture-generale/ProgrammeCultureGeneralePage'));
 const TroisMethodesDissertationPage = lazy(() => import('../pages/formation/culture-generale/methodes/TroisMethodesDissertationPage'));
@@ -1199,6 +1212,9 @@ export const routes: RouteConfig[] = [
   { path: '/formation/culture-generale/articles/analyse-sujet-juger', component: AnalyseSujetJugerPage, title: 'CG — Analyse d\'un sujet (Juger)' },
   { path: '/formation/culture-generale/articles/paradoxe-problematique', component: ParadoxeProblematiquePage, title: 'CG — Paradoxe & Problématique' },
   { path: '/formation/culture-generale/articles/plan-juger', component: PlanJugerPage, title: 'CG — Construire le plan (Juger)' },
+  { path: '/formation/culture-generale/articles/definir-humanite', component: DefinirHumanitePage, title: 'CG — Définir l\'humanité' },
+  { path: '/formation/culture-generale/articles/inhumain-coeur-humain', component: InhumainCoeurHumainPage, title: 'CG — L\'inhumain au cœur de l\'humain' },
+  { path: '/formation/culture-generale/articles/humanite-face-technique', component: HumaniteFaceTechniquePage, title: 'CG — L\'humanité face à la technique' },
   { path: '/formation/culture-generale/methodes', component: MethodesCultureGeneralePage, title: 'CG — Méthodes' },
   { path: '/formation/culture-generale/methodes/trois-approches-dissertation', component: TroisMethodesDissertationPage, title: 'CG — 3 Méthodes de Dissertation' },
   { path: '/formation/culture-generale/methodes/paragraphes-juger', component: MethodesParagraphesJugerPage, title: 'CG — Paragraphes (Humanité)' },
@@ -1288,6 +1304,16 @@ export const routes: RouteConfig[] = [
   { path: '/formation/geopolitique/etudes-de-cas/inegalites', component: InegalitesPage, title: 'Inégalités sociales au monde' },
   { path: '/formation/geopolitique/etudes-de-cas/frontieres', component: FrontieresPage, title: 'Géopolitique des frontières' },
   { path: '/formation/geopolitique/etudes-de-cas/criminalite', component: CriminalitePage, title: 'Criminalité organisée mondiale' },
+  { path: '/formation/geopolitique/etudes-de-cas/groenland', component: GroenlandPage, title: 'Groenland' },
+  { path: '/formation/geopolitique/etudes-de-cas/taiwan', component: TaiwanPage, title: 'Taïwan' },
+  { path: '/formation/geopolitique/etudes-de-cas/sahel', component: SahelPage, title: 'Sahel' },
+  { path: '/formation/geopolitique/etudes-de-cas/mer-rouge', component: MerRougePage, title: 'Mer Rouge & Houthis' },
+  { path: '/formation/geopolitique/etudes-de-cas/ukraine', component: UkrainePage, title: 'Ukraine' },
+  { path: '/formation/geopolitique/etudes-de-cas/detroit-ormuz', component: OrmuzPage, title: 'Détroit d\'Ormuz' },
+  { path: '/formation/geopolitique/etudes-de-cas/arctique', component: ArctiquePage, title: 'Arctique' },
+  { path: '/formation/geopolitique/etudes-de-cas/canal-panama', component: PanamaPage, title: 'Canal de Panama' },
+  { path: '/formation/geopolitique/etudes-de-cas/inde', component: IndePage, title: 'Inde' },
+  { path: '/formation/geopolitique/etudes-de-cas/turquie', component: TurquiePage, title: 'Turquie' },
   { path: '/formation/geopolitique/chronologies', component: ChronologiesPage, title: 'Chronologies géopolitiques' },
   { path: '/formation/geopolitique/flashcards', component: GeopolitiquesFlashcardsPage, title: 'Flashcards Géopolitiques' },
   { path: '/formation/geopolitique/premiere-annee/espaces-maritimes/flashcards', component: GeopoliticsMaritimesFlashcardsPage, title: 'Flashcards Espaces Maritimes' },
@@ -1937,6 +1963,30 @@ export const routes: RouteConfig[] = [
     path: '/formation/math/terminale-vers-prepa/matrices-flashcards',
     component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/TerminaleVersPrepaFlashcardsPage')),
     title: 'Flashcards - Chapitre 7 : Matrices',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/recurrence-cours',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre9-Recurrence-CoursPage')),
+    title: 'Cours - Chapitre 9 : Récurrence',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/recurrence-exercices',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre9-Recurrence-ExercicesPage')),
+    title: 'Exercices - Chapitre 9 : Récurrence',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/recurrence-quiz',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/TerminaleVersPrepaQuizPage')),
+    title: 'Quiz - Chapitre 9 : Récurrence',
+    protected: false
+  },
+  {
+    path: '/formation/math/terminale-vers-prepa/recurrence-flashcards',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/TerminaleVersPrepaFlashcardsPage')),
+    title: 'Flashcards - Chapitre 9 : Récurrence',
     protected: false
   },
 

@@ -1,328 +1,313 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
 import { LatexRenderer } from '@/components/LatexRenderer';
-import { Home, ChevronRight, Dices, BookOpen, ArrowRight, Calculator } from 'lucide-react';
+import { SEOHead } from '@/components/SEOHead';
+import { Button } from '@/components/ui/button';
+import {
+  Home,
+  ChevronRight,
+  Dices,
+  ArrowRight,
+  ArrowLeft,
+  BookOpen,
+} from 'lucide-react';
 
 const Chapitre6ProbabilitesCoursPage = () => {
   return (
-    <div className="min-h-screen bg-[#EEF3FC]">
+    <div className="min-h-screen carnet-paper">
+      <SEOHead
+        canonical="/formation/math/terminale-vers-prepa/probabilites-cours"
+        title="Chapitre 6 — Probabilités · Terminale → Prépa ECG"
+        description="Cours complet sur les probabilités : univers, événements, opérations, probabilités conditionnelles, indépendance, arbres et variables aléatoires."
+      />
+
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-[#2D5BFF]">
-            <Link to="/" className="flex items-center gap-1 hover:text-[#1e3a8a] transition-colors">
-              <Home className="h-3 w-3" />
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] px-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+              <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formations" className="hover:text-[#1e3a8a] transition-colors">
-              Toutes les formations
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/formation/math/terminale-vers-prepa" className="hover:text-carnet-red transition-colors">
+              Terminale → Prépa
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formation/maths-choix" className="hover:text-[#1e3a8a] transition-colors">
-              Choix option Maths
-            </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formation/math/terminale-vers-prepa" className="hover:text-[#1e3a8a] transition-colors">
-              Terminale vers la prépa
-            </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <span className="text-[#2D5BFF] font-bold">Cours - Chapitre 6</span>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">Cours · Chapitre 6 · Probabilités</span>
           </div>
         </div>
       </nav>
 
-      <div className="space-y-8 max-w-5xl mx-auto px-4 py-8">
-        {/* En-tête */}
-        <Card className="border-0 shadow-lg bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
-          <CardHeader className="pb-6">
-            <CardTitle className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent mb-4">
-              Chapitre 6 : Probabilités de base
-            </CardTitle>
-            <p className="text-slate-600 text-lg">
-              Les probabilités - Modélisation des situations aléatoires
-            </p>
-            <p className="text-slate-500 text-sm mt-2">
-              Apprenez à calculer les probabilités dans des situations simples.
-            </p>
-          </CardHeader>
-        </Card>
+      <div className="mx-auto max-w-[1080px] px-6 lg:pl-[200px] lg:pr-16 py-14 lg:py-16">
+
+        {/* Hero */}
+        <header className="mb-16 relative">
+          <div className="carnet-eyebrow mb-5">06 · Chapitre · Probabilités</div>
+          <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[64px] leading-[1.05] tracking-[-0.022em] text-carnet-ink mb-6">
+            Les <em className="font-lora italic text-carnet-red">probabilités</em>.
+          </h1>
+          <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.6] text-carnet-ink-soft max-w-[680px]">
+            Modéliser l'aléatoire : univers, événements, conditionnelles. La <span className="carnet-hl font-lora italic">moitié de l'épreuve</span> EM Lyon, ESCP, HEC.
+          </p>
+
+          <div
+            className="carnet-hand hidden lg:block absolute pointer-events-none"
+            style={{ right: 0, top: 8, fontSize: 24, transform: 'rotate(-4deg)', maxWidth: 180, lineHeight: 1.15, textAlign: 'right' }}
+          >
+            ↘ formule de Bayes{'\n'}à connaître
+          </div>
+        </header>
 
         {/* Introduction */}
-        <Card className="border border-slate-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
-          <CardHeader className="bg-gradient-to-r from-blue-500 to-blue-600 text-white">
-            <CardTitle className="text-xl flex items-center gap-3">
-              <span className="bg-white/20 backdrop-blur-sm text-white w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold">
-                <BookOpen className="h-5 w-5" />
-              </span>
-              <span className="font-semibold">Introduction</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6 pt-6">
-            <p className="text-slate-700 leading-relaxed">
-              Les <strong>probabilités</strong> aident à modéliser les situations aléatoires simples. On étudie des expériences comme lancer un dé ou tirer une carte, souvent avec des <strong>chances égales</strong>.
+        <section className="carnet-card p-8 sm:p-10 mb-12">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-10 h-10 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+              <BookOpen className="h-4 w-4 text-carnet-red" />
+            </div>
+            <h2 className="font-lora text-[26px] text-carnet-ink leading-tight">Introduction</h2>
+          </div>
+          <hr className="carnet-divider mb-6" />
+          <p className="font-instrument text-[16px] text-carnet-ink-soft leading-[1.7]">
+            Les <strong className="text-carnet-ink">probabilités</strong> aident à modéliser les situations aléatoires simples. On étudie des expériences comme lancer un dé ou tirer une carte, souvent avec des <strong className="text-carnet-ink">chances égales</strong>.
+          </p>
+        </section>
+
+        {/* Section 1 — Bases */}
+        <section className="mb-14">
+          <div className="flex items-baseline gap-4 mb-6">
+            <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">01</span>
+            <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+            <h2 className="font-lora text-[30px] sm:text-[34px] text-carnet-ink leading-tight">Les bases</h2>
+          </div>
+
+          <div className="carnet-card p-8 sm:p-10 carnet-tilt-l space-y-6">
+            <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5">
+              <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-2 flex items-center gap-2">
+                <Dices className="h-3.5 w-3.5" />
+                A · Univers
+              </div>
+              <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65] mb-3">
+                L'<strong className="text-carnet-ink">univers</strong> est la liste de tous les résultats possibles.
+              </p>
+              <div className="bg-carnet-paper border border-dashed border-[rgba(78,55,30,0.18)] rounded p-3">
+                <p className="font-instrument text-[13px] text-carnet-ink-soft"><strong className="text-carnet-ink">Exemple :</strong> pour un dé : 1, 2, 3, 4, 5, 6.</p>
+              </div>
+            </div>
+
+            <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5">
+              <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-2">B · Événement</div>
+              <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65] mb-3">
+                Un <strong className="text-carnet-ink">événement</strong> est une partie de l'univers.
+              </p>
+              <div className="bg-carnet-paper border border-dashed border-[rgba(78,55,30,0.18)] rounded p-3">
+                <p className="font-instrument text-[13px] text-carnet-ink-soft"><strong className="text-carnet-ink">Exemple :</strong> "Pair" = {'{'}2, 4, 6{'}'}.</p>
+              </div>
+            </div>
+
+            <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5">
+              <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-2">C · Probabilité</div>
+              <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65] mb-3">
+                La probabilité P(A) est entre 0 et 1. Pour des chances égales :
+              </p>
+              <div className="bg-carnet-paper border border-dashed border-[rgba(78,55,30,0.18)] rounded p-4 mb-3 text-center">
+                <LatexRenderer latex={'P(A) = \\frac{\\text{nombre de cas favorables}}{\\text{nombre total de cas}}'} />
+              </div>
+              <div className="bg-carnet-paper border border-dashed border-[rgba(78,55,30,0.18)] rounded p-3 mb-3">
+                <p className="font-instrument text-[13px] text-carnet-ink-soft mb-1"><strong className="text-carnet-ink">Exemple :</strong></p>
+                <div className="text-center"><LatexRenderer latex={'P(\\text{pair}) = \\frac{3}{6} = \\frac{1}{2}'} /></div>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="bg-carnet-paper border border-dashed border-[rgba(78,55,30,0.18)] rounded p-3 text-center">
+                  <LatexRenderer latex={'P(\\text{univers}) = 1'} />
+                </div>
+                <div className="bg-carnet-paper border border-dashed border-[rgba(78,55,30,0.18)] rounded p-3 text-center">
+                  <LatexRenderer latex={'P(\\emptyset) = 0'} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 2 — Opérations */}
+        <section className="mb-14">
+          <div className="flex items-baseline gap-4 mb-6">
+            <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">02</span>
+            <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+            <h2 className="font-lora text-[30px] sm:text-[34px] text-carnet-ink leading-tight">
+              Opérations <em className="font-lora italic text-carnet-red">simples</em>
+            </h2>
+          </div>
+
+          <div className="carnet-card p-8 sm:p-10 carnet-tilt-r space-y-6">
+            <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5">
+              <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-3">A · Union (Ou)</div>
+              <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65] mb-3">
+                Si A et B <strong className="text-carnet-ink">n'ont pas d'éléments en commun</strong> :
+              </p>
+              <div className="bg-carnet-paper border border-dashed border-[rgba(78,55,30,0.18)] rounded p-3 mb-3 text-center">
+                <LatexRenderer latex={'P(A \\text{ ou } B) = P(A) + P(B)'} />
+              </div>
+              <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65] mb-3">
+                Sinon, soustraire P(commun) :
+              </p>
+              <div className="bg-carnet-paper border border-dashed border-[rgba(78,55,30,0.18)] rounded p-3 text-center">
+                <LatexRenderer latex={'P(A \\cup B) = P(A) + P(B) - P(A \\cap B)'} />
+              </div>
+            </div>
+
+            <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5">
+              <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-3">B · Complément</div>
+              <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65] mb-3">Probabilité de l'événement contraire :</p>
+              <div className="bg-carnet-paper border border-dashed border-[rgba(78,55,30,0.18)] rounded p-3 text-center">
+                <LatexRenderer latex={'P(\\overline{A}) = 1 - P(A)'} />
+                <p className="font-mono-jb text-[12px] text-carnet-ink-mute mt-2">
+                  où <span className="inline-block align-middle"><LatexRenderer latex={'\\overline{A}'} /></span> signifie « pas A »
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3 — Conditionnelles */}
+        <section className="mb-14">
+          <div className="flex items-baseline gap-4 mb-6">
+            <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">03</span>
+            <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+            <h2 className="font-lora text-[30px] sm:text-[34px] text-carnet-ink leading-tight">Probabilités conditionnelles</h2>
+          </div>
+
+          <div className="carnet-card p-8 sm:p-10 carnet-tilt-l space-y-6">
+            <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5">
+              <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-3">A · Probabilité conditionnelle</div>
+              <div className="bg-carnet-paper border border-dashed border-[rgba(78,55,30,0.18)] rounded p-4 text-center mb-2">
+                <LatexRenderer latex={'P(A \\text{ sachant } B) = \\frac{P(A \\cap B)}{P(B)}'} />
+              </div>
+              <p className="font-mono-jb text-[12px] text-carnet-ink-mute text-center">si P(B) ≠ 0</p>
+            </div>
+
+            <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5">
+              <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-3">B · Événements indépendants</div>
+              <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65] mb-3">
+                Si A et B sont <strong className="text-carnet-ink">indépendants</strong> :
+              </p>
+              <div className="bg-carnet-paper border border-dashed border-[rgba(78,55,30,0.18)] rounded p-3 text-center">
+                <LatexRenderer latex={'P(A \\cap B) = P(A) \\times P(B)'} />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 4 — Arbres */}
+        <section className="mb-14">
+          <div className="flex items-baseline gap-4 mb-6">
+            <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">04</span>
+            <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+            <h2 className="font-lora text-[30px] sm:text-[34px] text-carnet-ink leading-tight">
+              Arbres de <em className="font-lora italic text-carnet-red">probabilité</em>
+            </h2>
+          </div>
+
+          <div className="carnet-card p-8 sm:p-10 carnet-tilt-r space-y-6">
+            <p className="font-instrument text-[15px] text-carnet-ink-soft leading-[1.7]">
+              Pour <strong className="text-carnet-ink">plusieurs étapes</strong>, dessine un arbre avec les probabilités sur les branches, puis <strong className="text-carnet-ink">multiplie</strong> sur les chemins.
             </p>
-          </CardContent>
-        </Card>
 
-        {/* Section 1 - Bases */}
-        <Card className="border border-slate-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
-          <CardHeader className="bg-gradient-to-r from-orange-500 to-red-500 text-white">
-            <CardTitle className="text-xl flex items-center gap-3">
-              <span className="bg-white/20 backdrop-blur-sm text-white w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold">
-                1
-              </span>
-              <span className="font-semibold">Bases</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-8 pt-6">
-            <div className="space-y-6">
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h4 className="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
-                  <Dices className="h-5 w-5 text-blue-600" />
-                  Univers
-                </h4>
-                <p className="text-slate-700 mb-4">
-                  L'<strong>univers</strong> est la liste de tous les résultats possibles.
-                </p>
-                <div className="bg-white p-4 rounded border-l-4 border-blue-500">
-                  <p className="text-slate-700 mb-2"><strong>Exemple :</strong></p>
-                  <p className="text-slate-700">Pour un dé : 1, 2, 3, 4, 5, 6</p>
-                </div>
-              </div>
-
-              <div className="bg-green-50 p-6 rounded-lg">
-                <h4 className="text-lg font-semibold text-slate-800 mb-4">Événement</h4>
-                <p className="text-slate-700 mb-4">
-                  Un <strong>événement</strong> est une partie de l'univers.
-                </p>
-                <div className="bg-white p-4 rounded border-l-4 border-green-500">
-                  <p className="text-slate-700 mb-2"><strong>Exemple :</strong></p>
-                  <p className="text-slate-700">"Pair" = {'{'}2, 4, 6{'}'}</p>
-                </div>
-              </div>
-
-              <div className="bg-purple-50 p-6 rounded-lg">
-                <h4 className="text-lg font-semibold text-slate-800 mb-4">Probabilité</h4>
-                <p className="text-slate-700 mb-4">
-                  La probabilité P(A) est entre 0 et 1. Pour chances égales :
-                </p>
-                <div className="bg-white p-4 rounded mb-4">
-                  <div className="text-center">
-                    <LatexRenderer latex={"P(A) = \\frac{\\text{nombre de cas favorables}}{\\text{nombre total de cas}}"} />
-                  </div>
-                </div>
-                
-                <div className="bg-white p-4 rounded border-l-4 border-purple-500 mb-4">
-                  <p className="text-slate-700 mb-2"><strong>Exemple :</strong></p>
-                  <div className="text-center">
-                    <LatexRenderer latex={"P(\\text{pair}) = \\frac{3}{6} = \\frac{1}{2}"} />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-white p-4 rounded text-center">
-                    <LatexRenderer latex={"P(\\text{univers}) = 1"} />
-                  </div>
-                  <div className="bg-white p-4 rounded text-center">
-                    <LatexRenderer latex={"P(\\emptyset) = 0"} />
-                  </div>
-                </div>
+            <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5">
+              <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-3">Exemple — lancer une pièce 2×</div>
+              <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65] mb-3">Probabilité d'obtenir deux « pile » :</p>
+              <div className="bg-carnet-paper border border-dashed border-[rgba(78,55,30,0.18)] rounded p-3 text-center">
+                <LatexRenderer latex={'P(\\text{deux piles}) = \\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}'} />
               </div>
             </div>
-          </CardContent>
-        </Card>
 
-        {/* Section 2 - Opérations simples */}
-        <Card className="border border-slate-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
-          <CardHeader className="bg-gradient-to-r from-green-500 to-emerald-500 text-white">
-            <CardTitle className="text-xl flex items-center gap-3">
-              <span className="bg-white/20 backdrop-blur-sm text-white w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold">
-                2
-              </span>
-              <span className="font-semibold">Opérations simples</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-8 pt-6">
-            <div className="space-y-6">
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h4 className="text-lg font-semibold text-slate-800 mb-4">Union (Ou)</h4>
-                <p className="text-slate-700 mb-4">
-                  Si A et B <strong>n'ont pas d'éléments en commun</strong> :
-                </p>
-                <div className="bg-white p-4 rounded mb-4 text-center">
-                  <LatexRenderer latex={"P(A \\text{ ou } B) = P(A) + P(B)"} />
-                </div>
-                <p className="text-slate-700 mb-4">
-                  Si A et B <strong>ont des éléments en commun</strong>, soustraire P(commun) :
-                </p>
-                <div className="bg-white p-4 rounded text-center">
-                  <LatexRenderer latex={"P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"} />
-                </div>
-              </div>
-
-              <div className="bg-green-50 p-6 rounded-lg">
-                <h4 className="text-lg font-semibold text-slate-800 mb-4">Complément</h4>
-                <p className="text-slate-700 mb-4">
-                  La probabilité de l'événement contraire :
-                </p>
-                <div className="bg-white p-4 rounded text-center">
-                  <LatexRenderer latex={"P(\\overline{A}) = 1 - P(A)"} />
-                </div>
-                <p className="text-slate-700 text-center text-sm mt-2">
-                  (où <span className="inline-block align-middle"><LatexRenderer latex={"\\overline{A}"} /></span> signifie "pas A")
-                </p>
-              </div>
+            <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5">
+              <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-3">Règle générale</div>
+              <ul className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65] space-y-1.5 list-disc list-inside">
+                <li>Chaque branche porte une probabilité</li>
+                <li>Sur un chemin : <strong className="text-carnet-ink">multiplier</strong> les probabilités</li>
+                <li>Sur plusieurs chemins : <strong className="text-carnet-ink">additionner</strong> leurs probabilités</li>
+              </ul>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </section>
 
-        {/* Section 3 - Conditionnelles simples */}
-        <Card className="border border-slate-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
-          <CardHeader className="bg-gradient-to-r from-purple-500 to-violet-500 text-white">
-            <CardTitle className="text-xl flex items-center gap-3">
-              <span className="bg-white/20 backdrop-blur-sm text-white w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold">
-                3
-              </span>
-              <span className="font-semibold">Probabilités conditionnelles</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-8 pt-6">
-            <div className="space-y-6">
-              <div className="bg-purple-50 p-6 rounded-lg">
-                <h4 className="text-lg font-semibold text-slate-800 mb-4">Probabilité conditionnelle</h4>
-                <div className="bg-white p-4 rounded mb-4 text-center">
-                  <LatexRenderer latex={"P(A \\text{ sachant } B) = \\frac{P(A \\cap B)}{P(B)}"} />
-                </div>
-                <p className="text-slate-700 text-center text-sm">
-                  (si P(B) ≠ 0)
-                </p>
-              </div>
+        {/* Section 5 — Variables aléatoires */}
+        <section className="mb-16">
+          <div className="flex items-baseline gap-4 mb-6">
+            <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">05</span>
+            <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+            <h2 className="font-lora text-[30px] sm:text-[34px] text-carnet-ink leading-tight">Variables aléatoires</h2>
+          </div>
 
-              <div className="bg-yellow-50 p-6 rounded-lg">
-                <h4 className="text-lg font-semibold text-slate-800 mb-4">Événements indépendants</h4>
-                <p className="text-slate-700 mb-4">
-                  Si A et B sont <strong>indépendants</strong> :
-                </p>
-                <div className="bg-white p-4 rounded text-center">
-                  <LatexRenderer latex={"P(A \\cap B) = P(A) \\times P(B)"} />
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Section 4 - Arbres */}
-        <Card className="border border-slate-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
-          <CardHeader className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white">
-            <CardTitle className="text-xl flex items-center gap-3">
-              <span className="bg-white/20 backdrop-blur-sm text-white w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold">
-                4
-              </span>
-              <span className="font-semibold">Arbres de probabilité</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-8 pt-6">
-            <div>
-              <p className="text-slate-700 mb-6">
-                Pour <strong>plusieurs étapes</strong>, dessiner un arbre avec les probabilités sur les branches, puis <strong>multiplier</strong> sur les chemins.
-              </p>
-
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <p className="text-slate-700 mb-4"><strong>Exemple :</strong> Lancer une pièce deux fois</p>
-                <p className="text-slate-700 mb-4">Probabilité d'obtenir deux "pile" :</p>
-                <div className="bg-white p-4 rounded text-center">
-                  <LatexRenderer latex={"P(\\text{deux piles}) = \\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}"} />
-                </div>
-              </div>
-
-              <div className="bg-green-50 p-6 rounded-lg mt-6">
-                <h4 className="text-lg font-semibold text-slate-800 mb-4">Règle générale</h4>
-                <ul className="list-disc list-inside text-slate-700 space-y-2">
-                  <li>Chaque branche porte une probabilité</li>
-                  <li>Pour un chemin : multiplier toutes les probabilités du chemin</li>
-                  <li>Pour plusieurs chemins : additionner leurs probabilités</li>
-                </ul>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Section 5 - Variables simples */}
-        <Card className="border border-slate-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
-          <CardHeader className="bg-gradient-to-r from-red-500 to-pink-500 text-white">
-            <CardTitle className="text-xl flex items-center gap-3">
-              <span className="bg-white/20 backdrop-blur-sm text-white w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold">
-                5
-              </span>
-              <span className="font-semibold">Variables aléatoires simples</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-8 pt-6">
-            <div className="space-y-6">
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h4 className="text-lg font-semibold text-slate-800 mb-4">Variable aléatoire</h4>
-                <p className="text-slate-700 mb-4">
-                  X donne un <strong>nombre</strong> à chaque résultat de l'expérience.
-                </p>
-              </div>
-
-              <div className="bg-green-50 p-6 rounded-lg">
-                <h4 className="text-lg font-semibold text-slate-800 mb-4">Espérance</h4>
-                <p className="text-slate-700 mb-4">
-                  L'<strong>espérance</strong> E(X) est la moyenne pondérée :
-                </p>
-                <div className="bg-white p-4 rounded mb-4 text-center">
-                  <LatexRenderer latex={"E(X) = \\sum \\text{valeurs} \\times \\text{leurs probabilités}"} />
-                </div>
-              </div>
-
-              <div className="bg-purple-50 p-6 rounded-lg">
-                <h4 className="text-lg font-semibold text-slate-800 mb-4">Loi binomiale</h4>
-                <p className="text-slate-700 mb-4">
-                  Pour n épreuves indépendantes avec probabilité p de succès :
-                </p>
-                <div className="bg-white p-4 rounded text-center">
-                  <LatexRenderer latex={"E(X) = np"} />
-                </div>
-                <p className="text-slate-700 text-center text-sm mt-2">
-                  (espérance du nombre de succès)
-                </p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Navigation vers les exercices */}
-        <Card className="border-0 shadow-lg bg-gradient-to-r from-emerald-50 via-white to-teal-50">
-          <CardContent className="pt-6">
-            <div className="text-center">
-              <p className="text-slate-600 mb-4 font-medium">
-                Maintenant que vous maîtrisez les probabilités de base, passez aux exercices !
-              </p>
-              <Link to="/formation/math/terminale-vers-prepa/probabilites-exercices">
-                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-6 py-3 rounded-lg hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
-                  <Dices className="h-5 w-5" />
-                  <span className="font-semibold">Faire les exercices</span>
-                  <ArrowRight className="h-4 w-4" />
-                </div>
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Conclusion */}
-        <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-50 via-white to-cyan-50">
-          <CardContent className="pt-6">
-            <div className="text-center">
-              <p className="text-slate-600 italic font-medium">
-                Fin du chapitre 6 — Maîtrisez ces concepts fondamentaux des probabilités !
+          <div className="carnet-card p-8 sm:p-10 carnet-tilt-l space-y-6">
+            <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5">
+              <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-2">A · Variable aléatoire</div>
+              <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65]">
+                X donne un <strong className="text-carnet-ink">nombre</strong> à chaque résultat de l'expérience.
               </p>
             </div>
-          </CardContent>
-        </Card>
+
+            <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5">
+              <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-3">B · Espérance</div>
+              <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65] mb-3">
+                L'<strong className="text-carnet-ink">espérance</strong> E(X) est la moyenne pondérée :
+              </p>
+              <div className="bg-carnet-paper border border-dashed border-[rgba(78,55,30,0.18)] rounded p-3 text-center">
+                <LatexRenderer latex={'E(X) = \\sum \\text{valeurs} \\times \\text{leurs probabilités}'} />
+              </div>
+            </div>
+
+            <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5">
+              <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-3">C · Loi binomiale</div>
+              <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65] mb-3">
+                Pour n épreuves indépendantes avec probabilité p de succès :
+              </p>
+              <div className="bg-carnet-paper border border-dashed border-[rgba(78,55,30,0.18)] rounded p-3 text-center">
+                <LatexRenderer latex={'E(X) = np'} />
+                <p className="font-mono-jb text-[12px] text-carnet-ink-mute mt-2">espérance du nombre de succès</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <div className="relative bg-carnet-ink rounded-lg p-8 sm:p-10 mt-4 mb-10 overflow-hidden">
+          <div className="absolute -top-24 -right-24 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(193,68,58,0.18)_0%,transparent_60%)] pointer-events-none"></div>
+          <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="max-w-xl">
+              <div className="carnet-eyebrow text-carnet-red mb-3">Étape suivante</div>
+              <h3 className="font-lora text-[24px] sm:text-[28px] text-carnet-paper leading-[1.2] mb-2">
+                Modéliser, calculer, conclure.
+              </h3>
+              <p className="font-instrument text-[15px] text-[rgba(251,246,234,0.75)] leading-[1.6]">
+                Les probas se travaillent par mises en situation — direction les exercices.
+              </p>
+            </div>
+            <Link to="/formation/math/terminale-vers-prepa/probabilites-exercices" className="flex-shrink-0">
+              <Button className="bg-carnet-red hover:bg-[#9E342B] text-carnet-paper font-instrument font-semibold text-[15px] py-6 px-7 rounded-full border-0 h-auto">
+                <Dices className="mr-2 h-4 w-4" />
+                Faire les exercices
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+
+        {/* Footer nav */}
+        <div className="mt-10 pt-8 border-t border-dashed border-[rgba(78,55,30,0.18)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <Link
+            to="/formation/math/terminale-vers-prepa"
+            className="inline-flex items-center gap-1.5 font-instrument text-[14px] text-carnet-ink-soft hover:text-carnet-red transition-colors"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            Retour au sommaire
+          </Link>
+          <div className="carnet-hand text-[22px] text-carnet-red" style={{ transform: 'rotate(-2deg)' }}>
+            — fin du chapitre 06
+          </div>
+        </div>
+
       </div>
     </div>
   );

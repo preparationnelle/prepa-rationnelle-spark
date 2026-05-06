@@ -46,25 +46,25 @@ export const MathChapterTemplate: React.FC<MathChapterTemplateProps> = ({
   quizPath
 }) => {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Breadcrumb moderne */}
+    <div className="min-h-screen carnet-paper carnet-cours-skin">
+      {/* Breadcrumb */}
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
-        <div className="container mx-auto px-0 py-0">
-          <div className="flex items-center text-xs font-medium text-[#2D5BFF]">
-            <Link to="/" className="flex items-center gap-1 hover:text-[#1e3a8a] transition-colors">
-              <Home className="h-3 w-3 text-[#2D5BFF]" />
+        <div className="container mx-auto px-4 py-2">
+          <div className="flex items-center text-xs font-medium text-gray-700">
+            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+              <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formations" className="hover:text-[#1e3a8a] transition-colors">
+            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
+            <Link to="/formations" className="hover:text-gray-900 transition-colors">
               Toutes les formations
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formation/maths" className="hover:text-[#1e3a8a] transition-colors">
+            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
+            <Link to="/formation/maths" className="hover:text-gray-900 transition-colors">
               Formation Maths ECG
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <span className="text-[#2D5BFF] font-bold">{chapterTitle}</span>
+            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
+            <span className="text-gray-900 font-bold">{chapterTitle}</span>
           </div>
         </div>
       </nav>

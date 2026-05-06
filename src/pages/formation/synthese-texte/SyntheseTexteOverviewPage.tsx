@@ -1,214 +1,223 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Target, AlertCircle, BookOpen, Brain, Calendar, BarChart3 } from 'lucide-react';
+import {
+  ArrowLeft,
+  Target,
+  AlertCircle,
+  BookOpen,
+  Brain,
+  Calendar,
+  BarChart3,
+} from 'lucide-react';
 
 const SyntheseTexteOverviewPage: React.FC = () => {
+  const sections = [
+    {
+      icon: AlertCircle,
+      title: "L'importance stratégique de la synthèse",
+      intro:
+        "La synthèse de texte représente l'une des épreuves les plus exigeantes des concours ECG.",
+      items: [
+        "Coefficient élevé : épreuve déterminante",
+        "Temps limité : 4 heures sous pression",
+        "Méthodologie rigoureuse requise",
+      ],
+    },
+    {
+      icon: Target,
+      title: "L'épreuve aux concours ECG",
+      grid: [
+        { title: "Format général", body: "4 heures — épreuve commune" },
+        { title: "Sujet type", body: "2 à 3 textes à analyser" },
+      ],
+    },
+    {
+      icon: BarChart3,
+      title: "Les types de sujets aux concours ECG",
+      cards: [
+        { title: "Économie et société", body: "Mondialisation, croissance, emploi" },
+        { title: "Géopolitique", body: "Conflits, intégration européenne" },
+        { title: "Environnement", body: "Transition énergétique, développement durable" },
+      ],
+    },
+    {
+      icon: Brain,
+      title: "Méthodologie de l'épreuve",
+      cards: [
+        { title: "Phase 1 — Lecture et analyse (60 min)", body: "Lire les textes, identifier les idées principales" },
+        { title: "Phase 2 — Structuration (45 min)", body: "Organiser les idées, établir le plan" },
+        { title: "Phase 3 — Rédaction (90 min)", body: "Rédiger la synthèse de manière claire" },
+        { title: "Phase 4 — Relecture (45 min)", body: "Vérifier et finaliser le travail" },
+      ],
+    },
+    {
+      icon: Calendar,
+      title: "Organisation du travail annuel",
+      cards: [
+        { title: "Septembre — Novembre", body: "Acquisition des bases et méthodologie" },
+        { title: "Décembre — Mars", body: "Entraînement intensif et perfectionnement" },
+        { title: "Avril — Concours", body: "Maintien du niveau et préparation mentale" },
+      ],
+    },
+  ];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
-      {/* Floating elements - Blue bubbles */}
-      <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-blue-100 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-8 animate-pulse"></div>
-      <div className="absolute -z-10 top-1/4 left-1/3 w-64 h-64 bg-blue-50 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
-      <div className="absolute -z-10 top-10 right-1/3 w-24 h-24 bg-blue-300 rounded-full opacity-12 animate-pulse-slow"></div>
-      <div className="absolute -z-10 bottom-10 left-1/4 w-36 h-36 bg-blue-100 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute -z-10 top-1/2 right-10 w-20 h-20 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-1/3 left-10 w-28 h-28 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
-
+    <div className="min-h-screen bg-white">
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40 relative z-10">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <span>Accueil</span>
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-pr-gray-light">
+        <div className="container mx-auto px-4 py-2.5">
+          <div className="flex items-center text-xs text-pr-gray-mid font-dm-sans">
+            <Link to="/" className="hover:text-pr-black transition-colors">
+              Accueil
             </Link>
-            <span className="mx-1 text-muted-foreground/50">›</span>
-            <Link to="/formations" className="hover:text-foreground transition-colors">
+            <span className="mx-2 text-pr-gray-light">›</span>
+            <Link to="/formations" className="hover:text-pr-black transition-colors">
               Toutes les formations
             </Link>
-            <span className="mx-1 text-muted-foreground/50">›</span>
-            <Link to="/formation/synthese-texte" className="hover:text-foreground transition-colors">
-              Formation Synthèse de Texte
+            <span className="mx-2 text-pr-gray-light">›</span>
+            <Link to="/formation/synthese-texte" className="hover:text-pr-black transition-colors">
+              Synthèse de Texte
             </Link>
-            <span className="mx-1 text-muted-foreground/50">›</span>
-            <span className="text-foreground font-medium">Guide Complet</span>
+            <span className="mx-2 text-pr-gray-light">›</span>
+            <span className="text-pr-black font-medium">Guide Complet</span>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 py-8 max-w-6xl relative z-10">
-        {/* Header */}
+      <div className="container mx-auto px-4 py-12 max-w-5xl">
+        {/* Back link */}
         <div className="mb-8">
-          <div className="flex items-center gap-4 mb-6">
-            <Link to="/formation/synthese-texte">
-              <Button variant="outline" size="sm" className="flex items-center gap-2">
-                <ArrowLeft className="w-4 h-4" />
-                Retour à la formation
-              </Button>
-            </Link>
-          </div>
-
-          <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">
-              Guide Complet de la Synthèse de Texte ECG
-            </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-4">
-              Méthodologie complète pour maîtriser l'épreuve de synthèse
-            </p>
-          </div>
+          <Link to="/formation/synthese-texte">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="font-dm-sans text-pr-gray-dark hover:text-pr-black hover:bg-pr-gray-bg gap-2 px-2"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Retour à la formation
+            </Button>
+          </Link>
         </div>
 
-        {/* Contenu principal */}
-        <div className="space-y-8">
-          {/* Section 1 - Importance stratégique */}
-          <div className="bg-white rounded-xl p-8 shadow-md border border-blue-100">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center">
-                <AlertCircle className="h-6 w-6 text-blue-600" />
-              </div>
-              <h2 className="text-2xl font-bold text-blue-700">
-                L'importance stratégique de la synthèse de texte
-              </h2>
-            </div>
-            <p className="text-gray-700 mb-4">
-              La synthèse de texte représente l'une des épreuves les plus exigeantes des concours ECG.
-            </p>
-            <div className="space-y-2">
-              <div className="text-sm text-gray-700">• Coefficient élevé : épreuve déterminante</div>
-              <div className="text-sm text-gray-700">• Temps limité : 4 heures sous pression</div>
-              <div className="text-sm text-gray-700">• Méthodologie rigoureuse requise</div>
-            </div>
-          </div>
+        {/* Header */}
+        <div className="text-center mb-16">
+          <span className="text-[10px] font-dm-sans font-semibold uppercase tracking-[0.18em] text-pr-orange-dark bg-pr-orange-pale px-3 py-1.5 rounded-full">
+            Guide complet
+          </span>
+          <h1 className="font-dm-serif text-4xl md:text-5xl text-pr-black mt-6 mb-5 leading-tight">
+            La Synthèse de Texte ECG
+          </h1>
+          <div className="w-16 h-[3px] bg-pr-orange mx-auto mb-6" />
+          <p className="font-dm-sans text-lg text-pr-gray-dark max-w-2xl mx-auto leading-relaxed">
+            Méthodologie complète pour maîtriser l'épreuve de synthèse aux concours.
+          </p>
+        </div>
 
-          {/* Section 2 - L'épreuve aux concours */}
-          <div className="bg-white rounded-xl p-8 shadow-md border border-blue-100">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center">
-                <Target className="h-6 w-6 text-blue-600" />
-              </div>
-              <h2 className="text-2xl font-bold text-blue-700">
-                L'épreuve de synthèse aux concours ECG
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="border border-blue-100 rounded-lg p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">Format général</h4>
-                <p className="text-sm text-gray-700">4 heures - épreuve commune</p>
-              </div>
-              <div className="border border-blue-100 rounded-lg p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">Sujet type</h4>
-                <p className="text-sm text-gray-700">2-3 textes à analyser</p>
-              </div>
-            </div>
-          </div>
+        {/* Sections */}
+        <div className="space-y-12">
+          {sections.map((section, idx) => {
+            const Icon = section.icon;
+            return (
+              <section
+                key={idx}
+                className="bg-white border border-pr-gray-light rounded-lg p-8"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-11 h-11 bg-pr-orange-pale rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Icon className="h-5 w-5 text-pr-orange-dark" strokeWidth={1.5} />
+                  </div>
+                  <div className="border-l-[3px] border-pr-orange pl-4">
+                    <h2 className="font-dm-serif text-2xl text-pr-black leading-tight">
+                      {section.title}
+                    </h2>
+                  </div>
+                </div>
 
-          {/* Section 3 - Types de sujets */}
-          <div className="bg-white rounded-xl p-8 shadow-md border border-blue-100">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center">
-                <BarChart3 className="h-6 w-6 text-blue-600" />
-              </div>
-              <h2 className="text-2xl font-bold text-blue-700">
-                Les types de sujets aux concours ECG
-              </h2>
-            </div>
-            <div className="space-y-4">
-              <div className="border border-blue-100 rounded-lg p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">Économie et société</h4>
-                <p className="text-sm text-gray-700">Mondialisation, croissance, emploi</p>
-              </div>
-              <div className="border border-blue-100 rounded-lg p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">Géopolitique</h4>
-                <p className="text-sm text-gray-700">Conflits, intégration européenne</p>
-              </div>
-              <div className="border border-blue-100 rounded-lg p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">Environnement</h4>
-                <p className="text-sm text-gray-700">Transition énergétique, développement durable</p>
-              </div>
-            </div>
-          </div>
+                {section.intro && (
+                  <p className="font-dm-sans text-pr-gray-dark leading-relaxed mb-5">
+                    {section.intro}
+                  </p>
+                )}
 
-          {/* Section 4 - Méthodologie */}
-          <div className="bg-white rounded-xl p-8 shadow-md border border-blue-100">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center">
-                <Brain className="h-6 w-6 text-blue-600" />
-              </div>
-              <h2 className="text-2xl font-bold text-blue-700">
-                Méthodologie de l'épreuve
-              </h2>
-            </div>
-            <div className="space-y-4">
-              <div className="border border-blue-100 rounded-lg p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">Phase 1 : Lecture et analyse (60 min)</h4>
-                <p className="text-sm text-gray-700">Lire les textes, identifier les idées principales</p>
-              </div>
-              <div className="border border-blue-100 rounded-lg p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">Phase 2 : Structuration (45 min)</h4>
-                <p className="text-sm text-gray-700">Organiser les idées, établir le plan</p>
-              </div>
-              <div className="border border-blue-100 rounded-lg p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">Phase 3 : Rédaction (90 min)</h4>
-                <p className="text-sm text-gray-700">Rédiger la synthèse de manière claire</p>
-              </div>
-              <div className="border border-blue-100 rounded-lg p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">Phase 4 : Relecture (45 min)</h4>
-                <p className="text-sm text-gray-700">Vérifier et finaliser le travail</p>
-              </div>
-            </div>
-          </div>
+                {section.items && (
+                  <ul className="space-y-2.5">
+                    {section.items.map((item, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 font-dm-sans text-sm text-pr-gray-dark"
+                      >
+                        <span className="text-pr-orange mt-0.5 font-medium">→</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
-          {/* Section 5 - Travail annuel */}
-          <div className="bg-white rounded-xl p-8 shadow-md border border-blue-100">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center">
-                <Calendar className="h-6 w-6 text-blue-600" />
-              </div>
-              <h2 className="text-2xl font-bold text-blue-700">
-                Organisation du travail annuel
-              </h2>
-            </div>
-            <div className="space-y-4">
-              <div className="border border-blue-100 rounded-lg p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">Septembre - Novembre</h4>
-                <p className="text-sm text-gray-700">Acquisition des bases et méthodologie</p>
-              </div>
-              <div className="border border-blue-100 rounded-lg p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">Décembre - Mars</h4>
-                <p className="text-sm text-gray-700">Entraînement intensif et perfectionnement</p>
-              </div>
-              <div className="border border-blue-100 rounded-lg p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">Avril - Concours</h4>
-                <p className="text-sm text-gray-700">Maintien du niveau et préparation mentale</p>
-              </div>
-            </div>
-          </div>
+                {section.grid && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {section.grid.map((g, i) => (
+                      <div
+                        key={i}
+                        className="border border-pr-gray-light rounded-md p-4 bg-pr-gray-bg/40"
+                      >
+                        <h4 className="font-dm-sans font-semibold text-pr-black mb-1.5 text-sm">
+                          {g.title}
+                        </h4>
+                        <p className="font-dm-sans text-sm text-pr-gray-dark">
+                          {g.body}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {section.cards && (
+                  <div className="space-y-3">
+                    {section.cards.map((c, i) => (
+                      <div
+                        key={i}
+                        className="border-l-[2px] border-pr-orange/60 bg-pr-gray-bg/40 rounded-r-md py-3 px-4"
+                      >
+                        <h4 className="font-dm-sans font-semibold text-pr-black mb-1 text-sm">
+                          {c.title}
+                        </h4>
+                        <p className="font-dm-sans text-sm text-pr-gray-dark">
+                          {c.body}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </section>
+            );
+          })}
         </div>
 
         {/* Call to action */}
-        <div className="bg-white rounded-xl p-8 shadow-md border border-blue-100 mb-8">
-          <div className="text-center">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Prêt à maîtriser la synthèse de texte ?</h3>
-            <p className="text-gray-700 mb-6">
-              Cette méthodologie vous donne toutes les clés pour réussir l'épreuve de synthèse de texte aux concours ECG.
-            </p>
-            <div className="flex justify-center gap-4">
-              <Button className="flex items-center gap-2">
-                <BookOpen className="w-4 h-4" />
-                Commencer l'entraînement
-              </Button>
-            </div>
-          </div>
+        <div className="mt-16 bg-pr-gray-bg border border-pr-gray-light rounded-lg p-10 text-center">
+          <h3 className="font-dm-serif text-2xl text-pr-black mb-3">
+            Prêt à maîtriser la synthèse de texte&nbsp;?
+          </h3>
+          <div className="w-12 h-[2px] bg-pr-orange mx-auto mb-4" />
+          <p className="font-dm-sans text-pr-gray-dark mb-6 max-w-xl mx-auto">
+            Cette méthodologie vous donne toutes les clés pour réussir l'épreuve aux concours ECG.
+          </p>
+          <Link to="/formation/synthese-texte/methode">
+            <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white font-dm-sans gap-2">
+              <BookOpen className="w-4 h-4" />
+              Commencer l'entraînement
+            </Button>
+          </Link>
         </div>
 
         {/* Navigation */}
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-10">
           <Link to="/formation/synthese-texte">
-            <Button variant="outline" size="lg" className="flex items-center gap-2">
+            <Button
+              variant="ghost"
+              className="font-dm-sans text-pr-gray-dark hover:text-pr-black hover:bg-pr-gray-bg gap-2"
+            >
               <ArrowLeft className="w-4 h-4" />
               Retour à la formation synthèse de texte
             </Button>

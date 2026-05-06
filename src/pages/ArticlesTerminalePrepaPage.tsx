@@ -1,205 +1,511 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { TrendingUp, ArrowLeft, Calculator } from 'lucide-react';
-import Navigation from '@/components/Navigation';
+import {
+  ArrowRight,
+  ArrowLeft,
+  Calculator,
+  Compass,
+  Clock,
+  BookOpenCheck,
+  Brain,
+  Target,
+  GraduationCap,
+  Sparkles,
+  ListChecks,
+  AlertTriangle,
+  CheckCircle2,
+  Home,
+  ChevronRight,
+} from 'lucide-react';
+import { SEOHead } from '@/components/SEOHead';
 
-const ArticlesTerminalePrepaPage = () => {
+const methodes = [
+  {
+    icon: Clock,
+    title: 'Organisation & gestion du temps',
+    description:
+      "Apprends à structurer tes journées comme en prépa : créneaux de DM, plages de travail profond, planning hebdomadaire réaliste.",
+    points: [
+      "Planning type d'une semaine de prépa",
+      'Comment équilibrer cours, DM et révisions',
+      'Gérer fatigue et concentration sur la durée',
+    ],
+  },
+  {
+    icon: Brain,
+    title: 'Méthodes de travail',
+    description:
+      "Les techniques qui distinguent un élève qui décroche d'un élève qui progresse : ficher, refaire, espacer.",
+    points: [
+      'Ficher un cours intelligemment',
+      'Refaire les exercices, pas les lire',
+      'Répétitions espacées et flashcards',
+    ],
+  },
+  {
+    icon: BookOpenCheck,
+    title: 'Bases mathématiques solides',
+    description:
+      "Avant la rentrée, consolide les chapitres clés du programme du lycée pour ne pas être largué dès septembre.",
+    points: [
+      'Calculs, sommes et produits',
+      'Fonctions, dérivées, intégrales, limites',
+      'Probabilités et matrices',
+    ],
+  },
+  {
+    icon: Compass,
+    title: 'Mentalité prépa',
+    description:
+      "La prépa est un sport d'endurance : poser un cadre mental, accepter de se planter, viser la régularité.",
+    points: [
+      'Gérer l\'échec et les premiers DS difficiles',
+      'Travailler avec et non contre les autres',
+      'Rester aligné avec ton objectif d\'école',
+    ],
+  },
+];
+
+const pointsCles = [
+  {
+    title: 'Le rythme change radicalement',
+    description:
+      'En prépa, tu fais en une semaine ce que tu faisais en un mois en Terminale. La régularité dès la première semaine est non-négociable.',
+  },
+  {
+    title: 'Le cours ne suffit plus',
+    description:
+      "Comprendre en classe est une condition nécessaire mais largement insuffisante. Il faut refaire, ficher, et s'entraîner sur des exercices.",
+  },
+  {
+    title: "Les notes baissent (et c'est normal)",
+    description:
+      'Passer de 18/20 en Terminale à 8/20 au premier DS est très fréquent. La barre est plus haute, les attentes différentes.',
+  },
+  {
+    title: "L'écrit ET l'oral comptent",
+    description:
+      "Les colles hebdomadaires (oraux) prennent autant de poids que les écrits. Il faut s'y préparer mentalement dès le départ.",
+  },
+];
+
+const offresAVenir = [
+  'Programme estival "Du bac à la prépa" (juin → septembre)',
+  'Cours collectifs en visio + suivi individuel',
+  'Module mathématiques complet : 7 chapitres + exercices + flashcards',
+  'Coaching méthode et organisation par Dimitar',
+];
+
+const SectionHead: React.FC<{
+  eyebrow?: string;
+  title: React.ReactNode;
+  subtitle?: string;
+  align?: 'left' | 'center';
+}> = ({ eyebrow, title, subtitle, align = 'left' }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: '-80px' }}
+    transition={{ duration: 0.5 }}
+    className={`max-w-[760px] mb-12 ${align === 'center' ? 'mx-auto text-center' : ''}`}
+  >
+    {eyebrow && <div className="carnet-eyebrow mb-5">{eyebrow}</div>}
+    <h2 className="font-lora text-[32px] sm:text-[40px] lg:text-[48px] leading-[1.1] text-carnet-ink tracking-tight">
+      {title}
+    </h2>
+    {subtitle && (
+      <p
+        className={`font-instrument text-[16px] lg:text-[17px] leading-[1.6] text-carnet-ink-soft mt-5 max-w-[600px] ${
+          align === 'center' ? 'mx-auto' : ''
+        }`}
+      >
+        {subtitle}
+      </p>
+    )}
+  </motion.div>
+);
+
+const ArticlesTerminalePrepaPage: React.FC = () => {
   return (
-    <>
-      <Navigation />
-      <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden py-8 sm:py-8">
-        {/* Floating elements - Blue theme for Terminale → Prépa */}
-        <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse"></div>
-        <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
-        <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-blue-100 rounded-full opacity-10 animate-pulse-slow"></div>
-        <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-8 animate-pulse"></div>
-        <div className="absolute -z-10 top-1/4 left-1/3 w-64 h-64 bg-blue-50 rounded-full opacity-10 animate-pulse-slow"></div>
-        <div className="absolute -z-10 top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
-        <div className="absolute -z-10 top-10 right-1/3 w-24 h-24 bg-blue-300 rounded-full opacity-12 animate-pulse-slow"></div>
-        <div className="absolute -z-10 bottom-10 left-1/4 w-36 h-36 bg-blue-100 rounded-full opacity-10 animate-pulse"></div>
+    <div className="carnet-paper min-h-screen">
+      <SEOHead
+        canonical="/articles/terminale-prepa"
+        title="Terminale → Prépa : réussir la transition vers la prépa ECG"
+        description="Conseils, méthodes de travail et ressources pour réussir le passage de la Terminale à la prépa ECG : organisation, points clés à anticiper et bases mathématiques solides."
+      />
 
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="max-w-6xl mx-auto">
-            {/* Header */}
-            <div className="text-center mb-12">
-              <div className="flex justify-center mb-4">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
-                  <TrendingUp className="h-8 w-8 text-blue-600" />
+      {/* Fil d'Ariane */}
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+              <Home className="h-3.5 w-3.5" />
+              <span>Accueil</span>
+            </Link>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">Terminale → Prépa</span>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero */}
+      <section className="relative py-20 lg:py-28">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-[820px]"
+          >
+            <div className="carnet-eyebrow mb-6 flex items-center gap-2">
+              <GraduationCap className="h-4 w-4" />
+              Transition lycée → prépa
+            </div>
+
+            <h1 className="font-lora text-[44px] sm:text-[56px] lg:text-[72px] leading-[1.05] text-carnet-ink tracking-tight mb-6">
+              Terminale{' '}
+              <em className="font-lora italic text-carnet-red">→ Prépa</em>.
+            </h1>
+
+            <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.65] text-carnet-ink-soft max-w-[680px] mb-8">
+              Conseils et ressources pour réussir la transition entre la Terminale et la prépa ECG :{' '}
+              <span className="carnet-hl font-lora italic">méthodes de travail</span>,{' '}
+              <span className="carnet-hl font-lora italic">organisation</span>, et{' '}
+              <span className="carnet-hl font-lora italic">points clés à anticiper</span>.
+            </p>
+
+            <div className="flex flex-wrap gap-3 mb-6">
+              <Link to="/contact">
+                <Button className="bg-carnet-red hover:bg-carnet-red-deep text-carnet-paper font-instrument font-semibold py-6 px-8 rounded-full border-0">
+                  Être prévenu de l'offre
+                  <Sparkles className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              <Link to="/formation/math/terminale-vers-prepa">
+                <Button
+                  variant="outline"
+                  className="border-carnet-red text-carnet-red hover:bg-[rgba(193,68,58,0.06)] font-instrument font-semibold py-6 px-8 rounded-full"
+                >
+                  <Calculator className="mr-2 h-4 w-4" />
+                  Module Maths
+                </Button>
+              </Link>
+            </div>
+
+            <div className="carnet-hand text-[24px] hidden md:block" style={{ transform: 'rotate(-2deg)' }}>
+              ↓ tout ce qu'on aurait aimé savoir avant la rentrée
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Pourquoi anticiper la transition */}
+      <section className="relative py-20 lg:py-24">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <SectionHead
+            eyebrow="Pourquoi anticiper"
+            title={
+              <>
+                Le grand <em className="font-lora italic text-carnet-red">choc</em> de la rentrée.
+              </>
+            }
+            subtitle="Chaque année, les meilleurs élèves de Terminale arrivent en prépa et se prennent un mur. Pas par manque d'intelligence — par manque de préparation."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {pointsCles.map((point, idx) => {
+              const tilt = idx % 2 === 0 ? 'carnet-tilt-l' : 'carnet-tilt-r';
+              return (
+                <motion.div
+                  key={point.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.5, delay: idx * 0.08 }}
+                  className={tilt}
+                >
+                  <div className="carnet-card p-7 hover:shadow-[0_12px_32px_rgba(78,55,30,0.10)] transition-shadow h-full">
+                    <div className="flex items-start gap-4 mb-3">
+                      <div className="carnet-hand text-[36px] text-carnet-red font-semibold leading-none flex-shrink-0">
+                        {String(idx + 1).padStart(2, '0')}
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-2">
+                          <AlertTriangle className="h-4 w-4 text-carnet-red flex-shrink-0" />
+                          <h3 className="font-lora text-[20px] sm:text-[22px] leading-[1.25] text-carnet-ink">
+                            {point.title}
+                          </h3>
+                        </div>
+                        <hr className="w-10 h-0.5 bg-carnet-ink border-0 mb-3" />
+                        <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65]">
+                          {point.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Méthodes / 4 piliers */}
+      <section className="relative py-20 lg:py-24">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <SectionHead
+            eyebrow="4 piliers"
+            title={
+              <>
+                Ce qu'il faut <em className="font-lora italic text-carnet-red">travailler dès maintenant</em>.
+              </>
+            }
+            subtitle="Les piliers que tu peux installer cet été pour arriver en prépa avec une longueur d'avance."
+          />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-7">
+            {methodes.map((methode, idx) => {
+              const tilt = idx === 1 ? 'carnet-tilt-r' : idx === 2 ? 'carnet-tilt-l' : '';
+              return (
+                <motion.div
+                  key={methode.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.5, delay: idx * 0.08 }}
+                  className={tilt}
+                >
+                  <div className="carnet-card p-8 h-full group hover:shadow-[0_12px_32px_rgba(78,55,30,0.10)] transition-shadow">
+                    <div className="carnet-hand text-[44px] font-semibold text-carnet-red leading-none mb-3">
+                      {String(idx + 1).padStart(2, '0')}
+                    </div>
+                    <hr className="w-10 h-0.5 bg-carnet-ink border-0 mb-5" />
+                    <div className="flex items-center gap-2.5 mb-3">
+                      <div className="w-8 h-8 rounded-full bg-[rgba(193,68,58,0.08)] flex items-center justify-center">
+                        <methode.icon className="h-4 w-4 text-carnet-red" />
+                      </div>
+                      <h3 className="font-lora text-[22px] leading-[1.25] text-carnet-ink">
+                        {methode.title}
+                      </h3>
+                    </div>
+                    <p className="font-instrument text-[15px] text-carnet-ink-soft leading-[1.55] mb-5">
+                      {methode.description}
+                    </p>
+                    <ul className="space-y-2 pt-4 border-t border-dashed border-[rgba(78,55,30,0.18)]">
+                      {methode.points.map((p, i) => (
+                        <li
+                          key={i}
+                          className="flex items-start gap-2 font-instrument text-[13px] text-carnet-ink-soft"
+                        >
+                          <span className="carnet-hand text-[18px] leading-none mt-0.5">→</span>
+                          <span>{p}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Module Maths existant */}
+      <section className="relative py-20 lg:py-24">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <SectionHead
+            eyebrow="Ressource gratuite"
+            title={
+              <>
+                Module <em className="font-lora italic text-carnet-red">Mathématiques</em>.
+              </>
+            }
+            subtitle="7 chapitres fondamentaux pour combler le fossé entre le programme de Terminale et celui de prépa ECG."
+          />
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.5 }}
+            className="carnet-card p-8 sm:p-10 lg:p-12 max-w-5xl"
+          >
+            <div className="grid md:grid-cols-2 gap-10 items-start">
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.25)] flex items-center justify-center">
+                    <Calculator className="h-5 w-5 text-carnet-red" />
+                  </div>
+                  <h3 className="font-lora text-[24px] sm:text-[28px] text-carnet-ink leading-[1.2]">
+                    7 chapitres clés
+                  </h3>
                 </div>
+                <ul className="space-y-3">
+                  {[
+                    'Calculs',
+                    'Sommes, suites et produits',
+                    'Fonctions',
+                    'Dérivées',
+                    'Intégrales',
+                    'Probabilités',
+                    'Matrices',
+                  ].map((chapitre) => (
+                    <li
+                      key={chapitre}
+                      className="flex items-center gap-3 font-instrument text-[15px] text-carnet-ink-soft"
+                    >
+                      <CheckCircle2 className="h-4 w-4 text-carnet-red flex-shrink-0" />
+                      <span>{chapitre}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-                <span className="text-black">Terminale </span>
-                <span className="text-blue-600">→ Prépa</span>
-              </h1>
-              <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-                Conseils et ressources pour réussir la transition entre la Terminale et la prépa ECG : méthodes de travail, organisation, et points clés à anticiper.
+
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.25)] flex items-center justify-center">
+                    <ListChecks className="h-5 w-5 text-carnet-red" />
+                  </div>
+                  <h3 className="font-lora text-[24px] sm:text-[28px] text-carnet-ink leading-[1.2]">
+                    Pour chaque chapitre
+                  </h3>
+                </div>
+                <ul className="space-y-3">
+                  {[
+                    'Cours détaillé avec exemples',
+                    "Exercices d'application progressifs",
+                    'Quiz pour valider la maîtrise',
+                    'Flashcards pour mémoriser',
+                    'Méthodes adaptées aux attentes prépa',
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center gap-3 font-instrument text-[15px] text-carnet-ink-soft"
+                    >
+                      <CheckCircle2 className="h-4 w-4 text-carnet-red flex-shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-dashed border-[rgba(78,55,30,0.18)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+              <div className="font-instrument text-[14px] text-carnet-ink-mute">
+                Accès libre — pensé pour les futurs prépas ECG.
+              </div>
+              <Link to="/formation/math/terminale-vers-prepa">
+                <Button className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold py-6 px-8 rounded-full border-0">
+                  Accéder au module
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Offre à venir */}
+      <section className="relative py-20 lg:py-24">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.6 }}
+            className="relative bg-carnet-ink rounded-lg p-8 sm:p-12 lg:p-16 overflow-hidden"
+          >
+            <div className="absolute -top-24 -right-24 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(193,68,58,0.18)_0%,transparent_60%)] pointer-events-none"></div>
+            <div
+              className="carnet-hand absolute hidden lg:block"
+              style={{ top: 32, right: 64, fontSize: 28, color: '#C1443A', transform: 'rotate(6deg)' }}
+            >
+              ↗ pré-inscris-toi !
+            </div>
+
+            <div className="relative z-10 max-w-3xl">
+              <div className="inline-flex items-center gap-2 mb-5">
+                <Sparkles className="h-4 w-4 text-carnet-red" />
+                <span className="carnet-eyebrow text-carnet-red">Bientôt disponible</span>
+              </div>
+
+              <h2 className="font-lora text-[32px] sm:text-[40px] lg:text-[52px] text-carnet-paper leading-[1.1] mb-5">
+                Une <em className="font-lora italic text-carnet-red">offre dédiée</em> aux futurs prépas.
+              </h2>
+
+              <p className="font-instrument text-[16px] sm:text-[17px] text-[rgba(251,246,234,0.78)] leading-[1.7] mb-8 max-w-2xl">
+                Un programme complet pour transformer ton été en accélérateur prépa : méthode, maths, mindset, organisation. Inscris-toi pour être prévenu·e du lancement.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/">
-                  <Button variant="outline" className="border-blue-600 text-blue-600 hover:border-blue-700 hover:text-blue-700">
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                    Retour à l'accueil
+
+              <div className="grid sm:grid-cols-2 gap-3 mb-10">
+                {offresAVenir.map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-start gap-3 font-instrument text-[14px] text-[rgba(251,246,234,0.9)]"
+                  >
+                    <CheckCircle2 className="h-4 w-4 text-carnet-red flex-shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link to="/contact">
+                  <Button className="bg-carnet-red hover:bg-carnet-red-deep text-carnet-paper font-instrument font-semibold py-6 px-8 rounded-full border-0">
+                    Être prévenu de l'offre
+                    <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
-                <Link to="/articles">
-                  <Button variant="outline" className="border-blue-600 text-blue-600 hover:border-blue-700 hover:text-blue-700">
-                    ← Retour aux niveaux
+                <Link to="/formations">
+                  <Button
+                    variant="outline"
+                    className="border-[rgba(251,246,234,0.3)] bg-transparent text-carnet-paper hover:bg-[rgba(251,246,234,0.08)] hover:text-carnet-paper hover:border-[rgba(251,246,234,0.6)] font-instrument font-semibold py-6 px-8 rounded-full"
+                  >
+                    Voir toutes nos formations
                   </Button>
                 </Link>
               </div>
             </div>
+          </motion.div>
+        </div>
+      </section>
 
-            {/* Module Mathématiques */}
-            <div className="bg-white rounded-lg shadow-lg p-8 border-2 border-blue-200">
-              <div className="text-center mb-8">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Calculator className="h-8 w-8 text-blue-600" />
-                </div>
-                <h3 className="text-3xl font-bold text-blue-700 mb-2">Module Mathématiques</h3>
-                <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-blue-100 text-blue-700">
-                  Formation complète - Transition
-                </div>
+      {/* Footer rappel */}
+      <section className="relative py-12 border-t border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.25)] flex items-center justify-center">
+                <Target className="h-4 w-4 text-carnet-red" />
               </div>
-
-              <div className="prose prose-lg max-w-none text-gray-700">
-                <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400 mb-8">
-                  <p className="text-blue-800 font-medium text-lg">
-                    Préparez-vous efficacement à la transition entre la Terminale et la prépa ECG avec notre module complet de mathématiques. Maîtrisez les chapitres fondamentaux et développez les méthodes de travail essentielles.
-                  </p>
-                </div>
-
-                <h4 className="text-2xl font-semibold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2">Contenu du module</h4>
-
-                <div className="grid md:grid-cols-2 gap-6 mb-8">
-                  <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
-                    <h5 className="text-xl font-semibold text-blue-600 mb-3">7 Chapitres fondamentaux</h5>
-                    <ul className="space-y-2 text-gray-700">
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                        Calculs
-                      </li>
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                        Sommes, suites et produits
-                      </li>
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                        Fonctions
-                      </li>
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                        Dérivées
-                      </li>
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                        Intégrale
-                      </li>
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                        Probabilités
-                      </li>
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                        Matrices
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
-                    <h5 className="text-xl font-semibold text-blue-600 mb-3">Pour chaque chapitre</h5>
-                    <ul className="space-y-2 text-gray-700">
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                        Cours détaillé avec exemples
-                      </li>
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                        Exercices d'application
-                      </li>
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                        Points clés à retenir
-                      </li>
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                        Conseils méthodologiques
-                      </li>
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                        Préparation aux attentes prépa
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <h4 className="text-2xl font-semibold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2">Objectifs de la formation</h4>
-
-                <div className="grid md:grid-cols-3 gap-4 mb-6">
-                  <div className="text-center p-4 bg-blue-50 rounded-lg border border-blue-200">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <TrendingUp className="h-6 w-6 text-blue-600" />
-                    </div>
-                    <h6 className="font-semibold text-blue-700 mb-2">Transition réussie</h6>
-                    <p className="text-sm text-gray-600">Préparer efficacement le passage du lycée à la prépa</p>
-                  </div>
-                  <div className="text-center p-4 bg-blue-50 rounded-lg border border-blue-200">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <Calculator className="h-6 w-6 text-blue-600" />
-                    </div>
-                    <h6 className="font-semibold text-blue-700 mb-2">Bases solides</h6>
-                    <p className="text-sm text-gray-600">Maîtriser les fondamentaux mathématiques</p>
-                  </div>
-                  <div className="text-center p-4 bg-blue-50 rounded-lg border border-blue-200">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <ArrowLeft className="h-6 w-6 text-blue-600 transform rotate-90" />
-                    </div>
-                    <h6 className="font-semibold text-blue-700 mb-2">Méthodes de travail</h6>
-                    <p className="text-sm text-gray-600">Développer l'organisation et l'efficacité</p>
-                  </div>
-                </div>
-
-                <div className="text-center mt-8">
-                  <Link to="/formation/math/terminale-vers-prepa">
-                    <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
-                      <Calculator className="mr-2 h-5 w-5" />
-                      Accéder au module Mathématiques
-                    </Button>
-                  </Link>
+              <div>
+                <div className="font-lora text-[18px] text-carnet-ink">Une question ?</div>
+                <div className="font-instrument text-[13px] text-carnet-ink-mute">
+                  Dimitar te répond personnellement sous 24h.
                 </div>
               </div>
             </div>
-
-            {/* Call to Action */}
-            <div className="mt-16 text-center">
-              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 hover:shadow-2xl hover:scale-105 hover:border-indigo-300 hover:bg-gradient-to-br hover:from-indigo-50 hover:to-blue-50 transition-all duration-300 group p-8 rounded-lg">
-                <div className="w-16 h-16 bg-blue-100 group-hover:bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
-                  <TrendingUp className="h-8 w-8 text-blue-600 group-hover:text-indigo-600 transition-colors duration-300" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-blue-700 group-hover:text-indigo-800 transition-colors duration-300">
-                  Prêt pour la transition ?
-                </h3>
-                <p className="text-gray-600 group-hover:text-indigo-700 transition-colors duration-300 mb-6">
-                  Rejoignez nos formations spécialisées pour réussir votre passage de la Terminale à la prépa ECG.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link to="/contact">
-                    <Button size="lg" className="bg-blue-600 hover:bg-indigo-600 text-white transition-all duration-300">
-                      Nous contacter
-                    </Button>
-                  </Link>
-                  <Link to="/formations">
-                    <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:border-indigo-600 hover:text-indigo-600 transition-all duration-300">
-                      Voir toutes nos formations
-                    </Button>
-                  </Link>
-                </div>
-              </div>
+            <div className="flex gap-3">
+              <Link to="/contact">
+                <Button className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold rounded-full border-0">
+                  Nous contacter
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              <Link
+                to="/"
+                className="inline-flex items-center gap-1.5 font-instrument text-[14px] text-carnet-ink-soft hover:text-carnet-red transition-colors px-3 py-2"
+              >
+                <ArrowLeft className="h-3.5 w-3.5" />
+                Accueil
+              </Link>
             </div>
           </div>
         </div>
-      </div>
-    </>
+      </section>
+    </div>
   );
 };
 

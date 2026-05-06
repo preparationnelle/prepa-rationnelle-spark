@@ -104,66 +104,70 @@ export const ProblematiquesGenerator = ({ mode = 'culture-generale', subjectFrom
   return (
     <div className="space-y-6">
       {/* Header avec explication */}
-      <Card className="bg-gradient-to-br from-white via-orange-50/30 to-white border border-orange-200">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-2xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
-            {title}
-          </CardTitle>
+      <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+        <div className="h-[3px] w-full bg-pr-orange" />
+        <CardHeader className="px-6 pt-5 pb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-11 h-11 rounded-xl bg-pr-orange-pale border border-pr-orange-soft flex items-center justify-center">
+              <Brain className="h-5 w-5 text-pr-orange-dark" />
+            </div>
+            <div>
+              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-0.5">
+                {isGeopolitics ? 'Géopolitique' : 'Culture générale'}
+              </div>
+              <CardTitle className="font-dm-serif text-2xl text-pr-black leading-none">
+                Générateur de problématique
+              </CardTitle>
+            </div>
+          </div>
         </CardHeader>
-        <CardContent>
-          <Alert className="bg-orange-50 border-orange-200">
-            <Info className="h-4 w-4 text-orange-600" />
-            <AlertDescription className="text-sm text-gray-700">
-              <strong>La problématique :</strong> C'est la question centrale qui structure votre dissertation.
-              Elle doit être dialectique (poser une tension), féconde (permettre 3 parties équilibrées) et pertinente (ancrer dans les enjeux du sujet).
+        <CardContent className="px-6 pb-6">
+          <Alert className="bg-pr-orange-pale/60 border-pr-orange-pale rounded-xl">
+            <Info className="h-4 w-4 text-pr-orange-dark" />
+            <AlertDescription className="text-[14px] text-pr-gray-dark leading-relaxed">
+              <strong className="text-pr-black">La problématique :</strong> question centrale qui structure votre dissertation.
+              Elle doit être dialectique (tension), féconde (3 parties équilibrées) et pertinente (ancrée dans les enjeux du sujet).
             </AlertDescription>
           </Alert>
         </CardContent>
       </Card>
 
       {/* Formulaire */}
-      <Card className="bg-white rounded-xl shadow-lg border border-gray-200">
-        <CardHeader>
-          <CardTitle className="text-xl font-semibold text-gray-900 flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-orange-600" />
+      <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+        <CardHeader className="px-6 pt-5 pb-4">
+          <CardTitle className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
+            <Sparkles className="h-4 w-4 text-pr-orange" />
             Analyser un sujet
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-6 px-6 pb-6">
           {/* Sujet */}
-          <div className="space-y-2">
-            <Label htmlFor="subject" className="text-sm font-medium text-gray-900 flex items-center gap-2">
-              Sujet de dissertation <span className="text-red-500">*</span>
-            </Label>
+          <div className="space-y-3">
+            <div className="flex items-center justify-between gap-3">
+              <Label htmlFor="subject" className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-pr-orange-pale text-pr-orange-dark text-[11px] font-bold">
+                  1
+                </span>
+                Sujet de dissertation
+              </Label>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark bg-pr-orange-pale px-2.5 py-1 rounded-full">
+                Requis
+              </span>
+            </div>
             <Textarea
               id="subject"
               placeholder={placeholder}
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
-              className="min-h-[120px] border-gray-300 focus:border-orange-500 focus:ring-orange-500 bg-gray-50 rounded-lg resize-none"
+              className="min-h-[120px] border-pr-gray-light focus:border-pr-orange focus:ring-2 focus:ring-pr-orange/20 transition-colors rounded-xl resize-y text-[15px] leading-relaxed p-4 bg-white text-pr-black placeholder:text-pr-gray-mid"
             />
-            <p className="text-xs text-gray-500">
-              Collez ici le sujet de dissertation dont vous voulez analyser la problématique
+            <p className="text-[13px] text-pr-gray-mid">
+              Collez ici le sujet de dissertation dont vous voulez analyser la problématique.
             </p>
           </div>
 
           {/* Boutons */}
-          <div className="flex flex-col sm:flex-row gap-3 pt-4">
-            <Button
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                loadExample();
-              }}
-              variant="outline"
-              className="flex items-center gap-2 border border-gray-300 bg-gray-100 text-gray-900 hover:bg-gray-50 hover:border-orange-500 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md"
-              disabled={loading}
-            >
-              <Info className="h-4 w-4" />
-              Exemple
-            </Button>
-
+          <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <Button
               type="button"
               onClick={(e) => {
@@ -172,12 +176,12 @@ export const ProblematiquesGenerator = ({ mode = 'culture-generale', subjectFrom
                 handleGenerate();
               }}
               disabled={!subject.trim() || loading}
-              className="flex items-center justify-center gap-2 flex-1 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 min-h-[44px]"
+              className="flex items-center justify-center gap-2 flex-1 bg-pr-orange hover:bg-pr-orange-dark text-white font-semibold rounded-xl shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 disabled:opacity-50 disabled:shadow-none h-12 text-[15px]"
             >
               {loading ? (
                 <>
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  <span>Analyse en cours...</span>
+                  <span>Analyse en cours…</span>
                 </>
               ) : (
                 <>
@@ -186,28 +190,51 @@ export const ProblematiquesGenerator = ({ mode = 'culture-generale', subjectFrom
                 </>
               )}
             </Button>
+
+            <Button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                loadExample();
+              }}
+              className="flex items-center gap-2 bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft rounded-xl h-12 px-4 font-medium transition-colors"
+              disabled={loading}
+            >
+              <Info className="h-4 w-4" />
+              Exemple
+            </Button>
           </div>
         </CardContent>
       </Card>
 
       {/* Résultat */}
       {problematique && (
-        <Card className="bg-white rounded-xl shadow-lg border border-orange-200">
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <CardTitle className="text-xl font-semibold text-gray-900 flex items-center gap-2">
-                <Lightbulb className="h-5 w-5 text-orange-600" />
-                Problématique proposée
-              </CardTitle>
+        <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)] animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="h-[3px] w-full bg-pr-orange" />
+          <CardHeader className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5">
+            <div className="flex items-center justify-between gap-3 flex-wrap">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-white border border-pr-orange-soft flex items-center justify-center">
+                  <Lightbulb className="h-5 w-5 text-pr-orange-dark" />
+                </div>
+                <div>
+                  <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-0.5">
+                    Problématique
+                  </div>
+                  <CardTitle className="font-dm-serif text-xl text-pr-black leading-none">
+                    Question proposée
+                  </CardTitle>
+                </div>
+              </div>
               <Button
                 onClick={handleCopy}
-                variant="outline"
                 size="sm"
-                className="flex items-center gap-2"
+                className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft rounded-lg flex items-center gap-2"
               >
                 {copied ? (
                   <>
-                    <Check className="h-4 w-4 text-green-600" />
+                    <Check className="h-4 w-4" />
                     Copié
                   </>
                 ) : (
@@ -219,18 +246,18 @@ export const ProblematiquesGenerator = ({ mode = 'culture-generale', subjectFrom
               </Button>
             </div>
           </CardHeader>
-          <CardContent>
-            <div className="bg-gradient-to-r from-orange-50 to-orange-100 rounded-lg p-6 border border-orange-200">
-              <p className="text-lg font-semibold text-gray-900 leading-relaxed">
+          <CardContent className="p-6 sm:p-7 space-y-5">
+            <div className="bg-pr-orange-pale/60 rounded-xl p-6 border border-pr-orange-pale">
+              <p className="font-lora text-[18px] text-pr-black leading-[1.5]">
                 {problematique}
               </p>
             </div>
 
             {/* Conseils */}
-            <Alert className="mt-4 bg-blue-50 border-blue-200">
-              <AlertCircle className="h-4 w-4 text-blue-600" />
-              <AlertDescription className="text-sm text-gray-700">
-                <strong>Évaluation :</strong> Cette problématique est-elle dialectique ? Féconde ? Pertinente ?
+            <Alert className="bg-pr-gray-bg border-pr-gray-light rounded-xl">
+              <AlertCircle className="h-4 w-4 text-pr-orange" />
+              <AlertDescription className="text-[14px] text-pr-gray-dark leading-relaxed">
+                <strong className="text-pr-black">Évaluation :</strong> cette problématique est-elle dialectique ? Féconde ? Pertinente ?
                 Elle devrait permettre un développement en trois parties équilibrées avec des arguments opposés.
               </AlertDescription>
             </Alert>

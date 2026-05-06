@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Home, ChevronRight, FileText, Users, Plane, Zap, Leaf, Globe, TrendingUp, AlertTriangle, Building, Coins, MapPin } from 'lucide-react';
+import { Home, ChevronRight, FileText, Users, Plane, Zap, Leaf, Globe, TrendingUp, AlertTriangle, Building, Coins, MapPin, Snowflake, Cpu, Sun, Ship, Crosshair, Droplet, Compass, Anchor, Globe2, Crown } from 'lucide-react';
 
 const EtudesDeCasPage = () => {
   const caseStudies = [
@@ -185,6 +185,106 @@ const EtudesDeCasPage = () => {
       color: 'red',
       keyStats: ['2000Md$ économie', '1,5% PIB mondial', '8% exports'],
       route: '/formation/geopolitique/etudes-de-cas/criminalite'
+    },
+    {
+      id: 'groenland',
+      title: 'Groenland',
+      subtitle: 'Confetti polaire au cœur de la rivalité Est-Ouest',
+      description: 'Île arctique de 57 000 habitants devenue un nœud stratégique : terres rares, fonte des glaces, offres de rachat de Trump 2025.',
+      icon: Snowflake,
+      color: 'pr',
+      keyStats: ['25% terres rares', '57K habitants', 'Trump 2025'],
+      route: '/formation/geopolitique/etudes-de-cas/groenland'
+    },
+    {
+      id: 'taiwan',
+      title: 'Taïwan',
+      subtitle: 'Bouclier de silicium et épicentre sino-américain',
+      description: 'Île de 24 millions d\'habitants qui produit 90 % des semi-conducteurs avancés du monde, sous menace permanente de Pékin.',
+      icon: Cpu,
+      color: 'pr',
+      keyStats: ['90% semi-conducteurs', '200+ incursions/mois', '24M hab.'],
+      route: '/formation/geopolitique/etudes-de-cas/taiwan'
+    },
+    {
+      id: 'sahel',
+      title: 'Sahel',
+      subtitle: 'Juntes, jihadisme et bascule russe',
+      description: 'Trois juntes (Mali, Burkina, Niger) liées à Africa Corps depuis juin 2025 : laboratoire de la désoccidentalisation africaine.',
+      icon: Sun,
+      color: 'pr',
+      keyStats: ['3 juntes (AES)', 'Africa Corps 2025', '4M déplacés'],
+      route: '/formation/geopolitique/etudes-de-cas/sahel'
+    },
+    {
+      id: 'mer-rouge',
+      title: 'Mer Rouge & Houthis',
+      subtitle: 'Choke point paralysé depuis 2023',
+      description: 'Depuis novembre 2023, les Houthis font chuter de 70 % le trafic Suez et coûtent 800 M$/mois à l\'Égypte.',
+      icon: Ship,
+      color: 'pr',
+      keyStats: ['12% commerce mondial', '−70% Suez', '800M$/mois'],
+      route: '/formation/geopolitique/etudes-de-cas/mer-rouge'
+    },
+    {
+      id: 'ukraine',
+      title: 'Ukraine',
+      subtitle: 'Retour de la guerre en Europe',
+      description: 'Première guerre conventionnelle de haute intensité en Europe depuis 1945 : 1 200 km de front, négociations sous Trump 2026.',
+      icon: Crosshair,
+      color: 'pr',
+      keyStats: ['1 200 km front', '1,2M pertes russes', '6,7M réfugiés'],
+      route: '/formation/geopolitique/etudes-de-cas/ukraine'
+    },
+    {
+      id: 'detroit-ormuz',
+      title: 'Détroit d\'Ormuz',
+      subtitle: 'Choke point pétrolier mondial',
+      description: 'Détroit de 38 km par lequel transite 20 % du pétrole mondial : leverage permanent de l\'Iran, crise majeure en 2026.',
+      icon: Droplet,
+      color: 'pr',
+      keyStats: ['20% pétrole mondial', '20,1 mb/j', 'Brent 126$ (2026)'],
+      route: '/formation/geopolitique/etudes-de-cas/detroit-ormuz'
+    },
+    {
+      id: 'arctique',
+      title: 'Arctique',
+      subtitle: 'Nouveau théâtre de la rivalité mondiale',
+      description: 'Réchauffement × 4, militarisation russe (40 000 soldats), 1ʳᵉ traversée commerciale chinoise par RMN en 2025.',
+      icon: Compass,
+      color: 'pr',
+      keyStats: ['×4 réchauffement', '40K soldats russes', 'RMN ouverte'],
+      route: '/formation/geopolitique/etudes-de-cas/arctique'
+    },
+    {
+      id: 'canal-panama',
+      title: 'Canal de Panama',
+      subtitle: 'Pris en tenaille climat-géopolitique',
+      description: '5 % du commerce mondial, sécheresse 2023-2024 (−29 % de transits), menaces de Trump pour le « reprendre » en 2025.',
+      icon: Anchor,
+      color: 'pr',
+      keyStats: ['~5% commerce', '−29% transits 2024', 'Trump 2025'],
+      route: '/formation/geopolitique/etudes-de-cas/canal-panama'
+    },
+    {
+      id: 'inde',
+      title: 'Inde',
+      subtitle: 'Première population mondiale, neutralité active',
+      description: '1,44 Md d\'habitants depuis 2023, 5ᵉ PIB, croissance 7 %/an : membre du QUAD ET des BRICS+, ambition Viksit Bharat 2047.',
+      icon: Globe2,
+      color: 'pr',
+      keyStats: ['1,44 Md hab.', '5e PIB mondial', 'BRICS+ et QUAD'],
+      route: '/formation/geopolitique/etudes-de-cas/inde'
+    },
+    {
+      id: 'turquie',
+      title: 'Turquie',
+      subtitle: 'Pivot OTAN-BRICS sous Erdogan',
+      description: 'Membre OTAN devenu partenaire BRICS en 2025, néo-ottomanisme, influence post-Assad en Syrie, drones Bayraktar.',
+      icon: Crown,
+      color: 'pr',
+      keyStats: ['2e armée OTAN', 'Partenaire BRICS', '3,5M réfugiés syriens'],
+      route: '/formation/geopolitique/etudes-de-cas/turquie'
     }
   ];
 
@@ -200,7 +300,8 @@ const EtudesDeCasPage = () => {
       cyan: { bg: 'bg-cyan-50', text: 'text-cyan-700', hover: 'hover:bg-cyan-100', badge: 'bg-cyan-100 text-cyan-700' },
       indigo: { bg: 'bg-indigo-50', text: 'text-indigo-700', hover: 'hover:bg-indigo-100', badge: 'bg-indigo-100 text-indigo-700' },
       red: { bg: 'bg-red-50', text: 'text-red-700', hover: 'hover:bg-red-100', badge: 'bg-red-100 text-red-700' },
-      slate: { bg: 'bg-slate-50', text: 'text-slate-700', hover: 'hover:bg-slate-100', badge: 'bg-slate-100 text-slate-700' }
+      slate: { bg: 'bg-slate-50', text: 'text-slate-700', hover: 'hover:bg-slate-100', badge: 'bg-slate-100 text-slate-700' },
+      pr: { bg: 'bg-white', text: 'text-pr-orange-dark', hover: 'hover:bg-pr-orange-pale/40', badge: 'bg-pr-orange-pale text-pr-orange-dark' }
     };
     return colorMap[color] || colorMap.gray;
   };

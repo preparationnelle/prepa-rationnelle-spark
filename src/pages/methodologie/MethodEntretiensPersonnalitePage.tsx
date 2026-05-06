@@ -6,340 +6,303 @@ import { useProgress } from '@/context/ProgressContext';
 import { SchoolCard } from '@/components/SchoolCard';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { PodcastSection } from '@/components/sections/PodcastSection';
-import { Bot, Users, GraduationCap, Puzzle, HelpCircle, BookOpen, Target, Brain, FileText, MessageSquare, School, Heart, CheckCircle, AlertTriangle, HandHeart, Presentation } from 'lucide-react';
+import { Bot, Users, Puzzle, HelpCircle, Target, FileText, MessageSquare, School, Heart, CheckCircle, AlertTriangle, HandHeart, Presentation } from 'lucide-react';
+
 const MethodEntretiensPersonnalitePage = () => {
-  const {
-    trackPageVisit
-  } = useProgress();
+  const { trackPageVisit } = useProgress();
   useEffect(() => {
     trackPageVisit('method');
   }, [trackPageVisit]);
-  const schools = [{
-    name: "ESSEC Business School",
-    duration: "Entretien de 30-45 minutes, coefficient 10.",
-    feature: "Format approfondi avec mise en situation initiale.",
-    link: "/essec"
-  }, {
-    name: "ESCP Business School",
-    duration: "Entretien de 30 minutes, coefficient 12.",
-    feature: "Entretien structuré autour d'un questionnaire préalable.",
-    link: "/escp"
-  }, {
-    name: "EDHEC Business School",
-    duration: "Entretien de 1h30, coefficient 15.",
-    feature: "Format tripartite avec présentation, travail de groupe et entretien.",
-    link: "/edhec"
-  }, {
-    name: "EM Lyon Business School",
-    duration: "Entretien de 25 minutes, coefficient 9.",
-    feature: "Format ludique avec cartes thématiques et présentation en 1 minute.",
-    link: "/emlyon"
-  }, {
-    name: "SKEMA Business School",
-    duration: "Entretien de 25 minutes, coefficient 20.",
-    feature: "CV fictif à 10 ans.",
-    link: "/skema"
-  }, {
-    name: "Audencia Business School",
-    duration: "Entretien de 30 minutes, coefficient 10.",
-    feature: "Forte dimension responsabilité sociétale avec partie en anglais.",
-    link: "/audencia"
-  }, {
-    name: "Grenoble École de Management",
-    duration: "Entretien de 30 minutes, coefficient 10.",
-    feature: "Format original avec entretien inversé.",
-    link: "/gem"
-  }, {
-    name: "KEDGE Business School",
-    duration: "Entretien de 30 minutes, coefficient 14.",
-    feature: "Approche 'Grow by Doing' et questionnaire 'maison'.",
-    link: "/kedge"
-  }, {
-    name: "NEOMA Business School",
-    duration: "Entretien de 30 minutes, coefficient 12.",
-    feature: "Format structuré autour de la 'réussite responsable'.",
-    link: "/neoma"
-  }];
-  return <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
-      {/* Floating elements - Blue bubbles only */}
-      <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-blue-100 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-8 animate-pulse"></div>
-      <div className="absolute -z-10 top-1/4 left-1/3 w-64 h-64 bg-blue-50 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
-      <div className="absolute -z-10 top-10 right-1/3 w-24 h-24 bg-blue-300 rounded-full opacity-12 animate-pulse-slow"></div>
-      <div className="absolute -z-10 bottom-10 left-1/4 w-36 h-36 bg-blue-100 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute -z-10 top-1/2 right-10 w-20 h-20 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-1/3 left-10 w-28 h-28 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
 
-      <div className="container mx-auto px-4 py-8 relative z-10">
+  const schools = [
+    { name: "ESSEC Business School", duration: "Entretien de 30-45 minutes, coefficient 10.", feature: "Format approfondi avec mise en situation initiale.", link: "/essec" },
+    { name: "ESCP Business School", duration: "Entretien de 30 minutes, coefficient 12.", feature: "Entretien structuré autour d'un questionnaire préalable.", link: "/escp" },
+    { name: "EDHEC Business School", duration: "Entretien de 1h30, coefficient 15.", feature: "Format tripartite avec présentation, travail de groupe et entretien.", link: "/edhec" },
+    { name: "EM Lyon Business School", duration: "Entretien de 25 minutes, coefficient 9.", feature: "Format ludique avec cartes thématiques et présentation en 1 minute.", link: "/emlyon" },
+    { name: "SKEMA Business School", duration: "Entretien de 25 minutes, coefficient 20.", feature: "CV fictif à 10 ans.", link: "/skema" },
+    { name: "Audencia Business School", duration: "Entretien de 30 minutes, coefficient 10.", feature: "Forte dimension responsabilité sociétale avec partie en anglais.", link: "/audencia" },
+    { name: "Grenoble École de Management", duration: "Entretien de 30 minutes, coefficient 10.", feature: "Format original avec entretien inversé.", link: "/gem" },
+    { name: "KEDGE Business School", duration: "Entretien de 30 minutes, coefficient 14.", feature: "Approche 'Grow by Doing' et questionnaire 'maison'.", link: "/kedge" },
+    { name: "NEOMA Business School", duration: "Entretien de 30 minutes, coefficient 12.", feature: "Format structuré autour de la 'réussite responsable'.", link: "/neoma" },
+  ];
+
+  const methodModules = [
+    { to: "/methodologie/storytelling", icon: MessageSquare, label: "Storytelling" },
+    { to: "/methodologie/motivation-ecole", icon: School, label: "Motivation école" },
+    { to: "/methodologie/projet-professionnel", icon: Target, label: "Projet professionnel" },
+    { to: "/methodologie/personnalite", icon: Heart, label: "Questions personnalité" },
+    { to: "/methodologie/finir-entretien", icon: CheckCircle, label: "Finir un entretien" },
+    { to: "/methodologie/erreur-entretien", icon: AlertTriangle, label: "Erreurs à éviter" },
+    { to: "/methodologie/tendre-perches", icon: HandHeart, label: "Tendre des perches" },
+    { to: "/methodologie/pitch-intro", icon: Presentation, label: "Pitch d'introduction" },
+  ];
+
+  return (
+    <div className="min-h-screen bg-pr-gray-bg font-dm-sans">
+      <div className="container mx-auto px-4 py-12 sm:py-16">
         <div className="max-w-6xl mx-auto">
-          {/* Header Hero Section */}
-          <div className="text-center mb-16">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-              <span className="text-black">Entretiens de </span>
-              <span className="text-blue-600">Personnalité</span>
+
+          {/* HERO */}
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-2 mb-6">
+              <span className="h-px w-8 bg-pr-orange" />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-orange-dark">
+                Oraux · Concours BCE & Ecricome
+              </span>
+              <span className="h-px w-8 bg-pr-orange" />
+            </div>
+
+            <h1 className="font-dm-serif text-4xl sm:text-5xl md:text-6xl text-pr-black leading-tight mb-6">
+              Entretiens de <span className="text-pr-orange">Personnalité</span>
             </h1>
-            
-            <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-5xl mx-auto leading-relaxed">
-              Toutes les ressources pour réussir vos entretiens de personnalité : méthodologie, outils de préparation, 
-              et fiches écoles détaillées.
+
+            <p className="text-lg sm:text-xl text-pr-gray-dark max-w-3xl mx-auto leading-relaxed">
+              Toutes les ressources pour réussir vos entretiens : méthodologie structurée,
+              outils de préparation et fiches écoles détaillées.
             </p>
-            
-            {/* Stats Section */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto mb-8">
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-blue-100 hover:shadow-2xl hover:scale-105 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 group">
-                <div className="text-3xl font-bold text-blue-600 group-hover:text-orange-600 transition-colors duration-300 mb-2">9</div>
-                <div className="text-sm text-gray-600 group-hover:text-orange-700 transition-colors duration-300">Écoles détaillées</div>
-              </div>
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-blue-100 hover:shadow-2xl hover:scale-105 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 group">
-                <div className="text-3xl font-bold text-blue-600 group-hover:text-orange-600 transition-colors duration-300 mb-2">8</div>
-                <div className="text-sm text-gray-600 group-hover:text-orange-700 transition-colors duration-300">Modules méthodologie</div>
-              </div>
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-blue-100 hover:shadow-2xl hover:scale-105 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 group">
-                <div className="text-3xl font-bold text-blue-600 group-hover:text-orange-600 transition-colors duration-300 mb-2">∞</div>
-                <div className="text-sm text-gray-600 group-hover:text-orange-700 transition-colors duration-300">Questions générées IA</div>
-              </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-3xl mx-auto mt-12">
+              {[
+                { num: "9", label: "Écoles détaillées" },
+                { num: "8", label: "Modules méthodologie" },
+                { num: "∞", label: "Questions générées par IA" },
+              ].map((stat) => (
+                <div
+                  key={stat.label}
+                  className="bg-white border border-pr-gray-light rounded-lg px-6 py-7 hover:border-pr-orange transition-colors duration-300"
+                >
+                  <div className="font-dm-serif text-4xl text-pr-orange mb-1">{stat.num}</div>
+                  <div className="h-px w-6 bg-pr-orange mb-3 mx-auto" />
+                  <div className="text-sm text-pr-gray-mid">{stat.label}</div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Méthodologie Section */}
-          <div className="mb-16">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                <span className="text-black">Méthodologie </span>
-                <span className="text-blue-600">Générale</span>
+          {/* MÉTHODOLOGIE */}
+          <section className="mb-20">
+            <div className="mb-10">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="h-7 w-1 bg-pr-orange rounded-full" />
+                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-orange-dark">
+                  Section 01
+                </span>
+              </div>
+              <h2 className="font-dm-serif text-3xl sm:text-4xl text-pr-black mb-3">
+                Méthodologie générale
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Maîtrisez les techniques essentielles pour briller lors de vos entretiens
+              <p className="text-base text-pr-gray-mid max-w-2xl">
+                Maîtrisez les techniques essentielles pour briller lors de vos entretiens.
               </p>
             </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-              <Card className="hover:shadow-2xl hover:scale-110 hover:-translate-y-2 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 group">
-                <CardContent className="p-4">
-                  <Link to="/methodologie/storytelling" className="flex flex-col items-center gap-2 text-center">
-                    <MessageSquare className="h-8 w-8 text-blue-600 group-hover:text-orange-600 transition-colors duration-300" />
-                    <span className="font-medium text-blue-700 group-hover:text-orange-800 transition-colors duration-300">Storytelling</span>
-                  </Link>
-                </CardContent>
-              </Card>
 
-              <Card className="hover:shadow-2xl hover:scale-110 hover:-translate-y-2 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 group">
-                <CardContent className="p-4">
-                  <Link to="/methodologie/motivation-ecole" className="flex flex-col items-center gap-2 text-center">
-                    <School className="h-8 w-8 text-blue-600 group-hover:text-orange-600 transition-colors duration-300" />
-                    <span className="font-medium text-blue-700 group-hover:text-orange-800 transition-colors duration-300">Motivation école</span>
-                  </Link>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-2xl hover:scale-110 hover:-translate-y-2 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 group">
-                <CardContent className="p-4">
-                  <Link to="/methodologie/projet-professionnel" className="flex flex-col items-center gap-2 text-center">
-                    <Target className="h-8 w-8 text-blue-600 group-hover:text-orange-600 transition-colors duration-300" />
-                    <span className="font-medium text-blue-700 group-hover:text-orange-800 transition-colors duration-300">Projet professionnel</span>
-                  </Link>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-2xl hover:scale-110 hover:-translate-y-2 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 group">
-                <CardContent className="p-4">
-                  <Link to="/methodologie/personnalite" className="flex flex-col items-center gap-2 text-center">
-                    <Heart className="h-8 w-8 text-blue-600 group-hover:text-orange-600 transition-colors duration-300" />
-                    <span className="font-medium text-blue-700 group-hover:text-orange-800 transition-colors duration-300">Questions personnalité</span>
-                  </Link>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-2xl hover:scale-110 hover:-translate-y-2 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 group">
-                <CardContent className="p-4">
-                  <Link to="/methodologie/finir-entretien" className="flex flex-col items-center gap-2 text-center">
-                    <CheckCircle className="h-8 w-8 text-blue-600 group-hover:text-orange-600 transition-colors duration-300" />
-                    <span className="font-medium text-blue-700 group-hover:text-orange-800 transition-colors duration-300">Finir un entretien</span>
-                  </Link>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-2xl hover:scale-110 hover:-translate-y-2 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 group">
-                <CardContent className="p-4">
-                  <Link to="/methodologie/erreur-entretien" className="flex flex-col items-center gap-2 text-center">
-                    <AlertTriangle className="h-8 w-8 text-blue-600 group-hover:text-orange-600 transition-colors duration-300" />
-                    <span className="font-medium text-blue-700 group-hover:text-orange-800 transition-colors duration-300">Erreurs à éviter</span>
-                  </Link>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-2xl hover:scale-110 hover:-translate-y-2 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 group">
-                <CardContent className="p-4">
-                  <Link to="/methodologie/tendre-perches" className="flex flex-col items-center gap-2 text-center">
-                    <HandHeart className="h-8 w-8 text-blue-600 group-hover:text-orange-600 transition-colors duration-300" />
-                    <span className="font-medium text-blue-700 group-hover:text-orange-800 transition-colors duration-300">Tendre des perches</span>
-                  </Link>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-2xl hover:scale-110 hover:-translate-y-2 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 group">
-                <CardContent className="p-4">
-                  <Link to="/methodologie/pitch-intro" className="flex flex-col items-center gap-2 text-center">
-                    <Presentation className="h-8 w-8 text-blue-600 group-hover:text-orange-600 transition-colors duration-300" />
-                    <span className="font-medium text-blue-700 group-hover:text-orange-800 transition-colors duration-300">Pitch d'introduction</span>
-                  </Link>
-                </CardContent>
-              </Card>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
+              {methodModules.map(({ to, icon: Icon, label }) => (
+                <Link
+                  key={to}
+                  to={to}
+                  className="group bg-white border border-pr-gray-light rounded-lg p-5 flex flex-col items-center gap-3 text-center hover:border-pr-orange hover:bg-pr-orange-pale transition-all duration-300"
+                >
+                  <Icon className="h-7 w-7 text-pr-gray-dark group-hover:text-pr-orange transition-colors duration-300" strokeWidth={1.5} />
+                  <span className="text-sm font-medium text-pr-gray-dark group-hover:text-pr-orange-dark transition-colors duration-300">
+                    {label}
+                  </span>
+                </Link>
+              ))}
             </div>
 
-            {/* Formats Spécialisés */}
-            <div className="text-center mb-12">
-              <h3 className="text-3xl sm:text-4xl font-bold mb-4">
-                <span className="text-black">Formats </span>
-                <span className="text-blue-600">Spécialisés</span>
+            {/* Formats spécialisés */}
+            <div className="mb-8">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="h-7 w-1 bg-pr-orange rounded-full" />
+                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-orange-dark">
+                  Formats spécialisés
+                </span>
+              </div>
+              <h3 className="font-dm-serif text-2xl sm:text-3xl text-pr-black mb-2">
+                Pour les écoles à formats uniques
               </h3>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Guides détaillés pour les formats d'entretien uniques de certaines écoles
+              <p className="text-base text-pr-gray-mid max-w-2xl">
+                Guides détaillés pour les épreuves singulières de certaines écoles.
               </p>
             </div>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              <Card className="hover:shadow-2xl hover:scale-110 hover:-translate-y-2 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 group">
+
+            <div className="grid md:grid-cols-2 gap-5">
+              <Card className="border-pr-gray-light hover:border-pr-orange transition-colors duration-300 group">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-lg text-blue-700 group-hover:text-orange-800 transition-colors duration-300">
-                    <Users className="h-5 w-5 text-blue-600 group-hover:text-orange-600 transition-colors duration-300" />
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="h-10 w-10 rounded-md bg-pr-orange-pale flex items-center justify-center">
+                      <Users className="h-5 w-5 text-pr-orange-dark" strokeWidth={1.6} />
+                    </div>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark bg-pr-orange-pale px-2 py-1 rounded">
+                      GEM
+                    </span>
+                  </div>
+                  <CardTitle className="font-dm-serif text-xl text-pr-black">
                     Entretien inversé GEM
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    Guide complet pour réussir cette partie unique de l'oral de GEM où vous menez l'entretien.
+                  <p className="text-sm text-pr-gray-dark leading-relaxed mb-5">
+                    Guide complet pour réussir cette partie unique de l'oral de GEM
+                    où vous menez l'entretien.
                   </p>
                   <Link to="/entretien-inverse-gem">
-                    <Button variant="outline" className="w-full">Voir le guide</Button>
+                    <Button variant="outline" className="w-full border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange">
+                      Voir le guide
+                    </Button>
                   </Link>
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-2xl hover:scale-110 hover:-translate-y-2 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 group">
+              <Card className="border-pr-gray-light hover:border-pr-orange transition-colors duration-300 group">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-lg text-blue-700 group-hover:text-orange-800 transition-colors duration-300">
-                    <FileText className="h-5 w-5 text-blue-600 group-hover:text-orange-600 transition-colors duration-300" />
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="h-10 w-10 rounded-md bg-pr-orange-pale flex items-center justify-center">
+                      <FileText className="h-5 w-5 text-pr-orange-dark" strokeWidth={1.6} />
+                    </div>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark bg-pr-orange-pale px-2 py-1 rounded">
+                      SKEMA
+                    </span>
+                  </div>
+                  <CardTitle className="font-dm-serif text-xl text-pr-black">
                     CV Projectif
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    Tout savoir pour créer un CV projectif convaincant pour SKEMA et autres écoles.
+                  <p className="text-sm text-pr-gray-dark leading-relaxed mb-5">
+                    Tout savoir pour créer un CV projectif convaincant pour SKEMA
+                    et autres écoles.
                   </p>
                   <Link to="/cv-projectif">
-                    <Button variant="outline" className="w-full">Voir le guide</Button>
+                    <Button variant="outline" className="w-full border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange">
+                      Voir le guide
+                    </Button>
                   </Link>
                 </CardContent>
               </Card>
             </div>
-          </div>
+          </section>
 
-          {/* Outils de Préparation */}
-          <div className="mb-16">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                <span className="text-black">Outils </span>
-                <span className="text-blue-600">IA</span>
+          {/* OUTILS IA */}
+          <section className="mb-20">
+            <div className="mb-10">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="h-7 w-1 bg-pr-orange rounded-full" />
+                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-orange-dark">
+                  Section 02
+                </span>
+              </div>
+              <h2 className="font-dm-serif text-3xl sm:text-4xl text-pr-black mb-3">
+                Outils IA
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Préparez-vous avec nos générateurs intelligents personnalisés pour chaque école
+              <p className="text-base text-pr-gray-mid max-w-2xl">
+                Préparez-vous avec nos générateurs intelligents personnalisés pour chaque école.
               </p>
             </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-lg">
-                    <Bot className="h-5 w-5" />
-                    Générateur de Réponses
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    Générez des réponses structurées pour toutes vos questions d'entretien avec l'IA.
-                  </p>
-                  <Link to="/generator/answer">
-                    <Button variant="outline" className="w-full">Utiliser le générateur</Button>
-                  </Link>
-                </CardContent>
-              </Card>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-lg">
-                    <HelpCircle className="h-5 w-5" />
-                    Questions EM Lyon
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    Entraînez-vous avec des questions aléatoires format EM Lyon avec cartes thématiques.
-                  </p>
-                  <Link to="/generator/emlyon">
-                    <Button variant="outline" className="w-full">Questions aléatoires</Button>
-                  </Link>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-lg">
-                    <Puzzle className="h-5 w-5" />
-                    Mots EDHEC
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    Générateur de mots aléatoires pour préparer votre présentation EDHEC.
-                  </p>
-                  <Link to="/generator/edhec">
-                    <Button variant="outline" className="w-full">Mots aléatoires</Button>
-                  </Link>
-                </CardContent>
-              </Card>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {[
+                {
+                  icon: Bot,
+                  title: "Générateur de réponses",
+                  desc: "Générez des réponses structurées pour toutes vos questions d'entretien avec l'IA.",
+                  to: "/generator/answer",
+                  cta: "Utiliser le générateur",
+                },
+                {
+                  icon: HelpCircle,
+                  title: "Questions EM Lyon",
+                  desc: "Entraînez-vous avec des questions aléatoires format EM Lyon avec cartes thématiques.",
+                  to: "/generator/emlyon",
+                  cta: "Questions aléatoires",
+                },
+                {
+                  icon: Puzzle,
+                  title: "Mots EDHEC",
+                  desc: "Générateur de mots aléatoires pour préparer votre présentation EDHEC.",
+                  to: "/generator/edhec",
+                  cta: "Mots aléatoires",
+                },
+              ].map((tool) => (
+                <Card key={tool.to} className="border-pr-gray-light hover:border-pr-orange transition-colors duration-300 bg-white">
+                  <CardHeader>
+                    <div className="h-10 w-10 rounded-md bg-pr-orange-pale flex items-center justify-center mb-3">
+                      <tool.icon className="h-5 w-5 text-pr-orange-dark" strokeWidth={1.6} />
+                    </div>
+                    <CardTitle className="font-dm-serif text-lg text-pr-black">
+                      {tool.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-pr-gray-dark leading-relaxed mb-5">
+                      {tool.desc}
+                    </p>
+                    <Link to={tool.to}>
+                      <Button variant="outline" className="w-full border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange">
+                        {tool.cta}
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
-          </div>
+          </section>
 
-          {/* Fiches Écoles */}
-          <div className="mb-16">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                <span className="text-black">Fiches </span>
-                <span className="text-blue-600">Écoles</span>
+          {/* FICHES ÉCOLES */}
+          <section className="mb-20">
+            <div className="mb-10">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="h-7 w-1 bg-pr-orange rounded-full" />
+                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-orange-dark">
+                  Section 03
+                </span>
+              </div>
+              <h2 className="font-dm-serif text-3xl sm:text-4xl text-pr-black mb-3">
+                Fiches écoles
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Découvrez les spécificités de chaque école et leurs attentes pour les entretiens
+              <p className="text-base text-pr-gray-mid max-w-2xl">
+                Découvrez les spécificités de chaque école et leurs attentes pour les entretiens.
               </p>
             </div>
-            
 
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {schools.map((school, index) => <SchoolCard key={index} name={school.name} duration={school.duration} feature={school.feature} link={school.link} />)}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {schools.map((school, index) => (
+                <SchoolCard
+                  key={index}
+                  name={school.name}
+                  duration={school.duration}
+                  feature={school.feature}
+                  link={school.link}
+                />
+              ))}
             </div>
-          </div>
+          </section>
 
-          {/* Podcast Section */}
           <PodcastSection />
-
-          {/* Testimonials Section - Moved after podcast */}
           <TestimonialsSection />
 
-          {/* Navigation */}
-          <div className="mt-16 flex justify-center gap-4">
-            <Link to="/methodologie">
-              
-            </Link>
+          {/* CTA final */}
+          <div className="mt-20 text-center bg-white border border-pr-gray-light rounded-xl px-8 py-12">
+            <div className="h-1 w-12 bg-pr-orange mx-auto mb-6 rounded-full" />
+            <h3 className="font-dm-serif text-2xl sm:text-3xl text-pr-black mb-3">
+              Prêt à préparer vos oraux ?
+            </h3>
+            <p className="text-base text-pr-gray-mid max-w-xl mx-auto mb-8">
+              Découvrez l'accompagnement Prépa Rationnelle pour structurer
+              votre préparation aux entretiens de personnalité.
+            </p>
             <Link to="/nos-offres">
-              <Button>Découvrir nos offres</Button>
+              <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white px-8 py-6 text-base">
+                Découvrir nos offres
+              </Button>
             </Link>
           </div>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default MethodEntretiensPersonnalitePage;

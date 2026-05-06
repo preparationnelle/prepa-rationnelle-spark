@@ -120,69 +120,83 @@ export const GeopoliticsGenerator = ({ language }: GeopoliticsGeneratorProps) =>
 
   return (
     <div className="space-y-8">
-      <Card className="overflow-hidden border-0 shadow-xl bg-gradient-to-br from-white via-emerald-50/30 to-teal-50/30">
-        <CardHeader className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
-          <CardTitle className="flex items-center gap-3 text-2xl">
-            <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
-              <Globe className="h-6 w-6" />
+      <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+        <div className="h-[3px] w-full bg-pr-orange" />
+        <CardHeader className="px-6 pt-5 pb-4 bg-pr-gray-bg border-b border-pr-gray-light">
+          <div className="flex items-center gap-3">
+            <div className="w-11 h-11 rounded-xl bg-white border border-pr-orange-soft flex items-center justify-center">
+              <Globe className="h-5 w-5 text-pr-orange-dark" />
             </div>
             <div>
-              <div className="text-2xl font-bold">
-                {language === 'fr' ? 'Générateur de Géopolitique' : 'Geopolitics Generator'}
+              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-0.5">
+                {language === 'fr' ? 'Géopolitique' : 'Geopolitics'}
               </div>
-              <div className="text-emerald-100 text-sm font-normal mt-1">
-                {language === 'fr' ? "Transformez vos cours en contenu pédagogique structuré" : "Transform your courses into structured educational content"}
+              <CardTitle className="font-dm-serif text-2xl text-pr-black leading-none">
+                {language === 'fr' ? 'Cours en contenu structuré' : 'Course generator'}
+              </CardTitle>
+              <div className="text-pr-gray-mid text-[13px] mt-1">
+                {language === 'fr' ? 'Transformez vos cours en fiches, flashcards et sujets.' : 'Turn your courses into sheets, flashcards and topics.'}
               </div>
             </div>
-          </CardTitle>
+          </div>
         </CardHeader>
-        <CardContent className="p-8 space-y-6">
-          <div className="space-y-4">
+        <CardContent className="p-6 sm:p-7 space-y-5">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between gap-3">
+              <label className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-pr-orange-pale text-pr-orange-dark text-[11px] font-bold">
+                  1
+                </span>
+                {language === 'fr' ? 'URL du PDF ou texte du cours' : 'PDF URL or course text'}
+              </label>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark bg-pr-orange-pale px-2.5 py-1 rounded-full">
+                {language === 'fr' ? 'Requis' : 'Required'}
+              </span>
+            </div>
             <Textarea
-              placeholder={language === 'fr' ? 'URL du PDF (Google Drive, etc.) ou collez directement le texte du cours...' : 'PDF URL (Google Drive, etc.) or paste course text directly...'}
+              placeholder={language === 'fr' ? 'URL du PDF (Google Drive, etc.) ou collez directement le texte du cours…' : 'PDF URL (Google Drive, etc.) or paste course text directly…'}
               value={pdfUrl}
               onChange={(e) => setPdfUrl(e.target.value)}
-              className="min-h-[120px] resize-none border-2 hover:border-primary/50 focus:border-primary transition-colors text-lg"
+              className="min-h-[120px] resize-y border-pr-gray-light focus:border-pr-orange focus:ring-2 focus:ring-pr-orange/20 transition-colors rounded-xl text-[15px] leading-relaxed p-4 bg-white text-pr-black placeholder:text-pr-gray-mid"
             />
 
-            <div className="flex gap-4 pt-4">
-              <Button 
-                onClick={handleGenerate} 
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <Button
+                onClick={handleGenerate}
                 disabled={isGenerating || !pdfUrl.trim()}
-                className="flex-1 h-14 text-lg bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="flex-1 h-12 text-[15px] bg-pr-orange hover:bg-pr-orange-dark text-white font-semibold rounded-xl shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 disabled:opacity-50 disabled:shadow-none"
               >
                 {isGenerating ? (
                   <>
-                    <Loader2 className="h-5 w-5 mr-3 animate-spin" />
-                    {language === 'fr' ? 'Traitement en cours...' : 'Processing...'}
+                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    {language === 'fr' ? 'Traitement en cours…' : 'Processing…'}
                   </>
                 ) : (
                   <>
-                    <Sparkles className="h-5 w-5 mr-3" />
-                    {language === 'fr' ? 'Analyser et générer' : 'Analyze and Generate'}
+                    <Sparkles className="h-4 w-4 mr-2" />
+                    {language === 'fr' ? 'Analyser et générer' : 'Analyze and generate'}
                   </>
                 )}
               </Button>
-              
+
               {generatedContent && (
-                <Button 
-                  onClick={handleDownloadAll} 
-                  variant="outline"
-                  className="h-14 px-8 border-2 hover:bg-primary hover:text-white transition-all duration-300"
+                <Button
+                  onClick={handleDownloadAll}
+                  className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft rounded-xl h-12 px-5 font-medium transition-colors"
                 >
-                  <Download className="h-5 w-5 mr-2" />
-                  {language === 'fr' ? 'Tout télécharger' : 'Download All'}
+                  <Download className="h-4 w-4 mr-2" />
+                  {language === 'fr' ? 'Tout télécharger' : 'Download all'}
                 </Button>
               )}
             </div>
           </div>
 
-          <Alert className="border-2 border-emerald-200 bg-emerald-50">
-            <AlertCircle className="h-4 w-4 text-emerald-600" />
-            <AlertDescription className="text-emerald-800">
-              {language === 'fr' 
-                ? "Entrez l'URL d'un PDF accessible publiquement ou collez directement le texte de votre cours. Le système génèrera automatiquement : fiches structurées, flashcards, sujets de dissertation et actualités."
-                : "Enter the URL of a publicly accessible PDF or paste your course text directly. The system will automatically generate: structured sheets, flashcards, dissertation topics and current events."
+          <Alert className="bg-pr-gray-bg border-pr-gray-light rounded-xl">
+            <AlertCircle className="h-4 w-4 text-pr-orange" />
+            <AlertDescription className="text-[14px] text-pr-gray-dark leading-relaxed">
+              {language === 'fr'
+                ? <><strong className="text-pr-black">Comment ça marche :</strong> entrez l'URL d'un PDF public ou collez le texte de votre cours. Le système génèrera fiches structurées, flashcards, sujets de dissertation et actualités.</>
+                : <><strong className="text-pr-black">How it works:</strong> enter the URL of a public PDF or paste your course text. The system will generate structured sheets, flashcards, dissertation topics and current events.</>
               }
             </AlertDescription>
           </Alert>

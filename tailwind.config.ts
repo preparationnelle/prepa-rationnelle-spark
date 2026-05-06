@@ -32,6 +32,10 @@ export default {
 			fontFamily: {
 				'dm-serif': ['"DM Serif Display"', 'serif'],
 				'dm-sans': ['"DM Sans"', 'sans-serif'],
+				'lora': ['"Lora"', 'Georgia', 'serif'],
+				'instrument': ['"Instrument Sans"', '-apple-system', 'sans-serif'],
+				'hand': ['"Caveat"', '"Bradley Hand"', 'cursive'],
+				'mono-jb': ['"JetBrains Mono"', 'monospace'],
 			},
 			colors: {
 				pr: {
@@ -44,6 +48,18 @@ export default {
 					'gray-mid': '#888880',
 					'gray-light': '#D8D6CE',
 					'gray-bg': '#F7F6F3',
+				},
+				carnet: {
+					paper: '#FBF6EA',
+					'paper-2': '#FFFEF8',
+					ink: '#1F1714',
+					'ink-soft': '#4A3D30',
+					'ink-mute': '#8A7864',
+					rule: 'rgba(78,55,30,0.18)',
+					'rule-soft': 'rgba(78,55,30,0.10)',
+					red: '#C1443A',
+					'red-deep': '#9E342B',
+					highlight: 'rgba(255,225,120,0.55)',
 				},
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

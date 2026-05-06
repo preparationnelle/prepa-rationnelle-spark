@@ -163,18 +163,18 @@ const FormationsOverviewPage = () => {
                     </div>
                   )}
 
-                  {/* Numéro décoratif + petit trait */}
-                  <div className="flex items-baseline justify-between mb-6">
-                    <span className="font-dm-serif text-5xl text-pr-orange leading-none">{num}</span>
-                    <div className="h-[2px] w-8 bg-pr-orange"></div>
-                  </div>
-
-                  {/* Label icône + titre */}
-                  <div className="flex items-center gap-2 mb-3">
-                    <formation.icon className="h-4 w-4 text-pr-orange-dark" />
-                    <h2 className="font-dm-sans text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-gray-mid">
-                      {formation.title}
-                    </h2>
+                  {/* Header de la carte : Numéro, Icône, Titre */}
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="flex items-center gap-3">
+                      <span className="font-dm-serif text-4xl text-pr-orange leading-none">{num}</span>
+                      <div className="flex items-center gap-2">
+                        <formation.icon className="h-4 w-4 text-pr-orange-dark" />
+                        <h2 className="font-dm-sans text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-gray-mid">
+                          {formation.title}
+                        </h2>
+                      </div>
+                    </div>
+                    <div className="h-[2px] w-6 bg-pr-orange hidden sm:block"></div>
                   </div>
 
                   {/* Description */}

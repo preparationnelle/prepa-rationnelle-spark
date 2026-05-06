@@ -27,19 +27,19 @@ const VocabRow: React.FC<{ term: string; definition: string }> = ({ term, defini
 
 const ImmigrationPage = () => {
   const keyTopics = [
-    { title: 'US Border Crisis and Policy Shifts', content: '2.4M encounters 2023, Title 42 end, asylum backlog, Republican vs Democratic approaches', vocabulary: ['Title 42', 'asylum seekers', 'border encounters', 'migration surge', 'asylum backlog', 'border facilities'] },
-    { title: 'UK Immigration Post-Brexit', content: '606K net migration 2022, Channel crossings, Rwanda deal, Illegal Migration Act 2023', vocabulary: ['net migration', 'Channel crossings', 'Rwanda deal', 'Illegal Migration Act', 'asylum system', 'Brexit control'] },
-    { title: 'Political and Humanitarian Challenges', content: 'Xenophobia vs openness, public opinion splits, economic needs vs political rhetoric', vocabulary: ['xenophobia', 'public opinion', 'economic needs', 'political rhetoric', 'humanitarian crisis', 'sovereignty'] },
-    { title: 'Global Migration Pressures', content: 'Climate migrants, conflicts, economic disparities, interdependence, future challenges', vocabulary: ['climate migrants', 'conflicts', 'economic disparities', 'interdependence', 'globalization', 'future challenges'] },
+    { title: 'Trump 2.0 and the Border', content: 'January 2025 executive order seeking to end birthright citizenship, the largest deportation operation in US history, and the targeting of sanctuary policies.', vocabulary: ['birthright citizenship', 'the 14th Amendment', 'mass deportations', 'an executive order', 'sanctuary policies'] },
+    { title: 'UK Post-Brexit Paradox', content: '"Take back control" promised tighter borders, yet net migration hit a record 728,000 in 2024 — driven by India, Nigeria, the Philippines and Hong Kong.', vocabulary: ['to take back control', 'record net migration', 'a paradox of populism', 'the points-based system', 'visa routes'] },
+    { title: 'The Rwanda Saga', content: 'Sunak\'s flagship plan unveiled in 2022, struck down by the UK Supreme Court in November 2023, scrapped by Starmer\'s Labour government in July 2024.', vocabulary: ['outsourcing migration management', 'to scrap a scheme', 'human rights commitments', 'a deterrent', 'flagship policy'] },
+    { title: 'Emblematic Cases: Windrush, Australia', content: 'The 2018 Windrush scandal exposing the "hostile environment"; Australia\'s indefinite offshore detention on Nauru and Manus.', vocabulary: ['the hostile environment', 'wrongly classified as illegal', 'Operation Sovereign Borders', 'indefinite detention', 'people-smugglers'] },
   ];
 
   const essentialVocabulary = [
-    { term: 'Title 42', definition: 'US public health order that allowed rapid expulsion of migrants without normal asylum processing' },
-    { term: 'asylum seekers', definition: 'People seeking protection in another country due to persecution or danger in their home country' },
-    { term: 'net migration', definition: 'Difference between the number of immigrants entering and emigrants leaving a country' },
-    { term: 'Channel crossings', definition: 'Dangerous boat journeys across the English Channel from France to England' },
-    { term: 'Rwanda deal', definition: 'Controversial UK policy to deport asylum seekers to Rwanda for processing' },
-    { term: 'xenophobia', definition: 'Fear, hatred, or prejudice against people from other countries or cultures' },
+    { term: 'birthright citizenship', definition: 'Citizenship granted automatically to anyone born on a country\'s soil — protected in the US by the 14th Amendment (1868), challenged by Trump\'s January 2025 executive order.' },
+    { term: 'the hostile environment', definition: 'UK policy designed by Theresa May as Home Secretary, requiring landlords, employers and the NHS to check immigration status — at the heart of the 2018 Windrush scandal.' },
+    { term: 'to scrap a scheme', definition: 'To abolish or abandon a policy. Used of the Rwanda plan, scrapped by Keir Starmer in July 2024.' },
+    { term: 'a deterrent', definition: 'A measure designed to discourage a behaviour — the official rationale of both the Rwanda plan and Australia\'s offshore model.' },
+    { term: 'an asylum seeker / a refugee', definition: 'Someone who applies for / has been granted protection from persecution.' },
+    { term: 'a sanctuary city', definition: 'A US city limiting cooperation with federal immigration enforcement — increasingly under pressure from Trump\'s second term.' },
   ];
 
   return (
@@ -53,16 +53,16 @@ const ImmigrationPage = () => {
       badge="Civilisation · 2025"
       title="Immigration"
       titleAccent="& Border Control"
-      subtitle="US border crisis, UK post-Brexit migration, asylum policy, and global migration pressures."
+      subtitle="Trump 2.0 and the 14th Amendment, Britain's post-Brexit migration paradox, the rise and fall of the Rwanda plan, the Windrush scandal and Australia's offshore model."
     >
       <div className="max-w-4xl mx-auto">
         <CivStats
           title="Key Immigration Facts 2025"
           stats={[
-            { value: '2.4M', label: 'US border encounters 2023' },
-            { value: '606K', label: 'UK net migration 2022' },
-            { value: '1.5M', label: 'US asylum backlog cases' },
-            { value: '45K', label: 'Channel crossings 2022' },
+            { value: 'Jan 2025', label: 'Trump\'s executive order targeting birthright citizenship' },
+            { value: '728k', label: 'record UK net migration in 2024 (3× the figure on referendum day)' },
+            { value: '£700m+', label: 'cost of the Rwanda plan — zero migrants ever flown' },
+            { value: '2018', label: 'the Windrush scandal exposes the "hostile environment"' },
           ]}
         />
 
@@ -83,78 +83,63 @@ const ImmigrationPage = () => {
             </div>
           </CivItem>
 
-          <CivItem value="us-border-crisis" title="US Border Crisis: Record Crossings and Policy Challenges">
+          <CivItem value="us-border-crisis" title="Trump 2.0 and the End of Birthright Citizenship">
             <div className="space-y-4">
               <p>
-                Immigration has been a defining political flashpoint in recent years, with debates intensifying over how to manage borders humanely yet securely. The United States has experienced historically high levels of unauthorized migration at its southern border, driven by instability and economic hardship in Latin America. In fiscal year 2023, U.S. authorities recorded over 2.4 million encounters at the Southwest border – a new record, slightly above the prior year. This surge has strained border facilities and the asylum system. Images of tens of thousands of migrants – families with children, single adults, unaccompanied teens – arriving at the Rio Grande created a sense of crisis. The drivers include poverty and violence in countries like Venezuela, Haiti, Cuba, Nicaragua, Honduras, and Guatemala, as well as perceptions (or misperceptions) of U.S. policy changes.
-              </p>
-              <p>
-                The Biden administration, which took office in 2021, initially struck a more compassionate tone than the hardline Trump era, ending practices like family separation. However, record crossings quickly posed practical and political challenges. By late 2022, Republican governors in Texas and Arizona, accusing the federal government of inaction, started busing thousands of migrants to Democratic-run cities like New York, Washington D.C., and Chicago – a move critics called a stunt using human beings as pawns. Those destination cities then also struggled with shelter space and social services, leading even liberal mayors to plead for federal help. A major inflection point came in May 2023, when the U.S. ended the "Title 42" public health order that for two years had allowed rapid expulsion of migrants without normal asylum processing (purportedly due to COVID-19).
+                Within hours of returning to office in January 2025, Donald Trump signed an executive order seeking to end birthright citizenship for children of undocumented migrants and temporary visa holders. The move directly targets the 14th Amendment, ratified in 1868 to protect the citizenship of formerly enslaved Americans, and was immediately challenged in federal courts. Whatever its legal fate, the order signals a radical break with a century and a half of American constitutional tradition. Combined with the largest deportation operation in US history — ICE raids reaching workplaces, schools and even churches once shielded by sanctuary policies — it reframes immigration not as a question of integration but as a matter of national identity to be defended. The new administration has also reinstated the "Remain in Mexico" rule and ended catch-and-release, turning the southern border into the central stage of Trump's second-term agenda.
               </p>
               <EssayBox>
-                This paragraph is excellent for discussions on immigration policy, border management, or the challenges of humanitarian border control. It provides concrete data on migration flows and can support arguments about the complexity of immigration policy or the need for comprehensive reform. It's also useful for analyzing the relationship between political rhetoric and practical challenges.
+                Mobilisable on: "Is national identity compatible with mass migration?"; the constitutional limits of executive power in the US; the rise of nativism in Western democracies; the politicisation of citizenship.
               </EssayBox>
-              <CivVocabBox words="defining political flashpoint; manage borders; humanely; securely; unauthorized migration; southern border; instability; economic hardship; Latin America; fiscal year 2023; 2.4 million encounters; Southwest border; new record; surge; strained; border facilities; asylum system; Rio Grande; sense of crisis; poverty; violence; Venezuela; Haiti; Cuba; Nicaragua; Honduras; Guatemala; Biden administration; compassionate tone; hardline Trump era; family separation; record crossings; Republican governors; Texas; Arizona; busing migrants; Democratic-run cities; pawns; shelter space; social services; inflection point; May 2023; Title 42; public health order; rapid expulsion; normal asylum processing" />
+              <CivVocabBox words="an executive order; to end birthright citizenship; undocumented migrants; the 14th Amendment; formerly enslaved Americans; to be challenged in federal courts; a radical break with constitutional tradition; the largest deportation operation in US history; ICE raids; sanctuary policies; the Remain in Mexico rule; catch-and-release; a matter of national identity" />
             </div>
           </CivItem>
 
-          <CivItem value="uk-immigration-brexit" title="UK Immigration Post-Brexit: Paradox of Control and Record Numbers">
+          <CivItem value="uk-immigration-brexit" title="Britain's Post-Brexit Immigration Paradox">
             <div className="space-y-4">
               <p>
-                In the United Kingdom, immigration has likewise been heated, especially since Brexit was in part a referendum on "taking back control" of borders. While Brexit ended free movement of EU citizens into Britain, overall net migration to the UK paradoxically soared to record levels after Brexit. In 2022, net migration hit an estimated +606,000 (later revised even higher) – the highest ever annual figure. This was driven by several factors: a post-pandemic rebound in work and student visas, a surge of skilled workers from outside Europe filling labor shortages, and the UK's generous schemes welcoming refugees from Ukraine's war (about 114,000 Ukrainians) and Hong Kong (over 50,000 arrivals under a BN(O) visa).
-              </p>
-              <p>
-                The Conservative government found itself in a dilemma – needing immigrants to staff industries and the NHS, but politically beholden to an anti-immigration base. Prime Minister Rishi Sunak acknowledged the numbers are "too high" and vowed to reduce them, introducing measures like restricting foreign students from bringing families. Yet simultaneously, they had to ease rules in critical sectors (issuing more visas for care workers, seasonal farm laborers, even fishermen) because Brexit and an aging workforce created shortages. The situation underlines that Britain's economy, like many, actually needs migrants – even as public sentiment, stoked by tabloids, often perceives immigration as out of control.
+                Brexit was sold to many British voters as a way to "take back control" of the country's borders. Yet by 2024, net migration to the UK had reached an all-time record of 728,000 people — more than three times the figure on referendum day. The shift came almost entirely from outside the EU: students from India and Nigeria, NHS staff from the Philippines, Hong Kongers fleeing Chinese repression, and Ukrainians displaced by Russia's war. Successive Conservative governments alternated between symbolic crackdowns and pragmatic concessions, opening visa routes for care workers, seasonal pickers and even fishermen because Brexit and an ageing workforce had created chronic shortages. The episode illustrates a deeper irony of populist politics: the policies adopted in the name of restoring control often produce outcomes their advocates never anticipated, and economies eventually impose their own logic, regardless of campaign slogans.
               </p>
               <EssayBox>
-                This paragraph is valuable for discussions on Brexit consequences, immigration policy, or the relationship between political promises and economic reality. It provides concrete examples of policy contradictions and can support arguments about the complexity of immigration control or the economic necessity of migration. It's also useful for analyzing the relationship between political rhetoric and practical needs.
+                Mobilisable on: the gap between political promises and economic reality; the unintended consequences of Brexit; "Should liberal democracies have open borders?"; the paradoxes of populism.
               </EssayBox>
-              <CivVocabBox words="taking back control; borders; free movement; EU citizens; net migration; paradoxically soared; record levels; 606,000; highest ever; post-pandemic rebound; work visas; student visas; skilled workers; outside Europe; labor shortages; generous schemes; refugees; Ukraine's war; 114,000 Ukrainians; Hong Kong; 50,000 arrivals; BN(O) visa; Conservative government; dilemma; staff industries; NHS; anti-immigration base; Rishi Sunak; too high; vowed reduce; foreign students; care workers; seasonal farm laborers; fishermen; aging workforce; shortages; needs migrants; tabloids; out of control" />
+              <CivVocabBox words="to take back control of one's borders; an all-time record; three times the figure on referendum day; outside the EU; NHS staff from the Philippines; Hong Kongers fleeing repression; symbolic crackdowns; pragmatic concessions; visa routes for care workers; seasonal pickers; an ageing workforce; chronic shortages; the deeper irony of populist politics; campaign slogans" />
             </div>
           </CivItem>
 
-          <CivItem value="channel-crossings-rwanda" title="Channel Crossings and the Controversial Rwanda Deal">
+          <CivItem value="channel-crossings-rwanda" title="The Rise and Fall of the Rwanda Plan">
             <div className="space-y-4">
               <p>
-                The most contentious aspect in the UK has been the rise in asylum seekers crossing the English Channel in small boats. These dangerous crossings – smuggling people on dinghies from France to England's southern coast – numbered around 45,000 people in 2022, and while slightly fewer (~33,000) in 2023, they remain a focus of intense media coverage and political rhetoric. Many boat migrants are refugees from countries like Syria, Iran, Eritrea, and increasingly Afghanistan – but because they arrive irregularly, the government labels them "illegal migrants". Britain's asylum system backlog ballooned, with over 150,000 people awaiting decisions and many placed in hotels at taxpayer expense, which became another controversy.
-              </p>
-              <p>
-                In response, the government under Boris Johnson and then Sunak took a hardline turn. In 2022 they announced the highly controversial Rwanda deal: a policy to deport certain asylum seekers 4,000 miles away to Rwanda, where they would either seek asylum there or potentially be sent elsewhere, with the idea that this deterrent would stop the small boats. The plan faced immediate legal challenges and outcry from human rights groups and the UN. In June 2023, the Court of Appeal ruled the Rwanda scheme unlawful, finding that Rwanda's asylum system did not meet proper safety standards. The government appealed, but in November 2023 the UK Supreme Court unanimously struck down the Rwanda plan as unlawful, upholding that Rwanda is not a reliably "safe" destination for refugees. This was a severe blow to the government's flagship immigration policy.
+                In April 2022, the British government unveiled one of the most controversial migration policies in recent European history: deporting asylum seekers who had arrived irregularly in the UK — many on small boats across the English Channel — to Rwanda, 4,000 miles away, for processing and resettlement. Despite costing taxpayers more than £700 million in setup fees and "support" payments to Kigali, the scheme never sent a single migrant onto a plane: in November 2023, the UK Supreme Court unanimously ruled it unlawful on the grounds that Rwanda was not a reliably safe destination, and in July 2024 the incoming Labour government under Keir Starmer scrapped it within days of taking office. The episode illustrates the political appeal — and policy failure — of outsourcing migration management. It also raises a deeper question: how can liberal democracies reconcile their human rights commitments with a growing electoral demand for tighter borders?
               </p>
               <EssayBox>
-                This paragraph is excellent for discussions on asylum policy, international law, or the challenges of deterring irregular migration. It provides concrete examples of controversial policies and can support arguments about the importance of international cooperation or the limitations of deterrence strategies. It's also useful for analyzing the relationship between political promises and legal reality.
+                Mobilisable on: the limits of deterrence; "Should liberal democracies have open borders?"; the externalisation of migration management; the tension between popular demand and human rights law.
               </EssayBox>
-              <CivVocabBox words="contentious aspect; asylum seekers; English Channel; small boats; dangerous crossings; smuggling; dinghies; France; England's southern coast; 45,000 people; 33,000; intense media coverage; political rhetoric; refugees; Syria; Iran; Eritrea; Afghanistan; arrive irregularly; illegal migrants; asylum system backlog; 150,000 people; hotels; taxpayer expense; hardline turn; Boris Johnson; Sunak; Rwanda deal; deport; 4,000 miles away; deterrent; legal challenges; outcry; human rights groups; UN; Court of Appeal; Rwanda scheme unlawful; safety standards; UK Supreme Court; unanimously struck down; reliably safe destination; severe blow; flagship immigration policy" />
+              <CivVocabBox words="to unveil a controversial policy; an asylum seeker; to arrive irregularly; small boats across the English Channel; 4,000 miles away; setup fees; the UK Supreme Court ruled it unlawful; a reliably safe destination; the incoming Labour government; to scrap a scheme within days; outsourcing migration management; human rights commitments; electoral demand for tighter borders" />
             </div>
           </CivItem>
 
-          <CivItem value="political-humanitarian-challenges" title="Political and Humanitarian Challenges: Xenophobia vs Openness">
+          <CivItem value="windrush-scandal" title="The Windrush Scandal: When the Hostile Environment Turns on Its Own Citizens">
             <div className="space-y-4">
               <p>
-                Immigration controversies also extend beyond the border. Internally, there's a debate about what to do with millions of undocumented immigrants already living in the U.S. (approx 11 million). Comprehensive immigration reform bills have repeatedly failed in Congress amid partisan deadlock. Meanwhile, some states passed their own measures: e.g., Florida in 2023 enacted strict requirements for employers to verify immigration status and made transporting undocumented people a felony in some cases, causing fear in immigrant communities. Conversely, states like California expanded social services to undocumented residents. This patchwork reflects the absence of a national consensus. Public opinion polls show Americans broadly support legal immigration (and are sympathetic to migrants fleeing persecution) but also want stronger border enforcement; they support giving "Dreamers" (those brought illegally as children) a path to citizenship, but are split on broader amnesty.
-              </p>
-              <p>
-                The immigration debate in Britain, as elsewhere, also carries an undercurrent of xenophobia versus openness. Brexit, for example, dramatically reduced EU immigration (down to a trickle of a few thousand net from hundreds of thousands before 2016), but at the cost of staffing shortages. Now the majority of migrants are from Asia and Africa, which in some ways has shifted the discourse – one might observe there is less political agitation about Polish or Romanian workers, but more about those arriving illegally or those from culturally different backgrounds. The government talks about attracting "the brightest and best" while cracking down on "illegal" entrants. Public opinion in the UK is somewhat split: a sizable segment is sympathetic to refugees (especially after seeing tragedies like migrants drowning in the Channel), yet many also demand stronger enforcement and think the country has limited capacity.
+                In 2018, the United Kingdom was shaken by the Windrush scandal, named after the ship that brought Caribbean migrants to Britain after the Second World War to help rebuild the country. Decades later, hundreds of these legal residents — many in their seventies — were wrongly classified as illegal immigrants, denied healthcare, dismissed from their jobs and, in dozens of documented cases, deported to islands they had not seen since childhood. The scandal exposed the brutality of the "hostile environment" policy designed by Theresa May as Home Secretary, which had shifted the burden of proof from the state to the individual and conscripted landlords, employers and NHS staff into immigration enforcement. It forced Britain to confront an uncomfortable truth: bureaucratic cruelty toward migrants can extend to its own citizens, and the line between "deserving" and "undeserving" residents is far more arbitrary than political rhetoric suggests.
               </p>
               <EssayBox>
-                This paragraph is valuable for discussions on immigration politics, public opinion, or the challenges of balancing humanitarian concerns with political realities. It provides concrete examples of policy contradictions and can support arguments about the importance of comprehensive reform or the challenges of state-level policymaking. It's also useful for analyzing the relationship between public opinion and policy outcomes.
+                Mobilisable on: the human cost of bureaucratic cruelty; "Is multiculturalism in crisis?"; the moral risks of anti-immigration politics; race, citizenship and the British state.
               </EssayBox>
-              <CivVocabBox words="immigration controversies; undocumented immigrants; 11 million; comprehensive immigration reform bills; partisan deadlock; Florida 2023; verify immigration status; transporting; felony; fear; immigrant communities; California; expanded social services; patchwork; national consensus; legal immigration; sympathetic; fleeing persecution; stronger border enforcement; Dreamers; path to citizenship; broader amnesty; xenophobia; openness; Brexit; reduced EU immigration; trickle; hundreds of thousands; staffing shortages; Asia; Africa; political agitation; Polish; Romanian workers; arriving illegally; culturally different backgrounds; brightest and best; illegal entrants; sizable segment; refugees; tragedies; migrants drowning; stronger enforcement; limited capacity" />
+              <CivVocabBox words="the Windrush scandal; Caribbean migrants; legal residents wrongly classified as illegal; to be denied healthcare; to be dismissed from one's job; to be deported; the hostile environment policy; the Home Secretary; to shift the burden of proof; to conscript landlords into immigration enforcement; bureaucratic cruelty; deserving and undeserving residents" />
             </div>
           </CivItem>
 
-          <CivItem value="global-migration-pressures" title="Global Migration Pressures: Future Challenges and Interdependence">
+          <CivItem value="australia-offshore" title="Australia's Offshore Model: A Contested Template">
             <div className="space-y-4">
               <p>
-                Across both the US and UK, immigration remains a "major contemporary crisis" in the sense of being a persistent policy challenge and political flashpoint. The humanitarian element is significant – how to handle large flows of desperate people – and so is the sovereignty element – how to maintain an orderly system and public consent. Neither country has found a silver-bullet solution. The U.S., under a divided Congress, is stuck with patchwork executive actions and overwhelmed systems. The UK, after Brexit, has more nominal control, yet finds itself arguably more inundated by asylum claims and reliant on foreign labor than before, highlighting the interdependence globalization brings.
-              </p>
-              <p>
-                Going forward, pressures will likely continue due to global factors (climate migrants, conflicts like Ukraine, economic disparities). The test for these democracies will be whether they can devise immigration systems that are fair, efficient, and aligned with their values – and whether leaders can engage the public on the issue without demonizing migrants or stoking fear. At present, it's a delicate balance, and immigration keeps roiling the politics of both nations, reminding us that how we treat "the stranger at our gate" is a core question of national character. The challenge is to create policies that respect human dignity while maintaining public confidence in the system's integrity and effectiveness.
+                Australia has long pursued one of the world's harshest migration policies. Since 2013, the country's "Operation Sovereign Borders" has turned back boats and detained asylum seekers indefinitely on the remote islands of Nauru and Manus, often for years at a time. Successive governments — Labor and Liberal alike — have defended the policy as a deterrent against people-smugglers, crediting it with virtually halting maritime arrivals. Critics, including the United Nations, have denounced conditions amounting to indefinite detention and have documented serious mental health crises, suicides and child abuse among detainees. The Australian model has become a contested template: admired in private by several European governments faced with their own boat arrivals, condemned in public by human rights organisations. It captures the central dilemma of border policy in liberal democracies — what level of cruelty are voters willing to tolerate in the name of order?
               </p>
               <EssayBox>
-                This paragraph is excellent for discussions on global migration challenges, democratic governance, or the future of immigration policy. It provides insights into long-term challenges and can support arguments about the importance of international cooperation or the need for sustainable solutions. It's also useful for analyzing the relationship between global pressures and national responses.
+                Mobilisable on: the externalisation of migration; "Should liberal democracies have open borders?"; the moral cost of deterrence; comparative migration policy in the English-speaking world.
               </EssayBox>
-              <CivVocabBox words="major contemporary crisis; persistent policy challenge; political flashpoint; humanitarian element; large flows; desperate people; sovereignty element; orderly system; public consent; silver-bullet solution; divided Congress; patchwork executive actions; overwhelmed systems; nominal control; inundated; asylum claims; foreign labor; interdependence; globalization; pressures continue; global factors; climate migrants; conflicts; Ukraine; economic disparities; democracies; fair; efficient; aligned values; engage public; demonizing migrants; stoking fear; delicate balance; politics; both nations; how we treat the stranger at our gate; national character; respect; human dignity; public confidence; system's integrity; effectiveness" />
+              <CivVocabBox words="one of the world's harshest migration policies; Operation Sovereign Borders; to turn back boats; to detain asylum seekers indefinitely; the remote islands of Nauru and Manus; a deterrent against people-smugglers; to virtually halt maritime arrivals; the United Nations; conditions amounting to indefinite detention; serious mental health crises; a contested template; the central dilemma of border policy" />
             </div>
           </CivItem>
 

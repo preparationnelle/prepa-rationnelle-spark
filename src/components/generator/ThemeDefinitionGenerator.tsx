@@ -142,22 +142,38 @@ export const ThemeDefinitionGenerator = () => {
 
   const allDefined = subjectData && subjectData.termes.every(terme => userDefinitions[terme]?.trim());
 
+  const difficultyOptions: { id: 'easy' | 'medium' | 'hard'; label: string }[] = [
+    { id: 'easy', label: 'Débutant' },
+    { id: 'medium', label: 'Intermédiaire' },
+    { id: 'hard', label: 'Avancé' },
+  ];
+
   return (
     <div className="space-y-6">
       {/* Header avec explication */}
-      <Card className="bg-gradient-to-br from-white via-orange-50/30 to-white border border-orange-200">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-2xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
-            <Target className="h-6 w-6 text-orange-600" />
-            Définir les Termes d'un Sujet
-          </CardTitle>
+      <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+        <div className="h-[3px] w-full bg-pr-orange" />
+        <CardHeader className="px-6 pt-5 pb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-11 h-11 rounded-xl bg-pr-orange-pale border border-pr-orange-soft flex items-center justify-center">
+              <Target className="h-5 w-5 text-pr-orange-dark" />
+            </div>
+            <div>
+              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-0.5">
+                Culture générale
+              </div>
+              <CardTitle className="font-dm-serif text-2xl text-pr-black leading-none">
+                Définir les termes d'un sujet
+              </CardTitle>
+            </div>
+          </div>
         </CardHeader>
-        <CardContent>
-          <Alert className="bg-orange-50 border-orange-200">
-            <Info className="h-4 w-4 text-orange-600" />
-            <AlertDescription className="text-sm text-gray-700">
-              <strong>Exercice :</strong> Un sujet de dissertation t'est proposé. Identifie et définis les termes clés 
-              qui permettront de construire une problématique solide. C'est la première étape essentielle avant de rédiger !
+        <CardContent className="px-6 pb-6">
+          <Alert className="bg-pr-orange-pale/60 border-pr-orange-pale rounded-xl">
+            <Info className="h-4 w-4 text-pr-orange-dark" />
+            <AlertDescription className="text-[14px] text-pr-gray-dark leading-relaxed">
+              <strong className="text-pr-black">Exercice :</strong> un sujet t'est proposé. Identifie et définis les termes clés
+              qui permettront de construire une problématique solide.
             </AlertDescription>
           </Alert>
         </CardContent>
@@ -165,43 +181,36 @@ export const ThemeDefinitionGenerator = () => {
 
       {/* Génération du sujet */}
       {!subjectData && (
-        <Card className="bg-white rounded-xl shadow-lg border border-gray-200">
-          <CardHeader>
-            <CardTitle className="text-xl font-semibold text-gray-900 flex items-center gap-2">
-              <Sparkles className="h-5 w-5 text-orange-600" />
+        <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+          <CardHeader className="px-6 pt-5 pb-4">
+            <CardTitle className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
+              <Sparkles className="h-4 w-4 text-pr-orange" />
               Générer un sujet
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="space-y-2">
-              <Label className="text-sm font-medium text-gray-900">
+          <CardContent className="space-y-6 px-6 pb-6">
+            <div className="space-y-3">
+              <Label className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-pr-orange-pale text-pr-orange-dark text-[11px] font-bold">
+                  1
+                </span>
                 Niveau de difficulté
               </Label>
-              <div className="flex gap-2">
-                <Button
-                  type="button"
-                  variant={difficulty === 'easy' ? 'default' : 'outline'}
-                  onClick={() => setDifficulty('easy')}
-                  className={difficulty === 'easy' ? 'bg-orange-600 text-white' : ''}
-                >
-                  Débutant
-                </Button>
-                <Button
-                  type="button"
-                  variant={difficulty === 'medium' ? 'default' : 'outline'}
-                  onClick={() => setDifficulty('medium')}
-                  className={difficulty === 'medium' ? 'bg-orange-600 text-white' : ''}
-                >
-                  Intermédiaire
-                </Button>
-                <Button
-                  type="button"
-                  variant={difficulty === 'hard' ? 'default' : 'outline'}
-                  onClick={() => setDifficulty('hard')}
-                  className={difficulty === 'hard' ? 'bg-orange-600 text-white' : ''}
-                >
-                  Avancé
-                </Button>
+              <div className="grid grid-cols-3 gap-2">
+                {difficultyOptions.map(opt => (
+                  <Button
+                    key={opt.id}
+                    type="button"
+                    onClick={() => setDifficulty(opt.id)}
+                    className={
+                      difficulty === opt.id
+                        ? 'bg-pr-orange hover:bg-pr-orange-dark text-white rounded-xl h-11 font-semibold transition-colors'
+                        : 'bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft rounded-xl h-11 font-medium transition-colors'
+                    }
+                  >
+                    {opt.label}
+                  </Button>
+                ))}
               </div>
             </div>
 
@@ -213,12 +222,12 @@ export const ThemeDefinitionGenerator = () => {
                 handleGenerateSubject();
               }}
               disabled={loading}
-              className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 min-h-[44px]"
+              className="w-full flex items-center justify-center gap-2 bg-pr-orange hover:bg-pr-orange-dark text-white font-semibold rounded-xl shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 disabled:opacity-50 disabled:shadow-none h-12 text-[15px]"
             >
               {loading ? (
                 <>
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  <span>Génération en cours...</span>
+                  <span>Génération en cours…</span>
                 </>
               ) : (
                 <>
@@ -235,37 +244,46 @@ export const ThemeDefinitionGenerator = () => {
       {subjectData && (
         <>
           {/* Sujet */}
-          <Card className="bg-white rounded-xl shadow-lg border border-orange-200">
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <CardTitle className="text-xl font-semibold text-gray-900 flex items-center gap-2">
-                  <Target className="h-5 w-5 text-orange-600" />
-                  Sujet de dissertation
-                </CardTitle>
+          <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+            <div className="h-[3px] w-full bg-pr-orange" />
+            <CardHeader className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5">
+              <div className="flex items-center justify-between gap-3 flex-wrap">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-white border border-pr-orange-soft flex items-center justify-center">
+                    <Target className="h-5 w-5 text-pr-orange-dark" />
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-0.5">
+                      Sujet de dissertation
+                    </div>
+                    <CardTitle className="font-dm-serif text-xl text-pr-black leading-none">
+                      Énoncé proposé
+                    </CardTitle>
+                  </div>
+                </div>
                 <Button
                   type="button"
-                  variant="outline"
                   size="sm"
                   onClick={handleReset}
-                  className="flex items-center gap-2"
+                  className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft rounded-lg flex items-center gap-2"
                 >
                   <RefreshCw className="h-4 w-4" />
                   Nouveau sujet
                 </Button>
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="bg-gradient-to-r from-orange-50 to-orange-100 rounded-lg p-6 border border-orange-200">
-                <p className="text-lg font-semibold text-gray-900 leading-relaxed">
+            <CardContent className="p-6 sm:p-7 space-y-4">
+              <div className="bg-pr-orange-pale/60 rounded-xl p-6 border border-pr-orange-pale">
+                <p className="font-lora text-[18px] text-pr-black leading-[1.5]">
                   {subjectData.sujet}
                 </p>
               </div>
-              
+
               {subjectData.contexte && (
-                <Alert className="mt-4 bg-blue-50 border-blue-200">
-                  <Info className="h-4 w-4 text-blue-600" />
-                  <AlertDescription className="text-sm text-gray-700">
-                    <strong>Contexte :</strong> {subjectData.contexte}
+                <Alert className="bg-pr-gray-bg border-pr-gray-light rounded-xl">
+                  <Info className="h-4 w-4 text-pr-orange" />
+                  <AlertDescription className="text-[14px] text-pr-gray-dark leading-relaxed">
+                    <strong className="text-pr-black">Contexte :</strong> {subjectData.contexte}
                   </AlertDescription>
                 </Alert>
               )}
@@ -273,69 +291,58 @@ export const ThemeDefinitionGenerator = () => {
           </Card>
 
           {/* Termes à définir */}
-          <Card className="bg-white rounded-xl shadow-lg border border-gray-200">
-            <CardHeader>
-              <CardTitle className="text-xl font-semibold text-gray-900 flex items-center gap-2">
-                <Lightbulb className="h-5 w-5 text-orange-600" />
+          <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+            <CardHeader className="px-6 pt-5 pb-4">
+              <CardTitle className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
+                <Lightbulb className="h-4 w-4 text-pr-orange" />
                 Termes à définir
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-6 px-6 pb-6">
               {subjectData.termes.map((terme, index) => (
                 <div key={terme} className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <Badge variant="outline" className="bg-orange-100 text-orange-800 border-orange-300">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <Badge className="bg-pr-orange-pale text-pr-orange-dark border border-pr-orange-soft hover:bg-pr-orange-pale rounded-full font-semibold text-[10px] uppercase tracking-[0.10em]">
                       Terme {index + 1}
                     </Badge>
-                    <Label className="text-base font-semibold text-gray-900">
+                    <Label className="text-[16px] font-semibold text-pr-black font-dm-serif">
                       {terme}
                     </Label>
-                    {subjectData.indices?.[terme] && (
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="sm"
-                        className="h-6 px-2 text-xs"
-                        title={subjectData.indices[terme]}
-                      >
-                        <Info className="h-3 w-3" />
-                      </Button>
-                    )}
                   </div>
-                  
+
                   {subjectData.indices?.[terme] && (
-                    <Alert className="bg-yellow-50 border-yellow-200">
-                      <Lightbulb className="h-4 w-4 text-yellow-600" />
-                      <AlertDescription className="text-xs text-gray-700">
-                        <strong>Indice :</strong> {subjectData.indices[terme]}
+                    <Alert className="bg-pr-gray-bg border-pr-gray-light rounded-xl border-l-[3px] border-l-pr-orange">
+                      <Lightbulb className="h-4 w-4 text-pr-orange" />
+                      <AlertDescription className="text-[13px] text-pr-gray-dark">
+                        <strong className="text-pr-black">Indice :</strong> {subjectData.indices[terme]}
                       </AlertDescription>
                     </Alert>
                   )}
-                  
+
                   <Textarea
-                    placeholder={`Définis le terme "${terme}"...`}
+                    placeholder={`Définis le terme « ${terme} »…`}
                     value={userDefinitions[terme] || ''}
                     onChange={(e) => handleDefinitionChange(terme, e.target.value)}
-                    className="min-h-[100px] border-gray-300 focus:border-orange-500 focus:ring-orange-500 bg-gray-50 rounded-lg resize-none"
+                    className="min-h-[100px] border-pr-gray-light focus:border-pr-orange focus:ring-2 focus:ring-pr-orange/20 transition-colors rounded-xl resize-y bg-white text-[14px] leading-relaxed p-4 text-pr-black placeholder:text-pr-gray-mid"
                   />
-                  
+
                   {showAnswers && subjectData.definitions_attendues?.[terme] && (
-                    <Alert className="bg-green-50 border-green-200">
-                      <Check className="h-4 w-4 text-green-600" />
-                      <AlertDescription className="text-sm text-gray-700">
-                        <strong>Définition attendue :</strong> {subjectData.definitions_attendues[terme]}
+                    <Alert className="bg-pr-orange-pale/60 border-pr-orange-pale rounded-xl">
+                      <Check className="h-4 w-4 text-pr-orange-dark" />
+                      <AlertDescription className="text-[14px] text-pr-gray-dark leading-relaxed">
+                        <strong className="text-pr-black">Définition attendue :</strong> {subjectData.definitions_attendues[terme]}
                       </AlertDescription>
                     </Alert>
                   )}
                 </div>
               ))}
 
-              <div className="flex gap-3 pt-4">
+              <div className="flex gap-3 pt-2">
                 <Button
                   type="button"
                   onClick={handleShowAnswers}
                   disabled={!allDefined || showAnswers}
-                  className="flex items-center gap-2 flex-1 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center gap-2 flex-1 bg-pr-orange hover:bg-pr-orange-dark text-white font-semibold rounded-xl shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 disabled:opacity-50 disabled:shadow-none h-12 text-[15px]"
                 >
                   <Check className="h-4 w-4" />
                   Voir les corrections
@@ -343,9 +350,9 @@ export const ThemeDefinitionGenerator = () => {
               </div>
 
               {!allDefined && (
-                <Alert className="bg-blue-50 border-blue-200">
-                  <Info className="h-4 w-4 text-blue-600" />
-                  <AlertDescription className="text-sm text-gray-700">
+                <Alert className="bg-pr-gray-bg border-pr-gray-light rounded-xl">
+                  <Info className="h-4 w-4 text-pr-orange" />
+                  <AlertDescription className="text-[13px] text-pr-gray-dark">
                     Définis tous les termes avant de voir les corrections.
                   </AlertDescription>
                 </Alert>

@@ -14,19 +14,19 @@ const articles: ArticleItem[] = [
     number: 1,
     title: 'Définir l\'humanité — entre essence et indétermination',
     description: 'Aristote, Pic de la Mirandole, Sartre : qu\'est-ce qui fait de nous des humains ?',
-    route: '#',
+    route: '/formation/culture-generale/articles/definir-humanite',
   },
   {
     number: 2,
     title: 'L\'inhumain au cœur de l\'humain',
     description: 'Banalité du mal, zone grise, soumission à l\'autorité : Arendt, Levi, Milgram.',
-    route: '#',
+    route: '/formation/culture-generale/articles/inhumain-coeur-humain',
   },
   {
     number: 3,
     title: 'L\'humanité face à la technique',
     description: 'Heidegger, Anders, transhumanisme : promesse d\'augmentation ou perte de soi ?',
-    route: '#',
+    route: '/formation/culture-generale/articles/humanite-face-technique',
   },
 ];
 

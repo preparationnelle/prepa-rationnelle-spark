@@ -1,15 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Calculator, Target, Play, CheckCircle, Eye, EyeOff, Code, BookOpen, ChevronDown, ChevronUp, Trophy, Star, ArrowLeft, HelpCircle, ChevronLeft } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 import { LatexRenderer } from '@/components/LatexRenderer';
 import { usePythonProgress } from '@/hooks/usePythonProgress';
 import PythonCodeEditor, { EvaluationResult } from '@/components/python/PythonCodeEditor';
 import CodeEvaluationResult from '@/components/python/CodeEvaluationResult';
+import {
+  PythonExerciseHero,
+  PythonExerciseTopBar,
+  PythonExerciseDetailHeader,
+  PythonExerciseFooterNav,
+  PythonStatementCard,
+  PythonCorrectionToggle,
+  PythonCorrectionPanel,
+  PythonCodeBlock,
+  PythonExerciseGrid,
+  PythonQCMLauncher,
+  PythonSectionHeading,
+} from '@/components/formation/python/PythonExercisePage';
+import PythonQCMPanel from '@/components/formation/python/PythonQCMPanel';
 
 const PythonMatricesExercicesPage = () => {
   const [searchParams] = useSearchParams();
@@ -574,6 +586,228 @@ R = pascal(5)
 for L in R:
     print(L)`
     }
+  }, {
+    id: 18,
+    title: "Trace d'une matrice",
+    difficulty: "Avancé",
+    description: "Écrire une fonction qui calcule la trace d'une matrice carrée (somme des coefficients diagonaux).",
+    color: "blue",
+    type: "exercise",
+    content: {
+      objective: "\\text{Écrire une fonction } \\mathtt{trace}(A) \\text{ qui retourne } \\mathrm{tr}(A) = \\sum_{k=1}^{n} a_{k,k}",
+      isLatex: true,
+      enonce: "Écrire une fonction trace(A) qui retourne la trace d'une matrice carrée A, sans utiliser np.trace.",
+      enonce_latex: "\\text{Soit } A \\in M_n(\\mathbb{R}). \\\\ \\text{Écrire une fonction } \\mathtt{trace}(A) \\text{ qui retourne :} \\\\ \\mathrm{tr}(A) = \\sum_{k=1}^{n} a_{k,k} \\\\ \\text{Contrainte : ne pas utiliser np.trace.}",
+      correction: `import numpy as np
+
+def trace(A):
+    (n, p) = np.shape(A)
+    S = 0
+    for k in range(n):
+        S = S + A[k, k]
+    return S
+
+A = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(trace(A))   # 15`
+    }
+  }, {
+    id: 19,
+    title: "Test de matrice symétrique",
+    difficulty: "Avancé",
+    description: "Implémenter une fonction qui teste si une matrice carrée est symétrique.",
+    color: "blue",
+    type: "exercise",
+    content: {
+      objective: "\\text{Tester si } A^T = A \\text{ (matrice symétrique)}",
+      isLatex: true,
+      enonce: "Une matrice carrée A est symétrique si A[k, j] = A[j, k] pour tout k, j. Écrire une fonction est_sym(A).",
+      enonce_latex: "\\text{Une matrice } A \\in M_n(\\mathbb{R}) \\text{ est symétrique si :} \\\\ \\forall (k, j), \\quad a_{k,j} = a_{j,k} \\\\ \\text{Écrire une fonction } \\mathtt{est\\_sym}(A) \\text{ qui retourne True si } A \\text{ est symétrique.}",
+      correction: `import numpy as np
+
+def est_sym(A):
+    (n, p) = np.shape(A)
+    if n != p:
+        return False
+    for k in range(n):
+        for j in range(n):
+            if A[k, j] != A[j, k]:
+                return False
+    return True
+
+M1 = np.array([[1, 2, 3], [2, 4, 5], [3, 5, 6]])
+M2 = np.array([[1, 2, 3], [2, 4, 5], [3, 0, 6]])
+print(est_sym(M1))   # True
+print(est_sym(M2))   # False`
+    }
+  }, {
+    id: 20,
+    title: "Test de matrice triangulaire supérieure",
+    difficulty: "Avancé",
+    description: "Implémenter une fonction qui teste si une matrice carrée est triangulaire supérieure.",
+    color: "blue",
+    type: "exercise",
+    content: {
+      objective: "\\text{Tester si } a_{k,j} = 0 \\text{ pour tout } k > j",
+      isLatex: true,
+      enonce: "Une matrice est triangulaire supérieure si tous les coefficients sous la diagonale sont nuls. Écrire une fonction est_triang_sup(A).",
+      enonce_latex: "\\text{Une matrice } A \\in M_n(\\mathbb{R}) \\text{ est triangulaire supérieure si :} \\\\ \\forall k > j, \\quad a_{k,j} = 0 \\\\ \\text{Écrire une fonction } \\mathtt{est\\_triang\\_sup}(A).",
+      correction: `import numpy as np
+
+def est_triang_sup(A):
+    (n, p) = np.shape(A)
+    if n != p:
+        return False
+    for k in range(n):
+        for j in range(k):
+            if A[k, j] != 0:
+                return False
+    return True
+
+M1 = np.array([[1, 2, 3], [0, 4, 5], [0, 0, 6]])
+M2 = np.array([[1, 2, 3], [4, 5, 6], [0, 0, 9]])
+print(est_triang_sup(M1))   # True
+print(est_triang_sup(M2))   # False`
+    }
+  }, {
+    id: 21,
+    title: "Déterminant et inverse d'une matrice 2×2",
+    difficulty: "Avancé",
+    description: "Calculer le déterminant et l'inverse d'une matrice 2×2 sans np.linalg.",
+    color: "blue",
+    type: "exercise",
+    content: {
+      objective: "\\text{Pour } A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}, \\text{ calculer } \\det(A) = ad - bc \\text{ puis } A^{-1}",
+      isLatex: true,
+      enonce: "1) Écrire une fonction det2(A) qui retourne le déterminant d'une matrice 2×2. 2) Écrire une fonction inv2(A) qui retourne l'inverse, ou None si A n'est pas inversible.",
+      enonce_latex: "\\text{Pour } A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} : \\\\ \\text{1) Écrire } \\mathtt{det2}(A) \\text{ qui retourne } \\det(A) = ad - bc \\\\ \\text{2) Écrire } \\mathtt{inv2}(A) \\text{ qui retourne } A^{-1} = \\frac{1}{\\det(A)} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix} \\\\ \\text{(retourner None si } \\det(A) = 0\\text{)}",
+      correction: `import numpy as np
+
+def det2(A):
+    return A[0, 0] * A[1, 1] - A[0, 1] * A[1, 0]
+
+def inv2(A):
+    d = det2(A)
+    if d == 0:
+        return None
+    B = np.zeros([2, 2])
+    B[0, 0] = A[1, 1] / d
+    B[0, 1] = -A[0, 1] / d
+    B[1, 0] = -A[1, 0] / d
+    B[1, 1] = A[0, 0] / d
+    return B
+
+A = np.array([[2, 1], [1, 3]])
+print(det2(A))   # 5
+print(inv2(A))`
+    }
+  }, {
+    id: 22,
+    title: "Suite récurrente matricielle",
+    difficulty: "Avancé",
+    description: "Calculer les n premiers termes d'une suite Uₖ₊₁ = A·Uₖ + B et afficher la liste obtenue.",
+    color: "blue",
+    type: "exercise",
+    content: {
+      objective: "\\text{Calculer } U_n \\text{ avec } U_{k+1} = A \\cdot U_k + B \\text{ pour } U_0 \\text{ donné}",
+      isLatex: true,
+      enonce: "Écrire une fonction suite(A, B, U0, n) qui retourne U_n défini par U_{k+1} = A·U_k + B.",
+      enonce_latex: "\\text{Soient } A \\in M_p(\\mathbb{R}), B \\in M_{p,1}(\\mathbb{R}) \\text{ et } U_0 \\in M_{p,1}(\\mathbb{R}). \\\\ \\text{On définit la suite : } U_{k+1} = A \\cdot U_k + B \\\\ \\text{Écrire } \\mathtt{suite}(A, B, U_0, n) \\text{ qui retourne } U_n.",
+      correction: `import numpy as np
+
+def suite(A, B, U0, n):
+    U = U0
+    for k in range(n):
+        U = np.dot(A, U) + B
+    return U
+
+A = np.array([[0.5, 0.5], [0.2, 0.8]])
+B = np.array([[1], [0]])
+U0 = np.array([[0], [0]])
+print(suite(A, B, U0, 10))`
+    }
+  }, {
+    id: 23,
+    title: "Test si X est vecteur propre",
+    difficulty: "Avancé",
+    description: "Vérifier si un vecteur colonne X est un vecteur propre d'une matrice A, et retourner la valeur propre associée.",
+    color: "blue",
+    type: "exercise",
+    content: {
+      objective: "\\text{Tester si } AX = \\lambda X \\text{ pour un certain } \\lambda \\in \\mathbb{R}",
+      isLatex: true,
+      enonce: "Écrire une fonction vp(A, X) qui retourne la valeur propre associée si X est un vecteur propre de A, et None sinon. On suppose X non nul.",
+      enonce_latex: "\\text{Soient } A \\in M_n(\\mathbb{R}) \\text{ et } X \\in M_{n,1}(\\mathbb{R}) \\text{ non nul.} \\\\ \\text{Écrire } \\mathtt{vp}(A, X) \\text{ qui :} \\\\ \\text{• retourne } \\lambda \\text{ si } AX = \\lambda X \\\\ \\text{• retourne None sinon} \\\\ \\text{Indice : prendre la 1\\`{e}re composante non nulle de } X \\text{ pour calculer } \\lambda \\text{ candidat.}",
+      correction: `import numpy as np
+
+def vp(A, X):
+    Y = np.dot(A, X)
+    (n, p) = np.shape(X)
+    k = 0
+    while X[k, 0] == 0:
+        k = k + 1
+    lam = Y[k, 0] / X[k, 0]
+    for j in range(n):
+        if Y[j, 0] != lam * X[j, 0]:
+            return None
+    return lam
+
+A = np.array([[2, 0], [0, 3]])
+X1 = np.array([[1], [0]])
+X2 = np.array([[1], [1]])
+print(vp(A, X1))   # 2.0
+print(vp(A, X2))   # None`
+    }
+  }, {
+    id: 24,
+    title: "Matrice de Vandermonde",
+    difficulty: "Avancé",
+    description: "Construire la matrice de Vandermonde associée à n réels x_1, …, x_n.",
+    color: "blue",
+    type: "exercise",
+    content: {
+      objective: "\\text{Construire } V_{k,j} = x_k^{j} \\text{ pour } k, j \\in \\{0, \\ldots, n-1\\}",
+      isLatex: true,
+      enonce: "Écrire une fonction vandermonde(X) qui prend une liste de n réels et retourne la matrice de Vandermonde n×n associée.",
+      enonce_latex: "\\text{Soit } X = (x_0, \\ldots, x_{n-1}) \\text{ une liste de } n \\text{ réels.} \\\\ \\text{La matrice de Vandermonde est :} \\\\ V = \\begin{pmatrix} 1 & x_0 & x_0^2 & \\cdots & x_0^{n-1} \\\\ 1 & x_1 & x_1^2 & \\cdots & x_1^{n-1} \\\\ \\vdots & \\vdots & \\vdots & & \\vdots \\\\ 1 & x_{n-1} & x_{n-1}^2 & \\cdots & x_{n-1}^{n-1} \\end{pmatrix} \\\\ \\text{Écrire } \\mathtt{vandermonde}(X).",
+      correction: `import numpy as np
+
+def vandermonde(X):
+    n = len(X)
+    V = np.zeros([n, n])
+    for k in range(n):
+        for j in range(n):
+            V[k, j] = X[k] ** j
+    return V
+
+X = [1, 2, 3, 4]
+print(vandermonde(X))`
+    }
+  }, {
+    id: 25,
+    title: "Combinaison linéaire de vecteurs colonnes",
+    difficulty: "Avancé",
+    description: "Calculer une combinaison linéaire α₁·V₁ + α₂·V₂ + … + αₚ·Vₚ à partir d'une matrice et d'une liste de coefficients.",
+    color: "blue",
+    type: "exercise",
+    content: {
+      objective: "\\text{Calculer } \\sum_{j=1}^{p} \\alpha_j V_j \\text{ où } V_j \\text{ est la } j\\text{-ième colonne de } M",
+      isLatex: true,
+      enonce: "Écrire une fonction combi(M, A) qui retourne la combinaison linéaire des colonnes de M avec les coefficients de A.",
+      enonce_latex: "\\text{Soient } M \\in M_{n,p}(\\mathbb{R}) \\text{ et } A = (\\alpha_1, \\ldots, \\alpha_p). \\\\ \\text{Écrire } \\mathtt{combi}(M, A) \\text{ qui retourne le vecteur colonne :} \\\\ R = \\sum_{j=1}^{p} \\alpha_j \\cdot M[:, j-1] \\\\ \\text{Indice : initialiser } R \\text{ à un vecteur colonne nul.}",
+      correction: `import numpy as np
+
+def combi(M, A):
+    (n, p) = np.shape(M)
+    R = np.zeros([n, 1])
+    for j in range(p):
+        for k in range(n):
+            R[k, 0] = R[k, 0] + A[j] * M[k, j]
+    return R
+
+M = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+A = [1, 0, -1]
+print(combi(M, A))`
+    }
   }];
 
   // Navigation au clavier
@@ -935,130 +1169,42 @@ def Nilp(A):
 
     return (
       <PythonModuleLayout>
-        {/* Barre de navigation supérieure */}
-        <div className="mb-6 sticky top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-pr-gray-light -mx-8 px-8 py-4">
-          <div className="flex items-center justify-between">
-            <Button
-              variant="outline"
-              size="sm"
-              className="flex items-center gap-2"
-              onClick={() => setSelectedExercise(null)}
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Retour aux exercices
-            </Button>
+        <PythonExerciseTopBar
+          current={selectedExercise}
+          total={exercises.length}
+          onBack={() => setSelectedExercise(null)}
+          onPrev={() => {
+            if (hasPrevious) {
+              setSelectedExercise(selectedExercise - 1);
+              window.scrollTo(0, 0);
+            }
+          }}
+          onNext={() => {
+            if (hasNext) {
+              setSelectedExercise(selectedExercise + 1);
+              window.scrollTo(0, 0);
+            }
+          }}
+          hasPrev={hasPrevious}
+          hasNext={hasNext}
+        />
 
-            <div className="flex items-center gap-4">
-              {/* Indicateur de progression */}
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-semibold text-pr-gray-dark">
-                  Exercice {selectedExercise} / {exercises.length}
-                </span>
-                <div className="w-32 h-2 bg-pr-gray-light rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-gradient-to-r from-pr-orange to-pr-orange-dark transition-all duration-300"
-                    style={{ width: `${(selectedExercise / exercises.length) * 100}%` }}
-                  />
-                </div>
-              </div>
-
-              {/* Boutons de navigation */}
-              <div className="flex items-center gap-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => {
-                    if (hasPrevious) {
-                      setSelectedExercise(selectedExercise - 1);
-                      window.scrollTo(0, 0);
-                    }
-                  }}
-                  disabled={!hasPrevious}
-                  className="flex items-center gap-1"
-                >
-                  <ChevronDown className="h-4 w-4 rotate-90" />
-                  Précédent
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => {
-                    if (hasNext) {
-                      setSelectedExercise(selectedExercise + 1);
-                      window.scrollTo(0, 0);
-                    }
-                  }}
-                  disabled={!hasNext}
-                  className="flex items-center gap-1"
-                >
-                  Suivant
-                  <ChevronDown className="h-4 w-4 -rotate-90" />
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Header simplifié */}
-        <div className="mb-6 pb-4 border-b border-pr-gray-light">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-bold text-pr-black mb-2">
-                Exercice {selectedExercise} - {exercise.title}
-              </h1>
-              <div className="flex items-center gap-2">
-                <Badge variant="secondary" className="bg-pr-gray-bg text-pr-gray-dark text-xs">
-                  {exercise.difficulty}
-                </Badge>
-              </div>
-            </div>
-
-            {/* Raccourcis clavier - plus discrets */}
-            <div className="text-xs text-pr-gray-mid flex items-center gap-3">
-              <div className="flex items-center gap-1">
-                <kbd className="px-1.5 py-0.5 bg-pr-gray-bg rounded text-pr-gray-mid text-xs">←</kbd>
-                <kbd className="px-1.5 py-0.5 bg-pr-gray-bg rounded text-pr-gray-mid text-xs">→</kbd>
-              </div>
-              <kbd className="px-1.5 py-0.5 bg-pr-gray-bg rounded text-pr-gray-mid text-xs">Esc</kbd>
-            </div>
-          </div>
-        </div>
+        <PythonExerciseDetailHeader
+          number={selectedExercise}
+          title={exercise.title}
+          difficulty={exercise.difficulty}
+        />
 
         {exercise.content ? (
           <>
-            {/* Énoncé simplifié */}
-            <Card className="mb-6 bg-white border border-pr-gray-light shadow-sm">
-              <CardContent className="pt-6 pb-6">
-                <div className="w-full">
-                  {exercise.content.enonce_latex ? (
-                    <div
-                      className="text-pr-gray-dark text-base leading-[1.8]"
-                      style={{
-                        wordWrap: 'break-word',
-                        overflowWrap: 'break-word',
-                        hyphens: 'auto',
-                        whiteSpace: 'normal'
-                      }}
-                    >
-                      <LatexRenderer latex={exercise.content.enonce_latex} />
-                    </div>
-                  ) : (
-                    <div
-                      className="text-pr-gray-dark text-base leading-[1.8]"
-                      style={{
-                        wordWrap: 'break-word',
-                        overflowWrap: 'break-word',
-                        whiteSpace: 'pre-wrap'
-                      }}
-                    >
-                      {exercise.content.enonce}
-                    </div>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
+            <PythonStatementCard>
+              {exercise.content.enonce_latex ? (
+                <LatexRenderer latex={exercise.content.enonce_latex} />
+              ) : (
+                <div style={{ whiteSpace: 'pre-wrap' }}>{exercise.content.enonce}</div>
+              )}
+            </PythonStatementCard>
 
-            {/* Code Editor Section */}
             <PythonCodeEditor
               exerciseStatement={exercise.content.enonce_latex || exercise.content.enonce || exercise.content.objective}
               expectedSolution={exercise.content.correction || ''}
@@ -1070,119 +1216,48 @@ def Nilp(A):
               }}
             />
 
-            {/* Evaluation Result */}
             {evaluationResults[selectedExercise] && (
               <CodeEvaluationResult result={evaluationResults[selectedExercise]} />
             )}
 
-            {/* Bouton pour afficher/masquer la correction */}
-            <div className="flex justify-center pt-6">
-              <Button
-                onClick={() => toggleCorrection(selectedExercise)}
-                className={`
-                  relative overflow-hidden transition-all duration-300 px-8 py-6 h-auto text-lg rounded-xl shadow-md
-                  ${showCorrections.has(selectedExercise)
-                    ? 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200'
-                    : 'bg-gradient-to-r from-pr-orange to-pr-orange-dark text-white hover:shadow-lg hover:scale-105'
-                  }
-                `}
-              >
-                {showCorrections.has(selectedExercise) ? (
-                  <span className="flex items-center gap-2">
-                    <ChevronUp className="h-5 w-5" />
-                    Masquer la correction
-                  </span>
-                ) : (
-                  <span className="flex items-center gap-2 font-semibold">
-                    <span className="flex items-center justify-center p-1 bg-white/20 rounded-full">
-                      <ChevronDown className="h-4 w-4" />
-                    </span>
-                    Voir la correction & Explications
-                  </span>
-                )}
-              </Button>
-            </div>
+            <PythonCorrectionToggle
+              isOpen={showCorrections.has(selectedExercise)}
+              onToggle={() => toggleCorrection(selectedExercise)}
+            />
 
-
-            {/* Correction (conditionnelle) */}
-            {showCorrections.has(selectedExercise) && (
-              <div className="animate-in fade-in slide-in-from-top-6 duration-500 mt-8">
-                <div className="bg-white rounded-2xl border border-gray-200 shadow-xl overflow-hidden">
-                  <div className="bg-gray-50/50 p-4 border-b border-gray-100 flex items-center gap-3">
-                    <div className="p-2 bg-green-100 text-green-700 rounded-lg">
-                      <Code className="h-5 w-5" />
-                    </div>
-                    <h3 className="font-bold text-gray-800">Solution & Explications</h3>
-                  </div>
-
-                  <div className="bg-[#1e293b] text-pr-orange-pale p-6 md:p-8 overflow-x-auto">
-                    <pre className="font-mono text-sm leading-relaxed text-pr-orange-pale">
-                      <code>{exercise.content.correction}</code>
-                    </pre>
-                  </div>
-                </div>
-              </div>
+            {showCorrections.has(selectedExercise) && exercise.content.correction && (
+              <PythonCorrectionPanel>
+                <PythonCodeBlock code={exercise.content.correction} />
+              </PythonCorrectionPanel>
             )}
 
-            {/* Barre de navigation inférieure */}
-            <div className="mt-8 pt-6 border-t border-pr-gray-light">
-              <div className="flex items-center justify-between">
-                <Button
-                  variant="outline"
-                  onClick={() => {
-                    if (hasPrevious) {
-                      setSelectedExercise(selectedExercise - 1);
-                      window.scrollTo(0, 0);
-                    }
-                  }}
-                  disabled={!hasPrevious}
-                  className="flex items-center gap-2"
-                >
-                  <ChevronDown className="h-4 w-4 rotate-90" />
-                  Exercice précédent
-                </Button>
-
-                <div className="text-sm text-pr-gray-dark">
-                  Exercice {selectedExercise} / {exercises.length}
-                </div>
-
-                <Button
-                  variant="outline"
-                  onClick={() => {
-                    if (hasNext) {
-                      setSelectedExercise(selectedExercise + 1);
-                      window.scrollTo(0, 0);
-                    } else {
-                      setSelectedExercise(null);
-                    }
-                  }}
-                  className="flex items-center gap-2"
-                >
-                  {hasNext ? (
-                    <>
-                      Exercice suivant
-                      <ChevronDown className="h-4 w-4 -rotate-90" />
-                    </>
-                  ) : (
-                    <>
-                      Retour aux exercices
-                      <ArrowLeft className="h-4 w-4 rotate-180" />
-                    </>
-                  )}
-                </Button>
-              </div>
-            </div>
+            <PythonExerciseFooterNav
+              current={selectedExercise}
+              total={exercises.length}
+              onPrev={() => {
+                if (hasPrevious) {
+                  setSelectedExercise(selectedExercise - 1);
+                  window.scrollTo(0, 0);
+                }
+              }}
+              onNext={() => {
+                if (hasNext) {
+                  setSelectedExercise(selectedExercise + 1);
+                  window.scrollTo(0, 0);
+                } else {
+                  setSelectedExercise(null);
+                }
+              }}
+              hasPrev={hasPrevious}
+              hasNext={hasNext}
+            />
           </>
         ) : (
-          <Card className="border-gray-200">
-            <CardContent className="pt-6">
-              <div className="text-center py-10 text-gray-500">
-                <p>Le contenu de cet exercice sera bientôt disponible.</p>
-              </div>
-            </CardContent>
-          </Card>
-        )
-        }
+          <div className="bg-white border border-pr-gray-light rounded-2xl p-10 text-center text-pr-gray-mid">
+            Le contenu de cet exercice sera bientôt disponible.
+          </div>
+        )}
+
         <ModuleNavigationCards
           currentModule={{
             id: 1,
@@ -1195,340 +1270,65 @@ def Nilp(A):
           currentExerciseId={selectedExercise}
           onNavigate={handleNavigate}
         />
-      </PythonModuleLayout >
+      </PythonModuleLayout>
     );
   }
 
   return (
     <PythonModuleLayout>
-      <header className="text-center mb-12 max-w-2xl mx-auto">
-        <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-pr-orange-pale border border-pr-orange-soft/60">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark">
-            Module 1 · Exercices
-          </span>
-        </div>
-        <h1 className="font-dm-serif text-4xl md:text-5xl text-pr-black tracking-tight leading-tight mb-4">
-          Exercices · <span className="text-pr-orange">Matrices NumPy</span>
-        </h1>
-        <div className="flex justify-center mb-4">
-          <div className="h-[2px] w-14 bg-pr-orange" />
-        </div>
-        <p className="text-lg text-pr-gray-dark/80">
-          Exercices pratiques sur les matrices et NumPy
-        </p>
-      </header>
+      {!showQCM && (
+        <PythonExerciseHero
+          moduleLabel="Module 1 · Exercices"
+          title={<>Exercices · <span className="text-pr-orange">Matrices NumPy</span></>}
+          subtitle="Manipulez les matrices avec NumPy : création, indexation, opérations et applications pratiques."
+          annotation={"↗ NumPy,\nl'arme secrète"}
+        />
+      )}
 
       {!showQCM && !selectedExercise && (
         <>
-          {/* Section QCM */}
-          <Card className="group mb-8 bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border-2 border-gray-100 hover:border-pr-orange-soft" onClick={() => setShowQCM(true)}>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center border border-gray-200 group-hover:bg-pr-orange-pale group-hover:border-pr-orange-soft transition-colors duration-300">
-                  <Trophy className="h-8 w-8 text-gray-600 group-hover:text-pr-orange transition-colors duration-300" />
-                </div>
-                <div>
-                  <h2 className="text-2xl text-gray-800 group-hover:text-pr-orange transition-colors duration-300">QCM d'évaluation</h2>
-                  <p className="text-sm text-gray-600 mt-1">Testez vos connaissances sur les matrices NumPy</p>
-                </div>
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="pt-4">
-              <div className="flex items-center justify-between">
-                <p className="text-gray-600">20 questions pour évaluer votre niveau</p>
-                <Button variant="outline" className="flex items-center gap-2 border-gray-300 text-gray-700 hover:bg-pr-orange-pale hover:text-pr-orange hover:border-pr-orange-soft transition-colors duration-300">
-                  <Play className="h-4 w-4" />
-                  Commencer le QCM
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          <PythonQCMLauncher
+            description="Testez vos connaissances sur les matrices et NumPy"
+            onLaunch={() => setShowQCM(true)}
+          />
 
+          <PythonSectionHeading
+            label="Liste"
+            title="Exercices du module"
+            className="mt-12"
+          />
 
-          {/* Grille d'exercices */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {exercises.map(exercise => (
-              <Card
-                key={exercise.id}
-                className="group relative cursor-pointer bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 border border-gray-100 hover:border-pr-orange-pale hover:-translate-y-1 h-full flex flex-col overflow-hidden"
-                onClick={() => setSelectedExercise(exercise.id)}
-              >
-                <CardHeader className="flex-shrink-0 pb-2">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center group-hover:bg-pr-orange group-hover:text-white transition-all duration-300 text-gray-400">
-                      <Calculator className="h-6 w-6" />
-                    </div>
-                    <Badge variant="secondary" className="bg-gray-50 text-gray-600 border border-gray-100 font-medium px-3 py-1 rounded-full">
-                      {exercise.difficulty}
-                    </Badge>
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold tracking-wider text-pr-orange uppercase mb-1 opacity-80">
-                      Exercice {exercise.id}
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-pr-orange transition-colors leading-tight">
-                      {exercise.title.includes(' - ') ? exercise.title.split(' - ').slice(1).join(' - ') : exercise.title}
-                    </h3>
-                  </div>
-                </CardHeader>
-
-                <CardContent className="flex-grow flex flex-col pt-0">
-                  <p className="text-gray-500 text-sm leading-relaxed mb-6 mt-2 flex-grow line-clamp-3">
-                    {exercise.description}
-                  </p>
-                  <div className="mt-auto">
-                    <Button className="w-full h-11 bg-gray-50 text-gray-900 border border-gray-200 hover:bg-pr-orange hover:text-white hover:border-transparent rounded-xl font-semibold transition-all duration-300 flex items-center justify-between px-4 group-hover:shadow-lg group-hover:shadow-blue-500/20">
-                      <span>Commencer</span>
-                      <Play className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <PythonExerciseGrid
+            exercises={exercises.map((ex) => ({
+              id: ex.id,
+              title: ex.title,
+              description: ex.description,
+              difficulty: ex.difficulty,
+            }))}
+            onSelect={setSelectedExercise}
+          />
         </>
       )}
 
       {showQCM && (
-        <>
-          <Button
-            variant="outline"
-            size="sm"
-            className="flex items-center gap-2 mb-6"
-            onClick={() => {
-              setShowQCM(false);
-              setQcmSubmitted(false);
-              setQcmAnswers({});
-              setQcmScore(null);
-            }}
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Retour aux exercices
-          </Button>
-
-          <Card className="mb-8 border-none bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[24px] overflow-hidden">
-            <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-dark/50 p-6 border-b border-pr-orange-pale/50">
-              <div className="flex items-center gap-4">
-                <div className="p-3 bg-white rounded-xl shadow-sm border border-pr-orange-pale">
-                  <HelpCircle className="h-6 w-6 text-pr-orange" />
-                </div>
-                <div>
-                  <h2 className="text-xl font-bold text-gray-900">QCM d'évaluation - Testez vos connaissances</h2>
-                  <p className="text-sm text-pr-orange/80 font-medium mt-1">Répondez aux 20 questions pour évaluer votre niveau</p>
-                </div>
-              </div>
-            </div>
-            <CardContent className="p-8">
-              {!qcmSubmitted ? (
-                <div className="space-y-8">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <span className="w-2 h-2 rounded-full bg-pr-orange animate-pulse" />
-                      En cours - Questions à choix multiples
-                    </div>
-                    <Badge variant="outline" className="bg-pr-orange-pale text-pr-orange-dark border-pr-orange-soft px-4 py-1.5 rounded-full font-semibold">
-                      {Object.keys(qcmAnswers).length}/20 répondues
-                    </Badge>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {qcmQuestions.map((question, index) => (
-                      <Card key={question.id} className="border border-pr-orange-pale bg-pr-orange-pale/30 hover:bg-pr-orange-pale/60 hover:border-pr-orange-soft hover:shadow-md transition-all duration-300 rounded-xl group">
-                        <CardContent className="pt-6">
-                          <div className="flex items-center justify-between mb-4">
-                            <Badge variant="outline" className="bg-white text-pr-orange text-xs font-bold border-pr-orange-soft shadow-sm group-hover:border-pr-orange-soft transition-colors">
-                              Q{question.id}
-                            </Badge>
-                          </div>
-                          <p className="mb-6 text-gray-800 font-medium leading-relaxed min-h-[3rem]">{question.question}</p>
-                          <div className="space-y-3">
-                            {question.options.map((option, optIndex) => (
-                              <label key={optIndex} className="flex items-center gap-3 p-3 rounded-lg hover:bg-pr-orange-pale/50 cursor-pointer border border-transparent hover:border-pr-orange-soft transition-all duration-200">
-                                <div className="relative flex items-center justify-center w-5 h-5">
-                                  <input
-                                    type="radio"
-                                    name={`question-${question.id}`}
-                                    value={option}
-                                    checked={qcmAnswers[question.id] === option}
-                                    onChange={(e) => handleQCMAnswer(question.id, e.target.value)}
-                                    className="peer appearance-none w-5 h-5 border-2 border-gray-300 rounded-full checked:border-pr-orange checked:border-[5px] transition-all cursor-pointer"
-                                  />
-                                </div>
-                                <span className={`text-sm transition-colors ${qcmAnswers[question.id] === option ? 'text-pr-orange-dark font-medium' : 'text-gray-600'}`}>
-                                  {option}
-                                </span>
-                              </label>
-                            ))}
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-
-                  <div className="flex justify-center">
-                    <Button
-                      onClick={submitQCM}
-                      disabled={Object.keys(qcmAnswers).length < 20}
-                      className="bg-pr-orange hover:bg-pr-orange-dark text-white px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-blue-500/20 transition-all transform hover:-translate-y-0.5"
-                    >
-                      <Trophy className="h-4 w-4 mr-2" />
-                      Valider le QCM
-                    </Button>
-                  </div>
-                </div>
-              ) : (
-                <div className="space-y-6">
-                  {/* Résultats en haut */}
-                  <div className="text-center space-y-4">
-                    <div className="flex items-center justify-center gap-3">
-                      <Trophy className="h-8 w-8 text-gray-600" />
-                      <h3 className="text-2xl font-bold text-gray-700">Résultats du QCM</h3>
-                    </div>
-
-                    <div className="bg-gray-50 rounded-lg p-6 border-2 border-gray-200">
-                      <div className="text-4xl font-bold text-gray-700 mb-2">
-                        {qcmScore?.toFixed(1)}/20
-                      </div>
-                      <div className="flex items-center justify-center gap-2 mb-4">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`h-6 w-6 ${i < Math.floor((qcmScore || 0) / 4) ? 'text-gray-600 fill-current' : 'text-gray-300'}`}
-                          />
-                        ))}
-                      </div>
-                      <p className="text-gray-700 font-medium">
-                        {qcmScore && qcmScore >= 16 ? "Excellent ! Vous maîtrisez parfaitement les matrices NumPy." :
-                          qcmScore && qcmScore >= 12 ? "Bon niveau ! Quelques révisions pour perfectionner." :
-                            qcmScore && qcmScore >= 8 ? "Niveau correct. Continuez à vous entraîner." :
-                              "Niveau à améliorer. Revenez sur les bases des matrices NumPy."}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Détail des réponses */}
-                  <div className="space-y-4">
-                    <h4 className="text-lg font-semibold text-gray-700 text-center">
-                      Détail de vos réponses
-                    </h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      {qcmQuestions.map((question) => {
-                        const userAnswer = qcmAnswers[question.id];
-                        const isCorrect = userAnswer === question.answer;
-
-                        return (
-                          <Card
-                            key={question.id}
-                            className={`border-2 transition-colors ${isCorrect
-                              ? 'border-gray-200 bg-gray-50'
-                              : 'border-gray-200 bg-gray-100'
-                              }`}
-                          >
-                            <CardContent className="pt-6">
-                              <div className="flex items-center gap-2 mb-3">
-                                <Badge variant="outline" className={`${isCorrect ? 'bg-gray-100 text-gray-700' : 'bg-gray-200 text-gray-700'
-                                  }`}>
-                                  Question {question.id}
-                                </Badge>
-                                {isCorrect ? (
-                                  <CheckCircle className="h-4 w-4 text-gray-600" />
-                                ) : (
-                                  <div className="h-4 w-4 text-gray-600">✗</div>
-                                )}
-                              </div>
-
-                              <p className="mb-4 text-sm font-medium">{question.question}</p>
-
-                              <div className="space-y-2">
-                                {question.options.map((option, optIndex) => {
-                                  const isUserAnswer = userAnswer === option;
-                                  const isCorrectAnswer = question.answer === option;
-
-                                  let optionStyle = "flex items-center gap-2 p-2 rounded";
-                                  let textStyle = "text-sm";
-
-                                  if (isCorrectAnswer) {
-                                    // Bonne réponse toujours en gris foncé
-                                    optionStyle += " bg-gray-100 border border-gray-300";
-                                    textStyle += " font-semibold text-gray-700";
-                                  } else if (isUserAnswer && !isCorrect) {
-                                    // Mauvaise réponse de l'utilisateur en gris clair
-                                    optionStyle += " bg-gray-200 border border-gray-300";
-                                    textStyle += " font-semibold text-gray-600";
-                                  } else {
-                                    // Autres options neutres
-                                    optionStyle += " bg-gray-50";
-                                    textStyle += " text-gray-600";
-                                  }
-
-                                  return (
-                                    <div key={optIndex} className={optionStyle}>
-                                      <div className="flex items-center gap-2">
-                                        {isCorrectAnswer && (
-                                          <CheckCircle className="h-4 w-4 text-gray-600" />
-                                        )}
-                                        {isUserAnswer && !isCorrect && (
-                                          <div className="h-4 w-4 text-gray-600">✗</div>
-                                        )}
-                                        {!isCorrectAnswer && !isUserAnswer && (
-                                          <div className="h-4 w-4 text-gray-400">○</div>
-                                        )}
-                                      </div>
-                                      <span className={textStyle}>{option}</span>
-                                    </div>
-                                  );
-                                })}
-                              </div>
-
-                              {!isCorrect && (
-                                <div className="mt-3 p-2 bg-gray-100 border border-gray-200 rounded">
-                                  <p className="text-sm text-gray-700">
-                                    <span className="font-semibold">Votre réponse :</span> {userAnswer}
-                                  </p>
-                                  <p className="text-sm text-gray-700">
-                                    <span className="font-semibold">Bonne réponse :</span> {question.answer}
-                                  </p>
-                                </div>
-                              )}
-
-                              {/* Explanation section */}
-                              {question.explanation && (
-                                <div className="mt-4 p-3 bg-pr-orange-pale border border-pr-orange-soft rounded">
-                                  <div className="flex items-start gap-2">
-                                    <HelpCircle className="h-4 w-4 text-pr-orange mt-0.5 flex-shrink-0" />
-                                    <div>
-                                      <p className="text-xs font-semibold text-pr-orange-dark mb-1">Explication :</p>
-                                      <p className="text-xs text-pr-orange-dark">{question.explanation}</p>
-                                    </div>
-                                  </div>
-                                </div>
-                              )}
-                            </CardContent>
-                          </Card>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 justify-center">
-                    <Button
-                      variant="outline"
-                      onClick={restartQCM}
-                      className="border-gray-200 text-gray-600 hover:bg-gray-50"
-                    >
-                      Recommencer le QCM
-                    </Button>
-                  </div>
-                </div>
-              )}
-            </CardContent>
-          </Card>
-        </>
+        <PythonQCMPanel
+          intro="Répondez aux 20 questions pour évaluer votre niveau sur les matrices NumPy."
+          questions={qcmQuestions}
+          answers={qcmAnswers}
+          onAnswer={handleQCMAnswer}
+          onSubmit={submitQCM}
+          onRestart={restartQCM}
+          onBack={() => {
+            setShowQCM(false);
+            setQcmSubmitted(false);
+            setQcmAnswers({});
+            setQcmScore(null);
+          }}
+          submitted={qcmSubmitted}
+          score={qcmScore}
+        />
       )}
 
-
-
-      {/* Navigation retour au cours */}
       <ModuleNavigationCards
         currentModule={{
           id: 1,

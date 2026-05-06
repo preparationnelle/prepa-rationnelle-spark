@@ -27,19 +27,19 @@ const VocabRow: React.FC<{ term: string; definition: string }> = ({ term, defini
 
 const EconomyPage = () => {
   const keyTopics = [
-    { title: 'Inflation and Cost of Living', content: 'Price surges, supply chain chaos, central bank responses, household impact, labor unrest', vocabulary: ['price surges', 'supply chain chaos', 'monetary policy', 'real wages', 'labor unrest'] },
-    { title: 'Trade and Protectionism', content: 'Inflation Reduction Act, transatlantic tensions, subsidies, Buy American policies', vocabulary: ['protectionism', 'subsidies', 'trade war', 'geoeconomics', 'industrial strategy'] },
-    { title: 'Tax Systems and Justice', content: 'Global minimum tax, tax havens, UK offshore finance, corporate tax avoidance', vocabulary: ['tax havens', 'race to the bottom', 'profit-shifting', 'offshore finance', 'tax avoidance'] },
-    { title: 'Labor and Corporate Power', content: 'Union resurgence, corporate activism, greenwashing, business ethics, stakeholder pressure', vocabulary: ['unionization', 'corporate activism', 'greenwashing', 'stakeholder', 'business ethics'] },
+    { title: 'The Inflation Shock', content: 'US CPI peaks at 9.1% in June 2022, the Eurozone at 10.6%, the UK at 11.1% — Fed funds raised from near-zero to 5.5% in 18 months.', vocabulary: ['headline CPI', 'a four-decade high', 'to hike rates', 'real wages', 'cost-of-living crisis'] },
+    { title: 'Green Protectionism: the IRA', content: 'Biden\'s August 2022 jumbo package of $369bn in subsidies — a transatlantic split with Europe.', vocabulary: ['the Inflation Reduction Act', 'corporate subsidies', 'a transatlantic split', 'Buy American', 'geoeconomics'] },
+    { title: 'Tax Cooperation & Tax Havens', content: 'OECD 15% global minimum tax (140+ countries) versus the UK "spider\'s web" of offshore territories — $245bn lost each year.', vocabulary: ['a top-up tax', 'a race to the bottom', 'profit-shifting', 'tax havens', 'aggressive tax planning'] },
+    { title: 'Labour, Lobbies & Corporate Activism', content: 'Union revival (Amazon, Starbucks, UAW), Ben & Jerry\'s in Israel, BP\'s greenwashing, NRA and Big Oil.', vocabulary: ['unionisation', 'corporate activism', 'greenwashing', 'a windfall profit', 'lobbying'] },
   ];
 
   const essentialVocabulary = [
-    { term: 'inflation', definition: 'A general increase in prices and fall in the purchasing value of money' },
-    { term: 'globalization', definition: 'The process by which businesses or other organizations develop international influence' },
-    { term: 'protectionism', definition: 'The theory or practice of shielding a country\'s domestic industries from foreign competition' },
-    { term: 'tax havens', definition: 'Countries or territories with very low tax rates for foreign businesses' },
-    { term: 'greenwashing', definition: 'Making misleading claims about environmental benefits of products or practices' },
-    { term: 'stakeholder', definition: 'A person or group with an interest or concern in a business or organization' },
+    { term: 'a jumbo package', definition: 'A massive piece of legislation — used in the press for the IRA, the CHIPS Act, Biden\'s infrastructure law.' },
+    { term: 'a transatlantic split / rift', definition: 'A divergence between US and EU positions — typically on trade, climate or industrial policy.' },
+    { term: 'a race to the bottom', definition: 'Competitive deregulation in which countries lower taxes or standards to attract capital — what the 15% global minimum tax aims to end.' },
+    { term: 'profit-shifting', definition: 'The practice of routing profits to low-tax jurisdictions to avoid corporate tax. Costs governments around $245bn a year.' },
+    { term: 'greenwashing', definition: 'Misleading marketing that exaggerates a company\'s environmental commitments — emblematic case: BP.' },
+    { term: 'a windfall profit', definition: 'An unexpectedly large profit, often used in political debate over fossil-fuel companies\' 2022-2023 results.' },
   ];
 
   return (
@@ -52,17 +52,17 @@ const EconomyPage = () => {
       ]}
       badge="Civilisation · 2025"
       title="Economy"
-      titleAccent="& Globalization"
-      subtitle="Inflation, trade, tax cooperation, labor movements, and corporate ethics in the global economy."
+      titleAccent="& Globalisation"
+      subtitle="The 2022 inflation shock, transatlantic protectionism, the 15% global tax, the City as the heart of offshore finance, the comeback of US unions and the corporate ethics debate."
     >
       <div className="max-w-4xl mx-auto">
         <CivStats
           title="Key Economic Facts 2025"
           stats={[
-            { value: '9.1%', label: 'US inflation peak 2022' },
-            { value: '$369B', label: 'US Inflation Reduction Act' },
-            { value: '15%', label: 'Global minimum tax rate' },
-            { value: '$245B', label: 'Annual tax avoidance' },
+            { value: '9.1%', label: 'US inflation peak (June 2022, 41-year high)' },
+            { value: '$369bn', label: 'green subsidies in the IRA' },
+            { value: '15%', label: 'global minimum corporate tax (OECD)' },
+            { value: '$245bn', label: 'lost each year to profit-shifting' },
           ]}
         />
 
@@ -83,108 +83,87 @@ const EconomyPage = () => {
             </div>
           </CivItem>
 
-          <CivItem value="inflation-cost-living" title="Inflation and the Cost-of-Living Squeeze">
+          <CivItem value="inflation-cost-living" title="The Inflation Shock and the Cost-of-Living Crisis">
             <div className="space-y-4">
               <p>
-                After a long period of low inflation, the world was hit in the early 2020s by the sharpest price surges in a generation, squeezing household budgets and testing policymakers. A perfect storm of factors drove prices up: supply chain chaos from the COVID-19 pandemic, government stimulus spending, and then Russia's war in Ukraine which spiked energy and grain prices. In the U.S., inflation peaked at 9.1% in June 2022, the highest since 1981, before moderating to around 3–4% by 2023 as the Federal Reserve hiked interest rates aggressively (from near zero to over 5%) to cool the economy.
-              </p>
-              <p>
-                Europe felt it even more acutely; the Eurozone hit double-digit inflation (10.6% in Oct 2022) and the UK reached 11.1%, a 41-year high. Central banks, once worried about deflation, scrambled to tighten monetary policy, even at risk of inducing recessions. The human impact has been profound. Families faced soaring bills for essentials: fuel, electricity, and food (with staples like cooking oil and bread up 30–50% in some countries). Real wages lagged behind, effectively amounting to pay cuts for many. This fueled labor unrest, such as strikes in the UK and protests in countries from Chile to Egypt. Politically, the cost-of-living crisis dented incumbent governments' popularity worldwide. While inflation has started to ease by 2024 as supply shocks resolved and demand cooled, it remains above pre-pandemic norms. The episode has served as a reminder that price stability—often taken for granted—can unravel quickly, and that inequality worsens when inflation bites since the poorest struggle the most with pricier basics.
+                After a decade of price stability, the global economy was hit in 2022 by the sharpest inflation surge in forty years. In the United States, headline CPI peaked at 9.1% in June 2022, the highest reading since 1981, prompting the Federal Reserve to lift its policy rate from near-zero to 5.5% in eighteen months. Europe was hit even harder: Eurozone inflation reached 10.6% in October 2022, while the UK touched 11.1%, a 41-year high. The drivers compounded — pandemic-era stimulus, broken supply chains and Russia's invasion of Ukraine, which sent energy and grain prices soaring. Real wages lagged behind, fuelling the largest wave of strikes in Britain since the 1970s and toppling incumbents from London to Buenos Aires. The episode proved a brutal reminder that price stability, often taken for granted, can unravel within a single quarter — and that the poorest always pay the steepest price.
               </p>
               <EssayBox>
-                Employ this paragraph to underscore the socio-economic impact of inflation or to discuss economic policy. It provides data on inflation rates and responses, useful for arguing about the effectiveness of central banks or the causes of public discontent. It can also bolster a point on how global crises (pandemic, war) directly affect domestic economics and politics.
+                Mobilisable on: the limits of central bank independence; the social cost of monetary tightening; how external shocks reshape domestic politics; whether globalisation imports inflation as well as growth.
               </EssayBox>
-              <CivVocabBox words="price surges; household budgets; perfect storm; supply chain chaos; stimulus; spiked; hiked interest rates; cool the economy; acutely; central banks; deflation; monetary policy; inducing recessions; profound; essentials; staples; real wages; unrest; incumbent; dented; price stability; unravel; inequality; inflation bites" />
+              <CivVocabBox words="headline CPI; a 41-year high; to lift the policy rate; near-zero rates; pandemic-era stimulus; broken supply chains; to send prices soaring; to lag behind; the largest wave of strikes; to topple incumbents; to take stability for granted; to unravel within a quarter" />
             </div>
           </CivItem>
 
-          <CivItem value="us-inflation-reduction-act" title="The U.S. Inflation Reduction Act and Transatlantic Trade Tensions">
+          <CivItem value="us-inflation-reduction-act" title="The Inflation Reduction Act and the Transatlantic Split">
             <div className="space-y-4">
               <p>
-                In August 2022, President Joe Biden signed into law the Inflation Reduction Act (IRA)—a sweeping climate and industrial policy billed as America's boldest effort yet to fight climate change. The act earmarks $369 billion for clean energy subsidies, electric vehicle (EV) credits, and other green investments. While the IRA was hailed domestically for jump-starting green tech and jobs, it caused consternation among European allies who saw it as brazenly protectionist. A particular sticking point is the law's provision of a $7,500 tax credit for EVs only if they are assembled in North America with North American-made batteries.
-              </p>
-              <p>
-                This would effectively exclude European-made electric cars from the U.S. subsidy, putting firms like Volkswagen or Renault at a disadvantage in the huge American market. EU leaders complained this "Buy American" tilt violates World Trade Organization rules and threatens their own green industries. Some likened it to a new trade war in green clothing. In response, Europe scrambled to formulate its own subsidies and loosen state-aid limits—unveiling plans like the EU Green Deal Industrial Plan—to keep investment from fleeing across the Atlantic. The IRA episode highlights how the climate fight is intersecting with geoeconomics: countries want to build domestic clean-energy industries, but that risks conflict with free trade principles. It also reflects a shift in U.S. policy toward economic nationalism and industrial strategy, even under a relatively pro-alliance administration like Biden's. Finding a cooperative approach that addresses climate change without triggering tit-for-tat protectionism remains an unresolved challenge between Western partners.
+                For years, Europe had been urging the rest of the world to follow its lead in cutting carbon emissions. Finally, in August 2022, the United States took notice: President Joe Biden signed the Inflation Reduction Act, a jumbo package of green subsidies. Rather than pleasing Europe, the IRA — which provides $369 billion in corporate subsidies — has actually caused a transatlantic split. European leaders accuse Washington of engaging in protectionism that harms the interests of the old continent. The Act grants a tax credit of up to $7,500 for the purchase of a North American electric vehicle with a battery from the same source, excluding European-made models. Brussels claims the scheme breaches international trade rules and has scrambled to retaliate with its own Green Deal Industrial Plan — proof that the climate fight has become a new front in geoeconomics.
               </p>
               <EssayBox>
-                This paragraph can bolster discussions on international trade, climate policy, or US-EU relations. It offers a concrete example of how good intentions (climate action) can cause diplomatic friction. Use it to illustrate the complexity of balancing domestic interests with global cooperation, or as evidence in arguments about rising protectionism and the future of globalization.
+                Mobilisable on: the return of industrial policy in the West; "Is globalisation in retreat?"; the trade-off between climate ambition and free trade; whether allies can avoid green protectionism.
               </EssayBox>
-              <CivVocabBox words="sweeping; hailed; consternation; brazenly; sticking point; provision; disadvantage; tilt; violates; trade war; subsidies; state-aid limits; geoeconomics; free trade principles; economic nationalism; industrial strategy; tit-for-tat protectionism; unresolved" />
+              <CivVocabBox words="to take notice; a jumbo package of green subsidies; to cause a transatlantic split; to engage in protectionism; the old continent; a tax credit of up to $7,500; to breach international trade rules; the Green Deal Industrial Plan; a new front in geoeconomics; to retaliate" />
             </div>
           </CivItem>
 
-          <CivItem value="global-minimum-tax" title="Global Minimum Tax: Toward a Fairer Corporate Tax System">
+          <CivItem value="global-minimum-tax" title="The 15% Global Minimum Tax">
             <div className="space-y-4">
               <p>
-                In a landmark step for tax justice, over 130 countries agreed in principle in 2021 to implement a 15% global minimum corporate tax rate, aiming to end the "race to the bottom" where multinational companies shift profits to tax havens to avoid taxes. The European Union reached unanimous agreement on this minimum tax in December 2022, committing all EU members to enact it, and other economies like the UK, Japan, and Canada are moving forward as well. The idea, strongly championed by the Biden administration and OECD, is that if a company pays below 15% in any country, its home country will collect a top-up tax to reach that rate—removing the incentive to route profits to zero-tax jurisdictions.
-              </p>
-              <p>
-                U.S. officials have argued that America must adopt the global minimum too, or else U.S.-based multinationals (think Apple, Google) will simply end up paying that difference to European treasuries. However, as of 2024, the U.S. Congress has yet to align fully with the plan, due to partisan gridlock. Supporters say a minimum tax will raise billions in revenue that can fund public services and level the playing field for domestic businesses and workers. They also contend it restores a sense of fairness—making global capitalism work for average citizens, not just for footloose capital. Skeptics worry it could dull countries' competitive edge or that loopholes will undermine it in practice. Nonetheless, the momentum behind the agreement marks a turning point in global tax cooperation. If broadly enacted, it will be one of the biggest reforms to international tax rules in a century, signalling that the world's major economies can coordinate for greater equity in globalization.
+                In a landmark step against fiscal competition, more than 140 countries agreed in 2021, under the banner of the OECD, to a 15% global minimum corporate tax. The deal aims to end a decades-long "race to the bottom" in which multinationals routed profits through zero-tax jurisdictions like Bermuda or the Cayman Islands. Its mechanism is elegant: if a company pays below 15% anywhere in the world, its home state can collect a top-up tax to the threshold, removing the incentive to shift profits offshore. The European Union enacted the rules in December 2022; the United Kingdom, Japan, Canada and South Korea have followed. Yet the United States, despite leading the negotiation under Treasury Secretary Janet Yellen, has so far failed to legislate, paralysed by partisan gridlock — a striking illustration of how international cooperation often founders on the very domestic politics it was designed to bypass.
               </p>
               <EssayBox>
-                Use this paragraph for topics on globalization, inequality, or international cooperation. It provides a positive example of collective action and can support arguments about curbing corporate power or ensuring fairness. It's useful for economic justice discussions or when highlighting contrasts between unilateral and multilateral approaches.
+                Mobilisable on: the limits of multilateralism; "Are multinational corporations more powerful than states?"; whether globalisation can be reformed from within; the resilience of nation-state self-interest.
               </EssayBox>
-              <CivVocabBox words="landmark; race to the bottom; tax havens; unanimous; enact; championed; OECD; top-up tax; incentive; jurisdictions; treasuries; gridlock; level the playing field; footloose capital; dull (competitive edge); loopholes; turning point; coordinate; equity; globalization" />
+              <CivVocabBox words="a landmark step; the OECD; a 15% global minimum corporate tax; a race to the bottom; zero-tax jurisdictions; a top-up tax; to shift profits offshore; partisan gridlock; to founder on; to bypass domestic politics; an elegant mechanism" />
             </div>
           </CivItem>
 
-          <CivItem value="tax-havens-uk" title="Tax Havens and the UK's Role in Global Tax Avoidance">
+          <CivItem value="tax-havens-uk" title="The UK's Spider's Web of Tax Havens">
             <div className="space-y-4">
               <p>
-                Despite high-profile promises to crack down on tax avoidance, the United Kingdom remains at the heart of the global offshore finance system that enables multinational companies and the ultra-wealthy to minimize taxes. The Tax Justice Network's research shows that the "UK spider's web" of crown dependencies and overseas territories (places like the Cayman Islands, Bermuda, Jersey, and the British Virgin Islands) collectively is responsible for around one-third of all corporate tax avoidance risks in the world. An estimated $245 billion in global corporate tax is lost to profit-shifting each year, and the UK-linked havens are major facilitators of that drain by offering near-zero tax rates and secrecy.
-              </p>
-              <p>
-                For example, a tech giant might register its intellectual property in a Bermuda shell company to funnel royalties there tax-free, eroding tax bases of higher-tax countries. Successive British governments have faced criticism for this arrangement: while the UK enforces taxes at home, it simultaneously provides international shelters for avoidance. In recent years, international efforts—like the G20/OECD minimum tax and EU blacklists—have increased pressure on havens. The UK has sometimes taken steps (such as a public register of offshore companies owning UK property to curb dirty money), but critics say these measures are half-hearted. London's powerful financial lobby and concerns about sovereignty over territories make reform politically delicate. The situation highlights a moral quandary: Britain preaches fairness and austere budgets at home, yet its own network fuels a system where global elites and corporations sidestep paying their due. Meaningful change may require both domestic political will in the UK and sustained international coordination to shut down the escape routes in the "second empire" of tax havens.
+                Despite repeated promises to crack down on tax avoidance, the United Kingdom remains at the heart of the global offshore finance system. According to the Tax Justice Network, the "British spider's web" — Crown Dependencies such as Jersey and Guernsey and Overseas Territories like the Cayman Islands, Bermuda and the British Virgin Islands — accounts for roughly one-third of all corporate tax avoidance risks worldwide. An estimated $245 billion in tax revenue vanishes each year through aggressive profit-shifting by multinationals, eroding the budgets of high-income and developing countries alike. Successive governments have unveiled half-hearted reforms — public registers of beneficial ownership, alignment with EU blacklists — but London's powerful financial lobby has consistently watered them down. Britain thus preaches fiscal rigour at home while quietly bankrolling the very system that drains other nations' treasuries: a textbook case of double standards at the heart of contemporary capitalism.
               </p>
               <EssayBox>
-                This paragraph provides a case study of hypocrisy in policy and the complexity of global finance. It's great for arguments about inequality, explaining why developing countries lose revenue, or critiquing powerful nations' double standards. It supplies hard data (one-third of avoidance, $245b lost) useful for highlighting scale. It can also support a point on the challenges of reforming entrenched systems due to vested interests.
+                Mobilisable on: the contradictions of British financial power; how tax havens fuel global inequality; the limits of national sovereignty in fiscal matters; "Should we trust the City to regulate itself?".
               </EssayBox>
-              <CivVocabBox words="offshore finance; ultra-wealthy; minimize taxes; spider's web; crown dependencies; profit-shifting; drain; secrecy; shell company; funnel; eroding; facilitators; criticism; shelters; blacklist; half-hearted; lobby; sovereignty; moral quandary; austere; elites; sidestep; political will; escape routes" />
+              <CivVocabBox words="to crack down on tax avoidance; offshore finance; the British spider's web; Crown Dependencies; Overseas Territories; aggressive profit-shifting; to vanish each year; to erode budgets; half-hearted reforms; the financial lobby; to water down a reform; double standards" />
             </div>
           </CivItem>
 
-          <CivItem value="labor-movements" title="Labor Movements and Union Resurgence in the US">
+          <CivItem value="labor-movements" title="The Quiet Comeback of US Unions">
             <div className="space-y-4">
               <p>
-                After decades of decline, labor unions in the United States have shown surprising new momentum in the 2020s amid a tight labor market and changing public opinion. High-profile unionization drives at corporate behemoths grabbed headlines: in 2022, Amazon warehouse workers on Staten Island defied the odds to win the first-ever union at the trillion-dollar company, and over 300 Starbucks coffee shops nationwide voted to unionize despite fierce resistance from management. Even tech and white-collar sectors saw stirrings, with employees at companies like Apple and Google organizing unprecedented protests and some forming unions to demand better conditions.
-              </p>
-              <p>
-                Public support for unions has climbed to its highest level since the mid-1960s—71% approval in a 2022 Gallup poll—driven perhaps by growing awareness of income inequality and worker precarity. This has coincided with a post-pandemic labor shortage that gave workers more leverage to push for raises and respect. The Biden administration has positioned itself as the most pro-union in decades, quickly rolling back Trump-era rules that weakened unions and appointing union-friendly figures to federal labor boards. Yet significant challenges remain. U.S. labor laws still tilt heavily in favor of employers; companies often deploy aggressive tactics (sometimes illegal) to delay recognizing unions or to bust them outright—such as captive-audience meetings and firings of organizers. Additionally, union membership as a share of the workforce (around 10%) is still near historic lows, concentrated in the public sector. Whether the recent wins signal a lasting turning point or just a blip will depend on if unions can convert public goodwill into broader gains, adapt to new industries, and achieve tangible improvements that inspire more workers to organize.
+                Trade unionism in the United States has long faced steep obstacles: aggressive anti-union campaigns, restrictive labour laws and a deeply individualistic work culture. Yet support for unions has climbed to its highest level since 1965, with 71% of Americans backing them in a 2022 Gallup poll. The shift has translated into headline-grabbing wins: in April 2022, workers at Amazon's Staten Island warehouse voted to unionise — a historic first at the trillion-dollar company — and Starbucks employees have since followed in more than 400 stores nationwide. The 2023 UAW strike against the Big Three Detroit carmakers ended with double-digit pay rises, while Hollywood writers won AI guardrails after a 148-day walkout. Despite alleged retaliation and union-busting tactics, a quiet but profound shift is reshaping a workplace long thought to be union-proof.
               </p>
               <EssayBox>
-                This paragraph is apt for discussions on labor rights, social change, or economic inequality. It provides concrete examples of union activity and polling data, which can support arguments about rising worker consciousness or the impact of COVID on labor. Use it to argue that social movements can wax and wane with broader conditions, or to compare labor relations internationally.
+                Mobilisable on: the future of work; whether the American social model is being rebalanced; "Is the American dream still alive?"; the political economy of post-pandemic labour markets.
               </EssayBox>
-              <CivVocabBox words="momentum; tight labor market; decline; high-profile; behemoths; grabbed headlines; defied the odds; unionize; fierce resistance; unprecedented; protests; approval; precarity; leverage; pro-union; rolling back; labor boards; tilt (in favor); deploy; captive-audience meetings; bust (a union); organizers; workforce; turning point; blip; goodwill; tangible" />
+              <CivVocabBox words="trade unionism; an aggressive anti-union campaign; restrictive labour laws; an individualistic work culture; the highest level since 1965; a Gallup poll; to vote to unionise; a historic first; the trillion-dollar company; the UAW strike; double-digit pay rises; AI guardrails; a 148-day walkout; union-busting tactics; union-proof" />
             </div>
           </CivItem>
 
-          <CivItem value="corporate-activism" title="Corporate Activism: The Case of Ben & Jerry's">
+          <CivItem value="corporate-activism" title="Corporate Activism: Ben & Jerry's vs. Unilever">
             <div className="space-y-4">
               <p>
-                Global corporations are increasingly being drawn into social and political issues, sometimes taking stands that court controversy. A notable example is Ben & Jerry's, the Vermont-based ice cream company known for its progressive ethos. In 2021, Ben & Jerry's announced it would stop selling ice cream in Israeli-occupied Palestinian territories, saying that continuing to do so was inconsistent with the company's values. This decision—essentially a boycott of West Bank settlements—sparked a firestorm. Pro-Palestinian activists praised it as a principled stance against occupation, aligning corporate practice with human rights.
-              </p>
-              <p>
-                But Israeli politicians and some American lawmakers blasted the move as unfairly singling out Israel and accused the company of antisemitism or aiding the Boycott, Divestment, Sanctions (BDS) movement. The backlash was so strong that Ben & Jerry's parent company, Unilever, intervened: by 2022, Unilever sold the Israeli Ben & Jerry's business to a local licensee so that the ice cream could return to shelves in those areas, effectively circumventing the boycott. Ben & Jerry's independent board publicly criticized that step, insisting it stood by its social mission. The episode highlights the tightrope corporations walk when wading into international politics—balancing values, stakeholder pressure, and legal constraints. It also raises questions about corporate personhood: should companies leverage their brand power to advance social causes, and if so, who gets to decide which causes? In an age where consumers increasingly expect brands to have a conscience, the line between doing good and disrupting business is not always clear-cut.
+                In July 2021, Ben & Jerry's announced it would no longer sell its ice cream in the Israeli-occupied Palestinian territories — a striking case of "corporate activism" in the United States. The decision provoked a fierce backlash: several US states, including Florida, Texas and New Jersey, divested from Unilever, Ben & Jerry's parent company, citing anti-boycott laws. By 2022, Unilever defused the crisis by selling its Israeli business to a local licensee, allowing sales to resume despite the original board's public protest. The episode shows how American consumer brands have increasingly become political actors, willingly or not — and exposes the limits of such activism when it collides with state-level legislation, shareholder pressure and the explosive politics of the Boycott, Divestment, Sanctions movement. The line between brand purpose and political stance has rarely been so contested.
               </p>
               <EssayBox>
-                This paragraph can be used in discussions about business ethics, globalization, or the role of private companies in politics. It gives a concrete scenario that can be analyzed for arguments about corporate responsibility vs shareholder duty, or free speech vs consequences in commerce. It's also a good cultural example to bring in for essays on activism.
+                Mobilisable on: the politicisation of consumer brands; "Should companies stay out of politics?"; the limits of corporate values when challenged by states; soft power and American capitalism.
               </EssayBox>
-              <CivVocabBox words="drawn into; court controversy; ethos; inconsistent; values; boycott; firestorm; principled stance; occupation; human rights; blasted; singling out; antisemitism; backlash; licensee; circumventing; tightrope; wading into; stakeholder; personhood; leverage; conscience; clear-cut" />
+              <CivVocabBox words="corporate activism; the Israeli-occupied Palestinian territories; to provoke a fierce backlash; to divest from a company; anti-boycott laws; the parent company; to defuse a crisis; a local licensee; to collide with state legislation; shareholder pressure; the BDS movement; brand purpose" />
             </div>
           </CivItem>
 
-          <CivItem value="greenwashing" title="Greenwashing and Corporate Image">
+          <CivItem value="greenwashing" title="Greenwashing: The BP Case">
             <div className="space-y-4">
               <p>
-                As environmental awareness grows, many companies have tried to rebrand themselves as part of the solution—but not all their claims stand up to scrutiny. "Greenwashing," the practice of making misleading sustainability claims, has become a target of regulators and activists alike. A vivid case is oil giant BP (British Petroleum), which in the late 2000s famously adopted the tagline "Beyond Petroleum" and a sunburst logo to suggest a pivot to clean energy. In reality, more than 96% of its capital expenditures still go into oil and gas. In 2022, it emerged that BP had spent over £800,000 on social media "influence ads" in the UK touting its investments in renewables—a sum exceeding what some critics noted BP actually spends on certain climate initiatives.
-              </p>
-              <p>
-                These ads conveyed a "clean, green" image while BP simultaneously scaled back its emission reduction targets and enjoyed windfall profits from spiking fossil fuel prices. Such dissonance is not unique to BP: carmakers have advertised bogus "clean diesel," and plastic producers have run campaigns about recycling while lobbying against plastic waste regulations. However, the backlash is growing. Watchdogs file complaints about greenwashing with consumer protection agencies, and some jurisdictions (like the EU) are moving to ban generic environmental claims ("eco-friendly," "carbon neutral") unless backed by detailed proof. The reputational risk for companies is rising, too—getting labeled as a greenwasher can damage brand value in an era when consumers, especially younger ones, prize authenticity. Ultimately, the greenwashing phenomenon underscores the importance of independently verified action over slick PR. As the climate crisis intensifies, businesses will be expected to put real money and effort where their mouth is, or face public ire and legal consequences.
+                BP's advertising campaign on social media, championing the company's investments in green energy, has come under scrutiny as a textbook case of "greenwashing". The British oil giant spent more than £800,000 on influence ads in the UK alone — a sum exceeding what it actually invested in concrete climate action over the same period. The contradiction was made starker in 2023, when BP quietly scaled back its 2030 emissions targets and posted record windfall profits of nearly $28 billion off the back of soaring oil and gas prices. The controversy highlights the growing tension faced by fossil fuel companies, caught between their financial interests and the urgency of the climate crisis. In an age of corporate communication, can advertising still be trusted as a marker of genuine commitment?
               </p>
               <EssayBox>
-                Use this in essays on corporate social responsibility, marketing ethics, or climate change. It provides a critical perspective that can support arguments about needing regulation or skepticism of corporate motives. The BP example with numbers makes the point tangible. It's also a nice counterpoint if discussing positive corporate efforts, to show not all that glitters is green.
+                Mobilisable on: corporate ethics and the climate crisis; "Should we trust the market to solve the climate crisis?"; the limits of self-regulation; the politics of advertising and truth.
               </EssayBox>
-              <CivVocabBox words="scrutiny; claims; target (as verb); regulators; rebrand; sustainability claims; pivot (to clean energy); expenditures; touting; renewables; windfall profits; dissonance; backlash; watchdogs; complaints; generic; ban; reputational risk; authenticity; slick PR; intensifies; put money and effort where their mouth is; public ire" />
+              <CivVocabBox words="to come under scrutiny; a textbook case of greenwashing; the British oil giant; influence ads; concrete climate action; to scale back emissions targets; windfall profits; soaring oil and gas prices; the urgency of the climate crisis; a marker of genuine commitment" />
             </div>
           </CivItem>
 

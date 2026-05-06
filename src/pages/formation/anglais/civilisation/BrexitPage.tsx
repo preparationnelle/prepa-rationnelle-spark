@@ -27,19 +27,20 @@ const VocabRow: React.FC<{ term: string; definition: string }> = ({ term, defini
 
 const BrexitPage = () => {
   const keyTopics = [
-    { title: 'Economic Impact and Trade Barriers', content: 'GDP reduction, trade volume decline, customs checks, inflation effects, supply chain costs', vocabulary: ['Brexit', 'GDP reduction', 'trade barriers', 'customs checks', 'inflation', 'supply chain costs'] },
-    { title: 'Political Aftermath and Stabilization', content: 'Government instability, Brexit fatigue, Windsor Framework, Northern Ireland Protocol resolution', vocabulary: ['political friction', 'Brexit fatigue', 'Windsor Framework', 'Northern Ireland Protocol', 'Stormont Brake'] },
-    { title: 'UK Unity and Centrifugal Forces', content: 'Scottish independence, Northern Ireland border poll, Irish reunification, devolved government', vocabulary: ['centrifugal forces', 'Scottish independence', 'border poll', 'Irish reunification', 'devolved government'] },
-    { title: 'Public Opinion and Bregret', content: '57% believe Brexit was mistake, majority would rejoin, tangible downsides, limited benefits', vocabulary: ['Bregret', 'public opinion', 'tangible downsides', 'free movement', 'sovereignty'] },
+    { title: 'The Economic Verdict', content: 'OBR estimate of a 4% long-run GDP loss (~£100bn/year), 18% drop in goods exports to the EU, €1.5tn in assets relocated from London.', vocabulary: ['OBR', 'long-run GDP loss', 'regulatory divergence', 'financial hub', 'Global Britain'] },
+    { title: 'Northern Ireland & the Windsor Framework', content: 'Sunak\'s February 2023 deal: green lane, Stormont Brake, end of the DUP boycott, Michelle O\'Neill as First Minister.', vocabulary: ['Windsor Framework', 'green lane', 'Stormont Brake', 'DUP boycott', 'First Minister'] },
+    { title: 'Centrifugal Forces', content: 'Scotland\'s 62% Remain vote, the 2022 Supreme Court ruling on independence, the prospect of an Irish border poll.', vocabulary: ['centrifugal forces', 'a second independence referendum', 'a border poll', 'Irish reunification'] },
+    { title: 'Bregret & the Immigration Paradox', content: '57% of Britons see Brexit as a mistake, yet net migration hit a record 728,000 in 2024 — control of borders on paper, openness in practice.', vocabulary: ['Bregret', 'to take back control', 'record net migration', 'a paradox of populism'] },
+    { title: 'Starmer\'s European Reset', content: 'July 2024: Labour returns to power and pursues targeted cooperation with the EU on defence, energy and youth mobility, culminating in the May 2025 "reset" summit.', vocabulary: ['a reset summit', 'targeted cooperation', 'a red line', 'to repair frayed ties'] },
   ];
 
   const essentialVocabulary = [
-    { term: 'Brexit', definition: 'Britain\'s withdrawal from the European Union, completed in 2020' },
-    { term: 'Windsor Framework', definition: '2023 agreement between UK and EU resolving Northern Ireland Protocol issues' },
-    { term: 'Northern Ireland Protocol', definition: 'Post-Brexit arrangement for trade between Great Britain and Northern Ireland' },
-    { term: 'Stormont Brake', definition: 'Mechanism giving Northern Irish lawmakers say over new EU rules' },
-    { term: 'Bregret', definition: 'Regret over Brexit decision, reflected in public opinion polls' },
-    { term: 'centrifugal forces', definition: 'Forces that pull apart or separate parts of a political entity' },
+    { term: 'to take back control', definition: 'Slogan emblématique de la campagne Leave (2016) — emblem of the populist rhetoric of sovereignty.' },
+    { term: 'the Windsor Framework', definition: 'Pragmatic 2023 deal between Sunak and the EU resolving the Northern Ireland Protocol — green lane + Stormont Brake.' },
+    { term: 'Bregret', definition: 'Public regret over Brexit. By 2024, 57% of Britons see leaving the EU as a mistake.' },
+    { term: 'centrifugal forces', definition: 'Pressures pulling Scotland and Northern Ireland away from the Union — fuelled by Brexit.' },
+    { term: 'Global Britain', definition: 'Post-Brexit slogan promising an outward-looking trading nation. Largely fell short of expectations.' },
+    { term: 'a reset summit', definition: 'May 2025 meeting between Starmer and the EU — symbolic of a more transactional UK-EU relationship.' },
   ];
 
   return (
@@ -52,17 +53,17 @@ const BrexitPage = () => {
       ]}
       badge="Civilisation · 2025"
       title="Brexit"
-      titleAccent="& International Trade"
-      subtitle="Post-Brexit Britain, trade deals, economic sovereignty, and the question of UK unity."
+      titleAccent="& Post-Brexit Britain"
+      subtitle="Eight years on : the economic toll, the Northern Irish puzzle, Bregret, centrifugal forces and Starmer's quiet reset with Brussels."
     >
       <div className="max-w-4xl mx-auto">
         <CivStats
           title="Key Brexit Facts 2025"
           stats={[
-            { value: '2020', label: 'Brexit completed' },
-            { value: '3-4%', label: 'GDP smaller than if remained in EU' },
-            { value: '15%', label: 'Lower trade volumes long-term' },
-            { value: '57%', label: 'Britons believe Brexit was mistake' },
+            { value: '−4%', label: 'long-run GDP loss (OBR estimate)' },
+            { value: '728k', label: 'record net migration in 2024' },
+            { value: '57%', label: 'of Britons see Brexit as a mistake' },
+            { value: 'May 2025', label: 'UK-EU "reset" summit under Starmer' },
           ]}
         />
 
@@ -83,78 +84,63 @@ const BrexitPage = () => {
             </div>
           </CivItem>
 
-          <CivItem value="economic-impact" title="Economic Impact: Slower Growth and Trade Barriers">
+          <CivItem value="economic-impact" title="The Economic Verdict: A Costly Divorce">
             <div className="space-y-4">
               <p>
-                Britain's withdrawal from the EU in 2020 ("Brexit") continues to reshape its politics and economy. Nearly three years on, the verdict is sobering: Brexit has contributed to slower growth, trade barriers, and political friction. Economically, multiple analyses indicate the UK economy is 3–4% smaller than it would have been had Britain remained in the EU. The chairman of the Office for Budget Responsibility – the UK's fiscal watchdog – said in 2023 that Brexit's impact is "of the order of magnitude" of the COVID-19 pandemic in hitting GDP, likely a long-run 4% loss of output.
-              </p>
-              <p>
-                Trade data back this: UK exports to the EU fell sharply after new customs checks kicked in. The OBR estimated that total UK trade volumes will be 15% lower in the long run due to Brexit's new frictions. By 2022, goods exports to the EU were still 18% below their 2019 (pre-Brexit) level. While Britain has signed new trade deals around the world, most either copy pre-existing EU deals or are too small to offset lost EU commerce. The much-touted UK-Australia free trade agreement, for example, is forecast to add only a 0.1% boost to GDP over 15 years. In short, the promised "Global Britain" boom has yet to materialize. Instead, many businesses (especially small exporters) have struggled with added paperwork, and some have ceased exporting to Europe entirely. Sectors like farming and fishing, which expected gains, have voiced disappointment or harm from new barriers. Even Britain's inflation woes have been aggravated by Brexit: economists note Brexit added to supply chain costs and labor shortages, making the UK's recent inflation spike worse than other G7 countries.
+                Eight years after the 2016 referendum, the economic verdict on Brexit is clearer — and largely negative. The Office for Budget Responsibility estimates that leaving the EU will reduce UK GDP by around 4% in the long run, the equivalent of roughly £100 billion a year. Trade with the European Union, still Britain's largest commercial partner, has been hit by paperwork, customs checks and regulatory divergence: by 2022, goods exports to the EU were still 18% below their pre-Brexit level. London, once Europe's leading financial hub, has lost ground as more than €1.5 trillion in assets relocated to Paris, Frankfurt and Dublin. The much-trumpeted UK-Australia free trade deal, by contrast, is forecast to add a meagre 0.1% to GDP over fifteen years. The promised "Global Britain" boom has yet to materialise.
               </p>
               <EssayBox>
-                This paragraph is excellent for discussions on Brexit's economic consequences, trade policy, or the impact of political decisions on economic performance. It provides concrete data on GDP reduction and can support arguments about the costs of economic nationalism or the importance of trade relationships. It's also useful for analyzing the relationship between political choices and economic outcomes.
+                Mobilisable on: the economic cost of populist policymaking; the limits of "Global Britain"; the trade-off between sovereignty and prosperity; whether a mid-sized economy can thrive outside its regional bloc.
               </EssayBox>
-              <CivVocabBox words="Britain's withdrawal; EU; Brexit; reshape; verdict; sobering; slower growth; trade barriers; political friction; multiple analyses; UK economy 3–4% smaller; OBR; fiscal watchdog; order of magnitude; COVID-19 pandemic; long-run; output; UK exports; new customs checks; kicked in; trade volumes; 15% lower; goods exports; 18% below; new trade deals; UK-Australia free trade agreement; 0.1% boost; Global Britain boom; small exporters; added paperwork; ceased exporting; farming; fishing; voiced disappointment; inflation woes; supply chain costs; labor shortages; inflation spike; G7 countries" />
+              <CivVocabBox words="the economic verdict; the Office for Budget Responsibility (OBR); to reduce GDP by 4% in the long run; regulatory divergence; goods exports below their pre-Brexit level; Europe's leading financial hub; to lose ground; to relocate assets; the much-trumpeted trade deal; a meagre 0.1% boost; the Global Britain boom; to materialise" />
             </div>
           </CivItem>
 
-          <CivItem value="political-aftermath" title="Political Aftermath: From Tumult to Gradual Stabilization">
+          <CivItem value="political-aftermath" title="Northern Ireland: The Windsor Framework">
             <div className="space-y-4">
               <p>
-                Politically, Brexit's aftermath has been tumultuous but gradually stabilizing. It initially led to years of bitter division and unstable governments. By 2023–24, a kind of Brexit fatigue set in among the public, and both major parties (Conservatives and Labour) committed to not revisiting EU membership in the near term. However, the question of the UK's relationship with Europe is far from settled. In February 2023, Prime Minister Rishi Sunak negotiated the Windsor Framework with the EU, resolving a major sticking point: the Northern Ireland Protocol.
-              </p>
-              <p>
-                The deal introduced a "green lane" to reduce checks on goods moving from Great Britain to Northern Ireland (if they are staying in NI) and a "Stormont Brake" giving Northern Irish lawmakers some say over new EU rules. This compromise was aimed at reconciling the need to avoid a hard border on the island of Ireland with unionist concerns about NI's place in the UK internal market. The Windsor Framework largely succeeded in EU-UK diplomacy terms – the EU dropped legal actions, and relations thawed – and by early 2024 it helped facilitate the restoration of Northern Ireland's devolved government. After a two-year paralysis of the NI Assembly (caused by the Democratic Unionist Party's protest over the Protocol), the UK government reached an agreement with the DUP in Jan 2024 that addressed their remaining concerns and included a £3.3 billion support package for Northern Ireland. This paved the way for power-sharing to resume, with Sinn Féin's Michelle O'Neill poised to become First Minister – a historic first for an Irish nationalist in that role.
+                The thorniest puzzle left by Brexit was always Northern Ireland — how to leave the EU without re-erecting a hard border on the island of Ireland. In February 2023, Rishi Sunak unveiled the Windsor Framework, a pragmatic compromise built around a "green lane" for goods staying in the province and a "Stormont Brake" giving Northern Irish lawmakers a say over new EU rules. The deal thawed UK-EU relations, prompted Brussels to drop legal action and, crucially, paved the way for the restoration of Stormont in early 2024, after a two-year DUP boycott — a £3.3 billion package sealing the bargain. Months later, Sinn Féin's Michelle O'Neill became the first Irish nationalist First Minister of Northern Ireland, a historic shift that crowned the post-Brexit reconfiguration of Belfast's politics.
               </p>
               <EssayBox>
-                This paragraph is valuable for discussions on post-Brexit politics, diplomatic relations, or the resolution of complex political conflicts. It provides concrete examples of political agreements and can support arguments about the importance of compromise in politics or the challenges of maintaining political stability. It's also useful for analyzing the relationship between political leadership and conflict resolution.
+                Mobilisable on: the resilience of the Good Friday settlement; pragmatic compromise as a tool of conflict resolution; the unintended consequences of Brexit on Northern Ireland; the politics of borders.
               </EssayBox>
-              <CivVocabBox words="Brexit's aftermath; tumultuous; gradually stabilizing; bitter division; unstable governments; Brexit fatigue; both major parties; Conservatives; Labour; not revisiting; EU membership; Rishi Sunak; Windsor Framework; sticking point; Northern Ireland Protocol; green lane; Stormont Brake; Northern Irish lawmakers; reconciling; hard border; unionist concerns; UK internal market; legal actions; relations thawed; restoration; devolved government; NI Assembly; DUP; £3.3 billion support package; power-sharing; Sinn Féin; Michelle O'Neill; First Minister; historic first; Irish nationalist" />
+              <CivVocabBox words="the thorniest puzzle; to re-erect a hard border; to unveil a framework; a pragmatic compromise; a green lane for goods; the Stormont Brake; to thaw UK-EU relations; to drop legal action; to pave the way for; the restoration of Stormont; the DUP boycott; to seal a bargain; a historic shift" />
             </div>
           </CivItem>
 
-          <CivItem value="uk-unity" title="UK Unity: Brexit's Centrifugal Forces and Constitutional Challenges">
+          <CivItem value="uk-unity" title="Centrifugal Forces: Has Brexit Weakened the Union?">
             <div className="space-y-4">
               <p>
-                Yet, Brexit has also fed centrifugal forces within the UK. In Scotland, calls for independence gained strength after Scots' 62% Remain vote was overturned by the overall Leave result. The Scottish government pushed for a second independence referendum, though legal and political hurdles have so far stalled it. In Northern Ireland, there is renewed talk of a future border poll on Irish reunification (especially with a nationalist First Minister), though any such poll likely remains years away. So Brexit has at least reopened debates about the very unity of the "United" Kingdom.
-              </p>
-              <p>
-                The constitutional implications of Brexit extend beyond immediate economic concerns. The Scottish National Party (SNP) has argued that Brexit represents a "material change of circumstances" that justifies a new independence referendum, as Scotland voted overwhelmingly to remain in the EU. While the UK Supreme Court ruled in 2022 that Scotland cannot unilaterally hold such a referendum, the political pressure continues to build. Similarly, in Northern Ireland, the Good Friday Agreement's delicate balance has been tested by Brexit's border arrangements. The prospect of Irish reunification, while still distant, has gained new relevance as Brexit has highlighted the complex relationship between the UK, Ireland, and the EU. These developments suggest that Brexit's impact on UK constitutional stability may be as significant as its economic consequences.
+                Brexit has reopened a question many believed settled: the very unity of the United Kingdom. Scotland, where 62% of voters had backed Remain, found itself dragged out of the EU against its will, fuelling the Scottish National Party's case for a second independence referendum. In November 2022, the UK Supreme Court ruled unanimously that Holyrood could not call one without Westminster's consent — a legal win for the Union, but a political wound that has not healed. In Northern Ireland, the Good Friday Agreement's delicate balance has been tested by post-Brexit trade arrangements, and the once-unthinkable prospect of a future border poll on Irish reunification now features in serious political conversation. Brexit may have restored Westminster's sovereignty over Brussels, yet it has loosened its grip over the nations of the Union itself.
               </p>
               <EssayBox>
-                This paragraph is excellent for discussions on constitutional challenges, national identity, or the long-term political consequences of major policy decisions. It provides concrete examples of political developments and can support arguments about the importance of constitutional stability or the challenges of maintaining political unity. It's also useful for analyzing the relationship between political decisions and constitutional change.
+                Mobilisable on: "Has Brexit weakened the United Kingdom?"; the tension between popular and parliamentary sovereignty; the unintended constitutional costs of major referendums; the future of multinational states.
               </EssayBox>
-              <CivVocabBox words="centrifugal forces; within UK; Scotland; calls for independence; gained strength; 62% Remain vote; overturned; overall Leave result; second independence referendum; legal hurdles; political hurdles; stalled; Northern Ireland; renewed talk; future border poll; Irish reunification; nationalist First Minister; United Kingdom; constitutional implications; SNP; material change of circumstances; new independence referendum; Scotland voted; overwhelmingly; remain in EU; UK Supreme Court; unilaterally; Good Friday Agreement; delicate balance; tested; border arrangements; prospect; complex relationship; UK; Ireland; EU; constitutional stability" />
+              <CivVocabBox words="centrifugal forces; to reopen a question; to be dragged out against one's will; to fuel a case for; to back Remain / Leave; the UK Supreme Court ruled unanimously; a legal win; a political wound; the delicate balance of the Good Friday Agreement; a border poll on Irish reunification; once-unthinkable; to loosen one's grip" />
             </div>
           </CivItem>
 
-          <CivItem value="public-opinion" title="Public Opinion: Bregret and the Shift in British Attitudes">
+          <CivItem value="public-opinion" title="Bregret and the Immigration Paradox">
             <div className="space-y-4">
               <p>
-                Public opinion across Britain has shifted too: by 2023, polls showed 57% of Britons believe Brexit was a mistake, and a majority said they would rejoin the EU if they could. This "Bregret" reflects the palpable lack of tangible benefits for many people. Brexiteers in government attempted to point to newfound "freedoms" – like setting up freeports or reforming regulations – but these have had limited visible impact. Meanwhile, tangible downsides like higher trade costs, travel inconveniences, and worker shortages (exacerbated by the end of free movement) are felt in daily life.
-              </p>
-              <p>
-                The shift in public sentiment has been particularly pronounced among younger voters and those who initially supported Brexit. Many who voted Leave in 2016 have since changed their minds as the economic realities of Brexit became apparent. The government's attempts to promote "Global Britain" and new trade opportunities have largely failed to convince the public, as the promised benefits have not materialized. Instead, the focus has shifted to managing the practical challenges of Brexit, such as border controls, customs procedures, and regulatory divergence. This pragmatic approach reflects a broader recognition that Brexit is not a one-time event but an ongoing process that requires continuous management and adjustment.
+                By 2024, polls consistently showed that 57% of Britons believed leaving the EU had been a mistake, with a clear majority saying they would vote to rejoin if given the chance — a phenomenon dubbed "Bregret". The promised dividends had failed to materialise: freeports and bonfires of regulation produced little visible impact, while higher trade costs, travel hassles and chronic worker shortages were felt in daily life. The deepest irony, however, lay in immigration. Sold to many voters as a way to "take back control" of Britain's borders, Brexit was followed by a record net migration of 728,000 in 2024 — more than three times the figure on referendum day. The composition shifted from EU citizens to students from India and Nigeria, NHS staff from the Philippines and Hong Kongers fleeing Chinese repression: control of borders on paper, an open economy in practice.
               </p>
               <EssayBox>
-                This paragraph is valuable for discussions on public opinion, political accountability, or the relationship between political promises and public expectations. It provides concrete data on changing attitudes and can support arguments about the importance of delivering on political promises or the challenges of managing public expectations. It's also useful for analyzing the relationship between policy outcomes and public opinion.
+                Mobilisable on: the gap between political promises and outcomes; "Was Brexit a victory or a defeat for democracy?"; the paradoxes of populism; immigration policy and its unintended consequences.
               </EssayBox>
-              <CivVocabBox words="public opinion; shifted; polls; 57% Britons; Brexit mistake; majority; rejoin EU; Bregret; palpable lack; tangible benefits; Brexiteers; newfound freedoms; freeports; reforming regulations; limited visible impact; tangible downsides; higher trade costs; travel inconveniences; worker shortages; exacerbated; end of free movement; daily life; public sentiment; younger voters; voted Leave; 2016; changed their minds; economic realities; Brexit became apparent; promote Global Britain; new trade opportunities; convince public; promised benefits; not materialized; managing; practical challenges; border controls; customs procedures; regulatory divergence; pragmatic approach; ongoing process; continuous management; adjustment" />
+              <CivVocabBox words="to be dubbed Bregret; the promised dividends; to fail to materialise; freeports and bonfires of regulation; chronic worker shortages; the deepest irony lay in; to take back control of one's borders; record net migration; three times the figure; the composition shifted; to flee repression; on paper / in practice" />
             </div>
           </CivItem>
 
-          <CivItem value="long-term-legacy" title="Long-term Legacy: Pragmatism and Future Prospects">
+          <CivItem value="long-term-legacy" title="Starmer's European Reset">
             <div className="space-y-4">
               <p>
-                Overall, Brexit's aftermath has Britain in a pragmatic mode: instead of the utopian visions of 2016, leaders now talk of "making Brexit work" by smoothing rough edges with the EU. There's a notable reduction in the combative rhetoric toward Brussels. For instance, the Sunak government reached a quiet deal to cooperate with the EU's Horizon science program and eased migration rules for certain jobs despite earlier pledges. These are signs of Britain inching back to a more cooperative stance, albeit outside the EU.
-              </p>
-              <p>
-                The long-term legacy of Brexit will depend on whether the UK can carve out a productive new role in Europe and globally, or whether it remains overshadowed by the choice to leave. The challenge for future British governments will be to balance the desire for sovereignty with the practical need for cooperation. This may involve developing new forms of partnership with the EU, strengthening relationships with other global powers, and finding ways to maintain influence in international institutions. The success of this balancing act will determine whether Brexit is remembered as a bold assertion of independence or a costly mistake that weakened Britain's global position.
+                Within months of taking office in July 2024, Keir Starmer began repairing the UK's frayed ties with the European Union. While ruling out any return to the single market or customs union — a red line set by Brexit's enduring weight in British politics — his government pursued targeted cooperation on defence, energy and youth mobility, culminating in a "reset" summit with the EU in May 2025. The shift reflects a colder strategic reading of the world: with war in Ukraine, an unpredictable American ally under a second Trump administration and a more assertive China, Britain cannot afford to remain at arm's length from its closest neighbours. Brexit, once framed as a sweeping rupture, is gradually being reabsorbed into a more pragmatic, transactional relationship with Brussels — sovereignty preserved on paper, interdependence quietly restored in practice.
               </p>
               <EssayBox>
-                This paragraph is excellent for discussions on Brexit's long-term implications, international relations, or the challenges of post-Brexit governance. It provides insights into future prospects and can support arguments about the importance of pragmatic policymaking or the challenges of maintaining international influence. It's also useful for analyzing the relationship between political decisions and long-term consequences.
+                Mobilisable on: the limits of geopolitical autonomy in a turbulent world; can a country reinvent itself outside its regional bloc?; pragmatism vs. ideology in foreign policy; the long shadow of the Trump years on UK strategy.
               </EssayBox>
-              <CivVocabBox words="Brexit's aftermath; pragmatic mode; utopian visions; making Brexit work; smoothing rough edges; combative rhetoric; Brussels; Sunak government; quiet deal; cooperate; Horizon science program; eased migration rules; certain jobs; earlier pledges; inching back; cooperative stance; outside EU; long-term legacy; UK; productive new role; Europe; globally; overshadowed; choice to leave; future British governments; balance; sovereignty; practical need; cooperation; new forms partnership; strengthening relationships; other global powers; maintain influence; international institutions; balancing act; bold assertion; independence; costly mistake; weakened; Britain's global position" />
+              <CivVocabBox words="to repair frayed ties; to rule out any return to; the single market and customs union; a red line; targeted cooperation on defence and energy; a reset summit; a colder strategic reading; an unpredictable American ally; a more assertive China; to remain at arm's length; a sweeping rupture; to be reabsorbed into; sovereignty on paper, interdependence in practice" />
             </div>
           </CivItem>
 
