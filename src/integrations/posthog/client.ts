@@ -1,37 +1,34 @@
 
 import posthog from 'posthog-js';
 
-// Initialize PostHog with project API key
+// Initialize PostHog with project API key from env (skips silently when missing)
 export const initPostHog = () => {
-  if (typeof window !== 'undefined' && !posthog.__loaded) {
-    // Initialise PostHog après que le thread est idle pour ne pas bloquer le first paint
-    const start = () => {
-      posthog.init(
-        'phx_WuSstYiK9zBuLMrTxDi0qzKp9tGLA9p0aaH2XnQ4BcQ1emk',
-        {
-          api_host: 'https://eu.posthog.com',
-          capture_pageview: false,
-          persistence: 'localStorage',
-          person_profiles: 'identified_only',
-          // désactive l'autocapture pour réduire le bruit et la charge
-          autocapture: false,
-          loaded: (ph) => {
-            if (process.env.NODE_ENV === 'development') {
-              ph.debug();
-            }
-          }
-        }
-      );
-    };
-    if ('requestIdleCallback' in window) {
-      (window as any).requestIdleCallback(start, { timeout: 2000 });
-    } else {
-      setTimeout(start, 2000);
-    }
-  } else if (typeof window !== 'undefined' && posthog.__loaded) {
-    console.log('PostHog already loaded');
+  if (typeof window === 'undefined') return posthog;
+  if (posthog.__loaded) return posthog;
+
+  const apiKey = import.meta.env.VITE_POSTHOG_KEY as string | undefined;
+  const apiHost = (import.meta.env.VITE_POSTHOG_HOST as string | undefined) ?? 'https://eu.posthog.com';
+
+  if (!apiKey) return posthog;
+
+  const start = () => {
+    posthog.init(apiKey, {
+      api_host: apiHost,
+      capture_pageview: false,
+      persistence: 'localStorage',
+      person_profiles: 'identified_only',
+      autocapture: false,
+      loaded: (ph) => {
+        if (import.meta.env.DEV) ph.debug();
+      },
+    });
+  };
+  if ('requestIdleCallback' in window) {
+    (window as any).requestIdleCallback(start, { timeout: 2000 });
+  } else {
+    setTimeout(start, 2000);
   }
-  
+
   return posthog;
 };
 
