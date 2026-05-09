@@ -766,7 +766,7 @@ const ArticlesConcoursAccesSesamePage = () => {
 
             {/* Call to Action */}
             <div className="mt-16 text-center">
-              <div className="bg-gradient-to-br from-carnet-paper-2 to-indigo-50 border-2 border-carnet-red/30 hover:shadow-2xl hover:scale-105 hover:border-indigo-300 hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pr-orange-pale transition-all duration-300 group p-8 rounded-lg">
+              <div className="bg-gradient-to-br from-carnet-paper-2 to-pr-orange-pale border-2 border-carnet-red/30 hover:shadow-2xl hover:scale-105 hover:border-indigo-300 hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pr-orange-pale transition-all duration-300 group p-8 rounded-lg">
                 <div className="w-16 h-16 bg-carnet-red/10 group-hover:bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
                   <Award className="h-8 w-8 text-carnet-red group-hover:text-indigo-600 transition-colors duration-300" />
                 </div>

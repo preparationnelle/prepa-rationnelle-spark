@@ -12,8 +12,8 @@ const ArticlesLyceePage = () => {
       subtitle: "Classe de détermination",
       description: "Découvrez toutes les matières enseignées en classe de seconde et les stratégies pour bien choisir votre voie.",
       theme: "blue",
-      gradient: "from-carnet-paper-20 to-indigo-600",
-      bgGradient: "from-carnet-paper-2 to-indigo-50",
+      gradient: "from-carnet-red to-pr-orange",
+      bgGradient: "from-carnet-paper-2 to-pr-orange-pale",
       icon: School,
       link: "/articles/lycee/seconde",
       matieresCount: 12,
@@ -52,7 +52,7 @@ const ArticlesLyceePage = () => {
       bg: 'bg-pr-orange-pale',
       text: 'text-carnet-red',
       border: 'border-carnet-red/20',
-      shadow: 'shadow-blue-200/50',
+      shadow: 'shadow-carnet-red/20/50',
       button: 'bg-carnet-red hover:bg-carnet-red-deep'
     },
     orange: {
@@ -148,7 +148,7 @@ const ArticlesLyceePage = () => {
                             {niveau.matieresCount} matières détaillées
                           </div>
 
-                          <div className={`w-full py-3 px-4 rounded-xl flex items-center justify-center font-bold text-white transition-all duration-300 ${theme.button} shadow-lg shadow-blue-900/5 group-hover:shadow-xl translate-y-2 opacity-90 group-hover:translate-y-0 group-hover:opacity-100`}>
+                          <div className={`w-full py-3 px-4 rounded-xl flex items-center justify-center font-bold text-white transition-all duration-300 ${theme.button} shadow-lg shadow-carnet-ink/20/5 group-hover:shadow-xl translate-y-2 opacity-90 group-hover:translate-y-0 group-hover:opacity-100`}>
                             Explorer le programme
                             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                           </div>

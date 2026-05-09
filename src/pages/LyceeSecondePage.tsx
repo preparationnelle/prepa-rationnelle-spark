@@ -106,7 +106,7 @@ const LyceeSecondePage = () => {
 
   /* Modern color palette using Tailwind classes dynamically */
   const colorClasses: Record<string, { bg: string, border: string, text: string, icon: string, shadow: string, gradient: string }> = {
-    blue: { bg: 'bg-pr-orange-pale', border: 'border-carnet-red/20', text: 'text-carnet-red-deep', icon: 'text-carnet-red', shadow: 'shadow-blue-200/50', gradient: 'from-carnet-paper-20 to-pr-orange' },
+    blue: { bg: 'bg-pr-orange-pale', border: 'border-carnet-red/20', text: 'text-carnet-red-deep', icon: 'text-carnet-red', shadow: 'shadow-carnet-red/20/50', gradient: 'from-carnet-red to-pr-orange' },
     emerald: { bg: 'bg-emerald-50', border: 'border-emerald-100', text: 'text-emerald-900', icon: 'text-emerald-600', shadow: 'shadow-emerald-200/50', gradient: 'from-emerald-500 to-emerald-600' },
     orange: { bg: 'bg-orange-50', border: 'border-orange-100', text: 'text-orange-900', icon: 'text-orange-600', shadow: 'shadow-orange-200/50', gradient: 'from-orange-500 to-orange-600' },
     violet: { bg: 'bg-violet-50', border: 'border-violet-100', text: 'text-violet-900', icon: 'text-violet-600', shadow: 'shadow-violet-200/50', gradient: 'from-violet-500 to-violet-600' },
@@ -138,7 +138,7 @@ const LyceeSecondePage = () => {
               </div>
 
               <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-carnet-ink mb-6">
-                Classe de <span className="text-transparent bg-clip-text bg-gradient-to-r from-carnet-red to-indigo-600">Seconde</span>
+                Classe de <span className="text-transparent bg-clip-text bg-gradient-to-r from-carnet-red to-pr-orange">Seconde</span>
               </h1>
 
               <p className="text-xl md:text-2xl text-carnet-ink-soft max-w-3xl mx-auto leading-relaxed font-light">
@@ -194,7 +194,7 @@ const LyceeSecondePage = () => {
               {/* Detailed Info Card */}
               <div className="md:col-span-8">
                 <Card className="h-full border-0 shadow-xl shadow-slate-200/60 overflow-hidden bg-white">
-                  <div className="h-2 bg-gradient-to-r from-carnet-paper-20 to-indigo-600"></div>
+                  <div className="h-2 bg-gradient-to-r from-carnet-red to-pr-orange"></div>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-3 text-2xl font-bold text-carnet-ink">
                       <Clock className="h-6 w-6 text-carnet-red" />
@@ -259,7 +259,7 @@ const LyceeSecondePage = () => {
 
               {/* Call to Action Card */}
               <div className="md:col-span-4 flex flex-col">
-                <Card className="flex-1 border-0 shadow-xl shadow-blue-200/50 relative overflow-hidden bg-gradient-to-br from-carnet-red to-indigo-700 text-white">
+                <Card className="flex-1 border-0 shadow-xl shadow-carnet-red/20/50 relative overflow-hidden bg-gradient-to-br from-carnet-red to-pr-orange-dark text-white">
                   {/* Decorative circles */}
                   <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
                   <div className="absolute bottom-0 left-0 w-32 h-32 bg-white opacity-10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
@@ -271,7 +271,7 @@ const LyceeSecondePage = () => {
                     <h3 className="text-2xl font-bold mb-4">
                       Besoin d'orientation ?
                     </h3>
-                    <p className="text-blue-100 mb-8 leading-relaxed">
+                    <p className="text-carnet-paper-2 mb-8 leading-relaxed">
                       Nos experts vous accompagnent pour faire les meilleurs choix stratégiques pour votre avenir.
                     </p>
                     <Link to="/contact" className="w-full">
