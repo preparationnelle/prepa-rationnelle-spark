@@ -46,7 +46,7 @@ const StageAccompagnementPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F6F3]">
+    <div className="relative">
       {/* Section 1 — Hero */}
       <section className="pt-20 pb-16 px-4">
         <div className="max-w-7xl mx-auto text-center">

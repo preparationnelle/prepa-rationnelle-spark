@@ -125,7 +125,7 @@ const PreRentreePage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F0F8FF]">
+    <div className="relative">
       {/* Navigation de retour */}
       <nav className="pt-6 pb-4 px-4">
         <div className="max-w-6xl mx-auto">
@@ -388,7 +388,7 @@ const PreRentreePage = () => {
       </section>
 
       {/* Section 2 - Besoin d'aide ? */}
-      <section id="contact-support" className="py-8 px-4 bg-[#F0F8FF]">
+      <section id="contact-support" className="py-8 px-4 bg-carnet-paper-2">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
             Besoin d'aide ?

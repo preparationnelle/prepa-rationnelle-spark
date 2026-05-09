@@ -15,7 +15,7 @@ const AccesRestreintPage: React.FC = () => {
   const isPythonSection = section === 'python';
 
   return (
-    <div className="min-h-screen bg-[#F0F8FF] flex items-center justify-center p-4">
+    <div className="relative flex items-center justify-center p-4">
       <Card className="w-full max-w-lg bg-white rounded-2xl shadow-sm border border-[#E6EEF9]">
         <CardHeader className="text-center pb-4">
           <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">

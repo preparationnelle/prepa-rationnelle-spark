@@ -112,16 +112,11 @@ const ProfesseurPage = () => {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: 'var(--page-bg)' }}>
+    <div className="relative">
       {/* Section Hero */}
-      <section className="min-h-[95vh] w-full flex flex-col justify-center items-center pt-16 sm:pt-20 pb-10 sm:pb-16 md:pb-24 px-4 sm:px-6 relative overflow-hidden" style={{ backgroundColor: 'var(--section-bg-1)' }}>
-        <div className="absolute -z-10 inset-0" style={{ backgroundColor: 'var(--section-bg-1)' }}></div>
+      <section className="w-full flex flex-col justify-center items-center pt-16 sm:pt-20 pb-10 sm:pb-16 md:pb-24 px-4 sm:px-6 relative">
         
         {/* Bulles décoratives */}
-        <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
-        <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
-        <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
-        <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-orange-200 rounded-full opacity-5 animate-pulse"></div>
         
         <div className="relative z-10 w-full max-w-4xl mx-auto">
           <div className="text-center mb-12">
