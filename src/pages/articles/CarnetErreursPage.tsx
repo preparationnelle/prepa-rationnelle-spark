@@ -77,7 +77,7 @@ const schemaData = {
 
 const CarnetErreursPage = () => {
   return (
-    <div className="min-h-screen bg-[#FFFDF7]">
+    <div className="relative">
       <SEOHead
         title="Carnet d'erreurs en Prépa ECG : Méthode pour Gagner 2-3 Points"
         description="Méthode complète pour structurer un carnet d'erreurs en prépa ECG. Transformez vos erreurs en points au concours BCE. Gain moyen : 2-3 points après 1 mois."
