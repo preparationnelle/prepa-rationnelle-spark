@@ -25,11 +25,11 @@ const NotFound = () => {
         <meta httpEquiv="status" content="404" />
         <link rel="canonical" href="https://www.preparationnelle.com/" />
       </Helmet>
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="min-h-screen flex items-center justify-center px-6">
         <div className="text-center">
-          <h1 className="text-6xl font-bold mb-4">404</h1>
-          <p className="text-xl text-gray-600 mb-8">Oops! Page non trouvée</p>
-          <Button asChild>
+          <h1 className="text-7xl md:text-8xl font-bold text-carnet-ink mb-4">404</h1>
+          <p className="text-xl text-carnet-ink-soft mb-8">Oops ! Page non trouvée.</p>
+          <Button asChild className="bg-carnet-red hover:bg-carnet-red-deep text-white">
             <Link to="/">
               Retour à l'accueil
             </Link>
