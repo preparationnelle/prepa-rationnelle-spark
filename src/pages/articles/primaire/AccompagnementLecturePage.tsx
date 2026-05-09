@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Home, ChevronRight, ArrowLeft } from 'lucide-react';
-import Navigation from '@/components/Navigation';
 
 import SEO from '@/components/SEO';
 
@@ -14,8 +13,7 @@ const AccompagnementLecturePage = () => {
                 description="Conseils pour aider votre enfant en difficulté de lecture : méthodes ludiques et accompagnement bienveillant pour transformer la contrainte en plaisir."
                 type="article"
             />
-            <Navigation />
-            <div className="min-h-screen bg-white">
+            <div className="relative">
                 {/* Fil d'Ariane */}
                 <nav className="border-b border-gray-100">
                     <div className="container mx-auto px-4 py-3">
@@ -180,7 +178,6 @@ const AccompagnementLecturePage = () => {
                     </div>
                 </article>
 
-                {/* Navigation */}
                 <div className="border-t border-gray-100 py-8">
                     <div className="container mx-auto px-4 max-w-3xl">
                         <Link to="/articles/primaire">

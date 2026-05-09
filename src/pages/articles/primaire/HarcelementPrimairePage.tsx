@@ -2,13 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Home, ChevronRight, ArrowLeft } from 'lucide-react';
-import Navigation from '@/components/Navigation';
 
 const HarcelementPrimairePage = () => {
     return (
         <>
-            <Navigation />
-            <div className="min-h-screen bg-white">
+            <div className="relative">
                 {/* Fil d'Ariane */}
                 <nav className="border-b border-gray-100">
                     <div className="container mx-auto px-4 py-3">
@@ -64,8 +62,8 @@ const HarcelementPrimairePage = () => {
                         <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6">Première Distinction Essentielle : Conflit Normal vs Harcèlement</h2>
 
                         <div className="grid md:grid-cols-2 gap-6 my-8">
-                            <div className="bg-blue-50 p-6 rounded-xl border border-blue-100">
-                                <h4 className="text-blue-800 font-bold mb-3 flex items-center">
+                            <div className="bg-pr-orange-pale p-6 rounded-xl border border-carnet-red/20">
+                                <h4 className="text-carnet-red-deep font-bold mb-3 flex items-center">
                                     <span className="w-2 h-2 rounded-full bg-blue-500 mr-2"></span>
                                     Conflit Normal
                                 </h4>
@@ -173,7 +171,6 @@ const HarcelementPrimairePage = () => {
                     </div>
                 </article>
 
-                {/* Navigation */}
                 <div className="border-t border-gray-100 py-8">
                     <div className="container mx-auto px-4 max-w-3xl">
                         <Link to="/articles/primaire">

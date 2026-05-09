@@ -2,13 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Home, ChevronRight, ArrowLeft } from 'lucide-react';
-import Navigation from '@/components/Navigation';
 
 const AnxieteScolairePage = () => {
     return (
         <>
-            <Navigation />
-            <div className="min-h-screen bg-white">
+            <div className="relative">
                 {/* Fil d'Ariane */}
                 <nav className="border-b border-gray-100">
                     <div className="container mx-auto px-4 py-3">
@@ -118,9 +116,9 @@ const AnxieteScolairePage = () => {
                             </li>
                         </ul>
 
-                        <div className="bg-blue-50 p-6 rounded-xl my-8">
+                        <div className="bg-pr-orange-pale p-6 rounded-xl my-8">
                             <h4 className="font-bold text-blue-900 mb-2">Comment savoir ? Posez les bonnes questions</h4>
-                            <p className="text-blue-800 text-sm mb-4">Sur un ton de conversation douce, pas d'interrogatoire :</p>
+                            <p className="text-carnet-red-deep text-sm mb-4">Sur un ton de conversation douce, pas d'interrogatoire :</p>
                             <ul className="space-y-2 text-blue-900 italic">
                                 <li>« Qu'est-ce que tu as peur qu'il se passe à l'école ? »</li>
                                 <li>« Y a-t-il quelque chose ou quelqu'un qui te fait peur ? »</li>
@@ -216,7 +214,6 @@ const AnxieteScolairePage = () => {
                     </div>
                 </article>
 
-                {/* Navigation */}
                 <div className="border-t border-gray-100 py-8">
                     <div className="container mx-auto px-4 max-w-3xl">
                         <Link to="/articles/primaire">

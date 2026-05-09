@@ -2,12 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Home, ChevronRight, ArrowLeft } from 'lucide-react';
-import Navigation from '@/components/Navigation';
 
 const DevoirsSansStressPage = () => {
     return (
         <>
-            <Navigation />
             <div className="min-h-screen bg-white">
                 {/* Fil d'Ariane */}
                 <nav className="border-b border-gray-100">
@@ -192,7 +190,6 @@ const DevoirsSansStressPage = () => {
                     </div>
                 </article>
 
-                {/* Navigation */}
                 <div className="border-t border-gray-100 py-8">
                     <div className="container mx-auto px-4 max-w-3xl">
                         <Link to="/articles/primaire">
