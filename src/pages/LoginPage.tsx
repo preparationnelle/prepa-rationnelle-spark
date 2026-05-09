@@ -82,25 +82,18 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-[#0a0f1a]">
-      {/* Background Effects - Similar to Hero but blurred */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-orange-500/20 rounded-full blur-[120px] animate-pulse"></div>
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-orange-600/10 rounded-full blur-[100px] animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-orange-500/10 via-orange-600/5 to-transparent rounded-full"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
-      </div>
+    <div className="relative flex items-center justify-center min-h-[calc(100vh-8rem)] py-12 px-4">
 
-      <Card className="w-full max-w-md relative z-10 bg-white/10 backdrop-blur-xl border-white/10 shadow-2xl">
+      <Card className="w-full max-w-md relative z-10 bg-carnet-paper-2 border-carnet-red/20 shadow-xl">
         <CardHeader className="space-y-1 text-center">
-          <CardTitle className="text-3xl font-bold text-white mb-2">Bon retour</CardTitle>
-          <CardDescription className="text-gray-300">
+          <CardTitle className="text-3xl font-bold text-carnet-ink mb-2 font-serif">Bon retour</CardTitle>
+          <CardDescription className="text-carnet-ink-soft">
             Entrez vos identifiants pour accéder à votre espace
           </CardDescription>
         </CardHeader>
         <CardContent>
           {error && (
-            <div className="bg-red-500/10 border border-red-500/20 text-red-200 p-3 rounded mb-4 text-sm flex items-center gap-2">
+            <div className="bg-carnet-red/10 border border-carnet-red/30 text-carnet-red-deep p-3 rounded mb-4 text-sm flex items-center gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 shrink-0">
                 <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z" clipRule="evenodd" />
               </svg>
@@ -110,7 +103,7 @@ const LoginPage = () => {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-gray-200">Email</Label>
+              <Label htmlFor="email" className="text-carnet-ink">Email</Label>
               <Input
                 id="email"
                 type="email"
@@ -118,14 +111,14 @@ const LoginPage = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="bg-black/20 border-white/10 text-white placeholder:text-gray-500 focus:border-orange-500/50 focus:ring-orange-500/20"
+                className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-orange-500/50 focus:ring-orange-500/20"
               />
             </div>
 
             <div className="space-y-2">
               <div className="flex justify-between items-center">
-                <Label htmlFor="password" className="text-gray-200">Mot de passe</Label>
-                <Link to="/forgot-password" className="text-sm text-orange-400 hover:text-orange-300 hover:underline transition-colors">
+                <Label htmlFor="password" className="text-carnet-ink">Mot de passe</Label>
+                <Link to="/forgot-password" className="text-sm text-pr-orange hover:text-pr-orange-dark hover:underline transition-colors">
                   Mot de passe oublié?
                 </Link>
               </div>
@@ -137,13 +130,13 @@ const LoginPage = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="bg-black/20 border-white/10 text-white placeholder:text-gray-500 focus:border-orange-500/50 focus:ring-orange-500/20 pr-10"
+                  className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-orange-500/50 focus:ring-orange-500/20 pr-10"
                 />
                 <Button
                   type="button"
                   variant="ghost"
                   size="icon"
-                  className="absolute right-0 top-0 h-full text-gray-400 hover:text-white hover:bg-transparent"
+                  className="absolute right-0 top-0 h-full text-carnet-ink-mute hover:text-white hover:bg-transparent"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
@@ -157,7 +150,7 @@ const LoginPage = () => {
 
             <Button
               type="submit"
-              className="w-full bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white border-0 shadow-lg shadow-orange-500/20 transition-all duration-300"
+              className="w-full bg-pr-orange hover:bg-pr-orange-dark text-white border-0 shadow-lg shadow-pr-orange/20 transition-all duration-300"
               disabled={loading}
             >
               {loading ? (
@@ -169,10 +162,10 @@ const LoginPage = () => {
             </Button>
           </form>
         </CardContent>
-        <CardFooter className="flex flex-col border-t border-white/5 pt-6 mt-2">
-          <div className="text-center text-sm text-gray-400">
+        <CardFooter className="flex flex-col border-t border-carnet-rule/30 pt-6 mt-2">
+          <div className="text-center text-sm text-carnet-ink-mute">
             Vous n'avez pas de compte?{' '}
-            <Link to="/register" className="text-orange-400 hover:text-orange-300 font-medium hover:underline transition-colors">
+            <Link to="/register" className="text-pr-orange hover:text-pr-orange-dark font-medium hover:underline transition-colors">
               S'inscrire
             </Link>
           </div>
