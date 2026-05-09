@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { BookOpen, Calculator, Languages, Globe, GraduationCap, Microscope, Music, Palette, ArrowLeft, Users, Heart, Trophy, Clock, CheckCircle, Star } from 'lucide-react';
-import Navigation from '@/components/Navigation';
 
 const LyceeSecondePage = () => {
   const matieres = [
@@ -107,7 +106,7 @@ const LyceeSecondePage = () => {
 
   /* Modern color palette using Tailwind classes dynamically */
   const colorClasses: Record<string, { bg: string, border: string, text: string, icon: string, shadow: string, gradient: string }> = {
-    blue: { bg: 'bg-blue-50', border: 'border-blue-100', text: 'text-blue-900', icon: 'text-blue-600', shadow: 'shadow-blue-200/50', gradient: 'from-blue-500 to-blue-600' },
+    blue: { bg: 'bg-pr-orange-pale', border: 'border-carnet-red/20', text: 'text-carnet-red-deep', icon: 'text-carnet-red', shadow: 'shadow-blue-200/50', gradient: 'from-carnet-paper-20 to-pr-orange' },
     emerald: { bg: 'bg-emerald-50', border: 'border-emerald-100', text: 'text-emerald-900', icon: 'text-emerald-600', shadow: 'shadow-emerald-200/50', gradient: 'from-emerald-500 to-emerald-600' },
     orange: { bg: 'bg-orange-50', border: 'border-orange-100', text: 'text-orange-900', icon: 'text-orange-600', shadow: 'shadow-orange-200/50', gradient: 'from-orange-500 to-orange-600' },
     violet: { bg: 'bg-violet-50', border: 'border-violet-100', text: 'text-violet-900', icon: 'text-violet-600', shadow: 'shadow-violet-200/50', gradient: 'from-violet-500 to-violet-600' },
@@ -123,33 +122,32 @@ const LyceeSecondePage = () => {
 
   return (
     <>
-      <Navigation />
-      <div className="min-h-screen bg-[#FAFAFA] relative overflow-hidden font-sans">
+      <div className="relative font-sans">
         {/* Modern Abstract Background */}
-        <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-blue-50/50 to-transparent -z-10" />
-        <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-blue-100/30 rounded-full blur-3xl -z-10" />
+        <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-carnet-paper-2/50 to-transparent -z-10" />
+        <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-carnet-red/10/30 rounded-full blur-3xl -z-10" />
         <div className="absolute bottom-[10%] left-[-10%] w-[500px] h-[500px] bg-indigo-100/30 rounded-full blur-3xl -z-10" />
 
         <div className="container mx-auto px-4 sm:px-6 py-12 relative z-10">
           <div className="max-w-7xl mx-auto">
             {/* Header Section */}
             <div className="text-center mb-16 space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 text-blue-700 text-sm font-medium border border-blue-100 mb-4 animate-fade-in-up">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pr-orange-pale text-carnet-red text-sm font-medium border border-carnet-red/20 mb-4 animate-fade-in-up">
                 <GraduationCap className="h-4 w-4" />
                 <span>Niveau Lycée</span>
               </div>
 
-              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-6">
-                Classe de <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Seconde</span>
+              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-carnet-ink mb-6">
+                Classe de <span className="text-transparent bg-clip-text bg-gradient-to-r from-carnet-red to-indigo-600">Seconde</span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
+              <p className="text-xl md:text-2xl text-carnet-ink-soft max-w-3xl mx-auto leading-relaxed font-light">
                 Découvrez toutes les matières enseignées en classe de seconde et les stratégies pour bien choisir votre voie.
               </p>
 
               <div className="pt-4">
                 <Link to="/articles/lycee">
-                  <Button variant="ghost" className="group text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300">
+                  <Button variant="ghost" className="group text-carnet-ink-soft hover:text-carnet-red hover:bg-pr-orange-pale transition-all duration-300">
                     <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                     Retour aux niveaux lycée
                   </Button>
@@ -166,22 +164,22 @@ const LyceeSecondePage = () => {
                 return (
                   <Link key={matiere.id} to="/contact" className="block h-full group relative">
                     <div className={`absolute -inset-0.5 bg-gradient-to-r ${colors.gradient} rounded-2xl opacity-0 group-hover:opacity-10 transition duration-500 blur-md`}></div>
-                    <Card className={`h-full border border-slate-100 ${colors.bg} bg-opacity-40 backdrop-blur-sm hover:bg-white hover:border-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}>
+                    <Card className={`h-full border border-carnet-rule/30 ${colors.bg} bg-opacity-40 backdrop-blur-sm hover:bg-white hover:border-carnet-rule/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}>
                       <CardHeader className="pb-2">
                         <div className="flex justify-between items-start mb-2">
-                          <div className={`p-3 rounded-xl bg-white ${colors.text} shadow-sm border border-slate-100 group-hover:scale-110 transition-transform duration-300`}>
+                          <div className={`p-3 rounded-xl bg-white ${colors.text} shadow-sm border border-carnet-rule/30 group-hover:scale-110 transition-transform duration-300`}>
                             <IconComponent className="h-6 w-6" />
                           </div>
-                          <span className={`px-2.5 py-1 rounded-full text-xs font-semibold bg-white ${colors.text} border border-slate-100 shadow-sm`}>
+                          <span className={`px-2.5 py-1 rounded-full text-xs font-semibold bg-white ${colors.text} border border-carnet-rule/30 shadow-sm`}>
                             Coef. {matiere.coefficient}
                           </span>
                         </div>
-                        <CardTitle className={`text-xl font-bold text-slate-800`}>
+                        <CardTitle className={`text-xl font-bold text-carnet-ink`}>
                           {matiere.nom}
                         </CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <p className="text-slate-600 text-sm leading-relaxed">
+                        <p className="text-carnet-ink-soft text-sm leading-relaxed">
                           {matiere.description}
                         </p>
                       </CardContent>
@@ -196,16 +194,16 @@ const LyceeSecondePage = () => {
               {/* Detailed Info Card */}
               <div className="md:col-span-8">
                 <Card className="h-full border-0 shadow-xl shadow-slate-200/60 overflow-hidden bg-white">
-                  <div className="h-2 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
+                  <div className="h-2 bg-gradient-to-r from-carnet-paper-20 to-indigo-600"></div>
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-3 text-2xl font-bold text-slate-800">
-                      <Clock className="h-6 w-6 text-blue-600" />
+                    <CardTitle className="flex items-center gap-3 text-2xl font-bold text-carnet-ink">
+                      <Clock className="h-6 w-6 text-carnet-red" />
                       À propos de la classe de seconde
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="grid md:grid-cols-2 gap-8 p-8">
                     <div>
-                      <h4 className="flex items-center gap-2 text-lg font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100">
+                      <h4 className="flex items-center gap-2 text-lg font-bold text-carnet-ink mb-4 pb-2 border-b border-carnet-rule/30">
                         <CheckCircle className="h-5 w-5 text-emerald-500" />
                         Matières obligatoires (9)
                       </h4>
@@ -221,16 +219,16 @@ const LyceeSecondePage = () => {
                           { name: "EPS", hours: "2h" },
                           { name: "EMC", hours: "0.5h" },
                         ].map((item, idx) => (
-                          <li key={idx} className="flex items-center justify-between text-slate-600 text-sm group hover:bg-slate-50 p-2 rounded-lg transition-colors">
-                            <span className="font-medium text-slate-700">{item.name}</span>
-                            <span className="text-slate-400 bg-slate-100 px-2 py-0.5 rounded textxs">{item.hours}/sem</span>
+                          <li key={idx} className="flex items-center justify-between text-carnet-ink-soft text-sm group hover:bg-carnet-paper-2 p-2 rounded-lg transition-colors">
+                            <span className="font-medium text-carnet-ink">{item.name}</span>
+                            <span className="text-carnet-ink-mute bg-carnet-rule/30 px-2 py-0.5 rounded textxs">{item.hours}/sem</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
                     <div>
-                      <h4 className="flex items-center gap-2 text-lg font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100">
+                      <h4 className="flex items-center gap-2 text-lg font-bold text-carnet-ink mb-4 pb-2 border-b border-carnet-rule/30">
                         <Star className="h-5 w-5 text-amber-500" />
                         Matières optionnelles
                       </h4>
@@ -243,7 +241,7 @@ const LyceeSecondePage = () => {
                           "Langue régionale",
                           "Section Européenne"
                         ].map((item, idx) => (
-                          <li key={idx} className="flex items-center gap-2 text-slate-600 text-sm">
+                          <li key={idx} className="flex items-center gap-2 text-carnet-ink-soft text-sm">
                             <div className="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
                             {item}
                           </li>
@@ -261,7 +259,7 @@ const LyceeSecondePage = () => {
 
               {/* Call to Action Card */}
               <div className="md:col-span-4 flex flex-col">
-                <Card className="flex-1 border-0 shadow-xl shadow-blue-200/50 relative overflow-hidden bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
+                <Card className="flex-1 border-0 shadow-xl shadow-blue-200/50 relative overflow-hidden bg-gradient-to-br from-carnet-red to-indigo-700 text-white">
                   {/* Decorative circles */}
                   <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
                   <div className="absolute bottom-0 left-0 w-32 h-32 bg-white opacity-10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
@@ -277,7 +275,7 @@ const LyceeSecondePage = () => {
                       Nos experts vous accompagnent pour faire les meilleurs choix stratégiques pour votre avenir.
                     </p>
                     <Link to="/contact" className="w-full">
-                      <Button size="lg" className="w-full bg-white text-blue-600 hover:bg-blue-50 font-bold border-0 shadow-lg hover:shadow-xl transition-all h-12">
+                      <Button size="lg" className="w-full bg-white text-carnet-red hover:bg-pr-orange-pale font-bold border-0 shadow-lg hover:shadow-xl transition-all h-12">
                         Prendre rendez-vous
                       </Button>
                     </Link>

@@ -2,48 +2,38 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Globe, ArrowLeft } from 'lucide-react';
-import Navigation from '@/components/Navigation';
 
 const LyceeHistoireGeographiePage = () => {
   return (
     <>
-      <Navigation />
-      <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden py-8 sm:py-8">
+      <div className="relative py-8 sm:py-8">
         {/* Floating elements - Blue theme for histoire-géographie */}
-        <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse"></div>
-        <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
-        <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-blue-100 rounded-full opacity-10 animate-pulse-slow"></div>
-        <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-8 animate-pulse"></div>
-        <div className="absolute -z-10 top-1/4 left-1/3 w-64 h-64 bg-blue-50 rounded-full opacity-10 animate-pulse-slow"></div>
-        <div className="absolute -z-10 top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
-        <div className="absolute -z-10 top-10 right-1/3 w-24 h-24 bg-blue-300 rounded-full opacity-12 animate-pulse-slow"></div>
-        <div className="absolute -z-10 bottom-10 left-1/4 w-36 h-36 bg-blue-100 rounded-full opacity-10 animate-pulse"></div>
 
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-6xl mx-auto">
             {/* Header */}
             <div className="text-center mb-12">
               <div className="flex justify-center mb-4">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
-                  <Globe className="h-8 w-8 text-blue-600" />
+                <div className="w-16 h-16 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <Globe className="h-8 w-8 text-carnet-red" />
                 </div>
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
                 <span className="text-black">Histoire-Géographie - </span>
-                <span className="text-blue-600">Terminale</span>
+                <span className="text-carnet-red">Terminale</span>
               </h1>
               <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
                 Méthodologie complète pour maîtriser Histoire-Géographie et réussir les épreuves du baccalauréat.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/articles/lycee/terminale">
-                  <Button variant="outline" className="border-blue-600 text-blue-600 hover:border-blue-700 hover:text-blue-700">
+                  <Button variant="outline" className="border-carnet-red text-carnet-red hover:border-carnet-red-deep hover:text-carnet-red">
                     <ArrowLeft className="mr-2 h-4 w-4" />
                     Retour à Terminale
                   </Button>
                 </Link>
                 <Link to="/articles/lycee">
-                  <Button variant="outline" className="border-blue-600 text-blue-600 hover:border-blue-700 hover:text-blue-700">
+                  <Button variant="outline" className="border-carnet-red text-carnet-red hover:border-carnet-red-deep hover:text-carnet-red">
                     ← Retour aux niveaux lycée
                   </Button>
                 </Link>
@@ -51,25 +41,25 @@ const LyceeHistoireGeographiePage = () => {
             </div>
 
             {/* Article Histoire-Géographie - Méthodologie */}
-            <div className="bg-white rounded-lg shadow-lg p-8 border-2 border-blue-200">
+            <div className="bg-white rounded-lg shadow-lg p-8 border-2 border-carnet-red/30">
               <div className="text-center mb-8">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Globe className="h-8 w-8 text-blue-600" />
+                <div className="w-16 h-16 bg-carnet-red/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Globe className="h-8 w-8 text-carnet-red" />
                 </div>
-                <h3 className="text-3xl font-bold text-blue-700 mb-2">Méthodologie pour travailler efficacement en Terminale HGG</h3>
-                <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-blue-100 text-blue-700">
+                <h3 className="text-3xl font-bold text-carnet-red mb-2">Méthodologie pour travailler efficacement en Terminale HGG</h3>
+                <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-carnet-red/10 text-carnet-red">
                   Article détaillé - Histoire-Géographie Terminale
                 </div>
               </div>
 
               <div className="prose prose-lg max-w-none text-gray-700">
-                <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-orange-400 mb-8">
-                  <p className="text-blue-800 font-medium text-lg">
+                <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-orange-400 mb-8">
+                  <p className="text-carnet-red-deep font-medium text-lg">
                     <strong>Principale recommandation :</strong> Adopter une approche active et structurée qui combine préparation avant le cours, prise de notes intelligente, révision régulière et entraînement à l'écrit et à l'oral.
                   </p>
                 </div>
 
-                <h4 className="text-2xl font-semibold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2">1. Avant le cours</h4>
+                <h4 className="text-2xl font-semibold text-carnet-red mb-4 border-b-2 border-carnet-red/30 pb-2">1. Avant le cours</h4>
 
                 <h5 className="text-xl font-semibold text-orange-600 mb-3">Repérer le thème et les enjeux</h5>
                 <p className="mb-4">
@@ -87,7 +77,7 @@ const LyceeHistoireGeographiePage = () => {
                   Noter ces questions dans un carnet pour guider l'écoute et la prise de notes.
                 </p>
 
-                <h4 className="text-2xl font-semibold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2">2. Pendant le cours</h4>
+                <h4 className="text-2xl font-semibold text-carnet-red mb-4 border-b-2 border-carnet-red/30 pb-2">2. Pendant le cours</h4>
 
                 <h5 className="text-xl font-semibold text-orange-600 mb-3">Prise de notes active</h5>
                 <p className="mb-4">
@@ -123,7 +113,7 @@ const LyceeHistoireGeographiePage = () => {
                   Compléter sa prise de notes avec les éléments nouveaux apportés par les échanges en classe.
                 </p>
 
-                <h4 className="text-2xl font-semibold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2">3. Après le cours</h4>
+                <h4 className="text-2xl font-semibold text-carnet-red mb-4 border-b-2 border-carnet-red/30 pb-2">3. Après le cours</h4>
 
                 <h5 className="text-xl font-semibold text-orange-600 mb-3">Mise au propre et compléments</h5>
                 <p className="mb-6">
@@ -155,7 +145,7 @@ const LyceeHistoireGeographiePage = () => {
                   Se tester régulièrement (au moins une fois par semaine) en se chronométrant.
                 </p>
 
-                <h4 className="text-2xl font-semibold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2">4. Entraînement aux épreuves écrites et orales</h4>
+                <h4 className="text-2xl font-semibold text-carnet-red mb-4 border-b-2 border-carnet-red/30 pb-2">4. Entraînement aux épreuves écrites et orales</h4>
 
                 <h5 className="text-xl font-semibold text-orange-600 mb-3">Dissertation et étude critique de documents</h5>
                 <p className="mb-4">
@@ -183,7 +173,7 @@ const LyceeHistoireGeographiePage = () => {
                   Filmer une répétition pour analyser son posture, son rythme et son intonation.
                 </p>
 
-                <h4 className="text-2xl font-semibold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2">5. Gestion du temps et régularité</h4>
+                <h4 className="text-2xl font-semibold text-carnet-red mb-4 border-b-2 border-carnet-red/30 pb-2">5. Gestion du temps et régularité</h4>
 
                 <h5 className="text-xl font-semibold text-orange-600 mb-3">Planifier chaque semaine</h5>
                 <ul className="list-disc pl-6 mb-4 space-y-1">
@@ -195,8 +185,8 @@ const LyceeHistoireGeographiePage = () => {
                   Alterner travail écrit et oral pour éviter la monotonie et renforcer l'apprentissage multisensoriel.
                 </p>
 
-                <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-orange-400">
-                  <p className="text-blue-800 font-medium">
+                <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-orange-400">
+                  <p className="text-carnet-red-deep font-medium">
                     En combinant préparation, prise de notes active, révisions régulières et entraînements ciblés, vous optimiserez votre maîtrise du programme d'HGG et développerez votre aisance aux différentes épreuves du baccalauréat.
                   </p>
                 </div>
@@ -205,11 +195,11 @@ const LyceeHistoireGeographiePage = () => {
 
             {/* Call to Action */}
             <div className="mt-16 text-center">
-              <div className="bg-gradient-to-br from-blue-50 to-orange-50 border-2 border-blue-200 hover:shadow-2xl hover:scale-105 hover:border-orange-300 hover:bg-gradient-to-br hover:from-orange-50 hover:to-blue-50 transition-all duration-300 group p-8 rounded-lg">
-                <div className="w-16 h-16 bg-blue-100 group-hover:bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
-                  <Globe className="h-8 w-8 text-blue-600 group-hover:text-orange-600 transition-colors duration-300" />
+              <div className="bg-gradient-to-br from-carnet-paper-2 to-orange-50 border-2 border-carnet-red/30 hover:shadow-2xl hover:scale-105 hover:border-pr-orange hover:bg-gradient-to-br hover:from-orange-50 hover:to-pr-orange-pale transition-all duration-300 group p-8 rounded-lg">
+                <div className="w-16 h-16 bg-carnet-red/10 group-hover:bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
+                  <Globe className="h-8 w-8 text-carnet-red group-hover:text-pr-orange transition-colors duration-300" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-blue-700 group-hover:text-orange-800 transition-colors duration-300">
+                <h3 className="text-2xl font-bold mb-4 text-carnet-red group-hover:text-pr-orange-dark transition-colors duration-300">
                   Besoin d'aide personnalisée en Histoire-Géographie ?
                 </h3>
                 <p className="text-gray-600 group-hover:text-orange-700 transition-colors duration-300 mb-6">
@@ -217,7 +207,7 @@ const LyceeHistoireGeographiePage = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link to="/contact">
-                    <Button size="lg" className="bg-blue-600 hover:bg-orange-600 text-white transition-all duration-300">
+                    <Button size="lg" className="bg-carnet-red hover:bg-orange-600 text-white transition-all duration-300">
                       Nous contacter
                     </Button>
                   </Link>

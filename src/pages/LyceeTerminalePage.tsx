@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { BookOpen, Calculator, Languages, Globe, GraduationCap, Microscope, Music, Palette, ArrowLeft, Users, Heart, Trophy, Target, Atom, Award, Clock, CheckCircle, Star, Briefcase } from 'lucide-react';
-import Navigation from '@/components/Navigation';
 
 const LyceeTerminalePage = () => {
 
@@ -112,7 +111,7 @@ const LyceeTerminalePage = () => {
 
   /* Modern color palette using Tailwind classes dynamically */
   const colorClasses: Record<string, { bg: string, border: string, text: string, icon: string, shadow: string, gradient: string }> = {
-    blue: { bg: 'bg-blue-50', border: 'border-blue-100', text: 'text-blue-900', icon: 'text-blue-600', shadow: 'shadow-blue-200/50', gradient: 'from-blue-500 to-blue-600' },
+    blue: { bg: 'bg-pr-orange-pale', border: 'border-carnet-red/20', text: 'text-carnet-red-deep', icon: 'text-carnet-red', shadow: 'shadow-blue-200/50', gradient: 'from-carnet-paper-20 to-pr-orange' },
     emerald: { bg: 'bg-emerald-50', border: 'border-emerald-100', text: 'text-emerald-900', icon: 'text-emerald-600', shadow: 'shadow-emerald-200/50', gradient: 'from-emerald-500 to-emerald-600' },
     orange: { bg: 'bg-orange-50', border: 'border-orange-100', text: 'text-orange-900', icon: 'text-orange-600', shadow: 'shadow-orange-200/50', gradient: 'from-orange-500 to-orange-600' },
     violet: { bg: 'bg-violet-50', border: 'border-violet-100', text: 'text-violet-900', icon: 'text-violet-600', shadow: 'shadow-violet-200/50', gradient: 'from-violet-500 to-violet-600' },
@@ -125,13 +124,12 @@ const LyceeTerminalePage = () => {
     fuchsia: { bg: 'bg-fuchsia-50', border: 'border-fuchsia-100', text: 'text-fuchsia-900', icon: 'text-fuchsia-600', shadow: 'shadow-fuchsia-200/50', gradient: 'from-fuchsia-500 to-fuchsia-600' },
     teal: { bg: 'bg-teal-50', border: 'border-teal-100', text: 'text-teal-900', icon: 'text-teal-600', shadow: 'shadow-teal-200/50', gradient: 'from-teal-500 to-teal-600' },
     red: { bg: 'bg-red-50', border: 'border-red-100', text: 'text-red-900', icon: 'text-red-600', shadow: 'shadow-red-200/50', gradient: 'from-red-500 to-red-600' },
-    slate: { bg: 'bg-slate-50', border: 'border-slate-100', text: 'text-slate-900', icon: 'text-slate-600', shadow: 'shadow-slate-200/50', gradient: 'from-slate-500 to-slate-600' },
+    slate: { bg: 'bg-carnet-paper-2', border: 'border-carnet-rule/30', text: 'text-carnet-ink', icon: 'text-carnet-ink-soft', shadow: 'shadow-slate-200/50', gradient: 'from-slate-500 to-slate-600' },
   };
 
   return (
     <>
-      <Navigation />
-      <div className="min-h-screen bg-[#FAFAFA] relative overflow-hidden font-sans">
+      <div className="relative font-sans">
         {/* Modern Abstract Background - Red/Orange Theme */}
         <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-red-50/50 to-transparent -z-10" />
         <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-red-100/30 rounded-full blur-3xl -z-10" />
@@ -146,17 +144,17 @@ const LyceeTerminalePage = () => {
                 <span>Année du Bac</span>
               </div>
 
-              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-6">
+              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-carnet-ink mb-6">
                 Classe de <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-600">Terminale</span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
+              <p className="text-xl md:text-2xl text-carnet-ink-soft max-w-3xl mx-auto leading-relaxed font-light">
                 Dernière ligne droite : consolidez vos acquis, excellez dans vos spécialités et préparez votre avenir post-bac.
               </p>
 
               <div className="pt-4">
                 <Link to="/articles/lycee">
-                  <Button variant="ghost" className="group text-slate-600 hover:text-red-600 hover:bg-red-50 transition-all duration-300">
+                  <Button variant="ghost" className="group text-carnet-ink-soft hover:text-red-600 hover:bg-red-50 transition-all duration-300">
                     <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                     Retour aux niveaux lycée
                   </Button>
@@ -166,7 +164,7 @@ const LyceeTerminalePage = () => {
 
             {/* Matières Communes Section */}
             <div className="mb-12">
-              <h2 className="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+              <h2 className="text-2xl font-bold text-carnet-ink mb-6 flex items-center gap-2">
                 <div className="w-1.5 h-8 bg-red-500 rounded-full"></div>
                 Matières communes
               </h2>
@@ -178,22 +176,22 @@ const LyceeTerminalePage = () => {
                   return (
                     <Link key={matiere.id} to="/contact" className="block h-full group relative">
                       <div className={`absolute -inset-0.5 bg-gradient-to-r ${colors.gradient} rounded-2xl opacity-0 group-hover:opacity-10 transition duration-500 blur-md`}></div>
-                      <Card className={`h-full border border-slate-100 ${colors.bg} bg-opacity-40 backdrop-blur-sm hover:bg-white hover:border-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}>
+                      <Card className={`h-full border border-carnet-rule/30 ${colors.bg} bg-opacity-40 backdrop-blur-sm hover:bg-white hover:border-carnet-rule/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}>
                         <CardHeader className="pb-2">
                           <div className="flex justify-between items-start mb-2">
-                            <div className={`p-3 rounded-xl bg-white ${colors.text} shadow-sm border border-slate-100 group-hover:scale-110 transition-transform duration-300`}>
+                            <div className={`p-3 rounded-xl bg-white ${colors.text} shadow-sm border border-carnet-rule/30 group-hover:scale-110 transition-transform duration-300`}>
                               <IconComponent className="h-6 w-6" />
                             </div>
-                            <span className={`px-2.5 py-1 rounded-full text-xs font-semibold bg-white ${colors.text} border border-slate-100 shadow-sm`}>
+                            <span className={`px-2.5 py-1 rounded-full text-xs font-semibold bg-white ${colors.text} border border-carnet-rule/30 shadow-sm`}>
                               {matiere.heures}/sem
                             </span>
                           </div>
-                          <CardTitle className={`text-xl font-bold text-slate-800`}>
+                          <CardTitle className={`text-xl font-bold text-carnet-ink`}>
                             {matiere.nom}
                           </CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <p className="text-slate-600 text-sm leading-relaxed">
+                          <p className="text-carnet-ink-soft text-sm leading-relaxed">
                             {matiere.description}
                           </p>
                         </CardContent>
@@ -206,7 +204,7 @@ const LyceeTerminalePage = () => {
 
             {/* Options Section */}
             <div className="mb-20">
-              <h2 className="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+              <h2 className="text-2xl font-bold text-carnet-ink mb-6 flex items-center gap-2">
                 <div className="w-1.5 h-8 bg-orange-500 rounded-full"></div>
                 Options spécifiques à la Terminale
               </h2>
@@ -218,19 +216,19 @@ const LyceeTerminalePage = () => {
                   return (
                     <Link key={index} to="/contact" className="block h-full group relative">
                       <div className={`absolute -inset-0.5 bg-gradient-to-r ${colors.gradient} rounded-2xl opacity-0 group-hover:opacity-10 transition duration-500 blur-md`}></div>
-                      <Card className={`h-full border border-slate-100 ${colors.bg} bg-opacity-40 backdrop-blur-sm hover:bg-white hover:border-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}>
+                      <Card className={`h-full border border-carnet-rule/30 ${colors.bg} bg-opacity-40 backdrop-blur-sm hover:bg-white hover:border-carnet-rule/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}>
                         <CardHeader>
                           <div className="flex items-center gap-4">
-                            <div className={`p-3 rounded-xl bg-white ${colors.text} shadow-sm border border-slate-100`}>
+                            <div className={`p-3 rounded-xl bg-white ${colors.text} shadow-sm border border-carnet-rule/30`}>
                               <IconComponent className="h-6 w-6" />
                             </div>
-                            <CardTitle className={`text-lg font-bold text-slate-800`}>
+                            <CardTitle className={`text-lg font-bold text-carnet-ink`}>
                               {option.nom}
                             </CardTitle>
                           </div>
                         </CardHeader>
                         <CardContent>
-                          <p className="text-slate-600 text-sm leading-relaxed">
+                          <p className="text-carnet-ink-soft text-sm leading-relaxed">
                             {option.description}
                           </p>
                         </CardContent>
@@ -248,7 +246,7 @@ const LyceeTerminalePage = () => {
                 <Card className="h-full border-0 shadow-xl shadow-slate-200/60 overflow-hidden bg-white">
                   <div className="h-2 bg-gradient-to-r from-red-500 to-orange-600"></div>
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-3 text-2xl font-bold text-slate-800">
+                    <CardTitle className="flex items-center gap-3 text-2xl font-bold text-carnet-ink">
                       <Award className="h-6 w-6 text-red-600" />
                       Le Baccalauréat
                     </CardTitle>
@@ -256,42 +254,42 @@ const LyceeTerminalePage = () => {
                   <CardContent className="p-8">
                     <div className="grid md:grid-cols-2 gap-8">
                       <div>
-                        <h4 className="flex items-center gap-2 text-lg font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100">
+                        <h4 className="flex items-center gap-2 text-lg font-bold text-carnet-ink mb-4 pb-2 border-b border-carnet-rule/30">
                           <CheckCircle className="h-5 w-5 text-emerald-500" />
                           Contrôle Continu (40%)
                         </h4>
                         <ul className="space-y-3">
-                          <li className="text-slate-600 text-sm">
-                            <strong className="text-slate-800">Bulletin scolaire</strong> de Première et Terminale
+                          <li className="text-carnet-ink-soft text-sm">
+                            <strong className="text-carnet-ink">Bulletin scolaire</strong> de Première et Terminale
                           </li>
-                          <li className="text-slate-600 text-sm">
-                            <strong className="text-slate-800">Enseignement de spécialité</strong> abandonné en fin de 1ère
+                          <li className="text-carnet-ink-soft text-sm">
+                            <strong className="text-carnet-ink">Enseignement de spécialité</strong> abandonné en fin de 1ère
                           </li>
-                          <li className="text-slate-600 text-sm">
-                            <strong className="text-slate-800">Enseignement scientifique</strong>, LVA, LVB, EPS, EMC
+                          <li className="text-carnet-ink-soft text-sm">
+                            <strong className="text-carnet-ink">Enseignement scientifique</strong>, LVA, LVB, EPS, EMC
                           </li>
                         </ul>
                       </div>
 
                       <div>
-                        <h4 className="flex items-center gap-2 text-lg font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100">
+                        <h4 className="flex items-center gap-2 text-lg font-bold text-carnet-ink mb-4 pb-2 border-b border-carnet-rule/30">
                           <Star className="h-5 w-5 text-red-500" />
                           Épreuves Finales (60%)
                         </h4>
                         <ul className="space-y-3">
-                          <li className="flex justify-between items-center text-slate-600 text-sm">
+                          <li className="flex justify-between items-center text-carnet-ink-soft text-sm">
                             <span>Français (écrit + oral)</span>
                             <span className="bg-red-50 text-red-700 px-2 py-0.5 rounded text-xs font-bold">Fin de 1ère</span>
                           </li>
-                          <li className="flex justify-between items-center text-slate-600 text-sm">
+                          <li className="flex justify-between items-center text-carnet-ink-soft text-sm">
                             <span>Philosophie</span>
                             <span className="bg-red-50 text-red-700 px-2 py-0.5 rounded text-xs font-bold">Coef. 8</span>
                           </li>
-                          <li className="flex justify-between items-center text-slate-600 text-sm">
+                          <li className="flex justify-between items-center text-carnet-ink-soft text-sm">
                             <span>Grand Oral</span>
                             <span className="bg-red-50 text-red-700 px-2 py-0.5 rounded text-xs font-bold">Coef. 10</span>
                           </li>
-                          <li className="flex justify-between items-center text-slate-600 text-sm">
+                          <li className="flex justify-between items-center text-carnet-ink-soft text-sm">
                             <span>Spécialité 1 & 2</span>
                             <span className="bg-red-50 text-red-700 px-2 py-0.5 rounded text-xs font-bold">Coef. 16</span>
                           </li>

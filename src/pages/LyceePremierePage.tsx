@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { BookOpen, Calculator, Languages, Globe, GraduationCap, Microscope, Music, Palette, ArrowLeft, Users, Heart, Trophy, Target, Atom, CheckCircle, Star, Clock } from 'lucide-react';
-import Navigation from '@/components/Navigation';
 
 const LyceePremierePage = () => {
   const matieresCommunes = [
@@ -125,7 +124,7 @@ const LyceePremierePage = () => {
 
   /* Modern color palette using Tailwind classes dynamically */
   const colorClasses: Record<string, { bg: string, border: string, text: string, icon: string, shadow: string, gradient: string }> = {
-    blue: { bg: 'bg-blue-50', border: 'border-blue-100', text: 'text-blue-900', icon: 'text-blue-600', shadow: 'shadow-blue-200/50', gradient: 'from-blue-500 to-blue-600' },
+    blue: { bg: 'bg-pr-orange-pale', border: 'border-carnet-red/20', text: 'text-carnet-red-deep', icon: 'text-carnet-red', shadow: 'shadow-blue-200/50', gradient: 'from-carnet-paper-20 to-pr-orange' },
     emerald: { bg: 'bg-emerald-50', border: 'border-emerald-100', text: 'text-emerald-900', icon: 'text-emerald-600', shadow: 'shadow-emerald-200/50', gradient: 'from-emerald-500 to-emerald-600' },
     orange: { bg: 'bg-orange-50', border: 'border-orange-100', text: 'text-orange-900', icon: 'text-orange-600', shadow: 'shadow-orange-200/50', gradient: 'from-orange-500 to-orange-600' },
     violet: { bg: 'bg-violet-50', border: 'border-violet-100', text: 'text-violet-900', icon: 'text-violet-600', shadow: 'shadow-violet-200/50', gradient: 'from-violet-500 to-violet-600' },
@@ -137,14 +136,13 @@ const LyceePremierePage = () => {
     amber: { bg: 'bg-amber-50', border: 'border-amber-100', text: 'text-amber-900', icon: 'text-amber-600', shadow: 'shadow-amber-200/50', gradient: 'from-amber-500 to-amber-600' },
     fuchsia: { bg: 'bg-fuchsia-50', border: 'border-fuchsia-100', text: 'text-fuchsia-900', icon: 'text-fuchsia-600', shadow: 'shadow-fuchsia-200/50', gradient: 'from-fuchsia-500 to-fuchsia-600' },
     teal: { bg: 'bg-teal-50', border: 'border-teal-100', text: 'text-teal-900', icon: 'text-teal-600', shadow: 'shadow-teal-200/50', gradient: 'from-teal-500 to-teal-600' },
-    gray: { bg: 'bg-slate-50', border: 'border-slate-100', text: 'text-slate-900', icon: 'text-slate-600', shadow: 'shadow-slate-200/50', gradient: 'from-slate-500 to-slate-600' },
+    gray: { bg: 'bg-carnet-paper-2', border: 'border-carnet-rule/30', text: 'text-carnet-ink', icon: 'text-carnet-ink-soft', shadow: 'shadow-slate-200/50', gradient: 'from-slate-500 to-slate-600' },
     red: { bg: 'bg-red-50', border: 'border-red-100', text: 'text-red-900', icon: 'text-red-600', shadow: 'shadow-red-200/50', gradient: 'from-red-500 to-red-600' },
   };
 
   return (
     <>
-      <Navigation />
-      <div className="min-h-screen bg-[#FAFAFA] relative overflow-hidden font-sans">
+      <div className="relative font-sans">
         {/* Modern Abstract Background - Orange Theme */}
         <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-orange-50/50 to-transparent -z-10" />
         <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-orange-100/30 rounded-full blur-3xl -z-10" />
@@ -159,17 +157,17 @@ const LyceePremierePage = () => {
                 <span>Niveau Lycée</span>
               </div>
 
-              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-6">
+              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-carnet-ink mb-6">
                 Classe de <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-rose-500">Première</span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
+              <p className="text-xl md:text-2xl text-carnet-ink-soft max-w-3xl mx-auto leading-relaxed font-light">
                 Explorez les matières de première avec spécialisation progressive selon votre série choisie.
               </p>
 
               <div className="pt-4">
                 <Link to="/articles/lycee">
-                  <Button variant="ghost" className="group text-slate-600 hover:text-orange-600 hover:bg-orange-50 transition-all duration-300">
+                  <Button variant="ghost" className="group text-carnet-ink-soft hover:text-orange-600 hover:bg-pr-orange-pale transition-all duration-300">
                     <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                     Retour aux niveaux lycée
                   </Button>
@@ -179,7 +177,7 @@ const LyceePremierePage = () => {
 
             {/* Matières Communes Section */}
             <div className="mb-12">
-              <h2 className="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+              <h2 className="text-2xl font-bold text-carnet-ink mb-6 flex items-center gap-2">
                 <div className="w-1.5 h-8 bg-orange-500 rounded-full"></div>
                 Matières communes à toutes les séries
               </h2>
@@ -191,22 +189,22 @@ const LyceePremierePage = () => {
                   return (
                     <Link key={matiere.id} to="/contact" className="block h-full group relative">
                       <div className={`absolute -inset-0.5 bg-gradient-to-r ${colors.gradient} rounded-2xl opacity-0 group-hover:opacity-10 transition duration-500 blur-md`}></div>
-                      <Card className={`h-full border border-slate-100 ${colors.bg} bg-opacity-40 backdrop-blur-sm hover:bg-white hover:border-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}>
+                      <Card className={`h-full border border-carnet-rule/30 ${colors.bg} bg-opacity-40 backdrop-blur-sm hover:bg-white hover:border-carnet-rule/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}>
                         <CardHeader className="pb-2">
                           <div className="flex justify-between items-start mb-2">
-                            <div className={`p-3 rounded-xl bg-white ${colors.text} shadow-sm border border-slate-100 group-hover:scale-110 transition-transform duration-300`}>
+                            <div className={`p-3 rounded-xl bg-white ${colors.text} shadow-sm border border-carnet-rule/30 group-hover:scale-110 transition-transform duration-300`}>
                               <IconComponent className="h-6 w-6" />
                             </div>
-                            <span className={`px-2.5 py-1 rounded-full text-xs font-semibold bg-white ${colors.text} border border-slate-100 shadow-sm`}>
+                            <span className={`px-2.5 py-1 rounded-full text-xs font-semibold bg-white ${colors.text} border border-carnet-rule/30 shadow-sm`}>
                               {matiere.heures}/sem
                             </span>
                           </div>
-                          <CardTitle className={`text-xl font-bold text-slate-800`}>
+                          <CardTitle className={`text-xl font-bold text-carnet-ink`}>
                             {matiere.nom}
                           </CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <p className="text-slate-600 text-sm leading-relaxed">
+                          <p className="text-carnet-ink-soft text-sm leading-relaxed">
                             {matiere.description}
                           </p>
                         </CardContent>
@@ -219,7 +217,7 @@ const LyceePremierePage = () => {
 
             {/* Spécialités Section */}
             <div className="mb-20">
-              <h2 className="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+              <h2 className="text-2xl font-bold text-carnet-ink mb-6 flex items-center gap-2">
                 <div className="w-1.5 h-8 bg-rose-500 rounded-full"></div>
                 Enseignements de spécialité (au choix)
               </h2>
@@ -231,19 +229,19 @@ const LyceePremierePage = () => {
                   return (
                     <Link key={index} to="/contact" className="block h-full group relative">
                       <div className={`absolute -inset-0.5 bg-gradient-to-r ${colors.gradient} rounded-2xl opacity-0 group-hover:opacity-10 transition duration-500 blur-md`}></div>
-                      <Card className={`h-full border border-slate-100 ${colors.bg} bg-opacity-40 backdrop-blur-sm hover:bg-white hover:border-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}>
+                      <Card className={`h-full border border-carnet-rule/30 ${colors.bg} bg-opacity-40 backdrop-blur-sm hover:bg-white hover:border-carnet-rule/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}>
                         <CardHeader className="pb-2">
                           <div className="flex justify-between items-start mb-2">
-                            <div className={`p-3 rounded-xl bg-white ${colors.text} shadow-sm border border-slate-100 group-hover:scale-110 transition-transform duration-300`}>
+                            <div className={`p-3 rounded-xl bg-white ${colors.text} shadow-sm border border-carnet-rule/30 group-hover:scale-110 transition-transform duration-300`}>
                               <IconComponent className="h-6 w-6" />
                             </div>
                           </div>
-                          <CardTitle className={`text-xl font-bold text-slate-800`}>
+                          <CardTitle className={`text-xl font-bold text-carnet-ink`}>
                             {specialite.nom}
                           </CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <p className="text-slate-600 text-sm leading-relaxed">
+                          <p className="text-carnet-ink-soft text-sm leading-relaxed">
                             {specialite.description}
                           </p>
                         </CardContent>
@@ -261,7 +259,7 @@ const LyceePremierePage = () => {
                 <Card className="h-full border-0 shadow-xl shadow-slate-200/60 overflow-hidden bg-white">
                   <div className="h-2 bg-gradient-to-r from-orange-500 to-rose-600"></div>
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-3 text-2xl font-bold text-slate-800">
+                    <CardTitle className="flex items-center gap-3 text-2xl font-bold text-carnet-ink">
                       <Clock className="h-6 w-6 text-orange-600" />
                       Les différentes séries
                     </CardTitle>
@@ -269,19 +267,19 @@ const LyceePremierePage = () => {
                   <CardContent className="p-8 space-y-8">
                     <div className="grid md:grid-cols-2 gap-8">
                       <div>
-                        <h4 className="flex items-center gap-2 text-lg font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100">
+                        <h4 className="flex items-center gap-2 text-lg font-bold text-carnet-ink mb-4 pb-2 border-b border-carnet-rule/30">
                           <Star className="h-5 w-5 text-orange-500" />
                           Série Générale
                         </h4>
-                        <p className="text-slate-600 text-sm mb-4 leading-relaxed">
+                        <p className="text-carnet-ink-soft text-sm mb-4 leading-relaxed">
                           La voie générale prépare à des études supérieures longues. Elle repose sur des enseignements de spécialité choisis par l'élève.
                         </p>
                         <ul className="space-y-2">
-                          <li className="flex items-center gap-2 text-slate-700 text-sm">
+                          <li className="flex items-center gap-2 text-carnet-ink text-sm">
                             <CheckCircle className="h-4 w-4 text-emerald-500" />
                             <span>16h de tronc commun</span>
                           </li>
-                          <li className="flex items-center gap-2 text-slate-700 text-sm">
+                          <li className="flex items-center gap-2 text-carnet-ink text-sm">
                             <CheckCircle className="h-4 w-4 text-emerald-500" />
                             <span>3 spécialités de 4h (12h au total)</span>
                           </li>
@@ -289,23 +287,23 @@ const LyceePremierePage = () => {
                       </div>
 
                       <div>
-                        <h4 className="flex items-center gap-2 text-lg font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100">
+                        <h4 className="flex items-center gap-2 text-lg font-bold text-carnet-ink mb-4 pb-2 border-b border-carnet-rule/30">
                           <Target className="h-5 w-5 text-rose-500" />
                           Séries Technologiques
                         </h4>
-                        <p className="text-slate-600 text-sm mb-4 leading-relaxed">
+                        <p className="text-carnet-ink-soft text-sm mb-4 leading-relaxed">
                           La voie technologique prépare à des études supérieures technologiques (BUT, BTS) ou longues.
                         </p>
                         <ul className="space-y-2">
-                          <li className="flex items-center gap-2 text-slate-600 text-sm">
+                          <li className="flex items-center gap-2 text-carnet-ink-soft text-sm">
                             <div className="w-1.5 h-1.5 rounded-full bg-rose-400"></div>
                             STMG (Management)
                           </li>
-                          <li className="flex items-center gap-2 text-slate-600 text-sm">
+                          <li className="flex items-center gap-2 text-carnet-ink-soft text-sm">
                             <div className="w-1.5 h-1.5 rounded-full bg-rose-400"></div>
                             STI2D (Industrie)
                           </li>
-                          <li className="flex items-center gap-2 text-slate-600 text-sm">
+                          <li className="flex items-center gap-2 text-carnet-ink-soft text-sm">
                             <div className="w-1.5 h-1.5 rounded-full bg-rose-400"></div>
                             ST2S (Santé/Social)
                           </li>
@@ -334,7 +332,7 @@ const LyceePremierePage = () => {
                       Le choix des spécialités est crucial pour Parcoursup. Nos experts vous guident.
                     </p>
                     <Link to="/contact" className="w-full">
-                      <Button size="lg" className="w-full bg-white text-orange-600 hover:bg-orange-50 font-bold border-0 shadow-lg hover:shadow-xl transition-all h-12">
+                      <Button size="lg" className="w-full bg-white text-orange-600 hover:bg-pr-orange-pale font-bold border-0 shadow-lg hover:shadow-xl transition-all h-12">
                         Prendre rendez-vous
                       </Button>
                     </Link>
