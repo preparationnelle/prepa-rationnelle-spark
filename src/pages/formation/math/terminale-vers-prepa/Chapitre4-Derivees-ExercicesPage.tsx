@@ -1,843 +1,463 @@
 import React, { useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ChevronRight, Home, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { LatexRenderer } from '@/components/LatexRenderer';
+import { SEOHead } from '@/components/SEOHead';
+import { Button } from '@/components/ui/button';
+import {
+  Home,
+  ChevronRight,
+  ArrowLeft,
+  ArrowRight,
+  CheckCircle2,
+  Eye,
+  EyeOff,
+} from 'lucide-react';
 
-const Chapitre4DeriveesExercicesPage = () => {
-  const [visibleCorrections, setVisibleCorrections] = useState<{[key: string]: boolean}>({});
+type Difficulty = 'Facile' | 'Moyen' | 'Difficile';
 
-  const toggleCorrection = (exerciseId: string) => {
-    setVisibleCorrections(prev => ({
-      ...prev,
-      [exerciseId]: !prev[exerciseId]
-    }));
-  };
+interface ExerciseProps {
+  id: string;
+  num: number;
+  title: string;
+  difficulty: Difficulty;
+  open: boolean;
+  onToggle: () => void;
+  statement: React.ReactNode;
+  correction: React.ReactNode;
+  tilt?: 'l' | 'r' | '';
+}
 
-  const DifficultyHeader = ({ 
-    level, 
-    title, 
-    icon: Icon, 
-  }: { 
-    level: string; 
-    title: string; 
-    icon: any; 
-  }) => (
-    <div className="bg-gradient-to-r from-blue-100 to-blue-50 border-l-4 border-blue-500 p-6 mb-6 rounded-r-lg shadow-sm">
-      <div className="flex items-center gap-3">
-        <div className="p-2 bg-blue-500 text-white rounded-lg">
-          <Icon className="w-6 h-6" />
-        </div>
-        <div>
-          <h2 className="text-2xl font-bold text-gray-800">{level} : {title}</h2>
-        </div>
-      </div>
-    </div>
-  );
-
-  const ExerciseCard = ({ 
-    id, 
-    title, 
-    content, 
-    correction, 
-    difficulty 
-  }: { 
-    id: string; 
-    title: string; 
-    content: React.ReactNode; 
-    correction: React.ReactNode; 
-    difficulty: string; 
-  }) => (
-    <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
-      <div className="p-6">
-        <div className="flex items-start gap-3 mb-4">
-          <div className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">
-            {title}
-          </div>
-          <div className="text-xs text-blue-500 bg-blue-50 px-2 py-1 rounded">
-            {difficulty}
-          </div>
-        </div>
-        
-        <div className="mb-4">
-          {content}
-        </div>
-        
-        <Button
-          onClick={() => toggleCorrection(id)}
-          variant={visibleCorrections[id] ? "secondary" : "default"}
-          className="mb-4"
-        >
-          {visibleCorrections[id] ? "Masquer la correction" : "Afficher la correction"}
-        </Button>
-        
-        {visibleCorrections[id] && (
-          <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-r-lg">
-            <h4 className="font-semibold text-green-800 mb-2">Corrigé détaillé</h4>
-            <div className="text-green-800">
-              {correction}
-            </div>
-          </div>
-        )}
-      </div>
-    </Card>
-  );
+const Exercise: React.FC<ExerciseProps> = ({ id, num, title, difficulty, open, onToggle, statement, correction, tilt = '' }) => {
+  const tiltClass = tilt === 'l' ? 'carnet-tilt-l' : tilt === 'r' ? 'carnet-tilt-r' : '';
 
   return (
-    <div className="min-h-screen carnet-paper carnet-cours-skin">
+    <article id={id} className={`carnet-card p-7 sm:p-9 mb-8 ${tiltClass}`}>
+      <header className="flex items-start sm:items-center justify-between gap-4 mb-5 flex-wrap">
+        <div className="flex items-baseline gap-4 min-w-0">
+          <span className="carnet-hand text-[36px] sm:text-[40px] text-carnet-red leading-none font-semibold flex-shrink-0">
+            {String(num).padStart(2, '0')}
+          </span>
+          <hr className="flex-shrink-0 w-8 h-0.5 bg-carnet-ink border-0 mt-2 hidden sm:block" />
+          <h3 className="font-lora text-[20px] sm:text-[22px] text-carnet-ink leading-tight">
+            {title}
+          </h3>
+        </div>
+        <span className={`font-instrument text-[11px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border ${
+          difficulty === 'Facile'
+            ? 'border-[rgba(78,55,30,0.18)] text-carnet-ink-soft bg-carnet-paper-2'
+            : difficulty === 'Moyen'
+              ? 'border-[rgba(193,68,58,0.3)] text-carnet-red bg-[rgba(193,68,58,0.06)]'
+              : 'border-carnet-red text-carnet-paper bg-carnet-red'
+        }`}>
+          {difficulty}
+        </span>
+      </header>
+
+      <div className="font-instrument text-[15.5px] text-carnet-ink leading-[1.75] space-y-3 mb-6">
+        {statement}
+      </div>
+
+      <Button
+        onClick={onToggle}
+        variant="outline"
+        className="border-[rgba(78,55,30,0.25)] text-carnet-ink hover:bg-[rgba(193,68,58,0.06)] hover:text-carnet-red hover:border-carnet-red font-instrument rounded-full h-9 px-5 text-[13px] bg-transparent"
+      >
+        {open ? <><EyeOff className="mr-2 h-3.5 w-3.5" /> Masquer la correction</> : <><Eye className="mr-2 h-3.5 w-3.5" /> Afficher la correction</>}
+      </Button>
+
+      {open && (
+        <div className="mt-6 bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.25)] border-l-2 border-l-carnet-red rounded-md p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <CheckCircle2 className="h-4 w-4 text-carnet-red" />
+            <span className="carnet-eyebrow">Corrigé détaillé</span>
+          </div>
+          <div className="font-instrument text-[15px] text-carnet-ink-soft leading-[1.8] space-y-3">
+            {correction}
+          </div>
+        </div>
+      )}
+    </article>
+  );
+};
+
+const Step: React.FC<{ label: string; children: React.ReactNode }> = ({ label, children }) => (
+  <div>
+    <div className="font-instrument text-[11.5px] uppercase tracking-[0.14em] text-carnet-red font-semibold mb-2">{label}</div>
+    <div className="space-y-2">{children}</div>
+  </div>
+);
+
+const Inline: React.FC<{ tex: string }> = ({ tex }) => (
+  <span className="inline-block align-middle"><LatexRenderer latex={tex} /></span>
+);
+
+const Block: React.FC<{ tex: string }> = ({ tex }) => (
+  <div className="my-2 text-center">
+    <LatexRenderer latex={tex} />
+  </div>
+);
+
+const Chapitre4DeriveesExercicesPage = () => {
+  const [open, setOpen] = useState<Record<string, boolean>>({});
+  const toggle = (id: string) => setOpen((s) => ({ ...s, [id]: !s[id] }));
+
+  return (
+    <div className="min-h-screen carnet-paper">
+      <SEOHead
+        canonical="/formation/math/terminale-vers-prepa/derivees-exercices"
+        title="Exercices · Chapitre 5 — Dérivées · Terminale → Prépa ECG"
+        description="6 exercices progressifs sur les dérivées avec corrigés détaillés : produits, quotients, composées, tangentes et étude de variations."
+      />
+
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-[#2D5BFF]">
-            <Link to="/" className="flex items-center gap-1 hover:text-[#1e3a8a] transition-colors">
-              <Home className="h-3 w-3" />
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] px-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+              <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formations" className="hover:text-[#1e3a8a] transition-colors">
-              Toutes les formations
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/formation/math/terminale-vers-prepa" className="hover:text-carnet-red transition-colors">
+              Terminale → Prépa
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formation/maths-choix" className="hover:text-[#1e3a8a] transition-colors">
-              Choix option Maths
-            </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formation/math/terminale-vers-prepa" className="hover:text-[#1e3a8a] transition-colors">
-              Terminale vers la prépa
-            </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <span className="text-[#2D5BFF] font-bold">Exercices - Chapitre 4</span>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">Exercices · Chapitre 5</span>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 py-8">
-        {/* En-tête */}
-        <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-indigo-50 mb-8">
-          <div className="p-8">
-            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4">
-              Exercices - Chapitre 4 : Dérivées
-            </h1>
-            <p className="text-slate-600 text-lg">
-              Exercices progressifs pour maîtriser les techniques de dérivation.
-            </p>
+      <div className="mx-auto max-w-[1080px] px-6 lg:pl-[200px] lg:pr-16 py-14 lg:py-16">
+
+        {/* Hero */}
+        <header className="mb-14 relative">
+          <div className="carnet-eyebrow mb-5">05 · Exercices · Dérivées</div>
+          <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[60px] leading-[1.05] tracking-[-0.022em] text-carnet-ink mb-6">
+            Six dérivées <em className="font-lora italic text-carnet-red">à automatiser</em>.
+          </h1>
+          <p className="font-instrument text-[17px] leading-[1.6] text-carnet-ink-soft max-w-[680px]">
+            Polynômes, quotients, composées, tangentes, variations. Du calcul brut à l'étude complète. <span className="carnet-hl font-lora italic">Cherche d'abord seul</span>, puis confronte ta rédaction au corrigé.
+          </p>
+
+          <div className="mt-6 flex flex-wrap gap-3">
+            <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-[rgba(78,55,30,0.18)] text-carnet-ink-soft bg-carnet-paper-2">
+              2 Faciles
+            </span>
+            <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-[rgba(193,68,58,0.3)] text-carnet-red bg-[rgba(193,68,58,0.06)]">
+              2 Moyens
+            </span>
+            <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-carnet-red text-carnet-paper bg-carnet-red">
+              2 Difficiles
+            </span>
           </div>
-        </Card>
+        </header>
 
-        <DifficultyHeader
-          level="Module 1"
-          title="Techniques de dérivation"
-          icon={BookOpen}
-        />
+        {/* Module 1 */}
+        <div className="flex items-baseline gap-4 mb-6">
+          <span className="carnet-hand text-[40px] text-carnet-red leading-none font-semibold">M1</span>
+          <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+          <h2 className="font-lora text-[26px] sm:text-[28px] text-carnet-ink leading-tight">Calculs de dérivées — produits & quotients</h2>
+        </div>
 
-        <ExerciseCard
+        {/* Exercice 1 */}
+        <Exercise
           id="ex1"
-          title="Exercice 1"
+          num={1}
+          title="Polynômes et produits"
           difficulty="Facile"
-          content={
-            <div>
-              <p className="mb-4"><strong>On considère les fonctions <span className="inline-block align-middle"><LatexRenderer latex={"f"} /></span> dérivables sur l'intervalle <span className="inline-block align-middle"><LatexRenderer latex={"I"} /></span> indiqué. Déterminer <span className="inline-block align-middle"><LatexRenderer latex={"f'(x)"} /></span> dans chaque cas.</strong></p>
-              
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <span className="font-semibold">1.</span>
-                  <div className="flex-1">
-                    <span className="inline-block align-middle"><LatexRenderer latex={"f(x) = -4x^2 + 56x - 96"} /></span>
-                    <span className="text-sm text-gray-500 ml-4"><span className="inline-block align-middle"><LatexRenderer latex={"I = \\mathbb{R}"} /></span></span>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <span className="font-semibold">2.</span>
-                  <div className="flex-1">
-                    <span className="inline-block align-middle"><LatexRenderer latex={"f(x) = (4x + 7)(7x + 10)"} /></span>
-                    <span className="text-sm text-gray-500 ml-4"><span className="inline-block align-middle"><LatexRenderer latex={"I = \\mathbb{R}"} /></span></span>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <span className="font-semibold">3.</span>
-                  <div className="flex-1">
-                    <span className="inline-block align-middle"><LatexRenderer latex={"f(x) = \\frac{3x - 4}{2x + 1}"} /></span>
-                    <span className="text-sm text-gray-500 ml-4"><span className="inline-block align-middle"><LatexRenderer latex={"I = \\mathbb{R} \\setminus \\left\\{-\\frac{1}{2} \\right\\}"} /></span></span>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <span className="font-semibold">4.</span>
-                  <div className="flex-1">
-                    <span className="inline-block align-middle"><LatexRenderer latex={"f(x) = \\frac{8 + 3x}{1 - 6x}"} /></span>
-                    <span className="text-sm text-gray-500 ml-4"><span className="inline-block align-middle"><LatexRenderer latex={"I = \\mathbb{R} \\setminus \\left\\{ \\frac{1}{6} \\right\\}"} /></span></span>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <span className="font-semibold">5.</span>
-                  <div className="flex-1">
-                    <span className="inline-block align-middle"><LatexRenderer latex={"f(x) = \\frac{\\sqrt{x}}{2x - 8}"} /></span>
-                    <span className="text-sm text-gray-500 ml-4"><span className="inline-block align-middle"><LatexRenderer latex={"I = \\mathbb{R}^+ \\setminus \\{4\\}"} /></span></span>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <span className="font-semibold">6.</span>
-                  <div className="flex-1">
-                    <span className="inline-block align-middle"><LatexRenderer latex={"f(x) = \\frac{x^2 + 18x}{6x + 4}"} /></span>
-                    <span className="text-sm text-gray-500 ml-4"><span className="inline-block align-middle"><LatexRenderer latex={"I = \\mathbb{R} \\setminus \\left\\{-\\frac{2}{3}\\right\\}"} /></span></span>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <span className="font-semibold">7.</span>
-                  <div className="flex-1">
-                    <span className="inline-block align-middle"><LatexRenderer latex={"f(x) = \\frac{3x - 2}{2x^2 - 3x + 5}"} /></span>
-                    <span className="text-sm text-gray-500 ml-4"><span className="inline-block align-middle"><LatexRenderer latex={"I = \\mathbb{R}"} /></span></span>
-                  </div>
-                </div>
-              </div>
-            </div>
+          open={!!open.ex1}
+          onToggle={() => toggle('ex1')}
+          tilt="l"
+          statement={
+            <>
+              <p>Pour chaque fonction, calculer <Inline tex={"f'(x)"} /> sur l'intervalle indiqué.</p>
+              <ol className="list-decimal pl-6 space-y-1.5">
+                <li><Inline tex={'f(x) = -4x^2 + 56x - 96'} />, <Inline tex={'I = \\mathbb{R}'} /></li>
+                <li><Inline tex={'f(x) = (4x + 7)(7x + 10)'} />, <Inline tex={'I = \\mathbb{R}'} /></li>
+                <li><Inline tex={'f(x) = (3x^2 - 1)(x + 2)'} />, <Inline tex={'I = \\mathbb{R}'} /></li>
+              </ol>
+            </>
           }
           correction={
-            <div className="space-y-6">
-              <div>
-                <strong className="text-green-600">1. Fonction polynomiale</strong>
-                <div className="mt-2">
-                  <p className="mb-2"><span className="inline-block align-middle"><LatexRenderer latex={"f(x) = -4x^2 + 56x - 96"} /></span></p>
-                  <p className="mb-2">Dérivée terme par terme :</p>
-                  <div className="text-center bg-green-50 p-2 rounded">
-                    <LatexRenderer latex={"f'(x) = -8x + 56"} />
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <strong className="text-green-600">2. Produit de fonctions</strong>
-                <div className="mt-2">
-                  <p className="mb-2"><span className="inline-block align-middle"><LatexRenderer latex={"f(x) = (4x + 7)(7x + 10)"} /></span></p>
-                  <p className="mb-2">Application de la règle du produit : <span className="inline-block align-middle"><LatexRenderer latex={"(uv)' = u'v + uv'"} /></span></p>
-                  <div className="space-y-2">
-                    <div className="text-center">
-                      <LatexRenderer latex={"f'(x) = 4(7x + 10) + 7(4x + 7)"} />
-                    </div>
-                    <div className="text-center">
-                      <LatexRenderer latex={"= 28x + 40 + 28x + 49"} />
-                    </div>
-                    <div className="text-center bg-green-50 p-2 rounded">
-                      <LatexRenderer latex={"f'(x) = 56x + 89"} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <strong className="text-green-600">3. Quotient de fonctions linéaires</strong>
-                <div className="mt-2">
-                  <p className="mb-2"><span className="inline-block align-middle"><LatexRenderer latex={"f(x) = \\frac{3x - 4}{2x + 1}"} /></span></p>
-                  <p className="mb-2">Application de la règle du quotient : <span className="inline-block align-middle"><LatexRenderer latex={"\\left(\\frac{u}{v}\\right)' = \\frac{u'v - uv'}{v^2}"} /></span></p>
-                  <div className="space-y-2">
-                    <div className="text-center">
-                      <LatexRenderer latex={"f'(x) = \\frac{3(2x + 1) - 2(3x - 4)}{(2x + 1)^2}"} />
-                    </div>
-                    <div className="text-center">
-                      <LatexRenderer latex={"= \\frac{6x + 3 - 6x + 8}{(2x + 1)^2}"} />
-                    </div>
-                    <div className="text-center bg-green-50 p-2 rounded">
-                      <LatexRenderer latex={"f'(x) = \\frac{11}{(2x + 1)^2}"} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <strong className="text-green-600">4. Quotient avec coefficient négatif</strong>
-                <div className="mt-2">
-                  <p className="mb-2"><span className="inline-block align-middle"><LatexRenderer latex={"f(x) = \\frac{8 + 3x}{1 - 6x}"} /></span></p>
-                  <div className="space-y-2">
-                    <div className="text-center">
-                      <LatexRenderer latex={"f'(x) = \\frac{3(1 - 6x) - (-6)(8 + 3x)}{(1 - 6x)^2}"} />
-                    </div>
-                    <div className="text-center">
-                      <LatexRenderer latex={"= \\frac{3 - 18x + 48 + 18x}{(1 - 6x)^2}"} />
-                    </div>
-                    <div className="text-center bg-green-50 p-2 rounded">
-                      <LatexRenderer latex={"f'(x) = \\frac{51}{(1 - 6x)^2}"} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <strong className="text-green-600">5. Quotient avec racine carrée</strong>
-                <div className="mt-2">
-                  <p className="mb-2"><span className="inline-block align-middle"><LatexRenderer latex={"f(x) = \\frac{\\sqrt{x}}{2x - 8}"} /></span></p>
-                  <p className="mb-2">Avec <span className="inline-block align-middle"><LatexRenderer latex={"(\\sqrt{x})' = \\frac{1}{2\\sqrt{x}}"} /></span></p>
-                  <div className="space-y-2">
-                    <div className="text-center">
-                      <LatexRenderer latex={"f'(x) = \\frac{\\frac{1}{2\\sqrt{x}}(2x - 8) - 2\\sqrt{x}}{(2x - 8)^2}"} />
-                    </div>
-                    <div className="text-center">
-                      <LatexRenderer latex={"= \\frac{2x - 8 - 4x}{2\\sqrt{x}(2x - 8)^2}"} />
-                    </div>
-                    <div className="text-center bg-green-50 p-2 rounded">
-                      <LatexRenderer latex={"f'(x) = \\frac{-2x - 8}{2\\sqrt{x}(2x - 8)^2} = \\frac{-(x + 4)}{\\sqrt{x}(2x - 8)^2}"} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <strong className="text-green-600">6. Quotient polynomial</strong>
-                <div className="mt-2">
-                  <p className="mb-2"><span className="inline-block align-middle"><LatexRenderer latex={"f(x) = \\frac{x^2 + 18x}{6x + 4}"} /></span></p>
-                  <div className="space-y-2">
-                    <div className="text-center">
-                      <LatexRenderer latex={"f'(x) = \\frac{(2x + 18)(6x + 4) - 6(x^2 + 18x)}{(6x + 4)^2}"} />
-                    </div>
-                    <div className="text-center">
-                      <LatexRenderer latex={"= \\frac{12x^2 + 8x + 108x + 72 - 6x^2 - 108x}{(6x + 4)^2}"} />
-                    </div>
-                    <div className="text-center bg-green-50 p-2 rounded">
-                      <LatexRenderer latex={"f'(x) = \\frac{6x^2 + 8x + 72}{(6x + 4)^2}"} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <strong className="text-green-600">7. Quotient avec dénominateur quadratique</strong>
-                <div className="mt-2">
-                  <p className="mb-2"><span className="inline-block align-middle"><LatexRenderer latex={"f(x) = \\frac{3x - 2}{2x^2 - 3x + 5}"} /></span></p>
-                  <div className="space-y-2">
-                    <div className="text-center">
-                      <LatexRenderer latex={"f'(x) = \\frac{3(2x^2 - 3x + 5) - (4x - 3)(3x - 2)}{(2x^2 - 3x + 5)^2}"} />
-                    </div>
-                    <p className="text-center text-sm">Développement du numérateur :</p>
-                    <div className="text-center">
-                      <LatexRenderer latex={"6x^2 - 9x + 15 - (12x^2 - 8x - 9x + 6) = -6x^2 + 8x + 9"} />
-                    </div>
-                    <div className="text-center bg-green-50 p-2 rounded">
-                      <LatexRenderer latex={"f'(x) = \\frac{-6x^2 + 8x + 9}{(2x^2 - 3x + 5)^2}"} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-blue-800 mb-3">💡 Rappels des règles de dérivation</h4>
-                <div className="space-y-2 text-blue-800">
-                  <div>• <strong>Polynômes :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"(x^n)' = nx^{n-1}"} /></span></div>
-                  <div>• <strong>Produit :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"(uv)' = u'v + uv'"} /></span></div>
-                  <div>• <strong>Quotient :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"\\left(\\frac{u}{v}\\right)' = \\frac{u'v - uv'}{v^2}"} /></span></div>
-                  <div>• <strong>Racine :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"(\\sqrt{x})' = \\frac{1}{2\\sqrt{x}}"} /></span></div>
-                </div>
-              </div>
-            </div>
+            <>
+              <Step label="1. Polynôme">
+                <p>On dérive terme à terme : <Inline tex={"(x^n)' = n x^{n-1}"} />.</p>
+                <Block tex={"f'(x) = -8x + 56."} />
+              </Step>
+              <Step label="2. Produit — règle (uv)' = u'v + uv'">
+                <p>Avec <Inline tex={'u(x) = 4x + 7'} /> et <Inline tex={'v(x) = 7x + 10'} />, donc <Inline tex={"u'(x) = 4"} /> et <Inline tex={"v'(x) = 7"} /> :</p>
+                <Block tex={"f'(x) = 4(7x + 10) + 7(4x + 7) = 28x + 40 + 28x + 49 = 56x + 89."} />
+                <p className="text-carnet-ink-mute italic text-[14px]">Astuce de vérif : on pouvait aussi développer <Inline tex={'f(x) = 28x^2 + 89x + 70'} />, qui donne bien <Inline tex={"f'(x) = 56x + 89"} />.</p>
+              </Step>
+              <Step label="3. Produit avec un facteur quadratique">
+                <p>Avec <Inline tex={'u(x) = 3x^2 - 1'} /> (donc <Inline tex={"u'(x) = 6x"} />) et <Inline tex={'v(x) = x + 2'} /> (donc <Inline tex={"v'(x) = 1"} />) :</p>
+                <Block tex={"f'(x) = 6x(x+2) + (3x^2 - 1) \\cdot 1 = 6x^2 + 12x + 3x^2 - 1 = 9x^2 + 12x - 1."} />
+              </Step>
+            </>
           }
         />
 
-        <ExerciseCard
+        {/* Exercice 2 */}
+        <Exercise
           id="ex2"
-          title="Exercice 2"
-          difficulty="Difficile"
-          content={
-            <div>
-              <p className="mb-4"><strong>On définit, pour tout <span className="inline-block align-middle"><LatexRenderer latex={"x > 0"} /></span> :</strong></p>
-              
-              <div className="text-center my-4">
-                <LatexRenderer latex={"f(x) = \\ln\\left(\\frac{x}{1+x}\\right) - \\frac{\\ln(1+x)}{x}"} />
-              </div>
-              
-              <p className="mt-4"><strong>Calculer <span className="inline-block align-middle"><LatexRenderer latex={"f'(x)"} /></span>.</strong></p>
-            </div>
+          num={2}
+          title="Quotients à dériver"
+          difficulty="Facile"
+          open={!!open.ex2}
+          onToggle={() => toggle('ex2')}
+          statement={
+            <>
+              <p>Calculer <Inline tex={"f'(x)"} /> sur l'intervalle indiqué.</p>
+              <ol className="list-decimal pl-6 space-y-1.5">
+                <li><Inline tex={'f(x) = \\dfrac{3x - 4}{2x + 1}'} />, <Inline tex={'I = \\mathbb{R} \\setminus \\{-1/2\\}'} /></li>
+                <li><Inline tex={'f(x) = \\dfrac{8 + 3x}{1 - 6x}'} />, <Inline tex={'I = \\mathbb{R} \\setminus \\{1/6\\}'} /></li>
+              </ol>
+              <p className="text-carnet-ink-mute italic text-[14px]">Rappel : <Inline tex={"\\left(\\frac{u}{v}\\right)' = \\frac{u'v - uv'}{v^2}"} />.</p>
+            </>
           }
           correction={
-            <div className="space-y-6">
-              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-yellow-800 mb-3">⚠️ Attention</h4>
-                <p className="text-yellow-800">Cet exercice illustre deux méthodes différentes pour calculer la même dérivée. La première utilise les propriétés des logarithmes pour simplifier l'expression avant de dériver.</p>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-green-600 mb-3">Méthode 1 : Astuce avec propriétés des logarithmes</h3>
-                
-                <div className="space-y-4">
-                  <div>
-                    <p className="mb-2">On remarque que :</p>
-                    <div className="text-center bg-blue-50 p-2 rounded">
-                      <LatexRenderer latex={"\\ln\\left(\\frac{x}{1+x}\\right) = \\ln(x) - \\ln(1+x)"} />
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="mb-2">Donc :</p>
-                    <div className="text-center">
-                      <LatexRenderer latex={"f(x) = \\ln(x) - \\ln(1+x) - \\frac{\\ln(1+x)}{x}"} />
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="mb-2">On dérive chaque terme :</p>
-                    <div className="space-y-2">
-                      <div className="text-center">
-                        <LatexRenderer latex={"f'(x) = \\frac{1}{x} - \\frac{1}{1+x} - \\left( \\frac{x \\cdot \\frac{1}{1+x} - \\ln(1+x)}{x^2} \\right)"} />
-                      </div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"= \\frac{1}{x} - \\frac{1}{1+x} - \\frac{\\frac{x}{1+x} - \\ln(1+x)}{x^2}"} />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="mb-2">On met tout au même dénominateur <span className="inline-block align-middle"><LatexRenderer latex={"x^2(1+x)"} /></span> :</p>
-                    <div className="space-y-2">
-                      <div className="text-center">
-                        <LatexRenderer latex={"f'(x) = \\frac{x(1+x) - x^2 - x + (1+x)\\ln(1+x)}{x^2(1+x)}"} />
-                      </div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"= \\frac{x + x^2 - x^2 - x + (1+x)\\ln(1+x)}{x^2(1+x)}"} />
-                      </div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"= \\frac{(1+x)\\ln(1+x)}{x^2(1+x)}"} />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="mb-2">Finalement :</p>
-                    <div className="text-center bg-green-50 p-3 rounded border-2 border-green-200">
-                      <LatexRenderer latex={"f'(x) = \\frac{\\ln(1+x)}{x^2}"} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-green-600 mb-3">Méthode 2 : Directement sur l'expression initiale</h3>
-                
-                <div className="space-y-4">
-                  <div>
-                    <p className="mb-2">On réécrit la fonction sous la forme :</p>
-                    <div className="text-center">
-                      <LatexRenderer latex={"f(x) = \\frac{\\ln\\left( \\frac{x}{1+x} \\right) - \\ln(1+x)}{x}"} />
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="mb-2">On applique la règle du quotient <span className="inline-block align-middle"><LatexRenderer latex={"\\left(\\frac{u}{v}\\right)' = \\frac{u'v - uv'}{v^2}"} /></span> avec :</p>
-                    <div className="space-y-1">
-                      <div>• <span className="inline-block align-middle"><LatexRenderer latex={"u(x) = \\ln\\left( \\frac{x}{1+x} \\right) - \\ln(1+x)"} /></span></div>
-                      <div>• <span className="inline-block align-middle"><LatexRenderer latex={"v(x) = x"} /></span></div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="mb-2">Calculons <span className="inline-block align-middle"><LatexRenderer latex={"u'(x)"} /></span> :</p>
-                    <div className="space-y-2">
-                      <div className="text-center">
-                        <LatexRenderer latex={"u'(x) = \\frac{1}{\\frac{x}{1+x}} \\cdot \\frac{(1+x) - x}{(1+x)^2} - \\frac{1}{1+x}"} />
-                      </div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"= \\frac{1+x}{x} \\cdot \\frac{1}{(1+x)^2} - \\frac{1}{1+x}"} />
-                      </div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"= \\frac{1}{x(1+x)} - \\frac{1}{1+x} = \\frac{1 - x}{x(1+x)}"} />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="mb-2">Application de la règle du quotient :</p>
-                    <div className="space-y-2">
-                      <div className="text-center">
-                        <LatexRenderer latex={"f'(x) = \\frac{\\frac{1-x}{x(1+x)} \\cdot x - \\left( \\ln\\left( \\frac{x}{1+x} \\right) - \\ln(1+x) \\right) \\cdot 1}{x^2}"} />
-                      </div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"= \\frac{\\frac{1-x}{1+x} - \\ln\\left( \\frac{x}{1+x} \\right) + \\ln(1+x)}{x^2}"} />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="mb-2">En utilisant <span className="inline-block align-middle"><LatexRenderer latex={"\\ln\\left( \\frac{x}{1+x} \\right) = \\ln(x) - \\ln(1+x)"} /></span> :</p>
-                    <div className="space-y-2">
-                      <div className="text-center">
-                        <LatexRenderer latex={"f'(x) = \\frac{\\frac{1-x}{1+x} - \\ln(x) + \\ln(1+x) + \\ln(1+x)}{x^2}"} />
-                      </div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"= \\frac{\\frac{1-x}{1+x} - \\ln(x) + 2\\ln(1+x)}{x^2}"} />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="mb-2">Après calculs et simplifications :</p>
-                    <div className="text-center bg-green-50 p-3 rounded border-2 border-green-200">
-                      <LatexRenderer latex={"f'(x) = \\frac{\\ln(1+x)}{x^2}"} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-indigo-50 border-l-4 border-indigo-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-indigo-800 mb-3">🎯 Méthode générale</h4>
-                <div className="space-y-2 text-indigo-800">
-                  <div>• <strong>Méthode 1 :</strong> Toujours chercher à simplifier l'expression avant de dériver</div>
-                  <div>• <strong>Propriétés des logarithmes :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"\\ln\\left(\\frac{a}{b}\\right) = \\ln(a) - \\ln(b)"} /></span></div>
-                  <div>• <strong>Dérivée du quotient :</strong> Applicable mais plus laborieuse ici</div>
-                  <div>• <strong>Vérification :</strong> Les deux méthodes donnent le même résultat !</div>
-                </div>
-              </div>
-            </div>
+            <>
+              <Step label="1. Premier quotient">
+                <p>Posons <Inline tex={'u(x) = 3x - 4'} />, <Inline tex={"u'(x) = 3"} />, <Inline tex={'v(x) = 2x + 1'} />, <Inline tex={"v'(x) = 2"} />.</p>
+                <Block tex={"f'(x) = \\frac{3(2x+1) - 2(3x-4)}{(2x+1)^2} = \\frac{6x + 3 - 6x + 8}{(2x+1)^2} = \\frac{11}{(2x+1)^2}."} />
+              </Step>
+              <Step label="2. Second quotient — attention aux signes">
+                <p>Posons <Inline tex={'u(x) = 8 + 3x'} />, <Inline tex={"u'(x) = 3"} />, <Inline tex={'v(x) = 1 - 6x'} />, <Inline tex={"v'(x) = -6"} />.</p>
+                <Block tex={"f'(x) = \\frac{3(1-6x) - (-6)(8+3x)}{(1-6x)^2} = \\frac{3 - 18x + 48 + 18x}{(1-6x)^2} = \\frac{51}{(1-6x)^2}."} />
+                <p className="text-carnet-ink-mute italic text-[14px]">Le piège classique : oublier le signe moins devant <Inline tex={"v'(x)"} /> dans la formule.</p>
+              </Step>
+            </>
           }
         />
 
-        <ExerciseCard
+        {/* Module 2 */}
+        <div className="flex items-baseline gap-4 mb-6 mt-12">
+          <span className="carnet-hand text-[40px] text-carnet-red leading-none font-semibold">M2</span>
+          <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+          <h2 className="font-lora text-[26px] sm:text-[28px] text-carnet-ink leading-tight">Composées & fonctions usuelles</h2>
+        </div>
+
+        {/* Exercice 3 */}
+        <Exercise
           id="ex3"
-          title="Exercice 3"
-          difficulty="Très difficile"
-          content={
-            <div>
-              <p className="mb-4"><strong>Soit la fonction :</strong></p>
-              
-              <div className="text-center my-4">
-                <LatexRenderer latex={"\\forall u \\geq 0, \\quad m(u) = (1 + \\sqrt{u})^{\\sqrt{u}}"} />
-              </div>
-              
-              <p className="mt-4"><strong>Calculer <span className="inline-block align-middle"><LatexRenderer latex={"m'(u)"} /></span>.</strong></p>
-            </div>
+          num={3}
+          title="Dérivées composées"
+          difficulty="Moyen"
+          open={!!open.ex3}
+          onToggle={() => toggle('ex3')}
+          tilt="r"
+          statement={
+            <>
+              <p>Calculer la dérivée des fonctions suivantes, en précisant l'ensemble de dérivabilité.</p>
+              <ol className="list-decimal pl-6 space-y-1.5">
+                <li><Inline tex={'f(x) = (2x + 1)^5'} /></li>
+                <li><Inline tex={'g(x) = \\sqrt{x^2 + 1}'} /></li>
+                <li><Inline tex={'h(x) = e^{3x^2 - x}'} /></li>
+                <li><Inline tex={'k(x) = \\ln(1 + x^2)'} /></li>
+              </ol>
+              <p className="text-carnet-ink-mute italic text-[14px]">Indication : utiliser <Inline tex={"(f \\circ u)'(x) = u'(x) \\cdot f'(u(x))"} />.</p>
+            </>
           }
           correction={
-            <div className="space-y-6">
-              <div className="bg-red-50 border-l-4 border-red-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-red-800 mb-3">🔥 Défi</h4>
-                <p className="text-red-800">Cet exercice traite d'une <strong>fonction puissance-variable</strong> de la forme <span className="inline-block align-middle"><LatexRenderer latex={"f(x) = g(x)^{h(x)}"} /></span>. La technique consiste à passer par l'exponentielle et le logarithme.</p>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-green-600 mb-3">Étape 1 : Passage à l'exponentielle</h3>
-                
-                <div className="space-y-4">
-                  <div>
-                    <p className="mb-2">On remarque que pour tout <span className="inline-block align-middle"><LatexRenderer latex={"u \\geq 0"} /></span>, <span className="inline-block align-middle"><LatexRenderer latex={"1 + \\sqrt{u} > 0"} /></span>, donc on peut écrire :</p>
-                    <div className="text-center bg-blue-50 p-3 rounded">
-                      <LatexRenderer latex={"m(u) = e^{\\sqrt{u} \\ln(1 + \\sqrt{u})}"} />
-                    </div>
-                  </div>
-
-                  <div className="bg-orange-50 border-l-4 border-orange-400 p-3 rounded-r-lg">
-                    <p className="text-orange-800">
-                      <strong>💡 Rappel :</strong> Pour toute fonction <span className="inline-block align-middle"><LatexRenderer latex={"f(x) = g(x)^{h(x)}"} /></span> avec <span className="inline-block align-middle"><LatexRenderer latex={"g(x) > 0"} /></span>, on peut écrire <span className="inline-block align-middle"><LatexRenderer latex={"f(x) = e^{h(x) \\ln(g(x))}"} /></span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-green-600 mb-3">Étape 2 : Définition de la fonction auxiliaire</h3>
-                
-                <div className="space-y-4">
-                  <div>
-                    <p className="mb-2">Posons :</p>
-                    <div className="text-center bg-blue-50 p-3 rounded">
-                      <LatexRenderer latex={"f(u) = \\sqrt{u} \\ln(1 + \\sqrt{u})"} />
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="mb-2">La fonction <span className="inline-block align-middle"><LatexRenderer latex={"f"} /></span> est dérivable sur <span className="inline-block align-middle"><LatexRenderer latex={"\\mathbb{R}_+^*"} /></span>. Calculons <span className="inline-block align-middle"><LatexRenderer latex={"f'(u)"} /></span> :</p>
-                    
-                    <div className="space-y-3">
-                      <div>
-                        <p className="text-sm mb-2">Application de la règle du produit : <span className="inline-block align-middle"><LatexRenderer latex={"(uv)' = u'v + uv'"} /></span></p>
-                        <div className="text-center">
-                          <LatexRenderer latex={"f'(u) = (\\sqrt{u})' \\cdot \\ln(1 + \\sqrt{u}) + \\sqrt{u} \\cdot (\\ln(1 + \\sqrt{u}))'"} />
-                        </div>
-                      </div>
-
-                      <div>
-                        <p className="text-sm mb-2">Avec <span className="inline-block align-middle"><LatexRenderer latex={"(\\sqrt{u})' = \\frac{1}{2\\sqrt{u}}"} /></span> et <span className="inline-block align-middle"><LatexRenderer latex={"(\\ln(1 + \\sqrt{u}))' = \\frac{1}{1 + \\sqrt{u}} \\cdot \\frac{1}{2\\sqrt{u}}"} /></span> :</p>
-                        <div className="text-center">
-                          <LatexRenderer latex={"f'(u) = \\frac{1}{2\\sqrt{u}} \\ln(1 + \\sqrt{u}) + \\sqrt{u} \\cdot \\frac{1}{1 + \\sqrt{u}} \\cdot \\frac{1}{2\\sqrt{u}}"} />
-                        </div>
-                      </div>
-
-                      <div>
-                        <p className="text-sm mb-2">Simplification du second terme :</p>
-                        <div className="text-center">
-                          <LatexRenderer latex={"f'(u) = \\frac{1}{2\\sqrt{u}} \\ln(1 + \\sqrt{u}) + \\frac{1}{2(1 + \\sqrt{u})}"} />
-                        </div>
-                      </div>
-
-                      <div>
-                        <p className="text-sm mb-2">Factorisation par <span className="inline-block align-middle"><LatexRenderer latex={"\\frac{1}{2}"} /></span> :</p>
-                        <div className="text-center bg-green-50 p-3 rounded border-2 border-green-200">
-                          <LatexRenderer latex={"f'(u) = \\frac{1}{2} \\left[ \\frac{\\ln(1 + \\sqrt{u})}{\\sqrt{u}} + \\frac{1}{1 + \\sqrt{u}} \\right]"} />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-green-600 mb-3">Étape 3 : Dérivée de m(u)</h3>
-                
-                <div className="space-y-4">
-                  <div>
-                    <p className="mb-2">Puisque <span className="inline-block align-middle"><LatexRenderer latex={"m(u) = e^{f(u)}"} /></span>, on applique la formule de la dérivée d'une exponentielle :</p>
-                    <div className="text-center bg-blue-50 p-2 rounded">
-                      <LatexRenderer latex={"m'(u) = f'(u) \\cdot e^{f(u)} = f'(u) \\cdot m(u)"} />
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="mb-2">En substituant les expressions trouvées :</p>
-                    <div className="space-y-2">
-                      <div className="text-center">
-                        <LatexRenderer latex={"m'(u) = \\frac{1}{2} \\left[ \\frac{\\ln(1 + \\sqrt{u})}{\\sqrt{u}} + \\frac{1}{1 + \\sqrt{u}} \\right] \\cdot (1 + \\sqrt{u})^{\\sqrt{u}}"} />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="mb-2"><strong>Résultat final :</strong></p>
-                    <div className="text-center bg-green-50 p-4 rounded border-2 border-green-200">
-                      <LatexRenderer latex={"m'(u) = \\frac{1}{2} \\left[ \\frac{\\ln(1 + \\sqrt{u})}{\\sqrt{u}} + \\frac{1}{1 + \\sqrt{u}} \\right] (1 + \\sqrt{u})^{\\sqrt{u}}"} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-purple-800 mb-3">🎯 Technique générale pour f(x) = g(x)^h(x)</h4>
-                <div className="space-y-2 text-purple-800">
-                  <div><strong>1. Passage à l'exponentielle :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"f(x) = e^{h(x) \\ln(g(x))}"} /></span></div>
-                  <div><strong>2. Poser :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"F(x) = h(x) \\ln(g(x))"} /></span></div>
-                  <div><strong>3. Calculer :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"F'(x)"} /></span> (produit + composée)</div>
-                  <div><strong>4. Résultat :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"f'(x) = F'(x) \\cdot e^{F(x)} = F'(x) \\cdot f(x)"} /></span></div>
-                  <div><strong>5. Condition :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"g(x) > 0"} /></span> sur le domaine</div>
-                </div>
-              </div>
-
-              <div className="bg-emerald-50 border-l-4 border-emerald-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-emerald-800 mb-3">💎 Points clés de cet exercice</h4>
-                <div className="space-y-2 text-emerald-800">
-                  <div>• <strong>Domaine :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"u \\geq 0"} /></span> (à cause de <span className="inline-block align-middle"><LatexRenderer latex={"\\sqrt{u}"} /></span>)</div>
-                  <div>• <strong>Dérivée en 0 :</strong> Nécessite une étude de limite particulière</div>
-                  <div>• <strong>Composée :</strong> Dérivée de <span className="inline-block align-middle"><LatexRenderer latex={"\\ln(1 + \\sqrt{u})"} /></span> par la règle de la chaîne</div>
-                  <div>• <strong>Factorisation :</strong> Simplification algébrique finale</div>
-                </div>
-              </div>
-            </div>
+            <>
+              <Step label="1. Puissance composée">
+                <p>Avec <Inline tex={'u(x) = 2x + 1'} />, <Inline tex={"u'(x) = 2"} />, et <Inline tex={"(u^5)' = 5 u^4 \\cdot u'"} /> :</p>
+                <Block tex={"f'(x) = 5(2x+1)^4 \\cdot 2 = 10(2x+1)^4. \\quad (\\mathbb{R})"} />
+              </Step>
+              <Step label="2. Racine composée">
+                <p>Avec <Inline tex={'u(x) = x^2 + 1 > 0'} />, donc <Inline tex={'g'} /> est dérivable sur <Inline tex={'\\mathbb{R}'} />. Et <Inline tex={"(\\sqrt{u})' = \\frac{u'}{2\\sqrt{u}}"} /> :</p>
+                <Block tex={"g'(x) = \\frac{2x}{2\\sqrt{x^2 + 1}} = \\frac{x}{\\sqrt{x^2+1}}."} />
+              </Step>
+              <Step label="3. Exponentielle composée">
+                <p>Avec <Inline tex={'u(x) = 3x^2 - x'} />, <Inline tex={"u'(x) = 6x - 1"} />, et <Inline tex={"(e^u)' = u' \\cdot e^u"} /> :</p>
+                <Block tex={"h'(x) = (6x - 1)\\, e^{3x^2 - x}. \\quad (\\mathbb{R})"} />
+              </Step>
+              <Step label="4. Logarithme composé">
+                <p><Inline tex={'1 + x^2 > 0'} /> sur <Inline tex={'\\mathbb{R}'} />, donc <Inline tex={'k'} /> est dérivable partout. Et <Inline tex={"(\\ln u)' = \\frac{u'}{u}"} /> :</p>
+                <Block tex={"k'(x) = \\frac{2x}{1 + x^2}."} />
+              </Step>
+            </>
           }
         />
 
-        <ExerciseCard
+        {/* Exercice 4 */}
+        <Exercise
           id="ex4"
-          title="Exercice 4"
-          difficulty="Difficile"
-          content={
-            <div>
-              <p className="mb-4"><strong>Pour chacune des fonctions suivantes, définies et deux fois dérivables sur <span className="inline-block align-middle"><LatexRenderer latex={"\\mathbb{R}"} /></span>, donner une expression de la dérivée seconde :</strong></p>
-              
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <span className="font-semibold">1.</span>
-                  <div className="flex-1">
-                    <span className="inline-block align-middle"><LatexRenderer latex={"f(x) = e^{x^2 + 2x - 5}"} /></span>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <span className="font-semibold">2.</span>
-                  <div className="flex-1">
-                    <span className="inline-block align-middle"><LatexRenderer latex={"g(x) = \\left( \\frac{x^2 - 2x - 3}{2} \\right)^2"} /></span>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <span className="font-semibold">3.</span>
-                  <div className="flex-1">
-                    <span className="inline-block align-middle"><LatexRenderer latex={"h(x) = \\frac{1}{x^2 + 1}"} /></span>
-                  </div>
-                </div>
-              </div>
-            </div>
+          num={4}
+          title="Tangente à une courbe"
+          difficulty="Moyen"
+          open={!!open.ex4}
+          onToggle={() => toggle('ex4')}
+          statement={
+            <>
+              <p>Soit <Inline tex={'f(x) = x^3 - 3x + 1'} /> définie sur <Inline tex={'\\mathbb{R}'} />.</p>
+              <ol className="list-decimal pl-6 space-y-1.5">
+                <li>Déterminer l'équation de la tangente à <Inline tex={'\\mathcal{C}_f'} /> au point d'abscisse <Inline tex={'a = 2'} />.</li>
+                <li>En quels points la tangente est-elle horizontale ?</li>
+                <li>Existe-t-il un point où la tangente a pour pente <Inline tex={'9'} /> ?</li>
+              </ol>
+            </>
           }
           correction={
-            <div className="space-y-6">
-              <div className="bg-orange-50 border-l-4 border-orange-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-orange-800 mb-3">💡 Méthode</h4>
-                <p className="text-orange-800">Pour calculer la <strong>dérivée seconde</strong> d'une fonction composée, on applique d'abord les règles de dérivation pour obtenir <span className="inline-block align-middle"><LatexRenderer latex={"f'(x)"} /></span>, puis on dérive à nouveau pour obtenir <span className="inline-block align-middle"><LatexRenderer latex={"f''(x)"} /></span>.</p>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-green-600 mb-3">1. Fonction f(x) = e^(x² + 2x - 5)</h3>
-                
-                <div className="space-y-4">
-                  <div>
-                    <p className="mb-2">On pose <span className="inline-block align-middle"><LatexRenderer latex={"u(x) = x^2 + 2x - 5"} /></span>, alors <span className="inline-block align-middle"><LatexRenderer latex={"f(x) = e^{u(x)}"} /></span>.</p>
-                  </div>
-
-                  <div>
-                    <p className="mb-2"><strong>Calcul de la dérivée première :</strong></p>
-                    <div className="space-y-2">
-                      <div>• <span className="inline-block align-middle"><LatexRenderer latex={"u'(x) = 2x + 2"} /></span></div>
-                      <div>• Par la règle de la chaîne : <span className="inline-block align-middle"><LatexRenderer latex={"f'(x) = u'(x) \\cdot e^{u(x)}"} /></span></div>
-                      <div className="text-center bg-blue-50 p-2 rounded">
-                        <LatexRenderer latex={"f'(x) = (2x + 2) e^{x^2 + 2x - 5}"} />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="mb-2"><strong>Calcul de la dérivée seconde :</strong></p>
-                    <div className="space-y-2">
-                      <div>On applique la règle du produit à <span className="inline-block align-middle"><LatexRenderer latex={"f'(x) = (2x + 2) e^{x^2 + 2x - 5}"} /></span> :</div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"f''(x) = (2x + 2)' \\cdot e^{x^2 + 2x - 5} + (2x + 2) \\cdot (e^{x^2 + 2x - 5})'"} />
-                      </div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"= 2 \\cdot e^{x^2 + 2x - 5} + (2x + 2) \\cdot (2x + 2) e^{x^2 + 2x - 5}"} />
-                      </div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"= 2 e^{x^2 + 2x - 5} + (2x + 2)^2 e^{x^2 + 2x - 5}"} />
-                      </div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"= [2 + (2x + 2)^2] e^{x^2 + 2x - 5}"} />
-                      </div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"= [2 + 4x^2 + 8x + 4] e^{x^2 + 2x - 5}"} />
-                      </div>
-                      <div className="text-center bg-green-50 p-3 rounded border-2 border-green-200">
-                        <LatexRenderer latex={"f''(x) = (4x^2 + 8x + 6) e^{x^2 + 2x - 5}"} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-green-600 mb-3">2. Fonction g(x) = ((x² - 2x - 3)/2)²</h3>
-                
-                <div className="space-y-4">
-                  <div>
-                    <p className="mb-2">On pose <span className="inline-block align-middle"><LatexRenderer latex={"u(x) = \\frac{x^2 - 2x - 3}{2}"} /></span>, donc <span className="inline-block align-middle"><LatexRenderer latex={"g(x) = u(x)^2"} /></span>.</p>
-                  </div>
-
-                  <div>
-                    <p className="mb-2"><strong>Calcul de la dérivée première :</strong></p>
-                    <div className="space-y-2">
-                      <div>• <span className="inline-block align-middle"><LatexRenderer latex={"u'(x) = \\frac{2x - 2}{2} = x - 1"} /></span></div>
-                      <div>• Par la règle de la chaîne : <span className="inline-block align-middle"><LatexRenderer latex={"g'(x) = 2u(x) \\cdot u'(x)"} /></span></div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"g'(x) = 2 \\cdot \\frac{x^2 - 2x - 3}{2} \\cdot (x - 1)"} />
-                      </div>
-                      <div className="text-center bg-blue-50 p-2 rounded">
-                        <LatexRenderer latex={"g'(x) = (x^2 - 2x - 3)(x - 1)"} />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="mb-2"><strong>Calcul de la dérivée seconde :</strong></p>
-                    <div className="space-y-2">
-                      <div>On applique la règle du produit à <span className="inline-block align-middle"><LatexRenderer latex={"g'(x) = (x^2 - 2x - 3)(x - 1)"} /></span> :</div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"g''(x) = (x^2 - 2x - 3)' \\cdot (x - 1) + (x^2 - 2x - 3) \\cdot (x - 1)'"} />
-                      </div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"= (2x - 2)(x - 1) + (x^2 - 2x - 3) \\cdot 1"} />
-                      </div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"= 2(x - 1)^2 + (x^2 - 2x - 3)"} />
-                      </div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"= 2(x^2 - 2x + 1) + x^2 - 2x - 3"} />
-                      </div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"= 2x^2 - 4x + 2 + x^2 - 2x - 3"} />
-                      </div>
-                      <div className="text-center bg-green-50 p-3 rounded border-2 border-green-200">
-                        <LatexRenderer latex={"g''(x) = 3x^2 - 6x - 1"} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-green-600 mb-3">3. Fonction h(x) = 1/(x² + 1)</h3>
-                
-                <div className="space-y-4">
-                  <div>
-                    <p className="mb-2">On pose <span className="inline-block align-middle"><LatexRenderer latex={"u(x) = x^2 + 1"} /></span>, donc <span className="inline-block align-middle"><LatexRenderer latex={"h(x) = \\frac{1}{u(x)}"} /></span>.</p>
-                  </div>
-
-                  <div>
-                    <p className="mb-2"><strong>Calcul de la dérivée première :</strong></p>
-                    <div className="space-y-2">
-                      <div>• <span className="inline-block align-middle"><LatexRenderer latex={"u'(x) = 2x"} /></span></div>
-                      <div>• Par la règle de dérivation : <span className="inline-block align-middle"><LatexRenderer latex={"h'(x) = -\\frac{u'(x)}{u(x)^2}"} /></span></div>
-                      <div className="text-center bg-blue-50 p-2 rounded">
-                        <LatexRenderer latex={"h'(x) = -\\frac{2x}{(x^2 + 1)^2}"} />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="mb-2"><strong>Calcul de la dérivée seconde :</strong></p>
-                    <div className="space-y-2">
-                      <div>On applique la règle du quotient à <span className="inline-block align-middle"><LatexRenderer latex={"h'(x) = -\\frac{2x}{(x^2 + 1)^2}"} /></span> :</div>
-                      <div>• Numérateur : <span className="inline-block align-middle"><LatexRenderer latex={"v(x) = -2x"} /></span>, donc <span className="inline-block align-middle"><LatexRenderer latex={"v'(x) = -2"} /></span></div>
-                      <div>• Dénominateur : <span className="inline-block align-middle"><LatexRenderer latex={"w(x) = (x^2 + 1)^2"} /></span>, donc <span className="inline-block align-middle"><LatexRenderer latex={"w'(x) = 2(x^2 + 1) \\cdot 2x = 4x(x^2 + 1)"} /></span></div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"h''(x) = \\frac{v'(x) \\cdot w(x) - v(x) \\cdot w'(x)}{w(x)^2}"} />
-                      </div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"= \\frac{-2 \\cdot (x^2 + 1)^2 - (-2x) \\cdot 4x(x^2 + 1)}{(x^2 + 1)^4}"} />
-                      </div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"= \\frac{-2(x^2 + 1)^2 + 8x^2(x^2 + 1)}{(x^2 + 1)^4}"} />
-                      </div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"= \\frac{(x^2 + 1)[-2(x^2 + 1) + 8x^2]}{(x^2 + 1)^4}"} />
-                      </div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"= \\frac{-2x^2 - 2 + 8x^2}{(x^2 + 1)^3}"} />
-                      </div>
-                      <div className="text-center bg-green-50 p-3 rounded border-2 border-green-200">
-                        <LatexRenderer latex={"h''(x) = \\frac{6x^2 - 2}{(x^2 + 1)^3}"} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-indigo-50 border-l-4 border-indigo-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-indigo-800 mb-3">📚 Rappels pour les dérivées secondes</h4>
-                <div className="space-y-2 text-indigo-800">
-                  <div>• <strong>Fonction composée :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"(f \\circ g)'' = (f' \\circ g) \\cdot (g')^2 + (f \\circ g) \\cdot g''"} /></span></div>
-                  <div>• <strong>Produit :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"(uv)'' = u''v + 2u'v' + uv''"} /></span></div>
-                  <div>• <strong>Quotient :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"\\left(\\frac{u}{v}\\right)'' = \\frac{u''v^2 - 2u'v'v + 2uv'^2 - uv''v}{v^3}"} /></span></div>
-                  <div>• <strong>Exponentielle :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"(e^u)'' = (u')^2 e^u + u'' e^u"} /></span></div>
-                </div>
-              </div>
-
-              <div className="bg-teal-50 border-l-4 border-teal-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-teal-800 mb-3">🎯 Stratégies de calcul</h4>
-                <div className="space-y-2 text-teal-800">
-                  <div>• <strong>Simplifier d'abord :</strong> Factoriser ou développer selon le contexte</div>
-                  <div>• <strong>Identifier la structure :</strong> Composée, produit, quotient ?</div>
-                  <div>• <strong>Calculer méthodiquement :</strong> f'(x) puis f''(x)</div>
-                  <div>• <strong>Vérifier :</strong> Les dérivées successives doivent être cohérentes</div>
-                </div>
-              </div>
-            </div>
+            <>
+              <p>On a <Inline tex={"f'(x) = 3x^2 - 3"} />.</p>
+              <Step label="1. Tangente au point d'abscisse 2">
+                <p>Calcul des deux quantités utiles :</p>
+                <Block tex={"f(2) = 8 - 6 + 1 = 3, \\qquad f'(2) = 12 - 3 = 9."} />
+                <p>L'équation de la tangente est <Inline tex={"y = f'(a)(x - a) + f(a)"} />, donc :</p>
+                <Block tex={"y = 9(x - 2) + 3 = 9x - 15."} />
+              </Step>
+              <Step label="2. Tangentes horizontales">
+                <p>La tangente est horizontale ssi <Inline tex={"f'(x) = 0"} />.</p>
+                <Block tex={"3x^2 - 3 = 0 \\iff x^2 = 1 \\iff x = \\pm 1."} />
+                <p>Aux points <Inline tex={'(1, f(1)) = (1, -1)'} /> et <Inline tex={'(-1, f(-1)) = (-1, 3)'} />.</p>
+              </Step>
+              <Step label="3. Pente 9">
+                <p>On résout <Inline tex={"f'(x) = 9"} /> :</p>
+                <Block tex={"3x^2 - 3 = 9 \\iff x^2 = 4 \\iff x = \\pm 2."} />
+                <p>Donc deux points : <Inline tex={'(2, 3)'} /> (déjà vu) et <Inline tex={'(-2, f(-2)) = (-2, -1)'} />.</p>
+              </Step>
+            </>
           }
         />
 
+        {/* Module 3 */}
+        <div className="flex items-baseline gap-4 mb-6 mt-12">
+          <span className="carnet-hand text-[40px] text-carnet-red leading-none font-semibold">M3</span>
+          <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+          <h2 className="font-lora text-[26px] sm:text-[28px] text-carnet-ink leading-tight">Étude complète — variations & extrema</h2>
+        </div>
+
+        {/* Exercice 5 */}
+        <Exercise
+          id="ex5"
+          num={5}
+          title="Étude d'une fonction logarithmique"
+          difficulty="Difficile"
+          open={!!open.ex5}
+          onToggle={() => toggle('ex5')}
+          tilt="l"
+          statement={
+            <>
+              <p>Soit <Inline tex={'f'} /> la fonction définie sur <Inline tex={'\\mathbb{R}_+^*'} /> par :</p>
+              <Block tex={'f(x) = x - \\ln(x).'} />
+              <ol className="list-decimal pl-6 space-y-1.5">
+                <li>Calculer <Inline tex={"f'(x)"} /> et étudier son signe.</li>
+                <li>Dresser le tableau de variations de <Inline tex={'f'} />.</li>
+                <li>En déduire que pour tout <Inline tex={'x > 0'} />, <Inline tex={'\\ln(x) \\leq x - 1'} />.</li>
+              </ol>
+              <p className="text-carnet-ink-mute italic text-[14px]">Cette inégalité est un classique d'analyse — tu la reverras toute la prépa.</p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="1. Calcul et signe de la dérivée">
+                <p>Pour <Inline tex={'x > 0'} /> :</p>
+                <Block tex={"f'(x) = 1 - \\frac{1}{x} = \\frac{x - 1}{x}."} />
+                <p>Comme <Inline tex={'x > 0'} />, le signe de <Inline tex={"f'(x)"} /> est celui de <Inline tex={'x - 1'} />.</p>
+                <ul className="list-disc pl-6 space-y-0.5">
+                  <li>Sur <Inline tex={'(0, 1)'} /> : <Inline tex={"f'(x) < 0"} />, <Inline tex={'f'} /> décroît.</li>
+                  <li>En <Inline tex={'x = 1'} /> : <Inline tex={"f'(1) = 0"} />.</li>
+                  <li>Sur <Inline tex={'(1, +\\infty)'} /> : <Inline tex={"f'(x) > 0"} />, <Inline tex={'f'} /> croît.</li>
+                </ul>
+              </Step>
+              <Step label="2. Tableau de variations">
+                <p><Inline tex={'f'} /> admet donc un minimum global en <Inline tex={'x = 1'} />, et :</p>
+                <Block tex={"f(1) = 1 - \\ln(1) = 1."} />
+                <p className="text-carnet-ink-mute italic">Comportements aux bornes (à savoir) : <Inline tex={'\\lim_{x \\to 0^+} f(x) = +\\infty'} /> et <Inline tex={'\\lim_{x \\to +\\infty} f(x) = +\\infty'} />.</p>
+              </Step>
+              <Step label="3. Inégalité ln(x) ≤ x − 1">
+                <p>Le minimum de <Inline tex={'f'} /> sur <Inline tex={'\\mathbb{R}_+^*'} /> vaut <Inline tex={'1'} />, donc pour tout <Inline tex={'x > 0'} /> :</p>
+                <Block tex={'f(x) \\geq 1 \\iff x - \\ln(x) \\geq 1 \\iff \\ln(x) \\leq x - 1.'} />
+                <p>Avec égalité ssi <Inline tex={'x = 1'} />.</p>
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 6 */}
+        <Exercise
+          id="ex6"
+          num={6}
+          title="Optimisation — boîte de volume maximal"
+          difficulty="Difficile"
+          open={!!open.ex6}
+          onToggle={() => toggle('ex6')}
+          statement={
+            <>
+              <p>On découpe quatre carrés identiques de côté <Inline tex={'x'} /> aux coins d'une feuille carrée de <Inline tex={'12'} /> cm de côté, puis on replie pour former une boîte ouverte.</p>
+              <ol className="list-decimal pl-6 space-y-1.5">
+                <li>Exprimer le volume <Inline tex={'V(x)'} /> en fonction de <Inline tex={'x'} /> et préciser l'intervalle des valeurs admissibles.</li>
+                <li>Étudier les variations de <Inline tex={'V'} /> sur cet intervalle.</li>
+                <li>Pour quelle valeur de <Inline tex={'x'} /> le volume est-il maximal ? Donner ce volume.</li>
+              </ol>
+            </>
+          }
+          correction={
+            <>
+              <Step label="1. Mise en équation">
+                <p>Après découpage et pliage, la base est un carré de côté <Inline tex={'12 - 2x'} /> et la hauteur est <Inline tex={'x'} />. Donc :</p>
+                <Block tex={'V(x) = x(12 - 2x)^2.'} />
+                <p>Pour avoir une boîte non dégénérée, on doit avoir <Inline tex={'x > 0'} /> et <Inline tex={'12 - 2x > 0'} />, soit <Inline tex={'x \\in (0, 6)'} />.</p>
+              </Step>
+              <Step label="2. Étude de V">
+                <p>On dérive avec la règle du produit, en posant <Inline tex={'u(x) = x'} /> et <Inline tex={'v(x) = (12 - 2x)^2'} />, donc <Inline tex={"v'(x) = 2(12 - 2x)(-2) = -4(12 - 2x)"} /> :</p>
+                <Block tex={"V'(x) = (12 - 2x)^2 + x \\cdot \\bigl(-4(12 - 2x)\\bigr)."} />
+                <p>On factorise par <Inline tex={'(12 - 2x)'} /> :</p>
+                <Block tex={"V'(x) = (12 - 2x)\\bigl[(12 - 2x) - 4x\\bigr] = (12 - 2x)(12 - 6x)."} />
+                <p>Sur <Inline tex={'(0, 6)'} />, <Inline tex={'12 - 2x > 0'} />, donc le signe de <Inline tex={"V'(x)"} /> est celui de <Inline tex={'12 - 6x'} />.</p>
+                <ul className="list-disc pl-6 space-y-0.5">
+                  <li>Sur <Inline tex={'(0, 2)'} /> : <Inline tex={"V'(x) > 0"} />, <Inline tex={'V'} /> croît.</li>
+                  <li>En <Inline tex={'x = 2'} /> : <Inline tex={"V'(2) = 0"} />.</li>
+                  <li>Sur <Inline tex={'(2, 6)'} /> : <Inline tex={"V'(x) < 0"} />, <Inline tex={'V'} /> décroît.</li>
+                </ul>
+              </Step>
+              <Step label="3. Maximum">
+                <p>Le maximum est atteint en <Inline tex={'x = 2'} />, et vaut :</p>
+                <Block tex={'V(2) = 2 \\times (12 - 4)^2 = 2 \\times 64 = 128 \\text{ cm}^3.'} />
+                <p className="text-carnet-ink-mute italic text-[14px]">À retenir : optimiser, c'est dériver, annuler, étudier le signe — le tableau de variations conclut.</p>
+              </Step>
+            </>
+          }
+        />
+
+        {/* Bandeau récap */}
+        <section className="mt-14 mb-10 relative">
+          <div className="bg-carnet-ink rounded-lg p-8 sm:p-10 relative overflow-hidden">
+            <div className="absolute -top-20 -right-20 w-[300px] h-[300px] bg-[radial-gradient(circle,rgba(193,68,58,0.18)_0%,transparent_60%)] pointer-events-none"></div>
+            <div className="relative z-10">
+              <span className="carnet-eyebrow text-carnet-red">Récap · Les 5 réflexes</span>
+              <h3 className="font-lora text-[24px] sm:text-[28px] text-carnet-paper leading-[1.2] mb-5 mt-3">
+                Avant de dériver, fais ce check.
+              </h3>
+              <ul className="space-y-2 font-instrument text-[15px] text-[rgba(251,246,234,0.85)] leading-[1.7]">
+                <li className="flex gap-3"><span className="text-carnet-red font-bold">1.</span> Je précise l'<em>ensemble de dérivabilité</em>.</li>
+                <li className="flex gap-3"><span className="text-carnet-red font-bold">2.</span> Je repère la <em>structure</em> (somme, produit, quotient, composée).</li>
+                <li className="flex gap-3"><span className="text-carnet-red font-bold">3.</span> Pour une composée : je pose <Inline tex={'u'} />, je dérive <Inline tex={"u'"} />, j'applique <Inline tex={"(f \\circ u)' = u' \\cdot f'(u)"} />.</li>
+                <li className="flex gap-3"><span className="text-carnet-red font-bold">4.</span> Je <em>factorise</em> <Inline tex={"f'(x)"} /> avant d'étudier son signe.</li>
+                <li className="flex gap-3"><span className="text-carnet-red font-bold">5.</span> Je conclus avec un <em>tableau de variations</em> propre.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Navigation */}
+        <div className="flex items-center justify-between gap-4 pt-6 border-t border-dashed border-[rgba(78,55,30,0.18)]">
+          <Link
+            to="/formation/math/terminale-vers-prepa/derivees-cours"
+            className="inline-flex items-center gap-1.5 font-instrument text-[14px] text-carnet-ink-soft hover:text-carnet-red transition-colors"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            Retour au cours
+          </Link>
+          <Link
+            to="/formation/math/terminale-vers-prepa"
+            className="inline-flex items-center gap-1.5 font-instrument text-[14px] text-carnet-ink-soft hover:text-carnet-red transition-colors"
+          >
+            Tous les chapitres
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -3,7 +3,6 @@ import { useAuth } from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import {
   Languages,
-  Zap,
   Globe,
   Heart,
   Mic,
@@ -11,9 +10,7 @@ import {
   FileText,
   Brain,
   Calculator,
-  Sparkles,
   Target,
-  TrendingUp,
   MessageCircle,
   ArrowRight
 } from 'lucide-react';
@@ -189,103 +186,113 @@ const GeneratorPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-pr-gray-bg">
-      <div className="container mx-auto py-16 sm:py-20 lg:py-24 px-4 sm:px-6">
-        {/* Header — épuré, charte PR */}
-        <div className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
-          {/* Badge chip orange pâle */}
-          <div className="fade-in-up inline-flex items-center gap-2 bg-pr-orange-pale text-pr-orange-dark px-3 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-[0.08em] mb-8 font-dm-sans">
-            <Sparkles className="h-3.5 w-3.5" />
-            Powered by AI
+    <div className="min-h-screen">
+      <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-16 sm:py-20 lg:py-24">
+        {/* Header — manuscrit & professoral, ambiance carnet */}
+        <div className="relative max-w-3xl mx-auto text-center mb-16 sm:mb-20">
+          <div className="fade-in-up carnet-eyebrow flex items-center justify-center gap-3 mb-8">
+            <span className="inline-block h-px w-6 bg-carnet-red/50" />
+            Feedback IA
+            <span className="inline-block h-px w-6 bg-carnet-red/50" />
           </div>
 
-          {/* Titre — DM Serif Display */}
-          <h1 className="fade-in-up font-dm-serif text-5xl sm:text-6xl lg:text-7xl text-pr-black mb-6 leading-[1.05]" style={{ animationDelay: '0.05s' }}>
-            Générateurs <span className="text-pr-orange">IA</span>
-          </h1>
+          <div className="relative inline-block">
+            <h1
+              className="fade-in-up font-lora text-[44px] sm:text-[56px] lg:text-[64px] text-carnet-ink leading-[1.05] tracking-tight"
+              style={{ animationDelay: '0.05s' }}
+            >
+              Générateurs <em className="font-lora italic text-carnet-red">IA</em>
+            </h1>
 
-          {/* Trait orange signature */}
-          <div className="fade-in-up flex justify-center mb-8" style={{ animationDelay: '0.08s' }}>
-            <div className="h-[3px] w-16 bg-pr-orange rounded-full" />
+            <span
+              className="hidden xl:flex fade-in-up carnet-hand absolute -right-52 top-1/2 -translate-y-1/2 -rotate-[5deg] text-[28px] leading-none items-center gap-1.5 whitespace-nowrap"
+              style={{ animationDelay: '0.3s' }}
+              aria-hidden="true"
+            >
+              <span className="text-3xl">↩</span> ton coach 24/7
+            </span>
           </div>
 
-          {/* Sous-titre */}
-          <p className="fade-in-up text-lg sm:text-xl text-pr-gray-dark mb-10 font-dm-sans leading-relaxed" style={{ animationDelay: '0.1s' }}>
-            <span className="text-pr-black font-semibold">Feedback instantané</span> pour progresser
-            le plus rapidement possible.
+          <div className="fade-in-up flex justify-center my-6" style={{ animationDelay: '0.08s' }}>
+            <div className="h-0.5 w-12 bg-carnet-ink" />
+          </div>
+
+          <p
+            className="fade-in-up font-instrument text-[17px] sm:text-[18px] text-carnet-ink-soft mb-10 leading-[1.6] max-w-2xl mx-auto"
+            style={{ animationDelay: '0.1s' }}
+          >
+            Progresser avec un feedback{' '}
+            <span className="carnet-hl font-lora italic text-carnet-ink">instantané</span>{' '}
+            sur chacune de tes copies.
           </p>
 
-          {/* Trois value props sobres */}
-          <div className="fade-in-up flex flex-wrap justify-center gap-x-8 gap-y-3 font-dm-sans" style={{ animationDelay: '0.15s' }}>
-            <div className="flex items-center gap-2 text-pr-gray-dark">
-              <Target className="h-4 w-4 text-pr-orange" />
-              <span className="text-sm">Détection des erreurs</span>
-            </div>
-            <div className="flex items-center gap-2 text-pr-gray-dark">
-              <TrendingUp className="h-4 w-4 text-pr-orange" />
-              <span className="text-sm">Progression rapide</span>
-            </div>
-            <div className="flex items-center gap-2 text-pr-gray-dark">
-              <Zap className="h-4 w-4 text-pr-orange" />
-              <span className="text-sm">IA ultra-performante</span>
-            </div>
-          </div>
+          <ul
+            className="fade-in-up inline-flex flex-wrap justify-center gap-x-8 gap-y-3"
+            style={{ animationDelay: '0.15s' }}
+          >
+            {[
+              'Détecte tes erreurs',
+              'Progression rapide',
+              'IA ultra-performante',
+            ].map((label) => (
+              <li key={label} className="flex items-center gap-2.5 font-instrument text-[14px] text-carnet-ink-soft">
+                <span className="carnet-hand text-[24px] text-carnet-red leading-none">✓</span>
+                {label}
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* Grille de générateurs — cartes blanches, charte PR */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-7xl mx-auto">
+        {/* Grille de générateurs — style carnet de la landing page */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
           {mainGenerators.map((generator, index) => (
-            <Link
+            <div
               key={generator.id}
-              to={generator.link}
-              className="fade-in-up group relative bg-white rounded-2xl overflow-hidden border border-pr-gray-light hover:border-pr-orange/60 hover:shadow-[0_8px_30px_-12px_rgba(244,132,95,0.25)] transition-all duration-300 flex flex-col"
+              className={`fade-in-up ${index % 3 === 1 ? 'carnet-tilt-r' : index % 3 === 2 ? 'carnet-tilt-l' : ''}`}
               style={{ animationDelay: `${0.1 + index * 0.04}s` }}
             >
-              {/* Trait orange signature en haut */}
-              <div className="h-[3px] w-full bg-pr-orange" />
+              <Link
+                to={generator.link}
+                className="carnet-card relative block p-8 h-full group hover:shadow-[0_12px_32px_rgba(78,55,30,0.10)] transition-shadow"
+              >
+                {generator.badge && (
+                  <span className="absolute top-6 right-6 carnet-eyebrow text-[10px] text-carnet-red">
+                    {generator.badge}
+                  </span>
+                )}
 
-              <div className="p-6 flex flex-col flex-1">
-                {/* Header carte : icône + badge */}
-                <div className="flex items-start justify-between mb-5">
-                  <div className="w-12 h-12 bg-pr-orange-pale rounded-xl flex items-center justify-center text-pr-orange-dark group-hover:bg-pr-orange group-hover:text-white transition-colors duration-300">
-                    {generator.icon}
+                <div className="carnet-hand text-[44px] font-semibold text-carnet-red leading-none mb-3">
+                  {String(index + 1).padStart(2, '0')}
+                </div>
+                <hr className="w-10 h-0.5 bg-carnet-ink border-0 mb-5" />
+
+                <div className="flex items-center gap-2.5 mb-3">
+                  <div className="w-8 h-8 rounded-full bg-[rgba(193,68,58,0.08)] flex items-center justify-center text-carnet-red flex-none">
+                    {React.cloneElement(generator.icon as React.ReactElement, { className: 'h-4 w-4' })}
                   </div>
-                  {generator.badge && (
-                    <span className="inline-block bg-pr-orange-pale text-pr-orange-dark px-2.5 py-1 rounded-full text-[10px] font-semibold uppercase tracking-[0.08em] font-dm-sans">
-                      {generator.badge}
-                    </span>
-                  )}
+                  <h3 className="font-lora text-[22px] leading-[1.25] text-carnet-ink">
+                    {generator.title}
+                  </h3>
                 </div>
 
-                {/* Titre — DM Serif Display */}
-                <h3 className="font-dm-serif text-2xl text-pr-black mb-2 leading-tight group-hover:text-pr-orange-dark transition-colors">
-                  {generator.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-sm text-pr-gray-dark mb-5 leading-relaxed font-dm-sans">
+                <p className="font-instrument text-[15px] text-carnet-ink-soft leading-[1.55] mb-5">
                   {generator.description}
                 </p>
 
-                {/* Features — puces fines, sans gras lourd */}
-                <ul className="space-y-1.5 mb-6 font-dm-sans">
+                <ul className="space-y-2 pt-4 border-t border-dashed border-[rgba(78,55,30,0.18)]">
                   {generator.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start text-sm text-pr-gray-dark">
-                      <span className="text-pr-orange mr-2 leading-5">→</span>
-                      <span className="leading-5">{feature}</span>
+                    <li key={idx} className="flex items-start gap-2 font-instrument text-[13px] text-carnet-ink-soft">
+                      <span className="carnet-hand text-[18px] leading-none mt-0.5">→</span>
+                      <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
 
-                {/* Lien CTA — minimaliste, alignement bas */}
-                <div className="mt-auto pt-4 border-t border-pr-gray-light">
-                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-pr-orange-dark font-dm-sans group-hover:gap-2.5 transition-all">
-                    Utiliser le générateur
-                    <ArrowRight className="h-4 w-4" />
-                  </span>
+                <div className="mt-5 flex items-center gap-1.5 font-instrument text-[12px] font-semibold uppercase tracking-[0.1em] text-carnet-red group-hover:gap-2.5 transition-all">
+                  Utiliser le générateur <ArrowRight className="h-3.5 w-3.5" />
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </div>
           ))}
         </div>
       </div>

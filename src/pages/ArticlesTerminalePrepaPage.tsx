@@ -18,6 +18,11 @@ import {
   CheckCircle2,
   Home,
   ChevronRight,
+  Code,
+  Languages,
+  Globe,
+  BookOpen,
+  FileText,
 } from 'lucide-react';
 import { SEOHead } from '@/components/SEOHead';
 
@@ -98,6 +103,57 @@ const offresAVenir = [
   'Coaching méthode et organisation par Dimitar',
 ];
 
+const autresModules = [
+  {
+    title: 'Anglais',
+    icon: Languages,
+    description: 'Grammaire, thèmes, versions et essais pour l\'écrit et l\'oral.',
+    link: '/formation/anglais',
+  },
+  {
+    title: 'Allemand',
+    icon: Languages,
+    description: 'Déclinaisons, structures complexes et expression écrite.',
+    link: '/formation/allemand',
+  },
+  {
+    title: 'Espagnol',
+    icon: Languages,
+    description: 'Conjugaison, thèmes, versions et expression orale.',
+    link: '/formation/espagnol',
+  },
+  {
+    title: 'Culture Générale',
+    icon: BookOpen,
+    description: 'Méthodes de synthèse et d\'essai, analyse de textes.',
+    link: '/formation/culture-generale',
+  },
+  {
+    title: 'Géopolitique',
+    icon: Globe,
+    description: 'Enjeux contemporains et méthodes d\'analyse stratégique.',
+    link: '/formation/geopolitique',
+  },
+  {
+    title: 'ESH',
+    icon: GraduationCap,
+    description: 'Première et deuxième année, études de cas concrètes.',
+    link: '/formation/esh',
+  },
+  {
+    title: 'Python',
+    icon: Code,
+    description: '4 modules progressifs avec exercices pratiques.',
+    link: '/formation',
+  },
+  {
+    title: 'Synthèse de Texte',
+    icon: FileText,
+    description: 'Méthodologie détaillée 4h et types de sujets.',
+    link: '/formation/synthese-texte',
+  },
+];
+
 const SectionHead: React.FC<{
   eyebrow?: string;
   title: React.ReactNode;
@@ -176,13 +232,29 @@ const ArticlesTerminalePrepaPage: React.FC = () => {
               <span className="carnet-hl font-lora italic">points clés à anticiper</span>.
             </p>
 
-            <div className="flex flex-wrap gap-3 mb-6">
-              <Link to="/contact">
-                <Button className="bg-carnet-red hover:bg-carnet-red-deep text-carnet-paper font-instrument font-semibold py-6 px-8 rounded-full border-0">
-                  Être prévenu de l'offre
-                  <Sparkles className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
+            <div className="flex flex-wrap gap-3 mb-6 items-center">
+              <div className="relative inline-block">
+                {/* Déclic annotation */}
+                <div
+                  className="carnet-hand absolute hidden md:flex items-center gap-1 pointer-events-none"
+                  style={{
+                    top: '-2.6rem',
+                    left: '-0.5rem',
+                    fontSize: 18,
+                    color: '#C1443A',
+                    transform: 'rotate(-3deg)',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  commencer mtn →
+                </div>
+                <Link to="/contact">
+                  <Button className="bg-carnet-red hover:bg-carnet-red-deep text-carnet-paper font-instrument font-semibold py-6 px-8 rounded-full border-0">
+                    Être prévenu de l'offre
+                    <Sparkles className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
               <Link to="/formation/math/terminale-vers-prepa">
                 <Button
                   variant="outline"
@@ -192,10 +264,6 @@ const ArticlesTerminalePrepaPage: React.FC = () => {
                   Module Maths
                 </Button>
               </Link>
-            </div>
-
-            <div className="carnet-hand text-[24px] hidden md:block" style={{ transform: 'rotate(-2deg)' }}>
-              ↓ tout ce qu'on aurait aimé savoir avant la rentrée
             </div>
           </motion.div>
         </div>
@@ -404,6 +472,47 @@ const ArticlesTerminalePrepaPage: React.FC = () => {
               </Link>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Autres matières */}
+      <section className="relative py-20 lg:py-24 bg-[rgba(78,55,30,0.02)] border-y border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <SectionHead
+            eyebrow="Toutes nos matières"
+            title={
+              <>
+                Tout notre contenu est adapté à la <em className="font-lora italic text-carnet-red">prépa</em>.
+              </>
+            }
+            subtitle="Anglais, Allemand, Géopolitique... Explore nos autres modules. Tout le contenu du site a été pensé pour le niveau d'exigence de la prépa ECG."
+          />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {autresModules.map((module, idx) => (
+              <Link key={module.title} to={module.link}>
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  className="carnet-card p-5 h-full hover:shadow-[0_8px_24px_rgba(78,55,30,0.08)] transition-all group"
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-8 h-8 rounded-full bg-[rgba(193,68,58,0.08)] flex items-center justify-center">
+                      <module.icon className="h-4 w-4 text-carnet-red" />
+                    </div>
+                    <h3 className="font-lora text-[18px] text-carnet-ink leading-[1.2] group-hover:text-carnet-red transition-colors">
+                      {module.title}
+                    </h3>
+                  </div>
+                  <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.5]">
+                    {module.description}
+                  </p>
+                </motion.div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

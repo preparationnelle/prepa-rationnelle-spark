@@ -69,7 +69,6 @@ const AnglaisCausativesPage = lazy(() => import('../pages/formation/anglais/gram
 const AnglaisCausativesExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/CausativesExercicesPage'));
 const AnglaisNuancesLexicalesPage = lazy(() => import('../pages/formation/anglais/grammaire/NuancesLexicalesPage'));
 const AnglaisNuancesLexicalesExercicesPage = lazy(() => import('../pages/formation/anglais/grammaire/NuancesLexicalesExercicesPage'));
-const FormationAnglaisCivilisationPage = lazy(() => import('../pages/formation/anglais/FormationAnglaisCivilisationPage'));
 const AnglaisCivilisationOverviewPage = lazy(() => import('../pages/formation/anglais/CivilisationOverviewPage'));
 const AnglaisEnvironmentPage = lazy(() => import('../pages/formation/anglais/civilisation/EnvironmentPage'));
 const AnglaisEnvironmentVocabularyPage = lazy(() => import('../pages/formation/anglais/civilisation/EnvironmentVocabularyPage'));
@@ -1032,7 +1031,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/anglais/grammaire/nuances-lexicales', component: AnglaisNuancesLexicalesPage, title: 'Nuances lexicales' },
   { path: '/formation/anglais/grammaire/nuances-lexicales/exercices', component: AnglaisNuancesLexicalesExercicesPage, title: 'Exercices Nuances lexicales' },
   { path: '/formation/anglais/grammaire/nuances-lexicales/quiz', component: EnglishQuizPage, title: 'Quiz Nuances Lexicales' },
-  { path: '/formation/anglais/civilisation', component: FormationAnglaisCivilisationPage, title: 'Civilisation Anglaise' },
+  { path: '/formation/anglais/civilisation', component: AnglaisCivilisationOverviewPage, title: 'Civilisation Anglaise' },
   { path: '/formation/anglais/civilisation/environment', component: AnglaisEnvironmentPage, title: 'Environment and Ecology' },
   { path: '/formation/anglais/civilisation/environment/vocabulary', component: AnglaisEnvironmentVocabularyPage, title: 'Environment Vocabulary - Flashcards' },
   { path: '/formation/anglais/civilisation/politics', component: AnglaisPoliticsPage, title: 'Politics (US & UK)' },
@@ -1948,9 +1947,9 @@ export const routes: RouteConfig[] = [
     protected: false
   },
   {
-    path: '/formation/math/terminale-vers-prepa/matrice-exercices',
-    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre7-Matrice-ExercicesPage')),
-    title: 'Exercices - Chapitre 7 : Matrice',
+    path: '/formation/math/terminale-vers-prepa/matrices-exercices',
+    component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre7-Matrices-ExercicesPage')),
+    title: 'Exercices - Chapitre 7 : Matrices',
     protected: false
   },
   {

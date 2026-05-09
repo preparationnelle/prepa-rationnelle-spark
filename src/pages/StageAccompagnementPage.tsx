@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, GraduationCap, BookOpen, Zap, ChevronDown, ArrowRight } from 'lucide-react';
+import { Star, GraduationCap, BookOpen, Zap, ChevronDown, ArrowRight, Calendar, Sigma, Code2, Languages, Globe2, Library, MessageCircle, Check } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -77,68 +77,108 @@ const StageAccompagnementPage = () => {
                 Le programme que chaque étudiant rêve d'avoir pour intégrer le <span className="text-[#F4845F]">top 3</span>
               </h2>
 
-              <div className="grid lg:grid-cols-2 gap-10 text-left">
-                {/* Colonne Cours */}
-                <div>
-                  <div className="flex items-center mb-6">
-                    <div className="w-10 h-10 bg-[#FDF0EC] rounded-lg mr-3 flex items-center justify-center">
-                      <BookOpen className="w-5 h-5 text-[#F4845F]" />
+              <div className="grid lg:grid-cols-5 gap-6 text-left items-stretch">
+                {/* Colonne Cours — 2/5 */}
+                <div className="lg:col-span-2 flex">
+                  <div className="relative w-full bg-gradient-to-br from-[#FDF0EC] to-white border border-[#F9C4B0] rounded-2xl p-7 flex flex-col">
+                    <div className="flex items-center mb-5">
+                      <div className="w-10 h-10 bg-white border border-[#F9C4B0] rounded-lg mr-3 flex items-center justify-center">
+                        <BookOpen className="w-5 h-5 text-[#F4845F]" />
+                      </div>
+                      <h3 className="text-xs font-semibold uppercase tracking-wider text-[#C45A35]">
+                        Nos cours
+                      </h3>
                     </div>
-                    <h3 className="text-xs font-semibold uppercase tracking-wider text-[#C45A35]">
-                      Nos cours
-                    </h3>
-                  </div>
-                  <div className="bg-[#F7F6F3] rounded-lg p-6 border border-[#D8D6CE]">
-                    <p className="text-[#1A1A18] leading-relaxed">
-                      <strong className="font-serif text-xl text-[#1A1A18] block mb-2">4 à 8 cours de coaching individuel personnalisé par mois</strong>
-                      Des sessions adaptées à tes besoins spécifiques, programmées chaque semaine, matière au choix.
-                      <span className="mt-3 inline-block text-xs font-semibold text-[#C45A35] bg-[#FDF0EC] border border-[#F9C4B0] px-2.5 py-1 rounded uppercase tracking-wider">
-                        50 €/heure
-                      </span>
-                    </p>
+
+                    <div className="font-serif text-3xl sm:text-4xl text-[#1A1A18] leading-tight mb-1">
+                      4 à 8 cours
+                    </div>
+                    <div className="text-sm text-[#1A1A18]/70 mb-6 uppercase tracking-wider font-semibold">
+                      par mois · individuels
+                    </div>
+
+                    <div className="bg-white border border-[#F9C4B0] rounded-xl p-5 mb-6">
+                      <div className="flex items-baseline gap-1">
+                        <span className="font-serif text-5xl text-[#F4845F] leading-none">50</span>
+                        <span className="font-serif text-2xl text-[#F4845F] leading-none">€</span>
+                        <span className="text-sm text-[#1A1A18]/70 ml-1">/ heure</span>
+                      </div>
+                      <p className="mt-2 text-xs text-[#1A1A18]/70 uppercase tracking-wider">
+                        Tout le reste est inclus
+                      </p>
+                    </div>
+
+                    <ul className="space-y-2.5 mt-auto">
+                      {[
+                        "Sessions personnalisées",
+                        "Matière au choix",
+                        "Programmées chaque semaine",
+                        "Coach attitré",
+                      ].map((item, i) => (
+                        <li key={i} className="flex items-start text-sm text-[#1A1A18]">
+                          <Check className="w-4 h-4 text-[#F4845F] mr-2 mt-0.5 flex-shrink-0" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
 
-                {/* Colonne Ressources */}
-                <div>
-                  <div className="flex items-center mb-6">
+                {/* Colonne Ressources — 3/5 */}
+                <div className="lg:col-span-3 flex flex-col">
+                  <div className="flex items-center mb-5">
                     <div className="w-10 h-10 bg-[#FDF0EC] rounded-lg mr-3 flex items-center justify-center">
                       <Star className="w-5 h-5 text-[#F4845F]" />
                     </div>
                     <h3 className="text-xs font-semibold uppercase tracking-wider text-[#C45A35]">
-                      Nos ressources
+                      Nos ressources <span className="text-[#1A1A18]/50 font-normal normal-case ml-1">— tout inclus</span>
                     </h3>
                   </div>
 
-                  <ul className="space-y-3">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-3">
                     {[
-                      { title: "Live méthodologie", text: "Au moins une fois par mois avec des invités professeurs en prépa." },
-                      { title: "Formation Maths", text: "Flash cards, cours, exercices indispensables corrigés (INCLUS)." },
-                      { title: "Formation Python", text: "Flash cards, cours, exercices indispensables corrigés (INCLUS)." },
-                      { title: "Conversation WhatsApp Exclusive", text: "Un suivi quotidien avec réponses à toutes tes questions en temps réel. Partage d'astuces, motivation pour ne jamais te sentir seul." },
-                      { title: "Formation LV1/LV2", text: "Fiche de civilisation, flash cards, vocabulaire, correcteur IA (INCLUS)." },
-                      { title: "Géopolitique/ESH", text: "Études de cas, plans, flash cards (INCLUS)." },
-                      { title: "Culture générale", text: "Méthode complète (INCLUS)." },
+                      { icon: Calendar, title: "Live méthodologie", text: "Mensuel avec des profs invités." },
+                      { icon: Sigma, title: "Formation Maths", text: "Cours, flashcards, exercices corrigés." },
+                      { icon: Code2, title: "Formation Python", text: "Cours, flashcards, exercices corrigés." },
+                      { icon: Languages, title: "Formation LV1/LV2", text: "Civilisation, vocabulaire, correcteur IA." },
+                      { icon: Globe2, title: "Géopolitique / ESH", text: "Études de cas, plans, flashcards." },
+                      { icon: Library, title: "Culture générale", text: "Méthode complète." },
                     ].map((item, i) => (
-                      <li key={i} className="flex items-start bg-white p-4 rounded-lg border border-[#D8D6CE] hover:border-[#F4845F] transition-colors duration-300">
-                        <span className="text-[#F4845F] font-serif text-lg mr-3 leading-none mt-1">→</span>
-                        <span className="text-[#1A1A18] text-sm leading-relaxed">
-                          <strong className="text-[#1A1A18] font-semibold block mb-1">{item.title}</strong>
+                      <div
+                        key={i}
+                        className="bg-white border border-[#D8D6CE] hover:border-[#F4845F] rounded-xl p-4 transition-colors duration-300 group"
+                      >
+                        <div className="w-9 h-9 bg-[#FDF0EC] rounded-lg flex items-center justify-center mb-3 group-hover:bg-[#F4845F]/10 transition-colors">
+                          <item.icon className="w-4 h-4 text-[#F4845F]" />
+                        </div>
+                        <div className="text-sm font-semibold text-[#1A1A18] leading-tight mb-1">
+                          {item.title}
+                        </div>
+                        <p className="text-xs text-[#1A1A18]/70 leading-snug">
                           {item.text}
-                        </span>
-                      </li>
+                        </p>
+                      </div>
                     ))}
-                  </ul>
-                </div>
-              </div>
+                  </div>
 
-              <div className="mt-10 bg-[#FDF0EC] border border-[#F9C4B0] rounded-lg p-8 text-center">
-                <h3 className="font-serif text-2xl sm:text-3xl text-[#C45A35] mb-2">
-                  Transparence totale
-                </h3>
-                <p className="text-base sm:text-lg text-[#1A1A18]">
-                  <strong>50 €/heure</strong> pour les cours individuels <span className="mx-2 text-[#F4845F]">·</span> <span className="font-semibold text-[#C45A35]">tout le reste est inclus</span>
-                </p>
+                  {/* WhatsApp pleine largeur */}
+                  <div className="bg-[#1A1A18] rounded-xl p-5 flex items-start gap-4 mt-auto">
+                    <div className="w-11 h-11 bg-[#F4845F] rounded-lg flex items-center justify-center flex-shrink-0">
+                      <MessageCircle className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1 flex-wrap">
+                        <span className="text-sm font-semibold text-white">WhatsApp privé</span>
+                        <span className="text-[10px] font-semibold text-[#1A1A18] bg-[#F4845F] px-2 py-0.5 rounded-full uppercase tracking-wider">
+                          Exclusif
+                        </span>
+                      </div>
+                      <p className="text-xs text-white/70 leading-snug">
+                        Un suivi quotidien, des réponses en temps réel, des astuces et de la motivation. Tu n'es jamais seul·e.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -239,7 +239,7 @@ const Chapitre1CalculsCoursPage = () => {
         </section>
 
         {/* Section 4 — Relations */}
-        <section className="mb-16 relative">
+        <section className="mb-14 relative">
           <div className="flex items-baseline gap-4 mb-6">
             <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">04</span>
             <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
@@ -255,9 +255,157 @@ const Chapitre1CalculsCoursPage = () => {
                 { txt: <>Exemple&nbsp;: <span className="inline-block align-middle"><LatexRenderer latex={'2^3 = e^{3 \\ln 2}'} /></span></> },
                 { txt: <>Utile pour dériver <span className="inline-block align-middle"><LatexRenderer latex={'a^x = e^{x \\ln a}'} /></span>, dérivée <span className="inline-block align-middle"><LatexRenderer latex={'a^x \\ln a'} /></span></> },
                 { txt: <>Logarithme d'une puissance&nbsp;: <span className="inline-block align-middle"><LatexRenderer latex={'\\ln(a^b) = b \\ln a'} /></span></> },
+                { txt: <>Changement de base&nbsp;: <span className="inline-block align-middle"><LatexRenderer latex={'\\log_a(x) = \\frac{\\ln x}{\\ln a}'} /></span> (avec <span className="inline-block align-middle"><LatexRenderer latex={'a > 0, a \\neq 1'} /></span>)</> },
+                { txt: <>Équation type&nbsp;: <span className="inline-block align-middle"><LatexRenderer latex={'a^x = b \\Leftrightarrow x = \\frac{\\ln b}{\\ln a}'} /></span> (pour <span className="inline-block align-middle"><LatexRenderer latex={'a, b > 0, a \\neq 1'} /></span>)</> },
               ].map((row, i) => (
                 <div key={i} className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-5 font-instrument text-[15px] text-carnet-ink-soft leading-[1.65]">
                   {row.txt}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 5 — Inégalités classiques */}
+        <section className="mb-14 relative">
+          <div className="flex items-baseline gap-4 mb-6">
+            <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">05</span>
+            <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+            <h2 className="font-lora text-[30px] sm:text-[34px] text-carnet-ink leading-tight">
+              Inégalités <em className="font-lora italic text-carnet-red">classiques</em>
+            </h2>
+          </div>
+
+          <div className="carnet-card p-8 sm:p-10 carnet-tilt-l">
+            <p className="font-instrument text-[15px] text-carnet-ink-soft leading-[1.7] mb-6">
+              À <span className="carnet-hl font-lora italic">connaître par cœur</span>. Elles reviennent en boucle dans les exos d'analyse, de probas et d'études de suites.
+            </p>
+
+            <div className="grid sm:grid-cols-2 gap-3 mb-6">
+              {[
+                { label: 'Exponentielle vs droite', latex: 'e^x \\geq 1 + x', cond: '\\forall x \\in \\mathbb{R}' },
+                { label: 'Log vs droite', latex: '\\ln(1+x) \\leq x', cond: 'x > -1' },
+                { label: 'Log vs droite (bis)', latex: '\\ln(x) \\leq x - 1', cond: 'x > 0' },
+                { label: 'Log minoré', latex: '\\ln(1+x) \\geq \\frac{x}{1+x}', cond: 'x > -1' },
+                { label: 'Égalité', latex: 'e^x = 1 + x \\Leftrightarrow x = 0', cond: '' },
+                { label: 'Égalité (ln)', latex: '\\ln(1+x) = x \\Leftrightarrow x = 0', cond: '' },
+              ].map((rule, i) => (
+                <div key={i} className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-4">
+                  <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-2">
+                    {rule.label}
+                  </div>
+                  <div className="font-mono-jb text-[14px] text-carnet-ink mb-1">
+                    <LatexRenderer latex={rule.latex} />
+                  </div>
+                  {rule.cond && (
+                    <div className="font-instrument text-[12px] text-carnet-ink-mute italic">
+                      pour <span className="inline-block align-middle"><LatexRenderer latex={rule.cond} /></span>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-carnet-ink rounded-md p-6 relative">
+              <div className="absolute -top-3 left-6 bg-carnet-red text-carnet-paper-2 px-3 py-0.5 carnet-hand text-[16px] font-semibold" style={{ transform: 'rotate(-3deg)' }}>
+                Astuce mémo
+              </div>
+              <p className="font-instrument text-[14px] text-carnet-paper leading-[1.7] mt-2">
+                <span className="carnet-hand text-[20px] mr-2">→</span>
+                Les courbes de <span className="inline-block align-middle text-carnet-paper"><LatexRenderer latex={'e^x'} /></span> et de <span className="inline-block align-middle text-carnet-paper"><LatexRenderer latex={'\\ln'} /></span> sont symétriques par rapport à <span className="inline-block align-middle text-carnet-paper"><LatexRenderer latex={'y = x'} /></span>. La droite <span className="inline-block align-middle text-carnet-paper"><LatexRenderer latex={'y = x + 1'} /></span> est tangente à <span className="inline-block align-middle text-carnet-paper"><LatexRenderer latex={'e^x'} /></span> en <span className="inline-block align-middle text-carnet-paper"><LatexRenderer latex={'x = 0'} /></span> — d'où <span className="inline-block align-middle text-carnet-paper"><LatexRenderer latex={'e^x \\geq x + 1'} /></span>.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 6 — Croissance comparée */}
+        <section className="mb-14 relative">
+          <div className="flex items-baseline gap-4 mb-6">
+            <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">06</span>
+            <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+            <h2 className="font-lora text-[30px] sm:text-[34px] text-carnet-ink leading-tight">
+              Croissance <em className="font-lora italic text-carnet-red">comparée</em>
+            </h2>
+          </div>
+
+          <div className="carnet-card p-8 sm:p-10 carnet-tilt-r">
+            <p className="font-instrument text-[15px] text-carnet-ink-soft leading-[1.7] mb-6">
+              Hiérarchie à connaître : <strong className="text-carnet-ink">l'exponentielle bat la puissance, qui bat le logarithme</strong>. Elle débloque presque toutes les FI.
+            </p>
+
+            <div className="grid sm:grid-cols-2 gap-3 mb-6">
+              {[
+                { label: 'Exp écrase tout', latex: '\\lim_{x \\to +\\infty} \\frac{e^x}{x^n} = +\\infty' },
+                { label: 'Exp en 0 (négatif)', latex: '\\lim_{x \\to -\\infty} x^n e^{x} = 0' },
+                { label: 'ln écrasé en +∞', latex: '\\lim_{x \\to +\\infty} \\frac{\\ln x}{x^n} = 0' },
+                { label: 'ln écrasé en 0', latex: '\\lim_{x \\to 0^+} x^n \\ln x = 0' },
+                { label: 'Limite remarquable', latex: '\\lim_{x \\to 0} \\frac{\\ln(1+x)}{x} = 1' },
+                { label: 'Limite remarquable (exp)', latex: '\\lim_{x \\to 0} \\frac{e^x - 1}{x} = 1' },
+              ].map((rule, i) => (
+                <div key={i} className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] border-l-2 border-l-carnet-red rounded-md p-4">
+                  <div className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-2">
+                    {rule.label}
+                  </div>
+                  <div className="font-mono-jb text-[13px] text-carnet-ink">
+                    <LatexRenderer latex={rule.latex} />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.7] italic">
+              Toutes ces limites sont valables pour <span className="inline-block align-middle"><LatexRenderer latex={'n \\in \\mathbb{N}^*'} /></span> (et plus largement <span className="inline-block align-middle"><LatexRenderer latex={'n > 0'} /></span> réel).
+            </div>
+          </div>
+        </section>
+
+        {/* Section 7 — Pièges classiques */}
+        <section className="mb-16 relative">
+          <div className="flex items-baseline gap-4 mb-6">
+            <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">07</span>
+            <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+            <h2 className="font-lora text-[30px] sm:text-[34px] text-carnet-ink leading-tight">
+              Pièges <em className="font-lora italic text-carnet-red">à éviter</em>
+            </h2>
+          </div>
+
+          <div className="carnet-card p-8 sm:p-10 carnet-tilt-l">
+            <p className="font-instrument text-[15px] text-carnet-ink-soft leading-[1.7] mb-6">
+              Les erreurs qu'on retrouve dans <span className="carnet-hl font-lora italic">presque toutes les copies</span>. Si tu en évites ne serait-ce que la moitié, tu gagnes 1 à 2 points par DS.
+            </p>
+
+            <div className="space-y-3">
+              {[
+                { wrong: '\\ln(a+b) = \\ln a + \\ln b', right: '\\ln(ab) = \\ln a + \\ln b', note: 'Le ln transforme un produit en somme — pas une somme.' },
+                { wrong: 'e^{a+b} = e^a + e^b', right: 'e^{a+b} = e^a \\cdot e^b', note: 'L\'exponentielle transforme une somme en produit.' },
+                { wrong: '(a+b)^n = a^n + b^n', right: '(ab)^n = a^n b^n', note: 'La distributivité ne marche pas pour les puissances : développer avec le binôme.' },
+                { wrong: '\\sqrt{a+b} = \\sqrt{a} + \\sqrt{b}', right: '\\sqrt{ab} = \\sqrt{a}\\sqrt{b}', note: 'La racine d\'une somme n\'est pas la somme des racines.' },
+                { wrong: '\\ln(-x) \\text{ existe toujours}', right: '\\ln \\text{ n\'est définie que pour } x > 0', note: 'Toujours vérifier les conditions d\'existence avant de manipuler.' },
+                { wrong: 'e^x = 0 \\text{ a une solution}', right: 'e^x > 0 \\text{ pour tout } x \\in \\mathbb{R}', note: 'L\'exponentielle ne s\'annule jamais.' },
+              ].map((piege, i) => (
+                <div key={i} className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] rounded-md p-5">
+                  <div className="grid sm:grid-cols-2 gap-4 mb-3">
+                    <div className="bg-[rgba(193,68,58,0.06)] border border-[rgba(193,68,58,0.25)] rounded-md p-3">
+                      <div className="font-instrument text-[10px] uppercase tracking-[0.12em] text-carnet-red font-semibold mb-1.5 flex items-center gap-1.5">
+                        <span className="text-[14px]">✗</span> Faux
+                      </div>
+                      <div className="font-mono-jb text-[14px] text-carnet-ink">
+                        <LatexRenderer latex={piege.wrong} />
+                      </div>
+                    </div>
+                    <div className="bg-[rgba(78,55,30,0.04)] border border-[rgba(78,55,30,0.18)] rounded-md p-3">
+                      <div className="font-instrument text-[10px] uppercase tracking-[0.12em] text-carnet-ink-soft font-semibold mb-1.5 flex items-center gap-1.5">
+                        <span className="text-[14px] text-carnet-ink">✓</span> Vrai
+                      </div>
+                      <div className="font-mono-jb text-[14px] text-carnet-ink">
+                        <LatexRenderer latex={piege.right} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="font-instrument text-[13px] text-carnet-ink-soft italic leading-[1.6] flex items-start gap-2">
+                    <span className="carnet-hand text-[16px] text-carnet-red leading-none flex-shrink-0 mt-0.5">→</span>
+                    <span>{piege.note}</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -278,7 +426,7 @@ const Chapitre1CalculsCoursPage = () => {
               </p>
             </div>
             <Link to="/formation/math/terminale-vers-prepa/calculs-exercices" className="flex-shrink-0">
-              <Button className="bg-carnet-red hover:bg-[#9E342B] text-carnet-paper font-instrument font-semibold text-[15px] py-6 px-7 rounded-full border-0 h-auto">
+              <Button className="bg-carnet-red hover:bg-carnet-red-deep text-carnet-paper font-instrument font-semibold text-[15px] py-6 px-7 rounded-full border-0 h-auto">
                 <Calculator className="mr-2 h-4 w-4" />
                 Faire les exercices
                 <ArrowRight className="ml-2 h-4 w-4" />

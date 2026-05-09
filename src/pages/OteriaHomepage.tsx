@@ -1,231 +1,201 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Home, ChevronRight, Code2, Shield, Binary, Network, BarChart3, Target, Brain, GraduationCap, BookOpen, ArrowRight, Zap, Sparkles, MessageSquare } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Home, ChevronRight, Code2, Shield, Binary, Network, BarChart3, Target, Brain, GraduationCap, BookOpen, ArrowRight, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const OteriaHomepage = () => {
-  const observerRef = useRef<IntersectionObserver | null>(null);
-
-  useEffect(() => {
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    );
-
-    const elements = document.querySelectorAll('.fade-in-up, .scale-in');
-    elements.forEach((el) => {
-      observerRef.current?.observe(el);
-    });
-
-    return () => observerRef.current?.disconnect();
-  }, []);
-
   return (
-    <div className="min-h-screen bg-[#0a0f1a]">
-      {/* Fil d'Ariane - Dark Mode */}
-      <nav className="sticky top-0 z-50 bg-[#0a0f1a]/90 backdrop-blur-xl border-b border-white/10">
-        <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center text-xs text-pink-500">
-            <Link to="/" className="flex items-center gap-1 hover:text-pink-400 transition-colors">
-              <Home className="h-3 w-3" />
+    <div className="carnet-paper min-h-screen">
+      {/* Fil d'Ariane */}
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+              <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-pink-500/50 mx-1" />
-            <span className="text-white font-medium">OTERIA Cyber School</span>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">OTERIA Cyber School</span>
           </div>
         </div>
       </nav>
 
-      {/* Decorative Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-40 left-20 w-96 h-96 bg-pink-500/10 rounded-full blur-[120px]"></div>
-        <div className="absolute top-80 right-20 w-80 h-80 bg-pink-500/8 rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-40 left-1/2 w-96 h-96 bg-pink-500/10 rounded-full blur-[150px]"></div>
-      </div>
+      {/* Hero */}
+      <section className="relative py-20 lg:py-24">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-[820px]"
+          >
+            <div className="carnet-eyebrow mb-6">OTERIA Cyber School · Formation Post-bac à Bac+5</div>
 
-      <div className="container mx-auto py-12 px-4 relative z-10">
-        {/* Hero Header */}
-        <div className="text-center mb-16 fade-in-up">
-          <div className="flex justify-center mb-8">
-            <div className="relative w-24 h-24 bg-pink-500 rounded-2xl flex items-center justify-center shadow-2xl shadow-pink-500/40 rotate-3 hover:rotate-6 transition-all duration-300">
-              <Code2 className="h-12 w-12 text-white" />
-              <div className="absolute inset-0 bg-pink-400/20 rounded-2xl"></div>
-            </div>
-          </div>
+            <h1 className="font-lora text-[44px] sm:text-[56px] lg:text-[68px] leading-[1.05] text-carnet-ink tracking-tight mb-6">
+              OTERIA{' '}
+              <em className="font-lora italic text-carnet-red">Cyber School</em>.
+            </h1>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 text-white">
-            OTERIA Cyber School
-          </h1>
+            <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.65] text-carnet-ink-soft max-w-[680px] mb-8">
+              Formation intensive en <span className="carnet-hl font-lora italic">mathématiques, logique et programmation</span> pour l'informatique et la cybersécurité.
+            </p>
 
-          <p className="text-xl sm:text-2xl text-white/70 max-w-4xl mx-auto mb-10 leading-relaxed font-light">
-            Formation intensive en <span className="text-pink-500 font-semibold">mathématiques</span>, <span className="text-pink-500 font-semibold">logique</span> et <span className="text-pink-500 font-semibold">programmation</span> pour l'informatique et la cybersécurité
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            <div className="group px-5 py-2.5 bg-white/5 backdrop-blur-sm border border-pink-500/30 rounded-full flex items-center gap-2 hover:bg-white/10 hover:border-pink-500/50 transition-all duration-300">
-              <Shield className="h-4 w-4 text-pink-500 group-hover:scale-110 transition-transform" />
-              <span className="text-white/90 font-medium text-sm">Cybersécurité</span>
-            </div>
-            <div className="group px-5 py-2.5 bg-white/5 backdrop-blur-sm border border-pink-500/30 rounded-full flex items-center gap-2 hover:bg-white/10 hover:border-pink-500/50 transition-all duration-300">
-              <Code2 className="h-4 w-4 text-pink-500 group-hover:scale-110 transition-transform" />
-              <span className="text-white/90 font-medium text-sm">Programmation</span>
-            </div>
-            <div className="group px-5 py-2.5 bg-white/5 backdrop-blur-sm border border-pink-500/30 rounded-full flex items-center gap-2 hover:bg-white/10 hover:border-pink-500/50 transition-all duration-300">
-              <Brain className="h-4 w-4 text-pink-500 group-hover:scale-110 transition-transform" />
-              <span className="text-white/90 font-medium text-sm">Algorithmique</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Titre Section Formations */}
-        <div className="text-center mb-12 fade-in-up" style={{ animationDelay: '0.2s' }}>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-pink-500">
-            Nos formations Post-bac à Bac+5
-          </h2>
-          <p className="text-white/60 text-lg">
-            OTERIA délivre son titre RNCP de Niveau 7 « Expert en Cybersécurité » (#39999)
-          </p>
-        </div>
-
-        {/* Bachelor 2 Card - Modern Glassmorphic */}
-        <div className="flex justify-center mb-20 fade-in-up" style={{ animationDelay: '0.3s' }}>
-          <div className="w-full max-w-2xl">
-            <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-pink-500/50 transition-all duration-500 overflow-hidden hover:shadow-2xl hover:shadow-pink-500/20">
-              {/* Animated background */}
-              <div className="absolute inset-0 bg-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-              {/* Glow effect */}
-              <div className="absolute -top-40 -right-40 w-80 h-80 bg-pink-500/20 rounded-full blur-[100px] group-hover:bg-pink-500/30 transition-all duration-500"></div>
-
-              <div className="relative z-10">
-                {/* Header */}
-                <div className="text-center mb-8">
-                  <div className="flex justify-center mb-6">
-                    <div className="w-20 h-20 bg-pink-500 rounded-2xl flex items-center justify-center shadow-xl shadow-pink-500/40 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                      <GraduationCap className="h-10 w-10 text-white" />
-                    </div>
-                  </div>
-                  <h3 className="text-3xl font-bold text-white mb-3">Bachelor 2</h3>
-                  <div className="inline-flex px-4 py-1.5 bg-pink-500/20 border border-pink-500/30 rounded-full">
-                    <span className="text-pink-400 font-semibold text-sm">Niveau Fondamental</span>
-                  </div>
-                </div>
-
-                {/* Description */}
-                <p className="text-white/80 text-center mb-8 leading-relaxed text-lg">
-                  Initiation aux bases des mathématiques, logique et programmation Python. Programme structuré en <span className="text-pink-500 font-semibold">14 séances intensives</span> couvrant les concepts fondamentaux nécessaires à l'informatique et la cybersécurité.
-                </p>
-
-                {/* Features Grid */}
-                <div className="grid grid-cols-2 gap-4 mb-8">
-                  <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all">
-                    <div className="w-10 h-10 bg-pink-500/20 rounded-lg flex items-center justify-center">
-                      <Binary className="h-5 w-5 text-pink-500" />
-                    </div>
-                    <span className="text-white/90 font-medium">Logique</span>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all">
-                    <div className="w-10 h-10 bg-pink-500/20 rounded-lg flex items-center justify-center">
-                      <Code2 className="h-5 w-5 text-pink-500" />
-                    </div>
-                    <span className="text-white/90 font-medium">Python</span>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all">
-                    <div className="w-10 h-10 bg-pink-500/20 rounded-lg flex items-center justify-center">
-                      <BarChart3 className="h-5 w-5 text-pink-500" />
-                    </div>
-                    <span className="text-white/90 font-medium">Mathématiques</span>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all">
-                    <div className="w-10 h-10 bg-pink-500/20 rounded-lg flex items-center justify-center">
-                      <Network className="h-5 w-5 text-pink-500" />
-                    </div>
-                    <span className="text-white/90 font-medium">Probabilités</span>
-                  </div>
-                </div>
-
-                {/* CTA Button */}
-                <Link to="/articles/oteria-cyber-school/bachelor-1">
-                  <Button className="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold text-lg py-6 rounded-xl shadow-xl shadow-pink-500/30 hover:shadow-2xl hover:shadow-pink-500/40 transition-all duration-300 group border-0">
-                    <BookOpen className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-                    Accéder au Programme Bachelor 2
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
+            <div className="flex flex-wrap items-center gap-3 mb-2">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(193,68,58,0.06)] border border-[rgba(193,68,58,0.25)]">
+                <Shield className="h-4 w-4 text-carnet-red" />
+                <span className="font-instrument text-[13px] font-semibold text-carnet-ink">Cybersécurité</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)]">
+                <Code2 className="h-4 w-4 text-carnet-ink-soft" />
+                <span className="font-instrument text-[13px] text-carnet-ink-soft">Programmation</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)]">
+                <Brain className="h-4 w-4 text-carnet-ink-soft" />
+                <span className="font-instrument text-[13px] text-carnet-ink-soft">Algorithmique</span>
               </div>
             </div>
-          </div>
+
+            <p className="font-instrument text-[14px] text-carnet-ink-mute mt-6 max-w-[640px]">
+              OTERIA délivre son titre RNCP de Niveau 7 « Expert en Cybersécurité » (#39999).
+            </p>
+          </motion.div>
         </div>
+      </section>
 
+      {/* Section Bachelor 2 */}
+      <section className="relative pb-20 lg:pb-24">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.5 }}
+            className="max-w-[760px] mb-10"
+          >
+            <div className="carnet-eyebrow mb-5">Nos formations</div>
+            <h2 className="font-lora text-[28px] sm:text-[36px] lg:text-[44px] leading-[1.1] text-carnet-ink tracking-tight">
+              Bachelor <em className="font-lora italic text-carnet-red">2</em>.
+            </h2>
+            <p className="font-instrument text-[15px] lg:text-[17px] leading-[1.6] text-carnet-ink-soft mt-4 max-w-[600px]">
+              Initiation aux bases des mathématiques, logique et programmation Python en <span className="font-semibold text-carnet-ink">14 séances intensives</span>.
+            </p>
+          </motion.div>
 
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.5 }}
+            className="carnet-tilt-l"
+          >
+            <div className="carnet-card relative p-7 sm:p-9 overflow-hidden">
+              <div className="flex items-start sm:items-center gap-5 mb-7">
+                <div className="flex-shrink-0 flex flex-col items-center">
+                  <span className="carnet-hand text-[40px] sm:text-[48px] text-carnet-red leading-none font-semibold">
+                    B2
+                  </span>
+                  <hr className="w-8 h-0.5 bg-carnet-ink border-0 mt-1" />
+                </div>
 
-        {/* Méthodologie Pédagogique */}
-        <div className="fade-in-up" style={{ animationDelay: '0.5s' }}>
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-white">
-            Méthodologie Pédagogique
-          </h2>
+                <div className="hidden sm:flex w-11 h-11 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] items-center justify-center flex-shrink-0">
+                  <GraduationCap className="h-5 w-5 text-carnet-red" />
+                </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="flex-1 min-w-0">
+                  <div className="carnet-eyebrow text-[11px] mb-1.5">Niveau Fondamental</div>
+                  <h3 className="font-lora text-[24px] sm:text-[28px] leading-[1.2] text-carnet-ink">
+                    Bachelor 2
+                  </h3>
+                  <p className="font-instrument text-[14px] sm:text-[15px] text-carnet-ink-soft leading-[1.55] mt-1">
+                    Programme structuré en 14 séances intensives couvrant les concepts fondamentaux nécessaires à l'informatique et la cybersécurité.
+                  </p>
+                </div>
+              </div>
+
+              {/* Features Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-7">
+                {[
+                  { icon: Binary, label: 'Logique' },
+                  { icon: Code2, label: 'Python' },
+                  { icon: BarChart3, label: 'Mathématiques' },
+                  { icon: Network, label: 'Probabilités' },
+                ].map((feature) => (
+                  <div
+                    key={feature.label}
+                    className="flex items-center gap-2.5 px-3 py-2.5 bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] rounded-md"
+                  >
+                    <feature.icon className="h-4 w-4 text-carnet-red flex-shrink-0" />
+                    <span className="font-instrument text-[13px] font-medium text-carnet-ink truncate">
+                      {feature.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <Link to="/articles/oteria-cyber-school/bachelor-1">
+                <Button className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold rounded-full h-12 px-6 text-sm border-0 group">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Accéder au Programme Bachelor 2
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Méthodologie Pédagogique */}
+      <section className="relative pb-24 lg:pb-28">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.5 }}
+            className="max-w-[760px] mb-10"
+          >
+            <div className="carnet-eyebrow mb-5">Notre approche</div>
+            <h2 className="font-lora text-[28px] sm:text-[36px] lg:text-[44px] leading-[1.1] text-carnet-ink tracking-tight">
+              Méthodologie <em className="font-lora italic text-carnet-red">pédagogique</em>.
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { icon: BookOpen, title: 'Cours Théoriques', desc: 'Apprentissage structuré des concepts fondamentaux' },
               { icon: Target, title: 'Exercices Pratiques', desc: 'Mise en application immédiate des connaissances' },
               { icon: Brain, title: 'Flashcards', desc: 'Révision interactive et mémorisation efficace' },
-              { icon: Zap, title: 'Évaluations', desc: 'QCM et tests pour valider les acquis' }
-            ].map((item, idx) => (
-              <div key={idx} className="group relative bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 hover:border-pink-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-pink-500/10">
-                <div className="w-12 h-12 bg-pink-500/20 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <item.icon className="h-6 w-6 text-pink-500" />
-                </div>
-                <h3 className="font-bold text-white text-lg mb-2 text-center">{item.title}</h3>
-                <p className="text-sm text-white/60 text-center leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
+              { icon: Zap, title: 'Évaluations', desc: 'QCM et tests pour valider les acquis' },
+            ].map((item, idx) => {
+              const tilt = idx % 4 === 1 ? 'carnet-tilt-r' : idx % 4 === 3 ? 'carnet-tilt-l' : '';
+              return (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.5, delay: idx * 0.06 }}
+                  className={tilt}
+                >
+                  <div className="carnet-card p-6 h-full">
+                    <div className="w-11 h-11 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center mb-4">
+                      <item.icon className="h-5 w-5 text-carnet-red" />
+                    </div>
+                    <h3 className="font-lora text-[18px] leading-[1.25] text-carnet-ink mb-2">
+                      {item.title}
+                    </h3>
+                    <hr className="w-8 h-0.5 bg-carnet-ink border-0 mb-3" />
+                    <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.55]">
+                      {item.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
-      </div>
-
-      {/* Animations CSS */}
-      <style>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes scaleIn {
-          from {
-            opacity: 0;
-            transform: scale(0.95);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-
-        .fade-in-up, .scale-in {
-          opacity: 0;
-        }
-
-        .fade-in-up.animate-in {
-          animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .scale-in.animate-in {
-          animation: scaleIn 0.6s ease-out forwards;
-        }
-      `}</style>
+      </section>
     </div>
   );
 };

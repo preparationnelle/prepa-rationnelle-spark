@@ -216,16 +216,16 @@ export const MathFlashcards: React.FC<MathFlashcardsProps> = ({
 
             <div className="flex-1 flex flex-col justify-center items-center w-full max-w-2xl">
               {!showAnswer ? (
-                <div className="animate-in fade-in zoom-in-95 duration-300">
+                <div className="animate-in fade-in zoom-in-95 duration-300 w-full">
                   <h3 className="text-2xl sm:text-3xl font-serif text-slate-900 leading-relaxed mb-6">
                     {renderTextWithLatex(currentCard.front)}
                   </h3>
                   {currentCard.frontLatex && (
-                    <div className="mt-4 p-4 rounded-lg bg-slate-50">
-                      <LatexRenderer latex={currentCard.frontLatex} />
+                    <div className="mt-4 p-5 rounded-lg bg-amber-50 border border-amber-100 text-slate-900 text-lg flex justify-center">
+                      <LatexRenderer latex={currentCard.frontLatex} block />
                     </div>
                   )}
-                  <div className="mt-12">
+                  <div className="mt-10">
                     <Button
                       onClick={toggleAnswer}
                       className="bg-slate-900 hover:bg-slate-800 text-white rounded-full px-8 shadow-none transition-transform active:scale-95"
@@ -241,8 +241,8 @@ export const MathFlashcards: React.FC<MathFlashcardsProps> = ({
                       {renderTextWithLatex(currentCard.back)}
                     </div>
                     {currentCard.backLatex && (
-                      <div className="mt-4 p-6 rounded-lg bg-slate-900 text-slate-50 overflow-x-auto text-left shadow-inner">
-                        <LatexRenderer latex={currentCard.backLatex} />
+                      <div className="mt-5 p-6 rounded-lg bg-emerald-50 border border-emerald-200 text-slate-900 overflow-x-auto text-center text-xl">
+                        <LatexRenderer latex={currentCard.backLatex} block />
                       </div>
                     )}
                   </div>
@@ -278,27 +278,31 @@ export const MathFlashcards: React.FC<MathFlashcardsProps> = ({
         <Button
           onClick={prevCard}
           disabled={currentIndex === 0}
-          variant="ghost"
-          className="text-slate-400 hover:text-slate-900"
+          variant="outline"
+          className="border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-slate-900 disabled:opacity-30 rounded-full px-5 h-11"
         >
-          <ChevronLeft className="h-5 w-5" />
+          <ChevronLeft className="h-5 w-5 mr-1.5" />
+          Précédente
         </Button>
 
-        <div />
+        <span className="text-xs text-slate-400 font-mono hidden sm:inline">
+          Carte {currentIndex + 1} / {totalCards}
+        </span>
 
         <Button
           onClick={nextCard}
           disabled={currentIndex === totalCards - 1}
-          variant="ghost"
-          className="text-slate-400 hover:text-slate-900"
+          variant="outline"
+          className="border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-slate-900 disabled:opacity-30 rounded-full px-5 h-11"
         >
-          <ChevronRight className="h-5 w-5" />
+          Suivante
+          <ChevronRight className="h-5 w-5 ml-1.5" />
         </Button>
       </div>
 
-      <div className="mt-12 text-center">
-        <p className="text-xs text-slate-300 font-medium">
-          ESPACE · FLIP &nbsp;|&nbsp; ← → · NAVIGUER &nbsp;|&nbsp; R · REVOIR
+      <div className="mt-10 text-center">
+        <p className="text-xs text-slate-400 font-medium">
+          ESPACE · FLIP &nbsp;|&nbsp; ← → · NAVIGUER &nbsp;|&nbsp; R · MARQUER À REVOIR
         </p>
       </div>
     </div>

@@ -1,10 +1,22 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { ChevronRight, Home, BookOpen, Calculator, BookMarked, Award, TrendingUp, Zap, GraduationCap, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import {
+  ChevronRight,
+  Home,
+  BookOpen,
+  Calculator,
+  BookMarked,
+  Award,
+  TrendingUp,
+  Zap,
+  GraduationCap,
+  ArrowRight,
+  Sparkles,
+} from 'lucide-react';
+import { motion } from 'framer-motion';
 import { supabase } from '@/integrations/supabase/client';
+import { SEOHead } from '@/components/SEOHead';
 
 const MathsChoixOptionPage = () => {
   const navigate = useNavigate();
@@ -38,58 +50,62 @@ const MathsChoixOptionPage = () => {
       id: 'premiere-appliquees',
       year: 'premiere',
       type: 'appliquees',
+      number: 1,
       title: 'Maths Appliquées',
-      subtitle: '1ère année - Voie pratique',
+      subtitle: '1ère année · Voie pratique',
       description: 'Formation axée sur les applications pratiques, les méthodes de résolution et les cas concrets.',
       icon: Calculator,
       features: [
         'Applications pratiques et modélisation',
         'Méthodes de résolution pas à pas',
-        'Cas concrets et business cases'
-      ]
+        'Cas concrets et business cases',
+      ],
     },
     {
       id: 'premiere-approfondies',
       year: 'premiere',
       type: 'approfondies',
+      number: 2,
       title: 'Maths Approfondies',
-      subtitle: '1ère année - Voie théorique',
+      subtitle: '1ère année · Voie théorique',
       description: 'Programme complet pour la voie approfondie avec focus sur les démonstrations et concepts théoriques.',
       icon: BookOpen,
       features: [
         'Démonstrations rigoureuses',
         'Concepts théoriques avancés',
-        'Préparation intensive aux concours'
-      ]
+        'Préparation intensive aux concours',
+      ],
     },
     {
       id: 'deuxieme-appliquees',
       year: 'deuxieme',
       type: 'appliquees',
+      number: 3,
       title: 'Maths Appliquées',
-      subtitle: '2ème année - Voie avancée',
+      subtitle: '2ème année · Voie avancée',
       description: 'Seconde année avec focus sur les applications industrielles et la résolution de problèmes complexes.',
       icon: TrendingUp,
       features: [
         'Applications industrielles',
         'Problèmes complexes et Big Data',
-        'Outils informatiques avancés'
-      ]
+        'Outils informatiques avancés',
+      ],
     },
     {
       id: 'deuxieme-approfondies',
       year: 'deuxieme',
       type: 'approfondies',
+      number: 4,
       title: 'Maths Approfondies',
-      subtitle: '2ème année - Voie experte',
+      subtitle: '2ème année · Voie experte',
       description: 'Formation approfondie avec concepts mathématiques complexes et préparation intensive aux Parisiennes.',
       icon: Award,
       features: [
         'Concepts abstraits avancés',
         'Préparation concours niveau expert',
-        'Sujets types Parisiennes'
-      ]
-    }
+        'Sujets types Parisiennes',
+      ],
+    },
   ];
 
   const additionalModules = [
@@ -98,187 +114,254 @@ const MathsChoixOptionPage = () => {
       description: 'Réussir la transition : méthodes de travail, organisation et points clés à anticiper.',
       icon: GraduationCap,
       route: '/formation/math/terminale-vers-prepa',
-      badge: 'Transition'
+      badge: 'Transition',
     },
     {
       title: 'Première → Deuxième année',
       description: 'Transition vers l\'ECG2 : révisions d\'été, objectifs, planning et ressources clés.',
       icon: ArrowRight,
       route: '/formation/math/premiere-vers-deuxieme',
-      badge: 'ECG2'
+      badge: 'ECG2',
     },
     {
       title: 'Méthodologie',
       description: 'Stratégies d\'apprentissage, gestion du temps et méthodes de résolution pour les concours.',
       icon: BookMarked,
       route: '/formation/maths-methodologie',
-      badge: 'Conseils'
-    }
+      badge: 'Conseils',
+    },
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50/50 relative overflow-hidden">
-      {/* Floating elements - Refined & Sober */}
-      <div className="absolute -z-10 top-20 left-10 w-64 h-64 bg-blue-100/40 rounded-full blur-3xl"></div>
-      <div className="absolute -z-10 bottom-20 right-10 w-96 h-96 bg-indigo-100/30 rounded-full blur-3xl"></div>
-      <div className="absolute -z-10 top-40 right-1/4 w-72 h-72 bg-blue-50/80 rounded-full blur-2xl"></div>
+    <div className="carnet-paper min-h-screen">
+      <SEOHead
+        canonical="/formation/maths-choix"
+        title="Votre parcours en Mathématiques · Prépa Rationnelle"
+        description="Choisissez votre voie en mathématiques (Appliquées ou Approfondies, 1ère ou 2ème année) pour accéder aux cours, exercices et flashcards adaptés."
+      />
 
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-        <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center text-xs font-medium text-gray-500">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
               <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 mx-2 text-gray-300" />
-            <Link to="/formations" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/formations" className="hover:text-carnet-red transition-colors">
               Formations
             </Link>
-            <ChevronRight className="h-3 w-3 mx-2 text-gray-300" />
-            <span className="text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">Parcours Maths</span>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">Parcours Maths</span>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto py-12 px-4">
-        {/* Header */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-600 bg-clip-text text-transparent tracking-tight">
-            Votre parcours en <span className="text-blue-600">Mathématiques</span>
-          </h1>
-          <p className="text-lg text-gray-600 leading-relaxed">
-            Une formation d'excellence adaptée à votre niveau et à vos ambitions.
-            Sélectionnez votre voie pour accéder aux ressources.
-          </p>
+      {/* Hero */}
+      <section className="relative py-20 lg:py-24">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-[820px]"
+          >
+            <div className="carnet-eyebrow mb-6">Mathématiques · Prépa ECG</div>
+
+            <h1 className="font-lora text-[44px] sm:text-[56px] lg:text-[68px] leading-[1.05] text-carnet-ink tracking-tight mb-6">
+              Votre parcours en{' '}
+              <em className="font-lora italic text-carnet-red">Mathématiques</em>.
+            </h1>
+
+            <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.65] text-carnet-ink-soft max-w-[640px] mb-8">
+              Une <span className="carnet-hl font-lora italic">formation d'excellence</span> adaptée à votre niveau et à vos ambitions. Sélectionnez votre voie pour accéder aux ressources.
+            </p>
+
+            <div className="carnet-hand text-[24px] mt-2 hidden md:block" style={{ transform: 'rotate(-2deg)' }}>
+              ↓ choisis ta voie & ton année
+            </div>
+          </motion.div>
         </div>
+      </section>
 
-        {/* Modules Principaux */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto mb-20">
-          {allModules.map((module) => {
-            const route = `/formation/maths-${module.year}-${module.type}`;
-            return (
-              <Link key={module.id} to={route} className="group block h-full">
-                <div className="h-full bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:border-blue-100 transition-all duration-300 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -mr-8 -mt-8 opacity-50 group-hover:scale-110 transition-transform duration-500"></div>
+      {/* Modules principaux */}
+      <section className="relative pb-20">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {allModules.map((module, idx) => {
+              const route = `/formation/maths-${module.year}-${module.type}`;
+              const tilt = idx % 4 === 1 ? 'carnet-tilt-r' : idx % 4 === 3 ? 'carnet-tilt-l' : '';
 
-                  <div className="flex items-start justify-between mb-6 relative z-10">
-                    <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-sm">
-                      <module.icon className="h-7 w-7" />
+              return (
+                <motion.div
+                  key={module.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.4, delay: Math.min(idx * 0.06, 0.3) }}
+                  className={tilt}
+                >
+                  <div
+                    onClick={() => navigate(route)}
+                    className="carnet-card group cursor-pointer p-7 sm:p-8 h-full hover:shadow-[0_12px_32px_rgba(78,55,30,0.10)] transition-shadow"
+                  >
+                    {/* Header avec numéro et badge */}
+                    <div className="flex items-start justify-between mb-5">
+                      <div className="flex items-center gap-4">
+                        <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">
+                          {String(module.number).padStart(2, '0')}
+                        </span>
+                        <hr className="w-8 h-0.5 bg-carnet-ink border-0 mt-1" />
+                      </div>
+                      <span className="carnet-eyebrow text-[10px] px-3 py-1 rounded-full bg-[rgba(193,68,58,0.06)] border border-[rgba(193,68,58,0.25)] text-carnet-red">
+                        {module.year === 'premiere' ? '1ère Année' : '2ème Année'}
+                      </span>
                     </div>
-                    <Badge variant="secondary" className="bg-gray-50 text-gray-600 border-gray-100 group-hover:bg-blue-50 group-hover:text-blue-700 transition-colors">
-                      {module.year === 'premiere' ? '1ère Année' : '2ème Année'}
-                    </Badge>
-                  </div>
 
-                  <div className="relative z-10">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-1 group-hover:text-blue-700 transition-colors">
-                      {module.title}
-                    </h3>
-                    <p className="text-sm font-medium text-blue-600 mb-4 uppercase tracking-wide">
+                    {/* Icône + Titre */}
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-11 h-11 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+                        <module.icon className="h-5 w-5 text-carnet-red" />
+                      </div>
+                      <h3 className="font-lora text-[24px] sm:text-[26px] leading-[1.2] text-carnet-ink group-hover:text-carnet-red transition-colors">
+                        {module.title}
+                      </h3>
+                    </div>
+
+                    <p className="font-instrument text-[12px] uppercase tracking-[0.12em] text-carnet-ink-mute font-semibold mb-4">
                       {module.subtitle}
                     </p>
-                    <p className="text-gray-600 mb-6 leading-relaxed">
+
+                    <p className="font-instrument text-[14px] sm:text-[15px] text-carnet-ink-soft leading-[1.6] mb-6">
                       {module.description}
                     </p>
 
-                    <div className="space-y-3 mb-8 bg-gray-50/50 rounded-xl p-5 border border-gray-100/50">
-                      {module.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-start gap-3">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 shrink-0"></div>
-                          <span className="text-sm text-gray-700">{feature}</span>
+                    {/* Features */}
+                    <div className="space-y-2 mb-6 carnet-paper-plain rounded-md p-4 border border-dashed border-[rgba(78,55,30,0.18)]">
+                      {module.features.map((feature, i) => (
+                        <div key={i} className="flex items-start gap-2.5">
+                          <span className="carnet-hand text-[16px] text-carnet-red leading-none flex-shrink-0 mt-0.5">→</span>
+                          <span className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.5]">
+                            {feature}
+                          </span>
                         </div>
                       ))}
                     </div>
 
-                    <Button className="w-full bg-white text-blue-600 border border-blue-200 hover:bg-blue-50 hover:border-blue-300 group-hover:bg-blue-600 group-hover:text-white group-hover:border-transparent transition-all duration-300 font-medium h-12 rounded-xl shadow-sm">
-                      Accéder au cours
-                      <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Button>
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-
-        {/* Modules Complémentaires */}
-        <div className="mb-20">
-          <div className="flex items-center gap-4 mb-10 max-w-6xl mx-auto px-4">
-            <h2 className="text-2xl font-bold text-gray-900">Ressources & Transition</h2>
-            <div className="h-px bg-gray-100 flex-1"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {additionalModules.map((module, index) => (
-              <Link key={index} to={module.route} className="group block h-full">
-                <div className="h-full bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-lg hover:border-blue-100 transition-all duration-300">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center text-gray-500 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors">
-                      <module.icon className="h-5 w-5" />
+                    {/* CTA */}
+                    <div onClick={(e) => e.stopPropagation()}>
+                      <Link to={route}>
+                        <Button className="w-full bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold rounded-full h-11 text-[14px] border-0 transition-colors">
+                          Accéder au cours
+                          <ChevronRight className="ml-1 h-4 w-4" />
+                        </Button>
+                      </Link>
                     </div>
-                    <Badge variant="outline" className="text-xs border-gray-200 text-gray-500 group-hover:border-blue-200 group-hover:text-blue-600 transition-colors">
-                      {module.badge}
-                    </Badge>
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors">
-                    {module.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-4 line-clamp-3">
-                    {module.description}
-                  </p>
-                  <div className="flex items-center text-blue-600 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
-                    Découvrir <ArrowRight className="ml-1 h-3 w-3" />
-                  </div>
-                </div>
-              </Link>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
-        </div>
 
-        {/* Générateur IA */}
-        <div className="max-w-6xl mx-auto">
-          <Link to="/generator/math" className="group block">
-            <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl p-8 md:p-12 text-white shadow-xl shadow-blue-900/10 hover:shadow-2xl hover:scale-[1.01] transition-all duration-300 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-500/20 rounded-full blur-2xl -ml-10 -mb-10 pointer-events-none"></div>
+          {/* Modules complémentaires */}
+          <div className="mt-20">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5 }}
+              className="max-w-[760px] mb-10"
+            >
+              <div className="carnet-eyebrow mb-5">Ressources & Transition</div>
+              <h2 className="font-lora text-[28px] sm:text-[36px] lg:text-[44px] leading-[1.1] text-carnet-ink tracking-tight">
+                Pour aller <em className="font-lora italic text-carnet-red">plus loin</em>.
+              </h2>
+            </motion.div>
 
-              <div className="relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-12 text-center md:text-left">
-                <div className="shrink-0 bg-white/20 p-6 rounded-2xl backdrop-blur-sm border border-white/20">
-                  <Zap className="h-10 w-10 text-white" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {additionalModules.map((module, idx) => {
+                const tilt = idx === 0 ? 'carnet-tilt-l' : idx === 2 ? 'carnet-tilt-r' : '';
+                return (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-50px' }}
+                    transition={{ duration: 0.5, delay: idx * 0.08 }}
+                    className={tilt}
+                  >
+                    <Link to={module.route} className="block h-full">
+                      <div className="carnet-card group p-6 h-full hover:shadow-[0_12px_32px_rgba(78,55,30,0.10)] transition-shadow">
+                        <div className="flex items-center justify-between mb-4">
+                          <div className="w-10 h-10 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+                            <module.icon className="h-4 w-4 text-carnet-red" />
+                          </div>
+                          <span className="carnet-eyebrow text-[10px] px-2.5 py-1 rounded-full border border-dashed border-[rgba(78,55,30,0.25)] text-carnet-ink-mute">
+                            {module.badge}
+                          </span>
+                        </div>
+                        <h3 className="font-lora text-[20px] leading-[1.25] text-carnet-ink mb-2 group-hover:text-carnet-red transition-colors">
+                          {module.title}
+                        </h3>
+                        <hr className="w-8 h-0.5 bg-carnet-ink border-0 mb-3" />
+                        <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.6] mb-4 line-clamp-3">
+                          {module.description}
+                        </p>
+                        <div className="flex items-center gap-1.5 font-instrument text-[13px] font-semibold text-carnet-red opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all">
+                          Découvrir <ArrowRight className="h-3 w-3" />
+                        </div>
+                      </div>
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Générateur IA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.5 }}
+            className="mt-16 relative bg-carnet-ink rounded-lg p-8 sm:p-10 overflow-hidden"
+          >
+            <div className="absolute -top-24 -right-24 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(193,68,58,0.18)_0%,transparent_60%)] pointer-events-none"></div>
+
+            <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+              <div className="max-w-2xl">
+                <div className="inline-flex items-center gap-2 mb-4">
+                  <Sparkles className="h-4 w-4 text-carnet-red" />
+                  <span className="carnet-eyebrow text-carnet-red">Assistant IA · Beta</span>
                 </div>
-
-                <div className="flex-1">
-                  <div className="flex items-center justify-center md:justify-start gap-3 mb-3">
-                    <h2 className="text-2xl md:text-3xl font-bold">Assistant IA Mathématiques</h2>
-                    <Badge className="bg-white/20 hover:bg-white/30 text-white border-0 backdrop-blur-md">BETA</Badge>
-                  </div>
-                  <p className="text-blue-50 text-lg mb-6 max-w-2xl">
-                    Posez vos questions sur n'importe quel théorème ou exercice.
-                    Obtenez des démonstrations détaillées, des formules LaTeX et des explications pas à pas instantanément.
-                  </p>
-
-                  <div className="flex flex-wrap justify-center md:justify-start gap-3">
-                    <span className="flex items-center text-sm bg-black/20 rounded-full px-3 py-1 border border-white/10">
-                      <ChevronRight className="h-3 w-3 mr-1" /> Programme complet 1ère/2ème année
-                    </span>
-                    <span className="flex items-center text-sm bg-black/20 rounded-full px-3 py-1 border border-white/10">
-                      <ChevronRight className="h-3 w-3 mr-1" /> Formules LaTeX
-                    </span>
-                  </div>
-                </div>
-
-                <div className="shrink-0">
-                  <Button size="lg" className="bg-white text-blue-700 hover:bg-blue-50 border-0 font-bold h-14 px-8 rounded-xl shadow-lg">
-                    Essayer le générateur
-                    <ChevronRight className="ml-2 h-5 w-5" />
-                  </Button>
+                <h3 className="font-lora text-[26px] sm:text-[32px] text-carnet-paper leading-[1.15] mb-3">
+                  Générateur de maths intelligent.
+                </h3>
+                <p className="font-instrument text-[15px] text-[rgba(251,246,234,0.75)] leading-[1.65] mb-4">
+                  Pose tes questions sur n'importe quel théorème ou exercice. Démonstrations détaillées, formules LaTeX, explications pas à pas — instantanément.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="font-instrument text-[12px] text-[rgba(251,246,234,0.7)] border border-[rgba(251,246,234,0.2)] rounded-full px-3 py-1">
+                    Programme complet 1ère/2ème année
+                  </span>
+                  <span className="font-instrument text-[12px] text-[rgba(251,246,234,0.7)] border border-[rgba(251,246,234,0.2)] rounded-full px-3 py-1">
+                    Formules LaTeX
+                  </span>
                 </div>
               </div>
+              <div className="flex-shrink-0">
+                <Link to="/generator/math">
+                  <Button className="bg-carnet-red hover:bg-carnet-red-deep text-carnet-paper font-instrument font-semibold py-6 px-8 rounded-full border-0">
+                    <Zap className="mr-2 h-4 w-4" />
+                    Essayer le générateur
+                  </Button>
+                </Link>
+              </div>
             </div>
-          </Link>
+          </motion.div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

@@ -285,7 +285,7 @@ const Chapitre6ProbabilitesCoursPage = () => {
               </p>
             </div>
             <Link to="/formation/math/terminale-vers-prepa/probabilites-exercices" className="flex-shrink-0">
-              <Button className="bg-carnet-red hover:bg-[#9E342B] text-carnet-paper font-instrument font-semibold text-[15px] py-6 px-7 rounded-full border-0 h-auto">
+              <Button className="bg-carnet-red hover:bg-carnet-red-deep text-carnet-paper font-instrument font-semibold text-[15px] py-6 px-7 rounded-full border-0 h-auto">
                 <Dices className="mr-2 h-4 w-4" />
                 Faire les exercices
                 <ArrowRight className="ml-2 h-4 w-4" />

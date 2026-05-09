@@ -12,10 +12,10 @@ const PythonModuleLayout: React.FC<PythonModuleLayoutProps> = ({
   showNavigation = true
 }) => {
   return (
-    <div className="min-h-screen bg-pr-gray-bg font-dm-sans text-pr-gray-dark">
+    <div className="min-h-screen carnet-paper carnet-cours-skin text-carnet-ink-soft">
       <PythonBreadcrumb />
 
-      <div className="max-w-4xl mx-auto px-6 py-10">
+      <div className="max-w-[1080px] mx-auto px-6 lg:pl-[200px] lg:pr-16 py-10 lg:py-14">
         <div className="mb-10">
           {children}
         </div>

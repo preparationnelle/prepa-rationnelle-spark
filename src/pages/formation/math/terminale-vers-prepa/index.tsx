@@ -19,6 +19,9 @@ import {
   GraduationCap,
   ArrowLeft,
   Sparkles,
+  Code,
+  Lightbulb,
+  Lock,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -217,6 +220,78 @@ const TerminaleVersPrepaPage: React.FC = () => {
                 </motion.div>
               );
             })}
+          </div>
+
+          {/* En complément — modules à venir */}
+          <div className="mt-20">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5 }}
+              className="max-w-[760px] mb-10"
+            >
+              <div className="carnet-eyebrow mb-5">En complément</div>
+              <h2 className="font-lora text-[28px] sm:text-[36px] lg:text-[44px] leading-[1.1] text-carnet-ink tracking-tight">
+                Pour aller <em className="font-lora italic text-carnet-red">plus loin</em>.
+              </h2>
+              <p className="font-instrument text-[15px] lg:text-[17px] leading-[1.6] text-carnet-ink-soft mt-4 max-w-[600px]">
+                Deux modules complémentaires, en plus des 10 chapitres de maths, pour arriver vraiment armé en prépa ECG.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                {
+                  icon: Code,
+                  title: 'Python',
+                  description: 'Les bases de Python à connaître avant la rentrée pour ne pas être largué dès le premier TP.',
+                },
+                {
+                  icon: Lightbulb,
+                  title: 'Méthode de travail spécifique maths prépa ECG',
+                  description: 'Comment ficher, refaire, mémoriser et travailler les maths à la manière des élèves qui réussissent en prépa.',
+                },
+              ].map((module, idx) => {
+                const tilt = idx === 0 ? 'carnet-tilt-l' : 'carnet-tilt-r';
+                return (
+                  <motion.div
+                    key={module.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-50px' }}
+                    transition={{ duration: 0.5, delay: idx * 0.08 }}
+                    className={tilt}
+                  >
+                    <div className="carnet-card relative p-7 sm:p-8 h-full opacity-90">
+                      <div className="absolute top-5 right-5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[rgba(78,55,30,0.06)] border border-dashed border-[rgba(78,55,30,0.25)]">
+                        <Lock className="h-3 w-3 text-carnet-ink-mute" />
+                        <span className="carnet-eyebrow text-[10px] text-carnet-ink-mute">Bientôt</span>
+                      </div>
+
+                      <div className="flex items-center gap-3 mb-4 pr-24">
+                        <div className="w-11 h-11 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+                          <module.icon className="h-5 w-5 text-carnet-red" />
+                        </div>
+                        <h3 className="font-lora text-[20px] sm:text-[22px] leading-[1.25] text-carnet-ink">
+                          {module.title}
+                        </h3>
+                      </div>
+                      <hr className="w-10 h-0.5 bg-carnet-ink border-0 mb-4" />
+                      <p className="font-instrument text-[14px] sm:text-[15px] text-carnet-ink-soft leading-[1.6]">
+                        {module.description}
+                      </p>
+
+                      <div className="mt-6 pt-4 border-t border-dashed border-[rgba(78,55,30,0.18)]">
+                        <span className="font-instrument text-[12px] uppercase tracking-[0.1em] text-carnet-ink-mute">
+                          Module en préparation
+                        </span>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
 
           {/* CTA bas de page */}

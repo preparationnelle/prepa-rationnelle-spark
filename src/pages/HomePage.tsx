@@ -112,7 +112,7 @@ const HomePage: React.FC = () => {
   );
 
   return (
-    <div className="carnet-paper min-h-screen">
+    <div className="min-h-screen">
       <SEOHead
         canonical="/"
         description="Prepa Rationnelle : Formations maths, Python, langues et méthodologie pour prépa ECG. +250 exercices, cours particuliers et coaching pour intégrer HEC, ESSEC, ESCP. Noté 5/5 sur Google."
@@ -142,7 +142,109 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Section 2 : Formations spécialisées */}
+      {/* Section 2 : Prépa à la prépa (Terminale → Prépa) — comparaison style copie corrigée */}
+      <section className="relative py-24 lg:py-28">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <SectionHead
+            eyebrow="Prépa à la prépa · Terminale → Prépa"
+            eyebrowLink="/articles/terminale-prepa"
+            title={<>
+              Arriver en prépa{' '}
+              <span className="relative inline-block whitespace-nowrap">
+                <span
+                  className="text-[#9C8772]"
+                  style={{ textDecoration: 'line-through', textDecorationColor: '#C1443A', textDecorationThickness: '3px' }}
+                >
+                  en panique
+                </span>
+                <span
+                  className="absolute carnet-hand italic whitespace-nowrap"
+                  style={{ top: '-0.55em', left: '0.2em', fontSize: '0.78em', color: '#C1443A', transform: 'rotate(-4deg)', fontWeight: 600 }}
+                >
+                  préparé
+                </span>
+              </span>
+              .
+            </>}
+            subtitle="La Prépa à la prépa : on anticipe la rentrée dès la terminale. Méthodes, bases solides, mindset — pour ne plus subir les premiers DS."
+          />
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.6 }}
+            className="carnet-card relative px-8 sm:px-14 py-12 sm:py-14"
+          >
+            <div className="carnet-hand absolute hidden lg:block" style={{ top: 24, right: 48, fontSize: 26, transform: 'rotate(6deg)', maxWidth: 130, lineHeight: 1.1 }}>
+              ↘ ce qu'on aurait<br/>aimé savoir
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-dashed border-[rgba(78,55,30,0.18)]">
+              {/* Colonne — Sans méthode */}
+              <div className="md:pr-10 md:border-r md:border-dashed md:border-[rgba(78,55,30,0.18)] py-10">
+                <div className="carnet-hand text-[26px] mb-4 text-[#8A7864]" style={{ transform: 'rotate(-2deg)', display: 'inline-block' }}>
+                  ✗ Sans préparation
+                </div>
+                <ul className="space-y-3">
+                  {[
+                    'Découvrir un nouveau rythme du jour au lendemain',
+                    'Réviser dans le désordre, sans plan',
+                    'Subir les premiers DS de septembre',
+                    'Perdre confiance dès la première colle',
+                  ].map((item, i) => (
+                    <li key={i} className="font-lora text-[18px] leading-[1.5] text-[#6E5D49] flex items-start gap-3" style={{ textDecoration: 'line-through', textDecorationColor: 'rgba(110,93,73,0.4)' }}>
+                      <span className="carnet-hand text-[22px] leading-none flex-none mt-0.5 text-[#8A7864]">×</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Colonne — Avec méthode */}
+              <div className="md:pl-10 py-10 border-t md:border-t-0 border-dashed border-[rgba(78,55,30,0.18)]">
+                <div className="carnet-hand text-[26px] mb-4 text-carnet-red" style={{ transform: 'rotate(-2deg)', display: 'inline-block' }}>
+                  ✓ Avec Prépa Rationnelle
+                </div>
+                <ul className="space-y-3">
+                  {[
+                    { icon: Clock, text: 'Une organisation calée avant la rentrée' },
+                    { icon: Brain, text: 'Les méthodes de travail qui marchent vraiment' },
+                    { icon: BookOpenCheck, text: 'Les bases mathématiques solides du lycée' },
+                    { icon: Compass, text: 'Le bon mindset pour tenir deux ans' },
+                  ].map((item, i) => (
+                    <li key={i} className="font-lora text-[18px] leading-[1.5] text-carnet-ink flex items-start gap-3">
+                      <span className="carnet-hand text-[22px] leading-none flex-none mt-0.5 text-carnet-red">✓</span>
+                      <span>
+                        {i === 0 ? <><span className="carnet-hl">Une organisation calée</span> avant la rentrée</> : item.text}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="pt-8 mt-2 border-t border-dashed border-[rgba(78,55,30,0.18)] flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+              <Link to="/articles/terminale-prepa">
+                <Button className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold py-6 px-8 rounded-full border-0">
+                  Découvrir la Prépa à la prépa <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              <Link
+                to="/formation/math/terminale-vers-prepa"
+                className="font-instrument text-[15px] font-medium text-carnet-ink-soft hover:text-carnet-red transition-colors flex items-center gap-2"
+              >
+                <Calculator className="h-4 w-4" /> Module Maths Terminale → Prépa →
+              </Link>
+              <span className="carnet-eyebrow text-[10px] ml-auto hidden sm:block">
+                Offre dédiée · bientôt
+              </span>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Section 3 : Formations spécialisées */}
       <section className="relative py-24 lg:py-28">
         <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
           <SectionHead
@@ -261,108 +363,6 @@ const HomePage: React.FC = () => {
               </Button>
             </Link>
           </div>
-        </div>
-      </section>
-
-      {/* Section 3.5 : Terminale → Prépa — comparaison style copie corrigée */}
-      <section className="relative py-24 lg:py-28">
-        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
-          <SectionHead
-            eyebrow="Nouveau · Pour les futurs prépas"
-            eyebrowLink="/articles/terminale-prepa"
-            title={<>
-              Arriver en prépa{' '}
-              <span className="relative inline-block whitespace-nowrap">
-                <span
-                  className="text-[#9C8772]"
-                  style={{ textDecoration: 'line-through', textDecorationColor: '#C1443A', textDecorationThickness: '3px' }}
-                >
-                  en panique
-                </span>
-                <span
-                  className="absolute carnet-hand italic whitespace-nowrap"
-                  style={{ top: '-0.55em', left: '0.2em', fontSize: '0.78em', color: '#C1443A', transform: 'rotate(-4deg)', fontWeight: 600 }}
-                >
-                  préparé
-                </span>
-              </span>
-              .
-            </>}
-            subtitle="Le passage du lycée à la prépa ECG est brutal. La bonne nouvelle : il s'anticipe."
-          />
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6 }}
-            className="carnet-card relative px-8 sm:px-14 py-12 sm:py-14"
-          >
-            <div className="carnet-hand absolute hidden lg:block" style={{ top: 24, right: 48, fontSize: 26, transform: 'rotate(6deg)', maxWidth: 130, lineHeight: 1.1 }}>
-              ↘ ce qu'on aurait<br/>aimé savoir
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-dashed border-[rgba(78,55,30,0.18)]">
-              {/* Colonne — Sans méthode */}
-              <div className="md:pr-10 md:border-r md:border-dashed md:border-[rgba(78,55,30,0.18)] py-10">
-                <div className="carnet-hand text-[26px] mb-4 text-[#8A7864]" style={{ transform: 'rotate(-2deg)', display: 'inline-block' }}>
-                  ✗ Sans préparation
-                </div>
-                <ul className="space-y-3">
-                  {[
-                    'Découvrir un nouveau rythme du jour au lendemain',
-                    'Réviser dans le désordre, sans plan',
-                    'Subir les premiers DS de septembre',
-                    'Perdre confiance dès la première colle',
-                  ].map((item, i) => (
-                    <li key={i} className="font-lora text-[18px] leading-[1.5] text-[#6E5D49] flex items-start gap-3" style={{ textDecoration: 'line-through', textDecorationColor: 'rgba(110,93,73,0.4)' }}>
-                      <span className="carnet-hand text-[22px] leading-none flex-none mt-0.5 text-[#8A7864]">×</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Colonne — Avec méthode */}
-              <div className="md:pl-10 py-10 border-t md:border-t-0 border-dashed border-[rgba(78,55,30,0.18)]">
-                <div className="carnet-hand text-[26px] mb-4 text-carnet-red" style={{ transform: 'rotate(-2deg)', display: 'inline-block' }}>
-                  ✓ Avec Prépa Rationnelle
-                </div>
-                <ul className="space-y-3">
-                  {[
-                    { icon: Clock, text: 'Une organisation calée avant la rentrée' },
-                    { icon: Brain, text: 'Les méthodes de travail qui marchent vraiment' },
-                    { icon: BookOpenCheck, text: 'Les bases mathématiques solides du lycée' },
-                    { icon: Compass, text: 'Le bon mindset pour tenir deux ans' },
-                  ].map((item, i) => (
-                    <li key={i} className="font-lora text-[18px] leading-[1.5] text-carnet-ink flex items-start gap-3">
-                      <span className="carnet-hand text-[22px] leading-none flex-none mt-0.5 text-carnet-red">✓</span>
-                      <span>
-                        {i === 0 ? <><span className="carnet-hl">Une organisation calée</span> avant la rentrée</> : item.text}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div className="pt-8 mt-2 border-t border-dashed border-[rgba(78,55,30,0.18)] flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-              <Link to="/articles/terminale-prepa">
-                <Button className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold py-6 px-8 rounded-full border-0">
-                  Découvrir la rubrique <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-              <Link
-                to="/formation/math/terminale-vers-prepa"
-                className="font-instrument text-[15px] font-medium text-carnet-ink-soft hover:text-carnet-red transition-colors flex items-center gap-2"
-              >
-                <Calculator className="h-4 w-4" /> Module Maths Terminale → Prépa →
-              </Link>
-              <span className="carnet-eyebrow text-[10px] ml-auto hidden sm:block">
-                Offre dédiée · bientôt
-              </span>
-            </div>
-          </motion.div>
         </div>
       </section>
 

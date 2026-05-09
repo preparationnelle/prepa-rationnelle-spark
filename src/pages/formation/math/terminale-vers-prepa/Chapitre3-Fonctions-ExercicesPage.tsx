@@ -1,666 +1,345 @@
 import React, { useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ChevronRight, Home, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { LatexRenderer } from '@/components/LatexRenderer';
+import { SEOHead } from '@/components/SEOHead';
+import { Button } from '@/components/ui/button';
+import {
+  Home,
+  ChevronRight,
+  ArrowLeft,
+  ArrowRight,
+  CheckCircle2,
+  Eye,
+  EyeOff,
+} from 'lucide-react';
 
-const Chapitre3FonctionsExercicesPage = () => {
-  const [visibleCorrections, setVisibleCorrections] = useState<{[key: string]: boolean}>({});
+type Difficulty = 'Facile' | 'Moyen' | 'Difficile';
 
-  const toggleCorrection = (exerciseId: string) => {
-    setVisibleCorrections(prev => ({
-      ...prev,
-      [exerciseId]: !prev[exerciseId]
-    }));
-  };
+interface ExerciseProps {
+  id: string;
+  num: number;
+  title: string;
+  difficulty: Difficulty;
+  open: boolean;
+  onToggle: () => void;
+  statement: React.ReactNode;
+  correction: React.ReactNode;
+  tilt?: 'l' | 'r' | '';
+}
 
-  const DifficultyHeader = ({ 
-    level, 
-    title, 
-    icon: Icon, 
-  }: { 
-    level: string; 
-    title: string; 
-    icon: any; 
-  }) => (
-    <div className="bg-gradient-to-r from-purple-100 to-purple-50 border-l-4 border-purple-500 p-6 mb-6 rounded-r-lg shadow-sm">
-      <div className="flex items-center gap-3">
-        <div className="p-2 bg-purple-500 text-white rounded-lg">
-          <Icon className="w-6 h-6" />
-        </div>
-        <div>
-          <h2 className="text-2xl font-bold text-gray-800">{level} : {title}</h2>
-        </div>
-      </div>
-    </div>
-  );
-
-  const ExerciseCard = ({ 
-    id, 
-    title, 
-    content, 
-    correction, 
-    difficulty 
-  }: { 
-    id: string; 
-    title: string; 
-    content: React.ReactNode; 
-    correction: React.ReactNode; 
-    difficulty: string; 
-  }) => (
-    <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
-      <div className="p-6">
-        <div className="flex items-start gap-3 mb-4">
-          <div className="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-semibold">
-            {title}
-          </div>
-          <div className="text-xs text-purple-500 bg-purple-50 px-2 py-1 rounded">
-            {difficulty}
-          </div>
-        </div>
-        
-        <div className="mb-4">
-          {content}
-        </div>
-        
-        <Button
-          onClick={() => toggleCorrection(id)}
-          variant={visibleCorrections[id] ? "secondary" : "default"}
-          className="mb-4"
-        >
-          {visibleCorrections[id] ? "Masquer la correction" : "Afficher la correction"}
-        </Button>
-        
-        {visibleCorrections[id] && (
-          <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-r-lg">
-            <h4 className="font-semibold text-green-800 mb-2">Corrigé détaillé</h4>
-            <div className="text-green-800">
-              {correction}
-            </div>
-          </div>
-        )}
-      </div>
-    </Card>
-  );
+const Exercise: React.FC<ExerciseProps> = ({ id, num, title, difficulty, open, onToggle, statement, correction, tilt = '' }) => {
+  const tiltClass = tilt === 'l' ? 'carnet-tilt-l' : tilt === 'r' ? 'carnet-tilt-r' : '';
 
   return (
-    <div className="min-h-screen carnet-paper carnet-cours-skin">
+    <article id={id} className={`carnet-card p-7 sm:p-9 mb-8 ${tiltClass}`}>
+      <header className="flex items-start sm:items-center justify-between gap-4 mb-5 flex-wrap">
+        <div className="flex items-baseline gap-4 min-w-0">
+          <span className="carnet-hand text-[36px] sm:text-[40px] text-carnet-red leading-none font-semibold flex-shrink-0">
+            {String(num).padStart(2, '0')}
+          </span>
+          <hr className="flex-shrink-0 w-8 h-0.5 bg-carnet-ink border-0 mt-2 hidden sm:block" />
+          <h3 className="font-lora text-[20px] sm:text-[22px] text-carnet-ink leading-tight">
+            {title}
+          </h3>
+        </div>
+        <span className={`font-instrument text-[11px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border ${
+          difficulty === 'Facile'
+            ? 'border-[rgba(78,55,30,0.18)] text-carnet-ink-soft bg-carnet-paper-2'
+            : difficulty === 'Moyen'
+              ? 'border-[rgba(193,68,58,0.3)] text-carnet-red bg-[rgba(193,68,58,0.06)]'
+              : 'border-carnet-red text-carnet-paper bg-carnet-red'
+        }`}>
+          {difficulty}
+        </span>
+      </header>
+
+      <div className="font-instrument text-[15.5px] text-carnet-ink leading-[1.75] space-y-3 mb-6">
+        {statement}
+      </div>
+
+      <Button
+        onClick={onToggle}
+        variant="outline"
+        className="border-[rgba(78,55,30,0.25)] text-carnet-ink hover:bg-[rgba(193,68,58,0.06)] hover:text-carnet-red hover:border-carnet-red font-instrument rounded-full h-9 px-5 text-[13px] bg-transparent"
+      >
+        {open ? <><EyeOff className="mr-2 h-3.5 w-3.5" /> Masquer la correction</> : <><Eye className="mr-2 h-3.5 w-3.5" /> Afficher la correction</>}
+      </Button>
+
+      {open && (
+        <div className="mt-6 bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.25)] border-l-2 border-l-carnet-red rounded-md p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <CheckCircle2 className="h-4 w-4 text-carnet-red" />
+            <span className="carnet-eyebrow">Corrigé détaillé</span>
+          </div>
+          <div className="font-instrument text-[15px] text-carnet-ink-soft leading-[1.8] space-y-3">
+            {correction}
+          </div>
+        </div>
+      )}
+    </article>
+  );
+};
+
+const Step: React.FC<{ label: string; children: React.ReactNode }> = ({ label, children }) => (
+  <div>
+    <div className="font-instrument text-[11.5px] uppercase tracking-[0.14em] text-carnet-red font-semibold mb-2">{label}</div>
+    <div className="space-y-2">{children}</div>
+  </div>
+);
+
+const Inline: React.FC<{ tex: string }> = ({ tex }) => (
+  <span className="inline-block align-middle"><LatexRenderer latex={tex} /></span>
+);
+
+const Block: React.FC<{ tex: string }> = ({ tex }) => (
+  <div className="my-2 text-center">
+    <LatexRenderer latex={tex} />
+  </div>
+);
+
+const Chapitre3FonctionsExercicesPage = () => {
+  const [open, setOpen] = useState<Record<string, boolean>>({});
+  const toggle = (id: string) => setOpen((s) => ({ ...s, [id]: !s[id] }));
+
+  return (
+    <div className="min-h-screen carnet-paper">
+      <SEOHead
+        canonical="/formation/math/terminale-vers-prepa/fonctions-exercices"
+        title="Exercices · Chapitre 4 — Fonctions · Terminale → Prépa ECG"
+        description="3 exercices progressifs sur le calcul de dérivées et l'étude complète d'une fonction : quotients, valeur absolue, signe et variations."
+      />
+
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-[#2D5BFF]">
-            <Link to="/" className="flex items-center gap-1 hover:text-[#1e3a8a] transition-colors">
-              <Home className="h-3 w-3" />
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] px-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+              <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formations" className="hover:text-[#1e3a8a] transition-colors">
-              Toutes les formations
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/formation/math/terminale-vers-prepa" className="hover:text-carnet-red transition-colors">
+              Terminale → Prépa
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formation/maths-choix" className="hover:text-[#1e3a8a] transition-colors">
-              Choix option Maths
-            </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <Link to="/formation/math/terminale-vers-prepa" className="hover:text-[#1e3a8a] transition-colors">
-              Terminale vers la prépa
-            </Link>
-            <ChevronRight className="h-3 w-3 text-[#2D5BFF]/50 mx-1" />
-            <span className="text-[#2D5BFF] font-bold">Exercices - Chapitre 3</span>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">Exercices · Chapitre 4 · Fonctions</span>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 py-8">
-        {/* En-tête */}
-        <Card className="border-0 shadow-lg bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50 mb-8">
-          <div className="p-8">
-            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4">
-              Exercices - Chapitre 3 : Fonctions
-            </h1>
-            <p className="text-slate-600 text-lg">
-              Exercices sur le calcul de dérivées et l'analyse de fonctions.
-            </p>
+      <div className="mx-auto max-w-[1080px] px-6 lg:pl-[200px] lg:pr-16 py-14 lg:py-16">
+
+        {/* Hero */}
+        <header className="mb-14 relative">
+          <div className="carnet-eyebrow mb-5">04 · Exercices · Fonctions</div>
+          <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[60px] leading-[1.05] tracking-[-0.022em] text-carnet-ink mb-6">
+            Trois fonctions <em className="font-lora italic text-carnet-red">à dériver</em>.
+          </h1>
+          <p className="font-instrument text-[17px] leading-[1.6] text-carnet-ink-soft max-w-[680px]">
+            Quotient, produit, valeur absolue, étude complète. Trois extraits de concours pour entraîner ta technique. <span className="carnet-hl font-lora italic">Pose tes <Inline tex={"u, v, u', v'"} /></span> avant tout calcul.
+          </p>
+
+          <div className="mt-6 flex flex-wrap gap-3">
+            <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-[rgba(193,68,58,0.3)] text-carnet-red bg-[rgba(193,68,58,0.06)]">
+              3 Moyens
+            </span>
           </div>
-        </Card>
+        </header>
 
-        <DifficultyHeader
-          level="Module 1"
-          title="Calcul de dérivées"
-          icon={BookOpen}
-        />
+        {/* Module 1 */}
+        <div className="flex items-baseline gap-4 mb-6">
+          <span className="carnet-hand text-[40px] text-carnet-red leading-none font-semibold">M1</span>
+          <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+          <h2 className="font-lora text-[26px] sm:text-[28px] text-carnet-ink leading-tight">Calculs de dérivées</h2>
+        </div>
 
-        <ExerciseCard
+        {/* Exercice 1 */}
+        <Exercise
           id="ex1"
-          title="Exercice 1"
+          num={1}
+          title="Quatre dérivées de concours"
           difficulty="Moyen"
-          content={
-            <div>
-              <p className="mb-4"><strong>Calculer la dérivée des fonctions suivantes :</strong></p>
-              <p className="text-sm text-gray-600 mb-4 italic">
-                (On supposera ici que les fonctions sont toutes dérivables sur leur domaine de définition ou sur les intervalles donnés)
-              </p>
-              
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <span className="font-semibold">1.</span>
-                  <div className="flex-1">
-                    <span className="inline-block align-middle"><LatexRenderer latex={"\\forall x > 0,\\quad f(x) = \\dfrac{\\ln\\left( \\dfrac{x}{1+x} \\right) - \\ln(1 + x)}{x}"} /></span>
-                    <span className="text-sm text-gray-500 ml-4">(ECRICOME 1998)</span>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <span className="font-semibold">2.</span>
-                  <div className="flex-1">
-                    <span className="inline-block align-middle"><LatexRenderer latex={"\\forall x \\in D_{f_n},\\quad f_n(x) = x e^{-\\frac{n}{x}} \\quad \\text{avec } n \\in \\mathbb{N}^*"} /></span>
-                    <span className="text-sm text-gray-500 ml-4">(EDHEC 2004)</span>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <span className="font-semibold">3.</span>
-                  <div className="flex-1">
-                    <span className="inline-block align-middle"><LatexRenderer latex={"\\forall x \\in D_h,\\quad h(x) = \\dfrac{e^x}{(1 + e^x)^2}"} /></span>
-                    <span className="text-sm text-gray-500 ml-4">(ESSEC 2005)</span>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <span className="font-semibold">4.</span>
-                  <div className="flex-1">
-                    <span className="inline-block align-middle"><LatexRenderer latex={"\\forall u \\geq 0,\\quad m(u) = (1 + \\sqrt{u}) \\sqrt{u}"} /></span>
-                  </div>
-                </div>
-              </div>
-            </div>
+          open={!!open.ex1}
+          onToggle={() => toggle('ex1')}
+          tilt="l"
+          statement={
+            <>
+              <p>Calculer la dérivée des fonctions suivantes (toutes supposées dérivables sur leur domaine) :</p>
+              <p><strong>1.</strong> <Inline tex={"\\forall x > 0,\\quad f(x) = \\dfrac{\\ln\\left( \\dfrac{x}{1+x} \\right) - \\ln(1 + x)}{x}"} /> <span className="text-carnet-ink-mute italic text-[14px]">(ECRICOME 1998)</span></p>
+              <p><strong>2.</strong> <Inline tex={"f_n(x) = x e^{-n/x}"} /> avec <Inline tex={'n \\in \\mathbb{N}^*'} /> <span className="text-carnet-ink-mute italic text-[14px]">(EDHEC 2004)</span></p>
+              <p><strong>3.</strong> <Inline tex={"h(x) = \\dfrac{e^x}{(1 + e^x)^2}"} /> <span className="text-carnet-ink-mute italic text-[14px]">(ESSEC 2005)</span></p>
+              <p><strong>4.</strong> <Inline tex={"\\forall u \\geq 0,\\quad m(u) = (1 + \\sqrt{u}) \\sqrt{u}"} /></p>
+            </>
           }
           correction={
-            <div className="space-y-6">
-              <div>
-                <strong className="text-green-600">1. Fonction f(x)</strong>
-                <div className="mt-2 space-y-3">
-                  <div>
-                    <p className="mb-2">Simplifions d'abord l'expression :</p>
-                    <div className="text-center">
-                      <LatexRenderer latex={"f(x) = \\frac{\\ln\\left(\\frac{x}{1+x}\\right) - \\ln(1+x)}{x} = \\frac{\\ln(x) - \\ln(1+x) - \\ln(1+x)}{x}"} />
-                    </div>
-                    <div className="text-center mt-2">
-                      <LatexRenderer latex={"f(x) = \\frac{\\ln(x) - 2\\ln(1+x)}{x}"} />
-                    </div>
-                  </div>
-                  <div>
-                    <p className="mb-2">Appliquons la règle de dérivation du quotient :</p>
-                    <div className="text-center">
-                      <LatexRenderer latex={"f'(x) = \\frac{x \\cdot \\left(\\frac{1}{x} - \\frac{2}{1+x}\\right) - (\\ln(x) - 2\\ln(1+x)) \\cdot 1}{x^2}"} />
-                    </div>
-                    <div className="text-center mt-2">
-                      <LatexRenderer latex={"f'(x) = \\frac{1 - \\frac{2x}{1+x} - \\ln(x) + 2\\ln(1+x)}{x^2}"} />
-                    </div>
-                    <div className="text-center mt-2 bg-green-50 p-2 rounded">
-                      <LatexRenderer latex={"f'(x) = \\frac{\\frac{1-x}{1+x} - \\ln(x) + 2\\ln(1+x)}{x^2}"} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <strong className="text-green-600">2. Fonction f_n(x)</strong>
-                <div className="mt-2 space-y-3">
-                  <div>
-                    <p className="mb-2">Appliquons la règle de dérivation du produit :</p>
-                    <div className="text-center">
-                      <LatexRenderer latex={"f_n'(x) = 1 \\cdot e^{-\\frac{n}{x}} + x \\cdot e^{-\\frac{n}{x}} \\cdot \\frac{n}{x^2}"} />
-                    </div>
-                    <div className="text-center mt-2">
-                      <LatexRenderer latex={"f_n'(x) = e^{-\\frac{n}{x}} + \\frac{n}{x} \\cdot e^{-\\frac{n}{x}}"} />
-                    </div>
-                    <div className="text-center mt-2 bg-green-50 p-2 rounded">
-                      <LatexRenderer latex={"f_n'(x) = e^{-\\frac{n}{x}}\\left(1 + \\frac{n}{x}\\right)"} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <strong className="text-green-600">3. Fonction h(x)</strong>
-                <div className="mt-2 space-y-3">
-                  <div>
-                    <p className="mb-2">Appliquons la règle de dérivation du quotient :</p>
-                    <div className="text-center">
-                      <LatexRenderer latex={"h'(x) = \\frac{e^x \\cdot (1+e^x)^2 - e^x \\cdot 2(1+e^x) \\cdot e^x}{(1+e^x)^4}"} />
-                    </div>
-                    <div className="text-center mt-2">
-                      <LatexRenderer latex={"h'(x) = \\frac{e^x(1+e^x) - 2e^{2x}}{(1+e^x)^3}"} />
-                    </div>
-                    <div className="text-center mt-2">
-                      <LatexRenderer latex={"h'(x) = \\frac{e^x + e^{2x} - 2e^{2x}}{(1+e^x)^3}"} />
-                    </div>
-                    <div className="text-center mt-2 bg-green-50 p-2 rounded">
-                      <LatexRenderer latex={"h'(x) = \\frac{e^x(1 - e^x)}{(1+e^x)^3}"} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <strong className="text-green-600">4. Fonction m(u)</strong>
-                <div className="mt-2 space-y-3">
-                  <div>
-                    <p className="mb-2">Développons d'abord :</p>
-                    <div className="text-center">
-                      <LatexRenderer latex={"m(u) = (1 + \\sqrt{u})\\sqrt{u} = \\sqrt{u} + u"} />
-                    </div>
-                  </div>
-                  <div>
-                    <p className="mb-2">Dérivons terme par terme :</p>
-                    <div className="text-center bg-green-50 p-2 rounded">
-                      <LatexRenderer latex={"m'(u) = \\frac{1}{2\\sqrt{u}} + 1 = \\frac{1 + 2\\sqrt{u}}{2\\sqrt{u}}"} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-blue-800 mb-3">💡 Rappels des règles de dérivation</h4>
-                <div className="space-y-2 text-blue-800">
-                  <div>• <strong>Règle du quotient :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"\\left(\\frac{u}{v}\\right)' = \\frac{u'v - uv'}{v^2}"} /></span></div>
-                  <div>• <strong>Règle du produit :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"(uv)' = u'v + uv'"} /></span></div>
-                  <div>• <strong>Dérivée composée :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"(f \\circ g)'(x) = f'(g(x)) \\cdot g'(x)"} /></span></div>
-                  <div>• <strong>Dérivées usuelles :</strong> <span className="inline-block align-middle"><LatexRenderer latex={"(\\ln x)' = \\frac{1}{x}, \\quad (e^x)' = e^x, \\quad (\\sqrt{x})' = \\frac{1}{2\\sqrt{x}}"} /></span></div>
-                </div>
-              </div>
-            </div>
+            <>
+              <Step label="1. Dérivée de f">
+                <p>On simplifie d'abord : <Inline tex={'\\ln\\!\\bigl(\\tfrac{x}{1+x}\\bigr) - \\ln(1+x) = \\ln x - 2 \\ln(1+x)'} />. Donc <Inline tex={'f(x) = \\frac{\\ln x - 2\\ln(1+x)}{x}'} />.</p>
+                <p>Règle du quotient :</p>
+                <Block tex={"f'(x) = \\frac{x\\bigl(\\frac{1}{x} - \\frac{2}{1+x}\\bigr) - \\bigl(\\ln x - 2\\ln(1+x)\\bigr)}{x^2} = \\frac{\\frac{1-x}{1+x} - \\ln x + 2\\ln(1+x)}{x^2}."} />
+              </Step>
+              <Step label="2. Dérivée de fₙ">
+                <p>Règle du produit avec <Inline tex={"\\bigl(e^{-n/x}\\bigr)' = \\frac{n}{x^2} e^{-n/x}"} /> :</p>
+                <Block tex={"f_n'(x) = e^{-n/x} + x \\cdot \\frac{n}{x^2}\\, e^{-n/x} = e^{-n/x}\\left(1 + \\frac{n}{x}\\right)."} />
+              </Step>
+              <Step label="3. Dérivée de h">
+                <p>Quotient avec <Inline tex={'u = e^x'} /> et <Inline tex={'v = (1 + e^x)^2'} /> ; <Inline tex={"v' = 2 e^x (1 + e^x)"} /> :</p>
+                <Block tex={"h'(x) = \\frac{e^x (1 + e^x)^2 - e^x \\cdot 2 e^x (1 + e^x)}{(1 + e^x)^4} = \\frac{e^x (1 - e^x)}{(1 + e^x)^3}."} />
+              </Step>
+              <Step label="4. Dérivée de m">
+                <p>On développe : <Inline tex={'m(u) = \\sqrt{u} + u'} />. Donc :</p>
+                <Block tex={"m'(u) = \\frac{1}{2\\sqrt{u}} + 1 = \\frac{1 + 2\\sqrt{u}}{2\\sqrt{u}}."} />
+              </Step>
+            </>
           }
         />
 
-        <ExerciseCard
+        {/* Exercice 2 */}
+        <Exercise
           id="ex2"
-          title="Exercice 2"
+          num={2}
+          title="Dériver une fonction avec valeur absolue"
           difficulty="Moyen"
-          content={
-            <div>
-              <p className="mb-4"><strong>Dériver une fonction définie avec une valeur absolue</strong></p>
-              <p className="mb-4">Soit la fonction <span className="inline-block align-middle"><LatexRenderer latex={"f"} /></span> définie par :</p>
-              <div className="text-center my-4">
-                <LatexRenderer latex={"\\forall t \\in \\mathbb{R}, \\quad f(t) = e^{|t+1|}"} />
-              </div>
-            </div>
+          open={!!open.ex2}
+          onToggle={() => toggle('ex2')}
+          statement={
+            <>
+              <p>Soit <Inline tex={'f'} /> définie sur <Inline tex={'\\mathbb{R}'} /> par :</p>
+              <Block tex={'f(t) = e^{|t+1|}.'} />
+              <p>Calculer <Inline tex={"f'(t)"} /> sur les intervalles où <Inline tex={'f'} /> est dérivable.</p>
+            </>
           }
           correction={
-            <div className="space-y-4">
-              <div>
-                <strong className="text-green-600">Étape 1 : Analyse de la valeur absolue</strong>
-                <p className="mt-2">On remarque que :</p>
-                <div className="mt-2 text-center">
-                  <LatexRenderer latex={"|t+1| \\geq 0 \\Longleftrightarrow t \\geq -1"} />
-                </div>
-                <p className="mt-2">Donc :</p>
-                <div className="mt-2 text-center">
-                  <LatexRenderer latex={"|t+1| = \\begin{cases} t+1 & \\text{si } t \\geq -1 \\\\ -(t+1) = -t -1 & \\text{si } t < -1 \\end{cases}"} />
-                </div>
-              </div>
-              
-              <div>
-                <strong className="text-green-600">Étape 2 : Distinction de cas</strong>
-                <p className="mt-2 font-semibold">Distinguons deux cas :</p>
-                
-                <div className="mt-4 space-y-4">
-                  <div className="bg-blue-50 p-4 rounded-lg">
-                    <p className="font-semibold text-blue-800">1er cas : si <span className="inline-block align-middle"><LatexRenderer latex={"t < -1"} /></span></p>
-                    <p className="mt-2 text-blue-800">Alors :</p>
-                    <div className="mt-2 text-center">
-                      <LatexRenderer latex={"f(t) = e^{-(t+1)} = e^{-t - 1}"} />
-                    </div>
-                    <p className="mt-2 text-blue-800">Par dérivation :</p>
-                    <div className="mt-2 text-center">
-                      <LatexRenderer latex={"f'(t) = \\frac{d}{dt} e^{-t-1} = -e^{-t-1}"} />
-                    </div>
-                  </div>
-                  
-                  <div className="bg-purple-50 p-4 rounded-lg">
-                    <p className="font-semibold text-purple-800">2ème cas : si <span className="inline-block align-middle"><LatexRenderer latex={"t \\geq -1"} /></span></p>
-                    <p className="mt-2 text-purple-800">Alors :</p>
-                    <div className="mt-2 text-center">
-                      <LatexRenderer latex={"f(t) = e^{t+1}"} />
-                    </div>
-                    <p className="mt-2 text-purple-800">Par dérivation :</p>
-                    <div className="mt-2 text-center">
-                      <LatexRenderer latex={"f'(t) = e^{t+1}"} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div>
-                <strong className="text-green-600">Résultat final :</strong>
-                <p className="mt-2">Ainsi :</p>
-                <div className="mt-2 text-center bg-green-50 p-3 rounded border">
-                  <LatexRenderer latex={"f'(t) = \\begin{cases} -e^{-t-1} & \\text{si } t < -1 \\\\ e^{t+1} & \\text{si } t \\geq -1 \\end{cases}"} />
-                </div>
-              </div>
-              
-              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-yellow-800 mb-3">⚠️ Points d'attention</h4>
-                <div className="space-y-2 text-yellow-800">
-                  <div className="flex items-start gap-2">
-                    <span className="text-sm">•</span>
-                    <span><strong>Dérivabilité en t = -1 :</strong> Il faut vérifier si la fonction est dérivable au point de changement <span className="inline-block align-middle"><LatexRenderer latex={"t = -1"} /></span>.</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-sm">•</span>
-                    <span><strong>Continuité :</strong> Vérifier d'abord que la fonction est continue en <span className="inline-block align-middle"><LatexRenderer latex={"t = -1"} /></span>.</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-sm">•</span>
-                    <span><strong>Méthode générale :</strong> Pour une fonction avec valeur absolue, toujours étudier les différents cas selon le signe de l'expression à l'intérieur de la valeur absolue.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <>
+              <Step label="Lever la valeur absolue">
+                <p><Inline tex={'|t+1| \\geq 0'} /> et <Inline tex={'t+1 \\geq 0 \\Leftrightarrow t \\geq -1'} />, donc :</p>
+                <Block tex={'|t+1| = \\begin{cases} t+1 & \\text{si } t \\geq -1 \\\\ -t - 1 & \\text{si } t < -1 \\end{cases}'} />
+              </Step>
+              <Step label="Cas t < −1">
+                <Block tex={'f(t) = e^{-t-1} \\quad \\Longrightarrow \\quad f\'(t) = -e^{-t-1}.'} />
+              </Step>
+              <Step label="Cas t ≥ −1">
+                <Block tex={'f(t) = e^{t+1} \\quad \\Longrightarrow \\quad f\'(t) = e^{t+1}.'} />
+              </Step>
+              <Step label="Synthèse">
+                <Block tex={'f\'(t) = \\begin{cases} -e^{-t-1} & \\text{si } t < -1 \\\\ e^{t+1} & \\text{si } t > -1 \\end{cases}'} />
+                <p>En <Inline tex={'t = -1'} />, les dérivées à gauche et à droite valent <Inline tex={'-1'} /> et <Inline tex={'1'} />, donc <Inline tex={'f'} /> n'est <em>pas</em> dérivable en <Inline tex={'-1'} /> (point anguleux).</p>
+              </Step>
+            </>
           }
         />
 
-        <ExerciseCard
+        {/* Module 2 */}
+        <div className="flex items-baseline gap-4 mb-6 mt-12">
+          <span className="carnet-hand text-[40px] text-carnet-red leading-none font-semibold">M2</span>
+          <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+          <h2 className="font-lora text-[26px] sm:text-[28px] text-carnet-ink leading-tight">Étude complète d'une fonction</h2>
+        </div>
+
+        {/* Exercice 3 */}
+        <Exercise
           id="ex3"
-          title="Exercice 3"
+          num={3}
+          title="Étude de eˣ/(1+x)"
           difficulty="Moyen"
-          content={
-            <div>
-              <p className="mb-4">Pour tout réel <span className="inline-block align-middle"><LatexRenderer latex={"x \\neq -1"} /></span>, on pose :</p>
-              <div className="text-center my-4">
-                <LatexRenderer latex={"f(x) = \\frac{e^x}{1 + x}"} />
-              </div>
-              
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <span className="font-semibold">1.</span>
-                  <div className="flex-1">
-                    <p>Justifier que <span className="inline-block align-middle"><LatexRenderer latex={"f"} /></span> est dérivable sur <span className="inline-block align-middle"><LatexRenderer latex={"]-\\infty ; -1["} /></span> et sur <span className="inline-block align-middle"><LatexRenderer latex={"]-1 ; +\\infty["} /></span>, et que pour tout réel <span className="inline-block align-middle"><LatexRenderer latex={"x"} /></span> dans ces intervalles :</p>
-                    <div className="text-center my-3">
-                      <LatexRenderer latex={"f'(x) = \\frac{x e^x}{(1 + x)^2}"} />
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <span className="font-semibold">2.</span>
-                  <div className="flex-1">
-                    <p>Étudier le signe de <span className="inline-block align-middle"><LatexRenderer latex={"f'(x)"} /></span> et en déduire le tableau de variations de <span className="inline-block align-middle"><LatexRenderer latex={"f"} /></span>.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          open={!!open.ex3}
+          onToggle={() => toggle('ex3')}
+          tilt="l"
+          statement={
+            <>
+              <p>Pour tout réel <Inline tex={'x \\neq -1'} />, on pose :</p>
+              <Block tex={'f(x) = \\frac{e^x}{1 + x}.'} />
+              <p><strong>1.</strong> Justifier que <Inline tex={'f'} /> est dérivable sur <Inline tex={']-\\infty ; -1['} /> et sur <Inline tex={']-1 ; +\\infty['} />, et montrer que :</p>
+              <Block tex={"f'(x) = \\frac{x e^x}{(1 + x)^2}."} />
+              <p><strong>2.</strong> Étudier le signe de <Inline tex={"f'(x)"} /> et en déduire le tableau de variations de <Inline tex={'f'} />.</p>
+            </>
           }
           correction={
-            <div className="space-y-6">
-              <div>
-                <strong className="text-green-600">1. Dérivabilité et calcul de f'(x)</strong>
-                <div className="mt-2 space-y-3">
-                  <div>
-                    <p className="mb-2"><strong>Justification de la dérivabilité :</strong></p>
-                    <div className="ml-4 space-y-2">
-                      <p>• La fonction <span className="inline-block align-middle"><LatexRenderer latex={"e^x"} /></span> est dérivable sur <span className="inline-block align-middle"><LatexRenderer latex={"\\mathbb{R}"} /></span></p>
-                      <p>• La fonction <span className="inline-block align-middle"><LatexRenderer latex={"1 + x"} /></span> est dérivable sur <span className="inline-block align-middle"><LatexRenderer latex={"\\mathbb{R}"} /></span> et ne s'annule pas sur <span className="inline-block align-middle"><LatexRenderer latex={"]-\\infty ; -1[ \\cup ]-1 ; +\\infty["} /></span></p>
-                      <p>• Par quotient de fonctions dérivables, <span className="inline-block align-middle"><LatexRenderer latex={"f"} /></span> est dérivable sur chacun des intervalles <span className="inline-block align-middle"><LatexRenderer latex={"]-\\infty ; -1["} /></span> et <span className="inline-block align-middle"><LatexRenderer latex={"]-1 ; +\\infty["} /></span></p>
-                    </div>
-                  </div>
-                  <div>
-                    <p className="mb-2"><strong>Calcul de la dérivée :</strong></p>
-                    <p className="mb-2">On applique la règle de dérivation du quotient : <span className="inline-block align-middle"><LatexRenderer latex={"\\left(\\frac{u}{v}\\right)' = \\frac{u'v - uv'}{v^2}"} /></span></p>
-                    <div className="ml-4 space-y-2">
-                      <p>Avec <span className="inline-block align-middle"><LatexRenderer latex={"u(x) = e^x"} /></span> donc <span className="inline-block align-middle"><LatexRenderer latex={"u'(x) = e^x"} /></span></p>
-                      <p>Et <span className="inline-block align-middle"><LatexRenderer latex={"v(x) = 1 + x"} /></span> donc <span className="inline-block align-middle"><LatexRenderer latex={"v'(x) = 1"} /></span></p>
-                    </div>
-                    <div className="mt-3 space-y-2">
-                      <div className="text-center">
-                        <LatexRenderer latex={"f'(x) = \\frac{e^x \\cdot (1+x) - e^x \\cdot 1}{(1+x)^2}"} />
-                      </div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"f'(x) = \\frac{e^x(1+x) - e^x}{(1+x)^2}"} />
-                      </div>
-                      <div className="text-center">
-                        <LatexRenderer latex={"f'(x) = \\frac{e^x(1+x-1)}{(1+x)^2}"} />
-                      </div>
-                      <div className="text-center bg-green-50 p-2 rounded">
-                        <LatexRenderer latex={"f'(x) = \\frac{x e^x}{(1+x)^2}"} />
-                      </div>
-                    </div>
-                  </div>
+            <>
+              <Step label="1. Dérivabilité et calcul de f′">
+                <p>• <Inline tex={'u : x \\mapsto e^x'} /> est dérivable sur <Inline tex={'\\mathbb{R}'} />.</p>
+                <p>• <Inline tex={'v : x \\mapsto 1 + x'} /> est dérivable sur <Inline tex={'\\mathbb{R}'} /> et ne s'annule qu'en <Inline tex={'-1'} />.</p>
+                <p>Par quotient, <Inline tex={'f = u/v'} /> est dérivable sur <Inline tex={']-\\infty ; -1[ \\cup ]-1 ; +\\infty['} />. Avec <Inline tex={"u' = e^x"} /> et <Inline tex={"v' = 1"} /> :</p>
+                <Block tex={"f'(x) = \\frac{e^x (1 + x) - e^x \\cdot 1}{(1 + x)^2} = \\frac{e^x \\cdot x}{(1 + x)^2} = \\frac{x e^x}{(1 + x)^2}."} />
+              </Step>
+              <Step label="2. Signe de f′">
+                <p><Inline tex={'e^x > 0'} /> et <Inline tex={'(1+x)^2 > 0'} /> sur le domaine, donc <Inline tex={"f'(x)"} /> a le signe de <Inline tex={'x'} /> :</p>
+                <p>• <Inline tex={"f'(x) < 0"} /> sur <Inline tex={']-\\infty ; -1[ \\cup ]-1 ; 0['} /> ;</p>
+                <p>• <Inline tex={"f'(0) = 0"} /> ;</p>
+                <p>• <Inline tex={"f'(x) > 0"} /> sur <Inline tex={']0 ; +\\infty['} />.</p>
+              </Step>
+              <Step label="Tableau de variations">
+                <div className="overflow-x-auto">
+                  <table className="border-collapse border border-[rgba(78,55,30,0.35)] text-center text-[13px] mx-auto">
+                    <tbody>
+                      <tr>
+                        <td className="border border-[rgba(78,55,30,0.35)] px-3 py-2 font-semibold"><Inline tex={'x'} /></td>
+                        <td className="border border-[rgba(78,55,30,0.35)] px-3 py-2"><Inline tex={'-\\infty'} /></td>
+                        <td className="border border-[rgba(78,55,30,0.35)] px-3 py-2"><Inline tex={'-1'} /></td>
+                        <td className="border border-[rgba(78,55,30,0.35)] px-3 py-2"><Inline tex={'0'} /></td>
+                        <td className="border border-[rgba(78,55,30,0.35)] px-3 py-2"><Inline tex={'+\\infty'} /></td>
+                      </tr>
+                      <tr>
+                        <td className="border border-[rgba(78,55,30,0.35)] px-3 py-2 font-semibold"><Inline tex={"f'(x)"} /></td>
+                        <td className="border border-[rgba(78,55,30,0.35)] px-3 py-2">−</td>
+                        <td className="border border-[rgba(78,55,30,0.35)] px-3 py-2">‖</td>
+                        <td className="border border-[rgba(78,55,30,0.35)] px-3 py-2">0</td>
+                        <td className="border border-[rgba(78,55,30,0.35)] px-3 py-2">+</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-[rgba(78,55,30,0.35)] px-3 py-2 font-semibold"><Inline tex={'f(x)'} /></td>
+                        <td className="border border-[rgba(78,55,30,0.35)] px-3 py-2">↘</td>
+                        <td className="border border-[rgba(78,55,30,0.35)] px-3 py-2 text-carnet-red">‖ asymptote</td>
+                        <td className="border border-[rgba(78,55,30,0.35)] px-3 py-2">min = 1</td>
+                        <td className="border border-[rgba(78,55,30,0.35)] px-3 py-2">↗</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
-              </div>
-
-              <div>
-                <strong className="text-green-600">2. Étude du signe de f'(x) et tableau de variations</strong>
-                <div className="mt-2 space-y-4">
-                  <div>
-                    <p className="mb-2"><strong>Étude du signe :</strong></p>
-                    <div className="text-center mb-3">
-                      <LatexRenderer latex={"f'(x) = \\frac{x e^x}{(1+x)^2}"} />
-                    </div>
-                    <div className="ml-4 space-y-2">
-                      <p>• <span className="inline-block align-middle"><LatexRenderer latex={"e^x > 0"} /></span> pour tout <span className="inline-block align-middle"><LatexRenderer latex={"x \\in \\mathbb{R}"} /></span></p>
-                      <p>• <span className="inline-block align-middle"><LatexRenderer latex={"(1+x)^2 > 0"} /></span> pour tout <span className="inline-block align-middle"><LatexRenderer latex={"x \\neq -1"} /></span></p>
-                      <p>• Le signe de <span className="inline-block align-middle"><LatexRenderer latex={"f'(x)"} /></span> est donc celui de <span className="inline-block align-middle"><LatexRenderer latex={"x"} /></span></p>
-                    </div>
-                    <div className="mt-3">
-                      <p>Ainsi :</p>
-                      <div className="ml-4 space-y-1">
-                        <p>• <span className="inline-block align-middle"><LatexRenderer latex={"f'(x) < 0"} /></span> si <span className="inline-block align-middle"><LatexRenderer latex={"x < 0"} /></span> (et <span className="inline-block align-middle"><LatexRenderer latex={"x \\neq -1"} /></span>)</p>
-                        <p>• <span className="inline-block align-middle"><LatexRenderer latex={"f'(x) = 0"} /></span> si <span className="inline-block align-middle"><LatexRenderer latex={"x = 0"} /></span></p>
-                        <p>• <span className="inline-block align-middle"><LatexRenderer latex={"f'(x) > 0"} /></span> si <span className="inline-block align-middle"><LatexRenderer latex={"x > 0"} /></span></p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <p className="mb-3"><strong>Tableau de variations :</strong></p>
-                    <div className="overflow-x-auto">
-                      <div className="flex justify-center">
-                        <table className="border-collapse border border-gray-400 text-center text-sm">
-                          <tbody>
-                            <tr className="border border-gray-400">
-                              <td className="border border-gray-400 px-4 py-2 font-semibold"><LatexRenderer latex={"x"} /></td>
-                              <td className="border border-gray-400 px-4 py-2"><LatexRenderer latex={"-\\infty"} /></td>
-                              <td className="border border-gray-400 px-4 py-2"><LatexRenderer latex={"-1"} /></td>
-                              <td className="border border-gray-400 px-4 py-2"><LatexRenderer latex={"0"} /></td>
-                              <td className="border border-gray-400 px-4 py-2"><LatexRenderer latex={"+\\infty"} /></td>
-                            </tr>
-                            <tr className="border border-gray-400">
-                              <td className="border border-gray-400 px-4 py-2 font-semibold"><LatexRenderer latex={"f'(x)"} /></td>
-                              <td className="border border-gray-400 px-4 py-2">-</td>
-                              <td className="border border-gray-400 px-4 py-2">||</td>
-                              <td className="border border-gray-400 px-4 py-2">0</td>
-                              <td className="border border-gray-400 px-4 py-2">+</td>
-                            </tr>
-                            <tr className="border border-gray-400">
-                              <td className="border border-gray-400 px-4 py-2 font-semibold"><LatexRenderer latex={"f(x)"} /></td>
-                              <td className="border border-gray-400 px-4 py-2">↘</td>
-                              <td className="border border-gray-400 px-4 py-2">||</td>
-                              <td className="border border-gray-400 px-4 py-2">
-                                <div className="flex flex-col items-center">
-                                  <span>↘</span>
-                                  <span><LatexRenderer latex={"1"} /></span>
-                                  <span>↗</span>
-                                </div>
-                              </td>
-                              <td className="border border-gray-400 px-4 py-2">↗</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                    <div className="mt-3 text-sm text-gray-600">
-                      <p><strong>Remarques :</strong></p>
-                      <div className="ml-4 space-y-1">
-                        <p>• <span className="inline-block align-middle"><LatexRenderer latex={"f(0) = \\frac{e^0}{1+0} = 1"} /></span> (minimum local)</p>
-                        <p>• La fonction présente une asymptote verticale en <span className="inline-block align-middle"><LatexRenderer latex={"x = -1"} /></span></p>
-                        <p>• <span className="inline-block align-middle"><LatexRenderer latex={"f"} /></span> est décroissante sur <span className="inline-block align-middle"><LatexRenderer latex={"]-\\infty ; -1["} /></span> et sur <span className="inline-block align-middle"><LatexRenderer latex={"]-1 ; 0]"} /></span></p>
-                        <p>• <span className="inline-block align-middle"><LatexRenderer latex={"f"} /></span> est croissante sur <span className="inline-block align-middle"><LatexRenderer latex={"[0 ; +\\infty["} /></span></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-indigo-50 border-l-4 border-indigo-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-indigo-800 mb-3">📊 Méthode générale pour l'étude de fonction</h4>
-                <div className="space-y-2 text-indigo-800">
-                  <div className="flex items-start gap-2">
-                    <span className="text-sm">1.</span>
-                    <span><strong>Domaine de définition :</strong> Identifier les valeurs interdites</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-sm">2.</span>
-                    <span><strong>Dérivabilité :</strong> Justifier sur les intervalles du domaine</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-sm">3.</span>
-                    <span><strong>Calcul de f'(x) :</strong> Appliquer les règles de dérivation</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-sm">4.</span>
-                    <span><strong>Signe de f'(x) :</strong> Factoriser et étudier chaque facteur</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-sm">5.</span>
-                    <span><strong>Tableau de variations :</strong> Synthétiser les résultats</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+                <p>• <Inline tex={'f(0) = 1'} /> est un minimum local sur <Inline tex={']-1 ; +\\infty['} />.</p>
+                <p>• <Inline tex={'f'} /> admet une asymptote verticale en <Inline tex={'x = -1'} />.</p>
+              </Step>
+            </>
           }
         />
 
-        <ExerciseCard
-          id="ex4"
-          title="Exercice 4"
-          difficulty="Moyen"
-          content={
-            <div>
-              <p className="mb-4"><strong>Pour tout réel <span className="inline-block align-middle"><LatexRenderer latex={"x \\neq -1"} /></span>, on pose :</strong></p>
-              <div className="text-center my-4">
-                <LatexRenderer latex={"f(x) = \\frac{e^x}{1 + x}"} />
-              </div>
+        {/* Bandeau récap */}
+        <section className="mt-14 mb-10 relative">
+          <div className="bg-carnet-ink rounded-lg p-8 sm:p-10 relative overflow-hidden">
+            <div className="absolute -top-20 -right-20 w-[300px] h-[300px] bg-[radial-gradient(circle,rgba(193,68,58,0.18)_0%,transparent_60%)] pointer-events-none"></div>
+            <div className="relative z-10">
+              <span className="carnet-eyebrow text-carnet-red">Récap · Les 5 réflexes</span>
+              <h3 className="font-lora text-[24px] sm:text-[28px] text-carnet-paper leading-[1.2] mb-5 mt-3">
+                Avant chaque dérivée, fais ce check.
+              </h3>
+              <ul className="space-y-2 font-instrument text-[15px] text-[rgba(251,246,234,0.85)] leading-[1.7]">
+                <li className="flex gap-3"><span className="text-carnet-red font-bold">1.</span> Je précise le domaine de définition (zéros du dénominateur, racines, etc.).</li>
+                <li className="flex gap-3"><span className="text-carnet-red font-bold">2.</span> Je pose explicitement <Inline tex={"u, v, u', v'"} /> avant d'appliquer la formule du quotient.</li>
+                <li className="flex gap-3"><span className="text-carnet-red font-bold">3.</span> Pour une composée <Inline tex={'(f \\circ g)'} />, je n'oublie pas le facteur <Inline tex={"g'(x)"} />.</li>
+                <li className="flex gap-3"><span className="text-carnet-red font-bold">4.</span> Pour une valeur absolue : je distingue les cas avant de dériver.</li>
+                <li className="flex gap-3"><span className="text-carnet-red font-bold">5.</span> Pour le signe : je factorise et j'isole les facteurs strictement positifs (<Inline tex={'e^x'} />, carrés…).</li>
+              </ul>
             </div>
-          }
-          correction={
-            <div className="space-y-6">
-              <div>
-                <strong className="text-green-600">1. Justification de la dérivabilité de f sur ]-∞ ; -1[ et ]-1 ; +∞[</strong>
-                <div className="mt-2 space-y-3">
-                  <div>
-                    <p className="mb-2">On pose :</p>
-                    <div className="text-center space-y-2">
-                      <LatexRenderer latex={"u(x) = e^x \\quad \\text{et} \\quad v(x) = 1 + x"} />
-                    </div>
-                  </div>
-                  <div className="ml-4 space-y-2">
-                    <p>• <span className="inline-block align-middle"><LatexRenderer latex={"u"} /></span> est dérivable sur <span className="inline-block align-middle"><LatexRenderer latex={"\\mathbb{R}"} /></span>, donc sur <span className="inline-block align-middle"><LatexRenderer latex={"]-\\infty ; -1["} /></span> et <span className="inline-block align-middle"><LatexRenderer latex={"]-1 ; +\\infty["} /></span></p>
-                    <p>• <span className="inline-block align-middle"><LatexRenderer latex={"v"} /></span> est dérivable sur <span className="inline-block align-middle"><LatexRenderer latex={"\\mathbb{R}"} /></span> et <span className="inline-block align-middle"><LatexRenderer latex={"v(x) \\neq 0"} /></span> pour tout <span className="inline-block align-middle"><LatexRenderer latex={"x \\neq -1"} /></span></p>
-                  </div>
-                  <div>
-                    <p className="mb-2">Ainsi, <span className="inline-block align-middle"><LatexRenderer latex={"f(x) = \\frac{u(x)}{v(x)}"} /></span> est dérivable sur <span className="inline-block align-middle"><LatexRenderer latex={"]-\\infty ; -1[ \\cup ]-1 ; +\\infty["} /></span></p>
-                  </div>
-                  <div>
-                    <p className="mb-2">Par la formule de dérivation du quotient :</p>
-                    <div className="text-center space-y-2">
-                      <LatexRenderer latex={"f'(x) = \\frac{u'v - uv'}{v^2} = \\frac{e^x(1 + x) - e^x \\cdot 1}{(1 + x)^2} = \\frac{xe^x}{(1 + x)^2}"} />
-                    </div>
-                  </div>
-                </div>
-              </div>
+          </div>
+        </section>
 
-              <div>
-                <strong className="text-green-600">2. Étude du signe de f'(x) et tableau de variations</strong>
-                <div className="mt-2 space-y-4">
-                  <div>
-                    <p className="mb-2">On sait que :</p>
-                    <div className="ml-4 space-y-1">
-                      <p>• <span className="inline-block align-middle"><LatexRenderer latex={"e^x > 0"} /></span> pour tout réel <span className="inline-block align-middle"><LatexRenderer latex={"x"} /></span></p>
-                      <p>• <span className="inline-block align-middle"><LatexRenderer latex={"(1 + x)^2 > 0"} /></span> pour tout <span className="inline-block align-middle"><LatexRenderer latex={"x \\neq -1"} /></span></p>
-                    </div>
-                    <p className="mt-2">Donc le signe de <span className="inline-block align-middle"><LatexRenderer latex={"f'(x) = \\frac{xe^x}{(1 + x)^2}"} /></span> dépend uniquement du signe de <span className="inline-block align-middle"><LatexRenderer latex={"x"} /></span>.</p>
-                  </div>
-                  
-                  <div>
-                    <p className="mb-3">On obtient le tableau de variations suivant :</p>
-                    <div className="overflow-x-auto">
-                      <div className="flex justify-center">
-                        <table className="border-collapse border border-gray-400 text-center text-sm">
-                          <tbody>
-                            <tr className="border border-gray-400">
-                              <td className="border border-gray-400 px-4 py-2 font-semibold"><LatexRenderer latex={"x"} /></td>
-                              <td className="border border-gray-400 px-4 py-2"><LatexRenderer latex={"-\\infty"} /></td>
-                              <td className="border border-gray-400 px-4 py-2"><LatexRenderer latex={"-1"} /></td>
-                              <td className="border border-gray-400 px-4 py-2"><LatexRenderer latex={"0"} /></td>
-                              <td className="border border-gray-400 px-4 py-2"><LatexRenderer latex={"+\\infty"} /></td>
-                            </tr>
-                            <tr className="border border-gray-400">
-                              <td className="border border-gray-400 px-4 py-2 font-semibold"><LatexRenderer latex={"f'(x)"} /></td>
-                              <td className="border border-gray-400 px-4 py-2">-</td>
-                              <td className="border border-gray-400 px-4 py-2 text-gray-500">non défini</td>
-                              <td className="border border-gray-400 px-4 py-2">0</td>
-                              <td className="border border-gray-400 px-4 py-2">+</td>
-                            </tr>
-                            <tr className="border border-gray-400">
-                              <td className="border border-gray-400 px-4 py-2 font-semibold"><LatexRenderer latex={"f(x)"} /></td>
-                              <td className="border border-gray-400 px-4 py-2">↘</td>
-                              <td className="border border-gray-400 px-4 py-2 text-red-600">asymptote</td>
-                              <td className="border border-gray-400 px-4 py-2">
-                                <div className="flex flex-col items-center">
-                                  <span>min = 1</span>
-                                </div>
-                              </td>
-                              <td className="border border-gray-400 px-4 py-2">↗</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <p className="mb-2"><strong>Remarques :</strong></p>
-                    <div className="ml-4 space-y-1">
-                      <p>• <span className="inline-block align-middle"><LatexRenderer latex={"f"} /></span> admet une asymptote verticale en <span className="inline-block align-middle"><LatexRenderer latex={"x = -1"} /></span></p>
-                      <p>• <span className="inline-block align-middle"><LatexRenderer latex={"f"} /></span> atteint un minimum en <span className="inline-block align-middle"><LatexRenderer latex={"x = 0"} /></span> avec <span className="inline-block align-middle"><LatexRenderer latex={"f(0) = 1"} /></span></p>
-                      <p>• <span className="inline-block align-middle"><LatexRenderer latex={"f"} /></span> est décroissante sur <span className="inline-block align-middle"><LatexRenderer latex={"]-\\infty ; 0["} /></span>, croissante sur <span className="inline-block align-middle"><LatexRenderer latex={"[0 ; +\\infty["} /></span></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-emerald-50 border-l-4 border-emerald-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-emerald-800 mb-3">✅ Points clés de la méthode</h4>
-                <div className="space-y-2 text-emerald-800">
-                  <div className="flex items-start gap-2">
-                    <span className="text-sm">•</span>
-                    <span><strong>Décomposition :</strong> Identifier u(x) et v(x) pour appliquer la règle du quotient</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-sm">•</span>
-                    <span><strong>Domaine :</strong> Exclure les valeurs qui annulent le dénominateur</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-sm">•</span>
-                    <span><strong>Signe de f'(x) :</strong> Analyser chaque facteur séparément</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-sm">•</span>
-                    <span><strong>Asymptotes :</strong> Identifier les discontinuités du domaine</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-sm">•</span>
-                    <span><strong>Extrema :</strong> Localiser où f'(x) = 0 et calculer f(x)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-        />
-
+        {/* Navigation */}
+        <div className="flex items-center justify-between gap-4 pt-6 border-t border-dashed border-[rgba(78,55,30,0.18)]">
+          <Link
+            to="/formation/math/terminale-vers-prepa/fonctions-cours"
+            className="inline-flex items-center gap-1.5 font-instrument text-[14px] text-carnet-ink-soft hover:text-carnet-red transition-colors"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            Retour au cours
+          </Link>
+          <Link
+            to="/formation/math/terminale-vers-prepa"
+            className="inline-flex items-center gap-1.5 font-instrument text-[14px] text-carnet-ink-soft hover:text-carnet-red transition-colors"
+          >
+            Tous les chapitres
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
       </div>
     </div>
   );

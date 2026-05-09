@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { BookOpen, Play, Target, Brain, Code } from 'lucide-react';
+import { BookOpen, Play, Target, Brain } from 'lucide-react';
 import { getAllRoutePaths } from '@/config/routes';
 
 interface Chapter {
@@ -28,39 +28,53 @@ const MathsChapterListRow: React.FC<MathsChapterListRowProps> = ({ chapter }) =>
     const flashcardsPath = `/formation/maths-${chapter.slug}-flashcards`;
     const quizPath = `/formation/maths-${chapter.slug}-quiz`;
 
-    // Standard checks
     const hasCourse = allPaths.includes(coursePath);
     const hasExercises = allPaths.includes(exercisesPath);
-    const hasFlashcards = true; // Always show flashcards button
-    const hasQuiz = true; // Always show quiz button
+    const hasFlashcards = true;
+    const hasQuiz = true;
 
     const resolvedCourseHref = hasCourse ? coursePath : (hasExercises ? exercisesPath : undefined);
+    const ChapterIcon = chapter.icon;
 
-    // If customLink is provided, we override standard behavior
     if (chapter.customLink) {
         return (
             <div
                 onClick={() => navigate(chapter.customLink!)}
-                className="block cursor-pointer"
+                className="carnet-card group cursor-pointer p-5 hover:shadow-[0_12px_32px_rgba(78,55,30,0.10)] transition-shadow"
             >
-                <div className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 border border-gray-100/50 hover:border-blue-100 group">
-                    <div className="flex items-center gap-5">
-                        <div className={`w-12 h-12 ${chapter.color.replace('bg-', 'bg-').replace('600', '50')} rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300 flex-shrink-0 border border-blue-50`}>
-                            <span className={`font-bold text-lg ${chapter.color.replace('bg-', 'text-')}`}>{chapter.id}</span>
+                <div className="flex items-center gap-5">
+                    <div className="flex-shrink-0 flex flex-col items-center">
+                        <span className="carnet-hand text-[36px] text-carnet-red leading-none font-semibold">
+                            {String(chapter.id).padStart(2, '0')}
+                        </span>
+                        <hr className="w-7 h-0.5 bg-carnet-ink border-0 mt-1" />
+                    </div>
+
+                    {ChapterIcon && (
+                        <div className="hidden sm:flex w-11 h-11 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] items-center justify-center flex-shrink-0">
+                            <ChapterIcon className="h-5 w-5 text-carnet-red" />
                         </div>
-                        <div className="flex-1 flex items-center justify-between gap-4">
-                            <div>
-                                <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-blue-700 transition-colors">{chapter.title}</h3>
-                                <p className="text-sm text-gray-500 font-medium line-clamp-1">{chapter.description}</p>
-                            </div>
-                            <div className="flex gap-2 flex-shrink-0" onClick={(e) => e.stopPropagation()}>
-                                <Link to={chapter.customLink!}>
-                                    <Button size="sm" className={`${chapter.color} hover:opacity-90 text-white rounded-lg font-medium shadow-sm h-9 px-5`}>
-                                        <BookOpen className="mr-2 h-4 w-4" />
-                                        Accéder
-                                    </Button>
-                                </Link>
-                            </div>
+                    )}
+
+                    <div className="flex-1 flex flex-col lg:flex-row lg:items-center justify-between gap-4 min-w-0">
+                        <div className="min-w-0">
+                            <h3 className="font-lora text-[19px] sm:text-[20px] leading-[1.25] text-carnet-ink mb-1 group-hover:text-carnet-red transition-colors">
+                                {chapter.title}
+                            </h3>
+                            <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] line-clamp-1">
+                                {chapter.description}
+                            </p>
+                        </div>
+                        <div className="flex flex-wrap gap-2 flex-shrink-0" onClick={(e) => e.stopPropagation()}>
+                            <Link to={chapter.customLink!}>
+                                <Button
+                                    size="sm"
+                                    className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold rounded-full h-9 px-4 text-xs border-0"
+                                >
+                                    <BookOpen className="mr-2 h-3.5 w-3.5" />
+                                    Accéder
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -71,56 +85,86 @@ const MathsChapterListRow: React.FC<MathsChapterListRowProps> = ({ chapter }) =>
     return (
         <div
             onClick={() => resolvedCourseHref && navigate(resolvedCourseHref)}
-            className="block cursor-pointer"
+            className="carnet-card group cursor-pointer p-5 sm:p-6 hover:shadow-[0_12px_32px_rgba(78,55,30,0.10)] transition-shadow"
         >
-            <div className="bg-white rounded-2xl p-4 md:p-5 shadow-[0_2px_8px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgb(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300 border border-transparent hover:border-blue-100 group">
-                <div className="flex items-center gap-5">
-                    <div className={`w-12 h-12 ${chapter.color.replace('bg-', 'bg-').replace('600', '50')} rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300 flex-shrink-0 border border-blue-50`}>
-                        <span className={`font-bold text-lg ${chapter.color.replace('bg-', 'text-')}`}>{chapter.id}</span>
+            <div className="flex items-start sm:items-center gap-5">
+                <div className="flex-shrink-0 flex flex-col items-center">
+                    <span className="carnet-hand text-[36px] sm:text-[40px] text-carnet-red leading-none font-semibold">
+                        {String(chapter.id).padStart(2, '0')}
+                    </span>
+                    <hr className="w-7 h-0.5 bg-carnet-ink border-0 mt-1" />
+                </div>
+
+                {ChapterIcon && (
+                    <div className="hidden sm:flex w-11 h-11 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] items-center justify-center flex-shrink-0">
+                        <ChapterIcon className="h-5 w-5 text-carnet-red" />
                     </div>
-                    <div className="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                        <div>
-                            <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-blue-700 transition-colors">{chapter.title}</h3>
-                            <p className="text-sm text-gray-500 font-medium line-clamp-1">{chapter.description}</p>
-                        </div>
+                )}
 
-                        <div className="flex gap-2 flex-wrap md:flex-nowrap flex-shrink-0" onClick={(e) => e.stopPropagation()}>
-                            {resolvedCourseHref && (
-                                <Link to={resolvedCourseHref}>
-                                    <Button size="sm" className={`${chapter.color} hover:opacity-90 text-white rounded-lg font-medium shadow-sm transition-all duration-200 h-9 px-4 text-xs`}>
-                                        <BookOpen className="mr-2 h-3.5 w-3.5" />
-                                        Cours
-                                    </Button>
-                                </Link>
-                            )}
+                <div className="flex-1 flex flex-col lg:flex-row lg:items-center justify-between gap-4 min-w-0">
+                    <div className="min-w-0">
+                        <h3 className="font-lora text-[19px] sm:text-[20px] leading-[1.25] text-carnet-ink mb-1 group-hover:text-carnet-red transition-colors">
+                            {chapter.title}
+                        </h3>
+                        <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] line-clamp-2">
+                            {chapter.description}
+                        </p>
+                    </div>
 
-                            {hasExercises && (
-                                <Link to={exercisesPath}>
-                                    <Button size="sm" variant="outline" className="border-gray-200 text-gray-600 hover:bg-white hover:text-blue-700 hover:border-blue-200 rounded-lg transition-all duration-200 h-9 px-4 text-xs bg-transparent">
-                                        <Play className="mr-2 h-3.5 w-3.5" />
-                                        Exercices
-                                    </Button>
-                                </Link>
-                            )}
+                    <div
+                        className="flex flex-wrap gap-2 lg:flex-nowrap flex-shrink-0"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {resolvedCourseHref && (
+                            <Link to={resolvedCourseHref}>
+                                <Button
+                                    size="sm"
+                                    className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold rounded-full h-9 px-4 text-xs border-0"
+                                >
+                                    <BookOpen className="mr-2 h-3.5 w-3.5" />
+                                    Cours
+                                </Button>
+                            </Link>
+                        )}
 
-                            {hasFlashcards && (
-                                <Link to={flashcardsPath}>
-                                    <Button size="sm" variant="outline" className="border-gray-200 text-gray-600 hover:bg-white hover:text-blue-700 hover:border-blue-200 rounded-lg transition-all duration-200 h-9 px-4 text-xs bg-transparent">
-                                        <Brain className="mr-2 h-3.5 w-3.5" />
-                                        Flashcards
-                                    </Button>
-                                </Link>
-                            )}
+                        {hasExercises && (
+                            <Link to={exercisesPath}>
+                                <Button
+                                    size="sm"
+                                    variant="outline"
+                                    className="border-[rgba(78,55,30,0.18)] text-carnet-ink-soft hover:bg-[rgba(193,68,58,0.06)] hover:text-carnet-red hover:border-carnet-red font-instrument rounded-full h-9 px-4 text-xs bg-transparent"
+                                >
+                                    <Play className="mr-2 h-3.5 w-3.5" />
+                                    Exercices
+                                </Button>
+                            </Link>
+                        )}
 
-                            {hasQuiz && (
-                                <Link to={quizPath}>
-                                    <Button size="sm" variant="outline" className="border-gray-200 text-gray-600 hover:bg-white hover:text-blue-700 hover:border-blue-200 rounded-lg transition-all duration-200 h-9 px-4 text-xs bg-transparent">
-                                        <Target className="mr-2 h-3.5 w-3.5" />
-                                        Quiz
-                                    </Button>
-                                </Link>
-                            )}
-                        </div>
+                        {hasFlashcards && (
+                            <Link to={flashcardsPath}>
+                                <Button
+                                    size="sm"
+                                    variant="outline"
+                                    className="border-[rgba(78,55,30,0.18)] text-carnet-ink-soft hover:bg-[rgba(193,68,58,0.06)] hover:text-carnet-red hover:border-carnet-red font-instrument rounded-full h-9 px-4 text-xs bg-transparent"
+                                >
+                                    <Brain className="mr-2 h-3.5 w-3.5" />
+                                    Flashcards
+                                </Button>
+                            </Link>
+                        )}
+
+                        {hasQuiz && (
+                            <Link to={quizPath}>
+                                <Button
+                                    size="sm"
+                                    variant="outline"
+                                    className="border-[rgba(78,55,30,0.18)] text-carnet-ink-soft hover:bg-[rgba(193,68,58,0.06)] hover:text-carnet-red hover:border-carnet-red font-instrument rounded-full h-9 px-4 text-xs bg-transparent"
+                                >
+                                    <Target className="mr-2 h-3.5 w-3.5" />
+                                    Quiz
+                                </Button>
+                            </Link>
+                        )}
                     </div>
                 </div>
             </div>

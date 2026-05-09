@@ -232,7 +232,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(255, 255, 255, 0.98)', backdropFilter: 'blur(16px)',
+    backgroundColor: 'rgba(251, 246, 234, 0.98)', backdropFilter: 'blur(16px)',
     zIndex: 10000,
     paddingTop: '80px',
     paddingLeft: '20px',
@@ -254,8 +254,8 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
       <header className={cn(
         "fixed top-0 left-0 right-0 z-[9999] transition-colors duration-300 h-14",
         isScrolled
-          ? "bg-white/80 backdrop-blur-xl border-b border-slate-100"
-          : "bg-white border-b border-transparent"
+          ? "bg-carnet-paper/90 backdrop-blur-md backdrop-saturate-150 border-b border-dashed border-carnet-rule"
+          : "bg-carnet-paper border-b border-dashed border-transparent"
       )}>
         <nav className="container mx-auto px-4 lg:px-6 h-full flex items-center justify-between">
           <Link to="/" className="flex items-center" onClick={closeMenu}>
@@ -264,7 +264,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-2 xl:space-x-4">
-            <Link to="/" className="text-sm font-medium text-pr-black hover:text-[#C96442] transition-colors duration-150 px-2.5 py-1.5 rounded-lg hover:bg-slate-50 whitespace-nowrap" onClick={closeMenu}>Accueil</Link>
+            <Link to="/" className="text-sm font-medium text-pr-black hover:text-carnet-red transition-colors duration-150 px-2.5 py-1.5 rounded-lg hover:bg-carnet-red/10 whitespace-nowrap" onClick={closeMenu}>Accueil</Link>
 
             {/* Menu déroulant "Formations" avec hover */}
             <div
@@ -273,7 +273,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               onMouseEnter={handleFormationsHover}
               onMouseLeave={handleFormationsLeave}
             >
-              <button className="text-sm font-medium text-pr-black hover:text-[#C96442] transition-colors duration-150 flex items-center gap-1 focus:outline-none px-2.5 py-1.5 rounded-lg hover:bg-slate-50 whitespace-nowrap">
+              <button className="text-sm font-medium text-pr-black hover:text-carnet-red transition-colors duration-150 flex items-center gap-1 focus:outline-none px-2.5 py-1.5 rounded-lg hover:bg-carnet-red/10 whitespace-nowrap">
                 Formations
                 <ChevronDown className={cn("h-3 w-3 transition-transform duration-200", isFormationsOpen && "rotate-180")} />
               </button>
@@ -281,7 +281,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               {/* Menu déroulant */}
               <div
                 className={cn(
-                  "absolute top-full left-1/2 transform -translate-x-1/2 w-64 bg-white rounded-lg border border-slate-100 p-1.5 transition-all duration-200 z-50",
+                  "absolute top-full left-1/2 transform -translate-x-1/2 w-64 bg-carnet-paper-2 rounded-md border border-dashed border-carnet-rule shadow-[0_8px_24px_rgba(78,55,30,0.08)] p-1.5 transition-all duration-200 z-50",
                   isFormationsOpen
                     ? "opacity-100 translate-y-0 pointer-events-auto"
                     : "opacity-0 -translate-y-2 pointer-events-none"
@@ -290,59 +290,59 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                 onMouseLeave={handleMenuLeave}
               >
                 {/* Maths - visible, redirigé si non whitelist */}
-                <Link to={mathsHref} onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><Calculator className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to={mathsHref} onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><Calculator className="h-4 w-4 text-carnet-red" /></span>
                   <span>Maths</span>
                 </Link>
 
                 {/* Python - visible, redirigé si non whitelist */}
-                <Link to={pythonHref} onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><Code className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to={pythonHref} onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><Code className="h-4 w-4 text-carnet-red" /></span>
                   <span>Python</span>
                 </Link>
 
                 {/* Formations publiques - toujours visibles */}
-                <Link to="/formation/anglais" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><Languages className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/formation/anglais" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><Languages className="h-4 w-4 text-carnet-red" /></span>
                   <span>Anglais</span>
                 </Link>
-                <Link to="/formation/espagnol" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><Languages className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/formation/espagnol" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><Languages className="h-4 w-4 text-carnet-red" /></span>
                   <span>Espagnol</span>
                 </Link>
-                <Link to="/formation/allemand" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><Languages className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/formation/allemand" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><Languages className="h-4 w-4 text-carnet-red" /></span>
                   <span>Allemand</span>
                 </Link>
-                <Link to="/formation/geopolitique" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><Globe className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/formation/geopolitique" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><Globe className="h-4 w-4 text-carnet-red" /></span>
                   <span>Géopolitique</span>
                 </Link>
-                <Link to="/formation/esh" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><GraduationCap className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/formation/esh" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><GraduationCap className="h-4 w-4 text-carnet-red" /></span>
                   <span>ESH</span>
                 </Link>
-                <Link to="/methodologie/entretiens-personnalite" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><Users className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/methodologie/entretiens-personnalite" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><Users className="h-4 w-4 text-carnet-red" /></span>
                   <span>Entretiens de Personnalité</span>
                 </Link>
 
-                <Link to="/generator" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><Code className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/generator" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><Code className="h-4 w-4 text-carnet-red" /></span>
                   <span>Générateur</span>
                 </Link>
 
-                <div className="border-t border-slate-100 my-2"></div>
-                <Link to="/formations" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><BookOpen className="h-4 w-4 text-[#C96442]" /></span>
+                <div className="border-t border-dashed border-carnet-rule my-2"></div>
+                <Link to="/formations" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><BookOpen className="h-4 w-4 text-carnet-red" /></span>
                   <span>Toutes nos formations</span>
                 </Link>
-                <Link to="/avis" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><Star className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/avis" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><Star className="h-4 w-4 text-carnet-red" /></span>
                   <span>Avis</span>
                 </Link>
-                <Link to="/conseils-videos" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><Youtube className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/conseils-videos" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><Youtube className="h-4 w-4 text-carnet-red" /></span>
                   <span>Conseils en vidéo</span>
                 </Link>
               </div>
@@ -351,7 +351,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
 
 
 
-            <Link to="/generator" className="text-sm font-medium text-pr-black hover:text-[#C96442] transition-colors duration-150 px-2.5 py-1.5 rounded-lg hover:bg-slate-50 whitespace-nowrap" onClick={closeMenu}>Générateur</Link>
+            <Link to="/generator" className="text-sm font-medium text-pr-black hover:text-carnet-red transition-colors duration-150 px-2.5 py-1.5 rounded-lg hover:bg-carnet-red/10 whitespace-nowrap" onClick={closeMenu}>Générateur</Link>
 
             {/* Menu déroulant "Niveau d'étude" avec hover */}
             <div
@@ -360,7 +360,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               onMouseEnter={handleStudyLevelHover}
               onMouseLeave={handleStudyLevelLeave}
             >
-              <button className="text-sm font-medium text-pr-black hover:text-[#C96442] transition-colors duration-150 flex items-center gap-1 focus:outline-none px-2.5 py-1.5 rounded-lg hover:bg-slate-50 whitespace-nowrap">
+              <button className="text-sm font-medium text-pr-black hover:text-carnet-red transition-colors duration-150 flex items-center gap-1 focus:outline-none px-2.5 py-1.5 rounded-lg hover:bg-carnet-red/10 whitespace-nowrap">
                 Niveau
                 <ChevronDown className={cn("h-3 w-3 transition-transform duration-200", isStudyLevelOpen && "rotate-180")} />
               </button>
@@ -368,7 +368,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               {/* Menu déroulant */}
               <div
                 className={cn(
-                  "absolute top-full left-1/2 transform -translate-x-1/2 w-64 bg-white rounded-lg border border-slate-100 p-1.5 transition-all duration-200 z-50",
+                  "absolute top-full left-1/2 transform -translate-x-1/2 w-64 bg-carnet-paper-2 rounded-md border border-dashed border-carnet-rule shadow-[0_8px_24px_rgba(78,55,30,0.08)] p-1.5 transition-all duration-200 z-50",
                   isStudyLevelOpen
                     ? "opacity-100 translate-y-0 pointer-events-auto"
                     : "opacity-0 -translate-y-2 pointer-events-none"
@@ -377,51 +377,51 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                 onMouseLeave={handleStudyLevelMenuLeave}
               >
                 {/* Primaire */}
-                <Link to="/articles/primaire" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><GraduationCap className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/articles/primaire" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><GraduationCap className="h-4 w-4 text-carnet-red" /></span>
                   <span>Primaire</span>
                 </Link>
 
                 {/* Collège */}
-                <Link to="/articles/college" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><GraduationCap className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/articles/college" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><GraduationCap className="h-4 w-4 text-carnet-red" /></span>
                   <span>Collège</span>
                 </Link>
 
                 {/* Lycée */}
-                <Link to="/articles/lycee" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><GraduationCap className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/articles/lycee" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><GraduationCap className="h-4 w-4 text-carnet-red" /></span>
                   <span>Lycée</span>
                 </Link>
 
                 {/* Prépa ECG */}
-                <Link to="/articles/prepa-ecg" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><Calculator className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/articles/prepa-ecg" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><Calculator className="h-4 w-4 text-carnet-red" /></span>
                   <span>Prépa ECG</span>
                 </Link>
 
                 {/* Terminale → Prépa */}
-                <Link to="/articles/terminale-prepa" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><TrendingUp className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/articles/terminale-prepa" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><TrendingUp className="h-4 w-4 text-carnet-red" /></span>
                   <span>Terminale → Prépa</span>
                 </Link>
 
                 {/* Concours ACCES/SESAME */}
-                <Link to="/articles/concours-acces-sesame" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><Award className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/articles/concours-acces-sesame" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><Award className="h-4 w-4 text-carnet-red" /></span>
                   <span>Concours ACCES/SESAME</span>
                 </Link>
 
                 {/* OTERIA Cyber School */}
-                <Link to="/articles/oteria-cyber-school" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><Code className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/articles/oteria-cyber-school" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><Code className="h-4 w-4 text-carnet-red" /></span>
                   <span>OTERIA Cyber School</span>
                 </Link>
 
               </div>
             </div>
 
-            <Link to="/avis" className="text-sm font-medium text-pr-black hover:text-[#C96442] transition-colors duration-150 px-2.5 py-1.5 rounded-lg hover:bg-slate-50 whitespace-nowrap" onClick={closeMenu}>Avis</Link>
+            <Link to="/avis" className="text-sm font-medium text-pr-black hover:text-carnet-red transition-colors duration-150 px-2.5 py-1.5 rounded-lg hover:bg-carnet-red/10 whitespace-nowrap" onClick={closeMenu}>Avis</Link>
 
             {/* Menu déroulant "Contact" avec hover */}
             <div
@@ -430,7 +430,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               onMouseEnter={handleContactHover}
               onMouseLeave={handleContactLeave}
             >
-              <button className="text-sm font-medium text-pr-black hover:text-[#C96442] transition-colors duration-150 flex items-center gap-1 focus:outline-none px-2.5 py-1.5 rounded-lg hover:bg-slate-50 whitespace-nowrap">
+              <button className="text-sm font-medium text-pr-black hover:text-carnet-red transition-colors duration-150 flex items-center gap-1 focus:outline-none px-2.5 py-1.5 rounded-lg hover:bg-carnet-red/10 whitespace-nowrap">
                 Contact
                 <ChevronDown className={cn("h-3 w-3 transition-transform duration-200", isContactOpen && "rotate-180")} />
               </button>
@@ -438,7 +438,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
               {/* Menu déroulant */}
               <div
                 className={cn(
-                  "absolute top-full left-1/2 transform -translate-x-1/2 w-64 bg-white rounded-lg border border-slate-100 p-1.5 transition-all duration-200 z-50",
+                  "absolute top-full left-1/2 transform -translate-x-1/2 w-64 bg-carnet-paper-2 rounded-md border border-dashed border-carnet-rule shadow-[0_8px_24px_rgba(78,55,30,0.08)] p-1.5 transition-all duration-200 z-50",
                   isContactOpen
                     ? "opacity-100 translate-y-0 pointer-events-auto"
                     : "opacity-0 -translate-y-2 pointer-events-none"
@@ -446,41 +446,41 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
                 onMouseEnter={handleContactMenuHover}
                 onMouseLeave={handleContactMenuLeave}
               >
-                <Link to="/parent" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><Users className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/parent" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><Users className="h-4 w-4 text-carnet-red" /></span>
                   <span>Espace Parents</span>
                 </Link>
 
-                <Link to="/nos-profs" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><GraduationCap className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/nos-profs" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><GraduationCap className="h-4 w-4 text-carnet-red" /></span>
                   <span>Professeurs</span>
                 </Link>
 
-                <Link to="/professeur" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><GraduationCap className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/professeur" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><GraduationCap className="h-4 w-4 text-carnet-red" /></span>
                   <span>Devenir Professeur</span>
                 </Link>
 
-                <Link to="/professeur-dashboard" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><Settings className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/professeur-dashboard" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><Settings className="h-4 w-4 text-carnet-red" /></span>
                   <span>Espace Professeur</span>
                 </Link>
 
-                <div className="border-t border-slate-100 my-1"></div>
+                <div className="border-t border-dashed border-carnet-rule my-1"></div>
 
-                <Link to="/design-system" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><Package className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/design-system" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><Package className="h-4 w-4 text-carnet-red" /></span>
                   <span>Design System</span>
                 </Link>
 
-                <Link to="/contact" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-slate-50 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
-                  <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center"><Mail className="h-4 w-4 text-[#C96442]" /></span>
+                <Link to="/contact" onClick={closeMenu} className="flex items-center gap-3 w-full hover:bg-carnet-red/10 rounded-lg px-3 py-2 transition-colors text-sm text-pr-black">
+                  <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center"><Mail className="h-4 w-4 text-carnet-red" /></span>
                   <span>Nous contacter</span>
                 </Link>
               </div>
             </div>
 
-            <Link to="/stage-accompagnement" className="text-sm font-medium text-pr-black hover:text-[#C96442] transition-colors duration-150 px-2.5 py-1.5 rounded-lg hover:bg-slate-50 whitespace-nowrap" onClick={closeMenu}>Offres</Link>
+            <Link to="/stage-accompagnement" className="text-sm font-medium text-pr-black hover:text-carnet-red transition-colors duration-150 px-2.5 py-1.5 rounded-lg hover:bg-carnet-red/10 whitespace-nowrap" onClick={closeMenu}>Offres</Link>
             <SearchTrigger />
 
             {/* Liens réseaux sociaux */}
@@ -519,22 +519,22 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
             <ThemeToggle variant="icon" />
             {currentUser ? (
               <div className="flex items-center space-x-3 ml-4">
-                <Link to="/dashboard" className="text-sm text-pr-black hover:text-[#C96442] transition flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg hover:bg-slate-50" onClick={closeMenu}>
+                <Link to="/dashboard" className="text-sm text-pr-black hover:text-carnet-red transition flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg hover:bg-carnet-red/10" onClick={closeMenu}>
                   <LayoutDashboard className="h-3.5 w-3.5" />Dashboard
                   {isProfessor && (
-                    <span className="ml-1 text-[10px] bg-[#C96442] text-white px-1.5 py-0.5 rounded-full font-medium leading-none">Prof</span>
+                    <span className="ml-1 text-[10px] bg-carnet-red text-carnet-paper px-1.5 py-0.5 rounded-full font-medium leading-none">Prof</span>
                   )}
                 </Link>
                 {isProfessor && (
-                  <Link to="/prof" className="text-sm text-pr-black hover:text-[#C96442] transition flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg hover:bg-slate-50" onClick={closeMenu}><UserCheck className="h-3.5 w-3.5" />Espace Prof</Link>
+                  <Link to="/prof" className="text-sm text-pr-black hover:text-carnet-red transition flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg hover:bg-carnet-red/10" onClick={closeMenu}><UserCheck className="h-3.5 w-3.5" />Espace Prof</Link>
                 )}
-                <Button variant="outline" size="sm" onClick={() => { handleLogout(); closeMenu(); }} className="flex items-center h-8 px-3 text-xs border-slate-100 text-pr-black hover:bg-slate-50 hover:text-pr-black" disabled={isLoggingOut}><LogOut className="mr-1 h-3 w-3" />{isLoggingOut ? 'Déconnexion...' : 'Déconnexion'}</Button>
+                <Button variant="outline" size="sm" onClick={() => { handleLogout(); closeMenu(); }} className="flex items-center h-8 px-3 text-xs border-dashed border-carnet-rule text-pr-black hover:bg-carnet-red/10 hover:text-pr-black" disabled={isLoggingOut}><LogOut className="mr-1 h-3 w-3" />{isLoggingOut ? 'Déconnexion...' : 'Déconnexion'}</Button>
               </div>
             ) : (
               <>
-                <Link to="/login" className="text-sm font-medium text-pr-black hover:text-[#C96442] transition px-2.5 py-1.5 rounded-lg hover:bg-slate-50" onClick={closeMenu}>Login</Link>
+                <Link to="/login" className="text-sm font-medium text-pr-black hover:text-carnet-red transition px-2.5 py-1.5 rounded-lg hover:bg-carnet-red/10" onClick={closeMenu}>Login</Link>
                 {showSignup !== false && (
-                  <Link to="/register" onClick={closeMenu}><Button size="sm" className="h-8 px-4 text-xs font-medium bg-[#C96442] hover:bg-[#B5573A] text-white">S'inscrire</Button></Link>
+                  <Link to="/register" onClick={closeMenu}><Button size="sm" className="h-8 px-4 text-xs font-medium bg-carnet-ink hover:bg-carnet-red text-carnet-paper">S'inscrire</Button></Link>
                 )}
               </>
             )}
@@ -558,7 +558,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
         <div className="relative w-full">
           <div className="absolute -z-10 bottom-0 left-0 w-full pr-32 h-px bg-transparent z-30 pointer-events-none">
             <div
-              className="h-full bg-[#C96442] transition-all duration-300 ease-out"
+              className="h-full bg-carnet-red transition-all duration-300 ease-out"
               style={{ width: `${scrollProgress}%` }}
             />
           </div>
@@ -581,49 +581,49 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
 
         {/* Menu principal en deux colonnes */}
         <div className="grid grid-cols-2 gap-4 mb-6">
-          <Link to="/" className="text-base py-3 border border-slate-100 bg-white px-4 rounded-lg transition-colors duration-200 hover:bg-slate-50 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>Accueil</Link>
-          <Link to="/avis" className="text-base py-3 border border-slate-100 bg-white px-4 rounded-lg transition-colors duration-200 hover:bg-slate-50 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>Avis</Link>
-          <Link to="/generator" className="text-base py-3 border border-slate-100 bg-white px-4 rounded-lg transition-colors duration-200 hover:bg-slate-50 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>Générateur</Link>
-          <Link to="/conseils-videos" className="text-base py-3 border border-slate-100 bg-white px-4 rounded-lg transition-colors duration-200 hover:bg-slate-50 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>📹 Vidéos</Link>
+          <Link to="/" className="text-base py-3 border border-dashed border-carnet-rule bg-carnet-paper-2 px-4 rounded-lg transition-colors duration-200 hover:bg-carnet-red/10 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>Accueil</Link>
+          <Link to="/avis" className="text-base py-3 border border-dashed border-carnet-rule bg-carnet-paper-2 px-4 rounded-lg transition-colors duration-200 hover:bg-carnet-red/10 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>Avis</Link>
+          <Link to="/generator" className="text-base py-3 border border-dashed border-carnet-rule bg-carnet-paper-2 px-4 rounded-lg transition-colors duration-200 hover:bg-carnet-red/10 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>Générateur</Link>
+          <Link to="/conseils-videos" className="text-base py-3 border border-dashed border-carnet-rule bg-carnet-paper-2 px-4 rounded-lg transition-colors duration-200 hover:bg-carnet-red/10 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>📹 Vidéos</Link>
 
 
-          <Link to="/articles/primaire" className="text-base py-3 border border-slate-100 bg-white px-4 rounded-lg transition-colors duration-200 hover:bg-slate-50 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>Primaire</Link>
-          <Link to="/articles/college" className="text-base py-3 border border-slate-100 bg-white px-4 rounded-lg transition-colors duration-200 hover:bg-slate-50 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>Collège</Link>
-          <Link to="/articles/lycee" className="text-base py-3 border border-slate-100 bg-white px-4 rounded-lg transition-colors duration-200 hover:bg-slate-50 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>Lycée</Link>
-          <Link to="/articles/prepa-ecg" className="text-base py-3 border border-slate-100 bg-white px-4 rounded-lg transition-colors duration-200 hover:bg-slate-50 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>Prépa ECG</Link>
-          <Link to="/articles/concours-acces-sesame" className="text-base py-3 border border-slate-100 bg-white px-4 rounded-lg transition-colors duration-200 hover:bg-slate-50 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>Concours ACCES/SESAME</Link>
-          <Link to="/articles/oteria-cyber-school" className="text-base py-3 border border-slate-100 bg-white px-4 rounded-lg transition-colors duration-200 hover:bg-slate-50 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>OTERIA Cyber School</Link>
+          <Link to="/articles/primaire" className="text-base py-3 border border-dashed border-carnet-rule bg-carnet-paper-2 px-4 rounded-lg transition-colors duration-200 hover:bg-carnet-red/10 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>Primaire</Link>
+          <Link to="/articles/college" className="text-base py-3 border border-dashed border-carnet-rule bg-carnet-paper-2 px-4 rounded-lg transition-colors duration-200 hover:bg-carnet-red/10 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>Collège</Link>
+          <Link to="/articles/lycee" className="text-base py-3 border border-dashed border-carnet-rule bg-carnet-paper-2 px-4 rounded-lg transition-colors duration-200 hover:bg-carnet-red/10 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>Lycée</Link>
+          <Link to="/articles/prepa-ecg" className="text-base py-3 border border-dashed border-carnet-rule bg-carnet-paper-2 px-4 rounded-lg transition-colors duration-200 hover:bg-carnet-red/10 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>Prépa ECG</Link>
+          <Link to="/articles/concours-acces-sesame" className="text-base py-3 border border-dashed border-carnet-rule bg-carnet-paper-2 px-4 rounded-lg transition-colors duration-200 hover:bg-carnet-red/10 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>Concours ACCES/SESAME</Link>
+          <Link to="/articles/oteria-cyber-school" className="text-base py-3 border border-dashed border-carnet-rule bg-carnet-paper-2 px-4 rounded-lg transition-colors duration-200 hover:bg-carnet-red/10 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>OTERIA Cyber School</Link>
 
           {/* Menu Contact mobile */}
-          <div className="border border-slate-100 rounded-lg overflow-hidden col-span-2">
-            <div className="text-base py-3 px-4 bg-slate-50 font-medium text-pr-black">Contact</div>
-            <Link to="/parent" className="text-base py-3 border-b border-slate-100 bg-white px-6 transition-colors duration-200 hover:bg-slate-50 text-pr-black min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
-              <Users className="h-5 w-5 text-[#C96442]" />
+          <div className="border border-dashed border-carnet-rule rounded-lg overflow-hidden col-span-2">
+            <div className="text-base py-3 px-4 bg-carnet-red/10 font-medium text-pr-black">Contact</div>
+            <Link to="/parent" className="text-base py-3 border-b border-dashed border-carnet-rule bg-carnet-paper-2 px-6 transition-colors duration-200 hover:bg-carnet-red/10 text-pr-black min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
+              <Users className="h-5 w-5 text-carnet-red" />
               Espace Parents
             </Link>
-            <Link to="/nos-profs" className="text-base py-3 border-b border-slate-100 bg-white px-6 transition-colors duration-200 hover:bg-slate-50 text-pr-black min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
-              <GraduationCap className="h-5 w-5 text-[#C96442]" />
+            <Link to="/nos-profs" className="text-base py-3 border-b border-dashed border-carnet-rule bg-carnet-paper-2 px-6 transition-colors duration-200 hover:bg-carnet-red/10 text-pr-black min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
+              <GraduationCap className="h-5 w-5 text-carnet-red" />
               Professeurs
             </Link>
-            <Link to="/professeur" className="text-base py-3 border-b border-slate-100 bg-white px-6 transition-colors duration-200 hover:bg-slate-50 text-pr-black min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
-              <GraduationCap className="h-5 w-5 text-[#C96442]" />
+            <Link to="/professeur" className="text-base py-3 border-b border-dashed border-carnet-rule bg-carnet-paper-2 px-6 transition-colors duration-200 hover:bg-carnet-red/10 text-pr-black min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
+              <GraduationCap className="h-5 w-5 text-carnet-red" />
               Devenir Professeur
             </Link>
-            <Link to="/professeur-dashboard" className="text-base py-3 border-b border-slate-100 bg-white px-6 transition-colors duration-200 hover:bg-slate-50 text-pr-black min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
-              <Settings className="h-5 w-5 text-[#C96442]" />
+            <Link to="/professeur-dashboard" className="text-base py-3 border-b border-dashed border-carnet-rule bg-carnet-paper-2 px-6 transition-colors duration-200 hover:bg-carnet-red/10 text-pr-black min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
+              <Settings className="h-5 w-5 text-carnet-red" />
               Espace Professeur
             </Link>
-            <Link to="/design-system" className="text-base py-3 border-b border-slate-100 bg-white px-6 transition-colors duration-200 hover:bg-slate-50 text-pr-black min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
-              <Package className="h-5 w-5 text-[#C96442]" />
+            <Link to="/design-system" className="text-base py-3 border-b border-dashed border-carnet-rule bg-carnet-paper-2 px-6 transition-colors duration-200 hover:bg-carnet-red/10 text-pr-black min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
+              <Package className="h-5 w-5 text-carnet-red" />
               Design System
             </Link>
-            <Link to="/contact" className="text-base py-3 border-b border-slate-100 bg-white px-6 transition-colors duration-200 hover:bg-slate-50 text-pr-black min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
-              <Mail className="h-5 w-5 text-[#C96442]" />
+            <Link to="/contact" className="text-base py-3 border-b border-dashed border-carnet-rule bg-carnet-paper-2 px-6 transition-colors duration-200 hover:bg-carnet-red/10 text-pr-black min-h-[44px] flex items-center gap-3" onClick={closeMenu}>
+              <Mail className="h-5 w-5 text-carnet-red" />
               Nous contacter
             </Link>
           </div>
 
-          <Link to="/stage-accompagnement" className="text-base py-3 border border-slate-100 bg-white px-4 rounded-lg transition-colors duration-200 hover:bg-slate-50 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>Offres</Link>
+          <Link to="/stage-accompagnement" className="text-base py-3 border border-dashed border-carnet-rule bg-carnet-paper-2 px-4 rounded-lg transition-colors duration-200 hover:bg-carnet-red/10 text-pr-black min-h-[44px] flex items-center" onClick={closeMenu}>Offres</Link>
         </div>
 
         {/* Liens réseaux sociaux mobiles */}
@@ -632,7 +632,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
             href="https://www.instagram.com/prepa_rationnelle"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 text-pr-black hover:text-[#C96442] transition-colors rounded-full hover:bg-slate-50"
+            className="p-3 text-pr-black hover:text-carnet-red transition-colors rounded-full hover:bg-carnet-red/10"
             aria-label="Instagram"
           >
             <Instagram className="h-5 w-5" />
@@ -641,7 +641,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
             href="https://www.tiktok.com/@prepa_rationnelle"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 text-pr-black hover:text-[#C96442] transition-colors rounded-full hover:bg-slate-50"
+            className="p-3 text-pr-black hover:text-carnet-red transition-colors rounded-full hover:bg-carnet-red/10"
             aria-label="TikTok"
           >
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -652,7 +652,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
             href="https://www.youtube.com/@preparationnelle"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 text-pr-black hover:text-[#C96442] transition-colors rounded-full hover:bg-slate-50"
+            className="p-3 text-pr-black hover:text-carnet-red transition-colors rounded-full hover:bg-carnet-red/10"
             aria-label="YouTube"
           >
             <Youtube className="h-5 w-5" />
@@ -664,69 +664,69 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
 
         {/* Formations en deux colonnes */}
         <div className="grid grid-cols-2 gap-3 mb-6">
-          <Link to={mathsHref} onClick={closeMenu} className="flex flex-col items-center gap-2 bg-white border border-slate-100 p-2 rounded-lg text-pr-black hover:bg-slate-50 transition-colors">
-            <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center">
-              <Calculator className="h-4 w-4 text-[#C96442]" />
+          <Link to={mathsHref} onClick={closeMenu} className="flex flex-col items-center gap-2 bg-carnet-paper-2 border border-dashed border-carnet-rule p-2 rounded-lg text-pr-black hover:bg-carnet-red/10 transition-colors">
+            <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center">
+              <Calculator className="h-4 w-4 text-carnet-red" />
             </span>
             <span className="text-sm text-center">Maths</span>
           </Link>
-          <Link to={pythonHref} onClick={closeMenu} className="flex flex-col items-center gap-2 bg-white border border-slate-100 p-2 rounded-lg text-pr-black hover:bg-slate-50 transition-colors">
-            <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center">
-              <Code className="h-4 w-4 text-[#C96442]" />
+          <Link to={pythonHref} onClick={closeMenu} className="flex flex-col items-center gap-2 bg-carnet-paper-2 border border-dashed border-carnet-rule p-2 rounded-lg text-pr-black hover:bg-carnet-red/10 transition-colors">
+            <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center">
+              <Code className="h-4 w-4 text-carnet-red" />
             </span>
             <span className="text-sm text-center">Python</span>
           </Link>
-          <Link to="/formation/anglais" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-white border border-slate-100 p-2 rounded-lg text-pr-black hover:bg-slate-50 transition-colors">
-            <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center">
-              <Languages className="h-4 w-4 text-[#C96442]" />
+          <Link to="/formation/anglais" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-carnet-paper-2 border border-dashed border-carnet-rule p-2 rounded-lg text-pr-black hover:bg-carnet-red/10 transition-colors">
+            <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center">
+              <Languages className="h-4 w-4 text-carnet-red" />
             </span>
             <span className="text-sm text-center">Anglais</span>
           </Link>
-          <Link to="/formation/espagnol" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-white border border-slate-100 p-2 rounded-lg text-pr-black hover:bg-slate-50 transition-colors">
-            <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center">
-              <Languages className="h-4 w-4 text-[#C96442]" />
+          <Link to="/formation/espagnol" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-carnet-paper-2 border border-dashed border-carnet-rule p-2 rounded-lg text-pr-black hover:bg-carnet-red/10 transition-colors">
+            <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center">
+              <Languages className="h-4 w-4 text-carnet-red" />
             </span>
             <span className="text-sm text-center">Espagnol</span>
           </Link>
-          <Link to="/formation/allemand" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-white border border-slate-100 p-2 rounded-lg text-pr-black hover:bg-slate-50 transition-colors">
-            <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center">
-              <Languages className="h-4 w-4 text-[#C96442]" />
+          <Link to="/formation/allemand" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-carnet-paper-2 border border-dashed border-carnet-rule p-2 rounded-lg text-pr-black hover:bg-carnet-red/10 transition-colors">
+            <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center">
+              <Languages className="h-4 w-4 text-carnet-red" />
             </span>
             <span className="text-sm text-center">Allemand</span>
           </Link>
-          <Link to="/formation/geopolitique" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-white border border-slate-100 p-2 rounded-lg text-pr-black hover:bg-slate-50 transition-colors">
-            <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center">
-              <Globe className="h-4 w-4 text-[#C96442]" />
+          <Link to="/formation/geopolitique" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-carnet-paper-2 border border-dashed border-carnet-rule p-2 rounded-lg text-pr-black hover:bg-carnet-red/10 transition-colors">
+            <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center">
+              <Globe className="h-4 w-4 text-carnet-red" />
             </span>
             <span className="text-sm text-center">Géopolitique</span>
           </Link>
-          <Link to="/formation/esh" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-white border border-slate-100 p-2 rounded-lg text-pr-black hover:bg-slate-50 transition-colors">
-            <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center">
-              <GraduationCap className="h-4 w-4 text-[#C96442]" />
+          <Link to="/formation/esh" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-carnet-paper-2 border border-dashed border-carnet-rule p-2 rounded-lg text-pr-black hover:bg-carnet-red/10 transition-colors">
+            <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center">
+              <GraduationCap className="h-4 w-4 text-carnet-red" />
             </span>
             <span className="text-sm text-center">ESH</span>
           </Link>
-          <Link to="/methodologie/entretiens-personnalite" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-white border border-slate-100 p-2 rounded-lg text-pr-black hover:bg-slate-50 transition-colors">
-            <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center">
-              <Users className="h-4 w-4 text-[#C96442]" />
+          <Link to="/methodologie/entretiens-personnalite" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-carnet-paper-2 border border-dashed border-carnet-rule p-2 rounded-lg text-pr-black hover:bg-carnet-red/10 transition-colors">
+            <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center">
+              <Users className="h-4 w-4 text-carnet-red" />
             </span>
             <span className="text-sm text-center">Entretiens</span>
           </Link>
-          <Link to="/entretien-inverse-gem" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-white border border-slate-100 p-2 rounded-lg text-pr-black hover:bg-slate-50 transition-colors">
-            <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center">
-              <Users className="h-4 w-4 text-[#C96442]" />
+          <Link to="/entretien-inverse-gem" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-carnet-paper-2 border border-dashed border-carnet-rule p-2 rounded-lg text-pr-black hover:bg-carnet-red/10 transition-colors">
+            <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center">
+              <Users className="h-4 w-4 text-carnet-red" />
             </span>
             <span className="text-sm text-center">GEM inversé</span>
           </Link>
-          <Link to="/cv-projectif" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-white border border-slate-100 p-2 rounded-lg text-pr-black hover:bg-slate-50 transition-colors">
-            <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center">
-              <FileText className="h-4 w-4 text-[#C96442]" />
+          <Link to="/cv-projectif" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-carnet-paper-2 border border-dashed border-carnet-rule p-2 rounded-lg text-pr-black hover:bg-carnet-red/10 transition-colors">
+            <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center">
+              <FileText className="h-4 w-4 text-carnet-red" />
             </span>
             <span className="text-sm text-center">CV Projectif</span>
           </Link>
-          <Link to="/generator" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-white border border-slate-100 p-2 rounded-lg text-pr-black hover:bg-slate-50 transition-colors">
-            <span className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center">
-              <Code className="h-4 w-4 text-[#C96442]" />
+          <Link to="/generator" onClick={closeMenu} className="flex flex-col items-center gap-2 bg-carnet-paper-2 border border-dashed border-carnet-rule p-2 rounded-lg text-pr-black hover:bg-carnet-red/10 transition-colors">
+            <span className="w-8 h-8 bg-carnet-red/10 rounded-md flex items-center justify-center">
+              <Code className="h-4 w-4 text-carnet-red" />
             </span>
             <span className="text-sm text-center">Générateur</span>
           </Link>
@@ -735,30 +735,30 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
         <div className="mt-4">
           {currentUser ? (
             <div className="grid grid-cols-2 gap-3">
-              <Link to="/dashboard" className="text-base py-2.5 flex items-center gap-2 bg-white border border-slate-100 text-pr-black px-3 rounded-lg hover:bg-slate-50 transition-colors" onClick={closeMenu}>
-                <LayoutDashboard className="h-5 w-5 text-[#C96442]" />
+              <Link to="/dashboard" className="text-base py-2.5 flex items-center gap-2 bg-carnet-paper-2 border border-dashed border-carnet-rule text-pr-black px-3 rounded-lg hover:bg-carnet-red/10 transition-colors" onClick={closeMenu}>
+                <LayoutDashboard className="h-5 w-5 text-carnet-red" />
                 Dashboard
                 {isProfessor && (
-                  <span className="ml-1 text-[10px] bg-[#C96442] text-white px-1.5 py-0.5 rounded-full font-medium leading-none">Prof</span>
+                  <span className="ml-1 text-[10px] bg-carnet-red text-carnet-paper px-1.5 py-0.5 rounded-full font-medium leading-none">Prof</span>
                 )}
               </Link>
               {isProfessor && (
-                <Link to="/prof" className="text-base py-2.5 flex items-center gap-2 bg-white border border-slate-100 text-pr-black px-3 rounded-lg hover:bg-slate-50 transition-colors" onClick={closeMenu}>
-                  <UserCheck className="h-5 w-5 text-[#C96442]" />
+                <Link to="/prof" className="text-base py-2.5 flex items-center gap-2 bg-carnet-paper-2 border border-dashed border-carnet-rule text-pr-black px-3 rounded-lg hover:bg-carnet-red/10 transition-colors" onClick={closeMenu}>
+                  <UserCheck className="h-5 w-5 text-carnet-red" />
                   Interface Prof
                 </Link>
               )}
-              <Button variant="outline" onClick={() => { handleLogout(); closeMenu(); }} className="mt-4 w-full col-span-2 border-slate-100 text-pr-black hover:bg-slate-50 hover:text-pr-black">
+              <Button variant="outline" onClick={() => { handleLogout(); closeMenu(); }} className="mt-4 w-full col-span-2 border-dashed border-carnet-rule text-pr-black hover:bg-carnet-red/10 hover:text-pr-black">
                 <LogOut className="mr-2 h-4 w-4" />
                 {isLoggingOut ? 'Déconnexion...' : 'Déconnexion'}
               </Button>
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-3">
-              <Link to="/login" className="text-base py-2.5 flex items-center justify-center bg-white border border-slate-100 text-pr-black px-3 rounded-lg hover:bg-slate-50 transition-colors" onClick={closeMenu}>Login</Link>
+              <Link to="/login" className="text-base py-2.5 flex items-center justify-center bg-carnet-paper-2 border border-dashed border-carnet-rule text-pr-black px-3 rounded-lg hover:bg-carnet-red/10 transition-colors" onClick={closeMenu}>Login</Link>
               {showSignup !== false && (
                 <Link to="/register" onClick={closeMenu} className="mt-0">
-                  <Button className="w-full bg-[#C96442] hover:bg-[#B5573A] text-white">S'inscrire</Button>
+                  <Button className="w-full bg-carnet-ink hover:bg-carnet-red text-carnet-paper">S'inscrire</Button>
                 </Link>
               )}
             </div>

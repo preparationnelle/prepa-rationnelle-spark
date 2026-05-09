@@ -36,47 +36,56 @@ interface OteriaSessionListRowProps {
 const OteriaSessionListRow: React.FC<OteriaSessionListRowProps> = ({ session }) => {
     const navigate = useNavigate();
 
-    // Determine primary link for row click
-    // Priority: Custom Link -> Course Link -> Exercises Link -> ...
     const mainHref = session.customLink || session.courseLink || session.exercisesLink;
 
-    // Render logic
     return (
         <div
             onClick={() => mainHref && navigate(mainHref)}
             className="block cursor-pointer"
         >
-            <div className="bg-white rounded-xl p-5 shadow-sm hover:shadow-md hover:scale-[1.005] transition-all duration-200 border border-slate-100 hover:border-teal-200 group">
-                <div className="flex items-center gap-5">
-                    {/* Icon / Number Circle */}
-                    <div className={`w-12 h-12 ${session.color.replace('bg-', 'bg-').replace('600', '100')} rounded-full flex items-center justify-center group-hover:bg-opacity-80 transition-colors flex-shrink-0 border border-teal-50`}>
+            <div className="carnet-card group p-5 sm:p-6 hover:shadow-[0_12px_32px_rgba(78,55,30,0.10)] transition-shadow">
+                <div className="flex items-start sm:items-center gap-5">
+                    {/* Numéro façon cahier */}
+                    <div className="flex-shrink-0 flex flex-col items-center">
+                        <span className="carnet-hand text-[40px] sm:text-[48px] text-carnet-red leading-none font-semibold">
+                            {String(session.id).padStart(2, '0')}
+                        </span>
+                        <hr className="w-8 h-0.5 bg-carnet-ink border-0 mt-1" />
+                    </div>
+
+                    {/* Icône */}
+                    <div className="hidden sm:flex w-11 h-11 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] items-center justify-center flex-shrink-0">
                         {session.icon ? (
-                            <session.icon className={`h-6 w-6 ${session.color.replace('bg-', 'text-')}`} />
+                            <session.icon className="h-5 w-5 text-carnet-red" />
                         ) : (
-                            <span className={`text-lg font-bold ${session.color.replace('bg-', 'text-')}`}>{session.id}</span>
+                            <span className="text-base font-bold text-carnet-red">{session.id}</span>
                         )}
                     </div>
 
-                    <div className="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                        <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-1">
-                                <span className="inline-flex items-center justify-center px-2 py-0.5 rounded text-xs font-semibold bg-teal-50 text-teal-700 border border-teal-100">
-                                    Séance {session.id}
-                                </span>
+                    <div className="flex-1 flex flex-col lg:flex-row lg:items-center justify-between gap-4 min-w-0">
+                        <div className="min-w-0">
+                            <div className="carnet-eyebrow text-[11px] mb-1.5">
+                                Séance {session.id}
                             </div>
-                            <h3 className="text-lg font-bold text-slate-900 mb-1">
+                            <h3 className="font-lora text-[20px] sm:text-[22px] leading-[1.25] text-carnet-ink mb-1 group-hover:text-carnet-red transition-colors">
                                 {session.title}
                             </h3>
-                            <p className="text-sm text-slate-500 line-clamp-2 md:line-clamp-1">{session.content}</p>
+                            <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.55] line-clamp-2">
+                                {session.content}
+                            </p>
                         </div>
 
                         {/* Actions */}
-                        <div className="flex gap-2 flex-wrap md:flex-nowrap flex-shrink-0" onClick={(e) => e.stopPropagation()}>
-
-                            {/* Special Mini Projet / Evaluation Case */}
+                        <div
+                            className="flex flex-wrap gap-2 lg:flex-nowrap flex-shrink-0"
+                            onClick={(e) => e.stopPropagation()}
+                        >
                             {session.hasMiniProjet && (
                                 <Link to="/formation/oteria/mini-projet">
-                                    <Button size="sm" className="bg-teal-600 hover:bg-teal-700 text-white rounded-md font-medium shadow-sm h-8 px-3 text-xs">
+                                    <Button
+                                        size="sm"
+                                        className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold rounded-full h-9 px-4 text-xs border-0"
+                                    >
                                         <Code className="mr-2 h-3.5 w-3.5" />
                                         Ateliers
                                     </Button>
@@ -85,18 +94,22 @@ const OteriaSessionListRow: React.FC<OteriaSessionListRowProps> = ({ session }) 
 
                             {session.customLink && session.customButtonText && (
                                 <Link to={session.customLink}>
-                                    <Button size="sm" className="bg-teal-600 hover:bg-teal-700 text-white rounded-md font-medium shadow-sm h-8 px-3 text-xs">
+                                    <Button
+                                        size="sm"
+                                        className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold rounded-full h-9 px-4 text-xs border-0"
+                                    >
                                         {session.customIcon ? <session.customIcon className="mr-2 h-3.5 w-3.5" /> : <Target className="mr-2 h-3.5 w-3.5" />}
                                         {session.customButtonText}
                                     </Button>
                                 </Link>
                             )}
 
-
-                            {/* Standard Buttons */}
                             {session.hasCourse && session.courseLink && (
                                 <Link to={session.courseLink}>
-                                    <Button size="sm" className="bg-teal-600 hover:bg-teal-700 text-white rounded-md font-medium shadow-sm transition-all duration-200 h-8 px-3 text-xs">
+                                    <Button
+                                        size="sm"
+                                        className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold rounded-full h-9 px-4 text-xs border-0"
+                                    >
                                         <BookOpen className="mr-2 h-3.5 w-3.5" />
                                         Cours
                                     </Button>
@@ -105,7 +118,11 @@ const OteriaSessionListRow: React.FC<OteriaSessionListRowProps> = ({ session }) 
 
                             {session.hasExercises && session.exercisesLink && (
                                 <Link to={session.exercisesLink}>
-                                    <Button size="sm" variant="outline" className="border-slate-200 text-slate-600 hover:bg-teal-50 hover:text-teal-700 hover:border-teal-200 rounded-md transition-all duration-200 h-8 px-3 text-xs">
+                                    <Button
+                                        size="sm"
+                                        variant="outline"
+                                        className="border-[rgba(78,55,30,0.18)] text-carnet-ink-soft hover:bg-[rgba(193,68,58,0.06)] hover:text-carnet-red hover:border-carnet-red font-instrument rounded-full h-9 px-4 text-xs bg-transparent"
+                                    >
                                         <Play className="mr-2 h-3.5 w-3.5" />
                                         Exercices
                                     </Button>
@@ -114,7 +131,11 @@ const OteriaSessionListRow: React.FC<OteriaSessionListRowProps> = ({ session }) 
 
                             {session.hasFlashcards && session.flashcardsLink && (
                                 <Link to={session.flashcardsLink}>
-                                    <Button size="sm" variant="outline" className="border-slate-200 text-slate-600 hover:bg-teal-50 hover:text-teal-700 hover:border-teal-200 rounded-md transition-all duration-200 h-8 px-3 text-xs">
+                                    <Button
+                                        size="sm"
+                                        variant="outline"
+                                        className="border-[rgba(78,55,30,0.18)] text-carnet-ink-soft hover:bg-[rgba(193,68,58,0.06)] hover:text-carnet-red hover:border-carnet-red font-instrument rounded-full h-9 px-4 text-xs bg-transparent"
+                                    >
                                         <Brain className="mr-2 h-3.5 w-3.5" />
                                         Flashcards
                                     </Button>
@@ -123,7 +144,11 @@ const OteriaSessionListRow: React.FC<OteriaSessionListRowProps> = ({ session }) 
 
                             {session.hasQuiz && session.qcmLink && (
                                 <Link to={session.qcmLink}>
-                                    <Button size="sm" variant="outline" className="border-slate-200 text-slate-600 hover:bg-teal-50 hover:text-teal-700 hover:border-teal-200 rounded-md transition-all duration-200 h-8 px-3 text-xs">
+                                    <Button
+                                        size="sm"
+                                        variant="outline"
+                                        className="border-[rgba(78,55,30,0.18)] text-carnet-ink-soft hover:bg-[rgba(193,68,58,0.06)] hover:text-carnet-red hover:border-carnet-red font-instrument rounded-full h-9 px-4 text-xs bg-transparent"
+                                    >
                                         <Target className="mr-2 h-3.5 w-3.5" />
                                         QCM
                                     </Button>

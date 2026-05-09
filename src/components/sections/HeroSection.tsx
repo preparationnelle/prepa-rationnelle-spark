@@ -16,15 +16,7 @@ export const HeroSection = () => {
 
   return (
     <>
-      {/* Marge rouge + perforations (desktop) */}
-      <div className="carnet-margin-line"></div>
-      <div className="carnet-hole" style={{ top: 140 }}></div>
-      <div className="carnet-hole" style={{ top: 460 }}></div>
-      <div className="carnet-hole" style={{ top: 780 }}></div>
-      <div className="carnet-hole" style={{ top: 1100 }}></div>
-      <div className="carnet-hole" style={{ top: 1420 }}></div>
-
-      <section className="carnet-paper relative overflow-hidden">
+      <section className="relative overflow-hidden">
         {/* Bandeau urgence — papier crème */}
         <div className="relative z-20 border-b border-dashed border-[rgba(78,55,30,0.18)] bg-[rgba(251,246,234,0.92)] backdrop-blur-md py-2.5 px-4">
           <div className="container mx-auto flex flex-wrap items-center justify-center gap-2 text-carnet-red">
@@ -52,16 +44,7 @@ export const HeroSection = () => {
             Méthode · Mathématiques & Prépa ECG
           </motion.p>
 
-          {/* Annotation manuscrite hero (desktop) — au-dessus à gauche du mot corrigé */}
-          <motion.div
-            initial={{ opacity: 0, rotate: -12 }}
-            animate={{ opacity: 1, rotate: -8 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="carnet-hand hidden lg:block absolute pointer-events-none"
-            style={{ right: '14%', top: 240, fontSize: 26, maxWidth: 110, lineHeight: 1.1, textAlign: 'left' }}
-          >
-            ↗ ici,<br/>le déclic
-          </motion.div>
+
 
           {/* Titre principal — centré, grand, avec rature/correction sémantique */}
           <motion.h1
@@ -107,8 +90,8 @@ export const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="font-instrument text-[18px] sm:text-[21px] leading-[1.55] text-carnet-ink-soft max-w-[640px] mx-auto mt-14 sm:mt-16"
           >
-            Une <span className="font-lora italic text-carnet-red">bonne méthode</span> rend la progression inévitable.
-            La rigueur d'un correcteur, la chaleur d'un grand frère.
+            Une <span className="font-lora italic text-carnet-red">bonne méthode</span> rend la progression inévitable.<br />
+            La rigueur d'un correcteur, la bienveillance d'un grand frère.
           </motion.p>
 
           {/* CTAs — centrés */}
@@ -118,27 +101,37 @@ export const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.25 }}
             className="flex flex-wrap items-center justify-center gap-4 mt-10"
           >
-            <Button
-              asChild
-              className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold text-[16px] py-[18px] px-7 rounded-full transition-all hover:-translate-y-0.5 border-0 h-auto"
-            >
-              <Link to="/dashboard">
-                <Play className="mr-2 h-4 w-4 fill-current" />
-                Commencer maintenant
-              </Link>
-            </Button>
+            {/* Wrapper relatif pour ancrer l'annotation */}
+            {/* Annotation + bouton dans un groupe aligné */}
+            <div className="flex items-center gap-5">
+              {/* "ici, le déclic" à gauche, pointant → vers le bouton */}
+              <motion.div
+                initial={{ opacity: 0, x: -8 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.75 }}
+                className="carnet-hand hidden lg:flex flex-col items-end pointer-events-none leading-[1.2] text-right"
+                style={{ fontSize: 20, color: '#C1443A', transform: 'rotate(-4deg)' }}
+              >
+                <span>ici,</span>
+                <span>le déclic →</span>
+              </motion.div>
+
+              <Button
+                asChild
+                className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold text-[16px] py-[18px] px-7 rounded-full transition-all hover:-translate-y-0.5 border-0 h-auto"
+              >
+                <Link to="/dashboard">
+                  <Play className="mr-2 h-4 w-4 fill-current" />
+                  Commencer maintenant
+                </Link>
+              </Button>
+            </div>
 
             <Link
               to="/formations"
-              className="relative font-instrument text-[15px] font-medium text-carnet-ink py-4 px-5 group"
+              className="font-instrument text-[15px] font-medium text-carnet-ink-soft hover:text-carnet-red transition-colors flex items-center gap-1.5"
             >
               Voir les formations →
-              <svg
-                className="absolute -left-2.5 -top-2 w-[220px] h-[50px] pointer-events-none"
-                viewBox="0 0 220 50"
-              >
-                <ellipse cx="110" cy="25" rx="105" ry="20" fill="none" stroke="#C1443A" strokeWidth="2" strokeDasharray="3 4" opacity="0.7" />
-              </svg>
             </Link>
           </motion.div>
 

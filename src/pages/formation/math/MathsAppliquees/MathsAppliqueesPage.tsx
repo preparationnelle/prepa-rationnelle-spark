@@ -1,116 +1,169 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Award, ChevronRight, Calculator, Home, BookOpen, GraduationCap } from 'lucide-react';
+import { ChevronRight, Calculator, Home, GraduationCap } from 'lucide-react';
+import { motion } from 'framer-motion';
 import MathsChapterListRow from '@/components/maths-appliquees/MathsChapterListRow';
 import { mathsAppliqueesData } from '@/data/maths-appliquees';
+import { SEOHead } from '@/components/SEOHead';
 
 const MathsAppliqueesPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50/50 relative overflow-hidden">
-      {/* Floating elements - Refined & Sober */}
-      <div className="absolute -z-10 top-20 left-10 w-64 h-64 bg-blue-100/40 rounded-full blur-3xl"></div>
-      <div className="absolute -z-10 bottom-20 right-10 w-96 h-96 bg-indigo-100/30 rounded-full blur-3xl"></div>
-      <div className="absolute -z-10 top-40 right-1/4 w-72 h-72 bg-blue-50/80 rounded-full blur-2xl"></div>
+    <div className="carnet-paper min-h-screen">
+      <SEOHead
+        canonical="/formation/maths-premiere-appliquees"
+        title="Maths Appliquées · 1ère année ECG · Prépa Rationnelle"
+        description="Programme complet de Maths Appliquées 1ère année ECG : cours, exercices, flashcards et quiz pour chaque chapitre. Une approche concrète et rigoureuse."
+      />
 
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-        <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center text-xs font-medium text-gray-500">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
               <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 mx-2 text-gray-300" />
-            <Link to="/formations" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/formations" className="hover:text-carnet-red transition-colors">
               Formations
             </Link>
-            <ChevronRight className="h-3 w-3 mx-2 text-gray-300" />
-            <Link to="/formation/maths-choix" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/formation/maths-choix" className="hover:text-carnet-red transition-colors">
               Parcours Maths
             </Link>
-            <ChevronRight className="h-3 w-3 mx-2 text-gray-300" />
-            <span className="text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">Maths Appliquées 1A</span>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">Maths Appliquées · 1A</span>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto py-12 px-4">
-        {/* Header */}
-        <div className="text-center mb-16 max-w-4xl mx-auto">
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100 rotate-3">
-              <Calculator className="h-8 w-8 text-blue-600" />
+      {/* Hero */}
+      <section className="relative py-20 lg:py-24">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-[820px]"
+          >
+            <div className="carnet-eyebrow mb-6">Mathématiques · 1ère année ECG</div>
+
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-14 h-14 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+                <Calculator className="h-6 w-6 text-carnet-red" />
+              </div>
+              <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[64px] leading-[1.05] text-carnet-ink tracking-tight">
+                Maths{' '}
+                <em className="font-lora italic text-carnet-red">Appliquées</em>.
+              </h1>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-600 bg-clip-text text-transparent tracking-tight">
-              Maths Appliquées
-            </h1>
-          </div>
 
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
-            Une approche concrète et rigoureuse des mathématiques pour la prépa ECG,
-            axée sur la modélisation et l'informatique.
-          </p>
+            <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.65] text-carnet-ink-soft max-w-[640px] mb-8">
+              Une approche <span className="carnet-hl font-lora italic">concrète et rigoureuse</span> des mathématiques pour la prépa ECG, axée sur la modélisation et l'informatique.
+            </p>
 
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-gray-200 shadow-sm text-sm font-medium text-gray-700">
-            <GraduationCap className="h-4 w-4 text-blue-600" />
-            <span>1ère année ECG</span>
-            <span className="w-1 h-1 rounded-full bg-gray-300 mx-1"></span>
-            <span className="text-blue-600">Voie Appliquée</span>
-          </div>
+            <div className="flex flex-wrap items-center gap-4">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(193,68,58,0.06)] border border-[rgba(193,68,58,0.25)]">
+                <GraduationCap className="h-4 w-4 text-carnet-red" />
+                <span className="font-instrument text-[13px] font-semibold text-carnet-ink">1ère année ECG</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)]">
+                <span className="carnet-eyebrow text-[11px]">Voie Appliquée</span>
+              </div>
+            </div>
+
+            <div className="carnet-hand text-[24px] mt-8 hidden md:block" style={{ transform: 'rotate(-2deg)' }}>
+              ↓ programme par semestre
+            </div>
+          </motion.div>
         </div>
+      </section>
 
-        {/* Semestre 1 */}
-        <div className="mb-12 max-w-5xl mx-auto">
-          <div className="flex items-start md:items-center gap-4 mb-6 px-1">
-            <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-600/20 text-white font-bold text-lg">
-              1
+      {/* Semestre 1 */}
+      <section className="relative pb-12">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="flex items-baseline gap-4 mb-8">
+              <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">01</span>
+              <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+              <div>
+                <h2 className="font-lora text-[28px] sm:text-[34px] text-carnet-ink leading-tight">
+                  {mathsAppliqueesData.semestre1.title}
+                </h2>
+                <p className="font-instrument text-[14px] text-carnet-ink-soft mt-1">
+                  {mathsAppliqueesData.semestre1.description}
+                </p>
+              </div>
             </div>
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900 tracking-tight">
-                {mathsAppliqueesData.semestre1.title}
-              </h2>
-              <p className="text-gray-500 font-medium">
-                {mathsAppliqueesData.semestre1.description}
-              </p>
-            </div>
-          </div>
 
-          <div className="space-y-3 pl-0 md:pl-14">
-            {mathsAppliqueesData.semestre1.chapters.map((chapter) => (
-              <MathsChapterListRow
-                key={chapter.id}
-                chapter={chapter}
-              />
-            ))}
-          </div>
+            <div className="space-y-4">
+              {mathsAppliqueesData.semestre1.chapters.map((chapter, idx) => {
+                const tilt = idx % 4 === 1 ? 'carnet-tilt-r' : idx % 4 === 3 ? 'carnet-tilt-l' : '';
+                return (
+                  <motion.div
+                    key={chapter.id}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-30px' }}
+                    transition={{ duration: 0.35, delay: Math.min(idx * 0.04, 0.3) }}
+                    className={tilt}
+                  >
+                    <MathsChapterListRow chapter={chapter} />
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
         </div>
+      </section>
 
-        {/* Semestre 2 */}
-        <div className="mb-16 max-w-5xl mx-auto">
-          <div className="flex items-start md:items-center gap-4 mb-6 px-1">
-            <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-indigo-600/20 text-white font-bold text-lg">
-              2
+      {/* Semestre 2 */}
+      <section className="relative pb-24">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="flex items-baseline gap-4 mb-8">
+              <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">02</span>
+              <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+              <div>
+                <h2 className="font-lora text-[28px] sm:text-[34px] text-carnet-ink leading-tight">
+                  {mathsAppliqueesData.semestre2.title}
+                </h2>
+                <p className="font-instrument text-[14px] text-carnet-ink-soft mt-1">
+                  {mathsAppliqueesData.semestre2.description}
+                </p>
+              </div>
             </div>
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900 tracking-tight">
-                {mathsAppliqueesData.semestre2.title}
-              </h2>
-              <p className="text-gray-500 font-medium">
-                {mathsAppliqueesData.semestre2.description}
-              </p>
-            </div>
-          </div>
 
-          <div className="space-y-3 pl-0 md:pl-14">
-            {mathsAppliqueesData.semestre2.chapters.map((chapter) => (
-              <MathsChapterListRow
-                key={chapter.id}
-                chapter={chapter}
-              />
-            ))}
-          </div>
+            <div className="space-y-4">
+              {mathsAppliqueesData.semestre2.chapters.map((chapter, idx) => {
+                const tilt = idx % 4 === 1 ? 'carnet-tilt-r' : idx % 4 === 3 ? 'carnet-tilt-l' : '';
+                return (
+                  <motion.div
+                    key={chapter.id}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-30px' }}
+                    transition={{ duration: 0.35, delay: Math.min(idx * 0.04, 0.3) }}
+                    className={tilt}
+                  >
+                    <MathsChapterListRow chapter={chapter} />
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

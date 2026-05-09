@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Home, ChevronRight, Award, Code2, Database, Cpu, Shield, Zap, Binary, Network, Lock, BarChart3, Target, Brain, BookOpen } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Home, ChevronRight, Award, Code2, Database, Cpu, Shield, Zap, Binary, Network, Lock, BarChart3, Target, Brain, BookOpen, ArrowLeft } from 'lucide-react';
 import OteriaSessionListRow from '@/components/formation/OteriaSessionListRow';
 import { Button } from '@/components/ui/button';
 
@@ -80,10 +81,6 @@ const oteriaSessions = [
     courseLink: "/formation/oteria/fonctions-variable-reelle-cours",
     exercisesLink: "/formation/oteria/fonctions-variable-reelle-exercices",
     flashcardsLink: "/formation/oteria/fonctions-variable-reelle-flashcards",
-    // Original file had no explicit link for 5 flashcards, just default button.
-    // I'll leave flashcardsLink empty if unsure to avoid 404, or use a likely one.
-    // Actually, let's look at route.ts search for OteriaFonctionsFlashcardsPage if I could.
-    // For now, I'll stick to what I know works or is standard.
     qcmLink: "/formation/oteria/fonctions-variable-reelle-qcm"
   },
   {
@@ -174,7 +171,7 @@ const oteriaSessions = [
     courseLink: "/formation/oteria/matrices-markov-cours",
     exercisesLink: "/formation/oteria/matrices-markov-exercices",
     flashcardsLink: "/formation/oteria/matrices-markov-flashcards",
-    qcmLink: "/formation/oteria/matrices-markov-qcm" // Inferred
+    qcmLink: "/formation/oteria/matrices-markov-qcm"
   },
   {
     id: 12,
@@ -188,8 +185,8 @@ const oteriaSessions = [
     hasFlashcards: true,
     courseLink: "/formation/oteria/matrices-stochastiques-cours",
     exercisesLink: "/formation/oteria/matrices-stochastiques-exercices",
-    flashcardsLink: "/formation/oteria/matrices-stochastiques-flashcards", // Inferred
-    qcmLink: "/formation/oteria/matrices-stochastiques-qcm" // Inferred
+    flashcardsLink: "/formation/oteria/matrices-stochastiques-flashcards",
+    qcmLink: "/formation/oteria/matrices-stochastiques-qcm"
   },
   {
     id: 13,
@@ -222,110 +219,170 @@ const oteriaSessions = [
 
 const ArticlesOteriaCyberSchoolPage = () => {
   return (
-    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
-      {/* Floating elements - Teal bubbles (matched to Oteria theme) */}
-      <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-teal-200 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-teal-200 rounded-full opacity-15 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-teal-100 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-teal-200 rounded-full opacity-8 animate-pulse"></div>
-      <div className="absolute -z-10 top-1/4 left-1/3 w-64 h-64 bg-teal-50 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-3/4 right-1/4 w-40 h-40 bg-teal-100 rounded-full opacity-8 animate-pulse"></div>
-      <div className="absolute -z-10 top-10 right-1/3 w-24 h-24 bg-teal-300 rounded-full opacity-12 animate-pulse-slow"></div>
-      <div className="absolute -z-10 bottom-10 left-1/4 w-36 h-36 bg-teal-100 rounded-full opacity-10 animate-pulse"></div>
-
+    <div className="carnet-paper min-h-screen">
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40 relative z-10">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-teal-700 transition-colors">
-              <Home className="h-3 w-3" />
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+              <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-slate-300 mx-1" />
-            <Link to="/articles/oteria-cyber-school" className="hover:text-teal-700 transition-colors">
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/articles/oteria-cyber-school" className="hover:text-carnet-red transition-colors">
               OTERIA Cyber School
             </Link>
-            <ChevronRight className="h-3 w-3 text-slate-300 mx-1" />
-            <span className="text-teal-600 font-medium">Programme Bachelor 2</span>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">Programme Bachelor 2</span>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto py-8 px-4">
-        {/* Header */}
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center p-2 bg-teal-50 rounded-full mb-4">
-            <Code2 className="h-6 w-6 text-teal-600" />
-          </div>
-          <h1 className="text-4xl font-bold mb-4 text-slate-900">Mathématiques & Informatique</h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-6 leading-relaxed">
-            Programme Bachelor 2 — Oteria Cyber School
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-teal-50 text-teal-700 border border-teal-100">
-              <Award className="w-4 h-4 mr-1" />
-              14 Séances Intensives
-            </span>
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-50 text-blue-700 border border-blue-100">
-              <Target className="w-4 h-4 mr-1" />
-              Logique & Algorithmique
-            </span>
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-50 text-indigo-700 border border-indigo-100">
-              <Shield className="w-4 h-4 mr-1" />
-              Bases Cybersécurité
-            </span>
-          </div>
-        </div>
+      {/* Hero */}
+      <section className="relative py-20 lg:py-24">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-[820px]"
+          >
+            <div className="carnet-eyebrow mb-6">Programme Bachelor 2 · OTERIA Cyber School</div>
 
-        {/* Liste des séances */}
-        <div className="max-w-4xl mx-auto space-y-4 mb-16">
-          {oteriaSessions.map((session) => (
-            <OteriaSessionListRow key={session.id} session={session} />
-          ))}
-        </div>
+            <h1 className="font-lora text-[44px] sm:text-[56px] lg:text-[68px] leading-[1.05] text-carnet-ink tracking-tight mb-6">
+              Mathématiques{' '}
+              <em className="font-lora italic text-carnet-red">& Informatique</em>.
+            </h1>
 
-        {/* Informations complémentaires - Cards Layout */}
-        <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
-          <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow text-center">
-            <div className="w-12 h-12 bg-teal-50 rounded-full flex items-center justify-center mx-auto mb-4 text-teal-600">
-              <Shield className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg font-bold text-slate-900 mb-2">Cybersécurité</h3>
-            <p className="text-sm text-slate-600">
-              Applications directes des mathématiques à la cryptographie et à la sécurité.
+            <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.65] text-carnet-ink-soft max-w-[640px] mb-8">
+              <span className="carnet-hl font-lora italic">Logique, algorithmique et programmation Python</span> au service de l'informatique et de la cybersécurité. Programme structuré en 14 séances intensives.
             </p>
+
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(193,68,58,0.06)] border border-[rgba(193,68,58,0.25)]">
+                <Award className="h-4 w-4 text-carnet-red" />
+                <span className="font-instrument text-[13px] font-semibold text-carnet-ink">14 séances intensives</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)]">
+                <Target className="h-4 w-4 text-carnet-ink-soft" />
+                <span className="font-instrument text-[13px] text-carnet-ink-soft">Logique & algorithmique</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)]">
+                <Shield className="h-4 w-4 text-carnet-ink-soft" />
+                <span className="font-instrument text-[13px] text-carnet-ink-soft">Bases cybersécurité</span>
+              </div>
+            </div>
+
+            <div className="carnet-hand text-[24px] mt-6 hidden md:block" style={{ transform: 'rotate(-2deg)' }}>
+              ↓ commence par la séance 01 et avance dans l'ordre
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Liste des séances */}
+      <section className="relative pb-24 lg:pb-28">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <div className="space-y-4">
+            {oteriaSessions.map((session, idx) => {
+              const tilt = idx % 4 === 1 ? 'carnet-tilt-r' : idx % 4 === 3 ? 'carnet-tilt-l' : '';
+              return (
+                <motion.div
+                  key={session.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.4, delay: Math.min(idx * 0.04, 0.3) }}
+                  className={tilt}
+                >
+                  <OteriaSessionListRow session={session} />
+                </motion.div>
+              );
+            })}
           </div>
 
-          <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow text-center">
-            <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-600">
-              <Code2 className="h-6 w-6" />
+          {/* Informations complémentaires */}
+          <div className="mt-20">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5 }}
+              className="max-w-[760px] mb-10"
+            >
+              <div className="carnet-eyebrow mb-5">En complément</div>
+              <h2 className="font-lora text-[28px] sm:text-[36px] lg:text-[44px] leading-[1.1] text-carnet-ink tracking-tight">
+                Pour aller <em className="font-lora italic text-carnet-red">plus loin</em>.
+              </h2>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: Shield,
+                  title: 'Cybersécurité',
+                  description: 'Applications directes des mathématiques à la cryptographie et à la sécurité.',
+                },
+                {
+                  icon: Code2,
+                  title: 'Programmation',
+                  description: 'Implémentation Python des concepts théoriques vus en cours.',
+                },
+                {
+                  icon: Network,
+                  title: 'Projets Réels',
+                  description: 'Ateliers et mini-projets pour valider vos compétences en situation.',
+                },
+              ].map((module, idx) => {
+                const tilt = idx === 0 ? 'carnet-tilt-l' : idx === 2 ? 'carnet-tilt-r' : '';
+                return (
+                  <motion.div
+                    key={module.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-50px' }}
+                    transition={{ duration: 0.5, delay: idx * 0.08 }}
+                    className={tilt}
+                  >
+                    <div className="carnet-card relative p-7 sm:p-8 h-full">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-11 h-11 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+                          <module.icon className="h-5 w-5 text-carnet-red" />
+                        </div>
+                        <h3 className="font-lora text-[20px] sm:text-[22px] leading-[1.25] text-carnet-ink">
+                          {module.title}
+                        </h3>
+                      </div>
+                      <hr className="w-10 h-0.5 bg-carnet-ink border-0 mb-4" />
+                      <p className="font-instrument text-[14px] sm:text-[15px] text-carnet-ink-soft leading-[1.6]">
+                        {module.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
-            <h3 className="text-lg font-bold text-slate-900 mb-2">Programmation</h3>
-            <p className="text-sm text-slate-600">
-              Implémentation Python des concepts théoriques vus en cours.
-            </p>
           </div>
 
-          <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow text-center">
-            <div className="w-12 h-12 bg-indigo-50 rounded-full flex items-center justify-center mx-auto mb-4 text-indigo-600">
-              <Network className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg font-bold text-slate-900 mb-2">Projets Réels</h3>
-            <p className="text-sm text-slate-600">
-              Ateliers et mini-projets pour valider vos compétences en situation.
-            </p>
+          {/* Retour */}
+          <div className="mt-14 flex items-center gap-4">
+            <Link
+              to="/articles/oteria-cyber-school"
+              className="inline-flex items-center gap-1.5 font-instrument text-[14px] text-carnet-ink-soft hover:text-carnet-red transition-colors"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+              Retour à OTERIA Cyber School
+            </Link>
+            <span className="text-carnet-ink-mute">·</span>
+            <Link
+              to="/"
+              className="inline-flex items-center gap-1.5 font-instrument text-[14px] text-carnet-ink-soft hover:text-carnet-red transition-colors"
+            >
+              Accueil
+            </Link>
           </div>
         </div>
-
-        {/* Navigation entre programmes */}
-        <div className="mt-16 text-center">
-          <Link to="/articles/oteria-cyber-school">
-            <Button variant="outline" className="border-2 border-teal-600 text-teal-600 hover:bg-teal-50 px-6 py-3">
-              ← Retour à OTERIA Cyber School
-            </Button>
-          </Link>
-        </div>
-      </div>
+      </section>
     </div>
   );
 };

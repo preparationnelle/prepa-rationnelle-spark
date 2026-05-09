@@ -96,13 +96,72 @@
   }
 
   html, body, #root {
-    @apply bg-background text-foreground;
     font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
     color: #3A3A38;
     overflow-x: hidden;
-    background-color: #ffffff !important;
-    background-image: none !important;
+  }
+
+  /* CARNET — papier crème ligné global, scrolle avec le contenu */
+  html {
+    background-color: #FBF6EA;
+  }
+  body {
+    background-color: #FBF6EA;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 31px,
+      rgba(78, 55, 30, 0.07) 32px
+    );
+    background-attachment: scroll;
+  }
+
+  /* Marge rouge fixe + colonne de perforations (desktop) */
+  body::before {
+    content: '';
+    position: fixed;
+    left: 110px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(193, 68, 58, 0.35);
+    z-index: 1;
+    pointer-events: none;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    left: 36px;
+    top: 0;
+    bottom: 0;
+    width: 22px;
+    /* Deux couches : ombre douce au-dessus + cercle blanc en dessous = effet "trou perforé" */
+    background-image:
+      radial-gradient(
+        circle at 11px 9px,
+        rgba(78, 55, 30, 0.22) 0,
+        rgba(78, 55, 30, 0.10) 6px,
+        rgba(78, 55, 30, 0) 11px,
+        rgba(78, 55, 30, 0) 100%
+      ),
+      radial-gradient(
+        circle at 11px 11px,
+        #FFFFFF 0,
+        #FFFFFF 10.5px,
+        rgba(255, 255, 255, 0) 11.5px
+      );
+    background-size: 22px 320px, 22px 320px;
+    background-repeat: repeat-y, repeat-y;
+    background-position: center top, center top;
+    z-index: 1;
+    pointer-events: none;
+  }
+  @media (max-width: 900px) {
+    body::before,
+    body::after {
+      display: none;
+    }
   }
 
   h1, h2, h3, .font-serif {
@@ -333,6 +392,63 @@
 }
 
 /* ============================================================
+   CARNET — overrides globaux pour exposer le papier
+   sur toutes les pages (page wrappers, navbar, footer, layout).
+   ============================================================ */
+
+/* Wrappers de page legacy : laissent passer le papier crème */
+.App,
+#root > div {
+  background-color: transparent !important;
+}
+
+main [class*="min-h-screen"][class*="bg-white"]:not([class*="bg-white/"]),
+main [class*="min-h-screen"][class*="bg-gray-50"],
+main [class*="min-h-screen"][class*="bg-slate-50"],
+main [class*="min-h-screen"][class*="bg-pr-gray-bg"],
+main [class*="min-h-screen"][class*="bg-background"],
+main [class*="min-h-screen"][class*="bg-\\[\\#FFFFFF\\]"],
+main [class*="min-h-screen"][class*="bg-\\[\\#F"] {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Sections de page avec gradient pleine largeur → transparent */
+main > div > section[class*="bg-gradient"],
+main section[class*="bg-gradient-to-b"][class*="from-white"],
+main section[class*="bg-gradient-to-b"][class*="from-gray"],
+main section[class*="bg-gradient-to-br"][class*="from-white"],
+main section[class*="bg-gradient-to-br"][class*="from-gray"],
+main section[class*="bg-gradient-to-br"][class*="from-slate"] {
+  background: transparent !important;
+}
+
+/* Layout root : transparent pour exposer le papier */
+.App > div > div[class*="carnet-paper"],
+.App > div > div[class*="min-h-screen"][class*="flex"][class*="flex-col"] {
+  background-color: transparent !important;
+}
+
+/* Navbar : papier crème translucide, contour pointillé carnet */
+header.fixed.top-0[class*="bg-white"],
+header.fixed.top-0[class*="bg-white/80"] {
+  background-color: rgba(251, 246, 234, 0.88) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+  border-bottom-color: rgba(78, 55, 30, 0.18) !important;
+  border-bottom-style: dashed !important;
+}
+
+/* Footer : transparent sur cahier (cards/cartes intérieures conservent leur style) */
+footer[class*="bg-white"],
+footer[class*="bg-gray-"],
+footer[class*="bg-slate-"],
+footer[class*="bg-pr-gray-bg"] {
+  background-color: rgba(251, 246, 234, 0.6) !important;
+  border-top: 1px dashed rgba(78, 55, 30, 0.18);
+}
+
+/* ============================================================
    CARNET COURS SKIN
    Re-stylise les pages de cours legacy (Terminale → Prépa)
    au design carnet sans réécrire chaque card.
@@ -397,22 +513,70 @@
   border: 0 !important;
 }
 
-/* --- Card headers gradient (blue or orange) → carnet ink bar --- */
-.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue"],
-.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange"],
-.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-amber"] {
+/* --- Card headers gradient FONCÉS (blue/orange/amber 400-900) → carnet ink bar --- */
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue-400"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue-500"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue-600"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue-700"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue-800"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue-900"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange-400"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange-500"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange-600"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange-700"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange-800"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange-900"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-amber-400"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-amber-500"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-amber-600"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-amber-700"] {
   background: #1F1714 !important;
   color: #FBF6EA !important;
 }
-.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue"] *,
-.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange"] *,
-.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-amber"] * {
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue-400"] *,
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue-500"] *,
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue-600"] *,
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue-700"] *,
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue-800"] *,
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue-900"] *,
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange-400"] *,
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange-500"] *,
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange-600"] *,
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange-700"] *,
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange-800"] *,
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange-900"] *,
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-amber-400"] *,
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-amber-500"] *,
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-amber-600"] *,
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-amber-700"] * {
   color: #FBF6EA !important;
 }
-.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue"] [class*="bg-white"],
-.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange"] [class*="bg-white"] {
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue-600"] [class*="bg-white"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue-700"] [class*="bg-white"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange-500"] [class*="bg-white"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange-600"] [class*="bg-white"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange-700"] [class*="bg-white"] {
   background: rgba(193,68,58,0.25) !important;
   color: #FBF6EA !important;
+}
+
+/* --- Card sections gradient CLAIRS (blue/orange/amber 50-200) → cream carnet card --- */
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue-50"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue-100"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-blue-200"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange-50"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange-100"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-orange-200"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-amber-50"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-amber-100"],
+.carnet-cours-skin [class*="bg-gradient-to-r"][class*="from-amber-200"],
+.carnet-cours-skin [class*="bg-gradient-to-br"][class*="from-blue-100"],
+.carnet-cours-skin [class*="bg-gradient-to-br"][class*="from-orange-100"] {
+  background: #FFFEF8 !important;
+  border: 1px solid rgba(78,55,30,0.18) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 1px 0 rgba(78,55,30,0.08), 0 8px 16px rgba(78,55,30,0.04) !important;
+  color: #1F1714 !important;
 }
 
 /* --- Cards "section" --- */
@@ -864,5 +1028,197 @@
 /* --- Marges autour de la zone exercices (cohérence de respiration) --- */
 .carnet-cours-skin .container.mx-auto {
   position: relative;
+}
+
+/* ============================================================
+   CARNET COURS SKIN — EXTENSION PYTHON
+   Mappe les tokens "PR" (pr-orange, pr-gray, pr-black, dm-serif…)
+   utilisés dans la formation Python vers la palette Carnet.
+   Permet d'appliquer le wrapper "carnet-paper carnet-cours-skin"
+   sur les pages Python sans réécrire chaque JSX.
+   ============================================================ */
+
+/* --- Backgrounds pr-* → papier Carnet --- */
+.carnet-cours-skin [class*="bg-pr-gray-bg"]:not(footer):not(header),
+.carnet-cours-skin [class*="bg-pr-gray-light"]:not([class*="border-"]),
+.carnet-cours-skin [class*="bg-pr-orange-pale"] {
+  background-color: rgba(255, 254, 248, 0.7) !important;
+}
+
+/* Card glassmorphism Python (bg-white/70 + backdrop-blur) → carnet-card flat */
+.carnet-cours-skin [class*="bg-white\\/70"],
+.carnet-cours-skin [class*="bg-white\\/80"],
+.carnet-cours-skin [class*="bg-white\\/60"] {
+  background-color: #FFFEF8 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.carnet-cours-skin [class*="backdrop-blur"] {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Pr-orange (orange marque PR) → carnet-red sur tout ce qui n'est pas un fond plein */
+.carnet-cours-skin [class*="text-pr-orange"],
+.carnet-cours-skin [class*="text-pr-orange-dark"],
+.carnet-cours-skin [class*="text-pr-orange-soft"] {
+  color: #C1443A !important;
+}
+.carnet-cours-skin [class*="bg-pr-orange"]:not([class*="bg-pr-orange-pale"]):not([class*="bg-pr-orange-soft"]) {
+  background-color: #1F1714 !important;
+  color: #FBF6EA !important;
+}
+.carnet-cours-skin [class*="bg-pr-orange-soft"] {
+  background-color: rgba(193,68,58,0.10) !important;
+}
+
+/* Pr-black & encres profondes (sauf code blocks qu'on conserve) → carnet-ink */
+.carnet-cours-skin [class*="text-pr-black"] {
+  color: #1F1714 !important;
+}
+.carnet-cours-skin [class*="bg-pr-black"]:not(pre):not(code):not([class*="bg-pr-black/"]) {
+  background-color: #1F1714 !important;
+  color: #FBF6EA !important;
+}
+
+/* Pr-gray-* texte → palette Carnet ink soft */
+.carnet-cours-skin [class*="text-pr-gray-dark"] { color: #4A3D30 !important; }
+.carnet-cours-skin [class*="text-pr-gray-mid"]  { color: #8A7864 !important; }
+.carnet-cours-skin [class*="text-pr-gray-light"]{ color: #8A7864 !important; }
+
+/* Bordures pr-* → bordures Carnet pointillées */
+.carnet-cours-skin [class*="border-pr-gray-light"],
+.carnet-cours-skin [class*="border-pr-gray-mid"],
+.carnet-cours-skin [class*="border-pr-orange-soft"] {
+  border-color: rgba(78,55,30,0.18) !important;
+}
+
+/* Pr-orange-soft en bordure-l (encadrés "Méthode N" / "Avantages") → filet rouge Carnet */
+.carnet-cours-skin [class*="border-2"][class*="border-pr-orange-soft"],
+.carnet-cours-skin [class*="border-l"][class*="border-pr-orange"] {
+  border-color: rgba(193,68,58,0.35) !important;
+  border-left-color: #C1443A !important;
+  background: rgba(193,68,58,0.05) !important;
+}
+
+/* --- Typographie : DM → Lora/Instrument --- */
+.carnet-cours-skin [class*="font-dm-serif"] {
+  font-family: 'Lora', Georgia, serif !important;
+  letter-spacing: -0.01em !important;
+  font-weight: 700 !important;
+}
+.carnet-cours-skin [class*="font-dm-sans"] {
+  font-family: 'Instrument Sans', -apple-system, sans-serif !important;
+}
+/* Wrapper Python (PythonModuleLayout) avec font-dm-sans hérité → instrument */
+.carnet-cours-skin {
+  font-family: 'Instrument Sans', -apple-system, sans-serif;
+}
+
+/* --- Cards "moderne" arrondies (rounded-2xl, rounded-xl) → carnet rounded-md --- */
+.carnet-cours-skin [class*="rounded-2xl"]:not([class*="rounded-full"]) {
+  border-radius: 4px !important;
+}
+.carnet-cours-skin [class*="rounded-xl"]:not([class*="rounded-full"]):not(button):not(input) {
+  border-radius: 4px !important;
+}
+
+/* --- Shadow moderne (shadow-sm/md/lg/xl) → shadow Carnet subtil --- */
+.carnet-cours-skin [class*="shadow-sm"]:not(button):not(input),
+.carnet-cours-skin [class*="shadow-md"]:not(button):not(input),
+.carnet-cours-skin [class*="shadow-lg"]:not(button):not(input),
+.carnet-cours-skin [class*="shadow-xl"]:not(button):not(input) {
+  box-shadow: 0 1px 0 rgba(78,55,30,0.08), 0 8px 16px rgba(78,55,30,0.04) !important;
+}
+
+/* --- Code blocks Python (bg-pr-black + texte clair) → préserver lisibilité --- */
+.carnet-cours-skin pre[class*="bg-pr-black"],
+.carnet-cours-skin pre[class*="bg-gray-900"],
+.carnet-cours-skin pre[class*="bg-slate-900"],
+.carnet-cours-skin div[class*="bg-pr-black"]:has(code),
+.carnet-cours-skin div[class*="bg-pr-black"] code,
+.carnet-cours-skin div[class*="bg-pr-black"] pre {
+  background-color: #1F1714 !important;
+  color: #FBF6EA !important;
+  border-radius: 4px !important;
+  border: 1px solid rgba(78,55,30,0.25) !important;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
+}
+.carnet-cours-skin pre[class*="bg-pr-black"] *,
+.carnet-cours-skin div[class*="bg-pr-black"] * {
+  color: inherit !important;
+}
+
+/* Inline code dans le corps de texte */
+.carnet-cours-skin code:not(pre code):not([class*="bg-pr-black"] *) {
+  background: rgba(193,68,58,0.08) !important;
+  color: #1F1714 !important;
+  border-radius: 3px !important;
+  padding: 1px 6px !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.92em !important;
+}
+
+/* --- Eyebrow / badge Python (uppercase tracking) → eyebrow Carnet rouge --- */
+.carnet-cours-skin [class*="uppercase"][class*="tracking-"][class*="text-pr-orange"],
+.carnet-cours-skin [class*="uppercase"][class*="tracking-"][class*="text-pr-orange-dark"] {
+  font-family: 'Instrument Sans', sans-serif !important;
+  color: #C1443A !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.2em !important;
+}
+
+/* --- Tabs nav Python actifs (bg-pr-orange / bg-pr-black) → fond noir carnet --- */
+.carnet-cours-skin [class*="data-\\[state\\=active\\]"][class*="bg-pr-orange"],
+.carnet-cours-skin [class*="data-\\[state\\=active\\]"][class*="bg-pr-black"] {
+  background-color: #1F1714 !important;
+  color: #FBF6EA !important;
+}
+
+/* --- Filets séparateurs h-[2px] orange → filet noir carnet --- */
+.carnet-cours-skin [class*="h-\\[2px\\]"][class*="bg-pr-orange"],
+.carnet-cours-skin [class*="h-\\[1px\\]"][class*="bg-pr-orange"],
+.carnet-cours-skin [class*="h-px"][class*="bg-pr-orange"] {
+  background-color: #1F1714 !important;
+}
+
+/* --- Hover states pr-orange → hover carnet-red --- */
+.carnet-cours-skin [class*="hover\\:bg-pr-orange"]:hover,
+.carnet-cours-skin [class*="hover\\:text-pr-orange"]:hover {
+  background-color: rgba(193,68,58,0.10) !important;
+  color: #C1443A !important;
+}
+
+/* --- Boutons primaires Python (bg-pr-black / bg-pr-orange) → ink carnet --- */
+.carnet-cours-skin button[class*="bg-pr-black"],
+.carnet-cours-skin a[class*="bg-pr-black"][class*="rounded-"],
+.carnet-cours-skin button[class*="bg-pr-orange"]:not([class*="bg-pr-orange-pale"]):not([class*="bg-pr-orange-soft"]),
+.carnet-cours-skin a[class*="bg-pr-orange"][class*="rounded-"]:not([class*="bg-pr-orange-pale"]) {
+  background-color: #1F1714 !important;
+  color: #FBF6EA !important;
+  border-radius: 9999px !important;
+}
+.carnet-cours-skin button[class*="bg-pr-black"]:hover,
+.carnet-cours-skin a[class*="bg-pr-black"][class*="rounded-"]:hover {
+  background-color: #C1443A !important;
+}
+
+/* --- Encadrés avec border-pr-orange-soft + bg-pr-orange-pale (Python article) --- */
+.carnet-cours-skin [class*="border-pr-orange-soft"][class*="bg-pr-orange-pale"],
+.carnet-cours-skin [class*="bg-pr-orange-pale\\/30"],
+.carnet-cours-skin [class*="bg-pr-orange-pale\\/50"] {
+  background: rgba(193,68,58,0.05) !important;
+  border: 1px dashed rgba(193,68,58,0.35) !important;
+  border-left: 2px solid #C1443A !important;
+}
+
+/* --- Prose Tailwind (utilisée par PourquoiPython) → couleurs Carnet --- */
+.carnet-cours-skin .prose,
+.carnet-cours-skin [class*="prose"] {
+  color: #4A3D30 !important;
+}
+.carnet-cours-skin .prose strong,
+.carnet-cours-skin [class*="prose"] strong {
+  color: #1F1714 !important;
 }
 

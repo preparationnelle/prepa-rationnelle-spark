@@ -1,166 +1,196 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowLeft, Home, ChevronRight } from 'lucide-react';
+import { Home, ChevronRight, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { pythonCommands } from '@/data/pythonCommands';
 import SearchBar from '@/components/python/SearchBar';
 import CommandSection from '@/components/python/CommandSection';
 import PythonNavigationTabs from '@/components/formation/PythonNavigationTabs';
+import { CarnetHero } from '@/components/carnet';
+
 const PythonReferencePage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [copiedCommand, setCopiedCommand] = useState<string | null>(null);
+
   const copyToClipboard = (command: string) => {
     navigator.clipboard.writeText(command);
     setCopiedCommand(command);
     setTimeout(() => setCopiedCommand(null), 2000);
   };
-  const filteredCommands = Object.entries(pythonCommands).map(([key, section]) => ({
-    ...section,
-    key,
-    commands: section.commands.filter(cmd => cmd.command.toLowerCase().includes(searchTerm.toLowerCase()) || cmd.description.toLowerCase().includes(searchTerm.toLowerCase()))
-  })).filter(section => section.commands.length > 0);
-  return <div className="min-h-screen bg-pr-gray-bg font-dm-sans text-pr-gray-dark">
-    {/* Sticky Breadcrumb */}
-    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-pr-gray-light/60">
-      <div className="h-[2px] w-full bg-pr-orange" />
-      <div className="container mx-auto px-4 py-2.5">
-        <div className="flex items-center text-[11px] uppercase tracking-wider text-pr-gray-mid">
-          <Link to="/" className="flex items-center gap-1.5 hover:text-pr-orange-dark transition-colors">
-            <Home className="h-3 w-3" />
-            <span>Accueil</span>
-          </Link>
-          <ChevronRight className="h-3 w-3 text-pr-gray-light mx-1.5" />
-          <Link to="/formations" className="hover:text-pr-orange-dark transition-colors">
-            Toutes les formations
-          </Link>
-          <ChevronRight className="h-3 w-3 text-pr-gray-light mx-1.5" />
-          <span className="text-pr-black font-semibold normal-case tracking-normal">
-            Formation <span className="text-pr-orange">Python</span> ECG
-          </span>
+
+  const filteredCommands = Object.entries(pythonCommands)
+    .map(([key, section]) => ({
+      ...section,
+      key,
+      commands: section.commands.filter(
+        (cmd) =>
+          cmd.command.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          cmd.description.toLowerCase().includes(searchTerm.toLowerCase())
+      ),
+    }))
+    .filter((section) => section.commands.length > 0);
+
+  const tabClasses =
+    'rounded-full px-4 py-2 text-[12px] font-instrument font-semibold tracking-wide text-carnet-ink-soft data-[state=active]:bg-carnet-ink data-[state=active]:text-carnet-paper transition-all';
+
+  return (
+    <div className="min-h-screen carnet-paper">
+      {/* Fil d'Ariane */}
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] px-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+              <Home className="h-3.5 w-3.5" />
+              <span>Accueil</span>
+            </Link>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/formations" className="hover:text-carnet-red transition-colors">
+              Formations
+            </Link>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">Référence Python ECG</span>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
 
-    <div className="container mx-auto py-16 px-4 max-w-7xl">
-      {/* Header */}
-      <div className="text-center mb-12">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pr-orange-pale border border-pr-orange-soft/60 mb-5">
-          <span className="w-1.5 h-1.5 rounded-full bg-pr-orange" />
-          <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark">
-            Référence officielle
-          </span>
-        </div>
+      <div className="mx-auto max-w-[1180px] px-6 lg:pl-[200px] lg:pr-16 py-14 lg:py-16">
 
-        <h1 className="font-dm-serif text-4xl md:text-5xl text-pr-black mb-5 tracking-tight leading-tight">
-          Références <span className="text-pr-orange">Python</span> ECG
-        </h1>
-        <div className="flex justify-center mb-5">
-          <div className="h-[2px] w-14 bg-pr-orange" />
-        </div>
-        <p className="text-lg text-pr-gray-dark/85 max-w-2xl mx-auto leading-relaxed">
-          Toutes les 54 commandes essentielles pour le programme,<br className="hidden md:inline" />
-          optimisées pour la mémorisation et l'usage en concours.
-        </p>
-      </div>
+        <CarnetHero
+          eyebrow="Référence officielle"
+          title="Références"
+          accent="Python ECG"
+          tagline="Les 54 commandes essentielles du programme — optimisées pour la mémorisation et l'usage en concours."
+          highlight="par cœur"
+          handNote={'↘ à coller\nau-dessus du PC'}
+        />
 
-      {/* Navigation Tabs */}
-      <PythonNavigationTabs className="mb-12" />
+        <PythonNavigationTabs className="mb-10" />
 
-      <div className="mb-10 max-w-xl mx-auto">
-        <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
-      </div>
-
-      {/* Tabs pour les catégories */}
-      <Tabs defaultValue="all" className="w-full">
-        <div className="flex justify-center mb-10 overflow-x-auto pb-2 scrollbar-hide">
-          <TabsList className="flex h-auto p-1 bg-pr-gray-bg/50 backdrop-blur rounded-full border border-pr-gray-light gap-1 flex-wrap justify-center">
-            <TabsTrigger
-              value="all"
-              className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all"
-            >
-              Toutes
-            </TabsTrigger>
-            <TabsTrigger value="lists" className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all">Listes</TabsTrigger>
-            <TabsTrigger value="imports" className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all">Imports</TabsTrigger>
-            <TabsTrigger value="arrays_matrices" className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all">Vecteurs/Matrices</TabsTrigger>
-            <TabsTrigger value="operations" className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all">Opérations</TabsTrigger>
-            <TabsTrigger value="math_functions" className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all">Fonctions Math</TabsTrigger>
-            <TabsTrigger value="linalg" className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all">Algèbre</TabsTrigger>
-            <TabsTrigger value="random" className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all">Probabilités</TabsTrigger>
-            <TabsTrigger value="plotting" className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all">Graphiques</TabsTrigger>
-            <TabsTrigger value="pandas" className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all">Pandas</TabsTrigger>
-            <TabsTrigger value="sql" className="rounded-full px-4 py-2 text-sm font-medium text-pr-gray-dark data-[state=active]:bg-white data-[state=active]:text-pr-black data-[state=active]:shadow-sm transition-all">SQL</TabsTrigger>
-          </TabsList>
+        {/* Search */}
+        <div className="mb-10 max-w-xl mx-auto">
+          <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
         </div>
 
-        <div className="bg-white/50 backdrop-blur-sm rounded-3xl p-6 md:p-8 border border-white shadow-xl shadow-slate-200/50 min-h-[600px]">
-          <TabsContent value="all" className="mt-0">
-            <div className="space-y-12">
-              {filteredCommands.length > 0 ? (
-                filteredCommands.map(section => (
-                  <div key={section.key} className="border-b border-pr-gray-light last:border-0 pb-10 last:pb-0">
-                    <CommandSection title={section.title} commands={section.commands} copiedCommand={copiedCommand} onCopy={copyToClipboard} />
+        <Tabs defaultValue="all" className="w-full">
+          <div className="flex justify-center mb-10 overflow-x-auto pb-2 scrollbar-hide">
+            <TabsList className="flex h-auto p-1 bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] rounded-full gap-1 flex-wrap justify-center">
+              <TabsTrigger value="all" className={tabClasses}>Toutes</TabsTrigger>
+              <TabsTrigger value="lists" className={tabClasses}>Listes</TabsTrigger>
+              <TabsTrigger value="imports" className={tabClasses}>Imports</TabsTrigger>
+              <TabsTrigger value="arrays_matrices" className={tabClasses}>Vecteurs/Matrices</TabsTrigger>
+              <TabsTrigger value="operations" className={tabClasses}>Opérations</TabsTrigger>
+              <TabsTrigger value="math_functions" className={tabClasses}>Fonctions Math</TabsTrigger>
+              <TabsTrigger value="linalg" className={tabClasses}>Algèbre</TabsTrigger>
+              <TabsTrigger value="random" className={tabClasses}>Probabilités</TabsTrigger>
+              <TabsTrigger value="plotting" className={tabClasses}>Graphiques</TabsTrigger>
+              <TabsTrigger value="pandas" className={tabClasses}>Pandas</TabsTrigger>
+              <TabsTrigger value="sql" className={tabClasses}>SQL</TabsTrigger>
+            </TabsList>
+          </div>
+
+          <div className="carnet-card p-6 md:p-10 min-h-[600px]">
+            <TabsContent value="all" className="mt-0">
+              <div className="space-y-12">
+                {filteredCommands.length > 0 ? (
+                  filteredCommands.map((section) => (
+                    <div
+                      key={section.key}
+                      className="border-b border-dashed border-[rgba(78,55,30,0.18)] last:border-0 pb-10 last:pb-0"
+                    >
+                      <CommandSection
+                        title={section.title}
+                        commands={section.commands}
+                        copiedCommand={copiedCommand}
+                        onCopy={copyToClipboard}
+                      />
+                    </div>
+                  ))
+                ) : (
+                  <div className="flex flex-col items-center justify-center py-20 text-center">
+                    <div className="w-14 h-14 bg-[rgba(193,68,58,0.10)] border border-[rgba(193,68,58,0.25)] rounded-full flex items-center justify-center mb-4">
+                      <Home className="h-6 w-6 text-carnet-red" />
+                    </div>
+                    <h3 className="font-lora text-[20px] text-carnet-ink">Aucun résultat trouvé</h3>
+                    <p className="font-instrument text-[14px] text-carnet-ink-soft max-w-xs mt-2">
+                      Essaie de modifier ta recherche pour trouver la commande souhaitée.
+                    </p>
                   </div>
-                ))
-              ) : (
-                <div className="flex flex-col items-center justify-center py-20 text-center">
-                  <div className="w-16 h-16 bg-pr-gray-bg rounded-full flex items-center justify-center mb-4">
-                    <Home className="h-8 w-8 text-pr-gray-mid" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-pr-black">Aucun résultat trouvé</h3>
-                  <p className="text-pr-gray-mid max-w-xs mt-2">Essayez de modifier votre recherche pour trouver la commande souhaitée.</p>
-                </div>
-              )}
-            </div>
-          </TabsContent>
-
-          {Object.entries(pythonCommands).map(([key, section]) => (
-            <TabsContent key={key} value={key} className="mt-0">
-              <CommandSection title={section.title} commands={section.commands} copiedCommand={copiedCommand} onCopy={copyToClipboard} />
+                )}
+              </div>
             </TabsContent>
-          ))}
 
-          <TabsContent value="sql" className="mt-0 space-y-10">
-            {['sql_queries', 'sql_commands', 'sql_aggregation'].map(key => {
-              // @ts-ignore
-              const section = pythonCommands[key];
-              if (!section) return null;
-              return (
-                <div key={key}>
-                  <CommandSection title={section.title} commands={section.commands} copiedCommand={copiedCommand} onCopy={copyToClipboard} />
-                </div>
-              );
-            })}
-          </TabsContent>
-        </div>
-      </Tabs>
+            {Object.entries(pythonCommands).map(([key, section]) => (
+              <TabsContent key={key} value={key} className="mt-0">
+                <CommandSection
+                  title={section.title}
+                  commands={section.commands}
+                  copiedCommand={copiedCommand}
+                  onCopy={copyToClipboard}
+                />
+              </TabsContent>
+            ))}
 
-      {/* Call to action */}
-      <div className="mt-20 text-center max-w-3xl mx-auto">
-        <div className="bg-gradient-to-b from-pr-black to-pr-black rounded-2xl p-10 md:p-12 shadow-2xl relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-white/10 transition-colors duration-700" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 group-hover:bg-emerald-500/20 transition-colors duration-700" />
+            <TabsContent value="sql" className="mt-0 space-y-10">
+              {['sql_queries', 'sql_commands', 'sql_aggregation'].map((key) => {
+                // @ts-ignore
+                const section = pythonCommands[key];
+                if (!section) return null;
+                return (
+                  <div key={key}>
+                    <CommandSection
+                      title={section.title}
+                      commands={section.commands}
+                      copiedCommand={copiedCommand}
+                      onCopy={copyToClipboard}
+                    />
+                  </div>
+                );
+              })}
+            </TabsContent>
+          </div>
+        </Tabs>
 
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 relative z-10">Prêt à tester vos connaissances ?</h3>
-          <p className="text-pr-gray-light mb-8 max-w-lg mx-auto leading-relaxed relative z-10">
-            La maîtrise de ces commandes est indispensable. Entraînez-vous avec nos flashcards interactives pour maximiser votre score aux concours.
-          </p>
-          <div className="flex gap-4 justify-center flex-wrap relative z-10">
-            <Link to="/python-flashcards">
-              <Button size="lg" className="bg-emerald-500 hover:bg-emerald-400 text-pr-black font-semibold h-12 px-8 rounded-full shadow-lg shadow-emerald-500/20 transition-all hover:scale-105">
-                Lancer les Flashcards
-              </Button>
-            </Link>
-            <Link to="/offre/coaching-python">
-              <Button size="lg" variant="outline" className="bg-transparent border-pr-gray-dark text-pr-gray-light hover:bg-white/5 hover:text-white h-12 px-8 rounded-full">
-                Coaching Individuel
-              </Button>
-            </Link>
+        {/* Call to action */}
+        <div className="mt-16 text-center max-w-3xl mx-auto">
+          <div className="carnet-card p-10 md:p-12 carnet-tilt-r relative">
+            <div
+              className="absolute -top-3 left-8 bg-carnet-red text-carnet-paper-2 px-3 py-0.5 carnet-hand text-[16px] font-semibold"
+              style={{ transform: 'rotate(-3deg)' }}
+            >
+              Aller plus loin
+            </div>
+            <h3 className="font-lora text-[28px] sm:text-[32px] text-carnet-ink mb-4 mt-2">
+              Prêt à <em className="font-lora italic text-carnet-red">tester</em> tes connaissances&nbsp;?
+            </h3>
+            <p className="font-instrument text-[15px] text-carnet-ink-soft leading-[1.7] mb-8 max-w-lg mx-auto">
+              La maîtrise de ces commandes est indispensable. Entraîne-toi avec nos flashcards interactives pour maximiser ton score aux concours.
+            </p>
+            <div className="flex gap-3 justify-center flex-wrap">
+              <Link to="/python-flashcards">
+                <Button
+                  size="lg"
+                  className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper rounded-full px-8 font-instrument font-semibold"
+                >
+                  <BookOpen className="h-4 w-4 mr-2" />
+                  Lancer les flashcards
+                </Button>
+              </Link>
+              <Link to="/offre/coaching-python">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full border-[rgba(78,55,30,0.18)] text-carnet-ink-soft hover:bg-[rgba(193,68,58,0.06)] hover:text-carnet-red font-instrument font-semibold px-8"
+                >
+                  Coaching individuel
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>;
+  );
 };
+
 export default PythonReferencePage;
