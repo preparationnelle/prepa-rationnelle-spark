@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import Navigation from '@/components/Navigation';
 import { User, Target, Lightbulb, Heart, Users, Award, TrendingUp, BookOpen, Home, ChevronRight } from 'lucide-react';
 
 const partners = [
@@ -46,20 +45,9 @@ const partners = [
 
 const AproposPage = () => {
   return (
-    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
-      {/* Navigation */}
-    <Navigation />
-
-      {/* Floating elements - Blue bubbles only */}
-      <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-blue-100 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-8 animate-pulse"></div>
-      <div className="absolute -z-10 top-1/4 left-1/3 w-64 h-64 bg-blue-50 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-8 animate-pulse"></div>
-
+    <div className="relative">
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-16 z-30 bg-[#F8FAFF] border-b border-border/40 relative">
+      <nav className="sticky top-16 z-30 bg-carnet-paper/95 backdrop-blur-sm border-b border-carnet-rule/40 relative">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -76,13 +64,13 @@ const AproposPage = () => {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <div className="flex justify-center mb-6">
-            <div className="p-4 rounded-2xl bg-blue-600 text-white shadow-lg">
+            <div className="p-4 rounded-2xl bg-carnet-red text-white shadow-lg">
               <User className="h-12 w-12" />
             </div>
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
             <span className="text-black">À propos de </span>
-            <span className="text-blue-600">Prépa Rationnelle</span>
+            <span className="text-carnet-red">Prépa Rationnelle</span>
           </h1>
           <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
             Réussir la prépa autrement : une vision, une méthode, des résultats concrets
@@ -91,19 +79,19 @@ const AproposPage = () => {
 
         {/* Vision Section */}
         <div className="max-w-4xl mx-auto mb-16">
-          <Card className="border-2 border-blue-100 bg-white/95 backdrop-blur-sm shadow-xl hover:shadow-2xl hover:scale-105 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 group">
+          <Card className="border-2 border-carnet-red/20 bg-white/95 backdrop-blur-sm shadow-xl hover:shadow-2xl hover:scale-105 hover:border-pr-orange hover:bg-pr-orange-pale transition-all duration-300 group">
             <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-blue-600 group-hover:bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300">
+              <div className="w-16 h-16 bg-carnet-red group-hover:bg-pr-orange-dark rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300">
                 <Target className="h-8 w-8 text-white" />
               </div>
-              <CardTitle className="text-2xl font-bold text-blue-700 group-hover:text-orange-800 transition-colors duration-300">Notre Vision</CardTitle>
+              <CardTitle className="text-2xl font-bold text-carnet-red group-hover:text-pr-orange-dark transition-colors duration-300">Notre Vision</CardTitle>
             </CardHeader>
-            <CardContent className="text-lg text-gray-700 group-hover:text-orange-800 leading-relaxed space-y-4 transition-colors duration-300">
+            <CardContent className="text-lg text-gray-700 group-hover:text-pr-orange-dark leading-relaxed space-y-4 transition-colors duration-300">
               <p>
-                <strong className="text-blue-600 group-hover:text-orange-600 transition-colors duration-300">Prépa Rationnelle</strong>, c'est bien plus qu'un nom accrocheur : c'est une réponse concrète à un problème que vivent des milliers d'étudiants chaque année. Celui de l'inefficacité, du surmenage et du manque de méthode dans les classes préparatoires.
+                <strong className="text-carnet-red group-hover:text-pr-orange transition-colors duration-300">Prépa Rationnelle</strong>, c'est bien plus qu'un nom accrocheur : c'est une réponse concrète à un problème que vivent des milliers d'étudiants chaque année. Celui de l'inefficacité, du surmenage et du manque de méthode dans les classes préparatoires.
               </p>
               <p>
-                À l'origine du projet, un constat personnel : réussir un concours ne dépend pas uniquement de son intelligence ou de ses connaissances, mais de la <strong className="text-blue-600 group-hover:text-orange-600 transition-colors duration-300">capacité à travailler intelligemment</strong>. Et ça, peu de gens l'enseignent.
+                À l'origine du projet, un constat personnel : réussir un concours ne dépend pas uniquement de son intelligence ou de ses connaissances, mais de la <strong className="text-carnet-red group-hover:text-pr-orange transition-colors duration-300">capacité à travailler intelligemment</strong>. Et ça, peu de gens l'enseignent.
               </p>
             </CardContent>
           </Card>
@@ -114,7 +102,7 @@ const AproposPage = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
               <span className="text-black">Nos </span>
-              <span className="text-blue-600">Partenaires</span>
+              <span className="text-carnet-red">Partenaires</span>
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
               Des institutions prestigieuses qui nous soutiennent dans notre mission
@@ -127,7 +115,7 @@ const AproposPage = () => {
                   href={partner.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center w-40 hover:shadow-2xl hover:scale-110 hover:-translate-y-2 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 p-4 rounded-xl bg-white border border-blue-100 group"
+                  className="flex flex-col items-center w-40 hover:shadow-2xl hover:scale-110 hover:-translate-y-2 hover:border-pr-orange hover:bg-pr-orange-pale transition-all duration-300 p-4 rounded-xl bg-white border border-carnet-red/20 group"
                   aria-label={partner.name}
                 >
                   <img
@@ -135,7 +123,7 @@ const AproposPage = () => {
                     alt={partner.alt}
                     className="h-16 w-auto object-contain mb-3 group-hover:scale-105 transition-transform duration-300"
                   />
-                  <span className="text-sm font-medium text-blue-700 group-hover:text-orange-800 text-center leading-tight transition-colors duration-300">{partner.name}</span>
+                  <span className="text-sm font-medium text-carnet-red group-hover:text-pr-orange-dark text-center leading-tight transition-colors duration-300">{partner.name}</span>
                 </a>
               ))}
             </div>
@@ -143,36 +131,36 @@ const AproposPage = () => {
 
         {/* Story Section */}
         <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-6xl mx-auto">
-          <Card className="border-2 border-blue-100 bg-white/95 backdrop-blur-sm shadow-xl hover:shadow-2xl hover:scale-105 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 group">
+          <Card className="border-2 border-carnet-red/20 bg-white/95 backdrop-blur-sm shadow-xl hover:shadow-2xl hover:scale-105 hover:border-pr-orange hover:bg-pr-orange-pale transition-all duration-300 group">
             <CardHeader>
-              <div className="w-14 h-14 bg-blue-600 group-hover:bg-orange-600 rounded-full flex items-center justify-center mb-4 transition-all duration-300">
+              <div className="w-14 h-14 bg-carnet-red group-hover:bg-pr-orange-dark rounded-full flex items-center justify-center mb-4 transition-all duration-300">
                 <User className="h-7 w-7 text-white" />
               </div>
-              <CardTitle className="text-xl font-bold text-blue-700 group-hover:text-orange-800 transition-colors duration-300">Un Parcours Personnel</CardTitle>
+              <CardTitle className="text-xl font-bold text-carnet-red group-hover:text-pr-orange-dark transition-colors duration-300">Un Parcours Personnel</CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-700 group-hover:text-orange-800 leading-relaxed space-y-3 transition-colors duration-300">
+            <CardContent className="text-gray-700 group-hover:text-pr-orange-dark leading-relaxed space-y-3 transition-colors duration-300">
               <p>
-                Je m'appelle <strong className="text-blue-600 group-hover:text-orange-600 transition-colors duration-300">Dimitar Dimitrov</strong>. Je suis étudiant à l'ESCP Business School, passé par trois années de classe préparatoire, avec tous les hauts et les bas que cela implique.
+                Je m'appelle <strong className="text-carnet-red group-hover:text-pr-orange transition-colors duration-300">Dimitar Dimitrov</strong>. Je suis étudiant à l'ESCP Business School, passé par trois années de classe préparatoire, avec tous les hauts et les bas que cela implique.
               </p>
               <p>
-                Issu d'un double parcours franco-bulgare, je suis passé par des débuts très difficiles à mon arrivée en France, sans parler un mot de la langue. Mais c'est cette <strong className="text-blue-600 group-hover:text-orange-600 transition-colors duration-300">résilience</strong> que je transmets aujourd'hui dans ma pédagogie.
+                Issu d'un double parcours franco-bulgare, je suis passé par des débuts très difficiles à mon arrivée en France, sans parler un mot de la langue. Mais c'est cette <strong className="text-carnet-red group-hover:text-pr-orange transition-colors duration-300">résilience</strong> que je transmets aujourd'hui dans ma pédagogie.
               </p>
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-blue-100 bg-white/95 backdrop-blur-sm shadow-xl hover:shadow-2xl hover:scale-105 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 group">
+          <Card className="border-2 border-carnet-red/20 bg-white/95 backdrop-blur-sm shadow-xl hover:shadow-2xl hover:scale-105 hover:border-pr-orange hover:bg-pr-orange-pale transition-all duration-300 group">
             <CardHeader>
-              <div className="w-14 h-14 bg-blue-600 group-hover:bg-orange-600 rounded-full flex items-center justify-center mb-4 transition-all duration-300">
+              <div className="w-14 h-14 bg-carnet-red group-hover:bg-pr-orange-dark rounded-full flex items-center justify-center mb-4 transition-all duration-300">
                 <Award className="h-7 w-7 text-white" />
               </div>
-              <CardTitle className="text-xl font-bold text-blue-700 group-hover:text-orange-800 transition-colors duration-300">L'Expérience Terrain</CardTitle>
+              <CardTitle className="text-xl font-bold text-carnet-red group-hover:text-pr-orange-dark transition-colors duration-300">L'Expérience Terrain</CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-700 group-hover:text-orange-800 leading-relaxed space-y-3 transition-colors duration-300">
+            <CardContent className="text-gray-700 group-hover:text-pr-orange-dark leading-relaxed space-y-3 transition-colors duration-300">
               <p>
-                <strong className="text-blue-600 group-hover:text-orange-600 transition-colors duration-300">Prépa Rationnelle</strong> est né de cette expérience. De cette conviction qu'un accompagnement efficace peut transformer une trajectoire.
+                <strong className="text-carnet-red group-hover:text-pr-orange transition-colors duration-300">Prépa Rationnelle</strong> est né de cette expérience. De cette conviction qu'un accompagnement efficace peut transformer une trajectoire.
               </p>
               <p>
-                Pendant deux ans, j'ai donné plus de <strong className="text-blue-600 group-hover:text-orange-600 transition-colors duration-300">1000 heures de cours particuliers</strong>, accompagné plus de 50 étudiants, certains allant jusqu'à dépasser mes propres scores aux concours.
+                Pendant deux ans, j'ai donné plus de <strong className="text-carnet-red group-hover:text-pr-orange transition-colors duration-300">1000 heures de cours particuliers</strong>, accompagné plus de 50 étudiants, certains allant jusqu'à dépasser mes propres scores aux concours.
               </p>
             </CardContent>
           </Card>
@@ -180,16 +168,16 @@ const AproposPage = () => {
 
         {/* Methodology Section */}
         <div className="mb-16">
-          <Card className="border-2 border-blue-100 bg-white/95 backdrop-blur-sm shadow-xl hover:shadow-2xl hover:scale-105 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 group max-w-4xl mx-auto">
+          <Card className="border-2 border-carnet-red/20 bg-white/95 backdrop-blur-sm shadow-xl hover:shadow-2xl hover:scale-105 hover:border-pr-orange hover:bg-pr-orange-pale transition-all duration-300 group max-w-4xl mx-auto">
             <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-blue-600 group-hover:bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300">
+              <div className="w-16 h-16 bg-carnet-red group-hover:bg-pr-orange-dark rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300">
                 <Lightbulb className="h-8 w-8 text-white" />
               </div>
-              <CardTitle className="text-2xl font-bold text-blue-700 group-hover:text-orange-800 transition-colors duration-300">Une Pédagogie de l'Efficacité</CardTitle>
+              <CardTitle className="text-2xl font-bold text-carnet-red group-hover:text-pr-orange-dark transition-colors duration-300">Une Pédagogie de l'Efficacité</CardTitle>
             </CardHeader>
-            <CardContent className="text-lg text-gray-700 group-hover:text-orange-800 leading-relaxed space-y-4 transition-colors duration-300">
+            <CardContent className="text-lg text-gray-700 group-hover:text-pr-orange-dark leading-relaxed space-y-4 transition-colors duration-300">
               <p>
-                Notre approche est simple : <strong className="text-blue-600 group-hover:text-orange-600 transition-colors duration-300">enseigner les bonnes méthodes avant même les contenus</strong>. Fiches ciblées, répétition espacée, gestion du temps, sélection des exercices vraiment utiles pour les concours...
+                Notre approche est simple : <strong className="text-carnet-red group-hover:text-pr-orange transition-colors duration-300">enseigner les bonnes méthodes avant même les contenus</strong>. Fiches ciblées, répétition espacée, gestion du temps, sélection des exercices vraiment utiles pour les concours...
               </p>
               <p>
                 Car oui, le vrai problème n'est pas que les élèves ne travaillent pas. C'est qu'ils ne savent pas comment travailler.
@@ -203,38 +191,38 @@ const AproposPage = () => {
 
         {/* Mission & Values */}
         <div className="grid md:grid-cols-3 gap-6 mb-16 max-w-6xl mx-auto">
-          <Card className="border-2 border-blue-100 bg-white/95 backdrop-blur-sm shadow-xl hover:shadow-2xl hover:scale-110 hover:-translate-y-2 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 group text-center">
+          <Card className="border-2 border-carnet-red/20 bg-white/95 backdrop-blur-sm shadow-xl hover:shadow-2xl hover:scale-110 hover:-translate-y-2 hover:border-pr-orange hover:bg-pr-orange-pale transition-all duration-300 group text-center">
             <CardHeader>
-              <div className="w-14 h-14 bg-blue-600 group-hover:bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300">
+              <div className="w-14 h-14 bg-carnet-red group-hover:bg-pr-orange-dark rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300">
                 <Heart className="h-7 w-7 text-white" />
               </div>
-              <CardTitle className="text-lg font-bold text-blue-700 group-hover:text-orange-800 transition-colors duration-300">Engagement</CardTitle>
+              <CardTitle className="text-lg font-bold text-carnet-red group-hover:text-pr-orange-dark transition-colors duration-300">Engagement</CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-700 group-hover:text-orange-800 transition-colors duration-300">
+            <CardContent className="text-gray-700 group-hover:text-pr-orange-dark transition-colors duration-300">
               <p>Une start-up engagée et soutenue par l'écosystème entrepreneurial de l'ESCP, avec une vision d'impact social.</p>
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-blue-100 bg-white/95 backdrop-blur-sm shadow-xl hover:shadow-2xl hover:scale-110 hover:-translate-y-2 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 group text-center">
+          <Card className="border-2 border-carnet-red/20 bg-white/95 backdrop-blur-sm shadow-xl hover:shadow-2xl hover:scale-110 hover:-translate-y-2 hover:border-pr-orange hover:bg-pr-orange-pale transition-all duration-300 group text-center">
             <CardHeader>
-              <div className="w-14 h-14 bg-blue-600 group-hover:bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300">
+              <div className="w-14 h-14 bg-carnet-red group-hover:bg-pr-orange-dark rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300">
                 <Users className="h-7 w-7 text-white" />
               </div>
-              <CardTitle className="text-lg font-bold text-blue-700 group-hover:text-orange-800 transition-colors duration-300">Accessibilité</CardTitle>
+              <CardTitle className="text-lg font-bold text-carnet-red group-hover:text-pr-orange-dark transition-colors duration-300">Accessibilité</CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-700 group-hover:text-orange-800 transition-colors duration-300">
+            <CardContent className="text-gray-700 group-hover:text-pr-orange-dark transition-colors duration-300">
               <p>Rendre la prépa accessible aux lycéens boursiers et mal informés, pour démocratiser l'accès aux grandes écoles.</p>
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-blue-100 bg-white/95 backdrop-blur-sm shadow-xl hover:shadow-2xl hover:scale-110 hover:-translate-y-2 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 group text-center">
+          <Card className="border-2 border-carnet-red/20 bg-white/95 backdrop-blur-sm shadow-xl hover:shadow-2xl hover:scale-110 hover:-translate-y-2 hover:border-pr-orange hover:bg-pr-orange-pale transition-all duration-300 group text-center">
             <CardHeader>
-              <div className="w-14 h-14 bg-blue-600 group-hover:bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300">
+              <div className="w-14 h-14 bg-carnet-red group-hover:bg-pr-orange-dark rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300">
                 <TrendingUp className="h-7 w-7 text-white" />
               </div>
-              <CardTitle className="text-lg font-bold text-blue-700 group-hover:text-orange-800 transition-colors duration-300">Innovation</CardTitle>
+              <CardTitle className="text-lg font-bold text-carnet-red group-hover:text-pr-orange-dark transition-colors duration-300">Innovation</CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-700 group-hover:text-orange-800 transition-colors duration-300">
+            <CardContent className="text-gray-700 group-hover:text-pr-orange-dark transition-colors duration-300">
               <p>Un modèle scalable, humain et technologique, avec une ambition européenne et des outils IA innovants.</p>
             </CardContent>
           </Card>
@@ -242,24 +230,24 @@ const AproposPage = () => {
 
         {/* Call to Action */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl p-8 sm:p-12 shadow-xl border border-blue-100 hover:shadow-2xl hover:scale-105 transition-all duration-300 group">
-            <div className="w-16 h-16 bg-blue-600 group-hover:bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 transition-all duration-300">
+          <div className="bg-gradient-to-r from-carnet-paper-2 to-pr-orange-pale rounded-2xl p-8 sm:p-12 shadow-xl border border-carnet-red/20 hover:shadow-2xl hover:scale-105 transition-all duration-300 group">
+            <div className="w-16 h-16 bg-carnet-red group-hover:bg-pr-orange-dark rounded-full flex items-center justify-center mx-auto mb-6 transition-all duration-300">
               <BookOpen className="h-8 w-8 text-white" />
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 group-hover:text-orange-800 transition-colors duration-300 mb-4">
-              <span className="text-blue-600 group-hover:text-orange-600 font-bold transition-colors duration-300">Prêt à réussir autrement</span> ?
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 group-hover:text-pr-orange-dark transition-colors duration-300 mb-4">
+              <span className="text-carnet-red group-hover:text-pr-orange font-bold transition-colors duration-300">Prêt à réussir autrement</span> ?
             </h2>
             <p className="text-gray-600 group-hover:text-orange-700 transition-colors duration-300 text-lg mb-8 max-w-2xl mx-auto">
               Découvrez nos formations et notre méthode rationnelle pour intégrer le TOP 3 en prépa ECG.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/formations">
-                <Button size="lg" className="bg-blue-600 hover:bg-orange-600 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+                <Button size="lg" className="bg-carnet-red hover:bg-orange-600 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
                   Découvrir nos formations
                 </Button>
               </Link>
               <Link to="/">
-                <Button variant="outline" size="lg" className="border-2 border-blue-300 hover:border-orange-300 text-blue-600 hover:text-orange-600 px-8 py-3 text-lg font-semibold hover:bg-orange-50 transition-all duration-300">
+                <Button variant="outline" size="lg" className="border-2 border-carnet-red/40 hover:border-pr-orange text-carnet-red hover:text-pr-orange px-8 py-3 text-lg font-semibold hover:bg-pr-orange-pale transition-all duration-300">
                   Retour à l'accueil
                 </Button>
               </Link>
