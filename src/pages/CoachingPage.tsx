@@ -1,143 +1,108 @@
-
 import React, { useEffect } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Calendar, Clock, MessageSquare, Users } from 'lucide-react';
+import { Calendar, Clock, MessageSquare, Users, Sparkles } from 'lucide-react';
 import { useProgress } from '@/context/ProgressContext';
 
 const CoachingPage = () => {
   const { trackPageVisit } = useProgress();
-  
-  // Suivre la visite de la page coaching
+
   useEffect(() => {
     trackPageVisit('coaching');
   }, [trackPageVisit]);
 
   return (
-    <div className="container mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold mb-4">Coaching personnalisé</h1>
-      
-      <div className="mb-6 flex justify-center">
-        <a href="https://calendly.com/prepa-rationnelle" target="_blank" rel="noopener noreferrer">
-          <Button size="lg" className="flex items-center gap-2">
-            <Calendar className="h-5 w-5" />
-            Afficher le calendrier en plein écran
-          </Button>
-        </a>
-      </div>
+    <div className="relative">
+      <div className="container mx-auto py-16 px-4 max-w-3xl">
+        {/* Hero */}
+        <div className="text-center mb-16">
+          <div className="text-xs uppercase tracking-[0.2em] font-semibold text-carnet-red mb-4">
+            Coaching · 30 minutes en tête-à-tête
+          </div>
+          <h1 className="font-serif text-5xl sm:text-6xl text-carnet-ink mb-6 leading-tight">
+            On débriefe ta prépa,
+            <br />
+            <span className="text-carnet-red italic">en vrai.</span>
+          </h1>
+          <p className="text-lg text-carnet-ink-soft max-w-xl mx-auto leading-relaxed">
+            Une session avec un coach Prépa Rationnelle, sur ton sujet du moment.
+            Pas de présentation commerciale&nbsp;: on travaille.
+          </p>
+        </div>
 
-      <div className="grid md:grid-cols-3 gap-8 mb-12">
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="flex items-center">
-              <MessageSquare className="h-5 w-5 mr-2 text-primary" />
-              Entretien individuel
-            </CardTitle>
-            <CardDescription>Préparez-vous efficacement</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-gray-600 mb-4">
-              Une session en tête-à-tête avec l'un de nos experts pour travailler sur votre technique d'entretien.
-            </p>
-            <div className="flex items-center text-sm text-gray-500 mb-1">
-              <Clock className="h-4 w-4 mr-2" />
-              <span>30 minutes</span>
-            </div>
-            <div className="flex items-center text-sm text-gray-500">
-              <Users className="h-4 w-4 mr-2" />
-              <span>Coach expérimenté</span>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="flex items-center">
-              <Calendar className="h-5 w-5 mr-2 text-primary" />
-              Flexible
-            </CardTitle>
-            <CardDescription>À votre rythme</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-gray-600 mb-4">
-              Choisissez parmi une large plage horaire pour trouver le moment qui vous convient le mieux.
-            </p>
-            <div className="flex items-center text-sm text-gray-500 mb-1">
-              <Clock className="h-4 w-4 mr-2" />
-              <span>Disponibilité 7j/7</span>
-            </div>
-            <div className="flex items-center text-sm text-gray-500">
-              <Users className="h-4 w-4 mr-2" />
-              <span>Planning adaptable</span>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="flex items-center">
-              <MessageSquare className="h-5 w-5 mr-2 text-primary" />
-              Analyse détaillée
-            </CardTitle>
-            <CardDescription>Progressez rapidement</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-gray-600 mb-4">
-              Recevez un feedback personnalisé et des conseils pratiques pour améliorer votre performance.
-            </p>
-            <div className="flex items-center text-sm text-gray-500 mb-1">
-              <Clock className="h-4 w-4 mr-2" />
-              <span>Suivi post-session</span>
-            </div>
-            <div className="flex items-center text-sm text-gray-500">
-              <Users className="h-4 w-4 mr-2" />
-              <span>Plan d'action</span>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      <div className="max-w-3xl mx-auto">
-        <Card>
-          <CardHeader>
-            <CardTitle>Réserver une session de coaching</CardTitle>
-            <CardDescription>
-              Choisissez un créneau qui vous convient pour une session de 30 minutes
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="flex flex-col items-center">
-            <a href="https://calendly.com/prepa-rationnelle" target="_blank" rel="noopener noreferrer" className="w-full">
-              <Button size="lg" className="w-full mb-4">
-                Prendre rendez-vous
-              </Button>
-            </a>
-            
-            <p className="text-sm text-gray-500 mb-4 text-center">
-              Le calendrier s'ouvrira dans un nouvel onglet pour une meilleure expérience.
-            </p>
-          </CardContent>
-        </Card>
-
-        <div className="mt-8 bg-accent rounded-lg p-6">
-          <h2 className="font-semibold text-lg mb-4">
-            Comment se déroule une session de coaching ?
+        {/* What you get — narrative list, not 3-col card grid */}
+        <div className="border-y border-carnet-rule/40 py-12 mb-16">
+          <h2 className="font-serif text-2xl text-carnet-ink mb-8">
+            Ce qu'on fait pendant la session.
           </h2>
-          <ol className="space-y-4">
+          <ul className="space-y-6">
+            <li className="flex gap-4">
+              <MessageSquare className="h-5 w-5 mt-1 text-carnet-red shrink-0" aria-hidden="true" />
+              <div>
+                <p className="font-medium text-carnet-ink">Un point précis sur ton dossier.</p>
+                <p className="text-sm text-carnet-ink-soft mt-1">
+                  Tu nous montres ce qui coince — un chapitre, une copie, un planning, un entretien à préparer. On creuse.
+                </p>
+              </div>
+            </li>
+            <li className="flex gap-4">
+              <Sparkles className="h-5 w-5 mt-1 text-carnet-red shrink-0" aria-hidden="true" />
+              <div>
+                <p className="font-medium text-carnet-ink">Un retour direct, sans langue de bois.</p>
+                <p className="text-sm text-carnet-ink-soft mt-1">
+                  Ce qui est bien, ce qui ne l'est pas, ce qu'il faut corriger d'ici la prochaine échéance.
+                </p>
+              </div>
+            </li>
+            <li className="flex gap-4">
+              <Users className="h-5 w-5 mt-1 text-carnet-red shrink-0" aria-hidden="true" />
+              <div>
+                <p className="font-medium text-carnet-ink">Un plan d'action écrit, à toi.</p>
+                <p className="text-sm text-carnet-ink-soft mt-1">
+                  En fin de session, tu repars avec une note récapitulative et 3 actions concrètes pour la semaine.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        {/* CTA */}
+        <div className="text-center mb-16">
+          <a href="https://calendly.com/prepa-rationnelle" target="_blank" rel="noopener noreferrer">
+            <Button
+              size="lg"
+              className="bg-carnet-ink hover:bg-carnet-ink-soft text-white px-8 h-14 text-base shadow-lg"
+            >
+              <Calendar className="h-5 w-5 mr-2" aria-hidden="true" />
+              Réserver un créneau
+            </Button>
+          </a>
+          <p className="text-sm text-carnet-ink-mute mt-4">
+            <Clock className="h-4 w-4 inline mr-1 -mt-0.5" aria-hidden="true" />
+            30 minutes — disponibilités 7j/7 — premier rendez-vous offert
+          </p>
+        </div>
+
+        {/* How it works — keeps the existing 4-step list, restyled */}
+        <div>
+          <h2 className="font-serif text-2xl text-carnet-ink mb-6">
+            Comment ça se passe.
+          </h2>
+          <ol className="space-y-4 max-w-2xl">
             <li className="flex">
-              <span className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">1</span>
-              <span>Réservez un créneau qui vous convient via le calendrier</span>
+              <span className="font-serif text-xl text-carnet-red w-8 shrink-0">1.</span>
+              <span className="text-carnet-ink-soft pt-0.5">Tu réserves un créneau via le calendrier.</span>
             </li>
             <li className="flex">
-              <span className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">2</span>
-              <span>Vous recevrez un email de confirmation avec les détails de connexion</span>
+              <span className="font-serif text-xl text-carnet-red w-8 shrink-0">2.</span>
+              <span className="text-carnet-ink-soft pt-0.5">Tu reçois un email avec le lien Zoom et un petit formulaire (deux questions, deux minutes).</span>
             </li>
             <li className="flex">
-              <span className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">3</span>
-              <span>Pendant la session, nous simulerons un entretien puis analyserons vos réponses</span>
+              <span className="font-serif text-xl text-carnet-red w-8 shrink-0">3.</span>
+              <span className="text-carnet-ink-soft pt-0.5">Pendant la session, on travaille sur ce que tu as remonté. Pas de slides.</span>
             </li>
             <li className="flex">
-              <span className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 shrink-0">4</span>
-              <span>Après la session, vous recevrez une synthèse avec des recommandations personnalisées</span>
+              <span className="font-serif text-xl text-carnet-red w-8 shrink-0">4.</span>
+              <span className="text-carnet-ink-soft pt-0.5">Tu repars avec une synthèse écrite et des recommandations à appliquer cette semaine.</span>
             </li>
           </ol>
         </div>
