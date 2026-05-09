@@ -2,22 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Calculator, ArrowLeft } from 'lucide-react';
-import Navigation from '@/components/Navigation';
 
 const ArticlesPrepaECGPage = () => {
   return (
     <>
-      <Navigation />
-      <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden py-8 sm:py-8">
-        {/* Floating elements - Purple theme for ECG */}
-        <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-purple-200 rounded-full opacity-10 animate-pulse"></div>
-        <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-purple-200 rounded-full opacity-15 animate-pulse-slow"></div>
-        <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-purple-100 rounded-full opacity-10 animate-pulse-slow"></div>
-        <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-purple-200 rounded-full opacity-8 animate-pulse"></div>
-        <div className="absolute -z-10 top-1/4 left-1/3 w-64 h-64 bg-purple-50 rounded-full opacity-10 animate-pulse-slow"></div>
-        <div className="absolute -z-10 top-3/4 right-1/4 w-40 h-40 bg-purple-100 rounded-full opacity-8 animate-pulse"></div>
-        <div className="absolute -z-10 top-10 right-1/3 w-24 h-24 bg-purple-300 rounded-full opacity-12 animate-pulse-slow"></div>
-        <div className="absolute -z-10 bottom-10 left-1/4 w-36 h-36 bg-purple-100 rounded-full opacity-10 animate-pulse"></div>
+      <div className="relative py-8 sm:py-8">
 
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-6xl mx-auto">
@@ -151,19 +140,19 @@ const ArticlesPrepaECGPage = () => {
 
             {/* Call to Action */}
             <div className="mt-16 text-center">
-              <div className="bg-gradient-to-br from-purple-50 to-blue-50 border-2 border-purple-200 hover:shadow-2xl hover:scale-105 hover:border-blue-300 hover:bg-gradient-to-br hover:from-blue-50 hover:to-purple-50 transition-all duration-300 group p-8 rounded-lg">
-                <div className="w-16 h-16 bg-purple-100 group-hover:bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
-                  <Calculator className="h-8 w-8 text-purple-600 group-hover:text-blue-600 transition-colors duration-300" />
+              <div className="bg-gradient-to-br from-purple-50 to-pr-orange-pale border-2 border-purple-200 hover:shadow-2xl hover:scale-105 hover:border-carnet-red/40 hover:bg-gradient-to-br hover:from-carnet-paper-2 hover:to-purple-50 transition-all duration-300 group p-8 rounded-lg">
+                <div className="w-16 h-16 bg-purple-100 group-hover:bg-carnet-red/10 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
+                  <Calculator className="h-8 w-8 text-purple-600 group-hover:text-carnet-red transition-colors duration-300" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-purple-700 group-hover:text-blue-800 transition-colors duration-300">
+                <h3 className="text-2xl font-bold mb-4 text-purple-700 group-hover:text-carnet-red-deep transition-colors duration-300">
                   Besoin d'aide pour votre prépa ECG ?
                 </h3>
-                <p className="text-gray-600 group-hover:text-blue-700 transition-colors duration-300 mb-6">
+                <p className="text-gray-600 group-hover:text-carnet-red transition-colors duration-300 mb-6">
                   Nos professeurs spécialisés en prépa ECG vous accompagnent pour réussir vos concours.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link to="/contact">
-                    <Button size="lg" className="bg-purple-600 hover:bg-blue-600 text-white transition-all duration-300">
+                    <Button size="lg" className="bg-purple-600 hover:bg-carnet-red text-white transition-all duration-300">
                       Nous contacter
                     </Button>
                   </Link>

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { FileText, ArrowRight, GraduationCap, School, BookOpen, Target, Sparkles, Star } from 'lucide-react';
-import Navigation from '@/components/Navigation';
 
 const ArticlesLyceePage = () => {
   const niveaux = [
@@ -13,8 +12,8 @@ const ArticlesLyceePage = () => {
       subtitle: "Classe de détermination",
       description: "Découvrez toutes les matières enseignées en classe de seconde et les stratégies pour bien choisir votre voie.",
       theme: "blue",
-      gradient: "from-blue-500 to-indigo-600",
-      bgGradient: "from-blue-50 to-indigo-50",
+      gradient: "from-carnet-paper-20 to-indigo-600",
+      bgGradient: "from-carnet-paper-2 to-indigo-50",
       icon: School,
       link: "/articles/lycee/seconde",
       matieresCount: 12,
@@ -50,11 +49,11 @@ const ArticlesLyceePage = () => {
 
   const colorClasses: Record<string, { bg: string, text: string, border: string, shadow: string, button: string }> = {
     blue: {
-      bg: 'bg-blue-50',
-      text: 'text-blue-700',
-      border: 'border-blue-100',
+      bg: 'bg-pr-orange-pale',
+      text: 'text-carnet-red',
+      border: 'border-carnet-red/20',
       shadow: 'shadow-blue-200/50',
-      button: 'bg-blue-600 hover:bg-blue-700'
+      button: 'bg-carnet-red hover:bg-carnet-red-deep'
     },
     orange: {
       bg: 'bg-orange-50',
@@ -74,33 +73,32 @@ const ArticlesLyceePage = () => {
 
   return (
     <>
-      <Navigation />
-      <div className="min-h-screen bg-[#FAFAFA] relative overflow-hidden font-sans">
+      <div className="relative font-sans">
         {/* Abstract Background */}
         <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-slate-50 to-transparent -z-10" />
-        <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-blue-100/30 rounded-full blur-3xl -z-10" />
+        <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-carnet-red/10/30 rounded-full blur-3xl -z-10" />
         <div className="absolute bottom-[10%] left-[-10%] w-[500px] h-[500px] bg-orange-100/30 rounded-full blur-3xl -z-10" />
 
         <div className="container mx-auto px-4 sm:px-6 py-12 relative z-10">
           <div className="max-w-6xl mx-auto">
             {/* Header */}
             <div className="text-center mb-20 space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 text-slate-700 text-sm font-medium border border-slate-200 mb-4 animate-fade-in-up">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-carnet-rule/30 text-carnet-ink text-sm font-medium border border-carnet-rule/40 mb-4 animate-fade-in-up">
                 <School className="h-4 w-4" />
                 <span>Parcours Lycée</span>
               </div>
 
-              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-6">
-                Articles <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-600">Lycée</span>
+              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-carnet-ink mb-6">
+                Articles <span className="text-transparent bg-clip-text bg-gradient-to-r from-carnet-red to-orange-600">Lycée</span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
+              <p className="text-xl md:text-2xl text-carnet-ink-soft max-w-3xl mx-auto leading-relaxed font-light">
                 Conseils, méthodes et programmes détaillés pour réussir vos années lycée et préparer sereinement votre avenir.
               </p>
 
               <div className="pt-4">
                 <Link to="/articles">
-                  <Button variant="ghost" className="group text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300">
+                  <Button variant="ghost" className="group text-carnet-ink-soft hover:text-carnet-red hover:bg-pr-orange-pale transition-all duration-300">
                     <ArrowRight className="mr-2 h-4 w-4 rotate-180 group-hover:-translate-x-1 transition-transform" />
                     Retour aux niveaux
                   </Button>
@@ -117,7 +115,7 @@ const ArticlesLyceePage = () => {
                 return (
                   <Link key={niveau.id} to={niveau.link} className="group relative block h-full">
                     <div className={`absolute -inset-0.5 bg-gradient-to-r ${niveau.gradient} rounded-3xl opacity-0 group-hover:opacity-100 transition duration-500 blur-sm`}></div>
-                    <Card className="h-full relative bg-white border-slate-100 hover:border-transparent transition-all duration-300 overflow-hidden flex flex-col">
+                    <Card className="h-full relative bg-white border-carnet-rule/30 hover:border-transparent transition-all duration-300 overflow-hidden flex flex-col">
                       {/* Card Header Background */}
                       <div className={`absolute top-0 left-0 w-full h-32 bg-gradient-to-br ${niveau.bgGradient} opacity-50`}></div>
 
@@ -131,7 +129,7 @@ const ArticlesLyceePage = () => {
                           </span>
                         </div>
 
-                        <CardTitle className="text-3xl font-bold text-slate-900 mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-slate-900 group-hover:to-slate-700 transition-all">
+                        <CardTitle className="text-3xl font-bold text-carnet-ink mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-carnet-ink group-hover:to-carnet-ink-soft transition-all">
                           {niveau.title}
                         </CardTitle>
                         <p className={`text-lg font-medium ${theme.text} opacity-90`}>
@@ -140,12 +138,12 @@ const ArticlesLyceePage = () => {
                       </CardHeader>
 
                       <CardContent className="px-8 pb-8 pt-4 flex flex-col flex-grow">
-                        <p className="text-slate-600 leading-relaxed mb-6 flex-grow">
+                        <p className="text-carnet-ink-soft leading-relaxed mb-6 flex-grow">
                           {niveau.description}
                         </p>
 
                         <div className="space-y-4">
-                          <div className="flex items-center gap-2 text-sm text-slate-500 font-medium bg-slate-50 px-3 py-2 rounded-lg w-fit">
+                          <div className="flex items-center gap-2 text-sm text-carnet-ink-mute font-medium bg-carnet-paper-2 px-3 py-2 rounded-lg w-fit">
                             <BookOpen className="h-4 w-4" />
                             {niveau.matieresCount} matières détaillées
                           </div>
@@ -163,8 +161,8 @@ const ArticlesLyceePage = () => {
             </div>
 
             {/* Call to Action */}
-            <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-2xl shadow-slate-200/50">
-              <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-500/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-carnet-ink to-slate-800 text-white shadow-2xl shadow-slate-200/50">
+              <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-carnet-red/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
               <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-orange-500/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
               <div className="relative z-10 p-8 md:p-12 text-center">
@@ -176,13 +174,13 @@ const ArticlesLyceePage = () => {
                   Besoin d'un accompagnement sur-mesure ?
                 </h3>
 
-                <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-lg md:text-xl text-carnet-paper-2 mb-10 max-w-2xl mx-auto leading-relaxed">
                   Que ce soit pour le choix des spécialités, la préparation du Bac ou l'orientation post-bac, nos experts sont là pour vous guider vers l'excellence.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link to="/contact">
-                    <Button size="lg" className="bg-white text-slate-900 hover:bg-blue-50 hover:text-blue-700 font-bold px-8 h-14 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
+                    <Button size="lg" className="bg-white text-carnet-ink hover:bg-pr-orange-pale hover:text-carnet-red font-bold px-8 h-14 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
                       Prendre un premier RDV gratuit
                     </Button>
                   </Link>
