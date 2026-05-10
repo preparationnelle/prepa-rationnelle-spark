@@ -441,15 +441,15 @@ const DashboardPage = () => {
 
   if (!currentUser) {
     return (
-      <div className="min-h-screen bg-[#F7F6F3] flex items-center justify-center px-4">
-        <Card className="p-8 text-center max-w-md bg-white border border-[#D8D6CE] shadow-sm">
-          <div className="w-16 h-16 mx-auto mb-6 bg-[#FDF0EC] rounded-2xl flex items-center justify-center">
-            <Target className="h-8 w-8 text-[#F4845F]" />
+      <div className="relative min-h-[60vh] flex items-center justify-center px-4">
+        <Card className="p-8 text-center max-w-md bg-white border border-pr-gray-light shadow-sm">
+          <div className="w-16 h-16 mx-auto mb-6 bg-pr-orange-pale rounded-2xl flex items-center justify-center">
+            <Target className="h-8 w-8 text-pr-orange" />
           </div>
-          <h2 className="font-serif text-3xl mb-3 text-[#1A1A18]">Connexion requise</h2>
-          <p className="text-[#1A1A18] mb-6">Connectez-vous pour accéder à votre dashboard personnalisé.</p>
+          <h2 className="font-serif text-3xl mb-3 text-pr-black">Connexion requise</h2>
+          <p className="text-pr-black mb-6">Connectez-vous pour accéder à votre dashboard personnalisé.</p>
           <Link to="/login">
-            <Button className="w-full bg-[#F4845F] hover:bg-[#C45A35] text-white font-semibold py-6 rounded-lg shadow-none">
+            <Button className="w-full bg-pr-orange hover:bg-pr-orange-dark text-white font-semibold py-6 rounded-lg shadow-none">
               Se connecter
             </Button>
           </Link>
@@ -461,12 +461,12 @@ const DashboardPage = () => {
   const overallProgress = Math.round(subjectsData.reduce((acc, s) => acc + s.progress, 0) / subjectsData.length);
 
   return (
-    <div className="min-h-screen bg-[#F7F6F3]">
+    <div className="relative">
       <div className="container mx-auto py-12 px-4 max-w-7xl">
         {/* Header */}
         <div className="text-center mb-14">
           {/* Streak badge */}
-          <div className="fade-in-up inline-flex items-center gap-2 bg-[#FDF0EC] text-[#C45A35] px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-6 border border-[#F9C4B0]">
+          <div className="fade-in-up inline-flex items-center gap-2 bg-pr-orange-pale text-pr-orange-dark px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-6 border border-pr-orange-soft">
             <Flame className="h-3.5 w-3.5" />
             {isStreakLoading ? '...' : streak} jour{streak > 1 ? 's' : ''} de suite
           </div>
@@ -475,12 +475,12 @@ const DashboardPage = () => {
           <div className="fade-in-up flex justify-center items-center gap-3 mb-8" style={{ animationDelay: '0.03s' }}>
             {last7Days.map((day) => (
               <div key={day.date} className="flex flex-col items-center gap-1.5">
-                <span className="text-[10px] text-[#1A1A18] font-semibold uppercase tracking-wide">{day.dayName}</span>
+                <span className="text-[10px] text-pr-black font-semibold uppercase tracking-wide">{day.dayName}</span>
                 <div
                   className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${
                     day.isActive
-                      ? 'bg-[#F4845F] border border-[#F4845F]'
-                      : 'bg-white border border-[#D8D6CE]'
+                      ? 'bg-pr-orange border border-pr-orange'
+                      : 'bg-white border border-pr-gray-light'
                   }`}
                 >
                   {day.isActive && <Flame className="h-4 w-4 text-white" />}
@@ -490,90 +490,90 @@ const DashboardPage = () => {
           </div>
 
           {streak > 7 && (
-            <p className="fade-in-up text-[#C45A35] font-semibold text-sm mb-5" style={{ animationDelay: '0.04s' }}>
+            <p className="fade-in-up text-pr-orange-dark font-semibold text-sm mb-5" style={{ animationDelay: '0.04s' }}>
               {streak} jours consécutifs — tu tiens le rythme.
             </p>
           )}
 
-          <h1 className="fade-in-up font-serif text-5xl sm:text-6xl lg:text-7xl mb-4 text-[#1A1A18] leading-tight" style={{ animationDelay: '0.05s' }}>
-            Mon <span className="text-[#F4845F]">Dashboard</span>
+          <h1 className="fade-in-up font-serif text-5xl sm:text-6xl lg:text-7xl mb-4 text-pr-black leading-tight" style={{ animationDelay: '0.05s' }}>
+            Mon <span className="text-pr-orange">Dashboard</span>
           </h1>
           <div className="fade-in-up flex justify-center mb-4" style={{ animationDelay: '0.07s' }}>
-            <div className="h-[2px] w-16 bg-[#F4845F]" />
+            <div className="h-[2px] w-16 bg-pr-orange" />
           </div>
-          <p className="fade-in-up text-base sm:text-lg text-[#1A1A18] max-w-xl mx-auto" style={{ animationDelay: '0.1s' }}>
+          <p className="fade-in-up text-base sm:text-lg text-pr-black max-w-xl mx-auto" style={{ animationDelay: '0.1s' }}>
             Suivez votre progression et atteignez vos objectifs.
           </p>
         </div>
 
         {/* Toggle prof/étudiant */}
         {isProfessor && !roleLoading && (
-          <div className="fade-in-up flex items-center justify-center gap-3 mb-10 bg-white border border-[#D8D6CE] rounded-xl p-3 max-w-md mx-auto" style={{ animationDelay: '0.15s' }}>
-            <span className={`text-sm font-medium transition-colors ${!isTeacherView ? 'text-[#C45A35]' : 'text-[#1A1A18]'}`}>
+          <div className="fade-in-up flex items-center justify-center gap-3 mb-10 bg-white border border-pr-gray-light rounded-xl p-3 max-w-md mx-auto" style={{ animationDelay: '0.15s' }}>
+            <span className={`text-sm font-medium transition-colors ${!isTeacherView ? 'text-pr-orange-dark' : 'text-pr-black'}`}>
               Interface Étudiant
             </span>
             <Switch
               checked={isTeacherView}
               onCheckedChange={setIsTeacherView}
-              className="data-[state=checked]:bg-[#F4845F]"
+              className="data-[state=checked]:bg-pr-orange"
             />
-            <span className={`text-sm font-medium transition-colors ${isTeacherView ? 'text-[#C45A35]' : 'text-[#1A1A18]'}`}>
+            <span className={`text-sm font-medium transition-colors ${isTeacherView ? 'text-pr-orange-dark' : 'text-pr-black'}`}>
               Interface Professeur
             </span>
           </div>
         )}
 
         {isTeacherView ? (
-          <React.Suspense fallback={<div className="flex justify-center py-20"><div className="animate-spin rounded-full h-10 w-10 border-2 border-[#F4845F] border-t-transparent"></div></div>}>
+          <React.Suspense fallback={<div className="flex justify-center py-20"><div className="animate-spin rounded-full h-10 w-10 border-2 border-pr-orange border-t-transparent"></div></div>}>
             <TeacherDashboardView />
           </React.Suspense>
         ) : (
           <>
             {/* Stats overview */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
-              <Card className="fade-in-up bg-white border border-[#D8D6CE] rounded-xl shadow-none overflow-hidden" style={{ animationDelay: '0.25s' }}>
-                <div className="h-[3px] w-full bg-[#F4845F]" />
+              <Card className="fade-in-up bg-white border border-pr-gray-light rounded-xl shadow-none overflow-hidden" style={{ animationDelay: '0.25s' }}>
+                <div className="h-[3px] w-full bg-pr-orange" />
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-11 h-11 bg-[#FDF0EC] rounded-xl flex items-center justify-center">
-                      <Target className="h-5 w-5 text-[#F4845F]" />
+                    <div className="w-11 h-11 bg-pr-orange-pale rounded-xl flex items-center justify-center">
+                      <Target className="h-5 w-5 text-pr-orange" />
                     </div>
-                    <span className="font-serif text-4xl text-[#F4845F] leading-none">{overallProgress}<span className="text-2xl">%</span></span>
+                    <span className="font-serif text-4xl text-pr-orange leading-none">{overallProgress}<span className="text-2xl">%</span></span>
                   </div>
-                  <p className="text-xs font-semibold text-[#1A1A18] uppercase tracking-wider mb-3">Progression globale</p>
-                  <div className="h-1.5 bg-[#F7F6F3] rounded-full overflow-hidden">
-                    <div className="h-full bg-[#F4845F] rounded-full transition-all duration-1000" style={{ width: `${overallProgress}%` }}></div>
+                  <p className="text-xs font-semibold text-pr-black uppercase tracking-wider mb-3">Progression globale</p>
+                  <div className="h-1.5 bg-pr-gray-bg rounded-full overflow-hidden">
+                    <div className="h-full bg-pr-orange rounded-full transition-all duration-1000" style={{ width: `${overallProgress}%` }}></div>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="fade-in-up bg-white border border-[#D8D6CE] rounded-xl shadow-none overflow-hidden" style={{ animationDelay: '0.3s' }}>
-                <div className="h-[3px] w-full bg-[#F4845F]" />
+              <Card className="fade-in-up bg-white border border-pr-gray-light rounded-xl shadow-none overflow-hidden" style={{ animationDelay: '0.3s' }}>
+                <div className="h-[3px] w-full bg-pr-orange" />
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-11 h-11 bg-[#FDF0EC] rounded-xl flex items-center justify-center">
-                      <CheckCircle2 className="h-5 w-5 text-[#F4845F]" />
+                    <div className="w-11 h-11 bg-pr-orange-pale rounded-xl flex items-center justify-center">
+                      <CheckCircle2 className="h-5 w-5 text-pr-orange" />
                     </div>
-                    <span className="font-serif text-4xl text-[#1A1A18] leading-none">{globalStats.totalExercises}</span>
+                    <span className="font-serif text-4xl text-pr-black leading-none">{globalStats.totalExercises}</span>
                   </div>
-                  <p className="text-xs font-semibold text-[#1A1A18] uppercase tracking-wider">Exercices complétés</p>
+                  <p className="text-xs font-semibold text-pr-black uppercase tracking-wider">Exercices complétés</p>
                 </CardContent>
               </Card>
 
-              <Card className="fade-in-up bg-white border border-[#D8D6CE] rounded-xl shadow-none overflow-hidden" style={{ animationDelay: '0.35s' }}>
-                <div className="h-[3px] w-full bg-[#F4845F]" />
+              <Card className="fade-in-up bg-white border border-pr-gray-light rounded-xl shadow-none overflow-hidden" style={{ animationDelay: '0.35s' }}>
+                <div className="h-[3px] w-full bg-pr-orange" />
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-11 h-11 bg-[#FDF0EC] rounded-xl flex items-center justify-center">
-                      <BarChart3 className="h-5 w-5 text-[#F4845F]" />
+                    <div className="w-11 h-11 bg-pr-orange-pale rounded-xl flex items-center justify-center">
+                      <BarChart3 className="h-5 w-5 text-pr-orange" />
                     </div>
-                    <span className="font-serif text-4xl text-[#1A1A18] leading-none">
+                    <span className="font-serif text-4xl text-pr-black leading-none">
                       {averageQcm !== null ? <>{averageQcm}<span className="text-2xl">%</span></> : '—'}
                     </span>
                   </div>
-                  <p className="text-xs font-semibold text-[#1A1A18] uppercase tracking-wider">Moyenne QCM</p>
+                  <p className="text-xs font-semibold text-pr-black uppercase tracking-wider">Moyenne QCM</p>
                   {allQcmResults.length > 0 && (
-                    <p className="text-xs text-[#1A1A18] mt-1.5">
+                    <p className="text-xs text-pr-black mt-1.5">
                       Sur {allQcmResults.length} QCM{allQcmResults.length > 1 ? 's' : ''} passé{allQcmResults.length > 1 ? 's' : ''}
                     </p>
                   )}
@@ -581,36 +581,36 @@ const DashboardPage = () => {
               </Card>
 
               <Card
-                className="fade-in-up bg-white border border-[#D8D6CE] rounded-xl shadow-none overflow-hidden cursor-pointer hover:border-[#F4845F] transition-colors"
+                className="fade-in-up bg-white border border-pr-gray-light rounded-xl shadow-none overflow-hidden cursor-pointer hover:border-pr-orange transition-colors"
                 style={{ animationDelay: '0.4s' }}
                 onClick={() => document.getElementById('weekly-leaderboard')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                <div className="h-[3px] w-full bg-[#F4845F]" />
+                <div className="h-[3px] w-full bg-pr-orange" />
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-11 h-11 bg-[#FDF0EC] rounded-xl flex items-center justify-center">
-                      <Clock className="h-5 w-5 text-[#F4845F]" />
+                    <div className="w-11 h-11 bg-pr-orange-pale rounded-xl flex items-center justify-center">
+                      <Clock className="h-5 w-5 text-pr-orange" />
                     </div>
                     <div className="text-right">
-                      <span className="font-serif text-3xl text-[#1A1A18] leading-none">{formatTime(totalWeekSeconds)}</span>
+                      <span className="font-serif text-3xl text-pr-black leading-none">{formatTime(totalWeekSeconds)}</span>
                       {weeklyRank && (
                         <div className="flex items-center justify-end gap-1 mt-1.5">
-                          <Trophy className="h-3 w-3 text-[#F4845F]" />
-                          <span className="text-[10px] text-[#C45A35] font-semibold uppercase tracking-wide">#{weeklyRank} cette semaine</span>
+                          <Trophy className="h-3 w-3 text-pr-orange" />
+                          <span className="text-[10px] text-pr-orange-dark font-semibold uppercase tracking-wide">#{weeklyRank} cette semaine</span>
                         </div>
                       )}
                     </div>
                   </div>
                   <div className="flex items-center justify-between">
-                    <p className="text-xs font-semibold text-[#1A1A18] uppercase tracking-wider">Temps d'étude</p>
+                    <p className="text-xs font-semibold text-pr-black uppercase tracking-wider">Temps d'étude</p>
                     {isTracking && (
-                      <span className="flex items-center gap-1 text-[10px] text-[#1A1A18] font-medium">
-                        <span className="w-1.5 h-1.5 bg-[#F4845F] rounded-full animate-pulse"></span>
+                      <span className="flex items-center gap-1 text-[10px] text-pr-black font-medium">
+                        <span className="w-1.5 h-1.5 bg-pr-orange rounded-full animate-pulse"></span>
                         En cours
                       </span>
                     )}
                   </div>
-                  <p className="text-[10px] text-[#1A1A18] hover:text-[#F4845F] mt-2.5 transition-colors">Voir le classement →</p>
+                  <p className="text-[10px] text-pr-black hover:text-pr-orange mt-2.5 transition-colors">Voir le classement →</p>
                 </CardContent>
               </Card>
             </div>
@@ -618,24 +618,24 @@ const DashboardPage = () => {
             {/* Évaluations récentes */}
             <div className="mb-14">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="fade-in-up font-serif text-3xl sm:text-4xl text-[#1A1A18] border-l-[3px] border-[#F4845F] pl-4">
+                <h2 className="fade-in-up font-serif text-3xl sm:text-4xl text-pr-black border-l-[3px] border-pr-orange pl-4">
                   Évaluations récentes
                 </h2>
               </div>
 
-              <Card className="fade-in-up bg-white border border-[#D8D6CE] rounded-xl shadow-none overflow-hidden">
+              <Card className="fade-in-up bg-white border border-pr-gray-light rounded-xl shadow-none overflow-hidden">
                 <CardContent className="p-0">
                   <div className="divide-y divide-[#D8D6CE]">
                     {oteriaResults.length > 0 ? (
                       oteriaResults.map((result) => (
-                        <div key={result.id} className="p-5 hover:bg-[#F7F6F3] transition-colors flex items-center justify-between gap-4">
+                        <div key={result.id} className="p-5 hover:bg-pr-gray-bg transition-colors flex items-center justify-between gap-4">
                           <div className="flex items-center gap-4">
-                            <div className="w-11 h-11 bg-[#FDF0EC] rounded-xl flex items-center justify-center flex-shrink-0">
-                              <Target className="h-5 w-5 text-[#F4845F]" />
+                            <div className="w-11 h-11 bg-pr-orange-pale rounded-xl flex items-center justify-center flex-shrink-0">
+                              <Target className="h-5 w-5 text-pr-orange" />
                             </div>
                             <div>
-                              <h4 className="font-semibold text-[#1A1A18]">{result.title}</h4>
-                              <p className="text-xs text-[#1A1A18] mt-0.5">
+                              <h4 className="font-semibold text-pr-black">{result.title}</h4>
+                              <p className="text-xs text-pr-black mt-0.5">
                                 {new Date(result.created_at).toLocaleDateString('fr-FR', {
                                   day: 'numeric',
                                   month: 'long',
@@ -645,11 +645,11 @@ const DashboardPage = () => {
                               </p>
                             </div>
                           </div>
-                          <div className="flex items-center gap-2 bg-[#F7F6F3] px-4 py-2 rounded-lg">
-                            <Award className="h-4 w-4 text-[#F4845F]" />
+                          <div className="flex items-center gap-2 bg-pr-gray-bg px-4 py-2 rounded-lg">
+                            <Award className="h-4 w-4 text-pr-orange" />
                             <span className={`font-serif text-2xl ${
-                              result.score >= 80 ? 'text-[#1A1A18]' :
-                              result.score >= 50 ? 'text-[#F4845F]' : 'text-[#C45A35]'
+                              result.score >= 80 ? 'text-pr-black' :
+                              result.score >= 50 ? 'text-pr-orange' : 'text-pr-orange-dark'
                             }`}>
                               {result.score}<span className="text-base">%</span>
                             </span>
@@ -658,8 +658,8 @@ const DashboardPage = () => {
                       ))
                     ) : (
                       <div className="p-10 text-center">
-                        <p className="text-[#1A1A18]">Aucune évaluation pour le moment.</p>
-                        <Link to="/formation/oteria/logique-fondamentale-qcm" className="text-[#F4845F] hover:text-[#C45A35] font-semibold mt-3 inline-block transition-colors">
+                        <p className="text-pr-black">Aucune évaluation pour le moment.</p>
+                        <Link to="/formation/oteria/logique-fondamentale-qcm" className="text-pr-orange hover:text-pr-orange-dark font-semibold mt-3 inline-block transition-colors">
                           Commencer un QCM →
                         </Link>
                       </div>
@@ -672,10 +672,10 @@ const DashboardPage = () => {
             {/* Progression par matière */}
             <div className="mb-14">
               <div className="flex items-end justify-between mb-6">
-                <h2 className="fade-in-up font-serif text-3xl sm:text-4xl text-[#1A1A18] border-l-[3px] border-[#F4845F] pl-4">
+                <h2 className="fade-in-up font-serif text-3xl sm:text-4xl text-pr-black border-l-[3px] border-pr-orange pl-4">
                   Progression par matière
                 </h2>
-                <Link to="/formations" className="fade-in-up text-[#F4845F] hover:text-[#C45A35] font-semibold flex items-center gap-1 text-sm transition-colors">
+                <Link to="/formations" className="fade-in-up text-pr-orange hover:text-pr-orange-dark font-semibold flex items-center gap-1 text-sm transition-colors">
                   Voir tout <ChevronRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -688,27 +688,27 @@ const DashboardPage = () => {
                     className="fade-in-up group"
                     style={{ animationDelay: `${0.1 + index * 0.05}s` }}
                   >
-                    <Card className="bg-white border border-[#D8D6CE] rounded-xl shadow-none hover:border-[#F4845F] transition-all duration-300 overflow-hidden h-full">
+                    <Card className="bg-white border border-pr-gray-light rounded-xl shadow-none hover:border-pr-orange transition-all duration-300 overflow-hidden h-full">
                       <CardContent className="p-6">
                         {/* Header */}
                         <div className="flex items-center justify-between mb-5">
                           <div className="flex items-center gap-3">
-                            <div className="w-11 h-11 bg-[#FDF0EC] rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-0.5">
-                              <subject.icon className="h-5 w-5 text-[#F4845F]" />
+                            <div className="w-11 h-11 bg-pr-orange-pale rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-0.5">
+                              <subject.icon className="h-5 w-5 text-pr-orange" />
                             </div>
                             <div>
-                              <h3 className="font-semibold text-base text-[#1A1A18]">{subject.name}</h3>
-                              <p className="text-[10px] text-[#1A1A18] uppercase tracking-wide mt-0.5">Dernière activité · {subject.lastActivity}</p>
+                              <h3 className="font-semibold text-base text-pr-black">{subject.name}</h3>
+                              <p className="text-[10px] text-pr-black uppercase tracking-wide mt-0.5">Dernière activité · {subject.lastActivity}</p>
                             </div>
                           </div>
-                          <div className="font-serif text-2xl text-[#F4845F]">{subject.progress}<span className="text-base">%</span></div>
+                          <div className="font-serif text-2xl text-pr-orange">{subject.progress}<span className="text-base">%</span></div>
                         </div>
 
                         {/* Progress bar */}
                         <div className="mb-5">
-                          <div className="h-1.5 bg-[#F7F6F3] rounded-full overflow-hidden">
+                          <div className="h-1.5 bg-pr-gray-bg rounded-full overflow-hidden">
                             <div
-                              className="h-full bg-[#F4845F] rounded-full transition-all duration-1000"
+                              className="h-full bg-pr-orange rounded-full transition-all duration-1000"
                               style={{ width: `${subject.progress}%` }}
                             ></div>
                           </div>
@@ -716,21 +716,21 @@ const DashboardPage = () => {
 
                         {/* Stats */}
                         <div className="grid grid-cols-3 gap-2">
-                          <div className="bg-[#F7F6F3] rounded-lg p-2.5 text-center">
-                            <p className="font-serif text-xl text-[#1A1A18] leading-none">{subject.chaptersCompleted}<span className="text-sm text-[#1A1A18]">/{subject.totalChapters}</span></p>
-                            <p className="text-[10px] text-[#1A1A18] uppercase tracking-wide mt-1.5">Chapitres</p>
+                          <div className="bg-pr-gray-bg rounded-lg p-2.5 text-center">
+                            <p className="font-serif text-xl text-pr-black leading-none">{subject.chaptersCompleted}<span className="text-sm text-pr-black">/{subject.totalChapters}</span></p>
+                            <p className="text-[10px] text-pr-black uppercase tracking-wide mt-1.5">Chapitres</p>
                           </div>
-                          <div className="bg-[#F7F6F3] rounded-lg p-2.5 text-center">
-                            <p className="font-serif text-xl text-[#1A1A18] leading-none">{subject.exercisesDone}</p>
-                            <p className="text-[10px] text-[#1A1A18] uppercase tracking-wide mt-1.5">Exercices</p>
+                          <div className="bg-pr-gray-bg rounded-lg p-2.5 text-center">
+                            <p className="font-serif text-xl text-pr-black leading-none">{subject.exercisesDone}</p>
+                            <p className="text-[10px] text-pr-black uppercase tracking-wide mt-1.5">Exercices</p>
                           </div>
-                          <div className="bg-[#FDF0EC] rounded-lg p-2.5 text-center">
-                            <p className="font-serif text-xl text-[#F4845F] leading-none">{subject.averageScore}<span className="text-sm">%</span></p>
-                            <p className="text-[10px] text-[#C45A35] uppercase tracking-wide mt-1.5">Moyenne</p>
+                          <div className="bg-pr-orange-pale rounded-lg p-2.5 text-center">
+                            <p className="font-serif text-xl text-pr-orange leading-none">{subject.averageScore}<span className="text-sm">%</span></p>
+                            <p className="text-[10px] text-pr-orange-dark uppercase tracking-wide mt-1.5">Moyenne</p>
                           </div>
                         </div>
 
-                        <div className="mt-5 flex items-center justify-end text-[#1A1A18] group-hover:text-[#F4845F] transition-colors">
+                        <div className="mt-5 flex items-center justify-end text-pr-black group-hover:text-pr-orange transition-colors">
                           <span className="text-sm font-semibold mr-1">Continuer</span>
                           <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                         </div>
@@ -744,16 +744,16 @@ const DashboardPage = () => {
             {/* Classement de la semaine */}
             <div id="weekly-leaderboard" className="mb-14 scroll-mt-8">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="fade-in-up font-serif text-3xl sm:text-4xl text-[#1A1A18] border-l-[3px] border-[#F4845F] pl-4">
+                <h2 className="fade-in-up font-serif text-3xl sm:text-4xl text-pr-black border-l-[3px] border-pr-orange pl-4">
                   Classement de la semaine
                 </h2>
               </div>
 
-              <Card className="fade-in-up bg-white border border-[#D8D6CE] rounded-xl shadow-none overflow-hidden">
+              <Card className="fade-in-up bg-white border border-pr-gray-light rounded-xl shadow-none overflow-hidden">
                 <CardContent className="p-0">
                   <div className="divide-y divide-[#D8D6CE]">
                     {isLoadingLeaderboard ? (
-                      <div className="p-10 text-center text-[#1A1A18]">
+                      <div className="p-10 text-center text-pr-black">
                         <p>Chargement...</p>
                       </div>
                     ) : leaderboard.length > 0 ? (
@@ -761,35 +761,35 @@ const DashboardPage = () => {
                         <div
                           key={entry.userId}
                           className={`p-5 flex items-center justify-between gap-4 transition-colors ${
-                            entry.isCurrentUser ? 'bg-[#FDF0EC] border-l-[3px] border-[#F4845F]' : 'hover:bg-[#F7F6F3]'
+                            entry.isCurrentUser ? 'bg-pr-orange-pale border-l-[3px] border-pr-orange' : 'hover:bg-pr-gray-bg'
                           }`}
                         >
                           <div className="flex items-center gap-4">
                             <div className={`w-9 h-9 rounded-full flex items-center justify-center font-serif text-lg ${
-                              index === 0 ? 'bg-[#F4845F] text-white' :
-                              index === 1 ? 'bg-[#FDF0EC] text-[#C45A35] border border-[#F9C4B0]' :
-                              index === 2 ? 'bg-[#F7F6F3] text-[#1A1A18] border border-[#D8D6CE]' :
-                              'bg-[#F7F6F3] text-[#1A1A18]'
+                              index === 0 ? 'bg-pr-orange text-white' :
+                              index === 1 ? 'bg-pr-orange-pale text-pr-orange-dark border border-pr-orange-soft' :
+                              index === 2 ? 'bg-pr-gray-bg text-pr-black border border-pr-gray-light' :
+                              'bg-pr-gray-bg text-pr-black'
                             }`}>
                               {index + 1}
                             </div>
                             <div>
-                              <h4 className={`font-semibold ${entry.isCurrentUser ? 'text-[#C45A35]' : 'text-[#1A1A18]'}`}>
-                                {entry.name} {entry.isCurrentUser && <span className="text-xs font-normal text-[#1A1A18]">(vous)</span>}
+                              <h4 className={`font-semibold ${entry.isCurrentUser ? 'text-pr-orange-dark' : 'text-pr-black'}`}>
+                                {entry.name} {entry.isCurrentUser && <span className="text-xs font-normal text-pr-black">(vous)</span>}
                               </h4>
                             </div>
                           </div>
-                          <div className="flex items-center gap-2 bg-[#F7F6F3] px-4 py-2 rounded-lg">
-                            <Clock className="h-4 w-4 text-[#F4845F]" />
-                            <span className="font-serif text-lg text-[#1A1A18]">{formatTime(entry.totalSeconds)}</span>
+                          <div className="flex items-center gap-2 bg-pr-gray-bg px-4 py-2 rounded-lg">
+                            <Clock className="h-4 w-4 text-pr-orange" />
+                            <span className="font-serif text-lg text-pr-black">{formatTime(entry.totalSeconds)}</span>
                           </div>
                         </div>
                       ))
                     ) : (
                       <div className="p-10 text-center">
-                        <Trophy className="h-10 w-10 mx-auto mb-4 text-[#D8D6CE]" />
-                        <p className="text-[#1A1A18] font-semibold">Soyez le premier au classement cette semaine.</p>
-                        <p className="text-sm text-[#1A1A18] mt-1.5">Passez du temps sur le site pour grimper.</p>
+                        <Trophy className="h-10 w-10 mx-auto mb-4 text-pr-gray-light" />
+                        <p className="text-pr-black font-semibold">Soyez le premier au classement cette semaine.</p>
+                        <p className="text-sm text-pr-black mt-1.5">Passez du temps sur le site pour grimper.</p>
                       </div>
                     )}
                   </div>
@@ -800,60 +800,60 @@ const DashboardPage = () => {
             {/* Notes & IA */}
             <div className="mb-14">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="fade-in-up font-serif text-3xl sm:text-4xl text-[#1A1A18] border-l-[3px] border-[#F4845F] pl-4">
+                <h2 className="fade-in-up font-serif text-3xl sm:text-4xl text-pr-black border-l-[3px] border-pr-orange pl-4">
                   Mes notes & IA
                 </h2>
               </div>
 
               {/* Stats notes */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                <Card className="fade-in-up bg-white border border-[#D8D6CE] rounded-xl shadow-none">
+                <Card className="fade-in-up bg-white border border-pr-gray-light rounded-xl shadow-none">
                   <CardContent className="p-5 flex items-center gap-4">
-                    <div className="w-10 h-10 bg-[#FDF0EC] rounded-lg flex items-center justify-center">
-                      <StickyNote className="h-4 w-4 text-[#F4845F]" />
+                    <div className="w-10 h-10 bg-pr-orange-pale rounded-lg flex items-center justify-center">
+                      <StickyNote className="h-4 w-4 text-pr-orange" />
                     </div>
                     <div>
-                      <p className="font-serif text-2xl text-[#1A1A18] leading-none">
+                      <p className="font-serif text-2xl text-pr-black leading-none">
                         {isLoadingNotes ? '…' : userNotes.filter(n => n.note_content && n.note_content !== 'Explication IA sauvegardée' && n.note_content !== 'Note sans commentaire').length}
                       </p>
-                      <p className="text-[10px] text-[#1A1A18] font-semibold uppercase tracking-wide mt-1.5">Notes personnelles</p>
+                      <p className="text-[10px] text-pr-black font-semibold uppercase tracking-wide mt-1.5">Notes personnelles</p>
                     </div>
                   </CardContent>
                 </Card>
-                <Card className="fade-in-up bg-white border border-[#D8D6CE] rounded-xl shadow-none">
+                <Card className="fade-in-up bg-white border border-pr-gray-light rounded-xl shadow-none">
                   <CardContent className="p-5 flex items-center gap-4">
-                    <div className="w-10 h-10 bg-[#FDF0EC] rounded-lg flex items-center justify-center">
-                      <Highlighter className="h-4 w-4 text-[#F4845F]" />
+                    <div className="w-10 h-10 bg-pr-orange-pale rounded-lg flex items-center justify-center">
+                      <Highlighter className="h-4 w-4 text-pr-orange" />
                     </div>
                     <div>
-                      <p className="font-serif text-2xl text-[#1A1A18] leading-none">
+                      <p className="font-serif text-2xl text-pr-black leading-none">
                         {isLoadingNotes ? '…' : userNotes.filter(n => !n.note_content || n.note_content === 'Note sans commentaire').length}
                       </p>
-                      <p className="text-[10px] text-[#1A1A18] font-semibold uppercase tracking-wide mt-1.5">Surlignages</p>
+                      <p className="text-[10px] text-pr-black font-semibold uppercase tracking-wide mt-1.5">Surlignages</p>
                     </div>
                   </CardContent>
                 </Card>
-                <Card className="fade-in-up bg-white border border-[#D8D6CE] rounded-xl shadow-none">
+                <Card className="fade-in-up bg-white border border-pr-gray-light rounded-xl shadow-none">
                   <CardContent className="p-5 flex items-center gap-4">
-                    <div className="w-10 h-10 bg-[#FDF0EC] rounded-lg flex items-center justify-center">
-                      <Bot className="h-4 w-4 text-[#F4845F]" />
+                    <div className="w-10 h-10 bg-pr-orange-pale rounded-lg flex items-center justify-center">
+                      <Bot className="h-4 w-4 text-pr-orange" />
                     </div>
                     <div>
-                      <p className="font-serif text-2xl text-[#1A1A18] leading-none">
+                      <p className="font-serif text-2xl text-pr-black leading-none">
                         {isLoadingNotes ? '…' : userNotes.filter(n => n.ai_explanation).length}
                       </p>
-                      <p className="text-[10px] text-[#1A1A18] font-semibold uppercase tracking-wide mt-1.5">Discussions IA</p>
+                      <p className="text-[10px] text-pr-black font-semibold uppercase tracking-wide mt-1.5">Discussions IA</p>
                     </div>
                   </CardContent>
                 </Card>
               </div>
 
               {/* Notes récentes */}
-              <Card className="fade-in-up bg-white border border-[#D8D6CE] rounded-xl shadow-none overflow-hidden">
+              <Card className="fade-in-up bg-white border border-pr-gray-light rounded-xl shadow-none overflow-hidden">
                 <CardContent className="p-0">
                   <div className="divide-y divide-[#D8D6CE]">
                     {isLoadingNotes ? (
-                      <div className="p-10 text-center text-[#1A1A18]">
+                      <div className="p-10 text-center text-pr-black">
                         <p>Chargement...</p>
                       </div>
                     ) : userNotes.length > 0 ? (
@@ -864,20 +864,20 @@ const DashboardPage = () => {
                         const typeLabel = isAI ? 'IA' : isHighlight ? 'Surlignage' : 'Note';
 
                         return (
-                          <div key={note.id} className="p-5 hover:bg-[#F7F6F3] transition-colors">
+                          <div key={note.id} className="p-5 hover:bg-pr-gray-bg transition-colors">
                             <div className="flex items-start gap-3">
-                              <div className="w-9 h-9 bg-[#FDF0EC] rounded-lg flex items-center justify-center flex-shrink-0">
-                                <TypeIcon className="h-4 w-4 text-[#F4845F]" />
+                              <div className="w-9 h-9 bg-pr-orange-pale rounded-lg flex items-center justify-center flex-shrink-0">
+                                <TypeIcon className="h-4 w-4 text-pr-orange" />
                               </div>
                               <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-2 mb-1.5">
-                                  <span className="text-[10px] font-semibold text-[#C45A35] uppercase tracking-wider bg-[#FDF0EC] px-2 py-0.5 rounded">{typeLabel}</span>
+                                  <span className="text-[10px] font-semibold text-pr-orange-dark uppercase tracking-wider bg-pr-orange-pale px-2 py-0.5 rounded">{typeLabel}</span>
                                   {note.subject && (
-                                    <span className="text-[10px] bg-[#F7F6F3] text-[#1A1A18] px-2 py-0.5 rounded font-medium">
+                                    <span className="text-[10px] bg-pr-gray-bg text-pr-black px-2 py-0.5 rounded font-medium">
                                       {note.subject}
                                     </span>
                                   )}
-                                  <span className="text-[10px] text-[#1A1A18] ml-auto flex-shrink-0">
+                                  <span className="text-[10px] text-pr-black ml-auto flex-shrink-0">
                                     {new Date(note.created_at).toLocaleDateString('fr-FR', {
                                       day: 'numeric',
                                       month: 'short',
@@ -885,22 +885,22 @@ const DashboardPage = () => {
                                   </span>
                                 </div>
                                 {note.selected_text && (
-                                  <p className="text-sm text-[#1A1A18] italic line-clamp-1 mb-1">
+                                  <p className="text-sm text-pr-black italic line-clamp-1 mb-1">
                                     « {note.selected_text} »
                                   </p>
                                 )}
                                 {note.note_content && note.note_content !== 'Note sans commentaire' && note.note_content !== 'Explication IA sauvegardée' && (
-                                  <p className="text-sm text-[#1A1A18] line-clamp-2">{note.note_content}</p>
+                                  <p className="text-sm text-pr-black line-clamp-2">{note.note_content}</p>
                                 )}
                                 {note.ai_explanation && (
-                                  <p className="text-sm text-[#1A1A18] line-clamp-2 mt-0.5">
+                                  <p className="text-sm text-pr-black line-clamp-2 mt-0.5">
                                     {note.ai_explanation.substring(0, 120)}...
                                   </p>
                                 )}
                                 {note.page_path && (
                                   <Link
                                     to={note.page_path}
-                                    className="text-xs text-[#F4845F] hover:text-[#C45A35] mt-1.5 inline-block transition-colors font-semibold"
+                                    className="text-xs text-pr-orange hover:text-pr-orange-dark mt-1.5 inline-block transition-colors font-semibold"
                                   >
                                     Voir la page →
                                   </Link>
@@ -912,9 +912,9 @@ const DashboardPage = () => {
                       })
                     ) : (
                       <div className="p-10 text-center">
-                        <StickyNote className="h-10 w-10 mx-auto mb-4 text-[#D8D6CE]" />
-                        <p className="text-[#1A1A18] font-semibold">Aucune note pour le moment.</p>
-                        <p className="text-sm text-[#1A1A18] mt-1.5">Sélectionnez du texte dans un cours pour commencer.</p>
+                        <StickyNote className="h-10 w-10 mx-auto mb-4 text-pr-gray-light" />
+                        <p className="text-pr-black font-semibold">Aucune note pour le moment.</p>
+                        <p className="text-sm text-pr-black mt-1.5">Sélectionnez du texte dans un cours pour commencer.</p>
                       </div>
                     )}
                   </div>
@@ -924,28 +924,28 @@ const DashboardPage = () => {
 
             {/* CTA */}
             <div className="fade-in-up" style={{ animationDelay: '0.4s' }}>
-              <Card className="bg-white border border-[#D8D6CE] rounded-xl shadow-none overflow-hidden relative">
-                <div className="h-[3px] w-full bg-[#F4845F]" />
+              <Card className="bg-white border border-pr-gray-light rounded-xl shadow-none overflow-hidden relative">
+                <div className="h-[3px] w-full bg-pr-orange" />
                 <CardContent className="p-10 sm:p-14 text-center">
-                  <div className="inline-flex items-center gap-2 bg-[#FDF0EC] text-[#C45A35] px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-6 border border-[#F9C4B0]">
+                  <div className="inline-flex items-center gap-2 bg-pr-orange-pale text-pr-orange-dark px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-6 border border-pr-orange-soft">
                     <Zap className="h-3.5 w-3.5" />
                     Boost ton apprentissage
                   </div>
-                  <h3 className="font-serif text-3xl sm:text-4xl text-[#1A1A18] mb-4 leading-tight">
-                    Prêt à progresser <span className="text-[#F4845F]">encore plus</span> ?
+                  <h3 className="font-serif text-3xl sm:text-4xl text-pr-black mb-4 leading-tight">
+                    Prêt à progresser <span className="text-pr-orange">encore plus</span> ?
                   </h3>
-                  <p className="text-[#1A1A18] mb-8 max-w-xl mx-auto">
+                  <p className="text-pr-black mb-8 max-w-xl mx-auto">
                     Utilise nos générateurs IA pour créer des exercices personnalisés.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3 justify-center">
                     <Link to="/generator">
-                      <Button className="px-7 py-6 text-base font-semibold bg-[#F4845F] hover:bg-[#C45A35] text-white rounded-lg shadow-none transition-colors">
+                      <Button className="px-7 py-6 text-base font-semibold bg-pr-orange hover:bg-pr-orange-dark text-white rounded-lg shadow-none transition-colors">
                         <Zap className="mr-2 h-4 w-4" />
                         Générateurs IA
                       </Button>
                     </Link>
                     <Link to="/formations">
-                      <Button variant="outline" className="px-7 py-6 text-base font-semibold bg-white hover:bg-[#F7F6F3] text-[#1A1A18] border border-[#D8D6CE] rounded-lg shadow-none transition-colors">
+                      <Button variant="outline" className="px-7 py-6 text-base font-semibold bg-white hover:bg-pr-gray-bg text-pr-black border border-pr-gray-light rounded-lg shadow-none transition-colors">
                         <BookOpen className="mr-2 h-4 w-4" />
                         Voir les formations
                       </Button>
