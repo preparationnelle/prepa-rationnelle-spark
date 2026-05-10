@@ -61,7 +61,7 @@ const EnergiePage = () => {
       <div className="container mx-auto px-4 py-8">
 
         {/* Header */}
-        <Card className="mb-8 bg-gradient-to-r from-orange-600 to-red-600 text-white">
+        <Card className="mb-8 bg-gradient-to-r from-pr-orange-dark to-red-600 text-white">
           <CardHeader>
             <div className="flex items-center gap-3">
               <Zap className="h-8 w-8" />
@@ -99,7 +99,7 @@ const EnergiePage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Fuel className="h-5 w-5 text-orange-600" />
+              <Fuel className="h-5 w-5 text-pr-orange-dark" />
               Mix énergétique mondial
             </CardTitle>
           </CardHeader>
@@ -124,9 +124,9 @@ const EnergiePage = () => {
                   <div key={index} className="bg-orange-50 p-3 rounded-lg border border-orange-200">
                     <div className="flex justify-between items-center">
                       <span className="text-sm font-medium text-orange-800">{energy.source}</span>
-                      <span className="font-bold text-orange-700">{energy.percentage}</span>
+                      <span className="font-bold text-pr-orange-dark">{energy.percentage}</span>
                     </div>
-                    <div className="text-xs text-orange-600 mt-1">{energy.trend} • {energy.note}</div>
+                    <div className="text-xs text-pr-orange-dark mt-1">{energy.trend} • {energy.note}</div>
                   </div>
                 ))}
               </div>
@@ -285,7 +285,7 @@ const EnergiePage = () => {
                     
                     <div className="bg-orange-50 p-4 rounded-lg">
                       <h4 className="font-semibold text-orange-800 mb-2">Producteurs d'uranium</h4>
-                      <ul className="list-disc list-inside text-sm text-orange-700 space-y-1">
+                      <ul className="list-disc list-inside text-sm text-pr-orange-dark space-y-1">
                         <li><strong>Kazakhstan :</strong> 43% production mondiale</li>
                         <li><strong>Canada :</strong> 13% (mines Saskatchewan)</li>
                         <li><strong>Australie :</strong> 12% (Olympic Dam)</li>

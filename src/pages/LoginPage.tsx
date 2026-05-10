@@ -111,7 +111,7 @@ const LoginPage = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-orange-500/50 focus:ring-orange-500/20"
+                className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-pr-orange/50 focus:ring-pr-orange/20"
               />
             </div>
 
@@ -130,7 +130,7 @@ const LoginPage = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-orange-500/50 focus:ring-orange-500/20 pr-10"
+                  className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-pr-orange/50 focus:ring-pr-orange/20 pr-10"
                 />
                 <Button
                   type="button"

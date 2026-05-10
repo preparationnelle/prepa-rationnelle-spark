@@ -293,7 +293,7 @@ const EtudesDeCasPage = () => {
       blue: { bg: 'bg-pr-orange-pale', text: 'text-carnet-red', hover: 'hover:bg-carnet-red/10', badge: 'bg-carnet-red/10 text-carnet-red' },
       green: { bg: 'bg-green-50', text: 'text-green-700', hover: 'hover:bg-green-100', badge: 'bg-green-100 text-green-700' },
       purple: { bg: 'bg-purple-50', text: 'text-purple-700', hover: 'hover:bg-purple-100', badge: 'bg-purple-100 text-purple-700' },
-      orange: { bg: 'bg-orange-50', text: 'text-orange-700', hover: 'hover:bg-orange-100', badge: 'bg-orange-100 text-orange-700' },
+      orange: { bg: 'bg-orange-50', text: 'text-pr-orange-dark', hover: 'hover:bg-orange-100', badge: 'bg-orange-100 text-pr-orange-dark' },
       gray: { bg: 'bg-gray-50', text: 'text-gray-700', hover: 'hover:bg-gray-100', badge: 'bg-gray-100 text-gray-700' },
       emerald: { bg: 'bg-emerald-50', text: 'text-emerald-700', hover: 'hover:bg-emerald-100', badge: 'bg-emerald-100 text-emerald-700' },
       yellow: { bg: 'bg-yellow-50', text: 'text-yellow-700', hover: 'hover:bg-yellow-100', badge: 'bg-yellow-100 text-yellow-700' },

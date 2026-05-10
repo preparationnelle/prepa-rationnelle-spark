@@ -55,8 +55,9 @@ export const HeroSection = () => {
             style={{ textWrap: 'balance' }}
           >
             La méthode pour rendre la prépa ECG{' '}
-            <span className="relative inline-block whitespace-nowrap">
+            <span className="relative inline-block whitespace-nowrap" aria-label="logique">
               <span
+                aria-hidden="true"
                 className="text-[#9C8772]"
                 style={{
                   textDecoration: 'line-through',
@@ -67,6 +68,7 @@ export const HeroSection = () => {
                 difficile
               </span>
               <span
+                aria-hidden="true"
                 className="absolute carnet-hand italic whitespace-nowrap"
                 style={{
                   top: '-0.62em',

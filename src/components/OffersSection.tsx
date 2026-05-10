@@ -132,17 +132,17 @@ export const OffersSection = () => {
           </Link>
 
           <Link to="/offre/organisation-ete" className="block">
-            <Card className="group hover:shadow-xl transition-all duration-300 border-l-4 border-orange-500 bg-white/90 backdrop-blur-sm hover:bg-white">
+            <Card className="group hover:shadow-xl transition-all duration-300 border-l-4 border-pr-orange bg-white/90 backdrop-blur-sm hover:bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center gap-4 group-hover:scale-105 transition-transform">
                   <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors">
-                    <Calendar className="h-6 w-6 text-orange-600" />
+                    <Calendar className="h-6 w-6 text-pr-orange-dark" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-800 group-hover:text-orange-700 transition-colors mb-2">Tu veux t'organiser mieux cet été ?</h3>
+                    <h3 className="text-lg font-semibold text-gray-800 group-hover:text-pr-orange-dark transition-colors mb-2">Tu veux t'organiser mieux cet été ?</h3>
                     <p className="text-sm text-gray-600">Planning personnalisé + méthodes pour une rentrée sans stress.</p>
                   </div>
-                  <ArrowRight className="h-5 w-5 text-orange-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <ArrowRight className="h-5 w-5 text-pr-orange-dark opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
               </CardContent>
             </Card>

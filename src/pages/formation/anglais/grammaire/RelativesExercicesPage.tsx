@@ -597,7 +597,7 @@ const RelativesExercicesPage = () => {
                   </div>
                 ) : ( // Less than 50%
                   <div className="flex items-center justify-center gap-2">
-                    <BarChart3 className="h-6 w-6 text-orange-500" />
+                    <BarChart3 className="h-6 w-6 text-pr-orange" />
                     {examMode ? 'Keep practicing! Review the material and try again.' : 'Keep practicing! Review relatives and determiners and try again.'}
               </div>
                 )}

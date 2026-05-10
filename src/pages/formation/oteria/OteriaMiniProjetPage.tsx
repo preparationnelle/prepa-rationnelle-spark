@@ -287,7 +287,7 @@ const OteriaMiniProjetPage = () => {
               Ressources pour le Mini Projet - Séance 13
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <button className="w-full bg-orange-600 text-white px-4 py-3 rounded-lg cursor-default font-medium shadow-md">
+              <button className="w-full bg-pr-orange-dark text-white px-4 py-3 rounded-lg cursor-default font-medium shadow-md">
                 <Target className="h-5 w-5 mx-auto mb-2" />
                 Mini Projet - Ateliers & Répétitions
               </button>

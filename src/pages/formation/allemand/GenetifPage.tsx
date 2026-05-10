@@ -11,20 +11,20 @@ const GenetifPage = () => {
       <header className="border-b border-gray-200">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center text-sm text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-orange-600 transition-colors">
+            <Link to="/" className="flex items-center gap-1 hover:text-pr-orange-dark transition-colors">
               <BookOpen className="h-4 w-4" />
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
-            <Link to="/formations" className="hover:text-orange-600 transition-colors">
+            <Link to="/formations" className="hover:text-pr-orange-dark transition-colors">
               Toutes les formations
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
-            <Link to="/formation/allemand" className="hover:text-orange-600 transition-colors">
+            <Link to="/formation/allemand" className="hover:text-pr-orange-dark transition-colors">
               Formation Allemand
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
-            <Link to="/formation/allemand-grammaire" className="hover:text-orange-600 transition-colors">
+            <Link to="/formation/allemand-grammaire" className="hover:text-pr-orange-dark transition-colors">
               Grammaire
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
@@ -34,7 +34,7 @@ const GenetifPage = () => {
           <div className="mt-8 text-center">
             <div className="flex justify-center mb-4">
               <div className="p-3 rounded-full bg-orange-100">
-                <BookOpen className="h-8 w-8 text-orange-600" />
+                <BookOpen className="h-8 w-8 text-pr-orange-dark" />
               </div>
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -53,7 +53,7 @@ const GenetifPage = () => {
 
           {/* Introduction aux difficultés */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Complexité du génitif allemand</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Complexité du génitif allemand</h2>
             <p className="text-gray-700 mb-4">
               L'usage complexe du génitif pour exprimer la possession constitue un défi majeur pour les apprenants. Avec des terminaisons spécifiques (-s, -es pour le masculin et neutre), le génitif nécessite une bonne maîtrise des déclinaisons et de la syntaxe allemande.
             </p>
@@ -65,14 +65,14 @@ const GenetifPage = () => {
 
           {/* Formation selon le genre */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Formation selon le genre</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Formation selon le genre</h2>
             <div className="grid md:grid-cols-3 gap-6">
               <div>
                 <h3 className="font-semibold mb-3 text-carnet-red">Masculin :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <p>Article : des</p>
                   <p>Nom : -(e)s</p>
-                  <p>Exemple : der Mann → des Mann<span className="text-orange-600">es</span></p>
+                  <p>Exemple : der Mann → des Mann<span className="text-pr-orange-dark">es</span></p>
                   <p className="text-sm text-gray-700">(l'homme)</p>
                 </div>
               </div>
@@ -81,7 +81,7 @@ const GenetifPage = () => {
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <p>Article : des</p>
                   <p>Nom : -(e)s</p>
-                  <p>Exemple : das Buch → des Buch<span className="text-orange-600">es</span></p>
+                  <p>Exemple : das Buch → des Buch<span className="text-pr-orange-dark">es</span></p>
                   <p className="text-sm text-gray-700">(le livre)</p>
                 </div>
               </div>
@@ -99,15 +99,15 @@ const GenetifPage = () => {
 
           {/* Règles orthographiques */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Règles orthographiques</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Règles orthographiques</h2>
             <div className="space-y-4">
               <div>
                 <h3 className="font-semibold mb-2">Quand ajouter "-e" avant "-s" :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <ul className="list-disc list-inside text-gray-700">
-                    <li>Noms se terminant par une consonne : der Tag → des Tag<span className="text-orange-600">es</span></li>
-                    <li>Noms monosyllabiques : der Mann → des Mann<span className="text-orange-600">es</span></li>
-                    <li>Noms étrangers : der Park → des Park<span className="text-orange-600">s</span></li>
+                    <li>Noms se terminant par une consonne : der Tag → des Tag<span className="text-pr-orange-dark">es</span></li>
+                    <li>Noms monosyllabiques : der Mann → des Mann<span className="text-pr-orange-dark">es</span></li>
+                    <li>Noms étrangers : der Park → des Park<span className="text-pr-orange-dark">s</span></li>
                   </ul>
                 </div>
               </div>
@@ -126,33 +126,33 @@ const GenetifPage = () => {
 
           {/* Usages principaux */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Usages principaux du génitif</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Usages principaux du génitif</h2>
             <div className="space-y-4">
               <div>
                 <h3 className="font-semibold mb-2">Possession :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p>Das Auto <span className="text-orange-600">des Mannes</span> ist neu.</p>
+                  <p>Das Auto <span className="text-pr-orange-dark">des Mannes</span> ist neu.</p>
                   <p className="text-sm text-gray-700">(La voiture de l'homme est neuve.)</p>
                 </div>
               </div>
               <div>
                 <h3 className="font-semibold mb-2">Relation :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p>Der Bruder <span className="text-orange-600">meiner Mutter</span> wohnt in Berlin.</p>
+                  <p>Der Bruder <span className="text-pr-orange-dark">meiner Mutter</span> wohnt in Berlin.</p>
                   <p className="text-sm text-gray-700">(Le frère de ma mère habite à Berlin.)</p>
                 </div>
               </div>
               <div>
                 <h3 className="font-semibold mb-2">Appartenance :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p>Die Blätter <span className="text-orange-600">des Baumes</span> sind gelb.</p>
+                  <p>Die Blätter <span className="text-pr-orange-dark">des Baumes</span> sind gelb.</p>
                   <p className="text-sm text-gray-700">(Les feuilles de l'arbre sont jaunes.)</p>
                 </div>
               </div>
               <div>
                 <h3 className="font-semibold mb-2">Mesure/Quantité :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p>Ein Glas <span className="text-orange-600">des Weines</span> bitte.</p>
+                  <p>Ein Glas <span className="text-pr-orange-dark">des Weines</span> bitte.</p>
                   <p className="text-sm text-gray-700">(Un verre de vin s'il vous plaît.)</p>
                 </div>
               </div>
@@ -161,7 +161,7 @@ const GenetifPage = () => {
 
           {/* Génitif avec prépositions */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Génitif avec prépositions</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Génitif avec prépositions</h2>
             <p className="text-gray-700 mb-4">
               Certaines prépositions régissent toujours le génitif :
             </p>
@@ -169,21 +169,21 @@ const GenetifPage = () => {
               <div>
                 <h3 className="font-semibold mb-3">Prépositions courantes :</h3>
                 <ul className="space-y-2 text-gray-700">
-                  <li><span className="text-orange-600">während</span> - pendant : während des Sommers</li>
-                  <li><span className="text-orange-600">wegen</span> - à cause de : wegen des Regens</li>
-                  <li><span className="text-orange-600">statt</span> - au lieu de : statt des Essens</li>
-                  <li><span className="text-orange-600">trotz</span> - malgré : trotz des Wetters</li>
-                  <li><span className="text-orange-600">innerhalb</span> - à l'intérieur de : innerhalb der Stadt</li>
+                  <li><span className="text-pr-orange-dark">während</span> - pendant : während des Sommers</li>
+                  <li><span className="text-pr-orange-dark">wegen</span> - à cause de : wegen des Regens</li>
+                  <li><span className="text-pr-orange-dark">statt</span> - au lieu de : statt des Essens</li>
+                  <li><span className="text-pr-orange-dark">trotz</span> - malgré : trotz des Wetters</li>
+                  <li><span className="text-pr-orange-dark">innerhalb</span> - à l'intérieur de : innerhalb der Stadt</li>
                 </ul>
               </div>
               <div>
                 <h3 className="font-semibold mb-3">Exemples :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p>Wegen <span className="text-orange-600">des schlechten Wetters</span> bleiben wir zu Hause.</p>
+                  <p>Wegen <span className="text-pr-orange-dark">des schlechten Wetters</span> bleiben wir zu Hause.</p>
                   <p className="text-sm text-gray-700">(À cause du mauvais temps, nous restons à la maison.)</p>
                 </div>
                 <div className="bg-gray-50 p-4 rounded-lg mt-2">
-                  <p>Trotz <span className="text-orange-600">der Gefahr</span> geht er hinaus.</p>
+                  <p>Trotz <span className="text-pr-orange-dark">der Gefahr</span> geht er hinaus.</p>
                   <p className="text-sm text-gray-700">(Malgré le danger, il sort.)</p>
                 </div>
               </div>
@@ -192,7 +192,7 @@ const GenetifPage = () => {
 
           {/* Alternatives au génitif */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Alternatives au génitif</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Alternatives au génitif</h2>
             <p className="text-gray-700 mb-4">
               À l'oral et dans la langue courante, le génitif est souvent remplacé par :
             </p>
@@ -200,7 +200,7 @@ const GenetifPage = () => {
               <div>
                 <h3 className="font-semibold mb-2">von + datif :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p>Das Haus <span className="text-orange-600">von meinem Bruder</span> ist groß.</p>
+                  <p>Das Haus <span className="text-pr-orange-dark">von meinem Bruder</span> ist groß.</p>
                   <p className="text-sm text-gray-700">(La maison de mon frère est grande.)</p>
                   <p className="text-xs text-gray-500">Au lieu de : Das Haus meines Bruders ist groß.</p>
                 </div>
@@ -208,7 +208,7 @@ const GenetifPage = () => {
               <div>
                 <h3 className="font-semibold mb-2">Possessif :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p><span className="text-orange-600">Sein</span> Bruder wohnt in Berlin.</p>
+                  <p><span className="text-pr-orange-dark">Sein</span> Bruder wohnt in Berlin.</p>
                   <p className="text-sm text-gray-700">(Son frère habite à Berlin.)</p>
                   <p className="text-xs text-gray-500">Au lieu de : Der Bruder von ihm wohnt in Berlin.</p>
                 </div>
@@ -218,7 +218,7 @@ const GenetifPage = () => {
 
           {/* Erreurs fréquentes */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Erreurs fréquentes</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Erreurs fréquentes</h2>
             <div className="space-y-4">
               <div>
                 <h3 className="font-semibold mb-2">Terminaison oubliée :</h3>
@@ -257,12 +257,12 @@ const GenetifPage = () => {
 
           {/* Exercices pratiques */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Exercices pratiques</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Exercices pratiques</h2>
             <p className="text-gray-700 mb-4">
               Mettez en pratique la formation du génitif avec des exercices interactifs.
             </p>
             <div className="text-center">
-              <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-50" disabled>
+              <Button variant="outline" className="border-orange-300 text-pr-orange-dark hover:bg-orange-50" disabled>
                 <FileText className="h-4 w-4 mr-2" />
                 Exercices en développement
               </Button>
@@ -273,7 +273,7 @@ const GenetifPage = () => {
           {/* Bouton retour */}
           <div className="text-center pb-8">
             <Link to="/formation/allemand-grammaire">
-              <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-50">
+              <Button variant="outline" className="border-orange-300 text-pr-orange-dark hover:bg-orange-50">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Retour à la grammaire
               </Button>

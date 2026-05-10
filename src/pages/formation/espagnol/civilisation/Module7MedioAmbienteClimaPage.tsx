@@ -488,7 +488,7 @@ const Module7MedioAmbienteClimaPage = () => {
         {/* Bouton retour en bas de page */}
         <div className="flex justify-center mt-12 pb-8">
           <Link to="/formation/espagnol/civilisation">
-            <Button className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-md font-medium">
+            <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-6 py-3 rounded-md font-medium">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Retour à la civilisation
             </Button>

@@ -45,7 +45,7 @@ const QuestionsInterrogatifsPage = () => {
         {/* En-tête */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-orange-600 text-white">
+            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Fiche de Grammaire : Questions et Interrogatifs en Anglais
@@ -63,7 +63,7 @@ const QuestionsInterrogatifsPage = () => {
               Introduction
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-orange-700 space-y-3">
+          <CardContent className="text-pr-orange-dark space-y-3">
             <p>Les questions anglaises reposent sur l'<span className="font-semibold">inversion auxiliaire-sujet</span> (sauf questions sujet) et sur le <span className="font-semibold">do-support</span> au présent et au passé simples.</p>
           </CardContent>
         </Card>
@@ -76,19 +76,19 @@ const QuestionsInterrogatifsPage = () => {
           <CardContent className="space-y-6 text-gray-800">
             <section>
               <h3 className="text-xl font-semibold mb-2">Structure générale</h3>
-              <p><span className="text-orange-700 font-semibold">Auxiliaire</span> + sujet + verbe (base/participe/progressif selon le temps)</p>
+              <p><span className="text-pr-orange-dark font-semibold">Auxiliaire</span> + sujet + verbe (base/participe/progressif selon le temps)</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li><span className="text-orange-700 font-semibold">BE</span> : Are you ready? Was she tired?</li>
-                <li><span className="text-orange-700 font-semibold">HAVE</span> (perfect) : Have they finished?</li>
-                <li><span className="text-orange-700 font-semibold">MODAUX</span> : Can you drive? Should we leave?</li>
-                <li><span className="text-orange-700 font-semibold">DO-SUPPORT</span> (present/past simple): Do you like coffee? Did he call?</li>
+                <li><span className="text-pr-orange-dark font-semibold">BE</span> : Are you ready? Was she tired?</li>
+                <li><span className="text-pr-orange-dark font-semibold">HAVE</span> (perfect) : Have they finished?</li>
+                <li><span className="text-pr-orange-dark font-semibold">MODAUX</span> : Can you drive? Should we leave?</li>
+                <li><span className="text-pr-orange-dark font-semibold">DO-SUPPORT</span> (present/past simple): Do you like coffee? Did he call?</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Do-support</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li>Affirmative: You like coffee. → Question: <span className="text-orange-700 font-semibold">Do</span> you like coffee?</li>
-                <li>Past: He called. → <span className="text-orange-700 font-semibold">Did</span> he call?</li>
+                <li>Affirmative: You like coffee. → Question: <span className="text-pr-orange-dark font-semibold">Do</span> you like coffee?</li>
+                <li>Past: He called. → <span className="text-pr-orange-dark font-semibold">Did</span> he call?</li>
                 <li>Pas avec BE, HAVE (aux.), ni modaux.</li>
               </ul>
             </section>
@@ -104,15 +104,15 @@ const QuestionsInterrogatifsPage = () => {
             <section>
               <h3 className="text-xl font-semibold mb-2">Mots interrogatifs</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li><span className="text-orange-700 font-semibold">who</span>, <span className="text-orange-700 font-semibold">what</span>, <span className="text-orange-700 font-semibold">which</span>, <span className="text-orange-700 font-semibold">whose</span></li>
-                <li><span className="text-orange-700 font-semibold">where</span>, <span className="text-orange-700 font-semibold">when</span>, <span className="text-orange-700 font-semibold">why</span>, <span className="text-orange-700 font-semibold">how</span> (+ much/many/long/often/old)</li>
+                <li><span className="text-pr-orange-dark font-semibold">who</span>, <span className="text-pr-orange-dark font-semibold">what</span>, <span className="text-pr-orange-dark font-semibold">which</span>, <span className="text-pr-orange-dark font-semibold">whose</span></li>
+                <li><span className="text-pr-orange-dark font-semibold">where</span>, <span className="text-pr-orange-dark font-semibold">when</span>, <span className="text-pr-orange-dark font-semibold">why</span>, <span className="text-pr-orange-dark font-semibold">how</span> (+ much/many/long/often/old)</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Structure</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li>Wh-word + <span className="text-orange-700 font-semibold">auxiliaire</span> + sujet + verbe : Where <span className="text-orange-700 font-semibold">do</span> you live?</li>
-                <li><span className="text-orange-700 font-semibold">Question sujet</span> (pas d'inversion): <span className="text-orange-700 font-semibold">Who</span> called you?</li>
+                <li>Wh-word + <span className="text-pr-orange-dark font-semibold">auxiliaire</span> + sujet + verbe : Where <span className="text-pr-orange-dark font-semibold">do</span> you live?</li>
+                <li><span className="text-pr-orange-dark font-semibold">Question sujet</span> (pas d'inversion): <span className="text-pr-orange-dark font-semibold">Who</span> called you?</li>
               </ul>
             </section>
           </CardContent>
@@ -124,10 +124,10 @@ const QuestionsInterrogatifsPage = () => {
             <CardTitle className="text-2xl">3. Question Tags</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p>Affirmation + <span className="text-orange-700 font-semibold">, aux + pronom</span> (négatif si phrase affirmative et inversement).</p>
+            <p>Affirmation + <span className="text-pr-orange-dark font-semibold">, aux + pronom</span> (négatif si phrase affirmative et inversement).</p>
             <ul className="list-disc pl-6 space-y-1">
-              <li>You're coming, <span className="text-orange-700 font-semibold">aren't you</span>?</li>
-              <li>She can't drive, <span className="text-orange-700 font-semibold">can she</span>?</li>
+              <li>You're coming, <span className="text-pr-orange-dark font-semibold">aren't you</span>?</li>
+              <li>She can't drive, <span className="text-pr-orange-dark font-semibold">can she</span>?</li>
               <li>Intonation montante (incertitude) / descendante (confirmation).</li>
             </ul>
           </CardContent>
@@ -139,10 +139,10 @@ const QuestionsInterrogatifsPage = () => {
             <CardTitle className="text-2xl">4. Questions Indirectes</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p>Intro: Could you tell me..., Do you know..., I wonder... → <span className="text-orange-700 font-semibold">ordre sujet+verbe</span>, pas d'inversion, pas de point d'interrogation interne.</p>
+            <p>Intro: Could you tell me..., Do you know..., I wonder... → <span className="text-pr-orange-dark font-semibold">ordre sujet+verbe</span>, pas d'inversion, pas de point d'interrogation interne.</p>
             <ul className="list-disc pl-6 space-y-1">
-              <li>Direct: Where is she? → Indirect: Do you know <span className="text-orange-700 font-semibold">where she is</span>?</li>
-              <li>Direct: Does he live here? → Indirect: Could you tell me <span className="text-orange-700 font-semibold">if/whether he lives</span> here?</li>
+              <li>Direct: Where is she? → Indirect: Do you know <span className="text-pr-orange-dark font-semibold">where she is</span>?</li>
+              <li>Direct: Does he live here? → Indirect: Could you tell me <span className="text-pr-orange-dark font-semibold">if/whether he lives</span> here?</li>
             </ul>
           </CardContent>
         </Card>
@@ -154,8 +154,8 @@ const QuestionsInterrogatifsPage = () => {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-6 space-y-1">
-              <li>Yes/No & Wh-questions: <span className="text-orange-700 font-semibold">?</span></li>
-              <li>Indirect questions: <span className="text-orange-700 font-semibold">.</span> (phrase déclarative)</li>
+              <li>Yes/No & Wh-questions: <span className="text-pr-orange-dark font-semibold">?</span></li>
+              <li>Indirect questions: <span className="text-pr-orange-dark font-semibold">.</span> (phrase déclarative)</li>
               <li>Tags: ?; sens dépend de l'intonation.</li>
             </ul>
           </CardContent>
@@ -165,7 +165,7 @@ const QuestionsInterrogatifsPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <Table className="h-6 w-6 text-orange-600" />
+              <Table className="h-6 w-6 text-pr-orange-dark" />
               6. Tableau Récapitulatif
             </CardTitle>
           </CardHeader>
@@ -174,17 +174,17 @@ const QuestionsInterrogatifsPage = () => {
               <table className="min-w-full border border-gray-200 bg-white">
                 <thead className="bg-orange-50">
                   <tr>
-                    <th className="border px-3 py-2 text-left text-orange-700">Type</th>
-                    <th className="border px-3 py-2 text-left text-orange-700">Structure</th>
-                    <th className="border px-3 py-2 text-left text-orange-700">Exemple</th>
+                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Type</th>
+                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Structure</th>
+                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Exemple</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">Yes/No</td><td className="border px-3 py-2">Aux + sujet + verbe</td><td className="border px-3 py-2">Do you agree?</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">Wh-</td><td className="border px-3 py-2">Wh + aux + sujet + verbe</td><td className="border px-3 py-2">Where do you live?</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">Sujet</td><td className="border px-3 py-2">Wh + verbe (+ objet)</td><td className="border px-3 py-2">Who called?</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">Tag</td><td className="border px-3 py-2">, aux + pron?</td><td className="border px-3 py-2">You're late, aren't you?</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">Indirecte</td><td className="border px-3 py-2">Intro + sujet + verbe</td><td className="border px-3 py-2">Do you know where she is?</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Yes/No</td><td className="border px-3 py-2">Aux + sujet + verbe</td><td className="border px-3 py-2">Do you agree?</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Wh-</td><td className="border px-3 py-2">Wh + aux + sujet + verbe</td><td className="border px-3 py-2">Where do you live?</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Sujet</td><td className="border px-3 py-2">Wh + verbe (+ objet)</td><td className="border px-3 py-2">Who called?</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Tag</td><td className="border px-3 py-2">, aux + pron?</td><td className="border px-3 py-2">You're late, aren't you?</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Indirecte</td><td className="border px-3 py-2">Intro + sujet + verbe</td><td className="border px-3 py-2">Do you know where she is?</td></tr>
                 </tbody>
               </table>
             </div>
@@ -198,7 +198,7 @@ const QuestionsInterrogatifsPage = () => {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-6 space-y-1">
-              <li>Oublier le <span className="text-orange-700 font-semibold">do-support</span> au present/past simple (❌ Do you are agree? → ✅ Do you agree?).</li>
+              <li>Oublier le <span className="text-pr-orange-dark font-semibold">do-support</span> au present/past simple (❌ Do you are agree? → ✅ Do you agree?).</li>
               <li>Ordre incorrect en indirecte (❌ Do you know where <span className="line-through">is she</span>? → ✅ where she is).</li>
               <li>Inversion dans les questions sujet (❌ Who does called you? → ✅ Who called you?).</li>
               <li>Tag incorrect (polarity/auxiliaire/pronom).</li>
@@ -215,10 +215,10 @@ const QuestionsInterrogatifsPage = () => {
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-lg text-orange-700 mb-6">Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.</p>
+            <p className="text-lg text-pr-orange-dark mb-6">Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/formation/anglais/grammaire/questions/exercices">
-                <Button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-lg w-full sm:w-auto">
+                <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
                   <Target className="h-5 w-5 mr-2" />
                   Exercices
                 </Button>

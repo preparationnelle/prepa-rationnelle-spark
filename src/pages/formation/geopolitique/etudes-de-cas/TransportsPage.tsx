@@ -307,7 +307,7 @@ const TransportsPage = () => {
                     
                     <div className="bg-orange-50 p-4 rounded-lg">
                       <h4 className="font-semibold text-orange-800 mb-2">Évolutions récentes</h4>
-                      <ul className="list-disc list-inside text-sm text-orange-700 space-y-1">
+                      <ul className="list-disc list-inside text-sm text-pr-orange-dark space-y-1">
                         <li><strong>Low-cost asiatique :</strong> Expansion rapide (AirAsia, Cebu Pacific)</li>
                         <li><strong>Hubs du Golfe :</strong> Dubaï, Doha, Abu Dhabi comme plateformes intercontinentales</li>
                         <li><strong>Défis environnementaux :</strong> Objectifs zéro carbone d'ici 2050</li>
@@ -342,7 +342,7 @@ const TransportsPage = () => {
                         <Globe className="inline h-4 w-4 mr-2" />
                         Conflits en Mer Rouge (2024)
                       </h4>
-                      <div className="text-sm text-orange-700 space-y-2">
+                      <div className="text-sm text-pr-orange-dark space-y-2">
                         <p><strong>Context :</strong> Tensions géopolitiques affectant trafic Suez-Mer Rouge</p>
                         <p><strong>Détournements :</strong> Route du Cap, allongement voyages +40%</p>
                         <p><strong>Coûts :</strong> Hausse frets, assurances, délais livraison</p>

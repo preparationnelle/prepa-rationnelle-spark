@@ -38,7 +38,7 @@ const HarcelementPrimairePage = () => {
                     {/* Corps de l'article */}
                     <div className="prose prose-lg prose-gray max-w-none">
 
-                        <div className="bg-orange-50 border-l-4 border-orange-500 p-6 mb-8 rounded-r-lg">
+                        <div className="bg-orange-50 border-l-4 border-pr-orange p-6 mb-8 rounded-r-lg">
                             <h3 className="text-orange-900 font-bold text-lg mt-0">Le saviez-vous ?</h3>
                             <p className="text-orange-800 mb-0">
                                 <strong>56% des parents</strong> se posent régulièrement la question de savoir si leur enfant est victime de harcèlement ou de simples conflits. La distinction est cruciale pour apporter la bonne réponse.

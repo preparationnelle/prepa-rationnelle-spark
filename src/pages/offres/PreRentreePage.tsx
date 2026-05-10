@@ -154,10 +154,10 @@ const PreRentreePage = () => {
             </h2>
             
             <div className="relative">
-              <div className="aspect-video bg-gradient-to-br from-orange-500 to-red-500 rounded-xl overflow-hidden">
+              <div className="aspect-video bg-gradient-to-br from-pr-orange to-red-500 rounded-xl overflow-hidden">
                 {!isVideoLoaded ? (
                   // Overlay avec bouton play (avant chargement)
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-orange-500 to-red-500 relative">
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-pr-orange to-red-500 relative">
                     <div className="absolute inset-0 bg-black/20"></div>
                     <Button
                       onClick={handleVideoPlay}
@@ -239,7 +239,7 @@ const PreRentreePage = () => {
               <Button
                 asChild
                 variant="outline"
-                className="border-orange-500 text-orange-600 hover:bg-orange-50"
+                className="border-pr-orange text-pr-orange-dark hover:bg-orange-50"
               >
                 <a href="#" target="_blank" rel="noopener noreferrer">
                   <Download className="w-4 h-4 mr-2" />
@@ -249,7 +249,7 @@ const PreRentreePage = () => {
               
               <Button
                 onClick={scrollToInscription}
-                className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white"
+                className="bg-gradient-to-r from-pr-orange to-red-500 hover:from-pr-orange-dark hover:to-red-600 text-white"
               >
                 S'inscrire maintenant
               </Button>
@@ -288,7 +288,7 @@ const PreRentreePage = () => {
                     value={formData.prenom}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-transparent"
                     placeholder="Votre prénom"
                   />
                 </div>
@@ -302,7 +302,7 @@ const PreRentreePage = () => {
                     value={formData.nom}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-transparent"
                     placeholder="Votre nom"
                   />
                 </div>
@@ -318,7 +318,7 @@ const PreRentreePage = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-transparent"
                   placeholder="votre.email@exemple.com"
                 />
               </div>
@@ -333,7 +333,7 @@ const PreRentreePage = () => {
                   value={formData.telephone}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-transparent"
                   placeholder="06 XX XX XX XX"
                 />
               </div>
@@ -352,7 +352,7 @@ const PreRentreePage = () => {
                       value="stripe"
                       checked={paymentMethod === 'stripe'}
                       onChange={(e) => setPaymentMethod(e.target.value as 'stripe')}
-                      className="mr-3 text-orange-600 focus:ring-orange-500"
+                      className="mr-3 text-pr-orange-dark focus:ring-pr-orange"
                     />
                     <span className="text-gray-700">Paiement par carte (Stripe) - <strong>Recommandé</strong></span>
                   </label>
@@ -364,7 +364,7 @@ const PreRentreePage = () => {
                       value="virement"
                       checked={paymentMethod === 'virement'}
                       onChange={(e) => setPaymentMethod(e.target.value as 'virement')}
-                      className="mr-3 text-orange-600 focus:ring-orange-500"
+                      className="mr-3 text-pr-orange-dark focus:ring-pr-orange"
                     />
                     <span className="text-gray-700">Paiement par virement bancaire (RIB)</span>
                   </label>
@@ -373,7 +373,7 @@ const PreRentreePage = () => {
 
               <Button 
                 type="submit"
-                className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white min-h-[44px] mt-6"
+                className="w-full bg-gradient-to-r from-pr-orange to-red-500 hover:from-pr-orange-dark hover:to-red-600 text-white min-h-[44px] mt-6"
               >
                 Procéder au paiement
               </Button>
@@ -393,26 +393,26 @@ const PreRentreePage = () => {
             {/* Contacts */}
             <Card className="p-6 bg-white">
               <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                <HelpCircle className="w-5 h-5 text-orange-500 mr-2" />
+                <HelpCircle className="w-5 h-5 text-pr-orange mr-2" />
                 Contacts & support
               </h3>
               
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5 text-orange-500" />
+                  <Mail className="w-5 h-5 text-pr-orange" />
                   <a 
                     href="mailto:preparationnelle@gmail.com"
-                    className="text-gray-700 hover:text-orange-600 underline"
+                    className="text-gray-700 hover:text-pr-orange-dark underline"
                   >
                     preparationnelle@gmail.com
                   </a>
                 </div>
                 
                 <div className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-orange-500" />
+                  <Phone className="w-5 h-5 text-pr-orange" />
                   <a 
                     href="tel:+33609164668"
-                    className="text-gray-700 hover:text-orange-600 underline"
+                    className="text-gray-700 hover:text-pr-orange-dark underline"
                   >
                     06 09 16 46 68
                   </a>
@@ -438,7 +438,7 @@ const PreRentreePage = () => {
                   <Button
                     asChild
                     variant="outline"
-                    className="w-full border-orange-500 text-orange-600 hover:bg-orange-50"
+                    className="w-full border-pr-orange text-pr-orange-dark hover:bg-orange-50"
                   >
                     <a href="mailto:preparationnelle@gmail.com?subject=Question Stage Pré-entrée">
                       <Mail className="w-4 h-4 mr-2" />
@@ -505,9 +505,9 @@ const PreRentreePage = () => {
                 Merci pour votre inscription ! Nous avons bien reçu votre demande de paiement par virement.
               </p>
               
-              <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                <h4 className="font-medium text-blue-800 mb-2">📋 Prochaines étapes :</h4>
-                <ul className="text-sm text-blue-700 space-y-1">
+              <div className="bg-pr-orange-pale p-4 rounded-lg border border-pr-orange-soft">
+                <h4 className="font-medium text-carnet-red-deep mb-2">📋 Prochaines étapes :</h4>
+                <ul className="text-sm text-carnet-red space-y-1">
                   <li>• Nous vous enverrons notre RIB par email sous 24h</li>
                   <li>• Montant à régler : <strong>199€</strong></li>
                   <li>• Référence : <strong>PRENTREE-{formData.nom.toUpperCase()}-{formData.email.split('@')[0]}</strong></li>
@@ -523,7 +523,7 @@ const PreRentreePage = () => {
             <div className="flex space-x-3">
               <Button
                 onClick={() => setShowRIBModal(false)}
-                className="flex-1 bg-orange-500 hover:bg-orange-600 text-white"
+                className="flex-1 bg-pr-orange hover:bg-pr-orange-dark text-white"
               >
                 Compris
               </Button>

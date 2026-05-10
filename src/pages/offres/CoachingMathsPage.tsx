@@ -97,11 +97,11 @@ const CoachingMathsPage = () => {
             {/* Urgency and Guarantee */}
             <div className="space-y-4">
               <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
-                <h4 className="font-semibold text-orange-700 mb-2 flex items-center gap-2">
+                <h4 className="font-semibold text-pr-orange-dark mb-2 flex items-center gap-2">
                   <span>⏰</span>
                   Urgence
                 </h4>
-                <p className="text-sm text-orange-600">
+                <p className="text-sm text-pr-orange-dark">
                   Les créneaux partent vite : assure-toi d&apos;en avoir un avant la fermeture des inscriptions dimanche 23h59
                 </p>
               </div>

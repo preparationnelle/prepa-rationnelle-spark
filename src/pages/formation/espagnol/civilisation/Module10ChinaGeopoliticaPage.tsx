@@ -39,7 +39,7 @@ Conclusión – La principal lección es la tensión entre ganancias rápidas y 
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-6">
             <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center border border-orange-200">
-              <Globe className="h-6 w-6 text-orange-600" />
+              <Globe className="h-6 w-6 text-pr-orange-dark" />
             </div>
             <h1 className="text-4xl font-bold text-gray-900">
             China y Geopolítica Global
@@ -51,7 +51,7 @@ Conclusión – La principal lección es la tensión entre ganancias rápidas y 
           <div className="flex justify-center gap-3 mt-6">
             <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">10 thématiques clés</span>
             <span className="px-4 py-2 border border-gray-200 text-gray-700 rounded-full text-sm font-medium">Actualisé 2024</span>
-            <span className="px-4 py-2 bg-orange-600 text-white rounded-full text-sm font-medium">Niveau Prépa</span>
+            <span className="px-4 py-2 bg-pr-orange-dark text-white rounded-full text-sm font-medium">Niveau Prépa</span>
           </div>
         </div>
 
@@ -130,7 +130,7 @@ Conclusión – La principal lección es la tensión entre ganancias rápidas y 
               <div className="sticky top-0 bg-white border-b p-6 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-orange-100 hover:bg-orange-200 transition-colors">
-                    <BookOpen className="h-5 w-5 text-orange-600" />
+                    <BookOpen className="h-5 w-5 text-pr-orange-dark" />
                   </div>
                   <div>
                     <h2 className="text-xl font-bold text-gray-900">{selectedSubject.title}</h2>
@@ -151,7 +151,7 @@ Conclusión – La principal lección es la tensión entre ganancias rápidas y 
               </div>
 
               <div className="sticky bottom-0 bg-gray-50 border-t p-4 flex justify-end">
-                <Button onClick={closeSubjectModal} className="bg-orange-600 hover:bg-orange-700 text-white">
+                <Button onClick={closeSubjectModal} className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white">
                   Fermer
                 </Button>
               </div>

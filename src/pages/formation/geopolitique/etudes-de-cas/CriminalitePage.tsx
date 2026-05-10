@@ -61,7 +61,7 @@ const CriminalitePage = () => {
       </nav>
 
         {/* Header */}
-        <Card className="mb-8 bg-gradient-to-r from-red-600 to-orange-600 text-white">
+        <Card className="mb-8 bg-gradient-to-r from-red-600 to-pr-orange-dark text-white">
           <CardHeader>
             <div className="flex items-center gap-3">
               <AlertTriangle className="h-8 w-8" />
@@ -152,7 +152,7 @@ const CriminalitePage = () => {
           </AccordionItem>
 
           <AccordionItem value="flows">
-            <AccordionTrigger className="text-xl text-orange-700">
+            <AccordionTrigger className="text-xl text-pr-orange-dark">
               II. Flux illicites mondiaux 2024
             </AccordionTrigger>
             <AccordionContent>
@@ -168,7 +168,7 @@ const CriminalitePage = () => {
                   <CardContent>
                     <div className="bg-orange-100 p-4 rounded-lg mb-6">
                       <h4 className="font-semibold text-orange-800 mb-2">Volume global et tendances</h4>
-                      <ul className="text-sm text-orange-700 space-y-2">
+                      <ul className="text-sm text-pr-orange-dark space-y-2">
                         <li><strong>500-1 000 milliards $</strong> flux illicites totaux annuels</li>
                         <li><strong>Pierre-Arnaud Chouvy (2002) :</strong> "Espaces narcotiques réappropriés par acteurs étatiques/non-étatiques"</li>
                         <li><strong>Digitalisation :</strong> Cybercriminalité devient secteur dominant</li>
@@ -182,12 +182,12 @@ const CriminalitePage = () => {
                           <div className="flex items-start justify-between">
                             <div className="flex-1">
                               <div className="flex items-center gap-3 mb-2">
-                                <Badge className="bg-orange-600 text-white font-semibold">
+                                <Badge className="bg-pr-orange-dark text-white font-semibold">
                                   {flow.category}
                                 </Badge>
                                 <span className="font-bold text-orange-800">{flow.value}</span>
                               </div>
-                              <div className="text-sm text-orange-700 space-y-1">
+                              <div className="text-sm text-pr-orange-dark space-y-1">
                                 <div><strong>Statut :</strong> {flow.detail}</div>
                                 <div><strong>Exemple :</strong> {flow.example}</div>
                                 <div><strong>Tendance 2024 :</strong> {flow.trend}</div>
@@ -322,7 +322,7 @@ const CriminalitePage = () => {
                           </div>
                           <div className="p-3 bg-orange-100 rounded-lg border border-orange-200">
                             <div className="font-semibold text-orange-800 mb-1">ASEANAPOL</div>
-                            <div className="text-sm text-orange-700">
+                            <div className="text-sm text-pr-orange-dark">
                               Coopération policière ASEAN. Lutte terrorisme, 
                               trafic drogue, cybercriminalité régionale.
                             </div>

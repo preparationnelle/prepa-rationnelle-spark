@@ -121,7 +121,7 @@ const ProfesseurPage = () => {
         <div className="relative z-10 w-full max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-              Rejoignez notre <span className="text-orange-600">équipe</span> de professeurs
+              Rejoignez notre <span className="text-pr-orange-dark">équipe</span> de professeurs
             </h1>
             <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto">
               Partagez votre expertise et aidez les étudiants à réussir en prépa ECG
@@ -132,7 +132,7 @@ const ProfesseurPage = () => {
           <Card className="bg-white/95 backdrop-blur-sm shadow-2xl border border-orange-100">
             <CardHeader className="text-center pb-6">
               <CardTitle className="text-2xl font-bold text-gray-900 flex items-center justify-center gap-3">
-                <div className="p-3 rounded-lg bg-orange-100 text-orange-600">
+                <div className="p-3 rounded-lg bg-orange-100 text-pr-orange-dark">
                   <GraduationCap className="h-8 w-8" />
                 </div>
                 Candidature professeur
@@ -292,7 +292,7 @@ const ProfesseurPage = () => {
                   <Button 
                     type="submit" 
                     disabled={isSubmitting}
-                    className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+                    className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
                   >
                     {isSubmitting ? (
                       <>
@@ -332,24 +332,24 @@ const ProfesseurPage = () => {
             {/* Card Flexibilité */}
             <Card className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-orange-300 hover:bg-orange-50 group">
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors duration-300">
-                <Clock className="h-8 w-8 text-orange-600 group-hover:text-orange-700 transition-colors duration-300" />
+                <Clock className="h-8 w-8 text-pr-orange-dark group-hover:text-pr-orange-dark transition-colors duration-300" />
               </div>
-              <h3 className="font-semibold text-xl mb-2 text-orange-700 group-hover:text-orange-800 transition-colors duration-300">
+              <h3 className="font-semibold text-xl mb-2 text-pr-orange-dark group-hover:text-orange-800 transition-colors duration-300">
                 Flexibilité totale
               </h3>
               <p className="text-sm text-gray-600 mb-3 group-hover:text-gray-700 transition-colors duration-300">
                 Choisissez vos créneaux et gérez votre emploi du temps selon vos disponibilités
               </p>
               <div className="space-y-1 text-xs text-left">
-                <div className="flex items-center text-orange-600 group-hover:text-orange-700 transition-colors duration-300">
+                <div className="flex items-center text-pr-orange-dark group-hover:text-pr-orange-dark transition-colors duration-300">
                   <span className="mr-2">✓</span>
                   <span>Horaires à la carte</span>
                 </div>
-                <div className="flex items-center text-orange-600 group-hover:text-orange-700 transition-colors duration-300">
+                <div className="flex items-center text-pr-orange-dark group-hover:text-pr-orange-dark transition-colors duration-300">
                   <span className="mr-2">✓</span>
                   <span>Réduction d'heures possible</span>
                 </div>
-                <div className="flex items-center text-orange-600 group-hover:text-orange-700 transition-colors duration-300">
+                <div className="flex items-center text-pr-orange-dark group-hover:text-pr-orange-dark transition-colors duration-300">
                   <span className="mr-2">✓</span>
                   <span>Vacances respectées</span>
                 </div>
@@ -428,14 +428,14 @@ const ProfesseurPage = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               onClick={() => document.querySelector('form')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
               Postuler maintenant
             </Button>
             <Button 
               variant="outline"
               onClick={() => window.location.href = '/contact'}
-              className="px-8 py-4 text-lg font-semibold rounded-lg border-2 border-orange-600 text-orange-600 hover:bg-orange-50 transition-all duration-300"
+              className="px-8 py-4 text-lg font-semibold rounded-lg border-2 border-pr-orange-dark text-pr-orange-dark hover:bg-orange-50 transition-all duration-300"
             >
               En savoir plus
             </Button>

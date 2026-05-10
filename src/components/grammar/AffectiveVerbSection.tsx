@@ -22,7 +22,7 @@ const AffectiveVerbSectionComponent: React.FC<AffectiveVerbSectionProps> = ({ se
     if (id.includes('autres') || id.includes('verbes')) return <ZapIcon className="h-5 w-5 text-indigo-600" />;
     if (id.includes('pronoms') || id.includes('indirects')) return <UsersIcon className="h-5 w-5 text-teal-600" />;
     if (id.includes('avances') || id.includes('complexes')) return <Brain className="h-5 w-5 text-amber-600" />;
-    if (id.includes('negatives') || id.includes('restrictions')) return <ThumbsDown className="h-5 w-5 text-orange-600" />;
+    if (id.includes('negatives') || id.includes('restrictions')) return <ThumbsDown className="h-5 w-5 text-pr-orange-dark" />;
     if (id.includes('quotidiens') || id.includes('contextes')) return <Coffee className="h-5 w-5 text-emerald-600" />;
     return <Heart className="h-5 w-5 text-pink-600" />;
   };
@@ -147,7 +147,7 @@ const AffectiveVerbSectionComponent: React.FC<AffectiveVerbSectionProps> = ({ se
                         </span>
                       ))}
                     </div>
-                    <p className="text-xs text-orange-700">{irregularity.notes}</p>
+                    <p className="text-xs text-pr-orange-dark">{irregularity.notes}</p>
                   </div>
                 ))}
               </div>

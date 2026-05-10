@@ -198,7 +198,7 @@ const SESAMEAllemandPage = () => {
                                         setExamMode(true);
                                     }}
                                     size="lg"
-                                    className="bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white px-8"
+                                    className="bg-gradient-to-r from-pr-orange-dark to-pr-orange-dark hover:from-pr-orange-dark hover:to-orange-800 text-white px-8"
                                 >
                                     Mode Examen (toutes les questions)
                                 </Button>
@@ -239,20 +239,20 @@ const SESAMEAllemandPage = () => {
                                 <div className="bg-orange-50 border-2 border-orange-200 rounded-xl p-6">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-3">
-                                            <Award className="h-6 w-6 text-orange-600" />
+                                            <Award className="h-6 w-6 text-pr-orange-dark" />
                                             <h3 className="font-bold text-lg text-orange-900">Mode Examen</h3>
                                         </div>
-                                        <div className="text-sm font-medium text-orange-700">
+                                        <div className="text-sm font-medium text-pr-orange-dark">
                                             {Object.keys(userAnswers).length} / {currentQuestions.length} réponses
                                         </div>
                                     </div>
-                                    <p className="text-sm text-orange-700 mt-2">
+                                    <p className="text-sm text-pr-orange-dark mt-2">
                                         Toutes les questions sont affichées. Faites défiler pour répondre à toutes.
                                     </p>
                                     <Button
                                         onClick={handleSubmit}
                                         disabled={Object.keys(userAnswers).length !== currentQuestions.length}
-                                        className="mt-4 w-full bg-orange-600 hover:bg-orange-700 text-white"
+                                        className="mt-4 w-full bg-pr-orange-dark hover:bg-pr-orange-dark text-white"
                                     >
                                         Terminer l'examen ({Object.keys(userAnswers).length}/{currentQuestions.length})
                                     </Button>
@@ -343,7 +343,7 @@ const SESAMEAllemandPage = () => {
                                         <div className="flex items-start gap-3">
                                             <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${userAnswers[currentQuestion.id] === currentQuestion.correctAnswer
                                                 ? 'bg-green-100 text-green-700'
-                                                : 'bg-orange-100 text-orange-700'
+                                                : 'bg-orange-100 text-pr-orange-dark'
                                                 }`}>
                                                 {userAnswers[currentQuestion.id] === currentQuestion.correctAnswer ? '✓' : 'ℹ'}
                                             </div>
@@ -429,7 +429,7 @@ const SESAMEAllemandPage = () => {
                                                                 key={optIndex}
                                                                 onClick={() => handleAnswerSelect(optionLetter, question.id)}
                                                                 className={`w-full text-left p-3 rounded-lg border-2 transition-all duration-200 ${isSelected
-                                                                    ? 'border-orange-500 bg-orange-50 text-orange-900'
+                                                                    ? 'border-pr-orange bg-orange-50 text-orange-900'
                                                                     : 'border-gray-200 hover:border-orange-300 hover:bg-orange-50'
                                                                     }`}
                                                             >

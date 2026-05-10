@@ -131,7 +131,7 @@ const EauPage = () => {
                     
                     <div className="bg-orange-50 p-4 rounded-lg">
                       <h4 className="font-semibold text-orange-800 mb-2">Stress hydrique</h4>
-                      <ul className="list-disc list-inside text-sm text-orange-700 space-y-1">
+                      <ul className="list-disc list-inside text-sm text-pr-orange-dark space-y-1">
                         <li><strong>Évolution :</strong> x0,3 disponibilité par personne depuis 1950</li>
                         <li><strong>Régions critiques :</strong> Moyen-Orient, Afrique Nord, Inde</li>
                         <li><strong>Urbanisation :</strong> Concentration demande métropoles</li>

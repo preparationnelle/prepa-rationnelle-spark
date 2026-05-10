@@ -38,7 +38,7 @@ export const CurrentEventsDisplay = ({ currentEvents, language, onRegenerate }: 
         return (
           <div key={index} className="bg-orange-50 border border-orange-200 p-4 rounded-lg mb-4">
             <div className="flex items-center gap-2 mb-2">
-              <span className="bg-orange-500 text-white text-xs px-2 py-1 rounded-full font-bold">
+              <span className="bg-pr-orange text-white text-xs px-2 py-1 rounded-full font-bold">
                 {eventNumber++}
               </span>
               <h4 className="font-semibold text-orange-800">{trimmedLine}</h4>

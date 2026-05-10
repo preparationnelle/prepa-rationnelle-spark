@@ -16,7 +16,7 @@ const QuestionSectionComponent: React.FC<QuestionSectionProps> = ({ section }) =
     if (id.includes('poser') || id.includes('question')) return <HelpCircle className="h-5 w-5 text-blue-600" />;
     if (id.includes('mots') || id.includes('questionnement')) return <Brain className="h-5 w-5 text-green-600" />;
     if (id.includes('retrouver') || id.includes('question')) return <Target className="h-5 w-5 text-purple-600" />;
-    if (id.includes('dialogue') || id.includes('renseignements')) return <MessageSquare className="h-5 w-5 text-orange-600" />;
+    if (id.includes('dialogue') || id.includes('renseignements')) return <MessageSquare className="h-5 w-5 text-pr-orange-dark" />;
     if (id.includes('structures') || id.includes('verbes')) return <Code className="h-5 w-5 text-indigo-600" />;
     if (id.includes('ouvertes') || id.includes('fermees')) return <Zap className="h-5 w-5 text-yellow-600" />;
     if (id.includes('interrogatifs') || id.includes('dialogues')) return <Users className="h-5 w-5 text-pink-600" />;
@@ -150,7 +150,7 @@ const QuestionSectionComponent: React.FC<QuestionSectionProps> = ({ section }) =
                         </span>
                       ))}
                     </div>
-                    <p className="text-xs text-orange-700">{irregularity.notes}</p>
+                    <p className="text-xs text-pr-orange-dark">{irregularity.notes}</p>
                   </div>
                 ))}
               </div>

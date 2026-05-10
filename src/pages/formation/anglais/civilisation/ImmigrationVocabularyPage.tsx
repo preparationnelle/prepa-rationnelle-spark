@@ -202,7 +202,7 @@ const ImmigrationVocabularyPage = () => {
       'Immigration et migration': 'bg-carnet-red',
       'Réfugiés et asile': 'bg-green-500',
       'Contrôle et sécurité': 'bg-red-500',
-      'Frontières et zones': 'bg-orange-500',
+      'Frontières et zones': 'bg-pr-orange',
       'Documents et identité': 'bg-purple-500',
       'Politiques et réglementation': 'bg-indigo-500',
       'Intégration et assimilation': 'bg-pink-500',
@@ -407,7 +407,7 @@ const ImmigrationVocabularyPage = () => {
                 <p className="text-sm text-gray-600">Progression</p>
               </div>
               <div>
-                <p className="text-2xl font-bold text-orange-600">
+                <p className="text-2xl font-bold text-pr-orange-dark">
                   {currentCardIndex + 1}
                 </p>
                 <p className="text-sm text-gray-600">Carte actuelle</p>

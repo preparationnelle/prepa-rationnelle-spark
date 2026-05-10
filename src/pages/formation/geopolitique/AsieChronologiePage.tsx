@@ -130,7 +130,7 @@ const AsieChronologiePage = () => {
         {/* En-tête */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <Calendar className="h-8 w-8 text-orange-600" />
+            <Calendar className="h-8 w-8 text-pr-orange-dark" />
             <h1 className="text-4xl font-bold text-gray-900">
               Chronologie de l'Asie
             </h1>
@@ -164,10 +164,10 @@ const AsieChronologiePage = () => {
             </h2>
             <div className="space-y-6">
               {decadeEvents.map((item, index) => (
-                <Card key={index} className="border-l-4 border-orange-500 shadow-sm hover:shadow-md transition-shadow bg-white">
+                <Card key={index} className="border-l-4 border-pr-orange shadow-sm hover:shadow-md transition-shadow bg-white">
                   <CardContent className="p-4">
                     <div className="flex items-start">
-                      <span className="flex-shrink-0 w-24 text-lg font-semibold text-orange-700 mr-4">
+                      <span className="flex-shrink-0 w-24 text-lg font-semibold text-pr-orange-dark mr-4">
                         {item.year}
                       </span>
                       <p className="flex-grow text-gray-700 leading-relaxed">

@@ -180,7 +180,7 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
           <div className="flex justify-center gap-3 mt-6">
             <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">10 thématiques essentielles</span>
             <span className="px-4 py-2 border border-gray-200 text-gray-700 rounded-full text-sm font-medium">Actualisé 2025</span>
-            <span className="px-4 py-2 bg-orange-600 text-white rounded-full text-sm font-medium">Niveau Prépa</span>
+            <span className="px-4 py-2 bg-pr-orange-dark text-white rounded-full text-sm font-medium">Niveau Prépa</span>
           </div>
         </div>
 
@@ -197,13 +197,13 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-orange-600 text-lg">1</span>
+                    <span className="font-bold text-pr-orange-dark text-lg">1</span>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Política y Regímenes</h3>
                     <p className="text-gray-600 mb-4">Crises démocratiques, extrême droite/gauche, évolution politique</p>
                     <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
@@ -232,13 +232,13 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-orange-600 text-lg">2</span>
+                    <span className="font-bold text-pr-orange-dark text-lg">2</span>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Mujeres y Violencia de Género</h3>
                     <p className="text-gray-600 mb-4">Féminisme et égalité</p>
                     <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
@@ -266,7 +266,7 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
             <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
               <div className="flex items-start gap-4">
                 <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                  <span className="font-bold text-orange-600 text-lg">3</span>
+                  <span className="font-bold text-pr-orange-dark text-lg">3</span>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Educación y Desigualdades</h3>
@@ -296,13 +296,13 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-orange-600 text-lg">4</span>
+                    <span className="font-bold text-pr-orange-dark text-lg">4</span>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Migraciones y Desplazamientos</h3>
                     <p className="text-gray-600 mb-4">Flux migratoires, caravanes, politique américaine, transit</p>
                     <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
@@ -331,13 +331,13 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-orange-600 text-lg">5</span>
+                    <span className="font-bold text-pr-orange-dark text-lg">5</span>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Violencia y Narcotráfico</h3>
                     <p className="text-gray-600 mb-4">Violence chronique, cartels, sécurité, maintien de l'ordre</p>
                     <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
@@ -365,7 +365,7 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
             <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
               <div className="flex items-start gap-4">
                 <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                  <span className="font-bold text-orange-600 text-lg">6</span>
+                  <span className="font-bold text-pr-orange-dark text-lg">6</span>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Pobreza y Dependencia Económica</h3>
@@ -395,13 +395,13 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-orange-600 text-lg">7</span>
+                    <span className="font-bold text-pr-orange-dark text-lg">7</span>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Medio Ambiente y Clima</h3>
                     <p className="text-gray-600 mb-4">COP 16, Gustavo Petro, fast-fashion, peuples autochtones</p>
                     <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
@@ -425,7 +425,7 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
             <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
               <div className="flex items-start gap-4">
                 <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                  <span className="font-bold text-orange-600 text-lg">8</span>
+                  <span className="font-bold text-pr-orange-dark text-lg">8</span>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Historia y Memoria</h3>
@@ -459,13 +459,13 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-orange-600 text-lg">10</span>
+                    <span className="font-bold text-pr-orange-dark text-lg">10</span>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 mb-2">China y Geopolítica Global</h3>
                     <p className="text-gray-600 mb-4">Alianza estratégica vs dependencia 2.0</p>
                     <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
@@ -494,13 +494,13 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-orange-600 text-lg">9</span>
+                    <span className="font-bold text-pr-orange-dark text-lg">9</span>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Inteligencia Artificial y Transformación Digital</h3>
                     <p className="text-gray-600 mb-4">Soberanía tecnológica e inclusión digital</p>
                     <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
@@ -528,7 +528,7 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
             <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
               <div className="flex items-start gap-4">
                 <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                  <span className="font-bold text-orange-600 text-lg">11</span>
+                  <span className="font-bold text-pr-orange-dark text-lg">11</span>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Transición Energética Española</h3>
@@ -561,7 +561,7 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
             <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group">
               <div className="flex items-start gap-4">
                 <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                  <span className="font-bold text-orange-600 text-lg">12</span>
+                  <span className="font-bold text-pr-orange-dark text-lg">12</span>
                 </div>
                   <div className="flex-1">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Desigualdades y Pobreza</h3>
@@ -596,7 +596,7 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
             <div className="sticky top-0 bg-white border-b p-6 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="p-2 rounded-lg bg-orange-100 hover:bg-orange-200 transition-colors">
-                  <BookOpen className="h-5 w-5 text-orange-600" />
+                  <BookOpen className="h-5 w-5 text-pr-orange-dark" />
                 </div>
                 <div>
                   <h2 className="text-xl font-bold text-gray-900">{selectedSubject.title}</h2>
@@ -617,7 +617,7 @@ La conmemoración del 50.º aniversario ofrece una oportunidad única. Conviene 
             </div>
 
             <div className="sticky bottom-0 bg-gray-50 border-t p-4 flex justify-end">
-              <Button onClick={closeSubjectModal} className="bg-orange-600 hover:bg-orange-700 text-white">
+              <Button onClick={closeSubjectModal} className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white">
                 Fermer
               </Button>
             </div>

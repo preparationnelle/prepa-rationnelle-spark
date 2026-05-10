@@ -281,12 +281,12 @@ const LyceeAnglaisPage = () => {
                 <h3 className="text-2xl font-bold mb-4 text-carnet-red group-hover:text-pr-orange-dark transition-colors duration-300">
                   Besoin d'aide personnalisée en anglais ?
                 </h3>
-                <p className="text-gray-600 group-hover:text-orange-700 transition-colors duration-300 mb-6">
+                <p className="text-gray-600 group-hover:text-pr-orange-dark transition-colors duration-300 mb-6">
                   Nos experts vous accompagnent pour maîtriser l'anglais LV1 et atteindre le niveau B2.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link to="/contact">
-                    <Button size="lg" className="bg-carnet-red hover:bg-orange-600 text-white transition-all duration-300">
+                    <Button size="lg" className="bg-carnet-red hover:bg-pr-orange-dark text-white transition-all duration-300">
                       Nous contacter
                     </Button>
                   </Link>

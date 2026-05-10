@@ -38,7 +38,7 @@ const AnxieteScolairePage = () => {
                     {/* Corps de l'article */}
                     <div className="prose prose-lg prose-gray max-w-none">
 
-                        <div className="bg-orange-50 border-l-4 border-orange-500 p-6 mb-8 rounded-r-lg">
+                        <div className="bg-orange-50 border-l-4 border-pr-orange p-6 mb-8 rounded-r-lg">
                             <h3 className="text-orange-900 font-bold text-lg mt-0">Le saviez-vous ?</h3>
                             <p className="text-orange-800 mb-0">
                                 <strong>56% des enfants</strong> vivent une certaine appréhension lors de transitions scolaires majeures. C'est une réaction développementale fréquente et généralement surmontable.
@@ -117,9 +117,9 @@ const AnxieteScolairePage = () => {
                         </ul>
 
                         <div className="bg-pr-orange-pale p-6 rounded-xl my-8">
-                            <h4 className="font-bold text-blue-900 mb-2">Comment savoir ? Posez les bonnes questions</h4>
+                            <h4 className="font-bold text-carnet-red-deep mb-2">Comment savoir ? Posez les bonnes questions</h4>
                             <p className="text-carnet-red-deep text-sm mb-4">Sur un ton de conversation douce, pas d'interrogatoire :</p>
-                            <ul className="space-y-2 text-blue-900 italic">
+                            <ul className="space-y-2 text-carnet-red-deep italic">
                                 <li>« Qu'est-ce que tu as peur qu'il se passe à l'école ? »</li>
                                 <li>« Y a-t-il quelque chose ou quelqu'un qui te fait peur ? »</li>
                                 <li>« Si on pouvait enlever une seule chose de l'école, ce serait quoi ? »</li>

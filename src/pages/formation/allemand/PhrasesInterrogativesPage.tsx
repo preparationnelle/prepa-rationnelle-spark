@@ -11,20 +11,20 @@ const PhrasesInterrogativesPage = () => {
       <header className="border-b border-gray-200">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center text-sm text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-orange-600 transition-colors">
+            <Link to="/" className="flex items-center gap-1 hover:text-pr-orange-dark transition-colors">
               <BookOpen className="h-4 w-4" />
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
-            <Link to="/formations" className="hover:text-orange-600 transition-colors">
+            <Link to="/formations" className="hover:text-pr-orange-dark transition-colors">
               Toutes les formations
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
-            <Link to="/formation/allemand" className="hover:text-orange-600 transition-colors">
+            <Link to="/formation/allemand" className="hover:text-pr-orange-dark transition-colors">
               Formation Allemand
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
-            <Link to="/formation/allemand-grammaire" className="hover:text-orange-600 transition-colors">
+            <Link to="/formation/allemand-grammaire" className="hover:text-pr-orange-dark transition-colors">
               Grammaire
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
@@ -34,7 +34,7 @@ const PhrasesInterrogativesPage = () => {
           <div className="mt-8 text-center">
             <div className="flex justify-center mb-4">
               <div className="p-3 rounded-full bg-orange-100">
-                <BookOpen className="h-8 w-8 text-orange-600" />
+                <BookOpen className="h-8 w-8 text-pr-orange-dark" />
               </div>
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -53,7 +53,7 @@ const PhrasesInterrogativesPage = () => {
 
           {/* Introduction aux questions */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Les types de phrases interrogatives</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Les types de phrases interrogatives</h2>
             <p className="text-gray-700 mb-4">
               L'allemand distingue deux types principaux de questions : les questions fermées (oui/non) et les questions ouvertes (avec mots interrogatifs).
               Contrairement au français, le verbe conjugué se place en première position dans les questions fermées.
@@ -66,7 +66,7 @@ const PhrasesInterrogativesPage = () => {
 
           {/* Questions fermées (Ja/Nein) */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Questions fermées (Ja/Nein-Fragen)</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Questions fermées (Ja/Nein-Fragen)</h2>
             <div className="space-y-4">
               <div>
                 <h3 className="font-semibold mb-2">Structure de base :</h3>
@@ -97,7 +97,7 @@ const PhrasesInterrogativesPage = () => {
 
           {/* Questions ouvertes (W-Fragen) */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Questions ouvertes (W-Fragen)</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Questions ouvertes (W-Fragen)</h2>
             <div className="space-y-4">
               <div>
                 <h3 className="font-semibold mb-2">Structure de base :</h3>
@@ -111,53 +111,53 @@ const PhrasesInterrogativesPage = () => {
 
           {/* Mots interrogatifs courants */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Mots interrogatifs courants</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Mots interrogatifs courants</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h3 className="font-semibold mb-3 text-carnet-red">Questions sur les personnes/choses :</h3>
                 <ul className="space-y-2 text-gray-700">
-                  <li><span className="text-orange-600">Wer?</span> - Qui ?</li>
+                  <li><span className="text-pr-orange-dark">Wer?</span> - Qui ?</li>
                   <li className="ml-4">Wer kommt morgen? (Qui vient demain ?)</li>
-                  <li><span className="text-orange-600">Was?</span> - Quoi ?</li>
+                  <li><span className="text-pr-orange-dark">Was?</span> - Quoi ?</li>
                   <li className="ml-4">Was machst du? (Que fais-tu ?)</li>
-                  <li><span className="text-orange-600">Wen?</span> - Qui ? (COD)</li>
+                  <li><span className="text-pr-orange-dark">Wen?</span> - Qui ? (COD)</li>
                   <li className="ml-4">Wen siehst du? (Qui vois-tu ?)</li>
-                  <li><span className="text-orange-600">Wem?</span> - À qui ? (COI)</li>
+                  <li><span className="text-pr-orange-dark">Wem?</span> - À qui ? (COI)</li>
                   <li className="ml-4">Wem hilfst du? (À qui aides-tu ?)</li>
                 </ul>
               </div>
               <div>
                 <h3 className="font-semibold mb-3 text-green-700">Questions sur le temps/lieu :</h3>
                 <ul className="space-y-2 text-gray-700">
-                  <li><span className="text-orange-600">Wann?</span> - Quand ?</li>
+                  <li><span className="text-pr-orange-dark">Wann?</span> - Quand ?</li>
                   <li className="ml-4">Wann kommst du? (Quand viens-tu ?)</li>
-                  <li><span className="text-orange-600">Wo?</span> - Où ?</li>
+                  <li><span className="text-pr-orange-dark">Wo?</span> - Où ?</li>
                   <li className="ml-4">Wo wohnst du? (Où habites-tu ?)</li>
-                  <li><span className="text-orange-600">Wohin?</span> - Où ? (direction)</li>
+                  <li><span className="text-pr-orange-dark">Wohin?</span> - Où ? (direction)</li>
                   <li className="ml-4">Wohin gehst du? (Où vas-tu ?)</li>
-                  <li><span className="text-orange-600">Woher?</span> - D'où ?</li>
+                  <li><span className="text-pr-orange-dark">Woher?</span> - D'où ?</li>
                   <li className="ml-4">Woher kommst du? (D'où viens-tu ?)</li>
                 </ul>
               </div>
               <div>
                 <h3 className="font-semibold mb-3 text-purple-700">Questions sur la manière :</h3>
                 <ul className="space-y-2 text-gray-700">
-                  <li><span className="text-orange-600">Wie?</span> - Comment ?</li>
+                  <li><span className="text-pr-orange-dark">Wie?</span> - Comment ?</li>
                   <li className="ml-4">Wie geht es dir? (Comment vas-tu ?)</li>
-                  <li><span className="text-orange-600">Warum?</span> - Pourquoi ?</li>
+                  <li><span className="text-pr-orange-dark">Warum?</span> - Pourquoi ?</li>
                   <li className="ml-4">Warum bist du traurig? (Pourquoi es-tu triste ?)</li>
-                  <li><span className="text-orange-600">Wieso?</span> - Pourquoi ?</li>
+                  <li><span className="text-pr-orange-dark">Wieso?</span> - Pourquoi ?</li>
                   <li className="ml-4">Wieso hast du das gemacht? (Pourquoi as-tu fait ça ?)</li>
                 </ul>
               </div>
               <div>
                 <h3 className="font-semibold mb-3 text-red-700">Questions sur la quantité :</h3>
                 <ul className="space-y-2 text-gray-700">
-                  <li><span className="text-orange-600">Wie viel?</span> - Combien ? (non comptable)</li>
+                  <li><span className="text-pr-orange-dark">Wie viel?</span> - Combien ? (non comptable)</li>
                   <li className="ml-4">Wie viel kostet das? (Combien ça coûte ?)</li>
-                  <li><span className="text-orange-600">Wie viele?</span> - Combien ? (comptable)</li>
+                  <li><span className="text-pr-orange-dark">Wie viele?</span> - Combien ? (comptable)</li>
                   <li className="ml-4">Wie viele Bücher hast du? (Combien de livres as-tu ?)</li>
-                  <li><span className="text-orange-600">Welcher/Welche/Welches?</span> - Quel/Quelle ?</li>
+                  <li><span className="text-pr-orange-dark">Welcher/Welche/Welches?</span> - Quel/Quelle ?</li>
                   <li className="ml-4">Welches Buch liest du? (Quel livre lis-tu ?)</li>
                 </ul>
               </div>
@@ -166,7 +166,7 @@ const PhrasesInterrogativesPage = () => {
 
           {/* Questions indirectes */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Questions indirectes</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Questions indirectes</h2>
             <p className="text-gray-700 mb-4">
               Dans les propositions subordonnées interrogatives, la structure change : pas de point d'interrogation,
               et le verbe passe en fin de proposition.
@@ -175,14 +175,14 @@ const PhrasesInterrogativesPage = () => {
               <div>
                 <h3 className="font-semibold mb-2">Avec conjonction :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p>Ich weiß nicht, <span className="text-orange-600">ob</span> du morgen kommst.</p>
+                  <p>Ich weiß nicht, <span className="text-pr-orange-dark">ob</span> du morgen kommst.</p>
                   <p className="text-sm text-gray-700">(Je ne sais pas si tu viens demain.)</p>
                 </div>
               </div>
               <div>
                 <h3 className="font-semibold mb-2">Avec mot interrogatif :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p>Ich weiß nicht, <span className="text-orange-600">wann</span> du morgen kommst.</p>
+                  <p>Ich weiß nicht, <span className="text-pr-orange-dark">wann</span> du morgen kommst.</p>
                   <p className="text-sm text-gray-700">(Je ne sais pas quand tu viens demain.)</p>
                 </div>
               </div>
@@ -191,7 +191,7 @@ const PhrasesInterrogativesPage = () => {
 
           {/* Questions avec prépositions */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Questions avec prépositions</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Questions avec prépositions</h2>
             <p className="text-gray-700 mb-4">
               Les prépositions se combinent souvent avec des mots interrogatifs pour former des locutions interrogatives.
             </p>
@@ -200,19 +200,19 @@ const PhrasesInterrogativesPage = () => {
                 <h3 className="font-semibold mb-2">Préposition + mot interrogatif :</h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="bg-gray-50 p-3 rounded-lg">
-                    <p><span className="text-orange-600">Womit?</span> = Avec quoi ?</p>
+                    <p><span className="text-pr-orange-dark">Womit?</span> = Avec quoi ?</p>
                     <p className="text-sm text-gray-700">Womit schreibst du? (Avec quoi écris-tu ?)</p>
                   </div>
                   <div className="bg-gray-50 p-3 rounded-lg">
-                    <p><span className="text-orange-600">Worüber?</span> = Au sujet de quoi ?</p>
+                    <p><span className="text-pr-orange-dark">Worüber?</span> = Au sujet de quoi ?</p>
                     <p className="text-sm text-gray-700">Worüber sprecht ihr? (De quoi parlez-vous ?)</p>
                   </div>
                   <div className="bg-gray-50 p-3 rounded-lg">
-                    <p><span className="text-orange-600">Wofür?</span> = Pour quoi ?</p>
+                    <p><span className="text-pr-orange-dark">Wofür?</span> = Pour quoi ?</p>
                     <p className="text-sm text-gray-700">Wofür brauchst du Geld? (Pour quoi as-tu besoin d'argent ?)</p>
                   </div>
                   <div className="bg-gray-50 p-3 rounded-lg">
-                    <p><span className="text-orange-600">Woraus?</span> = De quoi ? (matière)</p>
+                    <p><span className="text-pr-orange-dark">Woraus?</span> = De quoi ? (matière)</p>
                     <p className="text-sm text-gray-700">Woraus ist das gemacht? (De quoi est-ce fait ?)</p>
                   </div>
                 </div>
@@ -222,7 +222,7 @@ const PhrasesInterrogativesPage = () => {
 
           {/* Erreurs fréquentes */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Erreurs fréquentes à éviter</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Erreurs fréquentes à éviter</h2>
             <div className="space-y-4">
               <div>
                 <h3 className="font-semibold mb-2">Ordre des mots incorrect :</h3>
@@ -261,12 +261,12 @@ const PhrasesInterrogativesPage = () => {
 
           {/* Exercices pratiques */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Exercices pratiques</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Exercices pratiques</h2>
             <p className="text-gray-700 mb-4">
               Mettez en pratique les phrases interrogatives avec des exercices interactifs.
             </p>
             <div className="text-center">
-              <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-50" disabled>
+              <Button variant="outline" className="border-orange-300 text-pr-orange-dark hover:bg-orange-50" disabled>
                 <FileText className="h-4 w-4 mr-2" />
                 Exercices en développement
               </Button>
@@ -277,7 +277,7 @@ const PhrasesInterrogativesPage = () => {
           {/* Bouton retour */}
           <div className="text-center pb-8">
             <Link to="/formation/allemand-grammaire">
-              <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-50">
+              <Button variant="outline" className="border-orange-300 text-pr-orange-dark hover:bg-orange-50">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Retour à la grammaire
               </Button>

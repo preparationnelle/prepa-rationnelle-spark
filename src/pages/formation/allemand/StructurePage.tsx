@@ -10,20 +10,20 @@ const StructurePage = () => {
       <header className="border-b border-gray-200">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center text-sm text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-orange-600 transition-colors">
+            <Link to="/" className="flex items-center gap-1 hover:text-pr-orange-dark transition-colors">
               <BookOpen className="h-4 w-4" />
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
-            <Link to="/formations" className="hover:text-orange-600 transition-colors">
+            <Link to="/formations" className="hover:text-pr-orange-dark transition-colors">
               Toutes les formations
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
-            <Link to="/formation/allemand" className="hover:text-orange-600 transition-colors">
+            <Link to="/formation/allemand" className="hover:text-pr-orange-dark transition-colors">
               Formation Allemand
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
-            <Link to="/formation/allemand-grammaire" className="hover:text-orange-600 transition-colors">
+            <Link to="/formation/allemand-grammaire" className="hover:text-pr-orange-dark transition-colors">
               Grammaire
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
@@ -33,7 +33,7 @@ const StructurePage = () => {
           <div className="mt-8 text-center">
             <div className="flex justify-center mb-4">
               <div className="p-3 rounded-full bg-orange-100">
-                <BookOpen className="h-8 w-8 text-orange-600" />
+                <BookOpen className="h-8 w-8 text-pr-orange-dark" />
               </div>
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -54,7 +54,7 @@ const StructurePage = () => {
 
           {/* Vue d'Ensemble : Les Trois Positions du Verbe */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Vue d'Ensemble : Les Trois Positions du Verbe</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Vue d'Ensemble : Les Trois Positions du Verbe</h2>
 
             <div className="overflow-x-auto">
               <table className="w-full border-collapse border border-gray-300">
@@ -88,11 +88,11 @@ const StructurePage = () => {
 
           {/* Position 1 : Verbe en Première Position */}
           <div className="bg-white rounded-xl p-8 shadow-lg mb-8 border border-orange-100">
-            <h2 className="text-2xl font-bold mb-6 text-orange-700 border-b border-orange-200 pb-2">Position 1 : Verbe en Première Position</h2>
+            <h2 className="text-2xl font-bold mb-6 text-pr-orange-dark border-b border-orange-200 pb-2">Position 1 : Verbe en Première Position</h2>
 
             <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-bold mb-3 text-orange-700">Questions fermées (Ja/Nein-Fragen)</h3>
+                <h3 className="text-lg font-bold mb-3 text-pr-orange-dark">Questions fermées (Ja/Nein-Fragen)</h3>
                 <p className="text-gray-700 mb-3"><strong>Structure :</strong> VERBE + SUJET + AUTRES ÉLÉMENTS + ?</p>
                 <div className="bg-orange-50 p-4 rounded-lg mb-4">
                   <p className="text-sm text-orange-800 mb-2">Exemples pratiques :</p>
@@ -105,7 +105,7 @@ const StructurePage = () => {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold mb-3 text-orange-700">Mode impératif</h3>
+                <h3 className="text-lg font-bold mb-3 text-pr-orange-dark">Mode impératif</h3>
                 <p className="text-gray-700 mb-3"><strong>Structure :</strong> VERBE + COMPLÉMENTS + !</p>
 
                 <div className="grid md:grid-cols-2 gap-4">
@@ -128,7 +128,7 @@ const StructurePage = () => {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold mb-3 text-orange-700">Conditionnelles sans "wenn" (Style soutenu)</h3>
+                <h3 className="text-lg font-bold mb-3 text-pr-orange-dark">Conditionnelles sans "wenn" (Style soutenu)</h3>
                 <p className="text-gray-700 mb-3"><strong>Structure :</strong> VERBE (Subjonctif) + SUJET + AUTRES + , + CONSÉQUENCE</p>
 
                 <div className="bg-purple-50 p-4 rounded-lg mb-4">
@@ -150,18 +150,18 @@ const StructurePage = () => {
 
           {/* Position 2 : Verbe en Deuxième Position */}
           <div className="bg-white rounded-xl p-8 shadow-lg mb-8 border border-orange-100">
-            <h2 className="text-2xl font-bold mb-6 text-orange-700 border-b border-orange-200 pb-2">Position 2 : Verbe en Deuxième Position</h2>
+            <h2 className="text-2xl font-bold mb-6 text-pr-orange-dark border-b border-orange-200 pb-2">Position 2 : Verbe en Deuxième Position</h2>
 
             <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-bold mb-3 text-orange-700">Phrases déclaratives</h3>
+                <h3 className="text-lg font-bold mb-3 text-pr-orange-dark">Phrases déclaratives</h3>
                 <p className="text-gray-700 mb-3">
                   <strong>Structure :</strong> ÉLÉMENT 1 + VERBE + SUJET + AUTRES + PARTIE VERBALE NON CONJUGUÉE
                 </p>
               </div>
 
               <div>
-                <h3 className="text-lg font-bold mb-3 text-orange-700">Mécanisme de la "klammer" (parenthèse verbale) :</h3>
+                <h3 className="text-lg font-bold mb-3 text-pr-orange-dark">Mécanisme de la "klammer" (parenthèse verbale) :</h3>
 
                 <div className="bg-orange-50 p-4 rounded-lg mb-4">
                   <table className="w-full border-collapse border border-gray-300">
@@ -176,21 +176,21 @@ const StructurePage = () => {
                     <tbody>
                       <tr>
                         <td className="border border-gray-300 p-2 text-center font-mono">Ich</td>
-                        <td className="border border-gray-300 p-2 text-center font-mono text-orange-700 font-bold">habe</td>
+                        <td className="border border-gray-300 p-2 text-center font-mono text-pr-orange-dark font-bold">habe</td>
                         <td className="border border-gray-300 p-2 text-center font-mono">gestern meinem Bruder</td>
-                        <td className="border border-gray-300 p-2 text-center font-mono text-orange-700 font-bold">geholfen</td>
+                        <td className="border border-gray-300 p-2 text-center font-mono text-pr-orange-dark font-bold">geholfen</td>
                       </tr>
                       <tr>
                         <td className="border border-gray-300 p-2 text-center font-mono">Gestern</td>
-                        <td className="border border-gray-300 p-2 text-center font-mono text-orange-700 font-bold">habe</td>
+                        <td className="border border-gray-300 p-2 text-center font-mono text-pr-orange-dark font-bold">habe</td>
                         <td className="border border-gray-300 p-2 text-center font-mono">ich meinem Bruder</td>
-                        <td className="border border-gray-300 p-2 text-center font-mono text-orange-700 font-bold">geholfen</td>
+                        <td className="border border-gray-300 p-2 text-center font-mono text-pr-orange-dark font-bold">geholfen</td>
                       </tr>
                       <tr>
                         <td className="border border-gray-300 p-2 text-center font-mono">Meinem Bruder</td>
-                        <td className="border border-gray-300 p-2 text-center font-mono text-orange-700 font-bold">habe</td>
+                        <td className="border border-gray-300 p-2 text-center font-mono text-pr-orange-dark font-bold">habe</td>
                         <td className="border border-gray-300 p-2 text-center font-mono">ich gestern</td>
-                        <td className="border border-gray-300 p-2 text-center font-mono text-orange-700 font-bold">geholfen</td>
+                        <td className="border border-gray-300 p-2 text-center font-mono text-pr-orange-dark font-bold">geholfen</td>
                       </tr>
                     </tbody>
                   </table>
@@ -198,7 +198,7 @@ const StructurePage = () => {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold mb-3 text-orange-700">Questions ouvertes (W-Fragen)</h3>
+                <h3 className="text-lg font-bold mb-3 text-pr-orange-dark">Questions ouvertes (W-Fragen)</h3>
                 <p className="text-gray-700 mb-3"><strong>Structure :</strong> MOT INTERROGATIF + VERBE + SUJET + AUTRES + ?</p>
 
                 <div className="bg-orange-50 p-4 rounded-lg mb-4">
@@ -212,7 +212,7 @@ const StructurePage = () => {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold mb-3 text-orange-700">Éléments verbaux non conjugués en fin de phrase</h3>
+                <h3 className="text-lg font-bold mb-3 text-pr-orange-dark">Éléments verbaux non conjugués en fin de phrase</h3>
 
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse border border-gray-300">
@@ -253,11 +253,11 @@ const StructurePage = () => {
 
           {/* Position Finale : Verbe en Dernière Position */}
           <div className="bg-white rounded-xl p-8 shadow-lg mb-8 border border-orange-100">
-            <h2 className="text-2xl font-bold mb-6 text-orange-700 border-b border-orange-200 pb-2">Position Finale : Verbe en Dernière Position</h2>
+            <h2 className="text-2xl font-bold mb-6 text-pr-orange-dark border-b border-orange-200 pb-2">Position Finale : Verbe en Dernière Position</h2>
 
             <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-bold mb-3 text-orange-700">Propositions subordonnées</h3>
+                <h3 className="text-lg font-bold mb-3 text-pr-orange-dark">Propositions subordonnées</h3>
                 <p className="text-gray-700 mb-3">
                   <strong>Structure :</strong> CONJONCTION + SUJET + COMPLÉMENTS + VERBE CONJUGUÉ
                 </p>
@@ -298,7 +298,7 @@ const StructurePage = () => {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold mb-3 text-orange-700">Cas particuliers dans les subordonnées</h3>
+                <h3 className="text-lg font-bold mb-3 text-pr-orange-dark">Cas particuliers dans les subordonnées</h3>
 
                 <div className="space-y-4">
                   <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
@@ -306,7 +306,7 @@ const StructurePage = () => {
                     <p className="font-mono text-red-900">...dass er hat kommen wollen. (et non : *dass er kommen wollen hat*)</p>
                   </div>
 
-                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-pr-orange">
                     <p className="font-semibold text-orange-800 mb-2">Comparatifs :</p>
                     <p className="font-mono text-orange-900">...dass sie größer ist als ich dachte. (verbe avant "als")</p>
                   </div>
@@ -322,11 +322,11 @@ const StructurePage = () => {
 
           {/* Ordre des Éléments : Principes Fondamentaux */}
           <div className="bg-white rounded-xl p-8 shadow-lg mb-8 border border-orange-100">
-            <h2 className="text-2xl font-bold mb-6 text-orange-700 border-b border-orange-200 pb-2">Ordre des Éléments : Principes Fondamentaux</h2>
+            <h2 className="text-2xl font-bold mb-6 text-pr-orange-dark border-b border-orange-200 pb-2">Ordre des Éléments : Principes Fondamentaux</h2>
 
             <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-bold mb-3 text-orange-700">Principe 1 : Mise en relief par la position initiale</h3>
+                <h3 className="text-lg font-bold mb-3 text-pr-orange-dark">Principe 1 : Mise en relief par la position initiale</h3>
                 <p className="text-gray-700 mb-3">Impact communicatif selon l'élément placé en première position :</p>
 
                 <div className="overflow-x-auto">
@@ -365,7 +365,7 @@ const StructurePage = () => {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold mb-3 text-orange-700">Principe 2 : Position du sujet après inversion</h3>
+                <h3 className="text-lg font-bold mb-3 text-pr-orange-dark">Principe 2 : Position du sujet après inversion</h3>
                 <p className="text-gray-700 mb-3">
                   <strong>Règle :</strong> Quand un autre élément que le sujet occupe la première position, le sujet suit immédiatement le verbe.
                 </p>
@@ -387,16 +387,16 @@ const StructurePage = () => {
 
           {/* Ordre des Compléments : Règles Détaillées */}
           <div className="bg-white rounded-xl p-8 shadow-lg mb-8 border border-orange-100">
-            <h2 className="text-2xl font-bold mb-6 text-orange-700 border-b border-orange-200 pb-2">Ordre des Compléments : Règles Détaillées</h2>
+            <h2 className="text-2xl font-bold mb-6 text-pr-orange-dark border-b border-orange-200 pb-2">Ordre des Compléments : Règles Détaillées</h2>
 
             <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-bold mb-3 text-orange-700">Hiérarchie générale</h3>
+                <h3 className="text-lg font-bold mb-3 text-pr-orange-dark">Hiérarchie générale</h3>
                 <p className="text-gray-700 mb-3"><strong>SUJET + PRONOMS + TEMPS + CAUSE + LIEU + MANIÈRE + COI + COD</strong></p>
               </div>
 
               <div>
-                <h3 className="text-lg font-bold mb-3 text-orange-700">Règles spécifiques aux pronoms</h3>
+                <h3 className="text-lg font-bold mb-3 text-pr-orange-dark">Règles spécifiques aux pronoms</h3>
                 <p className="text-gray-700 mb-3"><strong>Ordre des pronoms personnels :</strong></p>
                 <p className="text-gray-700 mb-3">NOMINATIF + ACCUSATIF + DATIF</p>
 
@@ -422,7 +422,7 @@ const StructurePage = () => {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold mb-3 text-orange-700">Compléments circonstanciels : T-L-M</h3>
+                <h3 className="text-lg font-bold mb-3 text-pr-orange-dark">Compléments circonstanciels : T-L-M</h3>
                 <p className="text-gray-700 mb-3"><strong>Mnémotechnique :</strong> Temps - Lieu - Manière</p>
 
                 <div className="overflow-x-auto">
@@ -454,14 +454,14 @@ const StructurePage = () => {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold mb-3 text-orange-700">Hiérarchie informationnelle</h3>
+                <h3 className="text-lg font-bold mb-3 text-pr-orange-dark">Hiérarchie informationnelle</h3>
                 <p className="text-gray-700 mb-3">
                   <strong>Principe :</strong> Plus une information est centrale au sens du verbe, plus elle se rapproche de la fin.
                 </p>
 
                 <div className="bg-orange-50 p-4 rounded-lg">
                   <p className="text-sm text-orange-800 mb-2 font-semibold">Exemples analytiques :</p>
-                  <div className="bg-white p-3 rounded border-l-4 border-orange-500">
+                  <div className="bg-white p-3 rounded border-l-4 border-pr-orange">
                     <p className="font-mono text-gray-800 mb-1">Ich kaufe heute im Supermarkt für meine Familie frisches Gemüse.</p>
                     <ul className="text-sm text-gray-700 ml-4">
                       <li>• Noyau : <strong>Gemüse kaufen</strong> (information essentielle)</li>
@@ -475,11 +475,11 @@ const StructurePage = () => {
 
           {/* La Négation avec "nicht" : Règles Précises */}
           <div className="bg-white rounded-xl p-8 shadow-lg mb-8 border border-orange-100">
-            <h2 className="text-2xl font-bold mb-6 text-orange-700 border-b border-orange-200 pb-2">La Négation avec "nicht" : Règles Précises</h2>
+            <h2 className="text-2xl font-bold mb-6 text-pr-orange-dark border-b border-orange-200 pb-2">La Négation avec "nicht" : Règles Précises</h2>
 
             <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-bold mb-3 text-orange-700">Négation totale</h3>
+                <h3 className="text-lg font-bold mb-3 text-pr-orange-dark">Négation totale</h3>
                 <p className="text-gray-700 mb-3"><strong>Position :</strong> Dernier élément d'information</p>
                 <div className="bg-green-50 p-3 rounded-lg">
                   <p className="font-mono text-green-800">Sie versteht diese Theorie nicht.</p>
@@ -487,7 +487,7 @@ const StructurePage = () => {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold mb-3 text-orange-700">Négation partielle</h3>
+                <h3 className="text-lg font-bold mb-3 text-pr-orange-dark">Négation partielle</h3>
                 <p className="text-gray-700 mb-3"><strong>Position :</strong> Directement avant l'élément nié</p>
                 <div className="bg-orange-50 p-3 rounded-lg">
                   <p className="font-mono text-orange-800">Er arbeitet nicht in Berlin, sondern in München.</p>
@@ -495,11 +495,11 @@ const StructurePage = () => {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold mb-3 text-orange-700">Respect des groupes syntaxiques</h3>
+                <h3 className="text-lg font-bold mb-3 text-pr-orange-dark">Respect des groupes syntaxiques</h3>
                 <p className="text-gray-700 mb-3"><strong>Groupes inséparables :</strong></p>
 
                 <div className="space-y-3">
-                  <div className="bg-orange-50 p-3 rounded-lg border-l-4 border-orange-500">
+                  <div className="bg-orange-50 p-3 rounded-lg border-l-4 border-pr-orange">
                     <p className="font-mono text-orange-900">• Noyau verbal : Ich kann nicht nach Hause gehen.</p>
                   </div>
                   <div className="bg-purple-50 p-3 rounded-lg border-l-4 border-purple-500">
@@ -544,7 +544,7 @@ const StructurePage = () => {
 
           {/* Ponctuation : Règles Strictes */}
           <div className="bg-white rounded-xl p-8 shadow-lg mb-8 border border-orange-100">
-            <h2 className="text-2xl font-bold mb-6 text-orange-700 border-b border-orange-200 pb-2">Ponctuation : Règles Strictes</h2>
+            <h2 className="text-2xl font-bold mb-6 text-pr-orange-dark border-b border-orange-200 pb-2">Ponctuation : Règles Strictes</h2>
 
             <div className="space-y-6">
               <div>
@@ -598,11 +598,11 @@ const StructurePage = () => {
 
           {/* Synthèse : Mécanismes Clés */}
           <div className="bg-gradient-to-r from-orange-50 to-pr-orange-pale rounded-xl p-8 shadow-lg mb-8 border border-orange-200">
-            <h2 className="text-2xl font-bold mb-6 text-orange-700 border-b border-orange-200 pb-2">Synthèse : Mécanismes Clés</h2>
+            <h2 className="text-2xl font-bold mb-6 text-pr-orange-dark border-b border-orange-200 pb-2">Synthèse : Mécanismes Clés</h2>
 
             <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-bold mb-3 text-orange-700">Les trois règles d'or</h3>
+                <h3 className="text-lg font-bold mb-3 text-pr-orange-dark">Les trois règles d'or</h3>
                 <ul className="list-disc list-inside space-y-2 text-gray-700">
                   <li><strong>Position du verbe = Type de phrase</strong> (déclarative, interrogative, subordonnée)</li>
                   <li><strong>Première position = Mise en relief</strong> (emphase communicative)</li>
@@ -635,7 +635,7 @@ const StructurePage = () => {
           {/* Bouton retour */}
           <div className="text-center pb-8">
             <Link to="/formation/allemand-grammaire">
-              <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-50">
+              <Button variant="outline" className="border-orange-300 text-pr-orange-dark hover:bg-orange-50">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Retour à la grammaire
               </Button>

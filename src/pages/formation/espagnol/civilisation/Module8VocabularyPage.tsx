@@ -45,11 +45,11 @@ const Module8VocabularyPage = () => {
         {/* Header Section */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-4 mb-8">
-            <div className="p-4 rounded-2xl bg-orange-600 text-white shadow-lg">
+            <div className="p-4 rounded-2xl bg-pr-orange-dark text-white shadow-lg">
               <BookOpen className="h-12 w-12" />
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
-              <span className="text-orange-700 font-bold">
+              <span className="text-pr-orange-dark font-bold">
                 Vocabulaire Historique
               </span>
             </h1>

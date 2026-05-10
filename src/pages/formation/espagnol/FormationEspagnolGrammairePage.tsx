@@ -62,13 +62,13 @@ const FormationEspagnolGrammairePage = () => {
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-orange-600 text-lg">1</span>
+                    <span className="font-bold text-pr-orange-dark text-lg">1</span>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Conjugaison et Temps Verbaux</h3>
                     <p className="text-gray-600 mb-4">Temps complexes : subjonctif, conditionnel, impératif et tous les temps de l'indicatif</p>
                     <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
@@ -89,13 +89,13 @@ const FormationEspagnolGrammairePage = () => {
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-orange-600 text-lg">2</span>
+                    <span className="font-bold text-pr-orange-dark text-lg">2</span>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Syntaxe et Structures Complexes</h3>
                     <p className="text-gray-600 mb-4">Structures syntaxiques sophistiquées pour enrichir l'expression écrite et orale</p>
                     <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
@@ -116,13 +116,13 @@ const FormationEspagnolGrammairePage = () => {
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-orange-600 text-lg">3</span>
+                    <span className="font-bold text-pr-orange-dark text-lg">3</span>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Ser vs Estar et Constructions</h3>
                     <p className="text-gray-600 mb-4">Maîtrisez les nuances entre ser et estar, constructions spéciales et verbes d'état</p>
                     <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
@@ -143,13 +143,13 @@ const FormationEspagnolGrammairePage = () => {
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-orange-600 text-lg">4</span>
+                    <span className="font-bold text-pr-orange-dark text-lg">4</span>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Prépositions et Locutions</h3>
                     <p className="text-gray-600 mb-4">Emploi précis des prépositions et locutions prépositionnelles en espagnol</p>
                     <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
@@ -170,13 +170,13 @@ const FormationEspagnolGrammairePage = () => {
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-orange-600 text-lg">5</span>
+                    <span className="font-bold text-pr-orange-dark text-lg">5</span>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Questions et Interrogatifs</h3>
                     <p className="text-gray-600 mb-4">Maîtrisez la formulation des questions et l'usage des mots interrogatifs</p>
                     <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
@@ -197,13 +197,13 @@ const FormationEspagnolGrammairePage = () => {
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-orange-600 text-lg">6</span>
+                    <span className="font-bold text-pr-orange-dark text-lg">6</span>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Négations</h3>
                     <p className="text-gray-600 mb-4">Maîtrisez les formes négatives et leurs emplois en espagnol</p>
                     <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
@@ -224,13 +224,13 @@ const FormationEspagnolGrammairePage = () => {
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-orange-600 text-lg">7</span>
+                    <span className="font-bold text-pr-orange-dark text-lg">7</span>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Vocabulaire Temporel : Dates et Heures</h3>
                     <p className="text-gray-600 mb-4">Maîtrisez l'expression du temps, des dates et des heures en espagnol</p>
                     <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
@@ -251,13 +251,13 @@ const FormationEspagnolGrammairePage = () => {
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-orange-600 text-lg">8</span>
+                    <span className="font-bold text-pr-orange-dark text-lg">8</span>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Pronoms</h3>
                     <p className="text-gray-600 mb-4">Maîtrisez l'usage des pronoms personnels, possessifs et démonstratifs</p>
                     <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
@@ -278,13 +278,13 @@ const FormationEspagnolGrammairePage = () => {
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-orange-600 text-lg">9</span>
+                    <span className="font-bold text-pr-orange-dark text-lg">9</span>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Verbes Particuliers et Tournures Affectives</h3>
                     <p className="text-gray-600 mb-4">Maîtrisez les verbes comme gustar et les constructions affectives</p>
                     <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
@@ -305,13 +305,13 @@ const FormationEspagnolGrammairePage = () => {
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-orange-600 text-lg">10</span>
+                    <span className="font-bold text-pr-orange-dark text-lg">10</span>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Adjectifs et Adverbes</h3>
                     <p className="text-gray-600 mb-4">Maîtrisez l'accord des adjectifs, les adverbes et leurs emplois</p>
                     <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>
@@ -332,13 +332,13 @@ const FormationEspagnolGrammairePage = () => {
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-orange-600 text-lg">11</span>
+                    <span className="font-bold text-pr-orange-dark text-lg">11</span>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Thème Grammatical</h3>
                     <p className="text-gray-600 mb-4">Techniques de traduction français → espagnol avec pièges classiques et méthodologie</p>
                     <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md font-medium">
+                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
                         <Calendar className="mr-2 h-4 w-4" />
                         Accéder au module
                       </Button>

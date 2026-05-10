@@ -73,7 +73,7 @@ const ArticlesPage = () => {
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         {article.featured && (
-                          <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-carnet-red/10 text-carnet-red group-hover:bg-orange-100 group-hover:text-orange-700 transition-colors duration-300 mb-3">
+                          <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-carnet-red/10 text-carnet-red group-hover:bg-orange-100 group-hover:text-pr-orange-dark transition-colors duration-300 mb-3">
                             Article vedette
                           </div>
                         )}
@@ -83,11 +83,11 @@ const ArticlesPage = () => {
                           </Link>
                         </CardTitle>
                         {article.subtitle && (
-                          <p className="text-lg text-carnet-red group-hover:text-orange-700 transition-colors duration-300 font-medium mb-3">
+                          <p className="text-lg text-carnet-red group-hover:text-pr-orange-dark transition-colors duration-300 font-medium mb-3">
                             {article.subtitle}
                           </p>
                         )}
-                        <p className="text-gray-600 group-hover:text-orange-700 transition-colors duration-300 mb-4">
+                        <p className="text-gray-600 group-hover:text-pr-orange-dark transition-colors duration-300 mb-4">
                           {article.description}
                         </p>
 
@@ -111,7 +111,7 @@ const ArticlesPage = () => {
                   </CardHeader>
                   <CardContent className="pt-0">
                     <Link to={article.link}>
-                      <Button className="bg-carnet-red hover:bg-orange-600 text-white border-0 group-inner transition-all duration-300">
+                      <Button className="bg-carnet-red hover:bg-pr-orange-dark text-white border-0 group-inner transition-all duration-300">
                         Lire l'article
                         <ArrowRight className="ml-2 h-4 w-4 group-inner-hover:translate-x-1 transition-transform" />
                       </Button>
@@ -131,12 +131,12 @@ const ArticlesPage = () => {
                   <h3 className="text-2xl font-bold mb-4 text-carnet-red group-hover:text-pr-orange-dark transition-colors duration-300">
                     Besoin de conseils personnalisés ?
                   </h3>
-                  <p className="text-gray-600 group-hover:text-orange-700 transition-colors duration-300 mb-6">
+                  <p className="text-gray-600 group-hover:text-pr-orange-dark transition-colors duration-300 mb-6">
                     Nos experts sont là pour vous accompagner dans votre réussite.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Link to="/contact">
-                      <Button size="lg" className="bg-carnet-red hover:bg-orange-600 text-white transition-all duration-300">
+                      <Button size="lg" className="bg-carnet-red hover:bg-pr-orange-dark text-white transition-all duration-300">
                         Nous contacter
                       </Button>
                     </Link>

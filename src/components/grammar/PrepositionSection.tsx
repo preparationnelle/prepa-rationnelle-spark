@@ -16,7 +16,7 @@ const PrepositionSectionComponent: React.FC<PrepositionSectionProps> = ({ sectio
     if (id.includes('emploi') || id.includes('precis')) return <Target className="h-5 w-5 text-blue-600" />;
     if (id.includes('prepositions') || id.includes('base')) return <MapPin className="h-5 w-5 text-green-600" />;
     if (id.includes('locutions') || id.includes('prepositionnelles')) return <Code className="h-5 w-5 text-purple-600" />;
-    if (id.includes('regimes') || id.includes('verbaux')) return <MessageSquare className="h-5 w-5 text-orange-600" />;
+    if (id.includes('regimes') || id.includes('verbaux')) return <MessageSquare className="h-5 w-5 text-pr-orange-dark" />;
     if (id.includes('expressions') || id.includes('figees')) return <Lightbulb className="h-5 w-5 text-yellow-600" />;
     if (id.includes('cours') || id.includes('revision')) return <BookOpen className="h-5 w-5 text-indigo-600" />;
     if (id.includes('personnel') || id.includes('infinitif')) return <Users className="h-5 w-5 text-pink-600" />;
@@ -150,7 +150,7 @@ const PrepositionSectionComponent: React.FC<PrepositionSectionProps> = ({ sectio
                         </span>
                       ))}
                     </div>
-                    <p className="text-xs text-orange-700">{irregularity.notes}</p>
+                    <p className="text-xs text-pr-orange-dark">{irregularity.notes}</p>
                   </div>
                 ))}
               </div>

@@ -376,7 +376,7 @@ export default function MentionsLegalesPage() {
                     </div>
                     <a
                       href="/offre/gratuite"
-                      className="inline-block bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors font-semibold text-sm"
+                      className="inline-block bg-pr-orange text-white px-4 py-2 rounded-lg hover:bg-pr-orange-dark transition-colors font-semibold text-sm"
                     >
                       📅 Cours gratuit
                     </a>

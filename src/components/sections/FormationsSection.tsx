@@ -10,7 +10,7 @@ export const FormationsSection = () => {
     <section className="py-12 sm:py-8 px-4 sm:px-6 bg-white">
       <div className="container mx-auto">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4">
-          Nos <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">formations spécialisées</span>
+          Nos <span className="bg-gradient-to-r from-pr-orange to-pr-orange-dark bg-clip-text text-transparent">formations spécialisées</span>
         </h2>
         <p className="text-center text-gray-600 mb-8 sm:mb-12 max-w-3xl mx-auto text-base sm:text-lg leading-relaxed">
           Formations conçues spécifiquement pour les étudiants en prépa ECG, avec méthodes éprouvées et accompagnement personnalisé.
@@ -192,9 +192,9 @@ export const FormationsSection = () => {
               <CardHeader className="relative z-10">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
-                    <Languages className="h-6 w-6 text-orange-600" />
+                    <Languages className="h-6 w-6 text-pr-orange-dark" />
                   </div>
-                  <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
+                  <CardTitle className="text-xl group-hover:text-pr-orange-dark transition-colors">
                     Espagnol ECG
                   </CardTitle>
                 </div>
@@ -204,20 +204,20 @@ export const FormationsSection = () => {
                   Perfectionnez votre espagnol avec méthodes ciblées, grammaire avancée et préparation intensive aux concours.
                 </p>
                 <div className="space-y-2 mb-4">
-                  <div className="text-sm text-orange-600 flex items-center gap-2">
+                  <div className="text-sm text-pr-orange-dark flex items-center gap-2">
                     <CheckCircle className="h-4 w-4" />
                     Grammaire et conjugaison
                   </div>
-                  <div className="text-sm text-orange-600 flex items-center gap-2">
+                  <div className="text-sm text-pr-orange-dark flex items-center gap-2">
                     <CheckCircle className="h-4 w-4" />
                     Thèmes et versions
                   </div>
-                  <div className="text-sm text-orange-600 flex items-center gap-2">
+                  <div className="text-sm text-pr-orange-dark flex items-center gap-2">
                     <CheckCircle className="h-4 w-4" />
                     Expression écrite et orale
                   </div>
                 </div>
-                <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full group-hover:scale-105 transition-all duration-300">
+                <Button variant="ghost" className="text-pr-orange-dark group-hover:bg-orange-50 w-full group-hover:scale-105 transition-all duration-300">
                   <span className="flex items-center gap-2">
                     Voir la formation
                     <TrendingUp className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -234,9 +234,9 @@ export const FormationsSection = () => {
               <CardHeader className="relative z-10">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
-                    <Globe className="h-6 w-6 text-orange-600" />
+                    <Globe className="h-6 w-6 text-pr-orange-dark" />
                   </div>
-                  <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
+                  <CardTitle className="text-xl group-hover:text-pr-orange-dark transition-colors">
                     Géopolitique
                   </CardTitle>
                 </div>
@@ -246,20 +246,20 @@ export const FormationsSection = () => {
                   Analysez les enjeux mondiaux contemporains avec méthodes et outils pour briller aux concours.
                 </p>
                 <div className="space-y-2 mb-4">
-                  <div className="text-sm text-orange-600 flex items-center gap-2">
+                  <div className="text-sm text-pr-orange-dark flex items-center gap-2">
                     <CheckCircle className="h-4 w-4" />
                     Enjeux contemporains
                   </div>
-                  <div className="text-sm text-orange-600 flex items-center gap-2">
+                  <div className="text-sm text-pr-orange-dark flex items-center gap-2">
                     <CheckCircle className="h-4 w-4" />
                     Méthodes d'analyse
                   </div>
-                  <div className="text-sm text-orange-600 flex items-center gap-2">
+                  <div className="text-sm text-pr-orange-dark flex items-center gap-2">
                     <CheckCircle className="h-4 w-4" />
                     Actualité stratégique
                   </div>
                 </div>
-                <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full group-hover:scale-105 transition-all duration-300">
+                <Button variant="ghost" className="text-pr-orange-dark group-hover:bg-orange-50 w-full group-hover:scale-105 transition-all duration-300">
                   <span className="flex items-center gap-2">
                     Voir la formation
                     <TrendingUp className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -318,9 +318,9 @@ export const FormationsSection = () => {
               <CardHeader className="relative z-10">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
-                    <Users className="h-6 w-6 text-orange-600" />
+                    <Users className="h-6 w-6 text-pr-orange-dark" />
                   </div>
-                  <CardTitle className="text-xl group-hover:text-orange-600 transition-colors">
+                  <CardTitle className="text-xl group-hover:text-pr-orange-dark transition-colors">
                     Entretiens
                   </CardTitle>
                 </div>
@@ -330,20 +330,20 @@ export const FormationsSection = () => {
                   Préparez-vous aux entretiens de personnalité avec méthodes éprouvées et simulations réalistes.
                 </p>
                 <div className="space-y-2 mb-4">
-                  <div className="text-sm text-orange-600 flex items-center gap-2">
+                  <div className="text-sm text-pr-orange-dark flex items-center gap-2">
                     <CheckCircle className="h-4 w-4" />
                     Techniques de présentation
                   </div>
-                  <div className="text-sm text-orange-600 flex items-center gap-2">
+                  <div className="text-sm text-pr-orange-dark flex items-center gap-2">
                     <CheckCircle className="h-4 w-4" />
                     Gestion du stress
                   </div>
-                  <div className="text-sm text-orange-600 flex items-center gap-2">
+                  <div className="text-sm text-pr-orange-dark flex items-center gap-2">
                     <CheckCircle className="h-4 w-4" />
                     Simulations d'entretiens
                   </div>
                 </div>
-                <Button variant="ghost" className="text-orange-600 group-hover:bg-orange-50 w-full group-hover:scale-105 transition-all duration-300">
+                <Button variant="ghost" className="text-pr-orange-dark group-hover:bg-orange-50 w-full group-hover:scale-105 transition-all duration-300">
                   <span className="flex items-center gap-2">
                     Préparer mes entretiens
                     <TrendingUp className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -358,7 +358,7 @@ export const FormationsSection = () => {
           <Link to="/formations">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700"
+              className="bg-gradient-to-r from-pr-orange to-pr-orange-dark text-white hover:from-pr-orange-dark hover:to-pr-orange-dark"
             >
               <span className="flex items-center gap-2">
                 Voir toutes les formations

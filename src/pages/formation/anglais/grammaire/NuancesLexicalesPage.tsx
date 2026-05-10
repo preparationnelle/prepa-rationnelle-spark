@@ -58,7 +58,7 @@ const NuancesLexicalesPage = () => {
         {/* En-tête */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-orange-600 text-white">
+            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Fiche : Nuances Lexicales (Mots Fréquemment Confondus)
@@ -76,7 +76,7 @@ const NuancesLexicalesPage = () => {
               Introduction
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-orange-700 space-y-3">
+          <CardContent className="text-pr-orange-dark space-y-3">
             <p>Apprenez les <span className="font-semibold">définitions</span>, <span className="font-semibold">contextes</span> et <span className="font-semibold">exemples</span> pour chaque paire, puis entraînez-vous à les utiliser.</p>
           </CardContent>
         </Card>
@@ -85,7 +85,7 @@ const NuancesLexicalesPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <Table className="h-6 w-6 text-orange-600" />
+              <Table className="h-6 w-6 text-pr-orange-dark" />
               1. Paires courantes à ne pas confondre
             </CardTitle>
           </CardHeader>
@@ -94,15 +94,15 @@ const NuancesLexicalesPage = () => {
               <table className="min-w-full border border-gray-200 bg-white">
                 <thead className="bg-orange-50">
                   <tr>
-                    <th className="border px-3 py-2 text-left text-orange-700">Paire</th>
-                    <th className="border px-3 py-2 text-left text-orange-700">Nuance</th>
-                    <th className="border px-3 py-2 text-left text-orange-700">Exemple</th>
+                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Paire</th>
+                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Nuance</th>
+                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Exemple</th>
                   </tr>
                 </thead>
                 <tbody>
                   {pairs.map(([pair, nuance, ex]) => (
                     <tr key={pair}>
-                      <td className="border px-3 py-2 text-orange-700 font-medium">{pair}</td>
+                      <td className="border px-3 py-2 text-pr-orange-dark font-medium">{pair}</td>
                       <td className="border px-3 py-2">{nuance}</td>
                       <td className="border px-3 py-2">{ex}</td>
                     </tr>
@@ -120,9 +120,9 @@ const NuancesLexicalesPage = () => {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-6 space-y-1">
-              <li>Créer des <span className="text-orange-700 font-semibold">mnémotechniques</span> (ex: effect → résultat « E »).</li>
-              <li>Repérer les <span className="text-orange-700 font-semibold">contextes typiques</span> (historic event vs historical figure).</li>
-              <li>Vérifier le <span className="text-orange-700 font-semibold">type de mot</span> (nom vs verbe).</li>
+              <li>Créer des <span className="text-pr-orange-dark font-semibold">mnémotechniques</span> (ex: effect → résultat « E »).</li>
+              <li>Repérer les <span className="text-pr-orange-dark font-semibold">contextes typiques</span> (historic event vs historical figure).</li>
+              <li>Vérifier le <span className="text-pr-orange-dark font-semibold">type de mot</span> (nom vs verbe).</li>
             </ul>
           </CardContent>
         </Card>
@@ -134,7 +134,7 @@ const NuancesLexicalesPage = () => {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-6 space-y-1">
-              <li>Employer « less » avec pluriel comptable (préférer <span className="text-orange-700 font-semibold">fewer</span>).</li>
+              <li>Employer « less » avec pluriel comptable (préférer <span className="text-pr-orange-dark font-semibold">fewer</span>).</li>
               <li>Confondre advice/advise (nom vs verbe).</li>
               <li>Utiliser « so » au lieu de « such » devant un nom.</li>
             </ul>
@@ -150,10 +150,10 @@ const NuancesLexicalesPage = () => {
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-lg text-orange-700 mb-6">Choisissez la bonne forme selon le contexte.</p>
+            <p className="text-lg text-pr-orange-dark mb-6">Choisissez la bonne forme selon le contexte.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/formation/anglais/grammaire/nuances-lexicales/exercices">
-                <Button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-lg w-full sm:w-auto">
+                <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
                   <Target className="h-5 w-5 mr-2" />
                   Exercices
                 </Button>

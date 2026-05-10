@@ -15,7 +15,7 @@ export const GeopoliticsReferences: React.FC = () => {
     <Card className="border-2">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <BookOpen className="h-5 w-5 text-orange-600" />
+          <BookOpen className="h-5 w-5 text-pr-orange-dark" />
           Références de géopolitique (par thèmes)
         </CardTitle>
         <div className="text-sm text-muted-foreground">Légende: <span className="font-medium">Indispensable</span></div>

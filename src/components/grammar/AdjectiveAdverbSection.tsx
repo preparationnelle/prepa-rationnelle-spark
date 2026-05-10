@@ -16,7 +16,7 @@ const AdjectiveAdverbSectionComponent: React.FC<AdjectiveAdverbSectionProps> = (
     if (id.includes('possessifs') || id.includes('possessifs')) return <User className="h-5 w-5 text-blue-600" />;
     if (id.includes('indefinis') || id.includes('indefinis')) return <Hash className="h-5 w-5 text-green-600" />;
     if (id.includes('genre') || id.includes('nombre')) return <Tag className="h-5 w-5 text-purple-600" />;
-    if (id.includes('demonstratifs') || id.includes('demonstratifs')) return <Target className="h-5 w-5 text-orange-600" />;
+    if (id.includes('demonstratifs') || id.includes('demonstratifs')) return <Target className="h-5 w-5 text-pr-orange-dark" />;
     if (id.includes('apocope') || id.includes('apocope')) return <Type className="h-5 w-5 text-red-600" />;
     if (id.includes('quantite') || id.includes('maniere')) return <ZapIcon className="h-5 w-5 text-indigo-600" />;
     if (id.includes('accord') || id.includes('exceptions')) return <AlertTriangle className="h-5 w-5 text-yellow-600" />;
@@ -150,7 +150,7 @@ const AdjectiveAdverbSectionComponent: React.FC<AdjectiveAdverbSectionProps> = (
                         </span>
                       ))}
                     </div>
-                    <p className="text-xs text-orange-700">{irregularity.notes}</p>
+                    <p className="text-xs text-pr-orange-dark">{irregularity.notes}</p>
                   </div>
                 ))}
               </div>

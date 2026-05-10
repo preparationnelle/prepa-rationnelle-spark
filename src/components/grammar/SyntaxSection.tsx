@@ -16,7 +16,7 @@ const SyntaxSectionComponent: React.FC<SyntaxSectionProps> = ({ section }) => {
     if (id.includes('structures') || id.includes('relatives')) return <Code className="h-5 w-5 text-blue-600" />;
     if (id.includes('discours') || id.includes('opinion')) return <MessageSquare className="h-5 w-5 text-green-600" />;
     if (id.includes('emphatiques') || id.includes('accords')) return <Lightbulb className="h-5 w-5 text-purple-600" />;
-    if (id.includes('liaison') || id.includes('obligation')) return <BookOpen className="h-5 w-5 text-orange-600" />;
+    if (id.includes('liaison') || id.includes('obligation')) return <BookOpen className="h-5 w-5 text-pr-orange-dark" />;
     return <BookOpen className="h-5 w-5 text-blue-600" />;
   };
 
@@ -126,7 +126,7 @@ const SyntaxSectionComponent: React.FC<SyntaxSectionProps> = ({ section }) => {
                         </span>
                       ))}
                     </div>
-                    <p className="text-xs text-orange-700">{irregularity.notes}</p>
+                    <p className="text-xs text-pr-orange-dark">{irregularity.notes}</p>
                   </div>
                 ))}
               </div>

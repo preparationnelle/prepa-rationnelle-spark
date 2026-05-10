@@ -108,7 +108,7 @@ const LyceeSecondePage = () => {
   const colorClasses: Record<string, { bg: string, border: string, text: string, icon: string, shadow: string, gradient: string }> = {
     blue: { bg: 'bg-pr-orange-pale', border: 'border-carnet-red/20', text: 'text-carnet-red-deep', icon: 'text-carnet-red', shadow: 'shadow-carnet-red/50', gradient: 'from-carnet-red to-pr-orange' },
     emerald: { bg: 'bg-emerald-50', border: 'border-emerald-100', text: 'text-emerald-900', icon: 'text-emerald-600', shadow: 'shadow-emerald-200/50', gradient: 'from-emerald-500 to-emerald-600' },
-    orange: { bg: 'bg-orange-50', border: 'border-orange-100', text: 'text-orange-900', icon: 'text-orange-600', shadow: 'shadow-orange-200/50', gradient: 'from-orange-500 to-orange-600' },
+    orange: { bg: 'bg-orange-50', border: 'border-orange-100', text: 'text-orange-900', icon: 'text-pr-orange-dark', shadow: 'shadow-orange-200/50', gradient: 'from-pr-orange to-pr-orange-dark' },
     violet: { bg: 'bg-violet-50', border: 'border-violet-100', text: 'text-violet-900', icon: 'text-violet-600', shadow: 'shadow-violet-200/50', gradient: 'from-violet-500 to-violet-600' },
     pink: { bg: 'bg-pink-50', border: 'border-pink-100', text: 'text-pink-900', icon: 'text-pink-600', shadow: 'shadow-pink-200/50', gradient: 'from-pink-500 to-pink-600' },
     rose: { bg: 'bg-rose-50', border: 'border-rose-100', text: 'text-rose-900', icon: 'text-rose-600', shadow: 'shadow-rose-200/50', gradient: 'from-rose-500 to-rose-600' },

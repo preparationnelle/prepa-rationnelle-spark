@@ -194,7 +194,7 @@ const MethodologieDissertationPage = () => {
             <AccordionItem value="attentes-correcteur" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-orange-500 text-white">
+                  <div className="p-2 rounded-lg bg-pr-orange text-white">
                     <FileText className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -213,11 +213,11 @@ const MethodologieDissertationPage = () => {
                   
                   <div className="space-y-4">
                     {attentesCorrecteur.map((item, index) => (
-                      <Card key={index} className="border-l-4 border-l-orange-500">
+                      <Card key={index} className="border-l-4 border-l-pr-orange">
                         <CardContent className="p-4">
                           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div>
-                              <h5 className="font-medium text-orange-700">{item.axe}</h5>
+                              <h5 className="font-medium text-pr-orange-dark">{item.axe}</h5>
                             </div>
                             <div>
                               <p className="text-sm font-medium">{item.attente}</p>

@@ -20,17 +20,17 @@ export const PodcastSection = () => {
           {/* Content */}
           <div className="max-w-2xl">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center shadow-lg">
+              <div className="w-12 h-12 bg-gradient-to-br from-pr-orange to-pr-orange-dark rounded-full flex items-center justify-center shadow-lg">
                 <Radio className="h-6 w-6 text-white" />
               </div>
-              <span className="text-sm font-medium text-orange-600 bg-orange-100 px-3 py-1 rounded-full">
+              <span className="text-sm font-medium text-pr-orange-dark bg-orange-100 px-3 py-1 rounded-full">
                 Interview exclusive
               </span>
             </div>
             
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               Découvrez notre interview sur{' '}
-              <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-pr-orange to-pr-orange-dark bg-clip-text text-transparent">
                 Europe 1
               </span>
             </h2>
@@ -43,7 +43,7 @@ export const PodcastSection = () => {
               <a href={podcastUrl} target="_blank" rel="noopener noreferrer">
                 <Button 
                   size="lg" 
-                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  className="bg-gradient-to-r from-pr-orange to-pr-orange-dark hover:from-pr-orange-dark hover:to-pr-orange-dark text-white font-semibold px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 >
                   <Play className="h-5 w-5 mr-2" />
                   Écouter le podcast

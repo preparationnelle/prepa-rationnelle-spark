@@ -317,7 +317,7 @@ const TeacherCourseGradesPage = () => {
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>Bien (14-16)</span>
-                      <span className="text-blue-600">35%</span>
+                      <span className="text-carnet-red">35%</span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>Assez bien (12-14)</span>
@@ -325,7 +325,7 @@ const TeacherCourseGradesPage = () => {
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>Passable (10-12)</span>
-                      <span className="text-orange-600">10%</span>
+                      <span className="text-pr-orange-dark">10%</span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>Insuffisant (&lt;10)</span>

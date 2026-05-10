@@ -225,7 +225,7 @@ const FrontieresPage = () => {
                         <div className="space-y-3">
                           <div className="p-3 bg-orange-100 rounded-lg border border-orange-200">
                             <div className="font-semibold text-orange-800 mb-1">Brexit</div>
-                            <div className="text-sm text-orange-700">
+                            <div className="text-sm text-pr-orange-dark">
                               Retour frontières économiques UK-UE. Nouveaux contrôles douaniers, 
                               impact chaînes logistiques.
                             </div>

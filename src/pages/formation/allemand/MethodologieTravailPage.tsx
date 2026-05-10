@@ -39,7 +39,7 @@ const MethodologieTravailPage = () => {
 
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center border border-orange-200">
-              <BookOpen className="h-6 w-6 text-orange-600" />
+              <BookOpen className="h-6 w-6 text-pr-orange-dark" />
             </div>
             <h1 className="text-3xl font-bold text-gray-900">Comment travailler l'allemand en prépa</h1>
           </div>
@@ -50,7 +50,7 @@ const MethodologieTravailPage = () => {
           {/* Avertissement */}
           <div className="bg-orange-50 rounded-lg p-4 border border-orange-200 mb-8">
             <div className="flex items-center gap-2 mb-2">
-              <AlertTriangle className="h-5 w-5 text-orange-600" />
+              <AlertTriangle className="h-5 w-5 text-pr-orange-dark" />
               <span className="font-medium text-orange-800">⚠️ Attention :</span>
             </div>
             <p className="text-gray-700">
@@ -63,7 +63,7 @@ const MethodologieTravailPage = () => {
         <section className="bg-white rounded-lg p-6 border border-gray-200 mb-6">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-              <span className="font-bold text-orange-600 text-sm">1</span>
+              <span className="font-bold text-pr-orange-dark text-sm">1</span>
             </div>
             <h2 className="text-2xl font-bold text-gray-900">Traduction et Grammaire</h2>
           </div>
@@ -125,7 +125,7 @@ const MethodologieTravailPage = () => {
 
           <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
             <div className="flex items-center gap-2 mb-2">
-              <Zap className="h-5 w-5 text-orange-600" />
+              <Zap className="h-5 w-5 text-pr-orange-dark" />
               <span className="font-medium text-orange-800">🚀 Ce que je propose :</span>
             </div>
             <p className="text-gray-700 text-sm">
@@ -138,7 +138,7 @@ const MethodologieTravailPage = () => {
         <section className="bg-white rounded-lg p-6 border border-gray-200 mb-6">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-              <span className="font-bold text-orange-600 text-sm">2</span>
+              <span className="font-bold text-pr-orange-dark text-sm">2</span>
             </div>
             <h2 className="text-2xl font-bold text-gray-900">Gérer vos erreurs</h2>
           </div>
@@ -220,7 +220,7 @@ const MethodologieTravailPage = () => {
         <section className="bg-white rounded-lg p-6 border border-gray-200 mb-6">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-              <span className="font-bold text-orange-600 text-sm">3</span>
+              <span className="font-bold text-pr-orange-dark text-sm">3</span>
             </div>
             <h2 className="text-2xl font-bold text-gray-900">Approfondir les Thèmes qui tombent aux concours</h2>
           </div>
@@ -252,7 +252,7 @@ const MethodologieTravailPage = () => {
         <section className="bg-white rounded-lg p-6 border border-gray-200 mb-6">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-              <span className="font-bold text-orange-600 text-sm">4</span>
+              <span className="font-bold text-pr-orange-dark text-sm">4</span>
             </div>
             <h2 className="text-2xl font-bold text-gray-900">Préparation Structurée des Colles</h2>
           </div>
@@ -284,7 +284,7 @@ const MethodologieTravailPage = () => {
         <section className="bg-white rounded-lg p-6 border border-gray-200 mb-6">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-              <span className="font-bold text-orange-600 text-sm">5</span>
+              <span className="font-bold text-pr-orange-dark text-sm">5</span>
             </div>
             <h2 className="text-2xl font-bold text-gray-900">Réussir Essais et Synthèses</h2>
           </div>
@@ -316,7 +316,7 @@ const MethodologieTravailPage = () => {
         <section className="bg-white rounded-lg p-6 border border-gray-200 mb-6">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-              <span className="font-bold text-orange-600 text-sm">6</span>
+              <span className="font-bold text-pr-orange-dark text-sm">6</span>
             </div>
             <h2 className="text-2xl font-bold text-gray-900">Organisation du temps</h2>
           </div>
@@ -324,7 +324,7 @@ const MethodologieTravailPage = () => {
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-gray-50 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
-                <Clock className="h-5 w-5 text-orange-600" />
+                <Clock className="h-5 w-5 text-pr-orange-dark" />
                 <h4 className="font-semibold text-gray-800">Préparation (Sept-Oct)</h4>
               </div>
               <ul className="text-sm text-gray-700 space-y-1">
@@ -336,7 +336,7 @@ const MethodologieTravailPage = () => {
 
             <div className="bg-gray-50 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
-                <Clock className="h-5 w-5 text-orange-600" />
+                <Clock className="h-5 w-5 text-pr-orange-dark" />
                 <h4 className="font-semibold text-gray-800">Intensif (Nov-Jan)</h4>
               </div>
               <ul className="text-sm text-gray-700 space-y-1">
@@ -348,7 +348,7 @@ const MethodologieTravailPage = () => {
 
             <div className="bg-gray-50 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
-                <Clock className="h-5 w-5 text-orange-600" />
+                <Clock className="h-5 w-5 text-pr-orange-dark" />
                 <h4 className="font-semibold text-gray-800">Finalisation (Fév-Mars)</h4>
               </div>
               <ul className="text-sm text-gray-700 space-y-1">
@@ -364,7 +364,7 @@ const MethodologieTravailPage = () => {
         <section className="bg-orange-50 rounded-lg p-6 border border-orange-200 mb-6">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-              <CheckCircle className="h-5 w-5 text-orange-600" />
+              <CheckCircle className="h-5 w-5 text-pr-orange-dark" />
             </div>
             <h2 className="text-2xl font-bold text-orange-800">🎁 Bonus - Méthodes Complémentaires</h2>
           </div>

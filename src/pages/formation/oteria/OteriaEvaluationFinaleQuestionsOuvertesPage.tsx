@@ -100,7 +100,7 @@ const questionsOuvertesData = {
       id: 4,
       title: "Chapitre 4 : Suites et Fonctions",
       icon: Network,
-      color: "text-orange-600",
+      color: "text-pr-orange-dark",
       bgColor: "bg-orange-50",
       borderColor: "border-orange-200",
       questions: [

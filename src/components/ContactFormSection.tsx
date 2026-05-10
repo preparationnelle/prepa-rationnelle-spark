@@ -85,13 +85,13 @@ export const ContactFormSection: React.FC = () => {
         <section className="py-16 sm:py-20 px-4 sm:px-6 relative overflow-hidden bg-gradient-to-b from-gray-50 to-white">
             {/* Decorative elements */}
             <div className="absolute top-20 right-10 w-80 h-80 bg-orange-400 rounded-full opacity-10 blur-3xl"></div>
-            <div className="absolute bottom-40 left-10 w-64 h-64 bg-orange-500 rounded-full opacity-10 blur-3xl"></div>
+            <div className="absolute bottom-40 left-10 w-64 h-64 bg-pr-orange rounded-full opacity-10 blur-3xl"></div>
 
             <div className="container mx-auto max-w-2xl relative z-10">
                 {/* Header */}
                 <div className="text-center mb-12">
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-5">
-                        Réservez votre <span className="text-orange-500">cours gratuit</span>
+                        Réservez votre <span className="text-pr-orange">cours gratuit</span>
                     </h2>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                         Remplissez ce formulaire en 20 secondes et recevez un appel sous 24h
@@ -105,13 +105,13 @@ export const ContactFormSection: React.FC = () => {
                             {[1, 2].map((s) => (
                                 <div key={s} className="flex items-center flex-1">
                                     <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition-all duration-300 ${step >= s
-                                        ? 'bg-orange-500 text-white shadow-lg scale-110'
+                                        ? 'bg-pr-orange text-white shadow-lg scale-110'
                                         : 'bg-gray-200 text-gray-400'
                                         }`}>
                                         {step > s ? <Check className="w-5 h-5" /> : s}
                                     </div>
                                     {s < totalSteps && (
-                                        <div className={`flex-1 h-1 mx-2 rounded transition-all duration-300 ${step > s ? 'bg-orange-500' : 'bg-gray-200'
+                                        <div className={`flex-1 h-1 mx-2 rounded transition-all duration-300 ${step > s ? 'bg-pr-orange' : 'bg-gray-200'
                                             }`}></div>
                                     )}
                                 </div>
@@ -176,15 +176,15 @@ export const ContactFormSection: React.FC = () => {
                                     <h4 className="font-bold text-lg mb-3 text-orange-900">📞 Prochaines étapes</h4>
                                     <div className="space-y-2 text-left text-gray-700">
                                         <p className="flex items-start gap-2">
-                                            <span className="text-orange-500 font-bold">1.</span>
+                                            <span className="text-pr-orange font-bold">1.</span>
                                             <span>Nous vous appelons <strong>sous 24h</strong></span>
                                         </p>
                                         <p className="flex items-start gap-2">
-                                            <span className="text-orange-500 font-bold">2.</span>
+                                            <span className="text-pr-orange font-bold">2.</span>
                                             <span>Nous discutons ensemble de vos besoins</span>
                                         </p>
                                         <p className="flex items-start gap-2">
-                                            <span className="text-orange-500 font-bold">3.</span>
+                                            <span className="text-pr-orange font-bold">3.</span>
                                             <span>Nous organisons votre <strong>cours d'essai gratuit</strong></span>
                                         </p>
                                     </div>
@@ -193,7 +193,7 @@ export const ContactFormSection: React.FC = () => {
                                 {/* Contact Info */}
                                 <div className="text-center text-sm text-gray-600 mb-6">
                                     <p>Une question ? Contactez-nous :</p>
-                                    <p className="font-bold text-orange-600 mt-2">
+                                    <p className="font-bold text-pr-orange-dark mt-2">
                                         📞 06 09 16 46 68 | 📧 preparationnelle@gmail.com
                                     </p>
                                 </div>
@@ -240,7 +240,7 @@ export const ContactFormSection: React.FC = () => {
                                     {/* Student Level */}
                                     <div>
                                         <div className="flex items-center gap-2 mb-4">
-                                            <BookOpen className="w-5 h-5 text-orange-500" />
+                                            <BookOpen className="w-5 h-5 text-pr-orange" />
                                             <label className="font-bold text-lg">Niveau de l'élève *</label>
                                         </div>
                                         <div className="grid grid-cols-3 gap-3">
@@ -250,7 +250,7 @@ export const ContactFormSection: React.FC = () => {
                                                     type="button"
                                                     onClick={() => updateFormData('studentLevel', level)}
                                                     className={`p-4 rounded-xl font-semibold transition-all duration-200 ${formData.studentLevel === level
-                                                        ? 'bg-orange-500 text-white shadow-lg scale-105'
+                                                        ? 'bg-pr-orange text-white shadow-lg scale-105'
                                                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                                         }`}
                                                 >
@@ -263,7 +263,7 @@ export const ContactFormSection: React.FC = () => {
                                     {/* Student Type */}
                                     <div>
                                         <div className="flex items-center gap-2 mb-4">
-                                            <Users className="w-5 h-5 text-orange-500" />
+                                            <Users className="w-5 h-5 text-pr-orange" />
                                             <label className="font-bold text-lg">Je suis... *</label>
                                         </div>
                                         <div className="grid grid-cols-2 gap-3">
@@ -273,7 +273,7 @@ export const ContactFormSection: React.FC = () => {
                                                     type="button"
                                                     onClick={() => updateFormData('studentType', type)}
                                                     className={`p-4 rounded-xl font-semibold transition-all duration-200 ${formData.studentType === type
-                                                        ? 'bg-orange-500 text-white shadow-lg scale-105'
+                                                        ? 'bg-pr-orange text-white shadow-lg scale-105'
                                                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                                         }`}
                                                 >
@@ -291,7 +291,7 @@ export const ContactFormSection: React.FC = () => {
                                     {/* Phone */}
                                     <div>
                                         <div className="flex items-center gap-2 mb-4 justify-center">
-                                            <Phone className="w-6 h-6 text-orange-500" />
+                                            <Phone className="w-6 h-6 text-pr-orange" />
                                             <label className="font-bold text-xl">Votre numéro de téléphone *</label>
                                         </div>
                                         <Input
@@ -342,7 +342,7 @@ export const ContactFormSection: React.FC = () => {
                                         type="button"
                                         onClick={() => setStep(step + 1)}
                                         disabled={!canProceedStep1}
-                                        className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-6 text-lg flex items-center gap-2"
+                                        className="bg-pr-orange hover:bg-pr-orange-dark text-white font-bold px-8 py-6 text-lg flex items-center gap-2"
                                     >
                                         Continuer
                                         <ArrowRight className="w-4 h-4" />
@@ -352,7 +352,7 @@ export const ContactFormSection: React.FC = () => {
                                         type="button"
                                         onClick={handleSubmit}
                                         disabled={!canSubmit || isSubmitting}
-                                        className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-6 text-lg flex items-center gap-2"
+                                        className="bg-pr-orange hover:bg-pr-orange-dark text-white font-bold px-8 py-6 text-lg flex items-center gap-2"
                                     >
                                         {isSubmitting ? (
                                             <>

@@ -33,7 +33,7 @@ const PremiereAnneeESHPage = () => {
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-6">
             <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center border border-orange-200">
-              <BookOpen className="h-6 w-6 text-orange-600" />
+              <BookOpen className="h-6 w-6 text-pr-orange-dark" />
             </div>
             <h1 className="text-4xl font-bold text-gray-900">
               Première année ESH
@@ -576,7 +576,7 @@ const PremiereAnneeESHPage = () => {
         {/* Call to action */}
         <div className="text-center mt-12">
           <Link to="/formation/esh/deuxieme-annee">
-            <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-lg">
+            <Button size="lg" className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg">
               Passer à la deuxième année
               <ChevronRight className="ml-2 h-5 w-5" />
             </Button>

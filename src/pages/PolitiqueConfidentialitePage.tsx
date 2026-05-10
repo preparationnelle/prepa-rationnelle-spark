@@ -250,10 +250,10 @@ export default function PolitiqueConfidentialitePage() {
 
                   <div className="mt-4 p-4 bg-orange-50 rounded-lg">
                     <p className="font-medium text-orange-800 mb-2">Pour exercer vos droits :</p>
-                    <p className="text-orange-700">
+                    <p className="text-pr-orange-dark">
                       Contactez-nous par email : <a href="mailto:preparationnelle@gmail.com" className="underline">preparationnelle@gmail.com</a>
                     </p>
-                    <p className="text-orange-700 text-sm mt-2">
+                    <p className="text-pr-orange-dark text-sm mt-2">
                       Nous répondrons à votre demande dans un délai d'un mois maximum.
                     </p>
                   </div>
@@ -447,7 +447,7 @@ export default function PolitiqueConfidentialitePage() {
                     </div>
                     <a
                       href="/offre/gratuite"
-                      className="inline-block bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors font-semibold text-sm"
+                      className="inline-block bg-pr-orange text-white px-4 py-2 rounded-lg hover:bg-pr-orange-dark transition-colors font-semibold text-sm"
                     >
                       📅 Cours gratuit
                     </a>

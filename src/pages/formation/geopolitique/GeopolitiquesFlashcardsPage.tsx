@@ -35,10 +35,10 @@ const GeopolitiquesFlashcardsPage = () => {
         </div>
 
         {/* Main Content */}
-        <Card className="border-2 hover:border-orange-500/50 transition-colors mb-6">
+        <Card className="border-2 hover:border-pr-orange/50 transition-colors mb-6">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <BookOpen className="h-6 w-6 text-orange-600" />
+              <BookOpen className="h-6 w-6 text-pr-orange-dark" />
               Les 200 mots de la géopolitique
             </CardTitle>
             <p className="text-muted-foreground">

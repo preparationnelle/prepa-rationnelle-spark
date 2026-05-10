@@ -16,7 +16,7 @@ const PronounSectionComponent: React.FC<PronounSectionProps> = ({ section }) => 
     if (id.includes('vouvoiement') || id.includes('tutoiement')) return <UserCheck className="h-5 w-5 text-blue-600" />;
     if (id.includes('sujets') || id.includes('sujets')) return <User className="h-5 w-5 text-green-600" />;
     if (id.includes('complements') || id.includes('complements')) return <UsersIcon className="h-5 w-5 text-purple-600" />;
-    if (id.includes('pluriel') || id.includes('vosotros')) return <Users className="h-5 w-5 text-orange-600" />;
+    if (id.includes('pluriel') || id.includes('vosotros')) return <Users className="h-5 w-5 text-pr-orange-dark" />;
     if (id.includes('possessifs') || id.includes('possessifs')) return <Heart className="h-5 w-5 text-pink-600" />;
     if (id.includes('placement') || id.includes('enclise')) return <ArrowRight className="h-5 w-5 text-indigo-600" />;
     if (id.includes('verbes') || id.includes('pronominaux')) return <Target className="h-5 w-5 text-teal-600" />;
@@ -147,7 +147,7 @@ const PronounSectionComponent: React.FC<PronounSectionProps> = ({ section }) => 
                         </span>
                       ))}
                     </div>
-                    <p className="text-xs text-orange-700">{irregularity.notes}</p>
+                    <p className="text-xs text-pr-orange-dark">{irregularity.notes}</p>
                   </div>
                 ))}
               </div>

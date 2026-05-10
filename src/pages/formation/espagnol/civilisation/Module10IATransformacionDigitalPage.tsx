@@ -54,11 +54,11 @@ const Module10IATransformacionDigitalPage = () => {
         {/* Header Section */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-4 mb-8">
-            <div className="p-4 rounded-2xl bg-orange-600 text-white shadow-lg">
+            <div className="p-4 rounded-2xl bg-pr-orange-dark text-white shadow-lg">
               <Cpu className="h-12 w-12" />
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
-              <span className="text-orange-700 font-bold">
+              <span className="text-pr-orange-dark font-bold">
                 IA et Transformation Digitale
               </span>
             </h1>
@@ -67,10 +67,10 @@ const Module10IATransformacionDigitalPage = () => {
             Vocabulaire spécialisé en intelligence artificielle et transformation numérique
           </p>
           <div className="flex justify-center gap-2 mt-4">
-            <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-medium">
+            <span className="px-3 py-1 bg-orange-100 text-pr-orange-dark rounded-full text-sm font-medium">
               Module 10
             </span>
-            <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-medium">
+            <span className="px-3 py-1 bg-orange-100 text-pr-orange-dark rounded-full text-sm font-medium">
               100 termes clés
             </span>
             <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">

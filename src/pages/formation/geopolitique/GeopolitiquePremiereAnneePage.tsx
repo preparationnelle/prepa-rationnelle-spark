@@ -124,7 +124,7 @@ const GeopolitiquePremiereAnneePage = () => {
                         sujet.id === 7 ? "/formation/geopolitique/premiere-annee/puissance/flashcards" :
                         sujet.id === 8 ? "/formation/geopolitique/premiere-annee/ressources-strategiques/flashcards" :
                         "/formation/geopolitique/flashcards"
-                      } className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md">
+                      } className="inline-flex items-center gap-2 bg-pr-orange hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md">
                         <FileText className="w-4 h-4" />
                         Flash cards
                       </Link>

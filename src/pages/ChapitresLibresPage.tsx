@@ -88,7 +88,7 @@ const ChapitresLibresPage = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Chapitres <span className="text-orange-500">Libres d'Accès</span>
+            Chapitres <span className="text-pr-orange">Libres d'Accès</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Découvrez gratuitement ces chapitres essentiels de mathématiques approfondies avec cours, exercices et quiz inclus.
@@ -138,7 +138,7 @@ const ChapitresLibresPage = () => {
                         Quiz
                       </Button>
                       <Link to={chapitre.paths.exercices}>
-                        <Button className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-6 py-2 rounded-lg shadow flex items-center justify-center gap-2">
+                        <Button className="w-full sm:w-auto bg-gradient-to-r from-pr-orange to-red-500 hover:from-pr-orange-dark hover:to-red-600 text-white px-6 py-2 rounded-lg shadow flex items-center justify-center gap-2">
                           <Play className="w-4 h-4" />
                           Exercices
                         </Button>
@@ -163,13 +163,13 @@ const ChapitresLibresPage = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/formations">
-                <Button className="bg-orange-500 hover:bg-orange-600 text-white">
+                <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white">
                   Découvrir toutes nos formations
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button variant="outline" className="border-orange-500 text-orange-600 hover:bg-orange-50">
+                <Button variant="outline" className="border-pr-orange text-pr-orange-dark hover:bg-orange-50">
                   Nous contacter
                 </Button>
               </Link>

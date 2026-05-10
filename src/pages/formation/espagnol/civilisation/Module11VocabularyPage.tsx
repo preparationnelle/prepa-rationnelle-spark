@@ -51,11 +51,11 @@ const Module11VocabularyPage = () => {
         {/* Header Section */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-4 mb-8">
-            <div className="p-4 rounded-2xl bg-orange-600 text-white shadow-lg">
+            <div className="p-4 rounded-2xl bg-pr-orange-dark text-white shadow-lg">
               <BookOpen className="h-12 w-12" />
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
-              <span className="text-orange-700 font-bold">
+              <span className="text-pr-orange-dark font-bold">
                 Vocabulaire Énergétique Espagnol
               </span>
             </h1>
@@ -673,7 +673,7 @@ const EnergyVocabularyFlashcards: React.FC = () => {
       <div className="mb-6">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-bold flex items-center gap-2">
-            <BookOpen className="h-6 w-6 text-orange-600" />
+            <BookOpen className="h-6 w-6 text-pr-orange-dark" />
             Vocabulaire énergétique espagnol-français
             {isReviewMode && <span className="text-red-600 text-lg">🔄 Mode révision</span>}
           </h2>
@@ -684,7 +684,7 @@ const EnergyVocabularyFlashcards: React.FC = () => {
                 className={`px-3 py-1 text-sm rounded-md transition-colors ${
                   isReviewMode
                     ? 'bg-red-100 hover:bg-red-200 text-red-700'
-                    : 'bg-orange-100 hover:bg-orange-200 text-orange-700'
+                    : 'bg-orange-100 hover:bg-orange-200 text-pr-orange-dark'
                 }`}
               >
                 {isReviewMode ? 'Quitter révision' : `À revoir (${reviewCards.size})`}
@@ -704,7 +704,7 @@ const EnergyVocabularyFlashcards: React.FC = () => {
           <div className="flex flex-wrap gap-2">
             <Badge
               variant={selectedCategory === 'all' ? 'default' : 'secondary'}
-              className={`cursor-pointer hover:bg-orange-100 ${selectedCategory === 'all' ? 'bg-orange-600 text-white' : ''}`}
+              className={`cursor-pointer hover:bg-orange-100 ${selectedCategory === 'all' ? 'bg-pr-orange-dark text-white' : ''}`}
               onClick={() => handleCategoryChange('all')}
             >
               Toutes ({energyVocabularyData.length})
@@ -713,7 +713,7 @@ const EnergyVocabularyFlashcards: React.FC = () => {
               <Badge
                 key={cat.category}
                 variant={selectedCategory === cat.category ? 'default' : 'secondary'}
-                className={`cursor-pointer hover:bg-orange-100 ${selectedCategory === cat.category ? 'bg-orange-600 text-white' : ''}`}
+                className={`cursor-pointer hover:bg-orange-100 ${selectedCategory === cat.category ? 'bg-pr-orange-dark text-white' : ''}`}
                 onClick={() => handleCategoryChange(cat.category)}
               >
                 {cat.category} ({cat.items.length})
@@ -734,7 +734,7 @@ const EnergyVocabularyFlashcards: React.FC = () => {
         {/* Barre de progression */}
         <div className="w-full bg-gray-200 rounded-full h-3 mb-6">
           <div
-            className="bg-orange-600 h-3 rounded-full transition-all duration-300"
+            className="bg-pr-orange-dark h-3 rounded-full transition-all duration-300"
             style={{ width: `${progressPercentage}%` }}
           />
         </div>
@@ -758,7 +758,7 @@ const EnergyVocabularyFlashcards: React.FC = () => {
             </Badge>
 
             <h2 className={`text-4xl font-bold mb-6 transition-colors ${
-              showAnswer ? 'text-orange-700' : 'text-orange-700'
+              showAnswer ? 'text-pr-orange-dark' : 'text-pr-orange-dark'
             }`}>
               {showAnswer ? currentCard.french : currentCard.spanish}
             </h2>
@@ -786,7 +786,7 @@ const EnergyVocabularyFlashcards: React.FC = () => {
 
         <button
           onClick={toggleAnswer}
-          className="px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors font-medium"
+          className="px-6 py-3 bg-pr-orange-dark text-white rounded-lg hover:bg-pr-orange-dark transition-colors font-medium"
         >
           {showAnswer ? 'Masquer la traduction' : 'Voir la traduction'}
         </button>
@@ -815,7 +815,7 @@ const EnergyVocabularyFlashcards: React.FC = () => {
 
         <button
           onClick={markForReview}
-          className="flex items-center gap-2 px-4 py-2 bg-orange-100 border border-orange-300 text-orange-700 rounded-lg hover:bg-orange-200 transition-colors"
+          className="flex items-center gap-2 px-4 py-2 bg-orange-100 border border-orange-300 text-pr-orange-dark rounded-lg hover:bg-orange-200 transition-colors"
         >
           À revoir plus tard
         </button>

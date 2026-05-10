@@ -638,7 +638,7 @@ const GenetifExercicesPage = () => {
         <div className="text-center mb-10">
           <div className="flex justify-center mb-6">
             <Link to="/formation/allemand-genitif">
-              <Button variant="outline" className="flex items-center gap-2 border-orange-300 text-orange-700 hover:bg-orange-50">
+              <Button variant="outline" className="flex items-center gap-2 border-orange-300 text-pr-orange-dark hover:bg-orange-50">
                 <ArrowLeft className="h-4 w-4" />
                 Retour au génitif
               </Button>
@@ -646,7 +646,7 @@ const GenetifExercicesPage = () => {
           </div>
 
           <div className="mb-6">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-600 text-white rounded-xl mb-4">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-pr-orange-dark text-white rounded-xl mb-4">
               <Target className="h-8 w-8" />
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-3">
@@ -699,7 +699,7 @@ const GenetifExercicesPage = () => {
           <CardHeader className="pb-4">
             <CardTitle className="text-lg text-gray-900 flex items-center gap-2">
               <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                <Target className="h-4 w-4 text-orange-600" />
+                <Target className="h-4 w-4 text-pr-orange-dark" />
               </div>
               Filtrer les exercices
             </CardTitle>
@@ -709,7 +709,7 @@ const GenetifExercicesPage = () => {
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-gray-700">Type</label>
                 <select value={selectedExerciseType} onChange={(e) => setSelectedExerciseType(e.target.value as 'qcm' | 'complet' | 'toutes')}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500" disabled={examStarted}>
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-pr-orange" disabled={examStarted}>
                   <option value="qcm">QCM</option>
                   <option value="complet">Mots à compléter</option>
                   <option value="toutes">Tous les types</option>
@@ -718,7 +718,7 @@ const GenetifExercicesPage = () => {
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-gray-700">Catégorie</label>
                 <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500" disabled={examStarted}>
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-pr-orange" disabled={examStarted}>
                   <option value="toutes">Toutes les catégories</option>
                   <option value="Formation du génitif">Formation du génitif</option>
                   <option value="Génitif avec noms propres">Génitif avec noms propres</option>
@@ -743,7 +743,7 @@ const GenetifExercicesPage = () => {
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-gray-700">Niveau</label>
                 <select value={selectedLevel} onChange={(e) => setSelectedLevel(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500" disabled={examStarted}>
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-pr-orange" disabled={examStarted}>
                   <option value="tous">Tous les niveaux</option>
                   <option value="intermédiaire">Intermédiaire</option>
                   <option value="avancé">Avancé</option>
@@ -758,7 +758,7 @@ const GenetifExercicesPage = () => {
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <FileText className="h-5 w-5 text-orange-600" />
+                  <FileText className="h-5 w-5 text-pr-orange-dark" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900">
@@ -796,7 +796,7 @@ const GenetifExercicesPage = () => {
                             value={option}
                             checked={userAnswers[currentExercise.id] === option}
                             onChange={(e) => handleAnswerChange(currentExercise.id, e.target.value)}
-                            className="text-orange-600 focus:ring-orange-500"
+                            className="text-pr-orange-dark focus:ring-pr-orange"
                           />
                           <span className="text-gray-800 flex-1">{option}</span>
                         </label>
@@ -812,7 +812,7 @@ const GenetifExercicesPage = () => {
                       type="text"
                       value={userAnswers[currentExercise.id] || ''}
                       onChange={(e) => handleAnswerChange(currentExercise.id, e.target.value)}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 text-gray-800 placeholder-gray-500"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-pr-orange text-gray-800 placeholder-gray-500"
                       placeholder="Tapez votre réponse ici..."
                     />
                   </div>
@@ -822,7 +822,7 @@ const GenetifExercicesPage = () => {
                   <Button
                     onClick={() => validateAnswer(currentExercise.id)}
                     disabled={!userAnswers[currentExercise.id]}
-                    className="bg-orange-600 hover:bg-orange-700 text-white flex items-center gap-2 px-6 py-2"
+                    className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white flex items-center gap-2 px-6 py-2"
                   >
                     <CheckCircle className="h-4 w-4" />
                     Valider ma réponse
@@ -904,7 +904,7 @@ const GenetifExercicesPage = () => {
                 <div className="flex gap-2">
                   {filteredExercises.map((_, index) => (
                     <button key={index} onClick={() => !examStarted && setCurrentExerciseIndex(index)} disabled={examStarted}
-                      className={`w-2 h-2 rounded-full transition-colors ${index === currentExerciseIndex ? 'bg-orange-600' : 'bg-gray-300 hover:bg-gray-400'}`} />
+                      className={`w-2 h-2 rounded-full transition-colors ${index === currentExerciseIndex ? 'bg-pr-orange-dark' : 'bg-gray-300 hover:bg-gray-400'}`} />
                   ))}
                 </div>
               </div>
@@ -919,7 +919,7 @@ const GenetifExercicesPage = () => {
         {filteredExercises.length === 0 && (
           <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
             <CardContent className="text-center py-8">
-              <p className="text-orange-600 text-lg">Aucun exercice trouvé avec les filtres actuels. Modifiez vos critères de recherche.</p>
+              <p className="text-pr-orange-dark text-lg">Aucun exercice trouvé avec les filtres actuels. Modifiez vos critères de recherche.</p>
             </CardContent>
           </Card>
         )}
@@ -950,7 +950,7 @@ const GenetifExercicesPage = () => {
                   <p className="text-carnet-red-deep font-medium">⏱️ Temps total : {formatTime(examTime)}</p>
                 </div>
               )}
-              <div className={`text-lg ${examMode ? 'text-carnet-red' : 'text-orange-700'}`}>
+              <div className={`text-lg ${examMode ? 'text-carnet-red' : 'text-pr-orange-dark'}`}>
                 {score >= 80 ? (
                   <div className="flex items-center justify-center gap-2">
                     <Trophy className="h-6 w-6 text-yellow-500" />

@@ -176,6 +176,16 @@
     font-weight: 500;
   }
 
+  /* Default modular type scale (1.25x ratio anchored at 16px body)
+     — applies only to elements without an explicit Tailwind text-* override.
+     This prevents the 11px H4 / 18px H2 outliers documented in FINDING-006. */
+  h1 { font-size: 2.5rem;  line-height: 1.1; }   /* 40px */
+  h2 { font-size: 2rem;    line-height: 1.15; }  /* 32px */
+  h3 { font-size: 1.5rem;  line-height: 1.2; }   /* 24px */
+  h4 { font-size: 1.125rem; line-height: 1.3; }  /* 18px (was 11px in footer) */
+  h5 { font-size: 1rem;     line-height: 1.4; }  /* 16px */
+  h6 { font-size: 0.875rem; line-height: 1.4; }  /* 14px */
+
   /* Amélioration du responsive design */
   html {
     scroll-behavior: smooth;
@@ -1220,5 +1230,17 @@ footer[class*="bg-pr-gray-bg"] {
 .carnet-cours-skin .prose strong,
 .carnet-cours-skin [class*="prose"] strong {
   color: #1F1714 !important;
+}
+
+/* --- Reduced motion: respect user preference (FINDING-015) --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 

@@ -302,7 +302,7 @@ const VocabulaireBildungFlashcardsPage = () => {
         {/* En-tête */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-gradient-to-br from-orange-500 to-pr-orange text-white">
+            <div className="p-3 rounded-lg bg-gradient-to-br from-pr-orange to-pr-orange text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Vocabulaire Éducation et Formation
@@ -313,7 +313,7 @@ const VocabulaireBildungFlashcardsPage = () => {
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">{cards.length} mots</Badge>
             <Badge variant="outline">Module 7 - Bildung und Ausbildung</Badge>
-            <Badge className="bg-gradient-to-r from-orange-500 to-pr-orange text-white">Flashcards</Badge>
+            <Badge className="bg-gradient-to-r from-pr-orange to-pr-orange text-white">Flashcards</Badge>
           </div>
         </div>
 
@@ -321,11 +321,11 @@ const VocabulaireBildungFlashcardsPage = () => {
         <div className="max-w-2xl mx-auto mb-6">
           <div className="flex justify-between items-center mb-2">
             <span className="text-sm font-medium text-gray-700">Progression</span>
-            <span className="text-sm font-medium text-orange-600">{currentIndex + 1} / {cards.length}</span>
+            <span className="text-sm font-medium text-pr-orange-dark">{currentIndex + 1} / {cards.length}</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2.5">
             <div
-              className="bg-gradient-to-r from-orange-500 to-pr-orange h-2.5 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-pr-orange to-pr-orange h-2.5 rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -365,7 +365,7 @@ const VocabulaireBildungFlashcardsPage = () => {
             <Card className="mb-4 bg-orange-50 border-orange-200">
               <CardContent className="p-4">
                 <h3 className="font-semibold text-orange-900 mb-3">Raccourcis clavier :</h3>
-                <div className="grid grid-cols-2 gap-2 text-sm text-orange-700">
+                <div className="grid grid-cols-2 gap-2 text-sm text-pr-orange-dark">
                   <div><kbd className="bg-orange-100 px-2 py-1 rounded">Espace</kbd> ou <kbd className="bg-orange-100 px-2 py-1 rounded">Entrée</kbd> : Retourner la carte</div>
                   <div><kbd className="bg-orange-100 px-2 py-1 rounded">←</kbd> <kbd className="bg-orange-100 px-2 py-1 rounded">→</kbd> : Navigation</div>
                   <div><kbd className="bg-orange-100 px-2 py-1 rounded">S</kbd> : Mélanger</div>
@@ -394,13 +394,13 @@ const VocabulaireBildungFlashcardsPage = () => {
               <div className="absolute -z-10 top-4 left-4 flex items-center gap-2">
                 {isFlipped ? (
                   <>
-                    <Eye className="h-4 w-4 text-orange-600" />
-                    <span className="text-sm font-medium text-orange-600">Allemand</span>
+                    <Eye className="h-4 w-4 text-pr-orange-dark" />
+                    <span className="text-sm font-medium text-pr-orange-dark">Allemand</span>
                   </>
                 ) : (
                   <>
-                    <EyeOff className="h-4 w-4 text-orange-600" />
-                    <span className="text-sm font-medium text-orange-600">Français</span>
+                    <EyeOff className="h-4 w-4 text-pr-orange-dark" />
+                    <span className="text-sm font-medium text-pr-orange-dark">Français</span>
                   </>
                 )}
               </div>
@@ -459,7 +459,7 @@ const VocabulaireBildungFlashcardsPage = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-3">
                   <h4 className="font-semibold text-orange-800">Technique de révision :</h4>
-                  <ul className="text-sm text-orange-700 space-y-1">
+                  <ul className="text-sm text-pr-orange-dark space-y-1">
                     <li>• Commencez par le français (plus familier)</li>
                     <li>• Tentez de deviner l'allemand avant de retourner</li>
                     <li>• Répétez à voix haute pour la prononciation</li>
@@ -468,7 +468,7 @@ const VocabulaireBildungFlashcardsPage = () => {
                 </div>
                 <div className="space-y-3">
                   <h4 className="font-semibold text-orange-800">Pour les concours :</h4>
-                  <ul className="text-sm text-orange-700 space-y-1">
+                  <ul className="text-sm text-pr-orange-dark space-y-1">
                     <li>• Vocabulaire essentiel pour le système dual allemand</li>
                     <li>• Termes techniques de l'enseignement supérieur</li>
                     <li>• Base indispensable pour Module 7 - Bildung und Ausbildung</li>

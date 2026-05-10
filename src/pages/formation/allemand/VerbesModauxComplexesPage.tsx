@@ -11,20 +11,20 @@ const VerbesModauxComplexesPage = () => {
       <header className="border-b border-gray-200">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center text-sm text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-orange-600 transition-colors">
+            <Link to="/" className="flex items-center gap-1 hover:text-pr-orange-dark transition-colors">
               <BookOpen className="h-4 w-4" />
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
-            <Link to="/formations" className="hover:text-orange-600 transition-colors">
+            <Link to="/formations" className="hover:text-pr-orange-dark transition-colors">
               Toutes les formations
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
-            <Link to="/formation/allemand" className="hover:text-orange-600 transition-colors">
+            <Link to="/formation/allemand" className="hover:text-pr-orange-dark transition-colors">
               Formation Allemand
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
-            <Link to="/formation/allemand-grammaire" className="hover:text-orange-600 transition-colors">
+            <Link to="/formation/allemand-grammaire" className="hover:text-pr-orange-dark transition-colors">
               Grammaire
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
@@ -34,7 +34,7 @@ const VerbesModauxComplexesPage = () => {
           <div className="mt-8 text-center">
             <div className="flex justify-center mb-4">
               <div className="p-3 rounded-full bg-orange-100">
-                <BookOpen className="h-8 w-8 text-orange-600" />
+                <BookOpen className="h-8 w-8 text-pr-orange-dark" />
               </div>
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -53,7 +53,7 @@ const VerbesModauxComplexesPage = () => {
 
           {/* Introduction */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Les six verbes modaux allemands</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Les six verbes modaux allemands</h2>
             <p className="text-gray-700 mb-4">
               Les six verbes modaux allemands (können, dürfen, müssen, sollen, wollen, mögen) présentent des conjugaisons irrégulières et des nuances sémantiques spécifiques. Leur conjugaison aux temps composés utilise l'infinitif au lieu du participe passé, ce qui constitue une exception grammaticale.
             </p>
@@ -65,13 +65,13 @@ const VerbesModauxComplexesPage = () => {
 
           {/* Les six verbes modaux */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Présentation des six verbes modaux</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Présentation des six verbes modaux</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h3 className="font-semibold mb-3 text-carnet-red">können (pouvoir/capacité)</h3>
                 <div className="bg-gray-50 p-4 rounded-lg mb-4">
                   <p className="font-medium">Présent : kann, kannst, kann, können, könnt, können</p>
-                  <p>Ich <span className="text-orange-600">kann</span> Deutsch sprechen.</p>
+                  <p>Ich <span className="text-pr-orange-dark">kann</span> Deutsch sprechen.</p>
                   <p className="text-sm text-gray-700">(Je peux parler allemand.)</p>
                 </div>
               </div>
@@ -79,7 +79,7 @@ const VerbesModauxComplexesPage = () => {
                 <h3 className="font-semibold mb-3 text-red-700">dürfen (avoir le droit)</h3>
                 <div className="bg-gray-50 p-4 rounded-lg mb-4">
                   <p className="font-medium">Présent : darf, darfst, darf, dürfen, dürft, dürfen</p>
-                  <p>Du <span className="text-orange-600">darfst</span> hier rauchen.</p>
+                  <p>Du <span className="text-pr-orange-dark">darfst</span> hier rauchen.</p>
                   <p className="text-sm text-gray-700">(Tu as le droit de fumer ici.)</p>
                 </div>
               </div>
@@ -87,7 +87,7 @@ const VerbesModauxComplexesPage = () => {
                 <h3 className="font-semibold mb-3 text-green-700">müssen (devoir/obligation)</h3>
                 <div className="bg-gray-50 p-4 rounded-lg mb-4">
                   <p className="font-medium">Présent : muss, musst, muss, müssen, müsst, müssen</p>
-                  <p>Er <span className="text-orange-600">muss</span> arbeiten.</p>
+                  <p>Er <span className="text-pr-orange-dark">muss</span> arbeiten.</p>
                   <p className="text-sm text-gray-700">(Il doit travailler.)</p>
                 </div>
               </div>
@@ -95,15 +95,15 @@ const VerbesModauxComplexesPage = () => {
                 <h3 className="font-semibold mb-3 text-purple-700">sollen (devoir/conseil)</h3>
                 <div className="bg-gray-50 p-4 rounded-lg mb-4">
                   <p className="font-medium">Présent : soll, sollst, soll, sollen, sollt, sollen</p>
-                  <p>Sie <span className="text-orange-600">soll</span> mehr lernen.</p>
+                  <p>Sie <span className="text-pr-orange-dark">soll</span> mehr lernen.</p>
                   <p className="text-sm text-gray-700">(Elle devrait étudier davantage.)</p>
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold mb-3 text-orange-700">wollen (vouloir)</h3>
+                <h3 className="font-semibold mb-3 text-pr-orange-dark">wollen (vouloir)</h3>
                 <div className="bg-gray-50 p-4 rounded-lg mb-4">
                   <p className="font-medium">Présent : will, willst, will, wollen, wollt, wollen</p>
-                  <p>Wir <span className="text-orange-600">wollen</span> verreisen.</p>
+                  <p>Wir <span className="text-pr-orange-dark">wollen</span> verreisen.</p>
                   <p className="text-sm text-gray-700">(Nous voulons voyager.)</p>
                 </div>
               </div>
@@ -111,7 +111,7 @@ const VerbesModauxComplexesPage = () => {
                 <h3 className="font-semibold mb-3 text-teal-700">mögen (aimer)</h3>
                 <div className="bg-gray-50 p-4 rounded-lg mb-4">
                   <p className="font-medium">Présent : mag, magst, mag, mögen, mögt, mögen</p>
-                  <p>Ich <span className="text-orange-600">mag</span> Schokolade.</p>
+                  <p>Ich <span className="text-pr-orange-dark">mag</span> Schokolade.</p>
                   <p className="text-sm text-gray-700">(J'aime le chocolat.)</p>
                 </div>
               </div>
@@ -120,7 +120,7 @@ const VerbesModauxComplexesPage = () => {
 
           {/* Formation des temps composés */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Formation des temps composés</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Formation des temps composés</h2>
             <p className="text-gray-700 mb-4">
               Les verbes modaux forment leurs temps composés avec leur infinitif (et non leur participe passé) :
             </p>
@@ -129,14 +129,14 @@ const VerbesModauxComplexesPage = () => {
                 <h3 className="font-semibold mb-2">Parfait (Perfekt) :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <p>Auxiliaire haben + infinitif du modal + infinitif du verbe principal</p>
-                  <p>Ich <span className="text-orange-600">habe</span> das <span className="text-orange-600">machen können</span>.</p>
+                  <p>Ich <span className="text-pr-orange-dark">habe</span> das <span className="text-pr-orange-dark">machen können</span>.</p>
                   <p className="text-sm text-gray-700">(J'ai pu le faire.)</p>
                 </div>
               </div>
               <div>
                 <h3 className="font-semibold mb-2">Plus-que-parfait :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p>Ich <span className="text-orange-600">hatte</span> das <span className="text-orange-600">machen können</span>.</p>
+                  <p>Ich <span className="text-pr-orange-dark">hatte</span> das <span className="text-pr-orange-dark">machen können</span>.</p>
                   <p className="text-sm text-gray-700">(J'avais pu le faire.)</p>
                 </div>
               </div>
@@ -145,7 +145,7 @@ const VerbesModauxComplexesPage = () => {
 
           {/* Double infinitif */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Le "double infinitif"</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Le "double infinitif"</h2>
             <p className="text-gray-700 mb-4">
               Dans les subordonnées, les deux infinitifs se placent en fin de phrase :
             </p>
@@ -153,14 +153,14 @@ const VerbesModauxComplexesPage = () => {
               <div>
                 <h3 className="font-semibold mb-2">Avec weil (parce que) :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p>Er ist nicht gekommen, <span className="text-orange-600">weil</span> er hat <span className="text-orange-600">arbeiten müssen</span>.</p>
+                  <p>Er ist nicht gekommen, <span className="text-pr-orange-dark">weil</span> er hat <span className="text-pr-orange-dark">arbeiten müssen</span>.</p>
                   <p className="text-sm text-gray-700">(Il n'est pas venu parce qu'il a dû travailler.)</p>
                 </div>
               </div>
               <div>
                 <h3 className="font-semibold mb-2">Avec dass (que) :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p>Ich weiß, dass du das <span className="text-orange-600">hättest machen sollen</span>.</p>
+                  <p>Ich weiß, dass du das <span className="text-pr-orange-dark">hättest machen sollen</span>.</p>
                   <p className="text-sm text-gray-700">(Je sais que tu aurais dû le faire.)</p>
                 </div>
               </div>
@@ -169,13 +169,13 @@ const VerbesModauxComplexesPage = () => {
 
           {/* Nuances sémantiques */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Nuances sémantiques importantes</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Nuances sémantiques importantes</h2>
             <div className="space-y-4">
               <div>
                 <h3 className="font-semibold mb-2">Différenciation sollen/wollen :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <p><span className="text-purple-700">sollen</span> = devoir/conseil : Du sollst das machen. (Tu devrais le faire.)</p>
-                  <p><span className="text-orange-700">wollen</span> = vouloir : Du willst das machen. (Tu veux le faire.)</p>
+                  <p><span className="text-pr-orange-dark">wollen</span> = vouloir : Du willst das machen. (Tu veux le faire.)</p>
                 </div>
               </div>
               <div>
@@ -197,7 +197,7 @@ const VerbesModauxComplexesPage = () => {
 
           {/* Erreurs fréquentes */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Erreurs fréquentes</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Erreurs fréquentes</h2>
             <div className="space-y-4">
               <div>
                 <h3 className="font-semibold mb-2">Formation du parfait incorrecte :</h3>
@@ -228,12 +228,12 @@ const VerbesModauxComplexesPage = () => {
 
           {/* Exercices pratiques */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Exercices pratiques</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Exercices pratiques</h2>
             <p className="text-gray-700 mb-4">
               Mettez en pratique les verbes modaux complexes avec des exercices interactifs.
             </p>
             <div className="text-center">
-              <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-50" disabled>
+              <Button variant="outline" className="border-orange-300 text-pr-orange-dark hover:bg-orange-50" disabled>
                 <FileText className="h-4 w-4 mr-2" />
                 Exercices en développement
               </Button>
@@ -244,7 +244,7 @@ const VerbesModauxComplexesPage = () => {
           {/* Bouton retour */}
           <div className="text-center pb-8">
             <Link to="/formation/allemand-grammaire">
-              <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-50">
+              <Button variant="outline" className="border-orange-300 text-pr-orange-dark hover:bg-orange-50">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Retour à la grammaire
               </Button>

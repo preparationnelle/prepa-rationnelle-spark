@@ -96,28 +96,28 @@ const SuezPage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Calendar className="h-5 w-5 text-orange-600" />
+                  <Calendar className="h-5 w-5 text-pr-orange-dark" />
                   Dates marquantes
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-orange-600 rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pr-orange-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">1869</div>
                       <div className="text-gray-700">Ouverture du canal</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-orange-600 rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pr-orange-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">1956</div>
                       <div className="text-gray-700">Crise de Suez et nationalisation</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-orange-600 rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pr-orange-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2021</div>
                       <div className="text-gray-700">Incident Ever Given - blocage du canal</div>

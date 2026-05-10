@@ -202,7 +202,7 @@ const CommonwealthVocabularyPage = () => {
       'Commonwealth et Empire': 'bg-carnet-red',
       'Relations et coopération': 'bg-green-500',
       'Développement et économie': 'bg-purple-500',
-      'Culture et identité': 'bg-orange-500',
+      'Culture et identité': 'bg-pr-orange',
       'Éducation et formation': 'bg-red-500',
       'Gouvernance et politique': 'bg-indigo-500',
       'Infrastructure et développement urbain': 'bg-pink-500',

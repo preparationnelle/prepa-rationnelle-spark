@@ -823,7 +823,7 @@ const ContinentAfricainChronologiePage = () => {
                 <div className="text-sm text-gray-600">Années couvertes</div>
               </div>
               <div className="p-4 bg-orange-50 rounded-lg">
-                <div className="text-2xl font-bold text-orange-600">
+                <div className="text-2xl font-bold text-pr-orange-dark">
                   {Object.keys(groupedEvents).length}
                 </div>
                 <div className="text-sm text-gray-600">Décennies</div>

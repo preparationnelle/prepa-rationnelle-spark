@@ -129,7 +129,7 @@ const SciencesTechnologiesPage = () => {
           <Card className="border-2 border-orange-200 bg-gradient-to-br from-orange-50 to-red-50 shadow-lg">
             <CardHeader>
               <CardTitle className="text-xl flex items-center gap-3">
-                <AlertTriangle className="h-6 w-6 text-orange-600" />
+                <AlertTriangle className="h-6 w-6 text-pr-orange-dark" />
                 Paradoxe
               </CardTitle>
             </CardHeader>
@@ -332,7 +332,7 @@ const SciencesTechnologiesPage = () => {
                     
                     <div className="bg-orange-50 p-6 rounded-lg border-l-4 border-orange-400">
                       <h4 className="font-semibold text-orange-800 mb-4">Utilisation de cette partie dans une copie</h4>
-                      <div className="space-y-3 text-sm text-orange-700">
+                      <div className="space-y-3 text-sm text-pr-orange-dark">
                         <p>• Démontrer que les défis contemporains exigent une maîtrise technologique</p>
                         <p>• Analyser comment la circulation rapide des technologies redéfinit la géographie mondiale</p>
                         <p>• Illustrer que la technologie constitue un avantage comparatif préservable dans la concurrence globale</p>

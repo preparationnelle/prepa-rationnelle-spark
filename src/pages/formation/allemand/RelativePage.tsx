@@ -11,14 +11,14 @@ const RelativePage = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center gap-4 mb-4">
-              <Link to="/formation/allemand-grammaire" className="flex items-center gap-2 text-gray-600 hover:text-orange-600 transition-colors">
+              <Link to="/formation/allemand-grammaire" className="flex items-center gap-2 text-gray-600 hover:text-pr-orange-dark transition-colors">
                 <ArrowLeft className="h-4 w-4" />
                 <span className="text-sm">Retour à la grammaire</span>
         </Link>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center border border-orange-100">
-                <BookOpen className="h-6 w-6 text-orange-600" />
+                <BookOpen className="h-6 w-6 text-pr-orange-dark" />
       </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">Les Propositions Relatives en Allemand</h1>
@@ -38,7 +38,7 @@ const RelativePage = () => {
             <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <span className="text-orange-600 font-bold text-sm">1</span>
+                  <span className="text-pr-orange-dark font-bold text-sm">1</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900">
                   Les pronoms relatifs de base
@@ -102,7 +102,7 @@ const RelativePage = () => {
             <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <span className="text-orange-600 font-bold text-sm">2</span>
+                  <span className="text-pr-orange-dark font-bold text-sm">2</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900">
                   Choisir le bon pronom relatif
@@ -152,7 +152,7 @@ const RelativePage = () => {
             <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <span className="text-orange-600 font-bold text-sm">3</span>
+                  <span className="text-pr-orange-dark font-bold text-sm">3</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900">
                   Remplacer « dont » en allemand
@@ -195,7 +195,7 @@ const RelativePage = () => {
             <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <span className="text-orange-600 font-bold text-sm">4</span>
+                  <span className="text-pr-orange-dark font-bold text-sm">4</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900">
                   Exercices d'application
@@ -207,19 +207,19 @@ const RelativePage = () => {
                   <h4 className="font-bold text-gray-900 mb-3">Complétez avec le pronom relatif approprié :</h4>
                   <div className="space-y-3">
                     <div className="flex items-center gap-4 p-3 bg-gray-50 rounded-lg">
-                      <span className="font-bold text-orange-600 min-w-[2rem]">#1</span>
+                      <span className="font-bold text-pr-orange-dark min-w-[2rem]">#1</span>
                       <span className="flex-1 text-gray-700">Das Gesetz, ... der Bundestag verabschiedet hat</span>
-                      <span className="font-mono text-orange-700 font-bold bg-orange-100 px-3 py-1 rounded">das</span>
+                      <span className="font-mono text-pr-orange-dark font-bold bg-orange-100 px-3 py-1 rounded">das</span>
                     </div>
                     <div className="flex items-center gap-4 p-3 bg-gray-50 rounded-lg">
-                      <span className="font-bold text-orange-600 min-w-[2rem]">#2</span>
+                      <span className="font-bold text-pr-orange-dark min-w-[2rem]">#2</span>
                       <span className="flex-1 text-gray-700">Die Freundin, ... ich ein Buch geschenkt habe</span>
-                      <span className="font-mono text-orange-700 font-bold bg-orange-100 px-3 py-1 rounded">der</span>
+                      <span className="font-mono text-pr-orange-dark font-bold bg-orange-100 px-3 py-1 rounded">der</span>
                     </div>
                     <div className="flex items-center gap-4 p-3 bg-gray-50 rounded-lg">
-                      <span className="font-bold text-orange-600 min-w-[2rem]">#3</span>
+                      <span className="font-bold text-pr-orange-dark min-w-[2rem]">#3</span>
                       <span className="flex-1 text-gray-700">Die Kinder, ... ich bei den Hausaufgaben half</span>
-                      <span className="font-mono text-orange-700 font-bold bg-orange-100 px-3 py-1 rounded">denen</span>
+                      <span className="font-mono text-pr-orange-dark font-bold bg-orange-100 px-3 py-1 rounded">denen</span>
                     </div>
                   </div>
                 </div>
@@ -233,7 +233,7 @@ const RelativePage = () => {
                         <span className="ml-2 text-gray-700">"Le livre dont je t'ai parlé"</span>
                       </div>
               <div>
-                        <span className="font-semibold text-orange-700">Allemand :</span>
+                        <span className="font-semibold text-pr-orange-dark">Allemand :</span>
                         <span className="ml-2 font-mono text-orange-800">"Das Buch, von dem ich dir erzählt habe"</span>
                       </div>
                     </div>
@@ -248,7 +248,7 @@ const RelativePage = () => {
             <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <span className="text-orange-600 font-bold text-sm">5</span>
+                  <span className="text-pr-orange-dark font-bold text-sm">5</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900">
                   Règles et mémos éclair
@@ -288,7 +288,7 @@ const RelativePage = () => {
             <div className="bg-orange-50 rounded-lg p-6 border border-orange-200">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <span className="text-orange-600 font-bold text-sm">6</span>
+                  <span className="text-pr-orange-dark font-bold text-sm">6</span>
                 </div>
                 <h2 className="text-xl font-bold text-orange-900">Verdict</h2>
               </div>
@@ -311,7 +311,7 @@ const RelativePage = () => {
           <div className="text-center pb-8">
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link to="/formation/allemand-relative/exercices">
-                <Button className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 flex items-center gap-2">
+                <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-6 py-3 flex items-center gap-2">
                   <Target className="h-5 w-5" />
                   Exercices interactifs
                 </Button>
@@ -327,7 +327,7 @@ const RelativePage = () => {
           {/* 3. Choisir le bon pronom */}
           <section className="mb-10">
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">3. Choisir le bon pronom</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">3. Choisir le bon pronom</h2>
 
             <div className="space-y-4">
               <div>
@@ -366,7 +366,7 @@ const RelativePage = () => {
 
           {/* 4. Remplacer « dont » */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">4. Remplacer « dont »</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">4. Remplacer « dont »</h2>
 
             <div className="overflow-x-auto">
               <table className="w-full border-collapse border border-gray-300 mb-6">
@@ -400,7 +400,7 @@ const RelativePage = () => {
 
           {/* 5. Relatives participiales */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">5. Relatives participiales</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">5. Relatives participiales</h2>
 
             <div className="space-y-4">
               <p className="text-gray-700">
@@ -411,7 +411,7 @@ const RelativePage = () => {
                 <p className="text-gray-700 mb-2">Le participe ou l'adjectif se décline selon le groupe nominal.</p>
                 <div className="bg-white p-3 rounded border-l-4 border-orange-300">
                   <p className="font-mono text-gray-800 mb-2">Der Artikel, der im Mai veröffentlicht wurde</p>
-                  <p className="text-orange-700 font-semibold">→ Der im Mai veröffentlichte Artikel</p>
+                  <p className="text-pr-orange-dark font-semibold">→ Der im Mai veröffentlichte Artikel</p>
                 </div>
               </div>
             </div>
@@ -419,7 +419,7 @@ const RelativePage = () => {
 
           {/* 6. Exercices & corrigés */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">6. Exercices & corrigés</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">6. Exercices & corrigés</h2>
 
             {/* Exercice A */}
             <div className="mb-8">
@@ -444,9 +444,9 @@ const RelativePage = () => {
                   { num: 15, phrase: "Der Erste Weltkrieg, ... wir 2014 gedenken, ...", answer: "dessen" }
                 ].map((item) => (
                   <div key={item.num} className="flex items-center gap-4 p-3 bg-gray-50 rounded-lg border-l-4 border-orange-300">
-                    <span className="font-bold text-orange-600 min-w-[2rem]">#{item.num}</span>
+                    <span className="font-bold text-pr-orange-dark min-w-[2rem]">#{item.num}</span>
                     <span className="flex-1 text-gray-700">{item.phrase}</span>
-                    <span className="font-mono text-orange-700 font-bold bg-orange-100 px-3 py-1 rounded">
+                    <span className="font-mono text-pr-orange-dark font-bold bg-orange-100 px-3 py-1 rounded">
                       {item.answer}
                     </span>
                   </div>
@@ -472,7 +472,7 @@ const RelativePage = () => {
                       <span className="ml-2 text-gray-700">{item.fr}</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-orange-700">Allemand :</span>
+                      <span className="font-semibold text-pr-orange-dark">Allemand :</span>
                       <span className="ml-2 font-mono text-orange-800">{item.de}</span>
                     </div>
                   </div>
@@ -503,7 +503,7 @@ const RelativePage = () => {
                       </div>
                     </div>
                     <div>
-                      <span className="font-semibold text-orange-700">Version participiale :</span>
+                      <span className="font-semibold text-pr-orange-dark">Version participiale :</span>
                       <div className="mt-1 p-2 bg-orange-50 rounded border-l-4 border-orange-300 font-mono text-orange-800">
                         {item.participial}
                       </div>
@@ -516,7 +516,7 @@ const RelativePage = () => {
 
           {/* 7. Verdict */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">7. Verdict</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">7. Verdict</h2>
 
             <div className="space-y-4 text-gray-700">
               <p>• <strong>Genre = antécédent, cas = fonction ;</strong> retenez surtout dessen/deren et denen.</p>
@@ -524,7 +524,7 @@ const RelativePage = () => {
               <p>• <strong>Allégez vos phrases</strong> avec la relative participiale : participe + déclinaison devant le nom.</p>
 
               <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-300 mt-6">
-                <p className="font-semibold text-orange-700 mb-2">Entraînement express :</p>
+                <p className="font-semibold text-pr-orange-dark mb-2">Entraînement express :</p>
                 <p>Prenez trois phrases françaises avec « dont », deux avec « sur lequel / à laquelle », une avec « où », et traduisez-les à l'oral ; vérifiez ensuite avec la grille ci-dessus.</p>
                 <p className="font-bold text-orange-800 mt-2">Bonne pratique !</p>
               </div>
@@ -535,13 +535,13 @@ const RelativePage = () => {
           <div className="text-center pb-8">
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link to="/formation/allemand-relative/exercices">
-                <Button className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 flex items-center gap-2">
+                <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-6 py-3 flex items-center gap-2">
                   <BookOpen className="h-5 w-5" />
                   Exercices interactifs
                 </Button>
               </Link>
               <Link to="/formation/allemand-grammaire">
-                <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-50 px-6 py-3 flex items-center gap-2">
+                <Button variant="outline" className="border-orange-300 text-pr-orange-dark hover:bg-orange-50 px-6 py-3 flex items-center gap-2">
                   <ArrowLeft className="h-4 w-4" />
                   Retour à la grammaire
                 </Button>

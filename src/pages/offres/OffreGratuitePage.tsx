@@ -73,7 +73,7 @@ const OffreGratuitePage = () => {
           
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Offre <span className="text-orange-500">Gratuite</span>
+              Offre <span className="text-pr-orange">Gratuite</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Participe gratuitement à nos sessions live de préparation à la rentrée !
@@ -156,19 +156,19 @@ const OffreGratuitePage = () => {
               <h3 className="font-bold text-gray-900 mb-4">Au programme :</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-pr-orange mt-0.5 flex-shrink-0" />
                   <p className="text-gray-700">Stratégies de révision pour la rentrée</p>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-pr-orange mt-0.5 flex-shrink-0" />
                   <p className="text-gray-700">Planning optimal pour les 14 derniers jours</p>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-pr-orange mt-0.5 flex-shrink-0" />
                   <p className="text-gray-700">Points essentiels à revoir en maths</p>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-pr-orange mt-0.5 flex-shrink-0" />
                   <p className="text-gray-700">Q&A en direct avec Dimitri</p>
                 </div>
               </div>
@@ -224,7 +224,7 @@ const OffreGratuitePage = () => {
                       </p>
                       <div className="space-y-2">
                         <Link to="/formations">
-                          <Button className="bg-orange-500 hover:bg-orange-600 text-white">
+                          <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white">
                             Découvrir nos formations
                           </Button>
                         </Link>
@@ -267,7 +267,7 @@ const OffreGratuitePage = () => {
                             href={getZoomInfo().link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-orange-600 hover:text-orange-700 underline text-sm break-all"
+                            className="text-pr-orange-dark hover:text-pr-orange-dark underline text-sm break-all"
                           >
                             {getZoomInfo().link}
                           </a>
@@ -281,7 +281,7 @@ const OffreGratuitePage = () => {
                           rel="noopener noreferrer"
                           className="block"
                         >
-                          <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3">
+                          <Button className="w-full bg-pr-orange hover:bg-pr-orange-dark text-white py-3">
                             <Video className="w-5 h-5 mr-2" />
                             Rejoindre la session Zoom
                           </Button>

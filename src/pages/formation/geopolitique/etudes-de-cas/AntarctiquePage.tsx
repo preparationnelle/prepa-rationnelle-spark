@@ -96,28 +96,28 @@ const AntarctiquePage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Calendar className="h-5 w-5 text-orange-600" />
+                  <Calendar className="h-5 w-5 text-pr-orange-dark" />
                   Dates importantes
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-orange-600 rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pr-orange-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">1959</div>
                       <div className="text-gray-700">Signature du Traité sur l'Antarctique</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-orange-600 rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pr-orange-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">1991</div>
                       <div className="text-gray-700">Protocole de Madrid interdisant l'exploitation minière jusqu'en 2048</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-orange-600 rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pr-orange-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2010</div>
                       <div className="text-gray-700">Début des investissements massifs chinois</div>

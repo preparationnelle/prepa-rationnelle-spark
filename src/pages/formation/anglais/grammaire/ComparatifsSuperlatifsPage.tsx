@@ -45,7 +45,7 @@ const ComparatifsSuperlatifsPage = () => {
         {/* En-tête */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-orange-600 text-white">
+            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Fiche de Grammaire : Comparatifs et Superlatifs
@@ -63,7 +63,7 @@ const ComparatifsSuperlatifsPage = () => {
               Introduction
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-orange-700 space-y-3">
+          <CardContent className="text-pr-orange-dark space-y-3">
             <p>Les comparatifs comparent deux éléments; les superlatifs expriment le degré extrême au sein d’un groupe.</p>
           </CardContent>
         </Card>
@@ -77,25 +77,25 @@ const ComparatifsSuperlatifsPage = () => {
             <section>
               <h3 className="text-xl font-semibold mb-2">Adjectifs courts (1 syllabe, ou 2 avec terminaison légère)</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li><span className="text-orange-700 font-semibold">Comparatif</span> : adj + <span className="text-orange-700 font-semibold">-er</span> + than → tall → taller than</li>
-                <li><span className="text-orange-700 font-semibold">Superlatif</span> : the + adj + <span className="text-orange-700 font-semibold">-est</span> → tall → the tallest</li>
-                <li>Adj terminant par <span className="text-orange-700 font-semibold">-y</span> → y → i : happy → happier / the happiest</li>
+                <li><span className="text-pr-orange-dark font-semibold">Comparatif</span> : adj + <span className="text-pr-orange-dark font-semibold">-er</span> + than → tall → taller than</li>
+                <li><span className="text-pr-orange-dark font-semibold">Superlatif</span> : the + adj + <span className="text-pr-orange-dark font-semibold">-est</span> → tall → the tallest</li>
+                <li>Adj terminant par <span className="text-pr-orange-dark font-semibold">-y</span> → y → i : happy → happier / the happiest</li>
                 <li>Consonne finale doublée si CVC : big → bigger / the biggest</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Adjectifs longs (≥ 2 syllabes)</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li><span className="text-orange-700 font-semibold">Comparatif</span> : <span className="text-orange-700 font-semibold">more</span> + adj + than → more interesting than</li>
-                <li><span className="text-orange-700 font-semibold">Superlatif</span> : the + <span className="text-orange-700 font-semibold">most</span> + adj → the most interesting</li>
-                <li>Forme inverse (infériorité) : <span className="text-orange-700 font-semibold">less</span> / the <span className="text-orange-700 font-semibold">least</span></li>
+                <li><span className="text-pr-orange-dark font-semibold">Comparatif</span> : <span className="text-pr-orange-dark font-semibold">more</span> + adj + than → more interesting than</li>
+                <li><span className="text-pr-orange-dark font-semibold">Superlatif</span> : the + <span className="text-pr-orange-dark font-semibold">most</span> + adj → the most interesting</li>
+                <li>Forme inverse (infériorité) : <span className="text-pr-orange-dark font-semibold">less</span> / the <span className="text-pr-orange-dark font-semibold">least</span></li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Irréguliers fréquents</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li>good → <span className="text-orange-700 font-semibold">better</span> → the <span className="text-orange-700 font-semibold">best</span></li>
-                <li>bad → <span className="text-orange-700 font-semibold">worse</span> → the <span className="text-orange-700 font-semibold">worst</span></li>
+                <li>good → <span className="text-pr-orange-dark font-semibold">better</span> → the <span className="text-pr-orange-dark font-semibold">best</span></li>
+                <li>bad → <span className="text-pr-orange-dark font-semibold">worse</span> → the <span className="text-pr-orange-dark font-semibold">worst</span></li>
                 <li>far → farther/further → the farthest/the furthest</li>
                 <li>little → less → the least ; many/much → more → the most</li>
               </ul>
@@ -112,23 +112,23 @@ const ComparatifsSuperlatifsPage = () => {
             <section>
               <h3 className="text-xl font-semibold mb-2">Égalité et inégalité</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li><span className="text-orange-700 font-semibold">as + adj + as</span> : She is as tall as her brother.</li>
-                <li><span className="text-orange-700 font-semibold">not as/so + adj + as</span> : This test is not as hard as the last one.</li>
-                <li><span className="text-orange-700 font-semibold">less + adj + than</span> : This book is less interesting than that one.</li>
+                <li><span className="text-pr-orange-dark font-semibold">as + adj + as</span> : She is as tall as her brother.</li>
+                <li><span className="text-pr-orange-dark font-semibold">not as/so + adj + as</span> : This test is not as hard as the last one.</li>
+                <li><span className="text-pr-orange-dark font-semibold">less + adj + than</span> : This book is less interesting than that one.</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Modificateurs d’intensité</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li>far, much, a lot → much/far/a lot <span className="text-orange-700 font-semibold">+ comparatif</span> : far better</li>
-                <li>a little, slightly, a bit → <span className="text-orange-700 font-semibold">+ comparatif</span> : a bit cheaper</li>
-                <li>by far → <span className="text-orange-700 font-semibold">+ superlatif</span> : by far the best</li>
+                <li>far, much, a lot → much/far/a lot <span className="text-pr-orange-dark font-semibold">+ comparatif</span> : far better</li>
+                <li>a little, slightly, a bit → <span className="text-pr-orange-dark font-semibold">+ comparatif</span> : a bit cheaper</li>
+                <li>by far → <span className="text-pr-orange-dark font-semibold">+ superlatif</span> : by far the best</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Structures avancées</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li><span className="text-orange-700 font-semibold">The more ..., the more/less ...</span> : The more you study, the better you get.</li>
+                <li><span className="text-pr-orange-dark font-semibold">The more ..., the more/less ...</span> : The more you study, the better you get.</li>
                 <li>Avoid double comparatives: ❌ more better → ✅ much better</li>
               </ul>
             </section>
@@ -139,7 +139,7 @@ const ComparatifsSuperlatifsPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <Table className="h-6 w-6 text-orange-600" />
+              <Table className="h-6 w-6 text-pr-orange-dark" />
               3. Tableau Récapitulatif
             </CardTitle>
           </CardHeader>
@@ -148,19 +148,19 @@ const ComparatifsSuperlatifsPage = () => {
               <table className="min-w-full border border-gray-200 bg-white">
                 <thead className="bg-orange-50">
                   <tr>
-                    <th className="border px-3 py-2 text-left text-orange-700">Type</th>
-                    <th className="border px-3 py-2 text-left text-orange-700">Structure</th>
-                    <th className="border px-3 py-2 text-left text-orange-700">Exemple</th>
+                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Type</th>
+                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Structure</th>
+                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Exemple</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">Comparatif court</td><td className="border px-3 py-2">adj+er + than</td><td className="border px-3 py-2">faster than</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">Comparatif long</td><td className="border px-3 py-2">more + adj + than</td><td className="border px-3 py-2">more efficient than</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">Superlatif court</td><td className="border px-3 py-2">the + adj+est</td><td className="border px-3 py-2">the fastest</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">Superlatif long</td><td className="border px-3 py-2">the most + adj</td><td className="border px-3 py-2">the most efficient</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">Infériorité</td><td className="border px-3 py-2">less / the least + adj</td><td className="border px-3 py-2">the least expensive</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">Égalité</td><td className="border px-3 py-2">as + adj + as</td><td className="border px-3 py-2">as tall as</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">Irréguliers</td><td className="border px-3 py-2">better/best; worse/worst</td><td className="border px-3 py-2">by far the best</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Comparatif court</td><td className="border px-3 py-2">adj+er + than</td><td className="border px-3 py-2">faster than</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Comparatif long</td><td className="border px-3 py-2">more + adj + than</td><td className="border px-3 py-2">more efficient than</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Superlatif court</td><td className="border px-3 py-2">the + adj+est</td><td className="border px-3 py-2">the fastest</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Superlatif long</td><td className="border px-3 py-2">the most + adj</td><td className="border px-3 py-2">the most efficient</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Infériorité</td><td className="border px-3 py-2">less / the least + adj</td><td className="border px-3 py-2">the least expensive</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Égalité</td><td className="border px-3 py-2">as + adj + as</td><td className="border px-3 py-2">as tall as</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Irréguliers</td><td className="border px-3 py-2">better/best; worse/worst</td><td className="border px-3 py-2">by far the best</td></tr>
                 </tbody>
               </table>
             </div>
@@ -174,7 +174,7 @@ const ComparatifsSuperlatifsPage = () => {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-6 space-y-1">
-              <li>Than + pronom objet : She is taller than <span className="text-orange-700 font-semibold">me</span> (not I).</li>
+              <li>Than + pronom objet : She is taller than <span className="text-pr-orange-dark font-semibold">me</span> (not I).</li>
               <li>Ne pas doubler: ❌ more faster → ✅ much faster.</li>
               <li>Bien traiter -y → -ier, et les doublages CVC.</li>
             </ul>
@@ -190,10 +190,10 @@ const ComparatifsSuperlatifsPage = () => {
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-lg text-orange-700 mb-6">Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.</p>
+            <p className="text-lg text-pr-orange-dark mb-6">Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/formation/anglais/grammaire/comparatifs/exercices">
-                <Button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-lg w-full sm:w-auto">
+                <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
                   <Target className="h-5 w-5 mr-2" />
                   Exercices
                 </Button>

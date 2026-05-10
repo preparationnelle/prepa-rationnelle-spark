@@ -11,20 +11,20 @@ const VerbesAParticulePage = () => {
       <header className="border-b border-gray-200">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center text-sm text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-orange-600 transition-colors">
+            <Link to="/" className="flex items-center gap-1 hover:text-pr-orange-dark transition-colors">
               <BookOpen className="h-4 w-4" />
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
-            <Link to="/formations" className="hover:text-orange-600 transition-colors">
+            <Link to="/formations" className="hover:text-pr-orange-dark transition-colors">
               Toutes les formations
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
-            <Link to="/formation/allemand" className="hover:text-orange-600 transition-colors">
+            <Link to="/formation/allemand" className="hover:text-pr-orange-dark transition-colors">
               Formation Allemand
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
-            <Link to="/formation/allemand-grammaire" className="hover:text-orange-600 transition-colors">
+            <Link to="/formation/allemand-grammaire" className="hover:text-pr-orange-dark transition-colors">
               Grammaire
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
@@ -34,7 +34,7 @@ const VerbesAParticulePage = () => {
           <div className="mt-8 text-center">
             <div className="flex justify-center mb-4">
               <div className="p-3 rounded-full bg-orange-100">
-                <BookOpen className="h-8 w-8 text-orange-600" />
+                <BookOpen className="h-8 w-8 text-pr-orange-dark" />
               </div>
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -53,7 +53,7 @@ const VerbesAParticulePage = () => {
 
           {/* Définition et difficulté */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Qu'est-ce qu'un verbe à particule séparable ?</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Qu'est-ce qu'un verbe à particule séparable ?</h2>
             <p className="text-gray-700 mb-4">
               Les verbes à particule séparable créent des difficultés particulières. Lorsque conjugués, ces verbes se séparent : la partie conjuguée reste en deuxième position tandis que la particule se déplace en fin de phrase. Cette caractéristique oblige l'auditeur à attendre la fin de la phrase pour comprendre le sens exact du verbe.
             </p>
@@ -65,7 +65,7 @@ const VerbesAParticulePage = () => {
 
           {/* Règle générale */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Règle générale de séparation</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Règle générale de séparation</h2>
             <p className="text-gray-700 mb-4">
               Dans les propositions principales (phrases déclaratives, interrogatives fermées, impératif), la particule se détache et se place en fin de phrase :
             </p>
@@ -73,21 +73,21 @@ const VerbesAParticulePage = () => {
               <div>
                 <h3 className="font-semibold mb-2">Au présent :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p>aufstehen → Ich <span className="text-orange-600">stehe</span> früh <span className="text-orange-600">auf</span>.</p>
+                  <p>aufstehen → Ich <span className="text-pr-orange-dark">stehe</span> früh <span className="text-pr-orange-dark">auf</span>.</p>
                   <p className="text-sm text-gray-700">(Je me lève tôt.)</p>
                 </div>
               </div>
               <div>
                 <h3 className="font-semibold mb-2">Au prétérit :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p>aufstehen → Ich <span className="text-orange-600">stand</span> gestern früh <span className="text-orange-600">auf</span>.</p>
+                  <p>aufstehen → Ich <span className="text-pr-orange-dark">stand</span> gestern früh <span className="text-pr-orange-dark">auf</span>.</p>
                   <p className="text-sm text-gray-700">(Je me suis levé tôt hier.)</p>
                 </div>
               </div>
               <div>
                 <h3 className="font-semibold mb-2">À l'impératif :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p>aufstehen → <span className="text-orange-600">Steh</span> bitte <span className="text-orange-600">auf</span>!</p>
+                  <p>aufstehen → <span className="text-pr-orange-dark">Steh</span> bitte <span className="text-pr-orange-dark">auf</span>!</p>
                   <p className="text-sm text-gray-700">(Lève-toi s'il te plaît !)</p>
                 </div>
               </div>
@@ -96,38 +96,38 @@ const VerbesAParticulePage = () => {
 
           {/* Exception : propositions subordonnées */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Exception : propositions subordonnées</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Exception : propositions subordonnées</h2>
             <p className="text-gray-700 mb-4">
               Dans les propositions subordonnées, le verbe conjugué se place en fin de phrase et la particule reste attachée au verbe :
             </p>
             <div className="bg-gray-50 p-4 rounded-lg">
-              <p>Ich weiß, dass du jeden Morgen <span className="text-orange-600">aufstehst</span>.</p>
+              <p>Ich weiß, dass du jeden Morgen <span className="text-pr-orange-dark">aufstehst</span>.</p>
               <p className="text-sm text-gray-700">(Je sais que tu te lèves chaque matin.)</p>
             </div>
           </div>
 
           {/* Particules fréquentes */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Particules fréquentes</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Particules fréquentes</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h3 className="font-semibold mb-3">Particules de direction :</h3>
                 <ul className="space-y-2 text-gray-700">
-                  <li><span className="text-orange-600">ab</span> - descendre (absteigen)</li>
-                  <li><span className="text-orange-600">auf</span> - monter (aufstehen)</li>
-                  <li><span className="text-orange-600">ein</span> - entrer (einkaufen)</li>
-                  <li><span className="text-orange-600">aus</span> - sortir (aussteigen)</li>
-                  <li><span className="text-orange-600">zu</span> - fermer (zumachen)</li>
+                  <li><span className="text-pr-orange-dark">ab</span> - descendre (absteigen)</li>
+                  <li><span className="text-pr-orange-dark">auf</span> - monter (aufstehen)</li>
+                  <li><span className="text-pr-orange-dark">ein</span> - entrer (einkaufen)</li>
+                  <li><span className="text-pr-orange-dark">aus</span> - sortir (aussteigen)</li>
+                  <li><span className="text-pr-orange-dark">zu</span> - fermer (zumachen)</li>
                 </ul>
               </div>
               <div>
                 <h3 className="font-semibold mb-3">Particules de mouvement :</h3>
                 <ul className="space-y-2 text-gray-700">
-                  <li><span className="text-orange-600">an</span> - commencer (anfangen)</li>
-                  <li><span className="text-orange-600">mit</span> - participer (mitmachen)</li>
-                  <li><span className="text-orange-600">vor</span> - présenter (vorstellen)</li>
-                  <li><span className="text-orange-600">weg</span> - partir (weggehen)</li>
-                  <li><span className="text-orange-600">zusammen</span> - réunir (zusammenkommen)</li>
+                  <li><span className="text-pr-orange-dark">an</span> - commencer (anfangen)</li>
+                  <li><span className="text-pr-orange-dark">mit</span> - participer (mitmachen)</li>
+                  <li><span className="text-pr-orange-dark">vor</span> - présenter (vorstellen)</li>
+                  <li><span className="text-pr-orange-dark">weg</span> - partir (weggehen)</li>
+                  <li><span className="text-pr-orange-dark">zusammen</span> - réunir (zusammenkommen)</li>
                 </ul>
               </div>
             </div>
@@ -135,7 +135,7 @@ const VerbesAParticulePage = () => {
 
           {/* Erreurs fréquentes */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Erreurs fréquentes à éviter</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Erreurs fréquentes à éviter</h2>
             <div className="space-y-4">
               <div>
                 <h3 className="font-semibold mb-2">Erreur de séparation :</h3>
@@ -155,7 +155,7 @@ const VerbesAParticulePage = () => {
                 <h3 className="font-semibold mb-2">Confusion avec les verbes inséparables :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <p className="text-gray-700">Les verbes avec "be-", "ge-", "er-", "ver-", "zer-", "ent-", "emp-" sont généralement inséparables.</p>
-                  <p>be<span className="text-orange-600">stehen</span> (inséparable) ≠ auf<span className="text-orange-600">stehen</span> (séparable)</p>
+                  <p>be<span className="text-pr-orange-dark">stehen</span> (inséparable) ≠ auf<span className="text-pr-orange-dark">stehen</span> (séparable)</p>
                 </div>
               </div>
             </div>
@@ -163,12 +163,12 @@ const VerbesAParticulePage = () => {
 
           {/* Exercices pratiques */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Exercices pratiques</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Exercices pratiques</h2>
             <p className="text-gray-700 mb-4">
               Mettez en pratique les verbes à particule séparable avec des exercices interactifs.
             </p>
             <div className="text-center">
-              <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-50" disabled>
+              <Button variant="outline" className="border-orange-300 text-pr-orange-dark hover:bg-orange-50" disabled>
                 <FileText className="h-4 w-4 mr-2" />
                 Exercices en développement
               </Button>
@@ -180,13 +180,13 @@ const VerbesAParticulePage = () => {
           {/* Boutons d'action */}
           <div className="flex justify-center gap-4 pb-8">
             <Link to="/formation/allemand-verbes-particules/exercices">
-              <Button className="bg-orange-600 hover:bg-orange-700 text-white flex items-center gap-2">
+              <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white flex items-center gap-2">
                 <FileText className="h-4 w-4" />
                 Accéder aux exercices
               </Button>
             </Link>
             <Link to="/formation/allemand-grammaire">
-              <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-50">
+              <Button variant="outline" className="border-orange-300 text-pr-orange-dark hover:bg-orange-50">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Retour à la grammaire
               </Button>

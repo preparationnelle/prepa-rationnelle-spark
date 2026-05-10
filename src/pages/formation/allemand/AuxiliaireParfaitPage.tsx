@@ -11,20 +11,20 @@ const AuxiliaireParfaitPage = () => {
       <header className="border-b border-gray-200">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center text-sm text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-orange-600 transition-colors">
+            <Link to="/" className="flex items-center gap-1 hover:text-pr-orange-dark transition-colors">
               <BookOpen className="h-4 w-4" />
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
-            <Link to="/formations" className="hover:text-orange-600 transition-colors">
+            <Link to="/formations" className="hover:text-pr-orange-dark transition-colors">
               Toutes les formations
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
-            <Link to="/formation/allemand" className="hover:text-orange-600 transition-colors">
+            <Link to="/formation/allemand" className="hover:text-pr-orange-dark transition-colors">
               Formation Allemand
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
-            <Link to="/formation/allemand-grammaire" className="hover:text-orange-600 transition-colors">
+            <Link to="/formation/allemand-grammaire" className="hover:text-pr-orange-dark transition-colors">
               Grammaire
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
@@ -34,7 +34,7 @@ const AuxiliaireParfaitPage = () => {
           <div className="mt-8 text-center">
             <div className="flex justify-center mb-4">
               <div className="p-3 rounded-full bg-orange-100">
-                <BookOpen className="h-8 w-8 text-orange-600" />
+                <BookOpen className="h-8 w-8 text-pr-orange-dark" />
               </div>
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -53,7 +53,7 @@ const AuxiliaireParfaitPage = () => {
 
           {/* Introduction à la difficulté */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">La distinction haben/sein</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">La distinction haben/sein</h2>
             <p className="text-gray-700 mb-4">
               La distinction entre "haben" et "sein" pour former le parfait constitue une difficulté majeure pour les apprenants. Contrairement au français qui utilise principalement "avoir", l'allemand utilise des critères précis pour choisir l'auxiliaire approprié.
             </p>
@@ -65,33 +65,33 @@ const AuxiliaireParfaitPage = () => {
 
           {/* HABEN : la majorité des verbes */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">HABEN : la majorité des verbes</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">HABEN : la majorité des verbes</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h3 className="font-semibold mb-3 text-green-700">Verbes transitifs (avec COD) :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p>Ich <span className="text-orange-600">habe</span> das Buch <span className="text-orange-600">gelesen</span>.</p>
+                  <p>Ich <span className="text-pr-orange-dark">habe</span> das Buch <span className="text-pr-orange-dark">gelesen</span>.</p>
                   <p className="text-sm text-gray-700">(J'ai lu le livre.)</p>
                 </div>
               </div>
               <div>
                 <h3 className="font-semibold mb-3 text-carnet-red">Verbes réfléchis :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p>Ich <span className="text-orange-600">habe</span> mich <span className="text-orange-600">gewaschen</span>.</p>
+                  <p>Ich <span className="text-pr-orange-dark">habe</span> mich <span className="text-pr-orange-dark">gewaschen</span>.</p>
                   <p className="text-sm text-gray-700">(Je me suis lavé.)</p>
                 </div>
               </div>
               <div>
                 <h3 className="font-semibold mb-3 text-purple-700">Verbes impersonnels :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p>Es <span className="text-orange-600">hat</span> <span className="text-orange-600">geregnet</span>.</p>
+                  <p>Es <span className="text-pr-orange-dark">hat</span> <span className="text-pr-orange-dark">geregnet</span>.</p>
                   <p className="text-sm text-gray-700">(Il a plu.)</p>
                 </div>
               </div>
               <div>
                 <h3 className="font-semibold mb-3 text-red-700">Verbes de modalité :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p>Ich <span className="text-orange-600">habe</span> arbeiten <span className="text-orange-600">müssen</span>.</p>
+                  <p>Ich <span className="text-pr-orange-dark">habe</span> arbeiten <span className="text-pr-orange-dark">müssen</span>.</p>
                   <p className="text-sm text-gray-700">(J'ai dû travailler.)</p>
                 </div>
               </div>
@@ -100,7 +100,7 @@ const AuxiliaireParfaitPage = () => {
 
           {/* SEIN : verbes de mouvement et changement d'état */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">SEIN : verbes de mouvement et changement d'état</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">SEIN : verbes de mouvement et changement d'état</h2>
             <div className="space-y-4">
               <div>
                 <h3 className="font-semibold mb-3 text-carnet-red">Verbes de mouvement :</h3>
@@ -170,7 +170,7 @@ const AuxiliaireParfaitPage = () => {
 
           {/* Cas particuliers */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Cas particuliers à retenir</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Cas particuliers à retenir</h2>
             <div className="space-y-4">
               <div>
                 <h3 className="font-semibold mb-2">Verbes de mouvement intransitifs :</h3>
@@ -201,7 +201,7 @@ const AuxiliaireParfaitPage = () => {
 
           {/* Erreurs fréquentes */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Erreurs fréquentes à éviter</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Erreurs fréquentes à éviter</h2>
             <div className="space-y-4">
               <div>
                 <h3 className="font-semibold mb-2">Verbes de mouvement avec HABEN :</h3>
@@ -240,7 +240,7 @@ const AuxiliaireParfaitPage = () => {
 
           {/* Mnémoniques */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Astuces mnémotechniques</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Astuces mnémotechniques</h2>
             <div className="space-y-4">
               <div>
                 <h3 className="font-semibold mb-2">Groupe SEIN (mouvement/changement) :</h3>
@@ -261,12 +261,12 @@ const AuxiliaireParfaitPage = () => {
 
           {/* Exercices pratiques */}
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Exercices pratiques</h2>
+            <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">Exercices pratiques</h2>
             <p className="text-gray-700 mb-4">
               Mettez en pratique le choix de l'auxiliaire au parfait avec des exercices interactifs.
             </p>
             <div className="text-center">
-              <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-50" disabled>
+              <Button variant="outline" className="border-orange-300 text-pr-orange-dark hover:bg-orange-50" disabled>
                 <FileText className="h-4 w-4 mr-2" />
                 Exercices en développement
               </Button>
@@ -277,7 +277,7 @@ const AuxiliaireParfaitPage = () => {
           {/* Bouton retour */}
           <div className="text-center pb-8">
             <Link to="/formation/allemand-grammaire">
-              <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-50">
+              <Button variant="outline" className="border-orange-300 text-pr-orange-dark hover:bg-orange-50">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Retour à la grammaire
               </Button>

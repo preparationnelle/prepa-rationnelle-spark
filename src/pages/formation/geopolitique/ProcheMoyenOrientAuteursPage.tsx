@@ -253,7 +253,7 @@ const ProcheMoyenOrientAuteursPage = () => {
                 <Globe className="w-4 h-4" />
                 Chronologie
               </Link>
-              <Link to="/formation/geopolitique/proche-moyen-orient/flashcards" className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md transition-colors">
+              <Link to="/formation/geopolitique/proche-moyen-orient/flashcards" className="inline-flex items-center gap-2 bg-pr-orange hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md transition-colors">
                 <Target className="w-4 h-4" />
                 Flash cards
               </Link>

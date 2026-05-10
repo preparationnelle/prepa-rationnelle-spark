@@ -204,7 +204,7 @@ const DeveloppementDurablePage = () => {
           </AccordionItem>
 
           <AccordionItem value="africa-youth-bulge">
-            <AccordionTrigger className="text-xl text-orange-700">
+            <AccordionTrigger className="text-xl text-pr-orange-dark">
               II. Le "Youth Bulge" africain : Opportunités et défis
             </AccordionTrigger>
             <AccordionContent>
@@ -220,7 +220,7 @@ const DeveloppementDurablePage = () => {
                   <CardContent>
                     <div className="bg-orange-100 p-4 rounded-lg mb-6">
                       <h4 className="font-semibold text-orange-800 mb-2">Ampleur du phénomène</h4>
-                      <ul className="text-sm text-orange-700 space-y-2">
+                      <ul className="text-sm text-pr-orange-dark space-y-2">
                         <li><strong>Afrique subsaharienne :</strong> Plus de 60% population sous 25 ans</li>
                         <li><strong>Projection 2030 :</strong> 42% des jeunes mondiaux seront africains</li>
                         <li><strong>Croissance :</strong> 2,5% en Afrique sub. (Nigeria 2,6%, Mali 3%)</li>
@@ -235,11 +235,11 @@ const DeveloppementDurablePage = () => {
                             <div className="flex-1">
                               <div className="flex items-center gap-3 mb-1">
                                 <span className="font-semibold text-orange-800">{factor.factor}</span>
-                                <Badge className="bg-orange-600 text-white text-xs">
+                                <Badge className="bg-pr-orange-dark text-white text-xs">
                                   {factor.stat}
                                 </Badge>
                               </div>
-                              <div className="text-sm text-orange-700">
+                              <div className="text-sm text-pr-orange-dark">
                                 <strong>Impact :</strong> {factor.impact}
                               </div>
                             </div>

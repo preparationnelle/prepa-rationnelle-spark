@@ -36,7 +36,7 @@ const ReussirLaisserPage: React.FC = () => {
       id: 3,
       title: "Gérer le temps",
       icon: <Clock className="w-5 h-5" />,
-      color: "from-orange-600 to-amber-600",
+      color: "from-pr-orange-dark to-amber-600",
       bgColor: "from-orange-50 to-amber-50",
       points: [
         "5-10 minutes : analyse du sujet et plan",

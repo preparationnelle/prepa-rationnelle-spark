@@ -151,7 +151,7 @@ export const FlashcardHistoryTab = ({
   if (isLoading) {
     return (
       <div className="p-16 text-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500 mx-auto mb-4"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-pr-orange mx-auto mb-4"></div>
         <p className="text-gray-500">
           {language === 'fr' ? 'Chargement...' : 'Loading...'}
         </p>
@@ -184,7 +184,7 @@ export const FlashcardHistoryTab = ({
       <div className="flex flex-col gap-6 pb-6 border-b border-gray-100 dark:border-gray-800">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <h3 className="text-xl font-bold flex items-center gap-3 text-gray-900 dark:text-white">
-            <History className="h-5 w-5 text-orange-500" />
+            <History className="h-5 w-5 text-pr-orange" />
             {language === 'fr' ? 'Ma Collection' : 'My Collection'}
             <Badge variant="secondary" className="ml-2 bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300">
               {filteredFlashcards.length} / {flashcards.length}
@@ -256,7 +256,7 @@ export const FlashcardHistoryTab = ({
                 variant={dateFilter === filter ? "default" : "outline"}
                 size="sm"
                 onClick={() => setDateFilter(filter)}
-                className={`flex items-center gap-1 whitespace-nowrap ${dateFilter === filter ? 'bg-orange-500 hover:bg-orange-600 text-white' : 'border-gray-200 dark:border-gray-700'}`}
+                className={`flex items-center gap-1 whitespace-nowrap ${dateFilter === filter ? 'bg-pr-orange hover:bg-pr-orange-dark text-white' : 'border-gray-200 dark:border-gray-700'}`}
               >
                 <Calendar className="h-3.5 w-3.5" />
                 {filter === 'all' && (language === 'fr' ? 'Tout' : 'All')}
@@ -281,7 +281,7 @@ export const FlashcardHistoryTab = ({
                     {flashcard.category || 'Vocabulaire'}
                   </Badge>
                   {flashcard.source === 'ai_generated' && (
-                    <Badge variant="secondary" className="text-xs bg-orange-50 text-orange-600 dark:bg-orange-900/20 dark:text-orange-400">
+                    <Badge variant="secondary" className="text-xs bg-orange-50 text-pr-orange-dark dark:bg-orange-900/20 dark:text-orange-400">
                       <Sparkles className="w-3 h-3 mr-1" />
                       IA
                     </Badge>
@@ -364,7 +364,7 @@ export const FlashcardHistoryTab = ({
           <Button
             variant="link"
             onClick={() => { setSearchQuery(''); setCategoryFilter('all'); }}
-            className="mt-2 text-orange-500"
+            className="mt-2 text-pr-orange"
           >
             {language === 'fr' ? 'Réinitialiser les filtres' : 'Reset filters'}
           </Button>

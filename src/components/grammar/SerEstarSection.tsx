@@ -15,7 +15,7 @@ const SerEstarSectionComponent: React.FC<SerEstarSectionProps> = ({ section }) =
   const getIconForSection = (id: string) => {
     if (id.includes('nuances') || id.includes('regles')) return <Target className="h-5 w-5 text-green-600" />;
     if (id.includes('constructions') || id.includes('haber')) return <Code className="h-5 w-5 text-blue-600" />;
-    if (id.includes('verbes') || id.includes('changement')) return <Zap className="h-5 w-5 text-orange-600" />;
+    if (id.includes('verbes') || id.includes('changement')) return <Zap className="h-5 w-5 text-pr-orange-dark" />;
     if (id.includes('passif') || id.includes('pronominale')) return <MessageSquare className="h-5 w-5 text-purple-600" />;
     if (id.includes('cours') || id.includes('basiques')) return <BookOpen className="h-5 w-5 text-indigo-600" />;
     if (id.includes('traduire') || id.includes('il-y-a')) return <Lightbulb className="h-5 w-5 text-yellow-600" />;
@@ -132,7 +132,7 @@ const SerEstarSectionComponent: React.FC<SerEstarSectionProps> = ({ section }) =
                         </span>
                       ))}
                     </div>
-                    <p className="text-xs text-orange-700">{irregularity.notes}</p>
+                    <p className="text-xs text-pr-orange-dark">{irregularity.notes}</p>
                   </div>
                 ))}
               </div>

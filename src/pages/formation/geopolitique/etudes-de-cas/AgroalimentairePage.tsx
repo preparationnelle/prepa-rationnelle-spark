@@ -60,7 +60,7 @@ const AgroalimentairePage = () => {
       <div className="container mx-auto px-4 py-8">
 
         {/* Header */}
-        <Card className="mb-8 bg-gradient-to-r from-yellow-600 to-orange-600 text-white">
+        <Card className="mb-8 bg-gradient-to-r from-yellow-600 to-pr-orange-dark text-white">
           <CardHeader>
             <div className="flex items-center gap-3">
               <Wheat className="h-8 w-8" />
@@ -122,7 +122,7 @@ const AgroalimentairePage = () => {
               
               <div className="bg-orange-50 p-4 rounded-lg">
                 <h4 className="font-semibold text-orange-800 mb-3">Grandes exploitations</h4>
-                <ul className="text-sm text-orange-700 space-y-1">
+                <ul className="text-sm text-pr-orange-dark space-y-1">
                                       <li>• Philippines : Dole {'>'}10 000 ha</li>
                     <li>• US : 60 000 farms {'>'}1M$ (65% production)</li>
                   <li>• France : Vignes Champagne 1M€/ha</li>
@@ -229,7 +229,7 @@ const AgroalimentairePage = () => {
                     
                     <div className="bg-orange-50 p-4 rounded-lg">
                       <h4 className="font-semibold text-orange-800 mb-2">Vulnérabilités géopolitiques</h4>
-                      <ul className="list-disc list-inside text-sm text-orange-700 space-y-1">
+                      <ul className="list-disc list-inside text-sm text-pr-orange-dark space-y-1">
                         <li><strong>Ukraine :</strong> "Grenier Europe" perturbé par guerre (2022-)</li>
                         <li><strong>Fertilisants :</strong> Russie 20% exports, sanctions impactent production</li>
                         <li><strong>Routes commerciales :</strong> Mer Noire, détroits sensibles</li>

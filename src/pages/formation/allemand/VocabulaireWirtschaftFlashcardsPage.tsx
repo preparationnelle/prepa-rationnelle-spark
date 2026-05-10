@@ -307,11 +307,11 @@ const VocabulaireWirtschaftFlashcardsPage = () => {
         <div className="max-w-2xl mx-auto mb-6">
           <div className="flex justify-between items-center mb-2">
             <span className="text-sm font-medium text-gray-700">Progression</span>
-            <span className="text-sm font-medium text-orange-600">{currentIndex + 1} / {cards.length}</span>
+            <span className="text-sm font-medium text-pr-orange-dark">{currentIndex + 1} / {cards.length}</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2.5">
             <div 
-              className="bg-gradient-to-r from-orange-500 to-amber-500 h-2.5 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-pr-orange to-amber-500 h-2.5 rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -351,7 +351,7 @@ const VocabulaireWirtschaftFlashcardsPage = () => {
             <Card className="mb-4 bg-amber-50 border-orange-200">
               <CardContent className="p-4">
                 <h3 className="font-semibold text-orange-900 mb-3">Raccourcis clavier :</h3>
-                <div className="grid grid-cols-2 gap-2 text-sm text-orange-700">
+                <div className="grid grid-cols-2 gap-2 text-sm text-pr-orange-dark">
                   <div><kbd className="bg-amber-100 px-2 py-1 rounded">Espace</kbd> ou <kbd className="bg-amber-100 px-2 py-1 rounded">Entrée</kbd> : Retourner la carte</div>
                   <div><kbd className="bg-amber-100 px-2 py-1 rounded">←</kbd> <kbd className="bg-amber-100 px-2 py-1 rounded">→</kbd> : Navigation</div>
                   <div><kbd className="bg-amber-100 px-2 py-1 rounded">S</kbd> : Mélanger</div>
@@ -380,13 +380,13 @@ const VocabulaireWirtschaftFlashcardsPage = () => {
               <div className="absolute -z-10 top-4 left-4 flex items-center gap-2">
                 {isFlipped ? (
                   <>
-                    <Eye className="h-4 w-4 text-orange-600" />
-                    <span className="text-sm font-medium text-orange-600">Allemand</span>
+                    <Eye className="h-4 w-4 text-pr-orange-dark" />
+                    <span className="text-sm font-medium text-pr-orange-dark">Allemand</span>
                   </>
                 ) : (
                   <>
-                    <EyeOff className="h-4 w-4 text-orange-600" />
-                    <span className="text-sm font-medium text-orange-600">Français</span>
+                    <EyeOff className="h-4 w-4 text-pr-orange-dark" />
+                    <span className="text-sm font-medium text-pr-orange-dark">Français</span>
                   </>
                 )}
               </div>
@@ -446,7 +446,7 @@ const VocabulaireWirtschaftFlashcardsPage = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-3">
                   <h4 className="font-semibold text-orange-800">Technique de révision :</h4>
-                  <ul className="text-sm text-orange-700 space-y-1">
+                  <ul className="text-sm text-pr-orange-dark space-y-1">
                     <li>• Commencez par le français (plus familier)</li>
                     <li>• Tentez de deviner l'allemand avant de retourner</li>
                     <li>• Répétez à voix haute pour la prononciation</li>
@@ -455,7 +455,7 @@ const VocabulaireWirtschaftFlashcardsPage = () => {
                 </div>
                 <div className="space-y-3">
                   <h4 className="font-semibold text-orange-800">Pour les concours :</h4>
-                  <ul className="text-sm text-orange-700 space-y-1">
+                  <ul className="text-sm text-pr-orange-dark space-y-1">
                     <li>• Vocabulaire essentiel pour l'Industrie 4.0</li>
                     <li>• Termes techniques de la transformation numérique</li>
                     <li>• Base indispensable pour Module 5 - Wirtschaft und Industrie</li>

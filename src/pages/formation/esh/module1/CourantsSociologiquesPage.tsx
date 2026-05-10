@@ -278,7 +278,7 @@ const CourantsSociologiquesPage = () => {
 
               <div className="space-y-4">
                 <div className="border-l-4 border-orange-200 pl-4">
-                  <h3 className="font-semibold text-orange-700 mb-2">Claude Lévi-Strauss (1908-2009)</h3>
+                  <h3 className="font-semibold text-pr-orange-dark mb-2">Claude Lévi-Strauss (1908-2009)</h3>
                   <p className="text-sm text-gray-600">
                     Anthropologue français. Applique le structuralisme à l'étude des sociétés primitives.
                     Recherche les structures inconscientes qui organisent la pensée et les sociétés humaines.
@@ -292,7 +292,7 @@ const CourantsSociologiquesPage = () => {
                 </div>
 
                 <div className="border-l-4 border-orange-200 pl-4">
-                  <h3 className="font-semibold text-orange-700 mb-2">Pierre Bourdieu (1930-2002)</h3>
+                  <h3 className="font-semibold text-pr-orange-dark mb-2">Pierre Bourdieu (1930-2002)</h3>
                   <p className="text-sm text-gray-600">
                     Sociologue français. Théorie de la reproduction sociale et du capital culturel.
                     Analyse les mécanismes de domination symbolique et de reproduction des inégalités.
@@ -306,7 +306,7 @@ const CourantsSociologiquesPage = () => {
                 </div>
 
                 <div className="bg-orange-50 rounded-lg p-4">
-                  <h4 className="font-semibold text-orange-700 mb-2">Fernand Braudel (1902-1985)</h4>
+                  <h4 className="font-semibold text-pr-orange-dark mb-2">Fernand Braudel (1902-1985)</h4>
                   <p className="text-sm text-gray-600">
                     Historien français. Introduit la longue durée en sciences sociales.
                     Distingue trois temporalités : événementielle, conjoncturelle, structurelle.

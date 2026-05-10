@@ -207,7 +207,7 @@ const AdjectivesAdverbsExercicesPage = () => {
           <Button
             onClick={() => validateAnswer(exerciseId)}
             disabled={!userAnswers[exerciseId]}
-            className="bg-orange-600 hover:bg-orange-700 text-white flex items-center gap-2"
+            className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white flex items-center gap-2"
           >
             <CheckCircle className="h-4 w-4" />
             Valider ma réponse
@@ -307,7 +307,7 @@ const AdjectivesAdverbsExercicesPage = () => {
           </div>
 
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-orange-600 text-white">
+            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
               <Target className="h-9 w-9" />
             </div>
             Exercices d'Adjectifs et Adverbes
@@ -318,7 +318,7 @@ const AdjectivesAdverbsExercicesPage = () => {
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">Niveau Débutant - Avancé</Badge>
             <Badge variant="outline">{adjectivesAdverbsExercises.length} exercices</Badge>
-            <Badge className="bg-orange-600">Module essentiel</Badge>
+            <Badge className="bg-pr-orange-dark">Module essentiel</Badge>
           </div>
         </div>
 
@@ -327,7 +327,7 @@ const AdjectivesAdverbsExercicesPage = () => {
           <Button
             variant={examMode ? "default" : "outline"}
             onClick={() => setExamMode(prev => !prev)}
-            className={examMode ? "bg-orange-600 hover:bg-orange-700 text-white" : "border-orange-600 text-orange-600 hover:bg-orange-50"}
+            className={examMode ? "bg-pr-orange-dark hover:bg-pr-orange-dark text-white" : "border-pr-orange-dark text-pr-orange-dark hover:bg-orange-50"}
           >
             {examMode ? "Désactiver le Mode Examen" : "Activer le Mode Examen"}
           </Button>
@@ -341,7 +341,7 @@ const AdjectivesAdverbsExercicesPage = () => {
                 <div className="flex items-center justify-center gap-4">
                   <Button
                     onClick={startExam}
-                    className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-2"
+                    className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-6 py-2"
                   >
                     <Play className="h-4 w-4 mr-2" />
                     Commencer l'examen
@@ -379,13 +379,13 @@ const AdjectivesAdverbsExercicesPage = () => {
           <CardContent>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-orange-700 mb-2">
+                <label className="block text-sm font-medium text-pr-orange-dark mb-2">
                   Catégorie :
                 </label>
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full px-3 py-2 border border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full px-3 py-2 border border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pr-orange"
                   disabled={examStarted} // Disable filters in exam mode
                 >
                   <option value="toutes">Toutes les catégories</option>
@@ -395,13 +395,13 @@ const AdjectivesAdverbsExercicesPage = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-orange-700 mb-2">
+                <label className="block text-sm font-medium text-pr-orange-dark mb-2">
                   Niveau :
                 </label>
                 <select
                   value={selectedLevel}
                   onChange={(e) => setSelectedLevel(e.target.value)}
-                  className="w-full px-3 py-2 border border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full px-3 py-2 border border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pr-orange"
                   disabled={examStarted} // Disable filters in exam mode
                 >
                   <option value="tous">Tous les niveaux</option>
@@ -416,7 +416,7 @@ const AdjectivesAdverbsExercicesPage = () => {
 
         {/* Section de sélection du type d'exercice */}
         {!examStarted && ( // Only show type selection outside exam mode
-          <Card className="mb-8 border-4 border-orange-500 bg-gradient-to-r from-orange-100 to-orange-100 shadow-lg">
+          <Card className="mb-8 border-4 border-pr-orange bg-gradient-to-r from-orange-100 to-orange-100 shadow-lg">
             <CardHeader>
               <CardTitle className="text-2xl font-bold flex items-center gap-2 text-orange-900">
                 <BookOpenIcon className="h-6 w-6" />
@@ -428,21 +428,21 @@ const AdjectivesAdverbsExercicesPage = () => {
                 <Button
                   variant={selectedExerciseType === 'qcm' ? 'default' : 'outline'}
                   onClick={() => setSelectedExerciseType('qcm')}
-                  className={selectedExerciseType === 'qcm' ? 'bg-orange-600 hover:bg-orange-700 text-white' : 'border-orange-600 text-orange-600 hover:bg-orange-50'}
+                  className={selectedExerciseType === 'qcm' ? 'bg-pr-orange-dark hover:bg-pr-orange-dark text-white' : 'border-pr-orange-dark text-pr-orange-dark hover:bg-orange-50'}
                 >
                   QCM ({getAdjectivesAdverbsExercisesByType('qcm').length})
                 </Button>
                 <Button
                   variant={selectedExerciseType === 'choix' ? 'default' : 'outline'}
                   onClick={() => setSelectedExerciseType('choix')}
-                  className={selectedExerciseType === 'choix' ? 'bg-orange-600 hover:bg-orange-700 text-white' : 'border-orange-600 text-orange-600 hover:bg-orange-50'}
+                  className={selectedExerciseType === 'choix' ? 'bg-pr-orange-dark hover:bg-pr-orange-dark text-white' : 'border-pr-orange-dark text-pr-orange-dark hover:bg-orange-50'}
                 >
                   Choix multiples ({getAdjectivesAdverbsExercisesByType('choix').length})
                 </Button>
                 <Button
                   variant={selectedExerciseType === 'complet' ? 'default' : 'outline'}
                   onClick={() => setSelectedExerciseType('complet')}
-                  className={selectedExerciseType === 'complet' ? 'bg-orange-600 hover:bg-orange-700 text-white' : 'border-orange-600 text-orange-600 hover:bg-orange-50'}
+                  className={selectedExerciseType === 'complet' ? 'bg-pr-orange-dark hover:bg-pr-orange-dark text-white' : 'border-pr-orange-dark text-pr-orange-dark hover:bg-orange-50'}
                 >
                   Mots à compléter ({getAdjectivesAdverbsExercisesByType('complet').length})
                 </Button>
@@ -455,7 +455,7 @@ const AdjectivesAdverbsExercicesPage = () => {
         {filteredExercises.length > 0 && currentExercise && (
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-              <FileText className="h-8 w-8 text-orange-600" />
+              <FileText className="h-8 w-8 text-pr-orange-dark" />
               Question {currentExerciseIndex + 1} / {filteredExercises.length}
               <Badge variant="outline" className="ml-2">
                 {currentExercise.category} - {currentExercise.level}
@@ -487,7 +487,7 @@ const AdjectivesAdverbsExercicesPage = () => {
                           value={option}
                           checked={userAnswers[currentExercise.id] === option}
                           onChange={(e) => handleAnswerChange(currentExercise.id, e.target.value)}
-                          className="text-orange-600 focus:ring-orange-500"
+                          className="text-pr-orange-dark focus:ring-pr-orange"
                           disabled={examMode && examStarted} // Disable input in exam mode
                         />
                         <span className="text-gray-800">{option}</span>
@@ -501,7 +501,7 @@ const AdjectivesAdverbsExercicesPage = () => {
                       type="text"
                       value={userAnswers[currentExercise.id] || ''}
                       onChange={(e) => handleAnswerChange(currentExercise.id, e.target.value)}
-                      className="w-full p-2 border border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 text-lg text-gray-800"
+                      className="w-full p-2 border border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pr-orange text-lg text-gray-800"
                       placeholder="Tapez votre réponse ici..."
                       disabled={examMode && examStarted} // Disable input in exam mode
                     />
@@ -552,7 +552,7 @@ const AdjectivesAdverbsExercicesPage = () => {
         {filteredExercises.length === 0 && ( // Message si aucun exercice
           <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
             <CardContent className="text-center py-8">
-              <p className="text-orange-600 text-lg">
+              <p className="text-pr-orange-dark text-lg">
                 Aucun exercice trouvé avec les filtres actuels. Modifiez vos critères de recherche.
               </p>
             </CardContent>
@@ -564,7 +564,7 @@ const AdjectivesAdverbsExercicesPage = () => {
           <div className="flex justify-center gap-4 mt-10">
             <Button
               onClick={calculateScore}
-              className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-lg flex items-center gap-2"
+              className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg flex items-center gap-2"
             >
               <CheckCircle className="h-5 w-5" />
               Terminer et voir le score
@@ -572,7 +572,7 @@ const AdjectivesAdverbsExercicesPage = () => {
             <Button
               onClick={resetQuiz}
               variant="outline"
-              className="px-8 py-3 text-lg flex items-center gap-2 border-orange-600 text-orange-600 hover:bg-orange-50"
+              className="px-8 py-3 text-lg flex items-center gap-2 border-pr-orange-dark text-pr-orange-dark hover:bg-orange-50"
             >
               <RotateCcw className="h-5 w-5" />
               Réinitialiser
@@ -598,7 +598,7 @@ const AdjectivesAdverbsExercicesPage = () => {
                 </div>
               )}
               <div className={`text-lg ${
-                examMode ? 'text-orange-700' : 'text-orange-700'
+                examMode ? 'text-pr-orange-dark' : 'text-pr-orange-dark'
               }`}>
                 {score >= 80 ? (
                   <div className="flex items-center justify-center gap-2">
@@ -612,14 +612,14 @@ const AdjectivesAdverbsExercicesPage = () => {
                   </div>
                 ) : ( // Less than 50%
                   <div className="flex items-center justify-center gap-2">
-                    <Lightbulb className="h-6 w-6 text-orange-500" />
+                    <Lightbulb className="h-6 w-6 text-pr-orange" />
                     {examMode ? 'Examen non validé. Continuez à vous entraîner !' : 'Ne vous découragez pas ! Révisez les règles et réessayez.'}
                   </div>
                 )}
               </div>
               {examMode && (
                 <div className="mt-4 p-3 bg-orange-50 rounded-lg border border-orange-200">
-                  <p className="text-orange-700 text-sm">
+                  <p className="text-pr-orange-dark text-sm">
                     💡 En mode normal, vous pouvez voir les corrections détaillées de chaque exercice.
                   </p>
                 </div>

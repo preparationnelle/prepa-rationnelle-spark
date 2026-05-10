@@ -24,12 +24,12 @@ const VocabWord = ({ word, explanation }: { word: string; explanation: string })
 
   return (
     <span className="relative inline-block" ref={tooltipRef}>
-      <span className="font-bold text-orange-700 cursor-pointer hover:text-orange-900 transition-colors" onClick={() => setShowTooltip(!showTooltip)}>
+      <span className="font-bold text-pr-orange-dark cursor-pointer hover:text-orange-900 transition-colors" onClick={() => setShowTooltip(!showTooltip)}>
         {word}
       </span>
       {showTooltip && (
         <span className="absolute z-50 top-full left-0 mt-2 w-72 p-3 bg-white border-2 border-orange-400 rounded-lg shadow-xl text-sm text-gray-700">
-          <span className="font-semibold text-orange-700 block mb-1">Erklärung:</span>
+          <span className="font-semibold text-pr-orange-dark block mb-1">Erklärung:</span>
           <span className="text-gray-800">{explanation}</span>
           <span className="absolute bottom-full left-4 border-8 border-transparent border-b-orange-400"></span>
         </span>
@@ -67,7 +67,7 @@ const PolitikAllemandePage: React.FC = () => {
         <Card className="mb-8 border shadow-sm">
           <CardHeader className="bg-gray-50">
             <CardTitle className="text-lg font-semibold text-center text-gray-900 flex items-center justify-center gap-2">
-              <Vote className="w-5 h-5 text-orange-700" />
+              <Vote className="w-5 h-5 text-pr-orange-dark" />
               Bundestagswahl 2025 - Ergebnisse
             </CardTitle>
           </CardHeader>
@@ -78,7 +78,7 @@ const PolitikAllemandePage: React.FC = () => {
                 <div className="text-xs text-gray-600 mt-1">CDU/CSU</div>
               </div>
               <div className="p-3 bg-orange-50 rounded-lg border border-orange-200">
-                <div className="text-2xl font-bold text-orange-700">20,8%</div>
+                <div className="text-2xl font-bold text-pr-orange-dark">20,8%</div>
                 <div className="text-xs text-gray-600 mt-1">AfD</div>
               </div>
               <div className="p-3 bg-gray-50 rounded-lg border">
@@ -101,7 +101,7 @@ const PolitikAllemandePage: React.FC = () => {
         <Card className="mb-6 border shadow-sm">
           <CardHeader className="border-b bg-gray-50">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-orange-700">
+              <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-pr-orange-dark">
                 <Flag className="w-5 h-5" />
               </div>
               <CardTitle className="text-lg font-semibold text-gray-900">
@@ -120,7 +120,7 @@ const PolitikAllemandePage: React.FC = () => {
               <p>
                 Diese Ergebnisse markieren einen klaren <VocabWord word="Rechtsruck" explanation="virage à droite" /> und eine deutliche <VocabWord word="Abstrafung" explanation="sanction, punition" /> der bisherigen großen Koalition.
               </p>
-              <div className="mt-4 p-4 bg-orange-50 border-l-4 border-orange-500">
+              <div className="mt-4 p-4 bg-orange-50 border-l-4 border-pr-orange">
                 <p className="text-sm font-semibold text-gray-900 mb-2">📝 Essai-Nutzung:</p>
                 <p className="text-sm">Kontext für politische Umbrüche; Argument über Fragmentierung und neue Mehrheitsverhältnisse.</p>
               </div>
@@ -132,7 +132,7 @@ const PolitikAllemandePage: React.FC = () => {
         <Card className="mb-6 border shadow-sm">
           <CardHeader className="border-b bg-gray-50">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-orange-700">
+              <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-pr-orange-dark">
                 <Users className="w-5 h-5" />
               </div>
               <CardTitle className="text-lg font-semibold text-gray-900">
@@ -148,7 +148,7 @@ const PolitikAllemandePage: React.FC = () => {
               <p>
                 Die AfD erhielt eine wichtige Position als größte Oppositionspartei und beeinflusst Debatten durch erhöhte <VocabWord word="Redezeiten" explanation="temps de parole" /> und Sitze in <VocabWord word="Ausschüssen" explanation="commissions parlementaires" />.
               </p>
-              <div className="mt-4 p-4 bg-orange-50 border-l-4 border-orange-500">
+              <div className="mt-4 p-4 bg-orange-50 border-l-4 border-pr-orange">
                 <p className="text-sm font-semibold text-gray-900 mb-2">📝 Essai-Nutzung:</p>
                 <p className="text-sm">Strukturvergleich zur Stabilität – oder Instabilität – in parlamentarischen Systemen; Rolle von Mehrheiten.</p>
               </div>
@@ -160,7 +160,7 @@ const PolitikAllemandePage: React.FC = () => {
         <Card className="mb-6 border shadow-sm">
           <CardHeader className="border-b bg-gray-50">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-orange-700">
+              <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-pr-orange-dark">
                 <AlertTriangle className="w-5 h-5" />
               </div>
               <CardTitle className="text-lg font-semibold text-gray-900">
@@ -176,7 +176,7 @@ const PolitikAllemandePage: React.FC = () => {
               <p>
                 Die Proteste, sogenannte <VocabWord word="Brandmauer-Demos" explanation="manifestations barrière de feu (contre l'extrême droite)" />, richteten sich gegen <VocabWord word="Kooperationen" explanation="coopérations" /> mit der AfD, insbesondere nach einer <VocabWord word="umstrittenen" explanation="controversée" /> Parlamentsentscheidung zur Einwanderung Ende Januar 2025.
               </p>
-              <div className="mt-4 p-4 bg-orange-50 border-l-4 border-orange-500">
+              <div className="mt-4 p-4 bg-orange-50 border-l-4 border-pr-orange">
                 <p className="text-sm font-semibold text-gray-900 mb-2">📝 Essai-Nutzung:</p>
                 <p className="text-sm">Beispiel ziviler Mobilisierung und demokratischer Abwehr gegenüber extremistischen Tendenzen.</p>
               </div>
@@ -188,7 +188,7 @@ const PolitikAllemandePage: React.FC = () => {
         <Card className="mb-6 border shadow-sm">
           <CardHeader className="border-b bg-gray-50">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-orange-700">
+              <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-pr-orange-dark">
                 <Shield className="w-5 h-5" />
               </div>
               <CardTitle className="text-lg font-semibold text-gray-900">
@@ -204,7 +204,7 @@ const PolitikAllemandePage: React.FC = () => {
               <p>
                 Der umfassende (1.100-seitige) Bericht bezeichnet die Partei als rassistisch und anti-muslimisch. Dies ermöglicht staatliche <VocabWord word="Überwachung" explanation="surveillance" /> und mögliche Kürzung der <VocabWord word="öffentlichen Mittel" explanation="fonds publics" /> – und verstärkt die Debatte über ein <VocabWord word="Verbot" explanation="interdiction" /> der AfD.
               </p>
-              <div className="mt-4 p-4 bg-orange-50 border-l-4 border-orange-500">
+              <div className="mt-4 p-4 bg-orange-50 border-l-4 border-pr-orange">
                 <p className="text-sm font-semibold text-gray-900 mb-2">📝 Essai-Nutzung:</p>
                 <p className="text-sm">Institutionelle Reaktionen auf politische Extremismen; Balance zwischen Demokratie und Sicherheit.</p>
               </div>
@@ -216,7 +216,7 @@ const PolitikAllemandePage: React.FC = () => {
         <Card className="mb-6 border shadow-sm">
           <CardHeader className="border-b bg-gray-50">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-orange-700">
+              <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-pr-orange-dark">
                 <Globe className="w-5 h-5" />
               </div>
               <CardTitle className="text-lg font-semibold text-gray-900">
@@ -232,7 +232,7 @@ const PolitikAllemandePage: React.FC = () => {
               <p>
                 Doch AfD und Teile von CDU und SPD warnten vor gefährlicher <VocabWord word="Militarisierung" explanation="militarisation" />. Laut <VocabWord word="Umfrage" explanation="sondage" /> unterstützten 49 % der Deutschen den Einsatz, 45 % sprachen sich dagegen aus, mit stärkerer Ablehnung im Osten.
               </p>
-              <div className="mt-4 p-4 bg-orange-50 border-l-4 border-orange-500">
+              <div className="mt-4 p-4 bg-orange-50 border-l-4 border-pr-orange">
                 <p className="text-sm font-semibold text-gray-900 mb-2">📝 Essai-Nutzung:</p>
                 <p className="text-sm">Außenpolitik & Erinnerungskultur; zivil-militärische Sensibilität Deutschlands im Kontext seiner Geschichte.</p>
               </div>
@@ -244,7 +244,7 @@ const PolitikAllemandePage: React.FC = () => {
         <Card className="mb-6 border shadow-sm">
           <CardHeader className="border-b bg-gray-50">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-orange-700">
+              <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-pr-orange-dark">
                 <AlertTriangle className="w-5 h-5" />
               </div>
               <CardTitle className="text-lg font-semibold text-gray-900">
@@ -271,7 +271,7 @@ const PolitikAllemandePage: React.FC = () => {
         <Card className="mb-6 border shadow-sm">
           <CardHeader className="border-b bg-gray-50">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-orange-700">
+              <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-pr-orange-dark">
                 <BookOpen className="w-5 h-5" />
               </div>
               <CardTitle className="text-lg font-semibold text-gray-900">
@@ -298,7 +298,7 @@ const PolitikAllemandePage: React.FC = () => {
         <Card className="mb-6 border shadow-sm">
           <CardHeader className="border-b bg-gray-50">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-orange-700">
+              <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-pr-orange-dark">
                 <Crown className="w-5 h-5" />
               </div>
               <CardTitle className="text-lg font-semibold text-gray-900">
@@ -317,7 +317,7 @@ const PolitikAllemandePage: React.FC = () => {
               <p>
                 Steinmeier hat der Ukraine die deutsche Unterstützung gegen den russischen <VocabWord word="Angreifer" explanation="agresseur" /> gezeigt. Es ist auch ein <VocabWord word="Wendepunkt" explanation="tournant" /> für Deutschland, weil es sehr <VocabWord word="abhängig" explanation="dépendant" /> von Gas aus Russland ist. Es ist ein <VocabWord word="Kurswechsel" explanation="changement de cap" /> für Deutschland.
               </p>
-              <p className="font-semibold text-orange-700">
+              <p className="font-semibold text-pr-orange-dark">
                 "Epochbruch" - Steinmeier (rupture d'époque)
               </p>
             </div>
@@ -328,7 +328,7 @@ const PolitikAllemandePage: React.FC = () => {
         <Card className="mb-8 border shadow-sm">
           <CardHeader className="border-b bg-gray-50">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-orange-700">
+              <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-pr-orange-dark">
                 <Crown className="w-5 h-5" />
               </div>
               <CardTitle className="text-lg font-semibold text-gray-900">
@@ -340,7 +340,7 @@ const PolitikAllemandePage: React.FC = () => {
             <div className="space-y-6">
 
               {/* Adenauer */}
-              <div className="border-l-4 border-orange-500 pl-4 py-2">
+              <div className="border-l-4 border-pr-orange pl-4 py-2">
                 <h3 className="font-bold text-gray-900 mb-2">👤 Konrad Adenauer (CDU) 1949-1963</h3>
                 <div className="space-y-2 text-gray-700 text-sm leading-relaxed">
                   <p>
@@ -356,7 +356,7 @@ const PolitikAllemandePage: React.FC = () => {
               </div>
 
               {/* Erhard */}
-              <div className="border-l-4 border-orange-500 pl-4 py-2">
+              <div className="border-l-4 border-pr-orange pl-4 py-2">
                 <h3 className="font-bold text-gray-900 mb-2">👤 Ludwig Erhard (CDU) 1963-1966</h3>
                 <div className="space-y-2 text-gray-700 text-sm leading-relaxed">
                   <p>
@@ -369,7 +369,7 @@ const PolitikAllemandePage: React.FC = () => {
               </div>
 
               {/* Brandt */}
-              <div className="border-l-4 border-orange-500 pl-4 py-2">
+              <div className="border-l-4 border-pr-orange pl-4 py-2">
                 <h3 className="font-bold text-gray-900 mb-2">👤 Willy Brandt (SPD) 1969-1974</h3>
                 <div className="space-y-2 text-gray-700 text-sm leading-relaxed">
                   <p>
@@ -382,7 +382,7 @@ const PolitikAllemandePage: React.FC = () => {
               </div>
 
               {/* Kohl */}
-              <div className="border-l-4 border-orange-500 pl-4 py-2">
+              <div className="border-l-4 border-pr-orange pl-4 py-2">
                 <h3 className="font-bold text-gray-900 mb-2">👤 Helmut Kohl (CDU) 1982-1998</h3>
                 <div className="space-y-2 text-gray-700 text-sm leading-relaxed">
                   <p>
@@ -395,7 +395,7 @@ const PolitikAllemandePage: React.FC = () => {
               </div>
 
               {/* Schröder */}
-              <div className="border-l-4 border-orange-500 pl-4 py-2">
+              <div className="border-l-4 border-pr-orange pl-4 py-2">
                 <h3 className="font-bold text-gray-900 mb-2">👤 Gerhard Schröder (SPD) 1998-2005</h3>
                 <div className="space-y-2 text-gray-700 text-sm leading-relaxed">
                   <p>
@@ -408,7 +408,7 @@ const PolitikAllemandePage: React.FC = () => {
               </div>
 
               {/* Merkel */}
-              <div className="border-l-4 border-orange-500 pl-4 py-2">
+              <div className="border-l-4 border-pr-orange pl-4 py-2">
                 <h3 className="font-bold text-gray-900 mb-2">👤 Angela Merkel (CDU) 2005-2021</h3>
                 <div className="space-y-2 text-gray-700 text-sm leading-relaxed">
                   <p>
@@ -424,7 +424,7 @@ const PolitikAllemandePage: React.FC = () => {
               </div>
 
               {/* Scholz */}
-              <div className="border-l-4 border-orange-500 pl-4 py-2">
+              <div className="border-l-4 border-pr-orange pl-4 py-2">
                 <h3 className="font-bold text-gray-900 mb-2">👤 Olaf Scholz (SPD) 2021-2025</h3>
                 <div className="space-y-2 text-gray-700 text-sm leading-relaxed">
                   <p>
@@ -440,7 +440,7 @@ const PolitikAllemandePage: React.FC = () => {
               </div>
 
               {/* Merz */}
-              <div className="border-l-4 border-orange-500 pl-4 py-2 bg-orange-50">
+              <div className="border-l-4 border-pr-orange pl-4 py-2 bg-orange-50">
                 <h3 className="font-bold text-gray-900 mb-2">👤 Friedrich Merz (CDU) 2025–</h3>
                 <div className="space-y-2 text-gray-700 text-sm leading-relaxed">
                   <p>

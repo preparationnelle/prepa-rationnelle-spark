@@ -249,7 +249,7 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent, mode = 
     return (
       <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-orange-100 shadow-2xl">
         <CardContent className="p-12 text-center">
-          <Loader2 className="h-16 w-16 mx-auto mb-4 text-orange-500 animate-spin" />
+          <Loader2 className="h-16 w-16 mx-auto mb-4 text-pr-orange animate-spin" />
           <h3 className="text-xl font-bold text-gray-900 mb-2">Extraction des termes...</h3>
           <p className="text-gray-600">Analyse du sujet en cours</p>
         </CardContent>
@@ -268,7 +268,7 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent, mode = 
           </p>
           <Button
             onClick={() => extractTermsFromSubject(subjectFromParent)}
-            className="bg-orange-500 hover:bg-orange-600 text-white rounded-full"
+            className="bg-pr-orange hover:bg-pr-orange-dark text-white rounded-full"
           >
             Réessayer
           </Button>
@@ -283,7 +283,7 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent, mode = 
       <Card className="bg-gradient-to-r from-orange-50 to-transparent border-orange-200 shadow-lg rounded-3xl overflow-hidden">
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-3 text-xl text-gray-900">
-            <BookOpen className="h-6 w-6 text-orange-600" />
+            <BookOpen className="h-6 w-6 text-pr-orange-dark" />
             Définir les termes du sujet
           </CardTitle>
           <div className="mt-2 text-sm text-gray-600">
@@ -314,7 +314,7 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent, mode = 
                       value={def?.userDefinition || ''}
                       onChange={(e) => handleDefinitionChange(term, e.target.value)}
                       placeholder={`Définition...`}
-                      className="min-h-[60px] resize-none border border-orange-200 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 bg-white rounded-md text-sm p-2 pr-12 leading-snug"
+                      className="min-h-[60px] resize-none border border-orange-200 focus:border-pr-orange focus:ring-1 focus:ring-pr-orange bg-white rounded-md text-sm p-2 pr-12 leading-snug"
                     />
                     <div className="absolute bottom-1 right-2 text-[9px] text-gray-400 pointer-events-none">
                       {def?.userDefinition.length || 0}

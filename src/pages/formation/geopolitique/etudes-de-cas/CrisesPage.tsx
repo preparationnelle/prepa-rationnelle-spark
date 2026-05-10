@@ -33,7 +33,7 @@ const CrisesPage = () => {
         </div>
       </nav>
 
-        <Card className="mb-8 bg-gradient-to-r from-red-600 to-orange-600 text-white">
+        <Card className="mb-8 bg-gradient-to-r from-red-600 to-pr-orange-dark text-white">
           <CardHeader>
             <div className="flex items-center gap-3">
               <AlertTriangle className="h-8 w-8" />

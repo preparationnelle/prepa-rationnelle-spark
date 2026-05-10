@@ -89,7 +89,7 @@ const TransitionCollegePage = () => {
 
                             <div className="bg-orange-50 p-6 rounded-xl border border-orange-100">
                                 <div className="flex items-center gap-3 mb-3">
-                                    <GraduationCap className="h-6 w-6 text-orange-600" />
+                                    <GraduationCap className="h-6 w-6 text-pr-orange-dark" />
                                     <h3 className="text-lg font-bold text-gray-900 m-0">Autonomie</h3>
                                 </div>
                                 <p className="text-gray-700 text-sm">

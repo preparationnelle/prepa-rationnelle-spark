@@ -202,7 +202,7 @@ const EconomyVocabularyPage = () => {
       'Concepts économiques de base': 'bg-carnet-red',
       'Politiques économiques': 'bg-green-500',
       'Commerce et mondialisation': 'bg-purple-500',
-      'Acteurs économiques': 'bg-orange-500',
+      'Acteurs économiques': 'bg-pr-orange',
       'Finances et marchés': 'bg-red-500',
       'Mondialisation économique': 'bg-emerald-500',
       'Institutions internationales': 'bg-teal-500',
@@ -407,7 +407,7 @@ const EconomyVocabularyPage = () => {
                 <p className="text-sm text-gray-600">Progression</p>
               </div>
               <div>
-                <p className="text-2xl font-bold text-orange-600">
+                <p className="text-2xl font-bold text-pr-orange-dark">
                   {currentCardIndex + 1}
                 </p>
                 <p className="text-sm text-gray-600">Carte actuelle</p>

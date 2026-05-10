@@ -245,10 +245,10 @@ export const RandomWordGenerator: React.FC<RandomWordGeneratorProps> = ({ type =
                     {Object.keys(emlyonQuestions).map((category) => (
                       <Card key={category} className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group">
                         <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
-                          {category === 'experience' && <GraduationCap className="h-5 w-5 text-orange-600" />}
-                          {category === 'personnalite' && <User className="h-5 w-5 text-orange-600" />}
-                          {category === 'creativite' && <Lightbulb className="h-5 w-5 text-orange-600" />}
-                          {category === 'projet' && <Target className="h-5 w-5 text-orange-600" />}
+                          {category === 'experience' && <GraduationCap className="h-5 w-5 text-pr-orange-dark" />}
+                          {category === 'personnalite' && <User className="h-5 w-5 text-pr-orange-dark" />}
+                          {category === 'creativite' && <Lightbulb className="h-5 w-5 text-pr-orange-dark" />}
+                          {category === 'projet' && <Target className="h-5 w-5 text-pr-orange-dark" />}
                         </div>
                         <CardTitle className="text-base font-semibold text-gray-900 mb-2">
                           {categoryTitles[category as keyof typeof categoryTitles]}
@@ -259,7 +259,7 @@ export const RandomWordGenerator: React.FC<RandomWordGeneratorProps> = ({ type =
                         <Button
                           variant="outline"
                           onClick={() => startQuestionGeneration(category)}
-                          className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-medium rounded-xl"
+                          className="w-full bg-gradient-to-r from-pr-orange-dark to-pr-orange hover:from-pr-orange-dark hover:to-pr-orange-dark text-white font-medium rounded-xl"
                           disabled={isGenerating}
                         >
                           Générer une question
@@ -270,8 +270,8 @@ export const RandomWordGenerator: React.FC<RandomWordGeneratorProps> = ({ type =
                   
                   {currentQuestion && (
                     <div className="bg-gradient-to-r from-orange-50 to-orange-100 px-6 py-8 rounded-xl mt-6 w-full border-2 border-orange-200">
-                      <p className="text-sm text-orange-700 font-semibold mb-2 flex items-center gap-2">
-                        <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
+                      <p className="text-sm text-pr-orange-dark font-semibold mb-2 flex items-center gap-2">
+                        <span className="w-2 h-2 bg-pr-orange rounded-full"></span>
                         CATÉGORIE : {currentCategory && categoryTitles[currentCategory as keyof typeof categoryTitles]}
                       </p>
                       <p className={`text-xl font-semibold text-orange-900 ${isGenerating ? 'animate-pulse' : ''}`}>
@@ -310,10 +310,10 @@ export const RandomWordGenerator: React.FC<RandomWordGeneratorProps> = ({ type =
               {Object.keys(emlyonQuestions).map((category) => (
                       <Card key={category} className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 border border-gray-100 hover:border-orange-400 hover:bg-orange-50/50 flex flex-col items-center text-center group">
                         <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
-                          {category === 'experience' && <GraduationCap className="h-5 w-5 text-orange-600" />}
-                          {category === 'personnalite' && <User className="h-5 w-5 text-orange-600" />}
-                          {category === 'creativite' && <Lightbulb className="h-5 w-5 text-orange-600" />}
-                          {category === 'projet' && <Target className="h-5 w-5 text-orange-600" />}
+                          {category === 'experience' && <GraduationCap className="h-5 w-5 text-pr-orange-dark" />}
+                          {category === 'personnalite' && <User className="h-5 w-5 text-pr-orange-dark" />}
+                          {category === 'creativite' && <Lightbulb className="h-5 w-5 text-pr-orange-dark" />}
+                          {category === 'projet' && <Target className="h-5 w-5 text-pr-orange-dark" />}
                         </div>
                   <CardTitle className="text-base font-semibold text-gray-900 mb-2">
                     {categoryTitles[category as keyof typeof categoryTitles]}
@@ -324,7 +324,7 @@ export const RandomWordGenerator: React.FC<RandomWordGeneratorProps> = ({ type =
                   <Button
                     variant="outline"
                     onClick={() => startQuestionGeneration(category)}
-                    className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-medium rounded-xl"
+                    className="w-full bg-gradient-to-r from-pr-orange-dark to-pr-orange hover:from-pr-orange-dark hover:to-pr-orange-dark text-white font-medium rounded-xl"
                     disabled={isGenerating}
                   >
                     Générer une question
@@ -335,8 +335,8 @@ export const RandomWordGenerator: React.FC<RandomWordGeneratorProps> = ({ type =
             
             {currentQuestion && (
               <div className="bg-gradient-to-r from-orange-50 to-orange-100 px-6 py-8 rounded-xl mt-6 w-full border-2 border-orange-200">
-                <p className="text-sm text-orange-700 font-semibold mb-2 flex items-center gap-2">
-                  <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
+                <p className="text-sm text-pr-orange-dark font-semibold mb-2 flex items-center gap-2">
+                  <span className="w-2 h-2 bg-pr-orange rounded-full"></span>
                   CATÉGORIE : {currentCategory && categoryTitles[currentCategory as keyof typeof categoryTitles]}
                 </p>
                 <p className={`text-xl font-semibold text-orange-900 ${isGenerating ? 'animate-pulse' : ''}`}>

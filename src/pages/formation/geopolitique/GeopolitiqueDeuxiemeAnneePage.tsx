@@ -106,23 +106,23 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
                     <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-carnet-red transition-colors">{sujet.title}</h3>
                     <p className="text-gray-600 mb-4">{sujet.description}</p>
                     <div className="flex flex-wrap gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Link to={sujet.to} className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-3 py-1.5 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 text-sm">
+                      <Link to={sujet.to} className="inline-flex items-center gap-2 bg-gradient-to-r from-pr-orange-dark to-pr-orange hover:from-pr-orange-dark hover:to-pr-orange-dark text-white px-3 py-1.5 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 text-sm">
                         <BookOpen className="w-3.5 h-3.5" />
                         Accéder au cours
                       </Link>
-                      <Link to={sujet.chronologiePath} className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-4 py-2 rounded-md shadow-lg hover:shadow-xl transition-all duration-300">
+                      <Link to={sujet.chronologiePath} className="inline-flex items-center gap-2 bg-gradient-to-r from-pr-orange-dark to-pr-orange hover:from-pr-orange-dark hover:to-pr-orange-dark text-white px-4 py-2 rounded-md shadow-lg hover:shadow-xl transition-all duration-300">
                         <Globe className="w-4 h-4" />
                         Chronologie
                       </Link>
-                      <Link to={sujet.flashcardsPath} className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-3 py-1.5 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 text-sm">
+                      <Link to={sujet.flashcardsPath} className="inline-flex items-center gap-2 bg-gradient-to-r from-pr-orange-dark to-pr-orange hover:from-pr-orange-dark hover:to-pr-orange-dark text-white px-3 py-1.5 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 text-sm">
                         <FileText className="w-3.5 h-3.5" />
                         Flash cards
                       </Link>
-                      <Link to={sujet.etudesCasPath} className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-3 py-1.5 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 text-sm">
+                      <Link to={sujet.etudesCasPath} className="inline-flex items-center gap-2 bg-gradient-to-r from-pr-orange-dark to-pr-orange hover:from-pr-orange-dark hover:to-pr-orange-dark text-white px-3 py-1.5 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 text-sm">
                         <List className="w-3.5 h-3.5" />
                         Études de cas
                       </Link>
-                      <Link to={sujet.auteursPath} className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-3 py-1.5 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 text-sm">
+                      <Link to={sujet.auteursPath} className="inline-flex items-center gap-2 bg-gradient-to-r from-pr-orange-dark to-pr-orange hover:from-pr-orange-dark hover:to-pr-orange-dark text-white px-3 py-1.5 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 text-sm">
                         <Users className="w-3.5 h-3.5" />
                         Auteurs
                       </Link>

@@ -39,7 +39,7 @@ export const GeneratedFlashcardsList = ({
       <div className="flex justify-between items-center pb-4 border-b border-gray-100 dark:border-gray-800">
         <div>
           <h3 className="text-lg font-bold flex items-center gap-2 text-gray-900 dark:text-white">
-            <History className="h-4 w-4 text-orange-500" />
+            <History className="h-4 w-4 text-pr-orange" />
             {language === 'fr' ? 'Flashcards générées' : 'Generated Flashcards'}
           </h3>
           <p className="text-sm text-gray-500 mt-1">

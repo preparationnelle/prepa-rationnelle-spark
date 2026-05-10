@@ -73,7 +73,7 @@ const ChronologiesPage = () => {
       blue: { bg: 'bg-pr-orange-pale', text: 'text-carnet-red', hover: 'hover:bg-carnet-red/10', badge: 'bg-carnet-red/10 text-carnet-red', border: 'border-carnet-red/30' },
       green: { bg: 'bg-green-50', text: 'text-green-700', hover: 'hover:bg-green-100', badge: 'bg-green-100 text-green-700', border: 'border-green-200' },
       purple: { bg: 'bg-purple-50', text: 'text-purple-700', hover: 'hover:bg-purple-100', badge: 'bg-purple-100 text-purple-700', border: 'border-purple-200' },
-      orange: { bg: 'bg-orange-50', text: 'text-orange-700', hover: 'hover:bg-orange-100', badge: 'bg-orange-100 text-orange-700', border: 'border-orange-200' },
+      orange: { bg: 'bg-orange-50', text: 'text-pr-orange-dark', hover: 'hover:bg-orange-100', badge: 'bg-orange-100 text-pr-orange-dark', border: 'border-orange-200' },
       red: { bg: 'bg-red-50', text: 'text-red-700', hover: 'hover:bg-red-100', badge: 'bg-red-100 text-red-700', border: 'border-red-200' },
       yellow: { bg: 'bg-yellow-50', text: 'text-yellow-700', hover: 'hover:bg-yellow-100', badge: 'bg-yellow-100 text-yellow-700', border: 'border-yellow-200' }
     };

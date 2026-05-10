@@ -165,14 +165,16 @@ const DesignSystemPage = () => {
 
           <h1 className="font-lora text-[56px] sm:text-7xl md:text-8xl lg:text-[112px] leading-[0.98] tracking-[-0.022em] text-carnet-ink max-w-[1100px] mx-auto" style={{ textWrap: 'balance' as never }}>
             La charte{' '}
-            <span className="relative inline-block whitespace-nowrap">
+            <span className="relative inline-block whitespace-nowrap" aria-label="cahier">
               <span
+                aria-hidden="true"
                 className="text-[#9C8772]"
                 style={{ textDecoration: 'line-through', textDecorationColor: '#C1443A', textDecorationThickness: '4px' }}
               >
                 système
               </span>
               <span
+                aria-hidden="true"
                 className="absolute carnet-hand italic whitespace-nowrap"
                 style={{ top: '-0.62em', left: '0.2em', fontSize: '0.84em', color: '#C1443A', transform: 'rotate(-4deg)', fontWeight: 600 }}
               >

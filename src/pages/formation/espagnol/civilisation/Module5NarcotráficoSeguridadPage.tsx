@@ -254,7 +254,7 @@ const Module5NarcotráficoSeguridadPage = () => {
 
                 <div className="prose max-w-none text-gray-700 leading-relaxed space-y-4">
                   <div>
-                    <h4 className="font-semibold text-orange-700 mb-2">Introducción</h4>
+                    <h4 className="font-semibold text-pr-orange-dark mb-2">Introducción</h4>
                     <p className="text-sm">
                       En 2024 la <strong>Armada colombiana</strong> interceptó un semisumergible con conectividad satelital y varias toneladas de cocaína; semanas después, una operación multinacional decomisó cientos de toneladas en alta mar. En 2025 surgieron pruebas con <strong>vectores no tripulados</strong> y creció el uso de contenedores «limpios» para llegar a Europa. 
                     </p>
@@ -264,7 +264,7 @@ const Module5NarcotráficoSeguridadPage = () => {
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-orange-700 mb-2">Desarrollo I — Innovación criminal 4.0</h4>
+                    <h4 className="font-semibold text-pr-orange-dark mb-2">Desarrollo I — Innovación criminal 4.0</h4>
                     <p className="text-sm">
                       Los cárteles invierten en I+D: <strong>semisumergibles con piloto automático</strong>, navegación satelital, drones y spoofing del AIS. En tierra, eligen terminales con controles laxos y subcontratan la violencia a pandillas locales; en la nube, captan a menores con «narco-glam» y cierran tratos cifrados. 
                     </p>
@@ -274,7 +274,7 @@ const Module5NarcotráficoSeguridadPage = () => {
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-orange-700 mb-2">Desarrollo II — Respuesta estatal y cooperación</h4>
+                    <h4 className="font-semibold text-pr-orange-dark mb-2">Desarrollo II — Respuesta estatal y cooperación</h4>
                     <p className="text-sm">
                       Para que los puertos dejen de ser el eslabón débil, hace falta <strong>inspección continua</strong> con escáneres no intrusivos, analítica de riesgo y auditorías anticorrupción robustas. En el mar, conviene mantener patrullas combinadas, búsqueda y rescate, e intercambio de inteligencia en tiempo real. 
                     </p>
@@ -284,7 +284,7 @@ const Module5NarcotráficoSeguridadPage = () => {
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-orange-700 mb-2">Conclusión</h4>
+                    <h4 className="font-semibold text-pr-orange-dark mb-2">Conclusión</h4>
                     <p className="text-sm">
                       Más que golpes de efecto, la región necesita una <strong>arquitectura común</strong> que vuelva carísima cada etapa: puertos inteligentes, control marítimo coordinado y dinero trazable. Si se integraran satélites, puertos y fiscalías con métricas públicas claras, verificables e independientes y sanciones por incumplimiento, el «narcotráfico 4.0» perdería su ventaja tecnológica sin sacrificar garantías, y el Estado de derecho saldría fortalecido.
                     </p>
@@ -298,19 +298,19 @@ const Module5NarcotráficoSeguridadPage = () => {
                   </h4>
                   <div className="space-y-2 text-sm text-orange-800">
                     <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-orange-600 mt-1.5"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-pr-orange-dark mt-1.5"></div>
                       <span><strong>Introduction :</strong> Semisumergibles satellitaires (2024) + drones non pilotés (2025) → Réponse via tech publique + coopération</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-orange-600 mt-1.5"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-pr-orange-dark mt-1.5"></div>
                       <span><strong>§1 :</strong> Innovation criminelle 4.0 (pilote auto, AIS spoofing, narco-glam TikTok) → Traiter comme cybersécurité</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-orange-600 mt-1.5"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-pr-orange-dark mt-1.5"></div>
                       <span><strong>§2 :</strong> Ports intelligents + patrouilles mer + traçabilité précurseurs/argent → Renforcer consulats et laboratoires</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-orange-600 mt-1.5"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-pr-orange-dark mt-1.5"></div>
                       <span><strong>Conclusion :</strong> Architecture commune (satellites + ports + fiscalités) avec métriques publiques = Défaite du narco 4.0</span>
                     </div>
                   </div>
@@ -323,20 +323,20 @@ const Module5NarcotráficoSeguridadPage = () => {
                   </h4>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-orange-600"></div>
-                      <span className="text-sm text-orange-700">Narcotrafic 4.0 : innovations technologiques et réponse étatique</span>
+                      <div className="w-2 h-2 rounded-full bg-pr-orange-dark"></div>
+                      <span className="text-sm text-pr-orange-dark">Narcotrafic 4.0 : innovations technologiques et réponse étatique</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-orange-600"></div>
-                      <span className="text-sm text-orange-700">Ports et corruption : le maillon faible de la lutte antidrogue</span>
+                      <div className="w-2 h-2 rounded-full bg-pr-orange-dark"></div>
+                      <span className="text-sm text-pr-orange-dark">Ports et corruption : le maillon faible de la lutte antidrogue</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-orange-600"></div>
-                      <span className="text-sm text-orange-700">Réseaux sociaux et recrutement criminel des jeunes</span>
+                      <div className="w-2 h-2 rounded-full bg-pr-orange-dark"></div>
+                      <span className="text-sm text-pr-orange-dark">Réseaux sociaux et recrutement criminel des jeunes</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-orange-600"></div>
-                      <span className="text-sm text-orange-700">Coopération régionale face au narcotrafic transnational</span>
+                      <div className="w-2 h-2 rounded-full bg-pr-orange-dark"></div>
+                      <span className="text-sm text-pr-orange-dark">Coopération régionale face au narcotrafic transnational</span>
                     </div>
                   </div>
                 </div>

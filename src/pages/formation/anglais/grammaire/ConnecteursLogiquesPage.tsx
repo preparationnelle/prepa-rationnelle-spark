@@ -45,7 +45,7 @@ const ConnecteursLogiquesPage = () => {
         {/* En-tête */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-orange-600 text-white">
+            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Fiche de Grammaire : Connecteurs Logiques
@@ -63,7 +63,7 @@ const ConnecteursLogiquesPage = () => {
               Introduction
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-orange-700 space-y-3">
+          <CardContent className="text-pr-orange-dark space-y-3">
             <p>Les connecteurs logiques améliorent la cohérence du discours et aident le lecteur à suivre le raisonnement.</p>
           </CardContent>
         </Card>
@@ -72,7 +72,7 @@ const ConnecteursLogiquesPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <Table className="h-6 w-6 text-orange-600" />
+              <Table className="h-6 w-6 text-pr-orange-dark" />
               1. Connecteurs par fonction
             </CardTitle>
           </CardHeader>
@@ -81,21 +81,21 @@ const ConnecteursLogiquesPage = () => {
               <table className="min-w-full border border-gray-200 bg-white">
                 <thead className="bg-orange-50">
                   <tr>
-                    <th className="border px-3 py-2 text-left text-orange-700">Fonction</th>
-                    <th className="border px-3 py-2 text-left text-orange-700">Connecteurs</th>
-                    <th className="border px-3 py-2 text-left text-orange-700">Exemple</th>
+                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Fonction</th>
+                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Connecteurs</th>
+                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Exemple</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">Addition</td><td className="border px-3 py-2">moreover, furthermore, in addition, also</td><td className="border px-3 py-2">Moreover, the results are clear.</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">Opposition</td><td className="border px-3 py-2">however, nevertheless, yet, whereas, while</td><td className="border px-3 py-2">However, the trend is uncertain.</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">Cause</td><td className="border px-3 py-2">because, since, as, due to, owing to</td><td className="border px-3 py-2">Due to the delay, we canceled.</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">Conséquence</td><td className="border px-3 py-2">therefore, thus, hence, as a result</td><td className="border px-3 py-2">Therefore, we must adapt.</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">Concession</td><td className="border px-3 py-2">although, though, even though, despite, in spite of</td><td className="border px-3 py-2">Although it was late, we stayed.</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">Illustration</td><td className="border px-3 py-2">for instance, for example, namely</td><td className="border px-3 py-2">For instance, consider AI risks.</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">But</td><td className="border px-3 py-2">to, in order to, so as to; so that</td><td className="border px-3 py-2">We trained so that we could win.</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">Comparaison</td><td className="border px-3 py-2">similarly, likewise, whereas</td><td className="border px-3 py-2">Similarly, sales increased.</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">Conclusion</td><td className="border px-3 py-2">to conclude, in conclusion, ultimately</td><td className="border px-3 py-2">In conclusion, the plan works.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Addition</td><td className="border px-3 py-2">moreover, furthermore, in addition, also</td><td className="border px-3 py-2">Moreover, the results are clear.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Opposition</td><td className="border px-3 py-2">however, nevertheless, yet, whereas, while</td><td className="border px-3 py-2">However, the trend is uncertain.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Cause</td><td className="border px-3 py-2">because, since, as, due to, owing to</td><td className="border px-3 py-2">Due to the delay, we canceled.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Conséquence</td><td className="border px-3 py-2">therefore, thus, hence, as a result</td><td className="border px-3 py-2">Therefore, we must adapt.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Concession</td><td className="border px-3 py-2">although, though, even though, despite, in spite of</td><td className="border px-3 py-2">Although it was late, we stayed.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Illustration</td><td className="border px-3 py-2">for instance, for example, namely</td><td className="border px-3 py-2">For instance, consider AI risks.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">But</td><td className="border px-3 py-2">to, in order to, so as to; so that</td><td className="border px-3 py-2">We trained so that we could win.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Comparaison</td><td className="border px-3 py-2">similarly, likewise, whereas</td><td className="border px-3 py-2">Similarly, sales increased.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Conclusion</td><td className="border px-3 py-2">to conclude, in conclusion, ultimately</td><td className="border px-3 py-2">In conclusion, the plan works.</td></tr>
                 </tbody>
               </table>
             </div>
@@ -139,10 +139,10 @@ const ConnecteursLogiquesPage = () => {
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-lg text-orange-700 mb-6">Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.</p>
+            <p className="text-lg text-pr-orange-dark mb-6">Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/formation/anglais/grammaire/connecteurs/exercices">
-                <Button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-lg w-full sm:w-auto">
+                <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
                   <Target className="h-5 w-5 mr-2" />
                   Exercices
                 </Button>

@@ -242,7 +242,7 @@ const MetauxPage = () => {
                     
                     <div className="bg-orange-50 p-4 rounded-lg">
                       <h4 className="font-semibold text-orange-800 mb-2">Risques d'approvisionnement</h4>
-                      <ul className="list-disc list-inside text-sm text-orange-700 space-y-1">
+                      <ul className="list-disc list-inside text-sm text-pr-orange-dark space-y-1">
                         <li><strong>Tensions géopolitiques :</strong> Guerre commerciale, sanctions</li>
                         <li><strong>Instabilité politique :</strong> Coups d'État (Mali, Niger, uranium)</li>
                         <li><strong>Conflits armés :</strong> RDC, Myanmar (étain, tungstène)</li>

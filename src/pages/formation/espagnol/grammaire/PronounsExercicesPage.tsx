@@ -169,7 +169,7 @@ const PronounsExercicesPage = () => {
           <Button 
             onClick={() => validateAnswer(exerciseId)}
             disabled={!userAnswers[exerciseId]}
-            className="bg-orange-600 hover:bg-orange-700 text-white flex items-center gap-2"
+            className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white flex items-center gap-2"
           >
             <CheckCircle className="h-4 w-4" />
             Valider ma réponse
@@ -284,7 +284,7 @@ const PronounsExercicesPage = () => {
           <Button
             variant={examMode ? "default" : "outline"}
             onClick={() => setExamMode(prev => !prev)}
-            className={examMode ? "bg-orange-600 hover:bg-orange-700 text-white" : "border-orange-600 text-orange-600 hover:bg-orange-50"}
+            className={examMode ? "bg-pr-orange-dark hover:bg-pr-orange-dark text-white" : "border-pr-orange-dark text-pr-orange-dark hover:bg-orange-50"}
           >
             {examMode ? "Désactiver le Mode Examen" : "Activer le Mode Examen"}
           </Button>
@@ -297,7 +297,7 @@ const PronounsExercicesPage = () => {
                 <div className="flex items-center justify-center gap-4">
                   <Button
                     onClick={startExam}
-                    className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-2"
+                    className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-6 py-2"
                   >
                     <Play className="h-4 w-4 mr-2" />
                     Commencer l'examen
@@ -370,7 +370,7 @@ const PronounsExercicesPage = () => {
         </Card>
 
         {!examStarted && (
-          <Card className="mb-8 border-4 border-orange-500 bg-gradient-to-r from-orange-100 to-orange-100 shadow-lg">
+          <Card className="mb-8 border-4 border-pr-orange bg-gradient-to-r from-orange-100 to-orange-100 shadow-lg">
             <CardHeader>
               <CardTitle className="text-2xl font-bold flex items-center gap-2 text-orange-900">
                 <BookOpenIcon className="h-6 w-6" />
@@ -382,21 +382,21 @@ const PronounsExercicesPage = () => {
                 <Button 
                   variant={selectedExerciseType === 'qcm' ? 'default' : 'outline'} 
                   onClick={() => setSelectedExerciseType('qcm')}
-                  className={selectedExerciseType === 'qcm' ? 'bg-orange-600 hover:bg-orange-700 text-white' : 'border-orange-600 text-orange-600 hover:bg-orange-50'}
+                  className={selectedExerciseType === 'qcm' ? 'bg-pr-orange-dark hover:bg-pr-orange-dark text-white' : 'border-pr-orange-dark text-pr-orange-dark hover:bg-orange-50'}
                 >
                   QCM ({getPronounsExercisesByType('qcm').length})
                 </Button>
                 <Button 
                   variant={selectedExerciseType === 'choix' ? 'default' : 'outline'} 
                   onClick={() => setSelectedExerciseType('choix')}
-                  className={selectedExerciseType === 'choix' ? 'bg-orange-600 hover:bg-orange-700 text-white' : 'border-orange-600 text-orange-600 hover:bg-orange-50'}
+                  className={selectedExerciseType === 'choix' ? 'bg-pr-orange-dark hover:bg-pr-orange-dark text-white' : 'border-pr-orange-dark text-pr-orange-dark hover:bg-orange-50'}
                 >
                   Choix multiples ({getPronounsExercisesByType('choix').length})
                 </Button>
                 <Button 
                   variant={selectedExerciseType === 'complet' ? 'default' : 'outline'} 
                   onClick={() => setSelectedExerciseType('complet')}
-                  className={selectedExerciseType === 'complet' ? 'bg-orange-600 hover:bg-orange-700 text-white' : 'border-orange-600 text-orange-600 hover:bg-orange-50'}
+                  className={selectedExerciseType === 'complet' ? 'bg-pr-orange-dark hover:bg-pr-orange-dark text-white' : 'border-pr-orange-dark text-pr-orange-dark hover:bg-orange-50'}
                 >
                   Mots à compléter ({getPronounsExercisesByType('complet').length})
                 </Button>
@@ -512,7 +512,7 @@ const PronounsExercicesPage = () => {
           <div className="flex justify-center gap-4 mt-10">
             <Button 
               onClick={calculateScore} 
-              className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-lg flex items-center gap-2"
+              className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg flex items-center gap-2"
             >
               <CheckCircle className="h-5 w-5" />
               Terminer et voir le score
@@ -520,7 +520,7 @@ const PronounsExercicesPage = () => {
             <Button 
               onClick={resetQuiz} 
               variant="outline" 
-              className="px-8 py-3 text-lg flex items-center gap-2 border-orange-600 text-orange-600 hover:bg-orange-50"
+              className="px-8 py-3 text-lg flex items-center gap-2 border-pr-orange-dark text-pr-orange-dark hover:bg-orange-50"
             >
               <RotateCcw className="h-5 w-5" />
               Réinitialiser
@@ -545,7 +545,7 @@ const PronounsExercicesPage = () => {
                 </div>
               )}
               <div className={`text-lg ${
-                examMode ? 'text-orange-700' : 'text-purple-700'
+                examMode ? 'text-pr-orange-dark' : 'text-purple-700'
               }`}>
                 {score >= 80 ? (
                   <div className="flex items-center justify-center gap-2">
@@ -559,7 +559,7 @@ const PronounsExercicesPage = () => {
                   </div>
                 ) : (
                   <div className="flex items-center justify-center gap-2">
-                    <Lightbulb className="h-6 w-6 text-orange-500" />
+                    <Lightbulb className="h-6 w-6 text-pr-orange" />
                     {examMode ? 'Les pronoms sont complexes. Révisez les règles de base !' : 'Les pronoms demandent de la pratique. Révisez et réessayez !'}
                   </div>
                 )}

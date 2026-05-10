@@ -37,7 +37,7 @@ const legales = [
 ];
 
 const columnTitleClass =
-  'font-dm-sans text-[11px] font-semibold uppercase tracking-[0.08em] text-pr-orange mb-4';
+  'font-dm-sans text-[13px] font-semibold uppercase tracking-[0.08em] text-pr-orange mb-4';
 
 const linkClass =
   'font-dm-sans text-sm text-white/80 hover:text-pr-orange transition-colors duration-200';

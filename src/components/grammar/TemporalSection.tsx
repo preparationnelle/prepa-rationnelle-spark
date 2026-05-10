@@ -16,7 +16,7 @@ const TemporalSectionComponent: React.FC<TemporalSectionProps> = ({ section }) =
     if (id.includes('mois') || id.includes('jours') || id.includes('saisons')) return <Calendar className="h-5 w-5 text-blue-600" />;
     if (id.includes('semaine') || id.includes('semaine')) return <CalendarDays className="h-5 w-5 text-green-600" />;
     if (id.includes('dates') || id.includes('dire-dates')) return <CalendarRange className="h-5 w-5 text-purple-600" />;
-    if (id.includes('heure') || id.includes('dire-heure')) return <ClockIcon className="h-5 w-5 text-orange-600" />;
+    if (id.includes('heure') || id.includes('dire-heure')) return <ClockIcon className="h-5 w-5 text-pr-orange-dark" />;
     if (id.includes('calcul') || id.includes('mental')) return <Brain className="h-5 w-5 text-indigo-600" />;
     if (id.includes('expressions') || id.includes('temporelles')) return <MessageSquare className="h-5 w-5 text-teal-600" />;
     if (id.includes('contextes') || id.includes('varies')) return <Target className="h-5 w-5 text-pink-600" />;
@@ -147,7 +147,7 @@ const TemporalSectionComponent: React.FC<TemporalSectionProps> = ({ section }) =
                         </span>
                       ))}
                     </div>
-                    <p className="text-xs text-orange-700">{irregularity.notes}</p>
+                    <p className="text-xs text-pr-orange-dark">{irregularity.notes}</p>
                   </div>
                 ))}
               </div>

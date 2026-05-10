@@ -143,7 +143,7 @@ export const GeopoliticsFlashcards: React.FC = () => {
         </span>
         <div className="flex-1 bg-gray-200 rounded-full h-3 overflow-hidden">
           <div
-            className="bg-gradient-to-r from-blue-500 to-orange-600 h-3 rounded-full transition-all duration-500 ease-out"
+            className="bg-gradient-to-r from-blue-500 to-pr-orange-dark h-3 rounded-full transition-all duration-500 ease-out"
             style={{ width: `${progressPercentage}%` }}
           />
         </div>
@@ -232,7 +232,7 @@ export const GeopoliticsFlashcards: React.FC = () => {
       {/* MESSAGE DE FÉLICITATIONS */}
       {currentIndex === totalCards - 1 && (
         <div className="text-center mt-8 p-6 bg-gradient-to-r from-orange-50 to-blue-50 rounded-lg border-2 border-orange-200">
-          <h3 className="text-xl font-bold mb-3 text-orange-700">
+          <h3 className="text-xl font-bold mb-3 text-pr-orange-dark">
             🎉 Félicitations !
           </h3>
           <p className="text-gray-600 mb-4">
@@ -244,7 +244,7 @@ export const GeopoliticsFlashcards: React.FC = () => {
               <p className="text-orange-800 font-semibold">
                 📚 Vous avez {reviewCards.size} carte{reviewCards.size > 1 ? 's' : ''} à réviser
               </p>
-              <p className="text-orange-700 text-sm mt-1">
+              <p className="text-pr-orange-dark text-sm mt-1">
                 Concentrez-vous sur les mots que vous voulez maîtriser parfaitement
               </p>
             </div>

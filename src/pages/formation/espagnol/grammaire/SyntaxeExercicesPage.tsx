@@ -45,7 +45,7 @@ const SyntaxeExercicesPage = () => {
           </div>
           
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-orange-600 text-white">
+            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
               <Target className="h-9 w-9" />
             </div>
             Exercices Syntaxe et Structures Complexes
@@ -56,7 +56,7 @@ const SyntaxeExercicesPage = () => {
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">Niveau Prépa ECG</Badge>
             <Badge variant="outline">60 exercices</Badge>
-            <Badge className="bg-orange-600">Module essentiel</Badge>
+            <Badge className="bg-pr-orange-dark">Module essentiel</Badge>
           </div>
         </div>
 
@@ -68,7 +68,7 @@ const SyntaxeExercicesPage = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-orange-700">
+            <p className="text-pr-orange-dark">
               🚧 Cette page est temporairement simplifiée le temps de résoudre un problème technique. 
               Elle sera restaurée sous peu avec toutes les fonctionnalités.
             </p>

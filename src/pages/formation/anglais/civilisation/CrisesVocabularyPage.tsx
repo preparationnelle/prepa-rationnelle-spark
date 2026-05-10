@@ -200,7 +200,7 @@ const CrisesVocabularyPage = () => {
   const getCategoryColor = (category: string) => {
     const colors: { [key: string]: string } = {
       'Crises sanitaires et pandémiques': 'bg-red-500',
-      'Crises économiques et financières': 'bg-orange-500',
+      'Crises économiques et financières': 'bg-pr-orange',
       'Crises environnementales et climatiques': 'bg-green-500',
       'Catastrophes naturelles': 'bg-carnet-red',
       'Crises migratoires et humanitaires': 'bg-purple-500',

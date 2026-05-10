@@ -203,7 +203,7 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
                             ? 'bg-white border-2 border-red-500'
                             : state === 'processing'
                                 ? 'bg-white border-2 border-gray-200 cursor-not-allowed'
-                                : 'bg-gradient-to-br from-gray-900 to-gray-700 hover:from-orange-500 hover:to-pink-600 text-white'
+                                : 'bg-gradient-to-br from-gray-900 to-gray-700 hover:from-pr-orange hover:to-pink-600 text-white'
                         }
                     `}
                 >
@@ -237,7 +237,7 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
                         </div>
                     )}
                     {state === 'processing' && (
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-600 font-bold animate-pulse text-xs">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-pr-orange to-pink-600 font-bold animate-pulse text-xs">
                             Transcription...
                         </span>
                     )}

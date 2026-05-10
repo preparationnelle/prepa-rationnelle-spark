@@ -39,7 +39,7 @@ const EpreuvesEcritesSynthesePage = () => {
 
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center border border-orange-200">
-              <BookOpen className="h-6 w-6 text-orange-600" />
+              <BookOpen className="h-6 w-6 text-pr-orange-dark" />
             </div>
             <h1 className="text-3xl font-bold text-gray-900">Réussir la synthèse</h1>
           </div>
@@ -50,7 +50,7 @@ const EpreuvesEcritesSynthesePage = () => {
           {/* Informations pratiques */}
           <div className="bg-orange-50 rounded-lg p-4 border border-orange-200 mb-8">
             <div className="flex items-center gap-2 mb-2">
-              <Target className="h-5 w-5 text-orange-600" />
+              <Target className="h-5 w-5 text-pr-orange-dark" />
               <span className="font-medium text-orange-800">Objectif :</span>
             </div>
             <p className="text-gray-700">

@@ -45,7 +45,7 @@ const GerondifInfinitifPage = () => {
         {/* En-tête */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-orange-600 text-white">
+            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Fiche de Grammaire : Gérondif et Infinitif en Anglais
@@ -63,7 +63,7 @@ const GerondifInfinitifPage = () => {
               Introduction
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-orange-700 space-y-3">
+          <CardContent className="text-pr-orange-dark space-y-3">
             <p>Leur usage dépend du verbe, de la structure et du sens recherché.</p>
           </CardContent>
         </Card>
@@ -75,8 +75,8 @@ const GerondifInfinitifPage = () => {
           </CardHeader>
           <CardContent className="space-y-4 text-gray-800">
             <ul className="list-disc pl-6 space-y-1">
-              <li><span className="text-orange-700 font-semibold">Gérondif</span> : base + -ing (e.g., <span className="italic">swimming</span>) → l’action comme concept.</li>
-              <li><span className="text-orange-700 font-semibold">Infinitif</span> : to + base (e.g., <span className="italic">to swim</span>) → potentialité/intention.</li>
+              <li><span className="text-pr-orange-dark font-semibold">Gérondif</span> : base + -ing (e.g., <span className="italic">swimming</span>) → l’action comme concept.</li>
+              <li><span className="text-pr-orange-dark font-semibold">Infinitif</span> : to + base (e.g., <span className="italic">to swim</span>) → potentialité/intention.</li>
             </ul>
           </CardContent>
         </Card>
@@ -91,27 +91,27 @@ const GerondifInfinitifPage = () => {
               <h3 className="text-xl font-semibold mb-2">2.1 Verbes suivis uniquement d’un gérondif</h3>
               <p>admit, avoid, enjoy, finish, keep (on), mention, mind, miss, postpone, practise, suggest.</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>She enjoys <span className="text-orange-700 font-semibold">reading</span>.</li>
-                <li>They postponed <span className="text-orange-700 font-semibold">taking</span> the test.</li>
+                <li>She enjoys <span className="text-pr-orange-dark font-semibold">reading</span>.</li>
+                <li>They postponed <span className="text-pr-orange-dark font-semibold">taking</span> the test.</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">2.2 Verbes suivis uniquement d’un infinitif</h3>
               <p>afford, agree, decide, expect, hope, learn, manage, offer, plan, promise, refuse, want.</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>He decided <span className="text-orange-700 font-semibold">to leave</span>.</li>
-                <li>She hopes <span className="text-orange-700 font-semibold">to win</span>.</li>
+                <li>He decided <span className="text-pr-orange-dark font-semibold">to leave</span>.</li>
+                <li>She hopes <span className="text-pr-orange-dark font-semibold">to win</span>.</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">2.3 Verbes pouvant prendre gérondif ou infinitif</h3>
-              <p><span className="text-orange-700 font-semibold">Sans changement de sens</span> : begin, continue, hate, like, love, prefer, start.</p>
+              <p><span className="text-pr-orange-dark font-semibold">Sans changement de sens</span> : begin, continue, hate, like, love, prefer, start.</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>I began <span className="text-orange-700 font-semibold">to learn</span> / <span className="text-orange-700 font-semibold">learning</span> Spanish.</li>
+                <li>I began <span className="text-pr-orange-dark font-semibold">to learn</span> / <span className="text-pr-orange-dark font-semibold">learning</span> Spanish.</li>
               </ul>
-              <p className="mt-2"><span className="text-orange-700 font-semibold">Avec changement de sens</span> : forget, remember, regret, go on, stop.</p>
+              <p className="mt-2"><span className="text-pr-orange-dark font-semibold">Avec changement de sens</span> : forget, remember, regret, go on, stop.</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>I stopped <span className="text-orange-700 font-semibold">smoking</span> vs I stopped <span className="text-orange-700 font-semibold">to smoke</span>.</li>
+                <li>I stopped <span className="text-pr-orange-dark font-semibold">smoking</span> vs I stopped <span className="text-pr-orange-dark font-semibold">to smoke</span>.</li>
               </ul>
             </section>
           </CardContent>
@@ -126,29 +126,29 @@ const GerondifInfinitifPage = () => {
             <section>
               <h3 className="text-xl font-semibold mb-2">3.1 Après prépositions → Gérondif</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li>I’m good at <span className="text-orange-700 font-semibold">cooking</span>.</li>
-                <li>Before <span className="text-orange-700 font-semibold">going</span> to bed, brush your teeth.</li>
+                <li>I’m good at <span className="text-pr-orange-dark font-semibold">cooking</span>.</li>
+                <li>Before <span className="text-pr-orange-dark font-semibold">going</span> to bed, brush your teeth.</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">3.2 Après adjectifs → Infinitif</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li>It’s easy <span className="text-orange-700 font-semibold">to understand</span>.</li>
-                <li>She’s happy <span className="text-orange-700 font-semibold">to help</span>.</li>
+                <li>It’s easy <span className="text-pr-orange-dark font-semibold">to understand</span>.</li>
+                <li>She’s happy <span className="text-pr-orange-dark font-semibold">to help</span>.</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">3.3 Pour exprimer le but → Infinitif</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li>He works hard <span className="text-orange-700 font-semibold">to succeed</span>.</li>
-                <li>I opened the window <span className="text-orange-700 font-semibold">to let</span> fresh air in.</li>
+                <li>He works hard <span className="text-pr-orange-dark font-semibold">to succeed</span>.</li>
+                <li>I opened the window <span className="text-pr-orange-dark font-semibold">to let</span> fresh air in.</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">3.4 Après certains modaux → Infinitif sans "to"</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li>She <span className="text-orange-700 font-semibold">can</span> swim.</li>
-                <li>We <span className="text-orange-700 font-semibold">must</span> leave.</li>
+                <li>She <span className="text-pr-orange-dark font-semibold">can</span> swim.</li>
+                <li>We <span className="text-pr-orange-dark font-semibold">must</span> leave.</li>
               </ul>
             </section>
           </CardContent>
@@ -158,7 +158,7 @@ const GerondifInfinitifPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <Table className="h-6 w-6 text-orange-600" />
+              <Table className="h-6 w-6 text-pr-orange-dark" />
               4. Tableau Récapitulatif
             </CardTitle>
           </CardHeader>
@@ -167,9 +167,9 @@ const GerondifInfinitifPage = () => {
               <table className="min-w-full border border-gray-200 bg-white">
                 <thead className="bg-orange-50">
                   <tr>
-                    <th className="border px-3 py-2 text-left text-orange-700">Contexte</th>
-                    <th className="border px-3 py-2 text-left text-orange-700">Gérondif (–ing)</th>
-                    <th className="border px-3 py-2 text-left text-orange-700">Infinitif (to + verb)</th>
+                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Contexte</th>
+                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Gérondif (–ing)</th>
+                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Infinitif (to + verb)</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -193,9 +193,9 @@ const GerondifInfinitifPage = () => {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-6 space-y-1">
-              <li>Omettre <span className="text-orange-700 font-semibold">to</span> après les verbes exigeant l’infinitif.</li>
-              <li>Ajouter <span className="text-orange-700 font-semibold">to</span> après les verbes exigeant le gérondif.</li>
-              <li>Confondre les sens pour <span className="text-orange-700 font-semibold">forget/remember/regret/stop/go on</span>.</li>
+              <li>Omettre <span className="text-pr-orange-dark font-semibold">to</span> après les verbes exigeant l’infinitif.</li>
+              <li>Ajouter <span className="text-pr-orange-dark font-semibold">to</span> après les verbes exigeant le gérondif.</li>
+              <li>Confondre les sens pour <span className="text-pr-orange-dark font-semibold">forget/remember/regret/stop/go on</span>.</li>
               <li>Usage incorrect après prépositions/adjectifs.</li>
             </ul>
           </CardContent>
@@ -210,12 +210,12 @@ const GerondifInfinitifPage = () => {
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-lg text-orange-700 mb-6">
+            <p className="text-lg text-pr-orange-dark mb-6">
               Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/formation/anglais/grammaire/gerondif-infinitif/exercices">
-                <Button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-lg w-full sm:w-auto">
+                <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
                   <Target className="h-5 w-5 mr-2" />
                   Exercices
                 </Button>

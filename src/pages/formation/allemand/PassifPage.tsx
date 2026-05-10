@@ -10,20 +10,20 @@ const PassifPage = () => {
       <header className="border-b border-gray-200">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center text-sm text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-orange-600 transition-colors">
+            <Link to="/" className="flex items-center gap-1 hover:text-pr-orange-dark transition-colors">
               <BookOpen className="h-4 w-4" />
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
-            <Link to="/formations" className="hover:text-orange-600 transition-colors">
+            <Link to="/formations" className="hover:text-pr-orange-dark transition-colors">
               Toutes les formations
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
-            <Link to="/formation/allemand" className="hover:text-orange-600 transition-colors">
+            <Link to="/formation/allemand" className="hover:text-pr-orange-dark transition-colors">
               Formation Allemand
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
-            <Link to="/formation/allemand-grammaire" className="hover:text-orange-600 transition-colors">
+            <Link to="/formation/allemand-grammaire" className="hover:text-pr-orange-dark transition-colors">
               Grammaire
         </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-2" />
@@ -33,7 +33,7 @@ const PassifPage = () => {
           <div className="mt-8 text-center">
             <div className="flex justify-center mb-4">
               <div className="p-3 rounded-full bg-orange-100">
-                <BookOpen className="h-8 w-8 text-orange-600" />
+                <BookOpen className="h-8 w-8 text-pr-orange-dark" />
               </div>
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -53,7 +53,7 @@ const PassifPage = () => {
           {/* 1. Quand l'utiliser ? */}
           <section className="mb-8">
             <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">1. Quand l'utiliser ?</h2>
+              <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">1. Quand l'utiliser ?</h2>
 
               <p className="text-gray-700 mb-4">
                 Le passif sert à mettre l'objet ou l'action au premier plan ; l'agent est secondaire, parfois absent.
@@ -106,7 +106,7 @@ const PassifPage = () => {
           {/* 2. Tableaux récapitulatifs */}
           <section className="mb-8">
             <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">2. Tableaux récapitulatifs</h2>
+              <h2 className="text-xl font-bold mb-4 text-pr-orange-dark border-b border-orange-200 pb-2">2. Tableaux récapitulatifs</h2>
 
               {/* 2a. Vorgangspassiv (action) */}
               <div className="mb-8">
@@ -257,7 +257,7 @@ const PassifPage = () => {
             <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-8 bg-carnet-red/10 rounded-lg flex items-center justify-center">
-                  <span className="text-orange-600 font-bold text-sm">3</span>
+                  <span className="text-pr-orange-dark font-bold text-sm">3</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900">Gérer l'agent ou le moyen</h2>
               </div>
@@ -299,7 +299,7 @@ const PassifPage = () => {
             <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-8 bg-carnet-red/10 rounded-lg flex items-center justify-center">
-                  <span className="text-orange-600 font-bold text-sm">4</span>
+                  <span className="text-pr-orange-dark font-bold text-sm">4</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900">Règles clés & astuces</h2>
               </div>
@@ -310,7 +310,7 @@ const PassifPage = () => {
                   <p className="text-gray-700 mb-2">
                     verbe sans COD accusatif → sujet es factice :
                   </p>
-                  <div className="bg-gray-50 p-3 rounded border-l-4 border-orange-500">
+                  <div className="bg-gray-50 p-3 rounded border-l-4 border-pr-orange">
                     <p className="font-mono text-gray-800 mb-1">Es wurde viel gelacht.</p>
                     <p className="text-sm text-gray-700">→ « On a beaucoup ri. »</p>
                   </div>
@@ -353,7 +353,7 @@ const PassifPage = () => {
             <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-8 bg-carnet-red/10 rounded-lg flex items-center justify-center">
-                  <span className="text-orange-600 font-bold text-sm">5</span>
+                  <span className="text-pr-orange-dark font-bold text-sm">5</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900">Exercices d'application (corrigé immédiat)</h2>
               </div>
@@ -371,7 +371,7 @@ const PassifPage = () => {
                   ].map((item) => (
                     <div key={item.num} className="bg-white p-4 rounded-lg border border-gray-300">
                       <div className="flex items-center gap-3 mb-2">
-                        <span className="font-bold text-orange-600">#{item.num}</span>
+                        <span className="font-bold text-pr-orange-dark">#{item.num}</span>
                         <span className="text-gray-700">{item.phrase}</span>
                       </div>
                       <div className="bg-green-50 p-3 rounded border-l-4 border-green-500">
@@ -430,7 +430,7 @@ const PassifPage = () => {
             <div className="bg-orange-50 rounded-lg p-6 border border-orange-200">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-8 bg-carnet-red/10 rounded-lg flex items-center justify-center">
-                  <span className="text-orange-600 font-bold text-sm">6</span>
+                  <span className="text-pr-orange-dark font-bold text-sm">6</span>
                 </div>
                 <h2 className="text-xl font-bold text-carnet-red-deep">Verdict</h2>
               </div>
@@ -454,7 +454,7 @@ const PassifPage = () => {
           {/* Bouton retour */}
           <div className="text-center pb-8">
             <Link to="/formation/allemand-grammaire">
-              <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-50">
+              <Button variant="outline" className="border-orange-300 text-pr-orange-dark hover:bg-orange-50">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Retour à la grammaire
             </Button>

@@ -89,7 +89,7 @@ const AdjectivesAdverbsPage = () => {
           </div>
           
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-orange-600 text-white">
+            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
               <Tag className="h-9 w-9" />
             </div>
             Adjectifs et Adverbes
@@ -100,7 +100,7 @@ const AdjectivesAdverbsPage = () => {
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">Débutant - Intermédiaire</Badge>
             <Badge variant="outline">1-2 heures</Badge>
-            <Badge className="bg-orange-600">Module essentiel</Badge>
+            <Badge className="bg-pr-orange-dark">Module essentiel</Badge>
           </div>
         </div>
 
@@ -112,25 +112,25 @@ const AdjectivesAdverbsPage = () => {
               Comment utiliser ce module
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-orange-700">
+          <CardContent className="text-pr-orange-dark">
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
                 <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <BookOpenIcon className="h-8 w-8 text-orange-600" />
+                  <BookOpenIcon className="h-8 w-8 text-pr-orange-dark" />
                 </div>
                 <h3 className="font-semibold text-orange-900 mb-2">1. Apprenez les accords</h3>
                 <p className="text-sm">Comprenez les règles de genre et nombre</p>
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Table className="h-8 w-8 text-orange-600" />
+                  <Table className="h-8 w-8 text-pr-orange-dark" />
                 </div>
                 <h3 className="font-semibold text-orange-900 mb-2">2. Consultez les tableaux</h3>
                 <p className="text-sm">Mémorisez les formes et usages</p>
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <CheckCircle className="h-8 w-8 text-orange-600" />
+                  <CheckCircle className="h-8 w-8 text-pr-orange-dark" />
                 </div>
                 <h3 className="font-semibold text-orange-900 mb-2">3. Pratiquez les exercices</h3>
                 <p className="text-sm">Appliquez vos connaissances avec les exercices</p>
@@ -142,7 +142,7 @@ const AdjectivesAdverbsPage = () => {
         {/* Tableaux de référence */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <Table className="h-8 w-8 text-orange-600" />
+            <Table className="h-8 w-8 text-pr-orange-dark" />
             Tableaux de Référence
           </h2>
           
@@ -176,7 +176,7 @@ const AdjectivesAdverbsPage = () => {
         {/* Sections théoriques */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <BookOpenIcon className="h-8 w-8 text-orange-600" />
+            <BookOpenIcon className="h-8 w-8 text-pr-orange-dark" />
             Théorie et Règles
           </h2>
           
@@ -190,7 +190,7 @@ const AdjectivesAdverbsPage = () => {
         {/* Exercices pratiques */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <TargetIcon className="h-8 w-8 text-orange-600" />
+            <TargetIcon className="h-8 w-8 text-pr-orange-dark" />
             Exercices Pratiques
           </h2>
           
@@ -203,7 +203,7 @@ const AdjectivesAdverbsPage = () => {
                     {exercise.title}
                   </CardTitle>
                   <div className="flex gap-2">
-                    <Badge variant="outline" className="text-orange-600">
+                    <Badge variant="outline" className="text-pr-orange-dark">
                       {exercise.level}
                     </Badge>
                     <Badge variant="secondary">
@@ -254,7 +254,7 @@ const AdjectivesAdverbsPage = () => {
                       <ul className="space-y-2">
                         {exercise.content.hints.map((hint, index) => (
                           <li key={index} className="flex items-start gap-2 text-orange-800">
-                            <span className="w-2 h-2 rounded-full bg-orange-500 mt-2 flex-shrink-0"></span>
+                            <span className="w-2 h-2 rounded-full bg-pr-orange mt-2 flex-shrink-0"></span>
                             <span className="text-sm">{hint}</span>
                           </li>
                         ))}
@@ -287,7 +287,7 @@ const AdjectivesAdverbsPage = () => {
               Conseils pour maîtriser les Adjectifs et Adverbes
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-orange-700 space-y-6">
+          <CardContent className="text-pr-orange-dark space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h3 className="font-semibold text-orange-900 mb-3">🎯 Stratégie d'apprentissage :</h3>

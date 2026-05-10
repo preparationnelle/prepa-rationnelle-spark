@@ -45,7 +45,7 @@ const DiscoursIndirectPage = () => {
         {/* En-tête */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-orange-600 text-white">
+            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Grammar Sheet: Reported Speech in English
@@ -63,7 +63,7 @@ const DiscoursIndirectPage = () => {
               Introduction
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-orange-700 space-y-3">
+          <CardContent className="text-pr-orange-dark space-y-3">
             <p>Reported speech integrates the spoken words into our own statement, unlike direct speech which quotes word-for-word between quotation marks.</p>
           </CardContent>
         </Card>
@@ -76,16 +76,16 @@ const DiscoursIndirectPage = () => {
           <CardContent className="grid md:grid-cols-2 gap-6 text-gray-800">
             <div className="bg-white/70 rounded-lg p-4 border border-orange-200">
               <h3 className="text-lg font-semibold mb-2">Direct Speech</h3>
-              <p><span className="text-orange-700 font-semibold">Structure</span>: Subject + reporting verb + "exact words"</p>
+              <p><span className="text-pr-orange-dark font-semibold">Structure</span>: Subject + reporting verb + "exact words"</p>
               <p className="mt-2">Example: She said, "I am tired."</p>
             </div>
             <div className="bg-white/70 rounded-lg p-4 border border-carnet-red/30">
               <h3 className="text-lg font-semibold mb-2">Reported Speech</h3>
-              <p><span className="text-orange-700 font-semibold">Structure</span>: Subject + reporting verb + (that) + transformed clause</p>
+              <p><span className="text-pr-orange-dark font-semibold">Structure</span>: Subject + reporting verb + (that) + transformed clause</p>
               <p className="mt-2">Example: She said (that) she was tired.</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
                 <li>Removal of quotation marks</li>
-                <li>Possible addition of <span className="text-orange-700 font-semibold">that</span></li>
+                <li>Possible addition of <span className="text-pr-orange-dark font-semibold">that</span></li>
                 <li>Changes in tenses, pronouns, time markers</li>
               </ul>
             </div>
@@ -102,14 +102,14 @@ const DiscoursIndirectPage = () => {
               <h3 className="text-xl font-semibold mb-2">Rule 1: Pronoun Changes</h3>
               <p>Pronouns adapt to the reporter's perspective.</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>He said, "I love my car." → He said (that) <span className="text-orange-700 font-semibold">he</span> loved <span className="text-orange-700 font-semibold">his</span> car.</li>
-                <li>She told me, "You are right." → She told me (that) <span className="text-orange-700 font-semibold">I</span> was right.</li>
-                <li>They said, "We will come tomorrow." → They said (that) <span className="text-orange-700 font-semibold">they</span> would come the next day.</li>
+                <li>He said, "I love my car." → He said (that) <span className="text-pr-orange-dark font-semibold">he</span> loved <span className="text-pr-orange-dark font-semibold">his</span> car.</li>
+                <li>She told me, "You are right." → She told me (that) <span className="text-pr-orange-dark font-semibold">I</span> was right.</li>
+                <li>They said, "We will come tomorrow." → They said (that) <span className="text-pr-orange-dark font-semibold">they</span> would come the next day.</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Règle 2 : Le Backshift (Recul des Temps)</h3>
-              <p>Avec un verbe introducteur au passé, les temps reculent d'un cran : <span className="text-orange-700 font-semibold">Présent → Passé</span>, <span className="text-orange-700 font-semibold">Passé → Plus-que-parfait</span>, <span className="text-orange-700 font-semibold">Futur → Conditionnel</span>.</p>
+              <p>Avec un verbe introducteur au passé, les temps reculent d'un cran : <span className="text-pr-orange-dark font-semibold">Présent → Passé</span>, <span className="text-pr-orange-dark font-semibold">Passé → Plus-que-parfait</span>, <span className="text-pr-orange-dark font-semibold">Futur → Conditionnel</span>.</p>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Règle 3 : Changements des Expressions Temporelles et Spatiales</h3>
@@ -127,25 +127,25 @@ const DiscoursIndirectPage = () => {
             <section>
               <h3 className="text-xl font-semibold mb-2">Temps du Présent</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li>Present Simple → Past Simple : "I work here." → He said he <span className="text-orange-700 font-semibold">worked</span> there.</li>
-                <li>Present Continuous → Past Continuous : "I am studying." → She said she <span className="text-orange-700 font-semibold">was studying</span>.</li>
-                <li>Present Perfect → Past Perfect : "I have finished." → He said he <span className="text-orange-700 font-semibold">had finished</span>.</li>
+                <li>Present Simple → Past Simple : "I work here." → He said he <span className="text-pr-orange-dark font-semibold">worked</span> there.</li>
+                <li>Present Continuous → Past Continuous : "I am studying." → She said she <span className="text-pr-orange-dark font-semibold">was studying</span>.</li>
+                <li>Present Perfect → Past Perfect : "I have finished." → He said he <span className="text-pr-orange-dark font-semibold">had finished</span>.</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Temps du Passé</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li>Past Simple → Past Perfect : "I went yesterday." → She said she <span className="text-orange-700 font-semibold">had gone</span> the day before.</li>
-                <li>Past Continuous → Past Perfect Continuous : "I was sleeping." → He said he <span className="text-orange-700 font-semibold">had been sleeping</span>.</li>
+                <li>Past Simple → Past Perfect : "I went yesterday." → She said she <span className="text-pr-orange-dark font-semibold">had gone</span> the day before.</li>
+                <li>Past Continuous → Past Perfect Continuous : "I was sleeping." → He said he <span className="text-pr-orange-dark font-semibold">had been sleeping</span>.</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Futur et Modaux</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li>will → would : "I will help you." → He said he <span className="text-orange-700 font-semibold">would</span> help.</li>
-                <li>can → could : "I can speak French." → She said she <span className="text-orange-700 font-semibold">could</span> speak French.</li>
-                <li>may → might : "It may rain." → They said it <span className="text-orange-700 font-semibold">might</span> rain.</li>
-                <li>must → had to : "You must finish today." → The boss said I <span className="text-orange-700 font-semibold">had to</span> finish that day.</li>
+                <li>will → would : "I will help you." → He said he <span className="text-pr-orange-dark font-semibold">would</span> help.</li>
+                <li>can → could : "I can speak French." → She said she <span className="text-pr-orange-dark font-semibold">could</span> speak French.</li>
+                <li>may → might : "It may rain." → They said it <span className="text-pr-orange-dark font-semibold">might</span> rain.</li>
+                <li>must → had to : "You must finish today." → The boss said I <span className="text-pr-orange-dark font-semibold">had to</span> finish that day.</li>
               </ul>
             </section>
           </CardContent>
@@ -163,8 +163,8 @@ const DiscoursIndirectPage = () => {
                 <table className="min-w-full border border-gray-200 bg-white">
                   <thead className="bg-orange-50">
                     <tr>
-                      <th className="border px-3 py-2 text-left text-orange-700">Discours Direct</th>
-                      <th className="border px-3 py-2 text-left text-orange-700">Discours Indirect</th>
+                      <th className="border px-3 py-2 text-left text-pr-orange-dark">Discours Direct</th>
+                      <th className="border px-3 py-2 text-left text-pr-orange-dark">Discours Indirect</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -187,8 +187,8 @@ const DiscoursIndirectPage = () => {
                 <table className="min-w-full border border-gray-200 bg-white">
                   <thead className="bg-orange-50">
                     <tr>
-                      <th className="border px-3 py-2 text-left text-orange-700">Direct</th>
-                      <th className="border px-3 py-2 text-left text-orange-700">Indirect</th>
+                      <th className="border px-3 py-2 text-left text-pr-orange-dark">Direct</th>
+                      <th className="border px-3 py-2 text-left text-pr-orange-dark">Indirect</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -211,7 +211,7 @@ const DiscoursIndirectPage = () => {
           <CardContent className="space-y-6">
             <section>
               <h3 className="text-xl font-semibold mb-2">Questions fermées (Oui/Non)</h3>
-              <p><span className="text-orange-700 font-semibold">Structure</span> : verbe introducteur + if/whether + proposition (ordre sujet + verbe, pas d'inversion)</p>
+              <p><span className="text-pr-orange-dark font-semibold">Structure</span> : verbe introducteur + if/whether + proposition (ordre sujet + verbe, pas d'inversion)</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
                 <li>"Are you coming?" → He asked if/whether I was coming.</li>
                 <li>"Can you help me?" → She asked if/whether I could help her.</li>
@@ -220,7 +220,7 @@ const DiscoursIndirectPage = () => {
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Questions ouvertes (mots interrogatifs)</h3>
-              <p><span className="text-orange-700 font-semibold">Structure</span> : verbe introducteur + mot interrogatif + proposition (ordre normal)</p>
+              <p><span className="text-pr-orange-dark font-semibold">Structure</span> : verbe introducteur + mot interrogatif + proposition (ordre normal)</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
                 <li>"Where do you live?" → He asked where I lived.</li>
                 <li>"What time is it?" → She asked what time it was.</li>
@@ -238,7 +238,7 @@ const DiscoursIndirectPage = () => {
           <CardContent className="space-y-6">
             <section>
               <h3 className="text-xl font-semibold mb-2">Ordres et commandes</h3>
-              <p><span className="text-orange-700 font-semibold">Structure</span> : tell/order + objet + (not) to + infinitif</p>
+              <p><span className="text-pr-orange-dark font-semibold">Structure</span> : tell/order + objet + (not) to + infinitif</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
                 <li>"Close the door!" → He told me to close the door.</li>
                 <li>"Don't be late!" → She told us not to be late.</li>
@@ -246,7 +246,7 @@ const DiscoursIndirectPage = () => {
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Demandes polies</h3>
-              <p><span className="text-orange-700 font-semibold">Structure</span> : ask + objet + (not) to + infinitif</p>
+              <p><span className="text-pr-orange-dark font-semibold">Structure</span> : ask + objet + (not) to + infinitif</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
                 <li>"Could you help me, please?" → She asked me to help her.</li>
                 <li>"Please don't smoke here." → He asked us not to smoke there.</li>
@@ -272,9 +272,9 @@ const DiscoursIndirectPage = () => {
             <section>
               <h3 className="text-lg font-semibold mb-1">Verbes de base</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li><span className="text-orange-700 font-semibold">say</span> (sans objet) : She said (that) ...</li>
-                <li><span className="text-orange-700 font-semibold">tell</span> (avec objet) : She told me (that) ...</li>
-                <li><span className="text-orange-700 font-semibold">ask</span> : He asked if/whether ...</li>
+                <li><span className="text-pr-orange-dark font-semibold">say</span> (sans objet) : She said (that) ...</li>
+                <li><span className="text-pr-orange-dark font-semibold">tell</span> (avec objet) : She told me (that) ...</li>
+                <li><span className="text-pr-orange-dark font-semibold">ask</span> : He asked if/whether ...</li>
               </ul>
             </section>
             <section>
@@ -310,7 +310,7 @@ const DiscoursIndirectPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <Table className="h-6 w-6 text-orange-600" />
+              <Table className="h-6 w-6 text-pr-orange-dark" />
               8. Tableaux Récapitulatifs
             </CardTitle>
           </CardHeader>
@@ -321,8 +321,8 @@ const DiscoursIndirectPage = () => {
                 <table className="min-w-full border border-gray-200 bg-white">
                   <thead className="bg-orange-50">
                     <tr>
-                      <th className="border px-3 py-2 text-left text-orange-700">Direct</th>
-                      <th className="border px-3 py-2 text-left text-orange-700">Indirect</th>
+                      <th className="border px-3 py-2 text-left text-pr-orange-dark">Direct</th>
+                      <th className="border px-3 py-2 text-left text-pr-orange-dark">Indirect</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -345,8 +345,8 @@ const DiscoursIndirectPage = () => {
                 <table className="min-w-full border border-gray-200 bg-white">
                   <thead className="bg-orange-50">
                     <tr>
-                      <th className="border px-3 py-2 text-left text-orange-700">Direct</th>
-                      <th className="border px-3 py-2 text-left text-orange-700">Indirect</th>
+                      <th className="border px-3 py-2 text-left text-pr-orange-dark">Direct</th>
+                      <th className="border px-3 py-2 text-left text-pr-orange-dark">Indirect</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -370,9 +370,9 @@ const DiscoursIndirectPage = () => {
           <CardContent className="space-y-6">
             <ul className="list-disc pl-6 space-y-1">
               <li>Oublier de changer les pronoms</li>
-              <li>Mauvais usage de <span className="text-orange-700 font-semibold">say</span> et <span className="text-orange-700 font-semibold">tell</span></li>
+              <li>Mauvais usage de <span className="text-pr-orange-dark font-semibold">say</span> et <span className="text-pr-orange-dark font-semibold">tell</span></li>
               <li>Garder l'ordre interrogatif dans les questions rapportées (inversion)</li>
-              <li>Utiliser <span className="text-orange-700 font-semibold">that</span> après <span className="text-orange-700 font-semibold">ask</span> pour une question</li>
+              <li>Utiliser <span className="text-pr-orange-dark font-semibold">that</span> après <span className="text-pr-orange-dark font-semibold">ask</span> pour une question</li>
               <li>Backshift inutile avec vérités universelles</li>
             </ul>
           </CardContent>
@@ -418,7 +418,7 @@ const DiscoursIndirectPage = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <p>Pour maîtriser le discours indirect : travaillez les changements de temps, pronoms et marqueurs, choisissez le verbe introducteur adapté, et appliquez les exceptions lorsque nécessaire.</p>
-            <p><span className="text-orange-700 font-semibold">Conseil pratique</span> : commencez par les affirmations simples, puis entraînez-vous avec les questions et les ordres/demandes.</p>
+            <p><span className="text-pr-orange-dark font-semibold">Conseil pratique</span> : commencez par les affirmations simples, puis entraînez-vous avec les questions et les ordres/demandes.</p>
           </CardContent>
         </Card>
 
@@ -430,12 +430,12 @@ const DiscoursIndirectPage = () => {
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-lg text-orange-700 mb-6">
+            <p className="text-lg text-pr-orange-dark mb-6">
               Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/formation/anglais/grammaire/discours-indirect/exercices">
-                <Button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-lg w-full sm:w-auto">
+                <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
                   <Target className="h-5 w-5 mr-2" />
                   Exercices
                 </Button>

@@ -21,7 +21,7 @@ const ConjugationSectionComponent: React.FC<ConjugationSectionProps> = ({ sectio
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="p-2 rounded-lg bg-orange-100">
-              <BookOpen className="h-5 w-5 text-orange-600" />
+              <BookOpen className="h-5 w-5 text-pr-orange-dark" />
             </div>
             <div>
               <CardTitle className="text-xl text-gray-800">{section.title}</CardTitle>
@@ -29,7 +29,7 @@ const ConjugationSectionComponent: React.FC<ConjugationSectionProps> = ({ sectio
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <Badge variant="outline" className="text-orange-600 border-orange-200">
+            <Badge variant="outline" className="text-pr-orange-dark border-orange-200">
               {section.level}
             </Badge>
             <Button variant="ghost" size="sm" className="p-1">
@@ -54,7 +54,7 @@ const ConjugationSectionComponent: React.FC<ConjugationSectionProps> = ({ sectio
             <ul className="space-y-2">
               {section.content.rules.map((rule, index) => (
                 <li key={index} className="flex items-start gap-2 text-orange-800">
-                  <span className="w-2 h-2 rounded-full bg-orange-500 mt-1.5 flex-shrink-0"></span>
+                  <span className="w-2 h-2 rounded-full bg-pr-orange mt-1.5 flex-shrink-0"></span>
                   <span className="text-sm">{rule}</span>
                 </li>
               ))}
@@ -94,7 +94,7 @@ const ConjugationSectionComponent: React.FC<ConjugationSectionProps> = ({ sectio
                   <div key={index} className="bg-white rounded p-3 border border-orange-200">
                     <div className="flex items-center gap-2 mb-2">
                       <span className="font-medium text-orange-800">{irregularity.verb}</span>
-                      <span className="text-xs text-orange-600 bg-orange-100 px-2 py-1 rounded">
+                      <span className="text-xs text-pr-orange-dark bg-orange-100 px-2 py-1 rounded">
                         {irregularity.pattern}
                       </span>
                     </div>
@@ -112,15 +112,15 @@ const ConjugationSectionComponent: React.FC<ConjugationSectionProps> = ({ sectio
           )}
 
           {/* Conseils */}
-          <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">
-            <h4 className="font-semibold text-purple-900 mb-3 flex items-center gap-2">
+          <div className="bg-pr-orange-pale rounded-lg p-4 border border-pr-orange/20">
+            <h4 className="font-semibold text-pr-orange-dark mb-3 flex items-center gap-2 font-dm-sans">
               <Lightbulb className="h-4 w-4" />
               Conseils et astuces
             </h4>
             <ul className="space-y-2">
               {section.content.tips.map((tip, index) => (
-                <li key={index} className="flex items-start gap-2 text-purple-800">
-                  <span className="w-2 h-2 rounded-full bg-purple-500 mt-1.5 flex-shrink-0"></span>
+                <li key={index} className="flex items-start gap-2 text-pr-gray-dark font-dm-sans">
+                  <span className="w-2 h-2 rounded-full bg-pr-orange mt-1.5 flex-shrink-0"></span>
                   <span className="text-sm">{tip}</span>
                 </li>
               ))}

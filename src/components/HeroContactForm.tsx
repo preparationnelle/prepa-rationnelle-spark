@@ -26,14 +26,14 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
 
     const themeStyles = {
         orange: {
-            gradient: 'from-orange-500 to-orange-400',
-            gradientHover: 'hover:from-orange-600 hover:to-orange-500',
+            gradient: 'from-pr-orange to-orange-400',
+            gradientHover: 'hover:from-pr-orange-dark hover:to-pr-orange',
             text: 'text-orange-900',
-            textLight: 'text-orange-500',
+            textLight: 'text-pr-orange',
             bg: 'bg-orange-50',
             border: 'border-orange-200',
-            shadow: 'shadow-orange-500/30',
-            iconBg: 'bg-gradient-to-br from-orange-500 to-orange-400',
+            shadow: 'shadow-pr-orange/30',
+            iconBg: 'bg-gradient-to-br from-pr-orange to-orange-400',
         },
         blue: {
             gradient: 'from-blue-600 to-indigo-600',
@@ -117,7 +117,7 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
             <div className="relative">
                 {/* Subtle glow effect behind card */}
                 {/* Subtle glow effect behind card */}
-                <div className={`absolute -inset-1 bg-gradient-to-r ${theme === 'orange' ? 'from-orange-500/20 via-orange-400/15 to-orange-500/20' : 'from-blue-500/20 via-indigo-400/15 to-blue-500/20'} rounded-2xl blur-xl`}></div>
+                <div className={`absolute -inset-1 bg-gradient-to-r ${theme === 'orange' ? 'from-pr-orange/20 via-orange-400/15 to-pr-orange/20' : 'from-blue-500/20 via-indigo-400/15 to-blue-500/20'} rounded-2xl blur-xl`}></div>
 
                 {/* Card with glassmorphism touch */}
                 <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl shadow-black/20 p-6 sm:p-7 border border-white/50">
@@ -223,7 +223,7 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
                                                     type="button"
                                                     onClick={() => updateFormData('studentLevel', level)}
                                                     className={`py-3 px-3 rounded-lg text-sm font-semibold transition-all duration-200 ${formData.studentLevel === level
-                                                        ? `bg-gradient-to-r ${currentTheme.gradient} text-white shadow-md ${theme === 'orange' ? 'shadow-orange-500/25' : 'shadow-blue-500/25'}`
+                                                        ? `bg-gradient-to-r ${currentTheme.gradient} text-white shadow-md ${theme === 'orange' ? 'shadow-pr-orange/25' : 'shadow-blue-500/25'}`
                                                         : 'bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-gray-300'
                                                         }`}
                                                 >
@@ -248,7 +248,7 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
                                                     type="button"
                                                     onClick={() => updateFormData('studentType', type)}
                                                     className={`py-3 px-3 rounded-lg text-sm font-semibold transition-all duration-200 ${formData.studentType === type
-                                                        ? `bg-gradient-to-r ${currentTheme.gradient} text-white shadow-md ${theme === 'orange' ? 'shadow-orange-500/25' : 'shadow-blue-500/25'}`
+                                                        ? `bg-gradient-to-r ${currentTheme.gradient} text-white shadow-md ${theme === 'orange' ? 'shadow-pr-orange/25' : 'shadow-blue-500/25'}`
                                                         : 'bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-gray-300'
                                                         }`}
                                                 >

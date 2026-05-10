@@ -45,7 +45,7 @@ const CausativesPage = () => {
         {/* En-tête */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-orange-600 text-white">
+            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Fiche de Grammaire : Structures Causatives
@@ -63,7 +63,7 @@ const CausativesPage = () => {
               Introduction
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-orange-700 space-y-3">
+          <CardContent className="text-pr-orange-dark space-y-3">
             <p>Les structures causatives expriment que le sujet <span className="font-semibold">fait faire</span> l’action par quelqu’un d’autre, ou <span className="font-semibold">amène</span> quelqu’un à faire quelque chose.</p>
           </CardContent>
         </Card>
@@ -77,9 +77,9 @@ const CausativesPage = () => {
             <section>
               <h3 className="text-xl font-semibold mb-2">Structure</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li><span className="text-orange-700 font-semibold">have/get + objet + Vpp</span> : I had my hair <span className="text-orange-700 font-semibold">cut</span>.</li>
-                <li>Temps variés : We are having the house <span className="text-orange-700 font-semibold">painted</span>.</li>
-                <li>Valeur « mauvaise expérience » possible : He had his wallet <span className="text-orange-700 font-semibold">stolen</span>.</li>
+                <li><span className="text-pr-orange-dark font-semibold">have/get + objet + Vpp</span> : I had my hair <span className="text-pr-orange-dark font-semibold">cut</span>.</li>
+                <li>Temps variés : We are having the house <span className="text-pr-orange-dark font-semibold">painted</span>.</li>
+                <li>Valeur « mauvaise expérience » possible : He had his wallet <span className="text-pr-orange-dark font-semibold">stolen</span>.</li>
               </ul>
             </section>
           </CardContent>
@@ -92,9 +92,9 @@ const CausativesPage = () => {
           </CardHeader>
           <CardContent className="space-y-6">
             <ul className="list-disc pl-6 space-y-1">
-              <li><span className="text-orange-700 font-semibold">have + personne + base</span> : I <span className="text-orange-700 font-semibold">had</span> the plumber <span className="text-orange-700 font-semibold">fix</span> the sink.</li>
-              <li><span className="text-orange-700 font-semibold">get + personne + to + base</span> : I <span className="text-orange-700 font-semibold">got</span> him <span className="text-orange-700 font-semibold">to fix</span> it.</li>
-              <li>Nuance : <span className="text-orange-700 font-semibold">have</span> = commande/organisation; <span className="text-orange-700 font-semibold">get</span> = persuasion/effort.</li>
+              <li><span className="text-pr-orange-dark font-semibold">have + personne + base</span> : I <span className="text-pr-orange-dark font-semibold">had</span> the plumber <span className="text-pr-orange-dark font-semibold">fix</span> the sink.</li>
+              <li><span className="text-pr-orange-dark font-semibold">get + personne + to + base</span> : I <span className="text-pr-orange-dark font-semibold">got</span> him <span className="text-pr-orange-dark font-semibold">to fix</span> it.</li>
+              <li>Nuance : <span className="text-pr-orange-dark font-semibold">have</span> = commande/organisation; <span className="text-pr-orange-dark font-semibold">get</span> = persuasion/effort.</li>
             </ul>
           </CardContent>
         </Card>
@@ -106,10 +106,10 @@ const CausativesPage = () => {
           </CardHeader>
           <CardContent className="space-y-6">
             <ul className="list-disc pl-6 space-y-1">
-              <li><span className="text-orange-700 font-semibold">make + personne + base</span> : They <span className="text-orange-700 font-semibold">made</span> me <span className="text-orange-700 font-semibold">do</span> it. (contrainte)</li>
-              <li><span className="text-orange-700 font-semibold">let + personne + base</span> : She <span className="text-orange-700 font-semibold">let</span> the kids <span className="text-orange-700 font-semibold">play</span>. (laisser)</li>
-              <li><span className="text-orange-700 font-semibold">allow/permit + personne + to + base</span> : They <span className="text-orange-700 font-semibold">allowed</span> us <span className="text-orange-700 font-semibold">to enter</span>.</li>
-              <li><span className="text-orange-700 font-semibold">force/compel + personne + to + base</span> : He <span className="text-orange-700 font-semibold">forced</span> them <span className="text-orange-700 font-semibold">to leave</span>.</li>
+              <li><span className="text-pr-orange-dark font-semibold">make + personne + base</span> : They <span className="text-pr-orange-dark font-semibold">made</span> me <span className="text-pr-orange-dark font-semibold">do</span> it. (contrainte)</li>
+              <li><span className="text-pr-orange-dark font-semibold">let + personne + base</span> : She <span className="text-pr-orange-dark font-semibold">let</span> the kids <span className="text-pr-orange-dark font-semibold">play</span>. (laisser)</li>
+              <li><span className="text-pr-orange-dark font-semibold">allow/permit + personne + to + base</span> : They <span className="text-pr-orange-dark font-semibold">allowed</span> us <span className="text-pr-orange-dark font-semibold">to enter</span>.</li>
+              <li><span className="text-pr-orange-dark font-semibold">force/compel + personne + to + base</span> : He <span className="text-pr-orange-dark font-semibold">forced</span> them <span className="text-pr-orange-dark font-semibold">to leave</span>.</li>
             </ul>
           </CardContent>
         </Card>
@@ -118,7 +118,7 @@ const CausativesPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <Table className="h-6 w-6 text-orange-600" />
+              <Table className="h-6 w-6 text-pr-orange-dark" />
               4. Tableau Récapitulatif
             </CardTitle>
           </CardHeader>
@@ -127,18 +127,18 @@ const CausativesPage = () => {
               <table className="min-w-full border border-gray-200 bg-white">
                 <thead className="bg-orange-50">
                   <tr>
-                    <th className="border px-3 py-2 text-left text-orange-700">Structure</th>
-                    <th className="border px-3 py-2 text-left text-orange-700">Exemple</th>
-                    <th className="border px-3 py-2 text-left text-orange-700">Sens</th>
+                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Structure</th>
+                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Exemple</th>
+                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Sens</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">have/get sth done</td><td className="border px-3 py-2">We had the car repaired.</td><td className="border px-3 py-2">Service/délégation</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">have sb do</td><td className="border px-3 py-2">She had him clean.</td><td className="border px-3 py-2">Faire faire</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">get sb to do</td><td className="border px-3 py-2">He got them to help.</td><td className="border px-3 py-2">Obtenir/persuader</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">make sb do</td><td className="border px-3 py-2">They made us wait.</td><td className="border px-3 py-2">Contraindre</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">let sb do</td><td className="border px-3 py-2">Let me go.</td><td className="border px-3 py-2">Autoriser</td></tr>
-                  <tr><td className="border px-3 py-2 text-orange-700 font-medium">allow sb to do</td><td className="border px-3 py-2">They allowed us to enter.</td><td className="border px-3 py-2">Autoriser (formel)</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">have/get sth done</td><td className="border px-3 py-2">We had the car repaired.</td><td className="border px-3 py-2">Service/délégation</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">have sb do</td><td className="border px-3 py-2">She had him clean.</td><td className="border px-3 py-2">Faire faire</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">get sb to do</td><td className="border px-3 py-2">He got them to help.</td><td className="border px-3 py-2">Obtenir/persuader</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">make sb do</td><td className="border px-3 py-2">They made us wait.</td><td className="border px-3 py-2">Contraindre</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">let sb do</td><td className="border px-3 py-2">Let me go.</td><td className="border px-3 py-2">Autoriser</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">allow sb to do</td><td className="border px-3 py-2">They allowed us to enter.</td><td className="border px-3 py-2">Autoriser (formel)</td></tr>
                 </tbody>
               </table>
             </div>
@@ -152,7 +152,7 @@ const CausativesPage = () => {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-6 space-y-1">
-              <li>Confondre base/infinitif : ❌ have someone <span className="line-through">to do</span> → ✅ have someone <span className="text-orange-700 font-semibold">do</span>.</li>
+              <li>Confondre base/infinitif : ❌ have someone <span className="line-through">to do</span> → ✅ have someone <span className="text-pr-orange-dark font-semibold">do</span>.</li>
               <li>Oublier le Vpp dans « have/get something done ».</li>
               <li>Interchanger make/let/allow à contre-sens.</li>
             </ul>
@@ -168,10 +168,10 @@ const CausativesPage = () => {
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-lg text-orange-700 mb-6">Transformez des phrases actives en structures causatives et inversement.</p>
+            <p className="text-lg text-pr-orange-dark mb-6">Transformez des phrases actives en structures causatives et inversement.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/formation/anglais/grammaire/causatives/exercices">
-                <Button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-lg w-full sm:w-auto">
+                <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
                   <Target className="h-5 w-5 mr-2" />
                   Exercices
                 </Button>

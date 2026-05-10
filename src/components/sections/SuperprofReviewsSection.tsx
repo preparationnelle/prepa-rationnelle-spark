@@ -139,13 +139,13 @@ export const SuperprofReviewsSection = () => {
   const getColorClasses = (color: string) => {
     if (color === "orange") {
       return {
-        avatar: "bg-gradient-to-br from-orange-500 to-red-600",
+        avatar: "bg-gradient-to-br from-pr-orange to-red-600",
         border: "border-orange-200 hover:border-orange-300",
         quote: "text-orange-400"
       };
     }
     return {
-      avatar: "bg-gradient-to-br from-orange-400 to-orange-600",
+      avatar: "bg-gradient-to-br from-orange-400 to-pr-orange-dark",
       border: "border-blue-200 hover:border-blue-300",
       quote: "text-blue-400"
     };
@@ -174,7 +174,7 @@ export const SuperprofReviewsSection = () => {
     <section className="py-12 sm:py-16 px-4 relative overflow-hidden bg-gradient-to-b from-gray-50 to-white">
       {/* Decorative elements - subtle */}
       <div className="absolute top-10 left-1/4 w-64 h-64 bg-orange-400/5 rounded-full blur-[100px]"></div>
-      <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-orange-500/5 rounded-full blur-[120px]"></div>
+      <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-pr-orange/5 rounded-full blur-[120px]"></div>
 
       <div className="container mx-auto max-w-6xl relative z-10">
         {/* Compact Header */}
@@ -216,7 +216,7 @@ export const SuperprofReviewsSection = () => {
               </button>
             </div>
             <Link to="/avis" className="hidden sm:block">
-              <Button size="sm" className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white font-bold rounded-lg shadow-lg shadow-orange-500/30">
+              <Button size="sm" className="bg-gradient-to-r from-pr-orange to-orange-400 hover:from-pr-orange-dark hover:to-pr-orange text-white font-bold rounded-lg shadow-lg shadow-pr-orange/30">
                 Voir +20 avis
                 <ChevronRight className="h-4 w-4 ml-1" />
               </Button>
@@ -243,14 +243,14 @@ export const SuperprofReviewsSection = () => {
                             <Star key={i} className="h-3 w-3 fill-orange-400 text-orange-400" />
                           ))}
                         </div>
-                        <span className="text-xs text-orange-600 font-medium">{review.subject}</span>
+                        <span className="text-xs text-pr-orange-dark font-medium">{review.subject}</span>
                       </div>
                     </div>
                   </div>
                   <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">
                     "{review.content}"
                   </p>
-                  <div className="mt-3 text-xs text-orange-500 font-medium group-hover:text-orange-600 transition-colors flex items-center gap-1">
+                  <div className="mt-3 text-xs text-pr-orange font-medium group-hover:text-pr-orange-dark transition-colors flex items-center gap-1">
                     Lire la suite <ChevronRight className="h-3 w-3" />
                   </div>
                 </div>
@@ -267,7 +267,7 @@ export const SuperprofReviewsSection = () => {
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentSlide
-                    ? 'bg-orange-500 w-6'
+                    ? 'bg-pr-orange w-6'
                     : 'bg-gray-300 hover:bg-gray-400'
                   }`}
                 aria-label={`Aller à l'avis ${index + 1}`}
@@ -275,7 +275,7 @@ export const SuperprofReviewsSection = () => {
             ))}
           </div>
           <Link to="/avis" className="sm:hidden">
-            <Button size="sm" className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white font-bold rounded-lg text-xs">
+            <Button size="sm" className="bg-gradient-to-r from-pr-orange to-orange-400 hover:from-pr-orange-dark hover:to-pr-orange text-white font-bold rounded-lg text-xs">
               Tous les avis
             </Button>
           </Link>

@@ -140,12 +140,12 @@ const RegisterPage = () => {
                 value={profileType}
                 onValueChange={(value: ProfileType) => setProfileType(value)}
               >
-                <SelectTrigger id="profile" className="bg-white border-carnet-rule/40 text-carnet-ink focus:border-orange-500/50 focus:ring-orange-500/20 [&>span]:text-carnet-ink-mute data-[state=open]:border-orange-500/50">
+                <SelectTrigger id="profile" className="bg-white border-carnet-rule/40 text-carnet-ink focus:border-pr-orange/50 focus:ring-pr-orange/20 [&>span]:text-carnet-ink-mute data-[state=open]:border-pr-orange/50">
                   <SelectValue placeholder="Sélectionnez votre profil" />
                 </SelectTrigger>
                 <SelectContent className="bg-gray-900/95 backdrop-blur-xl border-white/10">
                   {PROFILE_OPTIONS.map((option) => (
-                    <SelectItem key={option.value} value={option.value} className="text-carnet-ink focus:bg-orange-500/20 focus:text-white">
+                    <SelectItem key={option.value} value={option.value} className="text-carnet-ink focus:bg-pr-orange/20 focus:text-white">
                       {option.label}
                     </SelectItem>
                   ))}
@@ -162,7 +162,7 @@ const RegisterPage = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-orange-500/50 focus:ring-orange-500/20"
+                className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-pr-orange/50 focus:ring-pr-orange/20"
               />
             </div>
 
@@ -178,7 +178,7 @@ const RegisterPage = () => {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   required={requiresPhone}
-                  className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-orange-500/50 focus:ring-orange-500/20"
+                  className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-pr-orange/50 focus:ring-pr-orange/20"
                 />
               </div>
             )}
@@ -191,7 +191,7 @@ const RegisterPage = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-orange-500/50 focus:ring-orange-500/20"
+                className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-pr-orange/50 focus:ring-pr-orange/20"
               />
             </div>
             <div className="space-y-2">
@@ -204,7 +204,7 @@ const RegisterPage = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-orange-500/50 focus:ring-orange-500/20 pr-10"
+                  className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-pr-orange/50 focus:ring-pr-orange/20 pr-10"
                 />
                 <Button
                   type="button"
@@ -230,7 +230,7 @@ const RegisterPage = () => {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
-                className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-orange-500/50 focus:ring-orange-500/20"
+                className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-pr-orange/50 focus:ring-pr-orange/20"
               />
             </div>
             <Button

@@ -582,9 +582,9 @@ const OteriaEvaluationFinaleQCMPage = () => {
     const percentage = Math.round((score / questions.length) * 100);
     const getGrade = (score: number) => {
       if (score >= 45) return { grade: "Excellent", color: "text-green-600", emoji: "🏆" };
-      if (score >= 40) return { grade: "Très bien", color: "text-orange-600", emoji: "👏" };
-      if (score >= 35) return { grade: "Bien", color: "text-orange-600", emoji: "👍" };
-      if (score >= 30) return { grade: "Passable", color: "text-orange-600", emoji: "📚" };
+      if (score >= 40) return { grade: "Très bien", color: "text-pr-orange-dark", emoji: "👏" };
+      if (score >= 35) return { grade: "Bien", color: "text-pr-orange-dark", emoji: "👍" };
+      if (score >= 30) return { grade: "Passable", color: "text-pr-orange-dark", emoji: "📚" };
       return { grade: "À retravailler", color: "text-red-600", emoji: "📖" };
     };
 
@@ -596,13 +596,13 @@ const OteriaEvaluationFinaleQCMPage = () => {
           <Card className="max-w-2xl mx-auto border-orange-200">
             <CardContent className="p-8 text-center">
               <div className="mb-6">
-                <Trophy className="h-16 w-16 text-orange-500 mx-auto mb-4" />
+                <Trophy className="h-16 w-16 text-pr-orange mx-auto mb-4" />
                 <h2 className="text-3xl font-bold text-gray-900 mb-2">Résultats de l'Évaluation Finale</h2>
                 <p className="text-lg text-gray-600">Bachelor 2 - Mathématiques et Informatique</p>
               </div>
 
               <div className="mb-8">
-                <div className="text-6xl font-bold text-orange-600 mb-2">{score}/{questions.length}</div>
+                <div className="text-6xl font-bold text-pr-orange-dark mb-2">{score}/{questions.length}</div>
                 <div className="text-2xl font-semibold text-gray-700 mb-2">{percentage}%</div>
                 <div className={`text-xl font-medium ${gradeInfo.color}`}>
                   {gradeInfo.grade}
@@ -658,7 +658,7 @@ const OteriaEvaluationFinaleQCMPage = () => {
                       <div className="text-sm text-green-600">
                         <strong>Bonne réponse :</strong> {question.options[question.correctAnswer]}
                       </div>
-                      <div className="text-sm text-orange-600 mt-2">
+                      <div className="text-sm text-pr-orange-dark mt-2">
                         <strong>Explication :</strong> {question.explanation}
                       </div>
                     </div>
@@ -690,21 +690,21 @@ const OteriaEvaluationFinaleQCMPage = () => {
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-orange-100">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-orange-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-orange-700 transition-colors">
+          <div className="flex items-center text-xs text-pr-orange-dark">
+            <Link to="/" className="flex items-center gap-1 hover:text-pr-orange-dark transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-orange-400 mx-1" />
-            <Link to="/articles" className="hover:text-orange-700 transition-colors">
+            <Link to="/articles" className="hover:text-pr-orange-dark transition-colors">
               Niveau
             </Link>
             <ChevronRight className="h-3 w-3 text-orange-400 mx-1" />
-            <Link to="/articles/oteria-cyber-school" className="hover:text-orange-700 transition-colors">
+            <Link to="/articles/oteria-cyber-school" className="hover:text-pr-orange-dark transition-colors">
               MATHÉMATIQUES, LOGIQUE ET ALGORITHMIQUE
             </Link>
             <ChevronRight className="h-3 w-3 text-orange-400 mx-1" />
-            <span className="text-orange-600 font-medium">Évaluation Finale</span>
+            <span className="text-pr-orange-dark font-medium">Évaluation Finale</span>
           </div>
         </div>
       </nav>
@@ -714,7 +714,7 @@ const OteriaEvaluationFinaleQCMPage = () => {
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
             <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center">
-              <Award className="h-8 w-8 text-orange-600" />
+              <Award className="h-8 w-8 text-pr-orange-dark" />
             </div>
           </div>
           <h1 className="text-3xl font-bold mb-4 text-orange-900">Évaluation Finale - QCM Complet</h1>
@@ -727,19 +727,19 @@ const OteriaEvaluationFinaleQCMPage = () => {
             <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 shadow-sm">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
                 <div className="flex flex-col items-center">
-                  <span className="text-sm text-orange-600 font-medium mb-1">Questions</span>
+                  <span className="text-sm text-pr-orange-dark font-medium mb-1">Questions</span>
                   <span className="text-2xl font-bold text-orange-900">50</span>
                 </div>
                 <div className="flex flex-col items-center">
-                  <span className="text-sm text-orange-600 font-medium mb-1">Durée</span>
+                  <span className="text-sm text-pr-orange-dark font-medium mb-1">Durée</span>
                   <span className="text-2xl font-bold text-orange-900">90 min</span>
                 </div>
                 <div className="flex flex-col items-center">
-                  <span className="text-sm text-orange-600 font-medium mb-1">Progression</span>
+                  <span className="text-sm text-pr-orange-dark font-medium mb-1">Progression</span>
                   <span className="text-2xl font-bold text-orange-900">{currentQuestion + 1}/50</span>
                 </div>
                 <div className="flex flex-col items-center">
-                  <span className="text-sm text-orange-600 font-medium mb-1">Temps restant</span>
+                  <span className="text-sm text-pr-orange-dark font-medium mb-1">Temps restant</span>
                   <span className="text-2xl font-bold text-orange-900 flex items-center gap-2">
                     <Clock className="h-5 w-5" />
                     {formatTime(timeLeft)}
@@ -791,7 +791,7 @@ const OteriaEvaluationFinaleQCMPage = () => {
                         : showIncorrect
                           ? 'border-red-500 bg-red-50 text-red-800'
                           : isSelected
-                            ? 'border-orange-500 bg-orange-50 text-orange-800'
+                            ? 'border-pr-orange bg-orange-50 text-orange-800'
                             : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
                         }`}
                     >

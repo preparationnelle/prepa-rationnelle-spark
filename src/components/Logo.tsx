@@ -15,7 +15,7 @@ export const Logo: React.FC<LogoProps> = ({ className = '', size = 'md' }) => {
   return (
     <div className={`flex flex-col items-center ${className}`}>
       {/* Text only */}
-      <span className={`font-bold text-orange-500 uppercase tracking-wide ${textSizes[size]}`}>
+      <span className={`font-bold text-pr-orange uppercase tracking-wide ${textSizes[size]}`}>
         Prepa Rationnelle
       </span>
     </div>

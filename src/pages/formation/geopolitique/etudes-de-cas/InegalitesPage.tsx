@@ -63,7 +63,7 @@ const InegalitesPage = () => {
       </nav>
 
         {/* Header */}
-        <Card className="mb-8 bg-gradient-to-r from-red-600 to-orange-600 text-white">
+        <Card className="mb-8 bg-gradient-to-r from-red-600 to-pr-orange-dark text-white">
           <CardHeader>
             <div className="flex items-center gap-3">
               <Users className="h-8 w-8" />
@@ -159,7 +159,7 @@ const InegalitesPage = () => {
               
               <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
                 <h4 className="font-semibold text-orange-800 mb-3">Défis persistants</h4>
-                <ul className="text-sm text-orange-700 space-y-2">
+                <ul className="text-sm text-pr-orange-dark space-y-2">
                   <li><strong>COVID-19 :</strong> Ralentissement des progrès</li>
                   <li><strong>Concentration :</strong> Principalement Afrique et Asie</li>
                   <li><strong>Objectif ODD :</strong> Élimination pauvreté 2030 compromis</li>
@@ -228,14 +228,14 @@ const InegalitesPage = () => {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <MapPin className="h-5 w-5 text-orange-600" />
+                <MapPin className="h-5 w-5 text-pr-orange-dark" />
                 Bidonvilles et habitat précaire
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="bg-orange-50 p-4 rounded-lg border border-orange-200 mb-4">
                 <h4 className="font-semibold text-orange-800 mb-2">Situation mondiale 2024</h4>
-                <ul className="text-sm text-orange-700 space-y-1">
+                <ul className="text-sm text-pr-orange-dark space-y-1">
                   <li><strong>Population :</strong> 1 milliard personnes (+200M depuis 2000)</li>
                   <li><strong>Proportion :</strong> 20% des urbains mondiaux</li>
                   <li><strong>Croissance :</strong> +25% en 24 ans malgré urbanisation</li>
@@ -281,7 +281,7 @@ const InegalitesPage = () => {
                   <div className="space-y-4">
                     <div className="bg-orange-50 p-4 rounded-lg">
                       <h4 className="font-semibold text-orange-800 mb-2">Paradoxes de la sécurité alimentaire</h4>
-                      <ul className="list-disc list-inside text-sm text-orange-700 space-y-1">
+                      <ul className="list-disc list-inside text-sm text-pr-orange-dark space-y-1">
                         <li><strong>Thaïlande :</strong> Premier exportateur riz mondial mais sous-alimentation persistante</li>
                         <li><strong>Brésil :</strong> Géant agro-exportateur, 33 millions de sous-alimentés</li>
                         <li><strong>Inde :</strong> Stocks céréaliers énormes, malnutrition infantile 35%</li>
@@ -375,7 +375,7 @@ const InegalitesPage = () => {
                       
                       <div className="bg-orange-50 p-4 rounded-lg">
                         <h5 className="font-semibold text-orange-800 mb-2">Afrique : Hétérogène</h5>
-                        <ul className="text-xs text-orange-700 space-y-1">
+                        <ul className="text-xs text-pr-orange-dark space-y-1">
                           <li>• Afrique Sud, Botswana : Revenus intermédiaires</li>
                           <li>• Nigeria : Géant économique instable</li>
                           <li>• Sahel : Crises multiples</li>

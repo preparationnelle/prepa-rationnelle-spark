@@ -1052,7 +1052,7 @@ const ContinentAfricainPage = () => {
                       {/* B. Structure économique héritée */}
                       <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
                         <h4 className="text-lg font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                          <span className="w-6 h-6 bg-orange-700 text-white rounded-full flex items-center justify-center text-sm font-bold">B</span>
+                          <span className="w-6 h-6 bg-pr-orange-dark text-white rounded-full flex items-center justify-center text-sm font-bold">B</span>
                           Structure économique héritée du colonialisme
                         </h4>
                         
@@ -2307,7 +2307,7 @@ const ContinentAfricainPage = () => {
             <Card className="h-full hover:shadow-lg transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-orange-300">
               <CardContent className="p-6 text-center">
                 <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Target className="h-6 w-6 text-orange-600" />
+                  <Target className="h-6 w-6 text-pr-orange-dark" />
                 </div>
                 <h3 className="font-semibold mb-2">Flashcards</h3>
                 <p className="text-sm text-gray-600">Révision interactive</p>

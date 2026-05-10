@@ -14,7 +14,7 @@ const NegationSectionComponent: React.FC<NegationSectionProps> = ({ section }) =
 
   const getIconForSection = (id: string) => {
     if (id.includes('formes') || id.includes('negatives')) return <X className="h-5 w-5 text-red-600" />;
-    if (id.includes('simples') || id.includes('doubles')) return <Minus className="h-5 w-5 text-orange-600" />;
+    if (id.includes('simples') || id.includes('doubles')) return <Minus className="h-5 w-5 text-pr-orange-dark" />;
     if (id.includes('usage') || id.includes('mots')) return <Ban className="h-5 w-5 text-purple-600" />;
     if (id.includes('temps') || id.includes('verbaux')) return <Clock className="h-5 w-5 text-blue-600" />;
     if (id.includes('differences') || id.includes('francais')) return <MessageSquare className="h-5 w-5 text-green-600" />;
@@ -147,7 +147,7 @@ const NegationSectionComponent: React.FC<NegationSectionProps> = ({ section }) =
                         </span>
                       ))}
                     </div>
-                    <p className="text-xs text-orange-700">{irregularity.notes}</p>
+                    <p className="text-xs text-pr-orange-dark">{irregularity.notes}</p>
                   </div>
                 ))}
               </div>

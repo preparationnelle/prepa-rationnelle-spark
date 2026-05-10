@@ -814,7 +814,7 @@ const ChronologieEuropePage = () => {
   const getImportanceColor = (importance: string) => {
     switch (importance) {
       case 'high': return 'border-l-red-500 bg-red-50';
-      case 'medium': return 'border-l-orange-500 bg-orange-50';
+      case 'medium': return 'border-l-pr-orange bg-orange-50';
       case 'low': return 'border-l-green-500 bg-green-50';
       default: return 'border-l-gray-500 bg-gray-50';
     }
@@ -873,7 +873,7 @@ const ChronologieEuropePage = () => {
           </Card>
           <Card className="text-center">
             <CardContent className="pt-6">
-              <MapPin className="h-8 w-8 text-orange-600 mx-auto mb-2" />
+              <MapPin className="h-8 w-8 text-pr-orange-dark mx-auto mb-2" />
               <div className="text-2xl font-bold text-gray-900">27</div>
               <div className="text-sm text-gray-600">États membres UE</div>
             </CardContent>

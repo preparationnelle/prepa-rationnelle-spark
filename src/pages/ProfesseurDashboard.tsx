@@ -221,7 +221,7 @@ const ProfesseurDashboard = () => {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: 'var(--page-bg)' }}>
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pr-orange-dark mx-auto mb-4"></div>
           <p className="text-gray-600">Chargement de votre espace professeur...</p>
         </div>
       </div>
@@ -234,7 +234,7 @@ const ProfesseurDashboard = () => {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-4 flex items-center gap-3">
-            <div className="p-3 rounded-lg bg-orange-100 text-orange-600">
+            <div className="p-3 rounded-lg bg-orange-100 text-pr-orange-dark">
               <GraduationCap className="h-8 w-8" />
             </div>
             Espace Professeur
@@ -261,10 +261,10 @@ const ProfesseurDashboard = () => {
             <Card>
               <CardHeader className="flex flex-row items-center justify-between">
                 <CardTitle className="flex items-center gap-2">
-                  <Calendar className="h-5 w-5 text-orange-600" />
+                  <Calendar className="h-5 w-5 text-pr-orange-dark" />
                   Mes créneaux disponibles
                 </CardTitle>
-                <Button onClick={handleAddAvailability} className="bg-orange-600 hover:bg-orange-700">
+                <Button onClick={handleAddAvailability} className="bg-pr-orange-dark hover:bg-pr-orange-dark">
                   <Plus className="h-4 w-4 mr-2" />
                   Ajouter un créneau
                 </Button>

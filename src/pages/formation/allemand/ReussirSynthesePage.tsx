@@ -325,7 +325,7 @@ const ReussirSynthesePage: React.FC = () => {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <h5 className="font-semibold text-orange-700 mb-2">Connecteurs logiques</h5>
+                    <h5 className="font-semibold text-pr-orange-dark mb-2">Connecteurs logiques</h5>
                     <ul className="text-sm text-gray-600 space-y-1 ml-4">
                       <li>• <em>aufgrund von (+D)</em> = en raison de</li>
                       <li>• <em>es liegt daran, dass...</em> = cela est dû au fait que</li>
@@ -335,7 +335,7 @@ const ReussirSynthesePage: React.FC = () => {
                     </ul>
                   </div>
                   <div>
-                    <h5 className="font-semibold text-orange-700 mb-2">Expressions de nuance</h5>
+                    <h5 className="font-semibold text-pr-orange-dark mb-2">Expressions de nuance</h5>
                     <ul className="text-sm text-gray-600 space-y-1 ml-4">
                       <li>• <em>zwar..., aber...</em> = certes..., mais...</li>
                       <li>• <em>nämlich / in der Tat</em> = en effet</li>

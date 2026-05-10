@@ -49,7 +49,7 @@ const Module1PoliticaRegimenesPage = () => {
         <div className="text-center mb-10">
           
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-orange-600 text-white">
+            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
               <Scale className="h-9 w-9" />
             </div>
             Política y Regímenes
@@ -68,7 +68,7 @@ const Module1PoliticaRegimenesPage = () => {
               <CardHeader className="relative z-10">
                 <CardTitle className="text-xl flex items-center gap-2 text-gray-900">
                   <div className="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center">
-                    <Target className="h-4 w-4 text-orange-600" />
+                    <Target className="h-4 w-4 text-pr-orange-dark" />
                   </div>
                   Contenu du module
                 </CardTitle>
@@ -112,9 +112,9 @@ const Module1PoliticaRegimenesPage = () => {
             <Card className="group border-2 border-gray-200 bg-white/95 backdrop-blur-sm hover:shadow-2xl hover:border-orange-200 transition-all duration-300 shadow-lg relative overflow-hidden">
               <div className="absolute -z-10 inset-0 bg-gradient-to-br from-orange-50/20 to-orange-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardHeader className="relative z-10">
-                <CardTitle className="text-2xl flex items-center gap-2 text-gray-900 group-hover:text-orange-600 transition-colors">
+                <CardTitle className="text-2xl flex items-center gap-2 text-gray-900 group-hover:text-pr-orange-dark transition-colors">
                   <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-                    <BookOpen className="h-5 w-5 text-orange-600" />
+                    <BookOpen className="h-5 w-5 text-pr-orange-dark" />
                   </div>
                   Introduction - Panorama des régimes politiques
                 </CardTitle>
@@ -138,7 +138,7 @@ const Module1PoliticaRegimenesPage = () => {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-4">
                     <h3 className="font-semibold text-orange-900 mb-3">🎯 Points clés :</h3>
-                    <ul className="text-sm text-orange-700 space-y-2">
+                    <ul className="text-sm text-pr-orange-dark space-y-2">
                       <li className="flex items-start gap-2">
                         <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                         <span>Évolution des régimes politiques</span>
@@ -159,7 +159,7 @@ const Module1PoliticaRegimenesPage = () => {
                   </div>
                   <div className="space-y-4">
                     <h3 className="font-semibold text-orange-900 mb-3">📚 Pour les concours :</h3>
-                    <ul className="text-sm text-orange-700 space-y-2">
+                    <ul className="text-sm text-pr-orange-dark space-y-2">
                       <li className="flex items-start gap-2">
                         <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
                         <span>Contexte pour versions et thèmes</span>
@@ -190,7 +190,7 @@ const Module1PoliticaRegimenesPage = () => {
                   Crises démocratiques et fatigue démocratique
                 </CardTitle>
               </CardHeader>
-              <CardContent className="text-orange-700 space-y-6">
+              <CardContent className="text-pr-orange-dark space-y-6">
                 <div className="bg-white/70 rounded-lg p-6 border border-orange-200">
                   <h3 className="font-bold text-orange-900 mb-3">Le phénomène de "fatigue démocratique"</h3>
                   <p className="leading-relaxed mb-4">
@@ -224,16 +224,16 @@ const Module1PoliticaRegimenesPage = () => {
                     <h4 className="font-semibold text-orange-900 mb-3">🌍 Exemples régionaux :</h4>
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-orange-600"></div>
-                        <span className="text-sm text-orange-700">Colombie : fatigue démocratique</span>
+                        <div className="w-2 h-2 rounded-full bg-pr-orange-dark"></div>
+                        <span className="text-sm text-pr-orange-dark">Colombie : fatigue démocratique</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-orange-600"></div>
-                        <span className="text-sm text-orange-700">Venezuela : crise institutionnelle</span>
+                        <div className="w-2 h-2 rounded-full bg-pr-orange-dark"></div>
+                        <span className="text-sm text-pr-orange-dark">Venezuela : crise institutionnelle</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-orange-600"></div>
-                        <span className="text-sm text-orange-700">Nicaragua : régression autoritaire</span>
+                        <div className="w-2 h-2 rounded-full bg-pr-orange-dark"></div>
+                        <span className="text-sm text-pr-orange-dark">Nicaragua : régression autoritaire</span>
                       </div>
                     </div>
                   </div>
@@ -249,7 +249,7 @@ const Module1PoliticaRegimenesPage = () => {
                   Vox et l'extrême droite espagnole
                 </CardTitle>
               </CardHeader>
-              <CardContent className="text-orange-700 space-y-6">
+              <CardContent className="text-pr-orange-dark space-y-6">
                 <div className="bg-white/70 rounded-lg p-6 border border-orange-200">
                   <h3 className="font-bold text-orange-900 mb-3">L'émergence de Vox</h3>
                   <p className="leading-relaxed mb-4">
@@ -284,16 +284,16 @@ const Module1PoliticaRegimenesPage = () => {
                     <h4 className="font-semibold text-orange-900 mb-3">📈 Évolution électorale :</h4>
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-orange-600"></div>
-                        <span className="text-sm text-orange-700">2019 : 52 députés</span>
+                        <div className="w-2 h-2 rounded-full bg-pr-orange-dark"></div>
+                        <span className="text-sm text-pr-orange-dark">2019 : 52 députés</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-orange-600"></div>
-                        <span className="text-sm text-orange-700">2023 : 33 députés</span>
+                        <div className="w-2 h-2 rounded-full bg-pr-orange-dark"></div>
+                        <span className="text-sm text-pr-orange-dark">2023 : 33 députés</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-orange-600"></div>
-                        <span className="text-sm text-orange-700">Présence régionale</span>
+                        <div className="w-2 h-2 rounded-full bg-pr-orange-dark"></div>
+                        <span className="text-sm text-pr-orange-dark">Présence régionale</span>
                       </div>
                     </div>
                   </div>
@@ -309,7 +309,7 @@ const Module1PoliticaRegimenesPage = () => {
                   Essai rédigé : Democracia y populismo en América hispanohablante
                 </CardTitle>
               </CardHeader>
-              <CardContent className="text-orange-700 space-y-6">
+              <CardContent className="text-pr-orange-dark space-y-6">
                 <div className="bg-white/70 rounded-lg p-6 border border-orange-200">
                   <h3 className="font-bold text-orange-900 mb-3">Introduction</h3>
                   <p className="leading-relaxed mb-4">
@@ -379,7 +379,7 @@ const Module1PoliticaRegimenesPage = () => {
                   Conseils méthodologiques pour les concours
                 </CardTitle>
               </CardHeader>
-              <CardContent className="text-orange-700 space-y-6">
+              <CardContent className="text-pr-orange-dark space-y-6">
                 <div className="bg-white/70 rounded-lg p-6 border border-orange-200">
                   <h3 className="font-bold text-orange-900 mb-3">Comment utiliser ce module aux concours</h3>
                   <p className="leading-relaxed mb-4">
@@ -424,16 +424,16 @@ const Module1PoliticaRegimenesPage = () => {
                     <h3 className="font-semibold text-orange-900 mb-3">🎯 Sujets probables :</h3>
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-orange-600"></div>
-                        <span className="text-sm text-orange-700">Crise démocratique en Amérique latine</span>
+                        <div className="w-2 h-2 rounded-full bg-pr-orange-dark"></div>
+                        <span className="text-sm text-pr-orange-dark">Crise démocratique en Amérique latine</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-orange-600"></div>
-                        <span className="text-sm text-orange-700">Populisme vs démocratie</span>
+                        <div className="w-2 h-2 rounded-full bg-pr-orange-dark"></div>
+                        <span className="text-sm text-pr-orange-dark">Populisme vs démocratie</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-orange-600"></div>
-                        <span className="text-sm text-orange-700">Extrême droite en Europe</span>
+                        <div className="w-2 h-2 rounded-full bg-pr-orange-dark"></div>
+                        <span className="text-sm text-pr-orange-dark">Extrême droite en Europe</span>
                       </div>
                     </div>
                   </div>
@@ -446,7 +446,7 @@ const Module1PoliticaRegimenesPage = () => {
         {/* Bouton retour en bas de page */}
         <div className="flex justify-center mt-12 pb-8">
           <Link to="/formation/espagnol/civilisation">
-            <Button className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-md font-medium">
+            <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-6 py-3 rounded-md font-medium">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Retour à la civilisation
             </Button>

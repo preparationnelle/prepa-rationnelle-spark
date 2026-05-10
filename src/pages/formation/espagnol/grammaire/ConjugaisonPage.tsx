@@ -85,7 +85,7 @@ const ConjugaisonPage = () => {
         <div className="text-center mb-10">
           
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-orange-600 text-white">
+            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
               <Clock className="h-9 w-9" />
             </div>
             Conjugaison et Temps Verbaux
@@ -100,7 +100,7 @@ const ConjugaisonPage = () => {
         {/* Tableaux de conjugaison */}
         <div className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <Table className="h-6 w-6 text-orange-600" />
+            <Table className="h-6 w-6 text-pr-orange-dark" />
             Tableaux
           </h2>
           
@@ -128,7 +128,7 @@ const ConjugaisonPage = () => {
         {/* Sections théoriques */}
         <div className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <BookOpenIcon className="h-6 w-6 text-orange-600" />
+            <BookOpenIcon className="h-6 w-6 text-pr-orange-dark" />
             Théorie
           </h2>
           
@@ -142,7 +142,7 @@ const ConjugaisonPage = () => {
         {/* Exercices pratiques */}
         <div className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <Target className="h-6 w-6 text-orange-600" />
+            <Target className="h-6 w-6 text-pr-orange-dark" />
             Exercices
           </h2>
 
@@ -152,11 +152,11 @@ const ConjugaisonPage = () => {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <CardTitle className="text-xl flex items-center gap-2 text-gray-900">
-                    <FileText className="h-5 w-5 text-orange-600" />
+                    <FileText className="h-5 w-5 text-pr-orange-dark" />
                     {currentExercise.title}
                   </CardTitle>
                   <div className="flex gap-2">
-                    <Badge variant="outline" className="text-orange-600">
+                    <Badge variant="outline" className="text-pr-orange-dark">
                       {currentExercise.level}
                     </Badge>
                     <Badge variant="secondary">
@@ -190,7 +190,7 @@ const ConjugaisonPage = () => {
                       onClick={() => setCurrentExerciseIndex(index)}
                       className={`w-3 h-3 rounded-full transition-colors ${
                         index === currentExerciseIndex
-                          ? 'bg-orange-600'
+                          ? 'bg-pr-orange-dark'
                           : 'bg-orange-200 hover:bg-orange-300'
                       }`}
                     />
@@ -246,13 +246,13 @@ const ConjugaisonPage = () => {
               {showHints[currentExercise.id] && (
                 <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
                   <h4 className="font-semibold text-orange-900 mb-3 flex items-center gap-2">
-                    <Lightbulb className="h-4 w-4 text-orange-600" />
+                    <Lightbulb className="h-4 w-4 text-pr-orange-dark" />
                     Indices et règles :
                   </h4>
                   <ul className="space-y-2">
                     {currentExercise.content.hints.map((hint, index) => (
                       <li key={index} className="flex items-start gap-2 text-orange-800">
-                        <span className="w-2 h-2 rounded-full bg-orange-500 mt-2 flex-shrink-0"></span>
+                        <span className="w-2 h-2 rounded-full bg-pr-orange mt-2 flex-shrink-0"></span>
                         <span className="text-sm">{hint}</span>
                       </li>
                     ))}
@@ -279,7 +279,7 @@ const ConjugaisonPage = () => {
         <Card className="mb-8 border border-gray-200 bg-white shadow-sm">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2 text-gray-900">
-              <Target className="h-6 w-6 text-orange-600" />
+              <Target className="h-6 w-6 text-pr-orange-dark" />
               Prêt à tester vos connaissances ?
             </CardTitle>
           </CardHeader>
@@ -288,7 +288,7 @@ const ConjugaisonPage = () => {
               Maintenant que vous avez étudié la théorie, mettez vos connaissances en pratique avec nos exercices interactifs !
             </p>
             <Link to="/formation/espagnol/grammaire/conjugaison/exercices">
-              <Button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3">
+              <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3">
                 <Target className="h-5 w-5 mr-2" />
                 Commencer les exercices
               </Button>

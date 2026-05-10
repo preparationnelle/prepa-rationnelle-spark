@@ -237,12 +237,12 @@ const AproposPage = () => {
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 group-hover:text-pr-orange-dark transition-colors duration-300 mb-4">
               <span className="text-carnet-red group-hover:text-pr-orange font-bold transition-colors duration-300">Prêt à réussir autrement</span> ?
             </h2>
-            <p className="text-gray-600 group-hover:text-orange-700 transition-colors duration-300 text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-gray-600 group-hover:text-pr-orange-dark transition-colors duration-300 text-lg mb-8 max-w-2xl mx-auto">
               Découvrez nos formations et notre méthode rationnelle pour intégrer le TOP 3 en prépa ECG.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/formations">
-                <Button size="lg" className="bg-carnet-red hover:bg-orange-600 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+                <Button size="lg" className="bg-carnet-red hover:bg-pr-orange-dark text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
                   Découvrir nos formations
                 </Button>
               </Link>

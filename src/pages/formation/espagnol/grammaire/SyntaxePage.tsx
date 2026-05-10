@@ -74,7 +74,7 @@ const SyntaxePage = () => {
           </div>
           
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-orange-600 text-white">
+            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Syntaxe et Structures Complexes
@@ -85,7 +85,7 @@ const SyntaxePage = () => {
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">Niveau Avancé</Badge>
             <Badge variant="outline">2-3 heures</Badge>
-            <Badge className="bg-orange-600">Module essentiel</Badge>
+            <Badge className="bg-pr-orange-dark">Module essentiel</Badge>
           </div>
         </div>
 
@@ -97,25 +97,25 @@ const SyntaxePage = () => {
               Comment utiliser ce module
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-orange-700">
+          <CardContent className="text-pr-orange-dark">
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
                 <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <BookOpenIcon className="h-8 w-8 text-orange-600" />
+                  <BookOpenIcon className="h-8 w-8 text-pr-orange-dark" />
                 </div>
                 <h3 className="font-semibold text-orange-900 mb-2">1. Étudiez la théorie</h3>
                 <p className="text-sm">Lisez les règles et exemples de chaque section</p>
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Table className="h-8 w-8 text-orange-600" />
+                  <Table className="h-8 w-8 text-pr-orange-dark" />
                 </div>
                 <h3 className="font-semibold text-orange-900 mb-2">2. Consultez les tableaux</h3>
                 <p className="text-sm">Mémorisez les structures et tournures idiomatiques</p>
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <CheckCircle className="h-8 w-8 text-orange-600" />
+                  <CheckCircle className="h-8 w-8 text-pr-orange-dark" />
                 </div>
                 <h3 className="font-semibold text-orange-900 mb-2">3. Pratiquez les exercices</h3>
                 <p className="text-sm">Appliquez vos connaissances avec les exercices</p>
@@ -127,7 +127,7 @@ const SyntaxePage = () => {
         {/* Sections théoriques (Points essentiels) */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <BookOpenIcon className="h-8 w-8 text-orange-600" />
+            <BookOpenIcon className="h-8 w-8 text-pr-orange-dark" />
             Points Essentiels
           </h2>
           
@@ -150,7 +150,7 @@ const SyntaxePage = () => {
         {/* Sections d'approfondissement */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <Zap className="h-8 w-8 text-orange-600" />
+            <Zap className="h-8 w-8 text-pr-orange-dark" />
             Approfondissements
           </h2>
           
@@ -173,7 +173,7 @@ const SyntaxePage = () => {
         {/* Exercices pratiques */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <Target className="h-8 w-8 text-orange-600" />
+            <Target className="h-8 w-8 text-pr-orange-dark" />
             Exercices Proposés
           </h2>
           
@@ -200,11 +200,11 @@ const SyntaxePage = () => {
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-lg text-orange-700 mb-6">
+            <p className="text-lg text-pr-orange-dark mb-6">
               Maintenant que vous avez étudié la théorie, mettez vos connaissances en pratique avec nos exercices interactifs !
             </p>
             <Link to="/formation/espagnol/grammaire/syntaxe-structures-complexes/exercices">
-              <Button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-lg">
+              <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg">
                 <Target className="h-5 w-5 mr-2" />
                 Commencer les exercices
               </Button>
@@ -220,7 +220,7 @@ const SyntaxePage = () => {
               Conseils pour maîtriser la syntaxe et les structures complexes
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-orange-700 space-y-6">
+          <CardContent className="text-pr-orange-dark space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h3 className="font-semibold text-orange-900 mb-3">🎯 Stratégie d'apprentissage :</h3>

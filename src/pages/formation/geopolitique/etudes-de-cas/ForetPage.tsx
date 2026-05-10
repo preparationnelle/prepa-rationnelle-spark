@@ -181,7 +181,7 @@ const ForetPage = () => {
                     
                     <div className="bg-orange-50 p-4 rounded-lg">
                       <h4 className="font-semibold text-orange-800 mb-2">Asie du Sud-Est</h4>
-                      <ul className="list-disc list-inside text-sm text-orange-700 space-y-1">
+                      <ul className="list-disc list-inside text-sm text-pr-orange-dark space-y-1">
                         <li><strong>Huile de palme :</strong> Indonésie, Malaisie leaders mondiaux</li>
                         <li><strong>Feux :</strong> Brûlis illégaux, pollution transfrontalière</li>
                         <li><strong>Biodiversité :</strong> Habitat orangs-outans, tigres menacé</li>

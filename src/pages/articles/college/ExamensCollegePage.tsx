@@ -96,7 +96,7 @@ const ExamensCollegePage = () => {
 
                         <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">La gestion du chrono</h3>
                         <div className="flex items-center gap-4 bg-gray-50 p-4 rounded-lg border border-gray-200">
-                            <Timer className="h-8 w-8 text-orange-500" />
+                            <Timer className="h-8 w-8 text-pr-orange" />
                             <p className="text-gray-700 text-sm">
                                 Si l'épreuve dure 1h et qu'il y a 4 exercices notés sur 5 points chacun, on doit passer environ 15 minutes par exercice. Si ça dépasse, on passe au suivant et on reviendra plus tard.
                             </p>

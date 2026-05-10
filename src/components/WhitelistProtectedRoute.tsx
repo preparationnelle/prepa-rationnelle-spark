@@ -28,7 +28,7 @@ export const WhitelistProtectedRoute: React.FC<WhitelistProtectedRouteProps> = (
       <div className="min-h-screen bg-[#F0F8FF] flex items-center justify-center">
         <Card className="w-full max-w-md bg-white rounded-2xl shadow-sm border border-[#E6EEF9]">
           <CardContent className="p-8 text-center">
-            <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-orange-500" />
+            <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-pr-orange" />
             <p className="text-gray-600">Vérification de l'accès...</p>
           </CardContent>
         </Card>

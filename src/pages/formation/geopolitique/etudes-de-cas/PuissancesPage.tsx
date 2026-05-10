@@ -345,7 +345,7 @@ const PuissancesPage = () => {
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <h4 className="font-semibold text-orange-800 mb-3">Recul industriel</h4>
-                        <ul className="text-sm text-orange-700 space-y-2">
+                        <ul className="text-sm text-pr-orange-dark space-y-2">
                           <li><strong>Part PIB :</strong> 17% (contre 30% en 1970)</li>
                           <li><strong>Emplois :</strong> 3 millions (contre 5M en 1980)</li>
                           <li><strong>Balance :</strong> Déficit manufactures depuis 2005</li>
@@ -353,7 +353,7 @@ const PuissancesPage = () => {
                         </ul>
                         
                         <h4 className="font-semibold text-orange-800 mb-3 mt-4">Secteurs leader UE</h4>
-                        <ul className="text-sm text-orange-700 space-y-1">
+                        <ul className="text-sm text-pr-orange-dark space-y-1">
                           <li>• Aéronautique (Airbus)</li>
                           <li>• Nucléaire (EDF 56 réacteurs)</li>
                           <li>• Chimie, Agroalimentaire (Danone)</li>
@@ -362,7 +362,7 @@ const PuissancesPage = () => {
                       
                       <div>
                         <h4 className="font-semibold text-orange-800 mb-3">Pôles d'excellence</h4>
-                        <ul className="text-sm text-orange-700 space-y-2">
+                        <ul className="text-sm text-pr-orange-dark space-y-2">
                           <li><strong>IDF :</strong> 25% PIB, 400 000 emplois industriels</li>
                           <li><strong>Lyon :</strong> Chimie, Part-Dieu (TGV)</li>
                           <li><strong>Toulouse :</strong> Aerospace Valley (150 000 emplois)</li>
@@ -370,7 +370,7 @@ const PuissancesPage = () => {
                         </ul>
                         
                         <h4 className="font-semibold text-orange-800 mb-3 mt-4">Innovation</h4>
-                        <ul className="text-sm text-orange-700 space-y-1">
+                        <ul className="text-sm text-pr-orange-dark space-y-1">
                           <li>• Sophia Antipolis (1969)</li>
                           <li>• 70 pôles compétitivité (2004)</li>
                           <li>• 8 000 PME dans les pôles</li>

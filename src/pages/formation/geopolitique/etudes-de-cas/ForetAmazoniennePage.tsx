@@ -98,21 +98,21 @@ const ForetAmazoniennePage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Calendar className="h-5 w-5 text-orange-600" />
+                  <Calendar className="h-5 w-5 text-pr-orange-dark" />
                   Dates marquantes
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-orange-600 rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pr-orange-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2025</div>
                       <div className="text-gray-700">Conférence de Belém pour la COP30</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-orange-600 rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pr-orange-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2023</div>
                       <div className="text-gray-700">Accord sur la protection de l'Amazonie par huit pays sud-américains</div>

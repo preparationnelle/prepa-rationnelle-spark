@@ -156,7 +156,7 @@ export default function AdminLeadsPage() {
         const badges: Record<string, { bg: string; text: string; icon: string }> = {
             low: { bg: 'bg-gray-100', text: 'text-gray-600', icon: '⬇️' },
             normal: { bg: 'bg-blue-100', text: 'text-blue-600', icon: '➡️' },
-            high: { bg: 'bg-orange-100', text: 'text-orange-600', icon: '⬆️' },
+            high: { bg: 'bg-orange-100', text: 'text-pr-orange-dark', icon: '⬆️' },
             urgent: { bg: 'bg-red-100', text: 'text-red-600', icon: '🔥' },
         };
         const badge = badges[priority] || badges.normal;
@@ -328,30 +328,30 @@ export default function AdminLeadsPage() {
                                             <div className="space-y-3">
                                                 <h4 className="font-semibold text-sm text-gray-700 mb-3">📞 Contact</h4>
                                                 <div className="flex items-center gap-2 text-sm">
-                                                    <Phone className="w-4 h-4 text-orange-500" />
-                                                    <a href={`tel:${lead.phone_student}`} className="text-orange-600 hover:underline font-medium">
+                                                    <Phone className="w-4 h-4 text-pr-orange" />
+                                                    <a href={`tel:${lead.phone_student}`} className="text-pr-orange-dark hover:underline font-medium">
                                                         {lead.phone_student}
                                                     </a>
                                                     <span className="text-gray-500">(élève)</span>
                                                 </div>
                                                 {lead.phone_parent && (
                                                     <div className="flex items-center gap-2 text-sm">
-                                                        <Phone className="w-4 h-4 text-orange-500" />
-                                                        <a href={`tel:${lead.phone_parent}`} className="text-orange-600 hover:underline font-medium">
+                                                        <Phone className="w-4 h-4 text-pr-orange" />
+                                                        <a href={`tel:${lead.phone_parent}`} className="text-pr-orange-dark hover:underline font-medium">
                                                             {lead.phone_parent}
                                                         </a>
                                                         <span className="text-gray-500">(parent)</span>
                                                     </div>
                                                 )}
                                                 <div className="flex items-center gap-2 text-sm">
-                                                    <Mail className="w-4 h-4 text-orange-500" />
-                                                    <a href={`mailto:${lead.email}`} className="text-orange-600 hover:underline">
+                                                    <Mail className="w-4 h-4 text-pr-orange" />
+                                                    <a href={`mailto:${lead.email}`} className="text-pr-orange-dark hover:underline">
                                                         {lead.email}
                                                     </a>
                                                 </div>
                                                 {lead.city && (
                                                     <div className="flex items-center gap-2 text-sm">
-                                                        <MapPin className="w-4 h-4 text-orange-500" />
+                                                        <MapPin className="w-4 h-4 text-pr-orange" />
                                                         <span>{lead.city}</span>
                                                     </div>
                                                 )}

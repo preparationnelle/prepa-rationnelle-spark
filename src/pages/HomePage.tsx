@@ -150,14 +150,16 @@ const HomePage: React.FC = () => {
             eyebrowLink="/articles/terminale-prepa"
             title={<>
               Arriver en prépa{' '}
-              <span className="relative inline-block whitespace-nowrap">
+              <span className="relative inline-block whitespace-nowrap" aria-label="préparé">
                 <span
+                  aria-hidden="true"
                   className="text-[#9C8772]"
                   style={{ textDecoration: 'line-through', textDecorationColor: '#C1443A', textDecorationThickness: '3px' }}
                 >
                   en panique
                 </span>
                 <span
+                  aria-hidden="true"
                   className="absolute carnet-hand italic whitespace-nowrap"
                   style={{ top: '-0.55em', left: '0.2em', fontSize: '0.78em', color: '#C1443A', transform: 'rotate(-4deg)', fontWeight: 600 }}
                 >
@@ -665,14 +667,16 @@ const HomePage: React.FC = () => {
 
               <h2 className="font-lora text-[40px] sm:text-[52px] lg:text-[64px] leading-[1.05] tracking-[-0.022em] text-carnet-ink">
                 On en discute autour d'un{' '}
-                <span className="relative inline-block whitespace-nowrap">
+                <span className="relative inline-block whitespace-nowrap" aria-label="Zoom">
                   <span
+                    aria-hidden="true"
                     className="text-[#9C8772]"
                     style={{ textDecoration: 'line-through', textDecorationColor: '#C1443A', textDecorationThickness: '3px' }}
                   >
                     café
                   </span>
                   <span
+                    aria-hidden="true"
                     className="absolute carnet-hand italic whitespace-nowrap"
                     style={{ top: '-0.55em', left: '0.2em', fontSize: '0.85em', color: '#C1443A', transform: 'rotate(-3deg)', fontWeight: 600 }}
                   >

@@ -118,14 +118,14 @@ const ModuleNavigationCards: React.FC<ModuleNavigationCardsProps> = ({
         >
           <Card className={`h-full border transition-all duration-300 bg-white rounded-2xl overflow-hidden ${isQuizMode ? 'border-orange-200 hover:border-orange-400 hover:bg-orange-50/30' : 'border-indigo-200 hover:border-indigo-400 hover:bg-indigo-50/30'}`}>
             <CardContent className="p-6 flex items-center gap-4">
-              <div className={`p-3 rounded-xl transition-transform duration-300 group-hover:scale-110 ${isQuizMode ? 'bg-orange-100 text-orange-600' : 'bg-indigo-100 text-indigo-600'}`}>
+              <div className={`p-3 rounded-xl transition-transform duration-300 group-hover:scale-110 ${isQuizMode ? 'bg-orange-100 text-pr-orange-dark' : 'bg-indigo-100 text-indigo-600'}`}>
                 {isQuizMode ? <List className="h-6 w-6" /> : <HelpCircle className="h-6 w-6" />}
               </div>
               <div>
                 <h3 className={`font-bold transition-colors ${isQuizMode ? 'text-gray-900 group-hover:text-orange-800' : 'text-gray-900 group-hover:text-indigo-800'}`}>
                   {isQuizMode ? "Voir les Exercices" : "Faire le Quiz"}
                 </h3>
-                <p className={`text-sm mt-1 ${isQuizMode ? 'text-gray-500 group-hover:text-orange-600' : 'text-gray-500 group-hover:text-indigo-600'}`}>
+                <p className={`text-sm mt-1 ${isQuizMode ? 'text-gray-500 group-hover:text-pr-orange-dark' : 'text-gray-500 group-hover:text-indigo-600'}`}>
                   {isQuizMode ? "S'entraîner sur des cas pratiques" : "Tester vos connaissances"}
                 </p>
               </div>

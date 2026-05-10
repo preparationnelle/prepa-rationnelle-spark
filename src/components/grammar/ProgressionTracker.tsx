@@ -121,8 +121,8 @@ export const ProgressionTracker: React.FC<ProgressionTrackerProps> = ({
         {/* Progress bar */}
         <div className="space-y-2">
           <div className="flex justify-between text-sm">
-            <span className="text-orange-700">Objectif session</span>
-            <span className="text-orange-700">{Math.min(progressPercentage, 100).toFixed(0)}%</span>
+            <span className="text-pr-orange-dark">Objectif session</span>
+            <span className="text-pr-orange-dark">{Math.min(progressPercentage, 100).toFixed(0)}%</span>
           </div>
           <Progress value={progressPercentage} className="h-2" />
         </div>
@@ -130,10 +130,10 @@ export const ProgressionTracker: React.FC<ProgressionTrackerProps> = ({
         {/* Weak points */}
         {progression.weakPoints.length > 0 && (
           <div>
-            <div className="text-sm font-medium text-orange-700 mb-2">Points à travailler :</div>
+            <div className="text-sm font-medium text-pr-orange-dark mb-2">Points à travailler :</div>
             <div className="flex flex-wrap gap-1">
               {progression.weakPoints.slice(0, 3).map((point, index) => (
-                <Badge key={index} variant="outline" className="text-xs border-orange-300 text-orange-700">
+                <Badge key={index} variant="outline" className="text-xs border-orange-300 text-pr-orange-dark">
                   {point}
                 </Badge>
               ))}

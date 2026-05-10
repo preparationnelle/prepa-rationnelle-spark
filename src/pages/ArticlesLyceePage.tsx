@@ -25,7 +25,7 @@ const ArticlesLyceePage = () => {
       subtitle: "Approfondissement",
       description: "Explorez les matières de première avec spécialisation progressive selon votre série choisie.",
       theme: "orange",
-      gradient: "from-orange-500 to-rose-500",
+      gradient: "from-pr-orange to-rose-500",
       bgGradient: "from-orange-50 to-rose-50",
       icon: BookOpen,
       link: "/articles/lycee/premiere",
@@ -38,7 +38,7 @@ const ArticlesLyceePage = () => {
       subtitle: "Année du Bac",
       description: "Maîtrisez toutes les matières de terminale et préparez-vous efficacement aux épreuves du bac.",
       theme: "red",
-      gradient: "from-red-600 to-orange-600",
+      gradient: "from-red-600 to-pr-orange-dark",
       bgGradient: "from-red-50 to-orange-50",
       icon: GraduationCap,
       link: "/articles/lycee/terminale",
@@ -57,10 +57,10 @@ const ArticlesLyceePage = () => {
     },
     orange: {
       bg: 'bg-orange-50',
-      text: 'text-orange-700',
+      text: 'text-pr-orange-dark',
       border: 'border-orange-100',
       shadow: 'shadow-orange-200/50',
-      button: 'bg-orange-600 hover:bg-orange-700'
+      button: 'bg-pr-orange-dark hover:bg-pr-orange-dark'
     },
     red: {
       bg: 'bg-red-50',
@@ -89,7 +89,7 @@ const ArticlesLyceePage = () => {
               </div>
 
               <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-carnet-ink mb-6">
-                Articles <span className="text-transparent bg-clip-text bg-gradient-to-r from-carnet-red to-orange-600">Lycée</span>
+                Articles <span className="text-transparent bg-clip-text bg-gradient-to-r from-carnet-red to-pr-orange-dark">Lycée</span>
               </h1>
 
               <p className="text-xl md:text-2xl text-carnet-ink-soft max-w-3xl mx-auto leading-relaxed font-light">
@@ -163,7 +163,7 @@ const ArticlesLyceePage = () => {
             {/* Call to Action */}
             <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-carnet-ink to-slate-800 text-white shadow-2xl shadow-slate-200/50">
               <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-carnet-red/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-              <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-orange-500/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+              <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-pr-orange/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
               <div className="relative z-10 p-8 md:p-12 text-center">
                 <div className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-inner border border-white/20">

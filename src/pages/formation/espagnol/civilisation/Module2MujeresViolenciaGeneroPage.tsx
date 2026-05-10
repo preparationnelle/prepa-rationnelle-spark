@@ -49,7 +49,7 @@ const Module2MujeresViolenciaGeneroPage = () => {
         {/* En-tête du module */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-orange-600 text-white">
+            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
               <Heart className="h-9 w-9" />
             </div>
             Mujeres y Violencia de Género
@@ -73,7 +73,7 @@ const Module2MujeresViolenciaGeneroPage = () => {
               <CardContent className="pt-6">
                 <div className="space-y-3">
                   <Link to="/formation/espagnol/civilisation/module2/vocabulaire">
-                    <Button variant="outline" className="w-full justify-start border-orange-200 hover:bg-orange-50 text-orange-700">
+                    <Button variant="outline" className="w-full justify-start border-orange-200 hover:bg-orange-50 text-pr-orange-dark">
                       <BookOpen className="mr-2 h-4 w-4" />
                       Vocabulaire thématique
                     </Button>
@@ -95,15 +95,15 @@ const Module2MujeresViolenciaGeneroPage = () => {
                   </h3>
                   <div className="space-y-2 text-sm text-gray-600">
                     <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-1.5"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-pr-orange mt-1.5"></div>
                       <span>Loi Organique 1/2004 (Espagne)</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-1.5"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-pr-orange mt-1.5"></div>
                       <span>Mouvement Ni Una Menos (2015)</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-1.5"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-pr-orange mt-1.5"></div>
                       <span>Claudia Sheinbaum - Mexique 2024</span>
                     </div>
                   </div>
@@ -128,7 +128,7 @@ const Module2MujeresViolenciaGeneroPage = () => {
                     ¿Cómo el mundo hispanohablante concilia avances legales y persistencia de las violencias de género?
                   </h3>
                   
-                  <div className="bg-orange-50 border-l-4 border-orange-500 p-4 my-4 rounded-r">
+                  <div className="bg-orange-50 border-l-4 border-pr-orange p-4 my-4 rounded-r">
                     <p className="text-sm text-orange-900 leading-relaxed">
                       <strong>Comment le monde hispanophone concilie-t-il les avancées légales et la persistance des violences de genre ?</strong>
                     </p>
@@ -136,8 +136,8 @@ const Module2MujeresViolenciaGeneroPage = () => {
 
                   <div className="space-y-6 text-gray-700 leading-relaxed">
                     <div>
-                      <h4 className="font-semibold text-orange-700 mb-2 flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-orange-500"></div>
+                      <h4 className="font-semibold text-pr-orange-dark mb-2 flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-pr-orange"></div>
                         1) Panorama général
                       </h4>
                       <p className="text-sm">
@@ -146,8 +146,8 @@ const Module2MujeresViolenciaGeneroPage = () => {
                     </div>
 
                     <div>
-                      <h4 className="font-semibold text-orange-700 mb-2 flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-orange-500"></div>
+                      <h4 className="font-semibold text-pr-orange-dark mb-2 flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-pr-orange"></div>
                         2) Violences de genre et réponse de l'État
                       </h4>
                       <p className="text-sm">
@@ -159,8 +159,8 @@ const Module2MujeresViolenciaGeneroPage = () => {
                     </div>
 
                     <div>
-                      <h4 className="font-semibold text-orange-700 mb-2 flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-orange-500"></div>
+                      <h4 className="font-semibold text-pr-orange-dark mb-2 flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-pr-orange"></div>
                         3) Parité et leadership
                       </h4>
                       <p className="text-sm">
@@ -169,8 +169,8 @@ const Module2MujeresViolenciaGeneroPage = () => {
                     </div>
 
                     <div>
-                      <h4 className="font-semibold text-orange-700 mb-2 flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-orange-500"></div>
+                      <h4 className="font-semibold text-pr-orange-dark mb-2 flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-pr-orange"></div>
                         4) Économie du soin et écarts
                       </h4>
                       <p className="text-sm">
@@ -179,8 +179,8 @@ const Module2MujeresViolenciaGeneroPage = () => {
                     </div>
 
                     <div>
-                      <h4 className="font-semibold text-orange-700 mb-2 flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-orange-500"></div>
+                      <h4 className="font-semibold text-pr-orange-dark mb-2 flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-pr-orange"></div>
                         5) Culture, éducation et horizon 2030
                       </h4>
                       <p className="text-sm">
@@ -232,23 +232,23 @@ const Module2MujeresViolenciaGeneroPage = () => {
                   </h4>
                   <div className="space-y-2 text-sm text-orange-800">
                     <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-orange-600 mt-1.5"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-pr-orange-dark mt-1.5"></div>
                       <span><strong>Introduction :</strong> Tension entre avancées légales et persistance des violences</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-orange-600 mt-1.5"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-pr-orange-dark mt-1.5"></div>
                       <span><strong>§1 :</strong> Cadre juridique (LO 1/2004) mais chiffres alarmants (1290 victimes)</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-orange-600 mt-1.5"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-pr-orange-dark mt-1.5"></div>
                       <span><strong>§2 :</strong> Représentation politique (44% députées, Claudia Sheinbaum, loi de parité)</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-orange-600 mt-1.5"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-pr-orange-dark mt-1.5"></div>
                       <span><strong>§3 :</strong> Écart salarial (17%) et nécessité de coresponsabilité</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-orange-600 mt-1.5"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-pr-orange-dark mt-1.5"></div>
                       <span><strong>Conclusion :</strong> Changement culturel (#NiUnaMenos) et éducation à l'égalité</span>
                     </div>
                   </div>
@@ -258,16 +258,16 @@ const Module2MujeresViolenciaGeneroPage = () => {
                   <h4 className="font-semibold text-orange-900 mb-3">🎯 Sujets probables :</h4>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-orange-600"></div>
-                      <span className="text-sm text-orange-700">Violences de genre en Espagne et Amérique latine</span>
+                      <div className="w-2 h-2 rounded-full bg-pr-orange-dark"></div>
+                      <span className="text-sm text-pr-orange-dark">Violences de genre en Espagne et Amérique latine</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-orange-600"></div>
-                      <span className="text-sm text-orange-700">Parité politique : avancées et limites</span>
+                      <div className="w-2 h-2 rounded-full bg-pr-orange-dark"></div>
+                      <span className="text-sm text-pr-orange-dark">Parité politique : avancées et limites</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-orange-600"></div>
-                      <span className="text-sm text-orange-700">Égalité économique et écart salarial</span>
+                      <div className="w-2 h-2 rounded-full bg-pr-orange-dark"></div>
+                      <span className="text-sm text-pr-orange-dark">Égalité économique et écart salarial</span>
                     </div>
                   </div>
                 </div>
@@ -279,7 +279,7 @@ const Module2MujeresViolenciaGeneroPage = () => {
         {/* Bouton retour en bas de page */}
         <div className="flex justify-center mt-12 pb-8">
           <Link to="/formation/espagnol/civilisation">
-            <Button className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-md font-medium">
+            <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-6 py-3 rounded-md font-medium">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Retour à la civilisation
             </Button>

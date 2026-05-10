@@ -319,7 +319,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                       <span className="text-sm font-medium text-blue-700">Français</span>
                       <div className="flex gap-1">
                         {currentSentence.specialized && (
-                          <Badge className="bg-orange-100 text-orange-700 text-xs">Spécialisé</Badge>
+                          <Badge className="bg-orange-100 text-pr-orange-dark text-xs">Spécialisé</Badge>
                         )}
                         {currentSentence.difficulty_level && (
                           <Badge variant={currentSentence.difficulty_level === 'advanced' ? 'destructive' : 'secondary'} className="text-xs">

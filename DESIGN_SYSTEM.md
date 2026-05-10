@@ -77,15 +77,32 @@ En développement local : `http://localhost:5173/design-system`
 ## 🎨 Couleurs Principales
 
 ```css
-Primary Orange: #FF6A00
-Orange 500: #F97316
-Orange 600: #EA580C
-Orange 700: #C2410C
+/* Brand orange (token: pr-orange) */
+PR Orange:      #F4845F  /* bg-pr-orange / text-pr-orange */
+PR Orange Dark: #C45A35  /* bg-pr-orange-dark / hover state */
+PR Orange Soft: #F9C4B0  /* bg-pr-orange-soft */
+PR Orange Pale: #FDF0EC  /* bg-pr-orange-pale */
 
-Blanc: #FFFFFF
-Noir: #000000
-Gray 50: #F9FAFB
+/* Carnet (papier crème) */
+Carnet Paper:   #FBF6EA  /* body background */
+Carnet Paper-2: #FFFEF8  /* card surface */
+Carnet Ink:     #1F1714  /* display headings */
+Carnet Ink-Soft:#4A3D30  /* body copy */
+Carnet Ink-Mute:#8A7864  /* meta / labels */
+Carnet Red:     #C1443A  /* strikethrough, marginalia */
+Carnet Red-Deep:#9E342B  /* hover red */
+
+/* Neutrals */
+White:          #FFFFFF
+Black:          #1A1A18  (token: pr-black)
+PR Gray Light:  #D8D6CE
+PR Gray Bg:     #F7F6F3
 ```
+
+**Use design tokens, not raw hex.** The canonical brand orange is `pr-orange` (`#F4845F`).
+Tailwind built-in `orange-500` (`#F97316`) and `orange-600` (`#EA580C`) are NOT brand
+colors and should not be used in `className=` attributes — use `pr-orange` /
+`pr-orange-dark` instead.
 
 ## 🔧 Technologies Utilisées
 

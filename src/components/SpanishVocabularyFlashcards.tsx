@@ -160,7 +160,7 @@ export const SpanishVocabularyFlashcards: React.FC<SpanishVocabularyFlashcardsPr
       <div className="mb-6">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-bold flex items-center gap-2">
-            <BookOpen className="h-6 w-6 text-orange-600" />
+            <BookOpen className="h-6 w-6 text-pr-orange-dark" />
             {filterCategories ? 'Vocabulaire spécialisé espagnol' : 'Vocabulaire politique espagnol-français'}
           </h2>
           <div className="flex gap-2">
