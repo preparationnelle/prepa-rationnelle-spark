@@ -19,11 +19,13 @@ import { Layout } from './components/Layout';
 import { initPostHog } from './integrations/posthog/client';
 import { usePageTracking } from './hooks/usePageTracking';
 
-// Loading component for lazy-loaded pages
+// Loading component for lazy-loaded pages — keeps Layout chrome visible
 const PageLoader = () => (
-  <div className="min-h-screen flex items-center justify-center">
-    <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
-  </div>
+  <Layout showFooter={false}>
+    <div className="flex items-center justify-center py-32">
+      <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-carnet-red"></div>
+    </div>
+  </Layout>
 );
 
 function App() {
