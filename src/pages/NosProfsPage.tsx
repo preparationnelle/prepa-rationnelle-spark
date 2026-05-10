@@ -58,32 +58,32 @@ const NosProfsPage = () => {
 
   // Composant carte compacte
   const ProfessorCardCompact = ({ professor, index }: { professor: Professor; index: number }) => (
-    <div className={`professor-card bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 border ${professor.isFounder ? 'border-orange-300 ring-2 ring-orange-100' : 'border-gray-100'} cursor-pointer group relative overflow-hidden transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'} flex flex-col h-full`}
+    <div className={`professor-card bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 border ${professor.isFounder ? 'border-pr-orange ring-2 ring-pr-orange-pale' : 'border-gray-100'} cursor-pointer group relative overflow-hidden transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'} flex flex-col h-full`}
       style={{ transitionDelay: `${index * 150}ms` }}>
       {/* Effet shimmer au hover */}
       <div className="card-shimmer absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 transition-opacity duration-500 pointer-events-none"></div>
       {/* Header avec gradient pour le fondateur */}
       {professor.isFounder && (
-        <div className="bg-gradient-to-r from-orange-600 to-orange-500 h-2 rounded-t-2xl absolute top-0 left-0 right-0 animate-pulse"></div>
+        <div className="bg-gradient-to-r from-pr-orange-dark to-pr-orange h-2 rounded-t-2xl absolute top-0 left-0 right-0 animate-pulse"></div>
       )}
 
       {/* Contenu principal - flexible pour pousser le bouton en bas */}
       <div className="flex-1">
         {/* Photo et infos principales */}
         <div className={`text-center mb-4 ${professor.isFounder ? 'pt-2' : ''}`}>
-          <div className={`w-20 h-20 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ${professor.isFounder ? 'bg-gradient-to-br from-orange-500 to-orange-600' : 'bg-gradient-to-br from-gray-600 to-gray-800'} group-hover:shadow-2xl`}>
+          <div className={`w-20 h-20 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ${professor.isFounder ? 'bg-gradient-to-br from-pr-orange to-pr-orange-dark' : 'bg-gradient-to-br from-gray-600 to-gray-800'} group-hover:shadow-2xl`}>
             {professor.name.split(' ').map(n => n[0]).join('')}
           </div>
 
           <div className="flex items-center justify-center gap-2 mb-2">
             <h3 className="text-xl font-bold text-gray-900">{professor.name}</h3>
             {professor.isFounder && (
-              <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
+              <div className="bg-gradient-to-r from-pr-orange to-pr-orange-dark text-white px-2 py-1 rounded-full text-xs font-semibold">
                 Fondateur
               </div>
             )}
           </div>
-          <p className="text-lg text-orange-600 font-semibold mb-3">{professor.role}</p>
+          <p className="text-lg text-pr-orange-dark font-semibold mb-3">{professor.role}</p>
           <p className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-3">{professor.shortDescription}</p>
         </div>
 
@@ -91,7 +91,7 @@ const NosProfsPage = () => {
         <div className="mb-4">
           <div className="flex flex-wrap gap-2 justify-center">
             {professor.mainSubjects.slice(0, 2).map((subject, index) => (
-              <span key={index} className="bg-orange-50 text-orange-600 px-3 py-1 rounded-full text-xs font-medium">
+              <span key={index} className="bg-pr-orange-pale text-pr-orange-dark px-3 py-1 rounded-full text-xs font-medium">
                 {subject}
               </span>
             ))}
@@ -111,7 +111,7 @@ const NosProfsPage = () => {
             e.stopPropagation();
             openModal(professor);
           }}
-          className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-medium rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/25 hover:scale-105 active:scale-95"
+          className="w-full bg-gradient-to-r from-pr-orange-dark to-pr-orange hover:from-pr-orange-dark hover:to-pr-orange-dark text-white font-medium rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-pr-orange/25 hover:scale-105 active:scale-95"
         >
           <MessageCircle className="mr-2 h-4 w-4 group-hover:animate-bounce" />
           Contacter
@@ -138,12 +138,12 @@ const NosProfsPage = () => {
           <div className="p-8">
             {/* Header avec gradient pour le fondateur */}
             {selectedProfessor.isFounder && (
-              <div className="bg-gradient-to-r from-orange-600 to-orange-500 h-2 rounded-t-3xl absolute top-0 left-0 right-0"></div>
+              <div className="bg-gradient-to-r from-pr-orange-dark to-pr-orange h-2 rounded-t-3xl absolute top-0 left-0 right-0"></div>
             )}
 
             {/* Photo et infos principales */}
             <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-6 pt-4">
-              <div className={`w-32 h-32 rounded-2xl flex items-center justify-center text-white font-bold text-4xl shadow-lg ${selectedProfessor.isFounder ? 'bg-gradient-to-br from-orange-500 to-orange-600' : 'bg-gradient-to-br from-blue-500 to-blue-600'}`}>
+              <div className={`w-32 h-32 rounded-2xl flex items-center justify-center text-white font-bold text-4xl shadow-lg ${selectedProfessor.isFounder ? 'bg-gradient-to-br from-pr-orange to-pr-orange-dark' : 'bg-gradient-to-br from-blue-500 to-blue-600'}`}>
                 {selectedProfessor.name.split(' ').map(n => n[0]).join('')}
               </div>
 
@@ -151,12 +151,12 @@ const NosProfsPage = () => {
                 <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
                   <h3 className="text-4xl font-bold text-gray-900">{selectedProfessor.name}</h3>
                   {selectedProfessor.isFounder && (
-                    <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                    <div className="bg-gradient-to-r from-pr-orange to-pr-orange-dark text-white px-4 py-2 rounded-full text-sm font-semibold">
                       Fondateur
                     </div>
                   )}
                 </div>
-                <p className="text-2xl text-orange-600 font-semibold mb-3">{selectedProfessor.role}</p>
+                <p className="text-2xl text-pr-orange-dark font-semibold mb-3">{selectedProfessor.role}</p>
                 <p className="text-gray-600 leading-relaxed text-lg">{selectedProfessor.fullDescription}</p>
               </div>
             </div>
@@ -164,7 +164,7 @@ const NosProfsPage = () => {
             {/* Spécialités */}
             <div className="mb-6">
               <h4 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-                <BookOpen className="h-6 w-6 text-orange-600" />
+                <BookOpen className="h-6 w-6 text-pr-orange-dark" />
                 Domaines d'expertise
               </h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -180,7 +180,7 @@ const NosProfsPage = () => {
             {/* Réalisations */}
             <div className="mb-6">
               <h4 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-                <Award className="h-6 w-6 text-orange-600" />
+                <Award className="h-6 w-6 text-pr-orange-dark" />
                 Réalisations & Succès
               </h4>
               <div className="space-y-4">
@@ -197,7 +197,7 @@ const NosProfsPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-gray-200">
               <div>
                 <h4 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                  <Calendar className="h-5 w-5 text-orange-600" />
+                  <Calendar className="h-5 w-5 text-pr-orange-dark" />
                   Expérience
                 </h4>
                 <p className="text-gray-600 text-lg">{selectedProfessor.experience}</p>
@@ -232,7 +232,7 @@ const NosProfsPage = () => {
 
             {/* Bouton de contact en bas */}
             <div className="mt-8 pt-6 border-t border-gray-200">
-              <Button className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-bold text-lg py-6 rounded-xl">
+              <Button className="w-full bg-gradient-to-r from-pr-orange-dark to-pr-orange hover:from-pr-orange-dark hover:to-pr-orange-dark text-white font-bold text-lg py-6 rounded-xl">
                 <Mail className="mr-2 h-5 w-5" />
                 Prendre rendez-vous
               </Button>
@@ -715,13 +715,13 @@ const NosProfsPage = () => {
           opacity: 1;
         }
       `}</style>
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      <div className="relative">
         {/* Header avec navigation sticky - TEMPORAIREMENT MASQUÉ */}
         {/*
         <div className="sticky top-16 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
           <div className="container mx-auto px-4 py-4">
             <nav className="flex flex-wrap gap-4 justify-center text-sm">
-              <a href="#equipe" className="hover:text-orange-600 transition-colors font-medium">Notre équipe</a>
+              <a href="#equipe" className="hover:text-pr-orange-dark transition-colors font-medium">Notre équipe</a>
             </nav>
           </div>
         </div>
@@ -730,7 +730,7 @@ const NosProfsPage = () => {
         <div className="container mx-auto px-4 py-12 max-w-6xl">
           {/* Hero Section */}
           <div className="text-center mb-16">
-            <h1 className={`text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+            <h1 className={`text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-pr-orange-dark to-pr-orange bg-clip-text text-transparent transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
               Nos Professeurs
             </h1>
             <p className={`text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
@@ -740,41 +740,41 @@ const NosProfsPage = () => {
 
           {/* Introduction Section */}
           <section className="mb-16">
-            <div className={`bg-gradient-to-br from-orange-50 via-white to-orange-50 rounded-3xl p-8 md:p-12 shadow-xl border border-orange-100 transition-all duration-1000 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+            <div className={`bg-gradient-to-br from-pr-orange-pale via-white to-pr-orange-pale rounded-3xl p-8 md:p-12 shadow-xl border border-pr-orange-soft/40 transition-all duration-1000 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
               <div className="max-w-4xl mx-auto">
                 {/* Titre principal */}
                 <div className="text-center mb-10">
-                  <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
+                  <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-pr-orange-dark to-pr-orange bg-clip-text text-transparent">
                     Une équipe d'excellence à votre service
                   </h2>
                   <div className="flex items-center justify-center gap-3 mb-6">
-                    <div className="h-1 w-16 bg-gradient-to-r from-orange-600 to-orange-500 rounded-full"></div>
-                    <GraduationCap className="h-8 w-8 text-orange-600" />
-                    <div className="h-1 w-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full"></div>
+                    <div className="h-1 w-16 bg-gradient-to-r from-pr-orange-dark to-pr-orange rounded-full"></div>
+                    <GraduationCap className="h-8 w-8 text-pr-orange-dark" />
+                    <div className="h-1 w-16 bg-gradient-to-r from-pr-orange to-pr-orange-dark rounded-full"></div>
                   </div>
                   <p className="text-2xl md:text-3xl font-semibold text-gray-800 mb-2">
                     40 professeurs d'élite
                   </p>
                   <p className="text-lg text-gray-600">
-                    Diplômés d'<span className="font-semibold text-orange-600">HEC, ESCP, ESSEC, Centrale</span> et des meilleures écoles
+                    Diplômés d'<span className="font-semibold text-pr-orange-dark">HEC, ESCP, ESSEC, Centrale</span> et des meilleures écoles
                   </p>
                 </div>
 
                 {/* Notre approche */}
                 <div className="mb-10">
                   <h3 className="text-2xl font-bold mb-6 text-gray-900 flex items-center gap-3">
-                    <div className="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center">
-                      <Heart className="h-6 w-6 text-orange-600" />
+                    <div className="w-10 h-10 bg-pr-orange-pale rounded-xl flex items-center justify-center">
+                      <Heart className="h-6 w-6 text-pr-orange-dark" />
                     </div>
                     Notre approche
                   </h3>
                   <div className="space-y-4 text-gray-700 text-lg leading-relaxed">
                     <p>
                       Nos professeurs ne se contentent pas de "faire des heures de cours".
-                      <span className="font-semibold text-orange-600"> Ils construisent avec chaque élève un véritable plan de progression personnalisé.</span>
+                      <span className="font-semibold text-pr-orange-dark"> Ils construisent avec chaque élève un véritable plan de progression personnalisé.</span>
                     </p>
                     <div className="grid md:grid-cols-2 gap-4 my-6">
-                      <div className="bg-white p-5 rounded-xl shadow-md border border-orange-100">
+                      <div className="bg-white p-5 rounded-xl shadow-md border border-pr-orange-soft/40">
                         <div className="flex items-start gap-3">
                           <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
                           <div>
@@ -783,7 +783,7 @@ const NosProfsPage = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="bg-white p-5 rounded-xl shadow-md border border-orange-100">
+                      <div className="bg-white p-5 rounded-xl shadow-md border border-pr-orange-soft/40">
                         <div className="flex items-start gap-3">
                           <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
                           <div>
@@ -792,7 +792,7 @@ const NosProfsPage = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="bg-white p-5 rounded-xl shadow-md border border-orange-100">
+                      <div className="bg-white p-5 rounded-xl shadow-md border border-pr-orange-soft/40">
                         <div className="flex items-start gap-3">
                           <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
                           <div>
@@ -801,7 +801,7 @@ const NosProfsPage = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="bg-white p-5 rounded-xl shadow-md border border-orange-100">
+                      <div className="bg-white p-5 rounded-xl shadow-md border border-pr-orange-soft/40">
                         <div className="flex items-start gap-3">
                           <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
                           <div>
@@ -817,18 +817,18 @@ const NosProfsPage = () => {
                 {/* Résultats concrets */}
                 <div className="mb-10">
                   <h3 className="text-2xl font-bold mb-6 text-gray-900 flex items-center gap-3">
-                    <div className="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center">
-                      <Award className="h-6 w-6 text-orange-600" />
+                    <div className="w-10 h-10 bg-pr-orange-pale rounded-xl flex items-center justify-center">
+                      <Award className="h-6 w-6 text-pr-orange-dark" />
                     </div>
                     Des résultats concrets
                   </h3>
                   <div className="grid md:grid-cols-2 gap-6">
-                    <div className="bg-gradient-to-br from-orange-600 to-orange-500 p-6 rounded-2xl shadow-lg text-white">
+                    <div className="bg-gradient-to-br from-pr-orange-dark to-pr-orange p-6 rounded-2xl shadow-lg text-white">
                       <div className="text-5xl font-bold mb-2">+4 points</div>
                       <div className="text-lg font-medium opacity-90">de moyenne dès le premier trimestre</div>
                       <div className="text-sm opacity-75 mt-2">Collège & Lycée</div>
                     </div>
-                    <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-6 rounded-2xl shadow-lg text-white">
+                    <div className="bg-gradient-to-br from-pr-orange to-pr-orange-dark p-6 rounded-2xl shadow-lg text-white">
                       <div className="text-5xl font-bold mb-2">+5 à +7</div>
                       <div className="text-lg font-medium opacity-90">points aux concours</div>
                       <div className="text-sm opacity-75 mt-2">Prépa ECG - Mathématiques</div>
@@ -837,30 +837,30 @@ const NosProfsPage = () => {
                 </div>
 
                 {/* Ce qui les distingue */}
-                <div className="bg-white p-8 rounded-2xl shadow-lg border border-orange-100">
+                <div className="bg-white p-8 rounded-2xl shadow-lg border border-pr-orange-soft/40">
                   <h3 className="text-2xl font-bold mb-6 text-gray-900 flex items-center gap-3">
-                    <div className="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center">
-                      <Star className="h-6 w-6 text-orange-600" />
+                    <div className="w-10 h-10 bg-pr-orange-pale rounded-xl flex items-center justify-center">
+                      <Star className="h-6 w-6 text-pr-orange-dark" />
                     </div>
                     Ce qui distingue nos professeurs
                   </h3>
                   <div className="grid md:grid-cols-3 gap-6">
                     <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-orange-600 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                      <div className="w-16 h-16 bg-gradient-to-br from-pr-orange-dark to-pr-orange rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                         <BookOpen className="h-8 w-8 text-white" />
                       </div>
                       <h4 className="font-bold text-gray-900 mb-2">Les bonnes méthodes</h4>
                       <p className="text-gray-600 text-sm">Issus des meilleures écoles, ils maîtrisent les techniques qui fonctionnent</p>
                     </div>
                     <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                      <div className="w-16 h-16 bg-gradient-to-br from-pr-orange to-pr-orange-dark rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                         <Heart className="h-8 w-8 text-white" />
                       </div>
                       <h4 className="font-bold text-gray-900 mb-2">La passion de transmettre</h4>
                       <p className="text-gray-600 text-sm">Un enseignement passionné qui donne envie de progresser</p>
                     </div>
                     <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-orange-600 to-orange-400 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                      <div className="w-16 h-16 bg-gradient-to-br from-pr-orange-dark to-pr-orange rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                         <Users className="h-8 w-8 text-white" />
                       </div>
                       <h4 className="font-bold text-gray-900 mb-2">L'expérience du terrain</h4>
@@ -870,7 +870,7 @@ const NosProfsPage = () => {
                 </div>
 
                 {/* Premier cours gratuit */}
-                <div className="mt-8 bg-gradient-to-r from-orange-600 to-orange-500 p-8 rounded-2xl shadow-xl text-white text-center">
+                <div className="mt-8 bg-gradient-to-r from-pr-orange-dark to-pr-orange p-8 rounded-2xl shadow-xl text-white text-center">
                   <h3 className="text-3xl font-bold mb-3">✨ Premier cours gratuit</h3>
                   <p className="text-lg mb-6 opacity-90">
                     Avant de commencer, nous offrons toujours une première séance gratuite pour faire connaissance,
@@ -878,7 +878,7 @@ const NosProfsPage = () => {
                   </p>
                   <Button
                     size="lg"
-                    className="bg-white text-orange-600 hover:bg-gray-100 font-bold text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
+                    className="bg-white text-pr-orange-dark hover:bg-gray-100 font-bold text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
                   >
                     <Mail className="mr-2 h-5 w-5" />
                     Réserver mon cours gratuit
@@ -892,7 +892,7 @@ const NosProfsPage = () => {
           {/* 
           <section id="equipe" className="mb-16 scroll-mt-24">
             <div className={`text-center mb-12 transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-              <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
+              <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-pr-orange-dark to-pr-orange bg-clip-text text-transparent">
                 Notre équipe pédagogique
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -911,7 +911,7 @@ const NosProfsPage = () => {
           {/* Section Valeurs */}
           <section className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 mb-16">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
+              <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-pr-orange-dark to-pr-orange bg-clip-text text-transparent">
                 Nos Valeurs Pédagogiques
               </h2>
               <p className="text-gray-600">Ce qui guide notre enseignement au quotidien</p>
@@ -919,24 +919,24 @@ const NosProfsPage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Heart className="h-8 w-8 text-orange-600" />
+                <div className="w-16 h-16 bg-pr-orange-pale rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Heart className="h-8 w-8 text-pr-orange-dark" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Bienveillance</h3>
                 <p className="text-gray-600">Un accompagnement respectueux où chaque élève se sent valorisé et soutenu dans sa progression.</p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <GraduationCap className="h-8 w-8 text-orange-600" />
+                <div className="w-16 h-16 bg-pr-orange-pale rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <GraduationCap className="h-8 w-8 text-pr-orange-dark" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Excellence</h3>
                 <p className="text-gray-600">Des méthodes éprouvées et une exigence de qualité pour des résultats durables.</p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Users className="h-8 w-8 text-orange-600" />
+                <div className="w-16 h-16 bg-pr-orange-pale rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Users className="h-8 w-8 text-pr-orange-dark" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Personnalisation</h3>
                 <p className="text-gray-600">Chaque élève est unique. Nos cours s'adaptent aux besoins spécifiques de chacun.</p>
@@ -945,16 +945,16 @@ const NosProfsPage = () => {
           </section>
 
           {/* Call to Action */}
-          <div className="text-center bg-gradient-to-r from-orange-50 to-orange-100 rounded-3xl p-12 border border-orange-200">
+          <div className="text-center bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale rounded-3xl p-12 border border-pr-orange-soft">
             <h2 className="text-3xl font-bold mb-4">Prêt à commencer l'aventure ?</h2>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
               Rejoignez nos cours et bénéficiez de l'expertise de nos professeurs passionnés
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+              <button className="bg-gradient-to-r from-pr-orange-dark to-pr-orange hover:from-pr-orange-dark hover:to-pr-orange-dark text-white font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
                 Réserver un cours d'essai gratuit
               </button>
-              <button className="border-2 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300">
+              <button className="border-2 border-pr-orange-dark text-pr-orange-dark hover:bg-pr-orange-dark hover:text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300">
                 Nous contacter
               </button>
             </div>
